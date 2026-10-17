@@ -1,3 +1,4 @@
+import { assertNoPendingTurn } from "./turn-lock.mjs";
 import {
   CONDITION_KINDS,
   validateContributions,
@@ -94,6 +95,7 @@ async function apply(id) {
       );
     return { status: "complete", replay: true };
   }
+  assertNoPendingTurn(actor);
   if (
     !Number.isSafeInteger(request.revision) ||
     request.revision !== (actor.getFlag(ID, "conditionRevision") ?? 0)

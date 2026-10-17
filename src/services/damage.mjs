@@ -1,3 +1,4 @@
+import { assertNoPendingTurn } from "./turn-lock.mjs";
 import { classifyRoll } from "../rules/roll.mjs";
 import { damageEvent } from "../rules/damage.mjs";
 import {
@@ -151,6 +152,7 @@ async function apply(id) {
       throw new Error("The completed damage request changed.");
     return { status: "complete", replay: true };
   }
+  assertNoPendingTurn(actor);
   let eventId = id,
     draft = structuredClone(request.draft);
   if (request.rollMessageId) {

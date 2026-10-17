@@ -1,3 +1,5 @@
+import { resolveSurvivalRequest } from "../services/survival.mjs";
+import { cancelTurnPhase } from "../services/turn-phase.mjs";
 import { resolveWoundRequest } from "../services/wounds.mjs";
 import { resolveRecoveryRequest } from "../services/recovery.mjs";
 import { resolveDamageRequest } from "../services/damage.mjs";
@@ -21,6 +23,8 @@ import { resolveDevelopmentRequest } from "../services/advancement.mjs";
 const ID = "heroes-of-legend";
 export async function retryCharacterRequest(id) {
   const message = game.messages.get(id);
+  if (message?.getFlag(ID, "survivalRequest"))
+    return resolveSurvivalRequest(id);
   if (message?.getFlag(ID, "woundRequest")) return resolveWoundRequest(id);
   if (message?.getFlag(ID, "recoveryRequest"))
     return resolveRecoveryRequest(id);
@@ -47,6 +51,8 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
     window: { title: "Automation coordinator" },
     position: { width: 680, height: 650 },
     actions: {
+      resumeTurn: AuthorityPanel.resumeTurn,
+      cancelTurn: AuthorityPanel.cancelTurn,
       activate: AuthorityPanel.activate,
       release: AuthorityPanel.release,
       retry: AuthorityPanel.retry,
@@ -87,6 +93,13 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
           id: c.getFlag(ID, "pendingAbility"),
           name: c.name ?? c.id,
         })),
+      pendingTurns: game.combats
+        .filter((c) => c.getFlag(ID, "pendingTurnPhase"))
+        .map((c) => ({
+          combatUuid: c.uuid,
+          id: c.getFlag(ID, "pendingTurnPhase").requestId,
+          name: c.name ?? c.id,
+        })),
       requests: game.messages
         .filter(
           (m) =>
@@ -98,6 +111,7 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
             m.getFlag(ID, "damageRequest") ||
             m.getFlag(ID, "recoveryRequest") ||
             m.getFlag(ID, "woundRequest") ||
+            m.getFlag(ID, "survivalRequest") ||
             m.getFlag(ID, "abilityRequest") ||
             m.getFlag(ID, "npcAttackRequest") ||
             m.getFlag(ID, "defenseRequest"),
@@ -113,21 +127,44 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
             : (m.getFlag(ID, "developmentRequest")?.kind ??
               m.getFlag(ID, "combatRequest")?.kind ??
               m.getFlag(ID, "conditionRequest")?.kind ??
-              (m.getFlag(ID, "woundRequest")
-                ? "Wound"
-                : m.getFlag(ID, "recoveryRequest")
-                  ? "Recovery"
-                  : m.getFlag(ID, "damageRequest")
-                    ? "Damage"
-                    : m.getFlag(ID, "equipmentRequest")
-                      ? "Equipment"
-                      : m.getFlag(ID, "npcAttackRequest")
-                        ? "NPC attack"
-                        : m.getFlag(ID, "defenseRequest")
-                          ? "Defense"
-                          : "Ability")),
+              (m.getFlag(ID, "survivalRequest")
+                ? "Survival"
+                : m.getFlag(ID, "woundRequest")
+                  ? "Wound"
+                  : m.getFlag(ID, "recoveryRequest")
+                    ? "Recovery"
+                    : m.getFlag(ID, "damageRequest")
+                      ? "Damage"
+                      : m.getFlag(ID, "equipmentRequest")
+                        ? "Equipment"
+                        : m.getFlag(ID, "npcAttackRequest")
+                          ? "NPC attack"
+                          : m.getFlag(ID, "defenseRequest")
+                            ? "Defense"
+                            : "Ability")),
         })),
     };
+  }
+  static async resumeTurn(event, target) {
+    try {
+      await resolveCombatRequest(target.dataset.id, target.dataset.combat);
+      await this.render();
+    } catch (e) {
+      ui.notifications.error(e.message);
+    }
+  }
+  static async cancelTurn(event, target) {
+    try {
+      const result = await foundry.applications.api.DialogV2.input({
+        window: { title: "Cancel unapplied turn change" },
+        content: '<label>DA reason<input name="reason" required></label>',
+        ok: { label: "Record cancellation" },
+      });
+      if (result) await cancelTurnPhase(target.dataset.combat, result.reason);
+      await this.render();
+    } catch (e) {
+      ui.notifications.error(e.message);
+    }
   }
   static async activate() {
     try {

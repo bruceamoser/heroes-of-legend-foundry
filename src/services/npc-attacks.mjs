@@ -61,7 +61,10 @@ async function apply(id) {
     )
       throw new Error("The settled attack request changed.");
   } else {
-    if (combat.getFlag(ID, "pendingAbility"))
+    if (
+      combat.getFlag(ID, "pendingAbility") ||
+      combat.getFlag(ID, "pendingTurnPhase")
+    )
       throw new Error("Resolve the pending encounter action first.");
     const actor = await fromUuid(request.actorUuid),
       state = combat.getFlag(ID, "encounter"),

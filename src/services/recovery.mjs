@@ -1,3 +1,4 @@
+import { assertNoPendingTurn } from "./turn-lock.mjs";
 import { damageBasis } from "./damage.mjs";
 import { healingPlan } from "../rules/damage.mjs";
 import {
@@ -131,6 +132,7 @@ async function apply(id) {
       throw new Error("The completed recovery request changed.");
     return { status: "complete", replay: true };
   }
+  assertNoPendingTurn(actor);
   if (JSON.stringify(basis) !== JSON.stringify(request.basis))
     throw new Error("HP or survival changed. Review recovery again.");
   if (typeof request.draft?.reason !== "string" || !request.draft.reason.trim())

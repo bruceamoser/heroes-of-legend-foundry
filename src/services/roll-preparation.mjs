@@ -10,7 +10,7 @@ export function rollBasis(
   attackMessageId = null,
   defenderTokenUuid = null,
 ) {
-  if (!["attribute", "defense"].includes(mode))
+  if (!["attribute", "defense", "death"].includes(mode))
     throw new Error("Unsupported shared roll context.");
   if (
     !actor ||
@@ -23,6 +23,26 @@ export function rollBasis(
   // creates a ChatMessage only; it never mutates the defender's documents.
   if (mode !== "defense" && !actor.testUserPermission(game.user, "OWNER"))
     throw new Error(game.i18n.localize("HOL.NoPermission"));
+  let survival = null;
+  if (mode === "death") {
+    const state = actor.getFlag("heroes-of-legend", "survival");
+    if (
+      attributeKey !== "fortitude" ||
+      actor.type !== "character" ||
+      state?.status !== "dying" ||
+      state.due !== state.ownTurn ||
+      state.hp !== actor.system.health.value
+    )
+      throw new Error(
+        "A death choice is due only at the start of a Dying turn.",
+      );
+    survival = {
+      ...structuredClone(state),
+      hp: actor.system.health.value,
+      gritAvailable: actor.system.grit.available,
+      pending: Boolean(actor.getFlag("heroes-of-legend", "pendingDeath")),
+    };
+  }
   const contributions = actorContributions(actor).sort((a, b) =>
     a.id.localeCompare(b.id),
   );
@@ -67,6 +87,7 @@ export function rollBasis(
   return {
     attackMessageId,
     defenderTokenUuid,
+    survival,
     incoming,
     actorUuid: actor.uuid,
     attributeKey,
@@ -80,7 +101,7 @@ export function prepareRoll(basis, draft = {}) {
   const fears = [
     ...new Set(
       basis.contributions
-        .filter((c) => c.key === "frightened")
+        .filter((c) => basis.mode !== "death" && c.key === "frightened")
         .map((c) => c.source),
     ),
   ];

@@ -1,3 +1,4 @@
+import { assertNoPendingTurn } from "./turn-lock.mjs";
 import { woundRoll, woundResult } from "../rules/wounds.mjs";
 import { enterLastWords, validateSurvival } from "../rules/survival.mjs";
 import { conditionIcon } from "./conditions.mjs";
@@ -87,6 +88,7 @@ async function apply(id) {
       );
     return { status: "complete", replay: true };
   }
+  assertNoPendingTurn(actor);
   let pending = structuredClone(
     actor.getFlag(ID, "pendingWounds")?.[request.eventId],
   );

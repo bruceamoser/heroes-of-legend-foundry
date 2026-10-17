@@ -34,6 +34,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
     window: { title: "Prepare roll", resizable: true },
     position: { width: 560, height: 650 },
     actions: {
+      grit: SharedRollDialog.grit,
       roll: SharedRollDialog.roll,
       changeDefender: SharedRollDialog.changeDefender,
     },
@@ -55,7 +56,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
     const fears = [
       ...new Set(
         this.basis.contributions
-          .filter((c) => c.key === "frightened")
+          .filter((c) => this.mode !== "death" && c.key === "frightened")
           .map((c) => c.source),
       ),
     ];
@@ -66,9 +67,17 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
         ?.getFlag("heroes-of-legend", "defenseResponses")
         ?.filter((r) => r.actorUuid === this.actor.uuid) ?? [];
     this.priorCount = prior.length;
-    this.pendingResponse = prior.some((r) => r.status === "rolling");
+    this.pendingResponse =
+      prior.some((r) => r.status === "rolling") ||
+      Boolean(this.basis.survival?.pending);
     return {
       name: this.actor.name,
+      death: this.mode === "death",
+      gritAvailable: this.basis.survival?.gritAvailable,
+      canGrit:
+        this.mode === "death" &&
+        this.basis.survival?.gritAvailable > 0 &&
+        !this.pendingResponse,
       incoming: this.basis.incoming,
       priorCount: this.priorCount,
       pendingResponse: this.pendingResponse,
@@ -140,6 +149,15 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       const { chooseDefender } = await import("./defender-choice.mjs");
       await this.close();
       await chooseDefender(this.attackMessageId, { forceChoice: true });
+    } catch (e) {
+      ui.notifications.error(e.message);
+    }
+  }
+  static async grit() {
+    try {
+      const { requestSurvival } = await import("../services/survival.mjs");
+      await requestSurvival(this.actor, this.basis, this.draft, "grit");
+      await this.close();
     } catch (e) {
       ui.notifications.error(e.message);
     }

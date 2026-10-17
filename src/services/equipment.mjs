@@ -1,3 +1,4 @@
+import { assertNoPendingTurn } from "./turn-lock.mjs";
 import { handLayout } from "../rules/hands.mjs";
 import {
   enqueueCharacterOperation,
@@ -85,6 +86,7 @@ async function apply(id) {
       throw new Error("The completed equipment request was changed.");
     return { status: "complete", replay: true };
   }
+  assertNoPendingTurn(actor);
   const basis = equipmentBasis(actor);
   if (JSON.stringify(basis) !== JSON.stringify(request.basis))
     throw new Error(

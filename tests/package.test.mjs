@@ -38,3 +38,9 @@ test("a directory cannot serve as a module", async t => {
   const root = await fixture(t, m => { m.esmodules = ["lang"]; });
   await assert.rejects(validatePackage(root), /Invalid asset type/);
 });
+
+test("a syntax error in a shipped secondary module prevents distribution", async t => {
+  const root = await fixture(t, () => {});
+  await writeFile(new URL("broken-sheet.mjs", root), '<section>not JavaScript</section>');
+  await assert.rejects(validatePackage(root), /Command failed/);
+});

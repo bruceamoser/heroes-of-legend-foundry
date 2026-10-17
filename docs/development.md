@@ -551,3 +551,33 @@ was visually inspected in the HOL theme.
 After integration, Node 24 `npm run check` passes all 151 tests. Serial native
 inventory, equipment, authority and coordinator checks pass on Foundry 14.369,
 including two-GM handoff, unknown-acknowledgment suspension and replay recovery.
+
+### Pure wound treatment planning (#100)
+
+`src/rules/treatment.mjs` pins the six treatment cards and the wound source at
+`9bc9b4fe3256e68880b92c45facf0f25b98a1ea3`, validating the selected card and
+wound catalog path and SHA-256 before planning. Reservation takes an explicit
+campaign day key, distinct wound event ID, patient identity, and at least one
+elapsed hour. The printed one-hour duration is recorded separately; additional
+world-time elapsed during the activity does not grant extra attempts or progress.
+Reservation spends the Main Action and records the injury event's single attempt
+for that day before a roll is known. The catalog wound ID remains separate from
+the native wound event identity. Settlement requires the unchanged reserved
+snapshot, including its patient and event identities, and the card's exact
+Knowledge or Reason attribute; a reserved or settled attempt blocks another
+healer on the same event and day.
+
+Weak, Standard and Strong outcomes add 1, 2 and 3 persistent progress. Completion
+returns only the wound's typed treatable effects: lasting movement/roll modifiers
+and explicitly curable starred conditions. Temporary conditions, immediate
+forced movement, binary Prone, HP, scars, wound count, lost parts and equipment
+are preserved. Anatomy applicability and willingness are explicit caller inputs;
+the planner never parses remedy prose or infers a calendar boundary. Zero-HP
+Dying or stabilized patients remain eligible, while Last Words, dead and summon
+patients are rejected. The receipt is pure and immutable; native Item mutation,
+condition removal, authorization and UI remain subsequent integration work.
+
+Primary author review also checked all 280 pinned wound records against the
+adapter. Node 24 `npm run check` passes all 170 tests, including 19 focused
+treatment tests. These are pure planning checks; native treatment UI, time
+tracking, roll execution and effect settlement are follow-up work.

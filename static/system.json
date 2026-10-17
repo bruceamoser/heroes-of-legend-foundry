@@ -1,0 +1,32 @@
+{
+  "id": "heroes-of-legend",
+  "title": "Heroes of Legend",
+  "description": "Heroes of Legend for Foundry VTT. Development preview: package foundation only.",
+  "version": "0.1.0-alpha.1",
+  "authors": [
+    {
+      "name": "Bruce Moser"
+    }
+  ],
+  "url": "https://github.com/bruceamoser/heroes-of-legend-foundry",
+  "compatibility": {
+    "minimum": "14.367",
+    "verified": "14.367",
+    "maximum": "14"
+  },
+  "esmodules": [
+    "heroes-of-legend.mjs"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "documentTypes": {
+    "Actor": {},
+    "Item": {}
+  },
+  "packs": []
+}

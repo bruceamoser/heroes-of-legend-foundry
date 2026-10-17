@@ -14,7 +14,7 @@ This is the software companion to the Heroes of Legend rulebook. Bruce is the fi
 2. Branch `issue/<number>-<description>` from `main`. All content/code changes go through PRs.
 3. Scope changes to the issue. Do not edit the sibling rulebook or Neon Relic repositories as part of system work.
 4. Add relevant validation. Use `Closes #N` in the PR and report actual results, distinguishing static checks from Foundry runtime tests.
-5. Obtain independent review; an author's own checks do not count as approval. Do not merge on behalf of Bruce without authorization.
+5. Bruce authorized author review and merge for this system project on October 17, 2026. Review the complete diff, fix findings, and require passing applicable checks before squash merging. Record this accurately as author review, never independent approval.
 6. Squash merge approved work and verify issue closure.
 7. Correct these instructions when a verified omission causes a mistake; track the correction in the same scoped PR or a separate issue.
 
@@ -30,6 +30,6 @@ This is the software companion to the Heroes of Legend rulebook. Bruce is the fi
 - Published and user-edited world content must not be silently overwritten by an import or migration.
 - No Foundry application distribution, credentials, real world databases or licensed third-party content in Git.
 
-## Validation during planning
+## Validation
 
-This branch contains documentation only. Check local links, source references, JSON and Git whitespace. A future implementation must establish the commands in the build plan before advertising them as runnable. No Foundry runtime compatibility has been certified by this specification.
+Use Node 24 (see `.node-version`), `npm ci`, then `npm run check`. Run `npm run test:runtime` only against an isolated local Foundry development world with `HOL_TEST_URL` set explicitly. See `docs/development.md` for setup and the limits of current runtime evidence. Never use live campaign data for automated testing.

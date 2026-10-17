@@ -43,3 +43,8 @@ export function abilityDefinition(id, source) {
     );
   return definition;
 }
+export function abilityReferenceStatus(id, source) {
+  return abilityDefinition(id, source)
+    ? "Reviewed native action · rules reference"
+    : "Rules reference · play automation in progress";
+}

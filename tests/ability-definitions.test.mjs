@@ -4,6 +4,7 @@ import { readFile } from "node:fs/promises";
 import {
   ABILITY_DEFINITIONS,
   abilityDefinition,
+  abilityReferenceStatus,
 } from "../src/rules/ability-definitions.mjs";
 test("every enabled adapter matches the pinned catalog source exactly", async () => {
   const catalog = JSON.parse(
@@ -39,5 +40,20 @@ test("reviewed editorial-only Defend source remains usable on existing items", (
       sha256: definition.equivalentSourceHashes[0],
     }),
     definition,
+  );
+});
+
+test("reference status only credits reviewed native actions", () => {
+  for (const id of ["ability-defend", "ability-shield-block"])
+    assert.equal(
+      abilityReferenceStatus(id, ABILITY_DEFINITIONS[id].source),
+      "Reviewed native action · rules reference",
+    );
+  assert.equal(
+    abilityReferenceStatus("ability-the-cleverest-mixture", {
+      path: "design/cards/the-cleverest-mixture.md",
+      sha256: "a".repeat(64),
+    }),
+    "Rules reference · play automation in progress",
   );
 });

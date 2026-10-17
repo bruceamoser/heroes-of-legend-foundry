@@ -1,5 +1,6 @@
 import { chromium } from "playwright";
 import assert from "node:assert/strict";
+import { mkdir } from "node:fs/promises";
 import { selectTestUser } from "./helpers/login.mjs";
 const url = process.env.HOL_TEST_URL;
 if (
@@ -28,16 +29,14 @@ async function join(name, canvas = false) {
   return page;
 }
 try {
+  await mkdir("test-results", { recursive: true });
   gm = await join("Gamemaster");
   fixture = await gm.evaluate(async () => {
     const { bindCreationAuthority } = await import(
       "/systems/heroes-of-legend/services/creation.mjs"
     );
-    const prior = game.settings.get(
-      "heroes-of-legend",
-      "creationAuthorityClient",
-    );
-    if (prior) throw new Error("Expected unbound authority");
+    if (game.settings.get("heroes-of-legend", "creationAuthorityClient"))
+      throw new Error("Expected unbound authority");
     await bindCreationAuthority();
     const user = await User.create({
       name: `Advance Owner ${foundry.utils.randomID(4)}`,
@@ -75,7 +74,7 @@ try {
         },
       },
     });
-    return { actor: actor.id, user: user.id, name: user.name, prior };
+    return { actor: actor.id, user: user.id, name: user.name };
   });
   const player = await join(fixture.name, true);
   const unauthorized = await player.evaluate(async (id) => {
@@ -140,6 +139,89 @@ try {
       .getByRole("button", { name: "Add Conditioned Body", exact: true })
       .isDisabled(),
   );
+  await wizard.locator("[data-search]").fill("cleverest");
+  assert.equal(
+    await wizard.locator(".hol-choice-list article:visible").count(),
+    1,
+  );
+  const clever = wizard.locator(".hol-choice-list article:visible"),
+    cleverButton = clever.locator("button");
+  assert(await cleverButton.isDisabled());
+  assert.match(await clever.textContent(), /Requires level 7\./);
+  assert.match(await clever.getAttribute("class"), /hol-ineligible/);
+  const reference = clever.locator("details[data-ability-reference]");
+  assert.equal(await reference.evaluate((el) => el.open), false);
+  await reference.locator("summary").focus();
+  assert(
+    await reference
+      .locator("summary")
+      .evaluate((el) => document.activeElement === el),
+  );
+  await player.keyboard.press("Enter");
+  assert.equal(await reference.evaluate((el) => el.open), true);
+  assert.match(
+    await reference.textContent(),
+    /Rules reference · play automation in progress/,
+  );
+  assert.deepEqual(
+    await reference.locator(".hol-reference-outcomes dd").allTextContents(),
+    [
+      "Reduce temporary Poisoned by 1.",
+      "Reduce temporary Poisoned by 2 or Dazed by 1.",
+      "Reduce temporary Poisoned by 3 or Dazed by 2.",
+    ],
+  );
+  const referenceText = (await reference.textContent()).replace(/\s+/g, " ");
+  assert.match(referenceText, /Action Maneuver/);
+  assert.match(referenceText, /Attribute Knowledge/);
+  assert.match(
+    referenceText,
+    /Target \/ range \/ shape Self or one adjacent willing creature\./,
+  );
+  assert.match(
+    referenceText,
+    /Duration Condition reduction is immediate; crafted supplies persist until used\./,
+  );
+  assert.match(referenceText, /Limits Repeatable; pay the action/);
+  assert.match(
+    referenceText,
+    /Equipment \/ acquisition One mixing kit, Bulk 1/,
+  );
+  await clever.scrollIntoViewIfNeeded();
+  await clever.screenshot({
+    path: "test-results/advancement-choice-details.png",
+  });
+  await player.evaluate(() =>
+    advanceWizard.setPosition({ width: 620, height: 800 }),
+  );
+  const narrow = await clever.evaluate((el) => {
+    const main = el.closest(".hol-wizard-main"),
+      list = el.closest(".hol-choice-list"),
+      button = el.querySelector("button"),
+      mainBox = main.getBoundingClientRect(),
+      buttonBox = button.getBoundingClientRect();
+    return {
+      columns: getComputedStyle(list).gridTemplateColumns.trim().split(/\s+/)
+        .length,
+      overflow: main.scrollWidth - main.clientWidth,
+      buttonVisible:
+        buttonBox.width > 0 &&
+        buttonBox.left >= mainBox.left &&
+        buttonBox.right <= mainBox.right + 1,
+      fontSize: Number.parseFloat(getComputedStyle(button).fontSize),
+    };
+  });
+  assert.equal(narrow.columns, 1);
+  assert(narrow.overflow <= 1);
+  assert(narrow.buttonVisible);
+  assert(narrow.fontSize >= 12);
+  await clever.screenshot({
+    path: "test-results/advancement-choice-details-narrow.png",
+  });
+  await player.evaluate(() =>
+    advanceWizard.setPosition({ width: 940, height: 800 }),
+  );
+  await wizard.locator("[data-search]").fill("");
   await gm.evaluate(async (id) => {
     const { requestDevelopment, resolveDevelopmentRequest } = await import(
       "/systems/heroes-of-legend/services/advancement.mjs"
@@ -402,20 +484,25 @@ try {
   if (gm && fixture)
     await gm
       .evaluate(async (f) => {
-        for (const m of game.messages.filter(
-          (m) =>
-            m.getFlag("heroes-of-legend", "developmentRequest")?.actorUuid ===
-            `Actor.${f.actor}`,
-        ))
-          await m.delete();
-        await game.actors.get(f.actor)?.delete();
-        await game.users.get(f.user)?.delete();
-        await game.settings.set(
-          "heroes-of-legend",
-          "creationAuthorityClient",
-          f.prior,
+        const { releaseAuthority } = await import(
+          "/systems/heroes-of-legend/services/authority.mjs"
         );
+        await releaseAuthority();
+        {
+          await new Promise((resolve) => setTimeout(resolve, 500));
+          for (const m of game.messages.filter(
+            (m) =>
+              m.getFlag("heroes-of-legend", "developmentRequest")?.actorUuid ===
+              `Actor.${f.actor}`,
+          ))
+            await m.delete();
+          await game.actors.get(f.actor)?.delete();
+          await game.users.get(f.user)?.delete();
+        }
       }, fixture)
-      .catch((e) => console.error(e.message));
+      .catch((error) => {
+        console.error(`Cleanup failed: ${error.message}`);
+        process.exitCode = 1;
+      });
   await browser.close();
 }

@@ -45,7 +45,7 @@
 .heroes-of-legend .hol-wizard nav { padding:12px; border-right:1px solid #b39253; display:flex; flex-direction:column; gap:6px; overflow:auto; }
 .heroes-of-legend .hol-wizard nav button { text-align:left; white-space:normal; height:auto; min-height:36px; }
 .heroes-of-legend .hol-wizard nav [aria-current] { background:#15221c; color:#f1e6ce; }
-.heroes-of-legend .hol-wizard-main { overflow:auto; padding:16px 22px; }
+.heroes-of-legend .hol-wizard-main { overflow:auto; padding:16px 22px; container-type:inline-size; }
 .heroes-of-legend .hol-wizard-main label { display:block; margin:8px 0; }
 .heroes-of-legend .hol-wizard-main select { width:100%; }
 .heroes-of-legend .hol-wizard-main input[type=checkbox], .heroes-of-legend .hol-wizard-main input[type=radio] { width:auto; }
@@ -57,6 +57,20 @@
 .heroes-of-legend .hol-choice h3 { margin:0 0 8px; }
 .heroes-of-legend .hol-choice small { display:block; }
 .heroes-of-legend .hol-ineligible { background:#e6e2d8; }
+.heroes-of-legend .hol-ability-reference { margin:10px 0; border-top:1px solid #b39253; border-bottom:1px solid #b39253; background:#f7f3e9; color:var(--hol-ink); }
+.heroes-of-legend .hol-ability-reference summary { display:flex; flex-wrap:wrap; justify-content:space-between; gap:4px 12px; min-height:40px; padding:10px 4px; cursor:pointer; font-family:"HOL Cinzel", Georgia, serif; font-weight:700; }
+.heroes-of-legend .hol-ability-reference summary small { color:#685f4f; font-family:"HOL Garamond", Georgia, serif; font-weight:400; }
+.heroes-of-legend .hol-ability-reference-body { padding:2px 12px 12px; }
+.heroes-of-legend .hol-ability-reference h4 { margin:14px 0 6px; color:var(--hol-ink); }
+.heroes-of-legend .hol-reference-flavor { font-style:italic; }
+.heroes-of-legend .hol-reference-details { display:grid; grid-template-columns:minmax(120px,auto) minmax(0,1fr); margin:0; }
+.heroes-of-legend .hol-reference-details div { display:contents; }
+.heroes-of-legend .hol-reference-details dt { padding:5px 12px 5px 0; border-top:1px solid #d6c8a6; font-weight:700; overflow-wrap:anywhere; }
+.heroes-of-legend .hol-reference-details dd { margin:0; padding:5px 0; border-top:1px solid #d6c8a6; overflow-wrap:anywhere; }
+.heroes-of-legend .hol-reference-rules p, .heroes-of-legend .hol-ability-reference-body > p { overflow-wrap:anywhere; }
+.heroes-of-legend .hol-reference-outcomes { display:grid; grid-template-columns:max-content minmax(0,1fr); gap:5px 12px; margin:8px 0; }
+.heroes-of-legend .hol-reference-outcomes dt { color:#385330; font-family:"HOL Cinzel", Georgia, serif; font-weight:700; }
+.heroes-of-legend .hol-reference-outcomes dd { margin:0; overflow-wrap:anywhere; }
 .heroes-of-legend .hol-repair { border-color:#8b2525; box-shadow:inset 4px 0 #8b2525; }
 .heroes-of-legend .hol-language-choices { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px 12px; margin:12px 0; }
 .heroes-of-legend .hol-language-choices > legend, .heroes-of-legend .hol-language-choices > p { grid-column:1 / -1; }
@@ -75,6 +89,13 @@
 .heroes-of-legend .hol-wizard nav [aria-current] { background:var(--hol-forest); color:var(--hol-ivory); }
 .heroes-of-legend .hol-wizard input[type=checkbox], .heroes-of-legend .hol-wizard input[type=radio] { height:auto; accent-color:var(--hol-forest); }
 .heroes-of-legend .hol-wizard-main dt { color:var(--hol-ink); text-shadow:none; filter:none; }
+@container (max-width:700px) {
+ .heroes-of-legend .hol-choice-list { grid-template-columns:1fr; }
+ .heroes-of-legend .hol-reference-details { grid-template-columns:1fr; }
+ .heroes-of-legend .hol-reference-details dt { padding-bottom:0; border-top:1px solid #d6c8a6; }
+ .heroes-of-legend .hol-reference-details dd { padding-top:2px; border-top:0; }
+ .heroes-of-legend .hol-wizard-footer { flex-wrap:wrap; }
+}
 .heroes-of-legend.hol-creation .window-title { font-size:14px; }
 .heroes-of-legend.hol-authority input[type=checkbox] { width:auto; height:auto; }
 .heroes-of-legend.hol-authority .window-title { font-size:14px; }

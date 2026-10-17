@@ -547,3 +547,7 @@ property. The fixture distinguishes pre-write failure from uncertain native
 updates, waits for chat animation before deletion, and uses a second assistant
 GM so the main Gamemaster remains the designated coordinator. The supply dialog
 was visually inspected in the HOL theme.
+
+After integration, Node 24 `npm run check` passes all 151 tests. Serial native
+inventory, equipment, authority and coordinator checks pass on Foundry 14.369,
+including two-GM handoff, unknown-acknowledgment suspension and replay recovery.

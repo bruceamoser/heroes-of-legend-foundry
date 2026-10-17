@@ -1,3 +1,8 @@
+import { HOLActor } from "./documents/actor.mjs";
+import {
+  registerHOLStatuses,
+  registerConditionRequests,
+} from "./services/conditions.mjs";
 import { HOLCombat } from "./documents/combat.mjs";
 import { registerCombatRequests } from "./services/combat.mjs";
 import { renderHOLCombatTracker } from "./applications/combat-tracker.mjs";
@@ -17,6 +22,9 @@ import { AbilitySheet } from "./sheets/ability.mjs";
 export const SYSTEM_ID = "heroes-of-legend";
 
 Hooks.once("init", () => {
+  CONFIG.Actor.documentClass = HOLActor;
+  registerHOLStatuses();
+  registerConditionRequests();
   CONFIG.Combat.documentClass = HOLCombat;
   registerCombatRequests();
   registerAuthorityPrototype();

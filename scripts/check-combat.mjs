@@ -72,6 +72,11 @@ try {
         await Actor.create({
           name: ["Arden", "Briar", "Opponent"][i],
           type: "character",
+          flags: {
+            "heroes-of-legend": {
+              development: { creationSummary: { speedBase: 6 } },
+            },
+          },
           ownership:
             i < 2 ? { [user.id]: CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER } : {},
         }),

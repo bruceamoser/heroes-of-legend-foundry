@@ -78,3 +78,5 @@
 .heroes-of-legend.hol-conditions .window-title { font-size:14px; }
 .heroes-of-legend .hol-condition-sources { list-style:none; padding:0; }
 .heroes-of-legend .hol-condition-sources li { border:1px solid var(--hol-gold); margin:8px 0; padding:10px; }
+.heroes-of-legend.hol-turn-choice input[type=checkbox] { width:auto; height:auto; }
+.heroes-of-legend.hol-turn-choice label { display:flex; flex-direction:row; align-items:center; gap:10px; }

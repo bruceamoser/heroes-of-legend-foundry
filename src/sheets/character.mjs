@@ -5,7 +5,10 @@ import { EquipmentPanel } from "../applications/equipment.mjs";
 import { ConditionPanel } from "../applications/conditions.mjs";
 import { AdvancementWizard } from "../applications/advancement.mjs";
 import { CreationWizard } from "../applications/creation.mjs";
-import { promptAttributeRoll } from "../dialogs/attribute-roll.mjs";
+import {
+  SharedRollDialog,
+  promptAttributeRoll,
+} from "../dialogs/attribute-roll.mjs";
 import { ATTRIBUTES } from "../rules/character.mjs";
 import { updateOwnedDocument } from "../services/documents.mjs";
 const { HandlebarsApplicationMixin } = foundry.applications.api;
@@ -18,6 +21,7 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
     window: { resizable: true },
     form: { submitOnChange: false, closeOnSubmit: false },
     actions: {
+      death: CharacterSheet.death,
       wounds: CharacterSheet.wounds,
       recovery: CharacterSheet.recovery,
       damage: CharacterSheet.damage,
@@ -41,6 +45,11 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
       ...context,
       actor: this.actor,
       gm: game.user.isGM,
+      dyingDue:
+        this.actor.getFlag("heroes-of-legend", "survival")?.status ===
+          "dying" &&
+        this.actor.getFlag("heroes-of-legend", "survival")?.due ===
+          this.actor.getFlag("heroes-of-legend", "survival")?.ownTurn,
       system: this.actor.system,
       editable: this.isEditable,
       attributes: ATTRIBUTES.map((key) => ({
@@ -61,6 +70,11 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
     if (!this.isEditable)
       throw new Error(game.i18n.localize("HOL.NoPermission"));
     return { updated: await updateOwnedDocument(this.actor, data, options) };
+  }
+  static async death() {
+    await new SharedRollDialog(this.actor, "fortitude", {
+      mode: "death",
+    }).render({ force: true });
   }
   static async wounds() {
     await new WoundPanel(this.actor).render({ force: true });

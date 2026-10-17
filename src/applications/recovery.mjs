@@ -1,3 +1,4 @@
+import { requestSurvival } from "../services/survival.mjs";
 import { damageBasis } from "../services/damage.mjs";
 import { recoveryPreview, requestRecovery } from "../services/recovery.mjs";
 export class RecoveryPanel extends foundry.applications.api.HandlebarsApplicationMixin(
@@ -11,7 +12,10 @@ export class RecoveryPanel extends foundry.applications.api.HandlebarsApplicatio
     classes: ["heroes-of-legend", "hol-recovery"],
     window: { title: "Health and recovery", resizable: true },
     position: { width: 660, height: 650 },
-    actions: { apply: RecoveryPanel.apply },
+    actions: {
+      apply: RecoveryPanel.apply,
+      recoverDeath: RecoveryPanel.recoverDeath,
+    },
   };
   static PARTS = {
     main: {
@@ -25,6 +29,9 @@ export class RecoveryPanel extends foundry.applications.api.HandlebarsApplicatio
     this.basis = damageBasis(this.actor);
     return {
       name: this.actor.name,
+      pendingDeath: Boolean(
+        this.actor.getFlag("heroes-of-legend", "pendingDeath"),
+      ),
       basis: this.basis,
       character: this.actor.type === "character",
       wounds: this.basis.survival?.wounds ?? 0,
@@ -70,6 +77,19 @@ export class RecoveryPanel extends foundry.applications.api.HandlebarsApplicatio
     this.element.addEventListener("input", preview);
     this.element.addEventListener("change", preview);
     preview();
+  }
+  static async recoverDeath() {
+    try {
+      const retained = this.element
+          .querySelector("[name=deathFaces]")
+          .value.split(",")
+          .map((s) => Number(s.trim())),
+        reason = this.element.querySelector("[name=deathReason]").value;
+      await requestSurvival(this.actor, null, { retained, reason }, "recover");
+      await this.close();
+    } catch (e) {
+      ui.notifications.error(e.message);
+    }
   }
   static async apply() {
     try {

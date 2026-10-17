@@ -1,3 +1,4 @@
+import { registerSurvivalRequests } from "./services/survival.mjs";
 import { registerWoundRequests } from "./services/wounds.mjs";
 import { registerRecoveryRequests } from "./services/recovery.mjs";
 import { registerDamageRequests } from "./services/damage.mjs";
@@ -39,6 +40,7 @@ Hooks.once("init", () => {
   registerDamageRequests();
   registerRecoveryRequests();
   registerWoundRequests();
+  registerSurvivalRequests();
   registerAbilityRequests();
   registerNpcAttacks();
   registerDefenseResponses();

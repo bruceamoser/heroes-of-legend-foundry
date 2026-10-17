@@ -17,6 +17,10 @@ export async function rollPrepared(actor, basis, draft) {
   if (JSON.stringify(current) !== JSON.stringify(basis))
     throw new Error("Roll sources changed. Review the dialog before rolling.");
   prepareRoll(current, draft);
+  if (basis.mode === "death") {
+    const { requestSurvival } = await import("./survival.mjs");
+    return requestSurvival(actor, basis, draft, "roll");
+  }
   if (basis.attackMessageId) {
     const { requestDefense } = await import("./defense-responses.mjs");
     return requestDefense(actor, basis, draft);

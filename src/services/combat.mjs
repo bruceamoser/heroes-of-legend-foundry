@@ -1,3 +1,4 @@
+import { prepareTurnPhase, resumeTurnPhase } from "./turn-phase.mjs";
 import { expireStaleBenefits } from "./benefits.mjs";
 import {
   initialBudgets,
@@ -46,16 +47,27 @@ export async function requestCombat(combat, kind, payload = {}) {
     },
   });
 }
-export function resolveCombatRequest(id) {
-  return enqueueCharacterOperation(() => apply(id), { requestId: id });
+export function resolveCombatRequest(id, combatUuid) {
+  return enqueueCharacterOperation(() => apply(id, combatUuid), {
+    requestId: id,
+  });
 }
-async function apply(id) {
+async function apply(id, combatUuid) {
   const message = game.messages.get(id),
     request = message?.getFlag(ID, "combatRequest");
   const combat =
-    typeof request?.combatUuid === "string"
-      ? await fromUuid(request.combatUuid)
+    typeof (combatUuid ?? request?.combatUuid) === "string"
+      ? await fromUuid(combatUuid ?? request.combatUuid)
       : null;
+  const pendingPhase = combat?.getFlag(ID, "pendingTurnPhase");
+  if (pendingPhase) {
+    if (pendingPhase.requestId !== id)
+      throw new Error("Resume or reconcile the pending turn phase first.");
+    const result = await resumeTurnPhase(combat, message);
+    await expireStaleBenefits(combat);
+    if (message) await presentResult(message, combat);
+    return result;
+  }
   if (
     combat?.documentName !== "Combat" ||
     !message.author ||
@@ -169,7 +181,7 @@ async function apply(id) {
     : null;
   if (turn === -1)
     throw new Error("The native turn list changed. Refresh and retry.");
-  await writeAuthorityDocument(combat, {
+  const commit = {
     round: next.round,
     turn,
     [`flags.${ID}.encounter`]: next,
@@ -180,7 +192,21 @@ async function apply(id) {
       request: JSON.stringify(request),
       revision: next.revision,
     },
-  });
+  };
+  const phase = prepareTurnPhase(
+    combat,
+    actor,
+    request,
+    id,
+    commit,
+    message.author.id,
+  );
+  if (phase) {
+    await writeAuthorityDocument(combat, {
+      [`flags.${ID}.pendingTurnPhase`]: phase,
+    });
+    await resumeTurnPhase(combat, message);
+  } else await writeAuthorityDocument(combat, commit);
   await expireStaleBenefits(combat);
   await presentResult(message, combat);
   return { status: "complete", replay: false };
@@ -188,6 +214,15 @@ async function apply(id) {
 async function presentResult(message, combat) {
   const state = combat.getFlag(ID, "encounter"),
     kind = message.getFlag(ID, "combatRequest").kind;
+  if (
+    combat.getFlag(ID, "operationReceipts")?.[message.id]?.status ===
+    "cancelled"
+  ) {
+    await message.update({
+      content: "The DA cancelled this unapplied turn change.",
+    });
+    return;
+  }
   if (kind === "start")
     await message.update({
       content: `Opening roll: ${state.opening.total}. ${state.startingSide === "players" ? "Players" : "Opposition"} start each round. Choose the first participant in the encounter tracker.`,

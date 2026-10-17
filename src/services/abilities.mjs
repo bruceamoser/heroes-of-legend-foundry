@@ -78,7 +78,10 @@ async function apply(id, combatUuid) {
   } else {
     if (!request || !message.author)
       throw new Error("The original ability request is unavailable.");
-    if (combat.getFlag(ID, "pendingAbility"))
+    if (
+      combat.getFlag(ID, "pendingAbility") ||
+      combat.getFlag(ID, "pendingTurnPhase")
+    )
       throw new Error("Resolve the pending encounter action first.");
     const item = await fromUuid(request.itemUuid),
       actor = item?.actor,

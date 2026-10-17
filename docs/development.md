@@ -294,3 +294,27 @@ The DA Health and recovery panel records already-adjudicated healing, safe breat
 Owners can request the saved pending wound’s eligible damage type and native capped roll from Wounds and scars. A durable rolling phase precedes evaluation; unknown results never reroll on retry. The DA can explicitly recover dice with a recorded reason, then review consecutive anatomy skips and apply the result once. Native condition effects, lasting modifier records, scar/remedy data, pending displacement and final receipt share one Actor update. 666 enters Last Words; conditions apply once and source commit changes require content review. Lasting movement/contextual modifiers are recorded but their automatic application and treatment are subsequent work; immediate displacement explicitly awaits legal DA placement.
 
 `test:wounds` verifies owner UI/native dice, replay without evaluation, DA-only application/recovery, unknown-phase refusal, recovered Cold effects, once-only native conditions/scars, anatomy advancement, Last Words and reload on 14.369. Deterministic recovery/outcome phases are reconstructed fixtures, not injected network failures; selected-coordinator unknown-write recovery retains the existing relaunch requirements.
+
+### Survival turns and choices (#84)
+
+`HOL_TEST_URL=http://localhost:30014 HOL_TEST_ALLOW_WRITES=1 npm run test:survival`
+uses the isolated V14.369 world. It verifies native turn-start Dying choices,
+the finish guard, the sheet's Grit button, one-time payment, native death dice,
+replay, a known pre-write validation failure after Combat reservation, resumption,
+a reconstructed pending death-roll recovery with retained natural sixes, Last
+Words through the second following own turn, and reload persistence. The recovery
+fixture is not evidence of an injected network failure. Combat, roll-source and
+recovery runtime suites also pass against this change.
+
+Turn transitions reserve their Actor work on Combat before changing the Actor.
+The Actor receipt prevents repeated clock advancement when settling the Combat
+receipt. Manage automation can resume a reserved phase even after the original
+request chat is deleted; DA cancellation is limited to unapplied Actor phases.
+Other supported mutations wait while the phase is reserved. Pending death dice
+cannot be rerolled by retry: Health and recovery lets the DA record retained dice
+with a reason. Raw document edits that contradict a reserved snapshot require
+reconciliation before that reservation can settle.
+
+This implements survival phases, not condition end ticks or summon controller
+phases. Those remain separate engine work. Package validation now syntax-checks
+all shipped JavaScript modules as well as checking manifest assets.

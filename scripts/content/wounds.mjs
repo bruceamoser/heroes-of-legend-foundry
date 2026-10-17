@@ -64,6 +64,7 @@ export function parseWoundEffects(text) {
         polarity: "bane",
         amount: Number(match[1]),
         context: match[2],
+        printedContext: `${match[2]} activities`,
         requiresContext: true,
       };
     if (value === "1 Boon to intimidate")
@@ -72,18 +73,20 @@ export function parseWoundEffects(text) {
         polarity: "boon",
         amount: 1,
         context: "intimidate",
+        printedContext: "intimidate",
         requiresContext: true,
       };
     if (
-      /^1 Bane to persuade when (visible scar|scar|it) influences interaction$/.test(
-        value,
-      )
+      (match = value.match(
+        /^1 Bane to persuade when (visible scar|scar|it) influences interaction$/,
+      ))
     )
       return {
         kind: "rollModifier",
         polarity: "bane",
         amount: 1,
         context: "persuade",
+        printedContext: `persuade when ${match[1]} influences interaction`,
         requiresContext: true,
       };
     throw new Error(`Unreviewed wound effect: ${value}`);

@@ -82,6 +82,8 @@ export function renderHOLCombatTracker(app, element) {
           line(
             `Main ${budget.remaining.main} · Maneuver ${budget.remaining.maneuver} · Reaction ${budget.remaining.reaction} · Movement ${budget.movementRemaining}`,
           );
+          if (budget.movementBreakdown)
+            line(budget.movementBreakdown);
           button(
             "Main → Maneuver",
             () =>

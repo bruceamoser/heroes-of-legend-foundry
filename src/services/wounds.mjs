@@ -257,6 +257,15 @@ async function apply(id) {
             order: Date.now(),
           }
         : null;
+    const woundModifier = condition
+      ? null
+      : {
+          ...consequence,
+          woundId: result.record.id,
+          injury: result.record.injury,
+          source: structuredClone(result.record.source),
+          sourceCommit: catalog.sourceCommit,
+        };
     effects.push({
       _id: effectId,
       name: `${result.record.injury} · ${condition ? condition.key : consequence.kind}`,
@@ -266,7 +275,7 @@ async function apply(id) {
       flags: {
         [ID]: {
           woundEvent: request.eventId,
-          ...(condition ? { condition } : { woundModifier: consequence }),
+          ...(condition ? { condition } : { woundModifier }),
         },
       },
     });
@@ -324,7 +333,7 @@ async function apply(id) {
       "Wound effects need reconciliation; do not apply them again.",
     );
   await message.update({
-    content: `Wound ${result.record.key} recorded with its scar and native effects.${displacements.length ? " Immediate displacement still needs DA direction and legal placement." : ""} Lasting modifiers are recorded; contextual application and treatment are being integrated.`,
+    content: `Wound ${result.record.key} recorded with its scar and native effects.${displacements.length ? " Immediate displacement still needs DA direction and legal placement." : ""} Lasting movement and contextual roll modifiers now contribute through normal preparation.`,
   });
   return { status: "complete", replay: false };
 }

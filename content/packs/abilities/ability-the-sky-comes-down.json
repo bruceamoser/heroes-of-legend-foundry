@@ -1,0 +1,40 @@
+{
+  "_key": "!items!01a3d619d578a7b9",
+  "_id": "01a3d619d578a7b9",
+  "name": "The Sky Comes Down",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You close your fist, and the air falls with the thunder.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Target / range / shape</dt><dd>Every creature in a visible 3-by-3 area within 6 squares.</dd></div><div><dt>Duration</dt><dd>Instant. Applied conditions follow their normal duration and decay.</dd></div><div><dt>Equipment / acquisition</dt><dd>No item needed unless named above.</dd></div><div><dt>Limits</dt><dd>Repeatable; pay the action and any stated costs each use.</dd></div><div><dt>Type</dt><dd>Magic / Attack</dd></div></dl><div class=\"hol-reference-rules\"><p>Call a crack of lightning followed by a collapsing wall of air. Make one roll using the net Boons or Banes least favorable to you among the targets; include allies.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>4 lightning damage.</dd><dt>Standard</dt><dd>4 lightning damage and push 1 away from the center.</dd><dt>Strong</dt><dd>6 lightning damage and push 2; the center target’s direction is your choice.</dd></dl><p>For a target standing in the center square, choose its push direction before resolving the displacement.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/cards/the-sky-comes-down.md\" target=\"_blank\" rel=\"noopener\">design/cards/the-sky-comes-down.md</a> at <code>9bc9b4fe3256e68880b92c45facf0f25b98a1ea3</code>.</p></section>",
+    "activity": {
+      "action": "main",
+      "rollMode": "none",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-the-sky-comes-down",
+      "source": {
+        "path": "design/cards/the-sky-comes-down.md",
+        "sha256": "507e34be7ddd032b5c324623985d6f0ee3edbb9f7d47c99c9cf5c7a3f02c60bb"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Rules reference · play automation in progress"
+    }
+  }
+}

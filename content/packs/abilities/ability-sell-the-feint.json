@@ -1,0 +1,40 @@
+{
+  "_key": "!items!669f648434f853ed",
+  "_id": "669f648434f853ed",
+  "name": "Sell the Feint",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You show an opening with your shoulder and flick your weapon toward it, drawing their attention away from your real stroke.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>One adjacent creature that can see you.</dd></div><div><dt>Duration</dt><dd>Until used or the end of this turn.</dd></div><div><dt>Equipment / acquisition</dt><dd>Requires a melee weapon; grants none.</dd></div><div><dt>Limits</dt><dd>Repeated uses do not multiply this card’s benefit on the same recipient or prepared attack. Pay a Maneuver for each use.</dd></div><div><dt>Type</dt><dd>Skill / Attack</dd></div></dl><div class=\"hol-reference-rules\"><p>Gain 1 Boon to your next melee attack against the chosen creature this turn. The target need not move, spend a Reaction or accept a particular response. This grants no attack.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/cards/sell-the-feint.md\" target=\"_blank\" rel=\"noopener\">design/cards/sell-the-feint.md</a> at <code>9bc9b4fe3256e68880b92c45facf0f25b98a1ea3</code>.</p></section>",
+    "activity": {
+      "action": "main",
+      "rollMode": "none",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-sell-the-feint",
+      "source": {
+        "path": "design/cards/sell-the-feint.md",
+        "sha256": "edffe668c151c69d70639b6f6ee64a92b171113d0d233d9ab2e0faccb3e885eb"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Rules reference · play automation in progress"
+    }
+  }
+}

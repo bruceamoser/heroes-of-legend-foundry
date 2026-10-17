@@ -30,11 +30,30 @@
       "creature": {}
     },
     "Item": {
-      "ability": {},
-      "equipment": {}
+      "ability": {
+        "htmlFields": ["description"]
+      },
+      "equipment": {
+        "htmlFields": ["description"]
+      }
     }
   },
-  "packs": [],
+  "packs": [
+    {
+      "name": "abilities",
+      "label": "Heroes of Legend Abilities",
+      "type": "Item",
+      "path": "packs/abilities",
+      "system": "heroes-of-legend"
+    },
+    {
+      "name": "equipment",
+      "label": "Heroes of Legend Equipment",
+      "type": "Item",
+      "path": "packs/equipment",
+      "system": "heroes-of-legend"
+    }
+  ],
   "styles": [
     "styles/heroes-of-legend.css"
   ],

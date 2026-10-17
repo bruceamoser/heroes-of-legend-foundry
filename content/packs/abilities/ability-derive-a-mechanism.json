@@ -1,0 +1,40 @@
+{
+  "_key": "!items!59067e3c1a42211b",
+  "_id": "59067e3c1a42211b",
+  "name": "Derive a Mechanism",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You lay out the pieces and follow the maker’s thinking, one ingenious decision at a time.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Time</dt><dd>Four hours per attempt.</dd></div><div><dt>Target / range / shape</dt><dd>One accessible ordinary mechanical item; four hours</dd></div><div><dt>Duration</dt><dd>Information and earned progress persist for the stated task; completed changes remain until circumstances alter them.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Repeatable; pay the action and any stated costs each use.</dd></div><div><dt>Type</dt><dd>Skill</dd></div></dl><div class=\"hol-reference-rules\"><p>Proposal: target 12 for an ordinary mechanism. Requires tools and access to the item at every attempt. Creates a recipe, not the item or permission to craft it. Special items excluded.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>1 derivation progress.</dd><dt>Standard</dt><dd>2 derivation progress.</dd><dt>Strong</dt><dd>3 derivation progress.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/cards/derive-a-mechanism.md\" target=\"_blank\" rel=\"noopener\">design/cards/derive-a-mechanism.md</a> at <code>9bc9b4fe3256e68880b92c45facf0f25b98a1ea3</code>.</p></section>",
+    "activity": {
+      "action": "main",
+      "rollMode": "none",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-derive-a-mechanism",
+      "source": {
+        "path": "design/cards/derive-a-mechanism.md",
+        "sha256": "4a1a64d733319c0976963f81ae8898f122fa0f78edbe8adb8f9a4c61a06e90b5"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Rules reference · play automation in progress"
+    }
+  }
+}

@@ -19,6 +19,7 @@ export class EquipmentSheet extends foundry.applications.api.HandlebarsApplicati
   };
   async _prepareContext(options) {
     const catalogs = this.item.actor ? await loadCatalogs() : null,
+      description = this.item.system.description,
       pending = this.item.actor?.getFlag(
         "heroes-of-legend",
         "pendingInventory",
@@ -46,6 +47,12 @@ export class EquipmentSheet extends foundry.applications.api.HandlebarsApplicati
       item: this.item,
       system: this.item.system,
       editable: this.isEditable,
+      descriptionHTML: description
+        ? await foundry.applications.ux.TextEditor.implementation.enrichHTML(
+            description,
+            { relativeTo: this.item },
+          )
+        : "",
       owned: Boolean(this.item.actor),
       canCheckSupply: Boolean(
         this.item.actor &&

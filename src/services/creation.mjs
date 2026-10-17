@@ -13,6 +13,10 @@ export {
 import { loadCatalogs } from "./catalog.mjs";
 import { getCampaignLanguageConfiguration } from "./languages.mjs";
 import { creationPreview } from "../rules/creation.mjs";
+import {
+  abilityItemSource,
+  equipmentItemSource,
+} from "../rules/item-construction.mjs";
 const ID = "heroes-of-legend";
 export function registerCreationAuthority() {
   registerAuthority();
@@ -216,22 +220,13 @@ export function buildCharacterItems(
       continue;
     }
     const record = choices.find((r) => r.id === id);
-    add({
-      name: record.name,
-      type: "ability",
-      system: {
-        description: `Rules: https://github.com/bruceamoser/heroes-of-legend/blob/${commit}/${record.source.path}\nAction automation is pending.`,
-      },
-      flags: {
-        [ID]: {
-          catalogId: id,
-          source: record.source,
-          automation: "pending",
-          creationGrant: grantKind === "creation",
-          grantKind,
-        },
-      },
-    });
+    add(
+      abilityItemSource(record, {
+        sourceCommit: commit,
+        creationGrant: grantKind === "creation",
+        grantKind,
+      }),
+    );
   }
   for (const item of inventoryItems) {
     const existing = actor.items.find(
@@ -245,26 +240,18 @@ export function buildCharacterItems(
       continue;
     }
     const def = inventory.equipment.find((r) => r.id === item.catalogId);
-    add({
-      name: def.name,
-      type: "equipment",
-      system: {
-        catalogId: def.id,
+    add(
+      equipmentItemSource(def, {
+        sourceCommit: commit,
+        creationGrant: grantKind === "creation",
+        grantKind,
+        acquisitionInstance: item.instanceId,
         quantity: item.quantity,
-        bulk: def.bulk,
         hands: item.hands ?? 0,
-        inventoryDie: item.inventoryDie ?? 0,
+        inventoryDie: item.inventoryDie,
         worn: item.instanceId === "creation-outfit",
-      },
-      flags: {
-        [ID]: {
-          source: def.source,
-          creationGrant: grantKind === "creation",
-          grantKind,
-          acquisitionInstance: item.instanceId,
-        },
-      },
-    });
+      }),
+    );
   }
   return { items, createdIds, reusedIds };
 }

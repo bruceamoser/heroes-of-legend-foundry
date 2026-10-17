@@ -1,0 +1,35 @@
+{
+  "_key": "!items!78dd48bbc98610d4",
+  "_id": "78dd48bbc98610d4",
+  "name": "Food Bundle",
+  "type": "equipment",
+  "system": {
+    "schemaVersion": 1,
+    "catalogId": "item-food-bundle",
+    "quantity": 1,
+    "bulk": 1,
+    "hands": 0,
+    "inventoryDie": 8,
+    "held": false,
+    "worn": false,
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Market reference · acquisition and use automation in progress</p><p><strong>Market price:</strong> 9 coins.</p><p><strong>Normal supply die:</strong> d8.</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/equipment/food-bundle.md\" target=\"_blank\" rel=\"noopener\">design/equipment/food-bundle.md</a> at <code>9bc9b4fe3256e68880b92c45facf0f25b98a1ea3</code>.</p></section>"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "source": {
+        "path": "design/equipment/food-bundle.md",
+        "sha256": "df20fdfeae70df214cf1076a27ae0a4a6036b550ad50d82202a57f3151dfec40"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Market reference · acquisition and use automation in progress"
+    }
+  }
+}

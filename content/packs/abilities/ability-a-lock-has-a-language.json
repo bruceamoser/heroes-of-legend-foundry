@@ -1,0 +1,40 @@
+{
+  "_key": "!items!695066a43b5d2b48",
+  "_id": "695066a43b5d2b48",
+  "name": "A Lock Has a Language",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You close your eyes and listen through your fingertips for the lockmaker’s last little secret.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Target / range / shape</dt><dd>One adjacent ordinary lock.</dd></div><div><dt>Duration</dt><dd>Opening progress persists; information remains known.</dd></div><div><dt>Equipment / acquisition</dt><dd>Lock tools required; gain one set, Bulk 1, on learning if absent.</dd></div><div><dt>Limits</dt><dd>Repeatable; pay the action and any stated costs each use.</dd></div><div><dt>Type</dt><dd>Skill</dd></div></dl><div class=\"hol-reference-rules\"><p>Use lock tools on one adjacent ordinary lock. An attempt takes a Main Action, including under pressure. The DA states the opening target and consequences before the attempt; accumulate progress toward opening it.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>Add 1 progress and learn whether the lock shows damage or tampering.</dd><dt>Standard</dt><dd>Add 2 progress and learn the same detail.</dd><dt>Strong</dt><dd>Add 3 progress and learn the same detail. If this opens it, you can later relock it with your tools in one Maneuver without rolling.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/cards/a-lock-has-a-language.md\" target=\"_blank\" rel=\"noopener\">design/cards/a-lock-has-a-language.md</a> at <code>9bc9b4fe3256e68880b92c45facf0f25b98a1ea3</code>.</p></section>",
+    "activity": {
+      "action": "main",
+      "rollMode": "none",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-a-lock-has-a-language",
+      "source": {
+        "path": "design/cards/a-lock-has-a-language.md",
+        "sha256": "228f86c5e46d91e15c5eb9b0f0200cfb83e8fd9a980e1fe64eb007e22f93a52e"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Rules reference · play automation in progress"
+    }
+  }
+}

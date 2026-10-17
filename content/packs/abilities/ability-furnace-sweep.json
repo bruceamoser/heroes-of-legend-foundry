@@ -1,0 +1,40 @@
+{
+  "_key": "!items!5c4582a72859da1a",
+  "_id": "5c4582a72859da1a",
+  "name": "Furnace Sweep",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>Throw open an invisible furnace and let the heat shove them back.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Target / range / shape</dt><dd>A 3-wide, 2-deep rectangle extending ahead from your square</dd></div><div><dt>Duration</dt><dd>Instant</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Repeatable; pay the action and any stated costs each use.</dd></div><div><dt>Type</dt><dd>Magic / Attack</dd></div></dl><div class=\"hol-reference-rules\"><p>For a player attack, work out each target’s net Boons or Banes. Make one attack roll using the combination least favorable to you and apply that result to every target. Affect the creatures specified under Target, including allies if the area includes them. When an NPC attacks, each affected player makes a separate defense roll. Proposed NPC defense attribute: Agility.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>3 fire damage.</dd><dt>Standard</dt><dd>3 fire damage; push 1 away from caster.</dd><dt>Strong</dt><dd>5 fire damage; push 2 and Burning 1.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/cards/furnace-sweep.md\" target=\"_blank\" rel=\"noopener\">design/cards/furnace-sweep.md</a> at <code>9bc9b4fe3256e68880b92c45facf0f25b98a1ea3</code>.</p></section>",
+    "activity": {
+      "action": "main",
+      "rollMode": "none",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-furnace-sweep",
+      "source": {
+        "path": "design/cards/furnace-sweep.md",
+        "sha256": "db865c4c4b91b74511773e6e8d36e11ed9428be64c714a386ba43c12db2e66bc"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Rules reference · play automation in progress"
+    }
+  }
+}

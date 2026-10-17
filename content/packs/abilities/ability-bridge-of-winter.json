@@ -1,0 +1,40 @@
+{
+  "_key": "!items!0c6f72b37ccb02b5",
+  "_id": "0c6f72b37ccb02b5",
+  "name": "Bridge of Winter",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You press your palm toward the far side of the gap. Ice grows outward from both edges and joins into a pale bridge beneath drifting frost.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>A visible gap up to 3 squares wide within 4 squares</dd></div><div><dt>Duration</dt><dd>Ten minutes; final-round warning and no early dismissal.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Repeatable; pay the action and any stated costs each use.</dd></div><div><dt>Type</dt><dd>Magic / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>The bridge is one square wide. Requires solid anchors at both ends. Holds ordinary creatures and carried equipment; lasts 10 minutes. It creates normal terrain, not slippery terrain or a damaging trap. Warn all occupants visibly during its final round; cannot dismiss early to drop someone.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/cards/bridge-of-winter.md\" target=\"_blank\" rel=\"noopener\">design/cards/bridge-of-winter.md</a> at <code>9bc9b4fe3256e68880b92c45facf0f25b98a1ea3</code>.</p></section>",
+    "activity": {
+      "action": "main",
+      "rollMode": "none",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-bridge-of-winter",
+      "source": {
+        "path": "design/cards/bridge-of-winter.md",
+        "sha256": "045f56a143a280a06f8cd0516acf6c07cd61f2afb72ad6bff90044253140af47"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Rules reference · play automation in progress"
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "_key": "!items!844fecb6b4718c0b",
+  "_id": "844fecb6b4718c0b",
+  "name": "Lantern in the Palm",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You cup your hand and breathe a warm bead of light into it. The glow spills between your fingers onto the faces and stones around you.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>Self and squares within 3 squares of you.</dd></div><div><dt>Duration</dt><dd>One scene or until ended; only one light from this card per user.</dd></div><div><dt>Equipment / acquisition</dt><dd>Requires a free hand when cast; the light then hovers above your shoulder.</dd></div><div><dt>Limits</dt><dd>One active light per user. Recasting replaces it; lights grant no stacking bonus.</dd></div><div><dt>Type</dt><dd>Magic / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>Create a light that moves with you and illuminates squares within 3 squares along unobstructed paths. Ordinary darkness does not conceal creatures or objects in that light. Solid obstructions, smoke and magical darkness remain. The light is visible to enemies too. You may end it without an action. It grants no attack bonus or special detection.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/cards/lantern-in-the-palm.md\" target=\"_blank\" rel=\"noopener\">design/cards/lantern-in-the-palm.md</a> at <code>9bc9b4fe3256e68880b92c45facf0f25b98a1ea3</code>.</p></section>",
+    "activity": {
+      "action": "main",
+      "rollMode": "none",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-lantern-in-the-palm",
+      "source": {
+        "path": "design/cards/lantern-in-the-palm.md",
+        "sha256": "ffb30ba6df6eb27ecc29c6e47ea4152cfaa9e3b1ea95eb22f196164a0e3f3eda"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Rules reference · play automation in progress"
+    }
+  }
+}

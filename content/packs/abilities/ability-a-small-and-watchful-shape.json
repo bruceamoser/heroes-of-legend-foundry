@@ -1,0 +1,40 @@
+{
+  "_key": "!items!6d440a9cf1f501ff",
+  "_id": "6d440a9cf1f501ff",
+  "name": "A Small and Watchful Shape",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You fold into a small furred shape and find the room suddenly full of towering furniture and interesting smells.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>Self.</dd></div><div><dt>Duration</dt><dd>Ten minutes or until you return; one form at a time.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Transform only where both forms have a legal return space; if that space would become blocked, return before entering the obstruction. No second HP pool.</dd></div><div><dt>Type</dt><dd>Magic / Movement / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>Become a cat-sized nonflying land animal for ten minutes. Keep HP, wounds, attributes and Speed; fold equipment away and lose its benefits. You can fit through openings suitable for the described size, as judged by the DA. You cannot speak, cast, use equipment, attack, or command summons in this form. It grants no special sense, free Hidden or immunity. Returning costs a Maneuver; expiration returns you to the nearest free square that fits your normal body without crossing a barrier.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/cards/a-small-and-watchful-shape.md\" target=\"_blank\" rel=\"noopener\">design/cards/a-small-and-watchful-shape.md</a> at <code>9bc9b4fe3256e68880b92c45facf0f25b98a1ea3</code>.</p></section>",
+    "activity": {
+      "action": "main",
+      "rollMode": "none",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-a-small-and-watchful-shape",
+      "source": {
+        "path": "design/cards/a-small-and-watchful-shape.md",
+        "sha256": "6a6dd891011516d7a1bcbd45d17031884e7df9010a0845045f3b6037ede32bdd"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Rules reference · play automation in progress"
+    }
+  }
+}

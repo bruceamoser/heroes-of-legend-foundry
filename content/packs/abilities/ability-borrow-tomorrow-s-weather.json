@@ -1,0 +1,40 @@
+{
+  "_key": "!items!0e73b18019814dea",
+  "_id": "0e73b18019814dea",
+  "name": "Borrow Tomorrow’s Weather",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You reach through a rip in the air and pull back a clump of tomorrow’s weather. You toss it onto the ground, where it spreads into rolling smoke or bursts into a sheet of ice.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div><div><dt>Target / range / shape</dt><dd>Up to 3/5/7 connected visible unoccupied ground squares, each within 4 squares.</dd></div><div><dt>Duration</dt><dd>Until the end of your next turn.</dd></div><div><dt>Equipment / acquisition</dt><dd>No item needed unless named above.</dd></div><div><dt>Limits</dt><dd>Repeatable; pay the action and any stated costs each use.</dd></div><div><dt>Type</dt><dd>Magic / Control / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>Before rolling, choose smoke or ice. Roll Guile, then place up to the number of squares your result allows:</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>3 squares.</dd><dt>Standard</dt><dd>5 squares.</dd><dt>Strong</dt><dd>7 squares.</dd></dl><p>After the first square, each new square must share an edge with one already placed, forming one connected area. Smoke provides heavy cover across its squares. Ice makes its squares difficult terrain, costing 2 movement to enter. Neither effect deals damage or blocks movement. Both last until the end of your next turn.</p><p>Example: On Standard, place five smoke squares across an approach or bend them around a corner, keeping every square visible and within range.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/cards/borrow-tomorrow-s-weather.md\" target=\"_blank\" rel=\"noopener\">design/cards/borrow-tomorrow-s-weather.md</a> at <code>9bc9b4fe3256e68880b92c45facf0f25b98a1ea3</code>.</p></section>",
+    "activity": {
+      "action": "main",
+      "rollMode": "none",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-borrow-tomorrow-s-weather",
+      "source": {
+        "path": "design/cards/borrow-tomorrow-s-weather.md",
+        "sha256": "935d978735a6bfcf2ccf286256f36e91abc83578b2f4b6a45e646b0c3fb60d4d"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Rules reference · play automation in progress"
+    }
+  }
+}

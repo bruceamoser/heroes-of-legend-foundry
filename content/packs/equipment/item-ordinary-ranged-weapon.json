@@ -1,0 +1,35 @@
+{
+  "_key": "!items!4ce291e252882eb5",
+  "_id": "4ce291e252882eb5",
+  "name": "Ordinary Ranged Weapon",
+  "type": "equipment",
+  "system": {
+    "schemaVersion": 1,
+    "catalogId": "item-ordinary-ranged-weapon",
+    "quantity": 1,
+    "bulk": 1,
+    "hands": 0,
+    "inventoryDie": 0,
+    "held": false,
+    "worn": false,
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Market reference · acquisition and use automation in progress</p><p><strong>Market price:</strong> 18 coins.</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/equipment/ordinary-ranged-weapon.md\" target=\"_blank\" rel=\"noopener\">design/equipment/ordinary-ranged-weapon.md</a> at <code>9bc9b4fe3256e68880b92c45facf0f25b98a1ea3</code>.</p></section>"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "source": {
+        "path": "design/equipment/ordinary-ranged-weapon.md",
+        "sha256": "9c69356c4e6fcf554f80a24f700311290ae8c5472d009ab64c1c6e1b6822ceb9"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Market reference · acquisition and use automation in progress"
+    }
+  }
+}

@@ -5,6 +5,10 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { compilePack, extractPack } from "@foundryvtt/foundryvtt-cli";
+import {
+  buildItemPackArtifacts,
+  readItemPackCatalogs,
+} from "../scripts/content/item-packs.mjs";
 for (const [kind, filename] of [
   ["actors", "hero.json"],
   ["journal", "reference.json"],
@@ -35,5 +39,51 @@ for (const [kind, filename] of [
       JSON.parse(await readFile(join(temp, "again", again[0]), "utf8")),
       original,
     );
+  });
+}
+
+const root = new URL("../", import.meta.url);
+const artifacts = buildItemPackArtifacts(
+  await readItemPackCatalogs(root),
+);
+
+async function semanticPackDocuments(source) {
+  const files = (await readdir(source)).filter((name) =>
+    name.endsWith(".json"),
+  );
+  const documents = await Promise.all(
+    files.map((name) => readFile(join(source, name), "utf8")),
+  );
+  return {
+    count: files.length,
+    documents: documents
+      .map((text) => JSON.parse(text))
+      .sort((a, b) => a._id.localeCompare(b._id)),
+  };
+}
+
+for (const [name, documents] of Object.entries(artifacts.documents)) {
+  test(`official CLI preserves all authored ${name} Items through two semantic round trips`, async (t) => {
+    const temp = await mkdtemp(join(tmpdir(), `hol-${name}-pack-`));
+    t.after(() => rm(temp, { recursive: true, force: true }));
+    const source = fileURLToPath(
+        new URL(`../content/packs/${name}/`, import.meta.url),
+      ),
+      expected = documents
+        .slice()
+        .sort((a, b) => a._id.localeCompare(b._id));
+    assert.equal(expected.length, name === "abilities" ? 350 : 43);
+
+    await compilePack(source, join(temp, "pack"));
+    await extractPack(join(temp, "pack"), join(temp, "unpacked"));
+    const first = await semanticPackDocuments(join(temp, "unpacked"));
+    assert.equal(first.count, expected.length);
+    assert.deepEqual(first.documents, expected);
+
+    await compilePack(join(temp, "unpacked"), join(temp, "repacked"));
+    await extractPack(join(temp, "repacked"), join(temp, "again"));
+    const second = await semanticPackDocuments(join(temp, "again"));
+    assert.equal(second.count, expected.length);
+    assert.deepEqual(second.documents, expected);
   });
 }

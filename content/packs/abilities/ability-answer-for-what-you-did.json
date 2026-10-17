@@ -1,0 +1,40 @@
+{
+  "_key": "!items!7fd7a42747e1142f",
+  "_id": "7fd7a42747e1142f",
+  "name": "Answer for What You Did",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You tell your quarry why you came, then step in and strike to stop their retreat.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div><div><dt>Target / range / shape</dt><dd>One adjacent creature.</dd></div><div><dt>Duration</dt><dd>Instant. Applied conditions follow their normal duration and decay.</dd></div><div><dt>Equipment / acquisition</dt><dd>Use one ordinary melee weapon; gain one on learning this card if you do not own one. Bulk 1.</dd></div><div><dt>Limits</dt><dd>Repeatable; pay the action and any stated costs each use.</dd></div><div><dt>Type</dt><dd>Skill / Attack</dd></div></dl><div class=\"hol-reference-rules\"><p>Bring the pursuit to a close with a melee attack. Against a quarry you marked with Name the Reckoning, gain 1 Boon; that card is helpful, not required.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>5 physical damage.</dd><dt>Standard</dt><dd>5 physical damage and Slowed 2.</dd><dt>Strong</dt><dd>7 physical damage, Slowed 2 and knock prone.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/cards/answer-for-what-you-did.md\" target=\"_blank\" rel=\"noopener\">design/cards/answer-for-what-you-did.md</a> at <code>9bc9b4fe3256e68880b92c45facf0f25b98a1ea3</code>.</p></section>",
+    "activity": {
+      "action": "main",
+      "rollMode": "none",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-answer-for-what-you-did",
+      "source": {
+        "path": "design/cards/answer-for-what-you-did.md",
+        "sha256": "4567f71e3a0aeedd5a5ad5298df01082533e4750d73939981d38cbc0c004f001"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Rules reference · play automation in progress"
+    }
+  }
+}

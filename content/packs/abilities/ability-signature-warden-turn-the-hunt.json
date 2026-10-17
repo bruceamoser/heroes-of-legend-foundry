@@ -1,0 +1,40 @@
+{
+  "_key": "!items!464b3d7b190b29cf",
+  "_id": "464b3d7b190b29cf",
+  "name": "Turn the Hunt",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You read the turn of the beast’s weight and strike where its next step must fall, driving it toward the ground you chose.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Target / range / shape</dt><dd>One visible creature: adjacent with a melee weapon, or within 8 squares with a ranged weapon and ammunition.</dd></div><div><dt>Duration</dt><dd>Damage and movement are immediate; Slowed decays normally.</dd></div><div><dt>Equipment / acquisition</dt><dd>On learning, choose one ordinary melee weapon or one ordinary ranged weapon with a d8 ammunition bundle; grant each chosen item only if absent. Each item is Bulk 1. Each use requires the equipment for its chosen attack mode.</dd></div><div><dt>Limits</dt><dd>One attack per use.</dd></div><div><dt>Type</dt><dd>Signature</dd></div></dl><div class=\"hol-reference-rules\"><p>Choose melee or ranged before rolling Knowledge. Make one attack.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>Deal 4 physical damage and push the target 1 square.</dd><dt>Standard</dt><dd>Deal 5 physical damage and push it 2 squares.</dd><dt>Strong</dt><dd>Deal 7 physical damage, push it 3 squares and apply Slowed 2.</dd></dl><p>After resolving the attack, you may move 1 square without provoking. Ranged use checks ammunition once after the attack. These are complete outcomes; this card requires no earlier signature.</p></div><h3>Additional rulings</h3><p><strong>Tags:</strong> Skill / Attack / Movement</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/cards/signature-warden-turn-the-hunt.md\" target=\"_blank\" rel=\"noopener\">design/cards/signature-warden-turn-the-hunt.md</a> at <code>9bc9b4fe3256e68880b92c45facf0f25b98a1ea3</code>.</p></section>",
+    "activity": {
+      "action": "main",
+      "rollMode": "none",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-warden-turn-the-hunt",
+      "source": {
+        "path": "design/cards/signature-warden-turn-the-hunt.md",
+        "sha256": "badadfcb36afee4ca5444f8e3762449a42af94461c2d91747c3e3a4ef23d206f"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Rules reference · play automation in progress"
+    }
+  }
+}

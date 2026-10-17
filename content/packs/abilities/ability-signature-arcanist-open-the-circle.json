@@ -1,0 +1,40 @@
+{
+  "_key": "!items!3353531abf1d08f3",
+  "_id": "3353531abf1d08f3",
+  "name": "Open the Circle",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You sweep a ring of light around your companions, its edge rising like a thin glass wall when magic strikes.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>Self and willing allies within 2 squares when used.</dd></div><div><dt>Duration</dt><dd>Until the start of your next turn; mark each recipient’s Stability grant when used.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Reapplying replaces your previous ward; it does not refresh a recipient’s spent Stability grant before your next turn.</dd></div><div><dt>Type</dt><dd>Signature</dd></div></dl><div class=\"hol-reference-rules\"><p>Each recipient gains 1 Boon to defenses against spells until the start of your next turn. During that time, each recipient gains Stability 2 for the first forced movement against them, including being struck in a collision chain. Use the highest applicable Stability, maximum 3. This grant expires after that forced movement even if a higher Stability applied; it never reduces distance a second time. This is a ward, not physical cover.</p></div><h3>Additional rulings</h3><p><strong>Tags:</strong> Magic / Defense</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/cards/signature-arcanist-open-the-circle.md\" target=\"_blank\" rel=\"noopener\">design/cards/signature-arcanist-open-the-circle.md</a> at <code>9bc9b4fe3256e68880b92c45facf0f25b98a1ea3</code>.</p></section>",
+    "activity": {
+      "action": "main",
+      "rollMode": "none",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-arcanist-open-the-circle",
+      "source": {
+        "path": "design/cards/signature-arcanist-open-the-circle.md",
+        "sha256": "ee3a03f5fe0c5e1e36c848ec97477e2aeaff781c1cb0a28d3549644ff7b37b97"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Rules reference · play automation in progress"
+    }
+  }
+}

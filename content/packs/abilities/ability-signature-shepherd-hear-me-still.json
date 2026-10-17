@@ -1,0 +1,40 @@
+{
+  "_key": "!items!cd3b5a11648849da",
+  "_id": "cd3b5a11648849da",
+  "name": "Hear Me Still",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You keep speaking as you move closer, giving the fading breath a familiar voice to follow.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>One willing Dying ally within 3 squares that can hear you, when you use Stabilize.</dd></div><div><dt>Duration</dt><dd>Immediate stabilization and personal movement.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Repeatable; normal action economy applies.</dd></div><div><dt>Type</dt><dd>Signature</dd></div></dl><div class=\"hol-reference-rules\"><p>Your Stabilize can reach that ally without touch. After stabilizing it, you may move 1 square toward it without provoking. Stabilize still costs a Maneuver, clears death marks and restores no HP. The wound remains; Last Words cannot be interrupted.</p></div><h3>Additional rulings</h3><p><strong>Tags:</strong> Magic / Recovery / Movement</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/cards/signature-shepherd-hear-me-still.md\" target=\"_blank\" rel=\"noopener\">design/cards/signature-shepherd-hear-me-still.md</a> at <code>9bc9b4fe3256e68880b92c45facf0f25b98a1ea3</code>.</p></section>",
+    "activity": {
+      "action": "main",
+      "rollMode": "none",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-shepherd-hear-me-still",
+      "source": {
+        "path": "design/cards/signature-shepherd-hear-me-still.md",
+        "sha256": "f09a37feb9a73c1a987fab21e69af8cba7879ee39e6feb22ff8f14df6a8a186c"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Rules reference · play automation in progress"
+    }
+  }
+}

@@ -1,5 +1,5 @@
 import { StrictNumberField as NumberField } from "./fields.mjs";
-const { StringField, BooleanField } = foundry.data.fields;
+const { HTMLField, StringField, BooleanField } = foundry.data.fields;
 const integer = (initial, min, max) =>
   new NumberField({
     required: true,
@@ -24,7 +24,7 @@ export class EquipmentData extends foundry.abstract.TypeDataModel {
       inventoryDie: integer(0, 0, 20),
       held: new BooleanField({ initial: false }),
       worn: new BooleanField({ initial: false }),
-      description: new StringField({
+      description: new HTMLField({
         required: true,
         nullable: false,
         initial: "",

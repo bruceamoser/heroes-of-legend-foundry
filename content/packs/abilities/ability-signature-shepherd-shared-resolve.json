@@ -1,0 +1,40 @@
+{
+  "_key": "!items!45a8974c56c0385e",
+  "_id": "45a8974c56c0385e",
+  "name": "Shared Resolve",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You gather your companions with a few familiar words, steadying one trembling voice after another until they answer together.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>Self and up to three willing allies within 3 squares that can hear you.</dd></div><div><dt>Duration</dt><dd>Reductions are immediate; Boons expire when used or the start of your next turn.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Repeatable; normal action economy applies.</dd></div><div><dt>Type</dt><dd>Signature</dd></div></dl><div class=\"hol-reference-rules\"><p>Each recipient chooses one temporary condition from Frightened, Dazed or Poisoned and reduces it by up to 2, minimum 0. Each also gains 1 Boon to its next defense before the start of your next turn. No HP restored, no starred source removed and no spent actions returned. A recipient without those conditions still gains the defensive Boon.</p></div><h3>Additional rulings</h3><p><strong>Tags:</strong> Skill / Recovery / Defense</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/cards/signature-shepherd-shared-resolve.md\" target=\"_blank\" rel=\"noopener\">design/cards/signature-shepherd-shared-resolve.md</a> at <code>9bc9b4fe3256e68880b92c45facf0f25b98a1ea3</code>.</p></section>",
+    "activity": {
+      "action": "main",
+      "rollMode": "none",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-shepherd-shared-resolve",
+      "source": {
+        "path": "design/cards/signature-shepherd-shared-resolve.md",
+        "sha256": "410fd0ffc503eb0a0565fabdeb0e048414e86eb72bba646d29f8535a18963750"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Rules reference · play automation in progress"
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "_key": "!items!e183dd8cbba29574",
+  "_id": "e183dd8cbba29574",
+  "name": "Borrowed Identity",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You settle into another life until even the way you wait at a doorway belongs to someone else.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div><div><dt>Time</dt><dd>One hour preparation; resolve each new consequential challenge during the encounter.</dd></div><div><dt>Target / range / shape</dt><dd>Self and, on Strong, one willing companion; one hour preparation, then the duration of each consequential encounter.</dd></div><div><dt>Duration</dt><dd>The prepared identity lasts until abandoned or contradicted; resolve new consequential challenges separately.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Repeatable; pay the action and any stated costs each use.</dd></div><div><dt>Type</dt><dd>Skill</dd></div></dl><div class=\"hol-reference-rules\"><p>Prepare a mundane identity using suitable clothing, a plausible role and information you have obtained about it. Spend one hour establishing the appearance and rehearsing its habits. This card can sustain the identity across an extended infiltration, but grants no memories, language or compulsory authority. For a consequential challenge, the DA states the objective and a binary or cumulative progress target. On completion, that challenge is resolved; do not repeat it for routine interactions with people accepting the same evidence. A new contradiction, suspicious witness or different demand may create a new challenge.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>1 progress; identify one visible inconsistency you can repair in ten minutes with suitable materials.</dd><dt>Standard</dt><dd>2 progress; also learn one expectation the listener openly expresses about your role.</dd><dt>Strong</dt><dd>3 progress; also establish cover for one willing companion as your attendant or colleague if their clothing and behavior support it. That cover lasts until new evidence challenges it, not indefinitely against every observer.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/cards/borrowed-identity.md\" target=\"_blank\" rel=\"noopener\">design/cards/borrowed-identity.md</a> at <code>9bc9b4fe3256e68880b92c45facf0f25b98a1ea3</code>.</p></section>",
+    "activity": {
+      "action": "main",
+      "rollMode": "none",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-borrowed-identity",
+      "source": {
+        "path": "design/cards/borrowed-identity.md",
+        "sha256": "26647b638e7ee4dfe5728e204e775691256d094f7a1c7bc843c3506629b251ef"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Rules reference · play automation in progress"
+    }
+  }
+}

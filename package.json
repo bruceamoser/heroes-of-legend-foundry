@@ -15,9 +15,12 @@
     "test:sheets": "node scripts/test-sheets.mjs",
     "test:rolls": "node scripts/check-rolls.mjs",
     "test:authority": "node scripts/check-authority.mjs",
-    "probe:claims": "node scripts/probe-document-claims.mjs"
+    "probe:claims": "node scripts/probe-document-claims.mjs",
+    "stage:pack-probe": "node scripts/stage-pack-probe.mjs",
+    "test:pack-runtime": "node scripts/check-packs.mjs"
   },
   "devDependencies": {
+    "@foundryvtt/foundryvtt-cli": "3.0.5",
     "@playwright/test": "^1.64.1"
   }
 }

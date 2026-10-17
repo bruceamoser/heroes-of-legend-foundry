@@ -1,0 +1,18 @@
+{
+  "_key": "!journal!holJournal000001",
+  "_id": "holJournal000001",
+  "name": "HOL pack fixture reference",
+  "pages": [
+    {
+      "_id": "holPage000000001",
+      "name": "Fixture link",
+      "type": "text",
+      "text": {
+        "format": 1,
+        "content": "<p>@UUID[Compendium.world.hol-fixture-actors.Actor.holActor00000001]{Fixture hero}</p>"
+      },
+      "_key": "!journal.pages!holJournal000001.holPage000000001"
+    }
+  ],
+  "categories": []
+}

@@ -61,3 +61,13 @@ Added real-client integration tests: `HOL_TEST_URL=http://127.0.0.1:30014 HOL_TE
 This is a draft editor, not a completed character builder. Base HP is manually recorded until the creation ledger exists; current Fortitude never recalculates HP. Attribute sum is displayed, not enforced on intermediate drafts. Ability outcomes remain plain text until structured handlers arrive. Drop acquisition is explicitly blocked so native Item copying cannot bypass future purchase rules.
 
 Fonts are copied unchanged from `design/player-book/fonts` at the pinned rules commit (see source-baseline). Cinzel and EB Garamond are bundled with their SIL OFL notices in `static/fonts`; no book artwork is imported here.
+
+## Native roll implementation — issue #6
+
+The attribute buttons open a cancellable foundation dialog with Boon/Bane inputs and a live formula preview. This is not yet the U01 ability-selection/cost workflow. The service reads the current owned Actor's effective attribute, cancels Boons/Banes before capping at three extra dice, and evaluates a native `foundry.dice.Roll`. Retained faces determine natural 111/666 and tier; rolled dice remain in the native serialized ChatMessage. The summary is rendered only when `message.isContentVisible` is true. V14 `messageMode` replaces deprecated `rollMode`.
+
+References: [V14 Roll API](https://foundryvtt.com/api/v14/classes/foundry.dice.Roll.html), [V14 DialogV2 API](https://foundryvtt.com/api/v14/classes/foundry.applications.api.DialogV2.html). Signatures also checked against installed 14.367 source.
+
+Unit tests cover cancellation order, caps, tier boundaries, natural overrides, malformed inputs and all 216 retained d6 triples across attributes -2 through +2. Run `HOL_TEST_URL=http://127.0.0.1:30014 HOL_TEST_ALLOW_WRITES=1 npm run test:rolls` against the disposable world for native dice/dialog/chat/reload checks.
+
+Runtime result on Foundry 14.367: keep-high and keep-low retained faces match native die results; dialog preview updates correctly; each native chat view receives one summary; serialized roll/snapshot survive reload byte-for-byte; cancel adds no message; zero uncaught page errors. Multiplayer private/blind visibility remains part of R01 rather than a completed claim here.

@@ -1,3 +1,4 @@
+import { renderRollSummary } from "./services/roll.mjs";
 import { CharacterData } from "./models/character.mjs";
 import { AbilityData } from "./models/ability.mjs";
 import { CharacterSheet } from "./sheets/character.mjs";
@@ -17,3 +18,5 @@ Hooks.once("init", () => {
 Hooks.once("ready", () => {
   if (game.user.isGM) ui.notifications.info(game.i18n.localize("HOL.Preview"));
 });
+
+Hooks.on("renderChatMessageHTML", renderRollSummary);

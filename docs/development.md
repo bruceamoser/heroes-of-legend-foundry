@@ -374,3 +374,49 @@ Foundry 14.369, along with equipment, damage, recovery, condition-turn and
 survival regressions. Recovery reclaims the coordinator after its test reload
 before submitting a new mutation. Saved DA condition policies are reused unless
 explicit review or missing order/duration rulings require a new decision.
+
+### Inventory supply dice and healing potions (#91)
+
+`src/rules/inventory.mjs` implements the reviewed d20 -> d12 -> d10 -> d8 -> d6
+-> d4 -> out supply ladder. Only a retained 1 steps down, and the caller must
+invoke the check after a successful use so the final use still works. Inventory
+checks accept no attribute, Boon/Bane or action modifiers. `refillInventory`
+applies explicit reviewed step and cap inputs, entering at d4 from out, without
+granting recipe permission or creating/splitting supply containers.
+
+`src/rules/potions.mjs` pins the lesser, greater and superior bottle adapters
+to catalog IDs, paths and SHA-256 hashes at source commit `9bc9b4f`, plus the
+universal `use-a-healing-potion` action. Plans use the existing action, hand,
+healing and survival primitives for the giver's Maneuver and free hand,
+interruption, another living recipient's Reaction, fixed 6/10/16 healing with
+Life resistance and missing-HP cap, and the final supply check. The caller must
+supply an explicit boolean giver own-turn state; ordinary off-turn use is
+rejected by the action primitive. A zero-HP giver is unconscious and cannot use
+the bottle. A zero-HP recipient spends no Reaction. Last Words, dead and
+unhealable summon recipients, and bottles already at out, are rejected before
+declaration.
+
+Self use requires the giver and recipient Actor IDs to match and their survival
+snapshots to agree. The self recipient turn mirrors the giver turn after the
+Maneuver is spent, so no stale budget is returned. This identity/snapshot check
+is the boundary that prevents a forged second Actor from bypassing adjacency
+and the living recipient's Reaction.
+
+The planner returns declarative snapshots rather than mutating inputs. Adjacency
+and willingness are explicit booleans, not proof of token geometry, consent or
+permission; actor ownership and supply identity still require native service
+checks. Inventory faces are accepted only by the separate post-success resolver,
+never during preflight. The planner rejects a giver operation ID already present
+in the supplied turn state, and a prior recipient Reaction ID when one is
+required, instead of returning another applicable heal. It cannot distinguish a
+repeat against an unchanged snapshot from the original request, so the
+coordinator must check its authoritative operation receipt before applying
+healing or requesting the supply die. Durable phases and receipts remain
+necessary to prevent a crash or repeated request from rerolling the supply check
+or granting a free use. Player/GM UI, native Item action wiring, multi-Actor
+transaction settlement and Foundry runtime tests are not implemented in this
+issue.
+
+Node 24 `npm run check` passes 112 tests, including 17 focused inventory and
+potion cases. This is bounded rules-layer evidence; native UI, multi-Actor
+settlement and Foundry runtime validation remain subsequent integration work.

@@ -318,3 +318,27 @@ reconciliation before that reservation can settle.
 This implements survival phases, not condition end ticks or summon controller
 phases. Those remain separate engine work. Package validation now syntax-checks
 all shipped JavaScript modules as well as checking manifest assets.
+
+### Condition end phases (#86)
+
+`npm run test:condition-turns` uses the same explicit disposable-world environment.
+Burning/Freezing damage, Bleeding bypass, source-based temporary decay, starred
+preservation, damage waking Asleep, and survival/wound transitions now occur in
+one reserved Actor end-phase before Combat settlement. Damage events use distinct
+IDs, and overlapping temporary severities decay by one in total. Native effects
+are prevalidated and checked after application. Snapshot checks include all
+embedded effects so resumption cannot overwrite intervening effect edits.
+
+Until passive damage-source adapters are complete, the DA reviews Fire/Cold
+resistance and weakness in the first damaging Finish turn dialog. This reviewed
+policy is saved; players then finish normally. The tracker offers the DA
+**Review end effects and finish** to revise it when defenses change. Multiple
+simultaneous damage types use an explicit DA order; overlapping duration-only
+sources require a combined or independent duration ruling. These are recorded
+rulings, not new universal rules. Summon/controller phases remain separate work.
+
+Node 24 checks include 95 static tests. V14.369 runtime checks cover the actual
+ruling dialog, matching resistance, decay, starred preservation, subsequent turn
+and reload; survival (including known phase failure/resume), combat, conditions,
+and damage regressions also passed. The tests do not claim complete passive
+ability or summon automation.

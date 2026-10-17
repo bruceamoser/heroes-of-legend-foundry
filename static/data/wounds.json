@@ -1,0 +1,5879 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+  "records": [
+    {
+      "id": "wound-physical-111",
+      "table": "physical",
+      "key": "111",
+      "injury": "Face: split eyebrow; small break in eyebrow",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-112",
+      "table": "physical",
+      "key": "112",
+      "injury": "Ear: nicked edge; small notch",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-113",
+      "table": "physical",
+      "key": "113",
+      "injury": "Arm: shallow cut; thin upper-arm scar",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-114",
+      "table": "physical",
+      "key": "114",
+      "injury": "Hand: cut knuckles; small scars",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-115",
+      "table": "physical",
+      "key": "115",
+      "injury": "Torso: glancing cut; thin rib scar",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-116",
+      "table": "physical",
+      "key": "116",
+      "injury": "Leg: scraped shin; scarred patch",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-122",
+      "table": "physical",
+      "key": "122",
+      "injury": "Head: shallow scalp cut; break in hair growth",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-123",
+      "table": "physical",
+      "key": "123",
+      "injury": "Face: split lip; fine scar",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-124",
+      "table": "physical",
+      "key": "124",
+      "injury": "Shoulder: glancing cut; short scar",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-125",
+      "table": "physical",
+      "key": "125",
+      "injury": "Forearm: abrasion; scarred patch",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-126",
+      "table": "physical",
+      "key": "126",
+      "injury": "Foot: shallow cut; thin scar",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-133",
+      "table": "physical",
+      "key": "133",
+      "injury": "Face: jagged cheek scar",
+      "effects": [
+        {
+          "kind": "rollModifier",
+          "polarity": "boon",
+          "amount": 1,
+          "context": "intimidate",
+          "requiresContext": true
+        },
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "persuade",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Soft Tissue; removes both modifiers",
+      "recoveryValue": 2,
+      "capability": "Soft Tissue",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-134",
+      "table": "physical",
+      "key": "134",
+      "injury": "Torso: shallow chest cut; visible scar",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-135",
+      "table": "physical",
+      "key": "135",
+      "injury": "Leg: superficial injury; mild limp",
+      "effects": [],
+      "remedy": "Soft Tissue; removes limp",
+      "recoveryValue": 2,
+      "capability": "Soft Tissue",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-136",
+      "table": "physical",
+      "key": "136",
+      "injury": "Foot: superficial injury; uneven gait",
+      "effects": [],
+      "remedy": "Soft Tissue; restores gait",
+      "recoveryValue": 1,
+      "capability": "Soft Tissue",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-144",
+      "table": "physical",
+      "key": "144",
+      "injury": "Hand: shallow cut; obvious scar",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-145",
+      "table": "physical",
+      "key": "145",
+      "injury": "Arm: shallow cut; broad scar",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-146",
+      "table": "physical",
+      "key": "146",
+      "injury": "Face: jagged brow scar",
+      "effects": [
+        {
+          "kind": "rollModifier",
+          "polarity": "boon",
+          "amount": 1,
+          "context": "intimidate",
+          "requiresContext": true
+        },
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "persuade",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Soft Tissue; removes both modifiers",
+      "recoveryValue": 2,
+      "capability": "Soft Tissue",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-155",
+      "table": "physical",
+      "key": "155",
+      "injury": "Leg: superficial knee injury; mild limp",
+      "effects": [],
+      "remedy": "Soft Tissue; removes limp",
+      "recoveryValue": 2,
+      "capability": "Soft Tissue",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-156",
+      "table": "physical",
+      "key": "156",
+      "injury": "Scalp: ragged cut; scar and missing hair",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "bleeding",
+          "rating": 1,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Normal condition removal",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-166",
+      "table": "physical",
+      "key": "166",
+      "injury": "Foot: painful heel injury; small scar and limp",
+      "effects": [
+        {
+          "kind": "movementPenalty",
+          "amount": 1
+        }
+      ],
+      "remedy": "Soft Tissue; removes movement penalty and limp",
+      "recoveryValue": 2,
+      "capability": "Soft Tissue",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-222",
+      "table": "physical",
+      "key": "222",
+      "injury": "Head: scalp cut",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "bleeding",
+          "rating": 1,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Normal condition removal",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-223",
+      "table": "physical",
+      "key": "223",
+      "injury": "Arm: strained shoulder",
+      "effects": [
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Soft Tissue",
+      "recoveryValue": 2,
+      "capability": "Soft Tissue",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-224",
+      "table": "physical",
+      "key": "224",
+      "injury": "Hand: split palm",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "bleeding",
+          "rating": 1,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Normal condition removal",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-225",
+      "table": "physical",
+      "key": "225",
+      "injury": "Torso: heavy chest blow",
+      "effects": [
+        {
+          "kind": "forcedMovement",
+          "direction": "push",
+          "distance": 1,
+          "requiresDirection": true
+        },
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Soft Tissue; removes Bane",
+      "recoveryValue": 3,
+      "capability": "Soft Tissue",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-226",
+      "table": "physical",
+      "key": "226",
+      "injury": "Leg: injured knee",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "prone",
+          "rating": 1,
+          "persistence": "binary"
+        },
+        {
+          "kind": "movementPenalty",
+          "amount": 1
+        }
+      ],
+      "remedy": "Soft Tissue; removes movement penalty",
+      "recoveryValue": 3,
+      "capability": "Soft Tissue",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-233",
+      "table": "physical",
+      "key": "233",
+      "injury": "Face: cut brow",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "blinded",
+          "rating": 1,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-234",
+      "table": "physical",
+      "key": "234",
+      "injury": "Arm: forearm injury",
+      "effects": [
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Soft Tissue",
+      "recoveryValue": 3,
+      "capability": "Soft Tissue",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-235",
+      "table": "physical",
+      "key": "235",
+      "injury": "Hand: fractured finger",
+      "effects": [
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Bone",
+      "recoveryValue": 3,
+      "capability": "Bone",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-236",
+      "table": "physical",
+      "key": "236",
+      "injury": "Back: wrenched back",
+      "effects": [
+        {
+          "kind": "forcedMovement",
+          "direction": "pull",
+          "distance": 1,
+          "requiresDirection": true
+        },
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Soft Tissue; removes Bane",
+      "recoveryValue": 2,
+      "capability": "Soft Tissue",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-244",
+      "table": "physical",
+      "key": "244",
+      "injury": "Torso: deep flank cut",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "bleeding",
+          "rating": 1,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Normal condition removal",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-245",
+      "table": "physical",
+      "key": "245",
+      "injury": "Leg: calf injury",
+      "effects": [
+        {
+          "kind": "movementPenalty",
+          "amount": 1
+        }
+      ],
+      "remedy": "Soft Tissue",
+      "recoveryValue": 2,
+      "capability": "Soft Tissue",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-246",
+      "table": "physical",
+      "key": "246",
+      "injury": "Foot: fractured toe",
+      "effects": [
+        {
+          "kind": "movementPenalty",
+          "amount": 1
+        }
+      ],
+      "remedy": "Bone",
+      "recoveryValue": 3,
+      "capability": "Bone",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-255",
+      "table": "physical",
+      "key": "255",
+      "injury": "Head: glancing injury",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "dazed",
+          "rating": 1,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-256",
+      "table": "physical",
+      "key": "256",
+      "injury": "Leg: badly sprained knee",
+      "effects": [
+        {
+          "kind": "movementPenalty",
+          "amount": 2
+        }
+      ],
+      "remedy": "Soft Tissue",
+      "recoveryValue": 3,
+      "capability": "Soft Tissue",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-266",
+      "table": "physical",
+      "key": "266",
+      "injury": "Foot: badly sprained ankle",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "prone",
+          "rating": 1,
+          "persistence": "binary"
+        },
+        {
+          "kind": "movementPenalty",
+          "amount": 2
+        }
+      ],
+      "remedy": "Soft Tissue; removes movement penalty",
+      "recoveryValue": 3,
+      "capability": "Soft Tissue",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-333",
+      "table": "physical",
+      "key": "333",
+      "injury": "Arm: deep shoulder wound",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "bleeding",
+          "rating": 1,
+          "persistence": "temporary"
+        },
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Soft Tissue; removes Bane",
+      "recoveryValue": 3,
+      "capability": "Soft Tissue",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-334",
+      "table": "physical",
+      "key": "334",
+      "injury": "Hand: deep wound",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "bleeding",
+          "rating": 1,
+          "persistence": "temporary"
+        },
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Soft Tissue; removes Bane",
+      "recoveryValue": 3,
+      "capability": "Soft Tissue",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-335",
+      "table": "physical",
+      "key": "335",
+      "injury": "Torso: heavy abdominal injury",
+      "effects": [
+        {
+          "kind": "forcedMovement",
+          "direction": "push",
+          "distance": 2,
+          "requiresDirection": true
+        },
+        {
+          "kind": "condition",
+          "key": "prone",
+          "rating": 1,
+          "persistence": "binary"
+        },
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Soft Tissue; removes Bane",
+      "recoveryValue": 4,
+      "capability": "Soft Tissue",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-336",
+      "table": "physical",
+      "key": "336",
+      "injury": "Leg: deep thigh wound",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "bleeding",
+          "rating": 1,
+          "persistence": "temporary"
+        },
+        {
+          "kind": "movementPenalty",
+          "amount": 1
+        }
+      ],
+      "remedy": "Soft Tissue; removes movement penalty",
+      "recoveryValue": 3,
+      "capability": "Soft Tissue",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-344",
+      "table": "physical",
+      "key": "344",
+      "injury": "Head: torn scalp",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "bleeding",
+          "rating": 2,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Normal condition removal",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-345",
+      "table": "physical",
+      "key": "345",
+      "injury": "Back: torn muscles",
+      "effects": [
+        {
+          "kind": "forcedMovement",
+          "direction": "pull",
+          "distance": 2,
+          "requiresDirection": true
+        },
+        {
+          "kind": "condition",
+          "key": "prone",
+          "rating": 1,
+          "persistence": "binary"
+        },
+        {
+          "kind": "movementPenalty",
+          "amount": 1
+        }
+      ],
+      "remedy": "Soft Tissue; removes movement penalty",
+      "recoveryValue": 4,
+      "capability": "Soft Tissue",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-346",
+      "table": "physical",
+      "key": "346",
+      "injury": "Leg: torn knee ligaments",
+      "effects": [
+        {
+          "kind": "movementPenalty",
+          "amount": 2
+        },
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Soft Tissue; removes both penalties",
+      "recoveryValue": 5,
+      "capability": "Soft Tissue",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-355",
+      "table": "physical",
+      "key": "355",
+      "injury": "Head: heavy injury",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "dazed",
+          "rating": 1,
+          "persistence": "temporary"
+        },
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Soft Tissue; removes Bane",
+      "recoveryValue": 4,
+      "capability": "Soft Tissue",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-356",
+      "table": "physical",
+      "key": "356",
+      "injury": "Foot: deep heel wound",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "bleeding",
+          "rating": 1,
+          "persistence": "temporary"
+        },
+        {
+          "kind": "movementPenalty",
+          "amount": 2
+        }
+      ],
+      "remedy": "Soft Tissue; removes movement penalty",
+      "recoveryValue": 4,
+      "capability": "Soft Tissue",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-366",
+      "table": "physical",
+      "key": "366",
+      "injury": "Eye: injury",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "blinded",
+          "rating": 1,
+          "persistence": "starred"
+        }
+      ],
+      "remedy": "Soft Tissue; restores sight",
+      "recoveryValue": 5,
+      "capability": "Soft Tissue",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-444",
+      "table": "physical",
+      "key": "444",
+      "injury": "Torso: deep tearing wound",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "bleeding",
+          "rating": 2,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Normal condition removal",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-445",
+      "table": "physical",
+      "key": "445",
+      "injury": "Arm: severely torn shoulder",
+      "effects": [
+        {
+          "kind": "forcedMovement",
+          "direction": "pull",
+          "distance": 2,
+          "requiresDirection": true
+        },
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 2,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Soft Tissue; removes Banes",
+      "recoveryValue": 5,
+      "capability": "Soft Tissue",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-446",
+      "table": "physical",
+      "key": "446",
+      "injury": "Hand: crushed hand",
+      "effects": [
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 2,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Bone",
+      "recoveryValue": 6,
+      "capability": "Bone",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-455",
+      "table": "physical",
+      "key": "455",
+      "injury": "Leg: broken lower leg",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "prone",
+          "rating": 1,
+          "persistence": "binary"
+        },
+        {
+          "kind": "movementPenalty",
+          "amount": 3
+        }
+      ],
+      "remedy": "Bone; removes movement penalty",
+      "recoveryValue": 6,
+      "capability": "Bone",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-456",
+      "table": "physical",
+      "key": "456",
+      "injury": "Head: severe injury",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "dazed",
+          "rating": 2,
+          "persistence": "temporary"
+        },
+        {
+          "kind": "condition",
+          "key": "prone",
+          "rating": 1,
+          "persistence": "binary"
+        }
+      ],
+      "remedy": "Decay; stand normally",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-466",
+      "table": "physical",
+      "key": "466",
+      "injury": "Torso: broken ribs",
+      "effects": [
+        {
+          "kind": "forcedMovement",
+          "direction": "push",
+          "distance": 3,
+          "requiresDirection": true
+        },
+        {
+          "kind": "condition",
+          "key": "prone",
+          "rating": 1,
+          "persistence": "binary"
+        },
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 2,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Bone; removes Banes",
+      "recoveryValue": 7,
+      "capability": "Bone",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-555",
+      "table": "physical",
+      "key": "555",
+      "injury": "Torso: extensive chest injury",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "bleeding",
+          "rating": 3,
+          "persistence": "temporary"
+        },
+        {
+          "kind": "forcedMovement",
+          "direction": "push",
+          "distance": 2,
+          "requiresDirection": true
+        },
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 2,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Soft Tissue; removes Banes",
+      "recoveryValue": 7,
+      "capability": "Soft Tissue",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-556",
+      "table": "physical",
+      "key": "556",
+      "injury": "Leg: shattered knee",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "prone",
+          "rating": 1,
+          "persistence": "binary"
+        },
+        {
+          "kind": "movementPenalty",
+          "amount": 4
+        },
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 2,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Bone; removes movement penalty and Banes",
+      "recoveryValue": 9,
+      "capability": "Bone",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-566",
+      "table": "physical",
+      "key": "566",
+      "injury": "Leg: loss of leg",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "bleeding",
+          "rating": 3,
+          "persistence": "temporary"
+        },
+        {
+          "kind": "condition",
+          "key": "prone",
+          "rating": 1,
+          "persistence": "binary"
+        },
+        {
+          "kind": "movementPenalty",
+          "amount": 4
+        }
+      ],
+      "remedy": "Artificial leg may mitigate movement; no regrowth; stop Bleeding normally",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-physical-666",
+      "table": "physical",
+      "key": "666",
+      "injury": "Last Words",
+      "effects": [
+        {
+          "kind": "lastWords"
+        }
+      ],
+      "remedy": "No ordinary healing, treatment, potions, or Grit",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-111",
+      "table": "elemental",
+      "key": "111",
+      "injury": "Scalp: scarring and permanent hair loss",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-112",
+      "table": "elemental",
+      "key": "112",
+      "injury": "Ear: uneven scarred edge",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-113",
+      "table": "elemental",
+      "key": "113",
+      "injury": "Arm: branching or mottled discoloration",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-114",
+      "table": "elemental",
+      "key": "114",
+      "injury": "Hand: contrasting scar patches",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-115",
+      "table": "elemental",
+      "key": "115",
+      "injury": "Torso: broad discolored patch",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-116",
+      "table": "elemental",
+      "key": "116",
+      "injury": "Leg: scar streaks along shin",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-122",
+      "table": "elemental",
+      "key": "122",
+      "injury": "Face: scarred brow and missing eyebrow hair",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-123",
+      "table": "elemental",
+      "key": "123",
+      "injury": "Neck: visible band of scarring",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-124",
+      "table": "elemental",
+      "key": "124",
+      "injury": "Shoulder: broad uneven scar",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-125",
+      "table": "elemental",
+      "key": "125",
+      "injury": "Forearm: prominent branching scars",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-126",
+      "table": "elemental",
+      "key": "126",
+      "injury": "Foot: mottled scarred skin",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-133",
+      "table": "elemental",
+      "key": "133",
+      "injury": "Face: conspicuous cheek scar",
+      "effects": [
+        {
+          "kind": "rollModifier",
+          "polarity": "boon",
+          "amount": 1,
+          "context": "intimidate",
+          "requiresContext": true
+        },
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "persuade",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Elemental; removes both modifiers",
+      "recoveryValue": 2,
+      "capability": "Elemental",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-134",
+      "table": "elemental",
+      "key": "134",
+      "injury": "Torso: extensive superficial discoloration",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-135",
+      "table": "elemental",
+      "key": "135",
+      "injury": "Leg: scar tissue and mild limp",
+      "effects": [],
+      "remedy": "Elemental; removes limp",
+      "recoveryValue": 2,
+      "capability": "Elemental",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-136",
+      "table": "elemental",
+      "key": "136",
+      "injury": "Foot: tender scars and uneven gait",
+      "effects": [],
+      "remedy": "Elemental; restores gait",
+      "recoveryValue": 1,
+      "capability": "Elemental",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-144",
+      "table": "elemental",
+      "key": "144",
+      "injury": "Hand: obvious finger and palm scars",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-145",
+      "table": "elemental",
+      "key": "145",
+      "injury": "Arm: raised or sunken scar tissue",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-146",
+      "table": "elemental",
+      "key": "146",
+      "injury": "Face: prominent brow and temple scars",
+      "effects": [
+        {
+          "kind": "rollModifier",
+          "polarity": "boon",
+          "amount": 1,
+          "context": "intimidate",
+          "requiresContext": true
+        },
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "persuade",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Elemental; removes both modifiers",
+      "recoveryValue": 2,
+      "capability": "Elemental",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-155",
+      "table": "elemental",
+      "key": "155",
+      "injury": "Leg: knee scars and mild limp",
+      "effects": [],
+      "remedy": "Elemental; removes limp",
+      "recoveryValue": 2,
+      "capability": "Elemental",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-156",
+      "table": "elemental",
+      "key": "156",
+      "injury": "Scalp: fresh injury and permanent hair loss",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "elemental-injury",
+          "rating": 1,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Normal condition removal",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-166",
+      "table": "elemental",
+      "key": "166",
+      "injury": "Foot: painful heel injury",
+      "effects": [
+        {
+          "kind": "movementPenalty",
+          "amount": 1
+        }
+      ],
+      "remedy": "Elemental; removes penalty",
+      "recoveryValue": 2,
+      "capability": "Elemental",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-222",
+      "table": "elemental",
+      "key": "222",
+      "injury": "Head: damaged scalp",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "elemental-injury",
+          "rating": 1,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Normal condition removal",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-223",
+      "table": "elemental",
+      "key": "223",
+      "injury": "Arm: deep shoulder injury",
+      "effects": [
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Elemental",
+      "recoveryValue": 2,
+      "capability": "Elemental",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-224",
+      "table": "elemental",
+      "key": "224",
+      "injury": "Hand: damaged palm",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "elemental-injury",
+          "rating": 1,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Normal condition removal",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-225",
+      "table": "elemental",
+      "key": "225",
+      "injury": "Torso: elemental impact",
+      "effects": [
+        {
+          "kind": "forcedMovement",
+          "direction": "push",
+          "distance": 1,
+          "requiresDirection": true
+        },
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Elemental; removes Bane",
+      "recoveryValue": 3,
+      "capability": "Elemental",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-226",
+      "table": "elemental",
+      "key": "226",
+      "injury": "Leg: damaged knee tissue",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "prone",
+          "rating": 1,
+          "persistence": "binary"
+        },
+        {
+          "kind": "movementPenalty",
+          "amount": 1
+        }
+      ],
+      "remedy": "Elemental; removes movement penalty",
+      "recoveryValue": 3,
+      "capability": "Elemental",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-233",
+      "table": "elemental",
+      "key": "233",
+      "injury": "Eyes: flash injury",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "blinded",
+          "rating": 1,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-234",
+      "table": "elemental",
+      "key": "234",
+      "injury": "Arm: damaged forearm",
+      "effects": [
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Elemental",
+      "recoveryValue": 3,
+      "capability": "Elemental",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-235",
+      "table": "elemental",
+      "key": "235",
+      "injury": "Hand: injured fingers",
+      "effects": [
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Elemental",
+      "recoveryValue": 3,
+      "capability": "Elemental",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-236",
+      "table": "elemental",
+      "key": "236",
+      "injury": "Back: painful injury",
+      "effects": [
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Elemental",
+      "recoveryValue": 2,
+      "capability": "Elemental",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-244",
+      "table": "elemental",
+      "key": "244",
+      "injury": "Torso: deep flank injury",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "elemental-injury",
+          "rating": 1,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Normal condition removal",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-245",
+      "table": "elemental",
+      "key": "245",
+      "injury": "Leg: damaged calf",
+      "effects": [
+        {
+          "kind": "movementPenalty",
+          "amount": 1
+        }
+      ],
+      "remedy": "Elemental",
+      "recoveryValue": 2,
+      "capability": "Elemental",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-246",
+      "table": "elemental",
+      "key": "246",
+      "injury": "Foot: damaged sole",
+      "effects": [
+        {
+          "kind": "movementPenalty",
+          "amount": 1
+        }
+      ],
+      "remedy": "Elemental",
+      "recoveryValue": 3,
+      "capability": "Elemental",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-255",
+      "table": "elemental",
+      "key": "255",
+      "injury": "Head: elemental shock",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "dazed",
+          "rating": 1,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-256",
+      "table": "elemental",
+      "key": "256",
+      "injury": "Leg: extensive knee injury",
+      "effects": [
+        {
+          "kind": "movementPenalty",
+          "amount": 2
+        }
+      ],
+      "remedy": "Elemental",
+      "recoveryValue": 3,
+      "capability": "Elemental",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-266",
+      "table": "elemental",
+      "key": "266",
+      "injury": "Foot: extensive ankle injury",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "prone",
+          "rating": 1,
+          "persistence": "binary"
+        },
+        {
+          "kind": "movementPenalty",
+          "amount": 2
+        }
+      ],
+      "remedy": "Elemental; removes movement penalty",
+      "recoveryValue": 3,
+      "capability": "Elemental",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-333",
+      "table": "elemental",
+      "key": "333",
+      "injury": "Arm: deep shoulder damage",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "elemental-injury",
+          "rating": 1,
+          "persistence": "temporary"
+        },
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Elemental; removes Bane",
+      "recoveryValue": 3,
+      "capability": "Elemental",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-334",
+      "table": "elemental",
+      "key": "334",
+      "injury": "Hand: extensive damage",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "elemental-injury",
+          "rating": 1,
+          "persistence": "temporary"
+        },
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Elemental; removes Bane",
+      "recoveryValue": 3,
+      "capability": "Elemental",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-335",
+      "table": "elemental",
+      "key": "335",
+      "injury": "Torso: elemental blast",
+      "effects": [
+        {
+          "kind": "forcedMovement",
+          "direction": "push",
+          "distance": 2,
+          "requiresDirection": true
+        },
+        {
+          "kind": "condition",
+          "key": "prone",
+          "rating": 1,
+          "persistence": "binary"
+        },
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Elemental; removes Bane",
+      "recoveryValue": 4,
+      "capability": "Elemental",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-336",
+      "table": "elemental",
+      "key": "336",
+      "injury": "Leg: deep thigh injury",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "elemental-injury",
+          "rating": 1,
+          "persistence": "temporary"
+        },
+        {
+          "kind": "movementPenalty",
+          "amount": 1
+        }
+      ],
+      "remedy": "Elemental; removes movement penalty",
+      "recoveryValue": 3,
+      "capability": "Elemental",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-344",
+      "table": "elemental",
+      "key": "344",
+      "injury": "Head: extensive scalp injury",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "elemental-injury",
+          "rating": 2,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Normal condition removal",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-345",
+      "table": "elemental",
+      "key": "345",
+      "injury": "Back: extensive injury",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "prone",
+          "rating": 1,
+          "persistence": "binary"
+        },
+        {
+          "kind": "movementPenalty",
+          "amount": 1
+        },
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Elemental; removes movement penalty and Bane",
+      "recoveryValue": 4,
+      "capability": "Elemental",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-346",
+      "table": "elemental",
+      "key": "346",
+      "injury": "Leg: deep knee injury",
+      "effects": [
+        {
+          "kind": "movementPenalty",
+          "amount": 2
+        },
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Elemental; removes both penalties",
+      "recoveryValue": 5,
+      "capability": "Elemental",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-355",
+      "table": "elemental",
+      "key": "355",
+      "injury": "Ears: surrounding tissue injury",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "deafened",
+          "rating": 1,
+          "persistence": "temporary"
+        },
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Elemental; removes Bane",
+      "recoveryValue": 4,
+      "capability": "Elemental",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-356",
+      "table": "elemental",
+      "key": "356",
+      "injury": "Foot: deep heel injury",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "elemental-injury",
+          "rating": 1,
+          "persistence": "temporary"
+        },
+        {
+          "kind": "movementPenalty",
+          "amount": 2
+        }
+      ],
+      "remedy": "Elemental; removes movement penalty",
+      "recoveryValue": 4,
+      "capability": "Elemental",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-366",
+      "table": "elemental",
+      "key": "366",
+      "injury": "Eyes: damaged tissue",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "blinded",
+          "rating": 1,
+          "persistence": "starred"
+        }
+      ],
+      "remedy": "Elemental; restores sight",
+      "recoveryValue": 5,
+      "capability": "Elemental",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-444",
+      "table": "elemental",
+      "key": "444",
+      "injury": "Torso: severe flank injury",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "elemental-injury",
+          "rating": 2,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Normal condition removal",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-445",
+      "table": "elemental",
+      "key": "445",
+      "injury": "Arm: deep shoulder destruction",
+      "effects": [
+        {
+          "kind": "forcedMovement",
+          "direction": "push",
+          "distance": 2,
+          "requiresDirection": true
+        },
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 2,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Elemental; removes Banes",
+      "recoveryValue": 5,
+      "capability": "Elemental",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-446",
+      "table": "elemental",
+      "key": "446",
+      "injury": "Hand: severe damage",
+      "effects": [
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 2,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Elemental",
+      "recoveryValue": 6,
+      "capability": "Elemental",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-455",
+      "table": "elemental",
+      "key": "455",
+      "injury": "Leg: deep lower-leg injury",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "prone",
+          "rating": 1,
+          "persistence": "binary"
+        },
+        {
+          "kind": "movementPenalty",
+          "amount": 3
+        }
+      ],
+      "remedy": "Elemental; removes movement penalty",
+      "recoveryValue": 6,
+      "capability": "Elemental",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-456",
+      "table": "elemental",
+      "key": "456",
+      "injury": "Head: severe elemental shock",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "dazed",
+          "rating": 2,
+          "persistence": "temporary"
+        },
+        {
+          "kind": "condition",
+          "key": "prone",
+          "rating": 1,
+          "persistence": "binary"
+        }
+      ],
+      "remedy": "Decay; stand normally",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-466",
+      "table": "elemental",
+      "key": "466",
+      "injury": "Torso: severe chest injury",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "elemental-injury",
+          "rating": 2,
+          "persistence": "temporary"
+        },
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 2,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Elemental; removes Banes",
+      "recoveryValue": 7,
+      "capability": "Elemental",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-555",
+      "table": "elemental",
+      "key": "555",
+      "injury": "Torso: extensive chest destruction",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "elemental-injury",
+          "rating": 3,
+          "persistence": "temporary"
+        },
+        {
+          "kind": "forcedMovement",
+          "direction": "push",
+          "distance": 2,
+          "requiresDirection": true
+        },
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 2,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Elemental; removes Banes",
+      "recoveryValue": 7,
+      "capability": "Elemental",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-556",
+      "table": "elemental",
+      "key": "556",
+      "injury": "Leg: devastating injury",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "paralyzed",
+          "rating": 1,
+          "persistence": "temporary"
+        },
+        {
+          "kind": "condition",
+          "key": "prone",
+          "rating": 1,
+          "persistence": "binary"
+        },
+        {
+          "kind": "movementPenalty",
+          "amount": 4
+        }
+      ],
+      "remedy": "Elemental; removes movement penalty",
+      "recoveryValue": 9,
+      "capability": "Elemental",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-566",
+      "table": "elemental",
+      "key": "566",
+      "injury": "Leg: irrecoverable destruction",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "elemental-injury",
+          "rating": 3,
+          "persistence": "temporary"
+        },
+        {
+          "kind": "condition",
+          "key": "prone",
+          "rating": 1,
+          "persistence": "binary"
+        },
+        {
+          "kind": "movementPenalty",
+          "amount": 4
+        }
+      ],
+      "remedy": "Artificial leg may mitigate movement; no regrowth; end condition normally",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-elemental-666",
+      "table": "elemental",
+      "key": "666",
+      "injury": "Last Words",
+      "effects": [
+        {
+          "kind": "lastWords"
+        }
+      ],
+      "remedy": "No ordinary healing, treatment, potions, or Grit",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-111",
+      "table": "mental",
+      "key": "111",
+      "injury": "Vivid dreams recalling the event",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-112",
+      "table": "mental",
+      "key": "112",
+      "injury": "Unease around an associated sound",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-113",
+      "table": "mental",
+      "key": "113",
+      "injury": "Small gap in memory of the event",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-114",
+      "table": "mental",
+      "key": "114",
+      "injury": "Comforting ritual",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-115",
+      "table": "mental",
+      "key": "115",
+      "injury": "Hesitation discussing the event",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-116",
+      "table": "mental",
+      "key": "116",
+      "injury": "Intense manner discussing danger",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-122",
+      "table": "mental",
+      "key": "122",
+      "injury": "A familiar smell recalls the event",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-123",
+      "table": "mental",
+      "key": "123",
+      "injury": "Preference for sitting near an exit",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-124",
+      "table": "mental",
+      "key": "124",
+      "injury": "Occasional repeated phrase",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-125",
+      "table": "mental",
+      "key": "125",
+      "injury": "A particular place feels unfamiliar",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-126",
+      "table": "mental",
+      "key": "126",
+      "injury": "A keepsake acquires significance",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-133",
+      "table": "mental",
+      "key": "133",
+      "injury": "Unsettling stare when discussing similar dangers",
+      "effects": [
+        {
+          "kind": "rollModifier",
+          "polarity": "boon",
+          "amount": 1,
+          "context": "intimidate",
+          "requiresContext": true
+        },
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "persuade",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Mental; removes both modifiers",
+      "recoveryValue": 2,
+      "capability": "Mental",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-134",
+      "table": "mental",
+      "key": "134",
+      "injury": "Changed taste associated with the event",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-135",
+      "table": "mental",
+      "key": "135",
+      "injury": "Tremor when recalling the event",
+      "effects": [],
+      "remedy": "Mental; alleviates tremor",
+      "recoveryValue": 2,
+      "capability": "Mental",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-136",
+      "table": "mental",
+      "key": "136",
+      "injury": "Occasional catch in the voice",
+      "effects": [],
+      "remedy": "Mental; alleviates it",
+      "recoveryValue": 1,
+      "capability": "Mental",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-144",
+      "table": "mental",
+      "key": "144",
+      "injury": "Difficulty recalling an unimportant detail",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-145",
+      "table": "mental",
+      "key": "145",
+      "injury": "Momentary mental disconnection",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "dazed",
+          "rating": 1,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-146",
+      "table": "mental",
+      "key": "146",
+      "injury": "Unusually cold manner discussing the event",
+      "effects": [
+        {
+          "kind": "rollModifier",
+          "polarity": "boon",
+          "amount": 1,
+          "context": "intimidate",
+          "requiresContext": true
+        },
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "persuade",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Mental; removes both modifiers",
+      "recoveryValue": 2,
+      "capability": "Mental",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-155",
+      "table": "mental",
+      "key": "155",
+      "injury": "Sudden confusion",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "dazed",
+          "rating": 1,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-156",
+      "table": "mental",
+      "key": "156",
+      "injury": "Overwhelming alarm",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "frightened",
+          "rating": 1,
+          "persistence": "temporary",
+          "requiresSource": true
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-166",
+      "table": "mental",
+      "key": "166",
+      "injury": "Interrupted awareness",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "dazed",
+          "rating": 1,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-222",
+      "table": "mental",
+      "key": "222",
+      "injury": "Sudden terror",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "frightened",
+          "rating": 1,
+          "persistence": "temporary",
+          "requiresSource": true
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-223",
+      "table": "mental",
+      "key": "223",
+      "injury": "Scattered thoughts",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "dazed",
+          "rating": 1,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-224",
+      "table": "mental",
+      "key": "224",
+      "injury": "Overwhelming alarm",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "frightened",
+          "rating": 1,
+          "persistence": "temporary",
+          "requiresSource": true
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-225",
+      "table": "mental",
+      "key": "225",
+      "injury": "Interrupted concentration",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "dazed",
+          "rating": 1,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-226",
+      "table": "mental",
+      "key": "226",
+      "injury": "Distorted sense of distance",
+      "effects": [
+        {
+          "kind": "movementPenalty",
+          "amount": 1
+        }
+      ],
+      "remedy": "Mental",
+      "recoveryValue": 3,
+      "capability": "Mental",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-233",
+      "table": "mental",
+      "key": "233",
+      "injury": "Phantom darkness",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "blinded",
+          "rating": 1,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-234",
+      "table": "mental",
+      "key": "234",
+      "injury": "Broken train of thought",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "dazed",
+          "rating": 1,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-235",
+      "table": "mental",
+      "key": "235",
+      "injury": "Fragmented recall",
+      "effects": [
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "mental",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Mental",
+      "recoveryValue": 3,
+      "capability": "Mental",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-236",
+      "table": "mental",
+      "key": "236",
+      "injury": "Confused sequencing",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "dazed",
+          "rating": 1,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-244",
+      "table": "mental",
+      "key": "244",
+      "injury": "Fear of the injury's source",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "frightened",
+          "rating": 1,
+          "persistence": "temporary",
+          "requiresSource": true
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-245",
+      "table": "mental",
+      "key": "245",
+      "injury": "Disrupted coordination",
+      "effects": [
+        {
+          "kind": "movementPenalty",
+          "amount": 1
+        }
+      ],
+      "remedy": "Mental",
+      "recoveryValue": 2,
+      "capability": "Mental",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-246",
+      "table": "mental",
+      "key": "246",
+      "injury": "Interrupted hearing",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "deafened",
+          "rating": 1,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-255",
+      "table": "mental",
+      "key": "255",
+      "injury": "Disorientation",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "dazed",
+          "rating": 1,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-256",
+      "table": "mental",
+      "key": "256",
+      "injury": "Disturbed bodily awareness",
+      "effects": [
+        {
+          "kind": "movementPenalty",
+          "amount": 2
+        }
+      ],
+      "remedy": "Mental",
+      "recoveryValue": 3,
+      "capability": "Mental",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-266",
+      "table": "mental",
+      "key": "266",
+      "injury": "Sudden loss of balance",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "prone",
+          "rating": 1,
+          "persistence": "binary"
+        },
+        {
+          "kind": "condition",
+          "key": "dazed",
+          "rating": 1,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Stand normally; decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-333",
+      "table": "mental",
+      "key": "333",
+      "injury": "Fear disrupting thought",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "frightened",
+          "rating": 1,
+          "persistence": "temporary",
+          "requiresSource": true
+        },
+        {
+          "kind": "condition",
+          "key": "dazed",
+          "rating": 1,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-334",
+      "table": "mental",
+      "key": "334",
+      "injury": "Sensory interruption",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "blinded",
+          "rating": 1,
+          "persistence": "temporary"
+        },
+        {
+          "kind": "condition",
+          "key": "deafened",
+          "rating": 1,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-335",
+      "table": "mental",
+      "key": "335",
+      "injury": "Violent disorientation",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "dazed",
+          "rating": 2,
+          "persistence": "temporary"
+        },
+        {
+          "kind": "condition",
+          "key": "prone",
+          "rating": 1,
+          "persistence": "binary"
+        }
+      ],
+      "remedy": "Decay; stand normally",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-336",
+      "table": "mental",
+      "key": "336",
+      "injury": "Fear disrupting coordination",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "frightened",
+          "rating": 1,
+          "persistence": "temporary",
+          "requiresSource": true
+        },
+        {
+          "kind": "movementPenalty",
+          "amount": 1
+        }
+      ],
+      "remedy": "Mental; removes movement penalty",
+      "recoveryValue": 3,
+      "capability": "Mental",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-344",
+      "table": "mental",
+      "key": "344",
+      "injury": "Intense terror",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "frightened",
+          "rating": 2,
+          "persistence": "temporary",
+          "requiresSource": true
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-345",
+      "table": "mental",
+      "key": "345",
+      "injury": "Fragmented concentration",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "dazed",
+          "rating": 1,
+          "persistence": "temporary"
+        },
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "mental",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Mental; removes Bane",
+      "recoveryValue": 4,
+      "capability": "Mental",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-346",
+      "table": "mental",
+      "key": "346",
+      "injury": "Interrupted bodily control",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "paralyzed",
+          "rating": 1,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-355",
+      "table": "mental",
+      "key": "355",
+      "injury": "Mental overload",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "dazed",
+          "rating": 2,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-356",
+      "table": "mental",
+      "key": "356",
+      "injury": "Disrupted movement",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "dazed",
+          "rating": 1,
+          "persistence": "temporary"
+        },
+        {
+          "kind": "movementPenalty",
+          "amount": 2
+        }
+      ],
+      "remedy": "Mental; removes movement penalty",
+      "recoveryValue": 4,
+      "capability": "Mental",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-366",
+      "table": "mental",
+      "key": "366",
+      "injury": "Persistent hearing disruption",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "deafened",
+          "rating": 1,
+          "persistence": "starred"
+        }
+      ],
+      "remedy": "Mental; restores hearing",
+      "recoveryValue": 5,
+      "capability": "Mental",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-444",
+      "table": "mental",
+      "key": "444",
+      "injury": "Consuming fear and confusion",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "frightened",
+          "rating": 2,
+          "persistence": "temporary",
+          "requiresSource": true
+        },
+        {
+          "kind": "condition",
+          "key": "dazed",
+          "rating": 1,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-445",
+      "table": "mental",
+      "key": "445",
+      "injury": "Severely fragmented thought",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "dazed",
+          "rating": 2,
+          "persistence": "temporary"
+        },
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 2,
+          "context": "mental",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Mental; removes Banes",
+      "recoveryValue": 5,
+      "capability": "Mental",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-446",
+      "table": "mental",
+      "key": "446",
+      "injury": "Severe sensory interruption",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "blinded",
+          "rating": 2,
+          "persistence": "temporary"
+        },
+        {
+          "kind": "condition",
+          "key": "deafened",
+          "rating": 2,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-455",
+      "table": "mental",
+      "key": "455",
+      "injury": "Interrupted bodily control",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "paralyzed",
+          "rating": 2,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-456",
+      "table": "mental",
+      "key": "456",
+      "injury": "Mental shutdown",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "dazed",
+          "rating": 3,
+          "persistence": "temporary"
+        },
+        {
+          "kind": "condition",
+          "key": "prone",
+          "rating": 1,
+          "persistence": "binary"
+        }
+      ],
+      "remedy": "Decay; stand normally",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-466",
+      "table": "mental",
+      "key": "466",
+      "injury": "Persistent visual disruption",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "blinded",
+          "rating": 1,
+          "persistence": "starred"
+        }
+      ],
+      "remedy": "Mental; restores sight",
+      "recoveryValue": 7,
+      "capability": "Mental",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-555",
+      "table": "mental",
+      "key": "555",
+      "injury": "Overwhelming terror and fractured thought",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "frightened",
+          "rating": 3,
+          "persistence": "temporary",
+          "requiresSource": true
+        },
+        {
+          "kind": "condition",
+          "key": "dazed",
+          "rating": 3,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-556",
+      "table": "mental",
+      "key": "556",
+      "injury": "Complete interruption of bodily control",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "paralyzed",
+          "rating": 3,
+          "persistence": "temporary"
+        },
+        {
+          "kind": "condition",
+          "key": "prone",
+          "rating": 1,
+          "persistence": "binary"
+        }
+      ],
+      "remedy": "Decay; stand normally",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-566",
+      "table": "mental",
+      "key": "566",
+      "injury": "Profound sensory disruption",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "dazed",
+          "rating": 3,
+          "persistence": "temporary"
+        },
+        {
+          "kind": "condition",
+          "key": "blinded",
+          "rating": 1,
+          "persistence": "starred"
+        },
+        {
+          "kind": "condition",
+          "key": "deafened",
+          "rating": 1,
+          "persistence": "starred"
+        }
+      ],
+      "remedy": "Mental; one track removes both starred conditions",
+      "recoveryValue": 9,
+      "capability": "Mental",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-mental-666",
+      "table": "mental",
+      "key": "666",
+      "injury": "Last Words",
+      "effects": [
+        {
+          "kind": "lastWords"
+        }
+      ],
+      "remedy": "No ordinary healing, treatment, potions, or Grit",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-111",
+      "table": "radiant",
+      "key": "111",
+      "injury": "Brow: pale streak",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-112",
+      "table": "radiant",
+      "key": "112",
+      "injury": "Ear: bleached rim",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-113",
+      "table": "radiant",
+      "key": "113",
+      "injury": "Arm: branching pale marks",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-114",
+      "table": "radiant",
+      "key": "114",
+      "injury": "Hand: discolored fingertips",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-115",
+      "table": "radiant",
+      "key": "115",
+      "injury": "Torso: sunburst-shaped mark",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-116",
+      "table": "radiant",
+      "key": "116",
+      "injury": "Leg: pale shin streak",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-122",
+      "table": "radiant",
+      "key": "122",
+      "injury": "Scalp: permanently white hair patch",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-123",
+      "table": "radiant",
+      "key": "123",
+      "injury": "Face: pale cheek mark",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-124",
+      "table": "radiant",
+      "key": "124",
+      "injury": "Shoulder: discolored ring",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-125",
+      "table": "radiant",
+      "key": "125",
+      "injury": "Forearm: bright-looking fine scars",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-126",
+      "table": "radiant",
+      "key": "126",
+      "injury": "Foot: mottled discoloration",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-133",
+      "table": "radiant",
+      "key": "133",
+      "injury": "Face: conspicuous branching scar",
+      "effects": [
+        {
+          "kind": "rollModifier",
+          "polarity": "boon",
+          "amount": 1,
+          "context": "intimidate",
+          "requiresContext": true
+        },
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "persuade",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Radiant; removes both modifiers",
+      "recoveryValue": 2,
+      "capability": "Radiant",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-134",
+      "table": "radiant",
+      "key": "134",
+      "injury": "Torso: broad bleached patch",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-135",
+      "table": "radiant",
+      "key": "135",
+      "injury": "Leg: tender scar and mild limp",
+      "effects": [],
+      "remedy": "Radiant; removes limp",
+      "recoveryValue": 2,
+      "capability": "Radiant",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-136",
+      "table": "radiant",
+      "key": "136",
+      "injury": "Foot: sensitive scar and uneven gait",
+      "effects": [],
+      "remedy": "Radiant; restores gait",
+      "recoveryValue": 1,
+      "capability": "Radiant",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-144",
+      "table": "radiant",
+      "key": "144",
+      "injury": "Hand: prominent palm mark",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-145",
+      "table": "radiant",
+      "key": "145",
+      "injury": "Arm: broad pale scar",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-146",
+      "table": "radiant",
+      "key": "146",
+      "injury": "Face: stark eye-area discoloration",
+      "effects": [
+        {
+          "kind": "rollModifier",
+          "polarity": "boon",
+          "amount": 1,
+          "context": "intimidate",
+          "requiresContext": true
+        },
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "persuade",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Radiant; removes both modifiers",
+      "recoveryValue": 2,
+      "capability": "Radiant",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-155",
+      "table": "radiant",
+      "key": "155",
+      "injury": "Scalp: scarring and permanent hair loss",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-156",
+      "table": "radiant",
+      "key": "156",
+      "injury": "Eyes: searing afterimage and pale surrounding marks",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "blinded",
+          "rating": 1,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-166",
+      "table": "radiant",
+      "key": "166",
+      "injury": "Foot: painful radiant injury",
+      "effects": [
+        {
+          "kind": "movementPenalty",
+          "amount": 1
+        }
+      ],
+      "remedy": "Radiant",
+      "recoveryValue": 2,
+      "capability": "Radiant",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-222",
+      "table": "radiant",
+      "key": "222",
+      "injury": "Eyes: searing flash injury",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "blinded",
+          "rating": 1,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-223",
+      "table": "radiant",
+      "key": "223",
+      "injury": "Arm: deep shoulder injury",
+      "effects": [
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Radiant",
+      "recoveryValue": 2,
+      "capability": "Radiant",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-224",
+      "table": "radiant",
+      "key": "224",
+      "injury": "Hand: searing palm injury",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "burning",
+          "rating": 1,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Normal condition removal",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-225",
+      "table": "radiant",
+      "key": "225",
+      "injury": "Torso: radiant impact",
+      "effects": [
+        {
+          "kind": "forcedMovement",
+          "direction": "push",
+          "distance": 1,
+          "requiresDirection": true
+        },
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Radiant; removes Bane",
+      "recoveryValue": 3,
+      "capability": "Radiant",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-226",
+      "table": "radiant",
+      "key": "226",
+      "injury": "Leg: damaged knee tissue",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "prone",
+          "rating": 1,
+          "persistence": "binary"
+        },
+        {
+          "kind": "movementPenalty",
+          "amount": 1
+        }
+      ],
+      "remedy": "Radiant; removes movement penalty",
+      "recoveryValue": 3,
+      "capability": "Radiant",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-233",
+      "table": "radiant",
+      "key": "233",
+      "injury": "Eyes: overwhelming afterimages",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "blinded",
+          "rating": 1,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-234",
+      "table": "radiant",
+      "key": "234",
+      "injury": "Arm: deep forearm injury",
+      "effects": [
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Radiant",
+      "recoveryValue": 3,
+      "capability": "Radiant",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-235",
+      "table": "radiant",
+      "key": "235",
+      "injury": "Hand: damaged fingers",
+      "effects": [
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Radiant",
+      "recoveryValue": 3,
+      "capability": "Radiant",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-236",
+      "table": "radiant",
+      "key": "236",
+      "injury": "Head: sensory overload",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "dazed",
+          "rating": 1,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-244",
+      "table": "radiant",
+      "key": "244",
+      "injury": "Torso: searing flank injury",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "burning",
+          "rating": 1,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Normal condition removal",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-245",
+      "table": "radiant",
+      "key": "245",
+      "injury": "Leg: damaged calf tissue",
+      "effects": [
+        {
+          "kind": "movementPenalty",
+          "amount": 1
+        }
+      ],
+      "remedy": "Radiant",
+      "recoveryValue": 2,
+      "capability": "Radiant",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-246",
+      "table": "radiant",
+      "key": "246",
+      "injury": "Ears: disrupted hearing",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "deafened",
+          "rating": 1,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-255",
+      "table": "radiant",
+      "key": "255",
+      "injury": "Head: overwhelming exposure",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "dazed",
+          "rating": 1,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-256",
+      "table": "radiant",
+      "key": "256",
+      "injury": "Leg: extensive knee injury",
+      "effects": [
+        {
+          "kind": "movementPenalty",
+          "amount": 2
+        }
+      ],
+      "remedy": "Radiant",
+      "recoveryValue": 3,
+      "capability": "Radiant",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-266",
+      "table": "radiant",
+      "key": "266",
+      "injury": "Eyes: lingering visual interruption",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "blinded",
+          "rating": 2,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-333",
+      "table": "radiant",
+      "key": "333",
+      "injury": "Arm: deep radiant wound",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "burning",
+          "rating": 1,
+          "persistence": "temporary"
+        },
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Radiant; removes Bane",
+      "recoveryValue": 3,
+      "capability": "Radiant",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-334",
+      "table": "radiant",
+      "key": "334",
+      "injury": "Head: sensory overload",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "blinded",
+          "rating": 1,
+          "persistence": "temporary"
+        },
+        {
+          "kind": "condition",
+          "key": "dazed",
+          "rating": 1,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-335",
+      "table": "radiant",
+      "key": "335",
+      "injury": "Torso: violent radiant impact",
+      "effects": [
+        {
+          "kind": "forcedMovement",
+          "direction": "push",
+          "distance": 2,
+          "requiresDirection": true
+        },
+        {
+          "kind": "condition",
+          "key": "prone",
+          "rating": 1,
+          "persistence": "binary"
+        },
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Radiant; removes Bane",
+      "recoveryValue": 4,
+      "capability": "Radiant",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-336",
+      "table": "radiant",
+      "key": "336",
+      "injury": "Leg: deep thigh injury",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "burning",
+          "rating": 1,
+          "persistence": "temporary"
+        },
+        {
+          "kind": "movementPenalty",
+          "amount": 1
+        }
+      ],
+      "remedy": "Radiant; removes movement penalty",
+      "recoveryValue": 3,
+      "capability": "Radiant",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-344",
+      "table": "radiant",
+      "key": "344",
+      "injury": "Eyes: prolonged afterimages",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "blinded",
+          "rating": 2,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-345",
+      "table": "radiant",
+      "key": "345",
+      "injury": "Back: extensive tissue injury",
+      "effects": [
+        {
+          "kind": "movementPenalty",
+          "amount": 1
+        },
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Radiant; removes both penalties",
+      "recoveryValue": 4,
+      "capability": "Radiant",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-346",
+      "table": "radiant",
+      "key": "346",
+      "injury": "Leg: deep knee injury",
+      "effects": [
+        {
+          "kind": "movementPenalty",
+          "amount": 2
+        },
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Radiant; removes both penalties",
+      "recoveryValue": 5,
+      "capability": "Radiant",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-355",
+      "table": "radiant",
+      "key": "355",
+      "injury": "Head: overwhelming light",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "dazed",
+          "rating": 2,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-356",
+      "table": "radiant",
+      "key": "356",
+      "injury": "Foot: deep heel injury",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "burning",
+          "rating": 1,
+          "persistence": "temporary"
+        },
+        {
+          "kind": "movementPenalty",
+          "amount": 2
+        }
+      ],
+      "remedy": "Radiant; removes movement penalty",
+      "recoveryValue": 4,
+      "capability": "Radiant",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-366",
+      "table": "radiant",
+      "key": "366",
+      "injury": "Ears: lasting sensory damage",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "deafened",
+          "rating": 1,
+          "persistence": "starred"
+        }
+      ],
+      "remedy": "Radiant; restores hearing",
+      "recoveryValue": 5,
+      "capability": "Radiant",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-444",
+      "table": "radiant",
+      "key": "444",
+      "injury": "Torso: deep searing injury",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "burning",
+          "rating": 2,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Normal condition removal",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-445",
+      "table": "radiant",
+      "key": "445",
+      "injury": "Arm: severe shoulder damage",
+      "effects": [
+        {
+          "kind": "forcedMovement",
+          "direction": "push",
+          "distance": 2,
+          "requiresDirection": true
+        },
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 2,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Radiant; removes Banes",
+      "recoveryValue": 5,
+      "capability": "Radiant",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-446",
+      "table": "radiant",
+      "key": "446",
+      "injury": "Head: severe sensory overload",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "blinded",
+          "rating": 2,
+          "persistence": "temporary"
+        },
+        {
+          "kind": "condition",
+          "key": "dazed",
+          "rating": 2,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-455",
+      "table": "radiant",
+      "key": "455",
+      "injury": "Leg: deep lower-leg injury",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "prone",
+          "rating": 1,
+          "persistence": "binary"
+        },
+        {
+          "kind": "movementPenalty",
+          "amount": 3
+        }
+      ],
+      "remedy": "Radiant; removes movement penalty",
+      "recoveryValue": 6,
+      "capability": "Radiant",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-456",
+      "table": "radiant",
+      "key": "456",
+      "injury": "Head: radiant shock",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "dazed",
+          "rating": 3,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-466",
+      "table": "radiant",
+      "key": "466",
+      "injury": "Eyes: lasting visual damage",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "blinded",
+          "rating": 1,
+          "persistence": "starred"
+        }
+      ],
+      "remedy": "Radiant; restores sight",
+      "recoveryValue": 7,
+      "capability": "Radiant",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-555",
+      "table": "radiant",
+      "key": "555",
+      "injury": "Torso: extensive searing destruction",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "burning",
+          "rating": 3,
+          "persistence": "temporary"
+        },
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 2,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Radiant; removes Banes",
+      "recoveryValue": 7,
+      "capability": "Radiant",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-556",
+      "table": "radiant",
+      "key": "556",
+      "injury": "Body: overwhelming radiant shock",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "paralyzed",
+          "rating": 2,
+          "persistence": "temporary"
+        },
+        {
+          "kind": "condition",
+          "key": "prone",
+          "rating": 1,
+          "persistence": "binary"
+        },
+        {
+          "kind": "movementPenalty",
+          "amount": 3
+        }
+      ],
+      "remedy": "Radiant; removes movement penalty",
+      "recoveryValue": 9,
+      "capability": "Radiant",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-566",
+      "table": "radiant",
+      "key": "566",
+      "injury": "Eyes: destruction of sight",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "dazed",
+          "rating": 2,
+          "persistence": "temporary"
+        },
+        {
+          "kind": "condition",
+          "key": "blinded",
+          "rating": 1,
+          "persistence": "starred"
+        }
+      ],
+      "remedy": "Replacement or explicitly restorative ability; ordinary treatment cannot restore eyes",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-radiant-666",
+      "table": "radiant",
+      "key": "666",
+      "injury": "Last Words",
+      "effects": [
+        {
+          "kind": "lastWords"
+        }
+      ],
+      "remedy": "No ordinary healing, treatment, potions, or Grit",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-111",
+      "table": "life",
+      "key": "111",
+      "injury": "Face: small pallid patch",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-112",
+      "table": "life",
+      "key": "112",
+      "injury": "Ear: darkened edge",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-113",
+      "table": "life",
+      "key": "113",
+      "injury": "Arm: dark branching marks",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-114",
+      "table": "life",
+      "key": "114",
+      "injury": "Hand: discolored nails",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-115",
+      "table": "life",
+      "key": "115",
+      "injury": "Torso: sunken scar tissue",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-116",
+      "table": "life",
+      "key": "116",
+      "injury": "Leg: mottled shin skin",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-122",
+      "table": "life",
+      "key": "122",
+      "injury": "Scalp: lost or whitened hair",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-123",
+      "table": "life",
+      "key": "123",
+      "injury": "Face: hollowed cheek scar",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-124",
+      "table": "life",
+      "key": "124",
+      "injury": "Shoulder: prematurely aged skin",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-125",
+      "table": "life",
+      "key": "125",
+      "injury": "Forearm: dark veins around scar",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-126",
+      "table": "life",
+      "key": "126",
+      "injury": "Foot: discolored skin",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-133",
+      "table": "life",
+      "key": "133",
+      "injury": "Face: conspicuous withered scar",
+      "effects": [
+        {
+          "kind": "rollModifier",
+          "polarity": "boon",
+          "amount": 1,
+          "context": "intimidate",
+          "requiresContext": true
+        },
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "persuade",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Life; removes both modifiers",
+      "recoveryValue": 2,
+      "capability": "Life",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-134",
+      "table": "life",
+      "key": "134",
+      "injury": "Torso: altered skin texture",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-135",
+      "table": "life",
+      "key": "135",
+      "injury": "Leg: mild limp",
+      "effects": [],
+      "remedy": "Life; removes limp",
+      "recoveryValue": 2,
+      "capability": "Life",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-136",
+      "table": "life",
+      "key": "136",
+      "injury": "Foot: uneven gait",
+      "effects": [],
+      "remedy": "Life; restores gait",
+      "recoveryValue": 1,
+      "capability": "Life",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-144",
+      "table": "life",
+      "key": "144",
+      "injury": "Hand: withered appearance",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-145",
+      "table": "life",
+      "key": "145",
+      "injury": "Arm: visible tissue loss beneath scar",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-146",
+      "table": "life",
+      "key": "146",
+      "injury": "Face: stark eye-area discoloration",
+      "effects": [
+        {
+          "kind": "rollModifier",
+          "polarity": "boon",
+          "amount": 1,
+          "context": "intimidate",
+          "requiresContext": true
+        },
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "persuade",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Life; removes both modifiers",
+      "recoveryValue": 2,
+      "capability": "Life",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-155",
+      "table": "life",
+      "key": "155",
+      "injury": "Leg: localized wasting",
+      "effects": [],
+      "remedy": "—",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-156",
+      "table": "life",
+      "key": "156",
+      "injury": "Body: momentary vitality loss",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "dazed",
+          "rating": 1,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-166",
+      "table": "life",
+      "key": "166",
+      "injury": "Foot: weakened heel",
+      "effects": [
+        {
+          "kind": "movementPenalty",
+          "amount": 1
+        }
+      ],
+      "remedy": "Life",
+      "recoveryValue": 2,
+      "capability": "Life",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-222",
+      "table": "life",
+      "key": "222",
+      "injury": "Head: sudden draining shock",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "dazed",
+          "rating": 1,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-223",
+      "table": "life",
+      "key": "223",
+      "injury": "Arm: weakened shoulder",
+      "effects": [
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Life",
+      "recoveryValue": 2,
+      "capability": "Life",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-224",
+      "table": "life",
+      "key": "224",
+      "injury": "Hand: drained tissue",
+      "effects": [
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Life",
+      "recoveryValue": 2,
+      "capability": "Life",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-225",
+      "table": "life",
+      "key": "225",
+      "injury": "Torso: loss of bodily strength",
+      "effects": [
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Life",
+      "recoveryValue": 3,
+      "capability": "Life",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-226",
+      "table": "life",
+      "key": "226",
+      "injury": "Leg: weakened knee",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "prone",
+          "rating": 1,
+          "persistence": "binary"
+        },
+        {
+          "kind": "movementPenalty",
+          "amount": 1
+        }
+      ],
+      "remedy": "Life; removes movement penalty",
+      "recoveryValue": 3,
+      "capability": "Life",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-233",
+      "table": "life",
+      "key": "233",
+      "injury": "Eyes: loss of visual function",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "blinded",
+          "rating": 1,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-234",
+      "table": "life",
+      "key": "234",
+      "injury": "Arm: weakened forearm",
+      "effects": [
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Life",
+      "recoveryValue": 3,
+      "capability": "Life",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-235",
+      "table": "life",
+      "key": "235",
+      "injury": "Hand: stiffened fingers",
+      "effects": [
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Life",
+      "recoveryValue": 3,
+      "capability": "Life",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-236",
+      "table": "life",
+      "key": "236",
+      "injury": "Head: disrupted awareness",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "dazed",
+          "rating": 1,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-244",
+      "table": "life",
+      "key": "244",
+      "injury": "Torso: draining spasm",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "dazed",
+          "rating": 1,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-245",
+      "table": "life",
+      "key": "245",
+      "injury": "Leg: weakened calf",
+      "effects": [
+        {
+          "kind": "movementPenalty",
+          "amount": 1
+        }
+      ],
+      "remedy": "Life",
+      "recoveryValue": 2,
+      "capability": "Life",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-246",
+      "table": "life",
+      "key": "246",
+      "injury": "Foot: weakened sole",
+      "effects": [
+        {
+          "kind": "movementPenalty",
+          "amount": 1
+        }
+      ],
+      "remedy": "Life",
+      "recoveryValue": 3,
+      "capability": "Life",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-255",
+      "table": "life",
+      "key": "255",
+      "injury": "Body: sudden weakness",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "prone",
+          "rating": 1,
+          "persistence": "binary"
+        }
+      ],
+      "remedy": "Stand normally",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-256",
+      "table": "life",
+      "key": "256",
+      "injury": "Leg: extensive knee weakness",
+      "effects": [
+        {
+          "kind": "movementPenalty",
+          "amount": 2
+        }
+      ],
+      "remedy": "Life",
+      "recoveryValue": 3,
+      "capability": "Life",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-266",
+      "table": "life",
+      "key": "266",
+      "injury": "Foot: extensive ankle weakness",
+      "effects": [
+        {
+          "kind": "movementPenalty",
+          "amount": 2
+        }
+      ],
+      "remedy": "Life",
+      "recoveryValue": 3,
+      "capability": "Life",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-333",
+      "table": "life",
+      "key": "333",
+      "injury": "Arm: deep vitality loss",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "dazed",
+          "rating": 1,
+          "persistence": "temporary"
+        },
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Life; removes Bane",
+      "recoveryValue": 3,
+      "capability": "Life",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-334",
+      "table": "life",
+      "key": "334",
+      "injury": "Hand: withered tissue",
+      "effects": [
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Life",
+      "recoveryValue": 3,
+      "capability": "Life",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-335",
+      "table": "life",
+      "key": "335",
+      "injury": "Torso: draining collapse",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "dazed",
+          "rating": 1,
+          "persistence": "temporary"
+        },
+        {
+          "kind": "condition",
+          "key": "prone",
+          "rating": 1,
+          "persistence": "binary"
+        },
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Life; removes Bane",
+      "recoveryValue": 4,
+      "capability": "Life",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-336",
+      "table": "life",
+      "key": "336",
+      "injury": "Leg: weakened thigh",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "dazed",
+          "rating": 1,
+          "persistence": "temporary"
+        },
+        {
+          "kind": "movementPenalty",
+          "amount": 1
+        }
+      ],
+      "remedy": "Life; removes movement penalty",
+      "recoveryValue": 3,
+      "capability": "Life",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-344",
+      "table": "life",
+      "key": "344",
+      "injury": "Body: interrupted bodily control",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "paralyzed",
+          "rating": 1,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-345",
+      "table": "life",
+      "key": "345",
+      "injury": "Back: wasting muscles",
+      "effects": [
+        {
+          "kind": "movementPenalty",
+          "amount": 1
+        },
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Life; removes both penalties",
+      "recoveryValue": 4,
+      "capability": "Life",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-346",
+      "table": "life",
+      "key": "346",
+      "injury": "Leg: deep strength loss",
+      "effects": [
+        {
+          "kind": "movementPenalty",
+          "amount": 2
+        },
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 1,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Life; removes both penalties",
+      "recoveryValue": 5,
+      "capability": "Life",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-355",
+      "table": "life",
+      "key": "355",
+      "injury": "Head: severe draining shock",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "dazed",
+          "rating": 2,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-356",
+      "table": "life",
+      "key": "356",
+      "injury": "Foot: wasted heel tissue",
+      "effects": [
+        {
+          "kind": "movementPenalty",
+          "amount": 2
+        }
+      ],
+      "remedy": "Life",
+      "recoveryValue": 4,
+      "capability": "Life",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-366",
+      "table": "life",
+      "key": "366",
+      "injury": "Ears: lasting sensory impairment",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "deafened",
+          "rating": 1,
+          "persistence": "starred"
+        }
+      ],
+      "remedy": "Life; restores hearing",
+      "recoveryValue": 5,
+      "capability": "Life",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-444",
+      "table": "life",
+      "key": "444",
+      "injury": "Body: severe interruption of vitality",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "paralyzed",
+          "rating": 2,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-445",
+      "table": "life",
+      "key": "445",
+      "injury": "Arm: severely withered shoulder",
+      "effects": [
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 2,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Life",
+      "recoveryValue": 5,
+      "capability": "Life",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-446",
+      "table": "life",
+      "key": "446",
+      "injury": "Hand: deep tissue wasting",
+      "effects": [
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 2,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Life",
+      "recoveryValue": 6,
+      "capability": "Life",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-455",
+      "table": "life",
+      "key": "455",
+      "injury": "Leg: severe strength loss",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "prone",
+          "rating": 1,
+          "persistence": "binary"
+        },
+        {
+          "kind": "movementPenalty",
+          "amount": 3
+        }
+      ],
+      "remedy": "Life; removes movement penalty",
+      "recoveryValue": 6,
+      "capability": "Life",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-456",
+      "table": "life",
+      "key": "456",
+      "injury": "Head: profound draining shock",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "dazed",
+          "rating": 3,
+          "persistence": "temporary"
+        }
+      ],
+      "remedy": "Decay",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-466",
+      "table": "life",
+      "key": "466",
+      "injury": "Eyes: persistent visual impairment",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "blinded",
+          "rating": 1,
+          "persistence": "starred"
+        }
+      ],
+      "remedy": "Life; restores sight",
+      "recoveryValue": 7,
+      "capability": "Life",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-555",
+      "table": "life",
+      "key": "555",
+      "injury": "Torso: extensive tissue wasting",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "dazed",
+          "rating": 2,
+          "persistence": "temporary"
+        },
+        {
+          "kind": "rollModifier",
+          "polarity": "bane",
+          "amount": 2,
+          "context": "physical",
+          "requiresContext": true
+        }
+      ],
+      "remedy": "Life; removes Banes",
+      "recoveryValue": 7,
+      "capability": "Life",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-556",
+      "table": "life",
+      "key": "556",
+      "injury": "Body: near-total bodily interruption",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "paralyzed",
+          "rating": 3,
+          "persistence": "temporary"
+        },
+        {
+          "kind": "condition",
+          "key": "prone",
+          "rating": 1,
+          "persistence": "binary"
+        },
+        {
+          "kind": "movementPenalty",
+          "amount": 4
+        }
+      ],
+      "remedy": "Life; removes movement penalty",
+      "recoveryValue": 9,
+      "capability": "Life",
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-566",
+      "table": "life",
+      "key": "566",
+      "injury": "Leg: irrecoverably withered leg",
+      "effects": [
+        {
+          "kind": "condition",
+          "key": "prone",
+          "rating": 1,
+          "persistence": "binary"
+        },
+        {
+          "kind": "movementPenalty",
+          "amount": 4
+        }
+      ],
+      "remedy": "Artificial leg or explicitly restorative ability; ordinary treatment cannot restore leg",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    },
+    {
+      "id": "wound-life-666",
+      "table": "life",
+      "key": "666",
+      "injury": "Last Words",
+      "effects": [
+        {
+          "kind": "lastWords"
+        }
+      ],
+      "remedy": "No ordinary healing, treatment, potions, or Grit",
+      "recoveryValue": null,
+      "capability": null,
+      "source": {
+        "path": "design/rules/wounds.md",
+        "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
+      }
+    }
+  ]
+}

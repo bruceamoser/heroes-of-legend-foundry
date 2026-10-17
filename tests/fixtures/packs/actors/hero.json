@@ -1,0 +1,35 @@
+{
+  "_key": "!actors!holActor00000001",
+  "_id": "holActor00000001",
+  "name": "HOL pack fixture hero",
+  "type": "character",
+  "system": {
+    "attributes": {
+      "brawn": {
+        "base": 2
+      }
+    },
+    "biography": "Synthetic pack fixture; not rulebook content."
+  },
+  "items": [
+    {
+      "_id": "holItem000000001",
+      "name": "Fixture ability",
+      "type": "ability",
+      "system": {
+        "description": "Synthetic ability for stable-ID tests."
+      },
+      "effects": [
+        {
+          "_id": "holEffect0000001",
+          "name": "Fixture effect",
+          "disabled": true,
+          "changes": [],
+          "_key": "!actors.items.effects!holActor00000001.holItem000000001.holEffect0000001"
+        }
+      ],
+      "_key": "!actors.items!holActor00000001.holItem000000001"
+    }
+  ],
+  "effects": []
+}

@@ -71,3 +71,18 @@ References: [V14 Roll API](https://foundryvtt.com/api/v14/classes/foundry.dice.R
 Unit tests cover cancellation order, caps, tier boundaries, natural overrides, malformed inputs and all 216 retained d6 triples across attributes -2 through +2. Run `HOL_TEST_URL=http://127.0.0.1:30014 HOL_TEST_ALLOW_WRITES=1 npm run test:rolls` against the disposable world for native dice/dialog/chat/reload checks.
 
 Runtime result on Foundry 14.367: keep-high and keep-low retained faces match native die results; dialog preview updates correctly; each native chat view receives one summary; serialized roll/snapshot survive reload byte-for-byte; cancel adds no message; zero uncaught page errors. Multiplayer private/blind visibility remains part of R01 rather than a completed claim here.
+
+## Compendium round-trip evidence — issue #8
+
+The official [Foundry CLI](https://github.com/foundryvtt/foundryvtt-cli) is pinned to **3.0.5**. `npm test` compiles synthetic JSON fixtures, extracts them, recompiles them and extracts them again, comparing complete records. The fixtures include an Actor with an embedded ability and ActiveEffect, and a JournalEntry with an embedded page and Actor UUID reference. Embedded records require their own CLI `_key` paths; the Journal fixture explicitly includes `categories: []` to match extraction normalization. These fixtures contain no book text or artwork.
+
+The Foundry **14.367** runtime test also passed: pack documents load, embedded IDs survive, the Journal UUID resolves and enriches without a broken link, and native Actor and Journal imports with `keepId`/`keepEmbeddedIds` preserves the fixture IDs and attribute value. The imported temporary documents are deleted. Unknown Actor types are rejected by native validation. A pre-existing world Actor with the fixture ID causes the test to stop rather than overwrite it. No uncaught browser errors occurred. This is not yet evidence for 14.369 or a production content importer.
+
+Reproduction in the disposable `hol-development` world only, using Node 24:
+
+1. Run `npm run stage:pack-probe` to compile into ignored `test-results/pack-probe/{actors,journal}`.
+2. While the test server is running, run `HOL_TEST_URL=http://127.0.0.1:30014 HOL_TEST_ALLOW_WRITES=1 npm run test:pack-runtime -- --prepare`. This creates the native world compendia and reports their relative paths.
+3. Stop the test server completely. Replace only the two newly created fixture pack directories (`packs/hol-fixture-actors` and `packs/hol-fixture-journal` inside the disposable world) with the corresponding staged directories. Never replace a pack while Foundry is running or use a campaign data directory.
+4. Restart the isolated server with `--dataPath=/tmp/hol-foundry-test --port=30014 --world=hol-development`, then run `HOL_TEST_URL=http://127.0.0.1:30014 HOL_TEST_ALLOW_WRITES=1 npm run test:pack-runtime`.
+
+The shipped system manifest does not advertise these test packs. All database compilation uses the official CLI; no custom LevelDB writer is introduced.

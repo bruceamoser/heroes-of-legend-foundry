@@ -101,6 +101,8 @@ No active GM: owned rolls and permitted own-document changes remain available; c
 
 ## 7. Character creation and development
 
+A full-featured guided charactermancer is required for both new characters and advancement. Ease of use is paramount: see the [charactermancer interaction contract](interaction-design.md#guided-charactermancer--creation-and-advancement). Eligible options appear first; ineligible options remain visible, disabled, with exact unmet requirements.
+
 The resumable builder must implement the sequence, not just present independent dropdowns:
 
 1. Six base attributes each −2..+2, totaling +3. Freeze the creation baseline; later item effects cannot change earlier DP or HP calculations.

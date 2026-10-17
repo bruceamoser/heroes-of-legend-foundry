@@ -2,8 +2,13 @@ import { readFile, stat, readdir } from "node:fs/promises";
 import { execFileSync } from "node:child_process";
 import { isAbsolute } from "node:path";
 import { pathToFileURL } from "node:url";
+import {
+  formatCreatureArtReport,
+  validateCreatureArt,
+} from "./creature-art.mjs";
 
 export async function validatePackage(root) {
+  const creatureArt = await validateCreatureArt(root);
   const manifest = JSON.parse(
     await readFile(new URL("system.json", root), "utf8"),
   );
@@ -81,6 +86,9 @@ export async function validatePackage(root) {
       );
     }
   }
+  console.info(
+    `Validated creature art: ${formatCreatureArtReport(creatureArt)}`,
+  );
   return manifest;
 }
 

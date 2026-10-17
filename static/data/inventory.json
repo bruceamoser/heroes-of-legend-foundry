@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "sourceCommit": "9f1663f774164a014edcb879c50fcf02989d791b",
+  "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
   "equipment": [
     {
       "id": "item-ammunition-bundle",
       "name": "Ammunition Bundle",
       "source": {
         "path": "design/equipment/ammunition-bundle.md",
-        "sha256": "76e1884ac5de85fffa6c0fc4296fc570c37461050ba5b02550f7cb8a79f1c973"
+        "sha256": "c02935b51488491b7bd0f00ae0c1926e9cf0778e0895bb13b6489389c16020f6"
       },
       "bulk": 1,
       "price": 9,
@@ -35,7 +35,7 @@
       "name": "Chain Coil",
       "source": {
         "path": "design/equipment/chain-coil.md",
-        "sha256": "54775820ea76093c0f204b1a4192c4fbd71cfb364d85ff330a04bd6b45c4d361"
+        "sha256": "c11703294ad3bd70f86283d19ffa5481c30d76e8ab3038b4609576bcd3eb6f55"
       },
       "bulk": 1,
       "price": 12,
@@ -63,7 +63,7 @@
       "name": "Clearing Tonic Supply",
       "source": {
         "path": "design/equipment/clearing-tonic.md",
-        "sha256": "35f1c2e2ab411ad2f4df5e0d2da5b50836174b446b8d43ef6a28eaff519180ab"
+        "sha256": "03d95367106bb3d1190b006a01486d854bdd9beeb36b35c357f1b72e79504e6f"
       },
       "bulk": 1,
       "price": 30,
@@ -77,7 +77,7 @@
       "name": "Climbing Fittings",
       "source": {
         "path": "design/equipment/climbing-fittings.md",
-        "sha256": "279b2ec58c4250d3df2a0898ae14f1baf8c3c24856b85cb877023bd2e17803a0"
+        "sha256": "b7052601ccd087483d6824a838d8a80754856e77a796da5a599445b0fe17b700"
       },
       "bulk": 1,
       "price": 8,
@@ -91,7 +91,7 @@
       "name": "Craft Tools",
       "source": {
         "path": "design/equipment/craft-tools.md",
-        "sha256": "b8eb5ea3d5a17aa12c72a24e4b39165cd1c684708f177ce47c8d04a731fb3d2b"
+        "sha256": "ffed6d1a46d316f0b9434c6575fd59e9766733c701d2c9c38567984853996edf"
       },
       "bulk": 1,
       "price": 15,
@@ -105,7 +105,7 @@
       "name": "Digging Tools",
       "source": {
         "path": "design/equipment/digging-tools.md",
-        "sha256": "916fa506520998bba0896ac12ff37ad4589eda55c81c369d6586d619cc301e38"
+        "sha256": "ec3263f560891397286f988c82b5bcea679dbd5fd67a85520f37937a497f8b6d"
       },
       "bulk": 1,
       "price": 6,
@@ -119,7 +119,7 @@
       "name": "Disguise Clothes",
       "source": {
         "path": "design/equipment/disguise-clothes.md",
-        "sha256": "a8e94b2b57584f34f7dbca35340f7f427d4190ab47d0a71b533dba282f1c7957"
+        "sha256": "eb79e3b0d58ba6d3e29af4c4d701a49c96e1ae342bceb0f95fb53d40d81b69d1"
       },
       "bulk": 1,
       "price": 10,
@@ -147,7 +147,7 @@
       "name": "Food Bundle",
       "source": {
         "path": "design/equipment/food-bundle.md",
-        "sha256": "14156d746f5dbb5c3c854b90361cea87974683fbef39b2526f016a01ebd38cc5"
+        "sha256": "df20fdfeae70df214cf1076a27ae0a4a6036b550ad50d82202a57f3151dfec40"
       },
       "bulk": 1,
       "price": 9,
@@ -189,7 +189,7 @@
       "name": "Greater Healing Bottle",
       "source": {
         "path": "design/equipment/greater-healing-bottle.md",
-        "sha256": "0c843724bccc696fa2c14f76ea8a50c993a5f98319030c8b2a35071964ca4d66"
+        "sha256": "981b29855f56405816cfb0555dac87d99c205a8a41c63b3aaff1263feb6a85e7"
       },
       "bulk": 1,
       "price": 50,
@@ -203,7 +203,7 @@
       "name": "Lesser Healing Bottle",
       "source": {
         "path": "design/equipment/lesser-healing-bottle.md",
-        "sha256": "c591fb1ea9be0098b26eff6c199bbda916a40d511a87718ece851f3a805b1852"
+        "sha256": "0f42396a08389a7ccb921ba2dc398778a0870af8a151238811b66de0c7cb588d"
       },
       "bulk": 1,
       "price": 20,
@@ -217,7 +217,7 @@
       "name": "Lever and Wedges",
       "source": {
         "path": "design/equipment/lever-and-wedges.md",
-        "sha256": "6d29bffa0fd7d5c56d8c9446e1bf687ebc314de2c1413961db0b650bfe43c685"
+        "sha256": "d947fcbfe91a440befede4166427c09774ef42638709768322526810c552b1d0"
       },
       "bulk": 1,
       "price": 5,
@@ -231,7 +231,7 @@
       "name": "Lighting Bundle",
       "source": {
         "path": "design/equipment/lighting-bundle.md",
-        "sha256": "cc6e0d4e3c1817902e2b9bbe478e857bbed909f40f49388307e26ef34ad40969"
+        "sha256": "f852194a730246192d11f4bd2c7bc24f2f8f1dddf3d969ba7ac3b536b07e08d8"
       },
       "bulk": 1,
       "price": 5,
@@ -245,7 +245,7 @@
       "name": "Local Map",
       "source": {
         "path": "design/equipment/local-map.md",
-        "sha256": "48984696d0f1c6a1334e186da35df393cfcb77ea84256f63e74b07158c2e8616"
+        "sha256": "013ccd4aca49de93fa83f9cc3f5d9d6807efda78041f7406be83b543aa283b20"
       },
       "bulk": 1,
       "price": 5,
@@ -259,7 +259,7 @@
       "name": "Lock Tools",
       "source": {
         "path": "design/equipment/lock-tools.md",
-        "sha256": "f5427ef19acc76f60fe808dd384c673e24969ca9f0b720b91d80548c1bcba15f"
+        "sha256": "f026f86b2e7da159dc03563d775858ad7ba22947170cc216dcb2c41a8a84bf41"
       },
       "bulk": 1,
       "price": 20,
@@ -273,7 +273,7 @@
       "name": "Material Bundle",
       "source": {
         "path": "design/equipment/material-bundle.md",
-        "sha256": "b4771c3c334284339f0fe6c611fbaacddf631043f9256c2554ab7a9ffcc3f015"
+        "sha256": "b3f6a85c25e80ed5b9e0b53e028211334da7d17afa1d1107cd59436a454ce9d9"
       },
       "bulk": 1,
       "price": 12,
@@ -287,7 +287,7 @@
       "name": "Mixing Kit",
       "source": {
         "path": "design/equipment/mixing-kit.md",
-        "sha256": "8b5c3e39824357fe04203d1fb8abe8f5e8947ee552ad4e6dff76db6a1a0b1846"
+        "sha256": "1a6084d7e6a5a1822fb03be8123393951cc3fb74e3a252bbcd94fcd59032331a"
       },
       "bulk": 1,
       "price": 20,
@@ -301,7 +301,7 @@
       "name": "Musical Instrument",
       "source": {
         "path": "design/equipment/musical-instrument.md",
-        "sha256": "c2e4d143a14e4b975e299e82fb9946e79f260f1c8913adb21fccbc937f91a741"
+        "sha256": "200cd2a56fe9b6a043054c1662ebe4dbda38c81cba2785e134388fd42693045e"
       },
       "bulk": 1,
       "price": 12,
@@ -315,7 +315,7 @@
       "name": "Ordinary Heavy Armor",
       "source": {
         "path": "design/equipment/ordinary-heavy-armor.md",
-        "sha256": "fb1b3fc196eac589c2f89319c530a3a1dc12d33533b12bb0ec88cb7085056cbf"
+        "sha256": "288b57d9bc293cd2aa2c792b13a02f9a3eaefe6c899bb81979e46c62a1923d6f"
       },
       "bulk": 1,
       "price": 90,
@@ -329,7 +329,7 @@
       "name": "Ordinary Medium Armor",
       "source": {
         "path": "design/equipment/ordinary-medium-armor.md",
-        "sha256": "97be9b80456aaf870f3de749523b9053d905d0940fef20e089a1ec9460b9bca0"
+        "sha256": "7050f7573563be9a52f12c746e67b31035782055296cce1d043e37bd860aad65"
       },
       "bulk": 1,
       "price": 40,
@@ -343,7 +343,7 @@
       "name": "Ordinary Melee Weapon",
       "source": {
         "path": "design/equipment/ordinary-melee-weapon.md",
-        "sha256": "9e20f5750029af6ffc1854578f84c736740fd593010ba05da4aeaa94d9fbd134"
+        "sha256": "541a3db620061e7a67ab8dd2ff0535df2749b413ce45689296ba48f40c8eefee"
       },
       "bulk": 1,
       "price": 12,
@@ -360,7 +360,7 @@
       "name": "Ordinary Ranged Weapon",
       "source": {
         "path": "design/equipment/ordinary-ranged-weapon.md",
-        "sha256": "5ed154ed13fa3ae44ac34993181a01a1106bd80d029dee623610fd4b9f9f4827"
+        "sha256": "9c69356c4e6fcf554f80a24f700311290ae8c5472d009ab64c1c6e1b6822ceb9"
       },
       "bulk": 1,
       "price": 18,
@@ -376,7 +376,7 @@
       "name": "Ordinary Shield",
       "source": {
         "path": "design/equipment/ordinary-shield.md",
-        "sha256": "a611f1843ae3505251d1f1b1d7196214097e6609353aa82f46e0ca5cf9d7864a"
+        "sha256": "bb1853376e23ce49755c14aa8ec9899512540bc529a4448a42c3e78f9654dc0f"
       },
       "bulk": 1,
       "price": 10,
@@ -392,7 +392,7 @@
       "name": "Padlock",
       "source": {
         "path": "design/equipment/padlock.md",
-        "sha256": "a801793640b6de10d917f9e8eca4718b6c777f1b839c86883c0bdaad651bcb7b"
+        "sha256": "2486954008ddd2e6cef47efc32456f759f326c06bec006cc5b6e92b0576cb2b6"
       },
       "bulk": 1,
       "price": 5,
@@ -406,7 +406,7 @@
       "name": "Restraints",
       "source": {
         "path": "design/equipment/restraints.md",
-        "sha256": "7288e6138051c3db22ebb50d0ba3ee77b8c568af50a6f42c5e61b9177a83063d"
+        "sha256": "472eba5c95bca72355a9659320b50bc536cbc8686a1bf169173aea477bcbdd7e"
       },
       "bulk": 1,
       "price": 8,
@@ -420,7 +420,7 @@
       "name": "Rope Coil",
       "source": {
         "path": "design/equipment/rope-coil.md",
-        "sha256": "ab9874b47447b9e70260c6d71a7f15e9493352a8267d0c27c7d4d631bb503962"
+        "sha256": "36764f0405445fb2479940770dc7cc0e2fe27b00b8703bbd16a56149820bc83a"
       },
       "bulk": 1,
       "price": 5,
@@ -434,7 +434,7 @@
       "name": "Signal Kit",
       "source": {
         "path": "design/equipment/signal-kit.md",
-        "sha256": "3783293818195766fe4fd48e3c6d702c2cd8bf602407fae025564602d0ae95b4"
+        "sha256": "c48685f7a976efb358a4990488cbc565a2714885806ce13cdc959783ecbef8e0"
       },
       "bulk": 1,
       "price": 4,
@@ -448,7 +448,7 @@
       "name": "Sleeping Roll",
       "source": {
         "path": "design/equipment/sleeping-roll.md",
-        "sha256": "2cde7bd6566e310869acf24f8a28ab1304354a585356993e27e12d36d19c8783"
+        "sha256": "3e89c7c5aa5c2f64d28108e47c10b3544d00fa2e4dcfdc4406279b2af65e44ce"
       },
       "bulk": 1,
       "price": 4,
@@ -462,7 +462,7 @@
       "name": "Small Necessities",
       "source": {
         "path": "design/equipment/small-necessities.md",
-        "sha256": "4abaf5026df985da605e975b552a9a36901273b7df46ce9e3f622f2924d85f90"
+        "sha256": "3e246478e7a9231240b81111def96bd089dbede5f08ad1687761da026a9437c7"
       },
       "bulk": 1,
       "price": 2,
@@ -476,7 +476,7 @@
       "name": "Small Tent",
       "source": {
         "path": "design/equipment/small-tent.md",
-        "sha256": "0b1d7ccf79c553c9e5ab53266ca5d269a49d5bbd913f58b2629e58e20c9d1460"
+        "sha256": "32d20a1accd35e707e8bbd8ebb50f7220d6d697d80ea38123682677288ea25bb"
       },
       "bulk": 1,
       "price": 12,
@@ -490,7 +490,7 @@
       "name": "Smoke Supply",
       "source": {
         "path": "design/equipment/smoke-supply.md",
-        "sha256": "6afe19cd33c3184b132b1d428e4b7cfe5950726019bd718fa8cd0277a23f1582"
+        "sha256": "cd0822857564820ad59bdd3600c312833578b6467351e7b62542d89d154ab21d"
       },
       "bulk": 1,
       "price": 15,
@@ -504,7 +504,7 @@
       "name": "Superior Healing Bottle",
       "source": {
         "path": "design/equipment/superior-healing-bottle.md",
-        "sha256": "a1a98d4f86da1c440764dd99868050513ea519fde04ccc94c8b68761021c9c99"
+        "sha256": "dbdf3a0e75e909f6dceee8111d94b0000e7b822179735e9e17ea8e3b0d6f9434"
       },
       "bulk": 1,
       "price": 120,
@@ -518,7 +518,7 @@
       "name": "Trade Sack",
       "source": {
         "path": "design/equipment/trade-sack.md",
-        "sha256": "259575e29beebd102cc9efd077486cee17ee95ba789342129a3c2c1a3b5d2428"
+        "sha256": "dde790f4d6d6a1bac96852aee86642a0218bdf3531113372a702e6ca81ee2409"
       },
       "bulk": 1,
       "price": 1,
@@ -532,7 +532,7 @@
       "name": "Travel Clothes",
       "source": {
         "path": "design/equipment/travel-clothes.md",
-        "sha256": "2f8304acde2eec86857eb0924160936d9d27990194cffc5b9efe0a05f7c847af"
+        "sha256": "21a9543719a33322d80883f656a08ac7809b772133da34aba45b5160acd2b9c2"
       },
       "bulk": 1,
       "price": 4,
@@ -546,7 +546,7 @@
       "name": "Travel Pack",
       "source": {
         "path": "design/equipment/travel-pack.md",
-        "sha256": "ca7f26f7aa1ff7643f92c4d8e8c2728629b7dec0f5feac4483a7d2dd2ceb1dae"
+        "sha256": "7ba4d0fa1492af9f7ae6b20fea45323de34e592e04ddda2d9b8fdf74f3a3c918"
       },
       "bulk": 1,
       "price": 3,
@@ -560,7 +560,7 @@
       "name": "Water Flask",
       "source": {
         "path": "design/equipment/water-flask.md",
-        "sha256": "b4f30172043fe89a349b7a5ea68c1c78f661c2e4713cba5945a549e9b5ecb514"
+        "sha256": "8cf8c47a61c315ba014e7f081afbd4853848c60602c57142cacb287581f4def4"
       },
       "bulk": 1,
       "price": 3,
@@ -574,7 +574,7 @@
       "name": "Weather Clothes",
       "source": {
         "path": "design/equipment/weather-clothes.md",
-        "sha256": "f4298b9e377fb974a920a8d2e60d5ee392d95460a80a50749333630ba25b5b8d"
+        "sha256": "b3fea16c52c181be45419e9249d3dc845b46e74dba6f8782c94d9a0fe80f8cec"
       },
       "bulk": 1,
       "price": 10,
@@ -602,7 +602,7 @@
       "name": "Writing Kit",
       "source": {
         "path": "design/equipment/writing-kit.md",
-        "sha256": "77fb4d0dccf3b62389b44f73c1045122e9bcfaff2788d2f685319ca822f60015"
+        "sha256": "21dc1c071c004e87f0f2044faaa27f65b80af14822d09347b0109ea37949d9a6"
       },
       "bulk": 1,
       "price": 6,
@@ -618,7 +618,7 @@
       "name": "Bound Torches",
       "source": {
         "path": "design/recipes/bound-torches.md",
-        "sha256": "6eb31dc996221e5b52cbc1c7219bee0b54366b5a7b8a5f8f5a71a3fb25791628"
+        "sha256": "53a0214b47523fc2f4a497b8f474c58a92bbe20a70d37eea6bb41d658181756a"
       },
       "maximumDie": 6,
       "product": "item-lighting-bundle",
@@ -637,7 +637,7 @@
       "name": "Camp Shelter",
       "source": {
         "path": "design/recipes/camp-shelter.md",
-        "sha256": "833d56d546a2e5fe2a3522d1281c2580e263729e5d4c2f5765d51b9b860a156b"
+        "sha256": "04dae7a08f2e8873854ca6e960398e81a98278a10e458e0c5ea8646dd0efc6f2"
       },
       "target": 4,
       "product": null,
@@ -654,7 +654,7 @@
       "name": "Clearing Tonic",
       "source": {
         "path": "design/recipes/clearing-tonic.md",
-        "sha256": "1423668591ec5d02906b60bf46b7758e83f94f609fb424420e7e3119c96107b2"
+        "sha256": "cb28cc3bec879260657add0a650445b4edf3f2433a1d3fa15a8c0542d6d04fd2"
       },
       "maximumDie": 4,
       "product": "item-clearing-tonic",
@@ -671,7 +671,7 @@
       "name": "Fletched Ammunition",
       "source": {
         "path": "design/recipes/fletched-ammunition.md",
-        "sha256": "562a3bde907f3ff1c8f14c733777650785bc43006727e1234095ed319d044f30"
+        "sha256": "3916bf843328bb6793df1c7dde51bb7e0006e84abadcecdce4fc609226e8bcee"
       },
       "maximumDie": 8,
       "product": "item-ammunition-bundle",
@@ -690,7 +690,7 @@
       "name": "Lesser Healing Bottle",
       "source": {
         "path": "design/recipes/lesser-healing-bottle.md",
-        "sha256": "46909588453cfe0b312711b0da039dbe9548d3097e07ef9d9ddb29c61e07f999"
+        "sha256": "c9a2375a070c708517bf027ab6430531753771deac5f72c51cc6286a928d4c11"
       },
       "maximumDie": 4,
       "product": "item-lesser-healing-bottle",
@@ -707,7 +707,7 @@
       "name": "Simple Replacement Leg",
       "source": {
         "path": "design/recipes/simple-replacement-leg.md",
-        "sha256": "31c4ab641b9cb794854eba7a722b437e7ba764161f13549a3f566ceeaf991489"
+        "sha256": "9a3f71de4645e06d785e16472eefea707c3a2f5fdf7dd33d4497de11a78a2d82"
       },
       "target": 8,
       "product": null,
@@ -726,7 +726,7 @@
       "name": "Smoke Flask",
       "source": {
         "path": "design/recipes/smoke-flask.md",
-        "sha256": "eba7c344c502d0fd2d1fe6952ed851b4c6945df9309f2dc2f8b40f00f014d10f"
+        "sha256": "176921cb1fe64bcfd34e7a228b27e1bba867897b618e8c83720a5aac99ba6099"
       },
       "maximumDie": 6,
       "product": "item-smoke-supply",
@@ -743,7 +743,7 @@
       "name": "Travel Food",
       "source": {
         "path": "design/recipes/travel-food.md",
-        "sha256": "da41ce04dc49d05b6fe57decd27c2faa2938888d7c16d3e05d946b169f21772b"
+        "sha256": "77183cad6e6e3d286b660064550d792a69574ac48bcf34576c2d2bcdaf32ff92"
       },
       "maximumDie": 8,
       "product": "item-food-bundle",
@@ -765,7 +765,7 @@
       "name": "Twisted Cord",
       "source": {
         "path": "design/recipes/twisted-cord.md",
-        "sha256": "47639ab5fd6fec16ad9834452673450790374e3cf1846577e7636ed1af606366"
+        "sha256": "b8669f25fce8c2aa801b9a161a8a29f00c6abb820d3c0c6fd3c4db5d7f332bcd"
       },
       "target": 4,
       "product": "item-rope-coil",
@@ -784,7 +784,7 @@
       "name": "Wooden Brace",
       "source": {
         "path": "design/recipes/wooden-brace.md",
-        "sha256": "9b22a49c2e5f3b8fc417d7e2c79424c7c2fafb8be6a41f06496a202a9b2bb66d"
+        "sha256": "b00828366ce91de171c355628183567352e2e6e6f267c3667cddc27280f7e4fa"
       },
       "target": 4,
       "product": null,
@@ -804,7 +804,7 @@
       "id": "ability-a-bough-for-the-fallen",
       "source": {
         "path": "design/cards/a-bough-for-the-fallen.md",
-        "sha256": "b4c06a48eccd23fc8013701e821e6d7c8ac41938db6e4625e717e9e2c74f976e"
+        "sha256": "2e2d8f4a2c05c74a18a8a0d6ddc461504852e36857f32f6deaedf01d1973d2fa"
       },
       "items": [],
       "recipes": []
@@ -813,7 +813,7 @@
       "id": "ability-a-breath-beneath-the-water",
       "source": {
         "path": "design/cards/a-breath-beneath-the-water.md",
-        "sha256": "c8c93db9b10ab33cc31c0c2e8bc69ea91dfed90e0fd46fa9b29282187434a175"
+        "sha256": "6377d20c13a8646b0008717480323a0fd5bf96f7111a8bffe0dfe3b23d895d1d"
       },
       "items": [],
       "recipes": []
@@ -822,7 +822,7 @@
       "id": "ability-a-camp-without-a-trace",
       "source": {
         "path": "design/cards/a-camp-without-a-trace.md",
-        "sha256": "3bda73fbdd69bb0713892cdc762fc865d50c7cbabee1fd014d6b975e56d06beb"
+        "sha256": "b2f2e0ad3051adfcc2a677c07e5664e12bf56954ed0d6bc79aff407d4438a6d9"
       },
       "items": [],
       "recipes": []
@@ -831,7 +831,7 @@
       "id": "ability-a-coal-for-a-promise",
       "source": {
         "path": "design/cards/a-coal-for-a-promise.md",
-        "sha256": "9e2481f19640e273d4f72a4f7fba847d6b9fb00812b70587f339a638007bbad2"
+        "sha256": "5e8b06ebb77528507a65f4fc70efdd712d29980c5d689a4d9ce8e99e645f0901"
       },
       "items": [],
       "recipes": []
@@ -840,7 +840,7 @@
       "id": "ability-a-company-of-reflections",
       "source": {
         "path": "design/cards/a-company-of-reflections.md",
-        "sha256": "075c55cbcfa88b4c8f81756e63b925e0ff39fb53d689a6f0bc9c839dcc8f6973"
+        "sha256": "a52b32561a08510e54f5b5bcea27a0dafa3325a48f9375a4279448a4822d135e"
       },
       "items": [],
       "recipes": []
@@ -849,7 +849,7 @@
       "id": "ability-a-courtesy-unanswered",
       "source": {
         "path": "design/cards/a-courtesy-unanswered.md",
-        "sha256": "3defa272778a28c2c89cf31fb4aa651f99a3f502eb5de0f11e47403353b5647f"
+        "sha256": "caf256f88f4d7bd0664515e2ac4a8d6afca369b1729d70dceaeec9d83dff9821"
       },
       "items": [
         "item-ordinary-melee-weapon"
@@ -860,7 +860,7 @@
       "id": "ability-a-door-that-is-not-there",
       "source": {
         "path": "design/cards/a-door-that-is-not-there.md",
-        "sha256": "bae959d7b68a3c20262a0c0ea67cb19b2703300b27b39bdc40a6e4e5a57452b2"
+        "sha256": "46f2a1b215d1a7fbee4dc2a91969625bd3588ecdcf4cd752a92ed3f77fbc1d67"
       },
       "items": [],
       "recipes": []
@@ -869,7 +869,7 @@
       "id": "ability-a-friend-beneath-the-door",
       "source": {
         "path": "design/cards/a-friend-beneath-the-door.md",
-        "sha256": "70fab706af847490b86fb02f6bd15b0731000627c19f2f3d6a922993a9197464"
+        "sha256": "f19520798200ce644ee616b4115800890f3c19d4d01b204b086811d7a24564f4"
       },
       "items": [],
       "recipes": []
@@ -878,7 +878,7 @@
       "id": "ability-a-good-place-to-stop",
       "source": {
         "path": "design/cards/a-good-place-to-stop.md",
-        "sha256": "506b756036cb90d203de32c9316aabebfcaa7955c411b0bb119d8b6c0defe954"
+        "sha256": "73f5f8c71fb0d30aafd07ca90dc3d23ccf33d2c1a663c69227230c0b1a7e32fd"
       },
       "items": [],
       "recipes": []
@@ -887,7 +887,7 @@
       "id": "ability-a-hand-from-before",
       "source": {
         "path": "design/cards/a-hand-from-before.md",
-        "sha256": "965221a6f9361c6ffe88f7ad12b9d70a53553ef70c3b95163b7558eac2a0f127"
+        "sha256": "8397f255fb09990ed852f4f365d457dbf1f1b0702d559cc828aecac676be4d9c"
       },
       "items": [],
       "recipes": []
@@ -896,7 +896,7 @@
       "id": "ability-a-knot-you-can-trust",
       "source": {
         "path": "design/cards/a-knot-you-can-trust.md",
-        "sha256": "91da2f5164668d43905f6e054b769f4e9766ba26f130162118f763f41fb95f3c"
+        "sha256": "1764cef76d35c7f10e37c68052b44ebf477b33427607dde6a1be60cbb22921ec"
       },
       "items": [
         "item-rope-coil"
@@ -907,7 +907,7 @@
       "id": "ability-a-line-for-everyone",
       "source": {
         "path": "design/cards/a-line-for-everyone.md",
-        "sha256": "486de06fb8c6b5bc7dd0404596234a88a61d247e64a7851a087fdea64884a11f"
+        "sha256": "e57f88887124fba834dd46553dece3fb08bfd5c1f4186fa819c32a4667caec1a"
       },
       "items": [
         "item-rope-coil"
@@ -918,7 +918,7 @@
       "id": "ability-a-lock-has-a-language",
       "source": {
         "path": "design/cards/a-lock-has-a-language.md",
-        "sha256": "175ef574340214646e3787d5ef47151b371581c3987f37a64b39451180afe135"
+        "sha256": "228f86c5e46d91e15c5eb9b0f0200cfb83e8fd9a980e1fe64eb007e22f93a52e"
       },
       "items": [
         "item-lock-tools"
@@ -929,7 +929,7 @@
       "id": "ability-a-marvel-on-wheels",
       "source": {
         "path": "design/cards/a-marvel-on-wheels.md",
-        "sha256": "6b27c3c9d5c06df23bbdb1c5a66a61d44a875b67b96d466e80358b1c7351374d"
+        "sha256": "027ad0ded624f864cab2b111f9f80cfa7e08ba9471f622d6dc4adc89280670b7"
       },
       "items": [],
       "recipes": []
@@ -938,7 +938,7 @@
       "id": "ability-a-place-at-any-fire",
       "source": {
         "path": "design/cards/a-place-at-any-fire.md",
-        "sha256": "74d79caa969a89e1772af9efdd536fd6247acde38fb25562b358cac091b1ae06"
+        "sha256": "545a298003f109d3eaad5e6fd1d9cd8f0324f07eb786cfafe55ae5e499763e29"
       },
       "items": [],
       "recipes": []
@@ -947,7 +947,7 @@
       "id": "ability-a-ribcage-for-a-shield",
       "source": {
         "path": "design/cards/a-ribcage-for-a-shield.md",
-        "sha256": "7ed16f689079261c72e73b3a1d6ac18d14cddc4004364bf02308a3ace7509a50"
+        "sha256": "a2bc62bf89e01c5ab44aac9e45a39008fa5b1a3737af5d703b3ff0e8dacb8c42"
       },
       "items": [],
       "recipes": []
@@ -956,7 +956,7 @@
       "id": "ability-a-road-through-rain",
       "source": {
         "path": "design/cards/a-road-through-rain.md",
-        "sha256": "93b8c16ee3d8c905d90059a0e3c82bfcafa6ec13321ca7d34080d7fd21beef59"
+        "sha256": "9ed41f041ec04422a7aa841a95c33bb16f930a3ad047f1d4f24de55b6dcac199"
       },
       "items": [],
       "recipes": []
@@ -965,7 +965,7 @@
       "id": "ability-a-roof-before-nightfall",
       "source": {
         "path": "design/cards/a-roof-before-nightfall.md",
-        "sha256": "ded366b99903a0021bbb0944343756c95ec8e32dfa71a290aa5bd523b2aafa7e"
+        "sha256": "e9c7dd9725452363885441a714c8da843052fd47701b910b63f424f5256404d6"
       },
       "items": [
         "item-craft-tools"
@@ -978,7 +978,7 @@
       "id": "ability-a-shadow-at-the-heart",
       "source": {
         "path": "design/cards/a-shadow-at-the-heart.md",
-        "sha256": "dd0682fd045567543bd463f470c56d1f6333eab4da949404f6180914fdaf3aa3"
+        "sha256": "5470ed9fce2a57c77ce6212f1e2e36f9dec67c05c5ffa8a1f8d5cb45ef395186"
       },
       "items": [
         "item-ordinary-melee-weapon"
@@ -989,7 +989,7 @@
       "id": "ability-a-shelter-of-light",
       "source": {
         "path": "design/cards/a-shelter-of-light.md",
-        "sha256": "f6987aee9156c877c3f2466154931412669ef2a4f6a60d3e0c3c04832984e225"
+        "sha256": "c16b755029a1ac6888f9f4addfa249648e5bfbc11714f94de3dd1900e14df78f"
       },
       "items": [],
       "recipes": []
@@ -998,7 +998,7 @@
       "id": "ability-a-sign-against-harm",
       "source": {
         "path": "design/cards/a-sign-against-harm.md",
-        "sha256": "fea236a0d06934dfedb7b35d7c0160b00c59db7681f24522e083b8b9b936dd57"
+        "sha256": "5b384d30ea84c6cbea2c0b09384fc0dca8f2de8e8470eb6d06ad4b45310ca601"
       },
       "items": [],
       "recipes": []
@@ -1007,7 +1007,7 @@
       "id": "ability-a-small-and-watchful-shape",
       "source": {
         "path": "design/cards/a-small-and-watchful-shape.md",
-        "sha256": "ed248fc96a571198b3b854668b4f1bca25e8383a10abe65edcc3f5ecd7b991ba"
+        "sha256": "6a6dd891011516d7a1bcbd45d17031884e7df9010a0845045f3b6037ede32bdd"
       },
       "items": [],
       "recipes": []
@@ -1016,7 +1016,7 @@
       "id": "ability-a-splendid-mistake",
       "source": {
         "path": "design/cards/a-splendid-mistake.md",
-        "sha256": "12de4d7cf80b8cd3253b716444ac3066d90fe005cc783469e7ad5807a98f16de"
+        "sha256": "7f8749e6efc6000bd503e8a1fd8cc6829ba07102259d6125f5a3643a94d034b6"
       },
       "items": [],
       "recipes": []
@@ -1025,7 +1025,7 @@
       "id": "ability-a-steady-hand-at-dawn",
       "source": {
         "path": "design/cards/a-steady-hand-at-dawn.md",
-        "sha256": "c874eccda65d1ca8c5faecabb599e1d431a723d6abce67fe806219aaba9fdabf"
+        "sha256": "85a1233222097225e227e8cd2048d4382c609410034466755f01374f2be2e97e"
       },
       "items": [],
       "recipes": []
@@ -1034,7 +1034,7 @@
       "id": "ability-a-sword-made-of-dawn",
       "source": {
         "path": "design/cards/a-sword-made-of-dawn.md",
-        "sha256": "4caaada05c33d5993439a4055285fd51315b572bed8c9a18b3ced97da4e32796"
+        "sha256": "5cb2db2f793e21249f243528848c145262100794a59e19cd2fb11c49a6b874d8"
       },
       "items": [
         "item-ordinary-melee-weapon"
@@ -1045,7 +1045,7 @@
       "id": "ability-a-thought-that-is-not-yours",
       "source": {
         "path": "design/cards/a-thought-that-is-not-yours.md",
-        "sha256": "14bbfe1c2bc727fda780f3f17e0d1d3451c573473a2e04d0eb5a12ff0bd73331"
+        "sha256": "6175320caca889822e64674bfe007bb79681a18600b6ec400a8cc359f58d78c9"
       },
       "items": [],
       "recipes": []
@@ -1054,7 +1054,7 @@
       "id": "ability-a-verse-for-courage",
       "source": {
         "path": "design/cards/a-verse-for-courage.md",
-        "sha256": "68e9cbfae9e1aa96766074b39044201c58178ed2b47a09010342f37bfa98856d"
+        "sha256": "846bdbbf012c0ce63be6a69f9016300f75fa84396a03067cb9dcb905ae3b35fb"
       },
       "items": [],
       "recipes": []
@@ -1063,7 +1063,7 @@
       "id": "ability-a-voice-across-the-valley",
       "source": {
         "path": "design/cards/a-voice-across-the-valley.md",
-        "sha256": "85fe09bf970b86b4965d450d16f57f76c87d29677042ab64c4c0e35129b27214"
+        "sha256": "f4d56254bb1ef18b5d6cbf3685a257feb36f533a294e68396978dd819b52380a"
       },
       "items": [],
       "recipes": []
@@ -1072,7 +1072,7 @@
       "id": "ability-a-word-apart",
       "source": {
         "path": "design/cards/a-word-apart.md",
-        "sha256": "aa8fda76686c380c1f731f011e9a2833d460598b30a5296e5942788029b97947"
+        "sha256": "8d7532342bb7b5f33020bd971cd9c622a6c65979e586815eef6304960e876d71"
       },
       "items": [],
       "recipes": []
@@ -1081,7 +1081,7 @@
       "id": "ability-aid",
       "source": {
         "path": "design/cards/aid.md",
-        "sha256": "c06fb9c8ae580fde6665bb95725875c28248accab0c771a25f261c7b64d44196"
+        "sha256": "7f826e70aaf206aa97a7fbf6bb759b51b0b21b02280319714203cdc1032c5760"
       },
       "items": [],
       "recipes": []
@@ -1090,7 +1090,7 @@
       "id": "ability-all-voices-as-one",
       "source": {
         "path": "design/cards/all-voices-as-one.md",
-        "sha256": "91cace34dc12aa4999939d5cdc59ad797727b9f36f72ef5b55f0a3c4111ccbf1"
+        "sha256": "b5da97c7831caa97f4beb249b93e27f36d40536177a40eb8f446c97c659d7e31"
       },
       "items": [],
       "recipes": []
@@ -1099,7 +1099,7 @@
       "id": "ability-an-impossible-theft",
       "source": {
         "path": "design/cards/an-impossible-theft.md",
-        "sha256": "1cb52cb613fa2f331bfbd572b9a82533d60641460e2bf853a21eebc7e6862714"
+        "sha256": "e46a7965c185873e20e87b50136ef116579b98e4f8c1732c9073efa4952e88c1"
       },
       "items": [],
       "recipes": []
@@ -1108,7 +1108,7 @@
       "id": "ability-an-invitation-elsewhere",
       "source": {
         "path": "design/cards/an-invitation-elsewhere.md",
-        "sha256": "b0178a2561d8ff3fbbafac2c4c255fc4ed12ee59c15c0e6037567107fb2d1806"
+        "sha256": "7097de5a950a7e1e94a3fc6ec5f5a31c011dc87b35a0ab914f6ddea183c2cf8e"
       },
       "items": [],
       "recipes": []
@@ -1117,7 +1117,7 @@
       "id": "ability-anatomy-of-an-opening",
       "source": {
         "path": "design/cards/anatomy-of-an-opening.md",
-        "sha256": "a4639e087c6dbd5230e487f1af10369e1b648aec1eb4096ec30054bb259e7756"
+        "sha256": "0e5996ab2b9c1ad7200015d45f907af64745de8d48e10d8a2b22513df30fa89f"
       },
       "items": [],
       "recipes": [],
@@ -1130,7 +1130,7 @@
       "id": "ability-answer-for-what-you-did",
       "source": {
         "path": "design/cards/answer-for-what-you-did.md",
-        "sha256": "901010d5b8ccd57a98e827c370d6dedf4906a6d1fb709f4700628f16f5f70026"
+        "sha256": "4567f71e3a0aeedd5a5ad5298df01082533e4750d73939981d38cbc0c004f001"
       },
       "items": [
         "item-ordinary-melee-weapon"
@@ -1141,7 +1141,7 @@
       "id": "ability-armored-recovery",
       "source": {
         "path": "design/cards/armored-recovery.md",
-        "sha256": "4101dd214836e6480fbf4638f1c50ee7e5142488500846fff00e97d3d1c0562f"
+        "sha256": "2fed9b6e1ccad741660adb5845d253b062bd851b99e1a00e88bc06593127f1be"
       },
       "items": [],
       "recipes": []
@@ -1150,7 +1150,7 @@
       "id": "ability-arrive-under-guard",
       "source": {
         "path": "design/cards/arrive-under-guard.md",
-        "sha256": "bad19701cff61f7ab75af7ea569642246bc13d7fe2cb1660e2335525b196310a"
+        "sha256": "c737c44df31d25365e8bb4d55824f3d67e8ce99c3a30e422c205000322268100"
       },
       "items": [],
       "recipes": []
@@ -1159,7 +1159,7 @@
       "id": "ability-ask-the-falling-ash",
       "source": {
         "path": "design/cards/ask-the-falling-ash.md",
-        "sha256": "8ad388c1fd45b5b92ca92e809a1ea78fd584acc207077dae9c4caa9a86de9ee7"
+        "sha256": "917ebe676955af5fac658224fde96f3977de5f7651494d66efa31dbd4d546d2b"
       },
       "items": [],
       "recipes": []
@@ -1168,7 +1168,7 @@
       "id": "ability-basic-melee",
       "source": {
         "path": "design/cards/basic-melee.md",
-        "sha256": "990ddaf6b132b1b023423637af072ca9b5eec5d34b094c88e65780a41639fe45"
+        "sha256": "9d6e0b6ca75363b94c6886fb3c53087f854098f024aac232395c61fdc438ae40"
       },
       "items": [],
       "recipes": []
@@ -1177,7 +1177,7 @@
       "id": "ability-basic-ranged",
       "source": {
         "path": "design/cards/basic-ranged.md",
-        "sha256": "f8e51fb10f8d9ea939eed3b45e19790c53dab2f37f04fa8fa446ee1f5583b85a"
+        "sha256": "a9533cbe2e5d4d40304aafc2b119ad941616db097362363a8f85781131fa4bf8"
       },
       "items": [],
       "recipes": []
@@ -1186,7 +1186,7 @@
       "id": "ability-basic-throw",
       "source": {
         "path": "design/cards/basic-throw.md",
-        "sha256": "ac11622d5c55c9e8d24346b0ffd5a9016d76b8e1b30de3ed062d8c963d56edcd"
+        "sha256": "dd508c31a7f860401aec775291447a1e04c63bf82a01e8f3c2c4332617ae39c2"
       },
       "items": [],
       "recipes": []
@@ -1195,7 +1195,7 @@
       "id": "ability-basic-unarmed",
       "source": {
         "path": "design/cards/basic-unarmed.md",
-        "sha256": "bffaa85be882f2883714c3bb4bd263a8fdb76c03bead7cd727f3d7753cfd8a3d"
+        "sha256": "5f5db412a0c40a65a6d302cd61de2f14f3e590466a6031029a79d6592d173879"
       },
       "items": [],
       "recipes": []
@@ -1204,7 +1204,7 @@
       "id": "ability-behind-the-hawthorn",
       "source": {
         "path": "design/cards/behind-the-hawthorn.md",
-        "sha256": "e93d1e1af765b1946b648aecbba252be3d6195e79eba463975a263592cb477f2"
+        "sha256": "eb677dff802c9350461d06029b35994a6c158804dd1b5f5c64b4f76e2820742f"
       },
       "items": [],
       "recipes": []
@@ -1213,7 +1213,7 @@
       "id": "ability-bind-and-turn",
       "source": {
         "path": "design/cards/bind-and-turn.md",
-        "sha256": "8c7c62a9d7d0b143454fe04789e64d28baaf42f6561a662eaf4925e893b81416"
+        "sha256": "9b4e60f245570f9d0129142f7618d00cda32087e4fb07c4451a57ecc175d1f24"
       },
       "items": [],
       "recipes": []
@@ -1222,7 +1222,7 @@
       "id": "ability-blood-in-the-teeth",
       "source": {
         "path": "design/cards/blood-in-the-teeth.md",
-        "sha256": "13c8e1f591113267aec88dd598435b70e3623416d0ba2733875fe7a03c046785"
+        "sha256": "8300d12b2f27f565ba0f2e66190a2b7ba413a09550a9ca90b70c1b368194226c"
       },
       "items": [
         "item-ordinary-melee-weapon"
@@ -1233,7 +1233,7 @@
       "id": "ability-borrow-a-voice",
       "source": {
         "path": "design/cards/borrow-a-voice.md",
-        "sha256": "cca3514d01a041d27b26393b400e08c296b89b5a21b59049307501859df34421"
+        "sha256": "4694e3c9db3145d43e125873b61985ea7a23fe6dbff6d3f5229cf32ea6c1aaf7"
       },
       "items": [],
       "recipes": []
@@ -1242,7 +1242,7 @@
       "id": "ability-borrow-the-beast",
       "source": {
         "path": "design/cards/borrow-the-beast.md",
-        "sha256": "be4d1a143b54c736b4bb59caeaa9a26e5bb74383b089c02f887e4190961b5b62"
+        "sha256": "dab30c7de2adb585572bb348a0fb0aa49cfc21ce0a1dfdb4e1494931022b88ab"
       },
       "items": [],
       "recipes": []
@@ -1251,7 +1251,7 @@
       "id": "ability-borrow-the-shadow",
       "source": {
         "path": "design/cards/borrow-the-shadow.md",
-        "sha256": "2242e653d40477c4c00e9b2130c8a506cd466f9b16eb7e5bf614ecb948617e0a"
+        "sha256": "d769c69068ebef26b7fe769037ed8316315b81f9948af90055b8c95bbaaa57c4"
       },
       "items": [],
       "recipes": []
@@ -1260,7 +1260,7 @@
       "id": "ability-borrow-tomorrow-s-weather",
       "source": {
         "path": "design/cards/borrow-tomorrow-s-weather.md",
-        "sha256": "71ddf6a60ac749f9ca29266bac872dda664516dfeaea5332e5af21d669eb9293"
+        "sha256": "935d978735a6bfcf2ccf286256f36e91abc83578b2f4b6a45e646b0c3fb60d4d"
       },
       "items": [],
       "recipes": []
@@ -1269,7 +1269,7 @@
       "id": "ability-borrowed-clothes-borrowed-manners",
       "source": {
         "path": "design/cards/borrowed-clothes-borrowed-manners.md",
-        "sha256": "f373e87c1f52c4be5f97d28a380c6b502ccd3b973e1773429dae468f4402bde3"
+        "sha256": "76171a578a14ec979eb63b7dc0be5b873b0b17ee18d62513e7f1497ed20bdc20"
       },
       "items": [],
       "recipes": []
@@ -1278,7 +1278,7 @@
       "id": "ability-borrowed-identity",
       "source": {
         "path": "design/cards/borrowed-identity.md",
-        "sha256": "1691a994acad5e994e8066bd4ecaee07e48df7beb074c033b3b7847f495958c9"
+        "sha256": "26647b638e7ee4dfe5728e204e775691256d094f7a1c7bc843c3506629b251ef"
       },
       "items": [],
       "recipes": []
@@ -1287,7 +1287,7 @@
       "id": "ability-borrowed-silhouette",
       "source": {
         "path": "design/cards/borrowed-silhouette.md",
-        "sha256": "60fc8de9c427aaee1f3fb7c902df8ad9458fdb91b47f2511a78746a25729aab3"
+        "sha256": "b1d0d2f41e91367e3473a079bdf32ce0f3a84b7cb5ac55c36ec446f9ba948362"
       },
       "items": [],
       "recipes": []
@@ -1296,7 +1296,7 @@
       "id": "ability-bottled-morning",
       "source": {
         "path": "design/cards/bottled-morning.md",
-        "sha256": "adb62e2b9deac894428d761e87fbce2d92623f5d26afbc31ab41815cc64f9dc0"
+        "sha256": "81731551a3a1bfb2f94cc5b66792691bc2aa87822eb9a15d24f50d5251abc4ec"
       },
       "items": [
         "item-mixing-kit"
@@ -1310,7 +1310,7 @@
       "id": "ability-bow-to-the-balcony",
       "source": {
         "path": "design/cards/bow-to-the-balcony.md",
-        "sha256": "52be95c47d92662692efbc69ff86a07c302c669068d79789cf1461745d51ea8d"
+        "sha256": "bd752c5ef376745a3b2c1c1cf219108eec583f2a66f2f04122411b519a33eb0d"
       },
       "items": [
         "item-ordinary-melee-weapon"
@@ -1321,7 +1321,7 @@
       "id": "ability-braced-harness",
       "source": {
         "path": "design/cards/braced-harness.md",
-        "sha256": "2d013d0c3eef768107b7dac33b34493a2ea03607e2110ef4c350d578e6251469"
+        "sha256": "8f2e2d180fb7e295db05831bf2b83b95b2bffd5d1373ba7c0a71b5c2327d049a"
       },
       "items": [],
       "recipes": []
@@ -1330,7 +1330,7 @@
       "id": "ability-break-the-charge",
       "source": {
         "path": "design/cards/break-the-charge.md",
-        "sha256": "094f96b5b29c6beaca60183b6e459c2bd7d284a8b692e01ebfb6cba0d25cd2ca"
+        "sha256": "2039c0cbfa44671d2cd78a35d596d678a3b76fa5f56e0e41eb77deb76f167690"
       },
       "items": [
         "item-ordinary-melee-weapon"
@@ -1341,7 +1341,7 @@
       "id": "ability-break-the-formation",
       "source": {
         "path": "design/cards/break-the-formation.md",
-        "sha256": "e466c0256f8afdd233c2f55ee4bb60f55b83cc79f6cee6c764d410060c300ed1"
+        "sha256": "ba1ccef6fb1540452d1a58465197e77fea7a3a2837c3a713d5971b328a4a4029"
       },
       "items": [
         "item-ordinary-melee-weapon"
@@ -1352,7 +1352,7 @@
       "id": "ability-breath-of-the-wyrmling",
       "source": {
         "path": "design/cards/breath-of-the-wyrmling.md",
-        "sha256": "90ed42eddf4cec970051c740c03e09e93b262a7b6ff3b5db329186be5b939ae3"
+        "sha256": "9f3e08e4363da809fe41f62020d748a07a7b50187d91d576f1873fd884f9d8aa"
       },
       "items": [],
       "recipes": []
@@ -1361,7 +1361,7 @@
       "id": "ability-briar-gate",
       "source": {
         "path": "design/cards/briar-gate.md",
-        "sha256": "b1a60fac622ab0e2203f540d4c692820303b6f2ecbf82fb78903a81c5404221f"
+        "sha256": "14ed87ebf2a79dbaabea71226c87d09cab2034b020c5abb63e3e4c09ece8772f"
       },
       "items": [],
       "recipes": []
@@ -1370,7 +1370,7 @@
       "id": "ability-bridge-of-winter",
       "source": {
         "path": "design/cards/bridge-of-winter.md",
-        "sha256": "089079938c0b11e54f8476860f944a5e5eb3605ed5e2c1979b6ae3525fcad48d"
+        "sha256": "045f56a143a280a06f8cd0516acf6c07cd61f2afb72ad6bff90044253140af47"
       },
       "items": [],
       "recipes": []
@@ -1379,7 +1379,7 @@
       "id": "ability-call-a-burrower",
       "source": {
         "path": "design/cards/call-a-burrower.md",
-        "sha256": "88852dc357ac9021f43b71dc3c96d47ec5909bf312deee84b823508f26c54910"
+        "sha256": "c179d940b75619cbc69ea0952726b67b953e7d37b49f93179ea2fd056b3fdc03"
       },
       "items": [],
       "recipes": []
@@ -1388,7 +1388,7 @@
       "id": "ability-call-a-sentinel",
       "source": {
         "path": "design/cards/call-a-sentinel.md",
-        "sha256": "5a0983df7cc9f64d97edf3ca047bfd352107b71557f4857c3f866c38ed24e8da"
+        "sha256": "8fbf8f4513ae59c13f8ec65f422c51ee0eeaa69f1981664ef1ac7f44facc8858"
       },
       "items": [],
       "recipes": []
@@ -1397,7 +1397,7 @@
       "id": "ability-call-a-tempest-beast",
       "source": {
         "path": "design/cards/call-a-tempest-beast.md",
-        "sha256": "7144bfb4ce59e5df114a6c67d937708f48ac247f2a10e49ced22221bc3bc5f43"
+        "sha256": "4f481efb49065cb26a5dee9da2752d2bab92522a3a866017b633b72744d2e501"
       },
       "items": [],
       "recipes": []
@@ -1406,7 +1406,7 @@
       "id": "ability-call-the-elder-stag",
       "source": {
         "path": "design/cards/call-the-elder-stag.md",
-        "sha256": "d035d9e100a15fb77c9c642104d912b6d48f03d29b401171f87fc50f4d822d66"
+        "sha256": "0e3da4b35dacf6a3d388139f69f0820bf643ef94b730850adca08b9adb2eca17"
       },
       "items": [],
       "recipes": []
@@ -1415,7 +1415,7 @@
       "id": "ability-call-the-faithful-hound",
       "source": {
         "path": "design/cards/call-the-faithful-hound.md",
-        "sha256": "f5aed0e417ea52816b3dc9e7ec382cc58b7638243956559c508d67c4752a2d3b"
+        "sha256": "c86a5e91e525692c02dd7ac002584dc43cc512a7d97ca7f41aa274c256a24290"
       },
       "items": [],
       "recipes": []
@@ -1424,7 +1424,7 @@
       "id": "ability-call-the-hunting-cat",
       "source": {
         "path": "design/cards/call-the-hunting-cat.md",
-        "sha256": "99aad060929de900294242f1a935f25781dd0a6be4ca242e8054d5076de457a0"
+        "sha256": "a602107f8fc161b3e81c2b36f979d818214cb25cb95a7109c94b656156516749"
       },
       "items": [],
       "recipes": []
@@ -1433,7 +1433,7 @@
       "id": "ability-call-the-opening",
       "source": {
         "path": "design/cards/call-the-opening.md",
-        "sha256": "fbdf2d747d90c5e1c0c20746e7ac01475639a7da592fa3ed730bd451da09f6af"
+        "sha256": "e88e6cda2527abafd87385d46d6937f20df07a9820153cfb38ec79a42236f6ef"
       },
       "items": [],
       "recipes": []
@@ -1442,7 +1442,7 @@
       "id": "ability-carry-the-sunrise",
       "source": {
         "path": "design/cards/carry-the-sunrise.md",
-        "sha256": "d377cfb8e6385a50e74e5c90d002d7c68fcd9320b9ee73b923e2cdb643a4c08b"
+        "sha256": "421247e7a5cb5543e847e617394778a8f79ecf183a6edae9a2c4fbeea721f81d"
       },
       "items": [],
       "recipes": []
@@ -1451,7 +1451,7 @@
       "id": "ability-carry-them-to-shore",
       "source": {
         "path": "design/cards/carry-them-to-shore.md",
-        "sha256": "9d0bdd15c70e09c54f19565110e7e69bf411879f215dbe5e7cd28cf5b1e5a896"
+        "sha256": "0142866661c089a6dd100a2e8cc3f05d3c3fb19141328a4c90400047476c04ee"
       },
       "items": [],
       "recipes": []
@@ -1460,7 +1460,7 @@
       "id": "ability-carry-to-safety",
       "source": {
         "path": "design/cards/carry-to-safety.md",
-        "sha256": "3c416683a7accd56739d6b871a2e05d8048506b2b459bac1f8039fa7ecb969fb"
+        "sha256": "9310288fad0b011e7c4f70a3c0987fd12af6731b1c92b5d68df44f995c96d803"
       },
       "items": [],
       "recipes": []
@@ -1469,7 +1469,7 @@
       "id": "ability-cast-through-the-reflection",
       "source": {
         "path": "design/cards/cast-through-the-reflection.md",
-        "sha256": "c041ac97635d0b905d5be34f1c0af060d8fe9a2f1ac0f897024aa0df6b009be7"
+        "sha256": "bc55d291e3aeb7f44a0ee50b2993b21458fb1e21d46fc2a470971887ff4bdca4"
       },
       "items": [],
       "recipes": []
@@ -1478,7 +1478,7 @@
       "id": "ability-catch-a-falling-friend",
       "source": {
         "path": "design/cards/catch-a-falling-friend.md",
-        "sha256": "c058dfa876e8c2964c9b1338fd09021934f2b18beaa1a950a00b8b58cf11347b"
+        "sha256": "56e3011b59b414859817b6b9bf21fb3c2e4c7380745e2a435f508a29b4d310cc"
       },
       "items": [],
       "recipes": []
@@ -1487,7 +1487,7 @@
       "id": "ability-catch-the-spell",
       "source": {
         "path": "design/cards/catch-the-spell.md",
-        "sha256": "d3bf085abc9cd2958341702d9b33f91660785fa45f87d1905e01be3589238bb1"
+        "sha256": "eb52e17f3b8c730ee16e84c1117730023851055730de65f590943916b70caa2d"
       },
       "items": [],
       "recipes": []
@@ -1496,7 +1496,7 @@
       "id": "ability-checkmate-in-three-steps",
       "source": {
         "path": "design/cards/checkmate-in-three-steps.md",
-        "sha256": "2bb4831c887d3f76d6cde78af5ae6d3719e68fb9320ee0640fd995baafc91fb0"
+        "sha256": "4bd0fbb8c4f69154dac024f16b3e832634c08a0db2bf83796552c4a05ed3176c"
       },
       "items": [],
       "recipes": []
@@ -1505,7 +1505,7 @@
       "id": "ability-cinder-cast",
       "source": {
         "path": "design/cards/cinder-cast.md",
-        "sha256": "d2d989b7a273184b3f7de4753b5317f0d1254c98eb2ca364914422069bcf8a98"
+        "sha256": "335cd35efa30171e755b4b5807610cb03ecef8054175db24727b40ca924092ec"
       },
       "items": [],
       "recipes": []
@@ -1514,7 +1514,7 @@
       "id": "ability-circle-of-old-names",
       "source": {
         "path": "design/cards/circle-of-old-names.md",
-        "sha256": "74a6d467df170b1ff0fa91d9a444c416cf9b600f838f48cd237e17aa48e68919"
+        "sha256": "5df2e59e2cb7f1bc4901ccafa7ee1f2aa509649299a81650db64e8482b171f1d"
       },
       "items": [],
       "recipes": []
@@ -1523,7 +1523,7 @@
       "id": "ability-command-a-summon",
       "source": {
         "path": "design/cards/command-a-summon.md",
-        "sha256": "585d18e006652caf1d6d85e9ce6304750a154cc881ded1d03b5a50be80db5960"
+        "sha256": "552d6916a86335b9965d86e45862ab9c6abf1e9366689f573332ba2847acd959"
       },
       "items": [],
       "recipes": []
@@ -1532,7 +1532,7 @@
       "id": "ability-conditioned-body",
       "source": {
         "path": "design/cards/conditioned-body.md",
-        "sha256": "633cd8312a5cba4b27966357f3f1296eed99012bcc144840d36fe90521c65741"
+        "sha256": "8e1601a28d2a708cd33e9b51953940319612f1d19c7ba1553ebdb11176187bae"
       },
       "items": [],
       "recipes": []
@@ -1541,7 +1541,7 @@
       "id": "ability-convert-an-action",
       "source": {
         "path": "design/cards/convert-an-action.md",
-        "sha256": "4e72961d11f3635b6ed344a342acf36648a902afe7dc2a3abd749c558c44051b"
+        "sha256": "68a360f0e15f1437023bf057d5e74bb7356a4c48cffe60d77ebf650ea07a2b52"
       },
       "items": [],
       "recipes": []
@@ -1550,7 +1550,7 @@
       "id": "ability-create-a-distraction",
       "source": {
         "path": "design/cards/create-a-distraction.md",
-        "sha256": "855e2e35d82bd084931c89e81aff3b05bb2e92c6d25635d7e8b8dced8391d31b"
+        "sha256": "9d91b1c9e2af6e7d67411d2286b51f7378bb22819e9a91dbb67985b0f2a1c66c"
       },
       "items": [],
       "recipes": []
@@ -1559,7 +1559,7 @@
       "id": "ability-cut-off-the-escape",
       "source": {
         "path": "design/cards/cut-off-the-escape.md",
-        "sha256": "19749ae38805e2fb91bf25e73ec2f0f1ac6fd5db2e22b56bae47516068c342c1"
+        "sha256": "4601059afe86cdd430e18e5f3feca13e2352a393b40589a356d61405fc831482"
       },
       "items": [
         "item-ordinary-ranged-weapon",
@@ -1571,7 +1571,7 @@
       "id": "ability-dance-beyond-the-circle",
       "source": {
         "path": "design/cards/dance-beyond-the-circle.md",
-        "sha256": "442ece65a891435a03fd36cfbc716e722a45e8deaf9e906725c802053b6aac63"
+        "sha256": "ef9076ec7288ed5b4d4e4aa577727ea9fbafb0a4a2e4416e45a37a7e1d84cfb6"
       },
       "items": [],
       "recipes": []
@@ -1580,7 +1580,7 @@
       "id": "ability-dawn-shard",
       "source": {
         "path": "design/cards/dawn-shard.md",
-        "sha256": "13f1a02fa0676178666b7595eb61cee90d1c517b24ac16a7353ca233c1f8b02d"
+        "sha256": "c0a53cbd223218d13d8c8c819946161bb937f8d9ba9e4b598431e763014d41ab"
       },
       "items": [],
       "recipes": []
@@ -1589,7 +1589,7 @@
       "id": "ability-defend",
       "source": {
         "path": "design/cards/defend.md",
-        "sha256": "4b6b966f65bfa42de13376549dd2d2d43bc694b3695ed12329f2ad4652ba93ba"
+        "sha256": "6abb6ec369854c42e2b60794b392736704253d5d674ac7de7f691d4aaf5e56c8"
       },
       "items": [],
       "recipes": []
@@ -1598,7 +1598,7 @@
       "id": "ability-derive-a-mechanism",
       "source": {
         "path": "design/cards/derive-a-mechanism.md",
-        "sha256": "8f6ff35788294e78f176d8d2e9f9692345e849c71d0986954e6196fdfda2c0c4"
+        "sha256": "4a1a64d733319c0976963f81ae8898f122fa0f78edbe8adb8f9a4c61a06e90b5"
       },
       "items": [],
       "recipes": []
@@ -1607,7 +1607,7 @@
       "id": "ability-disengage",
       "source": {
         "path": "design/cards/disengage.md",
-        "sha256": "9e057bca0f778f0fdc99057fb73678dc4b1249aba9364b541041cf24c141a6a3"
+        "sha256": "ba3f17a907f80b63cd1e3de0a8cbd52b5ef51ed82b8fd9f974d49b3d05f89eb0"
       },
       "items": [],
       "recipes": []
@@ -1616,7 +1616,7 @@
       "id": "ability-drain-warmth",
       "source": {
         "path": "design/cards/drain-warmth.md",
-        "sha256": "587d91fa1c25c268900985a23dfdfb92246509ffb3249313d1c3ce9d6eec22f1"
+        "sha256": "2fbea4f5057126d767762a8ed100476b772ba74f8ba54c4677821f00a7d28fe0"
       },
       "items": [],
       "recipes": []
@@ -1625,7 +1625,7 @@
       "id": "ability-draw-the-current",
       "source": {
         "path": "design/cards/draw-the-current.md",
-        "sha256": "c408bfbc3576476515be05953851970cee9a3dd3e5b8cca395ea629f0186939a"
+        "sha256": "d7524471ceda068cd91f62f5a9ef89b7302067eb0a6f0a4e433de4c0fa0be77e"
       },
       "items": [],
       "recipes": []
@@ -1634,7 +1634,7 @@
       "id": "ability-dread-reflection",
       "source": {
         "path": "design/cards/dread-reflection.md",
-        "sha256": "a2a41b42919bcb5ef745cef969af311fa77ad8ce7d39809663402150f7c19c6a"
+        "sha256": "b1d1d0f7890498b310e05655131054cd6fb4d188f24463f6d40f5b78e8cf98f3"
       },
       "items": [],
       "recipes": []
@@ -1643,7 +1643,7 @@
       "id": "ability-driving-volley",
       "source": {
         "path": "design/cards/driving-volley.md",
-        "sha256": "9679dc7d7e51fba03c08a7fc11517e3d2133b4eb34eca7f3ca5eb5875d96cc9e"
+        "sha256": "2e64ccae94ddcc9b8dba39b5de792978096f0c7cf048e23852f0842438893685"
       },
       "items": [
         "item-ordinary-ranged-weapon",
@@ -1655,7 +1655,7 @@
       "id": "ability-ember-along-the-edge",
       "source": {
         "path": "design/cards/ember-along-the-edge.md",
-        "sha256": "f4a3957d50a91cff4edea3fc9474c937b40d40ea3084fc4f7373ce05dbdb7645"
+        "sha256": "de3e0d55aa69ddc167c75c64deb25d8993f68f70de6d4ca383039d5fca39ff73"
       },
       "items": [
         "item-ordinary-melee-weapon"
@@ -1666,7 +1666,7 @@
       "id": "ability-enchanting-workshop",
       "source": {
         "path": "design/cards/enchanting-workshop.md",
-        "sha256": "1a79abed179f7875ca7aa3e122a9b3ece95eeacb2900816524bcdf63fbfb1f68"
+        "sha256": "867ad69eddb96458157f79145e5be67c3933072bfaa871ac6d47e97c4f2db3af"
       },
       "items": [
         "item-craft-tools"
@@ -1678,7 +1678,7 @@
       "id": "ability-expert-river-crossing",
       "source": {
         "path": "design/cards/expert-river-crossing.md",
-        "sha256": "53330656d2e90dcffde1d9786ff63f9309ec33ac54a7a951855e42ba1c0999e2"
+        "sha256": "ee51ca519c160a33362a33fe9e67bfe9a8c4e02249252a3367a6c62ca83a05b6"
       },
       "items": [],
       "recipes": []
@@ -1687,7 +1687,7 @@
       "id": "ability-fit-a-replacement",
       "source": {
         "path": "design/cards/fit-a-replacement.md",
-        "sha256": "c0536292a4a84237f08dddb6963278e2a7141f8b8c18f4b435898debad86659a"
+        "sha256": "f83a6181868d86f0ce8e768c6da4c408b1031046b8abca7cc40e935286ba60c2"
       },
       "items": [],
       "recipes": []
@@ -1696,7 +1696,7 @@
       "id": "ability-forage-coast",
       "source": {
         "path": "design/cards/forage-coast.md",
-        "sha256": "7e9f478b57a247844b5bd55287dc87e1e6b2c300eb6da233d984ac56a79847bd"
+        "sha256": "d674da811dd659526c144d7f3b4860e956a85c1df4ac8348c4cdb07603742326"
       },
       "items": [],
       "recipes": []
@@ -1705,7 +1705,7 @@
       "id": "ability-forage-mountains",
       "source": {
         "path": "design/cards/forage-mountains.md",
-        "sha256": "cd541ac0c5c371611da403623f2a7eb3abd2290b5ec6206f0013ee1b48315909"
+        "sha256": "50d63b85406f9889152fcac233423851d88fc02359da5d7ced2a33f118330f6e"
       },
       "items": [],
       "recipes": []
@@ -1714,7 +1714,7 @@
       "id": "ability-forage-wetlands",
       "source": {
         "path": "design/cards/forage-wetlands.md",
-        "sha256": "d6fed9baaf5779586be9466359f78689bde6e8ab0db45d0c539fff64fabe32af"
+        "sha256": "4b9cff102586bcc3a531ef62a26b3a1b01c334f9809276b558054e3da1c6fd79"
       },
       "items": [],
       "recipes": []
@@ -1723,7 +1723,7 @@
       "id": "ability-forage-woodland",
       "source": {
         "path": "design/cards/forage-woodland.md",
-        "sha256": "d1d55db25e79ec04d3228043c957bda407b00cdf45c4f42cc4bb84ba56e00fee"
+        "sha256": "e9f8cd6392ea9967939b08db83b9900b808169f5dfac3a4205aa0f7e83d62401"
       },
       "items": [],
       "recipes": []
@@ -1732,7 +1732,7 @@
       "id": "ability-force",
       "source": {
         "path": "design/cards/force.md",
-        "sha256": "ca276890ce79e02a5e8e475d205a1d9ddc69bbaab324d7824274500f3cda491b"
+        "sha256": "b6a84c55a7cec479d15bdbc9b55dcba483a469d301f33f2f8f2588f1b3b9b0c3"
       },
       "items": [],
       "recipes": []
@@ -1741,7 +1741,7 @@
       "id": "ability-forked-sky",
       "source": {
         "path": "design/cards/forked-sky.md",
-        "sha256": "e5f8d739b6c932067dfbc5ebae60514e39a37f7b1bcc602f51f17027e4e35455"
+        "sha256": "f5bfd57e000a2a3a3ef6a7db59f65e2d2d929fcbba56b5aa377f61d588fc017f"
       },
       "items": [],
       "recipes": []
@@ -1750,7 +1750,7 @@
       "id": "ability-four-winds-at-once",
       "source": {
         "path": "design/cards/four-winds-at-once.md",
-        "sha256": "bde8cfc07cc08735bc142dfc35df07b5fe12ac669d28fe4c7dbb97cc0098d289"
+        "sha256": "033d78b68af946e4ebbb57c30ce1ed094cfa64686efab8b042c619092e99b380"
       },
       "items": [],
       "recipes": []
@@ -1759,7 +1759,7 @@
       "id": "ability-furnace-sweep",
       "source": {
         "path": "design/cards/furnace-sweep.md",
-        "sha256": "f53204d97aaf7b5380af57bd18ec1fb27494fe1a60d5b22c321ca402e197e158"
+        "sha256": "db865c4c4b91b74511773e6e8d36e11ed9428be64c714a386ba43c12db2e66bc"
       },
       "items": [],
       "recipes": []
@@ -1768,7 +1768,7 @@
       "id": "ability-guide-a-frightened-animal",
       "source": {
         "path": "design/cards/guide-a-frightened-animal.md",
-        "sha256": "43f2815aa6ed5d159f61bcc93d4aa4a837a3e569bfc81cd583112c1d37a9871a"
+        "sha256": "4492b39ad043a818886152abcfe0e3628951c988a209df4eb9a138640fa8fa31"
       },
       "items": [],
       "recipes": []
@@ -1777,7 +1777,7 @@
       "id": "ability-guide-the-crossing",
       "source": {
         "path": "design/cards/guide-the-crossing.md",
-        "sha256": "b1e8f82ccb64de513a267c6fecffb48ae986d4c4ef8bb388799f9ee56f314fc7"
+        "sha256": "820d8ffced031868511d67bd77ca260287b9772d3fd3a87053cd8b6df06b6ab1"
       },
       "items": [],
       "recipes": []
@@ -1786,7 +1786,7 @@
       "id": "ability-gust-hammer",
       "source": {
         "path": "design/cards/gust-hammer.md",
-        "sha256": "d1f12083b56e5b3a10f93596ca7e2c7482c66f10b2958a1814137b8026ff9fe0"
+        "sha256": "1ee969476b6db3199dadf2e4b87d3907def5b895c5d84a51611743767507c467"
       },
       "items": [],
       "recipes": []
@@ -1795,7 +1795,7 @@
       "id": "ability-handle-an-item",
       "source": {
         "path": "design/cards/handle-an-item.md",
-        "sha256": "70d1961afc4e346cd1764450dd60ff306c263e1c4336d6f3cb5fc17189acf15b"
+        "sha256": "5669b050822aea10a0b7f333e24d4f83ad085bfa1f6eabfd06adcf7f4a746dfc"
       },
       "items": [],
       "recipes": []
@@ -1804,7 +1804,7 @@
       "id": "ability-haul-them-home",
       "source": {
         "path": "design/cards/haul-them-home.md",
-        "sha256": "38d40a92dc42a20151564648f7de49dbb7aae31d9dcc5dfebe7cd52e3009c51e"
+        "sha256": "eba92ac13b2314a6519b7ee17251854a84503c6fac030d8cf66d0843b6d3943c"
       },
       "items": [],
       "recipes": []
@@ -1813,7 +1813,7 @@
       "id": "ability-hold-a-conversation",
       "source": {
         "path": "design/cards/hold-a-conversation.md",
-        "sha256": "d75ece987d9af0e1e2694dc5174666dcb5f0bcc6d978e1c4807d9c6537452230"
+        "sha256": "bc74660b1e3039b349985cefb1931be85adf2b4f3514ac583b331a7f2901833e"
       },
       "items": [],
       "recipes": []
@@ -1822,7 +1822,7 @@
       "id": "ability-hold-the-passage",
       "source": {
         "path": "design/cards/hold-the-passage.md",
-        "sha256": "32a9fb9b526d848114350f760ae831e1da46edc84eda91ef8931d02582d5063f"
+        "sha256": "76de6d98cd87b6b482744cc67d7c066b11f0bcc913f4e74a031ff97eef304b17"
       },
       "items": [
         "item-ordinary-shield"
@@ -1833,7 +1833,7 @@
       "id": "ability-hook-and-drive",
       "source": {
         "path": "design/cards/hook-and-drive.md",
-        "sha256": "516beb282da49c17bd4d77064b3b918b352cbb043aee08cc28c4e68657ff5ff2"
+        "sha256": "305ffe642753c6c7423246be438e060fe13bbc5fc7e378033a5b9acb0d33e0d1"
       },
       "items": [
         "item-ordinary-melee-weapon"
@@ -1844,7 +1844,7 @@
       "id": "ability-hurl-aside",
       "source": {
         "path": "design/cards/hurl-aside.md",
-        "sha256": "3335a6740c44250fa5cdf8d7b3db8c39a3d8fe73258ce20fb1634d38ea38f48d"
+        "sha256": "6c88eced1875e9f3126b7312d31721d4d9d2f11a210ddd45079a8e7bed5e50eb"
       },
       "items": [
         "item-ordinary-melee-weapon"
@@ -1855,7 +1855,7 @@
       "id": "ability-i-have-seen-this-step",
       "source": {
         "path": "design/cards/i-have-seen-this-step.md",
-        "sha256": "c8ce7307a626045ba6157b5f7ee3d3c840a8568f791e731b17833b702d17b5ae"
+        "sha256": "05944072104031ade0f7c450a997c433baacf437bd12ba41e505016dbc075b1d"
       },
       "items": [],
       "recipes": []
@@ -1864,7 +1864,7 @@
       "id": "ability-ice-across-the-break",
       "source": {
         "path": "design/cards/ice-across-the-break.md",
-        "sha256": "0a349ac914ccc2609ec392f684faf96f04d2efe86f0fa5f26f3e6d2391b52bda"
+        "sha256": "88b489d73a8c01d7f4b4046a3f8f52a6e7a413fc075e967e7ff79c61c59e0b78"
       },
       "items": [],
       "recipes": []
@@ -1873,7 +1873,7 @@
       "id": "ability-icebound-path",
       "source": {
         "path": "design/cards/icebound-path.md",
-        "sha256": "305d26df4b98345237d1223cd2f9ab9085800ac556230010d99433eea74f4b0e"
+        "sha256": "67a55b2e2c2071ee894b944e60b9eb3bab6d28957cd045de794237ca4b0b930f"
       },
       "items": [],
       "recipes": []
@@ -1882,7 +1882,7 @@
       "id": "ability-identify-a-mixture",
       "source": {
         "path": "design/cards/identify-a-mixture.md",
-        "sha256": "988e1aba533d1cf6ebbee9f3b64724543f4eb324f84da23421656d7fcd8c1aa3"
+        "sha256": "28cdfaba3a53611d2225e4bd304c443aebd266df904e4786ce6719d380ea8057"
       },
       "items": [],
       "recipes": []
@@ -1891,7 +1891,7 @@
       "id": "ability-identify-an-enchantment",
       "source": {
         "path": "design/cards/identify-an-enchantment.md",
-        "sha256": "94025ac6518708ced699e8d62b34c79f2fdcbf1424f578dcde93648acb9b1d41"
+        "sha256": "67ef0db5259decba3f27dd4d78700e29af0b3b23b9c6c979c6db0260bd596207"
       },
       "items": [],
       "recipes": []
@@ -1900,7 +1900,7 @@
       "id": "ability-intrusive-echo",
       "source": {
         "path": "design/cards/intrusive-echo.md",
-        "sha256": "c09751a3d51cb7535b437dc69e58c5f44a645b33e8699a2eb6833e42de5b1970"
+        "sha256": "2104b7d6be5e465d4732f6b04257a8b03358fba8717be33d1745b9455f24dd9a"
       },
       "items": [],
       "recipes": []
@@ -1909,7 +1909,7 @@
       "id": "ability-invitation-to-the-blade",
       "source": {
         "path": "design/cards/invitation-to-the-blade.md",
-        "sha256": "8de69bbbffc91ab3383debac49cc0c81a3130125b256773ba20d1e930a257482"
+        "sha256": "a1a324f68dfce64d178dfd2bba0153ce3a3b0e2da52ca1b9c55965ada36ec2be"
       },
       "items": [
         "item-ordinary-melee-weapon"
@@ -1920,7 +1920,7 @@
       "id": "ability-keep-the-door-closed",
       "source": {
         "path": "design/cards/keep-the-door-closed.md",
-        "sha256": "9171716108e6d7f0fb9dce95db5a3fe3d9f248db1892d0762b16ca21cb69341a"
+        "sha256": "f1369df7459aa4e373ce4fd5db81790165b67b6238c2bc9311d77a0e302f14b6"
       },
       "items": [],
       "recipes": []
@@ -1929,7 +1929,7 @@
       "id": "ability-keep-time-with-steel",
       "source": {
         "path": "design/cards/keep-time-with-steel.md",
-        "sha256": "a618690d68e6d3197308f405a309f4d06ec88bcd723a277de981cb57fe4acae8"
+        "sha256": "0e13fbfed78464c9b392cd08c9cc4009f99667d70c05e11962c32ae72e7f23e9"
       },
       "items": [
         "item-ordinary-melee-weapon"
@@ -1940,7 +1940,7 @@
       "id": "ability-keep-your-bearings",
       "source": {
         "path": "design/cards/keep-your-bearings.md",
-        "sha256": "96040d765c9b4ad7131835b28676e361724bed0f48ad2688ce05b7840f1dcd5b"
+        "sha256": "97fabf4e69bcf8a6c7ae132f153e5486ae0be49db1e9a719dd3237629f0034e9"
       },
       "items": [],
       "recipes": []
@@ -1949,7 +1949,7 @@
       "id": "ability-lantern-in-the-palm",
       "source": {
         "path": "design/cards/lantern-in-the-palm.md",
-        "sha256": "c5327c6683c13d24be7404a5d0f579fae9fff7c10f217ac535496b75535cbfc0"
+        "sha256": "ffb30ba6df6eb27ecc29c6e47ea4152cfaa9e3b1ea95eb22f196164a0e3f3eda"
       },
       "items": [],
       "recipes": []
@@ -1958,7 +1958,7 @@
       "id": "ability-lantern-moths",
       "source": {
         "path": "design/cards/lantern-moths.md",
-        "sha256": "9d3d01af3d34ee33890616f655eb379827738bbfd74cb70cfbbd805f7727083f"
+        "sha256": "4457733faa91fa43e7070df559eb58dc2d20c46640531e007f5a22d44cfccdea"
       },
       "items": [],
       "recipes": []
@@ -1967,7 +1967,7 @@
       "id": "ability-let-the-spark-decide",
       "source": {
         "path": "design/cards/let-the-spark-decide.md",
-        "sha256": "ed499dcb4aea60ef4004be6e0de778ae4a105d9c9e02531584a332a492685b88"
+        "sha256": "460d4de339d6a3b8a00e7cad7423d1039f9d1c7162f065d001df0de16c4ebb8b"
       },
       "items": [],
       "recipes": []
@@ -1976,7 +1976,7 @@
       "id": "ability-live-in-the-mask",
       "source": {
         "path": "design/cards/live-in-the-mask.md",
-        "sha256": "24915787c96456ce164a0aed3c9ef31af6511cfd62cbd2f4ebb727a9768d213d"
+        "sha256": "73ae7b6219aad1fa7abd3e7fc8ed626565ebe9329c85b382d81d87e9981e1c71"
       },
       "items": [],
       "recipes": []
@@ -1985,7 +1985,7 @@
       "id": "ability-make-something-useful",
       "source": {
         "path": "design/cards/make-something-useful.md",
-        "sha256": "60832d69900fc0e2c4efc760de1bdce25002541a9c95bc7c386d92167aacfaa2"
+        "sha256": "74d11c87a883a05ba14c637c1a52fe9aa39844f4548508628d9590a8f5b52731"
       },
       "items": [
         "item-craft-tools"
@@ -1997,7 +1997,7 @@
       "id": "ability-measured-appeal",
       "source": {
         "path": "design/cards/measured-appeal.md",
-        "sha256": "6b5112628b6add07bbb52c6935e69786485fd756e81fd12d5ce92eba36da9d42"
+        "sha256": "90973827617d7cbaf7c52d357c9ee161b87272786940cbf2a547e11e1ed99b41"
       },
       "items": [],
       "recipes": []
@@ -2006,7 +2006,7 @@
       "id": "ability-mercy-in-the-light",
       "source": {
         "path": "design/cards/mercy-in-the-light.md",
-        "sha256": "0c045f269e2e039912a4347bd26df30dd1bfe12ed9cbf90961a5b93e674c1ce7"
+        "sha256": "92cda83704d8557f7e91ef6e4b7bb236d46e4883940eda605fae032811b47034"
       },
       "items": [],
       "recipes": []
@@ -2015,7 +2015,7 @@
       "id": "ability-move",
       "source": {
         "path": "design/cards/move.md",
-        "sha256": "278c320910be5ad9128c7f69b05000544875a7111fa7127439e2b2b6a82d998d"
+        "sha256": "96be0a08d7e6cd7a3807b763fe950efd3d16dd043593d65d0aa1b05e481611f1"
       },
       "items": [],
       "recipes": []
@@ -2024,7 +2024,7 @@
       "id": "ability-name-the-reckoning",
       "source": {
         "path": "design/cards/name-the-reckoning.md",
-        "sha256": "058a86372298f30a5186ac4a1fecd258e1d15fc60e54471e5358ef20af6c8539"
+        "sha256": "3f9953c611dcb26fc588fafe1a2425f26f09aea43fcbab498ad9c8c892a1f4b4"
       },
       "items": [
         "item-ordinary-melee-weapon"
@@ -2035,7 +2035,7 @@
       "id": "ability-no-footfall-at-all",
       "source": {
         "path": "design/cards/no-footfall-at-all.md",
-        "sha256": "b0c5a609e1fdf2091af5e6fe9c7fa1bef32ec27edda4b1ffb7b641311d677c71"
+        "sha256": "867ee374e3354d76b28f4dd30139159fe05a6121b3f940a2c7048444b6aedd5d"
       },
       "items": [],
       "recipes": []
@@ -2044,7 +2044,7 @@
       "id": "ability-no-road-away",
       "source": {
         "path": "design/cards/no-road-away.md",
-        "sha256": "c6fb10ff5bdbd83b8a87b0c94c432d28e123b0524a01b068e047fc7ece7b0695"
+        "sha256": "9ae9167661bb0a9d06dc2bb2533b897a099a3c8aea2607c9459dff578f5b3d19"
       },
       "items": [],
       "recipes": []
@@ -2053,7 +2053,7 @@
       "id": "ability-noonday-judgment",
       "source": {
         "path": "design/cards/noonday-judgment.md",
-        "sha256": "c03b1b95e9b759cdf99259743eaa0079ed64fcb9c96d19d3246215c6e25b27c4"
+        "sha256": "a8b3295cd21186f8b3963bc8b6e4a77a9eea083fbc0496b164366f3a09ff23b0"
       },
       "items": [],
       "recipes": []
@@ -2062,7 +2062,7 @@
       "id": "ability-not-yet-your-name",
       "source": {
         "path": "design/cards/not-yet-your-name.md",
-        "sha256": "cea9a35f102f119d383e5c93573bd84d7a298373fabbf79064cf15aef01bf77b"
+        "sha256": "9cb45ef50bc4d271258aa324b26f51e14c741266436a7de0145c897f8164faff"
       },
       "items": [],
       "recipes": []
@@ -2071,7 +2071,7 @@
       "id": "ability-notice-the-human-detail",
       "source": {
         "path": "design/cards/notice-the-human-detail.md",
-        "sha256": "5821645af55b4a43d45133bf6895a17bdcf17f9c305c04f3b263727b29bbe798"
+        "sha256": "6530eaf42efdc7eb0ec3341fcb56c05376589d6d934dbcbb2f413be341eb6256"
       },
       "items": [],
       "recipes": []
@@ -2080,7 +2080,7 @@
       "id": "ability-oathlight-strike",
       "source": {
         "path": "design/cards/oathlight-strike.md",
-        "sha256": "136a688b6a2e72cb44b793a947dcccb3243cf45d26cfed5c2dbc37427d603305"
+        "sha256": "a5fb071180633ac341dacd8c3c124557574d0af6d920e1cd539d129e895f800f"
       },
       "items": [
         "item-ordinary-melee-weapon"
@@ -2091,7 +2091,7 @@
       "id": "ability-one-more-dawn",
       "source": {
         "path": "design/cards/one-more-dawn.md",
-        "sha256": "c786c311f8bd9e25b2c89cd7eee63e93cc522706e8a112abe9850fbfe01379a9"
+        "sha256": "434ffcea066fc63e1175678a49a6a6194152cf1aec8127d2bce27d2e631895b0"
       },
       "items": [],
       "recipes": []
@@ -2100,7 +2100,7 @@
       "id": "ability-open-the-furnace-door",
       "source": {
         "path": "design/cards/open-the-furnace-door.md",
-        "sha256": "2c3f82ce36aa8be8ce1b0a5f4750da8892ea077748fdb0ef74ed1f9883d3ee4a"
+        "sha256": "46f453cd2e81b69f054c1509d149e26cf9b0382d5c0c0f2945e7c2ea4b64d834"
       },
       "items": [],
       "recipes": []
@@ -2109,7 +2109,7 @@
       "id": "ability-opportunity-attack",
       "source": {
         "path": "design/cards/opportunity-attack.md",
-        "sha256": "aac8abadf805cfbf8384e04bc92e9c65df99ff5f14d72224660173a03ddaf2a0"
+        "sha256": "e4fd7cb75a07c06b35774bcfa4ad14299b25221c9e057719024b29bdc670f173"
       },
       "items": [],
       "recipes": []
@@ -2118,7 +2118,7 @@
       "id": "ability-ordinary-recipe-study",
       "source": {
         "path": "design/cards/ordinary-recipe-study.md",
-        "sha256": "5d604678997b206e304e4c6949c10b8af46b8f753962b4a0aaec061c2bf9bff4"
+        "sha256": "c170945a96b3eec157181c03fd7695be172502e1e6ce7d07d0782851697d21f8"
       },
       "items": [],
       "recipes": []
@@ -2127,7 +2127,7 @@
       "id": "ability-pack-with-purpose",
       "source": {
         "path": "design/cards/pack-with-purpose.md",
-        "sha256": "5ca64cb7fd08d3063008d40e0c5ff68dfac196caae5a0b8bffaab817d533cc64"
+        "sha256": "6648400bc9c123e495f006cb795a949abaf5d29efabcbb5c1eb572f3dfeb08f7"
       },
       "items": [],
       "recipes": []
@@ -2136,7 +2136,7 @@
       "id": "ability-palm-of-the-gale",
       "source": {
         "path": "design/cards/palm-of-the-gale.md",
-        "sha256": "3059e89f940a78b13a694dab1761ae4aa2bf937daf443155b8f0772251d675bd"
+        "sha256": "9a01884dccc754b12372df3aa6e2f286d6bdb78f8cd91eb9ddd208a4764f5aae"
       },
       "items": [],
       "recipes": []
@@ -2145,7 +2145,7 @@
       "id": "ability-pinning-shot",
       "source": {
         "path": "design/cards/pinning-shot.md",
-        "sha256": "92e83d992f051dee4628c40221e61295ba4a16de8a1ff8272a0e59a7ad60862c"
+        "sha256": "175d10cfefa5722775521ecdf03d2a264c1f8845859c4a8dad37bdf0906e6320"
       },
       "items": [
         "item-ordinary-ranged-weapon",
@@ -2157,7 +2157,7 @@
       "id": "ability-pounce-of-the-red-claw",
       "source": {
         "path": "design/cards/pounce-of-the-red-claw.md",
-        "sha256": "8a8bd53c2c2155ab7d6795d2887437beb2817fb8057ee6549aae442472c54e68"
+        "sha256": "2977ef9d8d7fcf90f95f3aaa2b3da690d6b896ac6fbf772ff12a3c669e4f1365"
       },
       "items": [],
       "recipes": []
@@ -2166,7 +2166,7 @@
       "id": "ability-procession-of-the-quiet",
       "source": {
         "path": "design/cards/procession-of-the-quiet.md",
-        "sha256": "031ee5ce9ae71cc940ee8c0a9221b71452547ac34ab479798ff40b9280b74674"
+        "sha256": "03999ea873b84bc6ad50cc58359ed5de845db3abb001ab693f710129e9eb3c93"
       },
       "items": [],
       "recipes": []
@@ -2175,7 +2175,7 @@
       "id": "ability-quiet-latch",
       "source": {
         "path": "design/cards/quiet-latch.md",
-        "sha256": "0c32842d61aae39a657e2b06de24125372b606b16366a12c445038f428503f54"
+        "sha256": "af532c3f1a8f8dabdd89197ae1bf760b1dbd308249e2c884cacd57cca7a74b69"
       },
       "items": [
         "item-lock-tools"
@@ -2186,7 +2186,7 @@
       "id": "ability-read-a-dangerous-trail",
       "source": {
         "path": "design/cards/read-a-dangerous-trail.md",
-        "sha256": "15f73dc2572299cbd80226dfa03df659a7f2cb496772c78f71f64f7d6e76660d"
+        "sha256": "8ee2618f27d925ce6b47a7d1faacd14f07cb40998910be7f18f88e91accfb15c"
       },
       "items": [],
       "recipes": []
@@ -2195,7 +2195,7 @@
       "id": "ability-read-the-maker-s-hand",
       "source": {
         "path": "design/cards/read-the-maker-s-hand.md",
-        "sha256": "b3816ffe00b903d31bb1fe51e84bcbcae210eb59a9d8f80da5f3afdd18e3d9df"
+        "sha256": "701a2011683654ef8abbc7dcc38ced329dee75018f6dad57412e2d4c22b5deca"
       },
       "items": [],
       "recipes": []
@@ -2204,7 +2204,7 @@
       "id": "ability-read-the-next-blow",
       "source": {
         "path": "design/cards/read-the-next-blow.md",
-        "sha256": "870a7e1884f66721d5f06f9cac97e9f7a959126212ba973974a29dc1cded2be6"
+        "sha256": "91519ef820d38f08ccdbec97868fb8d46fa23173b5deacd7098e7f94f64a8443"
       },
       "items": [],
       "recipes": []
@@ -2213,7 +2213,7 @@
       "id": "ability-read-the-quarry",
       "source": {
         "path": "design/cards/read-the-quarry.md",
-        "sha256": "edcfbe812ff8a11b880aad2c799eaaace36de6ca7b15630873b929ca6781054d"
+        "sha256": "93866384841d7d879e1abc3613059424740714f75bf824982a1213ed484032ee"
       },
       "items": [
         "item-ordinary-ranged-weapon",
@@ -2225,7 +2225,7 @@
       "id": "ability-read-the-remains",
       "source": {
         "path": "design/cards/read-the-remains.md",
-        "sha256": "164b3cc7d15e8c9b07c6f9e26fd69821f04bea16fa72fbd74db321341dff5dd6"
+        "sha256": "fdf19e8fefc9728058f6e4d3f5b4fd4126e31f01d63de3b296506379bd32d7e0"
       },
       "items": [],
       "recipes": []
@@ -2234,7 +2234,7 @@
       "id": "ability-reconstruct-the-event",
       "source": {
         "path": "design/cards/reconstruct-the-event.md",
-        "sha256": "b064b97051581edb99cc9963e4813b75e8948ae1d85802fffe8dd0c869660791"
+        "sha256": "ef72e1eebfd6b982d577af21831755af78033a8427a0fe57289e1da8dc2f99e3"
       },
       "items": [],
       "recipes": []
@@ -2243,7 +2243,7 @@
       "id": "ability-reduce-a-condition",
       "source": {
         "path": "design/cards/reduce-a-condition.md",
-        "sha256": "3196c89ab6e1df36216124de70f3bb1054177c1679b47d9c38e0c0473c414756"
+        "sha256": "6bfbae67317b15acfaec490f185cc3e9ee4c4c828c408538a767d6b57882c0be"
       },
       "items": [],
       "recipes": []
@@ -2252,7 +2252,7 @@
       "id": "ability-relieve-poison",
       "source": {
         "path": "design/cards/relieve-poison.md",
-        "sha256": "a713421d259233438b6668231dcde2b5cc035980e9c62d6a28c2d43586e92a9f"
+        "sha256": "4ac3862b66a1533abb9b7c7a3eb0bc6803f28c0c857fdc4c9aacd3f6cc4665da"
       },
       "items": [],
       "recipes": []
@@ -2261,7 +2261,7 @@
       "id": "ability-remember-this-name",
       "source": {
         "path": "design/cards/remember-this-name.md",
-        "sha256": "a0e4a90cee093a0af6af9e7e1ab764c5a8155267f2f0e09b32d2ff3cb66dee9a"
+        "sha256": "ae679c76a4559e31baf3981ff42fd2d5d6fa950b79812a329206accb943d3adb"
       },
       "items": [],
       "recipes": []
@@ -2270,7 +2270,7 @@
       "id": "ability-rest-for-the-restless",
       "source": {
         "path": "design/cards/rest-for-the-restless.md",
-        "sha256": "abce04c8e3eed96e131c30aadd9c8d722b4551a44edce165d8f3730d582d4d86"
+        "sha256": "efd4ca7602342b7ee295c7c5a4c1a99a4fd0afca0dfa878a88dd62a6843b18c1"
       },
       "items": [],
       "recipes": []
@@ -2279,7 +2279,7 @@
       "id": "ability-return-to-strength",
       "source": {
         "path": "design/cards/return-to-strength.md",
-        "sha256": "0757631b35d42bbaa8fd40e7eb8491ebf57e0b7910642ecfa559b816d10f015a"
+        "sha256": "38d65f6a3fa4f6310e906ff12e79996ea5b580ed321114a0b68669d622761c92"
       },
       "items": [],
       "recipes": []
@@ -2288,7 +2288,7 @@
       "id": "ability-reveal-the-threshold",
       "source": {
         "path": "design/cards/reveal-the-threshold.md",
-        "sha256": "69a76bc299a38a448ba60f686ddff3dd314d3901e6a86d7cefb4b479eb1a9f21"
+        "sha256": "6b1f780d4aaef96606d9b46b3e0c88d43ea2f21eda71f7c5004ef40d165a7820"
       },
       "items": [],
       "recipes": []
@@ -2297,7 +2297,7 @@
       "id": "ability-ride-the-falling-stone",
       "source": {
         "path": "design/cards/ride-the-falling-stone.md",
-        "sha256": "c0e7a1e6f44958ee71ab46b1664b87d87bda459870203009b2f52581b94fb184"
+        "sha256": "82b0b2255a0803085ff3f1fd03e5c36187f410502f52e3789146af03c0f49d46"
       },
       "items": [],
       "recipes": []
@@ -2306,7 +2306,7 @@
       "id": "ability-rime-grip",
       "source": {
         "path": "design/cards/rime-grip.md",
-        "sha256": "33b160a4b07d71267d6741e6ab5552b64dc70da0982d0528d5e44ffefcae8383"
+        "sha256": "54f3135b07eec6f150fbe4217cdbcd8f179cc3b9f9c297919cae083e9640c241"
       },
       "items": [],
       "recipes": []
@@ -2315,7 +2315,7 @@
       "id": "ability-roots-remember-feet",
       "source": {
         "path": "design/cards/roots-remember-feet.md",
-        "sha256": "eb0669eaa1f00b2f5677e7c8ef7ca43dac5b2215de0febe7ff61105ffc703f5c"
+        "sha256": "11f6e0c1ae361542670486b28b6cb22b835232f980bec225d19274721acbc1eb"
       },
       "items": [],
       "recipes": []
@@ -2324,7 +2324,7 @@
       "id": "ability-rouse-the-senses",
       "source": {
         "path": "design/cards/rouse-the-senses.md",
-        "sha256": "1cc8be571205866a9879a021536179ef8f0115c38005f5fc16262b31f1f8c5cd"
+        "sha256": "c96f89bdc00bde8c360c79be3809bfc01be1e3104a3417a1426d5222e6c62deb"
       },
       "items": [],
       "recipes": []
@@ -2333,7 +2333,7 @@
       "id": "ability-running-vault",
       "source": {
         "path": "design/cards/running-vault.md",
-        "sha256": "bc781ada27cad7e144b2e11b8f12164cd91acfe527660e68798aa5068aff51c8"
+        "sha256": "3c158b7616d0ad741ffc3b20584ab8d2377bbaa4ec237b1a34efa3c0ab6ecaa9"
       },
       "items": [],
       "recipes": []
@@ -2342,7 +2342,7 @@
       "id": "ability-saddle-and-rein",
       "source": {
         "path": "design/cards/saddle-and-rein.md",
-        "sha256": "12ae7185d6802f5e7b2f1f4d070731c7a6a1e2d3475e016782632e8c170d82e7"
+        "sha256": "3233c71994527205b42fee401f2603b5c9cb4b1adef3f1155f679c081bf0f1cd"
       },
       "items": [],
       "recipes": []
@@ -2351,7 +2351,7 @@
       "id": "ability-sap-and-breath",
       "source": {
         "path": "design/cards/sap-and-breath.md",
-        "sha256": "db180f6d3ad8c63e8ed7d17d320edcbd985f6ccbce6d72daacea355cabe9b29d"
+        "sha256": "8db46ce769160055c2940b16e74fa0026ed43a5e9193cb9dfbc4207caafde977"
       },
       "items": [],
       "recipes": []
@@ -2360,7 +2360,7 @@
       "id": "ability-scales-beneath-the-skin",
       "source": {
         "path": "design/cards/scales-beneath-the-skin.md",
-        "sha256": "465b85caad57a5bb46b4adecf24eeccc4355e204c813cc8528aada55f07b249f"
+        "sha256": "f37bd934b18012814b27a0cbc10614de97eb83146a8d088f1cc300fd8c647422"
       },
       "items": [],
       "recipes": []
@@ -2369,7 +2369,7 @@
       "id": "ability-secure-a-hold",
       "source": {
         "path": "design/cards/secure-a-hold.md",
-        "sha256": "569d0504743f3a2f7364b3d1418d6d5ca49815ed2928eadf41633ac5b87ab3ec"
+        "sha256": "7db5bedcb166f94b5861caf29946dbd1a7cf376642431ff16023fd18247b3322"
       },
       "items": [],
       "recipes": []
@@ -2378,7 +2378,7 @@
       "id": "ability-sell-the-feint",
       "source": {
         "path": "design/cards/sell-the-feint.md",
-        "sha256": "7571caad35b4fbc723b9cf7250eaec8496cd1817371d1bb4c8a8d214635013d8"
+        "sha256": "edffe668c151c69d70639b6f6ee64a92b171113d0d233d9ab2e0faccb3e885eb"
       },
       "items": [],
       "recipes": []
@@ -2387,7 +2387,7 @@
       "id": "ability-sever-the-pursuit",
       "source": {
         "path": "design/cards/sever-the-pursuit.md",
-        "sha256": "1fe2718981e2f0b7292a6e8878aeef54a5383b7d234922055a011293afa9ac9d"
+        "sha256": "72415bf3e69288831424a7ab8ae735964df5850c8e8686796aa2cb0a7e450c96"
       },
       "items": [
         "item-ordinary-ranged-weapon",
@@ -2399,7 +2399,7 @@
       "id": "ability-shared-breath",
       "source": {
         "path": "design/cards/shared-breath.md",
-        "sha256": "193e943569951c8cf3f8c5a608c80a1455ecba4d134cfe9e8710816b6802a73f"
+        "sha256": "d4221f594866f201356a97bdbddde1349685150ee02f010a006d03b54a406e88"
       },
       "items": [],
       "recipes": []
@@ -2408,7 +2408,7 @@
       "id": "ability-shield-block",
       "source": {
         "path": "design/cards/shield-block.md",
-        "sha256": "9e9d069f37e675550d7ff57a00525db2d69c8995d9537bb867eca08f9fad584e"
+        "sha256": "bd890d5b177b2c0eded18b75901adba56c0162c25f7f6a4710298cd662421e94"
       },
       "items": [],
       "recipes": []
@@ -2417,7 +2417,7 @@
       "id": "ability-shielding-step",
       "source": {
         "path": "design/cards/shielding-step.md",
-        "sha256": "941752a8d52acbd4e11fc023ed1f5bc54e88c7f9e02961cdd1eb460f6d94a05e"
+        "sha256": "f5411b957d652f7decfad576421ac168577ae69c57a2409cef4ac2a36f8e28c2"
       },
       "items": [
         "item-ordinary-shield"
@@ -2428,7 +2428,7 @@
       "id": "ability-signature-arcanist-arcane-deflection",
       "source": {
         "path": "design/cards/signature-arcanist-arcane-deflection.md",
-        "sha256": "3a5c8d0e054b7bcd7861fd3a0a5e2007952b2285703ba29898f91f21f38fc896"
+        "sha256": "1ebcd39b5bba335658521e34bc86ccd3519800604b14e4925795420b639ca120"
       },
       "items": [],
       "recipes": []
@@ -2437,7 +2437,7 @@
       "id": "ability-signature-arcanist-bent-trajectory",
       "source": {
         "path": "design/cards/signature-arcanist-bent-trajectory.md",
-        "sha256": "90294b3c136a0f996c83496e1666c253760778ff1e214a19197ca2ae1b7a8338"
+        "sha256": "6126342a7ac4b5a9f8a93380b9e1095c10963288bd42975b2f132dbd0c9b5291"
       },
       "items": [],
       "recipes": []
@@ -2446,7 +2446,7 @@
       "id": "ability-signature-arcanist-cast-and-scatter",
       "source": {
         "path": "design/cards/signature-arcanist-cast-and-scatter.md",
-        "sha256": "5001d1c7d704411f4128f4177adba919bc03b0987f2bc7c910e0ebdf05beaab7"
+        "sha256": "1bea10f32abc085634b2c61eadc74bbdf3c6a1ac1ab3cb6a72c21a9b967eafff"
       },
       "items": [],
       "recipes": []
@@ -2455,7 +2455,7 @@
       "id": "ability-signature-arcanist-choose-the-edge",
       "source": {
         "path": "design/cards/signature-arcanist-choose-the-edge.md",
-        "sha256": "ffbc246ffbc22eba4fb399bca78327e67fdcc9d49423349d12185ecc28b46dfa"
+        "sha256": "b95d0445f08582b69b10754436a152c253f250922b1cea0ebe97c81ccb2706a0"
       },
       "items": [],
       "recipes": []
@@ -2464,7 +2464,7 @@
       "id": "ability-signature-arcanist-deliberate-spark",
       "source": {
         "path": "design/cards/signature-arcanist-deliberate-spark.md",
-        "sha256": "3384b03681bc4f462d2cecadbce3148ab98c44c473f58670bfa765ad5d247ba2"
+        "sha256": "0f9e4f7840eb54f3471f0a044f7061be61032d8cfabba4b6d63b965d1fd4e4bc"
       },
       "items": [],
       "recipes": []
@@ -2473,7 +2473,7 @@
       "id": "ability-signature-arcanist-fold-the-distance",
       "source": {
         "path": "design/cards/signature-arcanist-fold-the-distance.md",
-        "sha256": "80b5a5a17cf51f21ba86e46b4d89abcc5730908bd971d3cad21033dfac7e98eb"
+        "sha256": "ee955c6fb116f6c4c4ddbf08596ef7deed0244faa20de2c73d204dca10e11731"
       },
       "items": [],
       "recipes": []
@@ -2482,7 +2482,7 @@
       "id": "ability-signature-arcanist-leave-a-window",
       "source": {
         "path": "design/cards/signature-arcanist-leave-a-window.md",
-        "sha256": "da44165bf533ea021d65e8ab7a98559b7550f8b1ae6a2f088e552ab40dff11de"
+        "sha256": "2765f6f6afdf1f6e60b9a23e9b3da607ba51bb9854b6b626553869cdf49557ea"
       },
       "items": [],
       "recipes": []
@@ -2491,7 +2491,7 @@
       "id": "ability-signature-arcanist-open-the-circle",
       "source": {
         "path": "design/cards/signature-arcanist-open-the-circle.md",
-        "sha256": "c699d12d3a94c66f0463d30f7d87df1a0cb2cf81e2d39d50e0504f0e0da4cc24"
+        "sha256": "ee3a03f5fe0c5e1e36c848ec97477e2aeaff781c1cb0a28d3549644ff7b37b97"
       },
       "items": [],
       "recipes": []
@@ -2500,7 +2500,7 @@
       "id": "ability-signature-arcanist-study-the-pattern",
       "source": {
         "path": "design/cards/signature-arcanist-study-the-pattern.md",
-        "sha256": "d3f05b86f31e9fbe593c18d26a0c3a54bb511993750de8ef0dc5c651a2299bd9"
+        "sha256": "f9a6a26b4a48ca583896bd80428a1f55995ce07cd63be25484ae069de6b4af3a"
       },
       "items": [],
       "recipes": []
@@ -2509,7 +2509,7 @@
       "id": "ability-signature-blade-cut-and-turn",
       "source": {
         "path": "design/cards/signature-blade-cut-and-turn.md",
-        "sha256": "ebbb2b7ace6bd8ac13689d9a07cf81f3af3719483225b92927555b1ddab6d897"
+        "sha256": "a103687a4c3f1a90274359d7d978b4c1c240d90e9f14fe8e7852b6417f980e05"
       },
       "items": [],
       "recipes": []
@@ -2518,7 +2518,7 @@
       "id": "ability-signature-blade-dance-through-steel",
       "source": {
         "path": "design/cards/signature-blade-dance-through-steel.md",
-        "sha256": "72c1ebbdc78d10c1bd7afc00bdd541582a14ebe5be2fc3caa626e856e64aaa00"
+        "sha256": "f7748481584ff6e975ef9ec5fcedb9c4c2926f9dae619c12f8ad872daf5b803b"
       },
       "items": [
         "item-ordinary-melee-weapon"
@@ -2529,7 +2529,7 @@
       "id": "ability-signature-blade-fell-the-balance",
       "source": {
         "path": "design/cards/signature-blade-fell-the-balance.md",
-        "sha256": "4c88b97f6c1ea4b715c083fd6a884eac41a2d2cfb22f90382fddecefba34a21a"
+        "sha256": "6031a8e0d80daf33530c83cff5314e545be30c7f1a307d9a598ab20b7b277e3b"
       },
       "items": [],
       "recipes": []
@@ -2538,7 +2538,7 @@
       "id": "ability-signature-blade-measured-guard",
       "source": {
         "path": "design/cards/signature-blade-measured-guard.md",
-        "sha256": "20b1aaa1ad213c21a85e44f4c94817c1104bf11ab9712ea01f30d59620ee45ef"
+        "sha256": "5d3f95c380606649465c190aeba7c64074c944e88a52666bab335aec54a3076d"
       },
       "items": [],
       "recipes": []
@@ -2547,7 +2547,7 @@
       "id": "ability-signature-blade-perfect-placement",
       "source": {
         "path": "design/cards/signature-blade-perfect-placement.md",
-        "sha256": "85c38f06ed9b525ec62acc4906fea62e3ac44ea54d3ea9611acb96008eb30525"
+        "sha256": "dac2a5ec827c1c7e15bfa05dba0a30fafeae113d19cd346aa37f4637abfb901a"
       },
       "items": [],
       "recipes": []
@@ -2556,7 +2556,7 @@
       "id": "ability-signature-blade-pressure-point",
       "source": {
         "path": "design/cards/signature-blade-pressure-point.md",
-        "sha256": "92fc42e4ae2fd075e675dd83ac9d713b5881920eb82cc36f67da347034bfff88"
+        "sha256": "f36a04352650ace1ac53f99b69e8bd8642c696aab47d3e0ade4e507bc22c97e3"
       },
       "items": [],
       "recipes": []
@@ -2565,7 +2565,7 @@
       "id": "ability-signature-blade-relentless-pursuit",
       "source": {
         "path": "design/cards/signature-blade-relentless-pursuit.md",
-        "sha256": "a34f84af13950ad91e1cbe211dc542d3ce54f8c6cb1d93d8cd7fc53c04fa6b52"
+        "sha256": "778f24ad144b44d41ece7acf7ea02e614f01c4f426bc067fdca0093e2927efee"
       },
       "items": [
         "item-ordinary-melee-weapon"
@@ -2576,7 +2576,7 @@
       "id": "ability-signature-blade-return-stroke",
       "source": {
         "path": "design/cards/signature-blade-return-stroke.md",
-        "sha256": "a9c7267d11c177ced01a0350440c18c0cc60301576955882649cc76c7a3e616f"
+        "sha256": "04a09808ae678886c12ae9f8b8a5dc55d2481ddf3d52ccb3edfb0c1e75252736"
       },
       "items": [
         "item-ordinary-melee-weapon"
@@ -2587,7 +2587,7 @@
       "id": "ability-signature-blade-sweeping-entry",
       "source": {
         "path": "design/cards/signature-blade-sweeping-entry.md",
-        "sha256": "918ff2d155526998cd0699c6410cee25b8c0d563006dbd737ecb85bf9af4f901"
+        "sha256": "c712b767d9b4791faa7eb0d229d45a38664154b00676ec99b1721376cc406ff9"
       },
       "items": [],
       "recipes": []
@@ -2596,7 +2596,7 @@
       "id": "ability-signature-intellect-a-better-angle",
       "source": {
         "path": "design/cards/signature-intellect-a-better-angle.md",
-        "sha256": "81c09171c6f7b376352194c09ce613a8c67c235f4b23c169ee7ca1bbcecd56e2"
+        "sha256": "8c5cd7e04ed77171bd5d19d64cf2e2996af35ce1b6fc2d543540252f36e6a80a"
       },
       "items": [],
       "recipes": []
@@ -2605,7 +2605,7 @@
       "id": "ability-signature-intellect-a-route-for-everyone",
       "source": {
         "path": "design/cards/signature-intellect-a-route-for-everyone.md",
-        "sha256": "55e3423407d7628fbd2486986972a686d7ea2ec9b37f36b0f4a8e15c37d79645"
+        "sha256": "75f1f1fde8544e1d00fb3353540f69407fb102a0c8d9a454323d0035bfef5150"
       },
       "items": [],
       "recipes": []
@@ -2614,7 +2614,7 @@
       "id": "ability-signature-intellect-diagnose-the-failure",
       "source": {
         "path": "design/cards/signature-intellect-diagnose-the-failure.md",
-        "sha256": "98eb91e07bf24b1e7bd898fcc0c75cd6aed14be2da81ca0e973709906da6959a"
+        "sha256": "4179915be2f59560ce26c60fbd11ed17916a93fc52bcc07e8de51c27281787d3"
       },
       "items": [
         "item-craft-tools"
@@ -2625,7 +2625,7 @@
       "id": "ability-signature-intellect-expose-the-mechanism",
       "source": {
         "path": "design/cards/signature-intellect-expose-the-mechanism.md",
-        "sha256": "7f3ef7dae7805c2f7bd968e7c7fa9bb63314a96251fa019d755be43dc6c406ff"
+        "sha256": "fd6eba4212b86ab617bfc63193f3fb7739f66f00ee4279d2abe159bbb0b49c84"
       },
       "items": [],
       "recipes": []
@@ -2634,7 +2634,7 @@
       "id": "ability-signature-intellect-make-the-connection",
       "source": {
         "path": "design/cards/signature-intellect-make-the-connection.md",
-        "sha256": "5a23f4b6cea202e58512e2c75ea7c54b99c1c657979b65f7af34ce6f923c84ba"
+        "sha256": "08a1d789990078095772c24fe26f8309223e4db31470c6f96f27853d74dbb96d"
       },
       "items": [],
       "recipes": []
@@ -2643,7 +2643,7 @@
       "id": "ability-signature-intellect-predict-the-motion",
       "source": {
         "path": "design/cards/signature-intellect-predict-the-motion.md",
-        "sha256": "4c011e5321cd00bf850d662daf0277b27ceea2f73bf4f8c93eeea644e3835d72"
+        "sha256": "51e073ae982a4f854e7ca2fea79ab1ff11fd1245ed4a34bc1369e19a9bf1f47f"
       },
       "items": [],
       "recipes": []
@@ -2652,7 +2652,7 @@
       "id": "ability-signature-intellect-prepared-explanation",
       "source": {
         "path": "design/cards/signature-intellect-prepared-explanation.md",
-        "sha256": "40329fb658b622301dab91b908b818f738e968022e5f0e8d856cff3728e77641"
+        "sha256": "c1002194ce0dddf93a9e52d5c1cac10030a8d08defd9463b60034c89c4919af2"
       },
       "items": [],
       "recipes": []
@@ -2661,7 +2661,7 @@
       "id": "ability-signature-intellect-spot-the-leverage",
       "source": {
         "path": "design/cards/signature-intellect-spot-the-leverage.md",
-        "sha256": "f9a253ebfbfbc8bd1f5241f320aa79788ab46328ceb912b6626ecda1b0e77fb8"
+        "sha256": "f3c67b79b6f3a49a9c567eec03b56921320510a71647d3c6bdddd29cb6919748"
       },
       "items": [],
       "recipes": []
@@ -2670,7 +2670,7 @@
       "id": "ability-signature-intellect-test-the-hypothesis",
       "source": {
         "path": "design/cards/signature-intellect-test-the-hypothesis.md",
-        "sha256": "868f318171a471a5f3477d9b8f67ef6e5958b6489fa6a3d6f826dacb4c1acaff"
+        "sha256": "432ad1b88119351235a6dd3fbe8457ab72b68e9535c2f8bf7b92b7ddaabeba46"
       },
       "items": [],
       "recipes": []
@@ -2679,7 +2679,7 @@
       "id": "ability-signature-leader-coordinated-rush",
       "source": {
         "path": "design/cards/signature-leader-coordinated-rush.md",
-        "sha256": "a5c4c7bd81b8770fb820cd38048f2eef6b648b6ca0c1c896cecebd30f20e549e"
+        "sha256": "78df72deb5571bd971ad4467c23f0fca6abe3e0e77d1a5ac015f1740dfa4d56c"
       },
       "items": [],
       "recipes": []
@@ -2688,7 +2688,7 @@
       "id": "ability-signature-leader-follow-my-signal",
       "source": {
         "path": "design/cards/signature-leader-follow-my-signal.md",
-        "sha256": "5c12ecfb0da6f73ee704fbd03a5e5209ab26c4d3fb7e279af2e55c060ce46b8b"
+        "sha256": "fabb206fa744b81725e61093086fc0f3e3111391054ff9e777fcf65e21535701"
       },
       "items": [],
       "recipes": []
@@ -2697,7 +2697,7 @@
       "id": "ability-signature-leader-hold-your-nerve",
       "source": {
         "path": "design/cards/signature-leader-hold-your-nerve.md",
-        "sha256": "95f449254f7f4e5582593054bf88fe7168812474541fd6bfdbdf55bf515a96ba"
+        "sha256": "ac483fe2d917c99fd98a945995f01c65b712fecb4e64d147d7d4263c63341454"
       },
       "items": [],
       "recipes": []
@@ -2706,7 +2706,7 @@
       "id": "ability-signature-leader-lead-the-step",
       "source": {
         "path": "design/cards/signature-leader-lead-the-step.md",
-        "sha256": "3bd710797f3fcf89aff993af63d22778c9321f9b147b840b6399db0f75e49a72"
+        "sha256": "94ecbaf57ce2ad2bc1938ec5e46118823d4925731d894f94c5b77d8c95e89b2e"
       },
       "items": [],
       "recipes": []
@@ -2715,7 +2715,7 @@
       "id": "ability-signature-leader-orderly-withdrawal",
       "source": {
         "path": "design/cards/signature-leader-orderly-withdrawal.md",
-        "sha256": "9ed4170ef9965f33309191b785f0e8aecce7aa1b1b9794c0b361d217455a321a"
+        "sha256": "90e48ad4a702efdf8cc106abb051fa4287fee51683b2a8a3f9981bc8c2bb4dac"
       },
       "items": [],
       "recipes": []
@@ -2724,7 +2724,7 @@
       "id": "ability-signature-leader-press-the-opening",
       "source": {
         "path": "design/cards/signature-leader-press-the-opening.md",
-        "sha256": "63ff71035010318b164a65488b25921942636145093be4a8c2c4feeca3a85e98"
+        "sha256": "7ae29052d62149157b32d810167081ffda57fed8e67bc5796a4d68261732f44c"
       },
       "items": [],
       "recipes": []
@@ -2733,7 +2733,7 @@
       "id": "ability-signature-leader-refuse-the-rout",
       "source": {
         "path": "design/cards/signature-leader-refuse-the-rout.md",
-        "sha256": "e73f5187109c5174e8ea5a1c7ca8b12c23655851ecfcc3d27a701d65f9feffb6"
+        "sha256": "323c1859a095ce53fefee80ed4cc5302073d2e87c7efdcf0621e7b3d70a189bb"
       },
       "items": [],
       "recipes": []
@@ -2742,7 +2742,7 @@
       "id": "ability-signature-leader-stand-together",
       "source": {
         "path": "design/cards/signature-leader-stand-together.md",
-        "sha256": "82a9b64ce7745a44fa3215de293fd631c18dff3d3ad6993ffe1af09005943dde"
+        "sha256": "07945ae3e03b1be21450925ffb93cc5734deae32a5b3b05944eb37ab1afda120"
       },
       "items": [],
       "recipes": []
@@ -2751,7 +2751,7 @@
       "id": "ability-signature-leader-watch-the-rear",
       "source": {
         "path": "design/cards/signature-leader-watch-the-rear.md",
-        "sha256": "e2c2264c26c9fe5a00ffd6b46f0750efb5f41e24aed3762a58e3eaa3a4e11e27"
+        "sha256": "d702cf29b2227698488d39b9be146715ad1912c3c7617681405f4f338b417e8e"
       },
       "items": [],
       "recipes": []
@@ -2760,7 +2760,7 @@
       "id": "ability-signature-odd-always-a-way-around",
       "source": {
         "path": "design/cards/signature-odd-always-a-way-around.md",
-        "sha256": "2f71cb66f6d1c1c37108e9077b1d09d7251522b6e7442a9c5e86b112d3a27696"
+        "sha256": "59520a9a87ff4cecb376e45c52b85cfafa4c758841d5ad79086639442f953530"
       },
       "items": [],
       "recipes": []
@@ -2769,7 +2769,7 @@
       "id": "ability-signature-odd-an-unexpected-exit",
       "source": {
         "path": "design/cards/signature-odd-an-unexpected-exit.md",
-        "sha256": "078979c2e318279480d7ca17ba2c9e4e3c74af9ec0ffa2f29e9c39afc5898835"
+        "sha256": "033f89b76784e1d0ceb3f1abcbb3dca46a916a2a41d17d8005c5a9d8eb63f8c5"
       },
       "items": [],
       "recipes": []
@@ -2778,7 +2778,7 @@
       "id": "ability-signature-odd-change-the-question",
       "source": {
         "path": "design/cards/signature-odd-change-the-question.md",
-        "sha256": "455732f53ce6775c651eed7449a0f2df4257b37810004e0d1eab68a48e9584c7"
+        "sha256": "931d26c8bac77af4f2fa30285c48ca3e63b8d0ecd45ad5784f6cb81a869a5679"
       },
       "items": [],
       "recipes": []
@@ -2787,7 +2787,7 @@
       "id": "ability-signature-odd-one-last-remark",
       "source": {
         "path": "design/cards/signature-odd-one-last-remark.md",
-        "sha256": "51af539f69e147b6c7191496d808a8566dea60d51e73f8234f16c49762ece83d"
+        "sha256": "6b3715d26c9c84a2d6d67ed2b4e428768409dc9668dfb4a14d484b13f637094b"
       },
       "items": [],
       "recipes": []
@@ -2796,7 +2796,7 @@
       "id": "ability-signature-odd-sideways-thinking",
       "source": {
         "path": "design/cards/signature-odd-sideways-thinking.md",
-        "sha256": "4f4e6d36046121397d901151ef0ecd8ce4b29d8f6285c1d8ae817240ba1ef5da"
+        "sha256": "930c48b06082b837f02f0a95d7df91ac9022912c39ea0a38878ea4eef85dca1b"
       },
       "items": [],
       "recipes": []
@@ -2805,7 +2805,7 @@
       "id": "ability-signature-odd-strange-but-effective",
       "source": {
         "path": "design/cards/signature-odd-strange-but-effective.md",
-        "sha256": "0946d9f5297cfa94601dc1c0e8e966f539f92d650dcfe676b071d801ee8839cd"
+        "sha256": "3edeb1378ce1a261255d0bb912e70e1e946f385977d29f30ed18fe2169e8033c"
       },
       "items": [],
       "recipes": []
@@ -2814,7 +2814,7 @@
       "id": "ability-signature-odd-unlikely-assistant",
       "source": {
         "path": "design/cards/signature-odd-unlikely-assistant.md",
-        "sha256": "8ad9a481d8f84c6b0017410132fb5b422ccd571b814b2806e0a02485eacb5dc4"
+        "sha256": "a179e327b16eba68571e4c009aeb2805a41871c1ac6909e47e7f840f25cf6f83"
       },
       "items": [],
       "recipes": []
@@ -2823,7 +2823,7 @@
       "id": "ability-signature-odd-useful-interruption",
       "source": {
         "path": "design/cards/signature-odd-useful-interruption.md",
-        "sha256": "74477a171c24539bc801e35a8e05728f3da114288868f538b7f6e77c9ea36567"
+        "sha256": "cf83a5a3f16bdf5f01359e132aa2e5ef16b427919a007d18fae59305fa54980d"
       },
       "items": [],
       "recipes": []
@@ -2832,7 +2832,7 @@
       "id": "ability-signature-odd-wrong-place-for-that",
       "source": {
         "path": "design/cards/signature-odd-wrong-place-for-that.md",
-        "sha256": "41c545af6b8c8be916bb8529fce734f09005df923a9e56cb509a96de1463571c"
+        "sha256": "b0ef4029449c36a65fc23322de52c6667c682aff113ffac2e79be886a396917c"
       },
       "items": [],
       "recipes": []
@@ -2841,7 +2841,7 @@
       "id": "ability-signature-protector-between-them",
       "source": {
         "path": "design/cards/signature-protector-between-them.md",
-        "sha256": "83a782a559044da0dc3303c168097acdf2b0bb8b2ec2ee405467fe0ed611e891"
+        "sha256": "c95cee1c40740202a6fe85a925a621edc6a534bf287f7216b743d06a5894dda1"
       },
       "items": [],
       "recipes": []
@@ -2850,7 +2850,7 @@
       "id": "ability-signature-protector-break-their-advance",
       "source": {
         "path": "design/cards/signature-protector-break-their-advance.md",
-        "sha256": "acb7660eb8026c564e8d5a28d3d670bef79d10e2bf64d98d42e83db378776e8b"
+        "sha256": "e94fa1b06aff734e02dc7e6c7706d746a605b4436d0d8bf78da77353c8692f74"
       },
       "items": [],
       "recipes": []
@@ -2859,7 +2859,7 @@
       "id": "ability-signature-protector-close-the-gap",
       "source": {
         "path": "design/cards/signature-protector-close-the-gap.md",
-        "sha256": "c8941c66fda5186ed2110795ebe14f6ec1b8ff74cc87e3d9f37d05701481d412"
+        "sha256": "7fb1ed1f72341d8ca14691fb5bb83386cc097dc4bec11730960270614fa560b5"
       },
       "items": [],
       "recipes": []
@@ -2868,7 +2868,7 @@
       "id": "ability-signature-protector-defiant-rescue",
       "source": {
         "path": "design/cards/signature-protector-defiant-rescue.md",
-        "sha256": "c6a7a9526ebd206845cb94520fdfe7cdf261b741075ddf795c8f6229cf841886"
+        "sha256": "0597b65cdfeb0ce304a1c3403f73c57069a37e97274f3d288dc3d1010cabe7d6"
       },
       "items": [],
       "recipes": []
@@ -2877,7 +2877,7 @@
       "id": "ability-signature-protector-drive-back-the-circle",
       "source": {
         "path": "design/cards/signature-protector-drive-back-the-circle.md",
-        "sha256": "91762d36b8eb6a32c7762a487a8247d917935faebe68b5a173fc0e83dba9183f"
+        "sha256": "484e12c571b237295ebb4e9877a3e3ccabbc4956c783f3f301be75e7f220e7e5"
       },
       "items": [],
       "recipes": []
@@ -2886,7 +2886,7 @@
       "id": "ability-signature-protector-make-a-refuge",
       "source": {
         "path": "design/cards/signature-protector-make-a-refuge.md",
-        "sha256": "21a9d59eab75748022beae15b39e3e8afb66a6e6d087326543e64b29c09a4350"
+        "sha256": "8eac21ef3fa4af6fbb66216514f374ff8a8b1a4af745f31b935680b2f791b5f5"
       },
       "items": [],
       "recipes": []
@@ -2895,7 +2895,7 @@
       "id": "ability-signature-protector-set-your-feet",
       "source": {
         "path": "design/cards/signature-protector-set-your-feet.md",
-        "sha256": "58b8879b10a45880f8f58804527984df3576977f2cdff1979649c6735752dceb"
+        "sha256": "886717ecb936d4521ebc7b83decb470b5ded28e4af11f282ad66c36344e05d22"
       },
       "items": [],
       "recipes": []
@@ -2904,7 +2904,7 @@
       "id": "ability-signature-protector-shelter-the-fallen",
       "source": {
         "path": "design/cards/signature-protector-shelter-the-fallen.md",
-        "sha256": "2af9f6dbbdbb4aa5bc3058d6b30da5fd18692cb81c93f456265c6d9f0f9fcd26"
+        "sha256": "0da6754f6c2ec594d538ceaa2348dd6c536800c18d2fb0d6f8614e5591cf7444"
       },
       "items": [],
       "recipes": []
@@ -2913,7 +2913,7 @@
       "id": "ability-signature-protector-unbroken-passage",
       "source": {
         "path": "design/cards/signature-protector-unbroken-passage.md",
-        "sha256": "72c7c13de37751e3c147c111053e9400580b0231fcc6f3051bb416eb2e8cdf87"
+        "sha256": "06479674f3f81e9b76a8f1a51827a5e8913a37997cae3e00ebcb4a557d865d98"
       },
       "items": [],
       "recipes": []
@@ -2922,7 +2922,7 @@
       "id": "ability-signature-shadow-exploit-confusion",
       "source": {
         "path": "design/cards/signature-shadow-exploit-confusion.md",
-        "sha256": "eee3c974f626ce50495ae164b835c65f2692a3bcaa5272a504a6291b463793de"
+        "sha256": "af4fc135aa820d8b8a7a61649800f1e11c0fc744b7ec99d839420f911b6371b2"
       },
       "items": [
         "item-ordinary-melee-weapon"
@@ -2933,7 +2933,7 @@
       "id": "ability-signature-shadow-fade-behind",
       "source": {
         "path": "design/cards/signature-shadow-fade-behind.md",
-        "sha256": "50d1f124aae8596815a8ac1aa6b9d17ffbb91f49aec4b014bc82860c4d488752"
+        "sha256": "ddae7dae7c87decc96752a9325e515e14b3e7cf99deb95342fa9a5fee27f5026"
       },
       "items": [],
       "recipes": []
@@ -2942,7 +2942,7 @@
       "id": "ability-signature-shadow-leave-no-pursuit",
       "source": {
         "path": "design/cards/signature-shadow-leave-no-pursuit.md",
-        "sha256": "5e157576c0eaec6948a92c5eb51f950fd948c377da57a9140e9017d898b3e2c7"
+        "sha256": "987128e7c36b7ff87a9fcd70a9d670a692493f13c2b83a1ae2057fc44f4ee8dc"
       },
       "items": [],
       "recipes": []
@@ -2951,7 +2951,7 @@
       "id": "ability-signature-shadow-open-the-way",
       "source": {
         "path": "design/cards/signature-shadow-open-the-way.md",
-        "sha256": "c36eddba4d0b059eec0db2736d7b487f1f53cc1548ecafd2053b24cd9c50a1b2"
+        "sha256": "1b10120318fae3436a3204fcc36b5b56d8051bd63e5c7afd93451b3d00248478"
       },
       "items": [
         "item-lock-tools"
@@ -2962,7 +2962,7 @@
       "id": "ability-signature-shadow-pass-the-guard",
       "source": {
         "path": "design/cards/signature-shadow-pass-the-guard.md",
-        "sha256": "af6345007f4545ca3199575cbe031322b7dbd1ace5247ae66dc159b939478fab"
+        "sha256": "03936042695d156c31fa4c78c88101e84862fa89c48e6dc37f92f3fa1ea26f1e"
       },
       "items": [],
       "recipes": []
@@ -2971,7 +2971,7 @@
       "id": "ability-signature-shadow-soft-landing",
       "source": {
         "path": "design/cards/signature-shadow-soft-landing.md",
-        "sha256": "0b8e378858b6b9055e6853f989beb1a34c82a33cb5edbb095a4de4943b41c7ad"
+        "sha256": "409ba3000680c411ac9848c0793ad2086ff67ac047069bf59e4c28c7e021e0ff"
       },
       "items": [],
       "recipes": []
@@ -2980,7 +2980,7 @@
       "id": "ability-signature-shadow-strike-and-vanish",
       "source": {
         "path": "design/cards/signature-shadow-strike-and-vanish.md",
-        "sha256": "da750d3fc9f1faf652f019023cc4e94dc69b9b414f11274ebb8cf1ca8f2e44ab"
+        "sha256": "ef1ed7bb5dea4634bb65649f1e555c54f4d15b1fce3915f0fac986db8a820275"
       },
       "items": [],
       "recipes": []
@@ -2989,7 +2989,7 @@
       "id": "ability-signature-shadow-turn-their-eye",
       "source": {
         "path": "design/cards/signature-shadow-turn-their-eye.md",
-        "sha256": "bde353c625022abc4af2affb4c5d5f30ff7caf79d1368dbbf2fd010ef5002978"
+        "sha256": "686b95960550ab3ee41eb76848af6a4abc9ff2a3b0183b10b967dc289cc7bd1d"
       },
       "items": [],
       "recipes": []
@@ -2998,7 +2998,7 @@
       "id": "ability-signature-shadow-unseen-passage",
       "source": {
         "path": "design/cards/signature-shadow-unseen-passage.md",
-        "sha256": "2bdda8dfe52bce3b4a6d37e9f003b6da2ce319ea143ba908d48d44b27eebe11a"
+        "sha256": "bce85fbf29f81cfd3f593a8fd00fd1d5c7bc233da1a6f96e619ff0a7d3ae8464"
       },
       "items": [],
       "recipes": []
@@ -3007,7 +3007,7 @@
       "id": "ability-signature-shepherd-a-hand-in-darkness",
       "source": {
         "path": "design/cards/signature-shepherd-a-hand-in-darkness.md",
-        "sha256": "bfa1473bedea1fd4019fdaa36345f1f9038d034be378d797119c0e57ebb13aeb"
+        "sha256": "1fe7e6f66faf5db2016217232bc35cd7f2f2008c4e5fccd6384de93846ac8601"
       },
       "items": [],
       "recipes": []
@@ -3016,7 +3016,7 @@
       "id": "ability-signature-shepherd-bring-them-near",
       "source": {
         "path": "design/cards/signature-shepherd-bring-them-near.md",
-        "sha256": "de2925167c0d6eea199395084c7b1fdd73422ae72e86733b05a0984d84344270"
+        "sha256": "5dc5cb0a4900673939aeccbce0f2843d003609e2a7f4d9230655fdd21c32dd7e"
       },
       "items": [],
       "recipes": []
@@ -3025,7 +3025,7 @@
       "id": "ability-signature-shepherd-careful-transfer",
       "source": {
         "path": "design/cards/signature-shepherd-careful-transfer.md",
-        "sha256": "f6fa0d7e7e4f586077bc88dea8433b12988d5451188772713771fe5c532982a5"
+        "sha256": "e49879e7caf05161d695fb9cbe82a01d13eedb384a02f96dbec520f9f9929621"
       },
       "items": [],
       "recipes": []
@@ -3034,7 +3034,7 @@
       "id": "ability-signature-shepherd-ease-the-burden",
       "source": {
         "path": "design/cards/signature-shepherd-ease-the-burden.md",
-        "sha256": "008115ac12c8bff00246de57fac8f6cc3e1ea572dd207bf2f0663ed445012913"
+        "sha256": "05bee715ef18eccfc72d993078a71903f090823176a2f73c0019c36e218b7a8b"
       },
       "items": [],
       "recipes": []
@@ -3043,7 +3043,7 @@
       "id": "ability-signature-shepherd-gentle-return",
       "source": {
         "path": "design/cards/signature-shepherd-gentle-return.md",
-        "sha256": "9dd8e2eea495a214281475892e7a7ffa26e635a22181315007e385c50e7341f0"
+        "sha256": "8d8b9544d85242a2cc75e3b97b23d7b3b388ca6c4980ad5518bcfb4da0aee204"
       },
       "items": [],
       "recipes": []
@@ -3052,7 +3052,7 @@
       "id": "ability-signature-shepherd-hear-me-still",
       "source": {
         "path": "design/cards/signature-shepherd-hear-me-still.md",
-        "sha256": "34764efc5ea78abb689df8aa7aca02fe683c79eac51a83534eea6986e53cb816"
+        "sha256": "f09a37feb9a73c1a987fab21e69af8cba7879ee39e6feb22ff8f14df6a8a186c"
       },
       "items": [],
       "recipes": []
@@ -3061,7 +3061,7 @@
       "id": "ability-signature-shepherd-quiet-the-tremor",
       "source": {
         "path": "design/cards/signature-shepherd-quiet-the-tremor.md",
-        "sha256": "050d4f01de264f2a3ba113f9d019271c975ca545c59017a975b527328781dc00"
+        "sha256": "1de7f8069774f78232d0bef50909361d0dc0e117a20b615a0083f9040cbb8507"
       },
       "items": [],
       "recipes": []
@@ -3070,7 +3070,7 @@
       "id": "ability-signature-shepherd-restore-composure",
       "source": {
         "path": "design/cards/signature-shepherd-restore-composure.md",
-        "sha256": "6d3e5bf87971f7fd195e65889925a25ce4abd2dd57cb5ffa639f3897a92cb007"
+        "sha256": "358f477f8214b64a93b7649c0891a0abf356abc16db59edc168a54fdeca39c1c"
       },
       "items": [],
       "recipes": []
@@ -3079,7 +3079,7 @@
       "id": "ability-signature-shepherd-shared-resolve",
       "source": {
         "path": "design/cards/signature-shepherd-shared-resolve.md",
-        "sha256": "3a96f8ba0d06e3a3ec841361dab84e5396f7e43f3a1493ab2e9164707b829158"
+        "sha256": "410fd0ffc503eb0a0565fabdeb0e048414e86eb72bba646d29f8535a18963750"
       },
       "items": [],
       "recipes": []
@@ -3088,7 +3088,7 @@
       "id": "ability-signature-unbalanced-break-their-grip",
       "source": {
         "path": "design/cards/signature-unbalanced-break-their-grip.md",
-        "sha256": "636da0da9f3994696b1228dffcaf62ec4dbdaab1f4ad000517a113a75511c9a8"
+        "sha256": "8fff45635b2876d0eac8e842ada191517432abb2b8f03e562f050fdd8ab0157a"
       },
       "items": [],
       "recipes": []
@@ -3097,7 +3097,7 @@
       "id": "ability-signature-unbalanced-crash-down",
       "source": {
         "path": "design/cards/signature-unbalanced-crash-down.md",
-        "sha256": "5dba7b479bf5e2c0f438eef1b557ec535cd8795b13095a96e373e80679e5285b"
+        "sha256": "87f6487ec32ade42f7c2be0370824ade4a7a7e99a558af02630828814242d8ec"
       },
       "items": [],
       "recipes": []
@@ -3106,7 +3106,7 @@
       "id": "ability-signature-unbalanced-crush-the-barrier",
       "source": {
         "path": "design/cards/signature-unbalanced-crush-the-barrier.md",
-        "sha256": "8873498985f552660ffb70372cd0b62fa56def8a43dc9bb962cf7e211aa0d557"
+        "sha256": "f51904ce05c711b5374ed0ee6b46ca932b795be3ba5f6b35c1a0706e148330f5"
       },
       "items": [],
       "recipes": []
@@ -3115,7 +3115,7 @@
       "id": "ability-signature-unbalanced-fling-the-captive",
       "source": {
         "path": "design/cards/signature-unbalanced-fling-the-captive.md",
-        "sha256": "4aee5233bd214f11fdc870f1150a60eaacdc77e18b81b18a2aa5c30b2b94bc13"
+        "sha256": "bccbca1ee30894040b9b25acac27b44595823a691ef712c67ada57b566f7f90a"
       },
       "items": [],
       "recipes": []
@@ -3124,7 +3124,7 @@
       "id": "ability-signature-unbalanced-laugh-at-the-fall",
       "source": {
         "path": "design/cards/signature-unbalanced-laugh-at-the-fall.md",
-        "sha256": "97644ce13e22ecc1d850c4a63acbbfcee37a75eed0cc1f232c2874f910b2736e"
+        "sha256": "69d70796b1944fec3198a8fba262a404fe432d493eb875046918b40e37b791fd"
       },
       "items": [],
       "recipes": []
@@ -3133,7 +3133,7 @@
       "id": "ability-signature-unbalanced-raging-recoil",
       "source": {
         "path": "design/cards/signature-unbalanced-raging-recoil.md",
-        "sha256": "d4ee7e6644f679523421a87548127102e9b961ef78be723480eb1034263a561b"
+        "sha256": "7706d4b5927e40f01e1865976cebaa407470ac719c9dd4ea8c49569034e7c167"
       },
       "items": [],
       "recipes": []
@@ -3142,7 +3142,7 @@
       "id": "ability-signature-unbalanced-scatter-the-line",
       "source": {
         "path": "design/cards/signature-unbalanced-scatter-the-line.md",
-        "sha256": "c15a7bf985c750ee5204962e386364ead332c9dc6021db720e0015fe74280495"
+        "sha256": "7600d3dddd3ee7bc5097ebdcc512a5f9c3c45cc65c13f222c40db5351ade5253"
       },
       "items": [],
       "recipes": []
@@ -3151,7 +3151,7 @@
       "id": "ability-signature-unbalanced-shoulder-through",
       "source": {
         "path": "design/cards/signature-unbalanced-shoulder-through.md",
-        "sha256": "7c32b75d66dfa58ed870bdcb8627a13732664a37a6fea032028db9314a4db69a"
+        "sha256": "03e7d1e1b5e11e576df9a4939b12ed7bb5664ccbaf21cece1c719c3df5ddf219"
       },
       "items": [],
       "recipes": []
@@ -3160,7 +3160,7 @@
       "id": "ability-signature-unbalanced-wild-approach",
       "source": {
         "path": "design/cards/signature-unbalanced-wild-approach.md",
-        "sha256": "5818436133adb8366d79ec68b4d10febcf29e2a195096b2675a419b6c59606ff"
+        "sha256": "2aa82ed78408651a76a618921142df8956adf3ef72de8aa5435313a777d476f4"
       },
       "items": [],
       "recipes": []
@@ -3169,7 +3169,7 @@
       "id": "ability-signature-warden-a-watchful-rest",
       "source": {
         "path": "design/cards/signature-warden-a-watchful-rest.md",
-        "sha256": "c099cb20e385818ae8fa1feb9ed600a733affca259cfa12206f781b0562ef861"
+        "sha256": "a4e08f1a663d60839378cfbec71581655e2ef6178ba7a1db4d4dfe1e99dc960d"
       },
       "items": [],
       "recipes": []
@@ -3178,7 +3178,7 @@
       "id": "ability-signature-warden-bring-them-through",
       "source": {
         "path": "design/cards/signature-warden-bring-them-through.md",
-        "sha256": "6cf5f41d8ed2eecaffcd4441409c4b8e5d487661b08b611637dee71a8c317683"
+        "sha256": "fff70bb8ca78fac3799372baec1781cd5d5d66dd0acd8561acdfea48a4237d8a"
       },
       "items": [],
       "recipes": []
@@ -3187,7 +3187,7 @@
       "id": "ability-signature-warden-follow-my-footsteps",
       "source": {
         "path": "design/cards/signature-warden-follow-my-footsteps.md",
-        "sha256": "b995cdbcd67b0ba1498e81b54dd336dec066be647b732a53bf41cbc7bae51c6c"
+        "sha256": "285ee97fc994f7fe91269b35a9a3b9ff931d943ed5d8f4641275d99596da14b4"
       },
       "items": [],
       "recipes": []
@@ -3196,7 +3196,7 @@
       "id": "ability-signature-warden-keep-the-quarry-close",
       "source": {
         "path": "design/cards/signature-warden-keep-the-quarry-close.md",
-        "sha256": "dca437c78649b2592074951fe1736c8b6bdedde78fe6a51fe220a114d3d29841"
+        "sha256": "0b976aab7fcd2910ac007f72f441538a8591f91dc2adff68749bed211f8d24bc"
       },
       "items": [],
       "recipes": []
@@ -3205,7 +3205,7 @@
       "id": "ability-signature-warden-know-what-you-hunt",
       "source": {
         "path": "design/cards/signature-warden-know-what-you-hunt.md",
-        "sha256": "16937a7b980ad78914671583e7d1190dfde3e7c47fd77b01c1f829c2bc44318c"
+        "sha256": "e33941d89f70d24032e7c21f79863b44ba45fb745e5bcdc76c97f314e382ea31"
       },
       "items": [],
       "recipes": []
@@ -3214,7 +3214,7 @@
       "id": "ability-signature-warden-read-the-passing",
       "source": {
         "path": "design/cards/signature-warden-read-the-passing.md",
-        "sha256": "99ca0c054d5b006dc7e32917f9cd8679561cb45de0b3e0ceb6d1ade05aef28f5"
+        "sha256": "c534d936e611fd8c9cb3ac8341d248b3647f67c905a10d6eaeb9115919c214a6"
       },
       "items": [],
       "recipes": []
@@ -3223,7 +3223,7 @@
       "id": "ability-signature-warden-stay-on-the-scent",
       "source": {
         "path": "design/cards/signature-warden-stay-on-the-scent.md",
-        "sha256": "6bd222a58f981802bdf28d6376a555720d417076bf7c6a5548f752f5dc735d1f"
+        "sha256": "a8c56057640d671c6fdb3ace8c9636602562a35b8cd383886ac7ca48c978ab3c"
       },
       "items": [],
       "recipes": []
@@ -3232,7 +3232,7 @@
       "id": "ability-signature-warden-through-bramble-and-stone",
       "source": {
         "path": "design/cards/signature-warden-through-bramble-and-stone.md",
-        "sha256": "8a3529dff0e6499a0d299ae22147b7eaf4ffa1bc1b14b7393c5990c799594cba"
+        "sha256": "e73b56834cb1f5e12cb10c42e3986739e25507151ed1aa750cf8a0e4ce96b3eb"
       },
       "items": [],
       "recipes": []
@@ -3241,7 +3241,7 @@
       "id": "ability-signature-warden-turn-the-hunt",
       "source": {
         "path": "design/cards/signature-warden-turn-the-hunt.md",
-        "sha256": "5e24bf5cfb887e6e5aab0237c2b27743608bcb129bf89493b3e66b4a51ce30e5"
+        "sha256": "badadfcb36afee4ca5444f8e3762449a42af94461c2d91747c3e3a4ef23d206f"
       },
       "items": [],
       "recipes": [],
@@ -3254,7 +3254,7 @@
       "id": "ability-silence-the-alarm",
       "source": {
         "path": "design/cards/silence-the-alarm.md",
-        "sha256": "d2ef6d775b417125e9ebee66b0f0464362307ec1a91a6c53534251e88486115a"
+        "sha256": "e2563f58ccb17871afd87a323d3593bbca8aeec772a855f03559facd40dd38ba"
       },
       "items": [
         "item-ordinary-melee-weapon"
@@ -3265,7 +3265,7 @@
       "id": "ability-smile-before-steel",
       "source": {
         "path": "design/cards/smile-before-steel.md",
-        "sha256": "6edc1b7bed76d5d232818a858d7685ac92c42866d1a1c20165527a101b748426"
+        "sha256": "c38750b23d5595d0529d4e25c9c3b9adcb488a3b66248c29c4878cf942798e34"
       },
       "items": [
         "item-ordinary-melee-weapon"
@@ -3276,7 +3276,7 @@
       "id": "ability-smoke-in-a-bottle",
       "source": {
         "path": "design/cards/smoke-in-a-bottle.md",
-        "sha256": "6f4f569d71b0c40a9f20d903cfe966bfb2d28f6b2ea7088d1bd7c8d49203187e"
+        "sha256": "4d1826157a57b237a529c4280583197affc3f43acf5d777a7616f62e496a4445"
       },
       "items": [
         "item-mixing-kit"
@@ -3290,7 +3290,7 @@
       "id": "ability-smoke-through-the-keyhole",
       "source": {
         "path": "design/cards/smoke-through-the-keyhole.md",
-        "sha256": "83b1d125aa5e9877219ae36d637e676ce166d8fbe905edc8f9813a8373a4d6d5"
+        "sha256": "45f679555ba90c06856129a66a578cf5631a018df4cd69eaa4a985a5682a21dc"
       },
       "items": [],
       "recipes": []
@@ -3299,7 +3299,7 @@
       "id": "ability-speak-with-the-hearth",
       "source": {
         "path": "design/cards/speak-with-the-hearth.md",
-        "sha256": "12b4093bf62288d488e5da1e91d60fb02b7628104e0a9c04a22fb5f701b91c94"
+        "sha256": "77cd73e470620ca778387397428cba4b697eec65ef15ecf9cd8c7145e00786fc"
       },
       "items": [],
       "recipes": []
@@ -3308,7 +3308,7 @@
       "id": "ability-spring-in-the-sleeve",
       "source": {
         "path": "design/cards/spring-in-the-sleeve.md",
-        "sha256": "f604d902dc52d04fa9326ed121294a2776563e030448c28c38cd1a6a8a437b0e"
+        "sha256": "b5931d047c9b38f7ea76cb4ffd866d6deafd5605040764a51ce65d08336bd16e"
       },
       "items": [],
       "recipes": []
@@ -3317,7 +3317,7 @@
       "id": "ability-stabilize",
       "source": {
         "path": "design/cards/stabilize.md",
-        "sha256": "b65e10c8d36337e1005352936f5cffa2ae41d7f1f71fe081e3fcb6582c110c18"
+        "sha256": "6ed8bc954dd9f45c7157f6e46f455c7c31303285b020e05c179390977557d7b3"
       },
       "items": [],
       "recipes": []
@@ -3326,7 +3326,7 @@
       "id": "ability-stand",
       "source": {
         "path": "design/cards/stand.md",
-        "sha256": "c20a853740a79fddf0c2e309c30c8524e1e23e29509bcef38928fc5f7e66aa43"
+        "sha256": "2755f4b56e931196755599882ba39b9e23ebdcedeaaab9219f01ba6e9134f1a8"
       },
       "items": [],
       "recipes": []
@@ -3335,7 +3335,7 @@
       "id": "ability-step-between-lanterns",
       "source": {
         "path": "design/cards/step-between-lanterns.md",
-        "sha256": "114b072081c294b2ecfe284807cb15eea1ebd703e73f762d93ddedb14f7c339d"
+        "sha256": "26e8ed5017ad8ec83e09887307ab79aa0e610a33210bf74ebeaf3b9c2dcf5ec2"
       },
       "items": [],
       "recipes": []
@@ -3344,7 +3344,7 @@
       "id": "ability-step-through-the-spark",
       "source": {
         "path": "design/cards/step-through-the-spark.md",
-        "sha256": "ba93bf83b7abf60313fd66f6e139189b6f3d6e5377447c01ef5be493dafb2c4b"
+        "sha256": "ed65d646d69ed79720eae6b575bf66c48bf5989e5c5fb4b3231346d42fe17787"
       },
       "items": [],
       "recipes": []
@@ -3353,7 +3353,7 @@
       "id": "ability-still-the-will",
       "source": {
         "path": "design/cards/still-the-will.md",
-        "sha256": "6a971ee74ae2f1ff86e70991fedf47fb9c377ede922faab234ffbcaa1f57280b"
+        "sha256": "bc5f242a8e6afa21fae87dfbd1068c8c82eb2393fd760b78c72f8468f10ba256"
       },
       "items": [],
       "recipes": []
@@ -3362,7 +3362,7 @@
       "id": "ability-stillness-at-the-center",
       "source": {
         "path": "design/cards/stillness-at-the-center.md",
-        "sha256": "3a5a458b2fe3b6bcd49ae3599d07457f4faa2be32cf53d465b7052176c352080"
+        "sha256": "be2d0f9b2567dc74aac9621d30ac90df02be19286d3717ef26f7404d739af2a7"
       },
       "items": [],
       "recipes": []
@@ -3371,7 +3371,7 @@
       "id": "ability-stitch-the-living-pattern",
       "source": {
         "path": "design/cards/stitch-the-living-pattern.md",
-        "sha256": "1036179bf06d7809483841be8453dc8a20faaa189847cb908f3a098d738e0cbc"
+        "sha256": "28326494a594a94bd1080cb347b440decc9584a88af2287b1e29f79f3e678d87"
       },
       "items": [],
       "recipes": []
@@ -3380,7 +3380,7 @@
       "id": "ability-stone-on-your-shoulders",
       "source": {
         "path": "design/cards/stone-on-your-shoulders.md",
-        "sha256": "e8f18b97efb122ebde38d84d1801de4d8819a2f1da397f5c1f54d243e67e1881"
+        "sha256": "9124527c1fb97df25d62464a8555dc3586412ae73209f6b6138c55daf9dc64f2"
       },
       "items": [],
       "recipes": []
@@ -3389,7 +3389,7 @@
       "id": "ability-storm-on-a-string",
       "source": {
         "path": "design/cards/storm-on-a-string.md",
-        "sha256": "14c8fdbcfc3eaaa72b02f2c837a55f0e07250e34c6211c28ad9786923e28773c"
+        "sha256": "3ecb4b930084bbf95dbf3861ec0e0032d274a5f877e48af75b75de90b35b9519"
       },
       "items": [],
       "recipes": []
@@ -3398,7 +3398,7 @@
       "id": "ability-stride-of-the-giant",
       "source": {
         "path": "design/cards/stride-of-the-giant.md",
-        "sha256": "b8ee1cd773248db7b3dfe6bc45a9e7fbab814a6951f809856f81c87f40b17a1d"
+        "sha256": "bbdb1cb6143b2409e5f23bdde53882652f6a52fd553ed989014f6fbb3bf35db3"
       },
       "items": [],
       "recipes": []
@@ -3407,7 +3407,7 @@
       "id": "ability-summon-construct-master",
       "source": {
         "path": "design/cards/summon-construct-master.md",
-        "sha256": "a22755bd98198d9d10a7bc2dff13e39dea0de2dc558d096facaea0da92c4bf03"
+        "sha256": "b3cf38271bf7bbe139645dc16fea35d080319311b11d04b2a8ad537c75789221"
       },
       "items": [],
       "recipes": []
@@ -3416,7 +3416,7 @@
       "id": "ability-summon-construct-novice",
       "source": {
         "path": "design/cards/summon-construct-novice.md",
-        "sha256": "d106fe2b33094dee13a6a7ef6e6f1a6b1568496673a1fcc2d537c0d8a4321b5b"
+        "sha256": "3368aedded3b46ecc2eab1b129c20b8c465a6a4750ddc4ff6b5947a0df509120"
       },
       "items": [],
       "recipes": []
@@ -3425,7 +3425,7 @@
       "id": "ability-summon-elemental-adept",
       "source": {
         "path": "design/cards/summon-elemental-adept.md",
-        "sha256": "2a345d0971f4d8c42c1992756cd83a6bc5ff240967b17673ee0c967360e6512e"
+        "sha256": "8be174185c62eb36bc18d40fcbb14c0d0b62957fdb6b7330612ef36ff9995f09"
       },
       "items": [],
       "recipes": []
@@ -3434,7 +3434,7 @@
       "id": "ability-summon-elemental-novice",
       "source": {
         "path": "design/cards/summon-elemental-novice.md",
-        "sha256": "05b5b4293f4b263dc2d8157617429e3331d93b27f8a17a7aabbfe8e1d9c8634c"
+        "sha256": "066c88f45602f0b54d0b8c04f5bbdd72c9ce4ab9db4806d24ad176fb1a46e6e0"
       },
       "items": [],
       "recipes": []
@@ -3443,7 +3443,7 @@
       "id": "ability-summon-fey-adept",
       "source": {
         "path": "design/cards/summon-fey-adept.md",
-        "sha256": "b73bb27de5f05ce1d62613a98a4071aaa4ac5ded3cf9707674c8fe433093924e"
+        "sha256": "d68e5eec575900c368812d9109a474220df431f268bc18d9b9422185452199e8"
       },
       "items": [],
       "recipes": []
@@ -3452,7 +3452,7 @@
       "id": "ability-summon-fey-master",
       "source": {
         "path": "design/cards/summon-fey-master.md",
-        "sha256": "6471bf66e5041c745f76be9c5f480e3fa10770a3de4f238ff50fbc77cad8dc28"
+        "sha256": "e6ee73cd5c207e64a2d45560deced18ea2fbdfe6e2472764f8ae58ca1156585a"
       },
       "items": [],
       "recipes": []
@@ -3461,7 +3461,7 @@
       "id": "ability-summon-undead-adept",
       "source": {
         "path": "design/cards/summon-undead-adept.md",
-        "sha256": "d82f3289b942932cbc5ad6b818d9f70f7c879d35a05f5cd1f7e3d0a7c14c7063"
+        "sha256": "924e30478b6295ca6c72f7d62e656c648a93747fc75be902937c3c0668961853"
       },
       "items": [],
       "recipes": []
@@ -3470,7 +3470,7 @@
       "id": "ability-sure-ascent",
       "source": {
         "path": "design/cards/sure-ascent.md",
-        "sha256": "73ccea14439c65353bc0569b95bb38d9bae86350664e4319e7f310d5292c743e"
+        "sha256": "5bc4dfbbdb01cf7c0259bc2203d3760ac665ab685579d698db0db10fe38fe0c2"
       },
       "items": [],
       "recipes": []
@@ -3479,7 +3479,7 @@
       "id": "ability-sustain-the-failing",
       "source": {
         "path": "design/cards/sustain-the-failing.md",
-        "sha256": "febbe3f5db4a250578d2d095f6a83dc5a7949067ea69b52c3cde6d1f16a49278"
+        "sha256": "585a797218c6c25b54285f0028bae29592ce369da28bbf7289c137365ba22a65"
       },
       "items": [],
       "recipes": []
@@ -3488,7 +3488,7 @@
       "id": "ability-swing-into-trouble",
       "source": {
         "path": "design/cards/swing-into-trouble.md",
-        "sha256": "f2acd3c76bf722b76c42372c7430b7a79bf573da101248884c2e3aed788a8790"
+        "sha256": "7f781b0abf80ec2c9bf4e1b477a966afa52fbc5593c7079b5f37bf6de653b826"
       },
       "items": [],
       "recipes": []
@@ -3497,7 +3497,7 @@
       "id": "ability-take-the-measure",
       "source": {
         "path": "design/cards/take-the-measure.md",
-        "sha256": "52acd79cf257003b3a1f09d3732205f92542dd4a2231235cfd8f8030fdd18b21"
+        "sha256": "58fda17fcd90762708d853a67367b4ddc66fc7b25ccb9292cde20a591ec3bf36"
       },
       "items": [],
       "recipes": []
@@ -3506,7 +3506,7 @@
       "id": "ability-take-them-alive",
       "source": {
         "path": "design/cards/take-them-alive.md",
-        "sha256": "b32b43a3b2eee10e965a95f87dd3d688e6612408d7b28c857d7ff279c8ef8f1d"
+        "sha256": "f6fdb5dfe2e8d3d655da8183bacaf18642cf79ed9adc44ee8a77c49387aa5586"
       },
       "items": [],
       "recipes": []
@@ -3515,7 +3515,7 @@
       "id": "ability-teach-stone-to-bend",
       "source": {
         "path": "design/cards/teach-stone-to-bend.md",
-        "sha256": "802256e0364ba3bc3a51347ebe7ffb168983c99ca1df72daf4ccb30cca10519a"
+        "sha256": "cba5b1893dc002cafcc65f42870bf8ece82acc2e52d0ec70d9bac6a4d5ace068"
       },
       "items": [],
       "recipes": []
@@ -3524,7 +3524,7 @@
       "id": "ability-tell-a-worthy-story",
       "source": {
         "path": "design/cards/tell-a-worthy-story.md",
-        "sha256": "1343ac4cc1218dca55a1c8f37fe04e2ab9c57e599d98ccaca050b47d38383db7"
+        "sha256": "638d52685cb874d95b889f8620bd6fff4d9983951498e91660aa2120d80780e6"
       },
       "items": [],
       "recipes": []
@@ -3533,7 +3533,7 @@
       "id": "ability-terms-before-swords",
       "source": {
         "path": "design/cards/terms-before-swords.md",
-        "sha256": "f6d6f3f09617b20dfa1c96d8aaba7bf446f09a329615786b43097c070bfc5252"
+        "sha256": "c3c527e54f33541d45e1d099dca33d474d9ad23f27f69b5da11d2c6a5bef15bf"
       },
       "items": [],
       "recipes": []
@@ -3542,7 +3542,7 @@
       "id": "ability-the-ancestors-stand",
       "source": {
         "path": "design/cards/the-ancestors-stand.md",
-        "sha256": "b7cf40109b503bf3a28ee3d5b521cd0de17c557117fcb202c686f6af5a9f856b"
+        "sha256": "38ecc2af53a8c5947a4b079e2e35b95a6f33beb55f8763c4a7b3d3c03a2ce19b"
       },
       "items": [],
       "recipes": []
@@ -3551,7 +3551,7 @@
       "id": "ability-the-angle-of-unease",
       "source": {
         "path": "design/cards/the-angle-of-unease.md",
-        "sha256": "158f0981a0e51fafefaad696ec34a35f6dce372370239eca322c9f8fbe84f6dc"
+        "sha256": "d85a1d1742a4b6753dcb4c0d623caf20a67e6607cb5cfd9f5ccb1f88002cb97b"
       },
       "items": [],
       "recipes": []
@@ -3560,7 +3560,7 @@
       "id": "ability-the-bones-rise",
       "source": {
         "path": "design/cards/the-bones-rise.md",
-        "sha256": "f60b1c51bb5e4666b3395865b8f565b1f3669e155e9c5875988bc235789fbb56"
+        "sha256": "a15a326479345eee742963670a1926d0da7aac22a34c7f691063777c7d8614c7"
       },
       "items": [],
       "recipes": []
@@ -3569,7 +3569,7 @@
       "id": "ability-the-chorus-advances",
       "source": {
         "path": "design/cards/the-chorus-advances.md",
-        "sha256": "4602165d4a9039c2bdc4ed161e88b7684f6e83424203bdaf871b66b4f1e41058"
+        "sha256": "3d27e3ee0297450625ac0643385386e17e031f7945c16e0ade5b6101a4a04d28"
       },
       "items": [],
       "recipes": []
@@ -3578,7 +3578,7 @@
       "id": "ability-the-circle-holds",
       "source": {
         "path": "design/cards/the-circle-holds.md",
-        "sha256": "ee08fe603f12cb6cde08260258be27f416f649e5f06fe5a479b4567e44934929"
+        "sha256": "8f4f651e361e0764800935511161f5cbc4515a0bfe416dc249ce05306fc740a6"
       },
       "items": [],
       "recipes": []
@@ -3587,7 +3587,7 @@
       "id": "ability-the-city-opens-its-doors",
       "source": {
         "path": "design/cards/the-city-opens-its-doors.md",
-        "sha256": "e2554b8c397e531933823f36d102a384e44a102d291595d9daa23258d4bb908a"
+        "sha256": "51a982f4fedc1a27e9ff461f8ed4b52d0c047e5204afdd87f8663f94405b81ed"
       },
       "items": [],
       "recipes": []
@@ -3596,7 +3596,7 @@
       "id": "ability-the-cleverest-mixture",
       "source": {
         "path": "design/cards/the-cleverest-mixture.md",
-        "sha256": "1cb48a4bfda8f0a3ec504838bcfdc2c355e92f95bf15a12095994d0df18f9dca"
+        "sha256": "0ed6df39c25500a3302a65a3e422b4de8dc099b8baf60f5fdb9828db615e85aa"
       },
       "items": [
         "item-mixing-kit"
@@ -3610,7 +3610,7 @@
       "id": "ability-the-debt-comes-due",
       "source": {
         "path": "design/cards/the-debt-comes-due.md",
-        "sha256": "f7ff4e7fcbb586dca7ef9208d6167a2e6a45cc88521c268528276befdc99662f"
+        "sha256": "20afac7569b252d0a56dc959fc54f3fa9add7c10502e216ca61f2aae20f17430"
       },
       "items": [],
       "recipes": []
@@ -3619,7 +3619,7 @@
       "id": "ability-the-grove-gives-back",
       "source": {
         "path": "design/cards/the-grove-gives-back.md",
-        "sha256": "45e83566f06acb98300a8489f9685406a3cf21dfbb98731ac8efbcfc1d182852"
+        "sha256": "20ba12fe516162e3db8bf4992b5ed7da9e7ec964071e5da5da60e87391b3df5a"
       },
       "items": [],
       "recipes": []
@@ -3628,7 +3628,7 @@
       "id": "ability-the-hunt-ends-here",
       "source": {
         "path": "design/cards/the-hunt-ends-here.md",
-        "sha256": "f0cb07d35a7c6692fb83ebff0e324a7286ba2b49397d78d0c17f86ccfd377b78"
+        "sha256": "84c1cadf7e7caa8e9e05cabfa32821959d04ba7cd61dc8c70638d7c022f14da4"
       },
       "items": [
         "item-ordinary-ranged-weapon",
@@ -3640,7 +3640,7 @@
       "id": "ability-the-key-changes-hands",
       "source": {
         "path": "design/cards/the-key-changes-hands.md",
-        "sha256": "575a2ba75542e328f30d1a1c6775aa188b9ef553ef5653e57d02db6928ec2b97"
+        "sha256": "e7d390100fa9c4a3f8c35fee8e579fd3a6c07694b6b124ef8b5afd8b525ff3ca"
       },
       "items": [],
       "recipes": []
@@ -3649,7 +3649,7 @@
       "id": "ability-the-land-keeps-no-secrets",
       "source": {
         "path": "design/cards/the-land-keeps-no-secrets.md",
-        "sha256": "36cb7c7d0bc0632d611c367cc74b17e88338760c316f3ca526c3082c37ee2110"
+        "sha256": "51e01db57a9bcace14bbb016aeaa53f924e8df3be3671df7c4db7daf9eee025a"
       },
       "items": [],
       "recipes": []
@@ -3658,7 +3658,7 @@
       "id": "ability-the-moment-foretold",
       "source": {
         "path": "design/cards/the-moment-foretold.md",
-        "sha256": "bbe958ebf17f97b7e644fb7e3258b863f7166d9cdf61868ac88b39916f341f94"
+        "sha256": "2a6af37b74d9fb95ef0bd835823fad12b0287f4ec08d3ffe29556fe6339dd7ef"
       },
       "items": [],
       "recipes": []
@@ -3667,7 +3667,7 @@
       "id": "ability-the-orchard-wakes",
       "source": {
         "path": "design/cards/the-orchard-wakes.md",
-        "sha256": "4366d2c6a3960af3e34acf6012f9f730e01a763104a23488dfe21531535a9cf3"
+        "sha256": "7cdcbcba23019e103c2a9d36256486e268124ee1010bce07b9067c570d35d04e"
       },
       "items": [],
       "recipes": []
@@ -3676,7 +3676,7 @@
       "id": "ability-the-otter-s-bargain",
       "source": {
         "path": "design/cards/the-otter-s-bargain.md",
-        "sha256": "7c693139cb638bef07c152e0f0e66107ef0d9b0b077af8578305b31931c0a7b4"
+        "sha256": "fe1dc48e61bae25c4ff440f1c739eee69e1891c03f7896b858a0c72f9a1302e2"
       },
       "items": [],
       "recipes": []
@@ -3685,7 +3685,7 @@
       "id": "ability-the-patient-metal",
       "source": {
         "path": "design/cards/the-patient-metal.md",
-        "sha256": "31378255284677592480c088cc64dc333086b148dc14f226c46c09690b003cbe"
+        "sha256": "396fa8755e789b9ec7ddeb5cd4126e6bf97237ee2748af437ff3617c34d84513"
       },
       "items": [],
       "recipes": []
@@ -3694,7 +3694,7 @@
       "id": "ability-the-right-small-courtesy",
       "source": {
         "path": "design/cards/the-right-small-courtesy.md",
-        "sha256": "d6b3d3535fddc1a88deba97d0a629cf9163ae74580c2e945b61967580dd6dd13"
+        "sha256": "4cb4fef8acaa132d85099dc6092c11d6df47981b552618ff72d2860394599d2c"
       },
       "items": [],
       "recipes": []
@@ -3703,7 +3703,7 @@
       "id": "ability-the-road-remembers",
       "source": {
         "path": "design/cards/the-road-remembers.md",
-        "sha256": "cc1edadbbb8a248978cc33477a3e5e0acdbfef7844b8d648abf7c097d96f51b8"
+        "sha256": "0aabe430238f59680b143d6fd7b4e9c736138f4ce77e8ee51d1e63a89c17aa6b"
       },
       "items": [],
       "recipes": []
@@ -3712,7 +3712,7 @@
       "id": "ability-the-shape-of-escape",
       "source": {
         "path": "design/cards/the-shape-of-escape.md",
-        "sha256": "dbfc49d9523841887fe8872bcca20f3e5c4ec8d447889c199d01ba6a00fa1e5d"
+        "sha256": "04a0b829e9dfdfd95c6b892d644d6f1b24a39df24b5160f155148ccf63665556"
       },
       "items": [],
       "recipes": []
@@ -3721,7 +3721,7 @@
       "id": "ability-the-sky-comes-down",
       "source": {
         "path": "design/cards/the-sky-comes-down.md",
-        "sha256": "9ad99b1aeb32ca35768cfc1d71db79fa8fb226bb0ef3a2a980aa50c5db65dec3"
+        "sha256": "507e34be7ddd032b5c324623985d6f0ee3edbb9f7d47c99c9cf5c7a3f02c60bb"
       },
       "items": [],
       "recipes": []
@@ -3730,7 +3730,7 @@
       "id": "ability-the-tale-will-tell-of-you",
       "source": {
         "path": "design/cards/the-tale-will-tell-of-you.md",
-        "sha256": "a340618f4f77c28ef2f3ba359b362d931f694ede9518662ba4c1da79b53a1591"
+        "sha256": "c75c7b4f5debaf28d9232e62faf710ae4517342a4064edb9a38ad44048891689"
       },
       "items": [],
       "recipes": []
@@ -3739,7 +3739,7 @@
       "id": "ability-the-unlit-road",
       "source": {
         "path": "design/cards/the-unlit-road.md",
-        "sha256": "5a787128539d78d7398daf741bbf67a6234e78b39c59da32f2437295875b9f13"
+        "sha256": "ecad88556986cd7c9d05cb8d56349763fd6c26364189d08d68565b5f9742b547"
       },
       "items": [],
       "recipes": []
@@ -3748,7 +3748,7 @@
       "id": "ability-the-untroubled-hand",
       "source": {
         "path": "design/cards/the-untroubled-hand.md",
-        "sha256": "e62ece4ec65659db78a7642b0c1888e663c8b965418cda51f6cc1c28d5bea3d5"
+        "sha256": "dcee9c3caf4c66cdab77b9ad0ae02cf616674ea547a87f6a53312fe84a946d6e"
       },
       "items": [],
       "recipes": []
@@ -3757,7 +3757,7 @@
       "id": "ability-the-walking-toolbox",
       "source": {
         "path": "design/cards/the-walking-toolbox.md",
-        "sha256": "7bfaafdd394346f57d90558210cbd16a3ca2cbb0dcbc90db36d8e9b1283dda38"
+        "sha256": "fbe4d443ecec3234e09572379dd33f912ef97b0a106c0e40823cea6731d4765f"
       },
       "items": [],
       "recipes": []
@@ -3766,7 +3766,7 @@
       "id": "ability-the-wind-makes-room",
       "source": {
         "path": "design/cards/the-wind-makes-room.md",
-        "sha256": "69a5c7809d992a2ccc1216ec62cf20f6d793646a04128e710c35d298c6b1b56c"
+        "sha256": "3da8a89bfbb5b06af4cbc22a4d059b6c49a078bb7fd2460afcbdcec0166e0b08"
       },
       "items": [],
       "recipes": []
@@ -3775,7 +3775,7 @@
       "id": "ability-through-the-spearpoints",
       "source": {
         "path": "design/cards/through-the-spearpoints.md",
-        "sha256": "8fcac386f8fe8c4625c1ac796ea87ef52e33a5e1ac5cef2734d440e54f8867de"
+        "sha256": "c85225bfdb7274e6749d15b064dfe0a3746d68ee9c0cce3ccdd641554c284bb8"
       },
       "items": [],
       "recipes": []
@@ -3784,7 +3784,7 @@
       "id": "ability-thunder-at-the-door",
       "source": {
         "path": "design/cards/thunder-at-the-door.md",
-        "sha256": "2633faef0b4af464100eb0cc099106a7a3763d7602eddc2d1a12b71022cd7ee6"
+        "sha256": "a24498eb03bd50578059bebbc913b3d40df886cc09ec0280f4ec078411d1872a"
       },
       "items": [],
       "recipes": []
@@ -3793,7 +3793,7 @@
       "id": "ability-thunder-ring",
       "source": {
         "path": "design/cards/thunder-ring.md",
-        "sha256": "8e08467ad7e848ed5e1383141ceb9bfa8b6a92ae324e835e19a90d65d0c1988f"
+        "sha256": "be3dd0c760d3fd8758a974c9e2955ab5ec36367985158ec70ec15d8306a13e6e"
       },
       "items": [],
       "recipes": []
@@ -3802,7 +3802,7 @@
       "id": "ability-trail-workshop",
       "source": {
         "path": "design/cards/trail-workshop.md",
-        "sha256": "2ff124506f7366d815493fdca81311c5a70d77f24c7bcaa022a94e1413cd9466"
+        "sha256": "6c378c643c1d7f4f0fa4f62c2257de8d326b096a7ad3aca8844648644b37088f"
       },
       "items": [
         "item-craft-tools"
@@ -3814,7 +3814,7 @@
       "id": "ability-translate-the-fragment",
       "source": {
         "path": "design/cards/translate-the-fragment.md",
-        "sha256": "1e8367133f78d0593915a0b541c442f0d1fc38ae6d751f65d15e22d47d881744"
+        "sha256": "bc8399c8b7973067456c1d0abffb186f03c597dc2935f4bbf2085b99bd71894c"
       },
       "items": [],
       "recipes": []
@@ -3823,7 +3823,7 @@
       "id": "ability-traverse-the-impossible",
       "source": {
         "path": "design/cards/traverse-the-impossible.md",
-        "sha256": "2d470ef80d77b4e3794d187d561c0f912b7252f6fc2ea34bbc6b6b74226dfa7e"
+        "sha256": "631fc2486b931d67cf8714544c1c2562fccd792d0e3783d1fa29a4c5df9dfd74"
       },
       "items": [],
       "recipes": []
@@ -3832,7 +3832,7 @@
       "id": "ability-treat-bone",
       "source": {
         "path": "design/cards/treat-bone.md",
-        "sha256": "a2b39430db02d919b5919d64f3d8f0e0b756d321fa29788870a752d399501028"
+        "sha256": "859fb3e19a27191895ecf2d7ee31142c0ee41983e5fcac63659b295bd28c4bd1"
       },
       "items": [],
       "recipes": []
@@ -3841,7 +3841,7 @@
       "id": "ability-treat-elemental-injury",
       "source": {
         "path": "design/cards/treat-elemental-injury.md",
-        "sha256": "7a6164d85366e9d717e027e589b2796d8c04e6682e0f2dd3cd3650dbb446187c"
+        "sha256": "4f3e57aa2757f3670b2978df5eaad45ff71d1b40c585c464530f4f355b5a5ad3"
       },
       "items": [],
       "recipes": []
@@ -3850,7 +3850,7 @@
       "id": "ability-treat-life-injury",
       "source": {
         "path": "design/cards/treat-life-injury.md",
-        "sha256": "5eadecbc92bc43051cdb144a6f26a86c7643262f21340669b3bbffde811b59e0"
+        "sha256": "38fccd0c7578cc7d35e47101aa41d2c9d18590719296974d7772d5f9b9166bd1"
       },
       "items": [],
       "recipes": []
@@ -3859,7 +3859,7 @@
       "id": "ability-treat-mental-trauma",
       "source": {
         "path": "design/cards/treat-mental-trauma.md",
-        "sha256": "aa57c9729b40c96b926b3a7b290fbbd7ff1eb0070088f704cd815236e9b7ef6d"
+        "sha256": "7c19a4f92a0579a30d027aed6f7c1d230666e141eb5dc5b19174b3d4eb7be399"
       },
       "items": [],
       "recipes": []
@@ -3868,7 +3868,7 @@
       "id": "ability-treat-radiant-injury",
       "source": {
         "path": "design/cards/treat-radiant-injury.md",
-        "sha256": "f7a465b23a86e7507c18d11fcbc5237ad010b9f26157a65df32014fb8d44bace"
+        "sha256": "b5af45302790861eb6e1ce49de255a17ec0181c73df0168b5ff63d72fe2035b6"
       },
       "items": [],
       "recipes": []
@@ -3877,7 +3877,7 @@
       "id": "ability-treat-soft-tissue",
       "source": {
         "path": "design/cards/treat-soft-tissue.md",
-        "sha256": "05f28cc787edd615c4dc84844df3e04ec0aff393b59d01f14bd0f05d960ecff5"
+        "sha256": "c0ae7c26688a2fd4a259318b7488cc7d73485d3d7ea3bf3e0d7af3a068adf4d8"
       },
       "items": [],
       "recipes": []
@@ -3886,7 +3886,7 @@
       "id": "ability-turn-the-crowd",
       "source": {
         "path": "design/cards/turn-the-crowd.md",
-        "sha256": "29d17257c4196080106a34121fb125ffc372be0ff8521ba3a9493ce399ee774a"
+        "sha256": "84eb5427945fd62fd30c0062652eb4adb1bc0f2f1418e7e8305ecdc5e2476cb6"
       },
       "items": [],
       "recipes": []
@@ -3895,7 +3895,7 @@
       "id": "ability-turn-the-river",
       "source": {
         "path": "design/cards/turn-the-river.md",
-        "sha256": "b8d18d0c34c54c7ecc119d603c79400a9ad730df480e7c3874a81bef511e2b69"
+        "sha256": "e9ab3e8313f754bdff3bf10071f02e79fa40e63ee53f868b2029d1967185ea85"
       },
       "items": [],
       "recipes": []
@@ -3904,7 +3904,7 @@
       "id": "ability-under-their-guard",
       "source": {
         "path": "design/cards/under-their-guard.md",
-        "sha256": "688381da85f26aee0687cc1120c452596b3e41cbf88aa8b9651be437671c16a7"
+        "sha256": "cf82c336272cef93ed72404828c0cf9ca957f1a7c36ecedd16ba272cb31e6efa"
       },
       "items": [],
       "recipes": []
@@ -3913,7 +3913,7 @@
       "id": "ability-undertow-answer",
       "source": {
         "path": "design/cards/undertow-answer.md",
-        "sha256": "3677083274430a7d89c7ebd3a6be98c95b317f4c25964b9c6958f6cda4d5a52d"
+        "sha256": "75dab47897eddfd5b71036a502a438d7c1bb3b9286ac711bd449dacbb31ef0d8"
       },
       "items": [],
       "recipes": []
@@ -3922,7 +3922,7 @@
       "id": "ability-unravel-the-bolt",
       "source": {
         "path": "design/cards/unravel-the-bolt.md",
-        "sha256": "bb310c0e875daaacba2d2d403b5e65d3d6f326ab2224fe82d33e555b570045ea"
+        "sha256": "1861d3e9cf3e2fbf340025f3832d892fadb1ccf2b778aa675bb6e36a9234918b"
       },
       "items": [],
       "recipes": []
@@ -3931,7 +3931,7 @@
       "id": "ability-urgent-bandaging",
       "source": {
         "path": "design/cards/urgent-bandaging.md",
-        "sha256": "def4d565e9bd8ccea83e70377a32aed0c2aea21a23330312af9611af8445f83e"
+        "sha256": "81fbc2675dd6d86aeffe84d4b3b8d6cef038d709009b309766eed2d5e7326b31"
       },
       "items": [],
       "recipes": []
@@ -3940,7 +3940,7 @@
       "id": "ability-use-a-healing-potion",
       "source": {
         "path": "design/cards/use-a-healing-potion.md",
-        "sha256": "690e6b33898b286d4f388505be2d9757c72e942161d40bd12eec6f1b0c6f0226"
+        "sha256": "210f6e2c84a51dd31f6b44a534f602e703b137eec38cef08697a63d1fdec82ea"
       },
       "items": [],
       "recipes": []
@@ -3949,7 +3949,7 @@
       "id": "ability-veiled-crossing",
       "source": {
         "path": "design/cards/veiled-crossing.md",
-        "sha256": "44829fba7d5c6ed2c252254033bfa21d85cec993b46a89009470edeb028d411a"
+        "sha256": "1e50f9f542c519da52921d5eb49cbf8bfafae6d95e167103525b765fdbe6ed7a"
       },
       "items": [],
       "recipes": []
@@ -3958,7 +3958,7 @@
       "id": "ability-wake-the-iron-rune",
       "source": {
         "path": "design/cards/wake-the-iron-rune.md",
-        "sha256": "8697682efdf17abb9e63516e826a322858d2fb5fbf1f78512073a2df381200d6"
+        "sha256": "61702aaa00d75f2f852b13e9b285becb9bd9a1f0d63c355442eb20f74ac98230"
       },
       "items": [],
       "recipes": []
@@ -3967,7 +3967,7 @@
       "id": "ability-walk-the-thunder",
       "source": {
         "path": "design/cards/walk-the-thunder.md",
-        "sha256": "abf3fa6b40261010adf84f2eef8390e733cd2a39673459c813fd3c6aaf1f6922"
+        "sha256": "a951e8b651db6374bc99cce42b91a212af581e751db3ac77965404c439c86a00"
       },
       "items": [],
       "recipes": []
@@ -3976,7 +3976,7 @@
       "id": "ability-wear-heavy-armor",
       "source": {
         "path": "design/cards/wear-heavy-armor.md",
-        "sha256": "5d24b896941d10839b77529c8fd0dcb203f8b9a2be12c007e91a848846e449f6"
+        "sha256": "0e894eed3c2e6522f08d5f5cbb133d3d0c2c85c21e6a9b9828ae1c1780da888f"
       },
       "items": [
         "item-ordinary-heavy-armor"
@@ -3987,7 +3987,7 @@
       "id": "ability-wear-medium-armor",
       "source": {
         "path": "design/cards/wear-medium-armor.md",
-        "sha256": "cd703cdd5bbe7fc554ec8c362cc967352754efc3c1e9a03a7514e39224c5ae19"
+        "sha256": "2a042d1c36030ae7c5b2c648e380a7147ac0575e591019c89d264a9c99434ecc"
       },
       "items": [
         "item-ordinary-medium-armor"
@@ -3998,7 +3998,7 @@
       "id": "ability-wear-the-great-beast",
       "source": {
         "path": "design/cards/wear-the-great-beast.md",
-        "sha256": "19447203eeb855058bd4e68939584c650f57d2586ffc612f17bb09339129a5e3"
+        "sha256": "de1fdf2c9826b4a973ed9944c1a3b1b4612c058c252152fb3a6a69a9d44f28eb"
       },
       "items": [],
       "recipes": []
@@ -4007,7 +4007,7 @@
       "id": "ability-weight-of-iron",
       "source": {
         "path": "design/cards/weight-of-iron.md",
-        "sha256": "e0f1aa7ef45dc7eab55e24fe0aa632d47972e81502110e7cd0e1dfc840ba134b"
+        "sha256": "940f3e1c35fc689b724eb8fd32dbe30fb49990aa8e5bb1368b2aa48465eecadf"
       },
       "items": [],
       "recipes": []
@@ -4016,7 +4016,7 @@
       "id": "ability-when-the-stars-look-back",
       "source": {
         "path": "design/cards/when-the-stars-look-back.md",
-        "sha256": "e61088f562e01b2049699348a0aea4246e08542e3dbb59ecd34b4f67369cdb1f"
+        "sha256": "2f4fd8d5b1742dad1cf9592c77cdbb4383a26e9477dc8ce7e09408c0312f61ac"
       },
       "items": [],
       "recipes": []
@@ -4025,7 +4025,7 @@
       "id": "ability-where-only-eagles-pass",
       "source": {
         "path": "design/cards/where-only-eagles-pass.md",
-        "sha256": "1a143a88efbbe8bef34e91c5e86d79d2f054ddeeecb9783c0164f0e2457e06d0"
+        "sha256": "eef980c01d7942151dc3b94f706f9e857a269316c4cac50509f04a6dd2146886"
       },
       "items": [],
       "recipes": []
@@ -4034,7 +4034,7 @@
       "id": "ability-white-heat",
       "source": {
         "path": "design/cards/white-heat.md",
-        "sha256": "0d1e4e6f961a5fe6313f36da12cfb77be578fcc053d815ae2076bead48380c74"
+        "sha256": "a67460289b65c7d62dfd7e6f61283381897862758835998d0f8dba1ab6637b6c"
       },
       "items": [],
       "recipes": []
@@ -4043,7 +4043,7 @@
       "id": "ability-wings-over-the-battle",
       "source": {
         "path": "design/cards/wings-over-the-battle.md",
-        "sha256": "543f7252b7e191de0f4fb24b119682f3e0a6157b1d0f4b305b7a9cf62f009ba8"
+        "sha256": "cb9dadf315aec512058477a04ee8442b3441419c54bd8d1f94d33cc27b72b9ff"
       },
       "items": [],
       "recipes": []
@@ -4052,7 +4052,7 @@
       "id": "ability-winter-hold",
       "source": {
         "path": "design/cards/winter-hold.md",
-        "sha256": "164b818737811a3ca09faae25c29a26f453f6977d739abf4e1bb9aaa0e423362"
+        "sha256": "17481b4f9adb0404e9e15112cc31c8fb27a2a956ff20da10b77436cc0edc334d"
       },
       "items": [],
       "recipes": []
@@ -4061,7 +4061,7 @@
       "id": "ability-write-the-final-line",
       "source": {
         "path": "design/cards/write-the-final-line.md",
-        "sha256": "82698c53527ec1b31c18bf91109b2cb37767985b3094c9ec2e29cd116372d9b9"
+        "sha256": "40094f5c675c0ad931ad43a23629d15e356a185baf62e872a4196b59af6a8665"
       },
       "items": [
         "item-ordinary-melee-weapon"

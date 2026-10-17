@@ -30,3 +30,14 @@ test("every enabled adapter matches the pinned catalog source exactly", async ()
     /needs review/,
   );
 });
+
+test("reviewed editorial-only Defend source remains usable on existing items", () => {
+  const definition = ABILITY_DEFINITIONS["ability-defend"];
+  assert.equal(
+    abilityDefinition(definition.id, {
+      ...definition.source,
+      sha256: definition.equivalentSourceHashes[0],
+    }),
+    definition,
+  );
+});

@@ -2,6 +2,13 @@
 
 `source-lock.json` records immutable book inputs, hashes, portrait provenance and summon links. `static/data/choices.json` is the generated learning catalog used by character development: 350 ability records (18 universal, 332 purchasable), 4 ancestries, 20 traits, 50 origins, 10 classes and 18 disciplines.
 
+`static/data/creatures.json` is the separately generated intake catalog for all
+192 creatures, with complete player-defense action tables, authored reference
+text, exact portrait provenance and distinct summon links. It deliberately does
+not build native creature/summon packs or claim specialty-action automation. See
+[the creature catalog contract](../docs/creature-catalog.md) for reproduction,
+failure behavior and pending adapters.
+
 Rebuild with Node 24 and `HOL_BOOK_REPOSITORY=/path/to/heroes-of-legend npm run import:choices`; verify with `npm run validate:choices` using the same environment. The importer reads Git objects at the locked commit and verifies every source hash. Display-name changes do not change an authored ability's ID. Foundry IDs are deterministic 16-character hashes of the namespaced stable identity; collisions fail validation. Sources without an authored ID use their explicitly recorded path-derived identity, so a future file rename requires a reviewed alias/migration rather than implicit identity replacement.
 
 The catalog includes creation grants, class rank prices/signature options, coin/HP/Speed contributions and learning requirements. Ability records also carry a separate `reference` payload with authored flavor and structured plain-text rules: action, attribute, target, time, duration, acquisition details, limits, rule paragraphs, exact Weak/Standard/Strong outcomes and explicit addenda. Source HTML is data only and is escaped by the native templates. Reference prose never changes parsed eligibility or automation metadata. The reviewed Use a Healing Potion source removes the contradictory spell paragraph; the importer preserves that corrected text rather than restoring it from history.

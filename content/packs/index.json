@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+  "catalogs": {
+    "choices": 2,
+    "inventory": 1
+  },
+  "packs": [
+    {
+      "name": "abilities",
+      "type": "Item",
+      "path": "packs/abilities",
+      "count": 350,
+      "semanticSha256": "9494e6276c10693bd34cba239cc979db93e594e3d4dcdd3c2187b3b9bd3d7da6"
+    },
+    {
+      "name": "equipment",
+      "type": "Item",
+      "path": "packs/equipment",
+      "count": 43,
+      "semanticSha256": "d7e7b88f98c1dce521a8cb9e222c43aa2820bf30a41a43efbcf0c7774feb5901"
+    }
+  ]
+}

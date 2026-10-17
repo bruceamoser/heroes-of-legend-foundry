@@ -1,0 +1,40 @@
+{
+  "_key": "!items!fb55e8e1e536bc14",
+  "_id": "fb55e8e1e536bc14",
+  "name": "The Wind Makes Room",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You spread your arms and send a low gust sweeping around your companions’ legs, lifting their steps over the rubble.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>Up to three willing allies visible within 4 squares.</dd></div><div><dt>Duration</dt><dd>Instant.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Each recipient moves once per use. A further use requires another Maneuver.</dd></div><div><dt>Type</dt><dd>Magic / Movement</dd></div></dl><div class=\"hol-reference-rules\"><p>Each chosen ally may immediately move up to 2 squares along a legal route, one at a time, without provoking. Difficult terrain costs 1 for this movement. They must be able to move and end in supported free squares; the gust does not carry them over gaps, creatures or barriers. They spend no actions.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/cards/the-wind-makes-room.md\" target=\"_blank\" rel=\"noopener\">design/cards/the-wind-makes-room.md</a> at <code>9bc9b4fe3256e68880b92c45facf0f25b98a1ea3</code>.</p></section>",
+    "activity": {
+      "action": "main",
+      "rollMode": "none",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-the-wind-makes-room",
+      "source": {
+        "path": "design/cards/the-wind-makes-room.md",
+        "sha256": "3da8a89bfbb5b06af4cbc22a4d059b6c49a078bb7fd2460afcbdcec0166e0b08"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Rules reference · play automation in progress"
+    }
+  }
+}

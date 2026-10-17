@@ -1,0 +1,35 @@
+{
+  "_key": "!items!1682a63c4725dc0d",
+  "_id": "1682a63c4725dc0d",
+  "name": "Book of Quiet Doors",
+  "type": "equipment",
+  "system": {
+    "schemaVersion": 1,
+    "catalogId": "item-book-of-quiet-doors",
+    "quantity": 1,
+    "bulk": 1,
+    "hands": 0,
+    "inventoryDie": 0,
+    "held": false,
+    "worn": false,
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Market reference · acquisition and use automation in progress</p><p><strong>Market price:</strong> 150 coins; special order.</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/equipment/book-of-quiet-doors.md\" target=\"_blank\" rel=\"noopener\">design/equipment/book-of-quiet-doors.md</a> at <code>9bc9b4fe3256e68880b92c45facf0f25b98a1ea3</code>.</p></section>"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "source": {
+        "path": "design/equipment/book-of-quiet-doors.md",
+        "sha256": "2eb2fc988fa75c00f37395a9fe4a98112cc11a5fed90146602ba1f5fbd46aeab"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Market reference · acquisition and use automation in progress"
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "_key": "!items!3a25663ee70f337d",
+  "_id": "3a25663ee70f337d",
+  "name": "Soft Landing",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You vault the low rail and land on bent knees, catching your balance before a loose stone can rattle.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>Self; a visible supported free landing within 2 squares.</dd></div><div><dt>Duration</dt><dd>Immediate jump.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Repeatable; normal action economy applies.</dd></div><div><dt>Type</dt><dd>Signature</dd></div></dl><div class=\"hol-reference-rules\"><p>Jump to the destination without provoking. You may cross a gap or low obstacle but not a wall or an occupied standing creature’s square. Land standing without audible footfalls. This grants no protection from a separate fall and requires a landing you can reach within the printed distance.</p></div><h3>Additional rulings</h3><p><strong>Tags:</strong> Skill / Movement</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/cards/signature-shadow-soft-landing.md\" target=\"_blank\" rel=\"noopener\">design/cards/signature-shadow-soft-landing.md</a> at <code>9bc9b4fe3256e68880b92c45facf0f25b98a1ea3</code>.</p></section>",
+    "activity": {
+      "action": "main",
+      "rollMode": "none",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-shadow-soft-landing",
+      "source": {
+        "path": "design/cards/signature-shadow-soft-landing.md",
+        "sha256": "409ba3000680c411ac9848c0793ad2086ff67ac047069bf59e4c28c7e021e0ff"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Rules reference · play automation in progress"
+    }
+  }
+}

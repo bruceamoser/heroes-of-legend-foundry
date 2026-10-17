@@ -1,0 +1,40 @@
+{
+  "_key": "!items!b307cf9fa7c3641f",
+  "_id": "b307cf9fa7c3641f",
+  "name": "Stabilize",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You press against the wound and keep your voice steady, giving your friend something to hold on to.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>One adjacent Dying player character</dd></div><div><dt>Duration</dt><dd>Instant</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Repeatable; pay the action and any stated costs each use.</dd></div><div><dt>Type</dt><dd>Universal</dd></div></dl><div class=\"hol-reference-rules\"><p>Stabilize at 0 HP and clear death marks. No roll. This grants no HP, removes no wound, and does not restore Grit. Taking damage while stable enters Dying again.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/cards/stabilize.md\" target=\"_blank\" rel=\"noopener\">design/cards/stabilize.md</a> at <code>9bc9b4fe3256e68880b92c45facf0f25b98a1ea3</code>.</p></section>",
+    "activity": {
+      "action": "main",
+      "rollMode": "none",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-stabilize",
+      "source": {
+        "path": "design/cards/stabilize.md",
+        "sha256": "6ed8bc954dd9f45c7157f6e46f455c7c31303285b020e05c179390977557d7b3"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Rules reference · play automation in progress"
+    }
+  }
+}

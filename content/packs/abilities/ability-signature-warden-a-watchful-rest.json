@@ -1,0 +1,40 @@
+{
+  "_key": "!items!4d04e9abb23cec58",
+  "_id": "4d04e9abb23cec58",
+  "name": "A Watchful Rest",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You circle the camp, test the ground for water and point out the approaches before assigning the first watch.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Time</dt><dd>Ten minutes.</dd></div><div><dt>Target / range / shape</dt><dd>A possible resting place and up to six willing companions; ten minutes of examination.</dd></div><div><dt>Duration</dt><dd>Eight hours or until the group leaves.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>One prepared resting place per Warden; preparing another ends the previous benefit.</dd></div><div><dt>Type</dt><dd>Signature</dd></div></dl><div class=\"hol-reference-rules\"><p>Spend ten minutes examining an accessible resting place. Learn its exposed approaches and any local environmental danger that observable signs can reveal. Prepare a watch plan. For the next eight hours while remaining there, you and the chosen companions gain 1 Boon to consequential rolls noticing approaching danger. This grants no automatic detection, shelter, supplies, safe-place ruling or Grit recovery. Sleeping characters do not become awake observers.</p></div><h3>Additional rulings</h3><p><strong>Tags:</strong> Skill / Utility</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/cards/signature-warden-a-watchful-rest.md\" target=\"_blank\" rel=\"noopener\">design/cards/signature-warden-a-watchful-rest.md</a> at <code>9bc9b4fe3256e68880b92c45facf0f25b98a1ea3</code>.</p></section>",
+    "activity": {
+      "action": "main",
+      "rollMode": "none",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-warden-a-watchful-rest",
+      "source": {
+        "path": "design/cards/signature-warden-a-watchful-rest.md",
+        "sha256": "a4e08f1a663d60839378cfbec71581655e2ef6178ba7a1db4d4dfe1e99dc960d"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Rules reference · play automation in progress"
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "_key": "!items!ddd886076e6fb632",
+  "_id": "ddd886076e6fb632",
+  "name": "The Circle Holds",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You trace the last arc and stand inside the promise you have made together.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>Self and allies within 2 squares.</dd></div><div><dt>Duration</dt><dd>Until the start of your next turn; each Stability grant is used once.</dd></div><div><dt>Equipment / acquisition</dt><dd>No item needed unless named above.</dd></div><div><dt>Limits</dt><dd>Repeatable; pay the action and any stated costs each use.</dd></div><div><dt>Type</dt><dd>Magic</dd></div></dl><div class=\"hol-reference-rules\"><p>Until the start of your next turn, each gains 1 Boon to defense against spells. Each gains Stability 2 for the first forced movement against them, including collision chains; highest applicable Stability only, maximum 3. The grant is consumed after that event even if a higher Stability applied. The ward is not physical cover.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/cards/the-circle-holds.md\" target=\"_blank\" rel=\"noopener\">design/cards/the-circle-holds.md</a> at <code>9bc9b4fe3256e68880b92c45facf0f25b98a1ea3</code>.</p></section>",
+    "activity": {
+      "action": "main",
+      "rollMode": "none",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-the-circle-holds",
+      "source": {
+        "path": "design/cards/the-circle-holds.md",
+        "sha256": "8f4f651e361e0764800935511161f5cbc4515a0bfe416dc249ce05306fc740a6"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Rules reference · play automation in progress"
+    }
+  }
+}

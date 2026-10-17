@@ -1,0 +1,40 @@
+{
+  "_key": "!items!d534489ae7fe1b74",
+  "_id": "d534489ae7fe1b74",
+  "name": "Break Their Grip",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You wrench your shoulders free and crash back against the hands that tried to hold you.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>Self while Grappled 1 or 2, and one adjacent creature contributing to that grapple.</dd></div><div><dt>Duration</dt><dd>Immediate release, push and possible step.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Repeatable; normal action economy applies.</dd></div><div><dt>Type</dt><dd>Signature</dd></div></dl><div class=\"hol-reference-rules\"><p>Reduce your Grappled rating by up to 2, removing actual contributions you choose and the matching burden on those grapplers. Then push one contributing adjacent grappler up to 2 squares directly away and move 1 square without provoking if now able. You must have retained a Maneuver; at Grappled 3 you cannot use this card.</p></div><h3>Additional rulings</h3><p><strong>Tags:</strong> Skill / Control / Movement</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/cards/signature-unbalanced-break-their-grip.md\" target=\"_blank\" rel=\"noopener\">design/cards/signature-unbalanced-break-their-grip.md</a> at <code>9bc9b4fe3256e68880b92c45facf0f25b98a1ea3</code>.</p></section>",
+    "activity": {
+      "action": "main",
+      "rollMode": "none",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-unbalanced-break-their-grip",
+      "source": {
+        "path": "design/cards/signature-unbalanced-break-their-grip.md",
+        "sha256": "8fff45635b2876d0eac8e842ada191517432abb2b8f03e562f050fdd8ab0157a"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Rules reference · play automation in progress"
+    }
+  }
+}

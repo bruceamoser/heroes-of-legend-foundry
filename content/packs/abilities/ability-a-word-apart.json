@@ -1,0 +1,40 @@
+{
+  "_key": "!items!71321148b2d6ecaf",
+  "_id": "71321148b2d6ecaf",
+  "name": "A Word Apart",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You lean close beneath the surrounding chatter, shielding your lips as you give your companion the words they need.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>One adjacent willing ally who can hear and understand you.</dd></div><div><dt>Duration</dt><dd>Message is immediate; the Boon ends when used or the scene ends.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>An ally can hold only one unused benefit from this card; a later use replaces its message’s task and expiry.</dd></div><div><dt>Type</dt><dd>Skill / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>Speak a private message of up to twenty words. Other creatures cannot overhear it through ordinary hearing while you and the ally can speak quietly; this does not defeat magic or prevent anyone noticing the exchange. Name a social task the message helps with. The ally gains 1 Boon to its next Guile or Reason roll for that task within the scene. This does not compel agreement or replace the conversation.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/cards/a-word-apart.md\" target=\"_blank\" rel=\"noopener\">design/cards/a-word-apart.md</a> at <code>9bc9b4fe3256e68880b92c45facf0f25b98a1ea3</code>.</p></section>",
+    "activity": {
+      "action": "main",
+      "rollMode": "none",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-a-word-apart",
+      "source": {
+        "path": "design/cards/a-word-apart.md",
+        "sha256": "8d7532342bb7b5f33020bd971cd9c622a6c65979e586815eef6304960e876d71"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Rules reference · play automation in progress"
+    }
+  }
+}

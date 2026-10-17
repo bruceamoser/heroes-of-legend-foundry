@@ -1,0 +1,40 @@
+{
+  "_key": "!items!5beced8330916d6f",
+  "_id": "5beced8330916d6f",
+  "name": "Reconstruct the Event",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You walk the empty scene until its scattered traces become a sequence of human choices.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Time</dt><dd>One hour per attempt.</dd></div><div><dt>Target / range / shape</dt><dd>An accessible evidence set; one hour</dd></div><div><dt>Duration</dt><dd>Information and earned progress persist for the stated task; completed changes remain until circumstances alter them.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Repeatable; pay the action and any stated costs each use.</dd></div><div><dt>Type</dt><dd>Skill</dd></div></dl><div class=\"hol-reference-rules\"><p>Examine an accessible evidence set. The DA names the question and sets a cumulative progress target before a consequential reconstruction; obvious deductions need no roll. On completion, obtain an evidence-supported sequence answering that question as far as the surviving evidence allows. Identify the limits of that account explicitly. Share it with companions; they need no duplicate interpretation rolls for the same facts.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>1 progress and one supported fact relevant to the sequence.</dd><dt>Standard</dt><dd>2 progress, that fact, and one gap or contradiction requiring investigation.</dd><dt>Strong</dt><dd>3 progress and both findings; identify a specific place, object or person the evidence points toward for resolving the gap, if one exists.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/cards/reconstruct-the-event.md\" target=\"_blank\" rel=\"noopener\">design/cards/reconstruct-the-event.md</a> at <code>9bc9b4fe3256e68880b92c45facf0f25b98a1ea3</code>.</p></section>",
+    "activity": {
+      "action": "main",
+      "rollMode": "none",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-reconstruct-the-event",
+      "source": {
+        "path": "design/cards/reconstruct-the-event.md",
+        "sha256": "ef72e1eebfd6b982d577af21831755af78033a8427a0fe57289e1da8dc2f99e3"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Rules reference · play automation in progress"
+    }
+  }
+}

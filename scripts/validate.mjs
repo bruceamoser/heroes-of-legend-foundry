@@ -17,6 +17,33 @@ export async function validatePackage(root) {
   ) {
     throw new Error("Foundation must declare V14-only compatibility");
   }
+  const packTypes = new Set([
+    "Actor",
+    "Adventure",
+    "Cards",
+    "Item",
+    "JournalEntry",
+    "Macro",
+    "Playlist",
+    "RollTable",
+    "Scene",
+  ]);
+  const packNames = new Set(),
+    packPaths = new Set();
+  for (const pack of manifest.packs ?? []) {
+    if (
+      typeof pack.name !== "string" ||
+      !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(pack.name) ||
+      !packTypes.has(pack.type) ||
+      pack.system !== manifest.id ||
+      typeof pack.path !== "string"
+    )
+      throw new Error(`Invalid compendium declaration: ${pack.name}`);
+    if (packNames.has(pack.name) || packPaths.has(pack.path))
+      throw new Error(`Duplicate compendium declaration: ${pack.name}`);
+    packNames.add(pack.name);
+    packPaths.add(pack.path);
+  }
   const files = [
     ...(manifest.esmodules ?? []),
     ...(manifest.styles ?? []),

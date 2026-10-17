@@ -1,0 +1,35 @@
+{
+  "_key": "!items!1d6ef3c051cc5689",
+  "_id": "1d6ef3c051cc5689",
+  "name": "Weather Clothes",
+  "type": "equipment",
+  "system": {
+    "schemaVersion": 1,
+    "catalogId": "item-weather-clothes",
+    "quantity": 1,
+    "bulk": 1,
+    "hands": 0,
+    "inventoryDie": 0,
+    "held": false,
+    "worn": false,
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Market reference · acquisition and use automation in progress</p><p><strong>Market price:</strong> 10 coins.</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/equipment/weather-clothes.md\" target=\"_blank\" rel=\"noopener\">design/equipment/weather-clothes.md</a> at <code>9bc9b4fe3256e68880b92c45facf0f25b98a1ea3</code>.</p></section>"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "source": {
+        "path": "design/equipment/weather-clothes.md",
+        "sha256": "b3fea16c52c181be45419e9249d3dc845b46e74dba6f8782c94d9a0fe80f8cec"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Market reference · acquisition and use automation in progress"
+    }
+  }
+}

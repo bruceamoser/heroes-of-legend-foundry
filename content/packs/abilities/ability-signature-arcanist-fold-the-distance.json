@@ -1,0 +1,40 @@
+{
+  "_key": "!items!280e381a8fc9494a",
+  "_id": "280e381a8fc9494a",
+  "name": "Fold the Distance",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You pinch a crease in the air and step through it, drawing a companion across with your outstretched hand.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>Self and optionally one adjacent willing ally; visible free destinations within 4 squares of you.</dd></div><div><dt>Duration</dt><dd>Immediate teleportation.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Repeatable; normal action economy applies.</dd></div><div><dt>Type</dt><dd>Signature</dd></div></dl><div class=\"hol-reference-rules\"><p>Teleport yourself to a chosen destination. You may bring the ally to a separate free square adjacent to your destination, also within range. Both destinations must fit their occupants; no opaque barrier may separate either traveler from its destination. Neither traveler provokes, and the ally spends no action.</p></div><h3>Additional rulings</h3><p><strong>Tags:</strong> Magic / Movement</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/cards/signature-arcanist-fold-the-distance.md\" target=\"_blank\" rel=\"noopener\">design/cards/signature-arcanist-fold-the-distance.md</a> at <code>9bc9b4fe3256e68880b92c45facf0f25b98a1ea3</code>.</p></section>",
+    "activity": {
+      "action": "main",
+      "rollMode": "none",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-arcanist-fold-the-distance",
+      "source": {
+        "path": "design/cards/signature-arcanist-fold-the-distance.md",
+        "sha256": "ee955c6fb116f6c4c4ddbf08596ef7deed0244faa20de2c73d204dca10e11731"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Rules reference · play automation in progress"
+    }
+  }
+}

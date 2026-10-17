@@ -1,0 +1,40 @@
+{
+  "_key": "!items!c7e11dfe47bbda1c",
+  "_id": "c7e11dfe47bbda1c",
+  "name": "Cinder Cast",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You gather glowing embers in your palm and fling them toward your enemy. They flare into flame against the target.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Target / range / shape</dt><dd>One visible creature within 5 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Repeatable; pay the action and any stated costs each use.</dd></div><div><dt>Type</dt><dd>Magic / Attack</dd></div></dl><div class=\"hol-reference-rules\"><p>Proposed NPC defense attribute: Agility.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>3 fire damage.</dd><dt>Standard</dt><dd>3 fire damage; Burning 1.</dd><dt>Strong</dt><dd>5 fire damage; Burning 2.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/cards/cinder-cast.md\" target=\"_blank\" rel=\"noopener\">design/cards/cinder-cast.md</a> at <code>9bc9b4fe3256e68880b92c45facf0f25b98a1ea3</code>.</p></section>",
+    "activity": {
+      "action": "main",
+      "rollMode": "none",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-cinder-cast",
+      "source": {
+        "path": "design/cards/cinder-cast.md",
+        "sha256": "335cd35efa30171e755b4b5807610cb03ecef8054175db24727b40ca924092ec"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Rules reference · play automation in progress"
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "_key": "!items!958cec1fda988a7e",
+  "_id": "958cec1fda988a7e",
+  "name": "A Ribcage for a Shield",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You call, and pale ribs close around your companion like the hands of an old guardian.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>An adjacent willing ally before a physical defense.</dd></div><div><dt>Duration</dt><dd>Resolve once at the stated trigger; applied conditions follow normal decay.</dd></div><div><dt>Equipment / acquisition</dt><dd>No item needed unless named above.</dd></div><div><dt>Limits</dt><dd>Repeatable; pay the action and any stated costs each use.</dd></div><div><dt>Type</dt><dd>Magic</dd></div></dl><div class=\"hol-reference-rules\"><p>A cage of spectral ribs catches the edge of the blow. Grant 1 Boon to the defense; on a Strong defense, the ally may push the adjacent attacker 1 square afterward. The ribs disappear immediately.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/cards/a-ribcage-for-a-shield.md\" target=\"_blank\" rel=\"noopener\">design/cards/a-ribcage-for-a-shield.md</a> at <code>9bc9b4fe3256e68880b92c45facf0f25b98a1ea3</code>.</p></section>",
+    "activity": {
+      "action": "main",
+      "rollMode": "none",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-a-ribcage-for-a-shield",
+      "source": {
+        "path": "design/cards/a-ribcage-for-a-shield.md",
+        "sha256": "a2bc62bf89e01c5ab44aac9e45a39008fa5b1a3737af5d703b3ff0e8dacb8c42"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Rules reference · play automation in progress"
+    }
+  }
+}

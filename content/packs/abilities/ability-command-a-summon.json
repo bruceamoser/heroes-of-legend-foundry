@@ -1,0 +1,40 @@
+{
+  "_key": "!items!f566148746bb00aa",
+  "_id": "f566148746bb00aa",
+  "name": "Command a Summon",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You point toward the opening and give a sharp instruction. The creature moves to carry it out, then stills when its task is done.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action or Maneuver</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>One of your summons within its tether.</dd></div><div><dt>Duration</dt><dd>Granted actions are used immediately during your turn; none are saved for later turns.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Pay each command’s action cost; at most one command per summon per controller turn, including its immediate summoning command.</dd></div><div><dt>Type</dt><dd>Universal</dd></div></dl><div class=\"hol-reference-rules\"><p>Spend Main Action to grant it Main Action plus Maneuver, or spend Maneuver to grant it Maneuver plus movement. Resolve its activity during your turn. Normal downward conversions apply; a Main command can convert the granted Maneuver to movement before an attack.</p><p>One command per summon on your turn. You may command two different summons using your Main Action and Maneuver. A new summon receives the summoning card’s immediate free Main command, which counts as its command that turn.</p><p>An uncommanded summon does nothing. No following, attacks, hiding, aid, lookout, alerts or independent Reactions. Prior orders do not continue. Existing conditions and durations still resolve; passive defenses still apply. No summon chains.</p><p>Name the desired task; the chosen bestiary summon profile determines whether it can perform it and the action/roll required. A command grants neither extra capabilities nor automatic success. See the command examples and bestiary requirements.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/cards/command-a-summon.md\" target=\"_blank\" rel=\"noopener\">design/cards/command-a-summon.md</a> at <code>9bc9b4fe3256e68880b92c45facf0f25b98a1ea3</code>.</p></section>",
+    "activity": {
+      "action": "main",
+      "rollMode": "none",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-command-a-summon",
+      "source": {
+        "path": "design/cards/command-a-summon.md",
+        "sha256": "552d6916a86335b9965d86e45862ab9c6abf1e9366689f573332ba2847acd959"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Rules reference · play automation in progress"
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "_key": "!items!42bea348f4a23d8b",
+  "_id": "42bea348f4a23d8b",
+  "name": "The Hunt Ends Here",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You have watched every feint. When they finally run, your shot is already waiting.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Target / range / shape</dt><dd>A visible creature within 8 squares after it moves voluntarily.</dd></div><div><dt>Duration</dt><dd>Resolve once at the stated trigger; applied conditions follow normal decay.</dd></div><div><dt>Equipment / acquisition</dt><dd>Gain one ordinary ranged weapon and one d8 ammunition bundle if absent; each Bulk 1. Check ammunition after every attack.</dd></div><div><dt>Limits</dt><dd>Repeatable; pay the action and any stated costs each use.</dd></div><div><dt>Type</dt><dd>Skill / Attack</dd></div></dl><div class=\"hol-reference-rules\"><p>Take the shot you were waiting for. Requires ranged weapon and ammunition; check supply. This attack cannot trigger additional free attacks.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>4 physical damage.</dd><dt>Standard</dt><dd>4 physical damage and Slowed 1.</dd><dt>Strong</dt><dd>6 physical damage and knock prone.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/cards/the-hunt-ends-here.md\" target=\"_blank\" rel=\"noopener\">design/cards/the-hunt-ends-here.md</a> at <code>9bc9b4fe3256e68880b92c45facf0f25b98a1ea3</code>.</p></section>",
+    "activity": {
+      "action": "main",
+      "rollMode": "none",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-the-hunt-ends-here",
+      "source": {
+        "path": "design/cards/the-hunt-ends-here.md",
+        "sha256": "84c1cadf7e7caa8e9e05cabfa32821959d04ba7cd61dc8c70638d7c022f14da4"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Rules reference · play automation in progress"
+    }
+  }
+}

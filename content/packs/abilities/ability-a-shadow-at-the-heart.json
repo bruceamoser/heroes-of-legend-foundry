@@ -1,0 +1,40 @@
+{
+  "_key": "!items!6c51cc1add66ed2b",
+  "_id": "6c51cc1add66ed2b",
+  "name": "A Shadow at the Heart",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You step so close that your enemy’s certainty falters before your blade arrives.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div><div><dt>Target / range / shape</dt><dd>One adjacent creature.</dd></div><div><dt>Duration</dt><dd>Instant. Applied conditions follow their normal duration and decay.</dd></div><div><dt>Equipment / acquisition</dt><dd>Use one ordinary melee weapon; gain one on learning this card if you do not own one. Bulk 1.</dd></div><div><dt>Limits</dt><dd>Repeatable; pay the action and any stated costs each use.</dd></div><div><dt>Type</dt><dd>Skill / Attack</dd></div></dl><div class=\"hol-reference-rules\"><p>Make a melee attack from the closest, least expected angle. If you began Hidden, gain 1 Boon, then end Hidden.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>5 physical damage.</dd><dt>Standard</dt><dd>5 physical damage and Dazed 1.</dd><dt>Strong</dt><dd>7 physical damage and Dazed 2.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/cards/a-shadow-at-the-heart.md\" target=\"_blank\" rel=\"noopener\">design/cards/a-shadow-at-the-heart.md</a> at <code>9bc9b4fe3256e68880b92c45facf0f25b98a1ea3</code>.</p></section>",
+    "activity": {
+      "action": "main",
+      "rollMode": "none",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-a-shadow-at-the-heart",
+      "source": {
+        "path": "design/cards/a-shadow-at-the-heart.md",
+        "sha256": "5470ed9fce2a57c77ce6212f1e2e36f9dec67c05c5ffa8a1f8d5cb45ef395186"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Rules reference · play automation in progress"
+    }
+  }
+}

@@ -26,6 +26,7 @@ export class AbilitySheet extends foundry.applications.api.HandlebarsApplication
     try {
       definition = itemAbilityDefinition(this.item);
     } catch {}
+    const description = this.item.system.description;
     const labels = (keys) =>
       Object.fromEntries(
         keys.map((key) => [key, game.i18n.localize(`HOL.Choices.${key}`)]),
@@ -37,6 +38,12 @@ export class AbilitySheet extends foundry.applications.api.HandlebarsApplication
       pendingAutomation:
         !definition &&
         this.item.getFlag("heroes-of-legend", "automation") === "pending",
+      descriptionHTML: description
+        ? await foundry.applications.ux.TextEditor.implementation.enrichHTML(
+            description,
+            { relativeTo: this.item },
+          )
+        : "",
       item: this.item,
       system: this.item.system,
       editable: this.isEditable,

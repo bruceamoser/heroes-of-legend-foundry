@@ -1,0 +1,40 @@
+{
+  "_key": "!items!b01f5c6cd42336eb",
+  "_id": "b01f5c6cd42336eb",
+  "name": "A Place at Any Fire",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You introduce yourself, offer a little news from the road, and ask who has room beside the fire. As people answer, you watch for a face willing to welcome you.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div><div><dt>Time</dt><dd>A short conversation, outside combat.</dd></div><div><dt>Target / range / shape</dt><dd>A nonhostile gathering that can understand you; a short conversation</dd></div><div><dt>Duration</dt><dd>Information and earned progress persist for the stated task; completed changes remain until circumstances alter them.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Repeatable; pay the action and any stated costs each use.</dd></div><div><dt>Type</dt><dd>Skill / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>No forced friendship or compelled service. If ordinary hospitality is freely offered, take it without a roll. DA names the objective before a consequential attempt.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>Make 1 progress toward acceptance.</dd><dt>Standard</dt><dd>Make 2 progress and learn a useful local custom.</dd><dt>Strong</dt><dd>Make 3 progress and gain an introduction to a willing local contact.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/cards/a-place-at-any-fire.md\" target=\"_blank\" rel=\"noopener\">design/cards/a-place-at-any-fire.md</a> at <code>9bc9b4fe3256e68880b92c45facf0f25b98a1ea3</code>.</p></section>",
+    "activity": {
+      "action": "main",
+      "rollMode": "none",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-a-place-at-any-fire",
+      "source": {
+        "path": "design/cards/a-place-at-any-fire.md",
+        "sha256": "545a298003f109d3eaad5e6fd1d9cd8f0324f07eb786cfafe55ae5e499763e29"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Rules reference · play automation in progress"
+    }
+  }
+}

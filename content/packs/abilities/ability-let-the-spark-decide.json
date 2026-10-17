@@ -1,0 +1,40 @@
+{
+  "_key": "!items!685b98fd15e31a34",
+  "_id": "685b98fd15e31a34",
+  "name": "Let the Spark Decide",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You snap your fingers and send a bright spark toward your target. At your gesture it blossoms into flame or scatters into a spray of frost, striking with a sudden shove.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div><div><dt>Target / range / shape</dt><dd>One visible creature within 5 squares.</dd></div><div><dt>Duration</dt><dd>Instant. Applied conditions follow their normal duration and decay.</dd></div><div><dt>Equipment / acquisition</dt><dd>No item needed unless named above.</dd></div><div><dt>Limits</dt><dd>Repeatable; pay the action and any stated costs each use.</dd></div><div><dt>Type</dt><dd>Magic / Attack</dd></div></dl><div class=\"hol-reference-rules\"><p>Choose fire or cold before rolling. Make one Guile attack against the target.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>Deal 3 damage of the chosen type.</dd><dt>Standard</dt><dd>Deal 3 damage of that type and push the target 1 square.</dd><dt>Strong</dt><dd>Deal 5 damage of that type and push the target 2 squares.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/cards/let-the-spark-decide.md\" target=\"_blank\" rel=\"noopener\">design/cards/let-the-spark-decide.md</a> at <code>9bc9b4fe3256e68880b92c45facf0f25b98a1ea3</code>.</p></section>",
+    "activity": {
+      "action": "main",
+      "rollMode": "none",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-let-the-spark-decide",
+      "source": {
+        "path": "design/cards/let-the-spark-decide.md",
+        "sha256": "460d4de339d6a3b8a00e7cad7423d1039f9d1c7162f065d001df0de16c4ebb8b"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Rules reference · play automation in progress"
+    }
+  }
+}

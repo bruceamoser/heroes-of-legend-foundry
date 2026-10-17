@@ -1,0 +1,40 @@
+{
+  "_key": "!items!0042484e7a383223",
+  "_id": "0042484e7a383223",
+  "name": "Unbroken Passage",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You put yourself at the front and guide your companions through the press, keeping each dangerous opening behind your shoulder.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>Self and up to two adjacent willing allies.</dd></div><div><dt>Duration</dt><dd>Movement is immediate; each defensive Boon expires when used, adjacency is lost or your next turn starts.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Repeatable; normal action economy applies.</dd></div><div><dt>Type</dt><dd>Signature</dd></div></dl><div class=\"hol-reference-rules\"><p>Move yourself and the chosen allies up to your Speed each without provoking, in an order you choose. Choose legal routes and separate free endpoints; the allies must finish adjacent to you. Each ally gains 1 Boon to its next defense before the start of your next turn while it remains adjacent to you and you can act. This does not carry an immobile creature or grant attacks.</p></div><h3>Additional rulings</h3><p><strong>Tags:</strong> Skill / Movement / Defense</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/cards/signature-protector-unbroken-passage.md\" target=\"_blank\" rel=\"noopener\">design/cards/signature-protector-unbroken-passage.md</a> at <code>9bc9b4fe3256e68880b92c45facf0f25b98a1ea3</code>.</p></section>",
+    "activity": {
+      "action": "main",
+      "rollMode": "none",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-protector-unbroken-passage",
+      "source": {
+        "path": "design/cards/signature-protector-unbroken-passage.md",
+        "sha256": "06479674f3f81e9b76a8f1a51827a5e8913a37997cae3e00ebcb4a557d865d98"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Rules reference · play automation in progress"
+    }
+  }
+}

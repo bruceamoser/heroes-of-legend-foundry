@@ -102,3 +102,7 @@ The 14.369 join form uses `select[name=userId]`; test login now supports that an
 ## Canvas proof — issue #10
 
 `HOL_TEST_URL=http://127.0.0.1:30014 HOL_TEST_ALLOW_WRITES=1 npm run test:canvas` tests native waypoint pause/resume, exact square membership, terrain-aware costs, wall stops and two-level surface culling. See [canvas evidence and implementation boundaries](research/canvas-prototype.md). It requires enabled canvas and a disposable local world.
+
+## Fixed damage and healing arithmetic — issue #31
+
+`src/rules/damage.mjs` calculates reviewable per-type breakdowns, highest capped weakness before resistance, one minimum point per damaging event, post-resistance wound ties, capped healing and upfront HP affordability. Zero-damage effects stay non-damaging; summons reject healing and healing-harmed recipients require their printed Life attack outcome. Tests include the full single-type damage/weakness/resistance boundary grid and malformed/overflow inputs. This pure layer does not yet apply HP, pay costs, trigger wounds or coordinate document receipts; those remain A03 integration work.

@@ -1,8 +1,22 @@
-import { execFileSync } from "node:child_process";
-import { createHash } from "node:crypto";
+import { spawnSync } from "node:child_process";
 import { readFile, writeFile } from "node:fs/promises";
 import assert from "node:assert/strict";
-import { parseChoices } from "./content/choices.mjs";
+import {
+  parseChoices,
+  verifySourceHash,
+} from "./content/choices.mjs";
+function gitBlob(repository, commit, path) {
+  const result = spawnSync(
+    "git",
+    ["-C", repository, "show", `${commit}:${path}`],
+    { maxBuffer: 16 * 1024 * 1024 },
+  );
+  if (result.status !== 0)
+    throw new Error(
+      `Cannot read ${path} at ${commit}: ${result.error?.message ?? result.stderr?.toString() ?? "git failed"}`,
+    );
+  return result.stdout;
+}
 const repository = process.env.HOL_BOOK_REPOSITORY;
 if (!repository) throw new Error("Set HOL_BOOK_REPOSITORY");
 const lock = JSON.parse(
@@ -16,24 +30,15 @@ const sources = lock.records
     /^design\/(cards|classes|origins|disciplines|ancestries)\//.test(r.path),
   )
   .map((r) => {
-    const data = execFileSync("git", [
-      "-C",
-      repository,
-      "show",
-      `${lock.commit}:${r.path}`,
-    ]);
-    assert.equal(
-      createHash("sha256").update(data).digest("hex"),
-      r.sha256,
-      `Source hash mismatch ${r.path}`,
-    );
-    return { ...r, text: data.toString() };
+    const data = gitBlob(repository, lock.commit, r.path);
+    return { ...r, text: verifySourceHash(r, data).toString() };
   });
 const records = parseChoices(sources);
 const catalog = {
-  schemaVersion: 1,
+  schemaVersion: 2,
   sourceCommit: lock.commit,
-  scope: "learning metadata; action, acquisition and trait automation pending",
+  scope:
+    "ability reference text and learning metadata; action, acquisition and trait automation pending",
   records,
 };
 const output = new URL("../static/data/choices.json", import.meta.url);

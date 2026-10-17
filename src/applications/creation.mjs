@@ -8,6 +8,7 @@ import { newCreationDraft, creationPreview } from "../rules/creation.mjs";
 import { ATTRIBUTES } from "../rules/character.mjs";
 import { campaignLanguageOptions } from "../rules/languages.mjs";
 import { getCampaignLanguageConfiguration } from "../services/languages.mjs";
+import { abilityReferenceStatus } from "../rules/ability-definitions.mjs";
 import {
   eligibleFirst,
   purchaseEligibility,
@@ -130,6 +131,8 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
       },
     ).map((r) => ({
       ...r,
+      reference: r.choice.reference,
+      automationStatus: abilityReferenceStatus(r.choice.id, r.choice.source),
       source: source(r.choice),
       reasons: r.reasons.map((x) => x.text).join(" "),
       recipeStudy: r.choice.purchasePolicy === "new-recipe",

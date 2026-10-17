@@ -6,6 +6,7 @@ import {
 } from "../services/advancement.mjs";
 import { updateOwnedDocument } from "../services/documents.mjs";
 import { advancementPreview } from "../rules/advancement.mjs";
+import { abilityReferenceStatus } from "../rules/ability-definitions.mjs";
 import {
   eligibleFirst,
   purchaseEligibility,
@@ -150,9 +151,11 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
             choices,
             recipeIds ? { recipeIds } : {},
           );
-        },
-      ).map((r) => ({
+      },
+    ).map((r) => ({
         ...r,
+        reference: r.choice.reference,
+        automationStatus: abilityReferenceStatus(r.choice.id, r.choice.source),
         reasons: r.reasons.map((e) => e.text).join(" "),
         source: `https://github.com/bruceamoser/heroes-of-legend/blob/${commit}/${r.choice.source.path}`,
         recipeStudy: r.choice.purchasePolicy === "new-recipe",

@@ -14,10 +14,150 @@ const attributes = [
   "reason",
 ];
 const slug = (value) => value.toLowerCase().replaceAll(" ", "-");
+export function verifySourceHash(source, bytes) {
+  const actual = createHash("sha256").update(bytes).digest("hex");
+  if (actual !== source.sha256)
+    throw new Error(
+      `Source hash mismatch ${source.path}: expected ${source.sha256}, received ${actual}`,
+    );
+  return bytes;
+}
 function match(text, regex, label) {
   const m = text.match(regex);
   if (!m) throw new Error(`Unrecognized ${label}`);
   return m;
+}
+function plainText(markdown) {
+  return markdown
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+    .replace(/\*\*([^*]+)\*\*/g, "$1")
+    .replace(/\*([^*\n]+)\*/g, "$1")
+    .replace(/`([^`]+)`/g, "$1")
+    .replace(/[ \t]*\n[ \t]*/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+function blocks(markdown) {
+  return markdown
+    .trim()
+    .split(/\n[ \t]*\n/)
+    .map((block) => block.trim())
+    .filter(Boolean);
+}
+function listItems(block) {
+  const lines = block.split("\n"),
+    items = [];
+  for (const line of lines) {
+    if (line.startsWith("- ")) items.push(line.slice(2));
+    else if (items.length) items[items.length - 1] += ` ${line}`;
+    else return null;
+  }
+  return items;
+}
+function ruleBlock(block) {
+  const items = listItems(block);
+  if (items) {
+    const outcomes = items.map((item) => {
+      const outcome = item.match(/^\*\*(Weak|Standard|Strong):\*\* ([\s\S]+)$/);
+      return outcome
+        ? { label: outcome[1], text: plainText(outcome[2]) }
+        : null;
+    });
+    if (outcomes.every(Boolean)) return { outcomes };
+    return { items: items.map(plainText) };
+  }
+  return { text: plainText(block) };
+}
+function labelled(block) {
+  const value = block.match(/^\*\*([^*]+):\*\* ([\s\S]+)$/);
+  return value ? { label: value[1], text: plainText(value[2]) } : null;
+}
+export function parseAbilityReference(text) {
+  const header = text.match(/^# ([^\n]+)\n\n([\s\S]*?)\n\n## Rules\n([\s\S]*)$/);
+  if (!header) throw new Error("Unrecognized ability reference");
+  const flavor = blocks(header[2]).map(plainText);
+  if (!flavor.length) throw new Error("Missing ability flavor");
+  const [rulesText, ...frontMatterParts] = header[3].split(/\n---\n/);
+  if (!frontMatterParts.length) throw new Error("Missing ability metadata");
+  const ruleBlocks = blocks(rulesText),
+    actionIndex = ruleBlocks.findIndex((block) =>
+      block.startsWith("**Action:**"),
+    ),
+    action = ruleBlocks[actionIndex]?.match(
+      /^\*\*Action:\*\* ([\s\S]+?) · \*\*Attribute:\*\* ([\s\S]+)$/,
+    );
+  if (!action) throw new Error("Unrecognized action and attribute");
+  const fields = new Map();
+  const consume = (label) => {
+    const index = ruleBlocks.findIndex((block) =>
+      block.startsWith(`**${label}:**`),
+    );
+    if (index < 0) {
+      fields.set(label, null);
+      return;
+    }
+    const parsed = labelled(ruleBlocks[index]);
+    if (!parsed) throw new Error(`Unrecognized ${label}`);
+    fields.set(label, parsed.text);
+    ruleBlocks.splice(index, 1);
+  };
+  ruleBlocks.splice(actionIndex, 1);
+  for (const label of [
+    "Time",
+    "Target / range / shape",
+    "Duration",
+    "Equipment / acquisition",
+    "Tags",
+  ])
+    consume(label);
+  let type = null,
+    limits = null;
+  const notes = [];
+  for (const block of blocks(frontMatterParts.join("\n---\n"))) {
+    if (block.startsWith("**Tier / minimum level:**")) continue;
+    if (block.startsWith("**ID:**")) continue;
+    if (/^\[[^\n]+\](?:\([^)]+\))?(?: · \[[^\n]+\]\([^)]+\))*$/.test(block))
+      continue;
+    const field = labelled(block);
+    if (field?.label === "Type") type = field.text;
+    else if (field?.label === "Limits") limits = field.text;
+    else if (field) notes.push(field);
+    else notes.push({ label: null, text: plainText(block) });
+  }
+  if (
+    !fields.get("Target / range / shape") ||
+    !fields.get("Duration") ||
+    !fields.get("Equipment / acquisition") ||
+    !limits
+  )
+    throw new Error("Incomplete ability reference metadata");
+  const details = [
+    { label: "Action", value: plainText(action[1]) },
+    { label: "Attribute", value: plainText(action[2]) },
+    fields.get("Time")
+      ? { label: "Time", value: fields.get("Time") }
+      : null,
+    {
+      label: "Target / range / shape",
+      value: fields.get("Target / range / shape"),
+    },
+    { label: "Duration", value: fields.get("Duration") },
+    {
+      label: "Equipment / acquisition",
+      value: fields.get("Equipment / acquisition"),
+    },
+    { label: "Limits", value: limits },
+    type ? { label: "Type", value: type } : null,
+    fields.get("Tags") ? { label: "Tags", value: fields.get("Tags") } : null,
+  ].filter(Boolean);
+  return {
+    flavor,
+    rules: {
+      details,
+      body: ruleBlocks.map(ruleBlock),
+      notes,
+    },
+  };
 }
 function links(text) {
   return [...text.matchAll(/\[[^\]]+\]\(([^)]+\.md)\)/g)].map((m) => m[1]);
@@ -86,6 +226,7 @@ export function parseChoices(sources) {
   for (const { record: r, text } of byPath.values()) {
     const path = r.source.path;
     if (r.kind === "ability") {
+      r.reference = parseAbilityReference(text);
       const meta = match(
         text,
         /\*\*Tier \/ minimum level:\*\* (Universal|[137]) · \*\*DP:\*\* (Not purchased|\d+) · \*\*Requirements to learn:\*\* ([^\n]+)/,

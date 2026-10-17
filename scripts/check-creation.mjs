@@ -21,6 +21,7 @@ const errors = [];
 page.on("pageerror", (e) => errors.push(e.message));
 let actorId;
 try {
+  await mkdir("test-results", { recursive: true });
   await page.goto(url);
   await selectTestUser(page, process.env.HOL_TEST_USER ?? "Gamemaster");
   await page.locator("button[name=join]").click();
@@ -225,11 +226,83 @@ try {
     await wizard.locator(".hol-choice-list article:visible").count(),
     1,
   );
+  const clever = wizard.locator(".hol-choice-list article:visible"),
+    cleverButton = clever.locator("button");
+  assert(await cleverButton.isDisabled());
+  assert.match(await clever.textContent(), /Requires level 7\./);
+  assert.match(await clever.getAttribute("class"), /hol-ineligible/);
+  const reference = clever.locator("details[data-ability-reference]");
+  assert.equal(await reference.evaluate((el) => el.open), false);
+  await reference.locator("summary").focus();
   assert(
-    await wizard
-      .locator(".hol-choice-list article:visible button")
-      .isDisabled(),
+    await reference
+      .locator("summary")
+      .evaluate((el) => document.activeElement === el),
   );
+  await page.keyboard.press("Enter");
+  assert.equal(await reference.evaluate((el) => el.open), true);
+  assert.match(
+    await reference.textContent(),
+    /Rules reference · play automation in progress/,
+  );
+  assert.deepEqual(
+    await reference.locator(".hol-reference-outcomes dd").allTextContents(),
+    [
+      "Reduce temporary Poisoned by 1.",
+      "Reduce temporary Poisoned by 2 or Dazed by 1.",
+      "Reduce temporary Poisoned by 3 or Dazed by 2.",
+    ],
+  );
+  const referenceText = (await reference.innerText()).replace(/\s+/g, " ");
+  assert.match(referenceText, /Action Maneuver/);
+  assert.match(referenceText, /Attribute Knowledge/);
+  assert.match(
+    referenceText,
+    /Target \/ range \/ shape Self or one adjacent willing creature\./,
+  );
+  assert.match(
+    referenceText,
+    /Duration Condition reduction is immediate; crafted supplies persist until used\./,
+  );
+  assert.match(referenceText, /Limits Repeatable; pay the action/);
+  assert.match(
+    referenceText,
+    /Equipment \/ acquisition One mixing kit, Bulk 1/,
+  );
+  await clever.scrollIntoViewIfNeeded();
+  await wizard.screenshot({
+    path: "test-results/creation-choice-details.png",
+  });
+  await page.evaluate(() => holWizard.setPosition({ width: 620, height: 800 }));
+  const narrow = await clever.evaluate((el) => {
+    const main = el.closest(".hol-wizard-main"),
+      list = el.closest(".hol-choice-list"),
+      button = el.querySelector("button"),
+      mainBox = main.getBoundingClientRect(),
+      buttonBox = button.getBoundingClientRect();
+    return {
+      columns: getComputedStyle(list).gridTemplateColumns.trim().split(/\s+/)
+        .length,
+      overflow: main.scrollWidth - main.clientWidth,
+      buttonVisible:
+        buttonBox.width > 0 &&
+        buttonBox.left >= mainBox.left &&
+        buttonBox.right <= mainBox.right + 1,
+      fontSize: Number.parseFloat(getComputedStyle(button).fontSize),
+    };
+  });
+  assert.equal(narrow.columns, 1);
+  assert(narrow.overflow <= 1);
+  assert(narrow.buttonVisible);
+  assert(narrow.fontSize >= 12);
+  await wizard.screenshot({
+    path: "test-results/creation-choice-details-narrow.png",
+  });
+  await reference.locator(".hol-reference-outcomes").scrollIntoViewIfNeeded();
+  await wizard.screenshot({
+    path: "test-results/creation-choice-outcomes.png",
+  });
+  await page.evaluate(() => holWizard.setPosition({ width: 980, height: 800 }));
   await action("Origins");
   await wizard
     .locator("[name=culture]")

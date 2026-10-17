@@ -1,3 +1,4 @@
+import { finishCombatParticipant } from "../dialogs/turn-end.mjs";
 import { chooseCombatParticipant } from "../dialogs/turn-choice.mjs";
 import { displayedBudget } from "../services/turn-budget.mjs";
 import { availableParticipants } from "../rules/encounter.mjs";
@@ -102,7 +103,14 @@ export function renderHOLCombatTracker(app, element) {
             budget.remaining.maneuver < 1,
           );
         }
-        button("Finish turn", () => requestCombat(combat, "finish"));
+        button("Finish turn", () => finishCombatParticipant(combat));
+        if (
+          game.user.isGM &&
+          current?.actor?.getFlag(ID, "conditionTurnPolicy")
+        )
+          button("Review end effects and finish", () =>
+            finishCombatParticipant(combat, { review: true }),
+          );
       }
     } else {
       for (const p of availableParticipants(state)) {

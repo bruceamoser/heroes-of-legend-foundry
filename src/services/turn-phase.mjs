@@ -1,3 +1,4 @@
+import { conditionTurnBasis, prepareConditionTurn } from "./condition-turn.mjs";
 import { assertNoPendingTurn } from "./turn-lock.mjs";
 import { damageBasis } from "./damage.mjs";
 import {
@@ -13,33 +14,45 @@ const ID = "heroes-of-legend";
 export function prepareTurnPhase(combat, actor, request, id, commit, authorId) {
   if (
     !["choose", "finish"].includes(request.kind) ||
-    actor?.type !== "character" ||
-    !actor.getFlag(ID, "survival")
+    !["character", "creature"].includes(actor?.type)
   )
     return null;
   assertNoPendingTurn(actor);
-  const basis = damageBasis(actor);
-  if (basis.survival.hp !== basis.hp)
-    throw new Error("Reconcile edited HP before advancing this survival turn.");
-  const current = {
-    ...basis.survival,
-    maxHp: basis.maxHp,
-    gritAvailable: basis.gritAvailable,
+  const basis = {
+    ...damageBasis(actor),
+    conditions: conditionTurnBasis(actor),
   };
-  validateSurvival(current);
-  const next =
-    request.kind === "choose"
+  const conditionChanges =
+    request.kind === "finish"
+      ? prepareConditionTurn(actor, basis, request, id, authorId)
+      : null;
+  if (!basis.survival && !conditionChanges) return null;
+  if (basis.survival && basis.survival.hp !== basis.hp)
+    throw new Error("Reconcile edited HP before advancing this survival turn.");
+  const current = basis.survival
+    ? {
+        ...basis.survival,
+        maxHp: basis.maxHp,
+        gritAvailable: basis.gritAvailable,
+      }
+    : null;
+  if (current) validateSurvival(current);
+  const next = !current
+    ? null
+    : request.kind === "choose"
       ? startSurvivalTurn(current, current.ownTurn + 1)
       : endSurvivalTurn(current, current.ownTurn);
   const changes = {
-    "system.health.value": next.hp,
-    [`flags.${ID}.survival`]: next,
+    ...(next
+      ? { "system.health.value": next.hp, [`flags.${ID}.survival`]: next }
+      : {}),
+    ...conditionChanges,
     [`flags.${ID}.damageRevision`]: basis.revision + 1,
     [`flags.${ID}.turnPhaseReceipts.${id}`]: {
       applied: true,
       combatUuid: combat.uuid,
       phase: request.kind,
-      ownTurn: next.ownTurn,
+      ownTurn: next?.ownTurn ?? null,
     },
   };
   actor.validate({
@@ -73,16 +86,36 @@ export async function resumeTurnPhase(combat, message) {
       "The turn-phase actor is unavailable; the DA must reconcile the encounter.",
     );
   if (!actor.getFlag(ID, "turnPhaseReceipts")?.[phase.requestId]?.applied) {
-    if (JSON.stringify(damageBasis(actor)) !== JSON.stringify(phase.basis))
+    if (
+      JSON.stringify({
+        ...damageBasis(actor),
+        conditions: conditionTurnBasis(actor),
+      }) !== JSON.stringify(phase.basis)
+    )
       throw new Error(
         "Character state changed before its reserved phase. The DA can cancel the unapplied turn change and review it again.",
       );
+    for (const data of phase.changes.effects ?? [])
+      new foundry.documents.ActiveEffect(data, {
+        parent: actor,
+        strict: true,
+      }).validate({ strict: true, fallback: false });
     actor.validate({
       changes: foundry.utils.expandObject(phase.changes),
       strict: true,
       fallback: false,
     });
     await writeAuthorityDocument(actor, phase.changes);
+  }
+  for (const data of phase.changes.effects ?? []) {
+    const effect = actor.effects.get(data._id);
+    if (
+      !effect ||
+      JSON.stringify(effect.getFlag(ID, "condition")) !==
+        JSON.stringify(data.flags?.[ID]?.condition) ||
+      effect.disabled !== Boolean(data.disabled)
+    )
+      throw new Error("Turn effects need reconciliation before settlement.");
   }
   await writeAuthorityDocument(combat, {
     ...phase.commit,

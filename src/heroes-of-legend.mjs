@@ -1,3 +1,5 @@
+import { registerNpcAttacks } from "./services/npc-attacks.mjs";
+import { renderAttackCard } from "./dialogs/defender-choice.mjs";
 import { CreatureData } from "./models/creature.mjs";
 import { CreatureSheet } from "./sheets/creature.mjs";
 import { registerAbilityRequests } from "./services/abilities.mjs";
@@ -29,6 +31,7 @@ Hooks.once("init", () => {
   registerHOLStatuses();
   registerConditionRequests();
   registerAbilityRequests();
+  registerNpcAttacks();
   CONFIG.Combat.documentClass = HOLCombat;
   registerCombatRequests();
   registerAuthorityPrototype();
@@ -67,3 +70,5 @@ Hooks.once("ready", () => {
 Hooks.on("renderChatMessageHTML", renderRollSummary);
 
 Hooks.on("renderCombatTracker", renderHOLCombatTracker);
+
+Hooks.on("renderChatMessageHTML", renderAttackCard);

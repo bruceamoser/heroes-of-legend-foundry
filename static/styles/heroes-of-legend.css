@@ -93,3 +93,8 @@
 .heroes-of-legend.hol-roll-dialog .hol-roll-footer p { margin:0; font-size:16px; }
 .heroes-of-legend.hol-creature .window-title { font-size:14px; }
 .heroes-of-legend.hol-creature button[data-action=conditions] { background:var(--hol-forest); color:var(--hol-ivory); border:1px solid var(--hol-gold); }
+.hol-attack-card { background:#f7f3e9; color:#28251c; border:1px solid #b39253; padding:12px; font-family:"HOL Garamond",Georgia,serif; font-size:17px; }
+.hol-attack-card h3 { color:#15221c; font-family:"HOL Cinzel",Georgia,serif; font-size:18px; }
+.hol-defend-button { background:#15221c; color:#f1e6ce; border:1px solid #b39253; width:100%; }
+.heroes-of-legend.hol-defender-choice .window-title { font-size:14px; }
+.heroes-of-legend.hol-roll-dialog button[data-action=changeDefender] { background:var(--hol-forest); color:var(--hol-ivory); border:1px solid var(--hol-gold); }

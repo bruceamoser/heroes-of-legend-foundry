@@ -3,7 +3,12 @@ import { conditionRollSources } from "../rules/conditions.mjs";
 import { sourceRollPlan } from "../rules/roll-sources.mjs";
 import { actorContributions } from "./conditions.mjs";
 import { defenseBenefits } from "./benefits.mjs";
-export function rollBasis(actor, attributeKey, mode = "attribute") {
+export function rollBasis(
+  actor,
+  attributeKey,
+  mode = "attribute",
+  attackMessageId = null,
+) {
   if (!["attribute", "defense"].includes(mode))
     throw new Error("Unsupported shared roll context.");
   if (
@@ -31,7 +36,29 @@ export function rollBasis(actor, attributeKey, mode = "attribute") {
       persistence: "binary",
       source: "Zero HP",
     });
+  let incoming = null;
+  if (attackMessageId) {
+    const message = game.messages.get(attackMessageId);
+    incoming = message?.getFlag("heroes-of-legend", "attackCard");
+    if (
+      mode !== "defense" ||
+      !message?.author?.isGM ||
+      !message.isContentVisible ||
+      !incoming ||
+      incoming.perspective !== "defender" ||
+      !["weak", "standard", "strong"].every(
+        (key) =>
+          Number.isSafeInteger(incoming.damage?.[key]) &&
+          incoming.damage[key] >= 0,
+      ) ||
+      incoming.attributeKey !== attributeKey
+    )
+      throw new Error("The incoming attack is unavailable or changed.");
+    incoming = structuredClone(incoming);
+  }
   return {
+    attackMessageId,
+    incoming,
     actorUuid: actor.uuid,
     attributeKey,
     mode,
@@ -58,6 +85,24 @@ export function prepareRoll(basis, draft = {}) {
     }),
     ...basis.benefits,
   ];
+  if (basis.incoming)
+    for (const [field, kind] of [
+      ["boons", "boon"],
+      ["banes", "bane"],
+    ]) {
+      const amount = basis.incoming.threat[field];
+      if (!Number.isSafeInteger(amount) || amount < 0)
+        throw new Error("Invalid incoming Threat.");
+      if (amount)
+        sources.push({
+          id: `incoming-threat-${field}`,
+          kind,
+          amount,
+          label: "Incoming Threat",
+          automatic: true,
+          sourceIds: [basis.attackMessageId],
+        });
+    }
   for (const [field, kind] of [
     ["boons", "boon"],
     ["banes", "bane"],

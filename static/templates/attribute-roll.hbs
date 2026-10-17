@@ -1,14 +1,15 @@
 <section class="hol-roll-shell">
   <header class="hol-banner"><p class="hol-kicker">{{#if defense}}Defense{{else}}Attribute check{{/if}}</p><h1>{{name}}</h1></header>
   <div class="hol-body">
+  {{#if incoming}}<p>Defending against {{incoming.attackerName}} · {{incoming.title}}</p><button type="button" data-action="changeDefender">Change defender</button>{{/if}}
   {{#if notice}}<p class="hol-note" role="alert">{{notice}}</p>{{/if}}
   <p>{{attributeName}}: <strong>{{attribute}}</strong></p>
   {{#if defense}}<p>Rolling this defense spends no Reaction. Any player may roll for this defender.</p>{{/if}}
   {{#each fears}}<label>Can you perceive {{source}}?<select name="fear-{{index}}"><option value="">Choose perception</option><option value="yes" {{#if yes}}selected{{/if}}>Yes</option><option value="no" {{#if no}}selected{{/if}}>No</option></select></label>{{/each}}
+  <h2>Sources applied to this roll</h2><ul class="hol-roll-sources"></ul>
   <h2>Situational adjustments</h2>
   <div class="hol-pair"><label>Boons<input type="number" name="boons" value="{{draft.boons}}" min="0" step="1"></label><label>Banes<input type="number" name="banes" value="{{draft.banes}}" min="0" step="1"></label></div>
   <div class="hol-pair"><label>Boon reason<input name="boonsLabel" value="{{draft.boonsLabel}}"></label><label>Bane reason<input name="banesLabel" value="{{draft.banesLabel}}"></label></div>
-  <h2>Sources applied to this roll</h2><ul class="hol-roll-sources"></ul>
   </div><footer class="hol-roll-footer">
   <p class="hol-roll-totals" aria-live="polite"></p><output aria-live="polite"></output>
   <button type="button" data-action="roll" class="hol-primary">{{localize "HOL.Roll"}}</button>

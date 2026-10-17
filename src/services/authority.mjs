@@ -116,10 +116,13 @@ async function appliedWork(work) {
     message?.getFlag(ID, "developmentRequest") ??
     message?.getFlag(ID, "combatRequest") ??
     message?.getFlag(ID, "conditionRequest") ??
-    message?.getFlag(ID, "abilityRequest");
-  const uuid = message?.getFlag(ID, "abilityRequest")
-    ? request?.combatUuid
-    : (request?.actorUuid ?? request?.combatUuid);
+    message?.getFlag(ID, "abilityRequest") ??
+    message?.getFlag(ID, "npcAttackRequest");
+  const uuid =
+    message?.getFlag(ID, "abilityRequest") ||
+    message?.getFlag(ID, "npcAttackRequest")
+      ? request?.combatUuid
+      : (request?.actorUuid ?? request?.combatUuid);
   if (!uuid) return false;
   const actor = await fromUuid(uuid);
   // This is the final settlement receipt. Multi-document abilities write it only

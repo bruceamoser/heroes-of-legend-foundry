@@ -7,7 +7,12 @@ export async function rollAttribute(actor, attributeKey, draft = {}) {
 }
 
 export async function rollPrepared(actor, basis, draft) {
-  const current = rollBasis(actor, basis.attributeKey, basis.mode);
+  const current = rollBasis(
+    actor,
+    basis.attributeKey,
+    basis.mode,
+    basis.attackMessageId,
+  );
   if (JSON.stringify(current) !== JSON.stringify(basis))
     throw new Error("Roll sources changed. Review the dialog before rolling.");
   const plan = prepareRoll(current, draft);
@@ -23,6 +28,14 @@ export async function rollPrepared(actor, basis, draft) {
     schemaVersion: 2,
     actorUuid: actor.uuid,
     rollerId: game.user.id,
+    attackMessageId: basis.attackMessageId,
+    attackOutcome: basis.incoming
+      ? {
+          damage: basis.incoming.damage[result.tier],
+          type: "physical",
+          applied: false,
+        }
+      : null,
     attributeKey: basis.attributeKey,
     mode: basis.mode,
     perception: structuredClone(draft.perception ?? {}),
@@ -65,6 +78,11 @@ export function renderRollSummary(message, element) {
     banes: result.banes,
   });
   summary.append(detail);
+  if (result.attackOutcome) {
+    const outcome = document.createElement("p");
+    outcome.textContent = `${result.attackOutcome.damage} physical damage before resistance. Apply consequences manually in this preview.`;
+    summary.append(outcome);
+  }
   if (result.sources?.length) {
     const list = document.createElement("ul");
     for (const source of result.sources) {

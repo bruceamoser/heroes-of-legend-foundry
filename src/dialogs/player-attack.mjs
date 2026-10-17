@@ -4,6 +4,8 @@ import {
 } from "../services/player-attacks.mjs";
 import { prepareRoll } from "../services/roll-preparation.mjs";
 
+const ID = "heroes-of-legend";
+
 export class BasicMeleeDialog extends foundry.applications.api.HandlebarsApplicationMixin(
   foundry.applications.api.ApplicationV2,
 ) {
@@ -24,8 +26,17 @@ export class BasicMeleeDialog extends foundry.applications.api.HandlebarsApplica
       rulingReason: "",
     };
     this.context = null;
-    this.rendered = false;
+    this.basis = null;
+    this.notice = "";
+    this.woundModifierSignature = null;
     this.submitting = false;
+    this.woundHookHandlers = [
+      "createActiveEffect",
+      "updateActiveEffect",
+      "deleteActiveEffect",
+    ].map((event) => [event, (effect) => this.woundEffectChanged(effect)]);
+    for (const [event, handler] of this.woundHookHandlers)
+      Hooks.on(event, handler);
   }
 
   static DEFAULT_OPTIONS = {
@@ -65,6 +76,22 @@ export class BasicMeleeDialog extends foundry.applications.api.HandlebarsApplica
       this.draft.weaponItemUuid = this.context.weaponItemUuid ?? "";
     if (!this.draft.targetTokenUuid)
       this.draft.targetTokenUuid = this.context.targetTokenUuid ?? "";
+    const woundModifiers = this.context.basis?.woundModifiers;
+    if (woundModifiers !== undefined) {
+      const signature = JSON.stringify(woundModifiers);
+      if (
+        this.woundModifierSignature !== null &&
+        signature !== this.woundModifierSignature
+      ) {
+        this.notice =
+          "Active wound modifiers changed. Review the current injury sources and choose applicability again.";
+        this.draft.woundApplicability = {};
+        this.context.plan = null;
+        this.context.planError = this.notice;
+      }
+      this.woundModifierSignature = signature;
+    }
+    this.basis = this.context.basis;
     const fears = [
       ...new Set(
         (this.context.basis?.contributions ?? [])
@@ -85,9 +112,11 @@ export class BasicMeleeDialog extends foundry.applications.api.HandlebarsApplica
       attribute: this.context.basis?.attribute ?? this.item.actor.system.attributes.brawn.effective,
       geometryStatus: this.context.geometry?.status ?? "unavailable",
       geometryReason: this.context.geometry?.reason ?? "",
+      notice: this.notice,
       sources: this.context.plan?.sources ?? [],
       formula:
         this.context.plan?.formula ??
+        this.context.planError ??
         "Choose a token, target and held melee weapon.",
       totals: this.context.plan
         ? `${this.context.plan.boons} Boons · ${this.context.plan.banes} Banes · ${this.context.plan.canceled} canceled pairs · net extras ${this.context.plan.net} (maximum 3)`
@@ -98,11 +127,42 @@ export class BasicMeleeDialog extends foundry.applications.api.HandlebarsApplica
         yes: this.draft.perception[source] === "yes",
         no: this.draft.perception[source] === "no",
       })),
+      wounds: (this.context.basis?.woundModifiers ?? []).map(
+        (modifier, index) => ({
+          ...modifier,
+          index,
+          applies:
+            this.draft.woundApplicability[modifier.effectId] === "applies",
+          doesNotApply:
+            this.draft.woundApplicability[modifier.effectId] ===
+            "does-not-apply",
+        }),
+      ),
+      draft: this.draft,
       canAttack:
         Boolean(this.context.basis) &&
+        Boolean(this.context.plan) &&
+        !this.context.planError &&
         this.context.reasons.length === 0 &&
         !this.submitting,
     };
+  }
+
+  woundEffectChanged(effect) {
+    if (
+      !this.rendered ||
+      effect?.parent?.uuid !== this.item.actor.uuid ||
+      effect.getFlag?.(ID, "woundModifier") === undefined
+    )
+      return;
+    void this.render();
+  }
+
+  async _onClose(options) {
+    for (const [event, handler] of this.woundHookHandlers)
+      Hooks.off(event, handler);
+    this.woundHookHandlers = [];
+    return super._onClose(options);
   }
 
   readDraft() {
@@ -120,6 +180,12 @@ export class BasicMeleeDialog extends foundry.applications.api.HandlebarsApplica
         this.fears.map((source, index) => [
           source,
           value(`fear-${index}`) ?? "",
+        ]),
+      ),
+      woundApplicability: Object.fromEntries(
+        (this.basis?.woundModifiers ?? []).map((modifier, index) => [
+          modifier.effectId,
+          value(`wound-${index}`) ?? "",
         ]),
       ),
       rulingReason: value("rulingReason") ?? "",
@@ -156,7 +222,6 @@ export class BasicMeleeDialog extends foundry.applications.api.HandlebarsApplica
 
   async _onRender(context, options) {
     await super._onRender(context, options);
-    this.rendered = true;
     this.element.addEventListener("input", () => {
       this.readDraft();
       this.preview();

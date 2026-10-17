@@ -18,9 +18,49 @@ const ID = "heroes-of-legend",
       "9d6e0b6ca75363b94c6886fb3c53087f854098f024aac232395c61fdc438ae40",
   },
   browser = await chromium.launch(),
-  errors = [];
-let gm, player, users, scenarios = [];
+  errors = [],
+  cleanupRegistryKey = "__holPlayerAttackFixtureCleanup";
+let gm, player, users, scenarios = [], authorityClaimed = false;
 await mkdir("test-results", { recursive: true });
+
+async function initializeCleanupRegistry() {
+  await gm.page.evaluate((key) => {
+    const registry = {
+      users: [],
+      actors: [],
+      scenes: [],
+      combats: [],
+      track(kind, document) {
+        if (
+          document?.id &&
+          Array.isArray(registry[kind]) &&
+          !registry[kind].includes(document.id)
+        )
+          registry[kind].push(document.id);
+      },
+    };
+    globalThis[key] = registry;
+  }, cleanupRegistryKey);
+}
+
+async function assertCoordinatorUnbound() {
+  const current = await gm.page.evaluate(() => {
+    const ID = "heroes-of-legend";
+    return {
+      client: game.settings.get(ID, "creationAuthorityClient"),
+      meta: game.settings.get(ID, "authorityMeta"),
+      work: game.settings.get(ID, "authorityWork"),
+    };
+  });
+  if (
+    current.client ||
+    Object.keys(current.meta ?? {}).length ||
+    Object.keys(current.work ?? {}).length
+  )
+    throw new Error(
+      "The disposable world coordinator is already bound. Release it before running this fixture.",
+    );
+}
 
 async function join(name) {
   const context = await browser.newContext({
@@ -37,6 +77,8 @@ async function join(name) {
 }
 
 async function bind() {
+  if (!authorityClaimed)
+    throw new Error("The fixture has not claimed coordinator cleanup.");
   await gm.page.evaluate(async () => {
     const { bindCreationAuthority } = await import(
       "/systems/heroes-of-legend/services/authority.mjs"
@@ -46,10 +88,14 @@ async function bind() {
 }
 
 async function release() {
+  if (!authorityClaimed)
+    throw new Error("The fixture has not claimed coordinator cleanup.");
   await gm.page.evaluate(async () => {
-    const { releaseAuthority } = await import(
+    const { isCreationAuthority, releaseAuthority } = await import(
       "/systems/heroes-of-legend/services/authority.mjs"
     );
+    if (!isCreationAuthority())
+      throw new Error("Fixture coordinator ownership changed.");
     await releaseAuthority();
   });
 }
@@ -62,6 +108,8 @@ async function makeScenario({
   attackerFootprint = 1,
   targetFootprint = 1,
   wall = false,
+  targetHidden = false,
+  wounds = 0,
 }) {
   const fixture = await gm.page.evaluate(
     async ({
@@ -73,42 +121,51 @@ async function makeScenario({
       attackerFootprint,
       targetFootprint,
       wall,
+      targetHidden,
+      wounds,
+      cleanupRegistryKey,
     }) => {
       const ID = "heroes-of-legend",
+        cleanup = globalThis[cleanupRegistryKey],
         owner = game.users.get(ownerId),
-        targetOwner = game.users.get(targetOwnerId),
-        attacker = await Actor.create({
+        targetOwner = game.users.get(targetOwnerId);
+      if (!cleanup) throw new Error("Fixture cleanup tracking is unavailable.");
+      const attacker = await Actor.create({
           name: `${label} attacker`,
           type: "character",
           ownership: { [owner.id]: 3 },
+          flags: {
+            [ID]: { development: { creationSummary: { speedBase: 5 } } },
+          },
           system: {
             attributes: { brawn: { base: 2 } },
             health: { value: 12, baseMax: 12 },
           },
-          items: [
-            {
-              name: "Basic Melee",
-              type: "ability",
-              system: {
-                description: "Synthetic player Basic Melee fixture.",
-                activity: { action: "main", attribute: "brawn" },
-              },
-              flags: { [ID]: { catalogId: "ability-basic-melee", source } },
-            },
-            {
-              name: "Worn sword",
-              type: "equipment",
-              system: {
-                catalogId: "item-ordinary-melee-weapon",
-                quantity: 1,
-                bulk: 1,
-                hands: 1,
-                held: true,
-              },
-            },
-          ],
-        }),
-        target = await Actor.create({
+        });
+      cleanup.track("actors", attacker);
+      await attacker.createEmbeddedDocuments("Item", [
+        {
+          name: "Basic Melee",
+          type: "ability",
+          system: {
+            description: "Synthetic player Basic Melee fixture.",
+            activity: { action: "main", attribute: "brawn" },
+          },
+          flags: { [ID]: { catalogId: "ability-basic-melee", source } },
+        },
+        {
+          name: "Worn sword",
+          type: "equipment",
+          system: {
+            catalogId: "item-ordinary-melee-weapon",
+            quantity: 1,
+            bulk: 1,
+            hands: 1,
+            held: true,
+          },
+        },
+      ]);
+      const target = await Actor.create({
           name: `${label} target`,
           type: targetType,
           ownership: { [targetOwner.id]: 3 },
@@ -120,16 +177,18 @@ async function makeScenario({
                   armor: 1,
                 }
               : { health: { value: 12, baseMax: 12 } },
-        }),
-        scene = await Scene.create({
+        });
+      cleanup.track("actors", target);
+      const scene = await Scene.create({
           name: `${label} player attack fixture`,
           width: 1500,
           height: 1000,
           grid: { type: 1, size: 100, distance: 5, units: "ft" },
           tokenVision: false,
           globalLight: true,
-        }),
-        tokens = await scene.createEmbeddedDocuments("Token", [
+        });
+      cleanup.track("scenes", scene);
+      const tokens = await scene.createEmbeddedDocuments("Token", [
           {
             name: attacker.name,
             actorId: attacker.id,
@@ -149,8 +208,19 @@ async function makeScenario({
             y: 100,
             width: targetFootprint,
             height: targetFootprint,
+            hidden: targetHidden,
           },
-        ]);
+        ]),
+        attackerToken = tokens.find(
+          (token) =>
+            token.actorId === attacker.id && token.name === attacker.name,
+        ),
+        targetToken = tokens.find(
+          (token) =>
+            token.actorId === target.id && token.name === target.name,
+        );
+      if (!attackerToken || !targetToken)
+        throw new Error("Fixture tokens cannot be matched to their Actors.");
       if (wall)
         await scene.createEmbeddedDocuments("Wall", [
           {
@@ -164,8 +234,9 @@ async function makeScenario({
           },
         ]);
       if (targetType === "creature")
-        await tokens[1].actor.createEmbeddedDocuments("ActiveEffect", [
+        await targetToken.actor.createEmbeddedDocuments("ActiveEffect", [
           {
+            _id: "holGrappleFixt01",
             name: "Grappled 2",
             statuses: ["hol.grappled"],
             flags: {
@@ -181,25 +252,64 @@ async function makeScenario({
             },
           },
         ]);
+      const woundEffectIds = [];
+      if (wounds) {
+        const contexts = [
+            ["physical", "physical activities", "holWoundPhys0001"],
+            ["mental", "mental activities", "holWoundMental01"],
+          ],
+          woundEffects = await attackerToken.actor.createEmbeddedDocuments(
+            "ActiveEffect",
+            contexts
+              .slice(0, wounds)
+              .map(([context, printedContext, effectId], index) => ({
+                _id: effectId,
+                name: `Fixture wound ${index + 1} · rollModifier`,
+                flags: {
+                  [ID]: {
+                    woundEvent: `fixture-wound-event-${index + 1}`,
+                    woundModifier: {
+                      kind: "rollModifier",
+                      woundId: `wound-${context}-fixture`,
+                      injury: `Fixture ${context} injury`,
+                      source: {
+                        path: "design/rules/wounds.md",
+                        sha256: "c".repeat(64),
+                      },
+                      sourceCommit:
+                        "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+                      polarity: "bane",
+                      amount: 1,
+                      context,
+                      printedContext,
+                      requiresContext: true,
+                    },
+                  },
+                },
+              })),
+          );
+        woundEffectIds.push(...woundEffects.map((effect) => effect.id));
+      }
       const combat = await Combat.create({
           active: true,
           sceneId: scene.id,
           name: `${label} encounter`,
-        }),
-        [attackerCombatant] = await combat.createEmbeddedDocuments(
-          "Combatant",
-          [
-            {
-              actorId: attacker.id,
-              tokenId: tokens[0].id,
-              name: attacker.name,
-              flags: { [ID]: { side: "players" } },
-            },
-          ],
-        ),
-        { requestCombat, resolveCombatRequest } = await import(
-          "/systems/heroes-of-legend/services/combat.mjs"
-        );
+        });
+      cleanup.track("combats", combat);
+      const [attackerCombatant] = await combat.createEmbeddedDocuments(
+        "Combatant",
+        [
+          {
+            actorId: attacker.id,
+            tokenId: attackerToken.id,
+            name: attacker.name,
+            flags: { [ID]: { side: "players" } },
+          },
+        ],
+      ),
+      { requestCombat, resolveCombatRequest } = await import(
+        "/systems/heroes-of-legend/services/combat.mjs"
+      );
       await resolveCombatRequest(
         (await requestCombat(combat, "start")).id,
       );
@@ -214,8 +324,8 @@ async function makeScenario({
       return {
         label,
         attacker: attacker.id,
-        attackerActorUuid: tokens[0].actor.uuid,
-        attackerTokenId: tokens[0].id,
+        attackerActorUuid: attackerToken.actor.uuid,
+        attackerTokenId: attackerToken.id,
         abilityId: attacker.items.find(
           (item) => item.type === "ability",
         ).id,
@@ -223,12 +333,13 @@ async function makeScenario({
           (item) => item.type === "equipment",
         ).id,
         target: target.id,
-        targetActorUuid: tokens[1].actor.uuid,
-        targetTokenUuid: tokens[1].uuid,
-        targetTokenId: tokens[1].id,
+        targetActorUuid: targetToken.actor.uuid,
+        targetTokenUuid: targetToken.uuid,
+        targetTokenId: targetToken.id,
         scene: scene.id,
         combat: combat.id,
         participant: attackerCombatant.id,
+        woundEffectIds,
       };
     },
     {
@@ -240,6 +351,9 @@ async function makeScenario({
       attackerFootprint,
       targetFootprint,
       wall,
+      targetHidden,
+      wounds,
+      cleanupRegistryKey,
     },
   );
   scenarios.push(fixture);
@@ -336,19 +450,25 @@ async function mainState(fixture) {
 }
 
 try {
+  gm = await join("Gamemaster");
+  await initializeCleanupRegistry();
+  await assertCoordinatorUnbound();
+  authorityClaimed = true;
   const createdUsers = await (async () => {
-    gm = await join("Gamemaster");
-    return gm.page.evaluate(async () => {
-      const owner = await User.create({
+    return gm.page.evaluate(async (cleanupRegistryKey) => {
+      const cleanup = globalThis[cleanupRegistryKey],
+        owner = await User.create({
           name: `Basic Melee owner ${foundry.utils.randomID(5)}`,
           role: CONST.USER_ROLES.PLAYER,
-        }),
-        targetOwner = await User.create({
+        });
+      cleanup.track("users", owner);
+      const targetOwner = await User.create({
           name: `PvP target owner ${foundry.utils.randomID(5)}`,
           role: CONST.USER_ROLES.PLAYER,
         });
+      cleanup.track("users", targetOwner);
       return { owner: owner.id, targetOwner: targetOwner.id };
-    });
+    }, cleanupRegistryKey);
   })();
   users = createdUsers;
   await bind();
@@ -384,6 +504,214 @@ try {
       },
     };
   }, primary);
+
+  const hiddenTarget = await makeScenario({
+    ownerId: users.owner,
+    targetOwnerId: users.targetOwner,
+    targetType: "creature",
+    label: "Hidden target",
+    targetHidden: true,
+  });
+  const hiddenForPlayer = await player.page.evaluate(async (fixture) => {
+    const scene = game.scenes.get(fixture.scene);
+    await scene.view();
+    canvas.tokens.get(fixture.attackerTokenId).control({ releaseOthers: true });
+    const actor = await fromUuid(fixture.attackerActorUuid),
+      targetToken = scene.tokens.get(fixture.targetTokenId),
+      { basicMeleeDialogContext } = await import(
+        "/systems/heroes-of-legend/services/player-attacks.mjs"
+      ),
+      context = basicMeleeDialogContext(
+        actor.items.get(fixture.abilityId),
+        game.combats.get(fixture.combat),
+        fixture.participant,
+        {
+          weaponItemUuid: actor.items.get(fixture.weaponId).uuid,
+          targetTokenUuid: fixture.targetTokenUuid,
+          draft: { woundApplicability: {} },
+        },
+      );
+    return {
+      nativeVisible: targetToken.object?.isVisible,
+      targetUuids: context.targets.map((target) => target.uuid),
+      reasons: context.reasons,
+    };
+  }, hiddenTarget);
+  assert.equal(hiddenForPlayer.nativeVisible, false);
+  assert.deepEqual(hiddenForPlayer.targetUuids, []);
+  assert.match(hiddenForPlayer.reasons.join(" "), /not visible or available/);
+  await assert.rejects(
+    () => requestData(hiddenTarget),
+    /not visible or available/,
+  );
+  const hiddenForGm = await gm.page.evaluate(async (fixture) => {
+    const scene = game.scenes.get(fixture.scene);
+    await scene.view();
+    canvas.tokens.get(fixture.attackerTokenId).control({ releaseOthers: true });
+    const actor = await fromUuid(fixture.attackerActorUuid),
+      targetToken = scene.tokens.get(fixture.targetTokenId),
+      { basicMeleeDialogContext, playerBasicMeleeRequestData } = await import(
+        "/systems/heroes-of-legend/services/player-attacks.mjs"
+      ),
+      context = basicMeleeDialogContext(
+        actor.items.get(fixture.abilityId),
+        game.combats.get(fixture.combat),
+        fixture.participant,
+        {
+          weaponItemUuid: actor.items.get(fixture.weaponId).uuid,
+          targetTokenUuid: fixture.targetTokenUuid,
+          draft: { woundApplicability: {} },
+        },
+      ),
+      request = playerBasicMeleeRequestData(
+        actor.items.get(fixture.abilityId),
+        game.combats.get(fixture.combat),
+        fixture.participant,
+        {
+          weaponItemUuid: actor.items.get(fixture.weaponId).uuid,
+          targetTokenUuid: fixture.targetTokenUuid,
+          draft: { woundApplicability: {} },
+        },
+      );
+    return {
+      nativeVisible: targetToken.object?.isVisible,
+      targetUuids: context.targets.map((target) => target.uuid),
+      targetTokenUuid: context.targetTokenUuid,
+      requestTargetUuid: request.basis.targetTokenUuid,
+    };
+  }, hiddenTarget);
+  assert.equal(hiddenForGm.nativeVisible, true);
+  assert.deepEqual(hiddenForGm.targetUuids, [hiddenTarget.targetTokenUuid]);
+  assert.equal(hiddenForGm.targetTokenUuid, hiddenTarget.targetTokenUuid);
+  assert.equal(hiddenForGm.requestTargetUuid, hiddenTarget.targetTokenUuid);
+
+  const woundScenario = await makeScenario({
+    ownerId: users.owner,
+    targetOwnerId: users.targetOwner,
+    targetType: "creature",
+    label: "Wounds",
+    wounds: 2,
+  });
+  await activateScenario(woundScenario);
+  await player.page.evaluate(async (fixture) => {
+    const actor = await fromUuid(fixture.attackerActorUuid),
+      { BasicMeleeDialog } = await import(
+        "/systems/heroes-of-legend/dialogs/player-attack.mjs"
+      );
+    window.holWoundDialog = new BasicMeleeDialog(
+      actor.items.get(fixture.abilityId),
+      game.combats.get(fixture.combat),
+      fixture.participant,
+    );
+    await window.holWoundDialog.render({ force: true });
+  }, woundScenario);
+  const woundDialog = player.page.locator(".hol-player-attack");
+  await woundDialog.locator(".hol-wound-context").first().waitFor();
+  assert.equal(await woundDialog.locator(".hol-wound-context").count(), 2);
+  const woundEffectOrder = await woundDialog
+    .locator(".hol-wound-context")
+    .evaluateAll((fieldsets) =>
+      fieldsets.map((fieldset) => fieldset.dataset.effectId),
+    );
+  const woundAttack = woundDialog.getByRole("button", {
+    name: "Commit one Main Action and roll",
+    exact: true,
+  });
+  assert.equal(await woundAttack.isEnabled(), false);
+  for (const index of [0, 1])
+    await woundDialog
+      .locator(`select[name="wound-${index}"]`)
+      .selectOption("applies");
+  await player.page.waitForFunction(
+    () =>
+      !document.querySelector(
+        ".hol-player-attack [data-action=attack]",
+      )?.disabled,
+  );
+  await gm.page.evaluate(
+    ({ fixture, effectId }) =>
+      fromUuid(fixture.attackerActorUuid).updateEmbeddedDocuments(
+        "ActiveEffect",
+        [
+          {
+            _id: effectId,
+            "flags.heroes-of-legend.woundModifier.amount": 2,
+          },
+        ],
+      ),
+    { fixture: woundScenario, effectId: woundEffectOrder[0] },
+  );
+  await woundDialog
+    .getByRole("alert")
+    .filter({ hasText: "Active wound modifiers changed" })
+    .waitFor();
+  assert.deepEqual(
+    await woundDialog
+      .locator(".hol-wound-context select")
+      .evaluateAll((selects) => selects.map((select) => select.value)),
+    ["", ""],
+  );
+  assert.equal(await woundAttack.isEnabled(), false);
+  await woundDialog
+    .locator(`select[name="wound-0"]`)
+    .selectOption("applies");
+  await woundDialog
+    .locator(`select[name="wound-1"]`)
+    .selectOption("does-not-apply");
+  await player.page.waitForFunction(
+    () =>
+      !document.querySelector(
+        ".hol-player-attack [data-action=attack]",
+      )?.disabled,
+  );
+  await woundAttack.click();
+  await player.page.waitForFunction(
+    (fixture) =>
+      game.messages.some(
+        (message) =>
+          message.getFlag("heroes-of-legend", "playerAttack")?.combatId ===
+          fixture.combat,
+      ),
+    woundScenario,
+  );
+  const woundAttackId = await player.page.evaluate(
+    (fixture) =>
+      game.messages.find(
+        (message) =>
+          message.getFlag("heroes-of-legend", "playerAttack")?.combatId ===
+          fixture.combat,
+      ).id,
+    woundScenario,
+  );
+  const woundResult = await gm.page.evaluate(
+    ({ fixture, id }) => {
+      const operation = game.combats
+          .get(fixture.combat)
+          .getFlag("heroes-of-legend", "playerAttackOperations")[id],
+        snapshot = operation.result.snapshot;
+      return {
+        draft: operation.draft.woundApplicability,
+        saved: snapshot.woundApplicability,
+        woundEffects: snapshot.sources
+          .filter((source) => source.wound)
+          .map((source) => source.wound.effectId),
+        woundAmounts: snapshot.sources
+          .filter((source) => source.wound)
+          .map((source) => source.amount),
+      };
+    },
+    { fixture: woundScenario, id: woundAttackId },
+  );
+  const expectedWoundApplicability = Object.fromEntries(
+    woundEffectOrder.map((effectId, index) => [
+      effectId,
+      index === 0 ? "applies" : "does-not-apply",
+    ]),
+  );
+  assert.deepEqual(woundResult.draft, expectedWoundApplicability);
+  assert.deepEqual(woundResult.saved, expectedWoundApplicability);
+  assert.deepEqual(woundResult.woundEffects, [woundEffectOrder[0]]);
+  assert.deepEqual(woundResult.woundAmounts, [2]);
 
   const largeFootprints = await makeScenario({
     ownerId: users.owner,
@@ -468,6 +796,27 @@ try {
         ),
     },
     {
+      name: "visibility",
+      mutate: async (fixture) =>
+        gm.page.evaluate(
+          (fixture) =>
+            game.scenes
+              .get(fixture.scene)
+              .tokens.get(fixture.targetTokenId)
+              .update({ hidden: true }),
+          fixture,
+        ),
+      restore: async (fixture) =>
+        gm.page.evaluate(
+          (fixture) =>
+            game.scenes
+              .get(fixture.scene)
+              .tokens.get(fixture.targetTokenId)
+              .update({ hidden: false }),
+          fixture,
+        ),
+    },
+    {
       name: "source",
       mutate: async (fixture) =>
         gm.page.evaluate(async (fixture) => {
@@ -511,8 +860,10 @@ try {
     const result = await resolveAttack(id);
     assert.match(
       result.error,
-      /weapon, target, roll sources or adjacency changed|within one adjacent square|Hold a compatible melee weapon/,
+      /weapon, target, roll sources or adjacency changed|within one adjacent square|Hold a compatible melee weapon|hidden from its request author/,
     );
+    if (stale.name === "visibility")
+      assert.match(result.error, /hidden from its request author/);
     assert.equal(await mainState(primary), 1);
     assert.equal(
       await gm.page.evaluate(
@@ -1010,6 +1361,8 @@ try {
         tier: roll.tier,
         recovery: roll.recovery,
         operationRetained: operation.result.snapshot.retained,
+        operationWoundApplicability:
+          operation.result.snapshot.woundApplicability,
         operationRecovery: operation.result.recovery,
         operationRoll: operation.result.roll,
         gmUserId: game.user.id,
@@ -1023,6 +1376,7 @@ try {
   assert.equal(recovery.tier, "standard");
   assert.match(recovery.recovery.reason, /Observed dice/);
   assert.deepEqual(recovery.operationRetained, [3, 4, 5]);
+  assert.deepEqual(recovery.operationWoundApplicability, {});
   assert.equal(recovery.operationRecovery.userId, recovery.gmUserId);
   assert.match(recovery.operationRecovery.reason, /Observed dice/);
   assert.equal(recovery.operationRoll, null);
@@ -1205,33 +1559,93 @@ try {
   const deletedRecovery = await gm.page.evaluate(
     async ({ id, fixture }) => {
       const original = foundry.dice.Roll.prototype.evaluate,
-        { recoverPlayerBasicMeleeRequest, playerBasicMeleeDamage } =
-          await import(
-            "/systems/heroes-of-legend/services/player-attacks.mjs"
-          );
+        {
+          acknowledgeMissingPlayerBasicMeleePresentation,
+          recoverPlayerBasicMeleeRequest,
+          playerBasicMeleeDamage,
+          pendingPlayerAttacks,
+        } = await import(
+          "/systems/heroes-of-legend/services/player-attacks.mjs"
+        ),
+        { DamagePanel } = await import(
+          "/systems/heroes-of-legend/applications/damage.mjs"
+        ),
+        { AuthorityPanel } = await import(
+          "/systems/heroes-of-legend/applications/authority.mjs"
+        );
       foundry.dice.Roll.prototype.evaluate = () => {
         throw new Error("Deleted-source recovery rerolled dice");
       };
+      let combat, pendingAfterRecovery;
       try {
         await recoverPlayerBasicMeleeRequest(id, {
           retained: [2, 3, 4],
           reason: "DA preserved the observed deleted-source dice",
         });
+        combat = game.combats.get(fixture.combat);
+        pendingAfterRecovery = combat.getFlag(
+          "heroes-of-legend",
+          "pendingAbility",
+        );
+        await acknowledgeMissingPlayerBasicMeleePresentation(id, {
+          reason:
+            "DA acknowledged the deleted presentation and preserved its result",
+        });
       } finally {
         foundry.dice.Roll.prototype.evaluate = original;
       }
-      const combat = game.combats.get(fixture.combat),
-        operation = combat.getFlag(
+      const operation = combat.getFlag(
           "heroes-of-legend",
           "playerAttackOperations",
         )[id],
         receipt = combat.getFlag("heroes-of-legend", "operationReceipts")[id],
-        damage = playerBasicMeleeDamage(id);
+        damage = playerBasicMeleeDamage(id),
+        pendingAfterAcknowledgement = combat.getFlag(
+          "heroes-of-legend",
+          "pendingAbility",
+        );
+      await combat.update({
+        "flags.heroes-of-legend.pendingAbility": "unrelated-action",
+      });
+      await acknowledgeMissingPlayerBasicMeleePresentation(id, {
+        reason: "Idempotent acknowledgement replay",
+      });
+      const unrelatedPending = combat.getFlag(
+          "heroes-of-legend",
+          "pendingAbility",
+        ),
+        authorityContext = await new AuthorityPanel()._prepareContext(),
+        authorityAttack = authorityContext.pendingAttacks.find(
+          (entry) => entry.id === id,
+        ),
+        damageTarget = await fromUuid(damage.actorUuid),
+        damagePanel = new DamagePanel(damageTarget, null, id),
+        damagePanelContext = await damagePanel._prepareContext({});
+      await combat.update({
+        "flags.heroes-of-legend.pendingAbility": null,
+      });
       return {
         result: operation.result,
         receipt,
         damage,
-        pending: combat.getFlag("heroes-of-legend", "pendingAbility"),
+        pendingAfterRecovery,
+        pendingAfterAcknowledgement,
+        unrelatedPending,
+        unrelatedPendingVisible: authorityContext.pendingAbilities.some(
+          (entry) =>
+            entry.combatUuid === combat.uuid &&
+            entry.id === "unrelated-action",
+        ),
+        authorityAttack,
+        attention: pendingPlayerAttacks(combat).includes(id),
+        damagePanel: {
+          actorUuid: damageTarget.uuid,
+          fromAttack: damagePanelContext.fromAttack,
+          lockedSource: damagePanelContext.lockedSource,
+          amount: damagePanelContext.rows.find(
+            (row) => row.type === "physical",
+          )?.amount,
+        },
       };
     },
     { id: deletedId, fixture: deletedSource },
@@ -1239,32 +1653,72 @@ try {
   assert.equal(deletedRecovery.result.roll, null);
   assert.deepEqual(deletedRecovery.result.snapshot.retained, [2, 3, 4]);
   assert.equal(deletedRecovery.receipt.presentation, "missing");
+  assert.match(
+    deletedRecovery.receipt.presentationAcknowledgement.reason,
+    /preserved its result/,
+  );
   assert.equal(deletedRecovery.damage.components[0].amount, 3);
-  assert.equal(deletedRecovery.pending, deletedId);
+  assert.equal(deletedRecovery.damage.actorUuid, deletedSource.targetActorUuid);
+  assert.equal(deletedRecovery.pendingAfterRecovery, deletedId);
+  assert.equal(deletedRecovery.pendingAfterAcknowledgement, null);
+  assert.equal(deletedRecovery.unrelatedPending, "unrelated-action");
+  assert.equal(deletedRecovery.unrelatedPendingVisible, true);
+  assert.equal(deletedRecovery.authorityAttack.acknowledged, true);
+  assert.equal(deletedRecovery.authorityAttack.sourceAvailable, false);
+  assert.equal(deletedRecovery.authorityAttack.damageAvailable, true);
+  assert.equal(deletedRecovery.attention, true);
+  assert.deepEqual(deletedRecovery.damagePanel, {
+    actorUuid: deletedSource.targetActorUuid,
+    fromAttack: true,
+    lockedSource: true,
+    amount: 3,
+  });
   assert.deepEqual(errors, []);
   console.info(
-    "PASS: encounter preservation, 5-unit grid-space adjacency, large footprints, collision-blocked geometry, reasoned nonadjacency exception, authoritative result projection/replay, forged roll and recovery rejection, late presentation recovery, deleted-source attention/recovery, PvP one-roll, Main once and linked damage deduplication.",
+    "PASS: native target visibility with DA adjudication, wound applicability refresh, encounter preservation, 5-unit grid-space adjacency, large footprints, collision-blocked geometry, reasoned nonadjacency exception, authoritative result projection/replay, forged roll/recovery and hidden-target rejection, late presentation recovery, acknowledged deleted-source recovery with operation-ID damage, PvP one-roll, Main once and linked damage deduplication.",
   );
 } finally {
-  await player?.context.close();
-  if (gm && users) {
-    await gm.page
-      .evaluate(
-        async ({ users, scenarios }) => {
-          const { releaseAuthority } = await import(
+  try {
+    await player?.context.close();
+  } catch (error) {
+    console.error("Player cleanup:", error.message);
+    process.exitCode = 1;
+  }
+  if (gm?.page && !gm.page.isClosed()) {
+    if (authorityClaimed) {
+      await gm.page
+        .evaluate(async () => {
+          const { isCreationAuthority, releaseAuthority } = await import(
             "/systems/heroes-of-legend/services/authority.mjs"
           );
-          await releaseAuthority();
+          if (isCreationAuthority()) await releaseAuthority();
+        })
+        .catch((error) => {
+          console.error("Coordinator cleanup:", error.message);
+          process.exitCode = 1;
+        });
+    }
+    await gm.page
+      .evaluate(
+        async ({ scenarios, cleanupRegistryKey }) => {
           await new Promise((resolve) => setTimeout(resolve, 500));
-          const combats = new Set(
-              scenarios.map((fixture) => `Combat.${fixture.combat}`),
-            ),
-            actors = new Set(
-              scenarios.flatMap((fixture) => [
+          const cleanup = globalThis[cleanupRegistryKey] ?? {
+              users: [],
+              actors: [],
+              scenes: [],
+              combats: [],
+            },
+            combats = new Set([
+              ...cleanup.combats.map((id) => `Combat.${id}`),
+              ...scenarios.map((fixture) => `Combat.${fixture.combat}`),
+            ]),
+            actors = new Set([
+              ...cleanup.actors.map((id) => `Actor.${id}`),
+              ...scenarios.flatMap((fixture) => [
                 fixture.attackerActorUuid,
                 fixture.targetActorUuid,
               ]),
-            );
+            ]);
           for (const message of game.messages.filter(
             (message) =>
               combats.has(
@@ -1279,20 +1733,30 @@ try {
               ),
           ))
             await message.delete();
-          for (const fixture of scenarios)
-            await game.combats.get(fixture.combat)?.delete();
-          for (const fixture of scenarios)
-            await game.scenes.get(fixture.scene)?.delete();
-          for (const fixture of scenarios) {
-            await game.actors.get(fixture.attacker)?.delete();
-            await game.actors.get(fixture.target)?.delete();
-          }
-          for (const user of [users.owner, users.targetOwner])
-            await game.users.get(user)?.delete();
+          for (const id of combats)
+            await (await fromUuid(id))?.delete();
+          for (const id of cleanup.scenes)
+            await game.scenes.get(id)?.delete();
+          for (const id of cleanup.actors)
+            await game.actors.get(id)?.delete();
+          for (const id of cleanup.users)
+            await game.users.get(id)?.delete();
+          delete globalThis[cleanupRegistryKey];
         },
-        { users, scenarios },
+        { scenarios, cleanupRegistryKey },
       )
-      .catch((error) => console.error("Cleanup:", error.message));
+      .catch((error) => {
+        console.error("Fixture cleanup:", error.message);
+        process.exitCode = 1;
+      });
+  } else if (authorityClaimed) {
+    console.error("Fixture cleanup: the GM page is unavailable.");
+    process.exitCode = 1;
   }
-  await browser.close();
+  try {
+    await browser.close();
+  } catch (error) {
+    console.error("Browser cleanup:", error.message);
+    process.exitCode = 1;
+  }
 }

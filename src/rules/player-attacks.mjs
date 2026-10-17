@@ -12,6 +12,79 @@ export function basicMeleeDamage(tier) {
   return PHYSICAL_DAMAGE[tier];
 }
 
+/**
+ * Choose a clear line at the nearest occupied-square distance. Collision
+ * evidence only breaks ties; it never makes a farther line count as adjacent.
+ */
+export function nearestAccessibleLine(candidates, collisionFor) {
+  if (!Array.isArray(candidates) || !candidates.length)
+    throw new Error("Basic Melee needs occupied-square line candidates.");
+  if (typeof collisionFor !== "function")
+    throw new Error("Basic Melee needs a collision evaluator.");
+  const valid = candidates.filter(
+    (candidate) =>
+      Number.isFinite(candidate?.spaces) && candidate.spaces >= 0,
+  );
+  if (!valid.length)
+    throw new Error("Native square-grid distance is unavailable.");
+  const nearest = Math.min(...valid.map((candidate) => candidate.spaces)),
+    tied = valid.filter(
+      (candidate) =>
+        Math.abs(candidate.spaces - nearest) <= GEOMETRY_EPSILON,
+    );
+  let fallback = null;
+  for (const candidate of tied) {
+    const accessible = collisionFor(
+      candidate.origin,
+      candidate.destination,
+    );
+    if (accessible === true) return { ...candidate, accessible };
+    fallback ??= { ...candidate, accessible };
+  }
+  return fallback;
+}
+
+/**
+ * Use Foundry's placeable-token visibility for player target availability.
+ * A GM may adjudicate a hidden or otherwise unseen scene token.
+ */
+export function targetVisibleToRequester(token, requester) {
+  if (requester?.isGM === true) return true;
+  if (token?.hidden === true) return false;
+  try {
+    return token?.object?.isVisible === true;
+  } catch {
+    return false;
+  }
+}
+
+/** A reserved ability is a player attack only when its ID names that operation. */
+export function pendingAbilityIsPlayerAttack(pendingId, operations) {
+  return (
+    typeof pendingId === "string" &&
+    pendingId.length > 0 &&
+    Object.hasOwn(operations ?? {}, pendingId) &&
+    Boolean(operations?.[pendingId])
+  );
+}
+
+function normalizedWoundApplicability(value) {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return null;
+  return Object.entries(value).sort(([left], [right]) =>
+    left.localeCompare(right),
+  );
+}
+
+/** Verify that a saved result preserved the explicit wound choices. */
+export function woundApplicabilityMatches(snapshot, draft) {
+  const saved = normalizedWoundApplicability(snapshot?.woundApplicability),
+    chosen = normalizedWoundApplicability(draft?.woundApplicability);
+  return (
+    Boolean(saved && chosen) &&
+    JSON.stringify(saved) === JSON.stringify(chosen)
+  );
+}
+
 export function targetEvasionSources(evasion, tokenUuid) {
   if (!evasion) return [];
   if (typeof tokenUuid !== "string" || !tokenUuid)

@@ -7,8 +7,12 @@ import {
 import {
   basicMeleeDamage,
   basicMeleeRequestMatches,
+  nearestAccessibleLine,
   nativeBasicMeleeGeometry,
+  pendingAbilityIsPlayerAttack,
+  targetVisibleToRequester,
   targetEvasionSources,
+  woundApplicabilityMatches,
 } from "../src/rules/player-attacks.mjs";
 import { isMeleeWeaponEquipment } from "../src/rules/equipment-identity.mjs";
 import { prepareRoll } from "../src/services/roll-preparation.mjs";
@@ -195,6 +199,39 @@ test("native adjacency uses square spaces and requires explicit geometry evidenc
   );
 });
 
+test("nearest line selection prefers a clear same-distance footprint pair", () => {
+  const blocked = {
+      spaces: 1,
+      origin: { id: "origin-left" },
+      destination: { id: "destination-blocked" },
+    },
+    clear = {
+      spaces: 1,
+      origin: { id: "origin-right" },
+      destination: { id: "destination-clear" },
+    },
+    fartherClear = {
+      spaces: 2,
+      origin: { id: "origin-left" },
+      destination: { id: "destination-far" },
+    },
+    collision = (origin, destination) =>
+      destination.id === "destination-clear"
+        ? true
+        : destination.id === "destination-blocked"
+          ? false
+          : null;
+  assert.equal(
+    nearestAccessibleLine([blocked, clear, fartherClear], collision)
+      .destination.id,
+    "destination-clear",
+  );
+  assert.equal(
+    nearestAccessibleLine([blocked, fartherClear], collision).destination.id,
+    "destination-blocked",
+  );
+});
+
 test("Basic Melee request freezing keeps reviewed shared source fields", () => {
   const frozen = {
     woundModifiers: [
@@ -228,4 +265,124 @@ test("Basic Melee request freezing keeps reviewed shared source fields", () => {
     ),
     false,
   );
+});
+
+test("Basic Melee wound sources require and retain explicit applicability", () => {
+  const wound = {
+      effectId: "effect-physical",
+      id: "wound-roll-effect-physical",
+      woundEventId: "wound-event-physical",
+      woundId: "wound-physical-346",
+      injury: "Leg: torn knee ligaments",
+      source: {
+        path: "design/rules/wounds.md",
+        sha256: "a".repeat(64),
+      },
+      sourceCommit: "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      kind: "rollModifier",
+      polarity: "bane",
+      amount: 1,
+      context: "physical",
+      printedContext: "physical activities",
+      requiresContext: true,
+      label: "Wound: Leg: torn knee ligaments · physical activities",
+      sourceIds: ["effect-physical"],
+    },
+    basis = {
+      mode: "attack",
+      attribute: 2,
+      contributions: [],
+      benefits: [],
+      targetContributions: [],
+      targetEvasion: null,
+      targetTokenUuid: "Scene.synthetic.Token.target",
+      woundModifiers: [wound],
+    },
+    draft = { woundApplicability: { "effect-physical": "applies" } };
+  assert.throws(
+    () => prepareRoll(basis, { woundApplicability: {} }),
+    /Choose whether each wound modifier applies/,
+  );
+  assert.equal(
+    prepareRoll(basis, draft).sources.some(
+      (source) => source.id === wound.id,
+    ),
+    true,
+  );
+  assert.equal(
+    prepareRoll(basis, {
+      woundApplicability: { "effect-physical": "does-not-apply" },
+    }).sources.some((source) => source.id === wound.id),
+    false,
+  );
+  assert.equal(
+    woundApplicabilityMatches(
+      { woundApplicability: { "effect-physical": "applies" } },
+      draft,
+    ),
+    true,
+  );
+  assert.equal(
+    woundApplicabilityMatches(
+      { woundApplicability: { "effect-physical": "does-not-apply" } },
+      draft,
+    ),
+    false,
+  );
+  assert.equal(
+    woundApplicabilityMatches(
+      {
+        woundApplicability: {
+          "effect-mental": "does-not-apply",
+          "effect-physical": "applies",
+        },
+      },
+      {
+        woundApplicability: {
+          "effect-physical": "applies",
+          "effect-mental": "does-not-apply",
+        },
+      },
+    ),
+    true,
+  );
+  assert.equal(woundApplicabilityMatches({}, draft), false);
+});
+
+test("native target visibility hides unseen targets from players only", () => {
+  const visible = { object: { isVisible: true } },
+    invisible = { hidden: false, object: { isVisible: false } },
+    hidden = { hidden: true, object: { isVisible: false } },
+    gmVisibleHidden = { hidden: true, object: { isVisible: true } },
+    unavailable = {
+      get object() {
+        throw new Error("Canvas unavailable");
+      },
+    },
+    player = { isGM: false },
+    gm = { isGM: true };
+  assert.equal(targetVisibleToRequester(visible, player), true);
+  assert.equal(targetVisibleToRequester(invisible, player), false);
+  assert.equal(targetVisibleToRequester(hidden, player), false);
+  assert.equal(targetVisibleToRequester(gmVisibleHidden, player), false);
+  assert.equal(targetVisibleToRequester(unavailable, player), false);
+  assert.equal(targetVisibleToRequester(visible, gm), true);
+  assert.equal(targetVisibleToRequester(invisible, gm), true);
+  assert.equal(targetVisibleToRequester(hidden, gm), true);
+  assert.equal(targetVisibleToRequester(gmVisibleHidden, gm), true);
+});
+
+test("only the matching player attack ID suppresses a pending action", () => {
+  const operations = {
+    "deleted-player-attack": { operationId: "deleted-player-attack" },
+  };
+  assert.equal(
+    pendingAbilityIsPlayerAttack("ordinary-action", operations),
+    false,
+  );
+  assert.equal(
+    pendingAbilityIsPlayerAttack("deleted-player-attack", operations),
+    true,
+  );
+  assert.equal(pendingAbilityIsPlayerAttack("ordinary-action", null), false);
 });

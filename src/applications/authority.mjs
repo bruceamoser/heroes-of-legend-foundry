@@ -18,10 +18,12 @@ import {
 import { resolveNpcAttack } from "../services/npc-attacks.mjs";
 import { resolveAbilityRequest } from "../services/abilities.mjs";
 import {
+  acknowledgeMissingPlayerBasicMeleePresentation,
   pendingPlayerAttacks,
   recoverPlayerBasicMeleeRequest,
   resolvePlayerBasicMeleeRequest,
 } from "../services/player-attacks.mjs";
+import { pendingAbilityIsPlayerAttack } from "../rules/player-attacks.mjs";
 import { resolveConditionRequest } from "../services/conditions.mjs";
 import { resolveCombatRequest } from "../services/combat.mjs";
 import {
@@ -90,6 +92,8 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
       resumeAbility: AuthorityPanel.resumeAbility,
       resumeAttack: AuthorityPanel.resumeAttack,
       recoverAttack: AuthorityPanel.recoverAttack,
+      acknowledgeMissingAttack: AuthorityPanel.acknowledgeMissingAttack,
+      openAttackDamage: AuthorityPanel.openAttackDamage,
       abandonDefense: AuthorityPanel.abandonDefense,
       openInventory: AuthorityPanel.openInventory,
     },
@@ -121,11 +125,16 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
             .map((r) => ({ ...r, attackId: m.id })),
         ),
       pendingAbilities: game.combats
-        .filter(
-          (c) =>
-            c.getFlag(ID, "pendingAbility") &&
-            !pendingPlayerAttacks(c).length,
-        )
+        .filter((combat) => {
+          const pending = combat.getFlag(ID, "pendingAbility");
+          return (
+            pending &&
+            !pendingAbilityIsPlayerAttack(
+              pending,
+              combat.getFlag(ID, "playerAttackOperations"),
+            )
+          );
+        })
         .map((c) => ({
           combatUuid: c.uuid,
           id: c.getFlag(ID, "pendingAbility"),
@@ -134,9 +143,14 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
       pendingAttacks: game.combats.flatMap((combat) =>
         pendingPlayerAttacks(combat).map((id) => {
           const operation = combat.getFlag(
-            ID,
-            "playerAttackOperations",
-          )?.[id];
+              ID,
+              "playerAttackOperations",
+            )?.[id],
+            receipt = combat.getFlag(ID, "operationReceipts")?.[id],
+            sourceAvailable = Boolean(game.messages.get(id)),
+            acknowledged = Boolean(
+              receipt?.presentationAcknowledgement,
+            );
           return {
             combatUuid: combat.uuid,
             id,
@@ -144,11 +158,24 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
             attacker: operation?.attackerName ?? "Unknown attacker",
             target: operation?.targetName ?? "Unknown target",
             saved: Boolean(operation?.result),
-            sourceAvailable: Boolean(game.messages.get(id)),
+            sourceAvailable,
             status: operation?.status ?? "unknown",
             recoverable:
               !operation?.result &&
               ["declared", "resolving"].includes(operation?.status),
+            acknowledged,
+            reconcileAvailable:
+              !sourceAvailable &&
+              Boolean(operation?.result) &&
+              receipt?.applied !== true,
+            canAcknowledge:
+              !sourceAvailable &&
+              Boolean(operation?.result) &&
+              receipt?.applied === true &&
+              receipt?.presentation === "missing" &&
+              !acknowledged,
+            damageAvailable:
+              Boolean(operation?.result) && receipt?.applied === true,
           };
         }),
       ),
@@ -338,6 +365,34 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
         reason: choice.reason,
       });
       await this.render();
+    } catch (error) {
+      ui.notifications.error(error.message);
+    }
+  }
+  static async acknowledgeMissingAttack(event, target) {
+    try {
+      if (!isCreationAuthority())
+        throw new Error("Enable this coordinator first.");
+      const choice = await foundry.applications.api.DialogV2.input({
+        window: { title: "Acknowledge missing Basic Melee presentation" },
+        content:
+          '<p>This records the missing presentation in the durable receipt and clears this attack’s pending action reservation. It preserves the authoritative result and does not recreate the message or roll again.</p><label>DA reason<input name="reason" required></label>',
+        ok: { label: "Acknowledge and continue" },
+      });
+      if (!choice) return;
+      await acknowledgeMissingPlayerBasicMeleePresentation(
+        target.dataset.id,
+        { reason: choice.reason },
+      );
+      await this.render();
+    } catch (error) {
+      ui.notifications.error(error.message);
+    }
+  }
+  static async openAttackDamage(event, target) {
+    try {
+      const { openPlayerAttackDamage } = await import("./damage.mjs");
+      await openPlayerAttackDamage(target.dataset.id);
     } catch (error) {
       ui.notifications.error(error.message);
     }

@@ -4,7 +4,10 @@ import { classifyRoll } from "../rules/roll.mjs";
 import {
   basicMeleeDamage,
   basicMeleeRequestMatches,
+  nearestAccessibleLine,
   nativeBasicMeleeGeometry,
+  targetVisibleToRequester,
+  woundApplicabilityMatches,
 } from "../rules/player-attacks.mjs";
 import { itemAbilityDefinition } from "./abilities.mjs";
 import {
@@ -68,13 +71,14 @@ function sceneTokens(actorToken) {
   return scene?.documentName === "Scene" ? [...scene.tokens] : [];
 }
 
-function targetOptions(actorToken, actor) {
+function targetOptions(actorToken, actor, requester = game.user) {
   return sceneTokens(actorToken)
     .filter(
       (token) =>
         token.uuid !== actorToken.uuid &&
         token.actor?.uuid !== actor.uuid &&
-        ["character", "creature"].includes(token.actor?.type),
+        ["character", "creature"].includes(token.actor?.type) &&
+        targetVisibleToRequester(token, requester),
     )
     .sort((a, b) => a.name.localeCompare(b.name) || a.uuid.localeCompare(b.uuid))
     .map((token) => ({
@@ -82,7 +86,6 @@ function targetOptions(actorToken, actor) {
       name: token.name,
       actorUuid: token.actor.uuid,
       actorType: token.actor.type,
-      hidden: token.hidden === true,
     }));
 }
 
@@ -129,22 +132,19 @@ function collisionAccessible(origin, destination) {
 
 function nearestAttackLine(actorToken, targetToken) {
   const origins = occupiedSquareCenters(actorToken),
-    destinations = occupiedSquareCenters(targetToken);
-  let nearest = null;
+    destinations = occupiedSquareCenters(targetToken),
+    candidates = [];
   for (const origin of origins)
     for (const destination of destinations) {
       const measurement = canvas.grid.measurePath([origin, destination]),
         spaces = measurement?.spaces;
       if (
         Number.isFinite(spaces) &&
-        spaces >= 0 &&
-        (!nearest || spaces < nearest.spaces)
+        spaces >= 0
       )
-        nearest = { spaces, origin, destination };
+        candidates.push({ spaces, origin, destination });
     }
-  if (!nearest)
-    throw new Error("Native square-grid distance is unavailable.");
-  return nearest;
+  return nearestAccessibleLine(candidates, collisionAccessible);
 }
 
 export function nativeBasicMeleeAdjacency(actorToken, targetToken) {
@@ -204,7 +204,7 @@ export function nativeBasicMeleeAdjacency(actorToken, targetToken) {
         );
       const line = nearestAttackLine(actorToken, targetToken);
       distance = line.spaces;
-      accessible = collisionAccessible(line.origin, line.destination);
+      accessible = line.accessible;
       return nativeBasicMeleeGeometry({
         actorTokenUuid: actorToken.uuid,
         targetTokenUuid: targetToken.uuid,
@@ -284,9 +284,12 @@ function buildBasis({
   if (
     !target ||
     !["character", "creature"].includes(target.type) ||
-    targetToken.uuid === actorToken.uuid
+    targetToken.uuid === actorToken.uuid ||
+    !targetVisibleToRequester(targetToken, game.user)
   )
-    throw new Error("Choose one other character or creature as the target.");
+    throw new Error(
+      "Choose one other visible or available character or creature as the target.",
+    );
   const geometry = nativeBasicMeleeAdjacency(actorToken, targetToken),
     roll = rollBasis(
       actor,
@@ -324,12 +327,23 @@ function buildBasis({
 
 function selectedTarget(actorToken, actor, requestedUuid, nativeTargets) {
   const options = targetOptions(actorToken, actor),
-    visible = options.filter((entry) => !entry.hidden || game.user.isGM),
+    available = new Set(options.map((entry) => entry.uuid)),
+    requested =
+      typeof requestedUuid === "string" && requestedUuid
+        ? requestedUuid
+        : null,
     uuid =
-      requestedUuid ||
-      nativeTargets.find((entry) => visible.some((option) => option.uuid === entry)) ||
-      (visible.length === 1 ? visible[0].uuid : null);
-  return { options, visible, tokenUuid: uuid ?? null };
+      requested && available.has(requested)
+        ? requested
+        : !requested
+          ? nativeTargets.find((entry) => available.has(entry)) ??
+            (options.length === 1 ? options[0].uuid : null)
+          : null;
+  return {
+    options,
+    tokenUuid: uuid ?? null,
+    requestedUnavailable: Boolean(requested && !available.has(requested)),
+  };
 }
 
 export function basicMeleeDialogContext(
@@ -358,7 +372,11 @@ export function basicMeleeDialogContext(
           selection.targetTokenUuid,
           nativeTargets,
         )
-      : { options: [], visible: [], tokenUuid: null },
+      : {
+          options: [],
+          tokenUuid: null,
+          requestedUnavailable: false,
+        },
     weaponItemUuid =
       selection.weaponItemUuid ||
       (weapons.length === 1 ? weapons[0].uuid : null),
@@ -368,9 +386,14 @@ export function basicMeleeDialogContext(
         : "";
   if (!weapons.length) reasons.push("Requires a held compatible melee weapon.");
   else if (!weaponItemUuid) reasons.push("Choose the melee weapon used.");
-  if (!targets.tokenUuid) reasons.push("Choose one adjacent creature.");
+  if (targets.requestedUnavailable)
+    reasons.push(
+      "The selected Basic Melee target is not visible or available to this user. Choose an available target or ask the DA to adjudicate.",
+    );
+  else if (!targets.tokenUuid) reasons.push("Choose one adjacent creature.");
   let basis = null,
     plan = null,
+    planError = "",
     geometry = null,
     actionReason = "",
     ruling = null;
@@ -401,7 +424,11 @@ export function basicMeleeDialogContext(
           ? { userId: game.user.id, reason: rulingReason }
           : null;
       actionPreview(actor, combat, participantId, "basic-melee-preview", ruling);
-      plan = prepareRoll(basis, selection.draft ?? {});
+      try {
+        plan = prepareRoll(basis, selection.draft ?? {});
+      } catch (error) {
+        planError = error.message;
+      }
       if (geometry.status !== "adjacent") {
         if (ruling)
           ruling = {
@@ -413,9 +440,7 @@ export function basicMeleeDialogContext(
       }
     } catch (error) {
       actionReason = error.message;
-      if (!/No main remains|requires your turn|condition prevents/.test(error.message))
-        reasons.push(error.message);
-      else reasons.push(error.message);
+      reasons.push(error.message);
     }
   }
   return {
@@ -432,13 +457,14 @@ export function basicMeleeDialogContext(
       selected: weapon.uuid === weaponItemUuid,
     })),
     weaponItemUuid,
-    targets: targets.visible.map((target) => ({
+    targets: targets.options.map((target) => ({
       ...target,
       selected: target.uuid === targets.tokenUuid,
     })),
     targetTokenUuid: targets.tokenUuid,
     basis,
     plan,
+    planError,
     geometry,
     ruling,
     actionReason,
@@ -493,9 +519,10 @@ export function playerBasicMeleeRequestData(
     participantId,
     selection,
   );
-  if (!context.basis || context.reasons.length)
+  if (!context.basis || context.reasons.length || context.planError)
     throw new Error(
-      context.reasons.join(" ") || "Basic Melee could not be prepared.",
+      [...context.reasons, context.planError].filter(Boolean).join(" ") ||
+        "Basic Melee could not be prepared.",
     );
   const draft = structuredClone(selection.draft ?? {}),
     ruling =
@@ -580,6 +607,10 @@ async function loadFrozenRequest(
     targetToken.actor?.uuid !== request.basis.target?.actorUuid
   )
     throw new Error("The selected Basic Melee target changed.");
+  if (!message.author.isGM && targetToken.hidden === true)
+    throw new Error(
+      "The selected Basic Melee target is hidden from its request author. Prepare Basic Melee again or ask the DA to adjudicate.",
+    );
   if (participant?.actor?.uuid !== actor.uuid)
     throw new Error("The acting character is not that encounter participant.");
   if (
@@ -863,6 +894,10 @@ function validateOperationResult(operation) {
       normalizedFormula(plan.formula)
   )
     throw new Error("The authoritative Basic Melee roll formula changed.");
+  if (!woundApplicabilityMatches(snapshot, operation.draft))
+    throw new Error(
+      "The authoritative Basic Melee wound applicability changed.",
+    );
   if (
     snapshot.formula !== plan.formula ||
     snapshot.attribute !== plan.attribute ||
@@ -897,11 +932,17 @@ function validateOperationResult(operation) {
   return { snapshot, retained, amount, recovery };
 }
 
-async function finishOperation(message, combat, operation, replay) {
+function pendingAbilitySettlement(combat, operationId) {
+  return combat.getFlag(ID, "pendingAbility") === operationId
+    ? { [`flags.${ID}.pendingAbility`]: null }
+    : {};
+}
+
+async function finishOperation(_message, combat, operation, replay) {
   await writeAuthorityDocument(combat, {
-    [`flags.${ID}.playerAttackOperations.${message.id}`]: operation,
-    [`flags.${ID}.pendingAbility`]: null,
-    [`flags.${ID}.operationReceipts.${message.id}`]: {
+    [`flags.${ID}.playerAttackOperations.${operation.operationId}`]: operation,
+    ...pendingAbilitySettlement(combat, operation.operationId),
+    [`flags.${ID}.operationReceipts.${operation.operationId}`]: {
       applied: true,
       kind: "player-basic-melee",
       status: operation.status,
@@ -1000,6 +1041,9 @@ function recoveryResult(operation, retained, result, recovery) {
       attributeKey: operation.basis.attributeKey,
       mode: "attack",
       perception: structuredClone(operation.draft.perception ?? {}),
+      woundApplicability: structuredClone(
+        operation.draft.woundApplicability ?? {},
+      ),
       ...plan,
       retained: [...retained],
       ...result,
@@ -1108,6 +1152,7 @@ async function continueAndEvaluate(id, combat) {
 }
 
 function validateSettledReceipt(receipt, operation) {
+  const acknowledgement = receipt?.presentationAcknowledgement;
   if (
     receipt?.applied !== true ||
     receipt.kind !== "player-basic-melee" ||
@@ -1117,6 +1162,17 @@ function validateSettledReceipt(receipt, operation) {
     !["complete", "missing"].includes(receipt.presentation)
   )
     throw new Error("The settled Basic Melee receipt changed.");
+  if (
+    acknowledgement !== undefined &&
+    (receipt.presentation !== "missing" ||
+      typeof acknowledgement?.userId !== "string" ||
+      !game.users.get(acknowledgement.userId)?.isGM ||
+      typeof acknowledgement?.reason !== "string" ||
+      !acknowledgement.reason.trim())
+  )
+    throw new Error(
+      "The missing Basic Melee presentation acknowledgement changed.",
+    );
 }
 
 async function preserveMissingPresentation(combat, operation, receipt) {
@@ -1188,7 +1244,7 @@ async function apply(id) {
     throw new Error("Resolve the pending encounter action first.");
   const checked = await loadFrozenRequest(message, request),
     requestSignature = JSON.stringify(request),
-    state = structuredClone(checked.state);
+    state = structuredClone(checked.action.state);
   state.budgets[request.participantId] = structuredClone(
     checked.action.declared,
   );
@@ -1320,6 +1376,72 @@ export function recoverPlayerBasicMeleeRequest(id, { retained, reason } = {}) {
       }
       await presentAttack(message, operation);
       return finishOperation(message, combat, operation, false);
+    },
+    { requestId: id },
+  );
+}
+
+export function acknowledgeMissingPlayerBasicMeleePresentation(
+  id,
+  { reason } = {},
+) {
+  return enqueueCharacterOperation(
+    async () => {
+      if (!game.user.isGM)
+        throw new Error(
+          "Only the actual DA can acknowledge a missing attack presentation.",
+        );
+      if (typeof reason !== "string" || !reason.trim())
+        throw new Error(
+          "A missing Basic Melee presentation acknowledgement needs a DA reason.",
+        );
+      if (game.messages.has(id))
+        throw new Error("The Basic Melee presentation is available.");
+      const found = findPlayerAttackOperation(id),
+        combat = found?.combat,
+        operation = found?.operation,
+        receipt = found?.receipt;
+      if (!combat || !operation)
+        throw new Error("The original Basic Melee operation is unavailable.");
+      validateStoredOperation(operation);
+      if (
+        operation.status !== "complete" ||
+        !operation.result ||
+        receipt?.applied !== true
+      )
+        throw new Error(
+          "Only a durably settled Basic Melee can acknowledge a missing presentation.",
+        );
+      validateSettledReceipt(receipt, operation);
+      validateOperationResult(operation);
+      if (receipt.presentation !== "missing")
+        throw new Error("The Basic Melee presentation is not recorded as missing.");
+      const existing = receipt.presentationAcknowledgement,
+        pendingClear = pendingAbilitySettlement(combat, id);
+      if (existing) {
+        if (combat.getFlag(ID, "pendingAbility") === id)
+          await writeAuthorityDocument(combat, pendingClear);
+        return { status: "acknowledged", replay: true };
+      }
+      const acknowledgement = {
+        userId: game.user.id,
+        reason: reason.trim(),
+      };
+      await writeAuthorityDocument(combat, {
+        ...pendingClear,
+        [`flags.${ID}.operationReceipts.${id}`]: {
+          ...receipt,
+          presentationAcknowledgement: acknowledgement,
+        },
+      });
+      return {
+        status: "acknowledged",
+        replay: false,
+        pendingCleared: Object.hasOwn(
+          pendingClear,
+          `flags.${ID}.pendingAbility`,
+        ),
+      };
     },
     { requestId: id },
   );

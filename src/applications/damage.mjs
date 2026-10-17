@@ -129,10 +129,15 @@ export async function openDefenseDamage(message) {
   return new DamagePanel(actor, message.id).render({ force: true });
 }
 
-export async function openPlayerAttackDamage(message) {
-  const data = playerBasicMeleeDamage(message),
+export async function openPlayerAttackDamage(messageOrId) {
+  const data = playerBasicMeleeDamage(messageOrId),
+    attackMessageId =
+      typeof messageOrId === "string" ? messageOrId : messageOrId?.id,
     actor = await fromUuid(data.actorUuid);
-  if (actor?.documentName !== "Actor")
+  if (
+    actor?.documentName !== "Actor" ||
+    actor.uuid !== data.actorUuid
+  )
     throw new Error("The Basic Melee target is unavailable.");
-  return new DamagePanel(actor, null, message.id).render({ force: true });
+  return new DamagePanel(actor, null, attackMessageId).render({ force: true });
 }

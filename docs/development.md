@@ -417,6 +417,6 @@ or granting a free use. Player/GM UI, native Item action wiring, multi-Actor
 transaction settlement and Foundry runtime tests are not implemented in this
 issue.
 
-Node 24 `npm run check` passes 112 tests, including 17 focused inventory and
+Node 24 `npm run check` passes 127 tests, including 17 focused inventory and
 potion cases. This is bounded rules-layer evidence; native UI, multi-Actor
 settlement and Foundry runtime validation remain subsequent integration work.

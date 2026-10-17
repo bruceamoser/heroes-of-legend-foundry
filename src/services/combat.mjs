@@ -1,4 +1,9 @@
 import {
+  initialBudgets,
+  prepareParticipantBudget,
+  convertParticipantBudget,
+} from "./turn-budget.mjs";
+import {
   enqueueCharacterOperation,
   isCreationAuthority,
   writeAuthorityDocument,
@@ -53,7 +58,7 @@ async function apply(id) {
   if (
     combat?.documentName !== "Combat" ||
     !message.author ||
-    !["start", "choose", "finish", "roster"].includes(request.kind)
+    !["start", "choose", "finish", "roster", "convert"].includes(request.kind)
   )
     throw new Error("Invalid encounter request.");
   const receipt = combat.getFlag(ID, "operationReceipts")?.[id];
@@ -70,9 +75,11 @@ async function apply(id) {
   }
   const state = combat.getFlag(ID, "encounter"),
     actor = combat.combatants.get(
-      request.kind === "choose" ? request.id : state?.current,
+      ["choose", "convert"].includes(request.kind)
+        ? (request.id ?? state?.current)
+        : state?.current,
     )?.actor;
-  if (request.kind === "choose" || request.kind === "finish") {
+  if (["choose", "finish", "convert"].includes(request.kind)) {
     if (
       !message.author.isGM &&
       !actor?.testUserPermission(message.author, "OWNER")
@@ -101,6 +108,7 @@ async function apply(id) {
       openingRoll.dice[0].results.map((r) => r.result),
     );
     next.opening.roll = openingRoll.toJSON();
+    next.budgets = initialBudgets(combat, next.roster);
   } else {
     if (!state) throw new Error("Start the encounter first.");
     if (request.kind === "choose") {
@@ -109,13 +117,44 @@ async function apply(id) {
           "That participant was removed; the DA can withdraw it from the roster.",
         );
       next = chooseParticipant(state, request.id);
+      const { budget, profile, ruling } = prepareParticipantBudget(
+        combat,
+        next,
+        request.id,
+        request,
+        message.author,
+      );
+      next.budgets = { ...(next.budgets ?? {}), [request.id]: budget };
+      if (profile)
+        next.movementProfiles = {
+          ...(next.movementProfiles ?? {}),
+          [request.id]: profile,
+        };
+      if (ruling)
+        next.speedRulings = {
+          ...(next.speedRulings ?? {}),
+          [request.id]: ruling,
+        };
     } else if (request.kind === "finish") next = finishTurn(state);
+    else if (request.kind === "convert")
+      next = convertParticipantBudget(
+        combat,
+        state,
+        request,
+        message.author,
+        id,
+      );
     else {
       if (request.mode !== "withdraw" && !combat.combatants.has(request.id))
         throw new Error(
           "Add the native combatant before admitting it to the roster.",
         );
       next = changeRoster(state, request);
+      if (request.mode !== "withdraw" && !next.budgets?.[request.id])
+        next.budgets = {
+          ...(next.budgets ?? {}),
+          ...initialBudgets(combat, [{ id: request.id }]),
+        };
     }
   }
   if (!isCreationAuthority()) return { status: "authority-lost" };

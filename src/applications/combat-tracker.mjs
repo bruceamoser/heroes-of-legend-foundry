@@ -1,3 +1,5 @@
+import { chooseCombatParticipant } from "../dialogs/turn-choice.mjs";
+import { displayedBudget } from "../services/turn-budget.mjs";
 import { availableParticipants } from "../rules/encounter.mjs";
 import { requestCombat, combatSide } from "../services/combat.mjs";
 const ID = "heroes-of-legend";
@@ -73,15 +75,42 @@ export function renderHOLCombatTracker(app, element) {
           ? "Hidden participant's turn"
           : `${current?.name ?? "Removed participant"}'s turn`,
       );
-      if (game.user.isGM || current?.actor?.isOwner)
+      if (game.user.isGM || current?.actor?.isOwner) {
+        const budget = displayedBudget(combat, state.current);
+        if (budget) {
+          line(
+            `Main ${budget.remaining.main} · Maneuver ${budget.remaining.maneuver} · Reaction ${budget.remaining.reaction} · Movement ${budget.movementRemaining}`,
+          );
+          button(
+            "Main → Maneuver",
+            () =>
+              requestCombat(combat, "convert", {
+                id: state.current,
+                from: "main",
+                to: "maneuver",
+              }),
+            budget.remaining.main < 1,
+          );
+          button(
+            "Maneuver → movement",
+            () =>
+              requestCombat(combat, "convert", {
+                id: state.current,
+                from: "maneuver",
+                to: "movement",
+              }),
+            budget.remaining.maneuver < 1,
+          );
+        }
         button("Finish turn", () => requestCombat(combat, "finish"));
+      }
     } else {
       for (const p of availableParticipants(state)) {
         const c = combat.combatants.get(p.id);
         if (c?.hidden && !game.user.isGM) continue;
         button(
           `Choose ${c?.name ?? "removed participant"}`,
-          () => requestCombat(combat, "choose", { id: p.id }),
+          () => chooseCombatParticipant(combat, p.id),
           !c || !(game.user.isGM || c.actor?.isOwner),
         );
       }

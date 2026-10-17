@@ -1,0 +1,6 @@
+<section class="hol-body"><header class="hol-banner"><h1>{{name}}</h1><p>Review damage</p></header>
+<p>HP {{basis.hp}} / {{basis.maxHp}} · Printed creature Physical DR {{basis.printedArmor}}</p>
+<p class="hol-note">Enter other applicable resistance and weakness for this event. Highest matching values apply, capped at 3; printed creature DR is included once. Armor training and other passive sources are not yet collected automatically.</p>
+<table><thead><tr><th>Type</th><th>Damage</th><th>Other resistance</th><th>Weakness</th></tr></thead><tbody>{{#each rows}}<tr data-damage-type="{{type}}"><th>{{type}}</th><td><input name="amount" aria-label="{{type}} damage" type="number" min="0" step="1" value="{{amount}}" {{#if ../fromRoll}}readonly{{/if}}></td><td><input name="resistance" aria-label="{{type}} resistance" type="number" min="0" step="1" value="0"></td><td><input name="weakness" aria-label="{{type}} weakness" type="number" min="0" step="1" value="0"></td></tr>{{/each}}</tbody></table>
+<label>Damage source or DA ruling<input name="reason" type="text" {{#if fromRoll}}value="Settled defense"{{/if}}></label>
+<p data-preview aria-live="polite"></p><button type="button" data-action="apply" class="hol-primary">Apply damage once</button></section>

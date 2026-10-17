@@ -40,7 +40,8 @@
     "test:equipment": "node scripts/check-equipment.mjs",
     "package:release": "node scripts/package-release.mjs",
     "import:wounds": "node scripts/import-wounds.mjs",
-    "validate:wounds": "node scripts/import-wounds.mjs --check"
+    "validate:wounds": "node scripts/import-wounds.mjs --check",
+    "test:damage": "node scripts/check-damage.mjs"
   },
   "devDependencies": {
     "@foundryvtt/foundryvtt-cli": "3.0.5",

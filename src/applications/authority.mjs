@@ -1,3 +1,4 @@
+import { resolveDamageRequest } from "../services/damage.mjs";
 import { resolveEquipmentRequest } from "../services/equipment.mjs";
 import {
   resolveDefenseRequest,
@@ -18,6 +19,7 @@ import { resolveDevelopmentRequest } from "../services/advancement.mjs";
 const ID = "heroes-of-legend";
 export async function retryCharacterRequest(id) {
   const message = game.messages.get(id);
+  if (message?.getFlag(ID, "damageRequest")) return resolveDamageRequest(id);
   if (message?.getFlag(ID, "equipmentRequest"))
     return resolveEquipmentRequest(id);
   if (message?.getFlag(ID, "creationRequest"))
@@ -88,6 +90,7 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
             m.getFlag(ID, "combatRequest") ||
             m.getFlag(ID, "conditionRequest") ||
             m.getFlag(ID, "equipmentRequest") ||
+            m.getFlag(ID, "damageRequest") ||
             m.getFlag(ID, "abilityRequest") ||
             m.getFlag(ID, "npcAttackRequest") ||
             m.getFlag(ID, "defenseRequest"),
@@ -103,13 +106,15 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
             : (m.getFlag(ID, "developmentRequest")?.kind ??
               m.getFlag(ID, "combatRequest")?.kind ??
               m.getFlag(ID, "conditionRequest")?.kind ??
-              (m.getFlag(ID, "equipmentRequest")
-                ? "Equipment"
-                : m.getFlag(ID, "npcAttackRequest")
-                  ? "NPC attack"
-                  : m.getFlag(ID, "defenseRequest")
-                    ? "Defense"
-                    : "Ability")),
+              (m.getFlag(ID, "damageRequest")
+                ? "Damage"
+                : m.getFlag(ID, "equipmentRequest")
+                  ? "Equipment"
+                  : m.getFlag(ID, "npcAttackRequest")
+                    ? "NPC attack"
+                    : m.getFlag(ID, "defenseRequest")
+                      ? "Defense"
+                      : "Ability")),
         })),
     };
   }

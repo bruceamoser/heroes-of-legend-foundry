@@ -1,3 +1,4 @@
+import { registerDamageRequests } from "./services/damage.mjs";
 import { registerEquipmentRequests } from "./services/equipment.mjs";
 import { registerDefenseResponses } from "./services/defense-responses.mjs";
 import { registerNpcAttacks } from "./services/npc-attacks.mjs";
@@ -33,6 +34,7 @@ Hooks.once("init", () => {
   registerHOLStatuses();
   registerConditionRequests();
   registerEquipmentRequests();
+  registerDamageRequests();
   registerAbilityRequests();
   registerNpcAttacks();
   registerDefenseResponses();

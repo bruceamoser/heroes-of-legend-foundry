@@ -98,8 +98,24 @@ export function renderRollSummary(message, element) {
   summary.append(detail);
   if (result.attackOutcome) {
     const outcome = document.createElement("p");
-    outcome.textContent = `${result.attackOutcome.damage} physical damage before resistance. Apply consequences manually in this preview.`;
+    outcome.textContent = `${result.attackOutcome.damage} physical damage before resistance. The DA can review and apply damage; reactions and wound resolution are still being integrated.`;
     summary.append(outcome);
+    if (game.user.isGM && result.attackMessageId) {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.textContent = "Review and apply damage";
+      button.addEventListener("click", async () => {
+        try {
+          const { openDefenseDamage } = await import(
+            "../applications/damage.mjs"
+          );
+          await openDefenseDamage(message);
+        } catch (e) {
+          ui.notifications.error(e.message);
+        }
+      });
+      summary.append(button);
+    }
   }
   if (result.sources?.length) {
     const list = document.createElement("ul");

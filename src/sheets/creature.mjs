@@ -11,7 +11,11 @@ export class CreatureSheet extends CharacterSheet {
   }
   static async npcMelee() {
     try {
-      await declareNpcMelee(this.actor);
+      const blockable = this.element.querySelector("[data-npc-blockable]")
+        ?.value;
+      await declareNpcMelee(this.actor, {
+        blockable: blockable === "" ? undefined : blockable === "true",
+      });
     } catch (e) {
       ui.notifications.error(e.message);
     }

@@ -199,7 +199,10 @@ try {
   assert.equal(s.state.budgets[fixture.hero].remaining.maneuver, 0);
   const third = await abilityRequest();
   await gm.page.waitForFunction(
-    (id) => game.messages.get(id)?.content.includes("No maneuver"),
+    (id) =>
+      game.messages
+        .get(id)
+        ?.content.includes("No Maneuver remains for Defend."),
     third,
   );
   assert.equal((await snapshot()).effects.length, 1);

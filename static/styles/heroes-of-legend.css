@@ -100,6 +100,12 @@
 .heroes-of-legend.hol-roll-dialog button[data-action=changeDefender] { background:var(--hol-forest); color:var(--hol-ivory); border:1px solid var(--hol-gold); }
 .heroes-of-legend.hol-roll-dialog .hol-attempt-choice { display:flex; flex-direction:row; align-items:center; gap:8px; }
 .heroes-of-legend.hol-roll-dialog .hol-attempt-choice input { width:auto; height:auto; }
+.heroes-of-legend.hol-roll-dialog .hol-defense-abilities { list-style:none; padding:0; }
+.heroes-of-legend.hol-roll-dialog .hol-defense-abilities li { display:grid; grid-template-columns:minmax(10rem,auto) 1fr; align-items:center; gap:10px; border:1px solid var(--hol-gold); padding:8px; margin:6px 0; background:var(--hol-ivory); }
+.heroes-of-legend.hol-roll-dialog .hol-defense-abilities button { background:var(--hol-forest); color:var(--hol-ivory); border:1px solid var(--hol-gold); }
+.heroes-of-legend.hol-roll-dialog .hol-defense-abilities span { font-size:15px; }
+.heroes-of-legend.hol-roll-dialog .hol-defense-abilities .hol-unavailable { background:#e6e2d8; }
+.heroes-of-legend.hol-roll-dialog .hol-defense-abilities .hol-unavailable button { background:#d6d1c5; color:#555044; }
 
 .heroes-of-legend.hol-hands .window-title { font-size: 14px; }
 .heroes-of-legend.hol-hands input[type="checkbox"] { width: 20px; height: 20px; padding: 0; }

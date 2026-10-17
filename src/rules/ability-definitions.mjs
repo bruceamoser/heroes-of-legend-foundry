@@ -16,6 +16,19 @@ export const ABILITY_DEFINITIONS = Object.freeze({
     summary:
       "Spend one Maneuver to gain one Boon to defense rolls until the start of your next turn. Repeating this benefit does not increase it.",
   }),
+  "ability-shield-block": Object.freeze({
+    id: "ability-shield-block",
+    name: "Shield Block",
+    category: "reaction",
+    handler: "shield-block-v1",
+    source: {
+      path: "design/cards/shield-block.md",
+      sha256:
+        "bd890d5b177b2c0eded18b75901adba56c0162c25f7f6a4710298cd662421e94",
+    },
+    summary:
+      "Before an eligible blockable defense while holding a shield, spend one Reaction to gain one defense Boon until the start of your next turn. This does not grant a shield and does not stack with itself.",
+  }),
 });
 export function abilityDefinition(id, source) {
   const definition = ABILITY_DEFINITIONS[id];

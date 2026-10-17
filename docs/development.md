@@ -106,3 +106,7 @@ The 14.369 join form uses `select[name=userId]`; test login now supports that an
 ## Fixed damage and healing arithmetic — issue #31
 
 `src/rules/damage.mjs` calculates reviewable per-type breakdowns, highest capped weakness before resistance, one minimum point per damaging event, post-resistance wound ties, capped healing and upfront HP affordability. Zero-damage effects stay non-damaging; summons reject healing and healing-harmed recipients require their printed Life attack outcome. Tests include the full single-type damage/weakness/resistance boundary grid and malformed/overflow inputs. This pure layer does not yet apply HP, pay costs, trigger wounds or coordinate document receipts; those remain A03 integration work.
+
+## Character learning catalog — issue #33
+
+The pinned-source importer produces 452 records with stable IDs, source hashes, complete origin pairs, class signatures and rank prices, ancestry traits/contributions and ability learning prerequisites. All references resolve and origin grants satisfy their paired cards' rank requirements. Tests distinguish universal actions from purchases and reject unknown metadata rather than silently infer it. See [content metadata](../content/README.md) for reproduction and the remaining automation boundaries.

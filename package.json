@@ -19,7 +19,9 @@
     "stage:pack-probe": "node scripts/stage-pack-probe.mjs",
     "test:pack-runtime": "node scripts/check-packs.mjs",
     "test:timing": "node scripts/check-timing.mjs",
-    "test:canvas": "node scripts/check-canvas.mjs"
+    "test:canvas": "node scripts/check-canvas.mjs",
+    "import:choices": "node scripts/import-choices.mjs",
+    "validate:choices": "node scripts/import-choices.mjs --check"
   },
   "devDependencies": {
     "@foundryvtt/foundryvtt-cli": "3.0.5",

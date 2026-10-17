@@ -28,4 +28,4 @@ Code and content licensing will be selected separately before the first distribu
 
 ## Development preview
 
-The first native V14 package foundation is implemented. It currently boots and loads localization; gameplay features remain under development. See [development setup and test evidence](docs/development.md). Build with Node 24 using `npm ci` and `npm run check`; output is `dist/heroes-of-legend/`.
+The first native V14 package foundation is implemented. It includes typed character/ability editors with HOL styling; gameplay automation and the guided charactermancer remain under development. See [development setup and test evidence](docs/development.md). Build with Node 24 using `npm ci` and `npm run check`; output is `dist/heroes-of-legend/`.

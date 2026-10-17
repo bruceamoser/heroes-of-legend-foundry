@@ -1,6 +1,6 @@
 # Development
 
-Issue #4 establishes the package and test harness. This preview has no character/ability types, sheets, compendiums or gameplay automation yet. Those remain separately tracked work; the manifest intentionally does not advertise them.
+Issue #4 establishes the package and test harness. Issue #5 adds typed character and ability models and V2 editor sheets. Compendiums, the guided charactermancer and gameplay automation remain separately tracked work; the manifest only advertises implemented types.
 
 ## Build and checks
 
@@ -46,3 +46,18 @@ Optional `HOL_TEST_USER` and `HOL_TEST_PASSWORD` select the test account. Do not
 - During CLI discovery, `--help` unexpectedly started Foundry against its default data directory; that process was immediately stopped without entering a world. Subsequent tests used only the separate directory. Use documented startup options, not `--help`, for this application.
 
 Bruce subsequently authorized author review and merge on October 17, 2026. Author review found and fixed asset validation gaps: encoded/URL paths and directories declared as file assets now fail validation. Seven package tests pass after these fixes. This is not independent review.
+
+## Character/ability editor evidence — issue #5
+
+Added real-client integration tests: `HOL_TEST_URL=http://127.0.0.1:30014 HOL_TEST_ALLOW_WRITES=1 npm run test:sheets`. These create temporary users/documents in a disposable world and clean them up. Never enable writes against a campaign. The same Foundry 14.367 / Node 24 environment passed:
+
+- Native V2 character form edits, save and reload; ability description/outcomes save and reload.
+- Invalid out-of-range/fractional attributes, overspent Grit and HP above maximum rejected. Custom NumberField cleaning preserves invalid input for validation instead of Foundry's default silent rounding/clamping.
+- A real player owner can save; an observer sees disabled fields and is denied by the mutation service.
+- An unlinked token's HP edits survive reload without changing the base Actor.
+- Zero uncaught browser errors. Headless Chromium warns about hardware acceleration; this is not a system deprecation.
+- Character screenshot inspected for palette, readable form fields and typography. Full accessibility, detached-window and usability acceptance remain under U04/E06.
+
+This is a draft editor, not a completed character builder. Base HP is manually recorded until the creation ledger exists; current Fortitude never recalculates HP. Attribute sum is displayed, not enforced on intermediate drafts. Ability outcomes remain plain text until structured handlers arrive. Drop acquisition is explicitly blocked so native Item copying cannot bypass future purchase rules.
+
+Fonts are copied unchanged from `design/player-book/fonts` at the pinned rules commit (see source-baseline). Cinzel and EB Garamond are bundled with their SIL OFL notices in `static/fonts`; no book artwork is imported here.

@@ -1,5 +1,57 @@
 {
   "HOL": {
-    "Preview": "Heroes of Legend development preview: character sheets and rules automation are not available yet."
+    "Preview": "Heroes of Legend development preview: character and ability editors are available; encounter automation is in development.",
+    "NoPermission": "You do not own this document.",
+    "AcquisitionPending": "Ability acquisition is not implemented yet. A DA can prepare abilities in this development preview.",
+    "Character": "Heroes of Legend \u00b7 Hero",
+    "Ability": "Heroes of Legend \u00b7 Ability",
+    "Name": "Name",
+    "AttributesTitle": "Attributes",
+    "Attributes": {
+      "brawn": "Brawn",
+      "fortitude": "Fortitude",
+      "agility": "Agility",
+      "guile": "Guile",
+      "knowledge": "Knowledge",
+      "reason": "Reason"
+    },
+    "Effective": "Effective",
+    "AttributeDraft": "Draft attributes \u2014 creation requires a total of",
+    "HP": "Hit Points",
+    "Grit": "Grit",
+    "Current": "Current",
+    "BaseMax": "Base maximum",
+    "Granted": "Granted",
+    "Spent": "Spent",
+    "Biography": "Biography",
+    "Save": "Save changes",
+    "Abilities": "Abilities",
+    "NoAbilities": "No abilities have been granted.",
+    "ManualAbility": "Reference ability: outcomes are recorded here; automated effects will follow.",
+    "Description": "Description and rules",
+    "Action": "Action",
+    "RollMode": "Roll mode",
+    "Attribute": "Roll attribute",
+    "DefenseAttribute": "Defense attribute",
+    "Weak": "Weak",
+    "Standard": "Standard",
+    "Strong": "Strong",
+    "Choices": {
+      "main": "Main",
+      "maneuver": "Maneuver",
+      "reaction": "Reaction",
+      "passive": "Passive",
+      "attribute": "Attribute roll",
+      "none": "No roll",
+      "delegated": "Defender rolls"
+    }
+  },
+  "TYPES": {
+    "Actor": {
+      "character": "Hero"
+    },
+    "Item": {
+      "ability": "Ability"
+    }
   }
 }

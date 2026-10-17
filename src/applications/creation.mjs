@@ -6,7 +6,8 @@ import { loadCatalogs } from "../services/catalog.mjs";
 import { updateOwnedDocument } from "../services/documents.mjs";
 import { newCreationDraft, creationPreview } from "../rules/creation.mjs";
 import { ATTRIBUTES } from "../rules/character.mjs";
-import { DEFAULT_LANGUAGES } from "../rules/identity.mjs";
+import { campaignLanguageOptions } from "../rules/languages.mjs";
+import { getCampaignLanguageConfiguration } from "../services/languages.mjs";
 import {
   eligibleFirst,
   purchaseEligibility,
@@ -57,12 +58,17 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
     if (!saved) this.draft.name = actor.name;
     this.step = saved?.step ?? 0;
     this.revision = saved?.revision ?? 0;
+    this.savedLanguageBasis = saved?.languageBasis;
+    this.languageConfiguration = null;
+    this.renderedLanguageBasis = null;
   }
   async _prepareContext() {
     if (!this.actor.isOwner)
       throw new Error("Only a character owner can edit its creation draft.");
     this.catalogs = await loadCatalogs();
     const { choices, inventory, commit } = this.catalogs;
+    this.languageConfiguration = getCampaignLanguageConfiguration();
+    this.renderedLanguageBasis = this.languageConfiguration.basis;
     const d = this.draft,
       get = (id) => choices.find((r) => r.id === id),
       name = (id) =>
@@ -70,8 +76,32 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
         inventory.equipment.find((r) => r.id === id)?.name ??
         inventory.recipes.find((r) => r.id === id)?.name ??
         id;
-    const preview = creationPreview(d, choices, inventory);
+    const preview = creationPreview(
+        d,
+        choices,
+        inventory,
+        this.languageConfiguration.definitions,
+      ),
+      languageOptions = campaignLanguageOptions(
+        this.languageConfiguration.definitions,
+        d.languages,
+      );
     this.preview = preview;
+    const languageBasisError =
+      this.savedLanguageBasis &&
+      this.savedLanguageBasis !== this.languageConfiguration.basis
+        ? "Campaign languages changed after this draft was saved. Review the current language choices and save the draft again."
+        : this.revision > 0 && !this.savedLanguageBasis
+          ? "This draft does not record its campaign language configuration. Save the draft again before creation."
+          : "";
+    const errors = [
+      ...preview.errors.map(
+        (e) =>
+          e.text ??
+          `${name(e.id ?? e.code)}: ${(e.reasons ?? []).map((r) => r.text).join(" ")}`,
+      ),
+      ...(languageBasisError ? [languageBasisError] : []),
+    ];
     const options = (records, selected) =>
       records.map((r) => ({
         ...r,
@@ -190,14 +220,10 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
         ),
         d.traitIds,
       ),
-      languages: options(
-        DEFAULT_LANGUAGES.filter((r) => r.ordinary),
-        d.languages.home,
-      ),
-      extraLanguages: options(
-        DEFAULT_LANGUAGES.filter((r) => r.ordinary && r.form === "spoken"),
-        d.languages.extraSpoken,
-      ),
+      languages: languageOptions.home,
+      extraLanguages: languageOptions.extraSpoken,
+      languageBasis: this.languageConfiguration.basis,
+      languageBasisError,
       manyHomes: d.traitIds.includes("trait-human-many-homes"),
       culturePairs: choices
         .filter((r) => r.originType === "culture")
@@ -265,12 +291,19 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
         name: name(i.catalogId),
       })),
       summary: preview.summary,
-      valid: preview.valid,
-      errors: preview.errors.map(
-        (e) =>
-          e.text ??
-          `${name(e.id ?? e.code)}: ${(e.reasons ?? []).map((r) => r.text).join(" ")}`,
-      ),
+      languageSummary: (preview.summary?.languages ?? []).map((language) => ({
+        ...language,
+        permissions: [
+          language.permissions.speak ? "speak" : "",
+          language.permissions.sign ? "sign" : "",
+          language.permissions.read ? "read" : "",
+          language.permissions.write ? "write" : "",
+        ]
+          .filter(Boolean)
+          .join(", "),
+      })),
+      valid: preview.valid && !languageBasisError,
+      errors,
       ledger: preview.ledger.map((e) => ({
         ...e,
         source: e.sourceId ? name(e.sourceId) : "Pool",
@@ -296,7 +329,10 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
       d.traitIds = checked("trait");
       d.rememberedCommunity = String(f.get("rememberedCommunity") ?? "");
       d.languages = {
-        home: String(f.get("homeLanguage") ?? ""),
+        home: String(
+          this.element.querySelector('[name="homeLanguage"]:checked')?.value ??
+            "",
+        ),
         extraSpoken: checked("extraLanguage"),
       };
     }
@@ -328,17 +364,28 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
       throw new Error(
         "Another window changed this draft. Close and reopen to load that revision. Your current choices remain in this window.",
       );
+    this.requireRenderedLanguageBasis();
     const revision = this.revision + 1;
     await updateOwnedDocument(this.actor, {
       [`flags.heroes-of-legend.${FLAG}`]: {
         schemaVersion: 1,
         sourceCommit: this.catalogs.commit,
+        languageBasis: this.renderedLanguageBasis,
         revision,
         step: this.step,
         data: this.draft,
       },
     });
     this.revision = revision;
+    this.savedLanguageBasis = this.renderedLanguageBasis;
+  }
+  requireRenderedLanguageBasis() {
+    const current = getCampaignLanguageConfiguration();
+    if (current.basis !== this.renderedLanguageBasis)
+      throw new Error(
+        "Campaign languages changed after this screen was displayed. Review the current language choices before saving or committing.",
+      );
+    return current;
   }
   async act(fn) {
     if (this.busy) return;
@@ -350,6 +397,7 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
       await this.render();
     } catch (e) {
       ui.notifications.error(e.message);
+      await this.render({ force: true }).catch(() => {});
     } finally {
       this.busy = false;
     }
@@ -366,6 +414,7 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
     if (this.busy) return;
     this.busy = true;
     try {
+      this.requireRenderedLanguageBasis();
       await requestCreation(this.actor, this.revision);
       ui.notifications.info(
         "Creation submitted to the assigned GM window. The character sheet will update when it completes.",
@@ -374,6 +423,7 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
       await this.actor.sheet.render({ force: true });
     } catch (error) {
       ui.notifications.error(error.message);
+      await this.render({ force: true }).catch(() => {});
     } finally {
       this.busy = false;
     }
@@ -408,6 +458,7 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
         this.draft,
         this.catalogs.choices,
         this.catalogs.inventory,
+        this.languageConfiguration.definitions,
       );
       const result = purchaseEligibility(
         choice,
@@ -480,6 +531,14 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
           row.hidden = !row.dataset.searchName
             .toLocaleLowerCase()
             .includes(query);
+      });
+    for (const input of this.element.querySelectorAll(
+      'label.hol-repair input[name="extraLanguage"]',
+    ))
+      input.addEventListener("change", () => {
+        if (input.checked) return;
+        input.disabled = true;
+        input.closest("label")?.classList.add("hol-ineligible");
       });
   }
 }

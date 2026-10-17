@@ -1,26 +1,10 @@
 import { creationLedger } from "./development.mjs";
-/** Campaigns may rename Common, add named regional/ancient languages, and change availability. */
-export const DEFAULT_LANGUAGES = Object.freeze(
-  [
-    ["common", "Common", true, "spoken", true],
-    ["dwarven", "Dwarven", true, "spoken", true],
-    ["elven", "Elven", true, "spoken", true],
-    ["halfling", "Halfling", true, "spoken", true],
-    ["goblin", "Goblin", true, "spoken", true],
-    ["orc", "Orc", true, "spoken", true],
-    ["giant", "Giant", true, "spoken", true],
-    ["kobold", "Kobold", true, "spoken", true],
-    ["harbor-cant", "Harbor Cant", true, "spoken", true],
-    ["way-sign", "Way Sign", true, "signed", false],
-    ["draconic", "Draconic", false, "spoken", true],
-    ["fey", "Fey", false, "spoken", true],
-    ["infernal", "Infernal", false, "spoken", true],
-    ["celestial", "Celestial", false, "spoken", true],
-    ["elemental", "Elemental", false, "spoken", true],
-  ].map(([id, name, ordinary, form, writing]) =>
-    Object.freeze({ id, name, ordinary, form, writing }),
-  ),
-);
+import {
+  DEFAULT_LANGUAGES,
+  LANGUAGE_CONFIGURATION_SCHEMA,
+  requireLanguageConfiguration,
+} from "./languages.mjs";
+export { DEFAULT_LANGUAGES } from "./languages.mjs";
 const HP_TRAITS = new Set([
   "trait-dwarf-deep-constitution",
   "trait-human-weathered",
@@ -37,18 +21,11 @@ export function languageGrants(
   const errors = [],
     languages = [];
   const byId = new Map();
-  for (const d of definitions) {
-    if (
-      !d.id ||
-      !d.name?.trim() ||
-      !["spoken", "signed"].includes(d.form) ||
-      typeof d.ordinary !== "boolean" ||
-      typeof d.writing !== "boolean" ||
-      byId.has(d.id)
-    )
-      throw new Error("Invalid campaign language definition");
+  for (const d of requireLanguageConfiguration({
+    schemaVersion: LANGUAGE_CONFIGURATION_SCHEMA,
+    definitions,
+  }).definitions)
     byId.set(d.id, d);
-  }
   const add = (id, source, spokenOnly = false) => {
     const d = byId.get(id);
     if (!d || !d.ordinary) {

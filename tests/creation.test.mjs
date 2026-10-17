@@ -2,6 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { creationPreview, newCreationDraft } from "../src/rules/creation.mjs";
+import { createDefaultLanguageConfiguration } from "../src/rules/languages.mjs";
 const read = async (name) =>
   JSON.parse(
     await readFile(
@@ -141,4 +142,19 @@ test("incomplete grants stay repairable and cannot masquerade as valid creation"
   assert(r.errors.some((e) => e.code === "acquisition"));
   assert.deepEqual(d.acquisitions, {});
   assert(!creationPreview(newCreationDraft(), choices, inventory).valid);
+});
+test("campaign language configuration changes identity labels without grants or DP", () => {
+  const d = draft(),
+    configured = createDefaultLanguageConfiguration();
+  configured.definitions.find((language) => language.id === "common").name =
+    "Marsh Common";
+  const baseline = creationPreview(d, choices, inventory),
+    custom = creationPreview(d, choices, inventory, configured.definitions);
+  assert(custom.valid);
+  assert.equal(custom.summary.languages.length, 2);
+  assert.equal(custom.summary.languages[0].name, "Marsh Common");
+  assert.deepEqual(custom.summary.languages[1], baseline.summary.languages[1]);
+  assert.equal(custom.summary.gritGranted, baseline.summary.gritGranted);
+  assert.deepEqual(custom.state.purchases, baseline.state.purchases);
+  assert.deepEqual(custom.ledger, baseline.ledger);
 });

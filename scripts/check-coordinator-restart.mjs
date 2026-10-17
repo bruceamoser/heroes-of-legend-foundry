@@ -39,7 +39,11 @@ try {
       const { loadCatalogs } = await import(
         "/systems/heroes-of-legend/services/catalog.mjs"
       );
+      const { getCampaignLanguageConfiguration } = await import(
+        "/systems/heroes-of-legend/services/languages.mjs"
+      );
       const { commit } = await loadCatalogs();
+      const languageBasis = getCampaignLanguageConfiguration().basis;
       const draft = {
         name: "Restart Reed",
         attributes: {
@@ -74,6 +78,7 @@ try {
             creationDraft: {
               schemaVersion: 1,
               sourceCommit: commit,
+              languageBasis,
               revision: 1,
               data: draft,
             },

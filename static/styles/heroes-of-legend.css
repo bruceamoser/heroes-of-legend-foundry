@@ -48,6 +48,12 @@
 .heroes-of-legend .hol-choice h3 { margin:0 0 8px; }
 .heroes-of-legend .hol-choice small { display:block; }
 .heroes-of-legend .hol-ineligible { background:#e6e2d8; }
+.heroes-of-legend .hol-repair { border-color:#8b2525; box-shadow:inset 4px 0 #8b2525; }
+.heroes-of-legend .hol-language-choices { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px 12px; margin:12px 0; }
+.heroes-of-legend .hol-language-choices > legend, .heroes-of-legend .hol-language-choices > p { grid-column:1 / -1; }
+.heroes-of-legend .hol-language-choice { margin:0; }
+.heroes-of-legend .hol-language-summary { padding-left:22px; }
+.heroes-of-legend .hol-language-summary small { color:#685f4f; }
 .heroes-of-legend .hol-error { color:#8b2525; }
 .heroes-of-legend .hol-summary { display:grid; grid-template-columns:1fr 1fr; }
 .heroes-of-legend .hol-wizard button:focus-visible, .heroes-of-legend .hol-wizard input:focus-visible, .heroes-of-legend .hol-wizard select:focus-visible { outline:3px solid #b39253; outline-offset:2px; }
@@ -65,6 +71,33 @@
 .heroes-of-legend.hol-authority .window-title { font-size:14px; }
 .heroes-of-legend.hol-authority button { background:var(--hol-forest); color:var(--hol-ivory); border:1px solid var(--hol-gold); text-shadow:none; }
 .heroes-of-legend.hol-authority button:disabled { background:#d6d1c5; color:#555044; }
+.heroes-of-legend.hol-language-settings .window-content { overflow:hidden; }
+.heroes-of-legend .hol-language-shell { display:flex; flex-direction:column; height:100%; min-height:0; }
+.heroes-of-legend .hol-language-shell .hol-banner { margin:0; padding:14px 22px; }
+.heroes-of-legend .hol-language-shell .hol-banner h1 { margin:0; font-size:26px; }
+.heroes-of-legend .hol-language-shell .hol-banner p { margin:5px 0 0; }
+.heroes-of-legend .hol-language-body { flex:1; min-height:0; overflow:auto; padding:16px 22px; }
+.heroes-of-legend .hol-language-intro { display:flex; justify-content:space-between; gap:20px; border-left:4px solid var(--hol-gold); background:var(--hol-ivory); padding:10px 14px; }
+.heroes-of-legend .hol-language-intro p { margin:0; }
+.heroes-of-legend .hol-language-source { flex:0 0 auto; font-size:14px; color:#685f4f; }
+.heroes-of-legend .hol-language-toolbar { display:flex; justify-content:flex-end; gap:10px; margin:14px 0; }
+.heroes-of-legend .hol-language-toolbar button, .heroes-of-legend .hol-language-table button, .heroes-of-legend .hol-language-footer button { width:auto; min-height:34px; background:var(--hol-forest); color:var(--hol-ivory); border:1px solid var(--hol-gold); text-shadow:none; }
+.heroes-of-legend .hol-language-table-wrap { overflow-x:auto; border:1px solid var(--hol-gold); }
+.heroes-of-legend .hol-language-table { width:100%; border-collapse:collapse; background:#fffdf7; }
+.heroes-of-legend .hol-language-table th { background:var(--hol-forest); color:var(--hol-ivory); font-family:"HOL Cinzel",Georgia,serif; font-size:14px; padding:8px; text-align:left; }
+.heroes-of-legend .hol-language-table td { border-top:1px solid #d7c9a9; padding:7px 8px; vertical-align:top; }
+.heroes-of-legend .hol-language-table input { min-width:8rem; height:32px; }
+.heroes-of-legend .hol-language-table tr.hol-invalid { background:#f4e4df; }
+.heroes-of-legend .hol-language-toggle { display:flex; flex-direction:row; align-items:center; gap:6px; margin:0; white-space:nowrap; }
+.heroes-of-legend .hol-language-toggle input { width:auto; height:auto; min-width:0; }
+.heroes-of-legend .hol-language-row-errors td { background:#f4e4df; color:#8b2525; padding:0 12px 8px; }
+.heroes-of-legend .hol-language-row-errors p { margin:2px 0; }
+.heroes-of-legend .hol-language-errors { border:1px solid #8b2525; background:#f4e4df; color:#8b2525; padding:8px 12px; margin:12px 0; }
+.heroes-of-legend .hol-language-errors p { margin:3px 0; }
+.heroes-of-legend .hol-language-notice { border-left:4px solid #5b7648; background:#e8efe1; padding:8px 12px; }
+.heroes-of-legend .hol-language-footer { display:flex; align-items:center; justify-content:space-between; gap:20px; padding:12px 22px; border-top:1px solid var(--hol-gold); background:var(--hol-ivory); }
+.heroes-of-legend .hol-language-footer p { margin:0; font-size:15px; max-width:62ch; }
+.heroes-of-legend .hol-sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
 .hol-encounter { padding:10px; margin:6px; background:#f7f3e9; color:#28251c; border:1px solid #b39253; font-family:"HOL Garamond",Georgia,serif; font-size:16px; }
 .hol-encounter p { margin:5px 0; }
 .hol-encounter button { width:100%; background:#15221c; color:#f1e6ce; border:1px solid #b39253; margin:3px 0; height:auto; min-height:30px; white-space:normal; }

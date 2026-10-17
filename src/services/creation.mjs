@@ -11,6 +11,7 @@ export {
   enqueueCharacterOperation,
 } from "./authority.mjs";
 import { loadCatalogs } from "./catalog.mjs";
+import { getCampaignLanguageConfiguration } from "./languages.mjs";
 import { creationPreview } from "../rules/creation.mjs";
 const ID = "heroes-of-legend";
 export function registerCreationAuthority() {
@@ -100,12 +101,26 @@ async function applyCreation(messageId) {
     throw new Error(
       "The draft changed. Review and submit its latest revision.",
     );
+  if (typeof saved.languageBasis !== "string" || !saved.languageBasis)
+    throw new Error(
+      "The draft does not record its campaign language configuration. Review and save the draft before committing.",
+    );
   const { choices, inventory, commit } = await loadCatalogs();
   if (saved.sourceCommit !== commit)
     throw new Error(
       "The book baseline changed or was not recorded. Review and save the draft before committing.",
     );
-  const preview = creationPreview(saved.data, choices, inventory);
+  const languages = getCampaignLanguageConfiguration();
+  if (saved.languageBasis !== languages.basis)
+    throw new Error(
+      "Campaign language settings changed after review. Review and save the draft again before committing.",
+    );
+  const preview = creationPreview(
+    saved.data,
+    choices,
+    inventory,
+    languages.definitions,
+  );
   if (!preview.valid)
     throw new Error(
       "The creation draft has unresolved choices. Return to Review.",
@@ -149,6 +164,7 @@ async function applyCreation(messageId) {
       revision: request.revision,
       requestId: message.id,
       sourceCommit: commit,
+      languageBasis: languages.basis,
       createdIds,
       reusedIds,
     },
@@ -157,6 +173,10 @@ async function applyCreation(messageId) {
     changes[`system.attributes.${key}.base`] = value;
   // One Actor update carries nested Items, statistics and the receipt. No separate item grant calls.
   if (!isCreationAuthority()) return { status: "authority-lost" };
+  if (getCampaignLanguageConfiguration().basis !== languages.basis)
+    throw new Error(
+      "Campaign language settings changed during validation. Review and submit the draft again.",
+    );
   if (actor.getFlag(ID, "creationDraft")?.revision !== request.revision)
     throw new Error("Draft changed during validation. Review and retry.");
   validateCreationChanges(actor, changes);

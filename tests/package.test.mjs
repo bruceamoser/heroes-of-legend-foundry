@@ -28,3 +28,13 @@ test("asset paths cannot escape the package", async t => {
   const root = await fixture(t, m => { m.styles = ["../outside.css"]; });
   await assert.rejects(validatePackage(root), /Unsafe package path/);
 });
+for (const path of ["%2e%2e/outside.css", "file:/tmp/outside.css", "lang/en.json#ignored"]) {
+  test(`reject URL interpretation of asset path ${path}`, async t => {
+    const root = await fixture(t, m => { m.styles = [path]; });
+    await assert.rejects(validatePackage(root), /Unsafe package path/);
+  });
+}
+test("a directory cannot serve as a module", async t => {
+  const root = await fixture(t, m => { m.esmodules = ["lang"]; });
+  await assert.rejects(validatePackage(root), /Invalid asset type/);
+});

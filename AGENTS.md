@@ -14,7 +14,7 @@ This is the software companion to the Heroes of Legend rulebook. Bruce is the fi
 2. Branch `issue/<number>-<description>` from `main`. All content/code changes go through PRs.
 3. Scope changes to the issue. Do not edit the sibling rulebook or Neon Relic repositories as part of system work.
 4. Add relevant validation. Use `Closes #N` in the PR and report actual results, distinguishing static checks from Foundry runtime tests.
-5. Obtain independent review; an author's own checks do not count as approval. Do not merge on behalf of Bruce without authorization.
+5. Bruce authorized author review and merge for this system project on October 17, 2026. Review the complete diff, fix findings, and require passing applicable checks before squash merging. Record this accurately as author review, never independent approval.
 6. Squash merge approved work and verify issue closure.
 7. Correct these instructions when a verified omission causes a mistake; track the correction in the same scoped PR or a separate issue.
 

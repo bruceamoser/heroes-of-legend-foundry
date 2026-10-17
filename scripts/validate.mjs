@@ -9,17 +9,20 @@ export async function validatePackage(root) {
   if (manifest.compatibility.minimum !== "14.367" || manifest.compatibility.maximum !== "14") {
     throw new Error("Foundation must declare V14-only compatibility");
   }
-  const paths = [...manifest.esmodules ?? [], ...manifest.styles ?? [],
-    ...manifest.languages?.map(language => language.path) ?? [],
-    ...manifest.packs?.map(pack => pack.path) ?? []];
+  const files = [...manifest.esmodules ?? [], ...manifest.styles ?? [],
+    ...manifest.languages?.map(language => language.path) ?? []];
+  const packs = manifest.packs?.map(pack => pack.path) ?? [];
+  const paths = [...files, ...packs];
   if (!manifest.esmodules?.length) throw new Error("Missing module entry point");
   for (const path of paths) {
-    if (typeof path !== "string" || isAbsolute(path) || path.includes("\\") ||
+    if (typeof path !== "string" || isAbsolute(path) || /[\\:%?#]/.test(path) ||
       path.split("/").some(part => part === ".." || part === "." || !part)) {
       throw new Error(`Unsafe package path: ${path}`);
     }
     const entry = await stat(new URL(path, root));
-    if (!entry.isFile() && !entry.isDirectory()) throw new Error(`Invalid asset: ${path}`);
+    if (files.includes(path) ? !entry.isFile() : !entry.isDirectory()) {
+      throw new Error(`Invalid asset type: ${path}`);
+    }
     if (path.endsWith(".json")) JSON.parse(await readFile(new URL(path, root), "utf8"));
   }
   return manifest;

@@ -682,3 +682,5 @@ Integrated shortcut validation: Node 24 checks and the full Foundry 14.369
 shortcut scenario pass after campaign-language integration. The unobscured
 character-sheet screenshot was visually reviewed; item references and shortcut
 controls are readable in the HOL theme, including the corrected window title.
+
+Issue #109 integrated validation: Node 24 build, validation and all 195 tests pass. The 452-record choice import reproduces exactly from the pinned book revision. Foundry 14.369 creation and advancement fixtures pass, including keyboard-expanded rules, disabled choices, search and persistent commits. Normal and narrow screenshots were visually reviewed; expanded references span the available card grid.

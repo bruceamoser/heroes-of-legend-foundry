@@ -26,3 +26,38 @@
 .hol-roll-summary { background: #f1e6ce; color: #28251c; border-left: 3px solid #b39253; padding: 8px 12px; font-family: "HOL Garamond", Georgia, serif; }
 .hol-roll-summary strong { font-family: "HOL Cinzel", Georgia, serif; }
 .hol-roll-summary p { margin: 4px 0 0; }
+
+.heroes-of-legend.hol-creation .window-content { padding: 0; overflow: hidden; }
+.heroes-of-legend .hol-wizard { display:flex; flex-direction:column; height:100%; min-height:0; }
+.heroes-of-legend .hol-wizard .hol-banner { padding:12px 20px; }
+.heroes-of-legend .hol-wizard .hol-banner h1 { font-size:24px; margin:0; }
+.heroes-of-legend .hol-wizard .hol-banner p { margin:4px 0; }
+.heroes-of-legend .hol-wizard-layout { display:grid; grid-template-columns:180px minmax(0,1fr); flex:1; min-height:0; }
+.heroes-of-legend .hol-wizard nav { padding:12px; border-right:1px solid #b39253; display:flex; flex-direction:column; gap:6px; overflow:auto; }
+.heroes-of-legend .hol-wizard nav button { text-align:left; white-space:normal; height:auto; min-height:36px; }
+.heroes-of-legend .hol-wizard nav [aria-current] { background:#15221c; color:#f1e6ce; }
+.heroes-of-legend .hol-wizard-main { overflow:auto; padding:16px 22px; }
+.heroes-of-legend .hol-wizard-main label { display:block; margin:8px 0; }
+.heroes-of-legend .hol-wizard-main select { width:100%; }
+.heroes-of-legend .hol-wizard-main input[type=checkbox], .heroes-of-legend .hol-wizard-main input[type=radio] { width:auto; }
+.heroes-of-legend .hol-wizard-footer { display:flex; gap:12px; padding:12px 20px; border-top:1px solid #b39253; }
+.heroes-of-legend .hol-budget { background:#e8dfca; border-left:4px solid #b39253; padding:12px; margin:12px 0; }
+.heroes-of-legend .hol-choice-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin-top:12px; }
+.heroes-of-legend .hol-choice { padding:12px; border:1px solid #b39253; border-radius:4px; }
+.heroes-of-legend .hol-choice[hidden] { display:none; }
+.heroes-of-legend .hol-choice h3 { margin:0 0 8px; }
+.heroes-of-legend .hol-choice small { display:block; }
+.heroes-of-legend .hol-ineligible { background:#e6e2d8; }
+.heroes-of-legend .hol-error { color:#8b2525; }
+.heroes-of-legend .hol-summary { display:grid; grid-template-columns:1fr 1fr; }
+.heroes-of-legend .hol-wizard button:focus-visible, .heroes-of-legend .hol-wizard input:focus-visible, .heroes-of-legend .hol-wizard select:focus-visible { outline:3px solid #b39253; outline-offset:2px; }
+.heroes-of-legend .hol-wizard .hol-banner { margin:0; }
+.heroes-of-legend .hol-wizard-main, .heroes-of-legend .hol-wizard-main h2, .heroes-of-legend .hol-wizard-main h3, .heroes-of-legend .hol-wizard-main legend, .heroes-of-legend .hol-wizard-main dd { color:var(--hol-ink); text-shadow:none; }
+.heroes-of-legend .hol-wizard-main a { color:#385330; text-shadow:none; text-decoration:underline; }
+.heroes-of-legend .hol-wizard button { background:var(--hol-forest); color:var(--hol-ivory); border:1px solid var(--hol-gold); text-shadow:none; }
+.heroes-of-legend .hol-wizard button:disabled { background:#d6d1c5; color:#555044; }
+.heroes-of-legend .hol-wizard nav button { background:var(--hol-ivory); color:var(--hol-ink); }
+.heroes-of-legend .hol-wizard nav [aria-current] { background:var(--hol-forest); color:var(--hol-ivory); }
+.heroes-of-legend .hol-wizard input[type=checkbox], .heroes-of-legend .hol-wizard input[type=radio] { height:auto; accent-color:var(--hol-forest); }
+.heroes-of-legend .hol-wizard-main dt { color:var(--hol-ink); text-shadow:none; filter:none; }
+.heroes-of-legend.hol-creation .window-title { font-size:14px; }

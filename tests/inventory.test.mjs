@@ -5,6 +5,7 @@ import {
   inventoryCheck,
   refillInventory,
 } from "../src/rules/inventory.mjs";
+import { inventoryBasis } from "../src/services/inventory.mjs";
 
 test("a retained 1 steps down the complete supply ladder, most faces do not", () => {
   assert.deepEqual(INVENTORY_DIE_LADDER, [20, 12, 10, 8, 6, 4, 0]);
@@ -79,4 +80,57 @@ test("reviewed refill steps enter at d4 from out and stop at the explicit cap", 
       () => refillInventory({ die: 0, steps, maximumDie: 4 }),
       /Refill steps/,
     );
+});
+
+test("inventory request snapshots are detached mutable JSON for native validation", () => {
+  const source = Object.freeze({
+      id: "item-fixture",
+      path: "fixtures/item.md",
+      sha256: "a".repeat(64),
+    }),
+    actor = {
+      uuid: "Actor.fixture",
+      getFlag: (_scope, key) =>
+        key === "inventoryRevision"
+          ? 4
+          : key === "equipmentRevision"
+            ? 7
+            : null,
+    },
+    item = {
+      actor,
+      id: "item1",
+      uuid: "Actor.fixture.Item.item1",
+      type: "equipment",
+      name: "Fixture supply",
+      system: {
+        catalogId: "fixture",
+        inventoryDie: 6,
+        quantity: 3,
+      },
+      getFlag: (_scope, key) => (key === "source" ? source : null),
+    },
+    basis = inventoryBasis(actor, item);
+  assert.deepEqual(basis, {
+    inventoryRevision: 4,
+    equipmentRevision: 7,
+    item: {
+      itemId: "item1",
+      itemUuid: "Actor.fixture.Item.item1",
+      type: "equipment",
+      name: "Fixture supply",
+      catalogId: "fixture",
+      inventoryDie: 6,
+      quantity: 3,
+      source,
+    },
+  });
+  basis.item.inventoryDie = 4;
+  basis.item.source.path = "fixtures/changed.md";
+  assert.equal(item.system.inventoryDie, 6);
+  assert.equal(source.path, "fixtures/item.md");
+  assert.throws(
+    () => inventoryBasis(actor, { ...item, actor: { uuid: "Actor.other" } }),
+    /Choose an equipment item/,
+  );
 });

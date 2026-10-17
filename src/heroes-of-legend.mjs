@@ -3,6 +3,7 @@ import { registerWoundRequests } from "./services/wounds.mjs";
 import { registerRecoveryRequests } from "./services/recovery.mjs";
 import { registerDamageRequests } from "./services/damage.mjs";
 import { registerEquipmentRequests } from "./services/equipment.mjs";
+import { registerInventoryRequests } from "./services/inventory.mjs";
 import { registerDefenseResponses } from "./services/defense-responses.mjs";
 import { registerNpcAttacks } from "./services/npc-attacks.mjs";
 import { renderAttackCard } from "./dialogs/defender-choice.mjs";
@@ -37,6 +38,7 @@ Hooks.once("init", () => {
   registerHOLStatuses();
   registerConditionRequests();
   registerEquipmentRequests();
+  registerInventoryRequests();
   registerDamageRequests();
   registerRecoveryRequests();
   registerWoundRequests();

@@ -1,10 +1,15 @@
 import { EquipmentPanel } from "../applications/equipment.mjs";
+import { InventoryPanel } from "../applications/inventory.mjs";
+import { loadCatalogs } from "../services/catalog.mjs";
 import { updateOwnedDocument } from "../services/documents.mjs";
 export class EquipmentSheet extends foundry.applications.api.HandlebarsApplicationMixin(
   foundry.applications.sheets.ItemSheetV2,
 ) {
   static DEFAULT_OPTIONS = {
-    actions: { hands: EquipmentSheet.hands },
+    actions: {
+      hands: EquipmentSheet.hands,
+      supply: EquipmentSheet.supply,
+    },
     classes: ["heroes-of-legend", "hol-equipment"],
     position: { width: 520, height: 540 },
     form: { submitOnChange: false, closeOnSubmit: false },
@@ -13,17 +18,61 @@ export class EquipmentSheet extends foundry.applications.api.HandlebarsApplicati
     main: { template: "systems/heroes-of-legend/templates/equipment.hbs" },
   };
   async _prepareContext(options) {
+    const catalogs = this.item.actor ? await loadCatalogs() : null,
+      pending = this.item.actor?.getFlag(
+        "heroes-of-legend",
+        "pendingInventory",
+      ),
+      results =
+        this.item.actor?.getFlag("heroes-of-legend", "inventoryResults") ?? {},
+      catalogSupply = catalogs?.inventory.equipment.find(
+        (record) => record.id === this.item.system.catalogId,
+      )?.inventoryDie,
+      priorSupply =
+        pending?.target?.itemId === this.item.id
+          ? pending.target.inventoryDie
+          : Object.values(results)
+              .reverse()
+              .find((result) => result.target?.itemId === this.item.id)?.target
+              .inventoryDie,
+      originalSupplyDie = Number.isSafeInteger(catalogSupply)
+        ? catalogSupply
+        : priorSupply,
+      hadSupply =
+        Number.isSafeInteger(originalSupplyDie) && originalSupplyDie > 0,
+      hasSupply = hadSupply || this.item.system.inventoryDie > 0;
     return {
       ...(await super._prepareContext(options)),
       item: this.item,
       system: this.item.system,
       editable: this.isEditable,
       owned: Boolean(this.item.actor),
+      canCheckSupply: Boolean(
+        this.item.actor &&
+          hasSupply &&
+          this.item.system.inventoryDie > 0 &&
+          (this.item.actor.isOwner || game.user.isGM),
+      ),
+      supplyOut:
+        Boolean(this.item.actor) &&
+        hadSupply &&
+        this.item.system.inventoryDie === 0,
     };
   }
   static async hands() {
     if (this.item.actor)
       await new EquipmentPanel(this.item.actor).render({ force: true });
+  }
+  static async supply() {
+    try {
+      if (!this.item.actor)
+        throw new Error("Only an owned equipment item can check supply.");
+      await new InventoryPanel(this.item.actor, this.item.id).render({
+        force: true,
+      });
+    } catch (error) {
+      ui.notifications.error(error.message);
+    }
   }
   async _processSubmitData(event, form, data, options) {
     if (

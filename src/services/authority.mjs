@@ -117,6 +117,7 @@ async function appliedWork(work) {
     message?.getFlag(ID, "combatRequest") ??
     message?.getFlag(ID, "conditionRequest") ??
     message?.getFlag(ID, "equipmentRequest") ??
+    message?.getFlag(ID, "inventoryRequest") ??
     message?.getFlag(ID, "damageRequest") ??
     message?.getFlag(ID, "recoveryRequest") ??
     message?.getFlag(ID, "woundRequest") ??
@@ -129,7 +130,9 @@ async function appliedWork(work) {
     : message?.getFlag(ID, "abilityRequest") ||
         message?.getFlag(ID, "npcAttackRequest")
       ? request?.combatUuid
-      : (request?.actorUuid ?? request?.combatUuid);
+      : (request?.actorUuid ??
+        request?.combatUuid ??
+        (typeof work.targetUuid === "string" ? work.targetUuid : null));
   if (!uuid) return false;
   const actor = await fromUuid(uuid);
   // This is the final settlement receipt. Multi-document operations write it only
@@ -237,7 +240,7 @@ export async function writeAuthorityDocument(actor, changes) {
 }
 export function enqueueCharacterOperation(
   operation,
-  { requestId = null } = {},
+  { requestId = null, targetUuid = null } = {},
 ) {
   const job = queue.then(async () => {
     if (!isCreationAuthority()) return { status: "not-authority" };
@@ -245,16 +248,21 @@ export function enqueueCharacterOperation(
       throw new Error("The coordinator is suspended for write reconciliation.");
     activeWork = { uncertain: false };
     const clientId = game.socket.id;
-    await game.settings.set(ID, "authorityWork", {
+    const work = {
       clientId,
       busy: true,
       requestId,
-    });
+      ...(typeof targetUuid === "string" ? { targetUuid } : {}),
+    };
+    await game.settings.set(ID, "authorityWork", work);
     if (!isCreationAuthority()) return { status: "authority-lost" };
     try {
       return await operation();
     } finally {
-      if (activeWork?.uncertain && !(await appliedWork({ requestId })))
+      if (
+        activeWork?.uncertain &&
+        !(await appliedWork({ requestId, targetUuid }))
+      )
         suspended = true;
       activeWork = null;
       if (isCreationAuthority())
@@ -263,6 +271,7 @@ export function enqueueCharacterOperation(
           busy: suspended,
           requestId,
           uncertain: suspended,
+          ...(typeof targetUuid === "string" ? { targetUuid } : {}),
         });
     }
   });

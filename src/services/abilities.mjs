@@ -7,6 +7,7 @@ import {
 } from "../rules/defense-abilities.mjs";
 import { isShieldEquipment } from "../rules/equipment-identity.mjs";
 import { upsertBenefitEffect } from "../rules/defense-benefits.mjs";
+import { actorMatchesParticipant } from "../rules/player-attacks.mjs";
 import { actionConditions } from "./turn-budget.mjs";
 import {
   enqueueCharacterOperation,
@@ -36,7 +37,10 @@ export async function activateOwnedAbility(item) {
     c.combatants
       .filter(
         (p) =>
-          p.actor?.uuid === item.actor.uuid &&
+          actorMatchesParticipant({
+            actor: item.actor,
+            participant: p,
+          }) &&
           c.getFlag(ID, "encounter")?.current === p.id,
       )
       .map((p) => ({ combat: c, id: p.id })),
@@ -117,7 +121,9 @@ function combatForAttackActor(actor, attack) {
     : game.combats.contents;
   const matches = combats.flatMap((combat) =>
     combat.combatants
-      .filter((combatant) => combatant.actor?.uuid === actor.uuid)
+      .filter((combatant) =>
+        actorMatchesParticipant({ actor, participant: combatant }),
+      )
       .map((participant) => ({ combat, participant })),
   );
   if (matches.length !== 1)
@@ -202,7 +208,9 @@ export function reviewedDefenseAbilityOptions(
   }
   const matches = game.combats.contents.flatMap((combat) =>
       combat.combatants
-        .filter((combatant) => combatant.actor?.uuid === actor.uuid)
+        .filter((combatant) =>
+          actorMatchesParticipant({ actor, participant: combatant }),
+        )
         .map((combatant) => ({ combat, combatant })),
     ),
     attackCombat = attack?.getFlag(ID, "attackCard")?.combatId,
@@ -348,7 +356,7 @@ async function preflight({ message, request, combat }) {
   )
     throw new Error("Unauthorized or mismatched ability source.");
   const participant = combat.combatants.get(request.participantId);
-  if (participant?.actor?.uuid !== actor.uuid)
+  if (!actorMatchesParticipant({ actor, participant }))
     throw new Error("The defender is not that participant in this encounter.");
   const state = combat.getFlag(ID, "encounter"),
     budget = state?.budgets?.[request.participantId];

@@ -201,3 +201,85 @@ export function nativeBasicMeleeGeometry({
 export function basicMeleeRequestMatches(current, frozen) {
   return JSON.stringify(current) === JSON.stringify(frozen);
 }
+
+/**
+ * Match a Foundry combatant through its resolved Actor and exact Token.
+ * Tokenless combatants are accepted only for a linked Token in the Combat Scene.
+ */
+export function actorTokenMatchesParticipant({
+  actor,
+  actorToken,
+  participant,
+} = {}) {
+  const participantActor = participant?.actor,
+    participantToken = participant?.token;
+  if (
+    actor?.documentName !== "Actor" ||
+    actorToken?.documentName !== "Token" ||
+    participant?.documentName !== "Combatant" ||
+    actorToken.actor?.documentName !== "Actor" ||
+    actorToken.actor?.uuid !== actor.uuid ||
+    actorToken.actorId !== actor.id ||
+    participant.actorId !== actorToken.actorId ||
+    participantActor?.documentName !== "Actor" ||
+    participantActor.uuid !== actor.uuid
+  )
+    return false;
+  if (participant.tokenId != null)
+    return (
+      participantToken?.documentName === "Token" &&
+      participantToken.uuid === actorToken.uuid
+    );
+  return (
+    participant.tokenId == null &&
+    actorToken.actorLink === true &&
+    actorToken.parent?.documentName === "Scene" &&
+    participant.parent?.documentName === "Combat" &&
+    participant.parent.scene?.documentName === "Scene" &&
+    participant.parent.scene.uuid === actorToken.parent.uuid
+  );
+}
+
+/** Match an Actor document to its encounter participant without assuming its UUID projection. */
+export function actorMatchesParticipant({ actor, participant } = {}) {
+  if (
+    actor?.documentName !== "Actor" ||
+    participant?.documentName !== "Combatant"
+  )
+    return false;
+  if (actor.isToken === true)
+    return actorTokenMatchesParticipant({
+      actor,
+      actorToken: actor.token,
+      participant,
+    });
+  if (
+    participant.actorId !== actor.id ||
+    participant.actor?.documentName !== "Actor" ||
+    participant.actor.uuid !== actor.uuid
+  )
+    return false;
+  if (participant.tokenId == null) return true;
+  return (
+    participant.token?.documentName === "Token" &&
+    participant.token.actor?.uuid === actor.uuid
+  );
+}
+
+const ACTION_SIGNATURE = JSON.stringify({
+  kind: "action",
+  sourceId: "ability-basic-melee",
+  category: "main",
+  freeAttack: false,
+});
+
+export function validateActionReceipt(receipt) {
+  if (
+    !receipt ||
+    receipt.signature !== ACTION_SIGNATURE ||
+    receipt.sourceId !== "ability-basic-melee" ||
+    receipt.category !== "main" ||
+    !["declared", "resolving", "interrupted"].includes(receipt.status)
+  )
+    throw new Error("The committed Basic Melee action receipt changed.");
+}

@@ -1,11 +1,15 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import {
   ABILITY_DEFINITIONS,
   abilityDefinition,
 } from "../src/rules/ability-definitions.mjs";
 import {
+  actorMatchesParticipant,
+  actorTokenMatchesParticipant,
   basicMeleeDamage,
+  validateActionReceipt,
   basicMeleeRequestMatches,
   nearestAccessibleLine,
   nativeBasicMeleeGeometry,
@@ -16,6 +20,7 @@ import {
 } from "../src/rules/player-attacks.mjs";
 import { isMeleeWeaponEquipment } from "../src/rules/equipment-identity.mjs";
 import { prepareRoll } from "../src/services/roll-preparation.mjs";
+import { validateStoredPlayerAttackOperation } from "../src/services/player-attacks.mjs";
 
 test("Basic Melee adapter pins the reviewed card and fixed 2/3/5 mapping", () => {
   const definition = ABILITY_DEFINITIONS["ability-basic-melee"];
@@ -385,4 +390,322 @@ test("only the matching player attack ID suppresses a pending action", () => {
     true,
   );
   assert.equal(pendingAbilityIsPlayerAttack("ordinary-action", null), false);
+});
+
+test("attack receipts accept real action declarations and continuations", async () => {
+  const {startTurn, declareAction, continueAction} = await import("../src/rules/actions.mjs");
+  const state = declareAction(startTurn({turnId:"turn-1", speed:5}), {
+    operationId:"attack-1", sourceId:"ability-basic-melee", category:"main",
+  });
+  assert.equal(Object.hasOwn(state.operations["attack-1"], "turnId"), false);
+  assert.doesNotThrow(() => validateActionReceipt(state.operations["attack-1"]));
+  const continued = continueAction(state, {hp:12, items:{}}, {operationId:"attack-1", capable:true});
+  assert.doesNotThrow(() => validateActionReceipt(continued.state.operations["attack-1"]));
+  assert.throws(() => validateActionReceipt({...state.operations["attack-1"], category:"maneuver"}), /receipt changed/);
+});
+
+test("Basic Melee participant identity resolves exact Scene tokens", () => {
+  const scene = (id) => ({
+      documentName: "Scene",
+      id,
+      uuid: `Scene.${id}`,
+    }),
+    sceneOne = scene("scene-1"),
+    sceneTwo = scene("scene-2"),
+    linkedActor = {
+      documentName: "Actor",
+      id: "actor-1",
+      uuid: "Actor.actor-1",
+    },
+    syntheticActor = (tokenScene, tokenId) => ({
+      documentName: "Actor",
+      id: "actor-1",
+      uuid: `Scene.${tokenScene.id}.Token.${tokenId}.Actor.actor-1`,
+    }),
+    token = ({ tokenScene, id, actor, actorLink }) => ({
+      documentName: "Token",
+      id,
+      uuid: `Scene.${tokenScene.id}.Token.${id}`,
+      parent: tokenScene,
+      actorId: actor.id,
+      actorLink,
+      actor,
+    }),
+    participant = ({
+      resolvedToken = null,
+      actor,
+      combatScene = sceneOne,
+      tokenId = resolvedToken?.id ?? null,
+    }) => ({
+      documentName: "Combatant",
+      actorId: actor.id,
+      tokenId,
+      token: resolvedToken,
+      actor,
+      parent: {
+        documentName: "Combat",
+        scene: combatScene,
+      },
+    }),
+    linkedTokenOne = token({
+      tokenScene: sceneOne,
+      id: "token-1",
+      actor: linkedActor,
+      actorLink: true,
+    }),
+    linkedTokenOneInOtherScene = token({
+      tokenScene: sceneTwo,
+      id: "token-1",
+      actor: linkedActor,
+      actorLink: true,
+    }),
+    syntheticActorOne = syntheticActor(sceneOne, "token-1"),
+    syntheticActorTwo = syntheticActor(sceneOne, "token-2"),
+    unlinkedTokenOne = token({
+      tokenScene: sceneOne,
+      id: "token-1",
+      actor: syntheticActorOne,
+      actorLink: false,
+    }),
+    unlinkedTokenTwo = token({
+      tokenScene: sceneOne,
+      id: "token-2",
+      actor: syntheticActorTwo,
+      actorLink: false,
+    });
+  assert.equal(
+    actorTokenMatchesParticipant({
+      actor: linkedActor,
+      actorToken: linkedTokenOne,
+      participant: participant({
+        resolvedToken: linkedTokenOne,
+        actor: linkedActor,
+      }),
+    }),
+    true,
+  );
+  assert.equal(
+    actorTokenMatchesParticipant({
+      actor: syntheticActorOne,
+      actorToken: unlinkedTokenOne,
+      participant: participant({
+        resolvedToken: unlinkedTokenOne,
+        actor: syntheticActorOne,
+      }),
+    }),
+    true,
+  );
+  assert.equal(
+    actorTokenMatchesParticipant({
+      actor: linkedActor,
+      actorToken: linkedTokenOne,
+      participant: participant({
+        resolvedToken: linkedTokenOneInOtherScene,
+        actor: linkedActor,
+      }),
+    }),
+    false,
+    "token IDs are scoped to a Scene",
+  );
+  assert.equal(
+    actorTokenMatchesParticipant({
+      actor: linkedActor,
+      actorToken: linkedTokenOne,
+      participant: participant({
+        resolvedToken: null,
+        tokenId: "token-1",
+        actor: linkedActor,
+      }),
+    }),
+    false,
+    "an unresolved Combatant token cannot fall back to its base Actor",
+  );
+  assert.equal(
+    actorTokenMatchesParticipant({
+      actor: syntheticActorOne,
+      actorToken: unlinkedTokenOne,
+      participant: participant({
+        resolvedToken: unlinkedTokenTwo,
+        actor: syntheticActorTwo,
+      }),
+    }),
+    false,
+    "synthetic actors with the same base Actor are still token-specific",
+  );
+  assert.equal(
+    actorTokenMatchesParticipant({
+      actor: linkedActor,
+      actorToken: linkedTokenOne,
+      participant: participant({
+        actor: linkedActor,
+        combatScene: sceneOne,
+      }),
+    }),
+    true,
+    "an actor-only linked participant in the Combat Scene is intentional",
+  );
+  assert.equal(
+    actorTokenMatchesParticipant({
+      actor: linkedActor,
+      actorToken: linkedTokenOne,
+      participant: participant({
+        actor: linkedActor,
+        combatScene: sceneTwo,
+      }),
+    }),
+    false,
+    "an actor-only participant needs the same resolved Scene",
+  );
+  assert.equal(
+    actorTokenMatchesParticipant({
+      actor: syntheticActorOne,
+      actorToken: unlinkedTokenOne,
+      participant: participant({
+        actor: syntheticActorOne,
+        combatScene: sceneOne,
+      }),
+    }),
+    false,
+    "a tokenless synthetic participant is not a supported fallback",
+  );
+  assert.equal(
+    actorMatchesParticipant({
+      actor: linkedActor,
+      participant: participant({
+        resolvedToken: linkedTokenOne,
+        actor: linkedActor,
+      }),
+    }),
+    true,
+  );
+  assert.equal(
+    actorMatchesParticipant({
+      actor: linkedActor,
+      participant: participant({
+        resolvedToken: null,
+        tokenId: "token-1",
+        actor: linkedActor,
+      }),
+    }),
+    false,
+  );
+  assert.equal(
+    actorMatchesParticipant({
+      actor: {
+        ...syntheticActorOne,
+        isToken: true,
+        token: unlinkedTokenOne,
+      },
+      participant: participant({
+        resolvedToken: unlinkedTokenOne,
+        actor: syntheticActorOne,
+      }),
+    }),
+    true,
+  );
+});
+
+test("native player attack fixture uses the V14 Scene relationships", async () => {
+  const source = await readFile(
+      new URL("../scripts/check-player-attacks.mjs", import.meta.url),
+      "utf8",
+    ),
+    combatStart = source.indexOf("const combat = await Combat.create("),
+    participantStart = source.indexOf(
+      "await combat.createEmbeddedDocuments(",
+      combatStart,
+    ),
+    participantEnd = source.indexOf(
+      "await resolveCombatRequest(",
+      participantStart,
+    );
+  assert.equal(source.match(/\bCombat\.create\(/g)?.length, 1);
+  assert.ok(combatStart >= 0 && participantStart > combatStart);
+  assert.ok(participantEnd > participantStart);
+  const combatData = source.slice(combatStart, participantStart),
+    participantData = source.slice(participantStart, participantEnd);
+  assert.match(combatData, /\bscene:\s*scene\.id/);
+  assert.doesNotMatch(combatData, /\bsceneId:/);
+  assert.match(participantData, /\bactorId:\s*attacker\.id/);
+  assert.match(participantData, /\btokenId:\s*attackerToken\.id/);
+  assert.match(participantData, /\bsceneId:\s*scene\.id/);
+  assert.match(
+    participantData,
+    /attackerCombatant\.token\?\.uuid !== attackerToken\.uuid/,
+  );
+});
+
+test("durable Basic Melee identity reads the frozen nested target", async () => {
+  const { startTurn, declareAction } = await import("../src/rules/actions.mjs"),
+    state = declareAction(startTurn({ turnId: "turn-1", speed: 5 }), {
+      operationId: "attack-1",
+      sourceId: "ability-basic-melee",
+      category: "main",
+    }),
+    source = {
+      path: "design/cards/basic-melee.md",
+      sha256: "9d6e0b6ca75363b94c6886fb3c53087f854098f024aac232395c61fdc438ae40",
+    },
+    weapon = {
+      uuid: "Scene.scene-1.Token.attacker.Actor.actor-1.Item.weapon-1",
+      catalogId: "item-ordinary-melee-weapon",
+      hands: 1,
+    },
+    basis = {
+      actorTokenUuid: "Scene.scene-1.Token.attacker",
+      targetTokenUuid: "Scene.scene-1.Token.target",
+      weapon,
+      target: {
+        tokenUuid: "Scene.scene-1.Token.target",
+        actorUuid: "Scene.scene-1.Token.target.Actor.actor-2",
+        actorType: "creature",
+      },
+    },
+    request = {
+      itemUuid: "Scene.scene-1.Token.attacker.Actor.actor-1.Item.ability-1",
+      actorUuid: "Scene.scene-1.Token.attacker.Actor.actor-1",
+      combatUuid: "Combat.combat-1",
+      participantId: "combatant-1",
+      encounterRevision: 2,
+      basis,
+      draft: {},
+      source,
+      handler: "player-basic-melee-v1",
+    },
+    operation = {
+      status: "declared",
+      kind: "player-basic-melee",
+      operationId: "attack-1",
+      authorId: "user-1",
+      actorUuid: request.actorUuid,
+      actorTokenUuid: basis.actorTokenUuid,
+      participantId: request.participantId,
+      combatId: "combat-1",
+      encounterRevision: request.encounterRevision,
+      turnId: "turn-1",
+      itemUuid: request.itemUuid,
+      handler: request.handler,
+      source,
+      requestSignature: JSON.stringify(request),
+      request,
+      basis: structuredClone(basis),
+      draft: {},
+      weapon,
+      actionReceipt: state.operations["attack-1"],
+    };
+  assert.doesNotThrow(() => validateStoredPlayerAttackOperation(operation));
+  assert.throws(
+    () =>
+      validateStoredPlayerAttackOperation({
+        ...operation,
+        basis: {
+          ...operation.basis,
+          target: {
+            ...operation.basis.target,
+            actorUuid: "Scene.scene-1.Token.other.Actor.actor-2",
+          },
+        },
+      }),
+    /durable Basic Melee operation changed/,
+  );
 });

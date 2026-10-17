@@ -2,7 +2,9 @@ import { continueAction, declareAction } from "../rules/actions.mjs";
 import { isMeleeWeaponEquipment } from "../rules/equipment-identity.mjs";
 import { classifyRoll } from "../rules/roll.mjs";
 import {
+  actorTokenMatchesParticipant,
   basicMeleeDamage,
+  validateActionReceipt,
   basicMeleeRequestMatches,
   nearestAccessibleLine,
   nativeBasicMeleeGeometry,
@@ -611,7 +613,13 @@ async function loadFrozenRequest(
     throw new Error(
       "The selected Basic Melee target is hidden from its request author. Prepare Basic Melee again or ask the DA to adjudicate.",
     );
-  if (participant?.actor?.uuid !== actor.uuid)
+  if (
+    !actorTokenMatchesParticipant({
+      actor,
+      actorToken,
+      participant,
+    })
+  )
     throw new Error("The acting character is not that encounter participant.");
   if (
     !state ||
@@ -676,13 +684,6 @@ async function loadFrozenRequest(
   };
 }
 
-const ACTION_SIGNATURE = JSON.stringify({
-  kind: "action",
-  sourceId: SOURCE_ID,
-  category: "main",
-  freeAttack: false,
-});
-
 function findPlayerAttackOperation(id) {
   for (const combat of game.combats) {
     const operation = combat.getFlag(ID, "playerAttackOperations")?.[id];
@@ -699,18 +700,6 @@ function findPlayerAttackOperation(id) {
   return null;
 }
 
-function validateActionReceipt(receipt, turnId) {
-  if (
-    !receipt ||
-    receipt.signature !== ACTION_SIGNATURE ||
-    receipt.sourceId !== SOURCE_ID ||
-    receipt.category !== "main" ||
-    !["declared", "resolving", "interrupted"].includes(receipt.status) ||
-    receipt.turnId !== turnId
-  )
-    throw new Error("The committed Basic Melee action receipt changed.");
-}
-
 function attackBasisMatchesRequest(operation) {
   const basis = structuredClone(operation.basis ?? {}),
     requested = structuredClone(operation.request?.basis ?? {});
@@ -719,7 +708,7 @@ function attackBasisMatchesRequest(operation) {
   return basicMeleeRequestMatches(basis, requested);
 }
 
-function validateStoredOperation(operation) {
+export function validateStoredPlayerAttackOperation(operation) {
   validateRequestShape(operation?.request);
   if (
     operation.kind !== "player-basic-melee" ||
@@ -733,9 +722,9 @@ function validateStoredOperation(operation) {
     operation.itemUuid !== operation.request.itemUuid ||
     operation.actorTokenUuid !== operation.request.basis.actorTokenUuid ||
     operation.basis?.target?.tokenUuid !==
-      operation.request.basis.targetTokenUuid ||
+      operation.request.basis.target?.tokenUuid ||
     operation.basis?.target?.actorUuid !==
-      operation.request.basis.targetActorUuid ||
+      operation.request.basis.target?.actorUuid ||
     operation.basis?.weapon?.uuid !==
       operation.request.basis.weapon?.uuid ||
     operation.combatId !== operation.request.combatUuid.split(".").at(-1) ||
@@ -752,11 +741,11 @@ function validateStoredOperation(operation) {
     !Number.isSafeInteger(operation.encounterRevision)
   )
     throw new Error("The durable Basic Melee operation changed.");
-  validateActionReceipt(operation.actionReceipt, operation.turnId);
+  validateActionReceipt(operation.actionReceipt);
 }
 
 async function loadCommittedRequest(operation, message) {
-  validateStoredOperation(operation);
+  validateStoredPlayerAttackOperation(operation);
   const request = operation.request,
     actor = await fromUuid(request.actorUuid),
     item = await fromUuid(request.itemUuid),
@@ -786,7 +775,11 @@ async function loadCommittedRequest(operation, message) {
     actorToken.actor?.uuid !== actor.uuid ||
     targetToken?.documentName !== "Token" ||
     targetToken.actor?.uuid !== request.basis.target?.actorUuid ||
-    participant?.actor?.uuid !== actor.uuid
+    !actorTokenMatchesParticipant({
+      actor,
+      actorToken,
+      participant,
+    })
   )
     throw new Error("The exact Basic Melee token or participant changed.");
   if (
@@ -798,10 +791,7 @@ async function loadCommittedRequest(operation, message) {
     budget.remaining.main !== 0
   )
     throw new Error("The committed encounter budget changed.");
-  validateActionReceipt(
-    declaration,
-    operation.turnId,
-  );
+  validateActionReceipt(declaration);
   if (declaration.status !== "declared")
     throw new Error("Only a declared Basic Melee can continue to its roll.");
   const current = buildBasis({
@@ -1201,7 +1191,7 @@ async function apply(id) {
     operation = found?.operation ?? null,
     receipt = found?.receipt ?? null;
   if (operation) {
-    validateStoredOperation(operation);
+    validateStoredPlayerAttackOperation(operation);
     if (message && message.author?.id !== operation.authorId)
       throw new Error("The Basic Melee presentation author changed.");
     if (receipt?.applied) {
@@ -1301,7 +1291,7 @@ export function recoverPlayerBasicMeleeRequest(id, { retained, reason } = {}) {
         !reason.trim()
       )
         throw new Error("A retained-dice recovery needs the original request and a DA reason.");
-      validateStoredOperation(operation);
+      validateStoredPlayerAttackOperation(operation);
       if (message && message.author?.id !== operation.authorId)
         throw new Error("The Basic Melee presentation author changed.");
       if (operation.result) {
@@ -1403,7 +1393,7 @@ export function acknowledgeMissingPlayerBasicMeleePresentation(
         receipt = found?.receipt;
       if (!combat || !operation)
         throw new Error("The original Basic Melee operation is unavailable.");
-      validateStoredOperation(operation);
+      validateStoredPlayerAttackOperation(operation);
       if (
         operation.status !== "complete" ||
         !operation.result ||

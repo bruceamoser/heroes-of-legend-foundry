@@ -20,8 +20,17 @@ const ID = "heroes-of-legend",
   browser = await chromium.launch(),
   errors = [],
   cleanupRegistryKey = "__holPlayerAttackFixtureCleanup";
-let gm, player, users, scenarios = [], authorityClaimed = false;
+let gm,
+  player,
+  users,
+  scenarios = [],
+  authorityClaimed = false,
+  scenarioDiagnostic = "fixture setup";
 await mkdir("test-results", { recursive: true });
+
+function markDiagnostic(label) {
+  scenarioDiagnostic = label;
+}
 
 async function initializeCleanupRegistry() {
   await gm.page.evaluate((key) => {
@@ -68,7 +77,12 @@ async function join(name) {
     }),
     page = await context.newPage();
   page.on("pageerror", (error) => errors.push(error.stack ?? error.message));
-  page.setDefaultTimeout(45000);
+  page.setDefaultTimeout(60000);
+  await page.addInitScript(() => {
+    localStorage.setItem("core.noCanvas", "false");
+    localStorage.setItem("core.maxFPS", "10");
+    localStorage.setItem("core.performanceMode", "0");
+  });
   await page.goto(url);
   await selectTestUser(page, name);
   await page.locator("button[name=join]").click();
@@ -111,6 +125,7 @@ async function makeScenario({
   targetHidden = false,
   wounds = 0,
 }) {
+  markDiagnostic(`${label}: create scenario`);
   const fixture = await gm.page.evaluate(
     async ({
       ownerId,
@@ -291,10 +306,10 @@ async function makeScenario({
         woundEffectIds.push(...woundEffects.map((effect) => effect.id));
       }
       const combat = await Combat.create({
-          active: true,
-          sceneId: scene.id,
-          name: `${label} encounter`,
-        });
+        active: true,
+        scene: scene.id,
+        name: `${label} encounter`,
+      });
       cleanup.track("combats", combat);
       const [attackerCombatant] = await combat.createEmbeddedDocuments(
         "Combatant",
@@ -302,6 +317,7 @@ async function makeScenario({
           {
             actorId: attacker.id,
             tokenId: attackerToken.id,
+            sceneId: scene.id,
             name: attacker.name,
             flags: { [ID]: { side: "players" } },
           },
@@ -310,6 +326,14 @@ async function makeScenario({
       { requestCombat, resolveCombatRequest } = await import(
         "/systems/heroes-of-legend/services/combat.mjs"
       );
+      if (
+        combat.scene?.uuid !== scene.uuid ||
+        attackerCombatant.token?.uuid !== attackerToken.uuid ||
+        attackerCombatant.actor?.uuid !== attackerToken.actor.uuid
+      )
+        throw new Error(
+          "Player attack fixture Combat and Combatant did not resolve to one Scene token.",
+        );
       await resolveCombatRequest(
         (await requestCombat(combat, "start")).id,
       );
@@ -320,11 +344,11 @@ async function makeScenario({
           })
         ).id,
       );
-      await scene.view();
       return {
         label,
         attacker: attacker.id,
         attackerActorUuid: attackerToken.actor.uuid,
+        attackerTokenUuid: attackerToken.uuid,
         attackerTokenId: attackerToken.id,
         abilityId: attacker.items.find(
           (item) => item.type === "ability",
@@ -360,18 +384,102 @@ async function makeScenario({
   return fixture;
 }
 
-async function activateScenario(fixture) {
-  await player.page.evaluate(async (fixture) => {
+async function viewScenario(page, fixture) {
+  await page.waitForFunction(
+    ({ sceneId, attackerTokenId, targetTokenId }) => {
+      const scene = game.scenes.get(sceneId);
+      return Boolean(
+        scene?.tokens.get(attackerTokenId) &&
+          scene.tokens.get(targetTokenId) &&
+          canvas.initialized &&
+          !canvas.loading,
+      );
+    },
+    fixture,
+  );
+  await page.evaluate(async (fixture) => {
     const scene = game.scenes.get(fixture.scene);
+    if (!scene) throw new Error("The fixture Scene is unavailable.");
     await scene.view();
-    const acting = canvas.tokens.get(fixture.attackerTokenId),
-      target = canvas.tokens.get(fixture.targetTokenId);
-    acting.control({ releaseOthers: true });
-    target.setTarget(true, { releaseOthers: true });
   }, fixture);
+  await page.waitForFunction(
+    ({ sceneId, attackerTokenId, targetTokenId }) =>
+      canvas.ready &&
+      canvas.initialized &&
+      !canvas.loading &&
+      canvas.scene?.id === sceneId &&
+      Boolean(
+        canvas.tokens.get(attackerTokenId) &&
+          canvas.tokens.get(targetTokenId),
+      ),
+    fixture,
+  );
+}
+
+async function activateScenario(fixture) {
+  markDiagnostic(`${fixture.label}: activate scenario`);
+  await Promise.all([
+    viewScenario(gm.page, fixture),
+    viewScenario(player.page, fixture),
+  ]);
+  await Promise.all(
+    [gm.page, player.page].map((page) =>
+      page.evaluate((fixture) => {
+        const acting = canvas.tokens.get(fixture.attackerTokenId),
+          target = canvas.tokens.get(fixture.targetTokenId);
+        if (!acting || !target)
+          throw new Error("The active fixture tokens are unavailable.");
+        acting.control({ releaseOthers: true });
+        target.setTarget(true, { releaseOthers: true });
+      }, fixture),
+    ),
+  );
+}
+
+async function updateFixtureToken(page, fixture, tokenId, changes) {
+  await page.evaluate(
+    async ({ sceneId, tokenId, changes }) => {
+      const token = game.scenes.get(sceneId)?.tokens.get(tokenId);
+      if (!token) throw new Error("The fixture Token is unavailable.");
+      if (!(await token.update(changes, { animate: false })))
+        throw new Error("The fixture Token update failed.");
+      await token.movement.animation.ended;
+    },
+    { sceneId: fixture.scene, tokenId, changes },
+  );
+  await Promise.all(
+    [gm.page, player.page].map((clientPage) =>
+      clientPage.waitForFunction(
+        ({ sceneId, tokenId, changes }) => {
+          const token = game.scenes.get(sceneId)?.tokens.get(tokenId),
+            placeable =
+              canvas.scene?.id === sceneId
+                ? canvas.tokens.get(tokenId)
+                : null;
+          if (
+            !canvas.ready ||
+            canvas.scene?.id !== sceneId ||
+            !token ||
+            !Object.entries(changes).every(
+              ([key, value]) => token[key] === value,
+            )
+          )
+            return false;
+          if (("x" in changes || "y" in changes) && !placeable) return false;
+          return (
+            !placeable ||
+            (placeable.position.x === token.x &&
+              placeable.position.y === token.y)
+          );
+        },
+        { sceneId: fixture.scene, tokenId, changes },
+      ),
+    ),
+  );
 }
 
 async function requestData(fixture, selection = {}) {
+  markDiagnostic(`${fixture.label}: prepare request`);
   return player.page.evaluate(async ({ fixture, selection }) => {
     const actor = await fromUuid(fixture.attackerActorUuid),
       { playerBasicMeleeRequestData } = await import(
@@ -441,6 +549,37 @@ async function resolveAttack(id) {
   }, id);
 }
 
+async function waitForAttackCard(fixture) {
+  const outcome = await (
+    await player.page.waitForFunction((fixture) => {
+      const combatUuid = game.combats.get(fixture.combat)?.uuid,
+        message = game.messages.contents.find(
+          (candidate) =>
+            candidate.getFlag("heroes-of-legend", "playerAttackRequest")
+              ?.combatUuid === combatUuid,
+        );
+      if (!message) return null;
+      if (
+        message.getFlag("heroes-of-legend", "playerAttack")?.combatId ===
+        fixture.combat
+      )
+        return { status: "complete", id: message.id };
+      const status = message.getFlag(
+        "heroes-of-legend",
+        "playerAttackStatus",
+      );
+      return ["failed", "interrupted"].includes(status)
+        ? { status, id: message.id, content: message.content }
+        : null;
+    }, fixture)
+  ).jsonValue();
+  if (outcome.status !== "complete")
+    throw new Error(
+      `Basic Melee request ${outcome.id} ${outcome.status}: ${outcome.content}`,
+    );
+  return outcome.id;
+}
+
 async function mainState(fixture) {
   return gm.page.evaluate((fixture) => {
     const combat = game.combats.get(fixture.combat),
@@ -483,6 +622,7 @@ try {
   );
   await activateScenario(primary);
   const baseline = await requestData(primary);
+  assert.equal(baseline.basis.geometry.status, "adjacent");
   const encounterBefore = await gm.page.evaluate((fixture) => {
     const state = game.combats
       .get(fixture.combat)
@@ -512,9 +652,13 @@ try {
     label: "Hidden target",
     targetHidden: true,
   });
+  markDiagnostic(`${hiddenTarget.label}: player visibility`);
+  await Promise.all([
+    viewScenario(player.page, hiddenTarget),
+    viewScenario(gm.page, hiddenTarget),
+  ]);
   const hiddenForPlayer = await player.page.evaluate(async (fixture) => {
     const scene = game.scenes.get(fixture.scene);
-    await scene.view();
     canvas.tokens.get(fixture.attackerTokenId).control({ releaseOthers: true });
     const actor = await fromUuid(fixture.attackerActorUuid),
       targetToken = scene.tokens.get(fixture.targetTokenId),
@@ -544,9 +688,9 @@ try {
     () => requestData(hiddenTarget),
     /not visible or available/,
   );
+  markDiagnostic(`${hiddenTarget.label}: GM visibility`);
   const hiddenForGm = await gm.page.evaluate(async (fixture) => {
     const scene = game.scenes.get(fixture.scene);
-    await scene.view();
     canvas.tokens.get(fixture.attackerTokenId).control({ releaseOthers: true });
     const actor = await fromUuid(fixture.attackerActorUuid),
       targetToken = scene.tokens.get(fixture.targetTokenId),
@@ -607,6 +751,8 @@ try {
   }, woundScenario);
   const woundDialog = player.page.locator(".hol-player-attack");
   await woundDialog.locator(".hol-wound-context").first().waitFor();
+  assert.equal(await woundDialog.locator("select[name=weaponItemUuid] option").count(), 2);
+  assert.equal(await woundDialog.locator("select[name=targetTokenUuid]").inputValue(), woundScenario.targetTokenUuid);
   assert.equal(await woundDialog.locator(".hol-wound-context").count(), 2);
   const woundEffectOrder = await woundDialog
     .locator(".hol-wound-context")
@@ -629,8 +775,8 @@ try {
       )?.disabled,
   );
   await gm.page.evaluate(
-    ({ fixture, effectId }) =>
-      fromUuid(fixture.attackerActorUuid).updateEmbeddedDocuments(
+    async ({ fixture, effectId }) =>
+      (await fromUuid(fixture.attackerActorUuid)).updateEmbeddedDocuments(
         "ActiveEffect",
         [
           {
@@ -665,24 +811,7 @@ try {
       )?.disabled,
   );
   await woundAttack.click();
-  await player.page.waitForFunction(
-    (fixture) =>
-      game.messages.some(
-        (message) =>
-          message.getFlag("heroes-of-legend", "playerAttack")?.combatId ===
-          fixture.combat,
-      ),
-    woundScenario,
-  );
-  const woundAttackId = await player.page.evaluate(
-    (fixture) =>
-      game.messages.find(
-        (message) =>
-          message.getFlag("heroes-of-legend", "playerAttack")?.combatId ===
-          fixture.combat,
-      ).id,
-    woundScenario,
-  );
+  const woundAttackId = await waitForAttackCard(woundScenario);
   const woundResult = await gm.page.evaluate(
     ({ fixture, id }) => {
       const operation = game.combats
@@ -727,7 +856,7 @@ try {
       "/systems/heroes-of-legend/services/player-attacks.mjs"
     );
     return nativeBasicMeleeAdjacency(
-      await fromUuid(fixture.attackerActorUuid),
+      await fromUuid(fixture.attackerTokenUuid),
       await fromUuid(fixture.targetTokenUuid),
     );
   }, largeFootprints);
@@ -748,7 +877,7 @@ try {
       "/systems/heroes-of-legend/services/player-attacks.mjs"
     );
     return nativeBasicMeleeAdjacency(
-      await fromUuid(fixture.attackerActorUuid),
+      await fromUuid(fixture.attackerTokenUuid),
       await fromUuid(fixture.targetTokenUuid),
     );
   }, blockedFootprints);
@@ -759,6 +888,7 @@ try {
   const staleCases = [
     {
       name: "weapon",
+      expected: /Hold a compatible melee weapon/,
       mutate: async (fixture) =>
         gm.page.evaluate(async (fixture) => {
           const actor = await fromUuid(fixture.attackerActorUuid);
@@ -776,48 +906,43 @@ try {
     },
     {
       name: "target",
+      expected: /within one adjacent square/,
       mutate: async (fixture) =>
-        gm.page.evaluate(
-          (fixture) =>
-            game.scenes
-              .get(fixture.scene)
-              .tokens.get(fixture.targetTokenId)
-              .update({ x: 900 }),
+        updateFixtureToken(
+          gm.page,
           fixture,
+          fixture.targetTokenId,
+          { x: 900 },
         ),
       restore: async (fixture) =>
-        gm.page.evaluate(
-          (fixture) =>
-            game.scenes
-              .get(fixture.scene)
-              .tokens.get(fixture.targetTokenId)
-              .update({ x: 200 }),
+        updateFixtureToken(
+          gm.page,
           fixture,
+          fixture.targetTokenId,
+          { x: 200 },
         ),
     },
     {
       name: "visibility",
+      expected: /hidden from its request author/,
       mutate: async (fixture) =>
-        gm.page.evaluate(
-          (fixture) =>
-            game.scenes
-              .get(fixture.scene)
-              .tokens.get(fixture.targetTokenId)
-              .update({ hidden: true }),
+        updateFixtureToken(
+          gm.page,
           fixture,
+          fixture.targetTokenId,
+          { hidden: true },
         ),
       restore: async (fixture) =>
-        gm.page.evaluate(
-          (fixture) =>
-            game.scenes
-              .get(fixture.scene)
-              .tokens.get(fixture.targetTokenId)
-              .update({ hidden: false }),
+        updateFixtureToken(
+          gm.page,
           fixture,
+          fixture.targetTokenId,
+          { hidden: false },
         ),
     },
     {
       name: "source",
+      expected: /weapon, target, roll sources or adjacency changed/,
       mutate: async (fixture) =>
         gm.page.evaluate(async (fixture) => {
           const target = await fromUuid(fixture.targetActorUuid);
@@ -854,16 +979,12 @@ try {
   ];
   await release();
   for (const stale of staleCases) {
+    markDiagnostic(`${primary.label}: stale ${stale.name}`);
     const id = await stageRequest(baseline);
     await stale.mutate(primary);
     await bind();
     const result = await resolveAttack(id);
-    assert.match(
-      result.error,
-      /weapon, target, roll sources or adjacency changed|within one adjacent square|Hold a compatible melee weapon|hidden from its request author/,
-    );
-    if (stale.name === "visibility")
-      assert.match(result.error, /hidden from its request author/);
+    assert.match(result.error ?? "", stale.expected);
     assert.equal(await mainState(primary), 1);
     assert.equal(
       await gm.page.evaluate(
@@ -889,13 +1010,12 @@ try {
     label: "DA exception",
   });
   await activateScenario(nonadjacent);
-  await gm.page.evaluate(
-    (fixture) =>
-      game.scenes
-        .get(fixture.scene)
-        .tokens.get(fixture.targetTokenId)
-        .update({ x: 900 }),
+  markDiagnostic(`${nonadjacent.label}: DA exception request`);
+  await updateFixtureToken(
+    gm.page,
     nonadjacent,
+    nonadjacent.targetTokenId,
+    { x: 900 },
   );
   const exceptionRequest = await gm.page.evaluate(async (fixture) => {
     const actor = await fromUuid(fixture.attackerActorUuid),
@@ -966,24 +1086,7 @@ try {
       exact: true,
     })
     .click();
-  await player.page.waitForFunction(
-    (fixture) =>
-      game.messages.some(
-        (message) =>
-          message.getFlag("heroes-of-legend", "playerAttack")?.combatId ===
-          fixture.combat,
-      ),
-    primary,
-  );
-  const attackId = await player.page.evaluate(
-    (fixture) =>
-      game.messages.find(
-        (message) =>
-          message.getFlag("heroes-of-legend", "playerAttack")?.combatId ===
-          fixture.combat,
-      ).id,
-    primary,
-  );
+  const attackId = await waitForAttackCard(primary);
   const rolled = await gm.page.evaluate(
     ({ fixture, id }) => {
       const message = game.messages.get(id),
@@ -1677,6 +1780,61 @@ try {
   console.info(
     "PASS: native target visibility with DA adjudication, wound applicability refresh, encounter preservation, 5-unit grid-space adjacency, large footprints, collision-blocked geometry, reasoned nonadjacency exception, authoritative result projection/replay, forged roll/recovery and hidden-target rejection, late presentation recovery, acknowledged deleted-source recovery with operation-ID damage, PvP one-roll, Main once and linked damage deduplication.",
   );
+} catch (error) {
+  const diagnostics = { label: scenarioDiagnostic };
+  if (gm?.page && !gm.page.isClosed())
+    diagnostics.gm = await gm.page
+      .evaluate(() => ({
+        canvas: {
+          ready: canvas.ready,
+          initialized: canvas.initialized,
+          loading: canvas.loading,
+          sceneId: canvas.scene?.id ?? null,
+        },
+        messages: game.messages.contents
+          .filter((message) =>
+            message.getFlag("heroes-of-legend", "playerAttackRequest"),
+          )
+          .slice(-4)
+          .map((message) => ({
+            id: message.id,
+            content: message.content,
+            status: message.getFlag(
+              "heroes-of-legend",
+              "playerAttackStatus",
+            ),
+          })),
+      }))
+      .catch((diagnosticError) => ({
+        error: diagnosticError.message,
+      }));
+  if (player?.page && !player.page.isClosed())
+    diagnostics.player = await player.page
+      .evaluate(() => ({
+        canvas: {
+          ready: canvas.ready,
+          initialized: canvas.initialized,
+          loading: canvas.loading,
+          sceneId: canvas.scene?.id ?? null,
+        },
+      }))
+      .catch((diagnosticError) => ({
+        error: diagnosticError.message,
+      }));
+  console.error(
+    `Attack fixture diagnostics [${scenarioDiagnostic}]:`,
+    diagnostics,
+  );
+  if (error instanceof Error) {
+    error.message = `[${scenarioDiagnostic}] ${error.message}`;
+    error.stack = `${error.name}: ${error.message}\n${(
+      error.stack ?? ""
+    )
+      .split("\n")
+      .slice(1)
+      .join("\n")}`;
+  }
+  throw error;
 } finally {
   try {
     await player?.context.close();
@@ -1721,6 +1879,7 @@ try {
             ]);
           for (const message of game.messages.filter(
             (message) =>
+              combats.has(message.getFlag("heroes-of-legend", "combatRequest")?.combatUuid) ||
               combats.has(
                 message.getFlag("heroes-of-legend", "playerAttackRequest")
                   ?.combatUuid,

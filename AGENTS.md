@@ -21,7 +21,8 @@ This is the software companion to the Heroes of Legend rulebook. Bruce is the fi
 ## Coding delegation
 
 Bruce authorized DeepSeek coding workers on October 17, 2026. Use them for
-bounded implementation and test-writing tasks; the primary agent handles
+bounded implementation and test-writing tasks with maximum reasoning effort
+(Bruce's explicit preference); the primary agent handles
 architecture, rules interpretation, integration and PR review. Give each worker
 an explicit scope, acceptance criteria and writable checkout. Workers must not
 commit, publish or merge unless separately instructed. Review their full diff
@@ -35,6 +36,8 @@ outside the repository; never include them in prompts, logs or Git.
 - Current design rules supersede legacy Quarto instructions. Check dated approvals before interpreting an old “proposal” label.
 - No numerical skill bonus, opposed attack/defense pair, random weapon damage, spell slots, mana or prerequisite-card chains.
 - Use Foundry public APIs, TypeDataModel and ApplicationV2. Namespace all settings, flags, styles and localization with the package ID.
+- Each Handlebars ApplicationV2 part must have one root HTML element. Do not assign read-only application properties such as `rendered`. Match embedded creation results by document identity, never array position.
+- Native fixtures must supply valid character Speed metadata or an explicit DA ruling, track created documents before later steps can fail, and report cleanup failures.
 - Keep rules calculation independent of sheets; all state changes pass through permission-checked document services.
 - Never assume all connected clients should apply the same effect. Use a single authoritative execution path and persistent operation IDs.
 - Imported content requires a pinned source commit, stable IDs and reviewable changes. Generated packs are not authoring sources.

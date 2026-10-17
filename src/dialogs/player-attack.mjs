@@ -102,6 +102,10 @@ export class BasicMeleeDialog extends foundry.applications.api.HandlebarsApplica
     this.fears = fears;
     return {
       ...context,
+      weapons: this.context.weapons,
+      targets: this.context.targets,
+      reasons: this.context.reasons,
+      rulingReason: this.draft.rulingReason,
       gm: game.user.isGM,
       actorName: this.item.actor.name,
       actorTokenName: this.context.actorToken?.name ?? "",

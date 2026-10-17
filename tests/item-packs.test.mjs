@@ -168,6 +168,7 @@ test("automation labels credit only reviewed handlers; prose never supplies a ha
       ])
       .sort(),
     [
+      ["ability-basic-melee", "player-basic-melee-v1"],
       ["ability-defend", "defend-v1"],
       ["ability-shield-block", "shield-block-v1"],
     ],

@@ -120,7 +120,7 @@ These are requirements for future tests and manual Foundry checks. **They have n
 | T87 | Select Shield Block, deselect, then cancel defense before commitment | No Reaction/effect/payment consumed; request remains pending. Submitting the selected reaction pays once before rolling. |
 | T88 | Creature attacks Hero A; Hero A clicks Defend | Show creature attack description and A's actual token, printed defense attribute/effective stat, Threat, conditions and benefits; allow eligible abilities without rebuilding context. |
 | T89 | Area attack on A and B; A defends with an ability | A and B have separate response IDs/results; A's choice does not change B's roll or resolve B automatically. |
-| T90 | Non-owner clicks Defend; two owners click; chat reloads after completion | Unauthorized user cannot roll for target; authorized users produce one committed response; completed button cannot reroll/reapply. |
+| T90 | Any player/non-owner clicks Defend; two players handle one defender; chat reloads | Dialog opens without ownership/target gating; actual roller and chosen defender recorded separately; accidental duplicate application prevented; card remains usable for other defenders and explicit additional attempts. |
 | T91 | Drag owned eligible ability into dialog, then a compendium/unowned ability | Owned ability becomes a draft selection; unowned source cannot grant free use. Invalid type/drop explains why. |
 | T92 | Drop same ability into acquisition twice; transfer equipment; drop summon into scene | No duplicate grant/payment; transfer preserves instance/supply and debits once; summon requires eligible paid workflow. |
 | T93 | Drag/drop after sheet rerender and in detached window; use keyboard alternative | Same UUID/permission validation and result as main sheet; no lost listeners, silent failure or acting-actor swap. |
@@ -138,6 +138,14 @@ These are requirements for future tests and manual Foundry checks. **They have n
 | T100 | Pause, reload, resume or cancel a draft | Draft resumes accurately; cancel changes no committed mechanical state; stage expiry occurs only at valid commitment. |
 | T101 | Level up with banked DP, then repeat/reload/retry | Show exact new grants, safe-place restrictions and before/after review; keep banked DP; milestone grants and purchases occur once. |
 | T102 | Two owners commit the same draft; compare keyboard/drop workflows | Stale revision rejected or reconciled with explanation; identical validation; no duplicate rewards; approved reference-character parity. |
+
+## Native GM targeting and open defense
+
+| ID | Scenario | Required result |
+|---|---|---|
+| T103 | GM natively targets A/B, clicks Attack, then targets C | Posted suggestions remain A/B; native multi-target UI is sufficient; C does not silently replace them. |
+| T104 | Wrong player clicks; no target was selected; extra character is affected | Open/cancel/choose another defender without consuming card; no-target case opens chooser; each defense is independent. |
+| T105 | A rule suggests an ability/defender is ineligible during encounter | Explain the rule and allow an explicit DA-adjudicated exception; do not turn it into a blanket Defend gate. Mutation permissions and duplicate protection remain intact. |
 
 ## Test organization and evidence
 

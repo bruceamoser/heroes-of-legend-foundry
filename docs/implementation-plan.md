@@ -35,6 +35,8 @@ Created foundation issues: [F01 / #4](https://github.com/bruceamoser/heroes-of-l
 
 **Gate:** runnable alpha using a small explicitly labeled fixture catalog. This is not yet a full-system or content-completeness release.
 
+A04 is implemented in #50 with native tracker/runtime evidence. #48 supplies pure A01/A05 action-resource plans; action execution, phase effects and shared roll/defense integration remain outstanding.
+
 ## Core interaction work — required alongside the encounter alpha
 
 These are four additional focused work items, confirmed in #12. Created issues: [U01 / #13](https://github.com/bruceamoser/heroes-of-legend-foundry/issues/13), [U02 / #14](https://github.com/bruceamoser/heroes-of-legend-foundry/issues/14), [U03 / #15](https://github.com/bruceamoser/heroes-of-legend-foundry/issues/15), [U04 / #16](https://github.com/bruceamoser/heroes-of-legend-foundry/issues/16). Complete the relevant initial drop routes for alpha, then extend the same contract as creation, inventory and summons become available. Full release requires every drop route in [interaction design](interaction-design.md).

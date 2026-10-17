@@ -65,3 +65,12 @@
 .heroes-of-legend.hol-authority .window-title { font-size:14px; }
 .heroes-of-legend.hol-authority button { background:var(--hol-forest); color:var(--hol-ivory); border:1px solid var(--hol-gold); text-shadow:none; }
 .heroes-of-legend.hol-authority button:disabled { background:#d6d1c5; color:#555044; }
+.hol-encounter { padding:10px; margin:6px; background:#f7f3e9; color:#28251c; border:1px solid #b39253; font-family:"HOL Garamond",Georgia,serif; font-size:16px; }
+.hol-encounter p { margin:5px 0; }
+.hol-encounter button { width:100%; background:#15221c; color:#f1e6ce; border:1px solid #b39253; margin:3px 0; height:auto; min-height:30px; white-space:normal; }
+.hol-encounter button:disabled { background:#d6d1c5; color:#555044; }
+.hol-encounter label { display:flex; justify-content:space-between; gap:8px; margin:5px 0; }
+.hol-encounter select, .hol-encounter input { color:#28251c; background:#fffdf7; border:1px solid #8b8069; }
+.hol-encounter :focus-visible { outline:3px solid #5b7648; outline-offset:2px; }
+.hol-turn-status { font-size:12px; white-space:normal; line-height:1.2; }
+.hol-encounter { max-height:45vh; overflow-y:auto; flex-shrink:0; }

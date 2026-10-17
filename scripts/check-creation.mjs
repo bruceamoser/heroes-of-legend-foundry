@@ -253,7 +253,7 @@ try {
       "Reduce temporary Poisoned by 3 or Dazed by 2.",
     ],
   );
-  const referenceText = (await reference.textContent()).replace(/\s+/g, " ");
+  const referenceText = (await reference.innerText()).replace(/\s+/g, " ");
   assert.match(referenceText, /Action Maneuver/);
   assert.match(referenceText, /Attribute Knowledge/);
   assert.match(
@@ -270,12 +270,10 @@ try {
     /Equipment \/ acquisition One mixing kit, Bulk 1/,
   );
   await clever.scrollIntoViewIfNeeded();
-  await clever.screenshot({
+  await wizard.screenshot({
     path: "test-results/creation-choice-details.png",
   });
-  await page.evaluate(() =>
-    holWizard.setPosition({ width: 620, height: 800 }),
-  );
+  await page.evaluate(() => holWizard.setPosition({ width: 620, height: 800 }));
   const narrow = await clever.evaluate((el) => {
     const main = el.closest(".hol-wizard-main"),
       list = el.closest(".hol-choice-list"),
@@ -297,12 +295,14 @@ try {
   assert(narrow.overflow <= 1);
   assert(narrow.buttonVisible);
   assert(narrow.fontSize >= 12);
-  await clever.screenshot({
+  await wizard.screenshot({
     path: "test-results/creation-choice-details-narrow.png",
   });
-  await page.evaluate(() =>
-    holWizard.setPosition({ width: 980, height: 800 }),
-  );
+  await reference.locator(".hol-reference-outcomes").scrollIntoViewIfNeeded();
+  await wizard.screenshot({
+    path: "test-results/creation-choice-outcomes.png",
+  });
+  await page.evaluate(() => holWizard.setPosition({ width: 980, height: 800 }));
   await action("Origins");
   await wizard
     .locator("[name=culture]")

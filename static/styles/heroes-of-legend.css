@@ -196,3 +196,4 @@
 
 .heroes-of-legend.hol-character .window-title, .heroes-of-legend.hol-ability .window-title { font-size: 14px; }
 @media (max-width: 700px) { .heroes-of-legend .hol-item-row { grid-template-columns: minmax(0, 1fr); } .heroes-of-legend .hol-item-open { border-right: 0; } }
+.heroes-of-legend .hol-choice:has(details.hol-ability-reference[open]) { grid-column: 1 / -1; }

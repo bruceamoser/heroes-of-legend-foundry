@@ -37,5 +37,7 @@
   "packs": [],
   "styles": [
     "styles/heroes-of-legend.css"
-  ]
+  ],
+  "manifest": "https://github.com/bruceamoser/heroes-of-legend-foundry/releases/latest/download/system.json",
+  "download": "https://github.com/bruceamoser/heroes-of-legend-foundry/releases/download/v0.1.0-alpha.1/heroes-of-legend.zip"
 }

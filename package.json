@@ -37,7 +37,8 @@
     "test:creatures": "node scripts/check-creatures.mjs",
     "test:npc-attacks": "node scripts/check-npc-attacks.mjs",
     "test:defense-responses": "node scripts/check-defense-responses.mjs",
-    "test:equipment": "node scripts/check-equipment.mjs"
+    "test:equipment": "node scripts/check-equipment.mjs",
+    "package:release": "node scripts/package-release.mjs"
   },
   "devDependencies": {
     "@foundryvtt/foundryvtt-cli": "3.0.5",

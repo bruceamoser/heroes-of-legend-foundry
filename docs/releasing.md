@@ -1,0 +1,16 @@
+# Foundry releases
+
+Bruce authorized publishing an installable GitHub release on October 17, 2026. A final release still requires completed gameplay/content acceptance; a successful package build alone is not that evidence.
+
+The package uses the [Foundry manifest installation format](https://foundryvtt.com/article/system-development/), following Neon Relic's manifest-plus-ZIP release pattern. The update manifest is `https://github.com/bruceamoser/heroes-of-legend-foundry/releases/latest/download/system.json`. Each manifest pins its ZIP to `/releases/download/vVERSION/heroes-of-legend.zip`, so an old manifest cannot accidentally install newer bytes. GitHub excludes prereleases from `latest`; a preview must be installed with its version-specific `system.json` release URL.
+
+Use Node 24, `npm ci`, and the `zip`/`unzip` command-line tools (preinstalled on GitHub Ubuntu runners). `npm run check` builds/validates/tests, including a deterministic archive round-trip. `npm run package:release` creates `release-artifacts/system.json`, `heroes-of-legend.zip`, and `SHA256SUMS`. `HOL_RELEASE_TAG` must equal `v` plus the package and manifest version. Files are sorted, timestamps and permissions normalized, and every extracted byte is compared with the staged package. No licensed Foundry runtime or world database is needed for packaging.
+
+1. Complete the release acceptance matrix and document remaining deliberate DA choices. Full release requires all content handlers and the charactermancer, rather than labeling the current preview complete.
+2. Record content/art distribution notices and provenance. Code licensing remains undecided at Bruce's direction; do not inherit Neon Relic's license or invent an open-source grant.
+3. Update `package.json`, lockfile version and `static/system.json` in a reviewed PR, with release notes and runtime evidence. Run the multiplayer, permissions, recovery, catalog and visual checks.
+4. Squash merge, then tag that tested commit `vVERSION` and push the tag. The workflow validates the tag and creates a **draft** GitHub release containing the manifest, ZIP and checksums. It never silently replaces existing assets. If a draft already exists, inspect its commit and artifacts before explicitly repairing it.
+5. In a separate disposable V14 installation, test fresh manifest installation and an upgrade from the preceding release; create/reload a world and verify packs, local edits and native gameplay. A local archive extraction test is not a Foundry Setup install test. Do not publish proprietary Foundry test files.
+6. Replace draft notes with tested features, exact Foundry version, deliberate DA boundaries, migration instructions and actual validation. Publish the release after those gates pass (author review/merge/publishing is already authorized). Download its public assets, verify SHA256SUMS and verify the public manifest's ZIP URL. Record the final manifest URL.
+
+Foundry consumption through a manifest URL does not require a Foundry website listing. Submission to the package directory is a separate account operation; do not claim directory approval merely because the GitHub manifest is installable.

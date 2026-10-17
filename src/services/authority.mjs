@@ -114,7 +114,8 @@ async function appliedWork(work) {
   const request =
     message?.getFlag(ID, "creationRequest") ??
     message?.getFlag(ID, "developmentRequest") ??
-    message?.getFlag(ID, "combatRequest");
+    message?.getFlag(ID, "combatRequest") ??
+    message?.getFlag(ID, "conditionRequest");
   const uuid = request?.actorUuid ?? request?.combatUuid;
   if (!uuid) return false;
   const actor = await fromUuid(uuid);

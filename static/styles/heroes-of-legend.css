@@ -74,3 +74,7 @@
 .hol-encounter :focus-visible { outline:3px solid #5b7648; outline-offset:2px; }
 .hol-turn-status { font-size:12px; white-space:normal; line-height:1.2; }
 .hol-encounter { max-height:45vh; overflow-y:auto; flex-shrink:0; }
+.heroes-of-legend.hol-conditions button { color:var(--hol-ivory); background:var(--hol-forest); border:1px solid var(--hol-gold); margin:4px 0; }
+.heroes-of-legend.hol-conditions .window-title { font-size:14px; }
+.heroes-of-legend .hol-condition-sources { list-style:none; padding:0; }
+.heroes-of-legend .hol-condition-sources li { border:1px solid var(--hol-gold); margin:8px 0; padding:10px; }

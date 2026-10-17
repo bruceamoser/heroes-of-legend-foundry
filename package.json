@@ -29,7 +29,8 @@
     "test:advancement": "node scripts/check-advancement.mjs",
     "test:coordinator": "node scripts/check-coordinator.mjs",
     "test:coordinator-restart": "node scripts/check-coordinator-restart.mjs",
-    "test:combat": "node scripts/check-combat.mjs"
+    "test:combat": "node scripts/check-combat.mjs",
+    "test:conditions": "node scripts/check-conditions.mjs"
   },
   "devDependencies": {
     "@foundryvtt/foundryvtt-cli": "3.0.5",

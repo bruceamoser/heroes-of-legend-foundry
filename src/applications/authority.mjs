@@ -1,3 +1,4 @@
+import { resolveConditionRequest } from "../services/conditions.mjs";
 import { resolveCombatRequest } from "../services/combat.mjs";
 import {
   bindCreationAuthority,
@@ -14,6 +15,8 @@ export async function retryCharacterRequest(id) {
   if (message?.getFlag(ID, "developmentRequest"))
     return resolveDevelopmentRequest(id);
   if (message?.getFlag(ID, "combatRequest")) return resolveCombatRequest(id);
+  if (message?.getFlag(ID, "conditionRequest"))
+    return resolveConditionRequest(id);
   throw new Error("Unknown automation request.");
 }
 export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicationMixin(
@@ -53,7 +56,8 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
           (m) =>
             m.getFlag(ID, "creationRequest") ||
             m.getFlag(ID, "developmentRequest") ||
-            m.getFlag(ID, "combatRequest"),
+            m.getFlag(ID, "combatRequest") ||
+            m.getFlag(ID, "conditionRequest"),
         )
         .slice(-30)
         .reverse()
@@ -64,7 +68,8 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
           request: m.getFlag(ID, "creationRequest")
             ? "Creation"
             : (m.getFlag(ID, "developmentRequest")?.kind ??
-              m.getFlag(ID, "combatRequest")?.kind),
+              m.getFlag(ID, "combatRequest")?.kind ??
+              m.getFlag(ID, "conditionRequest")?.kind),
         })),
     };
   }

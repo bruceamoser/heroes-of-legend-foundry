@@ -25,3 +25,7 @@ Neon Relic is an implementation reference, not this system's code base. HOL uses
 Read [AGENTS.md](AGENTS.md). Work follows issue → branch → implementation → PR → independent review → squash merge. The first two issues track [research](https://github.com/bruceamoser/heroes-of-legend-foundry/issues/1) and [specification](https://github.com/bruceamoser/heroes-of-legend-foundry/issues/2).
 
 Code and content licensing will be selected separately before the first distributable release; this planning repository does not assign a new license to the rulebook or artwork.
+
+## Development preview
+
+The first native V14 package foundation is implemented. It currently boots and loads localization; gameplay features remain under development. See [development setup and test evidence](docs/development.md). Build with Node 24 using `npm ci` and `npm run check`; output is `dist/heroes-of-legend/`.

@@ -30,6 +30,6 @@ This is the software companion to the Heroes of Legend rulebook. Bruce is the fi
 - Published and user-edited world content must not be silently overwritten by an import or migration.
 - No Foundry application distribution, credentials, real world databases or licensed third-party content in Git.
 
-## Validation during planning
+## Validation
 
-This branch contains documentation only. Check local links, source references, JSON and Git whitespace. A future implementation must establish the commands in the build plan before advertising them as runnable. No Foundry runtime compatibility has been certified by this specification.
+Use Node 24 (see `.node-version`), `npm ci`, then `npm run check`. Run `npm run test:runtime` only against an isolated local Foundry development world with `HOL_TEST_URL` set explicitly. See `docs/development.md` for setup and the limits of current runtime evidence. Never use live campaign data for automated testing.

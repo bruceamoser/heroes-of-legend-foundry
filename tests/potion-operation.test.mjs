@@ -2,9 +2,17 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import {
   linkedPotionOperationId,
+  normalizePotionGeometry,
+  potionGeometryRulingAuthorized,
   potionOperationNextPhase,
   potionSourceMatches,
+  validatePotionEncounterReceipts,
 } from "../src/rules/potion-operation.mjs";
+import {
+  continueAction,
+  declareAction,
+  startTurn,
+} from "../src/rules/actions.mjs";
 
 const requestId = "potionRequest123",
   operation = {
@@ -160,5 +168,135 @@ test("invalid linked or foreign receipts fail closed", () => {
         supplyOperation: supply("unknown"),
       }),
     /unknown phase/,
+  );
+});
+
+test("action turnId comes from the enclosing budget, not the operation receipt", () => {
+  const requestId = "potion-budget",
+    reactionId = linkedPotionOperationId(requestId, "reaction"),
+    giverBefore = startTurn({ turnId: "turn-giver", speed: 5 }),
+    recipientBefore = startTurn({ turnId: "turn-recipient", speed: 5 }),
+    declared = declareAction(giverBefore, {
+      operationId: requestId,
+      sourceId: "use-a-healing-potion",
+      category: "maneuver",
+    }),
+    continued = continueAction(
+      declared,
+      { hp: 8, items: {} },
+      { operationId: requestId, capable: true },
+    ),
+    giverAfter = continued.state,
+    recipientAfter = declareAction(recipientBefore, {
+      operationId: reactionId,
+      sourceId: "use-a-healing-potion",
+      category: "reaction",
+      ownTurn: false,
+    }),
+    giverReceipt = giverAfter.operations[requestId],
+    reactionReceipt = recipientAfter.operations[reactionId],
+    operation = {
+      requestId,
+      reactionOperationId: reactionId,
+      reactionCommitted: false,
+      encounterRevisionAfter: 2,
+      giver: {
+        participantId: "giver",
+        turnId: giverBefore.turnId,
+        actionReceipt: giverReceipt,
+      },
+      recipient: {
+        participantId: "recipient",
+        turnId: recipientBefore.turnId,
+        reactionReceipt: null,
+      },
+      budgets: {
+        before: {
+          giver: giverBefore,
+          recipient: recipientBefore,
+        },
+        after: {
+          giver: giverAfter,
+          recipient: recipientAfter,
+        },
+      },
+      plan: {
+        giverTurn: giverAfter,
+        recipientTurn: recipientAfter,
+        costs: { recipient: { reaction: 1 } },
+      },
+    };
+  assert.equal(operation.giver.turnId, giverBefore.turnId);
+  assert.equal(Object.hasOwn(giverReceipt, "turnId"), false);
+  assert.equal(Object.hasOwn(reactionReceipt, "turnId"), false);
+  assert.doesNotThrow(() =>
+    validatePotionEncounterReceipts(operation, {
+      revision: 2,
+      budgets: {
+        giver: giverAfter,
+        recipient: recipientBefore,
+      },
+    }),
+  );
+
+  const committed = structuredClone(operation);
+  committed.reactionCommitted = true;
+  committed.encounterRevisionAfter = 3;
+  committed.recipient.reactionReceipt = reactionReceipt;
+  assert.doesNotThrow(() =>
+    validatePotionEncounterReceipts(committed, {
+      revision: 3,
+      budgets: {
+        giver: giverAfter,
+        recipient: recipientAfter,
+      },
+    }),
+  );
+  assert.throws(
+    () =>
+      validatePotionEncounterReceipts(
+        {
+          ...operation,
+          giver: {
+            ...operation.giver,
+            actionReceipt: { ...giverReceipt, turnId: "invented" },
+          },
+        },
+        {
+          revision: 2,
+          budgets: {
+            giver: giverAfter,
+            recipient: recipientBefore,
+          },
+        },
+      ),
+    /giver action receipt changed/,
+  );
+});
+
+test("DA geometry rulings are attributed to their actual proposing GM", () => {
+  const gm = { id: "gm-1", isGM: true },
+    player = { id: "player-1", isGM: false },
+    ruling = normalizePotionGeometry(
+      {
+        mode: "da-ruling",
+        reason: "Large-footprint wall corner is adjacent.",
+      },
+      gm,
+    );
+  assert.deepEqual(ruling, {
+    mode: "da-ruling",
+    userId: gm.id,
+    reason: "Large-footprint wall corner is adjacent.",
+  });
+  assert.equal(potionGeometryRulingAuthorized(ruling, gm), true);
+  assert.equal(potionGeometryRulingAuthorized(ruling, player), false);
+  assert.throws(
+    () =>
+      normalizePotionGeometry(
+        { mode: "da-ruling", reason: "Player ruling" },
+        player,
+      ),
+    /actual DA/,
   );
 });

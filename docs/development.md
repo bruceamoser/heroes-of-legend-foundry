@@ -624,26 +624,57 @@ ApplicationV2. It shows the exact live bottle and recipient, fixed 6/10/16
 healing before Life resistance and its resulting restoration, free hands,
 Maneuver and Reaction costs, and the post-healing d4 supply check. Another
 recipient confirms willingness in chat;
-unowned recipients cannot be marked willing by the giver. Native 1x1 grid
-geometry is measured by the coordinator, while ambiguous geometry requires an
-attributed DA reason. The explicit interruption continuation control is a table
-decision because opportunity automation remains disconnected.
+unowned recipients cannot be marked willing by the giver. Native square-grid
+geometry is measured by the coordinator from occupied grid-square centers,
+`measurePath(...).spaces`, and actual move-line collision. It therefore keeps
+scene distance units out of square counts and supports large footprints and
+clear ties. Non-square or unavailable geometry, walls that prevent every
+nearest line, differing levels, and differing elevation require an attributed
+DA reason. A DA ruling remains bound to the GM proposer when a recipient later
+owns the final consent request. The explicit interruption continuation control
+is a table decision because opportunity automation remains disconnected.
+The helper is local to #116 because the reviewed #108 branch is not merged;
+after integration the primary can consolidate both callers onto it.
 
 The coordinator writes one durable Combat operation containing the plan and both
-participant budgets before Actor mutation. Recipient HP/survival/source receipts
-share one strict Actor update. A deterministic linked Actor child reserves the
-supply phase before evaluating its native Roll, then stores the Roll JSON and
-settles supply after healing. Resume reads actual receipts rather than trusting a
-cached phase; it never replenishes actions or rerolls dice. A rolling child with
-no saved face can only continue through a DA-entered observed face. If the exact
-bottle changes during the operation, Manage automation offers an attributed
-reconciliation rather than charging a replacement bottle. No release or
-licensing metadata changes with this bounded integration.
+participant budgets before Actor mutation. The giver `turnId` comes from that
+enclosing budget; the separately stored action receipt contains no invented
+turn identity. A living other-recipient Reaction is committed in its own Combat
+phase after source and state checks, so cancellation before healing restores an
+unused Reaction instead of claiming it was never spent. Recipient
+HP/survival/source receipts share one strict Actor update. A deterministic
+linked Actor child reserves the supply phase before evaluating its native Roll,
+then stores the Roll JSON and settles supply after healing. Every proposed
+embedded Item is constructed and validated strictly before the authoritative
+supply Actor write; unrelated Items are verified unchanged afterward. Resume
+reads actual receipts rather than trusting a cached phase; it never replenishes
+actions or rerolls dice. A rolling child with no saved face can only continue
+through a DA-entered observed face. If the exact bottle changes during the
+operation, Manage automation offers an attributed reconciliation rather than
+charging a replacement bottle. No release or licensing metadata changes with
+this bounded integration.
 
 `HOL_TEST_URL=http://127.0.0.1:30014 HOL_TEST_ALLOW_WRITES=1 npm run test:potions`
-is the serial disposable-world fixture for native UI consent, Life resistance,
-0 HP, durable retry, dropped response, final d4 recovery, source reconciliation
-and interruption. It is not run against campaign data.
+is the serial disposable-world fixture for native UI consent, compendium
+descriptions, 5-unit 1x1 and large-footprint geometry, walls, altitude, Life
+resistance, 0 HP, unlinked synthetic Actor identity, durable retry, strict
+embedded Item rejection, dropped response, final d4 recovery without a reroll,
+source reconciliation and interruption. It tracks every fixture document when
+created, markers cleanup targets, and is not run against campaign data.
+
+Native startup validation now links every `src/**/*.mjs` module through Node's
+ESM linker without evaluating Foundry-dependent bodies, so a named import that
+does not match its target export or a local initialization cycle fails the
+normal test suite. The potion sheets import the preparation UI from
+`applications/potions.mjs`; service-only predicates remain in
+`services/potions.mjs`. The serial fixture also verifies that
+the ready hook, custom data models and `authorityMeta` initialized after
+`game.ready`, reports captured browser page errors before binding, attempts
+authority release only after a successful bind, and describes fixture cleanup
+based on documents actually tracked.
+Source-wide syntax and focused potion, operation, adjacency, inventory and
+module-link tests pass in the coding-worker environment. The rebuilt Foundry
+native rerun remains the primary integration check.
 
 ### Two-recipe Ordinary Recipe Study (#93)
 

@@ -8,8 +8,11 @@ import { handLayout } from "../rules/hands.mjs";
 import { inventoryCheck } from "../rules/inventory.mjs";
 import {
   linkedPotionOperationId,
+  normalizePotionGeometry,
+  potionGeometryRulingAuthorized,
   potionOperationNextPhase,
   potionSourceMatches,
+  validatePotionEncounterReceipts,
 } from "../rules/potion-operation.mjs";
 import {
   survivalState,
@@ -22,9 +25,13 @@ import {
 } from "./authority.mjs";
 import { loadCatalogs } from "./catalog.mjs";
 import { damageBasis } from "./damage.mjs";
-import { inventoryBasis } from "./inventory.mjs";
+import {
+  inventoryBasis,
+  validateEmbeddedItems,
+} from "./inventory.mjs";
 import { actionConditions } from "./turn-budget.mjs";
 import { assertNoPendingTurn } from "./turn-lock.mjs";
+import { nativeTokenAdjacency } from "./native-adjacency.mjs";
 
 const ID = "heroes-of-legend",
   POTION_ABILITY_ID = "ability-use-a-healing-potion",
@@ -206,107 +213,80 @@ export function potionCombatContext(sourceItem) {
   return matches[0];
 }
 
-function tokenLevel(token) {
-  return token?.level?.id ?? token?.level?._id ?? token?.level ?? null;
+async function resolveCombat(combatUuid) {
+  if (typeof combatUuid !== "string" || !combatUuid.trim())
+    throw new Error("The potion encounter identity is missing.");
+  const combat = await fromUuid(combatUuid);
+  if (combat?.documentName !== "Combat")
+    throw new Error("The potion encounter is unavailable.");
+  return combat;
 }
 
-/**
- * Measure only simple 1x1 native tokens on the active scene. Other geometry
- * requires an attributed DA ruling rather than a guessed pixel distance.
- */
-function nativeAdjacency(giverCombatant, recipientCombatant) {
+function nativeCombatantAdjacency(giverCombatant, recipientCombatant) {
   const giverToken = giverCombatant?.token,
-    recipientToken = recipientCombatant?.token,
-    grid = canvas?.grid;
-  if (
-    !giverToken ||
-    !recipientToken ||
-    giverToken.scene?.id !== recipientToken.scene?.id ||
-    canvas?.scene?.id !== giverToken.scene?.id
-  )
-    return { known: false, distance: null };
-  const giverWidth = giverToken.width ?? giverToken.object?.w,
-    recipientWidth = recipientToken.width ?? recipientToken.object?.w;
-  if (
-    giverWidth !== 1 ||
-    recipientWidth !== 1 ||
-    tokenLevel(giverToken) !== tokenLevel(recipientToken) ||
-    !grid
-  )
-    return { known: false, distance: null };
-  const a = {
-      x: giverToken.x + (giverToken.object?.w ?? 100) / 2,
-      y: giverToken.y + (giverToken.object?.h ?? 100) / 2,
-    },
-    b = {
-      x: recipientToken.x + (recipientToken.object?.w ?? 100) / 2,
-      y: recipientToken.y + (recipientToken.object?.h ?? 100) / 2,
+    recipientToken = recipientCombatant?.token;
+  if (!giverToken || !recipientToken)
+    return {
+      known: false,
+      adjacent: null,
+      distance: null,
+      reason: "The potion participants have no exact tokens.",
     };
-  try {
-    const measured =
-      typeof grid.measurePath === "function"
-        ? grid.measurePath([a, b], { gridSpaces: true })
-        : grid.measureDistance?.(a, b, { gridSpaces: true });
-    const distance =
-      typeof measured === "number" ? measured : measured?.distance;
-    if (Number.isFinite(distance)) return { known: true, distance };
-  } catch {
-    /* Ambiguous geometry goes to an explicit DA judgment below. */
-  }
-  return { known: false, distance: null };
+  return nativeTokenAdjacency(giverToken, recipientToken);
 }
 
-export function previewPotionAdjacency(
+export async function previewPotionAdjacency(
   combatUuid,
   giverParticipantId,
   recipientParticipantId,
   relation = "other",
 ) {
+  const combat = await resolveCombat(combatUuid),
+    giver = combat.combatants.get(giverParticipantId),
+    recipient = combat.combatants.get(recipientParticipantId);
+  if (!giver || !recipient)
+    throw new Error("The potion participants changed.");
   if (relation === "self")
     return { known: true, distance: 0, adjacent: true };
-  const combat = game.combats.get(combatUuid),
-    giver = combat?.combatants.get(giverParticipantId),
-    recipient = combat?.combatants.get(recipientParticipantId);
-  if (!combat || !giver || !recipient)
-    throw new Error("The potion participants changed.");
-  const native = nativeAdjacency(giver, recipient);
-  return {
-    ...native,
-    adjacent: native.known ? native.distance > 0 && native.distance <= 1 : false,
-  };
+  return nativeCombatantAdjacency(giver, recipient);
 }
 
 function geometryFor({
-  combat,
   giverParticipant,
   recipientParticipant,
   relation,
   requested,
-  author,
+  sourceAuthor,
 }) {
   if (relation === "self")
     return { adjacent: true, kind: "self", distance: null, userId: null };
   if (
     requested?.mode === "da-ruling" &&
-    author?.isGM &&
-    typeof requested.reason === "string" &&
-    requested.reason.trim()
+    potionGeometryRulingAuthorized(requested, sourceAuthor)
   )
     return {
       adjacent: true,
       kind: "da-ruling",
       distance: null,
-      userId: author.id,
+      userId: requested.userId,
       reason: requested.reason.trim(),
     };
-  const native = nativeAdjacency(giverParticipant, recipientParticipant);
-  if (!native.known)
+  if (requested?.mode !== "native")
     throw new Error(
-      "The grid cannot decide adjacency here. The DA must record a geometry judgment.",
+      "The recorded potion geometry ruling does not belong to the actual DA.",
     );
-  if (!(native.distance > 0 && native.distance <= 1))
+  const native = nativeCombatantAdjacency(
+    giverParticipant,
+    recipientParticipant,
+  );
+  if (!native.known || typeof native.adjacent !== "boolean")
     throw new Error(
-      `The selected recipient is not adjacent (native distance ${native.distance}).`,
+      native.reason ??
+        "The grid cannot decide adjacency here. The DA must record a geometry judgment.",
+    );
+  if (!native.adjacent)
+    throw new Error(
+      `The selected recipient is not adjacent (native distance ${native.distance ?? "unavailable"}).`,
     );
   return {
     adjacent: true,
@@ -407,13 +387,12 @@ export async function previewPotionUse({
   if (actor.type !== "character")
     throw new Error("Only a character can give or use an ordinary potion.");
   const { combat, combatant: giverCombatant, encounter } = combatUuid
-      ? (() => {
-          const combat = game.combats.get(combatUuid);
-          if (!combat) throw new Error("The selected encounter is unavailable.");
-          const encounter = combat.getFlag(ID, "encounter");
-          const combatant = combat.combatants.get(
-            giverParticipantId ?? encounter?.current,
-          );
+      ? await (async () => {
+          const combat = await resolveCombat(combatUuid),
+            encounter = combat.getFlag(ID, "encounter"),
+            combatant = combat.combatants.get(
+              giverParticipantId ?? encounter?.current,
+            );
           if (!combatant || combatant.actor?.uuid !== actor.uuid)
             throw new Error("The potion giver's combatant changed.");
           return { combat, combatant, encounter };
@@ -630,6 +609,7 @@ export async function requestPotionUse({
     throw new Error(
       "Record whether the action continues after its interruption check.",
     );
+  const requestedGeometry = normalizePotionGeometry(geometry, game.user);
   const sourceItem = await fromUuid(sourceItemUuid),
     giver = assertWorldActor(sourceItem?.actor, "Potion giver");
   if (!giver.testUserPermission(game.user, "OWNER") && !game.user.isGM)
@@ -653,14 +633,27 @@ export async function requestPotionUse({
     throw new Error(
       "The potion state changed while the dialog was open. Review the current bottle, recipients and costs again.",
     );
-  const encounter = game.combats
-      .get(preview.combatUuid)
-      ?.getFlag(ID, "encounter"),
-    base = requestBase(preview, {
+  const combat = await resolveCombat(preview.combatUuid),
+    encounter = combat.getFlag(ID, "encounter"),
+    giverCombatant = combat.combatants.get(preview.giverParticipantId),
+    recipientCombatant = combat.combatants.get(
+      preview.recipientParticipantId,
+    ),
+    sourceAuthor = game.users.get(game.user.id) ?? game.user;
+  if (!giverCombatant || !recipientCombatant)
+    throw new Error("The potion participants changed.");
+  geometryFor({
+    giverParticipant: giverCombatant,
+    recipientParticipant: recipientCombatant,
+    relation: preview.relation,
+    requested: requestedGeometry,
+    sourceAuthor,
+  });
+  const base = requestBase(preview, {
       sourceItemUuid,
       revision: encounter.revision,
       continuesAfterInterruption,
-      geometry,
+      geometry: requestedGeometry,
     }),
     ownsRecipient = recipient.testUserPermission(game.user, "OWNER");
   if (preview.relation === "other" && !ownsRecipient && !game.user.isGM) {
@@ -856,6 +849,14 @@ function validateRequestShapes(request) {
     !["native", "da-ruling"].includes(request.geometry.mode)
   )
     throw new Error("The potion geometry choice is invalid.");
+  if (
+    request.geometry.mode === "da-ruling" &&
+    (typeof request.geometry.userId !== "string" ||
+      !request.geometry.userId ||
+      typeof request.geometry.reason !== "string" ||
+      !request.geometry.reason.trim())
+  )
+    throw new Error("The DA potion geometry ruling is incomplete.");
   if (!request.expected)
     throw new Error("The potion request is missing its reviewed snapshot.");
   return request;
@@ -876,9 +877,10 @@ function operationObject({
   plan,
   beforeBudgets,
   geometry,
+  encounterRevisionAfter,
 }) {
   return clone({
-    schemaVersion: 1,
+    schemaVersion: 2,
     requestId: message.id,
     combatId: combat.id,
     combatUuid: combat.uuid,
@@ -892,6 +894,8 @@ function operationObject({
       participantId: giverCombatant.id,
       tokenUuid: giverCombatant.token?.uuid ?? null,
       turnId: beforeBudgets.giver.turnId,
+      actionReceipt:
+        plan.giverTurn.operations?.[message.id] ?? null,
       basis: giverBasis,
     },
     recipient: {
@@ -900,6 +904,7 @@ function operationObject({
       participantId: recipientCombatant.id,
       tokenUuid: recipientCombatant.token?.uuid ?? request.recipientTokenUuid,
       turnId: beforeBudgets.recipient.turnId,
+      reactionReceipt: null,
       basis: recipientBasis,
     },
     source: sourceSnapshots,
@@ -918,7 +923,9 @@ function operationObject({
       note: "Explicit table continuation; opportunity automation is not connected.",
     },
     reactionOperationId: linkedPotionOperationId(message.id, "reaction"),
+    reactionCommitted: false,
     supplyOperationId: linkedPotionOperationId(message.id, "supply"),
+    encounterRevisionAfter,
     plan: clone(plan),
   });
 }
@@ -995,13 +1002,16 @@ async function createOperation(message, request) {
     throw new Error(
       "The giver, recipient, healing resistance or exact bottle changed. Review the potion again.",
     );
-  const geometry = geometryFor({
-      combat,
+  const sourceAuthorId = request.proposalId
+      ? proposalFor(request).message.author.id
+      : message.author.id,
+    sourceAuthor = game.users.get(sourceAuthorId),
+    geometry = geometryFor({
       giverParticipant: giverCombatant,
       recipientParticipant: recipientCombatant,
       relation,
       requested: request.geometry,
-      author: message.author,
+      sourceAuthor,
     }),
     catalog = (await loadCatalogs()).inventory,
     plan = planHealingPotion({
@@ -1040,12 +1050,12 @@ async function createOperation(message, request) {
         recipient: clone(recipientBudget),
       },
       geometry,
+      encounterRevisionAfter: state.revision + 1,
     }),
     recipientBudgetAfter = clone(plan.recipientTurn ?? recipientBudget),
     next = clone(state);
   operation.budgets.after.recipient = recipientBudgetAfter;
   next.budgets[giverCombatant.id] = clone(plan.giverTurn);
-  next.budgets[recipientCombatant.id] = recipientBudgetAfter;
   next.revision++;
   next.history.push({
     kind: "potion",
@@ -1072,6 +1082,53 @@ async function createOperation(message, request) {
 
 function currentOperation(combat, id) {
   return clone(combat.getFlag(ID, "potionOperations")?.[id] ?? null);
+}
+
+function validateStoredPotionOperation(operation, id, combat) {
+  if (
+    operation?.schemaVersion !== 2 ||
+    operation.requestId !== id ||
+    operation.combatId !== combat.id ||
+    operation.combatUuid !== combat.uuid ||
+    typeof operation.authorId !== "string" ||
+    !operation.authorId ||
+    !operation.requestSnapshot ||
+    operation.requestSignature !== JSON.stringify(operation.requestSnapshot) ||
+    ![
+      "reserved",
+      "interrupted",
+      "needs-reconciliation",
+      "reconciled-without-supply",
+      "complete",
+    ].includes(operation.status) ||
+    !Number.isSafeInteger(operation.encounterRevisionAfter) ||
+    typeof operation.reactionCommitted !== "boolean" ||
+    operation.reactionOperationId !==
+      linkedPotionOperationId(id, "reaction") ||
+    operation.supplyOperationId !== linkedPotionOperationId(id, "supply") ||
+    typeof operation.giver?.actorUuid !== "string" ||
+    typeof operation.giver?.participantId !== "string" ||
+    typeof operation.giver?.turnId !== "string" ||
+    !operation.giver.actionReceipt ||
+    typeof operation.giver.actionReceipt !== "object" ||
+    Array.isArray(operation.giver.actionReceipt) ||
+    typeof operation.recipient?.actorUuid !== "string" ||
+    typeof operation.recipient?.participantId !== "string" ||
+    typeof operation.recipient?.turnId !== "string" ||
+    (operation.reactionCommitted &&
+      (operation.recipient.reactionReceipt == null ||
+        typeof operation.recipient.reactionReceipt !== "object" ||
+        Array.isArray(operation.recipient.reactionReceipt))) ||
+    (!operation.reactionCommitted &&
+      operation.recipient.reactionReceipt != null) ||
+    Object.hasOwn(operation.giver.actionReceipt, "turnId") ||
+    (operation.recipient.reactionReceipt != null &&
+      Object.hasOwn(operation.recipient.reactionReceipt, "turnId"))
+  )
+    throw new Error(
+      "The durable potion operation changed or uses an unknown receipt shape.",
+    );
+  return operation;
 }
 
 async function potionReceipts(operation) {
@@ -1137,6 +1194,58 @@ function validateSupplyReceipt(receipt, operation, child = null) {
     throw new Error(
       "The waived potion supply does not match its receipt.",
     );
+}
+
+function assertPotionEncounterReceipts(combat, operation) {
+  return validatePotionEncounterReceipts(
+    operation,
+    combat.getFlag(ID, "encounter"),
+  );
+}
+
+async function commitRecipientReaction(combat, operation) {
+  if (operation.plan.costs?.recipient?.reaction !== 1) return operation;
+  if (operation.reactionCommitted) {
+    assertPotionEncounterReceipts(combat, operation);
+    return operation;
+  }
+  assertPotionEncounterReceipts(combat, operation);
+  const state = combat.getFlag(ID, "encounter"),
+    next = clone(state);
+  next.budgets[operation.recipient.participantId] = clone(
+    operation.plan.recipientTurn,
+  );
+  next.revision++;
+  next.history.push({
+    kind: "potion-reaction",
+    operationId: operation.requestId,
+    participantId: operation.recipient.participantId,
+    reactionOperationId: operation.reactionOperationId,
+    round: state.round,
+    serial: state.serial,
+  });
+  const receipt =
+    next.budgets[operation.recipient.participantId].operations?.[
+      operation.reactionOperationId
+    ];
+  if (!receipt)
+    throw new Error("The recipient Reaction produced no authoritative receipt.");
+  const updated = clone({
+    ...operation,
+    recipient: {
+      ...operation.recipient,
+      reactionReceipt: receipt,
+    },
+    reactionCommitted: true,
+    encounterRevisionAfter: next.revision,
+  });
+  validatePotionEncounterReceipts(updated, next);
+  await writeAuthorityDocument(combat, {
+    [`flags.${ID}.encounter`]: next,
+    [`flags.${ID}.potionOperations.${operation.requestId}`]: updated,
+    [`flags.${ID}.pendingPotion`]: operation.requestId,
+  });
+  return updated;
 }
 
 async function applyRecipientHealing(operation) {
@@ -1289,6 +1398,37 @@ function supplyItemSnapshot(basis) {
     quantity: basis.item.quantity,
     source: basis.item.source,
   });
+}
+
+function supplyItemFingerprint(data, targetId, expectedDie = null) {
+  const system = clone(data.system ?? {});
+  if (data._id === targetId && expectedDie != null)
+    system.inventoryDie = expectedDie;
+  return {
+    id: data._id,
+    type: data.type,
+    name: data.name,
+    system,
+    flags: clone(data.flags ?? {}),
+  };
+}
+
+function verifySupplyItems(items, beforeItems, targetId, expectedDie) {
+  const fingerprint = (data) =>
+    supplyItemFingerprint(data, targetId, expectedDie);
+  if (
+    !Array.isArray(items) ||
+    items.length !== beforeItems.length ||
+    !same(
+      items.map(fingerprint).sort((left, right) => left.id.localeCompare(right.id)),
+      beforeItems
+        .map((data) => supplyItemFingerprint(data, targetId))
+        .sort((left, right) => left.id.localeCompare(right.id)),
+    )
+  )
+    throw new Error(
+      "The potion supply update changed an unrelated embedded Item; reconcile it without retrying.",
+    );
 }
 
 async function reserveAndRollSupply(combat, operation) {
@@ -1446,7 +1586,8 @@ async function settleSupply(combat, operation, child) {
       reserved: child.basis,
       current,
     });
-  const items = giver.toObject().items ?? [],
+  const beforeItems = clone(giver.toObject().items ?? []),
+    items = clone(beforeItems),
     matches = items.filter(
       (item) => item._id === operation.source.bottleItem.itemId,
     );
@@ -1465,13 +1606,7 @@ async function settleSupply(combat, operation, child) {
       current,
     });
   matches[0].system.inventoryDie = validated.result.after;
-  for (const data of items) {
-    const item = new CONFIG.Item.documentClass(data, {
-      parent: giver,
-      strict: true,
-    });
-    item.validate({ strict: true, fallback: false });
-  }
+  validateEmbeddedItems(giver, items);
   const existing = clone(
       giver.getFlag(ID, "potionReceipts")?.[
         operation.requestId
@@ -1530,6 +1665,12 @@ async function settleSupply(combat, operation, child) {
     throw new Error(
       "Potion supply needs reconciliation; do not repeat its roll or use.",
     );
+  verifySupplyItems(
+    giver.toObject().items ?? [],
+    beforeItems,
+    operation.source.bottleItem.itemId,
+    validated.result.after,
+  );
   return { giver, receipt };
 }
 
@@ -1560,6 +1701,63 @@ function validateSettlementReceipt(receipt, operation) {
     throw new Error(
       "The completed potion settlement changed; do not repeat its costs or healing.",
     );
+}
+
+async function restoreUnusedRecipientReaction(combat, operation, detail) {
+  if (
+    !operation.reactionCommitted ||
+    operation.plan.costs?.recipient?.reaction !== 1
+  )
+    return operation;
+  const recipient = await fromUuid(operation.recipient.actorUuid);
+  if (
+    recipient?.getFlag(ID, "potionReceipts")?.[operation.requestId]
+      ?.recipient?.applied
+  )
+    return operation;
+  const state = combat.getFlag(ID, "encounter");
+  if (
+    !state ||
+    state.revision !== operation.encounterRevisionAfter ||
+    !same(
+      state.budgets?.[operation.recipient.participantId],
+      operation.plan.recipientTurn,
+    )
+  )
+    throw new Error(
+      "The unused recipient Reaction cannot be restored without DA reconciliation.",
+    );
+  const next = clone(state);
+  next.budgets[operation.recipient.participantId] = clone(
+    operation.budgets.before.recipient,
+  );
+  next.revision++;
+  next.history.push({
+    kind: "potion-reaction-cancelled",
+    operationId: operation.requestId,
+    participantId: operation.recipient.participantId,
+    reactionOperationId: operation.reactionOperationId,
+    reason: detail.reason,
+    userId: detail.userId,
+    round: state.round,
+    serial: state.serial,
+  });
+  const updated = clone({
+    ...operation,
+    recipient: {
+      ...operation.recipient,
+      reactionReceipt: null,
+    },
+    reactionCommitted: false,
+    reactionCancellation: clone(detail),
+    encounterRevisionAfter: next.revision,
+  });
+  validatePotionEncounterReceipts(updated, next);
+  await writeAuthorityDocument(combat, {
+    [`flags.${ID}.encounter`]: next,
+    [`flags.${ID}.potionOperations.${operation.requestId}`]: updated,
+  });
+  return updated;
 }
 
 async function settleCombat(combat, operation, status = "complete") {
@@ -1632,6 +1830,7 @@ async function presentPotionResult(combat, operation, message) {
 async function advancePotionOperation(combat, initialOperation, message) {
   let operation = clone(initialOperation);
   for (let step = 0; step < 8; step++) {
+    validateStoredPotionOperation(operation, operation.requestId, combat);
     const {
         recipientActor,
         giverActor,
@@ -1648,6 +1847,8 @@ async function advancePotionOperation(combat, initialOperation, message) {
         supplyOperation,
         settlement,
       });
+    if (!settlement?.applied)
+      assertPotionEncounterReceipts(combat, operation);
     if (recipientReceipt) validateRecipientReceipt(recipientReceipt, operation);
     if (supplyReceipt && !supplyOperation)
       throw new Error(
@@ -1674,7 +1875,7 @@ async function advancePotionOperation(combat, initialOperation, message) {
       case "complete":
         validateSettlementReceipt(settlement, operation);
         await presentPotionResult(combat, operation, message);
-        return { status: "complete", replay: true };
+        return { status: operation.status, replay: true };
       case "reconcile":
         throw new Error(
           operation.reconciliation?.message ??
@@ -1697,6 +1898,7 @@ async function advancePotionOperation(combat, initialOperation, message) {
             current: null,
           });
         }
+        operation = await commitRecipientReaction(combat, operation);
         await applyRecipientHealing(operation);
         break;
       case "reserve-supply":
@@ -1759,6 +1961,7 @@ async function applyPotionRequest(id, combatUuid = null) {
     ? currentOperation(combat, id)
     : null;
   if (operation) {
+    validateStoredPotionOperation(operation, id, combat);
     if (message && !requestFromMessage)
       throw new Error("The reserved potion request changed.");
     if (
@@ -1869,8 +2072,52 @@ async function reconcilePotionDirect(requestId, choice, daReason, user) {
   const note = reason(daReason, "DA reconciliation reason"),
     giver = await fromUuid(operation.giver.actorUuid);
   assertWorldActor(giver, "Potion giver");
+  if (choice !== "cancel-remaining") {
+    const recipient = await fromUuid(operation.recipient.actorUuid),
+      recipientReceipt =
+        recipient?.getFlag(ID, "potionReceipts")?.[requestId]?.recipient;
+    if (!recipientReceipt)
+      throw new Error(
+        "The potion supply cannot settle before its recipient healing receipt.",
+      );
+    validateRecipientReceipt(recipientReceipt, operation);
+    assertPotionEncounterReceipts(combat, operation);
+  }
   if (choice === "cancel-remaining") {
-    const settled = await settleCombat(combat, operation, "interrupted");
+    const recipient = await fromUuid(operation.recipient.actorUuid);
+    if (
+      recipient?.getFlag(ID, "potionReceipts")?.[requestId]
+        ?.recipient?.applied
+    )
+      throw new Error(
+        "Potions cannot cancel after healing; resume the saved supply phase.",
+      );
+    const restored = await restoreUnusedRecipientReaction(
+        combat,
+        operation,
+        {
+          choice,
+          userId: user.id,
+          reason: note,
+          at: Date.now(),
+        },
+      ),
+      updated = clone({
+        ...restored,
+        reconciliation: {
+          ...restored.reconciliation,
+          disposition: {
+            choice,
+            userId: user.id,
+            reason: note,
+            at: Date.now(),
+          },
+        },
+      });
+    await writeAuthorityDocument(combat, {
+      [`flags.${ID}.potionOperations.${requestId}`]: updated,
+    });
+    const settled = await settleCombat(combat, updated, "interrupted");
     await presentPotionResult(
       combat,
       settled,
@@ -1924,56 +2171,74 @@ async function reconcilePotionDirect(requestId, choice, daReason, user) {
       game.messages.get(requestId) ?? null,
     );
   }
-  const child =
-      giver.getFlag(ID, "potionSupplyOperations")?.[
-        operation.supplyOperationId
-      ] ?? {
-        schemaVersion: 1,
-        operationId: operation.supplyOperationId,
-        parentId: requestId,
-        actorUuid: giver.uuid,
-        authorId: operation.authorId,
-        basis: operation.bottleBasis,
-        target: supplyItemSnapshot(operation.bottleBasis),
-      },
-    waived = clone({
-      ...child,
-      phase: "waived",
-      waiver: {
-        userId: user.id,
-        reason: note,
-        at: Date.now(),
-      },
-    }),
-    existing = clone(
-      giver.getFlag(ID, "potionReceipts")?.[requestId] ?? {},
-    ),
-    receipt = {
-      applied: true,
-      kind: "potion-supply",
-      status: "waived",
-      parentId: requestId,
-      operationId: operation.supplyOperationId,
-      actorUuid: giver.uuid,
-      authorId: operation.authorId,
-      request: operation.requestSignature,
-      waiver: waived.waiver,
-    },
-    changes = {
-      [`flags.${ID}.potionSupplyOperations.${operation.supplyOperationId}`]:
-        waived,
-      [`flags.${ID}.potionReceipts.${requestId}`]: {
-        ...existing,
-        supply: receipt,
-      },
-      [`flags.${ID}.operationReceipts.${operation.supplyOperationId}`]: {
+  const existingChild =
+    giver.getFlag(ID, "potionSupplyOperations")?.[
+      operation.supplyOperationId
+    ];
+  if (existingChild?.phase === "waived") {
+    const existingReceipt =
+      giver.getFlag(ID, "potionReceipts")?.[requestId]?.supply;
+    validateSupplyReceipt(existingReceipt, operation, existingChild);
+  } else {
+    if (
+      existingChild &&
+      !["rolling", "rolled"].includes(existingChild.phase)
+    )
+      throw new Error(
+        "The saved potion supply phase cannot be waived in its current state.",
+      );
+    const child = existingChild
+        ? clone(existingChild)
+        : {
+            schemaVersion: 1,
+            operationId: operation.supplyOperationId,
+            parentId: requestId,
+            actorUuid: giver.uuid,
+            authorId: operation.authorId,
+            basis: operation.bottleBasis,
+            target: supplyItemSnapshot(operation.bottleBasis),
+          },
+      waived = clone({
+        ...child,
+        phase: "waived",
+        waivedFromPhase: child.phase,
+        waiver: {
+          userId: user.id,
+          reason: note,
+          at: Date.now(),
+        },
+      }),
+      existing = clone(
+        giver.getFlag(ID, "potionReceipts")?.[requestId] ?? {},
+      ),
+      receipt = {
         applied: true,
         kind: "potion-supply",
         status: "waived",
         parentId: requestId,
+        operationId: operation.supplyOperationId,
+        actorUuid: giver.uuid,
+        authorId: operation.authorId,
+        request: operation.requestSignature,
+        waiver: waived.waiver,
       },
-    };
-  await writeAuthorityDocument(giver, changes);
+      changes = {
+        [`flags.${ID}.potionSupplyOperations.${operation.supplyOperationId}`]:
+          waived,
+        [`flags.${ID}.potionReceipts.${requestId}`]: {
+          ...existing,
+          supply: receipt,
+        },
+        [`flags.${ID}.operationReceipts.${operation.supplyOperationId}`]: {
+          applied: true,
+          kind: "potion-supply",
+          status: "waived",
+          parentId: requestId,
+        },
+      };
+    await writeAuthorityDocument(giver, changes);
+    validateSupplyReceipt(receipt, operation, waived);
+  }
   const updated = clone({
     ...operation,
     status: "reserved",

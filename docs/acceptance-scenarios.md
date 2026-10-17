@@ -193,4 +193,8 @@ resumes missing Actor/Combat phases without replenishment; unknown dice require 
 DA-entered face, and a changed bottle is never silently substituted. Summon,
 dead, Last Words, unavailable Reaction, stale source and supply-out cases fail
 closed. Interruption spending the declared action before healing is represented,
-but opportunity automation is not claimed.
+but opportunity automation is not claimed. Native adjacency uses occupied square
+centers and grid spaces, including large footprints and 5-unit scenes; walls,
+non-square grids, unavailable geometry, scene levels and altitude never fall back
+to pixel distance or an invented ruling. Prevalidation rejects an invalid
+embedded Item before the supply Actor write.

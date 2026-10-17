@@ -1,11 +1,9 @@
 import { EquipmentPanel } from "../applications/equipment.mjs";
 import { InventoryPanel } from "../applications/inventory.mjs";
+import { openPotionPreparation } from "../applications/potions.mjs";
 import { loadCatalogs } from "../services/catalog.mjs";
 import { updateOwnedDocument } from "../services/documents.mjs";
-import {
-  isHealingPotionItem,
-  openPotionPreparation,
-} from "../services/potions.mjs";
+import { isHealingPotionItem } from "../services/potions.mjs";
 export class EquipmentSheet extends foundry.applications.api.HandlebarsApplicationMixin(
   foundry.applications.sheets.ItemSheetV2,
 ) {

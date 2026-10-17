@@ -2,7 +2,8 @@ import {
   itemAbilityDefinition,
   activateOwnedAbility,
 } from "../services/abilities.mjs";
-import { isPotionAbility, openPotionPreparation } from "../services/potions.mjs";
+import { openPotionPreparation } from "../applications/potions.mjs";
+import { isPotionAbility } from "../services/potions.mjs";
 import { ATTRIBUTES } from "../rules/character.mjs";
 import { updateOwnedDocument } from "../services/documents.mjs";
 export class AbilitySheet extends foundry.applications.api.HandlebarsApplicationMixin(

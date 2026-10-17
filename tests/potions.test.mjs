@@ -13,6 +13,17 @@ import {
 const catalog = JSON.parse(
   await readFile(new URL("../static/data/inventory.json", import.meta.url)),
 );
+const preparationTemplate = await readFile(
+    new URL(
+      "../static/templates/potion-preparation.hbs",
+      import.meta.url,
+    ),
+    "utf8",
+  ),
+  preparationApplication = await readFile(
+    new URL("../src/applications/potions.mjs", import.meta.url),
+    "utf8",
+  );
 
 const turn = ({ reaction = true, maneuver = 1 } = {}) =>
   startTurn({
@@ -51,6 +62,21 @@ const base = (overrides = {}) => ({
   relation: "self",
   capable: true,
   ...overrides,
+});
+
+test("the potion ApplicationV2 part has one root and never assigns rendered", () => {
+  assert.match(
+    preparationTemplate,
+    /^\s*<section\b[\s\S]*<\/section>\s*$/,
+  );
+  assert.deepEqual(
+    preparationTemplate
+      .split("\n")
+      .filter((line) => /^<[A-Za-z]/.test(line))
+      .map((line) => line.match(/^<([A-Za-z]+)/)?.[1]),
+    ["section"],
+  );
+  assert.doesNotMatch(preparationApplication, /\bthis\.rendered\s*=/);
 });
 
 test("source adapters pin the three fixed healing bottles and universal action", () => {

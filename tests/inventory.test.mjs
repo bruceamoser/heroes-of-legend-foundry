@@ -5,7 +5,10 @@ import {
   inventoryCheck,
   refillInventory,
 } from "../src/rules/inventory.mjs";
-import { inventoryBasis } from "../src/services/inventory.mjs";
+import {
+  inventoryBasis,
+  validateEmbeddedItems,
+} from "../src/services/inventory.mjs";
 
 test("a retained 1 steps down the complete supply ladder, most faces do not", () => {
   assert.deepEqual(INVENTORY_DIE_LADDER, [20, 12, 10, 8, 6, 4, 0]);
@@ -133,4 +136,59 @@ test("inventory request snapshots are detached mutable JSON for native validatio
     () => inventoryBasis(actor, { ...item, actor: { uuid: "Actor.other" } }),
     /Choose an equipment item/,
   );
+});
+
+test("supply updates strictly prevalidate every embedded Item", () => {
+  const previous = globalThis.CONFIG,
+    calls = [];
+  globalThis.CONFIG = {
+    Item: {
+      documentClass: class {
+        constructor(data, options) {
+          calls.push(["construct", data._id, options]);
+          if (data.system.quantity < 1)
+            throw new Error("Embedded Item quantity is invalid.");
+        }
+        validate(options) {
+          calls.push(["validate", options]);
+          return true;
+        }
+      },
+    },
+  };
+  try {
+    const actor = { uuid: "Actor.fixture" };
+    assert.doesNotThrow(() =>
+      validateEmbeddedItems(actor, [
+        { _id: "bottle", type: "equipment", system: { quantity: 1 } },
+        { _id: "sword", type: "equipment", system: { quantity: 2 } },
+      ]),
+    );
+    assert.deepEqual(
+      calls.map(([kind]) => kind),
+      ["construct", "validate", "construct", "validate"],
+    );
+    assert.deepEqual(
+      calls.filter(([kind]) => kind === "construct").map(([, id]) => id),
+      ["bottle", "sword"],
+    );
+    calls.length = 0;
+    assert.throws(
+      () =>
+        validateEmbeddedItems(actor, [
+          {
+            _id: "invalid",
+            type: "equipment",
+            system: { quantity: 0 },
+          },
+        ]),
+      /quantity is invalid/,
+    );
+    assert.deepEqual(calls[0].slice(0, 2), ["construct", "invalid"]);
+    assert.equal(calls[0][2].strict, true);
+    assert.equal(calls[0][2].parent, actor);
+  } finally {
+    if (previous === undefined) delete globalThis.CONFIG;
+    else globalThis.CONFIG = previous;
+  }
 });

@@ -21,11 +21,15 @@ async function safePreview(options) {
   }
 }
 
-function geometryPreview(preview, giverParticipantId, recipientParticipantId) {
+async function geometryPreview(
+  preview,
+  giverParticipantId,
+  recipientParticipantId,
+) {
   if (!preview?.combatUuid || preview.error)
     return { known: false, adjacent: false, distance: null };
   try {
-    return previewPotionAdjacency(
+    return await previewPotionAdjacency(
       preview.combatUuid,
       giverParticipantId,
       recipientParticipantId,
@@ -116,7 +120,7 @@ export class PotionPreparation extends foundry.applications.api.HandlebarsApplic
         : { error: "This character has no healing bottle.", canDeclare: false },
       recipientActor =
         initialRecipient && (await fromUuid(initialRecipient.actorUuid)),
-      geometry = geometryPreview(
+      geometry = await geometryPreview(
         preview,
         combatant.id,
         initialRecipient?.id,
@@ -206,7 +210,7 @@ export class PotionPreparation extends foundry.applications.api.HandlebarsApplic
         recipientParticipantId: values.recipientParticipantId,
         continuesAfterInterruption: values.continuesAfterInterruption,
       }),
-      geometry = geometryPreview(
+      geometry = await geometryPreview(
         preview,
         this.giverParticipantId,
         values.recipientParticipantId,
@@ -256,7 +260,9 @@ export class PotionPreparation extends foundry.applications.api.HandlebarsApplic
         ? geometry.adjacent
           ? `Native grid: ${geometry.distance === 0 ? "same participant" : `${geometry.distance} square(s)`}; adjacent.`
           : `Native grid: ${geometry.distance} square(s); not adjacent.`
-        : "Native 1x1 geometry is undecidable here; the DA must record a judgment.",
+        : geometry.reason ??
+          geometry.error ??
+          "Native geometry is unavailable; the DA must record a judgment.",
     );
     const error =
       preview.error ||
@@ -266,7 +272,7 @@ export class PotionPreparation extends foundry.applications.api.HandlebarsApplic
         : "");
     this.setText("error", error);
     const recipient = preview.recipientActorUuid
-        ? fromUuidSync(preview.recipientActorUuid)
+        ? await fromUuid(preview.recipientActorUuid)
         : null,
       ownsRecipient = recipient?.testUserPermission(game.user, "OWNER"),
       willingnessReady =

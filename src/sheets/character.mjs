@@ -1,3 +1,4 @@
+import { WoundPanel } from "../applications/wounds.mjs";
 import { RecoveryPanel } from "../applications/recovery.mjs";
 import { DamagePanel } from "../applications/damage.mjs";
 import { EquipmentPanel } from "../applications/equipment.mjs";
@@ -17,6 +18,7 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
     window: { resizable: true },
     form: { submitOnChange: false, closeOnSubmit: false },
     actions: {
+      wounds: CharacterSheet.wounds,
       recovery: CharacterSheet.recovery,
       damage: CharacterSheet.damage,
       equipment: CharacterSheet.equipment,
@@ -59,6 +61,9 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
     if (!this.isEditable)
       throw new Error(game.i18n.localize("HOL.NoPermission"));
     return { updated: await updateOwnedDocument(this.actor, data, options) };
+  }
+  static async wounds() {
+    await new WoundPanel(this.actor).render({ force: true });
   }
   static async recovery() {
     await new RecoveryPanel(this.actor).render({ force: true });

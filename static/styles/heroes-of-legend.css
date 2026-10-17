@@ -112,3 +112,8 @@
 
 .heroes-of-legend.hol-recovery .window-title { font-size: 14px; }
 .heroes-of-legend.hol-recovery [hidden] { display: none !important; }
+
+.heroes-of-legend.hol-wounds .window-title { font-size: 14px; }
+
+.heroes-of-legend.hol-wounds h3 { color: var(--hol-ink); }
+.heroes-of-legend.hol-wounds button { background: var(--hol-forest); color: var(--hol-ivory); border-color: var(--hol-gold); }

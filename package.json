@@ -42,7 +42,8 @@
     "import:wounds": "node scripts/import-wounds.mjs",
     "validate:wounds": "node scripts/import-wounds.mjs --check",
     "test:damage": "node scripts/check-damage.mjs",
-    "test:recovery": "node scripts/check-recovery.mjs"
+    "test:recovery": "node scripts/check-recovery.mjs",
+    "test:wounds": "node scripts/check-wounds.mjs"
   },
   "devDependencies": {
     "@foundryvtt/foundryvtt-cli": "3.0.5",

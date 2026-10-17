@@ -54,6 +54,8 @@
     "package:release": "node scripts/package-release.mjs",
     "import:wounds": "node scripts/import-wounds.mjs",
     "validate:wounds": "node scripts/import-wounds.mjs --check",
+    "import:creature-art": "python3 scripts/build-creature-art.py",
+    "validate:creature-art": "node scripts/validate-creature-art.mjs",
     "test:damage": "node scripts/check-damage.mjs",
     "test:recovery": "node scripts/check-recovery.mjs",
     "test:wounds": "node scripts/check-wounds.mjs",

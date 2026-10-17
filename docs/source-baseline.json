@@ -1,0 +1,191 @@
+{
+  "researchDate": "2026-10-17",
+  "status": "planning-baseline-not-production-content-lock",
+  "rulesRepository": "https://github.com/bruceamoser/heroes-of-legend",
+  "rulesCommit": "3a08c5b1aa68be45885e488479e4984d169cd115",
+  "authority": "Current approved design/player-book and design/rules, with dated decisions superseding older prose. Confirmed by Bruce on 2026-10-17.",
+  "sourceFamilies": [
+    {
+      "path": "design/cards/",
+      "markdownFileCount": 350
+    },
+    {
+      "path": "design/classes/",
+      "markdownFileCount": 10
+    },
+    {
+      "path": "design/ancestries/",
+      "markdownFileCount": 24
+    },
+    {
+      "path": "design/origins/",
+      "markdownFileCount": 50
+    },
+    {
+      "path": "design/disciplines/",
+      "markdownFileCount": 18
+    },
+    {
+      "path": "design/equipment/",
+      "markdownFileCount": 43
+    },
+    {
+      "path": "design/recipes/",
+      "markdownFileCount": 10
+    },
+    {
+      "path": "design/characters/",
+      "markdownFileCount": 7
+    },
+    {
+      "path": "design/monster-abilities/",
+      "markdownFileCount": 94
+    },
+    {
+      "path": "design/bestiary/creatures/",
+      "markdownFileCount": 192
+    },
+    {
+      "path": "design/bestiary/summons/",
+      "markdownFileCount": 73
+    }
+  ],
+  "authorityFiles": [
+    {
+      "path": "design/bestiary/procedure.md",
+      "sha256": "e9350007cf3247d3795720b4a2f9d3b1cbbaa7e6b0f912dfc96b01653714d39d"
+    },
+    {
+      "path": "design/card-conventions.md",
+      "sha256": "cea74914aa99b249000d6f448232a80487d6bd8bfaaf4d3869b6671e8722f043"
+    },
+    {
+      "path": "design/development.md",
+      "sha256": "8486e2a74e9bb50b1c8b641f99901951aada08c9565ebd91b8fb968fa697f2a6"
+    },
+    {
+      "path": "design/market.md",
+      "sha256": "22b020ff9ca3c20ca5263a52d4104c1e472e127484d8eabcdfeea90d2a6b50cd"
+    },
+    {
+      "path": "design/player-book/README.md",
+      "sha256": "f2cfea90c3641b7a7affd006c2c80dc59fc214d22fdd52730d9b6901fe1996a7"
+    },
+    {
+      "path": "design/player-book/decision-log.md",
+      "sha256": "3953d4521ac1521fa3e6617002442bfad7c19ada928afa457e73f5774fed4242"
+    },
+    {
+      "path": "design/player-book/manuscript/01-welcome.md",
+      "sha256": "ce4cb919b51bb7a12e49e26b5bb761958499b2e87aa9eb9b53a834a3c4e4ea92"
+    },
+    {
+      "path": "design/player-book/manuscript/02-creation.md",
+      "sha256": "1e48bf960c91fbde616645fd5ad47197347be0ae3547c1b2e5e7f39564d8afb2"
+    },
+    {
+      "path": "design/player-book/manuscript/05-disciplines.md",
+      "sha256": "90676c23390e51a885652324bfd7e9570c37a13ad69e129a10c0f46a50642854"
+    },
+    {
+      "path": "design/player-book/manuscript/06-playing.md",
+      "sha256": "518af74b7784b9c941c77eb86a44538b38b6f905e3b3476871816b837ea99d89"
+    },
+    {
+      "path": "design/player-book/manuscript/07-adventure.md",
+      "sha256": "f69d0a0e2d1132d7478a3159287925c7e771138e4680923f39609ddf34eb8a31"
+    },
+    {
+      "path": "design/player-book/manuscript/08-recovery.md",
+      "sha256": "62fccbf96f1311980666a1c7d0c62b813245ace7d2800da9018c22f8465140d0"
+    },
+    {
+      "path": "design/player-book/manuscript/09-abilities.md",
+      "sha256": "c9dedd620121367a069d98a216c96da061408ad9afcd8bbef8112d5c278dc9ff"
+    },
+    {
+      "path": "design/player-book/manuscript/10-equipment.md",
+      "sha256": "02509bad245969b886b3d364475414bfc2fcb86c93fe2c352872a9525525bd70"
+    },
+    {
+      "path": "design/player-book/manuscript/11-summons.md",
+      "sha256": "6dadb6c8069f8b7dd334d1db434778899c4ea2d528813199f48d14106110abde"
+    },
+    {
+      "path": "design/player-book/manuscript/14-reference.md",
+      "sha256": "fa3a8fdf875cfb7b4159afeb98cbbffb90d4388ebf120559eb59fe6943c96428"
+    },
+    {
+      "path": "design/player-book/manuscript/intro-background.md",
+      "sha256": "a24f44dd16d4a67e91cdf5736e93088ce8579506d233eb3010b5da7fdf6512f4"
+    },
+    {
+      "path": "design/player-book/manuscript/intro-culture.md",
+      "sha256": "225a54ff2513fdaeb526221f880a436f4c6917f546640def3a4f2633fc777239"
+    },
+    {
+      "path": "design/player-book/manuscript/intro-equipment.md",
+      "sha256": "25a205052292c89b4f24038fb37fcd99a8c24ee577e2f222d9d326e969153a9a"
+    },
+    {
+      "path": "design/player-book/manuscript/intro-recipes.md",
+      "sha256": "32859a813a0d08f7cccd7d80183a87cd854a8c6a77afec3134249d83f5b866a0"
+    },
+    {
+      "path": "design/player-book/recipe-presentation.json",
+      "sha256": "4b9275bdcc32408f4f9e58a76d5cd3c06f3d054b07b86c7ce46be49f95659f42"
+    },
+    {
+      "path": "design/rules/conditions.md",
+      "sha256": "96a02a2ff54feedb07afd87747a96925062cc6fc0acc57fd1fb11d8c609e3686"
+    },
+    {
+      "path": "design/rules/encounters.md",
+      "sha256": "f3e02277e46cfb157d39790fa6b48b45e067052de26f51d068d88df9d3768e23"
+    },
+    {
+      "path": "design/rules/foundations.md",
+      "sha256": "e6f98084faa7beee4ce391a2e3505007fa298b8b6799b5251c49e0e2622334c6"
+    },
+    {
+      "path": "design/rules/recovery.md",
+      "sha256": "aa5529c2b52abfa739bc072f6eebbccc4fa1c795728c34aec0d018025d49d458"
+    },
+    {
+      "path": "design/rules/session-resolution.md",
+      "sha256": "88bb428d6407fb445e95fb252a9ea649a601839960e26b545530d4184670647b"
+    },
+    {
+      "path": "design/rules/stability.md",
+      "sha256": "0a7d00c2421d5161555c45061ef04e1fbff46ee23786f1ee5fb005ef575d616b"
+    },
+    {
+      "path": "design/rules/summoning.md",
+      "sha256": "2b0dbc6ff4c5ce2209e9872da192c6b51866fb77c13bdc9779a88880b6cce2dc"
+    },
+    {
+      "path": "design/rules/wounds.md",
+      "sha256": "2f2a80b3e5d93cacab2efa8c587854cab607017ef9a6d777ca5abce7d4fe3f5d"
+    },
+    {
+      "path": "design/starting-coins.md",
+      "sha256": "a36b0c78b6acd60fd5271c16473aaeb63b6dbe39d52c7f4124eb1040cf68db4f"
+    }
+  ],
+  "daBestiary": {
+    "status": "awaiting-completed-approved-revision",
+    "commit": null,
+    "trackingIssue": "https://github.com/bruceamoser/heroes-of-legend-foundry/issues/3"
+  },
+  "referenceSystem": {
+    "repository": "https://github.com/bruceamoser/foundry-neon-relic-system",
+    "commit": "0cf72ae305c73d157a268143d415c030fcabddae",
+    "version": "0.11.3"
+  },
+  "foundry": {
+    "targetGeneration": 14,
+    "firstRuntimeTarget": "14.369",
+    "apiDocumentationBuildObserved": "14.368",
+    "runtimeTested": false
+  }
+}

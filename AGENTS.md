@@ -1,0 +1,35 @@
+# Working on Heroes of Legend Foundry
+
+This is the software companion to the Heroes of Legend rulebook. Bruce is the final authority on game design. The specification is a proposed implementation contract, not permission to change the game.
+
+## Read first
+
+- `docs/rules-authority.md` and `docs/decisions.md` establish current rules and boundaries.
+- `docs/system-specification.md`, `docs/data-contracts.md`, and `docs/acceptance-scenarios.md` define implementation behavior.
+- `docs/research/foundry-v14.md` establishes the V14 baseline. Recheck official versioned APIs when implementing.
+
+## Workflow
+
+1. Create or select a numbered issue before making changes; keep implementation issues small.
+2. Branch `issue/<number>-<description>` from `main`. All content/code changes go through PRs.
+3. Scope changes to the issue. Do not edit the sibling rulebook or Neon Relic repositories as part of system work.
+4. Add relevant validation. Use `Closes #N` in the PR and report actual results, distinguishing static checks from Foundry runtime tests.
+5. Obtain independent review; an author's own checks do not count as approval. Do not merge on behalf of Bruce without authorization.
+6. Squash merge approved work and verify issue closure.
+7. Correct these instructions when a verified omission causes a mistake; track the correction in the same scoped PR or a separate issue.
+
+## Implementation boundaries
+
+- V14 only initially. No V13 compatibility layer or copied Neon Relic game mechanics.
+- Current design rules supersede legacy Quarto instructions. Check dated approvals before interpreting an old “proposal” label.
+- No numerical skill bonus, opposed attack/defense pair, random weapon damage, spell slots, mana or prerequisite-card chains.
+- Use Foundry public APIs, TypeDataModel and ApplicationV2. Namespace all settings, flags, styles and localization with the package ID.
+- Keep rules calculation independent of sheets; all state changes pass through permission-checked document services.
+- Never assume all connected clients should apply the same effect. Use a single authoritative execution path and persistent operation IDs.
+- Imported content requires a pinned source commit, stable IDs and reviewable changes. Generated packs are not authoring sources.
+- Published and user-edited world content must not be silently overwritten by an import or migration.
+- No Foundry application distribution, credentials, real world databases or licensed third-party content in Git.
+
+## Validation during planning
+
+This branch contains documentation only. Check local links, source references, JSON and Git whitespace. A future implementation must establish the commands in the build plan before advertising them as runnable. No Foundry runtime compatibility has been certified by this specification.

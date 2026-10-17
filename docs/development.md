@@ -90,3 +90,11 @@ The shipped system manifest does not advertise these test packs. All database co
 ## Combat/effect timing — issue #9
 
 `HOL_TEST_URL=http://127.0.0.1:30014 HOL_TEST_ALLOW_WRITES=1 npm run test:timing` verifies scoped native V14 expiry and once-only fixture ticks across two GMs, duplicate calls and reload. See [the timing evidence and limitations](research/turn-timing-prototype.md). The prototype is not connected to gameplay hooks.
+
+## Foundry 14.369 baseline — issue #28
+
+On October 17, copied the installed application to `/tmp/hol-foundry-runtime/resources/app` and used Foundry's official Stable updater against a separate empty `/tmp/hol-foundry-update` data directory. The updater installed **14.369** and shut down normally. The original `/home/bruce/foundryvtt` remains **14.367**. Stopped the old disposable test server before copying its data to `/tmp/hol-foundry-test369`; started the updated application on port 30014 with that copied world. No live campaign data was used or migrated.
+
+Actual 14.369 / Node 24.22.0 / Chromium results: startup smoke, character/ability sheets, owner/observer permissions, unlinked-token persistence, roll dialog/native dice/chat, CLI pack imports, turn/expiry timing, and the two-GM/two-player authority probe all pass. Build/manifest validation and 16 Node tests pass. The manifest now verifies **14.369**, retaining the previously tested 14.367 minimum. This declaration covers implemented features; it does not complete the remaining authority or canvas gates.
+
+The 14.369 join form uses `select[name=userId]`; test login now supports that and the 14.367 username input through one helper. Document-only roll tests disable canvas; sheet keyboard tests keep canvas enabled at low rendering settings because core Tab handling references the token layer even in no-canvas mode. The attempted no-canvas sheet run exposed that core error and was reverted; separate movement/levels testing remains required. The known hidden-compendium confidentiality limitation is still reproducible in 14.369 (`visible: false`, direct read succeeds), so no confidential payload guarantee is made.

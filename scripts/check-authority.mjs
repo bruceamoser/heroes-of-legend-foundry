@@ -1,9 +1,10 @@
+import { selectTestUser } from "./helpers/login.mjs";
 import {chromium} from 'playwright';
 import assert from 'node:assert/strict';
 const url=process.env.HOL_TEST_URL;
 if(!url||!["localhost","127.0.0.1"].includes(new URL(url).hostname)||process.env.HOL_TEST_ALLOW_WRITES!=="1")throw new Error('Select a disposable local world and enable writes');
 const browser=await chromium.launch();const pages=[];const errors=[];let f;let cleanup;
-async function join(name){const context=await browser.newContext({viewport:{width:1600,height:1000}});context.setDefaultTimeout(30000);await context.addInitScript(()=>localStorage.setItem('core.noCanvas','true'));const p=await context.newPage();p.on('pageerror',e=>errors.push(e.message));await p.goto(url);await p.locator('input[name=username]').fill(name);await p.locator('button[name=join]').click();await p.waitForFunction(()=>game.ready);pages.push(p);console.info(`Joined ${name}`);return p;}
+async function join(name){const context=await browser.newContext({viewport:{width:1600,height:1000}});context.setDefaultTimeout(30000);await context.addInitScript(()=>localStorage.setItem('core.noCanvas','true'));const p=await context.newPage();p.on('pageerror',e=>errors.push(e.message));await p.goto(url);await selectTestUser(p, name);await p.locator('button[name=join]').click();await p.waitForFunction(()=>game.ready);pages.push(p);console.info(`Joined ${name}`);return p;}
 try{
  const gm=await join(process.env.HOL_TEST_USER??'Gamemaster');cleanup=gm;
  f=await gm.evaluate(async()=>{const suffix=foundry.utils.randomID(5);const gm2=await User.create({name:`HOL GM ${suffix}`,role:4});const player=await User.create({name:`HOL Owner ${suffix}`,role:1});const outsider=await User.create({name:`HOL Other ${suffix}`,role:1});const source=await Actor.create({name:'Authority source',type:'character',ownership:{[player.id]:3}});const targets=await Actor.createDocuments([{name:'Authority A',type:'character'},{name:'Authority B',type:'character'}]);const api=await import('/systems/heroes-of-legend/prototypes/authority.mjs');await api.selectAuthorityClient();return{gm2:gm2.id,gm2name:gm2.name,player:player.id,playername:player.name,outsider:outsider.id,othername:outsider.name,source:source.id,targets:targets.map(a=>a.id),plans:[],requests:[]};});

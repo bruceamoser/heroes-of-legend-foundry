@@ -1,0 +1,140 @@
+{
+  "_key": "!actors!75b34d9901872f04",
+  "_id": "75b34d9901872f04",
+  "name": "Shield Soldier",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 1
+      },
+      "fortitude": {
+        "base": 1
+      },
+      "agility": {
+        "base": 0
+      },
+      "guile": {
+        "base": 0
+      },
+      "knowledge": {
+        "base": 0
+      },
+      "reason": {
+        "base": 1
+      }
+    },
+    "attributesSource": "Brawn +1; Fortitude +1; Agility +0; Guile +0; Knowledge +0; Reason +1",
+    "health": {
+      "value": 16,
+      "baseMax": 16,
+      "sourceText": "16"
+    },
+    "cv": 15,
+    "speed": 5,
+    "speedSource": "5",
+    "alternateSpeeds": [],
+    "size": 1,
+    "sizeLabel": "medium",
+    "sizeSource": "1 (medium)",
+    "footprint": {
+      "width": 1,
+      "height": 1
+    },
+    "armor": 2,
+    "armorMarker": "",
+    "armorSource": "2",
+    "stability": 0,
+    "threat": {
+      "boons": 0,
+      "banes": 0,
+      "sourceText": "None"
+    },
+    "evasion": {
+      "boons": 0,
+      "banes": 0,
+      "sourceText": "None"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "resistances": {
+      "numeric": [
+        {
+          "type": "Physical",
+          "value": 2
+        }
+      ],
+      "special": [],
+      "sourceText": "Physical (2)"
+    },
+    "immunities": [],
+    "basicMelee": {
+      "weak": 5,
+      "standard": 3,
+      "strong": 2,
+      "defenseAttribute": "agility",
+      "orientation": "player-defense"
+    },
+    "actions": {
+      "orientation": "player-defense",
+      "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
+      "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Measured thrust | Agility | 6/4/3 |",
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Defend | +1 Bane |",
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Shield Hunker | Before a blockable attack: impose 1 Bane on blockable attacks until its next turn. See details. |\n| Opportunity Attack | Basic Melee |"
+    },
+    "details": {
+      "flavorMarkdown": "*A professional guard in serviceable armor, carrying a scarred shield and an ordinary sidearm. Training and trust in the squad make this soldier more dangerous than their equipment alone suggests.*",
+      "specialtyMarkdown": "### Measured thrust\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.\n\n### Shield Hunker\n\nBefore a shield-blockable attack resolves, impose 1 Bane on player attacks this shield can block until the start of its next turn. The DA judges blockability. Uses its Reaction; stacks with Defend, not another activation of itself.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Signs:** Boots keep the same measured spacing in the mud.\n\n**Purpose:** Hold a post and bring the squad home.\n\n**Tactics and retreat:** Defend and use Shield Hunker when pressed; yield if ordered by a legitimate superior.\n\n**Counterplay and conversation:** Separate the soldier from the formation or challenge the reason for the orders.\n\n**Habitat:** Fort; city; road · **Communication:** Common\n\n**Loot:** Melee weapon, shield, medium armor; 8 coins.\n\n**Summoning:** Ineligible.",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-shield-soldier\n\n\n**Category:** Mortal · **Role:** Defender · **CV:** 15\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Measured thrust | Brawn | None | 3 physical damage. | 4 physical damage. | 6 physical damage. |\n\nThe incoming attack names the defense attribute; use the six values above. Same targeting, costs and limits apply in either perspective. No opposed second roll.\n\n\n### CV worksheet\n\n**Difficulty rationale:** No innate attack modifier; armor, cover and chosen actions provide its defenses. Ordinary attack difficulty; riders and positioning carry the threat.\n\n**Reference damage:** 3/4/6\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.2\n\n**Regeneration per turn:** 0\n\nReference I=3.000, O=3.162. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [shield hunker](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/monster-abilities/shield-hunker.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/rules/stability.md)"
+    },
+    "biography": ""
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "creature-shield-soldier",
+      "source": {
+        "path": "design/bestiary/creatures/shield-soldier.md",
+        "sha256": "56afcb111079b89cfca789dedd913454645d480076fe574ec9189094b697134c"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Printed profile · specialty automation pending",
+      "specialtyAutomation": "pending",
+      "classification": {
+        "category": "Mortal",
+        "role": "Defender",
+        "cv": 15
+      },
+      "family": "Mortal",
+      "abilitySources": [
+        {
+          "label": "shield hunker",
+          "id": "monster-shield-hunker",
+          "path": "design/monster-abilities/shield-hunker.md",
+          "sha256": "0ee4604aed68f89230795c77c3d1db3b93ef231d3a7999cd35ad7800f4fbe6f5"
+        }
+      ],
+      "summoning": {
+        "eligible": false,
+        "summonId": null,
+        "path": null,
+        "eligibility": null,
+        "sourceText": "Ineligible."
+      }
+    }
+  }
+}

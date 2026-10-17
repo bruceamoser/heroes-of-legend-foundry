@@ -1,0 +1,133 @@
+{
+  "_key": "!actors!6b2c6a12e9e74678",
+  "_id": "6b2c6a12e9e74678",
+  "name": "Cave Bat",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": -2
+      },
+      "fortitude": {
+        "base": -1
+      },
+      "agility": {
+        "base": 2
+      },
+      "guile": {
+        "base": 0
+      },
+      "knowledge": {
+        "base": -2
+      },
+      "reason": {
+        "base": 1
+      }
+    },
+    "attributesSource": "Brawn -2; Fortitude -1; Agility +2; Guile +0; Knowledge -2; Reason +1",
+    "health": {
+      "value": 4,
+      "baseMax": 4,
+      "sourceText": "4"
+    },
+    "cv": 4,
+    "speed": 1,
+    "speedSource": "1; fly 8",
+    "alternateSpeeds": [
+      {
+        "mode": "fly",
+        "value": 8
+      }
+    ],
+    "size": 1,
+    "sizeLabel": "medium",
+    "sizeSource": "1 (medium)",
+    "footprint": {
+      "width": 1,
+      "height": 1
+    },
+    "armor": 0,
+    "armorMarker": "",
+    "armorSource": "0",
+    "stability": 0,
+    "threat": {
+      "boons": 1,
+      "banes": 0,
+      "sourceText": "1 Boon"
+    },
+    "evasion": {
+      "boons": 0,
+      "banes": 1,
+      "sourceText": "1 Bane"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "resistances": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "immunities": [],
+    "basicMelee": {
+      "weak": 2,
+      "standard": 1,
+      "strong": 1,
+      "defenseAttribute": "agility",
+      "orientation": "player-defense"
+    },
+    "actions": {
+      "orientation": "player-defense",
+      "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
+      "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 2/1/1 |\n| Small bite | Agility | 2/1/1 |",
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Defend | +1 Bane |",
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Opportunity Attack | Basic Melee |"
+    },
+    "details": {
+      "flavorMarkdown": "*A small cave-dwelling bat with oversized ears, thin dark wings and tiny hooked feet. Sound guides it through darkness, while bright light and loud disturbances unsettle its roost.*",
+      "specialtyMarkdown": "### Small bite\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Sound-based sight 6 squares; fails while Deafened and does not penetrate walls.\n\n**Signs:** Fine droppings beneath a dry ceiling shelf.\n\n**Purpose:** Find insects and a quiet roost.\n\n**Tactics and retreat:** Flee light and noise; bite only when trapped.\n\n**Counterplay and conversation:** Open a route to the ceiling and stop pursuing it.\n\n**Habitat:** Wilderness · **Communication:** None\n\n**Loot:** No saleable treasure.\n\n**Summoning:** Animal 1 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/summons/cave-bat.md).",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-cave-bat\n\n\n**Category:** Animal · **Role:** Cavern scout · **CV:** 4\n\n**Difficulty rationale:** An agile or elusive body warrants attack Banes. Its minor attack is easier to defend, granting a Boon.\n\n**Reference damage:** 1/1/2\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.1\n\n**Regeneration per turn:** 0\n\nReference I=4.404, O=1.000. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/rules/stability.md)"
+    },
+    "biography": ""
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "creature-cave-bat",
+      "source": {
+        "path": "design/bestiary/creatures/cave-bat.md",
+        "sha256": "77b00be66aaee92e8897313220bed2abcb94c7583d2a57c68a8936ee6ac3aec7"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Printed profile · specialty automation pending",
+      "specialtyAutomation": "pending",
+      "classification": {
+        "category": "Animal",
+        "role": "Cavern scout",
+        "cv": 4
+      },
+      "family": "Animal",
+      "abilitySources": [],
+      "summoning": {
+        "eligible": true,
+        "summonId": "summon-cave-bat",
+        "path": "design/bestiary/summons/cave-bat.md",
+        "eligibility": "Animal 1",
+        "sourceText": "Animal 1 — [player reference](../summons/cave-bat.md)."
+      }
+    }
+  }
+}

@@ -1,0 +1,162 @@
+{
+  "_key": "!actors!84a6bdefe38c5927",
+  "_id": "84a6bdefe38c5927",
+  "name": "Barrow Guard",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 2
+      },
+      "fortitude": {
+        "base": 1
+      },
+      "agility": {
+        "base": 0
+      },
+      "guile": {
+        "base": 0
+      },
+      "knowledge": {
+        "base": 0
+      },
+      "reason": {
+        "base": 1
+      }
+    },
+    "attributesSource": "Brawn +2; Fortitude +1; Agility +0; Guile +0; Knowledge +0; Reason +1",
+    "health": {
+      "value": 23,
+      "baseMax": 23,
+      "sourceText": "23"
+    },
+    "cv": 23,
+    "speed": 5,
+    "speedSource": "5",
+    "alternateSpeeds": [],
+    "size": 1,
+    "sizeLabel": "medium",
+    "sizeSource": "1 (medium)",
+    "footprint": {
+      "width": 1,
+      "height": 1
+    },
+    "armor": 2,
+    "armorMarker": "",
+    "armorSource": "2",
+    "stability": 0,
+    "threat": {
+      "boons": 0,
+      "banes": 1,
+      "sourceText": "1 Bane"
+    },
+    "evasion": {
+      "boons": 0,
+      "banes": 0,
+      "sourceText": "None"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "resistances": {
+      "numeric": [
+        {
+          "type": "Physical",
+          "value": 2
+        }
+      ],
+      "special": [],
+      "sourceText": "Physical (2)"
+    },
+    "immunities": [
+      "Bleeding",
+      "Poisoned",
+      "Asleep"
+    ],
+    "basicMelee": {
+      "weak": 5,
+      "standard": 3,
+      "strong": 2,
+      "defenseAttribute": "agility",
+      "orientation": "player-defense"
+    },
+    "actions": {
+      "orientation": "player-defense",
+      "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
+      "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Oath blade | Agility | 7 + Push 2 / 5 + Push 1 / 3 |",
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Plant the Shield | Gain Stability 2 while on solid ground until its next turn; highest source only. This does not activate Shield Hunker. |\n| Defend | +1 Bane |",
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Shield Hunker | Before a blockable attack: impose 1 Bane on blockable attacks until its next turn. See details. |\n| Opportunity Attack | Basic Melee |"
+    },
+    "details": {
+      "flavorMarkdown": "*An armed burial guardian in tarnished armor, with turf caught in its shield and remnants of an oath worked into its clothing. It remembers its duty more clearly than its life.*",
+      "specialtyMarkdown": "### Oath blade\n\n*The blow lands with enough force to send its victim stumbling backward.*\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Push 2. **Standard defense:** Push 1.\n\n### Shield Hunker\n\nBefore a shield-blockable attack resolves, impose 1 Bane on player attacks this shield can block until the start of its next turn. The DA judges blockability. Uses its Reaction; stacks with Defend, not another activation of itself.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Lifeless Body:** does not breathe or eat; only the listed immunities apply.\n\n**Healing:** Healing-harmed: ordinary healing resolves as Life damage instead; no beneficial riders.\n\n**Against offensive healing:** controller defends with Fortitude if this is player-controlled; a player attacking it still rolls only their attack.\n\n**Senses:** Ordinary sight and hearing.\n\n**Signs:** Every disturbed grave has been filled in again from within.\n\n**Purpose:** Keep the sworn burial place intact.\n\n**Tactics and retreat:** Shield Hunker at the tomb entrance and push desecrators back.\n\n**Counterplay and conversation:** Return stolen grave goods or show permission from the rightful heir.\n\n**Habitat:** Barrow; ancient road · **Communication:** None\n\n**Loot:** Melee weapon, shield and burial jewelry worth 30 coins if legitimately recovered.\n\n**Summoning:** Undead 3 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/summons/barrow-guard.md).",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-barrow-guard\n\n\n**Category:** Undead · **Role:** Defender · **CV:** 23\n\n**Difficulty rationale:** No innate attack modifier; armor, cover and chosen actions provide its defenses. Its dangerous attack imposes defense Banes.\n\n**Reference damage:** 3/5/7\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.25\n\n**Regeneration per turn:** 0\n\nReference I=3.000, O=4.596. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [barrow guard plant the shield](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/monster-abilities/barrow-guard-plant-the-shield.md), [driving blow](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/monster-abilities/driving-blow.md), [lifeless body](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/monster-abilities/lifeless-body.md), [shield hunker](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/monster-abilities/shield-hunker.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/rules/stability.md)"
+    },
+    "biography": ""
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "creature-barrow-guard",
+      "source": {
+        "path": "design/bestiary/creatures/barrow-guard.md",
+        "sha256": "a6a16a7b595489cd51b406820a1b48c6c93b092c354813291b36c2ad8a55b082"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Printed profile · specialty automation pending",
+      "specialtyAutomation": "pending",
+      "classification": {
+        "category": "Undead",
+        "role": "Defender",
+        "cv": 23
+      },
+      "family": "Undead knights, revenants and liches",
+      "abilitySources": [
+        {
+          "label": "barrow guard plant the shield",
+          "id": "monster-barrow-guard-plant-the-shield",
+          "path": "design/monster-abilities/barrow-guard-plant-the-shield.md",
+          "sha256": "8473cf3fc89249f82cfe0ab0bcf0de4c6bf329fbf868ca4d73b91b33b354b21d"
+        },
+        {
+          "label": "driving blow",
+          "id": "monster-driving-blow",
+          "path": "design/monster-abilities/driving-blow.md",
+          "sha256": "38b3406cbcb2f57fdc1bbf57f09857b7ef8a9fd7b35e311dc812476677e6b276"
+        },
+        {
+          "label": "lifeless body",
+          "id": "monster-lifeless-body",
+          "path": "design/monster-abilities/lifeless-body.md",
+          "sha256": "248c16c6e641d2042cd94a05e7e8bfce03b5177f4f57cda241b46d9b16de4d81"
+        },
+        {
+          "label": "shield hunker",
+          "id": "monster-shield-hunker",
+          "path": "design/monster-abilities/shield-hunker.md",
+          "sha256": "0ee4604aed68f89230795c77c3d1db3b93ef231d3a7999cd35ad7800f4fbe6f5"
+        }
+      ],
+      "summoning": {
+        "eligible": true,
+        "summonId": "summon-barrow-guard",
+        "path": "design/bestiary/summons/barrow-guard.md",
+        "eligibility": "Undead 3",
+        "sourceText": "Undead 3 — [player reference](../summons/barrow-guard.md)."
+      }
+    }
+  }
+}

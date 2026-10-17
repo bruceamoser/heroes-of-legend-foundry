@@ -3,7 +3,8 @@
   "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
   "catalogs": {
     "choices": 2,
-    "inventory": 1
+    "inventory": 1,
+    "creatures": 1
   },
   "packs": [
     {
@@ -19,6 +20,13 @@
       "path": "packs/equipment",
       "count": 43,
       "semanticSha256": "d7e7b88f98c1dce521a8cb9e222c43aa2820bf30a41a43efbcf0c7774feb5901"
+    },
+    {
+      "name": "creatures",
+      "type": "Actor",
+      "path": "packs/creatures",
+      "count": 192,
+      "semanticSha256": "5b3dac3b3f3fffec6c31477e664b4b4122e46dc11b872654058374357274d36c"
     }
   ]
 }

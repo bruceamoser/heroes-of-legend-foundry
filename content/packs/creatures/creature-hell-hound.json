@@ -1,0 +1,150 @@
+{
+  "_key": "!actors!a9da4ebd43c9b0f9",
+  "_id": "a9da4ebd43c9b0f9",
+  "name": "Hell Hound",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 0
+      },
+      "fortitude": {
+        "base": 1
+      },
+      "agility": {
+        "base": 1
+      },
+      "guile": {
+        "base": 1
+      },
+      "knowledge": {
+        "base": 2
+      },
+      "reason": {
+        "base": 2
+      }
+    },
+    "attributesSource": "Brawn +0; Fortitude +1; Agility +1; Guile +1; Knowledge +2; Reason +2",
+    "health": {
+      "value": 22,
+      "baseMax": 22,
+      "sourceText": "22"
+    },
+    "cv": 22,
+    "speed": 8,
+    "speedSource": "8",
+    "alternateSpeeds": [],
+    "size": 1,
+    "sizeLabel": "medium",
+    "sizeSource": "1 (medium)",
+    "footprint": {
+      "width": 1,
+      "height": 1
+    },
+    "armor": 1,
+    "armorMarker": "*",
+    "armorSource": "1\\*",
+    "stability": 0,
+    "threat": {
+      "boons": 0,
+      "banes": 1,
+      "sourceText": "1 Bane"
+    },
+    "evasion": {
+      "boons": 0,
+      "banes": 0,
+      "sourceText": "None"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "resistances": {
+      "numeric": [
+        {
+          "type": "Physical",
+          "value": 1
+        },
+        {
+          "type": "Fire",
+          "value": 2
+        }
+      ],
+      "special": [],
+      "sourceText": "Physical (1), Fire (2)"
+    },
+    "immunities": [],
+    "basicMelee": {
+      "weak": 5,
+      "standard": 3,
+      "strong": 2,
+      "defenseAttribute": "agility",
+      "orientation": "player-defense"
+    },
+    "actions": {
+      "orientation": "player-defense",
+      "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
+      "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Cinder bite | Agility | 7 + Burning 2 / 5 + Burning 1 / 3 |",
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Read the Blood Trail | Direction of nearest Bleeding creature within 6. |\n| Defend | +1 Bane |",
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Opportunity Attack | Basic Melee |"
+    },
+    "details": {
+      "flavorMarkdown": "*A black hound carries furnace light behind its teeth and leaves warm pawprints on cold stone.*",
+      "specialtyMarkdown": "### Cinder bite\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** fire.\n\n**Weak defense:** Burning 2. **Standard defense:** Burning 1.\n\n### Read the Blood Trail\n\n*Its nose lifts, separating the sharp scent of fresh blood from the rest of the air.*\n\nLearn the direction of the nearest Bleeding creature within 6 squares. This does not reveal Hidden, give an exact square or permit a sight-required attack against an unseen target.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Dark sight 6 squares; ordinary hearing.\n\n**Tactics and retreat:** Burn the target named by the collar and follow a bleeding retreat. A changed legal order can matter more than another attack.\n\n**Encounter and conversation:** Its collar names the person it must find; replacing the order requires confronting whoever signed it.\n\n**Habitat:** Broken shrine; summoned court; place of conflict · **Communication:** Common\n\n**Loot:** Recoverable possessions or lair clues chosen for the adventure; body parts grant no automatic special equipment or coin value.\n\n**Summoning:** Ineligible.",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-hell-hound\n\n\n**Category:** Fiend · **Role:** Burning striker · **CV:** 22\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Cinder bite | Reason | 1 Boon | 3 fire damage. | 5 fire damage. Burning 1. | 7 fire damage. Burning 2. |\n\nUse the attributes above for defenses named by incoming attacks. Same targeting, limits and costs apply; no opposed second roll.\n\n### CV worksheet\n\n**Reference damage:** 3/5/7\n\n**Reference type:** fire\n\n**Expected targets:** 1\n\n**Utility factor:** 1.3\n\n**Regeneration per turn:** 0\n\nReference I=4.000, O=5.596. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [blood scent](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/monster-abilities/blood-scent.md), [elemental burn](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/monster-abilities/elemental-burn.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/rules/stability.md)"
+    },
+    "biography": ""
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "creature-hell-hound",
+      "source": {
+        "path": "design/bestiary/creatures/hell-hound.md",
+        "sha256": "cbd1ff8e3f61cc12b2b7b4e62d44cb4ece8cc5725fc5ecced73a57f0f251cb1c"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Printed profile · specialty automation pending",
+      "specialtyAutomation": "pending",
+      "classification": {
+        "category": "Fiend",
+        "role": "Burning striker",
+        "cv": 22
+      },
+      "family": "Fiends and infernal bargains",
+      "abilitySources": [
+        {
+          "label": "blood scent",
+          "id": "monster-blood-scent",
+          "path": "design/monster-abilities/blood-scent.md",
+          "sha256": "e59c5e063a00af7caa8af14af966978837c5f673dde3601ea844e24fcde1614e"
+        },
+        {
+          "label": "elemental burn",
+          "id": "monster-elemental-burn",
+          "path": "design/monster-abilities/elemental-burn.md",
+          "sha256": "8c5ce559ecabe30b4ac207824e20cb56adfac812d72ca5c257c1ec71f22ebe46"
+        }
+      ],
+      "summoning": {
+        "eligible": false,
+        "summonId": null,
+        "path": null,
+        "eligibility": null,
+        "sourceText": "Ineligible."
+      }
+    }
+  }
+}

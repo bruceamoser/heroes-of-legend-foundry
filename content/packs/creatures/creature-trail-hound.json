@@ -1,0 +1,135 @@
+{
+  "_key": "!actors!39450409a6a85370",
+  "_id": "39450409a6a85370",
+  "name": "Trail Hound",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 0
+      },
+      "fortitude": {
+        "base": 1
+      },
+      "agility": {
+        "base": 1
+      },
+      "guile": {
+        "base": 0
+      },
+      "knowledge": {
+        "base": -2
+      },
+      "reason": {
+        "base": 1
+      }
+    },
+    "attributesSource": "Brawn +0; Fortitude +1; Agility +1; Guile +0; Knowledge -2; Reason +1",
+    "health": {
+      "value": 8,
+      "baseMax": 8,
+      "sourceText": "8"
+    },
+    "cv": 5,
+    "speed": 7,
+    "speedSource": "7",
+    "alternateSpeeds": [],
+    "size": 1,
+    "sizeLabel": "medium",
+    "sizeSource": "1 (medium)",
+    "footprint": {
+      "width": 1,
+      "height": 1
+    },
+    "armor": 0,
+    "armorMarker": "",
+    "armorSource": "0",
+    "stability": 0,
+    "threat": {
+      "boons": 0,
+      "banes": 0,
+      "sourceText": "None"
+    },
+    "evasion": {
+      "boons": 0,
+      "banes": 0,
+      "sourceText": "None"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "resistances": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "immunities": [],
+    "basicMelee": {
+      "weak": 4,
+      "standard": 2,
+      "strong": 1,
+      "defenseAttribute": "agility",
+      "orientation": "player-defense"
+    },
+    "actions": {
+      "orientation": "player-defense",
+      "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
+      "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 4/2/1 |\n| Warning bite | Agility | 4/2/1 |",
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Take the Scent | Gain 1 Boon on its next Reason scent-tracking roll before turn end; needs a scent trail. No automatic discovery. |\n| Defend | +1 Bane |",
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Opportunity Attack | Basic Melee |"
+    },
+    "details": {
+      "flavorMarkdown": "*A lean, deep-chested tracking dog with a weatherproof coat, broad nose and attentive ears. Its loyalty is personal; a familiar handler matters more to it than a shouted order.*",
+      "specialtyMarkdown": "### Warning bite\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Keen scent within 6 squares; tracks by scent.\n\n**Signs:** Claw marks beside a scent post; a bark that stops when answered.\n\n**Purpose:** Stay with its familiar people and find the missing member of the pack.\n\n**Tactics and retreat:** Circle an isolated threat and retreat toward its handler when hurt.\n\n**Counterplay and conversation:** A familiar scent, food or a calm handler can stop a fight before it begins.\n\n**Habitat:** Wilderness · **Communication:** None\n\n**Loot:** A collar can identify an owner; no automatic coin reward.\n\n**Summoning:** Animal 1 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/summons/trail-hound.md).",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-trail-hound\n\n\n**Category:** Animal · **Role:** Tracker · **CV:** 5\n\n**Difficulty rationale:** No innate attack modifier; armor, cover and chosen actions provide its defenses. Ordinary attack difficulty; riders and positioning carry the threat.\n\n**Reference damage:** 1/2/4\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.1\n\n**Regeneration per turn:** 0\n\nReference I=5.000, O=1.324. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [trail hound take the scent](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/monster-abilities/trail-hound-take-the-scent.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/rules/stability.md)"
+    },
+    "biography": ""
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "creature-trail-hound",
+      "source": {
+        "path": "design/bestiary/creatures/trail-hound.md",
+        "sha256": "e9e107921e4f4896f2cb8a9f5fadcba0dd9bb049d9d40e8c8d5baa64e5a047b3"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Printed profile · specialty automation pending",
+      "specialtyAutomation": "pending",
+      "classification": {
+        "category": "Animal",
+        "role": "Tracker",
+        "cv": 5
+      },
+      "family": "Animal",
+      "abilitySources": [
+        {
+          "label": "trail hound take the scent",
+          "id": "monster-trail-hound-take-the-scent",
+          "path": "design/monster-abilities/trail-hound-take-the-scent.md",
+          "sha256": "06eb26b72583559a0f83edb4fc5a9dec62faf6d627c6e439d929ed8b63e4aa40"
+        }
+      ],
+      "summoning": {
+        "eligible": true,
+        "summonId": "summon-trail-hound",
+        "path": "design/bestiary/summons/trail-hound.md",
+        "eligibility": "Animal 1",
+        "sourceText": "Animal 1 — [player reference](../summons/trail-hound.md)."
+      }
+    }
+  }
+}

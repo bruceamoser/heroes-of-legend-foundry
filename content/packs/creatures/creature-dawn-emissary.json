@@ -1,0 +1,145 @@
+{
+  "_key": "!actors!b5fac8a5c91636e7",
+  "_id": "b5fac8a5c91636e7",
+  "name": "Dawn Emissary",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 1
+      },
+      "fortitude": {
+        "base": 2
+      },
+      "agility": {
+        "base": 1
+      },
+      "guile": {
+        "base": 1
+      },
+      "knowledge": {
+        "base": 2
+      },
+      "reason": {
+        "base": 2
+      }
+    },
+    "attributesSource": "Brawn +1; Fortitude +2; Agility +1; Guile +1; Knowledge +2; Reason +2",
+    "health": {
+      "value": 30,
+      "baseMax": 30,
+      "sourceText": "30"
+    },
+    "cv": 31,
+    "speed": 6,
+    "speedSource": "6; fly 8",
+    "alternateSpeeds": [
+      {
+        "mode": "fly",
+        "value": 8
+      }
+    ],
+    "size": 1,
+    "sizeLabel": "medium",
+    "sizeSource": "1 (medium)",
+    "footprint": {
+      "width": 1,
+      "height": 1
+    },
+    "armor": 0,
+    "armorMarker": "*",
+    "armorSource": "0\\*",
+    "stability": 0,
+    "threat": {
+      "boons": 0,
+      "banes": 1,
+      "sourceText": "1 Bane"
+    },
+    "evasion": {
+      "boons": 0,
+      "banes": 1,
+      "sourceText": "1 Bane"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "resistances": {
+      "numeric": [
+        {
+          "type": "Radiant",
+          "value": 3
+        }
+      ],
+      "special": [],
+      "sourceText": "Radiant (3)"
+    },
+    "immunities": [],
+    "basicMelee": {
+      "weak": 5,
+      "standard": 3,
+      "strong": 2,
+      "defenseAttribute": "agility",
+      "orientation": "player-defense"
+    },
+    "actions": {
+      "orientation": "player-defense",
+      "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
+      "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Dawn blade | Fortitude | 8/6/4 |\n| Battle Mending | Fortitude (if harmful) | See details |",
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Defend | +1 Bane |",
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Opportunity Attack | Basic Melee |"
+    },
+    "details": {
+      "flavorMarkdown": "*A winged emissary in battered bright armor, with a steady gaze and the visible weariness of long service. Compassion and duty can conflict within it as they do in mortals.*",
+      "specialtyMarkdown": "### Dawn blade\n\n**Target:** One adjacent creature. **Player defense:** Fortitude. **Damage type:** radiant.\n\n### Battle Mending\n\nOne adjacent living ally; free hand. Pay 3 HP first, bypass resistance, and remain above 0. A player rolls this creature’s Reason: Weak heals 5, Standard 10, Strong 15 HP. Life resistance reduces healing, minimum 1. This spell provokes. Against a healing-harmed target instead, use Fortitude defense: Weak takes 15, Standard 10, Strong 5 Life damage. Same cost; no healing riders.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Signs:** The ill dream of sunrise before a stranger arrives.\n\n**Purpose:** Complete a duty without turning mortals into expendable pieces.\n\n**Tactics and retreat:** Heal an ally, then intervene against the immediate danger; accept surrender.\n\n**Counterplay and conversation:** Explain the harm its orders would cause and offer another way to fulfill them.\n\n**Habitat:** Shrine; battlefield · **Communication:** Common and sacred languages\n\n**Loot:** Aid, an introduction or one negotiated blessing chosen by the DA; no automatic treasure for killing it.\n\n**Summoning:** Ineligible.",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-dawn-emissary\n\n\n**Category:** Celestial · **Role:** Healer champion · **CV:** 31\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Dawn blade | Reason | 1 Boon | 4 radiant damage. | 6 radiant damage. | 8 radiant damage. |\n\nThe incoming attack names the defense attribute; use the six values above. Same targeting, costs and limits apply in either perspective. No opposed second roll.\n\n\n### CV worksheet\n\n**Difficulty rationale:** An agile or elusive body warrants attack Banes. Its dangerous attack imposes defense Banes.\n\n**Reference damage:** 4/6/8\n\n**Reference type:** radiant\n\n**Expected targets:** 1\n\n**Utility factor:** 1.5\n\n**Regeneration per turn:** 0\n\nReference I=4.404, O=6.596. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [battle mending](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/monster-abilities/battle-mending.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/rules/stability.md)"
+    },
+    "biography": ""
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "creature-dawn-emissary",
+      "source": {
+        "path": "design/bestiary/creatures/dawn-emissary.md",
+        "sha256": "8195ae8c2a720742a8a0e4433470ebd4b88eed52a9e900d1a46ac9852b088546"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Printed profile · specialty automation pending",
+      "specialtyAutomation": "pending",
+      "classification": {
+        "category": "Celestial",
+        "role": "Healer champion",
+        "cv": 31
+      },
+      "family": "Celestial guides and champions",
+      "abilitySources": [
+        {
+          "label": "battle mending",
+          "id": "monster-battle-mending",
+          "path": "design/monster-abilities/battle-mending.md",
+          "sha256": "041f2b5a0da4e71bb1a75a15c76fd16fbf907055abbc0b6e8fb420927d9db143"
+        }
+      ],
+      "summoning": {
+        "eligible": false,
+        "summonId": null,
+        "path": null,
+        "eligibility": null,
+        "sourceText": "Ineligible."
+      }
+    }
+  }
+}

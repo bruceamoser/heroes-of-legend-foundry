@@ -161,6 +161,43 @@
 .heroes-of-legend.hol-roll-dialog .hol-roll-footer { padding:10px 20px; border-top:1px solid var(--hol-gold); flex-shrink:0; }
 .heroes-of-legend.hol-roll-dialog .hol-roll-footer p { margin:0; font-size:16px; }
 .heroes-of-legend.hol-creature .window-title { font-size:14px; }
+.heroes-of-legend .hol-creature-sheet { container-type:inline-size; }
+.heroes-of-legend.hol-creature .hol-banner p:not(.hol-kicker) { margin:6px 0 0; color:var(--hol-gold); }
+.heroes-of-legend .hol-creature-automation { margin:0 0 14px; }
+.heroes-of-legend .hol-creature-actions { display:flex; flex-wrap:wrap; gap:8px; margin:0 0 16px; }
+.heroes-of-legend .hol-creature-actions button, .heroes-of-legend .hol-creature-melee-declare button, .heroes-of-legend .hol-creature-editor summary { min-height:38px; height:auto; padding:7px 12px; background:var(--hol-forest); color:var(--hol-ivory); border:1px solid var(--hol-gold); font-family:"HOL Cinzel",Georgia,serif; text-shadow:none; white-space:normal; }
+.heroes-of-legend .hol-creature-summary, .heroes-of-legend .hol-creature-melee { border:1px solid var(--hol-gold); background:#fffdf7; padding:0 14px 14px; margin:0 0 16px; }
+.heroes-of-legend .hol-creature-summary h2, .heroes-of-legend .hol-creature-melee h2 { margin-top:12px; }
+.heroes-of-legend .hol-stat-grid, .heroes-of-legend .hol-outcome-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px; margin:0; }
+.heroes-of-legend .hol-outcome-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+.heroes-of-legend .hol-stat-grid > div, .heroes-of-legend .hol-outcome-grid > div { background:var(--hol-ivory); border-top:3px solid var(--hol-gold); padding:8px 10px; }
+.heroes-of-legend .hol-stat-grid dt, .heroes-of-legend .hol-outcome-grid dt { color:#5d533f; font-size:13px; font-family:"HOL Cinzel",Georgia,serif; }
+.heroes-of-legend .hol-stat-grid dd, .heroes-of-legend .hol-outcome-grid dd { margin:3px 0 0; color:var(--hol-forest); font-size:20px; font-weight:700; overflow-wrap:anywhere; }
+.heroes-of-legend .hol-creature-mitigations { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin-top:12px; }
+.heroes-of-legend .hol-creature-mitigations section { border-left:3px solid var(--hol-gold); padding-left:10px; }
+.heroes-of-legend .hol-creature-mitigations h3 { margin:0 0 5px; color:var(--hol-forest); font-family:"HOL Cinzel",Georgia,serif; }
+.heroes-of-legend .hol-creature-mitigations p, .heroes-of-legend .hol-creature-mitigations ul { margin:0; padding-left:18px; }
+.heroes-of-legend .hol-creature-mitigations .hol-source-text { padding-left:0; font-size:14px; color:#5d533f; }
+.heroes-of-legend .hol-creature-melee > p { margin-bottom:8px; }
+.heroes-of-legend .hol-creature-melee-declare { align-items:end; margin-top:12px; }
+.heroes-of-legend .hol-creature-reference { margin:18px 0; }
+.heroes-of-legend .hol-creature-reference .hol-reference-titlebar { display:flex; align-items:center; justify-content:space-between; gap:12px; border-bottom:1px solid var(--hol-gold); }
+.heroes-of-legend .hol-creature-reference .hol-reference-titlebar h2 { flex:1; }
+.heroes-of-legend .hol-creature-reference .hol-reference-badge { border:1px solid var(--hol-gold); background:var(--hol-forest); color:var(--hol-ivory); padding:4px 8px; font-size:12px; font-family:"HOL Cinzel",Georgia,serif; }
+.heroes-of-legend .hol-creature-reference .hol-item-reference { margin-top:0; padding:8px 14px 14px; }
+.heroes-of-legend .hol-creature-reference table { width:100%; border-collapse:collapse; margin:10px 0 14px; background:#fffdf7; }
+.heroes-of-legend .hol-creature-reference th { background:var(--hol-forest); color:var(--hol-ivory); padding:6px 8px; text-align:left; font-family:"HOL Cinzel",Georgia,serif; font-size:14px; }
+.heroes-of-legend .hol-creature-reference td { border-top:1px solid #d6c8a6; padding:6px 8px; vertical-align:top; }
+.heroes-of-legend .hol-creature-reference blockquote { margin:10px 0; padding:8px 12px; border-left:3px solid var(--hol-gold); background:var(--hol-ivory); }
+.heroes-of-legend .hol-creature-reference a { color:#385330; text-decoration:underline; }
+.heroes-of-legend .hol-creature-editor { border:1px solid var(--hol-gold); background:#fffdf7; margin:16px 0; }
+.heroes-of-legend .hol-creature-editor summary { cursor:pointer; list-style-position:inside; border:0; border-bottom:1px solid var(--hol-gold); }
+.heroes-of-legend .hol-creature-editor fieldset { padding:14px; }
+.heroes-of-legend .hol-creature-editor[open] summary { margin-bottom:0; }
+@container (max-width:700px) {
+ .heroes-of-legend .hol-stat-grid, .heroes-of-legend .hol-outcome-grid, .heroes-of-legend .hol-creature-mitigations { grid-template-columns:1fr; }
+ .heroes-of-legend .hol-creature-reference .hol-reference-titlebar { align-items:flex-start; flex-direction:column; }
+}
 .heroes-of-legend.hol-creature button[data-action=conditions] { background:var(--hol-forest); color:var(--hol-ivory); border:1px solid var(--hol-gold); }
 .hol-attack-card { background:#f7f3e9; color:#28251c; border:1px solid #b39253; padding:12px; font-family:"HOL Garamond",Georgia,serif; font-size:17px; }
 .hol-attack-card h3 { color:#15221c; font-family:"HOL Cinzel",Georgia,serif; font-size:18px; }

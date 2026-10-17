@@ -1,0 +1,149 @@
+{
+  "_key": "!actors!18ee4a7c7a614bf6",
+  "_id": "18ee4a7c7a614bf6",
+  "name": "Young Ember Drake",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 2
+      },
+      "fortitude": {
+        "base": 2
+      },
+      "agility": {
+        "base": 1
+      },
+      "guile": {
+        "base": 0
+      },
+      "knowledge": {
+        "base": 0
+      },
+      "reason": {
+        "base": 1
+      }
+    },
+    "attributesSource": "Brawn +2; Fortitude +2; Agility +1; Guile +0; Knowledge +0; Reason +1",
+    "health": {
+      "value": 28,
+      "baseMax": 28,
+      "sourceText": "28"
+    },
+    "cv": 27,
+    "speed": 6,
+    "speedSource": "6; fly 8",
+    "alternateSpeeds": [
+      {
+        "mode": "fly",
+        "value": 8
+      }
+    ],
+    "size": 2,
+    "sizeLabel": "2x2 squares",
+    "sizeSource": "2 (2x2 squares)",
+    "footprint": {
+      "width": 2,
+      "height": 2
+    },
+    "armor": 1,
+    "armorMarker": "*",
+    "armorSource": "1\\*",
+    "stability": 1,
+    "threat": {
+      "boons": 0,
+      "banes": 1,
+      "sourceText": "1 Bane"
+    },
+    "evasion": {
+      "boons": 0,
+      "banes": 0,
+      "sourceText": "None"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "resistances": {
+      "numeric": [
+        {
+          "type": "Physical",
+          "value": 1
+        },
+        {
+          "type": "Fire",
+          "value": 3
+        }
+      ],
+      "special": [],
+      "sourceText": "Physical (1), Fire (3)"
+    },
+    "immunities": [],
+    "basicMelee": {
+      "weak": 5,
+      "standard": 3,
+      "strong": 2,
+      "defenseAttribute": "agility",
+      "orientation": "player-defense"
+    },
+    "actions": {
+      "orientation": "player-defense",
+      "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
+      "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Hot jaws | Agility | 7/5/3 |\n| Ember breath | Agility | 7 + Burning 2 / 5 + Burning 1 / 3 |\n| Claw rake | Agility | 6 + Bleeding 2 / 4 + Bleeding 1 / 3 |",
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Defend | +1 Bane |",
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Opportunity Attack | Basic Melee |"
+    },
+    "details": {
+      "flavorMarkdown": "*A young, broad-winged dragon with warm red scales, a heavy jaw and smoke-darkened nostrils. Possessiveness has developed faster than judgment or experience.*",
+      "specialtyMarkdown": "### Hot jaws\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.\n\n### Ember breath\n\n*Its chest swells and light leaks between its teeth; there is one terrible instant to scatter.*\n\n**Target:** All creatures in a cone of 3 rows, 1/3/5 squares wide. **Player defense:** Agility. **Damage type:** fire.\n\n**Weak defense:** Burning 2. **Standard defense:** Burning 1.\n\n**Limit:** Cannot use this attack on consecutive turns, regardless of result.\n\n### Claw rake\n\n*The drake slashes across the target rather than committing its head.*\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Bleeding 2. **Standard defense:** Bleeding 1.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Heavy Frame — Passive:** Stability 1; an explicit creature trait, not a bonus from size.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Signs:** Fresh scorch marks surround a pile of shiny scrap.\n\n**Purpose:** Build a hoard and prove ownership of a hunting ground.\n\n**Tactics and retreat:** Breathe along a close approach, then bite while its breath recovers.\n\n**Counterplay and conversation:** Spread out, use stone cover, and negotiate over a specific object it wants.\n\n**Habitat:** Rocky hill; ruined tower · **Communication:** Understands Draconic; speaks short phrases\n\n**Loot:** One shared hoard of 60 coins and ordinary trade goods.\n\n**Summoning:** Ineligible.",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-young-ember-drake\n\n\n**Category:** Dragon · **Role:** Flying artillery · **CV:** 27\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Hot jaws | Brawn | 1 Boon | 3 physical damage. | 5 physical damage. | 7 physical damage. |\n| Ember breath | Brawn | 1 Boon | 3 fire damage. | 5 fire damage. Burning 1. | 7 fire damage. Burning 2. |\n| Claw rake | Brawn | 1 Boon | 3 physical damage. | 4 physical damage; Bleeding 1. | 6 physical damage; Bleeding 2. |\n\nThe incoming attack names the defense attribute; use the six values above. Same targeting, costs and limits apply in either perspective. No opposed second roll.\n\n\n### CV worksheet\n\n**Difficulty rationale:** No innate attack modifier; armor, cover and chosen actions provide its defenses. Its dangerous attack imposes defense Banes.\n\n**Reference damage:** 3/5/7\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.55\n\n**Regeneration per turn:** 0\n\nReference I=4.000, O=4.596. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [breath](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/monster-abilities/breath.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/rules/stability.md)"
+    },
+    "biography": ""
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "creature-young-ember-drake",
+      "source": {
+        "path": "design/bestiary/creatures/young-ember-drake.md",
+        "sha256": "47407854a26ebdae63773558e7d65bf942cc7404fdcc891d47cd31d811e3515f"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Printed profile · specialty automation pending",
+      "specialtyAutomation": "pending",
+      "classification": {
+        "category": "Dragon",
+        "role": "Flying artillery",
+        "cv": 27
+      },
+      "family": "Dragons, drakes and hydras",
+      "abilitySources": [
+        {
+          "label": "breath",
+          "id": "monster-breath",
+          "path": "design/monster-abilities/breath.md",
+          "sha256": "af8befd0a08c187250f8183e6a99afecd387e1a798a4164f499a0185f863bdc8"
+        }
+      ],
+      "summoning": {
+        "eligible": false,
+        "summonId": null,
+        "path": null,
+        "eligibility": null,
+        "sourceText": "Ineligible."
+      }
+    }
+  }
+}

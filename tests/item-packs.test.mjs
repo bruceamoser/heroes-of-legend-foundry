@@ -338,13 +338,13 @@ test("authored pack JSON is complete, deterministic and contains no compiled dat
       withFileTypes: true,
     }),
     files = entries.filter((entry) => entry.isFile());
-  assert.equal(files.length, 394);
+  assert.equal(files.length, 586);
   assert(files.every((entry) => entry.name.endsWith(".json")));
   for (const forbidden of ["CURRENT", "LOCK", "LOG", "MANIFEST-000001"])
     assert(!files.some((entry) => entry.name === forbidden));
 });
 
-test("manifest declares native Item packs and sanitizes their rich descriptions", async () => {
+test("manifest declares native content packs and sanitizes Item descriptions", async () => {
   const manifest = JSON.parse(
       await readFile(new URL("../static/system.json", import.meta.url), "utf8"),
     ),
@@ -369,6 +369,13 @@ test("manifest declares native Item packs and sanitizes their rich descriptions"
       label: "Heroes of Legend Equipment",
       type: "Item",
       path: "packs/equipment",
+      system: "heroes-of-legend",
+    },
+    {
+      name: "creatures",
+      label: "Heroes of Legend Creatures",
+      type: "Actor",
+      path: "packs/creatures",
       system: "heroes-of-legend",
     },
   ]);

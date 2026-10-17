@@ -1,0 +1,144 @@
+{
+  "_key": "!actors!87ce66fc68db62cd",
+  "_id": "87ce66fc68db62cd",
+  "name": "Grave Wisp",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": -2
+      },
+      "fortitude": {
+        "base": 0
+      },
+      "agility": {
+        "base": 2
+      },
+      "guile": {
+        "base": 1
+      },
+      "knowledge": {
+        "base": 0
+      },
+      "reason": {
+        "base": 1
+      }
+    },
+    "attributesSource": "Brawn -2; Fortitude +0; Agility +2; Guile +1; Knowledge +0; Reason +1",
+    "health": {
+      "value": 6,
+      "baseMax": 6,
+      "sourceText": "6"
+    },
+    "cv": 6,
+    "speed": 0,
+    "speedSource": "0; fly 6",
+    "alternateSpeeds": [
+      {
+        "mode": "fly",
+        "value": 6
+      }
+    ],
+    "size": 1,
+    "sizeLabel": "medium",
+    "sizeSource": "1 (medium)",
+    "footprint": {
+      "width": 1,
+      "height": 1
+    },
+    "armor": 0,
+    "armorMarker": "",
+    "armorSource": "0",
+    "stability": 0,
+    "threat": {
+      "boons": 0,
+      "banes": 0,
+      "sourceText": "None"
+    },
+    "evasion": {
+      "boons": 0,
+      "banes": 1,
+      "sourceText": "1 Bane"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "resistances": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "immunities": [
+      "Bleeding",
+      "Poisoned",
+      "Asleep"
+    ],
+    "basicMelee": {
+      "weak": 4,
+      "standard": 2,
+      "strong": 1,
+      "defenseAttribute": "agility",
+      "orientation": "player-defense"
+    },
+    "actions": {
+      "orientation": "player-defense",
+      "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
+      "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 4/2/1 |\n| Cold spark | Fortitude | 3/2/1 |",
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Defend | +1 Bane |",
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Opportunity Attack | Basic Melee |"
+    },
+    "details": {
+      "flavorMarkdown": "*A pale drifting light with the faint suggestion of a face deep inside it. The wisp is a dead person’s lingering need for a witness, not a source of useful flame.*",
+      "specialtyMarkdown": "### Cold spark\n\n**Target:** One visible creature within 3 squares. **Player defense:** Fortitude. **Damage type:** cold.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Lifeless Body:** does not breathe or eat; only the listed immunities apply.\n\n**Healing:** Healing-harmed: ordinary healing resolves as Life damage instead; no beneficial riders.\n\n**Against offensive healing:** controller defends with Fortitude if this is player-controlled; a player attacking it still rolls only their attack.\n\n**Senses:** Dark sight 6 squares.\n\n**Signs:** Small lights move against the wind above sunken ground.\n\n**Purpose:** Draw a witness to the place where someone was forgotten.\n\n**Tactics and retreat:** Stay beyond melee reach and use a cold sting only if pursued.\n\n**Counterplay and conversation:** Listen to the pattern of its movement; it may be leading toward a grave, not an ambush.\n\n**Habitat:** Marsh; graveyard · **Communication:** None\n\n**Loot:** A buried name or object, not treasure carried by the light.\n\n**Summoning:** Undead 1 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/summons/grave-wisp.md).",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-grave-wisp\n\n\n**Category:** Undead · **Role:** Lurer · **CV:** 6\n\n**Difficulty rationale:** An agile or elusive body warrants attack Banes. Ordinary attack difficulty; riders and positioning carry the threat.\n\n**Reference damage:** 1/2/3\n\n**Reference type:** cold\n\n**Expected targets:** 1\n\n**Utility factor:** 1.1\n\n**Regeneration per turn:** 0\n\nReference I=4.404, O=2.000. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [lifeless body](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/monster-abilities/lifeless-body.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/rules/stability.md)"
+    },
+    "biography": ""
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "creature-grave-wisp",
+      "source": {
+        "path": "design/bestiary/creatures/grave-wisp.md",
+        "sha256": "e83b9cc75679c82b16cd96a688f26952d0e3ae55e876a038a063e758659d7a86"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Printed profile · specialty automation pending",
+      "specialtyAutomation": "pending",
+      "classification": {
+        "category": "Undead",
+        "role": "Lurer",
+        "cv": 6
+      },
+      "family": "Ghosts, shadows and wraiths",
+      "abilitySources": [
+        {
+          "label": "lifeless body",
+          "id": "monster-lifeless-body",
+          "path": "design/monster-abilities/lifeless-body.md",
+          "sha256": "248c16c6e641d2042cd94a05e7e8bfce03b5177f4f57cda241b46d9b16de4d81"
+        }
+      ],
+      "summoning": {
+        "eligible": true,
+        "summonId": "summon-grave-wisp",
+        "path": "design/bestiary/summons/grave-wisp.md",
+        "eligibility": "Undead 1",
+        "sourceText": "Undead 1 — [player reference](../summons/grave-wisp.md)."
+      }
+    }
+  }
+}

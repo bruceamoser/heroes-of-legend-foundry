@@ -1,0 +1,151 @@
+{
+  "_key": "!actors!cc9b809b0fd3c5fd",
+  "_id": "cc9b809b0fd3c5fd",
+  "name": "Blood Bat Swarm",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 0
+      },
+      "fortitude": {
+        "base": 1
+      },
+      "agility": {
+        "base": 2
+      },
+      "guile": {
+        "base": 0
+      },
+      "knowledge": {
+        "base": -2
+      },
+      "reason": {
+        "base": 1
+      }
+    },
+    "attributesSource": "Brawn +0; Fortitude +1; Agility +2; Guile +0; Knowledge -2; Reason +1",
+    "health": {
+      "value": 18,
+      "baseMax": 18,
+      "sourceText": "18"
+    },
+    "cv": 17,
+    "speed": 1,
+    "speedSource": "1; fly 8",
+    "alternateSpeeds": [
+      {
+        "mode": "fly",
+        "value": 8
+      }
+    ],
+    "size": 2,
+    "sizeLabel": "2x2 squares",
+    "sizeSource": "2 (2x2 squares)",
+    "footprint": {
+      "width": 2,
+      "height": 2
+    },
+    "armor": 2,
+    "armorMarker": "",
+    "armorSource": "2",
+    "stability": 0,
+    "threat": {
+      "boons": 0,
+      "banes": 0,
+      "sourceText": "None"
+    },
+    "evasion": {
+      "boons": 0,
+      "banes": 1,
+      "sourceText": "1 Bane"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "resistances": {
+      "numeric": [
+        {
+          "type": "Physical",
+          "value": 2
+        }
+      ],
+      "special": [],
+      "sourceText": "Physical (2)"
+    },
+    "immunities": [],
+    "basicMelee": {
+      "weak": 5,
+      "standard": 3,
+      "strong": 2,
+      "defenseAttribute": "agility",
+      "orientation": "player-defense"
+    },
+    "actions": {
+      "orientation": "player-defense",
+      "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
+      "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Thousand bites | Agility | 5 + Bleeding 2 / 3 + Bleeding 1 / 2 |",
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Defend | +1 Bane |",
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Opportunity Attack | Basic Melee |"
+    },
+    "details": {
+      "flavorMarkdown": "*A flock of small blood-feeding bats, recognizable by red mouths and pale bellies beneath dark wings. Their numbers protect individual bodies until a broad attack scatters them.*",
+      "specialtyMarkdown": "### Thousand bites\n\n*The claws snag and drag; blood follows the withdrawing talons.*\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Bleeding 2. **Standard defense:** Bleeding 1.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Scatter Body:** Area attacks ignore its physical DR, not other resistance. One HP pool and one turn; cannot overlap another creature at rest.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Signs:** Livestock wake with shallow cuts and panic at dusk.\n\n**Purpose:** Feed quickly and return to the roost.\n\n**Tactics and retreat:** Rend the nearest isolated target, then retreat if the swarm is badly damaged.\n\n**Counterplay and conversation:** Fight under a low roof and use area effects; protect the livestock behind screens.\n\n**Habitat:** Cavern; pasture · **Communication:** None\n\n**Loot:** No carried treasure.\n\n**Summoning:** Ineligible.",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-blood-bat-swarm\n\n\n**Category:** Animal · **Role:** Flying swarm · **CV:** 17\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Thousand bites | Agility | None | 2 physical damage. | 3 physical damage. Bleeding 1. | 5 physical damage. Bleeding 2. |\n\nThe incoming attack names the defense attribute; use the six values above. Same targeting, costs and limits apply in either perspective. No opposed second roll.\n\n\n### CV worksheet\n\n**Difficulty rationale:** An agile or elusive body warrants attack Banes. Ordinary attack difficulty; riders and positioning carry the threat.\n\n**Reference damage:** 2/3/5\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.35\n\n**Regeneration per turn:** 0\n\nReference I=2.404, O=2.162. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [rending blow](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/monster-abilities/rending-blow.md), [scatter body](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/monster-abilities/scatter-body.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/rules/stability.md)"
+    },
+    "biography": ""
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "creature-blood-bat-swarm",
+      "source": {
+        "path": "design/bestiary/creatures/blood-bat-swarm.md",
+        "sha256": "9c856089e45e69eec594183f0f3135fc0d58aaa178f21e74d2682c1c37489186"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Printed profile · specialty automation pending",
+      "specialtyAutomation": "pending",
+      "classification": {
+        "category": "Animal",
+        "role": "Flying swarm",
+        "cv": 17
+      },
+      "family": "Animal",
+      "abilitySources": [
+        {
+          "label": "rending blow",
+          "id": "monster-rending-blow",
+          "path": "design/monster-abilities/rending-blow.md",
+          "sha256": "b2d3b404687f50e71c5eef0df53629619a9ccb69d85f5922470dea4f0f11395c"
+        },
+        {
+          "label": "scatter body",
+          "id": "monster-scatter-body",
+          "path": "design/monster-abilities/scatter-body.md",
+          "sha256": "6a67db60810f255ef544609a2f4f47feb2e5dd57987492d84c5d30afc39c9045"
+        }
+      ],
+      "summoning": {
+        "eligible": false,
+        "summonId": null,
+        "path": null,
+        "eligibility": null,
+        "sourceText": "Ineligible."
+      }
+    }
+  }
+}

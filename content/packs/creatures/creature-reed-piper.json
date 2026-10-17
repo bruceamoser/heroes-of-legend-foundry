@@ -1,0 +1,140 @@
+{
+  "_key": "!actors!ae1c0f9f4710dd40",
+  "_id": "ae1c0f9f4710dd40",
+  "name": "Reed Piper",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 0
+      },
+      "fortitude": {
+        "base": 0
+      },
+      "agility": {
+        "base": 2
+      },
+      "guile": {
+        "base": 2
+      },
+      "knowledge": {
+        "base": 1
+      },
+      "reason": {
+        "base": 1
+      }
+    },
+    "attributesSource": "Brawn +0; Fortitude +0; Agility +2; Guile +2; Knowledge +1; Reason +1",
+    "health": {
+      "value": 15,
+      "baseMax": 15,
+      "sourceText": "15"
+    },
+    "cv": 15,
+    "speed": 7,
+    "speedSource": "7; swim 5",
+    "alternateSpeeds": [
+      {
+        "mode": "swim",
+        "value": 5
+      }
+    ],
+    "size": 1,
+    "sizeLabel": "medium",
+    "sizeSource": "1 (medium)",
+    "footprint": {
+      "width": 1,
+      "height": 1
+    },
+    "armor": 0,
+    "armorMarker": "",
+    "armorSource": "0",
+    "stability": 0,
+    "threat": {
+      "boons": 0,
+      "banes": 1,
+      "sourceText": "1 Bane"
+    },
+    "evasion": {
+      "boons": 0,
+      "banes": 1,
+      "sourceText": "1 Bane"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "resistances": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "immunities": [],
+    "basicMelee": {
+      "weak": 5,
+      "standard": 3,
+      "strong": 2,
+      "defenseAttribute": "agility",
+      "orientation": "player-defense"
+    },
+    "actions": {
+      "orientation": "player-defense",
+      "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
+      "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Bewildering note | Reason | 4 + Dazed 2 / 3 + Dazed 1 / 2 |",
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Defend | +1 Bane |",
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Opportunity Attack | Basic Melee |"
+    },
+    "details": {
+      "flavorMarkdown": "*A slender waterside fey with reed-colored hair, long fingers and a pipe cut from its home marsh. Music is both its craft and its means of keeping an audience close.*",
+      "specialtyMarkdown": "### Bewildering note\n\n*For a moment, the victim remembers a pain that has not happened yet.*\n\n**Target:** One creature within 5 squares that can hear it. **Player defense:** Reason. **Damage type:** mental.\n\n**Weak defense:** Dazed 2. **Standard defense:** Dazed 1.\n\n**Spell:** Provokes when cast beside an enemy.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Signs:** Dancers’ footprints circle a pool with no path leading out.\n\n**Purpose:** Collect an audience that will finally hear the whole song.\n\n**Tactics and retreat:** Use bewildering notes on the boldest pursuer and run along the bank.\n\n**Counterplay and conversation:** Break the rhythm with another song, or agree on a performance with an ending.\n\n**Habitat:** River; marsh · **Communication:** Common and Fey\n\n**Loot:** A carved reed pipe, ordinary except in its owner’s hands.\n\n**Summoning:** Fey 3 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/summons/reed-piper.md).",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-reed-piper\n\n\n**Category:** Fey · **Role:** Distractor · **CV:** 15\n\n**Difficulty rationale:** An agile or elusive body warrants attack Banes. Its dangerous attack imposes defense Banes.\n\n**Reference damage:** 2/3/4\n\n**Reference type:** mental\n\n**Expected targets:** 1\n\n**Utility factor:** 1.4\n\n**Regeneration per turn:** 0\n\nReference I=4.404, O=3.298. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [mind hammer](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/monster-abilities/mind-hammer.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/rules/stability.md)"
+    },
+    "biography": ""
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "creature-reed-piper",
+      "source": {
+        "path": "design/bestiary/creatures/reed-piper.md",
+        "sha256": "8954f355a271c453310609e2285800c1032ba0f2e1daa8a61401c935ccd7a8d5"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Printed profile · specialty automation pending",
+      "specialtyAutomation": "pending",
+      "classification": {
+        "category": "Fey",
+        "role": "Distractor",
+        "cv": 15
+      },
+      "family": "Fey",
+      "abilitySources": [
+        {
+          "label": "mind hammer",
+          "id": "monster-mind-hammer",
+          "path": "design/monster-abilities/mind-hammer.md",
+          "sha256": "ed7eb267ffcab70bbfb82a6a7ed42f68b369e5b981355dfd787a82cbe6404264"
+        }
+      ],
+      "summoning": {
+        "eligible": true,
+        "summonId": "summon-reed-piper",
+        "path": "design/bestiary/summons/reed-piper.md",
+        "eligibility": "Fey 3",
+        "sourceText": "Fey 3 — [player reference](../summons/reed-piper.md)."
+      }
+    }
+  }
+}

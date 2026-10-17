@@ -1,0 +1,156 @@
+{
+  "_key": "!actors!c09c9a841ffb41dc",
+  "_id": "c09c9a841ffb41dc",
+  "name": "Wight",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 2
+      },
+      "fortitude": {
+        "base": 1
+      },
+      "agility": {
+        "base": 1
+      },
+      "guile": {
+        "base": 0
+      },
+      "knowledge": {
+        "base": 0
+      },
+      "reason": {
+        "base": 1
+      }
+    },
+    "attributesSource": "Brawn +2; Fortitude +1; Agility +1; Guile +0; Knowledge +0; Reason +1",
+    "health": {
+      "value": 24,
+      "baseMax": 24,
+      "sourceText": "24"
+    },
+    "cv": 27,
+    "speed": 6,
+    "speedSource": "6",
+    "alternateSpeeds": [],
+    "size": 1,
+    "sizeLabel": "medium",
+    "sizeSource": "1 (medium)",
+    "footprint": {
+      "width": 1,
+      "height": 1
+    },
+    "armor": 2,
+    "armorMarker": "",
+    "armorSource": "2",
+    "stability": 0,
+    "threat": {
+      "boons": 0,
+      "banes": 1,
+      "sourceText": "1 Bane"
+    },
+    "evasion": {
+      "boons": 0,
+      "banes": 0,
+      "sourceText": "None"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "resistances": {
+      "numeric": [
+        {
+          "type": "Physical",
+          "value": 2
+        }
+      ],
+      "special": [],
+      "sourceText": "Physical (2)"
+    },
+    "immunities": [
+      "Bleeding",
+      "Poisoned",
+      "Asleep"
+    ],
+    "basicMelee": {
+      "weak": 5,
+      "standard": 3,
+      "strong": 2,
+      "defenseAttribute": "agility",
+      "orientation": "player-defense"
+    },
+    "actions": {
+      "orientation": "player-defense",
+      "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
+      "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Oath-draining blade | Fortitude | 7 + Slowed 2 / 5 + Slowed 1 / 3 |",
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Rattle of the Grave | One hearing target within 2: Frightened 1. |\n| Defend | +1 Bane |",
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Opportunity Attack | Basic Melee |"
+    },
+    "details": {
+      "flavorMarkdown": "*An armored corpse watches with the offended dignity of a lord whose court has forgotten to die.*",
+      "specialtyMarkdown": "### Oath-draining blade\n\n**Target:** One adjacent creature. **Player defense:** Fortitude. **Damage type:** Life.\n\n**Weak defense:** Slowed 2. **Standard defense:** Slowed 1.\n\n### Rattle of the Grave\n\n*A dry sound rises from the corpse, like someone knocking from inside a coffin.*\n\nOne creature within 2 squares that can hear it gains Frightened 1 of this creature. Once per turn; no damage.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.\n\n**Lifeless Body — Passive:** Does not breathe or eat; only its listed immunities apply.\n\n**Healing:** Healing-harmed: ordinary healing resolves as Life damage instead; no beneficial riders.\n\n**Against offensive healing:** Its controller uses Fortitude defense when player-controlled; a player attacking it rolls only their attack.\n\n**Senses:** Dark sight 6 squares; ordinary hearing.\n\n**Tactics and retreat:** Separate the oath-breaker from companions, then use fear to make the approach costly. It values its old post more than pursuit.\n\n**Encounter and conversation:** It demands a toll once lawful but now ruinous; the original charter can expose its limits.\n\n**Habitat:** Crypt; burial ground; ruined settlement · **Communication:** Common; understands old oaths\n\n**Loot:** Recoverable possessions or lair clues chosen for the adventure; body parts grant no automatic special equipment or coin value.\n\n**Summoning:** Undead 7 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/summons/wight.md).",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-wight\n\n\n**Category:** Undead · **Role:** Pursuit controller · **CV:** 27\n\n### CV worksheet\n\n**Reference damage:** 3/5/7\n\n**Reference type:** Life\n\n**Expected targets:** 1\n\n**Utility factor:** 1.3\n\n**Regeneration per turn:** 0\n\nReference I=3.000, O=5.596. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [hampering strike](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/monster-abilities/hampering-strike.md), [lifeless body](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/monster-abilities/lifeless-body.md), [rattle bones](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/monster-abilities/rattle-bones.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/rules/stability.md)"
+    },
+    "biography": ""
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "creature-wight",
+      "source": {
+        "path": "design/bestiary/creatures/wight.md",
+        "sha256": "220e13aa2deae4ada702027ea88c129c8053350d3461ec626b748f505b478872"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Printed profile · specialty automation pending",
+      "specialtyAutomation": "pending",
+      "classification": {
+        "category": "Undead",
+        "role": "Pursuit controller",
+        "cv": 27
+      },
+      "family": "Undead knights, revenants and liches",
+      "abilitySources": [
+        {
+          "label": "hampering strike",
+          "id": "monster-hampering-strike",
+          "path": "design/monster-abilities/hampering-strike.md",
+          "sha256": "4196362506de3d774fa824a94e64fe2c20e7d3def9a2ff84f31463d43542265b"
+        },
+        {
+          "label": "lifeless body",
+          "id": "monster-lifeless-body",
+          "path": "design/monster-abilities/lifeless-body.md",
+          "sha256": "248c16c6e641d2042cd94a05e7e8bfce03b5177f4f57cda241b46d9b16de4d81"
+        },
+        {
+          "label": "rattle bones",
+          "id": "monster-rattle-bones",
+          "path": "design/monster-abilities/rattle-bones.md",
+          "sha256": "0b0a2c882fac8f589c017b416dcff90ca9ec871c730e3130bed0c55ae64d0398"
+        }
+      ],
+      "summoning": {
+        "eligible": true,
+        "summonId": "summon-wight",
+        "path": "design/bestiary/summons/wight.md",
+        "eligibility": "Undead 7",
+        "sourceText": "Undead 7 — [player reference](../summons/wight.md)."
+      }
+    }
+  }
+}

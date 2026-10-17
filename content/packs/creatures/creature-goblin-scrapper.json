@@ -1,0 +1,135 @@
+{
+  "_key": "!actors!152b108c134d5c85",
+  "_id": "152b108c134d5c85",
+  "name": "Goblin Scrapper",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 0
+      },
+      "fortitude": {
+        "base": 0
+      },
+      "agility": {
+        "base": 2
+      },
+      "guile": {
+        "base": 1
+      },
+      "knowledge": {
+        "base": 0
+      },
+      "reason": {
+        "base": 0
+      }
+    },
+    "attributesSource": "Brawn +0; Fortitude +0; Agility +2; Guile +1; Knowledge +0; Reason +0",
+    "health": {
+      "value": 8,
+      "baseMax": 8,
+      "sourceText": "8"
+    },
+    "cv": 7,
+    "speed": 7,
+    "speedSource": "7",
+    "alternateSpeeds": [],
+    "size": 1,
+    "sizeLabel": "medium",
+    "sizeSource": "1 (medium)",
+    "footprint": {
+      "width": 1,
+      "height": 1
+    },
+    "armor": 0,
+    "armorMarker": "",
+    "armorSource": "0",
+    "stability": 0,
+    "threat": {
+      "boons": 0,
+      "banes": 0,
+      "sourceText": "None"
+    },
+    "evasion": {
+      "boons": 0,
+      "banes": 1,
+      "sourceText": "1 Bane"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "resistances": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "immunities": [],
+    "basicMelee": {
+      "weak": 4,
+      "standard": 2,
+      "strong": 1,
+      "defenseAttribute": "agility",
+      "orientation": "player-defense"
+    },
+    "actions": {
+      "orientation": "player-defense",
+      "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
+      "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 4/2/1 |\n| Scrap knife | Agility | 5/3/2 |",
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Roll Away | Move up to 2 squares in a straight line without provoking opportunity attacks. |\n| Defend | +1 Bane |",
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Opportunity Attack | Basic Melee |"
+    },
+    "details": {
+      "flavorMarkdown": "*A small, wiry goblin salvager with keen eyes, patched work clothes and pockets full of useful scraps. Quick hands and knowledge of the ruins compensate for modest reach.*",
+      "specialtyMarkdown": "### Scrap knife\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Roll Away:** Normal terrain costs and occupied-square restrictions apply.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Signs:** Bright scraps are tied to trip-free routes through the rubble.\n\n**Purpose:** Protect a salvage claim and avoid being cheated.\n\n**Tactics and retreat:** Roll Away between cover and a distracted opponent; bargain when cornered.\n\n**Counterplay and conversation:** Recognize the salvage claim or trade a useful tool.\n\n**Habitat:** Ruin; roadside · **Communication:** Common and Goblin\n\n**Loot:** Melee weapon, tool scraps and 3 coins.\n\n**Summoning:** Ineligible.",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-goblin-scrapper\n\n\n**Category:** Mortal · **Role:** Scavenger · **CV:** 7\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Scrap knife | Agility | None | 2 physical damage. | 3 physical damage. | 5 physical damage. |\n\nThe incoming attack names the defense attribute; use the six values above. Same targeting, costs and limits apply in either perspective. No opposed second roll.\n\n\n### CV worksheet\n\n**Difficulty rationale:** An agile or elusive body warrants attack Banes. Ordinary attack difficulty; riders and positioning carry the threat.\n\n**Reference damage:** 2/3/5\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.1\n\n**Regeneration per turn:** 0\n\nReference I=4.404, O=2.162. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [roll away](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/monster-abilities/roll-away.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/rules/stability.md)"
+    },
+    "biography": ""
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "creature-goblin-scrapper",
+      "source": {
+        "path": "design/bestiary/creatures/goblin-scrapper.md",
+        "sha256": "2e795e30444436d5524edfbe68dea74db4941e776015662455aa86226f20e535"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Printed profile · specialty automation pending",
+      "specialtyAutomation": "pending",
+      "classification": {
+        "category": "Mortal",
+        "role": "Scavenger",
+        "cv": 7
+      },
+      "family": "Goblins",
+      "abilitySources": [
+        {
+          "label": "roll away",
+          "id": "monster-roll-away",
+          "path": "design/monster-abilities/roll-away.md",
+          "sha256": "c1c376f3d81ef98533ffbb89a02ca22f7970bbb2200f7b28f5217cb8950cd917"
+        }
+      ],
+      "summoning": {
+        "eligible": false,
+        "summonId": null,
+        "path": null,
+        "eligibility": null,
+        "sourceText": "Ineligible."
+      }
+    }
+  }
+}

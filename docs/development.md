@@ -137,7 +137,7 @@ Issue #38 adds source-locked market metadata for 43 equipment records, 10 recipe
 
 ### Native Item compendium sources — issue #115
 
-The checked-in `content/packs/` tree contains generated editable JSON for two native Item compendiums: all 350 source-locked abilities and all 43 source-locked equipment records. The ability pack includes the 18 universal references. `content/packs/index.json` pins the shared source revision, catalog schema versions, record counts and semantic hashes. Run `node scripts/generate-item-packs.mjs --check` with the same catalogs to detect source, identity or generated-output drift without writing files.
+The checked-in `content/packs/` tree began with generated editable JSON for two native Item compendiums: all 350 source-locked abilities and all 43 source-locked equipment records. The ability pack includes the 18 universal references. Issue #122 adds the third creatures pack below. `content/packs/index.json` pins the shared source revision, catalog schema versions, record counts and semantic hashes.
 
 Pack construction uses the same pure ability/equipment constructors as creation and advancement, so `catalogId`, exact `{ path, sha256 }` source flags and the source commit have one representation. Stable Foundry IDs are checked against the namespaced 16-character hash and collision set already used by the learning catalog. Any source lock/catalog commit mismatch, changed hash, duplicate ID, hash collision or catalog `foundryId` drift fails before compilation.
 
@@ -145,7 +145,7 @@ Each ability description contains the full authored reference as escaped, genera
 
 Equipment prototypes preserve source Bulk and normal supply die but begin at quantity 1 with no hands assigned, `held: false` and `worn: false`. `EquipmentData` currently has no separate supply-interval field, so the pack import neither invents nor rewrites one; use/acquisition interval handling remains outside this Item-copy step.
 
-`scripts/build.mjs` verifies every authored pack file and compiles both directories with the pinned official `@foundryvtt/foundryvtt-cli` API into `dist/heroes-of-legend/packs/`. LevelDB output is dist-only. `tests/item-packs.test.mjs` covers full coverage, identity/provenance, safe HTML, explicit handler labels, equipment defaults and drift rejection; `tests/packs.test.mjs` performs two official-CLI semantic round trips for each whole pack.
+`scripts/build.mjs` verifies every authored pack file and compiles all declared directories with the pinned official `@foundryvtt/foundryvtt-cli` API into `dist/heroes-of-legend/packs/`. LevelDB output is dist-only. `tests/item-packs.test.mjs` covers Item-specific coverage, identity/provenance, safe HTML, explicit handler labels, equipment defaults and drift rejection; `tests/packs.test.mjs` performs two official-CLI semantic round trips for each whole pack.
 
 `scripts/check-item-packs.mjs` is the guarded native fixture for opening the shipped packs, reading stable UUIDs, importing copies with retained IDs, resolving the two reviewed handlers through the current service, validating both native Item models and checking the embedded reference HTML and neutral equipment defaults. It refuses non-localhost URLs or a run without `HOL_TEST_ALLOW_WRITES=1`, refuses to overwrite existing world Items, and deletes only its own imports. Run it after deploying the built system:
 
@@ -154,6 +154,60 @@ HOL_TEST_URL=http://127.0.0.1:30014 HOL_TEST_ALLOW_WRITES=1 node scripts/check-i
 ```
 
 Runtime evidence must be recorded separately; source checks and official-CLI round trips do not prove the native Foundry fixture.
+
+### Native creature Actor pack — issue #122
+
+`node scripts/generate-creature-packs.mjs` builds the editable Actor sources for
+all 192 source-locked creatures. The shared generator also verifies the existing
+Ability and Equipment files, so `--check` covers the combined 586-file authored
+tree and its semantic pack index. Actor IDs follow the catalog's namespaced hash;
+flags retain exact source path/hash, source commit, classification,
+ability-source references and summoning metadata. Foundry's core fallback image
+is used; no book-local portrait path or unmerged #119 asset dependency is added.
+
+`CreatureData` now stores exact source-stat strings, typed alternate Speeds,
+footprint and size label, Armor marker, numeric/special mitigation entries,
+immunities, signed CV and explicit player-defense orientation. Authored action
+tables and detail Markdown live separately from editable notes. A small renderer
+escapes all source text and converts the supported headings, tables, paragraphs,
+strong/emphasis and pinned-link subset to HTML before V14 TextEditor enrichment;
+unsafe protocols and unsupported prose remain escaped text. The sheet's
+source-reference region is read-only and labels specialty automation pending.
+Numeric mitigations are preserved but not connected to the damage resolver;
+existing printed Armor and Basic Melee paths remain unchanged.
+
+`scripts/check-creature-packs.mjs` is the guarded native fixture. It requires a
+local `HOL_TEST_URL`, `HOL_TEST_ALLOW_WRITES=1` and an explicit
+`HOL_TEST_ISOLATED_WORLD=1`. Before any world write it loads and strictly
+validates every source Actor and reports all field failures together. It also
+validates a plain native creature with its defaults, explicitly accepts the
+legitimate empty Armor marker, rejects an invalid nonempty value in every
+choice-backed field, and verifies that numeric and special mitigations keep their
+distinct authored shapes. It imports all 192 Actors with retained IDs, validates
+the complete roster, checks exact Adder and Red Dragon snapshots through awaited
+native UUID resolution, creates and checks a signed-negative CV Actor, verifies
+real heading/table elements, absence of raw Markdown separators and escaped
+hostile source HTML and unsafe links in the enriched sheet reference, and
+deletes only tracked fixture documents before returning. Returned IDs are
+recorded for cleanup immediately after import and before ID assertions. The
+reviewed roster currently has no negative-CV record despite the issue wording,
+so the negative case is explicitly synthetic rather than altering a source-locked
+printed profile.
+
+```sh
+HOL_TEST_URL=http://127.0.0.1:30014 HOL_TEST_ALLOW_WRITES=1 HOL_TEST_ISOLATED_WORLD=1 node scripts/check-creature-packs.mjs
+```
+
+Pre-integration pure validation currently passes
+`tests/creature-packs.test.mjs`, `tests/creatures.test.mjs`,
+`tests/item-packs.test.mjs` and authored-pack drift checking under the worker
+environment's Node 22.22.1. This is not Node 24 evidence. Official CLI
+compilation, full Node 24 checks, Foundry 14.369 native imports and visual QA
+remain primary-owned and must be recorded before merge.
+Primary verification must specifically confirm V14 nested `ArrayField` model
+cleaning, choice-backed blank/default validation, the core
+`icons/svg/mystery-man.svg` fallback, `keepId` Actor imports, awaited TextEditor
+enrichment and rendered-template DOM behavior in the isolated world.
 
 ### Guided creation draft
 

@@ -280,7 +280,8 @@ const summonLinks = lock.summonLinks
       creatureId: link.creatureId,
       eligibility: link.eligibility,
       perspective: link.perspective,
-      profileImported: false,
+      profileImported: true,
+      referenceCatalog: "static/data/summons.json",
       source: {
         commit: lock.commit,
         path: link.path,

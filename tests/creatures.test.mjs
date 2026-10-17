@@ -394,7 +394,11 @@ test("generated catalog reconciles every locked creature, portrait and summon li
     if (summonLink) {
       assert.equal(creature.summoning.summonId, summonLink.id);
       assert.equal(summonLink.perspective, "attacker");
-      assert.equal(summonLink.profileImported, false);
+      assert.equal(summonLink.profileImported, true);
+      assert.equal(
+        summonLink.referenceCatalog,
+        "static/data/summons.json",
+      );
       assert(!("actions" in summonLink));
       const summonSource = lockedByPath.get(summonLink.source.path);
       assert(summonSource);

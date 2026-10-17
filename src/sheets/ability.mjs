@@ -2,6 +2,7 @@ import {
   itemAbilityDefinition,
   activateOwnedAbility,
 } from "../services/abilities.mjs";
+import { isPotionAbility, openPotionPreparation } from "../services/potions.mjs";
 import { ATTRIBUTES } from "../rules/character.mjs";
 import { updateOwnedDocument } from "../services/documents.mjs";
 export class AbilitySheet extends foundry.applications.api.HandlebarsApplicationMixin(
@@ -34,7 +35,10 @@ export class AbilitySheet extends foundry.applications.api.HandlebarsApplication
     return {
       ...context,
       definition,
-      canUse: Boolean(definition && this.item.actor?.isOwner),
+      potionAbility: isPotionAbility(this.item),
+      canUse: Boolean(
+        (definition || isPotionAbility(this.item)) && this.item.actor?.isOwner,
+      ),
       pendingAutomation:
         !definition &&
         this.item.getFlag("heroes-of-legend", "automation") === "pending",
@@ -59,6 +63,8 @@ export class AbilitySheet extends foundry.applications.api.HandlebarsApplication
   }
   static async useAbility() {
     try {
+      if (isPotionAbility(this.item))
+        return openPotionPreparation(this.item);
       await activateOwnedAbility(this.item);
     } catch (e) {
       ui.notifications.error(e.message);

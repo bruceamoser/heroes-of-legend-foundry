@@ -616,6 +616,35 @@ issue.
 Node 24 `npm run check` passes 127 tests, including 17 focused inventory and
 potion cases. This is bounded rules-layer evidence; native UI, multi-Actor
 settlement and Foundry runtime validation remain subsequent integration work.
+
+### Native healing-potion execution (#116)
+
+The reviewed bottle and universal-action routes now open one preparation
+ApplicationV2. It shows the exact live bottle and recipient, fixed 6/10/16
+healing before Life resistance and its resulting restoration, free hands,
+Maneuver and Reaction costs, and the post-healing d4 supply check. Another
+recipient confirms willingness in chat;
+unowned recipients cannot be marked willing by the giver. Native 1x1 grid
+geometry is measured by the coordinator, while ambiguous geometry requires an
+attributed DA reason. The explicit interruption continuation control is a table
+decision because opportunity automation remains disconnected.
+
+The coordinator writes one durable Combat operation containing the plan and both
+participant budgets before Actor mutation. Recipient HP/survival/source receipts
+share one strict Actor update. A deterministic linked Actor child reserves the
+supply phase before evaluating its native Roll, then stores the Roll JSON and
+settles supply after healing. Resume reads actual receipts rather than trusting a
+cached phase; it never replenishes actions or rerolls dice. A rolling child with
+no saved face can only continue through a DA-entered observed face. If the exact
+bottle changes during the operation, Manage automation offers an attributed
+reconciliation rather than charging a replacement bottle. No release or
+licensing metadata changes with this bounded integration.
+
+`HOL_TEST_URL=http://127.0.0.1:30014 HOL_TEST_ALLOW_WRITES=1 npm run test:potions`
+is the serial disposable-world fixture for native UI consent, Life resistance,
+0 HP, durable retry, dropped response, final d4 recovery, source reconciliation
+and interruption. It is not run against campaign data.
+
 ### Two-recipe Ordinary Recipe Study (#93)
 
 The current pinned `ordinary-recipe-study` card at

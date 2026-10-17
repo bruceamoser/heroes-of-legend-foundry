@@ -27,6 +27,12 @@ import { pendingAbilityIsPlayerAttack } from "../rules/player-attacks.mjs";
 import { resolveConditionRequest } from "../services/conditions.mjs";
 import { resolveCombatRequest } from "../services/combat.mjs";
 import {
+  findPotionCombat,
+  recoverPotionSupplyOperation,
+  reconcilePotionOperation,
+  resolvePotionRequest,
+} from "../services/potions.mjs";
+import {
   bindCreationAuthority,
   isCreationAuthority,
   releaseAuthority,
@@ -34,6 +40,8 @@ import {
 import { resolveCreationRequest } from "../services/creation.mjs";
 import { resolveDevelopmentRequest } from "../services/advancement.mjs";
 const ID = "heroes-of-legend";
+const syncDocument = (uuid) =>
+  typeof uuid === "string" && uuid ? fromUuidSync(uuid) : null;
 export async function retryCharacterRequest(id) {
   const message = game.messages.get(id);
   if (!message) {
@@ -51,7 +59,11 @@ export async function retryCharacterRequest(id) {
           ? candidate
           : null) ?? findInventoryActor(id);
     if (actor) return resolveInventoryRequest(id, actor.uuid);
+    const potionCombat = findPotionCombat(id);
+    if (potionCombat) return resolvePotionRequest(id, potionCombat.uuid);
   }
+  if (message?.getFlag(ID, "potionRequest"))
+    return resolvePotionRequest(id);
   if (message?.getFlag(ID, "survivalRequest"))
     return resolveSurvivalRequest(id);
   if (message?.getFlag(ID, "woundRequest")) return resolveWoundRequest(id);
@@ -90,6 +102,9 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
       release: AuthorityPanel.release,
       retry: AuthorityPanel.retry,
       resumeAbility: AuthorityPanel.resumeAbility,
+      resumePotion: AuthorityPanel.resumePotion,
+      recoverPotion: AuthorityPanel.recoverPotion,
+      reconcilePotion: AuthorityPanel.reconcilePotion,
       resumeAttack: AuthorityPanel.resumeAttack,
       recoverAttack: AuthorityPanel.recoverAttack,
       acknowledgeMissingAttack: AuthorityPanel.acknowledgeMissingAttack,
@@ -202,6 +217,33 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
                 : "waiting for the DA",
           };
         }),
+      pendingPotions: game.combats
+        .filter((combat) => combat.getFlag(ID, "pendingPotion"))
+        .map((combat) => {
+          const requestId = combat.getFlag(ID, "pendingPotion"),
+            operation = combat.getFlag(ID, "potionOperations")?.[requestId],
+            giver = syncDocument(operation?.giver?.actorUuid),
+            supply = giver?.getFlag(ID, "potionSupplyOperations")?.[
+              operation?.supplyOperationId
+            ];
+          return {
+            combatUuid: combat.uuid,
+            requestId,
+            giver: giver?.name ?? "Unknown giver",
+            recipient:
+              syncDocument(operation?.recipient?.actorUuid)?.name ??
+              "Unknown recipient",
+            phase:
+              operation?.status === "needs-reconciliation"
+                ? "source reconciliation"
+                : supply?.phase === "rolling"
+                  ? "unknown supply dice"
+                  : operation?.status ?? "reserved",
+            needsRecovery: supply?.phase === "rolling",
+            needsReconciliation:
+              operation?.status === "needs-reconciliation",
+          };
+        }),
       requests: game.messages
         .filter(
           (m) =>
@@ -211,6 +253,7 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
             m.getFlag(ID, "conditionRequest") ||
             m.getFlag(ID, "equipmentRequest") ||
             m.getFlag(ID, "inventoryRequest") ||
+            m.getFlag(ID, "potionRequest") ||
             m.getFlag(ID, "damageRequest") ||
             m.getFlag(ID, "recoveryRequest") ||
             m.getFlag(ID, "woundRequest") ||
@@ -243,6 +286,8 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
                         ? "Equipment"
                         : m.getFlag(ID, "inventoryRequest")
                           ? "Inventory"
+                          : m.getFlag(ID, "potionRequest")
+                            ? "Healing potion"
                           : m.getFlag(ID, "npcAttackRequest")
                             ? "NPC attack"
                             : m.getFlag(ID, "defenseRequest")
@@ -393,6 +438,84 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
     try {
       const { openPlayerAttackDamage } = await import("./damage.mjs");
       await openPlayerAttackDamage(target.dataset.id);
+    } catch (error) {
+      ui.notifications.error(error.message);
+    }
+  }
+  static async resumePotion(event, target) {
+    try {
+      if (!isCreationAuthority())
+        throw new Error("Enable this coordinator first.");
+      await resolvePotionRequest(target.dataset.id, target.dataset.combat);
+      await this.render();
+    } catch (error) {
+      ui.notifications.error(error.message);
+    }
+  }
+  static async recoverPotion(event, target) {
+    try {
+      if (!isCreationAuthority())
+        throw new Error("Enable this coordinator first.");
+      const combat = await fromUuid(target.dataset.combat),
+        requestId = target.dataset.id,
+        operation = combat?.getFlag(ID, "potionOperations")?.[requestId],
+        giver = await fromUuid(operation?.giver?.actorUuid ?? ""),
+        child = giver?.getFlag(ID, "potionSupplyOperations")?.[
+          operation?.supplyOperationId
+        ];
+      if (!child || child.phase !== "rolling")
+        throw new Error("This potion supply check has no unknown dice.");
+      const result = await foundry.applications.api.DialogV2.input({
+        window: { title: "Recover observed potion supply face" },
+        content: `<p>The dice may have rolled without a saved result. Enter the face that was seen; no new roll will occur.</p><label>Observed d${child.target.inventoryDie} face<input name="retainedFace" type="number" min="1" max="${child.target.inventoryDie}" step="1" required></label><label>DA reason<input name="reason" required></label>`,
+        ok: { label: "Record observed face" },
+      });
+      if (!result) return;
+      await recoverPotionSupplyOperation(
+        requestId,
+        Number(result.retainedFace),
+        result.reason,
+      );
+      await this.render();
+    } catch (error) {
+      ui.notifications.error(error.message);
+    }
+  }
+  static async reconcilePotion(event, target) {
+    try {
+      if (!isCreationAuthority())
+        throw new Error("Enable this coordinator first.");
+      const combat = await fromUuid(target.dataset.combat),
+        operation = combat?.getFlag(ID, "potionOperations")?.[
+          target.dataset.id
+        ];
+      if (operation?.status !== "needs-reconciliation")
+        throw new Error("This potion operation does not need reconciliation.");
+      const choices = operation.reconciliation?.choices ?? [],
+        labels = {
+          "charge-current": "Charge the exact current bottle after review",
+          "waive-supply": "Close without changing supply",
+          "cancel-remaining": "Cancel the remaining potion use",
+        },
+        options = choices
+          .map(
+            (choice) =>
+              `<option value="${choice}">${labels[choice] ?? choice}</option>`,
+          )
+          .join("");
+      const result = await foundry.applications.api.DialogV2.input({
+        window: { title: "Reconcile changed potion source" },
+        content:
+          `<p>Healing may already be applied. Choose only from the reconciliation options retained by this operation.</p><label>Disposition<select name="choice">${options}</select></label><label>DA reason<input name="reason" required></label>`,
+        ok: { label: "Record reconciliation" },
+      });
+      if (!result) return;
+      await reconcilePotionOperation(
+        target.dataset.id,
+        result.choice,
+        result.reason,
+      );
+      await this.render();
     } catch (error) {
       ui.notifications.error(error.message);
     }

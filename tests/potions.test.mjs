@@ -337,6 +337,60 @@ test("target, hand, Reaction and action restrictions reject before a ready plan"
       ),
     /Unknown action restriction/,
   );
+  assert.throws(
+    () =>
+      planHealingPotion(
+        base({
+          giver: {
+            actorId: "actor-giver",
+            ownTurn: true,
+            turn: turn(),
+            items: freeHand,
+            survival: alive(),
+            conditions: { paralyzed: 1 },
+          },
+        }),
+      ),
+    /condition prevents actions/,
+  );
+  assert.throws(
+    () =>
+      planHealingPotion(
+        base({
+          giver: {
+            actorId: "actor-giver",
+            ownTurn: true,
+            turn: startTurn({
+              turnId: "dazed-potion-turn",
+              speed: 6,
+              conditions: { dazed: 1 },
+              retained: ["main", "reaction"],
+            }),
+            items: freeHand,
+            survival: alive(),
+          },
+        }),
+      ),
+    /No maneuver/,
+  );
+  assert.throws(
+    () =>
+      planHealingPotion(
+        base({
+          relation: "other",
+          adjacent: true,
+          willing: true,
+          recipientOperationId: "paralyzed-recipient-reaction",
+          recipient: {
+            actorId: "actor-recipient",
+            turn: turn(),
+            survival: alive(),
+            conditions: { paralyzed: 1 },
+          },
+        }),
+      ),
+    /condition prevents actions/,
+  );
 });
 
 test("exhausted bottles, terminal recipients and summons cannot be planned", () => {
@@ -431,6 +485,29 @@ test("interruption commits the Maneuver but skips Reaction, healing and supply",
     /not successfully/,
   );
   assert.deepEqual(input, snapshot);
+});
+
+test("interrupted other-recipient use snapshots the unchanged Reaction budget", () => {
+  const recipient = {
+    actorId: "actor-recipient",
+    turn: turn(),
+    survival: alive(),
+    conditions: {},
+  };
+  const plan = planHealingPotion(
+    base({
+      relation: "other",
+      adjacent: true,
+      willing: true,
+      recipientOperationId: "potion-reaction",
+      recipient,
+      capable: false,
+    }),
+  );
+  assert.equal(plan.status, "interrupted");
+  assert.deepEqual(plan.recipientTurn, recipient.turn);
+  assert.equal(plan.recipientTurn.remaining.reaction, 1);
+  assert.equal(plan.costs.recipient.reaction, 0);
 });
 
 test("prior declaration and an exhausted maneuver cannot be bypassed", () => {

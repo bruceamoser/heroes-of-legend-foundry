@@ -1,0 +1,33 @@
+import { chromium } from "playwright";
+import assert from "node:assert/strict";
+const url=process.env.HOL_TEST_URL;
+if (!url || !["localhost","127.0.0.1"].includes(new URL(url).hostname) || process.env.HOL_TEST_ALLOW_WRITES !== "1") throw new Error("Select a local disposable world and enable HOL_TEST_ALLOW_WRITES=1");
+const browser=await chromium.launch();
+const context=await browser.newContext({viewport:{width:1600,height:1000}});context.setDefaultTimeout(30000);
+const page=await context.newPage(); const errors=[];page.on('pageerror',e=>errors.push(e.message));
+let actorId;const messages=[];
+try {
+  await page.goto(url);await page.locator('input[name=username]').fill(process.env.HOL_TEST_USER??'Gamemaster');await page.locator('button[name=join]').click();await page.waitForFunction(()=>game.ready);
+  actorId=await page.evaluate(async()=>{const actor=await Actor.create({name:'Roll test',type:'character',system:{attributes:{brawn:{base:2}}}});await actor.sheet.render({force:true});return actor.id;});
+  await page.locator('.hol-character [data-attribute=brawn]').click();
+  const dialog=page.locator('.hol-roll-dialog');await dialog.locator('[name=boons]').fill('5');await dialog.locator('[name=banes]').fill('3');
+  assert.equal(await dialog.locator('output').innerText(),'5d6kh3 + (2)');
+  await dialog.getByRole('button',{name:'Roll',exact:true}).click();
+  await page.waitForFunction(id=>game.messages.some(m=>m.getFlag('heroes-of-legend','roll')?.actorUuid===`Actor.${id}`),actorId);
+  const snapshot=await page.evaluate(id=>{const m=game.messages.find(m=>m.getFlag('heroes-of-legend','roll')?.actorUuid===`Actor.${id}`);return {id:m.id,roll:m.getFlag('heroes-of-legend','roll'),dice:m.rolls[0].dice[0].results,serialized:m.rolls[0].toJSON()};},actorId);
+  messages.push(snapshot.id);
+  assert.equal(snapshot.roll.count,5);assert.equal(snapshot.roll.retained.length,3);
+  assert.deepEqual([...snapshot.roll.retained].sort(),snapshot.dice.map(d=>d.result).sort((a,b)=>b-a).slice(0,3).sort());
+  const rendered = await page.locator(`[data-message-id="${snapshot.id}"]`).evaluateAll(elements => elements.map(element => element.querySelectorAll(".hol-roll-summary").length));
+  assert(rendered.length > 0 && rendered.every(count => count === 1));
+  const lower=await page.evaluate(async id=>{const {rollAttribute}=await import('/systems/heroes-of-legend/services/roll.mjs');const m=await rollAttribute(game.actors.get(id),'brawn',{banes:3});return {id:m.id,snapshot:m.getFlag('heroes-of-legend','roll'),dice:m.rolls[0].dice[0].results};},actorId);
+  messages.push(lower.id);assert.deepEqual([...lower.snapshot.retained].sort(),lower.dice.map(d=>d.result).sort((a,b)=>a-b).slice(0,3).sort());
+  await page.reload();await page.waitForFunction(()=>game.ready);
+  const persisted=await page.evaluate(id=>({snapshot:game.messages.get(id).getFlag('heroes-of-legend','roll'),serialized:game.messages.get(id).rolls[0].toJSON()}),snapshot.id);
+  assert.deepEqual(persisted.snapshot,snapshot.roll);assert.deepEqual(persisted.serialized,snapshot.serialized);
+  const before=await page.evaluate(()=>game.messages.size);
+  await page.evaluate(async id=>{await game.actors.get(id).sheet.render({force:true});},actorId);await page.locator('.hol-character [data-attribute=brawn]').click();await page.locator('.hol-roll-dialog [data-action=close]').click();assert.equal(await page.evaluate(()=>game.messages.size),before);
+  assert.deepEqual(errors,[]);console.info('PASS: native keep-high/keep-low, live dialog formula, retained faces, chat summary, serialized reload, cancel without roll; zero page errors.');
+}finally{
+ await page.evaluate(async({actorId,messages})=>{for(const id of messages)await game.messages.get(id)?.delete();if(actorId)await game.actors.get(actorId)?.delete();},{actorId,messages}).catch(()=>{});await browser.close();
+}

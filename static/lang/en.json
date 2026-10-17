@@ -44,7 +44,22 @@
       "attribute": "Attribute roll",
       "none": "No roll",
       "delegated": "Defender rolls"
-    }
+    },
+    "Roll": "Roll",
+    "Boons": "Boons",
+    "Banes": "Banes",
+    "InvalidModifiers": "Enter non-negative whole numbers.",
+    "ModifierExplanation": "Boons and Banes cancel, then the remaining bonus or penalty is capped at three extra dice. Keep the best or worst three.",
+    "Tiers": {
+      "weak": "Weak",
+      "standard": "Standard",
+      "strong": "Strong"
+    },
+    "Naturals": {
+      "fumble": "Natural 111 \u00b7 Weak result with a complication",
+      "critical": "Natural 666 \u00b7 Strong result with an extra benefit"
+    },
+    "RollDetails": "Retained: {faces} \u00b7 Boons: {boons} \u00b7 Banes: {banes}"
   },
   "TYPES": {
     "Actor": {

@@ -21,3 +21,8 @@
 .heroes-of-legend .hol-primary { background: var(--hol-forest); color: var(--hol-ivory); border: 1px solid var(--hol-gold); font-family: "HOL Cinzel", Georgia, serif; min-height: 38px; width: 100%; }
 .heroes-of-legend .hol-ability-list { padding: 0; list-style: none; }
 .heroes-of-legend .hol-ability-list button { width: 100%; color: var(--hol-ink); text-align: left; background: var(--hol-ivory); }
+.heroes-of-legend .hol-attributes button { color: var(--hol-forest); background: var(--hol-ivory); border: 1px solid var(--hol-gold); }
+.heroes-of-legend.hol-roll-dialog .dialog-buttons { padding: 12px; }
+.hol-roll-summary { background: #f1e6ce; color: #28251c; border-left: 3px solid #b39253; padding: 8px 12px; font-family: "HOL Garamond", Georgia, serif; }
+.hol-roll-summary strong { font-family: "HOL Cinzel", Georgia, serif; }
+.hol-roll-summary p { margin: 4px 0 0; }

@@ -4,7 +4,7 @@
     <label>{{localize "HOL.Name"}}<input name="name" type="text" value="{{actor.name}}" required></label>
     <h2>{{localize "HOL.AttributesTitle"}}</h2>
     <div class="hol-attributes">{{#each attributes}}
-      <label>{{label}}<input name="system.attributes.{{key}}.base" type="number" value="{{base}}" min="-2" max="2" step="1" required><small>{{localize "HOL.Effective"}} {{effective}}</small></label>
+      <label>{{label}}<input name="system.attributes.{{key}}.base" type="number" value="{{base}}" min="-2" max="2" step="1" required><small>{{localize "HOL.Effective"}} {{effective}}</small>{{#if ../editable}}<button type="button" data-action="rollAttribute" data-attribute="{{key}}">{{localize "HOL.Roll"}} {{label}}</button>{{/if}}</label>
     {{/each}}</div>
     <p class="hol-note">{{localize "HOL.AttributeDraft"}} <strong>{{system.attributeTotal}}</strong> / +3</p>
     <div class="hol-resources">

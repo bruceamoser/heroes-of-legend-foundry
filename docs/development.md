@@ -151,6 +151,12 @@ The native wizard renders every configured home and extra-language option, eligi
 
 Run `HOL_TEST_URL=http://127.0.0.1:30014 HOL_TEST_ALLOW_WRITES=1 npm run test:languages` only in the disposable local world. The guarded scenario restores the prior setting and removes its fixture User, request messages and Actors.
 
+### Native reference-hero commitment — issue #102
+
+The reference-hero runtime check seeds the six source-approved drafts from `tests/fixtures/reference-heroes.json` at Review, with the pinned source commit and campaign-language basis recorded. A player owner opens each normal CreationWizard Review and clicks its Create control while one selected GM coordinator processes the request. The check compares persisted Actor/Item/flag data to the fixture's independently transcribed expected values, then reloads and replays each receipt without repeating grants. It intentionally exercises Review/commit/persistence rather than replaying every earlier wizard step; `test:creation` covers that navigation.
+
+Run `HOL_TEST_URL=http://127.0.0.1:30014 HOL_TEST_ALLOW_WRITES=1 npm run test:reference-heroes` only against the disposable local world on Foundry 14.369. Cleanup removes the fixture Actors, owner User and request messages, then restores the prior campaign-language setting.
+
 ### Advancement workflow
 
 Issue #45 adds the advancement browser and pure draft preview. The DA awards milestone levels and approves safe-place spending; owners choose pending class signatures and purchases. Available options sort first, blocked choices remain visible with reasons, recipe/equipment selections are explicit, and saved drafts survive reloads. A changed committed ledger requires an explicit refresh/review. The shared character authority queue serializes creation and advancement; native message authors determine who may award milestones or spend an owned character's DP.

@@ -1,3 +1,4 @@
+import { resolveAbilityRequest } from "../services/abilities.mjs";
 import { resolveConditionRequest } from "../services/conditions.mjs";
 import { resolveCombatRequest } from "../services/combat.mjs";
 import {
@@ -17,6 +18,7 @@ export async function retryCharacterRequest(id) {
   if (message?.getFlag(ID, "combatRequest")) return resolveCombatRequest(id);
   if (message?.getFlag(ID, "conditionRequest"))
     return resolveConditionRequest(id);
+  if (message?.getFlag(ID, "abilityRequest")) return resolveAbilityRequest(id);
   throw new Error("Unknown automation request.");
 }
 export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicationMixin(
@@ -30,6 +32,7 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
       activate: AuthorityPanel.activate,
       release: AuthorityPanel.release,
       retry: AuthorityPanel.retry,
+      resumeAbility: AuthorityPanel.resumeAbility,
     },
   };
   static PARTS = {
@@ -51,13 +54,21 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
       restartAvailable: Boolean(
         meta.launch && meta.launch !== game.world.lastPlayed,
       ),
+      pendingAbilities: game.combats
+        .filter((c) => c.getFlag(ID, "pendingAbility"))
+        .map((c) => ({
+          combatUuid: c.uuid,
+          id: c.getFlag(ID, "pendingAbility"),
+          name: c.name ?? c.id,
+        })),
       requests: game.messages
         .filter(
           (m) =>
             m.getFlag(ID, "creationRequest") ||
             m.getFlag(ID, "developmentRequest") ||
             m.getFlag(ID, "combatRequest") ||
-            m.getFlag(ID, "conditionRequest"),
+            m.getFlag(ID, "conditionRequest") ||
+            m.getFlag(ID, "abilityRequest"),
         )
         .slice(-30)
         .reverse()
@@ -69,7 +80,8 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
             ? "Creation"
             : (m.getFlag(ID, "developmentRequest")?.kind ??
               m.getFlag(ID, "combatRequest")?.kind ??
-              m.getFlag(ID, "conditionRequest")?.kind),
+              m.getFlag(ID, "conditionRequest")?.kind ??
+              "Ability"),
         })),
     };
   }
@@ -88,6 +100,16 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
   static async release() {
     try {
       await releaseAuthority();
+      await this.render();
+    } catch (e) {
+      ui.notifications.error(e.message);
+    }
+  }
+  static async resumeAbility(event, target) {
+    try {
+      if (!isCreationAuthority())
+        throw new Error("Enable this coordinator first.");
+      await resolveAbilityRequest(target.dataset.id, target.dataset.combat);
       await this.render();
     } catch (e) {
       ui.notifications.error(e.message);

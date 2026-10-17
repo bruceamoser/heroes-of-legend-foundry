@@ -1,5 +1,6 @@
 <section class="hol-body">
   <header class="hol-banner"><p class="hol-kicker">{{localize "HOL.Ability"}}</p><h1>{{item.name}}</h1></header>
+  {{#if definition}}<p class="hol-note">{{definition.summary}}</p>{{#if canUse}}<button type="button" class="hol-primary" data-action="useAbility">Use {{definition.name}}</button>{{/if}}{{else}}
   <p class="hol-note">{{localize "HOL.ManualAbility"}}</p>
   {{#if pendingAutomation}}<p class="hol-note">This ability is recorded as learned. Its action configuration is awaiting the content importer; use the linked book rules for now.</p><p>{{system.description}}</p>{{else}}
   <fieldset {{#unless editable}}disabled{{/unless}}>
@@ -12,4 +13,4 @@
     <label>{{localize "HOL.Strong"}}<textarea name="system.outcomes.strong" rows="2">{{system.outcomes.strong}}</textarea></label>
     {{#if editable}}<button type="submit" class="hol-primary">{{localize "HOL.Save"}}</button>{{/if}}
   </fieldset>{{/if}}
-</section>
+{{/if}}</section>

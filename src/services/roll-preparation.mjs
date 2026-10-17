@@ -8,6 +8,7 @@ export function rollBasis(
   attributeKey,
   mode = "attribute",
   attackMessageId = null,
+  defenderTokenUuid = null,
 ) {
   if (!["attribute", "defense"].includes(mode))
     throw new Error("Unsupported shared roll context.");
@@ -36,6 +37,13 @@ export function rollBasis(
       persistence: "binary",
       source: "Zero HP",
     });
+  if (defenderTokenUuid) {
+    const token = fromUuidSync(defenderTokenUuid);
+    if (token?.documentName !== "Token" || token.actor?.uuid !== actor.uuid)
+      throw new Error(
+        "The selected defender token changed. Choose a defender again.",
+      );
+  }
   let incoming = null;
   if (attackMessageId) {
     const message = game.messages.get(attackMessageId);
@@ -58,6 +66,7 @@ export function rollBasis(
   }
   return {
     attackMessageId,
+    defenderTokenUuid,
     incoming,
     actorUuid: actor.uuid,
     attributeKey,

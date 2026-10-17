@@ -54,7 +54,10 @@ async function open(uuid, messageId) {
     throw new Error(
       "Choose an available defender; this entry may have been deleted.",
     );
-  return promptDefenseRoll(actor, "agility", { attackMessageId: messageId });
+  return promptDefenseRoll(actor, "agility", {
+    attackMessageId: messageId,
+    defenderTokenUuid: document.documentName === "Token" ? document.uuid : null,
+  });
 }
 export function renderAttackCard(message, element) {
   if (
@@ -71,5 +74,26 @@ export function renderAttackCard(message, element) {
   button.addEventListener("click", () =>
     chooseDefender(message.id).catch((e) => ui.notifications.error(e.message)),
   );
-  element.querySelector(".hol-attack-card")?.append(button);
+  const card = element.querySelector(".hol-attack-card");
+  card?.append(button);
+  const responses = message.getFlag(ID, "defenseResponses") ?? [];
+  if (responses.length) {
+    const list = document.createElement("ul");
+    for (const response of responses) {
+      const actor = fromUuidSync(response.actorUuid),
+        token = response.defenderTokenUuid
+          ? fromUuidSync(response.defenderTokenUuid)
+          : null;
+      const name =
+        token && !token.hidden
+          ? token.name
+          : actor?.testUserPermission(game.user, "OBSERVER")
+            ? actor.name
+            : "Defender";
+      const li = document.createElement("li");
+      li.textContent = `${name} · attempt ${response.attempt}: ${response.status}`;
+      list.append(li);
+    }
+    card?.append(list);
+  }
 }

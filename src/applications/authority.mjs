@@ -1,3 +1,8 @@
+import {
+  resolveDefenseRequest,
+  abandonDefense,
+  defenseResponses,
+} from "../services/defense-responses.mjs";
 import { resolveNpcAttack } from "../services/npc-attacks.mjs";
 import { resolveAbilityRequest } from "../services/abilities.mjs";
 import { resolveConditionRequest } from "../services/conditions.mjs";
@@ -21,6 +26,7 @@ export async function retryCharacterRequest(id) {
     return resolveConditionRequest(id);
   if (message?.getFlag(ID, "abilityRequest")) return resolveAbilityRequest(id);
   if (message?.getFlag(ID, "npcAttackRequest")) return resolveNpcAttack(id);
+  if (message?.getFlag(ID, "defenseRequest")) return resolveDefenseRequest(id);
   throw new Error("Unknown automation request.");
 }
 export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicationMixin(
@@ -35,6 +41,7 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
       release: AuthorityPanel.release,
       retry: AuthorityPanel.retry,
       resumeAbility: AuthorityPanel.resumeAbility,
+      abandonDefense: AuthorityPanel.abandonDefense,
     },
   };
   static PARTS = {
@@ -56,6 +63,13 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
       restartAvailable: Boolean(
         meta.launch && meta.launch !== game.world.lastPlayed,
       ),
+      pendingDefenses: game.messages.contents
+        .filter((m) => m.author?.isGM && m.getFlag(ID, "attackCard"))
+        .flatMap((m) =>
+          defenseResponses(m)
+            .filter((r) => r.status === "rolling")
+            .map((r) => ({ ...r, attackId: m.id })),
+        ),
       pendingAbilities: game.combats
         .filter((c) => c.getFlag(ID, "pendingAbility"))
         .map((c) => ({
@@ -71,7 +85,8 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
             m.getFlag(ID, "combatRequest") ||
             m.getFlag(ID, "conditionRequest") ||
             m.getFlag(ID, "abilityRequest") ||
-            m.getFlag(ID, "npcAttackRequest"),
+            m.getFlag(ID, "npcAttackRequest") ||
+            m.getFlag(ID, "defenseRequest"),
         )
         .slice(-30)
         .reverse()
@@ -84,7 +99,11 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
             : (m.getFlag(ID, "developmentRequest")?.kind ??
               m.getFlag(ID, "combatRequest")?.kind ??
               m.getFlag(ID, "conditionRequest")?.kind ??
-              (m.getFlag(ID, "npcAttackRequest") ? "NPC attack" : "Ability")),
+              (m.getFlag(ID, "npcAttackRequest")
+                ? "NPC attack"
+                : m.getFlag(ID, "defenseRequest")
+                  ? "Defense"
+                  : "Ability")),
         })),
     };
   }
@@ -103,6 +122,25 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
   static async release() {
     try {
       await releaseAuthority();
+      await this.render();
+    } catch (e) {
+      ui.notifications.error(e.message);
+    }
+  }
+  static async abandonDefense(event, target) {
+    try {
+      const choice = await foundry.applications.api.DialogV2.input({
+        window: { title: "Abandon unresolved defense" },
+        content:
+          '<p>No saved roll may exist. This preserves the attempt without rerolling. Record the DA ruling.</p><label>Reason<input name="reason" required></label>',
+        ok: { label: "Record abandonment" },
+      });
+      if (!choice) return;
+      await abandonDefense(
+        target.dataset.attack,
+        target.dataset.id,
+        choice.reason,
+      );
       await this.render();
     } catch (e) {
       ui.notifications.error(e.message);

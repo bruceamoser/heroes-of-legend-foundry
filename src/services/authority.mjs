@@ -113,10 +113,12 @@ async function appliedWork(work) {
   const message = game.messages.get(work.requestId);
   const request =
     message?.getFlag(ID, "creationRequest") ??
-    message?.getFlag(ID, "developmentRequest");
-  if (!request?.actorUuid) return false;
-  const actor = await fromUuid(request.actorUuid);
-  // Current character operations make all mechanical changes in the same Actor update as this receipt.
+    message?.getFlag(ID, "developmentRequest") ??
+    message?.getFlag(ID, "combatRequest");
+  const uuid = request?.actorUuid ?? request?.combatUuid;
+  if (!uuid) return false;
+  const actor = await fromUuid(uuid);
+  // Supported operations make all mechanical changes in one Actor or Combat update with this receipt.
   return (
     actor?.getFlag(ID, "operationReceipts")?.[work.requestId]?.applied === true
   );
@@ -209,7 +211,8 @@ async function activate({ restartConfirmed = false } = {}) {
     throw error;
   }
 }
-export async function writeCharacterActor(actor, changes) {
+export const writeCharacterActor = (...args) => writeAuthorityDocument(...args);
+export async function writeAuthorityDocument(actor, changes) {
   if (!activeWork || !isCreationAuthority())
     throw new Error("No active coordinator operation.");
   activeWork.uncertain = true;

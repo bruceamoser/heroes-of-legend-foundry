@@ -49,7 +49,14 @@ const snapshot = (page) =>
         return {
           hp: a.system.health.value,
           burning: a.getFlag("heroes-of-legend", "probeBurning"),
-          expired: a.effects.contents.map((e) => e.duration.expired),
+          expired: [
+            "heroes-of-legend.turnStart",
+            "heroes-of-legend.turnEnd",
+          ].map(
+            (expiry) =>
+              a.effects.find((e) => e.duration.expiry === expiry)?.duration
+                .expired,
+          ),
         };
       }),
       phase: game.combats
@@ -156,7 +163,10 @@ try {
     const a = game.actors.get(id);
     return {
       hp: a.system.health.value,
-      expired: a.effects.contents.map((e) => e.duration.expired),
+      expired: ["heroes-of-legend.turnStart", "heroes-of-legend.turnEnd"].map(
+        (expiry) =>
+          a.effects.find((e) => e.duration.expiry === expiry)?.duration.expired,
+      ),
     };
   }, fixture.unrelated);
   assert.deepEqual(unrelated, { hp: 12, expired: [false, false] });

@@ -1,3 +1,4 @@
+import { resolveCombatRequest } from "../services/combat.mjs";
 import {
   bindCreationAuthority,
   isCreationAuthority,
@@ -12,7 +13,8 @@ export async function retryCharacterRequest(id) {
     return resolveCreationRequest(id);
   if (message?.getFlag(ID, "developmentRequest"))
     return resolveDevelopmentRequest(id);
-  throw new Error("Unknown character request.");
+  if (message?.getFlag(ID, "combatRequest")) return resolveCombatRequest(id);
+  throw new Error("Unknown automation request.");
 }
 export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicationMixin(
   foundry.applications.api.ApplicationV2,
@@ -50,7 +52,8 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
         .filter(
           (m) =>
             m.getFlag(ID, "creationRequest") ||
-            m.getFlag(ID, "developmentRequest"),
+            m.getFlag(ID, "developmentRequest") ||
+            m.getFlag(ID, "combatRequest"),
         )
         .slice(-30)
         .reverse()
@@ -60,7 +63,8 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
           content: m.content.replace(/<[^>]*>/g, ""),
           request: m.getFlag(ID, "creationRequest")
             ? "Creation"
-            : m.getFlag(ID, "developmentRequest").kind,
+            : (m.getFlag(ID, "developmentRequest")?.kind ??
+              m.getFlag(ID, "combatRequest")?.kind),
         })),
     };
   }

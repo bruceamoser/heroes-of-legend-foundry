@@ -53,10 +53,13 @@ export async function requestCreation(actor, revision) {
     flags: { [ID]: { creationRequest: { actorUuid: actor.uuid, revision } } },
   });
 }
-export function resolveCreationRequest(messageId) {
-  const job = queue.then(() => applyCreation(messageId));
+export function enqueueCharacterOperation(operation) {
+  const job = queue.then(operation);
   queue = job.catch(() => {});
   return job;
+}
+export function resolveCreationRequest(messageId) {
+  return enqueueCharacterOperation(() => applyCreation(messageId));
 }
 export function validateCreationChanges(actor, changes) {
   for (const data of changes.items ?? []) {
@@ -122,76 +125,17 @@ async function applyCreation(messageId) {
     throw new Error(
       "The creation draft has unresolved choices. Return to Review.",
     );
-  const items = actor.toObject().items ?? [];
-  const createdIds = [],
-    reusedIds = [];
-  const add = (data) => {
-    const id = foundry.utils.randomID();
-    createdIds.push(id);
-    items.push({ _id: id, ...data });
-  };
-  for (const id of new Set([
-    ...preview.state.abilities,
-    ...choices
-      .filter((r) => r.kind === "ability" && r.universal)
-      .map((r) => r.id),
-  ])) {
-    const existing = actor.items.find(
-      (i) => i.type === "ability" && i.getFlag(ID, "catalogId") === id,
-    );
-    if (existing) {
-      reusedIds.push(existing.id);
-      continue;
-    }
-    const record = choices.find((r) => r.id === id);
-    add({
-      name: record.name,
-      type: "ability",
-      system: {
-        description: `Rules: https://github.com/bruceamoser/heroes-of-legend/blob/${commit}/${record.source.path}\nAction automation is pending.`,
-      },
-      flags: {
-        [ID]: {
-          catalogId: id,
-          source: record.source,
-          automation: "pending",
-          creationGrant: true,
-        },
-      },
-    });
-  }
-  for (const item of preview.inventory.items) {
-    const existing = actor.items.find(
-      (i) =>
-        i.type === "equipment" &&
-        i.system.catalogId === item.catalogId &&
-        (item.source !== "creation" || i.system.worn),
-    );
-    if (item.source !== "coins" && existing) {
-      reusedIds.push(existing.id);
-      continue;
-    }
-    const def = inventory.equipment.find((r) => r.id === item.catalogId);
-    add({
-      name: def.name,
-      type: "equipment",
-      system: {
-        catalogId: def.id,
-        quantity: item.quantity,
-        bulk: def.bulk,
-        hands: item.hands ?? 0,
-        inventoryDie: item.inventoryDie ?? 0,
-        worn: item.instanceId === "creation-outfit",
-      },
-      flags: {
-        [ID]: {
-          source: def.source,
-          creationGrant: true,
-          acquisitionInstance: item.instanceId,
-        },
-      },
-    });
-  }
+  const { items, createdIds, reusedIds } = buildCharacterItems(
+    actor,
+    [
+      ...preview.state.abilities,
+      ...choices
+        .filter((r) => r.kind === "ability" && r.universal)
+        .map((r) => r.id),
+    ],
+    preview.inventory.items,
+    { choices, inventory, commit, grantKind: "creation" },
+  );
   const state = {
     ...preview.state,
     level: 1,
@@ -238,4 +182,80 @@ async function applyCreation(messageId) {
       "Character creation completed. The character sheet now contains the approved statistics and granted equipment.",
   });
   return { status: "complete", replay: false };
+}
+
+export function buildCharacterItems(
+  actor,
+  abilityIds,
+  inventoryItems,
+  { choices, inventory, commit, grantKind = "advancement" },
+) {
+  const items = actor.toObject().items ?? [];
+  const createdIds = [],
+    reusedIds = [];
+  const add = (data) => {
+    const id = foundry.utils.randomID();
+    createdIds.push(id);
+    items.push({ _id: id, ...data });
+  };
+  for (const id of new Set([...abilityIds])) {
+    const existing = actor.items.find(
+      (i) => i.type === "ability" && i.getFlag(ID, "catalogId") === id,
+    );
+    if (existing) {
+      reusedIds.push(existing.id);
+      continue;
+    }
+    const record = choices.find((r) => r.id === id);
+    add({
+      name: record.name,
+      type: "ability",
+      system: {
+        description: `Rules: https://github.com/bruceamoser/heroes-of-legend/blob/${commit}/${record.source.path}\nAction automation is pending.`,
+      },
+      flags: {
+        [ID]: {
+          catalogId: id,
+          source: record.source,
+          automation: "pending",
+          creationGrant: grantKind === "creation",
+          grantKind,
+        },
+      },
+    });
+  }
+  for (const item of inventoryItems) {
+    const existing = actor.items.find(
+      (i) =>
+        i.type === "equipment" &&
+        i.system.catalogId === item.catalogId &&
+        (item.source !== "creation" || i.system.worn),
+    );
+    if (item.source !== "coins" && existing) {
+      reusedIds.push(existing.id);
+      continue;
+    }
+    const def = inventory.equipment.find((r) => r.id === item.catalogId);
+    add({
+      name: def.name,
+      type: "equipment",
+      system: {
+        catalogId: def.id,
+        quantity: item.quantity,
+        bulk: def.bulk,
+        hands: item.hands ?? 0,
+        inventoryDie: item.inventoryDie ?? 0,
+        worn: item.instanceId === "creation-outfit",
+      },
+      flags: {
+        [ID]: {
+          source: def.source,
+          creationGrant: grantKind === "creation",
+          grantKind,
+          acquisitionInstance: item.instanceId,
+        },
+      },
+    });
+  }
+  return { items, createdIds, reusedIds };
 }

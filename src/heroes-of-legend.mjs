@@ -1,3 +1,4 @@
+import { registerAdvancement } from "./services/advancement.mjs";
 import { registerCreationAuthority } from "./services/creation.mjs";
 import { EquipmentData } from "./models/equipment.mjs";
 import { EquipmentSheet } from "./sheets/equipment.mjs";
@@ -14,6 +15,7 @@ export const SYSTEM_ID = "heroes-of-legend";
 Hooks.once("init", () => {
   registerAuthorityPrototype();
   registerCreationAuthority();
+  registerAdvancement();
   registerTimingPrototype();
   CONFIG.Actor.dataModels.character = CharacterData;
   CONFIG.Item.dataModels.ability = AbilityData;

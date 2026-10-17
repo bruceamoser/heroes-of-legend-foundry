@@ -163,7 +163,8 @@ Ability and Equipment files, so `--check` covers the combined 586-file authored
 tree and its semantic pack index. Actor IDs follow the catalog's namespaced hash;
 flags retain exact source path/hash, source commit, classification,
 ability-source references and summoning metadata. Foundry's core fallback image
-is used; no book-local portrait path or unmerged #119 asset dependency is added.
+is used. The shared build also packages and validates the compact artwork from
+#119; mapping those portraits onto Actor images remains separate work in #124.
 
 `CreatureData` now stores exact source-stat strings, typed alternate Speeds,
 footprint and size label, Armor marker, numeric/special mitigation entries,
@@ -198,12 +199,14 @@ printed profile.
 HOL_TEST_URL=http://127.0.0.1:30014 HOL_TEST_ALLOW_WRITES=1 HOL_TEST_ISOLATED_WORLD=1 node scripts/check-creature-packs.mjs
 ```
 
-Pre-integration pure validation currently passes
-`tests/creature-packs.test.mjs`, `tests/creatures.test.mjs`,
-`tests/item-packs.test.mjs` and authored-pack drift checking under the worker
-environment's Node 22.22.1. This is not Node 24 evidence. Official CLI
-compilation, full Node 24 checks, Foundry 14.369 native imports and visual QA
-remain primary-owned and must be recorded before merge.
+Integration review rebased the pack pipeline onto the merged compact-art pipeline
+at `bf54200`. Build retains the exact-set artwork validation and byte report,
+then compiles all three native packs through the official CLI. Node 24.22.0
+`npm run check` passes build, validation and all 259 tests, including complete
+artwork decoding and exact-set rejection cases. Current Evasion
+and Threat summary labels follow edited numeric modifiers while retaining the
+pinned source-stat prose as provenance. Foundry 14.369 native imports and visual
+QA remain unverified and must be recorded before merge.
 Primary verification must specifically confirm V14 nested `ArrayField` model
 cleaning, choice-backed blank/default validation, the core
 `icons/svg/mystery-man.svg` fallback, `keepId` Actor imports, awaited TextEditor

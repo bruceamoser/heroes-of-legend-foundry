@@ -623,3 +623,9 @@ context checks pass, including stale prepared-roll rejection after disabling an
 effect, contextual cancellation, movement encumbrance and explicit DA override.
 Both dialog and tracker screenshots were visually reviewed. The fixture's carried
 load is Bulk 14 against Brawn +1 capacity 13, producing one encumbrance penalty.
+
+Affected runtime regressions also pass: roll sources, wounds, turn budgets and
+defense responses. The budget fixture was updated to expect temporary Dazed 3
+to decay to 2 at turn end, then explicitly choose its one retained category;
+its earlier expectation predated condition decay integration. Production timing
+rules were unchanged.

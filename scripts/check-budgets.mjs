@@ -208,9 +208,28 @@ try {
   assert.equal(await movement(), 12);
   await request("finish");
   assert.equal((await state()).budgets[fixture.participant].remaining.main, 0);
-  await request("choose", { id: fixture.participant });
+  // Temporary Dazed 3 decays to 2 at turn end; choose one category next turn.
+  assert.equal(
+    await gm.page.evaluate(
+      (f) =>
+        game.actors
+          .get(f.actor)
+          .effects.find(
+            (effect) =>
+              effect.getFlag("heroes-of-legend", "condition")?.key === "dazed",
+          )
+          .getFlag("heroes-of-legend", "condition").rating,
+      fixture,
+    ),
+    2,
+  );
+  const nextTurn = await request("choose", {
+    id: fixture.participant,
+    retained: ["reaction"],
+  });
+  assert.equal(nextTurn.result.status, "complete");
   s = await state();
-  assert.deepEqual(s.budgets[fixture.participant].retained, []);
+  assert.deepEqual(s.budgets[fixture.participant].retained, ["reaction"]);
   assert.equal(await movement(), 6);
   await changeCondition("dazed", 0);
   await request("finish");
@@ -341,6 +360,7 @@ try {
           "/systems/heroes-of-legend/services/authority.mjs"
         );
         await releaseAuthority();
+        await new Promise((resolve) => setTimeout(resolve, 500));
         for (const m of game.messages.filter(
           (m) =>
             m.getFlag("heroes-of-legend", "combatRequest")?.combatUuid ===
@@ -351,6 +371,9 @@ try {
         await game.actors.get(f.actor)?.delete();
         await game.users.get(f.user)?.delete();
       }, fixture)
-      .catch((e) => console.error("Cleanup:", e.message));
+      .catch((e) => {
+        console.error("Cleanup:", e.message);
+        process.exitCode = 1;
+      });
   await browser.close();
 }

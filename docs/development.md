@@ -616,3 +616,10 @@ remain readable through their stored injury record and effect provenance.
 The guarded `test:wound-context` fixture exercises the native controls, changed
 effects, movement budgets and tracker breakdown; primary runtime results follow.
 This does not implement wound treatment or immediate displacement.
+
+Primary validation: Node 24 `npm run check` passes all 185 tests. All 280 wound
+records reproduce from the pinned book revision. Foundry 14.369 native wound
+context checks pass, including stale prepared-roll rejection after disabling an
+effect, contextual cancellation, movement encumbrance and explicit DA override.
+Both dialog and tracker screenshots were visually reviewed. The fixture's carried
+load is Bulk 14 against Brawn +1 capacity 13, producing one encumbrance penalty.

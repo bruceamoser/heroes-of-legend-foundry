@@ -164,7 +164,7 @@ try {
             system: {
               catalogId: "fixture-load",
               quantity: 1,
-              bulk: 11,
+              bulk: 14,
               hands: 0,
               inventoryDie: 4,
             },
@@ -234,9 +234,10 @@ try {
       (app) =>
         app.rendered && app.element?.classList.contains("hol-roll-dialog"),
     );
+    app.readDraft();
     return {
       basis: structuredClone(app.basis),
-      draft: structuredClone(app.readDraft()),
+      draft: structuredClone(app.draft),
     };
   });
 

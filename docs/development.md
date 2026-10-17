@@ -270,3 +270,7 @@ Validation: build/validation and 74 tests pass. Native 14.369 defense-response a
 ### Held equipment (#68)
 
 `test:equipment` verifies owner preparation, native held stack state, exact replay, stale inventory rejection, DA-only reasoned encounter/anatomy corrections, observer denial and reload on isolated 14.369. The panel counts one held unit per stack and leaves all carried Bulk unchanged. Existing items default to unheld; hand capacity defaults to two until a DA anatomy ruling. Owned item sheets route hand changes through the arrangement panel. Draw/stow/pickup timing and ground transfers are not implemented by this preparation panel.
+
+### Survival rules (#74)
+
+Pure survival transitions distinguish entry into Dying (one wound), damage while Dying (one mark), damage after stabilization (new wound and one mark), locked start-of-turn Grit/death-roll choices and natural results. Own-turn counters make Last Words expire at the end of the second following own turn; damage never restarts that deadline. Healing/safe breath preserve scars and spent Grit. Becoming Dying mid-turn waits for the next start. These tests are rules-layer evidence; native damage, wound results and survival UI are subsequent integration work. The DA establishes whether a breath is safe; the calculator does not infer safety.

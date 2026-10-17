@@ -178,6 +178,11 @@
 .heroes-of-legend.hol-roll-dialog .hol-wound-context { border:1px solid var(--hol-gold); background:var(--hol-ivory); margin:8px 0; padding:8px 12px; }
 .heroes-of-legend.hol-roll-dialog .hol-wound-context legend { color:var(--hol-ink); font-family:"HOL Cinzel", Georgia, serif; font-weight:bold; }
 .heroes-of-legend.hol-roll-dialog .hol-wound-context p { margin:0 0 6px; }
+.heroes-of-legend.hol-player-attack .hol-errors { border:1px solid #8b2525; background:#f4e4df; color:#8b2525; padding:8px 12px; margin:12px 0; }
+.heroes-of-legend.hol-player-attack .hol-errors h2 { color:#8b2525; margin-top:0; }
+.heroes-of-legend.hol-player-attack .hol-roll-sources { padding-left:22px; }
+.hol-player-attack-card .hol-player-attack-damage { width:100%; background:var(--hol-forest); color:var(--hol-ivory); border:1px solid var(--hol-gold); margin-top:8px; }
+.hol-player-attack-card .hol-note { background:var(--hol-ivory); border-left:3px solid var(--hol-gold); padding:6px 9px; }
 
 .heroes-of-legend.hol-hands .window-title { font-size: 14px; }
 .heroes-of-legend.hol-hands input[type="checkbox"] { width: 20px; height: 20px; padding: 0; }

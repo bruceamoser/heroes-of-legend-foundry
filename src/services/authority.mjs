@@ -124,11 +124,13 @@ async function appliedWork(work) {
     message?.getFlag(ID, "survivalRequest") ??
     message?.getFlag(ID, "abilityRequest") ??
     message?.getFlag(ID, "npcAttackRequest") ??
+    message?.getFlag(ID, "playerAttackRequest") ??
     message?.getFlag(ID, "defenseRequest");
   const uuid = message?.getFlag(ID, "defenseRequest")
     ? `ChatMessage.${request.attackMessageId}`
     : message?.getFlag(ID, "abilityRequest") ||
-        message?.getFlag(ID, "npcAttackRequest")
+        message?.getFlag(ID, "npcAttackRequest") ||
+        message?.getFlag(ID, "playerAttackRequest")
       ? request?.combatUuid
       : (request?.actorUuid ??
         request?.combatUuid ??

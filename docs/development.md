@@ -317,7 +317,51 @@ The click captures every native GM target Token UUID before asynchronous work. T
 
 The shared dialog adds declared Threat to current defender conditions/benefits and labeled situational choices. Its native roll records the incoming attack ID, actual roller and defender, and the selected printed physical damage before resistance. This remains a clearly labeled development **roll-only** card: automatic damage, attacker-condition/perspective modifiers, range/geometry guidance, per-defender committed-response duplicate protection, reaction choices and network-safe response settlement are not connected yet. Repeated card use does not spend another Main, but currently produces independent rolls for DA adjudication. It must not be presented as completion of #14.
 
-Validation: Node 24 build/validation and 72 tests pass. `test:npc-attacks`, `test:roll-sources` and `test:coordinator` pass on 14.369. The attack scenario uses actual canvas multi-target selection, native creature-sheet declaration, forged non-GM request rejection, receipt replay, another player's non-owned token, an additional defender, explicit defender correction, persisted incoming Threat/profile outcome and deleted-target recovery after reload. The incoming defense dialog was visually inspected. The fixture identifies embedded Tokens by Actor identity rather than assuming native creation-result order.
+### Player-character Basic Melee — issue #108
+
+The owned **Basic Melee** ability item now uses a reviewed adapter pinned to
+`design/cards/basic-melee.md` at book commit
+`9bc9b4fe3256e68880b92c45facf0f25b98a1ea3`. Its source hash is
+`9d6e0b6ca75363b94c6886fb3c53087f854098f024aac232395c61fdc438ae40`.
+The adapter spends one Main Action, requires a held compatible melee weapon,
+takes exactly one adjacent character or creature target, rolls Brawn, and applies
+only 2/3/5 Physical damage for Weak/Standard/Strong. It grants no weapon and does
+not add weapon damage.
+
+The focused preparation dialog freezes the acting Token UUID, target Token UUID,
+weapon instance, encounter revision, condition/Evasion sources and final roll
+basis. Target Evasion and the actual target's Grappled rating use the shared
+source calculator and native formula. Native occupied-square offsets and
+`measurePath().spaces` supply footprint-aware square distance. The V14 movement
+collision backend tests the nearest occupied-square center line on the same scene
+level; elevation or level differences remain unverified until the DA supplies a
+reasoned ruling. A confirmed nonadjacent target can receive the same explicit
+audited exception rather than being rejected unconditionally. Neither path
+bypasses the original ChatMessage author's Actor permission, source hash or
+operation replay checks. Shared roll-basis and draft fields remain frozen as a
+whole, including later reviewed source metadata such as wound applicability.
+
+The GM coordinator clones the complete encounter, replaces only the acting
+participant's budget with the declared Main, and advances its revision. It then
+validates the committed action receipt and uses `continueAction` without
+re-declaring the spent Main. The durable Combat operation stores the immutable
+request, evaluated snapshot and native Roll JSON or DA recovery record before any
+chat presentation. Chat roll/card/request flags are restorable projections and
+are never an authority source. An unresolved or deleted-message reservation never
+rerolls; it remains visible for DA retained-dice recovery or explicit attention.
+Once settled, the player attack creates no second Defend roll, including in PvP.
+The GM damage review consumes only the frozen result and links the target's typed
+Physical damage to the attack event, using the existing resistance,
+minimum-damage and wound workflow. NPC attacks keep their defender-perspective
+workflow, while NPC-only, player-controlled creature, opportunity and specialty
+attacks remain separate handlers.
+
+The guarded `test:player-attacks` fixture covers encounter preservation,
+five-units-per-square adjacency, large footprints, collision-blocked geometry,
+an explicit DA nonadjacency exception, forged player-authored projection and
+recovery edits, late chat presentation failure and replay, deleted presentation,
+retained-dice authority, reload/replay and damage deduplication. Primary runtime
+results remain to be recorded after integration.
 
 ### Per-defender roll attempts — issue #66
 

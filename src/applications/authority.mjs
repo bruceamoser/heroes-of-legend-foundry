@@ -17,6 +17,11 @@ import {
 } from "../services/defense-responses.mjs";
 import { resolveNpcAttack } from "../services/npc-attacks.mjs";
 import { resolveAbilityRequest } from "../services/abilities.mjs";
+import {
+  pendingPlayerAttacks,
+  recoverPlayerBasicMeleeRequest,
+  resolvePlayerBasicMeleeRequest,
+} from "../services/player-attacks.mjs";
 import { resolveConditionRequest } from "../services/conditions.mjs";
 import { resolveCombatRequest } from "../services/combat.mjs";
 import {
@@ -64,6 +69,8 @@ export async function retryCharacterRequest(id) {
     return resolveConditionRequest(id);
   if (message?.getFlag(ID, "abilityRequest")) return resolveAbilityRequest(id);
   if (message?.getFlag(ID, "npcAttackRequest")) return resolveNpcAttack(id);
+  if (message?.getFlag(ID, "playerAttackRequest"))
+    return resolvePlayerBasicMeleeRequest(id);
   if (message?.getFlag(ID, "defenseRequest")) return resolveDefenseRequest(id);
   throw new Error("Unknown automation request.");
 }
@@ -81,6 +88,8 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
       release: AuthorityPanel.release,
       retry: AuthorityPanel.retry,
       resumeAbility: AuthorityPanel.resumeAbility,
+      resumeAttack: AuthorityPanel.resumeAttack,
+      recoverAttack: AuthorityPanel.recoverAttack,
       abandonDefense: AuthorityPanel.abandonDefense,
       openInventory: AuthorityPanel.openInventory,
     },
@@ -112,12 +121,37 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
             .map((r) => ({ ...r, attackId: m.id })),
         ),
       pendingAbilities: game.combats
-        .filter((c) => c.getFlag(ID, "pendingAbility"))
+        .filter(
+          (c) =>
+            c.getFlag(ID, "pendingAbility") &&
+            !pendingPlayerAttacks(c).length,
+        )
         .map((c) => ({
           combatUuid: c.uuid,
           id: c.getFlag(ID, "pendingAbility"),
           name: c.name ?? c.id,
         })),
+      pendingAttacks: game.combats.flatMap((combat) =>
+        pendingPlayerAttacks(combat).map((id) => {
+          const operation = combat.getFlag(
+            ID,
+            "playerAttackOperations",
+          )?.[id];
+          return {
+            combatUuid: combat.uuid,
+            id,
+            name: combat.name ?? combat.id,
+            attacker: operation?.attackerName ?? "Unknown attacker",
+            target: operation?.targetName ?? "Unknown target",
+            saved: Boolean(operation?.result),
+            sourceAvailable: Boolean(game.messages.get(id)),
+            status: operation?.status ?? "unknown",
+            recoverable:
+              !operation?.result &&
+              ["declared", "resolving"].includes(operation?.status),
+          };
+        }),
+      ),
       pendingTurns: game.combats
         .filter((c) => c.getFlag(ID, "pendingTurnPhase"))
         .map((c) => ({
@@ -156,6 +190,7 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
             m.getFlag(ID, "survivalRequest") ||
             m.getFlag(ID, "abilityRequest") ||
             m.getFlag(ID, "npcAttackRequest") ||
+            m.getFlag(ID, "playerAttackRequest") ||
             m.getFlag(ID, "defenseRequest"),
         )
         .slice(-30)
@@ -185,7 +220,9 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
                             ? "NPC attack"
                             : m.getFlag(ID, "defenseRequest")
                               ? "Defense"
-                              : "Ability")),
+                              : m.getFlag(ID, "playerAttackRequest")
+                                ? "Player attack"
+                                : "Ability")),
         })),
     };
   }
@@ -269,6 +306,40 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
       await this.render();
     } catch (e) {
       ui.notifications.error(e.message);
+    }
+  }
+  static async resumeAttack(event, target) {
+    try {
+      if (!isCreationAuthority())
+        throw new Error("Enable this coordinator first.");
+      await resolvePlayerBasicMeleeRequest(target.dataset.id);
+      await this.render();
+    } catch (error) {
+      ui.notifications.error(error.message);
+    }
+  }
+  static async recoverAttack(event, target) {
+    try {
+      if (!isCreationAuthority())
+        throw new Error("Enable this coordinator first.");
+      const choice = await foundry.applications.api.DialogV2.input({
+        window: { title: "Recover retained Basic Melee dice" },
+        content:
+          '<p>Do not roll again. Enter the three dice retained after Boons/Banes and record the DA source.</p><label>Retained d6 faces<input name="retained" required placeholder="Example: 3 5 6"></label><label>DA reason<input name="reason" required></label>',
+        ok: { label: "Record retained result" },
+      });
+      if (!choice) return;
+      const retained = String(choice.retained)
+        .trim()
+        .split(/\s+/)
+        .map(Number);
+      await recoverPlayerBasicMeleeRequest(target.dataset.id, {
+        retained,
+        reason: choice.reason,
+      });
+      await this.render();
+    } catch (error) {
+      ui.notifications.error(error.message);
     }
   }
   static async retry(event, target) {

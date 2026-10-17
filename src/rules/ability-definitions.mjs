@@ -1,5 +1,35 @@
 /** Reviewed adapters only; a source hash change requires a new review. */
 export const ABILITY_DEFINITIONS = Object.freeze({
+  "ability-basic-melee": Object.freeze({
+    id: "ability-basic-melee",
+    name: "Basic Melee",
+    category: "main",
+    handler: "player-basic-melee-v1",
+    source: {
+      path: "design/cards/basic-melee.md",
+      sha256:
+        "9d6e0b6ca75363b94c6886fb3c53087f854098f024aac232395c61fdc438ae40",
+    },
+    attribute: "brawn",
+    target: Object.freeze({
+      actorTypes: Object.freeze(["character", "creature"]),
+      count: 1,
+      adjacent: true,
+      kind: "creature",
+    }),
+    requirement: Object.freeze({
+      equipment: "held-compatible-melee-weapon",
+      grants: Object.freeze([]),
+    }),
+    damage: Object.freeze({
+      type: "physical",
+      weak: 2,
+      standard: 3,
+      strong: 5,
+    }),
+    summary:
+      "Spend one Main Action to make one Brawn attack roll with a held melee weapon against one adjacent creature. Apply only 2/3/5 Physical damage for Weak/Standard/Strong. This reference grants no weapon.",
+  }),
   "ability-defend": Object.freeze({
     id: "ability-defend",
     name: "Defend",

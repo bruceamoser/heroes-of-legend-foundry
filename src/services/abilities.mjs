@@ -45,6 +45,11 @@ export async function activateOwnedAbility(item) {
     throw new Error(
       "Select this character's turn in one encounter before using this action.",
     );
+  const definition = itemAbilityDefinition(item);
+  if (definition?.handler === "player-basic-melee-v1") {
+    const { promptBasicMelee } = await import("../dialogs/player-attack.mjs");
+    return promptBasicMelee(item, matches[0].combat, matches[0].id);
+  }
   return requestAbility(item, matches[0].combat, matches[0].id);
 }
 export async function requestAbility(

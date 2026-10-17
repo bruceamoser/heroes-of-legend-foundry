@@ -115,11 +115,15 @@ async function appliedWork(work) {
     message?.getFlag(ID, "creationRequest") ??
     message?.getFlag(ID, "developmentRequest") ??
     message?.getFlag(ID, "combatRequest") ??
-    message?.getFlag(ID, "conditionRequest");
-  const uuid = request?.actorUuid ?? request?.combatUuid;
+    message?.getFlag(ID, "conditionRequest") ??
+    message?.getFlag(ID, "abilityRequest");
+  const uuid = message?.getFlag(ID, "abilityRequest")
+    ? request?.combatUuid
+    : (request?.actorUuid ?? request?.combatUuid);
   if (!uuid) return false;
   const actor = await fromUuid(uuid);
-  // Supported operations make all mechanical changes in one Actor or Combat update with this receipt.
+  // This is the final settlement receipt. Multi-document abilities write it only
+  // after their Actor effect receipt and all required mechanical writes succeed.
   return (
     actor?.getFlag(ID, "operationReceipts")?.[work.requestId]?.applied === true
   );

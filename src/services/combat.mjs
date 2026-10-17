@@ -1,3 +1,4 @@
+import { expireStaleBenefits } from "./benefits.mjs";
 import {
   initialBudgets,
   prepareParticipantBudget,
@@ -70,9 +71,14 @@ async function apply(id) {
       throw new Error(
         "Completed request was changed; its receipt cannot be reused.",
       );
+    await expireStaleBenefits(combat);
     await presentResult(message, combat);
     return { status: "complete", replay: true };
   }
+  if (combat.getFlag(ID, "pendingAbility"))
+    throw new Error(
+      "Resume the pending action from Manage automation before advancing this encounter.",
+    );
   const state = combat.getFlag(ID, "encounter"),
     actor = combat.combatants.get(
       ["choose", "convert"].includes(request.kind)
@@ -175,6 +181,7 @@ async function apply(id) {
       revision: next.revision,
     },
   });
+  await expireStaleBenefits(combat);
   await presentResult(message, combat);
   return { status: "complete", replay: false };
 }

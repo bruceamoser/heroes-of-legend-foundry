@@ -31,7 +31,8 @@
     "test:coordinator-restart": "node scripts/check-coordinator-restart.mjs",
     "test:combat": "node scripts/check-combat.mjs",
     "test:conditions": "node scripts/check-conditions.mjs",
-    "test:budgets": "node scripts/check-budgets.mjs"
+    "test:budgets": "node scripts/check-budgets.mjs",
+    "test:defend-maneuver": "node scripts/check-defend-maneuver.mjs"
   },
   "devDependencies": {
     "@foundryvtt/foundryvtt-cli": "3.0.5",

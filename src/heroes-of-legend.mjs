@@ -1,3 +1,4 @@
+import { registerAbilityRequests } from "./services/abilities.mjs";
 import { HOLActor } from "./documents/actor.mjs";
 import {
   registerHOLStatuses,
@@ -25,6 +26,7 @@ Hooks.once("init", () => {
   CONFIG.Actor.documentClass = HOLActor;
   registerHOLStatuses();
   registerConditionRequests();
+  registerAbilityRequests();
   CONFIG.Combat.documentClass = HOLCombat;
   registerCombatRequests();
   registerAuthorityPrototype();

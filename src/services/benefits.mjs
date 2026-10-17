@@ -1,3 +1,5 @@
+import { defenseBenefitSources } from "../rules/defense-benefits.mjs";
+import { isShieldEquipment } from "../rules/equipment-identity.mjs";
 const ID = "heroes-of-legend";
 export function benefitCurrent(effect) {
   if (!effect.active) return false;
@@ -8,24 +10,21 @@ export function benefitCurrent(effect) {
     budget = state?.budgets?.[benefit.anchor?.participantId];
   return Boolean(budget && budget.turnId === benefit.anchor.turnId);
 }
-export function defenseBenefits(actor) {
-  const effects = actor.effects.filter((e) => benefitCurrent(e)),
-    keys = new Set(),
-    sources = [];
-  for (const effect of effects) {
-    const benefit = effect.getFlag(ID, "benefit");
-    if (benefit.key !== "defend" || keys.has(benefit.key)) continue;
-    keys.add(benefit.key);
-    sources.push({
-      id: `benefit-${benefit.key}`,
-      kind: "boon",
-      amount: 1,
-      label: "Defend maneuver",
-      sourceIds: [effect.uuid],
-      automatic: true,
-    });
-  }
-  return sources;
+export function defenseBenefits(actor, { blockable = false } = {}) {
+  const heldShieldUuids = actor.items
+      .filter((item) => isShieldEquipment(item) && item.system.held)
+      .map((item) => item.uuid),
+    entries = actor.effects
+      .filter((effect) => benefitCurrent(effect))
+      .map((effect) => {
+        const benefit = effect.getFlag(ID, "benefit");
+        return {
+          key: benefit?.key,
+          effectUuid: effect.uuid,
+          shieldItemUuid: benefit?.shieldItemUuid,
+        };
+      });
+  return defenseBenefitSources(entries, { blockable, heldShieldUuids });
 }
 /** Mechanical expiry follows the anchor immediately; this reconciles the native visual record. */
 export async function expireStaleBenefits(combat) {

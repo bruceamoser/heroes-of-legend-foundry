@@ -6,6 +6,16 @@ import {
 import { rollBasis, prepareRoll } from "./roll-preparation.mjs";
 import { evaluatePreparedRoll } from "./roll.mjs";
 const ID = "heroes-of-legend";
+function pendingAbilityFor(actorUuid) {
+  return game.combats.contents.some((combat) => {
+    const pending = combat.getFlag(ID, "pendingAbility");
+    return Boolean(
+      pending &&
+        combat.getFlag(ID, "abilityOperations")?.[pending]?.actorUuid ===
+          actorUuid,
+    );
+  });
+}
 export async function defenseSignature(request) {
   const digest = await crypto.subtle.digest(
     "SHA-256",
@@ -38,6 +48,10 @@ export function defenseResponses(message) {
 export async function requestDefense(actor, basis, draft) {
   if (!game.settings.get(ID, "creationAuthorityClient"))
     throw new Error("Enable the GM automation coordinator first.");
+  if (pendingAbilityFor(actor.uuid))
+    throw new Error(
+      "The defender's ability activation is still pending. Review it before rolling.",
+    );
   prepareRoll(basis, draft);
   return ChatMessage.create(
     ChatMessage.applyMode({
@@ -101,6 +115,10 @@ async function apply(id) {
   }
   if (!record) {
     const actor = await fromUuid(request.actorUuid);
+    if (pendingAbilityFor(actor?.uuid))
+      throw new Error(
+        "The defender's ability activation is still pending. Review it before rolling.",
+      );
     const basis = rollBasis(
       actor,
       request.basis?.attributeKey,

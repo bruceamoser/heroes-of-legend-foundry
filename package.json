@@ -33,6 +33,7 @@
     "test:conditions": "node scripts/check-conditions.mjs",
     "test:budgets": "node scripts/check-budgets.mjs",
     "test:defend-maneuver": "node scripts/check-defend-maneuver.mjs",
+    "test:shield-block": "node scripts/check-shield-block.mjs",
     "test:roll-sources": "node scripts/check-roll-sources.mjs",
     "test:creatures": "node scripts/check-creatures.mjs",
     "test:npc-attacks": "node scripts/check-npc-attacks.mjs",

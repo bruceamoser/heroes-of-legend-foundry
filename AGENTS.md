@@ -18,6 +18,17 @@ This is the software companion to the Heroes of Legend rulebook. Bruce is the fi
 6. Squash merge approved work and verify issue closure.
 7. Correct these instructions when a verified omission causes a mistake; track the correction in the same scoped PR or a separate issue.
 
+## Coding delegation
+
+Bruce authorized DeepSeek coding workers on October 17, 2026. Use them for
+bounded implementation and test-writing tasks; the primary agent handles
+architecture, rules interpretation, integration and PR review. Give each worker
+an explicit scope, acceptance criteria and writable checkout. Workers must not
+commit, publish or merge unless separately instructed. Review their full diff
+and run applicable checks before integrating. Serialize Foundry runtime tests
+against the shared disposable world. Keep API keys and worker configuration
+outside the repository; never include them in prompts, logs or Git.
+
 ## Implementation boundaries
 
 - V14 only initially. No V13 compatibility layer or copied Neon Relic game mechanics.

@@ -1,5 +1,10 @@
 import { rollPrepared } from "../services/roll.mjs";
 import { rollBasis, prepareRoll } from "../services/roll-preparation.mjs";
+import {
+  activateOwnedAbility,
+  requestDefenseAbility,
+  reviewedDefenseAbilityOptions,
+} from "../services/abilities.mjs";
 export class SharedRollDialog extends foundry.applications.api.HandlebarsApplicationMixin(
   foundry.applications.api.ApplicationV2,
 ) {
@@ -28,6 +33,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       attemptReason: "",
     };
     this.notice = "";
+    this.activating = false;
   }
   static DEFAULT_OPTIONS = {
     classes: ["heroes-of-legend", "hol-roll-dialog"],
@@ -37,6 +43,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       grit: SharedRollDialog.grit,
       roll: SharedRollDialog.roll,
       changeDefender: SharedRollDialog.changeDefender,
+      useAbility: SharedRollDialog.useAbility,
     },
   };
   static PARTS = {
@@ -61,6 +68,16 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       ),
     ];
     this.fears = fears;
+    this.abilityOptions =
+      this.mode === "defense"
+        ? reviewedDefenseAbilityOptions(this.actor, {
+            attackMessageId: this.attackMessageId,
+            defenderTokenUuid: this.defenderTokenUuid,
+            additionalAttempt: this.draft.additionalAttempt,
+            attemptReason: this.draft.attemptReason,
+          }).options
+        : [];
+    this.abilityPending = this.abilityOptions.some((option) => option.pending);
     const prior =
       game.messages
         .get(this.attackMessageId)
@@ -86,6 +103,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       defense: this.mode === "defense",
       notice: this.notice,
       draft: this.draft,
+      abilities: this.abilityOptions,
       fears: fears.map((source, index) => ({
         source,
         index,
@@ -127,6 +145,8 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       output.textContent = plan.formula;
       detail.textContent = `${plan.boons} Boons · ${plan.banes} Banes · ${plan.canceled} canceled pairs · net extras ${plan.net} (maximum 3)`;
       button.disabled =
+        this.activating ||
+        this.abilityPending ||
         this.pendingResponse ||
         (this.priorCount > 0 &&
           (!this.draft.additionalAttempt || !this.draft.attemptReason?.trim()));
@@ -141,6 +161,12 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
     this.element.querySelector(".hol-body").addEventListener("input", () => {
       this.readDraft();
       this.preview();
+    });
+    this.element.querySelector(".hol-body").addEventListener("change", (event) => {
+      if (!["additionalAttempt", "attemptReason"].includes(event.target.name))
+        return;
+      this.readDraft();
+      this.render();
     });
     this.preview();
   }
@@ -166,6 +192,10 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
     if (this.rolling) return;
     this.readDraft();
     try {
+      if (this.activating || this.abilityPending)
+        throw new Error(
+          "The defender's ability activation is still pending. Review it before rolling.",
+        );
       const current = rollBasis(
         this.actor,
         this.attributeKey,
@@ -188,6 +218,64 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
     } finally {
       this.rolling = false;
       if (this.rendered) this.preview();
+    }
+  }
+  async waitForAbility(messageId) {
+    const deadline = Date.now() + 15000;
+    while (Date.now() < deadline) {
+      const status = game.messages
+        .get(messageId)
+        ?.getFlag("heroes-of-legend", "abilityStatus");
+      if (status && ["complete", "interrupted", "failed"].includes(status.status))
+        return status;
+      const settlement = game.combats.contents
+        .map(
+          (combat) =>
+            combat.getFlag("heroes-of-legend", "operationReceipts")?.[
+              messageId
+            ],
+        )
+        .find((receipt) => receipt?.applied);
+      if (settlement && ["complete", "interrupted"].includes(settlement.status))
+        return settlement;
+      await new Promise((resolve) => setTimeout(resolve, 100));
+    }
+    throw new Error(
+      "Ability settlement is still pending. The DA can resume it from Manage automation without rolling.",
+    );
+  }
+  static async useAbility(event, target) {
+    if (this.activating) return;
+    this.readDraft();
+    const item = this.actor.items.get(target.dataset.itemId);
+    try {
+      if (!item) throw new Error("The reviewed ability is unavailable.");
+      this.activating = true;
+      this.notice = `Activating ${item.name}…`;
+      await this.render();
+      const message = this.attackMessageId
+        ? await requestDefenseAbility(item, {
+            attackMessageId: this.attackMessageId,
+            defenderTokenUuid: this.defenderTokenUuid,
+            shieldItemUuid:
+              this.abilityOptions.find((option) => option.itemId === item.id)
+                ?.shieldItemUuid ?? null,
+            additionalAttempt: this.draft.additionalAttempt,
+            attemptReason: this.draft.attemptReason,
+          })
+        : await activateOwnedAbility(item);
+      const status = await this.waitForAbility(message.id);
+      if (status.status === "failed") throw new Error(status.error);
+      this.notice =
+        status.status === "complete"
+          ? `${item.name} activated. Roll sources refreshed.`
+          : `${item.name} could not continue; its declared cost remains spent.`;
+    } catch (e) {
+      this.notice = e.message;
+      ui.notifications.error(e.message);
+    } finally {
+      this.activating = false;
+      await this.render();
     }
   }
 }

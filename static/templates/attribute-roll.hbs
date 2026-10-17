@@ -5,6 +5,7 @@
   {{#if notice}}<p class="hol-note" role="alert">{{notice}}</p>{{/if}}
   <p>{{attributeName}}: <strong>{{attribute}}</strong></p>
   {{#if defense}}<p>Rolling this defense spends no Reaction. Any player may roll for this defender.</p>{{/if}}
+  {{#if abilities}}<h2>Reviewed defense abilities</h2><ul class="hol-defense-abilities">{{#each abilities}}<li class="{{#unless available}}hol-unavailable{{/unless}}"><button type="button" data-action="useAbility" data-item-id="{{itemId}}" {{#unless available}}disabled{{/unless}}>{{#if available}}Use {{else}}{{/if}}{{name}}</button>{{#if reasons}}<span>{{reasons}}</span>{{/if}}</li>{{/each}}</ul>{{/if}}
   {{#each fears}}<label>Can you perceive {{source}}?<select name="fear-{{index}}"><option value="">Choose perception</option><option value="yes" {{#if yes}}selected{{/if}}>Yes</option><option value="no" {{#if no}}selected{{/if}}>No</option></select></label>{{/each}}
   <h2>Sources applied to this roll</h2><ul class="hol-roll-sources"></ul>
   <h2>Situational adjustments</h2>

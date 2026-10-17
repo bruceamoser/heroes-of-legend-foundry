@@ -7,12 +7,14 @@ import {
 } from "./authority.mjs";
 const ID = "heroes-of-legend";
 /** Explicit DA-selected NPC perspective, never inferred just from Actor type. */
-export async function declareNpcMelee(actor) {
+export async function declareNpcMelee(actor, { blockable } = {}) {
   const suggestedDefenderTokenUuids = [...game.user.targets].map(
     (t) => t.document.uuid,
   );
   if (!game.user.isGM || actor.type !== "creature")
     throw new Error("The DA declares this NPC creature attack.");
+  if (typeof blockable !== "boolean")
+    throw new Error("The DA must judge whether this attack is blockable.");
   if (!game.settings.get(ID, "creationAuthorityClient"))
     throw new Error("Enable the GM automation coordinator first.");
   const matches = game.combats.contents.flatMap((c) =>
@@ -37,6 +39,7 @@ export async function declareNpcMelee(actor) {
           participantId: p.id,
           revision: c.getFlag(ID, "encounter").revision,
           suggestedDefenderTokenUuids,
+          blockable,
         },
       },
     },
@@ -75,7 +78,8 @@ async function apply(id) {
         actor.uuid ||
       state?.current !== request.participantId ||
       request.revision !== state.revision ||
-      !budget
+      !budget ||
+      typeof request.blockable !== "boolean"
     )
       throw new Error(
         "The creature's selected turn changed. Review the attack again.",
@@ -121,6 +125,9 @@ async function apply(id) {
         ]),
       ),
       suggestedDefenderTokenUuids: [...request.suggestedDefenderTokenUuids],
+      blockable: request.blockable,
+      hasBlockableJudgment: true,
+      combatId: combat.id,
       perspective: "defender",
       title: "Basic Melee",
     };

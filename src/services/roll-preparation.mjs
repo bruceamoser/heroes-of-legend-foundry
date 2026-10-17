@@ -3,6 +3,54 @@ import { conditionRollSources } from "../rules/conditions.mjs";
 import { sourceRollPlan } from "../rules/roll-sources.mjs";
 import { actorContributions } from "./conditions.mjs";
 import { defenseBenefits } from "./benefits.mjs";
+const ID = "heroes-of-legend";
+export function incomingAttackContext(attackMessageId) {
+  const message = game.messages.get(attackMessageId),
+    incoming = message?.getFlag(ID, "attackCard");
+  if (
+    !message?.author?.isGM ||
+    !message.isContentVisible ||
+    !incoming ||
+    incoming.perspective !== "defender"
+  )
+    throw new Error("The incoming attack is unavailable or changed.");
+  const attack = structuredClone(incoming);
+  if (
+    !["weak", "standard", "strong"].every(
+      (key) =>
+        Number.isSafeInteger(attack.damage?.[key]) && attack.damage[key] >= 0,
+    )
+  )
+    throw new Error("The incoming attack is unavailable or changed.");
+  return attack;
+}
+
+/**
+ * Budget-backed Shield Block alone requires the GM's immutable attack record
+ * and receipt. Ordinary defense remains available for legacy or historical
+ * cards whose encounter is no longer loaded.
+ */
+export function verifiedIncomingAttackContext(attackMessageId) {
+  const attack = incomingAttackContext(attackMessageId);
+  if (!Object.hasOwn(attack, "blockable")) return attack;
+  if (typeof attack.blockable !== "boolean")
+    throw new Error("The DA's blockable judgment is invalid.");
+  const combat =
+      typeof attack.combatId === "string" && game.combats.get(attack.combatId),
+    message = game.messages.get(attackMessageId),
+    stored = combat?.getFlag(ID, "attacks")?.[attackMessageId],
+    receipt = combat?.getFlag(ID, "operationReceipts")?.[attackMessageId];
+  if (
+    !combat ||
+    !message ||
+    !stored ||
+    receipt?.applied !== true ||
+    receipt.kind !== "npc-attack" ||
+    JSON.stringify(stored) !== JSON.stringify(attack)
+  )
+    throw new Error("The incoming attack's DA judgment could not be verified.");
+  return attack;
+}
 export function rollBasis(
   actor,
   attributeKey,
@@ -66,23 +114,12 @@ export function rollBasis(
   }
   let incoming = null;
   if (attackMessageId) {
-    const message = game.messages.get(attackMessageId);
-    incoming = message?.getFlag("heroes-of-legend", "attackCard");
+    incoming = incomingAttackContext(attackMessageId);
     if (
       mode !== "defense" ||
-      !message?.author?.isGM ||
-      !message.isContentVisible ||
-      !incoming ||
-      incoming.perspective !== "defender" ||
-      !["weak", "standard", "strong"].every(
-        (key) =>
-          Number.isSafeInteger(incoming.damage?.[key]) &&
-          incoming.damage[key] >= 0,
-      ) ||
       incoming.attributeKey !== attributeKey
     )
       throw new Error("The incoming attack is unavailable or changed.");
-    incoming = structuredClone(incoming);
   }
   return {
     attackMessageId,
@@ -94,7 +131,10 @@ export function rollBasis(
     mode,
     attribute: actor.system.attributes[attributeKey].effective,
     contributions,
-    benefits: mode === "defense" ? defenseBenefits(actor) : [],
+    benefits:
+      mode === "defense"
+        ? defenseBenefits(actor, { blockable: incoming?.blockable === true })
+        : [],
   };
 }
 export function prepareRoll(basis, draft = {}) {

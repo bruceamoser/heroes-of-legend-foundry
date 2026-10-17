@@ -34,6 +34,10 @@ WEBP_QUALITY = 85
 WEBP_METHOD = 6
 ALPHA_QUALITY = 100
 SHA256_LENGTH = 64
+# Reviewed provenance for the checked-in bytes. Update with the manifest and
+# Node release baseline when a regeneration intentionally changes encoders.
+PILLOW_ENCODER_VERSION = "12.1.1"
+WEBP_ENCODER_VERSION = "1.5.0"
 
 
 class ArtError(RuntimeError):
@@ -139,6 +143,13 @@ def image_info(data: bytes, label: str) -> dict[str, Any]:
             }
     except Exception as error:
         raise ArtError(f"Unable to decode {label}: {error}") from error
+
+
+def require_webp_decoder() -> None:
+    if not features.check("webp"):
+        raise ArtError("Pillow WebP decoder is unavailable")
+    if not features.version("webp"):
+        raise ArtError("Pillow WebP decoder version is unavailable")
 
 
 def encode_webp(data: bytes, label: str, expected: dict[str, Any]) -> tuple[bytes, dict[str, Any]]:
@@ -364,17 +375,14 @@ def validate_artifacts() -> dict[str, Any]:
     for key, value in expected_encoding.items():
         if encoding.get(key) != value:
             raise ArtError(f"Unexpected creature-art encoding setting: {key}")
-    libraries = encoding.get("libraries", {})
-    if libraries.get("pillow") != Image.__version__:
-        raise ArtError(
-            f"Pillow version differs: manifest {libraries.get('pillow')}, "
-            f"environment {Image.__version__}"
-        )
-    if libraries.get("webp") != features.version("webp"):
-        raise ArtError(
-            f"WebP library version differs: manifest {libraries.get('webp')}, "
-            f"environment {features.version('webp')}"
-        )
+    libraries = encoding.get("libraries")
+    if not isinstance(libraries, dict) or set(libraries) != {"pillow", "webp"}:
+        raise ArtError("Creature-art encoder provenance is invalid")
+    if libraries["pillow"] != PILLOW_ENCODER_VERSION:
+        raise ArtError("Pillow encoder version is not pinned")
+    if libraries["webp"] != WEBP_ENCODER_VERSION:
+        raise ArtError("WebP encoder version is not pinned")
+    require_webp_decoder()
 
     portraits = manifest.get("portraits")
     assets = manifest.get("assets")

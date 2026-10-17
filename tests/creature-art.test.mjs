@@ -129,6 +129,89 @@ test("Pillow decodes every derivative and preserves native dimensions and alpha"
   assert.match(stdout, /192 portrait mappings -> 192 unique WebP assets/);
 });
 
+test("Pillow decoder version may differ from immutable encoder provenance", async () => {
+  const python = process.env.PYTHON ?? "python3";
+  const verifier = `
+import importlib.util
+import json
+import sys
+import tempfile
+from pathlib import Path
+
+script = Path(sys.argv[1])
+sys.dont_write_bytecode = True
+spec = importlib.util.spec_from_file_location("build_creature_art", script)
+module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(module)
+
+manifest = json.loads(module.MANIFEST_PATH.read_text(encoding="utf-8"))
+assert manifest["encoding"]["libraries"] == {
+    "pillow": "12.1.1",
+    "webp": "1.5.0",
+}
+
+module.Image.__version__ = "99.0.0"
+real_check = module.features.check
+real_version = module.features.version
+module.features.check = lambda feature: (
+    True if feature == "webp" else real_check(feature)
+)
+module.features.version = lambda feature: (
+    "1.6.0" if feature == "webp" else real_version(feature)
+)
+
+report = module.validate_artifacts()
+assert report["mappings"] == 192
+assert report["assets"] == 192
+assert module.features.version("webp") == "1.6.0"
+
+
+def assert_rejected(libraries, expected_error):
+    drifted = json.loads(module.MANIFEST_PATH.read_text(encoding="utf-8"))
+    drifted["encoding"]["libraries"] = libraries
+    drifted_path = Path(directory) / "manifest.json"
+    drifted_path.write_bytes(module.manifest_bytes(drifted))
+    module.MANIFEST_PATH = drifted_path
+    try:
+        module.validate_artifacts()
+    except module.ArtError as error:
+        assert str(error) == expected_error, error
+    else:
+        raise AssertionError(f"invalid encoder provenance was accepted: {libraries}")
+
+
+with tempfile.TemporaryDirectory() as directory:
+    assert_rejected(
+        {"pillow": "12.1.1", "webp": "1.6.0"},
+        "WebP encoder version is not pinned",
+    )
+    assert_rejected(
+        {"pillow": "99.0.0", "webp": "1.5.0"},
+        "Pillow encoder version is not pinned",
+    )
+    assert_rejected(
+        {"pillow": "12.1.1", "webp": "1.5.0", "extra": "unexpected"},
+        "Creature-art encoder provenance is invalid",
+    )
+    assert_rejected(
+        {"pillow": "12.1.1"},
+        "Creature-art encoder provenance is invalid",
+    )
+
+print("validated with WebP decoder 1.6.0; encoder provenance remains 1.5.0")
+`.trim();
+
+  const { stdout } = await execFileAsync(python, [
+    "-c",
+    verifier,
+    fileURLToPath(new URL("scripts/build-creature-art.py", root)),
+  ]);
+  assert.match(
+    stdout,
+    /WebP decoder 1\.6\.0; encoder provenance remains 1\.5\.0/,
+  );
+});
+
 test("VP8L header metadata and Pillow decoding cover opaque and alpha images", async () => {
   const python = process.env.PYTHON ?? "python3";
   const decoder = `

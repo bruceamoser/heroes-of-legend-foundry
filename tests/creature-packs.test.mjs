@@ -13,7 +13,10 @@ import {
 } from "../scripts/content/creature-packs.mjs";
 import { stableFoundryId } from "../scripts/content/item-packs.mjs";
 import { SYSTEM_ID } from "../src/rules/item-construction.mjs";
-import { creatureReferenceHtml } from "../src/sheets/creature-reference.mjs";
+import {
+  creatureReferenceHtml,
+  creatureModifierLabel,
+} from "../src/sheets/creature-reference.mjs";
 
 const root = new URL("../", import.meta.url);
 const catalogs = await readContentPackCatalogs(root);
@@ -453,4 +456,20 @@ test("changed source-locked creature data fails closed", () => {
     () => buildContentPackArtifacts(reviewed),
     /must remain pending/,
   );
+});
+
+test("creature modifier summaries follow edits instead of stale pinned prose", () => {
+  const dragon = actorByCatalogId.get("creature-red-dragon");
+  const evasion = structuredClone(dragon.system.evasion);
+  assert.equal(evasion.sourceText, "None");
+  evasion.boons = 2;
+  evasion.banes = 1;
+  assert.equal(creatureModifierLabel(evasion), "2 Boons and 1 Bane");
+  assert.equal(evasion.sourceText, "None");
+  const threat = structuredClone(dragon.system.threat);
+  assert.equal(threat.sourceText, "2 Banes");
+  threat.boons = 0;
+  threat.banes = 0;
+  assert.equal(creatureModifierLabel(threat), "None");
+  assert.equal(threat.sourceText, "2 Banes");
 });

@@ -1,3 +1,15 @@
+export function creatureModifierLabel(modifier) {
+  return (
+    [
+      [modifier.boons, "Boon"],
+      [modifier.banes, "Bane"],
+    ]
+      .filter(([value]) => value > 0)
+      .map(([value, label]) => `${value} ${label}${value === 1 ? "" : "s"}`)
+      .join(" and ") || "None"
+  );
+}
+
 const HTML_ESCAPES = Object.freeze({
   "&": "&amp;",
   "<": "&lt;",

@@ -1,6 +1,9 @@
 import { declareNpcMelee } from "../services/npc-attacks.mjs";
 import { CharacterSheet } from "./character.mjs";
-import { creatureReferenceHtml } from "./creature-reference.mjs";
+import {
+  creatureReferenceHtml,
+  creatureModifierLabel,
+} from "./creature-reference.mjs";
 
 function sourceLink(source, commit) {
   const path = source?.path
@@ -10,19 +13,6 @@ function sourceLink(source, commit) {
   return source?.path && commit
     ? `https://github.com/bruceamoser/heroes-of-legend/blob/${commit}/${path}`
     : "";
-}
-
-function modifierLabel(modifier) {
-  if (modifier.sourceText) return modifier.sourceText;
-  return (
-    [
-      [modifier.boons, "Boon"],
-      [modifier.banes, "Bane"],
-    ]
-      .filter(([value]) => value > 0)
-      .map(([value, label]) => `${value} ${label}${value === 1 ? "" : "s"}`)
-      .join(" and ") || "None"
-  );
 }
 
 export class CreatureSheet extends CharacterSheet {
@@ -66,8 +56,8 @@ export class CreatureSheet extends CharacterSheet {
       classification: flags.classification ?? null,
       automation: flags.automation ?? "",
       automationLabel: flags.automationLabel ?? "",
-      evasionLabel: modifierLabel(system.evasion),
-      threatLabel: modifierLabel(system.threat),
+      evasionLabel: creatureModifierLabel(system.evasion),
+      threatLabel: creatureModifierLabel(system.threat),
       alternateSpeeds: system.alternateSpeeds.map(({ mode, value }) => ({
         mode: mode[0].toUpperCase() + mode.slice(1),
         value,

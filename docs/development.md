@@ -86,3 +86,7 @@ Reproduction in the disposable `hol-development` world only, using Node 24:
 4. Restart the isolated server with `--dataPath=/tmp/hol-foundry-test --port=30014 --world=hol-development`, then run `HOL_TEST_URL=http://127.0.0.1:30014 HOL_TEST_ALLOW_WRITES=1 npm run test:pack-runtime`.
 
 The shipped system manifest does not advertise these test packs. All database compilation uses the official CLI; no custom LevelDB writer is introduced.
+
+## Combat/effect timing — issue #9
+
+`HOL_TEST_URL=http://127.0.0.1:30014 HOL_TEST_ALLOW_WRITES=1 npm run test:timing` verifies scoped native V14 expiry and once-only fixture ticks across two GMs, duplicate calls and reload. See [the timing evidence and limitations](research/turn-timing-prototype.md). The prototype is not connected to gameplay hooks.

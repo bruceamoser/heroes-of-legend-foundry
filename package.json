@@ -17,7 +17,8 @@
     "test:authority": "node scripts/check-authority.mjs",
     "probe:claims": "node scripts/probe-document-claims.mjs",
     "stage:pack-probe": "node scripts/stage-pack-probe.mjs",
-    "test:pack-runtime": "node scripts/check-packs.mjs"
+    "test:pack-runtime": "node scripts/check-packs.mjs",
+    "test:timing": "node scripts/check-timing.mjs"
   },
   "devDependencies": {
     "@foundryvtt/foundryvtt-cli": "3.0.5",

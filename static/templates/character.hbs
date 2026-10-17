@@ -3,7 +3,7 @@
   {{#if editable}}{{#unless created}}<button type="button" data-action="createHero">Create or resume character</button>{{/unless}}{{/if}}
   {{#if created}}{{#if editable}}<button type="button" data-action="advanceHero">Develop this character</button>{{/if}}<p class="hol-note">Level {{development.level}} · {{development.dp}} DP · {{development.coins}} coins · Speed {{development.creationSummary.unencumberedSpeed}} before encumbrance · Capacity {{development.creationSummary.capacity}}</p>{{/if}}
   <button type="button" data-action="conditions">Conditions and sources</button>
-  {{#if gm}}<button type="button" data-action="damage">Apply damage</button>{{/if}}
+  {{#if gm}}<button type="button" data-action="damage">Apply damage</button><button type="button" data-action="recovery">Health and recovery</button>{{/if}}
 <button type="button" data-action="equipment">Hands and equipment</button>
   <fieldset {{#unless editable}}disabled{{/unless}}>
     <label>{{localize "HOL.Name"}}<input name="name" type="text" value="{{actor.name}}" required></label>

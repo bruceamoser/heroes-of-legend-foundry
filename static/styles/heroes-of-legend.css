@@ -109,3 +109,6 @@
 .heroes-of-legend.hol-damage thead { background: var(--hol-forest); color: var(--hol-ivory); }
 .heroes-of-legend.hol-damage tbody tr { background: var(--hol-paper); }
 .heroes-of-legend.hol-damage tbody tr:nth-child(even) { background: var(--hol-ivory); }
+
+.heroes-of-legend.hol-recovery .window-title { font-size: 14px; }
+.heroes-of-legend.hol-recovery [hidden] { display: none !important; }

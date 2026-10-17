@@ -125,7 +125,7 @@ try {
   const wizard = player.locator(".hol-advancement");
   const initialStudy = wizard
     .locator("article.hol-choice")
-    .filter({ has: wizard.locator("[data-id=ability-ordinary-recipe-study]") });
+    .filter({ has: player.locator("[data-id=ability-ordinary-recipe-study]") });
   assert(
     await initialStudy
       .getByRole("button", {
@@ -179,7 +179,7 @@ try {
   await player.waitForFunction(() => !advanceWizard.busy);
   const study = wizard
     .locator("article.hol-choice")
-    .filter({ has: wizard.locator("[data-id=ability-ordinary-recipe-study]") });
+    .filter({ has: player.locator("[data-id=ability-ordinary-recipe-study]") });
   const firstRecipe = study.locator(
     '[name="recipe-ability-ordinary-recipe-study-1"]',
   );
@@ -197,20 +197,23 @@ try {
     ordinaryRecipeCount,
   );
   assert.equal(
-    await firstRecipe.locator("option:not([value=''])").first().isDisabled(),
+    await firstRecipe
+      .locator("option:not([value=''])")
+      .first()
+      .evaluate((option) => option.disabled),
     false,
   );
   const knownRecipe = firstRecipe.locator('option[value="recipe-smoke-flask"]'),
     incompatibleRecipe = firstRecipe.locator(
       'option[value="recipe-camp-shelter"]',
     );
-  assert(await knownRecipe.isDisabled());
+  assert(await knownRecipe.evaluate((option) => option.disabled));
   assert.match(await knownRecipe.textContent(), /Already known\./);
   assert.equal(
     await knownRecipe.getAttribute("data-intrinsic-disabled"),
     "true",
   );
-  assert(await incompatibleRecipe.isDisabled());
+  assert(await incompatibleRecipe.evaluate((option) => option.disabled));
   assert.match(
     await incompatibleRecipe.textContent(),
     /Incompatible with your crafting abilities\./,
@@ -222,7 +225,7 @@ try {
   assert(
     await firstRecipe
       .locator('option[value="recipe-fletched-ammunition"]')
-      .isDisabled(),
+      .evaluate((option) => option.disabled),
   );
   assert.equal(
     await firstRecipe
@@ -236,7 +239,7 @@ try {
   assert(secondDefault);
   assert.notEqual(firstDefault, secondDefault);
   await firstRecipe.selectOption("recipe-travel-food");
-  assert(await knownRecipe.isDisabled());
+  assert(await knownRecipe.evaluate((option) => option.disabled));
   assert.equal(
     await knownRecipe.getAttribute("data-intrinsic-disabled"),
     "true",
@@ -244,7 +247,7 @@ try {
   assert(
     await secondRecipe
       .locator('option[value="recipe-travel-food"]')
-      .isDisabled(),
+      .evaluate((option) => option.disabled),
   );
   await firstRecipe.selectOption("recipe-bound-torches");
   await secondRecipe.selectOption("recipe-fletched-ammunition");

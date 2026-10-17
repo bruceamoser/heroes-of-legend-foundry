@@ -455,7 +455,7 @@ single-recipe grants and all other purchases, acquisition receipts and crafting
 context are preserved without retroactive additions. Relevant direct Node tests
 cover the two-recipe boundary, distinct/compatible/known checks, repeat pairs,
 2 DP per purchase, legacy rejection, visible blocked options and downstream
-crafting-grant context. The 23 non-package direct test files pass on the
-available Node 22.22.1 host. The project-required Node 24 package check and the
-updated native creation, creation-commit and advancement fixtures remain unrun
-here; they are required at the primary validation gate.
+crafting-grant context. Node 24 `npm run check` passes all 143 tests. The updated native creation,
+creation-commit and advancement fixtures pass on isolated Foundry 14.369,
+including persisted recipe pairs and visible blocked options. Native option
+assertions inspect the DOM disabled property directly.

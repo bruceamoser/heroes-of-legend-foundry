@@ -6,7 +6,11 @@ import {
   convertAction,
   movementRemaining,
 } from "../rules/actions.mjs";
-import { movementProfile } from "../rules/movement-budget.mjs";
+import {
+  movementBreakdown,
+  movementProfile,
+} from "../rules/movement-budget.mjs";
+import { actorWoundContributionPlan } from "./wound-effects.mjs";
 const ID = "heroes-of-legend";
 export function actionConditions(actor) {
   const conditions = conditionActionRestrictions(actorContributions(actor));
@@ -16,8 +20,9 @@ export function actionConditions(actor) {
 export function actorMovement(actor) {
   if (actor.type === "creature")
     return { speed: actor.system.speed, source: "printed-creature-speed" };
-  const speedBase = actor.getFlag(ID, "development")?.creationSummary
-    ?.speedBase;
+  const speedBase =
+    actor.getFlag(ID, "development")?.creationSummary?.speedBase;
+  const wounds = actorWoundContributionPlan(actor).movement;
   return movementProfile({
     speedBase,
     agility: actor.system.attributes?.agility?.effective,
@@ -25,6 +30,8 @@ export function actorMovement(actor) {
     items: actor.items
       .filter((i) => i.type === "equipment")
       .map((i) => i.system),
+    woundPenalty: wounds.penalty,
+    woundSources: wounds.sources,
   });
 }
 export function initialBudgets(combat, roster) {
@@ -62,8 +69,14 @@ export function prepareParticipantBudget(combat, state, id, request, user) {
       userId: user.id,
     };
   }
-  if (ruling) speed = ruling.speed;
-  else {
+  if (ruling) {
+    profile = {
+      source: "da-speed-override",
+      speed: ruling.speed,
+      reason: ruling.reason,
+    };
+    speed = ruling.speed;
+  } else {
     profile = actorMovement(actor);
     speed = profile.speed;
   }
@@ -122,10 +135,16 @@ export function convertParticipantBudget(
 }
 export function displayedBudget(combat, id) {
   const budget = combat.getFlag(ID, "encounter")?.budgets?.[id],
-    actor = combat.combatants.get(id)?.actor;
+    actor = combat.combatants.get(id)?.actor,
+    encounter = combat.getFlag(ID, "encounter"),
+    movementProfile = encounter?.movementProfiles?.[id] ?? null;
   if (!budget || !actor) return null;
   return {
     ...budget,
     movementRemaining: movementRemaining(budget, actionConditions(actor)),
+    movementProfile,
+    movementBreakdown: movementProfile
+      ? movementBreakdown(movementProfile)
+      : null,
   };
 }

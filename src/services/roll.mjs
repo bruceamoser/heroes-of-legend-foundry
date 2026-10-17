@@ -68,6 +68,7 @@ export async function evaluatePreparedRoll(
     attributeKey: basis.attributeKey,
     mode: basis.mode,
     perception: structuredClone(draft.perception ?? {}),
+    woundApplicability: structuredClone(draft.woundApplicability ?? {}),
     ...plan,
     retained,
     ...result,

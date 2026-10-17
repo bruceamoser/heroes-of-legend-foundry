@@ -24,6 +24,9 @@ test("all 280 keyed wound records match all sorted outcomes and pinned source", 
       record.source,
       lock.records.find((r) => r.path === "design/rules/wounds.md"),
     );
+  for (const effect of catalog.records.flatMap((record) => record.effects))
+    if (effect.kind === "rollModifier")
+      assert.equal(typeof effect.printedContext, "string");
   const seen = new Set();
   for (let a = 1; a <= 6; a++)
     for (let b = 1; b <= 6; b++)
@@ -105,6 +108,22 @@ test("elemental and immediate effects preserve conditions, duration and DA choic
       requiresSource: true,
     },
   ]);
+  assert.equal(physical.effects[2].printedContext, "physical activities");
+  assert.deepEqual(
+    parseWoundEffects(
+      "1 Bane to persuade when visible scar influences interaction",
+    ),
+    [
+      {
+        kind: "rollModifier",
+        polarity: "bane",
+        amount: 1,
+        context: "persuade",
+        printedContext: "persuade when visible scar influences interaction",
+        requiresContext: true,
+      },
+    ],
+  );
   assert.throws(() => parseWoundEffects("Bleeding 9"), /Unreviewed/);
   assert.throws(() => parseWoundEffects("Gain a free attack"), /Unreviewed/);
 });

@@ -141,6 +141,9 @@
 .heroes-of-legend.hol-roll-dialog .hol-defense-abilities span { font-size:15px; }
 .heroes-of-legend.hol-roll-dialog .hol-defense-abilities .hol-unavailable { background:#e6e2d8; }
 .heroes-of-legend.hol-roll-dialog .hol-defense-abilities .hol-unavailable button { background:#d6d1c5; color:#555044; }
+.heroes-of-legend.hol-roll-dialog .hol-wound-context { border:1px solid var(--hol-gold); background:var(--hol-ivory); margin:8px 0; padding:8px 12px; }
+.heroes-of-legend.hol-roll-dialog .hol-wound-context legend { color:var(--hol-ink); font-family:"HOL Cinzel", Georgia, serif; font-weight:bold; }
+.heroes-of-legend.hol-roll-dialog .hol-wound-context p { margin:0 0 6px; }
 
 .heroes-of-legend.hol-hands .window-title { font-size: 14px; }
 .heroes-of-legend.hol-hands input[type="checkbox"] { width: 20px; height: 20px; padding: 0; }

@@ -50,7 +50,8 @@
     "test:recovery": "node scripts/check-recovery.mjs",
     "test:wounds": "node scripts/check-wounds.mjs",
     "test:survival": "node scripts/check-survival-turns.mjs",
-    "test:condition-turns": "node scripts/check-condition-turns.mjs"
+    "test:condition-turns": "node scripts/check-condition-turns.mjs",
+    "test:wound-context": "node scripts/check-wound-context.mjs"
   },
   "devDependencies": {
     "@foundryvtt/foundryvtt-cli": "3.0.5",

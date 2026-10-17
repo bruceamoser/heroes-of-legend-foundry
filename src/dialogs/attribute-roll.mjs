@@ -5,6 +5,7 @@ import {
   requestDefenseAbility,
   reviewedDefenseAbilityOptions,
 } from "../services/abilities.mjs";
+const ID = "heroes-of-legend";
 export class SharedRollDialog extends foundry.applications.api.HandlebarsApplicationMixin(
   foundry.applications.api.ApplicationV2,
 ) {
@@ -29,11 +30,19 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       boonsLabel: "Situational Boons",
       banesLabel: "Situational Banes",
       perception: {},
+      woundApplicability: {},
       additionalAttempt: false,
       attemptReason: "",
     };
     this.notice = "";
     this.activating = false;
+    this.woundHookHandlers = [
+      "createActiveEffect",
+      "updateActiveEffect",
+      "deleteActiveEffect",
+    ].map((event) => [event, (effect) => this.woundEffectChanged(effect)]);
+    for (const [event, handler] of this.woundHookHandlers)
+      Hooks.on(event, handler);
   }
   static DEFAULT_OPTIONS = {
     classes: ["heroes-of-legend", "hol-roll-dialog"],
@@ -53,13 +62,23 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
     },
   };
   async _prepareContext() {
-    this.basis = rollBasis(
+    const basis = rollBasis(
       this.actor,
       this.attributeKey,
       this.mode,
       this.attackMessageId,
       this.defenderTokenUuid,
     );
+    if (
+      this.basis &&
+      JSON.stringify(this.basis.woundModifiers) !==
+        JSON.stringify(basis.woundModifiers)
+    ) {
+      this.notice =
+        "Active wound modifiers changed. Review the current injury sources and choose applicability again.";
+      this.draft.woundApplicability = {};
+    }
+    this.basis = basis;
     const fears = [
       ...new Set(
         this.basis.contributions
@@ -113,7 +132,30 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
         yes: this.draft.perception[source] === "yes",
         no: this.draft.perception[source] === "no",
       })),
+      wounds: this.basis.woundModifiers.map((modifier, index) => ({
+        ...modifier,
+        index,
+        applies: this.draft.woundApplicability[modifier.effectId] === "applies",
+        doesNotApply:
+          this.draft.woundApplicability[modifier.effectId] ===
+          "does-not-apply",
+      })),
     };
+  }
+  woundEffectChanged(effect) {
+    if (
+      !this.rendered ||
+      effect?.parent?.uuid !== this.actor.uuid ||
+      effect.getFlag?.(ID, "woundModifier") === undefined
+    )
+      return;
+    void this.render();
+  }
+  async _onClose(options) {
+    for (const [event, handler] of this.woundHookHandlers)
+      Hooks.off(event, handler);
+    this.woundHookHandlers = [];
+    return super._onClose(options);
   }
   readDraft() {
     const value = (name) =>
@@ -129,6 +171,12 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       attemptReason: value("attemptReason") ?? "",
       perception: Object.fromEntries(
         this.fears.map((source, index) => [source, value(`fear-${index}`)]),
+      ),
+      woundApplicability: Object.fromEntries(
+        this.basis.woundModifiers.map((modifier, index) => [
+          modifier.effectId,
+          value(`wound-${index}`),
+        ]),
       ),
     };
   }

@@ -1,8 +1,10 @@
 import { ATTRIBUTES } from "../rules/character.mjs";
 import { conditionRollSources } from "../rules/conditions.mjs";
 import { sourceRollPlan } from "../rules/roll-sources.mjs";
+import { selectedWoundRollSources } from "../rules/wound-contributions.mjs";
 import { actorContributions } from "./conditions.mjs";
 import { defenseBenefits } from "./benefits.mjs";
+import { actorWoundContributionPlan } from "./wound-effects.mjs";
 const ID = "heroes-of-legend";
 export function incomingAttackContext(attackMessageId) {
   const message = game.messages.get(attackMessageId),
@@ -94,6 +96,8 @@ export function rollBasis(
   const contributions = actorContributions(actor).sort((a, b) =>
     a.id.localeCompare(b.id),
   );
+  const woundModifiers =
+    mode === "death" ? [] : actorWoundContributionPlan(actor).rollModifiers;
   if (
     actor.system.health?.value === 0 &&
     !contributions.some((c) => c.key === "unconscious")
@@ -131,6 +135,7 @@ export function rollBasis(
     mode,
     attribute: actor.system.attributes[attributeKey].effective,
     contributions,
+    woundModifiers,
     benefits:
       mode === "defense"
         ? defenseBenefits(actor, { blockable: incoming?.blockable === true })
@@ -153,6 +158,10 @@ export function prepareRoll(basis, draft = {}) {
       mode: basis.mode,
       perceivedSources: fears.filter((source) => perception[source] === "yes"),
     }),
+    ...selectedWoundRollSources(
+      basis.mode === "death" ? [] : (basis.woundModifiers ?? []),
+      draft.woundApplicability ?? {},
+    ),
     ...basis.benefits,
   ];
   if (basis.incoming)

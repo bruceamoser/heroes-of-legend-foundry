@@ -601,3 +601,18 @@ The runtime tests verify removed-choice capture, stale displayed settings,
 spoken/signed grants, non-GM denial and preservation of completed characters.
 The settings editor and language choices were visually inspected at 1500×1000;
 form labels remain readable and the HOL colors and fixed footer are preserved.
+
+### Lasting wound contributions (#107)
+
+Active wound effects now supply distinct injury-labelled roll sources and lasting
+Speed reductions. Physical, mental and social roll modifiers require an explicit
+applicability choice; the selected attribute never decides it automatically.
+Death rolls exclude these action/social modifiers. Disabling or deleting an
+effect invalidates the open wound choices, and submission revalidates the complete
+roll basis. Movement separates inventory encumbrance from lasting wound reductions,
+floors Speed at zero and preserves explicit DA overrides. Existing applied wounds
+remain readable through their stored injury record and effect provenance.
+
+The guarded `test:wound-context` fixture exercises the native controls, changed
+effects, movement budgets and tracker breakdown; primary runtime results follow.
+This does not implement wound treatment or immediate displacement.

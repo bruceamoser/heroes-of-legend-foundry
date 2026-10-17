@@ -167,6 +167,7 @@
           "polarity": "boon",
           "amount": 1,
           "context": "intimidate",
+          "printedContext": "intimidate",
           "requiresContext": true
         },
         {
@@ -174,6 +175,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "persuade",
+          "printedContext": "persuade when visible scar influences interaction",
           "requiresContext": true
         }
       ],
@@ -266,6 +268,7 @@
           "polarity": "boon",
           "amount": 1,
           "context": "intimidate",
+          "printedContext": "intimidate",
           "requiresContext": true
         },
         {
@@ -273,6 +276,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "persuade",
+          "printedContext": "persuade when visible scar influences interaction",
           "requiresContext": true
         }
       ],
@@ -370,6 +374,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -419,6 +424,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -487,6 +493,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -509,6 +516,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -537,6 +545,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -689,6 +698,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -717,6 +727,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -751,6 +762,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -854,6 +866,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -882,6 +895,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -977,6 +991,7 @@
           "polarity": "bane",
           "amount": 2,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -999,6 +1014,7 @@
           "polarity": "bane",
           "amount": 2,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -1085,6 +1101,7 @@
           "polarity": "bane",
           "amount": 2,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -1119,6 +1136,7 @@
           "polarity": "bane",
           "amount": 2,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -1151,6 +1169,7 @@
           "polarity": "bane",
           "amount": 2,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -1376,6 +1395,7 @@
           "polarity": "boon",
           "amount": 1,
           "context": "intimidate",
+          "printedContext": "intimidate",
           "requiresContext": true
         },
         {
@@ -1383,6 +1403,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "persuade",
+          "printedContext": "persuade when scar influences interaction",
           "requiresContext": true
         }
       ],
@@ -1475,6 +1496,7 @@
           "polarity": "boon",
           "amount": 1,
           "context": "intimidate",
+          "printedContext": "intimidate",
           "requiresContext": true
         },
         {
@@ -1482,6 +1504,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "persuade",
+          "printedContext": "persuade when scar influences interaction",
           "requiresContext": true
         }
       ],
@@ -1579,6 +1602,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -1628,6 +1652,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -1696,6 +1721,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -1718,6 +1744,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -1740,6 +1767,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -1892,6 +1920,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -1920,6 +1949,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -1954,6 +1984,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -2032,6 +2063,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -2058,6 +2090,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -2086,6 +2119,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -2181,6 +2215,7 @@
           "polarity": "bane",
           "amount": 2,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -2203,6 +2238,7 @@
           "polarity": "bane",
           "amount": 2,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -2283,6 +2319,7 @@
           "polarity": "bane",
           "amount": 2,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -2317,6 +2354,7 @@
           "polarity": "bane",
           "amount": 2,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -2573,6 +2611,7 @@
           "polarity": "boon",
           "amount": 1,
           "context": "intimidate",
+          "printedContext": "intimidate",
           "requiresContext": true
         },
         {
@@ -2580,6 +2619,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "persuade",
+          "printedContext": "persuade when it influences interaction",
           "requiresContext": true
         }
       ],
@@ -2679,6 +2719,7 @@
           "polarity": "boon",
           "amount": 1,
           "context": "intimidate",
+          "printedContext": "intimidate",
           "requiresContext": true
         },
         {
@@ -2686,6 +2727,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "persuade",
+          "printedContext": "persuade when it influences interaction",
           "requiresContext": true
         }
       ],
@@ -2919,6 +2961,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "mental",
+          "printedContext": "mental activities",
           "requiresContext": true
         }
       ],
@@ -3227,6 +3270,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "mental",
+          "printedContext": "mental activities",
           "requiresContext": true
         }
       ],
@@ -3371,6 +3415,7 @@
           "polarity": "bane",
           "amount": 2,
           "context": "mental",
+          "printedContext": "mental activities",
           "requiresContext": true
         }
       ],
@@ -3749,6 +3794,7 @@
           "polarity": "boon",
           "amount": 1,
           "context": "intimidate",
+          "printedContext": "intimidate",
           "requiresContext": true
         },
         {
@@ -3756,6 +3802,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "persuade",
+          "printedContext": "persuade when scar influences interaction",
           "requiresContext": true
         }
       ],
@@ -3848,6 +3895,7 @@
           "polarity": "boon",
           "amount": 1,
           "context": "intimidate",
+          "printedContext": "intimidate",
           "requiresContext": true
         },
         {
@@ -3855,6 +3903,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "persuade",
+          "printedContext": "persuade when it influences interaction",
           "requiresContext": true
         }
       ],
@@ -3952,6 +4001,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -4001,6 +4051,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -4069,6 +4120,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -4091,6 +4143,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -4262,6 +4315,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -4323,6 +4377,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -4395,6 +4450,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -4421,6 +4477,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -4537,6 +4594,7 @@
           "polarity": "bane",
           "amount": 2,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -4659,6 +4717,7 @@
           "polarity": "bane",
           "amount": 2,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -4911,6 +4970,7 @@
           "polarity": "boon",
           "amount": 1,
           "context": "intimidate",
+          "printedContext": "intimidate",
           "requiresContext": true
         },
         {
@@ -4918,6 +4978,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "persuade",
+          "printedContext": "persuade when it influences interaction",
           "requiresContext": true
         }
       ],
@@ -5010,6 +5071,7 @@
           "polarity": "boon",
           "amount": 1,
           "context": "intimidate",
+          "printedContext": "intimidate",
           "requiresContext": true
         },
         {
@@ -5017,6 +5079,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "persuade",
+          "printedContext": "persuade when it influences interaction",
           "requiresContext": true
         }
       ],
@@ -5114,6 +5177,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -5136,6 +5200,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -5158,6 +5223,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -5226,6 +5292,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -5248,6 +5315,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -5415,6 +5483,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -5437,6 +5506,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -5471,6 +5541,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -5543,6 +5614,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -5569,6 +5641,7 @@
           "polarity": "bane",
           "amount": 1,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -5673,6 +5746,7 @@
           "polarity": "bane",
           "amount": 2,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -5695,6 +5769,7 @@
           "polarity": "bane",
           "amount": 2,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],
@@ -5790,6 +5865,7 @@
           "polarity": "bane",
           "amount": 2,
           "context": "physical",
+          "printedContext": "physical activities",
           "requiresContext": true
         }
       ],

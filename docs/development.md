@@ -485,3 +485,69 @@ six-character document commitment remain separate runtime work.
 
 After integration with the two-recipe fix, all six reference characters and the
 source-lock provenance test pass. Node 24 `npm run check` passes all 150 tests.
+
+### Native supply checks after use (#95)
+
+An owned equipment Item's sheet now exposes **Check supply after use**. The
+control opens a native V2 panel showing the Actor, Item, quantity, current
+inventory die and the required completed-use reason. The sheet distinguishes
+gear that never had supply from depleted supplies by using the stable catalog
+die, falling back to a prior check target for content without catalog metadata.
+A zero die has no Check control and native request validation rejects an
+unsupported or out supply before reservation or dice. The panel captures the
+displayed basis so changing the Item while it is open requires a fresh review.
+Wiring the reviewed potion adapter to this control remains follow-up work.
+
+The request is a native ChatMessage authored by the actual requester and
+whispered only to GMs, that requester and relevant Actor owners. Its basis
+snapshots the Actor inventory and equipment revisions plus the checked Item's
+identity, die, quantity and source provenance. Authorization uses the native
+message author's OWNER permission or GM status; no author ID is trusted from a
+payload.
+
+The selected-GM queue reserves `flags.heroes-of-legend.pendingInventory` before
+rolling one native `1dX`. The snapshot retains the original request,
+author/signature, target Item and a `reserved` or `result` phase. A known result,
+including serialized native dice and retained face, is persisted before one
+Actor update changes only that Item's inventory die and writes the result,
+receipt and pending clear together. A saved roll must be an evaluated single
+die with the expected `1dX` formula, retained face and total. A reasoned DA
+recovery may instead store the explicit face with `nativeRoll: null`. Every
+embedded Item and the parent are strictly prevalidated; all Item IDs and
+quantities are verified afterward. `inventoryRevision` increments on every
+settlement, including faces that do not step the die down, so same-basis racing
+requests cannot both consume.
+
+At most one inventory check may be pending for an Actor. Settlement rejects a
+pending turn or death roll and any changed equipment/Item basis. Unapplied
+equipment ChatMessages are history rather than durable reservations. A saved
+result resumes or is recovered through a new coordinator request, so any GM can
+use the panel while only the selected coordinator writes. An unresolved
+`reserved` phase never rerolls automatically. If an Item changes after a result
+was saved, the DA can explicitly close the check without changing supply, with
+a required reason; this stores the original snapshot and result, writes an
+abandoned receipt, clears pending and advances the inventory revision. Replay
+does not consume or roll again, and the basis is never replaced automatically.
+
+Coordinator checkpoint work now records the resolved target document UUID, and
+inventory operations supply the exact Actor UUID. Deleted-chat lookup enumerates
+world Actors and scene-token Actors by UUID, so unlinked synthetic token Actors
+are recovered without changing their base Actor. Existing unknown-write
+acknowledgment suspension and relaunch recovery remain unchanged.
+
+`npm run test:inventory` is the serial native fixture. It covers owner UI,
+no-supply gear, observer denial, unapplied equipment history, same-basis racing
+and replay, forged unsupported dice, stale-open-panel basis, saved-roll mismatch,
+second-GM resume/recovery, explicit stale-result closure, unlinked-token
+recovery, quantity preservation and reload. Direct Node validation of the
+focused inventory and potion suites passed in this implementation environment.
+The native fixture passes on isolated Foundry 14.369. Saved-roll validation
+uses the public serialized `evaluated` field; Roll instances do not expose that
+property. The fixture distinguishes pre-write failure from uncertain native
+updates, waits for chat animation before deletion, and uses a second assistant
+GM so the main Gamemaster remains the designated coordinator. The supply dialog
+was visually inspected in the HOL theme.
+
+After integration, Node 24 `npm run check` passes all 151 tests. Serial native
+inventory, equipment, authority and coordinator checks pass on Foundry 14.369,
+including two-GM handoff, unknown-acknowledgment suspension and replay recovery.

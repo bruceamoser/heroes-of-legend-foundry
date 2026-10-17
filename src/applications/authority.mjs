@@ -5,6 +5,12 @@ import { resolveRecoveryRequest } from "../services/recovery.mjs";
 import { resolveDamageRequest } from "../services/damage.mjs";
 import { resolveEquipmentRequest } from "../services/equipment.mjs";
 import {
+  findInventoryActor,
+  inventoryActorTargets,
+  resolveInventoryRequest,
+} from "../services/inventory.mjs";
+import { InventoryPanel } from "./inventory.mjs";
+import {
   resolveDefenseRequest,
   abandonDefense,
   defenseResponses,
@@ -23,6 +29,22 @@ import { resolveDevelopmentRequest } from "../services/advancement.mjs";
 const ID = "heroes-of-legend";
 export async function retryCharacterRequest(id) {
   const message = game.messages.get(id);
+  if (!message) {
+    const work = game.settings.get(ID, "authorityWork"),
+      candidate =
+        work.requestId === id && typeof work.targetUuid === "string"
+          ? await fromUuid(work.targetUuid)
+          : null,
+      actor =
+        (candidate?.documentName === "Actor" &&
+        (candidate.getFlag(ID, "pendingInventory")?.requestId === id ||
+          candidate.getFlag(ID, "inventoryResults")?.[id] ||
+          candidate.getFlag(ID, "operationReceipts")?.[id]?.kind ===
+            "inventory")
+          ? candidate
+          : null) ?? findInventoryActor(id);
+    if (actor) return resolveInventoryRequest(id, actor.uuid);
+  }
   if (message?.getFlag(ID, "survivalRequest"))
     return resolveSurvivalRequest(id);
   if (message?.getFlag(ID, "woundRequest")) return resolveWoundRequest(id);
@@ -31,6 +53,8 @@ export async function retryCharacterRequest(id) {
   if (message?.getFlag(ID, "damageRequest")) return resolveDamageRequest(id);
   if (message?.getFlag(ID, "equipmentRequest"))
     return resolveEquipmentRequest(id);
+  if (message?.getFlag(ID, "inventoryRequest"))
+    return resolveInventoryRequest(id);
   if (message?.getFlag(ID, "creationRequest"))
     return resolveCreationRequest(id);
   if (message?.getFlag(ID, "developmentRequest"))
@@ -58,6 +82,7 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
       retry: AuthorityPanel.retry,
       resumeAbility: AuthorityPanel.resumeAbility,
       abandonDefense: AuthorityPanel.abandonDefense,
+      openInventory: AuthorityPanel.openInventory,
     },
   };
   static PARTS = {
@@ -100,6 +125,22 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
           id: c.getFlag(ID, "pendingTurnPhase").requestId,
           name: c.name ?? c.id,
         })),
+      pendingInventories: inventoryActorTargets()
+        .filter((actor) => actor.getFlag(ID, "pendingInventory"))
+        .map((actor) => {
+          const pending = actor.getFlag(ID, "pendingInventory");
+          return {
+            actorUuid: actor.uuid,
+            actorName: actor.name,
+            requestId: pending.requestId,
+            itemId: pending.target.itemId,
+            itemName: pending.target.name,
+            phase:
+              pending.phase === "result"
+                ? "saved result"
+                : "waiting for the DA",
+          };
+        }),
       requests: game.messages
         .filter(
           (m) =>
@@ -108,6 +149,7 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
             m.getFlag(ID, "combatRequest") ||
             m.getFlag(ID, "conditionRequest") ||
             m.getFlag(ID, "equipmentRequest") ||
+            m.getFlag(ID, "inventoryRequest") ||
             m.getFlag(ID, "damageRequest") ||
             m.getFlag(ID, "recoveryRequest") ||
             m.getFlag(ID, "woundRequest") ||
@@ -137,11 +179,13 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
                       ? "Damage"
                       : m.getFlag(ID, "equipmentRequest")
                         ? "Equipment"
-                        : m.getFlag(ID, "npcAttackRequest")
-                          ? "NPC attack"
-                          : m.getFlag(ID, "defenseRequest")
-                            ? "Defense"
-                            : "Ability")),
+                        : m.getFlag(ID, "inventoryRequest")
+                          ? "Inventory"
+                          : m.getFlag(ID, "npcAttackRequest")
+                            ? "NPC attack"
+                            : m.getFlag(ID, "defenseRequest")
+                              ? "Defense"
+                              : "Ability")),
         })),
     };
   }
@@ -201,6 +245,18 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
         choice.reason,
       );
       await this.render();
+    } catch (e) {
+      ui.notifications.error(e.message);
+    }
+  }
+  static async openInventory(event, target) {
+    try {
+      const actor = await fromUuid(target.dataset.actor);
+      if (!actor)
+        throw new Error("The character for this supply check is unavailable.");
+      await new InventoryPanel(actor, target.dataset.item).render({
+        force: true,
+      });
     } catch (e) {
       ui.notifications.error(e.message);
     }

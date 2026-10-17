@@ -109,6 +109,8 @@
 
 .heroes-of-legend.hol-hands .window-title { font-size: 14px; }
 .heroes-of-legend.hol-hands input[type="checkbox"] { width: 20px; height: 20px; padding: 0; }
+.heroes-of-legend.hol-inventory .window-title { font-size: 14px; }
+.heroes-of-legend.hol-inventory button { background: var(--hol-forest); color: var(--hol-ivory); border: 1px solid var(--hol-gold); }
 
 .heroes-of-legend.hol-damage .window-title { font-size: 14px; }
 .heroes-of-legend.hol-damage table { background: var(--hol-paper); border-color: var(--hol-gold); }

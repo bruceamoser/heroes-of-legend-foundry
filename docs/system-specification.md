@@ -212,3 +212,7 @@ Use [acceptance scenarios](acceptance-scenarios.md), a pure-rules suite, schema/
 Measure representative large sheets and full-compendium searches on a recorded reference environment; proposed targets are under 500 ms for warm local sheet render and under 300 ms for indexed local search, excluding network latency. These are engineering targets to calibrate, not measured results. Avoid eager loading every full document on each keystroke.
 
 Release requires final source intake, content automation coverage, stable IDs, migrations from earlier HOL test releases, cross-platform build, reproducible package contents, version assertions and installation from the actual release manifest. Do not ship a source ZIP as the installable artifact. Select code/content licenses and asset notices before distributing packs. Keep system version, schema revision and content revision distinct.
+
+## Completed-book language integration
+
+Creation includes Common and one named ordinary home language, then explicit additional grants. Store language identity, spoken/signed form and understanding/speaking/reading/writing permissions separately. Spoken-only grants do not grant literacy or signed languages. Ordinary availability and the Common label follow DA campaign configuration; ancestry never forces a language. Named regional/ancient choices require a real campaign name. Translation grants task progress, never permanent language knowledge. Language barriers are contextual requirements, not automatic Banes.

@@ -152,3 +152,7 @@ These are requirements for future tests and manual Foundry checks. **They have n
 Pure-rule tests cover T01–T05, damage aggregation, ledger math, state transitions, wound selection and grid calculations. Model tests verify invalid input, derived data and serialization. Content tests verify source coverage and complete outcomes. Runtime tests cover authoritative mutation, documents, effects, combat events, scene geometry and UI. Each content handler contributes additional fixtures beyond this seed matrix.
 
 For each runtime run record commit, package/schema/content versions, Foundry build, browser, OS, modules, client roles, fixture world, expected/actual outcome and console output. A mock pass is not a Foundry pass. Final release requires all applicable scenarios and full content coverage, with any intentional exceptions explicitly approved and named in release notes.
+
+### T106 — completed-book languages
+
+Creation grants Common plus a named ordinary language without DP cost. A Foot in Two Worlds adds two distinct additional ordinary spoken languages, preserving spoken-only permissions and excluding signed/uncommon choices unless the campaign explicitly changes eligibility. All six updated reference characters preserve their recorded languages. Translate the Fragment completion does not add a language.

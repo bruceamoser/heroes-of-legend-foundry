@@ -137,3 +137,7 @@ Proposed packs: character choices; universal/shared/signature abilities; equipme
 Ship editable JSON intermediate sources and a stable ID map; generated LevelDB packs belong in release artifacts. Validate asset fields and rich HTML paths in `documentTypes`. Exclude unrevealed DA information from player-owned items; UI hiding does not make data secret.
 
 Three separate versions: package SemVer, integer data schema, pinned content revision. Migrate schema sequentially, once per active authority, with dry-run summary, backup instructions, per-step checkpoints and idempotency. Cover world Actors/Items, embedded content, unlinked Token deltas and user-owned packs where supported. Never rewrite installed system packs in place or replace user edits without a diff. No prior-version migrations are needed for a brand-new world; add migrations only when a shipped HOL schema changes.
+
+## Languages — completed-book intake
+
+Persist known languages as stable campaign language IDs with a display name, form (`spoken`/`signed`/explicit campaign form), permissions (`understand`, `speak`, `read`, `write`) and grant source ID. Store the actual named regional language; a category placeholder is not a completed choice. Campaign definitions determine ordinary availability and Common's name. A spoken-only grant explicitly leaves read/write false. Creation and advancement use the same eligibility browser and preserve prior language grants on resume/rebuild. No attribute-derived free languages or implicit DP costs.

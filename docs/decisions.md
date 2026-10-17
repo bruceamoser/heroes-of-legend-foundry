@@ -31,7 +31,7 @@ This register separates confirmed direction from proposed engineering choices. I
 
 | ID | Question / constraint | Recommended treatment | Blocks |
 |---|---|---|---|
-| D10 | Final DA/bestiary commit and approved asset manifest are pending from the other chat. | Reconcile completed sources in the intake issue. No live polling or cross-chat messaging has been scheduled. | Production creature/DA content freeze. |
+| D10 | Both completed books confirmed October 17; pinned at 9f1663f in content/source-lock.json. | Use the pinned records and 192-entry artwork manifest; review subsequent source changes explicitly. | Production creature/DA content freeze. |
 | D11 | Code license and separate rules/art distribution terms. | Bruce explicitly deferred license selection on October 17; document explicit content/asset notices before release. No assumption that Neon Relic's MIT metadata licenses HOL content. | First distributable release with content. |
 | D12 | Which licensed Foundry installation/test world will host runtime validation? | Isolated development world on 14.369 and Node 24; never modify a live campaign for testing. | Runtime certification, not pure-rules implementation. |
 | D13 | Cross-level distance, vertical tether measurement, airborne incapacitation and non-square grids are not fully specified by HOL sources. | Implement native levels/visibility; collect an explicit DA ruling for ambiguous geometry. Ask Bruce for universal rules before claiming full cross-level automation. | Those geometry branches only. |

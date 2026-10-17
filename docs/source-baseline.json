@@ -1,6 +1,6 @@
 {
   "researchDate": "2026-10-17",
-  "status": "planning-baseline-not-production-content-lock",
+  "status": "historical-planning-baseline-superseded-by-content-source-lock",
   "rulesRepository": "https://github.com/bruceamoser/heroes-of-legend",
   "rulesCommit": "3a08c5b1aa68be45885e488479e4984d169cd115",
   "authority": "Current approved design/player-book and design/rules, with dated decisions superseding older prose. Confirmed by Bruce on 2026-10-17.",
@@ -185,8 +185,9 @@
     }
   ],
   "daBestiary": {
-    "status": "awaiting-completed-approved-revision",
-    "commit": null,
+    "status": "completed-books-pinned",
+    "commit": "9f1663f774164a014edcb879c50fcf02989d791b",
+    "sourceLock": "../content/source-lock.json",
     "trackingIssue": "https://github.com/bruceamoser/heroes-of-legend-foundry/issues/3"
   },
   "referenceSystem": {

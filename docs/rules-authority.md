@@ -48,3 +48,15 @@ The importer reads authored Markdown and source metadata, not extracted PDF layo
 ## DA/bestiary completion gate
 
 The repository has a dedicated follow-up issue for final intake. Completion requires the final source commit, confirmation of which artifacts are approved, inventory reconciliation, player/DA attack-table orientation checks, summon eligibility and exclusions, asset-path checks and a playable encounter fixture. Existing 192/73 counts must be rechecked. No need to delay the core rules engine while this gate is pending.
+
+## Completed-book intake — October 17, 2026
+
+Bruce confirmed both books complete and authorized continued implementation. The new immutable baseline is **9f1663f774164a014edcb879c50fcf02989d791b**. [`content/source-lock.json`](../content/source-lock.json) supersedes the historical research hashes for content work. It records source hashes, authored IDs, 192 portrait hashes/provenance entries, and the 73 explicit summon-to-creature links. The author's working checkout contains unrelated changes; intake reads Git objects at the pinned commit without modifying that checkout.
+
+Compared with 3a08c5b, all 192 creature records, 93 monster ability records and 73 summon profiles are unchanged. Creature tables retain player-defense orientation; summon profiles retain attacker orientation, explicit eligibility, no healing and no independent Reactions. October 16 corrections remain in force. DA presentation now explains the universal Basic Melee, Defend and Opportunity Attack choices; do not lose those actions when importing compact PDF layouts. Import authored Markdown, not the PDF's presentation omissions.
+
+The material rules addition is the shared language reference: Common plus one named ordinary home language, explicit extra grants, spoken-only restrictions and campaign-adjustable availability. Six reference characters now include languages. Translate the Fragment clarifies that translation does not teach a language. The new text retains an upstream review-status banner; Bruce's later completed-book direction is the intake authority, while the DA can configure campaign alternatives as the text permits. No invented DP price or automatic attribute-based language grants.
+
+The new art catalog maps each portrait by authored creature ID. Hashes are verified directly against Git blobs; image dimensions/transparency are recorded from the upstream manifest, not independently re-certified by this intake. No portrait binaries or book prose are distributed in the system yet. Licensing remains undecided.
+
+Reproduce the immutable audit with `HOL_BOOK_REPOSITORY=/path/to/heroes-of-legend node scripts/lock-book-sources.mjs --check` under Node 24. It fails on changed hashes, duplicate IDs, missing art, missing summon links, unknown perspective or missing summon restrictions. This is source intake, not completed automation coverage or encounter playtesting.

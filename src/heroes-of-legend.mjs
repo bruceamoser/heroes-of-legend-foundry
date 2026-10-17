@@ -1,3 +1,4 @@
+import { registerTimingPrototype } from "./prototypes/timing.mjs";
 import { registerAuthorityPrototype } from "./prototypes/authority.mjs";
 import { renderRollSummary } from "./services/roll.mjs";
 import { CharacterData } from "./models/character.mjs";
@@ -9,6 +10,7 @@ export const SYSTEM_ID = "heroes-of-legend";
 
 Hooks.once("init", () => {
   registerAuthorityPrototype();
+  registerTimingPrototype();
   CONFIG.Actor.dataModels.character = CharacterData;
   CONFIG.Item.dataModels.ability = AbilityData;
   const sheets = foundry.applications.apps.DocumentSheetConfig;

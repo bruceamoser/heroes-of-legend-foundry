@@ -1,3 +1,4 @@
+import { registerEquipmentRequests } from "./services/equipment.mjs";
 import { registerDefenseResponses } from "./services/defense-responses.mjs";
 import { registerNpcAttacks } from "./services/npc-attacks.mjs";
 import { renderAttackCard } from "./dialogs/defender-choice.mjs";
@@ -31,6 +32,7 @@ Hooks.once("init", () => {
   CONFIG.Actor.documentClass = HOLActor;
   registerHOLStatuses();
   registerConditionRequests();
+  registerEquipmentRequests();
   registerAbilityRequests();
   registerNpcAttacks();
   registerDefenseResponses();

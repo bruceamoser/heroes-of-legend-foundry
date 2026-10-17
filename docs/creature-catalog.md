@@ -45,8 +45,9 @@ Specialty mechanics are therefore readable even where no native adapter exists.
 
 `summonLinks` is a separate top-level collection. A creature carries only a
 stable summon-link reference, eligibility and source text; it does not absorb or
-reverse the attacker-oriented summon profile. `profileImported: false` marks the
-pending D05 work.
+reverse the attacker-oriented summon profile. `profileImported: true` points to
+the separately generated `static/data/summons.json` reference catalog; the link
+still contains no actions or native summon state.
 
 Portrait records retain the pinned path/hash, dimensions, alpha flag, manifest
 status, prompt ID, generated-source filename where recorded, and the upstream
@@ -63,7 +64,7 @@ columns abort the import. There is no warn-and-skip path.
 - Native creature Actor and compendium construction.
 - Monster ability Item import and typed specialty-action adapters.
 - Native Basic Melee, Defend, Opportunity Attack and maneuver execution.
-- Summon profile import, spawning, command, tether and healing workflows (D05-D07).
+- Native summon spawning, command, tether and healing workflows (D06-D07).
 - Automatic loot, encounter-budget integration, and runtime sheet rendering.
 
 These are reference catalog records, not a claim of completed specialty action

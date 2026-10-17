@@ -40,7 +40,8 @@
       "creatureId": "creature-adder",
       "eligibility": "Animal 1",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/adder.md",
@@ -53,7 +54,8 @@
       "creatureId": "creature-air-elemental",
       "eligibility": "Elemental 3",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/air-elemental.md",
@@ -66,7 +68,8 @@
       "creatureId": "creature-ancestor-guardian",
       "eligibility": "Spirit 3",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/ancestor-guardian.md",
@@ -79,7 +82,8 @@
       "creatureId": "creature-ancient-mammoth",
       "eligibility": "Animal 7",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/ancient-mammoth.md",
@@ -92,7 +96,8 @@
       "creatureId": "creature-animated-armor",
       "eligibility": "Construct 3",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/animated-armor.md",
@@ -105,7 +110,8 @@
       "creatureId": "creature-animated-statue",
       "eligibility": "Construct 3",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/animated-statue.md",
@@ -118,7 +124,8 @@
       "creatureId": "creature-barrow-guard",
       "eligibility": "Undead 3",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/barrow-guard.md",
@@ -131,7 +138,8 @@
       "creatureId": "creature-bone-archer",
       "eligibility": "Undead 1",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/bone-archer.md",
@@ -144,7 +152,8 @@
       "creatureId": "creature-bone-colossus",
       "eligibility": "Undead 7",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/bone-colossus.md",
@@ -157,7 +166,8 @@
       "creatureId": "creature-bone-sentry",
       "eligibility": "Undead 1",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/bone-sentry.md",
@@ -170,7 +180,8 @@
       "creatureId": "creature-briar-knight",
       "eligibility": "Fey 3",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/briar-knight.md",
@@ -183,7 +194,8 @@
       "creatureId": "creature-brown-bear",
       "eligibility": "Animal 3",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/brown-bear.md",
@@ -196,7 +208,8 @@
       "creatureId": "creature-cave-bat",
       "eligibility": "Animal 1",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/cave-bat.md",
@@ -209,7 +222,8 @@
       "creatureId": "creature-cinder-strider",
       "eligibility": "Elemental 3",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/cinder-strider.md",
@@ -222,7 +236,8 @@
       "creatureId": "creature-clay-golem",
       "eligibility": "Construct 7",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/clay-golem.md",
@@ -235,7 +250,8 @@
       "creatureId": "creature-clay-helper",
       "eligibility": "Construct 1",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/clay-helper.md",
@@ -248,7 +264,8 @@
       "creatureId": "creature-clockwork-scout",
       "eligibility": "Construct 1",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/clockwork-scout.md",
@@ -261,7 +278,8 @@
       "creatureId": "creature-crypt-ghoul",
       "eligibility": "Undead 3",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/crypt-ghoul.md",
@@ -274,7 +292,8 @@
       "creatureId": "creature-dire-wolf",
       "eligibility": "Animal 3",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/dire-wolf.md",
@@ -287,7 +306,8 @@
       "creatureId": "creature-dryad",
       "eligibility": "Fey 3",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/dryad.md",
@@ -300,7 +320,8 @@
       "creatureId": "creature-earth-elemental",
       "eligibility": "Elemental 7",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/earth-elemental.md",
@@ -313,7 +334,8 @@
       "creatureId": "creature-emberling",
       "eligibility": "Elemental 1",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/emberling.md",
@@ -326,7 +348,8 @@
       "creatureId": "creature-flesh-golem",
       "eligibility": "Construct 7",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/flesh-golem.md",
@@ -339,7 +362,8 @@
       "creatureId": "creature-ghast",
       "eligibility": "Undead 7",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/ghast.md",
@@ -352,7 +376,8 @@
       "creatureId": "creature-giant-boar",
       "eligibility": "Animal 3",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/giant-boar.md",
@@ -365,7 +390,8 @@
       "creatureId": "creature-giant-constrictor",
       "eligibility": "Animal 3",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/giant-constrictor.md",
@@ -378,7 +404,8 @@
       "creatureId": "creature-giant-eagle",
       "eligibility": "Animal 3",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/giant-eagle.md",
@@ -391,7 +418,8 @@
       "creatureId": "creature-giant-octopus",
       "eligibility": "Animal 3",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/giant-octopus.md",
@@ -404,7 +432,8 @@
       "creatureId": "creature-giant-rat",
       "eligibility": "Animal 1",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/giant-rat.md",
@@ -417,7 +446,8 @@
       "creatureId": "creature-giant-scorpion",
       "eligibility": "Animal 3",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/giant-scorpion.md",
@@ -430,7 +460,8 @@
       "creatureId": "creature-giant-spider",
       "eligibility": "Animal 3",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/giant-spider.md",
@@ -443,7 +474,8 @@
       "creatureId": "creature-glass-sentinel",
       "eligibility": "Construct 3",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/glass-sentinel.md",
@@ -456,7 +488,8 @@
       "creatureId": "creature-grave-wisp",
       "eligibility": "Undead 1",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/grave-wisp.md",
@@ -469,7 +502,8 @@
       "creatureId": "creature-great-cat",
       "eligibility": "Animal 3",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/great-cat.md",
@@ -482,7 +516,8 @@
       "creatureId": "creature-great-stag",
       "eligibility": "Animal 3",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/great-stag.md",
@@ -495,7 +530,8 @@
       "creatureId": "creature-harbor-siren",
       "eligibility": "Fey 3",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/harbor-siren.md",
@@ -508,7 +544,8 @@
       "creatureId": "creature-hearth-brownie",
       "eligibility": "Fey 1",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/hearth-brownie.md",
@@ -521,7 +558,8 @@
       "creatureId": "creature-hedge-sprite",
       "eligibility": "Fey 1",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/hedge-sprite.md",
@@ -534,7 +572,8 @@
       "creatureId": "creature-icebound-warden",
       "eligibility": "Elemental 3",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/icebound-warden.md",
@@ -547,7 +586,8 @@
       "creatureId": "creature-iron-gatekeeper",
       "eligibility": "Construct 7",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/iron-gatekeeper.md",
@@ -560,7 +600,8 @@
       "creatureId": "creature-lantern-spirit",
       "eligibility": "Spirit 1",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/lantern-spirit.md",
@@ -573,7 +614,8 @@
       "creatureId": "creature-marsh-crocodile",
       "eligibility": "Animal 3",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/marsh-crocodile.md",
@@ -586,7 +628,8 @@
       "creatureId": "creature-moon-hart",
       "eligibility": "Fey 7",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/moon-hart.md",
@@ -599,7 +642,8 @@
       "creatureId": "creature-mourning-bell",
       "eligibility": "Spirit 7",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/mourning-bell.md",
@@ -612,7 +656,8 @@
       "creatureId": "creature-mummy",
       "eligibility": "Undead 7",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/mummy.md",
@@ -625,7 +670,8 @@
       "creatureId": "creature-oath-flame",
       "eligibility": "Spirit 7",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/oath-flame.md",
@@ -638,7 +684,8 @@
       "creatureId": "creature-plague-zombie",
       "eligibility": "Undead 3",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/plague-zombie.md",
@@ -651,7 +698,8 @@
       "creatureId": "creature-poltergeist",
       "eligibility": "Spirit 3",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/poltergeist.md",
@@ -664,7 +712,8 @@
       "creatureId": "creature-raven",
       "eligibility": "Animal 1",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/raven.md",
@@ -677,7 +726,8 @@
       "creatureId": "creature-redcap",
       "eligibility": "Fey 3",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/redcap.md",
@@ -690,7 +740,8 @@
       "creatureId": "creature-reed-piper",
       "eligibility": "Fey 3",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/reed-piper.md",
@@ -703,7 +754,8 @@
       "creatureId": "creature-reef-hunter",
       "eligibility": "Animal 3",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/reef-hunter.md",
@@ -716,7 +768,8 @@
       "creatureId": "creature-restless-corpse",
       "eligibility": "Undead 1",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/restless-corpse.md",
@@ -729,7 +782,8 @@
       "creatureId": "creature-rill-sprite",
       "eligibility": "Elemental 1",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/rill-sprite.md",
@@ -742,7 +796,8 @@
       "creatureId": "creature-satyr",
       "eligibility": "Fey 3",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/satyr.md",
@@ -755,7 +810,8 @@
       "creatureId": "creature-shadow",
       "eligibility": "Undead 3",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/shadow.md",
@@ -768,7 +824,8 @@
       "creatureId": "creature-skeleton-champion",
       "eligibility": "Undead 3",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/skeleton-champion.md",
@@ -781,7 +838,8 @@
       "creatureId": "creature-skeleton-giant",
       "eligibility": "Undead 7",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/skeleton-giant.md",
@@ -794,7 +852,8 @@
       "creatureId": "creature-skeleton-horse",
       "eligibility": "Undead 3",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/skeleton-horse.md",
@@ -807,7 +866,8 @@
       "creatureId": "creature-sorrow-ghost",
       "eligibility": "Spirit 3",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/sorrow-ghost.md",
@@ -820,7 +880,8 @@
       "creatureId": "creature-stone-golem",
       "eligibility": "Construct 7",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/stone-golem.md",
@@ -833,7 +894,8 @@
       "creatureId": "creature-stone-knuckle",
       "eligibility": "Elemental 1",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/stone-knuckle.md",
@@ -846,7 +908,8 @@
       "creatureId": "creature-storm-column",
       "eligibility": "Elemental 7",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/storm-column.md",
@@ -859,7 +922,8 @@
       "creatureId": "creature-trail-hound",
       "eligibility": "Animal 1",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/trail-hound.md",
@@ -872,7 +936,8 @@
       "creatureId": "creature-unicorn",
       "eligibility": "Fey 7",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/unicorn.md",
@@ -885,7 +950,8 @@
       "creatureId": "creature-walking-furnace",
       "eligibility": "Construct 7",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/walking-furnace.md",
@@ -898,7 +964,8 @@
       "creatureId": "creature-warhorse",
       "eligibility": "Animal 1",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/warhorse.md",
@@ -911,7 +978,8 @@
       "creatureId": "creature-water-elemental",
       "eligibility": "Elemental 3",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/water-elemental.md",
@@ -924,7 +992,8 @@
       "creatureId": "creature-wight",
       "eligibility": "Undead 7",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/wight.md",
@@ -937,7 +1006,8 @@
       "creatureId": "creature-wild-boar",
       "eligibility": "Animal 1",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/wild-boar.md",
@@ -950,7 +1020,8 @@
       "creatureId": "creature-wolf",
       "eligibility": "Animal 1",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/wolf.md",
@@ -963,7 +1034,8 @@
       "creatureId": "creature-wraith",
       "eligibility": "Undead 7",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/wraith.md",
@@ -976,7 +1048,8 @@
       "creatureId": "creature-zombie-brute",
       "eligibility": "Undead 3",
       "perspective": "attacker",
-      "profileImported": false,
+      "profileImported": true,
+      "referenceCatalog": "static/data/summons.json",
       "source": {
         "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
         "path": "design/bestiary/summons/zombie-brute.md",

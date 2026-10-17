@@ -23,6 +23,8 @@
     "test:canvas": "node scripts/check-canvas.mjs",
     "import:choices": "node scripts/import-choices.mjs",
     "validate:choices": "node scripts/import-choices.mjs --check",
+    "import:creatures": "node scripts/import-creatures.mjs",
+    "validate:creatures": "node scripts/import-creatures.mjs --check",
     "import:item-packs": "node scripts/generate-item-packs.mjs",
     "validate:item-packs": "node scripts/generate-item-packs.mjs --check",
     "import:inventory": "node scripts/import-inventory.mjs",

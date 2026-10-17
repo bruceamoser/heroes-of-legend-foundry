@@ -1,3 +1,4 @@
+import { registerAuthorityPanel } from "./applications/authority.mjs";
 import { registerAdvancement } from "./services/advancement.mjs";
 import { registerCreationAuthority } from "./services/creation.mjs";
 import { EquipmentData } from "./models/equipment.mjs";
@@ -16,6 +17,7 @@ Hooks.once("init", () => {
   registerAuthorityPrototype();
   registerCreationAuthority();
   registerAdvancement();
+  registerAuthorityPanel();
   registerTimingPrototype();
   CONFIG.Actor.dataModels.character = CharacterData;
   CONFIG.Item.dataModels.ability = AbilityData;

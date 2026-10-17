@@ -118,6 +118,7 @@ async function appliedWork(work) {
     message?.getFlag(ID, "conditionRequest") ??
     message?.getFlag(ID, "equipmentRequest") ??
     message?.getFlag(ID, "damageRequest") ??
+    message?.getFlag(ID, "recoveryRequest") ??
     message?.getFlag(ID, "abilityRequest") ??
     message?.getFlag(ID, "npcAttackRequest") ??
     message?.getFlag(ID, "defenseRequest");

@@ -13,6 +13,7 @@
     "check": "npm run build && npm run validate && npm test",
     "test:runtime": "node scripts/smoke-foundry.mjs",
     "test:sheets": "node scripts/test-sheets.mjs",
+    "test:shortcuts": "node scripts/test-shortcuts.mjs",
     "test:rolls": "node scripts/check-rolls.mjs",
     "test:authority": "node scripts/check-authority.mjs",
     "probe:claims": "node scripts/probe-document-claims.mjs",

@@ -6,6 +6,7 @@ import { registerEquipmentRequests } from "./services/equipment.mjs";
 import { registerInventoryRequests } from "./services/inventory.mjs";
 import { registerDefenseResponses } from "./services/defense-responses.mjs";
 import { registerNpcAttacks } from "./services/npc-attacks.mjs";
+import { registerItemShortcuts, SHORTCUT_API } from "./services/shortcuts.mjs";
 import { renderAttackCard } from "./dialogs/defender-choice.mjs";
 import { CreatureData } from "./models/creature.mjs";
 import { CreatureSheet } from "./sheets/creature.mjs";
@@ -40,6 +41,7 @@ Hooks.once("init", () => {
   registerConditionRequests();
   registerEquipmentRequests();
   registerInventoryRequests();
+  registerItemShortcuts();
   registerDamageRequests();
   registerRecoveryRequests();
   registerWoundRequests();
@@ -80,6 +82,10 @@ Hooks.once("init", () => {
 });
 
 Hooks.once("ready", () => {
+  Object.defineProperty(game, "heroesOfLegend", {
+    value: SHORTCUT_API,
+    enumerable: true,
+  });
   if (game.user.isGM) ui.notifications.info(game.i18n.localize("HOL.Preview"));
 });
 

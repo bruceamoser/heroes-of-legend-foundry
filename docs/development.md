@@ -629,3 +629,54 @@ defense responses. The budget fixture was updated to expect temporary Dazed 3
 to decay to 2 at turn end, then explicitly choose its one retained category;
 its earlier expectation predated condition decay integration. Production timing
 rules were unchanged.
+### Owned Item hotbar shortcuts (#105)
+
+Character-sheet ability and equipment rows now carry the documented
+`data-item-id` drag source and render in native Item sort order. Dragging a row
+onto another row from the same Actor delegates to `ActorSheetV2` sorting;
+dragging from another Actor or a compendium retains the acquisition warning and
+does not copy the Item. Only an owner receives the row shortcut controls, which
+accept a chosen slot from 1 through 50.
+
+The synchronous `hotbarDrop` hook handles only a live, actor-bound HOL ability
+or equipment Item. It resolves the dragged UUID, creates or reuses one generated
+script Macro, and assigns it to the requested native hotbar slot. The command is
+derived solely from the exact Item UUID and calls the shared
+`game.heroesOfLegend.openItem(uuid)` API. Row clicks and Macro execution use the
+same live-document and `OBSERVER` permission service; missing or inaccessible
+sources produce a visible notification. Reuse requires both the generated
+provenance and the expected command, so matching flags do not authorize a
+modified script. Unlinked Token Items retain their synthetic Actor UUID; no
+selected Actor/token fallback, Item clone, acquisition, cost or resource spend
+occurs. Other document types return to native Hotbar handling.
+
+The registration was checked against the public V14 contracts for
+`ActorSheetV2` drag data/native sorting, synchronous `hotbarDrop` cancellation
+and numbered `User#assignHotbarMacro` slots. The installed 14.369 implementation
+was inspected read-only for the narrow payload and signature check.
+
+`scripts/test-shortcuts.mjs` is the guarded 1500×1000 native fixture for actual
+sheet-to-hotbar drag, click and keyboard slot addition, rerendered sheets,
+Macro reuse, modified-command rejection, deleted sources, observer denial,
+cross-Actor drop denial, same-Actor sorting and unlinked-token/base-Actor
+isolation. It uses real Player/GM roles and fixture-scoped cleanup. The fixture
+is run only against the disposable local world with
+`HOL_TEST_URL=http://127.0.0.1:<port> HOL_TEST_ALLOW_WRITES=1 node
+scripts/test-shortcuts.mjs`. Primary author review corrected fixture Item lookup
+rather than assuming native creation return order, preserved the GM's prior slot,
+and enabled only read-only reference buttons for observers. Node 24 check passes
+174 tests on the feature base. The full Foundry 14.369 shortcut fixture passes,
+including real drag/reorder, click/keyboard, permission changes, deleted/modified
+sources and unlinked-token identity.
+
+Remaining drag/drop matrix work is unchanged: owned abilities dropped into roll
+dialog selection, cross-character equipment transfer, compendium acquisition and
+charactermancer slot drops, inventory container moves, creature/summon scene
+drops, Actor/token targeting, rules links, detached-window coverage, visual
+valid/invalid drag feedback and the complete permission/error matrix.
+
+
+Integrated shortcut validation: Node 24 checks and the full Foundry 14.369
+shortcut scenario pass after campaign-language integration. The unobscured
+character-sheet screenshot was visually reviewed; item references and shortcut
+controls are readable in the HOL theme, including the corrected window title.

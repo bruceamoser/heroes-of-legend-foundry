@@ -60,3 +60,7 @@ The material rules addition is the shared language reference: Common plus one na
 The new art catalog maps each portrait by authored creature ID. Hashes are verified directly against Git blobs; image dimensions/transparency are recorded from the upstream manifest, not independently re-certified by this intake. No portrait binaries or book prose are distributed in the system yet. Licensing remains undecided.
 
 Reproduce the immutable audit with `HOL_BOOK_REPOSITORY=/path/to/heroes-of-legend node scripts/lock-book-sources.mjs --check` under Node 24. It fails on changed hashes, duplicate IDs, missing art, missing summon links, unknown perspective or missing summon restrictions. This is source intake, not completed automation coverage or encounter playtesting.
+
+## Current approved baseline: two-book v16.1.0
+
+Issue #72 reconciles the current source at **9bc9b4fe3256e68880b92c45facf0f25b98a1ea3**. The current `design/**` catalog and book sources take precedence over historical research snapshots. See [reviewed changes and compatibility](research/book-baseline-v16.1.0.md). The lock still covers 919 source files, 192 portrait records and 73 summon links; no book checkout or existing world content is modified.

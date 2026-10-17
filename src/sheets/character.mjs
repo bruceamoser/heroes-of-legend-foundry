@@ -11,6 +11,7 @@ import {
 } from "../dialogs/attribute-roll.mjs";
 import { ATTRIBUTES } from "../rules/character.mjs";
 import { updateOwnedDocument } from "../services/documents.mjs";
+import { addHotbarShortcut, openItemShortcut } from "../services/shortcuts.mjs";
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 export class CharacterSheet extends HandlebarsApplicationMixin(
   foundry.applications.sheets.ActorSheetV2,
@@ -30,6 +31,7 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
       advanceHero: CharacterSheet.advanceHero,
       createHero: CharacterSheet.createHero,
       openAbility: CharacterSheet.openAbility,
+      addShortcut: CharacterSheet.addShortcut,
       rollAttribute: CharacterSheet.rollAttribute,
     },
   };
@@ -62,9 +64,23 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
       created: Boolean(
         this.actor.getFlag("heroes-of-legend", "creationReceipt"),
       ),
-      equipment: this.actor.items.filter((item) => item.type === "equipment"),
-      abilities: this.actor.items.filter((item) => item.type === "ability"),
+      owned: this.actor.isOwner,
+      equipment: this.actor.items
+        .filter((item) => item.type === "equipment")
+        .sort((a, b) => (a.sort ?? 0) - (b.sort ?? 0)),
+      abilities: this.actor.items
+        .filter((item) => item.type === "ability")
+        .sort((a, b) => (a.sort ?? 0) - (b.sort ?? 0)),
     };
+  }
+  _toggleDisabled(disabled) {
+    super._toggleDisabled(disabled);
+    // Opening a reference is read-only; all edit controls keep native disabling.
+    if (disabled && this.actor.testUserPermission(game.user, "OBSERVER"))
+      for (const button of this.element.querySelectorAll(
+        '[data-action="openAbility"]',
+      ))
+        button.disabled = false;
   }
   async _processSubmitData(event, form, data, options) {
     if (!this.isEditable)
@@ -106,14 +122,44 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
       ui.notifications.error(error.message);
     }
   }
-  static openAbility(event, target) {
-    const item = this.actor.items.get(target.dataset.itemId);
-    if (item?.testUserPermission(game.user, "OBSERVER"))
-      item.sheet.render({ force: true });
+  static async openAbility(event, target) {
+    const itemId = target.closest("[data-item-id]")?.dataset.itemId,
+      item = this.actor.items.get(itemId);
+    if (!item) {
+      ui.notifications.warn(game.i18n.localize("HOL.ShortcutSourceMissing"));
+      return;
+    }
+    try {
+      await openItemShortcut(item.uuid);
+    } catch (error) {
+      ui.notifications.error(error.message);
+    }
+  }
+  static async addShortcut(event, target) {
+    const row = target.closest("[data-item-id]"),
+      item = this.actor.items.get(row?.dataset.itemId),
+      slot = row?.querySelector("[data-hotbar-slot]")?.value;
+    if (!item) {
+      ui.notifications.warn(game.i18n.localize("HOL.ShortcutSourceMissing"));
+      return;
+    }
+    try {
+      await addHotbarShortcut(item.uuid, slot);
+    } catch (error) {
+      ui.notifications.error(error.message);
+    }
   }
   // Acquisition requires the later purchase/grant service; core copying would bypass it.
-  async _onDropDocument() {
+  async _onDropDocument(event, document) {
+    if (
+      document?.documentName === "Item" &&
+      document.parent?.uuid === this.actor.uuid
+    )
+      return super._onDropDocument(event, document);
     ui.notifications.warn(game.i18n.localize("HOL.AcquisitionPending"));
     return null;
+  }
+  _canDragStart(selector) {
+    return this.actor.isOwner && super._canDragStart(selector);
   }
 }

@@ -156,3 +156,7 @@ For each runtime run record commit, package/schema/content versions, Foundry bui
 ### T106 — completed-book languages
 
 Creation grants Common plus a named ordinary language without DP cost. A Foot in Two Worlds adds two distinct additional ordinary spoken languages, preserving spoken-only permissions and excluding signed/uncommon choices unless the campaign explicitly changes eligibility. All six updated reference characters preserve their recorded languages. Translate the Fragment completion does not add a language.
+
+### T107 — owned Item shortcuts
+
+An owned ability or equipment row is a native live-Item drag source and a hotbar drop creates or reuses an actor-bound generated Macro without copying, granting or spending anything. Activating that Macro, clicking the row, or using the keyboard/click **Add shortcut** control with a chosen slot opens the exact live Item sheet through the same permission-checked service. Rerendered and unlinked-token sheets retain their UUID context; modified generated commands are not reused; deleted or inaccessible sources produce an intelligible notification; and unrelated native hotbar drops remain available. Same-Actor sheet sorting is native, while cross-Actor and compendium drops still require the acquisition flow.

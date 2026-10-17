@@ -589,3 +589,9 @@ Primary author review also checked all 280 pinned wound records against the
 adapter. Node 24 `npm run check` passes all 170 tests, including 19 focused
 treatment tests. These are pure planning checks; native treatment UI, time
 tracking, roll execution and effect settlement are follow-up work.
+Campaign-language integration (#97) passes Node 24 `npm run check` (159 tests)
+and isolated Foundry 14.369 language, creation and creation-commit fixtures.
+The runtime tests verify removed-choice capture, stale displayed settings,
+spoken/signed grants, non-GM denial and preservation of completed characters.
+The settings editor and language choices were visually inspected at 1500×1000;
+form labels remain readable and the HOL colors and fixed footer are preserved.

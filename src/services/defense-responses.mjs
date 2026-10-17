@@ -176,7 +176,7 @@ async function apply(id) {
       { rollerId: message.author.id },
     );
     await writeAuthorityDocument(message, {
-      content: "Defense rolled. Consequences remain manual in this preview.",
+      content: "Defense rolled. The DA can review and apply damage.",
       rolls: [roll],
       flavor: `Defense · ${game.i18n.localize(`HOL.Attributes.${basis.attributeKey}`)}`,
       [`flags.${ID}.roll`]: snapshot,

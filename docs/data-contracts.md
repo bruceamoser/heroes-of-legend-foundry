@@ -141,3 +141,7 @@ Three separate versions: package SemVer, integer data schema, pinned content rev
 ## Languages — completed-book intake
 
 Persist known languages as stable campaign language IDs with a display name, form (`spoken`/`signed`/explicit campaign form), permissions (`understand`, `speak`, `read`, `write`) and grant source ID. Store the actual named regional language; a category placeholder is not a completed choice. Campaign definitions determine ordinary availability and Common's name. A spoken-only grant explicitly leaves read/write false. Creation and advancement use the same eligibility browser and preserve prior language grants on resume/rebuild. No attribute-derived free languages or implicit DP costs.
+
+## Implemented creature profile (issue #62)
+
+The initial native `creature` model stores `attributes.<key>.base/effective`, `health.value/baseMax/max`, integer `cv`, printed `speed`, square-footprint `size`, `armor` (Physical resistance), `stability`, separate `threat.boons/banes` and `evasion.boons/banes`, plus `basicMelee.weak/standard/strong` in defender perspective. It deliberately has no PC Grit ledger. This is the current subset of the broader creature contract above; typed specialty actions, remaining defenses/movement modes and source-locked creature imports are not yet implemented. Changing size currently edits the profile, not existing Token dimensions.

@@ -1,0 +1,25 @@
+<section class="hol-body">
+<header class="hol-banner"><p class="hol-kicker">Creature · CV {{system.cv}}</p><h1>{{actor.name}}</h1></header>
+<p class="hol-note">These are printed creature statistics. A player-controlled creature uses the player attack perspective. Attack execution and automatic death are still in development.</p>
+<button type="button" data-action="conditions">Condition sources</button>
+<fieldset {{#unless editable}}disabled{{/unless}}>
+<label>Name<input name="name" value="{{actor.name}}"></label>
+<div class="hol-attributes">{{#each attributes}}<label>{{label}}<input name="system.attributes.{{key}}.base" type="number" min="-2" max="2" step="1" value="{{base}}"><button type="button" data-action="rollAttribute" data-attribute="{{key}}">Roll {{label}}</button></label>{{/each}}</div>
+<div class="hol-pair">
+<label>Current HP<input name="system.health.value" type="number" min="0" step="1" value="{{system.health.value}}"></label>
+<label>Maximum HP<input name="system.health.baseMax" type="number" min="1" step="1" value="{{system.health.baseMax}}"></label>
+<label>CV<input name="system.cv" type="number" min="0" step="1" value="{{system.cv}}"></label>
+<label>Printed Speed<input name="system.speed" type="number" min="0" step="1" value="{{system.speed}}"></label>
+<label>Size (squares per side)<input name="system.size" type="number" min="1" step="1" value="{{system.size}}"></label>
+<label>Armor DR (Physical resistance)<input name="system.armor" type="number" min="0" max="3" step="1" value="{{system.armor}}"></label>
+<label>Stability<input name="system.stability" type="number" min="0" max="3" step="1" value="{{system.stability}}"></label>
+</div>
+<h2>Evasion · modifier to incoming player attacks</h2><div class="hol-pair"><label>Boons<input name="system.evasion.boons" type="number" min="0" step="1" value="{{system.evasion.boons}}"></label><label>Banes<input name="system.evasion.banes" type="number" min="0" step="1" value="{{system.evasion.banes}}"></label></div>
+<h2>Threat · modifier to player defenses</h2><div class="hol-pair"><label>Boons<input name="system.threat.boons" type="number" min="0" step="1" value="{{system.threat.boons}}"></label><label>Banes<input name="system.threat.banes" type="number" min="0" step="1" value="{{system.threat.banes}}"></label></div>
+<h2>Basic Melee · physical damage by defense result</h2><div class="hol-attributes"><label>Weak defense<input name="system.basicMelee.weak" type="number" min="0" step="1" value="{{system.basicMelee.weak}}"></label><label>Standard defense<input name="system.basicMelee.standard" type="number" min="0" step="1" value="{{system.basicMelee.standard}}"></label><label>Strong defense<input name="system.basicMelee.strong" type="number" min="0" step="1" value="{{system.basicMelee.strong}}"></label></div>
+<p>Review the creature's printed profile. Basic Melee requires Agility defense; smaller profiles may use 4/2/1 or 2/1/1.</p>
+<label>Notes<textarea name="system.biography" rows="4">{{system.biography}}</textarea></label>
+{{#if editable}}<button type="submit" class="hol-primary">Save changes</button>{{/if}}
+</fieldset>
+<h2>Abilities</h2><ul class="hol-ability-list">{{#each abilities}}<li><button type="button" data-action="openAbility" data-item-id="{{id}}">{{name}}</button></li>{{else}}<li>No ability Items.</li>{{/each}}</ul>
+</section>

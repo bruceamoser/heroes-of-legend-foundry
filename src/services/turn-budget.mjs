@@ -14,6 +14,8 @@ export function actionConditions(actor) {
   return conditions;
 }
 export function actorMovement(actor) {
+  if (actor.type === "creature")
+    return { speed: actor.system.speed, source: "printed-creature-speed" };
   const speedBase = actor.getFlag(ID, "development")?.creationSummary
     ?.speedBase;
   return movementProfile({

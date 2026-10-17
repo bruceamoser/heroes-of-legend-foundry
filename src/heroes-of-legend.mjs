@@ -1,3 +1,5 @@
+import { CreatureData } from "./models/creature.mjs";
+import { CreatureSheet } from "./sheets/creature.mjs";
 import { registerAbilityRequests } from "./services/abilities.mjs";
 import { HOLActor } from "./documents/actor.mjs";
 import {
@@ -35,9 +37,14 @@ Hooks.once("init", () => {
   registerAuthorityPanel();
   registerTimingPrototype();
   CONFIG.Actor.dataModels.character = CharacterData;
+  CONFIG.Actor.dataModels.creature = CreatureData;
   CONFIG.Item.dataModels.ability = AbilityData;
   CONFIG.Item.dataModels.equipment = EquipmentData;
   const sheets = foundry.applications.apps.DocumentSheetConfig;
+  sheets.registerSheet(Actor, SYSTEM_ID, CreatureSheet, {
+    types: ["creature"],
+    makeDefault: true,
+  });
   sheets.registerSheet(Actor, SYSTEM_ID, CharacterSheet, {
     types: ["character"],
     makeDefault: true,

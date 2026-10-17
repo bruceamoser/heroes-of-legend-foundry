@@ -25,7 +25,7 @@ async function join(name, canvas = false) {
   await page.goto(url);
   await selectTestUser(page, name);
   await page.locator("button[name=join]").click();
-  await page.waitForFunction(() => game.ready);
+  await page.waitForFunction(() => globalThis.game?.ready);
   return { context, page };
 }
 async function cardClick() {
@@ -231,6 +231,7 @@ try {
   );
   assert.equal(roll.actorUuid, `${f.tokens[2]}.Actor.${f.heroes[2]}`);
   assert.equal(roll.rollerId, f.user);
+  assert.equal(roll.defenderTokenUuid, f.tokens[2]);
   assert.equal(roll.boons, 1);
   assert.equal(roll.banes, 2);
   assert.equal(roll.attackOutcome.damage, declared.attack.damage[roll.tier]);
@@ -243,7 +244,7 @@ try {
     );
   }, f);
   await player.page.reload();
-  await player.page.waitForFunction(() => game.ready);
+  await player.page.waitForFunction(() => globalThis.game?.ready);
   await cardClick();
   await player.page
     .locator(".hol-defender-choice")

@@ -12,13 +12,37 @@ export async function rollPrepared(actor, basis, draft) {
     basis.attributeKey,
     basis.mode,
     basis.attackMessageId,
+    basis.defenderTokenUuid,
   );
   if (JSON.stringify(current) !== JSON.stringify(basis))
     throw new Error("Roll sources changed. Review the dialog before rolling.");
-  const plan = prepareRoll(current, draft);
+  prepareRoll(current, draft);
+  if (basis.attackMessageId) {
+    const { requestDefense } = await import("./defense-responses.mjs");
+    return requestDefense(actor, basis, draft);
+  }
   const mode = game.settings.get("core", "messageMode");
-  const roll = await new foundry.dice.Roll(plan.formula).evaluate({
+  const { roll, snapshot } = await evaluatePreparedRoll(actor, basis, draft, {
     allowInteractive: mode !== "blind",
+  });
+  return roll.toMessage(
+    {
+      speaker: ChatMessage.getSpeaker({ actor }),
+      flavor: game.i18n.localize(`HOL.Attributes.${basis.attributeKey}`),
+      flags: { "heroes-of-legend": { roll: snapshot } },
+    },
+    { messageMode: mode },
+  );
+}
+export async function evaluatePreparedRoll(
+  actor,
+  basis,
+  draft,
+  { rollerId = game.user.id, allowInteractive = false } = {},
+) {
+  const plan = prepareRoll(basis, draft);
+  const roll = await new foundry.dice.Roll(plan.formula).evaluate({
+    allowInteractive,
   });
   const retained = roll.dice[0].results
     .filter((result) => result.active)
@@ -27,7 +51,8 @@ export async function rollPrepared(actor, basis, draft) {
   const snapshot = {
     schemaVersion: 2,
     actorUuid: actor.uuid,
-    rollerId: game.user.id,
+    defenderTokenUuid: basis.defenderTokenUuid,
+    rollerId,
     attackMessageId: basis.attackMessageId,
     attackOutcome: basis.incoming
       ? {
@@ -43,14 +68,7 @@ export async function rollPrepared(actor, basis, draft) {
     retained,
     ...result,
   };
-  return roll.toMessage(
-    {
-      speaker: ChatMessage.getSpeaker({ actor }),
-      flavor: `${basis.mode === "defense" ? "Defense · " : ""}${game.i18n.localize(`HOL.Attributes.${basis.attributeKey}`)}`,
-      flags: { "heroes-of-legend": { roll: snapshot } },
-    },
-    { messageMode: mode },
-  );
+  return { roll, snapshot };
 }
 
 export function renderRollSummary(message, element) {

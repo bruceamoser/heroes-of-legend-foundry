@@ -35,7 +35,8 @@
     "test:defend-maneuver": "node scripts/check-defend-maneuver.mjs",
     "test:roll-sources": "node scripts/check-roll-sources.mjs",
     "test:creatures": "node scripts/check-creatures.mjs",
-    "test:npc-attacks": "node scripts/check-npc-attacks.mjs"
+    "test:npc-attacks": "node scripts/check-npc-attacks.mjs",
+    "test:defense-responses": "node scripts/check-defense-responses.mjs"
   },
   "devDependencies": {
     "@foundryvtt/foundryvtt-cli": "3.0.5",

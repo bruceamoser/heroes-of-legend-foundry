@@ -117,16 +117,18 @@ async function appliedWork(work) {
     message?.getFlag(ID, "combatRequest") ??
     message?.getFlag(ID, "conditionRequest") ??
     message?.getFlag(ID, "abilityRequest") ??
-    message?.getFlag(ID, "npcAttackRequest");
-  const uuid =
-    message?.getFlag(ID, "abilityRequest") ||
-    message?.getFlag(ID, "npcAttackRequest")
+    message?.getFlag(ID, "npcAttackRequest") ??
+    message?.getFlag(ID, "defenseRequest");
+  const uuid = message?.getFlag(ID, "defenseRequest")
+    ? `ChatMessage.${request.attackMessageId}`
+    : message?.getFlag(ID, "abilityRequest") ||
+        message?.getFlag(ID, "npcAttackRequest")
       ? request?.combatUuid
       : (request?.actorUuid ?? request?.combatUuid);
   if (!uuid) return false;
   const actor = await fromUuid(uuid);
-  // This is the final settlement receipt. Multi-document abilities write it only
-  // after their Actor effect receipt and all required mechanical writes succeed.
+  // This is the final settlement receipt. Multi-document operations write it only
+  // after their required child mechanics and result records have succeeded.
   return (
     actor?.getFlag(ID, "operationReceipts")?.[work.requestId]?.applied === true
   );

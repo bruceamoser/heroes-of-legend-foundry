@@ -1,3 +1,4 @@
+import { registerDefenseResponses } from "./services/defense-responses.mjs";
 import { registerNpcAttacks } from "./services/npc-attacks.mjs";
 import { renderAttackCard } from "./dialogs/defender-choice.mjs";
 import { CreatureData } from "./models/creature.mjs";
@@ -32,6 +33,7 @@ Hooks.once("init", () => {
   registerConditionRequests();
   registerAbilityRequests();
   registerNpcAttacks();
+  registerDefenseResponses();
   CONFIG.Combat.documentClass = HOLCombat;
   registerCombatRequests();
   registerAuthorityPrototype();

@@ -6,19 +6,26 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
   constructor(
     actor,
     attributeKey,
-    { mode = "attribute", attackMessageId = null } = {},
+    {
+      mode = "attribute",
+      attackMessageId = null,
+      defenderTokenUuid = null,
+    } = {},
   ) {
     super();
     this.actor = actor;
     this.attributeKey = attributeKey;
     this.mode = mode;
     this.attackMessageId = attackMessageId;
+    this.defenderTokenUuid = defenderTokenUuid;
     this.draft = {
       boons: 0,
       banes: 0,
       boonsLabel: "Situational Boons",
       banesLabel: "Situational Banes",
       perception: {},
+      additionalAttempt: false,
+      attemptReason: "",
     };
     this.notice = "";
   }
@@ -43,6 +50,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       this.attributeKey,
       this.mode,
       this.attackMessageId,
+      this.defenderTokenUuid,
     );
     const fears = [
       ...new Set(
@@ -52,9 +60,18 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       ),
     ];
     this.fears = fears;
+    const prior =
+      game.messages
+        .get(this.attackMessageId)
+        ?.getFlag("heroes-of-legend", "defenseResponses")
+        ?.filter((r) => r.actorUuid === this.actor.uuid) ?? [];
+    this.priorCount = prior.length;
+    this.pendingResponse = prior.some((r) => r.status === "rolling");
     return {
       name: this.actor.name,
       incoming: this.basis.incoming,
+      priorCount: this.priorCount,
+      pendingResponse: this.pendingResponse,
       attributeName: game.i18n.localize(`HOL.Attributes.${this.attributeKey}`),
       attribute: this.basis.attribute,
       defense: this.mode === "defense",
@@ -76,6 +93,10 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       banes: value("banes"),
       boonsLabel: value("boonsLabel"),
       banesLabel: value("banesLabel"),
+      additionalAttempt:
+        this.element.querySelector("[name=additionalAttempt]")?.checked ===
+        true,
+      attemptReason: value("attemptReason") ?? "",
       perception: Object.fromEntries(
         this.fears.map((source, index) => [source, value(`fear-${index}`)]),
       ),
@@ -96,7 +117,10 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       }
       output.textContent = plan.formula;
       detail.textContent = `${plan.boons} Boons · ${plan.banes} Banes · ${plan.canceled} canceled pairs · net extras ${plan.net} (maximum 3)`;
-      button.disabled = false;
+      button.disabled =
+        this.pendingResponse ||
+        (this.priorCount > 0 &&
+          (!this.draft.additionalAttempt || !this.draft.attemptReason?.trim()));
     } catch (e) {
       output.textContent = e.message;
       detail.textContent = "";
@@ -129,6 +153,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
         this.attributeKey,
         this.mode,
         this.attackMessageId,
+        this.defenderTokenUuid,
       );
       if (JSON.stringify(current) !== JSON.stringify(this.basis)) {
         this.notice =

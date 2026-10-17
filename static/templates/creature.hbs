@@ -4,7 +4,7 @@
 {{#if gm}}<button type="button" data-action="npcMelee">Declare NPC Basic Melee</button>{{/if}}
 <button type="button" data-action="conditions">Condition sources</button>
 {{#if gm}}<button type="button" data-action="damage">Apply damage</button><button type="button" data-action="recovery">Health and recovery</button>{{/if}}
-<button type="button" data-action="equipment">Hands and equipment</button>
+<button type="button" data-action="equipment">Hands, worn gear and equipment</button>
 <fieldset {{#unless editable}}disabled{{/unless}}>
 <label>Name<input name="name" value="{{actor.name}}"></label>
 <div class="hol-attributes">{{#each attributes}}<label>{{label}}<input name="system.attributes.{{key}}.base" type="number" min="-2" max="2" step="1" value="{{base}}"><button type="button" data-action="rollAttribute" data-attribute="{{key}}">Roll {{label}}</button></label>{{/each}}</div>

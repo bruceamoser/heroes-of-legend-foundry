@@ -34,6 +34,15 @@ export class RecoveryPanel extends foundry.applications.api.HandlebarsApplicatio
       ),
       basis: this.basis,
       character: this.actor.type === "character",
+      automaticLifeResistance: Math.min(
+        3,
+        Math.max(
+          0,
+          ...(this.basis.passiveDefenses?.resistances ?? [])
+            .filter((source) => source.type === "life")
+            .map((source) => source.value),
+        ),
+      ),
       wounds: this.basis.survival?.wounds ?? 0,
       marks: this.basis.survival?.marks ?? 0,
       statuses: ["active", "dying", "stable", "lastWords", "dead"].map(

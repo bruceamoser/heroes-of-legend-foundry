@@ -38,6 +38,7 @@
     "test:npc-attacks": "node scripts/check-npc-attacks.mjs",
     "test:defense-responses": "node scripts/check-defense-responses.mjs",
     "test:equipment": "node scripts/check-equipment.mjs",
+    "test:passive-defenses": "node scripts/check-passive-defenses.mjs",
     "package:release": "node scripts/package-release.mjs",
     "import:wounds": "node scripts/import-wounds.mjs",
     "validate:wounds": "node scripts/import-wounds.mjs --check",

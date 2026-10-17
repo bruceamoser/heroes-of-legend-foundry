@@ -28,7 +28,7 @@ export class EquipmentSheet extends foundry.applications.api.HandlebarsApplicati
   async _processSubmitData(event, form, data, options) {
     if (
       this.item.actor &&
-      ["hands", "held"].some(
+      ["hands", "held", "worn"].some(
         (key) =>
           (data[`system.${key}`] ?? data.system?.[key]) !== undefined &&
           (data[`system.${key}`] ?? data.system?.[key]) !==
@@ -36,7 +36,7 @@ export class EquipmentSheet extends foundry.applications.api.HandlebarsApplicati
       )
     )
       throw new Error(
-        "Use Hands and equipment to change an owned item’s hand arrangement.",
+        "Use Hands, worn gear and equipment to change an owned item’s arrangement.",
       );
     return { updated: await updateOwnedDocument(this.item, data, options) };
   }

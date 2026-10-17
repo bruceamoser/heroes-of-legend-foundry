@@ -15,7 +15,7 @@ Proposed schema revision **1**. This defines design intent, not executable Found
 | Item | `origin` | Culture/background discriminator, paired choice grants and coin contribution. |
 | Item | `class` | Attribute minimums, HP/coins, starting discipline choices, rank price matrix and signatures. |
 | Item | `discipline` | Stable discipline ID, description, owned rank and source grants. |
-| Item | `equipment` | Weapon/armor/gear/consumable subtype, Bulk, hands, price, compatibility, supply die and effects. |
+| Item | `equipment` | Weapon/armor/gear/consumable subtype, Bulk, hands, independent held/worn state, price, compatibility, supply die and effects. |
 | Item | `recipe` | Capability/tools/materials, duration, product, cap, acquisition and derivation requirements. |
 | Item | `wound` | Table/result, scar, anatomy, immediate and lasting effects, treatment track and day history. |
 | ActiveEffect | `condition`, `benefit` | Individual typed source contributions, ratings, predicates and expiry anchors. |
@@ -63,7 +63,7 @@ Placeholder hash above is illustrative and must never pass a production validato
 | `identity` | Source IDs for ancestry, traits, origins, class | Exactly one class; two ancestry traits and legal origin pairs. |
 | `survival.state` | `active`, `dying`, `stabilized`, `lastWords`, `dead` | Only valid transitions; no Grit/healing exit from Last Words without explicit rule. |
 | `survival.deathMarks`, `lastWordsAnchor` | Persisted | 0..3 marks; deadline counts the appropriate following turns, not arbitrary global turns. |
-| `derived.bulk`, `capacity`, `speed`, `stability`, `resistances`, `weaknesses` | Derived | Explain source contributions; aggregate using the appropriate rule. |
+| `derived.bulk`, `capacity`, `speed`, `stability`, `resistances`, `weaknesses` | Derived | Explain source contributions; aggregate using the appropriate rule. Damage/recovery bases snapshot reviewed automatic passive sources with the equipment revision. |
 
 Ledger entry: ID, operation ID, actor UUID, stage/level, kind (`grant`, `purchase`, `expiry`, `award`, `correction`), source ID, prerequisite snapshot, DP delta, created embedded IDs, timestamp and correction reason where relevant. Bookkeeping is append-only through normal play; corrections retain prior history. Persist creation drafts separately from committed acquisitions.
 

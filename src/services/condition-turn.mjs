@@ -1,5 +1,8 @@
 import { actorContributions } from "./conditions.mjs";
-import { conditionTurn } from "../rules/condition-turn.mjs";
+import {
+  conditionTickRequirements,
+  conditionTurn,
+} from "../rules/condition-turn.mjs";
 const ID = "heroes-of-legend";
 export function conditionTurnBasis(actor) {
   return {
@@ -22,9 +25,17 @@ export function prepareConditionTurn(actor, basis, request, id, authorId) {
   const damaging = conditions.contributions.some((c) =>
     ["burning", "freezing", "bleeding"].includes(c.key),
   );
-  if (damaging && !policy.reviewed)
+  const requirements = conditionTickRequirements(
+    conditions.contributions,
+    basis.passiveDefenses,
+  );
+  if (
+    damaging &&
+    !policy.reviewed &&
+    (requirements.typesNeedingReview.length > 0 || requirements.orderRequired)
+  )
     throw Error(
-      "The DA must review condition tick defenses and order once in Finish turn.",
+      "The DA must review condition tick defenses and order in Finish turn.",
     );
   if (
     request.conditionPolicy &&

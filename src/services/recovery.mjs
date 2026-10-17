@@ -82,7 +82,12 @@ export function recoveryPreview(actor, basis, draft) {
         amount: draft.amount,
         current: basis.hp,
         max: basis.maxHp,
-        lifeResistances: [draft.lifeResistance],
+        lifeResistances: [
+          ...(basis.passiveDefenses?.resistances ?? [])
+            .filter((source) => source.type === "life")
+            .map((source) => source.value),
+          draft.lifeResistance,
+        ],
         recipientKind: actor.type,
       });
       if (!plan.allowed)
@@ -134,7 +139,9 @@ async function apply(id) {
   }
   assertNoPendingTurn(actor);
   if (JSON.stringify(basis) !== JSON.stringify(request.basis))
-    throw new Error("HP or survival changed. Review recovery again.");
+    throw new Error(
+      "HP, survival or defenses changed. Review recovery again.",
+    );
   if (typeof request.draft?.reason !== "string" || !request.draft.reason.trim())
     throw new Error(
       "Record why this healing, safe breath, stabilization or correction applies.",

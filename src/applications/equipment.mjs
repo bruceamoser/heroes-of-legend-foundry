@@ -9,7 +9,7 @@ export class EquipmentPanel extends foundry.applications.api.HandlebarsApplicati
   }
   static DEFAULT_OPTIONS = {
     classes: ["heroes-of-legend", "hol-hands"],
-    window: { title: "Hands and equipment", resizable: true },
+    window: { title: "Hands, worn gear and equipment", resizable: true },
     position: { width: 650, height: 600 },
     actions: { save: EquipmentPanel.save },
   };
@@ -51,6 +51,7 @@ export class EquipmentPanel extends foundry.applications.api.HandlebarsApplicati
           id: row.dataset.equipmentId,
           hands: Number(row.querySelector("[name=hands]").value),
           held: row.querySelector("[name=held]").checked,
+          worn: row.querySelector("[name=worn]").checked,
         }),
       ),
       capacity: Number(this.element.querySelector("[name=capacity]").value),

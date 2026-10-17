@@ -14,8 +14,11 @@ export function equipmentBasis(actor) {
       .filter((i) => i.type === "equipment")
       .map((i) => ({
         id: i.id,
+        catalogId: i.system.catalogId,
+        source: structuredClone(i.getFlag(ID, "source") ?? null),
         hands: i.system.hands,
         held: i.system.held,
+        worn: i.system.worn,
         quantity: i.system.quantity,
       }))
       .sort((a, b) => a.id.localeCompare(b.id)),
@@ -105,7 +108,11 @@ async function apply(id) {
   if (
     !Array.isArray(request.items) ||
     request.items.length !== basis.items.length ||
-    request.items.some((i) => !basis.items.some((b) => b.id === i.id))
+    request.items.some(
+      (i) =>
+        !basis.items.some((b) => b.id === i.id) ||
+        typeof i.worn !== "boolean",
+    )
   )
     throw new Error(
       "The arrangement must include every owned equipment item exactly once.",
@@ -117,6 +124,7 @@ async function apply(id) {
     if (state) {
       item.system.hands = state.hands;
       item.system.held = state.held;
+      item.system.worn = state.worn;
     }
     const native = new CONFIG.Item.documentClass(item, {
       parent: actor,
@@ -145,14 +153,15 @@ async function apply(id) {
     if (
       !actual ||
       actual.hands !== expected.hands ||
-      actual.held !== expected.held
+      actual.held !== expected.held ||
+      actual.worn !== expected.worn
     )
       throw new Error(
         "Equipment needs reconciliation; do not repeat the change.",
       );
   }
   await message.update({
-    content: "Hand arrangement recorded. Carried Bulk is unchanged.",
+    content: "Equipment arrangement recorded.",
   });
   return { status: "complete", replay: false };
 }

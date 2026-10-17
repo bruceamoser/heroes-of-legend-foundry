@@ -267,9 +267,9 @@ This replaces the earlier untracked repeat-roll limitation, but consequences rem
 
 Validation: build/validation and 74 tests pass. Native 14.369 defense-response and NPC-attack suites pass after the final changes. Shared-source and coordinator regressions also pass. The new three-client scenario verifies racing submissions, independent defenders, native original authorship, explicit additional-attempt UI, stale-source rejection, blind mode, and no HP mutation. Saved-result recovery temporarily makes any new dice evaluation throw, proving settlement does not evaluate again. The unresolved-result fixture exercises the actual DA abandonment dialog. Native selected-Token identity is preserved through the attack-card roll path.
 
-### Held equipment (#68)
+### Held and worn equipment (#68)
 
-`test:equipment` verifies owner preparation, native held stack state, exact replay, stale inventory rejection, DA-only reasoned encounter/anatomy corrections, observer denial and reload on isolated 14.369. The panel counts one held unit per stack and leaves all carried Bulk unchanged. Existing items default to unheld; hand capacity defaults to two until a DA anatomy ruling. Owned item sheets route hand changes through the arrangement panel. Draw/stow/pickup timing and ground transfers are not implemented by this preparation panel.
+`test:equipment` verifies owner preparation, native held stack state, exact replay, stale inventory rejection, DA-only reasoned encounter/anatomy corrections, observer denial and reload on isolated 14.369. The panel tracks held and worn state independently and counts one held unit per stack; holding does not remove that stack from carried Bulk. Worn state can change which single ordinary outfit qualifies for the Bulk exclusion. Existing items default to unheld and unworn; hand capacity defaults to two until a DA anatomy ruling. Owned item sheets route hand and worn changes through the arrangement panel. Draw/stow/pickup timing and ground transfers are not implemented by this preparation panel.
 
 ### Survival rules (#74)
 
@@ -283,11 +283,11 @@ Pure survival transitions distinguish entry into Dying (one wound), damage while
 
 `test:damage` exercises actual DA authorization, mixed damage, printed creature DR once, unlinked-token isolation, Dying/wound/mark transitions, stale preview rejection, replay, duplicate settled-defense application and reload in isolated 14.369. Settled-defense amount comes from the attack card and must match the saved native dice outcome. The duplicate fixture reconstructs a settled result; the separate defense suite exercises actual multiplayer rolling.
 
-The DA opens Apply damage from a sheet or Review and apply damage on a settled defense. The preview includes printed creature Physical DR; other resistance/weakness is explicitly entered per event until passive adapters are connected. One Actor update persists HP, survival state, pending wound metadata, event and final receipt. A new request for the same defense event cannot apply damage twice. Wound rolls/effects, survival turn integration, generic healing and native defeated-marker reconciliation remain subsequent work. Existing zero-HP actors without survival state, or direct HP edits that disagree with tracked survival, require DA reconciliation; the damage service does not guess away wounds or death marks.
+The DA opens Apply damage from a sheet or Review and apply damage on a settled defense. The preview merges the bounded reviewed passive snapshot with event-specific DA sources and includes printed creature Physical DR once. Highest matching resistance/weakness still runs through the existing capped arithmetic. One Actor update persists HP, survival state, pending wound metadata, event and final receipt. A new request for the same defense event cannot apply damage twice. Wound rolls/effects, survival turn integration, generic healing and native defeated-marker reconciliation remain subsequent work. Existing zero-HP actors without survival state, or direct HP edits that disagree with tracked survival, require DA reconciliation; the damage service does not guess away wounds or death marks.
 
 ### Recovery and reconciliation (#80)
 
-The DA Health and recovery panel records already-adjudicated healing, safe breath and stabilization, with a source/reason; it does not grant or pay spell/potion/stabilization action costs. It also reconciles imported zero-HP characters and direct HP edits through an explicit audited correction. Ordinary recovery cannot reverse Last Words/death; repeating a correction to existing Last Words retains its deadline. Pending wounds/history and native spent Grit are preserved. `test:recovery` verifies the native panel, Life-resistance healing minimum and HP cap, safe breath, replay after new damage, scars/Grit preservation, Last Words boundaries, actual-author denial, stale state and reload on 14.369. This is DA event recording, not the final player healing-ability workflow.
+The DA Health and recovery panel records already-adjudicated healing, safe breath and stabilization, with a source/reason; it does not grant or pay spell/potion/stabilization action costs. Automatic worn Life resistance is included, while the panel field records only an additional event source. It also reconciles imported zero-HP characters and direct HP edits through an explicit audited correction. Ordinary recovery cannot reverse Last Words/death; repeating a correction to existing Last Words retains its deadline. Pending wounds/history and native spent Grit are preserved. `test:recovery` verifies the native panel, Life-resistance healing minimum and HP cap, safe breath, replay after new damage, scars/Grit preservation, Last Words boundaries, actual-author denial, stale state and reload on 14.369. This is DA event recording, not the final player healing-ability workflow.
 
 ### Native wound resolution (#82)
 
@@ -329,16 +329,48 @@ IDs, and overlapping temporary severities decay by one in total. Native effects
 are prevalidated and checked after application. Snapshot checks include all
 embedded effects so resumption cannot overwrite intervening effect edits.
 
-Until passive damage-source adapters are complete, the DA reviews Fire/Cold
-resistance and weakness in the first damaging Finish turn dialog. This reviewed
-policy is saved; players then finish normally. The tracker offers the DA
-**Review end effects and finish** to revise it when defenses change. Multiple
-simultaneous damage types use an explicit DA order; overlapping duration-only
-sources require a combined or independent duration ruling. These are recorded
-rulings, not new universal rules. Summon/controller phases remain separate work.
+The first damaging Finish turn dialog asks for event-specific Fire/Cold sources
+only when a type is not covered by a reviewed automatic passive. Its saved
+manual values are additional DA sources, never a cache of automatic defenses. A
+single Freezing tick covered by worn Winter Lining can finish without a manual
+defense review. Multiple simultaneous damage types still use an explicit DA
+order; overlapping duration-only sources require a combined or independent
+duration ruling. These are recorded rulings, not new universal rules.
+Summon/controller phases remain separate work.
 
-Node 24 checks include 95 static tests. V14.369 runtime checks cover the actual
-ruling dialog, matching resistance, decay, starred preservation, subsequent turn
-and reload; survival (including known phase failure/resume), combat, conditions,
-and damage regressions also passed. The tests do not claim complete passive
-ability or summon automation.
+The Node 24 static suite covers condition resolution as well as the full rules,
+data and package checks. V14.369 runtime checks cover the actual ruling dialog,
+matching resistance, decay, starred preservation, subsequent turn and reload;
+survival (including known phase failure/resume), combat, conditions, and damage
+regressions also passed. The tests do not claim complete passive ability or
+summon automation.
+
+### Bounded passive defenses (#89)
+
+`passiveDefenseSources` recognizes four pinned catalog effects by stable catalog
+ID and validates both the source path and SHA-256. Names, descriptions, unknown
+inventory records and bestiary prose never select mechanics. The reviewed
+coverage is:
+
+- Wear Medium Armor plus worn ordinary medium armor: Physical resistance 2.
+- Wear Heavy Armor plus worn ordinary heavy armor: Physical resistance 3.
+- Worn Winter Lining: Cold resistance 1.
+- Worn Gravebound Brooch: Life resistance 1 for damage and healing.
+
+The damage, recovery and condition-turn bases snapshot the resulting automatic
+sources with the equipment revision. Recomputing before application rejects
+changed worn state or catalog provenance. Automatic and manual event sources
+are merged into the existing highest-value, weakness-before-resistance, cap-3
+arithmetic, so printed creature armor, trained armor and other Physical sources
+do not stack. Bleeding continues to bypass resistance. This is bounded catalog
+coverage, not general parsing of item or ability prose and not complete passive
+automation. Reaction passives, typed bestiary weaknesses and other special
+procedures remain separate reviewed handlers.
+
+`npm run test:passive-defenses` is the native fixture for worn equipment UI,
+damage/healing application, replay, stale worn snapshots and actor isolation.
+Node 24 checks pass with 110 tests. The native fixture passed on isolated
+Foundry 14.369, along with equipment, damage, recovery, condition-turn and
+survival regressions. Recovery reclaims the coordinator after its test reload
+before submitting a new mutation. Saved DA condition policies are reused unless
+explicit review or missing order/duration rulings require a new decision.

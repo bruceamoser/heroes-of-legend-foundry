@@ -22,6 +22,7 @@ export class EquipmentData extends foundry.abstract.TypeDataModel {
       bulk: integer(1, 0),
       hands: integer(0, 0, 2),
       inventoryDie: integer(0, 0, 20),
+      held: new BooleanField({ initial: false }),
       worn: new BooleanField({ initial: false }),
       description: new StringField({
         required: true,
@@ -31,6 +32,8 @@ export class EquipmentData extends foundry.abstract.TypeDataModel {
     };
   }
   static validateJoint(data) {
+    if (data.held && !data.hands)
+      throw new Error("A held item requires at least one hand.");
     if (![0, 4, 6, 8, 10, 12, 20].includes(data.inventoryDie))
       throw new Error("Invalid inventory die");
   }

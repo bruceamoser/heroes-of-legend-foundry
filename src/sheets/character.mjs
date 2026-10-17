@@ -1,3 +1,4 @@
+import { EquipmentPanel } from "../applications/equipment.mjs";
 import { ConditionPanel } from "../applications/conditions.mjs";
 import { AdvancementWizard } from "../applications/advancement.mjs";
 import { CreationWizard } from "../applications/creation.mjs";
@@ -14,6 +15,7 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
     window: { resizable: true },
     form: { submitOnChange: false, closeOnSubmit: false },
     actions: {
+      equipment: CharacterSheet.equipment,
       conditions: CharacterSheet.conditions,
       advanceHero: CharacterSheet.advanceHero,
       createHero: CharacterSheet.createHero,
@@ -52,6 +54,9 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
     if (!this.isEditable)
       throw new Error(game.i18n.localize("HOL.NoPermission"));
     return { updated: await updateOwnedDocument(this.actor, data, options) };
+  }
+  static async equipment() {
+    await new EquipmentPanel(this.actor).render({ force: true });
   }
   static async conditions() {
     await new ConditionPanel(this.actor).render({ force: true });

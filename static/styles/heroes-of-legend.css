@@ -100,3 +100,6 @@
 .heroes-of-legend.hol-roll-dialog button[data-action=changeDefender] { background:var(--hol-forest); color:var(--hol-ivory); border:1px solid var(--hol-gold); }
 .heroes-of-legend.hol-roll-dialog .hol-attempt-choice { display:flex; flex-direction:row; align-items:center; gap:8px; }
 .heroes-of-legend.hol-roll-dialog .hol-attempt-choice input { width:auto; height:auto; }
+
+.heroes-of-legend.hol-hands .window-title { font-size: 14px; }
+.heroes-of-legend.hol-hands input[type="checkbox"] { width: 20px; height: 20px; padding: 0; }

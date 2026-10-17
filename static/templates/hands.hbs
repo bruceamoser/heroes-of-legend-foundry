@@ -1,0 +1,8 @@
+<section class="hol-body"><header class="hol-banner"><h1>{{name}}</h1><p>Hands and equipment</p></header>
+<p data-hand-summary aria-live="polite">{{summary}}</p><p class="hol-note">Holding one item from a stack occupies its required hands. All carried items still count toward Bulk.</p>
+{{#if encounter}}<p class="hol-note">During an encounter this panel records a DA correction with a reason. Drawing, stowing and picking up are not free actions through this panel.</p>{{else}}<p class="hol-note">Prepare your hands before the encounter.</p>{{/if}}
+<fieldset {{#unless editable}}disabled{{/unless}}>
+<label>Hand capacity<input name="capacity" type="number" min="0" step="1" value="{{capacity}}" {{#unless gm}}readonly{{/unless}}></label>
+{{#each items}}<div class="hol-pair" data-equipment-id="{{id}}"><label>{{name}} ({{quantity}} carried)<input name="hands" aria-label="Hands required for {{name}}" type="number" min="0" max="2" step="1" value="{{hands}}"></label><label>Holding one<input type="checkbox" name="held" {{checked held}}></label></div>{{else}}<p>No equipment carried.</p>{{/each}}
+{{#if gm}}<label>Reason for encounter correction or anatomy ruling<input name="reason" type="text"></label>{{/if}}
+{{#if editable}}<button type="button" data-action="save" class="hol-primary">Apply hand arrangement</button>{{/if}}</fieldset></section>

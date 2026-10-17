@@ -266,3 +266,7 @@ The rolling phase is durable before dice evaluation. A saved child result can se
 This replaces the earlier untracked repeat-roll limitation, but consequences remain manual. Reaction/ability costs, automatic damage/wounds and complete attack-perspective modifiers remain open #13/#14 and A03/A07 work.
 
 Validation: build/validation and 74 tests pass. Native 14.369 defense-response and NPC-attack suites pass after the final changes. Shared-source and coordinator regressions also pass. The new three-client scenario verifies racing submissions, independent defenders, native original authorship, explicit additional-attempt UI, stale-source rejection, blind mode, and no HP mutation. Saved-result recovery temporarily makes any new dice evaluation throw, proving settlement does not evaluate again. The unresolved-result fixture exercises the actual DA abandonment dialog. Native selected-Token identity is preserved through the attack-card roll path.
+
+### Held equipment (#68)
+
+`test:equipment` verifies owner preparation, native held stack state, exact replay, stale inventory rejection, DA-only reasoned encounter/anatomy corrections, observer denial and reload on isolated 14.369. The panel counts one held unit per stack and leaves all carried Bulk unchanged. Existing items default to unheld; hand capacity defaults to two until a DA anatomy ruling. Owned item sheets route hand changes through the arrangement panel. Draw/stow/pickup timing and ground transfers are not implemented by this preparation panel.

@@ -151,24 +151,16 @@ async function waitForAbility(definitionId, actorId = fixture.hero) {
     async ({ definitionId, actorUuid, combatUuid }) => {
       const deadline = Date.now() + 15000;
       while (Date.now() < deadline) {
-        const message = game.messages.find(
-          (entry) => {
-            const request = entry.getFlag(
-              "heroes-of-legend",
-              "abilityRequest",
-            );
-            const status = entry.getFlag(
-              "heroes-of-legend",
-              "abilityStatus",
-            );
-            return (
-              request?.actorUuid === actorUuid &&
-              request?.combatUuid === combatUuid &&
-              status?.definitionId === definitionId &&
-              status?.status === "complete"
-            );
-          },
-        );
+        const message = game.messages.find((entry) => {
+          const request = entry.getFlag("heroes-of-legend", "abilityRequest");
+          const status = entry.getFlag("heroes-of-legend", "abilityStatus");
+          return (
+            request?.actorUuid === actorUuid &&
+            request?.combatUuid === combatUuid &&
+            status?.definitionId === definitionId &&
+            status?.status === "complete"
+          );
+        });
         if (message) return message.id;
         await new Promise((resolve) => setTimeout(resolve, 100));
       }
@@ -298,7 +290,7 @@ try {
       {
         name: hero.name,
         actorId: hero.id,
-        actorLink: false,
+        actorLink: true,
         x: 100,
         y: 100,
       },
@@ -394,6 +386,7 @@ try {
     .getByRole("button", { name: "Use Defend", exact: true })
     .click();
   await waitForAbility("ability-defend");
+  await gm.page.locator(".hol-ability [data-action=close]").click();
   let s = await state();
   assert.equal(s.budget.remaining.maneuver, 0);
   assert.deepEqual(
@@ -408,6 +401,15 @@ try {
         "/systems/heroes-of-legend/services/combat.mjs"
       );
     await resolveCombatRequest((await requestCombat(combat, "finish")).id);
+    if (
+      combat.getFlag("heroes-of-legend", "encounter").nextSide === "players"
+    ) {
+      await resolveCombatRequest(
+        (await requestCombat(combat, "choose", { id: f.interruptionCombatant }))
+          .id,
+      );
+      await resolveCombatRequest((await requestCombat(combat, "finish")).id);
+    }
     await resolveCombatRequest(
       (
         await requestCombat(combat, "choose", {
@@ -461,9 +463,7 @@ try {
     .click();
   let dialog = player.page.locator(".hol-roll-dialog");
   assert(
-    await dialog
-      .getByRole("button", { name: /Shield Block/ })
-      .isDisabled(),
+    await dialog.getByRole("button", { name: /Shield Block/ }).isDisabled(),
   );
   assert.match(await dialog.innerText(), /A held shield is required/);
   assert.match(
@@ -480,6 +480,11 @@ try {
       .items.get(f.shieldItem)
       .update({ "system.held": true });
   }, fixture);
+  await player.page.waitForFunction(
+    (f) =>
+      game.actors.get(f.hero)?.items.get(f.shieldItem)?.system.held === true,
+    fixture,
+  );
   await player.page
     .locator(`[data-message-id="${attack}"] .hol-defend-button`)
     .filter({ visible: true })
@@ -487,9 +492,30 @@ try {
     .click();
   dialog = player.page.locator(".hol-roll-dialog");
   const shieldButton = dialog.getByRole("button", {
-    name: /Use Shield Block/,
+    name: /Shield Block/,
   });
-  assert.equal(await shieldButton.isEnabled(), true);
+  if (!(await shieldButton.isEnabled()))
+    console.error(
+      "Defense context",
+      await player.page.evaluate(
+        (f) => ({
+          heroUuid: game.actors.get(f.hero)?.uuid,
+          combats: game.combats.map((c) => ({
+            id: c.id,
+            participants: c.combatants.map((p) => ({
+              id: p.id,
+              actorUuid: p.actor?.uuid,
+            })),
+            state: c.getFlag("heroes-of-legend", "encounter"),
+          })),
+          attack: game.messages
+            .get(f.attack)
+            ?.getFlag("heroes-of-legend", "attackCard"),
+        }),
+        { ...fixture, attack },
+      ),
+    );
+  assert.equal(await shieldButton.isEnabled(), true, await dialog.innerText());
   assert.match(await dialog.innerText(), /No Maneuver remains for Defend/);
   assert.match(await dialog.innerText(), /defender's own turn/);
   const beforeItems = (await state()).items.length;
@@ -498,10 +524,10 @@ try {
   s = await state();
   assert.equal(s.pending, null);
   assert.equal(s.budget.remaining.reaction, 0);
-  assert.deepEqual(
-    s.effects.map((effect) => effect.key).sort(),
-    ["defend", "shield-block"],
-  );
+  assert.deepEqual(s.effects.map((effect) => effect.key).sort(), [
+    "defend",
+    "shield-block",
+  ]);
   assert.equal(s.items.length, beforeItems);
   assert.equal(
     await gm.page.evaluate(
@@ -514,22 +540,22 @@ try {
     ),
     0,
   );
-  await player.page.waitForFunction(
-    () =>
-      document
-        .querySelector(".hol-roll-dialog .hol-roll-sources")
-        ?.innerText.includes("Shield Block"),
+  await player.page.waitForFunction(() =>
+    document
+      .querySelector(".hol-roll-dialog .hol-roll-sources")
+      ?.innerText.includes("Shield Block"),
   );
   assert.match(
     await dialog.locator(".hol-roll-sources").innerText(),
     /Defend maneuver[\s\S]*Shield Block/,
   );
   assert(
-    await dialog
-      .getByRole("button", { name: /Shield Block/ })
-      .isDisabled(),
+    await dialog.getByRole("button", { name: /Shield Block/ }).isDisabled(),
   );
-  assert.match(await dialog.innerText(), /No Reaction remains for Shield Block/);
+  assert.match(
+    await dialog.innerText(),
+    /No Reaction remains for Shield Block/,
+  );
   await screenshot("shield-block-defense-dialog");
   await dialog.getByRole("button", { name: "Roll", exact: true }).click();
   await gm.page.waitForFunction(
@@ -542,10 +568,12 @@ try {
   );
   const roll = await gm.page.evaluate(
     (id) =>
-      game.messages.find(
-        (message) =>
-          message.getFlag("heroes-of-legend", "roll")?.attackMessageId === id,
-      ).getFlag("heroes-of-legend", "roll"),
+      game.messages
+        .find(
+          (message) =>
+            message.getFlag("heroes-of-legend", "roll")?.attackMessageId === id,
+        )
+        .getFlag("heroes-of-legend", "roll"),
     attack,
   );
   assert.deepEqual(
@@ -555,23 +583,26 @@ try {
   assert.equal(roll.boons, 2);
 
   // Replaying the settled reservation cannot spend a second Reaction or add another effect.
-  const authorship = await gm.page.evaluate(async ({ id, combat }) => {
-    const message = game.messages.get(id),
-      request = message.getFlag("heroes-of-legend", "abilityRequest"),
-      operation = game.combats
-        .get(combat)
-        .getFlag("heroes-of-legend", "abilityOperations")[id],
-      item = await fromUuid(request.itemUuid);
-    return {
-      messageAuthor: message.author.id,
-      operationAuthor: operation.authorId,
-      operationSource: operation.source,
-      itemSource: item.getFlag("heroes-of-legend", "source"),
-      receiptSource: game.actors
-        .get(request.actorUuid.split(".")[1])
-        .getFlag("heroes-of-legend", "abilityEffectReceipts")[id].source,
-    };
-  }, { id: shieldBlockRequest, combat: fixture.combat });
+  const authorship = await gm.page.evaluate(
+    async ({ id, combat }) => {
+      const message = game.messages.get(id),
+        request = message.getFlag("heroes-of-legend", "abilityRequest"),
+        operation = game.combats
+          .get(combat)
+          .getFlag("heroes-of-legend", "abilityOperations")[id],
+        item = await fromUuid(request.itemUuid);
+      return {
+        messageAuthor: message.author.id,
+        operationAuthor: operation.authorId,
+        operationSource: operation.source,
+        itemSource: item.getFlag("heroes-of-legend", "source"),
+        receiptSource: game.actors
+          .get(request.actorUuid.split(".")[1])
+          .getFlag("heroes-of-legend", "abilityEffectReceipts")[id].source,
+      };
+    },
+    { id: shieldBlockRequest, combat: fixture.combat },
+  );
   assert.equal(authorship.messageAuthor, fixture.player);
   assert.equal(authorship.operationAuthor, fixture.player);
   assert.deepEqual(authorship.operationSource, authorship.itemSource);
@@ -581,12 +612,15 @@ try {
     "bd890d5b177b2c0eded18b75901adba56c0162c25f7f6a4710298cd662421e94",
   );
   const beforeReplay = await state();
-  const replay = await gm.page.evaluate(async ({ id, combat }) => {
-    const { resolveAbilityRequest } = await import(
-      "/systems/heroes-of-legend/services/abilities.mjs"
-    );
-    return resolveAbilityRequest(id, `Combat.${combat}`);
-  }, { id: shieldBlockRequest, combat: fixture.combat });
+  const replay = await gm.page.evaluate(
+    async ({ id, combat }) => {
+      const { resolveAbilityRequest } = await import(
+        "/systems/heroes-of-legend/services/abilities.mjs"
+      );
+      return resolveAbilityRequest(id, `Combat.${combat}`);
+    },
+    { id: shieldBlockRequest, combat: fixture.combat },
+  );
   assert(replay.replay);
   assert.deepEqual(await state(), beforeReplay);
 
@@ -594,9 +628,7 @@ try {
   const denied = await createAttack({ blockable: false });
   dialog = await openPrompt(denied);
   assert(
-    await dialog
-      .getByRole("button", { name: /Shield Block/ })
-      .isDisabled(),
+    await dialog.getByRole("button", { name: /Shield Block/ }).isDisabled(),
   );
   assert.match(await dialog.innerText(), /judged this attack not blockable/);
   assert.doesNotMatch(
@@ -607,11 +639,12 @@ try {
   const legacy = await createAttack({ legacy: true });
   dialog = await openPrompt(legacy);
   assert(
-    await dialog
-      .getByRole("button", { name: /Shield Block/ })
-      .isDisabled(),
+    await dialog.getByRole("button", { name: /Shield Block/ }).isDisabled(),
   );
-  assert.match(await dialog.innerText(), /has not judged this attack blockable/);
+  assert.match(
+    await dialog.innerText(),
+    /has not judged this attack blockable/,
+  );
   assert.equal(
     await dialog.getByRole("button", { name: "Roll", exact: true }).isEnabled(),
     true,
@@ -626,17 +659,12 @@ try {
   const tamperedReview = await player.page.evaluate(
     async ({ actor, attack }) => {
       const { rollBasis } = await import(
-        "/systems/heroes-of-legend/services/roll-preparation.mjs"
-      ),
+          "/systems/heroes-of-legend/services/roll-preparation.mjs"
+        ),
         { reviewedDefenseAbilityOptions } = await import(
           "/systems/heroes-of-legend/services/abilities.mjs"
         ),
-        basis = rollBasis(
-          game.actors.get(actor),
-          "agility",
-          "defense",
-          attack,
-        ),
+        basis = rollBasis(game.actors.get(actor), "agility", "defense", attack),
         shieldBlock = reviewedDefenseAbilityOptions(game.actors.get(actor), {
           attackMessageId: attack,
         }).options.find((option) => option.id === "ability-shield-block");
@@ -650,35 +678,27 @@ try {
   );
   assert.equal(tamperedReview.ordinaryBlockable, false);
   assert.equal(tamperedReview.shieldAvailable, false);
-  assert.match(
-    tamperedReview.reasons,
-    /DA judgment could not be verified/,
-  );
+  assert.match(tamperedReview.reasons, /DA judgment could not be verified/);
 
   // A reservation that loses its held shield is interrupted, not refunded or repeated.
   const interruptedAttack = await createAttack({ blockable: true });
-  await gm.page.evaluate(
-    (actorId) => {
-      const actor = game.actors.get(actorId),
-        native = actor.toObject.bind(actor);
-      actor.toObject = (...args) => {
-        const combats = game.combats.contents.filter((combat) => {
-          const pending = combat.getFlag("heroes-of-legend", "pendingAbility");
-          return (
-            pending &&
-            combat.getFlag("heroes-of-legend", "abilityOperations")?.[pending]
-              ?.actorUuid === actor.uuid
-          );
-        });
-        if (combats.length)
-          throw new Error(
-            "Injected failure after Shield Block reservation",
-          );
-        return native(...args);
-      };
-    },
-    fixture.interruptionHero,
-  );
+  await gm.page.evaluate((actorId) => {
+    const actor = game.actors.get(actorId),
+      native = actor.toObject.bind(actor);
+    actor.toObject = (...args) => {
+      const combats = game.combats.contents.filter((combat) => {
+        const pending = combat.getFlag("heroes-of-legend", "pendingAbility");
+        return (
+          pending &&
+          combat.getFlag("heroes-of-legend", "abilityOperations")?.[pending]
+            ?.actorUuid === actor.uuid
+        );
+      });
+      if (combats.length)
+        throw new Error("Injected failure after Shield Block reservation");
+      return native(...args);
+    };
+  }, fixture.interruptionHero);
   const interruptedRequest = await player.page.evaluate(
     async (f) => {
       const { requestAbility } = await import(
@@ -740,15 +760,12 @@ try {
     (actorId) => delete game.actors.get(actorId).toObject,
     fixture.interruptionHero,
   );
-  await gm.page.evaluate(
-    async (f) => {
-      await game.actors
-        .get(f.interruptionHero)
-        .items.get(f.interruptionShieldItem)
-        .update({ "system.held": false });
-    },
-    fixture,
-  );
+  await gm.page.evaluate(async (f) => {
+    await game.actors
+      .get(f.interruptionHero)
+      .items.get(f.interruptionShieldItem)
+      .update({ "system.held": false });
+  }, fixture);
   // Recovery uses the operation's stored request and author after this entry is gone.
   await gm.page.evaluate(
     async (id) => game.messages.get(id).delete(),
@@ -766,9 +783,7 @@ try {
     .click();
   await gm.page.waitForFunction(
     (f) =>
-      !game.combats
-        .get(f.combat)
-        .getFlag("heroes-of-legend", "pendingAbility"),
+      !game.combats.get(f.combat).getFlag("heroes-of-legend", "pendingAbility"),
     fixture,
   );
   const interrupted = await actorState(fixture.interruptionCombatant);
@@ -802,10 +817,10 @@ try {
   );
   await closePrompt(dialog);
   s = await state();
-  assert.deepEqual(
-    s.effects.map((effect) => effect.key).sort(),
-    ["defend", "shield-block"],
-  );
+  assert.deepEqual(s.effects.map((effect) => effect.key).sort(), [
+    "defend",
+    "shield-block",
+  ]);
 
   // Selecting the hero's next turn expires both anchors and reconciles native effects.
   await gm.page.evaluate(async (f) => {
@@ -828,8 +843,7 @@ try {
         .get(f.hero)
         .effects.filter(
           (effect) =>
-            effect.getFlag("heroes-of-legend", "benefit") &&
-            !effect.disabled,
+            effect.getFlag("heroes-of-legend", "benefit") && !effect.disabled,
         ).length === 0,
     fixture,
   );
@@ -884,9 +898,7 @@ try {
     true,
   );
   assert(
-    await dialog
-      .getByRole("button", { name: /Shield Block/ })
-      .isDisabled(),
+    await dialog.getByRole("button", { name: /Shield Block/ }).isDisabled(),
   );
   await dialog.getByRole("button", { name: "Roll", exact: true }).click();
   await gm.page.waitForFunction(
@@ -916,9 +928,9 @@ try {
 } finally {
   await player?.context.close();
   const cleanupFixture = gm
-    ? (await gm.page
+    ? ((await gm.page
         .evaluate(() => globalThis.__holShieldBlockFixture ?? null)
-        .catch(() => null)) ?? fixture
+        .catch(() => null)) ?? fixture)
     : fixture;
   if (gm && cleanupFixture)
     await gm.page

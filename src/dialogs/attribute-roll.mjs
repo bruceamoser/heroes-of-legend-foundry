@@ -103,7 +103,10 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       defense: this.mode === "defense",
       notice: this.notice,
       draft: this.draft,
-      abilities: this.abilityOptions,
+      abilities: this.abilityOptions.map((option) => ({
+        ...option,
+        reasonText: option.reasons.join(" "),
+      })),
       fears: fears.map((source, index) => ({
         source,
         index,
@@ -129,6 +132,33 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       ),
     };
   }
+  refreshDefenseAbilities() {
+    if (this.mode !== "defense") return;
+    const options = reviewedDefenseAbilityOptions(this.actor, {
+      attackMessageId: this.attackMessageId,
+      defenderTokenUuid: this.defenderTokenUuid,
+      additionalAttempt: this.draft.additionalAttempt,
+      attemptReason: this.draft.attemptReason,
+    }).options;
+    this.abilityOptions = options;
+    this.abilityPending = options.some((option) => option.pending);
+    const list = this.element.querySelector(".hol-defense-abilities");
+    if (!list) return;
+    const rows = new Map(
+      Array.from(list.children, (row) => [row.dataset.itemId, row]),
+    );
+    for (const option of options) {
+      const row = rows.get(option.itemId);
+      if (!row) continue;
+      row.classList.toggle("hol-unavailable", !option.available);
+      const button = row.querySelector('[data-action="useAbility"]');
+      button.disabled = this.activating || !option.available;
+      button.textContent = `${option.available ? "Use " : ""}${option.name}`;
+      row.querySelector(".hol-ability-reason").textContent =
+        option.reasons.join(" ");
+      list.append(row);
+    }
+  }
   preview() {
     const list = this.element.querySelector(".hol-roll-sources"),
       output = this.element.querySelector("output"),
@@ -136,6 +166,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       button = this.element.querySelector('[data-action="roll"]');
     list.replaceChildren();
     try {
+      this.refreshDefenseAbilities();
       const plan = prepareRoll(this.basis, this.draft);
       for (const source of plan.sources) {
         const li = document.createElement("li");
@@ -161,12 +192,6 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
     this.element.querySelector(".hol-body").addEventListener("input", () => {
       this.readDraft();
       this.preview();
-    });
-    this.element.querySelector(".hol-body").addEventListener("change", (event) => {
-      if (!["additionalAttempt", "attemptReason"].includes(event.target.name))
-        return;
-      this.readDraft();
-      this.render();
     });
     this.preview();
   }

@@ -1,0 +1,1294 @@
+{
+  "schemaVersion": 1,
+  "provenance": {
+    "repository": "bruceamoser/heroes-of-legend",
+    "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+    "index": {
+      "path": "design/characters/README.md",
+      "sha256": "8a2ef61dc111e2e577e51ed3d3af357dac51ccefd41373ba482d9e8cb3f1bbde"
+    },
+    "characters": {
+      "borin-bridgekeeper": {
+        "path": "design/characters/borin-bridgekeeper.md",
+        "sha256": "64ce8bd9fe11bcc2271732e09e2bbc1b6a824b3ecd1b24db62b7ce43a427f076"
+      },
+      "lira-ashbow": {
+        "path": "design/characters/lira-ashbow.md",
+        "sha256": "4ef51e8b257e4a0665ab82dd921fcb5d73c38463d043d09b990d834d749e9614"
+      },
+      "mara-reedheart": {
+        "path": "design/characters/mara-reedheart.md",
+        "sha256": "599baaae501ffabc32d7e0f7aa1cfc686ea7d8a038c22552a4345c6825bbe686"
+      },
+      "oren-brass": {
+        "path": "design/characters/oren-brass.md",
+        "sha256": "6bc3a9570b916218ef6d8150816d4ae898ac1e4216f4910caa04df46a2e045b7"
+      },
+      "pip-copperwink": {
+        "path": "design/characters/pip-copperwink.md",
+        "sha256": "6e55bcdef1c33db36c97ad1e916d91241839dcb65342d5fbac40e9dfb5c0e4ad"
+      },
+      "vaelis-emberglass": {
+        "path": "design/characters/vaelis-emberglass.md",
+        "sha256": "b5585ecd1f072768bc2441f777717a00f1a57de068d47d1e6c783978194ba276"
+      }
+    }
+  },
+  "campaignLanguages": [
+    {
+      "id": "reed-speech",
+      "name": "Reed Speech",
+      "ordinary": true,
+      "form": "spoken",
+      "writing": true
+    },
+    {
+      "id": "river-speech",
+      "name": "River Speech",
+      "ordinary": true,
+      "form": "spoken",
+      "writing": true
+    }
+  ],
+  "characters": [
+    {
+      "id": "borin-bridgekeeper",
+      "name": "Borin Bridgekeeper",
+      "draft": {
+        "name": "Borin Bridgekeeper",
+        "attributes": {
+          "brawn": 1,
+          "fortitude": 2,
+          "agility": 0,
+          "guile": 0,
+          "knowledge": -1,
+          "reason": 1
+        },
+        "ancestryId": "ancestry-dwarf",
+        "traitIds": [
+          "trait-dwarf-deep-constitution",
+          "trait-dwarf-carved-history"
+        ],
+        "languages": {
+          "home": "dwarven",
+          "extraSpoken": []
+        },
+        "culture": {
+          "id": "origin-culture-walled-communities",
+          "pair": 0
+        },
+        "background": {
+          "id": "origin-background-household-guard",
+          "pair": 0
+        },
+        "classId": "class-protector",
+        "classDisciplines": ["discipline-armor", "discipline-guard"],
+        "signatureId": "ability-signature-protector-between-them",
+        "purchases": {
+          "0": [
+            {
+              "id": "ability-braced-harness"
+            },
+            {
+              "id": "ability-take-them-alive"
+            },
+            {
+              "id": "ability-conditioned-body"
+            },
+            {
+              "id": "ability-catch-a-falling-friend"
+            },
+            {
+              "id": "ability-tell-a-worthy-story"
+            }
+          ],
+          "1": [
+            {
+              "id": "ability-shielding-step"
+            },
+            {
+              "id": "discipline-medicine",
+              "rank": 1
+            },
+            {
+              "id": "ability-treat-soft-tissue"
+            },
+            {
+              "id": "discipline-athletics",
+              "rank": 1
+            },
+            {
+              "id": "ability-sure-ascent"
+            }
+          ]
+        },
+        "acquisitions": {
+          "ability-hook-and-drive": {
+            "meleeHands": 1
+          }
+        },
+        "shopping": [
+          {
+            "id": "item-travel-pack",
+            "quantity": 1,
+            "hands": 0
+          },
+          {
+            "id": "item-sleeping-roll",
+            "quantity": 1,
+            "hands": 0
+          },
+          {
+            "id": "item-water-flask",
+            "quantity": 1,
+            "hands": 0
+          },
+          {
+            "id": "item-food-bundle",
+            "quantity": 1,
+            "hands": 0
+          },
+          {
+            "id": "item-lighting-bundle",
+            "quantity": 1,
+            "hands": 0
+          },
+          {
+            "id": "item-rope-coil",
+            "quantity": 1,
+            "hands": 0
+          },
+          {
+            "id": "item-small-necessities",
+            "quantity": 1,
+            "hands": 0
+          },
+          {
+            "id": "item-lesser-healing-bottle",
+            "quantity": 1,
+            "hands": 0
+          }
+        ]
+      },
+      "expected": {
+        "identity": {
+          "attributes": {
+            "brawn": 1,
+            "fortitude": 2,
+            "agility": 0,
+            "guile": 0,
+            "knowledge": -1,
+            "reason": 1
+          },
+          "ancestryId": "ancestry-dwarf",
+          "traitIds": [
+            "trait-dwarf-deep-constitution",
+            "trait-dwarf-carved-history"
+          ],
+          "classId": "class-protector",
+          "classDisciplines": ["discipline-armor", "discipline-guard"],
+          "signatureId": "ability-signature-protector-between-them"
+        },
+        "origins": [
+          [
+            "culture",
+            "origin-culture-walled-communities",
+            0,
+            "discipline-armor",
+            "ability-wear-medium-armor"
+          ],
+          [
+            "background",
+            "origin-background-household-guard",
+            0,
+            "discipline-arms",
+            "ability-hook-and-drive"
+          ]
+        ],
+        "stages": [
+          [10, 0, 10, 0],
+          [10, 1, 11, 0]
+        ],
+        "stats": {
+          "hp": 25,
+          "gritGranted": 2,
+          "gritSpent": 0,
+          "stability": 0,
+          "speed": 5,
+          "capacity": 13,
+          "bulk": 11,
+          "coins": [64, 51, 13]
+        },
+        "abilities": [
+          "ability-braced-harness",
+          "ability-catch-a-falling-friend",
+          "ability-conditioned-body",
+          "ability-hook-and-drive",
+          "ability-shielding-step",
+          "ability-signature-protector-between-them",
+          "ability-sure-ascent",
+          "ability-take-them-alive",
+          "ability-tell-a-worthy-story",
+          "ability-treat-soft-tissue",
+          "ability-wear-medium-armor"
+        ],
+        "ranks": {
+          "discipline-armor": 1,
+          "discipline-arms": 1,
+          "discipline-athletics": 1,
+          "discipline-guard": 1,
+          "discipline-medicine": 1
+        },
+        "recipes": [],
+        "languages": [
+          ["common", "Common", "full"],
+          ["dwarven", "Dwarven", "full"]
+        ],
+        "items": [
+          ["item-food-bundle", 0],
+          ["item-lesser-healing-bottle", 0],
+          ["item-lighting-bundle", 0],
+          ["item-ordinary-medium-armor", 0],
+          ["item-ordinary-melee-weapon", 1],
+          ["item-ordinary-shield", 1],
+          ["item-rope-coil", 0],
+          ["item-sleeping-roll", 0],
+          ["item-small-necessities", 0],
+          ["item-travel-clothes", 0],
+          ["item-travel-pack", 0],
+          ["item-water-flask", 0]
+        ]
+      }
+    },
+    {
+      "id": "lira-ashbow",
+      "name": "Lira Ashbow",
+      "draft": {
+        "name": "Lira Ashbow",
+        "attributes": {
+          "brawn": 0,
+          "fortitude": 1,
+          "agility": 2,
+          "guile": 0,
+          "knowledge": 1,
+          "reason": -1
+        },
+        "ancestryId": "ancestry-elf",
+        "traitIds": ["trait-elf-light-tread", "trait-elf-leaf-listener"],
+        "languages": {
+          "home": "elven",
+          "extraSpoken": []
+        },
+        "culture": {
+          "id": "origin-culture-forest-communities",
+          "pair": 0
+        },
+        "background": {
+          "id": "origin-background-messenger",
+          "pair": 0
+        },
+        "classId": "class-blade",
+        "classDisciplines": ["discipline-arms", "discipline-athletics"],
+        "signatureId": "ability-signature-blade-measured-guard",
+        "purchases": {
+          "0": [
+            {
+              "id": "ability-read-the-quarry"
+            },
+            {
+              "id": "ability-take-the-measure"
+            },
+            {
+              "id": "ability-roots-remember-feet"
+            },
+            {
+              "id": "ability-a-good-place-to-stop"
+            },
+            {
+              "id": "ability-guide-a-frightened-animal"
+            }
+          ],
+          "1": [
+            {
+              "id": "ability-hook-and-drive"
+            },
+            {
+              "id": "ability-a-knot-you-can-trust"
+            },
+            {
+              "id": "ability-sure-ascent"
+            },
+            {
+              "id": "ability-expert-river-crossing"
+            },
+            {
+              "id": "ability-conditioned-body"
+            }
+          ]
+        },
+        "acquisitions": {
+          "ability-hook-and-drive": {
+            "meleeHands": 1
+          }
+        },
+        "shopping": [
+          {
+            "id": "item-travel-pack",
+            "quantity": 1,
+            "hands": 0
+          },
+          {
+            "id": "item-sleeping-roll",
+            "quantity": 1,
+            "hands": 0
+          },
+          {
+            "id": "item-water-flask",
+            "quantity": 1,
+            "hands": 0
+          },
+          {
+            "id": "item-food-bundle",
+            "quantity": 1,
+            "hands": 0
+          },
+          {
+            "id": "item-lighting-bundle",
+            "quantity": 1,
+            "hands": 0
+          },
+          {
+            "id": "item-lesser-healing-bottle",
+            "quantity": 1,
+            "hands": 0
+          }
+        ]
+      },
+      "expected": {
+        "identity": {
+          "attributes": {
+            "brawn": 0,
+            "fortitude": 1,
+            "agility": 2,
+            "guile": 0,
+            "knowledge": 1,
+            "reason": -1
+          },
+          "ancestryId": "ancestry-elf",
+          "traitIds": ["trait-elf-light-tread", "trait-elf-leaf-listener"],
+          "classId": "class-blade",
+          "classDisciplines": ["discipline-arms", "discipline-athletics"],
+          "signatureId": "ability-signature-blade-measured-guard"
+        },
+        "origins": [
+          [
+            "culture",
+            "origin-culture-forest-communities",
+            0,
+            "discipline-wilderness",
+            "ability-forage-woodland"
+          ],
+          [
+            "background",
+            "origin-background-messenger",
+            0,
+            "discipline-marksmanship",
+            "ability-pinning-shot"
+          ]
+        ],
+        "stages": [
+          [10, 0, 10, 0],
+          [10, 0, 10, 0]
+        ],
+        "stats": {
+          "hp": 20,
+          "gritGranted": 2,
+          "gritSpent": 0,
+          "stability": 0,
+          "speed": 8,
+          "capacity": 10,
+          "bulk": 10,
+          "coins": [58, 44, 14]
+        },
+        "abilities": [
+          "ability-a-good-place-to-stop",
+          "ability-a-knot-you-can-trust",
+          "ability-conditioned-body",
+          "ability-expert-river-crossing",
+          "ability-forage-woodland",
+          "ability-guide-a-frightened-animal",
+          "ability-hook-and-drive",
+          "ability-pinning-shot",
+          "ability-read-the-quarry",
+          "ability-roots-remember-feet",
+          "ability-signature-blade-measured-guard",
+          "ability-sure-ascent",
+          "ability-take-the-measure"
+        ],
+        "ranks": {
+          "discipline-arms": 1,
+          "discipline-athletics": 1,
+          "discipline-marksmanship": 1,
+          "discipline-wilderness": 1
+        },
+        "recipes": [],
+        "languages": [
+          ["common", "Common", "full"],
+          ["elven", "Elven", "full"]
+        ],
+        "items": [
+          ["item-ammunition-bundle", 0],
+          ["item-food-bundle", 0],
+          ["item-lesser-healing-bottle", 0],
+          ["item-lighting-bundle", 0],
+          ["item-ordinary-melee-weapon", 1],
+          ["item-ordinary-ranged-weapon", 2],
+          ["item-rope-coil", 0],
+          ["item-sleeping-roll", 0],
+          ["item-travel-clothes", 0],
+          ["item-travel-pack", 0],
+          ["item-water-flask", 0]
+        ]
+      }
+    },
+    {
+      "id": "mara-reedheart",
+      "name": "Mara Reedheart",
+      "draft": {
+        "name": "Mara Reedheart",
+        "attributes": {
+          "brawn": 0,
+          "fortitude": 1,
+          "agility": 0,
+          "guile": 0,
+          "knowledge": 0,
+          "reason": 2
+        },
+        "ancestryId": "ancestry-human",
+        "traitIds": ["trait-human-far-walker", "trait-human-shared-table"],
+        "languages": {
+          "home": "reed-speech",
+          "extraSpoken": []
+        },
+        "culture": {
+          "id": "origin-culture-forest-communities",
+          "pair": 0
+        },
+        "background": {
+          "id": "origin-background-grove-tended",
+          "pair": 0
+        },
+        "classId": "class-shepherd",
+        "classDisciplines": ["discipline-life", "discipline-medicine"],
+        "signatureId": "ability-signature-shepherd-gentle-return",
+        "purchases": {
+          "0": [
+            {
+              "id": "ability-roots-remember-feet"
+            },
+            {
+              "id": "ability-borrow-the-beast"
+            },
+            {
+              "id": "ability-guide-a-frightened-animal"
+            },
+            {
+              "id": "ability-a-good-place-to-stop"
+            },
+            {
+              "id": "ability-the-otter-s-bargain"
+            },
+            {
+              "id": "ability-keep-the-door-closed"
+            }
+          ],
+          "1": [
+            {
+              "id": "discipline-radiance",
+              "rank": 1
+            },
+            {
+              "id": "ability-lantern-in-the-palm"
+            },
+            {
+              "id": "ability-dawn-shard"
+            },
+            {
+              "id": "ability-treat-soft-tissue"
+            },
+            {
+              "id": "ability-treat-bone"
+            },
+            {
+              "id": "ability-relieve-poison"
+            },
+            {
+              "id": "ability-rouse-the-senses"
+            }
+          ]
+        },
+        "acquisitions": {},
+        "shopping": [
+          {
+            "id": "item-travel-pack",
+            "quantity": 1,
+            "hands": 0
+          },
+          {
+            "id": "item-sleeping-roll",
+            "quantity": 1,
+            "hands": 0
+          },
+          {
+            "id": "item-water-flask",
+            "quantity": 1,
+            "hands": 0
+          },
+          {
+            "id": "item-food-bundle",
+            "quantity": 1,
+            "hands": 0
+          },
+          {
+            "id": "item-rope-coil",
+            "quantity": 1,
+            "hands": 0
+          },
+          {
+            "id": "item-small-necessities",
+            "quantity": 1,
+            "hands": 0
+          },
+          {
+            "id": "item-lesser-healing-bottle",
+            "quantity": 1,
+            "hands": 0
+          }
+        ]
+      },
+      "expected": {
+        "identity": {
+          "attributes": {
+            "brawn": 0,
+            "fortitude": 1,
+            "agility": 0,
+            "guile": 0,
+            "knowledge": 0,
+            "reason": 2
+          },
+          "ancestryId": "ancestry-human",
+          "traitIds": ["trait-human-far-walker", "trait-human-shared-table"],
+          "classId": "class-shepherd",
+          "classDisciplines": ["discipline-life", "discipline-medicine"],
+          "signatureId": "ability-signature-shepherd-gentle-return"
+        },
+        "origins": [
+          [
+            "culture",
+            "origin-culture-forest-communities",
+            0,
+            "discipline-wilderness",
+            "ability-forage-woodland"
+          ],
+          [
+            "background",
+            "origin-background-grove-tended",
+            0,
+            "discipline-life",
+            "ability-sap-and-breath"
+          ]
+        ],
+        "stages": [
+          [12, 0, 12, 0],
+          [12, 1, 13, 0]
+        ],
+        "stats": {
+          "hp": 18,
+          "gritGranted": 2,
+          "gritSpent": 0,
+          "stability": 0,
+          "speed": 7,
+          "capacity": 10,
+          "bulk": 7,
+          "coins": [54, 46, 8]
+        },
+        "abilities": [
+          "ability-a-good-place-to-stop",
+          "ability-borrow-the-beast",
+          "ability-dawn-shard",
+          "ability-forage-woodland",
+          "ability-guide-a-frightened-animal",
+          "ability-keep-the-door-closed",
+          "ability-lantern-in-the-palm",
+          "ability-relieve-poison",
+          "ability-roots-remember-feet",
+          "ability-rouse-the-senses",
+          "ability-sap-and-breath",
+          "ability-signature-shepherd-gentle-return",
+          "ability-the-otter-s-bargain",
+          "ability-treat-bone",
+          "ability-treat-soft-tissue"
+        ],
+        "ranks": {
+          "discipline-life": 1,
+          "discipline-medicine": 1,
+          "discipline-radiance": 1,
+          "discipline-wilderness": 1
+        },
+        "recipes": [],
+        "languages": [
+          ["common", "Common", "full"],
+          ["reed-speech", "Reed Speech", "full"]
+        ],
+        "items": [
+          ["item-food-bundle", 0],
+          ["item-lesser-healing-bottle", 0],
+          ["item-rope-coil", 0],
+          ["item-sleeping-roll", 0],
+          ["item-small-necessities", 0],
+          ["item-travel-clothes", 0],
+          ["item-travel-pack", 0],
+          ["item-water-flask", 0]
+        ]
+      }
+    },
+    {
+      "id": "oren-brass",
+      "name": "Oren Brass",
+      "draft": {
+        "name": "Oren Brass",
+        "attributes": {
+          "brawn": 0,
+          "fortitude": 0,
+          "agility": 0,
+          "guile": 1,
+          "knowledge": 2,
+          "reason": 0
+        },
+        "ancestryId": "ancestry-human",
+        "traitIds": ["trait-human-far-walker", "trait-human-many-homes"],
+        "languages": {
+          "home": "river-speech",
+          "extraSpoken": ["dwarven", "harbor-cant"]
+        },
+        "culture": {
+          "id": "origin-culture-deep-halls",
+          "pair": 0
+        },
+        "background": {
+          "id": "origin-background-court-questioner",
+          "pair": 0
+        },
+        "classId": "class-intellect",
+        "classDisciplines": ["discipline-craft", "discipline-scholarship"],
+        "signatureId": "ability-signature-intellect-make-the-connection",
+        "purchases": {
+          "0": [
+            {
+              "id": "ability-make-something-useful"
+            },
+            {
+              "id": "ability-ordinary-recipe-study",
+              "recipeIds": [
+                "recipe-wooden-brace",
+                "recipe-simple-replacement-leg"
+              ]
+            },
+            {
+              "id": "ability-identify-an-enchantment"
+            },
+            {
+              "id": "ability-identify-a-mixture"
+            },
+            {
+              "id": "ability-read-the-remains"
+            },
+            {
+              "id": "ability-conditioned-body"
+            }
+          ],
+          "1": [
+            {
+              "id": "discipline-medicine",
+              "rank": 1
+            },
+            {
+              "id": "ability-treat-soft-tissue"
+            },
+            {
+              "id": "ability-treat-bone"
+            },
+            {
+              "id": "ability-treat-mental-trauma"
+            },
+            {
+              "id": "ability-rouse-the-senses"
+            },
+            {
+              "id": "discipline-athletics",
+              "rank": 1
+            },
+            {
+              "id": "ability-sure-ascent"
+            }
+          ]
+        },
+        "acquisitions": {
+          "ability-trail-workshop": {
+            "recipes": ["recipe-bound-torches", "recipe-fletched-ammunition"]
+          },
+          "ability-anatomy-of-an-opening": {
+            "weapon": "melee",
+            "meleeHands": 1
+          },
+          "ability-make-something-useful": {
+            "recipes": ["recipe-travel-food", "recipe-twisted-cord"]
+          }
+        },
+        "shopping": [
+          {
+            "id": "item-travel-pack",
+            "quantity": 1,
+            "hands": 0
+          },
+          {
+            "id": "item-sleeping-roll",
+            "quantity": 1,
+            "hands": 0
+          },
+          {
+            "id": "item-water-flask",
+            "quantity": 1,
+            "hands": 0
+          },
+          {
+            "id": "item-food-bundle",
+            "quantity": 1,
+            "hands": 0
+          },
+          {
+            "id": "item-lighting-bundle",
+            "quantity": 1,
+            "hands": 0
+          },
+          {
+            "id": "item-lesser-healing-bottle",
+            "quantity": 1,
+            "hands": 0
+          },
+          {
+            "id": "item-material-bundle",
+            "quantity": 1,
+            "hands": 0
+          }
+        ]
+      },
+      "expected": {
+        "identity": {
+          "attributes": {
+            "brawn": 0,
+            "fortitude": 0,
+            "agility": 0,
+            "guile": 1,
+            "knowledge": 2,
+            "reason": 0
+          },
+          "ancestryId": "ancestry-human",
+          "traitIds": ["trait-human-far-walker", "trait-human-many-homes"],
+          "classId": "class-intellect",
+          "classDisciplines": ["discipline-craft", "discipline-scholarship"],
+          "signatureId": "ability-signature-intellect-make-the-connection"
+        },
+        "origins": [
+          [
+            "culture",
+            "origin-culture-deep-halls",
+            0,
+            "discipline-craft",
+            "ability-trail-workshop"
+          ],
+          [
+            "background",
+            "origin-background-court-questioner",
+            0,
+            "discipline-scholarship",
+            "ability-anatomy-of-an-opening"
+          ]
+        ],
+        "stages": [
+          [13, 0, 12, 1],
+          [13, 2, 15, 0]
+        ],
+        "stats": {
+          "hp": 17,
+          "gritGranted": 2,
+          "gritSpent": 0,
+          "stability": 0,
+          "speed": 7,
+          "capacity": 10,
+          "bulk": 9,
+          "coins": [66, 56, 10]
+        },
+        "abilities": [
+          "ability-anatomy-of-an-opening",
+          "ability-conditioned-body",
+          "ability-identify-a-mixture",
+          "ability-identify-an-enchantment",
+          "ability-make-something-useful",
+          "ability-ordinary-recipe-study",
+          "ability-read-the-remains",
+          "ability-rouse-the-senses",
+          "ability-signature-intellect-make-the-connection",
+          "ability-sure-ascent",
+          "ability-trail-workshop",
+          "ability-treat-bone",
+          "ability-treat-mental-trauma",
+          "ability-treat-soft-tissue"
+        ],
+        "ranks": {
+          "discipline-athletics": 1,
+          "discipline-craft": 1,
+          "discipline-medicine": 1,
+          "discipline-scholarship": 1
+        },
+        "recipes": [
+          "recipe-bound-torches",
+          "recipe-fletched-ammunition",
+          "recipe-travel-food",
+          "recipe-twisted-cord",
+          "recipe-wooden-brace",
+          "recipe-simple-replacement-leg"
+        ],
+        "languages": [
+          ["common", "Common", "full"],
+          ["river-speech", "River Speech", "full"],
+          ["dwarven", "Dwarven", "spoken-only"],
+          ["harbor-cant", "Harbor Cant", "spoken-only"]
+        ],
+        "items": [
+          ["item-craft-tools", 0],
+          ["item-food-bundle", 0],
+          ["item-lesser-healing-bottle", 0],
+          ["item-lighting-bundle", 0],
+          ["item-material-bundle", 0],
+          ["item-ordinary-melee-weapon", 1],
+          ["item-sleeping-roll", 0],
+          ["item-travel-clothes", 0],
+          ["item-travel-pack", 0],
+          ["item-water-flask", 0]
+        ]
+      }
+    },
+    {
+      "id": "pip-copperwink",
+      "name": "Pip Copperwink",
+      "draft": {
+        "name": "Pip Copperwink",
+        "attributes": {
+          "brawn": 0,
+          "fortitude": 0,
+          "agility": 2,
+          "guile": 2,
+          "knowledge": 0,
+          "reason": -1
+        },
+        "ancestryId": "ancestry-halfling",
+        "traitIds": [
+          "trait-halfling-small-passage",
+          "trait-halfling-quiet-company"
+        ],
+        "languages": {
+          "home": "halfling",
+          "extraSpoken": []
+        },
+        "culture": {
+          "id": "origin-culture-free-harbors",
+          "pair": 1
+        },
+        "background": {
+          "id": "origin-background-confidence-artist",
+          "pair": 0
+        },
+        "classId": "class-shadow",
+        "classDisciplines": ["discipline-subterfuge", "discipline-athletics"],
+        "signatureId": "ability-signature-shadow-fade-behind",
+        "purchases": {
+          "0": [
+            {
+              "id": "ability-quiet-latch"
+            },
+            {
+              "id": "ability-step-between-lanterns"
+            },
+            {
+              "id": "ability-a-courtesy-unanswered"
+            },
+            {
+              "id": "ability-sell-the-feint"
+            },
+            {
+              "id": "ability-notice-the-human-detail"
+            }
+          ],
+          "1": [
+            {
+              "id": "discipline-mind",
+              "rank": 1
+            },
+            {
+              "id": "ability-borrow-a-voice"
+            },
+            {
+              "id": "ability-a-door-that-is-not-there"
+            },
+            {
+              "id": "ability-sure-ascent"
+            },
+            {
+              "id": "ability-a-knot-you-can-trust"
+            },
+            {
+              "id": "ability-invitation-to-the-blade"
+            }
+          ]
+        },
+        "acquisitions": {
+          "ability-smile-before-steel": {
+            "meleeHands": 1
+          },
+          "ability-a-courtesy-unanswered": {
+            "meleeHands": 1
+          },
+          "ability-invitation-to-the-blade": {
+            "meleeHands": 1
+          }
+        },
+        "shopping": [
+          {
+            "id": "item-travel-pack",
+            "quantity": 1,
+            "hands": 0
+          },
+          {
+            "id": "item-sleeping-roll",
+            "quantity": 1,
+            "hands": 0
+          },
+          {
+            "id": "item-water-flask",
+            "quantity": 1,
+            "hands": 0
+          },
+          {
+            "id": "item-food-bundle",
+            "quantity": 1,
+            "hands": 0
+          },
+          {
+            "id": "item-lighting-bundle",
+            "quantity": 1,
+            "hands": 0
+          },
+          {
+            "id": "item-small-necessities",
+            "quantity": 1,
+            "hands": 0
+          },
+          {
+            "id": "item-lesser-healing-bottle",
+            "quantity": 1,
+            "hands": 0
+          }
+        ]
+      },
+      "expected": {
+        "identity": {
+          "attributes": {
+            "brawn": 0,
+            "fortitude": 0,
+            "agility": 2,
+            "guile": 2,
+            "knowledge": 0,
+            "reason": -1
+          },
+          "ancestryId": "ancestry-halfling",
+          "traitIds": [
+            "trait-halfling-small-passage",
+            "trait-halfling-quiet-company"
+          ],
+          "classId": "class-shadow",
+          "classDisciplines": ["discipline-subterfuge", "discipline-athletics"],
+          "signatureId": "ability-signature-shadow-fade-behind"
+        },
+        "origins": [
+          [
+            "culture",
+            "origin-culture-free-harbors",
+            1,
+            "discipline-subterfuge",
+            "ability-the-key-changes-hands"
+          ],
+          [
+            "background",
+            "origin-background-confidence-artist",
+            0,
+            "discipline-arms",
+            "ability-smile-before-steel"
+          ]
+        ],
+        "stages": [
+          [11, 0, 10, 1],
+          [11, 1, 12, 0]
+        ],
+        "stats": {
+          "hp": 16,
+          "gritGranted": 2,
+          "gritSpent": 0,
+          "stability": 0,
+          "speed": 7,
+          "capacity": 10,
+          "bulk": 10,
+          "coins": [60, 46, 14]
+        },
+        "abilities": [
+          "ability-a-courtesy-unanswered",
+          "ability-a-door-that-is-not-there",
+          "ability-a-knot-you-can-trust",
+          "ability-borrow-a-voice",
+          "ability-invitation-to-the-blade",
+          "ability-notice-the-human-detail",
+          "ability-quiet-latch",
+          "ability-sell-the-feint",
+          "ability-signature-shadow-fade-behind",
+          "ability-smile-before-steel",
+          "ability-step-between-lanterns",
+          "ability-sure-ascent",
+          "ability-the-key-changes-hands"
+        ],
+        "ranks": {
+          "discipline-arms": 1,
+          "discipline-athletics": 1,
+          "discipline-mind": 1,
+          "discipline-subterfuge": 1
+        },
+        "recipes": [],
+        "languages": [
+          ["common", "Common", "full"],
+          ["halfling", "Halfling", "full"]
+        ],
+        "items": [
+          ["item-food-bundle", 0],
+          ["item-lesser-healing-bottle", 0],
+          ["item-lighting-bundle", 0],
+          ["item-lock-tools", 0],
+          ["item-ordinary-melee-weapon", 1],
+          ["item-rope-coil", 0],
+          ["item-sleeping-roll", 0],
+          ["item-small-necessities", 0],
+          ["item-travel-clothes", 0],
+          ["item-travel-pack", 0],
+          ["item-water-flask", 0]
+        ]
+      }
+    },
+    {
+      "id": "vaelis-emberglass",
+      "name": "Vaelis Emberglass",
+      "draft": {
+        "name": "Vaelis Emberglass",
+        "attributes": {
+          "brawn": -1,
+          "fortitude": 0,
+          "agility": 1,
+          "guile": 0,
+          "knowledge": 2,
+          "reason": 1
+        },
+        "ancestryId": "ancestry-elf",
+        "traitIds": ["trait-elf-age-of-memory", "trait-elf-star-familiar"],
+        "rememberedCommunity": "Emberglass Observatory",
+        "languages": {
+          "home": "elven",
+          "extraSpoken": []
+        },
+        "culture": {
+          "id": "origin-culture-learning-houses",
+          "pair": 1
+        },
+        "background": {
+          "id": "origin-background-weather-apprentice",
+          "pair": 1
+        },
+        "classId": "class-arcanist",
+        "classDisciplines": ["discipline-scholarship", "discipline-calling"],
+        "signatureId": "ability-signature-arcanist-deliberate-spark",
+        "purchases": {
+          "0": [
+            {
+              "id": "ability-breath-of-the-wyrmling"
+            },
+            {
+              "id": "ability-speak-with-the-hearth"
+            },
+            {
+              "id": "ability-a-coal-for-a-promise"
+            },
+            {
+              "id": "ability-conditioned-body"
+            },
+            {
+              "id": "ability-notice-the-human-detail"
+            },
+            {
+              "id": "ability-keep-your-bearings"
+            }
+          ],
+          "1": [
+            {
+              "id": "ability-read-the-remains"
+            },
+            {
+              "id": "ability-identify-an-enchantment"
+            },
+            {
+              "id": "ability-a-hand-from-before"
+            },
+            {
+              "id": "ability-a-friend-beneath-the-door"
+            },
+            {
+              "id": "discipline-storm",
+              "rank": 1
+            },
+            {
+              "id": "ability-gust-hammer"
+            }
+          ]
+        },
+        "acquisitions": {},
+        "shopping": [
+          {
+            "id": "item-travel-pack",
+            "quantity": 1,
+            "hands": 0
+          },
+          {
+            "id": "item-sleeping-roll",
+            "quantity": 1,
+            "hands": 0
+          },
+          {
+            "id": "item-water-flask",
+            "quantity": 1,
+            "hands": 0
+          },
+          {
+            "id": "item-food-bundle",
+            "quantity": 1,
+            "hands": 0
+          },
+          {
+            "id": "item-lighting-bundle",
+            "quantity": 1,
+            "hands": 0
+          },
+          {
+            "id": "item-rope-coil",
+            "quantity": 1,
+            "hands": 0
+          },
+          {
+            "id": "item-lesser-healing-bottle",
+            "quantity": 1,
+            "hands": 0
+          }
+        ]
+      },
+      "expected": {
+        "identity": {
+          "attributes": {
+            "brawn": -1,
+            "fortitude": 0,
+            "agility": 1,
+            "guile": 0,
+            "knowledge": 2,
+            "reason": 1
+          },
+          "ancestryId": "ancestry-elf",
+          "traitIds": ["trait-elf-age-of-memory", "trait-elf-star-familiar"],
+          "classId": "class-arcanist",
+          "classDisciplines": ["discipline-scholarship", "discipline-calling"],
+          "signatureId": "ability-signature-arcanist-deliberate-spark"
+        },
+        "origins": [
+          [
+            "culture",
+            "origin-culture-learning-houses",
+            1,
+            "discipline-flame",
+            "ability-cinder-cast"
+          ],
+          [
+            "background",
+            "origin-background-weather-apprentice",
+            1,
+            "discipline-frost",
+            "ability-rime-grip"
+          ]
+        ],
+        "stages": [
+          [13, 0, 12, 1],
+          [13, 0, 12, 1]
+        ],
+        "stats": {
+          "hp": 17,
+          "gritGranted": 2,
+          "gritSpent": 0,
+          "stability": 0,
+          "speed": 7,
+          "capacity": 7,
+          "bulk": 7,
+          "coins": [65, 49, 16]
+        },
+        "abilities": [
+          "ability-a-coal-for-a-promise",
+          "ability-a-friend-beneath-the-door",
+          "ability-a-hand-from-before",
+          "ability-breath-of-the-wyrmling",
+          "ability-cinder-cast",
+          "ability-conditioned-body",
+          "ability-gust-hammer",
+          "ability-identify-an-enchantment",
+          "ability-keep-your-bearings",
+          "ability-notice-the-human-detail",
+          "ability-read-the-remains",
+          "ability-rime-grip",
+          "ability-signature-arcanist-deliberate-spark",
+          "ability-speak-with-the-hearth"
+        ],
+        "ranks": {
+          "discipline-calling": 1,
+          "discipline-flame": 1,
+          "discipline-frost": 1,
+          "discipline-scholarship": 1,
+          "discipline-storm": 1
+        },
+        "recipes": [],
+        "languages": [
+          ["common", "Common", "full"],
+          ["elven", "Elven", "full"]
+        ],
+        "items": [
+          ["item-food-bundle", 0],
+          ["item-lesser-healing-bottle", 0],
+          ["item-lighting-bundle", 0],
+          ["item-rope-coil", 0],
+          ["item-sleeping-roll", 0],
+          ["item-travel-clothes", 0],
+          ["item-travel-pack", 0],
+          ["item-water-flask", 0]
+        ]
+      }
+    }
+  ]
+}

@@ -459,3 +459,26 @@ crafting-grant context. Node 24 `npm run check` passes all 143 tests. The update
 creation-commit and advancement fixtures pass on isolated Foundry 14.369,
 including persisted recipe pairs and visible blocked options. Native option
 assertions inspect the DOM disabled property directly.
+### Reference-hero creation parity (#92)
+
+`node tests/reference-heroes.test.mjs` is an offline pure test over
+`tests/fixtures/reference-heroes.json`. It does not need a book checkout,
+Foundry, a browser or installed dependencies. The fixture pins the complete
+`design/characters/*.md` blobs at
+`9bc9b4fe3256e68880b92c45facf0f25b98a1ea3`, records a SHA-256 for each character
+sheet and the index, and keeps all six creation drafts, origin pair choices,
+purchases, shopping, acquisition selections and hand use explicit.
+
+The test rebuilds each draft with `creationPreview` and compares it with values
+transcribed independently from the sheets: HP, Grit, Stability, Speed, capacity,
+carried Bulk, starting/spent/remaining coins, stage pools/compensation/expiry,
+learned cards, discipline ranks, recipe knowledge, language permissions,
+inventory grants and acquisition receipt selections. This proves pure
+creation/catalog parity only. It does not claim native charactermancer UI,
+document commitment, drag/drop or Foundry runtime parity.
+
+Ordinary Recipe Study now represents the two recipes printed on Oren’s sheet.
+The fixture records Wooden Brace and Simple Replacement Leg explicitly rather
+than deriving the expected list from production code. Source hashes are checked
+against the pinned source lock. Native campaign language configuration and
+six-character document commitment remain separate runtime work.

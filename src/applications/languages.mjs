@@ -81,8 +81,8 @@ export class CampaignLanguageSettings extends HandlebarsApplicationMixin(
       errors: [...new Set([...this.feedback, ...generalErrors])],
       notice: this.notice,
       valid: result.valid,
-      sourceBasis:
-        "design/rules/languages.md at 9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      sourceUrl:
+        "https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/rules/languages.md",
     };
   }
   readForm() {

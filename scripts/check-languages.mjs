@@ -17,7 +17,9 @@ const browser = await chromium.launch(),
 let gm, owner, fixture;
 
 async function join(name) {
-  const context = await browser.newContext();
+  const context = await browser.newContext({
+    viewport: { width: 1500, height: 1000 },
+  });
   await context.addInitScript(() =>
     localStorage.setItem("core.noCanvas", "true"),
   );
@@ -288,7 +290,9 @@ try {
     null,
   );
   assert.match(
-    await settingsWindow.innerText(),
+    await settingsWindow
+      .getByRole("link", { name: "Read language rules" })
+      .getAttribute("href"),
     /9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/,
   );
 
@@ -299,7 +303,16 @@ try {
     globalThis.holCreation = new CreationWizard(game.actors.get(id));
     await globalThis.holCreation.render({ force: true });
   }, fixture.optionActor);
+  await settingsWindow.screenshot({
+    path: "test-results/campaign-language-settings.png",
+  });
   const wizard = owner.locator(".hol-creation");
+  await wizard
+    .locator('[data-language-choice="home"]')
+    .scrollIntoViewIfNeeded();
+  await wizard.screenshot({
+    path: "test-results/creation-language-choices.png",
+  });
   const home = wizard.locator('[data-language-choice="home"]');
   const extra = wizard.locator('[data-language-choice="extra"]');
   assert.equal(
@@ -339,6 +352,13 @@ try {
   assert(await removed.locator("input").isChecked());
   assert(await removed.locator("input").isDisabled());
   assert.match(await removed.innerText(), /no longer defined/i);
+  assert.equal(
+    await owner.evaluate(() => {
+      holCreation.capture();
+      return holCreation.draft.languages.home;
+    }),
+    "removed-home",
+  );
 
   await owner.evaluate(async (id) => {
     const { CreationWizard } = await import(

@@ -87,6 +87,8 @@
 .heroes-of-legend .hol-language-table th { background:var(--hol-forest); color:var(--hol-ivory); font-family:"HOL Cinzel",Georgia,serif; font-size:14px; padding:8px; text-align:left; }
 .heroes-of-legend .hol-language-table td { border-top:1px solid #d7c9a9; padding:7px 8px; vertical-align:top; }
 .heroes-of-legend .hol-language-table input { min-width:8rem; height:32px; }
+.heroes-of-legend .hol-language-table select { min-width:7rem; }
+.heroes-of-legend.hol-language-settings .window-title { font-size:14px; }
 .heroes-of-legend .hol-language-table tr.hol-invalid { background:#f4e4df; }
 .heroes-of-legend .hol-language-toggle { display:flex; flex-direction:row; align-items:center; gap:6px; margin:0; white-space:nowrap; }
 .heroes-of-legend .hol-language-toggle input { width:auto; height:auto; min-width:0; }

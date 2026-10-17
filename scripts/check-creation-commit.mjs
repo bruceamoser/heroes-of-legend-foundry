@@ -278,9 +278,10 @@ try {
   const persisted = await gm.evaluate(
     async ({ actor, request }) => {
       const a = game.actors.get(actor);
-      const { resolveCreationRequest } = await import(
+      const { resolveCreationRequest, bindCreationAuthority } = await import(
         "/systems/heroes-of-legend/services/creation.mjs"
       );
+      await bindCreationAuthority();
       return {
         hp: a.system.health.value,
         spent: a.system.grit.spent,
@@ -293,10 +294,11 @@ try {
   assert.equal(persisted.hp, 3);
   assert.equal(persisted.spent, 1);
   assert.equal(persisted.items, result.items);
-  assert.equal(persisted.result.status, "not-authority");
+  assert.equal(persisted.result.status, "complete");
+  assert(persisted.result.replay);
   assert.deepEqual(errors, []);
   console.info(
-    "PASS: native nested Items + receipt, concurrent requests, actual-author denial, preserved unrelated data, replay after resource spend, invalid Item rejected before write, reload persistence and fail-closed authority.",
+    "PASS: native nested Items + receipt, concurrent requests, actual-author denial, preserved unrelated data, replay after resource spend, invalid Item rejected before write, reload persistence and safe same-browser coordinator recovery.",
   );
 } finally {
   if (gm && fixture)

@@ -61,3 +61,7 @@
 .heroes-of-legend .hol-wizard input[type=checkbox], .heroes-of-legend .hol-wizard input[type=radio] { height:auto; accent-color:var(--hol-forest); }
 .heroes-of-legend .hol-wizard-main dt { color:var(--hol-ink); text-shadow:none; filter:none; }
 .heroes-of-legend.hol-creation .window-title { font-size:14px; }
+.heroes-of-legend.hol-authority input[type=checkbox] { width:auto; height:auto; }
+.heroes-of-legend.hol-authority .window-title { font-size:14px; }
+.heroes-of-legend.hol-authority button { background:var(--hol-forest); color:var(--hol-ivory); border:1px solid var(--hol-gold); text-shadow:none; }
+.heroes-of-legend.hol-authority button:disabled { background:#d6d1c5; color:#555044; }

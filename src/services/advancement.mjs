@@ -1,3 +1,4 @@
+import { writeCharacterActor } from "./authority.mjs";
 import {
   enqueueCharacterOperation,
   isCreationAuthority,
@@ -50,7 +51,7 @@ export async function requestDevelopment(actor, kind, payload = {}) {
   });
 }
 export function resolveDevelopmentRequest(id) {
-  return enqueueCharacterOperation(() => apply(id));
+  return enqueueCharacterOperation(() => apply(id), { requestId: id });
 }
 async function apply(id) {
   if (!isCreationAuthority()) return { status: "not-authority" };
@@ -162,6 +163,10 @@ async function apply(id) {
   } else throw new Error("Unknown development operation.");
   state.revision = (current.revision ?? 0) + 1;
   changes[`flags.${ID}.development`] = state;
+  changes[`flags.${ID}.operationReceipts.${message.id}`] = {
+    applied: true,
+    kind: request.kind,
+  };
   validateCreationChanges(actor, changes);
   if (!isCreationAuthority()) return { status: "authority-lost" };
   if (
@@ -171,7 +176,7 @@ async function apply(id) {
     throw new Error(
       "Development changed during review. Retry against its current revision.",
     );
-  await actor.update(changes);
+  await writeCharacterActor(actor, changes);
   if (request.kind === "commitDraft") {
     if (createdIds.some((id) => !actor.items.has(id)))
       throw new Error(

@@ -1,14 +1,20 @@
+import {
+  registerAuthority,
+  writeCharacterActor,
+  isCreationAuthority,
+  bindCreationAuthority,
+  enqueueCharacterOperation,
+} from "./authority.mjs";
+export {
+  isCreationAuthority,
+  bindCreationAuthority,
+  enqueueCharacterOperation,
+} from "./authority.mjs";
 import { loadCatalogs } from "./catalog.mjs";
 import { creationPreview } from "../rules/creation.mjs";
 const ID = "heroes-of-legend";
-let queue = Promise.resolve();
 export function registerCreationAuthority() {
-  game.settings.register(ID, "creationAuthorityClient", {
-    scope: "world",
-    config: false,
-    type: String,
-    default: "",
-  });
+  registerAuthority();
   Hooks.on("createChatMessage", (message) => {
     if (message.getFlag(ID, "creationRequest") && isCreationAuthority())
       resolveCreationRequest(message.id).catch(async (error) => {
@@ -18,24 +24,6 @@ export function registerCreationAuthority() {
         });
       });
   });
-}
-export function isCreationAuthority() {
-  return (
-    game.user.isGM &&
-    game.socket.connected &&
-    game.settings.get(ID, "creationAuthorityClient") === game.socket.id
-  );
-}
-/** Binding is deliberate and fail-closed. A different binding is never silently replaced. */
-export async function bindCreationAuthority() {
-  if (!game.user.isGM)
-    throw new Error("Only a GM can process character creation.");
-  const bound = game.settings.get(ID, "creationAuthorityClient");
-  if (bound && bound !== game.socket.id)
-    throw new Error(
-      "Character creation is bound to another GM window. Reconcile outstanding requests before explicitly resetting that binding.",
-    );
-  await game.settings.set(ID, "creationAuthorityClient", game.socket.id);
 }
 export async function requestCreation(actor, revision) {
   if (!actor.testUserPermission(game.user, "OWNER"))
@@ -53,13 +41,10 @@ export async function requestCreation(actor, revision) {
     flags: { [ID]: { creationRequest: { actorUuid: actor.uuid, revision } } },
   });
 }
-export function enqueueCharacterOperation(operation) {
-  const job = queue.then(operation);
-  queue = job.catch(() => {});
-  return job;
-}
 export function resolveCreationRequest(messageId) {
-  return enqueueCharacterOperation(() => applyCreation(messageId));
+  return enqueueCharacterOperation(() => applyCreation(messageId), {
+    requestId: messageId,
+  });
 }
 export function validateCreationChanges(actor, changes) {
   for (const data of changes.items ?? []) {
@@ -148,6 +133,10 @@ async function applyCreation(messageId) {
     coins: preview.inventory.remainingCoins,
   };
   const changes = {
+    [`flags.${ID}.operationReceipts.${message.id}`]: {
+      applied: true,
+      kind: "creation",
+    },
     name: saved.data.name.trim(),
     items,
     "system.health.baseMax": preview.summary.maximumHp,
@@ -171,7 +160,7 @@ async function applyCreation(messageId) {
   if (actor.getFlag(ID, "creationDraft")?.revision !== request.revision)
     throw new Error("Draft changed during validation. Review and retry.");
   validateCreationChanges(actor, changes);
-  await actor.update(changes);
+  await writeCharacterActor(actor, changes);
   if (createdIds.some((id) => !actor.items.has(id)))
     throw new Error(
       "Creation needs reconciliation: a committed Item is unavailable. Do not repeat grants.",

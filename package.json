@@ -26,7 +26,9 @@
     "validate:inventory": "node scripts/import-inventory.mjs --check",
     "test:creation": "node scripts/check-creation.mjs",
     "test:creation-commit": "node scripts/check-creation-commit.mjs",
-    "test:advancement": "node scripts/check-advancement.mjs"
+    "test:advancement": "node scripts/check-advancement.mjs",
+    "test:coordinator": "node scripts/check-coordinator.mjs",
+    "test:coordinator-restart": "node scripts/check-coordinator-restart.mjs"
   },
   "devDependencies": {
     "@foundryvtt/foundryvtt-cli": "3.0.5",

@@ -1,6 +1,6 @@
 # Implementation plan
 
-This is the staged backlog. F01–F03, F05 and the bounded F06 probe have local 14.367 and 14.369 evidence. F07 has 14.369 movement/terrain/levels proof. F04 retains authority/confidentiality limitations. Work is organized into focused issues/PRs. Each row becomes a numbered issue before implementation; split again if it cannot be reviewed in one session. Dependencies are logical, not a request to launch parallel agents.
+This is the staged backlog. F01–F03, F05 and the bounded F06 probe have local 14.367 and 14.369 evidence. F07 has 14.369 movement/terrain/levels proof. F04 has a tested coordinator/recovery protocol with explicit browser-lock and confidentiality boundaries. Work is organized into focused issues/PRs. Each row becomes a numbered issue before implementation; split again if it cannot be reviewed in one session. Dependencies are logical, not a request to launch parallel agents.
 
 Research is [#1](https://github.com/bruceamoser/heroes-of-legend-foundry/issues/1), this specification is [#2](https://github.com/bruceamoser/heroes-of-legend-foundry/issues/2), and completed DA/bestiary intake is [#3](https://github.com/bruceamoser/heroes-of-legend-foundry/issues/3).
 

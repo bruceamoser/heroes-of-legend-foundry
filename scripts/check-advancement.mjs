@@ -273,6 +273,12 @@ try {
   });
   await gm.reload();
   await gm.waitForFunction(() => game.ready);
+  await gm.evaluate(async () => {
+    const { bindCreationAuthority } = await import(
+      "/systems/heroes-of-legend/services/authority.mjs"
+    );
+    await bindCreationAuthority();
+  });
   assert.equal(
     await gm.evaluate(
       (id) => game.actors.get(id).system.health.baseMax,

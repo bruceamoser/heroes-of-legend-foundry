@@ -1,0 +1,39 @@
+<section class="hol-language-shell">
+ <header class="hol-banner">
+  <p class="hol-kicker">Heroes of Legend · World configuration</p>
+  <h1>Campaign languages</h1>
+  <p>Common plus one named ordinary home language are granted without DP. Extra languages require an explicit trait or ability grant.</p>
+ </header>
+ <div class="hol-language-body">
+  <div class="hol-language-intro">
+   <p>Stable IDs preserve saved characters and drafts. Rename Common freely; its ID remains <code>common</code> and it must remain ordinary.</p>
+   <p class="hol-language-source"><a href="{{sourceUrl}}" target="_blank" rel="noopener">Read language rules</a></p>
+  </div>
+  {{#if errors}}<div class="hol-language-errors" role="alert">{{#each errors}}<p>{{this}}</p>{{/each}}</div>{{/if}}
+  {{#if notice}}<p class="hol-language-notice" role="status">{{notice}}</p>{{/if}}
+  <div class="hol-language-toolbar">
+   <button type="button" data-action="restoreDefaults">Load source defaults</button>
+   <button type="button" data-action="addLanguage">Add language</button>
+  </div>
+  <div class="hol-language-table-wrap">
+   <table class="hol-language-table">
+    <thead><tr><th>Stable ID</th><th>Name</th><th>Ordinary</th><th>Form</th><th>Writing</th><th><span class="hol-sr-only">Remove</span></th></tr></thead>
+    <tbody>{{#each languages}}
+     <tr data-language-row data-index="{{index}}" class="{{#if errors}}hol-invalid{{/if}}">
+      <td><input name="languageId" value="{{id}}" {{#if isCommon}}readonly aria-readonly="true"{{/if}} aria-label="Language {{index}} stable ID">{{#if isCommon}}<small>Reserved Common ID</small>{{/if}}</td>
+      <td><input name="languageName" value="{{name}}" aria-label="Language {{index}} name"></td>
+      <td><label class="hol-language-toggle {{#if ordinaryInvalid}}hol-invalid{{/if}}"><input name="languageOrdinary" type="checkbox" {{#if ordinary}}checked{{/if}}> <span>Ordinary{{#if ordinaryInvalid}} · invalid saved value{{/if}}</span></label></td>
+      <td><select name="languageForm" aria-label="Language {{index}} form">{{#if formInvalid}}<option value="{{form}}" selected>Invalid: {{form}}</option>{{/if}}<option value="spoken" {{#if spoken}}selected{{/if}}>Spoken</option><option value="signed" {{#if signed}}selected{{/if}}>Signed</option></select></td>
+      <td><label class="hol-language-toggle {{#if writingInvalid}}hol-invalid{{/if}}"><input name="languageWriting" type="checkbox" {{#if writing}}checked{{/if}}> <span>Read/write{{#if writingInvalid}} · invalid saved value{{/if}}</span></label></td>
+      <td><button type="button" data-action="removeLanguage" data-index="{{index}}" aria-label="Remove {{name}}">Remove</button></td>
+     </tr>
+     {{#if errors}}<tr class="hol-language-row-errors"><td colspan="6">{{#each errors}}<p>{{this}}</p>{{/each}}</td></tr>{{/if}}
+    {{else}}<tr><td colspan="6">No languages are defined. Add Common and another ordinary language.</td></tr>{{/each}}</tbody>
+   </table>
+  </div>
+ </div>
+ <footer class="hol-language-footer">
+  <p>Removing a definition does not alter committed characters. Existing grants remain recorded; unfinished drafts show the removed choice for repair.</p>
+  <button type="button" data-action="saveLanguages" class="hol-primary">Save campaign languages</button>
+ </footer>
+</section>

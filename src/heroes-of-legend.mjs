@@ -21,6 +21,7 @@ import { renderHOLCombatTracker } from "./applications/combat-tracker.mjs";
 import { registerAuthorityPanel } from "./applications/authority.mjs";
 import { registerAdvancement } from "./services/advancement.mjs";
 import { registerCreationAuthority } from "./services/creation.mjs";
+import { registerLanguageSettings } from "./applications/languages.mjs";
 import { EquipmentData } from "./models/equipment.mjs";
 import { EquipmentSheet } from "./sheets/equipment.mjs";
 import { registerTimingPrototype } from "./prototypes/timing.mjs";
@@ -50,6 +51,7 @@ Hooks.once("init", () => {
   registerCombatRequests();
   registerAuthorityPrototype();
   registerCreationAuthority();
+  registerLanguageSettings();
   registerAdvancement();
   registerAuthorityPanel();
   registerTimingPrototype();

@@ -143,6 +143,14 @@ Run `HOL_TEST_URL=http://127.0.0.1:30014 HOL_TEST_ALLOW_WRITES=1 npm run test:cr
 
 The commitment test also passes with `HOL_TEST_COMMIT_UI=1`: a player uses the Review screen's Create button while another request is submitted concurrently; the completed native character sheet opens. This variant enables canvas for the player's ActorSheetV2. It also verifies an existing Craft Tools Item is reused rather than duplicated. The source pin is stored with each saved draft; an unpinned/outdated draft must be reviewed and saved before commitment.
 
+### Campaign language configuration — issue #97
+
+A GM-only ApplicationV2 editor configures named campaign languages with stable IDs, display names, ordinary availability, spoken/signed form and writing from [the pinned language rules](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/rules/languages.md). The reserved `common` ID must remain ordinary. The initial list is the original source list; regional languages such as Reed Speech and River Speech are explicit custom additions rather than world defaults. Invalid stored definitions fail closed instead of falling back to defaults.
+
+The native wizard renders every configured home and extra-language option, eligible first. Unavailable options remain visible and disabled with their exact reason. A removed saved home is shown selected and disabled until another home is chosen. A selected invalid extra remains available only for unchecking; once unchecked it cannot be selected again until repaired or reconfigured. Drafts store the exact configuration basis displayed for review; saving or committing after the world setting changed is rejected and rerendered for review. Authoritative creation re-reads and validates the same world setting and rejects a changed basis before writing; committed character language records are never rewritten by later settings edits.
+
+Run `HOL_TEST_URL=http://127.0.0.1:30014 HOL_TEST_ALLOW_WRITES=1 npm run test:languages` only in the disposable local world. The guarded scenario restores the prior setting and removes its fixture User, request messages and Actors.
+
 ### Advancement workflow
 
 Issue #45 adds the advancement browser and pure draft preview. The DA awards milestone levels and approves safe-place spending; owners choose pending class signatures and purchases. Available options sort first, blocked choices remain visible with reasons, recipe/equipment selections are explicit, and saved drafts survive reloads. A changed committed ledger requires an explicit refresh/review. The shared character authority queue serializes creation and advancement; native message authors determine who may award milestones or spend an owned character's DP.
@@ -581,3 +589,9 @@ Primary author review also checked all 280 pinned wound records against the
 adapter. Node 24 `npm run check` passes all 170 tests, including 19 focused
 treatment tests. These are pure planning checks; native treatment UI, time
 tracking, roll execution and effect settlement are follow-up work.
+Campaign-language integration (#97) passes Node 24 `npm run check` (159 tests)
+and isolated Foundry 14.369 language, creation and creation-commit fixtures.
+The runtime tests verify removed-choice capture, stale displayed settings,
+spoken/signed grants, non-GM denial and preservation of completed characters.
+The settings editor and language choices were visually inspected at 1500×1000;
+form labels remain readable and the HOL colors and fixed footer are preserved.

@@ -47,7 +47,7 @@ try {
   await action("Save choices");
   await wizard.locator("[name=trait][value=trait-human-weathered]").check();
   await wizard.locator("[name=trait][value=trait-human-far-walker]").check();
-  await wizard.locator("[name=homeLanguage]").selectOption("dwarven");
+  await wizard.locator("[name=homeLanguage][value=dwarven]").check();
   await action("Save and continue");
   await wizard
     .locator("[name=culture]")

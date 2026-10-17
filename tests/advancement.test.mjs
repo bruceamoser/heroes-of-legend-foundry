@@ -93,3 +93,76 @@ test("HP training and once-only Grit grants have explicit deltas without refilli
   assert.equal(repeated.maximumHpDelta, 0);
   assert.equal(repeated.gritDelta, 0);
 });
+test("advancement preserves one-recipe repairs and records two-recipe purchases", () => {
+  const base = {
+    ...state(),
+    dp: 6,
+    abilities: ["ability-trail-workshop"],
+    recipes: ["recipe-travel-food", "recipe-bound-torches"],
+    capabilities: ["compatible-crafting"],
+    compatibleRecipes: [
+      "recipe-bound-torches",
+      "recipe-fletched-ammunition",
+      "recipe-simple-replacement-leg",
+      "recipe-travel-food",
+      "recipe-twisted-cord",
+      "recipe-wooden-brace",
+    ],
+  };
+  const oldDraft = {
+    purchases: [
+      {
+        id: "ability-ordinary-recipe-study",
+        recipeId: "recipe-fletched-ammunition",
+      },
+    ],
+  };
+  const rejected = advancementPreview(base, oldDraft, choices, inventory);
+  assert(!rejected.valid);
+  assert.equal(rejected.draft.purchases[0].recipeId, "recipe-fletched-ammunition");
+  assert(
+    rejected.errors.some((entry) =>
+      entry.reasons?.some((reason) => reason.code === "recipe-legacy"),
+    ),
+  );
+  assert(!rejected.state.recipes.includes("recipe-fletched-ammunition"));
+
+  const draft = {
+    purchases: [
+      {
+        id: "ability-ordinary-recipe-study",
+        recipeIds: [
+          "recipe-fletched-ammunition",
+          "recipe-simple-replacement-leg",
+        ],
+      },
+    ],
+  };
+  const result = advancementPreview(base, draft, choices, inventory);
+  assert(result.valid);
+  assert.equal(result.state.dp, 4);
+  assert.deepEqual(result.state.purchases[0].recipeIds, [
+    "recipe-fletched-ammunition",
+    "recipe-simple-replacement-leg",
+  ]);
+  assert.deepEqual(result.ledger[0].recipeIds, [
+    "recipe-fletched-ammunition",
+    "recipe-simple-replacement-leg",
+  ]);
+  assert(result.state.recipes.includes("recipe-simple-replacement-leg"));
+});
+test("committed legacy recipe grants are preserved without retroactive additions", () => {
+  const legacy = {
+    ...state(),
+    abilities: ["ability-ordinary-recipe-study"],
+    recipes: ["recipe-fletched-ammunition"],
+  };
+  const result = advancementPreview(
+    legacy,
+    { purchases: [], signatures: {}, acquisitions: {} },
+    choices,
+    inventory,
+  );
+  assert(result.valid);
+  assert.deepEqual(result.state.recipes, ["recipe-fletched-ammunition"]);
+});

@@ -432,3 +432,30 @@ issue.
 Node 24 `npm run check` passes 127 tests, including 17 focused inventory and
 potion cases. This is bounded rules-layer evidence; native UI, multi-Actor
 settlement and Foundry runtime validation remain subsequent integration work.
+### Two-recipe Ordinary Recipe Study (#93)
+
+The current pinned `ordinary-recipe-study` card at
+`9bc9b4fe3256e68880b92c45facf0f25b98a1ea3` grants two distinct compatible
+ordinary recipes per 2-DP purchase. Creation and advancement now persist
+`recipeIds` with exactly two IDs and reject missing, extra, duplicate, known or
+incompatible choices before charging DP. A repeat purchase remains legal when
+both selected recipes are new; the ability itself is learned once.
+
+Both wizards show every ordinary recipe option, with unlearned compatible
+recipes first and known or incompatible recipes left visible but disabled with
+a concise reason. The two recipe selections receive distinct defaults only when
+at least two eligible recipes exist; otherwise Recipe Study's Add action remains
+disabled with the available-count reason. Older saved `recipeId` drafts remain
+in place, display their one saved recipe and a player-facing repair message, and
+cannot commit until the player removes and replaces that purchase with two
+recipe choices. No second recipe is inferred.
+
+This is validation for drafts, not a world-content migration. Existing committed
+single-recipe grants and all other purchases, acquisition receipts and crafting
+context are preserved without retroactive additions. Relevant direct Node tests
+cover the two-recipe boundary, distinct/compatible/known checks, repeat pairs,
+2 DP per purchase, legacy rejection, visible blocked options and downstream
+crafting-grant context. The 23 non-package direct test files pass on the
+available Node 22.22.1 host. The project-required Node 24 package check and the
+updated native creation, creation-commit and advancement fixtures remain unrun
+here; they are required at the primary validation gate.

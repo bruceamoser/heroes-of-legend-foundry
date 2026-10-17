@@ -79,7 +79,16 @@ try {
         },
       },
       purchases: {
-        0: [{ id: "ability-conditioned-body" }],
+        0: [
+          { id: "ability-conditioned-body" },
+          {
+            id: "ability-ordinary-recipe-study",
+            recipeIds: [
+              "recipe-fletched-ammunition",
+              "recipe-simple-replacement-leg",
+            ],
+          },
+        ],
         1: [{ id: "ability-conditioned-body" }],
       },
       shopping: [{ id: "item-travel-pack", quantity: 1 }],
@@ -217,6 +226,7 @@ try {
       personal: a.items.some((i) => i.name === "Personal item"),
       receipt: a.getFlag("heroes-of-legend", "creationReceipt"),
       coins: a.getFlag("heroes-of-legend", "development").coins,
+      recipes: a.getFlag("heroes-of-legend", "development").recipes,
     };
   }, fixture.actor);
   assert.equal(result.hp, 19);
@@ -226,6 +236,8 @@ try {
   assert(result.personal);
   assert.equal(result.items, result.receipt.createdIds.length + 2);
   assert.equal(result.coins, 60);
+  assert(result.recipes.includes("recipe-fletched-ammunition"));
+  assert(result.recipes.includes("recipe-simple-replacement-leg"));
   assert.equal(result.receipt.reusedIds.length, 1);
   await gm.evaluate(async (id) => {
     await game.actors

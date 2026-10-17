@@ -15,12 +15,9 @@ export function classEligibility(choice, attributes) {
       reasons.push(reason("attribute", `${key} must be at least 0.`));
   return { eligible: reasons.length === 0, reasons, cost: 0 };
 }
-export function purchaseEligibility(
-  choice,
-  state,
-  catalog,
-  { rank, recipeId } = {},
-) {
+export function purchaseEligibility(choice, state, catalog, selection = {}) {
+  let { rank } = selection;
+  const { recipeIds } = selection;
   integer(state.level, "level");
   integer(state.dp, "DP");
   const reasons = [];
@@ -105,17 +102,40 @@ export function purchaseEligibility(
         reason("per-level", `Already purchased at level ${state.level}.`),
       );
     if (choice.purchasePolicy === "new-recipe") {
-      if (!recipeId)
-        reasons.push(reason("recipe", "Choose a new compatible recipe."));
-      else if (state.recipes.includes(recipeId))
-        reasons.push(reason("recipe", "This recipe is already known."));
-      else if (!state.compatibleRecipes.includes(recipeId))
+      if (Object.hasOwn(selection, "recipeId"))
+        reasons.push(
+          reason(
+            "recipe-legacy",
+            "This saved recipe purchase needs two recipe choices. Remove it, then add Ordinary Recipe Study with your chosen pair.",
+          ),
+        );
+      else if (!Array.isArray(recipeIds) || recipeIds.length !== 2) {
+        const availableRecipes = new Set(
+          state.compatibleRecipes.filter((id) => !state.recipes.includes(id)),
+        ).size;
         reasons.push(
           reason(
             "recipe",
-            "The selected recipe is not compatible with your crafting abilities.",
+            availableRecipes < 2
+              ? `Choose two recipes you can learn; only ${availableRecipes} ${availableRecipes === 1 ? "is" : "are"} available.`
+              : "Choose exactly two unlearned compatible recipes.",
           ),
         );
+      } else if (new Set(recipeIds).size !== 2)
+        reasons.push(reason("recipe", "Choose two distinct recipes."));
+      else {
+        if (recipeIds.some((id) => state.recipes.includes(id)))
+          reasons.push(
+            reason("recipe", "Each recipe must not already be known."),
+          );
+        if (recipeIds.some((id) => !state.compatibleRecipes.includes(id)))
+          reasons.push(
+            reason(
+              "recipe",
+              "Each recipe must be compatible with your known crafting abilities.",
+            ),
+          );
+      }
     }
   }
   if (cost !== null && state.dp < cost)
@@ -132,6 +152,38 @@ export function eligibleFirst(choices, evaluate) {
         a.choice.id.localeCompare(b.choice.id, "en"),
     );
 }
+export function recipeStudyChoices(state, recipes) {
+  const knownRecipes = new Set(state.recipes ?? []),
+    compatibleRecipes = new Set(state.compatibleRecipes ?? []);
+  const options = recipes
+    .filter((recipe) => recipe.ordinary)
+    .map((recipe) => {
+      const reason = knownRecipes.has(recipe.id)
+        ? "Already known."
+        : compatibleRecipes.has(recipe.id)
+          ? ""
+          : "Incompatible with your crafting abilities.";
+      return {
+        ...recipe,
+        disabled: Boolean(reason),
+        reason,
+      };
+    })
+    .sort(
+      (a, b) =>
+        Number(a.disabled) - Number(b.disabled) ||
+        a.name.localeCompare(b.name, "en") ||
+        a.id.localeCompare(b.id, "en"),
+    );
+  const eligibleRecipeIds = options
+    .filter((option) => !option.disabled)
+    .map((option) => option.id);
+  return {
+    options,
+    defaultRecipeIds:
+      eligibleRecipeIds.length >= 2 ? eligibleRecipeIds.slice(0, 2) : [],
+  };
+}
 export function purchase(state, choice, catalog, selection = {}) {
   const result = purchaseEligibility(choice, state, catalog, selection);
   if (!result.eligible)
@@ -141,13 +193,15 @@ export function purchase(state, choice, catalog, selection = {}) {
   if (choice.kind === "discipline") next.ranks[choice.id] = result.rank;
   else if (!next.abilities.includes(choice.id)) next.abilities.push(choice.id);
   if (choice.purchasePolicy === "new-recipe")
-    next.recipes.push(selection.recipeId);
+    next.recipes.push(...selection.recipeIds);
   next.purchases.push({
     id: choice.id,
     level: state.level,
     cost: result.cost,
     ...(result.rank ? { rank: result.rank } : {}),
-    ...(selection.recipeId ? { recipeId: selection.recipeId } : {}),
+    ...(choice.purchasePolicy === "new-recipe"
+      ? { recipeIds: [...selection.recipeIds] }
+      : {}),
   });
   return { state: next, reasons: [], applied: true };
 }
@@ -276,6 +330,7 @@ export function creationLedger(draft, catalog, { inventoryCatalog } = {}) {
         sourceId: entry.id,
         delta: state.dp - before,
         balance: state.dp,
+        ...(entry.recipeIds ? { recipeIds: [...entry.recipeIds] } : {}),
       });
     }
   };

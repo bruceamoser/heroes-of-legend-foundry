@@ -5,16 +5,24 @@ import {
   classEligibility,
   purchaseEligibility,
   eligibleFirst,
+  recipeStudyChoices,
   purchase,
   creationLedger,
   awardMilestones,
 } from "../src/rules/development.mjs";
+import { craftingPermissions } from "../src/rules/acquisition.mjs";
 const catalog = JSON.parse(
   await readFile(
     new URL("../static/data/choices.json", import.meta.url),
     "utf8",
   ),
 ).records;
+const inventory = JSON.parse(
+  await readFile(
+    new URL("../static/data/inventory.json", import.meta.url),
+    "utf8",
+  ),
+);
 const get = (id) => catalog.find((r) => r.id === id);
 const base = () => ({
   stage: 1,
@@ -108,27 +116,275 @@ test("Novice creation exception does not unlock higher tiers or class signatures
     !purchaseEligibility(get("ability-basic-melee"), state, catalog).eligible,
   );
 });
-test("per-level purchases cannot be banked; recipe study requires a new compatible recipe", () => {
+test("per-level purchases cannot be banked", () => {
   const hp = get("ability-conditioned-body");
   let state = purchase(base(), hp, catalog).state;
   assert(!purchaseEligibility(hp, state, catalog).eligible);
   assert(purchaseEligibility(hp, { ...state, level: 2 }, catalog).eligible);
+});
+test("recipe study requires exactly two distinct compatible unlearned recipes", () => {
   const study = get("ability-ordinary-recipe-study");
-  state = {
+  const state = {
     ...base(),
     capabilities: ["compatible-crafting"],
-    compatibleRecipes: ["recipe-cord"],
+    compatibleRecipes: [
+      "recipe-bound-torches",
+      "recipe-fletched-ammunition",
+      "recipe-simple-replacement-leg",
+      "recipe-twisted-cord",
+    ],
+    recipes: [],
   };
-  assert(!purchaseEligibility(study, state, catalog).eligible);
+  const reasons = (recipeIds) =>
+    purchaseEligibility(study, state, catalog, { recipeIds }).reasons;
+  assert(reasons(undefined).some((r) => r.text.includes("exactly two")));
   assert(
-    purchaseEligibility(study, state, catalog, { recipeId: "recipe-cord" })
-      .eligible,
+    reasons(["recipe-bound-torches"]).some((r) =>
+      r.text.includes("exactly two"),
+    ),
   );
-  state = purchase(state, study, catalog, { recipeId: "recipe-cord" }).state;
   assert(
-    !purchaseEligibility(study, state, catalog, { recipeId: "recipe-cord" })
-      .eligible,
+    reasons([
+      "recipe-bound-torches",
+      "recipe-fletched-ammunition",
+      "recipe-simple-replacement-leg",
+    ]).some((r) => r.text.includes("exactly two")),
   );
+  assert(
+    reasons([
+      "recipe-bound-torches",
+      "recipe-bound-torches",
+    ]).some((r) => r.text.includes("distinct")),
+  );
+  assert(
+    reasons([
+      "recipe-bound-torches",
+      "recipe-camp-shelter",
+    ]).some((r) => r.text.includes("compatible")),
+  );
+  assert(
+    purchaseEligibility(
+      study,
+      { ...state, recipes: ["recipe-bound-torches"] },
+      catalog,
+      {
+        recipeIds: [
+          "recipe-bound-torches",
+          "recipe-fletched-ammunition",
+        ],
+      },
+    ).reasons.some((r) => r.text.includes("not already be known")),
+  );
+});
+test("saved one-recipe purchases are rejected without inventing a second recipe", () => {
+  const study = get("ability-ordinary-recipe-study");
+  const result = purchaseEligibility(
+    study,
+    {
+      ...base(),
+      capabilities: ["compatible-crafting"],
+      compatibleRecipes: [
+        "recipe-bound-torches",
+        "recipe-fletched-ammunition",
+      ],
+    },
+    catalog,
+    { recipeId: "recipe-bound-torches" },
+  );
+  assert.equal(result.eligible, false);
+  assert(
+    result.reasons.some(
+      (r) =>
+        r.code === "recipe-legacy" &&
+        r.text.includes("needs two recipe choices"),
+    ),
+  );
+});
+test("recipe study availability requires two remaining compatible choices", () => {
+  const study = get("ability-ordinary-recipe-study");
+  const compatibleRecipes = [
+    "recipe-bound-torches",
+    "recipe-fletched-ammunition",
+    "recipe-simple-replacement-leg",
+  ];
+  const evaluate = (recipes) => {
+    const state = {
+      ...base(),
+      capabilities: ["compatible-crafting"],
+      compatibleRecipes,
+      recipes,
+    };
+    const recipeIds = state.compatibleRecipes
+      .filter((id) => !state.recipes.includes(id))
+      .slice(0, 2);
+    return purchaseEligibility(study, state, catalog, { recipeIds });
+  };
+  assert(evaluate(["recipe-bound-torches"]).eligible);
+  const oneRemaining = evaluate([
+    "recipe-bound-torches",
+    "recipe-fletched-ammunition",
+  ]);
+  assert(!oneRemaining.eligible);
+  assert(
+    oneRemaining.reasons.some((r) =>
+      r.text.includes("only 1 is available"),
+    ),
+  );
+});
+test("recipe study options keep blocked ordinary recipes visible after eligible choices", () => {
+  const study = get("ability-ordinary-recipe-study"),
+    state = {
+      ...base(),
+      capabilities: ["compatible-crafting"],
+      compatibleRecipes: [
+        "recipe-bound-torches",
+        "recipe-fletched-ammunition",
+        "recipe-simple-replacement-leg",
+        "recipe-twisted-cord",
+      ],
+      recipes: ["recipe-travel-food"],
+    },
+    result = recipeStudyChoices(state, inventory.recipes),
+    ordinaryRecipeCount = inventory.recipes.filter(
+      (recipe) => recipe.ordinary,
+    ).length,
+    eligibleCount = result.options.filter((option) => !option.disabled).length;
+  assert.equal(result.options.length, ordinaryRecipeCount);
+  assert(
+    result.options
+      .slice(0, eligibleCount)
+      .every((option) => !option.disabled),
+  );
+  assert(
+    result.options
+      .slice(eligibleCount)
+      .every((option) => option.disabled),
+  );
+  assert.deepEqual(result.defaultRecipeIds, [
+    "recipe-bound-torches",
+    "recipe-fletched-ammunition",
+  ]);
+  const known = result.options.find(
+      (option) => option.id === "recipe-travel-food",
+    ),
+    incompatible = result.options.find(
+      (option) => option.id === "recipe-camp-shelter",
+    );
+  assert.equal(known.disabled, true);
+  assert.equal(known.reason, "Already known.");
+  assert.equal(incompatible.disabled, true);
+  assert.equal(
+    incompatible.reason,
+    "Incompatible with your crafting abilities.",
+  );
+
+  const oneRemaining = recipeStudyChoices(
+    {
+      ...state,
+      compatibleRecipes: ["recipe-bound-torches", "recipe-fletched-ammunition"],
+      recipes: ["recipe-bound-torches", "recipe-travel-food"],
+    },
+    inventory.recipes,
+  );
+  assert.deepEqual(oneRemaining.defaultRecipeIds, []);
+  const unavailable = purchaseEligibility(
+    study,
+    {
+      ...state,
+      compatibleRecipes: ["recipe-bound-torches", "recipe-fletched-ammunition"],
+      recipes: ["recipe-bound-torches", "recipe-travel-food"],
+    },
+    catalog,
+    { recipeIds: oneRemaining.defaultRecipeIds },
+  );
+  assert.equal(unavailable.eligible, false);
+  assert(
+    unavailable.reasons.some((reason) =>
+      reason.text.includes("only 1 is available"),
+    ),
+  );
+});
+test("one recipe-study purchase spends 2 DP and repeat purchases accept new pairs", () => {
+  const study = get("ability-ordinary-recipe-study");
+  const first = purchase(
+    {
+      ...base(),
+      capabilities: ["compatible-crafting"],
+      compatibleRecipes: [
+        "recipe-bound-torches",
+        "recipe-fletched-ammunition",
+        "recipe-simple-replacement-leg",
+        "recipe-travel-food",
+      ],
+    },
+    study,
+    catalog,
+    {
+      recipeIds: [
+        "recipe-bound-torches",
+        "recipe-fletched-ammunition",
+      ],
+    },
+  );
+  assert(first.applied);
+  assert.equal(first.state.dp, 8);
+  assert.equal(first.state.purchases.length, 1);
+  assert.deepEqual(first.state.purchases[0].recipeIds, [
+    "recipe-bound-torches",
+    "recipe-fletched-ammunition",
+  ]);
+  const second = purchase(first.state, study, catalog, {
+    recipeIds: [
+      "recipe-simple-replacement-leg",
+      "recipe-travel-food",
+    ],
+  });
+  assert(second.applied);
+  assert.equal(second.state.dp, 6);
+  assert.equal(
+    second.state.purchases.filter(
+      (entry) => entry.id === "ability-ordinary-recipe-study",
+    ).length,
+    2,
+  );
+  assert.equal(
+    second.state.abilities.filter(
+      (id) => id === "ability-ordinary-recipe-study",
+    ).length,
+    1,
+  );
+  assert.deepEqual(second.state.recipes, [
+    "recipe-bound-torches",
+    "recipe-fletched-ammunition",
+    "recipe-simple-replacement-leg",
+    "recipe-travel-food",
+  ]);
+  assert(
+    !purchase(second.state, study, catalog, {
+      recipeIds: [
+        "recipe-bound-torches",
+        "recipe-simple-replacement-leg",
+      ],
+    }).applied,
+  );
+});
+test("downstream recipe context comes from crafting grants", () => {
+  const study = get("ability-ordinary-recipe-study");
+  const state = {
+    ...base(),
+    abilities: ["ability-trail-workshop"],
+    recipes: ["recipe-travel-food", "recipe-bound-torches"],
+    ...craftingPermissions(["ability-trail-workshop"], inventory),
+  };
+  const result = purchase(state, study, catalog, {
+    recipeIds: [
+      "recipe-fletched-ammunition",
+      "recipe-simple-replacement-leg",
+    ],
+  });
+  assert(result.applied);
+  assert(result.state.compatibleRecipes.includes("recipe-fletched-ammunition"));
+  assert(result.state.recipes.includes("recipe-simple-replacement-leg"));
 });
 test("origin duplicate compensation belongs to its stage and unused creation DP expires", () => {
   const d = draft();

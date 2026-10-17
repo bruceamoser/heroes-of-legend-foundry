@@ -63,7 +63,8 @@
   },
   "TYPES": {
     "Actor": {
-      "character": "Hero"
+      "character": "Hero",
+      "creature": "Creature"
     },
     "Item": {
       "ability": "Ability"

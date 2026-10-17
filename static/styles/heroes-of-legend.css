@@ -91,3 +91,5 @@
 .heroes-of-legend.hol-roll-dialog .hol-body { flex:1; min-height:0; }
 .heroes-of-legend.hol-roll-dialog .hol-roll-footer { padding:10px 20px; border-top:1px solid var(--hol-gold); flex-shrink:0; }
 .heroes-of-legend.hol-roll-dialog .hol-roll-footer p { margin:0; font-size:16px; }
+.heroes-of-legend.hol-creature .window-title { font-size:14px; }
+.heroes-of-legend.hol-creature button[data-action=conditions] { background:var(--hol-forest); color:var(--hol-ivory); border:1px solid var(--hol-gold); }

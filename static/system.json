@@ -26,7 +26,8 @@
   ],
   "documentTypes": {
     "Actor": {
-      "character": {}
+      "character": {},
+      "creature": {}
     },
     "Item": {
       "ability": {},

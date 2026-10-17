@@ -576,3 +576,8 @@ the planner never parses remedy prose or infers a calendar boundary. Zero-HP
 Dying or stabilized patients remain eligible, while Last Words, dead and summon
 patients are rejected. The receipt is pure and immutable; native Item mutation,
 condition removal, authorization and UI remain subsequent integration work.
+
+Primary author review also checked all 280 pinned wound records against the
+adapter. Node 24 `npm run check` passes all 170 tests, including 19 focused
+treatment tests. These are pure planning checks; native treatment UI, time
+tracking, roll execution and effect settlement are follow-up work.

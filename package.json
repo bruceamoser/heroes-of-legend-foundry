@@ -21,7 +21,9 @@
     "test:timing": "node scripts/check-timing.mjs",
     "test:canvas": "node scripts/check-canvas.mjs",
     "import:choices": "node scripts/import-choices.mjs",
-    "validate:choices": "node scripts/import-choices.mjs --check"
+    "validate:choices": "node scripts/import-choices.mjs --check",
+    "import:inventory": "node scripts/import-inventory.mjs",
+    "validate:inventory": "node scripts/import-inventory.mjs --check"
   },
   "devDependencies": {
     "@foundryvtt/foundryvtt-cli": "3.0.5",

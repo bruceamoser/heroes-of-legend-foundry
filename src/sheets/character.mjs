@@ -17,6 +17,9 @@ export class CharacterSheet extends HandlebarsApplicationMixin(foundry.applicati
     return { ...context, actor: this.actor, system: this.actor.system, editable: this.isEditable,
       attributes: ATTRIBUTES.map(key => ({ key, label: game.i18n.localize(`HOL.Attributes.${key}`),
         base: this.actor.system.attributes[key].base, effective: this.actor.system.attributes[key].effective })),
+      development: this.actor.getFlag("heroes-of-legend", "development"),
+      created: Boolean(this.actor.getFlag("heroes-of-legend", "creationReceipt")),
+      equipment: this.actor.items.filter(item => item.type === "equipment"),
       abilities: this.actor.items.filter(item => item.type === "ability")
     };
   }

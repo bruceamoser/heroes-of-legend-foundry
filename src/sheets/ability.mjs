@@ -10,7 +10,7 @@ export class AbilitySheet extends foundry.applications.api.HandlebarsApplication
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
     const labels = keys => Object.fromEntries(keys.map(key => [key, game.i18n.localize(`HOL.Choices.${key}`)]));
-    return { ...context, item: this.item, system: this.item.system, editable: this.isEditable,
+    return { ...context, pendingAutomation: this.item.getFlag("heroes-of-legend", "automation") === "pending", item: this.item, system: this.item.system, editable: this.isEditable,
       attributes: Object.fromEntries(ATTRIBUTES.map(key => [key, game.i18n.localize(`HOL.Attributes.${key}`)])),
       actions: labels(["main", "maneuver", "reaction", "passive"]),
       rollModes: labels(["attribute", "none", "delegated"])

@@ -1,3 +1,7 @@
+import {
+  bindCreationAuthority,
+  requestCreation,
+} from "../services/creation.mjs";
 import { loadCatalogs } from "../services/catalog.mjs";
 import { updateOwnedDocument } from "../services/documents.mjs";
 import { newCreationDraft, creationPreview } from "../rules/creation.mjs";
@@ -28,6 +32,8 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
     window: { title: "Create a Hero", resizable: true },
     form: { closeOnSubmit: false, handler: CreationWizard.submit },
     actions: {
+      commitCreation: CreationWizard.commitCreation,
+      bindAuthority: CreationWizard.bindAuthority,
       navigate: CreationWizard.navigate,
       saveDraft: CreationWizard.saveDraft,
       addPurchase: CreationWizard.addPurchase,
@@ -136,6 +142,13 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
       }));
     const cls = get(d.classId);
     return {
+      isGM: game.user.isGM,
+      authorityBound: Boolean(
+        game.settings.get("heroes-of-legend", "creationAuthorityClient"),
+      ),
+      committed: Boolean(
+        this.actor.getFlag("heroes-of-legend", "creationReceipt"),
+      ),
       draft: d,
       step: this.step,
       stage,
@@ -306,6 +319,7 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
     await updateOwnedDocument(this.actor, {
       [`flags.heroes-of-legend.${FLAG}`]: {
         schemaVersion: 1,
+        sourceCommit: this.catalogs.commit,
         revision,
         step: this.step,
         data: this.draft,
@@ -323,6 +337,30 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
       await this.render();
     } catch (e) {
       ui.notifications.error(e.message);
+    } finally {
+      this.busy = false;
+    }
+  }
+  static async bindAuthority() {
+    try {
+      await bindCreationAuthority();
+      await this.render();
+    } catch (error) {
+      ui.notifications.error(error.message);
+    }
+  }
+  static async commitCreation() {
+    if (this.busy) return;
+    this.busy = true;
+    try {
+      await requestCreation(this.actor, this.revision);
+      ui.notifications.info(
+        "Creation submitted to the assigned GM window. The character sheet will update when it completes.",
+      );
+      await this.close();
+      await this.actor.sheet.render({ force: true });
+    } catch (error) {
+      ui.notifications.error(error.message);
     } finally {
       this.busy = false;
     }

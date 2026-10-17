@@ -29,7 +29,8 @@
       "character": {}
     },
     "Item": {
-      "ability": {}
+      "ability": {},
+      "equipment": {}
     }
   },
   "packs": [],

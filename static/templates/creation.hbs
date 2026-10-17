@@ -47,7 +47,10 @@
  <h3>Abilities</h3><ul>{{#each knownAbilities}}<li>{{this}}</li>{{/each}}</ul><h3>Recipes</h3><ul>{{#each knownRecipes}}<li>{{this}}</li>{{else}}<li>None.</li>{{/each}}</ul>
  <h3>Equipment</h3><ul>{{#each inventoryItems}}<li>{{quantity}} × {{name}}</li>{{/each}}</ul>
  <details><summary>DP ledger</summary><table><thead><tr><th>Stage</th><th>Reason</th><th>Source</th><th>Change</th><th>Balance</th></tr></thead><tbody>{{#each ledger}}<tr><td>{{stage}}</td><td>{{kind}}</td><td>{{source}}</td><td>{{delta}}</td><td>{{balance}}</td></tr>{{/each}}</tbody></table></details>
- <p>This saves a creation draft. Character commitment is not enabled in this development build.</p>{{/if}}
+ {{#if committed}}<p>Character creation is complete. Use advancement for later development.</p>{{else}}
+ {{#if isGM}}{{#unless authorityBound}}<button type="button" data-action="bindAuthority">Enable character processing in this GM window</button>{{/unless}}{{/if}}
+ {{#if valid}}<button type="button" data-action="commitCreation" class="hol-primary">Create this character</button>{{/if}}
+ {{#unless authorityBound}}<p>A GM must enable character processing before a draft can be committed.</p>{{/unless}}{{/if}}{{/if}}
  </main></div>
  <footer class="hol-wizard-footer">{{#if hasPrevious}}<button type="button" data-action="navigate" data-step="{{previous}}">Back</button>{{/if}}<button type="button" data-action="saveDraft">Save choices</button>{{#if hasNext}}<button type="button" class="hol-primary" data-action="navigate" data-step="{{next}}">Save and continue</button>{{/if}}</footer>
 </section>

@@ -1,9 +1,44 @@
 import { conditionEndPlan } from "./conditions.mjs";
 import { sufferDamage, survivalState, endSurvivalTurn } from "./survival.mjs";
+export function conditionTickRequirements(
+  contributions,
+  passiveDefenses = { resistances: [], weaknesses: [] },
+) {
+  const keys = [
+      ...new Set(
+        contributions
+          .filter(
+            (condition) =>
+              ["burning", "freezing", "bleeding"].includes(condition.key) &&
+              condition.rating > 0,
+          )
+          .map((condition) => condition.key),
+      ),
+    ],
+    defenseTypes = keys
+      .filter((key) => key !== "bleeding")
+      .map((key) => (key === "burning" ? "fire" : "cold")),
+    automaticTypes = new Set(
+      [
+        ...(passiveDefenses.resistances ?? []),
+        ...(passiveDefenses.weaknesses ?? []),
+      ]
+        .filter((source) => source.value > 0)
+        .map((source) => source.type),
+    );
+  return {
+    keys,
+    orderRequired: keys.length > 1,
+    typesNeedingReview: defenseTypes.filter(
+      (type) => !automaticTypes.has(type),
+    ),
+  };
+}
 /** Every damaging condition is a separate event; DA records their order when needed. */
 export function conditionTurn({
   contributions,
   policy = {},
+  passiveDefenses = { resistances: [], weaknesses: [] },
   turnId,
   hp,
   maxHp,
@@ -11,7 +46,18 @@ export function conditionTurn({
   survival = null,
   character = true,
 }) {
-  const plan = conditionEndPlan(contributions, { ...policy, turnId });
+  const plan = conditionEndPlan(contributions, {
+    ...policy,
+    turnId,
+    resistances: [
+      ...(passiveDefenses.resistances ?? []),
+      ...(policy.resistances ?? []),
+    ],
+    weaknesses: [
+      ...(passiveDefenses.weaknesses ?? []),
+      ...(policy.weaknesses ?? []),
+    ],
+  });
   if (!plan.ready)
     throw new Error(
       "Overlapping duration sources need a DA policy before finishing this turn.",

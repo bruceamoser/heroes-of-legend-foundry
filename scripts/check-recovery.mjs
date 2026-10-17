@@ -217,11 +217,17 @@ try {
     ).id;
   }, f);
   await gm.page.waitForFunction(
-    (id) => game.messages.get(id).content.includes("survival changed"),
+    (id) => game.messages.get(id).content.includes("Review recovery again"),
     stale,
   );
   await gm.page.reload();
   await gm.page.waitForFunction(() => globalThis.game?.ready);
+  await gm.page.evaluate(async () => {
+    const { bindCreationAuthority } = await import(
+      "/systems/heroes-of-legend/services/authority.mjs"
+    );
+    await bindCreationAuthority();
+  });
   s = await state();
   assert.equal(s.hp, 4);
   assert.equal(s.state.wounds, 3);

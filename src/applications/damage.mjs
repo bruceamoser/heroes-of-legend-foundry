@@ -38,6 +38,10 @@ export class DamagePanel extends foundry.applications.api.HandlebarsApplicationM
       name: this.actor.name,
       basis: this.basis,
       fromRoll: !!incoming,
+      automaticDefenses: [
+        ...(this.basis.passiveDefenses?.resistances ?? []),
+        ...(this.basis.passiveDefenses?.weaknesses ?? []),
+      ],
       rows: DAMAGE_TYPES.map((type) => ({
         type,
         amount: this.components.find((c) => c.type === type)?.amount ?? 0,

@@ -1,6 +1,7 @@
 import { assertNoPendingTurn } from "./turn-lock.mjs";
 import { classifyRoll } from "../rules/roll.mjs";
 import { damageEvent } from "../rules/damage.mjs";
+import { passiveDefenseSources } from "../rules/passive-defenses.mjs";
 import {
   survivalState,
   validateSurvival,
@@ -12,9 +13,31 @@ import {
   writeAuthorityDocument,
 } from "./authority.mjs";
 const ID = "heroes-of-legend";
+function passiveCatalogRecords(actor, type) {
+  return actor.items
+    .filter((item) => item.type === type)
+    .map((item) => ({
+      instanceId: item.id,
+      catalogId:
+        (type === "equipment"
+          ? item.system.catalogId
+          : item.getFlag(ID, "catalogId")) ?? "",
+      worn: type === "equipment" ? item.system.worn : undefined,
+      source: structuredClone(item.getFlag(ID, "source") ?? null),
+    }))
+    .sort((a, b) => a.instanceId.localeCompare(b.instanceId));
+}
 export function damageBasis(actor) {
   if (!["character", "creature"].includes(actor?.type) || actor.pack)
     throw new Error("Choose a world character or creature.");
+  const resolved = passiveDefenseSources({
+    abilities: passiveCatalogRecords(actor, "ability"),
+    equipment: passiveCatalogRecords(actor, "equipment"),
+  });
+  const passiveDefenses = structuredClone({
+    resistances: resolved.resistances,
+    weaknesses: resolved.weaknesses,
+  });
   return {
     actorUuid: actor.uuid,
     hp: actor.system.health.value,
@@ -22,24 +45,36 @@ export function damageBasis(actor) {
     gritAvailable: actor.system.grit?.available ?? 0,
     survival: structuredClone(actor.getFlag(ID, "survival") ?? null),
     revision: actor.getFlag(ID, "damageRevision") ?? 0,
+    equipmentRevision: actor.getFlag(ID, "equipmentRevision") ?? 0,
+    passiveDefenses,
     printedArmor: actor.type === "creature" ? actor.system.armor : 0,
   };
 }
 export function damagePreview(actor, basis, draft) {
-  const sources = [...(draft.resistances ?? [])];
+  const resistances = [
+      ...(basis.passiveDefenses?.resistances ?? []),
+      ...(draft.resistances ?? []),
+    ],
+    weaknesses = [
+      ...(basis.passiveDefenses?.weaknesses ?? []),
+      ...(draft.weaknesses ?? []),
+    ],
+    sources = [...resistances];
   if (basis.printedArmor)
     sources.push({
+      sourceId: "creature-printed-armor",
       type: "physical",
       value: basis.printedArmor,
       label: "Printed creature Physical DR",
+      automatic: true,
     });
-  for (const source of [...sources, ...(draft.weaknesses ?? [])])
+  for (const source of [...sources, ...weaknesses])
     if (typeof source.label !== "string" || !source.label.trim())
       throw new Error("Label each damage modifier source.");
   const event = damageEvent({
     components: draft.components,
     resistances: sources,
-    weaknesses: draft.weaknesses ?? [],
+    weaknesses,
   });
   let survival = null,
     wound = false,
@@ -76,7 +111,7 @@ export function damagePreview(actor, basis, draft) {
     wound,
     after,
     resistances: sources,
-    weaknesses: draft.weaknesses ?? [],
+    weaknesses,
   };
 }
 export function defenseDamage(message) {

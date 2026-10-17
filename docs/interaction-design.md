@@ -90,3 +90,19 @@ Keep forest card headers, antique-gold borders, the numbered tier diamond, disti
 Define shared scoped CSS tokens and reusable components before building separate sheets/dialogs. A dark variant translates these same roles to readable surfaces; it does not replace the established theme with another palette. Gold is an accent, not assumed readable body text on parchment. State labels, focus outlines and tier numerals must work without color alone. Preserve Foundry's functional controls and avoid broad global CSS overrides.
 
 The first implementation proof should show the character header, an ability card, roll dialog with ability/modifier selection, and creature attack/Defend chat card together for visual review. Compare against the actual book and approved art at a usable screen size; a list of hex values alone is not visual acceptance. Test light/dark themes, narrow windows, keyboard focus and detached windows.
+
+## Guided charactermancer — creation and advancement
+
+Confirmed by Bruce on October 17, 2026; tracked in [#18](https://github.com/bruceamoser/heroes-of-legend-foundry/issues/18). Ease of use is a primary acceptance requirement. The draft editor is not a substitute for this workflow.
+
+Present one decision at a time with a persistent character summary, step navigation, explicit stage budgets and plain-language explanations of grants and tradeoffs. Cover attributes, ancestry/traits, paired origins, class, disciplines, abilities, equipment and final derived statistics. Provide optional recommendations and searchable comparisons while preserving player choice. Any recommendations must state their basis and never select or spend silently.
+
+**Eligibility ordering:** show eligible options first. Ineligible options remain visible below them, disabled, with exact unmet requirements. Do not hide them through a default eligibility filter. Distinguish prerequisites from affordability, timing and other temporary restrictions. Requirements should be readable with keyboard focus or adjacent text, not a hover-only tooltip on a disabled control. Recompute the ordering and reasons whenever the draft changes.
+
+Persist drafts and support back/forward navigation and resume after reload. Changing an earlier choice must identify affected downstream choices, preserve all still-valid work and let the player repair the remaining choices. No silent purchases, point loss or wholesale draft reset. Stage-specific rules remain authoritative; a draft does not permit retroactive prerequisites or carrying points across an expiring creation stage.
+
+Review the full character and all grants/costs before commitment. Canceling a draft has no mechanical effect. Commit through the same acquisition services used by drag/drop and keyboard actions, with validation, revision checks and persistent operation receipts. Two owners and retrying clients cannot double-apply purchases or grants.
+
+The advancement mode starts from committed character state, shows the new level's exact grants and available purchases, preserves banked advancement DP, explains safe-place spending restrictions and displays a before/after review. Milestone HP/Grit/signature grants apply once. Keep the creation/advancement history accessible. Later corrections must preserve an audit trail rather than rewrite past choices invisibly.
+
+Usability testing includes a complete first-character journey and a level-up journey: discoverability, comparison, blocked-reason comprehension, backtracking, reload recovery, drag/drop/keyboard parity and minimum manual arithmetic. Validate final characters against the approved six reference builds.

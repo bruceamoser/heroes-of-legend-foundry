@@ -128,6 +128,17 @@ These are requirements for future tests and manual Foundry checks. **They have n
 | T95 | Light/dark/narrow/detached layouts with keyboard focus | Controls and numbers remain readable; gold is not low-contrast body text; identity stays HOL; focus and states do not depend on color alone. |
 | T96 | A condition/resource changes while defense dialog is open; player-controlled creature attacks | Refresh/revalidate preview before submission without silent changed roll; player-controlled attacker follows one attacker roll and never creates an extra Defend save. |
 
+## Charactermancer usability and advancement
+
+| ID | Scenario | Required result |
+|---|---|---|
+| T97 | Browse a mixed set of eligible/ineligible choices | Eligible choices first; ineligible choices visible below, disabled, with exact unmet requirements accessible without hover. |
+| T98 | Build a first character through each stage | One decision at a time, live summary/budget, explanatory grants and searchable comparisons; no manual arithmetic required. |
+| T99 | Change an earlier ancestry/class/attribute choice | Identify affected later selections, preserve still-valid choices and guide repair; no silent reset or spend. |
+| T100 | Pause, reload, resume or cancel a draft | Draft resumes accurately; cancel changes no committed mechanical state; stage expiry occurs only at valid commitment. |
+| T101 | Level up with banked DP, then repeat/reload/retry | Show exact new grants, safe-place restrictions and before/after review; keep banked DP; milestone grants and purchases occur once. |
+| T102 | Two owners commit the same draft; compare keyboard/drop workflows | Stale revision rejected or reconciled with explanation; identical validation; no duplicate rewards; approved reference-character parity. |
+
 ## Test organization and evidence
 
 Pure-rule tests cover T01–T05, damage aggregation, ledger math, state transitions, wound selection and grid calculations. Model tests verify invalid input, derived data and serialization. Content tests verify source coverage and complete outcomes. Runtime tests cover authoritative mutation, documents, effects, combat events, scene geometry and UI. Each content handler contributes additional fixtures beyond this seed matrix.

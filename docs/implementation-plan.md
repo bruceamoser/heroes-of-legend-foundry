@@ -1,6 +1,6 @@
 # Implementation plan
 
-This is a staged backlog, not a claim that implementation has begun. Work is organized into focused issues/PRs. Each row becomes a numbered issue before implementation; split again if it cannot be reviewed in one session. Dependencies are logical, not a request to launch parallel agents.
+This is the staged backlog. F01–F03 have initial implementations and local 14.367 evidence; their 14.369 gate remains pending. Work is organized into focused issues/PRs. Each row becomes a numbered issue before implementation; split again if it cannot be reviewed in one session. Dependencies are logical, not a request to launch parallel agents.
 
 Research is [#1](https://github.com/bruceamoser/heroes-of-legend-foundry/issues/1), this specification is [#2](https://github.com/bruceamoser/heroes-of-legend-foundry/issues/2), and completed DA/bestiary intake is [#3](https://github.com/bruceamoser/heroes-of-legend-foundry/issues/3).
 
@@ -47,6 +47,8 @@ These are four additional focused work items, confirmed in #12. Created issues: 
 | U04 | HOL theme tokens and reusable UI components | F02 | Exact book palette/typography/card/icon references; themed sheet, ability card, roll dialog and attack chat proof; keyboard, contrast and detached-window checks. T94–T95. |
 
 ## Milestone 2 — character and inventory lifecycle
+
+B02–B04 must deliver the full creation/advancement charactermancer in [#18](https://github.com/bruceamoser/heroes-of-legend-foundry/issues/18), including one-decision-at-a-time guidance, saved drafts, eligible-first ordering with visible disabled alternatives, exact blocked reasons, downstream-choice repair and before/after commitment review. T97–T102 are required alongside mechanical parity.
 
 | ID | Focused work | Depends on | Acceptance |
 |---|---|---|---|

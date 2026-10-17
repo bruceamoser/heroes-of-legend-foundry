@@ -1,6 +1,6 @@
 # Heroes of Legend — Foundry V14 build specification
 
-Version 0.1, October 17, 2026. Supports issue #2. **Status: proposed software specification for review.** Rules authority is established in [rules-authority.md](rules-authority.md); engineering choices are proposals unless explicitly confirmed there.
+Version 0.2, October 17, 2026. Supports issues #2 and #12. **Status: proposed software specification for review.** Rules authority is established in [rules-authority.md](rules-authority.md); engineering choices are proposals unless explicitly confirmed there.
 
 ## 1. Product goal
 
@@ -190,6 +190,10 @@ Crafting requires known recipe, prerequisites, actual materials/tools and printe
 Group tasks outside combat record binary/cumulative type, declared target, participants and one contribution per attempt: Weak/Standard/Strong = 1/2/3. A participant aids or contributes, not both. Cumulative progress persists. Perception uses Reason; concealment uses Agility without an opposed observer roll. Ordinary travel has no routine roll/exhaustion track. DA reference tools provide approved encounter budgets, creature selection and scene setup while labeling balance guidance accurately.
 
 ## 14. UX and content completeness
+
+Bruce's confirmed interaction requirements are detailed in [interaction-design.md](interaction-design.md). The roll dialog must let players select applicable abilities and add situational Boons/Banes, with live source/cost/formula previews. Creature attacks requiring defense post descriptive chat cards with per-target **Defend** controls; clicking opens a correctly prefilled dialog while preserving ability choices. This is a required alpha interaction, not a later convenience.
+
+Drag/drop is a primary workflow for acquisition, builder choices, owned abilities into the dialog/hotbar, equipment management/transfers, scene tokens, targets and reference links. Every drop uses the same permission and rule validation as other entry points. Preserve HOL's existing Great Library palette, typography, card headers, tier diamonds, discipline symbols and artwork across every system surface; use the concrete tokens and visual acceptance criteria in the interaction contract.
 
 **Character sheet:** persistent HP/Grit/conditions/action bar; summary, abilities, equipment, development, wounds and identity sections. Search/filter by action, tier, discipline, role and usability; show a specific reason when blocked. Favorites aid access without limiting the learned repertoire.
 

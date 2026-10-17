@@ -111,6 +111,23 @@ These are requirements for future tests and manual Foundry checks. **They have n
 | T83 | Same actor aids and contributes to one group attempt | Reject double participation; no group wound treatment/crafting/derivation. |
 | T84 | Native hotbar/HUD action versus sheet action | Same validation, cost and results, with correct acting token. |
 
+## Interactive preparation, drag/drop and HOL identity
+
+| ID | Scenario | Required result |
+|---|---|---|
+| T85 | Open an attack/defense dialog and select an applicable ability | Show the ability's exact effects/costs and updated formula; automatic passives count once; unrelated actions are unavailable with a reason. |
+| T86 | Prefilled 2 Boons and 1 Bane; player adds a labeled situational Bane | Equal totals cancel to ordinary 3d6; removing the added entry restores 4d6 keep-high-three. Auto sources retain their identity. |
+| T87 | Select Shield Block, deselect, then cancel defense before commitment | No Reaction/effect/payment consumed; request remains pending. Submitting the selected reaction pays once before rolling. |
+| T88 | Creature attacks Hero A; Hero A clicks Defend | Show creature attack description and A's actual token, printed defense attribute/effective stat, Threat, conditions and benefits; allow eligible abilities without rebuilding context. |
+| T89 | Area attack on A and B; A defends with an ability | A and B have separate response IDs/results; A's choice does not change B's roll or resolve B automatically. |
+| T90 | Non-owner clicks Defend; two owners click; chat reloads after completion | Unauthorized user cannot roll for target; authorized users produce one committed response; completed button cannot reroll/reapply. |
+| T91 | Drag owned eligible ability into dialog, then a compendium/unowned ability | Owned ability becomes a draft selection; unowned source cannot grant free use. Invalid type/drop explains why. |
+| T92 | Drop same ability into acquisition twice; transfer equipment; drop summon into scene | No duplicate grant/payment; transfer preserves instance/supply and debits once; summon requires eligible paid workflow. |
+| T93 | Drag/drop after sheet rerender and in detached window; use keyboard alternative | Same UUID/permission validation and result as main sheet; no lost listeners, silent failure or acting-actor swap. |
+| T94 | View sheet, ability card, roll dialog and attack/Defend chat together | All use approved forest/gold/ivory/paper/ink tokens, established type hierarchy, tier/discipline marks and narrative/rules separation. Compare to pinned book references. |
+| T95 | Light/dark/narrow/detached layouts with keyboard focus | Controls and numbers remain readable; gold is not low-contrast body text; identity stays HOL; focus and states do not depend on color alone. |
+| T96 | A condition/resource changes while defense dialog is open; player-controlled creature attacks | Refresh/revalidate preview before submission without silent changed roll; player-controlled attacker follows one attacker roll and never creates an extra Defend save. |
+
 ## Test organization and evidence
 
 Pure-rule tests cover T01–T05, damage aggregation, ledger math, state transitions, wound selection and grid calculations. Model tests verify invalid input, derived data and serialization. Content tests verify source coverage and complete outcomes. Runtime tests cover authoritative mutation, documents, effects, combat events, scene geometry and UI. Each content handler contributes additional fixtures beyond this seed matrix.

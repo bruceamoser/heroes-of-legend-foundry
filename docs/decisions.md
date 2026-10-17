@@ -9,6 +9,10 @@ This register separates confirmed direction from proposed engineering choices. I
 | D01 | Public repository `bruceamoser/heroes-of-legend-foundry`. | October 17, 2026 repository-name reply. |
 | D02 | Current `design/player-book` plus `design/rules`; incorporate completed DA/bestiary book. | October 17, 2026 source-selection reply. |
 | D03 | Automate as much as possible and use Foundry features broadly. | October 17, 2026 follow-up. |
+| D17 | The roll dialog supports use of applicable abilities and player-applied Boons/Banes. | October 17, 2026 interaction follow-up; details in [interaction design](interaction-design.md). |
+| D18 | Creature attacks post descriptive chat with Defend; it opens a prefilled defense dialog that still allows applicable abilities. | Same follow-up; preserve normal attack/defense perspective. |
+| D19 | Drag/drop is a primary system interaction. | Same follow-up; validated drop matrix in the interaction contract. |
+| D20 | Preserve HOL's established look, feel and color theme. | Same follow-up; pinned book palette, typography and visual references. |
 
 ## Proposed engineering defaults
 

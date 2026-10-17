@@ -2,7 +2,7 @@
 
 ## Authority confirmed by Bruce
 
-On **October 17, 2026**, Bruce selected the current `design/player-book` and `design/rules` materials as the system baseline and said the DA/bestiary book is being completed in another chat today. He subsequently requested as much automation as possible using Foundry's features.
+On **October 17, 2026**, Bruce selected the current `design/player-book` and `design/rules` materials as the system baseline and said the DA/bestiary book is being completed in another chat today. He subsequently requested as much automation as possible using Foundry's features, then confirmed in-dialog abilities and Boons/Banes, prefilled Defend chat workflows, drag/drop and preservation of HOL's visual identity. See [interaction design](interaction-design.md).
 
 Order of authority:
 

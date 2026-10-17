@@ -72,8 +72,16 @@
       "sha256": "f2cfea90c3641b7a7affd006c2c80dc59fc214d22fdd52730d9b6901fe1996a7"
     },
     {
+      "path": "design/player-book/art-direction.md",
+      "sha256": "7472d020b1659e0207c58472f3750b1e78542186748aa38dc3c9f329f6949288"
+    },
+    {
       "path": "design/player-book/decision-log.md",
       "sha256": "3953d4521ac1521fa3e6617002442bfad7c19ada928afa457e73f5774fed4242"
+    },
+    {
+      "path": "design/player-book/layout-notes.md",
+      "sha256": "153853cb8a8d0eff23bc223fcea77f5059c2d0644ea6ace002e016fb66d968da"
     },
     {
       "path": "design/player-book/manuscript/01-welcome.md",
@@ -134,6 +142,10 @@
     {
       "path": "design/player-book/recipe-presentation.json",
       "sha256": "4b9275bdcc32408f4f9e58a76d5cd3c06f3d054b07b86c7ce46be49f95659f42"
+    },
+    {
+      "path": "design/player-book/template.typ",
+      "sha256": "81767446027b1098776c15d84e5d3b0e35f93c27514c90951b321f5c0154ac90"
     },
     {
       "path": "design/rules/conditions.md",

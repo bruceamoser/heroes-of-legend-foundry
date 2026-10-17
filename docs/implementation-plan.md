@@ -31,9 +31,20 @@ Created foundation issues: [F01 / #4](https://github.com/bruceamoser/heroes-of-l
 | A05 | Action conversions and turn restrictions | A04 | Sprint yields three movement allowances; Dazed/Grappled categories freeze at turn start; defense costs no Reaction. |
 | A06 | Core condition contributions and decay | A03, A05 | Burning/Bleeding, starred/temporary, highest bonuses and repeat-hook guards pass. |
 | A07 | Common reactions and interruption windows | A01, A05, F07 | Opportunity and Shield Block choice/cost/timing; original action resumes or stops correctly. |
-| A08 | Alpha scenario and workflow review | A01–A07 | Two players and a GM complete a small encounter including an area defense, a condition and a reaction without manual arithmetic. |
+| A08 | Alpha scenario and workflow review | A01–A07, U01–U04 | Two players and a GM complete a small encounter including an area defense, a condition and a reaction without manual arithmetic; use the prefilled Defend/dialog flow, core drag/drop and HOL styling. |
 
 **Gate:** runnable alpha using a small explicitly labeled fixture catalog. This is not yet a full-system or content-completeness release.
+
+## Core interaction work — required alongside the encounter alpha
+
+These are four additional focused work items, confirmed in #12. Created issues: [U01 / #13](https://github.com/bruceamoser/heroes-of-legend-foundry/issues/13), [U02 / #14](https://github.com/bruceamoser/heroes-of-legend-foundry/issues/14), [U03 / #15](https://github.com/bruceamoser/heroes-of-legend-foundry/issues/15), [U04 / #16](https://github.com/bruceamoser/heroes-of-legend-foundry/issues/16). Complete the relevant initial drop routes for alpha, then extend the same contract as creation, inventory and summons become available. Full release requires every drop route in [interaction design](interaction-design.md).
+
+| ID | Focused work | Depends on | Acceptance |
+|---|---|---|---|
+| U01 | Shared roll dialog with abilities and Boons/Banes | F03, A01, A05, A06 | Select eligible owned abilities; preview effects, costs, attribute replacement and net dice; support labeled situational adjustments and cancel without payment. T85–T87. |
+| U02 | Creature attack card and per-target Defend flow | A02, A03, A07, U01 | Descriptive chat, correct prefilled defender context, still-editable ability/modifier choices, permission checks and one resolution per response. T88–T90, T96. |
+| U03 | Native drag/drop workflow service | F02, F04, U01 | UUID validation, contextual feedback, dialog/hotbar/inventory/scene/reference drop routes as features arrive; no duplicate items, free acquisitions or free summons. T91–T93. |
+| U04 | HOL theme tokens and reusable UI components | F02 | Exact book palette/typography/card/icon references; themed sheet, ability card, roll dialog and attack chat proof; keyboard, contrast and detached-window checks. T94–T95. |
 
 ## Milestone 2 — character and inventory lifecycle
 

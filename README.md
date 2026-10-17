@@ -14,6 +14,7 @@ Native Foundry Virtual Tabletop **V14** system for Bruce Moser's **Heroes of Leg
 6. [Neon Relic audit](docs/research/neon-relic-audit.md) — reusable patterns and carryover risks.
 7. [Rules authority and content intake](docs/rules-authority.md) — approved rules, source revisions and the incoming DA/bestiary book.
 8. [Decision register](docs/decisions.md) — proposed engineering choices and remaining boundaries.
+9. [Interaction design and visual identity](docs/interaction-design.md) — abilities/modifiers in the roll dialog, creature attack → Defend workflow, drag/drop and the established HOL theme.
 
 The rules are authored in the [Heroes of Legend book repository](https://github.com/bruceamoser/heroes-of-legend). Bruce confirmed that this system implements the current `design/player-book` and `design/rules` materials, with the completed DA/bestiary book to follow. The older Quarto mechanics are historical references.
 

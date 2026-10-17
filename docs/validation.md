@@ -13,3 +13,9 @@ October 17, 2026. Author QA for the initial documentation PR; **not independent 
 - No rulebook/Neon Relic source was changed. The DA/bestiary completion intake remains tracked in issue #3.
 
 No system code, pack output or release was created. Runtime checks, performance targets, automated test implementations, final content reconciliation, license selection and independent PR review remain future work. The Markdown specification intentionally lists their required evidence instead of claiming they already pass.
+
+## Interaction follow-up — issue #12
+
+Bruce confirmed in-dialog abilities/modifiers, descriptive creature attack cards with prefilled Defend dialogs, primary drag/drop workflows and the established HOL identity. Added the interaction contract, response/draft data, four implementation issues (#13–#16), and twelve acceptance cases.
+
+Rechecked 21 local links and 3 JSON files/examples, all 33 pinned authority/visual-reference hashes, 96 unique acceptance IDs and 52 unique work IDs. No runtime or visual implementation is claimed; the visual proof is an explicit implementation deliverable.

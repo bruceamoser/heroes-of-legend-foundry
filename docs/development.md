@@ -110,3 +110,9 @@ The 14.369 join form uses `select[name=userId]`; test login now supports that an
 ## Character learning catalog — issue #33
 
 The pinned-source importer produces 452 records with stable IDs, source hashes, complete origin pairs, class signatures and rank prices, ancestry traits/contributions and ability learning prerequisites. All references resolve and origin grants satisfy their paired cards' rank requirements. Tests distinguish universal actions from purchases and reject unknown metadata rather than silently infer it. See [content metadata](../content/README.md) for reproduction and the remaining automation boundaries.
+
+## Development ledger and eligibility — issue #35
+
+The pure development engine rebuilds origin/class grants and ordered purchases, gives duplicate compensation only to its creation stage, expires both unused pools and retains invalid draft entries with repair reasons. Eligible choices sort first; blocked choices remain in the result with exact reasons. Milestone awards bank `8 + level` DP once per newly crossed level, grant Grit/signature choices at 3/7, preserve spent Grit and require fresh safe-place approval before advancement spending.
+
+This validates the DP/learning ledger, not a complete character: ancestry/trait effects, languages, equipment/recipe adapters, final Foundry persistence and wizard UI remain required under #18. `creationLedger.valid` means its ledger inputs passed, not that those other character-completion checks are satisfied. Recipe eligibility consumes explicit compatible-crafting context from the future adapter; it never guesses from a card's prose.

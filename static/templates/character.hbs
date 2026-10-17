@@ -1,5 +1,6 @@
 <section class="hol-body">
   <header class="hol-banner"><p class="hol-kicker">{{localize "HOL.Character"}}</p><h1>{{actor.name}}</h1></header>
+  {{#if editable}}<button type="button" data-action="createHero">Create or resume character</button>{{/if}}
   <fieldset {{#unless editable}}disabled{{/unless}}>
     <label>{{localize "HOL.Name"}}<input name="name" type="text" value="{{actor.name}}" required></label>
     <h2>{{localize "HOL.AttributesTitle"}}</h2>

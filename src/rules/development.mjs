@@ -1,3 +1,4 @@
+import { acquireAbility, craftingPermissions } from "./acquisition.mjs";
 import { ATTRIBUTES } from "./character.mjs";
 const clone = (value) => structuredClone(value);
 const find = (catalog, id) => catalog.find((r) => r.id === id);
@@ -151,7 +152,7 @@ export function purchase(state, choice, catalog, selection = {}) {
   return { state: next, reasons: [], applied: true };
 }
 /** Rebuild in order: invalid choices remain in the returned draft and receive repair reasons. */
-export function creationLedger(draft, catalog) {
+export function creationLedger(draft, catalog, { inventoryCatalog } = {}) {
   const errors = [],
     ledger = [],
     stages = {};
@@ -187,6 +188,25 @@ export function creationLedger(draft, catalog) {
     compatibleRecipes: [],
     safePlace: true,
   };
+  const syncAcquisitions = () => {
+    state.gritGranted =
+      (state.level >= 1 ? 2 : 0) +
+      Number(state.abilities.includes("ability-one-more-dawn"));
+    if (!inventoryCatalog) return;
+    for (const id of state.abilities) {
+      const result = acquireAbility(
+        state,
+        id,
+        draft.acquisitions?.[id] ?? {},
+        inventoryCatalog,
+      );
+      if (result.valid) state = result.state;
+    }
+    Object.assign(
+      state,
+      craftingPermissions(state.abilities, inventoryCatalog),
+    );
+  };
   const add = (kind, sourceId, delta, extra = {}) => {
     state.dp += delta;
     ledger.push({
@@ -212,6 +232,7 @@ export function creationLedger(draft, catalog) {
     else {
       state.abilities.push(id);
       add("ability-grant", source, 0, { id });
+      syncAcquisitions();
     }
   };
   for (const originType of ["culture", "background"]) {
@@ -248,6 +269,7 @@ export function creationLedger(draft, catalog) {
       }
       const before = state.dp;
       state = outcome.state;
+      syncAcquisitions();
       ledger.push({
         stage,
         kind: "purchase",
@@ -262,7 +284,7 @@ export function creationLedger(draft, catalog) {
   add("expired-pool", null, -state.dp);
   state.stage = 1;
   state.level = 1;
-  state.gritGranted = 2;
+  syncAcquisitions();
   state.dp = pool ?? 0;
   ledger.push({ stage: 1, kind: "pool", delta: state.dp, balance: state.dp });
   const cls = find(catalog, draft.classId);
@@ -294,6 +316,21 @@ export function creationLedger(draft, catalog) {
   applyStage(1);
   stages[1] = clone(state);
   add("expired-pool", null, -state.dp);
+  if (inventoryCatalog)
+    for (const id of state.abilities) {
+      const result = acquireAbility(
+        state,
+        id,
+        draft.acquisitions?.[id] ?? {},
+        inventoryCatalog,
+      );
+      if (!result.valid)
+        errors.push({
+          code: "acquisition",
+          id,
+          reasons: result.errors.map((text) => reason("selection", text)),
+        });
+    }
   return {
     draft: clone(draft),
     valid: errors.length === 0,

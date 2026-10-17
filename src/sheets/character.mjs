@@ -1,3 +1,4 @@
+import { CreationWizard } from "../applications/creation.mjs";
 import { promptAttributeRoll } from "../dialogs/attribute-roll.mjs";
 import { ATTRIBUTES } from "../rules/character.mjs";
 import { updateOwnedDocument } from "../services/documents.mjs";
@@ -8,7 +9,7 @@ export class CharacterSheet extends HandlebarsApplicationMixin(foundry.applicati
     position: { width: 720, height: 760 },
     window: { resizable: true },
     form: { submitOnChange: false, closeOnSubmit: false },
-    actions: { openAbility: CharacterSheet.openAbility, rollAttribute: CharacterSheet.rollAttribute }
+    actions: { createHero: CharacterSheet.createHero, openAbility: CharacterSheet.openAbility, rollAttribute: CharacterSheet.rollAttribute }
   };
   static PARTS = { main: { template: "systems/heroes-of-legend/templates/character.hbs", scrollable: [""] } };
   async _prepareContext(options) {
@@ -23,6 +24,7 @@ export class CharacterSheet extends HandlebarsApplicationMixin(foundry.applicati
     if (!this.isEditable) throw new Error(game.i18n.localize("HOL.NoPermission"));
     return { updated: await updateOwnedDocument(this.actor, data, options) };
   }
+  static async createHero() { if (this.actor.isOwner) await new CreationWizard(this.actor).render({force:true}); }
   static async rollAttribute(event, target) {
     try { await promptAttributeRoll(this.actor, target.dataset.attribute); }
     catch (error) { ui.notifications.error(error.message); }

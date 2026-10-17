@@ -1,0 +1,53 @@
+<section class="hol-wizard">
+ <header class="hol-banner"><p class="hol-kicker">Heroes of Legend · Character creation</p><h1>{{draft.name}}</h1><p>Your draft is separate from your character. Save at any time, then resume from the sheet.</p></header>
+ <div class="hol-wizard-layout">
+ <nav aria-label="Creation steps">{{#each steps}}<button type="button" data-action="navigate" data-step="{{index}}" {{#if active}}aria-current="step"{{/if}}>{{name}}</button>{{/each}}<small>Saved revision {{revision}}</small></nav>
+ <main class="hol-wizard-main"><h2>{{title}}</h2>
+ {{#if identity}}
+ <label>Character name<input name="heroName" value="{{draft.name}}"></label>
+ <p>Assign −2 to +2 to each attribute, totaling +3. Current total: <strong>{{attributeTotal}}</strong>. Knowledge, Reason and Guile determine each creation DP pool.</p>
+ <div class="hol-attributes">{{#each attributes}}<label>{{name}}<input name="attribute-{{id}}" type="number" min="-2" max="2" step="1" value="{{value}}"></label>{{/each}}</div>
+ {{/if}}
+ {{#if ancestry}}
+ <label>Ancestry<select name="ancestryId"><option value="">Choose an ancestry</option>{{#each ancestries}}<option value="{{id}}" {{#if selected}}selected{{/if}}>{{name}} · HP {{hp}} · Speed {{speed}}</option>{{/each}}</select></label>
+ <p>Save an ancestry choice to show its traits. Choose exactly two.</p>
+ <fieldset><legend>Ancestry traits</legend>{{#each traits}}<label><input type="checkbox" name="trait" value="{{id}}" {{#if selected}}checked{{/if}}> {{name}}</label>{{/each}}</fieldset>
+ <label>Remembered community (Age of Memory)<input name="rememberedCommunity" value="{{draft.rememberedCommunity}}"></label>
+ <label>Home language (Common is already known)<select name="homeLanguage"><option value="">Choose a language</option>{{#each languages}}<option value="{{id}}" {{#if selected}}selected{{/if}}>{{name}}</option>{{/each}}</select></label>
+ {{#if manyHomes}}<fieldset><legend>Many Homes: two additional spoken languages</legend><p>These extra grants do not grant literacy.</p>{{#each extraLanguages}}<label><input type="checkbox" name="extraLanguage" value="{{id}}" {{#if selected}}checked{{/if}}> {{name}}</label>{{/each}}</fieldset>{{/if}}
+ {{/if}}
+ {{#if origins}}<p>Each origin grants one complete discipline-and-ability pair. A duplicate grant adds 1 DP to the level-0 pool.</p>
+ <label>Culture<select name="culture"><option value="">Choose culture and grant pair</option>{{#each culturePairs}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+ <label>Background<select name="background"><option value="">Choose background and grant pair</option>{{#each backgroundPairs}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>{{/if}}
+ {{#if classStep}}<p>Classes meeting your attribute requirements appear first. Save a class choice to show its starting disciplines and signatures.</p>
+ <fieldset><legend>Class</legend>{{#each classes}}<label class="hol-choice {{#unless eligible}}hol-ineligible{{/unless}}"><input type="radio" name="classId" value="{{choice.id}}" {{#if selected}}checked{{/if}} {{#unless eligible}}disabled{{/unless}}> <strong>{{choice.name}}</strong> · HP {{choice.hp}}<small>{{reasons}}</small></label>{{/each}}</fieldset>
+ <fieldset><legend>Choose two starting disciplines</legend>{{#each classDisciplines}}<label><input type="checkbox" name="classDiscipline" value="{{id}}" {{#if selected}}checked{{/if}}> {{name}}</label>{{/each}}</fieldset>
+ <label>Level-1 signature<select name="signatureId"><option value="">Choose one signature</option>{{#each signatures}}<option value="{{id}}" {{#if selected}}selected{{/if}}>{{name}}</option>{{/each}}</select></label>{{/if}}
+ {{#if learningStep}}
+ <div class="hol-budget"><strong>Level {{stage}} · {{dp}} DP remaining</strong><p>Unused DP expires when this creation stage closes. Later grants cannot qualify an earlier purchase.</p></div>
+ <h3>Planned purchases</h3><ol>{{#each purchases}}<li>{{name}} <button type="button" data-action="removePurchase" data-index="{{index}}" aria-label="Remove {{name}}">Remove</button>{{#if errors}}<p class="hol-error">{{errors}}</p>{{/if}}</li>{{else}}<li>No purchases yet.</li>{{/each}}</ol>
+ {{/if}}
+ {{#if acquisitions}}{{#unless review}}{{#unless identity}}{{#unless ancestry}}{{#unless origins}}{{#unless classStep}}
+ <details open><summary>Equipment and recipe choices from learned abilities</summary><p>Compatible abilities share equipment. Recipes grant knowledge, never ingredients or finished supplies. Save choices to refresh eligibility.</p>
+ {{#each acquisitions}}<fieldset data-acquisition="{{id}}"><legend>{{name}}</legend>
+ {{#if weaponOptions}}<label>Attack equipment<select name="weapon-{{id}}"><option value="">Choose equipment</option>{{#each weaponOptions}}<option value="{{id}}" {{#if selected}}selected{{/if}}>{{name}}</option>{{/each}}</select></label>{{/if}}
+ {{#if needsHands}}<label>Melee weapon hand use<select name="hands-{{id}}"><option value="">Choose if a weapon is granted</option>{{#each handOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{value}}</option>{{/each}}</select></label>{{/if}}
+ {{#if recipeChoices}}<div data-recipes><p>Choose {{recipeChoices}} ordinary recipes.</p>{{#each recipes}}<label><input type="checkbox" name="recipes-{{../id}}" value="{{id}}" {{#if selected}}checked{{/if}}> {{name}}</label>{{/each}}</div>{{/if}}</fieldset>{{/each}}</details>
+ {{/unless}}{{/unless}}{{/unless}}{{/unless}}{{/unless}}{{/if}}
+ {{#if learningStep}}<label>Search abilities and disciplines<input type="search" data-search placeholder="Search by name"></label>
+ <div class="hol-choice-list">{{#each learning}}<article class="hol-choice {{#unless eligible}}hol-ineligible{{/unless}}" data-search-name="{{choice.name}}"><header><h3>{{choice.name}}</h3><span>{{cost}} DP {{#if nextRank}}· Rank {{nextRank}}{{/if}}</span></header><p>{{reasons}}</p><a href="{{source}}" target="_blank" rel="noopener">Read book rules</a>
+ {{#if recipeStudy}}<label>New recipe<select name="recipe-{{choice.id}}">{{#each recipeOptions}}<option value="{{id}}">{{name}}</option>{{/each}}</select></label>{{/if}}
+ <button type="button" data-action="addPurchase" data-id="{{choice.id}}" {{#unless eligible}}disabled{{/unless}}>Add {{choice.name}}</button></article>{{/each}}</div>{{/if}}
+ {{#if equipmentStep}}<div class="hol-budget"><strong>{{inventory.remainingCoins}} coins remaining · {{inventory.bulk}} Bulk</strong><p>Starting coins: {{inventory.startingCoins}}. Planned spending: {{inventory.spent}}. One plain worn outfit is included. Containers add their own Bulk.</p></div>
+ <h3>Shopping list</h3><ul>{{#each shopping}}<li>{{quantity}} × {{name}} <button type="button" data-action="removeEquipment" data-index="{{index}}">Remove</button></li>{{else}}<li>No purchases.</li>{{/each}}</ul>
+ <label>Search equipment<input type="search" data-search></label><div class="hol-choice-list">{{#each equipment}}<article class="hol-choice" data-search-name="{{name}}"><h3>{{name}}</h3><p>{{price}} coins · Bulk {{bulk}}{{#if inventoryDie}} · d{{inventoryDie}} supply{{/if}}</p><a href="{{source}}" target="_blank" rel="noopener">Read book rules</a>{{#if specialOrder}}<p>Special order: DA availability required.</p>{{else}}<label>Quantity<input type="number" name="quantity-{{id}}" min="1" step="1" value="1"></label>{{#if handChoices.length}}<label>Hands<select name="shop-hands-{{id}}">{{#each handChoices}}<option value="{{this}}">{{this}}</option>{{/each}}</select></label>{{/if}}<button type="button" data-action="addEquipment" data-id="{{id}}">Add {{name}}</button>{{/if}}</article>{{/each}}</div>{{/if}}
+ {{#if review}}
+ {{#if valid}}<p class="hol-budget">All creation choices are valid.</p>{{else}}<h3>Choices to repair</h3><ul class="hol-error">{{#each errors}}<li>{{this}}</li>{{/each}}</ul>{{/if}}
+ {{#if summary}}<dl class="hol-summary"><dt>Maximum HP</dt><dd>{{summary.maximumHp}}</dd><dt>Grit</dt><dd>{{summary.gritGranted}}</dd><dt>Speed without encumbrance</dt><dd>{{summary.unencumberedSpeed}}</dd><dt>Carrying capacity</dt><dd>{{summary.capacity}}</dd><dt>Coins remaining</dt><dd>{{inventory.remainingCoins}}</dd><dt>Bulk</dt><dd>{{inventory.bulk}}</dd></dl>{{/if}}
+ <h3>Abilities</h3><ul>{{#each knownAbilities}}<li>{{this}}</li>{{/each}}</ul><h3>Recipes</h3><ul>{{#each knownRecipes}}<li>{{this}}</li>{{else}}<li>None.</li>{{/each}}</ul>
+ <h3>Equipment</h3><ul>{{#each inventoryItems}}<li>{{quantity}} × {{name}}</li>{{/each}}</ul>
+ <details><summary>DP ledger</summary><table><thead><tr><th>Stage</th><th>Reason</th><th>Source</th><th>Change</th><th>Balance</th></tr></thead><tbody>{{#each ledger}}<tr><td>{{stage}}</td><td>{{kind}}</td><td>{{source}}</td><td>{{delta}}</td><td>{{balance}}</td></tr>{{/each}}</tbody></table></details>
+ <p>This saves a creation draft. Character commitment is not enabled in this development build.</p>{{/if}}
+ </main></div>
+ <footer class="hol-wizard-footer">{{#if hasPrevious}}<button type="button" data-action="navigate" data-step="{{previous}}">Back</button>{{/if}}<button type="button" data-action="saveDraft">Save choices</button>{{#if hasNext}}<button type="button" class="hol-primary" data-action="navigate" data-step="{{next}}">Save and continue</button>{{/if}}</footer>
+</section>

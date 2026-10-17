@@ -23,7 +23,8 @@
     "import:choices": "node scripts/import-choices.mjs",
     "validate:choices": "node scripts/import-choices.mjs --check",
     "import:inventory": "node scripts/import-inventory.mjs",
-    "validate:inventory": "node scripts/import-inventory.mjs --check"
+    "validate:inventory": "node scripts/import-inventory.mjs --check",
+    "test:creation": "node scripts/check-creation.mjs"
   },
   "devDependencies": {
     "@foundryvtt/foundryvtt-cli": "3.0.5",

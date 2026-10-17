@@ -41,7 +41,7 @@ export function languageGrants(
     if (
       !d.id ||
       !d.name?.trim() ||
-      !d.form ||
+      !["spoken", "signed"].includes(d.form) ||
       typeof d.ordinary !== "boolean" ||
       typeof d.writing !== "boolean" ||
       byId.has(d.id)
@@ -107,8 +107,9 @@ export function creationIdentity(
   draft,
   catalog,
   definitions = DEFAULT_LANGUAGES,
+  options = {},
 ) {
-  const result = creationLedger(draft, catalog);
+  const result = creationLedger(draft, catalog, options);
   const errors = [...result.errors];
   const get = (id) => catalog.find((r) => r.id === id);
   const ancestry = get(draft.ancestryId),
@@ -166,7 +167,7 @@ export function creationIdentity(
     summary = {
       creationAttributes: attributes,
       maximumHp,
-      gritGranted: 2,
+      gritGranted: result.state.gritGranted,
       gritSpent: 0,
       stability: 0,
       speedBase,

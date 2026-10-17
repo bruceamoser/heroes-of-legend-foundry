@@ -1,0 +1,23 @@
+@font-face { font-family: "HOL Cinzel"; src: url("../fonts/Cinzel.ttf") format("truetype"); font-weight: 400 900; font-display: swap; }
+@font-face { font-family: "HOL Garamond"; src: url("../fonts/EBGaramond.ttf") format("truetype"); font-weight: 400 800; font-display: swap; }
+.heroes-of-legend { --hol-forest: #15221c; --hol-gold: #b39253; --hol-ivory: #f1e6ce; --hol-paper: #f7f3e9; --hol-ink: #28251c; }
+.heroes-of-legend .window-content { background: var(--hol-paper); color: var(--hol-ink); padding: 0; font-family: "HOL Garamond", Georgia, serif; font-size: 18px; }
+.heroes-of-legend .hol-body { padding: 20px; overflow-y: auto; }
+.heroes-of-legend .hol-banner { background: var(--hol-forest); color: var(--hol-ivory); border: 1px solid var(--hol-gold); padding: 18px 22px; margin: -20px -20px 20px; }
+.heroes-of-legend h1, .heroes-of-legend h2, .heroes-of-legend .hol-kicker { font-family: "HOL Cinzel", Georgia, serif; }
+.heroes-of-legend h1 { color: var(--hol-ivory); font-size: 30px; margin: 4px 0 0; border: 0; }
+.heroes-of-legend h2 { color: var(--hol-forest); font-size: 18px; margin: 16px 0 10px; border-bottom: 1px solid var(--hol-gold); }
+.heroes-of-legend .hol-kicker { color: var(--hol-gold); font-size: 12px; letter-spacing: 2px; margin: 0; }
+.heroes-of-legend fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+.heroes-of-legend label { display: flex; flex-direction: column; gap: 5px; margin-bottom: 12px; }
+.heroes-of-legend input, .heroes-of-legend textarea, .heroes-of-legend select { color: var(--hol-ink); background: #fffdf7; border: 1px solid #8b8069; border-radius: 3px; font: inherit; width: 100%; }
+.heroes-of-legend input { height: 34px; }
+.heroes-of-legend textarea { resize: vertical; padding: 7px; }
+.heroes-of-legend :disabled { opacity: 1; cursor: default; }
+.heroes-of-legend :focus-visible { outline: 3px solid #5b7648; outline-offset: 2px; }
+.heroes-of-legend .hol-attributes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 16px; }
+.heroes-of-legend .hol-pair, .heroes-of-legend .hol-resources { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.heroes-of-legend .hol-note { background: var(--hol-ivory); border-left: 3px solid var(--hol-gold); padding: 8px 12px; font-size: 16px; }
+.heroes-of-legend .hol-primary { background: var(--hol-forest); color: var(--hol-ivory); border: 1px solid var(--hol-gold); font-family: "HOL Cinzel", Georgia, serif; min-height: 38px; width: 100%; }
+.heroes-of-legend .hol-ability-list { padding: 0; list-style: none; }
+.heroes-of-legend .hol-ability-list button { width: 100%; color: var(--hol-ink); text-align: left; background: var(--hol-ivory); }

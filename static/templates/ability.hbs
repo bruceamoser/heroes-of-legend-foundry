@@ -1,0 +1,14 @@
+<section class="hol-body">
+  <header class="hol-banner"><p class="hol-kicker">{{localize "HOL.Ability"}}</p><h1>{{item.name}}</h1></header>
+  <p class="hol-note">{{localize "HOL.ManualAbility"}}</p>
+  <fieldset {{#unless editable}}disabled{{/unless}}>
+    <label>{{localize "HOL.Name"}}<input name="name" type="text" value="{{item.name}}" required></label>
+    <label>{{localize "HOL.Description"}}<textarea name="system.description" rows="4">{{system.description}}</textarea></label>
+    <div class="hol-pair"><label>{{localize "HOL.Action"}}<select name="system.activity.action">{{selectOptions actions selected=system.activity.action}}</select></label><label>{{localize "HOL.RollMode"}}<select name="system.activity.rollMode">{{selectOptions rollModes selected=system.activity.rollMode}}</select></label></div>
+    <div class="hol-pair"><label>{{localize "HOL.Attribute"}}<select name="system.activity.attribute">{{selectOptions attributes selected=system.activity.attribute}}</select></label><label>{{localize "HOL.DefenseAttribute"}}<select name="system.activity.defenseAttribute">{{selectOptions attributes selected=system.activity.defenseAttribute}}</select></label></div>
+    <label>{{localize "HOL.Weak"}}<textarea name="system.outcomes.weak" rows="2">{{system.outcomes.weak}}</textarea></label>
+    <label>{{localize "HOL.Standard"}}<textarea name="system.outcomes.standard" rows="2">{{system.outcomes.standard}}</textarea></label>
+    <label>{{localize "HOL.Strong"}}<textarea name="system.outcomes.strong" rows="2">{{system.outcomes.strong}}</textarea></label>
+    {{#if editable}}<button type="submit" class="hol-primary">{{localize "HOL.Save"}}</button>{{/if}}
+  </fieldset>
+</section>

@@ -1,0 +1,19 @@
+<section class="hol-body">
+  <header class="hol-banner"><p class="hol-kicker">{{localize "HOL.Character"}}</p><h1>{{actor.name}}</h1></header>
+  <fieldset {{#unless editable}}disabled{{/unless}}>
+    <label>{{localize "HOL.Name"}}<input name="name" type="text" value="{{actor.name}}" required></label>
+    <h2>{{localize "HOL.AttributesTitle"}}</h2>
+    <div class="hol-attributes">{{#each attributes}}
+      <label>{{label}}<input name="system.attributes.{{key}}.base" type="number" value="{{base}}" min="-2" max="2" step="1" required><small>{{localize "HOL.Effective"}} {{effective}}</small></label>
+    {{/each}}</div>
+    <p class="hol-note">{{localize "HOL.AttributeDraft"}} <strong>{{system.attributeTotal}}</strong> / +3</p>
+    <div class="hol-resources">
+      <section><h2>{{localize "HOL.HP"}}</h2><div class="hol-pair"><label>{{localize "HOL.Current"}}<input name="system.health.value" type="number" min="0" step="1" value="{{system.health.value}}" required></label><label>{{localize "HOL.BaseMax"}}<input name="system.health.baseMax" type="number" min="1" step="1" value="{{system.health.baseMax}}" required></label></div></section>
+      <section><h2>{{localize "HOL.Grit"}} · {{system.grit.available}}</h2><div class="hol-pair"><label>{{localize "HOL.Granted"}}<input name="system.grit.granted" type="number" min="0" step="1" value="{{system.grit.granted}}" required></label><label>{{localize "HOL.Spent"}}<input name="system.grit.spent" type="number" min="0" step="1" value="{{system.grit.spent}}" required></label></div></section>
+    </div>
+    <label>{{localize "HOL.Biography"}}<textarea name="system.biography" rows="3">{{system.biography}}</textarea></label>
+    {{#if editable}}<button type="submit" class="hol-primary">{{localize "HOL.Save"}}</button>{{/if}}
+  </fieldset>
+  <h2>{{localize "HOL.Abilities"}}</h2>
+  <ul class="hol-ability-list">{{#each abilities}}<li><button type="button" data-action="openAbility" data-item-id="{{id}}">{{name}}</button></li>{{else}}<li>{{localize "HOL.NoAbilities"}}</li>{{/each}}</ul>
+</section>

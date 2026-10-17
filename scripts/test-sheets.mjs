@@ -1,3 +1,4 @@
+import { selectTestUser } from "./helpers/login.mjs";
 import { chromium } from "playwright";
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
@@ -9,10 +10,11 @@ const errors = [];
 async function join(user) {
   const context = await browser.newContext({ viewport: { width: 1600, height: 1000 } });
   context.setDefaultTimeout(30000);
+  await context.addInitScript(() => { localStorage.setItem("core.maxFPS", "10"); localStorage.setItem("core.performanceMode", "0"); });
   const page = await context.newPage();
   page.on("pageerror", e => errors.push(e.message));
   await page.goto(url);
-  await page.locator("input[name=username]").fill(user);
+  await selectTestUser(page, user);
   await page.locator("button[name=join]").click();
   await page.waitForFunction(() => globalThis.game?.ready);
   await page.evaluate(() => foundry.nue.Tour.activeTour?.exit());

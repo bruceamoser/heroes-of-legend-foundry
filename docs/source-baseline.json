@@ -199,6 +199,10 @@
     "targetGeneration": 14,
     "firstRuntimeTarget": "14.369",
     "apiDocumentationBuildObserved": "14.368",
-    "runtimeTested": false
+    "runtimeTested": true,
+    "runtimeBuildsTested": [
+      "14.367",
+      "14.369"
+    ]
   }
 }

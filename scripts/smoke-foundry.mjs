@@ -1,3 +1,4 @@
+import { selectTestUser } from "./helpers/login.mjs";
 import { chromium } from "playwright";
 import assert from "node:assert/strict";
 
@@ -19,7 +20,7 @@ try {
   });
   await page.goto(url);
   if (new URL(page.url()).pathname === "/join") {
-    await page.locator("input[name=username]").fill(process.env.HOL_TEST_USER ?? "Gamemaster");
+    await selectTestUser(page, process.env.HOL_TEST_USER ?? "Gamemaster");
     await page.locator("input[name=password]").fill(process.env.HOL_TEST_PASSWORD ?? "");
     await page.locator("button[name=join]").click();
   }

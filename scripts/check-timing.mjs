@@ -1,3 +1,4 @@
+import { selectTestUser } from "./helpers/login.mjs";
 import { chromium } from "playwright";
 import assert from "node:assert/strict";
 const url = process.env.HOL_TEST_URL;
@@ -18,7 +19,7 @@ async function join(name) {
   p.setDefaultTimeout(30000);
   p.on("pageerror", (e) => errors.push(e.message));
   await p.goto(url);
-  await p.locator("input[name=username]").fill(name);
+  await selectTestUser(p, name);
   await p.locator("button[name=join]").click();
   await p.waitForFunction(() => game.ready);
   return p;

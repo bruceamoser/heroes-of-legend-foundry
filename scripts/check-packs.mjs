@@ -1,3 +1,4 @@
+import { selectTestUser } from "./helpers/login.mjs";
 import { chromium } from "playwright";
 import assert from "node:assert/strict";
 const url = process.env.HOL_TEST_URL;
@@ -20,9 +21,7 @@ const errors = [];
 page.on("pageerror", (e) => errors.push(e.message));
 try {
   await page.goto(url);
-  await page
-    .locator("input[name=username]")
-    .fill(process.env.HOL_TEST_USER ?? "Gamemaster");
+  await selectTestUser(page, process.env.HOL_TEST_USER ?? "Gamemaster");
   await page.locator("button[name=join]").click();
   await page.waitForFunction(() => game.ready);
   if (process.argv.includes("--prepare")) {

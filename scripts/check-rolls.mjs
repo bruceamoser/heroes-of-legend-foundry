@@ -1,13 +1,14 @@
+import { selectTestUser } from "./helpers/login.mjs";
 import { chromium } from "playwright";
 import assert from "node:assert/strict";
 const url=process.env.HOL_TEST_URL;
 if (!url || !["localhost","127.0.0.1"].includes(new URL(url).hostname) || process.env.HOL_TEST_ALLOW_WRITES !== "1") throw new Error("Select a local disposable world and enable HOL_TEST_ALLOW_WRITES=1");
 const browser=await chromium.launch();
-const context=await browser.newContext({viewport:{width:1600,height:1000}});context.setDefaultTimeout(30000);
+const context=await browser.newContext({viewport:{width:1600,height:1000}});context.setDefaultTimeout(30000);await context.addInitScript(()=>localStorage.setItem("core.noCanvas","true"));
 const page=await context.newPage(); const errors=[];page.on('pageerror',e=>errors.push(e.message));
 let actorId;const messages=[];
 try {
-  await page.goto(url);await page.locator('input[name=username]').fill(process.env.HOL_TEST_USER??'Gamemaster');await page.locator('button[name=join]').click();await page.waitForFunction(()=>game.ready);
+  await page.goto(url);await selectTestUser(page, process.env.HOL_TEST_USER??'Gamemaster');await page.locator('button[name=join]').click();await page.waitForFunction(()=>game.ready);
   actorId=await page.evaluate(async()=>{const actor=await Actor.create({name:'Roll test',type:'character',system:{attributes:{brawn:{base:2}}}});await actor.sheet.render({force:true});return actor.id;});
   await page.locator('.hol-character [data-attribute=brawn]').click();
   const dialog=page.locator('.hol-roll-dialog');await dialog.locator('[name=boons]').fill('5');await dialog.locator('[name=banes]').fill('3');

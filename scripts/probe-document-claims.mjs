@@ -1,3 +1,4 @@
+import { selectTestUser } from "./helpers/login.mjs";
 import { chromium } from "playwright";
 const url = process.env.HOL_TEST_URL;
 if (!url || !["localhost", "127.0.0.1"].includes(new URL(url).hostname) || process.env.HOL_TEST_ALLOW_WRITES !== "1") throw new Error("Select a disposable local world and enable writes");
@@ -8,7 +9,7 @@ try {
   await context.addInitScript(() => localStorage.setItem("core.noCanvas", "true"));
   const page = await context.newPage();
   await page.goto(url);
-  await page.locator("input[name=username]").fill(process.env.HOL_TEST_USER ?? "Gamemaster");
+  await selectTestUser(page, process.env.HOL_TEST_USER ?? "Gamemaster");
   await page.locator("button[name=join]").click();
   await page.waitForFunction(() => game.ready);
   const result = await page.evaluate(async () => {

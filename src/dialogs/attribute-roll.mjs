@@ -3,11 +3,16 @@ import { rollBasis, prepareRoll } from "../services/roll-preparation.mjs";
 export class SharedRollDialog extends foundry.applications.api.HandlebarsApplicationMixin(
   foundry.applications.api.ApplicationV2,
 ) {
-  constructor(actor, attributeKey, { mode = "attribute" } = {}) {
+  constructor(
+    actor,
+    attributeKey,
+    { mode = "attribute", attackMessageId = null } = {},
+  ) {
     super();
     this.actor = actor;
     this.attributeKey = attributeKey;
     this.mode = mode;
+    this.attackMessageId = attackMessageId;
     this.draft = {
       boons: 0,
       banes: 0,
@@ -21,7 +26,10 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
     classes: ["heroes-of-legend", "hol-roll-dialog"],
     window: { title: "Prepare roll", resizable: true },
     position: { width: 560, height: 650 },
-    actions: { roll: SharedRollDialog.roll },
+    actions: {
+      roll: SharedRollDialog.roll,
+      changeDefender: SharedRollDialog.changeDefender,
+    },
   };
   static PARTS = {
     main: {
@@ -30,7 +38,12 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
     },
   };
   async _prepareContext() {
-    this.basis = rollBasis(this.actor, this.attributeKey, this.mode);
+    this.basis = rollBasis(
+      this.actor,
+      this.attributeKey,
+      this.mode,
+      this.attackMessageId,
+    );
     const fears = [
       ...new Set(
         this.basis.contributions
@@ -41,6 +54,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
     this.fears = fears;
     return {
       name: this.actor.name,
+      incoming: this.basis.incoming,
       attributeName: game.i18n.localize(`HOL.Attributes.${this.attributeKey}`),
       attribute: this.basis.attribute,
       defense: this.mode === "defense",
@@ -97,11 +111,25 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
     });
     this.preview();
   }
+  static async changeDefender() {
+    try {
+      const { chooseDefender } = await import("./defender-choice.mjs");
+      await this.close();
+      await chooseDefender(this.attackMessageId, { forceChoice: true });
+    } catch (e) {
+      ui.notifications.error(e.message);
+    }
+  }
   static async roll() {
     if (this.rolling) return;
     this.readDraft();
     try {
-      const current = rollBasis(this.actor, this.attributeKey, this.mode);
+      const current = rollBasis(
+        this.actor,
+        this.attributeKey,
+        this.mode,
+        this.attackMessageId,
+      );
       if (JSON.stringify(current) !== JSON.stringify(this.basis)) {
         this.notice =
           "This character's roll sources changed. Review the updated values and roll again.";
@@ -124,8 +152,11 @@ export async function promptAttributeRoll(actor, attributeKey) {
   if (!actor.isOwner) return;
   return new SharedRollDialog(actor, attributeKey).render({ force: true });
 }
-export async function promptDefenseRoll(actor, attributeKey) {
-  return new SharedRollDialog(actor, attributeKey, { mode: "defense" }).render({
+export async function promptDefenseRoll(actor, attributeKey, options = {}) {
+  return new SharedRollDialog(actor, attributeKey, {
+    ...options,
+    mode: "defense",
+  }).render({
     force: true,
   });
 }

@@ -1,6 +1,7 @@
 <section class="hol-body">
 <header class="hol-banner"><p class="hol-kicker">Creature · CV {{system.cv}}</p><h1>{{actor.name}}</h1></header>
 <p class="hol-note">These are printed creature statistics. A player-controlled creature uses the player attack perspective. Attack execution and automatic death are still in development.</p>
+{{#if gm}}<button type="button" data-action="npcMelee">Declare NPC Basic Melee</button>{{/if}}
 <button type="button" data-action="conditions">Condition sources</button>
 <fieldset {{#unless editable}}disabled{{/unless}}>
 <label>Name<input name="name" value="{{actor.name}}"></label>

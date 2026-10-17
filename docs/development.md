@@ -482,3 +482,6 @@ The fixture records Wooden Brace and Simple Replacement Leg explicitly rather
 than deriving the expected list from production code. Source hashes are checked
 against the pinned source lock. Native campaign language configuration and
 six-character document commitment remain separate runtime work.
+
+After integration with the two-recipe fix, all six reference characters and the
+source-lock provenance test pass. Node 24 `npm run check` passes all 150 tests.

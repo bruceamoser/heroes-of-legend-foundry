@@ -75,6 +75,7 @@ export function advancementPreview(current, draft, choices, inventory) {
       id: entry.id,
       delta: state.dp - before,
       balance: state.dp,
+      ...(entry.recipeIds ? { recipeIds: [...entry.recipeIds] } : {}),
     });
   }
   return {

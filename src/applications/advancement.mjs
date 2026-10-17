@@ -6,7 +6,11 @@ import {
 } from "../services/advancement.mjs";
 import { updateOwnedDocument } from "../services/documents.mjs";
 import { advancementPreview } from "../rules/advancement.mjs";
-import { eligibleFirst, purchaseEligibility } from "../rules/development.mjs";
+import {
+  eligibleFirst,
+  purchaseEligibility,
+  recipeStudyChoices,
+} from "../rules/development.mjs";
 const ID = "heroes-of-legend";
 export class AdvancementWizard extends foundry.applications.api.HandlebarsApplicationMixin(
   foundry.applications.api.ApplicationV2,
@@ -55,6 +59,11 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
       get = (id) => choices.find((r) => r.id === id);
     this.preview = advancementPreview(current, this.draft, choices, inventory);
     const state = this.preview.state;
+    const recipeName = (id) =>
+      get(id)?.name ??
+      inventory.recipes.find((recipe) => recipe.id === id)?.name ??
+      id;
+    const recipeStudy = recipeStudyChoices(state, inventory.recipes);
     const acquisitions = state.abilities
       .filter((id) => !current.abilities.includes(id))
       .map((id) => inventory.acquisitions.find((a) => a.id === id))
@@ -114,8 +123,14 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
       })),
       acquisitions,
       purchases: this.draft.purchases.map((p, index) => ({
+        ...p,
         index,
         name: get(p.id)?.name ?? p.id,
+        recipeNames: [
+          ...(p.recipeIds ?? []),
+          ...(p.recipeId ? [p.recipeId] : []),
+        ].map(recipeName),
+        legacyRecipePurchase: Boolean(p.recipeId),
       })),
       errors: this.preview.errors.map(
         (e) =>
@@ -124,29 +139,31 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
       ),
       learning: eligibleFirst(
         choices.filter((r) => ["ability", "discipline"].includes(r.kind)),
-        (r) =>
-          purchaseEligibility(
+        (r) => {
+          const recipeIds =
+            r.purchasePolicy === "new-recipe"
+              ? recipeStudy.defaultRecipeIds
+              : null;
+          return purchaseEligibility(
             r,
             state,
             choices,
-            r.purchasePolicy === "new-recipe"
-              ? {
-                  recipeId: state.compatibleRecipes.find(
-                    (id) => !state.recipes.includes(id),
-                  ),
-                }
-              : {},
-          ),
+            recipeIds ? { recipeIds } : {},
+          );
+        },
       ).map((r) => ({
         ...r,
         reasons: r.reasons.map((e) => e.text).join(" "),
         source: `https://github.com/bruceamoser/heroes-of-legend/blob/${commit}/${r.choice.source.path}`,
         recipeStudy: r.choice.purchasePolicy === "new-recipe",
-        recipes: inventory.recipes.filter(
-          (r) =>
-            state.compatibleRecipes.includes(r.id) &&
-            !state.recipes.includes(r.id),
-        ),
+        recipeSelections: [0, 1].map((slot) => ({
+          label: slot === 0 ? "First recipe" : "Second recipe",
+          name: `recipe-${r.choice.id}-${slot + 1}`,
+          options: recipeStudy.options.map((recipe) => ({
+            ...recipe,
+            selected: recipe.id === recipeStudy.defaultRecipeIds[slot],
+          })),
+        })),
       })),
     };
   }
@@ -216,7 +233,17 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
   static async add(event, target) {
     await this.act(async () => {
       const id = target.dataset.id,
-        recipeId = this.element.querySelector(`[name="recipe-${id}"]`)?.value;
+        choice = this.catalogs.choices.find((r) => r.id === id);
+      const recipeIds =
+        choice.purchasePolicy === "new-recipe"
+          ? [1, 2]
+              .map(
+                (slot) =>
+                  this.element.querySelector(`[name="recipe-${id}-${slot}"]`)
+                    ?.value,
+              )
+              .filter(Boolean)
+          : [];
       const preview = advancementPreview(
         currentDevelopment(this.actor),
         this.draft,
@@ -224,14 +251,17 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
         this.catalogs.inventory,
       );
       const eligibility = purchaseEligibility(
-        this.catalogs.choices.find((r) => r.id === id),
+        choice,
         preview.state,
         this.catalogs.choices,
-        { recipeId },
+        choice.purchasePolicy === "new-recipe" ? { recipeIds } : {},
       );
       if (!eligibility.eligible)
         throw new Error(eligibility.reasons.map((r) => r.text).join(" "));
-      this.draft.purchases.push({ id, ...(recipeId ? { recipeId } : {}) });
+      this.draft.purchases.push({
+        id,
+        ...(choice.purchasePolicy === "new-recipe" ? { recipeIds } : {}),
+      });
     });
   }
   static async remove(event, target) {
@@ -281,8 +311,27 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
       this.busy = false;
     }
   }
+  syncRecipeStudySelects() {
+    for (const group of this.element.querySelectorAll("[data-recipe-study]")) {
+      const selects = [...group.querySelectorAll("select")];
+      for (const select of selects)
+        for (const option of select.options)
+          option.disabled = option.dataset.intrinsicDisabled === "true";
+      for (const select of selects)
+        for (const other of selects) {
+          if (other === select || !other.value) continue;
+          const option = [...select.options].find(
+            (candidate) => candidate.value === other.value,
+          );
+          if (option) option.disabled = true;
+        }
+    }
+  }
   _onRender(context, options) {
     super._onRender(context, options);
+    for (const group of this.element.querySelectorAll("[data-recipe-study]"))
+      group.addEventListener("change", () => this.syncRecipeStudySelects());
+    this.syncRecipeStudySelects();
     this.element
       .querySelector("[data-search]")
       ?.addEventListener("input", (event) => {

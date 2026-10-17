@@ -123,6 +123,18 @@ try {
     await advanceWizard.render({ force: true });
   }, fixture.actor);
   const wizard = player.locator(".hol-advancement");
+  const initialStudy = wizard
+    .locator("article.hol-choice")
+    .filter({ has: player.locator("[data-id=ability-ordinary-recipe-study]") });
+  assert(
+    await initialStudy
+      .getByRole("button", {
+        name: "Add Ordinary Recipe Study",
+        exact: true,
+      })
+      .isDisabled(),
+  );
+  assert.match(await initialStudy.textContent(), /only 0 are available/);
   assert(
     await wizard
       .getByRole("button", { name: "Add Conditioned Body", exact: true })
@@ -152,6 +164,100 @@ try {
     .getByRole("button", { name: "Add Smoke in a Bottle", exact: true })
     .click();
   await player.waitForFunction(() => !advanceWizard.busy);
+  await wizard
+    .getByRole("button", { name: "Add Make Something Useful", exact: true })
+    .click();
+  await player.waitForFunction(() => !advanceWizard.busy);
+  const craftRecipes = wizard.locator(
+    '[data-acquisition="ability-make-something-useful"]',
+  );
+  for (const id of ["recipe-twisted-cord", "recipe-wooden-brace"])
+    await craftRecipes
+      .locator(`[name="recipes-ability-make-something-useful"][value="${id}"]`)
+      .check();
+  await wizard.getByRole("button", { name: "Save draft", exact: true }).click();
+  await player.waitForFunction(() => !advanceWizard.busy);
+  const study = wizard
+    .locator("article.hol-choice")
+    .filter({ has: player.locator("[data-id=ability-ordinary-recipe-study]") });
+  const firstRecipe = study.locator(
+    '[name="recipe-ability-ordinary-recipe-study-1"]',
+  );
+  const secondRecipe = study.locator(
+    '[name="recipe-ability-ordinary-recipe-study-2"]',
+  );
+  const ordinaryRecipeCount = await player.evaluate(
+    () =>
+      advanceWizard.catalogs.inventory.recipes.filter(
+        (recipe) => recipe.ordinary,
+      ).length,
+  );
+  assert.equal(
+    await firstRecipe.locator("option:not([value=''])").count(),
+    ordinaryRecipeCount,
+  );
+  assert.equal(
+    await firstRecipe
+      .locator("option:not([value=''])")
+      .first()
+      .evaluate((option) => option.disabled),
+    false,
+  );
+  const knownRecipe = firstRecipe.locator('option[value="recipe-smoke-flask"]'),
+    incompatibleRecipe = firstRecipe.locator(
+      'option[value="recipe-camp-shelter"]',
+    );
+  assert(await knownRecipe.evaluate((option) => option.disabled));
+  assert.match(await knownRecipe.textContent(), /Already known\./);
+  assert.equal(
+    await knownRecipe.getAttribute("data-intrinsic-disabled"),
+    "true",
+  );
+  assert(await incompatibleRecipe.evaluate((option) => option.disabled));
+  assert.match(
+    await incompatibleRecipe.textContent(),
+    /Incompatible with your crafting abilities\./,
+  );
+  assert.equal(
+    await incompatibleRecipe.getAttribute("data-intrinsic-disabled"),
+    "true",
+  );
+  assert(
+    await firstRecipe
+      .locator('option[value="recipe-fletched-ammunition"]')
+      .evaluate((option) => option.disabled),
+  );
+  assert.equal(
+    await firstRecipe
+      .locator('option[value="recipe-fletched-ammunition"]')
+      .getAttribute("data-intrinsic-disabled"),
+    "false",
+  );
+  const firstDefault = await firstRecipe.inputValue();
+  const secondDefault = await secondRecipe.inputValue();
+  assert(firstDefault);
+  assert(secondDefault);
+  assert.notEqual(firstDefault, secondDefault);
+  await firstRecipe.selectOption("recipe-travel-food");
+  assert(await knownRecipe.evaluate((option) => option.disabled));
+  assert.equal(
+    await knownRecipe.getAttribute("data-intrinsic-disabled"),
+    "true",
+  );
+  assert(
+    await secondRecipe
+      .locator('option[value="recipe-travel-food"]')
+      .evaluate((option) => option.disabled),
+  );
+  await firstRecipe.selectOption("recipe-bound-torches");
+  await secondRecipe.selectOption("recipe-fletched-ammunition");
+  await wizard
+    .getByRole("button", {
+      name: "Add Ordinary Recipe Study",
+      exact: true,
+    })
+    .click();
+  await player.waitForFunction(() => !advanceWizard.busy);
   await player.reload();
   await player.waitForFunction(() => game.ready);
   await player.evaluate(async (id) => {
@@ -163,7 +269,7 @@ try {
   }, fixture.actor);
   assert.equal(
     await player.evaluate(() => advanceWizard.draft.purchases.length),
-    2,
+    4,
   );
   const draftId = await player.evaluate(() => advanceWizard.draftId);
   await wizard
@@ -190,9 +296,11 @@ try {
   assert.equal(result.hp, 3);
   assert.equal(result.max, 20);
   assert.equal(result.spent, 1);
-  assert.equal(result.dp, 6);
-  assert.equal(result.items, 3);
+  assert.equal(result.dp, 2);
+  assert.equal(result.items, 6);
   assert(result.recipes.includes("recipe-smoke-flask"));
+  assert(result.recipes.includes("recipe-bound-torches"));
+  assert(result.recipes.includes("recipe-fletched-ammunition"));
   const replay = await gm.evaluate(async (id) => {
     const { resolveDevelopmentRequest } = await import(
       "/systems/heroes-of-legend/services/advancement.mjs"
@@ -264,7 +372,7 @@ try {
   }, fixture.actor);
   assert.deepEqual(milestone, {
     level: 7,
-    dp: 61,
+    dp: 57,
     pending: [],
     granted: 5,
     spent: 1,

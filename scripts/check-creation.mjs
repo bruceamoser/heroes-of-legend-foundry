@@ -69,6 +69,87 @@ try {
   await action("Save choices");
   const invalid = wizard.locator("[data-id=ability-the-cleverest-mixture]");
   assert(await invalid.isDisabled());
+  const study = wizard
+    .locator("article.hol-choice")
+    .filter({ has: page.locator("[data-id=ability-ordinary-recipe-study]") });
+  const firstRecipe = study.locator(
+    '[name="recipe-ability-ordinary-recipe-study-1"]',
+  );
+  const secondRecipe = study.locator(
+    '[name="recipe-ability-ordinary-recipe-study-2"]',
+  );
+  const ordinaryRecipeCount = await page.evaluate(
+    () =>
+      holWizard.catalogs.inventory.recipes.filter((recipe) => recipe.ordinary)
+        .length,
+  );
+  assert.equal(
+    await firstRecipe.locator("option:not([value=''])").count(),
+    ordinaryRecipeCount,
+  );
+  assert.equal(
+    await firstRecipe
+      .locator("option:not([value=''])")
+      .first()
+      .evaluate((option) => option.disabled),
+    false,
+  );
+  const knownRecipe = firstRecipe.locator('option[value="recipe-travel-food"]'),
+    incompatibleRecipe = firstRecipe.locator(
+      'option[value="recipe-camp-shelter"]',
+    );
+  assert(await knownRecipe.evaluate((option) => option.disabled));
+  assert.match(await knownRecipe.textContent(), /Already known\./);
+  assert.equal(
+    await knownRecipe.getAttribute("data-intrinsic-disabled"),
+    "true",
+  );
+  assert(await incompatibleRecipe.evaluate((option) => option.disabled));
+  assert.match(
+    await incompatibleRecipe.textContent(),
+    /Incompatible with your crafting abilities\./,
+  );
+  assert.equal(
+    await incompatibleRecipe.getAttribute("data-intrinsic-disabled"),
+    "true",
+  );
+  assert(
+    await firstRecipe
+      .locator('option[value="recipe-simple-replacement-leg"]')
+      .evaluate((option) => option.disabled),
+  );
+  assert.equal(
+    await firstRecipe
+      .locator('option[value="recipe-simple-replacement-leg"]')
+      .getAttribute("data-intrinsic-disabled"),
+    "false",
+  );
+  const firstDefault = await firstRecipe.inputValue();
+  const secondDefault = await secondRecipe.inputValue();
+  assert(firstDefault);
+  assert(secondDefault);
+  assert.notEqual(firstDefault, secondDefault);
+  await firstRecipe.selectOption("recipe-twisted-cord");
+  assert(await knownRecipe.evaluate((option) => option.disabled));
+  assert.equal(
+    await knownRecipe.getAttribute("data-intrinsic-disabled"),
+    "true",
+  );
+  assert(
+    await secondRecipe
+      .locator('option[value="recipe-twisted-cord"]')
+      .evaluate((option) => option.disabled),
+  );
+  await firstRecipe.selectOption("recipe-fletched-ammunition");
+  await secondRecipe.selectOption("recipe-simple-replacement-leg");
+  await action("Add Ordinary Recipe Study");
+  assert(
+    await wizard
+      .getByText("Recipes: Fletched Ammunition, Simple Replacement Leg", {
+        exact: true,
+      })
+      .isVisible(),
+  );
   await action("Add Conditioned Body");
   await action("Save and continue");
   await wizard.locator("[name=classId][value=class-intellect]").check();
@@ -87,6 +168,15 @@ try {
     await wizard
       .getByText("All creation choices are valid.", { exact: true })
       .isVisible(),
+  );
+  assert.deepEqual(
+    await page.evaluate(
+      () =>
+        holWizard.draft.purchases[0].find(
+          (entry) => entry.id === "ability-ordinary-recipe-study",
+        ).recipeIds,
+    ),
+    ["recipe-fletched-ammunition", "recipe-simple-replacement-leg"],
   );
   const preview = await page.evaluate(() => ({
     hp: holWizard.preview.summary.maximumHp,
@@ -148,13 +238,20 @@ try {
   await action("Review"); // Background still grants Craft; changing one origin must preserve purchases.
   assert.equal(
     await page.evaluate(() => holWizard.draft.purchases[0].length),
-    1,
+    2,
   );
   const staleRejected = await page.evaluate(async () => {
-    const { CreationWizard } = await import('/systems/heroes-of-legend/applications/creation.mjs');
+    const { CreationWizard } = await import(
+      "/systems/heroes-of-legend/applications/creation.mjs"
+    );
     const stale = new CreationWizard(holWizard.actor);
     await holWizard.persist();
-    try { await stale.persist(); return false; } catch (error) { return error.message.includes('Another window'); }
+    try {
+      await stale.persist();
+      return false;
+    } catch (error) {
+      return error.message.includes("Another window");
+    }
   });
   assert(staleRejected);
   assert.deepEqual(errors, []);

@@ -11,6 +11,7 @@ import {
   eligibleFirst,
   purchaseEligibility,
   classEligibility,
+  recipeStudyChoices,
 } from "../rules/development.mjs";
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 const STEPS = [
@@ -67,6 +68,7 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
       name = (id) =>
         get(id)?.name ??
         inventory.equipment.find((r) => r.id === id)?.name ??
+        inventory.recipes.find((r) => r.id === id)?.name ??
         id;
     const preview = creationPreview(d, choices, inventory);
     this.preview = preview;
@@ -81,31 +83,34 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
       `https://github.com/bruceamoser/heroes-of-legend/blob/${commit}/${r.source.path}`;
     const stage = this.step === 3 ? 0 : 1,
       state = preview.stages[stage];
+    const recipeStudy = recipeStudyChoices(state, inventory.recipes);
     const learning = eligibleFirst(
       choices.filter((r) => ["ability", "discipline"].includes(r.kind)),
-      (r) =>
-        purchaseEligibility(
+      (r) => {
+        const recipeIds =
+          r.purchasePolicy === "new-recipe"
+            ? recipeStudy.defaultRecipeIds
+            : null;
+        return purchaseEligibility(
           r,
           state,
           choices,
-          r.purchasePolicy === "new-recipe"
-            ? {
-                recipeId: state.compatibleRecipes.find(
-                  (id) => !state.recipes.includes(id),
-                ),
-              }
-            : {},
-        ),
+          recipeIds ? { recipeIds } : {},
+        );
+      },
     ).map((r) => ({
       ...r,
       source: source(r.choice),
       reasons: r.reasons.map((x) => x.text).join(" "),
       recipeStudy: r.choice.purchasePolicy === "new-recipe",
-      recipeOptions: inventory.recipes.filter(
-        (x) =>
-          state.compatibleRecipes.includes(x.id) &&
-          !state.recipes.includes(x.id),
-      ),
+      recipeSelections: [0, 1].map((slot) => ({
+        label: slot === 0 ? "First recipe" : "Second recipe",
+        name: `recipe-${r.choice.id}-${slot + 1}`,
+        options: recipeStudy.options.map((recipe) => ({
+          ...recipe,
+          selected: recipe.id === recipeStudy.defaultRecipeIds[slot],
+        })),
+      })),
       nextRank: r.rank,
     }));
     const acquisitions = preview.state.abilities
@@ -227,18 +232,26 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
       signatures: options((cls?.signatures[1] ?? []).map(get), d.signatureId),
       learning,
       dp: state.dp,
-      purchases: (d.purchases[stage] ?? []).map((p, index) => ({
-        ...p,
-        index,
-        name: name(p.id),
-        errors: preview.errors
-          .filter(
-            (e) =>
-              e.code === "purchase" && e.stage === stage && e.index === index,
-          )
-          .flatMap((e) => e.reasons.map((r) => r.text))
-          .join(" "),
-      })),
+      purchases: (d.purchases[stage] ?? []).map((p, index) => {
+        const recipeNames = [
+          ...(p.recipeIds ?? []),
+          ...(p.recipeId ? [p.recipeId] : []),
+        ].map(name);
+        return {
+          ...p,
+          index,
+          name: name(p.id),
+          recipeNames,
+          legacyRecipePurchase: Boolean(p.recipeId),
+          errors: preview.errors
+            .filter(
+              (e) =>
+                e.code === "purchase" && e.stage === stage && e.index === index,
+            )
+            .flatMap((e) => e.reasons.map((r) => r.text))
+            .join(" "),
+        };
+      }),
       acquisitions,
       equipment: inventory.equipment.map((r) => ({ ...r, source: source(r) })),
       shopping: (d.shopping ?? []).map((r, index) => ({
@@ -380,26 +393,33 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
     await this.act(async () => {
       const id = target.dataset.id,
         stage = this.step === 3 ? 0 : 1;
-      const recipeId = this.element.querySelector(
-        `[name="recipe-${id}"]`,
-      )?.value;
+      const choice = this.catalogs.choices.find((r) => r.id === id);
+      const recipeIds =
+        choice.purchasePolicy === "new-recipe"
+          ? [1, 2]
+              .map(
+                (slot) =>
+                  this.element.querySelector(`[name="recipe-${id}-${slot}"]`)
+                    ?.value,
+              )
+              .filter(Boolean)
+          : [];
       const preview = creationPreview(
         this.draft,
         this.catalogs.choices,
         this.catalogs.inventory,
       );
-      const choice = this.catalogs.choices.find((r) => r.id === id);
       const result = purchaseEligibility(
         choice,
         preview.stages[stage],
         this.catalogs.choices,
-        { recipeId },
+        choice.purchasePolicy === "new-recipe" ? { recipeIds } : {},
       );
       if (!result.eligible)
         throw new Error(result.reasons.map((r) => r.text).join(" "));
       this.draft.purchases[stage].push({
         id,
-        ...(recipeId ? { recipeId } : {}),
+        ...(choice.purchasePolicy === "new-recipe" ? { recipeIds } : {}),
       });
     });
   }
@@ -428,11 +448,30 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
       this.draft.shopping.splice(Number(target.dataset.index), 1);
     });
   }
+  syncRecipeStudySelects() {
+    for (const group of this.element.querySelectorAll("[data-recipe-study]")) {
+      const selects = [...group.querySelectorAll("select")];
+      for (const select of selects)
+        for (const option of select.options)
+          option.disabled = option.dataset.intrinsicDisabled === "true";
+      for (const select of selects)
+        for (const other of selects) {
+          if (other === select || !other.value) continue;
+          const option = [...select.options].find(
+            (candidate) => candidate.value === other.value,
+          );
+          if (option) option.disabled = true;
+        }
+    }
+  }
   _onRender(context, options) {
     super._onRender(context, options);
     if (this.renderedStep !== this.step)
       this.element.querySelector(".hol-wizard-main").scrollTop = 0;
     this.renderedStep = this.step;
+    for (const group of this.element.querySelectorAll("[data-recipe-study]"))
+      group.addEventListener("change", () => this.syncRecipeStudySelects());
+    this.syncRecipeStudySelects();
     this.element
       .querySelector("[data-search]")
       ?.addEventListener("input", (event) => {

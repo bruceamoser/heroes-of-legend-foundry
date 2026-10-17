@@ -40,12 +40,22 @@ test("creation connects origin recipes to later recipe purchases without free pr
   const d = draft();
   d.purchases[0].push({
     id: "ability-ordinary-recipe-study",
-    recipeId: "recipe-fletched-ammunition",
+    recipeIds: [
+      "recipe-fletched-ammunition",
+      "recipe-simple-replacement-leg",
+    ],
   });
   const r = creationPreview(d, choices, inventory);
   assert.deepEqual(r.errors, []);
   assert(r.valid);
   assert(r.state.recipes.includes("recipe-fletched-ammunition"));
+  assert(r.state.recipes.includes("recipe-simple-replacement-leg"));
+  assert.deepEqual(
+    r.ledger.find(
+      (entry) => entry.sourceId === "ability-ordinary-recipe-study",
+    ).recipeIds,
+    ["recipe-fletched-ammunition", "recipe-simple-replacement-leg"],
+  );
   assert.deepEqual(
     r.inventory.items.map((i) => i.catalogId),
     ["item-travel-clothes", "item-craft-tools"],
@@ -65,6 +75,44 @@ test("creation connects origin recipes to later recipe purchases without free pr
   assert(!repaired.valid);
   assert.equal(repaired.draft.purchases[0].length, 1);
   assert(repaired.errors.some((e) => e.code === "purchase"));
+  assert(!repaired.state.recipes.includes("recipe-simple-replacement-leg"));
+  assert.equal(
+    repaired.draft.purchases[0][0].recipeIds[1],
+    "recipe-simple-replacement-leg",
+  );
+});
+test("old one-recipe drafts stay visible for explicit two-recipe repair", () => {
+  const d = draft();
+  d.purchases[0].push({
+    id: "ability-ordinary-recipe-study",
+    recipeId: "recipe-fletched-ammunition",
+  });
+  const rejected = creationPreview(d, choices, inventory);
+  assert(!rejected.valid);
+  assert.equal(rejected.draft.purchases[0].length, 1);
+  assert.equal(
+    rejected.draft.purchases[0][0].recipeId,
+    "recipe-fletched-ammunition",
+  );
+  assert(
+    rejected.errors.some(
+      (entry) =>
+        entry.code === "purchase" &&
+        entry.reasons.some((reason) => reason.code === "recipe-legacy"),
+    ),
+  );
+  assert(!rejected.state.recipes.includes("recipe-fletched-ammunition"));
+
+  d.purchases[0][0] = {
+    id: "ability-ordinary-recipe-study",
+    recipeIds: [
+      "recipe-fletched-ammunition",
+      "recipe-simple-replacement-leg",
+    ],
+  };
+  const repaired = creationPreview(d, choices, inventory);
+  assert(repaired.valid);
+  assert(repaired.state.recipes.includes("recipe-simple-replacement-leg"));
 });
 test("shopping has exact prices, separate quantities and no free special orders", () => {
   const d = draft();

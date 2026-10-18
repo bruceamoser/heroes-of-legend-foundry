@@ -3,10 +3,13 @@
   "_id": "cb4bbeb06f86e906",
   "name": "Kobold Tunnel Scout",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/d07f2bb3c790ab3cbd4ddc063d7c6ac0c7d43c0468f548fc84cee414b6f6fc86.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/d07f2bb3c790ab3cbd4ddc063d7c6ac0c7d43c0468f548fc84cee414b6f6fc86.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -103,6 +106,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-kobold-tunnel-scout",
+        "asset": "assets/creatures/d07f2bb3c790ab3cbd4ddc063d7c6ac0c7d43c0468f548fc84cee414b6f6fc86.webp",
+        "sha256": "8208502c9cd23b365c38146df516e7a0faf6ebac58661f1129119329a1ef34fb",
+        "sourceSha256": "d07f2bb3c790ab3cbd4ddc063d7c6ac0c7d43c0468f548fc84cee414b6f6fc86",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-kobold-tunnel-scout",
       "source": {
         "path": "design/bestiary/creatures/kobold-tunnel-scout.md",

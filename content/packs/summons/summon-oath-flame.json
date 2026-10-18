@@ -3,14 +3,14 @@
   "_id": "127b343ce3a7b2fb",
   "name": "Oath Flame",
   "type": "summon",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/597c02e305cbd6f58e1c8c8c78eeff31b2c058cc0783f74ec0e2caf0f26cc351.webp",
   "prototypeToken": {
     "name": "Oath Flame",
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "icons/svg/mystery-man.svg"
+      "src": "systems/heroes-of-legend/assets/creatures/597c02e305cbd6f58e1c8c8c78eeff31b2c058cc0783f74ec0e2caf0f26cc351.webp"
     }
   },
   "system": {
@@ -126,6 +126,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-oath-flame",
+        "asset": "assets/creatures/597c02e305cbd6f58e1c8c8c78eeff31b2c058cc0783f74ec0e2caf0f26cc351.webp",
+        "sha256": "c56bcc3ff61e9632c99fe6f8ad41b61eb54508383035c8679e007da7c038a2e5",
+        "sourceSha256": "597c02e305cbd6f58e1c8c8c78eeff31b2c058cc0783f74ec0e2caf0f26cc351",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "summon-oath-flame",
       "source": {
         "path": "design/bestiary/summons/oath-flame.md",

@@ -3,14 +3,14 @@
   "_id": "01d1c66deaf08b21",
   "name": "Stone Knuckle",
   "type": "summon",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/b4a3841a3827eb44b4256baaa5b5608f2ef198917ee36f92a24f44d62f5de099.webp",
   "prototypeToken": {
     "name": "Stone Knuckle",
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "icons/svg/mystery-man.svg"
+      "src": "systems/heroes-of-legend/assets/creatures/b4a3841a3827eb44b4256baaa5b5608f2ef198917ee36f92a24f44d62f5de099.webp"
     }
   },
   "system": {
@@ -127,6 +127,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-stone-knuckle",
+        "asset": "assets/creatures/b4a3841a3827eb44b4256baaa5b5608f2ef198917ee36f92a24f44d62f5de099.webp",
+        "sha256": "00c55444b0ef1f624fd1995cd9be8f3d5e2d973038c0fc949f332e37dd5d1e5b",
+        "sourceSha256": "b4a3841a3827eb44b4256baaa5b5608f2ef198917ee36f92a24f44d62f5de099",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "summon-stone-knuckle",
       "source": {
         "path": "design/bestiary/summons/stone-knuckle.md",

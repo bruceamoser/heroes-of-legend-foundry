@@ -3,10 +3,13 @@
   "_id": "2940bbca90cbf67f",
   "name": "Ghost — Sorrow-bound",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/b95c7765659ebb33149989be8125b78102b0a6a3db00ca7941c69f7a7ef5ace9.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/b95c7765659ebb33149989be8125b78102b0a6a3db00ca7941c69f7a7ef5ace9.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -112,6 +115,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-sorrow-ghost",
+        "asset": "assets/creatures/b95c7765659ebb33149989be8125b78102b0a6a3db00ca7941c69f7a7ef5ace9.webp",
+        "sha256": "531e9fdcf6f23b61fcc8326467d58e08ad9ad8d2a004a82af06d764ef81be8c8",
+        "sourceSha256": "b95c7765659ebb33149989be8125b78102b0a6a3db00ca7941c69f7a7ef5ace9",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "creature-sorrow-ghost",
       "source": {
         "path": "design/bestiary/creatures/sorrow-ghost.md",

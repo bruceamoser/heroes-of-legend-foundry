@@ -3,14 +3,14 @@
   "_id": "82eff8126b00524b",
   "name": "Hearth Brownie",
   "type": "summon",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/5fe8e261fecac9d2fa9d2d0313ca866c0e7c43db27b8f55649d0ade460652627.webp",
   "prototypeToken": {
     "name": "Hearth Brownie",
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "icons/svg/mystery-man.svg"
+      "src": "systems/heroes-of-legend/assets/creatures/5fe8e261fecac9d2fa9d2d0313ca866c0e7c43db27b8f55649d0ade460652627.webp"
     }
   },
   "system": {
@@ -113,6 +113,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-hearth-brownie",
+        "asset": "assets/creatures/5fe8e261fecac9d2fa9d2d0313ca866c0e7c43db27b8f55649d0ade460652627.webp",
+        "sha256": "a3e7620ff1305a8ae2694b8f7f5e8842f297af353e784fc74065174a06056402",
+        "sourceSha256": "5fe8e261fecac9d2fa9d2d0313ca866c0e7c43db27b8f55649d0ade460652627",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "summon-hearth-brownie",
       "source": {
         "path": "design/bestiary/summons/hearth-brownie.md",

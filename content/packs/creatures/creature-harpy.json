@@ -3,10 +3,13 @@
   "_id": "eebf369a6ee46a3c",
   "name": "Harpy",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/72599f0263d9f2741be629e2ff40580c150cc11322dc1924215c4def0c960dea.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/72599f0263d9f2741be629e2ff40580c150cc11322dc1924215c4def0c960dea.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -108,6 +111,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-harpy",
+        "asset": "assets/creatures/72599f0263d9f2741be629e2ff40580c150cc11322dc1924215c4def0c960dea.webp",
+        "sha256": "3490bd5a66ca822d58b9dca2db77a23520f12ad69f15149a1f24886847e777a5",
+        "sourceSha256": "72599f0263d9f2741be629e2ff40580c150cc11322dc1924215c4def0c960dea",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-harpy",
       "source": {
         "path": "design/bestiary/creatures/harpy.md",

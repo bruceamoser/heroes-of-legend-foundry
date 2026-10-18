@@ -3,10 +3,13 @@
   "_id": "d3c6f8b923e4cdf4",
   "name": "Death Knight",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/aaafd85d8ad750f0c0f9c9bc9d3df6a7683b4e9a6b2b2a75bdc89dbda3871201.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/aaafd85d8ad750f0c0f9c9bc9d3df6a7683b4e9a6b2b2a75bdc89dbda3871201.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -112,6 +115,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-death-knight",
+        "asset": "assets/creatures/aaafd85d8ad750f0c0f9c9bc9d3df6a7683b4e9a6b2b2a75bdc89dbda3871201.webp",
+        "sha256": "039acc4e64dfc16f016c8233974eeda94b0c29a35ee7a90ac62dac947c5e9dd4",
+        "sourceSha256": "aaafd85d8ad750f0c0f9c9bc9d3df6a7683b4e9a6b2b2a75bdc89dbda3871201",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-death-knight",
       "source": {
         "path": "design/bestiary/creatures/death-knight.md",

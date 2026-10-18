@@ -3,10 +3,13 @@
   "_id": "fabe996596eb16bc",
   "name": "Hobgoblin Longbow",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/ebf17880bdf7c0a5783f7f81e2810d70acad269d6ef2f628af896e7e8737bcb3.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/ebf17880bdf7c0a5783f7f81e2810d70acad269d6ef2f628af896e7e8737bcb3.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -108,6 +111,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-hobgoblin-longbow",
+        "asset": "assets/creatures/ebf17880bdf7c0a5783f7f81e2810d70acad269d6ef2f628af896e7e8737bcb3.webp",
+        "sha256": "fc4ab39c6a25c0c4451613f6f693978e638a9b494f98f356511bfed88120e32d",
+        "sourceSha256": "ebf17880bdf7c0a5783f7f81e2810d70acad269d6ef2f628af896e7e8737bcb3",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-hobgoblin-longbow",
       "source": {
         "path": "design/bestiary/creatures/hobgoblin-longbow.md",

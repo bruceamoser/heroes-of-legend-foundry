@@ -3,10 +3,13 @@
   "_id": "8f87090b5db91875",
   "name": "Hydra",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/401810a8ade519588ec51a382288e7320a07fd20bd1ccc0d74168a7deea6ec82.webp",
   "prototypeToken": {
     "width": 2,
-    "height": 2
+    "height": 2,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/401810a8ade519588ec51a382288e7320a07fd20bd1ccc0d74168a7deea6ec82.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -113,6 +116,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-hydra",
+        "asset": "assets/creatures/401810a8ade519588ec51a382288e7320a07fd20bd1ccc0d74168a7deea6ec82.webp",
+        "sha256": "eb87c51f3583ecf28738465d93773d5f54b83398a4d20b83f149452f0efffb2f",
+        "sourceSha256": "401810a8ade519588ec51a382288e7320a07fd20bd1ccc0d74168a7deea6ec82",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-hydra",
       "source": {
         "path": "design/bestiary/creatures/hydra.md",

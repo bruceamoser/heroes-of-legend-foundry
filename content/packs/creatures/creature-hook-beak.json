@@ -3,10 +3,13 @@
   "_id": "d5c5014627644feb",
   "name": "Hook-beak",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/5a526515e3d7020381b346904ac46ee9952c69e0a7fb5442f36002c9ec681887.webp",
   "prototypeToken": {
     "width": 2,
-    "height": 2
+    "height": 2,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/5a526515e3d7020381b346904ac46ee9952c69e0a7fb5442f36002c9ec681887.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -108,6 +111,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-hook-beak",
+        "asset": "assets/creatures/5a526515e3d7020381b346904ac46ee9952c69e0a7fb5442f36002c9ec681887.webp",
+        "sha256": "d2ec1fd2217b9cccafb7ab646efe40a78d7abb21cdc77dfed89f8f566ecb1cd0",
+        "sourceSha256": "5a526515e3d7020381b346904ac46ee9952c69e0a7fb5442f36002c9ec681887",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-hook-beak",
       "source": {
         "path": "design/bestiary/creatures/hook-beak.md",

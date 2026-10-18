@@ -3,10 +3,13 @@
   "_id": "7d13e2c398953119",
   "name": "Gargoyle",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/3156b5624d0c91c5c4c17e6523a0ca7d64242febe23f7fca0623bdfe5eaca9e9.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/3156b5624d0c91c5c4c17e6523a0ca7d64242febe23f7fca0623bdfe5eaca9e9.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -113,6 +116,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-gargoyle",
+        "asset": "assets/creatures/3156b5624d0c91c5c4c17e6523a0ca7d64242febe23f7fca0623bdfe5eaca9e9.webp",
+        "sha256": "62affd4647a6e37ba8dfb4ebe3b714c1fcccfcac42a19e23391e702eaeae84f3",
+        "sourceSha256": "3156b5624d0c91c5c4c17e6523a0ca7d64242febe23f7fca0623bdfe5eaca9e9",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-gargoyle",
       "source": {
         "path": "design/bestiary/creatures/gargoyle.md",

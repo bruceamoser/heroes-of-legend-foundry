@@ -3,10 +3,13 @@
   "_id": "7de25d12088845b8",
   "name": "Nightmare",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/68fad3aa791217f026dacd8327d5c71cd1e759c365447148642670ad5e1ac3a0.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/68fad3aa791217f026dacd8327d5c71cd1e759c365447148642670ad5e1ac3a0.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -117,6 +120,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-nightmare",
+        "asset": "assets/creatures/68fad3aa791217f026dacd8327d5c71cd1e759c365447148642670ad5e1ac3a0.webp",
+        "sha256": "599c0c8ad109f683f0009304a2598ccc6616dce76716cb41a347e237f1dfabd5",
+        "sourceSha256": "68fad3aa791217f026dacd8327d5c71cd1e759c365447148642670ad5e1ac3a0",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-nightmare",
       "source": {
         "path": "design/bestiary/creatures/nightmare.md",

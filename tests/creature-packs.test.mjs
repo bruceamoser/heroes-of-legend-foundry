@@ -8,7 +8,6 @@ import {
 } from "../scripts/content/content-packs.mjs";
 import {
   CREATURE_AUTOMATION_LABEL,
-  CREATURE_FALLBACK_IMAGE,
   creatureReferenceMarkdown,
 } from "../scripts/content/creature-packs.mjs";
 import { stableFoundryId } from "../scripts/content/item-packs.mjs";
@@ -64,7 +63,8 @@ test("all 192 creatures are deterministic native Actor documents with pinned pro
     assert.equal(document._id, record.foundryId);
     assert.equal(document.type, "creature");
     assert.equal(document.name, record.name);
-    assert.equal(document.img, CREATURE_FALLBACK_IMAGE);
+    assert.equal(document.img, `systems/heroes-of-legend/${catalogs.art.portraits.find(p => p.id === record.id).asset}`);
+    assert.equal(document.prototypeToken.texture.src, document.img);
     assert.deepEqual(flags.source, {
       path: record.source.path,
       sha256: record.source.sha256,
@@ -101,7 +101,7 @@ test("all 192 creatures are deterministic native Actor documents with pinned pro
         height: record.size.value,
       },
     );
-    assert.deepEqual(document.prototypeToken, document.system.footprint);
+    assert.deepEqual({width:document.prototypeToken.width,height:document.prototypeToken.height}, document.system.footprint);
     assert.equal(document.system.armor, record.armor.dr);
     assert.equal(document.system.armorMarker, record.armor.marker ?? "");
     assert.equal(document.system.armorSource, record.armor.sourceText);
@@ -121,7 +121,7 @@ test("all 192 creatures are deterministic native Actor documents with pinned pro
       defenseAttribute: basic.defense.attribute,
       orientation: "player-defense",
     });
-    assert.equal(flags.portrait, undefined);
+    assert.equal(flags.portrait.creatureId, record.id);
     assert.equal(flags.artwork, undefined);
     assert.deepEqual(document.items, []);
     assert.deepEqual(document.effects, []);
@@ -484,5 +484,5 @@ test("native token projection preserves rectangular source footprint orientation
   const projected = buildContentPackArtifacts(changed).documents.creatures.find(
     d => d.flags[SYSTEM_ID].catalogId === changed.creatures.creatures[0].id,
   );
-  assert.deepEqual(projected.prototypeToken, { width: 1, height: 3 });
+  assert.deepEqual({width:projected.prototypeToken.width,height:projected.prototypeToken.height}, { width: 1, height: 3 });
 });

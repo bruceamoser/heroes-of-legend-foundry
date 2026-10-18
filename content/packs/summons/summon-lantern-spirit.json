@@ -3,14 +3,14 @@
   "_id": "e28e2b137aea1aac",
   "name": "Lantern Spirit",
   "type": "summon",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/a37171714198a20340890ff6f8c74bb8e5ade2dbd9b384ff00fa5aff3fe81a0b.webp",
   "prototypeToken": {
     "name": "Lantern Spirit",
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "icons/svg/mystery-man.svg"
+      "src": "systems/heroes-of-legend/assets/creatures/a37171714198a20340890ff6f8c74bb8e5ade2dbd9b384ff00fa5aff3fe81a0b.webp"
     }
   },
   "system": {
@@ -122,6 +122,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-lantern-spirit",
+        "asset": "assets/creatures/a37171714198a20340890ff6f8c74bb8e5ade2dbd9b384ff00fa5aff3fe81a0b.webp",
+        "sha256": "05ae5baf4fc46e4a805fe317149d73045e6128cb60eb5ad00d2db90ab70e7350",
+        "sourceSha256": "a37171714198a20340890ff6f8c74bb8e5ade2dbd9b384ff00fa5aff3fe81a0b",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "summon-lantern-spirit",
       "source": {
         "path": "design/bestiary/summons/lantern-spirit.md",

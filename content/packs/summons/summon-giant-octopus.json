@@ -3,14 +3,14 @@
   "_id": "57e27df2572ba844",
   "name": "Giant Octopus",
   "type": "summon",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/5b0d8572dee71f65a6f7e38c0293238d048419fac84760a684d9771564545d65.webp",
   "prototypeToken": {
     "name": "Giant Octopus",
     "actorLink": false,
     "width": 2,
     "height": 2,
     "texture": {
-      "src": "icons/svg/mystery-man.svg"
+      "src": "systems/heroes-of-legend/assets/creatures/5b0d8572dee71f65a6f7e38c0293238d048419fac84760a684d9771564545d65.webp"
     }
   },
   "system": {
@@ -118,6 +118,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-giant-octopus",
+        "asset": "assets/creatures/5b0d8572dee71f65a6f7e38c0293238d048419fac84760a684d9771564545d65.webp",
+        "sha256": "239edc2cb425d67693212fbb6f165ac176773306542da6949a48cafbe7c515b3",
+        "sourceSha256": "5b0d8572dee71f65a6f7e38c0293238d048419fac84760a684d9771564545d65",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "summon-giant-octopus",
       "source": {
         "path": "design/bestiary/summons/giant-octopus.md",

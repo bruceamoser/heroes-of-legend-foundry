@@ -3,10 +3,13 @@
   "_id": "ec5c0a2d908495a7",
   "name": "Poltergeist",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/d498ae2269105e69504e60aae30b33fda366916ce652438cfbfc532730699c8a.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/d498ae2269105e69504e60aae30b33fda366916ce652438cfbfc532730699c8a.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -117,6 +120,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-poltergeist",
+        "asset": "assets/creatures/d498ae2269105e69504e60aae30b33fda366916ce652438cfbfc532730699c8a.webp",
+        "sha256": "5973ec8b1f3cf1a7b344415f665b09d60581c565d214f6441a701080d724301c",
+        "sourceSha256": "d498ae2269105e69504e60aae30b33fda366916ce652438cfbfc532730699c8a",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "creature-poltergeist",
       "source": {
         "path": "design/bestiary/creatures/poltergeist.md",

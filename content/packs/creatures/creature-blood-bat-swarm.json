@@ -3,10 +3,13 @@
   "_id": "cc9b809b0fd3c5fd",
   "name": "Blood Bat Swarm",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/447d56df9f23531674ca0c13dfcd5ada266192e8d4127a6fe1fa1bab73a55fb8.webp",
   "prototypeToken": {
     "width": 2,
-    "height": 2
+    "height": 2,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/447d56df9f23531674ca0c13dfcd5ada266192e8d4127a6fe1fa1bab73a55fb8.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -113,6 +116,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-blood-bat-swarm",
+        "asset": "assets/creatures/447d56df9f23531674ca0c13dfcd5ada266192e8d4127a6fe1fa1bab73a55fb8.webp",
+        "sha256": "da9508c23d09c8275f35aa4549948ef98e45f49b2153a64a41bcd21ea0b347ba",
+        "sourceSha256": "447d56df9f23531674ca0c13dfcd5ada266192e8d4127a6fe1fa1bab73a55fb8",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-blood-bat-swarm",
       "source": {
         "path": "design/bestiary/creatures/blood-bat-swarm.md",

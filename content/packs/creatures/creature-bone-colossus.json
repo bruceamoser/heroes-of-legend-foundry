@@ -3,10 +3,13 @@
   "_id": "67b619c0a75ce268",
   "name": "Skeleton Colossus",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/4e35042f9556df408a325ad62ba1b7315306b44627901e33b5531110ae4b3ffa.webp",
   "prototypeToken": {
     "width": 3,
-    "height": 3
+    "height": 3,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/4e35042f9556df408a325ad62ba1b7315306b44627901e33b5531110ae4b3ffa.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -112,6 +115,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-bone-colossus",
+        "asset": "assets/creatures/4e35042f9556df408a325ad62ba1b7315306b44627901e33b5531110ae4b3ffa.webp",
+        "sha256": "2973d7cfd882c4cead0efd691a9703c46c829de513494ed00bb54c7b3a5e8966",
+        "sourceSha256": "4e35042f9556df408a325ad62ba1b7315306b44627901e33b5531110ae4b3ffa",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "creature-bone-colossus",
       "source": {
         "path": "design/bestiary/creatures/bone-colossus.md",

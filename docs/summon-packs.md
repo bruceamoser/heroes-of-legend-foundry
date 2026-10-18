@@ -14,8 +14,9 @@ uses escaped text, formatted tables and pinned book links. Ordinary character
 creation, advancement and healing controls are absent. Native prototype Tokens
 carry the printed width and height; importing a reference creates no Token,
 controller identity, command budget or active effect. Existing world Actors are
-never refreshed or overwritten by generation. Fallback icons are intentional;
-shared portrait mapping belongs to issue #124.
+never refreshed or overwritten by generation. Issue #124 maps portraits and prototype textures to the explicitly linked
+creature asset. The compact portrait uses the native image viewer; shared images
+are packaged once.
 
 Command/spawn/controller/tether and specialty handlers remain pending. The sheet
 keeps the command packages, one command per controller turn, no uncommanded
@@ -32,14 +33,15 @@ Items, creatures and summons through the official Foundry CLI. Automated tests
 cover every profile and semantic CLI round trips without changing the book.
 Distribution licensing remains undecided.
 
-Native acceptance is pending. Run `npm run test:summon-packs` only with explicit
+Native acceptance passed in the issue #124 integration checkout on Foundry
+14.369; see [combined portrait acceptance](compendium-portraits.md). Run `npm run test:summon-packs` only with explicit
 `HOL_TEST_URL`, `HOL_TEST_ALLOW_WRITES=1` and `HOL_TEST_ISOLATED_WORLD=1` against an
 unoccupied disposable Foundry 14.369 world. The fixture validates all 73 native
 models, imports their stable IDs, checks representative sheets and ordinary
 Actor-directory drag/drop, then deletes only its tracked Actors and verifies
 preexisting Actors and scene Token identities are unchanged. Inspect its sheet
-screenshots as well as the process exit and cleanup report. This fixture has not
-yet been run for issue #128.
+screenshots as well as the process exit and cleanup report. The fixture passed for all 73 profiles with zero page errors and unchanged
+preexisting world documents.
 
 Local validation on the issue #122 integration base `804d273`: Node 24.22.0
 `npm run check` passed build, package/artwork validation and 264 tests, including
@@ -55,5 +57,10 @@ index; regenerating all four packs preserved 350 abilities, 43 equipment records
 192 creatures and 73 summons. Existing Item/creature sources, creature native
 acceptance fixture and compact sheet CSS remain byte-identical to main. The
 rebased Node 24 full check passed build, validation and 277 tests with no failures
-or skips. Native issue #128 acceptance remains queued after the current priority
-UI work.
+or skips. Native issue #128 acceptance subsequently passed together with issue #124.
+
+
+Issue #124 review also keeps command restrictions exactly as authored in each
+profile, without adding a blanket summon-chain claim to the sheet. The sheet's
+status is the compact “Reference profile; lifecycle managed by DA” note. Complete
+commands, source text and provenance are available under collapsed source details.

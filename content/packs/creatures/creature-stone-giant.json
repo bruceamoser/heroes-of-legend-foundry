@@ -3,10 +3,13 @@
   "_id": "b0c0413054035133",
   "name": "Stone Giant",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/c4d693200024d5a6fcff62b8fb79829ffcd7a2c6796c981e9d293a33bc7c220f.webp",
   "prototypeToken": {
     "width": 3,
-    "height": 3
+    "height": 3,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/c4d693200024d5a6fcff62b8fb79829ffcd7a2c6796c981e9d293a33bc7c220f.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -108,6 +111,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-stone-giant",
+        "asset": "assets/creatures/c4d693200024d5a6fcff62b8fb79829ffcd7a2c6796c981e9d293a33bc7c220f.webp",
+        "sha256": "4cfe15d3a4018366b54e19c39ac2ff16b1ba5b252bc6818406dedd3523486aa8",
+        "sourceSha256": "c4d693200024d5a6fcff62b8fb79829ffcd7a2c6796c981e9d293a33bc7c220f",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-stone-giant",
       "source": {
         "path": "design/bestiary/creatures/stone-giant.md",

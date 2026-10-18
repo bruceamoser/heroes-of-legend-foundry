@@ -3,10 +3,13 @@
   "_id": "0e56e6c84ea6f6cc",
   "name": "Night Hag",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/7847141c377b0136c2794a0a37b54f65b5aba2b364b40edfb700af31ea2547bb.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/7847141c377b0136c2794a0a37b54f65b5aba2b364b40edfb700af31ea2547bb.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -108,6 +111,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-night-hag",
+        "asset": "assets/creatures/7847141c377b0136c2794a0a37b54f65b5aba2b364b40edfb700af31ea2547bb.webp",
+        "sha256": "581318757f20bdc0b2b8049fc4db62792048f7a7bb31e52e06c799e2acb11846",
+        "sourceSha256": "7847141c377b0136c2794a0a37b54f65b5aba2b364b40edfb700af31ea2547bb",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-night-hag",
       "source": {
         "path": "design/bestiary/creatures/night-hag.md",

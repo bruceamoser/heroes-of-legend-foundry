@@ -3,14 +3,14 @@
   "_id": "7f66313bb15159ea",
   "name": "Emberling",
   "type": "summon",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/f321164fa89396da97b48f9722ae8e39682d6de3bd42ae385210814524d26b4c.webp",
   "prototypeToken": {
     "name": "Emberling",
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "icons/svg/mystery-man.svg"
+      "src": "systems/heroes-of-legend/assets/creatures/f321164fa89396da97b48f9722ae8e39682d6de3bd42ae385210814524d26b4c.webp"
     }
   },
   "system": {
@@ -127,6 +127,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-emberling",
+        "asset": "assets/creatures/f321164fa89396da97b48f9722ae8e39682d6de3bd42ae385210814524d26b4c.webp",
+        "sha256": "c1ed66520fe01a3e99b7f8db292a07365237750e2216217a65355556b70eca75",
+        "sourceSha256": "f321164fa89396da97b48f9722ae8e39682d6de3bd42ae385210814524d26b4c",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "summon-emberling",
       "source": {
         "path": "design/bestiary/summons/emberling.md",

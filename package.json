@@ -69,7 +69,9 @@
     "test:wound-context": "node scripts/check-wound-context.mjs",
     "test:summon-packs": "node scripts/check-summon-packs.mjs",
     "import:summon-packs": "node scripts/generate-content-packs.mjs",
-    "validate:summon-packs": "node scripts/generate-content-packs.mjs --check"
+    "validate:summon-packs": "node scripts/generate-content-packs.mjs --check",
+    "test:compendium-portraits": "node scripts/check-compendium-portraits.mjs",
+    "test:compendium-content": "node scripts/check-creature-packs.mjs && node scripts/check-summon-packs.mjs && node scripts/check-compendium-portraits.mjs"
   },
   "devDependencies": {
     "@foundryvtt/foundryvtt-cli": "3.0.5",

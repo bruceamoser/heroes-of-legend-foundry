@@ -3,10 +3,13 @@
   "_id": "a3d79f635161082a",
   "name": "Burrowing Maw",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/1fc8c755acac0aa4702db9c283c8795897e0d03e2a8593b80feab94793ea84be.webp",
   "prototypeToken": {
     "width": 2,
-    "height": 2
+    "height": 2,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/1fc8c755acac0aa4702db9c283c8795897e0d03e2a8593b80feab94793ea84be.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -113,6 +116,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-burrowing-maw",
+        "asset": "assets/creatures/1fc8c755acac0aa4702db9c283c8795897e0d03e2a8593b80feab94793ea84be.webp",
+        "sha256": "12fdeda9653c87b1939a574cca4cb2b4430613a5bb23fc09bde591f76e0b4071",
+        "sourceSha256": "1fc8c755acac0aa4702db9c283c8795897e0d03e2a8593b80feab94793ea84be",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-burrowing-maw",
       "source": {
         "path": "design/bestiary/creatures/burrowing-maw.md",

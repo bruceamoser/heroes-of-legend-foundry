@@ -3,10 +3,13 @@
   "_id": "0dca67ff5e0bd1b7",
   "name": "Chain Jailer",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/14f545e0c4982f8fde6bc41975b00b44a124546962af75ad6fc4bb65224965b5.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/14f545e0c4982f8fde6bc41975b00b44a124546962af75ad6fc4bb65224965b5.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -112,6 +115,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-chain-jailer",
+        "asset": "assets/creatures/14f545e0c4982f8fde6bc41975b00b44a124546962af75ad6fc4bb65224965b5.webp",
+        "sha256": "bac9ba7945828a2c22d6c20bac735d625e0c08d08b484f668c43220f3bc9d0d0",
+        "sourceSha256": "14f545e0c4982f8fde6bc41975b00b44a124546962af75ad6fc4bb65224965b5",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-chain-jailer",
       "source": {
         "path": "design/bestiary/creatures/chain-jailer.md",

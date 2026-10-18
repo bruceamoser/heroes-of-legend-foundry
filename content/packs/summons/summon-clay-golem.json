@@ -3,14 +3,14 @@
   "_id": "7f33f3286b29aa9b",
   "name": "Clay Golem",
   "type": "summon",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/7da763fdeeafbaac3e6ecb862d1071c3b0fbd5ab6637c2961744ff9e0c2b043d.webp",
   "prototypeToken": {
     "name": "Clay Golem",
     "actorLink": false,
     "width": 2,
     "height": 2,
     "texture": {
-      "src": "icons/svg/mystery-man.svg"
+      "src": "systems/heroes-of-legend/assets/creatures/7da763fdeeafbaac3e6ecb862d1071c3b0fbd5ab6637c2961744ff9e0c2b043d.webp"
     }
   },
   "system": {
@@ -122,6 +122,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-clay-golem",
+        "asset": "assets/creatures/7da763fdeeafbaac3e6ecb862d1071c3b0fbd5ab6637c2961744ff9e0c2b043d.webp",
+        "sha256": "e177f3c4aff890fc851ce840bfcc615d2370b60f812c2c41f480fcc1688b2593",
+        "sourceSha256": "7da763fdeeafbaac3e6ecb862d1071c3b0fbd5ab6637c2961744ff9e0c2b043d",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "summon-clay-golem",
       "source": {
         "path": "design/bestiary/summons/clay-golem.md",

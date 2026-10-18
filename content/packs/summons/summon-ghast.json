@@ -3,14 +3,14 @@
   "_id": "829fc7cd1acfdd28",
   "name": "Ghast",
   "type": "summon",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/6dd94d5650819088efd4d7e99eade30274c055a26637e1e416de782580c7c843.webp",
   "prototypeToken": {
     "name": "Ghast",
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "icons/svg/mystery-man.svg"
+      "src": "systems/heroes-of-legend/assets/creatures/6dd94d5650819088efd4d7e99eade30274c055a26637e1e416de782580c7c843.webp"
     }
   },
   "system": {
@@ -116,6 +116,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-ghast",
+        "asset": "assets/creatures/6dd94d5650819088efd4d7e99eade30274c055a26637e1e416de782580c7c843.webp",
+        "sha256": "fdfa63f01521d5817bbf03a6a742fe8e77cf7ad6eaf04efa03ce3ae726b941bd",
+        "sourceSha256": "6dd94d5650819088efd4d7e99eade30274c055a26637e1e416de782580c7c843",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "summon-ghast",
       "source": {
         "path": "design/bestiary/summons/ghast.md",

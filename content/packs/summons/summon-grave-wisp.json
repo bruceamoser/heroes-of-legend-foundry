@@ -3,14 +3,14 @@
   "_id": "1ecd2c6f885b35c2",
   "name": "Grave Wisp",
   "type": "summon",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/88baa473cee3375b2367803a1493c814f19a8d4e6851694d66ce3bbbac102aae.webp",
   "prototypeToken": {
     "name": "Grave Wisp",
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "icons/svg/mystery-man.svg"
+      "src": "systems/heroes-of-legend/assets/creatures/88baa473cee3375b2367803a1493c814f19a8d4e6851694d66ce3bbbac102aae.webp"
     }
   },
   "system": {
@@ -122,6 +122,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-grave-wisp",
+        "asset": "assets/creatures/88baa473cee3375b2367803a1493c814f19a8d4e6851694d66ce3bbbac102aae.webp",
+        "sha256": "2b563903573150826cdc4ba483476c3f969b5c8b40d66f4257c3cd2bab930d05",
+        "sourceSha256": "88baa473cee3375b2367803a1493c814f19a8d4e6851694d66ce3bbbac102aae",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "summon-grave-wisp",
       "source": {
         "path": "design/bestiary/summons/grave-wisp.md",

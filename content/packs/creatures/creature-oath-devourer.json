@@ -3,10 +3,13 @@
   "_id": "5d403dd48fb52075",
   "name": "Oath Devourer",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/44bdcbcc721ee52ad14c95b68762f6c4533049700bd6b28bf0baa331813178db.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/44bdcbcc721ee52ad14c95b68762f6c4533049700bd6b28bf0baa331813178db.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -112,6 +115,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-oath-devourer",
+        "asset": "assets/creatures/44bdcbcc721ee52ad14c95b68762f6c4533049700bd6b28bf0baa331813178db.webp",
+        "sha256": "03db5310a4b004e63e75de75e43313d5fa67b56f9abbab613949ad7ad6f33a5f",
+        "sourceSha256": "44bdcbcc721ee52ad14c95b68762f6c4533049700bd6b28bf0baa331813178db",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-oath-devourer",
       "source": {
         "path": "design/bestiary/creatures/oath-devourer.md",

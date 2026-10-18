@@ -28,7 +28,7 @@ try {
     const expectedIds = records.map(r => r.foundryId);
     if (expectedIds.some(id => game.actors.has(id))) throw new Error("Refusing to overwrite an existing world Actor");
     const fixture = globalThis.__holSummonPackFixture = {
-      created: [], baselineActors, baselineTokens,
+      created: [], folder: null, baselineActors, baselineTokens,
       allowed: records.map(r => r.id), hook: null,
     };
     fixture.hook = Hooks.on("createActor", actor => {
@@ -63,7 +63,7 @@ try {
       const changed = structuredClone(source);
       foundry.utils.setProperty(changed.system, key, value);
       try {
-        const actor = new Actor(changed, { strict: false });
+        const actor = new Actor(changed, { strict: true, fallback: false });
         actor.validate({ strict: true, fallback: false });
       } catch { rejected.push(key); }
     }
@@ -81,8 +81,8 @@ try {
       const root = sheet.element.querySelector(".hol-summon-sheet");
       const reference = root.querySelector(".hol-item-reference");
       return {
-        type: actor.type, text: root.innerText,
-        controls: root.querySelectorAll("button[data-action], input, select, textarea").length,
+        type: actor.type, text: root.textContent,
+        controls: root.querySelectorAll('button[data-action]:not([data-action="viewPortrait"]), input, select, textarea').length,
         table: Boolean(reference.querySelector("table tbody td")),
         safeLinks: [...reference.querySelectorAll("a")].every(a => a.href.startsWith(`https://github.com/bruceamoser/heroes-of-legend/blob/${commit}/`)),
       };
@@ -105,12 +105,21 @@ try {
     await ui.actors.render({ force: true });
   });
   const record = catalog.records[0];
+  const folderId = await page.evaluate(async record => {
+    // The stable-ID import would be treated as an existing directory entry.
+    // Remove only that fixture Actor, then drop into an empty fixture folder so
+    // native directory sorting cannot touch preexisting Actors.
+    await game.actors.get(record.foundryId).delete();
+    const folder = await Folder.create({ name: "Summon drop fixture", type: "Actor" });
+    globalThis.__holSummonPackFixture.folder = folder.id;
+    return folder.id;
+  }, record);
   const transfer = await page.evaluateHandle(({ id }) => {
     const data = new DataTransfer();
     data.setData("text/plain", JSON.stringify({ type: "Actor", uuid: `Compendium.heroes-of-legend.summons.Actor.${id}` }));
     return data;
   }, { id: record.foundryId });
-  await page.locator("#actors .directory-list").dispatchEvent("drop", { dataTransfer: transfer });
+  await page.locator(`#actors .directory-item.folder[data-folder-id="${folderId}"]`).dispatchEvent("drop", { dataTransfer: transfer });
   await page.waitForFunction(() => globalThis.__holSummonPackFixture.created.length === 74);
   const drop = await page.evaluate(() => {
     const fixture = globalThis.__holSummonPackFixture;
@@ -119,7 +128,7 @@ try {
   });
   assert.equal(drop.type, "summon");
   assert.equal(drop.catalogId, record.id);
-  assert.notEqual(drop.id, record.foundryId);
+  assert.equal(drop.id, record.foundryId);
   assert.deepEqual(errors, []);
   console.info("PASS: 73 strict summon models and stable native imports, attacker profiles, printed token footprints, native directory drop and representative read-only sheets; no lifecycle activity.");
 } finally {
@@ -134,6 +143,7 @@ try {
         await actor?.sheet?.close();
         await actor?.delete();
       }
+      await game.folders.get(f.folder)?.delete();
       const unchanged = JSON.stringify(game.actors.map(a => a.toObject())) === JSON.stringify(f.baselineActors) &&
         JSON.stringify(game.scenes.map(s => [s.id, s.tokens.map(t => t.id)])) === JSON.stringify(f.baselineTokens);
       const remaining = f.created.filter(id => game.actors.has(id));

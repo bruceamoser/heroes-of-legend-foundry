@@ -43,7 +43,7 @@ export function validateSummonCatalogBasis({ catalog, lock }) {
   return catalog.records;
 }
 
-export function summonActorSource(record, { sourceCommit }) {
+export function summonActorSource(record, { sourceCommit, portrait }) {
   assert.match(sourceCommit, /^[a-f0-9]{40}$/);
   const modifier = value => ({ boons: value.boons, banes: value.banes, sourceText: value.sourceText });
   const mitigation = value => ({
@@ -54,8 +54,8 @@ export function summonActorSource(record, { sourceCommit }) {
   const source = structuredClone(record.source);
   const footprint = { width: record.footprint.width, height: record.footprint.height };
   return {
-    name: record.name, type: "summon", img: SUMMON_FALLBACK_IMAGE,
-    prototypeToken: { name: record.name, actorLink: false, ...footprint, texture: { src: SUMMON_FALLBACK_IMAGE } },
+    name: record.name, type: "summon", img: portrait.img,
+    prototypeToken: { name: record.name, actorLink: false, ...footprint, texture: { src: portrait.img } },
     system: {
       schemaVersion: 1,
       attributes: Object.fromEntries(Object.entries(record.attributes).map(([key, base]) => [key, { base }])),
@@ -92,6 +92,7 @@ export function summonActorSource(record, { sourceCommit }) {
       referenceMarkdown: `${rewriteSourceLinks(record.reference.sourceMarkdown, record, sourceCommit)}\n\n[Source profile](https://github.com/bruceamoser/heroes-of-legend/blob/${sourceCommit}/${record.source.path})`,
     },
     flags: { [ID]: {
+      portrait: structuredClone(portrait.provenance),
       catalogId: record.id, source: { path: source.path, sha256: source.sha256 },
       sourceCommit, creatureId: record.creatureId, references: structuredClone(record.references),
       automation: "pending", automationLabel: SUMMON_AUTOMATION_LABEL,
@@ -100,12 +101,12 @@ export function summonActorSource(record, { sourceCommit }) {
   };
 }
 
-export function buildSummonPackArtifacts({ catalog, lock }) {
+export function buildSummonPackArtifacts({ catalog, lock, portraits }) {
   const records = validateSummonCatalogBasis({ catalog, lock }).slice().sort((a, b) => a.id.localeCompare(b.id, "en"));
   const documents = records.map(record => {
     const id = stableFoundryId(record.id);
     assert.equal(id, record.foundryId);
-    return { _key: `!actors!${id}`, _id: id, ...summonActorSource(record, { sourceCommit: lock.commit }),
+    return { _key: `!actors!${id}`, _id: id, ...summonActorSource(record, { sourceCommit: lock.commit, portrait: portraits.get(record.creatureId) }),
       items: [], effects: [], folder: null, sort: 0, ownership: { default: 0 } };
   });
   return {

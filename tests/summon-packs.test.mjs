@@ -92,10 +92,13 @@ test("summon source rendering escapes arbitrary HTML and enriches only pinned bo
 test("summon sheet offers source references without character or lifecycle controls", async () => {
   const template = await readFile(new URL('../static/templates/summon.hbs',import.meta.url),'utf8');
   const sheet = await readFile(new URL('../src/sheets/summon.mjs',import.meta.url),'utf8');
-  assert(!/data-action=|<button|<input|<textarea|<select/.test(template));
+  assert(!/<input|<textarea|<select/.test(template));
+  assert.deepEqual([...template.matchAll(/data-action="([^"]+)"/g)].map(m=>m[1]), ["viewPortrait"]);
   assert(!sheet.includes('extends CharacterSheet'));
   assert(!sheet.includes('CreatureSheet'));
   assert(sheet.includes('links: false'));
   assert(template.includes('attacker outcomes'));
-  assert(template.includes('command, spawning, controller linkage, tether, disappearance'));
+  assert(template.includes('Reference profile; lifecycle managed by DA.'));
+  assert(!template.includes('summon chains'));
+  assert(template.includes('<details class="hol-creature-reference">'));
 });

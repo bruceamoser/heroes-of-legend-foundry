@@ -97,9 +97,11 @@ rendered as escaped text. The specialty coverage label and flags remain
 declaration/Defend and printed-Armor behavior remain in use.
 
 Native prototype Token width and height use the printed footprint in grid squares;
-rectangular footprints retain their source orientation. Creature Actors use Foundry's native fallback portrait. The pack does not copy
-portrait binaries, set a book-local image path, or depend on the artwork pipeline
-tracked separately by #119.
+rectangular footprints retain their source orientation. Issue #124 resolves Actor
+portraits and prototype Token textures through the source-locked runtime art
+manifest. Summon references share their linked creature's asset without duplicate
+image files. A compact sheet portrait opens Foundry's native image viewer; no
+world Actor image is rewritten by generation.
 
 ## Deliberately pending
 

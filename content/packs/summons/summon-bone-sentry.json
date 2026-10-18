@@ -3,14 +3,14 @@
   "_id": "c9f201a15b4e98c5",
   "name": "Skeleton Sentry",
   "type": "summon",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/45cf4323933eb577398b95c1adcfcdf96d9ffc6a842a4279f08b738d4c6b695d.webp",
   "prototypeToken": {
     "name": "Skeleton Sentry",
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "icons/svg/mystery-man.svg"
+      "src": "systems/heroes-of-legend/assets/creatures/45cf4323933eb577398b95c1adcfcdf96d9ffc6a842a4279f08b738d4c6b695d.webp"
     }
   },
   "system": {
@@ -122,6 +122,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-bone-sentry",
+        "asset": "assets/creatures/45cf4323933eb577398b95c1adcfcdf96d9ffc6a842a4279f08b738d4c6b695d.webp",
+        "sha256": "f25ec797fd5c421f3c2fefd50ea487cee4c18e2d3c41abd45c9536b74a5365f2",
+        "sourceSha256": "45cf4323933eb577398b95c1adcfcdf96d9ffc6a842a4279f08b738d4c6b695d",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "summon-bone-sentry",
       "source": {
         "path": "design/bestiary/summons/bone-sentry.md",

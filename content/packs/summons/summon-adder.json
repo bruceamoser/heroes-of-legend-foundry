@@ -3,14 +3,14 @@
   "_id": "54cf533714b50534",
   "name": "Adder",
   "type": "summon",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/b232e35496ee5169277e577bc41f89422be72c3373f3dd3550e5feedba345bc7.webp",
   "prototypeToken": {
     "name": "Adder",
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "icons/svg/mystery-man.svg"
+      "src": "systems/heroes-of-legend/assets/creatures/b232e35496ee5169277e577bc41f89422be72c3373f3dd3550e5feedba345bc7.webp"
     }
   },
   "system": {
@@ -118,6 +118,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-adder",
+        "asset": "assets/creatures/b232e35496ee5169277e577bc41f89422be72c3373f3dd3550e5feedba345bc7.webp",
+        "sha256": "c8d42462a3b829e159ad88d5fafc708a3861850fd2db69aa70082360a6226985",
+        "sourceSha256": "b232e35496ee5169277e577bc41f89422be72c3373f3dd3550e5feedba345bc7",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "summon-adder",
       "source": {
         "path": "design/bestiary/summons/adder.md",

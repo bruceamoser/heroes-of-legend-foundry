@@ -3,10 +3,13 @@
   "_id": "713697d160ba18e7",
   "name": "Crypt Ghoul",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/6b3a9a59ba40274638c22babc2c01d1c25127f4f530a07e28196ef0f263cc1bb.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/6b3a9a59ba40274638c22babc2c01d1c25127f4f530a07e28196ef0f263cc1bb.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -106,6 +109,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-crypt-ghoul",
+        "asset": "assets/creatures/6b3a9a59ba40274638c22babc2c01d1c25127f4f530a07e28196ef0f263cc1bb.webp",
+        "sha256": "5ac3ceb2d87a250a7b4a2454d466686d5d88f04ef29c22894cca252917852cc2",
+        "sourceSha256": "6b3a9a59ba40274638c22babc2c01d1c25127f4f530a07e28196ef0f263cc1bb",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "creature-crypt-ghoul",
       "source": {
         "path": "design/bestiary/creatures/crypt-ghoul.md",

@@ -3,10 +3,13 @@
   "_id": "ed5f7eb692ae2c03",
   "name": "Faceless Envoy",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/8f6bbb98290b189c0de80cac5719a0944d9f1d04360adba27e2a222c82649423.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/8f6bbb98290b189c0de80cac5719a0944d9f1d04360adba27e2a222c82649423.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -103,6 +106,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-faceless-envoy",
+        "asset": "assets/creatures/8f6bbb98290b189c0de80cac5719a0944d9f1d04360adba27e2a222c82649423.webp",
+        "sha256": "5901cbc5704c26fcd5c05c28cfc99d22641bbde5e1072a0f20c2ce751f8d56d2",
+        "sourceSha256": "8f6bbb98290b189c0de80cac5719a0944d9f1d04360adba27e2a222c82649423",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-faceless-envoy",
       "source": {
         "path": "design/bestiary/creatures/faceless-envoy.md",

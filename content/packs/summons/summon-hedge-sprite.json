@@ -3,14 +3,14 @@
   "_id": "3126fa8da471ef5c",
   "name": "Hedge Sprite",
   "type": "summon",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/4a69d2737d3f386b274af9cdab19a934df7629c6a5e9fac96b533d60ea3ec434.webp",
   "prototypeToken": {
     "name": "Hedge Sprite",
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "icons/svg/mystery-man.svg"
+      "src": "systems/heroes-of-legend/assets/creatures/4a69d2737d3f386b274af9cdab19a934df7629c6a5e9fac96b533d60ea3ec434.webp"
     }
   },
   "system": {
@@ -118,6 +118,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-hedge-sprite",
+        "asset": "assets/creatures/4a69d2737d3f386b274af9cdab19a934df7629c6a5e9fac96b533d60ea3ec434.webp",
+        "sha256": "679b7fec3837f19dc05ed534e83b867c68dd0d5cc5ca76b4a8159792a1f607fc",
+        "sourceSha256": "4a69d2737d3f386b274af9cdab19a934df7629c6a5e9fac96b533d60ea3ec434",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "summon-hedge-sprite",
       "source": {
         "path": "design/bestiary/summons/hedge-sprite.md",

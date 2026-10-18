@@ -3,14 +3,14 @@
   "_id": "551485efc87a2a4a",
   "name": "Plague Zombie",
   "type": "summon",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/2ab5effb71b32ddfc29b9552defbe089aacd6cabd9e062d32f36d3fdc038a8c8.webp",
   "prototypeToken": {
     "name": "Plague Zombie",
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "icons/svg/mystery-man.svg"
+      "src": "systems/heroes-of-legend/assets/creatures/2ab5effb71b32ddfc29b9552defbe089aacd6cabd9e062d32f36d3fdc038a8c8.webp"
     }
   },
   "system": {
@@ -117,6 +117,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-plague-zombie",
+        "asset": "assets/creatures/2ab5effb71b32ddfc29b9552defbe089aacd6cabd9e062d32f36d3fdc038a8c8.webp",
+        "sha256": "633bb267839c463290c5294feeca257991440c1e3444ddbe1f27381994202958",
+        "sourceSha256": "2ab5effb71b32ddfc29b9552defbe089aacd6cabd9e062d32f36d3fdc038a8c8",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "summon-plague-zombie",
       "source": {
         "path": "design/bestiary/summons/plague-zombie.md",

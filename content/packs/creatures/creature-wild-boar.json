@@ -3,10 +3,13 @@
   "_id": "7955fed17fb2f95f",
   "name": "Wild Boar",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/04b2274aa51ecb4ad28ef1165f25a4221106622453847e6323c1e174a6a4d8c3.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/04b2274aa51ecb4ad28ef1165f25a4221106622453847e6323c1e174a6a4d8c3.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -103,6 +106,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-wild-boar",
+        "asset": "assets/creatures/04b2274aa51ecb4ad28ef1165f25a4221106622453847e6323c1e174a6a4d8c3.webp",
+        "sha256": "e1b20b817854a9a226b5d1955dc0af1f2cc6e4b1a6cd8a1c9af00288154f0f32",
+        "sourceSha256": "04b2274aa51ecb4ad28ef1165f25a4221106622453847e6323c1e174a6a4d8c3",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "creature-wild-boar",
       "source": {
         "path": "design/bestiary/creatures/wild-boar.md",

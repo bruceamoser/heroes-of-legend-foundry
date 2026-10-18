@@ -3,14 +3,14 @@
   "_id": "946892705fd3237c",
   "name": "Animated Armor",
   "type": "summon",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/3bd17234404aa871566cb6bec36791ec99bc0cf90cc6e7ed355e38ced0c5911d.webp",
   "prototypeToken": {
     "name": "Animated Armor",
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "icons/svg/mystery-man.svg"
+      "src": "systems/heroes-of-legend/assets/creatures/3bd17234404aa871566cb6bec36791ec99bc0cf90cc6e7ed355e38ced0c5911d.webp"
     }
   },
   "system": {
@@ -123,6 +123,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-animated-armor",
+        "asset": "assets/creatures/3bd17234404aa871566cb6bec36791ec99bc0cf90cc6e7ed355e38ced0c5911d.webp",
+        "sha256": "2f547f82a66f44977c23efed00237376a6db80c51ec889952b95c3944bc08422",
+        "sourceSha256": "3bd17234404aa871566cb6bec36791ec99bc0cf90cc6e7ed355e38ced0c5911d",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "summon-animated-armor",
       "source": {
         "path": "design/bestiary/summons/animated-armor.md",

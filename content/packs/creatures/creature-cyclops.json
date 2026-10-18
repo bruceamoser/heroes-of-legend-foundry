@@ -3,10 +3,13 @@
   "_id": "f6f85ab436d43692",
   "name": "Cyclops",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/1278229fbdd753ebf26129d5c4733201274cbec36b31afc60561455362896290.webp",
   "prototypeToken": {
     "width": 2,
-    "height": 2
+    "height": 2,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/1278229fbdd753ebf26129d5c4733201274cbec36b31afc60561455362896290.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -108,6 +111,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-cyclops",
+        "asset": "assets/creatures/1278229fbdd753ebf26129d5c4733201274cbec36b31afc60561455362896290.webp",
+        "sha256": "07072a90bf84dd54eb2c12c95280fec4c1176d92cb8028779d2067bbf7a2cef5",
+        "sourceSha256": "1278229fbdd753ebf26129d5c4733201274cbec36b31afc60561455362896290",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-cyclops",
       "source": {
         "path": "design/bestiary/creatures/cyclops.md",

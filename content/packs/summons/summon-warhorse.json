@@ -3,14 +3,14 @@
   "_id": "919bbb69951bb43b",
   "name": "Warhorse",
   "type": "summon",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/cd6b7b21e595699bcdbc66ccf860aa758397efe8d956f69f6e306fac7c72d459.webp",
   "prototypeToken": {
     "name": "Warhorse",
     "actorLink": false,
     "width": 2,
     "height": 2,
     "texture": {
-      "src": "icons/svg/mystery-man.svg"
+      "src": "systems/heroes-of-legend/assets/creatures/cd6b7b21e595699bcdbc66ccf860aa758397efe8d956f69f6e306fac7c72d459.webp"
     }
   },
   "system": {
@@ -113,6 +113,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-warhorse",
+        "asset": "assets/creatures/cd6b7b21e595699bcdbc66ccf860aa758397efe8d956f69f6e306fac7c72d459.webp",
+        "sha256": "ad104853dcd5d760ae3b83fce8b0eab96cf8528c6044c2ae3f6789440df10d67",
+        "sourceSha256": "cd6b7b21e595699bcdbc66ccf860aa758397efe8d956f69f6e306fac7c72d459",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "summon-warhorse",
       "source": {
         "path": "design/bestiary/summons/warhorse.md",

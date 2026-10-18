@@ -3,10 +3,13 @@
   "_id": "6c78051c3c130b8f",
   "name": "Veteran Captain",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/e989d385c3dab43e5480ae7a75fea5515e94d7c86a44d19b8ca3e1b8006b4867.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/e989d385c3dab43e5480ae7a75fea5515e94d7c86a44d19b8ca3e1b8006b4867.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -108,6 +111,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-veteran-captain",
+        "asset": "assets/creatures/e989d385c3dab43e5480ae7a75fea5515e94d7c86a44d19b8ca3e1b8006b4867.webp",
+        "sha256": "f3dca41a12c8fd5dd009f4dc5be49581a02c386324877e038a3e5848b16bbcf3",
+        "sourceSha256": "e989d385c3dab43e5480ae7a75fea5515e94d7c86a44d19b8ca3e1b8006b4867",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-veteran-captain",
       "source": {
         "path": "design/bestiary/creatures/veteran-captain.md",

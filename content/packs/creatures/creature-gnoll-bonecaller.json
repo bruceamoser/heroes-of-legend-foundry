@@ -3,10 +3,13 @@
   "_id": "5c2d16ae4dde2bee",
   "name": "Gnoll Bonecaller",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/3ee7aab66279e2ae832512d5059fe44c179127eda287a7bf9c2db3a8edcd9786.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/3ee7aab66279e2ae832512d5059fe44c179127eda287a7bf9c2db3a8edcd9786.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -103,6 +106,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-gnoll-bonecaller",
+        "asset": "assets/creatures/3ee7aab66279e2ae832512d5059fe44c179127eda287a7bf9c2db3a8edcd9786.webp",
+        "sha256": "aabe21112cdcb063f94b6a7d408951b8d4b8a4b54e38b45db7192947a68c55aa",
+        "sourceSha256": "3ee7aab66279e2ae832512d5059fe44c179127eda287a7bf9c2db3a8edcd9786",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-gnoll-bonecaller",
       "source": {
         "path": "design/bestiary/creatures/gnoll-bonecaller.md",

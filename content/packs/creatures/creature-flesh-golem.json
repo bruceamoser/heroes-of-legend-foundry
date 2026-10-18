@@ -3,10 +3,13 @@
   "_id": "4671efc4744e0bac",
   "name": "Flesh Golem",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/85423a395845c6b9554e9d81dedcd7fb555cf8d913352c249560ffeb3e21b3ee.webp",
   "prototypeToken": {
     "width": 2,
-    "height": 2
+    "height": 2,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/85423a395845c6b9554e9d81dedcd7fb555cf8d913352c249560ffeb3e21b3ee.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -112,6 +115,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-flesh-golem",
+        "asset": "assets/creatures/85423a395845c6b9554e9d81dedcd7fb555cf8d913352c249560ffeb3e21b3ee.webp",
+        "sha256": "0c431c3c9f2ef2b6f8bd618e7f3952c90ac6dc4df32f6bf997399388d104952b",
+        "sourceSha256": "85423a395845c6b9554e9d81dedcd7fb555cf8d913352c249560ffeb3e21b3ee",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "creature-flesh-golem",
       "source": {
         "path": "design/bestiary/creatures/flesh-golem.md",

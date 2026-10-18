@@ -3,10 +3,13 @@
   "_id": "e421695e19874120",
   "name": "Goblin Spearhand",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/9bbd23f53fa3a44feae6fcebd8eb0bcac03c61e62bb7ffc1730bef67f3ef7248.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/9bbd23f53fa3a44feae6fcebd8eb0bcac03c61e62bb7ffc1730bef67f3ef7248.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -103,6 +106,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-goblin-spearhand",
+        "asset": "assets/creatures/9bbd23f53fa3a44feae6fcebd8eb0bcac03c61e62bb7ffc1730bef67f3ef7248.webp",
+        "sha256": "acffeebd3fa7d1403f5aa904aa978903e92b1ad09d55f19d2d2f1af02cc45a1e",
+        "sourceSha256": "9bbd23f53fa3a44feae6fcebd8eb0bcac03c61e62bb7ffc1730bef67f3ef7248",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-goblin-spearhand",
       "source": {
         "path": "design/bestiary/creatures/goblin-spearhand.md",

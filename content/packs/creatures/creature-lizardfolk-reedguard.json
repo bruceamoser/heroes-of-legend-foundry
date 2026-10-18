@@ -3,10 +3,13 @@
   "_id": "9f436763e98d2d5c",
   "name": "Lizardfolk Reedguard",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/3b108c8fa3cfcd95c34ddfdb30689b7526919d6770b279c5917ac7b772db2bf4.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/3b108c8fa3cfcd95c34ddfdb30689b7526919d6770b279c5917ac7b772db2bf4.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -113,6 +116,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-lizardfolk-reedguard",
+        "asset": "assets/creatures/3b108c8fa3cfcd95c34ddfdb30689b7526919d6770b279c5917ac7b772db2bf4.webp",
+        "sha256": "7a9d67ef7504f40f383f6b29304294419d0f77dcfe054d9c98f6910d448707f1",
+        "sourceSha256": "3b108c8fa3cfcd95c34ddfdb30689b7526919d6770b279c5917ac7b772db2bf4",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-lizardfolk-reedguard",
       "source": {
         "path": "design/bestiary/creatures/lizardfolk-reedguard.md",

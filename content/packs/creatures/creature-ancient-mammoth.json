@@ -3,10 +3,13 @@
   "_id": "c66b645ad3cb0a7e",
   "name": "Ancient Mammoth",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/6b4aa3d560fa8d8e35060bc08bec4321c24f2d4aee99b4aadeb579cdc975e9b4.webp",
   "prototypeToken": {
     "width": 3,
-    "height": 3
+    "height": 3,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/6b4aa3d560fa8d8e35060bc08bec4321c24f2d4aee99b4aadeb579cdc975e9b4.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -108,6 +111,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-ancient-mammoth",
+        "asset": "assets/creatures/6b4aa3d560fa8d8e35060bc08bec4321c24f2d4aee99b4aadeb579cdc975e9b4.webp",
+        "sha256": "4f386640a0cfd12f52968bad3e01e8048af458f23ced0a43eef69d862d8a1108",
+        "sourceSha256": "6b4aa3d560fa8d8e35060bc08bec4321c24f2d4aee99b4aadeb579cdc975e9b4",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "creature-ancient-mammoth",
       "source": {
         "path": "design/bestiary/creatures/ancient-mammoth.md",

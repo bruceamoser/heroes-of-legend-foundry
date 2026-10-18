@@ -3,10 +3,13 @@
   "_id": "77fd53340246d03e",
   "name": "Clockwork Scout",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/a41d63d045d85d13eb44dc00f1acfcb895f62e8942a7385dbe2db240a6846237.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/a41d63d045d85d13eb44dc00f1acfcb895f62e8942a7385dbe2db240a6846237.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -112,6 +115,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-clockwork-scout",
+        "asset": "assets/creatures/a41d63d045d85d13eb44dc00f1acfcb895f62e8942a7385dbe2db240a6846237.webp",
+        "sha256": "ec1a9ff44cb26b3cbe161c90a20d26bc020335aa6f9c16e53d488c691ad08fc8",
+        "sourceSha256": "a41d63d045d85d13eb44dc00f1acfcb895f62e8942a7385dbe2db240a6846237",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "creature-clockwork-scout",
       "source": {
         "path": "design/bestiary/creatures/clockwork-scout.md",

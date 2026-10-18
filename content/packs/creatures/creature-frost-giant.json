@@ -3,10 +3,13 @@
   "_id": "e986760bb9c099eb",
   "name": "Frost Giant",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/19de84db73dfead1c158ecb52d72929fd24977f8791a20f7009d65bf9d186d29.webp",
   "prototypeToken": {
     "width": 2,
-    "height": 2
+    "height": 2,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/19de84db73dfead1c158ecb52d72929fd24977f8791a20f7009d65bf9d186d29.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -112,6 +115,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-frost-giant",
+        "asset": "assets/creatures/19de84db73dfead1c158ecb52d72929fd24977f8791a20f7009d65bf9d186d29.webp",
+        "sha256": "8f3f1e80780f067d96d29edbcb89b7566c44b19650e2b66901ccfb4344ebd984",
+        "sourceSha256": "19de84db73dfead1c158ecb52d72929fd24977f8791a20f7009d65bf9d186d29",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-frost-giant",
       "source": {
         "path": "design/bestiary/creatures/frost-giant.md",

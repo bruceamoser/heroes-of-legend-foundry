@@ -3,10 +3,13 @@
   "_id": "e02275ca202ace23",
   "name": "Owlbear",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/a415f3caeb092204a040b87dcc9033e04348b0d7a416487330e23783b08dffae.webp",
   "prototypeToken": {
     "width": 2,
-    "height": 2
+    "height": 2,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/a415f3caeb092204a040b87dcc9033e04348b0d7a416487330e23783b08dffae.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -108,6 +111,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-owlbear",
+        "asset": "assets/creatures/a415f3caeb092204a040b87dcc9033e04348b0d7a416487330e23783b08dffae.webp",
+        "sha256": "07bdba3b8fa403ed75e528ddfcdc31aecc53237750240a64349482eec7db2dc3",
+        "sourceSha256": "a415f3caeb092204a040b87dcc9033e04348b0d7a416487330e23783b08dffae",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-owlbear",
       "source": {
         "path": "design/bestiary/creatures/owlbear.md",

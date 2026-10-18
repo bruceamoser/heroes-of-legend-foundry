@@ -3,10 +3,13 @@
   "_id": "a101f663bcd862a4",
   "name": "Ancestor Guardian",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/aefb2e5c8636a766c9649a374fdf4cc87baf4447183da0877d9b21effbec7994.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/aefb2e5c8636a766c9649a374fdf4cc87baf4447183da0877d9b21effbec7994.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -112,6 +115,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-ancestor-guardian",
+        "asset": "assets/creatures/aefb2e5c8636a766c9649a374fdf4cc87baf4447183da0877d9b21effbec7994.webp",
+        "sha256": "e6f26670c2b53252dfd5082196235dd577047824cfd0b34454532966c74c80c7",
+        "sourceSha256": "aefb2e5c8636a766c9649a374fdf4cc87baf4447183da0877d9b21effbec7994",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "creature-ancestor-guardian",
       "source": {
         "path": "design/bestiary/creatures/ancestor-guardian.md",

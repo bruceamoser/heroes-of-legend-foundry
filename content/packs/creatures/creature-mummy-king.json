@@ -3,10 +3,13 @@
   "_id": "d7a7015d30cbba51",
   "name": "Mummy King",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/926a02d833c629ab7e0afae18ea53c841daf82c67439448daf2df8bac14d6787.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/926a02d833c629ab7e0afae18ea53c841daf82c67439448daf2df8bac14d6787.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -112,6 +115,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-mummy-king",
+        "asset": "assets/creatures/926a02d833c629ab7e0afae18ea53c841daf82c67439448daf2df8bac14d6787.webp",
+        "sha256": "292f0bde19c93b7c5509b17ff4f50bd9bebbd47bbf61a527b408c43895725319",
+        "sourceSha256": "926a02d833c629ab7e0afae18ea53c841daf82c67439448daf2df8bac14d6787",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-mummy-king",
       "source": {
         "path": "design/bestiary/creatures/mummy-king.md",

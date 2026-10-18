@@ -3,14 +3,14 @@
   "_id": "5c3ac26295c229f6",
   "name": "Briar Knight",
   "type": "summon",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/31c7be82591fbf873e1de96a162075d9cfde5ed150811cd96a846d613eb1da58.webp",
   "prototypeToken": {
     "name": "Briar Knight",
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "icons/svg/mystery-man.svg"
+      "src": "systems/heroes-of-legend/assets/creatures/31c7be82591fbf873e1de96a162075d9cfde5ed150811cd96a846d613eb1da58.webp"
     }
   },
   "system": {
@@ -118,6 +118,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-briar-knight",
+        "asset": "assets/creatures/31c7be82591fbf873e1de96a162075d9cfde5ed150811cd96a846d613eb1da58.webp",
+        "sha256": "178f57b2fb1d6c75c060025d3aaf0d2de9ac03b3c6353709e1563e8dfffb7a32",
+        "sourceSha256": "31c7be82591fbf873e1de96a162075d9cfde5ed150811cd96a846d613eb1da58",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "summon-briar-knight",
       "source": {
         "path": "design/bestiary/summons/briar-knight.md",

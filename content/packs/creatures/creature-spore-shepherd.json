@@ -3,10 +3,13 @@
   "_id": "108365c21975570f",
   "name": "Spore Shepherd",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/0c77f6b89dafac5f824c2e976bb2944d8f0173952b98d9fc929b4cd5646b2023.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/0c77f6b89dafac5f824c2e976bb2944d8f0173952b98d9fc929b4cd5646b2023.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -107,6 +110,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-spore-shepherd",
+        "asset": "assets/creatures/0c77f6b89dafac5f824c2e976bb2944d8f0173952b98d9fc929b4cd5646b2023.webp",
+        "sha256": "6d6c8cfe6a1e587659d078de7e92119dac5ecd913dc741fc98fa12b528e00660",
+        "sourceSha256": "0c77f6b89dafac5f824c2e976bb2944d8f0173952b98d9fc929b4cd5646b2023",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-spore-shepherd",
       "source": {
         "path": "design/bestiary/creatures/spore-shepherd.md",

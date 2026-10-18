@@ -3,10 +3,13 @@
   "_id": "746b0f454099a677",
   "name": "Moon Hart",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/a7d67b275f996a189bef898878b619ea68f1c91f142c60966d2ba69ed588c301.webp",
   "prototypeToken": {
     "width": 2,
-    "height": 2
+    "height": 2,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/a7d67b275f996a189bef898878b619ea68f1c91f142c60966d2ba69ed588c301.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -103,6 +106,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-moon-hart",
+        "asset": "assets/creatures/a7d67b275f996a189bef898878b619ea68f1c91f142c60966d2ba69ed588c301.webp",
+        "sha256": "c8d859b6c80b268408acde11a9ab5fbe0cd4223e525330da082a3a332dbd5039",
+        "sourceSha256": "a7d67b275f996a189bef898878b619ea68f1c91f142c60966d2ba69ed588c301",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "creature-moon-hart",
       "source": {
         "path": "design/bestiary/creatures/moon-hart.md",

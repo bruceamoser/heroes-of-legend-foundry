@@ -3,10 +3,13 @@
   "_id": "af5cd34ca54b71c0",
   "name": "Skeleton Champion",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/876555ebd20b36624ea6bc0dd508c38639efede758a97a5211863f1ab490d8bd.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/876555ebd20b36624ea6bc0dd508c38639efede758a97a5211863f1ab490d8bd.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -112,6 +115,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-skeleton-champion",
+        "asset": "assets/creatures/876555ebd20b36624ea6bc0dd508c38639efede758a97a5211863f1ab490d8bd.webp",
+        "sha256": "99ced7b036d4ada8227f0093d7c7dadf22d9bdb48b9b035c14cd084043501db1",
+        "sourceSha256": "876555ebd20b36624ea6bc0dd508c38639efede758a97a5211863f1ab490d8bd",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "creature-skeleton-champion",
       "source": {
         "path": "design/bestiary/creatures/skeleton-champion.md",

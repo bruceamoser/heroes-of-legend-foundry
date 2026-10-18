@@ -3,10 +3,13 @@
   "_id": "67640487282bc95c",
   "name": "Storm Giant",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/7d91330fcea9d7dffc3ff61c8f8708b0ea788c280e0c004a05e415e5fa25a0dc.webp",
   "prototypeToken": {
     "width": 3,
-    "height": 3
+    "height": 3,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/7d91330fcea9d7dffc3ff61c8f8708b0ea788c280e0c004a05e415e5fa25a0dc.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -117,6 +120,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-storm-giant",
+        "asset": "assets/creatures/7d91330fcea9d7dffc3ff61c8f8708b0ea788c280e0c004a05e415e5fa25a0dc.webp",
+        "sha256": "8e2aae9dfe5984d206e820f4cc57c55677a15683dd5b8565e60b582f74ba58fc",
+        "sourceSha256": "7d91330fcea9d7dffc3ff61c8f8708b0ea788c280e0c004a05e415e5fa25a0dc",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-storm-giant",
       "source": {
         "path": "design/bestiary/creatures/storm-giant.md",

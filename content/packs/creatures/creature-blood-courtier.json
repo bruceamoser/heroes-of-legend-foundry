@@ -3,10 +3,13 @@
   "_id": "b444a281294f6831",
   "name": "Vampire Courtier",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/3937aacf74393578126c437cf882cfe4adafc56633445c634e0108e035af4ea0.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/3937aacf74393578126c437cf882cfe4adafc56633445c634e0108e035af4ea0.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -125,6 +128,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-blood-courtier",
+        "asset": "assets/creatures/3937aacf74393578126c437cf882cfe4adafc56633445c634e0108e035af4ea0.webp",
+        "sha256": "8a83d872988df2200fcde7d82eab1502cd9db7eb20fa2c112c923de59dc817e2",
+        "sourceSha256": "3937aacf74393578126c437cf882cfe4adafc56633445c634e0108e035af4ea0",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-blood-courtier",
       "source": {
         "path": "design/bestiary/creatures/blood-courtier.md",

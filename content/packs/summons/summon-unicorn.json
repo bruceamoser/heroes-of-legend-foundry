@@ -3,14 +3,14 @@
   "_id": "9af567c9a50328e8",
   "name": "Unicorn",
   "type": "summon",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/c1e5b3a08b841444cb467e827e9332abbdce88b418e3d620d3990123d4caea96.webp",
   "prototypeToken": {
     "name": "Unicorn",
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "icons/svg/mystery-man.svg"
+      "src": "systems/heroes-of-legend/assets/creatures/c1e5b3a08b841444cb467e827e9332abbdce88b418e3d620d3990123d4caea96.webp"
     }
   },
   "system": {
@@ -113,6 +113,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-unicorn",
+        "asset": "assets/creatures/c1e5b3a08b841444cb467e827e9332abbdce88b418e3d620d3990123d4caea96.webp",
+        "sha256": "676822d79e2872cec8208c3ce48d33ba780c58805c561832b78712c73a329d97",
+        "sourceSha256": "c1e5b3a08b841444cb467e827e9332abbdce88b418e3d620d3990123d4caea96",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "summon-unicorn",
       "source": {
         "path": "design/bestiary/summons/unicorn.md",

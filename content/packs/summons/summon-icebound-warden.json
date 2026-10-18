@@ -3,14 +3,14 @@
   "_id": "1d4af67791434c5f",
   "name": "Icebound Warden",
   "type": "summon",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/b3076603d247550dc1e9b551bda1ffe7d6ffb5c4fa608d97f01a6e3ff70dade5.webp",
   "prototypeToken": {
     "name": "Icebound Warden",
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "icons/svg/mystery-man.svg"
+      "src": "systems/heroes-of-legend/assets/creatures/b3076603d247550dc1e9b551bda1ffe7d6ffb5c4fa608d97f01a6e3ff70dade5.webp"
     }
   },
   "system": {
@@ -126,6 +126,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-icebound-warden",
+        "asset": "assets/creatures/b3076603d247550dc1e9b551bda1ffe7d6ffb5c4fa608d97f01a6e3ff70dade5.webp",
+        "sha256": "05f1cbe116a399fa3183338f4fa318de443dba259809287f510426f87b2228dd",
+        "sourceSha256": "b3076603d247550dc1e9b551bda1ffe7d6ffb5c4fa608d97f01a6e3ff70dade5",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "summon-icebound-warden",
       "source": {
         "path": "design/bestiary/summons/icebound-warden.md",

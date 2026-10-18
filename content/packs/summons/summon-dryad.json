@@ -3,14 +3,14 @@
   "_id": "c6bec3177c8ebb31",
   "name": "Dryad",
   "type": "summon",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/ea3b3b69e1deaa98f22187652af73619d4b586ebcf67e4ee983194b25a62b7cd.webp",
   "prototypeToken": {
     "name": "Dryad",
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "icons/svg/mystery-man.svg"
+      "src": "systems/heroes-of-legend/assets/creatures/ea3b3b69e1deaa98f22187652af73619d4b586ebcf67e4ee983194b25a62b7cd.webp"
     }
   },
   "system": {
@@ -113,6 +113,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-dryad",
+        "asset": "assets/creatures/ea3b3b69e1deaa98f22187652af73619d4b586ebcf67e4ee983194b25a62b7cd.webp",
+        "sha256": "3418daf5039adb4c7ca9611a3ffcac0ad59e72b9d327919a59fcc0d00cb23dcf",
+        "sourceSha256": "ea3b3b69e1deaa98f22187652af73619d4b586ebcf67e4ee983194b25a62b7cd",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "summon-dryad",
       "source": {
         "path": "design/bestiary/summons/dryad.md",

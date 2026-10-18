@@ -3,10 +3,13 @@
   "_id": "fee7c6388a94dce9",
   "name": "Unicorn",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/c1e5b3a08b841444cb467e827e9332abbdce88b418e3d620d3990123d4caea96.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/c1e5b3a08b841444cb467e827e9332abbdce88b418e3d620d3990123d4caea96.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -103,6 +106,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-unicorn",
+        "asset": "assets/creatures/c1e5b3a08b841444cb467e827e9332abbdce88b418e3d620d3990123d4caea96.webp",
+        "sha256": "676822d79e2872cec8208c3ce48d33ba780c58805c561832b78712c73a329d97",
+        "sourceSha256": "c1e5b3a08b841444cb467e827e9332abbdce88b418e3d620d3990123d4caea96",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "creature-unicorn",
       "source": {
         "path": "design/bestiary/creatures/unicorn.md",

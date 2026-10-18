@@ -3,10 +3,13 @@
   "_id": "296c57d522fd8f5c",
   "name": "Great Stag",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/736a58085e838b140638ef5b352430ab185d42c1275650450f9d6cb71173809c.webp",
   "prototypeToken": {
     "width": 2,
-    "height": 2
+    "height": 2,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/736a58085e838b140638ef5b352430ab185d42c1275650450f9d6cb71173809c.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -103,6 +106,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-great-stag",
+        "asset": "assets/creatures/736a58085e838b140638ef5b352430ab185d42c1275650450f9d6cb71173809c.webp",
+        "sha256": "bfd720b52a218c9118694ea431dc4ba2c5c9780c8b77898df999e95dd809630e",
+        "sourceSha256": "736a58085e838b140638ef5b352430ab185d42c1275650450f9d6cb71173809c",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "creature-great-stag",
       "source": {
         "path": "design/bestiary/creatures/great-stag.md",

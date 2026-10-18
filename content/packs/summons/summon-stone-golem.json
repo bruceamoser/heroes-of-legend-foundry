@@ -3,14 +3,14 @@
   "_id": "2e9effbc9d51b883",
   "name": "Stone Golem",
   "type": "summon",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/badf2d35b7e6d402365337049ac37b16ec3137113867a0db7a91b4df919afd2c.webp",
   "prototypeToken": {
     "name": "Stone Golem",
     "actorLink": false,
     "width": 2,
     "height": 2,
     "texture": {
-      "src": "icons/svg/mystery-man.svg"
+      "src": "systems/heroes-of-legend/assets/creatures/badf2d35b7e6d402365337049ac37b16ec3137113867a0db7a91b4df919afd2c.webp"
     }
   },
   "system": {
@@ -122,6 +122,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-stone-golem",
+        "asset": "assets/creatures/badf2d35b7e6d402365337049ac37b16ec3137113867a0db7a91b4df919afd2c.webp",
+        "sha256": "c1b6b7f9fe056f3f1c62a0be7492001f2be96e96b5c13111b33e0975ccc7db00",
+        "sourceSha256": "badf2d35b7e6d402365337049ac37b16ec3137113867a0db7a91b4df919afd2c",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "summon-stone-golem",
       "source": {
         "path": "design/bestiary/summons/stone-golem.md",

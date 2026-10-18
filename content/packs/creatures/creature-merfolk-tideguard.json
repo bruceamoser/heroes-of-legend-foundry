@@ -3,10 +3,13 @@
   "_id": "af15496cae709396",
   "name": "Merfolk Tideguard",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/0f0edf229c204a91fa5b4c7569458615c1d2f05a28fa9555abde2206b4b74ac8.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/0f0edf229c204a91fa5b4c7569458615c1d2f05a28fa9555abde2206b4b74ac8.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -113,6 +116,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-merfolk-tideguard",
+        "asset": "assets/creatures/0f0edf229c204a91fa5b4c7569458615c1d2f05a28fa9555abde2206b4b74ac8.webp",
+        "sha256": "f509dd005e4efc0b8f1c45697b813a1ca5d4984d40db8af64c22172babd8cf7f",
+        "sourceSha256": "0f0edf229c204a91fa5b4c7569458615c1d2f05a28fa9555abde2206b4b74ac8",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-merfolk-tideguard",
       "source": {
         "path": "design/bestiary/creatures/merfolk-tideguard.md",

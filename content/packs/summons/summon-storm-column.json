@@ -3,14 +3,14 @@
   "_id": "94926d33e3e32573",
   "name": "Storm Column",
   "type": "summon",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/4f75e5dc16c930e2ce95e6dafa8e6ca357d40c7d31a24c871bbc2fb9486ded00.webp",
   "prototypeToken": {
     "name": "Storm Column",
     "actorLink": false,
     "width": 2,
     "height": 2,
     "texture": {
-      "src": "icons/svg/mystery-man.svg"
+      "src": "systems/heroes-of-legend/assets/creatures/4f75e5dc16c930e2ce95e6dafa8e6ca357d40c7d31a24c871bbc2fb9486ded00.webp"
     }
   },
   "system": {
@@ -144,6 +144,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-storm-column",
+        "asset": "assets/creatures/4f75e5dc16c930e2ce95e6dafa8e6ca357d40c7d31a24c871bbc2fb9486ded00.webp",
+        "sha256": "2806dc099aa396792531673f3260fd6bfad023f56cd50d1b1586f1fd59b541d1",
+        "sourceSha256": "4f75e5dc16c930e2ce95e6dafa8e6ca357d40c7d31a24c871bbc2fb9486ded00",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "summon-storm-column",
       "source": {
         "path": "design/bestiary/summons/storm-column.md",

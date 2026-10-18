@@ -3,10 +3,13 @@
   "_id": "466718a39becf073",
   "name": "Pact Broker",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/17507fc17113fef437381e960a714cc070fd65db145b8467f63dbd6c9a859611.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/17507fc17113fef437381e960a714cc070fd65db145b8467f63dbd6c9a859611.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -108,6 +111,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-pact-broker",
+        "asset": "assets/creatures/17507fc17113fef437381e960a714cc070fd65db145b8467f63dbd6c9a859611.webp",
+        "sha256": "dbd11e7dea2c2a03da60f37fece264007766a72438726b950833a994a01464af",
+        "sourceSha256": "17507fc17113fef437381e960a714cc070fd65db145b8467f63dbd6c9a859611",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-pact-broker",
       "source": {
         "path": "design/bestiary/creatures/pact-broker.md",

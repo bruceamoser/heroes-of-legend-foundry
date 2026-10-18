@@ -488,20 +488,21 @@ function actorSystem(record, sourceCommit) {
   };
 }
 
-export function creatureActorSource(record, { sourceCommit }) {
+export function creatureActorSource(record, { sourceCommit, portrait }) {
   if (!/^[a-f0-9]{40}$/.test(sourceCommit))
     throw new Error("Creature actor source commit is invalid.");
   return {
     name: record.name,
     type: "creature",
-    img: CREATURE_FALLBACK_IMAGE,
-    prototypeToken: structuredClone(record.size.footprint ?? {
+    img: portrait.img,
+    prototypeToken: { ...structuredClone(record.size.footprint ?? {
       width: record.size.value,
       height: record.size.value,
-    }),
+    }), texture: { src: portrait.img } },
     system: actorSystem(record, sourceCommit),
     flags: {
       [SYSTEM_ID]: {
+        portrait: structuredClone(portrait.provenance),
         catalogId: record.id,
         source: {
           path: record.source.path,
@@ -521,10 +522,10 @@ export function creatureActorSource(record, { sourceCommit }) {
   };
 }
 
-function authoredCreatureDocument(record, id, sourceCommit) {
+function authoredCreatureDocument(record, id, sourceCommit, portrait) {
   if (!/^[a-f0-9]{16}$/.test(id))
     throw new Error(`Invalid Foundry Actor ID: ${id}`);
-  const actor = creatureActorSource(record, { sourceCommit });
+  const actor = creatureActorSource(record, { sourceCommit, portrait });
   return {
     _key: `!actors!${id}`,
     _id: id,
@@ -552,7 +553,7 @@ function serializedDocument(document) {
   return `${JSON.stringify(document, null, 2)}\n`;
 }
 
-export function buildCreaturePackArtifacts({ catalog, lock }) {
+export function buildCreaturePackArtifacts({ catalog, lock, portraits }) {
   const creatures = validateCreatureCatalogBasis({ catalog, lock })
     .slice()
     .sort((a, b) => a.id.localeCompare(b.id, "en"));
@@ -565,6 +566,7 @@ export function buildCreaturePackArtifacts({ catalog, lock }) {
       record,
       identityById.get(record.id),
       lock.commit,
+      portraits.get(record.id),
     ),
   );
   const files = new Map();

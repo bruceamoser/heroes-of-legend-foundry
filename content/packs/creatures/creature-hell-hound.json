@@ -3,10 +3,13 @@
   "_id": "a9da4ebd43c9b0f9",
   "name": "Hell Hound",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/5030db0ed09e13254295e9e0e96938382f72deef54219512ea465246a30219a2.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/5030db0ed09e13254295e9e0e96938382f72deef54219512ea465246a30219a2.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -112,6 +115,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-hell-hound",
+        "asset": "assets/creatures/5030db0ed09e13254295e9e0e96938382f72deef54219512ea465246a30219a2.webp",
+        "sha256": "f3cf4d051a0b5ad30aaece4bb8e571e6e807c6731be68f3e255465d5e3d2b7c0",
+        "sourceSha256": "5030db0ed09e13254295e9e0e96938382f72deef54219512ea465246a30219a2",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-hell-hound",
       "source": {
         "path": "design/bestiary/creatures/hell-hound.md",

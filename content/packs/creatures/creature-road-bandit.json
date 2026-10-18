@@ -3,10 +3,13 @@
   "_id": "e4b25403a548c171",
   "name": "Road Bandit",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/ccb92d3dea6926fa1e37a2f2df88e1923db8e3400d09f448bded0e4991312db8.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/ccb92d3dea6926fa1e37a2f2df88e1923db8e3400d09f448bded0e4991312db8.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -103,6 +106,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-road-bandit",
+        "asset": "assets/creatures/ccb92d3dea6926fa1e37a2f2df88e1923db8e3400d09f448bded0e4991312db8.webp",
+        "sha256": "3273fdf1d6b4b1678c81ee89858643fb17964c257ec9b358cdb2834a2584f94d",
+        "sourceSha256": "ccb92d3dea6926fa1e37a2f2df88e1923db8e3400d09f448bded0e4991312db8",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-road-bandit",
       "source": {
         "path": "design/bestiary/creatures/road-bandit.md",

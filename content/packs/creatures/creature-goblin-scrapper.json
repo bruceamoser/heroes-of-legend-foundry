@@ -3,10 +3,13 @@
   "_id": "152b108c134d5c85",
   "name": "Goblin Scrapper",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/3f4fe745b94e9c46f405f87c2ab6c9949cfe5227701f2a596897dd7b03bb1dc4.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/3f4fe745b94e9c46f405f87c2ab6c9949cfe5227701f2a596897dd7b03bb1dc4.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -103,6 +106,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-goblin-scrapper",
+        "asset": "assets/creatures/3f4fe745b94e9c46f405f87c2ab6c9949cfe5227701f2a596897dd7b03bb1dc4.webp",
+        "sha256": "36adb18a64cb419161f6652c994ffcbabc17b2e1d1487236ae50aa3b04658fb4",
+        "sourceSha256": "3f4fe745b94e9c46f405f87c2ab6c9949cfe5227701f2a596897dd7b03bb1dc4",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-goblin-scrapper",
       "source": {
         "path": "design/bestiary/creatures/goblin-scrapper.md",

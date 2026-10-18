@@ -7,6 +7,8 @@ const text = (initial = "", choices) =>
     required: true,
     nullable: false,
     initial,
+    // Preserve the complete pinned Markdown, including its final newline.
+    trim: false,
     // V14 choice-backed strings reject blank values unless blank is enabled.
     blank: !choices || (Array.isArray(choices) && choices.includes("")),
     choices,

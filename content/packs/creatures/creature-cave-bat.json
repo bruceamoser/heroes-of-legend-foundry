@@ -3,10 +3,13 @@
   "_id": "6b2c6a12e9e74678",
   "name": "Cave Bat",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/161908d012340107dcd59943625c7106ccbd4211e801ecb94edd7b2f5700e086.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/161908d012340107dcd59943625c7106ccbd4211e801ecb94edd7b2f5700e086.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -108,6 +111,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-cave-bat",
+        "asset": "assets/creatures/161908d012340107dcd59943625c7106ccbd4211e801ecb94edd7b2f5700e086.webp",
+        "sha256": "899f2e0f423624db55139b5b5892fec3fae7dd71ba86043e367fe62d13e68857",
+        "sourceSha256": "161908d012340107dcd59943625c7106ccbd4211e801ecb94edd7b2f5700e086",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "creature-cave-bat",
       "source": {
         "path": "design/bestiary/creatures/cave-bat.md",

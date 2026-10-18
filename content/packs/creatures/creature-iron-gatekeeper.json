@@ -3,10 +3,13 @@
   "_id": "1489d7bf563e808e",
   "name": "Iron Gatekeeper",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/91c830289b636a4a682cdf84da986778e0d217b8f48a44211c1f9dfdba314fe5.webp",
   "prototypeToken": {
     "width": 2,
-    "height": 2
+    "height": 2,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/91c830289b636a4a682cdf84da986778e0d217b8f48a44211c1f9dfdba314fe5.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -113,6 +116,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-iron-gatekeeper",
+        "asset": "assets/creatures/91c830289b636a4a682cdf84da986778e0d217b8f48a44211c1f9dfdba314fe5.webp",
+        "sha256": "273eb9f897875e0402d41935d66142a9222e93dfc57c4174ae2654ea5637ed45",
+        "sourceSha256": "91c830289b636a4a682cdf84da986778e0d217b8f48a44211c1f9dfdba314fe5",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "creature-iron-gatekeeper",
       "source": {
         "path": "design/bestiary/creatures/iron-gatekeeper.md",

@@ -3,10 +3,13 @@
   "_id": "e1f7cf58fe941918",
   "name": "Bridge Troll",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/25ebefc770cfb421747236971317913dcc6e9412010310d6ded36ecf6124bfc9.webp",
   "prototypeToken": {
     "width": 2,
-    "height": 2
+    "height": 2,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/25ebefc770cfb421747236971317913dcc6e9412010310d6ded36ecf6124bfc9.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -113,6 +116,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-bridge-troll",
+        "asset": "assets/creatures/25ebefc770cfb421747236971317913dcc6e9412010310d6ded36ecf6124bfc9.webp",
+        "sha256": "746b7e32e785f9f68c342200ad49a8a782e9207d4a4a54f2913e7a770b1d0284",
+        "sourceSha256": "25ebefc770cfb421747236971317913dcc6e9412010310d6ded36ecf6124bfc9",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-bridge-troll",
       "source": {
         "path": "design/bestiary/creatures/bridge-troll.md",

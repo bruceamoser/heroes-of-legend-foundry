@@ -3,10 +3,13 @@
   "_id": "a69c7973646e8a82",
   "name": "Ogre Hookhand",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/db7a92bafa3d1f21545947b6ef6227f642dddb9891d808211637701f5220f5a9.webp",
   "prototypeToken": {
     "width": 2,
-    "height": 2
+    "height": 2,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/db7a92bafa3d1f21545947b6ef6227f642dddb9891d808211637701f5220f5a9.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -108,6 +111,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-ogre-hookhand",
+        "asset": "assets/creatures/db7a92bafa3d1f21545947b6ef6227f642dddb9891d808211637701f5220f5a9.webp",
+        "sha256": "7f8958ff40185623c4344f8c8ffa1273fb11354aa6b4f2fb1d2ea24f4363abeb",
+        "sourceSha256": "db7a92bafa3d1f21545947b6ef6227f642dddb9891d808211637701f5220f5a9",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-ogre-hookhand",
       "source": {
         "path": "design/bestiary/creatures/ogre-hookhand.md",

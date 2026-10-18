@@ -3,14 +3,14 @@
   "_id": "9f13a65925edc8bd",
   "name": "Giant Scorpion",
   "type": "summon",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/901e91f6037b07dd9d8a11822d6a70b82840e7829a4384b33f7f4ad108c75c2e.webp",
   "prototypeToken": {
     "name": "Giant Scorpion",
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "icons/svg/mystery-man.svg"
+      "src": "systems/heroes-of-legend/assets/creatures/901e91f6037b07dd9d8a11822d6a70b82840e7829a4384b33f7f4ad108c75c2e.webp"
     }
   },
   "system": {
@@ -131,6 +131,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-giant-scorpion",
+        "asset": "assets/creatures/901e91f6037b07dd9d8a11822d6a70b82840e7829a4384b33f7f4ad108c75c2e.webp",
+        "sha256": "20a0a380bbaa0550304a98f0bf2c5b39e2ec3d2295ad189a79deb888b98b34fb",
+        "sourceSha256": "901e91f6037b07dd9d8a11822d6a70b82840e7829a4384b33f7f4ad108c75c2e",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "summon-giant-scorpion",
       "source": {
         "path": "design/bestiary/summons/giant-scorpion.md",

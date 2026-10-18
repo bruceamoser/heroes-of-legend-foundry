@@ -3,14 +3,14 @@
   "_id": "96bf749122082977",
   "name": "Rill Sprite",
   "type": "summon",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/ab4d008d2d538719061b8c58b6b502a6cc736cd427bee3dcb7499b7a88271ca4.webp",
   "prototypeToken": {
     "name": "Rill Sprite",
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "icons/svg/mystery-man.svg"
+      "src": "systems/heroes-of-legend/assets/creatures/ab4d008d2d538719061b8c58b6b502a6cc736cd427bee3dcb7499b7a88271ca4.webp"
     }
   },
   "system": {
@@ -127,6 +127,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-rill-sprite",
+        "asset": "assets/creatures/ab4d008d2d538719061b8c58b6b502a6cc736cd427bee3dcb7499b7a88271ca4.webp",
+        "sha256": "4827213d607f69d86b5c93dd9d346965cb139f739bb46f7fe2732d862a65c730",
+        "sourceSha256": "ab4d008d2d538719061b8c58b6b502a6cc736cd427bee3dcb7499b7a88271ca4",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "summon-rill-sprite",
       "source": {
         "path": "design/bestiary/summons/rill-sprite.md",

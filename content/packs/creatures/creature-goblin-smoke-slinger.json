@@ -3,10 +3,13 @@
   "_id": "1b67ac317b3c49f2",
   "name": "Goblin Smoke Slinger",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/1cfee132d00a29e6b4a8e310e9729a8f738a3d58a47b737a17baa0b69eb47e3d.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/1cfee132d00a29e6b4a8e310e9729a8f738a3d58a47b737a17baa0b69eb47e3d.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -103,6 +106,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-goblin-smoke-slinger",
+        "asset": "assets/creatures/1cfee132d00a29e6b4a8e310e9729a8f738a3d58a47b737a17baa0b69eb47e3d.webp",
+        "sha256": "61ff815d457326db32382bb190283d7ebfed391512c97429d8b0701d486d5031",
+        "sourceSha256": "1cfee132d00a29e6b4a8e310e9729a8f738a3d58a47b737a17baa0b69eb47e3d",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-goblin-smoke-slinger",
       "source": {
         "path": "design/bestiary/creatures/goblin-smoke-slinger.md",

@@ -3,10 +3,13 @@
   "_id": "8f0cdcbc43cac1d9",
   "name": "Fire Giant",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/e5f4e9e2b6812fc0cbe24785369d237920688b9ebe0a4310be3ec5b2a7905c3a.webp",
   "prototypeToken": {
     "width": 2,
-    "height": 2
+    "height": 2,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/e5f4e9e2b6812fc0cbe24785369d237920688b9ebe0a4310be3ec5b2a7905c3a.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -112,6 +115,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-fire-giant",
+        "asset": "assets/creatures/e5f4e9e2b6812fc0cbe24785369d237920688b9ebe0a4310be3ec5b2a7905c3a.webp",
+        "sha256": "ef2374d6fec17b8551cec13af95480b7b293bd6e98b635dd5f71b3aac1793e8a",
+        "sourceSha256": "e5f4e9e2b6812fc0cbe24785369d237920688b9ebe0a4310be3ec5b2a7905c3a",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-fire-giant",
       "source": {
         "path": "design/bestiary/creatures/fire-giant.md",

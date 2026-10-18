@@ -3,14 +3,14 @@
   "_id": "e667f4405ef5ac59",
   "name": "Skeleton Archer",
   "type": "summon",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/03589b953adf87663f23ebd9be397814d7b75066fa3211df691a39b9f90878fa.webp",
   "prototypeToken": {
     "name": "Skeleton Archer",
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "icons/svg/mystery-man.svg"
+      "src": "systems/heroes-of-legend/assets/creatures/03589b953adf87663f23ebd9be397814d7b75066fa3211df691a39b9f90878fa.webp"
     }
   },
   "system": {
@@ -117,6 +117,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-bone-archer",
+        "asset": "assets/creatures/03589b953adf87663f23ebd9be397814d7b75066fa3211df691a39b9f90878fa.webp",
+        "sha256": "170ec5fab72c8c5006a97e227353bb92eb7158e377e1b0ae7b9847a7a37697b9",
+        "sourceSha256": "03589b953adf87663f23ebd9be397814d7b75066fa3211df691a39b9f90878fa",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "summon-bone-archer",
       "source": {
         "path": "design/bestiary/summons/bone-archer.md",

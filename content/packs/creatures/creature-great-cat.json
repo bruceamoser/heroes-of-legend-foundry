@@ -3,10 +3,13 @@
   "_id": "29ad05d542943e95",
   "name": "Great Cat",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/a74271222f0172880f523e2d542bb09426c178d551343be8493cde58834db3aa.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/a74271222f0172880f523e2d542bb09426c178d551343be8493cde58834db3aa.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -108,6 +111,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-great-cat",
+        "asset": "assets/creatures/a74271222f0172880f523e2d542bb09426c178d551343be8493cde58834db3aa.webp",
+        "sha256": "0249efa640ce9b84aec979ded811aaf6083684f5adecb4e0cbdb6833dd8620f0",
+        "sourceSha256": "a74271222f0172880f523e2d542bb09426c178d551343be8493cde58834db3aa",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "creature-great-cat",
       "source": {
         "path": "design/bestiary/creatures/great-cat.md",

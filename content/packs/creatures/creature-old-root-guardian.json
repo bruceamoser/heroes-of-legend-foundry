@@ -3,10 +3,13 @@
   "_id": "6148aed592f5e66b",
   "name": "Old Root Guardian",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/357ece2d1ad107d643e72b63b5734d4576a7b3bce86ce966e216369af6e737a7.webp",
   "prototypeToken": {
     "width": 3,
-    "height": 3
+    "height": 3,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/357ece2d1ad107d643e72b63b5734d4576a7b3bce86ce966e216369af6e737a7.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -111,6 +114,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-old-root-guardian",
+        "asset": "assets/creatures/357ece2d1ad107d643e72b63b5734d4576a7b3bce86ce966e216369af6e737a7.webp",
+        "sha256": "9c9fe003273919e1501486c34173bf71d88f897c90ef5500c5bb6bc5de817207",
+        "sourceSha256": "357ece2d1ad107d643e72b63b5734d4576a7b3bce86ce966e216369af6e737a7",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-old-root-guardian",
       "source": {
         "path": "design/bestiary/creatures/old-root-guardian.md",

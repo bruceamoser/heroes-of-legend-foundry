@@ -3,14 +3,14 @@
   "_id": "5e0019a059c6bff9",
   "name": "Marsh Crocodile",
   "type": "summon",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/0d26c658c862b53aa058ccbde1f1913175d59177f78701ab4c71d9288cb416c9.webp",
   "prototypeToken": {
     "name": "Marsh Crocodile",
     "actorLink": false,
     "width": 2,
     "height": 2,
     "texture": {
-      "src": "icons/svg/mystery-man.svg"
+      "src": "systems/heroes-of-legend/assets/creatures/0d26c658c862b53aa058ccbde1f1913175d59177f78701ab4c71d9288cb416c9.webp"
     }
   },
   "system": {
@@ -136,6 +136,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-marsh-crocodile",
+        "asset": "assets/creatures/0d26c658c862b53aa058ccbde1f1913175d59177f78701ab4c71d9288cb416c9.webp",
+        "sha256": "a6d7994e5751536d19ccc51fb6ae141ef9edbe15db87d95eef8cbfefa84a8c55",
+        "sourceSha256": "0d26c658c862b53aa058ccbde1f1913175d59177f78701ab4c71d9288cb416c9",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "summon-marsh-crocodile",
       "source": {
         "path": "design/bestiary/summons/marsh-crocodile.md",

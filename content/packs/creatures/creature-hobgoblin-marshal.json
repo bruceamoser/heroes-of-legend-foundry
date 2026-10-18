@@ -3,10 +3,13 @@
   "_id": "153b464a9788893f",
   "name": "Hobgoblin Marshal",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/69e0e26322fb5945a24cd92d314aefb3d5e660ef83ec97350d84177f4884dd6a.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/69e0e26322fb5945a24cd92d314aefb3d5e660ef83ec97350d84177f4884dd6a.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -108,6 +111,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-hobgoblin-marshal",
+        "asset": "assets/creatures/69e0e26322fb5945a24cd92d314aefb3d5e660ef83ec97350d84177f4884dd6a.webp",
+        "sha256": "8360b01048e2f4f98f2a22ecac4216a42ebabb7889b2ba895e4211fa2a46c8c6",
+        "sourceSha256": "69e0e26322fb5945a24cd92d314aefb3d5e660ef83ec97350d84177f4884dd6a",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-hobgoblin-marshal",
       "source": {
         "path": "design/bestiary/creatures/hobgoblin-marshal.md",

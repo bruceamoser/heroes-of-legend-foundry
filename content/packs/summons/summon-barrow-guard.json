@@ -3,14 +3,14 @@
   "_id": "309fbc6c23b9cde0",
   "name": "Barrow Guard",
   "type": "summon",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/e8980afe63e23d4e1a65e54412654234ca5ce14e49bd063e47e79afe8dd30533.webp",
   "prototypeToken": {
     "name": "Barrow Guard",
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "icons/svg/mystery-man.svg"
+      "src": "systems/heroes-of-legend/assets/creatures/e8980afe63e23d4e1a65e54412654234ca5ce14e49bd063e47e79afe8dd30533.webp"
     }
   },
   "system": {
@@ -122,6 +122,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-barrow-guard",
+        "asset": "assets/creatures/e8980afe63e23d4e1a65e54412654234ca5ce14e49bd063e47e79afe8dd30533.webp",
+        "sha256": "684eb2e52404fc4a95bf0f77078df231a0776f416ff737658dbd3b39f9f0f856",
+        "sourceSha256": "e8980afe63e23d4e1a65e54412654234ca5ce14e49bd063e47e79afe8dd30533",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "summon-barrow-guard",
       "source": {
         "path": "design/bestiary/summons/barrow-guard.md",

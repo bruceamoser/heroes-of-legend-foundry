@@ -3,14 +3,14 @@
   "_id": "cfb58547823ba82d",
   "name": "Wraith",
   "type": "summon",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/fe0286dbb160cef1312c09dbfb317ba285a60a644eb2a0ebf6231d8e09da5615.webp",
   "prototypeToken": {
     "name": "Wraith",
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "icons/svg/mystery-man.svg"
+      "src": "systems/heroes-of-legend/assets/creatures/fe0286dbb160cef1312c09dbfb317ba285a60a644eb2a0ebf6231d8e09da5615.webp"
     }
   },
   "system": {
@@ -136,6 +136,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-wraith",
+        "asset": "assets/creatures/fe0286dbb160cef1312c09dbfb317ba285a60a644eb2a0ebf6231d8e09da5615.webp",
+        "sha256": "a477882920e64384af723abf441a3a4892b0c3ffb355373d4a9d8808d653e3ed",
+        "sourceSha256": "fe0286dbb160cef1312c09dbfb317ba285a60a644eb2a0ebf6231d8e09da5615",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "summon-wraith",
       "source": {
         "path": "design/bestiary/summons/wraith.md",

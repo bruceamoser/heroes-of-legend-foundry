@@ -3,10 +3,13 @@
   "_id": "318a29ca20a04359",
   "name": "Blue Dragon",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/271d9c66c6d39a3cddd5ac04bacae2e671650117103144ede6d34cbf80568411.webp",
   "prototypeToken": {
     "width": 2,
-    "height": 2
+    "height": 2,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/271d9c66c6d39a3cddd5ac04bacae2e671650117103144ede6d34cbf80568411.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -117,6 +120,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-blue-dragon",
+        "asset": "assets/creatures/271d9c66c6d39a3cddd5ac04bacae2e671650117103144ede6d34cbf80568411.webp",
+        "sha256": "2c0fe865da6975cd1e1dae5d9304c2e0db00f883128c4710b4280dbcc13fce78",
+        "sourceSha256": "271d9c66c6d39a3cddd5ac04bacae2e671650117103144ede6d34cbf80568411",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-blue-dragon",
       "source": {
         "path": "design/bestiary/creatures/blue-dragon.md",

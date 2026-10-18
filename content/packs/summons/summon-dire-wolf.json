@@ -3,14 +3,14 @@
   "_id": "a6188793be9f3179",
   "name": "Dire Wolf",
   "type": "summon",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/caec96cfddc79d3a8cbc7af4e8b4701d60f307c724c45ad9f59759ae712da7ec.webp",
   "prototypeToken": {
     "name": "Dire Wolf",
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "icons/svg/mystery-man.svg"
+      "src": "systems/heroes-of-legend/assets/creatures/caec96cfddc79d3a8cbc7af4e8b4701d60f307c724c45ad9f59759ae712da7ec.webp"
     }
   },
   "system": {
@@ -113,6 +113,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-dire-wolf",
+        "asset": "assets/creatures/caec96cfddc79d3a8cbc7af4e8b4701d60f307c724c45ad9f59759ae712da7ec.webp",
+        "sha256": "bd39a318abf28e866e3e2bbef7a12f3ad6382430bc796f3d1842e9fd2bb42d9c",
+        "sourceSha256": "caec96cfddc79d3a8cbc7af4e8b4701d60f307c724c45ad9f59759ae712da7ec",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "summon-dire-wolf",
       "source": {
         "path": "design/bestiary/summons/dire-wolf.md",

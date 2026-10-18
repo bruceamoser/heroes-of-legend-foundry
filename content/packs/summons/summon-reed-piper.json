@@ -3,14 +3,14 @@
   "_id": "09d8c2461a327781",
   "name": "Reed Piper",
   "type": "summon",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/0b69bd79810eee7d8f8b5b15486e2f601e1edcd5aa80a089593a192b0d4c9b98.webp",
   "prototypeToken": {
     "name": "Reed Piper",
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "icons/svg/mystery-man.svg"
+      "src": "systems/heroes-of-legend/assets/creatures/0b69bd79810eee7d8f8b5b15486e2f601e1edcd5aa80a089593a192b0d4c9b98.webp"
     }
   },
   "system": {
@@ -118,6 +118,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-reed-piper",
+        "asset": "assets/creatures/0b69bd79810eee7d8f8b5b15486e2f601e1edcd5aa80a089593a192b0d4c9b98.webp",
+        "sha256": "f75bb771a000dfb2046a2e2363d879b008ae774c73e02f02a299d69f29e62644",
+        "sourceSha256": "0b69bd79810eee7d8f8b5b15486e2f601e1edcd5aa80a089593a192b0d4c9b98",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "summon-reed-piper",
       "source": {
         "path": "design/bestiary/summons/reed-piper.md",

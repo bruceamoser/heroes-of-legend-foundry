@@ -3,14 +3,14 @@
   "_id": "d5c9ea6f986fa662",
   "name": "Raven",
   "type": "summon",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/64863f8b7dee08fca027f5a4672d9a13f27d21422fbc2c85fbba8d24ab4bead1.webp",
   "prototypeToken": {
     "name": "Raven",
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "icons/svg/mystery-man.svg"
+      "src": "systems/heroes-of-legend/assets/creatures/64863f8b7dee08fca027f5a4672d9a13f27d21422fbc2c85fbba8d24ab4bead1.webp"
     }
   },
   "system": {
@@ -118,6 +118,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-raven",
+        "asset": "assets/creatures/64863f8b7dee08fca027f5a4672d9a13f27d21422fbc2c85fbba8d24ab4bead1.webp",
+        "sha256": "266f5d3587f0b59e3686bb251192861af3542c778cb74fcdcb8c2802ba88070b",
+        "sourceSha256": "64863f8b7dee08fca027f5a4672d9a13f27d21422fbc2c85fbba8d24ab4bead1",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "summon-raven",
       "source": {
         "path": "design/bestiary/summons/raven.md",

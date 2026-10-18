@@ -3,14 +3,14 @@
   "_id": "a61b3a2459c1a53d",
   "name": "Water Elemental",
   "type": "summon",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/832b745b76e7fc8af4d153bf26a4d542465507ee4290edfb096a4dc18147d78e.webp",
   "prototypeToken": {
     "name": "Water Elemental",
     "actorLink": false,
     "width": 2,
     "height": 2,
     "texture": {
-      "src": "icons/svg/mystery-man.svg"
+      "src": "systems/heroes-of-legend/assets/creatures/832b745b76e7fc8af4d153bf26a4d542465507ee4290edfb096a4dc18147d78e.webp"
     }
   },
   "system": {
@@ -122,6 +122,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-water-elemental",
+        "asset": "assets/creatures/832b745b76e7fc8af4d153bf26a4d542465507ee4290edfb096a4dc18147d78e.webp",
+        "sha256": "bfab056e5bb11d7959ff0d762ff05b343ed1ab299ffaabf385e0b5839034042e",
+        "sourceSha256": "832b745b76e7fc8af4d153bf26a4d542465507ee4290edfb096a4dc18147d78e",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "summon-water-elemental",
       "source": {
         "path": "design/bestiary/summons/water-elemental.md",

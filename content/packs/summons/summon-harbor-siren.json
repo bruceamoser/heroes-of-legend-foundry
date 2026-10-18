@@ -3,14 +3,14 @@
   "_id": "3cfc373e725a42b7",
   "name": "Harbor Siren",
   "type": "summon",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/823b8dbc1334c3d867b41ce06c7a200c02d7558c85e62f920fda0f576f0a8a9c.webp",
   "prototypeToken": {
     "name": "Harbor Siren",
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "icons/svg/mystery-man.svg"
+      "src": "systems/heroes-of-legend/assets/creatures/823b8dbc1334c3d867b41ce06c7a200c02d7558c85e62f920fda0f576f0a8a9c.webp"
     }
   },
   "system": {
@@ -118,6 +118,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-harbor-siren",
+        "asset": "assets/creatures/823b8dbc1334c3d867b41ce06c7a200c02d7558c85e62f920fda0f576f0a8a9c.webp",
+        "sha256": "6e58287b8badbe0d9e5e1608fa93e3b0ac4bed2ba6b99ad2045b1badf1e044fc",
+        "sourceSha256": "823b8dbc1334c3d867b41ce06c7a200c02d7558c85e62f920fda0f576f0a8a9c",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "summon-harbor-siren",
       "source": {
         "path": "design/bestiary/summons/harbor-siren.md",

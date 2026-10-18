@@ -3,14 +3,14 @@
   "_id": "3ad056c300b63917",
   "name": "Clay Helper",
   "type": "summon",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/554ab23299f22d8d9560cee3fc9a508bf5a1f0fc89f602fcfee324ec48b3c51c.webp",
   "prototypeToken": {
     "name": "Clay Helper",
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "icons/svg/mystery-man.svg"
+      "src": "systems/heroes-of-legend/assets/creatures/554ab23299f22d8d9560cee3fc9a508bf5a1f0fc89f602fcfee324ec48b3c51c.webp"
     }
   },
   "system": {
@@ -117,6 +117,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-clay-helper",
+        "asset": "assets/creatures/554ab23299f22d8d9560cee3fc9a508bf5a1f0fc89f602fcfee324ec48b3c51c.webp",
+        "sha256": "ac2ccd8742149cb8a84dc600de642e7eebd2d1c9f29893f359086533ac9ea3f6",
+        "sourceSha256": "554ab23299f22d8d9560cee3fc9a508bf5a1f0fc89f602fcfee324ec48b3c51c",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "summon-clay-helper",
       "source": {
         "path": "design/bestiary/summons/clay-helper.md",

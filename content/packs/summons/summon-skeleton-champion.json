@@ -3,14 +3,14 @@
   "_id": "93c67606b75e8541",
   "name": "Skeleton Champion",
   "type": "summon",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/876555ebd20b36624ea6bc0dd508c38639efede758a97a5211863f1ab490d8bd.webp",
   "prototypeToken": {
     "name": "Skeleton Champion",
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "icons/svg/mystery-man.svg"
+      "src": "systems/heroes-of-legend/assets/creatures/876555ebd20b36624ea6bc0dd508c38639efede758a97a5211863f1ab490d8bd.webp"
     }
   },
   "system": {
@@ -135,6 +135,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-skeleton-champion",
+        "asset": "assets/creatures/876555ebd20b36624ea6bc0dd508c38639efede758a97a5211863f1ab490d8bd.webp",
+        "sha256": "99ced7b036d4ada8227f0093d7c7dadf22d9bdb48b9b035c14cd084043501db1",
+        "sourceSha256": "876555ebd20b36624ea6bc0dd508c38639efede758a97a5211863f1ab490d8bd",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "summon-skeleton-champion",
       "source": {
         "path": "design/bestiary/summons/skeleton-champion.md",

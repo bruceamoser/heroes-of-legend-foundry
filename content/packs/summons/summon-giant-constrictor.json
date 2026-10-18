@@ -3,14 +3,14 @@
   "_id": "4d4a25134b7dc58d",
   "name": "Giant Constrictor",
   "type": "summon",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/f266ae6fb9dc1a78cbe9dfb9103915d4eb4e8a0df5915bc552c3fef08c0aad80.webp",
   "prototypeToken": {
     "name": "Giant Constrictor",
     "actorLink": false,
     "width": 2,
     "height": 2,
     "texture": {
-      "src": "icons/svg/mystery-man.svg"
+      "src": "systems/heroes-of-legend/assets/creatures/f266ae6fb9dc1a78cbe9dfb9103915d4eb4e8a0df5915bc552c3fef08c0aad80.webp"
     }
   },
   "system": {
@@ -123,6 +123,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-giant-constrictor",
+        "asset": "assets/creatures/f266ae6fb9dc1a78cbe9dfb9103915d4eb4e8a0df5915bc552c3fef08c0aad80.webp",
+        "sha256": "0fb67eac798637ffab7858b2c0e38a16e84b6348e21506d5f5bffaf4c9b595d0",
+        "sourceSha256": "f266ae6fb9dc1a78cbe9dfb9103915d4eb4e8a0df5915bc552c3fef08c0aad80",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "summon-giant-constrictor",
       "source": {
         "path": "design/bestiary/summons/giant-constrictor.md",

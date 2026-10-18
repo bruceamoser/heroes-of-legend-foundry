@@ -3,14 +3,14 @@
   "_id": "fb978e95834cf2f7",
   "name": "Skeleton Horse",
   "type": "summon",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/e0c9593509bf3d4d2b184b2639840456b282c30d3e6e994865dd75a722d9f28e.webp",
   "prototypeToken": {
     "name": "Skeleton Horse",
     "actorLink": false,
     "width": 2,
     "height": 2,
     "texture": {
-      "src": "icons/svg/mystery-man.svg"
+      "src": "systems/heroes-of-legend/assets/creatures/e0c9593509bf3d4d2b184b2639840456b282c30d3e6e994865dd75a722d9f28e.webp"
     }
   },
   "system": {
@@ -122,6 +122,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-skeleton-horse",
+        "asset": "assets/creatures/e0c9593509bf3d4d2b184b2639840456b282c30d3e6e994865dd75a722d9f28e.webp",
+        "sha256": "9fabe188a8f940ec0f9a34314e354ee013efd3208ed622d99fb7ec6c1ca419fc",
+        "sourceSha256": "e0c9593509bf3d4d2b184b2639840456b282c30d3e6e994865dd75a722d9f28e",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "summon-skeleton-horse",
       "source": {
         "path": "design/bestiary/summons/skeleton-horse.md",

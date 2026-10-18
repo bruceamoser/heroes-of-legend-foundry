@@ -3,10 +3,13 @@
   "_id": "83a54c90f2c0f32d",
   "name": "Cinder Strider",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/b08d5790a77161b8a69cfbd35f50f7a2f303914d68c8c2f4fe2c2e9d0d0fba2c.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/b08d5790a77161b8a69cfbd35f50f7a2f303914d68c8c2f4fe2c2e9d0d0fba2c.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -112,6 +115,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-cinder-strider",
+        "asset": "assets/creatures/b08d5790a77161b8a69cfbd35f50f7a2f303914d68c8c2f4fe2c2e9d0d0fba2c.webp",
+        "sha256": "cbc33cf5d1c27b03839d532a1a419f17071b85febcae9a7be6ea302d2ead57d6",
+        "sourceSha256": "b08d5790a77161b8a69cfbd35f50f7a2f303914d68c8c2f4fe2c2e9d0d0fba2c",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "creature-cinder-strider",
       "source": {
         "path": "design/bestiary/creatures/cinder-strider.md",

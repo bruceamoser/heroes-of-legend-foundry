@@ -3,10 +3,13 @@
   "_id": "c2d84c64634110d2",
   "name": "Zombie Brute",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/f57d228a0557b51168ee4d7ef830c48f1786f4e1d5ff948d0f32446cee5611ff.webp",
   "prototypeToken": {
     "width": 2,
-    "height": 2
+    "height": 2,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/f57d228a0557b51168ee4d7ef830c48f1786f4e1d5ff948d0f32446cee5611ff.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -112,6 +115,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-zombie-brute",
+        "asset": "assets/creatures/f57d228a0557b51168ee4d7ef830c48f1786f4e1d5ff948d0f32446cee5611ff.webp",
+        "sha256": "db7b87e994d276ba6070dd6d6cd9b9e230c3a9a191c850d669c667e1e6ccf6c2",
+        "sourceSha256": "f57d228a0557b51168ee4d7ef830c48f1786f4e1d5ff948d0f32446cee5611ff",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "creature-zombie-brute",
       "source": {
         "path": "design/bestiary/creatures/zombie-brute.md",

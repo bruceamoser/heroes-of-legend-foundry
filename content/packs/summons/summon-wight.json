@@ -3,14 +3,14 @@
   "_id": "e06732e3bd22cabe",
   "name": "Wight",
   "type": "summon",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/f59326b199c898666fd41881bc7f23e20b43a92fe66f7b21db260a6a1d06bd7b.webp",
   "prototypeToken": {
     "name": "Wight",
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "icons/svg/mystery-man.svg"
+      "src": "systems/heroes-of-legend/assets/creatures/f59326b199c898666fd41881bc7f23e20b43a92fe66f7b21db260a6a1d06bd7b.webp"
     }
   },
   "system": {
@@ -122,6 +122,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-wight",
+        "asset": "assets/creatures/f59326b199c898666fd41881bc7f23e20b43a92fe66f7b21db260a6a1d06bd7b.webp",
+        "sha256": "7fe71da6eb9ecb6030401f9e91c83606a812bb42a516c5f4e7d15dae9a9f77b6",
+        "sourceSha256": "f59326b199c898666fd41881bc7f23e20b43a92fe66f7b21db260a6a1d06bd7b",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "summon-wight",
       "source": {
         "path": "design/bestiary/summons/wight.md",

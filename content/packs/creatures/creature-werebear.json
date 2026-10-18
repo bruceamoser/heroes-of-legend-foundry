@@ -3,10 +3,13 @@
   "_id": "b6ad3fe3e34c179e",
   "name": "Werebear",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/848730fbf6d4c8f7c0d1e1aff96b12fca9698e22927dd6516ed5419decf2772f.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/848730fbf6d4c8f7c0d1e1aff96b12fca9698e22927dd6516ed5419decf2772f.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -108,6 +111,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-werebear",
+        "asset": "assets/creatures/848730fbf6d4c8f7c0d1e1aff96b12fca9698e22927dd6516ed5419decf2772f.webp",
+        "sha256": "a64dea4208b895db314ad402f36b4b122d79aee963b122aa0255af93db0a0680",
+        "sourceSha256": "848730fbf6d4c8f7c0d1e1aff96b12fca9698e22927dd6516ed5419decf2772f",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-werebear",
       "source": {
         "path": "design/bestiary/creatures/werebear.md",

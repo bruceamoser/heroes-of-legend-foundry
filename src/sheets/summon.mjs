@@ -1,3 +1,4 @@
+import { viewPortrait } from "./portrait.mjs";
 import { ATTRIBUTES } from "../rules/character.mjs";
 import { creatureModifierLabel, renderMarkdown } from "./creature-reference.mjs";
 
@@ -7,6 +8,7 @@ export class SummonSheet extends foundry.applications.api.HandlebarsApplicationM
 ) {
   static DEFAULT_OPTIONS = {
     classes: ["heroes-of-legend", "hol-summon"],
+    actions: { viewPortrait },
     position: { width: 760, height: 820 },
   };
   static PARTS = {

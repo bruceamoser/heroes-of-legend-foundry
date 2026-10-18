@@ -3,10 +3,13 @@
   "_id": "c4836e8925855dd3",
   "name": "Shadow",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/4d36a43a5d58573f96d7411b305058723b02b96d1635b74a5eaa85786d703c23.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/4d36a43a5d58573f96d7411b305058723b02b96d1635b74a5eaa85786d703c23.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -121,6 +124,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-shadow",
+        "asset": "assets/creatures/4d36a43a5d58573f96d7411b305058723b02b96d1635b74a5eaa85786d703c23.webp",
+        "sha256": "a120fef20032588bc7d4f233d7d23323903ad73e3acba4e8cb4d81962ade7c41",
+        "sourceSha256": "4d36a43a5d58573f96d7411b305058723b02b96d1635b74a5eaa85786d703c23",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "creature-shadow",
       "source": {
         "path": "design/bestiary/creatures/shadow.md",

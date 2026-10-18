@@ -3,10 +3,13 @@
   "_id": "686c0028d7923d25",
   "name": "Mimic Chest",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/37aca50b3266e37781a340ffe9f514bb61f62748de8bd93806bdb446daf194e6.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/37aca50b3266e37781a340ffe9f514bb61f62748de8bd93806bdb446daf194e6.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -108,6 +111,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-mimic-chest",
+        "asset": "assets/creatures/37aca50b3266e37781a340ffe9f514bb61f62748de8bd93806bdb446daf194e6.webp",
+        "sha256": "69802bf1088d173e48ee2423fffe31d0423a8704f94d0d40c47051ff0e8eb52d",
+        "sourceSha256": "37aca50b3266e37781a340ffe9f514bb61f62748de8bd93806bdb446daf194e6",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-mimic-chest",
       "source": {
         "path": "design/bestiary/creatures/mimic-chest.md",

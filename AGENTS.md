@@ -20,14 +20,15 @@ This is the software companion to the Heroes of Legend rulebook. Bruce is the fi
 
 ## Coding delegation
 
-Bruce authorized DeepSeek coding workers on October 17, 2026. Use them for
-bounded implementation, bug-fixing, integration and test-writing tasks with
-maximum reasoning effort (Bruce's explicit preference). The primary agent handles
-architecture, rules interpretation, review and final acceptance. Define integration
-contracts and acceptance criteria in numbered issues. The primary launches workers;
-workers implement directly without recursively spawning other agents. Give each worker
-an explicit scope, acceptance criteria and writable checkout. Workers must not
-commit, publish or merge unless separately instructed. Review their full diff
+Bruce authorized Sol implementation and integration workers on October 17, 2026.
+The primary agent handles architecture, rules interpretation, review and final
+acceptance. Use Sol for bounded implementation, bug-fixing, integration and
+test-writing work. DeepSeek remains available for bounded work when useful;
+there is no automatic DeepSeek-only requirement. Define integration contracts
+and acceptance criteria in numbered issues. The primary launches workers;
+workers implement directly without recursively spawning other agents. Give each
+worker an explicit scope, acceptance criteria and writable checkout. Workers must
+not commit, publish or merge unless separately instructed. Review their full diff
 and run applicable checks before integrating. Serialize Foundry runtime tests
 against the shared disposable world. Keep API keys and worker configuration
 outside the repository; never include them in prompts, logs or Git.

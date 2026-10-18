@@ -33,7 +33,7 @@ export class DamagePanel extends foundry.applications.api.HandlebarsApplicationM
     const incoming = this.rollMessageId
         ? defenseDamage(game.messages.get(this.rollMessageId))
         : this.attackMessageId
-          ? playerBasicMeleeDamage(game.messages.get(this.attackMessageId))
+          ? playerBasicMeleeDamage(this.attackMessageId)
           : null;
     if (incoming && incoming.actorUuid !== this.actor.uuid)
       throw new Error(

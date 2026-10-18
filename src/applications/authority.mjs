@@ -140,7 +140,7 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
           id: c.getFlag(ID, "pendingAbility"),
           name: c.name ?? c.id,
         })),
-      pendingAttacks: game.combats.flatMap((combat) =>
+      pendingAttacks: game.combats.contents.flatMap((combat) =>
         pendingPlayerAttacks(combat).map((id) => {
           const operation = combat.getFlag(
               ID,

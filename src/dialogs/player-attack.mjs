@@ -56,11 +56,12 @@ export class BasicMeleeDialog extends foundry.applications.api.HandlebarsApplica
   };
 
   selection() {
+    const { weaponItemUuid, targetTokenUuid, ...draft } = this.draft;
     return {
-      weaponItemUuid: this.draft.weaponItemUuid,
-      targetTokenUuid: this.draft.targetTokenUuid,
+      weaponItemUuid,
+      targetTokenUuid,
       rulingReason: this.draft.rulingReason,
-      draft: this.draft,
+      draft,
     };
   }
 
@@ -176,8 +177,8 @@ export class BasicMeleeDialog extends foundry.applications.api.HandlebarsApplica
       ...this.draft,
       weaponItemUuid: value("weaponItemUuid") ?? "",
       targetTokenUuid: value("targetTokenUuid") ?? "",
-      boons: value("boons") ?? 0,
-      banes: value("banes") ?? 0,
+      boons: Number(value("boons") ?? 0),
+      banes: Number(value("banes") ?? 0),
       boonsLabel: value("boonsLabel") ?? "Situational Boons",
       banesLabel: value("banesLabel") ?? "Situational Banes",
       perception: Object.fromEntries(

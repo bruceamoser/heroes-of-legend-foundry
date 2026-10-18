@@ -8,7 +8,9 @@ if (
   process.env.HOL_TEST_ALLOW_WRITES !== "1"
 )
   throw new Error("Use an authorized disposable local world.");
-const browser = await chromium.launch(),
+const browser = await chromium.launch({
+    args: ["--use-angle=swiftshader", "--enable-unsafe-swiftshader"],
+  }),
   errors = [];
 let gm, player, fixture, attack;
 async function join(name, canvas = false) {
@@ -29,6 +31,8 @@ async function join(name, canvas = false) {
   await selectTestUser(page, name);
   await page.locator("button[name=join]").click();
   await page.waitForFunction(() => globalThis.game?.ready);
+  if (canvas)
+    await page.waitForFunction(() => game.canvas.initialized && !game.canvas.loading);
   return { context, page };
 }
 async function screenshot(label) {
@@ -282,6 +286,7 @@ try {
     );
     const scene = await Scene.create({
       name: "Shield Block defense targets",
+      active: false,
       width: 1000,
       height: 1000,
     });

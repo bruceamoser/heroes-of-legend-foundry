@@ -17,19 +17,34 @@ const ID = "heroes-of-legend",
     sha256:
       "9d6e0b6ca75363b94c6886fb3c53087f854098f024aac232395c61fdc438ae40",
   },
-  browser = await chromium.launch(),
+  browser = await chromium.launch({
+    args: ["--use-angle=swiftshader", "--enable-unsafe-swiftshader"],
+  }),
   errors = [],
   cleanupRegistryKey = "__holPlayerAttackFixtureCleanup";
 let gm,
   player,
   users,
   scenarios = [],
+  activeFixture = null,
   authorityClaimed = false,
   scenarioDiagnostic = "fixture setup";
 await mkdir("test-results", { recursive: true });
 
 function markDiagnostic(label) {
   scenarioDiagnostic = label;
+  console.info(`SCENARIO: ${label}`);
+}
+
+async function waitForClientReady(page) {
+  await page.waitForFunction(
+    () =>
+      globalThis.game?.ready &&
+      game.canvas.initialized &&
+      !game.canvas.loading,
+    undefined,
+    { polling: 100 },
+  );
 }
 
 async function initializeCleanupRegistry() {
@@ -86,7 +101,7 @@ async function join(name) {
   await page.goto(url);
   await selectTestUser(page, name);
   await page.locator("button[name=join]").click();
-  await page.waitForFunction(() => globalThis.game?.ready);
+  await waitForClientReady(page);
   return { context, page };
 }
 
@@ -125,8 +140,8 @@ async function makeScenario({
   targetHidden = false,
   wounds = 0,
 }) {
-  markDiagnostic(`${label}: create scenario`);
-  const fixture = await gm.page.evaluate(
+  markDiagnostic(`${label}: create scenario documents`);
+  const setup = await gm.page.evaluate(
     async ({
       ownerId,
       targetOwnerId,
@@ -137,7 +152,6 @@ async function makeScenario({
       targetFootprint,
       wall,
       targetHidden,
-      wounds,
       cleanupRegistryKey,
     }) => {
       const ID = "heroes-of-legend",
@@ -201,6 +215,9 @@ async function makeScenario({
           grid: { type: 1, size: 100, distance: 5, units: "ft" },
           tokenVision: false,
           globalLight: true,
+          // The first Scene in a world is otherwise activated and drawn
+          // asynchronously by core, outside this document-creation phase.
+          active: false,
         });
       cleanup.track("scenes", scene);
       const tokens = await scene.createEmbeddedDocuments("Token", [
@@ -248,7 +265,60 @@ async function makeScenario({
             move: CONST.WALL_MOVEMENT_TYPES.NORMAL,
           },
         ]);
-      if (targetType === "creature")
+      const ability = attacker.items.find((item) => item.type === "ability"),
+        weapon = attacker.items.find((item) => item.type === "equipment");
+      if (!ability || !weapon)
+        throw new Error("Fixture attacker Items were not created.");
+      return {
+        label,
+        attacker: attacker.id,
+        attackerActorUuid: attackerToken.actor.uuid,
+        attackerTokenUuid: attackerToken.uuid,
+        attackerTokenId: attackerToken.id,
+        abilityId: ability.id,
+        weaponId: weapon.id,
+        target: target.id,
+        targetActorUuid: targetToken.actor.uuid,
+        targetTokenUuid: targetToken.uuid,
+        targetTokenId: targetToken.id,
+        targetType,
+        scene: scene.id,
+      };
+    },
+    {
+      ownerId,
+      targetOwnerId,
+      targetType,
+      label,
+      source: SOURCE,
+      attackerFootprint,
+      targetFootprint,
+      wall,
+      targetHidden,
+      cleanupRegistryKey,
+    },
+  );
+  activeFixture = setup;
+
+  // Synthetic-token effects emit canvas render flags, so this Scene must be
+  // fully drawn before the effect and encounter phase starts.
+  markDiagnostic(`${label}: view scenario`);
+  await viewScenario(gm.page, setup);
+
+  markDiagnostic(`${label}: create scenario effects and encounter`);
+  const fixture = await gm.page.evaluate(
+    async ({ fixture, wounds, cleanupRegistryKey }) => {
+      const ID = "heroes-of-legend",
+        cleanup = globalThis[cleanupRegistryKey],
+        scene = game.scenes.get(fixture.scene),
+        attacker = game.actors.get(fixture.attacker),
+        target = game.actors.get(fixture.target),
+        attackerToken = scene?.tokens.get(fixture.attackerTokenId),
+        targetToken = scene?.tokens.get(fixture.targetTokenId);
+      if (!cleanup) throw new Error("Fixture cleanup tracking is unavailable.");
+      if (!scene || !attacker || !target || !attackerToken || !targetToken)
+        throw new Error("Fixture documents are unavailable after viewing.");
+      if (fixture.targetType === "creature")
         await targetToken.actor.createEmbeddedDocuments("ActiveEffect", [
           {
             _id: "holGrappleFixt01",
@@ -308,7 +378,7 @@ async function makeScenario({
       const combat = await Combat.create({
         active: true,
         scene: scene.id,
-        name: `${label} encounter`,
+        name: `${fixture.label} encounter`,
       });
       cleanup.track("combats", combat);
       const [attackerCombatant] = await combat.createEmbeddedDocuments(
@@ -345,62 +415,51 @@ async function makeScenario({
         ).id,
       );
       return {
-        label,
-        attacker: attacker.id,
-        attackerActorUuid: attackerToken.actor.uuid,
-        attackerTokenUuid: attackerToken.uuid,
-        attackerTokenId: attackerToken.id,
-        abilityId: attacker.items.find(
-          (item) => item.type === "ability",
-        ).id,
-        weaponId: attacker.items.find(
-          (item) => item.type === "equipment",
-        ).id,
-        target: target.id,
-        targetActorUuid: targetToken.actor.uuid,
-        targetTokenUuid: targetToken.uuid,
-        targetTokenId: targetToken.id,
-        scene: scene.id,
+        ...fixture,
         combat: combat.id,
         participant: attackerCombatant.id,
         woundEffectIds,
       };
     },
     {
-      ownerId,
-      targetOwnerId,
-      targetType,
-      label,
-      source: SOURCE,
-      attackerFootprint,
-      targetFootprint,
-      wall,
-      targetHidden,
+      fixture: setup,
       wounds,
       cleanupRegistryKey,
     },
   );
+  activeFixture = fixture;
   scenarios.push(fixture);
   return fixture;
 }
 
 async function viewScenario(page, fixture) {
+  const viewState = {
+    sceneId: fixture.scene,
+    attackerTokenId: fixture.attackerTokenId,
+    targetTokenId: fixture.targetTokenId,
+  };
   await page.waitForFunction(
     ({ sceneId, attackerTokenId, targetTokenId }) => {
       const scene = game.scenes.get(sceneId);
       return Boolean(
-        scene?.tokens.get(attackerTokenId) &&
+        game.ready &&
+          scene?.tokens.get(attackerTokenId) &&
           scene.tokens.get(targetTokenId) &&
           canvas.initialized &&
           !canvas.loading,
       );
     },
-    fixture,
+    viewState,
+    { polling: 100 },
   );
+  // Foundry scrolling status text owns a two-second animation. Let it finish
+  // before Scene.view tears down its PIXI container.
+  await page.waitForTimeout(2100);
   await page.evaluate(async (fixture) => {
     const scene = game.scenes.get(fixture.scene);
     if (!scene) throw new Error("The fixture Scene is unavailable.");
-    await scene.view();
+    if ((await scene.view()) !== scene)
+      throw new Error("The fixture Scene view did not complete.");
   }, fixture);
   await page.waitForFunction(
     ({ sceneId, attackerTokenId, targetTokenId }) =>
@@ -412,7 +471,8 @@ async function viewScenario(page, fixture) {
         canvas.tokens.get(attackerTokenId) &&
           canvas.tokens.get(targetTokenId),
       ),
-    fixture,
+    viewState,
+    { polling: 100 },
   );
 }
 
@@ -553,7 +613,7 @@ async function waitForAttackCard(fixture) {
   const outcome = await (
     await player.page.waitForFunction((fixture) => {
       const combatUuid = game.combats.get(fixture.combat)?.uuid,
-        message = game.messages.contents.find(
+        message = game.messages.contents.findLast(
           (candidate) =>
             candidate.getFlag("heroes-of-legend", "playerAttackRequest")
               ?.combatUuid === combatUuid,
@@ -1100,7 +1160,9 @@ try {
       return {
         author: message.author.id,
         rolls: message.rolls.length,
-        dice: message.rolls[0]?.toJSON(),
+        dice: message.rolls[0]
+          ? JSON.parse(JSON.stringify(message.rolls[0].toJSON()))
+          : null,
         actorUuid: roll.actorUuid,
         actorTokenUuid: roll.actorTokenUuid,
         targetActorUuid: roll.targetActorUuid,
@@ -1158,20 +1220,28 @@ try {
   assert.equal(rolled.main, 0);
   assert.equal(rolled.pending, null);
   assert.equal(rolled.defenseRequests, 0);
+  await gm.page.evaluate(() => {
+    ui.sidebar.expand();
+    ui.sidebar.changeTab("chat", "primary");
+  });
   await gm.page
-    .locator(`[data-message-id="${attackId}"]`)
-    .screenshot({ path: "test-results/player-basic-melee-chat.png" });
+    .locator(`#chat [data-message-id="${attackId}"]`)
+    .scrollIntoViewIfNeeded();
+  await gm.page.waitForTimeout(500);
+  await gm.page.screenshot({ path: "test-results/player-basic-melee-chat.png" });
+  markDiagnostic("Primary: exact replay");
   const replay = await resolveAttack(attackId);
   assert.equal(replay.result.replay, true);
   assert.equal(
     await gm.page.evaluate(
-      (id) => game.messages.get(id).rolls[0].toJSON(),
+      (id) => JSON.stringify(game.messages.get(id).rolls[0].toJSON()),
       attackId,
-  ).then((dice) => JSON.stringify(dice)),
+  ),
     JSON.stringify(rolled.dice),
   );
   assert.equal(await mainState(primary), 0);
 
+  markDiagnostic("Primary: forged projection recovery");
   await player.page.evaluate((id) => {
     const message = game.messages.get(id),
       saved = message.getFlag("heroes-of-legend", "roll"),
@@ -1229,7 +1299,7 @@ try {
       return {
         damage: message.getFlag("heroes-of-legend", "playerAttack").damage,
         recovery: message.getFlag("heroes-of-legend", "playerAttack").recovery,
-        roll: message.rolls[0].toJSON(),
+        roll: JSON.parse(JSON.stringify(message.rolls[0].toJSON())),
         authoritativeRoll: operation.result.roll,
       };
     },
@@ -1239,8 +1309,9 @@ try {
   assert.equal(restoredProjection.recovery, null);
   assert.deepEqual(restoredProjection.roll, restoredProjection.authoritativeRoll);
 
+  markDiagnostic("Primary: reload and damage once");
   await player.page.reload();
-  await player.page.waitForFunction(() => globalThis.game?.ready);
+  await waitForClientReady(player.page);
   await player.page.waitForFunction(
     (id) => Boolean(game.messages.get(id)?.getFlag("heroes-of-legend", "roll")),
     attackId,
@@ -1251,7 +1322,7 @@ try {
     ui.sidebar.changeTab("chat", "primary");
   });
   await gm.page
-    .locator(`[data-message-id="${attackId}"] .hol-player-attack-damage`)
+    .locator(`#chat [data-message-id="${attackId}"] .hol-player-attack-damage`)
     .click();
   const damage = gm.page.locator(".hol-damage");
   assert.equal(
@@ -1268,7 +1339,7 @@ try {
     { actorUuid: primary.targetActorUuid, expectedHp },
   );
   await gm.page
-    .locator(`[data-message-id="${attackId}"] .hol-player-attack-damage`)
+    .locator(`#chat [data-message-id="${attackId}"] .hol-player-attack-damage`)
     .click();
   await gm.page
     .locator(".hol-damage")
@@ -1364,7 +1435,7 @@ try {
   assert.equal(pvpResult.defenses, 0);
   assert.match(
     pvpResult.failedContent,
-    /pending encounter action|No main|condition prevents/,
+    /pending encounter action|No main|condition prevents|The encounter changed/,
   );
 
   const unknownFixture = await makeScenario({
@@ -1400,7 +1471,7 @@ try {
           main: combat.getFlag("heroes-of-legend", "encounter").budgets[
             fixture.participant
           ].remaining.main,
-          roll: game.messages.get(id).getFlag("heroes-of-legend", "roll"),
+          roll: game.messages.get(id).getFlag("heroes-of-legend", "roll") ?? null,
           pending: combat.getFlag("heroes-of-legend", "pendingAbility"),
         };
       } finally {
@@ -1542,7 +1613,7 @@ try {
         result: operation.result,
         status: operation.status,
         pending: combat.getFlag("heroes-of-legend", "pendingAbility"),
-        chatRoll: message.getFlag("heroes-of-legend", "roll"),
+        chatRoll: message.getFlag("heroes-of-legend", "roll") ?? null,
         nativeRolls: message.rolls.length,
       };
     },
@@ -1579,7 +1650,7 @@ try {
       result: operation.result,
       pending: combat.getFlag("heroes-of-legend", "pendingAbility"),
       receipt,
-      roll: message.rolls[0].toJSON(),
+      roll: JSON.parse(JSON.stringify(message.rolls[0].toJSON())),
       card: message.getFlag("heroes-of-legend", "playerAttack"),
     };
   }, { id: lateId, fixture: latePresentation });
@@ -1776,48 +1847,122 @@ try {
     lockedSource: true,
     amount: 3,
   });
+  const deletedDamage = await gm.page.evaluate(async ({ id, fixture }) => {
+    const { damageBasis, requestDamage, resolveDamageRequest } = await import(
+      "/systems/heroes-of-legend/services/damage.mjs"
+    );
+    const actor = await fromUuid(fixture.targetActorUuid);
+    const before = actor.system.health.value;
+    const after = [];
+    for (let attempt = 0; attempt < 2; attempt++) {
+      const message = await requestDamage(actor, damageBasis(actor), {
+        components: [{ type: "physical", amount: 99 }],
+        resistances: [],
+        weaknesses: [],
+        reason: "Preserved deleted-source Basic Melee result",
+      }, null, id);
+      await resolveDamageRequest(message.id);
+      after.push(actor.system.health.value);
+    }
+    return { before, after, record: actor.getFlag(
+      "heroes-of-legend", "damageEvents"
+    )?.[`player-basic-melee-${id}`] };
+  }, { id: deletedId, fixture: deletedSource });
+  assert.equal(deletedDamage.before, 12);
+  assert.deepEqual(deletedDamage.after, [10, 10]);
+  assert.equal(deletedDamage.record.attackMessageId, deletedId);
+  assert.equal(deletedDamage.record.event.total, 2);
   assert.deepEqual(errors, []);
   console.info(
     "PASS: native target visibility with DA adjudication, wound applicability refresh, encounter preservation, 5-unit grid-space adjacency, large footprints, collision-blocked geometry, reasoned nonadjacency exception, authoritative result projection/replay, forged roll/recovery and hidden-target rejection, late presentation recovery, acknowledged deleted-source recovery with operation-ID damage, PvP one-roll, Main once and linked damage deduplication.",
   );
 } catch (error) {
-  const diagnostics = { label: scenarioDiagnostic };
+  const diagnostics = {
+    label: scenarioDiagnostic,
+    pageErrors: errors.slice(-10),
+  };
   if (gm?.page && !gm.page.isClosed())
     diagnostics.gm = await gm.page
-      .evaluate(() => ({
-        canvas: {
-          ready: canvas.ready,
-          initialized: canvas.initialized,
-          loading: canvas.loading,
-          sceneId: canvas.scene?.id ?? null,
-        },
-        messages: game.messages.contents
-          .filter((message) =>
-            message.getFlag("heroes-of-legend", "playerAttackRequest"),
-          )
-          .slice(-4)
-          .map((message) => ({
-            id: message.id,
-            content: message.content,
-            status: message.getFlag(
-              "heroes-of-legend",
-              "playerAttackStatus",
-            ),
-          })),
-      }))
+      .evaluate((fixture) => {
+        const scene = fixture ? game.scenes.get(fixture.scene) : null;
+        return {
+          gameReady: game.ready,
+          fixture: fixture
+            ? {
+                sceneFound: Boolean(scene),
+                attackerTokenFound: Boolean(
+                  scene?.tokens.get(fixture.attackerTokenId),
+                ),
+                targetTokenFound: Boolean(
+                  scene?.tokens.get(fixture.targetTokenId),
+                ),
+              }
+            : null,
+          canvas: {
+            ready: canvas.ready,
+            initialized: canvas.initialized,
+            loading: canvas.loading,
+            sceneId: canvas.scene?.id ?? null,
+          },
+          messages: JSON.stringify(
+            game.messages.contents
+              .filter((message) =>
+                message.getFlag("heroes-of-legend", "playerAttackRequest"),
+              )
+              .slice(-4)
+              .map((message) => ({
+                id: message.id,
+                content: message.content,
+                status: message.getFlag(
+                  "heroes-of-legend",
+                  "playerAttackStatus",
+                ),
+                complete: Boolean(
+                  message.getFlag("heroes-of-legend", "playerAttack"),
+                ),
+              })),
+          ),
+        };
+      }, activeFixture)
       .catch((diagnosticError) => ({
         error: diagnosticError.message,
       }));
   if (player?.page && !player.page.isClosed())
     diagnostics.player = await player.page
-      .evaluate(() => ({
-        canvas: {
-          ready: canvas.ready,
-          initialized: canvas.initialized,
-          loading: canvas.loading,
-          sceneId: canvas.scene?.id ?? null,
-        },
-      }))
+      .evaluate((fixture) => {
+        const combat = fixture ? game.combats.get(fixture.combat) : null;
+        return {
+          combatFound: Boolean(combat),
+          matches: JSON.stringify(
+            game.messages.contents
+              .filter((message) =>
+                message.getFlag("heroes-of-legend", "playerAttackRequest"),
+              )
+              .slice(-4)
+              .map((message) => ({
+                id: message.id,
+                requestCombatUuid: message.getFlag(
+                  "heroes-of-legend",
+                  "playerAttackRequest",
+                )?.combatUuid,
+                combatUuid: combat?.uuid ?? null,
+                status: message.getFlag(
+                  "heroes-of-legend",
+                  "playerAttackStatus",
+                ),
+                complete: Boolean(
+                  message.getFlag("heroes-of-legend", "playerAttack"),
+                ),
+              })),
+          ),
+          canvas: {
+            ready: canvas.ready,
+            initialized: canvas.initialized,
+            loading: canvas.loading,
+            sceneId: canvas.scene?.id ?? null,
+          },
+        };
+      }, activeFixture)
       .catch((diagnosticError) => ({
         error: diagnosticError.message,
       }));

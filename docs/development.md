@@ -360,8 +360,21 @@ The guarded `test:player-attacks` fixture covers encounter preservation,
 five-units-per-square adjacency, large footprints, collision-blocked geometry,
 an explicit DA nonadjacency exception, forged player-authored projection and
 recovery edits, late chat presentation failure and replay, deleted presentation,
-retained-dice authority, reload/replay and damage deduplication. Primary runtime
-results remain to be recorded after integration.
+retained-dice authority, reload/replay and damage deduplication. Native Foundry
+14.369 acceptance passed on October 17, 2026 using Node 24.22.0 and an isolated
+disposable world. The deleted-chat scenario also opens the saved-result damage
+panel and applies its operation ID twice: a forged draft amount is ignored, the
+preserved 3 Physical damage meets resistance 1, and HP remains 10 after the second
+application (12 → 10 → 10). The real preparation dialog, target visibility,
+DA wound choices, PvP, recovery, and native replay paths completed with zero page
+errors. Dialog and chat screenshots were inspected; headless Foundry displays its
+hardware-acceleration warning.
+
+The same run passed native Defend Maneuver, Shield Block, roll-source and
+defense-response regressions. Fixture setup waits for initial canvas loading and
+keeps new Scenes inactive until explicitly viewed; scene transitions allow core
+scrolling-text animations to finish before teardown. This evidence covers the
+listed Basic Melee paths, not the separate attack handlers above.
 
 ### Per-defender roll attempts — issue #66
 

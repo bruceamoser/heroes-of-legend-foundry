@@ -239,3 +239,8 @@ slider, without Combat, prose or repeat controls. Results show the exact selecte
 outcome text; automatic damage rejects reference results. Wing Beat posts its
 no-roll effect without an attack card or invented dice. Numeric Basic Melee and
 its linked damage path remain covered by existing regressions.
+## Supported builder drops (#137)
+
+Creation learning steps and advancement learning accept readable native ability Items with an exact catalog ID/source match. A drop invokes the existing Add path, including current recipe selections, DP, level, discipline and acquisition validation. Ineligible, inaccessible, stale-source, wrong-type and unsupported-route drops explain the failure without changing the draft. Ancestry/class/discipline compendium drops and equipment shopping drops are not claimed. Eligible options remain first; ineligible options remain visible and disabled with their unmet requirements. Both builders display readable acquisition weapon names while retaining stable values internally.
+
+`npm run test:charactermancer` covers a continuous owner journey from a blank character through guided choices, eligible/ineligible DOM drops, backtracking/reload, normal commit, equipment arrangement, native scene placement and an advancement. It checks current HP/spent Grit preservation, milestone replay and compatible equipment reuse. Run only with an explicitly isolated writable world; static checks do not establish this native acceptance.

@@ -3,10 +3,13 @@
   "_id": "a1cb9d1313d9ed7b",
   "name": "Minotaur",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/228cdde5c2b18b7e443f1722755acd0702d78f1d3a169f0446332088ec5de572.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/228cdde5c2b18b7e443f1722755acd0702d78f1d3a169f0446332088ec5de572.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -108,6 +111,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-minotaur",
+        "asset": "assets/creatures/228cdde5c2b18b7e443f1722755acd0702d78f1d3a169f0446332088ec5de572.webp",
+        "sha256": "6ec955fbda3a5548a9a947f02266edfea8d8daf5447a46a88d19dbeda0a99145",
+        "sourceSha256": "228cdde5c2b18b7e443f1722755acd0702d78f1d3a169f0446332088ec5de572",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-minotaur",
       "source": {
         "path": "design/bestiary/creatures/minotaur.md",

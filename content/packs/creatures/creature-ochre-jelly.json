@@ -3,10 +3,13 @@
   "_id": "cbf29d79a9597e87",
   "name": "Ochre Jelly",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/936ae66c8dbe158576a0e7175ef535e817e87a3f53423d3e8b7abd656e44374b.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/936ae66c8dbe158576a0e7175ef535e817e87a3f53423d3e8b7abd656e44374b.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -112,6 +115,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-ochre-jelly",
+        "asset": "assets/creatures/936ae66c8dbe158576a0e7175ef535e817e87a3f53423d3e8b7abd656e44374b.webp",
+        "sha256": "7b52cce952c3d73bd71642ba13cda0dc1bd0fafbeae607e695986ac88e84fae4",
+        "sourceSha256": "936ae66c8dbe158576a0e7175ef535e817e87a3f53423d3e8b7abd656e44374b",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-ochre-jelly",
       "source": {
         "path": "design/bestiary/creatures/ochre-jelly.md",

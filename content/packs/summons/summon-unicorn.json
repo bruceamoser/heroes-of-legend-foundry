@@ -1,0 +1,163 @@
+{
+  "_key": "!actors!9af567c9a50328e8",
+  "_id": "9af567c9a50328e8",
+  "name": "Unicorn",
+  "type": "summon",
+  "img": "systems/heroes-of-legend/assets/creatures/c1e5b3a08b841444cb467e827e9332abbdce88b418e3d620d3990123d4caea96.webp",
+  "prototypeToken": {
+    "name": "Unicorn",
+    "actorLink": false,
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/c1e5b3a08b841444cb467e827e9332abbdce88b418e3d620d3990123d4caea96.webp"
+    }
+  },
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 0
+      },
+      "fortitude": {
+        "base": 1
+      },
+      "agility": {
+        "base": 1
+      },
+      "guile": {
+        "base": 1
+      },
+      "knowledge": {
+        "base": 2
+      },
+      "reason": {
+        "base": 2
+      }
+    },
+    "health": {
+      "value": 26,
+      "baseMax": 26
+    },
+    "cv": 24,
+    "eligibility": "Fey 7",
+    "speed": 9,
+    "speedSource": "9",
+    "alternateSpeeds": [],
+    "footprint": {
+      "width": 1,
+      "height": 1
+    },
+    "defenseModifier": {
+      "boons": 1,
+      "banes": 0,
+      "sourceText": "1 Boon"
+    },
+    "stability": 1,
+    "stabilitySource": "1",
+    "resistances": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "immunities": [],
+    "senses": "Ordinary sight and hearing.",
+    "communication": "Common",
+    "basicMelee": {
+      "orientation": "attacker",
+      "attribute": "brawn",
+      "attackModifier": {
+        "boons": 1,
+        "banes": 0,
+        "sourceText": "1 Boon"
+      },
+      "weak": 2,
+      "standard": 3,
+      "strong": 5
+    },
+    "attacks": [
+      {
+        "name": "Silver horn",
+        "attribute": "reason",
+        "orientation": "attacker",
+        "attackModifier": {
+          "boons": 1,
+          "banes": 0,
+          "sourceText": "1 Boon"
+        },
+        "weak": "3 radiant damage.",
+        "standard": "5 radiant damage. Push 1.",
+        "strong": "8 radiant damage. Push 3."
+      }
+    ],
+    "commandSource": "Main command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use the controller’s turn. Beyond 6 squares, or if the controller is unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot. No summon chains.",
+    "healingSource": "Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body.",
+    "restrictions": {
+      "canReceiveHealing": false,
+      "reactions": false,
+      "opportunityAttacks": false,
+      "independentTurns": false,
+      "turnAnchor": "controller",
+      "maximumCommandsPerTurn": 1,
+      "tetherSquares": 6,
+      "disappearsAtHp": 0,
+      "permanentLoot": false
+    },
+    "sourceMarkdown": "# Unicorn (CV 24)\n\n*A pale horn rises from the brow of an alert forest horse, reflecting stars even under a closed canopy.*\n\n**Attributes:** Brawn +0; Fortitude +1; Agility +1; Guile +1; Knowledge +2; Reason +2\n\n**HP:** 26 · **Speed:** 9 · **Footprint:** 1x1\n\n**Summoned form — player reference.**\n\n**Defense modifier:** 1 Boon. · **Stability:** 1.\n\n**DR / resistance:** None · **Condition immunities:** None\n\n**Weakness:** None\n\n**Healing:** Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body.\n\n**Senses:** Ordinary sight and hearing.\n\n**Communication:** Common\n\n**Eligibility:** Fey 7\n\nMain command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use the controller’s turn. Beyond 6 squares, or if the controller is unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot. No summon chains.\n\n**Carrying:** At most 1 Bulk; anatomy limits handling. No crafting training.\n\n**Heavy Frame — Passive:** Stability 1; an explicit trait, not a bonus calculated from Size.\n\n## Attacks — Main Action\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Silver horn | Reason | 1 Boon | 3 radiant damage. | 5 radiant damage. Push 1. | 8 radiant damage. Push 3. |\n\n**Silver horn:** One adjacent creature. Apply Stability, terrain costs and normal collision rules to the printed distance.\n\n## Maneuvers\n\n**Warding Light:** One willing ally within 3 squares reduces Frightened by 1. Until this creature’s next turn, that ally also has 1 Boon on its next defense against a mental attack; for an NPC ally, impose 1 Bane on that player attack. Consumed even if canceled; does not stack with itself.\n\n**Defend:** Gain 1 Boon to defenses until the controller’s next turn; repeated Defend does not stack.\n\n**Basic Melee — Main:** Brawn 1 Boon; one adjacent target; Weak attack 2, Standard 3, Strong 5 physical damage. No specialty riders.\n\n[DA creature card](../creatures/unicorn.md) · [Summon rules](../../rules/summoning.md)\n",
+    "referenceMarkdown": "# Unicorn (CV 24)\n\n*A pale horn rises from the brow of an alert forest horse, reflecting stars even under a closed canopy.*\n\n**Attributes:** Brawn +0; Fortitude +1; Agility +1; Guile +1; Knowledge +2; Reason +2\n\n**HP:** 26 · **Speed:** 9 · **Footprint:** 1x1\n\n**Summoned form — player reference.**\n\n**Defense modifier:** 1 Boon. · **Stability:** 1.\n\n**DR / resistance:** None · **Condition immunities:** None\n\n**Weakness:** None\n\n**Healing:** Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body.\n\n**Senses:** Ordinary sight and hearing.\n\n**Communication:** Common\n\n**Eligibility:** Fey 7\n\nMain command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use the controller’s turn. Beyond 6 squares, or if the controller is unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot. No summon chains.\n\n**Carrying:** At most 1 Bulk; anatomy limits handling. No crafting training.\n\n**Heavy Frame — Passive:** Stability 1; an explicit trait, not a bonus calculated from Size.\n\n## Attacks — Main Action\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Silver horn | Reason | 1 Boon | 3 radiant damage. | 5 radiant damage. Push 1. | 8 radiant damage. Push 3. |\n\n**Silver horn:** One adjacent creature. Apply Stability, terrain costs and normal collision rules to the printed distance.\n\n## Maneuvers\n\n**Warding Light:** One willing ally within 3 squares reduces Frightened by 1. Until this creature’s next turn, that ally also has 1 Boon on its next defense against a mental attack; for an NPC ally, impose 1 Bane on that player attack. Consumed even if canceled; does not stack with itself.\n\n**Defend:** Gain 1 Boon to defenses until the controller’s next turn; repeated Defend does not stack.\n\n**Basic Melee — Main:** Brawn 1 Boon; one adjacent target; Weak attack 2, Standard 3, Strong 5 physical damage. No specialty riders.\n\n[DA creature card](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/creatures/unicorn.md) · [Summon rules](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/rules/summoning.md)\n\n\n[Source profile](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/summons/unicorn.md)"
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-unicorn",
+        "asset": "assets/creatures/c1e5b3a08b841444cb467e827e9332abbdce88b418e3d620d3990123d4caea96.webp",
+        "sha256": "676822d79e2872cec8208c3ce48d33ba780c58805c561832b78712c73a329d97",
+        "sourceSha256": "c1e5b3a08b841444cb467e827e9332abbdce88b418e3d620d3990123d4caea96",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
+      "catalogId": "summon-unicorn",
+      "source": {
+        "path": "design/bestiary/summons/unicorn.md",
+        "sha256": "5e55d1f1574684a526ea1cc4f7cc2693c214313a53218a1b0088a26a99407e3c"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "creatureId": "creature-unicorn",
+      "references": {
+        "creature": {
+          "kind": "creature-reference",
+          "id": "creature-unicorn",
+          "path": "design/bestiary/creatures/unicorn.md",
+          "sha256": "9dae462d65aab88ca306e0e094d721ccfb9638d03b7da584ede0c8ea86c861c0"
+        },
+        "summonRules": {
+          "kind": "rules-reference",
+          "id": "summoning-rules",
+          "path": "design/rules/summoning.md",
+          "sha256": "2a97418d46d2ae018297ff27ffe0898fd8e649fdc09fd42cb92b23ebda9244db"
+        },
+        "summoning": {
+          "kind": "summon-profile",
+          "id": "summon-unicorn"
+        }
+      },
+      "automation": "pending",
+      "automationLabel": "Summon reference · command, spawn and tether automation pending",
+      "lifecycleAutomation": "pending"
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  }
+}

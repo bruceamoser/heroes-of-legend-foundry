@@ -3,10 +3,13 @@
   "_id": "f8dcd49463a56a1e",
   "name": "Basilisk",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/99d918c4d67e87cc55882898997ab677bd37b0f012c9011c1570619748a0bd69.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/99d918c4d67e87cc55882898997ab677bd37b0f012c9011c1570619748a0bd69.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -108,6 +111,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-basilisk",
+        "asset": "assets/creatures/99d918c4d67e87cc55882898997ab677bd37b0f012c9011c1570619748a0bd69.webp",
+        "sha256": "afe75dd982450f64b35adbdfa9135ea3eacc7430d6495d859a78190ac9576085",
+        "sourceSha256": "99d918c4d67e87cc55882898997ab677bd37b0f012c9011c1570619748a0bd69",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-basilisk",
       "source": {
         "path": "design/bestiary/creatures/basilisk.md",

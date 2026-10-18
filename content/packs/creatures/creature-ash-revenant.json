@@ -3,10 +3,13 @@
   "_id": "61176677789f35df",
   "name": "Ash Revenant",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/991195627ce641c0a293beee325a1dc6531c6470abe85f4b92adbad008ad1976.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/991195627ce641c0a293beee325a1dc6531c6470abe85f4b92adbad008ad1976.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -117,6 +120,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-ash-revenant",
+        "asset": "assets/creatures/991195627ce641c0a293beee325a1dc6531c6470abe85f4b92adbad008ad1976.webp",
+        "sha256": "d919324a747c9354a6c41d3639aa621003abc598bd00aa98dab5e51705b42c62",
+        "sourceSha256": "991195627ce641c0a293beee325a1dc6531c6470abe85f4b92adbad008ad1976",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-ash-revenant",
       "source": {
         "path": "design/bestiary/creatures/ash-revenant.md",

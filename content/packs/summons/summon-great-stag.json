@@ -1,0 +1,163 @@
+{
+  "_key": "!actors!fef259137dfe2b94",
+  "_id": "fef259137dfe2b94",
+  "name": "Great Stag",
+  "type": "summon",
+  "img": "systems/heroes-of-legend/assets/creatures/736a58085e838b140638ef5b352430ab185d42c1275650450f9d6cb71173809c.webp",
+  "prototypeToken": {
+    "name": "Great Stag",
+    "actorLink": false,
+    "width": 2,
+    "height": 2,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/736a58085e838b140638ef5b352430ab185d42c1275650450f9d6cb71173809c.webp"
+    }
+  },
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 2
+      },
+      "fortitude": {
+        "base": 1
+      },
+      "agility": {
+        "base": 2
+      },
+      "guile": {
+        "base": 0
+      },
+      "knowledge": {
+        "base": -2
+      },
+      "reason": {
+        "base": 1
+      }
+    },
+    "health": {
+      "value": 18,
+      "baseMax": 18
+    },
+    "cv": 13,
+    "eligibility": "Animal 3",
+    "speed": 9,
+    "speedSource": "Ground 9",
+    "alternateSpeeds": [],
+    "footprint": {
+      "width": 2,
+      "height": 2
+    },
+    "defenseModifier": {
+      "boons": 1,
+      "banes": 0,
+      "sourceText": "1 Boon"
+    },
+    "stability": 1,
+    "stabilitySource": "1 (Heavy Frame, passive grant; not derived from size)",
+    "resistances": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "immunities": [],
+    "senses": "Ordinary sight and hearing.",
+    "communication": "None",
+    "basicMelee": {
+      "orientation": "attacker",
+      "attribute": "brawn",
+      "attackModifier": {
+        "boons": 0,
+        "banes": 0,
+        "sourceText": "None"
+      },
+      "weak": 2,
+      "standard": 3,
+      "strong": 5
+    },
+    "attacks": [
+      {
+        "name": "Antler sweep",
+        "attribute": "brawn",
+        "orientation": "attacker",
+        "attackModifier": {
+          "boons": 0,
+          "banes": 0,
+          "sourceText": "None"
+        },
+        "weak": "3 physical damage.",
+        "standard": "4 physical damage. Push 1.",
+        "strong": "6 physical damage. Push 2."
+      }
+    ],
+    "commandSource": "Main command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use controller’s turn. Beyond 6 squares, or controller unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot.",
+    "healingSource": "Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body.",
+    "restrictions": {
+      "canReceiveHealing": false,
+      "reactions": false,
+      "opportunityAttacks": false,
+      "independentTurns": false,
+      "turnAnchor": "controller",
+      "maximumCommandsPerTurn": 1,
+      "tetherSquares": 6,
+      "disappearsAtHp": 0,
+      "permanentLoot": false
+    },
+    "sourceMarkdown": "# Great Stag (CV 13)\n\n*A tall woodland deer crowned with spreading antlers and supported by long, powerful legs. The herd follows its caution; in a rut or a crisis, that caution becomes a sudden charge.*\n\n**HP:** 18 · **Speed:** Ground 9 · **Footprint:** 2x2\n\n**Summoned form — player reference.**\n\n**Defense modifier:** 1 Boon. · **Stability:** 1 (Heavy Frame, passive grant; not derived from size).\n\n**DR / resistance:** None · **Condition immunities:** None\n\n**Weakness:** None\n\n**Healing:** Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body.\n\n\n**Senses:** Ordinary sight and hearing.\n\n**Communication:** None\n\n**Attributes:** Brawn +2; Fortitude +1; Agility +2; Guile +0; Knowledge -2; Reason +1\n\n**Eligibility:** Animal 3\n\nMain command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use controller’s turn. Beyond 6 squares, or controller unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot.\n\n**Carrying:** up to 1 Bulk; anatomy limits handling. No granted crafting training.\n\nRoll its printed attack attribute and read the attacker outcomes below. When it is attacked, roll the defense attribute named by the incoming attack. Passive defenses remain; no independent active effects.\n\n## Attacks — Main Action\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Antler sweep | Brawn | None | 3 physical damage. | 4 physical damage. Push 1. | 6 physical damage. Push 2. |\n\n\n**Antler sweep:** One adjacent creature.\n\n### Guard the Herd — Maneuver\n\nGain Stability 2 until its next turn, while on solid ground; highest source only.\n\n**Defend — Maneuver:** gain 1 Boon to defenses until the start of the controller’s next turn; repeated Defend does not stack.\n\n**Basic Melee — Main:** None to attack; Brawn, one adjacent target; Weak attack 2, Standard 3, Strong 5 physical damage. No specialty riders. No opportunity Reaction.\n\n[DA creature card](../creatures/great-stag.md) · [Summon rules](../../rules/summoning.md)\n",
+    "referenceMarkdown": "# Great Stag (CV 13)\n\n*A tall woodland deer crowned with spreading antlers and supported by long, powerful legs. The herd follows its caution; in a rut or a crisis, that caution becomes a sudden charge.*\n\n**HP:** 18 · **Speed:** Ground 9 · **Footprint:** 2x2\n\n**Summoned form — player reference.**\n\n**Defense modifier:** 1 Boon. · **Stability:** 1 (Heavy Frame, passive grant; not derived from size).\n\n**DR / resistance:** None · **Condition immunities:** None\n\n**Weakness:** None\n\n**Healing:** Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body.\n\n\n**Senses:** Ordinary sight and hearing.\n\n**Communication:** None\n\n**Attributes:** Brawn +2; Fortitude +1; Agility +2; Guile +0; Knowledge -2; Reason +1\n\n**Eligibility:** Animal 3\n\nMain command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use controller’s turn. Beyond 6 squares, or controller unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot.\n\n**Carrying:** up to 1 Bulk; anatomy limits handling. No granted crafting training.\n\nRoll its printed attack attribute and read the attacker outcomes below. When it is attacked, roll the defense attribute named by the incoming attack. Passive defenses remain; no independent active effects.\n\n## Attacks — Main Action\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Antler sweep | Brawn | None | 3 physical damage. | 4 physical damage. Push 1. | 6 physical damage. Push 2. |\n\n\n**Antler sweep:** One adjacent creature.\n\n### Guard the Herd — Maneuver\n\nGain Stability 2 until its next turn, while on solid ground; highest source only.\n\n**Defend — Maneuver:** gain 1 Boon to defenses until the start of the controller’s next turn; repeated Defend does not stack.\n\n**Basic Melee — Main:** None to attack; Brawn, one adjacent target; Weak attack 2, Standard 3, Strong 5 physical damage. No specialty riders. No opportunity Reaction.\n\n[DA creature card](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/creatures/great-stag.md) · [Summon rules](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/rules/summoning.md)\n\n\n[Source profile](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/summons/great-stag.md)"
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-great-stag",
+        "asset": "assets/creatures/736a58085e838b140638ef5b352430ab185d42c1275650450f9d6cb71173809c.webp",
+        "sha256": "bfd720b52a218c9118694ea431dc4ba2c5c9780c8b77898df999e95dd809630e",
+        "sourceSha256": "736a58085e838b140638ef5b352430ab185d42c1275650450f9d6cb71173809c",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
+      "catalogId": "summon-great-stag",
+      "source": {
+        "path": "design/bestiary/summons/great-stag.md",
+        "sha256": "0f6a1d37aa00e85b0dbc668e02aed4d15c5ab347ae891b4eaef3f63aa2ac0c7d"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "creatureId": "creature-great-stag",
+      "references": {
+        "creature": {
+          "kind": "creature-reference",
+          "id": "creature-great-stag",
+          "path": "design/bestiary/creatures/great-stag.md",
+          "sha256": "cf88f6c1f5218b0aff0b04cbd17477e9f7943b0d5930d1002fc79de33b8aadda"
+        },
+        "summonRules": {
+          "kind": "rules-reference",
+          "id": "summoning-rules",
+          "path": "design/rules/summoning.md",
+          "sha256": "2a97418d46d2ae018297ff27ffe0898fd8e649fdc09fd42cb92b23ebda9244db"
+        },
+        "summoning": {
+          "kind": "summon-profile",
+          "id": "summon-great-stag"
+        }
+      },
+      "automation": "pending",
+      "automationLabel": "Summon reference · command, spawn and tether automation pending",
+      "lifecycleAutomation": "pending"
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  }
+}

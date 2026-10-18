@@ -3,10 +3,13 @@
   "_id": "15d95ee1f3007644",
   "name": "Walking Furnace",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/fc08a5c0127fdfec1ad890336394c772ea6f499868d8adbbeb9ad0671481a9cd.webp",
   "prototypeToken": {
     "width": 2,
-    "height": 2
+    "height": 2,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/fc08a5c0127fdfec1ad890336394c772ea6f499868d8adbbeb9ad0671481a9cd.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -116,6 +119,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-walking-furnace",
+        "asset": "assets/creatures/fc08a5c0127fdfec1ad890336394c772ea6f499868d8adbbeb9ad0671481a9cd.webp",
+        "sha256": "79238c82f8e28946025ab28fd21a91d56696aac1c15e05abfcaeb190d67c71a6",
+        "sourceSha256": "fc08a5c0127fdfec1ad890336394c772ea6f499868d8adbbeb9ad0671481a9cd",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "creature-walking-furnace",
       "source": {
         "path": "design/bestiary/creatures/walking-furnace.md",

@@ -4,7 +4,8 @@
   "catalogs": {
     "choices": 2,
     "inventory": 1,
-    "creatures": 1
+    "creatures": 1,
+    "summons": 1
   },
   "packs": [
     {
@@ -26,7 +27,14 @@
       "type": "Actor",
       "path": "packs/creatures",
       "count": 192,
-      "semanticSha256": "305d1bbe565bfa4c0b9d263cfaeb28658a1ee641f96c20465c9f1966cfc192ad"
+      "semanticSha256": "353f968d4b8b5075d6fd5daca137f7f3b7d2b63ebccba00f6a567db2292a14c5"
+    },
+    {
+      "name": "summons",
+      "type": "Actor",
+      "path": "packs/summons",
+      "count": 73,
+      "semanticSha256": "4782021ce2dd07603715fb6c1626df106e31cf2f8a8814344cee356485add676"
     }
   ]
 }

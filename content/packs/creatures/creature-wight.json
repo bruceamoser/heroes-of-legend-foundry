@@ -3,10 +3,13 @@
   "_id": "c09c9a841ffb41dc",
   "name": "Wight",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/f59326b199c898666fd41881bc7f23e20b43a92fe66f7b21db260a6a1d06bd7b.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/f59326b199c898666fd41881bc7f23e20b43a92fe66f7b21db260a6a1d06bd7b.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -112,6 +115,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-wight",
+        "asset": "assets/creatures/f59326b199c898666fd41881bc7f23e20b43a92fe66f7b21db260a6a1d06bd7b.webp",
+        "sha256": "7fe71da6eb9ecb6030401f9e91c83606a812bb42a516c5f4e7d15dae9a9f77b6",
+        "sourceSha256": "f59326b199c898666fd41881bc7f23e20b43a92fe66f7b21db260a6a1d06bd7b",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "creature-wight",
       "source": {
         "path": "design/bestiary/creatures/wight.md",

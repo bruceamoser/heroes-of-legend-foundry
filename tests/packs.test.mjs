@@ -74,7 +74,7 @@ for (const [name, documents] of Object.entries(artifacts.documents)) {
         .sort((a, b) => a._id.localeCompare(b._id));
     assert.equal(
       expected.length,
-      { abilities: 350, equipment: 43, creatures: 192 }[name],
+      { abilities: 350, equipment: 43, creatures: 192, summons: 73 }[name],
     );
 
     await compilePack(source, join(temp, "pack"));

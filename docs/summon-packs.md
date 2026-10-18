@@ -1,0 +1,66 @@
+# Native summon profile references — issue #128
+
+The `summons` Actor compendium contains 73 distinct summoned-form references from
+`static/data/summons.json`, pinned to book commit
+`9bc9b4fe3256e68880b92c45facf0f25b98a1ea3`. Their stable identities differ from the
+linked ordinary creature entries. Generation verifies each complete Markdown
+source hash and reparses it against the source lock before accepting typed fields.
+It preserves the complete source, eligibility, six attributes, HP, movement,
+footprint, printed defense modifier, Stability, mitigations and attacker outcomes.
+Basic Melee's printed variants are 1/1/2, 1/2/4 and 2/3/5 Physical damage.
+
+Import a profile from the compendium to read its HOL sheet. The source reference
+uses escaped text, formatted tables and pinned book links. Ordinary character
+creation, advancement and healing controls are absent. Native prototype Tokens
+carry the printed width and height; importing a reference creates no Token,
+controller identity, command budget or active effect. Existing world Actors are
+never refreshed or overwritten by generation. Issue #124 maps portraits and prototype textures to the explicitly linked
+creature asset. The compact portrait uses the native image viewer; shared images
+are packaged once.
+
+Command/spawn/controller/tether and specialty handlers remain pending. The sheet
+keeps the command packages, one command per controller turn, no uncommanded
+activity or alerts, no independent Reactions or opportunity attacks, controller
+turn anchors, six-square nearest-occupied-square tether, controller/0-HP
+disappearance, no healing and no permanent loot restrictions readable. Table
+judgment and manual handling remain appropriate while lifecycle automation is
+separate work. A reference import does not grant a general creature or character
+attack workflow to a summon.
+
+`npm run import:summon-packs` regenerates the shared authored pack tree;
+`npm run validate:summon-packs` checks exact sources. The shared build compiles
+Items, creatures and summons through the official Foundry CLI. Automated tests
+cover every profile and semantic CLI round trips without changing the book.
+Distribution licensing remains undecided.
+
+Native acceptance passed in the issue #124 integration checkout on Foundry
+14.369; see [combined portrait acceptance](compendium-portraits.md). Run `npm run test:summon-packs` only with explicit
+`HOL_TEST_URL`, `HOL_TEST_ALLOW_WRITES=1` and `HOL_TEST_ISOLATED_WORLD=1` against an
+unoccupied disposable Foundry 14.369 world. The fixture validates all 73 native
+models, imports their stable IDs, checks representative sheets and ordinary
+Actor-directory drag/drop, then deletes only its tracked Actors and verifies
+preexisting Actors and scene Token identities are unchanged. Inspect its sheet
+screenshots as well as the process exit and cleanup report. The fixture passed for all 73 profiles with zero page errors and unchanged
+preexisting world documents.
+
+Local validation on the issue #122 integration base `804d273`: Node 24.22.0
+`npm run check` passed build, package/artwork validation and 264 tests, including
+two official CLI semantic round trips for all 73 summon documents. A read-only
+`HOL_BOOK_REPOSITORY=… node scripts/import-summons.mjs --check` also verified the
+73 pinned profiles and linked creature/rules Git blobs. This records local checks,
+not native Foundry acceptance.
+
+The summon checkpoint was subsequently rebased onto main `df5d415` using the
+original integration base, preserving the merged Basic Melee handler and all 192
+native creature prototype footprints. The only conflict was the generated pack
+index; regenerating all four packs preserved 350 abilities, 43 equipment records,
+192 creatures and 73 summons. Existing Item/creature sources, creature native
+acceptance fixture and compact sheet CSS remain byte-identical to main. The
+rebased Node 24 full check passed build, validation and 277 tests with no failures
+or skips. Native issue #128 acceptance subsequently passed together with issue #124.
+
+
+Issue #124 review also keeps command restrictions exactly as authored in each
+profile, without adding a blanket summon-chain claim to the sheet. The sheet's
+status is the compact “Reference profile; lifecycle managed by DA” note. Complete
+commands, source text and provenance are available under collapsed source details.

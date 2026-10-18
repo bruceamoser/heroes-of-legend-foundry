@@ -3,10 +3,13 @@
   "_id": "c074f1d15538f645",
   "name": "Ettin",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/9ccd819e9a3ebd0190b901283bc3ea4839dd8d1797032ddb0d89ef0130cb3823.webp",
   "prototypeToken": {
     "width": 2,
-    "height": 2
+    "height": 2,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/9ccd819e9a3ebd0190b901283bc3ea4839dd8d1797032ddb0d89ef0130cb3823.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -108,6 +111,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-ettin",
+        "asset": "assets/creatures/9ccd819e9a3ebd0190b901283bc3ea4839dd8d1797032ddb0d89ef0130cb3823.webp",
+        "sha256": "1eaec9d43d078758599892a1aed975ad572ec48e735ac698577737ef3a93b554",
+        "sourceSha256": "9ccd819e9a3ebd0190b901283bc3ea4839dd8d1797032ddb0d89ef0130cb3823",
+        "width": 1145,
+        "height": 1374,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-ettin",
       "source": {
         "path": "design/bestiary/creatures/ettin.md",

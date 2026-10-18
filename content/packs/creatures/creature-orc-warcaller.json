@@ -3,10 +3,13 @@
   "_id": "36b844dbb47781aa",
   "name": "Orc Warcaller",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/b9f5b3f8b8d0334c0cd870850d29ee8d4a3454535f0d700d01630d84899e432b.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/b9f5b3f8b8d0334c0cd870850d29ee8d4a3454535f0d700d01630d84899e432b.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -108,6 +111,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-orc-warcaller",
+        "asset": "assets/creatures/b9f5b3f8b8d0334c0cd870850d29ee8d4a3454535f0d700d01630d84899e432b.webp",
+        "sha256": "e2e284701809598eb30a69bec4b0abd7743ca3c0608e1945606cb594a7f708cb",
+        "sourceSha256": "b9f5b3f8b8d0334c0cd870850d29ee8d4a3454535f0d700d01630d84899e432b",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-orc-warcaller",
       "source": {
         "path": "design/bestiary/creatures/orc-warcaller.md",

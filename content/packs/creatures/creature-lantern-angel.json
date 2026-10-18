@@ -3,10 +3,13 @@
   "_id": "57e199f781baea1e",
   "name": "Lantern Angel",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/538633c813c53a0ea87769db4314f77c8f39169f128567226cf21d540b7e510f.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/538633c813c53a0ea87769db4314f77c8f39169f128567226cf21d540b7e510f.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -113,6 +116,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-lantern-angel",
+        "asset": "assets/creatures/538633c813c53a0ea87769db4314f77c8f39169f128567226cf21d540b7e510f.webp",
+        "sha256": "ad63040faceea45c0054dcccd4c5fd9023fb6abdbd1c97f7908fbb1bb35442ac",
+        "sourceSha256": "538633c813c53a0ea87769db4314f77c8f39169f128567226cf21d540b7e510f",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-lantern-angel",
       "source": {
         "path": "design/bestiary/creatures/lantern-angel.md",

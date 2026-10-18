@@ -3,10 +3,13 @@
   "_id": "fdcef3eb67c707ff",
   "name": "Green Hag",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/74b708323b06d94f25e362846fd4c9d81a68f2c648369cac04a40d104b501450.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/74b708323b06d94f25e362846fd4c9d81a68f2c648369cac04a40d104b501450.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -103,6 +106,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-green-hag",
+        "asset": "assets/creatures/74b708323b06d94f25e362846fd4c9d81a68f2c648369cac04a40d104b501450.webp",
+        "sha256": "e98a985d3f72ca058e640f0bbd1c32542c38525aedfa60e30dad4e0779d41048",
+        "sourceSha256": "74b708323b06d94f25e362846fd4c9d81a68f2c648369cac04a40d104b501450",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-green-hag",
       "source": {
         "path": "design/bestiary/creatures/green-hag.md",

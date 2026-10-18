@@ -3,10 +3,13 @@
   "_id": "39450409a6a85370",
   "name": "Trail Hound",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/8fb4c13f3446cf774cba5d9b012ccf8207e76183f3817d8b8058969a292bc686.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/8fb4c13f3446cf774cba5d9b012ccf8207e76183f3817d8b8058969a292bc686.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -103,6 +106,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-trail-hound",
+        "asset": "assets/creatures/8fb4c13f3446cf774cba5d9b012ccf8207e76183f3817d8b8058969a292bc686.webp",
+        "sha256": "e16b8c3143a5e3e70a66afdd5d8ed6fb117ecda9558d797ae5f3b833bc344da4",
+        "sourceSha256": "8fb4c13f3446cf774cba5d9b012ccf8207e76183f3817d8b8058969a292bc686",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "creature-trail-hound",
       "source": {
         "path": "design/bestiary/creatures/trail-hound.md",

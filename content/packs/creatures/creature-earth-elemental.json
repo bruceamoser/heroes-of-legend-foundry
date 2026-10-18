@@ -3,10 +3,13 @@
   "_id": "19f7683fa998af81",
   "name": "Earth Elemental",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/b3fb01f0cf8129e8efe06c6f32317de8c19ba6ea84a7e6fcdf70df83e6fcc68b.webp",
   "prototypeToken": {
     "width": 2,
-    "height": 2
+    "height": 2,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/b3fb01f0cf8129e8efe06c6f32317de8c19ba6ea84a7e6fcdf70df83e6fcc68b.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -112,6 +115,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-earth-elemental",
+        "asset": "assets/creatures/b3fb01f0cf8129e8efe06c6f32317de8c19ba6ea84a7e6fcdf70df83e6fcc68b.webp",
+        "sha256": "dae9f5d7ac14b043ecd0b44d8a94207af3b45716078f83af14285e56b3512aea",
+        "sourceSha256": "b3fb01f0cf8129e8efe06c6f32317de8c19ba6ea84a7e6fcdf70df83e6fcc68b",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "creature-earth-elemental",
       "source": {
         "path": "design/bestiary/creatures/earth-elemental.md",

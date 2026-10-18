@@ -3,10 +3,13 @@
   "_id": "d42e5ed5963489aa",
   "name": "Wererat",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/c4e354696e5460b0717d5012783e174c21eceb7d1486846553cb00285960a4c4.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/c4e354696e5460b0717d5012783e174c21eceb7d1486846553cb00285960a4c4.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -108,6 +111,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-wererat",
+        "asset": "assets/creatures/c4e354696e5460b0717d5012783e174c21eceb7d1486846553cb00285960a4c4.webp",
+        "sha256": "41bb39eb55751a13c273287043e68d5de54cdd466098eb26b210c971177a0fb6",
+        "sourceSha256": "c4e354696e5460b0717d5012783e174c21eceb7d1486846553cb00285960a4c4",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-wererat",
       "source": {
         "path": "design/bestiary/creatures/wererat.md",

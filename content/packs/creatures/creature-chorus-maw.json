@@ -3,10 +3,13 @@
   "_id": "e17bcf8cde841ec6",
   "name": "Chorus Maw",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/b902e688bdb66d894ee4e23105d7a8e2757b2d8c49410276dfd7f508ddaa3e57.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/b902e688bdb66d894ee4e23105d7a8e2757b2d8c49410276dfd7f508ddaa3e57.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -103,6 +106,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-chorus-maw",
+        "asset": "assets/creatures/b902e688bdb66d894ee4e23105d7a8e2757b2d8c49410276dfd7f508ddaa3e57.webp",
+        "sha256": "cf267e21567bfe27457100b184521775bf8490b90c57833c162a4b5ef8a0556e",
+        "sourceSha256": "b902e688bdb66d894ee4e23105d7a8e2757b2d8c49410276dfd7f508ddaa3e57",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-chorus-maw",
       "source": {
         "path": "design/bestiary/creatures/chorus-maw.md",

@@ -3,10 +3,13 @@
   "_id": "5c45cc5468dd474f",
   "name": "Air Elemental",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/f5b6c68e7c5683ae5844d5fec415ff6a18ac9547f8ef1ce3b6d9afb7a34a2694.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/f5b6c68e7c5683ae5844d5fec415ff6a18ac9547f8ef1ce3b6d9afb7a34a2694.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -112,6 +115,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-air-elemental",
+        "asset": "assets/creatures/f5b6c68e7c5683ae5844d5fec415ff6a18ac9547f8ef1ce3b6d9afb7a34a2694.webp",
+        "sha256": "fb50e96865c97be72823ff10d7184a9c18a2144a437efdedb9dc41a77c2913d1",
+        "sourceSha256": "f5b6c68e7c5683ae5844d5fec415ff6a18ac9547f8ef1ce3b6d9afb7a34a2694",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "creature-air-elemental",
       "source": {
         "path": "design/bestiary/creatures/air-elemental.md",

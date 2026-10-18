@@ -3,10 +3,13 @@
   "_id": "3235afa1ed2609ec",
   "name": "Ash Demon",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/72ebffeb31d0334d430c2d205e7af85f2d8af12ae8fe4c01e728df51097e6077.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/72ebffeb31d0334d430c2d205e7af85f2d8af12ae8fe4c01e728df51097e6077.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -112,6 +115,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-ash-demon",
+        "asset": "assets/creatures/72ebffeb31d0334d430c2d205e7af85f2d8af12ae8fe4c01e728df51097e6077.webp",
+        "sha256": "8066e300db1b7094e8fd00d12d00aef42aa183c21f534e4c9a04b061bfb401c6",
+        "sourceSha256": "72ebffeb31d0334d430c2d205e7af85f2d8af12ae8fe4c01e728df51097e6077",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-ash-demon",
       "source": {
         "path": "design/bestiary/creatures/ash-demon.md",

@@ -3,10 +3,13 @@
   "_id": "e0e844b0a567dc4c",
   "name": "Banshee",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/94c63f860f4713941ff94bbbb0a531932d912e845838235a5d03d2005da20a9b.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/94c63f860f4713941ff94bbbb0a531932d912e845838235a5d03d2005da20a9b.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -117,6 +120,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-banshee",
+        "asset": "assets/creatures/94c63f860f4713941ff94bbbb0a531932d912e845838235a5d03d2005da20a9b.webp",
+        "sha256": "b030f1480faabf26c2da3eaa403fd82baeeb3291d105da0bd8a3716f8d4b43d0",
+        "sourceSha256": "94c63f860f4713941ff94bbbb0a531932d912e845838235a5d03d2005da20a9b",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-banshee",
       "source": {
         "path": "design/bestiary/creatures/banshee.md",

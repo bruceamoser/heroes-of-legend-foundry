@@ -3,10 +3,13 @@
   "_id": "41fa5c3c4883aeab",
   "name": "Centaur Scout",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/656300d3e73e566da07ad2e947c171ed96b6ea62188da433bb470da3f199efb3.webp",
   "prototypeToken": {
     "width": 2,
-    "height": 2
+    "height": 2,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/656300d3e73e566da07ad2e947c171ed96b6ea62188da433bb470da3f199efb3.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -103,6 +106,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-centaur-scout",
+        "asset": "assets/creatures/656300d3e73e566da07ad2e947c171ed96b6ea62188da433bb470da3f199efb3.webp",
+        "sha256": "137b9a9052eaa8c3ccf5f7a5a19f7038dc152022b2d90e8a2e5701352e697599",
+        "sourceSha256": "656300d3e73e566da07ad2e947c171ed96b6ea62188da433bb470da3f199efb3",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-centaur-scout",
       "source": {
         "path": "design/bestiary/creatures/centaur-scout.md",

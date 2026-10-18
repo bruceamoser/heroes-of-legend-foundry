@@ -3,10 +3,13 @@
   "_id": "cc02aa75f524fdd4",
   "name": "Black Pudding",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/45fa942554e9d6543430e620b96f2f6ac160881df1a9b3f4c098666c8e4e8a53.webp",
   "prototypeToken": {
     "width": 2,
-    "height": 2
+    "height": 2,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/45fa942554e9d6543430e620b96f2f6ac160881df1a9b3f4c098666c8e4e8a53.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -117,6 +120,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-black-pudding",
+        "asset": "assets/creatures/45fa942554e9d6543430e620b96f2f6ac160881df1a9b3f4c098666c8e4e8a53.webp",
+        "sha256": "5cfbcc5f2d9da24d4f06f9c55721180ba1d6edf27b2586002b1e03e79b3e1d94",
+        "sourceSha256": "45fa942554e9d6543430e620b96f2f6ac160881df1a9b3f4c098666c8e4e8a53",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-black-pudding",
       "source": {
         "path": "design/bestiary/creatures/black-pudding.md",

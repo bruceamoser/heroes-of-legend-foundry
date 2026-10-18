@@ -3,10 +3,13 @@
   "_id": "a913bb58206ef075",
   "name": "Cavern Lurker",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/5747fdb00ca6fc77e6cbf66699a09ec773320632f5af6f9a7586ea01b0661e68.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/5747fdb00ca6fc77e6cbf66699a09ec773320632f5af6f9a7586ea01b0661e68.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -113,6 +116,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-cavern-lurker",
+        "asset": "assets/creatures/5747fdb00ca6fc77e6cbf66699a09ec773320632f5af6f9a7586ea01b0661e68.webp",
+        "sha256": "59680d01a9f9ca55cc5df422e095eabdab68e40ea7e76c781f6ef3e4a1672c96",
+        "sourceSha256": "5747fdb00ca6fc77e6cbf66699a09ec773320632f5af6f9a7586ea01b0661e68",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-cavern-lurker",
       "source": {
         "path": "design/bestiary/creatures/cavern-lurker.md",

@@ -3,10 +3,13 @@
   "_id": "44b5fd4efe65c23c",
   "name": "Green Dragon",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/b913b4aaedfdc76837766d06ba1f84c704fe7d488187fcac53f036e375bb50ac.webp",
   "prototypeToken": {
     "width": 2,
-    "height": 2
+    "height": 2,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/b913b4aaedfdc76837766d06ba1f84c704fe7d488187fcac53f036e375bb50ac.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -113,6 +116,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-green-dragon",
+        "asset": "assets/creatures/b913b4aaedfdc76837766d06ba1f84c704fe7d488187fcac53f036e375bb50ac.webp",
+        "sha256": "77397989860ab903ad5aa88af1b73624d0d3b09eb609ba4c09fc7f16e0530c3f",
+        "sourceSha256": "b913b4aaedfdc76837766d06ba1f84c704fe7d488187fcac53f036e375bb50ac",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-green-dragon",
       "source": {
         "path": "design/bestiary/creatures/green-dragon.md",

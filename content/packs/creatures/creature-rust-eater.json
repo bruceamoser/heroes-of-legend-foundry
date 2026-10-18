@@ -3,10 +3,13 @@
   "_id": "fc466a8dfe0d1c94",
   "name": "Rust Eater",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/9e2900a60ad5270601add6bdf3bf164a40b4ebe45ef0a4762003306f2fe80cee.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/9e2900a60ad5270601add6bdf3bf164a40b4ebe45ef0a4762003306f2fe80cee.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -108,6 +111,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-rust-eater",
+        "asset": "assets/creatures/9e2900a60ad5270601add6bdf3bf164a40b4ebe45ef0a4762003306f2fe80cee.webp",
+        "sha256": "d106deae4b163b33a8baffeb84e860d524334ab45b17e4db61a80062fdbaeaad",
+        "sourceSha256": "9e2900a60ad5270601add6bdf3bf164a40b4ebe45ef0a4762003306f2fe80cee",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-rust-eater",
       "source": {
         "path": "design/bestiary/creatures/rust-eater.md",

@@ -3,10 +3,13 @@
   "_id": "0b4605c60a7653ab",
   "name": "Pegasus",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/fa23d6a65845b7c96c7c2bcd894b5d7cc7215f77714c6f1faf9a64d08d8eb9c1.webp",
   "prototypeToken": {
     "width": 2,
-    "height": 2
+    "height": 2,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/fa23d6a65845b7c96c7c2bcd894b5d7cc7215f77714c6f1faf9a64d08d8eb9c1.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -108,6 +111,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-pegasus",
+        "asset": "assets/creatures/fa23d6a65845b7c96c7c2bcd894b5d7cc7215f77714c6f1faf9a64d08d8eb9c1.webp",
+        "sha256": "3d182f8fe04b36574547b3d35707a8d2a2b915a0f68b0831438443a6e875146a",
+        "sourceSha256": "fa23d6a65845b7c96c7c2bcd894b5d7cc7215f77714c6f1faf9a64d08d8eb9c1",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-pegasus",
       "source": {
         "path": "design/bestiary/creatures/pegasus.md",

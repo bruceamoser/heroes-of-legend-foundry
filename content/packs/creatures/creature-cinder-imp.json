@@ -3,10 +3,13 @@
   "_id": "b1072569cda098a5",
   "name": "Cinder Imp",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/889a59124f681bec257d27b5173e872dbfae07129245fdc95f250b526853e3b3.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/889a59124f681bec257d27b5173e872dbfae07129245fdc95f250b526853e3b3.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -113,6 +116,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-cinder-imp",
+        "asset": "assets/creatures/889a59124f681bec257d27b5173e872dbfae07129245fdc95f250b526853e3b3.webp",
+        "sha256": "0998b38e9ade0d95698e5acce46c6dcd3d798bbdc426acfcfd7d5260eb394360",
+        "sourceSha256": "889a59124f681bec257d27b5173e872dbfae07129245fdc95f250b526853e3b3",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-cinder-imp",
       "source": {
         "path": "design/bestiary/creatures/cinder-imp.md",

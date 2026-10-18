@@ -1,0 +1,173 @@
+{
+  "_key": "!actors!311b144070d7c1a0",
+  "_id": "311b144070d7c1a0",
+  "name": "Iron Gatekeeper",
+  "type": "summon",
+  "img": "systems/heroes-of-legend/assets/creatures/91c830289b636a4a682cdf84da986778e0d217b8f48a44211c1f9dfdba314fe5.webp",
+  "prototypeToken": {
+    "name": "Iron Gatekeeper",
+    "actorLink": false,
+    "width": 2,
+    "height": 2,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/91c830289b636a4a682cdf84da986778e0d217b8f48a44211c1f9dfdba314fe5.webp"
+    }
+  },
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 2
+      },
+      "fortitude": {
+        "base": 2
+      },
+      "agility": {
+        "base": -1
+      },
+      "guile": {
+        "base": -2
+      },
+      "knowledge": {
+        "base": 0
+      },
+      "reason": {
+        "base": 1
+      }
+    },
+    "health": {
+      "value": 34,
+      "baseMax": 34
+    },
+    "cv": 44,
+    "eligibility": "Construct 7",
+    "speed": 4,
+    "speedSource": "Ground 4",
+    "alternateSpeeds": [],
+    "footprint": {
+      "width": 2,
+      "height": 2
+    },
+    "defenseModifier": {
+      "boons": 0,
+      "banes": 1,
+      "sourceText": "1 Bane"
+    },
+    "stability": 2,
+    "stabilitySource": "2 (Heavy Frame, passive grant; not derived from size)",
+    "resistances": {
+      "numeric": [
+        {
+          "type": "Physical",
+          "value": 3
+        }
+      ],
+      "special": [],
+      "sourceText": "Physical 3"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "immunities": [
+      "Bleeding",
+      "Poisoned",
+      "Asleep",
+      "Frightened"
+    ],
+    "senses": "Ordinary sight and hearing.",
+    "communication": "None",
+    "basicMelee": {
+      "orientation": "attacker",
+      "attribute": "brawn",
+      "attackModifier": {
+        "boons": 1,
+        "banes": 0,
+        "sourceText": "1 Boon"
+      },
+      "weak": 2,
+      "standard": 3,
+      "strong": 5
+    },
+    "attacks": [
+      {
+        "name": "Gate bar",
+        "attribute": "brawn",
+        "orientation": "attacker",
+        "attackModifier": {
+          "boons": 1,
+          "banes": 0,
+          "sourceText": "1 Boon"
+        },
+        "weak": "4 physical damage.",
+        "standard": "6 physical damage. Push each 1.",
+        "strong": "8 physical damage. Push each 2."
+      }
+    ],
+    "commandSource": "Main command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use controller’s turn. Beyond 6 squares, or controller unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot.",
+    "healingSource": "Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body.",
+    "restrictions": {
+      "canReceiveHealing": false,
+      "reactions": false,
+      "opportunityAttacks": false,
+      "independentTurns": false,
+      "turnAnchor": "controller",
+      "maximumCommandsPerTurn": 1,
+      "tetherSquares": 6,
+      "disappearsAtHp": 0,
+      "permanentLoot": false
+    },
+    "sourceMarkdown": "# Iron Gatekeeper (CV 44)\n\n*A massive iron guardian with a barred face, oversized hands and its charter engraved across the chest. Built for a particular threshold, it is difficult to displace and slow to redirect.*\n\n**HP:** 34 · **Speed:** Ground 4 · **Footprint:** 2x2\n\n**Summoned form — player reference.**\n\n**Defense modifier:** 1 Bane. · **Stability:** 2 (Heavy Frame, passive grant; not derived from size).\n\n**DR / resistance:** Physical 3 · **Condition immunities:** Bleeding; Poisoned; Asleep; Frightened\n\n**Weakness:** None\n\n**Healing:** Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body.\n\n\n**Senses:** Ordinary sight and hearing.\n\n**Communication:** None\n\n**Attributes:** Brawn +2; Fortitude +2; Agility -1; Guile -2; Knowledge +0; Reason +1\n\n**Eligibility:** Construct 7\n\nMain command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use controller’s turn. Beyond 6 squares, or controller unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot.\n\n**Carrying:** up to 1 Bulk; anatomy limits handling. No granted crafting training.\n\nRoll its printed attack attribute and read the attacker outcomes below. When it is attacked, roll the defense attribute named by the incoming attack. Passive defenses remain; no independent active effects.\n\n**Lifeless Body — Passive:** does not breathe or eat; only listed immunities apply.\n\n## Attacks — Main Action\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Gate bar | Brawn | 1 Boon | 4 physical damage. | 6 physical damage. Push each 1. | 8 physical damage. Push each 2. |\n\n\n**Gate bar:** Up to two creatures within 2 squares.\n\n### Lock the Feet — Maneuver\n\nGain Stability 3 while on solid ground until its next turn; highest source only.\n\n**Defend — Maneuver:** gain 1 Boon to defenses until the start of the controller’s next turn; repeated Defend does not stack.\n\n**Basic Melee — Main:** 1 Boon to attack; Brawn, one adjacent target; Weak attack 2, Standard 3, Strong 5 physical damage. No specialty riders. No opportunity Reaction.\n\n[DA creature card](../creatures/iron-gatekeeper.md) · [Summon rules](../../rules/summoning.md)\n",
+    "referenceMarkdown": "# Iron Gatekeeper (CV 44)\n\n*A massive iron guardian with a barred face, oversized hands and its charter engraved across the chest. Built for a particular threshold, it is difficult to displace and slow to redirect.*\n\n**HP:** 34 · **Speed:** Ground 4 · **Footprint:** 2x2\n\n**Summoned form — player reference.**\n\n**Defense modifier:** 1 Bane. · **Stability:** 2 (Heavy Frame, passive grant; not derived from size).\n\n**DR / resistance:** Physical 3 · **Condition immunities:** Bleeding; Poisoned; Asleep; Frightened\n\n**Weakness:** None\n\n**Healing:** Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body.\n\n\n**Senses:** Ordinary sight and hearing.\n\n**Communication:** None\n\n**Attributes:** Brawn +2; Fortitude +2; Agility -1; Guile -2; Knowledge +0; Reason +1\n\n**Eligibility:** Construct 7\n\nMain command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use controller’s turn. Beyond 6 squares, or controller unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot.\n\n**Carrying:** up to 1 Bulk; anatomy limits handling. No granted crafting training.\n\nRoll its printed attack attribute and read the attacker outcomes below. When it is attacked, roll the defense attribute named by the incoming attack. Passive defenses remain; no independent active effects.\n\n**Lifeless Body — Passive:** does not breathe or eat; only listed immunities apply.\n\n## Attacks — Main Action\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Gate bar | Brawn | 1 Boon | 4 physical damage. | 6 physical damage. Push each 1. | 8 physical damage. Push each 2. |\n\n\n**Gate bar:** Up to two creatures within 2 squares.\n\n### Lock the Feet — Maneuver\n\nGain Stability 3 while on solid ground until its next turn; highest source only.\n\n**Defend — Maneuver:** gain 1 Boon to defenses until the start of the controller’s next turn; repeated Defend does not stack.\n\n**Basic Melee — Main:** 1 Boon to attack; Brawn, one adjacent target; Weak attack 2, Standard 3, Strong 5 physical damage. No specialty riders. No opportunity Reaction.\n\n[DA creature card](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/creatures/iron-gatekeeper.md) · [Summon rules](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/rules/summoning.md)\n\n\n[Source profile](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/summons/iron-gatekeeper.md)"
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-iron-gatekeeper",
+        "asset": "assets/creatures/91c830289b636a4a682cdf84da986778e0d217b8f48a44211c1f9dfdba314fe5.webp",
+        "sha256": "273eb9f897875e0402d41935d66142a9222e93dfc57c4174ae2654ea5637ed45",
+        "sourceSha256": "91c830289b636a4a682cdf84da986778e0d217b8f48a44211c1f9dfdba314fe5",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
+      "catalogId": "summon-iron-gatekeeper",
+      "source": {
+        "path": "design/bestiary/summons/iron-gatekeeper.md",
+        "sha256": "0176efd12e7bf91d8dfe09052d98127b0f45512f07eb16c528cd224d7b06a3ab"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "creatureId": "creature-iron-gatekeeper",
+      "references": {
+        "creature": {
+          "kind": "creature-reference",
+          "id": "creature-iron-gatekeeper",
+          "path": "design/bestiary/creatures/iron-gatekeeper.md",
+          "sha256": "89107cf537e59cde0ad128e03fdfdde9b163a40260dcd7cea245c12be2315706"
+        },
+        "summonRules": {
+          "kind": "rules-reference",
+          "id": "summoning-rules",
+          "path": "design/rules/summoning.md",
+          "sha256": "2a97418d46d2ae018297ff27ffe0898fd8e649fdc09fd42cb92b23ebda9244db"
+        },
+        "summoning": {
+          "kind": "summon-profile",
+          "id": "summon-iron-gatekeeper"
+        }
+      },
+      "automation": "pending",
+      "automationLabel": "Summon reference · command, spawn and tether automation pending",
+      "lifecycleAutomation": "pending"
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  }
+}

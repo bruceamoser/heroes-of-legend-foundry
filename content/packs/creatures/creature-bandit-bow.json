@@ -3,10 +3,13 @@
   "_id": "8f4ca6b9a94e0501",
   "name": "Bandit Bow",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/f2590d8d79cd7958d00bc67986841f5faca954c09221ddddceb7dbe29d29ebed.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/f2590d8d79cd7958d00bc67986841f5faca954c09221ddddceb7dbe29d29ebed.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -103,6 +106,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-bandit-bow",
+        "asset": "assets/creatures/f2590d8d79cd7958d00bc67986841f5faca954c09221ddddceb7dbe29d29ebed.webp",
+        "sha256": "890d0b8ec70520599ac86ceec95e0ff99c1030dd422a8b1eb4189cd9e276ddea",
+        "sourceSha256": "f2590d8d79cd7958d00bc67986841f5faca954c09221ddddceb7dbe29d29ebed",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-bandit-bow",
       "source": {
         "path": "design/bestiary/creatures/bandit-bow.md",

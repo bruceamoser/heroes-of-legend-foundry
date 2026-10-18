@@ -3,10 +3,13 @@
   "_id": "f5ff1505b1a632af",
   "name": "Goblin Rattlechanter",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/7d68d441284417e700b72808b823568463e1ceaf8a45665e50309a48e01295c0.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/7d68d441284417e700b72808b823568463e1ceaf8a45665e50309a48e01295c0.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -103,6 +106,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-goblin-rattlechanter",
+        "asset": "assets/creatures/7d68d441284417e700b72808b823568463e1ceaf8a45665e50309a48e01295c0.webp",
+        "sha256": "1458a4b02091b77f49118211b06f0eb1af29d9663f02769904d996b5e1187364",
+        "sourceSha256": "7d68d441284417e700b72808b823568463e1ceaf8a45665e50309a48e01295c0",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-goblin-rattlechanter",
       "source": {
         "path": "design/bestiary/creatures/goblin-rattlechanter.md",

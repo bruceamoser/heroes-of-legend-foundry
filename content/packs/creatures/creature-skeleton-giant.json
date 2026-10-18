@@ -3,10 +3,13 @@
   "_id": "ff35e39b24587087",
   "name": "Skeleton Giant",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/ee090c68f467e861b35f0b43e4f9bc19b642507a3fb854bfa97a9abf0352fc84.webp",
   "prototypeToken": {
     "width": 2,
-    "height": 2
+    "height": 2,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/ee090c68f467e861b35f0b43e4f9bc19b642507a3fb854bfa97a9abf0352fc84.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -112,6 +115,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-skeleton-giant",
+        "asset": "assets/creatures/ee090c68f467e861b35f0b43e4f9bc19b642507a3fb854bfa97a9abf0352fc84.webp",
+        "sha256": "1ce7c956714572cd5dd4af1be89d1b427973410f5939ed9cbf03659f9bffd6d5",
+        "sourceSha256": "ee090c68f467e861b35f0b43e4f9bc19b642507a3fb854bfa97a9abf0352fc84",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "creature-skeleton-giant",
       "source": {
         "path": "design/bestiary/creatures/skeleton-giant.md",

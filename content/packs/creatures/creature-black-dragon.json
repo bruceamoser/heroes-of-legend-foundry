@@ -3,10 +3,13 @@
   "_id": "35045f5b85a7b34b",
   "name": "Black Dragon",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/f9d773b0ba726bb32a3de58821f4e3c78e6fd55bd4246c22e2cb0176c7cc17dc.webp",
   "prototypeToken": {
     "width": 2,
-    "height": 2
+    "height": 2,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/f9d773b0ba726bb32a3de58821f4e3c78e6fd55bd4246c22e2cb0176c7cc17dc.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -117,6 +120,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-black-dragon",
+        "asset": "assets/creatures/f9d773b0ba726bb32a3de58821f4e3c78e6fd55bd4246c22e2cb0176c7cc17dc.webp",
+        "sha256": "bf1ebeb81e4141e6c3a9a1079c6392faa8be87313ef6e7bdd203939dc2c05fb7",
+        "sourceSha256": "f9d773b0ba726bb32a3de58821f4e3c78e6fd55bd4246c22e2cb0176c7cc17dc",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-black-dragon",
       "source": {
         "path": "design/bestiary/creatures/black-dragon.md",

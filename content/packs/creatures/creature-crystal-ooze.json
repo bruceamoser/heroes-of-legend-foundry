@@ -3,10 +3,13 @@
   "_id": "065b6e3e60c04f86",
   "name": "Crystal Ooze",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/ede1dd70d1bf0eb6f4841252287c83c759233e302d0c25aa3856d59fd67f6e7e.webp",
   "prototypeToken": {
     "width": 2,
-    "height": 2
+    "height": 2,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/ede1dd70d1bf0eb6f4841252287c83c759233e302d0c25aa3856d59fd67f6e7e.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -113,6 +116,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-crystal-ooze",
+        "asset": "assets/creatures/ede1dd70d1bf0eb6f4841252287c83c759233e302d0c25aa3856d59fd67f6e7e.webp",
+        "sha256": "6c962c9a4c7548125d695d9824bcbfe66bb0b84a882302a61d5a180f46f50c93",
+        "sourceSha256": "ede1dd70d1bf0eb6f4841252287c83c759233e302d0c25aa3856d59fd67f6e7e",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-crystal-ooze",
       "source": {
         "path": "design/bestiary/creatures/crystal-ooze.md",

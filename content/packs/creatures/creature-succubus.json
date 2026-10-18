@@ -3,10 +3,13 @@
   "_id": "14fad5c9f177cf20",
   "name": "Succubus",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/163b729922fcefda3b2b1a6b53572fb6ea607080ea0b91117f6cfec4b63794f2.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/163b729922fcefda3b2b1a6b53572fb6ea607080ea0b91117f6cfec4b63794f2.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -108,6 +111,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-succubus",
+        "asset": "assets/creatures/163b729922fcefda3b2b1a6b53572fb6ea607080ea0b91117f6cfec4b63794f2.webp",
+        "sha256": "e5f8655729ab3df5063a8e749162eb27f69590ffa7e4cbf50ca6b3f9c7415531",
+        "sourceSha256": "163b729922fcefda3b2b1a6b53572fb6ea607080ea0b91117f6cfec4b63794f2",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-succubus",
       "source": {
         "path": "design/bestiary/creatures/succubus.md",

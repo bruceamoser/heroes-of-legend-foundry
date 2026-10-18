@@ -3,10 +3,13 @@
   "_id": "278f79d2ce3ec07d",
   "name": "Walking Thorn",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/cd178dd4b63a3007dfc3b2490c7f25e2b737a32828e6503d8329dd4964c04bd3.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/cd178dd4b63a3007dfc3b2490c7f25e2b737a32828e6503d8329dd4964c04bd3.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -108,6 +111,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-walking-thorn",
+        "asset": "assets/creatures/cd178dd4b63a3007dfc3b2490c7f25e2b737a32828e6503d8329dd4964c04bd3.webp",
+        "sha256": "2dfbd5efa7f11ee5011d6929e51e5c7e21a30be284fd7dd1a980e2b795469d1d",
+        "sourceSha256": "cd178dd4b63a3007dfc3b2490c7f25e2b737a32828e6503d8329dd4964c04bd3",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-walking-thorn",
       "source": {
         "path": "design/bestiary/creatures/walking-thorn.md",

@@ -3,10 +3,13 @@
   "_id": "32a773d0aa760965",
   "name": "Masked Duelist",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/db8b1ac1f8c05e402a5a420f23d5f35316514a2c013965861e56482b760753c1.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/db8b1ac1f8c05e402a5a420f23d5f35316514a2c013965861e56482b760753c1.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -103,6 +106,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-masked-duelist",
+        "asset": "assets/creatures/db8b1ac1f8c05e402a5a420f23d5f35316514a2c013965861e56482b760753c1.webp",
+        "sha256": "1a0fa6034eb911a3f6664cbd6a271cc74a07bde368eb446531b4532da13992b9",
+        "sourceSha256": "db8b1ac1f8c05e402a5a420f23d5f35316514a2c013965861e56482b760753c1",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-masked-duelist",
       "source": {
         "path": "design/bestiary/creatures/masked-duelist.md",

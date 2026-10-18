@@ -1,0 +1,168 @@
+{
+  "_key": "!actors!3126fa8da471ef5c",
+  "_id": "3126fa8da471ef5c",
+  "name": "Hedge Sprite",
+  "type": "summon",
+  "img": "systems/heroes-of-legend/assets/creatures/4a69d2737d3f386b274af9cdab19a934df7629c6a5e9fac96b533d60ea3ec434.webp",
+  "prototypeToken": {
+    "name": "Hedge Sprite",
+    "actorLink": false,
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/4a69d2737d3f386b274af9cdab19a934df7629c6a5e9fac96b533d60ea3ec434.webp"
+    }
+  },
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": -2
+      },
+      "fortitude": {
+        "base": 0
+      },
+      "agility": {
+        "base": 2
+      },
+      "guile": {
+        "base": 2
+      },
+      "knowledge": {
+        "base": 0
+      },
+      "reason": {
+        "base": 1
+      }
+    },
+    "health": {
+      "value": 6,
+      "baseMax": 6
+    },
+    "cv": 5,
+    "eligibility": "Fey 1",
+    "speed": 4,
+    "speedSource": "Ground 4; fly 6",
+    "alternateSpeeds": [
+      {
+        "mode": "fly",
+        "value": 6
+      }
+    ],
+    "footprint": {
+      "width": 1,
+      "height": 1
+    },
+    "defenseModifier": {
+      "boons": 1,
+      "banes": 0,
+      "sourceText": "1 Boon"
+    },
+    "stability": 0,
+    "stabilitySource": "0",
+    "resistances": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "immunities": [],
+    "senses": "Ordinary sight and hearing.",
+    "communication": "Common and Fey",
+    "basicMelee": {
+      "orientation": "attacker",
+      "attribute": "brawn",
+      "attackModifier": {
+        "boons": 0,
+        "banes": 0,
+        "sourceText": "None"
+      },
+      "weak": 1,
+      "standard": 2,
+      "strong": 4
+    },
+    "attacks": [
+      {
+        "name": "Thorn dart",
+        "attribute": "guile",
+        "orientation": "attacker",
+        "attackModifier": {
+          "boons": 0,
+          "banes": 0,
+          "sourceText": "None"
+        },
+        "weak": "1 physical damage.",
+        "standard": "2 physical damage.",
+        "strong": "3 physical damage."
+      }
+    ],
+    "commandSource": "Main command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use controller’s turn. Beyond 6 squares, or controller unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot.",
+    "healingSource": "Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body.",
+    "restrictions": {
+      "canReceiveHealing": false,
+      "reactions": false,
+      "opportunityAttacks": false,
+      "independentTurns": false,
+      "turnAnchor": "controller",
+      "maximumCommandsPerTurn": 1,
+      "tetherSquares": 6,
+      "disappearsAtHp": 0,
+      "permanentLoot": false
+    },
+    "sourceMarkdown": "# Hedge Sprite (CV 5)\n\n*A tiny winged fey with thornlike features, leaf-colored clothes and a fierce sense of local etiquette. Its home may be no larger than a hedge, but its claim to it is absolute.*\n\n**HP:** 6 · **Speed:** Ground 4; fly 6 · **Footprint:** 1x1\n\n**Summoned form — player reference.**\n\n**Defense modifier:** 1 Boon. · **Stability:** 0.\n\n**DR / resistance:** None · **Condition immunities:** None\n\n**Weakness:** None\n\n**Healing:** Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body.\n\n\n**Senses:** Ordinary sight and hearing.\n\n**Communication:** Common and Fey\n\n**Attributes:** Brawn -2; Fortitude +0; Agility +2; Guile +2; Knowledge +0; Reason +1\n\n**Eligibility:** Fey 1\n\nMain command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use controller’s turn. Beyond 6 squares, or controller unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot.\n\n**Carrying:** up to 1 Bulk; anatomy limits handling. No granted crafting training.\n\nRoll its printed attack attribute and read the attacker outcomes below. When it is attacked, roll the defense attribute named by the incoming attack. Passive defenses remain; no independent active effects.\n\n## Attacks — Main Action\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Thorn dart | Guile | None | 1 physical damage. | 2 physical damage. | 3 physical damage. |\n\n\n**Thorn dart:** One visible creature within 4 squares.\n\n**Defend — Maneuver:** gain 1 Boon to defenses until the start of the controller’s next turn; repeated Defend does not stack.\n\n**Basic Melee — Main:** None to attack; Brawn, one adjacent target; Weak attack 1, Standard 2, Strong 4 physical damage. No specialty riders. No opportunity Reaction.\n\n[DA creature card](../creatures/hedge-sprite.md) · [Summon rules](../../rules/summoning.md)\n",
+    "referenceMarkdown": "# Hedge Sprite (CV 5)\n\n*A tiny winged fey with thornlike features, leaf-colored clothes and a fierce sense of local etiquette. Its home may be no larger than a hedge, but its claim to it is absolute.*\n\n**HP:** 6 · **Speed:** Ground 4; fly 6 · **Footprint:** 1x1\n\n**Summoned form — player reference.**\n\n**Defense modifier:** 1 Boon. · **Stability:** 0.\n\n**DR / resistance:** None · **Condition immunities:** None\n\n**Weakness:** None\n\n**Healing:** Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body.\n\n\n**Senses:** Ordinary sight and hearing.\n\n**Communication:** Common and Fey\n\n**Attributes:** Brawn -2; Fortitude +0; Agility +2; Guile +2; Knowledge +0; Reason +1\n\n**Eligibility:** Fey 1\n\nMain command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use controller’s turn. Beyond 6 squares, or controller unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot.\n\n**Carrying:** up to 1 Bulk; anatomy limits handling. No granted crafting training.\n\nRoll its printed attack attribute and read the attacker outcomes below. When it is attacked, roll the defense attribute named by the incoming attack. Passive defenses remain; no independent active effects.\n\n## Attacks — Main Action\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Thorn dart | Guile | None | 1 physical damage. | 2 physical damage. | 3 physical damage. |\n\n\n**Thorn dart:** One visible creature within 4 squares.\n\n**Defend — Maneuver:** gain 1 Boon to defenses until the start of the controller’s next turn; repeated Defend does not stack.\n\n**Basic Melee — Main:** None to attack; Brawn, one adjacent target; Weak attack 1, Standard 2, Strong 4 physical damage. No specialty riders. No opportunity Reaction.\n\n[DA creature card](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/creatures/hedge-sprite.md) · [Summon rules](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/rules/summoning.md)\n\n\n[Source profile](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/summons/hedge-sprite.md)"
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-hedge-sprite",
+        "asset": "assets/creatures/4a69d2737d3f386b274af9cdab19a934df7629c6a5e9fac96b533d60ea3ec434.webp",
+        "sha256": "679b7fec3837f19dc05ed534e83b867c68dd0d5cc5ca76b4a8159792a1f607fc",
+        "sourceSha256": "4a69d2737d3f386b274af9cdab19a934df7629c6a5e9fac96b533d60ea3ec434",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
+      "catalogId": "summon-hedge-sprite",
+      "source": {
+        "path": "design/bestiary/summons/hedge-sprite.md",
+        "sha256": "e85142ac6a5328dd7ab8193ed197de9c943b95853770f42a8a42517ac5431e46"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "creatureId": "creature-hedge-sprite",
+      "references": {
+        "creature": {
+          "kind": "creature-reference",
+          "id": "creature-hedge-sprite",
+          "path": "design/bestiary/creatures/hedge-sprite.md",
+          "sha256": "6932b327ef4d81fab602a3ffc09782069a1e5777b558201678e4b7f38d710c9b"
+        },
+        "summonRules": {
+          "kind": "rules-reference",
+          "id": "summoning-rules",
+          "path": "design/rules/summoning.md",
+          "sha256": "2a97418d46d2ae018297ff27ffe0898fd8e649fdc09fd42cb92b23ebda9244db"
+        },
+        "summoning": {
+          "kind": "summon-profile",
+          "id": "summon-hedge-sprite"
+        }
+      },
+      "automation": "pending",
+      "automationLabel": "Summon reference · command, spawn and tether automation pending",
+      "lifecycleAutomation": "pending"
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  }
+}

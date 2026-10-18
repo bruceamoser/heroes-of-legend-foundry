@@ -3,10 +3,13 @@
   "_id": "f914fbd972acf6e1",
   "name": "Ogre Glutton",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/7fc2e4353931bd9fbb24abe0d3752ad89d534790fde1ca3a63c82536f63431e6.webp",
   "prototypeToken": {
     "width": 2,
-    "height": 2
+    "height": 2,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/7fc2e4353931bd9fbb24abe0d3752ad89d534790fde1ca3a63c82536f63431e6.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -103,6 +106,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-ogre-glutton",
+        "asset": "assets/creatures/7fc2e4353931bd9fbb24abe0d3752ad89d534790fde1ca3a63c82536f63431e6.webp",
+        "sha256": "3d7aaa97f98a7d4874ca3f1305cc71b1abef32152eb9c82815a50cacbc0e5449",
+        "sourceSha256": "7fc2e4353931bd9fbb24abe0d3752ad89d534790fde1ca3a63c82536f63431e6",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-ogre-glutton",
       "source": {
         "path": "design/bestiary/creatures/ogre-glutton.md",

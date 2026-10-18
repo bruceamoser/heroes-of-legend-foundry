@@ -3,10 +3,13 @@
   "_id": "2e5a298544b44dea",
   "name": "Shambling Mound",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/a3520212752d216f03148688630123807466af1a72badd772cc3a31bbdb9efd8.webp",
   "prototypeToken": {
     "width": 2,
-    "height": 2
+    "height": 2,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/a3520212752d216f03148688630123807466af1a72badd772cc3a31bbdb9efd8.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -113,6 +116,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-shambling-mound",
+        "asset": "assets/creatures/a3520212752d216f03148688630123807466af1a72badd772cc3a31bbdb9efd8.webp",
+        "sha256": "672011948ba3463e517a707009553cb1ffb56d1ec4b55ffa8b694abcf38dbc9f",
+        "sourceSha256": "a3520212752d216f03148688630123807466af1a72badd772cc3a31bbdb9efd8",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-shambling-mound",
       "source": {
         "path": "design/bestiary/creatures/shambling-mound.md",

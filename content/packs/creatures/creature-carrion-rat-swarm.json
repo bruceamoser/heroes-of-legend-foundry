@@ -3,10 +3,13 @@
   "_id": "f5566182054c0bba",
   "name": "Carrion Rat Swarm",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/bc079998621b182b69b8120d805df0eb90d669d1cf9c4f77b03c2b934e6c88fd.webp",
   "prototypeToken": {
     "width": 2,
-    "height": 2
+    "height": 2,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/bc079998621b182b69b8120d805df0eb90d669d1cf9c4f77b03c2b934e6c88fd.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -113,6 +116,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-carrion-rat-swarm",
+        "asset": "assets/creatures/bc079998621b182b69b8120d805df0eb90d669d1cf9c4f77b03c2b934e6c88fd.webp",
+        "sha256": "b62693b7b774e368c00a29628523dd54867b4cc202f43f1c0ccd51431ddc6ab9",
+        "sourceSha256": "bc079998621b182b69b8120d805df0eb90d669d1cf9c4f77b03c2b934e6c88fd",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-carrion-rat-swarm",
       "source": {
         "path": "design/bestiary/creatures/carrion-rat-swarm.md",

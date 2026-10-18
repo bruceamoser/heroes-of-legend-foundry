@@ -3,10 +3,13 @@
   "_id": "a198b50f6d5873cb",
   "name": "River Serpent",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/d48515bc45bd515b8775f6417bcc6637e274e19c10f0f8cf2224741052918507.webp",
   "prototypeToken": {
     "width": 3,
-    "height": 3
+    "height": 3,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/d48515bc45bd515b8775f6417bcc6637e274e19c10f0f8cf2224741052918507.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -113,6 +116,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-river-serpent",
+        "asset": "assets/creatures/d48515bc45bd515b8775f6417bcc6637e274e19c10f0f8cf2224741052918507.webp",
+        "sha256": "be1d064ab02f215449b92ce1f994aea4b30853f58225b49d2592dd53dac9045a",
+        "sourceSha256": "d48515bc45bd515b8775f6417bcc6637e274e19c10f0f8cf2224741052918507",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-river-serpent",
       "source": {
         "path": "design/bestiary/creatures/river-serpent.md",

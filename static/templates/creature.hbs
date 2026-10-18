@@ -1,5 +1,6 @@
 <section class="hol-body hol-creature-sheet">
 <header class="hol-banner">
+<button type="button" class="hol-profile-portrait" data-action="viewPortrait" aria-label="View {{actor.name}} portrait"><img src="{{actor.img}}" alt="{{actor.name}}"></button>
 <p class="hol-kicker">{{#if classification}}{{classification.category}} · {{/if}}Creature · CV {{system.cv}}</p>
 <h1>{{actor.name}}</h1>
 {{#if family}}<p>{{family}}</p>{{/if}}

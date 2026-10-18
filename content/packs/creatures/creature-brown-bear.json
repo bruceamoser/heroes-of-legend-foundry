@@ -3,10 +3,13 @@
   "_id": "627651125adb2d31",
   "name": "Brown Bear",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/e965f69da6674a7c6298fd663e373b43fac6d134fce326cf58fe673ac1b04a53.webp",
   "prototypeToken": {
     "width": 2,
-    "height": 2
+    "height": 2,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/e965f69da6674a7c6298fd663e373b43fac6d134fce326cf58fe673ac1b04a53.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -108,6 +111,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-brown-bear",
+        "asset": "assets/creatures/e965f69da6674a7c6298fd663e373b43fac6d134fce326cf58fe673ac1b04a53.webp",
+        "sha256": "b5daad2e4aefe9e5def35cf2a23a8204492cf0cf7ff68c9901ed8034e223165b",
+        "sourceSha256": "e965f69da6674a7c6298fd663e373b43fac6d134fce326cf58fe673ac1b04a53",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "creature-brown-bear",
       "source": {
         "path": "design/bestiary/creatures/brown-bear.md",

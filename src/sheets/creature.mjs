@@ -1,3 +1,4 @@
+import { viewPortrait } from "./portrait.mjs";
 import { declareNpcMelee } from "../services/npc-attacks.mjs";
 import { CharacterSheet } from "./character.mjs";
 import {
@@ -18,7 +19,7 @@ function sourceLink(source, commit) {
 export class CreatureSheet extends CharacterSheet {
   static DEFAULT_OPTIONS = {
     classes: ["hol-creature"],
-    actions: { npcMelee: CreatureSheet.npcMelee },
+    actions: { npcMelee: CreatureSheet.npcMelee, viewPortrait },
     position: { width: 740, height: 800 },
   };
   async _prepareContext(options) {

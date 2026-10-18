@@ -3,10 +3,13 @@
   "_id": "878fd4830b2667ba",
   "name": "Lizardfolk Starspeaker",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/33a88cdb6b901b3d1fc4218a42cdad55b775a70785d5f86d460cce4365b5438b.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/33a88cdb6b901b3d1fc4218a42cdad55b775a70785d5f86d460cce4365b5438b.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -108,6 +111,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-lizardfolk-starspeaker",
+        "asset": "assets/creatures/33a88cdb6b901b3d1fc4218a42cdad55b775a70785d5f86d460cce4365b5438b.webp",
+        "sha256": "23c9df89fba5c2126b3c37bf76459f8773ad3f6b028fa42cbc9239085874787e",
+        "sourceSha256": "33a88cdb6b901b3d1fc4218a42cdad55b775a70785d5f86d460cce4365b5438b",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-lizardfolk-starspeaker",
       "source": {
         "path": "design/bestiary/creatures/lizardfolk-starspeaker.md",

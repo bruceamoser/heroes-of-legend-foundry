@@ -3,10 +3,13 @@
   "_id": "f6edb3af35511d8b",
   "name": "Chimera",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/175e8445f46d8dd767b7f735001bfd10f390396bc8e62cc9de6d932e32614de9.webp",
   "prototypeToken": {
     "width": 2,
-    "height": 2
+    "height": 2,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/175e8445f46d8dd767b7f735001bfd10f390396bc8e62cc9de6d932e32614de9.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -113,6 +116,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-chimera",
+        "asset": "assets/creatures/175e8445f46d8dd767b7f735001bfd10f390396bc8e62cc9de6d932e32614de9.webp",
+        "sha256": "4f1440d8e0e8141aa8d8e1955c7c4c36ca7e9b1db9f024b28a630db1548d5f83",
+        "sourceSha256": "175e8445f46d8dd767b7f735001bfd10f390396bc8e62cc9de6d932e32614de9",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-chimera",
       "source": {
         "path": "design/bestiary/creatures/chimera.md",

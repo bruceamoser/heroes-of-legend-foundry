@@ -3,7 +3,6 @@ import { readFile } from "node:fs/promises";
 import { chromium } from "playwright";
 import {
   CREATURE_AUTOMATION_LABEL,
-  CREATURE_FALLBACK_IMAGE,
 } from "./content/creature-packs.mjs";
 import { selectTestUser } from "./helpers/login.mjs";
 
@@ -26,6 +25,7 @@ const catalog = JSON.parse(
   ),
 );
 assert.equal(catalog.creatures.length, 192);
+const portraitManifest = JSON.parse(await readFile(new URL("../static/assets/creatures/manifest.json", import.meta.url), "utf8"));
 const representativeIds = ["creature-adder", "creature-red-dragon"];
 const representativeRecords = representativeIds.map((id) => {
   const record = catalog.creatures.find((candidate) => candidate.id === id);
@@ -41,7 +41,7 @@ function expectedProfile(record) {
     catalogId: record.id,
     name: record.name,
     type: "creature",
-    img: CREATURE_FALLBACK_IMAGE,
+    img: `systems/heroes-of-legend/${portraitManifest.portraits.find(p => p.id === record.id).asset}`,
     cv: record.cv,
     attributes: Object.fromEntries(
       Object.entries(record.attributes).map(([key, base]) => [key, base]),

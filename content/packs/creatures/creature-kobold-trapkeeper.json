@@ -3,10 +3,13 @@
   "_id": "101db850bfe18863",
   "name": "Kobold Trapkeeper",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/24105645bafd0a7624b9145cc35baea8f7754e1956300a9e279b2da48a6594d4.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/24105645bafd0a7624b9145cc35baea8f7754e1956300a9e279b2da48a6594d4.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -103,6 +106,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-kobold-trapkeeper",
+        "asset": "assets/creatures/24105645bafd0a7624b9145cc35baea8f7754e1956300a9e279b2da48a6594d4.webp",
+        "sha256": "374d9f34516a1cb4102deeafe1f8ea2814f813f923220b7c02ee3f3a4b78632c",
+        "sourceSha256": "24105645bafd0a7624b9145cc35baea8f7754e1956300a9e279b2da48a6594d4",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-kobold-trapkeeper",
       "source": {
         "path": "design/bestiary/creatures/kobold-trapkeeper.md",

@@ -74,7 +74,8 @@
   "TYPES": {
     "Actor": {
       "character": "Hero",
-      "creature": "Creature"
+      "creature": "Creature",
+      "summon": "Summon"
     },
     "Item": {
       "ability": "Ability"

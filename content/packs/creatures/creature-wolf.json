@@ -3,10 +3,13 @@
   "_id": "121404628b310008",
   "name": "Wolf",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/77b60dac60e0257284185a65d04737877a03a13f0ffc08189b32a85b7cbec44f.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/77b60dac60e0257284185a65d04737877a03a13f0ffc08189b32a85b7cbec44f.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -103,6 +106,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-wolf",
+        "asset": "assets/creatures/77b60dac60e0257284185a65d04737877a03a13f0ffc08189b32a85b7cbec44f.webp",
+        "sha256": "7cb737b6d9b6b58cacd0ef9fe1236212307d8a8f7c3cf82b69d2899bf773826c",
+        "sourceSha256": "77b60dac60e0257284185a65d04737877a03a13f0ffc08189b32a85b7cbec44f",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "creature-wolf",
       "source": {
         "path": "design/bestiary/creatures/wolf.md",

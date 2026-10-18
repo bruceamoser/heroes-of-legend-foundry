@@ -3,10 +3,13 @@
   "_id": "f830feb60da6c431",
   "name": "Rime Dragon",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/91ea293f8836965248fd97e629dad2ae3f71b0473c8c14ab2b7527b86279761d.webp",
   "prototypeToken": {
     "width": 3,
-    "height": 3
+    "height": 3,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/91ea293f8836965248fd97e629dad2ae3f71b0473c8c14ab2b7527b86279761d.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -121,6 +124,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-rime-dragon",
+        "asset": "assets/creatures/91ea293f8836965248fd97e629dad2ae3f71b0473c8c14ab2b7527b86279761d.webp",
+        "sha256": "cca9d243a1173c598a1cd76d4cfcd6230017a98e170afb94b63d6945b626dc75",
+        "sourceSha256": "91ea293f8836965248fd97e629dad2ae3f71b0473c8c14ab2b7527b86279761d",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-rime-dragon",
       "source": {
         "path": "design/bestiary/creatures/rime-dragon.md",

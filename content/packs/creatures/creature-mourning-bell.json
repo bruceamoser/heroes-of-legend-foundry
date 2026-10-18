@@ -3,10 +3,13 @@
   "_id": "4001988656d162d4",
   "name": "Mourning Bell",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/80d2b151837fccc233f1c56efe3120d369716549774caad039c9130c0365be66.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/80d2b151837fccc233f1c56efe3120d369716549774caad039c9130c0365be66.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -117,6 +120,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-mourning-bell",
+        "asset": "assets/creatures/80d2b151837fccc233f1c56efe3120d369716549774caad039c9130c0365be66.webp",
+        "sha256": "2fdda69c9bc61b4064abb1431bff41af41994046b8deb70b4e53f375671d354f",
+        "sourceSha256": "80d2b151837fccc233f1c56efe3120d369716549774caad039c9130c0365be66",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "creature-mourning-bell",
       "source": {
         "path": "design/bestiary/creatures/mourning-bell.md",

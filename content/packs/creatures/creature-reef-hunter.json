@@ -3,10 +3,13 @@
   "_id": "eab49d69486aea50",
   "name": "Reef Hunter",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/dd9b873dd55f1d6b6605a7710537330ee79aacae875c3abe3406b673ca01e084.webp",
   "prototypeToken": {
     "width": 2,
-    "height": 2
+    "height": 2,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/dd9b873dd55f1d6b6605a7710537330ee79aacae875c3abe3406b673ca01e084.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -108,6 +111,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-reef-hunter",
+        "asset": "assets/creatures/dd9b873dd55f1d6b6605a7710537330ee79aacae875c3abe3406b673ca01e084.webp",
+        "sha256": "baaad6a9b18364b4a1d1044dd8ffe08a5c75d9b3816f9580612314f68d3ac309",
+        "sourceSha256": "dd9b873dd55f1d6b6605a7710537330ee79aacae875c3abe3406b673ca01e084",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "creature-reef-hunter",
       "source": {
         "path": "design/bestiary/creatures/reef-hunter.md",

@@ -3,10 +3,13 @@
   "_id": "8d8292ed39672b53",
   "name": "Many-headed Marsh Wyrm",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/05ff0674cd063e36647f8b8ff2a48aeef140c83212285e812c18064e31a9f029.webp",
   "prototypeToken": {
     "width": 3,
-    "height": 3
+    "height": 3,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/05ff0674cd063e36647f8b8ff2a48aeef140c83212285e812c18064e31a9f029.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -118,6 +121,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-many-headed-marsh-wyrm",
+        "asset": "assets/creatures/05ff0674cd063e36647f8b8ff2a48aeef140c83212285e812c18064e31a9f029.webp",
+        "sha256": "0a3f128a0efd2ed3db8158c8280bf0da788a1fd102c264063428b2fe9972567f",
+        "sourceSha256": "05ff0674cd063e36647f8b8ff2a48aeef140c83212285e812c18064e31a9f029",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-many-headed-marsh-wyrm",
       "source": {
         "path": "design/bestiary/creatures/many-headed-marsh-wyrm.md",

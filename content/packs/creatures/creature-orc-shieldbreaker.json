@@ -3,10 +3,13 @@
   "_id": "1c621ea73e5f6b6e",
   "name": "Orc Shieldbreaker",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/9fcc64569c657a11316aea52616fad217a7c44e7b21cc70a10cc7001027c3dfe.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/9fcc64569c657a11316aea52616fad217a7c44e7b21cc70a10cc7001027c3dfe.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -108,6 +111,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-orc-shieldbreaker",
+        "asset": "assets/creatures/9fcc64569c657a11316aea52616fad217a7c44e7b21cc70a10cc7001027c3dfe.webp",
+        "sha256": "d9a899db4f7475030fd4f5ae17a8574cc83e4612ea96666b8aad5dc6fede3282",
+        "sourceSha256": "9fcc64569c657a11316aea52616fad217a7c44e7b21cc70a10cc7001027c3dfe",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-orc-shieldbreaker",
       "source": {
         "path": "design/bestiary/creatures/orc-shieldbreaker.md",

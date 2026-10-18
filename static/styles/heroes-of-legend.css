@@ -251,3 +251,7 @@
 @container (max-width:420px) {
  .heroes-of-legend .hol-stat-grid, .heroes-of-legend .hol-outcome-grid { grid-template-columns:1fr; }
 }
+
+.heroes-of-legend .hol-profile-portrait { float:right; width:110px; height:130px; margin:0 0 8px 12px; padding:2px; background:transparent; border:1px solid var(--hol-gold); }
+.heroes-of-legend .hol-profile-portrait img { display:block; width:100%; height:100%; object-fit:contain; border:0; }
+.heroes-of-legend .hol-banner:has(.hol-profile-portrait)::after { content:""; display:block; clear:both; }

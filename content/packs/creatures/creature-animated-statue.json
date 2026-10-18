@@ -3,10 +3,13 @@
   "_id": "059fd2dce530b40d",
   "name": "Animated Statue",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/47235a7a27468885b95fc10b63d94ef3a60a875a354cb2e626c0cc4a3cbc659e.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/47235a7a27468885b95fc10b63d94ef3a60a875a354cb2e626c0cc4a3cbc659e.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -112,6 +115,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-animated-statue",
+        "asset": "assets/creatures/47235a7a27468885b95fc10b63d94ef3a60a875a354cb2e626c0cc4a3cbc659e.webp",
+        "sha256": "f7511241bbb5c8db775740373fc07817c07205a9f4e4daaa189a023fd11e1219",
+        "sourceSha256": "47235a7a27468885b95fc10b63d94ef3a60a875a354cb2e626c0cc4a3cbc659e",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "creature-animated-statue",
       "source": {
         "path": "design/bestiary/creatures/animated-statue.md",

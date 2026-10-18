@@ -3,10 +3,13 @@
   "_id": "b5fac8a5c91636e7",
   "name": "Dawn Emissary",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/1f299b8114e834c4c3f4bd7879c6480a638da06f2fd66c072a4b50a22b00d9fe.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/1f299b8114e834c4c3f4bd7879c6480a638da06f2fd66c072a4b50a22b00d9fe.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -113,6 +116,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-dawn-emissary",
+        "asset": "assets/creatures/1f299b8114e834c4c3f4bd7879c6480a638da06f2fd66c072a4b50a22b00d9fe.webp",
+        "sha256": "6bb87c49adba830574ef9b6618d474e59234ac7f2ef7c8c01319f4cce47867da",
+        "sourceSha256": "1f299b8114e834c4c3f4bd7879c6480a638da06f2fd66c072a4b50a22b00d9fe",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-dawn-emissary",
       "source": {
         "path": "design/bestiary/creatures/dawn-emissary.md",

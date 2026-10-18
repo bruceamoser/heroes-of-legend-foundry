@@ -1,0 +1,181 @@
+{
+  "_key": "!actors!3354e32ab2498707",
+  "_id": "3354e32ab2498707",
+  "name": "Great Cat",
+  "type": "summon",
+  "img": "systems/heroes-of-legend/assets/creatures/a74271222f0172880f523e2d542bb09426c178d551343be8493cde58834db3aa.webp",
+  "prototypeToken": {
+    "name": "Great Cat",
+    "actorLink": false,
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/a74271222f0172880f523e2d542bb09426c178d551343be8493cde58834db3aa.webp"
+    }
+  },
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 1
+      },
+      "fortitude": {
+        "base": 1
+      },
+      "agility": {
+        "base": 2
+      },
+      "guile": {
+        "base": 1
+      },
+      "knowledge": {
+        "base": -2
+      },
+      "reason": {
+        "base": 1
+      }
+    },
+    "health": {
+      "value": 16,
+      "baseMax": 16
+    },
+    "cv": 15,
+    "eligibility": "Animal 3",
+    "speed": 8,
+    "speedSource": "Ground 8; climb 6",
+    "alternateSpeeds": [
+      {
+        "mode": "climb",
+        "value": 6
+      }
+    ],
+    "footprint": {
+      "width": 1,
+      "height": 1
+    },
+    "defenseModifier": {
+      "boons": 1,
+      "banes": 0,
+      "sourceText": "1 Boon"
+    },
+    "stability": 0,
+    "stabilitySource": "0",
+    "resistances": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "immunities": [],
+    "senses": "Ordinary sight and hearing.",
+    "communication": "None",
+    "basicMelee": {
+      "orientation": "attacker",
+      "attribute": "brawn",
+      "attackModifier": {
+        "boons": 1,
+        "banes": 0,
+        "sourceText": "1 Boon"
+      },
+      "weak": 2,
+      "standard": 3,
+      "strong": 5
+    },
+    "attacks": [
+      {
+        "name": "Pouncing claws",
+        "attribute": "brawn",
+        "orientation": "attacker",
+        "attackModifier": {
+          "boons": 1,
+          "banes": 0,
+          "sourceText": "1 Boon"
+        },
+        "weak": "3 physical damage.",
+        "standard": "4 physical damage. After an approach of 2 squares, Prone.",
+        "strong": "6 physical damage. After an approach of 2 squares, Prone."
+      },
+      {
+        "name": "Raking bite",
+        "attribute": "agility",
+        "orientation": "attacker",
+        "attackModifier": {
+          "boons": 1,
+          "banes": 0,
+          "sourceText": "1 Boon"
+        },
+        "weak": "3 physical damage.",
+        "standard": "4 physical damage; Bleeding 1.",
+        "strong": "6 physical damage; Bleeding 2."
+      }
+    ],
+    "commandSource": "Main command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use controller’s turn. Beyond 6 squares, or controller unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot.",
+    "healingSource": "Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body.",
+    "restrictions": {
+      "canReceiveHealing": false,
+      "reactions": false,
+      "opportunityAttacks": false,
+      "independentTurns": false,
+      "turnAnchor": "controller",
+      "maximumCommandsPerTurn": 1,
+      "tetherSquares": 6,
+      "disappearsAtHp": 0,
+      "permanentLoot": false
+    },
+    "sourceMarkdown": "# Great Cat (CV 15)\n\n*A long-bodied spotted cat with padded paws, heavy shoulders and a tail that balances it on high branches. A solitary hunter, it favors a short ambush over a costly struggle.*\n\n**HP:** 16 · **Speed:** Ground 8; climb 6 · **Footprint:** 1x1\n\n**Summoned form — player reference.**\n\n**Defense modifier:** 1 Boon. · **Stability:** 0.\n\n**DR / resistance:** None · **Condition immunities:** None\n\n**Weakness:** None\n\n**Healing:** Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body.\n\n\n**Senses:** Ordinary sight and hearing.\n\n**Communication:** None\n\n**Attributes:** Brawn +1; Fortitude +1; Agility +2; Guile +1; Knowledge -2; Reason +1\n\n**Eligibility:** Animal 3\n\nMain command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use controller’s turn. Beyond 6 squares, or controller unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot.\n\n**Carrying:** up to 1 Bulk; anatomy limits handling. No granted crafting training.\n\nRoll its printed attack attribute and read the attacker outcomes below. When it is attacked, roll the defense attribute named by the incoming attack. Passive defenses remain; no independent active effects.\n\n## Attacks — Main Action\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Pouncing claws | Brawn | 1 Boon | 3 physical damage. | 4 physical damage. After an approach of 2 squares, Prone. | 6 physical damage. After an approach of 2 squares, Prone. |\n| Raking bite | Agility | 1 Boon | 3 physical damage. | 4 physical damage; Bleeding 1. | 6 physical damage; Bleeding 2. |\n\n\n**Pouncing claws:** One adjacent creature.\n\n**Raking bite:** One adjacent creature.\n\n### Stalking Step — Maneuver\n\nMove up to 2 squares, paying terrain costs from that allowance. Provokes normally; no automatic Hidden.\n\n### Flatten into Cover — Maneuver\n\nIn actual concealment, gain 1 Boon to its next hiding roll before turn end. This is not a free Hide action or automatic Hidden.\n\n**Defend — Maneuver:** gain 1 Boon to defenses until the start of the controller’s next turn; repeated Defend does not stack.\n\n**Basic Melee — Main:** 1 Boon to attack; Brawn, one adjacent target; Weak attack 2, Standard 3, Strong 5 physical damage. No specialty riders. No opportunity Reaction.\n\n[DA creature card](../creatures/great-cat.md) · [Summon rules](../../rules/summoning.md)\n",
+    "referenceMarkdown": "# Great Cat (CV 15)\n\n*A long-bodied spotted cat with padded paws, heavy shoulders and a tail that balances it on high branches. A solitary hunter, it favors a short ambush over a costly struggle.*\n\n**HP:** 16 · **Speed:** Ground 8; climb 6 · **Footprint:** 1x1\n\n**Summoned form — player reference.**\n\n**Defense modifier:** 1 Boon. · **Stability:** 0.\n\n**DR / resistance:** None · **Condition immunities:** None\n\n**Weakness:** None\n\n**Healing:** Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body.\n\n\n**Senses:** Ordinary sight and hearing.\n\n**Communication:** None\n\n**Attributes:** Brawn +1; Fortitude +1; Agility +2; Guile +1; Knowledge -2; Reason +1\n\n**Eligibility:** Animal 3\n\nMain command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use controller’s turn. Beyond 6 squares, or controller unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot.\n\n**Carrying:** up to 1 Bulk; anatomy limits handling. No granted crafting training.\n\nRoll its printed attack attribute and read the attacker outcomes below. When it is attacked, roll the defense attribute named by the incoming attack. Passive defenses remain; no independent active effects.\n\n## Attacks — Main Action\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Pouncing claws | Brawn | 1 Boon | 3 physical damage. | 4 physical damage. After an approach of 2 squares, Prone. | 6 physical damage. After an approach of 2 squares, Prone. |\n| Raking bite | Agility | 1 Boon | 3 physical damage. | 4 physical damage; Bleeding 1. | 6 physical damage; Bleeding 2. |\n\n\n**Pouncing claws:** One adjacent creature.\n\n**Raking bite:** One adjacent creature.\n\n### Stalking Step — Maneuver\n\nMove up to 2 squares, paying terrain costs from that allowance. Provokes normally; no automatic Hidden.\n\n### Flatten into Cover — Maneuver\n\nIn actual concealment, gain 1 Boon to its next hiding roll before turn end. This is not a free Hide action or automatic Hidden.\n\n**Defend — Maneuver:** gain 1 Boon to defenses until the start of the controller’s next turn; repeated Defend does not stack.\n\n**Basic Melee — Main:** 1 Boon to attack; Brawn, one adjacent target; Weak attack 2, Standard 3, Strong 5 physical damage. No specialty riders. No opportunity Reaction.\n\n[DA creature card](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/creatures/great-cat.md) · [Summon rules](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/rules/summoning.md)\n\n\n[Source profile](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/summons/great-cat.md)"
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-great-cat",
+        "asset": "assets/creatures/a74271222f0172880f523e2d542bb09426c178d551343be8493cde58834db3aa.webp",
+        "sha256": "0249efa640ce9b84aec979ded811aaf6083684f5adecb4e0cbdb6833dd8620f0",
+        "sourceSha256": "a74271222f0172880f523e2d542bb09426c178d551343be8493cde58834db3aa",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
+      "catalogId": "summon-great-cat",
+      "source": {
+        "path": "design/bestiary/summons/great-cat.md",
+        "sha256": "2c5aa3763156a1d28863d0e84635ee0c160b8528c77ccb58cd84394aeb9a7fb3"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "creatureId": "creature-great-cat",
+      "references": {
+        "creature": {
+          "kind": "creature-reference",
+          "id": "creature-great-cat",
+          "path": "design/bestiary/creatures/great-cat.md",
+          "sha256": "19f12f3543bfd9821e0f09c0d0a67b450b1dc0eae7ea09bb84fd2b6195124177"
+        },
+        "summonRules": {
+          "kind": "rules-reference",
+          "id": "summoning-rules",
+          "path": "design/rules/summoning.md",
+          "sha256": "2a97418d46d2ae018297ff27ffe0898fd8e649fdc09fd42cb92b23ebda9244db"
+        },
+        "summoning": {
+          "kind": "summon-profile",
+          "id": "summon-great-cat"
+        }
+      },
+      "automation": "pending",
+      "automationLabel": "Summon reference · command, spawn and tether automation pending",
+      "lifecycleAutomation": "pending"
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  }
+}

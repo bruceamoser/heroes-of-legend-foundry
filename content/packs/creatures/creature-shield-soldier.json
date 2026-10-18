@@ -3,10 +3,13 @@
   "_id": "75b34d9901872f04",
   "name": "Shield Soldier",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/be1d28456964a10913abb186bf693f3796ad8f58e524af40b63e91c1e5a738e7.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/be1d28456964a10913abb186bf693f3796ad8f58e524af40b63e91c1e5a738e7.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -108,6 +111,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-shield-soldier",
+        "asset": "assets/creatures/be1d28456964a10913abb186bf693f3796ad8f58e524af40b63e91c1e5a738e7.webp",
+        "sha256": "ad36181dc521cacb6c8775decfcdb6b2280854bed6f7a7c748a6223bec0d7858",
+        "sourceSha256": "be1d28456964a10913abb186bf693f3796ad8f58e524af40b63e91c1e5a738e7",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-shield-soldier",
       "source": {
         "path": "design/bestiary/creatures/shield-soldier.md",

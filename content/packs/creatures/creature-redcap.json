@@ -3,10 +3,13 @@
   "_id": "92624b50578d1917",
   "name": "Redcap",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/acbbd6b3dbcd8b76d6f16b6e6c72a8de49a3aebb72a236ee7cf0e4f5368935d9.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/acbbd6b3dbcd8b76d6f16b6e6c72a8de49a3aebb72a236ee7cf0e4f5368935d9.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -108,6 +111,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-redcap",
+        "asset": "assets/creatures/acbbd6b3dbcd8b76d6f16b6e6c72a8de49a3aebb72a236ee7cf0e4f5368935d9.webp",
+        "sha256": "67fe8b4b3e6efb5eee892dd4726bd6954050242bc050e3d454d2f2936a3a10e0",
+        "sourceSha256": "acbbd6b3dbcd8b76d6f16b6e6c72a8de49a3aebb72a236ee7cf0e4f5368935d9",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "creature-redcap",
       "source": {
         "path": "design/bestiary/creatures/redcap.md",

@@ -3,10 +3,13 @@
   "_id": "67e05b77e068ce0d",
   "name": "Giant Flytrap",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/d20e24cea3341fa7402eebf80d67baf2c0b9155cca4554a6bf4fe42a842d6be2.webp",
   "prototypeToken": {
     "width": 2,
-    "height": 2
+    "height": 2,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/d20e24cea3341fa7402eebf80d67baf2c0b9155cca4554a6bf4fe42a842d6be2.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -103,6 +106,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-giant-flytrap",
+        "asset": "assets/creatures/d20e24cea3341fa7402eebf80d67baf2c0b9155cca4554a6bf4fe42a842d6be2.webp",
+        "sha256": "b7c89006cfc438c666edcc2a6845a0e17a3d081063a881b59c66526426c82e23",
+        "sourceSha256": "d20e24cea3341fa7402eebf80d67baf2c0b9155cca4554a6bf4fe42a842d6be2",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-giant-flytrap",
       "source": {
         "path": "design/bestiary/creatures/giant-flytrap.md",

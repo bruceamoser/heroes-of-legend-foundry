@@ -3,10 +3,13 @@
   "_id": "f0fa85626afac28f",
   "name": "Satyr",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/dcc3dfdd49a2425cf354d9cd7630f1836e8987d46d6f91f396b2423ac2de720e.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/dcc3dfdd49a2425cf354d9cd7630f1836e8987d46d6f91f396b2423ac2de720e.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -103,6 +106,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-satyr",
+        "asset": "assets/creatures/dcc3dfdd49a2425cf354d9cd7630f1836e8987d46d6f91f396b2423ac2de720e.webp",
+        "sha256": "cce4ea75e341fe744a7d636ca2cc245e57d861cba66b1b99e7ad83efc14cec1b",
+        "sourceSha256": "dcc3dfdd49a2425cf354d9cd7630f1836e8987d46d6f91f396b2423ac2de720e",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "creature-satyr",
       "source": {
         "path": "design/bestiary/creatures/satyr.md",

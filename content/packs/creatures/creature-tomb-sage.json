@@ -3,10 +3,13 @@
   "_id": "46939aac33883fff",
   "name": "Lich — Tomb Sage",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/cbf1f5ecf6a2c6b728d2c2394808675978e4cd242469879b144506f4a9c0bd56.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/cbf1f5ecf6a2c6b728d2c2394808675978e4cd242469879b144506f4a9c0bd56.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -116,6 +119,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-tomb-sage",
+        "asset": "assets/creatures/cbf1f5ecf6a2c6b728d2c2394808675978e4cd242469879b144506f4a9c0bd56.webp",
+        "sha256": "25b38dde0fa751d6ea74c06900848d04d29e925dca76cd0260532be3e9fe64b9",
+        "sourceSha256": "cbf1f5ecf6a2c6b728d2c2394808675978e4cd242469879b144506f4a9c0bd56",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-tomb-sage",
       "source": {
         "path": "design/bestiary/creatures/tomb-sage.md",

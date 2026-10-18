@@ -8,7 +8,6 @@ import {
 } from "../scripts/content/content-packs.mjs";
 import {
   CREATURE_AUTOMATION_LABEL,
-  CREATURE_FALLBACK_IMAGE,
   creatureReferenceMarkdown,
 } from "../scripts/content/creature-packs.mjs";
 import { stableFoundryId } from "../scripts/content/item-packs.mjs";
@@ -35,11 +34,12 @@ test("all 192 creatures are deterministic native Actor documents with pinned pro
   const documents = artifacts.documents.creatures;
   assert.equal(documents.length, 192);
   assert.equal(new Set(documents.map(({ _id }) => _id)).size, 192);
-  assert.equal(artifacts.files.size, 586);
+  assert.equal(artifacts.files.size, 659);
   assert.deepEqual(artifacts.index.catalogs, {
     choices: 2,
     inventory: 1,
     creatures: 1,
+    summons: 1,
   });
   assert.deepEqual(
     artifacts.index.packs.map(({ name, type, count }) => [
@@ -51,6 +51,7 @@ test("all 192 creatures are deterministic native Actor documents with pinned pro
       ["abilities", "Item", 350],
       ["equipment", "Item", 43],
       ["creatures", "Actor", 192],
+      ["summons", "Actor", 73],
     ],
   );
   for (const document of documents) {
@@ -62,7 +63,8 @@ test("all 192 creatures are deterministic native Actor documents with pinned pro
     assert.equal(document._id, record.foundryId);
     assert.equal(document.type, "creature");
     assert.equal(document.name, record.name);
-    assert.equal(document.img, CREATURE_FALLBACK_IMAGE);
+    assert.equal(document.img, `systems/heroes-of-legend/${catalogs.art.portraits.find(p => p.id === record.id).asset}`);
+    assert.equal(document.prototypeToken.texture.src, document.img);
     assert.deepEqual(flags.source, {
       path: record.source.path,
       sha256: record.source.sha256,
@@ -99,7 +101,7 @@ test("all 192 creatures are deterministic native Actor documents with pinned pro
         height: record.size.value,
       },
     );
-    assert.deepEqual(document.prototypeToken, document.system.footprint);
+    assert.deepEqual({width:document.prototypeToken.width,height:document.prototypeToken.height}, document.system.footprint);
     assert.equal(document.system.armor, record.armor.dr);
     assert.equal(document.system.armorMarker, record.armor.marker ?? "");
     assert.equal(document.system.armorSource, record.armor.sourceText);
@@ -119,7 +121,7 @@ test("all 192 creatures are deterministic native Actor documents with pinned pro
       defenseAttribute: basic.defense.attribute,
       orientation: "player-defense",
     });
-    assert.equal(flags.portrait, undefined);
+    assert.equal(flags.portrait.creatureId, record.id);
     assert.equal(flags.artwork, undefined);
     assert.deepEqual(document.items, []);
     assert.deepEqual(document.effects, []);
@@ -431,7 +433,7 @@ test("authored Actor JSON is exact, deterministic and contains no compiled datab
     withFileTypes: true,
   });
   const files = entries.filter((entry) => entry.isFile());
-  assert.equal(files.length, 586);
+  assert.equal(files.length, 659);
   assert(files.every((entry) => entry.name.endsWith(".json")));
   for (const forbidden of ["CURRENT", "LOCK", "LOG", "MANIFEST-000001"])
     assert(!files.some((entry) => entry.name === forbidden));
@@ -482,5 +484,5 @@ test("native token projection preserves rectangular source footprint orientation
   const projected = buildContentPackArtifacts(changed).documents.creatures.find(
     d => d.flags[SYSTEM_ID].catalogId === changed.creatures.creatures[0].id,
   );
-  assert.deepEqual(projected.prototypeToken, { width: 1, height: 3 });
+  assert.deepEqual({width:projected.prototypeToken.width,height:projected.prototypeToken.height}, { width: 1, height: 3 });
 });

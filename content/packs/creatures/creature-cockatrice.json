@@ -3,10 +3,13 @@
   "_id": "92699f4a0b73d33e",
   "name": "Cockatrice",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/f41149a42b53a48c8f7d7b6f2ed13c6f94f203846198f2b93049f18adb7b5f2e.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/f41149a42b53a48c8f7d7b6f2ed13c6f94f203846198f2b93049f18adb7b5f2e.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -108,6 +111,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-cockatrice",
+        "asset": "assets/creatures/f41149a42b53a48c8f7d7b6f2ed13c6f94f203846198f2b93049f18adb7b5f2e.webp",
+        "sha256": "f3ecf02a5a4811004680b835fa9fe1a0b03c3620b63ad67f6ca943063b38afa1",
+        "sourceSha256": "f41149a42b53a48c8f7d7b6f2ed13c6f94f203846198f2b93049f18adb7b5f2e",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-cockatrice",
       "source": {
         "path": "design/bestiary/creatures/cockatrice.md",

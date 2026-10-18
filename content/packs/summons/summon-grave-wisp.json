@@ -1,0 +1,172 @@
+{
+  "_key": "!actors!1ecd2c6f885b35c2",
+  "_id": "1ecd2c6f885b35c2",
+  "name": "Grave Wisp",
+  "type": "summon",
+  "img": "systems/heroes-of-legend/assets/creatures/88baa473cee3375b2367803a1493c814f19a8d4e6851694d66ce3bbbac102aae.webp",
+  "prototypeToken": {
+    "name": "Grave Wisp",
+    "actorLink": false,
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/88baa473cee3375b2367803a1493c814f19a8d4e6851694d66ce3bbbac102aae.webp"
+    }
+  },
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": -2
+      },
+      "fortitude": {
+        "base": 0
+      },
+      "agility": {
+        "base": 2
+      },
+      "guile": {
+        "base": 1
+      },
+      "knowledge": {
+        "base": 0
+      },
+      "reason": {
+        "base": 1
+      }
+    },
+    "health": {
+      "value": 6,
+      "baseMax": 6
+    },
+    "cv": 6,
+    "eligibility": "Undead 1",
+    "speed": 0,
+    "speedSource": "Ground 0; fly 6",
+    "alternateSpeeds": [
+      {
+        "mode": "fly",
+        "value": 6
+      }
+    ],
+    "footprint": {
+      "width": 1,
+      "height": 1
+    },
+    "defenseModifier": {
+      "boons": 1,
+      "banes": 0,
+      "sourceText": "1 Boon"
+    },
+    "stability": 0,
+    "stabilitySource": "0",
+    "resistances": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "immunities": [
+      "Bleeding",
+      "Poisoned",
+      "Asleep"
+    ],
+    "senses": "Dark sight 6 squares.",
+    "communication": "None",
+    "basicMelee": {
+      "orientation": "attacker",
+      "attribute": "brawn",
+      "attackModifier": {
+        "boons": 0,
+        "banes": 0,
+        "sourceText": "None"
+      },
+      "weak": 1,
+      "standard": 2,
+      "strong": 4
+    },
+    "attacks": [
+      {
+        "name": "Cold spark",
+        "attribute": "reason",
+        "orientation": "attacker",
+        "attackModifier": {
+          "boons": 0,
+          "banes": 0,
+          "sourceText": "None"
+        },
+        "weak": "1 cold damage.",
+        "standard": "2 cold damage.",
+        "strong": "3 cold damage."
+      }
+    ],
+    "commandSource": "Main command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use controller’s turn. Beyond 6 squares, or controller unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot.",
+    "healingSource": "Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body. Healing-harmed: ordinary healing resolves as Life damage instead; no beneficial riders.",
+    "restrictions": {
+      "canReceiveHealing": false,
+      "reactions": false,
+      "opportunityAttacks": false,
+      "independentTurns": false,
+      "turnAnchor": "controller",
+      "maximumCommandsPerTurn": 1,
+      "tetherSquares": 6,
+      "disappearsAtHp": 0,
+      "permanentLoot": false
+    },
+    "sourceMarkdown": "# Grave Wisp (CV 6)\n\n*A pale drifting light with the faint suggestion of a face deep inside it. The wisp is a dead person’s lingering need for a witness, not a source of useful flame.*\n\n**HP:** 6 · **Speed:** Ground 0; fly 6 · **Footprint:** 1x1\n\n**Summoned form — player reference.**\n\n**Defense modifier:** 1 Boon. · **Stability:** 0.\n\n**DR / resistance:** None · **Condition immunities:** Bleeding; Poisoned; Asleep\n\n**Weakness:** None\n\n**Healing:** Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body. Healing-harmed: ordinary healing resolves as Life damage instead; no beneficial riders.\n\n**Against offensive healing:** controller defends with Fortitude if this is player-controlled; a player attacking it still rolls only their attack.\n\n\n**Senses:** Dark sight 6 squares.\n\n**Communication:** None\n\n**Attributes:** Brawn -2; Fortitude +0; Agility +2; Guile +1; Knowledge +0; Reason +1\n\n**Eligibility:** Undead 1\n\nMain command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use controller’s turn. Beyond 6 squares, or controller unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot.\n\n**Carrying:** up to 1 Bulk; anatomy limits handling. No granted crafting training.\n\nRoll its printed attack attribute and read the attacker outcomes below. When it is attacked, roll the defense attribute named by the incoming attack. Passive defenses remain; no independent active effects.\n\n**Lifeless Body — Passive:** does not breathe or eat; only listed immunities apply.\n\n## Attacks — Main Action\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Cold spark | Reason | None | 1 cold damage. | 2 cold damage. | 3 cold damage. |\n\n\n**Cold spark:** One visible creature within 3 squares.\n\n**Defend — Maneuver:** gain 1 Boon to defenses until the start of the controller’s next turn; repeated Defend does not stack.\n\n**Basic Melee — Main:** None to attack; Brawn, one adjacent target; Weak attack 1, Standard 2, Strong 4 physical damage. No specialty riders. No opportunity Reaction.\n\n[DA creature card](../creatures/grave-wisp.md) · [Summon rules](../../rules/summoning.md)\n",
+    "referenceMarkdown": "# Grave Wisp (CV 6)\n\n*A pale drifting light with the faint suggestion of a face deep inside it. The wisp is a dead person’s lingering need for a witness, not a source of useful flame.*\n\n**HP:** 6 · **Speed:** Ground 0; fly 6 · **Footprint:** 1x1\n\n**Summoned form — player reference.**\n\n**Defense modifier:** 1 Boon. · **Stability:** 0.\n\n**DR / resistance:** None · **Condition immunities:** Bleeding; Poisoned; Asleep\n\n**Weakness:** None\n\n**Healing:** Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body. Healing-harmed: ordinary healing resolves as Life damage instead; no beneficial riders.\n\n**Against offensive healing:** controller defends with Fortitude if this is player-controlled; a player attacking it still rolls only their attack.\n\n\n**Senses:** Dark sight 6 squares.\n\n**Communication:** None\n\n**Attributes:** Brawn -2; Fortitude +0; Agility +2; Guile +1; Knowledge +0; Reason +1\n\n**Eligibility:** Undead 1\n\nMain command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use controller’s turn. Beyond 6 squares, or controller unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot.\n\n**Carrying:** up to 1 Bulk; anatomy limits handling. No granted crafting training.\n\nRoll its printed attack attribute and read the attacker outcomes below. When it is attacked, roll the defense attribute named by the incoming attack. Passive defenses remain; no independent active effects.\n\n**Lifeless Body — Passive:** does not breathe or eat; only listed immunities apply.\n\n## Attacks — Main Action\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Cold spark | Reason | None | 1 cold damage. | 2 cold damage. | 3 cold damage. |\n\n\n**Cold spark:** One visible creature within 3 squares.\n\n**Defend — Maneuver:** gain 1 Boon to defenses until the start of the controller’s next turn; repeated Defend does not stack.\n\n**Basic Melee — Main:** None to attack; Brawn, one adjacent target; Weak attack 1, Standard 2, Strong 4 physical damage. No specialty riders. No opportunity Reaction.\n\n[DA creature card](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/creatures/grave-wisp.md) · [Summon rules](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/rules/summoning.md)\n\n\n[Source profile](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/summons/grave-wisp.md)"
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-grave-wisp",
+        "asset": "assets/creatures/88baa473cee3375b2367803a1493c814f19a8d4e6851694d66ce3bbbac102aae.webp",
+        "sha256": "2b563903573150826cdc4ba483476c3f969b5c8b40d66f4257c3cd2bab930d05",
+        "sourceSha256": "88baa473cee3375b2367803a1493c814f19a8d4e6851694d66ce3bbbac102aae",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
+      "catalogId": "summon-grave-wisp",
+      "source": {
+        "path": "design/bestiary/summons/grave-wisp.md",
+        "sha256": "5537e47bf88cdd32d812b3b47697af65eb5e3c66b648e08e0e1230c0cd7482ae"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "creatureId": "creature-grave-wisp",
+      "references": {
+        "creature": {
+          "kind": "creature-reference",
+          "id": "creature-grave-wisp",
+          "path": "design/bestiary/creatures/grave-wisp.md",
+          "sha256": "e83b9cc75679c82b16cd96a688f26952d0e3ae55e876a038a063e758659d7a86"
+        },
+        "summonRules": {
+          "kind": "rules-reference",
+          "id": "summoning-rules",
+          "path": "design/rules/summoning.md",
+          "sha256": "2a97418d46d2ae018297ff27ffe0898fd8e649fdc09fd42cb92b23ebda9244db"
+        },
+        "summoning": {
+          "kind": "summon-profile",
+          "id": "summon-grave-wisp"
+        }
+      },
+      "automation": "pending",
+      "automationLabel": "Summon reference · command, spawn and tether automation pending",
+      "lifecycleAutomation": "pending"
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  }
+}

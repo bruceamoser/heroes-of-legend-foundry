@@ -3,10 +3,13 @@
   "_id": "bc27a5e20903dbcb",
   "name": "Glass Sentinel",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/283a69f30e2789d77837592c8194ef482f2aa51757ae3f7f8fe8c570735fd0a6.webp",
   "prototypeToken": {
     "width": 1,
-    "height": 1
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/283a69f30e2789d77837592c8194ef482f2aa51757ae3f7f8fe8c570735fd0a6.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -112,6 +115,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-glass-sentinel",
+        "asset": "assets/creatures/283a69f30e2789d77837592c8194ef482f2aa51757ae3f7f8fe8c570735fd0a6.webp",
+        "sha256": "d676fd5a0a55f9e2c7c90b3e57e47e10407b18567aabf6061a665e0ff054d0f6",
+        "sourceSha256": "283a69f30e2789d77837592c8194ef482f2aa51757ae3f7f8fe8c570735fd0a6",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
       "catalogId": "creature-glass-sentinel",
       "source": {
         "path": "design/bestiary/creatures/glass-sentinel.md",

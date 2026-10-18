@@ -27,7 +27,8 @@
   "documentTypes": {
     "Actor": {
       "character": {},
-      "creature": {}
+      "creature": {},
+      "summon": {}
     },
     "Item": {
       "ability": {
@@ -58,6 +59,13 @@
       "label": "Heroes of Legend Creatures",
       "type": "Actor",
       "path": "packs/creatures",
+      "system": "heroes-of-legend"
+    },
+    {
+      "name": "summons",
+      "label": "Heroes of Legend Summon Profiles",
+      "type": "Actor",
+      "path": "packs/summons",
       "system": "heroes-of-legend"
     }
   ],

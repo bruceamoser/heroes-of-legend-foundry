@@ -3,10 +3,13 @@
   "_id": "18ee4a7c7a614bf6",
   "name": "Young Ember Drake",
   "type": "creature",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/heroes-of-legend/assets/creatures/0804b648298ee229565f752955e32751e2561e03808d42f6b0195f475aff8f74.webp",
   "prototypeToken": {
     "width": 2,
-    "height": 2
+    "height": 2,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/0804b648298ee229565f752955e32751e2561e03808d42f6b0195f475aff8f74.webp"
+    }
   },
   "system": {
     "schemaVersion": 1,
@@ -117,6 +120,16 @@
   },
   "flags": {
     "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-young-ember-drake",
+        "asset": "assets/creatures/0804b648298ee229565f752955e32751e2561e03808d42f6b0195f475aff8f74.webp",
+        "sha256": "22909cca84ca872db1fc66cc4750ae549b24e9a98e1fe3417c7179da9314c6ac",
+        "sourceSha256": "0804b648298ee229565f752955e32751e2561e03808d42f6b0195f475aff8f74",
+        "width": 1254,
+        "height": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
       "catalogId": "creature-young-ember-drake",
       "source": {
         "path": "design/bestiary/creatures/young-ember-drake.md",

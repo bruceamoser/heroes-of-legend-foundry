@@ -1126,3 +1126,8 @@ was loosened to satisfy these attempts. Cleanup was checked across all iteration
 15 Actors, one Combat, four Scenes, five Users and 17 ChatMessages created during
 the session were all deleted. The isolated server was stopped and world released.
 This proves the bounded reference flow, not automatic specialty effects or costs.
+### Issue #137 builder polish — static checkpoint
+
+Ability Item drops resolve their current UUID/read permission and exact catalog source identity, capture a temporary candidate draft for eligibility validation, then use the same purchase action as the visible Add button. Unsupported routes and ineligible drops leave the live draft unchanged. Creation learning and advancement learning are supported; no ancestry/class/discipline-card or shopping-drop route is claimed. Weapon acquisition values remain stable while both builders show readable names.
+
+The initial pure/UI checkpoint rebased onto #134's main (`7097623`) with both appended acceptance/API notes preserved. Node 24 build/validation and all 326 tests pass; four focused tests cover identity, permission, rejected-drop draft preservation and weapon labels. The new `test:charactermancer` script is prepared for continuous native owner creation, backtracking/reload, drop acceptance/rejection, commit, equipment preparation, GM Token placement and one owner advancement with HP/Grit and grant replay checks. This paragraph records preparation, not native acceptance; runtime testing awaits the serialized world slot.

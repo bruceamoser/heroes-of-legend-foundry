@@ -26,7 +26,8 @@ if (idleFixture) await context.addInitScript((browserId) =>
 await context.addInitScript(() =>
   localStorage.setItem("core.noCanvas", "true"),
 );
-const page = await context.newPage();
+const page = await context.newPage(), errors = [];
+page.on("pageerror", error => { errors.push(error.message); console.error("Browser page error:", error.message); });
 try {
   await page.goto(url);
   await selectTestUser(page, "Gamemaster");
@@ -222,3 +223,5 @@ try {
 } finally {
   await browser.close();
 }
+
+assert.deepEqual(errors, [], "No uncaught browser errors, including teardown");

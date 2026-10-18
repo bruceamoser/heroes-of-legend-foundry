@@ -27,8 +27,18 @@ retain their existing controls.
 
 Ten stateful VM tests cover automatic initial claims, duplicate tabs, ownership,
 partial-state refusal, same-browser resume, clean relaunch, unsafe checkpoints
-and actionable startup failure notices. Native acceptance for this increment is
-pending the serialized runtime slot. The existing two-GM fixture now waits for
+and actionable startup failure notices. On October 17, 2026 startup production
+commit `9e58068` passed the isolated Foundry 14.369 startup/restart fixture:
+fresh active-GM auto-start, a real clean world relaunch with same-GM/browser
+auto-resume, two-GM and duplicate-tab exclusion, queued handoff, lost-acknowledgment
+recovery, unknown-write suspension, blocked takeover before relaunch and explicit
+post-relaunch recovery with once-only grants/replay. The full Node 24 check passed
+347 tests. Restart phases captured zero uncaught page errors through teardown;
+all fixture Actors, requests and temporary users were cleaned. The coordinator
+panel screenshot was visually reviewed. This verifies startup, not the broader
+#121 integrated encounter acceptance.
+
+The existing two-GM fixture now waits for
 initial auto-start and releases only its own known lease before testing handoff.
 The restart fixture adds `--prepare-idle` and `--verify-idle`: run the first mode,
 close its clients, restart only the isolated server, then run the second mode.

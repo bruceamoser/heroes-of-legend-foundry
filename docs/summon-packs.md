@@ -46,5 +46,14 @@ Local validation on the issue #122 integration base `804d273`: Node 24.22.0
 two official CLI semantic round trips for all 73 summon documents. A read-only
 `HOL_BOOK_REPOSITORY=… node scripts/import-summons.mjs --check` also verified the
 73 pinned profiles and linked creature/rules Git blobs. This records local checks,
-not native Foundry acceptance. Rebase onto the subsequently merged Basic Melee
-and creature-footprint work remains an integration step before native testing.
+not native Foundry acceptance.
+
+The summon checkpoint was subsequently rebased onto main `df5d415` using the
+original integration base, preserving the merged Basic Melee handler and all 192
+native creature prototype footprints. The only conflict was the generated pack
+index; regenerating all four packs preserved 350 abilities, 43 equipment records,
+192 creatures and 73 summons. Existing Item/creature sources, creature native
+acceptance fixture and compact sheet CSS remain byte-identical to main. The
+rebased Node 24 full check passed build, validation and 277 tests with no failures
+or skips. Native issue #128 acceptance remains queued after the current priority
+UI work.

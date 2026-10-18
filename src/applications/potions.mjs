@@ -21,6 +21,7 @@ async function geometryPreview(
   giverParticipantId,
   recipientParticipantId,
 ) {
+  if (preview?.outsideCombat) return preview.geometry ?? { known: false, adjacent: null, reason: "Range unavailable; use the intended recipient." };
   if (!preview?.combatUuid || preview.error)
     return { known: false, adjacent: false, distance: null };
   try {
@@ -55,8 +56,8 @@ export class PotionPreparation extends foundry.applications.api.HandlebarsApplic
 
   static DEFAULT_OPTIONS = {
     classes: ["heroes-of-legend", "hol-potion-preparation"],
-    window: { title: "Prepare healing potion", resizable: true },
-    position: { width: 760, height: 820 },
+    window: { title: "Healing potion", resizable: true },
+    position: { width: 560, height: 560 },
     actions: { submit: PotionPreparation.submit },
   };
 
@@ -86,9 +87,10 @@ export class PotionPreparation extends foundry.applications.api.HandlebarsApplic
         bottles.find((item) => item.uuid === this.bottleItemUuid) ??
         bottles[0] ??
         null;
+    this.bottleItemUuid = selectedBottle?.uuid ?? null;
     this.combat = combat;
-    this.combatUuid = combat.uuid;
-    this.giverParticipantId = combatant.id;
+    this.combatUuid = combat?.uuid ?? null;
+    this.giverParticipantId = combatant?.id ?? this.sourceItem.actor.uuid;
     const selection = this.recipientSelection(),
       preview = selection.error
         ? { error: selection.error, canDeclare: false }
@@ -96,9 +98,10 @@ export class PotionPreparation extends foundry.applications.api.HandlebarsApplic
           ? await safePreview({
               sourceItemUuid: this.sourceItem.uuid,
               bottleItemUuid: selectedBottle.uuid,
-              combatUuid: combat.uuid,
-              giverParticipantId: combatant.id,
+              combatUuid: combat?.uuid ?? null,
+              giverParticipantId: combatant?.id ?? null,
               recipientParticipantId: selection.participantId,
+              recipientTokenUuid: selection.tokenUuid ?? null,
               continuesAfterInterruption: true,
             })
           : { error: "This character has no healing bottle.", canDeclare: false };
@@ -116,7 +119,8 @@ export class PotionPreparation extends foundry.applications.api.HandlebarsApplic
             : "supply out",
       })),
       bottlesAvailable: bottles.length > 0,
-      sourceIsBottle: this.sourceItem.type === "equipment",
+      sourceIsBottle: bottles.length <= 1,
+      selectedBottleName: selectedBottle?.name ?? "",
       selectedBottleUuid: selectedBottle?.uuid ?? "",
       recipientName: selection.name,
       preview,
@@ -152,6 +156,17 @@ export class PotionPreparation extends foundry.applications.api.HandlebarsApplic
   }
 
   recipientSelection() {
+    if (!this.combat) {
+      const actor = this.sourceItem.actor;
+      return selectPotionRecipient({
+        giver: { id: actor.uuid, actorUuid: actor.uuid, name: actor.name },
+        participants: null,
+        targets: [...game.user.targets].map((target) => {
+          const token = target.document ?? target;
+          return { tokenUuid: token.uuid, actorUuid: token.actor?.uuid, name: token.name };
+        }),
+      });
+    }
     const giver = this.combat.combatants.get(this.giverParticipantId);
     if (!giver?.actor)
       return { participantId: null, name: "Unavailable", error: "The giver is no longer in this encounter." };
@@ -174,10 +189,11 @@ export class PotionPreparation extends foundry.applications.api.HandlebarsApplic
     return {
       bottleItemUuid:
         this.element.querySelector("[name=bottleUuid]")?.value ||
-        this.sourceItem.uuid,
+        this.bottleItemUuid || this.currentPreview?.bottleUuid || this.sourceItem.uuid,
       recipientParticipantId: this.recipientSelection().participantId,
+      recipientTokenUuid: this.recipientSelection().tokenUuid ?? null,
       continuesAfterInterruption:
-        this.element.querySelector("[name=interruption]")?.value === "continue",
+        this.element.querySelector("[name=interruption]")?.value !== "interrupted",
       willing:
         this.element.querySelector("[name=willing]")?.checked === true,
       geometryOverride: this.element.querySelector("[name=geometryOverride]")?.checked === true,
@@ -201,12 +217,13 @@ export class PotionPreparation extends foundry.applications.api.HandlebarsApplic
       submitButton = this.element.querySelector("[data-action=submit]");
     if (submitButton) submitButton.disabled = true;
     this.currentPreview = null;
-    if (this.recipientParticipantId !== selection.participantId) {
+    if (this.recipientIdentity !== `${selection.participantId}:${selection.tokenUuid ?? ""}`) {
       for (const name of ["willing", "geometryOverride", "daWillingness", "geometryReason", "daWillingnessReason"]) {
         const input = this.element.querySelector(`[name=${name}]`);
         if (input?.type === "checkbox") input.checked = false;
         else if (input) input.value = "";
       }
+      this.recipientIdentity = `${selection.participantId}:${selection.tokenUuid ?? ""}`;
       this.recipientParticipantId = selection.participantId;
     }
     const values = this.values(),
@@ -218,6 +235,7 @@ export class PotionPreparation extends foundry.applications.api.HandlebarsApplic
             combatUuid: this.combatUuid,
             giverParticipantId: this.giverParticipantId,
             recipientParticipantId: values.recipientParticipantId,
+        recipientTokenUuid: values.recipientTokenUuid,
             continuesAfterInterruption: values.continuesAfterInterruption,
           }),
       geometry = await geometryPreview(
@@ -245,18 +263,18 @@ export class PotionPreparation extends foundry.applications.api.HandlebarsApplic
     this.setText(
       "healing",
       healing
-        ? `Fixed ${preview.baseHealing} before Life resistance; resistance ${healing.resistance}; restore ${healing.restored}; HP after ${healing.after}`
+        ? `+${healing.restored} HP (${healing.after - healing.restored} → ${healing.after})`
         : "Healing cannot be calculated.",
     );
     this.setText(
       "hands",
-      `Free hands ${preview.freeHands ?? 0}; Maneuver remaining ${preview.maneuverRemaining ?? 0}`,
+      preview.outsideCombat ? "Outside encounter" : "1 Maneuver",
     );
     this.setText(
       "reaction",
       preview.reactionRequired
-        ? `Recipient spends one Reaction (${preview.reactionAvailable ? "available" : "unavailable"}).`
-        : "No recipient Reaction is required.",
+        ? "Recipient: 1 Reaction"
+        : "",
     );
     this.setText(
       "supply",
@@ -266,7 +284,7 @@ export class PotionPreparation extends foundry.applications.api.HandlebarsApplic
     );
     this.setText(
       "conditions",
-      conditionLabels || "No recorded action restrictions.",
+      conditionLabels,
     );
     this.setText(
       "geometry-status",
@@ -276,14 +294,9 @@ export class PotionPreparation extends foundry.applications.api.HandlebarsApplic
           : `Native grid: ${geometry.distance} square(s); not adjacent.`
         : geometry.reason ??
           geometry.error ??
-          "Native geometry is unavailable; the DA must record a judgment.",
+          "Range unavailable; use the intended recipient.",
     );
-    const error =
-      preview.error ||
-      preview.sourceError ||
-      (!geometry.adjacent && !(game.user.isGM && values.geometryOverride)
-        ? "A recipient must be adjacent before this use can be submitted."
-        : "");
+    const error = preview.error || preview.sourceError || "";
     this.setText("error", error);
     const ownsRecipient = recipient?.testUserPermission(game.user, "OWNER"),
       willingnessReady =
@@ -299,17 +312,16 @@ export class PotionPreparation extends foundry.applications.api.HandlebarsApplic
       const prompt = willingPanel.querySelector("[data-willing-prompt]");
       if (prompt)
         prompt.textContent = ownsRecipient
-          ? "The selected recipient must explicitly confirm willingness."
-          : "The selected recipient will receive a consent request in chat.";
+          ? "Confirm this recipient is willing."
+          : "Their owner will receive a consent request.";
     }
     const submit = this.element.querySelector("[data-action=submit]");
     if (submit) {
+      submit.textContent = preview.relation === "other" && !ownsRecipient && !game.user.isGM ? "Offer potion" : "Use potion";
       submit.disabled = Boolean(
         error ||
           !preview.canDeclare ||
-          !willingnessReady ||
-          (!geometry.adjacent &&
-            !(game.user.isGM && values.geometryOverride)),
+          !willingnessReady,
       );
     }
     return true;
@@ -325,7 +337,8 @@ export class PotionPreparation extends foundry.applications.api.HandlebarsApplic
           this.currentPreview?.error ||
             "This potion use cannot be declared in the current state.",
         );
-      if (values.recipientParticipantId !== this.currentPreview.recipientParticipantId)
+      if (values.recipientParticipantId !== this.currentPreview.recipientParticipantId ||
+          values.recipientTokenUuid !== (this.currentPreview.outsideCombat ? this.currentPreview.recipientTokenUuid : values.recipientTokenUuid))
         throw new Error("The target changed. Review the current recipient.");
       const geometry =
         game.user.isGM && values.geometryOverride
@@ -337,6 +350,7 @@ export class PotionPreparation extends foundry.applications.api.HandlebarsApplic
         combatUuid: this.combatUuid,
         giverParticipantId: this.giverParticipantId,
         recipientParticipantId: values.recipientParticipantId,
+        recipientTokenUuid: values.recipientTokenUuid,
         willing: values.willing,
         continuesAfterInterruption: values.continuesAfterInterruption,
         geometry,
@@ -346,8 +360,8 @@ export class PotionPreparation extends foundry.applications.api.HandlebarsApplic
       });
       ui.notifications.info(
         result.status === "proposal"
-          ? "Recipient consent request posted to chat."
-          : "Healing potion request sent to the automation coordinator.",
+          ? "Potion offered."
+          : "Potion requested.",
       );
       await this.close();
     } catch (error) {

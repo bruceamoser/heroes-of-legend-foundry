@@ -5,7 +5,13 @@ export function selectPotionRecipient({ giver, participants, targets = [] }) {
     return { participantId: null, name: "Multiple targets", error: "Use one target." };
   if (!others.length)
     return { participantId: giver.id, name: `${giver.name} (self)`, error: "" };
-  const target = others[0],
+  const target = others[0];
+  if (participants === null) {
+    if (!target.tokenUuid || !target.actorUuid)
+      return { participantId: null, name: "Unavailable", error: "Target a creature token." };
+    return { participantId: target.actorUuid, tokenUuid: target.tokenUuid, name: target.name, error: "" };
+  }
+  const
     participant = participants.find((entry) =>
       entry.tokenUuid && entry.tokenUuid === target.tokenUuid &&
       entry.actorUuid === target.actorUuid,

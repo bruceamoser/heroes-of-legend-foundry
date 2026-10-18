@@ -972,9 +972,8 @@ try {
   }, first);
   await gmPreparation.locator("[name=daWillingness]").uncheck();
   await gmPreparation.locator("[name=daWillingness]").check();
-  await gmSubmitReady(false);
-  await gmPreparation.locator("[name=geometryOverride]").check();
-  assert.equal(await gmPreparation.locator("[name=geometryReason]").inputValue(), "");
+  // Geometry remains advisory, including altitude disagreement.
+  await gmSubmitReady(true);
   assert.equal(await gmPreparation.locator("[name=daWillingnessReason]").inputValue(), "");
   await gmSubmitReady(true);
   await gm.page.screenshot({ path: "/tmp/hol116-ui-rulings.png" });
@@ -1607,9 +1606,81 @@ try {
     Object.hasOwn(interruptedResult.actionReceipt, "turnId"),
     false,
   );
+  // Reuse tracked fixture Actors, but remove their encounter for genuine free play.
+  await gm.page.evaluate(async (scenario) => {
+    await game.combats.get(scenario.combatId).delete();
+    const ID = "heroes-of-legend", giver = await fromUuid(scenario.giverActorUuid),
+      recipient = await fromUuid(scenario.recipientActorUuid);
+    const { survivalState } = await import("/systems/heroes-of-legend/rules/survival.mjs");
+    for (const actor of [giver, recipient]) {
+      await actor.update({ "system.health.value": 2,
+        [`flags.${ID}.survival`]: survivalState({ hp: 2, maxHp: actor.system.health.max, gritAvailable: actor.system.grit?.available ?? 0, ownTurn: 0 }) });
+    }
+    await giver.items.get(scenario.bottleId).update({ "system.inventoryDie": 4 });
+    await game.scenes.get(scenario.sceneId).tokens.get(scenario.recipientTokenId).update({ x: 1500 });
+  }, first);
+  await viewScene(gm.page, first, "free-play potion scene");
+  await giver.page.evaluate(async (scenario) => {
+    canvas.tokens.setTargets([]);
+    const actor = await fromUuid(scenario.giverActorUuid),
+      { openPotionPreparation } = await import("/systems/heroes-of-legend/applications/potions.mjs");
+    await openPotionPreparation(actor.items.get(scenario.bottleId));
+  }, first);
+  const freePreparation = giver.page.locator(".hol-potion-preparation");
+  await freePreparation.waitFor();
+  assert.equal(await freePreparation.locator("select[name=bottleUuid]").count(), 0);
+  await freePreparation.locator("[data-action=submit]").click();
+  await gm.page.waitForFunction(({ giverActorUuid }) => {
+    const actor = fromUuidSync(giverActorUuid);
+    return Object.values(actor.getFlag("heroes-of-legend", "potionOperations") ?? {}).some((operation) => operation.status === "complete");
+  }, first);
+  const freeSelf = await gm.page.evaluate(async ({ giverActorUuid }) => {
+    const actor = await fromUuid(giverActorUuid), operation = Object.values(actor.getFlag("heroes-of-legend", "potionOperations"))[0],
+      { resolvePotionRequest } = await import("/systems/heroes-of-legend/services/potions.mjs"),
+      before = JSON.stringify(actor.toObject());
+    await resolvePotionRequest(operation.requestId); await resolvePotionRequest(operation.requestId);
+    return { unchanged: before === JSON.stringify(actor.toObject()), operation };
+  }, first);
+  assert.equal(freeSelf.unchanged, true);
+  assert.equal(freeSelf.operation.outsideCombat, true);
+  assert.equal(freeSelf.operation.giver.turnId, null);
+  console.info("PASS native Actor-host self-use and duplicate replay without Combat");
+  await freePreparation.waitFor({ state: "detached" });
+  // A fresh offer still uses genuine recipient-owner one-click consent.
+  await gm.page.evaluate(async ({ giverActorUuid, bottleId }) => {
+    const actor = await fromUuid(giverActorUuid);
+    await actor.items.get(bottleId).update({ "system.inventoryDie": 4 });
+  }, first);
+  await giver.page.evaluate(async (scenario) => {
+    canvas.tokens.setTargets([scenario.recipientTokenId]);
+    const actor = await fromUuid(scenario.giverActorUuid),
+      { openPotionPreparation } = await import("/systems/heroes-of-legend/applications/potions.mjs");
+    await openPotionPreparation(actor.items.get(scenario.bottleId));
+  }, first);
+  await freePreparation.waitFor();
+  await giver.page.waitForFunction(() => document.querySelector(".hol-potion-preparation [data-action=submit]")?.textContent === "Offer potion");
+  await giver.page.screenshot({ path: "/tmp/hol135-ui-offer.png" });
+  const consentCount = await recipient.page.locator("#chat .hol-potion-consent").count();
+  await freePreparation.locator("[data-action=submit]").click();
+  await recipient.page.waitForFunction((count) => document.querySelectorAll("#chat .hol-potion-consent").length > count, consentCount);
+  await recipient.page.locator("#chat .hol-potion-consent").last().waitFor();
+  await recipient.page.locator("#chat .hol-potion-consent").last().click();
+  await gm.page.waitForFunction(({ giverActorUuid }) => {
+    const actor = fromUuidSync(giverActorUuid);
+    return Object.values(actor.getFlag("heroes-of-legend", "potionOperations") ?? {}).filter((operation) => operation.status === "complete").length === 2;
+  }, first);
+  const freeOffer = await gm.page.evaluate(async ({ giverActorUuid, recipientActorUuid }) => {
+    const actor = await fromUuid(giverActorUuid), recipient = await fromUuid(recipientActorUuid),
+      operation = Object.values(actor.getFlag("heroes-of-legend", "potionOperations")).find((operation) => operation.requestSnapshot.relation === "other");
+    return { operation, hp: recipient.system.health.value };
+  }, first);
+  assert.equal(freeOffer.operation.willingness.kind, "recipient-owner");
+  assert.equal(freeOffer.operation.geometry.adjacent, false);
+  assert.equal(freeOffer.operation.plan.costs.recipient.reaction, 0);
+  assert.ok(freeOffer.hp > 2);
   assert.deepEqual(errors, []);
   console.info(
-    "PASS: compendium descriptions, 5-unit/large-footprint/wall/altitude adjacency, two-owner consent, exact budget receipts, synthetic Actor identity, Life resistance, 0 HP, invalid Item prevalidation, dropped response, single-roll recovery, source reconciliation and interruption.",
+    "PASS: compendium descriptions, 5-unit/large-footprint/wall/altitude adjacency, two-owner consent, exact budget receipts, synthetic Actor identity, Life resistance, 0 HP, invalid Item prevalidation, dropped response, single-roll recovery, source reconciliation, interruption, Actor-host free-play self/offer UI and truthful advisory range.",
   );
 } catch (error) {
   failure = error;

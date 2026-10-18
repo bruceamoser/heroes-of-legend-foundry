@@ -1,3 +1,4 @@
+import { assertNoPendingActorPotion } from "./turn-lock.mjs";
 import { declareAction, continueAction } from "../rules/actions.mjs";
 import { actionConditions } from "./turn-budget.mjs";
 import {
@@ -70,6 +71,7 @@ async function apply(id) {
       combat.getFlag(ID, "pendingTurnPhase")
     )
       throw new Error("Resolve the pending encounter action first.");
+    assertNoPendingActorPotion(combat);
     const actor = await fromUuid(request.actorUuid),
       state = combat.getFlag(ID, "encounter"),
       budget = state?.budgets?.[request.participantId];

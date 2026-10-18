@@ -3,7 +3,8 @@
   {{#if definition}}<p class="hol-note">{{definition.summary}}</p>{{#if canUse}}<button type="button" class="hol-primary" data-action="useAbility">Use {{definition.name}}</button>{{/if}}{{else}}
   {{#unless pendingAutomation}}<p class="hol-note">{{localize "HOL.ManualAbility"}}</p>{{/unless}}
   {{/if}}
-  {{#if descriptionHTML}}<div class="hol-item-reference-output">{{{descriptionHTML}}}</div>{{/if}}
+    {{#if potionAbility}}<p class="hol-note">Choose a healing bottle and recipient. Healing occurs before the bottle’s supply check.</p>{{#if canUse}}<button type="button" class="hol-primary" data-action="useAbility">Prepare Use a Healing Potion</button>{{/if}}{{/if}}
+{{#if descriptionHTML}}<div class="hol-item-reference-output">{{{descriptionHTML}}}</div>{{/if}}
   {{#unless definition}}{{#unless pendingAutomation}}
   <fieldset {{#unless editable}}disabled{{/unless}}>
     <label>{{localize "HOL.Name"}}<input name="name" type="text" value="{{item.name}}" required></label>

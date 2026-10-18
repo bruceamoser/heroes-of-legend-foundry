@@ -6,6 +6,10 @@ import { registerRecoveryRequests } from "./services/recovery.mjs";
 import { registerDamageRequests } from "./services/damage.mjs";
 import { registerEquipmentRequests } from "./services/equipment.mjs";
 import { registerInventoryRequests } from "./services/inventory.mjs";
+import {
+  registerPotionRequests,
+  renderPotionProposal,
+} from "./services/potions.mjs";
 import { registerDefenseResponses } from "./services/defense-responses.mjs";
 import { registerNpcAttacks } from "./services/npc-attacks.mjs";
 import { registerItemShortcuts, SHORTCUT_API } from "./services/shortcuts.mjs";
@@ -47,6 +51,7 @@ Hooks.once("init", () => {
   registerConditionRequests();
   registerEquipmentRequests();
   registerInventoryRequests();
+  registerPotionRequests();
   registerItemShortcuts();
   registerDamageRequests();
   registerRecoveryRequests();
@@ -99,6 +104,8 @@ Hooks.once("ready", () => {
 });
 
 Hooks.on("renderChatMessageHTML", renderRollSummary);
+
+Hooks.on("renderChatMessageHTML", renderPotionProposal);
 
 Hooks.on("renderCombatTracker", renderHOLCombatTracker);
 

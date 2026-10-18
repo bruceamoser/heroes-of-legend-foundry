@@ -65,6 +65,15 @@ export function findInventoryActor(requestId) {
 
 function assertNoInventoryConflict(actor, requestId = null) {
   assertNoPendingTurn(actor);
+  const potionPending = game.combats.find((combat) => {
+    const requestId = combat.getFlag(ID, "pendingPotion"),
+      operation = combat.getFlag(ID, "potionOperations")?.[requestId];
+    return requestId && operation?.giver?.actorUuid === actor.uuid;
+  });
+  if (potionPending)
+    throw new Error(
+      "Finish the pending healing-potion use before checking this item's supply.",
+    );
   const pending = actor.getFlag(ID, "pendingInventory");
   if (pending && pending.requestId !== requestId)
     throw new Error(
@@ -346,7 +355,7 @@ function assertCurrentBasis(actor, basis) {
   return item;
 }
 
-function validateItems(actor, items) {
+export function validateEmbeddedItems(actor, items) {
   for (const data of items) {
     const item = new CONFIG.Item.documentClass(data, {
       parent: actor,
@@ -374,7 +383,7 @@ function settlementChanges(
       "The checked item or quantity changed. Ask the DA to review the saved result; do not roll again.",
     );
   matches[0].system.inventoryDie = result.after;
-  validateItems(actor, items);
+  validateEmbeddedItems(actor, items);
 
   const originalId = pending.requestId,
     receipt = {

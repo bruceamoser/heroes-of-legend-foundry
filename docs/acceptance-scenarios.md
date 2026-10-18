@@ -179,3 +179,22 @@ and wound controls default off and do not block ordinary play. Preserve ability
 choices, any-player Defend and additional defender selection. Every intentional fresh defense may roll again without a checkbox, explanation or DA approval, including while an older operation's dice are unknown. Same-operation replay never rolls again.
 Unknown-dice recovery and exceptional DA rulings remain explicit. Native evidence must be
 recorded after serialized runtime testing; static checks alone do not prove UI.
+
+### T109 — native healing-potion execution
+
+The exact bottle and universal action open one preparation flow. Self and another
+native Actor identity restore fixed 6/10/16 HP before Life resistance and then
+check d4 supply; the final use applies before becoming out. The giver needs a free
+hand and Maneuver. A living adjacent willing recipient spends Reaction, while a
+0 HP recipient does not. Full HP still uses and checks the bottle. Attributed
+consent, DA geometry/source reconciliation and a single GM coordinator persist
+budgets and receipts without duplicate costs. A dropped response or reconnect
+resumes missing Actor/Combat phases without replenishment; unknown dice require a
+DA-entered face, and a changed bottle is never silently substituted. Summon,
+dead, Last Words, unavailable Reaction, stale source and supply-out cases fail
+closed. Interruption spending the declared action before healing is represented,
+but opportunity automation is not claimed. Native adjacency uses occupied square
+centers and grid spaces, including large footprints and 5-unit scenes; walls,
+non-square grids, unavailable geometry, scene levels and altitude never fall back
+to pixel distance or an invented ruling. Prevalidation rejects an invalid
+embedded Item before the supply Actor write.

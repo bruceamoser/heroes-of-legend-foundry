@@ -262,3 +262,17 @@
 .heroes-of-legend .hol-context-options { margin:12px 0; }
 .heroes-of-legend .hol-context-options label { display:block; padding:6px 0; }
 .heroes-of-legend .hol-context-options input[type=checkbox] { width:auto; margin-right:8px; }
+
+.heroes-of-legend.hol-potion-preparation .window-title { font-size: 14px; }
+.heroes-of-legend.hol-potion-preparation .window-content { overflow: hidden; }
+.heroes-of-legend .hol-potion-preparation-body { height: 100%; overflow-y: auto; }
+.heroes-of-legend .hol-potion-preparation-body .hol-budget p { margin: 7px 0; }
+.heroes-of-legend .hol-potion-preparation-body [data-panel="willingness"][hidden] { display: none; }
+.heroes-of-legend .hol-potion-preparation-body .hol-check { display: flex; flex-direction: row; align-items: center; gap: 10px; }
+.heroes-of-legend .hol-potion-preparation-body .hol-check input { width: auto; height: auto; }
+.heroes-of-legend .hol-potion-preparation-body .hol-error:empty { display: none; }
+.heroes-of-legend .hol-potion-proposal { border-left: 4px solid var(--hol-gold); }
+.hol-potion-proposal button { background:#15221c; color:#f1e6ce; border:1px solid #b39253; }
+.hol-potion-proposal { padding:16px; background:#f7f3e9; color:#28251c; font-family:"HOL Garamond",Georgia,serif; }
+.hol-potion-proposal .hol-banner { background:#15221c; color:#f1e6ce; border:1px solid #b39253; }
+.hol-potion-proposal .hol-banner h1 { color:#f1e6ce; }

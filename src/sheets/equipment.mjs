@@ -1,7 +1,9 @@
 import { EquipmentPanel } from "../applications/equipment.mjs";
 import { InventoryPanel } from "../applications/inventory.mjs";
+import { openPotionPreparation } from "../applications/potions.mjs";
 import { loadCatalogs } from "../services/catalog.mjs";
 import { updateOwnedDocument } from "../services/documents.mjs";
+import { isHealingPotionItem } from "../services/potions.mjs";
 export class EquipmentSheet extends foundry.applications.api.HandlebarsApplicationMixin(
   foundry.applications.sheets.ItemSheetV2,
 ) {
@@ -9,6 +11,7 @@ export class EquipmentSheet extends foundry.applications.api.HandlebarsApplicati
     actions: {
       hands: EquipmentSheet.hands,
       supply: EquipmentSheet.supply,
+      usePotion: EquipmentSheet.usePotion,
     },
     classes: ["heroes-of-legend", "hol-equipment"],
     position: { width: 520, height: 540 },
@@ -64,6 +67,11 @@ export class EquipmentSheet extends foundry.applications.api.HandlebarsApplicati
         Boolean(this.item.actor) &&
         hadSupply &&
         this.item.system.inventoryDie === 0,
+      potion: Boolean(
+        this.item.actor &&
+          isHealingPotionItem(this.item) &&
+          (this.item.actor.isOwner || game.user.isGM),
+      ),
     };
   }
   static async hands() {
@@ -76,6 +84,17 @@ export class EquipmentSheet extends foundry.applications.api.HandlebarsApplicati
         throw new Error("Only an owned equipment item can check supply.");
       await new InventoryPanel(this.item.actor, this.item.id).render({
         force: true,
+      });
+    } catch (error) {
+      ui.notifications.error(error.message);
+    }
+  }
+  static async usePotion() {
+    try {
+      if (!isHealingPotionItem(this.item))
+        throw new Error("This equipment does not use a healing potion plan.");
+      await openPotionPreparation(this.item, {
+        bottleItemUuid: this.item.uuid,
       });
     } catch (error) {
       ui.notifications.error(error.message);

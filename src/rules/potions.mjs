@@ -266,8 +266,9 @@ export function planHealingPotion({
       giverResources: continued.resources,
       healing: null,
       recipientSurvival: null,
-      recipientTurn:
-        relation === "self" ? structuredClone(continued.state) : null,
+      recipientTurn: structuredClone(
+        relation === "self" ? continued.state : recipient.turn,
+      ),
       inventory: null,
     };
 

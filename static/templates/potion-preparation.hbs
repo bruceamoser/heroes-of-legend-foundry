@@ -1,0 +1,23 @@
+<section class="hol-body hol-potion-preparation-body">
+  <header class="hol-banner"><h1>Use a Healing Potion</h1><p>Exact bottle, recipient and costs</p></header>
+  {{#unless bottlesAvailable}}<p class="hol-error">This character owns no healing bottle. Supply-out bottles cannot be used.</p>{{else}}
+  <div class="hol-pair">
+    {{#unless sourceIsBottle}}<label>Exact bottle<select name="bottleUuid">{{#each bottles}}<option value="{{uuid}}" {{#if (eq uuid ../selectedBottleUuid)}}selected{{/if}}>{{name}} · {{supply}}</option>{{/each}}</select></label>{{/unless}}
+    <p>Recipient: <strong data-preview="recipient-name">{{recipientName}}</strong><br><small>Target another token to give it the potion; otherwise use it yourself.</small></p>
+  </div>
+  <section class="hol-budget">
+    <p><strong data-preview="bottle">{{preview.bottleName}}</strong> → <strong data-preview="recipient">{{preview.recipientActorName}}</strong></p>
+    <p data-preview="healing"></p>
+    <p data-preview="hands"></p>
+    <p data-preview="reaction"></p>
+    <p data-preview="supply"></p>
+    <p data-preview="conditions"></p>
+  </section>
+  <section data-panel="willingness" hidden><h2>Recipient willingness</h2><p data-willing-prompt></p><label class="hol-check" data-willing-confirm><input type="checkbox" name="willing"> I confirm this recipient is willing.</label></section>
+  <section><h2>Adjacency</h2><p data-preview="geometry-status" aria-live="polite"></p></section>
+  <details><summary>Interruption</summary><label>Outcome<select name="interruption"><option value="continue">Continue</option><option value="interrupted">Stopped before healing</option></select></label><p>If an interruption stops this use, the Maneuver is spent without healing or checking supply.</p></details>
+  {{#if gm}}<details data-panel="da-exceptions"><summary>DA exceptions</summary><label class="hol-check"><input name="daWillingness" type="checkbox"> Confirm willingness</label><label>Optional willingness note<input name="daWillingnessReason" type="text"></label><label class="hol-check"><input name="geometryOverride" type="checkbox"> Treat the recipient as adjacent</label><label>Optional adjacency note<input name="geometryReason" type="text"></label></details>{{/if}}
+  <p class="hol-error" data-preview="error" aria-live="polite"></p>
+  <button type="button" class="hol-primary" data-action="submit" disabled>Prepare potion use</button>
+  {{/unless}}
+</section>

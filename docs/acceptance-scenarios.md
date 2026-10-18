@@ -185,13 +185,14 @@ recorded after serialized runtime testing; static checks alone do not prove UI.
 The exact bottle and universal action open one preparation flow. Self and another
 native Actor identity restore fixed 6/10/16 HP before Life resistance and then
 check d4 supply; the final use applies before becoming out. The giver needs a free
-hand and Maneuver. A living adjacent willing recipient spends Reaction, while a
+hand; its Maneuver is tracked when available. A living willing recipient tracks
+a Reaction when available, while a
 0 HP recipient does not. Full HP still uses and checks the bottle. Attributed
 consent, DA geometry/source reconciliation and a single GM coordinator persist
 budgets and receipts without duplicate costs. A dropped response or reconnect
 resumes missing Actor/Combat phases without replenishment; unknown dice require a
 DA-entered face, and a changed bottle is never silently substituted. Summon,
-dead, Last Words, unavailable Reaction, stale source and supply-out cases fail
+dead, Last Words, stale source and supply-out cases fail
 closed. Interruption spending the declared action before healing is represented,
 but opportunity automation is not claimed. Native adjacency uses occupied square
 centers and grid spaces, including large footprints and 5-unit scenes; walls,
@@ -204,11 +205,13 @@ embedded Item before the supply Actor write.
 - A player can submit Basic Melee with native targeting when geometry reports
   nonadjacency or uncertainty; the hint stays visible. Hidden targets, changed
   Actor/Token identities, permissions, source snapshots and action receipts remain
-  checked. A DA action-budget exception is a structured checkbox with an optional note.
+  checked. Timing, condition applicability and empty action counters are visible
+  guidance, without a separate DA action-budget approval.
 - Declare NPC Basic Melee without opening optional attack guidance. Persist unknown
   blockability as `null`, preserve explicit hints, and never rewrite all attacks as
   blockable. Choosing Shield Block records intent without another judgment form;
-  its held shield, Reaction, source provenance and same-operation receipts still apply.
+  its held shield, source provenance, tracked Reaction and same-operation receipts
+  still apply.
 - Finish a single damaging condition directly with automatic passives and zero
   additional manual mitigation. Explicit review accepts mitigation with a blank note.
   Multiple tick ordering and genuinely ambiguous overlapping durations still need

@@ -1333,3 +1333,104 @@ dialog header button {
     -webkit-line-clamp: 2;
   }
 }
+
+/* Dense sheet tables; creation choice cards keep their existing controls. */
+.sheet-inventory .panel-heading,
+.sheet-recipes .panel-heading {
+  margin-bottom: 4px;
+}
+.sheet-inventory .inventory-stats {
+  padding: 4px 7px;
+  margin-bottom: 4px;
+  gap: 4px 12px;
+}
+.sheet-inventory td,
+.sheet-abilities td,
+.sheet-recipes td {
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+.sheet-inventory button.table-link,
+.sheet-abilities button.table-link {
+  min-height: 18px;
+  padding: 0;
+  line-height: 1.25;
+}
+.sheet-inventory .item-source {
+  font-size: 0.64rem;
+  line-height: 1.2;
+}
+.sheet-inventory .inventory-table td:last-child button {
+  min-height: 24px;
+  padding: 0 5px;
+}
+.sheet-inventory .inventory-table {
+  table-layout: fixed;
+}
+.sheet-inventory .inventory-table th:nth-child(2),
+.sheet-inventory .inventory-table th:nth-child(3),
+.sheet-inventory .inventory-table th:nth-child(4) {
+  width: 48px;
+}
+.sheet-inventory .inventory-table th:nth-child(5),
+.sheet-inventory .inventory-table th:nth-child(6) {
+  width: 52px;
+}
+.sheet-inventory .inventory-table th:nth-child(7) {
+  width: 62px;
+}
+.sheet-inventory .inventory-table th:last-child {
+  width: 26px;
+}
+.known-disciplines h3 {
+  margin: 0 0 4px;
+}
+.discipline-table {
+  table-layout: fixed;
+}
+.discipline-table th:nth-child(even),
+.discipline-table td:nth-child(even) {
+  width: 42px;
+  text-align: center;
+}
+.discipline-table th:nth-child(3),
+.discipline-table td:nth-child(3) {
+  padding-left: 12px;
+  border-left: 1px solid var(--line);
+}
+.sheet-abilities .search-row {
+  margin: 6px 0;
+}
+.sheet-abilities .search-row input,
+.sheet-abilities .search-row select {
+  padding: 4px 7px;
+  min-height: 28px;
+}
+.sheet-abilities .brief {
+  -webkit-line-clamp: 1;
+}
+.sheet-abilities .planned {
+  margin-top: 6px;
+}
+.roll-net-labels {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.roll-net-labels output {
+  font-weight: 400;
+}
+.roll-net input[type="range"] {
+  width: 100%;
+  direction: ltr;
+}
+@media (max-width: 600px) {
+  .sheet-abilities .brief {
+    -webkit-line-clamp: 2;
+  }
+  .discipline-table th:nth-child(even),
+  .discipline-table td:nth-child(even) {
+    width: 32px;
+  }
+}

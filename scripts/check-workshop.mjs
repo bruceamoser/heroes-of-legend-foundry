@@ -50,6 +50,10 @@ try {
     .waitFor();
   assert.equal(await page.getByRole("tab").count(), 5);
   assert.equal(
+    await page.getByRole("tab", { name: "Recipes", exact: true }).count(),
+    0,
+  );
+  assert.equal(
     await page.getByRole("heading", { name: "Main", exact: true }).count(),
     0,
   );
@@ -118,6 +122,22 @@ try {
   await page.screenshot({ path: `${output}/foundry-sized-sheet.png` });
   await page.setViewportSize({ width: 1440, height: 1050 });
   await page.getByRole("tab", { name: "Abilities", exact: true }).click();
+  const rankRows = await page
+    .locator(".discipline-table tbody tr")
+    .allTextContents();
+  assert.match(rankRows.join(" "), /Armor\s*1/);
+  assert.match(rankRows.join(" "), /Guard\s*1/);
+  await page.locator('.discipline-table [data-id="discipline-armor"]').click();
+  assert(
+    await page
+      .getByRole("dialog")
+      .getByRole("heading", { name: "Armor", exact: true })
+      .isVisible(),
+  );
+  await page.keyboard.press("Escape");
+  await page.locator(".brand").hover();
+  await page.screenshot({ path: `${output}/desktop-abilities.png` });
+  await page.getByRole("tab", { name: "Abilities", exact: true }).focus();
   await page.keyboard.press("ArrowRight");
   assert.equal(
     await page
@@ -667,11 +687,71 @@ try {
       .getByRole("heading", { name: "Ancestry traits", exact: true })
       .count(),
   );
+  assert.equal(await page.getByRole("tab").count(), 6);
+  assert.equal(await page.locator(".recipe-table").count(), 0);
+  await page.getByRole("tab", { name: "Inventory", exact: true }).click();
+  assert.equal(await page.locator(".recipe-table").count(), 0);
+  assert.equal(
+    await page.getByRole("heading", { name: "Recipes", exact: true }).count(),
+    0,
+  );
+  await page.getByRole("tab", { name: "Inventory", exact: true }).focus();
+  await page.keyboard.press("ArrowRight");
+  assert.equal(
+    await page
+      .getByRole("tab", { name: "Recipes", exact: true })
+      .getAttribute("aria-selected"),
+    "true",
+  );
+  await page.reload();
+  await page.getByRole("heading", { name: "Recipes", exact: true }).waitFor();
+  assert.equal(
+    await page
+      .getByRole("tab", { name: "Recipes", exact: true })
+      .getAttribute("aria-selected"),
+    "true",
+  );
+  await page.locator(".brand").hover();
+  await page.screenshot({ path: `${output}/desktop-recipes.png` });
+  await page.setViewportSize({ width: 390, height: 844 });
+  assert(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
+  );
+  await page.screenshot({ path: `${output}/mobile-recipes.png` });
+  await page.setViewportSize({ width: 1440, height: 1050 });
   const recipe = page
     .locator(".recipe-table tr")
     .filter({ hasText: "Travel Food" });
   await recipe.locator('[data-action="recipe-roll"]').click();
+  assert.equal(await page.locator("#roll-net-value").innerText(), "Even");
+  const left = await page
+    .locator(".roll-net-labels span")
+    .first()
+    .boundingBox();
+  const right = await page
+    .locator(".roll-net-labels span")
+    .last()
+    .boundingBox();
+  assert(left.x < right.x);
+  assert.deepEqual(
+    await page.locator(".roll-net-labels span").allTextContents(),
+    ["Banes", "Boons"],
+  );
+  await page.locator("#recipe-net").fill("-3");
+  assert.equal(await page.locator("#roll-net-value").innerText(), "3 Banes");
+  assert.equal(
+    await page.locator("#recipe-net").getAttribute("aria-valuetext"),
+    "3 Banes",
+  );
+  await page
+    .getByRole("dialog")
+    .getByRole("button", { name: "Roll", exact: true })
+    .click();
+  await page.screenshot({ path: `${output}/recipe-slider.png` });
   await page.locator("#recipe-net").fill("3");
+  assert.equal(await page.locator("#roll-net-value").innerText(), "3 Boons");
   await page
     .getByRole("dialog")
     .getByRole("button", { name: "Roll", exact: true })
@@ -783,6 +863,28 @@ try {
   assert.match(rangedInventory, /Ordinary Ranged Weapon/);
   assert.match(rangedInventory, /Ammunition Bundle/);
   assert.match(rangedInventory, /d8/);
+  await page.evaluate(() => {
+    const key = "hol.workshop.v1",
+      saved = JSON.parse(localStorage.getItem(key));
+    saved.mode = "sheet";
+    saved.tab = "Recipes";
+    localStorage.setItem(key, JSON.stringify(saved));
+  });
+  await page.reload();
+  await page
+    .getByRole("heading", { name: "Lira Ashbow", exact: true })
+    .waitFor();
+  assert.equal(
+    await page.getByRole("tab", { name: "Recipes", exact: true }).count(),
+    0,
+  );
+  assert.equal(
+    await page
+      .getByRole("tab", { name: "Main", exact: true })
+      .getAttribute("aria-selected"),
+    "true",
+  );
+
   // An unfinished signature equipment choice stays reachable after leaving its screen.
   const warden = structuredClone(ranged);
   warden.draft.classId = "class-warden";

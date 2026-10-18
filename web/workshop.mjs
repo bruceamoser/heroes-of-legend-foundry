@@ -48,7 +48,16 @@ const steps = [
   "Equipment",
   "Review",
 ];
-const tabs = ["Main", "Abilities", "Inventory", "Character", "Development"];
+const tabs = [
+  "Main",
+  "Abilities",
+  "Inventory",
+  "Recipes",
+  "Character",
+  "Development",
+];
+const sheetTabs = () =>
+  tabs.filter((t) => t !== "Recipes" || preview.state.recipes.length > 0);
 const storageKey = "hol.workshop.v1";
 const libraryKey = "hol.workshop.library.v1";
 let saveId = null;
@@ -107,6 +116,7 @@ const navIcons = {
     '<path d="M12 5v16M3 4c4-1 6 0 9 2 3-2 5-3 9-2v15c-4-1-6 0-9 2-3-2-5-3-9-2z"/>',
   Inventory:
     '<path d="M8 6V4a4 4 0 0 1 8 0v2M7 6h10l3 5v10H4V11zM4 13h16M9 13v3h6v-3"/>',
+  Recipes: '<path d="M9 3h6M10 3v7L4 20h16l-6-10V3M7 15h10"/>',
   Character:
     '<circle cx="12" cy="7" r="4"/><path d="M4 21v-3a8 8 0 0 1 16 0v3"/>',
   Development: '<path d="M5 21v-7h5V9h5V4h6M16 4h5v5"/>',
@@ -214,12 +224,27 @@ function matches(r) {
   );
 }
 function sheet() {
-  return `<div class="sheet-body"><nav class="edge-tabs" role="tablist" aria-label="Character sheet" aria-orientation="vertical">${tabs.map((t) => button(navIcon(t, t), "tab", `id="tab-${t}" aria-label="${t}" role="tab" aria-selected="${tab === t}" aria-controls="panel" tabindex="${tab === t ? 0 : -1}" data-tab="${t}"`)).join("")}</nav><section id="panel" class="panel" role="tabpanel" aria-labelledby="tab-${tab}">${sheetContent()}</section></div>`;
+  const visibleTabs = sheetTabs();
+  if (!visibleTabs.includes(tab)) tab = "Main";
+  return `<div class="sheet-body"><nav class="edge-tabs" role="tablist" aria-label="Character sheet" aria-orientation="vertical">${visibleTabs.map((t) => button(navIcon(t, t), "tab", `id="tab-${t}" aria-label="${t}" role="tab" aria-selected="${tab === t}" aria-controls="panel" tabindex="${tab === t ? 0 : -1}" data-tab="${t}"`)).join("")}</nav><section id="panel" class="panel sheet-panel sheet-${tab.toLowerCase()}" role="tabpanel" aria-labelledby="tab-${tab}">${sheetContent()}</section></div>`;
+}
+function disciplineTable() {
+  const known = Object.entries(preview.state.ranks)
+    .filter(([, rank]) => rank > 0)
+    .sort(([a], [b]) => name(a).localeCompare(name(b)));
+  const cells = ([id, rank]) =>
+    `<td>${button(esc(name(id)), "reference", `data-id="${esc(id)}"`, "table-link")}</td><td>${rank}</td>`;
+  const rows = [];
+  for (let i = 0; i < known.length; i += 2)
+    rows.push(
+      `<tr>${cells(known[i])}${known[i + 1] ? cells(known[i + 1]) : "<td></td><td></td>"}</tr>`,
+    );
+  return `<section class="known-disciplines"><h3>Known disciplines</h3><table class="discipline-table" aria-label="Known disciplines"><thead><tr><th scope="col">Discipline</th><th scope="col">Rank</th><th scope="col">Discipline</th><th scope="col">Rank</th></tr></thead><tbody>${rows.join("") || '<tr><td colspan="4">None</td></tr>'}</tbody></table></section>`;
 }
 function sheetContent() {
   if (tab === "Main") return mainPanel();
   if (tab === "Abilities")
-    return `${heading("", "Abilities", "")}${searchRow()}<div id="results">${actionTable(
+    return `${disciplineTable()}${searchRow()}<div id="results">${actionTable(
       knownCards()
         .filter(matches)
         .map((record) => ({ record, basic: false, visible: true })),
@@ -231,7 +256,8 @@ function sheetContent() {
       false,
     )}</details>`;
   if (tab === "Inventory")
-    return `${heading("", "Inventory", "", button("Add item", "add-item", "", "small"))}${inventoryStats()}${inventoryTable(true)}<h3 class="section-title">Recipes</h3>${recipeRows()}`;
+    return `${heading("", "Inventory", "", button("Add item", "add-item", "", "small"))}${inventoryStats()}${inventoryTable(true)}`;
+  if (tab === "Recipes") return `${heading("", "Recipes", "")}${recipeRows()}`;
   if (tab === "Character")
     return `${heading("", "Character", "")}<div class="columns"><section class="box">${edit ? field("Player", "profile.player", draft.profile?.player) : row("Player", draft.profile?.player || "—")}${row("Ancestry", name(draft.ancestryId))}${row("Culture", name(draft.culture?.id))}${row("Background", name(draft.background?.id))}<h3 class="section-title">Story</h3>${edit ? `<label>Notes<textarea data-field="profile.story" maxlength="10000">${esc(draft.profile?.story)}</textarea></label>` : `<p>${esc(draft.profile?.story || "")}</p>`}</section><section class="box"><h3 class="section-controls">Languages ${button("Add", "add-language", 'aria-label="Add language"', "small")}</h3>${languageTable()}</section></div>`;
   const dev = preview.development;
@@ -306,7 +332,7 @@ function mainPanel() {
     })
     .join(
       "",
-    )}${craftingActions(preview, catalogs).length ? `<section class="action-group"><h3>Crafting</h3>${recipeRows()}</section>` : ""}</div><aside class="play-summary"><section class="box"><h3>Passives</h3>${passiveTable(passives)}</section><section class="box"><h3>Ancestry traits</h3><table class="trait-table"><tbody>${draft.traitIds.map((id) => `<tr><td>${button(esc(name(id)), "reference", `data-id="${esc(id)}"`, "table-link")}<span class="brief" title="${esc(traitBrief(id))}">${esc(traitBrief(id))}</span></td></tr>`).join("")}</tbody></table></section><section class="box"><h3>Defenses</h3>${row("Armor / physical DR", preview.resistances.physical ?? 0)}${Object.entries(
+    )}</div><aside class="play-summary"><section class="box"><h3>Passives</h3>${passiveTable(passives)}</section><section class="box"><h3>Ancestry traits</h3><table class="trait-table"><tbody>${draft.traitIds.map((id) => `<tr><td>${button(esc(name(id)), "reference", `data-id="${esc(id)}"`, "table-link")}<span class="brief" title="${esc(traitBrief(id))}">${esc(traitBrief(id))}</span></td></tr>`).join("")}</tbody></table></section><section class="box"><h3>Defenses</h3>${row("Armor / physical DR", preview.resistances.physical ?? 0)}${Object.entries(
     preview.resistances,
   )
     .filter(([type]) => type !== "physical")
@@ -331,9 +357,15 @@ function traitBrief(id) {
     .trim();
 }
 function recipeRows() {
-  const rows = craftingActions(preview, catalogs);
+  const actions = craftingActions(preview, catalogs);
+  const rows = [...new Set(preview.state.recipes)].flatMap((id) => {
+    const recipe = get(id);
+    if (!recipe) return [];
+    const usable = actions.filter((action) => action.recipe.id === id);
+    return usable.length ? usable : [{ recipe }];
+  });
   return rows.length
-    ? `<div class="table-wrap"><table class="recipe-table"><thead><tr><th>Recipe</th><th>Crafting ability</th><th>Attempt</th><th>Roll</th></tr></thead><tbody>${rows.map(({ recipe, ability, attribute }) => `<tr><td>${button(esc(recipe.name), "reference", `data-id="${recipe.id}"`, "table-link")}</td><td>${button(esc(ability.name), "reference", `data-id="${ability.id}"`, "table-link")}</td><td>${recipe.attemptMinutes} min</td><td>${attributeFor(ability) ? button(esc(attribute), "recipe-roll", `data-id="${ability.id}" data-recipe-id="${recipe.id}"`, "small") : "—"}</td></tr>`).join("")}</tbody></table></div>`
+    ? `<div class="table-wrap"><table class="recipe-table"><thead><tr><th>Recipe</th><th>Crafting ability</th><th>Attempt</th><th>Roll</th></tr></thead><tbody>${rows.map(({ recipe, ability, attribute }) => `<tr><td>${button(esc(recipe.name), "reference", `data-id="${recipe.id}"`, "table-link")}</td><td>${ability ? button(esc(ability.name), "reference", `data-id="${ability.id}"`, "table-link") : recipe.permissions.map((id) => button(esc(name(id)), "reference", `data-id="${esc(id)}"`, "table-link")).join(", ") + '<small class="item-source">Not learned</small>'}</td><td>${recipe.attemptMinutes} min</td><td>${ability && attributeFor(ability) ? button(esc(attribute), "recipe-roll", `data-id="${ability.id}" data-recipe-id="${recipe.id}"`, "small") : "—"}</td></tr>`).join("")}</tbody></table></div>`
     : '<p class="empty">No recipes learned.</p>';
 }
 function inventoryStats(starting = false) {
@@ -849,7 +881,7 @@ function recipeRoll(id, recipeId) {
     throw new Error("Choose a known recipe and its learned crafting ability.");
   popup(
     `Craft ${recipe.name}`,
-    `<p><strong>${esc(ability.name)}</strong> · ${title(attribute)} ${signed(draft.attributes[attribute])} · ${recipe.attemptMinutes} min per attempt</p><label>Boons / Banes <output id="roll-net-value">0</output><input id="recipe-net" type="range" min="-3" max="3" step="1" value="0"></label><div id="recipe-roll-result" role="status" aria-live="polite"></div><div class="dialog-actions">${button("Roll", "roll-recipe", `data-id="${esc(id)}"`, "primary")}</div><details><summary>Recipe rules</summary>${markdown(references.records[recipeId]?.markdown ?? "")}</details>`,
+    `<p><strong>${esc(ability.name)}</strong> · ${title(attribute)} ${signed(draft.attributes[attribute])} · ${recipe.attemptMinutes} min per attempt</p><div class="roll-net"><label for="recipe-net" class="roll-net-labels"><span>Banes</span><output id="roll-net-value">Even</output><span>Boons</span></label><input id="recipe-net" aria-label="Banes / Boons" aria-valuetext="Even" type="range" min="-3" max="3" step="1" value="0"></div><div id="recipe-roll-result" role="status" aria-live="polite"></div><div class="dialog-actions">${button("Roll", "roll-recipe", `data-id="${esc(id)}"`, "primary")}</div><details><summary>Recipe rules</summary>${markdown(references.records[recipeId]?.markdown ?? "")}</details>`,
   );
 }
 function rollRecipeDice(id) {
@@ -875,8 +907,14 @@ function rollRecipeDice(id) {
     `<strong>${title(result.tier)} · ${result.total}</strong><p>${faces.join(" · ")} → keep ${retained.join(" + ")} ${signed(plan.attribute)}${result.natural !== "none" ? ` · ${result.natural === "critical" ? "Natural 666: additional benefit" : "Natural 111: complication"}` : ""}</p>`;
 }
 document.addEventListener("input", (event) => {
-  if (event.target.id === "recipe-net")
-    $("#roll-net-value").textContent = signed(Number(event.target.value));
+  if (event.target.id === "recipe-net") {
+    const value = Number(event.target.value);
+    const label = value
+      ? `${Math.abs(value)} ${value < 0 ? "Bane" : "Boon"}${Math.abs(value) === 1 ? "" : "s"}`
+      : "Even";
+    $("#roll-net-value").textContent = label;
+    event.target.setAttribute("aria-valuetext", label);
+  }
 });
 
 function render({ focusHeading = false } = {}) {
@@ -1398,17 +1436,18 @@ app.addEventListener("keydown", (event) => {
   )
     return;
   event.preventDefault();
-  const i = tabs.indexOf(tab);
+  const visibleTabs = sheetTabs();
+  const i = visibleTabs.indexOf(tab);
   const next =
     event.key === "Home"
       ? 0
       : event.key === "End"
-        ? tabs.length - 1
+        ? visibleTabs.length - 1
         : (i +
             (["ArrowRight", "ArrowDown"].includes(event.key) ? 1 : -1) +
-            tabs.length) %
-          tabs.length;
-  action({ dataset: { action: "tab", tab: tabs[next] } });
+            visibleTabs.length) %
+          visibleTabs.length;
+  action({ dataset: { action: "tab", tab: visibleTabs[next] } });
 });
 app.addEventListener("dragstart", (event) => {
   const card = event.target.closest("[data-choice]");

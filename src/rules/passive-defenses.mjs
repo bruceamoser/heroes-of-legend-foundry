@@ -1,5 +1,5 @@
 /** Reviewed passive sources only. Names and narrative text never select mechanics. */
-const PINNED_COMMIT = "64089a1c8961d7faff172f179448a8b6e57827ef";
+const PINNED_COMMIT = "d67e046466bdd5052360b96ed91861d607091446";
 const source = (path, sha256, commit = PINNED_COMMIT) =>
   Object.freeze({ commit, path, sha256 });
 

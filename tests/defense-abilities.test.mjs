@@ -6,9 +6,11 @@ import {
 } from "../src/rules/defense-abilities.mjs";
 import {
   defenseBenefitSources,
+  shieldBenefitReuse,
   upsertBenefitEffect,
 } from "../src/rules/defense-benefits.mjs";
 import { isShieldEquipment } from "../src/rules/equipment-identity.mjs";
+import { benefitCurrent } from "../src/services/benefits.mjs";
 
 test("reviewed defense abilities expose genuine context blockers", () => {
   assert.deepEqual(
@@ -58,21 +60,37 @@ test("blockable judgment distinguishes legacy cards, denial and approval", () =>
     heldShieldUuids: ["shield"],
   });
   assert.equal(legacy.available, true);
-  assert.equal(defenseAbilityAvailability("ability-shield-block", { capable: true, remaining: { reaction: 1 }, attackMessageId: "attack", blockable: false, heldShieldUuids: ["shield"] }).available, true);
+  assert.equal(
+    defenseAbilityAvailability("ability-shield-block", {
+      capable: true,
+      remaining: { reaction: 1 },
+      attackMessageId: "attack",
+      blockable: false,
+      heldShieldUuids: ["shield"],
+    }).available,
+    true,
+  );
 });
 
 test("prior completed or unknown defense dice do not gate a newly selected ability", () => {
   const base = {
-    capable: true, remaining: { reaction: 1 }, attackMessageId: "attack",
-    blockable: true, heldShieldUuids: ["Actor.defender.Item.shield"],
+    capable: true,
+    remaining: { reaction: 1 },
+    attackMessageId: "attack",
+    blockable: true,
+    heldShieldUuids: ["Actor.defender.Item.shield"],
   };
   for (const context of [
     { priorDefenses: 1, unresolvedDefense: false },
     { priorDefenses: 2, unresolvedDefense: true },
-  ]) assert.deepEqual(
-    defenseAbilityAvailability("ability-shield-block", { ...base, ...context }),
-    { available: true, reasons: [], warnings: [] },
-  );
+  ])
+    assert.deepEqual(
+      defenseAbilityAvailability("ability-shield-block", {
+        ...base,
+        ...context,
+      }),
+      { available: true, reasons: [], warnings: [] },
+    );
 });
 
 test("Defend and Shield Block stack while repeated or ineligible sources do not", () => {
@@ -119,6 +137,110 @@ test("Defend and Shield Block stack while repeated or ineligible sources do not"
       heldShieldUuids: [],
     }).map((source) => source.label),
     ["Defend maneuver"],
+  );
+});
+
+test("High Guard replaces Shield Block with two Boons and still stacks with Defend", () => {
+  const entries = [
+    {
+      key: "shield-block",
+      sourceId: "ability-shield-block",
+      effectUuid: "old",
+      shieldItemUuid: "shield",
+    },
+    { key: "defend", effectUuid: "defend" },
+    {
+      key: "shield-block",
+      sourceId: "ability-high-guard",
+      effectUuid: "high",
+      shieldItemUuid: "shield",
+    },
+  ];
+  const sources = defenseBenefitSources(entries, {
+    incomingAttack: true,
+    heldShieldUuids: ["shield"],
+  });
+  assert.deepEqual(
+    sources.map(({ label, amount }) => [label, amount]),
+    [
+      ["Defend maneuver", 1],
+      ["High Guard", 2],
+    ],
+  );
+  assert.deepEqual(
+    defenseBenefitSources(entries, {
+      incomingAttack: true,
+      heldShieldUuids: [],
+    }).map(({ label }) => label),
+    ["Defend maneuver"],
+  );
+  assert.deepEqual(
+    defenseBenefitSources(entries, {
+      incomingAttack: false,
+      heldShieldUuids: ["shield"],
+    }).map(({ label }) => label),
+    ["Defend maneuver"],
+  );
+  assert.equal(
+    defenseAbilityAvailability("ability-high-guard", {
+      attackMessageId: "attack",
+      heldShieldUuids: ["shield"],
+      remaining: { reaction: 1 },
+    }).available,
+    true,
+  );
+});
+
+test("High Guard follows the ordinary start-of-next-turn shield benefit expiry", (t) => {
+  const previous = globalThis.game;
+  t.after(() => {
+    globalThis.game = previous;
+  });
+  let turnId = "defender-turn-1";
+  globalThis.game = {
+    combats: {
+      get: () => ({
+        getFlag: () => ({ budgets: { defender: { turnId } } }),
+      }),
+    },
+  };
+  const effect = {
+    active: true,
+    getFlag: () => ({
+      key: "shield-block",
+      sourceId: "ability-high-guard",
+      anchor: {
+        combatId: "combat",
+        participantId: "defender",
+        turnId: "defender-turn-1",
+      },
+    }),
+  };
+  assert.equal(benefitCurrent(effect), true);
+  turnId = "defender-turn-2";
+  assert.equal(benefitCurrent(effect), false);
+});
+
+test("High Guard pays one Reaction and subsequent Shield Block preserves its strength", () => {
+  assert.deepEqual(shieldBenefitReuse("high-guard-v1", null), {
+    free: false,
+    preserve: false,
+  });
+  assert.deepEqual(
+    shieldBenefitReuse("high-guard-v1", "ability-shield-block"),
+    { free: false, preserve: false },
+  );
+  assert.deepEqual(shieldBenefitReuse("high-guard-v1", "ability-high-guard"), {
+    free: false,
+    preserve: false,
+  });
+  assert.deepEqual(
+    shieldBenefitReuse("shield-block-v1", "ability-high-guard"),
+    { free: true, preserve: true },
+  );
+  assert.deepEqual(
+    shieldBenefitReuse("shield-block-v1", "ability-high-guard", false),
+    { free: true, preserve: false },
   );
 });
 
@@ -178,18 +300,31 @@ test("shield capability uses stable catalog identity rather than its name", () =
   );
 });
 
-
 test("empty tracked counters, off-turn status and condition advice do not disable deliberate abilities", () => {
   const defend = defenseAbilityAvailability("ability-defend", {
-    capable: false, ownTurn: false, remaining: { maneuver: 0 },
+    capable: false,
+    ownTurn: false,
+    remaining: { maneuver: 0 },
   });
   assert.equal(defend.available, true);
   assert.equal(defend.reasons.length, 0);
   assert.equal(defend.warnings.length, 3);
   const block = defenseAbilityAvailability("ability-shield-block", {
-    capable: false, remaining: { reaction: 0 }, attackMessageId: "attack", heldShieldUuids: ["shield"],
+    capable: false,
+    remaining: { reaction: 0 },
+    attackMessageId: "attack",
+    heldShieldUuids: ["shield"],
   });
   assert.equal(block.available, true);
   assert.equal(block.warnings.length, 2);
-  assert.equal(defenseAbilityAvailability("ability-shield-block", { capable: false, remaining: { reaction: 0 }, attackMessageId: "attack", heldShieldUuids: ["shield"], pending: true }).available, false);
+  assert.equal(
+    defenseAbilityAvailability("ability-shield-block", {
+      capable: false,
+      remaining: { reaction: 0 },
+      attackMessageId: "attack",
+      heldShieldUuids: ["shield"],
+      pending: true,
+    }).available,
+    false,
+  );
 });

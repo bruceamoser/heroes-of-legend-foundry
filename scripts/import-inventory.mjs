@@ -143,7 +143,7 @@ for (const source of lock.records.filter((r) =>
 }
 assert.equal(equipment.length, 44);
 assert.equal(recipeRecords.length, 10);
-assert.equal(reviewed.adapters.length, 357);
+assert.equal(reviewed.adapters.length, 419);
 const output = {
   schemaVersion: 1,
   sourceCommit: lock.commit,
@@ -161,5 +161,5 @@ if (process.argv.includes("--check"))
   );
 else await writeFile(path, serialized);
 console.info(
-  "Verified 44 equipment records, 10 recipes, 357 acquisition adapters.",
+  "Verified 44 equipment records, 10 recipes, 419 acquisition adapters.",
 );

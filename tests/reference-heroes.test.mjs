@@ -59,7 +59,7 @@ const check = (character, field, actual, expected) =>
 test("reference fixtures pin all six complete source blobs offline", () => {
   assert.equal(
     fixture.provenance.commit,
-    "64089a1c8961d7faff172f179448a8b6e57827ef",
+    "d67e046466bdd5052360b96ed91861d607091446",
     "reference fixture commit",
   );
   assert.equal(fixture.provenance.commit, lock.commit);

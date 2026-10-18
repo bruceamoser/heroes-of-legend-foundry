@@ -1,6 +1,7 @@
+import { originPair, originPairOptions } from "./rules/origin-history.mjs";
 import {
   reviewRulesUpdate,
-  PREVIOUS_BOOK_SOURCE,
+  SUPPORTED_BOOK_SOURCES,
 } from "./rules/source-edition.mjs";
 import { itemArrangement } from "./rules/workshop-play.mjs";
 import { CONDITION_KINDS } from "./rules/conditions.mjs";
@@ -453,18 +454,18 @@ function builderContent() {
           `<section class="box"><label>${title(kind)}<select aria-label="${title(kind)}" data-origin="${kind}">${option("", `Choose ${kind} and grants`, !draft[kind]?.id)}${catalogs.choices
             .filter((r) => r.originType === kind)
             .flatMap((r) =>
-              r.pairs.map((pair, i) =>
+              originPairOptions(r, draft[kind]).map((pair) =>
                 option(
-                  `${r.id}|${i}`,
-                  `${r.name} — ${name(pair.disciplineId)} 1 + ${name(pair.abilityId)}`,
-                  draft[kind]?.id === r.id && draft[kind]?.pair === i,
+                  pair.value,
+                  `${r.name} — ${name(pair.disciplineId)} 1 + ${name(pair.abilityId)}${pair.retained ? " (retained choice)" : ""}`,
+                  pair.selected,
                 ),
               ),
             )
             .join("")}</select></label>${
             draft[kind]?.id
               ? (() => {
-                  const pair = get(draft[kind].id)?.pairs?.[draft[kind].pair];
+                  const pair = originPair(get(draft[kind].id), draft[kind]);
                   return `<div class="origin-grants">${button(esc(name(draft[kind].id)), "reference", `data-id="${esc(draft[kind].id)}"`, "table-link")}${pair ? `<div>${symbol(pair.disciplineId)}${esc(name(pair.disciplineId))} 1</div>${button(esc(name(pair.abilityId)), "reference", `data-id="${pair.abilityId}"`, "table-link")}` : ""}</div>`;
                 })()
               : ""
@@ -865,7 +866,7 @@ function libraryDialog() {
 function readWithRulesReview(character) {
   const value =
     typeof character === "string" ? JSON.parse(character) : character;
-  if (value?.sourceCommit !== PREVIOUS_BOOK_SOURCE)
+  if (!SUPPORTED_BOOK_SOURCES.includes(value?.sourceCommit))
     return readPortableCharacter(character, catalogs);
   const review = reviewRulesUpdate(character, catalogs);
   const records = library();
@@ -1033,8 +1034,13 @@ function getValue(path) {
 }
 function updateField(target) {
   if (target.dataset.origin) {
-    const [id, pair] = target.value.split("|");
-    if (id) draft[target.dataset.origin] = { id, pair: Number(pair) };
+    const [id, pair, retainedFrom] = target.value.split("|");
+    if (id)
+      draft[target.dataset.origin] = {
+        id,
+        pair: Number(pair),
+        ...(retainedFrom ? { retainedFrom } : {}),
+      };
     else delete draft[target.dataset.origin];
   } else if (target.dataset.field) {
     let value = target.type === "checkbox" ? target.checked : target.value;

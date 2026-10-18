@@ -163,7 +163,7 @@ async function apply(id) {
     await writeAuthorityDocument(message, {
       content: "Defense rolled. The DA can review and apply damage.",
       rolls: [roll],
-      flavor: `Defense · ${game.i18n.localize(`HOL.Attributes.${basis.attributeKey}`)}`,
+      flavor: `Defense · ${game.i18n.localize(`HOL.Attributes.${snapshot.resolvedAttributeKey ?? basis.attributeKey}`)}`,
       [`flags.${ID}.roll`]: snapshot,
       [`flags.${ID}.defenseStatus`]: "rolled",
     });
@@ -194,7 +194,9 @@ export function abandonDefense(attackId, requestId, reason = "") {
   return enqueueCharacterOperation(
     async () => {
       if (!game.user.isGM)
-        throw new Error("Only the actual DA can abandon an unresolved defense.");
+        throw new Error(
+          "Only the actual DA can abandon an unresolved defense.",
+        );
       const attack = game.messages.get(attackId),
         responses = structuredClone(defenseResponses(attack)),
         record = responses.find((r) => r.requestId === requestId);

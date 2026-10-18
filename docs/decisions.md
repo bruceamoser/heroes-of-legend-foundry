@@ -127,3 +127,13 @@ language/specialty and one memorized message. Use normal action budgets and
 contextual Boons; leave fictional trigger adjudication to the table. Preserve
 existing Actor snapshots and explicitly review old browser saves before adapting
 the armor grant. See the source-update review for compatibility and scope.
+
+## October 18 discipline/origin expansion (#171)
+
+Bruce requested implementation of approved book PR #1278, v16.3.0. Import its
+62 shared cards and 12 revised origins from d67e046. Preserve existing characters'
+chosen grants; offer revised origin alternatives deliberately. High Guard replaces
+Shield Block under its existing benefit key. Four pre-roll attribute substitutions
+use the existing defense response. Other specialty triggers and outcomes remain
+readable local rules with table adjudication, using established roll, condition,
+movement and inventory rules rather than new global mechanics or approval gates.

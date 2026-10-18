@@ -1,3 +1,8 @@
+import { originPairOptions } from "../rules/origin-history.mjs";
+import {
+  reviewRulesUpdate,
+  SUPPORTED_BOOK_SOURCES,
+} from "../rules/source-edition.mjs";
 import { additionalLanguageOptions } from "../rules/languages.mjs";
 import {
   resolveBuilderDrop,
@@ -55,6 +60,7 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
       addEquipment: CreationWizard.addEquipment,
       removeEquipment: CreationWizard.removeEquipment,
       importCharacter: CreationWizard.importCharacter,
+      reviewRulesUpdate: CreationWizard.reviewRulesUpdate,
     },
   };
   static PARTS = {
@@ -72,6 +78,7 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
     this.step = saved?.step ?? 0;
     this.revision = saved?.revision ?? 0;
     this.savedLanguageBasis = saved?.languageBasis;
+    this.savedSourceCommit = saved?.sourceCommit;
     this.languageConfiguration = null;
     this.renderedLanguageBasis = null;
   }
@@ -82,6 +89,28 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
     const { choices, inventory, commit } = this.catalogs;
     this.languageConfiguration = getCampaignLanguageConfiguration();
     this.renderedLanguageBasis = this.languageConfiguration.basis;
+    if (
+      this.savedSourceCommit &&
+      this.savedSourceCommit !== commit &&
+      !this.rulesUpdate
+    ) {
+      if (!SUPPORTED_BOOK_SOURCES.includes(this.savedSourceCommit))
+        throw new Error(
+          "This draft uses an unrecognized rules edition. Keep its saved data and review it with its matching version.",
+        );
+      this.rulesUpdate = reviewRulesUpdate(
+        {
+          format: "heroes-of-legend-character",
+          schemaVersion: 3,
+          sourceCommit: this.savedSourceCommit,
+          draft: this.draft,
+        },
+        this.catalogs,
+        this.languageConfiguration.definitions,
+      );
+      this.draft = this.rulesUpdate.draft;
+      this.step = 7;
+    }
     const d = this.draft,
       get = (id) => choices.find((r) => r.id === id),
       name = (id) =>
@@ -114,6 +143,11 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
           `${name(e.id ?? e.code)}: ${(e.reasons ?? []).map((r) => r.text).join(" ")}`,
       ),
       ...(languageBasisError ? [languageBasisError] : []),
+      ...(this.rulesUpdate
+        ? [
+            "Review the rules update before saving this earlier-edition draft. Original origin grants are retained.",
+          ]
+        : []),
     ];
     const options = (records, selected) =>
       records.map((r) => ({
@@ -255,19 +289,19 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
       culturePairs: choices
         .filter((r) => r.originType === "culture")
         .flatMap((r) =>
-          r.pairs.map((pair, index) => ({
-            value: `${r.id}|${index}`,
-            label: `${r.name}: ${name(pair.disciplineId)} 1 + ${name(pair.abilityId)}`,
-            selected: d.culture?.id === r.id && d.culture?.pair === index,
+          originPairOptions(r, d.culture).map((pair) => ({
+            value: pair.value,
+            label: `${r.name}: ${name(pair.disciplineId)} 1 + ${name(pair.abilityId)}${pair.retained ? " (retained choice)" : ""}`,
+            selected: pair.selected,
           })),
         ),
       backgroundPairs: choices
         .filter((r) => r.originType === "background")
         .flatMap((r) =>
-          r.pairs.map((pair, index) => ({
-            value: `${r.id}|${index}`,
-            label: `${r.name}: ${name(pair.disciplineId)} 1 + ${name(pair.abilityId)}`,
-            selected: d.background?.id === r.id && d.background?.pair === index,
+          originPairOptions(r, d.background).map((pair) => ({
+            value: pair.value,
+            label: `${r.name}: ${name(pair.disciplineId)} 1 + ${name(pair.abilityId)}${pair.retained ? " (retained choice)" : ""}`,
+            selected: pair.selected,
           })),
         ),
       classes: eligibleFirst(
@@ -329,7 +363,8 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
           .filter(Boolean)
           .join(", "),
       })),
-      valid: preview.valid && !languageBasisError,
+      valid: preview.valid && !languageBasisError && !this.rulesUpdate,
+      rulesUpdate: this.rulesUpdate?.changes,
       errors,
       ledger: preview.ledger.map((e) => ({
         ...e,
@@ -365,8 +400,12 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
     }
     if (this.step === 2)
       for (const kind of ["culture", "background"]) {
-        const [id, pair] = String(f.get(kind) ?? "").split("|");
-        d[kind] = { id, pair: Number(pair) };
+        const [id, pair, retainedFrom] = String(f.get(kind) ?? "").split("|");
+        d[kind] = {
+          id,
+          pair: Number(pair),
+          ...(retainedFrom ? { retainedFrom } : {}),
+        };
       }
     if (this.step === 4) {
       d.classId = String(f.get("classId") ?? "");
@@ -389,6 +428,8 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
       }
   }
   async persist() {
+    if (this.rulesUpdate)
+      throw new Error("Review the rules update before saving this draft.");
     const current = this.actor.getFlag("heroes-of-legend", FLAG);
     if ((current?.revision ?? 0) !== this.revision)
       throw new Error(
@@ -396,7 +437,7 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
       );
     this.requireRenderedLanguageBasis();
     const revision = this.revision + 1;
-    await updateOwnedDocument(this.actor, {
+    const changes = {
       [`flags.heroes-of-legend.${FLAG}`]: {
         schemaVersion: 1,
         sourceCommit: this.catalogs.commit,
@@ -405,9 +446,19 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
         step: this.step,
         data: this.draft,
       },
-    });
+    };
+    // Foundry merges nested flags; an omitted historical marker needs explicit deletion.
+    for (const kind of ["culture", "background"])
+      if (
+        current?.data?.[kind]?.retainedFrom &&
+        !this.draft[kind]?.retainedFrom
+      )
+        changes[`flags.heroes-of-legend.${FLAG}.data.${kind}.-=retainedFrom`] =
+          null;
+    await updateOwnedDocument(this.actor, changes);
     this.revision = revision;
     this.savedLanguageBasis = this.renderedLanguageBasis;
+    this.savedSourceCommit = this.catalogs.commit;
   }
   requireRenderedLanguageBasis() {
     const current = getCampaignLanguageConfiguration();
@@ -438,6 +489,32 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
       await this.render();
     } catch (error) {
       ui.notifications.error(error.message);
+    }
+  }
+  static async reviewRulesUpdate() {
+    if (this.busy || !this.rulesUpdate || !this.actor.isOwner) return;
+    this.busy = true;
+    const review = this.rulesUpdate;
+    try {
+      this.requireRenderedLanguageBasis();
+      if (
+        !this.actor.getFlag(
+          "heroes-of-legend",
+          "creationDraftBeforeRulesUpdate",
+        )
+      )
+        await updateOwnedDocument(this.actor, {
+          "flags.heroes-of-legend.creationDraftBeforeRulesUpdate":
+            structuredClone(this.actor.getFlag("heroes-of-legend", FLAG)),
+        });
+      this.rulesUpdate = null;
+      await this.persist();
+      await this.render({ force: true });
+    } catch (error) {
+      this.rulesUpdate = review;
+      ui.notifications.error(error.message);
+    } finally {
+      this.busy = false;
     }
   }
   static async commitCreation() {

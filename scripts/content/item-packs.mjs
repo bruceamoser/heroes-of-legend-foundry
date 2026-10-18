@@ -100,9 +100,9 @@ export function validateCatalogBasis({ choices, inventory, lock }) {
       (record) => record.kind === "ability",
     ),
     equipment = inventory.equipment;
-  if (abilities?.length !== 357 || equipment?.length !== 44)
+  if (abilities?.length !== 419 || equipment?.length !== 44)
     throw new Error(
-      `Expected 357 abilities and 44 equipment records; found ${abilities?.length ?? 0} and ${equipment?.length ?? 0}.`,
+      `Expected 419 abilities and 44 equipment records; found ${abilities?.length ?? 0} and ${equipment?.length ?? 0}.`,
     );
   if (abilities.filter((record) => record.universal).length !== 18)
     throw new Error("Expected 18 universal ability references.");

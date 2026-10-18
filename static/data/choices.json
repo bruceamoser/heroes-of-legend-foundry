@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "sourceCommit": "64089a1c8961d7faff172f179448a8b6e57827ef",
+  "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
   "scope": "ability reference text and learning metadata; action, acquisition and trait automation pending",
   "records": [
     {
@@ -3014,6 +3014,71 @@
       ]
     },
     {
+      "id": "ability-bank-the-embers",
+      "foundryId": "759d3c083d44c819",
+      "kind": "ability",
+      "name": "Bank the Embers",
+      "source": {
+        "path": "design/cards/bank-the-embers.md",
+        "sha256": "d36ad5d9f909e9b3ac5460aa43c600f62a1a47b04e36c7fbf65d34f896863910"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You cup a hand over the flames and draw their heat into a tiny coal that crumbles between your fingers."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Maneuver"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "Self or one adjacent willing creature."
+            },
+            {
+              "label": "Duration",
+              "value": "Instant."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "None."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Magic / Recovery"
+            }
+          ],
+          "body": [
+            {
+              "text": "Reduce temporary Burning by 1, minimum 0. This does not remove a starred source or prevent the surrounding hazard from applying Burning again. It causes no damage and restores no HP."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 1,
+      "cost": 2,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-flame",
+          "rank": 1
+        }
+      ]
+    },
+    {
       "id": "ability-basic-melee",
       "foundryId": "2ab542b118f8e113",
       "kind": "ability",
@@ -3312,6 +3377,71 @@
       "cost": null,
       "purchasePolicy": "never",
       "requirements": []
+    },
+    {
+      "id": "ability-beacon-through-terror",
+      "foundryId": "ed1ce45d8cfaea1f",
+      "kind": "ability",
+      "name": "Beacon through Terror",
+      "source": {
+        "path": "design/cards/beacon-through-terror.md",
+        "sha256": "9ee7ee1b50c58eba91ced3a6c2b2bb202395310468c735339c4fdece1e22241e"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You lift a bright hand between your companion and the horror, giving their eyes one steady light to hold."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Reaction"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "One visible willing ally within 3 squares, immediately after temporary Frightened or Blinded is applied."
+            },
+            {
+              "label": "Duration",
+              "value": "Instant."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "None."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Magic / Recovery"
+            }
+          ],
+          "body": [
+            {
+              "text": "Reduce one of those newly applied conditions by 2, minimum 0. Choose one if both were applied. Existing and starred contributions remain. Your light grants no vision through walls or lasting immunity."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 3,
+      "cost": 4,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-radiance",
+          "rank": 2
+        }
+      ]
     },
     {
       "id": "ability-behind-the-hawthorn",
@@ -4518,6 +4648,76 @@
       ]
     },
     {
+      "id": "ability-breakaway-rig",
+      "foundryId": "2f6319e21a4a7bbd",
+      "kind": "ability",
+      "name": "Breakaway Rig",
+      "source": {
+        "path": "design/cards/breakaway-rig.md",
+        "sha256": "19a284706b0e609c19f264247a1e257a1c456035fa51190ca2b0e3620734d49b"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You pull a concealed fastening. Sleeves, straps and outer layers slip loose in the hands trying to hold you."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Reaction"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "Self, immediately before a grapple would add to your Grappled rating."
+            },
+            {
+              "label": "Duration",
+              "value": "Instant."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "Requires worn clothing or a harness; grants no item."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Skill / Defense"
+            }
+          ],
+          "body": [
+            {
+              "text": "Reduce this new contribution by 2, minimum 0, before applying it. Existing contributions remain. If no contribution remains, that grappler establishes no hold. You must be wearing accessible clothing or a harness you can release. This grants no protection against a later attempt."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 7,
+      "cost": 8,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-craft",
+          "rank": 3
+        },
+        {
+          "kind": "discipline",
+          "id": "discipline-subterfuge",
+          "rank": 1
+        }
+      ]
+    },
+    {
       "id": "ability-breath-of-the-wyrmling",
       "foundryId": "2d5b128c096efa03",
       "kind": "ability",
@@ -4594,6 +4794,87 @@
         {
           "kind": "discipline",
           "id": "discipline-flame",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "ability-breath-of-white",
+      "foundryId": "776a075754772dff",
+      "kind": "ability",
+      "name": "Breath of White",
+      "source": {
+        "path": "design/cards/breath-of-white.md",
+        "sha256": "6dc711e8b9cc768f763a51ca2372e6810e4a848de872b74416ff55eab9eaa895"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You exhale a billowing fan of white mist. Rime settles on the lashes and clothing of everyone it catches."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Main Action"
+            },
+            {
+              "label": "Attribute",
+              "value": "Knowledge"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "Every creature in 3 connected squares, all adjacent to you; choose the squares before rolling."
+            },
+            {
+              "label": "Duration",
+              "value": "Instant."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "None."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Magic / Attack"
+            }
+          ],
+          "body": [
+            {
+              "text": "NPC defense: Fortitude. Make one area attack using the worst applicable Boons/Banes."
+            },
+            {
+              "outcomes": [
+                {
+                  "label": "Weak",
+                  "text": "2 cold damage to each target."
+                },
+                {
+                  "label": "Standard",
+                  "text": "3 cold damage to each target."
+                },
+                {
+                  "label": "Strong",
+                  "text": "4 cold damage and Freezing 1 to each target."
+                }
+              ]
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 1,
+      "cost": 2,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-frost",
           "rank": 1
         }
       ]
@@ -5258,6 +5539,71 @@
       ]
     },
     {
+      "id": "ability-call-their-name",
+      "foundryId": "9f6ea8e0a131c058",
+      "kind": "ability",
+      "name": "Call Their Name",
+      "source": {
+        "path": "design/cards/call-their-name.md",
+        "sha256": "fc9dd3d1b0f3a4735617a620093d2096d0ed94f0b45bc21ca4f17eab37f198de"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You call your companion by a name that belongs to better days, cutting through the panic for a heartbeat."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Reaction"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "One willing ally within 3 squares who hears you, before an attribute roll penalized by Frightened."
+            },
+            {
+              "label": "Duration",
+              "value": "Instant."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "None."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Skill / Recovery"
+            }
+          ],
+          "body": [
+            {
+              "text": "Reduce the ally’s temporary Frightened by 1, minimum 0, before applying its Banes to this roll. Starred contributions remain. This restores no HP and does not change the creature causing the fear."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 1,
+      "cost": 2,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-influence",
+          "rank": 1
+        }
+      ]
+    },
+    {
       "id": "ability-carry-the-sunrise",
       "foundryId": "2d332fb14504b255",
       "kind": "ability",
@@ -5448,6 +5794,71 @@
         {
           "kind": "discipline",
           "id": "discipline-guard",
+          "rank": 3
+        }
+      ]
+    },
+    {
+      "id": "ability-cast-off-the-venom",
+      "foundryId": "232819675ff5e5a7",
+      "kind": "ability",
+      "name": "Cast Off the Venom",
+      "source": {
+        "path": "design/cards/cast-off-the-venom.md",
+        "sha256": "d1bce68ca512d40def1c0536d134f8ef51e123804e78e41f338e38ad8dcd31cc"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You draw your hand through the air before your companion; a dark sweat beads on their skin as their breathing steadies."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Maneuver"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "One visible willing living creature within 3 squares."
+            },
+            {
+              "label": "Duration",
+              "value": "Instant."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "Requires one free hand; grants no item."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Magic / Recovery"
+            }
+          ],
+          "body": [
+            {
+              "text": "Reduce temporary Poisoned by 3, minimum 0. A starred source requires its own remedy. This restores no HP and grants no protection against a new dose."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 7,
+      "cost": 8,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-life",
           "rank": 3
         }
       ]
@@ -5660,6 +6071,201 @@
       "requirements": []
     },
     {
+      "id": "ability-catch-the-ledge",
+      "foundryId": "81e42e1b1e87427c",
+      "kind": "ability",
+      "name": "Catch the Ledge",
+      "source": {
+        "path": "design/cards/catch-the-ledge.md",
+        "sha256": "a6c8faa08b33168ccc981f27af7c6a4e4aeb667ae75e2e62f62899c33d2536f3"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "Your hand snaps out and closes over the ledge as your feet swing into empty air."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Reaction"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "Self, when a fall begins beside a ledge or secure handhold within reach."
+            },
+            {
+              "label": "Duration",
+              "value": "Instant."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "Requires one free hand; grants no item."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Skill / Defense / Movement"
+            }
+          ],
+          "body": [
+            {
+              "text": "With a free hand, catch the hold before falling and hang there. You do not move onto the ledge; climbing back uses ordinary movement. This cannot stop a push or pull that is still moving you away from the hold."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 1,
+      "cost": 2,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-athletics",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "ability-catch-the-mechanism",
+      "foundryId": "4ea1558ff819ff99",
+      "kind": "ability",
+      "name": "Catch the Mechanism",
+      "source": {
+        "path": "design/cards/catch-the-mechanism.md",
+        "sha256": "35855ba80829acc5d06968cbb33b361c5bbe1cbad3c7166e8561cfcce46f8646"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You spot the spring beginning to uncoil and jab your tool into the mechanism before it finishes its stroke."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Reaction"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "Self, before a defense roll against a mechanical trap whose mechanism is within reach."
+            },
+            {
+              "label": "Duration",
+              "value": "Instant."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "Requires a held craft tool. Grants craft tools, Bulk 1, if absent."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Skill / Defense"
+            }
+          ],
+          "body": [
+            {
+              "text": "Use Knowledge instead of the trap’s normal defense attribute for this roll. This creates no additional roll and does not disarm the trap or protect anyone else. You must be able to see and reach its workings."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 1,
+      "cost": 2,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-craft",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "ability-catch-the-root",
+      "foundryId": "d710c28212f16a46",
+      "kind": "ability",
+      "name": "Catch the Root",
+      "source": {
+        "path": "design/cards/catch-the-root.md",
+        "sha256": "0dfb98df6ed1555257bedd808f504fd560cad202db52f31354d92887d3e6731b"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "Your boot hooks a root as the shove lands, and your hand closes around a low branch before it can tear you away."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Reaction"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "Self, before forced movement while beside rooted vegetation you can reach."
+            },
+            {
+              "label": "Duration",
+              "value": "Instant."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "None."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Skill / Defense"
+            }
+          ],
+          "body": [
+            {
+              "text": "Gain Stability 2 for this forced movement, including if you join a collision group. This requires a usable root or branch; loose grass and carried plants are insufficient. It does not prevent Prone or reduce collision damage."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 3,
+      "cost": 4,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-wilderness",
+          "rank": 2
+        }
+      ]
+    },
+    {
       "id": "ability-catch-the-spell",
       "foundryId": "29de6a11bfc4bea9",
       "kind": "ability",
@@ -5724,6 +6330,71 @@
           "kind": "discipline",
           "id": "discipline-scholarship",
           "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "ability-catch-them-falling",
+      "foundryId": "060a68aaa585ddd7",
+      "kind": "ability",
+      "name": "Catch Them Falling",
+      "source": {
+        "path": "design/cards/catch-them-falling.md",
+        "sha256": "09df01c9e59b050c58a67869578aa332894654168cc46e4a760222b9486f4db2"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You dive flat and seize your companion’s arm, hauling them over the edge in one desperate heave."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Reaction"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "One adjacent willing creature when it begins to fall."
+            },
+            {
+              "label": "Duration",
+              "value": "Instant."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "Requires one free hand; grants no item."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Skill / Movement / Defense"
+            }
+          ],
+          "body": [
+            {
+              "text": "If you are supported and have a free hand, move the target into one free supported square adjacent to you. This stops the fall before it travels. It does not stop ongoing forced movement or move a target larger than your own footprint. You become Prone."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 7,
+      "cost": 8,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-athletics",
+          "rank": 3
         }
       ]
     },
@@ -5955,6 +6626,266 @@
         {
           "kind": "discipline",
           "id": "discipline-guard",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "ability-clear-the-airway",
+      "foundryId": "251ba4fee4b61058",
+      "kind": "ability",
+      "name": "Clear the Airway",
+      "source": {
+        "path": "design/cards/clear-the-airway.md",
+        "sha256": "8b61fd532f508981e0dbdbfedd81807a5a23da00ada37f8eca4f7f91ed125e91"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You brace your companion, turn their face and clear the obstruction before panic takes their breath."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Reaction"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "One adjacent willing creature, immediately after temporary Asleep or Poisoned is applied by an inhaled substance."
+            },
+            {
+              "label": "Duration",
+              "value": "Instant."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "Requires one free hand; grants no item."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Skill / Recovery"
+            }
+          ],
+          "body": [
+            {
+              "text": "Reduce the newly applied temporary condition by 2, minimum 0. Choose one if both were applied. This does not undo damage, restore HP, remove an existing contribution or treat a starred condition. An unconscious ally can receive this aid."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 3,
+      "cost": 4,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-medicine",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "ability-clear-the-smoke",
+      "foundryId": "4e14d801f4a2cc21",
+      "kind": "ability",
+      "name": "Clear the Smoke",
+      "source": {
+        "path": "design/cards/clear-the-smoke.md",
+        "sha256": "38fd1b8ff485c3aa8260961cee26652eb8d5128ce71891d0d5d310968241ab08"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You sweep a hand across your face and drive a clean breath of air through the hanging smoke."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Maneuver"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "Up to 3 connected squares within 3 squares."
+            },
+            {
+              "label": "Duration",
+              "value": "Until the start of your next turn."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "None."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Magic / Utility / Control"
+            }
+          ],
+          "body": [
+            {
+              "text": "Disperse ordinary smoke or fog in the chosen squares. For the duration it supplies no cover there. This does not disperse a magical area, neutralize poison or extinguish fire; smoke may flow back afterward. Visibility and Hidden follow the changed circumstances normally."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 1,
+      "cost": 2,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-storm",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "ability-close-shot",
+      "foundryId": "5448383f6b70610f",
+      "kind": "ability",
+      "name": "Close Shot",
+      "source": {
+        "path": "design/cards/close-shot.md",
+        "sha256": "30e255ae13c8e70fb9737d710120d380fdbbb583232573fa42dfd4bc400d2e8b"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You turn your bow across your body and loose as the charging enemy comes within arm’s reach."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Reaction"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "One visible enemy immediately after it ends voluntary movement adjacent to you."
+            },
+            {
+              "label": "Duration",
+              "value": "Instant."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "Requires a ranged weapon and ammunition; grants one ordinary ranged weapon and one d8 ammunition bundle if absent, each Bulk 1."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Skill / Attack"
+            }
+          ],
+          "body": [
+            {
+              "text": "Make one free Basic Ranged attack against that enemy, using that card’s attribute, damage, range and ammunition check. Forced movement cannot trigger this card. A free attack or movement granted by a free attack cannot trigger it, and this attack cannot trigger further free attacks."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 1,
+      "cost": 2,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-marksmanship",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "ability-cold-cuirass",
+      "foundryId": "1c10f61a7542d84c",
+      "kind": "ability",
+      "name": "Cold Cuirass",
+      "source": {
+        "path": "design/cards/cold-cuirass.md",
+        "sha256": "d04b7548319e8e54f7655bc316732378074aa6f3a40b646847c2aa9bfe0a5d51"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You draw your shoulders in as frost plates over your coat; the blow cracks the ice before it reaches you."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Reaction"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "Self, before taking physical damage from one attack."
+            },
+            {
+              "label": "Duration",
+              "value": "Instant."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "None."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Magic / Defense"
+            }
+          ],
+          "body": [
+            {
+              "text": "Gain physical resistance 2 against this attack only. Use the highest matching resistance, not their sum. Resolve the attack’s other effects normally."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 1,
+      "cost": 2,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-frost",
           "rank": 1
         }
       ]
@@ -6222,6 +7153,136 @@
         {
           "kind": "discipline",
           "id": "discipline-subterfuge",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "ability-crosswind",
+      "foundryId": "a2f466a9f7f7ebb3",
+      "kind": "ability",
+      "name": "Crosswind",
+      "source": {
+        "path": "design/cards/crosswind.md",
+        "sha256": "7f7e13badfa1dd82a6ac2ad32b6d2de61337f3af127b20ba48e02022fc44c16a"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You snap your wrist sideways, sending a gust across the shaft just as it flies toward your companion."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Reaction"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "Self or one visible willing ally within 3 squares, before a defense roll against a physical projectile attack."
+            },
+            {
+              "label": "Duration",
+              "value": "Instant."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "None."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Magic / Defense"
+            }
+          ],
+          "body": [
+            {
+              "text": "Grant 1 Boon to this defense. This cannot affect an area attack or a projectile larger than the target’s footprint. Use the existing defense roll."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 1,
+      "cost": 2,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-storm",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "ability-cup-the-flame",
+      "foundryId": "b0bdfca82794698a",
+      "kind": "ability",
+      "name": "Cup the Flame",
+      "source": {
+        "path": "design/cards/cup-the-flame.md",
+        "sha256": "2ea2c25ea9acd41e0b236e0979d185bdb16642a2a4462045432f21df18770b6c"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You curl your fingers toward the incoming fire and fold its hottest tongue into your palm."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Reaction"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "Self, before taking fire damage from one event."
+            },
+            {
+              "label": "Duration",
+              "value": "Instant."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "None."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Magic / Defense"
+            }
+          ],
+          "body": [
+            {
+              "text": "Gain fire resistance 2 for that event. Use the highest matching resistance, not their sum; the normal minimum damage remains. This does not remove Burning."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 1,
+      "cost": 2,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-flame",
           "rank": 1
         }
       ]
@@ -6657,6 +7718,71 @@
       "requirements": []
     },
     {
+      "id": "ability-doors-for-the-host",
+      "foundryId": "c43929ec26d919a7",
+      "kind": "ability",
+      "name": "Doors for the Host",
+      "source": {
+        "path": "design/cards/doors-for-the-host.md",
+        "sha256": "d264782d50fd02866bee069718e0643d6e4d81a08fa8e7d0183f24ad958cc841"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You open two small doorways with a sweep of your arms, pouring your summoned shapes through them like colored smoke."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Maneuver"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "Up to 2 visible summons of yours within 6 squares."
+            },
+            {
+              "label": "Duration",
+              "value": "Instant."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "None."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Magic / Movement"
+            }
+          ],
+          "body": [
+            {
+              "text": "Teleport each chosen summon up to 4 squares to a visible free supported space within 6 squares of you. Each footprint must fit; destinations cannot overlap. HP, conditions, durations and command history remain unchanged. This grants neither commands nor activity."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 7,
+      "cost": 8,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-calling",
+          "rank": 3
+        }
+      ]
+    },
+    {
       "id": "ability-drain-warmth",
       "foundryId": "1a8bd9d8328891b2",
       "kind": "ability",
@@ -6803,6 +7929,71 @@
         {
           "kind": "discipline",
           "id": "discipline-scholarship",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "ability-draw-the-tether",
+      "foundryId": "83afaa0afbd4c76d",
+      "kind": "ability",
+      "name": "Draw the Tether",
+      "source": {
+        "path": "design/cards/draw-the-tether.md",
+        "sha256": "2c05756c45ee8b094d8cb5981871e9b16fda15de3755c86b1eb5ff459178c16e"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You gather the shining tether around your wrist and step toward your summoned companion, drawing its outline into sharper focus."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Maneuver"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "Self and one of your visible summons within 6 squares."
+            },
+            {
+              "label": "Duration",
+              "value": "Until used or the end of this turn."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "None."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeated uses do not multiply this card’s benefit on the same summon."
+            },
+            {
+              "label": "Type",
+              "value": "Magic / Movement"
+            }
+          ],
+          "body": [
+            {
+              "text": "Move up to 2 squares toward the summon, following normal movement and opportunity rules. The summon gains 1 Boon to its next attack this turn if you subsequently command it. This does not command it, move it or grant an attack."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 1,
+      "cost": 2,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-calling",
           "rank": 1
         }
       ]
@@ -6966,6 +8157,136 @@
           "kind": "discipline",
           "id": "discipline-marksmanship",
           "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "ability-duck-into-the-brush",
+      "foundryId": "2880b877a8237f4c",
+      "kind": "ability",
+      "name": "Duck into the Brush",
+      "source": {
+        "path": "design/cards/duck-into-the-brush.md",
+        "sha256": "f9b628addd2d72d5c1aa6d0c5eb31fae0e1e1204907bcd4917ff0e0bb3df1852"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You drop behind a twist of roots, letting the branches catch at the blow meant for you."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Reaction"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "Self, before a defense roll against an attack dealing physical damage while occupying vegetation that already supplies cover."
+            },
+            {
+              "label": "Duration",
+              "value": "Instant."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "None."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Skill / Defense"
+            }
+          ],
+          "body": [
+            {
+              "text": "Gain 1 Boon to this defense. This is in addition to the existing cover modifier, under normal Boon/Bane rules. It does not grant Hidden or change the vegetation’s cover rating."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 1,
+      "cost": 2,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-wilderness",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "ability-ease-the-spasm",
+      "foundryId": "e687de75d0fa35ce",
+      "kind": "ability",
+      "name": "Ease the Spasm",
+      "source": {
+        "path": "design/cards/ease-the-spasm.md",
+        "sha256": "ca094553681be540be5bf13efa14c05a2204367498b103d574a8843a3203bedc"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You lay a warm hand over a cramped muscle and feel it loosen beneath your fingers."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Maneuver"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "Self or one adjacent willing living creature."
+            },
+            {
+              "label": "Duration",
+              "value": "Instant."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "Requires one free hand; grants no item."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Magic / Recovery"
+            }
+          ],
+          "body": [
+            {
+              "text": "Reduce temporary Slowed by 1, minimum 0. This restores no HP and does not repair a wound, replace a limb or remove a starred condition."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 1,
+      "cost": 2,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-life",
+          "rank": 1
         }
       ]
     },
@@ -7225,6 +8546,201 @@
       ]
     },
     {
+      "id": "ability-field-triage",
+      "foundryId": "8c54698e954b2cb2",
+      "kind": "ability",
+      "name": "Field Triage",
+      "source": {
+        "path": "design/cards/field-triage.md",
+        "sha256": "fb191baa1b14e376ecd2aa07710b68b3770578e17160ee8d453cd6b7e0a01029"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You move from one companion to the next, tying a hard knot here and clearing a trembling hand there without losing sight of the fight."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Maneuver"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "Up to 2 adjacent willing creatures, including yourself."
+            },
+            {
+              "label": "Duration",
+              "value": "Instant."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "Requires a free hand and cloth; grants no item."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Skill / Recovery"
+            }
+          ],
+          "body": [
+            {
+              "text": "For each target, choose either temporary Bleeding or temporary Poisoned and reduce it by 2, minimum 0. You may choose differently for each. Starred sources remain. This restores no HP and does not treat wounds."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 7,
+      "cost": 8,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-medicine",
+          "rank": 3
+        }
+      ]
+    },
+    {
+      "id": "ability-find-the-seam",
+      "foundryId": "c1d744aa45ac6bcf",
+      "kind": "ability",
+      "name": "Find the Seam",
+      "source": {
+        "path": "design/cards/find-the-seam.md",
+        "sha256": "e0d8c14f75ef1fa03897b6d98cdeaa7420a9d02df6300a1aa985409e4a7c179e"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You follow the shifting plates until the same small gap opens twice, then settle your aim on the next opening."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Maneuver"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "One visible creature within your ranged weapon’s attack range."
+            },
+            {
+              "label": "Duration",
+              "value": "Until used or the end of this turn."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "Requires a ranged weapon; grants no item."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeated uses do not improve the same attack again."
+            },
+            {
+              "label": "Type",
+              "value": "Skill / Attack"
+            }
+          ],
+          "body": [
+            {
+              "text": "Your next ranged attack against that creature this turn treats its physical resistance as 1 lower, minimum 0. It also ignores partial cover’s 1 Bane, but not heavy cover. The target still requires an attack path. This grants no attack and does not alter any other damage type or later attack."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 7,
+      "cost": 8,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-marksmanship",
+          "rank": 3
+        }
+      ]
+    },
+    {
+      "id": "ability-find-your-footing",
+      "foundryId": "e49fd73d31dc7f89",
+      "kind": "ability",
+      "name": "Find Your Footing",
+      "source": {
+        "path": "design/cards/find-your-footing.md",
+        "sha256": "3586a8b699ba3151352494c3a36ad07d4e753478cffb609193f6aea689ad073b"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You test a foothold, shift your grip and pull yourself clear of the worst of the climb."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Maneuver"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "Self while climbing or swimming."
+            },
+            {
+              "label": "Duration",
+              "value": "Instant."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "None."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Skill / Movement"
+            }
+          ],
+          "body": [
+            {
+              "text": "Move up to 2 squares along a route you can already climb or swim. For this movement only, climbing and swimming cost 1 per square; other difficult terrain still costs 2. Normal opportunity rules apply. This supplies no hold on an unclimbable surface and no passage through an impassable current."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 1,
+      "cost": 2,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-athletics",
+          "rank": 1
+        }
+      ]
+    },
+    {
       "id": "ability-fit-a-replacement",
       "foundryId": "87636b8d6002e17b",
       "kind": "ability",
@@ -7306,6 +8822,76 @@
           "kind": "discipline",
           "id": "discipline-medicine",
           "rank": 3
+        }
+      ]
+    },
+    {
+      "id": "ability-follow-my-leap",
+      "foundryId": "9c9e9a8fff8b71b3",
+      "kind": "ability",
+      "name": "Follow My Leap",
+      "source": {
+        "path": "design/cards/follow-my-leap.md",
+        "sha256": "6d5fd10a62a397cad38a849494563ffbafc23cc16cd2506c6f8843aab8a74346"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You spring across the gap and call back the rhythm of the jump; your companions follow the line of your landing."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Maneuver"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "Self and up to 2 willing allies within 2 squares who can hear you."
+            },
+            {
+              "label": "Duration",
+              "value": "Instant."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "None."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Skill / Movement"
+            }
+          ],
+          "body": [
+            {
+              "text": "You may broad jump up to 4 squares to a free supported square, without an approach. Each chosen ally may spend its Reaction to make the same kind of jump, up to 4 squares from its own position. Everyone must have a clear path and a separate legal landing. Jumps provoke normally. No ordinary movement is spent."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 7,
+      "cost": 8,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-athletics",
+          "rank": 3
+        },
+        {
+          "kind": "discipline",
+          "id": "discipline-influence",
+          "rank": 2
         }
       ]
     },
@@ -8368,6 +9954,71 @@
       ]
     },
     {
+      "id": "ability-high-guard",
+      "foundryId": "27b8e41e9a402d7c",
+      "kind": "ability",
+      "name": "High Guard",
+      "source": {
+        "path": "design/cards/high-guard.md",
+        "sha256": "a6f5ffeca1d6d1d298cdbfddec8680423fae5eae1e8ae6a8ce33ecbacfe3c3ef"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You lift your shield and turn with each blow, catching steel and splinters on its battered face."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Reaction"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "Self, before a shield-blockable defense roll."
+            },
+            {
+              "label": "Duration",
+              "value": "Until the start of your next turn."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "Requires a held shield. Grants one ordinary shield, Bulk 1, if absent."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Skill / Defense"
+            }
+          ],
+          "body": [
+            {
+              "text": "Use Shield Block as part of this Reaction, granting 2 Boons instead of its usual 1 to eligible defenses until the start of your next turn. This replaces your Shield Block benefit; it does not add a second Shield Block effect. The shield must remain held and the DA still judges which attacks it can block."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 7,
+      "cost": 8,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-guard",
+          "rank": 3
+        }
+      ]
+    },
+    {
       "id": "ability-hold-a-conversation",
       "foundryId": "50e4277cd6917caf",
       "kind": "ability",
@@ -8512,6 +10163,71 @@
       ]
     },
     {
+      "id": "ability-hold-the-pulse",
+      "foundryId": "7eb1c1135103b891",
+      "kind": "ability",
+      "name": "Hold the Pulse",
+      "source": {
+        "path": "design/cards/hold-the-pulse.md",
+        "sha256": "581a0c07ee34dc190cc427f34004fcfc8447deea950eaf6e9ad6320ae6810052"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You press your hand over the wound and feel the escaping blood slow beneath a faint red glow."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Reaction"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "Self or one adjacent willing living creature, immediately before its Bleeding damage at turn end."
+            },
+            {
+              "label": "Duration",
+              "value": "Instant."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "Requires one free hand; grants no item."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Magic / Recovery"
+            }
+          ],
+          "body": [
+            {
+              "text": "Reduce temporary Bleeding by 2, minimum 0, then resolve its remaining Bleeding and normal decay. Starred contributions remain. This restores no HP and does not treat the wound that caused it."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 3,
+      "cost": 4,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-life",
+          "rank": 2
+        }
+      ]
+    },
+    {
       "id": "ability-hook-and-drive",
       "foundryId": "6cd9878cac5f7cf2",
       "kind": "ability",
@@ -8585,6 +10301,95 @@
       "cost": 2,
       "purchasePolicy": "once",
       "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-arms",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "ability-hook-with-the-shield",
+      "foundryId": "92573c1b64d4d152",
+      "kind": "ability",
+      "name": "Hook with the Shield",
+      "source": {
+        "path": "design/cards/hook-with-the-shield.md",
+        "sha256": "0ed0fb01e7b46cd3c9415a07a7d933a0a99f96b4e512123cdd3bfac6a821d305"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You catch an ankle behind your shield’s lower edge, lift it and drive your opponent backward."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Maneuver"
+            },
+            {
+              "label": "Attribute",
+              "value": "Brawn"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "One adjacent creature."
+            },
+            {
+              "label": "Duration",
+              "value": "Instant."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "Requires a held shield. Grants one ordinary shield, Bulk 1, if absent."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Skill / Control"
+            }
+          ],
+          "body": [
+            {
+              "text": "NPC defense: Agility. This is an attack with no HP damage."
+            },
+            {
+              "outcomes": [
+                {
+                  "label": "Weak",
+                  "text": "Push 1 square directly away from you."
+                },
+                {
+                  "label": "Standard",
+                  "text": "Push 2 squares directly away from you."
+                },
+                {
+                  "label": "Strong",
+                  "text": "Push 2 squares directly away from you and apply Prone."
+                }
+              ]
+            },
+            {
+              "text": "Use the normal forced-movement and collision rules. Stability reduces the push, not Prone."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 3,
+      "cost": 4,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-guard",
+          "rank": 2
+        },
         {
           "kind": "discipline",
           "id": "discipline-arms",
@@ -9193,6 +10998,141 @@
       ]
     },
     {
+      "id": "ability-ironbound-advance",
+      "foundryId": "13f8c5fbf90f9e5c",
+      "kind": "ability",
+      "name": "Ironbound Advance",
+      "source": {
+        "path": "design/cards/ironbound-advance.md",
+        "sha256": "edd843dcd800781c3b5a89efdf251bff397ee1036ef67e8bac3f3c7304a952de"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You put your armored shoulder behind your weapon and walk straight into the press of steel."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Maneuver"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "Self."
+            },
+            {
+              "label": "Duration",
+              "value": "Movement is immediate; Stability lasts until your next turn."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "Requires worn armor and a melee weapon; grants neither."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Skill / Movement / Defense"
+            }
+          ],
+          "body": [
+            {
+              "text": "Move up to 3 squares without provoking. While wearing armor and holding a melee weapon, gain Stability 3 until the start of your next turn. Movement must follow a legal path and end in a free supported square. This grants no attack."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 7,
+      "cost": 8,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-armor",
+          "rank": 3
+        },
+        {
+          "kind": "discipline",
+          "id": "discipline-arms",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "ability-keep-pressure",
+      "foundryId": "8c6994d70d6d1d51",
+      "kind": "ability",
+      "name": "Keep Pressure",
+      "source": {
+        "path": "design/cards/keep-pressure.md",
+        "sha256": "4a5cb0e5b8e46225d24de45ffa44b7d0b219bcff0c7104ddb880d0b5d604a63f"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You catch the loosening bandage and press down firmly before another pulse of blood escapes."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Reaction"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "Self or one adjacent willing creature, before its Bleeding damage at turn end."
+            },
+            {
+              "label": "Duration",
+              "value": "Instant."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "Requires a free hand and cloth; grants no item."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Skill / Recovery"
+            }
+          ],
+          "body": [
+            {
+              "text": "Reduce temporary Bleeding by 1, minimum 0, then resolve remaining Bleeding and its normal decay. This does not remove a starred contribution, heal a wound or restore HP."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 1,
+      "cost": 2,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-medicine",
+          "rank": 1
+        }
+      ]
+    },
+    {
       "id": "ability-keep-the-door-closed",
       "foundryId": "7fcb8c4315146e00",
       "kind": "ability",
@@ -9544,6 +11484,136 @@
           "kind": "discipline",
           "id": "discipline-radiance",
           "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "ability-last-light-of-the-watch",
+      "foundryId": "bf443c24c8d38b8d",
+      "kind": "ability",
+      "name": "Last Light of the Watch",
+      "source": {
+        "path": "design/cards/last-light-of-the-watch.md",
+        "sha256": "79ee2d0da447a6a9b2c8092c76609d601ac87c4299abc4330f9d6d258ba69521"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You thrust a shining palm between your companion and the blow; for an instant their outline burns brighter than the danger."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Reaction"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "One visible willing ally within 3 squares, before a defense roll."
+            },
+            {
+              "label": "Duration",
+              "value": "Instant."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "None."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Magic / Defense / Recovery"
+            }
+          ],
+          "body": [
+            {
+              "text": "Grant 2 Boons to that defense. On a Strong defense, reduce the target’s temporary Blinded by 1 after the attack resolves. Starred blindness remains. Use the existing roll; this does not create a defense against an automatic effect."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 7,
+      "cost": 8,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-radiance",
+          "rank": 3
+        }
+      ]
+    },
+    {
+      "id": "ability-lend-your-eyes",
+      "foundryId": "1c540e586df45d12",
+      "kind": "ability",
+      "name": "Lend Your Eyes",
+      "source": {
+        "path": "design/cards/lend-your-eyes.md",
+        "sha256": "ed6353cfbec2abc1a108b792f4f12ed8143b3307c9d72fdc7c93721b6ae3a22a"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You touch your companion’s brow. When you close your own eyes, the room returns from the place where they stand."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Maneuver"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "One adjacent willing, conscious creature other than a summoned form."
+            },
+            {
+              "label": "Duration",
+              "value": "1 minute; one link at a time. Either participant can end it freely; it ends if either becomes unconscious."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "None."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Magic / Utility"
+            }
+          ],
+          "body": [
+            {
+              "text": "While within 6 squares of the target, you may see through its eyes instead of your own. Choose which view to use at the start of your turn; the initial use starts with its view. You gain no control, additional actions or other senses. Use its existing vision and visibility limits. Attacks and effects still need range and an actual path from your own position. This can supply sight while you are Blinded, but does not remove the condition."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 7,
+      "cost": 8,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-mind",
+          "rank": 3
         }
       ]
     },
@@ -10218,6 +12288,71 @@
         {
           "kind": "discipline",
           "id": "discipline-influence",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "ability-name-what-is-real",
+      "foundryId": "895bc64d11bb33a2",
+      "kind": "ability",
+      "name": "Name What Is Real",
+      "source": {
+        "path": "design/cards/name-what-is-real.md",
+        "sha256": "a55927e367205aea522dd30f392d881e0817ed72efa87aba7c3f8d3da5a27747"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You hold a familiar image in your thoughts and press it toward your companion as their attention begins to scatter."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Reaction"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "Self or one visible willing ally within 3 squares, immediately after temporary Dazed is applied."
+            },
+            {
+              "label": "Duration",
+              "value": "Instant."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "None."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Magic / Recovery"
+            }
+          ],
+          "body": [
+            {
+              "text": "Reduce the newly applied Dazed by 1, minimum 0. Existing and starred contributions remain. This does not recalculate action categories already chosen for the current turn."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 1,
+      "cost": 2,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-mind",
           "rank": 1
         }
       ]
@@ -11156,6 +13291,71 @@
       ]
     },
     {
+      "id": "ability-play-it-off",
+      "foundryId": "7df807cce5bbdd15",
+      "kind": "ability",
+      "name": "Play It Off",
+      "source": {
+        "path": "design/cards/play-it-off.md",
+        "sha256": "e09905b40ad1f981f755b84d615df93be9c847435a1f6faf203f12cfd7c4872e"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You laugh at your own apparent clumsiness and turn the suspicious glance toward an innocent explanation."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Reaction"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "Self, before a Guile roll to explain suspicious behavior without violence."
+            },
+            {
+              "label": "Duration",
+              "value": "Instant."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "None."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Skill / Utility"
+            }
+          ],
+          "body": [
+            {
+              "text": "Gain 1 Boon to that roll if you can speak to a listener who understands you. Describe your plausible explanation before rolling. This cannot hide visible evidence, compel belief or change an attack or defense roll."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 1,
+      "cost": 2,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-subterfuge",
+          "rank": 1
+        }
+      ]
+    },
+    {
       "id": "ability-pounce-of-the-red-claw",
       "foundryId": "0a350af794dbe504",
       "kind": "ability",
@@ -11237,6 +13437,71 @@
         {
           "kind": "discipline",
           "id": "discipline-athletics",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "ability-press-and-bind",
+      "foundryId": "77309e91fb6c628a",
+      "kind": "ability",
+      "name": "Press and Bind",
+      "source": {
+        "path": "design/cards/press-and-bind.md",
+        "sha256": "cd69ad716d254041b9baab46585e1772816ecd51b11348a46c2f5d823ebefa93"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You press folded cloth against the cut and tie it tight with your teeth and free hand."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Maneuver"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "Self or one adjacent willing creature."
+            },
+            {
+              "label": "Duration",
+              "value": "Instant."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "Requires a free hand and cloth; grants no item."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Skill / Recovery"
+            }
+          ],
+          "body": [
+            {
+              "text": "Reduce temporary Bleeding by 1, minimum 0. This does not treat the underlying wound or remove a starred contribution. It restores no HP."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 1,
+      "cost": 2,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-medicine",
           "rank": 1
         }
       ]
@@ -11370,6 +13635,76 @@
       "cost": 1,
       "purchasePolicy": "once",
       "requirements": []
+    },
+    {
+      "id": "ability-quiet-conference",
+      "foundryId": "546f2bf788c20c53",
+      "kind": "ability",
+      "name": "Quiet Conference",
+      "source": {
+        "path": "design/cards/quiet-conference.md",
+        "sha256": "2805e4f8df2a44136a562492d5cf106970611d9aed54c8e486dfd76eeeb4cafc"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You draw a small circle in the air. Each companion hears the others as if all were seated around the same quiet table."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Maneuver"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "Self and up to 3 visible willing allies within 3 squares."
+            },
+            {
+              "label": "Duration",
+              "value": "10 minutes; one conference at a time."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "None."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Magic / Utility"
+            }
+          ],
+          "body": [
+            {
+              "text": "Link the chosen participants for silent conversation. Each can send short spoken-length messages to the group without an action; each listener must understand the language. A participant leaving 3 squares from you loses the link until it returns. The link transmits words, not senses or thoughts, and supplies no commands, attacks or Boons."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 3,
+      "cost": 4,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-mind",
+          "rank": 2
+        },
+        {
+          "kind": "discipline",
+          "id": "discipline-influence",
+          "rank": 1
+        }
+      ]
     },
     {
       "id": "ability-quiet-latch",
@@ -11843,6 +14178,201 @@
           "kind": "discipline",
           "id": "discipline-scholarship",
           "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "ability-read-the-ward",
+      "foundryId": "196bfeef0f24f22e",
+      "kind": "ability",
+      "name": "Read the Ward",
+      "source": {
+        "path": "design/cards/read-the-ward.md",
+        "sha256": "fd13c8645ac6b5b805b8517ef0012e6f0751ec51c99a16d5c1b47d94be7da66f"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You follow the shimmer to its edges and trace the repeating mark where the magic holds itself together."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Maneuver"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "One visible ongoing magical effect within 6 squares."
+            },
+            {
+              "label": "Duration",
+              "value": "Information is retained; the Boon ends when used or this turn ends."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "None."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeated uses do not multiply this card’s benefit on the same roll."
+            },
+            {
+              "label": "Type",
+              "value": "Skill / Utility"
+            }
+          ],
+          "body": [
+            {
+              "text": "The DA tells you its remaining duration and any stated way to end it early. You or an ally gains 1 Boon to the next attribute roll specifically made to escape or disrupt that effect this turn. This grants no new way to cancel magic, identify an item’s other powers or learn a recipe."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 3,
+      "cost": 4,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-scholarship",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "ability-recall-the-shape",
+      "foundryId": "e7eb716fad55e54f",
+      "kind": "ability",
+      "name": "Recall the Shape",
+      "source": {
+        "path": "design/cards/recall-the-shape.md",
+        "sha256": "6091eeea213faef9406d3c6f6e8128156584a41b2b22286504def7ad1ae3a9e5"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "The stretched tether begins to unravel. You close your fist and draw the creature’s scattered light back to your side."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Reaction"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "One visible summon of yours when separation from you would first exceed 6 squares."
+            },
+            {
+              "label": "Duration",
+              "value": "Instant."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "None."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Magic / Defense / Movement"
+            }
+          ],
+          "body": [
+            {
+              "text": "Before the tether makes it disappear, teleport the summon to a free supported space adjacent to you that fits its footprint. If none exists, you cannot use this card. Any remaining forced movement continues from the new positions, and the normal tether still applies. Preserve HP, conditions, duration and command history. This does not prevent disappearance from 0 HP or your unconsciousness."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 7,
+      "cost": 8,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-calling",
+          "rank": 3
+        }
+      ]
+    },
+    {
+      "id": "ability-recast-the-footprint",
+      "foundryId": "9eebae24952daa8b",
+      "kind": "ability",
+      "name": "Recast the Footprint",
+      "source": {
+        "path": "design/cards/recast-the-footprint.md",
+        "sha256": "f50a7457b3ee1f667acff19ad9d538b1df5b0f41d31eda5c3f4f1e74fefa4729"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You rub out the shape in the air and draw it again nearby; your summon dissolves and reforms at your fingertip."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Maneuver"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "One visible summon of yours within 6 squares."
+            },
+            {
+              "label": "Duration",
+              "value": "Instant."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "None."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Magic / Movement"
+            }
+          ],
+          "body": [
+            {
+              "text": "Teleport the summon up to 3 squares to a visible free supported space within 6 squares of you, with room for its whole footprint. It retains its HP, conditions, remaining duration and command history. This is not a command and grants no activity."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 3,
+      "cost": 4,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-calling",
+          "rank": 2
         }
       ]
     },
@@ -12490,6 +15020,220 @@
       ]
     },
     {
+      "id": "ability-ride-the-furnace-breath",
+      "foundryId": "2386214706426252",
+      "kind": "ability",
+      "name": "Ride the Furnace Breath",
+      "source": {
+        "path": "design/cards/ride-the-furnace-breath.md",
+        "sha256": "51278eea7b967ed5359c55e256dfa08006141fa2c3ebc8c1b30fd053b8a5d38a"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "The fire bends around you, lifting your cloak like a sail as you stride out through its roaring edge."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Reaction"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "Self, before taking fire damage from one event."
+            },
+            {
+              "label": "Duration",
+              "value": "Instant."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "None."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Magic / Defense / Movement"
+            }
+          ],
+          "body": [
+            {
+              "text": "Gain fire resistance 3 against the event. After it resolves, if capable, move up to 3 squares without provoking. Use a legal path and supported endpoint; this grants no flight or protection from later damage along the path."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 7,
+      "cost": 8,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-flame",
+          "rank": 3
+        }
+      ]
+    },
+    {
+      "id": "ability-rim-strike",
+      "foundryId": "6587972ca6598b5b",
+      "kind": "ability",
+      "name": "Rim Strike",
+      "source": {
+        "path": "design/cards/rim-strike.md",
+        "sha256": "7ff171ab7e17cf11613d965493ffce975f211713bf83c893ac640caf7cc7e42f"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You step inside the weapon’s reach and drive the rim of your shield into your opponent’s chest."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Main Action"
+            },
+            {
+              "label": "Attribute",
+              "value": "Brawn"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "One adjacent creature."
+            },
+            {
+              "label": "Duration",
+              "value": "Instant."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "Requires a held shield. Grants one ordinary shield, Bulk 1, if absent."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Skill / Attack / Control"
+            }
+          ],
+          "body": [
+            {
+              "text": "NPC defense: Brawn."
+            },
+            {
+              "outcomes": [
+                {
+                  "label": "Weak",
+                  "text": "3 physical damage."
+                },
+                {
+                  "label": "Standard",
+                  "text": "3 physical damage; push 1 square directly away."
+                },
+                {
+                  "label": "Strong",
+                  "text": "5 physical damage; push 2 squares directly away."
+                }
+              ]
+            },
+            {
+              "text": "Apply Stability to the push."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 1,
+      "cost": 2,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-guard",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "ability-rime-footholds",
+      "foundryId": "d984532f7e5ee4c3",
+      "kind": "ability",
+      "name": "Rime Footholds",
+      "source": {
+        "path": "design/cards/rime-footholds.md",
+        "sha256": "111f32932e06f342cc2974f1226246523e2ccc1d23daaaceb6f731dbc647be7d"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You press your palm to the rock, leaving a short ladder of rough ice where bare fingers could find no grip."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Maneuver"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "Up to 3 connected surface squares within 1 square."
+            },
+            {
+              "label": "Duration",
+              "value": "10 minutes, with the stated safe expiry; one set at a time."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "None."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Magic / Movement"
+            }
+          ],
+          "body": [
+            {
+              "text": "Place icy handholds on a solid surface. Those squares can be climbed using the ordinary climbing rules, even if the surface was too smooth to grip. They do not bridge gaps, support a ceiling crossing or reduce movement costs. Everyone can use them. They cannot be dismissed or replaced while supporting a creature. At expiry, they last until current climbers reach another secure hold; no new climber can use them."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 1,
+      "cost": 2,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-frost",
+          "rank": 1
+        }
+      ]
+    },
+    {
       "id": "ability-rime-grip",
       "foundryId": "cb6b7cebf16e083b",
       "kind": "ability",
@@ -12567,6 +15311,136 @@
           "kind": "discipline",
           "id": "discipline-frost",
           "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "ability-road-of-dawn",
+      "foundryId": "136904ee2687a16f",
+      "kind": "ability",
+      "name": "Road of Dawn",
+      "source": {
+        "path": "design/cards/road-of-dawn.md",
+        "sha256": "b275b5877fe562b74244c7393f7adf50e3a74784d774e6060e1c91e1d67af496"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You spread a warm path of light at your companions’ feet, calling them out of the shadows and toward one another."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Maneuver"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "Up to 3 visible willing allies within 4 squares."
+            },
+            {
+              "label": "Duration",
+              "value": "Instant."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "None."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Magic / Recovery / Movement"
+            }
+          ],
+          "body": [
+            {
+              "text": "Reduce each ally’s temporary Frightened by 1, minimum 0. Each may then spend its Reaction to move up to 2 squares without provoking along a legal route to a free supported square. Starred fear remains. Resolve the moves one at a time."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 7,
+      "cost": 8,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-radiance",
+          "rank": 3
+        }
+      ]
+    },
+    {
+      "id": "ability-road-of-rime",
+      "foundryId": "606999f615dcb2e7",
+      "kind": "ability",
+      "name": "Road of Rime",
+      "source": {
+        "path": "design/cards/road-of-rime.md",
+        "sha256": "7e935d20efe2d5d28528695aa544a0547e84a72e6fe6706bfd933770fddfeffa"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You sweep your hand along the ground. A broad ribbon of packed snow covers the sucking mud and jagged rubble."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Maneuver"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "Up to 8 connected ground squares within 6 squares."
+            },
+            {
+              "label": "Duration",
+              "value": "Until the start of your next turn."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "None."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Magic / Movement"
+            }
+          ],
+          "body": [
+            {
+              "text": "The chosen squares cost 1 movement to enter for everyone, replacing difficult terrain. They need existing support and do not cross gaps or suppress hazards or damaging terrain. You may then move up to 3 squares along the ribbon, following normal movement and opportunity rules."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 7,
+      "cost": 8,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-frost",
+          "rank": 3
         }
       ]
     },
@@ -13205,6 +16079,71 @@
       ]
     },
     {
+      "id": "ability-set-the-wedge",
+      "foundryId": "153f57f512e1957b",
+      "kind": "ability",
+      "name": "Set the Wedge",
+      "source": {
+        "path": "design/cards/set-the-wedge.md",
+        "sha256": "aac44ccc004c848d852828daef1a7cb85d90db6d452417729d4d44c5b29bd2bb"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You slide a wedge into the joint and tap it home, giving the next shove somewhere to bite."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Maneuver"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "One adjacent unattended door, lid or movable obstacle."
+            },
+            {
+              "label": "Duration",
+              "value": "Until used or 1 minute passes."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "Requires lever and wedges, Bulk 1; grants one set if absent."
+            },
+            {
+              "label": "Limits",
+              "value": "One prepared obstacle at a time; repeated preparation does not add Boons."
+            },
+            {
+              "label": "Type",
+              "value": "Skill / Utility"
+            }
+          ],
+          "body": [
+            {
+              "text": "Using a lever and wedges, prepare the obstacle. The next Force action by you or an ally against that obstacle gains 1 Boon. Describe whether you are helping open, close or move it; the benefit applies only to that task. No change to the obstacle’s strength occurs without the Force action."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 1,
+      "cost": 2,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-craft",
+          "rank": 1
+        }
+      ]
+    },
+    {
       "id": "ability-sever-the-pursuit",
       "foundryId": "c5a3b21b62ecfc70",
       "kind": "ability",
@@ -13282,6 +16221,71 @@
           "kind": "discipline",
           "id": "discipline-marksmanship",
           "rank": 3
+        }
+      ]
+    },
+    {
+      "id": "ability-shade-the-eyes",
+      "foundryId": "b53cc8b1e9340d78",
+      "kind": "ability",
+      "name": "Shade the Eyes",
+      "source": {
+        "path": "design/cards/shade-the-eyes.md",
+        "sha256": "24cd9c9a6e949c1b15c78dc753e58bcdc9e0193faa02c396fe8f70541c952d51"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You spread two fingers before the glare, casting a cool golden shade over your companion’s face."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Reaction"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "Self or one visible willing ally within 3 squares, before one event deals radiant damage."
+            },
+            {
+              "label": "Duration",
+              "value": "Instant."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "None."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Magic / Defense"
+            }
+          ],
+          "body": [
+            {
+              "text": "Grant radiant resistance 2 against that event. Use the highest matching resistance, not their sum. This does not prevent a separate condition imposed by the event."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 1,
+      "cost": 2,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-radiance",
+          "rank": 1
         }
       ]
     },
@@ -13372,6 +16376,76 @@
       ]
     },
     {
+      "id": "ability-shatterguard",
+      "foundryId": "45e3acc72a471017",
+      "kind": "ability",
+      "name": "Shatterguard",
+      "source": {
+        "path": "design/cards/shatterguard.md",
+        "sha256": "65bbc7e34d994c89767f5eb5fc0d5e130f7aa64d0e4ba7b96b1e652e346dc5a8"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You thrust your shield into the blow. Ice bursts from its rim and drives the attacker back."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Reaction"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "Self, before a defense roll against a shield-blockable attack from an adjacent creature."
+            },
+            {
+              "label": "Duration",
+              "value": "Instant."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "Requires a held shield. Grants one ordinary shield, Bulk 1, if absent."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Magic / Defense / Control"
+            }
+          ],
+          "body": [
+            {
+              "text": "Gain 1 Boon to this defense. After the attack resolves, on a Strong defense push the attacker 2 squares directly away from you. Use the existing defense roll; Stability applies. This is not an additional use of Shield Block."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 3,
+      "cost": 4,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-frost",
+          "rank": 2
+        },
+        {
+          "kind": "discipline",
+          "id": "discipline-guard",
+          "rank": 1
+        }
+      ]
+    },
+    {
       "id": "ability-shield-block",
       "foundryId": "8cd0aac96e34338f",
       "kind": "ability",
@@ -13429,6 +16503,136 @@
       "cost": null,
       "purchasePolicy": "never",
       "requirements": []
+    },
+    {
+      "id": "ability-shield-roof",
+      "foundryId": "2a61ef7c19601842",
+      "kind": "ability",
+      "name": "Shield Roof",
+      "source": {
+        "path": "design/cards/shield-roof.md",
+        "sha256": "f4798be2434fd0e8bce5da3cbd94af385e44d03248cb4595c488371b3983b7c9"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You lift your shield over the group and call your companions close, making a small roof against the falling ruin."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Maneuver"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "Self and willing allies adjacent to you."
+            },
+            {
+              "label": "Duration",
+              "value": "Until the start of your next turn."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "Requires a held shield. Grants one ordinary shield, Bulk 1, if absent."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeated uses do not multiply this card’s benefits on a recipient."
+            },
+            {
+              "label": "Type",
+              "value": "Skill / Defense"
+            }
+          ],
+          "body": [
+            {
+              "text": "While you hold the shield, you and allies who remain adjacent gain Stability 2 and 1 Boon to defenses against area attacks the DA judges shield-blockable. This grants no protection against other attacks and does not itself activate Shield Block."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 7,
+      "cost": 8,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-guard",
+          "rank": 3
+        }
+      ]
+    },
+    {
+      "id": "ability-shielded-advance",
+      "foundryId": "72ba385e6cdee4eb",
+      "kind": "ability",
+      "name": "Shielded Advance",
+      "source": {
+        "path": "design/cards/shielded-advance.md",
+        "sha256": "b67cc92c5940931e525ca1775f4b01d50df3c4268bae47af3609bcaa69cec4ef"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You keep your shield toward the threat and slide into place beside a friend, giving them room behind its edge."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Maneuver"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "Self, then one adjacent willing ally at your destination."
+            },
+            {
+              "label": "Duration",
+              "value": "Until used or the start of your next turn."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "Requires a held shield. Grants one ordinary shield, Bulk 1, if absent."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeated uses do not multiply this card’s benefit on the same ally."
+            },
+            {
+              "label": "Type",
+              "value": "Skill / Movement / Defense"
+            }
+          ],
+          "body": [
+            {
+              "text": "Move up to 2 squares using normal movement and opportunity rules. Choose the ally after moving. While you remain adjacent and hold the shield, that ally gains 1 Boon to its next defense against an attack the DA judges shield-blockable. This grants neither Shield Block nor an attack."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 1,
+      "cost": 2,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-guard",
+          "rank": 1
+        }
+      ]
     },
     {
       "id": "ability-shielding-step",
@@ -19674,6 +22878,136 @@
       ]
     },
     {
+      "id": "ability-silent-cue",
+      "foundryId": "0641a50b18aafa7d",
+      "kind": "ability",
+      "name": "Silent Cue",
+      "source": {
+        "path": "design/cards/silent-cue.md",
+        "sha256": "ccf5656765a48e583eaf18ab3e16102db3d42f219f3ee6702bbc7894bd9e3714"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You touch your temple and picture your companion; the words arrive in their thoughts like your voice close to their ear."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Maneuver"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "One visible willing creature within 3 squares."
+            },
+            {
+              "label": "Duration",
+              "value": "Instant."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "None."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Magic / Utility"
+            }
+          ],
+          "body": [
+            {
+              "text": "Send one sentence of up to 20 words to the target without speaking aloud. It must understand the language used. This is one-way communication, not mind reading, a command or a Boon."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 1,
+      "cost": 2,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-mind",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "ability-slip-the-closing-door",
+      "foundryId": "231cd785a054b3d6",
+      "kind": "ability",
+      "name": "Slip the Closing Door",
+      "source": {
+        "path": "design/cards/slip-the-closing-door.md",
+        "sha256": "644baeea5ca803101bc3fde7fe006e6e1ba23cc9386fed27a57ff1c3803c8f61"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "As the enemy steps close, you duck through the gap beside them and vanish behind the nearest screen."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Reaction"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "Self, after a visible enemy ends voluntary movement adjacent to you."
+            },
+            {
+              "label": "Duration",
+              "value": "Instant."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "None."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Skill / Movement / Defense"
+            }
+          ],
+          "body": [
+            {
+              "text": "Move up to 2 squares without provoking, ending behind actual cover or concealment. If no legal route and endpoint exist, you cannot use this card. This does not grant Hidden, pass through the enemy or interrupt its remaining actions. Forced movement does not trigger this card."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 3,
+      "cost": 4,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-subterfuge",
+          "rank": 2
+        }
+      ]
+    },
+    {
       "id": "ability-smile-before-steel",
       "foundryId": "393e2b47fa34f86b",
       "kind": "ability",
@@ -19911,6 +23245,76 @@
       ]
     },
     {
+      "id": "ability-snare-the-missile",
+      "foundryId": "3e57f6cc8c478be3",
+      "kind": "ability",
+      "name": "Snare the Missile",
+      "source": {
+        "path": "design/cards/snare-the-missile.md",
+        "sha256": "7cf8c76643b934e75974edc02f9e278e908bb2338e10e9f4425a82c25f65872a"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You flick a hooked tool into the missile’s path, trusting the angle and the length of the line more than your reflexes."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Reaction"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "Self, before a defense roll against one physical projectile attack."
+            },
+            {
+              "label": "Duration",
+              "value": "Instant."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "Requires held craft tools and a free hand; grants craft tools, Bulk 1, if absent."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Skill / Defense"
+            }
+          ],
+          "body": [
+            {
+              "text": "Use Knowledge instead of the normal defense attribute and gain 1 Boon to this defense. Make only the existing defense roll. This does not work against an area attack or a projectile larger than your own footprint."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 3,
+      "cost": 4,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-craft",
+          "rank": 2
+        },
+        {
+          "kind": "discipline",
+          "id": "discipline-marksmanship",
+          "rank": 2
+        }
+      ]
+    },
+    {
       "id": "ability-speak-with-the-hearth",
       "foundryId": "bf84502e86b098e8",
       "kind": "ability",
@@ -19991,6 +23395,71 @@
         {
           "kind": "discipline",
           "id": "discipline-flame",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "ability-spot-the-tell",
+      "foundryId": "9593c5eefc9f11f5",
+      "kind": "ability",
+      "name": "Spot the Tell",
+      "source": {
+        "path": "design/cards/spot-the-tell.md",
+        "sha256": "b50e3ff2e9e2853030d50e6fb7d3093c22e8e386a766ce2141190548ba2b3d87"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You watch the creature set its feet and draw breath, matching the motion to an attack you have studied."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Maneuver"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "One visible creature within 6 squares that has already used an attack you witnessed this scene."
+            },
+            {
+              "label": "Duration",
+              "value": "Instant."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "None."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Skill / Utility"
+            }
+          ],
+          "body": [
+            {
+              "text": "Choose that attack. The DA tells you which attribute defends against it and its range. You may share this observation aloud. This reveals no hidden attacks, resistances or other statistics and grants no Boon."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 1,
+      "cost": 2,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-scholarship",
           "rank": 1
         }
       ]
@@ -20195,6 +23664,136 @@
       "requirements": []
     },
     {
+      "id": "ability-stay-with-my-voice",
+      "foundryId": "b71de6917fac549b",
+      "kind": "ability",
+      "name": "Stay with My Voice",
+      "source": {
+        "path": "design/cards/stay-with-my-voice.md",
+        "sha256": "d63a588e2e1c5b943a722a76c3919251b10fc9e8ff58e32700a075495286ee8b"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You take your companion’s face between your hands and speak slowly until their eyes focus on yours again."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Reaction"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "One adjacent willing creature, immediately before it chooses action categories at the start of its turn."
+            },
+            {
+              "label": "Duration",
+              "value": "Instant."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "Requires a free hand; grants no item."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Skill / Recovery"
+            }
+          ],
+          "body": [
+            {
+              "text": "Reduce temporary Dazed by 2, minimum 0, before the target chooses its action categories. Starred contributions and Grappled remain. The target must be able to hear you. This restores no HP and cannot reverse Last Words."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 7,
+      "cost": 8,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-medicine",
+          "rank": 3
+        }
+      ]
+    },
+    {
+      "id": "ability-steel-at-the-wrist",
+      "foundryId": "90b5e3e49fc6b152",
+      "kind": "ability",
+      "name": "Steel at the Wrist",
+      "source": {
+        "path": "design/cards/steel-at-the-wrist.md",
+        "sha256": "c6c0a8951be457f96d8099cf99d240ed55412f496956a2fe08587ffca8a2e885"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You catch the attacking weapon close to its wielder’s hand and force the point away from your body."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Reaction"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "Self, before a defense roll against an adjacent creature’s melee weapon attack."
+            },
+            {
+              "label": "Duration",
+              "value": "Instant."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "Requires a melee weapon. Grants one ordinary melee weapon, Bulk 1, if absent."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Skill / Defense"
+            }
+          ],
+          "body": [
+            {
+              "text": "Use Brawn instead of the attack’s normal defense attribute for this roll. This adds no Boon and makes no extra roll."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 1,
+      "cost": 2,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-arms",
+          "rank": 1
+        }
+      ]
+    },
+    {
       "id": "ability-step-between-lanterns",
       "foundryId": "5ef2cfb40fa4bb1f",
       "kind": "ability",
@@ -20320,6 +23919,76 @@
         {
           "kind": "discipline",
           "id": "discipline-flame",
+          "rank": 2
+        }
+      ]
+    },
+    {
+      "id": "ability-still-the-avalanche",
+      "foundryId": "670722a33217534d",
+      "kind": "ability",
+      "name": "Still the Avalanche",
+      "source": {
+        "path": "design/cards/still-the-avalanche.md",
+        "sha256": "b8ebfc3ffee8db6dad0122394aff93d8e799c0170b8c884660ce9958beef9732"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You stamp a ring of blue ice beneath your companion while a turning wind catches the falling snow and stone."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Reaction"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "Self or one visible willing ally within 3 squares, when one effect would forcibly move it; declare before that effect’s damage or displacement resolves."
+            },
+            {
+              "label": "Duration",
+              "value": "Instant."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "None."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Magic / Defense"
+            }
+          ],
+          "body": [
+            {
+              "text": "The target gains Stability 3 for this forced movement and cold resistance 3 against damage from the same triggering effect. Apply Stability once before moving, including when the target joins a moving collision group. This does not stop falling, Prone or other conditions."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 7,
+      "cost": 8,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-frost",
+          "rank": 3
+        },
+        {
+          "kind": "discipline",
+          "id": "discipline-storm",
           "rank": 2
         }
       ]
@@ -22547,6 +26216,71 @@
       ]
     },
     {
+      "id": "ability-the-forest-takes-the-blow",
+      "foundryId": "568efd3f2845b0bb",
+      "kind": "ability",
+      "name": "The Forest Takes the Blow",
+      "source": {
+        "path": "design/cards/the-forest-takes-the-blow.md",
+        "sha256": "2adada2424f28f01190682d9525211cc026d0bb57ea9b9ddc9afb563d6f7e417"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You call to your companion as the branches twist between them and the blow, then part to show a way out."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Reaction"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "One visible willing ally within 3 squares, before a defense roll against an attack dealing physical damage while it occupies rooted vegetation."
+            },
+            {
+              "label": "Duration",
+              "value": "Instant."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "None."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Magic / Defense / Movement"
+            }
+          ],
+          "body": [
+            {
+              "text": "Grant 2 Boons to this defense. On Strong, after the attack resolves, the ally may move up to 2 squares without provoking along a legal route entirely through vegetation. This grants no Hidden state and does not remove existing terrain costs."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 7,
+      "cost": 8,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-wilderness",
+          "rank": 3
+        }
+      ]
+    },
+    {
       "id": "ability-the-grove-gives-back",
       "foundryId": "e7a0bd574c502714",
       "kind": "ability",
@@ -23823,6 +27557,71 @@
       ]
     },
     {
+      "id": "ability-thought-before-the-blow",
+      "foundryId": "b080c0099ce4ffd5",
+      "kind": "ability",
+      "name": "Thought Before the Blow",
+      "source": {
+        "path": "design/cards/thought-before-the-blow.md",
+        "sha256": "07d814715c441190e7c7959fefb703b18d312b6d2c3c2df4b6ec6be55ba66dce"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You picture where the blow will end and let your body follow the empty space beside that image."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Reaction"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "Self, before a defense roll against an attack you can perceive."
+            },
+            {
+              "label": "Duration",
+              "value": "Instant."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "None."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Magic / Defense / Movement"
+            }
+          ],
+          "body": [
+            {
+              "text": "Use Reason instead of the normal defense attribute and gain 1 Boon to this defense. On a Strong defense, after the attack resolves, you may move up to 2 squares without provoking. Use the existing defense roll and a legal movement path."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 7,
+      "cost": 8,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-mind",
+          "rank": 3
+        }
+      ]
+    },
+    {
       "id": "ability-through-the-spearpoints",
       "foundryId": "d0c8b66a87169c97",
       "kind": "ability",
@@ -24917,6 +28716,76 @@
       ]
     },
     {
+      "id": "ability-turn-the-fall",
+      "foundryId": "54656df63ee86e5d",
+      "kind": "ability",
+      "name": "Turn the Fall",
+      "source": {
+        "path": "design/cards/turn-the-fall.md",
+        "sha256": "f879e130ed1ba17bb6ec0b409e1a112ec4ad1662ac7fdb62e235ad1356d67a7e"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You lift both hands, and a turning cushion of wind takes some of the weight from the falling body."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Reaction"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "Self or one visible willing creature within 3 squares, immediately before it lands from a fall."
+            },
+            {
+              "label": "Duration",
+              "value": "Instant."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "None."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Magic / Defense"
+            }
+          ],
+          "body": [
+            {
+              "text": "Reduce the distance used to calculate this fall’s damage by 4 squares, minimum 0. The actual landing position and any hazard there remain unchanged. This grants no flight and does not reduce collision damage from a push or pull."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 3,
+      "cost": 4,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-storm",
+          "rank": 2
+        },
+        {
+          "kind": "discipline",
+          "id": "discipline-athletics",
+          "rank": 1
+        }
+      ]
+    },
+    {
       "id": "ability-turn-the-river",
       "foundryId": "01d3179ce2051d1d",
       "kind": "ability",
@@ -25463,6 +29332,76 @@
         {
           "kind": "discipline",
           "id": "discipline-armor",
+          "rank": 1
+        }
+      ]
+    },
+    {
+      "id": "ability-wake-the-nerves",
+      "foundryId": "dacf27044b0a8289",
+      "kind": "ability",
+      "name": "Wake the Nerves",
+      "source": {
+        "path": "design/cards/wake-the-nerves.md",
+        "sha256": "8c4fe28c1fa7464013e067871a5b8e19474328b68b95706953b9a8af7f0b1b66"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You touch two fingers to your companion’s temple and send a small pulse down their trembling limbs."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Maneuver"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "One adjacent willing living creature."
+            },
+            {
+              "label": "Duration",
+              "value": "Instant."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "Requires one free hand; grants no item."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Magic / Recovery"
+            }
+          ],
+          "body": [
+            {
+              "text": "Reduce temporary Dazed by 1, minimum 0. This does not restore action categories already determined for the current turn; it can improve the target’s next turn. It restores no HP and does not treat a lasting wound."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 3,
+      "cost": 4,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-life",
+          "rank": 2
+        },
+        {
+          "kind": "discipline",
+          "id": "discipline-medicine",
           "rank": 1
         }
       ]
@@ -26123,6 +30062,157 @@
       ]
     },
     {
+      "id": "ability-whiteout",
+      "foundryId": "558fabc981084f1d",
+      "kind": "ability",
+      "name": "Whiteout",
+      "source": {
+        "path": "design/cards/whiteout.md",
+        "sha256": "0bc437958b1af9c8e3218f1a9bf8ec4760e501b382ddde3d4b379392c0955042"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You grind a pinch of frost between your fingers and fling it skyward. A curtain of whirling snow swallows the battlefield."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Main Action"
+            },
+            {
+              "label": "Attribute",
+              "value": "Knowledge"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "Connected ground squares within 6 squares, beginning at one chosen square."
+            },
+            {
+              "label": "Duration",
+              "value": "Until the end of your next turn; one area at a time."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "None."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Magic / Control"
+            }
+          ],
+          "body": [
+            {
+              "text": "Roll, then place up to the number of squares below. Every square provides heavy cover: attacks passing through or into it suffer 3 Banes. Creatures remain visible and are not automatically Hidden. The snow causes no damage and does not make difficult terrain."
+            },
+            {
+              "outcomes": [
+                {
+                  "label": "Weak",
+                  "text": "Place 5 squares."
+                },
+                {
+                  "label": "Standard",
+                  "text": "Place 8 squares."
+                },
+                {
+                  "label": "Strong",
+                  "text": "Place 12 squares."
+                }
+              ]
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 7,
+      "cost": 8,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-frost",
+          "rank": 3
+        }
+      ]
+    },
+    {
+      "id": "ability-wind-the-sight",
+      "foundryId": "8d02e2a0c3ca1486",
+      "kind": "ability",
+      "name": "Wind the Sight",
+      "source": {
+        "path": "design/cards/wind-the-sight.md",
+        "sha256": "e18bfb5b553db617c0a5a33e23dc7e1b72eda316272c71cea148afbbcae9a53f"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You tighten the little sight on your weapon and watch the narrow opening settle between its marks."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Maneuver"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "Your next ranged attack this turn."
+            },
+            {
+              "label": "Duration",
+              "value": "Until used or the end of this turn."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "Requires a ranged weapon and craft tools; grants neither."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeated uses do not improve the same attack again."
+            },
+            {
+              "label": "Type",
+              "value": "Skill / Attack"
+            }
+          ],
+          "body": [
+            {
+              "text": "For that attack, ignore the 1 Bane from partial cover, or reduce heavy cover from 3 Banes to 2. Other Banes apply normally. The target must still be visible with an attack path. This does not grant an attack."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 3,
+      "cost": 4,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-craft",
+          "rank": 2
+        },
+        {
+          "kind": "discipline",
+          "id": "discipline-marksmanship",
+          "rank": 2
+        }
+      ]
+    },
+    {
       "id": "ability-wings-over-the-battle",
       "foundryId": "83315d3942c86195",
       "kind": "ability",
@@ -26265,6 +30355,71 @@
           "kind": "discipline",
           "id": "discipline-frost",
           "rank": 3
+        }
+      ]
+    },
+    {
+      "id": "ability-winter-store",
+      "foundryId": "405014489c39dae6",
+      "kind": "ability",
+      "name": "Winter Store",
+      "source": {
+        "path": "design/cards/winter-store.md",
+        "sha256": "7b59b3dbaff001e39ab66364990b06bf732bd9d13fea7d9fe37c413c4a4536e3"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You trace a rim of frost around a bundle; cold beads on its wrapping as the contents settle into a deep chill."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Main Action"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "One unattended or willingly offered bundle within reach, up to Bulk 1."
+            },
+            {
+              "label": "Duration",
+              "value": "24 hours; one bundle at a time."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "None."
+            },
+            {
+              "label": "Limits",
+              "value": "Repeatable; pay the action and any stated costs each use."
+            },
+            {
+              "label": "Type",
+              "value": "Magic / Utility"
+            }
+          ],
+          "body": [
+            {
+              "text": "Chill the bundle enough to preserve perishable food, herbs or remains for the duration. Time spent chilled does not count toward ordinary spoilage. This does not restore spoiled material, replenish an inventory die, provide a recipe ingredient or make a harmful substance safe. It causes no damage."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 1,
+      "cost": 2,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-frost",
+          "rank": 1
         }
       ]
     },
@@ -28195,7 +32350,7 @@
       "name": "Duelist’s Second",
       "source": {
         "path": "design/origins/background-duelist-s-second.md",
-        "sha256": "ba27319605ef9f7024f9498fb3334e8354a9181767b070d893c531b0e335175d"
+        "sha256": "65e0bf9921e9dcd585f958e4680c4258456ac7eed1eeae4f695a52c4662ce8d7"
       },
       "automation": "pending",
       "originType": "background",
@@ -28207,9 +32362,9 @@
           "abilityId": "ability-invitation-to-the-blade"
         },
         {
-          "disciplineId": "discipline-influence",
+          "disciplineId": "discipline-armor",
           "rank": 1,
-          "abilityId": "ability-measured-appeal"
+          "abilityId": "ability-wear-light-armor"
         }
       ]
     },
@@ -28420,7 +32575,7 @@
       "name": "Oath Witness",
       "source": {
         "path": "design/origins/background-oath-witness.md",
-        "sha256": "d75d0f0d7eb926b5a60c19adcaf98e03b2f7efb943cec44a83b9619a08a8e843"
+        "sha256": "313b926d79c0fa09c6da6f2ae8e7c2fdf7d16eec51c3ed11f54010fba14160ae"
       },
       "automation": "pending",
       "originType": "background",
@@ -28432,9 +32587,9 @@
           "abilityId": "ability-name-the-reckoning"
         },
         {
-          "disciplineId": "discipline-scholarship",
+          "disciplineId": "discipline-radiance",
           "rank": 1,
-          "abilityId": "ability-read-the-remains"
+          "abilityId": "ability-oathlight-strike"
         }
       ]
     },
@@ -28495,7 +32650,7 @@
       "name": "Poacher",
       "source": {
         "path": "design/origins/background-poacher.md",
-        "sha256": "42b7c49d2eb4d5109b227ab2debe550429b4c1dec31b2a4375cad118f7af0d01"
+        "sha256": "8d4bf41f5a14e6e878af65b9a62da4f27cc9fdec0b5e84e3bebe041277e7f8cb"
       },
       "automation": "pending",
       "originType": "background",
@@ -28507,9 +32662,9 @@
           "abilityId": "ability-read-the-quarry"
         },
         {
-          "disciplineId": "discipline-subterfuge",
+          "disciplineId": "discipline-frost",
           "rank": 1,
-          "abilityId": "ability-step-between-lanterns"
+          "abilityId": "ability-winter-store"
         }
       ]
     },
@@ -28820,16 +32975,16 @@
       "name": "Cloister Valleys",
       "source": {
         "path": "design/origins/culture-cloister-valleys.md",
-        "sha256": "ea78fce218250527ad31c945431d4d7fc005743a826eb2fe8c22d6b17cd8a2c1"
+        "sha256": "fb539cf1908973447cd5fc9f8dbdfa111c9c8076b0f0776260e0688834069605"
       },
       "automation": "pending",
       "originType": "culture",
       "coins": 5,
       "pairs": [
         {
-          "disciplineId": "discipline-athletics",
+          "disciplineId": "discipline-radiance",
           "rank": 1,
-          "abilityId": "ability-the-untroubled-hand"
+          "abilityId": "ability-lantern-moths"
         },
         {
           "disciplineId": "discipline-medicine",
@@ -28895,7 +33050,7 @@
       "name": "Forest Communities",
       "source": {
         "path": "design/origins/culture-forest-communities.md",
-        "sha256": "8475083da6c046e51d53854e52b0ea87065af5fb8acdb9fe27a9567bd9e01c0f"
+        "sha256": "63443efa0bd5cb77b480cfef2f85b93034165d9187b8beb357b10639e092b1a7"
       },
       "automation": "pending",
       "originType": "culture",
@@ -28907,9 +33062,9 @@
           "abilityId": "ability-forage-woodland"
         },
         {
-          "disciplineId": "discipline-athletics",
+          "disciplineId": "discipline-mind",
           "rank": 1,
-          "abilityId": "ability-sure-ascent"
+          "abilityId": "ability-borrow-a-voice"
         }
       ]
     },
@@ -28945,16 +33100,16 @@
       "name": "Gathered Peoples",
       "source": {
         "path": "design/origins/culture-gathered-peoples.md",
-        "sha256": "93e7d8542d1b09c18b95c306391e2852061e586ffcefb9d1b5be075b69c37694"
+        "sha256": "5f242e20e6a6729769daf7baa216ff2e7efe02c2f79500280c77c729840d8271"
       },
       "automation": "pending",
       "originType": "culture",
       "coins": 7,
       "pairs": [
         {
-          "disciplineId": "discipline-influence",
+          "disciplineId": "discipline-mind",
           "rank": 1,
-          "abilityId": "ability-a-verse-for-courage"
+          "abilityId": "ability-silent-cue"
         },
         {
           "disciplineId": "discipline-medicine",
@@ -28970,7 +33125,7 @@
       "name": "Grass Sea Clans",
       "source": {
         "path": "design/origins/culture-grass-sea-clans.md",
-        "sha256": "07dfc06c1a85a7783cb7bd0033e7aef74e5569940518e0035d26cd4a10623e55"
+        "sha256": "749364d1c1586a908155350761c745997467fa88e88432943b021095135b4ad4"
       },
       "automation": "pending",
       "originType": "culture",
@@ -28982,9 +33137,9 @@
           "abilityId": "ability-read-the-quarry"
         },
         {
-          "disciplineId": "discipline-wilderness",
+          "disciplineId": "discipline-arms",
           "rank": 1,
-          "abilityId": "ability-the-otter-s-bargain"
+          "abilityId": "ability-invitation-to-the-blade"
         }
       ]
     },
@@ -28995,21 +33150,21 @@
       "name": "Highland Holds",
       "source": {
         "path": "design/origins/culture-highland-holds.md",
-        "sha256": "47ef86bb5b277c66daca7b43af16d607407a76873c03d7e3284dc1adb2d25615"
+        "sha256": "967a230b01033e91f9647a448509437bc8618a1f3078f305294b8b13950bc2f2"
       },
       "automation": "pending",
       "originType": "culture",
       "coins": 7,
       "pairs": [
         {
-          "disciplineId": "discipline-wilderness",
+          "disciplineId": "discipline-frost",
           "rank": 1,
-          "abilityId": "ability-forage-mountains"
+          "abilityId": "ability-winter-store"
         },
         {
-          "disciplineId": "discipline-craft",
+          "disciplineId": "discipline-storm",
           "rank": 1,
-          "abilityId": "ability-trail-workshop"
+          "abilityId": "ability-thunder-at-the-door"
         }
       ]
     },
@@ -29095,21 +33250,21 @@
       "name": "Reed Villages",
       "source": {
         "path": "design/origins/culture-reed-villages.md",
-        "sha256": "c5131ebe5882d18d0fb0bdf4d40163faf774446c9bc9d036a5b2790d3f307a32"
+        "sha256": "f9ef70b590a49f1a1108bcfa7a27c1afacc6097f97243baa40aba3c710e1a19e"
       },
       "automation": "pending",
       "originType": "culture",
       "coins": 5,
       "pairs": [
         {
-          "disciplineId": "discipline-wilderness",
+          "disciplineId": "discipline-frost",
           "rank": 1,
-          "abilityId": "ability-forage-wetlands"
+          "abilityId": "ability-rime-footholds"
         },
         {
-          "disciplineId": "discipline-wilderness",
+          "disciplineId": "discipline-calling",
           "rank": 1,
-          "abilityId": "ability-the-otter-s-bargain"
+          "abilityId": "ability-a-hand-from-before"
         }
       ]
     },
@@ -29120,7 +33275,7 @@
       "name": "River Settlements",
       "source": {
         "path": "design/origins/culture-river-settlements.md",
-        "sha256": "324f06ecfabc1f4ad96d84b9cbc8bdc4a3daf10b1b82b05087a1f50aa8740572"
+        "sha256": "5de505fdf32cf7772d1165be5164a99fbd148ee15ce223c2d0a2ab738434d186"
       },
       "automation": "pending",
       "originType": "culture",
@@ -29132,9 +33287,9 @@
           "abilityId": "ability-expert-river-crossing"
         },
         {
-          "disciplineId": "discipline-wilderness",
+          "disciplineId": "discipline-life",
           "rank": 1,
-          "abilityId": "ability-forage-wetlands"
+          "abilityId": "ability-shared-breath"
         }
       ]
     },
@@ -29145,7 +33300,7 @@
       "name": "Terrace Towns",
       "source": {
         "path": "design/origins/culture-terrace-towns.md",
-        "sha256": "3cd7bc9fcb2250c7b7fc05d34022a9a93bb197e756a73124dbb4f36689d3c3a1"
+        "sha256": "07556533bacd4be9edc5bb567ee05b9b911b523e64c49c2a6ce867bc67b7f1a1"
       },
       "automation": "pending",
       "originType": "culture",
@@ -29157,9 +33312,9 @@
           "abilityId": "ability-swing-into-trouble"
         },
         {
-          "disciplineId": "discipline-wilderness",
+          "disciplineId": "discipline-radiance",
           "rank": 1,
-          "abilityId": "ability-roots-remember-feet"
+          "abilityId": "ability-lantern-in-the-palm"
         }
       ]
     },
@@ -29170,16 +33325,16 @@
       "name": "Traveling Companies",
       "source": {
         "path": "design/origins/culture-traveling-companies.md",
-        "sha256": "a13c3f0f1326d9553f225aee51de0f1de9aacba8bff3b8eee6d8470490ea42dd"
+        "sha256": "c27185e67217c0d4b45391e447dffeac6b1c06505efb3d49e941b2686fe7542d"
       },
       "automation": "pending",
       "originType": "culture",
       "coins": 7,
       "pairs": [
         {
-          "disciplineId": "discipline-influence",
+          "disciplineId": "discipline-arms",
           "rank": 1,
-          "abilityId": "ability-measured-appeal"
+          "abilityId": "ability-smile-before-steel"
         },
         {
           "disciplineId": "discipline-subterfuge",

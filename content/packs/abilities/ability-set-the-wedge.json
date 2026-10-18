@@ -1,0 +1,40 @@
+{
+  "_key": "!items!153f57f512e1957b",
+  "_id": "153f57f512e1957b",
+  "name": "Set the Wedge",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You slide a wedge into the joint and tap it home, giving the next shove somewhere to bite.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>One adjacent unattended door, lid or movable obstacle.</dd></div><div><dt>Duration</dt><dd>Until used or 1 minute passes.</dd></div><div><dt>Equipment / acquisition</dt><dd>Requires lever and wedges, Bulk 1; grants one set if absent.</dd></div><div><dt>Limits</dt><dd>One prepared obstacle at a time; repeated preparation does not add Boons.</dd></div><div><dt>Type</dt><dd>Skill / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>Using a lever and wedges, prepare the obstacle. The next Force action by you or an ally against that obstacle gains 1 Boon. Describe whether you are helping open, close or move it; the benefit applies only to that task. No change to the obstacle’s strength occurs without the Force action.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/cards/set-the-wedge.md\" target=\"_blank\" rel=\"noopener\">design/cards/set-the-wedge.md</a> at <code>d67e046466bdd5052360b96ed91861d607091446</code>.</p></section>",
+    "activity": {
+      "action": "main",
+      "rollMode": "none",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-set-the-wedge",
+      "source": {
+        "path": "design/cards/set-the-wedge.md",
+        "sha256": "aac44ccc004c848d852828daef1a7cb85d90db6d452417729d4d44c5b29bd2bb"
+      },
+      "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Rules reference · play automation in progress"
+    }
+  }
+}

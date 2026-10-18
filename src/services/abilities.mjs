@@ -7,7 +7,10 @@ import {
   defenseAbilityAvailability,
 } from "../rules/defense-abilities.mjs";
 import { isShieldEquipment } from "../rules/equipment-identity.mjs";
-import { upsertBenefitEffect } from "../rules/defense-benefits.mjs";
+import {
+  shieldBenefitReuse,
+  upsertBenefitEffect,
+} from "../rules/defense-benefits.mjs";
 import { actorMatchesParticipant } from "../rules/player-attacks.mjs";
 import { actionConditions } from "./turn-budget.mjs";
 import {
@@ -22,7 +25,14 @@ import {
 } from "./roll-preparation.mjs";
 const ID = "heroes-of-legend";
 const HELPLESS = ["paralyzed", "asleep", "unconscious", "petrified"];
-const DEFENSE_ABILITY_IDS = new Set(["ability-defend", "ability-shield-block"]);
+const DEFENSE_ABILITY_IDS = new Set([
+  "ability-defend",
+  "ability-shield-block",
+  "ability-high-guard",
+]);
+const SHIELD_HANDLERS = new Set(["shield-block-v1", "high-guard-v1"]);
+const isShieldAbility = (definition) =>
+  SHIELD_HANDLERS.has(definition?.handler);
 export function itemAbilityDefinition(item) {
   return abilityDefinition(
     item.getFlag(ID, "catalogId"),
@@ -72,10 +82,7 @@ export async function requestAbility(
     throw new Error("This ability has no reviewed action handler yet.");
   if (!game.settings.get(ID, "creationAuthorityClient"))
     throw new Error("Enable the GM automation coordinator first.");
-  if (
-    definition.id === "ability-shield-block" &&
-    typeof attackMessageId !== "string"
-  )
+  if (isShieldAbility(definition) && typeof attackMessageId !== "string")
     throw new Error(
       "Shield Block must be activated before a blockable incoming defense.",
     );
@@ -270,10 +277,9 @@ export async function requestDefenseAbility(
     );
   const actor = item.actor,
     definition = itemAbilityDefinition(item),
-    incoming =
-      definition?.id === "ability-shield-block"
-        ? verifiedIncomingAttackContext(attackMessageId)
-        : incomingAttackContext(attackMessageId),
+    incoming = isShieldAbility(definition)
+      ? verifiedIncomingAttackContext(attackMessageId)
+      : incomingAttackContext(attackMessageId),
     { combat, participant } = combatForAttackActor(actor, incoming),
     review = reviewedDefenseAbilityOptions(actor, {
       attackMessageId,
@@ -287,10 +293,9 @@ export async function requestDefenseAbility(
   return requestAbility(item, combat, participant.id, {
     attackMessageId,
     defenderTokenUuid,
-    shieldItemUuid:
-      option.id === "ability-shield-block"
-        ? (shieldItemUuid ?? option.shieldItemUuid)
-        : null,
+    shieldItemUuid: isShieldAbility(definition)
+      ? (shieldItemUuid ?? option.shieldItemUuid)
+      : null,
   });
 }
 export function resolveAbilityRequest(id, combatUuid) {
@@ -349,16 +354,12 @@ async function preflight({ message, request, combat }) {
     incoming = null;
   if (request.attackMessageId) {
     attack = game.messages.get(request.attackMessageId);
-    incoming =
-      definition.id === "ability-shield-block"
-        ? verifiedIncomingAttackContext(request.attackMessageId)
-        : incomingAttackContext(request.attackMessageId);
+    incoming = isShieldAbility(definition)
+      ? verifiedIncomingAttackContext(request.attackMessageId)
+      : incomingAttackContext(request.attackMessageId);
     if (incoming.combatId && incoming.combatId !== combat.id)
       throw new Error("The incoming attack does not belong to this encounter.");
-    if (
-      definition.id === "ability-shield-block" &&
-      incoming.combatId !== combat.id
-    )
+    if (isShieldAbility(definition) && incoming.combatId !== combat.id)
       throw new Error(
         "The Shield Block attack does not belong to this encounter.",
       );
@@ -383,7 +384,7 @@ async function preflight({ message, request, combat }) {
     availability = defenseAbilityAvailability(definition.id, context);
   if (!availability.available) throw new Error(availability.reasons.join(" "));
   let shieldItem = null;
-  if (definition.handler === "shield-block-v1") {
+  if (isShieldAbility(definition)) {
     if (typeof request.shieldItemUuid !== "string")
       throw new Error("Choose the held shield used for Shield Block.");
     shieldItem = fromUuidSync(request.shieldItemUuid);
@@ -410,7 +411,9 @@ function benefitEffect(operation) {
     name =
       key === "defend"
         ? "Defend · 1 defense Boon"
-        : "Shield Block · 1 defense Boon",
+        : operation.handler === "high-guard-v1"
+          ? "High Guard · 2 defense Boons"
+          : "Shield Block · 1 defense Boon",
     benefit = {
       key,
       anchor: {
@@ -419,6 +422,12 @@ function benefitEffect(operation) {
         turnId: operation.turnId,
       },
       sourceUuid: operation.itemUuid,
+      sourceId:
+        operation.handler === "high-guard-v1"
+          ? "ability-high-guard"
+          : operation.handler === "shield-block-v1"
+            ? "ability-shield-block"
+            : "ability-defend",
       requestId: operation.requestId,
     };
   if (key === "shield-block") benefit.shieldItemUuid = operation.shieldItemUuid;
@@ -438,10 +447,9 @@ async function continuationCapable(operation, request, combat, actor) {
   let currentAttack = null;
   if (operation.incomingAttack) {
     try {
-      currentAttack =
-        operation.handler === "shield-block-v1"
-          ? verifiedIncomingAttackContext(request.attackMessageId)
-          : incomingAttackContext(request.attackMessageId);
+      currentAttack = SHIELD_HANDLERS.has(operation.handler)
+        ? verifiedIncomingAttackContext(request.attackMessageId)
+        : incomingAttackContext(request.attackMessageId);
     } catch {
       return false;
     }
@@ -451,7 +459,7 @@ async function continuationCapable(operation, request, combat, actor) {
       return false;
   }
   if (operation.handler === "defend-v1") return true;
-  if (operation.handler === "shield-block-v1") {
+  if (SHIELD_HANDLERS.has(operation.handler)) {
     if (!currentAttack || !operation.incomingAttack) return false;
     const shield = actor.items.get(operation.shieldItemId);
     return Boolean(shield && isShieldEquipment(shield) && shield.system.held);
@@ -507,31 +515,50 @@ async function apply(id, combatUuid) {
     const checked = await preflight({ message, request, combat }),
       state = structuredClone(combat.getFlag(ID, "encounter")),
       budget = state.budgets[request.participantId],
-      existing = checked.actor.effects.find((effect) => {
-        const benefit = effect.getFlag(ID, "benefit");
-        return (
-          benefit?.key ===
-            (checked.definition.handler === "defend-v1"
-              ? "defend"
-              : "shield-block") &&
-          benefitCurrent(effect) &&
-          benefit.anchor.combatId === combat.id &&
-          benefit.anchor.participantId === request.participantId &&
-          (!checked.shieldItem ||
-            benefit.shieldItemUuid === checked.shieldItem.uuid)
-        );
-      });
+      existing = checked.actor.effects
+        .filter((effect) => {
+          const benefit = effect.getFlag(ID, "benefit");
+          return (
+            benefit?.key ===
+              (checked.definition.handler === "defend-v1"
+                ? "defend"
+                : "shield-block") &&
+            benefitCurrent(effect) &&
+            benefit.anchor.combatId === combat.id &&
+            benefit.anchor.participantId === request.participantId
+          );
+        })
+        .sort(
+          (a, b) =>
+            Number(
+              b.getFlag(ID, "benefit")?.sourceId === "ability-high-guard",
+            ) -
+            Number(a.getFlag(ID, "benefit")?.sourceId === "ability-high-guard"),
+        )[0],
+      reuse = shieldBenefitReuse(
+        checked.definition.handler,
+        existing
+          ? (existing.getFlag(ID, "benefit")?.sourceId ??
+              "ability-shield-block")
+          : null,
+        !existing ||
+          heldShields(checked.actor).some(
+            (shield) =>
+              shield.uuid === existing.getFlag(ID, "benefit")?.shieldItemUuid,
+          ),
+      );
     state.budgets[request.participantId] = declareAction(budget, {
       operationId: id,
       sourceId: checked.definition.id,
-      category: existing ? "free" : checked.definition.category,
+      category: reuse.free ? "free" : checked.definition.category,
       conditions: actionConditions(checked.actor),
       ownTurn: state.current === request.participantId,
     });
     state.revision++;
     operation = {
       status: "applying",
-      reusedBenefit: Boolean(existing),
+      reusedBenefit: reuse.free,
+      preserveBenefit: reuse.preserve,
       authorId: message.author.id,
       actorUuid: checked.actor.uuid,
       itemUuid: checked.item.uuid,
@@ -592,7 +619,11 @@ async function apply(id, combatUuid) {
     definition =
       actionItem?.type === "ability" ? itemAbilityDefinition(actionItem) : null;
   if (continuation.proceed && !appliedEffect?.applied) {
-    const data = benefitEffect(operation);
+    const data = operation.preserveBenefit
+      ? actor.effects.get(operation.effectId)?.toObject()
+      : benefitEffect(operation);
+    if (!data)
+      throw new Error("The stronger shield benefit needs reconciliation.");
     if (actor.effects.has(operation.effectId)) {
       const benefit = actor.effects
         .get(operation.effectId)
@@ -647,7 +678,9 @@ async function apply(id, combatUuid) {
         ? `The action could not continue. Its declared ${definition?.category ?? "action"} remains recorded.`
         : operation.handler === "defend-v1"
           ? "Defend: Maneuver tracked. Gain one defense Boon until the start of your next turn; repeating the benefit does not increase it."
-          : "Shield Block: Reaction tracked. Gain one defense Boon against eligible blockable defenses until the start of your next turn while using the selected held shield; repeating the benefit does not increase it.";
+          : operation.handler === "high-guard-v1"
+            ? "High Guard: Reaction tracked. Shield Block grants two defense Boons instead of one against eligible blockable defenses until the start of your next turn while using the selected held shield."
+            : "Shield Block: Reaction tracked. Gain one defense Boon against eligible blockable defenses until the start of your next turn while using the selected held shield; repeating the benefit does not increase it.";
   if (message)
     await message
       .update({

@@ -12,7 +12,7 @@
     "inventoryDie": 0,
     "held": false,
     "worn": false,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Market reference · acquisition and use automation in progress</p><p><strong>Market price:</strong> 15 coins.</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/64089a1c8961d7faff172f179448a8b6e57827ef/design/equipment/craft-tools.md\" target=\"_blank\" rel=\"noopener\">design/equipment/craft-tools.md</a> at <code>64089a1c8961d7faff172f179448a8b6e57827ef</code>.</p></section>"
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Market reference · acquisition and use automation in progress</p><p><strong>Market price:</strong> 15 coins.</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/equipment/craft-tools.md\" target=\"_blank\" rel=\"noopener\">design/equipment/craft-tools.md</a> at <code>d67e046466bdd5052360b96ed91861d607091446</code>.</p></section>"
   },
   "effects": [],
   "folder": null,
@@ -26,7 +26,7 @@
         "path": "design/equipment/craft-tools.md",
         "sha256": "ffed6d1a46d316f0b9434c6575fd59e9766733c701d2c9c38567984853996edf"
       },
-      "sourceCommit": "64089a1c8961d7faff172f179448a8b6e57827ef",
+      "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Market reference · acquisition and use automation in progress"

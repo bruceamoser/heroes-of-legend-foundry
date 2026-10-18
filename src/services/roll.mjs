@@ -22,7 +22,7 @@ export async function rollPrepared(actor, basis, draft) {
   );
   if (JSON.stringify(current) !== JSON.stringify(basis))
     throw new Error("Roll sources changed. Review the dialog before rolling.");
-  prepareRoll(current, draft);
+  const prepared = prepareRoll(current, draft);
   if (basis.mode === "death") {
     const { requestSurvival } = await import("./survival.mjs");
     return requestSurvival(actor, basis, draft, "roll");
@@ -38,7 +38,9 @@ export async function rollPrepared(actor, basis, draft) {
   return roll.toMessage(
     {
       speaker: ChatMessage.getSpeaker({ actor }),
-      flavor: game.i18n.localize(`HOL.Attributes.${basis.attributeKey}`),
+      flavor: game.i18n.localize(
+        `HOL.Attributes.${prepared.resolvedAttributeKey ?? basis.attributeKey}`,
+      ),
       flags: { "heroes-of-legend": { roll: snapshot } },
     },
     { messageMode: mode },
@@ -51,7 +53,9 @@ export async function evaluatePreparedRoll(
   { rollerId = game.user.id, allowInteractive = false } = {},
 ) {
   const references = selectedReferences(actor, draft, {
-    mode: basis.mode, defenderTokenUuid: basis.defenderTokenUuid, user: game.users?.get(rollerId) ?? game.user,
+    mode: basis.mode,
+    defenderTokenUuid: basis.defenderTokenUuid,
+    user: game.users?.get(rollerId) ?? game.user,
   });
   const plan = prepareRoll(basis, draft);
   const roll = await new foundry.dice.Roll(plan.formula).evaluate({
@@ -107,11 +111,16 @@ export function renderRollSummary(message, element) {
   summary.append(detail);
   if (result.attackOutcome) {
     const outcome = document.createElement("p");
-    outcome.textContent = result.attackOutcome.resolution === "reference"
-      ? `${result.attackOutcome.text} · Resolve costs and effects manually.`
-      : `${result.attackOutcome.damage} physical damage before resistance. The DA can review and apply damage.`;
+    outcome.textContent =
+      result.attackOutcome.resolution === "reference"
+        ? `${result.attackOutcome.text} · Resolve costs and effects manually.`
+        : `${result.attackOutcome.damage} physical damage before resistance. The DA can review and apply damage.`;
     summary.append(outcome);
-    if (game.user.isGM && result.attackMessageId && result.attackOutcome.resolution !== "reference") {
+    if (
+      game.user.isGM &&
+      result.attackMessageId &&
+      result.attackOutcome.resolution !== "reference"
+    ) {
       const button = document.createElement("button");
       button.type = "button";
       button.textContent = "Review and apply damage";

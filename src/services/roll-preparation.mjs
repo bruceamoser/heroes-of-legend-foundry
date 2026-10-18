@@ -5,6 +5,10 @@ import { ATTRIBUTES } from "../rules/character.mjs";
 import { conditionRollSources } from "../rules/conditions.mjs";
 import { targetEvasionSources } from "../rules/player-attacks.mjs";
 import { sourceRollPlan } from "../rules/roll-sources.mjs";
+import {
+  defenseSubstitutionOptions,
+  selectedDefenseSubstitution,
+} from "../rules/defense-substitutions.mjs";
 import { selectedWoundRollSources } from "../rules/wound-contributions.mjs";
 import { actorContributions } from "./conditions.mjs";
 import { defenseBenefits } from "./benefits.mjs";
@@ -208,9 +212,13 @@ export function rollBasis(
       mode === "defense"
         ? defenseBenefits(actor, { incomingAttack: Boolean(incoming) })
         : [],
+    ...(mode === "defense"
+      ? { defenseSubstitutions: defenseSubstitutionOptions(actor) }
+      : {}),
   };
 }
 export function prepareRoll(basis, draft = {}) {
+  const substitution = selectedDefenseSubstitution(basis, draft);
   const fears = [
     ...new Set(
       basis.contributions
@@ -234,6 +242,15 @@ export function prepareRoll(basis, draft = {}) {
     ...basis.benefits,
     ...contextualAbilitySources(basis, draft),
   ];
+  if (substitution?.boons)
+    sources.push({
+      id: `defense-substitution-${substitution.itemUuid}`,
+      kind: "boon",
+      amount: substitution.boons,
+      label: substitution.name,
+      automatic: true,
+      sourceIds: [substitution.itemUuid],
+    });
   if (basis.mode === "attack")
     sources.push(
       ...targetEvasionSources(basis.targetEvasion, basis.targetTokenUuid),
@@ -275,5 +292,9 @@ export function prepareRoll(basis, draft = {}) {
         sourceIds: [],
       });
   }
-  return sourceRollPlan(basis.attribute, sources);
+  return {
+    ...sourceRollPlan(substitution?.attribute ?? basis.attribute, sources),
+    resolvedAttributeKey: substitution?.attributeKey ?? basis.attributeKey,
+    defenseSubstitutionItemUuid: substitution?.itemUuid ?? null,
+  };
 }

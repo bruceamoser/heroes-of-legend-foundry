@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "repository": "https://github.com/bruceamoser/heroes-of-legend",
-  "commit": "64089a1c8961d7faff172f179448a8b6e57827ef",
-  "previousCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
-  "approval": "Approved armor and six one-DP abilities, book PRs #1272/#1274 merged 2026-10-18; system reconciliation #168/#169. Distribution licensing remains undecided.",
+  "commit": "d67e046466bdd5052360b96ed91861d607091446",
+  "previousCommit": "64089a1c8961d7faff172f179448a8b6e57827ef",
+  "approval": "Approved discipline expansion, balanced origins and shield techniques, book PR #1278 merged 2026-10-18; system reconciliation #171. Distribution licensing remains undecided.",
   "counts": {
     "creatures": 192,
     "monsterAbilities": 93,
@@ -1592,6 +1592,11 @@
       "id": "ask-the-falling-ash"
     },
     {
+      "path": "design/cards/bank-the-embers.md",
+      "sha256": "d36ad5d9f909e9b3ac5460aa43c600f62a1a47b04e36c7fbf65d34f896863910",
+      "id": "bank-the-embers"
+    },
+    {
       "path": "design/cards/basic-melee.md",
       "sha256": "9d6e0b6ca75363b94c6886fb3c53087f854098f024aac232395c61fdc438ae40",
       "id": "basic-melee"
@@ -1610,6 +1615,11 @@
       "path": "design/cards/basic-unarmed.md",
       "sha256": "5f5db412a0c40a65a6d302cd61de2f14f3e590466a6031029a79d6592d173879",
       "id": "basic-unarmed"
+    },
+    {
+      "path": "design/cards/beacon-through-terror.md",
+      "sha256": "9ee7ee1b50c58eba91ced3a6c2b2bb202395310468c735339c4fdece1e22241e",
+      "id": "beacon-through-terror"
     },
     {
       "path": "design/cards/behind-the-hawthorn.md",
@@ -1687,9 +1697,19 @@
       "id": "break-the-formation"
     },
     {
+      "path": "design/cards/breakaway-rig.md",
+      "sha256": "19a284706b0e609c19f264247a1e257a1c456035fa51190ca2b0e3620734d49b",
+      "id": "breakaway-rig"
+    },
+    {
       "path": "design/cards/breath-of-the-wyrmling.md",
       "sha256": "9f3e08e4363da809fe41f62020d748a07a7b50187d91d576f1873fd884f9d8aa",
       "id": "breath-of-the-wyrmling"
+    },
+    {
+      "path": "design/cards/breath-of-white.md",
+      "sha256": "6dc711e8b9cc768f763a51ca2372e6810e4a848de872b74416ff55eab9eaa895",
+      "id": "breath-of-white"
     },
     {
       "path": "design/cards/briar-gate.md",
@@ -1737,6 +1757,11 @@
       "id": "call-the-opening"
     },
     {
+      "path": "design/cards/call-their-name.md",
+      "sha256": "fc9dd3d1b0f3a4735617a620093d2096d0ed94f0b45bc21ca4f17eab37f198de",
+      "id": "call-their-name"
+    },
+    {
       "path": "design/cards/carry-the-sunrise.md",
       "sha256": "421247e7a5cb5543e847e617394778a8f79ecf183a6edae9a2c4fbeea721f81d",
       "id": "carry-the-sunrise"
@@ -1750,6 +1775,11 @@
       "path": "design/cards/carry-to-safety.md",
       "sha256": "9310288fad0b011e7c4f70a3c0987fd12af6731b1c92b5d68df44f995c96d803",
       "id": "carry-to-safety"
+    },
+    {
+      "path": "design/cards/cast-off-the-venom.md",
+      "sha256": "d1bce68ca512d40def1c0536d134f8ef51e123804e78e41f338e38ad8dcd31cc",
+      "id": "cast-off-the-venom"
     },
     {
       "path": "design/cards/cast-through-the-reflection.md",
@@ -1767,9 +1797,29 @@
       "id": "catch-that"
     },
     {
+      "path": "design/cards/catch-the-ledge.md",
+      "sha256": "a6c8faa08b33168ccc981f27af7c6a4e4aeb667ae75e2e62f62899c33d2536f3",
+      "id": "catch-the-ledge"
+    },
+    {
+      "path": "design/cards/catch-the-mechanism.md",
+      "sha256": "35855ba80829acc5d06968cbb33b361c5bbe1cbad3c7166e8561cfcce46f8646",
+      "id": "catch-the-mechanism"
+    },
+    {
+      "path": "design/cards/catch-the-root.md",
+      "sha256": "0dfb98df6ed1555257bedd808f504fd560cad202db52f31354d92887d3e6731b",
+      "id": "catch-the-root"
+    },
+    {
       "path": "design/cards/catch-the-spell.md",
       "sha256": "eb52e17f3b8c730ee16e84c1117730023851055730de65f590943916b70caa2d",
       "id": "catch-the-spell"
+    },
+    {
+      "path": "design/cards/catch-them-falling.md",
+      "sha256": "09df01c9e59b050c58a67869578aa332894654168cc46e4a760222b9486f4db2",
+      "id": "catch-them-falling"
     },
     {
       "path": "design/cards/checkmate-in-three-steps.md",
@@ -1785,6 +1835,26 @@
       "path": "design/cards/circle-of-old-names.md",
       "sha256": "5df2e59e2cb7f1bc4901ccafa7ee1f2aa509649299a81650db64e8482b171f1d",
       "id": "circle-of-old-names"
+    },
+    {
+      "path": "design/cards/clear-the-airway.md",
+      "sha256": "8b61fd532f508981e0dbdbfedd81807a5a23da00ada37f8eca4f7f91ed125e91",
+      "id": "clear-the-airway"
+    },
+    {
+      "path": "design/cards/clear-the-smoke.md",
+      "sha256": "38fd1b8ff485c3aa8260961cee26652eb8d5128ce71891d0d5d310968241ab08",
+      "id": "clear-the-smoke"
+    },
+    {
+      "path": "design/cards/close-shot.md",
+      "sha256": "30e255ae13c8e70fb9737d710120d380fdbbb583232573fa42dfd4bc400d2e8b",
+      "id": "close-shot"
+    },
+    {
+      "path": "design/cards/cold-cuirass.md",
+      "sha256": "d04b7548319e8e54f7655bc316732378074aa6f3a40b646847c2aa9bfe0a5d51",
+      "id": "cold-cuirass"
     },
     {
       "path": "design/cards/command-a-summon.md",
@@ -1805,6 +1875,16 @@
       "path": "design/cards/create-a-distraction.md",
       "sha256": "9d91b1c9e2af6e7d67411d2286b51f7378bb22819e9a91dbb67985b0f2a1c66c",
       "id": "create-a-distraction"
+    },
+    {
+      "path": "design/cards/crosswind.md",
+      "sha256": "7f7e13badfa1dd82a6ac2ad32b6d2de61337f3af127b20ba48e02022fc44c16a",
+      "id": "crosswind"
+    },
+    {
+      "path": "design/cards/cup-the-flame.md",
+      "sha256": "2ea2c25ea9acd41e0b236e0979d185bdb16642a2a4462045432f21df18770b6c",
+      "id": "cup-the-flame"
     },
     {
       "path": "design/cards/cut-off-the-escape.md",
@@ -1837,6 +1917,11 @@
       "id": "disengage"
     },
     {
+      "path": "design/cards/doors-for-the-host.md",
+      "sha256": "d264782d50fd02866bee069718e0643d6e4d81a08fa8e7d0183f24ad958cc841",
+      "id": "doors-for-the-host"
+    },
+    {
       "path": "design/cards/drain-warmth.md",
       "sha256": "2fbea4f5057126d767762a8ed100476b772ba74f8ba54c4677821f00a7d28fe0",
       "id": "drain-warmth"
@@ -1847,6 +1932,11 @@
       "id": "draw-the-current"
     },
     {
+      "path": "design/cards/draw-the-tether.md",
+      "sha256": "2c05756c45ee8b094d8cb5981871e9b16fda15de3755c86b1eb5ff459178c16e",
+      "id": "draw-the-tether"
+    },
+    {
       "path": "design/cards/dread-reflection.md",
       "sha256": "b1d1d0f7890498b310e05655131054cd6fb4d188f24463f6d40f5b78e8cf98f3",
       "id": "dread-reflection"
@@ -1855,6 +1945,16 @@
       "path": "design/cards/driving-volley.md",
       "sha256": "2e64ccae94ddcc9b8dba39b5de792978096f0c7cf048e23852f0842438893685",
       "id": "driving-volley"
+    },
+    {
+      "path": "design/cards/duck-into-the-brush.md",
+      "sha256": "f9b628addd2d72d5c1aa6d0c5eb31fae0e1e1204907bcd4917ff0e0bb3df1852",
+      "id": "duck-into-the-brush"
+    },
+    {
+      "path": "design/cards/ease-the-spasm.md",
+      "sha256": "ca094553681be540be5bf13efa14c05a2204367498b103d574a8843a3203bedc",
+      "id": "ease-the-spasm"
     },
     {
       "path": "design/cards/ember-along-the-edge.md",
@@ -1872,9 +1972,29 @@
       "id": "expert-river-crossing"
     },
     {
+      "path": "design/cards/field-triage.md",
+      "sha256": "fb191baa1b14e376ecd2aa07710b68b3770578e17160ee8d453cd6b7e0a01029",
+      "id": "field-triage"
+    },
+    {
+      "path": "design/cards/find-the-seam.md",
+      "sha256": "e0d8c14f75ef1fa03897b6d98cdeaa7420a9d02df6300a1aa985409e4a7c179e",
+      "id": "find-the-seam"
+    },
+    {
+      "path": "design/cards/find-your-footing.md",
+      "sha256": "3586a8b699ba3151352494c3a36ad07d4e753478cffb609193f6aea689ad073b",
+      "id": "find-your-footing"
+    },
+    {
       "path": "design/cards/fit-a-replacement.md",
       "sha256": "f83a6181868d86f0ce8e768c6da4c408b1031046b8abca7cc40e935286ba60c2",
       "id": "fit-a-replacement"
+    },
+    {
+      "path": "design/cards/follow-my-leap.md",
+      "sha256": "6d5fd10a62a397cad38a849494563ffbafc23cc16cd2506c6f8843aab8a74346",
+      "id": "follow-my-leap"
     },
     {
       "path": "design/cards/forage-coast.md",
@@ -1942,6 +2062,11 @@
       "id": "haul-them-home"
     },
     {
+      "path": "design/cards/high-guard.md",
+      "sha256": "a6f5ffeca1d6d1d298cdbfddec8680423fae5eae1e8ae6a8ce33ecbacfe3c3ef",
+      "id": "high-guard"
+    },
+    {
       "path": "design/cards/hold-a-conversation.md",
       "sha256": "bc74660b1e3039b349985cefb1931be85adf2b4f3514ac583b331a7f2901833e",
       "id": "hold-a-conversation"
@@ -1952,9 +2077,19 @@
       "id": "hold-the-passage"
     },
     {
+      "path": "design/cards/hold-the-pulse.md",
+      "sha256": "581a0c07ee34dc190cc427f34004fcfc8447deea950eaf6e9ad6320ae6810052",
+      "id": "hold-the-pulse"
+    },
+    {
       "path": "design/cards/hook-and-drive.md",
       "sha256": "305ffe642753c6c7423246be438e060fe13bbc5fc7e378033a5b9acb0d33e0d1",
       "id": "hook-and-drive"
+    },
+    {
+      "path": "design/cards/hook-with-the-shield.md",
+      "sha256": "0ed0fb01e7b46cd3c9415a07a7d933a0a99f96b4e512123cdd3bfac6a821d305",
+      "id": "hook-with-the-shield"
     },
     {
       "path": "design/cards/hurl-aside.md",
@@ -1997,6 +2132,16 @@
       "id": "invitation-to-the-blade"
     },
     {
+      "path": "design/cards/ironbound-advance.md",
+      "sha256": "edd843dcd800781c3b5a89efdf251bff397ee1036ef67e8bac3f3c7304a952de",
+      "id": "ironbound-advance"
+    },
+    {
+      "path": "design/cards/keep-pressure.md",
+      "sha256": "4a5cb0e5b8e46225d24de45ffa44b7d0b219bcff0c7104ddb880d0b5d604a63f",
+      "id": "keep-pressure"
+    },
+    {
       "path": "design/cards/keep-the-door-closed.md",
       "sha256": "f1369df7459aa4e373ce4fd5db81790165b67b6238c2bc9311d77a0e302f14b6",
       "id": "keep-the-door-closed"
@@ -2020,6 +2165,16 @@
       "path": "design/cards/lantern-moths.md",
       "sha256": "4457733faa91fa43e7070df559eb58dc2d20c46640531e007f5a22d44cfccdea",
       "id": "lantern-moths"
+    },
+    {
+      "path": "design/cards/last-light-of-the-watch.md",
+      "sha256": "79ee2d0da447a6a9b2c8092c76609d601ac87c4299abc4330f9d6d258ba69521",
+      "id": "last-light-of-the-watch"
+    },
+    {
+      "path": "design/cards/lend-your-eyes.md",
+      "sha256": "ed6353cfbec2abc1a108b792f4f12ed8143b3307c9d72fdc7c93721b6ae3a22a",
+      "id": "lend-your-eyes"
     },
     {
       "path": "design/cards/let-the-spark-decide.md",
@@ -2065,6 +2220,11 @@
       "path": "design/cards/name-the-reckoning.md",
       "sha256": "3f9953c611dcb26fc588fafe1a2425f26f09aea43fcbab498ad9c8c892a1f4b4",
       "id": "name-the-reckoning"
+    },
+    {
+      "path": "design/cards/name-what-is-real.md",
+      "sha256": "a55927e367205aea522dd30f392d881e0817ed72efa87aba7c3f8d3da5a27747",
+      "id": "name-what-is-real"
     },
     {
       "path": "design/cards/no-footfall-at-all.md",
@@ -2132,9 +2292,19 @@
       "id": "pinning-shot"
     },
     {
+      "path": "design/cards/play-it-off.md",
+      "sha256": "e09905b40ad1f981f755b84d615df93be9c847435a1f6faf203f12cfd7c4872e",
+      "id": "play-it-off"
+    },
+    {
       "path": "design/cards/pounce-of-the-red-claw.md",
       "sha256": "2977ef9d8d7fcf90f95f3aaa2b3da690d6b896ac6fbf772ff12a3c669e4f1365",
       "id": "pounce-of-the-red-claw"
+    },
+    {
+      "path": "design/cards/press-and-bind.md",
+      "sha256": "cd69ad716d254041b9baab46585e1772816ecd51b11348a46c2f5d823ebefa93",
+      "id": "press-and-bind"
     },
     {
       "path": "design/cards/procession-of-the-quiet.md",
@@ -2145,6 +2315,11 @@
       "path": "design/cards/quick-exit.md",
       "sha256": "de2be8860e513b6680455d204aee3e2b3df265a887cf7f74b28d0c7060caee6f",
       "id": "quick-exit"
+    },
+    {
+      "path": "design/cards/quiet-conference.md",
+      "sha256": "2805e4f8df2a44136a562492d5cf106970611d9aed54c8e486dfd76eeeb4cafc",
+      "id": "quiet-conference"
     },
     {
       "path": "design/cards/quiet-latch.md",
@@ -2175,6 +2350,21 @@
       "path": "design/cards/read-the-remains.md",
       "sha256": "fdf19e8fefc9728058f6e4d3f5b4fd4126e31f01d63de3b296506379bd32d7e0",
       "id": "read-the-remains"
+    },
+    {
+      "path": "design/cards/read-the-ward.md",
+      "sha256": "fd13c8645ac6b5b805b8517ef0012e6f0751ec51c99a16d5c1b47d94be7da66f",
+      "id": "read-the-ward"
+    },
+    {
+      "path": "design/cards/recall-the-shape.md",
+      "sha256": "6091eeea213faef9406d3c6f6e8128156584a41b2b22286504def7ad1ae3a9e5",
+      "id": "recall-the-shape"
+    },
+    {
+      "path": "design/cards/recast-the-footprint.md",
+      "sha256": "f50a7457b3ee1f667acff19ad9d538b1df5b0f41d31eda5c3f4f1e74fefa4729",
+      "id": "recast-the-footprint"
     },
     {
       "path": "design/cards/reconstruct-the-event.md",
@@ -2217,9 +2407,34 @@
       "id": "ride-the-falling-stone"
     },
     {
+      "path": "design/cards/ride-the-furnace-breath.md",
+      "sha256": "51278eea7b967ed5359c55e256dfa08006141fa2c3ebc8c1b30fd053b8a5d38a",
+      "id": "ride-the-furnace-breath"
+    },
+    {
+      "path": "design/cards/rim-strike.md",
+      "sha256": "7ff171ab7e17cf11613d965493ffce975f211713bf83c893ac640caf7cc7e42f",
+      "id": "rim-strike"
+    },
+    {
+      "path": "design/cards/rime-footholds.md",
+      "sha256": "111f32932e06f342cc2974f1226246523e2ccc1d23daaaceb6f731dbc647be7d",
+      "id": "rime-footholds"
+    },
+    {
       "path": "design/cards/rime-grip.md",
       "sha256": "54f3135b07eec6f150fbe4217cdbcd8f179cc3b9f9c297919cae083e9640c241",
       "id": "rime-grip"
+    },
+    {
+      "path": "design/cards/road-of-dawn.md",
+      "sha256": "b275b5877fe562b74244c7393f7adf50e3a74784d774e6060e1c91e1d67af496",
+      "id": "road-of-dawn"
+    },
+    {
+      "path": "design/cards/road-of-rime.md",
+      "sha256": "7e935d20efe2d5d28528695aa544a0547e84a72e6fe6706bfd933770fddfeffa",
+      "id": "road-of-rime"
     },
     {
       "path": "design/cards/roots-remember-feet.md",
@@ -2262,9 +2477,19 @@
       "id": "sell-the-feint"
     },
     {
+      "path": "design/cards/set-the-wedge.md",
+      "sha256": "aac44ccc004c848d852828daef1a7cb85d90db6d452417729d4d44c5b29bd2bb",
+      "id": "set-the-wedge"
+    },
+    {
       "path": "design/cards/sever-the-pursuit.md",
       "sha256": "72415bf3e69288831424a7ab8ae735964df5850c8e8686796aa2cb0a7e450c96",
       "id": "sever-the-pursuit"
+    },
+    {
+      "path": "design/cards/shade-the-eyes.md",
+      "sha256": "24cd9c9a6e949c1b15c78dc753e58bcdc9e0193faa02c396fe8f70541c952d51",
+      "id": "shade-the-eyes"
     },
     {
       "path": "design/cards/shared-breath.md",
@@ -2272,9 +2497,24 @@
       "id": "shared-breath"
     },
     {
+      "path": "design/cards/shatterguard.md",
+      "sha256": "65bbc7e34d994c89767f5eb5fc0d5e130f7aa64d0e4ba7b96b1e652e346dc5a8",
+      "id": "shatterguard"
+    },
+    {
       "path": "design/cards/shield-block.md",
       "sha256": "bd890d5b177b2c0eded18b75901adba56c0162c25f7f6a4710298cd662421e94",
       "id": "shield-block"
+    },
+    {
+      "path": "design/cards/shield-roof.md",
+      "sha256": "f4798be2434fd0e8bce5da3cbd94af385e44d03248cb4595c488371b3983b7c9",
+      "id": "shield-roof"
+    },
+    {
+      "path": "design/cards/shielded-advance.md",
+      "sha256": "b67cc92c5940931e525ca1775f4b01d50df3c4268bae47af3609bcaa69cec4ef",
+      "id": "shielded-advance"
     },
     {
       "path": "design/cards/shielding-step.md",
@@ -2737,6 +2977,16 @@
       "id": "silence-the-alarm"
     },
     {
+      "path": "design/cards/silent-cue.md",
+      "sha256": "ccf5656765a48e583eaf18ab3e16102db3d42f219f3ee6702bbc7894bd9e3714",
+      "id": "silent-cue"
+    },
+    {
+      "path": "design/cards/slip-the-closing-door.md",
+      "sha256": "644baeea5ca803101bc3fde7fe006e6e1ba23cc9386fed27a57ff1c3803c8f61",
+      "id": "slip-the-closing-door"
+    },
+    {
       "path": "design/cards/smile-before-steel.md",
       "sha256": "c38750b23d5595d0529d4e25c9c3b9adcb488a3b66248c29c4878cf942798e34",
       "id": "smile-before-steel"
@@ -2752,9 +3002,19 @@
       "id": "smoke-through-the-keyhole"
     },
     {
+      "path": "design/cards/snare-the-missile.md",
+      "sha256": "7cf8c76643b934e75974edc02f9e278e908bb2338e10e9f4425a82c25f65872a",
+      "id": "snare-the-missile"
+    },
+    {
       "path": "design/cards/speak-with-the-hearth.md",
       "sha256": "77cd73e470620ca778387397428cba4b697eec65ef15ecf9cd8c7145e00786fc",
       "id": "speak-with-the-hearth"
+    },
+    {
+      "path": "design/cards/spot-the-tell.md",
+      "sha256": "b50e3ff2e9e2853030d50e6fb7d3093c22e8e386a766ce2141190548ba2b3d87",
+      "id": "spot-the-tell"
     },
     {
       "path": "design/cards/spring-in-the-sleeve.md",
@@ -2772,6 +3032,16 @@
       "id": "stand"
     },
     {
+      "path": "design/cards/stay-with-my-voice.md",
+      "sha256": "d63a588e2e1c5b943a722a76c3919251b10fc9e8ff58e32700a075495286ee8b",
+      "id": "stay-with-my-voice"
+    },
+    {
+      "path": "design/cards/steel-at-the-wrist.md",
+      "sha256": "c6c0a8951be457f96d8099cf99d240ed55412f496956a2fe08587ffca8a2e885",
+      "id": "steel-at-the-wrist"
+    },
+    {
       "path": "design/cards/step-between-lanterns.md",
       "sha256": "26e8ed5017ad8ec83e09887307ab79aa0e610a33210bf74ebeaf3b9c2dcf5ec2",
       "id": "step-between-lanterns"
@@ -2780,6 +3050,11 @@
       "path": "design/cards/step-through-the-spark.md",
       "sha256": "ed65d646d69ed79720eae6b575bf66c48bf5989e5c5fb4b3231346d42fe17787",
       "id": "step-through-the-spark"
+    },
+    {
+      "path": "design/cards/still-the-avalanche.md",
+      "sha256": "b8ebfc3ffee8db6dad0122394aff93d8e799c0170b8c884660ce9958beef9732",
+      "id": "still-the-avalanche"
     },
     {
       "path": "design/cards/still-the-will.md",
@@ -2927,6 +3202,11 @@
       "id": "the-debt-comes-due"
     },
     {
+      "path": "design/cards/the-forest-takes-the-blow.md",
+      "sha256": "2adada2424f28f01190682d9525211cc026d0bb57ea9b9ddc9afb563d6f7e417",
+      "id": "the-forest-takes-the-blow"
+    },
+    {
       "path": "design/cards/the-grove-gives-back.md",
       "sha256": "20ba12fe516162e3db8bf4992b5ed7da9e7ec964071e5da5da60e87391b3df5a",
       "id": "the-grove-gives-back"
@@ -3012,6 +3292,11 @@
       "id": "the-wind-makes-room"
     },
     {
+      "path": "design/cards/thought-before-the-blow.md",
+      "sha256": "07d814715c441190e7c7959fefb703b18d312b6d2c3c2df4b6ec6be55ba66dce",
+      "id": "thought-before-the-blow"
+    },
+    {
       "path": "design/cards/through-the-spearpoints.md",
       "sha256": "c85225bfdb7274e6749d15b064dfe0a3746d68ee9c0cce3ccdd641554c284bb8",
       "id": "through-the-spearpoints"
@@ -3077,6 +3362,11 @@
       "id": "turn-the-crowd"
     },
     {
+      "path": "design/cards/turn-the-fall.md",
+      "sha256": "f879e130ed1ba17bb6ec0b409e1a112ec4ad1662ac7fdb62e235ad1356d67a7e",
+      "id": "turn-the-fall"
+    },
+    {
       "path": "design/cards/turn-the-river.md",
       "sha256": "e9ab3e8313f754bdff3bf10071f02e79fa40e63ee53f868b2029d1967185ea85",
       "id": "turn-the-river"
@@ -3115,6 +3405,11 @@
       "path": "design/cards/wake-the-iron-rune.md",
       "sha256": "61702aaa00d75f2f852b13e9b285becb9bd9a1f0d63c355442eb20f74ac98230",
       "id": "wake-the-iron-rune"
+    },
+    {
+      "path": "design/cards/wake-the-nerves.md",
+      "sha256": "8c4fe28c1fa7464013e067871a5b8e19474328b68b95706953b9a8af7f0b1b66",
+      "id": "wake-the-nerves"
     },
     {
       "path": "design/cards/walk-the-thunder.md",
@@ -3162,6 +3457,16 @@
       "id": "white-heat"
     },
     {
+      "path": "design/cards/whiteout.md",
+      "sha256": "0bc437958b1af9c8e3218f1a9bf8ec4760e501b382ddde3d4b379392c0955042",
+      "id": "whiteout"
+    },
+    {
+      "path": "design/cards/wind-the-sight.md",
+      "sha256": "e18bfb5b553db617c0a5a33e23dc7e1b72eda316272c71cea148afbbcae9a53f",
+      "id": "wind-the-sight"
+    },
+    {
       "path": "design/cards/wings-over-the-battle.md",
       "sha256": "cb9dadf315aec512058477a04ee8442b3441419c54bd8d1f94d33cc27b72b9ff",
       "id": "wings-over-the-battle"
@@ -3170,6 +3475,11 @@
       "path": "design/cards/winter-hold.md",
       "sha256": "17481b4f9adb0404e9e15112cc31c8fb27a2a956ff20da10b77436cc0edc334d",
       "id": "winter-hold"
+    },
+    {
+      "path": "design/cards/winter-store.md",
+      "sha256": "7b59b3dbaff001e39ab66364990b06bf732bd9d13fea7d9fe37c413c4a4536e3",
+      "id": "winter-store"
     },
     {
       "path": "design/cards/write-the-final-line.md",
@@ -4119,7 +4429,7 @@
     },
     {
       "path": "design/origins/background-duelist-s-second.md",
-      "sha256": "ba27319605ef9f7024f9498fb3334e8354a9181767b070d893c531b0e335175d"
+      "sha256": "65e0bf9921e9dcd585f958e4680c4258456ac7eed1eeae4f695a52c4662ce8d7"
     },
     {
       "path": "design/origins/background-grave-attendant.md",
@@ -4155,7 +4465,7 @@
     },
     {
       "path": "design/origins/background-oath-witness.md",
-      "sha256": "d75d0f0d7eb926b5a60c19adcaf98e03b2f7efb943cec44a83b9619a08a8e843"
+      "sha256": "313b926d79c0fa09c6da6f2ae8e7c2fdf7d16eec51c3ed11f54010fba14160ae"
     },
     {
       "path": "design/origins/background-physician-s-student.md",
@@ -4167,7 +4477,7 @@
     },
     {
       "path": "design/origins/background-poacher.md",
-      "sha256": "42b7c49d2eb4d5109b227ab2debe550429b4c1dec31b2a4375cad118f7af0d01"
+      "sha256": "8d4bf41f5a14e6e878af65b9a62da4f27cc9fdec0b5e84e3bebe041277e7f8cb"
     },
     {
       "path": "design/origins/background-reluctant-knife.md",
@@ -4219,7 +4529,7 @@
     },
     {
       "path": "design/origins/culture-cloister-valleys.md",
-      "sha256": "ea78fce218250527ad31c945431d4d7fc005743a826eb2fe8c22d6b17cd8a2c1"
+      "sha256": "fb539cf1908973447cd5fc9f8dbdfa111c9c8076b0f0776260e0688834069605"
     },
     {
       "path": "design/origins/culture-deep-halls.md",
@@ -4231,7 +4541,7 @@
     },
     {
       "path": "design/origins/culture-forest-communities.md",
-      "sha256": "8475083da6c046e51d53854e52b0ea87065af5fb8acdb9fe27a9567bd9e01c0f"
+      "sha256": "63443efa0bd5cb77b480cfef2f85b93034165d9187b8beb357b10639e092b1a7"
     },
     {
       "path": "design/origins/culture-free-harbors.md",
@@ -4239,15 +4549,15 @@
     },
     {
       "path": "design/origins/culture-gathered-peoples.md",
-      "sha256": "93e7d8542d1b09c18b95c306391e2852061e586ffcefb9d1b5be075b69c37694"
+      "sha256": "5f242e20e6a6729769daf7baa216ff2e7efe02c2f79500280c77c729840d8271"
     },
     {
       "path": "design/origins/culture-grass-sea-clans.md",
-      "sha256": "07dfc06c1a85a7783cb7bd0033e7aef74e5569940518e0035d26cd4a10623e55"
+      "sha256": "749364d1c1586a908155350761c745997467fa88e88432943b021095135b4ad4"
     },
     {
       "path": "design/origins/culture-highland-holds.md",
-      "sha256": "47ef86bb5b277c66daca7b43af16d607407a76873c03d7e3284dc1adb2d25615"
+      "sha256": "967a230b01033e91f9647a448509437bc8618a1f3078f305294b8b13950bc2f2"
     },
     {
       "path": "design/origins/culture-island-kinships.md",
@@ -4263,19 +4573,19 @@
     },
     {
       "path": "design/origins/culture-reed-villages.md",
-      "sha256": "c5131ebe5882d18d0fb0bdf4d40163faf774446c9bc9d036a5b2790d3f307a32"
+      "sha256": "f9ef70b590a49f1a1108bcfa7a27c1afacc6097f97243baa40aba3c710e1a19e"
     },
     {
       "path": "design/origins/culture-river-settlements.md",
-      "sha256": "324f06ecfabc1f4ad96d84b9cbc8bdc4a3daf10b1b82b05087a1f50aa8740572"
+      "sha256": "5de505fdf32cf7772d1165be5164a99fbd148ee15ce223c2d0a2ab738434d186"
     },
     {
       "path": "design/origins/culture-terrace-towns.md",
-      "sha256": "3cd7bc9fcb2250c7b7fc05d34022a9a93bb197e756a73124dbb4f36689d3c3a1"
+      "sha256": "07556533bacd4be9edc5bb567ee05b9b911b523e64c49c2a6ce867bc67b7f1a1"
     },
     {
       "path": "design/origins/culture-traveling-companies.md",
-      "sha256": "a13c3f0f1326d9553f225aee51de0f1de9aacba8bff3b8eee6d8470490ea42dd"
+      "sha256": "c27185e67217c0d4b45391e447dffeac6b1c06505efb3d49e941b2686fe7542d"
     },
     {
       "path": "design/origins/culture-walled-communities.md",

@@ -44,7 +44,7 @@ test("reviewed editorial-only Defend source remains usable on existing items", (
 });
 
 test("reference status only credits reviewed native actions", () => {
-  for (const id of ["ability-defend", "ability-shield-block"])
+  for (const id of ["ability-defend", "ability-shield-block", "ability-high-guard"])
     assert.equal(
       abilityReferenceStatus(id, ABILITY_DEFINITIONS[id].source),
       "Reviewed native action · rules reference",

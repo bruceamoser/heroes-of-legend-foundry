@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceCommit": "64089a1c8961d7faff172f179448a8b6e57827ef",
+  "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
   "equipment": [
     {
       "id": "item-ammunition-bundle",
@@ -1199,6 +1199,15 @@
       "recipes": []
     },
     {
+      "id": "ability-bank-the-embers",
+      "source": {
+        "path": "design/cards/bank-the-embers.md",
+        "sha256": "d36ad5d9f909e9b3ac5460aa43c600f62a1a47b04e36c7fbf65d34f896863910"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
       "id": "ability-basic-melee",
       "source": {
         "path": "design/cards/basic-melee.md",
@@ -1230,6 +1239,15 @@
       "source": {
         "path": "design/cards/basic-unarmed.md",
         "sha256": "5f5db412a0c40a65a6d302cd61de2f14f3e590466a6031029a79d6592d173879"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
+      "id": "ability-beacon-through-terror",
+      "source": {
+        "path": "design/cards/beacon-through-terror.md",
+        "sha256": "9ee7ee1b50c58eba91ced3a6c2b2bb202395310468c735339c4fdece1e22241e"
       },
       "items": [],
       "recipes": []
@@ -1383,10 +1401,28 @@
       "recipes": []
     },
     {
+      "id": "ability-breakaway-rig",
+      "source": {
+        "path": "design/cards/breakaway-rig.md",
+        "sha256": "19a284706b0e609c19f264247a1e257a1c456035fa51190ca2b0e3620734d49b"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
       "id": "ability-breath-of-the-wyrmling",
       "source": {
         "path": "design/cards/breath-of-the-wyrmling.md",
         "sha256": "9f3e08e4363da809fe41f62020d748a07a7b50187d91d576f1873fd884f9d8aa"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
+      "id": "ability-breath-of-white",
+      "source": {
+        "path": "design/cards/breath-of-white.md",
+        "sha256": "6dc711e8b9cc768f763a51ca2372e6810e4a848de872b74416ff55eab9eaa895"
       },
       "items": [],
       "recipes": []
@@ -1473,6 +1509,15 @@
       "recipes": []
     },
     {
+      "id": "ability-call-their-name",
+      "source": {
+        "path": "design/cards/call-their-name.md",
+        "sha256": "fc9dd3d1b0f3a4735617a620093d2096d0ed94f0b45bc21ca4f17eab37f198de"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
       "id": "ability-carry-the-sunrise",
       "source": {
         "path": "design/cards/carry-the-sunrise.md",
@@ -1495,6 +1540,15 @@
       "source": {
         "path": "design/cards/carry-to-safety.md",
         "sha256": "9310288fad0b011e7c4f70a3c0987fd12af6731b1c92b5d68df44f995c96d803"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
+      "id": "ability-cast-off-the-venom",
+      "source": {
+        "path": "design/cards/cast-off-the-venom.md",
+        "sha256": "d1bce68ca512d40def1c0536d134f8ef51e123804e78e41f338e38ad8dcd31cc"
       },
       "items": [],
       "recipes": []
@@ -1527,10 +1581,48 @@
       "recipes": []
     },
     {
+      "id": "ability-catch-the-ledge",
+      "source": {
+        "path": "design/cards/catch-the-ledge.md",
+        "sha256": "a6c8faa08b33168ccc981f27af7c6a4e4aeb667ae75e2e62f62899c33d2536f3"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
+      "id": "ability-catch-the-mechanism",
+      "source": {
+        "path": "design/cards/catch-the-mechanism.md",
+        "sha256": "35855ba80829acc5d06968cbb33b361c5bbe1cbad3c7166e8561cfcce46f8646"
+      },
+      "items": [
+        "item-craft-tools"
+      ],
+      "recipes": []
+    },
+    {
+      "id": "ability-catch-the-root",
+      "source": {
+        "path": "design/cards/catch-the-root.md",
+        "sha256": "0dfb98df6ed1555257bedd808f504fd560cad202db52f31354d92887d3e6731b"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
       "id": "ability-catch-the-spell",
       "source": {
         "path": "design/cards/catch-the-spell.md",
         "sha256": "eb52e17f3b8c730ee16e84c1117730023851055730de65f590943916b70caa2d"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
+      "id": "ability-catch-them-falling",
+      "source": {
+        "path": "design/cards/catch-them-falling.md",
+        "sha256": "09df01c9e59b050c58a67869578aa332894654168cc46e4a760222b9486f4db2"
       },
       "items": [],
       "recipes": []
@@ -1558,6 +1650,45 @@
       "source": {
         "path": "design/cards/circle-of-old-names.md",
         "sha256": "5df2e59e2cb7f1bc4901ccafa7ee1f2aa509649299a81650db64e8482b171f1d"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
+      "id": "ability-clear-the-airway",
+      "source": {
+        "path": "design/cards/clear-the-airway.md",
+        "sha256": "8b61fd532f508981e0dbdbfedd81807a5a23da00ada37f8eca4f7f91ed125e91"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
+      "id": "ability-clear-the-smoke",
+      "source": {
+        "path": "design/cards/clear-the-smoke.md",
+        "sha256": "38fd1b8ff485c3aa8260961cee26652eb8d5128ce71891d0d5d310968241ab08"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
+      "id": "ability-close-shot",
+      "source": {
+        "path": "design/cards/close-shot.md",
+        "sha256": "30e255ae13c8e70fb9737d710120d380fdbbb583232573fa42dfd4bc400d2e8b"
+      },
+      "items": [
+        "item-ordinary-ranged-weapon",
+        "item-ammunition-bundle"
+      ],
+      "recipes": []
+    },
+    {
+      "id": "ability-cold-cuirass",
+      "source": {
+        "path": "design/cards/cold-cuirass.md",
+        "sha256": "d04b7548319e8e54f7655bc316732378074aa6f3a40b646847c2aa9bfe0a5d51"
       },
       "items": [],
       "recipes": []
@@ -1594,6 +1725,24 @@
       "source": {
         "path": "design/cards/create-a-distraction.md",
         "sha256": "9d91b1c9e2af6e7d67411d2286b51f7378bb22819e9a91dbb67985b0f2a1c66c"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
+      "id": "ability-crosswind",
+      "source": {
+        "path": "design/cards/crosswind.md",
+        "sha256": "7f7e13badfa1dd82a6ac2ad32b6d2de61337f3af127b20ba48e02022fc44c16a"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
+      "id": "ability-cup-the-flame",
+      "source": {
+        "path": "design/cards/cup-the-flame.md",
+        "sha256": "2ea2c25ea9acd41e0b236e0979d185bdb16642a2a4462045432f21df18770b6c"
       },
       "items": [],
       "recipes": []
@@ -1656,6 +1805,15 @@
       "recipes": []
     },
     {
+      "id": "ability-doors-for-the-host",
+      "source": {
+        "path": "design/cards/doors-for-the-host.md",
+        "sha256": "d264782d50fd02866bee069718e0643d6e4d81a08fa8e7d0183f24ad958cc841"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
       "id": "ability-drain-warmth",
       "source": {
         "path": "design/cards/drain-warmth.md",
@@ -1669,6 +1827,15 @@
       "source": {
         "path": "design/cards/draw-the-current.md",
         "sha256": "d7524471ceda068cd91f62f5a9ef89b7302067eb0a6f0a4e433de4c0fa0be77e"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
+      "id": "ability-draw-the-tether",
+      "source": {
+        "path": "design/cards/draw-the-tether.md",
+        "sha256": "2c05756c45ee8b094d8cb5981871e9b16fda15de3755c86b1eb5ff459178c16e"
       },
       "items": [],
       "recipes": []
@@ -1692,6 +1859,24 @@
         "item-ordinary-ranged-weapon",
         "item-ammunition-bundle"
       ],
+      "recipes": []
+    },
+    {
+      "id": "ability-duck-into-the-brush",
+      "source": {
+        "path": "design/cards/duck-into-the-brush.md",
+        "sha256": "f9b628addd2d72d5c1aa6d0c5eb31fae0e1e1204907bcd4917ff0e0bb3df1852"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
+      "id": "ability-ease-the-spasm",
+      "source": {
+        "path": "design/cards/ease-the-spasm.md",
+        "sha256": "ca094553681be540be5bf13efa14c05a2204367498b103d574a8843a3203bedc"
+      },
+      "items": [],
       "recipes": []
     },
     {
@@ -1727,10 +1912,46 @@
       "recipes": []
     },
     {
+      "id": "ability-field-triage",
+      "source": {
+        "path": "design/cards/field-triage.md",
+        "sha256": "fb191baa1b14e376ecd2aa07710b68b3770578e17160ee8d453cd6b7e0a01029"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
+      "id": "ability-find-the-seam",
+      "source": {
+        "path": "design/cards/find-the-seam.md",
+        "sha256": "e0d8c14f75ef1fa03897b6d98cdeaa7420a9d02df6300a1aa985409e4a7c179e"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
+      "id": "ability-find-your-footing",
+      "source": {
+        "path": "design/cards/find-your-footing.md",
+        "sha256": "3586a8b699ba3151352494c3a36ad07d4e753478cffb609193f6aea689ad073b"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
       "id": "ability-fit-a-replacement",
       "source": {
         "path": "design/cards/fit-a-replacement.md",
         "sha256": "f83a6181868d86f0ce8e768c6da4c408b1031046b8abca7cc40e935286ba60c2"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
+      "id": "ability-follow-my-leap",
+      "source": {
+        "path": "design/cards/follow-my-leap.md",
+        "sha256": "6d5fd10a62a397cad38a849494563ffbafc23cc16cd2506c6f8843aab8a74346"
       },
       "items": [],
       "recipes": []
@@ -1853,6 +2074,17 @@
       "recipes": []
     },
     {
+      "id": "ability-high-guard",
+      "source": {
+        "path": "design/cards/high-guard.md",
+        "sha256": "a6f5ffeca1d6d1d298cdbfddec8680423fae5eae1e8ae6a8ce33ecbacfe3c3ef"
+      },
+      "items": [
+        "item-ordinary-shield"
+      ],
+      "recipes": []
+    },
+    {
       "id": "ability-hold-a-conversation",
       "source": {
         "path": "design/cards/hold-a-conversation.md",
@@ -1873,6 +2105,15 @@
       "recipes": []
     },
     {
+      "id": "ability-hold-the-pulse",
+      "source": {
+        "path": "design/cards/hold-the-pulse.md",
+        "sha256": "581a0c07ee34dc190cc427f34004fcfc8447deea950eaf6e9ad6320ae6810052"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
       "id": "ability-hook-and-drive",
       "source": {
         "path": "design/cards/hook-and-drive.md",
@@ -1880,6 +2121,17 @@
       },
       "items": [
         "item-ordinary-melee-weapon"
+      ],
+      "recipes": []
+    },
+    {
+      "id": "ability-hook-with-the-shield",
+      "source": {
+        "path": "design/cards/hook-with-the-shield.md",
+        "sha256": "0ed0fb01e7b46cd3c9415a07a7d933a0a99f96b4e512123cdd3bfac6a821d305"
+      },
+      "items": [
+        "item-ordinary-shield"
       ],
       "recipes": []
     },
@@ -1960,6 +2212,24 @@
       "recipes": []
     },
     {
+      "id": "ability-ironbound-advance",
+      "source": {
+        "path": "design/cards/ironbound-advance.md",
+        "sha256": "edd843dcd800781c3b5a89efdf251bff397ee1036ef67e8bac3f3c7304a952de"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
+      "id": "ability-keep-pressure",
+      "source": {
+        "path": "design/cards/keep-pressure.md",
+        "sha256": "4a5cb0e5b8e46225d24de45ffa44b7d0b219bcff0c7104ddb880d0b5d604a63f"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
       "id": "ability-keep-the-door-closed",
       "source": {
         "path": "design/cards/keep-the-door-closed.md",
@@ -2002,6 +2272,24 @@
       "source": {
         "path": "design/cards/lantern-moths.md",
         "sha256": "4457733faa91fa43e7070df559eb58dc2d20c46640531e007f5a22d44cfccdea"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
+      "id": "ability-last-light-of-the-watch",
+      "source": {
+        "path": "design/cards/last-light-of-the-watch.md",
+        "sha256": "79ee2d0da447a6a9b2c8092c76609d601ac87c4299abc4330f9d6d258ba69521"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
+      "id": "ability-lend-your-eyes",
+      "source": {
+        "path": "design/cards/lend-your-eyes.md",
+        "sha256": "ed6353cfbec2abc1a108b792f4f12ed8143b3307c9d72fdc7c93721b6ae3a22a"
       },
       "items": [],
       "recipes": []
@@ -2090,6 +2378,15 @@
       "items": [
         "item-ordinary-melee-weapon"
       ],
+      "recipes": []
+    },
+    {
+      "id": "ability-name-what-is-real",
+      "source": {
+        "path": "design/cards/name-what-is-real.md",
+        "sha256": "a55927e367205aea522dd30f392d881e0817ed72efa87aba7c3f8d3da5a27747"
+      },
+      "items": [],
       "recipes": []
     },
     {
@@ -2215,10 +2512,28 @@
       "recipes": []
     },
     {
+      "id": "ability-play-it-off",
+      "source": {
+        "path": "design/cards/play-it-off.md",
+        "sha256": "e09905b40ad1f981f755b84d615df93be9c847435a1f6faf203f12cfd7c4872e"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
       "id": "ability-pounce-of-the-red-claw",
       "source": {
         "path": "design/cards/pounce-of-the-red-claw.md",
         "sha256": "2977ef9d8d7fcf90f95f3aaa2b3da690d6b896ac6fbf772ff12a3c669e4f1365"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
+      "id": "ability-press-and-bind",
+      "source": {
+        "path": "design/cards/press-and-bind.md",
+        "sha256": "cd69ad716d254041b9baab46585e1772816ecd51b11348a46c2f5d823ebefa93"
       },
       "items": [],
       "recipes": []
@@ -2237,6 +2552,15 @@
       "source": {
         "path": "design/cards/quick-exit.md",
         "sha256": "de2be8860e513b6680455d204aee3e2b3df265a887cf7f74b28d0c7060caee6f"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
+      "id": "ability-quiet-conference",
+      "source": {
+        "path": "design/cards/quiet-conference.md",
+        "sha256": "2805e4f8df2a44136a562492d5cf106970611d9aed54c8e486dfd76eeeb4cafc"
       },
       "items": [],
       "recipes": []
@@ -2296,6 +2620,33 @@
       "source": {
         "path": "design/cards/read-the-remains.md",
         "sha256": "fdf19e8fefc9728058f6e4d3f5b4fd4126e31f01d63de3b296506379bd32d7e0"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
+      "id": "ability-read-the-ward",
+      "source": {
+        "path": "design/cards/read-the-ward.md",
+        "sha256": "fd13c8645ac6b5b805b8517ef0012e6f0751ec51c99a16d5c1b47d94be7da66f"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
+      "id": "ability-recall-the-shape",
+      "source": {
+        "path": "design/cards/recall-the-shape.md",
+        "sha256": "6091eeea213faef9406d3c6f6e8128156584a41b2b22286504def7ad1ae3a9e5"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
+      "id": "ability-recast-the-footprint",
+      "source": {
+        "path": "design/cards/recast-the-footprint.md",
+        "sha256": "f50a7457b3ee1f667acff19ad9d538b1df5b0f41d31eda5c3f4f1e74fefa4729"
       },
       "items": [],
       "recipes": []
@@ -2373,10 +2724,57 @@
       "recipes": []
     },
     {
+      "id": "ability-ride-the-furnace-breath",
+      "source": {
+        "path": "design/cards/ride-the-furnace-breath.md",
+        "sha256": "51278eea7b967ed5359c55e256dfa08006141fa2c3ebc8c1b30fd053b8a5d38a"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
+      "id": "ability-rim-strike",
+      "source": {
+        "path": "design/cards/rim-strike.md",
+        "sha256": "7ff171ab7e17cf11613d965493ffce975f211713bf83c893ac640caf7cc7e42f"
+      },
+      "items": [
+        "item-ordinary-shield"
+      ],
+      "recipes": []
+    },
+    {
+      "id": "ability-rime-footholds",
+      "source": {
+        "path": "design/cards/rime-footholds.md",
+        "sha256": "111f32932e06f342cc2974f1226246523e2ccc1d23daaaceb6f731dbc647be7d"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
       "id": "ability-rime-grip",
       "source": {
         "path": "design/cards/rime-grip.md",
         "sha256": "54f3135b07eec6f150fbe4217cdbcd8f179cc3b9f9c297919cae083e9640c241"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
+      "id": "ability-road-of-dawn",
+      "source": {
+        "path": "design/cards/road-of-dawn.md",
+        "sha256": "b275b5877fe562b74244c7393f7adf50e3a74784d774e6060e1c91e1d67af496"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
+      "id": "ability-road-of-rime",
+      "source": {
+        "path": "design/cards/road-of-rime.md",
+        "sha256": "7e935d20efe2d5d28528695aa544a0547e84a72e6fe6706bfd933770fddfeffa"
       },
       "items": [],
       "recipes": []
@@ -2454,6 +2852,17 @@
       "recipes": []
     },
     {
+      "id": "ability-set-the-wedge",
+      "source": {
+        "path": "design/cards/set-the-wedge.md",
+        "sha256": "aac44ccc004c848d852828daef1a7cb85d90db6d452417729d4d44c5b29bd2bb"
+      },
+      "items": [
+        "item-lever-and-wedges"
+      ],
+      "recipes": []
+    },
+    {
       "id": "ability-sever-the-pursuit",
       "source": {
         "path": "design/cards/sever-the-pursuit.md",
@@ -2466,6 +2875,15 @@
       "recipes": []
     },
     {
+      "id": "ability-shade-the-eyes",
+      "source": {
+        "path": "design/cards/shade-the-eyes.md",
+        "sha256": "24cd9c9a6e949c1b15c78dc753e58bcdc9e0193faa02c396fe8f70541c952d51"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
       "id": "ability-shared-breath",
       "source": {
         "path": "design/cards/shared-breath.md",
@@ -2475,12 +2893,45 @@
       "recipes": []
     },
     {
+      "id": "ability-shatterguard",
+      "source": {
+        "path": "design/cards/shatterguard.md",
+        "sha256": "65bbc7e34d994c89767f5eb5fc0d5e130f7aa64d0e4ba7b96b1e652e346dc5a8"
+      },
+      "items": [
+        "item-ordinary-shield"
+      ],
+      "recipes": []
+    },
+    {
       "id": "ability-shield-block",
       "source": {
         "path": "design/cards/shield-block.md",
         "sha256": "bd890d5b177b2c0eded18b75901adba56c0162c25f7f6a4710298cd662421e94"
       },
       "items": [],
+      "recipes": []
+    },
+    {
+      "id": "ability-shield-roof",
+      "source": {
+        "path": "design/cards/shield-roof.md",
+        "sha256": "f4798be2434fd0e8bce5da3cbd94af385e44d03248cb4595c488371b3983b7c9"
+      },
+      "items": [
+        "item-ordinary-shield"
+      ],
+      "recipes": []
+    },
+    {
+      "id": "ability-shielded-advance",
+      "source": {
+        "path": "design/cards/shielded-advance.md",
+        "sha256": "b67cc92c5940931e525ca1775f4b01d50df3c4268bae47af3609bcaa69cec4ef"
+      },
+      "items": [
+        "item-ordinary-shield"
+      ],
       "recipes": []
     },
     {
@@ -3332,6 +3783,24 @@
       "recipes": []
     },
     {
+      "id": "ability-silent-cue",
+      "source": {
+        "path": "design/cards/silent-cue.md",
+        "sha256": "ccf5656765a48e583eaf18ab3e16102db3d42f219f3ee6702bbc7894bd9e3714"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
+      "id": "ability-slip-the-closing-door",
+      "source": {
+        "path": "design/cards/slip-the-closing-door.md",
+        "sha256": "644baeea5ca803101bc3fde7fe006e6e1ba23cc9386fed27a57ff1c3803c8f61"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
       "id": "ability-smile-before-steel",
       "source": {
         "path": "design/cards/smile-before-steel.md",
@@ -3366,10 +3835,30 @@
       "recipes": []
     },
     {
+      "id": "ability-snare-the-missile",
+      "source": {
+        "path": "design/cards/snare-the-missile.md",
+        "sha256": "7cf8c76643b934e75974edc02f9e278e908bb2338e10e9f4425a82c25f65872a"
+      },
+      "items": [
+        "item-craft-tools"
+      ],
+      "recipes": []
+    },
+    {
       "id": "ability-speak-with-the-hearth",
       "source": {
         "path": "design/cards/speak-with-the-hearth.md",
         "sha256": "77cd73e470620ca778387397428cba4b697eec65ef15ecf9cd8c7145e00786fc"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
+      "id": "ability-spot-the-tell",
+      "source": {
+        "path": "design/cards/spot-the-tell.md",
+        "sha256": "b50e3ff2e9e2853030d50e6fb7d3093c22e8e386a766ce2141190548ba2b3d87"
       },
       "items": [],
       "recipes": []
@@ -3402,6 +3891,26 @@
       "recipes": []
     },
     {
+      "id": "ability-stay-with-my-voice",
+      "source": {
+        "path": "design/cards/stay-with-my-voice.md",
+        "sha256": "d63a588e2e1c5b943a722a76c3919251b10fc9e8ff58e32700a075495286ee8b"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
+      "id": "ability-steel-at-the-wrist",
+      "source": {
+        "path": "design/cards/steel-at-the-wrist.md",
+        "sha256": "c6c0a8951be457f96d8099cf99d240ed55412f496956a2fe08587ffca8a2e885"
+      },
+      "items": [
+        "item-ordinary-melee-weapon"
+      ],
+      "recipes": []
+    },
+    {
       "id": "ability-step-between-lanterns",
       "source": {
         "path": "design/cards/step-between-lanterns.md",
@@ -3415,6 +3924,15 @@
       "source": {
         "path": "design/cards/step-through-the-spark.md",
         "sha256": "ed65d646d69ed79720eae6b575bf66c48bf5989e5c5fb4b3231346d42fe17787"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
+      "id": "ability-still-the-avalanche",
+      "source": {
+        "path": "design/cards/still-the-avalanche.md",
+        "sha256": "b8ebfc3ffee8db6dad0122394aff93d8e799c0170b8c884660ce9958beef9732"
       },
       "items": [],
       "recipes": []
@@ -3686,6 +4204,15 @@
       "recipes": []
     },
     {
+      "id": "ability-the-forest-takes-the-blow",
+      "source": {
+        "path": "design/cards/the-forest-takes-the-blow.md",
+        "sha256": "2adada2424f28f01190682d9525211cc026d0bb57ea9b9ddc9afb563d6f7e417"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
       "id": "ability-the-grove-gives-back",
       "source": {
         "path": "design/cards/the-grove-gives-back.md",
@@ -3842,6 +4369,15 @@
       "recipes": []
     },
     {
+      "id": "ability-thought-before-the-blow",
+      "source": {
+        "path": "design/cards/thought-before-the-blow.md",
+        "sha256": "07d814715c441190e7c7959fefb703b18d312b6d2c3c2df4b6ec6be55ba66dce"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
       "id": "ability-through-the-spearpoints",
       "source": {
         "path": "design/cards/through-the-spearpoints.md",
@@ -3962,6 +4498,15 @@
       "recipes": []
     },
     {
+      "id": "ability-turn-the-fall",
+      "source": {
+        "path": "design/cards/turn-the-fall.md",
+        "sha256": "f879e130ed1ba17bb6ec0b409e1a112ec4ad1662ac7fdb62e235ad1356d67a7e"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
       "id": "ability-turn-the-river",
       "source": {
         "path": "design/cards/turn-the-river.md",
@@ -4029,6 +4574,15 @@
       "source": {
         "path": "design/cards/wake-the-iron-rune.md",
         "sha256": "61702aaa00d75f2f852b13e9b285becb9bd9a1f0d63c355442eb20f74ac98230"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
+      "id": "ability-wake-the-nerves",
+      "source": {
+        "path": "design/cards/wake-the-nerves.md",
+        "sha256": "8c4fe28c1fa7464013e067871a5b8e19474328b68b95706953b9a8af7f0b1b66"
       },
       "items": [],
       "recipes": []
@@ -4121,6 +4675,24 @@
       "recipes": []
     },
     {
+      "id": "ability-whiteout",
+      "source": {
+        "path": "design/cards/whiteout.md",
+        "sha256": "0bc437958b1af9c8e3218f1a9bf8ec4760e501b382ddde3d4b379392c0955042"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
+      "id": "ability-wind-the-sight",
+      "source": {
+        "path": "design/cards/wind-the-sight.md",
+        "sha256": "e18bfb5b553db617c0a5a33e23dc7e1b72eda316272c71cea148afbbcae9a53f"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
       "id": "ability-wings-over-the-battle",
       "source": {
         "path": "design/cards/wings-over-the-battle.md",
@@ -4134,6 +4706,15 @@
       "source": {
         "path": "design/cards/winter-hold.md",
         "sha256": "17481b4f9adb0404e9e15112cc31c8fb27a2a956ff20da10b77436cc0edc334d"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
+      "id": "ability-winter-store",
+      "source": {
+        "path": "design/cards/winter-store.md",
+        "sha256": "7b59b3dbaff001e39ab66364990b06bf732bd9d13fea7d9fe37c413c4a4536e3"
       },
       "items": [],
       "recipes": []

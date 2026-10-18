@@ -33,3 +33,17 @@ test("DA NPC attack entry uses unique roster identity rather than selected turn"
   game.user.isGM = false;
   await assert.rejects(declareNpcMelee(actor), /DA declares/);
 });
+
+
+test("potion entry retains encounter mode off turn and rejects ambiguous identity", async () => {
+  const { potionCombatContext } = await import("../src/services/potions.mjs");
+  const actor = { uuid: "Actor.hero" }, participant = { id: "hero", actor };
+  const encounter = { current: "other", budgets: { hero: { remaining: { maneuver: 0 } } } };
+  const combat = { active: true, combatants: [participant], getFlag: () => encounter };
+  globalThis.game = { combats: { contents: [combat] } };
+  assert.deepEqual(potionCombatContext({ actor }), { combat, combatant: participant, encounter });
+  game.combats.contents.push(combat);
+  assert.throws(() => potionCombatContext({ actor }), /unique participant/);
+  game.combats.contents = [combat]; delete encounter.budgets.hero;
+  assert.throws(() => potionCombatContext({ actor }), /budget is unavailable/);
+});

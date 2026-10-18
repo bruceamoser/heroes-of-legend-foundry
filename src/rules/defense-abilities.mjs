@@ -1,6 +1,6 @@
 const blocker = {
   defend: {
-    ownTurn: "Defend can be used only on the defender's own turn.",
+    ownTurn: "Outside the defender's own turn.",
     maneuver: "No Maneuver remains for Defend.",
   },
   "shield-block": {

@@ -728,7 +728,7 @@ async function waitSupplyRolling(scenario, expectedHp) {
   );
 }
 
-try {
+potionScenarios: try {
   gm = await join("Gamemaster");
   await bind(gm);
   authorityBound = true;
@@ -942,6 +942,17 @@ try {
     await combatRequest("finish");
   }
   await combatRequest("choose", { id: first.giverParticipantId });
+  if (process.env.HOL_TEST_ADVISORY_ONLY === "1") {
+    await gm.page.evaluate(async f => {
+      const combat = game.combats.get(f.combat), state = foundry.utils.deepClone(combat.getFlag("heroes-of-legend", "encounter"));
+      state.current = f.recipientParticipantId;
+      state.budgets[f.giverParticipantId].remaining.maneuver = 0;
+      state.budgets[f.recipientParticipantId].remaining.reaction = 0;
+      await combat.setFlag("heroes-of-legend", "encounter", state);
+    }, first);
+    await giver.page.waitForFunction(f => game.combats.get(f.combat)?.getFlag("heroes-of-legend", "encounter")?.current === f.recipientParticipantId, first);
+  }
+
   await gm.page.evaluate(async ({ giverActorUuid, abilityId }) => {
     canvas.tokens.setTargets([]);
     const { openPotionPreparation } = await import(
@@ -1112,6 +1123,14 @@ try {
   }, first);
   assert.equal(replay.replay, true);
   console.info("PASS native UI, two-owner consent, geometry, costs and completed replay");
+  if (process.env.HOL_TEST_ADVISORY_ONLY === "1") {
+    assert.equal(other.operation.giver.actionReceipt.trackedCost.spent, 0);
+    assert.equal(other.operation.recipient.reactionReceipt.trackedCost.spent, 0);
+    assert.deepEqual(errors, []);
+    console.info("PASS: native owner potion entry off turn with empty Maneuver and recipient Reaction; owner consent, real healing and supply exactly once, clamped counters and transport replay retained.");
+    break potionScenarios;
+  }
+
 
   await gm.page.evaluate(() => {
     if (globalThis.__holPotionRollPatch) return;

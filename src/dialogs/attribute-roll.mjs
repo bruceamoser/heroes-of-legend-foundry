@@ -342,7 +342,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       this.notice =
         status.status === "complete"
           ? `${item.name} activated. Roll sources refreshed.`
-          : `${item.name} could not continue; its declared cost remains spent.`;
+          : `${item.name} could not continue; its declared cost remains recorded.`;
     } catch (e) {
       this.notice = e.message;
       ui.notifications.error(e.message);

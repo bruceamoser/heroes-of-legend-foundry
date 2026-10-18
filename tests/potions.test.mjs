@@ -554,7 +554,7 @@ test("prior declaration stays recorded while an exhausted maneuver gives guidanc
   assert.equal(advised5.giverTurn.remaining.maneuver, 0);
 });
 
-test("self use rejects mismatched identities, health snapshots and zero-HP givers", () => {
+test("self use preserves coherent identity and permits unconscious giver adjudication", () => {
   assert.throws(
     () =>
       planHealingPotion(
@@ -582,27 +582,25 @@ test("self use rejects mismatched identities, health snapshots and zero-HP giver
     /coherent.*snapshot/,
   );
   const unconscious = dying();
-  assert.throws(
-    () =>
-      planHealingPotion(
-        base({
-          giver: {
-            actorId: "actor-giver",
-            ownTurn: true,
-            turn: turn(),
-            items: freeHand,
-            survival: unconscious,
-            conditions: {},
-          },
-          recipient: {
-            actorId: "actor-giver",
-            survival: unconscious,
-            conditions: {},
-          },
-        }),
-      ),
-    /zero-HP giver is unconscious/,
+  const advised = planHealingPotion(
+    base({
+      giver: {
+        actorId: "actor-giver",
+        ownTurn: true,
+        turn: turn(),
+        items: freeHand,
+        survival: unconscious,
+        conditions: { unconscious: true },
+      },
+      recipient: {
+        actorId: "actor-giver",
+        survival: unconscious,
+        conditions: {},
+      },
+    }),
   );
+  assert.equal(advised.status, "ready");
+  assert.match(advised.giverTurn.operations["potion-use"].audit.exceptions.join(" "), /condition/i);
 });
 
 test("giver own-turn status is explicit and becomes action guidance", () => {

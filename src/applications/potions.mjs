@@ -268,12 +268,13 @@ export class PotionPreparation extends foundry.applications.api.HandlebarsApplic
     );
     this.setText(
       "hands",
-      preview.outsideCombat ? "Outside encounter" : "1 Maneuver",
+      preview.outsideCombat ? "Outside encounter" :
+        `1 Maneuver${preview.maneuverRemaining === 0 ? " · none tracked remaining" : ""}${preview.giverOwnTurn ? "" : " · outside selected turn"}`,
     );
     this.setText(
       "reaction",
       preview.reactionRequired
-        ? "Recipient: 1 Reaction"
+        ? `Recipient: 1 Reaction${preview.reactionAvailable ? "" : " · none tracked remaining"}`
         : "",
     );
     this.setText(

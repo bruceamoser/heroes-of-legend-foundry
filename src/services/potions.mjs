@@ -200,19 +200,19 @@ export function potionCombatContext(sourceItem) {
       .filter(
         (combatant) =>
           combatant.actor?.uuid === actor.uuid &&
-          encounter?.current === combatant.id,
+          Boolean(encounter?.budgets?.[combatant.id]),
       )
       .map((combatant) => ({ combat, combatant, encounter }));
   });
   if (!matches.length) {
     if (game.combats.contents.some((combat) => combat.active !== false && combat.getFlag(ID, "encounter") &&
         combat.combatants.some((participant) => participant.actor?.uuid === actor.uuid)))
-      throw new Error("This character is in an encounter. Select their turn to use its action budget.");
+      throw new Error("This character's encounter action budget is unavailable.");
     return { combat: null, combatant: null, encounter: null };
   }
   if (matches.length !== 1)
     throw new Error(
-      "Select this character's turn in exactly one encounter before using a potion.",
+      "This character must have a unique participant in one active encounter.",
     );
   return matches[0];
 }
@@ -340,6 +340,7 @@ function plannerInputs({
   willing = true,
   capable,
   encounter = true,
+  ownTurn = true,
 }) {
   return {
     operationId,
@@ -347,7 +348,7 @@ function plannerInputs({
     advisoryGeometry: true,
     giver: {
       actorId: giverBasis.actorUuid,
-      ownTurn: encounter,
+      ownTurn,
       turn: clone(turn),
       items: clone(giverBasis.items),
       handCapacity: giverBasis.handCapacity,
@@ -405,8 +406,8 @@ export async function previewPotionUse({
     recipientCombatant = combat ? combat.combatants.get(recipientId) : free.recipient,
     giverBudget = encounter?.budgets?.[participantId] ?? null,
     recipientBudget = encounter?.budgets?.[recipientId] ?? null;
-  if (combat && (combat.active === false || encounter?.current !== participantId || !giverBudget || !recipientCombatant || !recipientBudget))
-    throw new Error("Both potion participants need active encounter budgets and the giver must have the current turn.");
+  if (combat && (combat.active === false || !giverBudget || !recipientCombatant || !recipientBudget))
+    throw new Error("Both potion participants need active encounter budgets.");
   const recipientActor = assertWorldActor(
       recipientCombatant.actor,
       "Potion recipient",
@@ -459,6 +460,7 @@ export async function previewPotionUse({
               inventoryDie: bottle.system.inventoryDie,
               ...plannerInputs({
                 encounter: Boolean(combat),
+                ownTurn: !combat || encounter.current === participantId,
                 operationId: "potion_preview",
                 giverBasis,
                 recipientBasis,
@@ -986,7 +988,7 @@ async function createOperation(message, request) {
     recipientCombatant?.actor?.uuid !== recipient.uuid ||
     sourceItem?.actor?.uuid !== giver.uuid ||
     bottle?.actor?.uuid !== giver.uuid ||
-    (!request.outsideCombat && (combat.active === false || state?.current !== giverCombatant.id ||
+    (!request.outsideCombat && (combat.active === false ||
     request.revision !== state.revision)) ||
     (request.recipientTokenUuid &&
       recipientCombatant.token?.uuid !== request.recipientTokenUuid)
@@ -1038,6 +1040,7 @@ async function createOperation(message, request) {
       inventoryDie: bottle.system.inventoryDie,
       ...plannerInputs({
         encounter: !request.outsideCombat,
+        ownTurn: request.outsideCombat || state.current === giverCombatant.id,
         operationId: message.id,
         giverBasis,
         recipientBasis,
@@ -1800,17 +1803,17 @@ async function presentPotionResult(combat, operation, message) {
     const reconciliation =
       latest.reconciliation?.disposition?.choice === "cancel-remaining";
     content = reconciliation
-      ? `${escaped(latest.bottleBasis.item.name)} was cancelled before healing after a source reconciliation. No healing or supply check occurred; already declared action costs remain spent.${latest.reconciliation.disposition.reason ? ` Note: ${escaped(latest.reconciliation.disposition.reason)}.` : ""}`
-      : `${escaped(latest.bottleBasis.item.name)} use interrupted before healing. One Maneuver remains spent; no Reaction, healing or supply check occurred.`;
+      ? `${escaped(latest.bottleBasis.item.name)} was cancelled before healing after a source reconciliation. No healing or supply check occurred; already declared action costs remain recorded.${latest.reconciliation.disposition.reason ? ` Note: ${escaped(latest.reconciliation.disposition.reason)}.` : ""}`
+      : `${escaped(latest.bottleBasis.item.name)} use interrupted before healing. The Maneuver remains recorded; no Reaction, healing or supply check occurred.`;
   } else {
     const healing = recipientReceipt?.healing ?? latest.plan.healing,
       supply = supplyReceipt?.result,
       reaction = latest.plan.costs.recipient.reaction
-        ? "recipient Reaction spent"
+        ? "recipient Reaction tracked"
         : latest.recipient.basis.hp === 0
           ? "recipient at 0 HP pays no Reaction"
           : "self use requires no recipient Reaction";
-    content = `${escaped(latest.bottleBasis.item.name)}: ${escaped(latest.giver.basis.actorName)} restored ${healing.restored} HP to ${escaped(latest.recipient.basis.actorName)} after Life resistance ${healing.resistance}; HP ${latest.recipient.basis.hp} → ${recipientReceipt?.after?.hp ?? latest.plan.recipientSurvival.hp}. ${latest.outsideCombat ? "Outside encounter; no action budget charged" : `One giver Maneuver spent; ${reaction}`}. Supply d${supply?.before ?? latest.plan.inventory.die} → ${supply ? (supply.after ? `d${supply.after}` : "out") : "reconciled"}; the check occurred after healing.`;
+    content = `${escaped(latest.bottleBasis.item.name)}: ${escaped(latest.giver.basis.actorName)} restored ${healing.restored} HP to ${escaped(latest.recipient.basis.actorName)} after Life resistance ${healing.resistance}; HP ${latest.recipient.basis.hp} → ${recipientReceipt?.after?.hp ?? latest.plan.recipientSurvival.hp}. ${latest.outsideCombat ? "Outside encounter; no action budget charged" : `Giver Maneuver tracked; ${reaction}`}. Supply d${supply?.before ?? latest.plan.inventory.die} → ${supply ? (supply.after ? `d${supply.after}` : "out") : "reconciled"}; the check occurred after healing.`;
     if (supplyOperation?.nativeRoll) {
       const roll = rollFromJson(supplyOperation.nativeRoll);
       if (roll) rolls = [roll];

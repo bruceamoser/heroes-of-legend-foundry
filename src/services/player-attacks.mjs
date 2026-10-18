@@ -804,7 +804,7 @@ async function loadCommittedRequest(operation, message) {
   delete frozenBasis.geometry;
   if (!basicMeleeRequestMatches(currentFrozen, frozenBasis))
     throw new Error(
-      "The weapon, target, roll sources or adjacency changed. The declared Main remains spent.",
+      "The weapon, target, roll sources or adjacency changed. The declared Main remains recorded.",
     );
   // The table may proceed despite the recorded geometry hint.
   return {

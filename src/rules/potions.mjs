@@ -178,8 +178,6 @@ export function planHealingPotion({
   usableSurvival(recipient.survival, "The recipient");
   boolean(giver.ownTurn, "Giver own-turn status");
   boolean(capable, "Interruption capability");
-  if (giver.survival.hp === 0)
-    throw new Error("A zero-HP giver is unconscious and cannot use a potion.");
   if (relation === "self") {
     if (giver.actorId !== recipient.actorId)
       throw new Error("A self recipient must be the giver.");

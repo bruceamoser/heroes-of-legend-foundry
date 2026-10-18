@@ -635,7 +635,7 @@ async function apply(id, combatUuid) {
     operation.reusedBenefit && operation.status === "complete"
       ? "Existing defense benefit reused; no additional action charged."
       : operation.status === "interrupted"
-      ? `The action could not continue. Its declared ${definition?.category ?? "action"} remains spent.`
+      ? `The action could not continue. Its declared ${definition?.category ?? "action"} remains recorded.`
       : operation.handler === "defend-v1"
         ? "Defend: Maneuver tracked. Gain one defense Boon until the start of your next turn; repeating the benefit does not increase it."
         : "Shield Block: Reaction tracked. Gain one defense Boon against eligible blockable defenses until the start of your next turn while using the selected held shield; repeating the benefit does not increase it.";

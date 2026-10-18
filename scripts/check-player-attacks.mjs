@@ -68,18 +68,20 @@ async function initializeCleanupRegistry() {
 }
 
 async function assertCoordinatorUnbound() {
-  const current = await gm.page.evaluate(() => {
+  const current = await gm.page.evaluate(async () => {
+    const { isCreationAuthority } = await import("/systems/heroes-of-legend/services/authority.mjs");
     const ID = "heroes-of-legend";
     return {
+      own: isCreationAuthority(),
       client: game.settings.get(ID, "creationAuthorityClient"),
       meta: game.settings.get(ID, "authorityMeta"),
       work: game.settings.get(ID, "authorityWork"),
     };
   });
   if (
-    current.client ||
+    !current.own && (current.client ||
     Object.keys(current.meta ?? {}).length ||
-    Object.keys(current.work ?? {}).length
+    Object.keys(current.work ?? {}).length)
   )
     throw new Error(
       "The disposable world coordinator is already bound. Release it before running this fixture.",
@@ -798,6 +800,17 @@ try {
     wounds: 2,
   });
   await activateScenario(woundScenario);
+  if (process.env.HOL_TEST_ADVISORY_ONLY === "1") {
+    await gm.page.evaluate(async fixture => {
+      const combat = game.combats.get(fixture.combat), state = foundry.utils.deepClone(combat.getFlag("heroes-of-legend", "encounter"));
+      const token = await fromUuid(fixture.targetTokenUuid);
+      const [other] = await combat.createEmbeddedDocuments("Combatant", [{actorId:token.actor.id,tokenId:token.id,sceneId:token.parent.id}]);
+      state.current = other.id;
+      state.budgets[fixture.participant].remaining.main = 0;
+      await combat.setFlag("heroes-of-legend", "encounter", state);
+    }, woundScenario);
+  }
+
   const referenceItem = await gm.page.evaluate(async fixture => {
     const pack = game.packs.get("heroes-of-legend.abilities");
     const index = await pack.getIndex();
@@ -922,6 +935,10 @@ try {
   await woundDialog.getByRole("checkbox", { name: "Winter Hold", exact: true }).check();
   assert.equal(await woundDialog.locator("output").innerText(), referenceFormula);
   await woundDialog.screenshot({ path: "test-results/player-attack-reference-selection.png" });
+  if (process.env.HOL_TEST_ADVISORY_ONLY === "1") {
+    assert.match(await woundDialog.innerText(), /No main|own turn|selected turn/i);
+    await woundDialog.screenshot({ path: "test-results/advisory-player-attack.png" });
+  }
   await woundAttack.click();
   const woundAttackId = await waitForAttackCard(woundScenario);
   const woundResult = await gm.page.evaluate(
@@ -957,6 +974,31 @@ try {
   assert.deepEqual(woundResult.woundAmounts, [2]);
   assert.deepEqual(woundResult.referenceIds, [referenceItem.id]);
   assert.equal(woundResult.references[0].itemUuid, referenceItem.uuid);
+  if (process.env.HOL_TEST_ADVISORY_ONLY === "1") {
+    assert.equal(await mainState(woundScenario), 0);
+    const outcome = await gm.page.evaluate(async ({fixture,id}) => {
+      const combat = game.combats.get(fixture.combat), before = JSON.stringify(combat.getFlag("heroes-of-legend", "encounter"));
+      const { resolvePlayerBasicMeleeRequest } = await import("/systems/heroes-of-legend/services/player-attacks.mjs");
+      const result = await resolvePlayerBasicMeleeRequest(id);
+      return { replay: result.replay, unchanged: before === JSON.stringify(combat.getFlag("heroes-of-legend", "encounter")) };
+    }, {fixture:woundScenario,id:woundAttackId});
+    assert.equal(outcome.replay, true); assert.equal(outcome.unchanged, true);
+    await player.page.evaluate(async fixture => {
+      const { EquipmentPanel } = await import("/systems/heroes-of-legend/applications/equipment.mjs");
+      await new EquipmentPanel(await fromUuid(fixture.attackerActorUuid)).render({force:true});
+    }, woundScenario);
+    const equipment = player.page.locator(".hol-hands");
+    const heldWeapon = equipment.locator(`[data-equipment-id="${woundScenario.weaponId}"] [name=held]`);
+    assert.equal(await heldWeapon.isEnabled(), true);
+    await heldWeapon.uncheck();
+    await equipment.screenshot({path:"test-results/advisory-owner-equipment.png"});
+    await equipment.locator("[data-action=save]").click();
+    await gm.page.waitForFunction(fixture => fromUuidSync(fixture.attackerActorUuid)?.items.get(fixture.weaponId)?.system.held === false, woundScenario);
+    assert.equal(await mainState(woundScenario), 0);
+    assert.deepEqual(errors, []);
+    console.info("PASS: native owner Attack enabled outside selected turn with zero Main Actions; real roll, clamped counter, exact operation replay, target/slider/reference retained.");
+    break referenceAcceptance;
+  }
   if (process.env.HOL_TEST_REFERENCE_ONLY === "1") {
     assert.deepEqual(errors, []);
     console.info("PASS: native player Attack reference selection reaches authoritative snapshot unchanged in dice; native target/slider, single weapon, wound refresh and exact cleanup retained.");
@@ -2054,6 +2096,7 @@ try {
       .slice(1)
       .join("\n")}`;
   }
+  console.error(error.stack ?? error);
   throw error;
 } finally {
   try {

@@ -620,7 +620,12 @@ settlement and Foundry runtime validation remain subsequent integration work.
 ### Native healing-potion execution (#116)
 
 The reviewed bottle and universal-action routes now open one preparation
-ApplicationV2. It shows the exact live bottle and recipient, fixed 6/10/16
+ApplicationV2. It uses Foundry's native targets: no other target defaults to
+self, exactly one other targeted token selects that exact encounter recipient,
+and multiple other targets show “Use one target.” The recipient is read-only;
+target changes refresh the preview and clear consent/rulings for the previous
+recipient. Optional DA exceptions and interruption controls are collapsed. It
+shows the exact live bottle and recipient, fixed 6/10/16
 healing before Life resistance and its resulting restoration, free hands,
 Maneuver and Reaction costs, and the post-healing d4 supply check. Another
 recipient confirms willingness in chat;

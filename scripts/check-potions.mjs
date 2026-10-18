@@ -944,6 +944,7 @@ try {
   }
   await combatRequest("choose", { id: first.giverParticipantId });
   await gm.page.evaluate(async ({ giverActorUuid, abilityId }) => {
+    canvas.tokens.setTargets([]);
     const { openPotionPreparation } = await import(
       "/systems/heroes-of-legend/applications/potions.mjs"
     );
@@ -952,7 +953,9 @@ try {
   }, first);
   const gmPreparation = gm.page.locator(".hol-potion-preparation");
   await gmPreparation.waitFor();
-  await gmPreparation.locator("[name=recipientParticipantId]").selectOption(first.recipientParticipantId);
+  assert.equal(await gmPreparation.locator("select[name=recipientParticipantId]").count(), 0);
+  assert.match(await gmPreparation.locator('[data-preview="recipient-name"]').textContent(), /self/);
+  await gm.page.evaluate(({ recipientTokenId }) => canvas.tokens.setTargets([recipientTokenId]), first);
   const gmSubmitReady = (ready) => gm.page.waitForFunction((ready) =>
     document.querySelector(".hol-potion-preparation [data-action=submit]")?.disabled === !ready,
     ready,
@@ -962,6 +965,7 @@ try {
   await gmSubmitReady(true);
   await gmPreparation.locator("[name=willing]").uncheck();
   await gmSubmitReady(false);
+  await gmPreparation.locator("[data-panel=da-exceptions] > summary").click();
   await gmPreparation.locator("[name=daWillingnessReason]").fill("Fixture attributed willingness ruling");
   await gmSubmitReady(true);
   await gm.page.evaluate(async ({ sceneId, recipientTokenId }) => {
@@ -975,6 +979,7 @@ try {
   await gm.page.evaluate(async ({ sceneId, recipientTokenId }) => {
     await game.scenes.get(sceneId).tokens.get(recipientTokenId).update({ elevation: 0 });
     await globalThis.__holPotionUi.close();
+    canvas.tokens.setTargets([]);
     delete globalThis.__holPotionUi;
   }, first);
   await giver.page.evaluate(
@@ -994,9 +999,10 @@ try {
     .click();
   const preparation = giver.page.locator(".hol-potion-preparation");
   await preparation.waitFor();
-  await preparation
-    .locator("[name=recipientParticipantId]")
-    .selectOption(first.recipientParticipantId);
+  assert.equal(await preparation.locator("select[name=recipientParticipantId]").count(), 0);
+  await giver.page.evaluate(({ recipientTokenId }) => canvas.tokens.setTargets([recipientTokenId]), first);
+  await giver.page.waitForFunction(() =>
+    document.querySelector('.hol-potion-preparation [data-preview="recipient-name"]')?.textContent === "Potion recipient hero");
   await giver.page.screenshot({ path: "/tmp/hol116-ui-consent.png" });
   await preparation.locator("[data-action=submit]").click();
   await recipient.page.evaluate(() => {

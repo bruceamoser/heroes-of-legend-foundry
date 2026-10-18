@@ -6,12 +6,7 @@ import {
   previewPotionUse,
   requestPotionUse,
 } from "../services/potions.mjs";
-
-function healthLabel(actor) {
-  const hp = actor?.system?.health?.value ?? 0,
-    max = actor?.system?.health?.max ?? actor?.system?.health?.baseMax ?? 0;
-  return `HP ${hp}/${max}`;
-}
+import { selectPotionRecipient } from "../rules/potion-targets.mjs";
 
 async function safePreview(options) {
   try {
@@ -52,6 +47,10 @@ export class PotionPreparation extends foundry.applications.api.HandlebarsApplic
     super();
     this.sourceItem = sourceItem;
     this.bottleItemUuid = bottleItemUuid;
+    this.previewRevision = 0;
+    this.targetHook = Hooks.on("targetToken", (user) => {
+      if (user.id === game.user.id && this.rendered) void this.refreshPreview();
+    });
   }
 
   static DEFAULT_OPTIONS = {
@@ -86,45 +85,23 @@ export class PotionPreparation extends foundry.applications.api.HandlebarsApplic
       selectedBottle =
         bottles.find((item) => item.uuid === this.bottleItemUuid) ??
         bottles[0] ??
-        null,
-      recipients = combat.combatants
-        .filter(
-          (entry) => entry.actor && (!entry.hidden || game.user.isGM),
-        )
-        .map((entry) => ({
-          id: entry.id,
-          name:
-            entry.actor.uuid === this.sourceItem.actor.uuid
-              ? `${entry.name} (self)`
-              : entry.name,
-          actorUuid: entry.actor.uuid,
-          health: healthLabel(entry.actor),
-          self: entry.actor.uuid === this.sourceItem.actor.uuid,
-        }))
-        .sort(
-          (a, b) =>
-            Number(b.self) - Number(a.self) || a.name.localeCompare(b.name),
-        );
+        null;
+    this.combat = combat;
     this.combatUuid = combat.uuid;
     this.giverParticipantId = combatant.id;
-    const initialRecipient = recipients.find((entry) => entry.self) ?? recipients[0],
-      preview = selectedBottle
-        ? await safePreview({
-            sourceItemUuid: this.sourceItem.uuid,
-            bottleItemUuid: selectedBottle.uuid,
-            combatUuid: combat.uuid,
-            giverParticipantId: combatant.id,
-            recipientParticipantId: initialRecipient?.id,
-            continuesAfterInterruption: true,
-          })
-        : { error: "This character has no healing bottle.", canDeclare: false },
-      recipientActor =
-        initialRecipient && (await fromUuid(initialRecipient.actorUuid)),
-      geometry = await geometryPreview(
-        preview,
-        combatant.id,
-        initialRecipient?.id,
-      );
+    const selection = this.recipientSelection(),
+      preview = selection.error
+        ? { error: selection.error, canDeclare: false }
+        : selectedBottle
+          ? await safePreview({
+              sourceItemUuid: this.sourceItem.uuid,
+              bottleItemUuid: selectedBottle.uuid,
+              combatUuid: combat.uuid,
+              giverParticipantId: combatant.id,
+              recipientParticipantId: selection.participantId,
+              continuesAfterInterruption: true,
+            })
+          : { error: "This character has no healing bottle.", canDeclare: false };
     return {
       ...(await super._prepareContext(options)),
       sourceName: this.sourceItem.name,
@@ -141,17 +118,8 @@ export class PotionPreparation extends foundry.applications.api.HandlebarsApplic
       bottlesAvailable: bottles.length > 0,
       sourceIsBottle: this.sourceItem.type === "equipment",
       selectedBottleUuid: selectedBottle?.uuid ?? "",
-      recipients,
-      selectedRecipientId: initialRecipient?.id ?? "",
+      recipientName: selection.name,
       preview,
-      geometry,
-      canAttestWillingness: Boolean(
-        recipientActor?.testUserPermission(game.user, "OWNER") ||
-          game.user.isGM,
-      ),
-      ownsRecipient: Boolean(
-        recipientActor?.testUserPermission(game.user, "OWNER"),
-      ),
     };
   }
 
@@ -172,16 +140,32 @@ export class PotionPreparation extends foundry.applications.api.HandlebarsApplic
       this.element
         .querySelector(selector)
         ?.addEventListener("input", () => void this.refreshPreview());
-    this.element
-      .querySelector("[name=recipientParticipantId]")
-      ?.addEventListener("change", () => {
-        const willing = this.element.querySelector("[name=willing]"),
-          geometry = this.element.querySelector("[name=geometryReason]");
-        if (willing) willing.checked = false;
-        if (geometry) geometry.value = "";
-        void this.refreshPreview();
-      });
     await this.refreshPreview();
+  }
+
+  async _onClose(options) {
+    Hooks.off("targetToken", this.targetHook);
+    this.previewRevision++;
+    return super._onClose(options);
+  }
+
+  recipientSelection() {
+    const giver = this.combat.combatants.get(this.giverParticipantId);
+    if (!giver?.actor)
+      return { participantId: null, name: "Unavailable", error: "The giver is no longer in this encounter." };
+    return selectPotionRecipient({
+      giver: { id: giver.id, actorUuid: giver.actor.uuid, name: giver.name },
+      participants: this.combat.combatants
+        .filter((entry) => entry.actor && (!entry.hidden || game.user.isGM))
+        .map((entry) => ({
+          id: entry.id, name: entry.name, actorUuid: entry.actor.uuid,
+          tokenUuid: entry.token?.uuid ?? null,
+        })),
+      targets: [...game.user.targets].map((target) => {
+        const token = target.document ?? target;
+        return { tokenUuid: token.uuid, actorUuid: token.actor?.uuid ?? null };
+      }),
+    });
   }
 
   values() {
@@ -189,8 +173,7 @@ export class PotionPreparation extends foundry.applications.api.HandlebarsApplic
       bottleItemUuid:
         this.element.querySelector("[name=bottleUuid]")?.value ||
         this.sourceItem.uuid,
-      recipientParticipantId:
-        this.element.querySelector("[name=recipientParticipantId]")?.value,
+      recipientParticipantId: this.recipientSelection().participantId,
       continuesAfterInterruption:
         this.element.querySelector("[name=interruption]")?.value === "continue",
       willing:
@@ -209,22 +192,41 @@ export class PotionPreparation extends foundry.applications.api.HandlebarsApplic
   }
 
   async refreshPreview() {
+    const revision = ++this.previewRevision,
+      selection = this.recipientSelection(),
+      submitButton = this.element.querySelector("[data-action=submit]");
+    if (submitButton) submitButton.disabled = true;
+    this.currentPreview = null;
+    if (this.recipientParticipantId !== selection.participantId) {
+      for (const name of ["willing", "geometryReason", "daWillingnessReason"]) {
+        const input = this.element.querySelector(`[name=${name}]`);
+        if (input?.type === "checkbox") input.checked = false;
+        else if (input) input.value = "";
+      }
+      this.recipientParticipantId = selection.participantId;
+    }
     const values = this.values(),
-      preview = await safePreview({
-        sourceItemUuid: this.sourceItem.uuid,
-        bottleItemUuid: values.bottleItemUuid,
-        combatUuid: this.combatUuid,
-        giverParticipantId: this.giverParticipantId,
-        recipientParticipantId: values.recipientParticipantId,
-        continuesAfterInterruption: values.continuesAfterInterruption,
-      }),
+      preview = selection.error
+        ? { error: selection.error, canDeclare: false }
+        : await safePreview({
+            sourceItemUuid: this.sourceItem.uuid,
+            bottleItemUuid: values.bottleItemUuid,
+            combatUuid: this.combatUuid,
+            giverParticipantId: this.giverParticipantId,
+            recipientParticipantId: values.recipientParticipantId,
+            continuesAfterInterruption: values.continuesAfterInterruption,
+          }),
       geometry = await geometryPreview(
         preview,
         this.giverParticipantId,
         values.recipientParticipantId,
       );
+    const recipient = preview.recipientActorUuid
+      ? await fromUuid(preview.recipientActorUuid) : null;
+    if (revision !== this.previewRevision) return false;
     this.currentPreview = preview;
     this.currentGeometry = geometry;
+    this.setText("recipient-name", selection.name);
     const healing = preview.healing,
       conditionLabels = preview.conditions
         ? Object.entries(preview.conditions)
@@ -279,10 +281,7 @@ export class PotionPreparation extends foundry.applications.api.HandlebarsApplic
         ? "A recipient must be adjacent before this use can be submitted."
         : "");
     this.setText("error", error);
-    const recipient = preview.recipientActorUuid
-        ? await fromUuid(preview.recipientActorUuid)
-        : null,
-      ownsRecipient = recipient?.testUserPermission(game.user, "OWNER"),
+    const ownsRecipient = recipient?.testUserPermission(game.user, "OWNER"),
       willingnessReady =
         preview.relation === "self" ||
         (!ownsRecipient && !game.user.isGM) ||
@@ -291,6 +290,8 @@ export class PotionPreparation extends foundry.applications.api.HandlebarsApplic
       willingPanel = this.element.querySelector("[data-panel=willingness]");
     if (willingPanel) {
       willingPanel.hidden = preview.relation !== "other";
+      const confirmation = willingPanel.querySelector("[data-willing-confirm]");
+      if (confirmation) confirmation.hidden = !ownsRecipient;
       const prompt = willingPanel.querySelector("[data-willing-prompt]");
       if (prompt)
         prompt.textContent = ownsRecipient
@@ -307,16 +308,21 @@ export class PotionPreparation extends foundry.applications.api.HandlebarsApplic
             !(game.user.isGM && values.geometryReason)),
       );
     }
+    return true;
   }
 
   static async submit() {
     try {
+      if (!(await this.refreshPreview()))
+        throw new Error("The target changed. Review the current recipient.");
       const values = this.values();
       if (!this.currentPreview?.canDeclare)
         throw new Error(
           this.currentPreview?.error ||
             "This potion use cannot be declared in the current state.",
         );
+      if (values.recipientParticipantId !== this.currentPreview.recipientParticipantId)
+        throw new Error("The target changed. Review the current recipient.");
       const geometry =
         game.user.isGM && values.geometryReason
           ? { mode: "da-ruling", reason: values.geometryReason }

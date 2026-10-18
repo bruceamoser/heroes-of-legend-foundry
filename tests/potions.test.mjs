@@ -77,6 +77,8 @@ test("the potion ApplicationV2 part has one root and never assigns rendered", ()
     ["section"],
   );
   assert.doesNotMatch(preparationApplication, /\bthis\.rendered\s*=/);
+  assert.doesNotMatch(preparationTemplate, /<select[^>]*name="recipientParticipantId"/);
+  assert.match(preparationTemplate, /<details data-panel="da-exceptions">/);
 });
 
 test("source adapters pin the three fixed healing bottles and universal action", () => {

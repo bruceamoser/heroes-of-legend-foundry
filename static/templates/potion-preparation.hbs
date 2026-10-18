@@ -3,7 +3,7 @@
   {{#unless bottlesAvailable}}<p class="hol-error">This character owns no healing bottle. Supply-out bottles cannot be used.</p>{{else}}
   <div class="hol-pair">
     {{#unless sourceIsBottle}}<label>Exact bottle<select name="bottleUuid">{{#each bottles}}<option value="{{uuid}}" {{#if (eq uuid ../selectedBottleUuid)}}selected{{/if}}>{{name}} · {{supply}}</option>{{/each}}</select></label>{{/unless}}
-    <label>Recipient<select name="recipientParticipantId">{{#each recipients}}<option value="{{id}}" {{#if (eq id ../selectedRecipientId)}}selected{{/if}}>{{name}} · {{health}}</option>{{/each}}</select></label>
+    <p>Recipient: <strong data-preview="recipient-name">{{recipientName}}</strong><br><small>Target another token to give it the potion; otherwise use it yourself.</small></p>
   </div>
   <section class="hol-budget">
     <p><strong data-preview="bottle">{{preview.bottleName}}</strong> → <strong data-preview="recipient">{{preview.recipientActorName}}</strong></p>
@@ -13,10 +13,10 @@
     <p data-preview="supply"></p>
     <p data-preview="conditions"></p>
   </section>
-  <label>Interruption outcome<select name="interruption"><option value="continue">The interruption check permits this use to continue</option><option value="interrupted">An interruption stops it before Reaction, healing and supply</option></select></label>
-  <p class="hol-note">The existing opportunity/interruption engine is not connected. This is an explicit table continuation choice; it does not automate opportunity attacks.</p>
-  <section data-panel="willingness" hidden><h2>Recipient willingness</h2><p data-willing-prompt></p><label class="hol-check"><input type="checkbox" name="willing"> The selected recipient owner confirms willingness.</label>{{#if gm}}<label>DA willingness ruling, if needed<input name="daWillingnessReason" type="text" placeholder="Reason for an attributed DA ruling"></label>{{/if}}</section>
-  <section><h2>Adjacency</h2><p data-preview="geometry-status" aria-live="polite"></p>{{#if gm}}<label>DA geometry judgment, if native geometry is ambiguous<input name="geometryReason" type="text" placeholder="Record the geometry ruling and why"></label>{{/if}}</section>
+  <section data-panel="willingness" hidden><h2>Recipient willingness</h2><p data-willing-prompt></p><label class="hol-check" data-willing-confirm><input type="checkbox" name="willing"> I confirm this recipient is willing.</label></section>
+  <section><h2>Adjacency</h2><p data-preview="geometry-status" aria-live="polite"></p></section>
+  <details><summary>Interruption</summary><label>Outcome<select name="interruption"><option value="continue">Continue</option><option value="interrupted">Stopped before healing</option></select></label><p>If an interruption stops this use, the Maneuver is spent without healing or checking supply.</p></details>
+  {{#if gm}}<details data-panel="da-exceptions"><summary>DA exceptions</summary><label>Willingness ruling, if needed<input name="daWillingnessReason" type="text"></label><label>Adjacency ruling, if needed<input name="geometryReason" type="text"></label></details>{{/if}}
   <p class="hol-error" data-preview="error" aria-live="polite"></p>
   <button type="button" class="hol-primary" data-action="submit" disabled>Prepare potion use</button>
   {{/unless}}

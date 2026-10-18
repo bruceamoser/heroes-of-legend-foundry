@@ -89,3 +89,55 @@ export function bindReferenceSearch(element) {
       row.hidden = !row.textContent.toLocaleLowerCase().includes(query);
   });
 }
+
+const referenceDropRoots = new WeakSet(), referenceDropContexts = new WeakMap();
+
+/** Native UUID drops select the same inert references as the checkbox picker. */
+export function bindReferenceDrops(element, getContext, onSelected) {
+  referenceDropContexts.set(element, { getContext, onSelected });
+  if (referenceDropRoots.has(element)) return;
+  referenceDropRoots.add(element);
+  const feedback = (message, invalid = false) => {
+    const status = element.querySelector("[data-reference-drop-status]");
+    if (status) {
+      status.textContent = message;
+      status.classList.toggle("hol-error", invalid);
+    }
+  };
+  element.addEventListener("dragover", (event) => {
+    if (!Array.from(event.dataTransfer?.types ?? []).includes("text/plain")) return;
+    event.preventDefault();
+    event.dataTransfer.dropEffect = "copy";
+    element.classList.add("hol-reference-drop-hover");
+    feedback("Drop an ability reference from this character.");
+  });
+  element.addEventListener("dragleave", (event) => {
+    if (!element.contains(event.relatedTarget)) element.classList.remove("hol-reference-drop-hover");
+  });
+  element.addEventListener("drop", async (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    element.classList.remove("hol-reference-drop-hover");
+    try {
+      let data;
+      try { data = JSON.parse(event.dataTransfer?.getData("text/plain") ?? ""); }
+      catch { throw new Error("Drop an ability reference from this character."); }
+      if (data?.type !== "Item" || typeof data.uuid !== "string" || !data.uuid)
+        throw new Error("Drop an ability reference from this character.");
+      const initial = referenceDropContexts.get(element).getContext(),
+        item = await fromUuid(data.uuid),
+        current = referenceDropContexts.get(element), context = current.getContext();
+      if (context.actor.uuid !== initial.actor.uuid || !liveAbility(item) || item.actor.uuid !== context.actor.uuid)
+        throw new Error("Use an ability owned by this dialog's character. Compendium drops cannot grant abilities.");
+      const draft = { referenceItemIds: [...readReferenceSelection(element), item.id] };
+      selectedReferences(context.actor, draft, context.options);
+      const input = Array.from(element.querySelectorAll("[data-reference-id]")).find(input => input.dataset.referenceId === item.id);
+      if (!input) throw new Error("The available references changed. Reopen the dialog.");
+      input.checked = true;
+      const picker = input.closest(".hol-reference-picker");
+      if (picker) picker.open = true;
+      await current.onSelected();
+      feedback(`Selected ${item.name} · reference only.`);
+    } catch (error) { feedback(error.message, true); }
+  });
+}

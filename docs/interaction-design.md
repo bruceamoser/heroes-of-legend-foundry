@@ -75,14 +75,21 @@ Use native document UUID drag data and contextual drop zones. Provide visible va
 |---|---|
 | Compendium/browser ability → character's abilities | Open grant/purchase eligibility and DP preview; commit once when confirmed. Owning a raw Item is not a free learned ability. |
 | Ancestry, trait, origin, class or discipline → builder | Apply to the matching stage/slot through the creation ledger; show prerequisites and incompatible/replaced choices before changing state. |
-| Owned ability → open roll dialog | Select it if relevant to this roll; preview effects/costs. Reject unavailable/unowned modifiers. Dropping a compendium ability does not bypass acquisition. |
+| Owned ability → open roll/attack dialog | Select its existing reference through the same validation as the checkbox picker. This changes no bonus, cost, ownership or action state. Automated effects use their explicit action buttons. Reject foreign/compendium sources; dropping does not bypass acquisition. |
 | Owned ability → hotbar | Create an actor-aware shortcut referencing the ability; retain original actor/token context and handle deletion intelligibly. |
-| Equipment → inventory or held/worn zone | Preview quantity, acquisition mode and hand/Bulk impact; check permissions and availability. No accidental duplicate grants. |
-| Item between owned inventory lists/containers | Reorder or change carried location without duplicating the Item or erasing contents' Bulk. Explicit container rules govern compatibility. |
+| Equipment catalog/world Item → inventory | An owner may copy readable equipment through native drop or Add equipment. Preserve quantity, supply and source provenance with a fresh embedded identity. Purchases and preparation remain distinct table/sheet actions. |
+| Item within the same Actor inventory | Use native sorting without duplicating the Item. Cross-character drops refuse an implicit clone; arrange an explicit transfer manually. Container workflows need separate acceptance. |
 | Equipment between characters | Transfer the actual selected instance/quantity through authorized ownership/DA mediation; receive once and debit once. Preserve supply state and source provenance. |
 | Creature/summon browser → scene | Creature drop creates the intended token instance with printed defaults. Summon drop opens the summoning eligibility/action/placement workflow; it cannot spawn a free uncontrolled summon. |
-| Actor/token → target or participant slot | Set explicit target/participant context, then validate range/type/control. Never silently swap the acting character. |
+| Native Actor/Token targeting | Use Foundry targeting and show the selected native target as read-only context. A separate target drop slot is superseded by this simpler workflow. Never silently swap the acting character. |
 | Rules/reference record → chat or journal | Create a native link/card that respects document permissions; posting a reference does not acquire or activate it. |
+
+Current release boundaries: specialty ability effects and summon lifecycle are
+manually resolved where no reviewed action button exists. Existing source-locked
+references remain readable. Cross-character transfer and container automation
+must not be claimed from native document copying alone. The table records the
+roadmap; closing a release increment requires evidence for its approved subset,
+not a claim that every original matrix cell is automated.
 
 Known spells, abilities and inventory can be sorted and favorited without changing mechanical ownership or limiting repertoire. Do not introduce a prepared-hand mechanic. A move and a copy are distinguishable operations; cross-character transfer must never be an implicit clone. If the destination lacks permission or the operation is interrupted, report state rather than silently dropping data.
 

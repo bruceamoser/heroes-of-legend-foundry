@@ -986,11 +986,20 @@ and enabled only read-only reference buttons for observers. Node 24 check passes
 including real drag/reorder, click/keyboard, permission changes, deleted/modified
 sources and unlinked-token identity.
 
-Remaining drag/drop matrix work is unchanged: owned abilities dropped into roll
-dialog selection, cross-character equipment transfer, compendium acquisition and
-charactermancer slot drops, inventory container moves, creature/summon scene
-drops, Actor/token targeting, rules links, detached-window coverage, visual
-valid/invalid drag feedback and the complete permission/error matrix.
+The later #15 reference-drop increment selects an existing owned ability reference
+in roll and player-attack dialogs through the same validation as the checkbox
+picker. It adds no mechanical bonus, activation, grant or cost. Persistent outer
+shells bind one delegated drop listener across rerenders; live UUID, Actor identity
+and current visibility are rechecked. Focused tests cover repeated binding,
+foreign/compendium/deleted/wrong-type drops, stale context and legitimate visible
+any-player defense references. Native Foundry 14.369 acceptance passed actual owned-reference drag after repeated dialog renders, compendium refusal, searchable/click parity, unchanged dice and blind privacy, with zero captured page errors.
+
+The original matrix is broader than this increment. Native targeting supersedes
+Actor-to-target drop slots; specialty/summon lifecycle resolution remains manual
+where approved. Cross-character transfer, containers and detached-window parity
+need their own evidence. Current normal/narrow screenshots establish readable
+forest/gold/parchment styling, not complete T94–T95 or decorative book parity;
+explicit light/dark/detached coverage remains part of the final visual audit.
 
 
 Integrated shortcut validation: Node 24 checks and the full Foundry 14.369
@@ -1181,3 +1190,12 @@ Native acceptance used the isolated Foundry V14 world before integration with st
 Screenshots were viewed in `test-results/advisory-player-attack.png`, `advisory-owner-equipment.png`, `shield-block-defense-dialog.png`, and `advisory-potion-consent.png`. The Attack capture is scrolled to expanded optional sections; equipment/defense captures precede wording-only corrections replacing the old DA-only/own-turn prohibition language. This proves these bounded flows, not every ability handler or whole-encounter release acceptance. Post-native production changes only correct those guidance/result labels; rebase and final Node 24 results are recorded with the PR.
 
 Final #140 integration rebased onto `1573687`, preserving startup authority #121 and builder #137. Only appended acceptance/development documentation conflicted; both scopes were retained. The native-tested #140 production modules/templates are unchanged by rebase; subsequent production edits only correct guidance/result text and the stale numeric-NPC development-preview sentence. Final integrated Node 24 build/validation and all 356 tests pass. Focused action/defense/potion primitive and entry checks pass 32 tests. Native acceptance was not repeated solely for this integration/copy change.
+
+
+### Issue #15 — basic inventory acquisition and learning routes
+
+Owners can copy readable catalog/world equipment through native inventory drop or the Add equipment selector. The native Item creation path assigns a fresh embedded identity while preserving quantity, supply, canonical provenance and the exact source UUID in `flags.heroes-of-legend.copySourceUuid`. Same-Actor sorting stays native. Cross-Actor drops refuse an implicit clone; explicit transfer remains manual. An ability drop opens the existing learning wizard, preserving unsaved fields and current stage, with no automatic grant or DP spend. Only an available learning search is focused.
+
+The bounded Foundry 14.369 three-client reference fixture passed catalog drop, world-source click copy, exact provenance/quantity/supply, same-Actor sorting, foreign-Actor refusal and current-stage/unsaved-draft preservation before the reference tests above. Cleanup removed the exact fixture documents; the isolated server was stopped and its port confirmed closed. Two fixture-only corrections matched the existing heroName field and tested a checkbox inside collapsed Details. A later focused regression prevents shopping-search changes when dropping an ability at that stage. Final Node 24 full check passes all 365 tests, including 13 focused reference/import/sheet-route regressions. This is not complete container, cross-character transfer or detached-window acceptance.
+
+Final #15 integration rebased onto #140 main `168b7a4`. Only appended documentation conflicted; both acceptance records were preserved. The full integrated Node 24 build/validation passes 369 tests. Native acceptance was not repeated for the rebase or the focused shopping-stage guard. This increment received author review; primary review and merge are separate.

@@ -89,6 +89,104 @@
     },
     "actions": {
       "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Thrown boulder",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "10 + Push 2",
+            "standard": "7 + Push 1",
+            "strong": "5"
+          },
+          "effect": "10 + Push 2 / 7 + Push 1 / 5",
+          "referenceMarkdown": "### Thrown boulder\n\n*The blow lands with enough force to send its victim stumbling backward.*\n\n**Target:** One visible creature within 10 squares. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Push 2. **Standard defense:** Push 1."
+        },
+        {
+          "id": "main-2",
+          "category": "main",
+          "name": "Stone staff",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "8",
+            "standard": "6",
+            "strong": "4"
+          },
+          "effect": "8/6/4",
+          "referenceMarkdown": "### Stone staff\n\n*A great limb scythes across the ground, forcing everyone nearby to move.*\n\n**Target:** Up to two creatures within 2 squares. **Player defense:** Agility. **Damage type:** physical."
+        },
+        {
+          "id": "main-3",
+          "category": "main",
+          "name": "Clearing shove",
+          "attributeKey": "brawn",
+          "defenseSource": "Brawn",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "6 + push 5",
+            "standard": "4 + push 4",
+            "strong": "2 + push 2"
+          },
+          "effect": "6 + push 5 / 4 + push 4 / 2 + push 2",
+          "referenceMarkdown": "### Clearing shove\n\n*A deliberate sweep of the giant’s arm clears the ledge.*\n\n**Target:** One creature within 2 squares. **Player defense:** Brawn. **Damage type:** physical.\n\n**Weak defense:** push 5. **Standard defense:** push 4. **Strong defense:** push 2."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Defend",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Thrown boulder | Agility | 10 + Push 2 / 7 + Push 1 / 5 |\n| Stone staff | Agility | 8/6/4 |\n| Clearing shove | Brawn | 6 + push 5 / 4 + push 4 / 2 + push 2 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Defend | +1 Bane |",

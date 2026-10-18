@@ -89,6 +89,88 @@
     },
     "actions": {
       "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Sewer knife",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "6 + Poisoned 2",
+            "standard": "4 + Poisoned 1",
+            "strong": "2"
+          },
+          "effect": "6 + Poisoned 2 / 4 + Poisoned 1 / 2",
+          "referenceMarkdown": "### Sewer knife\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Poisoned 2. **Standard defense:** Poisoned 1."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Change Guise",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Humanoid/hybrid appearance; same HP and statistics.",
+          "referenceMarkdown": "### Change Guise\n\n*The creature shifts between a familiar face and its hybrid shape.*\n\nChange between humanoid and hybrid appearance. Keep current HP, attributes, resistances, conditions and printed movement; no healing or refreshed resources. Natural attacks require hybrid form; held weapon attacks and Basic Melee remain available in humanoid form. Equipment remains carried or worn where it fits. No infection or extra inventory capacity."
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
+          "name": "Defend",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Sewer knife | Agility | 6 + Poisoned 2 / 4 + Poisoned 1 / 2 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Change Guise | Humanoid/hybrid appearance; same HP and statistics. |\n| Defend | +1 Bane |",

@@ -93,6 +93,104 @@
     },
     "actions": {
       "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Rimed axe",
+          "attributeKey": "fortitude",
+          "defenseSource": "Fortitude",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "10 + Freezing 2",
+            "standard": "7 + Freezing 1",
+            "strong": "4"
+          },
+          "effect": "10 + Freezing 2 / 7 + Freezing 1 / 4",
+          "referenceMarkdown": "### Rimed axe\n\n**Target:** One visible creature within 2 squares. **Player defense:** Fortitude. **Damage type:** cold.\n\n**Weak defense:** Freezing 2. **Standard defense:** Freezing 1."
+        },
+        {
+          "id": "main-2",
+          "category": "main",
+          "name": "Thrown stone",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "7",
+            "standard": "5",
+            "strong": "3"
+          },
+          "effect": "7/5/3",
+          "referenceMarkdown": "### Thrown stone\n\n**Target:** One visible creature within 7 squares. **Player defense:** Agility. **Damage type:** physical.\n\n**Limit:** Requires an available loose stone; picking it up is part of this attack. No stone means this attack is unavailable."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Plant the Weight",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Stability 3 on solid ground until next turn.",
+          "referenceMarkdown": "### Plant the Weight\n\n*It spreads its stance and settles its weight into the ground.*\n\nWhile standing on solid ground, gain Stability 3 until its next turn. Use the highest source only, never add sources."
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
+          "name": "Defend",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Rimed axe | Fortitude | 10 + Freezing 2 / 7 + Freezing 1 / 4 |\n| Thrown stone | Agility | 7/5/3 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Plant the Weight | Stability 3 on solid ground until next turn. |\n| Defend | +1 Bane |",

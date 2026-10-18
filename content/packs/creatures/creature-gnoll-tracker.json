@@ -84,6 +84,88 @@
     },
     "actions": {
       "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Running spear",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "6 + Bleeding 2",
+            "standard": "4 + Bleeding 1",
+            "strong": "2"
+          },
+          "effect": "6 + Bleeding 2 / 4 + Bleeding 1 / 2",
+          "referenceMarkdown": "### Running spear\n\n**Target:** One visible creature within 2 squares. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Bleeding 2. **Standard defense:** Bleeding 1."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Read the Blood Trail",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Direction of nearest Bleeding creature within 6.",
+          "referenceMarkdown": "### Read the Blood Trail\n\n*Its nose lifts, separating the sharp scent of fresh blood from the rest of the air.*\n\nLearn the direction of the nearest Bleeding creature within 6 squares. This does not reveal Hidden, give an exact square or permit a sight-required attack against an unseen target."
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
+          "name": "Defend",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Running spear | Agility | 6 + Bleeding 2 / 4 + Bleeding 1 / 2 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Read the Blood Trail | Direction of nearest Bleeding creature within 6. |\n| Defend | +1 Bane |",

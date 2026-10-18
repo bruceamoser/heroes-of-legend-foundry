@@ -89,6 +89,88 @@
     },
     "actions": {
       "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Venomous fangs",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "6 + Poisoned 2",
+            "standard": "4 + Poisoned 1",
+            "strong": "2"
+          },
+          "effect": "6 + Poisoned 2 / 4 + Poisoned 1 / 2",
+          "referenceMarkdown": "### Venomous fangs\n\n*A needle catches the skin, and a bitter numbness spreads from the puncture.*\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Poisoned 2. **Standard defense:** Poisoned 1."
+        },
+        {
+          "id": "main-2",
+          "category": "main",
+          "name": "Web cast",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "0 + Slowed 3",
+            "standard": "0 + Slowed 2",
+            "strong": "0 + Slowed 1"
+          },
+          "effect": "0 + Slowed 3 / 0 + Slowed 2 / 0 + Slowed 1",
+          "referenceMarkdown": "### Web cast\n\n*White strands snap between the pillars and tighten around boots and wrists.*\n\n**Target:** One visible creature within 5 squares. **Player defense:** Agility. **Damage type:** None.\n\n**Weak defense:** Slowed 3. **Standard defense:** Slowed 2. **Strong defense:** Slowed 1.\n\n**Limit:** An adjacent helper or the target may spend Main to remove 1 of this Slowed. Fire damage to the target removes all of this web’s Slowed after damage resolves. Otherwise decay normally."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Defend",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Venomous fangs | Agility | 6 + Poisoned 2 / 4 + Poisoned 1 / 2 |\n| Web cast | Agility | 0 + Slowed 3 / 0 + Slowed 2 / 0 + Slowed 1 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Defend | +1 Bane |",

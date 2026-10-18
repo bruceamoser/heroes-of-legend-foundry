@@ -1091,3 +1091,38 @@ Node 24.22.0 full check passed 321 tests on the integrated potion baseline. Nati
 Fresh screenshots `test-results/reference-roll-selection.png` and `test-results/player-attack-reference-selection.png` were viewed. They precede the narrow reference-checkbox height correction. Early fixture-only failures involved duplicate sidebar/notification selectors, the required sidebar tab group and a startup `game` guard; these were corrected before the successful runs. Broader late recovery cases were not rerun. Runtime ownership was released after clean server shutdown before subsequent build/rebase work.
 
 After native cleanup, #134 rebased onto #133's nonblocking-guidance main (`d13fc1f`). Only appended acceptance/development notes conflicted; both scopes were retained. The corrected `selection().draft` player Attack submission and all #133 guidance behavior remain intact. The final integrated Node 24 check passes 322 tests. No reference mechanics changed during rebase; the only post-native #134 production change is the scoped checkbox sizing noted above.
+
+
+### Creature specialty reference cards (#138)
+
+The pinned catalog's typed action tables now project into native creature Actors.
+Compact GM action buttons post descriptive source cards, using native target
+suggestions. Each typed defense action opens the existing any-player Defend dialog
+with its own attribute and printed Threat. All non-Basic main action names match
+an authored specialty detail section; generation fails if one goes missing.
+No-roll maneuvers/reactions post references without invented defense dice.
+
+The reference path has manual costs/effects and does not require Combat or the
+coordinator merely to post. Compound outcomes remain exact text, distinct from
+numeric Basic Melee, and cannot invoke automatic damage. Existing imported world
+Actors are not rewritten. `test:creature-actions` is the bounded multiplayer
+native fixture; static checks alone do not establish its runtime acceptance.
+
+Native 14.369 acceptance passed in `/tmp/hol138-native-6.log`: Red Dragon imported
+from the built compendium and retained its typed action array exactly; Furnace
+breath and Crushing bite posted exact source outcomes with Agility/Fortitude and
+printed Threat. Native GM target suggestions retained both defenders. A non-owner
+player rolled each defense twice without Combat or reroll questions. Wing Beat
+posted no-roll text with no attack card/dice. Reference roll summaries retained
+selected outcome text and omitted automatic damage controls; direct defense damage
+rejected reference results. A real encounter with a held shield and canonical
+Shield Block exposed the ability without a numeric NPC attack receipt. Both
+attribute screenshots were inspected; there were zero page errors.
+
+Fixture preparation needed bounded fixes for an empty-world Canvas wait, an
+obsolete ownership constant, Scene/target initialization, guarded game startup and
+waiting for the prior dialog to detach before reopening. No production behavior
+was loosened to satisfy these attempts. Cleanup was checked across all iterations:
+15 Actors, one Combat, four Scenes, five Users and 17 ChatMessages created during
+the session were all deleted. The isolated server was stopped and world released.
+This proves the bounded reference flow, not automatic specialty effects or costs.

@@ -139,8 +139,10 @@ export function defenseDamage(message) {
     classifyRoll(retained, result.attribute).tier !== result.tier
   )
     throw new Error("The stored outcome does not match its native dice.");
-  const card = attack.getFlag(ID, "attackCard"),
-    amount = card?.damage?.[result.tier];
+  const card = attack.getFlag(ID, "attackCard");
+  if (card?.resolution === "reference" || result.attackOutcome?.resolution === "reference")
+    throw new Error("Resolve this reference action's effects manually.");
+  const amount = card?.damage?.[result.tier];
   if (
     !Number.isSafeInteger(amount) ||
     amount < 0 ||

@@ -1,3 +1,4 @@
+import { validReferenceAttack } from "../rules/creature-actions.mjs";
 import { ATTRIBUTES } from "../rules/character.mjs";
 import { conditionRollSources } from "../rules/conditions.mjs";
 import { targetEvasionSources } from "../rules/player-attacks.mjs";
@@ -18,13 +19,11 @@ export function incomingAttackContext(attackMessageId) {
   )
     throw new Error("The incoming attack is unavailable or changed.");
   const attack = structuredClone(incoming);
-  if (
-    !["weak", "standard", "strong"].every(
-      (key) =>
-        Number.isSafeInteger(attack.damage?.[key]) && attack.damage[key] >= 0,
-    )
-  )
-    throw new Error("The incoming attack is unavailable or changed.");
+  const valid = attack.resolution === "reference"
+    ? validReferenceAttack(attack)
+    : ["weak", "standard", "strong"].every(key =>
+      Number.isSafeInteger(attack.damage?.[key]) && attack.damage[key] >= 0);
+  if (!valid) throw new Error("The incoming attack is unavailable or changed.");
   return attack;
 }
 
@@ -35,6 +34,15 @@ export function incomingAttackContext(attackMessageId) {
  */
 export function verifiedIncomingAttackContext(attackMessageId) {
   const attack = incomingAttackContext(attackMessageId);
+  if (attack.resolution === "reference") {
+    const message = game.messages.get(attackMessageId),
+      source = message?.getFlag(ID, "creatureAction"),
+      actor = fromUuidSync(attack.actorUuid);
+    if (actor?.type !== "creature" || actor.uuid !== attack.actorUuid ||
+        JSON.stringify(source) !== JSON.stringify(attack))
+      throw new Error("The incoming reference action could not be verified.");
+    return attack;
+  }
   if (!Object.hasOwn(attack, "blockable")) return attack;
   if (attack.blockable !== null && typeof attack.blockable !== "boolean")
     throw new Error("The DA's blockable judgment is invalid.");

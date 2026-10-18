@@ -89,6 +89,104 @@
     },
     "actions": {
       "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Uprooted tree",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "10 + Push 3",
+            "standard": "7 + Push 1",
+            "strong": "4"
+          },
+          "effect": "10 + Push 3 / 7 + Push 1 / 4",
+          "referenceMarkdown": "### Uprooted tree\n\n**Target:** One visible creature within 2 squares. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Push 3. **Standard defense:** Push 1.\n\n**Limit:** Apply Stability, terrain costs and normal collision rules to the printed distance."
+        },
+        {
+          "id": "main-2",
+          "category": "main",
+          "name": "Thrown stone",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "7",
+            "standard": "5",
+            "strong": "3"
+          },
+          "effect": "7/5/3",
+          "referenceMarkdown": "### Thrown stone\n\n**Target:** One visible creature within 7 squares. **Player defense:** Agility. **Damage type:** physical.\n\n**Limit:** Requires an available loose stone; picking it up is part of this attack. No stone means this attack is unavailable."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Scatter Stones",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "2 empty ground squares within 2: difficult terrain until next turn.",
+          "referenceMarkdown": "### Scatter Stones\n\n*A shove of its foot sends loose stones skittering into the approach.*\n\nPlace difficult terrain in up to 2 connected empty ground squares within 2 squares until its next turn. Requires loose earth or stones. No entry damage or automatic falling."
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
+          "name": "Defend",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Uprooted tree | Agility | 10 + Push 3 / 7 + Push 1 / 4 |\n| Thrown stone | Agility | 7/5/3 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Scatter Stones | 2 empty ground squares within 2: difficult terrain until next turn. |\n| Defend | +1 Bane |",

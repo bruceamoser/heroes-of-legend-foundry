@@ -84,6 +84,104 @@
     },
     "actions": {
       "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Timber club",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "8 + Push 2",
+            "standard": "5 + Push 1",
+            "strong": "4"
+          },
+          "effect": "8 + Push 2 / 5 + Push 1 / 4",
+          "referenceMarkdown": "### Timber club\n\n*The blow lands with enough force to send its victim stumbling backward.*\n\n**Target:** One creature within 2 squares. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Push 2. **Standard defense:** Push 1."
+        },
+        {
+          "id": "main-2",
+          "category": "main",
+          "name": "Hurl aside",
+          "attributeKey": "brawn",
+          "defenseSource": "Brawn",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5 + push 4",
+            "standard": "3 + push 3",
+            "strong": "2 + push 1"
+          },
+          "effect": "5 + push 4 / 3 + push 3 / 2 + push 1",
+          "referenceMarkdown": "### Hurl aside\n\n*One broad hand sweeps the obstacle from the ogre’s path.*\n\n**Target:** One adjacent creature. **Player defense:** Brawn. **Damage type:** physical.\n\n**Weak defense:** push 4. **Standard defense:** push 3. **Strong defense:** push 1."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Threatening Roar",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "One hearing creature within 3 squares gains Frightened 1 of the ogre; once per turn.",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
+          "name": "Defend",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Timber club | Agility | 8 + Push 2 / 5 + Push 1 / 4 |\n| Hurl aside | Brawn | 5 + push 4 / 3 + push 3 / 2 + push 1 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Threatening Roar | One hearing creature within 3 squares gains Frightened 1 of the ogre; once per turn. |\n| Defend | +1 Bane |",

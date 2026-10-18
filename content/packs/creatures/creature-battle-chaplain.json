@@ -84,6 +84,88 @@
     },
     "actions": {
       "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Staff",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": "### Staff\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical."
+        },
+        {
+          "id": "main-2",
+          "category": "main",
+          "name": "Battle Mending",
+          "attributeKey": "fortitude",
+          "defenseSource": "Fortitude (if harmful)",
+          "harmfulOnly": true,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "See details",
+          "referenceMarkdown": "### Battle Mending\n\nOne adjacent living ally; free hand. Pay 1 HP first, bypass resistance, and remain above 0. A player rolls this creature’s Reason: Weak heals 3, Standard 6, Strong 9 HP. Life resistance reduces healing, minimum 1. This spell provokes. Against a healing-harmed target instead, use Fortitude defense: Weak takes 9, Standard 6, Strong 3 Life damage. Same cost; no healing riders."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Defend",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Staff | Agility | 5/3/2 |\n| Battle Mending | Fortitude (if harmful) | See details |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Defend | +1 Bane |",

@@ -93,6 +93,88 @@
     },
     "actions": {
       "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Oath-blackened sword",
+          "attributeKey": "fortitude",
+          "defenseSource": "Fortitude",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "11 + Frightened 2 of this creature",
+            "standard": "8 + Frightened 1 of this creature",
+            "strong": "5"
+          },
+          "effect": "11 + Frightened 2 of this creature / 8 + Frightened 1 of this creature / 5",
+          "referenceMarkdown": "### Oath-blackened sword\n\n**Target:** One visible creature within 2 squares. **Player defense:** Fortitude. **Damage type:** Life.\n\n**Weak defense:** Frightened 2 of this creature. **Standard defense:** Frightened 1 of this creature."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Defend",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Shield Hunker",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane to blockable attacks; see details.",
+          "referenceMarkdown": "### Shield Hunker\n\nBefore a shield-blockable attack resolves, spend its Reaction to impose 1 Bane on player attacks it can block until the start of its next turn. The DA judges blockability. Stacks with Defend through normal Boon/Bane rules, not with another activation of itself."
+        },
+        {
+          "id": "reaction-1",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Oath-blackened sword | Fortitude | 11 + Frightened 2 of this creature / 8 + Frightened 1 of this creature / 5 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Defend | +1 Bane |",

@@ -94,6 +94,88 @@
     },
     "actions": {
       "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Barbed chain",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "10 + Pull 3",
+            "standard": "7 + Pull 1",
+            "strong": "4"
+          },
+          "effect": "10 + Pull 3 / 7 + Pull 1 / 4",
+          "referenceMarkdown": "### Barbed chain\n\n**Target:** One visible creature within 2 squares. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Pull 3. **Standard defense:** Pull 1.\n\n**Limit:** Apply Stability, terrain costs and normal collision rules to the printed distance."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Mark the Boundary",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "3 empty ground squares within 3: difficult terrain until next turn.",
+          "referenceMarkdown": "### Mark the Boundary\n\n*A sharp line of light marks a boundary across the floor.*\n\nPlace up to 3 connected empty ground squares within 3 squares as difficult terrain until its next turn. No damage, wall or prohibition against crossing; all creatures pay the same terrain costs."
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
+          "name": "Defend",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Barbed chain | Agility | 10 + Pull 3 / 7 + Pull 1 / 4 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Mark the Boundary | 3 empty ground squares within 3: difficult terrain until next turn. |\n| Defend | +1 Bane |",

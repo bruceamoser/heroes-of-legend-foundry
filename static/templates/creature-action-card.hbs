@@ -1,0 +1,7 @@
+<section class="hol-attack-card hol-creature-action-card">
+<h3>{{attackerName}} · {{title}}</h3>
+<p>{{categoryLabel}} · Costs and effects resolved manually.</p>
+{{#if attributeKey}}<p>{{defenseSource}} player defense · Threat: {{threat.boons}} Boons / {{threat.banes}} Banes.</p>{{/if}}
+{{#if outcomes}}<dl>{{#each outcomes}}<dt>{{@key}} defense</dt><dd>{{this}}</dd>{{/each}}</dl>{{else}}<p>{{effect}}</p>{{/if}}
+{{#if referenceHTML}}<details><summary>Action details</summary>{{{referenceHTML}}}</details>{{/if}}
+</section>

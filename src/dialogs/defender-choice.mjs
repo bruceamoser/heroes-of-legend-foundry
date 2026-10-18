@@ -54,7 +54,7 @@ async function open(uuid, messageId) {
     throw new Error(
       "Choose an available defender; this entry may have been deleted.",
     );
-  return promptDefenseRoll(actor, "agility", {
+  return promptDefenseRoll(actor, game.messages.get(messageId).getFlag(ID, "attackCard").attributeKey, {
     attackMessageId: messageId,
     defenderTokenUuid: document.documentName === "Token" ? document.uuid : null,
   });

@@ -84,6 +84,88 @@
     },
     "actions": {
       "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Ancestor's warning",
+          "attributeKey": "reason",
+          "defenseSource": "Reason",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "6 + Frightened 2 of this creature",
+            "standard": "4 + Frightened 1 of this creature",
+            "strong": "2"
+          },
+          "effect": "6 + Frightened 2 of this creature / 4 + Frightened 1 of this creature / 2",
+          "referenceMarkdown": "### Ancestor's warning\n\n**Target:** One visible creature within 5 squares. **Player defense:** Reason. **Damage type:** mental.\n\n**Weak defense:** Frightened 2 of this creature. **Standard defense:** Frightened 1 of this creature."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Keep the Rhythm",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "One hearing ally within 3: reduce Frightened or Dazed by 1.",
+          "referenceMarkdown": "### Keep the Rhythm\n\n*A familiar rhythm cuts through panic and brings one companion back to the moment.*\n\nOne willing ally within 3 squares that can hear it reduces either Frightened or Dazed by 1. Once per turn. This does not recalculate action categories already selected at turn start."
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
+          "name": "Defend",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Ancestor's warning | Reason | 6 + Frightened 2 of this creature / 4 + Frightened 1 of this creature / 2 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Keep the Rhythm | One hearing ally within 3: reduce Frightened or Dazed by 1. |\n| Defend | +1 Bane |",

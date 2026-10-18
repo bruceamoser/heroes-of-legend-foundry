@@ -175,3 +175,22 @@ the native fallback until approved asset paths are available.
 An owned embedded ability may be posted as a reference card using ordinary document ownership and the current native chat mode. Cards preserve the live Item UUID, pinned source identity and readable rules; copied formatting is restricted to inert headings, lists, tables, emphasis and safe HTTP(S) links. Unrevealed secret sections are excluded.
 
 Optional shared-roll and player-attack `draft.referenceItemIds` selects live Items embedded in the rolling Actor. Snapshot `references` contains `{ itemUuid, name, source, sourceCommit }` only. It does not contribute dice, costs, targets or effects. Visibility follows observed Actors and the existing visible-token defender workflow, without adding a Defend permission gate. Reviewed automatic controls remain separate. Reference links render inside the existing roll summary only when the message content is visible; no separate public attachment message is created.
+
+### Creature reference action cards (#138)
+
+Native creature `system.actions.entries` projects the pinned typed action tables:
+stable category/index ID, name, category, defense attribute/source qualifier,
+complete player-defense outcome strings (or explicit absence), effect text and
+matching authored specialty Markdown. No flavor-to-mechanics parsing or world
+Actor rewrite occurs. Legacy world profiles default to an empty entry list.
+
+A GM may post a `creatureAction` ChatMessage directly, with native target UUID
+suggestions, printed Threat and source identity. Posting is reference-only and
+requires neither Combat nor a budget reservation. Typed defense actions also
+carry `attackCard.resolution = "reference"`; no-roll references omit `attackCard`.
+Reference defense results carry `attackOutcome = {resolution: "reference", text,
+applied: false}`. They have no numeric `damage` or inferred damage type and cannot
+enter automatic defense damage. Existing Basic Melee numeric cards/results retain
+their original contract. Any-player Defend uses the incoming attribute, existing
+slider/abilities and fresh operation identities. Costs and all compound effects
+remain manual on this reference path.

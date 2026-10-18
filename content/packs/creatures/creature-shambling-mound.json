@@ -94,6 +94,88 @@
     },
     "actions": {
       "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Root-and-reed embrace",
+          "attributeKey": "brawn",
+          "defenseSource": "Brawn",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "9 + Grappled 2",
+            "standard": "6 + Grappled 1",
+            "strong": "3"
+          },
+          "effect": "9 + Grappled 2 / 6 + Grappled 1 / 3",
+          "referenceMarkdown": "### Root-and-reed embrace\n\n**Target:** One adjacent creature. **Player defense:** Brawn. **Damage type:** physical.\n\n**Weak defense:** Grappled 2. **Standard defense:** Grappled 1.\n\n**Limit:** The holder suffers its own Grappled contribution. A new result replaces its lower contribution, not adds to it. Release freely; separation beyond reach, unconsciousness or death ends the hold."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Weave the Roots",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "3 difficult ground squares within 3 become normal until next turn.",
+          "referenceMarkdown": "### Weave the Roots\n\n*Roots braid themselves into firm footholds across the treacherous ground.*\n\nChoose up to 3 connected difficult-terrain ground squares within 3 squares. They count as normal terrain until its next turn. Requires soil or living vegetation; cannot bridge empty space or bypass occupied squares."
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
+          "name": "Defend",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Root-and-reed embrace | Brawn | 9 + Grappled 2 / 6 + Grappled 1 / 3 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Weave the Roots | 3 difficult ground squares within 3 become normal until next turn. |\n| Defend | +1 Bane |",

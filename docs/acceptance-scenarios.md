@@ -226,3 +226,16 @@ embedded Item before the supply Actor write.
 Post an owned ability from its sheet and character list; verify the complete readable card, stable live Item/source identity and refusal of unowned/compendium-only sources. Open a shared roll or player Attack, search and optionally select references, then roll: formula, source modifiers and costs remain unchanged. Reference-only selection is distinct from reviewed Defend/Shield Block controls. A private/blind roll carries its reference links in the same private message, with no public side message or visible summary for excluded players. Hostile authored HTML and unsafe links cannot execute; unrevealed secret sections are not copied. Native fixture: `npm run test:reference-play` against an explicitly isolated writable world.
 
 A bounded native player Attack path runs with `HOL_TEST_REFERENCE_ONLY=1 npm run test:player-attacks`; it stops after the actual Attack reference snapshot assertion, retaining native targeting, slider and wound-refresh checks.
+
+
+### T110 — creature specialty reference actions
+
+Import Red Dragon from the native compendium with every typed action intact.
+Furnace breath posts Agility defense and Crushing bite posts Fortitude defense,
+with printed Threat and exact Weak/Standard/Strong player-defense outcomes plus
+source details. Native GM multi-target suggestions reach the existing any-player
+defender chooser. A non-owner may roll each defense repeatedly with the effective
+slider, without Combat, prose or repeat controls. Results show the exact selected
+outcome text; automatic damage rejects reference results. Wing Beat posts its
+no-roll effect without an attack card or invented dice. Numeric Basic Melee and
+its linked damage path remain covered by existing regressions.

@@ -84,6 +84,88 @@
     },
     "actions": {
       "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Corner-shot dart",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5 + Slowed 2",
+            "standard": "3 + Slowed 1",
+            "strong": "2"
+          },
+          "effect": "5 + Slowed 2 / 3 + Slowed 1 / 2",
+          "referenceMarkdown": "### Corner-shot dart\n\n**Target:** One visible creature within 6 squares. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Slowed 2. **Standard defense:** Slowed 1.\n\n**Limit:** Ammunition inventory d6. After each use, roll it; on 1 reduce d6 to d4, or d4 to empty. Cannot use this attack while empty."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Tunnel Scamper",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Move 2; ignore rubble cost; provokes.",
+          "referenceMarkdown": "### Tunnel Scamper\n\n*It drops low and races along the wall where the loose stones are thinnest.*\n\nMove up to 2 squares. Treat rubble squares as normal terrain for this movement only; all other terrain costs and occupied-square restrictions apply. Provokes normally."
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
+          "name": "Defend",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Corner-shot dart | Agility | 5 + Slowed 2 / 3 + Slowed 1 / 2 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Tunnel Scamper | Move 2; ignore rubble cost; provokes. |\n| Defend | +1 Bane |",

@@ -142,6 +142,31 @@ function validateMitigations(record, value, label) {
   );
 }
 
+export function creatureActionEntries(record, sourceCommit) {
+  return [["main", "main"], ["maneuver", "maneuvers"], ["reaction", "reactions"]]
+    .flatMap(([category, section]) => record.actions[section].actions.map((action, index) => {
+      const attributeKey = action.defense?.attribute ?? "";
+      if (category === "main" && !ATTRIBUTE_KEYS.includes(attributeKey))
+        fail(record, `Unknown defense attribute for ${action.name}`);
+      const outcomes = Object.fromEntries(["weak", "standard", "strong"].map(key => [
+        key, action.outcomes ? text(record, action.outcomes[key], `${action.name} ${key}`) : "",
+      ]));
+      const detail = record.reference.specialtyDetails.find(entry =>
+        entry.title.toLowerCase() === action.name.toLowerCase());
+      if (category === "main" && action.name !== "Basic Melee" && !detail)
+        fail(record, `Missing authored specialty reference for ${action.name}`);
+      return {
+        id: `${category}-${index}`, category, name: action.name,
+        attributeKey, defenseSource: action.defense?.sourceText ?? "",
+        harmfulOnly: action.defense?.harmfulOnly ?? false,
+        hasOutcomes: action.outcomes !== null && action.outcomes !== undefined,
+        outcomes,
+        effect: action.effect ?? action.damageSource ?? "",
+        referenceMarkdown: detail ? rewriteSourceLinks(detail.markdown, record, sourceCommit) : "",
+      };
+    }));
+}
+
 function validateRecord(record, lock) {
   if (record?.kind !== "creature") fail(record, "Wrong catalog kind");
   text(record, record.id, "Catalog ID");
@@ -439,6 +464,7 @@ function actorSystem(record, sourceCommit) {
     basicMelee: basicMelee(record),
     actions: {
       orientation: record.actions.orientation,
+      entries: creatureActionEntries(record, sourceCommit),
       introductionMarkdown: rewriteSourceLinks(
         record.actions.introductionMarkdown,
         record,

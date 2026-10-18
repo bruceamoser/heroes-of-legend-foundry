@@ -89,6 +89,104 @@
     },
     "actions": {
       "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Commanding cut",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "7",
+            "standard": "5",
+            "strong": "4"
+          },
+          "effect": "7/5/4",
+          "referenceMarkdown": "### Commanding cut\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Rally",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "One hearing ally within 3 squares either removes Frightened 1 or gains 1 Boon to its next attack before this creature’s next turn (1 additional Bane to its target’s defense if an NPC). Same named bonus does not stack; no free attack.",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
+          "name": "Close the Line",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "One willing ally within 3 squares that can hear may move 1 square immediately, ending adjacent to another ally. This voluntary movement provokes normally; once per turn.",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "maneuver-2",
+          "category": "maneuver",
+          "name": "Defend",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Commanding cut | Agility | 7/5/4 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Rally | One hearing ally within 3 squares either removes Frightened 1 or gains 1 Boon to its next attack before this creature’s next turn (1 additional Bane to its target’s defense if an NPC). Same named bonus does not stack; no free attack. |\n| Close the Line | One willing ally within 3 squares that can hear may move 1 square immediately, ending adjacent to another ally. This voluntary movement provokes normally; once per turn. |\n| Defend | +1 Bane |",

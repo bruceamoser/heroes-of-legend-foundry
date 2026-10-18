@@ -94,6 +94,88 @@
     },
     "actions": {
       "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Verdict of stone",
+          "attributeKey": "reason",
+          "defenseSource": "Reason",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "9 + Dazed 2",
+            "standard": "6 + Dazed 1",
+            "strong": "3"
+          },
+          "effect": "9 + Dazed 2 / 6 + Dazed 1 / 3",
+          "referenceMarkdown": "### Verdict of stone\n\n**Target:** One visible creature within 6 squares. **Player defense:** Reason. **Damage type:** mental.\n\n**Weak defense:** Dazed 2. **Standard defense:** Dazed 1."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Study the Opening",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Threat Bane on next attack this turn.",
+          "referenceMarkdown": "### Study the Opening\n\n*It waits for a tell in the stance, then turns its attention to the exposed line.*\n\nIts next attack before the end of this turn imposes 1 additional Bane on player defense, or gains 1 Boon when player-controlled. One attack only; no stacking with itself."
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
+          "name": "Defend",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Verdict of stone | Reason | 9 + Dazed 2 / 6 + Dazed 1 / 3 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Study the Opening | +1 Threat Bane on next attack this turn. |\n| Defend | +1 Bane |",

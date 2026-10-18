@@ -1,4 +1,5 @@
 import { selectedReferences } from "./reference-play.mjs";
+import { incomingOutcome } from "../rules/creature-actions.mjs";
 import { rollBasis, prepareRoll } from "./roll-preparation.mjs";
 import { classifyRoll } from "../rules/roll.mjs";
 
@@ -67,13 +68,7 @@ export async function evaluatePreparedRoll(
     defenderTokenUuid: basis.defenderTokenUuid,
     rollerId,
     attackMessageId: basis.attackMessageId,
-    attackOutcome: basis.incoming
-      ? {
-          damage: basis.incoming.damage[result.tier],
-          type: "physical",
-          applied: false,
-        }
-      : null,
+    attackOutcome: incomingOutcome(basis.incoming, result.tier),
     attributeKey: basis.attributeKey,
     mode: basis.mode,
     perception: structuredClone(draft.perception ?? {}),
@@ -112,9 +107,11 @@ export function renderRollSummary(message, element) {
   summary.append(detail);
   if (result.attackOutcome) {
     const outcome = document.createElement("p");
-    outcome.textContent = `${result.attackOutcome.damage} physical damage before resistance. The DA can review and apply damage; reactions and wound resolution are still being integrated.`;
+    outcome.textContent = result.attackOutcome.resolution === "reference"
+      ? `${result.attackOutcome.text} · Resolve costs and effects manually.`
+      : `${result.attackOutcome.damage} physical damage before resistance. The DA can review and apply damage; reactions and wound resolution are still being integrated.`;
     summary.append(outcome);
-    if (game.user.isGM && result.attackMessageId) {
+    if (game.user.isGM && result.attackMessageId && result.attackOutcome.resolution !== "reference") {
       const button = document.createElement("button");
       button.type = "button";
       button.textContent = "Review and apply damage";

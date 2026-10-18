@@ -89,6 +89,88 @@
     },
     "actions": {
       "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Tusk sweep",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "8 + Push each target 2",
+            "standard": "6 + Push each target 1",
+            "strong": "4"
+          },
+          "effect": "8 + Push each target 2 / 6 + Push each target 1 / 4",
+          "referenceMarkdown": "### Tusk sweep\n\n*A great limb scythes across the ground, forcing everyone nearby to move.*\n\n**Target:** Up to two creatures within 2 squares. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Push each target 2. **Standard defense:** Push each target 1."
+        },
+        {
+          "id": "main-2",
+          "category": "main",
+          "name": "Driving tusk",
+          "attributeKey": "brawn",
+          "defenseSource": "Brawn",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "9 + push 5",
+            "standard": "6 + push 3",
+            "strong": "4 + push 1"
+          },
+          "effect": "9 + push 5 / 6 + push 3 / 4 + push 1",
+          "referenceMarkdown": "### Driving tusk\n\n*A heavy tusk lifts the intruder and drives it away from the herd.*\n\n**Target:** One creature within 2 squares. **Player defense:** Brawn. **Damage type:** physical.\n\n**Weak defense:** push 5. **Standard defense:** push 3. **Strong defense:** push 1."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Defend",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Tusk sweep | Agility | 8 + Push each target 2 / 6 + Push each target 1 / 4 |\n| Driving tusk | Brawn | 9 + push 5 / 6 + push 3 / 4 + push 1 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Defend | +1 Bane |",

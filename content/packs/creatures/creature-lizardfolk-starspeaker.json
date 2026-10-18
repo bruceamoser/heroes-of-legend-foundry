@@ -89,6 +89,88 @@
     },
     "actions": {
       "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Falling star",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "6 + Blinded 2",
+            "standard": "4 + Blinded 1",
+            "strong": "2"
+          },
+          "effect": "6 + Blinded 2 / 4 + Blinded 1 / 2",
+          "referenceMarkdown": "### Falling star\n\n**Target:** One visible creature within 6 squares. **Player defense:** Agility. **Damage type:** radiant.\n\n**Weak defense:** Blinded 2. **Standard defense:** Blinded 1.\n\n**Limit:** Spell: provokes when cast beside an enemy."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Ride the Current",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Swim 3; provokes.",
+          "referenceMarkdown": "### Ride the Current\n\n*It catches a moving seam of water and lets the current carry its weight.*\n\nWhile in water, move up to 3 squares using its printed swim speed. Pay normal terrain costs and provoke normally. On dry ground this Maneuver has no effect."
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
+          "name": "Defend",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Falling star | Agility | 6 + Blinded 2 / 4 + Blinded 1 / 2 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Ride the Current | Swim 3; provokes. |\n| Defend | +1 Bane |",

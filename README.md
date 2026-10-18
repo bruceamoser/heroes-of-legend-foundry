@@ -1,18 +1,31 @@
 # Heroes of Legend for Foundry VTT
 
-Native Foundry Virtual Tabletop **V14** system for Bruce Moser's **Heroes of Legend**.
+Bruce Moser's **Heroes of Legend**, for Foundry Virtual Tabletop **V14**.
+Version **0.1.0**, verified against Foundry **14.369**. See the [release checklist](docs/release-0.1.0.md) for publication and installation evidence; an unpublished candidate does not make the public URLs available.
 
-**Development preview for Foundry V14.** Character creation, advancement,
-native rolls, encounter actions, damage, conditions and healing potions are
-implemented. Some specialty abilities remain readable references for table
-resolution; a reference does not promise automated mechanics. Release package
-installation is still being validated.
+## Install and update
+
+In Foundry **Setup → Game Systems → Install System**, paste this manifest URL:
+
+```text
+https://github.com/bruceamoser/heroes-of-legend-foundry/releases/latest/download/system.json
+```
+
+Select **Install**, then create a world using **Heroes of Legend**. The manifest becomes available when a full release is published on [GitHub Releases](https://github.com/bruceamoser/heroes-of-legend-foundry/releases). No account on another service or external module is required.
+
+Before updating, back up your world and return to Setup. Use the system's **Update** control, then launch the world again. The release ZIP is version-specific:
+
+```text
+https://github.com/bruceamoser/heroes-of-legend-foundry/releases/download/v0.1.0/heroes-of-legend.zip
+```
+
+For a local candidate, extract the ZIP directly into your isolated test data directory's `Data/systems/heroes-of-legend/`, with `system.json` immediately inside that directory. Never replace a running system's files. Public manifest/update checks and the exact-package isolated test are separate steps in the release checklist.
 
 ## Start playing
 
-1. Install the preview package when its release manifest is available, then create
-   a Foundry V14 world using **Heroes of Legend**. For a local development build,
-   follow [development setup](docs/development.md).
+1. Install the system as described above, then create a Foundry V14 world using
+   **Heroes of Legend**. For a local development build, follow
+   [development setup](docs/development.md).
 2. Join as the GM. A fresh world starts request processing automatically in the
    active GM's window; players do not need to enable a service or seek approval
    for ordinary actions. Keep that GM window connected while playing. A clean
@@ -38,31 +51,19 @@ resuming interrupted work; do not clear saved state or reroll an uncertain old
 operation to force it through. A fresh intentional use or roll is a new action.
 GM processing requires HTTPS or localhost for the browser's exclusive-tab lock.
 
-## Read the specification
+## Included content and manual resolution
 
-1. [System specification](docs/system-specification.md) — scope, rules, workflows and architecture.
-2. [Data contracts](docs/data-contracts.md) — documents, actions, effects and provenance.
-3. [Implementation plan](docs/implementation-plan.md) — small deliverables, dependencies and release gates.
-4. [Acceptance scenarios](docs/acceptance-scenarios.md) — concrete examples the implementation must pass.
-5. [Foundry V14 research](docs/research/foundry-v14.md) — dated official API findings.
-6. [Neon Relic audit](docs/research/neon-relic-audit.md) — reusable patterns and carryover risks.
-7. [Rules authority and content intake](docs/rules-authority.md) — approved rules, source revisions and the incoming DA/bestiary book.
-8. [Decision register](docs/decisions.md) — proposed engineering choices and remaining boundaries.
-9. [Interaction design and visual identity](docs/interaction-design.md) — abilities/modifiers in the roll dialog, creature attack → Defend workflow, drag/drop and the established HOL theme.
+- Import abilities, equipment, creatures and summon profiles from the four compendiums. Creature action cards use their printed defense attribute and exact player-defense outcomes.
+- Use the implemented condition, wound, survival, equipment and healing-potion workflows where applicable; keep source rules available at the table.
 
-The rules are authored in the [Heroes of Legend book repository](https://github.com/bruceamoser/heroes-of-legend). Bruce confirmed that this system implements the current `design/player-book` and `design/rules` materials, with the completed DA/bestiary book to follow. The older Quarto mechanics are historical references.
+Specialty action cards and optional ability references support **manual costs and effects**. They do not automatically interpret every condition, movement clause or special rule. Summons have distinct native reference profiles, portraits and attacker-oriented outcomes; spawning, controller commands, tether checks and lifecycle management remain with the DA. This release does not claim all-ability automation.
 
-Neon Relic is an implementation reference, not this system's code base. HOL uses 3d6 plus one attribute, Boons/Banes, fixed outcome effects, disciplines, alternating sides, persistent wounds and command-driven summons.
+World Actors and Items imported from compendiums are editable snapshots. Updating the system does not silently replace them with new compendium records. Review source changes before importing or applying an update to an existing world document.
 
-## Contributing
+## Development and sources
 
-Read [AGENTS.md](AGENTS.md). Work follows issue → branch → implementation → PR → review → squash merge. The first two issues track [research](https://github.com/bruceamoser/heroes-of-legend-foundry/issues/1) and [specification](https://github.com/bruceamoser/heroes-of-legend-foundry/issues/2).
+Use Node 24 (`.node-version`), `npm ci`, then `npm run check`. Build output is `dist/heroes-of-legend/`; `npm run package:release` creates the install artifacts. Read [AGENTS.md](AGENTS.md), [development and native test evidence](docs/development.md), [data contracts](docs/data-contracts.md) and [acceptance scenarios](docs/acceptance-scenarios.md).
 
-Licensing remains undecided. This preview grants no new rights to the code, rulebook content or artwork.
+Rules are authored in the [Heroes of Legend book repository](https://github.com/bruceamoser/heroes-of-legend). The system uses the pinned approved player/DA source baseline recorded in [rules authority](docs/rules-authority.md) and `content/source-lock.json`. [Interaction design](docs/interaction-design.md) and the [decision register](docs/decisions.md) describe the current scope.
 
-## Development
-
-See [development setup and test evidence](docs/development.md). Build with Node 24
-using `npm ci` and `npm run check`; output is `dist/heroes-of-legend/`. Static test
-results and native runtime evidence are recorded separately. All runtime fixtures
-use a disposable development world, never a live campaign.
+Code and content licensing remain undecided. Retained source, artwork and provenance notices do not create additional license grants or assign a new license to the books or artwork.

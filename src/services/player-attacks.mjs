@@ -1,3 +1,4 @@
+import { selectedReferences } from "./reference-play.mjs";
 import { continueAction, declareAction } from "../rules/actions.mjs";
 import { isMeleeWeaponEquipment } from "../rules/equipment-identity.mjs";
 import { classifyRoll } from "../rules/roll.mjs";
@@ -874,6 +875,8 @@ function validateOperationResult(operation) {
       normalizedFormula(plan.formula)
   )
     throw new Error("The authoritative Basic Melee roll formula changed.");
+  if (operation.references && JSON.stringify(snapshot.references) !== JSON.stringify(operation.references))
+    throw new Error("The saved Basic Melee references changed.");
   if (!woundApplicabilityMatches(snapshot, operation.draft))
     throw new Error(
       "The authoritative Basic Melee wound applicability changed.",
@@ -986,6 +989,7 @@ async function presentAttack(message, operation) {
 
 function evaluatedResult(operation, evaluated) {
   const snapshot = structuredClone(evaluated.snapshot);
+  snapshot.references = structuredClone(operation.references ?? snapshot.references ?? []);
   snapshot.actorTokenUuid = operation.basis.actorTokenUuid;
   snapshot.targetActorUuid = operation.basis.target.actorUuid;
   snapshot.targetTokenUuid = operation.basis.target.tokenUuid;
@@ -1007,6 +1011,7 @@ function recoveryResult(operation, retained, result, recovery) {
     plan = prepareRoll(operation.basis, operation.draft),
     snapshot = {
       schemaVersion: 2,
+      references: structuredClone(operation.references ?? []),
       actorUuid: operation.actorUuid,
       actorTokenUuid: operation.basis.actorTokenUuid,
       targetActorUuid: operation.basis.target.actorUuid,
@@ -1247,6 +1252,7 @@ async function apply(id) {
     request: structuredClone(request),
     basis: structuredClone(checked.current),
     draft: structuredClone(request.draft),
+    references: selectedReferences(checked.actor, request.draft, { mode: "attack", user: message.author }),
     weapon: structuredClone(checked.current.weapon),
     weaponName: checked.weapon.name,
     attackerName: checked.actor.name,

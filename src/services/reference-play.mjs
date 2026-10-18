@@ -72,3 +72,20 @@ export async function postAbilityReference(item) {
     flags: { [ID]: { abilityReference: reference } },
   }));
 }
+
+
+export function referencePickerOptions(actor, draft, options = {}) {
+  return referenceAbilities(actor, options).map(item => ({
+    id: item.id, name: item.name, selected: (draft.referenceItemIds ?? []).includes(item.id),
+  }));
+}
+export function readReferenceSelection(element) {
+  return Array.from(element.querySelectorAll("[data-reference-id]:checked"), input => input.dataset.referenceId);
+}
+export function bindReferenceSearch(element) {
+  element.querySelector("[data-reference-search]")?.addEventListener("input", event => {
+    const query = event.target.value.toLocaleLowerCase();
+    for (const row of element.querySelectorAll("[data-reference-row]"))
+      row.hidden = !row.textContent.toLocaleLowerCase().includes(query);
+  });
+}

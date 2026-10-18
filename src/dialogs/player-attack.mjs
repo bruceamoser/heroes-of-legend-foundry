@@ -1,3 +1,4 @@
+import { referencePickerOptions, readReferenceSelection, bindReferenceSearch } from "../services/reference-play.mjs";
 import {
   situationalRollDraft,
   situationalAdjustmentLabel,
@@ -23,6 +24,7 @@ export class BasicMeleeDialog extends foundry.applications.api.HandlebarsApplica
       weaponItemUuid: "",
       ...situationalRollDraft(),
       adjustmentOverride: false,
+      referenceItemIds: [],
       perception: {},
       woundApplicability: {},
       rulingReason: "",
@@ -123,6 +125,7 @@ export class BasicMeleeDialog extends foundry.applications.api.HandlebarsApplica
     }
     return {
       ...context,
+      references: referencePickerOptions(this.item.actor, this.draft),
       weapons: this.context.weapons,
       multipleWeapons: this.context.weapons.length > 1,
       weaponName: this.context.weapons.find(weapon => weapon.uuid === this.context.weaponItemUuid)?.name ?? "No held melee weapon",
@@ -204,6 +207,7 @@ export class BasicMeleeDialog extends foundry.applications.api.HandlebarsApplica
       ...this.draft,
       weaponItemUuid: value("weaponItemUuid") ?? this.draft.weaponItemUuid,
       adjustment: Number(value("adjustment") ?? 0),
+      referenceItemIds: readReferenceSelection(this.element),
       perception: Object.fromEntries(
         this.fears.map((source, index) => [
           source,
@@ -281,6 +285,7 @@ export class BasicMeleeDialog extends foundry.applications.api.HandlebarsApplica
       this.readDraft();
       await this.render();
     });
+    bindReferenceSearch(this.element);
     this.preview();
   }
 

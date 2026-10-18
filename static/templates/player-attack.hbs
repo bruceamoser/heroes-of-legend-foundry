@@ -28,6 +28,11 @@
     <input type="range" name="adjustment" min="-3" max="3" step="1" value="{{draft.adjustment}}" aria-label="Boons or Banes" aria-valuetext="{{adjustmentLabel}}">
     <span class="hol-adjustment-scale" aria-hidden="true"><span>−3 Banes</span><span>0</span><span>+3 Boons</span></span>
   </label>
+  {{#if references}}<details class="hol-context-options hol-reference-picker"><summary>Ability references (optional)</summary>
+    <p>Reference only · no automatic bonus or cost</p>
+    <label>Find ability<input type="search" data-reference-search></label>
+    <ul>{{#each references}}<li data-reference-row><label><input type="checkbox" data-reference-id="{{id}}" {{#if selected}}checked{{/if}}> {{name}}</label></li>{{/each}}</ul>
+  </details>{{/if}}
   <details class="hol-context-options"><summary>Roll details</summary>
   <ul class="hol-roll-sources">{{#each sources}}<li>{{label}}: {{amount}} {{kind}}{{#if automatic}} · automatic{{/if}}</li>{{/each}}</ul>
     <p class="hol-roll-totals" aria-live="polite">{{totals}}</p>

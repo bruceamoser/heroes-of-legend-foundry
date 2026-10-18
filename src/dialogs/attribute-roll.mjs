@@ -1,4 +1,4 @@
-import { referenceAbilities } from "../services/reference-play.mjs";
+import { referencePickerOptions, readReferenceSelection, bindReferenceSearch } from "../services/reference-play.mjs";
 import {
   situationalRollDraft,
   situationalAdjustmentLabel,
@@ -103,9 +103,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
         : [];
     this.pendingResponse = Boolean(this.basis.survival?.pending);
     return {
-      references: referenceAbilities(this.actor, { mode: this.mode, defenderTokenUuid: this.defenderTokenUuid }).map(item => ({
-        id: item.id, name: item.name, selected: this.draft.referenceItemIds.includes(item.id),
-      })),
+      references: referencePickerOptions(this.actor, this.draft, { mode: this.mode, defenderTokenUuid: this.defenderTokenUuid }),
       name: this.actor.name,
       death: this.mode === "death",
       gritAvailable: this.basis.survival?.gritAvailable,
@@ -164,7 +162,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
     this.draft = {
       ...this.draft,
       adjustment: Number(value("adjustment") ?? 0),
-      referenceItemIds: Array.from(this.element.querySelectorAll("[data-reference-id]:checked"), input => input.dataset.referenceId),
+      referenceItemIds: readReferenceSelection(this.element),
       perception: Object.fromEntries(
         this.fears.map((source, index) => [source, checked(`fear-${index}`) ? "yes" : "no"]),
       ),
@@ -244,11 +242,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       this.readDraft();
       this.preview();
     });
-    this.element.querySelector("[data-reference-search]")?.addEventListener("input", event => {
-      const query = event.target.value.toLocaleLowerCase();
-      for (const row of this.element.querySelectorAll("[data-reference-row]"))
-        row.hidden = !row.textContent.toLocaleLowerCase().includes(query);
-    });
+    bindReferenceSearch(this.element);
     this.preview();
   }
   static async changeDefender() {

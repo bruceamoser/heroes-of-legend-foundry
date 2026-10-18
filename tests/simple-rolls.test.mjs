@@ -70,17 +70,18 @@ test("attack follows one native target and unregisters its target hook", async (
   dialog.fears = [];
   dialog.basis = { woundModifiers: [] };
   dialog.draft.weaponItemUuid = "Actor.a.Item.only-weapon";
-  dialog.element = { querySelector: () => null };
+  dialog.element = { querySelectorAll: () => [], querySelector: () => null };
   dialog.readDraft();
   assert.equal(dialog.draft.weaponItemUuid, "Actor.a.Item.only-weapon");
-  dialog.element = { querySelector: selector => selector === '[name="weaponItemUuid"]'
+  dialog.element = { querySelectorAll: () => [{ dataset: { referenceId: "winter" } }], querySelector: selector => selector === '[name="weaponItemUuid"]'
     ? { value: "Actor.a.Item.other-weapon" } : null };
   dialog.readDraft();
   assert.equal(dialog.draft.weaponItemUuid, "Actor.a.Item.other-weapon");
+  assert.deepEqual(dialog.selection().draft.referenceItemIds, ["winter"]);
   const label = {}, slider = { setAttribute: (key, value) => { slider[key] = value; } };
   dialog.context = { basis: null, reasons: ["Use Foundry targeting."] };
   dialog.draft.adjustment = 3;
-  dialog.element = { querySelector: selector => ({
+  dialog.element = { querySelectorAll: () => [], querySelector: selector => ({
     ".hol-roll-sources": { replaceChildren() {} },
     "output": {}, ".hol-roll-totals": {}, '[data-action="attack"]': {},
     "[data-adjustment-label]": label, "[name=adjustment]": slider,

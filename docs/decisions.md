@@ -106,3 +106,13 @@ entry. Creation purchase removal belongs on the starting inventory row, retainin
 item identity and refunding that purchase without touching same-type grants.
 Bruce confirmed that the existing universal Shield Block / equipment-grant
 explanation resolves his shield concern; no shield rule change is requested.
+
+
+## October 18 Recipes and table density (#166)
+
+Bruce requested a Recipes tab only for characters who own recipes, with no recipe
+sections on Main or Inventory. Show owned recipes even when no matching crafting
+ability is learned. Put known disciplines and ranks above the Abilities search,
+and tighten Inventory and Abilities without removing their play controls or local
+references. Label slider ends Banes (left) and Boons (right), retaining the existing
+negative/positive roll convention. This pass changes the web workshop presentation.

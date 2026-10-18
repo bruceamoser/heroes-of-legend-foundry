@@ -16,9 +16,10 @@ available to screen readers. No full-width labeled sidebar consumes the panel.
 
 | Tab         | Contents                                                                                                                                                                                |
 | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Main        | Concise Main Action, Maneuver, Reaction and Passive tables; movement/other timings stay explicit. Owned-weapon basics, ancestry traits, recipe rolls, defenses, carrying statistics and editable conditions. |
-| Abilities   | Searchable learned-ability tables with local detail dialogs, discipline filtering and universal actions.                                                                                                               |
-| Inventory   | Grants, purchases and play additions, add/delete controls, sources, supply dice, quantities, Bulk, carried/worn/held controls and recipes.                                                                          |
+| Main        | Concise Main Action, Maneuver, Reaction and Passive tables; movement/other timings stay explicit. Owned-weapon basics, ancestry traits, defenses, carrying statistics and editable conditions. |
+| Abilities   | Known disciplines and ranks first, followed by searchable learned-ability tables with local detail dialogs, discipline filtering and universal actions.                                                                                                               |
+| Inventory   | Grants, purchases and play additions, add/delete controls, sources, supply dice, quantities, Bulk and carried/worn/held controls.                                                                          |
+| Recipes     | Visible only when recipes are owned; local recipe details, related crafting abilities and repeatable rolls. |
 | Character   | Ancestry, culture, background, traits, editable languages, player and story.                                                                                                           |
 | Development | Current, spent and total DP; level plus/minus; Spend DP and separate missing-signature choices; collapsible creation and advancement ledgers.                                                                      |
 
@@ -254,3 +255,29 @@ detail dialogs, keyboard return to Main, and direct purchase removal after a
 sheet-side deletion (including preservation of a same-type granted shield and
 coin/Bulk restoration). Desktop, 900px window and mobile screenshots inspected.
 No native Foundry behavior or portable schema changes in this pass.
+
+
+## Recipes and compact tables (#166)
+
+Recipes have a dedicated hanging tab, visible only while the character owns at
+least one recipe. Recipe entries are removed from Main and Inventory. Each owned
+recipe remains visible even without a matching learned crafting ability; available
+crafting rolls and local references live together here. Keyboard navigation follows
+the visible tabs, reload retains the selected tab, and a saved Recipes selection
+falls back to Main when the current character has no recipes.
+
+Abilities starts with a compact table of known disciplines and their actual ranks,
+with names opening local references. It remains visible above search and filtering.
+Inventory uses narrower numeric/control columns and tighter rows while retaining
+sources, supply dice and all play controls. Abilities uses tighter controls and
+brief summaries, with full text available by clicking a name.
+
+Crafting roll sliders label **Banes** on the left and **Boons** on the right. The
+center shows the selected count (or Even), also exposed as the accessible slider
+value. Negative values remain Banes and positive values remain Boons.
+
+Validation: Node 24 full checks passed, including all 385 unit tests. Chromium
+checks cover conditional tabs, keyboard navigation, reload and stale-tab fallback,
+discipline references, both slider ends and repeated rolls. Desktop Abilities,
+Inventory, the roll dialog and 390px Recipes screenshots were inspected. No native
+Foundry behavior or portable schema changes in this pass.

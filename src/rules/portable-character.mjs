@@ -1,8 +1,8 @@
-import { creationPreview } from "./creation.mjs";
 import { ATTRIBUTES } from "./character.mjs";
+import { workshopCharacter } from "./workshop-character.mjs";
 
 export const PORTABLE_FORMAT = "heroes-of-legend-character";
-export const PORTABLE_VERSION = 1;
+export const PORTABLE_VERSION = 2;
 export const MAX_CHARACTER_BYTES = 262144;
 const object = (value) =>
   value && typeof value === "object" && !Array.isArray(value);
@@ -23,7 +23,7 @@ export function readPortableCharacter(input, catalogs, languages) {
   if (
     !object(value) ||
     value.format !== PORTABLE_FORMAT ||
-    value.schemaVersion !== PORTABLE_VERSION
+    ![1, PORTABLE_VERSION].includes(value.schemaVersion)
   )
     throw new Error("Choose a supported Heroes of Legend character JSON file.");
   if (value.sourceCommit !== catalogs.commit)
@@ -129,8 +129,89 @@ export function readPortableCharacter(input, catalogs, languages) {
       !integer(p.hands ?? 0)
     )
       fail();
-    return { id: p.id, quantity: p.quantity, hands: p.hands ?? 0 };
+    if (
+      p.instanceId !== undefined &&
+      !/^shop-[a-z0-9-]{1,80}$/.test(p.instanceId)
+    )
+      fail();
+    return {
+      id: p.id,
+      quantity: p.quantity,
+      hands: p.hands ?? 0,
+      ...(p.instanceId ? { instanceId: p.instanceId } : {}),
+    };
   });
+  if (d.coinOverride !== undefined) {
+    if (typeof d.coinOverride !== "boolean") fail();
+    draft.coinOverride = d.coinOverride;
+  }
+  for (const key of ["loadout", "basicActions"]) {
+    if (d[key] === undefined) continue;
+    if (!object(d[key]) || Object.keys(d[key]).length > 500) fail();
+    draft[key] = {};
+    for (const [id, entry] of Object.entries(d[key])) {
+      if (!/^[a-z0-9:-]{1,200}$/.test(id)) fail();
+      if (key === "basicActions") {
+        if (!id.startsWith("ability-") || typeof entry !== "boolean") fail();
+        draft[key][id] = entry;
+      } else {
+        if (!object(entry)) fail();
+        draft[key][id] = {};
+        for (const prop of ["carried", "worn", "held"])
+          if (entry[prop] !== undefined) {
+            if (typeof entry[prop] !== "boolean") fail();
+            draft[key][id][prop] = entry[prop];
+          }
+      }
+    }
+  }
+  if (d.progression !== undefined) {
+    if (
+      !object(d.progression) ||
+      !integer(d.progression.level) ||
+      d.progression.level < 1 ||
+      d.progression.level > 100 ||
+      !object(d.progression.levels)
+    )
+      fail();
+    draft.progression = { level: d.progression.level, levels: {} };
+    for (const [level, entry] of Object.entries(d.progression.levels)) {
+      if (
+        !/^(?:[2-9]|[1-9]\d|100)$/.test(level) ||
+        Number(level) < 2 ||
+        Number(level) > 100 ||
+        !object(entry)
+      )
+        fail();
+      // Reuse the same bounded purchase/acquisition parser for every level.
+      const nested = readPortableCharacter(
+        {
+          format: PORTABLE_FORMAT,
+          schemaVersion: PORTABLE_VERSION,
+          sourceCommit: catalogs.commit,
+          draft: {
+            ...draft,
+            progression: undefined,
+            purchases: { 0: [], 1: entry.purchases },
+            acquisitions: entry.acquisitions ?? {},
+          },
+        },
+        catalogs,
+        languages,
+      ).draft;
+      const signatures = {};
+      if (entry.signatures !== undefined && !object(entry.signatures)) fail();
+      for (const [tier, id] of Object.entries(entry.signatures ?? {})) {
+        if (!["3", "7"].includes(tier) || !string(id)) fail();
+        signatures[tier] = id;
+      }
+      draft.progression.levels[level] = {
+        purchases: nested.purchases[1],
+        acquisitions: nested.acquisitions,
+        signatures,
+      };
+    }
+  }
   if (d.profile !== undefined) {
     if (!object(d.profile)) fail();
     draft.profile = {};
@@ -140,12 +221,7 @@ export function readPortableCharacter(input, catalogs, languages) {
         draft.profile[key] = d.profile[key];
       }
   }
-  const preview = creationPreview(
-    draft,
-    catalogs.choices,
-    catalogs.inventory,
-    languages,
-  );
+  const preview = workshopCharacter(draft, catalogs, languages);
   return { draft, preview };
 }
 
@@ -165,7 +241,7 @@ export function writePortableCharacter(
     throw new Error(
       "Finish the choices in Review before exporting a ready character. You can save a draft at any time.",
     );
-  return JSON.stringify(
+  const text = JSON.stringify(
     {
       ...value,
       status: normalized.preview.valid ? "ready" : "draft",
@@ -174,4 +250,9 @@ export function writePortableCharacter(
     null,
     2,
   );
+  if (new TextEncoder().encode(text).length > MAX_CHARACTER_BYTES)
+    throw new Error(
+      "Character file is too large. Shorten the draft before saving.",
+    );
+  return text;
 }

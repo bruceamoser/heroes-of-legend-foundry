@@ -70,7 +70,7 @@ test("malformed, excessive and incompatible files fail before mutation", () => {
     writePortableCharacter(newCreationDraft(), catalogs),
   );
   for (const edit of [
-    (v) => (v.schemaVersion = 2),
+    (v) => (v.schemaVersion = 3),
     (v) => (v.sourceCommit = "old"),
     (v) => (v.draft.purchases[0] = null),
     (v) => (v.draft.languages.home = []),

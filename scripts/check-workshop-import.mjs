@@ -57,6 +57,30 @@ try {
     );
     await window.holWorkshopWizard.render({ force: true });
   });
+  // A later-level plan must not be silently imported as a level-1 hero.
+  const advanced = JSON.parse(data);
+  advanced.draft.progression = { level: 2, levels: {} };
+  const advancedChooser = page.waitForEvent("filechooser");
+  await page
+    .getByRole("button", { name: "Import character JSON", exact: true })
+    .click();
+  await (
+    await advancedChooser
+  ).setFiles({
+    name: "advanced.json",
+    mimeType: "application/json",
+    buffer: Buffer.from(JSON.stringify(advanced)),
+  });
+  await page.getByText(/This file includes later-level advancement/).waitFor();
+  assert.equal(
+    await page.evaluate(
+      () =>
+        game.actors
+          .get(window.holWorkshopActorId)
+          .getFlag("heroes-of-legend", "creationDraft")?.revision ?? 0,
+    ),
+    0,
+  );
   const chooser = page.waitForEvent("filechooser");
   await page
     .getByRole("button", { name: "Import character JSON", exact: true })

@@ -33,6 +33,16 @@ without requiring pixel fidelity. Do not add preview disclaimers to the product
 interface. Bruce requested direct implementation without delegation for this
 design work. Tracked in #155 and #156.
 
+October 18 compact-tool refinement (#158): only the content pane scrolls;
+header, icon tabs and learning DP remain visible. Culture/background names
+include grants. Equipment exposes grants, supply dice, Bulk and equip/remove
+controls. Rename Encounter to Main, use concise action tables grouped by timing,
+show ancestry traits/defenses and recipe rolls, and expose basic-action visibility
+in Edit mode. Add named local saves, explicit coin overspend override, DP totals
+and reversible level plans with advancement learning. Keep creation history in
+the web Development tab, not the eventual native one. No Wear Light Armor rule
+exists in the inspected approved source; do not invent one.
+
 | ID | Proposal | Reason / decision point |
 |---|---|---|
 | D04 | Package ID `heroes-of-legend`; V14 only; first runtime target 14.369. | Stable compact system identity; no V13 compatibility baggage. Confirm availability before package listing. |

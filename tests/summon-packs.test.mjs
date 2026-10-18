@@ -141,7 +141,7 @@ test("summon sheet offers source references without character or lifecycle contr
   assert(!/<input|<textarea|<select/.test(template));
   assert.deepEqual(
     [...template.matchAll(/data-action="([^"]+)"/g)].map((m) => m[1]),
-    ["viewPortrait"],
+    ["viewPortrait", "updateProfile"],
   );
   assert(!sheet.includes("extends CharacterSheet"));
   assert(!sheet.includes("CreatureSheet"));

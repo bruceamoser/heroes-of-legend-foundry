@@ -18,7 +18,7 @@ const heroes = JSON.parse(
   ),
 );
 const oldCommit = "64089a1c8961d7faff172f179448a8b6e57827ef";
-const currentCommit = "d67e046466bdd5052360b96ed91861d607091446";
+const currentCommit = "bdfd18ed535fbd0e1892b9344444abf6da644809";
 const origin = "origin-culture-cloister-valleys";
 const oldDraft = structuredClone(heroes.characters[0].draft);
 oldDraft.culture = { id: origin, pair: 0, retainedFrom: oldCommit };

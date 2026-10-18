@@ -39,7 +39,7 @@
       "baseMax": 16,
       "sourceText": "16"
     },
-    "cv": 23,
+    "cv": 25,
     "speed": 6,
     "speedSource": "6",
     "alternateSpeeds": [],
@@ -98,6 +98,7 @@
           "id": "main-0",
           "category": "main",
           "name": "Basic Melee",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -114,6 +115,7 @@
           "id": "main-1",
           "category": "main",
           "name": "Accusation",
+          "abilityId": "",
           "attributeKey": "reason",
           "defenseSource": "Reason",
           "harmfulOnly": false,
@@ -130,6 +132,7 @@
           "id": "maneuver-0",
           "category": "maneuver",
           "name": "Spectral Passage",
+          "abilityId": "monster-spectral-passage",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -146,6 +149,7 @@
           "id": "maneuver-1",
           "category": "maneuver",
           "name": "Defend",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -161,7 +165,25 @@
         {
           "id": "reaction-0",
           "category": "reaction",
+          "name": "Answering Lament",
+          "abilityId": "monster-answering-lament",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "After taking HP damage: a hearing attacker within 3 gains Frightened 2.",
+          "referenceMarkdown": "### Answering Lament\n\n*Its outline shudders with the injury and a grieving note rises from somewhere behind the attacker.*\n\nAfter an attack resolves and deals HP damage to this creature, one visible attacker within 3 squares that can hear it gains Frightened 2 of this creature. This creature must survive and remain capable. No trigger from a free attack or another retaliatory effect. Frightened applies only while this creature is perceptible."
+        },
+        {
+          "id": "reaction-1",
+          "category": "reaction",
           "name": "Opportunity Attack",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -178,13 +200,13 @@
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Accusation | Reason | 5 + Dazed 2 / 3 + Dazed 1 / 2 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Spectral Passage | Move up to 2 squares through nonliving walls, finishing in a visible legal empty space. Cannot cross living bodies or remain in a wall. Provokes on leaving reach; does not bypass a ward expressly barring spirits. |\n| Defend | +1 Bane |",
-      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Opportunity Attack | Basic Melee |"
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Answering Lament | After taking HP damage: a hearing attacker within 3 gains Frightened 2. |\n| Opportunity Attack | Basic Melee |"
     },
     "details": {
       "flavorMarkdown": "*A translucent human figure in rain-soaked clothing, its expression fixed between grief and accusation. Details of its appearance belong to the last unresolved moments of its life.*",
-      "specialtyMarkdown": "### Accusation\n\n*For a moment, the victim remembers a pain that has not happened yet.*\n\n**Target:** One visible creature within 5 squares. **Player defense:** Reason. **Damage type:** mental.\n\n**Weak defense:** Dazed 2. **Standard defense:** Dazed 1.\n\n**Spell:** Provokes when cast beside an enemy.",
-      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Lifeless Body:** does not breathe or eat; only the listed immunities apply.\n\n**Anchor Bound:** Its rain-soaked letter identifies the witness. Reading it aloud while holding it costs Main and removes the ghost’s physical DR until the reader’s next turn. Repetition renews, not stacks. A summoned ghost has no anchor; dies at 0 normally.\n\n**Healing:** Spirit: ordinary magical HP healing applies; potions cannot be swallowed.\n\n**Senses:** Ordinary sight and hearing.\n\n**Signs:** One room remains cold and wet whatever the weather.\n\n**Purpose:** Have the truth of its death heard.\n\n**Tactics and retreat:** Pass through a wall to escape pressure, then use a mind-hammering accusation.\n\n**Counterplay and conversation:** Find the person or evidence named in its repeated question.\n\n**Habitat:** House; ruin · **Communication:** Languages known in life\n\n**Loot:** Revealing the truth may open an inheritance or hidden cache.\n\n**Summoning:** Spirit 3 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/summons/sorrow-ghost.md).",
-      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-sorrow-ghost\n\n\n**Category:** Spirit · **Role:** Haunter · **CV:** 23\n\n**Difficulty rationale:** An agile or elusive body warrants attack Banes. Its dangerous attack imposes defense Banes.\n\n**Reference damage:** 2/3/5\n\n**Reference type:** mental\n\n**Expected targets:** 1\n\n**Utility factor:** 1.55\n\n**Regeneration per turn:** 0\n\nReference I=2.404, O=3.653. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [anchor bound](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/anchor-bound.md), [lifeless body](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/lifeless-body.md), [mind hammer](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/mind-hammer.md), [spectral passage](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/spectral-passage.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/rules/stability.md)"
+      "specialtyMarkdown": "### Accusation\n\n*For a moment, the victim remembers a pain that has not happened yet.*\n\n**Target:** One visible creature within 5 squares. **Player defense:** Reason. **Damage type:** mental.\n\n**Weak defense:** Dazed 2. **Standard defense:** Dazed 1.\n\n**Spell:** Provokes when cast beside an enemy.\n\n### Answering Lament\n\n*Its outline shudders with the injury and a grieving note rises from somewhere behind the attacker.*\n\nAfter an attack resolves and deals HP damage to this creature, one visible attacker within 3 squares that can hear it gains Frightened 2 of this creature. This creature must survive and remain capable. No trigger from a free attack or another retaliatory effect. Frightened applies only while this creature is perceptible.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Lifeless Body:** does not breathe or eat; only the listed immunities apply.\n\n**Anchor Bound:** Its rain-soaked letter identifies the witness. Reading it aloud while holding it costs Main and removes the ghost’s physical DR until the reader’s next turn. Repetition renews, not stacks. A summoned ghost has no anchor; dies at 0 normally.\n\n**Healing:** Spirit: ordinary magical HP healing applies; potions cannot be swallowed.\n\n**Senses:** Ordinary sight and hearing.\n\n**Signs:** One room remains cold and wet whatever the weather.\n\n**Purpose:** Have the truth of its death heard.\n\n**Tactics and retreat:** Pass through a wall to escape pressure, then use a mind-hammering accusation.\n\n**Counterplay and conversation:** Find the person or evidence named in its repeated question.\n\n**Habitat:** House; ruin · **Communication:** Languages known in life\n\n**Loot:** Revealing the truth may open an inheritance or hidden cache.\n\n**Summoning:** Spirit 3 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/summons/sorrow-ghost.md).",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-sorrow-ghost\n\n\n**Category:** Spirit · **Role:** Haunter · **CV:** 25\n\n**Difficulty rationale:** An agile or elusive body warrants attack Banes. Its dangerous attack imposes defense Banes.\n\n**Reference damage:** 2/3/5\n\n**Reference type:** mental\n\n**Expected targets:** 1\n\n**Utility factor:** 1.65\n\n**Action review (#1279):** U 1.55 → 1.65: Maneuver allowance +0, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=2.404, O=3.653. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [anchor bound](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/anchor-bound.md), [Answering Lament](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/answering-lament.md), [lifeless body](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/lifeless-body.md), [mind hammer](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/mind-hammer.md), [spectral passage](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/spectral-passage.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/rules/stability.md)"
     },
     "biography": ""
   },
@@ -210,9 +232,9 @@
       "catalogId": "creature-sorrow-ghost",
       "source": {
         "path": "design/bestiary/creatures/sorrow-ghost.md",
-        "sha256": "e2720f38bb2ded73223e55d220cfb878b927499e49263ffafb5310f8e39f024b"
+        "sha256": "5eef12dcfb476ee9cfdbe2f9f6b6d16ab487bea80f12dcc0f4883ec648c7ad85"
       },
-      "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
+      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Printed profile · specialty automation pending",
@@ -220,7 +242,7 @@
       "classification": {
         "category": "Spirit",
         "role": "Haunter",
-        "cv": 23
+        "cv": 25
       },
       "family": "Ghosts, shadows and wraiths",
       "abilitySources": [
@@ -229,6 +251,12 @@
           "id": "monster-anchor-bound",
           "path": "design/monster-abilities/anchor-bound.md",
           "sha256": "df1343b49dec70f0416d9fc4b4101b17a12be709d4b61cd5f0a5437d601935e1"
+        },
+        {
+          "label": "Answering Lament",
+          "id": "monster-answering-lament",
+          "path": "design/monster-abilities/answering-lament.md",
+          "sha256": "bf2d67b7b4ad3a61abfbbc802988330f338b040573514ccbebb833eb94e5997a"
         },
         {
           "label": "lifeless body",
@@ -247,6 +275,88 @@
           "id": "monster-spectral-passage",
           "path": "design/monster-abilities/spectral-passage.md",
           "sha256": "bf8df97f2ce18a68e7ec05a916ede170222122421f6a7f51d05b6909fa9d26ef"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-anchor-bound",
+          "path": "design/monster-abilities/anchor-bound.md",
+          "sha256": "df1343b49dec70f0416d9fc4b4101b17a12be709d4b61cd5f0a5437d601935e1",
+          "name": "Anchor Bound",
+          "action": "Passive",
+          "flavorMarkdown": "*Every step drags an invisible chain back toward the thing it cannot abandon.*",
+          "rulesMarkdown": "The entry names a visible anchor and its interaction. Destroying or resolving that anchor has only the printed effect. Unless stated otherwise, the creature dies at 0 and does not regenerate a new body. A story hook is not automatic immunity.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Anchor Bound\n\n*Every step drags an invisible chain back toward the thing it cannot abandon.*\n\n## Rules\n\n**ID:** monster-anchor-bound\n\n\n**Action:** Passive\n\nThe entry names a visible anchor and its interaction. Destroying or resolving that anchor has only the printed effect. Unless stated otherwise, the creature dies at 0 and does not regenerate a new body. A story hook is not automatic immunity.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/anchor-bound.md",
+            "sha256": "df1343b49dec70f0416d9fc4b4101b17a12be709d4b61cd5f0a5437d601935e1"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-answering-lament",
+          "path": "design/monster-abilities/answering-lament.md",
+          "sha256": "bf2d67b7b4ad3a61abfbbc802988330f338b040573514ccbebb833eb94e5997a",
+          "name": "Answering Lament",
+          "action": "Reaction",
+          "flavorMarkdown": "*Its outline shudders with the injury and a grieving note rises from somewhere behind the attacker.*",
+          "rulesMarkdown": "After an attack resolves and deals HP damage to this creature, one visible attacker within 3 squares that can hear it gains Frightened 2 of this creature. This creature must survive and remain capable. No trigger from a free attack or another retaliatory effect. Frightened applies only while this creature is perceptible.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Answering Lament\n\n*Its outline shudders with the injury and a grieving note rises from somewhere behind the attacker.*\n\n## Rules\n\n**ID:** monster-answering-lament\n\n**Action:** Reaction\n\nAfter an attack resolves and deals HP damage to this creature, one visible attacker within 3 squares that can hear it gains Frightened 2 of this creature. This creature must survive and remain capable. No trigger from a free attack or another retaliatory effect. Frightened applies only while this creature is perceptible.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/answering-lament.md",
+            "sha256": "bf2d67b7b4ad3a61abfbbc802988330f338b040573514ccbebb833eb94e5997a"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-lifeless-body",
+          "path": "design/monster-abilities/lifeless-body.md",
+          "sha256": "248c16c6e641d2042cd94a05e7e8bfce03b5177f4f57cda241b46d9b16de4d81",
+          "name": "Lifeless Body",
+          "action": "Passive",
+          "flavorMarkdown": "*Nothing breathes beneath the torn coat; nothing living looks through the visor.*",
+          "rulesMarkdown": "The card must list its exact condition immunities; this trait grants no additional unlisted ones. It does not breathe or need food. Undead entries marked healing-harmed take a healing result as Life damage; constructs marked repair-only do not regain HP from ordinary healing. Neither rule prevents physical attacks from dealing their normal minimum damage.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Lifeless Body\n\n*Nothing breathes beneath the torn coat; nothing living looks through the visor.*\n\n## Rules\n\n**ID:** monster-lifeless-body\n\n\n**Action:** Passive\n\nThe card must list its exact condition immunities; this trait grants no additional unlisted ones. It does not breathe or need food. Undead entries marked healing-harmed take a healing result as Life damage; constructs marked repair-only do not regain HP from ordinary healing. Neither rule prevents physical attacks from dealing their normal minimum damage.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/lifeless-body.md",
+            "sha256": "248c16c6e641d2042cd94a05e7e8bfce03b5177f4f57cda241b46d9b16de4d81"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-mind-hammer",
+          "path": "design/monster-abilities/mind-hammer.md",
+          "sha256": "ed7eb267ffcab70bbfb82a6a7ed42f68b369e5b981355dfd787a82cbe6404264",
+          "name": "Mind Hammer",
+          "action": "Main Action; spell",
+          "flavorMarkdown": "*For a moment, the victim remembers a pain that has not happened yet.*",
+          "rulesMarkdown": "Use the printed mental attack. Standard also applies Dazed 1; Strong applies Dazed 2. Ordinary turn-start action choices and end-turn decay apply. Damage and the condition use one outcome, not two rolls.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Mind Hammer\n\n*For a moment, the victim remembers a pain that has not happened yet.*\n\n## Rules\n\n**ID:** monster-mind-hammer\n\n\n**Action:** Main Action; spell\n\nUse the printed mental attack. Standard also applies Dazed 1; Strong applies Dazed 2. Ordinary turn-start action choices and end-turn decay apply. Damage and the condition use one outcome, not two rolls.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/mind-hammer.md",
+            "sha256": "ed7eb267ffcab70bbfb82a6a7ed42f68b369e5b981355dfd787a82cbe6404264"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-spectral-passage",
+          "path": "design/monster-abilities/spectral-passage.md",
+          "sha256": "bf8df97f2ce18a68e7ec05a916ede170222122421f6a7f51d05b6909fa9d26ef",
+          "name": "Spectral Passage",
+          "action": "Maneuver",
+          "flavorMarkdown": "*The outline goes thin as candle smoke and spills through a crack in the stone.*",
+          "rulesMarkdown": "Move up to 2 squares, including through nonliving walls at movement cost 1, but finish in a visible legal unoccupied space. Cannot pass through living occupants or remain inside a wall. This voluntary movement can provoke when leaving reach. It does not grant invisibility, flight, damage immunity or passage through a ward expressly barring spirits.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Spectral Passage\n\n*The outline goes thin as candle smoke and spills through a crack in the stone.*\n\n## Rules\n\n**ID:** monster-spectral-passage\n\n\n**Action:** Maneuver\n\nMove up to 2 squares, including through nonliving walls at movement cost 1, but finish in a visible legal unoccupied space. Cannot pass through living occupants or remain inside a wall. This voluntary movement can provoke when leaving reach. It does not grant invisibility, flight, damage immunity or passage through a ward expressly barring spirits.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/spectral-passage.md",
+            "sha256": "bf8df97f2ce18a68e7ec05a916ede170222122421f6a7f51d05b6909fa9d26ef"
+          },
+          "automation": "pending"
         }
       ],
       "summoning": {

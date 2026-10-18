@@ -157,6 +157,8 @@ export function creatureActionEntries(record, sourceCommit) {
         fail(record, `Missing authored specialty reference for ${action.name}`);
       return {
         id: `${category}-${index}`, category, name: action.name,
+        abilityId: record.abilitySources.find(source =>
+          source.label.toLowerCase() === action.name.toLowerCase())?.id ?? "",
         attributeKey, defenseSource: action.defense?.sourceText ?? "",
         harmfulOnly: action.defense?.harmfulOnly ?? false,
         hasOutcomes: action.outcomes !== null && action.outcomes !== undefined,
@@ -514,7 +516,7 @@ function actorSystem(record, sourceCommit) {
   };
 }
 
-export function creatureActorSource(record, { sourceCommit, portrait }) {
+export function creatureActorSource(record, { sourceCommit, portrait, abilityTemplates = [] }) {
   if (!/^[a-f0-9]{40}$/.test(sourceCommit))
     throw new Error("Creature actor source commit is invalid.");
   return {
@@ -542,16 +544,17 @@ export function creatureActorSource(record, { sourceCommit, portrait }) {
         classification: structuredClone(record.classification),
         family: record.family,
         abilitySources: structuredClone(record.abilitySources),
+        monsterAbilityTemplates: structuredClone(abilityTemplates),
         summoning: structuredClone(record.summoning),
       },
     },
   };
 }
 
-function authoredCreatureDocument(record, id, sourceCommit, portrait) {
+function authoredCreatureDocument(record, id, sourceCommit, portrait, abilityTemplates) {
   if (!/^[a-f0-9]{16}$/.test(id))
     throw new Error(`Invalid Foundry Actor ID: ${id}`);
-  const actor = creatureActorSource(record, { sourceCommit, portrait });
+  const actor = creatureActorSource(record, { sourceCommit, portrait, abilityTemplates });
   return {
     _key: `!actors!${id}`,
     _id: id,
@@ -580,6 +583,15 @@ function serializedDocument(document) {
 }
 
 export function buildCreaturePackArtifacts({ catalog, lock, portraits }) {
+  const templates = new Map((catalog.monsterAbilities ?? []).map(template => [template.id, template]));
+  if (templates.size !== lock.counts.monsterAbilities)
+    throw new Error("Monster ability template count differs from source lock");
+  for (const template of templates.values()) {
+    const locked = lock.records.find(record => record.id === template.id);
+    if (!locked || locked.path !== template.source.path || locked.sha256 !== template.source.sha256 ||
+        template.source.commit !== lock.commit || !template.rulesMarkdown || !template.flavorMarkdown)
+      throw new Error(`Monster ability template differs from source lock: ${template.id}`);
+  }
   const creatures = validateCreatureCatalogBasis({ catalog, lock })
     .slice()
     .sort((a, b) => a.id.localeCompare(b.id, "en"));
@@ -593,6 +605,11 @@ export function buildCreaturePackArtifacts({ catalog, lock, portraits }) {
       identityById.get(record.id),
       lock.commit,
       portraits.get(record.id),
+      record.abilitySources.map(source => {
+        const template = templates.get(source.id);
+        if (!template) throw new Error(`Missing monster ability template: ${source.id}`);
+        return template;
+      }),
     ),
   );
   const files = new Map();

@@ -39,7 +39,7 @@
       "baseMax": 20,
       "sourceText": "20"
     },
-    "cv": 17,
+    "cv": 18,
     "speed": 4,
     "speedSource": "4; swim 7",
     "alternateSpeeds": [
@@ -99,6 +99,7 @@
           "id": "main-0",
           "category": "main",
           "name": "Basic Melee",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -115,6 +116,7 @@
           "id": "main-1",
           "category": "main",
           "name": "Bank drag",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -131,6 +133,7 @@
           "id": "main-2",
           "category": "main",
           "name": "Locking jaws",
+          "abilityId": "",
           "attributeKey": "brawn",
           "defenseSource": "Brawn",
           "harmfulOnly": false,
@@ -147,6 +150,7 @@
           "id": "maneuver-0",
           "category": "maneuver",
           "name": "Brace the Tail",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -163,6 +167,7 @@
           "id": "maneuver-1",
           "category": "maneuver",
           "name": "Defend",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -178,7 +183,25 @@
         {
           "id": "reaction-0",
           "category": "reaction",
+          "name": "Coil Against the Pull",
+          "abilityId": "monster-coil-against-the-pull",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Before forced movement against a support: Stability 2 for that movement.",
+          "referenceMarkdown": "### Coil Against the Pull\n\n*Claws dig into the bank and the tail braces beneath its heavy body as the pull takes hold.*\n\nBefore this creature is forcibly moved while touching solid ground or a fixed support, gain Stability 2 for that forced movement only. Use the highest Stability, maximum 3. In a collision chain, declare before its Stability is deducted; this does not prevent prior collision damage. No effect on Prone or grapples."
+        },
+        {
+          "id": "reaction-1",
+          "category": "reaction",
           "name": "Opportunity Attack",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -195,13 +218,13 @@
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Bank drag | Agility | 6 + Pull 2 / 4 + Pull 1 / 3 |\n| Locking jaws | Brawn | 5 + Grappled 2 / 3 + Grappled 1 / 2 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Brace the Tail | While touching the bed or bank, gain Stability 2 until its next turn; highest source only. |\n| Defend | +1 Bane |",
-      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Opportunity Attack | Basic Melee |"
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Coil Against the Pull | Before forced movement against a support: Stability 2 for that movement. |\n| Opportunity Attack | Basic Melee |"
     },
     "details": {
       "flavorMarkdown": "*An immense water predator with armored ridges, a muscular tail and jaws broad enough to seize a grown traveler. Its low silhouette is almost indistinguishable from a muddy log.*",
-      "specialtyMarkdown": "### Bank drag\n\n*A hooked limb braces against the bank and heaves its catch toward the dark water.*\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Pull 2. **Standard defense:** Pull 1.\n\n### Locking jaws\n\n*The crocodile locks its jaws and braces its body against the bank.*\n\n**Target:** One adjacent creature. **Player defense:** Brawn. **Damage type:** physical.\n\n**Weak defense:** Grappled 2. **Standard defense:** Grappled 1.\n\n**Limit:** The holder suffers its own Grappled contribution. A new result replaces its lower contribution, not adds to it. Release freely; separation beyond reach, unconsciousness or death ends the hold.",
-      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Heavy Frame — Passive:** Stability 1; an explicit creature trait, not a bonus from size.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Signs:** A polished slide leads from the bank into deep water.\n\n**Purpose:** Drag food away from competitors.\n\n**Tactics and retreat:** Strike from the water’s edge and pull prey toward the channel; retreat underwater if badly hurt.\n\n**Counterplay and conversation:** Fight from a high bank; crossing on a raft keeps the whole party together.\n\n**Habitat:** Marsh; river · **Communication:** None\n\n**Loot:** Its old feeding hollow may contain a dropped pack.\n\n**Summoning:** Animal 3 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/summons/marsh-crocodile.md).",
-      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-marsh-crocodile\n\n\n**Category:** Animal · **Role:** Ambusher · **CV:** 17\n\n**Difficulty rationale:** No innate attack modifier; armor, cover and chosen actions provide its defenses. Its dangerous attack imposes defense Banes.\n\n**Reference damage:** 3/4/6\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.25\n\n**Regeneration per turn:** 0\n\nReference I=4.000, O=3.653. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [drag under](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/drag-under.md), [marsh crocodile brace the tail](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/marsh-crocodile-brace-the-tail.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/rules/stability.md)"
+      "specialtyMarkdown": "### Bank drag\n\n*A hooked limb braces against the bank and heaves its catch toward the dark water.*\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Pull 2. **Standard defense:** Pull 1.\n\n### Locking jaws\n\n*The crocodile locks its jaws and braces its body against the bank.*\n\n**Target:** One adjacent creature. **Player defense:** Brawn. **Damage type:** physical.\n\n**Weak defense:** Grappled 2. **Standard defense:** Grappled 1.\n\n**Limit:** The holder suffers its own Grappled contribution. A new result replaces its lower contribution, not adds to it. Release freely; separation beyond reach, unconsciousness or death ends the hold.\n\n### Coil Against the Pull\n\n*Claws dig into the bank and the tail braces beneath its heavy body as the pull takes hold.*\n\nBefore this creature is forcibly moved while touching solid ground or a fixed support, gain Stability 2 for that forced movement only. Use the highest Stability, maximum 3. In a collision chain, declare before its Stability is deducted; this does not prevent prior collision damage. No effect on Prone or grapples.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Heavy Frame — Passive:** Stability 1; an explicit creature trait, not a bonus from size.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Signs:** A polished slide leads from the bank into deep water.\n\n**Purpose:** Drag food away from competitors.\n\n**Tactics and retreat:** Strike from the water’s edge and pull prey toward the channel; retreat underwater if badly hurt.\n\n**Counterplay and conversation:** Fight from a high bank; crossing on a raft keeps the whole party together.\n\n**Habitat:** Marsh; river · **Communication:** None\n\n**Loot:** Its old feeding hollow may contain a dropped pack.\n\n**Summoning:** Animal 3 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/summons/marsh-crocodile.md).",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-marsh-crocodile\n\n\n**Category:** Animal · **Role:** Ambusher · **CV:** 18\n\n**Difficulty rationale:** No innate attack modifier; armor, cover and chosen actions provide its defenses. Its dangerous attack imposes defense Banes.\n\n**Reference damage:** 3/4/6\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.35\n\n**Action review (#1279):** U 1.25 → 1.35: Maneuver allowance +0, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=4.000, O=3.653. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [Coil Against the Pull](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/coil-against-the-pull.md), [drag under](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/drag-under.md), [marsh crocodile brace the tail](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/marsh-crocodile-brace-the-tail.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/rules/stability.md)"
     },
     "biography": ""
   },
@@ -227,9 +250,9 @@
       "catalogId": "creature-marsh-crocodile",
       "source": {
         "path": "design/bestiary/creatures/marsh-crocodile.md",
-        "sha256": "82b27644c4f08a8683884ed7bbe0b0be9f58e03c81ea84d18fc662315ccb3437"
+        "sha256": "43b79db5b35c145fbe6c263eb84aaacd66a0c3613a5ab7c23b17ab2db86aeaec"
       },
-      "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
+      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Printed profile · specialty automation pending",
@@ -237,10 +260,16 @@
       "classification": {
         "category": "Animal",
         "role": "Ambusher",
-        "cv": 17
+        "cv": 18
       },
       "family": "Animal",
       "abilitySources": [
+        {
+          "label": "Coil Against the Pull",
+          "id": "monster-coil-against-the-pull",
+          "path": "design/monster-abilities/coil-against-the-pull.md",
+          "sha256": "73680a7ff3059a35241763405c2b6a3d29717fecce56508b3a019eec79a9169a"
+        },
         {
           "label": "drag under",
           "id": "monster-drag-under",
@@ -252,6 +281,56 @@
           "id": "monster-marsh-crocodile-brace-the-tail",
           "path": "design/monster-abilities/marsh-crocodile-brace-the-tail.md",
           "sha256": "d5302fa621120f94221938765ae2224e336899c7414b1bfe788754fac28e6170"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-coil-against-the-pull",
+          "path": "design/monster-abilities/coil-against-the-pull.md",
+          "sha256": "73680a7ff3059a35241763405c2b6a3d29717fecce56508b3a019eec79a9169a",
+          "name": "Coil Against the Pull",
+          "action": "Reaction",
+          "flavorMarkdown": "*The long body tightens against its support, turning a drag into a struggle with its whole weight.*",
+          "rulesMarkdown": "Before this creature is forcibly moved while touching solid ground or a fixed support, gain Stability 2 for that forced movement only. Use the highest Stability, maximum 3. In a collision chain, declare before its Stability is deducted; this does not prevent prior collision damage. No effect on Prone or grapples.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Coil Against the Pull\n\n*The long body tightens against its support, turning a drag into a struggle with its whole weight.*\n\n## Rules\n\n**ID:** monster-coil-against-the-pull\n\n**Action:** Reaction\n\nBefore this creature is forcibly moved while touching solid ground or a fixed support, gain Stability 2 for that forced movement only. Use the highest Stability, maximum 3. In a collision chain, declare before its Stability is deducted; this does not prevent prior collision damage. No effect on Prone or grapples.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/coil-against-the-pull.md",
+            "sha256": "73680a7ff3059a35241763405c2b6a3d29717fecce56508b3a019eec79a9169a"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-drag-under",
+          "path": "design/monster-abilities/drag-under.md",
+          "sha256": "1c5b1f30865fb3419918c33e6c6a6184773c544418a5cafc21bebb79b6ac93a2",
+          "name": "Drag Under",
+          "action": "Main Action",
+          "flavorMarkdown": "*A hooked limb braces against the bank and heaves its catch toward the dark water.*",
+          "rulesMarkdown": "Use the printed attack against one target. Standard pulls 1 square; Strong pulls 2. Stability applies. This does not automatically grapple, submerge, drown or transport the attacker. A hazardous destination must actually be reached.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Drag Under\n\n*A hooked limb braces against the bank and heaves its catch toward the dark water.*\n\n## Rules\n\n**ID:** monster-drag-under\n\n\n**Action:** Main Action\n\nUse the printed attack against one target. Standard pulls 1 square; Strong pulls 2. Stability applies. This does not automatically grapple, submerge, drown or transport the attacker. A hazardous destination must actually be reached.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/drag-under.md",
+            "sha256": "1c5b1f30865fb3419918c33e6c6a6184773c544418a5cafc21bebb79b6ac93a2"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-marsh-crocodile-brace-the-tail",
+          "path": "design/monster-abilities/marsh-crocodile-brace-the-tail.md",
+          "sha256": "d5302fa621120f94221938765ae2224e336899c7414b1bfe788754fac28e6170",
+          "name": "Brace the Tail",
+          "action": "Maneuver",
+          "flavorMarkdown": "*The tail presses into the bottom and holds the body against the current.*",
+          "rulesMarkdown": "While touching the bed or bank, gain Stability 2 until its next turn; highest source only.\n\n**Limits:** Costs its Maneuver; no extra action is granted.",
+          "referenceMarkdown": "# Brace the Tail\n\n*The tail presses into the bottom and holds the body against the current.*\n\n## Rules\n\n**ID:** monster-marsh-crocodile-brace-the-tail\n\n\n**Action:** Maneuver\n\nWhile touching the bed or bank, gain Stability 2 until its next turn; highest source only.\n\n**Limits:** Costs its Maneuver; no extra action is granted.\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/marsh-crocodile-brace-the-tail.md",
+            "sha256": "d5302fa621120f94221938765ae2224e336899c7414b1bfe788754fac28e6170"
+          },
+          "automation": "pending"
         }
       ],
       "summoning": {

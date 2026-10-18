@@ -39,7 +39,7 @@
       "baseMax": 40,
       "sourceText": "40"
     },
-    "cv": 56,
+    "cv": 60,
     "speed": 6,
     "speedSource": "6",
     "alternateSpeeds": [],
@@ -98,6 +98,7 @@
           "id": "main-0",
           "category": "main",
           "name": "Basic Melee",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -114,6 +115,7 @@
           "id": "main-1",
           "category": "main",
           "name": "Oath-blackened sword",
+          "abilityId": "",
           "attributeKey": "fortitude",
           "defenseSource": "Fortitude",
           "harmfulOnly": false,
@@ -130,6 +132,7 @@
           "id": "maneuver-0",
           "category": "maneuver",
           "name": "Defend",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -145,7 +148,25 @@
         {
           "id": "reaction-0",
           "category": "reaction",
+          "name": "Turn the Blade",
+          "abilityId": "monster-turn-the-blade",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Before an adjacent melee attack: +1 Bane to that attack; held weapon required.",
+          "referenceMarkdown": "### Turn the Blade\n\n*A small turn of the wrist catches the blow on a waiting edge and sends it sliding past.*\n\nBefore one adjacent enemy makes a melee attack against this creature, impose 1 Bane on that attack roll. Requires a held melee weapon. Against an NPC attack, grant 1 Boon to the single defense roll instead. Applies to this attack only; it does not grant a counterattack."
+        },
+        {
+          "id": "reaction-1",
+          "category": "reaction",
           "name": "Shield Hunker",
+          "abilityId": "monster-shield-hunker",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -159,9 +180,10 @@
           "referenceMarkdown": "### Shield Hunker\n\nBefore a shield-blockable attack resolves, spend its Reaction to impose 1 Bane on player attacks it can block until the start of its next turn. The DA judges blockability. Stacks with Defend through normal Boon/Bane rules, not with another activation of itself."
         },
         {
-          "id": "reaction-1",
+          "id": "reaction-2",
           "category": "reaction",
           "name": "Opportunity Attack",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -178,13 +200,13 @@
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Oath-blackened sword | Fortitude | 11 + Frightened 2 of this creature / 8 + Frightened 1 of this creature / 5 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Defend | +1 Bane |",
-      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Shield Hunker | +1 Bane to blockable attacks; see details. |\n| Opportunity Attack | Basic Melee |"
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Turn the Blade | Before an adjacent melee attack: +1 Bane to that attack; held weapon required. |\n| Shield Hunker | +1 Bane to blockable attacks; see details. |\n| Opportunity Attack | Basic Melee |"
     },
     "details": {
       "flavorMarkdown": "*Burned heraldry marks a knight whose armor has become a walking tomb. Every salute is exact, every promise remembered.*",
-      "specialtyMarkdown": "### Oath-blackened sword\n\n**Target:** One visible creature within 2 squares. **Player defense:** Fortitude. **Damage type:** Life.\n\n**Weak defense:** Frightened 2 of this creature. **Standard defense:** Frightened 1 of this creature.\n\n### Shield Hunker\n\nBefore a shield-blockable attack resolves, spend its Reaction to impose 1 Bane on player attacks it can block until the start of its next turn. The DA judges blockability. Stacks with Defend through normal Boon/Bane rules, not with another activation of itself.",
+      "specialtyMarkdown": "### Oath-blackened sword\n\n**Target:** One visible creature within 2 squares. **Player defense:** Fortitude. **Damage type:** Life.\n\n**Weak defense:** Frightened 2 of this creature. **Standard defense:** Frightened 1 of this creature.\n\n### Shield Hunker\n\nBefore a shield-blockable attack resolves, spend its Reaction to impose 1 Bane on player attacks it can block until the start of its next turn. The DA judges blockability. Stacks with Defend through normal Boon/Bane rules, not with another activation of itself.\n\n### Turn the Blade\n\n*A small turn of the wrist catches the blow on a waiting edge and sends it sliding past.*\n\nBefore one adjacent enemy makes a melee attack against this creature, impose 1 Bane on that attack roll. Requires a held melee weapon. Against an NPC attack, grant 1 Boon to the single defense roll instead. Applies to this attack only; it does not grant a counterattack.",
       "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.\n\n**Lifeless Body — Passive:** Does not breathe or eat; only its listed immunities apply.\n\n**Heavy Frame — Passive:** Stability 1; an explicit trait, not a bonus calculated from Size.\n\n**Healing:** Healing-harmed: ordinary healing resolves as Life damage instead; no beneficial riders.\n\n**Against offensive healing:** Its controller uses Fortitude defense when player-controlled; a player attacking it rolls only their attack.\n\n**Senses:** Dark sight 6 squares; ordinary hearing.\n\n**Tactics and retreat:** Hold the narrow ground with shield and reach. Accept a genuine oath-bound challenge rather than chase a trivial provocation.\n\n**Encounter and conversation:** It can be held to the literal terms of its final oath, but not deceived about them.\n\n**Habitat:** Crypt; burial ground; ruined settlement · **Communication:** Common; understands old oaths\n\n**Loot:** Recoverable possessions or lair clues chosen for the adventure; body parts grant no automatic special equipment or coin value.\n\n**Summoning:** Ineligible.",
-      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-death-knight\n\n\n**Category:** Undead · **Role:** Fear controller · **CV:** 56\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Oath-blackened sword | Brawn | 2 Boons | 5 Life damage. | 8 Life damage. Frightened 1 of this creature. | 11 Life damage. Frightened 2 of this creature. |\n\nUse the attributes above for defenses named by incoming attacks. Same targeting, limits and costs apply; no opposed second roll.\n\n### CV worksheet\n\n**Reference damage:** 5/8/11\n\n**Reference type:** Life\n\n**Expected targets:** 1\n\n**Utility factor:** 1.4\n\n**Regeneration per turn:** 0\n\nReference I=2.162, O=9.518. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [dread cry](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/dread-cry.md), [lifeless body](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/lifeless-body.md), [shield hunker](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/shield-hunker.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/rules/stability.md)"
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-death-knight\n\n\n**Category:** Undead · **Role:** Fear controller · **CV:** 60\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Oath-blackened sword | Brawn | 2 Boons | 5 Life damage. | 8 Life damage. Frightened 1 of this creature. | 11 Life damage. Frightened 2 of this creature. |\n\nUse the attributes above for defenses named by incoming attacks. Same targeting, limits and costs apply; no opposed second roll.\n\n### CV worksheet\n\n**Reference damage:** 5/8/11\n\n**Reference type:** Life\n\n**Expected targets:** 1\n\n**Utility factor:** 1.5\n\n**Action review (#1279):** U 1.4 → 1.5: Maneuver allowance +0, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=2.162, O=9.518. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [dread cry](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/dread-cry.md), [lifeless body](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/lifeless-body.md), [shield hunker](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/shield-hunker.md), [Turn the Blade](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/turn-the-blade.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/rules/stability.md)"
     },
     "biography": ""
   },
@@ -210,9 +232,9 @@
       "catalogId": "creature-death-knight",
       "source": {
         "path": "design/bestiary/creatures/death-knight.md",
-        "sha256": "3f791190cfdc501ed2bc94bb0a34012f6f2f3430dfe4955abe996c4e40a280aa"
+        "sha256": "d01cbf5d4cebd2e2532a0a1afc25a1e994655e1c3f77f23c1c2eab0dea613ad5"
       },
-      "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
+      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Printed profile · specialty automation pending",
@@ -220,7 +242,7 @@
       "classification": {
         "category": "Undead",
         "role": "Fear controller",
-        "cv": 56
+        "cv": 60
       },
       "family": "Undead knights, revenants and liches",
       "abilitySources": [
@@ -241,6 +263,78 @@
           "id": "monster-shield-hunker",
           "path": "design/monster-abilities/shield-hunker.md",
           "sha256": "0ee4604aed68f89230795c77c3d1db3b93ef231d3a7999cd35ad7800f4fbe6f5"
+        },
+        {
+          "label": "Turn the Blade",
+          "id": "monster-turn-the-blade",
+          "path": "design/monster-abilities/turn-the-blade.md",
+          "sha256": "219eb8418560dfe6343195b90e0631522ba87816e410d710634e5b2c3b6d97a5"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-dread-cry",
+          "path": "design/monster-abilities/dread-cry.md",
+          "sha256": "d35c9d9fb02cdf716d44665b41a99421c1089cddcf9bc2e736a192e27d27efe0",
+          "name": "Dread Cry",
+          "action": "Main Action",
+          "flavorMarkdown": "*Its cry seems to come from somewhere behind your ribs.*",
+          "rulesMarkdown": "A printed mental attack applies Frightened 1/2/3 on Weak/Standard/Strong, with no damage unless separately printed. The source is this creature; Banes apply while the target perceives it. The cry must be heard. Ordinary decay applies and no second save is made.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Dread Cry\n\n*Its cry seems to come from somewhere behind your ribs.*\n\n## Rules\n\n**ID:** monster-dread-cry\n\n\n**Action:** Main Action\n\nA printed mental attack applies Frightened 1/2/3 on Weak/Standard/Strong, with no damage unless separately printed. The source is this creature; Banes apply while the target perceives it. The cry must be heard. Ordinary decay applies and no second save is made.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/dread-cry.md",
+            "sha256": "d35c9d9fb02cdf716d44665b41a99421c1089cddcf9bc2e736a192e27d27efe0"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-lifeless-body",
+          "path": "design/monster-abilities/lifeless-body.md",
+          "sha256": "248c16c6e641d2042cd94a05e7e8bfce03b5177f4f57cda241b46d9b16de4d81",
+          "name": "Lifeless Body",
+          "action": "Passive",
+          "flavorMarkdown": "*Nothing breathes beneath the torn coat; nothing living looks through the visor.*",
+          "rulesMarkdown": "The card must list its exact condition immunities; this trait grants no additional unlisted ones. It does not breathe or need food. Undead entries marked healing-harmed take a healing result as Life damage; constructs marked repair-only do not regain HP from ordinary healing. Neither rule prevents physical attacks from dealing their normal minimum damage.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Lifeless Body\n\n*Nothing breathes beneath the torn coat; nothing living looks through the visor.*\n\n## Rules\n\n**ID:** monster-lifeless-body\n\n\n**Action:** Passive\n\nThe card must list its exact condition immunities; this trait grants no additional unlisted ones. It does not breathe or need food. Undead entries marked healing-harmed take a healing result as Life damage; constructs marked repair-only do not regain HP from ordinary healing. Neither rule prevents physical attacks from dealing their normal minimum damage.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/lifeless-body.md",
+            "sha256": "248c16c6e641d2042cd94a05e7e8bfce03b5177f4f57cda241b46d9b16de4d81"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-shield-hunker",
+          "path": "design/monster-abilities/shield-hunker.md",
+          "sha256": "0ee4604aed68f89230795c77c3d1db3b93ef231d3a7999cd35ad7800f4fbe6f5",
+          "name": "Shield Hunker",
+          "action": "Reaction",
+          "flavorMarkdown": "*The shield rises, scraping stone as its bearer crouches behind the rim.*",
+          "rulesMarkdown": "Before a shield-blockable attack resolves, spend Reaction to gain 1 defense Boon until the start of this creature’s next turn. For an NPC, apply 1 Bane to player attacks it can block instead. The DA decides whether the shield can block an attack. This stacks with Defend through ordinary Boon/Bane rules. No repeated activation adds another copy.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Shield Hunker\n\n*The shield rises, scraping stone as its bearer crouches behind the rim.*\n\n## Rules\n\n**ID:** monster-shield-hunker\n\n\n**Action:** Reaction\n\nBefore a shield-blockable attack resolves, spend Reaction to gain 1 defense Boon until the start of this creature’s next turn. For an NPC, apply 1 Bane to player attacks it can block instead. The DA decides whether the shield can block an attack. This stacks with Defend through ordinary Boon/Bane rules. No repeated activation adds another copy.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/shield-hunker.md",
+            "sha256": "0ee4604aed68f89230795c77c3d1db3b93ef231d3a7999cd35ad7800f4fbe6f5"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-turn-the-blade",
+          "path": "design/monster-abilities/turn-the-blade.md",
+          "sha256": "219eb8418560dfe6343195b90e0631522ba87816e410d710634e5b2c3b6d97a5",
+          "name": "Turn the Blade",
+          "action": "Reaction",
+          "flavorMarkdown": "*A small turn of the wrist catches the blow on a waiting edge and sends it sliding past.*",
+          "rulesMarkdown": "Before one adjacent enemy makes a melee attack against this creature, impose 1 Bane on that attack roll. Requires a held melee weapon. Against an NPC attack, grant 1 Boon to the single defense roll instead. Applies to this attack only; it does not grant a counterattack.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Turn the Blade\n\n*A small turn of the wrist catches the blow on a waiting edge and sends it sliding past.*\n\n## Rules\n\n**ID:** monster-turn-the-blade\n\n**Action:** Reaction\n\nBefore one adjacent enemy makes a melee attack against this creature, impose 1 Bane on that attack roll. Requires a held melee weapon. Against an NPC attack, grant 1 Boon to the single defense roll instead. Applies to this attack only; it does not grant a counterattack.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/turn-the-blade.md",
+            "sha256": "219eb8418560dfe6343195b90e0631522ba87816e410d710634e5b2c3b6d97a5"
+          },
+          "automation": "pending"
         }
       ],
       "summoning": {

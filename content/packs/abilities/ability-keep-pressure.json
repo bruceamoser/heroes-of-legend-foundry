@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You catch the loosening bandage and press down firmly before another pulse of blood escapes.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>Self or one adjacent willing creature, before its Bleeding damage at turn end.</dd></div><div><dt>Duration</dt><dd>Instant.</dd></div><div><dt>Equipment / acquisition</dt><dd>Requires a free hand and cloth; grants no item.</dd></div><div><dt>Limits</dt><dd>Repeatable; pay the action and any stated costs each use.</dd></div><div><dt>Type</dt><dd>Skill / Recovery</dd></div></dl><div class=\"hol-reference-rules\"><p>Reduce temporary Bleeding by 1, minimum 0, then resolve remaining Bleeding and its normal decay. This does not remove a starred contribution, heal a wound or restore HP.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/cards/keep-pressure.md\" target=\"_blank\" rel=\"noopener\">design/cards/keep-pressure.md</a> at <code>d67e046466bdd5052360b96ed91861d607091446</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You catch the loosening bandage and press down firmly before another pulse of blood escapes.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>Self or one adjacent willing creature, before its Bleeding damage at turn end.</dd></div><div><dt>Duration</dt><dd>Instant.</dd></div><div><dt>Equipment / acquisition</dt><dd>Requires a free hand and cloth; grants no item.</dd></div><div><dt>Limits</dt><dd>Repeatable; pay the action and any stated costs each use.</dd></div><div><dt>Type</dt><dd>Skill / Recovery</dd></div></dl><div class=\"hol-reference-rules\"><p>Reduce temporary Bleeding by 1, minimum 0, then resolve remaining Bleeding and its normal decay. This does not remove a starred contribution, heal a wound or restore HP.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/cards/keep-pressure.md\" target=\"_blank\" rel=\"noopener\">design/cards/keep-pressure.md</a> at <code>bdfd18ed535fbd0e1892b9344444abf6da644809</code>.</p></section>",
     "activity": {
       "action": "main",
       "rollMode": "none",
@@ -31,7 +31,7 @@
         "path": "design/cards/keep-pressure.md",
         "sha256": "4a5cb0e5b8e46225d24de45ffa44b7d0b219bcff0c7104ddb880d0b5d604a63f"
       },
-      "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
+      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · play automation in progress"

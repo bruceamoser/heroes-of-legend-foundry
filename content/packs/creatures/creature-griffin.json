@@ -39,7 +39,7 @@
       "baseMax": 30,
       "sourceText": "30"
     },
-    "cv": 26,
+    "cv": 28,
     "speed": 6,
     "speedSource": "6; fly 10",
     "alternateSpeeds": [
@@ -94,6 +94,7 @@
           "id": "main-0",
           "category": "main",
           "name": "Basic Melee",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -110,6 +111,7 @@
           "id": "main-1",
           "category": "main",
           "name": "Diving talons",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -126,6 +128,7 @@
           "id": "main-2",
           "category": "main",
           "name": "Hooked beak",
+          "abilityId": "",
           "attributeKey": "fortitude",
           "defenseSource": "Fortitude",
           "harmfulOnly": false,
@@ -141,7 +144,25 @@
         {
           "id": "maneuver-0",
           "category": "maneuver",
+          "name": "Wing Step",
+          "abilityId": "monster-wing-step",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Fly 2; no opportunity from one chosen visible enemy.",
+          "referenceMarkdown": "### Wing Step\n\n*A single hard wingbeat carries it toward a better angle.*\n\nMove up to 2 squares using its printed fly speed without provoking from one visible enemy chosen before moving. Pay normal terrain costs and provoke normally from other enemies. This grants no attack, automatic lift of another creature or hovering exception."
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
           "name": "Defend",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -157,7 +178,25 @@
         {
           "id": "reaction-0",
           "category": "reaction",
+          "name": "Bank Away",
+          "abilityId": "monster-bank-away",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "After taking ranged HP damage: fly 2; provokes.",
+          "referenceMarkdown": "### Bank Away\n\n*A struck feather spins loose as the great wings tilt and carry the creature out of the firing line.*\n\nAfter a ranged attack resolves and deals HP damage to this creature, fly up to 2 squares using its printed fly speed. Pay normal terrain costs, provoke normally and finish in a legal position. This creature must survive and remain capable of flight. No trigger from a free attack; no attack or automatic lift of a held creature."
+        },
+        {
+          "id": "reaction-1",
+          "category": "reaction",
           "name": "Opportunity Attack",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -173,14 +212,14 @@
       ],
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Diving talons | Agility | 8 + After moving 2 toward target, Prone / 6 + After moving 2 toward target, Prone / 4 |\n| Hooked beak | Fortitude | 8 + Bleeding 2 / 6 + Bleeding 1 / 4 |",
-      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Defend | +1 Bane |",
-      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Opportunity Attack | Basic Melee |"
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Wing Step | Fly 2; no opportunity from one chosen visible enemy. |\n| Defend | +1 Bane |",
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Bank Away | After taking ranged HP damage: fly 2; provokes. |\n| Opportunity Attack | Basic Melee |"
     },
     "details": {
       "flavorMarkdown": "*A great winged predator with an eagle’s head and forequarters joined to a powerful feline body. Sharp talons and broad wings suit it to cliffs and open hunting ground.*",
-      "specialtyMarkdown": "### Diving talons\n\n*It gathers itself, then arrives in a rush of claws and weight.*\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** After moving 2 toward target, Prone. **Standard defense:** After moving 2 toward target, Prone.\n\n### Hooked beak\n\n*The hooked beak finds purchase while the wings hold the creature steady.*\n\n**Target:** One adjacent creature. **Player defense:** Fortitude. **Damage type:** physical.\n\n**Weak defense:** Bleeding 2. **Standard defense:** Bleeding 1.",
+      "specialtyMarkdown": "### Diving talons\n\n*It gathers itself, then arrives in a rush of claws and weight.*\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** After moving 2 toward target, Prone. **Standard defense:** After moving 2 toward target, Prone.\n\n### Hooked beak\n\n*The hooked beak finds purchase while the wings hold the creature steady.*\n\n**Target:** One adjacent creature. **Player defense:** Fortitude. **Damage type:** physical.\n\n**Weak defense:** Bleeding 2. **Standard defense:** Bleeding 1.\n\n### Bank Away\n\n*A struck feather spins loose as the great wings tilt and carry the creature out of the firing line.*\n\nAfter a ranged attack resolves and deals HP damage to this creature, fly up to 2 squares using its printed fly speed. Pay normal terrain costs, provoke normally and finish in a legal position. This creature must survive and remain capable of flight. No trigger from a free attack; no attack or automatic lift of a held creature.\n\n### Wing Step\n\n*A single hard wingbeat carries it toward a better angle.*\n\nMove up to 2 squares using its printed fly speed without provoking from one visible enemy chosen before moving. Pay normal terrain costs and provoke normally from other enemies. This grants no attack, automatic lift of another creature or hovering exception.",
       "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Heavy Frame — Passive:** Stability 1; an explicit creature trait, not a bonus from size.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Signs:** Large feathers and clean-picked hooves lie below a high ledge.\n\n**Purpose:** Feed its young and keep the nesting cliff secure.\n\n**Tactics and retreat:** Dive into a pounce, then defend the landing place; flight does not supply extra attacks.\n\n**Counterplay and conversation:** Shelter mounts under a roof or offer food away from the nest.\n\n**Habitat:** Cliff; highland · **Communication:** None\n\n**Loot:** A nest may contain one valuable lost saddle or traveler’s pack.\n\n**Summoning:** Ineligible.",
-      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-griffin\n\n\n**Category:** Beast · **Role:** Flying predator · **CV:** 26\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Diving talons | Brawn | 1 Boon | 4 physical damage. | 6 physical damage. After moving 2 toward target, Prone. | 8 physical damage. After moving 2 toward target, Prone. |\n| Hooked beak | Brawn | 1 Boon | 4 physical damage. | 6 physical damage; Bleeding 1. | 8 physical damage; Bleeding 2. |\n\nThe incoming attack names the defense attribute; use the six values above. Same targeting, costs and limits apply in either perspective. No opposed second roll.\n\n\n### CV worksheet\n\n**Difficulty rationale:** An agile or elusive body warrants attack Banes. Its dangerous attack imposes defense Banes.\n\n**Reference damage:** 4/6/8\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.35\n\n**Regeneration per turn:** 0\n\nReference I=4.404, O=5.596. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [pounce](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/pounce.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/rules/stability.md)"
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-griffin\n\n\n**Category:** Beast · **Role:** Flying predator · **CV:** 28\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Diving talons | Brawn | 1 Boon | 4 physical damage. | 6 physical damage. After moving 2 toward target, Prone. | 8 physical damage. After moving 2 toward target, Prone. |\n| Hooked beak | Brawn | 1 Boon | 4 physical damage. | 6 physical damage; Bleeding 1. | 8 physical damage; Bleeding 2. |\n\nThe incoming attack names the defense attribute; use the six values above. Same targeting, costs and limits apply in either perspective. No opposed second roll.\n\n\n### CV worksheet\n\n**Difficulty rationale:** An agile or elusive body warrants attack Banes. Its dangerous attack imposes defense Banes.\n\n**Reference damage:** 4/6/8\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.5\n\n**Action review (#1279):** U 1.35 → 1.5: Maneuver allowance +0.05, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=4.404, O=5.596. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [Bank Away](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/bank-away.md), [pounce](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/pounce.md), [Wing Step](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/wing-step.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/rules/stability.md)"
     },
     "biography": ""
   },
@@ -206,9 +245,9 @@
       "catalogId": "creature-griffin",
       "source": {
         "path": "design/bestiary/creatures/griffin.md",
-        "sha256": "8c45a478dc624ddd3640aea2e542c5023509d56d67094427b9754b6448462249"
+        "sha256": "a25405060bae21d598dd9883d1af0f1c72417f8436f6adfa402e69c443817148"
       },
-      "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
+      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Printed profile · specialty automation pending",
@@ -216,15 +255,77 @@
       "classification": {
         "category": "Beast",
         "role": "Flying predator",
-        "cv": 26
+        "cv": 28
       },
       "family": "Fantastic hunters and guardians",
       "abilitySources": [
+        {
+          "label": "Bank Away",
+          "id": "monster-bank-away",
+          "path": "design/monster-abilities/bank-away.md",
+          "sha256": "887da6d8aef40e39b84cc014888987bfdba0b3fdab79cac1676106140afdc82f"
+        },
         {
           "label": "pounce",
           "id": "monster-pounce",
           "path": "design/monster-abilities/pounce.md",
           "sha256": "cca3f2a4e205132c94511ac28420a070bad93e1d6e8d52a500137bd4c9a707a7"
+        },
+        {
+          "label": "Wing Step",
+          "id": "monster-wing-step",
+          "path": "design/monster-abilities/wing-step.md",
+          "sha256": "2c6ada11d4acf3ee1748e92674a42b9173c128bd6761e88b84373160b8b4b098"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-bank-away",
+          "path": "design/monster-abilities/bank-away.md",
+          "sha256": "887da6d8aef40e39b84cc014888987bfdba0b3fdab79cac1676106140afdc82f",
+          "name": "Bank Away",
+          "action": "Reaction",
+          "flavorMarkdown": "*A struck feather spins loose as the great wings tilt and carry the creature out of the firing line.*",
+          "rulesMarkdown": "After a ranged attack resolves and deals HP damage to this creature, fly up to 2 squares using its printed fly speed. Pay normal terrain costs, provoke normally and finish in a legal position. This creature must survive and remain capable of flight. No trigger from a free attack; no attack or automatic lift of a held creature.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Bank Away\n\n*A struck feather spins loose as the great wings tilt and carry the creature out of the firing line.*\n\n## Rules\n\n**ID:** monster-bank-away\n\n**Action:** Reaction\n\nAfter a ranged attack resolves and deals HP damage to this creature, fly up to 2 squares using its printed fly speed. Pay normal terrain costs, provoke normally and finish in a legal position. This creature must survive and remain capable of flight. No trigger from a free attack; no attack or automatic lift of a held creature.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/bank-away.md",
+            "sha256": "887da6d8aef40e39b84cc014888987bfdba0b3fdab79cac1676106140afdc82f"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-pounce",
+          "path": "design/monster-abilities/pounce.md",
+          "sha256": "cca3f2a4e205132c94511ac28420a070bad93e1d6e8d52a500137bd4c9a707a7",
+          "name": "Pounce",
+          "action": "Main Action",
+          "flavorMarkdown": "*It gathers itself, then arrives in a rush of claws and weight.*",
+          "rulesMarkdown": "Use the printed attack. If the creature moved at least 2 squares toward this target immediately before the attack this turn, Standard or Strong also makes the target Prone. Movement is paid normally, not supplied by Pounce.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Pounce\n\n*It gathers itself, then arrives in a rush of claws and weight.*\n\n## Rules\n\n**ID:** monster-pounce\n\n\n**Action:** Main Action\n\nUse the printed attack. If the creature moved at least 2 squares toward this target immediately before the attack this turn, Standard or Strong also makes the target Prone. Movement is paid normally, not supplied by Pounce.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/pounce.md",
+            "sha256": "cca3f2a4e205132c94511ac28420a070bad93e1d6e8d52a500137bd4c9a707a7"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-wing-step",
+          "path": "design/monster-abilities/wing-step.md",
+          "sha256": "2c6ada11d4acf3ee1748e92674a42b9173c128bd6761e88b84373160b8b4b098",
+          "name": "Wing Step",
+          "action": "Maneuver",
+          "flavorMarkdown": "*A single hard wingbeat carries it toward a better angle.*",
+          "rulesMarkdown": "Move up to 2 squares using its printed fly speed without provoking from one visible enemy chosen before moving. Pay normal terrain costs and provoke normally from other enemies. This grants no attack, automatic lift of another creature or hovering exception.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Wing Step\n\n*A single hard wingbeat carries it toward a better angle.*\n\n## Rules\n\n**ID:** monster-wing-step\n\n\n**Action:** Maneuver\n\nMove up to 2 squares using its printed fly speed without provoking from one visible enemy chosen before moving. Pay normal terrain costs and provoke normally from other enemies. This grants no attack, automatic lift of another creature or hovering exception.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/wing-step.md",
+            "sha256": "2c6ada11d4acf3ee1748e92674a42b9173c128bd6761e88b84373160b8b4b098"
+          },
+          "automation": "pending"
         }
       ],
       "summoning": {

@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You settle your weight into the ground and draw your guard close, letting the shove spend itself against your stance.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>Self while your Defend is active.</dd></div><div><dt>Duration</dt><dd>While your Defend remains active.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Repeatable; normal action economy applies.</dd></div><div><dt>Type</dt><dd>Signature</dd></div></dl><div class=\"hol-reference-rules\"><p>Gain Stability 2 while your Defend is active. Use your highest applicable Stability, maximum 3. You still need to use Defend normally; this grants no resistance to damage.</p></div><h3>Additional rulings</h3><p><strong>Tags:</strong> Skill / Defense</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/cards/signature-protector-set-your-feet.md\" target=\"_blank\" rel=\"noopener\">design/cards/signature-protector-set-your-feet.md</a> at <code>d67e046466bdd5052360b96ed91861d607091446</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You settle your weight into the ground and draw your guard close, letting the shove spend itself against your stance.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>Self while your Defend is active.</dd></div><div><dt>Duration</dt><dd>While your Defend remains active.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Repeatable; normal action economy applies.</dd></div><div><dt>Type</dt><dd>Signature</dd></div></dl><div class=\"hol-reference-rules\"><p>Gain Stability 2 while your Defend is active. Use your highest applicable Stability, maximum 3. You still need to use Defend normally; this grants no resistance to damage.</p></div><h3>Additional rulings</h3><p><strong>Tags:</strong> Skill / Defense</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/cards/signature-protector-set-your-feet.md\" target=\"_blank\" rel=\"noopener\">design/cards/signature-protector-set-your-feet.md</a> at <code>bdfd18ed535fbd0e1892b9344444abf6da644809</code>.</p></section>",
     "activity": {
       "action": "main",
       "rollMode": "none",
@@ -31,7 +31,7 @@
         "path": "design/cards/signature-protector-set-your-feet.md",
         "sha256": "886717ecb936d4521ebc7b83decb470b5ded28e4af11f282ad66c36344e05d22"
       },
-      "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
+      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · play automation in progress"

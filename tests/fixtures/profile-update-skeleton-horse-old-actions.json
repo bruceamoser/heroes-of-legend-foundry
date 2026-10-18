@@ -1,0 +1,89 @@
+{
+  "orientation": "player-defense",
+  "entries": [
+    {
+      "id": "main-0",
+      "category": "main",
+      "name": "Basic Melee",
+      "attributeKey": "agility",
+      "defenseSource": "Agility",
+      "harmfulOnly": false,
+      "hasOutcomes": true,
+      "outcomes": {
+        "weak": "5",
+        "standard": "3",
+        "strong": "2"
+      },
+      "effect": "5/3/2",
+      "referenceMarkdown": ""
+    },
+    {
+      "id": "main-1",
+      "category": "main",
+      "name": "Iron-shod hooves",
+      "attributeKey": "agility",
+      "defenseSource": "Agility",
+      "harmfulOnly": false,
+      "hasOutcomes": true,
+      "outcomes": {
+        "weak": "6 + Push 3",
+        "standard": "4 + Push 1",
+        "strong": "2"
+      },
+      "effect": "6 + Push 3 / 4 + Push 1 / 2",
+      "referenceMarkdown": "### Iron-shod hooves\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Push 3. **Standard defense:** Push 1.\n\n**Limit:** Apply Stability, terrain costs and normal collision rules to the printed distance."
+    },
+    {
+      "id": "maneuver-0",
+      "category": "maneuver",
+      "name": "Driving Stride",
+      "attributeKey": "",
+      "defenseSource": "",
+      "harmfulOnly": false,
+      "hasOutcomes": false,
+      "outcomes": {
+        "weak": "",
+        "standard": "",
+        "strong": ""
+      },
+      "effect": "Move 3 straight; provokes.",
+      "referenceMarkdown": "### Driving Stride\n\n*Hooves hammer a straight course through dust and broken grass.*\n\nMove up to 3 squares in a straight line, paying normal terrain costs. This movement provokes normally."
+    },
+    {
+      "id": "maneuver-1",
+      "category": "maneuver",
+      "name": "Defend",
+      "attributeKey": "",
+      "defenseSource": "",
+      "harmfulOnly": false,
+      "hasOutcomes": false,
+      "outcomes": {
+        "weak": "",
+        "standard": "",
+        "strong": ""
+      },
+      "effect": "+1 Bane",
+      "referenceMarkdown": ""
+    },
+    {
+      "id": "reaction-0",
+      "category": "reaction",
+      "name": "Opportunity Attack",
+      "attributeKey": "",
+      "defenseSource": "",
+      "harmfulOnly": false,
+      "hasOutcomes": false,
+      "outcomes": {
+        "weak": "",
+        "standard": "",
+        "strong": ""
+      },
+      "effect": "Basic Melee",
+      "referenceMarkdown": ""
+    }
+  ],
+  "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
+  "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Iron-shod hooves | Agility | 6 + Push 3 / 4 + Push 1 / 2 |",
+  "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Driving Stride | Move 3 straight; provokes. |\n| Defend | +1 Bane |",
+  "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Opportunity Attack | Basic Melee |"
+}

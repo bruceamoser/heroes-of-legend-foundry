@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>Your hand snaps out and closes over the ledge as your feet swing into empty air.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>Self, when a fall begins beside a ledge or secure handhold within reach.</dd></div><div><dt>Duration</dt><dd>Instant.</dd></div><div><dt>Equipment / acquisition</dt><dd>Requires one free hand; grants no item.</dd></div><div><dt>Limits</dt><dd>Repeatable; pay the action and any stated costs each use.</dd></div><div><dt>Type</dt><dd>Skill / Defense / Movement</dd></div></dl><div class=\"hol-reference-rules\"><p>With a free hand, catch the hold before falling and hang there. You do not move onto the ledge; climbing back uses ordinary movement. This cannot stop a push or pull that is still moving you away from the hold.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/cards/catch-the-ledge.md\" target=\"_blank\" rel=\"noopener\">design/cards/catch-the-ledge.md</a> at <code>d67e046466bdd5052360b96ed91861d607091446</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>Your hand snaps out and closes over the ledge as your feet swing into empty air.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>Self, when a fall begins beside a ledge or secure handhold within reach.</dd></div><div><dt>Duration</dt><dd>Instant.</dd></div><div><dt>Equipment / acquisition</dt><dd>Requires one free hand; grants no item.</dd></div><div><dt>Limits</dt><dd>Repeatable; pay the action and any stated costs each use.</dd></div><div><dt>Type</dt><dd>Skill / Defense / Movement</dd></div></dl><div class=\"hol-reference-rules\"><p>With a free hand, catch the hold before falling and hang there. You do not move onto the ledge; climbing back uses ordinary movement. This cannot stop a push or pull that is still moving you away from the hold.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/cards/catch-the-ledge.md\" target=\"_blank\" rel=\"noopener\">design/cards/catch-the-ledge.md</a> at <code>bdfd18ed535fbd0e1892b9344444abf6da644809</code>.</p></section>",
     "activity": {
       "action": "main",
       "rollMode": "none",
@@ -31,7 +31,7 @@
         "path": "design/cards/catch-the-ledge.md",
         "sha256": "a6c8faa08b33168ccc981f27af7c6a4e4aeb667ae75e2e62f62899c33d2536f3"
       },
-      "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
+      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · play automation in progress"

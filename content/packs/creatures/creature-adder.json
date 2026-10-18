@@ -94,6 +94,7 @@
           "id": "main-0",
           "category": "main",
           "name": "Basic Melee",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -110,6 +111,7 @@
           "id": "main-1",
           "category": "main",
           "name": "Needle bite",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -126,6 +128,7 @@
           "id": "maneuver-0",
           "category": "maneuver",
           "name": "Defend",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -141,7 +144,25 @@
         {
           "id": "reaction-0",
           "category": "reaction",
+          "name": "Warning Hiss",
+          "abilityId": "monster-warning-hiss",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Before a hearing adjacent enemy makes a melee attack: +1 Bane.",
+          "referenceMarkdown": "### Warning Hiss\n\n*It swells, bares its fangs and hisses in the attacker's face as the weapon comes down.*\n\nBefore one adjacent enemy that can hear it makes a melee attack against this creature, impose 1 Bane on that attack. Against an NPC attack, grant 1 Boon to its defense instead. No Frightened condition, extra gaze or counterattack is granted."
+        },
+        {
+          "id": "reaction-1",
+          "category": "reaction",
           "name": "Opportunity Attack",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -158,13 +179,13 @@
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 4/2/1 |\n| Needle bite | Agility | 2 + Poisoned 2 / 1 + Poisoned 1 / 1 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Defend | +1 Bane |",
-      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Opportunity Attack | Basic Melee |"
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Warning Hiss | Before a hearing adjacent enemy makes a melee attack: +1 Bane. |\n| Opportunity Attack | Basic Melee |"
     },
     "details": {
       "flavorMarkdown": "*A short, thick-bodied snake patterned like leaf litter, with a triangular head and retractable venomous fangs. It prefers warm cover and an escape route to confrontation.*",
-      "specialtyMarkdown": "### Needle bite\n\n*A needle catches the skin, and a bitter numbness spreads from the puncture.*\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Poisoned 2. **Standard defense:** Poisoned 1.",
-      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Signs:** A shed skin lies beneath a sun-warmed rock.\n\n**Purpose:** Be left alone.\n\n**Tactics and retreat:** Warn, bite the nearest disturbance, then escape into a crack.\n\n**Counterplay and conversation:** Use a long branch or walk around its basking place.\n\n**Habitat:** Wilderness · **Communication:** None\n\n**Loot:** No automatic treasure.\n\n**Summoning:** Animal 1 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/summons/adder.md).",
-      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-adder\n\n\n**Category:** Animal · **Role:** Venomous nuisance · **CV:** 5\n\n**Difficulty rationale:** An agile or elusive body warrants attack Banes. Ordinary attack difficulty; riders and positioning carry the threat.\n\n**Reference damage:** 1/1/2\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.3\n\n**Regeneration per turn:** 0\n\nReference I=4.404, O=1.000. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [venom](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/venom.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/rules/stability.md)"
+      "specialtyMarkdown": "### Needle bite\n\n*A needle catches the skin, and a bitter numbness spreads from the puncture.*\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Poisoned 2. **Standard defense:** Poisoned 1.\n\n### Warning Hiss\n\n*It swells, bares its fangs and hisses in the attacker's face as the weapon comes down.*\n\nBefore one adjacent enemy that can hear it makes a melee attack against this creature, impose 1 Bane on that attack. Against an NPC attack, grant 1 Boon to its defense instead. No Frightened condition, extra gaze or counterattack is granted.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Signs:** A shed skin lies beneath a sun-warmed rock.\n\n**Purpose:** Be left alone.\n\n**Tactics and retreat:** Warn, bite the nearest disturbance, then escape into a crack.\n\n**Counterplay and conversation:** Use a long branch or walk around its basking place.\n\n**Habitat:** Wilderness · **Communication:** None\n\n**Loot:** No automatic treasure.\n\n**Summoning:** Animal 1 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/summons/adder.md).",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-adder\n\n\n**Category:** Animal · **Role:** Venomous nuisance · **CV:** 5\n\n**Difficulty rationale:** An agile or elusive body warrants attack Banes. Ordinary attack difficulty; riders and positioning carry the threat.\n\n**Reference damage:** 1/1/2\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.4\n\n**Action review (#1279):** U 1.3 → 1.4: Maneuver allowance +0, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=4.404, O=1.000. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [venom](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/venom.md), [Warning Hiss](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/warning-hiss.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/rules/stability.md)"
     },
     "biography": ""
   },
@@ -190,9 +211,9 @@
       "catalogId": "creature-adder",
       "source": {
         "path": "design/bestiary/creatures/adder.md",
-        "sha256": "2af51c47fd2dcd29f7e71a11d7de52d70cb8f8fc56d5e83bcc9642e179974dca"
+        "sha256": "aec62933fe3b6c9291aa577f0b589a1cc3abde2cc85831daf9d6d366d570193a"
       },
-      "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
+      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Printed profile · specialty automation pending",
@@ -209,6 +230,46 @@
           "id": "monster-venom",
           "path": "design/monster-abilities/venom.md",
           "sha256": "7f9de07c3efecfa084b884f9b9032c9f6cc9d113e4f2c5428a32070b0f5e38fe"
+        },
+        {
+          "label": "Warning Hiss",
+          "id": "monster-warning-hiss",
+          "path": "design/monster-abilities/warning-hiss.md",
+          "sha256": "e3cb7a9a1320e285610e880deb7f2c2c0186773c09bc64b5db973577c88b8f24"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-venom",
+          "path": "design/monster-abilities/venom.md",
+          "sha256": "7f9de07c3efecfa084b884f9b9032c9f6cc9d113e4f2c5428a32070b0f5e38fe",
+          "name": "Venom",
+          "action": "Main Action",
+          "flavorMarkdown": "*A needle catches the skin, and a bitter numbness spreads from the puncture.*",
+          "rulesMarkdown": "Use the printed attack. Standard also applies Poisoned 1; Strong applies Poisoned 2. Poisoned gives Banes, not additional HP damage, and follows ordinary decay. No second resistance roll.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Venom\n\n*A needle catches the skin, and a bitter numbness spreads from the puncture.*\n\n## Rules\n\n**ID:** monster-venom\n\n\n**Action:** Main Action\n\nUse the printed attack. Standard also applies Poisoned 1; Strong applies Poisoned 2. Poisoned gives Banes, not additional HP damage, and follows ordinary decay. No second resistance roll.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/venom.md",
+            "sha256": "7f9de07c3efecfa084b884f9b9032c9f6cc9d113e4f2c5428a32070b0f5e38fe"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-warning-hiss",
+          "path": "design/monster-abilities/warning-hiss.md",
+          "sha256": "e3cb7a9a1320e285610e880deb7f2c2c0186773c09bc64b5db973577c88b8f24",
+          "name": "Warning Hiss",
+          "action": "Reaction",
+          "flavorMarkdown": "*Fangs bare and a sharp hiss cuts across the attacker's concentration as the weapon comes down.*",
+          "rulesMarkdown": "Before one adjacent enemy that can hear it makes a melee attack against this creature, impose 1 Bane on that attack. Against an NPC attack, grant 1 Boon to its defense instead. No Frightened condition, extra gaze or counterattack is granted.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Warning Hiss\n\n*Fangs bare and a sharp hiss cuts across the attacker's concentration as the weapon comes down.*\n\n## Rules\n\n**ID:** monster-warning-hiss\n\n**Action:** Reaction\n\nBefore one adjacent enemy that can hear it makes a melee attack against this creature, impose 1 Bane on that attack. Against an NPC attack, grant 1 Boon to its defense instead. No Frightened condition, extra gaze or counterattack is granted.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/warning-hiss.md",
+            "sha256": "e3cb7a9a1320e285610e880deb7f2c2c0186773c09bc64b5db973577c88b8f24"
+          },
+          "automation": "pending"
         }
       ],
       "summoning": {

@@ -69,6 +69,24 @@ export function foundryIdFor(id) {
     .slice(0, 16);
 }
 
+export function parseMonsterAbility(record, markdown, commit) {
+  const match = markdown.match(/^# ([^\n]+)\n\n([\s\S]*?)\n\n## Rules\n\n\*\*ID:\*\* ([a-z0-9-]+)\n\n+\*\*Action:\*\* (Passive|Reaction|Maneuver|Main Action(?:; spell)?)\n\n([\s\S]+)$/);
+  if (!match) fail(record.path, "Unknown monster-ability structure");
+  if (match[3] !== record.id) fail(record.path, "Monster-ability ID differs from lock");
+  return {
+    id: record.id,
+    path: record.path,
+    sha256: record.sha256,
+    name: match[1],
+    action: match[4],
+    flavorMarkdown: match[2],
+    rulesMarkdown: match[5].trim(),
+    referenceMarkdown: markdown,
+    source: { commit, path: record.path, sha256: record.sha256 },
+    automation: "pending",
+  };
+}
+
 function parseAttributes(sourceText, path) {
   const attributes = {};
   const parts = sourceText.split("; ");

@@ -94,6 +94,7 @@
           "id": "main-0",
           "category": "main",
           "name": "Basic Melee",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -110,6 +111,7 @@
           "id": "main-1",
           "category": "main",
           "name": "Peck",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -126,6 +128,7 @@
           "id": "maneuver-0",
           "category": "maneuver",
           "name": "Defend",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -142,6 +145,7 @@
           "id": "reaction-0",
           "category": "reaction",
           "name": "Opportunity Attack",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -163,8 +167,8 @@
     "details": {
       "flavorMarkdown": "*A large black corvid with an iridescent throat, wedge-shaped tail and keen, curious eyes. It remembers faces and treats unattended food and interesting objects as opportunities.*",
       "specialtyMarkdown": "### Peck\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.",
-      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Signs:** Bright objects disappear from an unattended camp.\n\n**Purpose:** Find food and interesting things without being caught.\n\n**Tactics and retreat:** Peck only when cornered; take to the air at the first opening.\n\n**Counterplay and conversation:** A covered food bowl or a glittering trinket buys its attention.\n\n**Habitat:** Wilderness · **Communication:** Calls; cannot report human speech verbatim\n\n**Loot:** A nest may hold one small lost object.\n\n**Summoning:** Animal 1 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/summons/raven.md).",
-      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-raven\n\n\n**Category:** Animal · **Role:** Scout · **CV:** 4\n\n**Difficulty rationale:** An agile or elusive body warrants attack Banes. Its minor attack is easier to defend, granting a Boon.\n\n**Reference damage:** 1/1/2\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.1\n\n**Regeneration per turn:** 0\n\nReference I=4.404, O=1.000. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/rules/stability.md)"
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Signs:** Bright objects disappear from an unattended camp.\n\n**Purpose:** Find food and interesting things without being caught.\n\n**Tactics and retreat:** Peck only when cornered; take to the air at the first opening.\n\n**Counterplay and conversation:** A covered food bowl or a glittering trinket buys its attention.\n\n**Habitat:** Wilderness · **Communication:** Calls; cannot report human speech verbatim\n\n**Loot:** A nest may hold one small lost object.\n\n**Summoning:** Animal 1 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/summons/raven.md).",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-raven\n\n\n**Category:** Animal · **Role:** Scout · **CV:** 4\n\n**Difficulty rationale:** An agile or elusive body warrants attack Banes. Its minor attack is easier to defend, granting a Boon.\n\n**Reference damage:** 1/1/2\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.1\n\n**Regeneration per turn:** 0\n\nReference I=4.404, O=1.000. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/rules/stability.md)"
     },
     "biography": ""
   },
@@ -192,7 +196,7 @@
         "path": "design/bestiary/creatures/raven.md",
         "sha256": "b3639bec60f3750646b30fff74f8ec3e08818451b5435c32801b23f3531f0808"
       },
-      "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
+      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Printed profile · specialty automation pending",
@@ -204,6 +208,7 @@
       },
       "family": "Animal",
       "abilitySources": [],
+      "monsterAbilityTemplates": [],
       "summoning": {
         "eligible": true,
         "summonId": "summon-raven",

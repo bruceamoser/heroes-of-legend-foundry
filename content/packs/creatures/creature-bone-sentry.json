@@ -39,7 +39,7 @@
       "baseMax": 10,
       "sourceText": "10"
     },
-    "cv": 7,
+    "cv": 8,
     "speed": 5,
     "speedSource": "5",
     "alternateSpeeds": [],
@@ -98,6 +98,7 @@
           "id": "main-0",
           "category": "main",
           "name": "Basic Melee",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -114,6 +115,7 @@
           "id": "main-1",
           "category": "main",
           "name": "Old sword",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -130,6 +132,7 @@
           "id": "maneuver-0",
           "category": "maneuver",
           "name": "Defend",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -145,7 +148,25 @@
         {
           "id": "reaction-0",
           "category": "reaction",
+          "name": "Fall to Pieces",
+          "abilityId": "monster-fall-to-pieces",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Before physical attack: Physical resistance 3 for it; become Prone afterward.",
+          "referenceMarkdown": "### Fall to Pieces\n\n*The skeleton lets its joints collapse, spilling loose bones beneath the passing blow.*\n\nBefore a physical attack against this creature is rolled, gain Physical resistance 3 against that attack only. Use the highest matching resistance. After the attack resolves, it becomes Prone if still present, even if it was already Prone. This does not move its occupied footprint or reassemble it; standing costs the normal 2 movement."
+        },
+        {
+          "id": "reaction-1",
+          "category": "reaction",
           "name": "Opportunity Attack",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -162,13 +183,13 @@
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Old sword | Agility | 5/3/2 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Defend | +1 Bane |",
-      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Opportunity Attack | Basic Melee |"
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Fall to Pieces | Before physical attack: Physical resistance 3 for it; become Prone afterward. |\n| Opportunity Attack | Basic Melee |"
     },
     "details": {
       "flavorMarkdown": "*An articulated skeleton armed with a rusted sword and remnants of an old uniform. No appetite or fatigue distracts it from the narrow command that holds its bones together.*",
-      "specialtyMarkdown": "### Old sword\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.",
-      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Lifeless Body:** does not breathe or eat; only the listed immunities apply.\n\n**Healing:** Healing-harmed: ordinary healing resolves as Life damage instead; no beneficial riders.\n\n**Against offensive healing:** controller defends with Fortitude if this is player-controlled; a player attacking it still rolls only their attack.\n\n**Senses:** Dark sight 6 squares.\n\n**Signs:** Dry clicking answers footsteps in an otherwise silent hall.\n\n**Purpose:** Repeat the last clear command it was given.\n\n**Tactics and retreat:** Block the doorway and strike intruders who cross the boundary.\n\n**Counterplay and conversation:** Learn the command or approach from a route its orders did not cover.\n\n**Habitat:** Crypt; ruin · **Communication:** None\n\n**Loot:** Ordinary melee weapon; no coins.\n\n**Summoning:** Undead 1 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/summons/bone-sentry.md).",
-      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-bone-sentry\n\n\n**Category:** Undead · **Role:** Guard · **CV:** 7\n\n**Difficulty rationale:** No innate attack modifier; armor, cover and chosen actions provide its defenses. Ordinary attack difficulty; riders and positioning carry the threat.\n\n**Reference damage:** 2/3/5\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.0\n\n**Regeneration per turn:** 0\n\nReference I=4.000, O=2.162. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [lifeless body](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/lifeless-body.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/rules/stability.md)"
+      "specialtyMarkdown": "### Old sword\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.\n\n### Fall to Pieces\n\n*The skeleton lets its joints collapse, spilling loose bones beneath the passing blow.*\n\nBefore a physical attack against this creature is rolled, gain Physical resistance 3 against that attack only. Use the highest matching resistance. After the attack resolves, it becomes Prone if still present, even if it was already Prone. This does not move its occupied footprint or reassemble it; standing costs the normal 2 movement.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Lifeless Body:** does not breathe or eat; only the listed immunities apply.\n\n**Healing:** Healing-harmed: ordinary healing resolves as Life damage instead; no beneficial riders.\n\n**Against offensive healing:** controller defends with Fortitude if this is player-controlled; a player attacking it still rolls only their attack.\n\n**Senses:** Dark sight 6 squares.\n\n**Signs:** Dry clicking answers footsteps in an otherwise silent hall.\n\n**Purpose:** Repeat the last clear command it was given.\n\n**Tactics and retreat:** Block the doorway and strike intruders who cross the boundary.\n\n**Counterplay and conversation:** Learn the command or approach from a route its orders did not cover.\n\n**Habitat:** Crypt; ruin · **Communication:** None\n\n**Loot:** Ordinary melee weapon; no coins.\n\n**Summoning:** Undead 1 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/summons/bone-sentry.md).",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-bone-sentry\n\n\n**Category:** Undead · **Role:** Guard · **CV:** 8\n\n**Difficulty rationale:** No innate attack modifier; armor, cover and chosen actions provide its defenses. Ordinary attack difficulty; riders and positioning carry the threat.\n\n**Reference damage:** 2/3/5\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.1\n\n**Action review (#1279):** U 1 → 1.1: Maneuver allowance +0, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=4.000, O=2.162. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [Fall to Pieces](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/fall-to-pieces.md), [lifeless body](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/lifeless-body.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/rules/stability.md)"
     },
     "biography": ""
   },
@@ -194,9 +215,9 @@
       "catalogId": "creature-bone-sentry",
       "source": {
         "path": "design/bestiary/creatures/bone-sentry.md",
-        "sha256": "eebaf9df9df8c31c34c39c449d1cacc0d659c02ec7ca5043dee3acccc2197175"
+        "sha256": "e600e2b29eff1109577fe42e80ba3ce043f9db6f59678a98e51f5960312dc225"
       },
-      "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
+      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Printed profile · specialty automation pending",
@@ -204,15 +225,55 @@
       "classification": {
         "category": "Undead",
         "role": "Guard",
-        "cv": 7
+        "cv": 8
       },
       "family": "Skeletons",
       "abilitySources": [
+        {
+          "label": "Fall to Pieces",
+          "id": "monster-fall-to-pieces",
+          "path": "design/monster-abilities/fall-to-pieces.md",
+          "sha256": "a4d3259cabca53573dbf124b67c8ed7a94450eed915176a22c8995187e48711b"
+        },
         {
           "label": "lifeless body",
           "id": "monster-lifeless-body",
           "path": "design/monster-abilities/lifeless-body.md",
           "sha256": "248c16c6e641d2042cd94a05e7e8bfce03b5177f4f57cda241b46d9b16de4d81"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-fall-to-pieces",
+          "path": "design/monster-abilities/fall-to-pieces.md",
+          "sha256": "a4d3259cabca53573dbf124b67c8ed7a94450eed915176a22c8995187e48711b",
+          "name": "Fall to Pieces",
+          "action": "Reaction",
+          "flavorMarkdown": "*The skeleton lets its joints collapse, spilling loose bones beneath the passing blow.*",
+          "rulesMarkdown": "Before a physical attack against this creature is rolled, gain Physical resistance 3 against that attack only. Use the highest matching resistance. After the attack resolves, it becomes Prone if still present, even if it was already Prone. This does not move its occupied footprint or reassemble it; standing costs the normal 2 movement.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Fall to Pieces\n\n*The skeleton lets its joints collapse, spilling loose bones beneath the passing blow.*\n\n## Rules\n\n**ID:** monster-fall-to-pieces\n\n**Action:** Reaction\n\nBefore a physical attack against this creature is rolled, gain Physical resistance 3 against that attack only. Use the highest matching resistance. After the attack resolves, it becomes Prone if still present, even if it was already Prone. This does not move its occupied footprint or reassemble it; standing costs the normal 2 movement.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/fall-to-pieces.md",
+            "sha256": "a4d3259cabca53573dbf124b67c8ed7a94450eed915176a22c8995187e48711b"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-lifeless-body",
+          "path": "design/monster-abilities/lifeless-body.md",
+          "sha256": "248c16c6e641d2042cd94a05e7e8bfce03b5177f4f57cda241b46d9b16de4d81",
+          "name": "Lifeless Body",
+          "action": "Passive",
+          "flavorMarkdown": "*Nothing breathes beneath the torn coat; nothing living looks through the visor.*",
+          "rulesMarkdown": "The card must list its exact condition immunities; this trait grants no additional unlisted ones. It does not breathe or need food. Undead entries marked healing-harmed take a healing result as Life damage; constructs marked repair-only do not regain HP from ordinary healing. Neither rule prevents physical attacks from dealing their normal minimum damage.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Lifeless Body\n\n*Nothing breathes beneath the torn coat; nothing living looks through the visor.*\n\n## Rules\n\n**ID:** monster-lifeless-body\n\n\n**Action:** Passive\n\nThe card must list its exact condition immunities; this trait grants no additional unlisted ones. It does not breathe or need food. Undead entries marked healing-harmed take a healing result as Life damage; constructs marked repair-only do not regain HP from ordinary healing. Neither rule prevents physical attacks from dealing their normal minimum damage.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/lifeless-body.md",
+            "sha256": "248c16c6e641d2042cd94a05e7e8bfce03b5177f4f57cda241b46d9b16de4d81"
+          },
+          "automation": "pending"
         }
       ],
       "summoning": {

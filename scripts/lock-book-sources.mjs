@@ -7,7 +7,7 @@ import assert from "node:assert/strict";
 const repository = process.env.HOL_BOOK_REPOSITORY;
 if (!repository)
   throw new Error("Set HOL_BOOK_REPOSITORY to the local book repository");
-const commit = "d67e046466bdd5052360b96ed91861d607091446";
+const commit = "bdfd18ed535fbd0e1892b9344444abf6da644809";
 const git = (...args) =>
   execFileSync("git", ["-C", repository, ...args], {
     maxBuffer: 64 * 1024 * 1024,
@@ -71,7 +71,7 @@ const monsters = records.filter(
 );
 assert.equal(creatures.length, 192);
 assert.equal(summons.length, 73);
-assert.equal(monsters.length, 93);
+assert.equal(monsters.length, 126);
 assert(creatures.every((r) => r.id));
 for (const creature of creatures)
   assert(
@@ -152,9 +152,9 @@ const lock = {
   schemaVersion: 1,
   repository: "https://github.com/bruceamoser/heroes-of-legend",
   commit,
-  previousCommit: "64089a1c8961d7faff172f179448a8b6e57827ef",
+  previousCommit: "d67e046466bdd5052360b96ed91861d607091446",
   approval:
-    "Approved discipline expansion, balanced origins and shield techniques, book PR #1278 merged 2026-10-18; system reconciliation #171. Distribution licensing remains undecided.",
+    "Approved creature action review and summon updates, book PR #1280 merged 2026-10-18; system reconciliation #175. Distribution licensing remains undecided.",
   counts: {
     creatures: creatures.length,
     monsterAbilities: monsters.length,

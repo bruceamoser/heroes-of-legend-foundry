@@ -1,6 +1,7 @@
 import { ATTRIBUTES } from "../rules/character.mjs";
 import { StrictNumberField as NumberField } from "./fields.mjs";
-const { ArrayField, SchemaField, StringField, BooleanField } = foundry.data.fields;
+const { ArrayField, SchemaField, StringField, BooleanField } =
+  foundry.data.fields;
 const SPEED_MODES = ["burrow", "climb", "fly", "swim"];
 const text = (initial = "", choices) =>
   new StringField({
@@ -116,14 +117,26 @@ export class CreatureData extends foundry.abstract.TypeDataModel {
       }),
       actions: new SchemaField({
         orientation: text("player-defense", ["player-defense"]),
-        entries: new ArrayField(new SchemaField({
-          id: text(), category: text("main", ["main", "maneuver", "reaction"]),
-          name: text(), attributeKey: text("", ["", ...ATTRIBUTES]), defenseSource: text(),
-          harmfulOnly: new BooleanField({ initial: false }),
-          hasOutcomes: new BooleanField({ initial: false }),
-          outcomes: new SchemaField({ weak: text(), standard: text(), strong: text() }),
-          effect: text(), referenceMarkdown: text(),
-        }), { required: true, nullable: false, initial: [] }),
+        entries: new ArrayField(
+          new SchemaField({
+            id: text(),
+            abilityId: text(),
+            category: text("main", ["main", "maneuver", "reaction"]),
+            name: text(),
+            attributeKey: text("", ["", ...ATTRIBUTES]),
+            defenseSource: text(),
+            harmfulOnly: new BooleanField({ initial: false }),
+            hasOutcomes: new BooleanField({ initial: false }),
+            outcomes: new SchemaField({
+              weak: text(),
+              standard: text(),
+              strong: text(),
+            }),
+            effect: text(),
+            referenceMarkdown: text(),
+          }),
+          { required: true, nullable: false, initial: [] },
+        ),
         introductionMarkdown: text(),
         mainMarkdown: text(),
         maneuverMarkdown: text(),

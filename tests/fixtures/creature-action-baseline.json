@@ -1,0 +1,1135 @@
+{
+  "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
+  "monsterAbilityIds": [
+    "monster-anchor-bound",
+    "monster-assumed-face",
+    "monster-barrel-through",
+    "monster-barrow-guard-plant-the-shield",
+    "monster-battle-mending",
+    "monster-binding-circle",
+    "monster-blood-scent",
+    "monster-bone-colossus-set-the-frame",
+    "monster-borrowed-face",
+    "monster-borrowed-voice",
+    "monster-brace-ground",
+    "monster-breaking-roar",
+    "monster-breath",
+    "monster-briar-knight-root-the-stance",
+    "monster-brown-bear-warning-bellow",
+    "monster-change-guise",
+    "monster-commanding-step",
+    "monster-corrosive-smear",
+    "monster-dazzling-strike",
+    "monster-deafening-strike",
+    "monster-drag-under",
+    "monster-dragging-strike",
+    "monster-dread-cry",
+    "monster-driving-blow",
+    "monster-echo-step",
+    "monster-elemental-burn",
+    "monster-foul-exhalation",
+    "monster-grave-chill",
+    "monster-grave-gallop",
+    "monster-great-cat-flatten-into-cover",
+    "monster-great-stag-guard-the-herd",
+    "monster-gust",
+    "monster-hampering-strike",
+    "monster-heated-hide",
+    "monster-hill-ogre-threatening-roar",
+    "monster-ink-cloud",
+    "monster-iron-gatekeeper-lock-the-feet",
+    "monster-knit-flesh",
+    "monster-knockdown-strike",
+    "monster-life-drink",
+    "monster-life-taking-bite",
+    "monster-lifeless-body",
+    "monster-marsh-crocodile-brace-the-tail",
+    "monster-measured-step",
+    "monster-mimic-shell",
+    "monster-mind-hammer",
+    "monster-mist-veil",
+    "monster-numbing-strike",
+    "monster-pack-hunter",
+    "monster-pounce",
+    "monster-rally",
+    "monster-rattle-bones",
+    "monster-rattle-room",
+    "monster-read-the-current",
+    "monster-red-dragon-dig-in",
+    "monster-rending-blow",
+    "monster-rime-dragon-ice-anchor",
+    "monster-roll-away",
+    "monster-root-bridge",
+    "monster-root-snare",
+    "monster-rousing-beat",
+    "monster-scatter-body",
+    "monster-scatter-embers",
+    "monster-scatter-stones",
+    "monster-scatter-thorns",
+    "monster-seizing-limbs",
+    "monster-shadow-slip",
+    "monster-shield-hunker",
+    "monster-slough-skin",
+    "monster-spectral-passage",
+    "monster-spell-screen",
+    "monster-stalking-step",
+    "monster-stone-stare",
+    "monster-stone-still",
+    "monster-stunning-strike",
+    "monster-submerge",
+    "monster-swallow-threat",
+    "monster-sweeping-attack",
+    "monster-thunderclap",
+    "monster-trail-hound-take-the-scent",
+    "monster-tunnel-scamper",
+    "monster-two-headed-watch",
+    "monster-venom",
+    "monster-veteran-captain-close-the-line",
+    "monster-warding-light",
+    "monster-watch-the-opening",
+    "monster-web-bridge",
+    "monster-web-cast",
+    "monster-wild-boar-lower-the-tusks",
+    "monster-wind-step",
+    "monster-wing-beat",
+    "monster-wing-step",
+    "monster-wolf-circle-the-prey"
+  ],
+  "creatures": {
+    "creature-adder": {
+      "sourceSha256": "2af51c47fd2dcd29f7e71a11d7de52d70cb8f8fc56d5e83bcc9642e179974dca",
+      "coreSha256": "2fa4696c32ea1c77d28c1ba89d6be1ad21db4186ec921840d3a800b119c71002",
+      "mainSha256": "1d7644aefe8c7d70c01ca4bbeb6a697f604238b84ef1bed2c7682f12349282f3"
+    },
+    "creature-air-elemental": {
+      "sourceSha256": "16b68e93d66f38209fe0d3809067ccb8e90204b1c69773e45a35db987f393a59",
+      "coreSha256": "042d417a0f4a24035f197ce1f045def37e47718953bac1f7d52deef654409401",
+      "mainSha256": "7e200f3faae3799450fa6486a8fb0ba448050687c22aab79e69016881827347e"
+    },
+    "creature-ancestor-guardian": {
+      "sourceSha256": "efb22fce97977d36cdecc3888b1fd123b63ee1db031f08bc896be69f357348dd",
+      "coreSha256": "831765a2783fb83a0e945c727cd09498bf4242333f0a238b838ab82a4a685701",
+      "mainSha256": "3d23fde6ca8c640b42bb5cc96a85198ccb4d94bc565073382ef295a693e993e8"
+    },
+    "creature-ancient-mammoth": {
+      "sourceSha256": "e4e7f9bed9b3feeb39ff2fd06d4604450a3cb955a84813ce7708bce9978f5075",
+      "coreSha256": "137098fdf4062c600f5fde4191fa6544ee9912a69e207a3c0654834c29f3917e",
+      "mainSha256": "dbb03376bf7f900d353f65a331ac31547f9b12ddaf32860abb0d2940695b9f3c"
+    },
+    "creature-animated-armor": {
+      "sourceSha256": "8f29939d9ce6ddb91865d2c5b7f16236a55fef03fe80c5699a9e7027210ddfe9",
+      "coreSha256": "a660cc7c973f7be90dc8d802d902e7dd6a2ae6504ee0003b45b8e282ca03ce9c",
+      "mainSha256": "0bb531d210a6b849a2f5656c1c666c6357c1cac9b0f401b421a14d564b0e4e90"
+    },
+    "creature-animated-statue": {
+      "sourceSha256": "f69f9e0e6f00ee281212c57a0c75684d13de671372f0721ed5f61f5b0689bc9a",
+      "coreSha256": "1654b030b055f81c94a725db4d246e7a9b2dfc18a2ff29bcd6d1fa13bb66a832",
+      "mainSha256": "c54089c8d0832b3eacbaf0175132a12b275412f5c492b7de1864b02815e4b141"
+    },
+    "creature-ash-demon": {
+      "sourceSha256": "3b8eafff3c9af14ec6a3a83dbc0792845c661e1f40869dfc5ca78598d4582227",
+      "coreSha256": "de18300ac53c4ec73cb8c80095219989e2875db4bc50a1d4034a0c3b73c1862d",
+      "mainSha256": "e58b24967b0d6d2b15eac499af7070257be5663c4784742add85ac99b78989d8"
+    },
+    "creature-ash-revenant": {
+      "sourceSha256": "a77a822f3f2329769d5ea1bd69c34da3cdcbb3ecfc48b3bdcaaabb02669340ca",
+      "coreSha256": "332b61a7a390cf8c316e717a102fe50c6cb0658507733fb3d9caaf274d5b33fd",
+      "mainSha256": "73b19d87d9bb2536ce8718183c6fa42bde19e2457c1c7c6e116a532e3c78a3df"
+    },
+    "creature-bandit-bow": {
+      "sourceSha256": "94e793ecdc27cee2df5442ecbec2420fdfea9afd27aab6ee84ceea081e2a7f4c",
+      "coreSha256": "ce040b61716fe904d7a0721186545d4e6cfb7ab1c79583fbc50439c5ebc50d25",
+      "mainSha256": "ad2b71e86c0bdf2dea56891eb5af01721d793813fef6f560414d0c279db4cc2b"
+    },
+    "creature-banshee": {
+      "sourceSha256": "776e4db6d4332c3be32a0b5ccb4ed7b0534eb8253843dda414fdcf38957727b6",
+      "coreSha256": "834f080954c6b6f133c93447d1bcdf274fabbe072f9df0575de19f904518430b",
+      "mainSha256": "827badf2c671ca34cc542a56126129d4c7c1aaac617ff7787404a0ce43452b1c"
+    },
+    "creature-barrow-guard": {
+      "sourceSha256": "a6a16a7b595489cd51b406820a1b48c6c93b092c354813291b36c2ad8a55b082",
+      "coreSha256": "c7e4411a1cb97e5485df047dfec7b3bac6baf521ff7bd725699208d9ce7b0454",
+      "mainSha256": "4997419f0fbaddd9bb9d05b358cfe35e881235e9b41c3e91aed85dd28cb76ea8"
+    },
+    "creature-basilisk": {
+      "sourceSha256": "5f6d4f64248731841b17c8ecedfb0d28a1bf680c76ee695ebe62d058c51219cf",
+      "coreSha256": "24d5be67594fa10f96005fba86ce5eb6cb5c62eaa7d3f25532d8426f0129fcda",
+      "mainSha256": "7a892c93798dcbfafb51310726dc6eaed93ae83cdc1b701723af261e9716af96"
+    },
+    "creature-battle-chaplain": {
+      "sourceSha256": "f7444683a5f76f192a26732134750695867edb07ba04ea1b805ea37392ac5856",
+      "coreSha256": "b36fed800d27284d78dc991bfcda81fa89a380f57dcebd79c20be48bf8f3564a",
+      "mainSha256": "0bae9166b7346aad0f90701d047c1f1a09ca4d08fa990786efab16a280bfcf4a"
+    },
+    "creature-black-dragon": {
+      "sourceSha256": "dd441acc1789dccacdb1e5c7c681e6477fcc5e1ec6b97cb7427a090eb1fae2d3",
+      "coreSha256": "42eae1a80877f53a401be0ab9f7ded557c31e42f75997b4cd22282147d3e0379",
+      "mainSha256": "4592119ba7b2b05ed1763f28afe475874859f5a36bb7d4a7e3c6d8c228eae268"
+    },
+    "creature-black-pudding": {
+      "sourceSha256": "7e8eb1d2f91b4290e4a07f2c0efa61bafa8c2720ad163f2604a41f8dae63a402",
+      "coreSha256": "8dd16c6cb16e3cf4184b43334a490ec3d539dc53830bf2e50dec59ecb7e5233e",
+      "mainSha256": "2f1a09f4958c81abf8344b103cebac19fe1aba1f476dc9616874f5af41796a6d"
+    },
+    "creature-blood-bat-swarm": {
+      "sourceSha256": "9c856089e45e69eec594183f0f3135fc0d58aaa178f21e74d2682c1c37489186",
+      "coreSha256": "6b98c1406460df38b172388216f5450bcff15af3a45959cd29e0edeb384629f9",
+      "mainSha256": "fd36d5978d9fcf8e31a3aceec062617665ed3d922d1183736ba7d92acdfde38c"
+    },
+    "creature-blood-courtier": {
+      "sourceSha256": "1d491e6e116b5f858cd0cc825f4372f6f5d75ea9a72c15ebb2298b2d2f8cd626",
+      "coreSha256": "74f85d259de2e3a8d586f5bb778c233d2e50a5af72ee90d3a237660f57a5974c",
+      "mainSha256": "f7527c92eee0ab5bde3ff02b9b600b308cac917172e2fecc4fc054bb2e22c261"
+    },
+    "creature-blue-dragon": {
+      "sourceSha256": "33cb6c2b41f204e725230d5304ea8abb3194698e2b44bec03f969726beedd99a",
+      "coreSha256": "21e2e79ba74a31f88c09c90779d2dd657db0792657c435d2194e328d7305141d",
+      "mainSha256": "c162bde57a54755c6f1c227d1900e8f6a5015670091cf8903918ebcf431cde41"
+    },
+    "creature-bone-archer": {
+      "sourceSha256": "da92b9e9546b1cf7c5d499feff0dbb764ee5c954e5d8e9d7922b3b8723e5c3b9",
+      "coreSha256": "879e470df380a3eaf873045d5059800ffa302d5a561052ad2326c922b554c25d",
+      "mainSha256": "ed56149ba30f1493261e1fe1ed02ac8266e8472f0e2d69fd2627d8455a510fa9"
+    },
+    "creature-bone-colossus": {
+      "sourceSha256": "2379740a02df5b9a8e815d822f6f60f3f5c571a99a10fbb99b901940dc6d68ca",
+      "coreSha256": "f8a14ff67f5f5e18ef7a5964638d7aa4b37fb3c71c4012c5f6ff61384f48d504",
+      "mainSha256": "0e2d5b5866e71a86fbaeb37cdfd50294c8b9daaa7268602dfe796078d71aed27"
+    },
+    "creature-bone-sentry": {
+      "sourceSha256": "eebaf9df9df8c31c34c39c449d1cacc0d659c02ec7ca5043dee3acccc2197175",
+      "coreSha256": "297bb82913acb3f67b865d85f52c9414417acf81464b4e951137af18c101d87b",
+      "mainSha256": "f6ecf5207720b0c0798083a7aba19e0b5e081bee54145a2be1a6d22413bc9c7a"
+    },
+    "creature-briar-knight": {
+      "sourceSha256": "0a74617f7d48239a3c222c8df9df4dec6fa6e5068fbc29cb5aa51e7831c96869",
+      "coreSha256": "5b9c624e4dcec57936f000db1e2955c6c9801f9b1166853dd502e041c8340b82",
+      "mainSha256": "fbcd5a23d74fabdaa873121f87fc8ed31f6a9a2fa7c5c84abc21461115faf1a7"
+    },
+    "creature-bridge-troll": {
+      "sourceSha256": "2aa90d963595b1671bb36a05e09380546779522d6ae207f3f7b1be06b18f7a21",
+      "coreSha256": "a098b8f5ccb88f47da7ad04100b6470661717b25a65ae7ee3e6b9abee1f7fd20",
+      "mainSha256": "26478bf5ab5ed6f5c3a38c4d0b72200e5b6a2a2ebe28639c60d7097f8796c00a"
+    },
+    "creature-bronze-dragon": {
+      "sourceSha256": "0a3752ceb96a8c4467661b8b2d16775e6077daf6145529d5e1983675505bcdc7",
+      "coreSha256": "3bda540864551e5429599d7220d056021c2a406a60dcba07fbab64a8da8fbf02",
+      "mainSha256": "b9868c69089f42886763435179f062615a5bc687c59fef8e71ce7c470dd18c39"
+    },
+    "creature-brown-bear": {
+      "sourceSha256": "40bc4bb2b7a07e91c23dd4fe1d1148cc344b1df98b452b881c923f2040c484fd",
+      "coreSha256": "1998fc44be3b7c52459b9491ea8d97cceb9f3ca8f4a12245d5a86489f3d9e255",
+      "mainSha256": "a6d0d7729310288a2043158ea956c25cc3e704920cca052afde9a6fe3544ddcd"
+    },
+    "creature-bugbear-ambusher": {
+      "sourceSha256": "93be9d3bb579a3da7670ef5725b2c858b29a5b95babc19135b3652fde5faf169",
+      "coreSha256": "bcf689d39cb424fb5979da11a19d8ae9ec079ecbde3f09102c85ebfaad1f6b6f",
+      "mainSha256": "46c52c2b3f6ee091d8ce3250603d7d73c4fe3aa977d0d1e577851120e94505d4"
+    },
+    "creature-burrowing-maw": {
+      "sourceSha256": "3fcbe962a1a9dd79f43167f535388dff172a3725bd1a9992e6c6ce3df1ff86b2",
+      "coreSha256": "4fe45633822358824c461deab4aa6ac026d189ef2d06adc5cab84e5b2a888339",
+      "mainSha256": "a4279836788bc5a4e7a759e93ed00db8948e0e8fb47cd6ee4d1facfdfa388bac"
+    },
+    "creature-carrion-rat-swarm": {
+      "sourceSha256": "1f4e6b2a95abdaec96705606f3982feb8dc13d86ab1be4ff7d551f88a62a9295",
+      "coreSha256": "97e104ee6239677d91cbbd6ee16404cc8d9bfed772409523ee2a2f7be068a01b",
+      "mainSha256": "884a80594be02c75c5846a60ac68b63bdd23546ebfb62e5e5721c0f7b41c0ff1"
+    },
+    "creature-cave-bat": {
+      "sourceSha256": "77b00be66aaee92e8897313220bed2abcb94c7583d2a57c68a8936ee6ac3aec7",
+      "coreSha256": "e7d0b28460c3bdb2907ba0b8162114fe215861ad90e8228f49be98f7deee3e3a",
+      "mainSha256": "51eb18c1f75a4c16d138934f45d847eea8d488ac150d7648d5ab27067e80d48e"
+    },
+    "creature-cavern-lurker": {
+      "sourceSha256": "919ac2919aa01cd7ee912001ad60e9fc7cac29fe4394744f8d816a7f603ad4fb",
+      "coreSha256": "c5c35801a191952be56fc521385f484782cc4c086c5a4a162d7ed450ad4b0efc",
+      "mainSha256": "e820c0e299c44af5148d1500985d51db74c0424edf440818920a024716546845"
+    },
+    "creature-centaur-scout": {
+      "sourceSha256": "685e88b5912f05c7ed2fe11687027b66f82b6cf252b44becd44da119a6d52343",
+      "coreSha256": "fd670596b0a0113fbe99747060a635d1202d65b756afccf1216b17c784c4d29f",
+      "mainSha256": "200012b6f26af2a09c6e4f6b2098ab0e5a7c2e6ebb4f9eb445136e4c8feb6302"
+    },
+    "creature-chain-jailer": {
+      "sourceSha256": "8ce350b383064dfd3771b329c8bd9b54f7df3db93785e24b218c84fdffb892aa",
+      "coreSha256": "784ae8eedd54479c3ce8c889234a31e01c82b589fa5fed77211ce64b6f8ffd3a",
+      "mainSha256": "88f201b2b14a7fb0c9c6f1a217d33e9e445727383617417c0a57e8e5f0f8b0ea"
+    },
+    "creature-chimera": {
+      "sourceSha256": "1086aecc04bf67e925a1c6ce271d9a7bd9e2fc957b826d364f2fabf06c177939",
+      "coreSha256": "92e40d6844c3c75aeb85afc1fc6df0d5759593f1d5285c356f66c8c8f94743fa",
+      "mainSha256": "dffc748deb98e9f0c931352420ba06e78a7d6ad1866fa85182822acd0fd6f406"
+    },
+    "creature-chorus-maw": {
+      "sourceSha256": "e46e197bc380365326e2fb4300ad27935db2b1b521b7ee42742eb5f51ee3f4c8",
+      "coreSha256": "7e1db3f2a2a5a147159de258fce2733113be36bf9f2db61de6e4a11b80d79b16",
+      "mainSha256": "765bddb25b8e7c9796b2cb3415bef0e3bf4136177f3d6f307ae41dc9f3e34700"
+    },
+    "creature-cinder-imp": {
+      "sourceSha256": "1ed18ef84637ed87f067d2e0d139785d97d42d4cf38f1f2d9f1878545c632d84",
+      "coreSha256": "58ee48a3e1395f3c94fed376ff524835a90e5fe85c649b0ef20778e507fb9e6d",
+      "mainSha256": "11e30db3bd2365da1fec714d763066803fe5ba16f96f38ed5a99a33ce232380a"
+    },
+    "creature-cinder-strider": {
+      "sourceSha256": "76457f9d898d9975b443b9512bdea13d9204914702e8348d4e69d63c9a368326",
+      "coreSha256": "9bac902dd18e71101542dc615be373245007e05ed9d456ca74b295c206aedbf4",
+      "mainSha256": "3193860582095cfa94fab0e7afa7da2148377b5bb94f13252eb66a590bb5a8b9"
+    },
+    "creature-clay-golem": {
+      "sourceSha256": "ea5d09d46cb53f40850a0fefc5789b0078eb5e268b0d733d37ebff5de306a6fb",
+      "coreSha256": "e2d82175d5365909ca70b1dd86770c47dfaa96a9f7f74f7e5eb006f36a2f518b",
+      "mainSha256": "9f61a8f002e4d07653622affbf0e8baf49e18285ef6bee80669fda04f62a3e26"
+    },
+    "creature-clay-helper": {
+      "sourceSha256": "58d0001c1f7a45c633e24ad1b38274cf7b7e3351e886bb6eb3af1fb34daa44f4",
+      "coreSha256": "169512238071a3f4e0380a9d8a0c039a9eba478b64a449e7f0963447bb8f249e",
+      "mainSha256": "e42fa0b3e43ef1adf3273d2fe1774cd6b821916a47409614eba03fcd18240129"
+    },
+    "creature-clockwork-scout": {
+      "sourceSha256": "2637b07b68db960f1b64ea079921ba1ed43940d65377b20f24bc2339a04519d9",
+      "coreSha256": "12c523dbd830b190f1a21b94d0925cc22f59cf6a0a87b2fa7c77e9efc82f6939",
+      "mainSha256": "ddd0f22bbac7cd772649aebd559601f45380f6461e8288736069492c7a0a37f4"
+    },
+    "creature-cloud-giant": {
+      "sourceSha256": "6767bc50aa2fc961e664727efea82f6f55dbffd739a8cc904f5e421fd444251d",
+      "coreSha256": "d92da141cfe31c1e125809c87813afda4a3bc10d5842d10655ab09cf16b2d696",
+      "mainSha256": "748d2809b03529acf5498f29b4dfa376814005f6318f5786dbae453986fcf266"
+    },
+    "creature-cockatrice": {
+      "sourceSha256": "84bd8328396e889352b75215358ea358b31aeee812a9ab2585acf89585572d8a",
+      "coreSha256": "40724887528cf88bd3800e6f50d121962afd9cf7cee96769c7de9a03ae23cbac",
+      "mainSha256": "25e0d3c9a93eb0cde92aa6891f6c3ecf6c52c52ee3b348d8c0d7a7bb017290cb"
+    },
+    "creature-crypt-ghoul": {
+      "sourceSha256": "4e29b9741c41ecb7a7a86cd9ac1fed8101c5b042e1e305a6a7f4a454ce53390c",
+      "coreSha256": "da7d3b3b8ac4288ea09a575fb55f245277e603cfede870090a5ad8565cd73f00",
+      "mainSha256": "bae361551232b09cc3eb9c07c1a981a588614c76f648fb52dd46f7df834e4fd6"
+    },
+    "creature-crystal-ooze": {
+      "sourceSha256": "c4ac46385d5c664831a3234f6c0d6f423f851f87dbc6a28c4a575cf763419be5",
+      "coreSha256": "566c8f490a6ae1fd20b537b626c8a4070645231b0b203d1992c61382a19dae28",
+      "mainSha256": "390bf0e2f366f0e041222f9b69654e2cf0605805e65241d11f4db10b04f8c606"
+    },
+    "creature-cyclops": {
+      "sourceSha256": "09a4cab97c09c40769617c0ec455e405bbf53f01744e53217c7c00eb45463ff2",
+      "coreSha256": "a3198ff588e3c9e160210b2613957fa4ff4983c1c55319f17e602cee47daa33e",
+      "mainSha256": "fb8b0a6f8f6a5fbf9e89ae5c3976b2819445942b86e83c01298514ef2bcab758"
+    },
+    "creature-dawn-emissary": {
+      "sourceSha256": "8195ae8c2a720742a8a0e4433470ebd4b88eed52a9e900d1a46ac9852b088546",
+      "coreSha256": "b2280377c33fd94f82e726eb86f0179fed8fc80d407a76d4ffa339d30252d5e2",
+      "mainSha256": "72379bd052d1ddf069484a9d970b20c3aa39ba3912e03fafa0c2137a21ea981d"
+    },
+    "creature-death-knight": {
+      "sourceSha256": "3f791190cfdc501ed2bc94bb0a34012f6f2f3430dfe4955abe996c4e40a280aa",
+      "coreSha256": "486a4dc969efc208438c1b86154faf5c7a491b1812261a9801e7229f40b8eff3",
+      "mainSha256": "47326a238b5428356f85c7b51bfe0fd380925a81ba179a189dee8e2c6f3fae5e"
+    },
+    "creature-deep-elf-webweaver": {
+      "sourceSha256": "4f6ad62ba8dce98aca43471c402d3cb720ab385cf0184bc33afddf221749ba8c",
+      "coreSha256": "19295bf742256f88d0eca5765c809fb86668141203ee86419128a91738024312",
+      "mainSha256": "cef027aa0d1d047f5688c9eff0034609113c2aff97bc2001541acbee8acd04e2"
+    },
+    "creature-dire-wolf": {
+      "sourceSha256": "1df5ccda7507ee7cdff7b9eb8511dcb0cfca6a953836091b80f1de59c87257a1",
+      "coreSha256": "4e999cccf25a13ed2222c1f85b9db752bbab0240c196c8efd0cbaa6d2fe7037d",
+      "mainSha256": "7dba0bdb3f9cbeeb8a5c60fef97692b594f5281182c9bc22b91f618db6eb35d0"
+    },
+    "creature-dryad": {
+      "sourceSha256": "67e43b00435209508d0f767b3d9414861aa1c915b6c89412b341339c33ba8785",
+      "coreSha256": "507ed38d35e76b85424c263c81bc2e840fc4dba05ba4eaedb7c824f87f3a721f",
+      "mainSha256": "5a1eaf0347e49c8c6d4827b1fa3243d656bd06de6fd3b8dde8a575b3a650bb4f"
+    },
+    "creature-earth-elemental": {
+      "sourceSha256": "533edbbc884c1d13482cab035a7b665ecee4197c820f7be60e5557a623983443",
+      "coreSha256": "20c9e984129c1d930c4b4605b90fbb2a7e914b60b31efeaa81772e4d598d7a6b",
+      "mainSha256": "9b08c6010d08e6b6d79787e41eb875d9adfdecb5ff89c334371d1073381f91b1"
+    },
+    "creature-emberling": {
+      "sourceSha256": "fd7d8a619d7537af09cb5f5eb4395444ce3988913ee8310d58f2443747676ec1",
+      "coreSha256": "ac02ff0f044380060628cdc5fb63a14dc7aec0ff5d46fdd66abecc05fd3a04bc",
+      "mainSha256": "0da524ec7b927b315ced9c038acd6c5f0bf6f1689e257c4949645f996067c78d"
+    },
+    "creature-ettin": {
+      "sourceSha256": "f7fa6ff65e54d49d9585033826a4f0eba3e2df28360d8f5689efa9e13bc35906",
+      "coreSha256": "e0b5bb79f763f4ec0136ee61fce99333fd15bfe82c8f4dabd07f6d6dc88dc287",
+      "mainSha256": "ac6a05824d64d421f4f1e6b90b24dec9553705969faa2ffa8460037c4678cb2e"
+    },
+    "creature-faceless-envoy": {
+      "sourceSha256": "5bd94e9d0cebf7e7c0c372bf27aabf4ad8a45196b0cff90446f489f2ff4af9a1",
+      "coreSha256": "c42bf5281909db4b0022bb5fbcf182525cd3fd51576434d6d2726c4b0526561e",
+      "mainSha256": "376892141d1055b83fc5d301679ed1c4b80940cb8a1300e31323b1e72571f75e"
+    },
+    "creature-fire-giant": {
+      "sourceSha256": "08d144383a79560fb464f8d1f7b8d00b8a76a19e564b5a25e73192c2f9146b17",
+      "coreSha256": "c07b976ef963ade27b64e88a7f5118b1d10158dbd1fabd48d54e7644c383530c",
+      "mainSha256": "870fbdc4236b5b92b7e5b9e0a0a6848befa300708b659f5122dadd2a96388a36"
+    },
+    "creature-flesh-golem": {
+      "sourceSha256": "d98bc76ebc43edafc3c31626162c5dc17618623bd3217fa7743fc60180b7beb9",
+      "coreSha256": "a3e176db09ed6bf803f3116faaa775ba9c56512cd9d2fb370e1fafdb7131315f",
+      "mainSha256": "faa5cbabb06238e17317aeab1728be2e579672958fc4672a983956f6deb79726"
+    },
+    "creature-frost-giant": {
+      "sourceSha256": "3c0b3e050760f0bba2413e43527f6c79300bf382976604f95b1fce82748d8dc0",
+      "coreSha256": "6f501e34e5b6ffcd09a45f803d8079ecb3e78d39aa46b95f0e246b85cc9e3ea5",
+      "mainSha256": "725a87fc57e8c8e912590963becb82f14733ece4190fff2c92e23aa9069ec7df"
+    },
+    "creature-gargoyle": {
+      "sourceSha256": "751c6ac6096f63327565a50b66b0de4c3b5ab06c89aaebed9f259b49d4657748",
+      "coreSha256": "61a2657163f254f9c4c3f912aa46de042ad531336bd493fde6ac3a14b6f9d81e",
+      "mainSha256": "fbe788c3c0c079be6e51cd9df606ae3a9b9990bd911b0fa148e3a0925362b3f3"
+    },
+    "creature-gate-archon": {
+      "sourceSha256": "193d94232fdcc0962da5c99b45eb5076ed5c11397e71993c5351ceadd0322668",
+      "coreSha256": "543bbb70e0d2f011b11903830ba4ab7e03524bb3a3874966a325246595165307",
+      "mainSha256": "9240253b0e39cf9ee5db07eb344169e1b98face087540812fa4f54f7f924ecd5"
+    },
+    "creature-gelatinous-cube": {
+      "sourceSha256": "429d07b634159e6530cb11ccfc6d921cfb445b03b0c039f02bbeb768923f4a3f",
+      "coreSha256": "755f929c88c098df49c24ad7ad62ea9fdcb6af32521297eba7255b446cce580f",
+      "mainSha256": "475e09bab9a6286aad11869df16e712399fe9f2acb62f3f8f4ed04c9fa02f307"
+    },
+    "creature-ghast": {
+      "sourceSha256": "fe4122eeb157fbc61242c8417dd87315dfed588f18a36581c903faa9dcc7802d",
+      "coreSha256": "567f76c81b970742a0cff8e86f168833bf1fa30f62b52d619d5532f1b03ab966",
+      "mainSha256": "9877a0b22c727510fbb70d96a9a33a558f5e38630045a9da34a8ae68e1160c48"
+    },
+    "creature-giant-boar": {
+      "sourceSha256": "82aad1ae08fb3da32bd486a6db3ca638219eb61f6ed6cb4f3b3e7693075f3a2a",
+      "coreSha256": "518e3f786203cbe2fa9bdc70510e85b187374c4e24d7796be255e133591cb1c8",
+      "mainSha256": "c468d6b7dc90ba37cf0027129ce943e83c6f6f2fa8cc9a53651d0ba2af7a816b"
+    },
+    "creature-giant-constrictor": {
+      "sourceSha256": "51a41e9ae30b167f829ed93f95a7c4bea746cced5b5f5a8c8e41dfd49c1e0140",
+      "coreSha256": "a3ac451bf6e4647dabd5818a0306d768543d02aa1811f7cac621358da231e289",
+      "mainSha256": "a8a3a6da574c8e5747992ee3f6ee2bb7df1b37e6dd0e014aba65dfa7a55d100f"
+    },
+    "creature-giant-eagle": {
+      "sourceSha256": "75c4b2e1f3c537233f8b9606f435e7f2cee7a17d68c6f5dfd04b03c85688ad5d",
+      "coreSha256": "a310d12f05f8d1bd3aa6df8472c15b83b87be0d745fae51c0783d55c69073678",
+      "mainSha256": "ce603401e98c19588806b23b594f8684082f689e19398caa14a5049591b0e854"
+    },
+    "creature-giant-flytrap": {
+      "sourceSha256": "00aa0352ae342b1f28804abca3f283e8294a96295f343238a12fbf0516596782",
+      "coreSha256": "2678835877acff5cdff85a8782a2cd2b8caa93f0aea5f56dfd2c9017e767ec40",
+      "mainSha256": "aa4f2e35682b35cc9a6f32146744c94da4e86dc57be72be97cb897eb760d7bc6"
+    },
+    "creature-giant-octopus": {
+      "sourceSha256": "7b31614979f54bd49e3d34100c84007abe077bbd3f66068f562260bb506a2975",
+      "coreSha256": "f7e1bf9c73ac3f5c47d8f2fd07bae67f12572b797de43cbe748b520e9c50c66d",
+      "mainSha256": "6b1039bdc83469b7351f8a6f739cbda5d9829601bf90c5687ed224d3181e877e"
+    },
+    "creature-giant-rat": {
+      "sourceSha256": "fb10b655cdf4ade12f7c809025515454ed7b03b8351ce4a4de62f839960016c5",
+      "coreSha256": "fb9014d87ed780cd3e254a0b0b828abe3e3b5cb02989b9f5bab826c8106fee48",
+      "mainSha256": "4e14ea6902e80264245ad1dca74285d06c332c1952dde53ea8b4a7db0d994c0b"
+    },
+    "creature-giant-scorpion": {
+      "sourceSha256": "cc59f5ca8e019bf48bdd148871ad915757865160e328a9365edddcf4d6c1ae02",
+      "coreSha256": "c7704e38da628744032296f5d8c2daa4983cfc944851e99d7792ee72bc5d345a",
+      "mainSha256": "69c5d5a6a9d1ff253745d5ce60630f8ccc590f17231cc31d88ede53ab3ee8b85"
+    },
+    "creature-giant-spider": {
+      "sourceSha256": "14ece687f7575fd2c6d8542e9b776e248304dcf95c0a94f13acd098bf7f50972",
+      "coreSha256": "ea9d4c19b4ae0518823ba4a3c9c030ddfff6d35f61e504b6ee1a1a46386b5558",
+      "mainSha256": "b99ef0c84ad4e176dbcdeedad6bfe4a5246d492827dc3931d7f147b5e456af3c"
+    },
+    "creature-glass-sentinel": {
+      "sourceSha256": "f740a65fc9719f258c2aa56be81c381c42ba182fe5fcf7433630e02939b04d86",
+      "coreSha256": "868a88b1b9367bafdb4fce11020cd9d157ddf287d87d56c0abea91326cf50a9a",
+      "mainSha256": "5e5b8c13b2320ced6188e9a292136afeb2c41523879e893bc7b8ee24c9eecffd"
+    },
+    "creature-gnoll-bonecaller": {
+      "sourceSha256": "dbfe1633718924f99964c1477f27773dcf4d923309e0921d30df43e98670640d",
+      "coreSha256": "c8fa7580764f27f2814dbfb2c6151052d45424f9101b99cc985370aa6e40492b",
+      "mainSha256": "cc5cc08394c8f2d4ce00690c3db488f556f328fa8b2fd45f7b1b62d9cce8a1be"
+    },
+    "creature-gnoll-tracker": {
+      "sourceSha256": "2d2bd6fe5efc53ebca0d3026c78542dd77a59440fa6b89f80a245362965d8222",
+      "coreSha256": "3529d3bb43e81051de0c80c94724ff3574844e9808b5bb5ba6ba9bf9edfcd59d",
+      "mainSha256": "9a6ba676085e62ba7b70ab3b6cfb5a1a77eb61633cf6508ece2a3b47d8acc339"
+    },
+    "creature-goblin-boss": {
+      "sourceSha256": "ae7cabdb4cc74c843a25195f05d8a35be7bf3af1c1929ab574ea141defaed70f",
+      "coreSha256": "443276c1f8ad51e5ea841805a61de47292c4df244deb1976d1a266cd963dab1a",
+      "mainSha256": "6518bfcf72d8e8fc20d5e41b915df6623b99451b447ce4ddeaeae2dc7c7c89db"
+    },
+    "creature-goblin-firestarter": {
+      "sourceSha256": "b880b6944de6c299d26231fe1be774ffc0d1eb83a912513e0edbe8f0a735fe5d",
+      "coreSha256": "186e1dd5cde5dc09068123799a4e3e638f3d4c9d9dc9db0dab3f27e4ffc8ce0b",
+      "mainSha256": "772c6dd43ddeee2ef90f63d57ef288950d403247f915353a1fbd698c10c82eda"
+    },
+    "creature-goblin-rattlechanter": {
+      "sourceSha256": "a9a5cc1cbc99208884f9b35f4bf3607d4f136d92ffbaf29d577f02cd4b96ad5e",
+      "coreSha256": "0cb59459ababa6cf049ce9f0f345d9d940ddcdb0a09257d688e7ab4841382082",
+      "mainSha256": "34039eb312973a313e196f05f8c9a03f4bfa86192d7bd9e645cfd998c601402c"
+    },
+    "creature-goblin-scrapper": {
+      "sourceSha256": "2e795e30444436d5524edfbe68dea74db4941e776015662455aa86226f20e535",
+      "coreSha256": "fc7c14a89f7a4c9920f66405df8253fc051d042d00965129e687ed9b2e458fce",
+      "mainSha256": "a516d0769d7893545f760e106b16504d1f208cb63f74c756e0617bb9fd403daf"
+    },
+    "creature-goblin-smoke-slinger": {
+      "sourceSha256": "c8ba5b88c3b896ae9d6a24f857f3652db66c32e9a4714c40f8563a593daf4b79",
+      "coreSha256": "63239525d96237df68ce72bbb8b0ad07043c890b3c874155d6fb170a9ef50a68",
+      "mainSha256": "39ab35bc88983e119ee7aa1fe7a38662c15be34c5648a37303cfeb9f03ce1e0b"
+    },
+    "creature-goblin-spearhand": {
+      "sourceSha256": "7be8dd0bd20b0697925e2d0d13b6c746e84afbd8ed895e7406dfbd39d3604e92",
+      "coreSha256": "cc6865037745304a2e4261a4791d171a60825f88b6e4eb89cf63eff0be7373f6",
+      "mainSha256": "b5eef48dd3162aa5357618662d58bdd146251d6d1d1ac646dd7822684f6e7f22"
+    },
+    "creature-gold-dragon": {
+      "sourceSha256": "9d4499237020f5a806375749eff3591e75fd99bbd0afe2439ff7648ae3ce540e",
+      "coreSha256": "8ab201dd158bc675f0f8539886edea67f3b8b0a8c962ccdebb49795a968cb376",
+      "mainSha256": "ada6fec75c3b9edb79dc527002009e7976c61db9d587bf65b4afa900a326fb2b"
+    },
+    "creature-grave-cultist": {
+      "sourceSha256": "e2ea0b38d854bf3c0de9599ddb027bcf8ae8f499a9d4ecff68236168a41b4496",
+      "coreSha256": "ae80fb2f988887d38612d372585ced07243e624c9f962730a7a71849d5b5d5e8",
+      "mainSha256": "c37b139c6197522c7515bd06e7d1230f4d7904fb91273a3b5e5602136b419cd1"
+    },
+    "creature-grave-wisp": {
+      "sourceSha256": "e83b9cc75679c82b16cd96a688f26952d0e3ae55e876a038a063e758659d7a86",
+      "coreSha256": "74f91b1a1da92bd83e557c75c37f2cebc48a789a290746c48b2e666ec67c5648",
+      "mainSha256": "77a784bca47722c63947f02977cfe899ae67f17b571be1e5b0aa360333382b3b"
+    },
+    "creature-great-cat": {
+      "sourceSha256": "19f12f3543bfd9821e0f09c0d0a67b450b1dc0eae7ea09bb84fd2b6195124177",
+      "coreSha256": "82dd85c8a95c29248650ab6faf7965a5fd4162267ad9a02be6357c84fd5cc7e2",
+      "mainSha256": "cd4228519f48f1f676e5c69880c51cf446094b9a507544abfa1d5b7c94b1d54e"
+    },
+    "creature-great-stag": {
+      "sourceSha256": "cf88f6c1f5218b0aff0b04cbd17477e9f7943b0d5930d1002fc79de33b8aadda",
+      "coreSha256": "d562f3fa3e5c0be277c0d5440cf1b7909c93c56c3949e687f7cc31c81a95091c",
+      "mainSha256": "43881c53bc1bc9c49add1f73014f07a5d4785d893f4c996b970ed2a62a44eb24"
+    },
+    "creature-green-dragon": {
+      "sourceSha256": "7193509200c6411851f242712460fbad5e8dd5e933539faebd7c612c146332aa",
+      "coreSha256": "338593d093959c749d1fb16192668ea5873ffdcd6ece1d869740d548085bca85",
+      "mainSha256": "3f2d675c098649b2ac7ce6f388b680fb11ef60fa332bb5fa4df1416e45bf7c30"
+    },
+    "creature-green-hag": {
+      "sourceSha256": "eadb3b571131caceae591c589cfad42f9e0e0213c4b04f09422208e095019c56",
+      "coreSha256": "d13114dc3b939f566dc76c8d86d8712cbe953452cb69e48689d2f62d2f1044d2",
+      "mainSha256": "a8a9702d0b6e2ea2aa68798db2ac891e9974134d56713c2aab9d4c45a6247dde"
+    },
+    "creature-griffin": {
+      "sourceSha256": "8c45a478dc624ddd3640aea2e542c5023509d56d67094427b9754b6448462249",
+      "coreSha256": "0e98e7952a125b6d72957638e4c1a5f6357242bfc26c1357e89d47e7a7c34d3e",
+      "mainSha256": "a7ae68891cc81d9c0c2bae666ddaa588b738b0ff4313d20a602a46007d54e506"
+    },
+    "creature-harbor-siren": {
+      "sourceSha256": "32c7495a198bbe56dfd99201e1629fe6e5d02b34ec4fd033662a7f01dee04291",
+      "coreSha256": "b89a2d1e70b783e8b47b174c747e5273f951650bcf0ed43ad9c5d39f52f88e83",
+      "mainSha256": "f6b86982c7d46f1999d94b03e0ac2749937f22248620a0b42b314c70a47130b2"
+    },
+    "creature-harpy": {
+      "sourceSha256": "e781358823ef4a27e6928543e844d653f121eb705ace3fd3301ca8572a33e7e8",
+      "coreSha256": "4619b10c5b294075679d78ff2f1b0aea920237c73423c2af19ec04f63d2616ee",
+      "mainSha256": "efbd1daa4b604c2709da23b18e94d7b12a6d9f7788a7c8186805ba5200b060df"
+    },
+    "creature-hearth-brownie": {
+      "sourceSha256": "b0ddfe26a08d72323b6302d016c96c97164dd13e7b75bf815abf20cd5710fa22",
+      "coreSha256": "921a4412f2381447f834a7e8a86aed453fa22ab2da9558cbf4e0cd266cf41d50",
+      "mainSha256": "0fe4c215297fea002940733de2d412e9280a2230e35c370c8becbb1156fc2bd1"
+    },
+    "creature-hedge-sorcerer": {
+      "sourceSha256": "5a8d396041294837bd87916662e5066d08bb53988fbc214359013313f263966f",
+      "coreSha256": "ff8c96159ae405dd28735949e888b7927cb738ca73e525ff265f7de0ec43cfe4",
+      "mainSha256": "85666daaf6178d809737ecae8edec43be1bc584d57f9399140f78ade3c0e2471"
+    },
+    "creature-hedge-sprite": {
+      "sourceSha256": "6932b327ef4d81fab602a3ffc09782069a1e5777b558201678e4b7f38d710c9b",
+      "coreSha256": "7ead53ba3e97291ff30f27e723169f2cd653eb415ce4373db6e9141ea2a56533",
+      "mainSha256": "ce2a9b1d78b65a5237327a9fd7dee6e25f6ad505631a59ed008cef25ec24ee8c"
+    },
+    "creature-hell-hound": {
+      "sourceSha256": "cbd1ff8e3f61cc12b2b7b4e62d44cb4ece8cc5725fc5ecced73a57f0f251cb1c",
+      "coreSha256": "5189b08d9ae178c261eddde68ddd1887862debc47cd8ba0af46f669ff89765cf",
+      "mainSha256": "c21ae7e439b889169dcad53dc2e386045f5c41e4a30bcb99f737868b61184945"
+    },
+    "creature-hill-giant": {
+      "sourceSha256": "3699f14eeb45cb10f2234ac1a9b04f5aedf3cfc7ddbe341be4627b2e602c1f55",
+      "coreSha256": "704cc5c1963c253a398282ad0293ae37294032219bfa82b6c2b61613c7ae83bb",
+      "mainSha256": "47d413dde37c18cdd7525454e15719ab73ddec6be50c4b729b563875f75b355f"
+    },
+    "creature-hill-ogre": {
+      "sourceSha256": "4445871a3fa2a005e03d2ca718d503c3da30a084af2b27968cf09d5025354939",
+      "coreSha256": "6207cf34c6e978459d5d0d28f9d07c7259936cf49befacc939686c42a5d6697d",
+      "mainSha256": "076c79eb49c3458129449fd65ea5b89fe14fd54cf6445f21cd6417690310cbbd"
+    },
+    "creature-hobgoblin-longbow": {
+      "sourceSha256": "a849a96ba65972019048e9b17dc67eb9cbac1cca69e1187ddcdcb4b2acc97ea3",
+      "coreSha256": "550fbff209139ee11db12b34163101d42ae097ca1196d7a7cb6c9d07b89ead25",
+      "mainSha256": "79ba69f7b2513f700ebf5fb276ee2dcab4ba257b9a06aac832cb20a490ab85eb"
+    },
+    "creature-hobgoblin-marshal": {
+      "sourceSha256": "1bdb2056f5608c20bbe0023e77dfc93fd02b6c039e4ba2123a00d9d395f29ca0",
+      "coreSha256": "4c29a9c571f2ae7d23b01662e059f13844c39d655044270e0aac12f7661a4b7a",
+      "mainSha256": "130bd37793a4d5eb47ff727e65fe06c73f520770436673f724ef57c54df646b2"
+    },
+    "creature-hobgoblin-shieldguard": {
+      "sourceSha256": "33f56d773ee9093701017b5c12ee4de3505081ba5608a2cde29970ac17fb1313",
+      "coreSha256": "353e22646ff3ed53efa7e5f907d8f5b61160d6293fa00e8c7e5f0662b290cf5b",
+      "mainSha256": "9327bd88dc45ba029bb9fd42af54577fc634c7aeeaf2778b9139eedaf303298a"
+    },
+    "creature-hook-beak": {
+      "sourceSha256": "1c00701ae73218fce2e081c789417f20975a8297f71bc659d98934e2a51abfc5",
+      "coreSha256": "0aca3d9e20fc2935ee9f6c6bb2c3912071017e197105cf116906b67f34b982d9",
+      "mainSha256": "54426f620a706ee8bcf6cf64ea6514c394a10196d21bb95999798f2c6bf5fd34"
+    },
+    "creature-horned-devil": {
+      "sourceSha256": "e0df9684cf86aab3180498070de9119345e42fce2ee411cefe4a99cef14a9d66",
+      "coreSha256": "c2df1aafc4d22e384fd4417783f9190a415608905e59724345ce55cd75e953ed",
+      "mainSha256": "f53312218bac0b8267ee41629c835463e01e893587d2c110beba6e6dbc00693b"
+    },
+    "creature-hydra": {
+      "sourceSha256": "059e1ecdddf1113e2e2d9902f9fff7811ec097572c2ffd54fae8d2aaec15ee31",
+      "coreSha256": "1efab9812e7774bc262eacc2e220875bad14a7e871b5e27354c99ef7f18f00de",
+      "mainSha256": "3239cde5226a645ab2d9da8177e73456bdd6df34da92ebd52b9d74f10f982cba"
+    },
+    "creature-icebound-warden": {
+      "sourceSha256": "30da078c9d721b3335f6c6e6379210a1d2f886d66da3d82dd974cbf5dd684895",
+      "coreSha256": "3d7fe4ba1e88475bf6e5d13c111f52b1f428f73186dcc00777c28bbc3cfc7be4",
+      "mainSha256": "28909371d9d01d298ebff1a0078cf77ba7f430d6f91f32cf4c335372d6d09288"
+    },
+    "creature-iron-gatekeeper": {
+      "sourceSha256": "89107cf537e59cde0ad128e03fdfdde9b163a40260dcd7cea245c12be2315706",
+      "coreSha256": "222adadfdf9de1efca8e3e98f2da1cce25bdbae977487c4a50fd0ba74f36ec24",
+      "mainSha256": "cb0892e0276dabfb9251dad37989257b2a4c3dc5df3db4575ce253c54d0adb0d"
+    },
+    "creature-kobold-emberkeeper": {
+      "sourceSha256": "4b0df86f3d8ec3693380528e5147d6089fad817357948cebcfffa310e4e0033b",
+      "coreSha256": "49a88d6433026459daf20de6b477cc519e90a0a51802f7a34e6e113514320696",
+      "mainSha256": "12a9bac264bc7858043b2af5b3bb4e035692955070b56ffd18c34ff797cbcbaf"
+    },
+    "creature-kobold-trapkeeper": {
+      "sourceSha256": "6af12e09cdfa5a12d1ca81ef458c92d4057975969d8a0a4865731a78456511c6",
+      "coreSha256": "6a91f396d0edc4dc7c18fc498541aeac22c0ceb5b04879b9932e67f4e6f8b3cf",
+      "mainSha256": "554a03b0b074a510684f0e9d01981a05405733f5080f03697fd16b2edd912742"
+    },
+    "creature-kobold-tunnel-scout": {
+      "sourceSha256": "a0bf732cb5460c1beea9bc7503b95ca4102c96edad5d510195494d62b1fe045c",
+      "coreSha256": "2d283c595118206b83acc04c19699c09ba7cbaefe94faef5a240dd46b03e4e4c",
+      "mainSha256": "9a66d084258f0465d46b9be01b520aa078b784eb185927abfb13f58b6a92d168"
+    },
+    "creature-lantern-angel": {
+      "sourceSha256": "5affd086bc6408cb280032ba57fd90e75f35af8821907fe3bd2690906e7841e3",
+      "coreSha256": "ce32aabef800fe6a0b1b844bfb7ed318b408ee6738f2529e990d6f7ba9ffa9cd",
+      "mainSha256": "fd7e25b896469e2ae0dbfcaf6e25c9fe924d22d1292846edaa758fd9c3fc41c4"
+    },
+    "creature-lantern-spirit": {
+      "sourceSha256": "57b984cd1fa1b0a73d7555026ac1aba5842b2cd3d1d77ccdea258b5efc44c80c",
+      "coreSha256": "3ecb15bf1d0a9bff1935cdbc3d9e2b86ca04781c4b0ed496b16673201d52509d",
+      "mainSha256": "aa60c5f4417132e349986ca89dc282b61d97b9129b04db8bc01333809083b0bd"
+    },
+    "creature-lizardfolk-reedguard": {
+      "sourceSha256": "606f7c45ec7b32bf46f08ec447eb8d62eca88b7b7f85902b8cf14cb404a64b91",
+      "coreSha256": "15d4fa7bdff53b8b2b4dadabb252f7d1646c9f41eb591c145c8c42adcbefc5a0",
+      "mainSha256": "d8444213175b97a5930ae0777fc324e0bf58ec5e9e02ac8ffa44e31546b99e9b"
+    },
+    "creature-lizardfolk-starspeaker": {
+      "sourceSha256": "6f4eee6a1888424ab08c4d1baf6bec6f99c0d1039b6101f72ead6b3d76609ba6",
+      "coreSha256": "7c9fe545b03af25b15b6411699bf46a782c82c72566c1771bb6cb262f9c044e0",
+      "mainSha256": "33bb9f4e2ec9a6479af27015f0c5094d0c1b14b3a151317e190e5f1ab7dec848"
+    },
+    "creature-manticore": {
+      "sourceSha256": "a77180e007cb2e08c6392d593bb4999b0bd816c5d046ac603f6c1c2462f7c883",
+      "coreSha256": "8a997d67a607437701341b806383f1506b72a10b7a30c506e2650ebad8c96efa",
+      "mainSha256": "c72816a0b094e1abb5be429c1244222b2dc75765e64708d4493c5ea3c78bcec4"
+    },
+    "creature-many-headed-marsh-wyrm": {
+      "sourceSha256": "a41a900ea34e91871f4e2635bfb1b3d01335dd098a01c924fd0ec84106b6d33f",
+      "coreSha256": "bc812e677549f4dab6661f98c3848ff5336e41fc7868bbedae2e10334c9b4208",
+      "mainSha256": "c7d8c6114b1c7bd5e0417d272932bc27add936b4d350bf9393793024b5e3c4f0"
+    },
+    "creature-marsh-crocodile": {
+      "sourceSha256": "82b27644c4f08a8683884ed7bbe0b0be9f58e03c81ea84d18fc662315ccb3437",
+      "coreSha256": "d9447831f28fa2b5d569d41e0232653096d6e208807b9d6e7048c36f23e6dec0",
+      "mainSha256": "025e27f5756c352712c97e181be189cd4bd73bd1b5e07bd9143501090bb914ac"
+    },
+    "creature-masked-duelist": {
+      "sourceSha256": "b1edb1b35c2608f58aca774262656d751ec3724ddca2428b7220c703ab4286ca",
+      "coreSha256": "2598e000a7ef9dfd153da5f851f44e1e6811c2f0e63c7d74d7783d26d7f8ff3f",
+      "mainSha256": "3e92e2b34ddca3c8bb6a830ea7ada167abba2b7f384635c0adba1b69a56a0e33"
+    },
+    "creature-medusa": {
+      "sourceSha256": "e24e78e7a579d05c2635dab36db8dd60791a5aefef901fa69820b63e80b641e7",
+      "coreSha256": "652fe223ae80851437ed232b65c28d461297116546e4b307de746ba8d82575db",
+      "mainSha256": "540de0acf8e642b9b347df17d435993ffefae3fc4049a19b455dd6dbb81ce263"
+    },
+    "creature-merfolk-tideguard": {
+      "sourceSha256": "eada0acf842b80cda941a0cdd11d264dc780de7389a0baa40730057ccc94de32",
+      "coreSha256": "2072bea64a43cdc56ea8a666b2ab68b7ecec673291ed527e54a19892931b6513",
+      "mainSha256": "48a45ae69a5241693882d842a2bb73552343aa2dd837654b690099f056ead38d"
+    },
+    "creature-mimic-chest": {
+      "sourceSha256": "9ac9623dbc3147b7c988777688328c50e38d432b7c7eb167671423eafa5d5591",
+      "coreSha256": "ed83d0ffa954fc0e93d541382df464072f24c31806ea6ca4b676d0299a6cc130",
+      "mainSha256": "0ba65c8a14d46341d224a27974e49807584637938a1e753bafba3d88800d0202"
+    },
+    "creature-minotaur": {
+      "sourceSha256": "108a48be7710e1463b668452086b27619fca6d79ca32fcb2060b35910ecf4e7f",
+      "coreSha256": "eab23f46b1c29f7ed7a489194d1fe38d87974700d3aa8daeb3b777cc7109cd83",
+      "mainSha256": "f803490767523aa1360984569e0b03eae06996a8174186db9f40b5e27a86f649"
+    },
+    "creature-mire-ooze": {
+      "sourceSha256": "f129dc5e138da18f25552f880a5720143f9a163b27f36ac6db5435076c79b001",
+      "coreSha256": "aa83768681468db2109af1bae00eaa47249fc254f8a0b0ada6436d8399752944",
+      "mainSha256": "c48e180a526e9d18d7f37287a5b5ab3653cc5a46117736a7484c199a20067abb"
+    },
+    "creature-moon-hart": {
+      "sourceSha256": "6552b366aa79116750ad6d395e3249dc603f97adea9cdca389bcd15468bd34a2",
+      "coreSha256": "8b7ec2d72d4e7eaf78c1e79068dee9b2166fee8fad6efa2c31432bb2beb7965a",
+      "mainSha256": "32e114c404996c6b8adf4c1d338a70b3111a736d39e93bdf8923e723323dcd04"
+    },
+    "creature-mourning-bell": {
+      "sourceSha256": "88347ba0fc1219f880f9f1da80866a2b0a23b90a20b8a165d29f778ac3b604b5",
+      "coreSha256": "0ca2789f65ae6f91587c5daa4f2f2481573f89dd6a4375a81cc913d09668a630",
+      "mainSha256": "b5174a9554b20bff71cd4579874d8cef0d95c644abf777ebe300a8b34647c427"
+    },
+    "creature-mummy": {
+      "sourceSha256": "a0309cf54352be5269ede3ed759ee8d974eb1171edeb98054b364d40f6468f5d",
+      "coreSha256": "1e7b0886979e5f40d3c79c64d9c4a9dc80e32141f3cfd30e5942dc413c8be67c",
+      "mainSha256": "30a694381efcb7c4ed20301a206ffd3ddf7a9a0b4b162b12abc8ee44ea64902d"
+    },
+    "creature-mummy-king": {
+      "sourceSha256": "6e080fe8f33df576b40665ef4e32c6b1d10795bc9a6b4bcda2d2e864ca1eebf1",
+      "coreSha256": "8bd54f18cdbd5332c82fafa6b0bb3ba2028843b996e1eda67451ccd7720db448",
+      "mainSha256": "c13a300699eb08b222d714fd45714cb3b9e94dab3af1041090afdead3291a0d8"
+    },
+    "creature-night-hag": {
+      "sourceSha256": "3d68b22311687f4dd1d62f97b4955c358adf43b07d2ddc6a5de607bf50a25b3d",
+      "coreSha256": "081c47282d74c5a6180f9a93690c368c3fb4d8bc836a86ef62c39762d19cadbe",
+      "mainSha256": "a0ac519dd3dcf5ca0a53909e3903564cec1c66827f7b1a7002c77b86aaa4ca28"
+    },
+    "creature-nightmare": {
+      "sourceSha256": "6965b798f4c57eeaa541f2080ecd7aaff94070e5dc93e9980dca4cfa57c6afc9",
+      "coreSha256": "d70897b7bc136ec3a12df7197ff910cc70a6a212f46dd2f7c0da807aae966a28",
+      "mainSha256": "0c35953a873f442b8bdca9004b72eaee4f708ff2916950092c43314469edc4fb"
+    },
+    "creature-oath-devourer": {
+      "sourceSha256": "ab73ea85e4879bb8258eaa906f8e4542d97ba75d469ba4706a3d49b0cbbde774",
+      "coreSha256": "1bb155dbbdc1e22c09b97c52a654ba67b6ae956c5d7ee19f3e09c7f99f86bec4",
+      "mainSha256": "c3976afc204bb29c7daeb21b7d00769e7ed361ff5d99e347676fe6d210f86d69"
+    },
+    "creature-oath-flame": {
+      "sourceSha256": "7c821cd19ce2f880605bda972fd2b3fbf6acaa9b8080f8b0923de4efcc2be445",
+      "coreSha256": "3aaedd21df6e817bfab6341f0c01a76a5b78b93d90c1878f80d298fe5acfdac8",
+      "mainSha256": "a4045cf615268d69de5fa7a2d57b90597b739a58203c9e662931c3a53499b975"
+    },
+    "creature-ochre-jelly": {
+      "sourceSha256": "a28a2445caaf3ab39ce59b5dfb598c04eb5c013b2284d94bfd9d76320f0d90d9",
+      "coreSha256": "4e34952476b1ad83ef1686235ec64faa20cde72e53518af404fa24bff96aadf7",
+      "mainSha256": "11b744a639eeea5bdcdc96a6a5f426260c6f9a5476a7b4ec242bf318a1e560f0"
+    },
+    "creature-ogre-glutton": {
+      "sourceSha256": "872fcd0bb5f9d8345ea6208f773d5aa3081cbcb878eeec02a74aa562b59352ba",
+      "coreSha256": "0e067da74402edd413511b4fcadd1f39e2de578f5cb60399948abb31358362ab",
+      "mainSha256": "43bae96e20a85c0536812f27a8f2bca21797e6d474991d4f9c11a4cbee2155a1"
+    },
+    "creature-ogre-hookhand": {
+      "sourceSha256": "4c7f89bbaadf1b602d52a28caf51ad2fe1cb225b3f13f075b44ae6bcaaef5d09",
+      "coreSha256": "d037e063ddc20a62f62c2d894746fa99232f4e76f7be5373979afae206b8b79c",
+      "mainSha256": "31e7ea27cb6e97d3aee3fac738c68acfa0cfab1096d06e97ef99018c103e139d"
+    },
+    "creature-ogre-taskmaster": {
+      "sourceSha256": "0d9d3095272a4f3d6ff6a3873a723e113c5bba231a0f4ab1c961fa443a1c37a7",
+      "coreSha256": "3b00afc85410db8285e284c7d73ff14e57ceb03157012e10f599d6e0854deee1",
+      "mainSha256": "f3eeaefd30f8036226dcde0cd882658d184e0f4c7191c4a21b92708ee97cd243"
+    },
+    "creature-old-root-guardian": {
+      "sourceSha256": "64bab5d3410f452eea043f6882bb5d2a14bd86ea0dec33dec6115077eb9e2ec2",
+      "coreSha256": "54c3ad3f1136f870d6da62bb621980c27fb5fffb9495348f99773604f93a5b9d",
+      "mainSha256": "5d239476655e3ab0e412ef40ce5509f6ded3aca12d5956e911a207107b7f65b1"
+    },
+    "creature-orc-outrider": {
+      "sourceSha256": "14d73e76f1aba9c03e546ed25a8cd060b6dcba1bf92adf206d6274eef58056b6",
+      "coreSha256": "8ad87de888f69a1e828fd9a62bb16f7fa85b53fd6a24c2ec4f4bba6f802353e7",
+      "mainSha256": "2a08b0ac8b59a8deebd76146767898e50161e3dfba3c9765639ef89a60172cd8"
+    },
+    "creature-orc-shieldbreaker": {
+      "sourceSha256": "31f11128afeeea7c112d6362d0181b734a93ec5133efb7de71313a4cbbddbfe1",
+      "coreSha256": "693e664ef71789436e43c1a66267ba5fa6b30fd3858e6d6dac8789c8aeba19c6",
+      "mainSha256": "b4f4abeef339d96384a8c45462ace0fd8d1eda3d974ef928e99096368f10ec67"
+    },
+    "creature-orc-warcaller": {
+      "sourceSha256": "b5a1222d316c688a8d23e7828af482d17a325aa9854ec1f2e55e643a180b5c28",
+      "coreSha256": "af743348e600cef590d7baeb70a670a0fefcbba40e0b54cd971bcc36b33f36fe",
+      "mainSha256": "f692d64b2795e98b1e0f81380a8b639b58ef29f3fc184eb87cf02620289b563e"
+    },
+    "creature-owlbear": {
+      "sourceSha256": "22e69ee96b1405b3833fb4b02a199c0a509fcdb8c6a7aeb281665b1b56002462",
+      "coreSha256": "a8d0f1ac203358db105da9a14c10fbfa0a8d2d2835f32493ccef62db2f8f524e",
+      "mainSha256": "21c5d8035eb9a250f36698ec469af96196865b887287d20aa2bb4b9ada1ea160"
+    },
+    "creature-pact-broker": {
+      "sourceSha256": "f305e85e9153a294a7a2781ab9ecbc211bfa973bca119ca960ffb611c897b042",
+      "coreSha256": "081c47282d74c5a6180f9a93690c368c3fb4d8bc836a86ef62c39762d19cadbe",
+      "mainSha256": "1b91e42d5620bcabdcc11cc259248f38e70e67790059f384f9aaea1877cbed05"
+    },
+    "creature-pegasus": {
+      "sourceSha256": "9938d48c3bd7d8d372663bb573db24d1cf3c170f8ad18da091ff6591cfe41604",
+      "coreSha256": "e26b403b07fae395b7e66f09418513e7bd6dfeb63f0c0819d57bcc2589871881",
+      "mainSha256": "c2f09ed4013da2591968af6910de763d1026cf3ed4f7b0d6a82a096939941273"
+    },
+    "creature-plague-zombie": {
+      "sourceSha256": "74b99defe915443272f6ec42f84941df24262e8fc0bf46c998fd74c24bacab62",
+      "coreSha256": "566c9d864c4d913c61e0a9d087b8b09360952ae261281894c24c156de8363c1c",
+      "mainSha256": "129692488e0f5f8bb9ad93f08307537ccdfd05c20cc2b92211c06f84749e4473"
+    },
+    "creature-poltergeist": {
+      "sourceSha256": "62086aac00405ae7cd86a864bfd863c184b84fb9c057d348b32ae6b75dedcd45",
+      "coreSha256": "533a330c663338e14f1e72372e55ff9cca5e895e88ab7bb36ce8c4e779e65509",
+      "mainSha256": "c18fa1699b64c80a50710dcf50a83c4ac68940ee43c76b1c22d54702a3e77ab3"
+    },
+    "creature-raven": {
+      "sourceSha256": "b3639bec60f3750646b30fff74f8ec3e08818451b5435c32801b23f3531f0808",
+      "coreSha256": "e8e1d14907498d31582738f62223a2e79d31409b27ee07baa28784367dee0926",
+      "mainSha256": "b9f8b2c58b1a0ec205fdda040f5209b5806722fee1d0d486a5ee31a3948528ac"
+    },
+    "creature-red-dragon": {
+      "sourceSha256": "c51b56a7590f743318fdc896cf8b1539b8d9d006213df996f166289fe2703684",
+      "coreSha256": "c01f23ec48da948ca20f6107f42ab804d3fd2db5ce8fd78a5f36c60bb0397160",
+      "mainSha256": "86ef63466b1b5f157146c16b069a9fd8916fec5e5563eb736727976c0936fc40"
+    },
+    "creature-redcap": {
+      "sourceSha256": "3029f7321e721da525a20541afc573bd013ab3497a8c05d246ba2e3833bf2e12",
+      "coreSha256": "cebf326a08345e2a5341eca458dc4485f79f7f1b2c12d145c34443af8f197f75",
+      "mainSha256": "9d98ae7fe1b033d66be0ffe2515a657753281d25c32b3ccfdf16c32abc0f064b"
+    },
+    "creature-reed-piper": {
+      "sourceSha256": "8954f355a271c453310609e2285800c1032ba0f2e1daa8a61401c935ccd7a8d5",
+      "coreSha256": "87916208c538c525f68185fc02bcfe2aa5b43c9208217fcee20ee676e9ba1e33",
+      "mainSha256": "d8b4c4466ae8152e599c6200b0c8ab16f9c28a724bd6924dcd3c6243b3e68747"
+    },
+    "creature-reef-hunter": {
+      "sourceSha256": "a0c452d1654e1ba6ce7a7fbab911bfa7ad5bc4af6498df5d6fae14fbe7d5fcc7",
+      "coreSha256": "d30dcd2f0f9315056b474c6df53ee88403a0a3260281d9df552a7d174abdc9ae",
+      "mainSha256": "586c8adac465958ad2408f53c10b3a1b220803422d47916db26dd26dd15c90b8"
+    },
+    "creature-restless-corpse": {
+      "sourceSha256": "dfb9a5634514737f4ddc2f817f96839bf98ba50a36d83fa2b7af51d2e1c56b9d",
+      "coreSha256": "1a0a5f001e994d036a17963a5ed3ec5cb30ab59d27ef8c2f1ef5cde1a5a0c8e4",
+      "mainSha256": "541005ba36abbc23b3f78d0333f57b6db7ee654b265ba64764dabe1b0d9074b9"
+    },
+    "creature-rill-sprite": {
+      "sourceSha256": "9cad4bc7cb57550d5c72012678bb879bb980733113e487b3ad064665a101d78e",
+      "coreSha256": "88ed6088b09d290ff197ffedc3c5a986cca1f78cd4770ebfe92fe4e8ee13d162",
+      "mainSha256": "912d8847e1dd1a69444567a9659f1eb5847a13ed4e7a503d08d047ece2b202b2"
+    },
+    "creature-rime-dragon": {
+      "sourceSha256": "49e2b8a9520c7a0afcb4ebce99cde7a3ae8bd461352860f7506d5832ebf31d00",
+      "coreSha256": "0db24037060b57c2d7135edd18090a126cbc575c3f1c14587a0c1b7af94444bf",
+      "mainSha256": "6d76d2d7948eb6197c268614e19569eaf7fd009ea1a239ba34677d424b7df0ad"
+    },
+    "creature-river-serpent": {
+      "sourceSha256": "3920b4e5f39a9f4855f34912930a5dca5e6884c90e7200d654923a3988982978",
+      "coreSha256": "c6821f54f1c870e1fb129ddc326502c05343045f2d19a76c03333fcf8e80ee98",
+      "mainSha256": "71d854815831e5a9d65f505facfe259285a14ad07b17877bd7dc60860da63df4"
+    },
+    "creature-road-bandit": {
+      "sourceSha256": "b88d059780ebe6baf29fbd828e6ae8a07724196684d8307d23765965d32dd350",
+      "coreSha256": "df09e6570e16b5db0c4e65a88c81aff572def37194df4922561a9e65977fb015",
+      "mainSha256": "536f08f693c4f6293d4c2aab82225eb991adc434fbd0af4ff3c36f4a6e70d4ce"
+    },
+    "creature-roc": {
+      "sourceSha256": "50d936aa0b9757329b703f1cd0980bb39f7a101a86c498cb382afa985b75a8da",
+      "coreSha256": "714b5dd12c686e622ef5a8e5b02a05677a6a383af9f5ca664621b50545c0f6fd",
+      "mainSha256": "51b58bf076d387db39464bd5ee9e2a6a1e432d04d108032763f0805bf2c1ce72"
+    },
+    "creature-rust-eater": {
+      "sourceSha256": "d9b40c285e4fabe6f1ec26f4d6be8cd0dc59a192eb8a4a8256c848dce28542ba",
+      "coreSha256": "318e2e1746b786119fb20ff4a87a7344612d636dfc0fc8cae2155f8c5b2e17dd",
+      "mainSha256": "f63ccfabf92d34ad50bd9153515e3172d7b02efc4f670c84a4aa7f6c6379746d"
+    },
+    "creature-satyr": {
+      "sourceSha256": "398d258de9cf08fac803f90880788eaf55c2a4ca57f67ca012b749cdd1f5b0cc",
+      "coreSha256": "075156aa804c280ee3bc153476c9bb9214ff908d82fb2bd3320bfed7bb4b49c2",
+      "mainSha256": "36b096c70fb654dbfdbd228e60804c559c79efb19c9e240e33eaefafcecfe4f8"
+    },
+    "creature-sea-hag": {
+      "sourceSha256": "8d1ec22ba1c71aa7146b6e249bc93a2ee64ef36b74d0ad168148be51eb48fb91",
+      "coreSha256": "cee0467cce859c7eb0e510b159089835dc377a68943300f3f4186f7d0ae59cc3",
+      "mainSha256": "38cd4b491010949eb98b8a7728200af2f08fe0fa87e3981f796a76802ef537d9"
+    },
+    "creature-shadow": {
+      "sourceSha256": "f251e17530d57cf43a77979ba2fcdbca48d4e01f4491a183514b29bf529dfbb4",
+      "coreSha256": "e0e476095d747a3989c2edfd92e387d61ade22143474a66aa19a83ce590a5ed6",
+      "mainSha256": "2e5ef8b016a37c1628bbe6170d4b136091c60c3bba66e265b179cd131740e986"
+    },
+    "creature-shambling-mound": {
+      "sourceSha256": "abc49de940733391071ee210a801536211153ef34a07499c995b7ab1e74a1a72",
+      "coreSha256": "99550a6c9ec4f8bce4ccde1f5e130ce51f9eaed2dfbc8281c376391cf6a0b683",
+      "mainSha256": "a1d069ae97ab75fd5fd61efcc113dd8f00df2dc5c89e0215bb5ef9484282fb09"
+    },
+    "creature-shield-soldier": {
+      "sourceSha256": "56afcb111079b89cfca789dedd913454645d480076fe574ec9189094b697134c",
+      "coreSha256": "548f00dbfc257770cdcd7e0c81aac4082f27a98342d96bc72b036f07f3b3f265",
+      "mainSha256": "78611fed5a117a26ff51577bfc379383c188df5e7c24e9891f774e0044c50487"
+    },
+    "creature-skeleton-champion": {
+      "sourceSha256": "c1448111b660f38d7e05dd90f79c8156c2a4f76f442a3568053b6547e1b549f8",
+      "coreSha256": "0d836b0b5ebd16dc9add3e8417ff10d00fb58cad5ba8c3ccb10e9c1f02878896",
+      "mainSha256": "4a13abb8b02ad5a69f0ffd10435ecc7f085baef05cf93ba1cf3378c37026d829"
+    },
+    "creature-skeleton-giant": {
+      "sourceSha256": "96f5ba395081d922158b9fa544359bf0de728c6c1938b1cad8aca6a793acf6f1",
+      "coreSha256": "b5d91bf44269d68137502c88dfe21cf701d63a31675561237e507e242c030e61",
+      "mainSha256": "ff9a7f2a75e0c1da6751701ea7a86e253be2f0ac2d565946c2105eb5ad175673"
+    },
+    "creature-skeleton-horse": {
+      "sourceSha256": "024211f1eafe24716167e1608e3a7425327ce711b6519447e296ee5d61fe5949",
+      "coreSha256": "044463672bc12d7a0705a8260c469b22ef6f3f649547542a573e8db4b409bd9c",
+      "mainSha256": "ed6cc79c65a3ee88a2afcd0003eecf9cfb586a05c93d523af2e479268cfdb81b"
+    },
+    "creature-sorrow-ghost": {
+      "sourceSha256": "e2720f38bb2ded73223e55d220cfb878b927499e49263ffafb5310f8e39f024b",
+      "coreSha256": "56a64a2e980b5be532b26caa5d5136d7dc469352317140526fc9a7420eea92dd",
+      "mainSha256": "70505304311c508194072cb622726ddf79c9956d78d34a775760d8cff364cb0e"
+    },
+    "creature-sphinx": {
+      "sourceSha256": "964110b68ef4ffca2f6305c0d1d2b157e6bcd37568e5565a8a9acde66f191d77",
+      "coreSha256": "7fdb2c26ff541b3a2479c7e82e7ec210ceacefc250ecd7dcf060dab825260eea",
+      "mainSha256": "32c1af3870013b6b29c945f99ddbf3b9640260a380c63b40e47c101bf47f81ce"
+    },
+    "creature-spore-shepherd": {
+      "sourceSha256": "b60ceb83adbd3eaa187e8c52cee0fcd592d2b0c784914dc8dffec4002367abdc",
+      "coreSha256": "fb6b7c88bb73678292311b02b2df3e1c13733372b0ea0f3470ab0274c4940855",
+      "mainSha256": "2cdba266fb3437d96f0444920400d3358b605e61f1fd8bbb1fb670b475615071"
+    },
+    "creature-starless-oracle": {
+      "sourceSha256": "3e465967c1612b1a0fedc7a97591eb4aea9170df3c64ba8d5eb68b65b55ee15c",
+      "coreSha256": "76906a0a219248e4735277dd62b6786f5ef79223e2363f484079c4c21a4e2591",
+      "mainSha256": "eb3a7d19fd1aac775c7ea0e5d16ef423c6e552bff172e78b58d6aceb8a185ab8"
+    },
+    "creature-stone-giant": {
+      "sourceSha256": "5c0708571a9d51a2e985ccca4f86ae8e0f63ff7fdfaf5e3aff1bb7ebf0355eb2",
+      "coreSha256": "767360deb03f4c5889fab253ac351269168966ad875214a2dc1a0ed2d6d3c285",
+      "mainSha256": "fd87226a83b4ed0b4416464b7338be830da34367aad5f16a7847c418d0e22b71"
+    },
+    "creature-stone-golem": {
+      "sourceSha256": "890e15828a315bc00f4a196d7dd395d6382403545e2330e05972dff915366d74",
+      "coreSha256": "bf71ee21387fede99570f4162a7122c43c25cca8e8f5e353a003576e9eb58c33",
+      "mainSha256": "884feece00735255e1f44cb5a07114705efa03d6b742893a00c98d5b6327b780"
+    },
+    "creature-stone-knuckle": {
+      "sourceSha256": "330ec734cb9bcdc5fd70847f13a4032e8b9b29272423eba4d2c784a83ebe40c7",
+      "coreSha256": "041301fc37fe36c8561e05f4e0c6e282b50f187bb75d73fc0a8164787026f21d",
+      "mainSha256": "3782188da23c20d244c3a4cd8df26e781b4361be494b99929b8699d9f217d1a4"
+    },
+    "creature-storm-column": {
+      "sourceSha256": "967d4cfc180c7463cc2cc8230650bb0c3a5412e9dbefb3d870e2af4f1f49ec63",
+      "coreSha256": "039368644bf01e231801acbca1a2c0ef1c75807056f3f888a56a1dcd806c09e7",
+      "mainSha256": "217b18a0367931530895a8878e01e770101a3ed612eb514cf305b53433273195"
+    },
+    "creature-storm-giant": {
+      "sourceSha256": "7075bf6c39d930a1b6a0a76ae3ae9affc2b8c36f2d2e3cf677b32d750f3a672a",
+      "coreSha256": "5bbae5b8584ffde7ef3fdc4713a669b8d5280ca3fb288e5d149c266a917ca52a",
+      "mainSha256": "0eac9746fc68f957c7c63249e3d3f6acf22846ec7ffc93f9372836c0ce0e8b2b"
+    },
+    "creature-succubus": {
+      "sourceSha256": "5b0e8044681eda1922a00e6dfcff18f7daa4aeb14996a86d9989cafcdbc6e427",
+      "coreSha256": "4e3eb3a87bce398943433d956056485ce7cc164c7564b5c250c69daa3042b6c0",
+      "mainSha256": "5d492e7bac848061bb6cdcf09f327a66c17c21899a6642ae077dacef42814f5b"
+    },
+    "creature-sword-angel": {
+      "sourceSha256": "a06b26a5fc2f87da27e96092e5bdc46e54a6f048ae576f4410f580e96c0d30a6",
+      "coreSha256": "6bff670effd0f02a23aee1bcbdb5daa0ab952efe7dc532043de1898a27a91561",
+      "mainSha256": "a7ba4d62fb7955b91072ef67a9aa050db33821b6e928a8dd9663e212330916d6"
+    },
+    "creature-thorn-lurker": {
+      "sourceSha256": "d55783467b7cc6da71a78a66f22e4c46dfe95537d9cc46c8a4044c128155d7fa",
+      "coreSha256": "2fe6142ced9f18a4be4f537717c7121fea9763e5eb90d1dc8429555ffbd2a96b",
+      "mainSha256": "dd2094b622487f1d59e3990865e0acc9553aed5e672c4fd64e71366264390104"
+    },
+    "creature-thorn-queen": {
+      "sourceSha256": "b51cdb7fbdad6d4e942294fdec4e1c3f29cabef9977cf2d96102e9a9ece8cf69",
+      "coreSha256": "dc9f41b59d4bb16f253d48ed776ab710042bbd26064013bd6777585e095b3566",
+      "mainSha256": "a4e228c11e39fc328433cfaf5b1f079d1ff7d795cc913b8827bbb13afe8bd69e"
+    },
+    "creature-thought-leech": {
+      "sourceSha256": "7c64a29656d8533cfa78aff5ae22aa1e27d5a7454ae6b993f10605f5e735cba4",
+      "coreSha256": "9a667ae1e8c19158b0e40c5dadb39839262790744a0f82d5a60ef1ac85a9bc05",
+      "mainSha256": "47a2f73803e482a307b7a556de978b44d0c429a0b0e0d54d69e3fe546c368413"
+    },
+    "creature-tomb-sage": {
+      "sourceSha256": "36ca4c95a5f39b315e8f6352485020d45f0a0d2cbf87ea3db2afbcd3f8799ac7",
+      "coreSha256": "802ce941e0f5c43da2944878f840e825a2bd8d3795e88c186bc046b843f96d76",
+      "mainSha256": "6ad07673c5c5a6cc1cbc0ae615f3581f575bbfffe0d6a470d5090679d273942c"
+    },
+    "creature-trail-hound": {
+      "sourceSha256": "e9e107921e4f4896f2cb8a9f5fadcba0dd9bb049d9d40e8c8d5baa64e5a047b3",
+      "coreSha256": "393c3d9505cd543c3190ae30c7e94bf335cbd68b3fce807de9afc4483af755a9",
+      "mainSha256": "b8b28acccccad42ff3177d80dcdc557634a0366f440f287afd07ace1100e78b7"
+    },
+    "creature-unicorn": {
+      "sourceSha256": "9dae462d65aab88ca306e0e094d721ccfb9638d03b7da584ede0c8ea86c861c0",
+      "coreSha256": "6b1408b05879a7d30d8a49475cba8d6b3dfbbce81215c67e7dbd0ead473d2291",
+      "mainSha256": "fe456da3de3a10dca79daf24704593b2c62a5137fdfb1d5adfe855e60327eb78"
+    },
+    "creature-vampire-spawn": {
+      "sourceSha256": "2dc7b6463992b77be18c0198bff8e069451892d2d81a2fe6880d71a8db5856d6",
+      "coreSha256": "83d823cf53d092ab2431efcf54bad0cd6068df35fc1955821a5b701a96053052",
+      "mainSha256": "b18a40655b8eed18a507c06bd725e9780e0d90cd49b472e3d1c1768ec375f163"
+    },
+    "creature-veteran-captain": {
+      "sourceSha256": "b0f664c7d662490add6b77e09835c6b04321d2a326859d86f1436103ebed0ef8",
+      "coreSha256": "e83228e954beaa4a604d909e88ceb0bad5f5a9061e0e0c1986f8e1645bf832d1",
+      "mainSha256": "34fd94fda13ca2bf07c2d841e61c5d3f3d59e0f3c06f2c90b7c13e7c27cffae5"
+    },
+    "creature-walking-furnace": {
+      "sourceSha256": "262872a346f7d2dac45030696a50f0932a825907c77caa59e26ad0bd18bb1384",
+      "coreSha256": "2999651a68256c9fc5f988bca5239539b9d02d64aab52f731a7bde929b1e3442",
+      "mainSha256": "86b8008fc9d473461f2007b3715141bfab276043011944b85cb9948642f9ba42"
+    },
+    "creature-walking-thorn": {
+      "sourceSha256": "567f5e01278dec362b4fce0e39e2dacee8888a5ef95b2482bcdb0c5c2f1e020e",
+      "coreSha256": "0b83716d64e2e0719fbfa87339a971b94b5e4bd141f146f602a09e2382d267f7",
+      "mainSha256": "ae58f677daee25b1216c7687be308d47d02a7686edeee986907e05efcfc0a4a2"
+    },
+    "creature-warhorse": {
+      "sourceSha256": "e125bab8b7800706c85927866cbe07ffa3fd4ba10c3d315897eb9f567f9dd282",
+      "coreSha256": "6120d6923ad8dcbcec75cc4915ade491987e481e41a9d97c4aac8382b57c38c8",
+      "mainSha256": "079b65330e990888e30f8357681d2c9c907237500416b05169e720f2daa185ed"
+    },
+    "creature-water-elemental": {
+      "sourceSha256": "a16f053aa3880d24dc7857463f5f5955ea645213ca97aeb8499e0ca357e511a5",
+      "coreSha256": "3b63052b7a40d9c93b03f3cef4954235a98d4bcfbbab56dd10a010b3f1ac4abb",
+      "mainSha256": "36588bdf896b74c9bd9f7429d4a16a7420702609602a9860c0673d77966853be"
+    },
+    "creature-werebear": {
+      "sourceSha256": "06574095aed3aa0c65e59a14fce84cc124d6132f33b11ab295a0164cfe1610ad",
+      "coreSha256": "52513cfc1c05aa034aa94a470e180686febb8c5c1b5f2c36e25442401c76b129",
+      "mainSha256": "120265a860497dd4486a117386965c06a13b30a51887d06b7d0aa31a7f25521c"
+    },
+    "creature-wererat": {
+      "sourceSha256": "76a601b3692b2aa1727a1f4284f985ebbc95324656d9f90e40990d11dde3518c",
+      "coreSha256": "d518bd7d1e938ac8f700a9aadec3cfff95d757d689f9c33c5a9a959b77f44dcf",
+      "mainSha256": "83425e1f29820832cf4de14619bea19e0479ebd9739529f42e8aef210a5821e8"
+    },
+    "creature-werewolf": {
+      "sourceSha256": "731da9121b8adf4556dd83c3d530425d33c848cd228f43593248ce4f78a4816f",
+      "coreSha256": "f6f585316052340c17f39d3818f076a5f35cded83802e972fc59ae8b02646865",
+      "mainSha256": "f88fd81e0d9a9a8b6aac54fcf7d2504bc31e2d4b0b83aa0ee12df2df5484bc53"
+    },
+    "creature-wight": {
+      "sourceSha256": "220e13aa2deae4ada702027ea88c129c8053350d3461ec626b748f505b478872",
+      "coreSha256": "89671f0b1b3e8fa02ecb1a6d00347e56dd1ce9078f747425f153168eff775e5a",
+      "mainSha256": "9ae44b5401c51dc19ea9d5ff0341dfc1cf3b4501f890d935ad78a9982162a526"
+    },
+    "creature-wild-boar": {
+      "sourceSha256": "9fd8b2ac3247dbb19725c55fc832c3db0bf928144381f31d889544ca6ae1c584",
+      "coreSha256": "0435d1ad0eee537dc917b28f42b9cd697d11139af36c116f685f2ee931e430f0",
+      "mainSha256": "9f1691593c071241e16e05eb0830662c8f2cfb73719e75f650c4d6ceb92876c9"
+    },
+    "creature-winter-wolf": {
+      "sourceSha256": "93bfd30925af818019d1b3095c5a0fa4ceffd4e56a84d9d536d70f5d9407f739",
+      "coreSha256": "d6b70a49b4d7604453394358e32ed977472cef6114f34d36cd761aac9912c6e3",
+      "mainSha256": "9b68ba541dc867168d9219aae85d6e639b1cd6fdff0f4fb3db80eb913e0af461"
+    },
+    "creature-wolf": {
+      "sourceSha256": "c69d76248891d860dd6d3e138d53f499855511e8d21d8fa9aa11d4ac5db12678",
+      "coreSha256": "23509163e96139a5f593c56d3401d43511f44e760d354396b7993dd462ad83de",
+      "mainSha256": "7866faa534b58ba9128e2f92c57a6c99bf4e66038140b3079ae4ec409786041f"
+    },
+    "creature-wraith": {
+      "sourceSha256": "e414af4eddeb48d632528df43c4603c10dc0f996e985f80e2e7b281516721ac6",
+      "coreSha256": "7e649c01879ddc198006a8dad17bdefba5d59a52736bcae0c95964af70dfe766",
+      "mainSha256": "0f3eb79e1998457a86edd00ddb8c2059416593fa23f1036e376d999c7842a4a3"
+    },
+    "creature-wyvern": {
+      "sourceSha256": "f120a4d3399702d6ef58c885400a85562b9a845612bd2b85ba732e98138b07bc",
+      "coreSha256": "e91fda860ce47124a866d9ad5353e6fdb93f21d26b95b365f8105d9889ee146e",
+      "mainSha256": "75c965274158ed22b9305acc2a54c6428d83073c1e7018fea3cef1a65d740aa1"
+    },
+    "creature-young-ember-drake": {
+      "sourceSha256": "47407854a26ebdae63773558e7d65bf942cc7404fdcc891d47cd31d811e3515f",
+      "coreSha256": "42ac6b81ccaad6a65ffa99f1035bbe41c372741080531520c839f677a28e0ca4",
+      "mainSha256": "4e5604300cf5f3174db9295fec1782923998cba6731b76dd6099bc14fb0ba9e5"
+    },
+    "creature-zombie-brute": {
+      "sourceSha256": "63c08c556426000c67bad6d5e5db44d91a550a1ec4355fa4191f537ceddef683",
+      "coreSha256": "77181e5fd066ac3f57a24ef2ccb9514c2465875ac51427e6d4b702508d566471",
+      "mainSha256": "6d4be1a53ce8d9b3cde1653fba9714f8e88749f377afdafeafe35b8a2f84a4c8"
+    }
+  },
+  "summons": {
+    "summon-adder": "3e941e067f4d31df53b11e46cf7cd2ac9ac459fd25edc00f8f64ba6f389aeac3",
+    "summon-air-elemental": "413a372e4d2b28db43696dbb84ff2ca92e2a7cbb4a25c0264b3026220f33c218",
+    "summon-ancestor-guardian": "190ca79112e38a4251156303b5c5f94eef2877a8f4361e3364768f33901cfa6c",
+    "summon-ancient-mammoth": "53bdc3c974a598316660e087c5f10872c16edb6cfe27911359e0189b73002542",
+    "summon-animated-armor": "d3bda60ce1779f6e709e28e8d9ba87d5e2322968ee3c4be6ffbce11b7f5e487b",
+    "summon-animated-statue": "b53c41acbf7301c8df6c5f7c1f851b220a42cbbfcf7168b2a3445d44d2a15759",
+    "summon-barrow-guard": "964d26ad50293f5a7975490231ec3c340b487f374fc7fa3c6025f114bee0df13",
+    "summon-bone-archer": "c4b2b28daa9308ff27e1b382a666caa247ea71bac1d9ffe38dbb0fd10e897100",
+    "summon-bone-colossus": "7aecd12b9bb9a0377f797788c859a4c4b64b885d12ce953c5bf2bbf81c97ee20",
+    "summon-bone-sentry": "17e35c1ffad5dbc5ba5d329604e911bb9a36934edfc59a7e3e711e110c094198",
+    "summon-briar-knight": "5b82c6839de5172db0c6c721b3a583c035383384028c61cfa222a376ee478e56",
+    "summon-brown-bear": "4e9a2932459836ada25523ed2e8e8afc18d23be1b344122a6769ce009895fd4f",
+    "summon-cave-bat": "84fc9acbe5b0884adc27d125ec4131f7884648f71cd5803a96ec71495e9cd428",
+    "summon-cinder-strider": "d3d6a0c380d4a249d29ec3b51970ed385d4952f06daa3920b803ac6024f410dd",
+    "summon-clay-golem": "f8a83c531c8ec9cb5fe5ead0f42dafb7fe097ed423f989f15e45046160b21bb6",
+    "summon-clay-helper": "e959c50cbc02ec1f6d19bd45aa42fe841daa74507c97e635a24f6010cea0bd4b",
+    "summon-clockwork-scout": "41af88b841bf3375972428c7a8e9ac8b4db9188e1cd8235a99d955e84f520409",
+    "summon-crypt-ghoul": "7aeee1cb26abf97213d3d5395c396d8da6b099effc977d7d9ad1fcc71b34303d",
+    "summon-dire-wolf": "547e224a66c38836af7bebdfa75101e114859f1cd5dc3eebe0bf1bf6ef15ef21",
+    "summon-dryad": "12ef41b779d5eb3ed99896a874d68609989fa09c99c270e9a8d4fe7dd1390739",
+    "summon-earth-elemental": "f38518da817c5925166977b0e725173c9a05a29ed92990d4fb2a98ae6a349e8b",
+    "summon-emberling": "4ee1da54d797079aae9fba3a655495ebe511213db8a6fa3fab75bf4e744a5868",
+    "summon-flesh-golem": "4843ee2c234838e1ababb468f5654c1a9c1badce694f408e9de370455d9620c2",
+    "summon-ghast": "a5f85464d4a97915d3f968f9cb1a11a55d744f620287dca839dee09c51cc7d8d",
+    "summon-giant-boar": "275081fa497fed5e7a84b8876a7f206166f829727861083037f80efe693bafb7",
+    "summon-giant-constrictor": "74b2a485193512f5569593ec366012ff4800fa3048365d77b7050fb2e5637b16",
+    "summon-giant-eagle": "7b37ae1c473b88dc26f458d045f728b4cb3533ed037b14d396a8cbe6374ec12c",
+    "summon-giant-octopus": "51f7fdb226b2640b06135813068edd7c44cc204ab72f8b385603400d55cd73ac",
+    "summon-giant-rat": "032be46801fb18373ae8e13fbb56e702ea6102b3e9192c21286661de0560d0b5",
+    "summon-giant-scorpion": "2c81a1db8fcc80c8a75b6ce75ee377bde13f3d9ba67980dd39bd6228fe399adf",
+    "summon-giant-spider": "5ffde9058d9860fcd17bd2c1257f00bfa98b672cf377659cb38c089de12fb217",
+    "summon-glass-sentinel": "a84b98d3d19901d3c6327bdc586156d6dae55bfc4dd235c4d86cc589233734b3",
+    "summon-grave-wisp": "5537e47bf88cdd32d812b3b47697af65eb5e3c66b648e08e0e1230c0cd7482ae",
+    "summon-great-cat": "2c5aa3763156a1d28863d0e84635ee0c160b8528c77ccb58cd84394aeb9a7fb3",
+    "summon-great-stag": "0f6a1d37aa00e85b0dbc668e02aed4d15c5ab347ae891b4eaef3f63aa2ac0c7d",
+    "summon-harbor-siren": "b803817aec55c01d3c602de0481f0b39d3c4b44c68bb7eed07613dabf0d419d9",
+    "summon-hearth-brownie": "e935454a03caf5d0f67b09f72d544c9bb4cdda195d972351477cada231229a3c",
+    "summon-hedge-sprite": "e85142ac6a5328dd7ab8193ed197de9c943b95853770f42a8a42517ac5431e46",
+    "summon-icebound-warden": "2a7941d74cda53a3a2c9af75829e0043982b7c3d110cbbe92901bd34d9e92526",
+    "summon-iron-gatekeeper": "0176efd12e7bf91d8dfe09052d98127b0f45512f07eb16c528cd224d7b06a3ab",
+    "summon-lantern-spirit": "94e31e2663d52ffc0ea1bb0fdd87db03329863c1bdb42e0f6ea9b90ea596f1f6",
+    "summon-marsh-crocodile": "dd1b23d600a111656c225ce43696c44ccaede99be4c185c12d43ec56e991671e",
+    "summon-moon-hart": "e7b160e84d422259ba902dede24b89e235449331df27e37bd6ae026c0e121de6",
+    "summon-mourning-bell": "db09be2b7996b4f0744da1ada47d6163efed1655f5e3ff033e2d6ecd06bc2d70",
+    "summon-mummy": "c37f92d6ca3433bc8012ca67dfd15bd0d5c51472c7064082fba3a35e74a0f21c",
+    "summon-oath-flame": "af8d53a11ea856733c2112bcb7c8ff862c30e10b2931ed3641fcf6644f576a66",
+    "summon-plague-zombie": "7151be0733c612106d0f949f7fe367ceb4ca94d907573d5bcaeeb22e4f727fcf",
+    "summon-poltergeist": "200327dffaa02f9deb16f85d4e5ef52e4167c2307909c38e5f21954fed1ff0b0",
+    "summon-raven": "0bcef60d1c43aac819319125039caef586630ec688a172f0387f0cf54d91d97d",
+    "summon-redcap": "86a19b6de12f229511ea87165f8c18d98671f44b1216f12a52ac468986dae44d",
+    "summon-reed-piper": "ad9dcc34b6b10cf43d1b3b399ef749697993ad21e117fa7534889fe6259c6348",
+    "summon-reef-hunter": "26c7b7ca4cfd29433804bcec0e28e70ebf1c91021cee066eb152ec1350ae44ea",
+    "summon-restless-corpse": "5b189a8e9f64050011736fd3331e96b76267885729cdda1e4e185925797f97b2",
+    "summon-rill-sprite": "8769231450276026fd558aef885b28a0e6e28764b7ccf14e92b005bac8e876b6",
+    "summon-satyr": "a62b203d7f018b5b57fe033a5b306a9fe78ff1a03900415bbd8376c4f31c387e",
+    "summon-shadow": "43a74e13fa89b89470b30c649af1e9a2f7c9baaaf918f5c3008630e7bd9df2b0",
+    "summon-skeleton-champion": "a50ff8960fb50fd7d07aff678bf9c4497b740fb323549c217064178f5b0f4b85",
+    "summon-skeleton-giant": "cd11019d08442eac59812cebc5181d8a859f939ff392736111d03cbfb6329738",
+    "summon-skeleton-horse": "025e34b81a8271b6c2bfe9b467b8dd37b9e71ed0b78ab7b53bdc840cc73e7abe",
+    "summon-sorrow-ghost": "6c04c5086d2423e2635921e43b8684a4a60fe3099152b2dfc956ee9d2a5880ac",
+    "summon-stone-golem": "1a1fb73247d7bb545add53f3abdadf0f064eabb657c5a5ce3c4add54df98fb53",
+    "summon-stone-knuckle": "b2885c188bc6dd25f475bebb1f8d666111ed206200bd37040903cafadcad4bba",
+    "summon-storm-column": "f82e98f91585ab274694adef776f5cdaa7fe73ab0a638afeb4b1a4685e928f4f",
+    "summon-trail-hound": "a0dc8cc0f782e67d9047f636b9da13f79a825618c5b653fca5f810669c882bb9",
+    "summon-unicorn": "5e55d1f1574684a526ea1cc4f7cc2693c214313a53218a1b0088a26a99407e3c",
+    "summon-walking-furnace": "bd38027e0eda3d1ce02547a0da5c8cbedf913b0ceb5be9a76e02ad5ec3808d26",
+    "summon-warhorse": "583387fe30919bc1e3c865910f2b9ea3168c54384ddde3181555728b1e6ed4ad",
+    "summon-water-elemental": "9eba40da8a6175d7c5a1a96bcb2c2ccf9efb10d6dbe6996a4222e54661efb006",
+    "summon-wight": "95b4a1220a8a83e513f9c7f6d0627bf9d1349960800c31c41c709c57b6b73508",
+    "summon-wild-boar": "967c427b442cc07be377ec1119b8b7b465fc87934e8dfaf0d40819ee2c1549a0",
+    "summon-wolf": "f5374783a58c216baa9e4eed0f575b99bebbfdf8cb1bba7e2da763d2d2defe67",
+    "summon-wraith": "a4adfb720b658f23e25940cf844ef6bca003c5755b5ed62aa80dc6351382b239",
+    "summon-zombie-brute": "8f0b4a164b5f5eeb2e65e1dba313e35ed1668ea7839789ad71ed9ea6c171be94"
+  }
+}

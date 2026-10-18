@@ -39,7 +39,7 @@
       "baseMax": 30,
       "sourceText": "30"
     },
-    "cv": 50,
+    "cv": 53,
     "speed": 6,
     "speedSource": "6; fly 6",
     "alternateSpeeds": [
@@ -103,6 +103,7 @@
           "id": "main-0",
           "category": "main",
           "name": "Basic Melee",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -119,6 +120,7 @@
           "id": "main-1",
           "category": "main",
           "name": "Last lament",
+          "abilityId": "",
           "attributeKey": "reason",
           "defenseSource": "Reason",
           "harmfulOnly": false,
@@ -135,6 +137,7 @@
           "id": "maneuver-0",
           "category": "maneuver",
           "name": "Follow the Echo",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -151,6 +154,7 @@
           "id": "maneuver-1",
           "category": "maneuver",
           "name": "Defend",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -166,7 +170,25 @@
         {
           "id": "reaction-0",
           "category": "reaction",
+          "name": "Answering Lament",
+          "abilityId": "monster-answering-lament",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "After taking HP damage: a hearing attacker within 3 gains Frightened 2.",
+          "referenceMarkdown": "### Answering Lament\n\n*Its outline shudders with the injury and a grieving note rises from somewhere behind the attacker.*\n\nAfter an attack resolves and deals HP damage to this creature, one visible attacker within 3 squares that can hear it gains Frightened 2 of this creature. This creature must survive and remain capable. No trigger from a free attack or another retaliatory effect. Frightened applies only while this creature is perceptible."
+        },
+        {
+          "id": "reaction-1",
+          "category": "reaction",
           "name": "Opportunity Attack",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -183,13 +205,13 @@
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Last lament | Reason | 8 + Dazed 2 / 5 + Dazed 1 / 3 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Follow the Echo | Move 2; no opportunities. |\n| Defend | +1 Bane |",
-      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Opportunity Attack | Basic Melee |"
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Answering Lament | After taking HP damage: a hearing attacker within 3 gains Frightened 2. |\n| Opportunity Attack | Basic Melee |"
     },
     "details": {
       "flavorMarkdown": "*A translucent mourner carries the ruined splendor of a funeral dress, with a voice that seems to come from every empty room.*",
-      "specialtyMarkdown": "### Last lament\n\n**Target:** Only creatures that can hear this attack. All creatures in a cone of 3 rows, 1/3/5 squares wide; no exclusions. Each player rolls defense separately. **Player defense:** Reason. **Damage type:** mental.\n\n**Weak defense:** Dazed 2. **Standard defense:** Dazed 1.\n\n**Limit:** Cannot use this attack on consecutive turns, regardless of result.\n\n### Follow the Echo\n\n*The sound arrives from the wrong corner as the figure drifts out of reach.*\n\nMove up to 2 squares using a printed movement mode without provoking. Normal terrain and occupancy rules apply; no passage through solid objects or automatic Hidden.",
+      "specialtyMarkdown": "### Last lament\n\n**Target:** Only creatures that can hear this attack. All creatures in a cone of 3 rows, 1/3/5 squares wide; no exclusions. Each player rolls defense separately. **Player defense:** Reason. **Damage type:** mental.\n\n**Weak defense:** Dazed 2. **Standard defense:** Dazed 1.\n\n**Limit:** Cannot use this attack on consecutive turns, regardless of result.\n\n### Follow the Echo\n\n*The sound arrives from the wrong corner as the figure drifts out of reach.*\n\nMove up to 2 squares using a printed movement mode without provoking. Normal terrain and occupancy rules apply; no passage through solid objects or automatic Hidden.\n\n### Answering Lament\n\n*Its outline shudders with the injury and a grieving note rises from somewhere behind the attacker.*\n\nAfter an attack resolves and deals HP damage to this creature, one visible attacker within 3 squares that can hear it gains Frightened 2 of this creature. This creature must survive and remain capable. No trigger from a free attack or another retaliatory effect. Frightened applies only while this creature is perceptible.",
       "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.\n\n**Lifeless Body — Passive:** Does not breathe or eat; only its listed immunities apply.\n\n**Healing:** Healing-harmed: ordinary healing resolves as Life damage instead; no beneficial riders.\n\n**Against offensive healing:** Its controller uses Fortitude defense when player-controlled; a player attacking it rolls only their attack.\n\n**Senses:** Dark sight 6 squares; ordinary hearing.\n\n**Tactics and retreat:** Lament across a clustered approach, then use Basic Melee or reposition during the required pause between laments.\n\n**Encounter and conversation:** Its warning names the next victim; listening before drawing weapons may reveal the actual murderer.\n\n**Habitat:** Crypt; burial ground; ruined settlement · **Communication:** Common; understands old oaths\n\n**Loot:** Recoverable possessions or lair clues chosen for the adventure; body parts grant no automatic special equipment or coin value.\n\n**Summoning:** Ineligible.",
-      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-banshee\n\n\n**Category:** Undead · **Role:** Disabler · **CV:** 50\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Last lament | Reason | 1 Boon | 3 mental damage. | 5 mental damage. Dazed 1. | 8 mental damage. Dazed 2. |\n\nUse the attributes above for defenses named by incoming attacks. Same targeting, limits and costs apply; no opposed second roll.\n\n### CV worksheet\n\n**Reference damage:** 3/5/8\n\n**Reference type:** mental\n\n**Expected targets:** 2\n\n**Utility factor:** 1.6\n\n**Regeneration per turn:** 0\n\nReference I=3.404, O=11.901. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [echo step](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/echo-step.md), [lifeless body](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/lifeless-body.md), [stunning strike](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/stunning-strike.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/rules/stability.md)"
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-banshee\n\n\n**Category:** Undead · **Role:** Disabler · **CV:** 53\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Last lament | Reason | 1 Boon | 3 mental damage. | 5 mental damage. Dazed 1. | 8 mental damage. Dazed 2. |\n\nUse the attributes above for defenses named by incoming attacks. Same targeting, limits and costs apply; no opposed second roll.\n\n### CV worksheet\n\n**Reference damage:** 3/5/8\n\n**Reference type:** mental\n\n**Expected targets:** 2\n\n**Utility factor:** 1.7\n\n**Action review (#1279):** U 1.6 → 1.7: Maneuver allowance +0, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=3.404, O=11.901. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [Answering Lament](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/answering-lament.md), [echo step](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/echo-step.md), [lifeless body](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/lifeless-body.md), [stunning strike](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/stunning-strike.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/rules/stability.md)"
     },
     "biography": ""
   },
@@ -215,9 +237,9 @@
       "catalogId": "creature-banshee",
       "source": {
         "path": "design/bestiary/creatures/banshee.md",
-        "sha256": "776e4db6d4332c3be32a0b5ccb4ed7b0534eb8253843dda414fdcf38957727b6"
+        "sha256": "2d2569917a9a9c9ca6208eb5e5db2e2f68ef4836ec48396eab85d6aa87682737"
       },
-      "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
+      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Printed profile · specialty automation pending",
@@ -225,10 +247,16 @@
       "classification": {
         "category": "Undead",
         "role": "Disabler",
-        "cv": 50
+        "cv": 53
       },
       "family": "Ghosts, shadows and wraiths",
       "abilitySources": [
+        {
+          "label": "Answering Lament",
+          "id": "monster-answering-lament",
+          "path": "design/monster-abilities/answering-lament.md",
+          "sha256": "bf2d67b7b4ad3a61abfbbc802988330f338b040573514ccbebb833eb94e5997a"
+        },
         {
           "label": "echo step",
           "id": "monster-echo-step",
@@ -246,6 +274,72 @@
           "id": "monster-stunning-strike",
           "path": "design/monster-abilities/stunning-strike.md",
           "sha256": "356a3a0e45c836d19381bc6edc261ce8a54c9720079189bd6226744e0099fc7e"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-answering-lament",
+          "path": "design/monster-abilities/answering-lament.md",
+          "sha256": "bf2d67b7b4ad3a61abfbbc802988330f338b040573514ccbebb833eb94e5997a",
+          "name": "Answering Lament",
+          "action": "Reaction",
+          "flavorMarkdown": "*Its outline shudders with the injury and a grieving note rises from somewhere behind the attacker.*",
+          "rulesMarkdown": "After an attack resolves and deals HP damage to this creature, one visible attacker within 3 squares that can hear it gains Frightened 2 of this creature. This creature must survive and remain capable. No trigger from a free attack or another retaliatory effect. Frightened applies only while this creature is perceptible.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Answering Lament\n\n*Its outline shudders with the injury and a grieving note rises from somewhere behind the attacker.*\n\n## Rules\n\n**ID:** monster-answering-lament\n\n**Action:** Reaction\n\nAfter an attack resolves and deals HP damage to this creature, one visible attacker within 3 squares that can hear it gains Frightened 2 of this creature. This creature must survive and remain capable. No trigger from a free attack or another retaliatory effect. Frightened applies only while this creature is perceptible.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/answering-lament.md",
+            "sha256": "bf2d67b7b4ad3a61abfbbc802988330f338b040573514ccbebb833eb94e5997a"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-echo-step",
+          "path": "design/monster-abilities/echo-step.md",
+          "sha256": "e05f1d77ec247369ab006294cb7feaae600734fcb74d7cb96ea28ca7d424ab1f",
+          "name": "Follow the Echo",
+          "action": "Maneuver",
+          "flavorMarkdown": "*The sound arrives from the wrong corner as the figure drifts out of reach.*",
+          "rulesMarkdown": "Move up to 2 squares using a printed movement mode without provoking. Normal terrain and occupancy rules apply; no passage through solid objects or automatic Hidden.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Follow the Echo\n\n*The sound arrives from the wrong corner as the figure drifts out of reach.*\n\n## Rules\n\n**ID:** monster-echo-step\n\n\n**Action:** Maneuver\n\nMove up to 2 squares using a printed movement mode without provoking. Normal terrain and occupancy rules apply; no passage through solid objects or automatic Hidden.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/echo-step.md",
+            "sha256": "e05f1d77ec247369ab006294cb7feaae600734fcb74d7cb96ea28ca7d424ab1f"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-lifeless-body",
+          "path": "design/monster-abilities/lifeless-body.md",
+          "sha256": "248c16c6e641d2042cd94a05e7e8bfce03b5177f4f57cda241b46d9b16de4d81",
+          "name": "Lifeless Body",
+          "action": "Passive",
+          "flavorMarkdown": "*Nothing breathes beneath the torn coat; nothing living looks through the visor.*",
+          "rulesMarkdown": "The card must list its exact condition immunities; this trait grants no additional unlisted ones. It does not breathe or need food. Undead entries marked healing-harmed take a healing result as Life damage; constructs marked repair-only do not regain HP from ordinary healing. Neither rule prevents physical attacks from dealing their normal minimum damage.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Lifeless Body\n\n*Nothing breathes beneath the torn coat; nothing living looks through the visor.*\n\n## Rules\n\n**ID:** monster-lifeless-body\n\n\n**Action:** Passive\n\nThe card must list its exact condition immunities; this trait grants no additional unlisted ones. It does not breathe or need food. Undead entries marked healing-harmed take a healing result as Life damage; constructs marked repair-only do not regain HP from ordinary healing. Neither rule prevents physical attacks from dealing their normal minimum damage.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/lifeless-body.md",
+            "sha256": "248c16c6e641d2042cd94a05e7e8bfce03b5177f4f57cda241b46d9b16de4d81"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-stunning-strike",
+          "path": "design/monster-abilities/stunning-strike.md",
+          "sha256": "356a3a0e45c836d19381bc6edc261ce8a54c9720079189bd6226744e0099fc7e",
+          "name": "Stunning Strike",
+          "action": "Main Action",
+          "flavorMarkdown": "*The blow leaves thought and motion briefly out of step.*",
+          "rulesMarkdown": "The printed attack applies Dazed. Retained action categories are selected at turn start; do not retroactively remove spent actions.\n\nActual damage, targeting and defense attribute are printed on the creature card.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Stunning Strike\n\n*The blow leaves thought and motion briefly out of step.*\n\n## Rules\n\n**ID:** monster-stunning-strike\n\n\n**Action:** Main Action\n\nThe printed attack applies Dazed. Retained action categories are selected at turn start; do not retroactively remove spent actions.\n\nActual damage, targeting and defense attribute are printed on the creature card.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/stunning-strike.md",
+            "sha256": "356a3a0e45c836d19381bc6edc261ce8a54c9720079189bd6226744e0099fc7e"
+          },
+          "automation": "pending"
         }
       ],
       "summoning": {

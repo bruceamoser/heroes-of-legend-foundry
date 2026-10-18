@@ -39,7 +39,7 @@
       "baseMax": 9,
       "sourceText": "9"
     },
-    "cv": 9,
+    "cv": 10,
     "speed": 7,
     "speedSource": "7",
     "alternateSpeeds": [],
@@ -89,6 +89,7 @@
           "id": "main-0",
           "category": "main",
           "name": "Basic Melee",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -105,6 +106,7 @@
           "id": "main-1",
           "category": "main",
           "name": "Corner-shot dart",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -121,6 +123,7 @@
           "id": "maneuver-0",
           "category": "maneuver",
           "name": "Tunnel Scamper",
+          "abilityId": "monster-tunnel-scamper",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -130,13 +133,14 @@
             "standard": "",
             "strong": ""
           },
-          "effect": "Move 2; ignore rubble cost; provokes.",
-          "referenceMarkdown": "### Tunnel Scamper\n\n*It drops low and races along the wall where the loose stones are thinnest.*\n\nMove up to 2 squares. Treat rubble squares as normal terrain for this movement only; all other terrain costs and occupied-square restrictions apply. Provokes normally."
+          "effect": "Move 2; rubble costs 1; no opportunity from one chosen visible enemy.",
+          "referenceMarkdown": "### Tunnel Scamper\n\n*It drops low and races along the wall where the loose stones are thinnest.*\n\nMove up to 2 squares without provoking from one visible enemy chosen before moving. Treat rubble as normal terrain for this movement only; all other terrain costs and occupied-square restrictions apply. Provoke normally from other enemies."
         },
         {
           "id": "maneuver-1",
           "category": "maneuver",
           "name": "Defend",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -152,7 +156,25 @@
         {
           "id": "reaction-0",
           "category": "reaction",
+          "name": "Slip the Rush",
+          "abilityId": "monster-slip-the-rush",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "After an enemy voluntarily closes: move 1; no opportunity from that enemy.",
+          "referenceMarkdown": "### Slip the Rush\n\n*As the pursuer lunges into reach, it ducks sideways through the space the rush left open.*\n\nAfter a visible enemy ends voluntary movement adjacent to this creature, move up to 1 square without provoking from that enemy. Other opportunity attacks and normal terrain costs apply. This movement grants no attack; it cannot trigger from forced movement or movement granted by a free attack."
+        },
+        {
+          "id": "reaction-1",
+          "category": "reaction",
           "name": "Opportunity Attack",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -168,14 +190,14 @@
       ],
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Corner-shot dart | Agility | 5 + Slowed 2 / 3 + Slowed 1 / 2 |",
-      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Tunnel Scamper | Move 2; ignore rubble cost; provokes. |\n| Defend | +1 Bane |",
-      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Opportunity Attack | Basic Melee |"
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Tunnel Scamper | Move 2; rubble costs 1; no opportunity from one chosen visible enemy. |\n| Defend | +1 Bane |",
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Slip the Rush | After an enemy voluntarily closes: move 1; no opportunity from that enemy. |\n| Opportunity Attack | Basic Melee |"
     },
     "details": {
       "flavorMarkdown": "*A narrow-shouldered kobold carries chalk, twine and a small dart launcher, pausing to feel air currents with a ribbon.*",
-      "specialtyMarkdown": "### Corner-shot dart\n\n**Target:** One visible creature within 6 squares. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Slowed 2. **Standard defense:** Slowed 1.\n\n**Limit:** Ammunition inventory d6. After each use, roll it; on 1 reduce d6 to d4, or d4 to empty. Cannot use this attack while empty.\n\n### Tunnel Scamper\n\n*It drops low and races along the wall where the loose stones are thinnest.*\n\nMove up to 2 squares. Treat rubble squares as normal terrain for this movement only; all other terrain costs and occupied-square restrictions apply. Provokes normally.",
+      "specialtyMarkdown": "### Corner-shot dart\n\n**Target:** One visible creature within 6 squares. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Slowed 2. **Standard defense:** Slowed 1.\n\n**Limit:** Ammunition inventory d6. After each use, roll it; on 1 reduce d6 to d4, or d4 to empty. Cannot use this attack while empty.\n\n### Tunnel Scamper\n\n*It drops low and races along the wall where the loose stones are thinnest.*\n\nMove up to 2 squares without provoking from one visible enemy chosen before moving. Treat rubble as normal terrain for this movement only; all other terrain costs and occupied-square restrictions apply. Provoke normally from other enemies.\n\n### Slip the Rush\n\n*As the pursuer lunges into reach, it ducks sideways through the space the rush left open.*\n\nAfter a visible enemy ends voluntary movement adjacent to this creature, move up to 1 square without provoking from that enemy. Other opportunity attacks and normal terrain costs apply. This movement grants no attack; it cannot trigger from forced movement or movement granted by a free attack.",
       "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Tactics and retreat:** Use rubble to change firing angles. The scout values an unblocked tunnel behind it and abandons an exposed straight corridor.\n\n**Encounter and conversation:** Its tunnel marks identify both escape routes and places where the ceiling is about to fail.\n\n**Habitat:** Settlement; frontier; contested road · **Communication:** Common and its community’s language\n\n**Loot:** Ordinary carried gear and 8 coins; special rewards belong to the adventure.\n\n**Summoning:** Ineligible.",
-      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-kobold-tunnel-scout\n\n\n**Category:** Mortal · **Role:** Pursuit controller · **CV:** 9\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Corner-shot dart | Agility | None | 2 physical damage. | 3 physical damage. Slowed 1. | 5 physical damage. Slowed 2. |\n\nUse the attributes above for defenses named by incoming attacks. Same targeting, limits and costs apply; no opposed second roll.\n\n### CV worksheet\n\n**Reference damage:** 2/3/5\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.3\n\n**Regeneration per turn:** 0\n\nReference I=4.404, O=2.162. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [hampering strike](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/hampering-strike.md), [tunnel scamper](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/tunnel-scamper.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/rules/stability.md)"
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-kobold-tunnel-scout\n\n\n**Category:** Mortal · **Role:** Pursuit controller · **CV:** 10\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Corner-shot dart | Agility | None | 2 physical damage. | 3 physical damage. Slowed 1. | 5 physical damage. Slowed 2. |\n\nUse the attributes above for defenses named by incoming attacks. Same targeting, limits and costs apply; no opposed second roll.\n\n### CV worksheet\n\n**Reference damage:** 2/3/5\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.45\n\n**Action review (#1279):** U 1.3 → 1.45: Maneuver allowance +0.05, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=4.404, O=2.162. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [hampering strike](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/hampering-strike.md), [Slip the Rush](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/slip-the-rush.md), [Tunnel Scamper](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/tunnel-scamper.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/rules/stability.md)"
     },
     "biography": ""
   },
@@ -201,9 +223,9 @@
       "catalogId": "creature-kobold-tunnel-scout",
       "source": {
         "path": "design/bestiary/creatures/kobold-tunnel-scout.md",
-        "sha256": "a0bf732cb5460c1beea9bc7503b95ca4102c96edad5d510195494d62b1fe045c"
+        "sha256": "e1dd79ec1921494be9934cab981e6215c10e3da36a64154d652cec18f620e905"
       },
-      "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
+      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Printed profile · specialty automation pending",
@@ -211,7 +233,7 @@
       "classification": {
         "category": "Mortal",
         "role": "Pursuit controller",
-        "cv": 9
+        "cv": 10
       },
       "family": "Kobolds",
       "abilitySources": [
@@ -222,10 +244,66 @@
           "sha256": "4196362506de3d774fa824a94e64fe2c20e7d3def9a2ff84f31463d43542265b"
         },
         {
-          "label": "tunnel scamper",
+          "label": "Slip the Rush",
+          "id": "monster-slip-the-rush",
+          "path": "design/monster-abilities/slip-the-rush.md",
+          "sha256": "dc616a139a0db7f2e7dfd3c695c3ae301518d3b065c57c34b01c19f7a97f5a5e"
+        },
+        {
+          "label": "Tunnel Scamper",
           "id": "monster-tunnel-scamper",
           "path": "design/monster-abilities/tunnel-scamper.md",
-          "sha256": "a5645fabe1f3bd365a185ce37f4fda8c842ff87c8a416d3f11dd58cd3e615c0f"
+          "sha256": "77dc5302086a316eca6fa46dfa120b97ee14e7d9a898eb6cf86057f095eae494"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-hampering-strike",
+          "path": "design/monster-abilities/hampering-strike.md",
+          "sha256": "4196362506de3d774fa824a94e64fe2c20e7d3def9a2ff84f31463d43542265b",
+          "name": "Hampering Strike",
+          "action": "Main Action",
+          "flavorMarkdown": "*A precise impact makes the next few steps painfully awkward.*",
+          "rulesMarkdown": "The printed attack applies Slowed at the listed outcomes. It does not reduce an attribute or permanently damage equipment.\n\nActual damage, targeting and defense attribute are printed on the creature card.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Hampering Strike\n\n*A precise impact makes the next few steps painfully awkward.*\n\n## Rules\n\n**ID:** monster-hampering-strike\n\n\n**Action:** Main Action\n\nThe printed attack applies Slowed at the listed outcomes. It does not reduce an attribute or permanently damage equipment.\n\nActual damage, targeting and defense attribute are printed on the creature card.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/hampering-strike.md",
+            "sha256": "4196362506de3d774fa824a94e64fe2c20e7d3def9a2ff84f31463d43542265b"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-slip-the-rush",
+          "path": "design/monster-abilities/slip-the-rush.md",
+          "sha256": "dc616a139a0db7f2e7dfd3c695c3ae301518d3b065c57c34b01c19f7a97f5a5e",
+          "name": "Slip the Rush",
+          "action": "Reaction",
+          "flavorMarkdown": "*As the pursuer lunges into reach, it ducks sideways through the space the rush left open.*",
+          "rulesMarkdown": "After a visible enemy ends voluntary movement adjacent to this creature, move up to 1 square without provoking from that enemy. Other opportunity attacks and normal terrain costs apply. This movement grants no attack; it cannot trigger from forced movement or movement granted by a free attack.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Slip the Rush\n\n*As the pursuer lunges into reach, it ducks sideways through the space the rush left open.*\n\n## Rules\n\n**ID:** monster-slip-the-rush\n\n**Action:** Reaction\n\nAfter a visible enemy ends voluntary movement adjacent to this creature, move up to 1 square without provoking from that enemy. Other opportunity attacks and normal terrain costs apply. This movement grants no attack; it cannot trigger from forced movement or movement granted by a free attack.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/slip-the-rush.md",
+            "sha256": "dc616a139a0db7f2e7dfd3c695c3ae301518d3b065c57c34b01c19f7a97f5a5e"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-tunnel-scamper",
+          "path": "design/monster-abilities/tunnel-scamper.md",
+          "sha256": "77dc5302086a316eca6fa46dfa120b97ee14e7d9a898eb6cf86057f095eae494",
+          "name": "Tunnel Scamper",
+          "action": "Maneuver",
+          "flavorMarkdown": "*It drops low and races along the wall where the loose stones are thinnest.*",
+          "rulesMarkdown": "Move up to 2 squares without provoking from one visible enemy chosen before moving. Treat rubble as normal terrain for this movement only; all other terrain costs and occupied-square restrictions apply. Provoke normally from other enemies.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Tunnel Scamper\n\n*It drops low and races along the wall where the loose stones are thinnest.*\n\n## Rules\n\n**ID:** monster-tunnel-scamper\n\n\n**Action:** Maneuver\n\nMove up to 2 squares without provoking from one visible enemy chosen before moving. Treat rubble as normal terrain for this movement only; all other terrain costs and occupied-square restrictions apply. Provoke normally from other enemies.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/tunnel-scamper.md",
+            "sha256": "77dc5302086a316eca6fa46dfa120b97ee14e7d9a898eb6cf86057f095eae494"
+          },
+          "automation": "pending"
         }
       ],
       "summoning": {

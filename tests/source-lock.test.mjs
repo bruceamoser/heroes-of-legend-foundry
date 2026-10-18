@@ -11,7 +11,7 @@ test("completed book lock accounts for every creature, portrait and summon", () 
   assert.match(lock.commit, /^[a-f0-9]{40}$/);
   assert.deepEqual(lock.counts, {
     creatures: 192,
-    monsterAbilities: 93,
+    monsterAbilities: 126,
     summons: 73,
     portraits: 192,
   });

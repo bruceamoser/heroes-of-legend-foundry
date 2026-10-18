@@ -39,7 +39,7 @@
       "baseMax": 32,
       "sourceText": "32"
     },
-    "cv": 35,
+    "cv": 37,
     "speed": 5,
     "speedSource": "5; swim 5",
     "alternateSpeeds": [
@@ -99,6 +99,7 @@
           "id": "main-0",
           "category": "main",
           "name": "Basic Melee",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -115,6 +116,7 @@
           "id": "main-1",
           "category": "main",
           "name": "Root-and-reed embrace",
+          "abilityId": "",
           "attributeKey": "brawn",
           "defenseSource": "Brawn",
           "harmfulOnly": false,
@@ -130,7 +132,25 @@
         {
           "id": "maneuver-0",
           "category": "maneuver",
+          "name": "Spore Curtain",
+          "abilityId": "monster-spore-curtain",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "3 connected empty squares within 3: partial obstruction until its next turn.",
+          "referenceMarkdown": "### Spore Curtain\n\n*A slow shake of its crown releases a drifting veil of pale spores that hangs between the trunks.*\n\nFill up to 3 connected empty squares within 3 squares with spores that give partial obstruction until the start of this creature's next turn. Apply 1 Bane when that obstruction lies in an attack's path, following the normal targeting rules. The spores do not grant Hidden or cause a condition or damage. Reusing this ability replaces its previous cloud."
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
           "name": "Weave the Roots",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -141,12 +161,13 @@
             "strong": ""
           },
           "effect": "3 difficult ground squares within 3 become normal until next turn.",
-          "referenceMarkdown": "### Weave the Roots\n\n*Roots braid themselves into firm footholds across the treacherous ground.*\n\nChoose up to 3 connected difficult-terrain ground squares within 3 squares. They count as normal terrain until its next turn. Requires soil or living vegetation; cannot bridge empty space or bypass occupied squares."
+          "referenceMarkdown": "### Weave the Roots\n\n*Roots braid themselves into firm footholds across the treacherous ground.*\n\nChoose up to 3 connected difficult-terrain ground squares within 3 squares; they count as normal terrain until its next turn. Requires soil or living vegetation; cannot bridge empty space or bypass occupied squares."
         },
         {
-          "id": "maneuver-1",
+          "id": "maneuver-2",
           "category": "maneuver",
           "name": "Defend",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -163,6 +184,7 @@
           "id": "reaction-0",
           "category": "reaction",
           "name": "Opportunity Attack",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -178,14 +200,14 @@
       ],
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Root-and-reed embrace | Brawn | 9 + Grappled 2 / 6 + Grappled 1 / 3 |",
-      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Weave the Roots | 3 difficult ground squares within 3 become normal until next turn. |\n| Defend | +1 Bane |",
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Spore Curtain | 3 connected empty squares within 3: partial obstruction until its next turn. |\n| Weave the Roots | 3 difficult ground squares within 3 become normal until next turn. |\n| Defend | +1 Bane |",
       "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Opportunity Attack | Basic Melee |"
     },
     "details": {
       "flavorMarkdown": "*A mound of wet vegetation rises around a core of old wood, carrying nesting birds that barely notice its movement.*",
-      "specialtyMarkdown": "### Root-and-reed embrace\n\n**Target:** One adjacent creature. **Player defense:** Brawn. **Damage type:** physical.\n\n**Weak defense:** Grappled 2. **Standard defense:** Grappled 1.\n\n**Limit:** The holder suffers its own Grappled contribution. A new result replaces its lower contribution, not adds to it. Release freely; separation beyond reach, unconsciousness or death ends the hold.\n\n### Weave the Roots\n\n*Roots braid themselves into firm footholds across the treacherous ground.*\n\nChoose up to 3 connected difficult-terrain ground squares within 3 squares. They count as normal terrain until its next turn. Requires soil or living vegetation; cannot bridge empty space or bypass occupied squares.",
+      "specialtyMarkdown": "### Root-and-reed embrace\n\n**Target:** One adjacent creature. **Player defense:** Brawn. **Damage type:** physical.\n\n**Weak defense:** Grappled 2. **Standard defense:** Grappled 1.\n\n**Limit:** The holder suffers its own Grappled contribution. A new result replaces its lower contribution, not adds to it. Release freely; separation beyond reach, unconsciousness or death ends the hold.\n\n### Weave the Roots\n\n*Roots braid themselves into firm footholds across the treacherous ground.*\n\nChoose up to 3 connected difficult-terrain ground squares within 3 squares; they count as normal terrain until its next turn. Requires soil or living vegetation; cannot bridge empty space or bypass occupied squares.\n\n### Spore Curtain\n\n*A slow shake of its crown releases a drifting veil of pale spores that hangs between the trunks.*\n\nFill up to 3 connected empty squares within 3 squares with spores that give partial obstruction until the start of this creature's next turn. Apply 1 Bane when that obstruction lies in an attack's path, following the normal targeting rules. The spores do not grant Hidden or cause a condition or damage. Reusing this ability replaces its previous cloud.",
       "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.\n\n**Heavy Frame — Passive:** Stability 2; an explicit trait, not a bonus calculated from Size.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Tactics and retreat:** Hold whoever blocks the old watercourse while weaving safe footing across the wet ground. Respecting the channel can end the fight.\n\n**Encounter and conversation:** It is rebuilding a blocked wetland channel through fields that people now depend on.\n\n**Habitat:** Wetland; overgrown ruin; old forest · **Communication:** None\n\n**Loot:** Recoverable possessions or lair clues chosen for the adventure; body parts grant no automatic special equipment or coin value.\n\n**Summoning:** Ineligible.",
-      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-shambling-mound\n\n\n**Category:** Plant · **Role:** Holder · **CV:** 35\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Root-and-reed embrace | Brawn | 1 Boon | 3 physical damage. | 6 physical damage. Grappled 1. | 9 physical damage. Grappled 2. |\n\nUse the attributes above for defenses named by incoming attacks. Same targeting, limits and costs apply; no opposed second roll.\n\n### CV worksheet\n\n**Reference damage:** 3/6/9\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.45\n\n**Regeneration per turn:** 0\n\nReference I=3.000, O=5.894. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [root bridge](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/root-bridge.md), [seizing limbs](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/seizing-limbs.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/rules/stability.md)"
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-shambling-mound\n\n\n**Category:** Plant · **Role:** Holder · **CV:** 37\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Root-and-reed embrace | Brawn | 1 Boon | 3 physical damage. | 6 physical damage. Grappled 1. | 9 physical damage. Grappled 2. |\n\nUse the attributes above for defenses named by incoming attacks. Same targeting, limits and costs apply; no opposed second roll.\n\n### CV worksheet\n\n**Reference damage:** 3/6/9\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.55\n\n**Action review (#1279):** U 1.45 → 1.55: Maneuver allowance +0.1, Reaction allowance +0. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=3.000, O=5.894. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [root bridge](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/root-bridge.md), [seizing limbs](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/seizing-limbs.md), [Spore Curtain](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/spore-curtain.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/rules/stability.md)"
     },
     "biography": ""
   },
@@ -211,9 +233,9 @@
       "catalogId": "creature-shambling-mound",
       "source": {
         "path": "design/bestiary/creatures/shambling-mound.md",
-        "sha256": "abc49de940733391071ee210a801536211153ef34a07499c995b7ab1e74a1a72"
+        "sha256": "bed27a67557b4075dc0327343de1e1b45e734ea47a483172ff4e7698e193762e"
       },
-      "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
+      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Printed profile · specialty automation pending",
@@ -221,7 +243,7 @@
       "classification": {
         "category": "Plant",
         "role": "Holder",
-        "cv": 35
+        "cv": 37
       },
       "family": "Plants and fungi",
       "abilitySources": [
@@ -229,13 +251,69 @@
           "label": "root bridge",
           "id": "monster-root-bridge",
           "path": "design/monster-abilities/root-bridge.md",
-          "sha256": "6922bcbe204499fb7981804b1092539f19979a0429c748836b5bc3c4c3442d57"
+          "sha256": "e9f51a3bb7ad6d595882bb6915478b157aaa2adcacf53138cff1c5cf7d35fe00"
         },
         {
           "label": "seizing limbs",
           "id": "monster-seizing-limbs",
           "path": "design/monster-abilities/seizing-limbs.md",
           "sha256": "66f2767bac03446133659d16daf8320854f42e75c80b88490fda96d517417737"
+        },
+        {
+          "label": "Spore Curtain",
+          "id": "monster-spore-curtain",
+          "path": "design/monster-abilities/spore-curtain.md",
+          "sha256": "63b5c472db0d20f55b5effe9261e0e41d7812ce87e3dd308e9139a28ff7c7350"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-root-bridge",
+          "path": "design/monster-abilities/root-bridge.md",
+          "sha256": "e9f51a3bb7ad6d595882bb6915478b157aaa2adcacf53138cff1c5cf7d35fe00",
+          "name": "Weave the Roots",
+          "action": "Maneuver",
+          "flavorMarkdown": "*Roots braid themselves into firm footholds across the treacherous ground.*",
+          "rulesMarkdown": "Choose up to 3 connected difficult-terrain ground squares within 3 squares; they count as normal terrain until its next turn. Requires soil or living vegetation; cannot bridge empty space or bypass occupied squares.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Weave the Roots\n\n*Roots braid themselves into firm footholds across the treacherous ground.*\n\n## Rules\n\n**ID:** monster-root-bridge\n\n\n**Action:** Maneuver\n\nChoose up to 3 connected difficult-terrain ground squares within 3 squares; they count as normal terrain until its next turn. Requires soil or living vegetation; cannot bridge empty space or bypass occupied squares.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/root-bridge.md",
+            "sha256": "e9f51a3bb7ad6d595882bb6915478b157aaa2adcacf53138cff1c5cf7d35fe00"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-seizing-limbs",
+          "path": "design/monster-abilities/seizing-limbs.md",
+          "sha256": "66f2767bac03446133659d16daf8320854f42e75c80b88490fda96d517417737",
+          "name": "Seizing Limbs",
+          "action": "Main Action",
+          "flavorMarkdown": "*A coil or grasping limb closes around the target and braces against its struggling weight.*",
+          "rulesMarkdown": "Use the printed attack. Standard also establishes Grappled 1; Strong establishes Grappled 2. A single holder’s contribution is replaced by its higher new result, not added to itself. Other holders stack normally. The holder suffers its own grapple contribution and cannot move while maintaining it. Release at any time without an action; death, unconsciousness or separation beyond the attack’s reach ends the hold. Force and external aid follow the core grapple rules.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Seizing Limbs\n\n*A coil or grasping limb closes around the target and braces against its struggling weight.*\n\n## Rules\n\n**ID:** monster-seizing-limbs\n\n\n**Action:** Main Action\n\nUse the printed attack. Standard also establishes Grappled 1; Strong establishes Grappled 2. A single holder’s contribution is replaced by its higher new result, not added to itself. Other holders stack normally. The holder suffers its own grapple contribution and cannot move while maintaining it. Release at any time without an action; death, unconsciousness or separation beyond the attack’s reach ends the hold. Force and external aid follow the core grapple rules.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/seizing-limbs.md",
+            "sha256": "66f2767bac03446133659d16daf8320854f42e75c80b88490fda96d517417737"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-spore-curtain",
+          "path": "design/monster-abilities/spore-curtain.md",
+          "sha256": "63b5c472db0d20f55b5effe9261e0e41d7812ce87e3dd308e9139a28ff7c7350",
+          "name": "Spore Curtain",
+          "action": "Maneuver",
+          "flavorMarkdown": "*A slow shake of its crown releases a drifting veil of pale spores that hangs between the trunks.*",
+          "rulesMarkdown": "Fill up to 3 connected empty squares within 3 squares with spores that give partial obstruction until the start of this creature's next turn. Apply 1 Bane when that obstruction lies in an attack's path, following the normal targeting rules. The spores do not grant Hidden or cause a condition or damage. Reusing this ability replaces its previous cloud.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Spore Curtain\n\n*A slow shake of its crown releases a drifting veil of pale spores that hangs between the trunks.*\n\n## Rules\n\n**ID:** monster-spore-curtain\n\n**Action:** Maneuver\n\nFill up to 3 connected empty squares within 3 squares with spores that give partial obstruction until the start of this creature's next turn. Apply 1 Bane when that obstruction lies in an attack's path, following the normal targeting rules. The spores do not grant Hidden or cause a condition or damage. Reusing this ability replaces its previous cloud.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/spore-curtain.md",
+            "sha256": "63b5c472db0d20f55b5effe9261e0e41d7812ce87e3dd308e9139a28ff7c7350"
+          },
+          "automation": "pending"
         }
       ],
       "summoning": {

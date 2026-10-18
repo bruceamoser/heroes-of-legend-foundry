@@ -39,7 +39,7 @@
       "baseMax": 22,
       "sourceText": "22"
     },
-    "cv": 22,
+    "cv": 24,
     "speed": 8,
     "speedSource": "8",
     "alternateSpeeds": [],
@@ -98,6 +98,7 @@
           "id": "main-0",
           "category": "main",
           "name": "Basic Melee",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -114,6 +115,7 @@
           "id": "main-1",
           "category": "main",
           "name": "Cinder bite",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -130,6 +132,7 @@
           "id": "maneuver-0",
           "category": "maneuver",
           "name": "Read the Blood Trail",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -146,6 +149,7 @@
           "id": "maneuver-1",
           "category": "maneuver",
           "name": "Defend",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -161,7 +165,25 @@
         {
           "id": "reaction-0",
           "category": "reaction",
+          "name": "Follow the Pack",
+          "abilityId": "monster-follow-the-pack",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "After an ally closes on an enemy within 3: move 2 to that ally; provokes.",
+          "referenceMarkdown": "### Follow the Pack\n\n*One hunter moves and another flows into its wake, tightening the circle without a sound.*\n\nAfter a visible active ally ends voluntary movement adjacent to a visible enemy within 3 squares of this creature, move up to 2 squares, ending adjacent to that ally. Pay normal terrain costs and provoke normally. The ally must be conscious and not Paralyzed; an uncommanded summon cannot trigger this. No attack or command is granted, and movement granted by a free attack cannot trigger it."
+        },
+        {
+          "id": "reaction-1",
+          "category": "reaction",
           "name": "Opportunity Attack",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -178,13 +200,13 @@
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Cinder bite | Agility | 7 + Burning 2 / 5 + Burning 1 / 3 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Read the Blood Trail | Direction of nearest Bleeding creature within 6. |\n| Defend | +1 Bane |",
-      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Opportunity Attack | Basic Melee |"
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Follow the Pack | After an ally closes on an enemy within 3: move 2 to that ally; provokes. |\n| Opportunity Attack | Basic Melee |"
     },
     "details": {
       "flavorMarkdown": "*A black hound carries furnace light behind its teeth and leaves warm pawprints on cold stone.*",
-      "specialtyMarkdown": "### Cinder bite\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** fire.\n\n**Weak defense:** Burning 2. **Standard defense:** Burning 1.\n\n### Read the Blood Trail\n\n*Its nose lifts, separating the sharp scent of fresh blood from the rest of the air.*\n\nLearn the direction of the nearest Bleeding creature within 6 squares. This does not reveal Hidden, give an exact square or permit a sight-required attack against an unseen target.",
+      "specialtyMarkdown": "### Cinder bite\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** fire.\n\n**Weak defense:** Burning 2. **Standard defense:** Burning 1.\n\n### Read the Blood Trail\n\n*Its nose lifts, separating the sharp scent of fresh blood from the rest of the air.*\n\nLearn the direction of the nearest Bleeding creature within 6 squares. This does not reveal Hidden, give an exact square or permit a sight-required attack against an unseen target.\n\n### Follow the Pack\n\n*One hunter moves and another flows into its wake, tightening the circle without a sound.*\n\nAfter a visible active ally ends voluntary movement adjacent to a visible enemy within 3 squares of this creature, move up to 2 squares, ending adjacent to that ally. Pay normal terrain costs and provoke normally. The ally must be conscious and not Paralyzed; an uncommanded summon cannot trigger this. No attack or command is granted, and movement granted by a free attack cannot trigger it.",
       "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Dark sight 6 squares; ordinary hearing.\n\n**Tactics and retreat:** Burn the target named by the collar and follow a bleeding retreat. A changed legal order can matter more than another attack.\n\n**Encounter and conversation:** Its collar names the person it must find; replacing the order requires confronting whoever signed it.\n\n**Habitat:** Broken shrine; summoned court; place of conflict · **Communication:** Common\n\n**Loot:** Recoverable possessions or lair clues chosen for the adventure; body parts grant no automatic special equipment or coin value.\n\n**Summoning:** Ineligible.",
-      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-hell-hound\n\n\n**Category:** Fiend · **Role:** Burning striker · **CV:** 22\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Cinder bite | Reason | 1 Boon | 3 fire damage. | 5 fire damage. Burning 1. | 7 fire damage. Burning 2. |\n\nUse the attributes above for defenses named by incoming attacks. Same targeting, limits and costs apply; no opposed second roll.\n\n### CV worksheet\n\n**Reference damage:** 3/5/7\n\n**Reference type:** fire\n\n**Expected targets:** 1\n\n**Utility factor:** 1.3\n\n**Regeneration per turn:** 0\n\nReference I=4.000, O=5.596. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [blood scent](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/blood-scent.md), [elemental burn](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/elemental-burn.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/rules/stability.md)"
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-hell-hound\n\n\n**Category:** Fiend · **Role:** Burning striker · **CV:** 24\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Cinder bite | Reason | 1 Boon | 3 fire damage. | 5 fire damage. Burning 1. | 7 fire damage. Burning 2. |\n\nUse the attributes above for defenses named by incoming attacks. Same targeting, limits and costs apply; no opposed second roll.\n\n### CV worksheet\n\n**Reference damage:** 3/5/7\n\n**Reference type:** fire\n\n**Expected targets:** 1\n\n**Utility factor:** 1.4\n\n**Action review (#1279):** U 1.3 → 1.4: Maneuver allowance +0, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=4.000, O=5.596. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [blood scent](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/blood-scent.md), [elemental burn](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/elemental-burn.md), [Follow the Pack](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/follow-the-pack.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/rules/stability.md)"
     },
     "biography": ""
   },
@@ -210,9 +232,9 @@
       "catalogId": "creature-hell-hound",
       "source": {
         "path": "design/bestiary/creatures/hell-hound.md",
-        "sha256": "cbd1ff8e3f61cc12b2b7b4e62d44cb4ece8cc5725fc5ecced73a57f0f251cb1c"
+        "sha256": "a328945867275d44aa475207fb29fd8fb7dcf0ade6733b86445619e3e5766306"
       },
-      "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
+      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Printed profile · specialty automation pending",
@@ -220,7 +242,7 @@
       "classification": {
         "category": "Fiend",
         "role": "Burning striker",
-        "cv": 22
+        "cv": 24
       },
       "family": "Fiends and infernal bargains",
       "abilitySources": [
@@ -235,6 +257,62 @@
           "id": "monster-elemental-burn",
           "path": "design/monster-abilities/elemental-burn.md",
           "sha256": "8c5ce559ecabe30b4ac207824e20cb56adfac812d72ca5c257c1ec71f22ebe46"
+        },
+        {
+          "label": "Follow the Pack",
+          "id": "monster-follow-the-pack",
+          "path": "design/monster-abilities/follow-the-pack.md",
+          "sha256": "65848bdf5f8b2af9eae4b9737baf6c45433a03c7cb6baed06b92fe8469a50c4c"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-blood-scent",
+          "path": "design/monster-abilities/blood-scent.md",
+          "sha256": "e59c5e063a00af7caa8af14af966978837c5f673dde3601ea844e24fcde1614e",
+          "name": "Read the Blood Trail",
+          "action": "Maneuver",
+          "flavorMarkdown": "*Its nose lifts, separating the sharp scent of fresh blood from the rest of the air.*",
+          "rulesMarkdown": "Learn the direction of the nearest Bleeding creature within 6 squares. This does not reveal Hidden, give an exact square or permit a sight-required attack against an unseen target.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Read the Blood Trail\n\n*Its nose lifts, separating the sharp scent of fresh blood from the rest of the air.*\n\n## Rules\n\n**ID:** monster-blood-scent\n\n\n**Action:** Maneuver\n\nLearn the direction of the nearest Bleeding creature within 6 squares. This does not reveal Hidden, give an exact square or permit a sight-required attack against an unseen target.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/blood-scent.md",
+            "sha256": "e59c5e063a00af7caa8af14af966978837c5f673dde3601ea844e24fcde1614e"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-elemental-burn",
+          "path": "design/monster-abilities/elemental-burn.md",
+          "sha256": "8c5ce559ecabe30b4ac207824e20cb56adfac812d72ca5c257c1ec71f22ebe46",
+          "name": "Elemental Burn",
+          "action": "Main Action",
+          "flavorMarkdown": "*Heat crawls along the strike, or frost flowers across the skin where it passes.*",
+          "rulesMarkdown": "Use the printed attack. Standard also applies the printed Burning 1 or Freezing 1; Strong applies that condition at 2. The creature card chooses one condition, not either at use. Burning is fire damage; Freezing is cold damage. Lightning attacks may explicitly leave Burning.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Elemental Burn\n\n*Heat crawls along the strike, or frost flowers across the skin where it passes.*\n\n## Rules\n\n**ID:** monster-elemental-burn\n\n\n**Action:** Main Action\n\nUse the printed attack. Standard also applies the printed Burning 1 or Freezing 1; Strong applies that condition at 2. The creature card chooses one condition, not either at use. Burning is fire damage; Freezing is cold damage. Lightning attacks may explicitly leave Burning.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/elemental-burn.md",
+            "sha256": "8c5ce559ecabe30b4ac207824e20cb56adfac812d72ca5c257c1ec71f22ebe46"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-follow-the-pack",
+          "path": "design/monster-abilities/follow-the-pack.md",
+          "sha256": "65848bdf5f8b2af9eae4b9737baf6c45433a03c7cb6baed06b92fe8469a50c4c",
+          "name": "Follow the Pack",
+          "action": "Reaction",
+          "flavorMarkdown": "*One hunter moves and another flows into its wake, tightening the circle without a sound.*",
+          "rulesMarkdown": "After a visible active ally ends voluntary movement adjacent to a visible enemy within 3 squares of this creature, move up to 2 squares, ending adjacent to that ally. Pay normal terrain costs and provoke normally. The ally must be conscious and not Paralyzed; an uncommanded summon cannot trigger this. No attack or command is granted, and movement granted by a free attack cannot trigger it.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Follow the Pack\n\n*One hunter moves and another flows into its wake, tightening the circle without a sound.*\n\n## Rules\n\n**ID:** monster-follow-the-pack\n\n**Action:** Reaction\n\nAfter a visible active ally ends voluntary movement adjacent to a visible enemy within 3 squares of this creature, move up to 2 squares, ending adjacent to that ally. Pay normal terrain costs and provoke normally. The ally must be conscious and not Paralyzed; an uncommanded summon cannot trigger this. No attack or command is granted, and movement granted by a free attack cannot trigger it.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/follow-the-pack.md",
+            "sha256": "65848bdf5f8b2af9eae4b9737baf6c45433a03c7cb6baed06b92fe8469a50c4c"
+          },
+          "automation": "pending"
         }
       ],
       "summoning": {

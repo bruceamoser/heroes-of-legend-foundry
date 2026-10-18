@@ -98,6 +98,7 @@
           "id": "main-0",
           "category": "main",
           "name": "Basic Melee",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -114,6 +115,7 @@
           "id": "main-1",
           "category": "main",
           "name": "Needle",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -129,7 +131,25 @@
         {
           "id": "maneuver-0",
           "category": "maneuver",
+          "name": "Roll Away",
+          "abilityId": "monster-roll-away",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Move 2 straight; no opportunities; normal terrain and occupancy.",
+          "referenceMarkdown": "### Roll Away\n\n*The goblin drops a shoulder, tumbles across the rubble and springs up beyond the answering blade.*\n\nMove up to 2 squares in a straight line without provoking opportunity attacks. Pay normal terrain costs from the 2-square allowance. Normal occupied-square restrictions apply."
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
           "name": "Defend",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -146,6 +166,7 @@
           "id": "reaction-0",
           "category": "reaction",
           "name": "Opportunity Attack",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -161,14 +182,14 @@
       ],
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 4/2/1 |\n| Needle | Agility | 3/2/1 |",
-      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Defend | +1 Bane |",
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Roll Away | Move 2 straight; no opportunities; normal terrain and occupancy. |\n| Defend | +1 Bane |",
       "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Opportunity Attack | Basic Melee |"
     },
     "details": {
       "flavorMarkdown": "*A small brass surveying machine with jointed feet, a glass lens and a speaking grille. Its precise movements serve observation and reporting rather than a sustained fight.*",
-      "specialtyMarkdown": "### Needle\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.",
-      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Lifeless Body:** does not breathe or eat; only the listed immunities apply.\n\n**Healing:** Construct: ordinary HP healing does not repair it; destroyed at 0. Combat repair requires an explicit repair ability. Workshop repair remains a design question.\n\n**Senses:** Ordinary sight and hearing.\n\n**Signs:** Pinprick tracks stop at every junction.\n\n**Purpose:** Return an accurate account of a short route.\n\n**Tactics and retreat:** Evade pursuit and use its needle only if cornered.\n\n**Counterplay and conversation:** Cover the lens or recover the controller’s command token.\n\n**Habitat:** Workshop; ruin · **Communication:** Reports simple spoken directions while active\n\n**Loot:** Delicate parts worth 8 coins from a real destroyed scout; no summoned salvage.\n\n**Summoning:** Construct 1 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/summons/clockwork-scout.md).",
-      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-clockwork-scout\n\n\n**Category:** Construct · **Role:** Surveyor · **CV:** 5\n\n**Difficulty rationale:** An agile or elusive body warrants attack Banes. Its minor attack is easier to defend, granting a Boon.\n\n**Reference damage:** 1/2/3\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.15\n\n**Regeneration per turn:** 0\n\nReference I=4.404, O=1.057. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [lifeless body](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/lifeless-body.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/rules/stability.md)"
+      "specialtyMarkdown": "### Needle\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.\n\n### Roll Away\n\n*The goblin drops a shoulder, tumbles across the rubble and springs up beyond the answering blade.*\n\nMove up to 2 squares in a straight line without provoking opportunity attacks. Pay normal terrain costs from the 2-square allowance. Normal occupied-square restrictions apply.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Lifeless Body:** does not breathe or eat; only the listed immunities apply.\n\n**Healing:** Construct: ordinary HP healing does not repair it; destroyed at 0. Combat repair requires an explicit repair ability. Workshop repair remains a design question.\n\n**Senses:** Ordinary sight and hearing.\n\n**Signs:** Pinprick tracks stop at every junction.\n\n**Purpose:** Return an accurate account of a short route.\n\n**Tactics and retreat:** Evade pursuit and use its needle only if cornered.\n\n**Counterplay and conversation:** Cover the lens or recover the controller’s command token.\n\n**Habitat:** Workshop; ruin · **Communication:** Reports simple spoken directions while active\n\n**Loot:** Delicate parts worth 8 coins from a real destroyed scout; no summoned salvage.\n\n**Summoning:** Construct 1 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/summons/clockwork-scout.md).",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-clockwork-scout\n\n\n**Category:** Construct · **Role:** Surveyor · **CV:** 5\n\n**Difficulty rationale:** An agile or elusive body warrants attack Banes. Its minor attack is easier to defend, granting a Boon.\n\n**Reference damage:** 1/2/3\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.2\n\n**Action review (#1279):** U 1.15 → 1.2: Maneuver allowance +0.05, Reaction allowance +0. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=4.404, O=1.057. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [lifeless body](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/lifeless-body.md), [Roll Away](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/roll-away.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/rules/stability.md)"
     },
     "biography": ""
   },
@@ -194,9 +215,9 @@
       "catalogId": "creature-clockwork-scout",
       "source": {
         "path": "design/bestiary/creatures/clockwork-scout.md",
-        "sha256": "2637b07b68db960f1b64ea079921ba1ed43940d65377b20f24bc2339a04519d9"
+        "sha256": "7682b7cf79e6a4d8333934a30d0545021a22b76c38ab7b7c57854203f37fad17"
       },
-      "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
+      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Printed profile · specialty automation pending",
@@ -213,6 +234,46 @@
           "id": "monster-lifeless-body",
           "path": "design/monster-abilities/lifeless-body.md",
           "sha256": "248c16c6e641d2042cd94a05e7e8bfce03b5177f4f57cda241b46d9b16de4d81"
+        },
+        {
+          "label": "Roll Away",
+          "id": "monster-roll-away",
+          "path": "design/monster-abilities/roll-away.md",
+          "sha256": "c1c376f3d81ef98533ffbb89a02ca22f7970bbb2200f7b28f5217cb8950cd917"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-lifeless-body",
+          "path": "design/monster-abilities/lifeless-body.md",
+          "sha256": "248c16c6e641d2042cd94a05e7e8bfce03b5177f4f57cda241b46d9b16de4d81",
+          "name": "Lifeless Body",
+          "action": "Passive",
+          "flavorMarkdown": "*Nothing breathes beneath the torn coat; nothing living looks through the visor.*",
+          "rulesMarkdown": "The card must list its exact condition immunities; this trait grants no additional unlisted ones. It does not breathe or need food. Undead entries marked healing-harmed take a healing result as Life damage; constructs marked repair-only do not regain HP from ordinary healing. Neither rule prevents physical attacks from dealing their normal minimum damage.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Lifeless Body\n\n*Nothing breathes beneath the torn coat; nothing living looks through the visor.*\n\n## Rules\n\n**ID:** monster-lifeless-body\n\n\n**Action:** Passive\n\nThe card must list its exact condition immunities; this trait grants no additional unlisted ones. It does not breathe or need food. Undead entries marked healing-harmed take a healing result as Life damage; constructs marked repair-only do not regain HP from ordinary healing. Neither rule prevents physical attacks from dealing their normal minimum damage.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/lifeless-body.md",
+            "sha256": "248c16c6e641d2042cd94a05e7e8bfce03b5177f4f57cda241b46d9b16de4d81"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-roll-away",
+          "path": "design/monster-abilities/roll-away.md",
+          "sha256": "c1c376f3d81ef98533ffbb89a02ca22f7970bbb2200f7b28f5217cb8950cd917",
+          "name": "Roll Away",
+          "action": "Maneuver",
+          "flavorMarkdown": "*The goblin drops a shoulder, tumbles across the rubble and springs up beyond the answering blade.*",
+          "rulesMarkdown": "Move up to 2 squares in a straight line without provoking opportunity attacks. Pay normal terrain costs from the 2-square allowance. Normal occupied-square restrictions apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Roll Away\n\n*The goblin drops a shoulder, tumbles across the rubble and springs up beyond the answering blade.*\n\n## Rules\n\n**ID:** monster-roll-away\n\n\n**Action:** Maneuver\n\nMove up to 2 squares in a straight line without provoking opportunity attacks. Pay normal terrain costs from the 2-square allowance. Normal occupied-square restrictions apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/roll-away.md",
+            "sha256": "c1c376f3d81ef98533ffbb89a02ca22f7970bbb2200f7b28f5217cb8950cd917"
+          },
+          "automation": "pending"
         }
       ],
       "summoning": {

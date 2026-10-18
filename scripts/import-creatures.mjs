@@ -3,6 +3,7 @@ import { spawnSync } from "node:child_process";
 import { readFile, writeFile } from "node:fs/promises";
 import {
   parseCreature,
+  parseMonsterAbility,
   summarizeCreatureCatalog,
   verifySourceHash,
 } from "./content/creatures.mjs";
@@ -294,8 +295,8 @@ const summonLinks = lock.summonLinks
   .sort(byStableId);
 
 const abilityRecords = monsters.map((monster) => {
-  verifySourceHash(monster, gitBlob(monster.path));
-  return monster;
+  const text = verifySourceHash(monster, gitBlob(monster.path)).toString("utf8");
+  return parseMonsterAbility(monster, text, lock.commit);
 });
 
 const creatureTexts = new Map();
@@ -357,6 +358,7 @@ const catalog = {
     monsterAbilitiesVerified: abilityRecords.length,
   },
   summonLinks,
+  monsterAbilities: abilityRecords,
   creatures: parsedCreatures,
 };
 

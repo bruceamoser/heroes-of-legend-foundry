@@ -39,7 +39,7 @@
       "baseMax": 40,
       "sourceText": "40"
     },
-    "cv": 41,
+    "cv": 44,
     "speed": 7,
     "speedSource": "7",
     "alternateSpeeds": [],
@@ -98,6 +98,7 @@
           "id": "main-0",
           "category": "main",
           "name": "Basic Melee",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -114,6 +115,7 @@
           "id": "main-1",
           "category": "main",
           "name": "Rimed axe",
+          "abilityId": "",
           "attributeKey": "fortitude",
           "defenseSource": "Fortitude",
           "harmfulOnly": false,
@@ -130,6 +132,7 @@
           "id": "main-2",
           "category": "main",
           "name": "Thrown stone",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -146,6 +149,7 @@
           "id": "maneuver-0",
           "category": "maneuver",
           "name": "Plant the Weight",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -162,6 +166,7 @@
           "id": "maneuver-1",
           "category": "maneuver",
           "name": "Defend",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -177,7 +182,25 @@
         {
           "id": "reaction-0",
           "category": "reaction",
+          "name": "Bat Aside the Missile",
+          "abilityId": "monster-bat-aside-the-missile",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Before a physical ranged attack: +1 Bane; not against areas.",
+          "referenceMarkdown": "### Bat Aside the Missile\n\n*A broad hand or haft meets the incoming missile with the ease of brushing a branch aside.*\n\nBefore one physical ranged attack from a visible attacker against this creature is rolled, impose 1 Bane on that attack. Against an NPC attack, grant 1 Boon to its defense instead. No protection against area attacks; no missile is returned and the attack still resolves."
+        },
+        {
+          "id": "reaction-1",
+          "category": "reaction",
           "name": "Opportunity Attack",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -194,13 +217,13 @@
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Rimed axe | Fortitude | 10 + Freezing 2 / 7 + Freezing 1 / 4 |\n| Thrown stone | Agility | 7/5/3 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Plant the Weight | Stability 3 on solid ground until next turn. |\n| Defend | +1 Bane |",
-      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Opportunity Attack | Basic Melee |"
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Bat Aside the Missile | Before a physical ranged attack: +1 Bane; not against areas. |\n| Opportunity Attack | Basic Melee |"
     },
     "details": {
       "flavorMarkdown": "*Braids stiff with frost hang over a giant's blue-gray mail, and its breath turns nearby grass white.*",
-      "specialtyMarkdown": "### Rimed axe\n\n**Target:** One visible creature within 2 squares. **Player defense:** Fortitude. **Damage type:** cold.\n\n**Weak defense:** Freezing 2. **Standard defense:** Freezing 1.\n\n### Thrown stone\n\n**Target:** One visible creature within 7 squares. **Player defense:** Agility. **Damage type:** physical.\n\n**Limit:** Requires an available loose stone; picking it up is part of this attack. No stone means this attack is unavailable.\n\n### Plant the Weight\n\n*It spreads its stance and settles its weight into the ground.*\n\nWhile standing on solid ground, gain Stability 3 until its next turn. Use the highest source only, never add sources.",
+      "specialtyMarkdown": "### Rimed axe\n\n**Target:** One visible creature within 2 squares. **Player defense:** Fortitude. **Damage type:** cold.\n\n**Weak defense:** Freezing 2. **Standard defense:** Freezing 1.\n\n### Thrown stone\n\n**Target:** One visible creature within 7 squares. **Player defense:** Agility. **Damage type:** physical.\n\n**Limit:** Requires an available loose stone; picking it up is part of this attack. No stone means this attack is unavailable.\n\n### Plant the Weight\n\n*It spreads its stance and settles its weight into the ground.*\n\nWhile standing on solid ground, gain Stability 3 until its next turn. Use the highest source only, never add sources.\n\n### Bat Aside the Missile\n\n*A broad hand or haft meets the incoming missile with the ease of brushing a branch aside.*\n\nBefore one physical ranged attack from a visible attacker against this creature is rolled, impose 1 Bane on that attack. Against an NPC attack, grant 1 Boon to its defense instead. No protection against area attacks; no missile is returned and the attack still resolves.",
       "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.\n\n**Heavy Frame — Passive:** Stability 2; an explicit trait, not a bonus calculated from Size.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Tactics and retreat:** Brace a pass, wear down intruders with frost and use a thrown stone against a distant harrier. Cold resistance offers a clear preparation advantage.\n\n**Encounter and conversation:** The giant wants a stolen burial cairn restored before allowing anyone through the pass.\n\n**Habitat:** Highland; quarry; remote stronghold · **Communication:** Common and Giant\n\n**Loot:** Recoverable possessions or lair clues chosen for the adventure; body parts grant no automatic special equipment or coin value.\n\n**Summoning:** Ineligible.",
-      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-frost-giant\n\n\n**Category:** Giant · **Role:** Cold controller · **CV:** 41\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Rimed axe | Brawn | 1 Boon | 4 cold damage. | 7 cold damage. Freezing 1. | 10 cold damage. Freezing 2. |\n| Thrown stone | Brawn | 1 Boon | 3 physical damage. | 5 physical damage. | 7 physical damage. |\n\nUse the attributes above for defenses named by incoming attacks. Same targeting, limits and costs apply; no opposed second roll.\n\n### CV worksheet\n\n**Reference damage:** 4/7/10\n\n**Reference type:** cold\n\n**Expected targets:** 1\n\n**Utility factor:** 1.3\n\n**Regeneration per turn:** 0\n\nReference I=3.000, O=7.894. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [brace ground](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/brace-ground.md), [elemental burn](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/elemental-burn.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/rules/stability.md)"
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-frost-giant\n\n\n**Category:** Giant · **Role:** Cold controller · **CV:** 44\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Rimed axe | Brawn | 1 Boon | 4 cold damage. | 7 cold damage. Freezing 1. | 10 cold damage. Freezing 2. |\n| Thrown stone | Brawn | 1 Boon | 3 physical damage. | 5 physical damage. | 7 physical damage. |\n\nUse the attributes above for defenses named by incoming attacks. Same targeting, limits and costs apply; no opposed second roll.\n\n### CV worksheet\n\n**Reference damage:** 4/7/10\n\n**Reference type:** cold\n\n**Expected targets:** 1\n\n**Utility factor:** 1.4\n\n**Action review (#1279):** U 1.3 → 1.4: Maneuver allowance +0, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=3.000, O=7.894. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [Bat Aside the Missile](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/bat-aside-the-missile.md), [brace ground](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/brace-ground.md), [elemental burn](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/elemental-burn.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/rules/stability.md)"
     },
     "biography": ""
   },
@@ -226,9 +249,9 @@
       "catalogId": "creature-frost-giant",
       "source": {
         "path": "design/bestiary/creatures/frost-giant.md",
-        "sha256": "3c0b3e050760f0bba2413e43527f6c79300bf382976604f95b1fce82748d8dc0"
+        "sha256": "b012be06131e3f6fcdd54b96eb2184b8bd4d1740a4847ff0a9720e8e12804e43"
       },
-      "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
+      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Printed profile · specialty automation pending",
@@ -236,10 +259,16 @@
       "classification": {
         "category": "Giant",
         "role": "Cold controller",
-        "cv": 41
+        "cv": 44
       },
       "family": "Giants and trolls",
       "abilitySources": [
+        {
+          "label": "Bat Aside the Missile",
+          "id": "monster-bat-aside-the-missile",
+          "path": "design/monster-abilities/bat-aside-the-missile.md",
+          "sha256": "15c9510df66322b501bed76dfacb9a1843ef46ce2bddf989fd080c4ebb528056"
+        },
         {
           "label": "brace ground",
           "id": "monster-brace-ground",
@@ -251,6 +280,56 @@
           "id": "monster-elemental-burn",
           "path": "design/monster-abilities/elemental-burn.md",
           "sha256": "8c5ce559ecabe30b4ac207824e20cb56adfac812d72ca5c257c1ec71f22ebe46"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-bat-aside-the-missile",
+          "path": "design/monster-abilities/bat-aside-the-missile.md",
+          "sha256": "15c9510df66322b501bed76dfacb9a1843ef46ce2bddf989fd080c4ebb528056",
+          "name": "Bat Aside the Missile",
+          "action": "Reaction",
+          "flavorMarkdown": "*A broad hand or haft meets the incoming missile with the ease of brushing a branch aside.*",
+          "rulesMarkdown": "Before one physical ranged attack from a visible attacker against this creature is rolled, impose 1 Bane on that attack. Against an NPC attack, grant 1 Boon to its defense instead. No protection against area attacks; no missile is returned and the attack still resolves.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Bat Aside the Missile\n\n*A broad hand or haft meets the incoming missile with the ease of brushing a branch aside.*\n\n## Rules\n\n**ID:** monster-bat-aside-the-missile\n\n**Action:** Reaction\n\nBefore one physical ranged attack from a visible attacker against this creature is rolled, impose 1 Bane on that attack. Against an NPC attack, grant 1 Boon to its defense instead. No protection against area attacks; no missile is returned and the attack still resolves.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/bat-aside-the-missile.md",
+            "sha256": "15c9510df66322b501bed76dfacb9a1843ef46ce2bddf989fd080c4ebb528056"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-brace-ground",
+          "path": "design/monster-abilities/brace-ground.md",
+          "sha256": "44e9935b7e9ca1b0062e00df0ba15e789c3de578dc3659f79f3c8497c559e61f",
+          "name": "Plant the Weight",
+          "action": "Maneuver",
+          "flavorMarkdown": "*It spreads its stance and settles its weight into the ground.*",
+          "rulesMarkdown": "While standing on solid ground, gain Stability 3 until its next turn. Use the highest source only, never add sources.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Plant the Weight\n\n*It spreads its stance and settles its weight into the ground.*\n\n## Rules\n\n**ID:** monster-brace-ground\n\n\n**Action:** Maneuver\n\nWhile standing on solid ground, gain Stability 3 until its next turn. Use the highest source only, never add sources.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/brace-ground.md",
+            "sha256": "44e9935b7e9ca1b0062e00df0ba15e789c3de578dc3659f79f3c8497c559e61f"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-elemental-burn",
+          "path": "design/monster-abilities/elemental-burn.md",
+          "sha256": "8c5ce559ecabe30b4ac207824e20cb56adfac812d72ca5c257c1ec71f22ebe46",
+          "name": "Elemental Burn",
+          "action": "Main Action",
+          "flavorMarkdown": "*Heat crawls along the strike, or frost flowers across the skin where it passes.*",
+          "rulesMarkdown": "Use the printed attack. Standard also applies the printed Burning 1 or Freezing 1; Strong applies that condition at 2. The creature card chooses one condition, not either at use. Burning is fire damage; Freezing is cold damage. Lightning attacks may explicitly leave Burning.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Elemental Burn\n\n*Heat crawls along the strike, or frost flowers across the skin where it passes.*\n\n## Rules\n\n**ID:** monster-elemental-burn\n\n\n**Action:** Main Action\n\nUse the printed attack. Standard also applies the printed Burning 1 or Freezing 1; Strong applies that condition at 2. The creature card chooses one condition, not either at use. Burning is fire damage; Freezing is cold damage. Lightning attacks may explicitly leave Burning.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/elemental-burn.md",
+            "sha256": "8c5ce559ecabe30b4ac207824e20cb56adfac812d72ca5c257c1ec71f22ebe46"
+          },
+          "automation": "pending"
         }
       ],
       "summoning": {

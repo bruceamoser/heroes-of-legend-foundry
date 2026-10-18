@@ -39,7 +39,7 @@
       "baseMax": 32,
       "sourceText": "32"
     },
-    "cv": 29,
+    "cv": 32,
     "speed": 6,
     "speedSource": "6",
     "alternateSpeeds": [],
@@ -103,6 +103,7 @@
           "id": "main-0",
           "category": "main",
           "name": "Basic Melee",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -119,6 +120,7 @@
           "id": "main-1",
           "category": "main",
           "name": "Ashen fist",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -135,6 +137,7 @@
           "id": "main-2",
           "category": "main",
           "name": "Ashen cry",
+          "abilityId": "",
           "attributeKey": "reason",
           "defenseSource": "Reason",
           "harmfulOnly": false,
@@ -150,7 +153,25 @@
         {
           "id": "maneuver-0",
           "category": "maneuver",
+          "name": "Shambling Advance",
+          "abilityId": "monster-shambling-advance",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Move 2 toward living prey; difficult ground costs 1; next attack against it +1 Bane.",
+          "referenceMarkdown": "### Shambling Advance\n\n*The corpse lurches after the nearest warm body, dragging its ruined feet without ever looking away.*\n\nMove up to 2 squares toward a visible living creature within 6 squares; its next attack against that creature before turn end imposes 1 additional Bane on the player defense. For a player-controlled creature, gain 1 attack Boon instead. It must end closer to that creature than it began. For this movement only, treat difficult ground as normal; pay other costs and provoke normally. One attack only; repeated uses do not stack. This grants no attack and cannot be used while movement is prevented."
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
           "name": "Defend",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -167,6 +188,7 @@
           "id": "reaction-0",
           "category": "reaction",
           "name": "Opportunity Attack",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -182,14 +204,14 @@
       ],
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Ashen fist | Agility | 9 + Push 2 / 6 + Push 1 / 4 |\n| Ashen cry | Reason | 0 + Frightened 3 / 0 + Frightened 2 / 0 + Frightened 1 |",
-      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Defend | +1 Bane |",
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Shambling Advance | Move 2 toward living prey; difficult ground costs 1; next attack against it +1 Bane. |\n| Defend | +1 Bane |",
       "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Opportunity Attack | Basic Melee |"
     },
     "details": {
       "flavorMarkdown": "*A burned walking body held together by ash, stubborn sinew and an unfinished grievance. A blackened personal token identifies the wrong that prevents it from resting.*",
-      "specialtyMarkdown": "### Ashen fist\n\n*The blow lands with enough force to send its victim stumbling backward.*\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Push 2. **Standard defense:** Push 1.\n\n### Ashen cry\n\n*Its cry seems to come from somewhere behind your ribs.*\n\n**Target:** One hearing creature within 4 squares. **Player defense:** Reason. **Damage type:** None.\n\n**Weak defense:** Frightened 3. **Standard defense:** Frightened 2. **Strong defense:** Frightened 1.",
+      "specialtyMarkdown": "### Ashen fist\n\n*The blow lands with enough force to send its victim stumbling backward.*\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Push 2. **Standard defense:** Push 1.\n\n### Ashen cry\n\n*Its cry seems to come from somewhere behind your ribs.*\n\n**Target:** One hearing creature within 4 squares. **Player defense:** Reason. **Damage type:** None.\n\n**Weak defense:** Frightened 3. **Standard defense:** Frightened 2. **Strong defense:** Frightened 1.\n\n### Shambling Advance\n\n*The corpse lurches after the nearest warm body, dragging its ruined feet without ever looking away.*\n\nMove up to 2 squares toward a visible living creature within 6 squares; its next attack against that creature before turn end imposes 1 additional Bane on the player defense. For a player-controlled creature, gain 1 attack Boon instead. It must end closer to that creature than it began. For this movement only, treat difficult ground as normal; pay other costs and provoke normally. One attack only; repeated uses do not stack. This grants no attack and cannot be used while movement is prevented.",
       "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Lifeless Body:** does not breathe or eat; only the listed immunities apply.\n\n**Healing:** Healing-harmed: ordinary healing resolves as Life damage instead; no beneficial riders.\n\n**Against offensive healing:** controller defends with Fortitude if this is player-controlled; a player attacking it still rolls only their attack.\n\n**Senses:** Ordinary sight and hearing.\n\n**Signs:** Footprints leave soot even in running water.\n\n**Purpose:** Bring one named wrongdoer to the place of the original crime.\n\n**Tactics and retreat:** Push intervening guards aside and pursue the named target; accept evidence of mistaken identity.\n\n**Counterplay and conversation:** Settle the wrong or expose who truly committed it.\n\n**Habitat:** Burned settlement; road · **Communication:** None\n\n**Loot:** The burned token and a clue to the old crime.\n\n**Summoning:** Ineligible.",
-      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-ash-revenant\n\n\n**Category:** Undead · **Role:** Relentless hunter · **CV:** 29\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Ashen fist | Brawn | 1 Boon | 4 physical damage. | 6 physical damage. Push 1. | 9 physical damage. Push 2. |\n| Ashen cry | Reason | 1 Boon | No damage; Frightened 1. | No damage; Frightened 2. | No damage; Frightened 3. |\n\nThe incoming attack names the defense attribute; use the six values above. Same targeting, costs and limits apply in either perspective. No opposed second roll.\n\n\n### CV worksheet\n\n**Difficulty rationale:** No innate attack modifier; armor, cover and chosen actions provide its defenses. Its dangerous attack imposes defense Banes.\n\n**Reference damage:** 4/6/9\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.2\n\n**Regeneration per turn:** 0\n\nReference I=3.000, O=5.951. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [dread cry](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/dread-cry.md), [driving blow](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/driving-blow.md), [lifeless body](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/lifeless-body.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/rules/stability.md)"
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-ash-revenant\n\n\n**Category:** Undead · **Role:** Relentless hunter · **CV:** 32\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Ashen fist | Brawn | 1 Boon | 4 physical damage. | 6 physical damage. Push 1. | 9 physical damage. Push 2. |\n| Ashen cry | Reason | 1 Boon | No damage; Frightened 1. | No damage; Frightened 2. | No damage; Frightened 3. |\n\nThe incoming attack names the defense attribute; use the six values above. Same targeting, costs and limits apply in either perspective. No opposed second roll.\n\n\n### CV worksheet\n\n**Difficulty rationale:** No innate attack modifier; armor, cover and chosen actions provide its defenses. Its dangerous attack imposes defense Banes.\n\n**Reference damage:** 4/6/9\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.3\n\n**Action review (#1279):** U 1.2 → 1.3: Maneuver allowance +0.1, Reaction allowance +0. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=3.000, O=5.951. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [dread cry](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/dread-cry.md), [driving blow](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/driving-blow.md), [lifeless body](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/lifeless-body.md), [Shambling Advance](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/shambling-advance.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/rules/stability.md)"
     },
     "biography": ""
   },
@@ -215,9 +237,9 @@
       "catalogId": "creature-ash-revenant",
       "source": {
         "path": "design/bestiary/creatures/ash-revenant.md",
-        "sha256": "a77a822f3f2329769d5ea1bd69c34da3cdcbb3ecfc48b3bdcaaabb02669340ca"
+        "sha256": "12ffbf6d2d496564b3f68df357f2831c088956f15f20e3177743177c298d24cf"
       },
-      "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
+      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Printed profile · specialty automation pending",
@@ -225,7 +247,7 @@
       "classification": {
         "category": "Undead",
         "role": "Relentless hunter",
-        "cv": 29
+        "cv": 32
       },
       "family": "Undead knights, revenants and liches",
       "abilitySources": [
@@ -246,6 +268,78 @@
           "id": "monster-lifeless-body",
           "path": "design/monster-abilities/lifeless-body.md",
           "sha256": "248c16c6e641d2042cd94a05e7e8bfce03b5177f4f57cda241b46d9b16de4d81"
+        },
+        {
+          "label": "Shambling Advance",
+          "id": "monster-shambling-advance",
+          "path": "design/monster-abilities/shambling-advance.md",
+          "sha256": "6aa573c062f57b6babfd43c0f3f7b4d39da826555d90a822e4bde1ab66bb5c46"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-dread-cry",
+          "path": "design/monster-abilities/dread-cry.md",
+          "sha256": "d35c9d9fb02cdf716d44665b41a99421c1089cddcf9bc2e736a192e27d27efe0",
+          "name": "Dread Cry",
+          "action": "Main Action",
+          "flavorMarkdown": "*Its cry seems to come from somewhere behind your ribs.*",
+          "rulesMarkdown": "A printed mental attack applies Frightened 1/2/3 on Weak/Standard/Strong, with no damage unless separately printed. The source is this creature; Banes apply while the target perceives it. The cry must be heard. Ordinary decay applies and no second save is made.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Dread Cry\n\n*Its cry seems to come from somewhere behind your ribs.*\n\n## Rules\n\n**ID:** monster-dread-cry\n\n\n**Action:** Main Action\n\nA printed mental attack applies Frightened 1/2/3 on Weak/Standard/Strong, with no damage unless separately printed. The source is this creature; Banes apply while the target perceives it. The cry must be heard. Ordinary decay applies and no second save is made.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/dread-cry.md",
+            "sha256": "d35c9d9fb02cdf716d44665b41a99421c1089cddcf9bc2e736a192e27d27efe0"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-driving-blow",
+          "path": "design/monster-abilities/driving-blow.md",
+          "sha256": "38b3406cbcb2f57fdc1bbf57f09857b7ef8a9fd7b35e311dc812476677e6b276",
+          "name": "Driving Blow",
+          "action": "Main Action",
+          "flavorMarkdown": "*The blow lands with enough force to send its victim stumbling backward.*",
+          "rulesMarkdown": "Use the printed attack. Standard pushes the target 1 square; Strong pushes it 2. Apply Stability before moving. This is a rider, not a separate attack or Force action.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Driving Blow\n\n*The blow lands with enough force to send its victim stumbling backward.*\n\n## Rules\n\n**ID:** monster-driving-blow\n\n\n**Action:** Main Action\n\nUse the printed attack. Standard pushes the target 1 square; Strong pushes it 2. Apply Stability before moving. This is a rider, not a separate attack or Force action.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/driving-blow.md",
+            "sha256": "38b3406cbcb2f57fdc1bbf57f09857b7ef8a9fd7b35e311dc812476677e6b276"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-lifeless-body",
+          "path": "design/monster-abilities/lifeless-body.md",
+          "sha256": "248c16c6e641d2042cd94a05e7e8bfce03b5177f4f57cda241b46d9b16de4d81",
+          "name": "Lifeless Body",
+          "action": "Passive",
+          "flavorMarkdown": "*Nothing breathes beneath the torn coat; nothing living looks through the visor.*",
+          "rulesMarkdown": "The card must list its exact condition immunities; this trait grants no additional unlisted ones. It does not breathe or need food. Undead entries marked healing-harmed take a healing result as Life damage; constructs marked repair-only do not regain HP from ordinary healing. Neither rule prevents physical attacks from dealing their normal minimum damage.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Lifeless Body\n\n*Nothing breathes beneath the torn coat; nothing living looks through the visor.*\n\n## Rules\n\n**ID:** monster-lifeless-body\n\n\n**Action:** Passive\n\nThe card must list its exact condition immunities; this trait grants no additional unlisted ones. It does not breathe or need food. Undead entries marked healing-harmed take a healing result as Life damage; constructs marked repair-only do not regain HP from ordinary healing. Neither rule prevents physical attacks from dealing their normal minimum damage.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/lifeless-body.md",
+            "sha256": "248c16c6e641d2042cd94a05e7e8bfce03b5177f4f57cda241b46d9b16de4d81"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-shambling-advance",
+          "path": "design/monster-abilities/shambling-advance.md",
+          "sha256": "6aa573c062f57b6babfd43c0f3f7b4d39da826555d90a822e4bde1ab66bb5c46",
+          "name": "Shambling Advance",
+          "action": "Maneuver",
+          "flavorMarkdown": "*The corpse lurches after the nearest warm body, dragging its ruined feet without ever looking away.*",
+          "rulesMarkdown": "Move up to 2 squares toward a visible living creature within 6 squares; its next attack against that creature before turn end imposes 1 additional Bane on the player defense. For a player-controlled creature, gain 1 attack Boon instead. It must end closer to that creature than it began. For this movement only, treat difficult ground as normal; pay other costs and provoke normally. One attack only; repeated uses do not stack. This grants no attack and cannot be used while movement is prevented.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Shambling Advance\n\n*The corpse lurches after the nearest warm body, dragging its ruined feet without ever looking away.*\n\n## Rules\n\n**ID:** monster-shambling-advance\n\n**Action:** Maneuver\n\nMove up to 2 squares toward a visible living creature within 6 squares; its next attack against that creature before turn end imposes 1 additional Bane on the player defense. For a player-controlled creature, gain 1 attack Boon instead. It must end closer to that creature than it began. For this movement only, treat difficult ground as normal; pay other costs and provoke normally. One attack only; repeated uses do not stack. This grants no attack and cannot be used while movement is prevented.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/shambling-advance.md",
+            "sha256": "6aa573c062f57b6babfd43c0f3f7b4d39da826555d90a822e4bde1ab66bb5c46"
+          },
+          "automation": "pending"
         }
       ],
       "summoning": {

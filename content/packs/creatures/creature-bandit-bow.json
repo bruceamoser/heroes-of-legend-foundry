@@ -39,7 +39,7 @@
       "baseMax": 10,
       "sourceText": "10"
     },
-    "cv": 9,
+    "cv": 10,
     "speed": 6,
     "speedSource": "6",
     "alternateSpeeds": [],
@@ -89,6 +89,7 @@
           "id": "main-0",
           "category": "main",
           "name": "Basic Melee",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -105,6 +106,7 @@
           "id": "main-1",
           "category": "main",
           "name": "Hunting arrow",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -121,6 +123,7 @@
           "id": "maneuver-0",
           "category": "maneuver",
           "name": "Stalking Step",
+          "abilityId": "monster-stalking-step",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -130,13 +133,14 @@
             "standard": "",
             "strong": ""
           },
-          "effect": "Move up to 2 squares, paying terrain costs from that allowance. Provokes normally; no automatic Hidden.",
-          "referenceMarkdown": ""
+          "effect": "Move 2 to cover or concealment; no opportunity from one chosen enemy.",
+          "referenceMarkdown": "### Stalking Step\n\n*It folds into the broken light, leaving only a leaf moving where it stood.*\n\nMove up to 2 squares without provoking from one visible enemy chosen before moving, ending in a square with cover or concealment from that enemy. Pay normal terrain costs and provoke normally from other enemies. Does not grant Hidden; a separate Hide action still needs concealment and a roll when uncertain."
         },
         {
           "id": "maneuver-1",
           "category": "maneuver",
           "name": "Defend",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -152,7 +156,25 @@
         {
           "id": "reaction-0",
           "category": "reaction",
+          "name": "Slip the Rush",
+          "abilityId": "monster-slip-the-rush",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "After an enemy voluntarily closes: move 1; no opportunity from that enemy.",
+          "referenceMarkdown": "### Slip the Rush\n\n*As the pursuer lunges into reach, it ducks sideways through the space the rush left open.*\n\nAfter a visible enemy ends voluntary movement adjacent to this creature, move up to 1 square without provoking from that enemy. Other opportunity attacks and normal terrain costs apply. This movement grants no attack; it cannot trigger from forced movement or movement granted by a free attack."
+        },
+        {
+          "id": "reaction-1",
+          "category": "reaction",
           "name": "Opportunity Attack",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -168,14 +190,14 @@
       ],
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Hunting arrow | Agility | 6/4/2 |",
-      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Stalking Step | Move up to 2 squares, paying terrain costs from that allowance. Provokes normally; no automatic Hidden. |\n| Defend | +1 Bane |",
-      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Opportunity Attack | Basic Melee |"
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Stalking Step | Move 2 to cover or concealment; no opportunity from one chosen enemy. |\n| Defend | +1 Bane |",
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Slip the Rush | After an enemy voluntarily closes: move 1; no opportunity from that enemy. |\n| Opportunity Attack | Basic Melee |"
     },
     "details": {
       "flavorMarkdown": "*A lightly armored robber with a hunting bow, spare string and clothing chosen to blend into roadside cover. Their confidence depends on distance and a prepared exit.*",
-      "specialtyMarkdown": "### Hunting arrow\n\n**Ammunition:** inventory d6. After each use, roll the inventory die; on 1, reduce d6 to d4, or d4 to empty. Cannot use this attack while empty.\n\n**Target:** One visible creature within 8 squares. **Player defense:** Agility. **Damage type:** physical.",
+      "specialtyMarkdown": "### Hunting arrow\n\n**Ammunition:** inventory d6. After each use, roll the inventory die; on 1, reduce d6 to d4, or d4 to empty. Cannot use this attack while empty.\n\n**Target:** One visible creature within 8 squares. **Player defense:** Agility. **Damage type:** physical.\n\n### Slip the Rush\n\n*As the pursuer lunges into reach, it ducks sideways through the space the rush left open.*\n\nAfter a visible enemy ends voluntary movement adjacent to this creature, move up to 1 square without provoking from that enemy. Other opportunity attacks and normal terrain costs apply. This movement grants no attack; it cannot trigger from forced movement or movement granted by a free attack.\n\n### Stalking Step\n\n*It folds into the broken light, leaving only a leaf moving where it stood.*\n\nMove up to 2 squares without provoking from one visible enemy chosen before moving, ending in a square with cover or concealment from that enemy. Pay normal terrain costs and provoke normally from other enemies. Does not grant Hidden; a separate Hide action still needs concealment and a roll when uncertain.",
       "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Signs:** Fresh rope marks and cut branches above an ambush site.\n\n**Purpose:** Keep danger far away while companions take the money.\n\n**Tactics and retreat:** Shoot from cover; change position when approached.\n\n**Counterplay and conversation:** Reach the perch or negotiate with the companions below.\n\n**Habitat:** Road; forest · **Communication:** Common\n\n**Loot:** Ranged weapon; ammunition d6; 4 coins.\n\n**Summoning:** Ineligible.",
-      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-bandit-bow\n\n\n**Category:** Mortal · **Role:** Artillery · **CV:** 9\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Hunting arrow | Agility | None | 2 physical damage. | 4 physical damage. | 6 physical damage. |\n\nThe incoming attack names the defense attribute; use the six values above. Same targeting, costs and limits apply in either perspective. No opposed second roll.\n\n\n### CV worksheet\n\n**Difficulty rationale:** No innate attack modifier; armor, cover and chosen actions provide its defenses. Ordinary attack difficulty; riders and positioning carry the threat.\n\n**Reference damage:** 2/4/6\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.1\n\n**Regeneration per turn:** 0\n\nReference I=5.000, O=3.000. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [stalking step](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/stalking-step.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/rules/stability.md)"
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-bandit-bow\n\n\n**Category:** Mortal · **Role:** Artillery · **CV:** 10\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Hunting arrow | Agility | None | 2 physical damage. | 4 physical damage. | 6 physical damage. |\n\nThe incoming attack names the defense attribute; use the six values above. Same targeting, costs and limits apply in either perspective. No opposed second roll.\n\n\n### CV worksheet\n\n**Difficulty rationale:** No innate attack modifier; armor, cover and chosen actions provide its defenses. Ordinary attack difficulty; riders and positioning carry the threat.\n\n**Reference damage:** 2/4/6\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.25\n\n**Action review (#1279):** U 1.1 → 1.25: Maneuver allowance +0.05, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=5.000, O=3.000. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [Slip the Rush](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/slip-the-rush.md), [Stalking Step](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/stalking-step.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/rules/stability.md)"
     },
     "biography": ""
   },
@@ -201,9 +223,9 @@
       "catalogId": "creature-bandit-bow",
       "source": {
         "path": "design/bestiary/creatures/bandit-bow.md",
-        "sha256": "94e793ecdc27cee2df5442ecbec2420fdfea9afd27aab6ee84ceea081e2a7f4c"
+        "sha256": "a2a673efa0e3702bf6751b7ba1dc88923115540b7d2e69718da9e9460e29a236"
       },
-      "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
+      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Printed profile · specialty automation pending",
@@ -211,15 +233,55 @@
       "classification": {
         "category": "Mortal",
         "role": "Artillery",
-        "cv": 9
+        "cv": 10
       },
       "family": "Mortal",
       "abilitySources": [
         {
-          "label": "stalking step",
+          "label": "Slip the Rush",
+          "id": "monster-slip-the-rush",
+          "path": "design/monster-abilities/slip-the-rush.md",
+          "sha256": "dc616a139a0db7f2e7dfd3c695c3ae301518d3b065c57c34b01c19f7a97f5a5e"
+        },
+        {
+          "label": "Stalking Step",
           "id": "monster-stalking-step",
           "path": "design/monster-abilities/stalking-step.md",
-          "sha256": "36189e2ab52cc0f765867ff990e9f960043a82b9ca8113de23cb35d0dfc4c87c"
+          "sha256": "6796ed679f378e16688ea33179f69b864c6788ebe4b2d3ea605c9b9ce29fad97"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-slip-the-rush",
+          "path": "design/monster-abilities/slip-the-rush.md",
+          "sha256": "dc616a139a0db7f2e7dfd3c695c3ae301518d3b065c57c34b01c19f7a97f5a5e",
+          "name": "Slip the Rush",
+          "action": "Reaction",
+          "flavorMarkdown": "*As the pursuer lunges into reach, it ducks sideways through the space the rush left open.*",
+          "rulesMarkdown": "After a visible enemy ends voluntary movement adjacent to this creature, move up to 1 square without provoking from that enemy. Other opportunity attacks and normal terrain costs apply. This movement grants no attack; it cannot trigger from forced movement or movement granted by a free attack.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Slip the Rush\n\n*As the pursuer lunges into reach, it ducks sideways through the space the rush left open.*\n\n## Rules\n\n**ID:** monster-slip-the-rush\n\n**Action:** Reaction\n\nAfter a visible enemy ends voluntary movement adjacent to this creature, move up to 1 square without provoking from that enemy. Other opportunity attacks and normal terrain costs apply. This movement grants no attack; it cannot trigger from forced movement or movement granted by a free attack.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/slip-the-rush.md",
+            "sha256": "dc616a139a0db7f2e7dfd3c695c3ae301518d3b065c57c34b01c19f7a97f5a5e"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-stalking-step",
+          "path": "design/monster-abilities/stalking-step.md",
+          "sha256": "6796ed679f378e16688ea33179f69b864c6788ebe4b2d3ea605c9b9ce29fad97",
+          "name": "Stalking Step",
+          "action": "Maneuver",
+          "flavorMarkdown": "*It folds into the broken light, leaving only a leaf moving where it stood.*",
+          "rulesMarkdown": "Move up to 2 squares without provoking from one visible enemy chosen before moving, ending in a square with cover or concealment from that enemy. Pay normal terrain costs and provoke normally from other enemies. Does not grant Hidden; a separate Hide action still needs concealment and a roll when uncertain.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Stalking Step\n\n*It folds into the broken light, leaving only a leaf moving where it stood.*\n\n## Rules\n\n**ID:** monster-stalking-step\n\n\n**Action:** Maneuver\n\nMove up to 2 squares without provoking from one visible enemy chosen before moving, ending in a square with cover or concealment from that enemy. Pay normal terrain costs and provoke normally from other enemies. Does not grant Hidden; a separate Hide action still needs concealment and a roll when uncertain.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/stalking-step.md",
+            "sha256": "6796ed679f378e16688ea33179f69b864c6788ebe4b2d3ea605c9b9ce29fad97"
+          },
+          "automation": "pending"
         }
       ],
       "summoning": {

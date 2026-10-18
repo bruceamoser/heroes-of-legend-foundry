@@ -89,6 +89,7 @@
           "id": "main-0",
           "category": "main",
           "name": "Basic Melee",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -105,6 +106,7 @@
           "id": "main-1",
           "category": "main",
           "name": "Cavernous bite",
+          "abilityId": "",
           "attributeKey": "fortitude",
           "defenseSource": "Fortitude",
           "harmfulOnly": false,
@@ -121,6 +123,7 @@
           "id": "main-2",
           "category": "main",
           "name": "Thrown stone",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -137,6 +140,7 @@
           "id": "maneuver-0",
           "category": "maneuver",
           "name": "Grave Stench",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -153,6 +157,7 @@
           "id": "maneuver-1",
           "category": "maneuver",
           "name": "Defend",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -169,6 +174,7 @@
           "id": "reaction-0",
           "category": "reaction",
           "name": "Opportunity Attack",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -191,7 +197,7 @@
       "flavorMarkdown": "*A vast jaw and a patchwork apron make this ogre look like a kitchen that has learned to walk.*",
       "specialtyMarkdown": "### Cavernous bite\n\n**Target:** One adjacent creature. **Player defense:** Fortitude. **Damage type:** physical.\n\n**Weak defense:** Grappled 2. **Standard defense:** Grappled 1.\n\n**Limit:** The holder suffers its own Grappled contribution. A new result replaces its lower contribution, not adds to it. Release freely; separation beyond reach, unconsciousness or death ends the hold.\n\n### Thrown stone\n\n**Target:** One visible creature within 7 squares. **Player defense:** Agility. **Damage type:** physical.\n\n**Limit:** Requires an available loose stone; picking it up is part of this attack. No stone means this attack is unavailable.\n\n### Grave Stench\n\n*The creature exhales a breath of wet earth and spoiled meat.*\n\nOne adjacent breathing creature gains Poisoned 1. Once per turn; no damage.",
       "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.\n\n**Heavy Frame — Passive:** Stability 1; an explicit trait, not a bonus calculated from Size.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Tactics and retreat:** Close for stench and a bite, then decide whether holding one victim is worth the shared loss of actions.\n\n**Encounter and conversation:** Its appetite is predictable enough to bargain with, but feeding it strangers is not a lasting solution.\n\n**Habitat:** Highland; quarry; remote stronghold · **Communication:** Common and Giant\n\n**Loot:** Recoverable possessions or lair clues chosen for the adventure; body parts grant no automatic special equipment or coin value.\n\n**Summoning:** Ineligible.",
-      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-ogre-glutton\n\n\n**Category:** Giant · **Role:** Holder · **CV:** 27\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Cavernous bite | Brawn | 1 Boon | 3 physical damage. | 6 physical damage. Grappled 1. | 9 physical damage. Grappled 2. |\n| Thrown stone | Brawn | 1 Boon | 3 physical damage. | 5 physical damage. | 7 physical damage. |\n\nUse the attributes above for defenses named by incoming attacks. Same targeting, limits and costs apply; no opposed second roll.\n\n### CV worksheet\n\n**Reference damage:** 3/6/9\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.45\n\n**Regeneration per turn:** 0\n\nReference I=5.596, O=5.894. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [foul exhalation](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/foul-exhalation.md), [seizing limbs](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/seizing-limbs.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/rules/stability.md)"
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-ogre-glutton\n\n\n**Category:** Giant · **Role:** Holder · **CV:** 27\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Cavernous bite | Brawn | 1 Boon | 3 physical damage. | 6 physical damage. Grappled 1. | 9 physical damage. Grappled 2. |\n| Thrown stone | Brawn | 1 Boon | 3 physical damage. | 5 physical damage. | 7 physical damage. |\n\nUse the attributes above for defenses named by incoming attacks. Same targeting, limits and costs apply; no opposed second roll.\n\n### CV worksheet\n\n**Reference damage:** 3/6/9\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.45\n\n**Regeneration per turn:** 0\n\nReference I=5.596, O=5.894. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [foul exhalation](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/foul-exhalation.md), [seizing limbs](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/seizing-limbs.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/rules/stability.md)"
     },
     "biography": ""
   },
@@ -219,7 +225,7 @@
         "path": "design/bestiary/creatures/ogre-glutton.md",
         "sha256": "872fcd0bb5f9d8345ea6208f773d5aa3081cbcb878eeec02a74aa562b59352ba"
       },
-      "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
+      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Printed profile · specialty automation pending",
@@ -242,6 +248,40 @@
           "id": "monster-seizing-limbs",
           "path": "design/monster-abilities/seizing-limbs.md",
           "sha256": "66f2767bac03446133659d16daf8320854f42e75c80b88490fda96d517417737"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-foul-exhalation",
+          "path": "design/monster-abilities/foul-exhalation.md",
+          "sha256": "077cf3648cf640ee020ffddafc6e7a74b74fee72956ac791edba7b72c25b8c5c",
+          "name": "Grave Stench",
+          "action": "Maneuver",
+          "flavorMarkdown": "*The creature exhales a breath of wet earth and spoiled meat.*",
+          "rulesMarkdown": "One adjacent breathing creature gains Poisoned 1. Once per turn; no damage.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Grave Stench\n\n*The creature exhales a breath of wet earth and spoiled meat.*\n\n## Rules\n\n**ID:** monster-foul-exhalation\n\n\n**Action:** Maneuver\n\nOne adjacent breathing creature gains Poisoned 1. Once per turn; no damage.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/foul-exhalation.md",
+            "sha256": "077cf3648cf640ee020ffddafc6e7a74b74fee72956ac791edba7b72c25b8c5c"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-seizing-limbs",
+          "path": "design/monster-abilities/seizing-limbs.md",
+          "sha256": "66f2767bac03446133659d16daf8320854f42e75c80b88490fda96d517417737",
+          "name": "Seizing Limbs",
+          "action": "Main Action",
+          "flavorMarkdown": "*A coil or grasping limb closes around the target and braces against its struggling weight.*",
+          "rulesMarkdown": "Use the printed attack. Standard also establishes Grappled 1; Strong establishes Grappled 2. A single holder’s contribution is replaced by its higher new result, not added to itself. Other holders stack normally. The holder suffers its own grapple contribution and cannot move while maintaining it. Release at any time without an action; death, unconsciousness or separation beyond the attack’s reach ends the hold. Force and external aid follow the core grapple rules.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Seizing Limbs\n\n*A coil or grasping limb closes around the target and braces against its struggling weight.*\n\n## Rules\n\n**ID:** monster-seizing-limbs\n\n\n**Action:** Main Action\n\nUse the printed attack. Standard also establishes Grappled 1; Strong establishes Grappled 2. A single holder’s contribution is replaced by its higher new result, not added to itself. Other holders stack normally. The holder suffers its own grapple contribution and cannot move while maintaining it. Release at any time without an action; death, unconsciousness or separation beyond the attack’s reach ends the hold. Force and external aid follow the core grapple rules.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/seizing-limbs.md",
+            "sha256": "66f2767bac03446133659d16daf8320854f42e75c80b88490fda96d517417737"
+          },
+          "automation": "pending"
         }
       ],
       "summoning": {

@@ -39,7 +39,7 @@
       "baseMax": 26,
       "sourceText": "26"
     },
-    "cv": 21,
+    "cv": 22,
     "speed": 6,
     "speedSource": "6",
     "alternateSpeeds": [],
@@ -89,6 +89,7 @@
           "id": "main-0",
           "category": "main",
           "name": "Basic Melee",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -105,6 +106,7 @@
           "id": "main-1",
           "category": "main",
           "name": "Briar-black nails",
+          "abilityId": "",
           "attributeKey": "fortitude",
           "defenseSource": "Fortitude",
           "harmfulOnly": false,
@@ -121,6 +123,7 @@
           "id": "maneuver-0",
           "category": "maneuver",
           "name": "Wear a Borrowed Face",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -137,6 +140,7 @@
           "id": "maneuver-1",
           "category": "maneuver",
           "name": "Defend",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -152,7 +156,25 @@
         {
           "id": "reaction-0",
           "category": "reaction",
+          "name": "Reproach the Caster",
+          "abilityId": "monster-reproach-the-caster",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "After taking spell HP damage: hearing caster within 6 gains Frightened 2.",
+          "referenceMarkdown": "### Reproach the Caster\n\n*A whispered accusation rides the fading spell back toward the one who shaped it.*\n\nAfter a spell attack resolves and deals HP damage to this creature, its visible caster within 6 squares gains Frightened 2 of this creature if the caster can hear it. This creature must survive and remain capable. No trigger from a free attack or another retaliatory effect. Frightened applies only while this creature is perceptible; the spell is not canceled."
+        },
+        {
+          "id": "reaction-1",
+          "category": "reaction",
           "name": "Opportunity Attack",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -169,13 +191,13 @@
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Briar-black nails | Fortitude | 7 + Poisoned 2 / 5 + Poisoned 1 / 3 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Wear a Borrowed Face | Copy observed appearance/voice; own statistics; see details. |\n| Defend | +1 Bane |",
-      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Opportunity Attack | Basic Melee |"
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Reproach the Caster | After taking spell HP damage: hearing caster within 6 gains Frightened 2. |\n| Opportunity Attack | Basic Melee |"
     },
     "details": {
       "flavorMarkdown": "*A moss-haired hag wears a face borrowed from someone once trusted, but her hands retain the stains of roots and bitter herbs.*",
-      "specialtyMarkdown": "### Briar-black nails\n\n**Target:** One adjacent creature. **Player defense:** Fortitude. **Damage type:** physical.\n\n**Weak defense:** Poisoned 2. **Standard defense:** Poisoned 1.\n\n### Wear a Borrowed Face\n\n*Its features soften and settle into a face it has studied.*\n\nCopy the appearance and voice of one observed person of the same Size until dismissed or reduced to 0 HP. Keep its own statistics and equipment; gain no memories, languages or powers. Suspicious examination uses a player Reason roll when consequences warrant one.",
+      "specialtyMarkdown": "### Briar-black nails\n\n**Target:** One adjacent creature. **Player defense:** Fortitude. **Damage type:** physical.\n\n**Weak defense:** Poisoned 2. **Standard defense:** Poisoned 1.\n\n### Wear a Borrowed Face\n\n*Its features soften and settle into a face it has studied.*\n\nCopy the appearance and voice of one observed person of the same Size until dismissed or reduced to 0 HP. Keep its own statistics and equipment; gain no memories, languages or powers. Suspicious examination uses a player Reason roll when consequences warrant one.\n\n### Reproach the Caster\n\n*A whispered accusation rides the fading spell back toward the one who shaped it.*\n\nAfter a spell attack resolves and deals HP damage to this creature, its visible caster within 6 squares gains Frightened 2 of this creature if the caster can hear it. This creature must survive and remain capable. No trigger from a free attack or another retaliatory effect. Frightened applies only while this creature is perceptible; the spell is not canceled.",
       "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Tactics and retreat:** Maintain a useful disguise until confronted, then poison the closest pursuer and seek leverage in the promises already made.\n\n**Encounter and conversation:** She offers to mend a family quarrel only if one participant agrees never to speak of how it began.\n\n**Habitat:** Old woodland; crossroads; hidden court · **Communication:** Common\n\n**Loot:** Recoverable possessions or lair clues chosen for the adventure; body parts grant no automatic special equipment or coin value.\n\n**Summoning:** Ineligible.",
-      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-green-hag\n\n\n**Category:** Fey · **Role:** Debuffer · **CV:** 21\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Briar-black nails | Brawn | 1 Boon | 3 physical damage. | 5 physical damage. Poisoned 1. | 7 physical damage. Poisoned 2. |\n\nUse the attributes above for defenses named by incoming attacks. Same targeting, limits and costs apply; no opposed second roll.\n\n### CV worksheet\n\n**Reference damage:** 3/5/7\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.3\n\n**Regeneration per turn:** 0\n\nReference I=4.404, O=4.596. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [assumed face](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/assumed-face.md), [venom](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/venom.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/rules/stability.md)"
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-green-hag\n\n\n**Category:** Fey · **Role:** Debuffer · **CV:** 22\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Briar-black nails | Brawn | 1 Boon | 3 physical damage. | 5 physical damage. Poisoned 1. | 7 physical damage. Poisoned 2. |\n\nUse the attributes above for defenses named by incoming attacks. Same targeting, limits and costs apply; no opposed second roll.\n\n### CV worksheet\n\n**Reference damage:** 3/5/7\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.4\n\n**Action review (#1279):** U 1.3 → 1.4: Maneuver allowance +0, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=4.404, O=4.596. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [assumed face](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/assumed-face.md), [Reproach the Caster](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/reproach-the-caster.md), [venom](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/venom.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/rules/stability.md)"
     },
     "biography": ""
   },
@@ -201,9 +223,9 @@
       "catalogId": "creature-green-hag",
       "source": {
         "path": "design/bestiary/creatures/green-hag.md",
-        "sha256": "eadb3b571131caceae591c589cfad42f9e0e0213c4b04f09422208e095019c56"
+        "sha256": "e9d5b13de84656d61ed4e495b6722ac62381b224bf39b1fcb4fffaec1f62ef9c"
       },
-      "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
+      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Printed profile · specialty automation pending",
@@ -211,7 +233,7 @@
       "classification": {
         "category": "Fey",
         "role": "Debuffer",
-        "cv": 21
+        "cv": 22
       },
       "family": "Hags",
       "abilitySources": [
@@ -222,10 +244,66 @@
           "sha256": "1acf5ba5c145474e25d5fe9340b6a39a9f004ad46e56fcd2e72ca9cd9d609aae"
         },
         {
+          "label": "Reproach the Caster",
+          "id": "monster-reproach-the-caster",
+          "path": "design/monster-abilities/reproach-the-caster.md",
+          "sha256": "7b7111d01bd308b5b6cdb4f9cb436baeeba82b913dd2b264844ff7d98d0a17a4"
+        },
+        {
           "label": "venom",
           "id": "monster-venom",
           "path": "design/monster-abilities/venom.md",
           "sha256": "7f9de07c3efecfa084b884f9b9032c9f6cc9d113e4f2c5428a32070b0f5e38fe"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-assumed-face",
+          "path": "design/monster-abilities/assumed-face.md",
+          "sha256": "1acf5ba5c145474e25d5fe9340b6a39a9f004ad46e56fcd2e72ca9cd9d609aae",
+          "name": "Wear a Borrowed Face",
+          "action": "Maneuver",
+          "flavorMarkdown": "*Its features soften and settle into a face it has studied.*",
+          "rulesMarkdown": "Copy the appearance and voice of one observed person of the same Size until dismissed or reduced to 0 HP. Keep its own statistics and equipment; gain no memories, languages or powers. Suspicious examination uses a player Reason roll when consequences warrant one.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Wear a Borrowed Face\n\n*Its features soften and settle into a face it has studied.*\n\n## Rules\n\n**ID:** monster-assumed-face\n\n\n**Action:** Maneuver\n\nCopy the appearance and voice of one observed person of the same Size until dismissed or reduced to 0 HP. Keep its own statistics and equipment; gain no memories, languages or powers. Suspicious examination uses a player Reason roll when consequences warrant one.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/assumed-face.md",
+            "sha256": "1acf5ba5c145474e25d5fe9340b6a39a9f004ad46e56fcd2e72ca9cd9d609aae"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-reproach-the-caster",
+          "path": "design/monster-abilities/reproach-the-caster.md",
+          "sha256": "7b7111d01bd308b5b6cdb4f9cb436baeeba82b913dd2b264844ff7d98d0a17a4",
+          "name": "Reproach the Caster",
+          "action": "Reaction",
+          "flavorMarkdown": "*A whispered accusation rides the fading spell back toward the one who shaped it.*",
+          "rulesMarkdown": "After a spell attack resolves and deals HP damage to this creature, its visible caster within 6 squares gains Frightened 2 of this creature if the caster can hear it. This creature must survive and remain capable. No trigger from a free attack or another retaliatory effect. Frightened applies only while this creature is perceptible; the spell is not canceled.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Reproach the Caster\n\n*A whispered accusation rides the fading spell back toward the one who shaped it.*\n\n## Rules\n\n**ID:** monster-reproach-the-caster\n\n**Action:** Reaction\n\nAfter a spell attack resolves and deals HP damage to this creature, its visible caster within 6 squares gains Frightened 2 of this creature if the caster can hear it. This creature must survive and remain capable. No trigger from a free attack or another retaliatory effect. Frightened applies only while this creature is perceptible; the spell is not canceled.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/reproach-the-caster.md",
+            "sha256": "7b7111d01bd308b5b6cdb4f9cb436baeeba82b913dd2b264844ff7d98d0a17a4"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-venom",
+          "path": "design/monster-abilities/venom.md",
+          "sha256": "7f9de07c3efecfa084b884f9b9032c9f6cc9d113e4f2c5428a32070b0f5e38fe",
+          "name": "Venom",
+          "action": "Main Action",
+          "flavorMarkdown": "*A needle catches the skin, and a bitter numbness spreads from the puncture.*",
+          "rulesMarkdown": "Use the printed attack. Standard also applies Poisoned 1; Strong applies Poisoned 2. Poisoned gives Banes, not additional HP damage, and follows ordinary decay. No second resistance roll.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Venom\n\n*A needle catches the skin, and a bitter numbness spreads from the puncture.*\n\n## Rules\n\n**ID:** monster-venom\n\n\n**Action:** Main Action\n\nUse the printed attack. Standard also applies Poisoned 1; Strong applies Poisoned 2. Poisoned gives Banes, not additional HP damage, and follows ordinary decay. No second resistance roll.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/venom.md",
+            "sha256": "7f9de07c3efecfa084b884f9b9032c9f6cc9d113e4f2c5428a32070b0f5e38fe"
+          },
+          "automation": "pending"
         }
       ],
       "summoning": {

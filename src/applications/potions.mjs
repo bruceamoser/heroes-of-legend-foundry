@@ -129,6 +129,8 @@ export class PotionPreparation extends foundry.applications.api.HandlebarsApplic
       "[name=bottleUuid]",
       "[name=interruption]",
       "[name=willing]",
+      "[name=geometryOverride]",
+      "[name=daWillingness]",
     ])
       this.element
         .querySelector(selector)
@@ -178,6 +180,8 @@ export class PotionPreparation extends foundry.applications.api.HandlebarsApplic
         this.element.querySelector("[name=interruption]")?.value === "continue",
       willing:
         this.element.querySelector("[name=willing]")?.checked === true,
+      geometryOverride: this.element.querySelector("[name=geometryOverride]")?.checked === true,
+      daWillingness: this.element.querySelector("[name=daWillingness]")?.checked === true,
       geometryReason:
         this.element.querySelector("[name=geometryReason]")?.value?.trim() ?? "",
       daWillingnessReason:
@@ -198,7 +202,7 @@ export class PotionPreparation extends foundry.applications.api.HandlebarsApplic
     if (submitButton) submitButton.disabled = true;
     this.currentPreview = null;
     if (this.recipientParticipantId !== selection.participantId) {
-      for (const name of ["willing", "geometryReason", "daWillingnessReason"]) {
+      for (const name of ["willing", "geometryOverride", "daWillingness", "geometryReason", "daWillingnessReason"]) {
         const input = this.element.querySelector(`[name=${name}]`);
         if (input?.type === "checkbox") input.checked = false;
         else if (input) input.value = "";
@@ -277,7 +281,7 @@ export class PotionPreparation extends foundry.applications.api.HandlebarsApplic
     const error =
       preview.error ||
       preview.sourceError ||
-      (!geometry.adjacent && !(game.user.isGM && values.geometryReason)
+      (!geometry.adjacent && !(game.user.isGM && values.geometryOverride)
         ? "A recipient must be adjacent before this use can be submitted."
         : "");
     this.setText("error", error);
@@ -286,7 +290,7 @@ export class PotionPreparation extends foundry.applications.api.HandlebarsApplic
         preview.relation === "self" ||
         (!ownsRecipient && !game.user.isGM) ||
         values.willing ||
-        (game.user.isGM && Boolean(values.daWillingnessReason)),
+        (game.user.isGM && values.daWillingness),
       willingPanel = this.element.querySelector("[data-panel=willingness]");
     if (willingPanel) {
       willingPanel.hidden = preview.relation !== "other";
@@ -305,7 +309,7 @@ export class PotionPreparation extends foundry.applications.api.HandlebarsApplic
           !preview.canDeclare ||
           !willingnessReady ||
           (!geometry.adjacent &&
-            !(game.user.isGM && values.geometryReason)),
+            !(game.user.isGM && values.geometryOverride)),
       );
     }
     return true;
@@ -324,7 +328,7 @@ export class PotionPreparation extends foundry.applications.api.HandlebarsApplic
       if (values.recipientParticipantId !== this.currentPreview.recipientParticipantId)
         throw new Error("The target changed. Review the current recipient.");
       const geometry =
-        game.user.isGM && values.geometryReason
+        game.user.isGM && values.geometryOverride
           ? { mode: "da-ruling", reason: values.geometryReason }
           : { mode: "native" };
       const result = await requestPotionUse({
@@ -337,6 +341,7 @@ export class PotionPreparation extends foundry.applications.api.HandlebarsApplic
         continuesAfterInterruption: values.continuesAfterInterruption,
         geometry,
         daWillingnessReason: values.daWillingnessReason,
+        daWillingness: values.daWillingness,
         expected: this.currentPreview.expected,
       });
       ui.notifications.info(

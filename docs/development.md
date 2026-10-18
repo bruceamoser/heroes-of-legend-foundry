@@ -624,7 +624,10 @@ ApplicationV2. It uses Foundry's native targets: no other target defaults to
 self, exactly one other targeted token selects that exact encounter recipient,
 and multiple other targets show “Use one target.” The recipient is read-only;
 target changes refresh the preview and clear consent/rulings for the previous
-recipient. Optional DA exceptions and interruption controls are collapsed. It
+recipient. Optional DA exceptions and interruption controls are collapsed.
+DA adjacency/willingness choices, observed-face recovery and source reconciliation
+record the acting user and explicit choice; explanatory notes are optional and
+never grant authority by themselves. It
 shows the exact live bottle and recipient, fixed 6/10/16
 healing before Life resistance and its resulting restoration, free hands,
 Maneuver and Reaction costs, and the post-healing d4 supply check. Another
@@ -634,8 +637,8 @@ geometry is measured by the coordinator from occupied grid-square centers,
 `measurePath(...).spaces`, and actual move-line collision. It therefore keeps
 scene distance units out of square counts and supports large footprints and
 clear ties. Non-square or unavailable geometry, walls that prevent every
-nearest line, differing levels, and differing elevation require an attributed
-DA reason. A DA ruling remains bound to the GM proposer when a recipient later
+nearest line, differing levels, and differing elevation use an attributed
+DA adjacency choice with an optional note. A DA ruling remains bound to the GM proposer when a recipient later
 owns the final consent request. The explicit interruption continuation control
 is a table decision because opportunity automation remains disconnected.
 The helper is local to #116 because the reviewed #108 branch is not merged;
@@ -677,39 +680,33 @@ the ready hook, custom data models and `authorityMeta` initialized after
 `game.ready`, reports captured browser page errors before binding, attempts
 authority release only after a successful bind, and describes fixture cleanup
 based on documents actually tracked.
-Source-wide syntax and focused potion, operation, adjacency, inventory and
-module-link tests pass in the coding-worker environment. The rebuilt Foundry
-native rerun remains the primary integration check. Author review corrected the
-post-write supply comparison to accept the expected d4-to-out change, preserved
-an explicitly empty source level during animation, and enabled receipt-checked
-completed replay even after the original chat message is deleted. Willingness
-and DA-reason controls now refresh the preview so satisfying those requirements
-can enable submission. A service
-regression replays a saved completed operation twice without mechanical writes
-and rejects changed healing receipts; the real coordinator gate also rejects
-a non-GM replay. These checks do not certify the latest Canvas fixture lifecycle
-fix, native ApplicationV2 controls, or multiplayer operation recovery.
+Author review corrected the supply integrity check to accept the expected
+d4-to-out change, retained source level/elevation during animation, and verified
+completed replay after the original chat message is deleted. Service regressions
+reject changed receipts and preserve the actual coordinator permission boundary.
 
-Integration with Basic Melee also blocks new player/NPC attacks, defense-ability
+Integration with Basic Melee blocks new player/NPC attacks, defense-ability
 activations and encounter transitions while a potion operation is reserved.
-Potion admission already rejects an existing action or turn-phase reservation.
-Service regressions exercise both admission directions and retain unchanged
-revision, budgets and zero authoritative writes on refusal. This is a #116
-reservation safety fix and partial progress toward #121; shared geometry and
-cross-workflow native acceptance remain open. Native author checks on Foundry
-14.369 exercised the actual consent/ruling controls, Life resistance, exact
-Maneuver/Reaction receipts, completed replay, eight refused interleaved requests
-with unchanged Actor/budgets, synthetic-Actor d4 depletion without rerolling,
-source reconciliation, invalid embedded Items, dropped responses, zero-HP
-healing and interruption. Full fixture acceptance is still pending: runs that
-completed the mechanical assertions encountered native chat-toast insertion
-errors from temporary fixture cards. Opening real chat on every client removed
-those errors in the latest run, which then stopped when a random opening gave
-the zero-HP recipient a turn that the fixture tried to finish while Dying.
-Helper scenarios now put friendly recipients on the same side to avoid that
-unrelated turn setup, but this last fixture correction has not been natively
-rerun. Fixture documents were cleaned up and the isolated world was released
-for the UI work; no clean end-to-end native pass is claimed.
+Potion admission rejects an existing action or turn-phase reservation. Tests
+exercise both directions with unchanged revision, budgets and zero writes on
+refusal. This is partial #121 integration; shared geometry consolidation remains
+separate.
+
+The complete fixture passes on isolated Foundry 14.369 with Node 24.22.0 and
+software WebGL: native target selection, one-click two-owner consent, optional
+blank-note DA choices, 5-unit and large-footprint geometry, walls/elevation,
+Life resistance, exact Maneuver/Reaction receipts, completed replay, eight
+interleaving refusals, synthetic-Actor final d4 depletion without rerolling,
+source reconciliation with no note, strict embedded Item prevalidation, dropped
+responses, zero-HP healing and interruption. Both screenshots were visually
+reviewed. Cleanup completed with zero uncaught page errors, including teardown.
+Fixture clients keep the real chat log visible while temporary request cards
+are tested; helper recipients are friendly so an unrelated random Dying turn
+does not block setup. Node 24 build, validation and the full test suite pass.
+
+This remains the encounter potion route. Out-of-combat use and advisory rather
+than blocking geometry are tracked under #133; removing mandatory prose does
+not claim those gameplay gates are already removed.
 
 ### Two-recipe Ordinary Recipe Study (#93)
 

@@ -14,8 +14,8 @@ test("native target hooks refresh potion UI, clear old consent and reject stale 
   const participants = [giver, other];
   participants.get = (id) => participants.find((entry) => entry.id === id);
   const fields = new Map();
-  for (const name of ["bottleUuid", "interruption", "willing", "geometryReason", "daWillingnessReason"])
-    fields.set(`[name=${name}]`, { value: name === "interruption" ? "continue" : "", type: name === "willing" ? "checkbox" : "text", checked: false });
+  for (const name of ["bottleUuid", "interruption", "willing", "geometryOverride", "daWillingness", "geometryReason", "daWillingnessReason"])
+    fields.set(`[name=${name}]`, { value: name === "interruption" ? "continue" : "", type: ["willing", "geometryOverride", "daWillingness"].includes(name) ? "checkbox" : "text", checked: false });
   fields.set("[data-action=submit]", { disabled: true });
   const panelParts = new Map([["[data-willing-confirm]", {}], ["[data-willing-prompt]", {}]]);
   fields.set("[data-panel=willingness]", { querySelector: (selector) => panelParts.get(selector) });
@@ -23,11 +23,12 @@ test("native target hooks refresh potion UI, clear old consent and reject stale 
     if (!fields.has(selector)) fields.set(selector, { textContent: "" });
     return fields.get(selector);
   } };
-  let targetHook, removedHook, defer = null;
+  let targetHook, removedHook, defer = null, submitted = null;
   const user = { id: "owner", isGM: false, targets: new Set() };
   const services = {
     isHealingPotionItem: () => true, isPotionAbility: () => true,
-    potionCombatContext: () => {}, requestPotionUse: () => {},
+    potionCombatContext: () => {},
+    requestPotionUse: async (request) => { submitted = request; return { status: "request" }; },
     previewPotionAdjacency: async () => ({ known: true, adjacent: true, distance: 1 }),
     previewPotionUse: async ({ recipientParticipantId }) => {
       if (defer) return defer;
@@ -45,6 +46,7 @@ test("native target hooks refresh potion UI, clear old consent and reject stale 
     async _onClose() { this.rendered = false; }
   }
   const context = createContext({
+    ui: { notifications: { info() {}, error(message) { throw new Error(message); } } },
     game: { user }, fromUuid: async (uuid) => actors.get(uuid),
     foundry: { applications: { api: { ApplicationV2: Base, HandlebarsApplicationMixin: (base) => base } } },
     Hooks: {
@@ -92,6 +94,24 @@ test("native target hooks refresh potion UI, clear old consent and reject stale 
   targetHook(user);
   await tick();
   assert.equal(app.currentPreview.relation, "self");
-  await app._onClose({});
+  user.isGM = true;
+  user.targets.add({ document: { uuid: other.token.uuid, actor: other.actor } });
+  targetHook(user);
+  await tick();
+  // Notes alone never imply a ruling or consent.
+  fields.get("[name=daWillingnessReason]").value = "A note without a choice";
+  await app.refreshPreview();
+  assert.equal(fields.get("[data-action=submit]").disabled, true);
+  fields.get("[name=daWillingnessReason]").value = "";
+  fields.get("[name=daWillingness]").checked = true;
+  fields.get("[name=geometryOverride]").checked = true;
+  await app.refreshPreview();
+  assert.equal(fields.get("[data-action=submit]").disabled, false);
+  app.close = () => app._onClose({});
+  await app.constructor.submit.call(app);
+  assert.equal(submitted.daWillingness, true);
+  assert.equal(submitted.daWillingnessReason, "");
+  assert.equal(submitted.geometry.mode, "da-ruling");
+  assert.equal(submitted.geometry.reason, "");
   assert.deepEqual(removedHook, ["targetToken", 17]);
 });

@@ -18,7 +18,7 @@ test("settled potion replay uses durable receipts after chat deletion without re
     plan: { recipientSurvival: { hp: 9 } },
   };
   const result = inventoryCheck({ die: 4, retained: 1 });
-  const recovery = { authorId: "gm", reason: "Observed face" };
+  const recovery = { authorId: "gm", reason: "" };
   const child = {
     operationId: operation.supplyOperationId, parentId: requestId, phase: "settled",
     target: { inventoryDie: 4 }, retainedFace: 1, result, nativeRoll: null, recovery,

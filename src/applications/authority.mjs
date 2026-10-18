@@ -467,7 +467,7 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
         throw new Error("This potion supply check has no unknown dice.");
       const result = await foundry.applications.api.DialogV2.input({
         window: { title: "Recover observed potion supply face" },
-        content: `<p>The dice may have rolled without a saved result. Enter the face that was seen; no new roll will occur.</p><label>Observed d${child.target.inventoryDie} face<input name="retainedFace" type="number" min="1" max="${child.target.inventoryDie}" step="1" required></label><label>DA reason<input name="reason" required></label>`,
+        content: `<p>The dice may have rolled without a saved result. Enter the face that was seen; no new roll will occur.</p><label>Observed d${child.target.inventoryDie} face<input name="retainedFace" type="number" min="1" max="${child.target.inventoryDie}" step="1" required></label><label>Optional note<input name="reason"></label>`,
         ok: { label: "Record observed face" },
       });
       if (!result) return;
@@ -506,7 +506,7 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
       const result = await foundry.applications.api.DialogV2.input({
         window: { title: "Reconcile changed potion source" },
         content:
-          `<p>Healing may already be applied. Choose only from the reconciliation options retained by this operation.</p><label>Disposition<select name="choice">${options}</select></label><label>DA reason<input name="reason" required></label>`,
+          `<p>Healing may already be applied. Choose only from the reconciliation options retained by this operation.</p><label>Disposition<select name="choice">${options}</select></label><label>Optional note<input name="reason"></label>`,
         ok: { label: "Record reconciliation" },
       });
       if (!result) return;

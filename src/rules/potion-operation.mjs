@@ -45,6 +45,12 @@ export function potionSourceMatches(actual, expected) {
   );
 }
 
+/** Explanatory prose never grants authority and is optional for an explicit choice. */
+export function potionNote(value = "") {
+  if (typeof value !== "string") throw new TypeError("A potion note must be text.");
+  return value.trim();
+}
+
 /** Bind an explicit DA geometry ruling to the actual proposing user. */
 export function normalizePotionGeometry(geometry, user) {
   if (
@@ -57,9 +63,7 @@ export function normalizePotionGeometry(geometry, user) {
   if (
     !user?.isGM ||
     typeof user.id !== "string" ||
-    !user.id ||
-    typeof geometry.reason !== "string" ||
-    !geometry.reason.trim()
+    !user.id
   )
     throw new Error(
       "Only the actual DA can record an attributed potion geometry ruling.",
@@ -67,7 +71,7 @@ export function normalizePotionGeometry(geometry, user) {
   return {
     mode: "da-ruling",
     userId: user.id,
-    reason: geometry.reason.trim(),
+    reason: potionNote(geometry.reason),
   };
 }
 
@@ -77,8 +81,7 @@ export function potionGeometryRulingAuthorized(ruling, sourceAuthor) {
       sourceAuthor?.isGM === true &&
       typeof ruling.userId === "string" &&
       ruling.userId === sourceAuthor.id &&
-      typeof ruling.reason === "string" &&
-      ruling.reason.trim(),
+      (ruling.reason === undefined || typeof ruling.reason === "string"),
   );
 }
 

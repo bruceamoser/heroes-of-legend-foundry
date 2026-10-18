@@ -10,6 +10,7 @@ import {
   linkedPotionOperationId,
   normalizePotionGeometry,
   potionGeometryRulingAuthorized,
+  potionNote,
   potionOperationNextPhase,
   potionSourceMatches,
   validatePotionEncounterReceipts,
@@ -57,11 +58,7 @@ const mechanicalBottleBasis = (basis) => {
 const sameBottleBasis = (left, right) =>
   same(mechanicalBottleBasis(left), mechanicalBottleBasis(right));
 const escaped = (value) => foundry.utils.escapeHTML(String(value));
-const reason = (value, label) => {
-  if (typeof value !== "string" || !value.trim())
-    throw new Error(`${label} is required.`);
-  return value.trim();
-};
+
 
 export function isPotionAbility(item) {
   return Boolean(
@@ -270,7 +267,7 @@ function geometryFor({
       kind: "da-ruling",
       distance: null,
       userId: requested.userId,
-      reason: requested.reason.trim(),
+      reason: potionNote(requested.reason),
     };
   if (requested?.mode !== "native")
     throw new Error(
@@ -604,12 +601,15 @@ export async function requestPotionUse({
   continuesAfterInterruption,
   geometry = { mode: "native" },
   daWillingnessReason = "",
+  daWillingness = false,
   expected = null,
 }) {
   if (typeof continuesAfterInterruption !== "boolean")
     throw new Error(
       "Record whether the action continues after its interruption check.",
     );
+  if (typeof daWillingness !== "boolean" || (daWillingness && !game.user.isGM))
+    throw new Error("Only the DA can choose a willingness ruling.");
   const requestedGeometry = normalizePotionGeometry(geometry, game.user);
   const sourceItem = await fromUuid(sourceItemUuid),
     giver = assertWorldActor(sourceItem?.actor, "Potion giver");
@@ -681,11 +681,11 @@ export async function requestPotionUse({
   let willingness;
   if (preview.relation === "self")
     willingness = { kind: "self", userId: game.user.id };
-  else if (game.user.isGM && daWillingnessReason.trim())
+  else if (game.user.isGM && daWillingness)
     willingness = {
       kind: "da-ruling",
       userId: game.user.id,
-      reason: daWillingnessReason.trim(),
+      reason: potionNote(daWillingnessReason),
     };
   else if (ownsRecipient && willing)
     willingness = { kind: "recipient-owner", userId: game.user.id };
@@ -706,7 +706,7 @@ export async function requestPotionUse({
 
 export async function acceptPotionProposal(
   proposalId,
-  { daReason = "" } = {},
+  { daReason = "", daWillingness = false } = {},
 ) {
   const proposalMessage = game.messages.get(proposalId),
     proposal = proposalMessage?.getFlag(ID, "potionProposal"),
@@ -715,22 +715,24 @@ export async function acceptPotionProposal(
       : null;
   if (!proposalMessage?.author || !proposal || !recipient)
     throw new Error("This potion proposal is unavailable.");
+  if (typeof daWillingness !== "boolean" || (daWillingness && !game.user.isGM))
+    throw new Error("Only the DA can choose a willingness ruling.");
   const ownsRecipient = recipient.testUserPermission(game.user, "OWNER");
   if (!ownsRecipient && !game.user.isGM)
     throw new Error("Only the selected recipient's owner or the DA can confirm.");
   const willingness =
-    game.user.isGM && daReason.trim()
+    game.user.isGM && daWillingness
       ? {
           kind: "da-ruling",
           userId: game.user.id,
-          reason: daReason.trim(),
+          reason: potionNote(daReason),
         }
       : ownsRecipient
         ? { kind: "recipient-owner", userId: game.user.id }
         : null;
   if (!willingness)
     throw new Error(
-      "The DA must record a reason when adjudicating recipient willingness.",
+      "Choose the DA willingness ruling to confirm this recipient.",
     );
   const existing = game.messages.find(
     (message) => message.getFlag(ID, "potionRequest")?.proposalId === proposalId,
@@ -817,8 +819,8 @@ function authorizesRequest(message, request, giver, recipient) {
     request.willingness?.kind === "da-ruling" &&
       request.willingness.userId === author.id &&
       author.isGM &&
-      typeof request.willingness.reason === "string" &&
-      request.willingness.reason.trim(),
+      (request.willingness.reason === undefined ||
+        typeof request.willingness.reason === "string"),
   );
 }
 
@@ -854,8 +856,8 @@ function validateRequestShapes(request) {
     request.geometry.mode === "da-ruling" &&
     (typeof request.geometry.userId !== "string" ||
       !request.geometry.userId ||
-      typeof request.geometry.reason !== "string" ||
-      !request.geometry.reason.trim())
+      (request.geometry.reason !== undefined &&
+        typeof request.geometry.reason !== "string"))
   )
     throw new Error("The DA potion geometry ruling is incomplete.");
   if (!request.expected)
@@ -1495,8 +1497,8 @@ function validateNativeSupplyRoll(record) {
   if (record.nativeRoll === null) {
     if (
       !record.recovery?.authorId ||
-      typeof record.recovery.reason !== "string" ||
-      !record.recovery.reason.trim()
+      (record.recovery.reason !== undefined &&
+        typeof record.recovery.reason !== "string")
     )
       throw new Error(
         "The missing potion supply face has no DA recovery record. Do not reroll.",
@@ -1760,7 +1762,7 @@ async function presentPotionResult(combat, operation, message) {
     const reconciliation =
       latest.reconciliation?.disposition?.choice === "cancel-remaining";
     content = reconciliation
-      ? `${escaped(latest.bottleBasis.item.name)} was cancelled before healing after a source reconciliation. No healing or supply check occurred; already declared action costs remain spent. DA reason: ${escaped(latest.reconciliation.disposition.reason)}.`
+      ? `${escaped(latest.bottleBasis.item.name)} was cancelled before healing after a source reconciliation. No healing or supply check occurred; already declared action costs remain spent.${latest.reconciliation.disposition.reason ? ` Note: ${escaped(latest.reconciliation.disposition.reason)}.` : ""}`
       : `${escaped(latest.bottleBasis.item.name)} use interrupted before healing. One Maneuver remains spent; no Reaction, healing or supply check occurred.`;
   } else {
     const healing = recipientReceipt?.healing ?? latest.plan.healing,
@@ -1777,11 +1779,11 @@ async function presentPotionResult(combat, operation, message) {
     } else if (supplyReceipt?.recovery)
       content += " The DA recovered the observed supply face without rerolling.";
     if (latest.status === "reconciled-without-supply")
-      content += ` The DA reconciled the remaining supply without charging a different bottle. DA reason: ${escaped(latest.reconciliation?.disposition?.reason ?? "recorded in the operation")}.`;
+      content += ` The DA reconciled the remaining supply without charging a different bottle.${latest.reconciliation?.disposition?.reason ? ` Note: ${escaped(latest.reconciliation.disposition.reason)}.` : ""}`;
     else if (
       latest.reconciliation?.disposition?.choice === "charge-current"
     )
-      content += ` The DA retained the exact bottle after source review. Reason: ${escaped(latest.reconciliation.disposition.reason)}.`;
+      content += ` The DA retained the exact bottle after source review.${latest.reconciliation.disposition.reason ? ` Note: ${escaped(latest.reconciliation.disposition.reason)}.` : ""}`;
   }
   await message
     .update({
@@ -2000,7 +2002,7 @@ async function recoverPotionSupplyDirect(
       nativeRoll: null,
       recovery: {
         authorId: user.id,
-        reason: reason(daReason, "DA recovery reason"),
+        reason: potionNote(daReason),
       },
     });
   await writeAuthorityDocument(giver, {
@@ -2040,7 +2042,7 @@ async function reconcilePotionDirect(requestId, choice, daReason, user) {
     throw new Error("This potion operation is not awaiting reconciliation.");
   if (!operation.reconciliation?.choices?.includes(choice))
     throw new Error("That reconciliation choice is unavailable.");
-  const note = reason(daReason, "DA reconciliation reason"),
+  const note = potionNote(daReason),
     giver = await fromUuid(operation.giver.actorUuid);
   assertWorldActor(giver, "Potion giver");
   if (choice !== "cancel-remaining") {
@@ -2266,13 +2268,13 @@ export function renderPotionProposal(message, element) {
         const result = await foundry.applications.api.DialogV2.input({
           window: { title: "Adjudicate recipient willingness" },
           content:
-            '<label>DA reason<input name="reason" required></label>',
+            '<label>Optional note<input name="reason"></label>',
           ok: { label: "Record ruling and confirm" },
         });
         if (!result) return;
         daReason = result.reason;
       }
-      await acceptPotionProposal(message.id, { daReason });
+      await acceptPotionProposal(message.id, { daReason, daWillingness: !canAccept });
       ui.notifications.info("Potion recipient consent recorded.");
     } catch (error) {
       ui.notifications.error(error.message);

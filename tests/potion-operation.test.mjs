@@ -3,6 +3,7 @@ import test from "node:test";
 import {
   linkedPotionOperationId,
   normalizePotionGeometry,
+  potionNote,
   potionGeometryRulingAuthorized,
   potionOperationNextPhase,
   potionSourceMatches,
@@ -320,4 +321,16 @@ test("potion supply integrity accepts depletion and rejects unrelated Item chang
   assert.throws(() => verifyPotionSupplyItems(before, before, "bottle", 0), /unrelated embedded Item/);
   after[1].system.quantity = 2;
   assert.throws(() => verifyPotionSupplyItems(after, before, "bottle", 0), /unrelated embedded Item/);
+});
+
+
+test("attributed potion choices do not require explanatory prose", () => {
+  const gm = { id: "gm", isGM: true };
+  const ruling = normalizePotionGeometry({ mode: "da-ruling" }, gm);
+  assert.deepEqual(ruling, { mode: "da-ruling", userId: "gm", reason: "" });
+  assert.equal(potionGeometryRulingAuthorized(ruling, gm), true);
+  assert.equal(potionGeometryRulingAuthorized(ruling, { id: "other", isGM: true }), false);
+  assert.equal(potionNote(), "");
+  assert.equal(potionNote("  Optional context  "), "Optional context");
+  assert.throws(() => potionNote({}), /must be text/);
 });

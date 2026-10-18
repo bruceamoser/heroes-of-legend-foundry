@@ -16,7 +16,7 @@
   <section data-panel="willingness" hidden><h2>Recipient willingness</h2><p data-willing-prompt></p><label class="hol-check" data-willing-confirm><input type="checkbox" name="willing"> I confirm this recipient is willing.</label></section>
   <section><h2>Adjacency</h2><p data-preview="geometry-status" aria-live="polite"></p></section>
   <details><summary>Interruption</summary><label>Outcome<select name="interruption"><option value="continue">Continue</option><option value="interrupted">Stopped before healing</option></select></label><p>If an interruption stops this use, the Maneuver is spent without healing or checking supply.</p></details>
-  {{#if gm}}<details data-panel="da-exceptions"><summary>DA exceptions</summary><label>Willingness ruling, if needed<input name="daWillingnessReason" type="text"></label><label>Adjacency ruling, if needed<input name="geometryReason" type="text"></label></details>{{/if}}
+  {{#if gm}}<details data-panel="da-exceptions"><summary>DA exceptions</summary><label class="hol-check"><input name="daWillingness" type="checkbox"> Confirm willingness</label><label>Optional willingness note<input name="daWillingnessReason" type="text"></label><label class="hol-check"><input name="geometryOverride" type="checkbox"> Treat the recipient as adjacent</label><label>Optional adjacency note<input name="geometryReason" type="text"></label></details>{{/if}}
   <p class="hol-error" data-preview="error" aria-live="polite"></p>
   <button type="button" class="hol-primary" data-action="submit" disabled>Prepare potion use</button>
   {{/unless}}

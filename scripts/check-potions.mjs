@@ -672,11 +672,10 @@ async function useScenario(scenario, options = {}) {
           options.continuesAfterInterruption !== false,
         geometry:
           scenario.recipientParticipantId
-            ? { mode: "da-ruling", reason: "Fixture adjacency ruling" }
+            ? { mode: "da-ruling" }
             : { mode: "native" },
-        daWillingnessReason: scenario.recipientParticipantId
-          ? "Fixture recipient willingness ruling"
-          : "",
+        daWillingness: Boolean(scenario.recipientParticipantId),
+        daWillingnessReason: "",
       });
       return message?.message?.id ?? message?.id ?? null;
     },
@@ -966,14 +965,17 @@ try {
   await gmPreparation.locator("[name=willing]").uncheck();
   await gmSubmitReady(false);
   await gmPreparation.locator("[data-panel=da-exceptions] > summary").click();
-  await gmPreparation.locator("[name=daWillingnessReason]").fill("Fixture attributed willingness ruling");
+  await gmPreparation.locator("[name=daWillingness]").check();
   await gmSubmitReady(true);
   await gm.page.evaluate(async ({ sceneId, recipientTokenId }) => {
     await game.scenes.get(sceneId).tokens.get(recipientTokenId).update({ elevation: 5 });
   }, first);
-  await gmPreparation.locator("[name=daWillingnessReason]").fill("Fixture willingness at elevated position");
+  await gmPreparation.locator("[name=daWillingness]").uncheck();
+  await gmPreparation.locator("[name=daWillingness]").check();
   await gmSubmitReady(false);
-  await gmPreparation.locator("[name=geometryReason]").fill("Fixture DA confirms the elevated recipient is within reach");
+  await gmPreparation.locator("[name=geometryOverride]").check();
+  assert.equal(await gmPreparation.locator("[name=geometryReason]").inputValue(), "");
+  assert.equal(await gmPreparation.locator("[name=daWillingnessReason]").inputValue(), "");
   await gmSubmitReady(true);
   await gm.page.screenshot({ path: "/tmp/hol116-ui-rulings.png" });
   await gm.page.evaluate(async ({ sceneId, recipientTokenId }) => {
@@ -1248,7 +1250,6 @@ try {
       await recoverPotionSupplyOperation(
         id,
         1,
-        "Fixture recovered the observed final d4 face",
       );
     },
     { id: recoveredRequest, combatId: recovered.combatId },
@@ -1321,7 +1322,7 @@ try {
   assert.equal(finalUse.receipt.nativeRoll, null);
   assert.equal(
     finalUse.receipt.recovery.reason,
-    "Fixture recovered the observed final d4 face",
+    "",
   );
   assert.equal(
     await gm.page.evaluate(() => globalThis.__holPotionSupplyEvaluations),
@@ -1378,7 +1379,6 @@ try {
     await reconcilePotionOperation(
       id,
       "waive-supply",
-      "Fixture closes the changed bottle without charging a replacement",
     );
   }, changedRequest);
   await waitPotion(changed);

@@ -300,3 +300,16 @@ test("potion adjacency resolves the documented full Combat UUID", async () => {
     adjacent: true,
   });
 });
+
+test("an explicitly empty source level never falls back to an animated prepared level", () => {
+  const result = nativeTokenAdjacency(
+    token({
+      id: "giver", offsets: [{ i: 0, j: 0 }],
+      level: null, derivedLevel: "old-level",
+    }),
+    token({ id: "recipient", offsets: [{ i: 1, j: 0 }], level: null }),
+  );
+  assert.equal(result.status, "adjacent");
+  assert.equal(result.actorLevel, null);
+  assert.equal(result.targetLevel, null);
+});

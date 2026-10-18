@@ -206,3 +206,42 @@ export function potionOperationNextPhase({
     return "settle-operation";
   throw new Error("The potion supply operation has an unknown phase.");
 }
+
+function supplyItemFingerprint(data, targetId, expectedDie = null) {
+  const system = structuredClone(data.system ?? {});
+  if (data._id === targetId && expectedDie != null)
+    system.inventoryDie = expectedDie;
+  return {
+    id: data._id,
+    type: data.type,
+    name: data.name,
+    system,
+    flags: structuredClone(data.flags ?? {}),
+  };
+}
+
+/** Verify the exact supply die change while preserving all other embedded Item data. */
+export function verifyPotionSupplyItems(
+  items,
+  beforeItems,
+  targetId,
+  expectedDie,
+) {
+  const fingerprint = (data) =>
+    supplyItemFingerprint(data, targetId, expectedDie);
+  if (
+    !Array.isArray(items) ||
+    items.length !== beforeItems.length ||
+    !same(
+      items
+        .map((data) => supplyItemFingerprint(data, targetId))
+        .sort((left, right) => left.id.localeCompare(right.id)),
+      beforeItems
+        .map(fingerprint)
+        .sort((left, right) => left.id.localeCompare(right.id)),
+    )
+  )
+    throw new Error(
+      "The potion supply update changed an unrelated embedded Item; reconcile it without retrying.",
+    );
+}

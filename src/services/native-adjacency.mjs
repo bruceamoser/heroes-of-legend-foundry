@@ -10,7 +10,7 @@ function tokenSource(token) {
 }
 
 function tokenLevel(token) {
-  const level = tokenSource(token)?.level ?? token?.level;
+  const level = tokenSource(token)?.level;
   return level?.id ?? level?._id ?? level ?? null;
 }
 

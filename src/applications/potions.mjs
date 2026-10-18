@@ -160,10 +160,18 @@ export class PotionPreparation extends foundry.applications.api.HandlebarsApplic
     for (const selector of [
       "[name=bottleUuid]",
       "[name=interruption]",
+      "[name=willing]",
     ])
       this.element
         .querySelector(selector)
         ?.addEventListener("change", () => void this.refreshPreview());
+    for (const selector of [
+      "[name=geometryReason]",
+      "[name=daWillingnessReason]",
+    ])
+      this.element
+        .querySelector(selector)
+        ?.addEventListener("input", () => void this.refreshPreview());
     this.element
       .querySelector("[name=recipientParticipantId]")
       ?.addEventListener("change", () => {

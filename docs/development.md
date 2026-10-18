@@ -674,7 +674,16 @@ authority release only after a successful bind, and describes fixture cleanup
 based on documents actually tracked.
 Source-wide syntax and focused potion, operation, adjacency, inventory and
 module-link tests pass in the coding-worker environment. The rebuilt Foundry
-native rerun remains the primary integration check.
+native rerun remains the primary integration check. Author review corrected the
+post-write supply comparison to accept the expected d4-to-out change, preserved
+an explicitly empty source level during animation, and enabled receipt-checked
+completed replay even after the original chat message is deleted. Willingness
+and DA-reason controls now refresh the preview so satisfying those requirements
+can enable submission. A service
+regression replays a saved completed operation twice without mechanical writes
+and rejects changed healing receipts; the real coordinator gate also rejects
+a non-GM replay. These checks do not certify the latest Canvas fixture lifecycle
+fix, native ApplicationV2 controls, or multiplayer operation recovery.
 
 ### Two-recipe Ordinary Recipe Study (#93)
 

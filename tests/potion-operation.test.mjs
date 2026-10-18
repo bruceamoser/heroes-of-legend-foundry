@@ -7,6 +7,7 @@ import {
   potionOperationNextPhase,
   potionSourceMatches,
   validatePotionEncounterReceipts,
+  verifyPotionSupplyItems,
 } from "../src/rules/potion-operation.mjs";
 import {
   continueAction,
@@ -299,4 +300,24 @@ test("DA geometry rulings are attributed to their actual proposing GM", () => {
       ),
     /actual DA/,
   );
+});
+
+test("potion supply integrity accepts depletion and rejects unrelated Item changes", () => {
+  const before = [
+    {
+      _id: "bottle", type: "equipment", name: "Bottle",
+      system: { inventoryDie: 4, quantity: 1 }, flags: {},
+    },
+    {
+      _id: "sword", type: "equipment", name: "Sword",
+      system: { quantity: 1 }, flags: {},
+    },
+  ];
+  const after = structuredClone(before);
+  after[0].system.inventoryDie = 0;
+  assert.doesNotThrow(() => verifyPotionSupplyItems(after, before, "bottle", 0));
+  assert.doesNotThrow(() => verifyPotionSupplyItems(before, before, "bottle", 4));
+  assert.throws(() => verifyPotionSupplyItems(before, before, "bottle", 0), /unrelated embedded Item/);
+  after[1].system.quantity = 2;
+  assert.throws(() => verifyPotionSupplyItems(after, before, "bottle", 0), /unrelated embedded Item/);
 });

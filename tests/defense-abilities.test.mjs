@@ -83,14 +83,13 @@ test("resolved attempts allow an explicit reason while unresolved attempts block
       ...base,
       ...resolved,
     }).reasons.join(" "),
-    /explicit additional defense attempt and reason/,
+    /Choose another defense/,
   );
   assert.deepEqual(
     defenseAbilityAvailability("ability-shield-block", {
       ...base,
       ...resolved,
       additionalAttempt: true,
-      attemptReason: "DA approved a second defense",
     }),
     { available: true, reasons: [] },
   );
@@ -102,7 +101,6 @@ test("resolved attempts allow an explicit reason while unresolved attempts block
         actorUuid,
       ),
       additionalAttempt: true,
-      attemptReason: "DA approved a second defense",
     }).reasons.join(" "),
     /Resolve the current defense attempt/,
   );

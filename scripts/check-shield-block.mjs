@@ -472,7 +472,7 @@ try {
   );
   assert.match(await dialog.innerText(), /A held shield is required/);
   assert.match(
-    await dialog.locator(".hol-roll-sources").innerText(),
+    await dialog.locator(".hol-roll-sources").textContent(),
     /Defend maneuver/,
   );
   await screenshot("shield-block-held-requirement");
@@ -551,7 +551,7 @@ try {
       ?.innerText.includes("Shield Block"),
   );
   assert.match(
-    await dialog.locator(".hol-roll-sources").innerText(),
+    await dialog.locator(".hol-roll-sources").textContent(),
     /Defend maneuver[\s\S]*Shield Block/,
   );
   assert(
@@ -637,7 +637,7 @@ try {
   );
   assert.match(await dialog.innerText(), /judged this attack not blockable/);
   assert.doesNotMatch(
-    await dialog.locator(".hol-roll-sources").innerText(),
+    await dialog.locator(".hol-roll-sources").textContent(),
     /Shield Block:/,
   );
   await closePrompt(dialog);
@@ -817,7 +817,7 @@ try {
   dialog = await openPrompt(dropped);
   assert.match(await dialog.innerText(), /A held shield is required/);
   assert.doesNotMatch(
-    await dialog.locator(".hol-roll-sources").innerText(),
+    await dialog.locator(".hol-roll-sources").textContent(),
     /Shield Block:/,
   );
   await closePrompt(dialog);

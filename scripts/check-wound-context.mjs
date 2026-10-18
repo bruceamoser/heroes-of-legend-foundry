@@ -200,9 +200,10 @@ try {
   await page.locator(".hol-character [data-attribute=brawn]").click();
   const dialog = page.locator(".hol-roll-dialog"),
     wounds = dialog.locator(".hol-wound-context");
+  await dialog.locator("summary").filter({ hasText: "Wound adjustments" }).click();
   await wounds.first().waitFor();
   assert.equal(await wounds.count(), 4);
-  assert.equal(await dialog.locator('[data-action="roll"]').isDisabled(), true);
+  assert.equal(await dialog.locator('[data-action="roll"]').isEnabled(), true);
   const text = await wounds.allInnerTexts();
   assert(text.some((value) => value.includes("physical activities")));
   assert(text.some((value) => value.includes("mental activities")));
@@ -215,16 +216,16 @@ try {
   const choose = async (context, choice) =>
     dialog
       .locator(
-        `.hol-wound-context[data-effect-id="${fixture.effectIds[context]}"] select`,
+        `.hol-wound-context[data-effect-id="${fixture.effectIds[context]}"] input`,
       )
-      .selectOption(choice);
+      .setChecked(choice === "applies");
   await choose("physical", "applies");
   await choose("mental", "does-not-apply");
   await choose("intimidate", "applies");
   await choose("persuade", "applies");
   assert.equal(await dialog.locator("output").innerText(), "4d6kl3 + (1)");
   assert.match(
-    await dialog.locator(".hol-roll-totals").innerText(),
+    await dialog.locator(".hol-roll-totals").textContent(),
     /1 Boons · 2 Banes · 1 canceled pairs/,
   );
   assert.equal(await dialog.locator(".hol-roll-sources li").count(), 3);
@@ -277,7 +278,7 @@ try {
     /Roll sources changed/,
   );
 
-  assert.equal(await dialog.locator('[data-action="roll"]').isDisabled(), true);
+  assert.equal(await dialog.locator('[data-action="roll"]').isEnabled(), true);
   await page.evaluate(
     async ({ actorId, effectId }) => {
       await game.actors.get(actorId).effects.get(effectId).delete();
@@ -289,7 +290,7 @@ try {
       document.querySelectorAll(".hol-roll-dialog .hol-wound-context")
         .length === 2,
   );
-  assert.equal(await dialog.locator('[data-action="roll"]').isDisabled(), true);
+  assert.equal(await dialog.locator('[data-action="roll"]').isEnabled(), true);
   await dialog.locator("[data-action=close]").click();
 
   const request = async (kind, payload = {}) => {

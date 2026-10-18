@@ -39,12 +39,10 @@ export function defenseAbilityAvailability(id, context = {}) {
     );
   else if (
     (context.priorDefenses ?? 0) > 0 &&
-    (context.additionalAttempt !== true ||
-      typeof context.attemptReason !== "string" ||
-      !context.attemptReason.trim())
+    context.additionalAttempt !== true
   )
     reasons.push(
-      "An explicit additional defense attempt and reason are required before activating this ability.",
+      "Choose another defense before activating this ability again.",
     );
 
   if (id === "ability-defend") {

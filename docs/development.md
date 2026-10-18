@@ -856,3 +856,41 @@ Issue #109 integrated validation: Node 24 build, validation and all 195 tests pa
 Issue #112 author review verified movement and jumping against the pinned player manuscript. No additional straight-line approach restriction is imposed; route plausibility remains explicit DA/adapter evidence. Integrated Node 24 build, validation and all 209 tests pass. This establishes pure calculation behavior, not native token movement certification.
 
 Issue #115 integrated validation: Node 24 build, manifest validation and all 221 tests pass, including two semantic round trips for both shipped packs. Foundry 14.369 opens/imports the packs with stable UUIDs, strict models and reviewed action provenance. All six reference heroes commit and replay correctly with the shared constructors; advancement also passes. Visual review corrected definition-list contrast and removed redundant notices. The native compendium fixture covers GM imports; complete player browsing/drop acquisition remains separate work.
+
+### Simple roll dialogs — issue #129
+
+Rolls use one effective −3…+3 slider, prefilled from current sources. Until it is
+moved, changes to abilities or optional contexts refresh the default. Moving it
+sets the desired final net; the stored audit includes a compensating modifier
+against uncapped source totals, so a displayed −1 stays −1 even with automatic
+Boons. Cancellation/cap still happen once in the existing rule planner.
+
+Basic Melee shows the local native Foundry target read-only and subscribes to
+V14 `targetToken`; zero/multiple targets give an inline instruction. A single
+held weapon is read-only; multiple weapons retain a choice. Modifier reasons
+are removed. Optional fear/wound checkboxes default off without a roll gate.
+Deliberate additional defense attempts need an explicit checkbox, with no written
+reason; pending unknown dice still require DA recovery. Any-player Defend,
+additional defender choice, permissions and durable operation receipts remain.
+
+Node 24.22.0 build, validation and 263 tests passed on the `26357b4` baseline.
+Focused modifier/defense tests and updated native fixture syntax checks pass.
+Foundry 14.369 native acceptance verifies effective slider prefill and source
+refresh, keyboard/mouse −3/0/+3, automatic +2 to manual −1, uncapped +5/−1 to
+manual 0, and retained manual overrides. The compact zero-adjustment screenshot
+was visually reviewed. NPC multi-target declarations and any-player Defend pass;
+the two-player defense fixture verifies intentional repeat without written text,
+duplicate protection, stale sources, recovery and zero HP mutation. Those focused
+fixtures pass with zero page errors and clean their own records.
+
+The player-attack fixture passed the Wounds scene's read-only single weapon,
+native zero/multiple target refresh, optional wound controls, changed-source reset
+and actual Attack assertions. Its broader run later stopped at an old audit
+selector waiting for a source inside the deliberately collapsed Roll details;
+diagnostics reported zero page errors and cleanup completed. The selector now
+reads the hidden audit text, but the unrelated late recovery cases were not
+repeated for this UI issue. This is targeted native evidence, not a claim that the
+entire player-attack suite passed after #129. A final display-only adjustment keeps
+the slider's accessible signed label current even when no target is selected;
+that branch is covered by a focused mock test. Potion recipient targeting belongs
+to #116. No other checkout was modified.

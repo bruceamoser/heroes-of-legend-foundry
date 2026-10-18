@@ -8,13 +8,14 @@ This register separates confirmed direction from proposed engineering choices. I
 |---|---|---|
 | D01 | Public repository `bruceamoser/heroes-of-legend-foundry`. | October 17, 2026 repository-name reply. |
 | D02 | Current `design/player-book` plus `design/rules`; incorporate completed DA/bestiary book. | October 17, 2026 source-selection reply. |
-| D03 | Automate as much as possible and use Foundry features broadly. | October 17, 2026 follow-up. |
+| D03 | Automate core play where it helps; use native Foundry interactions and prioritize ease of play. Readable manual specialty references are accepted. | October 17, 2026 follow-up, superseded in scope by the later #129 correction. |
 | D17 | The roll dialog supports use of applicable abilities and player-applied Boons/Banes. | October 17, 2026 interaction follow-up; details in [interaction design](interaction-design.md). |
 | D18 | Creature attacks post descriptive chat with Defend; it opens a prefilled defense dialog that still allows applicable abilities. | Same follow-up; preserve normal attack/defense perspective. |
 | D19 | Drag/drop is a primary system interaction. | Same follow-up; validated drop matrix in the interaction contract. |
 | D20 | Preserve HOL's established look, feel and color theme. | Same follow-up; pinned book palette, typography and visual references. |
 | D22 | Any player may open/use Defend and choose the defender; GM native multi-target selection at Attack time supplies immutable suggestions; DA adjudicates encounter-rule exceptions. | October 17, 2026 clarifications; #14/#22. |
 | D21 | Full-featured creation and advancement charactermancer; ease of use paramount; eligible-first choices with visible disabled ineligible options and exact unmet requirements. | October 17, 2026 follow-ups; #18. |
+| D23 | Use native Foundry targeting, a single prefilled effective −3…+3 Boon/Bane slider, no adjustment reason fields, and optional contextual controls defaulting off. Core playability is the release goal; every card nuance need not be automated. | Bruce's latest October 17, 2026 correction; #129. |
 
 ## Proposed engineering defaults
 
@@ -23,7 +24,7 @@ This register separates confirmed direction from proposed engineering choices. I
 | D04 | Package ID `heroes-of-legend`; V14 only; first runtime target 14.369. | Stable compact system identity; no V13 compatibility baggage. Confirm availability before package listing. |
 | D05 | ES modules + JSDoc, Handlebars V2, scoped CSS, Node 24, small build scripts. | Familiar reference patterns without copying Neon Relic's domain/build complexity. Foundation issue may choose TypeScript if justified. |
 | D06 | Separate `character`, `creature`, `summon` Actor types. | Explicit survival/control differences; shared schema fragments avoid repetition. |
-| D07 | Full automation by default; optional per-world adjudication controls and logged GM override. | Implements Bruce's direction while preserving legitimate table choices. |
+| D07 | Focus automation on dependable core play; clearly label manual specialty handling. Keep DA rulings available without routine questionnaires. | Latest #129 direction supersedes the earlier full-automation default. |
 | D08 | Native document requests/receipts and one GM authority; no mandatory socket module. | Ownership and retry behavior tested before mutation automation. Transport details are a technical spike. |
 | D09 | Pinned Markdown intake, reviewed adapters, stable compendium IDs and explicit content updates. | Keeps the evolving books authoritative without overwriting user worlds. |
 

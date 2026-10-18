@@ -138,12 +138,10 @@ async function apply(id) {
       );
     if (
       previous.length &&
-      (request.draft.additionalAttempt !== true ||
-        typeof request.draft.attemptReason !== "string" ||
-        !request.draft.attemptReason.trim())
+      request.draft.additionalAttempt !== true
     )
       throw new Error(
-        "This defender already has an attempt. Explicitly choose an additional attempt and give its reason.",
+        "This defender already has an attempt. Choose another defense to roll again.",
       );
     record = {
       requestId: id,
@@ -251,7 +249,7 @@ export function abandonDefense(attackId, requestId, reason) {
         .get(requestId)
         ?.update({
           content:
-            "The DA abandoned this unresolved attempt without rerolling. Any new attempt needs an explicit reason.",
+            "The DA abandoned this unresolved attempt without rerolling. A new attempt can be chosen explicitly.",
           [`flags.${ID}.defenseStatus`]: "abandoned",
         })
         .catch(() => {});

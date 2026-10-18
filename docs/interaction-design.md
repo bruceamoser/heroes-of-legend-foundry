@@ -6,12 +6,18 @@
 
 One shared dialog handles attacks, defenses and appropriate attribute checks. Open it from an owned ability, sheet attribute, hotbar shortcut, token control or defense request. Specialized wound/inventory rolls keep their own rules and do not acquire generic Boons/Banes.
 
+Bruce's later October 17 correction (#129) prioritizes ease of play. Optional fear
+perception and printed wound-context adjustments default off, do not block a roll,
+and remain available when the table decides they apply. Genuine choices such as
+ability use, recovery of unknown dice remain
+explicit. This supersedes earlier requirements to answer every contextual question.
+
 The dialog contains:
 
-- **Context:** acting character/token, selected action, targets, attack or defense perspective and relevant triggering attack. For a defense, show the attacker and attack name and its player-visible description.
+- **Context:** acting character/token, selected action and the native Foundry target as read-only context; no attack target dropdown. A single-target action with zero or multiple targets gives a short inline instruction to use Foundry targeting. Refresh on native target changes and validate the target snapshot before submission. For a defense, show the attacker and attack name; choosing an additional defender remains distinct from attack targeting.
 - **Attribute:** printed/default attribute, current effective value and source. A defense starts with the incoming attack's required attribute. Only an applicable ability or explicit DA correction can replace it; the player does not freely substitute a preferred stat.
 - **Applicable abilities:** selectable owned abilities/reactions and declared options that can affect this roll. Explain what each changes, its timing, cost, equipment/hand requirements and usage limit. Show why otherwise relevant options are unavailable. Automatic passive effects appear as already-applied sources, without charging or applying them again.
-- **Boons and Banes:** separate totals with a source list, plus player controls to add/remove situational adjustments with a label. Automatically derived sources remain identifiable; an ordinary adjustment does not delete an enforced condition penalty. Display cancellation, capped net extras and the resulting keep-high/keep-low formula immediately.
+- **Boons and Banes:** one accessible integer slider from −3 (Banes) through 0 to +3 (Boons), with a signed current label. No reason fields. Prefill the effective net from current sources; it follows source/ability changes until moved. Moving the slider chooses the final net directly, with an internal audited adjustment instead of adding the displayed number twice. Preserve raw source totals, cancel/cap once and update the final dice preview immediately.
 - **Cost/result preview:** actions or Reactions to be spent, HP/item costs, selected attribute replacements and modified outcomes. An ability can affect damage or riders without changing the dice; show those changes too.
 - **Controls:** inspect an ability's full rules, select/deselect applicable options, confirm **Roll**, and cancel. Keep the primary button and formula visible while browsing long ability lists.
 
@@ -29,7 +35,7 @@ For a DA-controlled creature's attack requiring a defense roll:
 2. Post a persistent chat entry with the creature's player-visible identity/portrait, attack title, descriptive text, the captured suggested defenders and a reusable **Defend** action available to every player. Individual defender rows may also offer shortcuts, but they cannot restrict who may open or use the dialog. Keep unrevealed notes out of the visible card.
 3. Any player clicks **Defend**. One captured target can prefill directly; several captured targets are clearly offered for selection. With no targets, open the defender chooser. The suggestions come from the GM's captured targets, not the clicking player's controlled token. Permit another/additional defender for a DA-adjudicated situation.
 4. Prefill the selected defender's actual token/profile, incoming attack, printed defense attribute, effective value, Threat, conditions/benefits and other determined Boons/Banes. The player retains ability and situational choices. Explain uncertain/contextual rules; do not block rolling merely because the clicker is not the defender's owner or the defender was not in the original target list.
-5. Record the actual rolling user separately from the defender. Apply the chosen outcome through permission-respecting mutation services, update that defender's response, and prevent accidental duplicate application. The attack card stays available for other defenses. A deliberate additional attempt must be explicit and preserve prior results so the DA can adjudicate how it affects already-applied consequences.
+5. Record the actual rolling user separately from the defender. Apply the chosen outcome through permission-respecting mutation services, update that defender's response, and prevent accidental duplicate application. The attack card stays available for other defenses. A deliberate additional attempt uses an explicit checkbox without a written explanation and preserves prior results so the DA can adjudicate how it affects already-applied consequences.
 
 For multiple targets, show individually labeled defender rows and states: **Awaiting defense**, **Preparing**, **Resolving**, **Resolved**, or **Needs attention**. Each affected defender has an independent roll and ability choices. Opening or canceling never consumes the card, spends resources or locks another player out. A wrong click can be corrected in the dialog. A failed/disconnected committed operation resumes from its receipts rather than paying or applying again.
 

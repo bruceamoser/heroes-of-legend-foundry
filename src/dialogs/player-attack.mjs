@@ -1,4 +1,9 @@
 import {
+  situationalRollDraft,
+  situationalAdjustmentLabel,
+  effectiveRollDraft,
+} from "../rules/situational-adjustment.mjs";
+import {
   basicMeleeDialogContext,
   requestPlayerBasicMelee,
 } from "../services/player-attacks.mjs";
@@ -16,15 +21,16 @@ export class BasicMeleeDialog extends foundry.applications.api.HandlebarsApplica
     this.participantId = participantId;
     this.draft = {
       weaponItemUuid: "",
-      targetTokenUuid: "",
-      boons: 0,
-      banes: 0,
-      boonsLabel: "Situational Boons",
-      banesLabel: "Situational Banes",
+      ...situationalRollDraft(),
+      adjustmentOverride: false,
       perception: {},
       woundApplicability: {},
       rulingReason: "",
     };
+    this.targetHook = (user) => {
+      if (this.rendered && user.id === game.user.id) void this.render();
+    };
+    Hooks.on("targetToken", this.targetHook);
     this.context = null;
     this.basis = null;
     this.notice = "";
@@ -56,10 +62,14 @@ export class BasicMeleeDialog extends foundry.applications.api.HandlebarsApplica
   };
 
   selection() {
-    const { weaponItemUuid, targetTokenUuid, ...draft } = this.draft;
+    const { weaponItemUuid, ...draft } = this.draft;
+    const nativeTargets = [...game.user.targets];
+    const targetTokenUuid = nativeTargets.length === 1
+      ? nativeTargets[0].document?.uuid ?? nativeTargets[0].uuid : null;
     return {
       weaponItemUuid,
       targetTokenUuid,
+      requireNativeTarget: true,
       rulingReason: this.draft.rulingReason,
       draft,
     };
@@ -75,8 +85,6 @@ export class BasicMeleeDialog extends foundry.applications.api.HandlebarsApplica
     );
     if (!this.draft.weaponItemUuid)
       this.draft.weaponItemUuid = this.context.weaponItemUuid ?? "";
-    if (!this.draft.targetTokenUuid)
-      this.draft.targetTokenUuid = this.context.targetTokenUuid ?? "";
     const woundModifiers = this.context.basis?.woundModifiers;
     if (woundModifiers !== undefined) {
       const signature = JSON.stringify(woundModifiers);
@@ -85,10 +93,10 @@ export class BasicMeleeDialog extends foundry.applications.api.HandlebarsApplica
         signature !== this.woundModifierSignature
       ) {
         this.notice =
-          "Active wound modifiers changed. Review the current injury sources and choose applicability again.";
+          "Active wound modifiers changed. Optional wound adjustments have been reset.";
         this.draft.woundApplicability = {};
         this.context.plan = null;
-        this.context.planError = this.notice;
+        this.context.planError = "";
       }
       this.woundModifierSignature = signature;
     }
@@ -101,10 +109,22 @@ export class BasicMeleeDialog extends foundry.applications.api.HandlebarsApplica
       ),
     ];
     this.fears = fears;
+    for (const source of fears) this.draft.perception[source] ??= "no";
+    for (const modifier of this.basis?.woundModifiers ?? [])
+      this.draft.woundApplicability[modifier.effectId] ??= "does-not-apply";
+    if (this.basis) {
+      try {
+        this.syncAdjustment();
+        this.context.plan = prepareRoll(this.basis, this.draft);
+        this.context.planError = "";
+      } catch (error) { this.context.planError = error.message; }
+    }
     return {
       ...context,
       weapons: this.context.weapons,
-      targets: this.context.targets,
+      multipleWeapons: this.context.weapons.length > 1,
+      weaponName: this.context.weapons.find(weapon => weapon.uuid === this.context.weaponItemUuid)?.name ?? "No held melee weapon",
+      targetTokenUuid: this.context.targetTokenUuid,
       reasons: this.context.reasons,
       rulingReason: this.draft.rulingReason,
       gm: game.user.isGM,
@@ -116,7 +136,7 @@ export class BasicMeleeDialog extends foundry.applications.api.HandlebarsApplica
         )?.name ?? "",
       attribute: this.context.basis?.attribute ?? this.item.actor.system.attributes.brawn.effective,
       geometryStatus: this.context.geometry?.status ?? "unavailable",
-      geometryReason: this.context.geometry?.reason ?? "",
+      geometryReason: this.context.geometry?.status === "adjacent" ? "" : this.context.geometry?.reason ?? "",
       notice: this.notice,
       sources: this.context.plan?.sources ?? [],
       formula:
@@ -144,6 +164,7 @@ export class BasicMeleeDialog extends foundry.applications.api.HandlebarsApplica
         }),
       ),
       draft: this.draft,
+      adjustmentLabel: situationalAdjustmentLabel(this.draft.adjustment),
       canAttack:
         Boolean(this.context.basis) &&
         Boolean(this.context.plan) &&
@@ -164,6 +185,7 @@ export class BasicMeleeDialog extends foundry.applications.api.HandlebarsApplica
   }
 
   async _onClose(options) {
+    Hooks.off("targetToken", this.targetHook);
     for (const [event, handler] of this.woundHookHandlers)
       Hooks.off(event, handler);
     this.woundHookHandlers = [];
@@ -173,30 +195,34 @@ export class BasicMeleeDialog extends foundry.applications.api.HandlebarsApplica
   readDraft() {
     const value = (name) =>
       this.element.querySelector(`[name="${name}"]`)?.value;
+    const checked = (name) =>
+      this.element.querySelector(`[name="${name}"]`)?.checked === true;
     this.draft = {
       ...this.draft,
-      weaponItemUuid: value("weaponItemUuid") ?? "",
-      targetTokenUuid: value("targetTokenUuid") ?? "",
-      boons: Number(value("boons") ?? 0),
-      banes: Number(value("banes") ?? 0),
-      boonsLabel: value("boonsLabel") ?? "Situational Boons",
-      banesLabel: value("banesLabel") ?? "Situational Banes",
+      weaponItemUuid: value("weaponItemUuid") ?? this.draft.weaponItemUuid,
+      adjustment: Number(value("adjustment") ?? 0),
       perception: Object.fromEntries(
         this.fears.map((source, index) => [
           source,
-          value(`fear-${index}`) ?? "",
+          checked(`fear-${index}`) ? "yes" : "no",
         ]),
       ),
       woundApplicability: Object.fromEntries(
         (this.basis?.woundModifiers ?? []).map((modifier, index) => [
           modifier.effectId,
-          value(`wound-${index}`) ?? "",
+          checked(`wound-${index}`) ? "applies" : "does-not-apply",
         ]),
       ),
       rulingReason: value("rulingReason") ?? "",
     };
   }
 
+  syncAdjustment() {
+    const baseline = prepareRoll(this.basis, { ...this.draft, boons: 0, banes: 0 });
+    Object.assign(this.draft, effectiveRollDraft(
+      baseline, this.draft.adjustment, this.draft.adjustmentOverride,
+    ));
+  }
   preview() {
     const sources = this.element.querySelector(".hol-roll-sources"),
       output = this.element.querySelector("output"),
@@ -204,11 +230,20 @@ export class BasicMeleeDialog extends foundry.applications.api.HandlebarsApplica
       button = this.element.querySelector('[data-action="attack"]');
     sources?.replaceChildren();
     if (!this.context?.basis) {
+      const label = situationalAdjustmentLabel(this.draft.adjustment);
+      this.element.querySelector("[data-adjustment-label]").textContent = label;
+      this.element.querySelector("[name=adjustment]").setAttribute("aria-valuetext", label);
       if (output) output.textContent = this.context?.reasons.join(" ") ?? "";
       if (button) button.disabled = true;
       return;
     }
     try {
+      this.syncAdjustment();
+      const adjustmentLabel = situationalAdjustmentLabel(this.draft.adjustment);
+      this.element.querySelector("[data-adjustment-label]").textContent = adjustmentLabel;
+      const slider = this.element.querySelector("[name=adjustment]");
+      slider.value = this.draft.adjustment;
+      slider.setAttribute("aria-valuetext", adjustmentLabel);
       const plan = prepareRoll(this.context.basis, this.draft);
       for (const source of plan.sources) {
         const li = document.createElement("li");
@@ -227,14 +262,15 @@ export class BasicMeleeDialog extends foundry.applications.api.HandlebarsApplica
 
   async _onRender(context, options) {
     await super._onRender(context, options);
-    this.element.addEventListener("input", () => {
+    this.element.addEventListener("input", (event) => {
+      if (event.target.name === "adjustment") this.draft.adjustmentOverride = true;
       this.readDraft();
       this.preview();
     });
     this.element.addEventListener("change", async (event) => {
       if (
         !event.target.closest(
-          "[name=weaponItemUuid], [name=targetTokenUuid], [name=rulingReason], [name^=fear-]",
+          "[name=weaponItemUuid], [name=rulingReason], [name^=fear-]",
         )
       )
         return;
@@ -248,13 +284,20 @@ export class BasicMeleeDialog extends foundry.applications.api.HandlebarsApplica
     if (this.submitting) return;
     this.readDraft();
     try {
+      const selection = this.selection();
+      if (!selection.targetTokenUuid || selection.targetTokenUuid !== this.basis?.targetTokenUuid) {
+        this.notice = "Target changed. Review your Foundry target and attack again.";
+        await this.render();
+        return;
+      }
       this.submitting = true;
       await this.render();
+      selection.draft = structuredClone(this.draft);
       await requestPlayerBasicMelee(
         this.item,
         this.combat,
         this.participantId,
-        this.selection(),
+        selection,
       );
       await this.close();
     } catch (error) {

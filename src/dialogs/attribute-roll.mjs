@@ -1,3 +1,8 @@
+import {
+  situationalRollDraft,
+  situationalAdjustmentLabel,
+  effectiveRollDraft,
+} from "../rules/situational-adjustment.mjs";
 import { rollPrepared } from "../services/roll.mjs";
 import { rollBasis, prepareRoll } from "../services/roll-preparation.mjs";
 import {
@@ -25,14 +30,11 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
     this.attackMessageId = attackMessageId;
     this.defenderTokenUuid = defenderTokenUuid;
     this.draft = {
-      boons: 0,
-      banes: 0,
-      boonsLabel: "Situational Boons",
-      banesLabel: "Situational Banes",
+      ...situationalRollDraft(),
+      adjustmentOverride: false,
       perception: {},
       woundApplicability: {},
       additionalAttempt: false,
-      attemptReason: "",
     };
     this.notice = "";
     this.activating = false;
@@ -75,7 +77,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
         JSON.stringify(basis.woundModifiers)
     ) {
       this.notice =
-        "Active wound modifiers changed. Review the current injury sources and choose applicability again.";
+        "Active wound modifiers changed. Optional wound adjustments have been reset.";
       this.draft.woundApplicability = {};
     }
     this.basis = basis;
@@ -87,13 +89,16 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       ),
     ];
     this.fears = fears;
+    for (const source of fears) this.draft.perception[source] ??= "no";
+    for (const modifier of basis.woundModifiers)
+      this.draft.woundApplicability[modifier.effectId] ??= "does-not-apply";
+    this.syncAdjustment();
     this.abilityOptions =
       this.mode === "defense"
         ? reviewedDefenseAbilityOptions(this.actor, {
             attackMessageId: this.attackMessageId,
             defenderTokenUuid: this.defenderTokenUuid,
             additionalAttempt: this.draft.additionalAttempt,
-            attemptReason: this.draft.attemptReason,
           }).options
         : [];
     this.abilityPending = this.abilityOptions.some((option) => option.pending);
@@ -122,6 +127,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       defense: this.mode === "defense",
       notice: this.notice,
       draft: this.draft,
+      adjustmentLabel: situationalAdjustmentLabel(this.draft.adjustment),
       abilities: this.abilityOptions.map((option) => ({
         ...option,
         reasonText: option.reasons.join(" "),
@@ -160,22 +166,21 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
   readDraft() {
     const value = (name) =>
       this.element.querySelector(`[name="${name}"]`)?.value;
+    const checked = (name) =>
+      this.element.querySelector(`[name="${name}"]`)?.checked === true;
     this.draft = {
-      boons: value("boons"),
-      banes: value("banes"),
-      boonsLabel: value("boonsLabel"),
-      banesLabel: value("banesLabel"),
+      ...this.draft,
+      adjustment: Number(value("adjustment") ?? 0),
       additionalAttempt:
         this.element.querySelector("[name=additionalAttempt]")?.checked ===
         true,
-      attemptReason: value("attemptReason") ?? "",
       perception: Object.fromEntries(
-        this.fears.map((source, index) => [source, value(`fear-${index}`)]),
+        this.fears.map((source, index) => [source, checked(`fear-${index}`) ? "yes" : "no"]),
       ),
       woundApplicability: Object.fromEntries(
         this.basis.woundModifiers.map((modifier, index) => [
           modifier.effectId,
-          value(`wound-${index}`),
+          checked(`wound-${index}`) ? "applies" : "does-not-apply",
         ]),
       ),
     };
@@ -186,7 +191,6 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       attackMessageId: this.attackMessageId,
       defenderTokenUuid: this.defenderTokenUuid,
       additionalAttempt: this.draft.additionalAttempt,
-      attemptReason: this.draft.attemptReason,
     }).options;
     this.abilityOptions = options;
     this.abilityPending = options.some((option) => option.pending);
@@ -207,6 +211,12 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       list.append(row);
     }
   }
+  syncAdjustment() {
+    const baseline = prepareRoll(this.basis, { ...this.draft, boons: 0, banes: 0 });
+    Object.assign(this.draft, effectiveRollDraft(
+      baseline, this.draft.adjustment, this.draft.adjustmentOverride,
+    ));
+  }
   preview() {
     const list = this.element.querySelector(".hol-roll-sources"),
       output = this.element.querySelector("output"),
@@ -215,6 +225,12 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
     list.replaceChildren();
     try {
       this.refreshDefenseAbilities();
+      this.syncAdjustment();
+      const adjustmentLabel = situationalAdjustmentLabel(this.draft.adjustment);
+      this.element.querySelector("[data-adjustment-label]").textContent = adjustmentLabel;
+      const slider = this.element.querySelector("[name=adjustment]");
+      slider.value = this.draft.adjustment;
+      slider.setAttribute("aria-valuetext", adjustmentLabel);
       const plan = prepareRoll(this.basis, this.draft);
       for (const source of plan.sources) {
         const li = document.createElement("li");
@@ -228,7 +244,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
         this.abilityPending ||
         this.pendingResponse ||
         (this.priorCount > 0 &&
-          (!this.draft.additionalAttempt || !this.draft.attemptReason?.trim()));
+          !this.draft.additionalAttempt);
     } catch (e) {
       output.textContent = e.message;
       detail.textContent = "";
@@ -237,7 +253,8 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
   }
   async _onRender(context, options) {
     await super._onRender(context, options);
-    this.element.querySelector(".hol-body").addEventListener("input", () => {
+    this.element.querySelector(".hol-body").addEventListener("input", (event) => {
+      if (event.target.name === "adjustment") this.draft.adjustmentOverride = true;
       this.readDraft();
       this.preview();
     });
@@ -334,7 +351,6 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
               this.abilityOptions.find((option) => option.itemId === item.id)
                 ?.shieldItemUuid ?? null,
             additionalAttempt: this.draft.additionalAttempt,
-            attemptReason: this.draft.attemptReason,
           })
         : await activateOwnedAbility(item);
       const status = await this.waitForAbility(message.id);

@@ -1,18 +1,23 @@
 <section class="hol-roll-shell">
   {{#if death}}<p class="hol-note">Dying turn: choose before seeing dice. Spend 1 Grit for full HP, or make this Fortitude death roll. Wounds remain. Grit available: {{gritAvailable}}</p><button type="button" data-action="grit" {{#unless canGrit}}disabled{{/unless}}>Spend 1 Grit · restore full HP</button>{{/if}}<header class="hol-banner"><p class="hol-kicker">{{#if defense}}Defense{{else}}Attribute check{{/if}}</p><h1>{{name}}</h1></header>
   <div class="hol-body">
-  {{#if incoming}}<p>Defending against {{incoming.attackerName}} · {{incoming.title}}</p><button type="button" data-action="changeDefender">Change defender</button>{{#if priorCount}}<p>{{priorCount}} earlier attempt(s) exist for this defender.</p>{{#if pendingResponse}}<p role="alert">An attempt is unresolved. The DA must review it before another roll.</p>{{/if}}<label class="hol-attempt-choice"><input type="checkbox" name="additionalAttempt" {{#if draft.additionalAttempt}}checked{{/if}}> Explicit additional attempt for this defender</label><label>Additional attempt reason<input name="attemptReason" value="{{draft.attemptReason}}"></label>{{/if}}{{/if}}
+  {{#if incoming}}<p>Defending against {{incoming.attackerName}} · {{incoming.title}}</p><button type="button" data-action="changeDefender">Change defender</button>{{#if priorCount}}<p>{{priorCount}} earlier attempt(s) exist for this defender.</p>{{#if pendingResponse}}<p role="alert">An attempt is unresolved. The DA must review it before another roll.</p>{{/if}}<label class="hol-attempt-choice"><input type="checkbox" name="additionalAttempt" {{#if draft.additionalAttempt}}checked{{/if}}> Roll another defense</label>{{/if}}{{/if}}
   {{#if notice}}<p class="hol-note" role="alert">{{notice}}</p>{{/if}}
   <p>{{attributeName}}: <strong>{{attribute}}</strong></p>
   {{#if defense}}<p>Rolling this defense spends no Reaction. Any player may roll for this defender.</p>{{/if}}
   {{#if abilities}}<h2>Defense abilities</h2><ul class="hol-defense-abilities">{{#each abilities}}<li data-item-id="{{itemId}}" class="{{#unless available}}hol-unavailable{{/unless}}"><button type="button" data-action="useAbility" data-item-id="{{itemId}}" {{#unless available}}disabled{{/unless}}>{{#if available}}Use {{else}}{{/if}}{{name}}</button><span class="hol-ability-reason">{{reasonText}}</span></li>{{/each}}</ul>{{/if}}
-  {{#each fears}}<label>Can you perceive {{source}}?<select name="fear-{{index}}"><option value="">Choose perception</option><option value="yes" {{#if yes}}selected{{/if}}>Yes</option><option value="no" {{#if no}}selected{{/if}}>No</option></select></label>{{/each}}
-  {{#if wounds}}<h2>Wound modifiers</h2><p class="hol-note">The DA/table decides whether each printed injury context applies to this action. The chosen attribute does not decide physical, mental, or social applicability.</p>{{#each wounds}}<fieldset class="hol-wound-context" data-effect-id="{{effectId}}"><legend>{{injury}}</legend><p><strong>{{amount}} {{#if (eq polarity "boon")}}Boon{{else}}Bane{{/if}}</strong> to {{printedContext}}</p><label>Applies to this roll<select name="wound-{{index}}"><option value="">Choose applies or does not apply</option><option value="applies" {{#if applies}}selected{{/if}}>Applies</option><option value="does-not-apply" {{#if doesNotApply}}selected{{/if}}>Does not apply</option></select></label></fieldset>{{/each}}{{/if}}
-  <h2>Sources applied to this roll</h2><ul class="hol-roll-sources"></ul>
-  <h2>Situational adjustments</h2>
-  <div class="hol-pair"><label>Boons<input type="number" name="boons" value="{{draft.boons}}" min="0" step="1"></label><label>Banes<input type="number" name="banes" value="{{draft.banes}}" min="0" step="1"></label></div>
-  <div class="hol-pair"><label>Boon reason<input name="boonsLabel" value="{{draft.boonsLabel}}"></label><label>Bane reason<input name="banesLabel" value="{{draft.banesLabel}}"></label></div>
+  {{#if fears}}<details class="hol-context-options"><summary>Fear context (optional)</summary>
+  {{#each fears}}<label><input type="checkbox" name="fear-{{index}}" {{#if yes}}checked{{/if}}> Perceiving {{source}}</label>{{/each}}</details>{{/if}}
+  {{#if wounds}}<details class="hol-context-options"><summary>Wound adjustments (optional)</summary>
+  <p>Apply a printed wound modifier when it fits this action.</p>
+  {{#each wounds}}<label class="hol-wound-context" data-effect-id="{{effectId}}"><input type="checkbox" name="wound-{{index}}" {{#if applies}}checked{{/if}}> {{injury}} · {{amount}} {{#if (eq polarity "boon")}}Boon{{else}}Bane{{/if}} · {{printedContext}}</label>{{/each}}</details>{{/if}}
+  <details class="hol-context-options"><summary>Roll details</summary><ul class="hol-roll-sources"></ul><p class="hol-roll-totals" aria-live="polite"></p></details>
+  <label class="hol-adjustment">Boons / Banes
+    <span data-adjustment-label aria-live="polite">{{adjustmentLabel}}</span>
+    <input type="range" name="adjustment" min="-3" max="3" step="1" value="{{draft.adjustment}}" aria-label="Boons or Banes" aria-valuetext="{{adjustmentLabel}}">
+    <span class="hol-adjustment-scale" aria-hidden="true"><span>−3 Banes</span><span>0</span><span>+3 Boons</span></span>
+  </label>
   </div><footer class="hol-roll-footer">
-  <p class="hol-roll-totals" aria-live="polite"></p><output aria-live="polite"></output>
+  <output aria-live="polite"></output>
   <button type="button" data-action="roll" class="hol-primary">{{localize "HOL.Roll"}}</button>
 </footer></section>

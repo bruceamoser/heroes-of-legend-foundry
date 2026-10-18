@@ -158,9 +158,7 @@ try {
       .isDisabled(),
   );
   await dialog.locator('[name="additionalAttempt"]').check();
-  await dialog
-    .locator('[name="attemptReason"]')
-    .fill("DA requests an explicit second attempt");
+  assert.equal(await dialog.locator('[name="attemptReason"]').count(), 0);
   await dialog.getByRole("button", { name: "Roll", exact: true }).click();
   await gm.page.waitForFunction(
     (f) =>
@@ -389,7 +387,7 @@ try {
   );
   assert.deepEqual(errors, []);
   console.info(
-    "PASS: two-player same-defender race yields one official roll, independent defenders, original native author, explicit additional-attempt UI/reason, stale-source rejection, saved-result settlement without reroll, unresolved-roll DA disposition, blind mode and no HP mutation.",
+    "PASS: two-player same-defender race yields one official roll, independent defenders, original native author, intentional additional-attempt UI without a written reason, stale-source rejection, saved-result settlement without reroll, unresolved-roll DA disposition, blind mode and no HP mutation.",
   );
 } finally {
   await p1?.context.close();

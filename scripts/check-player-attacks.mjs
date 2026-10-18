@@ -810,9 +810,46 @@ try {
     await window.holWoundDialog.render({ force: true });
   }, woundScenario);
   const woundDialog = player.page.locator(".hol-player-attack");
+  assert.equal(await woundDialog.locator('[name="boonsLabel"], [name="banesLabel"]').count(), 0);
+  const adjustment = woundDialog.getByRole("slider", { name: "Boons or Banes" });
+  for (const [key, expected] of [["Home", -3], ["End", 3]]) {
+    await adjustment.focus(); await adjustment.press(key);
+    const expectedFormula = await player.page.evaluate(async (value) => {
+      const { effectiveRollDraft } = await import("/systems/heroes-of-legend/rules/situational-adjustment.mjs");
+      const { prepareRoll } = await import("/systems/heroes-of-legend/services/roll-preparation.mjs");
+      return prepareRoll(window.holWoundDialog.basis, {
+        ...window.holWoundDialog.draft,
+        ...effectiveRollDraft(prepareRoll(window.holWoundDialog.basis, {
+          ...window.holWoundDialog.draft, boons: 0, banes: 0,
+        }), value, true),
+      }).formula;
+    }, expected);
+    assert.equal(await woundDialog.locator("output").innerText(), expectedFormula);
+  }
+  await player.page.evaluate(() => { window.holWoundDialog.draft.adjustmentOverride = false; });
+  await player.page.evaluate((fixture) => {
+    canvas.tokens.get(fixture.targetTokenId).setTarget(false);
+  }, woundScenario);
+  await player.page.waitForFunction(() => document.querySelector('.hol-player-attack [data-action=attack]')?.disabled);
+  await woundDialog.locator(".hol-native-target").filter({ hasText: "Use Foundry targeting" }).waitFor();
+  await player.page.evaluate((fixture) => {
+    canvas.tokens.get(fixture.targetTokenId).setTarget(true, { releaseOthers: true });
+    canvas.tokens.get(fixture.attackerTokenId).setTarget(true, { releaseOthers: false });
+  }, woundScenario);
+  await player.page.waitForFunction(() => document.querySelector('.hol-player-attack [data-action=attack]')?.disabled);
+  await player.page.evaluate((fixture) => {
+    canvas.tokens.get(fixture.attackerTokenId).setTarget(false);
+  }, woundScenario);
+  await player.page.waitForFunction((uuid) =>
+    document.querySelector('.hol-player-attack .hol-native-target')?.dataset.targetUuid === uuid &&
+    !document.querySelector('.hol-player-attack [data-action=attack]')?.disabled,
+    woundScenario.targetTokenUuid,
+  );
+  await woundDialog.locator("summary").filter({ hasText: "Wound adjustments" }).click();
   await woundDialog.locator(".hol-wound-context").first().waitFor();
-  assert.equal(await woundDialog.locator("select[name=weaponItemUuid] option").count(), 2);
-  assert.equal(await woundDialog.locator("select[name=targetTokenUuid]").inputValue(), woundScenario.targetTokenUuid);
+  assert.equal(await woundDialog.locator("select[name=weaponItemUuid]").count(), 0);
+  assert.equal(await woundDialog.locator("select[name=targetTokenUuid]").count(), 0);
+  assert.equal(await woundDialog.locator(".hol-native-target").getAttribute("data-target-uuid"), woundScenario.targetTokenUuid);
   assert.equal(await woundDialog.locator(".hol-wound-context").count(), 2);
   const woundEffectOrder = await woundDialog
     .locator(".hol-wound-context")
@@ -820,14 +857,14 @@ try {
       fieldsets.map((fieldset) => fieldset.dataset.effectId),
     );
   const woundAttack = woundDialog.getByRole("button", {
-    name: "Commit one Main Action and roll",
+    name: "Attack",
     exact: true,
   });
-  assert.equal(await woundAttack.isEnabled(), false);
+  assert.equal(await woundAttack.isEnabled(), true);
   for (const index of [0, 1])
     await woundDialog
-      .locator(`select[name="wound-${index}"]`)
-      .selectOption("applies");
+      .locator(`input[name="wound-${index}"]`)
+      .check();
   await player.page.waitForFunction(
     () =>
       !document.querySelector(
@@ -853,17 +890,14 @@ try {
     .waitFor();
   assert.deepEqual(
     await woundDialog
-      .locator(".hol-wound-context select")
-      .evaluateAll((selects) => selects.map((select) => select.value)),
-    ["", ""],
+      .locator(".hol-wound-context input")
+      .evaluateAll((inputs) => inputs.map((input) => input.checked)),
+    [false, false],
   );
-  assert.equal(await woundAttack.isEnabled(), false);
-  await woundDialog
-    .locator(`select[name="wound-0"]`)
-    .selectOption("applies");
-  await woundDialog
-    .locator(`select[name="wound-1"]`)
-    .selectOption("does-not-apply");
+  assert.equal(await woundAttack.isEnabled(), true);
+  await woundDialog.locator("summary").filter({ hasText: "Wound adjustments" }).click();
+  await woundDialog.locator(`input[name="wound-0"]`).check();
+  assert.equal(await woundDialog.locator(`input[name="wound-1"]`).isChecked(), false);
   await player.page.waitForFunction(
     () =>
       !document.querySelector(
@@ -1130,19 +1164,15 @@ try {
     .getByRole("button", { name: "Use Basic Melee", exact: true })
     .click();
   const dialog = player.page.locator(".hol-player-attack");
-  await dialog.locator(".hol-roll-sources").getByText("Target Evasion", {
-    exact: false,
-  }).waitFor();
-  await dialog.locator(".hol-roll-sources").getByText("Target is Grappled", {
-    exact: false,
-  }).waitFor();
+  assert.match(await dialog.locator(".hol-roll-sources").textContent(), /Target Evasion/);
+  assert.match(await dialog.locator(".hol-roll-sources").textContent(), /Target is Grappled/);
   assert.equal(await dialog.locator("output").innerText(), "6d6kh3 + (2)");
   await dialog.screenshot({
     path: "test-results/player-basic-melee-dialog.png",
   });
   await dialog
     .getByRole("button", {
-      name: "Commit one Main Action and roll",
+      name: "Attack",
       exact: true,
     })
     .click();

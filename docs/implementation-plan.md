@@ -39,7 +39,7 @@ A04 is implemented in #50 with native tracker/runtime evidence. #48 supplies pur
 
 ## Core interaction work — required alongside the encounter alpha
 
-These are four additional focused work items, confirmed in #12. Created issues: [U01 / #13](https://github.com/bruceamoser/heroes-of-legend-foundry/issues/13), [U02 / #14](https://github.com/bruceamoser/heroes-of-legend-foundry/issues/14), [U03 / #15](https://github.com/bruceamoser/heroes-of-legend-foundry/issues/15), [U04 / #16](https://github.com/bruceamoser/heroes-of-legend-foundry/issues/16). Complete the relevant initial drop routes for alpha, then extend the same contract as creation, inventory and summons become available. Full release requires every drop route in [interaction design](interaction-design.md).
+These are four additional focused work items, confirmed in #12. Created issues: [U01 / #13](https://github.com/bruceamoser/heroes-of-legend-foundry/issues/13), [U02 / #14](https://github.com/bruceamoser/heroes-of-legend-foundry/issues/14), [U03 / #15](https://github.com/bruceamoser/heroes-of-legend-foundry/issues/15), [U04 / #16](https://github.com/bruceamoser/heroes-of-legend-foundry/issues/16). Complete the relevant initial drop routes for alpha, then extend the same contract as creation, inventory and summons become available. Validate supported core drop routes before release; advanced routes remain labeled backlog work under the latest #129 scope.
 
 | ID | Focused work | Depends on | Acceptance |
 |---|---|---|---|
@@ -86,13 +86,18 @@ B02–B04 must deliver the full creation/advancement charactermancer in [#18](ht
 | D07 | Summon tether, healing payer and cleanup | D06, D02 | Nearest-square distance at every waypoint, 6/7 boundary, controller state cleanup, one HP payment. |
 | D08 | Forms, granted attacks and special handlers | B04, D03, D07 | Own HP/wounds preserved in forms; no recursive free attacks; each exceptional handler has fixtures. |
 
-## Milestone 5 — complete content and table tools
+## Milestone 5 — content coverage and optional advanced automation
+
+Bruce's latest #129 correction supersedes the earlier all-handler release gate.
+Core usability, honest coverage labels and readable manual specialty references
+are accepted. Advanced behavior-family adapters remain a backlog, not completed
+work and not a prerequisite for releasing the tested core.
 
 | ID | Focused work | Depends on | Acceptance |
 |---|---|---|---|
 | E01 | Complete player content adapters | B01, A01, C04 | Cover all approved ability/equipment/recipe families; fail unknown fields and unresolved references. Split by behavior family. |
 | E02 | Completed DA/bestiary import | #3, D05 | Full roster/monster powers/summons and art paths reconcile with final upstream source lock. |
-| E03 | Per-card automation coverage | E01, E02, D08 | Every record has a handler, deliberate human-choice boundary and tests; no silent text-only mechanics at full release. Split into reviewable catalog batches. |
+| E03 | Per-card automation coverage | E01, E02, D08 | Every record labels automated, partial or reference/manual handling. Test automated claims and preserve readable full rules for manual specialties. Additional handlers remain optional behavior-family work. |
 | E04 | Noncombat tasks and DA encounter tools | B07, E02 | Binary/cumulative progress, Aid exclusivity, advisory encounter budget, scene/creature setup. |
 | E05 | Rule journals, adventure links and onboarding | E01, E02 | Linked accessible player rules; DA-only secrets in restricted documents; tour and first scene verified. |
 | E06 | Browsers, hotbar, HUD and accessibility | B04, E03 | Search/filter, blocked-reason display, keyboard/focus, source links, token controls and detached sheets. |
@@ -102,7 +107,7 @@ B02–B04 must deliver the full creation/advancement charactermancer in [#18](ht
 
 | ID | Focused work | Depends on | Acceptance |
 |---|---|---|---|
-| R01 | Multiplayer, permissions and recovery regression | All engine work | Acceptance suite with GM + two players + second GM, pending operations, stale clicks and secret data checks. |
+| R01 | Multiplayer, permissions and recovery regression | Supported core engine work | Acceptance suite with GM + two players + second GM, pending operations, stale clicks and secret data checks. |
 | R02 | Compatibility/performance/accessibility matrix | E06, R01 | Recorded Foundry/OS/browser versions, full-catalog workload and no system deprecation warnings. |
 | R03 | Licensing, attribution and assets | Source intake | Selected code license, explicit book/content policy and font/art notices; optimized VTT assets with provenance. |
 | R04 | Versioned package and release pipeline | E07, R02, R03 | Clean Node 24 build, tag/version equality, immutable ZIP, valid packs, manifest install and upgrade smoke test. |

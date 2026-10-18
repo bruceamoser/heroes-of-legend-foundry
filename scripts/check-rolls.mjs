@@ -11,7 +11,14 @@ try {
   await page.goto(url);await selectTestUser(page, process.env.HOL_TEST_USER??'Gamemaster');await page.locator('button[name=join]').click();await page.waitForFunction(()=>game.ready);
   actorId=await page.evaluate(async()=>{const actor=await Actor.create({name:'Roll test',type:'character',system:{attributes:{brawn:{base:2}}}});await actor.sheet.render({force:true});return actor.id;});
   await page.locator('.hol-character [data-attribute=brawn]').click();
-  const dialog=page.locator('.hol-roll-dialog');await dialog.locator('[name=boons]').fill('5');await dialog.locator('[name=banes]').fill('3');
+  const dialog=page.locator('.hol-roll-dialog');
+  assert.equal(await dialog.locator('[name=boonsLabel], [name=banesLabel]').count(), 0);
+  const slider=dialog.getByRole('slider', {name:'Boons or Banes'});
+  await slider.focus(); await slider.press('Home');
+  assert.equal(await dialog.locator('output').innerText(),'6d6kl3 + (2)');
+  await slider.press('End');
+  assert.equal(await dialog.locator('output').innerText(),'6d6kh3 + (2)');
+  await slider.press('ArrowLeft');
   assert.equal(await dialog.locator('output').innerText(),'5d6kh3 + (2)');
   await dialog.getByRole('button',{name:'Roll',exact:true}).click();
   await page.waitForFunction(id=>game.messages.some(m=>m.getFlag('heroes-of-legend','roll')?.actorUuid===`Actor.${id}`),actorId);

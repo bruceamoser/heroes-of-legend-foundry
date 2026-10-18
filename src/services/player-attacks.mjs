@@ -338,8 +338,8 @@ function selectedTarget(actorToken, actor, requestedUuid, nativeTargets) {
       requested && available.has(requested)
         ? requested
         : !requested
-          ? nativeTargets.find((entry) => available.has(entry)) ??
-            (options.length === 1 ? options[0].uuid : null)
+          ? (nativeTargets.length === 1 && available.has(nativeTargets[0])
+            ? nativeTargets[0] : null)
           : null;
   return {
     options,
@@ -371,7 +371,7 @@ export function basicMeleeDialogContext(
       ? selectedTarget(
           actorToken,
           actor,
-          selection.targetTokenUuid,
+          selection.requireNativeTarget ? null : selection.targetTokenUuid,
           nativeTargets,
         )
       : {
@@ -392,7 +392,10 @@ export function basicMeleeDialogContext(
     reasons.push(
       "The selected Basic Melee target is not visible or available to this user. Choose an available target or ask the DA to adjudicate.",
     );
-  else if (!targets.tokenUuid) reasons.push("Choose one adjacent creature.");
+  else if (!targets.tokenUuid)
+    reasons.push("Use Foundry targeting to select exactly one adjacent creature.");
+  if (selection.requireNativeTarget && selection.targetTokenUuid !== targets.tokenUuid)
+    reasons.push("Your Foundry target changed. Review the current target and attack again.");
   let basis = null,
     plan = null,
     planError = "",

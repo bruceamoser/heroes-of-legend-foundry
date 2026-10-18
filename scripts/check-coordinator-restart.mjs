@@ -8,17 +8,21 @@ if (
   !url ||
   !["localhost", "127.0.0.1"].includes(new URL(url).hostname) ||
   process.env.HOL_TEST_ALLOW_WRITES !== "1" ||
-  !["--prepare", "--check-blocked", "--verify"].includes(mode)
+  !["--prepare", "--check-blocked", "--verify", "--prepare-idle", "--verify-idle"].includes(mode)
 )
   throw new Error(
-    "Use a disposable local world and --prepare / --check-blocked / --verify",
+    "Use a disposable local world and --prepare / --check-blocked / --verify or --prepare-idle / --verify-idle",
   );
 const file = new URL(
     "../test-results/coordinator-restart.json",
     import.meta.url,
   ),
   browser = await chromium.launch();
+const idleFile = new URL("../test-results/coordinator-idle-restart.json", import.meta.url),
+  idleFixture = mode === "--verify-idle" ? JSON.parse(await readFile(idleFile, "utf8")) : null;
 const context = await browser.newContext();
+if (idleFixture) await context.addInitScript((browserId) =>
+  localStorage.setItem("heroes-of-legend.authority-browser", browserId), idleFixture.browserId);
 await context.addInitScript(() =>
   localStorage.setItem("core.noCanvas", "true"),
 );
@@ -28,10 +32,29 @@ try {
   await selectTestUser(page, "Gamemaster");
   await page.locator("button[name=join]").click();
   await page.waitForFunction(() => game.ready);
-  if (mode === "--prepare") {
+  if (["--prepare-idle", "--verify-idle"].includes(mode)) {
+    await page.evaluate(async () => {
+      globalThis.__holStartupAuthority = await import("/systems/heroes-of-legend/services/authority.mjs");
+    });
+    await page.waitForFunction(() => __holStartupAuthority.isCreationAuthority());
+    if (mode === "--prepare-idle") {
+      const checkpoint = await page.evaluate(() => ({
+        browserId: __holStartupAuthority.authorityBrowserId(), launch: game.world.lastPlayed,
+        work: game.settings.get("heroes-of-legend", "authorityWork"),
+      }));
+      assert.equal(checkpoint.work.busy, false);
+      await mkdir(new URL("../test-results/", import.meta.url), { recursive: true });
+      await writeFile(idleFile, JSON.stringify(checkpoint, null, 2) + "\n");
+      console.info("PASS: fresh-world active GM starts automatically. Restart the isolated world, then run --verify-idle.");
+    } else {
+      assert.notEqual(await page.evaluate(() => game.world.lastPlayed), idleFixture.launch,
+        "Actually restart the isolated world before verification");
+      await page.evaluate(async () => { await __holStartupAuthority.releaseAuthority(); });
+      await unlink(idleFile);
+      console.info("PASS: clean daily restart resumes the same GM browser automatically, without recovery controls.");
+    }
+  } else if (mode === "--prepare") {
     const fixture = await page.evaluate(async () => {
-      if (game.settings.get("heroes-of-legend", "creationAuthorityClient"))
-        throw new Error("Expected unbound coordinator");
       const { bindCreationAuthority, enqueueCharacterOperation } = await import(
         "/systems/heroes-of-legend/services/authority.mjs"
       );

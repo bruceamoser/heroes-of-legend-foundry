@@ -45,15 +45,26 @@ export function registerAuthority() {
       meta = { clientId: legacy, legacy: true, launch: launch() };
       await game.settings.set(ID, "authorityMeta", meta);
     }
-    if (
-      game.user.isGM &&
+    const emptyRecord = (value) => value && typeof value === "object" &&
+      !Array.isArray(value) && Object.keys(value).length === 0;
+    const freshWorld = game.user.isGM && game.users.activeGM?.isSelf &&
+      !legacy && emptyRecord(meta) && emptyRecord(setting("authorityWork"));
+    const resumeBrowser = game.user.isGM && legacy && meta.clientId === legacy &&
       meta.userId === game.user.id &&
-      meta.browserId === authorityBrowserId()
-    ) {
+      meta.browserId === authorityBrowserId();
+    if (freshWorld || resumeBrowser) {
       try {
         await bindCreationAuthority();
-      } catch {
-        /* Another live tab or unresolved work must remain suspended. */
+      } catch (error) {
+        // A competing tab may have claimed the pristine world meanwhile.
+        // Existing assignments and uncertain work still require explicit recovery.
+        const currentClient = setting("creationAuthorityClient");
+        if (freshWorld && error.code !== "HOL_AUTHORITY_TAB_LOCK" &&
+            (!currentClient || currentClient === game.socket.id))
+          ui.notifications.warn(
+            `Automation could not start. Open Game Settings → Manage automation. ${error.message}`,
+            { permanent: true },
+          );
       }
     }
   });
@@ -74,9 +85,9 @@ async function takeLocalLock() {
       async (lock) => {
         if (!lock) {
           reject(
-            new Error(
+            Object.assign(new Error(
               "Another live tab in this browser holds the coordinator. Release it there first.",
-            ),
+            ), { code: "HOL_AUTHORITY_TAB_LOCK" }),
           );
           return;
         }
@@ -177,12 +188,15 @@ async function activate({ restartConfirmed = false } = {}) {
     throw new Error("The world launch marker is unavailable.");
   const sameBrowser =
     meta.userId === game.user.id && meta.browserId === authorityBrowserId();
-  const restarted = meta.launch && meta.launch !== stamp;
+  const restarted = meta.launch && meta.launch !== stamp,
+    checkpoint = setting("authorityWork"),
+    idleRestart = Boolean(bound) && meta.clientId === bound && restarted && sameBrowser && game.users.activeGM?.isSelf &&
+      checkpoint.clientId === bound && checkpoint.busy === false && !checkpoint.uncertain;
   if (!bound) {
     if (!game.users.activeGM?.isSelf)
       throw new Error("The active GM must enable the initial coordinator.");
   } else if (restarted) {
-    if (!restartConfirmed || !game.users.activeGM?.isSelf)
+    if (!idleRestart && (!restartConfirmed || !game.users.activeGM?.isSelf))
       throw new Error(
         "After closing former GM windows and relaunching the world, the active GM can explicitly recover the coordinator.",
       );
@@ -209,6 +223,8 @@ async function activate({ restartConfirmed = false } = {}) {
     // Keep the old client binding until this round trip delivers preceding setting updates.
     // The mixed metadata/client binding fails closed while we inspect the fresh checkpoint.
     work = setting("authorityWork");
+    if (idleRestart && (work.clientId !== bound || work.busy !== false || work.uncertain))
+      throw new Error("The saved work checkpoint changed during startup. Open Manage automation to recover it.");
     if (bound && !restarted) {
       if (work.clientId !== bound)
         throw new Error(

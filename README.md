@@ -2,7 +2,41 @@
 
 Native Foundry Virtual Tabletop **V14** system for Bruce Moser's **Heroes of Legend**.
 
-**Status: research and build specification, October 17, 2026.** There is no installable system release yet. The initial documentation is submitted for review on an issue branch.
+**Development preview for Foundry V14.** Character creation, advancement,
+native rolls, encounter actions, damage, conditions and healing potions are
+implemented. Some specialty abilities remain readable references for table
+resolution; a reference does not promise automated mechanics. Release package
+installation is still being validated.
+
+## Start playing
+
+1. Install the preview package when its release manifest is available, then create
+   a Foundry V14 world using **Heroes of Legend**. For a local development build,
+   follow [development setup](docs/development.md).
+2. Join as the GM. A fresh world starts request processing automatically in the
+   active GM's window; players do not need to enable a service or seek approval
+   for ordinary actions. Keep that GM window connected while playing. A clean
+   daily restart resumes in that same GM browser automatically.
+3. Create a character with the guided creation flow, then equip its owned Items
+   and place its native Token. Legal creation and advancement options appear
+   first; unavailable choices remain visible with their reasons.
+4. Use the attack, roll or potion buttons on the relevant Actor or Item sheet
+   for supported actions. Open other ability references from their rows or the
+   roll dialog to read their effects; resolve specialty mechanics at the table
+   unless a dedicated action button automates them. Select recipients with
+   Foundry's native token targeting. Use the −3…+3 slider to adjust Boons/Banes;
+   ordinary play does not require written reasons. Freely repeat a fresh Defend
+   roll when the table needs a correction.
+5. For a healing potion, target one other Token or leave targets clear for
+   self-use. Another owner's character receives a one-click consent offer.
+   Encounter costs remain tracked during an active encounter; free play does
+   not create a Combat or artificial action budgets.
+
+If processing needs recovery, the GM can open **Game Settings → Manage automation**.
+Use its existing handoff and recovery controls when changing GM windows or
+resuming interrupted work; do not clear saved state or reroll an uncertain old
+operation to force it through. A fresh intentional use or roll is a new action.
+GM processing requires HTTPS or localhost for the browser's exclusive-tab lock.
 
 ## Read the specification
 
@@ -22,10 +56,13 @@ Neon Relic is an implementation reference, not this system's code base. HOL uses
 
 ## Contributing
 
-Read [AGENTS.md](AGENTS.md). Work follows issue → branch → implementation → PR → independent review → squash merge. The first two issues track [research](https://github.com/bruceamoser/heroes-of-legend-foundry/issues/1) and [specification](https://github.com/bruceamoser/heroes-of-legend-foundry/issues/2).
+Read [AGENTS.md](AGENTS.md). Work follows issue → branch → implementation → PR → review → squash merge. The first two issues track [research](https://github.com/bruceamoser/heroes-of-legend-foundry/issues/1) and [specification](https://github.com/bruceamoser/heroes-of-legend-foundry/issues/2).
 
-Code and content licensing will be selected separately before the first distributable release; this planning repository does not assign a new license to the rulebook or artwork.
+Licensing remains undecided. This preview grants no new rights to the code, rulebook content or artwork.
 
-## Development preview
+## Development
 
-The first native V14 package foundation is implemented. It includes typed character/ability editors with HOL styling; gameplay automation and the guided charactermancer remain under development. See [development setup and test evidence](docs/development.md). Build with Node 24 using `npm ci` and `npm run check`; output is `dist/heroes-of-legend/`.
+See [development setup and test evidence](docs/development.md). Build with Node 24
+using `npm ci` and `npm run check`; output is `dist/heroes-of-legend/`. Static test
+results and native runtime evidence are recorded separately. All runtime fixtures
+use a disposable development world, never a live campaign.

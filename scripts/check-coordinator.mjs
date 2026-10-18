@@ -27,9 +27,18 @@ async function join(name) {
 }
 try {
   first = await join("Gamemaster");
+  await first.page.evaluate(async () => {
+    globalThis.__holStartupAuthority = await import("/systems/heroes-of-legend/services/authority.mjs");
+  });
+  await first.page.waitForFunction(() => __holStartupAuthority.isCreationAuthority());
   fixture = await first.page.evaluate(async () => {
-    if (game.settings.get("heroes-of-legend", "creationAuthorityClient"))
-      throw new Error("Expected an unbound coordinator");
+    const { isCreationAuthority, releaseAuthority } = await import(
+      "/systems/heroes-of-legend/services/authority.mjs"
+    );
+    if (game.settings.get("heroes-of-legend", "creationAuthorityClient")) {
+      if (!isCreationAuthority()) throw new Error("A preexisting coordinator is assigned; refusing to reset it.");
+      await releaseAuthority();
+    }
     const user = await User.create({
       name: `Coordinator GM ${foundry.utils.randomID(4)}`,
       role: CONST.USER_ROLES.GAMEMASTER,
@@ -275,6 +284,10 @@ try {
     const cleanup = await join("Gamemaster");
     await cleanup.page.evaluate(async (id) => {
       await game.users.get(id)?.delete();
+      const { isCreationAuthority, releaseAuthority } = await import(
+        "/systems/heroes-of-legend/services/authority.mjs"
+      );
+      if (isCreationAuthority()) await releaseAuthority();
     }, fixture.user);
   }
   fixture = null;

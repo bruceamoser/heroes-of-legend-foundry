@@ -115,9 +115,9 @@ These are requirements for future tests and manual Foundry checks. **They have n
 
 | ID | Scenario | Required result |
 |---|---|---|
-| T85 | Open an attack/defense dialog and select an applicable ability | Show the ability's exact effects/costs and updated formula; automatic passives count once; unrelated actions are unavailable with a reason. |
-| T86 | Prefilled 2 Boons and 1 Bane; player adds a labeled situational Bane | Equal totals cancel to ordinary 3d6; removing the added entry restores 4d6 keep-high-three. Auto sources retain their identity. |
-| T87 | Select Shield Block, deselect, then cancel defense before commitment | No Reaction/effect/payment consumed; request remains pending. Submitting the selected reaction pays once before rolling. |
+| T85 | Open a roll/defense or player Attack dialog; inspect reviewed actions and optionally attach an owned reference | Reviewed Use controls show their exact supported cost/effect and refresh sources once. Searchable reference attachments preserve Item/source identity but add no inferred bonus, cost or effect. Automatic sources count once; timing/counter/ordinary-condition advice does not require extra approval. |
+| T86 | Automatic 2 Boons and 1 Bane prefill the effective slider at +1; move it to 0, then +1 | Show ordinary 3d6 at 0 and 4d6 keep-high-three at +1, with no adjustment reason fields or double addition. Retain source audit identity. Until manually overridden, source changes refresh the default; the displayed effective net remains capped at −3…+3. |
+| T87 | Cancel a defense without Use/Roll; separately Use Shield Block, then cancel the later roll | Opening, browsing and reference attachment spend nothing. Explicit Use commits the reviewed action separately: track an available Reaction once, keep an empty counter at zero, and retain the benefit if the later roll is canceled. Reusing the active matching benefit adds no charge; retransmitting the same operation repeats neither payment nor effect. |
 | T88 | Creature attacks Hero A; Hero A clicks Defend | Show creature attack description and A's actual token, printed defense attribute/effective stat, Threat, conditions and benefits; allow eligible abilities without rebuilding context. |
 | T89 | Area attack on A and B; A defends with an ability | A and B have separate response IDs/results; A's choice does not change B's roll or resolve B automatically. |
 | T90 | Any player/non-owner clicks Defend; two players handle one defender; chat reloads | Dialog opens without ownership/target gating; actual roller and chosen defender recorded separately; same-operation retransmission is idempotent; fresh submissions for the same defender each roll without a checkbox, explanation or DA approval. |
@@ -145,7 +145,7 @@ These are requirements for future tests and manual Foundry checks. **They have n
 |---|---|---|
 | T103 | GM natively targets A/B, clicks Attack, then targets C | Posted suggestions remain A/B; native multi-target UI is sufficient; C does not silently replace them. |
 | T104 | Wrong player clicks; no target was selected; extra character is affected | Open/cancel/choose another defender without consuming card; no-target case opens chooser; each defense is independent. |
-| T105 | A rule suggests an ability/defender is ineligible during encounter | Explain the rule and allow an explicit DA-adjudicated exception; do not turn it into a blanket Defend gate. Mutation permissions and duplicate protection remain intact. |
+| T105 | A rule suggests an ability/defender is ineligible during encounter | Show concise table guidance and allow deliberate ability/defender selection without extra DA approval. Actual source/equipment requirements, mutation permissions and same-operation protection remain intact. |
 
 ## Test organization and evidence
 

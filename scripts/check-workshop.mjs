@@ -49,6 +49,36 @@ try {
     .getByRole("heading", { name: "Borin Bridgekeeper", exact: true })
     .waitFor();
   assert.equal(await page.getByRole("tab").count(), 5);
+  assert.equal(
+    await page.getByRole("heading", { name: "Main", exact: true }).count(),
+    0,
+  );
+  assert.equal(await page.locator('[data-action="builder"]').count(), 0);
+  assert.deepEqual(
+    (await page.locator(".play-summary > .box > h3").allTextContents())
+      .slice(0, 4)
+      .map((s) => s.trim()),
+    ["Passives", "Ancestry traits", "Defenses", "Conditions Add"],
+  );
+  assert.equal(
+    await page
+      .locator(".action-groups .trait-table, .action-groups .passive-table")
+      .count(),
+    0,
+  );
+  await page.locator(".passive-table [data-action=reference]").first().click();
+  assert(await page.getByRole("dialog").isVisible());
+  await page.keyboard.press("Escape");
+  await page.locator(".trait-table [data-action=reference]").first().click();
+  assert(await page.getByRole("dialog").isVisible());
+  await page.keyboard.press("Escape");
+  await page.getByRole("tab", { name: "Abilities", exact: true }).focus();
+  await page.keyboard.press("Home");
+  assert.equal(
+    await page.evaluate(() => document.activeElement.id),
+    "tab-Main",
+  );
+
   const edge = await page
     .getByRole("tab", { name: "Abilities", exact: true })
     .boundingBox();
@@ -196,8 +226,9 @@ try {
     0,
   );
   await page.keyboard.press("Escape");
+  await page.getByRole("tab", { name: "Development", exact: true }).click();
   await page
-    .getByRole("button", { name: "Open character builder", exact: true })
+    .getByRole("button", { name: "Edit creation", exact: true })
     .click();
   await page
     .getByRole("button", { name: "4 Early learning", exact: true })
@@ -243,6 +274,60 @@ try {
     await page.locator(".inventory-table").innerText(),
     /Ordinary Medium Armor/,
   );
+
+  // Remove a purchased shield directly from its row, preserving the granted shield.
+  assert.equal(
+    await page.getByText("Remove purchased items", { exact: true }).count(),
+    0,
+  );
+  const beforePurchase = await page
+    .locator(".context-strip .inventory-stats")
+    .innerText();
+  await page
+    .getByLabel("Search equipment", { exact: true })
+    .fill("Ordinary Shield");
+  await page
+    .locator('[data-action="equipment"][data-id="item-ordinary-shield"]')
+    .click();
+  const shieldRows = page
+    .locator(".inventory-table tbody tr")
+    .filter({ hasText: "Ordinary Shield" });
+  assert.equal(await shieldRows.count(), 2);
+  const removeShield = page.getByRole("button", {
+    name: "Remove purchased Ordinary Shield",
+    exact: true,
+  });
+  assert.equal(await removeShield.count(), 1);
+  assert.match(
+    await removeShield.locator("xpath=ancestor::tr").innerText(),
+    /Purchased/,
+  );
+  // Even a later play removal must not hide the original purchase from creation editing.
+  await page.getByRole("button", { name: "8 Review", exact: true }).click();
+  await page
+    .getByRole("button", { name: "View character sheet", exact: true })
+    .click();
+  await page.getByRole("tab", { name: "Inventory", exact: true }).click();
+  await page
+    .locator(".inventory-table tbody tr")
+    .filter({ hasText: "Ordinary Shield" })
+    .filter({ hasText: "Purchased" })
+    .getByRole("button", { name: "Delete Ordinary Shield", exact: true })
+    .click();
+  await page.getByRole("tab", { name: "Development", exact: true }).click();
+  await page
+    .getByRole("button", { name: "Edit creation", exact: true })
+    .click();
+  await page.getByRole("button", { name: "7 Equipment", exact: true }).click();
+  assert.equal(await shieldRows.count(), 2);
+  await removeShield.click();
+  assert.equal(await shieldRows.count(), 1);
+  assert.match(await shieldRows.innerText(), /Shielding Step/);
+  assert.equal(
+    await page.locator(".context-strip .inventory-stats").innerText(),
+    beforePurchase,
+  );
+  await page.getByLabel("Search equipment", { exact: true }).fill("");
   await page.screenshot({ path: `${output}/desktop-equipment.png` });
   await page.getByRole("button", { name: "8 Review", exact: true }).click();
   assert(
@@ -600,8 +685,9 @@ try {
     .getByRole("button", { name: "Roll", exact: true })
     .click();
   await page.keyboard.press("Escape");
+  await page.getByRole("tab", { name: "Development", exact: true }).click();
   await page
-    .getByRole("button", { name: "Open character builder", exact: true })
+    .getByRole("button", { name: "Edit creation", exact: true })
     .click();
   await page.getByRole("button", { name: "7 Equipment", exact: true }).click();
   await page
@@ -758,8 +844,9 @@ try {
   await page.getByRole("tab", { name: "Main", exact: true }).click();
   assert.equal(await page.locator("[data-injected]").count(), 0);
   assert.match(await page.locator(".trait-table").innerText(), /trait-unknown/);
+  await page.getByRole("tab", { name: "Development", exact: true }).click();
   await page
-    .getByRole("button", { name: "Open character builder", exact: true })
+    .getByRole("button", { name: "Edit creation", exact: true })
     .click();
   await page.getByRole("button", { name: "3 Origins", exact: true }).click();
   await page

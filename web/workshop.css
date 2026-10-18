@@ -1234,13 +1234,7 @@ dialog header button {
   min-width: 150px;
 }
 .condition-bar {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 0 10px;
   font-size: 0.78rem;
-  border-bottom: 1px solid var(--line);
-  margin-bottom: 10px;
 }
 .condition-list {
   display: flex;
@@ -1267,7 +1261,7 @@ dialog header button {
 }
 @media (min-width: 601px) {
   .main-layout {
-    grid-template-columns: minmax(0, 1fr) 180px;
+    grid-template-columns: minmax(0, 1fr) 230px;
     gap: 10px;
   }
 }
@@ -1275,5 +1269,67 @@ dialog header button {
   #app {
     margin-left: 52px;
     margin-right: 10px;
+  }
+}
+
+/* Main is a compact play surface; full rules remain one click away. */
+.main-layout .action-group {
+  margin-bottom: 6px;
+}
+.main-layout .action-group > h3 {
+  padding: 2px 0 4px;
+}
+.main-layout .action-table td {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+.main-layout .action-table .brief {
+  -webkit-line-clamp: 1;
+}
+.main-layout .basic-tag {
+  display: inline;
+  margin-left: 5px;
+  font-size: 0.6rem;
+}
+.main-layout button.table-link {
+  min-height: 24px;
+}
+.main-layout .play-summary {
+  gap: 6px;
+}
+.main-layout .box {
+  padding: 7px 8px;
+  min-width: 0;
+}
+.main-layout .box > h3 {
+  margin-bottom: 4px;
+}
+.main-layout .stat-row {
+  padding: 4px 0;
+}
+.passive-table,
+.play-summary .trait-table {
+  table-layout: fixed;
+}
+.passive-table td,
+.play-summary .trait-table td {
+  padding: 3px 0;
+}
+.play-summary .trait-table td:first-child {
+  width: auto;
+}
+.play-summary .brief {
+  font-size: 0.73rem;
+}
+.condition-bar .section-controls button {
+  min-height: 23px;
+  padding: 2px 6px;
+}
+@media (max-width: 600px) {
+  .main-layout .play-summary {
+    grid-template-columns: 1fr;
+  }
+  .main-layout .action-table .brief {
+    -webkit-line-clamp: 2;
   }
 }

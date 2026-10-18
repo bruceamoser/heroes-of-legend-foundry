@@ -75,8 +75,8 @@ include the complete discipline/ability grant pair before selection. Attribute
 inputs update the shared header immediately. Equipment shows granted weapons,
 ammunition, armor and supply dice before the market list.
 
-Main uses action tables with two-line summaries and complete local reference
-windows. Edit mode exposes per-action and per-timing-group basic-action visibility
+Main uses compact action tables with one-line desktop summaries and complete local reference
+windows. Narrow layouts retain two summary lines. Edit mode exposes per-action and per-timing-group basic-action visibility
 controls; those are preferences, not permission gates. Known recipe entries
 show the relevant learned crafting ability and an attribute roll with a single
 −3…+3 Boon/Bane slider. Rolls may be repeated; the web tool does not consume
@@ -187,7 +187,7 @@ contribute Bulk, with the existing single worn-outfit exemption. Armor still
 requires the matching training to grant resistance.
 
 Character allows adding/removing known or custom languages with spoken/signed
-and written permissions. Main has a compact condition strip with add/remove
+and written permissions. Main has a compact Conditions box with add/remove
 controls, rating or duration, and starred persistence where applicable. Conditions
 use the shared condition vocabulary and validation. This browser tracker is
 manual: adding a condition does not run native turn timing, damage or enforcement.
@@ -226,3 +226,31 @@ book edition. This is a known content dependency, not a completed light armor fi
 - Direct implementation and author review; no delegated workers. Review caught
   and fixed access to an unfinished signature equipment choice and edge-tab
   clipping at viewport widths just above the centered-sheet breakpoint.
+
+
+## Main density and creation purchase removal (#164)
+
+Main starts immediately with action tables; its redundant title and Create /
+develop button are removed. Creation and advancement remain accessible from
+Development. The right column is ordered **Passives, Ancestry traits, Defenses,
+Conditions, Movement & carrying, Supplies**. Passives and traits retain compact
+clickable rows with local details. Condition controls stay together inside their
+box below Defenses. Desktop action rows, headings and supporting boxes use tighter
+spacing; the common header, hanging tabs and independent content scrolling remain.
+
+The creation Equipment step places a remove button on each purchased starting
+inventory row. It removes that specific purchase and refunds its full coin cost,
+without deleting a granted copy of the same equipment. The separate removal list
+is gone. Creation inventory and its balance show the original creation receipts,
+so a subsequent sheet-side removal cannot hide a purchase from correction.
+
+Bruce confirmed that the current universal Shield Block rule resolves his shield
+question; no new training requirement or shield labels were added. The temporary
+book clarification issue #1271 was closed as answered.
+
+Validation: Node 24 build/catalog checks and all 385 unit tests passed.
+Expanded Chromium checks cover right-column order, passive/trait
+detail dialogs, keyboard return to Main, and direct purchase removal after a
+sheet-side deletion (including preservation of a same-type granted shield and
+coin/Bulk restoration). Desktop, 900px window and mobile screenshots inspected.
+No native Foundry behavior or portable schema changes in this pass.

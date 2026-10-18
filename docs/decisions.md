@@ -95,3 +95,14 @@ specifies the consistent proposed Armor 1/2/3, levels 1/3/7, DP 2/4/8, resistanc
 1/2/3 progression, with light's 10-coin price explicitly identified as inferred.
 Keep that correction in canonical book review and then repin all dependent system
 content together. The current pinned edition still contains the old armor grants.
+
+
+## October 18 Main density follow-up (#164)
+
+Bruce moved Passives and Ancestry traits into the right column above Defenses,
+and Conditions into a box directly below Defenses. Remove the Main title and
+Create / develop shortcut, tighten action rows and use Development as the creation
+entry. Creation purchase removal belongs on the starting inventory row, retaining
+item identity and refunding that purchase without touching same-type grants.
+Bruce confirmed that the existing universal Shield Block / equipment-grant
+explanation resolves his shield concern; no shield rule change is requested.

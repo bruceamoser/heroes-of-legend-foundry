@@ -43,7 +43,7 @@ These are four additional focused work items, confirmed in #12. Created issues: 
 
 | ID | Focused work | Depends on | Acceptance |
 |---|---|---|---|
-| U01 | Shared roll dialog with abilities and Boons/Banes | F03, A01, A05, A06 | Select eligible owned abilities; preview effects, costs, attribute replacement and net dice; support labeled situational adjustments and cancel without payment. T85–T87. |
+| U01 | Shared roll dialog with abilities and Boons/Banes | F03, A01, A05, A06 | Use reviewed ability controls with exact supported effects/costs; optionally attach owned references without inferred mechanics. Preview effective net dice with a prefilled −3…+3 slider and no reason fields. Canceling an unsubmitted roll spends nothing; separate committed Use actions remain resolved. T85–T87. |
 | U02 | Creature attack card and per-target Defend flow | A02, A03, A07, U01 | Descriptive chat, native GM target snapshot, any-player Defend access, selectable/additional defenders, prefilled context and editable abilities/modifiers. Distinguish DA rule adjudication from mutation permissions and accidental-duplicate protection. T88–T90, T96, T103–T105. |
 | U03 | Native drag/drop workflow service | F02, F04, U01 | UUID validation, contextual feedback, dialog/hotbar/inventory/scene/reference drop routes as features arrive; no duplicate items, free acquisitions or free summons. T91–T93. |
 | U04 | HOL theme tokens and reusable UI components | F02 | Exact book palette/typography/card/icon references; themed sheet, ability card, roll dialog and attack chat proof; keyboard, contrast and detached-window checks. T94–T95. |

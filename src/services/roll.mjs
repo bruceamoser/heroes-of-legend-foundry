@@ -13,6 +13,10 @@ export async function rollPrepared(actor, basis, draft) {
     basis.mode,
     basis.attackMessageId,
     basis.defenderTokenUuid,
+    {
+      actorTokenUuid: basis.actorTokenUuid,
+      targetTokenUuid: basis.targetTokenUuid,
+    },
   );
   if (JSON.stringify(current) !== JSON.stringify(basis))
     throw new Error("Roll sources changed. Review the dialog before rolling.");

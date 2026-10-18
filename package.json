@@ -46,6 +46,7 @@
     "test:roll-sources": "node scripts/check-roll-sources.mjs",
     "test:creatures": "node scripts/check-creatures.mjs",
     "test:npc-attacks": "node scripts/check-npc-attacks.mjs",
+    "test:player-attacks": "node scripts/check-player-attacks.mjs",
     "test:defense-responses": "node scripts/check-defense-responses.mjs",
     "test:item-packs": "node scripts/check-item-packs.mjs",
     "test:equipment": "node scripts/check-equipment.mjs",

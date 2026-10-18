@@ -1,0 +1,52 @@
+<section class="hol-roll-shell">
+<section class="hol-body">
+  <header class="hol-banner">
+    <p class="hol-kicker">Player attack · Main Action</p>
+    <h1>{{actorName}} · Basic Melee</h1>
+    <p>{{actorTokenName}}{{#if targetName}} → {{targetName}}{{/if}}</p>
+  </header>
+  <p class="hol-note">One Brawn attack roll against one adjacent creature. This roll uses the attacker's result directly; a player target does not make a second Defend roll.</p>
+  {{#if notice}}<p class="hol-note" role="alert">{{notice}}</p>{{/if}}
+  <div class="hol-pair">
+    <label>Held melee weapon
+      <select name="weaponItemUuid">
+        <option value="">Choose a held weapon</option>
+        {{#each weapons}}<option value="{{uuid}}" {{#if selected}}selected{{/if}}>{{name}}{{#if hands}} · {{hands}} hand(s){{/if}}</option>{{/each}}
+      </select>
+    </label>
+    <label>Target
+      <select name="targetTokenUuid">
+        <option value="">Choose one adjacent creature</option>
+        {{#each targets}}<option value="{{uuid}}" {{#if selected}}selected{{/if}}>{{name}} · {{actorType}}</option>{{/each}}
+      </select>
+    </label>
+  </div>
+  <p>Brawn: <strong>{{attribute}}</strong> · Target Evasion and actual target Grappled sources are automatic.</p>
+  {{#if geometryReason}}<p class="hol-note" data-geometry-status="{{geometryStatus}}">{{geometryReason}}</p>{{/if}}
+  {{#if reasons.length}}<section class="hol-errors" aria-live="polite"><h2>Visible requirements</h2><ul>{{#each reasons}}<li>{{this}}</li>{{/each}}</ul></section>{{/if}}
+  {{#if gm}}<label>DA encounter or geometry ruling
+    <textarea name="rulingReason" rows="2" placeholder="Required only when the visible rules ask for an explicit DA judgment.">{{rulingReason}}</textarea>
+  </label>{{/if}}
+  {{#each fears}}<label>Can you perceive {{source}}?
+    <select name="fear-{{index}}"><option value="">Choose perception</option><option value="yes" {{#if yes}}selected{{/if}}>Yes</option><option value="no" {{#if no}}selected{{/if}}>No</option></select>
+  </label>{{/each}}
+  {{#if wounds}}<h2>Wound modifiers</h2><p class="hol-note">The DA/table decides whether each printed injury context applies to this action. The chosen attribute does not decide physical, mental, or social applicability.</p>{{#each wounds}}<fieldset class="hol-wound-context" data-effect-id="{{effectId}}"><legend>{{injury}}</legend><p><strong>{{amount}} {{#if (eq polarity "boon")}}Boon{{else}}Bane{{/if}}</strong> to {{printedContext}}</p><label>Applies to this roll<select name="wound-{{index}}"><option value="">Choose applies or does not apply</option><option value="applies" {{#if applies}}selected{{/if}}>Applies</option><option value="does-not-apply" {{#if doesNotApply}}selected{{/if}}>Does not apply</option></select></label></fieldset>{{/each}}{{/if}}
+  <h2>Sources applied to this attack roll</h2>
+  <ul class="hol-roll-sources">{{#each sources}}<li>{{label}}: {{amount}} {{kind}}{{#if automatic}} · automatic{{/if}}</li>{{/each}}</ul>
+  <h2>Situational Boons and Banes</h2>
+  <div class="hol-pair">
+    <label>Boons<input type="number" name="boons" min="0" step="1" value="{{draft.boons}}"></label>
+    <label>Banes<input type="number" name="banes" min="0" step="1" value="{{draft.banes}}"></label>
+  </div>
+  <div class="hol-pair">
+    <label>Boon reason<input name="boonsLabel" value="{{draft.boonsLabel}}"></label>
+    <label>Bane reason<input name="banesLabel" value="{{draft.banesLabel}}"></label>
+  </div>
+  <p class="hol-note">Damage is fixed by the result: Weak 2 · Standard 3 · Strong 5 Physical. The weapon adds no damage die.</p>
+</section>
+<footer class="hol-roll-footer">
+  <p class="hol-roll-totals" aria-live="polite">{{totals}}</p>
+  <output aria-live="polite">{{formula}}</output>
+  <button type="button" data-action="attack" class="hol-primary" {{#unless canAttack}}disabled{{/unless}}>Commit one Main Action and roll</button>
+</footer>
+</section>

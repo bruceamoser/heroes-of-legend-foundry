@@ -5,10 +5,10 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You set your feet and bring your weapon around in a practiced strike.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Brawn</dd></div><div><dt>Target / range / shape</dt><dd>One adjacent creature</dd></div><div><dt>Duration</dt><dd>Instant</dd></div><div><dt>Equipment / acquisition</dt><dd>Requires a melee weapon, Bulk 1; this reference grants none.</dd></div><div><dt>Limits</dt><dd>Repeatable; pay the action and any stated costs each use.</dd></div><div><dt>Type</dt><dd>Attack</dd></div></dl><div class=\"hol-reference-rules\"><p>Choose your target and make the attack.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>2 physical damage.</dd><dt>Standard</dt><dd>3 physical damage.</dd><dt>Strong</dt><dd>5 physical damage.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/cards/basic-melee.md\" target=\"_blank\" rel=\"noopener\">design/cards/basic-melee.md</a> at <code>9bc9b4fe3256e68880b92c45facf0f25b98a1ea3</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Reviewed native action · rules reference</p><div class=\"hol-reference-flavor\"><p>You set your feet and bring your weapon around in a practiced strike.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Brawn</dd></div><div><dt>Target / range / shape</dt><dd>One adjacent creature</dd></div><div><dt>Duration</dt><dd>Instant</dd></div><div><dt>Equipment / acquisition</dt><dd>Requires a melee weapon, Bulk 1; this reference grants none.</dd></div><div><dt>Limits</dt><dd>Repeatable; pay the action and any stated costs each use.</dd></div><div><dt>Type</dt><dd>Attack</dd></div></dl><div class=\"hol-reference-rules\"><p>Choose your target and make the attack.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>2 physical damage.</dd><dt>Standard</dt><dd>3 physical damage.</dd><dt>Strong</dt><dd>5 physical damage.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/cards/basic-melee.md\" target=\"_blank\" rel=\"noopener\">design/cards/basic-melee.md</a> at <code>9bc9b4fe3256e68880b92c45facf0f25b98a1ea3</code>.</p></section>",
     "activity": {
       "action": "main",
-      "rollMode": "none",
+      "rollMode": "attribute",
       "attribute": "brawn",
       "defenseAttribute": "agility"
     },
@@ -33,8 +33,9 @@
       },
       "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
       "catalogAutomation": "pending",
-      "automation": "pending",
-      "automationLabel": "Rules reference · play automation in progress"
+      "automation": "reviewed",
+      "automationLabel": "Reviewed native action · rules reference",
+      "handler": "player-basic-melee-v1"
     }
   }
 }

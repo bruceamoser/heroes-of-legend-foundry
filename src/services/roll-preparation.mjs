@@ -1,5 +1,6 @@
 import { ATTRIBUTES } from "../rules/character.mjs";
 import { conditionRollSources } from "../rules/conditions.mjs";
+import { targetEvasionSources } from "../rules/player-attacks.mjs";
 import { sourceRollPlan } from "../rules/roll-sources.mjs";
 import { selectedWoundRollSources } from "../rules/wound-contributions.mjs";
 import { actorContributions } from "./conditions.mjs";
@@ -59,8 +60,9 @@ export function rollBasis(
   mode = "attribute",
   attackMessageId = null,
   defenderTokenUuid = null,
+  { actorTokenUuid = null, targetTokenUuid = null } = {},
 ) {
-  if (!["attribute", "defense", "death"].includes(mode))
+  if (!["attribute", "attack", "defense", "death"].includes(mode))
     throw new Error("Unsupported shared roll context.");
   if (
     !actor ||
@@ -116,6 +118,34 @@ export function rollBasis(
         "The selected defender token changed. Choose a defender again.",
       );
   }
+  let actorToken = null,
+    targetToken = null,
+    targetActor = null;
+  if (mode === "attack") {
+    actorToken =
+      typeof actorTokenUuid === "string"
+        ? fromUuidSync(actorTokenUuid)
+        : actor.token;
+    if (
+      actorToken?.documentName !== "Token" ||
+      actorToken.actor?.uuid !== actor.uuid
+    )
+      throw new Error(
+        "Choose the exact acting token before preparing Basic Melee.",
+      );
+    targetToken =
+      typeof targetTokenUuid === "string"
+        ? fromUuidSync(targetTokenUuid)
+        : null;
+    targetActor = targetToken?.actor;
+    if (
+      targetToken?.documentName !== "Token" ||
+      !targetActor ||
+      !["character", "creature"].includes(targetActor.type) ||
+      targetToken.uuid === actorToken.uuid
+    )
+      throw new Error("Choose one valid adjacent creature as the target.");
+  }
   let incoming = null;
   if (attackMessageId) {
     incoming = incomingAttackContext(attackMessageId);
@@ -131,6 +161,20 @@ export function rollBasis(
     survival,
     incoming,
     actorUuid: actor.uuid,
+    ...(mode === "attack"
+      ? {
+          actorTokenUuid: actorToken.uuid,
+          targetTokenUuid: targetToken.uuid,
+          targetActorUuid: targetActor.uuid,
+          targetContributions: actorContributions(targetActor).sort((a, b) =>
+            a.id.localeCompare(b.id),
+          ),
+          targetEvasion:
+            targetActor.type === "creature"
+              ? structuredClone(targetActor.system.evasion)
+              : null,
+        }
+      : {}),
     attributeKey,
     mode,
     attribute: actor.system.attributes[attributeKey].effective,
@@ -157,6 +201,7 @@ export function prepareRoll(basis, draft = {}) {
     ...conditionRollSources(basis.contributions, {
       mode: basis.mode,
       perceivedSources: fears.filter((source) => perception[source] === "yes"),
+      targetContributions: basis.targetContributions ?? [],
     }),
     ...selectedWoundRollSources(
       basis.mode === "death" ? [] : (basis.woundModifiers ?? []),
@@ -164,6 +209,13 @@ export function prepareRoll(basis, draft = {}) {
     ),
     ...basis.benefits,
   ];
+  if (basis.mode === "attack")
+    sources.push(
+      ...targetEvasionSources(
+        basis.targetEvasion,
+        basis.targetTokenUuid,
+      ),
+    );
   if (basis.incoming)
     for (const [field, kind] of [
       ["boons", "boon"],

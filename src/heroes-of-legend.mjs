@@ -7,6 +7,10 @@ import { registerInventoryRequests } from "./services/inventory.mjs";
 import { registerDefenseResponses } from "./services/defense-responses.mjs";
 import { registerNpcAttacks } from "./services/npc-attacks.mjs";
 import { registerItemShortcuts, SHORTCUT_API } from "./services/shortcuts.mjs";
+import {
+  registerPlayerBasicMeleeRequests,
+  renderPlayerBasicMeleeCard,
+} from "./services/player-attacks.mjs";
 import { renderAttackCard } from "./dialogs/defender-choice.mjs";
 import { CreatureData } from "./models/creature.mjs";
 import { CreatureSheet } from "./sheets/creature.mjs";
@@ -48,6 +52,7 @@ Hooks.once("init", () => {
   registerSurvivalRequests();
   registerAbilityRequests();
   registerNpcAttacks();
+  registerPlayerBasicMeleeRequests();
   registerDefenseResponses();
   CONFIG.Combat.documentClass = HOLCombat;
   registerCombatRequests();
@@ -94,3 +99,4 @@ Hooks.on("renderChatMessageHTML", renderRollSummary);
 Hooks.on("renderCombatTracker", renderHOLCombatTracker);
 
 Hooks.on("renderChatMessageHTML", renderAttackCard);
+Hooks.on("renderChatMessageHTML", renderPlayerBasicMeleeCard);

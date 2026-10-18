@@ -5,13 +5,15 @@ import {
   requestDamage,
   defenseDamage,
 } from "../services/damage.mjs";
+import { playerBasicMeleeDamage } from "../services/player-attacks.mjs";
 export class DamagePanel extends foundry.applications.api.HandlebarsApplicationMixin(
   foundry.applications.api.ApplicationV2,
 ) {
-  constructor(actor, rollMessageId = null) {
+  constructor(actor, rollMessageId = null, attackMessageId = null) {
     super();
     this.actor = actor;
     this.rollMessageId = rollMessageId;
+    this.attackMessageId = attackMessageId;
   }
   static DEFAULT_OPTIONS = {
     classes: ["heroes-of-legend", "hol-damage"],
@@ -29,15 +31,26 @@ export class DamagePanel extends foundry.applications.api.HandlebarsApplicationM
     if (!game.user.isGM) throw new Error("Only the DA can apply this damage.");
     this.basis = damageBasis(this.actor);
     const incoming = this.rollMessageId
-      ? defenseDamage(game.messages.get(this.rollMessageId))
-      : null;
+        ? defenseDamage(game.messages.get(this.rollMessageId))
+        : this.attackMessageId
+          ? playerBasicMeleeDamage(this.attackMessageId)
+          : null;
     if (incoming && incoming.actorUuid !== this.actor.uuid)
-      throw new Error("Choose the original defender.");
+      throw new Error(
+        this.rollMessageId
+          ? "Choose the original defender."
+          : "Choose the original Basic Melee target.",
+      );
     this.components = incoming?.components ?? [];
     return {
       name: this.actor.name,
       basis: this.basis,
       fromRoll: !!incoming,
+      fromAttack: Boolean(this.attackMessageId),
+      lockedSource: Boolean(incoming),
+      sourceReason: this.attackMessageId
+        ? "Settled Basic Melee"
+        : "Settled defense",
       automaticDefenses: [
         ...(this.basis.passiveDefenses?.resistances ?? []),
         ...(this.basis.passiveDefenses?.weaknesses ?? []),
@@ -70,7 +83,10 @@ export class DamagePanel extends foundry.applications.api.HandlebarsApplicationM
       }
     }
     return {
-      components: this.rollMessageId ? this.components : components,
+      components:
+        this.rollMessageId || this.attackMessageId
+          ? this.components
+          : components,
       resistances,
       weaknesses,
       reason: this.element.querySelector("[name=reason]").value,
@@ -94,7 +110,13 @@ export class DamagePanel extends foundry.applications.api.HandlebarsApplicationM
     try {
       const draft = this.draft();
       damagePreview(this.actor, this.basis, draft);
-      await requestDamage(this.actor, this.basis, draft, this.rollMessageId);
+      await requestDamage(
+        this.actor,
+        this.basis,
+        draft,
+        this.rollMessageId,
+        this.attackMessageId,
+      );
       await this.close();
     } catch (e) {
       ui.notifications.error(e.message);
@@ -105,4 +127,17 @@ export async function openDefenseDamage(message) {
   const data = defenseDamage(message),
     actor = await fromUuid(data.actorUuid);
   return new DamagePanel(actor, message.id).render({ force: true });
+}
+
+export async function openPlayerAttackDamage(messageOrId) {
+  const data = playerBasicMeleeDamage(messageOrId),
+    attackMessageId =
+      typeof messageOrId === "string" ? messageOrId : messageOrId?.id,
+    actor = await fromUuid(data.actorUuid);
+  if (
+    actor?.documentName !== "Actor" ||
+    actor.uuid !== data.actorUuid
+  )
+    throw new Error("The Basic Melee target is unavailable.");
+  return new DamagePanel(actor, null, attackMessageId).render({ force: true });
 }

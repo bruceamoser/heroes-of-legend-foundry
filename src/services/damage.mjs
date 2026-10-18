@@ -12,6 +12,7 @@ import {
   isCreationAuthority,
   writeAuthorityDocument,
 } from "./authority.mjs";
+import { playerBasicMeleeDamage } from "./player-attacks.mjs";
 const ID = "heroes-of-legend";
 function passiveCatalogRecords(actor, type) {
   return actor.items
@@ -153,7 +154,13 @@ export function defenseDamage(message) {
     eventId: `defense-${message.id}`,
   };
 }
-export async function requestDamage(actor, basis, draft, rollMessageId = null) {
+export async function requestDamage(
+  actor,
+  basis,
+  draft,
+  rollMessageId = null,
+  attackMessageId = null,
+) {
   if (!game.settings.get(ID, "creationAuthorityClient"))
     throw new Error("Enable the GM automation coordinator first.");
   return ChatMessage.create({
@@ -161,7 +168,13 @@ export async function requestDamage(actor, basis, draft, rollMessageId = null) {
     whisper: game.users.filter((u) => u.isGM).map((u) => u.id),
     flags: {
       [ID]: {
-        damageRequest: { actorUuid: actor.uuid, basis, draft, rollMessageId },
+        damageRequest: {
+          actorUuid: actor.uuid,
+          basis,
+          draft,
+          rollMessageId,
+          ...(attackMessageId ? { attackMessageId } : {}),
+        },
       },
     },
   });
@@ -189,20 +202,32 @@ async function apply(id) {
   }
   assertNoPendingTurn(actor);
   let eventId = id,
-    draft = structuredClone(request.draft);
+    draft = structuredClone(request.draft),
+    attackLink = null;
   if (request.rollMessageId) {
     const defense = defenseDamage(game.messages.get(request.rollMessageId));
     if (defense.actorUuid !== actor.uuid)
       throw new Error("The roll belongs to a different defender.");
     draft.components = defense.components;
     eventId = defense.eventId;
+  } else if (request.attackMessageId) {
+    const attack = playerBasicMeleeDamage(
+      request.attackMessageId,
+    );
+    if (attack.actorUuid !== actor.uuid)
+      throw new Error("The Basic Melee target is a different actor.");
+    draft.components = attack.components;
+    eventId = attack.eventId;
+    attackLink = attack;
   } else if (typeof draft.reason !== "string" || !draft.reason.trim())
     throw new Error("Describe the source of manual damage.");
   const applied = actor.getFlag(ID, "damageEvents")?.[eventId];
   if (applied) {
     await message.update({
       content:
-        "This defense damage was already applied; HP was not changed again.",
+        request.attackMessageId
+          ? "This Basic Melee damage was already applied; HP was not changed again."
+          : "This defense damage was already applied; HP was not changed again.",
     });
     return { status: "complete", replay: true };
   }
@@ -217,6 +242,8 @@ async function apply(id) {
     requestId: id,
     authorId: message.author.id,
     rollMessageId: request.rollMessageId,
+    attackMessageId: attackLink?.attackMessageId ?? null,
+    attackSource: attackLink?.source ?? null,
     before: basis.hp,
     after: plan.after,
     event: plan.event,

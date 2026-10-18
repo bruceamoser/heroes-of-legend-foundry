@@ -205,3 +205,17 @@ test('native encounter self preview never sends the same token to two-token adja
   assert.equal(preview.geometry.adjacent, true);
   assert.equal(preview.geometry.distance, 0);
 });
+
+test('malformed outsideCombat modes are refused before reserving or mutating documents', async () => {
+  for (const value of ['true', 1, {}, [], null]) {
+    const f = await fixture();
+    const request = await f.service.requestPotionUse({ sourceItemUuid: f.bottle.uuid });
+    request.message.flags[ID].potionRequest.outsideCombat = value;
+    f.game.user = f.gm;
+    await assert.rejects(f.service.resolvePotionRequest(request.message.id), /encounter mode must be boolean/);
+    assert.equal(f.writes.length, 0);
+    assert.equal(f.giver.system.health.value, 2);
+    assert.equal(f.giver.flags.pendingPotion, undefined);
+    assert.equal(f.rolls(), 0);
+  }
+});

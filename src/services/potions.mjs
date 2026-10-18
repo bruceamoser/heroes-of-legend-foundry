@@ -823,6 +823,8 @@ function authorizesRequest(message, request, giver, recipient) {
 function validateRequestShapes(request) {
   if (!request || typeof request !== "object")
     throw new Error("The potion request is unavailable.");
+  if (request.outsideCombat !== undefined && typeof request.outsideCombat !== "boolean")
+    throw new Error("The potion encounter mode must be boolean.");
   for (const key of [
     "sourceItemUuid",
     "bottleItemUuid",

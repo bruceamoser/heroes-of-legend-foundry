@@ -53,6 +53,8 @@ try {
     .getByRole("tab", { name: "Abilities", exact: true })
     .boundingBox();
   const sheet = await page.locator("#app").boundingBox();
+  assert(sheet.width <= 900, "sheet must fit a Foundry-sized window");
+  assert.equal(await page.getByLabel("Pronouns", { exact: true }).count(), 0);
   assert(
     edge.x < sheet.x && edge.x + edge.width <= sheet.x + 1,
     "tabs must hang outside the sheet",
@@ -69,6 +71,22 @@ try {
     path: `${output}/desktop-encounter.png`,
     fullPage: true,
   });
+  for (const width of [900, 970]) {
+    await page.setViewportSize({ width, height: 800 });
+    assert(
+      (await page.getByRole("tab", { name: "Main", exact: true }).boundingBox())
+        .x >= 0,
+      "edge tabs remain on screen",
+    );
+    assert(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth,
+      ),
+    );
+  }
+  await page.setViewportSize({ width: 900, height: 800 });
+  await page.screenshot({ path: `${output}/foundry-sized-sheet.png` });
+  await page.setViewportSize({ width: 1440, height: 1050 });
   await page.getByRole("tab", { name: "Abilities", exact: true }).click();
   await page.keyboard.press("ArrowRight");
   assert.equal(
@@ -83,9 +101,7 @@ try {
     .filter({ hasText: "Ordinary Medium Armor" });
   assert.match(await armorRow.innerText(), /Wear Medium Armor/);
   assert.match(await page.locator(".inventory-table").innerText(), /d8/);
-  await page
-    .getByRole("button", { name: "Wear Ordinary Medium Armor", exact: true })
-    .click();
+  await page.getByLabel("Wear Ordinary Medium Armor", { exact: true }).check();
   assert.equal(
     await page
       .locator(".vital")
@@ -95,8 +111,8 @@ try {
     "2",
   );
   await page
-    .getByRole("button", { name: "Remove Ordinary Medium Armor", exact: true })
-    .click();
+    .getByLabel("Wear Ordinary Medium Armor", { exact: true })
+    .uncheck();
   assert.equal(
     await page
       .locator(".vital")
@@ -131,9 +147,7 @@ try {
     .getByRole("button", { name: "Increase level", exact: true })
     .click();
   assert.equal(await page.locator('[data-dp="current"]').innerText(), "10");
-  await page
-    .getByRole("button", { name: "Develop level 2", exact: true })
-    .click();
+  await page.getByRole("button", { name: "Spend DP", exact: true }).click();
   await page
     .getByLabel("Search abilities", { exact: true })
     .fill("Conditioned Body");
@@ -167,10 +181,10 @@ try {
     .click();
   await page.getByRole("tab", { name: "Character", exact: true }).click();
   await page.getByRole("button", { name: "✎ Edit", exact: true }).click();
-  await page.getByLabel("Pronouns", { exact: true }).fill("they/them");
-  await page.getByLabel("Pronouns", { exact: true }).press("Tab");
+  await page.getByLabel("Player", { exact: true }).fill("Bruce");
+  await page.getByLabel("Player", { exact: true }).press("Tab");
   await page.getByRole("button", { name: "✓ Done", exact: true }).click();
-  assert(await page.getByText("they/them", { exact: true }).isVisible());
+  assert(await page.getByText("Bruce", { exact: true }).isVisible());
   await page.getByRole("tab", { name: "Main", exact: true }).click();
   await page
     .getByRole("button", { name: "Basic Melee", exact: true })
@@ -244,7 +258,205 @@ try {
   const file = `${output}/borin.hol.json`;
   await download.saveAs(file);
   const exported = JSON.parse(await readFile(file, "utf8"));
-  assert.equal(exported.draft.profile.pronouns, "they/them");
+  assert.equal(exported.draft.profile.player, "Bruce");
+  // Play controls change the sheet directly and survive autosave/JSON transfer.
+  await page
+    .getByRole("button", { name: "View character sheet", exact: true })
+    .click();
+  await page.getByRole("tab", { name: "Abilities", exact: true }).click();
+  assert(await page.locator("#results .action-table").isVisible());
+  await page.locator('#results [data-action="reference"]').first().click();
+  assert(await page.getByRole("dialog").isVisible());
+  await page.keyboard.press("Escape");
+  await page.getByRole("tab", { name: "Inventory", exact: true }).click();
+  await page.getByLabel("Wear Food Bundle", { exact: true }).check();
+  await page.getByLabel("Hold Food Bundle", { exact: true }).check();
+  await page.getByLabel("Carry Food Bundle", { exact: true }).uncheck();
+  assert(
+    !(await page.getByLabel("Wear Food Bundle", { exact: true }).isChecked()),
+  );
+  assert(
+    !(await page.getByLabel("Hold Food Bundle", { exact: true }).isChecked()),
+  );
+  await page.getByLabel("Hold Food Bundle", { exact: true }).check();
+  assert(
+    await page.getByLabel("Carry Food Bundle", { exact: true }).isChecked(),
+  );
+  await page.getByLabel("Carry Food Bundle", { exact: true }).uncheck();
+  await page.getByLabel("Wear Food Bundle", { exact: true }).check();
+  assert(
+    await page.getByLabel("Carry Food Bundle", { exact: true }).isChecked(),
+  );
+  await page.getByRole("button", { name: "Add item", exact: true }).click();
+  await page.locator("#play-item").selectOption("item-ordinary-heavy-armor");
+  await page.locator("#play-quantity").fill("2");
+  await page
+    .getByRole("dialog")
+    .getByRole("button", { name: "Add item", exact: true })
+    .click();
+  assert.equal(
+    await page
+      .locator(".inventory-table tr")
+      .filter({ hasText: "Ordinary Heavy Armor" })
+      .locator("td")
+      .nth(1)
+      .innerText(),
+    "2",
+  );
+  await page
+    .getByRole("button", { name: "Delete Ordinary Medium Armor", exact: true })
+    .click();
+  assert.equal(
+    await page
+      .getByLabel("Wear Ordinary Medium Armor", { exact: true })
+      .count(),
+    0,
+  );
+  await page.getByRole("tab", { name: "Character", exact: true }).click();
+  await page
+    .getByRole("button", { name: "Remove language Common", exact: true })
+    .click();
+  await page.getByRole("button", { name: "Add language", exact: true }).click();
+  await page.getByLabel("Name", { exact: true }).fill("River Sign");
+  await page.getByLabel("Form", { exact: true }).selectOption("signed");
+  await page.getByLabel("Read & write", { exact: true }).uncheck();
+  await page
+    .getByRole("dialog")
+    .getByRole("button", { name: "Add language", exact: true })
+    .click();
+  assert.match(
+    await page.locator(".language-table").innerText(),
+    /River Sign.*Signed/s,
+  );
+  await page.getByRole("tab", { name: "Main", exact: true }).click();
+  await page
+    .getByRole("button", { name: "Add condition", exact: true })
+    .click();
+  await page.getByLabel("Condition", { exact: true }).selectOption("burning");
+  await page.locator("#condition-rating").fill("2");
+  await page.getByLabel("Starred", { exact: true }).check();
+  await page
+    .getByRole("dialog")
+    .getByRole("button", { name: "Add condition", exact: true })
+    .click();
+  await page
+    .getByRole("button", { name: "Add condition", exact: true })
+    .click();
+  await page.getByLabel("Condition", { exact: true }).selectOption("prone");
+  assert(!(await page.locator("#condition-rating").isVisible()));
+  await page
+    .getByRole("dialog")
+    .getByRole("button", { name: "Add condition", exact: true })
+    .click();
+  assert.match(await page.locator(".condition-bar").innerText(), /Burning 2/);
+  assert.match(await page.locator(".condition-bar").innerText(), /Prone/);
+  await page.reload();
+  await page
+    .getByRole("heading", { name: "Borin Bridgekeeper", exact: true })
+    .waitFor();
+  assert.match(await page.locator(".condition-bar").innerText(), /Burning 2/);
+  await page.screenshot({ path: `${output}/play-main.png` });
+  await page.getByRole("button", { name: "Remove Prone", exact: true }).click();
+  assert.doesNotMatch(
+    await page.locator(".condition-bar").innerText(),
+    /Prone/,
+  );
+  await page.getByRole("tab", { name: "Inventory", exact: true }).click();
+  assert.equal(
+    await page
+      .getByLabel("Wear Ordinary Medium Armor", { exact: true })
+      .count(),
+    0,
+  );
+  assert(
+    await page.getByLabel("Wear Food Bundle", { exact: true }).isChecked(),
+  );
+  await page.screenshot({ path: `${output}/play-inventory.png` });
+  await page
+    .getByRole("button", { name: "Delete Ordinary Heavy Armor", exact: true })
+    .click();
+  assert.equal(
+    await page.getByLabel("Wear Ordinary Heavy Armor", { exact: true }).count(),
+    0,
+  );
+  await page.getByRole("tab", { name: "Character", exact: true }).click();
+  assert.match(await page.locator(".language-table").innerText(), /River Sign/);
+  assert.doesNotMatch(
+    await page.locator(".language-table").innerText(),
+    /Common/,
+  );
+  // Standard language definitions can be restored after removing them.
+  await page.getByRole("button", { name: "Add language", exact: true }).click();
+  await page.getByLabel("Language", { exact: true }).selectOption("common");
+  assert.equal(
+    await page.getByLabel("Name", { exact: true }).inputValue(),
+    "Common",
+  );
+  await page
+    .getByRole("dialog")
+    .getByRole("button", { name: "Add language", exact: true })
+    .click();
+  assert.match(await page.locator(".language-table").innerText(), /Common/);
+  await page
+    .getByRole("button", { name: "Remove language River Sign", exact: true })
+    .click();
+  assert.doesNotMatch(
+    await page.locator(".language-table").innerText(),
+    /River Sign/,
+  );
+  // A missed signature has its own flow, independent of spending at the current level.
+  await page.getByRole("tab", { name: "Development", exact: true }).click();
+  await page
+    .getByRole("button", { name: "Increase level", exact: true })
+    .click();
+  await page
+    .getByRole("button", { name: "Increase level", exact: true })
+    .click();
+  await page
+    .getByRole("button", { name: "Increase level", exact: true })
+    .click();
+  const beforeSignature = await page.locator('[data-dp="current"]').innerText();
+  assert(
+    await page
+      .getByRole("button", { name: "Choose level 3 signature", exact: true })
+      .isVisible(),
+  );
+  await page.getByRole("button", { name: "Spend DP", exact: true }).click();
+  assert.equal(
+    await page.locator('[data-action="advance-signature"]').count(),
+    0,
+  );
+  assert(await page.locator("[data-dp-remaining]").isVisible());
+  await page.getByRole("button", { name: "Done", exact: true }).click();
+  await page
+    .getByRole("button", { name: "Choose level 3 signature", exact: true })
+    .click();
+  assert.equal(await page.locator("[data-dp-remaining]").count(), 0);
+  await page.locator('[data-action="advance-signature"]').first().click();
+  await page.screenshot({ path: `${output}/signature-choice.png` });
+  await page.getByRole("button", { name: "Done", exact: true }).click();
+  assert.equal(
+    await page
+      .getByRole("button", { name: "Choose level 3 signature", exact: true })
+      .count(),
+    0,
+  );
+  assert.equal(
+    await page.locator('[data-dp="current"]').innerText(),
+    beforeSignature,
+  );
+  const playDownload = page.waitForEvent("download");
+  await page.getByRole("button", { name: "Export JSON", exact: true }).click();
+  const playFile = `${output}/borin-play.hol.json`;
+  await (await playDownload).saveAs(playFile);
+  const played = JSON.parse(await readFile(playFile, "utf8"));
+  assert.equal(played.schemaVersion, 3);
+  assert.equal(played.draft.play.conditions[0].key, "burning");
+  assert(played.draft.progression.levels[3].signatures[3]);
+  await page.locator("#import-file").setInputFiles(playFile);
+  await page.getByRole("tab", { name: "Main", exact: true }).click();
+  assert.match(await page.locator(".condition-bar").innerText(), /Burning 2/);
+  await page.locator("#import-file").setInputFiles(file);
   await page.getByRole("button", { name: "New hero", exact: true }).click();
   assert(
     await page
@@ -485,6 +697,48 @@ try {
   assert.match(rangedInventory, /Ordinary Ranged Weapon/);
   assert.match(rangedInventory, /Ammunition Bundle/);
   assert.match(rangedInventory, /d8/);
+  // An unfinished signature equipment choice stays reachable after leaving its screen.
+  const warden = structuredClone(ranged);
+  warden.draft.classId = "class-warden";
+  warden.draft.signatureId = "ability-signature-warden-keep-the-quarry-close";
+  warden.draft.attributes.knowledge = 1;
+  warden.draft.attributes.guile = -1;
+  warden.draft.purchases[1] = [];
+  warden.draft.shopping = [];
+  warden.draft.progression = { level: 7, levels: {} };
+  await page.locator("#import-file").setInputFiles({
+    name: "Warden.json",
+    mimeType: "application/json",
+    buffer: Buffer.from(JSON.stringify(warden)),
+  });
+  await page
+    .getByRole("button", { name: "Choose level 7 signature", exact: true })
+    .click();
+  await page
+    .locator(
+      '[data-action="advance-signature"][data-id="ability-signature-warden-turn-the-hunt"]',
+    )
+    .click();
+  await page.getByRole("button", { name: "Done", exact: true }).click();
+  assert(
+    await page
+      .getByRole("button", { name: "Choose level 7 signature", exact: true })
+      .isVisible(),
+  );
+  await page.getByRole("button", { name: "Spend DP", exact: true }).click();
+  assert.equal(await page.getByLabel("Weapon", { exact: true }).count(), 0);
+  await page.getByRole("button", { name: "Done", exact: true }).click();
+  await page
+    .getByRole("button", { name: "Choose level 7 signature", exact: true })
+    .click();
+  await page.getByLabel("Weapon", { exact: true }).selectOption("ranged");
+  await page.getByRole("button", { name: "Done", exact: true }).click();
+  assert.equal(
+    await page
+      .getByRole("button", { name: "Choose level 7 signature", exact: true })
+      .count(),
+    0,
+  );
   // Unknown imported IDs remain inert text and repairable choices.
   const odd = { ...exported, draft: structuredClone(exported.draft) };
   odd.draft.classId = "ability-wear-medium-armor";
@@ -522,7 +776,7 @@ try {
   assert.match(await page.locator(".hero-header").innerText(), /Protector/);
   assert.deepEqual(failures, []);
   console.info(
-    "Workshop passed: fixed scrolling, live attributes, grants, armor/Bulk/supply, grouped actions, crafting rolls, level replay, coin override, named saves, export/import and 390px layout; no browser errors.",
+    "Workshop passed: fixed scrolling, live attributes, grants, armor/Bulk/supply, grouped actions, crafting rolls, level replay, independent/revisitable signatures, play inventory/languages/conditions, coin override, named saves, schema-3 export/import and 390px layout; no browser errors.",
   );
 } catch (error) {
   await page.screenshot({ path: `${output}/failure.png`, fullPage: true });

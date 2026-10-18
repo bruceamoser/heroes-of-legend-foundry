@@ -17,8 +17,32 @@ const read = async (path) =>
 const choices = await read("../static/data/choices.json"),
   inventory = await read("../static/data/inventory.json"),
   heroes = await read("../tests/fixtures/reference-heroes.json");
+const playDraft = structuredClone(heroes.characters[0].draft);
+playDraft.play = {
+  inventory: {
+    added: [
+      { id: "item-rope-coil", instanceId: "inventory-rope", quantity: 2 },
+    ],
+    removed: [],
+  },
+  languages: {
+    added: [
+      { id: "river-sign", name: "River Sign", form: "signed", written: false },
+    ],
+    removed: [],
+  },
+  conditions: [
+    {
+      id: "prone-test",
+      key: "prone",
+      rating: 1,
+      persistence: "binary",
+      source: "sheet",
+    },
+  ],
+};
 const data = writePortableCharacter(
-  heroes.characters[0].draft,
+  playDraft,
   { choices: choices.records, inventory, commit: choices.sourceCommit },
   { ready: true },
 );
@@ -110,6 +134,7 @@ try {
   );
   assert.equal(imported.data.name, "Borin Bridgekeeper");
   assert.equal(imported.step, 7);
+  assert.deepEqual(imported.data.play, playDraft.play);
   const result = await page.evaluate(async () => {
     const service = await import(
       "/systems/heroes-of-legend/services/creation.mjs"

@@ -16,11 +16,11 @@ available to screen readers. No full-width labeled sidebar consumes the panel.
 
 | Tab         | Contents                                                                                                                                                                                |
 | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Main        | Concise Main Action, Maneuver, Reaction and Passive tables; movement/other timings stay explicit. Owned-weapon basics, ancestry traits, recipe rolls, defenses and carrying statistics. |
-| Abilities   | Searchable learned abilities, discipline filtering and universal actions.                                                                                                               |
-| Inventory   | All grants and purchases, source names, supply dice, quantities, Bulk, carried/worn/held controls and recipes.                                                                          |
-| Character   | Ancestry, culture, background, traits, languages, pronouns, player and story.                                                                                                           |
-| Development | Current, spent and total DP; level plus/minus; advancement learning; collapsible creation and advancement ledgers.                                                                      |
+| Main        | Concise Main Action, Maneuver, Reaction and Passive tables; movement/other timings stay explicit. Owned-weapon basics, ancestry traits, recipe rolls, defenses, carrying statistics and editable conditions. |
+| Abilities   | Searchable learned-ability tables with local detail dialogs, discipline filtering and universal actions.                                                                                                               |
+| Inventory   | Grants, purchases and play additions, add/delete controls, sources, supply dice, quantities, Bulk, carried/worn/held controls and recipes.                                                                          |
+| Character   | Ancestry, culture, background, traits, editable languages, player and story.                                                                                                           |
+| Development | Current, spent and total DP; level plus/minus; Spend DP and separate missing-signature choices; collapsible creation and advancement ledgers.                                                                      |
 
 Creation is a separate eight-step flow. Changing earlier choices retains later
 choices for explicit repair. Eligible learning cards precede visible disabled
@@ -38,10 +38,10 @@ The browser renderer is currently in `web/`; native sheets have not yet adopted
 it. UI adaptation should reuse its presentation primitives and design tokens,
 while replacing browser persistence with permission-checked document services.
 
-The portable format is `heroes-of-legend-character`, schema version 2 (version 1 remains readable), with a
+The portable format is `heroes-of-legend-character`, schema version 3 (versions 1 and 2 remain readable), with a
 pinned source commit, creation choices, per-level advancement plans, stable
 shopping identities, equipment arrangements, basic-action visibility and an
-explicit coin-limit override. The importer whitelists the supported
+explicit coin-limit override. Version 3 adds bounded play inventory edits, languages and condition contributions. The importer whitelists the supported
 fields, recomputes eligibility and grants, and never accepts derived Actor
 statistics, world IDs, ownership or executable content. Incomplete drafts remain
 exportable. Ready-character export requires valid creation and active advancement choices. A different
@@ -51,10 +51,10 @@ language differences remain repairable choices, not imported world settings.
 Native transfer: open **Create a Hero** on a new character, select **Import
 character JSON**, review, then complete the existing creation workflow. It saves
 the imported creation draft; it does not bypass the authority/commit service.
-Pronouns/player/story are retained in the portable draft; the current native
+Player/story and any legacy pronouns value are retained in the portable draft; the current native
 sheet does not yet display those new presentation fields. Browser equipment
-arrangements and action visibility remain in the saved draft; native import
-explicitly tells users to equip Items on the Foundry sheet. Later-level browser
+arrangements, action visibility and play edits remain in the saved draft; native import
+explicitly tells users these controls are not yet applied to native documents. Later-level browser
 plans are rejected before mutating the native creation draft, rather than being
 silently reduced to level 1. The published 0.1.0 system predates this importer;
 these native features are development-build validation, not a new release.
@@ -68,7 +68,7 @@ JSON remains the portable backup; browser data belongs to that origin/profile.
 
 ## Compact tool behavior (#158)
 
-The viewport is fixed. Only the content pane scrolls; the common header, icon
+The sheet is capped at 900px wide and 900px tall, fitting the viewport on smaller screens. The viewport is fixed. Only the content pane scrolls; the common header, icon
 rail, wizard footer and contextual strip remain outside it. Learning keeps its
 DP balance and current discipline ranks visible. Culture/background options
 include the complete discipline/ability grant pair before selection. Attribute
@@ -93,7 +93,7 @@ inventing extra coins.
 The browser replays each level from its saved choices through the shared
 advancement rules. Level changes preserve later plans and reconstruct awards,
 abilities, HP, Grit and acquisitions without duplicate grants. Learning retains
-eligibility requirements and signature choices. Current DP is available
+eligibility requirements; missing signatures have their own screens. Current DP is available
 advancement DP; spent/total include creation, with expired creation DP separately
 identified. The creation ledger stays useful here; do not copy it into the
 future native Development tab.
@@ -174,3 +174,55 @@ publishing source. No system release is created by publishing the workshop.
   chooser import, Review and normal authority commit passed with Borin HP 25
   and granted Items. Fixture documents removed and coordinator settings restored.
 - Direct implementation and author review; no delegated workers.
+
+## Play controls and signature choices (#162)
+
+Pronouns are no longer a visible field. Abilities uses compact action tables;
+clicking a name opens its complete local reference. Inventory allows adding a
+catalog item and quantity directly, or deleting any row, including grants.
+These edits preserve the creation ledger and do not rerun grants, spend coins or
+charge DP. All item types have Held, Worn and Carried checkboxes. Clearing Carried
+clears Held and Worn; setting either marks the item carried. Only carried items
+contribute Bulk, with the existing single worn-outfit exemption. Armor still
+requires the matching training to grant resistance.
+
+Character allows adding/removing known or custom languages with spoken/signed
+and written permissions. Main has a compact condition strip with add/remove
+controls, rating or duration, and starred persistence where applicable. Conditions
+use the shared condition vocabulary and validation. This browser tracker is
+manual: adding a condition does not run native turn timing, damage or enforcement.
+Play edits survive autosave, named saves and portable JSON without rewriting the
+hero's creation identity.
+
+Development uses **Spend DP** whenever current advancement DP is positive. It
+also remains available to revisit purchases already planned at that level.
+Missing level 1, 3 and 7 signatures each get their own **Choose level N signature**
+button and screen, independent of spending DP. Choosing a missed signature at a
+later level records it at its actual tier, without extra awards or duplicate
+acquisitions. Missing signatures do not block learning purchases.
+
+Guard rank itself grants no equipment. Shielding Step grants an ordinary shield
+if absent. Walled Communities' Guard + Shielding Step alternative therefore
+supplies a shield. The Armor alternative is awaiting canonical correction in
+[book issue #1270](https://github.com/bruceamoser/heroes-of-legend/issues/1270):
+Bruce directed it to grant Wear Light Armor, and medium armor to require multiple
+Armor ranks. The issue now contains the inferred three-step progression and
+required Borin/catalog updates; the web build still uses the pinned pre-correction
+book edition. This is a known content dependency, not a completed light armor fix.
+
+
+### Validation for #162
+
+- Node 24 full build, catalog validation and unit suite: 385 tests passed.
+- Chromium: tabular abilities and local detail dialogs; all-item Held/Worn/Carried
+  behavior; inventory add/delete including grants; editable languages and
+  conditions across reload/JSON transfer; independent signatures and unfinished
+  signature acquisitions; 900px/970px viewport checks plus 390px layout.
+- Main, Inventory, signature choice and Foundry-sized sheet screenshots inspected.
+- Foundry 14.369: schema-3 file chooser import retained play edits in the saved
+  draft; Review and normal authority commit produced Borin HP 25 with granted
+  Items. Later-level import rejection remained intact. Fixture Actors/messages
+  removed, settings restored and the isolated test server stopped.
+- Direct implementation and author review; no delegated workers. Review caught
+  and fixed access to an unfinished signature equipment choice and edge-tab
+  clipping at viewport widths just above the centered-sheet breakpoint.

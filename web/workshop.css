@@ -143,6 +143,8 @@ a {
 .site-header {
   height: 42px;
   padding: 0 14px;
+  max-width: 930px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -176,9 +178,9 @@ a {
   position: relative;
   display: flex;
   flex-direction: column;
-  width: calc(100% - 62px);
-  height: calc(100dvh - 50px);
-  margin: 0 10px 8px 52px;
+  width: min(900px, calc(100% - 62px));
+  height: min(900px, calc(100dvh - 50px));
+  margin: 0 auto 8px;
   background: var(--paper);
   border: 1px solid #c8bda5;
   border-radius: 5px;
@@ -1199,5 +1201,79 @@ dialog header button {
   }
   .hero-mark {
     display: none;
+  }
+}
+
+.section-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.development-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.item-source {
+  display: block;
+  font-size: 0.66rem;
+  color: var(--muted);
+  line-height: 1.25;
+}
+.inventory-table input[type="checkbox"] {
+  display: block;
+  margin: 0 auto;
+}
+.inventory-table th:not(:first-child),
+.inventory-table td:not(:first-child) {
+  text-align: center;
+}
+.inventory-table td:first-child {
+  min-width: 150px;
+}
+.condition-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0 10px;
+  font-size: 0.78rem;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 10px;
+}
+.condition-list {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.condition-chip {
+  display: inline-flex;
+  align-items: center;
+  padding-left: 7px;
+  background: var(--ivory);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  gap: 3px;
+}
+.condition-chip button {
+  min-height: 22px;
+  padding: 0 6px;
+  font-size: 1rem;
+}
+.language-table td:last-child {
+  text-align: right;
+}
+@media (min-width: 601px) {
+  .main-layout {
+    grid-template-columns: minmax(0, 1fr) 180px;
+    gap: 10px;
+  }
+}
+@media (min-width: 601px) and (max-width: 1004px) {
+  #app {
+    margin-left: 52px;
+    margin-right: 10px;
   }
 }

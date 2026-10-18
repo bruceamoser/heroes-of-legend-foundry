@@ -1,3 +1,4 @@
+import { workshopPlay } from "./workshop-play.mjs";
 import { creationPreview } from "./creation.mjs";
 import { awardMilestones } from "./development.mjs";
 import { advancementPreview } from "./advancement.mjs";
@@ -45,14 +46,26 @@ export function workshopCharacter(draft, catalogs, languages) {
     );
     state = result.state;
     maximumHpDelta += result.maximumHpDelta;
-    errors.push(...result.errors.map((e) => ({ ...e, level })));
+    errors.push(
+      ...result.errors.map((e) => ({
+        ...e,
+        level,
+        ...(e.code === "signature" ? { signatureTier: e.level } : {}),
+      })),
+    );
     levels[level] = { before, ...result };
     advancementLedger.push(
       { kind: "award", level, delta: 8 + level },
       ...result.ledger,
     );
   }
-  const items = state.items.map((item) => {
+  const play = workshopPlay(
+    draft,
+    state.items,
+    creation.summary?.languages ?? [],
+    catalogs,
+  );
+  const items = play.inventory.map((item) => {
     const definition = catalogs.inventory.equipment.find(
       (r) => r.id === item.catalogId,
     );
@@ -103,12 +116,19 @@ export function workshopCharacter(draft, catalogs, languages) {
   const expired = creation.ledger
     .filter((e) => e.kind === "expired-pool")
     .reduce((n, e) => n - e.delta, 0);
+  const unresolved = errors.filter(
+    (e) =>
+      e.code !== "signature" ||
+      !e.signatureTier ||
+      (state.pendingSignatures ?? []).includes(e.signatureTier),
+  );
   return {
     ...creation,
     creation,
     state,
-    valid: errors.length === 0,
-    errors,
+    valid: unresolved.length === 0,
+    errors: unresolved,
+    play,
     levels,
     advancementLedger,
     development: { level: target, current: state.dp, spent, total, expired },

@@ -1,8 +1,9 @@
+import { normalizeWorkshopPlay } from "./workshop-play.mjs";
 import { ATTRIBUTES } from "./character.mjs";
 import { workshopCharacter } from "./workshop-character.mjs";
 
 export const PORTABLE_FORMAT = "heroes-of-legend-character";
-export const PORTABLE_VERSION = 2;
+export const PORTABLE_VERSION = 3;
 export const MAX_CHARACTER_BYTES = 262144;
 const object = (value) =>
   value && typeof value === "object" && !Array.isArray(value);
@@ -23,7 +24,7 @@ export function readPortableCharacter(input, catalogs, languages) {
   if (
     !object(value) ||
     value.format !== PORTABLE_FORMAT ||
-    ![1, PORTABLE_VERSION].includes(value.schemaVersion)
+    ![1, 2, PORTABLE_VERSION].includes(value.schemaVersion)
   )
     throw new Error("Choose a supported Heroes of Legend character JSON file.");
   if (value.sourceCommit !== catalogs.commit)
@@ -212,6 +213,8 @@ export function readPortableCharacter(input, catalogs, languages) {
       };
     }
   }
+  if (d.play !== undefined)
+    draft.play = normalizeWorkshopPlay(d.play, catalogs);
   if (d.profile !== undefined) {
     if (!object(d.profile)) fail();
     draft.profile = {};

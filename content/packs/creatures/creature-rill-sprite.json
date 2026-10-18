@@ -103,6 +103,7 @@
           "id": "main-0",
           "category": "main",
           "name": "Basic Melee",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -119,6 +120,7 @@
           "id": "main-1",
           "category": "main",
           "name": "Water tug",
+          "abilityId": "",
           "attributeKey": "brawn",
           "defenseSource": "Brawn",
           "harmfulOnly": false,
@@ -135,6 +137,7 @@
           "id": "maneuver-0",
           "category": "maneuver",
           "name": "Defend",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -150,7 +153,25 @@
         {
           "id": "reaction-0",
           "category": "reaction",
+          "name": "Flicker Aside",
+          "abilityId": "monster-flicker-aside",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "After taking HP damage: teleport 1 to a visible empty legal square.",
+          "referenceMarkdown": "### Flicker Aside\n\n*Its outline gutters like a flame in a draft and catches again just beyond the reaching hand.*\n\nAfter an attack resolves and deals HP damage to this creature, teleport to a visible empty square within 1 square. This creature must survive and remain capable. The destination must support its footprint and be reachable by an unobstructed straight path; this does not pass through walls or occupied squares. No opportunity attacks from this teleport. No trigger from a free attack; no attack is granted."
+        },
+        {
+          "id": "reaction-1",
+          "category": "reaction",
           "name": "Opportunity Attack",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -167,13 +188,13 @@
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 4/2/1 |\n| Water tug | Brawn | 3 + Pull 2 / 2 + Pull 1 / 1 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Defend | +1 Bane |",
-      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Opportunity Attack | Basic Melee |"
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Flicker Aside | After taking HP damage: teleport 1 to a visible empty legal square. |\n| Opportunity Attack | Basic Melee |"
     },
     "details": {
       "flavorMarkdown": "*A child-sized shape of clear running water, with pebbles and bubbles visible inside its body. It belongs to a particular flow and reacts strongly to blockage or contamination.*",
-      "specialtyMarkdown": "### Water tug\n\n*A hooked limb braces against the bank and heaves its catch toward the dark water.*\n\n**Target:** One visible creature within 3 squares. **Player defense:** Brawn. **Damage type:** physical.\n\n**Weak defense:** Pull 2. **Standard defense:** Pull 1.",
-      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Healing:** Elemental: magical HP healing applies; cannot swallow potions. Printed immunities only.\n\n**Senses:** Ordinary sight and hearing.\n\n**Signs:** A trickle runs uphill to avoid a fouled pool.\n\n**Purpose:** Restore a blocked or poisoned flow.\n\n**Tactics and retreat:** Pull a trespasser from the bank and escape downstream.\n\n**Counterplay and conversation:** Clear the obstruction or stop the contamination.\n\n**Habitat:** Stream; well · **Communication:** None\n\n**Loot:** Clean water where it belongs, not a conjured stock of potions.\n\n**Summoning:** Elemental 1 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/summons/rill-sprite.md).",
-      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-rill-sprite\n\n\n**Category:** Elemental · **Role:** Water helper · **CV:** 6\n\n**Difficulty rationale:** An agile or elusive body warrants attack Banes. Ordinary attack difficulty; riders and positioning carry the threat.\n\n**Reference damage:** 1/2/3\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.15\n\n**Regeneration per turn:** 0\n\nReference I=4.404, O=1.162. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [drag under](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/drag-under.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/rules/stability.md)"
+      "specialtyMarkdown": "### Water tug\n\n*A hooked limb braces against the bank and heaves its catch toward the dark water.*\n\n**Target:** One visible creature within 3 squares. **Player defense:** Brawn. **Damage type:** physical.\n\n**Weak defense:** Pull 2. **Standard defense:** Pull 1.\n\n### Flicker Aside\n\n*Its outline gutters like a flame in a draft and catches again just beyond the reaching hand.*\n\nAfter an attack resolves and deals HP damage to this creature, teleport to a visible empty square within 1 square. This creature must survive and remain capable. The destination must support its footprint and be reachable by an unobstructed straight path; this does not pass through walls or occupied squares. No opportunity attacks from this teleport. No trigger from a free attack; no attack is granted.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Healing:** Elemental: magical HP healing applies; cannot swallow potions. Printed immunities only.\n\n**Senses:** Ordinary sight and hearing.\n\n**Signs:** A trickle runs uphill to avoid a fouled pool.\n\n**Purpose:** Restore a blocked or poisoned flow.\n\n**Tactics and retreat:** Pull a trespasser from the bank and escape downstream.\n\n**Counterplay and conversation:** Clear the obstruction or stop the contamination.\n\n**Habitat:** Stream; well · **Communication:** None\n\n**Loot:** Clean water where it belongs, not a conjured stock of potions.\n\n**Summoning:** Elemental 1 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/summons/rill-sprite.md).",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-rill-sprite\n\n\n**Category:** Elemental · **Role:** Water helper · **CV:** 6\n\n**Difficulty rationale:** An agile or elusive body warrants attack Banes. Ordinary attack difficulty; riders and positioning carry the threat.\n\n**Reference damage:** 1/2/3\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.25\n\n**Action review (#1279):** U 1.15 → 1.25: Maneuver allowance +0, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=4.404, O=1.162. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [drag under](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/drag-under.md), [Flicker Aside](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/flicker-aside.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/rules/stability.md)"
     },
     "biography": ""
   },
@@ -199,9 +220,9 @@
       "catalogId": "creature-rill-sprite",
       "source": {
         "path": "design/bestiary/creatures/rill-sprite.md",
-        "sha256": "9cad4bc7cb57550d5c72012678bb879bb980733113e487b3ad064665a101d78e"
+        "sha256": "08ad450b0271c434a0839e7ccb520246c2e36411125e93aaaab1cbda251c0c09"
       },
-      "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
+      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Printed profile · specialty automation pending",
@@ -218,6 +239,46 @@
           "id": "monster-drag-under",
           "path": "design/monster-abilities/drag-under.md",
           "sha256": "1c5b1f30865fb3419918c33e6c6a6184773c544418a5cafc21bebb79b6ac93a2"
+        },
+        {
+          "label": "Flicker Aside",
+          "id": "monster-flicker-aside",
+          "path": "design/monster-abilities/flicker-aside.md",
+          "sha256": "a7b83551d94cfbdb670102c36287532efd3bef72f1981337e21415dac9833206"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-drag-under",
+          "path": "design/monster-abilities/drag-under.md",
+          "sha256": "1c5b1f30865fb3419918c33e6c6a6184773c544418a5cafc21bebb79b6ac93a2",
+          "name": "Drag Under",
+          "action": "Main Action",
+          "flavorMarkdown": "*A hooked limb braces against the bank and heaves its catch toward the dark water.*",
+          "rulesMarkdown": "Use the printed attack against one target. Standard pulls 1 square; Strong pulls 2. Stability applies. This does not automatically grapple, submerge, drown or transport the attacker. A hazardous destination must actually be reached.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Drag Under\n\n*A hooked limb braces against the bank and heaves its catch toward the dark water.*\n\n## Rules\n\n**ID:** monster-drag-under\n\n\n**Action:** Main Action\n\nUse the printed attack against one target. Standard pulls 1 square; Strong pulls 2. Stability applies. This does not automatically grapple, submerge, drown or transport the attacker. A hazardous destination must actually be reached.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/drag-under.md",
+            "sha256": "1c5b1f30865fb3419918c33e6c6a6184773c544418a5cafc21bebb79b6ac93a2"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-flicker-aside",
+          "path": "design/monster-abilities/flicker-aside.md",
+          "sha256": "a7b83551d94cfbdb670102c36287532efd3bef72f1981337e21415dac9833206",
+          "name": "Flicker Aside",
+          "action": "Reaction",
+          "flavorMarkdown": "*Its outline gutters like a flame in a draft and catches again just beyond the reaching hand.*",
+          "rulesMarkdown": "After an attack resolves and deals HP damage to this creature, teleport to a visible empty square within 1 square. This creature must survive and remain capable. The destination must support its footprint and be reachable by an unobstructed straight path; this does not pass through walls or occupied squares. No opportunity attacks from this teleport. No trigger from a free attack; no attack is granted.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Flicker Aside\n\n*Its outline gutters like a flame in a draft and catches again just beyond the reaching hand.*\n\n## Rules\n\n**ID:** monster-flicker-aside\n\n**Action:** Reaction\n\nAfter an attack resolves and deals HP damage to this creature, teleport to a visible empty square within 1 square. This creature must survive and remain capable. The destination must support its footprint and be reachable by an unobstructed straight path; this does not pass through walls or occupied squares. No opportunity attacks from this teleport. No trigger from a free attack; no attack is granted.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/flicker-aside.md",
+            "sha256": "a7b83551d94cfbdb670102c36287532efd3bef72f1981337e21415dac9833206"
+          },
+          "automation": "pending"
         }
       ],
       "summoning": {

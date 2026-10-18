@@ -1,0 +1,2774 @@
+{
+  "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
+  "profiles": {
+    "creature-adder": {
+      "sourceSha": "2af51c47fd2dcd29f7e71a11d7de52d70cb8f8fc56d5e83bcc9642e179974dca",
+      "fields": {
+        "system.cv": "af63a84c86019430",
+        "system.actions": "754fac05e960e867",
+        "system.details.designNotesMarkdown": "48e8ba047486afbc",
+        "system.details.flavorMarkdown": "53c4491a1e7a4613",
+        "system.details.generalMarkdown": "94ba5febbc7231fc",
+        "system.details.specialtyMarkdown": "5afffb158ab9788c"
+      }
+    },
+    "creature-air-elemental": {
+      "sourceSha": "16b68e93d66f38209fe0d3809067ccb8e90204b1c69773e45a35db987f393a59",
+      "fields": {
+        "system.cv": "08030307b4c31d2c",
+        "system.actions": "4149ad1906b170b8",
+        "system.details.designNotesMarkdown": "c9d845d9a9e90078",
+        "system.details.flavorMarkdown": "7c6addaf5652bdca",
+        "system.details.generalMarkdown": "0a0030469c132035",
+        "system.details.specialtyMarkdown": "5c175083ee285b7a"
+      }
+    },
+    "creature-ancestor-guardian": {
+      "sourceSha": "efb22fce97977d36cdecc3888b1fd123b63ee1db031f08bc896be69f357348dd",
+      "fields": {
+        "system.cv": "07f89007b4ba053e",
+        "system.actions": "a476e699cd36c916",
+        "system.details.designNotesMarkdown": "f4d2dbc70b4e199b",
+        "system.details.flavorMarkdown": "25ef68ed0bfaf78b",
+        "system.details.generalMarkdown": "e08e9d26f9e8532f",
+        "system.details.specialtyMarkdown": "1740b181a3082611"
+      }
+    },
+    "creature-ancient-mammoth": {
+      "sourceSha": "e4e7f9bed9b3feeb39ff2fd06d4604450a3cb955a84813ce7708bce9978f5075",
+      "fields": {
+        "system.cv": "07ff8707b4c014a1",
+        "system.actions": "8dab1595e67ea0da",
+        "system.details.designNotesMarkdown": "768f16e26acccd2b",
+        "system.details.flavorMarkdown": "ecea0b0b421a3652",
+        "system.details.generalMarkdown": "d993f4a0ff1bf24d",
+        "system.details.specialtyMarkdown": "51389303cbd24eb7"
+      }
+    },
+    "creature-animated-armor": {
+      "sourceSha": "8f29939d9ce6ddb91865d2c5b7f16236a55fef03fe80c5699a9e7027210ddfe9",
+      "fields": {
+        "system.cv": "07f89107b4ba06f1",
+        "system.actions": "f171483152783709",
+        "system.details.designNotesMarkdown": "e9b8800180b62741",
+        "system.details.flavorMarkdown": "51fd97940a8b5c59",
+        "system.details.generalMarkdown": "59cf2fc256400c25",
+        "system.details.specialtyMarkdown": "5c36571f2360e8d3"
+      }
+    },
+    "creature-animated-statue": {
+      "sourceSha": "f69f9e0e6f00ee281212c57a0c75684d13de671372f0721ed5f61f5b0689bc9a",
+      "fields": {
+        "system.cv": "08030607b4c32245",
+        "system.actions": "483c06af8a1e9671",
+        "system.details.designNotesMarkdown": "2a07cc775ac688b6",
+        "system.details.flavorMarkdown": "4e7c4c24ed4f48da",
+        "system.details.generalMarkdown": "b56e0d4998f1db34",
+        "system.details.specialtyMarkdown": "0941808246d1cd27"
+      }
+    },
+    "creature-ash-demon": {
+      "sourceSha": "3b8eafff3c9af14ec6a3a83dbc0792845c661e1f40869dfc5ca78598d4582227",
+      "fields": {
+        "system.cv": "08030b07b4c32ac4",
+        "system.actions": "96ce87c7363e7b3c",
+        "system.details.designNotesMarkdown": "39c887a8620b1190",
+        "system.details.flavorMarkdown": "132ce8701a68207d",
+        "system.details.generalMarkdown": "8095e7a7b5eb9508",
+        "system.details.specialtyMarkdown": "bdeb929a5e4e6fcc"
+      }
+    },
+    "creature-ash-revenant": {
+      "sourceSha": "a77a822f3f2329769d5ea1bd69c34da3cdcbb3ecfc48b3bdcaaabb02669340ca",
+      "fields": {
+        "system.cv": "08030b07b4c32ac4",
+        "system.actions": "1818308e64ec6e11",
+        "system.details.designNotesMarkdown": "3f53268693835c58",
+        "system.details.flavorMarkdown": "08a4bcb21849081d",
+        "system.details.generalMarkdown": "2a288cda5f348d25",
+        "system.details.specialtyMarkdown": "7ec3276202a0e4b5"
+      }
+    },
+    "creature-bandit-bow": {
+      "sourceSha": "94e793ecdc27cee2df5442ecbec2420fdfea9afd27aab6ee84ceea081e2a7f4c",
+      "fields": {
+        "system.cv": "af63b44c8601a894",
+        "system.actions": "cc0aa885ce2cacc2",
+        "system.details.designNotesMarkdown": "805459e5290ed1c1",
+        "system.details.flavorMarkdown": "7c651db26e610bf6",
+        "system.details.generalMarkdown": "36545d68d1f74ab0",
+        "system.details.specialtyMarkdown": "ec7d997cb61c3393"
+      }
+    },
+    "creature-banshee": {
+      "sourceSha": "776e4db6d4332c3be32a0b5ccb4ed7b0534eb8253843dda414fdcf38957727b6",
+      "fields": {
+        "system.cv": "07eafa07b4ae7c00",
+        "system.actions": "183687463e01f201",
+        "system.details.designNotesMarkdown": "acc73e0dbb43060a",
+        "system.details.flavorMarkdown": "84cd338c7ac9587e",
+        "system.details.generalMarkdown": "22c30126ef63db6a",
+        "system.details.specialtyMarkdown": "9194d0f65f56da16"
+      }
+    },
+    "creature-barrow-guard": {
+      "sourceSha": "a6a16a7b595489cd51b406820a1b48c6c93b092c354813291b36c2ad8a55b082",
+      "fields": {
+        "system.cv": "08030507b4c32092",
+        "system.actions": "312d14eaaac468ca",
+        "system.details.designNotesMarkdown": "c742ed9fa8046ca0",
+        "system.details.flavorMarkdown": "676701e8c76df11e",
+        "system.details.generalMarkdown": "2e23c4d75fbb3f52",
+        "system.details.specialtyMarkdown": "6d97be7205a4c97b"
+      }
+    },
+    "creature-basilisk": {
+      "sourceSha": "5f6d4f64248731841b17c8ecedfb0d28a1bf680c76ee695ebe62d058c51219cf",
+      "fields": {
+        "system.cv": "07f88b07b4b9fcbf",
+        "system.actions": "01e8c899c326586f",
+        "system.details.designNotesMarkdown": "93bf5a59922b0dee",
+        "system.details.flavorMarkdown": "2caea2ab68065585",
+        "system.details.generalMarkdown": "bb7ba16dc4bb3ae2",
+        "system.details.specialtyMarkdown": "f8b6fa3a17cb5d06"
+      }
+    },
+    "creature-battle-chaplain": {
+      "sourceSha": "f7444683a5f76f192a26732134750695867edb07ba04ea1b805ea37392ac5856",
+      "fields": {
+        "system.cv": "07f89507b4ba0dbd",
+        "system.actions": "80f5b61772b48330",
+        "system.details.designNotesMarkdown": "c7379dec83b6549a",
+        "system.details.flavorMarkdown": "d58265ed2143a943",
+        "system.details.generalMarkdown": "e9672fc1267d32f8",
+        "system.details.specialtyMarkdown": "21196d5cdf728bfd"
+      }
+    },
+    "creature-black-dragon": {
+      "sourceSha": "dd441acc1789dccacdb1e5c7c681e6477fcc5e1ec6b97cb7427a090eb1fae2d3",
+      "fields": {
+        "system.cv": "07f20307b4b4a9f9",
+        "system.actions": "2808317cdb8ad726",
+        "system.details.designNotesMarkdown": "28d60e0a997f8322",
+        "system.details.flavorMarkdown": "d3189f65db276ae2",
+        "system.details.generalMarkdown": "ace3b21fe40875cf",
+        "system.details.specialtyMarkdown": "2d99564f9766f6d8"
+      }
+    },
+    "creature-black-pudding": {
+      "sourceSha": "7e8eb1d2f91b4290e4a07f2c0efa61bafa8c2720ad163f2604a41f8dae63a402",
+      "fields": {
+        "system.cv": "08030507b4c32092",
+        "system.actions": "4715dcb2d3866e45",
+        "system.details.designNotesMarkdown": "c2da4bb03f233849",
+        "system.details.flavorMarkdown": "8fd816c1cb938a27",
+        "system.details.generalMarkdown": "92c5bd7c0f9efdfc",
+        "system.details.specialtyMarkdown": "866d779d7c19de94"
+      }
+    },
+    "creature-blood-bat-swarm": {
+      "sourceSha": "9c856089e45e69eec594183f0f3135fc0d58aaa178f21e74d2682c1c37489186",
+      "fields": {
+        "system.cv": "07f89107b4ba06f1",
+        "system.actions": "e9bb922fa042e3ff",
+        "system.details.designNotesMarkdown": "6b11cd7d63db241e",
+        "system.details.flavorMarkdown": "510b5735bfd99b17",
+        "system.details.generalMarkdown": "c50f61e53f97f606",
+        "system.details.specialtyMarkdown": "73263a508f382dd9"
+      }
+    },
+    "creature-blood-courtier": {
+      "sourceSha": "1d491e6e116b5f858cd0cc825f4372f6f5d75ea9a72c15ebb2298b2d2f8cd626",
+      "fields": {
+        "system.cv": "07ee8007b4b19589",
+        "system.actions": "720fbd390c3c9a67",
+        "system.details.designNotesMarkdown": "48530e88a29a96f8",
+        "system.details.flavorMarkdown": "d60d0b738d03c5d6",
+        "system.details.generalMarkdown": "b73691be63a2e1ad",
+        "system.details.specialtyMarkdown": "424c8e5c3dda8e8e"
+      }
+    },
+    "creature-blue-dragon": {
+      "sourceSha": "33cb6c2b41f204e725230d5304ea8abb3194698e2b44bec03f969726beedd99a",
+      "fields": {
+        "system.cv": "08179007b4d4b5cd",
+        "system.actions": "f4450e25191658fe",
+        "system.details.designNotesMarkdown": "4891bb9bab98cf69",
+        "system.details.flavorMarkdown": "8197711745d70314",
+        "system.details.generalMarkdown": "ba6daf63e1df65e9",
+        "system.details.specialtyMarkdown": "b9cab42d5b23a0f6"
+      }
+    },
+    "creature-bone-archer": {
+      "sourceSha": "da92b9e9546b1cf7c5d499feff0dbb764ee5c954e5d8e9d7922b3b8723e5c3b9",
+      "fields": {
+        "system.cv": "af63ab4c86019949",
+        "system.actions": "81a9d7ec0f58c76b",
+        "system.details.designNotesMarkdown": "81a0e87114d59f51",
+        "system.details.flavorMarkdown": "8b2baea08c0671b4",
+        "system.details.generalMarkdown": "6007c9d5e0d158aa",
+        "system.details.specialtyMarkdown": "92039bfa486a2c27"
+      }
+    },
+    "creature-bone-colossus": {
+      "sourceSha": "2379740a02df5b9a8e815d822f6f60f3f5c571a99a10fbb99b901940dc6d68ca",
+      "fields": {
+        "system.cv": "07ee7d07b4b19070",
+        "system.actions": "106756e3dfd1ec0b",
+        "system.details.designNotesMarkdown": "cf912d852f5a6010",
+        "system.details.flavorMarkdown": "129bf8d6a7c33bed",
+        "system.details.generalMarkdown": "0356d6e72dbdf9e1",
+        "system.details.specialtyMarkdown": "4e4ed420305f5d33"
+      }
+    },
+    "creature-bone-sentry": {
+      "sourceSha": "eebaf9df9df8c31c34c39c449d1cacc0d659c02ec7ca5043dee3acccc2197175",
+      "fields": {
+        "system.cv": "af63aa4c86019796",
+        "system.actions": "cf7a7cffb623f38d",
+        "system.details.designNotesMarkdown": "d0c594c51dcfd432",
+        "system.details.flavorMarkdown": "bb8d3f5a381ffea9",
+        "system.details.generalMarkdown": "003c09bc60ff600d",
+        "system.details.specialtyMarkdown": "08838b4e17224dfc"
+      }
+    },
+    "creature-briar-knight": {
+      "sourceSha": "0a74617f7d48239a3c222c8df9df4dec6fa6e5068fbc29cb5aa51e7831c96869",
+      "fields": {
+        "system.cv": "07f88b07b4b9fcbf",
+        "system.actions": "e10426501dc4a5e8",
+        "system.details.designNotesMarkdown": "4f0fde62ac837903",
+        "system.details.flavorMarkdown": "18a8b7efd142ba25",
+        "system.details.generalMarkdown": "c8b102a6c81e9597",
+        "system.details.specialtyMarkdown": "e14f52a5b26eca05"
+      }
+    },
+    "creature-bridge-troll": {
+      "sourceSha": "2aa90d963595b1671bb36a05e09380546779522d6ae207f3f7b1be06b18f7a21",
+      "fields": {
+        "system.cv": "08030007b4c31813",
+        "system.actions": "dcfd04e1c20890b1",
+        "system.details.designNotesMarkdown": "5a90336763d3041c",
+        "system.details.flavorMarkdown": "224154168b66dfcc",
+        "system.details.generalMarkdown": "a163b019138be86a",
+        "system.details.specialtyMarkdown": "33cef463b8bbdbda"
+      }
+    },
+    "creature-bronze-dragon": {
+      "sourceSha": "0a3752ceb96a8c4467661b8b2d16775e6077daf6145529d5e1983675505bcdc7",
+      "fields": {
+        "system.cv": "08178807b4d4a835",
+        "system.actions": "966c0469d1fc26c4",
+        "system.details.designNotesMarkdown": "acfa23b21577cd05",
+        "system.details.flavorMarkdown": "add9245932e631bc",
+        "system.details.generalMarkdown": "eaa55f90dba1b96e",
+        "system.details.specialtyMarkdown": "2907a1372ad5d1ec"
+      }
+    },
+    "creature-brown-bear": {
+      "sourceSha": "40bc4bb2b7a07e91c23dd4fe1d1148cc344b1df98b452b881c923f2040c484fd",
+      "fields": {
+        "system.cv": "07f89107b4ba06f1",
+        "system.actions": "6179c3151f8b115e",
+        "system.details.designNotesMarkdown": "8164b2911efae262",
+        "system.details.flavorMarkdown": "1ddbdd8a37237001",
+        "system.details.generalMarkdown": "9d24e324a50b9524",
+        "system.details.specialtyMarkdown": "bb8e5ae1ce2629c6"
+      }
+    },
+    "creature-bugbear-ambusher": {
+      "sourceSha": "93be9d3bb579a3da7670ef5725b2c858b29a5b95babc19135b3652fde5faf169",
+      "fields": {
+        "system.cv": "0802ff07b4c31660",
+        "system.actions": "43d00b71997c37ed",
+        "system.details.designNotesMarkdown": "e127b9b831465ca3",
+        "system.details.flavorMarkdown": "682bdd4fe2052551",
+        "system.details.generalMarkdown": "69ab1499387bccb7",
+        "system.details.specialtyMarkdown": "592f92b93c9dcfdc"
+      }
+    },
+    "creature-burrowing-maw": {
+      "sourceSha": "3fcbe962a1a9dd79f43167f535388dff172a3725bd1a9992e6c6ce3df1ff86b2",
+      "fields": {
+        "system.cv": "08030207b4c31b79",
+        "system.actions": "bb7446c22ef80185",
+        "system.details.designNotesMarkdown": "0db1267c5f20fb6c",
+        "system.details.flavorMarkdown": "54576f6e34b06622",
+        "system.details.generalMarkdown": "3b5b1a732fa91305",
+        "system.details.specialtyMarkdown": "5f09dfa091989053"
+      }
+    },
+    "creature-carrion-rat-swarm": {
+      "sourceSha": "1f4e6b2a95abdaec96705606f3982feb8dc13d86ab1be4ff7d551f88a62a9295",
+      "fields": {
+        "system.cv": "07f89307b4ba0a57",
+        "system.actions": "e9b5c0892ff6fccc",
+        "system.details.designNotesMarkdown": "477c2b51b71257ce",
+        "system.details.flavorMarkdown": "0670ace2c1521fb6",
+        "system.details.generalMarkdown": "ee750b8c4fdfa3ab",
+        "system.details.specialtyMarkdown": "b920ddf46a46bbe0"
+      }
+    },
+    "creature-cave-bat": {
+      "sourceSha": "77b00be66aaee92e8897313220bed2abcb94c7583d2a57c68a8936ee6ac3aec7",
+      "fields": {
+        "system.cv": "af63a94c860195e3",
+        "system.actions": "c57d93fe791ab0de",
+        "system.details.designNotesMarkdown": "f1d20911aa4d577b",
+        "system.details.flavorMarkdown": "a0a0d09b535c61c9",
+        "system.details.generalMarkdown": "f0caee25d95e5956",
+        "system.details.specialtyMarkdown": "1b69f1bdad174e81"
+      }
+    },
+    "creature-cavern-lurker": {
+      "sourceSha": "919ac2919aa01cd7ee912001ad60e9fc7cac29fe4394744f8d816a7f603ad4fb",
+      "fields": {
+        "system.cv": "08030107b4c319c6",
+        "system.actions": "ce082087b2fca20d",
+        "system.details.designNotesMarkdown": "91f6391703d21835",
+        "system.details.flavorMarkdown": "afc7ff57271170f9",
+        "system.details.generalMarkdown": "098de5f88036c069",
+        "system.details.specialtyMarkdown": "56bfaa6e7ec59be3"
+      }
+    },
+    "creature-centaur-scout": {
+      "sourceSha": "685e88b5912f05c7ed2fe11687027b66f82b6cf252b44becd44da119a6d52343",
+      "fields": {
+        "system.cv": "07f89107b4ba06f1",
+        "system.actions": "ae39bd8d2b543cac",
+        "system.details.designNotesMarkdown": "256c82686332fd12",
+        "system.details.flavorMarkdown": "a366e8ec54972d3c",
+        "system.details.generalMarkdown": "43df04c8bf5468bd",
+        "system.details.specialtyMarkdown": "c011d37fc0db78fb"
+      }
+    },
+    "creature-chain-jailer": {
+      "sourceSha": "8ce350b383064dfd3771b329c8bd9b54f7df3db93785e24b218c84fdffb892aa",
+      "fields": {
+        "system.cv": "07ff7c07b4c001f0",
+        "system.actions": "39727c1069050eb3",
+        "system.details.designNotesMarkdown": "664454aa72ae9b23",
+        "system.details.flavorMarkdown": "a81312f888099121",
+        "system.details.generalMarkdown": "aff6d9499331b171",
+        "system.details.specialtyMarkdown": "5a96c1faf373dce1"
+      }
+    },
+    "creature-chimera": {
+      "sourceSha": "1086aecc04bf67e925a1c6ce271d9a7bd9e2fc957b826d364f2fabf06c177939",
+      "fields": {
+        "system.cv": "07eaff07b4ae847f",
+        "system.actions": "a7b385d1d6574769",
+        "system.details.designNotesMarkdown": "3d6e794c099d066f",
+        "system.details.flavorMarkdown": "2a5af79f56f5c67e",
+        "system.details.generalMarkdown": "ebbc36ba5464b4e6",
+        "system.details.specialtyMarkdown": "0c3b035dcc7a6b7a"
+      }
+    },
+    "creature-chorus-maw": {
+      "sourceSha": "e46e197bc380365326e2fb4300ad27935db2b1b521b7ee42742eb5f51ee3f4c8",
+      "fields": {
+        "system.cv": "07ff8107b4c00a6f",
+        "system.actions": "5ddcb9bf51e163f5",
+        "system.details.designNotesMarkdown": "e30b174d87d104c3",
+        "system.details.flavorMarkdown": "ad6709fe9e830e1a",
+        "system.details.generalMarkdown": "1612d77b4177d18d",
+        "system.details.specialtyMarkdown": "38cc408fe1cbe565"
+      }
+    },
+    "creature-cinder-imp": {
+      "sourceSha": "1ed18ef84637ed87f067d2e0d139785d97d42d4cf38f1f2d9f1878545c632d84",
+      "fields": {
+        "system.cv": "af63aa4c86019796",
+        "system.actions": "2c56a48c52f230a9",
+        "system.details.designNotesMarkdown": "12a02cd04b230a8f",
+        "system.details.flavorMarkdown": "dd7c1d1d95e27f33",
+        "system.details.generalMarkdown": "9c85b5b069aab188",
+        "system.details.specialtyMarkdown": "8ac08392b899a68c"
+      }
+    },
+    "creature-cinder-strider": {
+      "sourceSha": "76457f9d898d9975b443b9512bdea13d9204914702e8348d4e69d63c9a368326",
+      "fields": {
+        "system.cv": "07f88a07b4b9fb0c",
+        "system.actions": "a117d8de8e4bc890",
+        "system.details.designNotesMarkdown": "3d7ace69679d6ebe",
+        "system.details.flavorMarkdown": "afb8e6f8f8471507",
+        "system.details.generalMarkdown": "fe62e5fa42b78121",
+        "system.details.specialtyMarkdown": "88e74727d40f548f"
+      }
+    },
+    "creature-clay-golem": {
+      "sourceSha": "ea5d09d46cb53f40850a0fefc5789b0078eb5e268b0d733d37ebff5de306a6fb",
+      "fields": {
+        "system.cv": "07ff8307b4c00dd5",
+        "system.actions": "f212f409eed1f730",
+        "system.details.designNotesMarkdown": "cab6d97f87654fc8",
+        "system.details.flavorMarkdown": "1a0ae7bc54491487",
+        "system.details.generalMarkdown": "a6881cad83b02c1a",
+        "system.details.specialtyMarkdown": "221c3ba72f63bdbd"
+      }
+    },
+    "creature-clay-helper": {
+      "sourceSha": "58d0001c1f7a45c633e24ad1b38274cf7b7e3351e886bb6eb3af1fb34daa44f4",
+      "fields": {
+        "system.cv": "af63a84c86019430",
+        "system.actions": "9020e093a2ac24e2",
+        "system.details.designNotesMarkdown": "8344144ebbb07a23",
+        "system.details.flavorMarkdown": "10aa5095bdfa8fea",
+        "system.details.generalMarkdown": "f6fdbc6e5e8389f6",
+        "system.details.specialtyMarkdown": "822118b977238485"
+      }
+    },
+    "creature-clockwork-scout": {
+      "sourceSha": "2637b07b68db960f1b64ea079921ba1ed43940d65377b20f24bc2339a04519d9",
+      "fields": {
+        "system.cv": "af63a84c86019430",
+        "system.actions": "4b23270d003635e7",
+        "system.details.designNotesMarkdown": "12969ece1b4bc297",
+        "system.details.flavorMarkdown": "d494a36c2717a591",
+        "system.details.generalMarkdown": "561f40b34253a8db",
+        "system.details.specialtyMarkdown": "f7fd52fd1e0e5d89"
+      }
+    },
+    "creature-cloud-giant": {
+      "sourceSha": "6767bc50aa2fc961e664727efea82f6f55dbffd739a8cc904f5e421fd444251d",
+      "fields": {
+        "system.cv": "07ff8007b4c008bc",
+        "system.actions": "9bd1009c2d0571fc",
+        "system.details.designNotesMarkdown": "3ab8267726e22087",
+        "system.details.flavorMarkdown": "e3ed970f9100f61b",
+        "system.details.generalMarkdown": "a5434db47ce3f230",
+        "system.details.specialtyMarkdown": "3eb1bf3408b553e5"
+      }
+    },
+    "creature-cockatrice": {
+      "sourceSha": "84bd8328396e889352b75215358ea358b31aeee812a9ab2585acf89585572d8a",
+      "fields": {
+        "system.cv": "07f89507b4ba0dbd",
+        "system.actions": "4d21a5918ed51029",
+        "system.details.designNotesMarkdown": "d0a8616480c8f3ca",
+        "system.details.flavorMarkdown": "215cf9af5102b92f",
+        "system.details.generalMarkdown": "31d0479e779f6cd6",
+        "system.details.specialtyMarkdown": "db9bb593e7ccba37"
+      }
+    },
+    "creature-crypt-ghoul": {
+      "sourceSha": "4e29b9741c41ecb7a7a86cd9ac1fed8101c5b042e1e305a6a7f4a454ce53390c",
+      "fields": {
+        "system.cv": "07f89107b4ba06f1",
+        "system.actions": "535971f586857011",
+        "system.details.designNotesMarkdown": "6b6df6c39dde3dda",
+        "system.details.flavorMarkdown": "b7b2c3ccff7c304b",
+        "system.details.generalMarkdown": "7b42146731a97f3d",
+        "system.details.specialtyMarkdown": "f03b9ef68c1f332a"
+      }
+    },
+    "creature-crystal-ooze": {
+      "sourceSha": "c4ac46385d5c664831a3234f6c0d6f423f851f87dbc6a28c4a575cf763419be5",
+      "fields": {
+        "system.cv": "08030407b4c31edf",
+        "system.actions": "802a27d8d93f999e",
+        "system.details.designNotesMarkdown": "73971be534f1a32a",
+        "system.details.flavorMarkdown": "87e2e996d24b6c63",
+        "system.details.generalMarkdown": "3fe3392ff57043d0",
+        "system.details.specialtyMarkdown": "e83e102a57ba3cb9"
+      }
+    },
+    "creature-cyclops": {
+      "sourceSha": "09a4cab97c09c40769617c0ec455e405bbf53f01744e53217c7c00eb45463ff2",
+      "fields": {
+        "system.cv": "07ff7c07b4c001f0",
+        "system.actions": "b0e110a9765b4550",
+        "system.details.designNotesMarkdown": "6177c08afe1aabd6",
+        "system.details.flavorMarkdown": "03bdf55444106b6d",
+        "system.details.generalMarkdown": "e29653c1069a725a",
+        "system.details.specialtyMarkdown": "0aabb1ba2f371aba"
+      }
+    },
+    "creature-dawn-emissary": {
+      "sourceSha": "8195ae8c2a720742a8a0e4433470ebd4b88eed52a9e900d1a46ac9852b088546",
+      "fields": {
+        "system.cv": "07ff7f07b4c00709",
+        "system.actions": "a15018135bf6f2b6",
+        "system.details.designNotesMarkdown": "d3babc2e7c16f7d6",
+        "system.details.flavorMarkdown": "7bbff866bfa94404",
+        "system.details.generalMarkdown": "7ac7bd3cefe4d7c9",
+        "system.details.specialtyMarkdown": "a0fed9c2eca367ac"
+      }
+    },
+    "creature-death-knight": {
+      "sourceSha": "3f791190cfdc501ed2bc94bb0a34012f6f2f3430dfe4955abe996c4e40a280aa",
+      "fields": {
+        "system.cv": "07eb0007b4ae8632",
+        "system.actions": "96c2df59f64595f4",
+        "system.details.designNotesMarkdown": "e07694555258790e",
+        "system.details.flavorMarkdown": "31b9438bdc6723e8",
+        "system.details.generalMarkdown": "5b2bcce7d90e5dcc",
+        "system.details.specialtyMarkdown": "b382af83b6057e98"
+      }
+    },
+    "creature-deep-elf-webweaver": {
+      "sourceSha": "4f6ad62ba8dce98aca43471c402d3cb720ab385cf0184bc33afddf221749ba8c",
+      "fields": {
+        "system.cv": "07f89507b4ba0dbd",
+        "system.actions": "b42bccf1ab8fce2b",
+        "system.details.designNotesMarkdown": "32c3059be0a67f2e",
+        "system.details.flavorMarkdown": "d63f3b28133a9b98",
+        "system.details.generalMarkdown": "eb7b78ae7e6a591b",
+        "system.details.specialtyMarkdown": "0bf1cffed2ababd0"
+      }
+    },
+    "creature-dire-wolf": {
+      "sourceSha": "1df5ccda7507ee7cdff7b9eb8511dcb0cfca6a953836091b80f1de59c87257a1",
+      "fields": {
+        "system.cv": "07f88a07b4b9fb0c",
+        "system.actions": "40e9722263c4e4e7",
+        "system.details.designNotesMarkdown": "06d42c86a83b6e1c",
+        "system.details.flavorMarkdown": "c48cac37f0466ee9",
+        "system.details.generalMarkdown": "111c6557ff43b22d",
+        "system.details.specialtyMarkdown": "12c70ae4b4cc2f24"
+      }
+    },
+    "creature-dryad": {
+      "sourceSha": "67e43b00435209508d0f767b3d9414861aa1c915b6c89412b341339c33ba8785",
+      "fields": {
+        "system.cv": "07f89107b4ba06f1",
+        "system.actions": "99981ea77ab752c5",
+        "system.details.designNotesMarkdown": "5adca172e5fe544f",
+        "system.details.flavorMarkdown": "283e38461ad4291f",
+        "system.details.generalMarkdown": "cc56803ab8222f02",
+        "system.details.specialtyMarkdown": "8a38e89d408e07a3"
+      }
+    },
+    "creature-earth-elemental": {
+      "sourceSha": "533edbbc884c1d13482cab035a7b665ecee4197c820f7be60e5557a623983443",
+      "fields": {
+        "system.cv": "07ff8007b4c008bc",
+        "system.actions": "16bd697aebe6c748",
+        "system.details.designNotesMarkdown": "409461e7f23162fc",
+        "system.details.flavorMarkdown": "2560ff4e5f4612ae",
+        "system.details.generalMarkdown": "fdab6320dbe3313d",
+        "system.details.specialtyMarkdown": "efd7dfd4de06bacc"
+      }
+    },
+    "creature-emberling": {
+      "sourceSha": "fd7d8a619d7537af09cb5f5eb4395444ce3988913ee8310d58f2443747676ec1",
+      "fields": {
+        "system.cv": "af63b54c8601aa47",
+        "system.actions": "22c2e05a8705ffd1",
+        "system.details.designNotesMarkdown": "2860087d708846e7",
+        "system.details.flavorMarkdown": "839dc5efe1890e3f",
+        "system.details.generalMarkdown": "a1de4d758bf271b3",
+        "system.details.specialtyMarkdown": "c265cda4f4226f6a"
+      }
+    },
+    "creature-ettin": {
+      "sourceSha": "f7fa6ff65e54d49d9585033826a4f0eba3e2df28360d8f5689efa9e13bc35906",
+      "fields": {
+        "system.cv": "07ee8707b4b1a16e",
+        "system.actions": "ddc37678eb53655e",
+        "system.details.designNotesMarkdown": "a958d277c25da2b3",
+        "system.details.flavorMarkdown": "e0b504ec32149f58",
+        "system.details.generalMarkdown": "d5ae2d10c0013cf7",
+        "system.details.specialtyMarkdown": "761d1bb45e90ad95"
+      }
+    },
+    "creature-faceless-envoy": {
+      "sourceSha": "5bd94e9d0cebf7e7c0c372bf27aabf4ad8a45196b0cff90446f489f2ff4af9a1",
+      "fields": {
+        "system.cv": "08030607b4c32245",
+        "system.actions": "82ad2ef8b3acd4b3",
+        "system.details.designNotesMarkdown": "3540a519fe8e5e46",
+        "system.details.flavorMarkdown": "22df822d45b14b40",
+        "system.details.generalMarkdown": "b3abe11d91545500",
+        "system.details.specialtyMarkdown": "3412287149b14849"
+      }
+    },
+    "creature-fire-giant": {
+      "sourceSha": "08d144383a79560fb464f8d1f7b8d00b8a76a19e564b5a25e73192c2f9146b17",
+      "fields": {
+        "system.cv": "07eafc07b4ae7f66",
+        "system.actions": "e5ec021f099b0137",
+        "system.details.designNotesMarkdown": "257237f64403381b",
+        "system.details.flavorMarkdown": "72a84dfe5edcb471",
+        "system.details.generalMarkdown": "de04b36dbf97882d",
+        "system.details.specialtyMarkdown": "ef9358c73f523639"
+      }
+    },
+    "creature-flesh-golem": {
+      "sourceSha": "d98bc76ebc43edafc3c31626162c5dc17618623bd3217fa7743fc60180b7beb9",
+      "fields": {
+        "system.cv": "08030b07b4c32ac4",
+        "system.actions": "88bec26040441556",
+        "system.details.designNotesMarkdown": "d932619e27773d4f",
+        "system.details.flavorMarkdown": "0280e27cc541aecf",
+        "system.details.generalMarkdown": "2356a92e0259bb5f",
+        "system.details.specialtyMarkdown": "2260c17dabc5383f"
+      }
+    },
+    "creature-frost-giant": {
+      "sourceSha": "3c0b3e050760f0bba2413e43527f6c79300bf382976604f95b1fce82748d8dc0",
+      "fields": {
+        "system.cv": "07ee7f07b4b193d6",
+        "system.actions": "20b210978c9ea5c9",
+        "system.details.designNotesMarkdown": "fc96af3b31868e63",
+        "system.details.flavorMarkdown": "b0802e171cb40756",
+        "system.details.generalMarkdown": "8e105da8e53b2d00",
+        "system.details.specialtyMarkdown": "eafb3f17961a660e"
+      }
+    },
+    "creature-gargoyle": {
+      "sourceSha": "751c6ac6096f63327565a50b66b0de4c3b5ab06c89aaebed9f259b49d4657748",
+      "fields": {
+        "system.cv": "08030107b4c319c6",
+        "system.actions": "8f77d5059079adee",
+        "system.details.designNotesMarkdown": "ab2bb7e53e23b591",
+        "system.details.flavorMarkdown": "b42435d0a9835035",
+        "system.details.generalMarkdown": "aed3849020fb3b26",
+        "system.details.specialtyMarkdown": "2771a1f0c362d860"
+      }
+    },
+    "creature-gate-archon": {
+      "sourceSha": "193d94232fdcc0962da5c99b45eb5076ed5c11397e71993c5351ceadd0322668",
+      "fields": {
+        "system.cv": "07ee7d07b4b19070",
+        "system.actions": "a3202e984bc895e8",
+        "system.details.designNotesMarkdown": "dfbe8125ae1d887b",
+        "system.details.flavorMarkdown": "00eb30d19d77cacf",
+        "system.details.generalMarkdown": "f32ad64d3c34f825",
+        "system.details.specialtyMarkdown": "ae5f53b53c9fdc00"
+      }
+    },
+    "creature-gelatinous-cube": {
+      "sourceSha": "429d07b634159e6530cb11ccfc6d921cfb445b03b0c039f02bbeb768923f4a3f",
+      "fields": {
+        "system.cv": "08030407b4c31edf",
+        "system.actions": "917f1332ee747238",
+        "system.details.designNotesMarkdown": "5269ba7f6b3a6679",
+        "system.details.flavorMarkdown": "6438ce432fc321a4",
+        "system.details.generalMarkdown": "0df373e920da6e3b",
+        "system.details.specialtyMarkdown": "00c104d41bfd2898"
+      }
+    },
+    "creature-ghast": {
+      "sourceSha": "fe4122eeb157fbc61242c8417dd87315dfed588f18a36581c903faa9dcc7802d",
+      "fields": {
+        "system.cv": "0802ff07b4c31660",
+        "system.actions": "995fa6d6364d7506",
+        "system.details.designNotesMarkdown": "86a7cd86a7e304c3",
+        "system.details.flavorMarkdown": "55c18b9f4152530d",
+        "system.details.generalMarkdown": "ac71fcd780a95505",
+        "system.details.specialtyMarkdown": "31a74c7bc94b9c11"
+      }
+    },
+    "creature-giant-boar": {
+      "sourceSha": "82aad1ae08fb3da32bd486a6db3ca638219eb61f6ed6cb4f3b3e7693075f3a2a",
+      "fields": {
+        "system.cv": "08030607b4c32245",
+        "system.actions": "56bc31f4854b9b99",
+        "system.details.designNotesMarkdown": "18597cf10690e4b2",
+        "system.details.flavorMarkdown": "6eb10cc89c2344eb",
+        "system.details.generalMarkdown": "0791b406c87dd165",
+        "system.details.specialtyMarkdown": "aec82deca5f9c93a"
+      }
+    },
+    "creature-giant-constrictor": {
+      "sourceSha": "51a41e9ae30b167f829ed93f95a7c4bea746cced5b5f5a8c8e41dfd49c1e0140",
+      "fields": {
+        "system.cv": "08030507b4c32092",
+        "system.actions": "6c29cf8f7d90bca9",
+        "system.details.designNotesMarkdown": "654657fc647698d1",
+        "system.details.flavorMarkdown": "8d1e4de70f187599",
+        "system.details.generalMarkdown": "44f520c5b8100c48",
+        "system.details.specialtyMarkdown": "b63c6285724343dd"
+      }
+    },
+    "creature-giant-eagle": {
+      "sourceSha": "75c4b2e1f3c537233f8b9606f435e7f2cee7a17d68c6f5dfd04b03c85688ad5d",
+      "fields": {
+        "system.cv": "07f89007b4ba053e",
+        "system.actions": "1d2248ae1fba5901",
+        "system.details.designNotesMarkdown": "98a5807903c81a95",
+        "system.details.flavorMarkdown": "264de7972ba7850d",
+        "system.details.generalMarkdown": "9847cfe4caf1b45a",
+        "system.details.specialtyMarkdown": "e2da1e3100383347"
+      }
+    },
+    "creature-giant-flytrap": {
+      "sourceSha": "00aa0352ae342b1f28804abca3f283e8294a96295f343238a12fbf0516596782",
+      "fields": {
+        "system.cv": "08030607b4c32245",
+        "system.actions": "b6bfb0d18a4d7497",
+        "system.details.designNotesMarkdown": "d85e232d2f9c6358",
+        "system.details.flavorMarkdown": "287e1d831608a24d",
+        "system.details.generalMarkdown": "8ffa8e939c2b0240",
+        "system.details.specialtyMarkdown": "74bd8e9bdec799ef"
+      }
+    },
+    "creature-giant-octopus": {
+      "sourceSha": "7b31614979f54bd49e3d34100c84007abe077bbd3f66068f562260bb506a2975",
+      "fields": {
+        "system.cv": "08030607b4c32245",
+        "system.actions": "4aaa32ee1a669b96",
+        "system.details.designNotesMarkdown": "8454d588ecabf28d",
+        "system.details.flavorMarkdown": "236baea86f551549",
+        "system.details.generalMarkdown": "70e2f68850ed1765",
+        "system.details.specialtyMarkdown": "d20389a318ab5a1c"
+      }
+    },
+    "creature-giant-rat": {
+      "sourceSha": "fb10b655cdf4ade12f7c809025515454ed7b03b8351ce4a4de62f839960016c5",
+      "fields": {
+        "system.cv": "af63a84c86019430",
+        "system.actions": "c4881dc607218c05",
+        "system.details.designNotesMarkdown": "abc6890788e18b96",
+        "system.details.flavorMarkdown": "049ffc3002012577",
+        "system.details.generalMarkdown": "37cd896fc36be4fb",
+        "system.details.specialtyMarkdown": "f80fa9504d70a922"
+      }
+    },
+    "creature-giant-scorpion": {
+      "sourceSha": "cc59f5ca8e019bf48bdd148871ad915757865160e328a9365edddcf4d6c1ae02",
+      "fields": {
+        "system.cv": "08030607b4c32245",
+        "system.actions": "91c768240865ea78",
+        "system.details.designNotesMarkdown": "0585538cbe757ef1",
+        "system.details.flavorMarkdown": "d30f030641ee0c55",
+        "system.details.generalMarkdown": "bbe24944beb7a76d",
+        "system.details.specialtyMarkdown": "a20949ca03005ed1"
+      }
+    },
+    "creature-giant-spider": {
+      "sourceSha": "14ece687f7575fd2c6d8542e9b776e248304dcf95c0a94f13acd098bf7f50972",
+      "fields": {
+        "system.cv": "07f88f07b4ba038b",
+        "system.actions": "2207de51c582d263",
+        "system.details.designNotesMarkdown": "6cde7e04d345aaf4",
+        "system.details.flavorMarkdown": "fee4dc8f1b5ecc34",
+        "system.details.generalMarkdown": "68d39a7202227f07",
+        "system.details.specialtyMarkdown": "3bb2f931cef9a65f"
+      }
+    },
+    "creature-glass-sentinel": {
+      "sourceSha": "f740a65fc9719f258c2aa56be81c381c42ba182fe5fcf7433630e02939b04d86",
+      "fields": {
+        "system.cv": "07f88f07b4ba038b",
+        "system.actions": "cdb0e0597536ef70",
+        "system.details.designNotesMarkdown": "a15e071f9cd10146",
+        "system.details.flavorMarkdown": "e5212a53a55f14f1",
+        "system.details.generalMarkdown": "0d245fb973f7e72c",
+        "system.details.specialtyMarkdown": "9ec6b453bdbfaa12"
+      }
+    },
+    "creature-gnoll-bonecaller": {
+      "sourceSha": "dbfe1633718924f99964c1477f27773dcf4d923309e0921d30df43e98670640d",
+      "fields": {
+        "system.cv": "07f89007b4ba053e",
+        "system.actions": "e3f9abea64b428fc",
+        "system.details.designNotesMarkdown": "ddb57631673ce09e",
+        "system.details.flavorMarkdown": "0e98fa5ddb5adf97",
+        "system.details.generalMarkdown": "95ce070168e72fa3",
+        "system.details.specialtyMarkdown": "6d48ec7035631915"
+      }
+    },
+    "creature-gnoll-tracker": {
+      "sourceSha": "2d2bd6fe5efc53ebca0d3026c78542dd77a59440fa6b89f80a245362965d8222",
+      "fields": {
+        "system.cv": "07f89507b4ba0dbd",
+        "system.actions": "d69e14f0de07968e",
+        "system.details.designNotesMarkdown": "64c8f9f49b2e5a4a",
+        "system.details.flavorMarkdown": "4ea78033144d533c",
+        "system.details.generalMarkdown": "c37d323e30905ee4",
+        "system.details.specialtyMarkdown": "35be89cb1e4f9628"
+      }
+    },
+    "creature-goblin-boss": {
+      "sourceSha": "ae7cabdb4cc74c843a25195f05d8a35be7bf3af1c1929ab574ea141defaed70f",
+      "fields": {
+        "system.cv": "08030407b4c31edf",
+        "system.actions": "546a06274bdce622",
+        "system.details.designNotesMarkdown": "9dc4dc505c8d5857",
+        "system.details.flavorMarkdown": "88a892f8036eb978",
+        "system.details.generalMarkdown": "ae0bf1422b75fb05",
+        "system.details.specialtyMarkdown": "15029e72095ef99d"
+      }
+    },
+    "creature-goblin-firestarter": {
+      "sourceSha": "b880b6944de6c299d26231fe1be774ffc0d1eb83a912513e0edbe8f0a735fe5d",
+      "fields": {
+        "system.cv": "07f89307b4ba0a57",
+        "system.actions": "a35523deeb10e553",
+        "system.details.designNotesMarkdown": "f52810c406b93737",
+        "system.details.flavorMarkdown": "3dae00ab6cf74f38",
+        "system.details.generalMarkdown": "e6dde2757f142104",
+        "system.details.specialtyMarkdown": "d5600ae460cba415"
+      }
+    },
+    "creature-goblin-rattlechanter": {
+      "sourceSha": "a9a5cc1cbc99208884f9b35f4bf3607d4f136d92ffbaf29d577f02cd4b96ad5e",
+      "fields": {
+        "system.cv": "07f89507b4ba0dbd",
+        "system.actions": "5a63d6c20fd6bfe2",
+        "system.details.designNotesMarkdown": "91d8857fe5c23086",
+        "system.details.flavorMarkdown": "114456a924267670",
+        "system.details.generalMarkdown": "c4b27d7052419c0d",
+        "system.details.specialtyMarkdown": "b4170c74e9c88b41"
+      }
+    },
+    "creature-goblin-scrapper": {
+      "sourceSha": "2e795e30444436d5524edfbe68dea74db4941e776015662455aa86226f20e535",
+      "fields": {
+        "system.cv": "af63aa4c86019796",
+        "system.actions": "1ddb74c6d734dece",
+        "system.details.designNotesMarkdown": "79503fddceb8bd6d",
+        "system.details.flavorMarkdown": "7ca7998cfc044875",
+        "system.details.generalMarkdown": "e1299369d9047dfb",
+        "system.details.specialtyMarkdown": "3a75be12c87aab94"
+      }
+    },
+    "creature-goblin-smoke-slinger": {
+      "sourceSha": "c8ba5b88c3b896ae9d6a24f857f3652db66c32e9a4714c40f8563a593daf4b79",
+      "fields": {
+        "system.cv": "af63b44c8601a894",
+        "system.actions": "ccc2f1909bb3ab4a",
+        "system.details.designNotesMarkdown": "0040b7e24a7b42b9",
+        "system.details.flavorMarkdown": "257e7bc6dcbd9b1f",
+        "system.details.generalMarkdown": "90d6f99a6e4ae7d0",
+        "system.details.specialtyMarkdown": "663596776fad3c7b"
+      }
+    },
+    "creature-goblin-spearhand": {
+      "sourceSha": "7be8dd0bd20b0697925e2d0d13b6c746e84afbd8ed895e7406dfbd39d3604e92",
+      "fields": {
+        "system.cv": "af63b44c8601a894",
+        "system.actions": "31cbf61df34e86ae",
+        "system.details.designNotesMarkdown": "2b2c9f6595fc2d80",
+        "system.details.flavorMarkdown": "baaba0bc00951777",
+        "system.details.generalMarkdown": "9e3dee4bc52743f4",
+        "system.details.specialtyMarkdown": "f72675a3101f53c3"
+      }
+    },
+    "creature-gold-dragon": {
+      "sourceSha": "9d4499237020f5a806375749eff3591e75fd99bbd0afe2439ff7648ae3ce540e",
+      "fields": {
+        "system.cv": "4568b318181c8cb0",
+        "system.actions": "654b6ddd317f3d57",
+        "system.details.designNotesMarkdown": "7afd9e851c305e1b",
+        "system.details.flavorMarkdown": "8eacd0eb1acda9da",
+        "system.details.generalMarkdown": "b21e7216c34f9b20",
+        "system.details.specialtyMarkdown": "3074f982afb8cf1c"
+      }
+    },
+    "creature-grave-cultist": {
+      "sourceSha": "e2ea0b38d854bf3c0de9599ddb027bcf8ae8f499a9d4ecff68236168a41b4496",
+      "fields": {
+        "system.cv": "af63b54c8601aa47",
+        "system.actions": "4ada9bd0eaf817e8",
+        "system.details.designNotesMarkdown": "062b7554780dc803",
+        "system.details.flavorMarkdown": "ece50f0d14611003",
+        "system.details.generalMarkdown": "882b454b3c9f4cd6",
+        "system.details.specialtyMarkdown": "e56e382dfd9d2bbc"
+      }
+    },
+    "creature-grave-wisp": {
+      "sourceSha": "e83b9cc75679c82b16cd96a688f26952d0e3ae55e876a038a063e758659d7a86",
+      "fields": {
+        "system.cv": "af63ab4c86019949",
+        "system.actions": "25024b39073b85a8",
+        "system.details.designNotesMarkdown": "0c763d46794abfd8",
+        "system.details.flavorMarkdown": "206bdc977b19397f",
+        "system.details.generalMarkdown": "141db28ddd2bd413",
+        "system.details.specialtyMarkdown": "ffd5104429dfb6f7"
+      }
+    },
+    "creature-great-cat": {
+      "sourceSha": "19f12f3543bfd9821e0f09c0d0a67b450b1dc0eae7ea09bb84fd2b6195124177",
+      "fields": {
+        "system.cv": "07f88f07b4ba038b",
+        "system.actions": "36704ad4b04f6fd0",
+        "system.details.designNotesMarkdown": "a336316b70a7a9a5",
+        "system.details.flavorMarkdown": "3461a75ac066bef7",
+        "system.details.generalMarkdown": "c5cbbcadf43abd78",
+        "system.details.specialtyMarkdown": "0264b67a6cf31568"
+      }
+    },
+    "creature-great-stag": {
+      "sourceSha": "cf88f6c1f5218b0aff0b04cbd17477e9f7943b0d5930d1002fc79de33b8aadda",
+      "fields": {
+        "system.cv": "07f89507b4ba0dbd",
+        "system.actions": "201bf0dc482d74ea",
+        "system.details.designNotesMarkdown": "0422c020130441fd",
+        "system.details.flavorMarkdown": "2f4480e80f41caec",
+        "system.details.generalMarkdown": "28fa7645c49a7fd3",
+        "system.details.specialtyMarkdown": "0d3097421652526b"
+      }
+    },
+    "creature-green-dragon": {
+      "sourceSha": "7193509200c6411851f242712460fbad5e8dd5e933539faebd7c612c146332aa",
+      "fields": {
+        "system.cv": "08178807b4d4a835",
+        "system.actions": "25ff015338aac40f",
+        "system.details.designNotesMarkdown": "2b100400eebc7f24",
+        "system.details.flavorMarkdown": "aed99b2088466ae4",
+        "system.details.generalMarkdown": "e1cb35d7595debf9",
+        "system.details.specialtyMarkdown": "7c39dec9185c3e7d"
+      }
+    },
+    "creature-green-hag": {
+      "sourceSha": "eadb3b571131caceae591c589cfad42f9e0e0213c4b04f09422208e095019c56",
+      "fields": {
+        "system.cv": "08030307b4c31d2c",
+        "system.actions": "81e7fd49f5061203",
+        "system.details.designNotesMarkdown": "a7db8e795dd43c40",
+        "system.details.flavorMarkdown": "fa81196f4c085e2d",
+        "system.details.generalMarkdown": "5aa68deabf400a6f",
+        "system.details.specialtyMarkdown": "cc591ecfa9a80049"
+      }
+    },
+    "creature-griffin": {
+      "sourceSha": "8c45a478dc624ddd3640aea2e542c5023509d56d67094427b9754b6448462249",
+      "fields": {
+        "system.cv": "08030207b4c31b79",
+        "system.actions": "0aa27912738e739d",
+        "system.details.designNotesMarkdown": "5badab8477d9af50",
+        "system.details.flavorMarkdown": "35adc21d46f21032",
+        "system.details.generalMarkdown": "361c59f09b345674",
+        "system.details.specialtyMarkdown": "0e3bdda69df39c35"
+      }
+    },
+    "creature-harbor-siren": {
+      "sourceSha": "32c7495a198bbe56dfd99201e1629fe6e5d02b34ec4fd033662a7f01dee04291",
+      "fields": {
+        "system.cv": "07f89007b4ba053e",
+        "system.actions": "6554a0e346b089e5",
+        "system.details.designNotesMarkdown": "1c1c1788b22476ee",
+        "system.details.flavorMarkdown": "375d1a7f61f9cf89",
+        "system.details.generalMarkdown": "e0020e33d6792c7d",
+        "system.details.specialtyMarkdown": "23e6a72d015adec4"
+      }
+    },
+    "creature-harpy": {
+      "sourceSha": "e781358823ef4a27e6928543e844d653f121eb705ace3fd3301ca8572a33e7e8",
+      "fields": {
+        "system.cv": "07f88b07b4b9fcbf",
+        "system.actions": "011f039a9cabfcc7",
+        "system.details.designNotesMarkdown": "d383245329b07301",
+        "system.details.flavorMarkdown": "fbace1d8f16b9199",
+        "system.details.generalMarkdown": "3f68b32558ca43ab",
+        "system.details.specialtyMarkdown": "774626c7fe802239"
+      }
+    },
+    "creature-hearth-brownie": {
+      "sourceSha": "b0ddfe26a08d72323b6302d016c96c97164dd13e7b75bf815abf20cd5710fa22",
+      "fields": {
+        "system.cv": "af63a84c86019430",
+        "system.actions": "8d3792a363fabf33",
+        "system.details.designNotesMarkdown": "afbbf84011499a0a",
+        "system.details.flavorMarkdown": "2c03939bfc946379",
+        "system.details.generalMarkdown": "95406f46cdb4bfec",
+        "system.details.specialtyMarkdown": "5554c9933b303a69"
+      }
+    },
+    "creature-hedge-sorcerer": {
+      "sourceSha": "5a8d396041294837bd87916662e5066d08bb53988fbc214359013313f263966f",
+      "fields": {
+        "system.cv": "07f89007b4ba053e",
+        "system.actions": "0b4948c23323d42e",
+        "system.details.designNotesMarkdown": "ea521385df25bfd7",
+        "system.details.flavorMarkdown": "8680b582244f6b07",
+        "system.details.generalMarkdown": "8555263ee6bab634",
+        "system.details.specialtyMarkdown": "da1c61955f572dfb"
+      }
+    },
+    "creature-hedge-sprite": {
+      "sourceSha": "6932b327ef4d81fab602a3ffc09782069a1e5777b558201678e4b7f38d710c9b",
+      "fields": {
+        "system.cv": "af63a84c86019430",
+        "system.actions": "77e154d9915eef31",
+        "system.details.designNotesMarkdown": "e162db24b185243a",
+        "system.details.flavorMarkdown": "c64ec05141adb65c",
+        "system.details.generalMarkdown": "f56f036af719db0f",
+        "system.details.specialtyMarkdown": "b6fe7c2e7ff5ee53"
+      }
+    },
+    "creature-hell-hound": {
+      "sourceSha": "cbd1ff8e3f61cc12b2b7b4e62d44cb4ece8cc5725fc5ecced73a57f0f251cb1c",
+      "fields": {
+        "system.cv": "08030607b4c32245",
+        "system.actions": "7f8271352e1158d6",
+        "system.details.designNotesMarkdown": "b1c64c168f5cc8bf",
+        "system.details.flavorMarkdown": "86efc33e160c7eac",
+        "system.details.generalMarkdown": "957e1e0cbc5c2ade",
+        "system.details.specialtyMarkdown": "f4c2eb2d8f968d4b"
+      }
+    },
+    "creature-hill-giant": {
+      "sourceSha": "3699f14eeb45cb10f2234ac1a9b04f5aedf3cfc7ddbe341be4627b2e602c1f55",
+      "fields": {
+        "system.cv": "08030b07b4c32ac4",
+        "system.actions": "ad9adb66a4d80541",
+        "system.details.designNotesMarkdown": "0895550081e0e799",
+        "system.details.flavorMarkdown": "eaf52af1ae9b119e",
+        "system.details.generalMarkdown": "1cd33a2cdaf6ddef",
+        "system.details.specialtyMarkdown": "f3a563295409b656"
+      }
+    },
+    "creature-hill-ogre": {
+      "sourceSha": "4445871a3fa2a005e03d2ca718d503c3da30a084af2b27968cf09d5025354939",
+      "fields": {
+        "system.cv": "07f88b07b4b9fcbf",
+        "system.actions": "b623f4aede2a0339",
+        "system.details.designNotesMarkdown": "e62c5cc3f6a0b126",
+        "system.details.flavorMarkdown": "90c78dc744cc96a5",
+        "system.details.generalMarkdown": "ff299cb15f1af973",
+        "system.details.specialtyMarkdown": "8c70ce7102e03aa1"
+      }
+    },
+    "creature-hobgoblin-longbow": {
+      "sourceSha": "a849a96ba65972019048e9b17dc67eb9cbac1cca69e1187ddcdcb4b2acc97ea3",
+      "fields": {
+        "system.cv": "07f89007b4ba053e",
+        "system.actions": "1282233719d45b5d",
+        "system.details.designNotesMarkdown": "9fa9ac202dec7cd4",
+        "system.details.flavorMarkdown": "fbcfdece9e39e6c7",
+        "system.details.generalMarkdown": "7f387712527b9a48",
+        "system.details.specialtyMarkdown": "6f9549f65560348c"
+      }
+    },
+    "creature-hobgoblin-marshal": {
+      "sourceSha": "1bdb2056f5608c20bbe0023e77dfc93fd02b6c039e4ba2123a00d9d395f29ca0",
+      "fields": {
+        "system.cv": "08030b07b4c32ac4",
+        "system.actions": "e42ecaf352fc17b7",
+        "system.details.designNotesMarkdown": "382c5d5107b7f2a6",
+        "system.details.flavorMarkdown": "3f1d5df506929579",
+        "system.details.generalMarkdown": "c7c98465057b17ee",
+        "system.details.specialtyMarkdown": "99735992786f4be7"
+      }
+    },
+    "creature-hobgoblin-shieldguard": {
+      "sourceSha": "33f56d773ee9093701017b5c12ee4de3505081ba5608a2cde29970ac17fb1313",
+      "fields": {
+        "system.cv": "08030407b4c31edf",
+        "system.actions": "1b28d1b987877b6b",
+        "system.details.designNotesMarkdown": "167c17fe79acc52d",
+        "system.details.flavorMarkdown": "8648c12cd0e73793",
+        "system.details.generalMarkdown": "3562bb9d8e2a8155",
+        "system.details.specialtyMarkdown": "33db30df6f3a4cb5"
+      }
+    },
+    "creature-hook-beak": {
+      "sourceSha": "1c00701ae73218fce2e081c789417f20975a8297f71bc659d98934e2a51abfc5",
+      "fields": {
+        "system.cv": "07f89107b4ba06f1",
+        "system.actions": "09d59f9460657640",
+        "system.details.designNotesMarkdown": "4803ccefa99df7da",
+        "system.details.flavorMarkdown": "963cb32fe134de6d",
+        "system.details.generalMarkdown": "004f99732f8c74d6",
+        "system.details.specialtyMarkdown": "9e3e8ace8cd89b84"
+      }
+    },
+    "creature-horned-devil": {
+      "sourceSha": "e0df9684cf86aab3180498070de9119345e42fce2ee411cefe4a99cef14a9d66",
+      "fields": {
+        "system.cv": "07ee7d07b4b19070",
+        "system.actions": "905f01b8f9bbbec0",
+        "system.details.designNotesMarkdown": "0f5a1eeaa7a9431f",
+        "system.details.flavorMarkdown": "69b17ec24aa7c831",
+        "system.details.generalMarkdown": "8a52ab2a96b810d8",
+        "system.details.specialtyMarkdown": "ab203ff7f0aeddb3"
+      }
+    },
+    "creature-hydra": {
+      "sourceSha": "059e1ecdddf1113e2e2d9902f9fff7811ec097572c2ffd54fae8d2aaec15ee31",
+      "fields": {
+        "system.cv": "07eafe07b4ae82cc",
+        "system.actions": "b253fd7f8ec2dae7",
+        "system.details.designNotesMarkdown": "0f8ad6ced80a2d48",
+        "system.details.flavorMarkdown": "a89ba54d7fe1e516",
+        "system.details.generalMarkdown": "7d41fb8815e6043c",
+        "system.details.specialtyMarkdown": "f137a4b2fe252f24"
+      }
+    },
+    "creature-icebound-warden": {
+      "sourceSha": "30da078c9d721b3335f6c6e6379210a1d2f886d66da3d82dd974cbf5dd684895",
+      "fields": {
+        "system.cv": "07f88b07b4b9fcbf",
+        "system.actions": "b64c0b61301fb674",
+        "system.details.designNotesMarkdown": "4f5bffc1d9d06ca4",
+        "system.details.flavorMarkdown": "a16b5a7d45895c79",
+        "system.details.generalMarkdown": "1b128883bc05f98c",
+        "system.details.specialtyMarkdown": "f77d5b47b559c4ed"
+      }
+    },
+    "creature-iron-gatekeeper": {
+      "sourceSha": "89107cf537e59cde0ad128e03fdfdde9b163a40260dcd7cea245c12be2315706",
+      "fields": {
+        "system.cv": "07ee8407b4b19c55",
+        "system.actions": "3161f67692d27026",
+        "system.details.designNotesMarkdown": "439fad069d7932fe",
+        "system.details.flavorMarkdown": "0a574e9da6311d01",
+        "system.details.generalMarkdown": "9e04611173df94fc",
+        "system.details.specialtyMarkdown": "5631ad6a22cea9e2"
+      }
+    },
+    "creature-kobold-emberkeeper": {
+      "sourceSha": "4b0df86f3d8ec3693380528e5147d6089fad817357948cebcfffa310e4e0033b",
+      "fields": {
+        "system.cv": "07f89507b4ba0dbd",
+        "system.actions": "a5cad404a50e0668",
+        "system.details.designNotesMarkdown": "937946c7ff6b888a",
+        "system.details.flavorMarkdown": "f7cb954a15ff2408",
+        "system.details.generalMarkdown": "c15139dd3fc61398",
+        "system.details.specialtyMarkdown": "13776a244abe8068"
+      }
+    },
+    "creature-kobold-trapkeeper": {
+      "sourceSha": "6af12e09cdfa5a12d1ca81ef458c92d4057975969d8a0a4865731a78456511c6",
+      "fields": {
+        "system.cv": "af63aa4c86019796",
+        "system.actions": "cf91709e55c91a15",
+        "system.details.designNotesMarkdown": "76ee7c8d930da894",
+        "system.details.flavorMarkdown": "1b49343f32d46189",
+        "system.details.generalMarkdown": "233f4c7b785bc883",
+        "system.details.specialtyMarkdown": "9bdc0effef4bc138"
+      }
+    },
+    "creature-kobold-tunnel-scout": {
+      "sourceSha": "a0bf732cb5460c1beea9bc7503b95ca4102c96edad5d510195494d62b1fe045c",
+      "fields": {
+        "system.cv": "af63b44c8601a894",
+        "system.actions": "3333fcc4c372f531",
+        "system.details.designNotesMarkdown": "0898480c7acb658d",
+        "system.details.flavorMarkdown": "d3a518914bb806d4",
+        "system.details.generalMarkdown": "fed30933921ff89b",
+        "system.details.specialtyMarkdown": "17557f445fa9b6bd"
+      }
+    },
+    "creature-lantern-angel": {
+      "sourceSha": "5affd086bc6408cb280032ba57fd90e75f35af8821907fe3bd2690906e7841e3",
+      "fields": {
+        "system.cv": "07f88e07b4ba01d8",
+        "system.actions": "21896dd430a135a9",
+        "system.details.designNotesMarkdown": "13ec74d170d25936",
+        "system.details.flavorMarkdown": "450ca7808d6469ea",
+        "system.details.generalMarkdown": "32bd4986e4fc1090",
+        "system.details.specialtyMarkdown": "98755956ad559f4f"
+      }
+    },
+    "creature-lantern-spirit": {
+      "sourceSha": "57b984cd1fa1b0a73d7555026ac1aba5842b2cd3d1d77ccdea258b5efc44c80c",
+      "fields": {
+        "system.cv": "af63ab4c86019949",
+        "system.actions": "75755d65e09c1e62",
+        "system.details.designNotesMarkdown": "cc9098eecfcbf4ed",
+        "system.details.flavorMarkdown": "f49d2b3c247ff3f1",
+        "system.details.generalMarkdown": "9a031fed9e53d951",
+        "system.details.specialtyMarkdown": "ea8d08a4d8aa4e4d"
+      }
+    },
+    "creature-lizardfolk-reedguard": {
+      "sourceSha": "606f7c45ec7b32bf46f08ec447eb8d62eca88b7b7f85902b8cf14cb404a64b91",
+      "fields": {
+        "system.cv": "08030307b4c31d2c",
+        "system.actions": "d5c962e094c62228",
+        "system.details.designNotesMarkdown": "ecfce7a803636c73",
+        "system.details.flavorMarkdown": "a37d9ac441d49a4a",
+        "system.details.generalMarkdown": "747bf3d28c57a31e",
+        "system.details.specialtyMarkdown": "31f5ba2eaf00afaf"
+      }
+    },
+    "creature-lizardfolk-starspeaker": {
+      "sourceSha": "6f4eee6a1888424ab08c4d1baf6bec6f99c0d1039b6101f72ead6b3d76609ba6",
+      "fields": {
+        "system.cv": "07f88f07b4ba038b",
+        "system.actions": "32ca76264b15d029",
+        "system.details.designNotesMarkdown": "f26b0d2353a6c18e",
+        "system.details.flavorMarkdown": "b5cd20adfc48bc27",
+        "system.details.generalMarkdown": "147b026913a42bf9",
+        "system.details.specialtyMarkdown": "4b713635edd190a1"
+      }
+    },
+    "creature-manticore": {
+      "sourceSha": "a77180e007cb2e08c6392d593bb4999b0bd816c5d046ac603f6c1c2462f7c883",
+      "fields": {
+        "system.cv": "08030107b4c319c6",
+        "system.actions": "2083e48a2ac31565",
+        "system.details.designNotesMarkdown": "5562627bd90b3306",
+        "system.details.flavorMarkdown": "bdd10187978d4413",
+        "system.details.generalMarkdown": "54b543518e38ff6e",
+        "system.details.specialtyMarkdown": "a38461f04429df74"
+      }
+    },
+    "creature-many-headed-marsh-wyrm": {
+      "sourceSha": "a41a900ea34e91871f4e2635bfb1b3d01335dd098a01c924fd0ec84106b6d33f",
+      "fields": {
+        "system.cv": "07eaff07b4ae847f",
+        "system.actions": "3268a530141343d7",
+        "system.details.designNotesMarkdown": "eb4da3f088135ca2",
+        "system.details.flavorMarkdown": "6773acea53da55b3",
+        "system.details.generalMarkdown": "b839d44e5c96445c",
+        "system.details.specialtyMarkdown": "9d2f66772f99eea7"
+      }
+    },
+    "creature-marsh-crocodile": {
+      "sourceSha": "82b27644c4f08a8683884ed7bbe0b0be9f58e03c81ea84d18fc662315ccb3437",
+      "fields": {
+        "system.cv": "07f89107b4ba06f1",
+        "system.actions": "e562b4b6506d6809",
+        "system.details.designNotesMarkdown": "db4d8fd4ada1b075",
+        "system.details.flavorMarkdown": "ab6e54b1cb7c5a69",
+        "system.details.generalMarkdown": "0b3d10b59d5e554d",
+        "system.details.specialtyMarkdown": "eebb0d0f00db16c1"
+      }
+    },
+    "creature-masked-duelist": {
+      "sourceSha": "b1edb1b35c2608f58aca774262656d751ec3724ddca2428b7220c703ab4286ca",
+      "fields": {
+        "system.cv": "08030007b4c31813",
+        "system.actions": "fdba3ed1d0a27c12",
+        "system.details.designNotesMarkdown": "8303b5d296e0161c",
+        "system.details.flavorMarkdown": "3fa46c94ef9b8181",
+        "system.details.generalMarkdown": "269af516ce5330b4",
+        "system.details.specialtyMarkdown": "8813784254c3e2d2"
+      }
+    },
+    "creature-medusa": {
+      "sourceSha": "e24e78e7a579d05c2635dab36db8dd60791a5aefef901fa69820b63e80b641e7",
+      "fields": {
+        "system.cv": "08030b07b4c32ac4",
+        "system.actions": "a6b943c9b779a502",
+        "system.details.designNotesMarkdown": "2dcc0865dfe878e8",
+        "system.details.flavorMarkdown": "5311046240fc4538",
+        "system.details.generalMarkdown": "d85bc6e4975a4d92",
+        "system.details.specialtyMarkdown": "fa8b335e11b47a9d"
+      }
+    },
+    "creature-merfolk-tideguard": {
+      "sourceSha": "eada0acf842b80cda941a0cdd11d264dc780de7389a0baa40730057ccc94de32",
+      "fields": {
+        "system.cv": "07f88a07b4b9fb0c",
+        "system.actions": "555e06f22941b9e6",
+        "system.details.designNotesMarkdown": "680d8c42c95c2a79",
+        "system.details.flavorMarkdown": "40a2bf3fd793883a",
+        "system.details.generalMarkdown": "98738754b8a1c536",
+        "system.details.specialtyMarkdown": "9bc178bb3cfe9e90"
+      }
+    },
+    "creature-mimic-chest": {
+      "sourceSha": "9ac9623dbc3147b7c988777688328c50e38d432b7c7eb167671423eafa5d5591",
+      "fields": {
+        "system.cv": "07f89107b4ba06f1",
+        "system.actions": "f5f05a9e1bd23ad9",
+        "system.details.designNotesMarkdown": "730492c70b1509ba",
+        "system.details.flavorMarkdown": "9600e5f1997bffe7",
+        "system.details.generalMarkdown": "9cd75a7c3e28f39a",
+        "system.details.specialtyMarkdown": "6354e9be72d05812"
+      }
+    },
+    "creature-minotaur": {
+      "sourceSha": "108a48be7710e1463b668452086b27619fca6d79ca32fcb2060b35910ecf4e7f",
+      "fields": {
+        "system.cv": "08030207b4c31b79",
+        "system.actions": "848c3eb2ff53df56",
+        "system.details.designNotesMarkdown": "e7edd33c5ba81d77",
+        "system.details.flavorMarkdown": "d54d8f3b2e4fe2ce",
+        "system.details.generalMarkdown": "3b1c6e1ea3c2d8ac",
+        "system.details.specialtyMarkdown": "e91455c8acacccc9"
+      }
+    },
+    "creature-mire-ooze": {
+      "sourceSha": "f129dc5e138da18f25552f880a5720143f9a163b27f36ac6db5435076c79b001",
+      "fields": {
+        "system.cv": "07f89207b4ba08a4",
+        "system.actions": "5b2fdbc0a9a0773e",
+        "system.details.designNotesMarkdown": "c7bba647e183bdfc",
+        "system.details.flavorMarkdown": "690cc52fe919a808",
+        "system.details.generalMarkdown": "2bd7c731859288f5",
+        "system.details.specialtyMarkdown": "7d23cfba3428143a"
+      }
+    },
+    "creature-moon-hart": {
+      "sourceSha": "6552b366aa79116750ad6d395e3249dc603f97adea9cdca389bcd15468bd34a2",
+      "fields": {
+        "system.cv": "0802ff07b4c31660",
+        "system.actions": "568401b002346e70",
+        "system.details.designNotesMarkdown": "f1e7a5316086d52e",
+        "system.details.flavorMarkdown": "3cba4d6405061f63",
+        "system.details.generalMarkdown": "5781e63963e0bc62",
+        "system.details.specialtyMarkdown": "267ad17d22f2da50"
+      }
+    },
+    "creature-mourning-bell": {
+      "sourceSha": "88347ba0fc1219f880f9f1da80866a2b0a23b90a20b8a165d29f778ac3b604b5",
+      "fields": {
+        "system.cv": "07ee8707b4b1a16e",
+        "system.actions": "fe35450023884df9",
+        "system.details.designNotesMarkdown": "af8e637cbff3e594",
+        "system.details.flavorMarkdown": "0fed92514650d4f4",
+        "system.details.generalMarkdown": "060e932635efdc6d",
+        "system.details.specialtyMarkdown": "9e49d566e24fd2f1"
+      }
+    },
+    "creature-mummy": {
+      "sourceSha": "a0309cf54352be5269ede3ed759ee8d974eb1171edeb98054b364d40f6468f5d",
+      "fields": {
+        "system.cv": "08030b07b4c32ac4",
+        "system.actions": "760b05baa280dcfa",
+        "system.details.designNotesMarkdown": "1326367d51a5f9ff",
+        "system.details.flavorMarkdown": "6a9f3a5a7ae7d0cf",
+        "system.details.generalMarkdown": "f918b77be9545cce",
+        "system.details.specialtyMarkdown": "97d3105ba4ab35ec"
+      }
+    },
+    "creature-mummy-king": {
+      "sourceSha": "6e080fe8f33df576b40665ef4e32c6b1d10795bc9a6b4bcda2d2e864ca1eebf1",
+      "fields": {
+        "system.cv": "07ee7f07b4b193d6",
+        "system.actions": "b20bb3cf89c5b9a5",
+        "system.details.designNotesMarkdown": "a3a3b72ab7396445",
+        "system.details.flavorMarkdown": "8f68a357e1b48eff",
+        "system.details.generalMarkdown": "def11e0f8061fc42",
+        "system.details.specialtyMarkdown": "da5b0984023b5c56"
+      }
+    },
+    "creature-night-hag": {
+      "sourceSha": "3d68b22311687f4dd1d62f97b4955c358adf43b07d2ddc6a5de607bf50a25b3d",
+      "fields": {
+        "system.cv": "07ff7c07b4c001f0",
+        "system.actions": "8e511c99d005fbee",
+        "system.details.designNotesMarkdown": "e7c9111d4735bdd7",
+        "system.details.flavorMarkdown": "10ab82c4725489c1",
+        "system.details.generalMarkdown": "eaf02094c08fa0f3",
+        "system.details.specialtyMarkdown": "d41c2a16851af1a1"
+      }
+    },
+    "creature-nightmare": {
+      "sourceSha": "6965b798f4c57eeaa541f2080ecd7aaff94070e5dc93e9980dca4cfa57c6afc9",
+      "fields": {
+        "system.cv": "07ff7f07b4c00709",
+        "system.actions": "bd8530697d997f5a",
+        "system.details.designNotesMarkdown": "44ae549f0d1c95c1",
+        "system.details.flavorMarkdown": "5bd71812e2fb9bab",
+        "system.details.generalMarkdown": "2d52dda4ec62d105",
+        "system.details.specialtyMarkdown": "2c4fd7af26148bc2"
+      }
+    },
+    "creature-oath-devourer": {
+      "sourceSha": "ab73ea85e4879bb8258eaa906f8e4542d97ba75d469ba4706a3d49b0cbbde774",
+      "fields": {
+        "system.cv": "07ff7d07b4c003a3",
+        "system.actions": "4c910c9cc28703f3",
+        "system.details.designNotesMarkdown": "40431dfd633d2e43",
+        "system.details.flavorMarkdown": "ac3b6f4b55cec0bc",
+        "system.details.generalMarkdown": "c86356234993d671",
+        "system.details.specialtyMarkdown": "ff23eff94df75e55"
+      }
+    },
+    "creature-oath-flame": {
+      "sourceSha": "7c821cd19ce2f880605bda972fd2b3fbf6acaa9b8080f8b0923de4efcc2be445",
+      "fields": {
+        "system.cv": "08030207b4c31b79",
+        "system.actions": "9472e202806a7f52",
+        "system.details.designNotesMarkdown": "293c2d087baebdb4",
+        "system.details.flavorMarkdown": "633a7fb634623ed4",
+        "system.details.generalMarkdown": "54c4756c1bdfb476",
+        "system.details.specialtyMarkdown": "1a0f85e8a205f0b6"
+      }
+    },
+    "creature-ochre-jelly": {
+      "sourceSha": "a28a2445caaf3ab39ce59b5dfb598c04eb5c013b2284d94bfd9d76320f0d90d9",
+      "fields": {
+        "system.cv": "07f88f07b4ba038b",
+        "system.actions": "2bcd950f379d6536",
+        "system.details.designNotesMarkdown": "af708d59f5d07ce5",
+        "system.details.flavorMarkdown": "42052c0bee2ea8f6",
+        "system.details.generalMarkdown": "af7a452d867a7b14",
+        "system.details.specialtyMarkdown": "9a0127005a2f81da"
+      }
+    },
+    "creature-ogre-glutton": {
+      "sourceSha": "872fcd0bb5f9d8345ea6208f773d5aa3081cbcb878eeec02a74aa562b59352ba",
+      "fields": {
+        "system.cv": "08030107b4c319c6",
+        "system.actions": "bcd66f0366ae0d92",
+        "system.details.designNotesMarkdown": "c70e16fe842577bf",
+        "system.details.flavorMarkdown": "63512aac3f6ff0cd",
+        "system.details.generalMarkdown": "e0891c3596d335f1",
+        "system.details.specialtyMarkdown": "661fc1df4ad7353f"
+      }
+    },
+    "creature-ogre-hookhand": {
+      "sourceSha": "4c7f89bbaadf1b602d52a28caf51ad2fe1cb225b3f13f075b44ae6bcaaef5d09",
+      "fields": {
+        "system.cv": "0802ff07b4c31660",
+        "system.actions": "0f266a02eaa3f587",
+        "system.details.designNotesMarkdown": "46aae96cbc79914e",
+        "system.details.flavorMarkdown": "3ccd12bfa89a5a3d",
+        "system.details.generalMarkdown": "ffea2002c5774925",
+        "system.details.specialtyMarkdown": "9d4ff48b7fecd81c"
+      }
+    },
+    "creature-ogre-taskmaster": {
+      "sourceSha": "0d9d3095272a4f3d6ff6a3873a723e113c5bba231a0f4ab1c961fa443a1c37a7",
+      "fields": {
+        "system.cv": "07ff8007b4c008bc",
+        "system.actions": "ea065a2cd88c727f",
+        "system.details.designNotesMarkdown": "d7262e35f80a6513",
+        "system.details.flavorMarkdown": "29c83916352d5f27",
+        "system.details.generalMarkdown": "5b8c5ec27aaaa669",
+        "system.details.specialtyMarkdown": "aa32bd675748c571"
+      }
+    },
+    "creature-old-root-guardian": {
+      "sourceSha": "64bab5d3410f452eea043f6882bb5d2a14bd86ea0dec33dec6115077eb9e2ec2",
+      "fields": {
+        "system.cv": "07eafb07b4ae7db3",
+        "system.actions": "26d6c344eb3b2110",
+        "system.details.designNotesMarkdown": "76802f2d3449843a",
+        "system.details.flavorMarkdown": "f70af3e07ac6a478",
+        "system.details.generalMarkdown": "c724d38786be3436",
+        "system.details.specialtyMarkdown": "cefec63013b98be4"
+      }
+    },
+    "creature-orc-outrider": {
+      "sourceSha": "14d73e76f1aba9c03e546ed25a8cd060b6dcba1bf92adf206d6274eef58056b6",
+      "fields": {
+        "system.cv": "07f89407b4ba0c0a",
+        "system.actions": "b9e415c2d6229cb9",
+        "system.details.designNotesMarkdown": "5d6cce2022eb6a25",
+        "system.details.flavorMarkdown": "92ca0765e8a19507",
+        "system.details.generalMarkdown": "b44ff3c37d2cd225",
+        "system.details.specialtyMarkdown": "b2373b0dbc3fd530"
+      }
+    },
+    "creature-orc-shieldbreaker": {
+      "sourceSha": "31f11128afeeea7c112d6362d0181b734a93ec5133efb7de71313a4cbbddbfe1",
+      "fields": {
+        "system.cv": "08030307b4c31d2c",
+        "system.actions": "7f5abec0f3309b7c",
+        "system.details.designNotesMarkdown": "261fedac8a7712c5",
+        "system.details.flavorMarkdown": "4e5b274b4ba8a837",
+        "system.details.generalMarkdown": "c55a9d8e7b724c0e",
+        "system.details.specialtyMarkdown": "6f7c3fa43f6e7d01"
+      }
+    },
+    "creature-orc-warcaller": {
+      "sourceSha": "b5a1222d316c688a8d23e7828af482d17a325aa9854ec1f2e55e643a180b5c28",
+      "fields": {
+        "system.cv": "07f88b07b4b9fcbf",
+        "system.actions": "2395fdb76f615999",
+        "system.details.designNotesMarkdown": "d3f5263f72342878",
+        "system.details.flavorMarkdown": "2d285d6c8b66501c",
+        "system.details.generalMarkdown": "e652e734debab055",
+        "system.details.specialtyMarkdown": "705ee598727349fa"
+      }
+    },
+    "creature-owlbear": {
+      "sourceSha": "22e69ee96b1405b3833fb4b02a199c0a509fcdb8c6a7aeb281665b1b56002462",
+      "fields": {
+        "system.cv": "08030207b4c31b79",
+        "system.actions": "eba025c99bc17bdd",
+        "system.details.designNotesMarkdown": "e89fbcf9019bd52c",
+        "system.details.flavorMarkdown": "40d7d9c45bfd3150",
+        "system.details.generalMarkdown": "152435babbc8ddaa",
+        "system.details.specialtyMarkdown": "660387e0e3cc2f24"
+      }
+    },
+    "creature-pact-broker": {
+      "sourceSha": "f305e85e9153a294a7a2781ab9ecbc211bfa973bca119ca960ffb611c897b042",
+      "fields": {
+        "system.cv": "07ff7c07b4c001f0",
+        "system.actions": "b4cf56e52680e28a",
+        "system.details.designNotesMarkdown": "01e540ad4706055e",
+        "system.details.flavorMarkdown": "84c4ad5c8d0f25b9",
+        "system.details.generalMarkdown": "d477a09f75206dd5",
+        "system.details.specialtyMarkdown": "06495312b5bcd4d9"
+      }
+    },
+    "creature-pegasus": {
+      "sourceSha": "9938d48c3bd7d8d372663bb573db24d1cf3c170f8ad18da091ff6591cfe41604",
+      "fields": {
+        "system.cv": "08030307b4c31d2c",
+        "system.actions": "1f2d032e9f7b6fc0",
+        "system.details.designNotesMarkdown": "e8e41c3f366187b8",
+        "system.details.flavorMarkdown": "763eca2fabf01766",
+        "system.details.generalMarkdown": "da90d05577047e82",
+        "system.details.specialtyMarkdown": "9a75d0f0f3d584a4"
+      }
+    },
+    "creature-plague-zombie": {
+      "sourceSha": "74b99defe915443272f6ec42f84941df24262e8fc0bf46c998fd74c24bacab62",
+      "fields": {
+        "system.cv": "07f89307b4ba0a57",
+        "system.actions": "b10586cf170e17d7",
+        "system.details.designNotesMarkdown": "9906d093fe883b7a",
+        "system.details.flavorMarkdown": "4d6af6ea2906ff83",
+        "system.details.generalMarkdown": "3575768198f76a9b",
+        "system.details.specialtyMarkdown": "89e99845f97f5430"
+      }
+    },
+    "creature-poltergeist": {
+      "sourceSha": "62086aac00405ae7cd86a864bfd863c184b84fb9c057d348b32ae6b75dedcd45",
+      "fields": {
+        "system.cv": "07f88a07b4b9fb0c",
+        "system.actions": "8923f23cfa0f94af",
+        "system.details.designNotesMarkdown": "c91c7781e73f99c3",
+        "system.details.flavorMarkdown": "390c6ac67fa25516",
+        "system.details.generalMarkdown": "6dc6d9b22b95a1e3",
+        "system.details.specialtyMarkdown": "da86274643ea8508"
+      }
+    },
+    "creature-raven": {
+      "sourceSha": "b3639bec60f3750646b30fff74f8ec3e08818451b5435c32801b23f3531f0808",
+      "fields": {
+        "system.cv": "af63a94c860195e3",
+        "system.actions": "fecbbba2dd858abc",
+        "system.details.designNotesMarkdown": "518faf4a31a1284d",
+        "system.details.flavorMarkdown": "3a70ba2364bd17a5",
+        "system.details.generalMarkdown": "fb29340f3d1039df",
+        "system.details.specialtyMarkdown": "c8cab25caa76854f"
+      }
+    },
+    "creature-red-dragon": {
+      "sourceSha": "c51b56a7590f743318fdc896cf8b1539b8d9d006213df996f166289fe2703684",
+      "fields": {
+        "system.cv": "0813ff07b4d18993",
+        "system.actions": "58c69a2f1b922161",
+        "system.details.designNotesMarkdown": "054772f6d3e349b8",
+        "system.details.flavorMarkdown": "afc5d33970756eab",
+        "system.details.generalMarkdown": "c4bf92ccf402bfe2",
+        "system.details.specialtyMarkdown": "ff37d384270ac85c"
+      }
+    },
+    "creature-redcap": {
+      "sourceSha": "3029f7321e721da525a20541afc573bd013ab3497a8c05d246ba2e3833bf2e12",
+      "fields": {
+        "system.cv": "08030307b4c31d2c",
+        "system.actions": "0cfb72d98adb3344",
+        "system.details.designNotesMarkdown": "c31f58349b364b94",
+        "system.details.flavorMarkdown": "2b282aa8c3a968d2",
+        "system.details.generalMarkdown": "d6167672e8da80a4",
+        "system.details.specialtyMarkdown": "deb037faff7ada59"
+      }
+    },
+    "creature-reed-piper": {
+      "sourceSha": "8954f355a271c453310609e2285800c1032ba0f2e1daa8a61401c935ccd7a8d5",
+      "fields": {
+        "system.cv": "07f88f07b4ba038b",
+        "system.actions": "2be7455cf918480f",
+        "system.details.designNotesMarkdown": "96e76e38f149860f",
+        "system.details.flavorMarkdown": "1c566c930b2826fe",
+        "system.details.generalMarkdown": "79b990d32e3495aa",
+        "system.details.specialtyMarkdown": "ae35c875f97d3bed"
+      }
+    },
+    "creature-reef-hunter": {
+      "sourceSha": "a0c452d1654e1ba6ce7a7fbab911bfa7ad5bc4af6498df5d6fae14fbe7d5fcc7",
+      "fields": {
+        "system.cv": "07f89107b4ba06f1",
+        "system.actions": "f4f59379fb765461",
+        "system.details.designNotesMarkdown": "d5fcffa586e7c655",
+        "system.details.flavorMarkdown": "b6625d95a96da523",
+        "system.details.generalMarkdown": "c6c02d48ad447b96",
+        "system.details.specialtyMarkdown": "7dec93bbdd24574e"
+      }
+    },
+    "creature-restless-corpse": {
+      "sourceSha": "dfb9a5634514737f4ddc2f817f96839bf98ba50a36d83fa2b7af51d2e1c56b9d",
+      "fields": {
+        "system.cv": "af63b54c8601aa47",
+        "system.actions": "c42fe9d35d4264c1",
+        "system.details.designNotesMarkdown": "69bc32fb55c48834",
+        "system.details.flavorMarkdown": "fa22b1857c4e7f6e",
+        "system.details.generalMarkdown": "91aba2f6dc3c6624",
+        "system.details.specialtyMarkdown": "9003e2b396587563"
+      }
+    },
+    "creature-rill-sprite": {
+      "sourceSha": "9cad4bc7cb57550d5c72012678bb879bb980733113e487b3ad064665a101d78e",
+      "fields": {
+        "system.cv": "af63ab4c86019949",
+        "system.actions": "6334c268cb795aba",
+        "system.details.designNotesMarkdown": "eeb93436fc337caf",
+        "system.details.flavorMarkdown": "d0600698f0ccce17",
+        "system.details.generalMarkdown": "fcbc9407d5ec62da",
+        "system.details.specialtyMarkdown": "2306d21899c68fc6"
+      }
+    },
+    "creature-rime-dragon": {
+      "sourceSha": "49e2b8a9520c7a0afcb4ebce99cde7a3ae8bd461352860f7506d5832ebf31d00",
+      "fields": {
+        "system.cv": "07eafe07b4ae82cc",
+        "system.actions": "60f88a4ae7f6d49c",
+        "system.details.designNotesMarkdown": "5b92f582bf81508a",
+        "system.details.flavorMarkdown": "a8ff0311d12206bd",
+        "system.details.generalMarkdown": "1846ae5185c42500",
+        "system.details.specialtyMarkdown": "361a3eb57df7ad12"
+      }
+    },
+    "creature-river-serpent": {
+      "sourceSha": "3920b4e5f39a9f4855f34912930a5dca5e6884c90e7200d654923a3988982978",
+      "fields": {
+        "system.cv": "08030b07b4c32ac4",
+        "system.actions": "dea44907285c7a02",
+        "system.details.designNotesMarkdown": "55428f6891842b63",
+        "system.details.flavorMarkdown": "caa81e9d74f06e51",
+        "system.details.generalMarkdown": "8383e239b545857d",
+        "system.details.specialtyMarkdown": "bf04b905945be85d"
+      }
+    },
+    "creature-road-bandit": {
+      "sourceSha": "b88d059780ebe6baf29fbd828e6ae8a07724196684d8307d23765965d32dd350",
+      "fields": {
+        "system.cv": "af63b44c8601a894",
+        "system.actions": "45929e17ac1bd3fb",
+        "system.details.designNotesMarkdown": "d536ba4b9784ee24",
+        "system.details.flavorMarkdown": "edc09ddeb7f16313",
+        "system.details.generalMarkdown": "a53bb974917f83be",
+        "system.details.specialtyMarkdown": "9d9a97c414c4f57f"
+      }
+    },
+    "creature-roc": {
+      "sourceSha": "50d936aa0b9757329b703f1cd0980bb39f7a101a86c498cb382afa985b75a8da",
+      "fields": {
+        "system.cv": "07ee7d07b4b19070",
+        "system.actions": "503e0208ae23662d",
+        "system.details.designNotesMarkdown": "f7094ec011d09656",
+        "system.details.flavorMarkdown": "52b37dc78f69ddca",
+        "system.details.generalMarkdown": "adb81ac287113e31",
+        "system.details.specialtyMarkdown": "93dd46fe31555905"
+      }
+    },
+    "creature-rust-eater": {
+      "sourceSha": "d9b40c285e4fabe6f1ec26f4d6be8cd0dc59a192eb8a4a8256c848dce28542ba",
+      "fields": {
+        "system.cv": "07f88f07b4ba038b",
+        "system.actions": "58c41c0f97276141",
+        "system.details.designNotesMarkdown": "def46a1d5dd4620e",
+        "system.details.flavorMarkdown": "8048d639b5294459",
+        "system.details.generalMarkdown": "ada8e3c7a815b7b6",
+        "system.details.specialtyMarkdown": "80da1324a1fe354f"
+      }
+    },
+    "creature-satyr": {
+      "sourceSha": "398d258de9cf08fac803f90880788eaf55c2a4ca57f67ca012b749cdd1f5b0cc",
+      "fields": {
+        "system.cv": "07f89007b4ba053e",
+        "system.actions": "dac0364e37f7e4ad",
+        "system.details.designNotesMarkdown": "405e0faf2291ed90",
+        "system.details.flavorMarkdown": "b07ae0bd4c631746",
+        "system.details.generalMarkdown": "12b9327baf249c65",
+        "system.details.specialtyMarkdown": "03397a32bc2c1bec"
+      }
+    },
+    "creature-sea-hag": {
+      "sourceSha": "8d1ec22ba1c71aa7146b6e249bc93a2ee64ef36b74d0ad168148be51eb48fb91",
+      "fields": {
+        "system.cv": "08030307b4c31d2c",
+        "system.actions": "68f328dafb5ad69b",
+        "system.details.designNotesMarkdown": "6e81dcc172370ff4",
+        "system.details.flavorMarkdown": "2f9752ac6566d6b9",
+        "system.details.generalMarkdown": "e33c508311ad16fd",
+        "system.details.specialtyMarkdown": "9ad28c6a9f334e39"
+      }
+    },
+    "creature-shadow": {
+      "sourceSha": "f251e17530d57cf43a77979ba2fcdbca48d4e01f4491a183514b29bf529dfbb4",
+      "fields": {
+        "system.cv": "07f89107b4ba06f1",
+        "system.actions": "fda7313e44ccaf95",
+        "system.details.designNotesMarkdown": "80afd94e4d2cab76",
+        "system.details.flavorMarkdown": "9b2057be678dec9b",
+        "system.details.generalMarkdown": "fe1c31c9aad3b05a",
+        "system.details.specialtyMarkdown": "1108eb6a04a127b8"
+      }
+    },
+    "creature-shambling-mound": {
+      "sourceSha": "abc49de940733391071ee210a801536211153ef34a07499c995b7ab1e74a1a72",
+      "fields": {
+        "system.cv": "07ff8307b4c00dd5",
+        "system.actions": "dfa92dae6bf5c5df",
+        "system.details.designNotesMarkdown": "4bdee45d96327ad7",
+        "system.details.flavorMarkdown": "af7984dd59cf7aea",
+        "system.details.generalMarkdown": "fcd14f72d7737f3b",
+        "system.details.specialtyMarkdown": "a3e031355e52b86a"
+      }
+    },
+    "creature-shield-soldier": {
+      "sourceSha": "56afcb111079b89cfca789dedd913454645d480076fe574ec9189094b697134c",
+      "fields": {
+        "system.cv": "07f88f07b4ba038b",
+        "system.actions": "348e092451e6e186",
+        "system.details.designNotesMarkdown": "15022503bdd5925f",
+        "system.details.flavorMarkdown": "31f2bbe22314bdf0",
+        "system.details.generalMarkdown": "3820b91b05887915",
+        "system.details.specialtyMarkdown": "52de8bb81370af24"
+      }
+    },
+    "creature-skeleton-champion": {
+      "sourceSha": "c1448111b660f38d7e05dd90f79c8156c2a4f76f442a3568053b6547e1b549f8",
+      "fields": {
+        "system.cv": "0802ff07b4c31660",
+        "system.actions": "ce3c5626a41d879c",
+        "system.details.designNotesMarkdown": "6329390e6c8001f6",
+        "system.details.flavorMarkdown": "fa631afd1ffe1e1b",
+        "system.details.generalMarkdown": "216385cb3cc789cc",
+        "system.details.specialtyMarkdown": "f58ad91372322d4a"
+      }
+    },
+    "creature-skeleton-giant": {
+      "sourceSha": "96f5ba395081d922158b9fa544359bf0de728c6c1938b1cad8aca6a793acf6f1",
+      "fields": {
+        "system.cv": "08030c07b4c32c77",
+        "system.actions": "37fcbf81735d559d",
+        "system.details.designNotesMarkdown": "403dbd1246af4f34",
+        "system.details.flavorMarkdown": "7c0532d796d7e196",
+        "system.details.generalMarkdown": "8712d044509e4102",
+        "system.details.specialtyMarkdown": "cf51bc1edc187ef8"
+      }
+    },
+    "creature-skeleton-horse": {
+      "sourceSha": "024211f1eafe24716167e1608e3a7425327ce711b6519447e296ee5d61fe5949",
+      "fields": {
+        "system.cv": "07f88f07b4ba038b",
+        "system.actions": "0a2f4ec48962c5fe",
+        "system.details.designNotesMarkdown": "87d7fc3009bdd462",
+        "system.details.flavorMarkdown": "1f9c6e2b10d5bb7f",
+        "system.details.generalMarkdown": "5732fb2073a67abc",
+        "system.details.specialtyMarkdown": "9d706b436d7e79f9"
+      }
+    },
+    "creature-sorrow-ghost": {
+      "sourceSha": "e2720f38bb2ded73223e55d220cfb878b927499e49263ffafb5310f8e39f024b",
+      "fields": {
+        "system.cv": "08030507b4c32092",
+        "system.actions": "767af4aa61cf3e1e",
+        "system.details.designNotesMarkdown": "dd443bf224252d8a",
+        "system.details.flavorMarkdown": "420677740d444b34",
+        "system.details.generalMarkdown": "408d3d784b9ff3fc",
+        "system.details.specialtyMarkdown": "c2d0585003e93147"
+      }
+    },
+    "creature-sphinx": {
+      "sourceSha": "964110b68ef4ffca2f6305c0d1d2b157e6bcd37568e5565a8a9acde66f191d77",
+      "fields": {
+        "system.cv": "07ff8607b4c012ee",
+        "system.actions": "80f60d8c6ea5e62d",
+        "system.details.designNotesMarkdown": "4ee263fc51a063cc",
+        "system.details.flavorMarkdown": "b8065e69b12ce775",
+        "system.details.generalMarkdown": "8678f63f13e099fb",
+        "system.details.specialtyMarkdown": "e72099ddf1ee29f8"
+      }
+    },
+    "creature-spore-shepherd": {
+      "sourceSha": "b60ceb83adbd3eaa187e8c52cee0fcd592d2b0c784914dc8dffec4002367abdc",
+      "fields": {
+        "system.cv": "07f89407b4ba0c0a",
+        "system.actions": "5c6e38d827daa913",
+        "system.details.designNotesMarkdown": "317485342f8c658b",
+        "system.details.flavorMarkdown": "de2afc9f5a447173",
+        "system.details.generalMarkdown": "dd12fd211732bcef",
+        "system.details.specialtyMarkdown": "864ddcd6b389a390"
+      }
+    },
+    "creature-starless-oracle": {
+      "sourceSha": "3e465967c1612b1a0fedc7a97591eb4aea9170df3c64ba8d5eb68b65b55ee15c",
+      "fields": {
+        "system.cv": "08030207b4c31b79",
+        "system.actions": "fee3a75db80871f6",
+        "system.details.designNotesMarkdown": "e7df4850b5a8e196",
+        "system.details.flavorMarkdown": "fd84870e0cf47ff5",
+        "system.details.generalMarkdown": "2dd5f35d7e22899c",
+        "system.details.specialtyMarkdown": "8d5bb4b543db8ebc"
+      }
+    },
+    "creature-stone-giant": {
+      "sourceSha": "5c0708571a9d51a2e985ccca4f86ae8e0f63ff7fdfaf5e3aff1bb7ebf0355eb2",
+      "fields": {
+        "system.cv": "07ff7d07b4c003a3",
+        "system.actions": "fdf9f1899c6c7f64",
+        "system.details.designNotesMarkdown": "369c8ea85f8dd939",
+        "system.details.flavorMarkdown": "c02f3513921db03d",
+        "system.details.generalMarkdown": "e7d3ee956ee73c9d",
+        "system.details.specialtyMarkdown": "3523155613852d35"
+      }
+    },
+    "creature-stone-golem": {
+      "sourceSha": "890e15828a315bc00f4a196d7dd395d6382403545e2330e05972dff915366d74",
+      "fields": {
+        "system.cv": "07ee8307b4b19aa2",
+        "system.actions": "54d776c634512209",
+        "system.details.designNotesMarkdown": "abb082dd428582a5",
+        "system.details.flavorMarkdown": "89104d9ce8e04e36",
+        "system.details.generalMarkdown": "564e62f3b4edaea4",
+        "system.details.specialtyMarkdown": "0a13b7415ee76781"
+      }
+    },
+    "creature-stone-knuckle": {
+      "sourceSha": "330ec734cb9bcdc5fd70847f13a4032e8b9b29272423eba4d2c784a83ebe40c7",
+      "fields": {
+        "system.cv": "af63b44c8601a894",
+        "system.actions": "e6a813aff5e08450",
+        "system.details.designNotesMarkdown": "bf9a136ac53234a2",
+        "system.details.flavorMarkdown": "35ebb73c0b41cbed",
+        "system.details.generalMarkdown": "3493e18d12b09dd6",
+        "system.details.specialtyMarkdown": "6aeadb0e0345529a"
+      }
+    },
+    "creature-storm-column": {
+      "sourceSha": "967d4cfc180c7463cc2cc8230650bb0c3a5412e9dbefb3d870e2af4f1f49ec63",
+      "fields": {
+        "system.cv": "07ff8307b4c00dd5",
+        "system.actions": "c3c0b7e7f28b5d2d",
+        "system.details.designNotesMarkdown": "67317b2206d89f8d",
+        "system.details.flavorMarkdown": "2e59916b732985ac",
+        "system.details.generalMarkdown": "bf89da3bd5cb8649",
+        "system.details.specialtyMarkdown": "8589d0433e996096"
+      }
+    },
+    "creature-storm-giant": {
+      "sourceSha": "7075bf6c39d930a1b6a0a76ae3ae9affc2b8c36f2d2e3cf677b32d750f3a672a",
+      "fields": {
+        "system.cv": "07eafe07b4ae82cc",
+        "system.actions": "ff783a1a7471e50e",
+        "system.details.designNotesMarkdown": "bfefd12e547f4d3c",
+        "system.details.flavorMarkdown": "1a68dc0096002cb7",
+        "system.details.generalMarkdown": "b977b211f8c3ab27",
+        "system.details.specialtyMarkdown": "36b9a836e8a22e43"
+      }
+    },
+    "creature-succubus": {
+      "sourceSha": "5b0e8044681eda1922a00e6dfcff18f7daa4aeb14996a86d9989cafcdbc6e427",
+      "fields": {
+        "system.cv": "08030207b4c31b79",
+        "system.actions": "9c493250bb851283",
+        "system.details.designNotesMarkdown": "e2a87f5bc3f0d37d",
+        "system.details.flavorMarkdown": "a54114d3d6bbeba0",
+        "system.details.generalMarkdown": "41fb73883f60c8d4",
+        "system.details.specialtyMarkdown": "455b03cdad6b2cd3"
+      }
+    },
+    "creature-sword-angel": {
+      "sourceSha": "a06b26a5fc2f87da27e96092e5bdc46e54a6f048ae576f4410f580e96c0d30a6",
+      "fields": {
+        "system.cv": "07ee7d07b4b19070",
+        "system.actions": "1545145a730f5e7c",
+        "system.details.designNotesMarkdown": "5dce7778033140a9",
+        "system.details.flavorMarkdown": "bdca27d2f3bab896",
+        "system.details.generalMarkdown": "fa222f5aad1cb75d",
+        "system.details.specialtyMarkdown": "0ce4a02a91c62611"
+      }
+    },
+    "creature-thorn-lurker": {
+      "sourceSha": "d55783467b7cc6da71a78a66f22e4c46dfe95537d9cc46c8a4044c128155d7fa",
+      "fields": {
+        "system.cv": "07f89107b4ba06f1",
+        "system.actions": "ff97486ca73edd37",
+        "system.details.designNotesMarkdown": "a66f2460ffb177ce",
+        "system.details.flavorMarkdown": "05d249b78252c93b",
+        "system.details.generalMarkdown": "637d57f43b4a64b6",
+        "system.details.specialtyMarkdown": "3cfb9277288e2be5"
+      }
+    },
+    "creature-thorn-queen": {
+      "sourceSha": "b51cdb7fbdad6d4e942294fdec4e1c3f29cabef9977cf2d96102e9a9ece8cf69",
+      "fields": {
+        "system.cv": "07ff7c07b4c001f0",
+        "system.actions": "688fca3ff7464335",
+        "system.details.designNotesMarkdown": "728da3b12657c134",
+        "system.details.flavorMarkdown": "4776206487df361e",
+        "system.details.generalMarkdown": "6a84f73a59304f4b",
+        "system.details.specialtyMarkdown": "1dc9d8137cc4899a"
+      }
+    },
+    "creature-thought-leech": {
+      "sourceSha": "7c64a29656d8533cfa78aff5ae22aa1e27d5a7454ae6b993f10605f5e735cba4",
+      "fields": {
+        "system.cv": "08030407b4c31edf",
+        "system.actions": "505f9f407ee1e396",
+        "system.details.designNotesMarkdown": "448c4583fe425445",
+        "system.details.flavorMarkdown": "dfc6516de8ad3609",
+        "system.details.generalMarkdown": "37449b8abb007e0d",
+        "system.details.specialtyMarkdown": "3e98e8f7f4709283"
+      }
+    },
+    "creature-tomb-sage": {
+      "sourceSha": "36ca4c95a5f39b315e8f6352485020d45f0a0d2cbf87ea3db2afbcd3f8799ac7",
+      "fields": {
+        "system.cv": "07ee8307b4b19aa2",
+        "system.actions": "667a0bc7be61f015",
+        "system.details.designNotesMarkdown": "1c492c9565f90b60",
+        "system.details.flavorMarkdown": "718f20e94dc2bf02",
+        "system.details.generalMarkdown": "48080c2e0ae22c4d",
+        "system.details.specialtyMarkdown": "2176c5ab349d6950"
+      }
+    },
+    "creature-trail-hound": {
+      "sourceSha": "e9e107921e4f4896f2cb8a9f5fadcba0dd9bb049d9d40e8c8d5baa64e5a047b3",
+      "fields": {
+        "system.cv": "af63a84c86019430",
+        "system.actions": "781c0d65190f937d",
+        "system.details.designNotesMarkdown": "f90e58f3a64c8464",
+        "system.details.flavorMarkdown": "7e50d0f4638515bb",
+        "system.details.generalMarkdown": "425ab63e591f9600",
+        "system.details.specialtyMarkdown": "54dc08b6436ef46e"
+      }
+    },
+    "creature-unicorn": {
+      "sourceSha": "9dae462d65aab88ca306e0e094d721ccfb9638d03b7da584ede0c8ea86c861c0",
+      "fields": {
+        "system.cv": "08030007b4c31813",
+        "system.actions": "01c175fa20fc2fb2",
+        "system.details.designNotesMarkdown": "799c96e8428f4d4d",
+        "system.details.flavorMarkdown": "b71b88b07b81cc05",
+        "system.details.generalMarkdown": "91f538e1d5014c4c",
+        "system.details.specialtyMarkdown": "ad2626c022650ad3"
+      }
+    },
+    "creature-vampire-spawn": {
+      "sourceSha": "2dc7b6463992b77be18c0198bff8e069451892d2d81a2fe6880d71a8db5856d6",
+      "fields": {
+        "system.cv": "08030607b4c32245",
+        "system.actions": "a50a30cd5996e10b",
+        "system.details.designNotesMarkdown": "7a472216fc418ba7",
+        "system.details.flavorMarkdown": "8ce79c1a3ba4da3b",
+        "system.details.generalMarkdown": "461a48ca6e30e033",
+        "system.details.specialtyMarkdown": "ee258cbd2162e54e"
+      }
+    },
+    "creature-veteran-captain": {
+      "sourceSha": "b0f664c7d662490add6b77e09835c6b04321d2a326859d86f1436103ebed0ef8",
+      "fields": {
+        "system.cv": "08030107b4c319c6",
+        "system.actions": "b374e3fca86af2bb",
+        "system.details.designNotesMarkdown": "5ebf6ee8e8b75634",
+        "system.details.flavorMarkdown": "59de4cbf4ef1112c",
+        "system.details.generalMarkdown": "3bd223f0d2795080",
+        "system.details.specialtyMarkdown": "9b27510b583f308d"
+      }
+    },
+    "creature-walking-furnace": {
+      "sourceSha": "262872a346f7d2dac45030696a50f0932a825907c77caa59e26ad0bd18bb1384",
+      "fields": {
+        "system.cv": "08030b07b4c32ac4",
+        "system.actions": "105bdc6dba9e7ce2",
+        "system.details.designNotesMarkdown": "a5a89df8da5edb5c",
+        "system.details.flavorMarkdown": "095e05cb390e0308",
+        "system.details.generalMarkdown": "e51c5176ae516f8c",
+        "system.details.specialtyMarkdown": "f106e6a215090c44"
+      }
+    },
+    "creature-walking-thorn": {
+      "sourceSha": "567f5e01278dec362b4fce0e39e2dacee8888a5ef95b2482bcdb0c5c2f1e020e",
+      "fields": {
+        "system.cv": "07f89107b4ba06f1",
+        "system.actions": "765ae6dfa9b216b7",
+        "system.details.designNotesMarkdown": "45d33cee1f61bc71",
+        "system.details.flavorMarkdown": "2439b4db980e69bb",
+        "system.details.generalMarkdown": "fef1a0d135c92ff9",
+        "system.details.specialtyMarkdown": "5a3c6e2d9f310c95"
+      }
+    },
+    "creature-warhorse": {
+      "sourceSha": "e125bab8b7800706c85927866cbe07ffa3fd4ba10c3d315897eb9f567f9dd282",
+      "fields": {
+        "system.cv": "07f89507b4ba0dbd",
+        "system.actions": "e7d272cf1a595b6a",
+        "system.details.designNotesMarkdown": "8f6d7928698d46b0",
+        "system.details.flavorMarkdown": "962752c27b81f67f",
+        "system.details.generalMarkdown": "ebaafea60b5945fa",
+        "system.details.specialtyMarkdown": "43df05327fb61f21"
+      }
+    },
+    "creature-water-elemental": {
+      "sourceSha": "a16f053aa3880d24dc7857463f5f5955ea645213ca97aeb8499e0ca357e511a5",
+      "fields": {
+        "system.cv": "08030607b4c32245",
+        "system.actions": "57ce4dab85b558d7",
+        "system.details.designNotesMarkdown": "2d54596a1bdb49b7",
+        "system.details.flavorMarkdown": "e2fd33560ffba53d",
+        "system.details.generalMarkdown": "e4c1f8d2f4939965",
+        "system.details.specialtyMarkdown": "ddef0f5da10b200d"
+      }
+    },
+    "creature-werebear": {
+      "sourceSha": "06574095aed3aa0c65e59a14fce84cc124d6132f33b11ab295a0164cfe1610ad",
+      "fields": {
+        "system.cv": "08030107b4c319c6",
+        "system.actions": "089aecd460622352",
+        "system.details.designNotesMarkdown": "fbea6a76972d39e4",
+        "system.details.flavorMarkdown": "012878b98312c2d9",
+        "system.details.generalMarkdown": "072c09ebb7172962",
+        "system.details.specialtyMarkdown": "0e613d667e5b7347"
+      }
+    },
+    "creature-wererat": {
+      "sourceSha": "76a601b3692b2aa1727a1f4284f985ebbc95324656d9f90e40990d11dde3518c",
+      "fields": {
+        "system.cv": "07f88e07b4ba01d8",
+        "system.actions": "724f871e5c3099ad",
+        "system.details.designNotesMarkdown": "dd6bcf781c6c8d43",
+        "system.details.flavorMarkdown": "008904464319accc",
+        "system.details.generalMarkdown": "a65c21c71c15399c",
+        "system.details.specialtyMarkdown": "3d43530f5ecc2979"
+      }
+    },
+    "creature-werewolf": {
+      "sourceSha": "731da9121b8adf4556dd83c3d530425d33c848cd228f43593248ce4f78a4816f",
+      "fields": {
+        "system.cv": "08030007b4c31813",
+        "system.actions": "210dbd9b6466cb4d",
+        "system.details.designNotesMarkdown": "b7b429087fe45a35",
+        "system.details.flavorMarkdown": "a1394e743c766b52",
+        "system.details.generalMarkdown": "c9d4a8cd0e934a32",
+        "system.details.specialtyMarkdown": "2fa61262ee3bf1e5"
+      }
+    },
+    "creature-wight": {
+      "sourceSha": "220e13aa2deae4ada702027ea88c129c8053350d3461ec626b748f505b478872",
+      "fields": {
+        "system.cv": "08030107b4c319c6",
+        "system.actions": "827950ee51cf63ff",
+        "system.details.designNotesMarkdown": "5bbe1ab253ad14b1",
+        "system.details.flavorMarkdown": "9074a03b4e3182dc",
+        "system.details.generalMarkdown": "6c8b6b05fe2000bf",
+        "system.details.specialtyMarkdown": "dd25e7f215d49eb1"
+      }
+    },
+    "creature-wild-boar": {
+      "sourceSha": "9fd8b2ac3247dbb19725c55fc832c3db0bf928144381f31d889544ca6ae1c584",
+      "fields": {
+        "system.cv": "af63b54c8601aa47",
+        "system.actions": "71a2aebf20ec2b45",
+        "system.details.designNotesMarkdown": "2d6a7b7990689b8e",
+        "system.details.flavorMarkdown": "19f116292611d69e",
+        "system.details.generalMarkdown": "693220960361ff6c",
+        "system.details.specialtyMarkdown": "aec1d90df9d5d191"
+      }
+    },
+    "creature-winter-wolf": {
+      "sourceSha": "93bfd30925af818019d1b3095c5a0fa4ceffd4e56a84d9d536d70f5d9407f739",
+      "fields": {
+        "system.cv": "07ee7f07b4b193d6",
+        "system.actions": "99853057b49b57c4",
+        "system.details.designNotesMarkdown": "a28d3bb83e49e2b3",
+        "system.details.flavorMarkdown": "1e555046c3555df7",
+        "system.details.generalMarkdown": "412e53651163be9c",
+        "system.details.specialtyMarkdown": "5a1b9270cf7931a5"
+      }
+    },
+    "creature-wolf": {
+      "sourceSha": "c69d76248891d860dd6d3e138d53f499855511e8d21d8fa9aa11d4ac5db12678",
+      "fields": {
+        "system.cv": "af63b54c8601aa47",
+        "system.actions": "e25c80ab9af82ac7",
+        "system.details.designNotesMarkdown": "ad23afa9844bc268",
+        "system.details.flavorMarkdown": "147df75ad92d1c15",
+        "system.details.generalMarkdown": "e7544c51e69985e1",
+        "system.details.specialtyMarkdown": "57d6ac833f7de98d"
+      }
+    },
+    "creature-wraith": {
+      "sourceSha": "e414af4eddeb48d632528df43c4603c10dc0f996e985f80e2e7b281516721ac6",
+      "fields": {
+        "system.cv": "07ff8107b4c00a6f",
+        "system.actions": "173f28bd9bfc2e6c",
+        "system.details.designNotesMarkdown": "0259bf6c6e6e1e0b",
+        "system.details.flavorMarkdown": "b8ac0f3f9ba7eff2",
+        "system.details.generalMarkdown": "7ac4a07294543d80",
+        "system.details.specialtyMarkdown": "baad82c6607dbf59"
+      }
+    },
+    "creature-wyvern": {
+      "sourceSha": "f120a4d3399702d6ef58c885400a85562b9a845612bd2b85ba732e98138b07bc",
+      "fields": {
+        "system.cv": "08030107b4c319c6",
+        "system.actions": "a40edb61478208b2",
+        "system.details.designNotesMarkdown": "cbd883bc6a061954",
+        "system.details.flavorMarkdown": "cf6cd3f15be09e11",
+        "system.details.generalMarkdown": "ccf3760f039a654c",
+        "system.details.specialtyMarkdown": "8b9f019030f07bec"
+      }
+    },
+    "creature-young-ember-drake": {
+      "sourceSha": "47407854a26ebdae63773558e7d65bf942cc7404fdcc891d47cd31d811e3515f",
+      "fields": {
+        "system.cv": "08030107b4c319c6",
+        "system.actions": "31a81524cfd97ae5",
+        "system.details.designNotesMarkdown": "d145b1a98a438b8b",
+        "system.details.flavorMarkdown": "7a7424888002f306",
+        "system.details.generalMarkdown": "b8f06ee6544d1372",
+        "system.details.specialtyMarkdown": "0e0c0eb07389a4e0"
+      }
+    },
+    "creature-zombie-brute": {
+      "sourceSha": "63c08c556426000c67bad6d5e5db44d91a550a1ec4355fa4191f537ceddef683",
+      "fields": {
+        "system.cv": "08030607b4c32245",
+        "system.actions": "12379dfaf2a504b2",
+        "system.details.designNotesMarkdown": "42b27af78d8edfba",
+        "system.details.flavorMarkdown": "4edf11f39b1c7457",
+        "system.details.generalMarkdown": "257e442abaefe6dd",
+        "system.details.specialtyMarkdown": "d6a8a12846e4c996"
+      }
+    },
+    "summon-adder": {
+      "sourceSha": "3e941e067f4d31df53b11e46cf7cd2ac9ac459fd25edc00f8f64ba6f389aeac3",
+      "fields": {
+        "system.cv": "af63a84c86019430",
+        "system.sourceMarkdown": "5b86f210d2f90873",
+        "system.referenceMarkdown": "aa18fc47ebe7264e",
+        "system.commandSource": "813b5741ab784772"
+      }
+    },
+    "summon-air-elemental": {
+      "sourceSha": "413a372e4d2b28db43696dbb84ff2ca92e2a7cbb4a25c0264b3026220f33c218",
+      "fields": {
+        "system.cv": "08030307b4c31d2c",
+        "system.sourceMarkdown": "cf6558cd6cd1f0b4",
+        "system.referenceMarkdown": "25810c5ec3e52373",
+        "system.commandSource": "cb73d7ab12e60571"
+      }
+    },
+    "summon-ancestor-guardian": {
+      "sourceSha": "190ca79112e38a4251156303b5c5f94eef2877a8f4361e3364768f33901cfa6c",
+      "fields": {
+        "system.cv": "07f89007b4ba053e",
+        "system.sourceMarkdown": "6142a2991ee0dbdf",
+        "system.referenceMarkdown": "c4f3aab06da00f27",
+        "system.commandSource": "813b5741ab784772"
+      }
+    },
+    "summon-ancient-mammoth": {
+      "sourceSha": "53bdc3c974a598316660e087c5f10872c16edb6cfe27911359e0189b73002542",
+      "fields": {
+        "system.cv": "07ff8707b4c014a1",
+        "system.sourceMarkdown": "7a2c2753b4216b39",
+        "system.referenceMarkdown": "7049ebc11d98f404",
+        "system.commandSource": "813b5741ab784772"
+      }
+    },
+    "summon-animated-armor": {
+      "sourceSha": "d3bda60ce1779f6e709e28e8d9ba87d5e2322968ee3c4be6ffbce11b7f5e487b",
+      "fields": {
+        "system.cv": "07f89107b4ba06f1",
+        "system.sourceMarkdown": "6aa16618fe0a6a54",
+        "system.referenceMarkdown": "bd7fa20223aac290",
+        "system.commandSource": "813b5741ab784772"
+      }
+    },
+    "summon-animated-statue": {
+      "sourceSha": "b53c41acbf7301c8df6c5f7c1f851b220a42cbbfcf7168b2a3445d44d2a15759",
+      "fields": {
+        "system.cv": "08030607b4c32245",
+        "system.sourceMarkdown": "258bef6d2248701d",
+        "system.referenceMarkdown": "621024cdfec87ac4",
+        "system.commandSource": "cb73d7ab12e60571"
+      }
+    },
+    "summon-barrow-guard": {
+      "sourceSha": "964d26ad50293f5a7975490231ec3c340b487f374fc7fa3c6025f114bee0df13",
+      "fields": {
+        "system.cv": "08030507b4c32092",
+        "system.sourceMarkdown": "6c5ebdd4077574ca",
+        "system.referenceMarkdown": "a396e1a9c1b97636",
+        "system.commandSource": "813b5741ab784772"
+      }
+    },
+    "summon-bone-archer": {
+      "sourceSha": "c4b2b28daa9308ff27e1b382a666caa247ea71bac1d9ffe38dbb0fd10e897100",
+      "fields": {
+        "system.cv": "af63ab4c86019949",
+        "system.sourceMarkdown": "5e0643079392ea32",
+        "system.referenceMarkdown": "f6b9c658eadb9f53",
+        "system.commandSource": "813b5741ab784772"
+      }
+    },
+    "summon-bone-colossus": {
+      "sourceSha": "7aecd12b9bb9a0377f797788c859a4c4b64b885d12ce953c5bf2bbf81c97ee20",
+      "fields": {
+        "system.cv": "07ee7d07b4b19070",
+        "system.sourceMarkdown": "e2fb63d7b9379282",
+        "system.referenceMarkdown": "e29e50fee6d81029",
+        "system.commandSource": "813b5741ab784772"
+      }
+    },
+    "summon-bone-sentry": {
+      "sourceSha": "17e35c1ffad5dbc5ba5d329604e911bb9a36934edfc59a7e3e711e110c094198",
+      "fields": {
+        "system.cv": "af63aa4c86019796",
+        "system.sourceMarkdown": "43a07a32318bcd11",
+        "system.referenceMarkdown": "c68b80b1b8210166",
+        "system.commandSource": "813b5741ab784772"
+      }
+    },
+    "summon-briar-knight": {
+      "sourceSha": "5b82c6839de5172db0c6c721b3a583c035383384028c61cfa222a376ee478e56",
+      "fields": {
+        "system.cv": "07f88b07b4b9fcbf",
+        "system.sourceMarkdown": "140daf073d8dfa80",
+        "system.referenceMarkdown": "10dd47d84241255b",
+        "system.commandSource": "813b5741ab784772"
+      }
+    },
+    "summon-brown-bear": {
+      "sourceSha": "4e9a2932459836ada25523ed2e8e8afc18d23be1b344122a6769ce009895fd4f",
+      "fields": {
+        "system.cv": "07f89107b4ba06f1",
+        "system.sourceMarkdown": "23c8469e9f5ec287",
+        "system.referenceMarkdown": "19762509f815b665",
+        "system.commandSource": "813b5741ab784772"
+      }
+    },
+    "summon-cave-bat": {
+      "sourceSha": "84fc9acbe5b0884adc27d125ec4131f7884648f71cd5803a96ec71495e9cd428",
+      "fields": {
+        "system.cv": "af63a94c860195e3",
+        "system.sourceMarkdown": "def8cba6fb9a27c0",
+        "system.referenceMarkdown": "d9240292d1cb1aec",
+        "system.commandSource": "813b5741ab784772"
+      }
+    },
+    "summon-cinder-strider": {
+      "sourceSha": "d3d6a0c380d4a249d29ec3b51970ed385d4952f06daa3920b803ac6024f410dd",
+      "fields": {
+        "system.cv": "07f88a07b4b9fb0c",
+        "system.sourceMarkdown": "d6ff37b7ee9a17be",
+        "system.referenceMarkdown": "b2d8712a2be2eff8",
+        "system.commandSource": "813b5741ab784772"
+      }
+    },
+    "summon-clay-golem": {
+      "sourceSha": "f8a83c531c8ec9cb5fe5ead0f42dafb7fe097ed423f989f15e45046160b21bb6",
+      "fields": {
+        "system.cv": "07ff8307b4c00dd5",
+        "system.sourceMarkdown": "dccb27a3ca68b800",
+        "system.referenceMarkdown": "0f804606a130d295",
+        "system.commandSource": "cb73d7ab12e60571"
+      }
+    },
+    "summon-clay-helper": {
+      "sourceSha": "e959c50cbc02ec1f6d19bd45aa42fe841daa74507c97e635a24f6010cea0bd4b",
+      "fields": {
+        "system.cv": "af63a84c86019430",
+        "system.sourceMarkdown": "ef59db5699a0d86e",
+        "system.referenceMarkdown": "1cde4c384ea2c695",
+        "system.commandSource": "813b5741ab784772"
+      }
+    },
+    "summon-clockwork-scout": {
+      "sourceSha": "41af88b841bf3375972428c7a8e9ac8b4db9188e1cd8235a99d955e84f520409",
+      "fields": {
+        "system.cv": "af63a84c86019430",
+        "system.sourceMarkdown": "2b88b86074c23b6f",
+        "system.referenceMarkdown": "1843b5bc67303976",
+        "system.commandSource": "813b5741ab784772"
+      }
+    },
+    "summon-crypt-ghoul": {
+      "sourceSha": "7aeee1cb26abf97213d3d5395c396d8da6b099effc977d7d9ad1fcc71b34303d",
+      "fields": {
+        "system.cv": "07f89107b4ba06f1",
+        "system.sourceMarkdown": "91d8b841d082d1fc",
+        "system.referenceMarkdown": "c1ccca133eb7756b",
+        "system.commandSource": "813b5741ab784772"
+      }
+    },
+    "summon-dire-wolf": {
+      "sourceSha": "547e224a66c38836af7bebdfa75101e114859f1cd5dc3eebe0bf1bf6ef15ef21",
+      "fields": {
+        "system.cv": "07f88a07b4b9fb0c",
+        "system.sourceMarkdown": "92c7a0b3dd8c623d",
+        "system.referenceMarkdown": "97ee746b1bf405cf",
+        "system.commandSource": "cb73d7ab12e60571"
+      }
+    },
+    "summon-dryad": {
+      "sourceSha": "12ef41b779d5eb3ed99896a874d68609989fa09c99c270e9a8d4fe7dd1390739",
+      "fields": {
+        "system.cv": "07f89107b4ba06f1",
+        "system.sourceMarkdown": "b4851cfc3710b61e",
+        "system.referenceMarkdown": "37a5553970273d91",
+        "system.commandSource": "cb73d7ab12e60571"
+      }
+    },
+    "summon-earth-elemental": {
+      "sourceSha": "f38518da817c5925166977b0e725173c9a05a29ed92990d4fb2a98ae6a349e8b",
+      "fields": {
+        "system.cv": "07ff8007b4c008bc",
+        "system.sourceMarkdown": "b259d4536ce9e7ad",
+        "system.referenceMarkdown": "2bdd53d4bfb18c78",
+        "system.commandSource": "cb73d7ab12e60571"
+      }
+    },
+    "summon-emberling": {
+      "sourceSha": "4ee1da54d797079aae9fba3a655495ebe511213db8a6fa3fab75bf4e744a5868",
+      "fields": {
+        "system.cv": "af63b54c8601aa47",
+        "system.sourceMarkdown": "d26fa27debf251ce",
+        "system.referenceMarkdown": "c361d869262427a4",
+        "system.commandSource": "813b5741ab784772"
+      }
+    },
+    "summon-flesh-golem": {
+      "sourceSha": "4843ee2c234838e1ababb468f5654c1a9c1badce694f408e9de370455d9620c2",
+      "fields": {
+        "system.cv": "08030b07b4c32ac4",
+        "system.sourceMarkdown": "7378463e417ca677",
+        "system.referenceMarkdown": "ae4a00443c4dbc33",
+        "system.commandSource": "cb73d7ab12e60571"
+      }
+    },
+    "summon-ghast": {
+      "sourceSha": "a5f85464d4a97915d3f968f9cb1a11a55d744f620287dca839dee09c51cc7d8d",
+      "fields": {
+        "system.cv": "0802ff07b4c31660",
+        "system.sourceMarkdown": "022139488dd8ac6c",
+        "system.referenceMarkdown": "78f90bf9a282b35c",
+        "system.commandSource": "cb73d7ab12e60571"
+      }
+    },
+    "summon-giant-boar": {
+      "sourceSha": "275081fa497fed5e7a84b8876a7f206166f829727861083037f80efe693bafb7",
+      "fields": {
+        "system.cv": "08030607b4c32245",
+        "system.sourceMarkdown": "0b18c114c468ebd9",
+        "system.referenceMarkdown": "a46bc7a1c466ab58",
+        "system.commandSource": "cb73d7ab12e60571"
+      }
+    },
+    "summon-giant-constrictor": {
+      "sourceSha": "74b2a485193512f5569593ec366012ff4800fa3048365d77b7050fb2e5637b16",
+      "fields": {
+        "system.cv": "08030507b4c32092",
+        "system.sourceMarkdown": "0b7e2c89a334e247",
+        "system.referenceMarkdown": "5f63f6508d36312a",
+        "system.commandSource": "cb73d7ab12e60571"
+      }
+    },
+    "summon-giant-eagle": {
+      "sourceSha": "7b37ae1c473b88dc26f458d045f728b4cb3533ed037b14d396a8cbe6374ec12c",
+      "fields": {
+        "system.cv": "07f89007b4ba053e",
+        "system.sourceMarkdown": "ad68fa95f0f4e561",
+        "system.referenceMarkdown": "c206ca8284088ff4",
+        "system.commandSource": "cb73d7ab12e60571"
+      }
+    },
+    "summon-giant-octopus": {
+      "sourceSha": "51f7fdb226b2640b06135813068edd7c44cc204ab72f8b385603400d55cd73ac",
+      "fields": {
+        "system.cv": "08030607b4c32245",
+        "system.sourceMarkdown": "d4d905fadbdd5a40",
+        "system.referenceMarkdown": "44a7a2c4c95bf77c",
+        "system.commandSource": "cb73d7ab12e60571"
+      }
+    },
+    "summon-giant-rat": {
+      "sourceSha": "032be46801fb18373ae8e13fbb56e702ea6102b3e9192c21286661de0560d0b5",
+      "fields": {
+        "system.cv": "af63a84c86019430",
+        "system.sourceMarkdown": "089f761cbb6905b3",
+        "system.referenceMarkdown": "36ffef7fbfec8627",
+        "system.commandSource": "cb73d7ab12e60571"
+      }
+    },
+    "summon-giant-scorpion": {
+      "sourceSha": "2c81a1db8fcc80c8a75b6ce75ee377bde13f3d9ba67980dd39bd6228fe399adf",
+      "fields": {
+        "system.cv": "08030607b4c32245",
+        "system.sourceMarkdown": "ae18ac68ac8db907",
+        "system.referenceMarkdown": "669bc2175f3c9ac5",
+        "system.commandSource": "cb73d7ab12e60571"
+      }
+    },
+    "summon-giant-spider": {
+      "sourceSha": "5ffde9058d9860fcd17bd2c1257f00bfa98b672cf377659cb38c089de12fb217",
+      "fields": {
+        "system.cv": "07f88f07b4ba038b",
+        "system.sourceMarkdown": "ccb5d1a64214b413",
+        "system.referenceMarkdown": "b04c9ff791c05d49",
+        "system.commandSource": "813b5741ab784772"
+      }
+    },
+    "summon-glass-sentinel": {
+      "sourceSha": "a84b98d3d19901d3c6327bdc586156d6dae55bfc4dd235c4d86cc589233734b3",
+      "fields": {
+        "system.cv": "07f88f07b4ba038b",
+        "system.sourceMarkdown": "a955e6e08498a1b7",
+        "system.referenceMarkdown": "2388040292e0bf6f",
+        "system.commandSource": "813b5741ab784772"
+      }
+    },
+    "summon-grave-wisp": {
+      "sourceSha": "5537e47bf88cdd32d812b3b47697af65eb5e3c66b648e08e0e1230c0cd7482ae",
+      "fields": {
+        "system.cv": "af63ab4c86019949",
+        "system.sourceMarkdown": "38f0c664b29dd1bb",
+        "system.referenceMarkdown": "ec483b6cf57b8597",
+        "system.commandSource": "813b5741ab784772"
+      }
+    },
+    "summon-great-cat": {
+      "sourceSha": "2c5aa3763156a1d28863d0e84635ee0c160b8528c77ccb58cd84394aeb9a7fb3",
+      "fields": {
+        "system.cv": "07f88f07b4ba038b",
+        "system.sourceMarkdown": "541ec463aca8981a",
+        "system.referenceMarkdown": "7bcc6d51ab9d5155",
+        "system.commandSource": "813b5741ab784772"
+      }
+    },
+    "summon-great-stag": {
+      "sourceSha": "0f6a1d37aa00e85b0dbc668e02aed4d15c5ab347ae891b4eaef3f63aa2ac0c7d",
+      "fields": {
+        "system.cv": "07f89507b4ba0dbd",
+        "system.sourceMarkdown": "fd4f8c9617aae2d2",
+        "system.referenceMarkdown": "232faa3381a8eb46",
+        "system.commandSource": "813b5741ab784772"
+      }
+    },
+    "summon-harbor-siren": {
+      "sourceSha": "b803817aec55c01d3c602de0481f0b39d3c4b44c68bb7eed07613dabf0d419d9",
+      "fields": {
+        "system.cv": "07f89007b4ba053e",
+        "system.sourceMarkdown": "6bb4934fea3b98fe",
+        "system.referenceMarkdown": "15c5139ded4c1cb9",
+        "system.commandSource": "813b5741ab784772"
+      }
+    },
+    "summon-hearth-brownie": {
+      "sourceSha": "e935454a03caf5d0f67b09f72d544c9bb4cdda195d972351477cada231229a3c",
+      "fields": {
+        "system.cv": "af63a84c86019430",
+        "system.sourceMarkdown": "ec8a545c0a12877e",
+        "system.referenceMarkdown": "a13e4463f7c7467e",
+        "system.commandSource": "813b5741ab784772"
+      }
+    },
+    "summon-hedge-sprite": {
+      "sourceSha": "e85142ac6a5328dd7ab8193ed197de9c943b95853770f42a8a42517ac5431e46",
+      "fields": {
+        "system.cv": "af63a84c86019430",
+        "system.sourceMarkdown": "b614b208b11fa9ce",
+        "system.referenceMarkdown": "3f3e313498231450",
+        "system.commandSource": "813b5741ab784772"
+      }
+    },
+    "summon-icebound-warden": {
+      "sourceSha": "2a7941d74cda53a3a2c9af75829e0043982b7c3d110cbbe92901bd34d9e92526",
+      "fields": {
+        "system.cv": "07f88b07b4b9fcbf",
+        "system.sourceMarkdown": "1d16f49d898b9ae3",
+        "system.referenceMarkdown": "c2d8fb5b75a7e2c9",
+        "system.commandSource": "813b5741ab784772"
+      }
+    },
+    "summon-iron-gatekeeper": {
+      "sourceSha": "0176efd12e7bf91d8dfe09052d98127b0f45512f07eb16c528cd224d7b06a3ab",
+      "fields": {
+        "system.cv": "07ee8407b4b19c55",
+        "system.sourceMarkdown": "125a0cf98d229b0d",
+        "system.referenceMarkdown": "dda74a8effb1ce40",
+        "system.commandSource": "813b5741ab784772"
+      }
+    },
+    "summon-lantern-spirit": {
+      "sourceSha": "94e31e2663d52ffc0ea1bb0fdd87db03329863c1bdb42e0f6ea9b90ea596f1f6",
+      "fields": {
+        "system.cv": "af63ab4c86019949",
+        "system.sourceMarkdown": "a8a753a95fc68fce",
+        "system.referenceMarkdown": "1a7c8b9e1d9c2d31",
+        "system.commandSource": "813b5741ab784772"
+      }
+    },
+    "summon-marsh-crocodile": {
+      "sourceSha": "dd1b23d600a111656c225ce43696c44ccaede99be4c185c12d43ec56e991671e",
+      "fields": {
+        "system.cv": "07f89107b4ba06f1",
+        "system.sourceMarkdown": "12e28406170597e4",
+        "system.referenceMarkdown": "0f8a490faecbb419",
+        "system.commandSource": "813b5741ab784772"
+      }
+    },
+    "summon-moon-hart": {
+      "sourceSha": "e7b160e84d422259ba902dede24b89e235449331df27e37bd6ae026c0e121de6",
+      "fields": {
+        "system.cv": "0802ff07b4c31660",
+        "system.sourceMarkdown": "7fd8cc0af620771f",
+        "system.referenceMarkdown": "45c211ee59c9b335",
+        "system.commandSource": "813b5741ab784772"
+      }
+    },
+    "summon-mourning-bell": {
+      "sourceSha": "db09be2b7996b4f0744da1ada47d6163efed1655f5e3ff033e2d6ecd06bc2d70",
+      "fields": {
+        "system.cv": "07ee8707b4b1a16e",
+        "system.sourceMarkdown": "6e062081a9b1904e",
+        "system.referenceMarkdown": "59eb61b2d24a9a86",
+        "system.commandSource": "813b5741ab784772"
+      }
+    },
+    "summon-mummy": {
+      "sourceSha": "c37f92d6ca3433bc8012ca67dfd15bd0d5c51472c7064082fba3a35e74a0f21c",
+      "fields": {
+        "system.cv": "08030b07b4c32ac4",
+        "system.sourceMarkdown": "cd643c9ceeaca127",
+        "system.referenceMarkdown": "cca95219c3f99dd7",
+        "system.commandSource": "cb73d7ab12e60571"
+      }
+    },
+    "summon-oath-flame": {
+      "sourceSha": "af8d53a11ea856733c2112bcb7c8ff862c30e10b2931ed3641fcf6644f576a66",
+      "fields": {
+        "system.cv": "08030207b4c31b79",
+        "system.sourceMarkdown": "d8cf733d61b94540",
+        "system.referenceMarkdown": "67a4457af3184a5b",
+        "system.commandSource": "813b5741ab784772"
+      }
+    },
+    "summon-plague-zombie": {
+      "sourceSha": "7151be0733c612106d0f949f7fe367ceb4ca94d907573d5bcaeeb22e4f727fcf",
+      "fields": {
+        "system.cv": "07f89307b4ba0a57",
+        "system.sourceMarkdown": "1a4f629913b56066",
+        "system.referenceMarkdown": "4c6e1a2b196a65b8",
+        "system.commandSource": "cb73d7ab12e60571"
+      }
+    },
+    "summon-poltergeist": {
+      "sourceSha": "200327dffaa02f9deb16f85d4e5ef52e4167c2307909c38e5f21954fed1ff0b0",
+      "fields": {
+        "system.cv": "07f88a07b4b9fb0c",
+        "system.sourceMarkdown": "00308d85666ea5ec",
+        "system.referenceMarkdown": "59f7bd809dc6dd99",
+        "system.commandSource": "cb73d7ab12e60571"
+      }
+    },
+    "summon-raven": {
+      "sourceSha": "0bcef60d1c43aac819319125039caef586630ec688a172f0387f0cf54d91d97d",
+      "fields": {
+        "system.cv": "af63a94c860195e3",
+        "system.sourceMarkdown": "36a14657af0a9949",
+        "system.referenceMarkdown": "93791ce8dbbdbe0a",
+        "system.commandSource": "813b5741ab784772"
+      }
+    },
+    "summon-redcap": {
+      "sourceSha": "86a19b6de12f229511ea87165f8c18d98671f44b1216f12a52ac468986dae44d",
+      "fields": {
+        "system.cv": "08030307b4c31d2c",
+        "system.sourceMarkdown": "6bb544d058e48d49",
+        "system.referenceMarkdown": "18f744a0f874e62f",
+        "system.commandSource": "cb73d7ab12e60571"
+      }
+    },
+    "summon-reed-piper": {
+      "sourceSha": "ad9dcc34b6b10cf43d1b3b399ef749697993ad21e117fa7534889fe6259c6348",
+      "fields": {
+        "system.cv": "07f88f07b4ba038b",
+        "system.sourceMarkdown": "5bd92ab7a9394a4a",
+        "system.referenceMarkdown": "3069705e507503c6",
+        "system.commandSource": "813b5741ab784772"
+      }
+    },
+    "summon-reef-hunter": {
+      "sourceSha": "26c7b7ca4cfd29433804bcec0e28e70ebf1c91021cee066eb152ec1350ae44ea",
+      "fields": {
+        "system.cv": "07f89107b4ba06f1",
+        "system.sourceMarkdown": "929c8242d85e9bb1",
+        "system.referenceMarkdown": "d48c7402adabffa9",
+        "system.commandSource": "813b5741ab784772"
+      }
+    },
+    "summon-restless-corpse": {
+      "sourceSha": "5b189a8e9f64050011736fd3331e96b76267885729cdda1e4e185925797f97b2",
+      "fields": {
+        "system.cv": "af63b54c8601aa47",
+        "system.sourceMarkdown": "eb6f884f3eb7e7af",
+        "system.referenceMarkdown": "e919c7d85dd5d2a8",
+        "system.commandSource": "813b5741ab784772"
+      }
+    },
+    "summon-rill-sprite": {
+      "sourceSha": "8769231450276026fd558aef885b28a0e6e28764b7ccf14e92b005bac8e876b6",
+      "fields": {
+        "system.cv": "af63ab4c86019949",
+        "system.sourceMarkdown": "2a2a5186066a2a8d",
+        "system.referenceMarkdown": "97e82a794d1ef167",
+        "system.commandSource": "813b5741ab784772"
+      }
+    },
+    "summon-satyr": {
+      "sourceSha": "a62b203d7f018b5b57fe033a5b306a9fe78ff1a03900415bbd8376c4f31c387e",
+      "fields": {
+        "system.cv": "07f89007b4ba053e",
+        "system.sourceMarkdown": "4b727376f09a34d8",
+        "system.referenceMarkdown": "319ed5027c1e6cbe",
+        "system.commandSource": "cb73d7ab12e60571"
+      }
+    },
+    "summon-shadow": {
+      "sourceSha": "43a74e13fa89b89470b30c649af1e9a2f7c9baaaf918f5c3008630e7bd9df2b0",
+      "fields": {
+        "system.cv": "07f89107b4ba06f1",
+        "system.sourceMarkdown": "ac51c8b04b75b8e2",
+        "system.referenceMarkdown": "28b41df8de51a203",
+        "system.commandSource": "cb73d7ab12e60571"
+      }
+    },
+    "summon-skeleton-champion": {
+      "sourceSha": "a50ff8960fb50fd7d07aff678bf9c4497b740fb323549c217064178f5b0f4b85",
+      "fields": {
+        "system.cv": "0802ff07b4c31660",
+        "system.sourceMarkdown": "f7551e41f9bdf67f",
+        "system.referenceMarkdown": "d726264f8fcacbdd",
+        "system.commandSource": "cb73d7ab12e60571"
+      }
+    },
+    "summon-skeleton-giant": {
+      "sourceSha": "cd11019d08442eac59812cebc5181d8a859f939ff392736111d03cbfb6329738",
+      "fields": {
+        "system.cv": "08030c07b4c32c77",
+        "system.sourceMarkdown": "85ed674caa46f746",
+        "system.referenceMarkdown": "7d295b149936d16e",
+        "system.commandSource": "cb73d7ab12e60571"
+      }
+    },
+    "summon-skeleton-horse": {
+      "sourceSha": "025e34b81a8271b6c2bfe9b467b8dd37b9e71ed0b78ab7b53bdc840cc73e7abe",
+      "fields": {
+        "system.cv": "07f88f07b4ba038b",
+        "system.sourceMarkdown": "92ce1f7f46b2f4bf",
+        "system.referenceMarkdown": "d72c0b96fa9c0cab",
+        "system.commandSource": "cb73d7ab12e60571"
+      }
+    },
+    "summon-sorrow-ghost": {
+      "sourceSha": "6c04c5086d2423e2635921e43b8684a4a60fe3099152b2dfc956ee9d2a5880ac",
+      "fields": {
+        "system.cv": "08030507b4c32092",
+        "system.sourceMarkdown": "b3f42e4d38268393",
+        "system.referenceMarkdown": "0fa6f29995c5c868",
+        "system.commandSource": "813b5741ab784772"
+      }
+    },
+    "summon-stone-golem": {
+      "sourceSha": "1a1fb73247d7bb545add53f3abdadf0f064eabb657c5a5ce3c4add54df98fb53",
+      "fields": {
+        "system.cv": "07ee8307b4b19aa2",
+        "system.sourceMarkdown": "fb6d9cc0d27047d9",
+        "system.referenceMarkdown": "d4fc68a93ff57884",
+        "system.commandSource": "cb73d7ab12e60571"
+      }
+    },
+    "summon-stone-knuckle": {
+      "sourceSha": "b2885c188bc6dd25f475bebb1f8d666111ed206200bd37040903cafadcad4bba",
+      "fields": {
+        "system.cv": "af63b44c8601a894",
+        "system.sourceMarkdown": "ff6947153bb1f1f6",
+        "system.referenceMarkdown": "ac71bfb320818fe2",
+        "system.commandSource": "813b5741ab784772"
+      }
+    },
+    "summon-storm-column": {
+      "sourceSha": "f82e98f91585ab274694adef776f5cdaa7fe73ab0a638afeb4b1a4685e928f4f",
+      "fields": {
+        "system.cv": "07ff8307b4c00dd5",
+        "system.sourceMarkdown": "86271aaeb862e66b",
+        "system.referenceMarkdown": "c387965f477b2060",
+        "system.commandSource": "813b5741ab784772"
+      }
+    },
+    "summon-trail-hound": {
+      "sourceSha": "a0dc8cc0f782e67d9047f636b9da13f79a825618c5b653fca5f810669c882bb9",
+      "fields": {
+        "system.cv": "af63a84c86019430",
+        "system.sourceMarkdown": "b2cff31060da9a1b",
+        "system.referenceMarkdown": "8e5fbc0d781e599b",
+        "system.commandSource": "813b5741ab784772"
+      }
+    },
+    "summon-unicorn": {
+      "sourceSha": "5e55d1f1574684a526ea1cc4f7cc2693c214313a53218a1b0088a26a99407e3c",
+      "fields": {
+        "system.cv": "08030007b4c31813",
+        "system.sourceMarkdown": "9f2980b0b25da2ad",
+        "system.referenceMarkdown": "4274700bb6de329c",
+        "system.commandSource": "cb73d7ab12e60571"
+      }
+    },
+    "summon-walking-furnace": {
+      "sourceSha": "bd38027e0eda3d1ce02547a0da5c8cbedf913b0ceb5be9a76e02ad5ec3808d26",
+      "fields": {
+        "system.cv": "08030b07b4c32ac4",
+        "system.sourceMarkdown": "05f83d3189f0514b",
+        "system.referenceMarkdown": "97b936c2df8fb408",
+        "system.commandSource": "813b5741ab784772"
+      }
+    },
+    "summon-warhorse": {
+      "sourceSha": "583387fe30919bc1e3c865910f2b9ea3168c54384ddde3181555728b1e6ed4ad",
+      "fields": {
+        "system.cv": "07f89507b4ba0dbd",
+        "system.sourceMarkdown": "1dcfe1b094338408",
+        "system.referenceMarkdown": "a7c26e75b9a081c0",
+        "system.commandSource": "cb73d7ab12e60571"
+      }
+    },
+    "summon-water-elemental": {
+      "sourceSha": "9eba40da8a6175d7c5a1a96bcb2c2ccf9efb10d6dbe6996a4222e54661efb006",
+      "fields": {
+        "system.cv": "08030607b4c32245",
+        "system.sourceMarkdown": "6873808b0dcef98c",
+        "system.referenceMarkdown": "38bbdd9befd0da0e",
+        "system.commandSource": "cb73d7ab12e60571"
+      }
+    },
+    "summon-wight": {
+      "sourceSha": "95b4a1220a8a83e513f9c7f6d0627bf9d1349960800c31c41c709c57b6b73508",
+      "fields": {
+        "system.cv": "08030107b4c319c6",
+        "system.sourceMarkdown": "accb9a8d0d75507b",
+        "system.referenceMarkdown": "f598b84eb5273695",
+        "system.commandSource": "cb73d7ab12e60571"
+      }
+    },
+    "summon-wild-boar": {
+      "sourceSha": "967c427b442cc07be377ec1119b8b7b465fc87934e8dfaf0d40819ee2c1549a0",
+      "fields": {
+        "system.cv": "af63b54c8601aa47",
+        "system.sourceMarkdown": "663ecf099a0b05d6",
+        "system.referenceMarkdown": "12f9c520e753dd98",
+        "system.commandSource": "813b5741ab784772"
+      }
+    },
+    "summon-wolf": {
+      "sourceSha": "f5374783a58c216baa9e4eed0f575b99bebbfdf8cb1bba7e2da763d2d2defe67",
+      "fields": {
+        "system.cv": "af63b54c8601aa47",
+        "system.sourceMarkdown": "6a71ee20d734b99d",
+        "system.referenceMarkdown": "5c028eb734a58f40",
+        "system.commandSource": "813b5741ab784772"
+      }
+    },
+    "summon-wraith": {
+      "sourceSha": "a4adfb720b658f23e25940cf844ef6bca003c5755b5ed62aa80dc6351382b239",
+      "fields": {
+        "system.cv": "07ff8107b4c00a6f",
+        "system.sourceMarkdown": "ee8158d78a1eb109",
+        "system.referenceMarkdown": "5619fb29fcc3e629",
+        "system.commandSource": "cb73d7ab12e60571"
+      }
+    },
+    "summon-zombie-brute": {
+      "sourceSha": "8f0b4a164b5f5eeb2e65e1dba313e35ed1668ea7839789ad71ed9ea6c171be94",
+      "fields": {
+        "system.cv": "08030607b4c32245",
+        "system.sourceMarkdown": "eeef086ce69302e5",
+        "system.referenceMarkdown": "a9391e85c11e1151",
+        "system.commandSource": "cb73d7ab12e60571"
+      }
+    }
+  }
+}

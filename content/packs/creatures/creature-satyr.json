@@ -89,6 +89,7 @@
           "id": "main-0",
           "category": "main",
           "name": "Basic Melee",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -105,6 +106,7 @@
           "id": "main-1",
           "category": "main",
           "name": "Bewildering reed",
+          "abilityId": "",
           "attributeKey": "reason",
           "defenseSource": "Reason",
           "harmfulOnly": false,
@@ -121,6 +123,7 @@
           "id": "maneuver-0",
           "category": "maneuver",
           "name": "Keep the Rhythm",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -137,6 +140,7 @@
           "id": "maneuver-1",
           "category": "maneuver",
           "name": "Defend",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -153,6 +157,7 @@
           "id": "reaction-0",
           "category": "reaction",
           "name": "Opportunity Attack",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -174,8 +179,8 @@
     "details": {
       "flavorMarkdown": "*A goat-legged musician wears a travelling coat full of reeds, ribbons and invitations to celebrations long past.*",
       "specialtyMarkdown": "### Bewildering reed\n\n**Target:** One visible creature within 5 squares. **Player defense:** Reason. **Damage type:** mental.\n\n**Weak defense:** Dazed 2. **Standard defense:** Dazed 1.\n\n### Keep the Rhythm\n\n*A familiar rhythm cuts through panic and brings one companion back to the moment.*\n\nOne willing ally within 3 squares that can hear it reduces either Frightened or Dazed by 1. Once per turn. This does not recalculate action categories already selected at turn start.",
-      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Tactics and retreat:** Distract the most aggressive listener while helping an ally recover composure. A completed song or honest admission may settle the encounter.\n\n**Encounter and conversation:** The satyr knows the road out of a dangerous revel but wants someone to admit why they entered it.\n\n**Habitat:** Old woodland; crossroads; hidden court · **Communication:** Common\n\n**Loot:** Recoverable possessions or lair clues chosen for the adventure; body parts grant no automatic special equipment or coin value.\n\n**Summoning:** Fey 3 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/summons/satyr.md).",
-      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-satyr\n\n\n**Category:** Fey · **Role:** Disabler · **CV:** 16\n\n### CV worksheet\n\n**Reference damage:** 2/3/5\n\n**Reference type:** mental\n\n**Expected targets:** 1\n\n**Utility factor:** 1.45\n\n**Regeneration per turn:** 0\n\nReference I=4.404, O=3.162. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [rousing beat](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/rousing-beat.md), [stunning strike](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/stunning-strike.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/rules/stability.md)"
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Tactics and retreat:** Distract the most aggressive listener while helping an ally recover composure. A completed song or honest admission may settle the encounter.\n\n**Encounter and conversation:** The satyr knows the road out of a dangerous revel but wants someone to admit why they entered it.\n\n**Habitat:** Old woodland; crossroads; hidden court · **Communication:** Common\n\n**Loot:** Recoverable possessions or lair clues chosen for the adventure; body parts grant no automatic special equipment or coin value.\n\n**Summoning:** Fey 3 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/summons/satyr.md).",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-satyr\n\n\n**Category:** Fey · **Role:** Disabler · **CV:** 16\n\n### CV worksheet\n\n**Reference damage:** 2/3/5\n\n**Reference type:** mental\n\n**Expected targets:** 1\n\n**Utility factor:** 1.45\n\n**Regeneration per turn:** 0\n\nReference I=4.404, O=3.162. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [rousing beat](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/rousing-beat.md), [stunning strike](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/stunning-strike.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/rules/stability.md)"
     },
     "biography": ""
   },
@@ -203,7 +208,7 @@
         "path": "design/bestiary/creatures/satyr.md",
         "sha256": "398d258de9cf08fac803f90880788eaf55c2a4ca57f67ca012b749cdd1f5b0cc"
       },
-      "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
+      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Printed profile · specialty automation pending",
@@ -226,6 +231,40 @@
           "id": "monster-stunning-strike",
           "path": "design/monster-abilities/stunning-strike.md",
           "sha256": "356a3a0e45c836d19381bc6edc261ce8a54c9720079189bd6226744e0099fc7e"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-rousing-beat",
+          "path": "design/monster-abilities/rousing-beat.md",
+          "sha256": "f15880b6bb43d0d172abefe92864eeddb5ca0bfc5365f8826d2420fa0e3ec037",
+          "name": "Keep the Rhythm",
+          "action": "Maneuver",
+          "flavorMarkdown": "*A familiar rhythm cuts through panic and brings one companion back to the moment.*",
+          "rulesMarkdown": "One willing ally within 3 squares that can hear it reduces either Frightened or Dazed by 1. Once per turn. This does not recalculate action categories already selected at turn start.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Keep the Rhythm\n\n*A familiar rhythm cuts through panic and brings one companion back to the moment.*\n\n## Rules\n\n**ID:** monster-rousing-beat\n\n\n**Action:** Maneuver\n\nOne willing ally within 3 squares that can hear it reduces either Frightened or Dazed by 1. Once per turn. This does not recalculate action categories already selected at turn start.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/rousing-beat.md",
+            "sha256": "f15880b6bb43d0d172abefe92864eeddb5ca0bfc5365f8826d2420fa0e3ec037"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-stunning-strike",
+          "path": "design/monster-abilities/stunning-strike.md",
+          "sha256": "356a3a0e45c836d19381bc6edc261ce8a54c9720079189bd6226744e0099fc7e",
+          "name": "Stunning Strike",
+          "action": "Main Action",
+          "flavorMarkdown": "*The blow leaves thought and motion briefly out of step.*",
+          "rulesMarkdown": "The printed attack applies Dazed. Retained action categories are selected at turn start; do not retroactively remove spent actions.\n\nActual damage, targeting and defense attribute are printed on the creature card.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Stunning Strike\n\n*The blow leaves thought and motion briefly out of step.*\n\n## Rules\n\n**ID:** monster-stunning-strike\n\n\n**Action:** Main Action\n\nThe printed attack applies Dazed. Retained action categories are selected at turn start; do not retroactively remove spent actions.\n\nActual damage, targeting and defense attribute are printed on the creature card.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/stunning-strike.md",
+            "sha256": "356a3a0e45c836d19381bc6edc261ce8a54c9720079189bd6226744e0099fc7e"
+          },
+          "automation": "pending"
         }
       ],
       "summoning": {

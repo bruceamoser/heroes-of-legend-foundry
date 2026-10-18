@@ -39,7 +39,7 @@
       "baseMax": 28,
       "sourceText": "28"
     },
-    "cv": 26,
+    "cv": 29,
     "speed": 5,
     "speedSource": "5",
     "alternateSpeeds": [],
@@ -94,6 +94,7 @@
           "id": "main-0",
           "category": "main",
           "name": "Basic Melee",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -110,6 +111,7 @@
           "id": "main-1",
           "category": "main",
           "name": "Future shock",
+          "abilityId": "",
           "attributeKey": "reason",
           "defenseSource": "Reason",
           "harmfulOnly": false,
@@ -125,7 +127,25 @@
         {
           "id": "maneuver-0",
           "category": "maneuver",
+          "name": "Study the Opening",
+          "abilityId": "monster-watch-the-opening",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Next attack this turn: 1 additional Bane on its target’s defense.",
+          "referenceMarkdown": "### Study the Opening\n\n*It waits for a tell in the stance, then turns its attention to the exposed line.*\n\nIts next attack before the end of this turn imposes 1 additional Bane on player defense, or gains 1 Boon when player-controlled. One attack only; no stacking with itself."
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
           "name": "Defend",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -141,7 +161,25 @@
         {
           "id": "reaction-0",
           "category": "reaction",
+          "name": "Seen It Already",
+          "abilityId": "monster-seen-it-already",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Before a visible attacker rolls: +1 Bane to that attack.",
+          "referenceMarkdown": "### Seen It Already\n\n*It starts moving a heartbeat before the strike, following a future the attacker has not yet reached.*\n\nBefore one attack from a visible attacker against this creature is rolled, impose 1 Bane on that attack. Against an NPC attack, grant 1 Boon to its single defense roll instead. This changes no target or outcome after dice have been rolled; it does not cancel the action."
+        },
+        {
+          "id": "reaction-1",
+          "category": "reaction",
           "name": "Opportunity Attack",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -157,14 +195,14 @@
       ],
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Future shock | Reason | 8 + Dazed 2 / 5 + Dazed 1 / 4 |",
-      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Defend | +1 Bane |",
-      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Opportunity Attack | Basic Melee |"
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Study the Opening | Next attack this turn: 1 additional Bane on its target’s defense. |\n| Defend | +1 Bane |",
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Seen It Already | Before a visible attacker rolls: +1 Bane to that attack. |\n| Opportunity Attack | Basic Melee |"
     },
     "details": {
       "flavorMarkdown": "*An alien, many-eyed figure with pale skin and an uneven arrangement of joints. Its attention slips between the present and possible futures, making its advice useful and dangerous.*",
-      "specialtyMarkdown": "### Future shock\n\n*For a moment, the victim remembers a pain that has not happened yet.*\n\n**Target:** One visible creature within 7 squares. **Player defense:** Reason. **Damage type:** mental.\n\n**Weak defense:** Dazed 2. **Standard defense:** Dazed 1.\n\n**Spell:** Provokes when cast beside an enemy.",
+      "specialtyMarkdown": "### Future shock\n\n*For a moment, the victim remembers a pain that has not happened yet.*\n\n**Target:** One visible creature within 7 squares. **Player defense:** Reason. **Damage type:** mental.\n\n**Weak defense:** Dazed 2. **Standard defense:** Dazed 1.\n\n**Spell:** Provokes when cast beside an enemy.\n\n### Seen It Already\n\n*It starts moving a heartbeat before the strike, following a future the attacker has not yet reached.*\n\nBefore one attack from a visible attacker against this creature is rolled, impose 1 Bane on that attack. Against an NPC attack, grant 1 Boon to its single defense roll instead. This changes no target or outcome after dice have been rolled; it does not cancel the action.\n\n### Study the Opening\n\n*It waits for a tell in the stance, then turns its attention to the exposed line.*\n\nIts next attack before the end of this turn imposes 1 additional Bane on player defense, or gains 1 Boon when player-controlled. One attack only; no stacking with itself.",
       "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Signs:** People independently write down the same unfamiliar constellation.\n\n**Purpose:** Arrange a future in which its prison was never built.\n\n**Tactics and retreat:** Disrupt one hero’s decisions at a time and retreat while offering useful truths.\n\n**Counterplay and conversation:** Ask verifiable questions and act on shared plans rather than private visions.\n\n**Habitat:** Observatory; deep ruin · **Communication:** Common; does not read unspoken thoughts mechanically\n\n**Loot:** A true but incomplete prediction; no automatic ability theft.\n\n**Summoning:** Ineligible.",
-      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-starless-oracle\n\n\n**Category:** Aberration · **Role:** Information horror · **CV:** 26\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Future shock | Knowledge | 1 Boon | 4 mental damage. | 5 mental damage. Dazed 1. | 8 mental damage. Dazed 2. |\n\nThe incoming attack names the defense attribute; use the six values above. Same targeting, costs and limits apply in either perspective. No opposed second roll.\n\n\n### CV worksheet\n\n**Difficulty rationale:** An agile or elusive body warrants attack Banes. Its dangerous attack imposes defense Banes.\n\n**Reference damage:** 4/5/8\n\n**Reference type:** mental\n\n**Expected targets:** 1\n\n**Utility factor:** 1.4\n\n**Regeneration per turn:** 0\n\nReference I=4.404, O=6.008. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [mind hammer](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/mind-hammer.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/rules/stability.md)"
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-starless-oracle\n\n\n**Category:** Aberration · **Role:** Information horror · **CV:** 29\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Future shock | Knowledge | 1 Boon | 4 mental damage. | 5 mental damage. Dazed 1. | 8 mental damage. Dazed 2. |\n\nThe incoming attack names the defense attribute; use the six values above. Same targeting, costs and limits apply in either perspective. No opposed second roll.\n\n\n### CV worksheet\n\n**Difficulty rationale:** An agile or elusive body warrants attack Banes. Its dangerous attack imposes defense Banes.\n\n**Reference damage:** 4/5/8\n\n**Reference type:** mental\n\n**Expected targets:** 1\n\n**Utility factor:** 1.55\n\n**Action review (#1279):** U 1.4 → 1.55: Maneuver allowance +0.05, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=4.404, O=6.008. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [mind hammer](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/mind-hammer.md), [Seen It Already](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/seen-it-already.md), [Study the Opening](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/watch-the-opening.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/rules/stability.md)"
     },
     "biography": ""
   },
@@ -190,9 +228,9 @@
       "catalogId": "creature-starless-oracle",
       "source": {
         "path": "design/bestiary/creatures/starless-oracle.md",
-        "sha256": "3e465967c1612b1a0fedc7a97591eb4aea9170df3c64ba8d5eb68b65b55ee15c"
+        "sha256": "50d65ba418df1d8ce73898482211e9084c28d115a42c5ace136eccf33960d0d2"
       },
-      "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
+      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Printed profile · specialty automation pending",
@@ -200,7 +238,7 @@
       "classification": {
         "category": "Aberration",
         "role": "Information horror",
-        "cv": 26
+        "cv": 29
       },
       "family": "Mind and cavern horrors",
       "abilitySources": [
@@ -209,6 +247,68 @@
           "id": "monster-mind-hammer",
           "path": "design/monster-abilities/mind-hammer.md",
           "sha256": "ed7eb267ffcab70bbfb82a6a7ed42f68b369e5b981355dfd787a82cbe6404264"
+        },
+        {
+          "label": "Seen It Already",
+          "id": "monster-seen-it-already",
+          "path": "design/monster-abilities/seen-it-already.md",
+          "sha256": "2ec0eca1382d352959a1957a1fd0f1fd0db828c040149d5a15ea48e3a1cc9d6e"
+        },
+        {
+          "label": "Study the Opening",
+          "id": "monster-watch-the-opening",
+          "path": "design/monster-abilities/watch-the-opening.md",
+          "sha256": "9e50f6e5c25e935c79473c28e26e7335a353fefaaa1e076fc4aab4360dd82208"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-mind-hammer",
+          "path": "design/monster-abilities/mind-hammer.md",
+          "sha256": "ed7eb267ffcab70bbfb82a6a7ed42f68b369e5b981355dfd787a82cbe6404264",
+          "name": "Mind Hammer",
+          "action": "Main Action; spell",
+          "flavorMarkdown": "*For a moment, the victim remembers a pain that has not happened yet.*",
+          "rulesMarkdown": "Use the printed mental attack. Standard also applies Dazed 1; Strong applies Dazed 2. Ordinary turn-start action choices and end-turn decay apply. Damage and the condition use one outcome, not two rolls.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Mind Hammer\n\n*For a moment, the victim remembers a pain that has not happened yet.*\n\n## Rules\n\n**ID:** monster-mind-hammer\n\n\n**Action:** Main Action; spell\n\nUse the printed mental attack. Standard also applies Dazed 1; Strong applies Dazed 2. Ordinary turn-start action choices and end-turn decay apply. Damage and the condition use one outcome, not two rolls.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/mind-hammer.md",
+            "sha256": "ed7eb267ffcab70bbfb82a6a7ed42f68b369e5b981355dfd787a82cbe6404264"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-seen-it-already",
+          "path": "design/monster-abilities/seen-it-already.md",
+          "sha256": "2ec0eca1382d352959a1957a1fd0f1fd0db828c040149d5a15ea48e3a1cc9d6e",
+          "name": "Seen It Already",
+          "action": "Reaction",
+          "flavorMarkdown": "*It starts moving a heartbeat before the strike, following a future the attacker has not yet reached.*",
+          "rulesMarkdown": "Before one attack from a visible attacker against this creature is rolled, impose 1 Bane on that attack. Against an NPC attack, grant 1 Boon to its single defense roll instead. This changes no target or outcome after dice have been rolled; it does not cancel the action.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Seen It Already\n\n*It starts moving a heartbeat before the strike, following a future the attacker has not yet reached.*\n\n## Rules\n\n**ID:** monster-seen-it-already\n\n**Action:** Reaction\n\nBefore one attack from a visible attacker against this creature is rolled, impose 1 Bane on that attack. Against an NPC attack, grant 1 Boon to its single defense roll instead. This changes no target or outcome after dice have been rolled; it does not cancel the action.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/seen-it-already.md",
+            "sha256": "2ec0eca1382d352959a1957a1fd0f1fd0db828c040149d5a15ea48e3a1cc9d6e"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-watch-the-opening",
+          "path": "design/monster-abilities/watch-the-opening.md",
+          "sha256": "9e50f6e5c25e935c79473c28e26e7335a353fefaaa1e076fc4aab4360dd82208",
+          "name": "Study the Opening",
+          "action": "Maneuver",
+          "flavorMarkdown": "*It waits for a tell in the stance, then turns its attention to the exposed line.*",
+          "rulesMarkdown": "Its next attack before the end of this turn imposes 1 additional Bane on player defense, or gains 1 Boon when player-controlled. One attack only; no stacking with itself.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Study the Opening\n\n*It waits for a tell in the stance, then turns its attention to the exposed line.*\n\n## Rules\n\n**ID:** monster-watch-the-opening\n\n\n**Action:** Maneuver\n\nIts next attack before the end of this turn imposes 1 additional Bane on player defense, or gains 1 Boon when player-controlled. One attack only; no stacking with itself.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/watch-the-opening.md",
+            "sha256": "9e50f6e5c25e935c79473c28e26e7335a353fefaaa1e076fc4aab4360dd82208"
+          },
+          "automation": "pending"
         }
       ],
       "summoning": {

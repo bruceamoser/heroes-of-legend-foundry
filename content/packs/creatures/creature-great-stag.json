@@ -39,7 +39,7 @@
       "baseMax": 18,
       "sourceText": "18"
     },
-    "cv": 13,
+    "cv": 15,
     "speed": 9,
     "speedSource": "9",
     "alternateSpeeds": [],
@@ -89,6 +89,7 @@
           "id": "main-0",
           "category": "main",
           "name": "Basic Melee",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -105,6 +106,7 @@
           "id": "main-1",
           "category": "main",
           "name": "Antler sweep",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -121,6 +123,7 @@
           "id": "maneuver-0",
           "category": "maneuver",
           "name": "Guard the Herd",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -137,6 +140,7 @@
           "id": "maneuver-1",
           "category": "maneuver",
           "name": "Defend",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -152,7 +156,25 @@
         {
           "id": "reaction-0",
           "category": "reaction",
+          "name": "Shelter the Young",
+          "abilityId": "monster-shelter-the-young",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "After an enemy closes on an ally within 3: move 2 to the ally; provokes.",
+          "referenceMarkdown": "### Shelter the Young\n\n*It turns at the cry beside it, bringing its whole body between the danger and the one it protects.*\n\nAfter a visible enemy ends voluntary movement adjacent to a willing ally within 3 squares, move up to 2 squares, ending adjacent to that ally. Pay normal terrain costs and provoke normally. This movement grants no attack or automatic protection; its body obstructs only the squares it actually occupies. Movement granted by a free attack cannot trigger it."
+        },
+        {
+          "id": "reaction-1",
+          "category": "reaction",
           "name": "Opportunity Attack",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -169,13 +191,13 @@
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Antler sweep | Agility | 6 + Push 2 / 4 + Push 1 / 3 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Guard the Herd | Gain Stability 2 until its next turn, while on solid ground; highest source only. |\n| Defend | +1 Bane |",
-      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Opportunity Attack | Basic Melee |"
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Shelter the Young | After an enemy closes on an ally within 3: move 2 to the ally; provokes. |\n| Opportunity Attack | Basic Melee |"
     },
     "details": {
       "flavorMarkdown": "*A tall woodland deer crowned with spreading antlers and supported by long, powerful legs. The herd follows its caution; in a rut or a crisis, that caution becomes a sudden charge.*",
-      "specialtyMarkdown": "### Antler sweep\n\n*The blow lands with enough force to send its victim stumbling backward.*\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Push 2. **Standard defense:** Push 1.",
-      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Heavy Frame — Passive:** Stability 1; an explicit creature trait, not a bonus from size.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Signs:** Deep hoof prints cross a fence without breaking it.\n\n**Purpose:** Lead the herd away from danger.\n\n**Tactics and retreat:** Drive one pursuer back, then run toward open ground.\n\n**Counterplay and conversation:** Do not corner the herd; give its leader an escape route.\n\n**Habitat:** Wilderness · **Communication:** None\n\n**Loot:** A naturally shed antler may serve as a story clue or craft ingredient at the DA’s discretion.\n\n**Summoning:** Animal 3 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/summons/great-stag.md).",
-      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-great-stag\n\n\n**Category:** Animal · **Role:** Line breaker · **CV:** 13\n\n**Difficulty rationale:** An agile or elusive body warrants attack Banes. Ordinary attack difficulty; riders and positioning carry the threat.\n\n**Reference damage:** 3/4/6\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.2\n\n**Regeneration per turn:** 0\n\nReference I=4.404, O=3.162. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [driving blow](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/driving-blow.md), [great stag guard the herd](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/great-stag-guard-the-herd.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/rules/stability.md)"
+      "specialtyMarkdown": "### Antler sweep\n\n*The blow lands with enough force to send its victim stumbling backward.*\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Push 2. **Standard defense:** Push 1.\n\n### Shelter the Young\n\n*It turns at the cry beside it, bringing its whole body between the danger and the one it protects.*\n\nAfter a visible enemy ends voluntary movement adjacent to a willing ally within 3 squares, move up to 2 squares, ending adjacent to that ally. Pay normal terrain costs and provoke normally. This movement grants no attack or automatic protection; its body obstructs only the squares it actually occupies. Movement granted by a free attack cannot trigger it.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Heavy Frame — Passive:** Stability 1; an explicit creature trait, not a bonus from size.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Signs:** Deep hoof prints cross a fence without breaking it.\n\n**Purpose:** Lead the herd away from danger.\n\n**Tactics and retreat:** Drive one pursuer back, then run toward open ground.\n\n**Counterplay and conversation:** Do not corner the herd; give its leader an escape route.\n\n**Habitat:** Wilderness · **Communication:** None\n\n**Loot:** A naturally shed antler may serve as a story clue or craft ingredient at the DA’s discretion.\n\n**Summoning:** Animal 3 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/summons/great-stag.md).",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-great-stag\n\n\n**Category:** Animal · **Role:** Line breaker · **CV:** 15\n\n**Difficulty rationale:** An agile or elusive body warrants attack Banes. Ordinary attack difficulty; riders and positioning carry the threat.\n\n**Reference damage:** 3/4/6\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.3\n\n**Action review (#1279):** U 1.2 → 1.3: Maneuver allowance +0, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=4.404, O=3.162. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [driving blow](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/driving-blow.md), [great stag guard the herd](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/great-stag-guard-the-herd.md), [Shelter the Young](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/shelter-the-young.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/rules/stability.md)"
     },
     "biography": ""
   },
@@ -201,9 +223,9 @@
       "catalogId": "creature-great-stag",
       "source": {
         "path": "design/bestiary/creatures/great-stag.md",
-        "sha256": "cf88f6c1f5218b0aff0b04cbd17477e9f7943b0d5930d1002fc79de33b8aadda"
+        "sha256": "ff55cdbf82092c2cd8c45d12286833321e5ad0ee2636263017a365774a49b392"
       },
-      "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
+      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Printed profile · specialty automation pending",
@@ -211,7 +233,7 @@
       "classification": {
         "category": "Animal",
         "role": "Line breaker",
-        "cv": 13
+        "cv": 15
       },
       "family": "Animal",
       "abilitySources": [
@@ -226,6 +248,62 @@
           "id": "monster-great-stag-guard-the-herd",
           "path": "design/monster-abilities/great-stag-guard-the-herd.md",
           "sha256": "5544d379f4053fe01d8a2185fa1b12833fa22d33a4e740ac3f1acc218960b2f5"
+        },
+        {
+          "label": "Shelter the Young",
+          "id": "monster-shelter-the-young",
+          "path": "design/monster-abilities/shelter-the-young.md",
+          "sha256": "0f6b568d847b1acbdec379bd0df8d5ab8b534765cf0ba6fb7a099a14b3d3312e"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-driving-blow",
+          "path": "design/monster-abilities/driving-blow.md",
+          "sha256": "38b3406cbcb2f57fdc1bbf57f09857b7ef8a9fd7b35e311dc812476677e6b276",
+          "name": "Driving Blow",
+          "action": "Main Action",
+          "flavorMarkdown": "*The blow lands with enough force to send its victim stumbling backward.*",
+          "rulesMarkdown": "Use the printed attack. Standard pushes the target 1 square; Strong pushes it 2. Apply Stability before moving. This is a rider, not a separate attack or Force action.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Driving Blow\n\n*The blow lands with enough force to send its victim stumbling backward.*\n\n## Rules\n\n**ID:** monster-driving-blow\n\n\n**Action:** Main Action\n\nUse the printed attack. Standard pushes the target 1 square; Strong pushes it 2. Apply Stability before moving. This is a rider, not a separate attack or Force action.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/driving-blow.md",
+            "sha256": "38b3406cbcb2f57fdc1bbf57f09857b7ef8a9fd7b35e311dc812476677e6b276"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-great-stag-guard-the-herd",
+          "path": "design/monster-abilities/great-stag-guard-the-herd.md",
+          "sha256": "5544d379f4053fe01d8a2185fa1b12833fa22d33a4e740ac3f1acc218960b2f5",
+          "name": "Guard the Herd",
+          "action": "Maneuver",
+          "flavorMarkdown": "*The stag plants its hooves between the herd and the approaching danger.*",
+          "rulesMarkdown": "Gain Stability 2 until its next turn, while on solid ground; highest source only.\n\n**Limits:** Costs its Maneuver; no extra action is granted.",
+          "referenceMarkdown": "# Guard the Herd\n\n*The stag plants its hooves between the herd and the approaching danger.*\n\n## Rules\n\n**ID:** monster-great-stag-guard-the-herd\n\n\n**Action:** Maneuver\n\nGain Stability 2 until its next turn, while on solid ground; highest source only.\n\n**Limits:** Costs its Maneuver; no extra action is granted.\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/great-stag-guard-the-herd.md",
+            "sha256": "5544d379f4053fe01d8a2185fa1b12833fa22d33a4e740ac3f1acc218960b2f5"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-shelter-the-young",
+          "path": "design/monster-abilities/shelter-the-young.md",
+          "sha256": "0f6b568d847b1acbdec379bd0df8d5ab8b534765cf0ba6fb7a099a14b3d3312e",
+          "name": "Shelter the Young",
+          "action": "Reaction",
+          "flavorMarkdown": "*It turns at the cry beside it, bringing its whole body between the danger and the one it protects.*",
+          "rulesMarkdown": "After a visible enemy ends voluntary movement adjacent to a willing ally within 3 squares, move up to 2 squares, ending adjacent to that ally. Pay normal terrain costs and provoke normally. This movement grants no attack or automatic protection; its body obstructs only the squares it actually occupies. Movement granted by a free attack cannot trigger it.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Shelter the Young\n\n*It turns at the cry beside it, bringing its whole body between the danger and the one it protects.*\n\n## Rules\n\n**ID:** monster-shelter-the-young\n\n**Action:** Reaction\n\nAfter a visible enemy ends voluntary movement adjacent to a willing ally within 3 squares, move up to 2 squares, ending adjacent to that ally. Pay normal terrain costs and provoke normally. This movement grants no attack or automatic protection; its body obstructs only the squares it actually occupies. Movement granted by a free attack cannot trigger it.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/shelter-the-young.md",
+            "sha256": "0f6b568d847b1acbdec379bd0df8d5ab8b534765cf0ba6fb7a099a14b3d3312e"
+          },
+          "automation": "pending"
         }
       ],
       "summoning": {

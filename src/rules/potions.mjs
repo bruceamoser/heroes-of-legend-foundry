@@ -8,7 +8,7 @@ import { handLayout } from "./hands.mjs";
 import { receiveHealing, validateSurvival } from "./survival.mjs";
 import { inventoryCheck } from "./inventory.mjs";
 
-const SOURCE_COMMIT = "d67e046466bdd5052360b96ed91861d607091446";
+const SOURCE_COMMIT = "bdfd18ed535fbd0e1892b9344444abf6da644809";
 const ACTION = Object.freeze({
   id: "use-a-healing-potion",
   catalogId: "ability-use-a-healing-potion",

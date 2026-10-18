@@ -210,7 +210,7 @@ test("Red Dragon fixture preserves alternate flight, numeric mitigation and ever
     ],
   );
   assert.equal(dragon.summoning.eligible, false);
-  assert.equal(dragon.abilitySources.length, 5);
+  assert.equal(dragon.abilitySources.length, 6);
   assert(
     dragon.reference.specialtyDetails
       .find(({ title }) => title === "Furnace breath")
@@ -407,6 +407,6 @@ test("generated catalog reconciles every locked creature, portrait and summon li
   }
   assert.deepEqual(catalog.counts, {
     ...summarizeCreatureCatalog(catalog.creatures, catalog.summonLinks),
-    monsterAbilitiesVerified: 93,
+    monsterAbilitiesVerified: 126,
   });
 });

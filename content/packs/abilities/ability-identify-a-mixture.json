@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You turn the bottle toward the light and recognize a familiar cloud in the liquid.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Time</dt><dd>Ten minutes.</dd></div><div><dt>Target / range / shape</dt><dd>One accessible potion or mixture; 10 minutes</dd></div><div><dt>Duration</dt><dd>The result applies when the stated activity is complete; information and earned progress persist.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Pay the printed action and any full activity time for each use.</dd></div><div><dt>Type</dt><dd>Skill / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>Weak: learn broad purpose. Standard: learn its use and effects. Strong: also reveal contamination or a harmful additive. Does not consume the mixture.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/cards/identify-a-mixture.md\" target=\"_blank\" rel=\"noopener\">design/cards/identify-a-mixture.md</a> at <code>d67e046466bdd5052360b96ed91861d607091446</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You turn the bottle toward the light and recognize a familiar cloud in the liquid.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Time</dt><dd>Ten minutes.</dd></div><div><dt>Target / range / shape</dt><dd>One accessible potion or mixture; 10 minutes</dd></div><div><dt>Duration</dt><dd>The result applies when the stated activity is complete; information and earned progress persist.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Pay the printed action and any full activity time for each use.</dd></div><div><dt>Type</dt><dd>Skill / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>Weak: learn broad purpose. Standard: learn its use and effects. Strong: also reveal contamination or a harmful additive. Does not consume the mixture.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/cards/identify-a-mixture.md\" target=\"_blank\" rel=\"noopener\">design/cards/identify-a-mixture.md</a> at <code>bdfd18ed535fbd0e1892b9344444abf6da644809</code>.</p></section>",
     "activity": {
       "action": "main",
       "rollMode": "none",
@@ -31,7 +31,7 @@
         "path": "design/cards/identify-a-mixture.md",
         "sha256": "28cdfaba3a53611d2225e4bd304c443aebd266df904e4786ce6719d380ea8057"
       },
-      "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
+      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · play automation in progress"

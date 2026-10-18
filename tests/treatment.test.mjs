@@ -127,7 +127,7 @@ test("all six pinned cards map to their exact capability and attribute", () => {
     assert.equal(result.receipt.attribute, attribute);
     assert.equal(
       result.receipt.sources.commit,
-      "d67e046466bdd5052360b96ed91861d607091446",
+      "bdfd18ed535fbd0e1892b9344444abf6da644809",
     );
   }
 });

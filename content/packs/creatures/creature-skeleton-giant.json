@@ -39,7 +39,7 @@
       "baseMax": 30,
       "sourceText": "30"
     },
-    "cv": 28,
+    "cv": 30,
     "speed": 6,
     "speedSource": "6",
     "alternateSpeeds": [],
@@ -98,6 +98,7 @@
           "id": "main-0",
           "category": "main",
           "name": "Basic Melee",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -114,6 +115,7 @@
           "id": "main-1",
           "category": "main",
           "name": "Broken gatebeam",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -130,6 +132,7 @@
           "id": "maneuver-0",
           "category": "maneuver",
           "name": "Rattle of the Grave",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -146,6 +149,7 @@
           "id": "maneuver-1",
           "category": "maneuver",
           "name": "Defend",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -161,7 +165,25 @@
         {
           "id": "reaction-0",
           "category": "reaction",
+          "name": "Fall to Pieces",
+          "abilityId": "monster-fall-to-pieces",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Before physical attack: Physical resistance 3 for it; become Prone afterward.",
+          "referenceMarkdown": "### Fall to Pieces\n\n*The skeleton lets its joints collapse, spilling loose bones beneath the passing blow.*\n\nBefore a physical attack against this creature is rolled, gain Physical resistance 3 against that attack only. Use the highest matching resistance. After the attack resolves, it becomes Prone if still present, even if it was already Prone. This does not move its occupied footprint or reassemble it; standing costs the normal 2 movement."
+        },
+        {
+          "id": "reaction-1",
+          "category": "reaction",
           "name": "Opportunity Attack",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -178,13 +200,13 @@
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Broken gatebeam | Agility | 9 + Push 3 / 6 + Push 1 / 3 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Rattle of the Grave | One hearing target within 2: Frightened 1. |\n| Defend | +1 Bane |",
-      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Opportunity Attack | Basic Melee |"
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Fall to Pieces | Before physical attack: Physical resistance 3 for it; become Prone afterward. |\n| Opportunity Attack | Basic Melee |"
     },
     "details": {
       "flavorMarkdown": "*A giant's bones rise inside a cage of splintered siege timbers, with old arrowheads rattling in the hollow joints.*",
-      "specialtyMarkdown": "### Broken gatebeam\n\n**Target:** One visible creature within 2 squares. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Push 3. **Standard defense:** Push 1.\n\n**Limit:** Apply Stability, terrain costs and normal collision rules to the printed distance.\n\n### Rattle of the Grave\n\n*A dry sound rises from the corpse, like someone knocking from inside a coffin.*\n\nOne creature within 2 squares that can hear it gains Frightened 1 of this creature. Once per turn; no damage.",
-      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.\n\n**Lifeless Body — Passive:** Does not breathe or eat; only its listed immunities apply.\n\n**Heavy Frame — Passive:** Stability 2; an explicit trait, not a bonus calculated from Size.\n\n**Healing:** Healing-harmed: ordinary healing resolves as Life damage instead; no beneficial riders.\n\n**Against offensive healing:** Its controller uses Fortitude defense when player-controlled; a player attacking it rolls only their attack.\n\n**Senses:** Dark sight 6 squares; ordinary hearing.\n\n**Tactics and retreat:** Drive intruders away from the binding bell and use its reach to keep the rib cage out of easy access.\n\n**Encounter and conversation:** The binding bell hangs inside its rib cage; returning it to its shrine ends the watch.\n\n**Habitat:** Crypt; burial ground; ruined settlement · **Communication:** Common\n\n**Loot:** Recoverable possessions or lair clues chosen for the adventure; body parts grant no automatic special equipment or coin value.\n\n**Summoning:** Undead 7 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/summons/skeleton-giant.md).",
-      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-skeleton-giant\n\n\n**Category:** Undead · **Role:** Displacer · **CV:** 28\n\n### CV worksheet\n\n**Reference damage:** 3/6/9\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.3\n\n**Regeneration per turn:** 0\n\nReference I=3.596, O=5.894. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [driving blow](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/driving-blow.md), [lifeless body](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/lifeless-body.md), [rattle bones](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/rattle-bones.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/rules/stability.md)"
+      "specialtyMarkdown": "### Broken gatebeam\n\n**Target:** One visible creature within 2 squares. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Push 3. **Standard defense:** Push 1.\n\n**Limit:** Apply Stability, terrain costs and normal collision rules to the printed distance.\n\n### Rattle of the Grave\n\n*A dry sound rises from the corpse, like someone knocking from inside a coffin.*\n\nOne creature within 2 squares that can hear it gains Frightened 1 of this creature. Once per turn; no damage.\n\n### Fall to Pieces\n\n*The skeleton lets its joints collapse, spilling loose bones beneath the passing blow.*\n\nBefore a physical attack against this creature is rolled, gain Physical resistance 3 against that attack only. Use the highest matching resistance. After the attack resolves, it becomes Prone if still present, even if it was already Prone. This does not move its occupied footprint or reassemble it; standing costs the normal 2 movement.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.\n\n**Lifeless Body — Passive:** Does not breathe or eat; only its listed immunities apply.\n\n**Heavy Frame — Passive:** Stability 2; an explicit trait, not a bonus calculated from Size.\n\n**Healing:** Healing-harmed: ordinary healing resolves as Life damage instead; no beneficial riders.\n\n**Against offensive healing:** Its controller uses Fortitude defense when player-controlled; a player attacking it rolls only their attack.\n\n**Senses:** Dark sight 6 squares; ordinary hearing.\n\n**Tactics and retreat:** Drive intruders away from the binding bell and use its reach to keep the rib cage out of easy access.\n\n**Encounter and conversation:** The binding bell hangs inside its rib cage; returning it to its shrine ends the watch.\n\n**Habitat:** Crypt; burial ground; ruined settlement · **Communication:** Common\n\n**Loot:** Recoverable possessions or lair clues chosen for the adventure; body parts grant no automatic special equipment or coin value.\n\n**Summoning:** Undead 7 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/summons/skeleton-giant.md).",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-skeleton-giant\n\n\n**Category:** Undead · **Role:** Displacer · **CV:** 30\n\n### CV worksheet\n\n**Reference damage:** 3/6/9\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.4\n\n**Action review (#1279):** U 1.3 → 1.4: Maneuver allowance +0, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=3.596, O=5.894. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [driving blow](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/driving-blow.md), [Fall to Pieces](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/fall-to-pieces.md), [lifeless body](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/lifeless-body.md), [rattle bones](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/rattle-bones.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/rules/stability.md)"
     },
     "biography": ""
   },
@@ -210,9 +232,9 @@
       "catalogId": "creature-skeleton-giant",
       "source": {
         "path": "design/bestiary/creatures/skeleton-giant.md",
-        "sha256": "96f5ba395081d922158b9fa544359bf0de728c6c1938b1cad8aca6a793acf6f1"
+        "sha256": "c7d1c855e66ca5ae68dbe8beb8fdb9d15a0695f76143b6f23349354b876cde6f"
       },
-      "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
+      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Printed profile · specialty automation pending",
@@ -220,7 +242,7 @@
       "classification": {
         "category": "Undead",
         "role": "Displacer",
-        "cv": 28
+        "cv": 30
       },
       "family": "Skeletons",
       "abilitySources": [
@@ -229,6 +251,12 @@
           "id": "monster-driving-blow",
           "path": "design/monster-abilities/driving-blow.md",
           "sha256": "38b3406cbcb2f57fdc1bbf57f09857b7ef8a9fd7b35e311dc812476677e6b276"
+        },
+        {
+          "label": "Fall to Pieces",
+          "id": "monster-fall-to-pieces",
+          "path": "design/monster-abilities/fall-to-pieces.md",
+          "sha256": "a4d3259cabca53573dbf124b67c8ed7a94450eed915176a22c8995187e48711b"
         },
         {
           "label": "lifeless body",
@@ -241,6 +269,72 @@
           "id": "monster-rattle-bones",
           "path": "design/monster-abilities/rattle-bones.md",
           "sha256": "0b0a2c882fac8f589c017b416dcff90ca9ec871c730e3130bed0c55ae64d0398"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-driving-blow",
+          "path": "design/monster-abilities/driving-blow.md",
+          "sha256": "38b3406cbcb2f57fdc1bbf57f09857b7ef8a9fd7b35e311dc812476677e6b276",
+          "name": "Driving Blow",
+          "action": "Main Action",
+          "flavorMarkdown": "*The blow lands with enough force to send its victim stumbling backward.*",
+          "rulesMarkdown": "Use the printed attack. Standard pushes the target 1 square; Strong pushes it 2. Apply Stability before moving. This is a rider, not a separate attack or Force action.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Driving Blow\n\n*The blow lands with enough force to send its victim stumbling backward.*\n\n## Rules\n\n**ID:** monster-driving-blow\n\n\n**Action:** Main Action\n\nUse the printed attack. Standard pushes the target 1 square; Strong pushes it 2. Apply Stability before moving. This is a rider, not a separate attack or Force action.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/driving-blow.md",
+            "sha256": "38b3406cbcb2f57fdc1bbf57f09857b7ef8a9fd7b35e311dc812476677e6b276"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-fall-to-pieces",
+          "path": "design/monster-abilities/fall-to-pieces.md",
+          "sha256": "a4d3259cabca53573dbf124b67c8ed7a94450eed915176a22c8995187e48711b",
+          "name": "Fall to Pieces",
+          "action": "Reaction",
+          "flavorMarkdown": "*The skeleton lets its joints collapse, spilling loose bones beneath the passing blow.*",
+          "rulesMarkdown": "Before a physical attack against this creature is rolled, gain Physical resistance 3 against that attack only. Use the highest matching resistance. After the attack resolves, it becomes Prone if still present, even if it was already Prone. This does not move its occupied footprint or reassemble it; standing costs the normal 2 movement.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Fall to Pieces\n\n*The skeleton lets its joints collapse, spilling loose bones beneath the passing blow.*\n\n## Rules\n\n**ID:** monster-fall-to-pieces\n\n**Action:** Reaction\n\nBefore a physical attack against this creature is rolled, gain Physical resistance 3 against that attack only. Use the highest matching resistance. After the attack resolves, it becomes Prone if still present, even if it was already Prone. This does not move its occupied footprint or reassemble it; standing costs the normal 2 movement.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/fall-to-pieces.md",
+            "sha256": "a4d3259cabca53573dbf124b67c8ed7a94450eed915176a22c8995187e48711b"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-lifeless-body",
+          "path": "design/monster-abilities/lifeless-body.md",
+          "sha256": "248c16c6e641d2042cd94a05e7e8bfce03b5177f4f57cda241b46d9b16de4d81",
+          "name": "Lifeless Body",
+          "action": "Passive",
+          "flavorMarkdown": "*Nothing breathes beneath the torn coat; nothing living looks through the visor.*",
+          "rulesMarkdown": "The card must list its exact condition immunities; this trait grants no additional unlisted ones. It does not breathe or need food. Undead entries marked healing-harmed take a healing result as Life damage; constructs marked repair-only do not regain HP from ordinary healing. Neither rule prevents physical attacks from dealing their normal minimum damage.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Lifeless Body\n\n*Nothing breathes beneath the torn coat; nothing living looks through the visor.*\n\n## Rules\n\n**ID:** monster-lifeless-body\n\n\n**Action:** Passive\n\nThe card must list its exact condition immunities; this trait grants no additional unlisted ones. It does not breathe or need food. Undead entries marked healing-harmed take a healing result as Life damage; constructs marked repair-only do not regain HP from ordinary healing. Neither rule prevents physical attacks from dealing their normal minimum damage.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/lifeless-body.md",
+            "sha256": "248c16c6e641d2042cd94a05e7e8bfce03b5177f4f57cda241b46d9b16de4d81"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-rattle-bones",
+          "path": "design/monster-abilities/rattle-bones.md",
+          "sha256": "0b0a2c882fac8f589c017b416dcff90ca9ec871c730e3130bed0c55ae64d0398",
+          "name": "Rattle of the Grave",
+          "action": "Maneuver",
+          "flavorMarkdown": "*A dry sound rises from the corpse, like someone knocking from inside a coffin.*",
+          "rulesMarkdown": "One creature within 2 squares that can hear it gains Frightened 1 of this creature. Once per turn; no damage.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Rattle of the Grave\n\n*A dry sound rises from the corpse, like someone knocking from inside a coffin.*\n\n## Rules\n\n**ID:** monster-rattle-bones\n\n\n**Action:** Maneuver\n\nOne creature within 2 squares that can hear it gains Frightened 1 of this creature. Once per turn; no damage.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/rattle-bones.md",
+            "sha256": "0b0a2c882fac8f589c017b416dcff90ca9ec871c730e3130bed0c55ae64d0398"
+          },
+          "automation": "pending"
         }
       ],
       "summoning": {

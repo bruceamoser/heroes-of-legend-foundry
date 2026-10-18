@@ -39,7 +39,7 @@
       "baseMax": 34,
       "sourceText": "34"
     },
-    "cv": 39,
+    "cv": 44,
     "speed": 6,
     "speedSource": "6",
     "alternateSpeeds": [],
@@ -94,6 +94,7 @@
           "id": "main-0",
           "category": "main",
           "name": "Basic Melee",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -110,6 +111,7 @@
           "id": "main-1",
           "category": "main",
           "name": "Tusk sweep",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -126,6 +128,7 @@
           "id": "main-2",
           "category": "main",
           "name": "Driving tusk",
+          "abilityId": "",
           "attributeKey": "brawn",
           "defenseSource": "Brawn",
           "harmfulOnly": false,
@@ -141,7 +144,25 @@
         {
           "id": "maneuver-0",
           "category": "maneuver",
+          "name": "Plant the Weight",
+          "abilityId": "monster-brace-ground",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "On solid ground: Stability 3 until its next turn; highest source only.",
+          "referenceMarkdown": "### Plant the Weight\n\n*It spreads its stance and settles its weight into the ground.*\n\nWhile standing on solid ground, gain Stability 3 until its next turn. Use the highest source only, never add sources."
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
           "name": "Defend",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -157,7 +178,25 @@
         {
           "id": "reaction-0",
           "category": "reaction",
+          "name": "Shelter the Young",
+          "abilityId": "monster-shelter-the-young",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "After an enemy closes on an ally within 3: move 2 to the ally; provokes.",
+          "referenceMarkdown": "### Shelter the Young\n\n*It turns at the cry beside it, bringing its whole body between the danger and the one it protects.*\n\nAfter a visible enemy ends voluntary movement adjacent to a willing ally within 3 squares, move up to 2 squares, ending adjacent to that ally. Pay normal terrain costs and provoke normally. This movement grants no attack or automatic protection; its body obstructs only the squares it actually occupies. Movement granted by a free attack cannot trigger it."
+        },
+        {
+          "id": "reaction-1",
+          "category": "reaction",
           "name": "Opportunity Attack",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -173,14 +212,14 @@
       ],
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Tusk sweep | Agility | 8 + Push each target 2 / 6 + Push each target 1 / 4 |\n| Driving tusk | Brawn | 9 + push 5 / 6 + push 3 / 4 + push 1 |",
-      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Defend | +1 Bane |",
-      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Opportunity Attack | Basic Melee |"
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Plant the Weight | On solid ground: Stability 3 until its next turn; highest source only. |\n| Defend | +1 Bane |",
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Shelter the Young | After an enemy closes on an ally within 3: move 2 to the ally; provokes. |\n| Opportunity Attack | Basic Melee |"
     },
     "details": {
       "flavorMarkdown": "*A towering, shaggy elephant with a domed skull, sweeping tusks and a thick trunk. Old herd leaders recognize familiar routes and threats across generations.*",
-      "specialtyMarkdown": "### Tusk sweep\n\n*A great limb scythes across the ground, forcing everyone nearby to move.*\n\n**Target:** Up to two creatures within 2 squares. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Push each target 2. **Standard defense:** Push each target 1.\n\n### Driving tusk\n\n*A heavy tusk lifts the intruder and drives it away from the herd.*\n\n**Target:** One creature within 2 squares. **Player defense:** Brawn. **Damage type:** physical.\n\n**Weak defense:** push 5. **Standard defense:** push 3. **Strong defense:** push 1.",
-      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Heavy Frame — Passive:** Stability 2; an explicit creature trait, not a bonus from size.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Signs:** Trees are stripped well above a person’s reach.\n\n**Purpose:** Keep the herd together through a dangerous crossing.\n\n**Tactics and retreat:** Sweep clustered attackers, then turn its body between them and the calves.\n\n**Counterplay and conversation:** Split the encounter from the herd’s route rather than trying to overpower it.\n\n**Habitat:** Tundra; highland · **Communication:** None\n\n**Loot:** Old travelers’ offerings at a traditional crossing; no automatic ivory market.\n\n**Summoning:** Animal 7 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/summons/ancient-mammoth.md).",
-      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-ancient-mammoth\n\n\n**Category:** Animal · **Role:** Massive guardian · **CV:** 39\n\n**Difficulty rationale:** A slow or broad exposed body gives the attacker a Boon. Its dangerous attack imposes defense Banes.\n\n**Reference damage:** 4/6/8\n\n**Reference type:** physical\n\n**Expected targets:** 2\n\n**Utility factor:** 1.25\n\n**Regeneration per turn:** 0\n\nReference I=3.596, O=11.191. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [sweeping attack](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/sweeping-attack.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/rules/stability.md)"
+      "specialtyMarkdown": "### Tusk sweep\n\n*A great limb scythes across the ground, forcing everyone nearby to move.*\n\n**Target:** Up to two creatures within 2 squares. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Push each target 2. **Standard defense:** Push each target 1.\n\n### Driving tusk\n\n*A heavy tusk lifts the intruder and drives it away from the herd.*\n\n**Target:** One creature within 2 squares. **Player defense:** Brawn. **Damage type:** physical.\n\n**Weak defense:** push 5. **Standard defense:** push 3. **Strong defense:** push 1.\n\n### Shelter the Young\n\n*It turns at the cry beside it, bringing its whole body between the danger and the one it protects.*\n\nAfter a visible enemy ends voluntary movement adjacent to a willing ally within 3 squares, move up to 2 squares, ending adjacent to that ally. Pay normal terrain costs and provoke normally. This movement grants no attack or automatic protection; its body obstructs only the squares it actually occupies. Movement granted by a free attack cannot trigger it.\n\n### Plant the Weight\n\n*It spreads its stance and settles its weight into the ground.*\n\nWhile standing on solid ground, gain Stability 3 until its next turn. Use the highest source only, never add sources.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Heavy Frame — Passive:** Stability 2; an explicit creature trait, not a bonus from size.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Signs:** Trees are stripped well above a person’s reach.\n\n**Purpose:** Keep the herd together through a dangerous crossing.\n\n**Tactics and retreat:** Sweep clustered attackers, then turn its body between them and the calves.\n\n**Counterplay and conversation:** Split the encounter from the herd’s route rather than trying to overpower it.\n\n**Habitat:** Tundra; highland · **Communication:** None\n\n**Loot:** Old travelers’ offerings at a traditional crossing; no automatic ivory market.\n\n**Summoning:** Animal 7 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/summons/ancient-mammoth.md).",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-ancient-mammoth\n\n\n**Category:** Animal · **Role:** Massive guardian · **CV:** 44\n\n**Difficulty rationale:** A slow or broad exposed body gives the attacker a Boon. Its dangerous attack imposes defense Banes.\n\n**Reference damage:** 4/6/8\n\n**Reference type:** physical\n\n**Expected targets:** 2\n\n**Utility factor:** 1.4\n\n**Action review (#1279):** U 1.25 → 1.4: Maneuver allowance +0.05, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=3.596, O=11.191. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [Plant the Weight](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/brace-ground.md), [Shelter the Young](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/shelter-the-young.md), [sweeping attack](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/sweeping-attack.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/rules/stability.md)"
     },
     "biography": ""
   },
@@ -206,9 +245,9 @@
       "catalogId": "creature-ancient-mammoth",
       "source": {
         "path": "design/bestiary/creatures/ancient-mammoth.md",
-        "sha256": "e4e7f9bed9b3feeb39ff2fd06d4604450a3cb955a84813ce7708bce9978f5075"
+        "sha256": "c53c8f917be69690db071952983daf54491659a6206598bc3c03cb3991faff0f"
       },
-      "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
+      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Printed profile · specialty automation pending",
@@ -216,15 +255,77 @@
       "classification": {
         "category": "Animal",
         "role": "Massive guardian",
-        "cv": 39
+        "cv": 44
       },
       "family": "Animal",
       "abilitySources": [
+        {
+          "label": "Plant the Weight",
+          "id": "monster-brace-ground",
+          "path": "design/monster-abilities/brace-ground.md",
+          "sha256": "44e9935b7e9ca1b0062e00df0ba15e789c3de578dc3659f79f3c8497c559e61f"
+        },
+        {
+          "label": "Shelter the Young",
+          "id": "monster-shelter-the-young",
+          "path": "design/monster-abilities/shelter-the-young.md",
+          "sha256": "0f6b568d847b1acbdec379bd0df8d5ab8b534765cf0ba6fb7a099a14b3d3312e"
+        },
         {
           "label": "sweeping attack",
           "id": "monster-sweeping-attack",
           "path": "design/monster-abilities/sweeping-attack.md",
           "sha256": "c020cb46e9ffa42aeaedfc9612e6b364f4c415e591d874a9553e55ec2ca2d45c"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-brace-ground",
+          "path": "design/monster-abilities/brace-ground.md",
+          "sha256": "44e9935b7e9ca1b0062e00df0ba15e789c3de578dc3659f79f3c8497c559e61f",
+          "name": "Plant the Weight",
+          "action": "Maneuver",
+          "flavorMarkdown": "*It spreads its stance and settles its weight into the ground.*",
+          "rulesMarkdown": "While standing on solid ground, gain Stability 3 until its next turn. Use the highest source only, never add sources.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Plant the Weight\n\n*It spreads its stance and settles its weight into the ground.*\n\n## Rules\n\n**ID:** monster-brace-ground\n\n\n**Action:** Maneuver\n\nWhile standing on solid ground, gain Stability 3 until its next turn. Use the highest source only, never add sources.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/brace-ground.md",
+            "sha256": "44e9935b7e9ca1b0062e00df0ba15e789c3de578dc3659f79f3c8497c559e61f"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-shelter-the-young",
+          "path": "design/monster-abilities/shelter-the-young.md",
+          "sha256": "0f6b568d847b1acbdec379bd0df8d5ab8b534765cf0ba6fb7a099a14b3d3312e",
+          "name": "Shelter the Young",
+          "action": "Reaction",
+          "flavorMarkdown": "*It turns at the cry beside it, bringing its whole body between the danger and the one it protects.*",
+          "rulesMarkdown": "After a visible enemy ends voluntary movement adjacent to a willing ally within 3 squares, move up to 2 squares, ending adjacent to that ally. Pay normal terrain costs and provoke normally. This movement grants no attack or automatic protection; its body obstructs only the squares it actually occupies. Movement granted by a free attack cannot trigger it.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Shelter the Young\n\n*It turns at the cry beside it, bringing its whole body between the danger and the one it protects.*\n\n## Rules\n\n**ID:** monster-shelter-the-young\n\n**Action:** Reaction\n\nAfter a visible enemy ends voluntary movement adjacent to a willing ally within 3 squares, move up to 2 squares, ending adjacent to that ally. Pay normal terrain costs and provoke normally. This movement grants no attack or automatic protection; its body obstructs only the squares it actually occupies. Movement granted by a free attack cannot trigger it.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/shelter-the-young.md",
+            "sha256": "0f6b568d847b1acbdec379bd0df8d5ab8b534765cf0ba6fb7a099a14b3d3312e"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-sweeping-attack",
+          "path": "design/monster-abilities/sweeping-attack.md",
+          "sha256": "c020cb46e9ffa42aeaedfc9612e6b364f4c415e591d874a9553e55ec2ca2d45c",
+          "name": "Sweeping Attack",
+          "action": "Main Action",
+          "flavorMarkdown": "*A great limb scythes across the ground, forcing everyone nearby to move.*",
+          "rulesMarkdown": "Use the printed attack against up to two different creatures within its printed reach, including allies if deliberately selected. Each player target defends separately. A player-controlled sweep rolls once at the worst target modifiers. This replaces, rather than accompanies, a single-target attack.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Sweeping Attack\n\n*A great limb scythes across the ground, forcing everyone nearby to move.*\n\n## Rules\n\n**ID:** monster-sweeping-attack\n\n\n**Action:** Main Action\n\nUse the printed attack against up to two different creatures within its printed reach, including allies if deliberately selected. Each player target defends separately. A player-controlled sweep rolls once at the worst target modifiers. This replaces, rather than accompanies, a single-target attack.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/sweeping-attack.md",
+            "sha256": "c020cb46e9ffa42aeaedfc9612e6b364f4c415e591d874a9553e55ec2ca2d45c"
+          },
+          "automation": "pending"
         }
       ],
       "summoning": {

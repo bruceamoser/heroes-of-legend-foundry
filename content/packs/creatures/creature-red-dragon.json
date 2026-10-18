@@ -39,7 +39,7 @@
       "baseMax": 56,
       "sourceText": "56"
     },
-    "cv": 95,
+    "cv": 104,
     "speed": 7,
     "speedSource": "7; fly 10",
     "alternateSpeeds": [
@@ -103,6 +103,7 @@
           "id": "main-0",
           "category": "main",
           "name": "Basic Melee",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -119,6 +120,7 @@
           "id": "main-1",
           "category": "main",
           "name": "Claw sweep",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -135,6 +137,7 @@
           "id": "main-2",
           "category": "main",
           "name": "Furnace breath",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -151,6 +154,7 @@
           "id": "main-3",
           "category": "main",
           "name": "Crushing bite",
+          "abilityId": "",
           "attributeKey": "fortitude",
           "defenseSource": "Fortitude",
           "harmfulOnly": false,
@@ -167,6 +171,7 @@
           "id": "maneuver-0",
           "category": "maneuver",
           "name": "Wing Beat",
+          "abilityId": "monster-wing-beat",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -183,6 +188,7 @@
           "id": "maneuver-1",
           "category": "maneuver",
           "name": "Breaking Roar",
+          "abilityId": "monster-breaking-roar",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -199,6 +205,7 @@
           "id": "maneuver-2",
           "category": "maneuver",
           "name": "Dig In",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -215,6 +222,7 @@
           "id": "maneuver-3",
           "category": "maneuver",
           "name": "Defend",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -230,7 +238,25 @@
         {
           "id": "reaction-0",
           "category": "reaction",
+          "name": "Tail Retort",
+          "abilityId": "monster-tail-retort",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "After adjacent attack deals HP damage: push attacker 2; Stability applies.",
+          "referenceMarkdown": "### Tail Retort\n\n*The dragon twists with the blow and its heavy tail sweeps across the attacker's footing.*\n\nAfter an adjacent attacker's attack resolves and deals HP damage to this creature, push that attacker 2 squares directly away. This creature must survive and remain capable. Apply Stability, terrain costs and normal collision damage; no separate attack damage. Cannot trigger from a free attack or another retaliatory effect."
+        },
+        {
+          "id": "reaction-1",
+          "category": "reaction",
           "name": "Opportunity Attack",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -247,13 +273,13 @@
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Claw sweep | Agility | 10 + Push each 4 / 7 + Push each 2 / 5 |\n| Furnace breath | Agility | 10 + Burning 2 / 7 + Burning 1 / 5 |\n| Crushing bite | Fortitude | 12 + Bleeding 2 / 8 + Bleeding 1 / 6 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Wing Beat | One adjacent creature gains Slowed 1; no roll or damage. Once per turn; no additional push or Blinded. |\n| Breaking Roar | One hearing creature within 3 squares gains Frightened 1 of this creature; no roll or damage. Once per turn. |\n| Dig In | Gain Stability 3 while on solid ground until its next turn; highest source only. |\n| Defend | +1 Bane |",
-      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Opportunity Attack | Basic Melee |"
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Tail Retort | After adjacent attack deals HP damage: push attacker 2; Stability applies. |\n| Opportunity Attack | Basic Melee |"
     },
     "details": {
       "flavorMarkdown": "*An immense red-scaled dragon with a horned head, broad wings and a furnace-bright throat. Intelligent and deeply possessive, it treats territory, tribute and reputation as parts of the same hoard.*",
-      "specialtyMarkdown": "### Claw sweep\n\n*A great limb scythes across the ground, forcing everyone nearby to move.*\n\n**Target:** Up to two creatures within 2 squares. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Push each 4. **Standard defense:** Push each 2.\n\n### Furnace breath\n\n*Its chest swells and light leaks between its teeth; there is one terrible instant to scatter.*\n\n**Target:** All creatures in a cone of 3 rows, 1/3/5 squares wide. **Player defense:** Agility. **Damage type:** fire.\n\n**Weak defense:** Burning 2. **Standard defense:** Burning 1.\n\n**Limit:** Cannot use this attack on consecutive turns, regardless of result.\n\n### Crushing bite\n\n*The dragon’s jaws close with the weight of a falling portcullis.*\n\n**Target:** One creature within 2 squares. **Player defense:** Fortitude. **Damage type:** physical.\n\n**Weak defense:** Bleeding 2. **Standard defense:** Bleeding 1.",
+      "specialtyMarkdown": "### Claw sweep\n\n*A great limb scythes across the ground, forcing everyone nearby to move.*\n\n**Target:** Up to two creatures within 2 squares. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Push each 4. **Standard defense:** Push each 2.\n\n### Furnace breath\n\n*Its chest swells and light leaks between its teeth; there is one terrible instant to scatter.*\n\n**Target:** All creatures in a cone of 3 rows, 1/3/5 squares wide. **Player defense:** Agility. **Damage type:** fire.\n\n**Weak defense:** Burning 2. **Standard defense:** Burning 1.\n\n**Limit:** Cannot use this attack on consecutive turns, regardless of result.\n\n### Crushing bite\n\n*The dragon’s jaws close with the weight of a falling portcullis.*\n\n**Target:** One creature within 2 squares. **Player defense:** Fortitude. **Damage type:** physical.\n\n**Weak defense:** Bleeding 2. **Standard defense:** Bleeding 1.\n\n### Tail Retort\n\n*The dragon twists with the blow and its heavy tail sweeps across the attacker's footing.*\n\nAfter an adjacent attacker's attack resolves and deals HP damage to this creature, push that attacker 2 squares directly away. This creature must survive and remain capable. Apply Stability, terrain costs and normal collision damage; no separate attack damage. Cannot trigger from a free attack or another retaliatory effect.",
       "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Heavy Frame — Passive:** Stability 2; an explicit creature trait, not a bonus from size.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Signs:** Tribute wagons arrive on a schedule; the countryside knows which bells not to ring.\n\n**Purpose:** Keep a domain profitable, obedient and impressed.\n\n**Tactics and retreat:** Open with breath against a cluster, then sweep defenders away from cover; demand terms if the hoard is threatened.\n\n**Counterplay and conversation:** Spread out, contest the hoard or escape route, and bring a bargain with something it cannot simply take.\n\n**Habitat:** Mountain fortress; volcanic valley · **Communication:** Common and Draconic\n\n**Loot:** A single adventure hoard: propose 400 coins plus one reviewed special item, not an item on every scale.\n\n**Summoning:** Ineligible.",
-      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-red-dragon\n\n\n**Category:** Dragon · **Role:** Territorial sovereign · **CV:** 95\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Claw sweep | Brawn | 2 Boons | 5 physical damage. | 7 physical damage. Push each 2. | 10 physical damage. Push each 4. |\n| Furnace breath | Brawn | 2 Boons | 5 fire damage. | 7 fire damage. Burning 1. | 10 fire damage. Burning 2. |\n| Crushing bite | Brawn | 2 Boons | 6 physical damage. | 8 physical damage; Bleeding 1. | 12 physical damage; Bleeding 2. |\n\nThe incoming attack names the defense attribute; use the six values above. Same targeting, costs and limits apply in either perspective. No opposed second roll.\n\n\n### CV worksheet\n\n**Difficulty rationale:** No innate attack modifier; armor, cover and chosen actions provide its defenses. Its dangerous attack imposes defense Banes.\n\n**Reference damage:** 5/7/10\n\n**Reference type:** physical\n\n**Expected targets:** 2\n\n**Utility factor:** 1.6\n\n**Regeneration per turn:** 0\n\nReference I=2.162, O=15.075. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [breaking roar](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/breaking-roar.md), [breath](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/breath.md), [red dragon dig in](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/red-dragon-dig-in.md), [sweeping attack](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/sweeping-attack.md), [wing beat](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/wing-beat.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/rules/stability.md)"
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-red-dragon\n\n\n**Category:** Dragon · **Role:** Territorial sovereign · **CV:** 104\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Claw sweep | Brawn | 2 Boons | 5 physical damage. | 7 physical damage. Push each 2. | 10 physical damage. Push each 4. |\n| Furnace breath | Brawn | 2 Boons | 5 fire damage. | 7 fire damage. Burning 1. | 10 fire damage. Burning 2. |\n| Crushing bite | Brawn | 2 Boons | 6 physical damage. | 8 physical damage; Bleeding 1. | 12 physical damage; Bleeding 2. |\n\nThe incoming attack names the defense attribute; use the six values above. Same targeting, costs and limits apply in either perspective. No opposed second roll.\n\n\n### CV worksheet\n\n**Difficulty rationale:** No innate attack modifier; armor, cover and chosen actions provide its defenses. Its dangerous attack imposes defense Banes.\n\n**Reference damage:** 5/7/10\n\n**Reference type:** physical\n\n**Expected targets:** 2\n\n**Utility factor:** 1.75\n\n**Action review (#1279):** U 1.6 → 1.75: Maneuver allowance +0, Reaction allowance +0.15. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=2.162, O=15.075. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [breaking roar](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/breaking-roar.md), [breath](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/breath.md), [red dragon dig in](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/red-dragon-dig-in.md), [sweeping attack](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/sweeping-attack.md), [Tail Retort](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/tail-retort.md), [wing beat](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/wing-beat.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/rules/stability.md)"
     },
     "biography": ""
   },
@@ -279,9 +305,9 @@
       "catalogId": "creature-red-dragon",
       "source": {
         "path": "design/bestiary/creatures/red-dragon.md",
-        "sha256": "c51b56a7590f743318fdc896cf8b1539b8d9d006213df996f166289fe2703684"
+        "sha256": "e8a13cbc7f5b813685c495a987c00170ca6d6a471f7f39cca0bde7e921e49f2c"
       },
-      "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
+      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Printed profile · specialty automation pending",
@@ -289,7 +315,7 @@
       "classification": {
         "category": "Dragon",
         "role": "Territorial sovereign",
-        "cv": 95
+        "cv": 104
       },
       "family": "Dragons, drakes and hydras",
       "abilitySources": [
@@ -318,10 +344,114 @@
           "sha256": "c020cb46e9ffa42aeaedfc9612e6b364f4c415e591d874a9553e55ec2ca2d45c"
         },
         {
+          "label": "Tail Retort",
+          "id": "monster-tail-retort",
+          "path": "design/monster-abilities/tail-retort.md",
+          "sha256": "fe2d45e693f3832560c498c0ed2a9cb38e3edb9f38b8e27b5dcd0eb80919cd43"
+        },
+        {
           "label": "wing beat",
           "id": "monster-wing-beat",
           "path": "design/monster-abilities/wing-beat.md",
           "sha256": "6cf725260c51b0a73801bf6e3abf9f113a69a0de8b5e825e6579556b6f1e4f3d"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-breaking-roar",
+          "path": "design/monster-abilities/breaking-roar.md",
+          "sha256": "15d8f43da3fa65061494259e6a39a357b7fbc14090c38709e0e8a9a0632e4e53",
+          "name": "Breaking Roar",
+          "action": "Maneuver",
+          "flavorMarkdown": "*The roar shakes the rafters; even the confident hesitate for half a breath.*",
+          "rulesMarkdown": "One creature within 3 squares that can hear it gains Frightened 1, with this creature as the source. Once per turn. No roll and no damage; ordinary decay and immunity apply. This is deliberately limited to one target, not an automatic battlefield-wide fear aura.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Breaking Roar\n\n*The roar shakes the rafters; even the confident hesitate for half a breath.*\n\n## Rules\n\n**ID:** monster-breaking-roar\n\n\n**Action:** Maneuver\n\nOne creature within 3 squares that can hear it gains Frightened 1, with this creature as the source. Once per turn. No roll and no damage; ordinary decay and immunity apply. This is deliberately limited to one target, not an automatic battlefield-wide fear aura.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/breaking-roar.md",
+            "sha256": "15d8f43da3fa65061494259e6a39a357b7fbc14090c38709e0e8a9a0632e4e53"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-breath",
+          "path": "design/monster-abilities/breath.md",
+          "sha256": "af8befd0a08c187250f8183e6a99afecd387e1a798a4164f499a0185f863bdc8",
+          "name": "Gathered Breath",
+          "action": "Main Action",
+          "flavorMarkdown": "*Its chest swells and light leaks between its teeth; there is one terrible instant to scatter.*",
+          "rulesMarkdown": "Use the printed area attack. It is not a spell. After using it, this creature cannot use this named attack on its next turn. Each affected player defends separately; a player-controlled creature rolls once at the worst target modifiers. Allies in the area are affected. The first use is available; describe the visible preparation before resolving it, not as an extra interrupt window.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Gathered Breath\n\n*Its chest swells and light leaks between its teeth; there is one terrible instant to scatter.*\n\n## Rules\n\n**ID:** monster-breath\n\n\n**Action:** Main Action\n\nUse the printed area attack. It is not a spell. After using it, this creature cannot use this named attack on its next turn. Each affected player defends separately; a player-controlled creature rolls once at the worst target modifiers. Allies in the area are affected. The first use is available; describe the visible preparation before resolving it, not as an extra interrupt window.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/breath.md",
+            "sha256": "af8befd0a08c187250f8183e6a99afecd387e1a798a4164f499a0185f863bdc8"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-red-dragon-dig-in",
+          "path": "design/monster-abilities/red-dragon-dig-in.md",
+          "sha256": "8995d050042971d3980e26ec8c3057e86ae97065ae2a5d7c6dccd77b5329047d",
+          "name": "Dig In",
+          "action": "Maneuver",
+          "flavorMarkdown": "*Talons gouge the stone beneath its immense body.*",
+          "rulesMarkdown": "Gain Stability 3 while on solid ground until its next turn; highest source only.\n\n**Limits:** Costs its Maneuver; no extra action is granted.",
+          "referenceMarkdown": "# Dig In\n\n*Talons gouge the stone beneath its immense body.*\n\n## Rules\n\n**ID:** monster-red-dragon-dig-in\n\n\n**Action:** Maneuver\n\nGain Stability 3 while on solid ground until its next turn; highest source only.\n\n**Limits:** Costs its Maneuver; no extra action is granted.\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/red-dragon-dig-in.md",
+            "sha256": "8995d050042971d3980e26ec8c3057e86ae97065ae2a5d7c6dccd77b5329047d"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-sweeping-attack",
+          "path": "design/monster-abilities/sweeping-attack.md",
+          "sha256": "c020cb46e9ffa42aeaedfc9612e6b364f4c415e591d874a9553e55ec2ca2d45c",
+          "name": "Sweeping Attack",
+          "action": "Main Action",
+          "flavorMarkdown": "*A great limb scythes across the ground, forcing everyone nearby to move.*",
+          "rulesMarkdown": "Use the printed attack against up to two different creatures within its printed reach, including allies if deliberately selected. Each player target defends separately. A player-controlled sweep rolls once at the worst target modifiers. This replaces, rather than accompanies, a single-target attack.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Sweeping Attack\n\n*A great limb scythes across the ground, forcing everyone nearby to move.*\n\n## Rules\n\n**ID:** monster-sweeping-attack\n\n\n**Action:** Main Action\n\nUse the printed attack against up to two different creatures within its printed reach, including allies if deliberately selected. Each player target defends separately. A player-controlled sweep rolls once at the worst target modifiers. This replaces, rather than accompanies, a single-target attack.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/sweeping-attack.md",
+            "sha256": "c020cb46e9ffa42aeaedfc9612e6b364f4c415e591d874a9553e55ec2ca2d45c"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-tail-retort",
+          "path": "design/monster-abilities/tail-retort.md",
+          "sha256": "fe2d45e693f3832560c498c0ed2a9cb38e3edb9f38b8e27b5dcd0eb80919cd43",
+          "name": "Tail Retort",
+          "action": "Reaction",
+          "flavorMarkdown": "*The dragon twists with the blow and its heavy tail sweeps across the attacker's footing.*",
+          "rulesMarkdown": "After an adjacent attacker's attack resolves and deals HP damage to this creature, push that attacker 2 squares directly away. This creature must survive and remain capable. Apply Stability, terrain costs and normal collision damage; no separate attack damage. Cannot trigger from a free attack or another retaliatory effect.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Tail Retort\n\n*The dragon twists with the blow and its heavy tail sweeps across the attacker's footing.*\n\n## Rules\n\n**ID:** monster-tail-retort\n\n**Action:** Reaction\n\nAfter an adjacent attacker's attack resolves and deals HP damage to this creature, push that attacker 2 squares directly away. This creature must survive and remain capable. Apply Stability, terrain costs and normal collision damage; no separate attack damage. Cannot trigger from a free attack or another retaliatory effect.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/tail-retort.md",
+            "sha256": "fe2d45e693f3832560c498c0ed2a9cb38e3edb9f38b8e27b5dcd0eb80919cd43"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-wing-beat",
+          "path": "design/monster-abilities/wing-beat.md",
+          "sha256": "6cf725260c51b0a73801bf6e3abf9f113a69a0de8b5e825e6579556b6f1e4f3d",
+          "name": "Wing Beat",
+          "action": "Maneuver",
+          "flavorMarkdown": "*Great wings beat downward, throwing loose earth into every nearby face.*",
+          "rulesMarkdown": "Choose one adjacent creature. It becomes Slowed 1 until its normal decay removes it. No damage or roll. This is not a push, extra movement or a free attack. Once per turn; immunity to Slowed applies. The narrative dust does not also blind anyone.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Wing Beat\n\n*Great wings beat downward, throwing loose earth into every nearby face.*\n\n## Rules\n\n**ID:** monster-wing-beat\n\n\n**Action:** Maneuver\n\nChoose one adjacent creature. It becomes Slowed 1 until its normal decay removes it. No damage or roll. This is not a push, extra movement or a free attack. Once per turn; immunity to Slowed applies. The narrative dust does not also blind anyone.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/wing-beat.md",
+            "sha256": "6cf725260c51b0a73801bf6e3abf9f113a69a0de8b5e825e6579556b6f1e4f3d"
+          },
+          "automation": "pending"
         }
       ],
       "summoning": {

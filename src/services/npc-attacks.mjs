@@ -51,32 +51,62 @@ export async function declareNpcMelee(actor, { blockable } = {}) {
 export async function declareCreatureAction(actor, actionId) {
   if (!game.user.isGM || actor?.type !== "creature")
     throw new Error("The DA declares this creature action.");
-  const action = actor.system.actions.entries.find(entry => entry.id === actionId);
+  const action = actor.system.actions.entries.find(
+    (entry) => entry.id === actionId,
+  );
   if (!action) throw new Error("This creature action is unavailable.");
-  const encounters = game.combats.contents.filter(combat =>
-    combat.combatants.some(participant => participant.actor?.uuid === actor.uuid));
+  const encounters = game.combats.contents.filter((combat) =>
+    combat.combatants.some(
+      (participant) => participant.actor?.uuid === actor.uuid,
+    ),
+  );
   const reference = {
     ...(encounters.length === 1 ? { combatId: encounters[0].id } : {}),
-    resolution: "reference", actorUuid: actor.uuid, attackerName: actor.name,
-    actionId: action.id, category: action.category, title: action.name,
-    perspective: "defender", attributeKey: action.attributeKey,
-    defenseSource: action.defenseSource, harmfulOnly: action.harmfulOnly,
-    threat: { boons: actor.system.threat.boons, banes: actor.system.threat.banes },
+    resolution: "reference",
+    actorUuid: actor.uuid,
+    attackerName: actor.name,
+    actionId: action.id,
+    abilityId: action.abilityId ?? "",
+    category: action.category,
+    title: action.name,
+    perspective: "defender",
+    attributeKey: action.attributeKey,
+    defenseSource: action.defenseSource,
+    harmfulOnly: action.harmfulOnly,
+    threat: {
+      boons: actor.system.threat.boons,
+      banes: actor.system.threat.banes,
+    },
     outcomes: action.hasOutcomes ? structuredClone(action.outcomes) : null,
-    effect: action.effect, referenceMarkdown: action.referenceMarkdown,
-    suggestedDefenderTokenUuids: [...game.user.targets].map(token => token.document.uuid),
+    effect: action.effect,
+    referenceMarkdown: action.referenceMarkdown,
+    suggestedDefenderTokenUuids: [...game.user.targets].map(
+      (token) => token.document.uuid,
+    ),
     source: actor.getFlag(ID, "source") ?? null,
     sourceCommit: actor.getFlag(ID, "sourceCommit") ?? null,
   };
   const content = await foundry.applications.handlebars.renderTemplate(
     "systems/heroes-of-legend/templates/creature-action-card.hbs",
-    { ...reference, categoryLabel: { main: "Main Action", maneuver: "Maneuver", reaction: "Reaction" }[reference.category],
-      referenceHTML: renderMarkdown(reference.referenceMarkdown) },
+    {
+      ...reference,
+      categoryLabel: {
+        main: "Main Action",
+        maneuver: "Maneuver",
+        reaction: "Reaction",
+      }[reference.category],
+      referenceHTML: renderMarkdown(reference.referenceMarkdown),
+    },
   );
   return ChatMessage.create({
-    content, speaker: ChatMessage.getSpeaker({ actor }),
-    flags: { [ID]: { creatureAction: reference,
-      ...(reference.attributeKey ? { attackCard: reference } : {}) } },
+    content,
+    speaker: ChatMessage.getSpeaker({ actor }),
+    flags: {
+      [ID]: {
+        creatureAction: reference,
+        ...(reference.attributeKey ? { attackCard: reference } : {}),
+      },
+    },
   });
 }
 

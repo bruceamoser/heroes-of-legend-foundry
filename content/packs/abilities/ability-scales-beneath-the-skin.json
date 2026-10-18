@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You brace as a brief shimmer of scales catches the light across your arms.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>Self, before taking fire or physical damage.</dd></div><div><dt>Duration</dt><dd>Resolve once at the stated trigger; applied conditions follow normal decay.</dd></div><div><dt>Equipment / acquisition</dt><dd>No item needed unless named above.</dd></div><div><dt>Limits</dt><dd>Repeatable; pay the action and any stated costs each use.</dd></div><div><dt>Type</dt><dd>Magic</dd></div></dl><div class=\"hol-reference-rules\"><p>Scales flare across your skin. Gain resistance 3 to one of those types for this event only, using the highest matching value. No stacking with armor.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/cards/scales-beneath-the-skin.md\" target=\"_blank\" rel=\"noopener\">design/cards/scales-beneath-the-skin.md</a> at <code>d67e046466bdd5052360b96ed91861d607091446</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You brace as a brief shimmer of scales catches the light across your arms.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>Self, before taking fire or physical damage.</dd></div><div><dt>Duration</dt><dd>Resolve once at the stated trigger; applied conditions follow normal decay.</dd></div><div><dt>Equipment / acquisition</dt><dd>No item needed unless named above.</dd></div><div><dt>Limits</dt><dd>Repeatable; pay the action and any stated costs each use.</dd></div><div><dt>Type</dt><dd>Magic</dd></div></dl><div class=\"hol-reference-rules\"><p>Scales flare across your skin. Gain resistance 3 to one of those types for this event only, using the highest matching value. No stacking with armor.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/cards/scales-beneath-the-skin.md\" target=\"_blank\" rel=\"noopener\">design/cards/scales-beneath-the-skin.md</a> at <code>bdfd18ed535fbd0e1892b9344444abf6da644809</code>.</p></section>",
     "activity": {
       "action": "main",
       "rollMode": "none",
@@ -31,7 +31,7 @@
         "path": "design/cards/scales-beneath-the-skin.md",
         "sha256": "f37bd934b18012814b27a0cbc10614de97eb83146a8d088f1cc300fd8c647422"
       },
-      "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
+      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · play automation in progress"

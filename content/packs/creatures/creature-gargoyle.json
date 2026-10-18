@@ -99,6 +99,7 @@
           "id": "main-0",
           "category": "main",
           "name": "Basic Melee",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -115,6 +116,7 @@
           "id": "main-1",
           "category": "main",
           "name": "Stone talons",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -131,6 +133,7 @@
           "id": "main-2",
           "category": "main",
           "name": "Driving strike",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -147,6 +150,7 @@
           "id": "maneuver-0",
           "category": "maneuver",
           "name": "Become Still",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -163,6 +167,7 @@
           "id": "maneuver-1",
           "category": "maneuver",
           "name": "Defend",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -179,6 +184,7 @@
           "id": "reaction-0",
           "category": "reaction",
           "name": "Opportunity Attack",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -201,7 +207,7 @@
       "flavorMarkdown": "*A winged stone figure has rain-blackened grooves where a face should smile and lichen growing along its shoulders.*",
       "specialtyMarkdown": "### Stone talons\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Bleeding 2. **Standard defense:** Bleeding 1.\n\n### Driving strike\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Push 3. **Standard defense:** Push 1.\n\n**Limit:** Apply Stability, terrain costs and normal collision rules to the printed distance.\n\n### Become Still\n\n*Its body settles into the posture of a piece of the surrounding stonework.*\n\nGain 1 additional Bane against the next player attack before its next turn, or 1 defense Boon when player-controlled. Ends if it voluntarily moves. Does not make it Hidden, alter its resistance or stack with itself.",
       "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.\n\n**Heavy Frame — Passive:** Stability 1; an explicit trait, not a bonus calculated from Size.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Tactics and retreat:** Wait in a convincing architectural position, then attack an intruder who disregards the warning. Become Still improves a defense but does not grant Hidden.\n\n**Encounter and conversation:** It sees itself as the rightful guardian of a roof whose owners have changed many times.\n\n**Habitat:** Wild frontier; ancient ruin · **Communication:** None\n\n**Loot:** Recoverable possessions or lair clues chosen for the adventure; body parts grant no automatic special equipment or coin value.\n\n**Summoning:** Ineligible.",
-      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-gargoyle\n\n\n**Category:** Beast · **Role:** Attrition striker · **CV:** 27\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Stone talons | Brawn | 1 Boon | 3 physical damage. | 5 physical damage. Bleeding 1. | 7 physical damage. Bleeding 2. |\n| Driving strike | Brawn | 1 Boon | 2 physical damage. | 4 physical damage. Push 1. | 6 physical damage. Push 3. |\n\nUse the attributes above for defenses named by incoming attacks. Same targeting, limits and costs apply; no opposed second roll.\n\n### CV worksheet\n\n**Reference damage:** 3/5/7\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.45\n\n**Regeneration per turn:** 0\n\nReference I=3.000, O=4.596. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [driving blow](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/driving-blow.md), [rending blow](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/rending-blow.md), [stone still](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/stone-still.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/rules/stability.md)"
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-gargoyle\n\n\n**Category:** Beast · **Role:** Attrition striker · **CV:** 27\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Stone talons | Brawn | 1 Boon | 3 physical damage. | 5 physical damage. Bleeding 1. | 7 physical damage. Bleeding 2. |\n| Driving strike | Brawn | 1 Boon | 2 physical damage. | 4 physical damage. Push 1. | 6 physical damage. Push 3. |\n\nUse the attributes above for defenses named by incoming attacks. Same targeting, limits and costs apply; no opposed second roll.\n\n### CV worksheet\n\n**Reference damage:** 3/5/7\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.45\n\n**Regeneration per turn:** 0\n\nReference I=3.000, O=4.596. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [driving blow](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/driving-blow.md), [rending blow](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/rending-blow.md), [stone still](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/stone-still.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/rules/stability.md)"
     },
     "biography": ""
   },
@@ -229,7 +235,7 @@
         "path": "design/bestiary/creatures/gargoyle.md",
         "sha256": "751c6ac6096f63327565a50b66b0de4c3b5ab06c89aaebed9f259b49d4657748"
       },
-      "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
+      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Printed profile · specialty automation pending",
@@ -258,6 +264,56 @@
           "id": "monster-stone-still",
           "path": "design/monster-abilities/stone-still.md",
           "sha256": "c6c2e230c6118bb27e308b7bf59cd4d8755cc83f3b74065990d45ba872f37eb3"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-driving-blow",
+          "path": "design/monster-abilities/driving-blow.md",
+          "sha256": "38b3406cbcb2f57fdc1bbf57f09857b7ef8a9fd7b35e311dc812476677e6b276",
+          "name": "Driving Blow",
+          "action": "Main Action",
+          "flavorMarkdown": "*The blow lands with enough force to send its victim stumbling backward.*",
+          "rulesMarkdown": "Use the printed attack. Standard pushes the target 1 square; Strong pushes it 2. Apply Stability before moving. This is a rider, not a separate attack or Force action.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Driving Blow\n\n*The blow lands with enough force to send its victim stumbling backward.*\n\n## Rules\n\n**ID:** monster-driving-blow\n\n\n**Action:** Main Action\n\nUse the printed attack. Standard pushes the target 1 square; Strong pushes it 2. Apply Stability before moving. This is a rider, not a separate attack or Force action.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/driving-blow.md",
+            "sha256": "38b3406cbcb2f57fdc1bbf57f09857b7ef8a9fd7b35e311dc812476677e6b276"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-rending-blow",
+          "path": "design/monster-abilities/rending-blow.md",
+          "sha256": "b2d3b404687f50e71c5eef0df53629619a9ccb69d85f5922470dea4f0f11395c",
+          "name": "Rending Blow",
+          "action": "Main Action",
+          "flavorMarkdown": "*The claws snag and drag; blood follows the withdrawing talons.*",
+          "rulesMarkdown": "Use the printed attack. Standard also applies Bleeding 1; Strong applies Bleeding 2. Bleeding resolves and decays at the target’s turn end. This is not a wound roll unless the ordinary Dying rule calls for one.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Rending Blow\n\n*The claws snag and drag; blood follows the withdrawing talons.*\n\n## Rules\n\n**ID:** monster-rending-blow\n\n\n**Action:** Main Action\n\nUse the printed attack. Standard also applies Bleeding 1; Strong applies Bleeding 2. Bleeding resolves and decays at the target’s turn end. This is not a wound roll unless the ordinary Dying rule calls for one.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/rending-blow.md",
+            "sha256": "b2d3b404687f50e71c5eef0df53629619a9ccb69d85f5922470dea4f0f11395c"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-stone-still",
+          "path": "design/monster-abilities/stone-still.md",
+          "sha256": "c6c2e230c6118bb27e308b7bf59cd4d8755cc83f3b74065990d45ba872f37eb3",
+          "name": "Become Still",
+          "action": "Maneuver",
+          "flavorMarkdown": "*Its body settles into the posture of a piece of the surrounding stonework.*",
+          "rulesMarkdown": "Gain 1 additional Bane against the next player attack before its next turn, or 1 defense Boon when player-controlled. Ends if it voluntarily moves. Does not make it Hidden, alter its resistance or stack with itself.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Become Still\n\n*Its body settles into the posture of a piece of the surrounding stonework.*\n\n## Rules\n\n**ID:** monster-stone-still\n\n\n**Action:** Maneuver\n\nGain 1 additional Bane against the next player attack before its next turn, or 1 defense Boon when player-controlled. Ends if it voluntarily moves. Does not make it Hidden, alter its resistance or stack with itself.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/stone-still.md",
+            "sha256": "c6c2e230c6118bb27e308b7bf59cd4d8755cc83f3b74065990d45ba872f37eb3"
+          },
+          "automation": "pending"
         }
       ],
       "summoning": {

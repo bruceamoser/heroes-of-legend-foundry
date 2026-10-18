@@ -39,7 +39,7 @@
       "baseMax": 26,
       "sourceText": "26"
     },
-    "cv": 24,
+    "cv": 25,
     "speed": 9,
     "speedSource": "9",
     "alternateSpeeds": [],
@@ -89,6 +89,7 @@
           "id": "main-0",
           "category": "main",
           "name": "Basic Melee",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -105,6 +106,7 @@
           "id": "main-1",
           "category": "main",
           "name": "Silver horn",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -121,6 +123,7 @@
           "id": "maneuver-0",
           "category": "maneuver",
           "name": "Warding Light",
+          "abilityId": "monster-warding-light",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -137,6 +140,7 @@
           "id": "maneuver-1",
           "category": "maneuver",
           "name": "Defend",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -152,7 +156,25 @@
         {
           "id": "reaction-0",
           "category": "reaction",
+          "name": "Sheltering Light",
+          "abilityId": "monster-sheltering-light",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Before an ally within 3 takes attack damage: Physical resistance 2 for that attack.",
+          "referenceMarkdown": "### Sheltering Light\n\n*Light gathers over a companion like overlapping feathers, taking the harsh edge from the impact.*\n\nBefore one visible willing ally within 3 squares takes damage from an attack, grant that ally Physical resistance 2 for that attack only. Use the highest matching resistance, not an added reduction; minimum damage rules remain. This does not heal, transfer damage or grant resistance to other types."
+        },
+        {
+          "id": "reaction-1",
+          "category": "reaction",
           "name": "Opportunity Attack",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -169,13 +191,13 @@
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Silver horn | Agility | 8 + Push 3 / 5 + Push 1 / 3 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Warding Light | Ally within 3: reduce Frightened 1; +1 Boon on next mental defense. |\n| Defend | +1 Bane |",
-      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Opportunity Attack | Basic Melee |"
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Sheltering Light | Before an ally within 3 takes attack damage: Physical resistance 2 for that attack. |\n| Opportunity Attack | Basic Melee |"
     },
     "details": {
       "flavorMarkdown": "*A pale horn rises from the brow of an alert forest horse, reflecting stars even under a closed canopy.*",
-      "specialtyMarkdown": "### Silver horn\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** radiant.\n\n**Weak defense:** Push 3. **Standard defense:** Push 1.\n\n**Limit:** Apply Stability, terrain costs and normal collision rules to the printed distance.\n\n### Warding Light\n\n*A warm light settles over one companion like a hand on the shoulder.*\n\nOne willing ally within 3 squares reduces Frightened by 1. Until this creature’s next turn, that ally also has 1 Boon on its next defense against a mental attack; for an NPC ally, impose 1 Bane on that player attack. Consumed even if canceled; does not stack with itself.",
-      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.\n\n**Heavy Frame — Passive:** Stability 1; an explicit trait, not a bonus calculated from Size.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Tactics and retreat:** Push a threat away from the spring and steady a frightened ally.\n\n**Encounter and conversation:** It guards a spring whose water is being diverted, and needs help that does not turn the spring into a shrine for sale.\n\n**Habitat:** Old woodland; crossroads; hidden court · **Communication:** Common\n\n**Loot:** Recoverable possessions or lair clues chosen for the adventure; body parts grant no automatic special equipment or coin value.\n\n**Summoning:** Fey 7 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/summons/unicorn.md).",
-      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-unicorn\n\n\n**Category:** Fey · **Role:** Displacer · **CV:** 24\n\n### CV worksheet\n\n**Reference damage:** 3/5/8\n\n**Reference type:** radiant\n\n**Expected targets:** 1\n\n**Utility factor:** 1.3\n\n**Regeneration per turn:** 0\n\nReference I=4.404, O=5.951. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [driving blow](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/driving-blow.md), [warding light](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/warding-light.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/rules/stability.md)"
+      "specialtyMarkdown": "### Silver horn\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** radiant.\n\n**Weak defense:** Push 3. **Standard defense:** Push 1.\n\n**Limit:** Apply Stability, terrain costs and normal collision rules to the printed distance.\n\n### Warding Light\n\n*A warm light settles over one companion like a hand on the shoulder.*\n\nOne willing ally within 3 squares reduces Frightened by 1. Until this creature’s next turn, that ally also has 1 Boon on its next defense against a mental attack; for an NPC ally, impose 1 Bane on that player attack. Consumed even if canceled; does not stack with itself.\n\n### Sheltering Light\n\n*Light gathers over a companion like overlapping feathers, taking the harsh edge from the impact.*\n\nBefore one visible willing ally within 3 squares takes damage from an attack, grant that ally Physical resistance 2 for that attack only. Use the highest matching resistance, not an added reduction; minimum damage rules remain. This does not heal, transfer damage or grant resistance to other types.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.\n\n**Heavy Frame — Passive:** Stability 1; an explicit trait, not a bonus calculated from Size.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Tactics and retreat:** Push a threat away from the spring and steady a frightened ally.\n\n**Encounter and conversation:** It guards a spring whose water is being diverted, and needs help that does not turn the spring into a shrine for sale.\n\n**Habitat:** Old woodland; crossroads; hidden court · **Communication:** Common\n\n**Loot:** Recoverable possessions or lair clues chosen for the adventure; body parts grant no automatic special equipment or coin value.\n\n**Summoning:** Fey 7 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/summons/unicorn.md).",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-unicorn\n\n\n**Category:** Fey · **Role:** Displacer · **CV:** 25\n\n### CV worksheet\n\n**Reference damage:** 3/5/8\n\n**Reference type:** radiant\n\n**Expected targets:** 1\n\n**Utility factor:** 1.4\n\n**Action review (#1279):** U 1.3 → 1.4: Maneuver allowance +0, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=4.404, O=5.951. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [driving blow](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/driving-blow.md), [Sheltering Light](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/sheltering-light.md), [warding light](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/warding-light.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/rules/stability.md)"
     },
     "biography": ""
   },
@@ -201,9 +223,9 @@
       "catalogId": "creature-unicorn",
       "source": {
         "path": "design/bestiary/creatures/unicorn.md",
-        "sha256": "9dae462d65aab88ca306e0e094d721ccfb9638d03b7da584ede0c8ea86c861c0"
+        "sha256": "f5e2111fa7cbc899b4a2b3c958a6745ce64a3bf14892f87ad8ef0807a2a8b400"
       },
-      "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
+      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Printed profile · specialty automation pending",
@@ -211,7 +233,7 @@
       "classification": {
         "category": "Fey",
         "role": "Displacer",
-        "cv": 24
+        "cv": 25
       },
       "family": "Fey — classic",
       "abilitySources": [
@@ -222,10 +244,66 @@
           "sha256": "38b3406cbcb2f57fdc1bbf57f09857b7ef8a9fd7b35e311dc812476677e6b276"
         },
         {
+          "label": "Sheltering Light",
+          "id": "monster-sheltering-light",
+          "path": "design/monster-abilities/sheltering-light.md",
+          "sha256": "018734662d30a44935b3065bb1fa17fe9bfba3df97654aa01ebaaea607fcf0a3"
+        },
+        {
           "label": "warding light",
           "id": "monster-warding-light",
           "path": "design/monster-abilities/warding-light.md",
           "sha256": "218cf722468293e82d5b939fe75ed9a9f3db27bcd6515bc62310b4b499e03805"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-driving-blow",
+          "path": "design/monster-abilities/driving-blow.md",
+          "sha256": "38b3406cbcb2f57fdc1bbf57f09857b7ef8a9fd7b35e311dc812476677e6b276",
+          "name": "Driving Blow",
+          "action": "Main Action",
+          "flavorMarkdown": "*The blow lands with enough force to send its victim stumbling backward.*",
+          "rulesMarkdown": "Use the printed attack. Standard pushes the target 1 square; Strong pushes it 2. Apply Stability before moving. This is a rider, not a separate attack or Force action.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Driving Blow\n\n*The blow lands with enough force to send its victim stumbling backward.*\n\n## Rules\n\n**ID:** monster-driving-blow\n\n\n**Action:** Main Action\n\nUse the printed attack. Standard pushes the target 1 square; Strong pushes it 2. Apply Stability before moving. This is a rider, not a separate attack or Force action.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/driving-blow.md",
+            "sha256": "38b3406cbcb2f57fdc1bbf57f09857b7ef8a9fd7b35e311dc812476677e6b276"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-sheltering-light",
+          "path": "design/monster-abilities/sheltering-light.md",
+          "sha256": "018734662d30a44935b3065bb1fa17fe9bfba3df97654aa01ebaaea607fcf0a3",
+          "name": "Sheltering Light",
+          "action": "Reaction",
+          "flavorMarkdown": "*Light gathers over a companion like overlapping feathers, taking the harsh edge from the impact.*",
+          "rulesMarkdown": "Before one visible willing ally within 3 squares takes damage from an attack, grant that ally Physical resistance 2 for that attack only. Use the highest matching resistance, not an added reduction; minimum damage rules remain. This does not heal, transfer damage or grant resistance to other types.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Sheltering Light\n\n*Light gathers over a companion like overlapping feathers, taking the harsh edge from the impact.*\n\n## Rules\n\n**ID:** monster-sheltering-light\n\n**Action:** Reaction\n\nBefore one visible willing ally within 3 squares takes damage from an attack, grant that ally Physical resistance 2 for that attack only. Use the highest matching resistance, not an added reduction; minimum damage rules remain. This does not heal, transfer damage or grant resistance to other types.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/sheltering-light.md",
+            "sha256": "018734662d30a44935b3065bb1fa17fe9bfba3df97654aa01ebaaea607fcf0a3"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-warding-light",
+          "path": "design/monster-abilities/warding-light.md",
+          "sha256": "218cf722468293e82d5b939fe75ed9a9f3db27bcd6515bc62310b4b499e03805",
+          "name": "Warding Light",
+          "action": "Maneuver",
+          "flavorMarkdown": "*A warm light settles over one companion like a hand on the shoulder.*",
+          "rulesMarkdown": "One willing ally within 3 squares reduces Frightened by 1. Until this creature’s next turn, that ally also has 1 Boon on its next defense against a mental attack; for an NPC ally, impose 1 Bane on that player attack. Consumed even if canceled; does not stack with itself.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Warding Light\n\n*A warm light settles over one companion like a hand on the shoulder.*\n\n## Rules\n\n**ID:** monster-warding-light\n\n\n**Action:** Maneuver\n\nOne willing ally within 3 squares reduces Frightened by 1. Until this creature’s next turn, that ally also has 1 Boon on its next defense against a mental attack; for an NPC ally, impose 1 Bane on that player attack. Consumed even if canceled; does not stack with itself.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/warding-light.md",
+            "sha256": "218cf722468293e82d5b939fe75ed9a9f3db27bcd6515bc62310b4b499e03805"
+          },
+          "automation": "pending"
         }
       ],
       "summoning": {

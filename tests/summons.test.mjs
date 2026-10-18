@@ -202,7 +202,7 @@ test("attribute-first, speed-mode and Maneuvers variants remain typed and source
       {
         name: "Wind Step",
         category: "maneuver",
-        style: "section-field",
+        style: "inline-field",
       },
     ],
   );
@@ -497,7 +497,7 @@ test("offline catalog reconciles all 73 locked profiles, full sources and typed 
       linkedCreatures: 73,
       attackRows: 85,
       attackDetails: 85,
-      maneuvers: 43,
+      maneuvers: 64,
       passives: 50,
       specialActions: 1,
       offensiveHealingReferences: 18,

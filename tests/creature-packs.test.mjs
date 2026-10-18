@@ -168,7 +168,7 @@ test("Adder and Red Dragon retain exact printed statistics and defense orientati
   });
 
   const dragon = actorByCatalogId.get("creature-red-dragon");
-  assert.equal(dragon.system.cv, 95);
+  assert.equal(dragon.system.cv, 104);
   assert.equal(dragon.system.health.baseMax, 56);
   assert.equal(dragon.system.speed, 7);
   assert.deepEqual(dragon.system.alternateSpeeds, [{ mode: "fly", value: 10 }]);

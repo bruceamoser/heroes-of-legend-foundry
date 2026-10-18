@@ -89,6 +89,7 @@
           "id": "main-0",
           "category": "main",
           "name": "Basic Melee",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -105,6 +106,7 @@
           "id": "main-1",
           "category": "main",
           "name": "Thorn-wrapped staff",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -121,6 +123,7 @@
           "id": "maneuver-0",
           "category": "maneuver",
           "name": "Weave the Roots",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -131,12 +134,13 @@
             "strong": ""
           },
           "effect": "3 difficult ground squares within 3 become normal until next turn.",
-          "referenceMarkdown": "### Weave the Roots\n\n*Roots braid themselves into firm footholds across the treacherous ground.*\n\nChoose up to 3 connected difficult-terrain ground squares within 3 squares. They count as normal terrain until its next turn. Requires soil or living vegetation; cannot bridge empty space or bypass occupied squares."
+          "referenceMarkdown": "### Weave the Roots\n\n*Roots braid themselves into firm footholds across the treacherous ground.*\n\nChoose up to 3 connected difficult-terrain ground squares within 3 squares; they count as normal terrain until its next turn. Requires soil or living vegetation; cannot bridge empty space or bypass occupied squares."
         },
         {
           "id": "maneuver-1",
           "category": "maneuver",
           "name": "Defend",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -153,6 +157,7 @@
           "id": "reaction-0",
           "category": "reaction",
           "name": "Opportunity Attack",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -173,9 +178,9 @@
     },
     "details": {
       "flavorMarkdown": "*A woodland spirit carries the grain and scent of a particular tree in living skin and hair.*",
-      "specialtyMarkdown": "### Thorn-wrapped staff\n\n**Target:** One visible creature within 2 squares. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Grappled 2. **Standard defense:** Grappled 1.\n\n**Limit:** The holder suffers its own Grappled contribution. A new result replaces its lower contribution, not adds to it. Release freely; separation beyond reach, unconsciousness or death ends the hold.\n\n### Weave the Roots\n\n*Roots braid themselves into firm footholds across the treacherous ground.*\n\nChoose up to 3 connected difficult-terrain ground squares within 3 squares. They count as normal terrain until its next turn. Requires soil or living vegetation; cannot bridge empty space or bypass occupied squares.",
-      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Tactics and retreat:** Hold someone cutting the tree while opening firm ground for refugees. Release the hold if the shared restrictions prevent a needed retreat.\n\n**Encounter and conversation:** Its tree shelters refugees whose presence has drawn woodcutters and hunters into conflict.\n\n**Habitat:** Old woodland; crossroads; hidden court · **Communication:** Common\n\n**Loot:** Recoverable possessions or lair clues chosen for the adventure; body parts grant no automatic special equipment or coin value.\n\n**Summoning:** Fey 3 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/summons/dryad.md).",
-      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-dryad\n\n\n**Category:** Fey · **Role:** Holder · **CV:** 17\n\n### CV worksheet\n\n**Reference damage:** 2/4/6\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.45\n\n**Regeneration per turn:** 0\n\nReference I=4.404, O=3.000. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [root bridge](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/root-bridge.md), [seizing limbs](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/seizing-limbs.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/rules/stability.md)"
+      "specialtyMarkdown": "### Thorn-wrapped staff\n\n**Target:** One visible creature within 2 squares. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Grappled 2. **Standard defense:** Grappled 1.\n\n**Limit:** The holder suffers its own Grappled contribution. A new result replaces its lower contribution, not adds to it. Release freely; separation beyond reach, unconsciousness or death ends the hold.\n\n### Weave the Roots\n\n*Roots braid themselves into firm footholds across the treacherous ground.*\n\nChoose up to 3 connected difficult-terrain ground squares within 3 squares; they count as normal terrain until its next turn. Requires soil or living vegetation; cannot bridge empty space or bypass occupied squares.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Tactics and retreat:** Hold someone cutting the tree while opening firm ground for refugees. Release the hold if the shared restrictions prevent a needed retreat.\n\n**Encounter and conversation:** Its tree shelters refugees whose presence has drawn woodcutters and hunters into conflict.\n\n**Habitat:** Old woodland; crossroads; hidden court · **Communication:** Common\n\n**Loot:** Recoverable possessions or lair clues chosen for the adventure; body parts grant no automatic special equipment or coin value.\n\n**Summoning:** Fey 3 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/summons/dryad.md).",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-dryad\n\n\n**Category:** Fey · **Role:** Holder · **CV:** 17\n\n### CV worksheet\n\n**Reference damage:** 2/4/6\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.45\n\n**Regeneration per turn:** 0\n\nReference I=4.404, O=3.000. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [root bridge](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/root-bridge.md), [seizing limbs](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/seizing-limbs.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/rules/stability.md)"
     },
     "biography": ""
   },
@@ -201,9 +206,9 @@
       "catalogId": "creature-dryad",
       "source": {
         "path": "design/bestiary/creatures/dryad.md",
-        "sha256": "67e43b00435209508d0f767b3d9414861aa1c915b6c89412b341339c33ba8785"
+        "sha256": "e8bca1acd9ed42db8dcaef099089539e9daf5e07a524b38480e58d382f542227"
       },
-      "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
+      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Printed profile · specialty automation pending",
@@ -219,13 +224,47 @@
           "label": "root bridge",
           "id": "monster-root-bridge",
           "path": "design/monster-abilities/root-bridge.md",
-          "sha256": "6922bcbe204499fb7981804b1092539f19979a0429c748836b5bc3c4c3442d57"
+          "sha256": "e9f51a3bb7ad6d595882bb6915478b157aaa2adcacf53138cff1c5cf7d35fe00"
         },
         {
           "label": "seizing limbs",
           "id": "monster-seizing-limbs",
           "path": "design/monster-abilities/seizing-limbs.md",
           "sha256": "66f2767bac03446133659d16daf8320854f42e75c80b88490fda96d517417737"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-root-bridge",
+          "path": "design/monster-abilities/root-bridge.md",
+          "sha256": "e9f51a3bb7ad6d595882bb6915478b157aaa2adcacf53138cff1c5cf7d35fe00",
+          "name": "Weave the Roots",
+          "action": "Maneuver",
+          "flavorMarkdown": "*Roots braid themselves into firm footholds across the treacherous ground.*",
+          "rulesMarkdown": "Choose up to 3 connected difficult-terrain ground squares within 3 squares; they count as normal terrain until its next turn. Requires soil or living vegetation; cannot bridge empty space or bypass occupied squares.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Weave the Roots\n\n*Roots braid themselves into firm footholds across the treacherous ground.*\n\n## Rules\n\n**ID:** monster-root-bridge\n\n\n**Action:** Maneuver\n\nChoose up to 3 connected difficult-terrain ground squares within 3 squares; they count as normal terrain until its next turn. Requires soil or living vegetation; cannot bridge empty space or bypass occupied squares.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/root-bridge.md",
+            "sha256": "e9f51a3bb7ad6d595882bb6915478b157aaa2adcacf53138cff1c5cf7d35fe00"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-seizing-limbs",
+          "path": "design/monster-abilities/seizing-limbs.md",
+          "sha256": "66f2767bac03446133659d16daf8320854f42e75c80b88490fda96d517417737",
+          "name": "Seizing Limbs",
+          "action": "Main Action",
+          "flavorMarkdown": "*A coil or grasping limb closes around the target and braces against its struggling weight.*",
+          "rulesMarkdown": "Use the printed attack. Standard also establishes Grappled 1; Strong establishes Grappled 2. A single holder’s contribution is replaced by its higher new result, not added to itself. Other holders stack normally. The holder suffers its own grapple contribution and cannot move while maintaining it. Release at any time without an action; death, unconsciousness or separation beyond the attack’s reach ends the hold. Force and external aid follow the core grapple rules.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Seizing Limbs\n\n*A coil or grasping limb closes around the target and braces against its struggling weight.*\n\n## Rules\n\n**ID:** monster-seizing-limbs\n\n\n**Action:** Main Action\n\nUse the printed attack. Standard also establishes Grappled 1; Strong establishes Grappled 2. A single holder’s contribution is replaced by its higher new result, not added to itself. Other holders stack normally. The holder suffers its own grapple contribution and cannot move while maintaining it. Release at any time without an action; death, unconsciousness or separation beyond the attack’s reach ends the hold. Force and external aid follow the core grapple rules.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/seizing-limbs.md",
+            "sha256": "66f2767bac03446133659d16daf8320854f42e75c80b88490fda96d517417737"
+          },
+          "automation": "pending"
         }
       ],
       "summoning": {

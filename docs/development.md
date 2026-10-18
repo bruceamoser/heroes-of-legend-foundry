@@ -1206,3 +1206,28 @@ Final #15 integration rebased onto #140 main `168b7a4`. Only appended documentat
 Tag `v0.1.0` at `bc251123e0ba5a9e0c90d7bec1975a4aec197a3c` passed [CI run 39087097066](https://github.com/bruceamoser/heroes-of-legend-foundry/actions/runs/39087097066) on Node 24.22.0: 370 tests and a validated 352-file package. The exact 95,390,654-byte ZIP (`8189bdb81cd1b33f4b7013b6aa4ff10f56480a1d4dd14f890a9158a390779388`) passed native Foundry 14.369 Setup installation/manifest-driven alpha replacement with edited-Actor preservation. The final installed GM/two-player run passed all nine gameplay/visual checkpoints, zero page errors through teardown and exact cleanup (3 Actors, 2 Users, 1 Scene, 1 Combat, 24 messages). Primary reviewed the final theme/layout and attack/defense screenshots, supported by the unobstructed narrow probe. The same assets were published as the full latest release; anonymous manifest/ZIP/SHA256SUMS downloads were byte-equal to CI. Native public Install also passed on 14.369, preserving the edited imported Actor with zero browser errors. The actual alpha Update check fetched correct public 0.1.0 URLs but returned `isUpgrade: false`; no Update-button transition or previous-public-release upgrade is claimed. Local alpha users can reinstall via Setup Install System; this platform limitation is documented. See [release evidence](release-0.1.0.md) and [installed-core acceptance](installed-core-acceptance.md).
 
 The installed fixture uses constructor-built PCs; #137's guided creation/advancement and the six reference-hero Review/commits remain separate evidence. Readable specialty costs/effects remain manual; decorative tier/silhouette parity is not claimed. Licensing remains explicitly undecided with existing notices retained.
+
+
+### Issue #175 creature actions and profile updates
+
+Node 24 build/validation and all 432 tests pass. The full workshop browser suite
+passes against current bdfd18e catalogs. Foundry 14.369 native acceptance passed
+`test:creature-expansion` (nine representative creature sheets, ten full specialty
+reference declarations, stable shared IDs, no unexpected rolls/mutations, and
+commanded summon restrictions), `test:profile-update` (old creature/summon CV and
+references, shared Fall to Pieces, preserved local blocks/injuries/items/effects/
+command history/name/art, and idempotent replay), and `test:creature-actions`
+(Red Dragon multi-target suggestions, non-owner fresh/repeated Defend, exact
+printed outcomes and normal encounter defense ability availability). All three
+reported zero page errors and cleaned their fixture documents. The isolated
+server was stopped after acceptance.
+
+GM world creature/summon sheets have **Update profile**, which reads the installed
+current pack and preserves divergent printed blocks and all live resources.
+`static/data/profile-update-bases.json` contains only previous-profile change
+fingerprints; regeneration is pinned to software 9030f69 and book d67e046. Run
+`node scripts/generate-profile-update-bases.mjs --check` with that software Git
+object available. The ordinary package does not require a book checkout.
+Specialty effects/timing, AoE worst-target choice, and forced movement/terrain
+remain DA adjudication with complete local rules; pure primitive tests do not
+establish automatic specialty resolution. See the action-expansion audit.

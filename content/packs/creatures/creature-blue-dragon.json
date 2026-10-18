@@ -39,7 +39,7 @@
       "baseMax": 52,
       "sourceText": "52"
     },
-    "cv": 88,
+    "cv": 96,
     "speed": 7,
     "speedSource": "7; fly 10",
     "alternateSpeeds": [
@@ -103,6 +103,7 @@
           "id": "main-0",
           "category": "main",
           "name": "Basic Melee",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -119,6 +120,7 @@
           "id": "main-1",
           "category": "main",
           "name": "Forked lightning",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -135,6 +137,7 @@
           "id": "main-2",
           "category": "main",
           "name": "Raking claws",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -151,6 +154,7 @@
           "id": "maneuver-0",
           "category": "maneuver",
           "name": "Scatter Stones",
+          "abilityId": "monster-scatter-stones",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -167,6 +171,7 @@
           "id": "maneuver-1",
           "category": "maneuver",
           "name": "Defend",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -182,7 +187,25 @@
         {
           "id": "reaction-0",
           "category": "reaction",
+          "name": "Tail Retort",
+          "abilityId": "monster-tail-retort",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "After adjacent attack deals HP damage: push attacker 2; Stability applies.",
+          "referenceMarkdown": "### Tail Retort\n\n*The dragon twists with the blow and its heavy tail sweeps across the attacker's footing.*\n\nAfter an adjacent attacker's attack resolves and deals HP damage to this creature, push that attacker 2 squares directly away. This creature must survive and remain capable. Apply Stability, terrain costs and normal collision damage; no separate attack damage. Cannot trigger from a free attack or another retaliatory effect."
+        },
+        {
+          "id": "reaction-1",
+          "category": "reaction",
           "name": "Opportunity Attack",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -199,13 +222,13 @@
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Forked lightning | Agility | 11 + Dazed 2 / 8 + Dazed 1 / 5 |\n| Raking claws | Agility | 8 + Push 3 / 5 + Push 1 / 3 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Scatter Stones | 2 empty ground squares within 2: difficult terrain until next turn. |\n| Defend | +1 Bane |",
-      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Opportunity Attack | Basic Melee |"
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Tail Retort | After adjacent attack deals HP damage: push attacker 2; Stability applies. |\n| Opportunity Attack | Basic Melee |"
     },
     "details": {
       "flavorMarkdown": "*Blue scales rise from a desert dragon's head like polished mineral plates, and sparks dance between its horns.*",
-      "specialtyMarkdown": "### Forked lightning\n\n**Target:** All creatures in a straight line 6 squares long and 1 square wide; no exclusions. Each player rolls defense separately. **Player defense:** Agility. **Damage type:** lightning.\n\n**Weak defense:** Dazed 2. **Standard defense:** Dazed 1.\n\n**Limit:** Cannot use this attack on consecutive turns, regardless of result.\n\n### Raking claws\n\n**Target:** One visible creature within 2 squares. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Push 3. **Standard defense:** Push 1.\n\n**Limit:** Apply Stability, terrain costs and normal collision rules to the printed distance.\n\n### Scatter Stones\n\n*A shove of its foot sends loose stones skittering into the approach.*\n\nPlace difficult terrain in up to 2 connected empty ground squares within 2 squares until its next turn. Requires loose earth or stones. No entry damage or automatic falling.",
+      "specialtyMarkdown": "### Forked lightning\n\n**Target:** All creatures in a straight line 6 squares long and 1 square wide; no exclusions. Each player rolls defense separately. **Player defense:** Agility. **Damage type:** lightning.\n\n**Weak defense:** Dazed 2. **Standard defense:** Dazed 1.\n\n**Limit:** Cannot use this attack on consecutive turns, regardless of result.\n\n### Raking claws\n\n**Target:** One visible creature within 2 squares. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Push 3. **Standard defense:** Push 1.\n\n**Limit:** Apply Stability, terrain costs and normal collision rules to the printed distance.\n\n### Scatter Stones\n\n*A shove of its foot sends loose stones skittering into the approach.*\n\nPlace difficult terrain in up to 2 connected empty ground squares within 2 squares until its next turn. Requires loose earth or stones. No entry damage or automatic falling.\n\n### Tail Retort\n\n*The dragon twists with the blow and its heavy tail sweeps across the attacker's footing.*\n\nAfter an adjacent attacker's attack resolves and deals HP damage to this creature, push that attacker 2 squares directly away. This creature must survive and remain capable. Apply Stability, terrain costs and normal collision damage; no separate attack damage. Cannot trigger from a free attack or another retaliatory effect.",
       "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.\n\n**Heavy Frame — Passive:** Stability 2; an explicit trait, not a bonus calculated from Size.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Tactics and retreat:** Line up the lightning carefully; a scattered party limits its reach. Use claws or loose stones in the intervening turn.\n\n**Encounter and conversation:** It controls a chain of wells and treats broken hospitality as a more serious insult than theft.\n\n**Habitat:** Remote domain; defended lair · **Communication:** Common and Draconic\n\n**Loot:** Recoverable possessions or lair clues chosen for the adventure; body parts grant no automatic special equipment or coin value.\n\n**Summoning:** Ineligible.",
-      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-blue-dragon\n\n\n**Category:** Dragon · **Role:** Disabler · **CV:** 88\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Forked lightning | Knowledge | 2 Boons | 5 lightning damage. | 8 lightning damage. Dazed 1. | 11 lightning damage. Dazed 2. |\n| Raking claws | Brawn | 2 Boons | 3 physical damage. | 5 physical damage. Push 1. | 8 physical damage. Push 3. |\n\nUse the attributes above for defenses named by incoming attacks. Same targeting, limits and costs apply; no opposed second roll.\n\n### CV worksheet\n\n**Reference damage:** 5/8/11\n\n**Reference type:** lightning\n\n**Expected targets:** 2\n\n**Utility factor:** 1.6\n\n**Regeneration per turn:** 0\n\nReference I=3.000, O=19.036. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [driving blow](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/driving-blow.md), [scatter stones](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/scatter-stones.md), [stunning strike](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/stunning-strike.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/rules/stability.md)"
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-blue-dragon\n\n\n**Category:** Dragon · **Role:** Disabler · **CV:** 96\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Forked lightning | Knowledge | 2 Boons | 5 lightning damage. | 8 lightning damage. Dazed 1. | 11 lightning damage. Dazed 2. |\n| Raking claws | Brawn | 2 Boons | 3 physical damage. | 5 physical damage. Push 1. | 8 physical damage. Push 3. |\n\nUse the attributes above for defenses named by incoming attacks. Same targeting, limits and costs apply; no opposed second roll.\n\n### CV worksheet\n\n**Reference damage:** 5/8/11\n\n**Reference type:** lightning\n\n**Expected targets:** 2\n\n**Utility factor:** 1.75\n\n**Action review (#1279):** U 1.6 → 1.75: Maneuver allowance +0, Reaction allowance +0.15. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=3.000, O=19.036. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [driving blow](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/driving-blow.md), [scatter stones](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/scatter-stones.md), [stunning strike](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/stunning-strike.md), [Tail Retort](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/tail-retort.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/rules/stability.md)"
     },
     "biography": ""
   },
@@ -231,9 +254,9 @@
       "catalogId": "creature-blue-dragon",
       "source": {
         "path": "design/bestiary/creatures/blue-dragon.md",
-        "sha256": "33cb6c2b41f204e725230d5304ea8abb3194698e2b44bec03f969726beedd99a"
+        "sha256": "5903d58df73dde8119ef875542fa53bc7b67a3d9c07cbafdeed1e7ddd8440bd5"
       },
-      "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
+      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Printed profile · specialty automation pending",
@@ -241,7 +264,7 @@
       "classification": {
         "category": "Dragon",
         "role": "Disabler",
-        "cv": 88
+        "cv": 96
       },
       "family": "Dragons, drakes and hydras",
       "abilitySources": [
@@ -262,6 +285,78 @@
           "id": "monster-stunning-strike",
           "path": "design/monster-abilities/stunning-strike.md",
           "sha256": "356a3a0e45c836d19381bc6edc261ce8a54c9720079189bd6226744e0099fc7e"
+        },
+        {
+          "label": "Tail Retort",
+          "id": "monster-tail-retort",
+          "path": "design/monster-abilities/tail-retort.md",
+          "sha256": "fe2d45e693f3832560c498c0ed2a9cb38e3edb9f38b8e27b5dcd0eb80919cd43"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-driving-blow",
+          "path": "design/monster-abilities/driving-blow.md",
+          "sha256": "38b3406cbcb2f57fdc1bbf57f09857b7ef8a9fd7b35e311dc812476677e6b276",
+          "name": "Driving Blow",
+          "action": "Main Action",
+          "flavorMarkdown": "*The blow lands with enough force to send its victim stumbling backward.*",
+          "rulesMarkdown": "Use the printed attack. Standard pushes the target 1 square; Strong pushes it 2. Apply Stability before moving. This is a rider, not a separate attack or Force action.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Driving Blow\n\n*The blow lands with enough force to send its victim stumbling backward.*\n\n## Rules\n\n**ID:** monster-driving-blow\n\n\n**Action:** Main Action\n\nUse the printed attack. Standard pushes the target 1 square; Strong pushes it 2. Apply Stability before moving. This is a rider, not a separate attack or Force action.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/driving-blow.md",
+            "sha256": "38b3406cbcb2f57fdc1bbf57f09857b7ef8a9fd7b35e311dc812476677e6b276"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-scatter-stones",
+          "path": "design/monster-abilities/scatter-stones.md",
+          "sha256": "9d9752a949419eb3ff75ef7eb78a6d82e3e91e18b75f579bbd7d79f32cbcddff",
+          "name": "Scatter Stones",
+          "action": "Maneuver",
+          "flavorMarkdown": "*A shove of its foot sends loose stones skittering into the approach.*",
+          "rulesMarkdown": "Place difficult terrain in up to 2 connected empty ground squares within 2 squares until its next turn. Requires loose earth or stones. No entry damage or automatic falling.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Scatter Stones\n\n*A shove of its foot sends loose stones skittering into the approach.*\n\n## Rules\n\n**ID:** monster-scatter-stones\n\n\n**Action:** Maneuver\n\nPlace difficult terrain in up to 2 connected empty ground squares within 2 squares until its next turn. Requires loose earth or stones. No entry damage or automatic falling.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/scatter-stones.md",
+            "sha256": "9d9752a949419eb3ff75ef7eb78a6d82e3e91e18b75f579bbd7d79f32cbcddff"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-stunning-strike",
+          "path": "design/monster-abilities/stunning-strike.md",
+          "sha256": "356a3a0e45c836d19381bc6edc261ce8a54c9720079189bd6226744e0099fc7e",
+          "name": "Stunning Strike",
+          "action": "Main Action",
+          "flavorMarkdown": "*The blow leaves thought and motion briefly out of step.*",
+          "rulesMarkdown": "The printed attack applies Dazed. Retained action categories are selected at turn start; do not retroactively remove spent actions.\n\nActual damage, targeting and defense attribute are printed on the creature card.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Stunning Strike\n\n*The blow leaves thought and motion briefly out of step.*\n\n## Rules\n\n**ID:** monster-stunning-strike\n\n\n**Action:** Main Action\n\nThe printed attack applies Dazed. Retained action categories are selected at turn start; do not retroactively remove spent actions.\n\nActual damage, targeting and defense attribute are printed on the creature card.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/stunning-strike.md",
+            "sha256": "356a3a0e45c836d19381bc6edc261ce8a54c9720079189bd6226744e0099fc7e"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-tail-retort",
+          "path": "design/monster-abilities/tail-retort.md",
+          "sha256": "fe2d45e693f3832560c498c0ed2a9cb38e3edb9f38b8e27b5dcd0eb80919cd43",
+          "name": "Tail Retort",
+          "action": "Reaction",
+          "flavorMarkdown": "*The dragon twists with the blow and its heavy tail sweeps across the attacker's footing.*",
+          "rulesMarkdown": "After an adjacent attacker's attack resolves and deals HP damage to this creature, push that attacker 2 squares directly away. This creature must survive and remain capable. Apply Stability, terrain costs and normal collision damage; no separate attack damage. Cannot trigger from a free attack or another retaliatory effect.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Tail Retort\n\n*The dragon twists with the blow and its heavy tail sweeps across the attacker's footing.*\n\n## Rules\n\n**ID:** monster-tail-retort\n\n**Action:** Reaction\n\nAfter an adjacent attacker's attack resolves and deals HP damage to this creature, push that attacker 2 squares directly away. This creature must survive and remain capable. Apply Stability, terrain costs and normal collision damage; no separate attack damage. Cannot trigger from a free attack or another retaliatory effect.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/tail-retort.md",
+            "sha256": "fe2d45e693f3832560c498c0ed2a9cb38e3edb9f38b8e27b5dcd0eb80919cd43"
+          },
+          "automation": "pending"
         }
       ],
       "summoning": {

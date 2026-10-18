@@ -39,7 +39,7 @@
       "baseMax": 28,
       "sourceText": "28"
     },
-    "cv": 26,
+    "cv": 27,
     "speed": 7,
     "speedSource": "7",
     "alternateSpeeds": [],
@@ -94,6 +94,7 @@
           "id": "main-0",
           "category": "main",
           "name": "Basic Melee",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -110,6 +111,7 @@
           "id": "main-1",
           "category": "main",
           "name": "Labyrinth axe",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -126,6 +128,7 @@
           "id": "maneuver-0",
           "category": "maneuver",
           "name": "Shoulder Through",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -142,6 +145,7 @@
           "id": "maneuver-1",
           "category": "maneuver",
           "name": "Defend",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -157,7 +161,25 @@
         {
           "id": "reaction-0",
           "category": "reaction",
+          "name": "Break the Approach",
+          "abilityId": "monster-break-the-approach",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "After an enemy voluntarily closes: push 1; Stability applies.",
+          "referenceMarkdown": "### Break the Approach\n\n*It lashes out with shoulder or horn, spoiling the straight line of the charging foe.*\n\nAfter a visible enemy ends voluntary movement adjacent to this creature, push that enemy 1 square directly away. Apply Stability, terrain costs and normal collision rules; no separate attack damage. Forced movement and movement granted by a free attack cannot trigger this."
+        },
+        {
+          "id": "reaction-1",
+          "category": "reaction",
           "name": "Opportunity Attack",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -174,13 +196,13 @@
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Labyrinth axe | Agility | 9 + Push 3 / 6 + Push 1 / 3 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Shoulder Through | Push one adjacent target 1; Stability applies. |\n| Defend | +1 Bane |",
-      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Opportunity Attack | Basic Melee |"
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Break the Approach | After an enemy voluntarily closes: push 1; Stability applies. |\n| Opportunity Attack | Basic Melee |"
     },
     "details": {
       "flavorMarkdown": "*A horned wanderer carries a broad axe and knots a cord at every junction, refusing to trust any maze twice.*",
-      "specialtyMarkdown": "### Labyrinth axe\n\n**Target:** One visible creature within 2 squares. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Push 3. **Standard defense:** Push 1.\n\n**Limit:** Apply Stability, terrain costs and normal collision rules to the printed distance.\n\n### Shoulder Through\n\n*It lowers its weight and makes the space in front of it suddenly too small.*\n\nPush one adjacent creature 1 square. Apply Stability and normal collision rules. Once per turn; no separate damage.",
+      "specialtyMarkdown": "### Labyrinth axe\n\n**Target:** One visible creature within 2 squares. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Push 3. **Standard defense:** Push 1.\n\n**Limit:** Apply Stability, terrain costs and normal collision rules to the printed distance.\n\n### Shoulder Through\n\n*It lowers its weight and makes the space in front of it suddenly too small.*\n\nPush one adjacent creature 1 square. Apply Stability and normal collision rules. Once per turn; no separate damage.\n\n### Break the Approach\n\n*It lashes out with shoulder or horn, spoiling the straight line of the charging foe.*\n\nAfter a visible enemy ends voluntary movement adjacent to this creature, push that enemy 1 square directly away. Apply Stability, terrain costs and normal collision rules; no separate attack damage. Forced movement and movement granted by a free attack cannot trigger this.",
       "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.\n\n**Heavy Frame — Passive:** Stability 1; an explicit trait, not a bonus calculated from Size.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Tactics and retreat:** Push enemies away from the junction it needs, then shoulder through a narrow gap. A credible lead about its relative can stop the fight.\n\n**Encounter and conversation:** The minotaur is searching for a captive relative and may guide anyone with credible news.\n\n**Habitat:** Wild frontier; ancient ruin · **Communication:** None\n\n**Loot:** Recoverable possessions or lair clues chosen for the adventure; body parts grant no automatic special equipment or coin value.\n\n**Summoning:** Ineligible.",
-      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-minotaur\n\n\n**Category:** Beast · **Role:** Displacer · **CV:** 26\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Labyrinth axe | Brawn | 1 Boon | 3 physical damage. | 6 physical damage. Push 1. | 9 physical damage. Push 3. |\n\nUse the attributes above for defenses named by incoming attacks. Same targeting, limits and costs apply; no opposed second roll.\n\n### CV worksheet\n\n**Reference damage:** 3/6/9\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.3\n\n**Regeneration per turn:** 0\n\nReference I=4.000, O=5.894. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [barrel through](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/barrel-through.md), [driving blow](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/driving-blow.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/rules/stability.md)"
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-minotaur\n\n\n**Category:** Beast · **Role:** Displacer · **CV:** 27\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Labyrinth axe | Brawn | 1 Boon | 3 physical damage. | 6 physical damage. Push 1. | 9 physical damage. Push 3. |\n\nUse the attributes above for defenses named by incoming attacks. Same targeting, limits and costs apply; no opposed second roll.\n\n### CV worksheet\n\n**Reference damage:** 3/6/9\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.4\n\n**Action review (#1279):** U 1.3 → 1.4: Maneuver allowance +0, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=4.000, O=5.894. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [barrel through](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/barrel-through.md), [Break the Approach](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/break-the-approach.md), [driving blow](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/driving-blow.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/rules/stability.md)"
     },
     "biography": ""
   },
@@ -206,9 +228,9 @@
       "catalogId": "creature-minotaur",
       "source": {
         "path": "design/bestiary/creatures/minotaur.md",
-        "sha256": "108a48be7710e1463b668452086b27619fca6d79ca32fcb2060b35910ecf4e7f"
+        "sha256": "c87b1a7466762d4b393fec1874e461dce59c459cee65aaeb5bd146506bc695f8"
       },
-      "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
+      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Printed profile · specialty automation pending",
@@ -216,7 +238,7 @@
       "classification": {
         "category": "Beast",
         "role": "Displacer",
-        "cv": 26
+        "cv": 27
       },
       "family": "Fantastic hunters and guardians",
       "abilitySources": [
@@ -227,10 +249,66 @@
           "sha256": "2817154accc7d427340cfcaa6c07447067dad0bf329628f615774d8d1086ce59"
         },
         {
+          "label": "Break the Approach",
+          "id": "monster-break-the-approach",
+          "path": "design/monster-abilities/break-the-approach.md",
+          "sha256": "0cca1a4008284400eb8ac6814f739a29ab1f3d30518098e0a9749b1cdfe9ae5d"
+        },
+        {
           "label": "driving blow",
           "id": "monster-driving-blow",
           "path": "design/monster-abilities/driving-blow.md",
           "sha256": "38b3406cbcb2f57fdc1bbf57f09857b7ef8a9fd7b35e311dc812476677e6b276"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-barrel-through",
+          "path": "design/monster-abilities/barrel-through.md",
+          "sha256": "2817154accc7d427340cfcaa6c07447067dad0bf329628f615774d8d1086ce59",
+          "name": "Shoulder Through",
+          "action": "Maneuver",
+          "flavorMarkdown": "*It lowers its weight and makes the space in front of it suddenly too small.*",
+          "rulesMarkdown": "Push one adjacent creature 1 square. Apply Stability and normal collision rules. Once per turn; no separate damage.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Shoulder Through\n\n*It lowers its weight and makes the space in front of it suddenly too small.*\n\n## Rules\n\n**ID:** monster-barrel-through\n\n\n**Action:** Maneuver\n\nPush one adjacent creature 1 square. Apply Stability and normal collision rules. Once per turn; no separate damage.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/barrel-through.md",
+            "sha256": "2817154accc7d427340cfcaa6c07447067dad0bf329628f615774d8d1086ce59"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-break-the-approach",
+          "path": "design/monster-abilities/break-the-approach.md",
+          "sha256": "0cca1a4008284400eb8ac6814f739a29ab1f3d30518098e0a9749b1cdfe9ae5d",
+          "name": "Break the Approach",
+          "action": "Reaction",
+          "flavorMarkdown": "*It lashes out with shoulder or horn, spoiling the straight line of the charging foe.*",
+          "rulesMarkdown": "After a visible enemy ends voluntary movement adjacent to this creature, push that enemy 1 square directly away. Apply Stability, terrain costs and normal collision rules; no separate attack damage. Forced movement and movement granted by a free attack cannot trigger this.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Break the Approach\n\n*It lashes out with shoulder or horn, spoiling the straight line of the charging foe.*\n\n## Rules\n\n**ID:** monster-break-the-approach\n\n**Action:** Reaction\n\nAfter a visible enemy ends voluntary movement adjacent to this creature, push that enemy 1 square directly away. Apply Stability, terrain costs and normal collision rules; no separate attack damage. Forced movement and movement granted by a free attack cannot trigger this.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/break-the-approach.md",
+            "sha256": "0cca1a4008284400eb8ac6814f739a29ab1f3d30518098e0a9749b1cdfe9ae5d"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-driving-blow",
+          "path": "design/monster-abilities/driving-blow.md",
+          "sha256": "38b3406cbcb2f57fdc1bbf57f09857b7ef8a9fd7b35e311dc812476677e6b276",
+          "name": "Driving Blow",
+          "action": "Main Action",
+          "flavorMarkdown": "*The blow lands with enough force to send its victim stumbling backward.*",
+          "rulesMarkdown": "Use the printed attack. Standard pushes the target 1 square; Strong pushes it 2. Apply Stability before moving. This is a rider, not a separate attack or Force action.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Driving Blow\n\n*The blow lands with enough force to send its victim stumbling backward.*\n\n## Rules\n\n**ID:** monster-driving-blow\n\n\n**Action:** Main Action\n\nUse the printed attack. Standard pushes the target 1 square; Strong pushes it 2. Apply Stability before moving. This is a rider, not a separate attack or Force action.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/driving-blow.md",
+            "sha256": "38b3406cbcb2f57fdc1bbf57f09857b7ef8a9fd7b35e311dc812476677e6b276"
+          },
+          "automation": "pending"
         }
       ],
       "summoning": {

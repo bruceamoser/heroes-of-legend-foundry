@@ -94,6 +94,7 @@
           "id": "main-0",
           "category": "main",
           "name": "Basic Melee",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -110,6 +111,7 @@
           "id": "main-1",
           "category": "main",
           "name": "Thorn dart",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -125,7 +127,25 @@
         {
           "id": "maneuver-0",
           "category": "maneuver",
+          "name": "Stalking Step",
+          "abilityId": "monster-stalking-step",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Move 2 to cover or concealment; no opportunity from one chosen enemy.",
+          "referenceMarkdown": "### Stalking Step\n\n*It folds into the broken light, leaving only a leaf moving where it stood.*\n\nMove up to 2 squares without provoking from one visible enemy chosen before moving, ending in a square with cover or concealment from that enemy. Pay normal terrain costs and provoke normally from other enemies. Does not grant Hidden; a separate Hide action still needs concealment and a roll when uncertain."
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
           "name": "Defend",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -141,7 +161,42 @@
         {
           "id": "reaction-0",
           "category": "reaction",
+          "name": "Flicker Aside",
+          "abilityId": "monster-flicker-aside",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "After taking HP damage: teleport 1 to a visible empty legal square.",
+          "referenceMarkdown": "### Flicker Aside\n\n*Its outline gutters like a flame in a draft and catches again just beyond the reaching hand.*\n\nAfter an attack resolves and deals HP damage to this creature, teleport to a visible empty square within 1 square. This creature must survive and remain capable. The destination must support its footprint and be reachable by an unobstructed straight path; this does not pass through walls or occupied squares. No opportunity attacks from this teleport. No trigger from a free attack; no attack is granted."
+        },
+        {
+          "id": "reaction-1",
+          "category": "reaction",
+          "name": "Slip the Rush",
+          "abilityId": "monster-slip-the-rush",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "After an enemy voluntarily closes: move 1; no opportunity from that enemy.",
+          "referenceMarkdown": "### Slip the Rush\n\n*As the pursuer lunges into reach, it ducks sideways through the space the rush left open.*\n\nAfter a visible enemy ends voluntary movement adjacent to this creature, move up to 1 square without provoking from that enemy. Other opportunity attacks and normal terrain costs apply. This movement grants no attack; it cannot trigger from forced movement or movement granted by a free attack."
+        },
+        {
+          "id": "reaction-2",
+          "category": "reaction",
           "name": "Opportunity Attack",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -157,14 +212,14 @@
       ],
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 4/2/1 |\n| Thorn dart | Agility | 3/2/1 |",
-      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Defend | +1 Bane |",
-      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Opportunity Attack | Basic Melee |"
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Stalking Step | Move 2 to cover or concealment; no opportunity from one chosen enemy. |\n| Defend | +1 Bane |",
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Flicker Aside | After taking HP damage: teleport 1 to a visible empty legal square. |\n| Slip the Rush | After an enemy voluntarily closes: move 1; no opportunity from that enemy. |\n| Opportunity Attack | Basic Melee |"
     },
     "details": {
       "flavorMarkdown": "*A tiny winged fey with thornlike features, leaf-colored clothes and a fierce sense of local etiquette. Its home may be no larger than a hedge, but its claim to it is absolute.*",
-      "specialtyMarkdown": "### Thorn dart\n\n**Target:** One visible creature within 4 squares. **Player defense:** Agility. **Damage type:** physical.",
-      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Signs:** Bootlaces are tied to roots; milk disappears from a closed cup.\n\n**Purpose:** Have small courtesies observed.\n\n**Tactics and retreat:** Use a thorn dart and flee into cover; negotiate for a sincere apology.\n\n**Counterplay and conversation:** Offer a small service and ask what rule was broken.\n\n**Habitat:** Hedgerow; garden · **Communication:** Common and Fey\n\n**Loot:** A button or tiny carved key with a local story.\n\n**Summoning:** Fey 1 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/summons/hedge-sprite.md).",
-      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-hedge-sprite\n\n\n**Category:** Fey · **Role:** Trickster · **CV:** 5\n\n**Difficulty rationale:** An agile or elusive body warrants attack Banes. Ordinary attack difficulty; riders and positioning carry the threat.\n\n**Reference damage:** 1/2/3\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.1\n\n**Regeneration per turn:** 0\n\nReference I=4.404, O=1.162. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/rules/stability.md)"
+      "specialtyMarkdown": "### Thorn dart\n\n**Target:** One visible creature within 4 squares. **Player defense:** Agility. **Damage type:** physical.\n\n### Slip the Rush\n\n*As the pursuer lunges into reach, it ducks sideways through the space the rush left open.*\n\nAfter a visible enemy ends voluntary movement adjacent to this creature, move up to 1 square without provoking from that enemy. Other opportunity attacks and normal terrain costs apply. This movement grants no attack; it cannot trigger from forced movement or movement granted by a free attack.\n\n### Flicker Aside\n\n*Its outline gutters like a flame in a draft and catches again just beyond the reaching hand.*\n\nAfter an attack resolves and deals HP damage to this creature, teleport to a visible empty square within 1 square. This creature must survive and remain capable. The destination must support its footprint and be reachable by an unobstructed straight path; this does not pass through walls or occupied squares. No opportunity attacks from this teleport. No trigger from a free attack; no attack is granted.\n\n### Stalking Step\n\n*It folds into the broken light, leaving only a leaf moving where it stood.*\n\nMove up to 2 squares without provoking from one visible enemy chosen before moving, ending in a square with cover or concealment from that enemy. Pay normal terrain costs and provoke normally from other enemies. Does not grant Hidden; a separate Hide action still needs concealment and a roll when uncertain.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Signs:** Bootlaces are tied to roots; milk disappears from a closed cup.\n\n**Purpose:** Have small courtesies observed.\n\n**Tactics and retreat:** Use a thorn dart and flee into cover; negotiate for a sincere apology.\n\n**Counterplay and conversation:** Offer a small service and ask what rule was broken.\n\n**Habitat:** Hedgerow; garden · **Communication:** Common and Fey\n\n**Loot:** A button or tiny carved key with a local story.\n\n**Summoning:** Fey 1 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/summons/hedge-sprite.md).",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-hedge-sprite\n\n\n**Category:** Fey · **Role:** Trickster · **CV:** 5\n\n**Difficulty rationale:** An agile or elusive body warrants attack Banes. Ordinary attack difficulty; riders and positioning carry the threat.\n\n**Reference damage:** 1/2/3\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.25\n\n**Action review (#1279):** U 1.1 → 1.25: Maneuver allowance +0.05, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=4.404, O=1.162. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [Flicker Aside](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/flicker-aside.md), [Slip the Rush](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/slip-the-rush.md), [Stalking Step](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/stalking-step.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/rules/stability.md)"
     },
     "biography": ""
   },
@@ -190,9 +245,9 @@
       "catalogId": "creature-hedge-sprite",
       "source": {
         "path": "design/bestiary/creatures/hedge-sprite.md",
-        "sha256": "6932b327ef4d81fab602a3ffc09782069a1e5777b558201678e4b7f38d710c9b"
+        "sha256": "bba63f52edb7dc49b880c58651e4ace39410e72588228228093f39e087740194"
       },
-      "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
+      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Printed profile · specialty automation pending",
@@ -203,7 +258,76 @@
         "cv": 5
       },
       "family": "Fey",
-      "abilitySources": [],
+      "abilitySources": [
+        {
+          "label": "Flicker Aside",
+          "id": "monster-flicker-aside",
+          "path": "design/monster-abilities/flicker-aside.md",
+          "sha256": "a7b83551d94cfbdb670102c36287532efd3bef72f1981337e21415dac9833206"
+        },
+        {
+          "label": "Slip the Rush",
+          "id": "monster-slip-the-rush",
+          "path": "design/monster-abilities/slip-the-rush.md",
+          "sha256": "dc616a139a0db7f2e7dfd3c695c3ae301518d3b065c57c34b01c19f7a97f5a5e"
+        },
+        {
+          "label": "Stalking Step",
+          "id": "monster-stalking-step",
+          "path": "design/monster-abilities/stalking-step.md",
+          "sha256": "6796ed679f378e16688ea33179f69b864c6788ebe4b2d3ea605c9b9ce29fad97"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-flicker-aside",
+          "path": "design/monster-abilities/flicker-aside.md",
+          "sha256": "a7b83551d94cfbdb670102c36287532efd3bef72f1981337e21415dac9833206",
+          "name": "Flicker Aside",
+          "action": "Reaction",
+          "flavorMarkdown": "*Its outline gutters like a flame in a draft and catches again just beyond the reaching hand.*",
+          "rulesMarkdown": "After an attack resolves and deals HP damage to this creature, teleport to a visible empty square within 1 square. This creature must survive and remain capable. The destination must support its footprint and be reachable by an unobstructed straight path; this does not pass through walls or occupied squares. No opportunity attacks from this teleport. No trigger from a free attack; no attack is granted.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Flicker Aside\n\n*Its outline gutters like a flame in a draft and catches again just beyond the reaching hand.*\n\n## Rules\n\n**ID:** monster-flicker-aside\n\n**Action:** Reaction\n\nAfter an attack resolves and deals HP damage to this creature, teleport to a visible empty square within 1 square. This creature must survive and remain capable. The destination must support its footprint and be reachable by an unobstructed straight path; this does not pass through walls or occupied squares. No opportunity attacks from this teleport. No trigger from a free attack; no attack is granted.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/flicker-aside.md",
+            "sha256": "a7b83551d94cfbdb670102c36287532efd3bef72f1981337e21415dac9833206"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-slip-the-rush",
+          "path": "design/monster-abilities/slip-the-rush.md",
+          "sha256": "dc616a139a0db7f2e7dfd3c695c3ae301518d3b065c57c34b01c19f7a97f5a5e",
+          "name": "Slip the Rush",
+          "action": "Reaction",
+          "flavorMarkdown": "*As the pursuer lunges into reach, it ducks sideways through the space the rush left open.*",
+          "rulesMarkdown": "After a visible enemy ends voluntary movement adjacent to this creature, move up to 1 square without provoking from that enemy. Other opportunity attacks and normal terrain costs apply. This movement grants no attack; it cannot trigger from forced movement or movement granted by a free attack.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Slip the Rush\n\n*As the pursuer lunges into reach, it ducks sideways through the space the rush left open.*\n\n## Rules\n\n**ID:** monster-slip-the-rush\n\n**Action:** Reaction\n\nAfter a visible enemy ends voluntary movement adjacent to this creature, move up to 1 square without provoking from that enemy. Other opportunity attacks and normal terrain costs apply. This movement grants no attack; it cannot trigger from forced movement or movement granted by a free attack.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/slip-the-rush.md",
+            "sha256": "dc616a139a0db7f2e7dfd3c695c3ae301518d3b065c57c34b01c19f7a97f5a5e"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-stalking-step",
+          "path": "design/monster-abilities/stalking-step.md",
+          "sha256": "6796ed679f378e16688ea33179f69b864c6788ebe4b2d3ea605c9b9ce29fad97",
+          "name": "Stalking Step",
+          "action": "Maneuver",
+          "flavorMarkdown": "*It folds into the broken light, leaving only a leaf moving where it stood.*",
+          "rulesMarkdown": "Move up to 2 squares without provoking from one visible enemy chosen before moving, ending in a square with cover or concealment from that enemy. Pay normal terrain costs and provoke normally from other enemies. Does not grant Hidden; a separate Hide action still needs concealment and a roll when uncertain.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Stalking Step\n\n*It folds into the broken light, leaving only a leaf moving where it stood.*\n\n## Rules\n\n**ID:** monster-stalking-step\n\n\n**Action:** Maneuver\n\nMove up to 2 squares without provoking from one visible enemy chosen before moving, ending in a square with cover or concealment from that enemy. Pay normal terrain costs and provoke normally from other enemies. Does not grant Hidden; a separate Hide action still needs concealment and a roll when uncertain.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/stalking-step.md",
+            "sha256": "6796ed679f378e16688ea33179f69b864c6788ebe4b2d3ea605c9b9ce29fad97"
+          },
+          "automation": "pending"
+        }
+      ],
       "summoning": {
         "eligible": true,
         "summonId": "summon-hedge-sprite",

@@ -146,3 +146,14 @@ imports and creation drafts. Remove historical origin options, rules-update
 confirmations and forced update-review screens. Previous saved markers are
 ignored; origin selections use their current paired grants. Keep ordinary
 character-editing controls and structural validation.
+
+
+## October 18 creature actions and safe profile refresh (#175)
+
+Import approved #1280 from bdfd18e with shared monster-template identities and
+complete local references. Preserve Main Actions and base statistics. Specialty
+Reactions and movement remain nonblocking DA reference workflows; primitive
+action, damage and condition rules do not imply an automatic specialty resolver.
+Current compendium updates may replace unchanged printed world-profile blocks,
+using fingerprints of the previous published source, while preserving live
+resources and divergent edits. No historical rules choice is introduced.

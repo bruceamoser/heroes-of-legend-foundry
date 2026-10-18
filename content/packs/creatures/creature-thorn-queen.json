@@ -39,7 +39,7 @@
       "baseMax": 30,
       "sourceText": "30"
     },
-    "cv": 32,
+    "cv": 36,
     "speed": 6,
     "speedSource": "6",
     "alternateSpeeds": [],
@@ -94,6 +94,7 @@
           "id": "main-0",
           "category": "main",
           "name": "Basic Melee",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -110,6 +111,7 @@
           "id": "main-1",
           "category": "main",
           "name": "Thorn lash",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -126,6 +128,7 @@
           "id": "main-2",
           "category": "main",
           "name": "Root snare",
+          "abilityId": "monster-root-snare",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -141,7 +144,25 @@
         {
           "id": "maneuver-0",
           "category": "maneuver",
+          "name": "Weave the Roots",
+          "abilityId": "monster-root-bridge",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "3 connected difficult ground squares within 3 count as normal until its next turn.",
+          "referenceMarkdown": "### Weave the Roots\n\n*Roots braid themselves into firm footholds across the treacherous ground.*\n\nChoose up to 3 connected difficult-terrain ground squares within 3 squares; they count as normal terrain until its next turn. Requires soil or living vegetation; cannot bridge empty space or bypass occupied squares."
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
           "name": "Defend",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -157,7 +178,25 @@
         {
           "id": "reaction-0",
           "category": "reaction",
+          "name": "Barbed Recoil",
+          "abilityId": "monster-barbed-recoil",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "After adjacent attack deals HP damage: attacker gains Bleeding 1.",
+          "referenceMarkdown": "### Barbed Recoil\n\n*The struck bough bends back, dragging a rake of hooked thorns across the hand that struck it.*\n\nAfter an adjacent attacker's attack resolves and deals HP damage to this creature, apply Bleeding 1 to that attacker. This creature must survive and remain capable. No trigger from a free attack or another retaliatory effect. This is a condition, not another attack."
+        },
+        {
+          "id": "reaction-1",
+          "category": "reaction",
           "name": "Opportunity Attack",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -173,14 +212,14 @@
       ],
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Thorn lash | Agility | 8/6/4 |\n| Root snare | Agility | 0 + Difficult terrain until next turn; Slowed 2 / 0 + Difficult terrain until next turn; Slowed 1 / 0 + Difficult terrain until next turn |",
-      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Defend | +1 Bane |",
-      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Opportunity Attack | Basic Melee |"
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Weave the Roots | 3 connected difficult ground squares within 3 count as normal until its next turn. |\n| Defend | +1 Bane |",
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Barbed Recoil | After adjacent attack deals HP damage: attacker gains Bleeding 1. |\n| Opportunity Attack | Basic Melee |"
     },
     "details": {
       "flavorMarkdown": "*A regal woodland fey with branchlike antlers and a gown of living leaves and briars. Her authority binds a particular place and its promises, not every creature of the forest.*",
-      "specialtyMarkdown": "### Thorn lash\n\n**Target:** One visible creature within 4 squares. **Player defense:** Agility. **Damage type:** physical.\n\n### Root snare\n\n*Roots punch through the ground and lace together around the trespassers’ legs.*\n\n**Target:** 5 connected visible ground squares within 6 squares. **Player defense:** Agility. **Damage type:** None.\n\n**Weak defense:** Difficult terrain until next turn; Slowed 2. **Standard defense:** Difficult terrain until next turn; Slowed 1. **Strong defense:** Difficult terrain until next turn.\n\n**Spell:** Provokes when cast beside an enemy.\n\n**Limit:** Grounded creatures only. Terrain lasts until the start of this creature’s next turn; conditions decay normally. No entry damage or repeated attack.",
+      "specialtyMarkdown": "### Thorn lash\n\n**Target:** One visible creature within 4 squares. **Player defense:** Agility. **Damage type:** physical.\n\n### Root snare\n\n*Roots punch through the ground and lace together around the trespassers’ legs.*\n\n**Target:** 5 connected visible ground squares within 6 squares. **Player defense:** Agility. **Damage type:** None.\n\n**Weak defense:** Difficult terrain until next turn; Slowed 2. **Standard defense:** Difficult terrain until next turn; Slowed 1. **Strong defense:** Difficult terrain until next turn.\n\n**Spell:** Provokes when cast beside an enemy.\n\n**Limit:** Grounded creatures only. Terrain lasts until the start of this creature’s next turn; conditions decay normally. No entry damage or repeated attack.\n\n### Barbed Recoil\n\n*The struck bough bends back, dragging a rake of hooked thorns across the hand that struck it.*\n\nAfter an adjacent attacker's attack resolves and deals HP damage to this creature, apply Bleeding 1 to that attacker. This creature must survive and remain capable. No trigger from a free attack or another retaliatory effect. This is a condition, not another attack.\n\n### Weave the Roots\n\n*Roots braid themselves into firm footholds across the treacherous ground.*\n\nChoose up to 3 connected difficult-terrain ground squares within 3 squares; they count as normal terrain until its next turn. Requires soil or living vegetation; cannot bridge empty space or bypass occupied squares.",
       "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Signs:** Fresh briars grow across the borders of a disputed wood.\n\n**Purpose:** Recover a stolen name, promise or stretch of land.\n\n**Tactics and retreat:** Raise Root Snare beneath pursuers and punish the one who breaks through.\n\n**Counterplay and conversation:** Bring evidence of the old agreement or offer a genuinely equivalent settlement.\n\n**Habitat:** Ancient forest · **Communication:** Common and Fey\n\n**Loot:** A negotiated favor or 120 coins in old tribute, not an automatic royal relic.\n\n**Summoning:** Ineligible.",
-      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-thorn-queen\n\n\n**Category:** Fey · **Role:** Territory controller · **CV:** 32\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Thorn lash | Guile | 1 Boon | 4 physical damage. | 6 physical damage. | 8 physical damage. |\n| Root snare | Reason | 1 Boon | No damage. Difficult terrain until next turn. | No damage. Difficult terrain until next turn; Slowed 1. | No damage. Difficult terrain until next turn; Slowed 2. |\n\nThe incoming attack names the defense attribute; use the six values above. Same targeting, costs and limits apply in either perspective. No opposed second roll.\n\n\n### CV worksheet\n\n**Difficulty rationale:** An agile or elusive body warrants attack Banes. Its dangerous attack imposes defense Banes.\n\n**Reference damage:** 4/6/8\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.5\n\n**Regeneration per turn:** 0\n\nReference I=3.404, O=5.596. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [root snare](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/root-snare.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/rules/stability.md)"
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-thorn-queen\n\n\n**Category:** Fey · **Role:** Territory controller · **CV:** 36\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Thorn lash | Guile | 1 Boon | 4 physical damage. | 6 physical damage. | 8 physical damage. |\n| Root snare | Reason | 1 Boon | No damage. Difficult terrain until next turn. | No damage. Difficult terrain until next turn; Slowed 1. | No damage. Difficult terrain until next turn; Slowed 2. |\n\nThe incoming attack names the defense attribute; use the six values above. Same targeting, costs and limits apply in either perspective. No opposed second roll.\n\n\n### CV worksheet\n\n**Difficulty rationale:** An agile or elusive body warrants attack Banes. Its dangerous attack imposes defense Banes.\n\n**Reference damage:** 4/6/8\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.7\n\n**Action review (#1279):** U 1.5 → 1.7: Maneuver allowance +0.05, Reaction allowance +0.15. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=3.404, O=5.596. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [Barbed Recoil](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/barbed-recoil.md), [Weave the Roots](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/root-bridge.md), [root snare](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/root-snare.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/rules/stability.md)"
     },
     "biography": ""
   },
@@ -206,9 +245,9 @@
       "catalogId": "creature-thorn-queen",
       "source": {
         "path": "design/bestiary/creatures/thorn-queen.md",
-        "sha256": "b51cdb7fbdad6d4e942294fdec4e1c3f29cabef9977cf2d96102e9a9ece8cf69"
+        "sha256": "d740aeee93bf3204d8c3635a426ea2cd9ef35a7fb4e09d4b331f3700f840fda1"
       },
-      "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
+      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Printed profile · specialty automation pending",
@@ -216,15 +255,77 @@
       "classification": {
         "category": "Fey",
         "role": "Territory controller",
-        "cv": 32
+        "cv": 36
       },
       "family": "Fey",
       "abilitySources": [
+        {
+          "label": "Barbed Recoil",
+          "id": "monster-barbed-recoil",
+          "path": "design/monster-abilities/barbed-recoil.md",
+          "sha256": "22031e0b9a243c0e44d2586c53e5f11a2786fbcbeae1252e13b50ba6a26d88d9"
+        },
+        {
+          "label": "Weave the Roots",
+          "id": "monster-root-bridge",
+          "path": "design/monster-abilities/root-bridge.md",
+          "sha256": "e9f51a3bb7ad6d595882bb6915478b157aaa2adcacf53138cff1c5cf7d35fe00"
+        },
         {
           "label": "root snare",
           "id": "monster-root-snare",
           "path": "design/monster-abilities/root-snare.md",
           "sha256": "57c7283eb68c62cc9e0a0984da38e232df0c39330bfc703ee6e2f6345f12842c"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-barbed-recoil",
+          "path": "design/monster-abilities/barbed-recoil.md",
+          "sha256": "22031e0b9a243c0e44d2586c53e5f11a2786fbcbeae1252e13b50ba6a26d88d9",
+          "name": "Barbed Recoil",
+          "action": "Reaction",
+          "flavorMarkdown": "*The struck bough bends back, dragging a rake of hooked thorns across the hand that struck it.*",
+          "rulesMarkdown": "After an adjacent attacker's attack resolves and deals HP damage to this creature, apply Bleeding 1 to that attacker. This creature must survive and remain capable. No trigger from a free attack or another retaliatory effect. This is a condition, not another attack.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Barbed Recoil\n\n*The struck bough bends back, dragging a rake of hooked thorns across the hand that struck it.*\n\n## Rules\n\n**ID:** monster-barbed-recoil\n\n**Action:** Reaction\n\nAfter an adjacent attacker's attack resolves and deals HP damage to this creature, apply Bleeding 1 to that attacker. This creature must survive and remain capable. No trigger from a free attack or another retaliatory effect. This is a condition, not another attack.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/barbed-recoil.md",
+            "sha256": "22031e0b9a243c0e44d2586c53e5f11a2786fbcbeae1252e13b50ba6a26d88d9"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-root-bridge",
+          "path": "design/monster-abilities/root-bridge.md",
+          "sha256": "e9f51a3bb7ad6d595882bb6915478b157aaa2adcacf53138cff1c5cf7d35fe00",
+          "name": "Weave the Roots",
+          "action": "Maneuver",
+          "flavorMarkdown": "*Roots braid themselves into firm footholds across the treacherous ground.*",
+          "rulesMarkdown": "Choose up to 3 connected difficult-terrain ground squares within 3 squares; they count as normal terrain until its next turn. Requires soil or living vegetation; cannot bridge empty space or bypass occupied squares.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Weave the Roots\n\n*Roots braid themselves into firm footholds across the treacherous ground.*\n\n## Rules\n\n**ID:** monster-root-bridge\n\n\n**Action:** Maneuver\n\nChoose up to 3 connected difficult-terrain ground squares within 3 squares; they count as normal terrain until its next turn. Requires soil or living vegetation; cannot bridge empty space or bypass occupied squares.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/root-bridge.md",
+            "sha256": "e9f51a3bb7ad6d595882bb6915478b157aaa2adcacf53138cff1c5cf7d35fe00"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-root-snare",
+          "path": "design/monster-abilities/root-snare.md",
+          "sha256": "57c7283eb68c62cc9e0a0984da38e232df0c39330bfc703ee6e2f6345f12842c",
+          "name": "Root Snare",
+          "action": "Main Action; spell",
+          "flavorMarkdown": "*Roots punch through the ground and lace together around the trespassers’ legs.*",
+          "rulesMarkdown": "Choose the printed number of connected visible ground squares within range. They become difficult terrain until the start of this creature’s next turn. A creature in a chosen square when the ability resolves defends with Agility: Weak attack adds no condition, Standard applies Slowed 1, Strong Slowed 2. No damage; no repeated entry or turn-end attack. The creature’s card prints the controller’s attack attribute. Flying creatures above the ground are unaffected.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Root Snare\n\n*Roots punch through the ground and lace together around the trespassers’ legs.*\n\n## Rules\n\n**ID:** monster-root-snare\n\n\n**Action:** Main Action; spell\n\nChoose the printed number of connected visible ground squares within range. They become difficult terrain until the start of this creature’s next turn. A creature in a chosen square when the ability resolves defends with Agility: Weak attack adds no condition, Standard applies Slowed 1, Strong Slowed 2. No damage; no repeated entry or turn-end attack. The creature’s card prints the controller’s attack attribute. Flying creatures above the ground are unaffected.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/root-snare.md",
+            "sha256": "57c7283eb68c62cc9e0a0984da38e232df0c39330bfc703ee6e2f6345f12842c"
+          },
+          "automation": "pending"
         }
       ],
       "summoning": {

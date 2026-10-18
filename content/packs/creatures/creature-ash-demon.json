@@ -39,7 +39,7 @@
       "baseMax": 32,
       "sourceText": "32"
     },
-    "cv": 29,
+    "cv": 33,
     "speed": 7,
     "speedSource": "7",
     "alternateSpeeds": [],
@@ -98,6 +98,7 @@
           "id": "main-0",
           "category": "main",
           "name": "Basic Melee",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -114,6 +115,7 @@
           "id": "main-1",
           "category": "main",
           "name": "Ash-laden claws",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -130,6 +132,7 @@
           "id": "maneuver-0",
           "category": "maneuver",
           "name": "Scatter Embers",
+          "abilityId": "monster-scatter-embers",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -146,6 +149,7 @@
           "id": "maneuver-1",
           "category": "maneuver",
           "name": "Defend",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -161,7 +165,25 @@
         {
           "id": "reaction-0",
           "category": "reaction",
+          "name": "Heated Hide",
+          "abilityId": "monster-heated-hide",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "After adjacent attack deals HP damage: attacker gains Burning 1; not from free attacks.",
+          "referenceMarkdown": "### Heated Hide\n\n*The struck scales flare, and a lash of heat follows the retreating blade.*\n\nAfter an adjacent attacker deals HP damage to this creature, spend Reaction to apply Burning 1 to that attacker. It is a condition, not a free attack, and cannot trigger this ability in return. No trigger when the incoming action is itself a free attack. Summoned forms never receive this Reaction."
+        },
+        {
+          "id": "reaction-1",
+          "category": "reaction",
           "name": "Opportunity Attack",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -178,13 +200,13 @@
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Ash-laden claws | Agility | 9 + Burning 2 / 6 + Burning 1 / 3 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Scatter Embers | One adjacent target: Burning 1. |\n| Defend | +1 Bane |",
-      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Opportunity Attack | Basic Melee |"
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Heated Hide | After adjacent attack deals HP damage: attacker gains Burning 1; not from free attacks. |\n| Opportunity Attack | Basic Melee |"
     },
     "details": {
       "flavorMarkdown": "*A restless demon sheds soot from a body shaped like a fire struggling to remember an animal.*",
-      "specialtyMarkdown": "### Ash-laden claws\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** fire.\n\n**Weak defense:** Burning 2. **Standard defense:** Burning 1.\n\n### Scatter Embers\n\n*A spray of glowing cinders hangs between the creature and its pursuer.*\n\nOne adjacent creature gains Burning 1. Once per turn; no immediate damage. The condition uses normal resistance and decay.",
+      "specialtyMarkdown": "### Ash-laden claws\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** fire.\n\n**Weak defense:** Burning 2. **Standard defense:** Burning 1.\n\n### Scatter Embers\n\n*A spray of glowing cinders hangs between the creature and its pursuer.*\n\nOne adjacent creature gains Burning 1. Once per turn; no immediate damage. The condition uses normal resistance and decay.\n\n### Heated Hide\n\n*The struck scales flare, and a lash of heat follows the retreating blade.*\n\nAfter an adjacent attacker deals HP damage to this creature, spend Reaction to apply Burning 1 to that attacker. It is a condition, not a free attack, and cannot trigger this ability in return. No trigger when the incoming action is itself a free attack. Summoned forms never receive this Reaction.",
       "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.\n\n**Heavy Frame — Passive:** Stability 1; an explicit trait, not a bonus calculated from Size.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Dark sight 6 squares; ordinary hearing.\n\n**Tactics and retreat:** Burn the nearest participant in the feud and make close pursuit unpleasant. It loses a useful battlefield when the rivals cooperate.\n\n**Encounter and conversation:** It is feeding on a feud and loses its audience when the rivals stop answering each insult.\n\n**Habitat:** Broken shrine; summoned court; place of conflict · **Communication:** Common\n\n**Loot:** Recoverable possessions or lair clues chosen for the adventure; body parts grant no automatic special equipment or coin value.\n\n**Summoning:** Ineligible.",
-      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-ash-demon\n\n\n**Category:** Fiend · **Role:** Burning striker · **CV:** 29\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Ash-laden claws | Reason | 1 Boon | 3 fire damage. | 6 fire damage. Burning 1. | 9 fire damage. Burning 2. |\n\nUse the attributes above for defenses named by incoming attacks. Same targeting, limits and costs apply; no opposed second roll.\n\n### CV worksheet\n\n**Reference damage:** 3/6/9\n\n**Reference type:** fire\n\n**Expected targets:** 1\n\n**Utility factor:** 1.3\n\n**Regeneration per turn:** 0\n\nReference I=4.000, O=6.894. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [elemental burn](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/elemental-burn.md), [scatter embers](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/scatter-embers.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/rules/stability.md)"
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-ash-demon\n\n\n**Category:** Fiend · **Role:** Burning striker · **CV:** 33\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Ash-laden claws | Reason | 1 Boon | 3 fire damage. | 6 fire damage. Burning 1. | 9 fire damage. Burning 2. |\n\nUse the attributes above for defenses named by incoming attacks. Same targeting, limits and costs apply; no opposed second roll.\n\n### CV worksheet\n\n**Reference damage:** 3/6/9\n\n**Reference type:** fire\n\n**Expected targets:** 1\n\n**Utility factor:** 1.45\n\n**Action review (#1279):** U 1.3 → 1.45: Maneuver allowance +0, Reaction allowance +0.15. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=4.000, O=6.894. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [elemental burn](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/elemental-burn.md), [Heated Hide](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/heated-hide.md), [scatter embers](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/scatter-embers.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/rules/stability.md)"
     },
     "biography": ""
   },
@@ -210,9 +232,9 @@
       "catalogId": "creature-ash-demon",
       "source": {
         "path": "design/bestiary/creatures/ash-demon.md",
-        "sha256": "3b8eafff3c9af14ec6a3a83dbc0792845c661e1f40869dfc5ca78598d4582227"
+        "sha256": "15c6f36ace676ad5bc914776e7bbaf4472dc1cb0f329032ed99b9f50aa7a109f"
       },
-      "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
+      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Printed profile · specialty automation pending",
@@ -220,7 +242,7 @@
       "classification": {
         "category": "Fiend",
         "role": "Burning striker",
-        "cv": 29
+        "cv": 33
       },
       "family": "Fiends and infernal bargains",
       "abilitySources": [
@@ -231,10 +253,66 @@
           "sha256": "8c5ce559ecabe30b4ac207824e20cb56adfac812d72ca5c257c1ec71f22ebe46"
         },
         {
+          "label": "Heated Hide",
+          "id": "monster-heated-hide",
+          "path": "design/monster-abilities/heated-hide.md",
+          "sha256": "d1e74d6d2923aac89143a819db7b5f9fc98dcee9b6e8458c195f585241facaad"
+        },
+        {
           "label": "scatter embers",
           "id": "monster-scatter-embers",
           "path": "design/monster-abilities/scatter-embers.md",
           "sha256": "c6d39fa78e64f6f1582efeb8e30a2155e75a123bc73460b1493a211c520fe5e7"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-elemental-burn",
+          "path": "design/monster-abilities/elemental-burn.md",
+          "sha256": "8c5ce559ecabe30b4ac207824e20cb56adfac812d72ca5c257c1ec71f22ebe46",
+          "name": "Elemental Burn",
+          "action": "Main Action",
+          "flavorMarkdown": "*Heat crawls along the strike, or frost flowers across the skin where it passes.*",
+          "rulesMarkdown": "Use the printed attack. Standard also applies the printed Burning 1 or Freezing 1; Strong applies that condition at 2. The creature card chooses one condition, not either at use. Burning is fire damage; Freezing is cold damage. Lightning attacks may explicitly leave Burning.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Elemental Burn\n\n*Heat crawls along the strike, or frost flowers across the skin where it passes.*\n\n## Rules\n\n**ID:** monster-elemental-burn\n\n\n**Action:** Main Action\n\nUse the printed attack. Standard also applies the printed Burning 1 or Freezing 1; Strong applies that condition at 2. The creature card chooses one condition, not either at use. Burning is fire damage; Freezing is cold damage. Lightning attacks may explicitly leave Burning.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/elemental-burn.md",
+            "sha256": "8c5ce559ecabe30b4ac207824e20cb56adfac812d72ca5c257c1ec71f22ebe46"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-heated-hide",
+          "path": "design/monster-abilities/heated-hide.md",
+          "sha256": "d1e74d6d2923aac89143a819db7b5f9fc98dcee9b6e8458c195f585241facaad",
+          "name": "Heated Hide",
+          "action": "Reaction",
+          "flavorMarkdown": "*The struck scales flare, and a lash of heat follows the retreating blade.*",
+          "rulesMarkdown": "After an adjacent attacker deals HP damage to this creature, spend Reaction to apply Burning 1 to that attacker. It is a condition, not a free attack, and cannot trigger this ability in return. No trigger when the incoming action is itself a free attack. Summoned forms never receive this Reaction.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Heated Hide\n\n*The struck scales flare, and a lash of heat follows the retreating blade.*\n\n## Rules\n\n**ID:** monster-heated-hide\n\n\n**Action:** Reaction\n\nAfter an adjacent attacker deals HP damage to this creature, spend Reaction to apply Burning 1 to that attacker. It is a condition, not a free attack, and cannot trigger this ability in return. No trigger when the incoming action is itself a free attack. Summoned forms never receive this Reaction.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/heated-hide.md",
+            "sha256": "d1e74d6d2923aac89143a819db7b5f9fc98dcee9b6e8458c195f585241facaad"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-scatter-embers",
+          "path": "design/monster-abilities/scatter-embers.md",
+          "sha256": "c6d39fa78e64f6f1582efeb8e30a2155e75a123bc73460b1493a211c520fe5e7",
+          "name": "Scatter Embers",
+          "action": "Maneuver",
+          "flavorMarkdown": "*A spray of glowing cinders hangs between the creature and its pursuer.*",
+          "rulesMarkdown": "One adjacent creature gains Burning 1. Once per turn; no immediate damage. The condition uses normal resistance and decay.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Scatter Embers\n\n*A spray of glowing cinders hangs between the creature and its pursuer.*\n\n## Rules\n\n**ID:** monster-scatter-embers\n\n\n**Action:** Maneuver\n\nOne adjacent creature gains Burning 1. Once per turn; no immediate damage. The condition uses normal resistance and decay.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/scatter-embers.md",
+            "sha256": "c6d39fa78e64f6f1582efeb8e30a2155e75a123bc73460b1493a211c520fe5e7"
+          },
+          "automation": "pending"
         }
       ],
       "summoning": {

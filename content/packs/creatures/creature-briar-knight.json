@@ -39,7 +39,7 @@
       "baseMax": 22,
       "sourceText": "22"
     },
-    "cv": 19,
+    "cv": 21,
     "speed": 6,
     "speedSource": "6",
     "alternateSpeeds": [],
@@ -94,6 +94,7 @@
           "id": "main-0",
           "category": "main",
           "name": "Basic Melee",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -110,6 +111,7 @@
           "id": "main-1",
           "category": "main",
           "name": "Briar spear",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -126,6 +128,7 @@
           "id": "maneuver-0",
           "category": "maneuver",
           "name": "Root the Stance",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -142,6 +145,7 @@
           "id": "maneuver-1",
           "category": "maneuver",
           "name": "Defend",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -157,7 +161,25 @@
         {
           "id": "reaction-0",
           "category": "reaction",
+          "name": "Barbed Recoil",
+          "abilityId": "monster-barbed-recoil",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "After adjacent attack deals HP damage: attacker gains Bleeding 1.",
+          "referenceMarkdown": "### Barbed Recoil\n\n*The struck bough bends back, dragging a rake of hooked thorns across the hand that struck it.*\n\nAfter an adjacent attacker's attack resolves and deals HP damage to this creature, apply Bleeding 1 to that attacker. This creature must survive and remain capable. No trigger from a free attack or another retaliatory effect. This is a condition, not another attack."
+        },
+        {
+          "id": "reaction-1",
+          "category": "reaction",
           "name": "Shield Hunker",
+          "abilityId": "monster-shield-hunker",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -171,9 +193,10 @@
           "referenceMarkdown": "### Shield Hunker\n\nBefore a shield-blockable attack resolves, impose 1 Bane on player attacks this shield can block until the start of its next turn. The DA judges blockability. Uses its Reaction; stacks with Defend, not another activation of itself."
         },
         {
-          "id": "reaction-1",
+          "id": "reaction-2",
           "category": "reaction",
           "name": "Opportunity Attack",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -190,13 +213,13 @@
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Briar spear | Agility | 6 + Push 2 / 4 + Push 1 / 3 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Root the Stance | Gain Stability 2 while on soil until its next turn; highest source only. |\n| Defend | +1 Bane |",
-      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Shield Hunker | Before a blockable attack: impose 1 Bane on blockable attacks until its next turn. See details. |\n| Opportunity Attack | Basic Melee |"
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Barbed Recoil | After adjacent attack deals HP damage: attacker gains Bleeding 1. |\n| Shield Hunker | Before a blockable attack: impose 1 Bane on blockable attacks until its next turn. See details. |\n| Opportunity Attack | Basic Melee |"
     },
     "details": {
       "flavorMarkdown": "*A fey guardian enclosed in barklike armor, with a thorn-grown shield and a long spear. A living blossom at the shoulder marks the promise it serves.*",
-      "specialtyMarkdown": "### Briar spear\n\n*The blow lands with enough force to send its victim stumbling backward.*\n\n**Target:** One creature within 2 squares. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Push 2. **Standard defense:** Push 1.\n\n### Shield Hunker\n\nBefore a shield-blockable attack resolves, impose 1 Bane on player attacks this shield can block until the start of its next turn. The DA judges blockability. Uses its Reaction; stacks with Defend, not another activation of itself.",
-      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Signs:** A path through brambles remains exactly one traveler wide.\n\n**Purpose:** Keep an old promise attached to a road or bridge.\n\n**Tactics and retreat:** Shield Hunker at the crossing, push trespassers back, and insist on terms.\n\n**Counterplay and conversation:** Read the promise literally; fulfilling it may be easier than defeating its keeper.\n\n**Habitat:** Forest crossing · **Communication:** Common and Fey\n\n**Loot:** An oath token and ordinary thorn-carved equipment that withers if summoned.\n\n**Summoning:** Fey 3 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/summons/briar-knight.md).",
-      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-briar-knight\n\n\n**Category:** Fey · **Role:** Defender · **CV:** 19\n\n**Difficulty rationale:** No innate attack modifier; armor, cover and chosen actions provide its defenses. Its dangerous attack imposes defense Banes.\n\n**Reference damage:** 3/4/6\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.2\n\n**Regeneration per turn:** 0\n\nReference I=3.000, O=3.653. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [briar knight root the stance](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/briar-knight-root-the-stance.md), [driving blow](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/driving-blow.md), [shield hunker](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/shield-hunker.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/rules/stability.md)"
+      "specialtyMarkdown": "### Briar spear\n\n*The blow lands with enough force to send its victim stumbling backward.*\n\n**Target:** One creature within 2 squares. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Push 2. **Standard defense:** Push 1.\n\n### Shield Hunker\n\nBefore a shield-blockable attack resolves, impose 1 Bane on player attacks this shield can block until the start of its next turn. The DA judges blockability. Uses its Reaction; stacks with Defend, not another activation of itself.\n\n### Barbed Recoil\n\n*The struck bough bends back, dragging a rake of hooked thorns across the hand that struck it.*\n\nAfter an adjacent attacker's attack resolves and deals HP damage to this creature, apply Bleeding 1 to that attacker. This creature must survive and remain capable. No trigger from a free attack or another retaliatory effect. This is a condition, not another attack.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Signs:** A path through brambles remains exactly one traveler wide.\n\n**Purpose:** Keep an old promise attached to a road or bridge.\n\n**Tactics and retreat:** Shield Hunker at the crossing, push trespassers back, and insist on terms.\n\n**Counterplay and conversation:** Read the promise literally; fulfilling it may be easier than defeating its keeper.\n\n**Habitat:** Forest crossing · **Communication:** Common and Fey\n\n**Loot:** An oath token and ordinary thorn-carved equipment that withers if summoned.\n\n**Summoning:** Fey 3 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/summons/briar-knight.md).",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-briar-knight\n\n\n**Category:** Fey · **Role:** Defender · **CV:** 21\n\n**Difficulty rationale:** No innate attack modifier; armor, cover and chosen actions provide its defenses. Its dangerous attack imposes defense Banes.\n\n**Reference damage:** 3/4/6\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.35\n\n**Action review (#1279):** U 1.2 → 1.35: Maneuver allowance +0, Reaction allowance +0.15. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=3.000, O=3.653. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [Barbed Recoil](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/barbed-recoil.md), [briar knight root the stance](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/briar-knight-root-the-stance.md), [driving blow](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/driving-blow.md), [shield hunker](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/shield-hunker.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/rules/stability.md)"
     },
     "biography": ""
   },
@@ -222,9 +245,9 @@
       "catalogId": "creature-briar-knight",
       "source": {
         "path": "design/bestiary/creatures/briar-knight.md",
-        "sha256": "0a74617f7d48239a3c222c8df9df4dec6fa6e5068fbc29cb5aa51e7831c96869"
+        "sha256": "6abef0f85b0906d04d2955248fff249e9f3e3e9ee88e2c6688d7f762fe4618f4"
       },
-      "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
+      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Printed profile · specialty automation pending",
@@ -232,10 +255,16 @@
       "classification": {
         "category": "Fey",
         "role": "Defender",
-        "cv": 19
+        "cv": 21
       },
       "family": "Fey",
       "abilitySources": [
+        {
+          "label": "Barbed Recoil",
+          "id": "monster-barbed-recoil",
+          "path": "design/monster-abilities/barbed-recoil.md",
+          "sha256": "22031e0b9a243c0e44d2586c53e5f11a2786fbcbeae1252e13b50ba6a26d88d9"
+        },
         {
           "label": "briar knight root the stance",
           "id": "monster-briar-knight-root-the-stance",
@@ -253,6 +282,72 @@
           "id": "monster-shield-hunker",
           "path": "design/monster-abilities/shield-hunker.md",
           "sha256": "0ee4604aed68f89230795c77c3d1db3b93ef231d3a7999cd35ad7800f4fbe6f5"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-barbed-recoil",
+          "path": "design/monster-abilities/barbed-recoil.md",
+          "sha256": "22031e0b9a243c0e44d2586c53e5f11a2786fbcbeae1252e13b50ba6a26d88d9",
+          "name": "Barbed Recoil",
+          "action": "Reaction",
+          "flavorMarkdown": "*The struck bough bends back, dragging a rake of hooked thorns across the hand that struck it.*",
+          "rulesMarkdown": "After an adjacent attacker's attack resolves and deals HP damage to this creature, apply Bleeding 1 to that attacker. This creature must survive and remain capable. No trigger from a free attack or another retaliatory effect. This is a condition, not another attack.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Barbed Recoil\n\n*The struck bough bends back, dragging a rake of hooked thorns across the hand that struck it.*\n\n## Rules\n\n**ID:** monster-barbed-recoil\n\n**Action:** Reaction\n\nAfter an adjacent attacker's attack resolves and deals HP damage to this creature, apply Bleeding 1 to that attacker. This creature must survive and remain capable. No trigger from a free attack or another retaliatory effect. This is a condition, not another attack.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/barbed-recoil.md",
+            "sha256": "22031e0b9a243c0e44d2586c53e5f11a2786fbcbeae1252e13b50ba6a26d88d9"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-briar-knight-root-the-stance",
+          "path": "design/monster-abilities/briar-knight-root-the-stance.md",
+          "sha256": "70fd20dfdd6d499c7e069f444a722c4a71c8a10d7480090eebf8beefe1770e93",
+          "name": "Root the Stance",
+          "action": "Maneuver",
+          "flavorMarkdown": "*Thorns lace the knight’s boots to the soil.*",
+          "rulesMarkdown": "Gain Stability 2 while on soil until its next turn; highest source only.\n\n**Limits:** Costs its Maneuver; no extra action is granted.",
+          "referenceMarkdown": "# Root the Stance\n\n*Thorns lace the knight’s boots to the soil.*\n\n## Rules\n\n**ID:** monster-briar-knight-root-the-stance\n\n\n**Action:** Maneuver\n\nGain Stability 2 while on soil until its next turn; highest source only.\n\n**Limits:** Costs its Maneuver; no extra action is granted.\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/briar-knight-root-the-stance.md",
+            "sha256": "70fd20dfdd6d499c7e069f444a722c4a71c8a10d7480090eebf8beefe1770e93"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-driving-blow",
+          "path": "design/monster-abilities/driving-blow.md",
+          "sha256": "38b3406cbcb2f57fdc1bbf57f09857b7ef8a9fd7b35e311dc812476677e6b276",
+          "name": "Driving Blow",
+          "action": "Main Action",
+          "flavorMarkdown": "*The blow lands with enough force to send its victim stumbling backward.*",
+          "rulesMarkdown": "Use the printed attack. Standard pushes the target 1 square; Strong pushes it 2. Apply Stability before moving. This is a rider, not a separate attack or Force action.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Driving Blow\n\n*The blow lands with enough force to send its victim stumbling backward.*\n\n## Rules\n\n**ID:** monster-driving-blow\n\n\n**Action:** Main Action\n\nUse the printed attack. Standard pushes the target 1 square; Strong pushes it 2. Apply Stability before moving. This is a rider, not a separate attack or Force action.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/driving-blow.md",
+            "sha256": "38b3406cbcb2f57fdc1bbf57f09857b7ef8a9fd7b35e311dc812476677e6b276"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-shield-hunker",
+          "path": "design/monster-abilities/shield-hunker.md",
+          "sha256": "0ee4604aed68f89230795c77c3d1db3b93ef231d3a7999cd35ad7800f4fbe6f5",
+          "name": "Shield Hunker",
+          "action": "Reaction",
+          "flavorMarkdown": "*The shield rises, scraping stone as its bearer crouches behind the rim.*",
+          "rulesMarkdown": "Before a shield-blockable attack resolves, spend Reaction to gain 1 defense Boon until the start of this creature’s next turn. For an NPC, apply 1 Bane to player attacks it can block instead. The DA decides whether the shield can block an attack. This stacks with Defend through ordinary Boon/Bane rules. No repeated activation adds another copy.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Shield Hunker\n\n*The shield rises, scraping stone as its bearer crouches behind the rim.*\n\n## Rules\n\n**ID:** monster-shield-hunker\n\n\n**Action:** Reaction\n\nBefore a shield-blockable attack resolves, spend Reaction to gain 1 defense Boon until the start of this creature’s next turn. For an NPC, apply 1 Bane to player attacks it can block instead. The DA decides whether the shield can block an attack. This stacks with Defend through ordinary Boon/Bane rules. No repeated activation adds another copy.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/shield-hunker.md",
+            "sha256": "0ee4604aed68f89230795c77c3d1db3b93ef231d3a7999cd35ad7800f4fbe6f5"
+          },
+          "automation": "pending"
         }
       ],
       "summoning": {

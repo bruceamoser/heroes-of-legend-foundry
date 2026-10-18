@@ -87,3 +87,13 @@ Bruce's latest instruction supersedes the optional historical-origin behavior of
 #171: the current approved catalog is the only rules version. Saved character
 choices are resolved against it automatically. Do not offer old origin pairs or
 ask players to approve a rules-version switch.
+
+
+## October 18 creature action expansion (#175)
+
+The current approved pin is **bdfd18ed535fbd0e1892b9344444abf6da644809**,
+merged book PR #1280. It supersedes d67e046 for all current catalogs and web
+references: 126 monster templates, 192 creatures, 73 summons, and 419 character
+abilities. See the [intake and runtime boundaries](research/creature-action-expansion.md).
+Current-only character rules remain automatic. Existing world creature/summon
+updates preserve live state and local edits through the sheet's Update profile action.

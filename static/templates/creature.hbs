@@ -9,6 +9,7 @@
 {{#if automationLabel}}<p class="hol-note hol-creature-automation"><strong>Automation:</strong> {{automationLabel}}.</p>{{/if}}
 <div class="hol-creature-actions" role="group" aria-label="Creature controls">
 <button type="button" data-action="conditions">Condition sources</button>
+{{#if canUpdateProfile}}<button type="button" data-action="updateProfile" title="Update printed actions and CV; keep live resources and local edits">Update profile</button>{{/if}}
 {{#if gm}}<button type="button" data-action="damage">Apply damage</button><button type="button" data-action="recovery">Health and recovery</button>{{/if}}
 <button type="button" data-action="equipment">Hands, worn gear and equipment</button>
 </div>

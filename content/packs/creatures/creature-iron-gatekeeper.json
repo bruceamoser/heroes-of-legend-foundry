@@ -99,6 +99,7 @@
           "id": "main-0",
           "category": "main",
           "name": "Basic Melee",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -115,6 +116,7 @@
           "id": "main-1",
           "category": "main",
           "name": "Gate bar",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -131,6 +133,7 @@
           "id": "maneuver-0",
           "category": "maneuver",
           "name": "Lock the Feet",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -147,6 +150,7 @@
           "id": "maneuver-1",
           "category": "maneuver",
           "name": "Defend",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -163,6 +167,7 @@
           "id": "reaction-0",
           "category": "reaction",
           "name": "Opportunity Attack",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -184,8 +189,8 @@
     "details": {
       "flavorMarkdown": "*A massive iron guardian with a barred face, oversized hands and its charter engraved across the chest. Built for a particular threshold, it is difficult to displace and slow to redirect.*",
       "specialtyMarkdown": "### Gate bar\n\n*A great limb scythes across the ground, forcing everyone nearby to move.*\n\n**Target:** Up to two creatures within 2 squares. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Push each 2. **Standard defense:** Push each 1.",
-      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Heavy Frame — Passive:** Stability 2; an explicit creature trait, not a bonus from size.\n\n**Lifeless Body:** does not breathe or eat; only the listed immunities apply.\n\n**Healing:** Construct: ordinary HP healing does not repair it; destroyed at 0. Combat repair requires an explicit repair ability. Workshop repair remains a design question.\n\n**Senses:** Ordinary sight and hearing.\n\n**Signs:** The gate’s counterweight has not moved, yet the gate opens each dawn.\n\n**Purpose:** Admit only those named by its charter.\n\n**Tactics and retreat:** Sweep two intruders away from the threshold and remain beside the gate.\n\n**Counterplay and conversation:** Produce valid authority or use an entrance outside its charter.\n\n**Habitat:** Fortress; city gate · **Communication:** None\n\n**Loot:** A command seal and 50 coins of salvage from a real body; no extra suit of wearable heavy armor.\n\n**Summoning:** Construct 7 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/summons/iron-gatekeeper.md).",
-      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-iron-gatekeeper\n\n\n**Category:** Construct · **Role:** Heavy guardian · **CV:** 44\n\n**Difficulty rationale:** A slow or broad exposed body gives the attacker a Boon. Its dangerous attack imposes defense Banes.\n\n**Reference damage:** 4/6/8\n\n**Reference type:** physical\n\n**Expected targets:** 2\n\n**Utility factor:** 1.2\n\n**Regeneration per turn:** 0\n\nReference I=2.653, O=11.191. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [iron gatekeeper lock the feet](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/iron-gatekeeper-lock-the-feet.md), [lifeless body](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/lifeless-body.md), [sweeping attack](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/sweeping-attack.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/rules/stability.md)"
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Heavy Frame — Passive:** Stability 2; an explicit creature trait, not a bonus from size.\n\n**Lifeless Body:** does not breathe or eat; only the listed immunities apply.\n\n**Healing:** Construct: ordinary HP healing does not repair it; destroyed at 0. Combat repair requires an explicit repair ability. Workshop repair remains a design question.\n\n**Senses:** Ordinary sight and hearing.\n\n**Signs:** The gate’s counterweight has not moved, yet the gate opens each dawn.\n\n**Purpose:** Admit only those named by its charter.\n\n**Tactics and retreat:** Sweep two intruders away from the threshold and remain beside the gate.\n\n**Counterplay and conversation:** Produce valid authority or use an entrance outside its charter.\n\n**Habitat:** Fortress; city gate · **Communication:** None\n\n**Loot:** A command seal and 50 coins of salvage from a real body; no extra suit of wearable heavy armor.\n\n**Summoning:** Construct 7 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/summons/iron-gatekeeper.md).",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-iron-gatekeeper\n\n\n**Category:** Construct · **Role:** Heavy guardian · **CV:** 44\n\n**Difficulty rationale:** A slow or broad exposed body gives the attacker a Boon. Its dangerous attack imposes defense Banes.\n\n**Reference damage:** 4/6/8\n\n**Reference type:** physical\n\n**Expected targets:** 2\n\n**Utility factor:** 1.2\n\n**Regeneration per turn:** 0\n\nReference I=2.653, O=11.191. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [iron gatekeeper lock the feet](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/iron-gatekeeper-lock-the-feet.md), [lifeless body](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/lifeless-body.md), [sweeping attack](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/sweeping-attack.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/rules/stability.md)"
     },
     "biography": ""
   },
@@ -213,7 +218,7 @@
         "path": "design/bestiary/creatures/iron-gatekeeper.md",
         "sha256": "89107cf537e59cde0ad128e03fdfdde9b163a40260dcd7cea245c12be2315706"
       },
-      "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
+      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Printed profile · specialty automation pending",
@@ -242,6 +247,56 @@
           "id": "monster-sweeping-attack",
           "path": "design/monster-abilities/sweeping-attack.md",
           "sha256": "c020cb46e9ffa42aeaedfc9612e6b364f4c415e591d874a9553e55ec2ca2d45c"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-iron-gatekeeper-lock-the-feet",
+          "path": "design/monster-abilities/iron-gatekeeper-lock-the-feet.md",
+          "sha256": "6dc7d34fcee7c1cb8865cc8a07d3d4c770cb4d123fbccabb87557538be82e36b",
+          "name": "Lock the Feet",
+          "action": "Maneuver",
+          "flavorMarkdown": "*Iron spurs lock against the threshold.*",
+          "rulesMarkdown": "Gain Stability 3 while on solid ground until its next turn; highest source only.\n\n**Limits:** Costs its Maneuver; no extra action is granted.",
+          "referenceMarkdown": "# Lock the Feet\n\n*Iron spurs lock against the threshold.*\n\n## Rules\n\n**ID:** monster-iron-gatekeeper-lock-the-feet\n\n\n**Action:** Maneuver\n\nGain Stability 3 while on solid ground until its next turn; highest source only.\n\n**Limits:** Costs its Maneuver; no extra action is granted.\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/iron-gatekeeper-lock-the-feet.md",
+            "sha256": "6dc7d34fcee7c1cb8865cc8a07d3d4c770cb4d123fbccabb87557538be82e36b"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-lifeless-body",
+          "path": "design/monster-abilities/lifeless-body.md",
+          "sha256": "248c16c6e641d2042cd94a05e7e8bfce03b5177f4f57cda241b46d9b16de4d81",
+          "name": "Lifeless Body",
+          "action": "Passive",
+          "flavorMarkdown": "*Nothing breathes beneath the torn coat; nothing living looks through the visor.*",
+          "rulesMarkdown": "The card must list its exact condition immunities; this trait grants no additional unlisted ones. It does not breathe or need food. Undead entries marked healing-harmed take a healing result as Life damage; constructs marked repair-only do not regain HP from ordinary healing. Neither rule prevents physical attacks from dealing their normal minimum damage.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Lifeless Body\n\n*Nothing breathes beneath the torn coat; nothing living looks through the visor.*\n\n## Rules\n\n**ID:** monster-lifeless-body\n\n\n**Action:** Passive\n\nThe card must list its exact condition immunities; this trait grants no additional unlisted ones. It does not breathe or need food. Undead entries marked healing-harmed take a healing result as Life damage; constructs marked repair-only do not regain HP from ordinary healing. Neither rule prevents physical attacks from dealing their normal minimum damage.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/lifeless-body.md",
+            "sha256": "248c16c6e641d2042cd94a05e7e8bfce03b5177f4f57cda241b46d9b16de4d81"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-sweeping-attack",
+          "path": "design/monster-abilities/sweeping-attack.md",
+          "sha256": "c020cb46e9ffa42aeaedfc9612e6b364f4c415e591d874a9553e55ec2ca2d45c",
+          "name": "Sweeping Attack",
+          "action": "Main Action",
+          "flavorMarkdown": "*A great limb scythes across the ground, forcing everyone nearby to move.*",
+          "rulesMarkdown": "Use the printed attack against up to two different creatures within its printed reach, including allies if deliberately selected. Each player target defends separately. A player-controlled sweep rolls once at the worst target modifiers. This replaces, rather than accompanies, a single-target attack.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Sweeping Attack\n\n*A great limb scythes across the ground, forcing everyone nearby to move.*\n\n## Rules\n\n**ID:** monster-sweeping-attack\n\n\n**Action:** Main Action\n\nUse the printed attack against up to two different creatures within its printed reach, including allies if deliberately selected. Each player target defends separately. A player-controlled sweep rolls once at the worst target modifiers. This replaces, rather than accompanies, a single-target attack.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/sweeping-attack.md",
+            "sha256": "c020cb46e9ffa42aeaedfc9612e6b364f4c415e591d874a9553e55ec2ca2d45c"
+          },
+          "automation": "pending"
         }
       ],
       "summoning": {

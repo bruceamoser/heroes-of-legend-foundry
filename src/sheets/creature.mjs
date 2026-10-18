@@ -1,6 +1,13 @@
 import { viewPortrait } from "./portrait.mjs";
-import { declareNpcMelee, declareCreatureAction } from "../services/npc-attacks.mjs";
+import {
+  declareNpcMelee,
+  declareCreatureAction,
+} from "../services/npc-attacks.mjs";
 import { CharacterSheet } from "./character.mjs";
+import {
+  profileUpdateAvailable,
+  updateCreatureProfile,
+} from "../services/profile-update.mjs";
 import {
   creatureReferenceHtml,
   creatureModifierLabel,
@@ -19,7 +26,12 @@ function sourceLink(source, commit) {
 export class CreatureSheet extends CharacterSheet {
   static DEFAULT_OPTIONS = {
     classes: ["hol-creature"],
-    actions: { npcMelee: CreatureSheet.npcMelee, creatureAction: CreatureSheet.creatureAction, viewPortrait },
+    actions: {
+      npcMelee: CreatureSheet.npcMelee,
+      creatureAction: CreatureSheet.creatureAction,
+      updateProfile: CreatureSheet.updateProfile,
+      viewPortrait,
+    },
     position: { width: 740, height: 800 },
   };
   async _prepareContext(options) {
@@ -29,10 +41,7 @@ export class CreatureSheet extends CharacterSheet {
       ? {
           catalogId: this.actor.getFlag("heroes-of-legend", "catalogId"),
           source: this.actor.getFlag("heroes-of-legend", "source"),
-          sourceCommit: this.actor.getFlag(
-            "heroes-of-legend",
-            "sourceCommit",
-          ),
+          sourceCommit: this.actor.getFlag("heroes-of-legend", "sourceCommit"),
           automation: this.actor.getFlag("heroes-of-legend", "automation"),
           automationLabel: this.actor.getFlag(
             "heroes-of-legend",
@@ -49,9 +58,19 @@ export class CreatureSheet extends CharacterSheet {
     return {
       ...context,
       gm: game.user.isGM,
-      actionGroups: [["main", "Main Actions"], ["maneuver", "Maneuvers"], ["reaction", "Reactions"]]
-        .map(([category, label]) => ({ label, entries: system.actions.entries.filter(entry =>
-          entry.category === category && !(category === "main" && entry.name === "Basic Melee")) })),
+      canUpdateProfile: profileUpdateAvailable(this.actor),
+      actionGroups: [
+        ["main", "Main Actions"],
+        ["maneuver", "Maneuvers"],
+        ["reaction", "Reactions"],
+      ].map(([category, label]) => ({
+        label,
+        entries: system.actions.entries.filter(
+          (entry) =>
+            entry.category === category &&
+            !(category === "main" && entry.name === "Basic Melee"),
+        ),
+      })),
       sourceLink: sourceLink(flags.source, flags.sourceCommit),
       sourcePath: flags.source?.path ?? "",
       sourceCommit: flags.sourceCommit ?? "",
@@ -75,13 +94,32 @@ export class CreatureSheet extends CharacterSheet {
     };
   }
   static async creatureAction(event, target) {
-    try { await declareCreatureAction(this.actor, target.dataset.creatureAction); }
-    catch (error) { ui.notifications.error(error.message); }
+    try {
+      await declareCreatureAction(this.actor, target.dataset.creatureAction);
+    } catch (error) {
+      ui.notifications.error(error.message);
+    }
+  }
+  static async updateProfile() {
+    try {
+      const result = await updateCreatureProfile(this.actor);
+      ui.notifications.info(
+        result.updated.length
+          ? `Profile updated.${result.preserved.length ? " Local edits kept." : ""}`
+          : result.preserved.length
+            ? "Local edits kept. Current rules are available in the creature compendium."
+            : "Profile is current.",
+      );
+      await this.render({ force: true });
+    } catch (error) {
+      ui.notifications.error(error.message);
+    }
   }
   static async npcMelee() {
     try {
-      const blockable = this.element.querySelector("[data-npc-blockable]")
-        ?.value;
+      const blockable = this.element.querySelector(
+        "[data-npc-blockable]",
+      )?.value;
       await declareNpcMelee(this.actor, {
         blockable: blockable === "" ? undefined : blockable === "true",
       });

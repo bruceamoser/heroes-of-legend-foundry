@@ -39,7 +39,7 @@
       "baseMax": 22,
       "sourceText": "22"
     },
-    "cv": 15,
+    "cv": 16,
     "speed": 5,
     "speedSource": "5; climb 5",
     "alternateSpeeds": [
@@ -98,6 +98,7 @@
           "id": "main-0",
           "category": "main",
           "name": "Basic Melee",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -114,6 +115,7 @@
           "id": "main-1",
           "category": "main",
           "name": "Amber lash",
+          "abilityId": "",
           "attributeKey": "agility",
           "defenseSource": "Agility",
           "harmfulOnly": false,
@@ -130,6 +132,7 @@
           "id": "maneuver-0",
           "category": "maneuver",
           "name": "Shed the Grasp",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -146,6 +149,7 @@
           "id": "maneuver-1",
           "category": "maneuver",
           "name": "Defend",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -161,7 +165,25 @@
         {
           "id": "reaction-0",
           "category": "reaction",
+          "name": "Clinging Recoil",
+          "abilityId": "monster-clinging-recoil",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "After adjacent attack deals HP damage: attacker gains Slowed 2.",
+          "referenceMarkdown": "### Clinging Recoil\n\n*The cut sprays sticky droplets that stretch into threads across the attacker's hands and boots.*\n\nAfter an adjacent attacker’s attack resolves and deals HP damage to this creature, apply Slowed 2 to that attacker. This creature must survive and remain capable. No trigger from a free attack or another retaliatory effect. This grants no grapple, extra damage or equipment destruction."
+        },
+        {
+          "id": "reaction-1",
+          "category": "reaction",
           "name": "Opportunity Attack",
+          "abilityId": "",
           "attributeKey": "",
           "defenseSource": "",
           "harmfulOnly": false,
@@ -178,13 +200,13 @@
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Amber lash | Agility | 6 + Grappled 2 / 4 + Grappled 1 / 2 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Shed the Grasp | Reduce one holder’s Grappled contribution by 1. |\n| Defend | +1 Bane |",
-      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Opportunity Attack | Basic Melee |"
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Clinging Recoil | After adjacent attack deals HP damage: attacker gains Slowed 2. |\n| Opportunity Attack | Basic Melee |"
     },
     "details": {
       "flavorMarkdown": "*An amber-colored jelly flattens into a thin sheet before gathering itself into a heavy muscular wave.*",
-      "specialtyMarkdown": "### Amber lash\n\n**Target:** One sensed creature within 2 squares with an unobstructed path. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Grappled 2. **Standard defense:** Grappled 1.\n\n**Limit:** The holder suffers its own Grappled contribution. A new result replaces its lower contribution, not adds to it. Release freely; separation beyond reach, unconsciousness or death ends the hold.\n\n### Shed the Grasp\n\n*The surface peels away, leaving a useless handful while the body gathers again.*\n\nChoose one holder and reduce that holder’s Grappled contribution by 1, also reducing this creature’s total Grappled rating by 1. End that hold if its contribution reaches 0. It must have a Maneuver available; cannot use this while Grappled 3. No damage or free movement.",
+      "specialtyMarkdown": "### Amber lash\n\n**Target:** One sensed creature within 2 squares with an unobstructed path. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Grappled 2. **Standard defense:** Grappled 1.\n\n**Limit:** The holder suffers its own Grappled contribution. A new result replaces its lower contribution, not adds to it. Release freely; separation beyond reach, unconsciousness or death ends the hold.\n\n### Shed the Grasp\n\n*The surface peels away, leaving a useless handful while the body gathers again.*\n\nChoose one holder and reduce that holder’s Grappled contribution by 1, also reducing this creature’s total Grappled rating by 1. End that hold if its contribution reaches 0. It must have a Maneuver available; cannot use this while Grappled 3. No damage or free movement.\n\n### Clinging Recoil\n\n*The cut sprays sticky droplets that stretch into threads across the attacker's hands and boots.*\n\nAfter an adjacent attacker’s attack resolves and deals HP damage to this creature, apply Slowed 2 to that attacker. This creature must survive and remain capable. No trigger from a free attack or another retaliatory effect. This grants no grapple, extra damage or equipment destruction.",
       "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Touch and ground vibrations within 3 squares on the same surface; no sight-required attack.\n\n**Tactics and retreat:** Reach along a wall to hold one nearby creature, then shed a competing grasp if a Maneuver remains. It receives no automatic duplicate body when struck.\n\n**Encounter and conversation:** Its feeding pattern follows discarded alchemical waste back to a workshop that claims to be innocent.\n\n**Habitat:** Drain; cavern; abandoned workshop · **Communication:** None\n\n**Loot:** Recoverable possessions or lair clues chosen for the adventure; body parts grant no automatic special equipment or coin value.\n\n**Summoning:** Ineligible.",
-      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-ochre-jelly\n\n\n**Category:** Ooze · **Role:** Holder · **CV:** 15\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Amber lash | Brawn | None | 2 physical damage. | 4 physical damage. Grappled 1. | 6 physical damage. Grappled 2. |\n\nUse the attributes above for defenses named by incoming attacks. Same targeting, limits and costs apply; no opposed second roll.\n\n### CV worksheet\n\n**Reference damage:** 2/4/6\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.45\n\n**Regeneration per turn:** 0\n\nReference I=5.596, O=3.000. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [seizing limbs](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/seizing-limbs.md), [slough skin](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/monster-abilities/slough-skin.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/rules/stability.md)"
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-ochre-jelly\n\n\n**Category:** Ooze · **Role:** Holder · **CV:** 16\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Amber lash | Brawn | None | 2 physical damage. | 4 physical damage. Grappled 1. | 6 physical damage. Grappled 2. |\n\nUse the attributes above for defenses named by incoming attacks. Same targeting, limits and costs apply; no opposed second roll.\n\n### CV worksheet\n\n**Reference damage:** 2/4/6\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.55\n\n**Action review (#1279):** U 1.45 → 1.55: Maneuver allowance +0, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=5.596, O=3.000. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [Clinging Recoil](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/clinging-recoil.md), [seizing limbs](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/seizing-limbs.md), [slough skin](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/monster-abilities/slough-skin.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/rules/stability.md)"
     },
     "biography": ""
   },
@@ -210,9 +232,9 @@
       "catalogId": "creature-ochre-jelly",
       "source": {
         "path": "design/bestiary/creatures/ochre-jelly.md",
-        "sha256": "a28a2445caaf3ab39ce59b5dfb598c04eb5c013b2284d94bfd9d76320f0d90d9"
+        "sha256": "6330107d89c6eda5727b0b37711c231d41e545ab7dcb6023cfe071b69797c7d0"
       },
-      "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
+      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Printed profile · specialty automation pending",
@@ -220,10 +242,16 @@
       "classification": {
         "category": "Ooze",
         "role": "Holder",
-        "cv": 15
+        "cv": 16
       },
       "family": "Oozes",
       "abilitySources": [
+        {
+          "label": "Clinging Recoil",
+          "id": "monster-clinging-recoil",
+          "path": "design/monster-abilities/clinging-recoil.md",
+          "sha256": "57afa37d2ce3e0d92be90bc698dde273499d9e7474fd303e627b9ec7405edf1f"
+        },
         {
           "label": "seizing limbs",
           "id": "monster-seizing-limbs",
@@ -235,6 +263,56 @@
           "id": "monster-slough-skin",
           "path": "design/monster-abilities/slough-skin.md",
           "sha256": "2df266f1dbb6f5d6d5394823b77cbca90ad727409bdd69708417acee3090bd05"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-clinging-recoil",
+          "path": "design/monster-abilities/clinging-recoil.md",
+          "sha256": "57afa37d2ce3e0d92be90bc698dde273499d9e7474fd303e627b9ec7405edf1f",
+          "name": "Clinging Recoil",
+          "action": "Reaction",
+          "flavorMarkdown": "*Something catches the striking limb: a clutching hand, a string of slime or a fold of adhesive flesh that drags at the next hurried step.*",
+          "rulesMarkdown": "After an adjacent attacker’s attack resolves and deals HP damage to this creature, apply Slowed 2 to that attacker. This creature must survive and remain capable. No trigger from a free attack or another retaliatory effect. This grants no grapple, extra damage or equipment destruction.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Clinging Recoil\n\n*Something catches the striking limb: a clutching hand, a string of slime or a fold of adhesive flesh that drags at the next hurried step.*\n\n## Rules\n\n**ID:** monster-clinging-recoil\n\n**Action:** Reaction\n\nAfter an adjacent attacker’s attack resolves and deals HP damage to this creature, apply Slowed 2 to that attacker. This creature must survive and remain capable. No trigger from a free attack or another retaliatory effect. This grants no grapple, extra damage or equipment destruction.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/clinging-recoil.md",
+            "sha256": "57afa37d2ce3e0d92be90bc698dde273499d9e7474fd303e627b9ec7405edf1f"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-seizing-limbs",
+          "path": "design/monster-abilities/seizing-limbs.md",
+          "sha256": "66f2767bac03446133659d16daf8320854f42e75c80b88490fda96d517417737",
+          "name": "Seizing Limbs",
+          "action": "Main Action",
+          "flavorMarkdown": "*A coil or grasping limb closes around the target and braces against its struggling weight.*",
+          "rulesMarkdown": "Use the printed attack. Standard also establishes Grappled 1; Strong establishes Grappled 2. A single holder’s contribution is replaced by its higher new result, not added to itself. Other holders stack normally. The holder suffers its own grapple contribution and cannot move while maintaining it. Release at any time without an action; death, unconsciousness or separation beyond the attack’s reach ends the hold. Force and external aid follow the core grapple rules.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Seizing Limbs\n\n*A coil or grasping limb closes around the target and braces against its struggling weight.*\n\n## Rules\n\n**ID:** monster-seizing-limbs\n\n\n**Action:** Main Action\n\nUse the printed attack. Standard also establishes Grappled 1; Strong establishes Grappled 2. A single holder’s contribution is replaced by its higher new result, not added to itself. Other holders stack normally. The holder suffers its own grapple contribution and cannot move while maintaining it. Release at any time without an action; death, unconsciousness or separation beyond the attack’s reach ends the hold. Force and external aid follow the core grapple rules.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/seizing-limbs.md",
+            "sha256": "66f2767bac03446133659d16daf8320854f42e75c80b88490fda96d517417737"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-slough-skin",
+          "path": "design/monster-abilities/slough-skin.md",
+          "sha256": "2df266f1dbb6f5d6d5394823b77cbca90ad727409bdd69708417acee3090bd05",
+          "name": "Shed the Grasp",
+          "action": "Maneuver",
+          "flavorMarkdown": "*The surface peels away, leaving a useless handful while the body gathers again.*",
+          "rulesMarkdown": "Choose one holder and reduce that holder’s Grappled contribution by 1, also reducing this creature’s total Grappled rating by 1. End that hold if its contribution reaches 0. It must have a Maneuver available; cannot use this while Grappled 3. No damage or free movement.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Shed the Grasp\n\n*The surface peels away, leaving a useless handful while the body gathers again.*\n\n## Rules\n\n**ID:** monster-slough-skin\n\n\n**Action:** Maneuver\n\nChoose one holder and reduce that holder’s Grappled contribution by 1, also reducing this creature’s total Grappled rating by 1. End that hold if its contribution reaches 0. It must have a Maneuver available; cannot use this while Grappled 3. No damage or free movement.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+            "path": "design/monster-abilities/slough-skin.md",
+            "sha256": "2df266f1dbb6f5d6d5394823b77cbca90ad727409bdd69708417acee3090bd05"
+          },
+          "automation": "pending"
         }
       ],
       "summoning": {

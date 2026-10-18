@@ -622,10 +622,32 @@ export function parseSummon(record, text, context) {
   let commandSource = null;
   let summonedReferenceCount = 0;
   let section = null;
+  const seenSections = new Set();
   let pendingHeading = null;
 
   for (let index = 2; index < sourceBlocks.length; index += 1) {
     const block = sourceBlocks[index];
+    if (pendingHeading) {
+      const boundary = block.startsWith("#") || block.startsWith("**") ||
+        block.startsWith("[DA creature card]");
+      if (!boundary) {
+        pendingHeading.body.push(block);
+        continue;
+      }
+      if (!pendingHeading.body.length)
+        fail(path, `Missing body for ${pendingHeading.name}`);
+      const body = pendingHeading.body.join("\n\n");
+      const entry = namedEntry(
+        pendingHeading.name,
+        pendingHeading.category,
+        body,
+        `${pendingHeading.markdown}\n\n${body}`,
+        "heading",
+      );
+      if (pendingHeading.category === "main-action") specialActions.push(entry);
+      else maneuvers.push(entry);
+      pendingHeading = null;
+    }
     if (index === sourceBlocks.length - 1) {
       const footer = expectMatch(
         block,
@@ -646,27 +668,6 @@ export function parseSummon(record, text, context) {
       continue;
     }
 
-    if (pendingHeading) {
-      if (
-        block.startsWith("#") ||
-        block.startsWith("**Defend") ||
-        block.startsWith("**Basic Melee")
-      )
-        fail(path, `Missing body for ${pendingHeading.name}`);
-      const entry = namedEntry(
-        pendingHeading.name,
-        pendingHeading.category,
-        block,
-        `${pendingHeading.markdown}\n\n${block}`,
-        "heading",
-      );
-      if (pendingHeading.category === "main-action")
-        specialActions.push(entry);
-      else maneuvers.push(entry);
-      pendingHeading = null;
-      continue;
-    }
-
     if (block === "## Attacks — Main Action") {
       if (attackTable) fail(path, "Duplicate attack-table section");
       const tableBlock = sourceBlocks[index + 1];
@@ -677,12 +678,14 @@ export function parseSummon(record, text, context) {
       continue;
     }
     if (block === "## Maneuvers") {
-      if (section) fail(path, `Nested or duplicate ${block} section`);
+      if (seenSections.has(block)) fail(path, `Duplicate ${block} section`);
+      seenSections.add(block);
       section = "maneuvers";
       continue;
     }
     if (block === "## Passives") {
-      if (section) fail(path, `Nested or duplicate ${block} section`);
+      if (seenSections.has(block)) fail(path, `Duplicate ${block} section`);
+      seenSections.add(block);
       section = "passives";
       continue;
     }
@@ -697,6 +700,7 @@ export function parseSummon(record, text, context) {
         name: match[1],
         category: match[2] === "Main Action" ? "main-action" : "maneuver",
         markdown: block,
+        body: [],
       };
       continue;
     }

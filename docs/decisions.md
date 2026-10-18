@@ -16,6 +16,7 @@ This register separates confirmed direction from proposed engineering choices. I
 | D22 | Any player may open/use Defend and choose the defender; GM native multi-target selection at Attack time supplies immutable suggestions; DA adjudicates encounter-rule exceptions. | October 17, 2026 clarifications; #14/#22. |
 | D21 | Full-featured creation and advancement charactermancer; ease of use paramount; eligible-first choices with visible disabled ineligible options and exact unmet requirements. | October 17, 2026 follow-ups; #18. |
 | D23 | Use native Foundry targeting, a single prefilled effective −3…+3 Boon/Bane slider, no adjustment reason fields, and optional contextual controls defaulting off. Core playability is the release goal; every card nuance need not be automated. | Bruce's latest October 17, 2026 correction; #129. |
+| D24 | Defend can be reopened and rolled repeatedly with changed abilities. Each fresh submission has its own identity; only retransmission of that same identity is deduplicated. No same-defender completed/unknown-result gate, repeat checkbox, reason or approval. | Bruce's later #129 correction, October 17, 2026. |
 
 ## Proposed engineering defaults
 

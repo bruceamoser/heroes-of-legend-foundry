@@ -34,7 +34,6 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       adjustmentOverride: false,
       perception: {},
       woundApplicability: {},
-      additionalAttempt: false,
     };
     this.notice = "";
     this.activating = false;
@@ -98,19 +97,9 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
         ? reviewedDefenseAbilityOptions(this.actor, {
             attackMessageId: this.attackMessageId,
             defenderTokenUuid: this.defenderTokenUuid,
-            additionalAttempt: this.draft.additionalAttempt,
           }).options
         : [];
-    this.abilityPending = this.abilityOptions.some((option) => option.pending);
-    const prior =
-      game.messages
-        .get(this.attackMessageId)
-        ?.getFlag("heroes-of-legend", "defenseResponses")
-        ?.filter((r) => r.actorUuid === this.actor.uuid) ?? [];
-    this.priorCount = prior.length;
-    this.pendingResponse =
-      prior.some((r) => r.status === "rolling") ||
-      Boolean(this.basis.survival?.pending);
+    this.pendingResponse = Boolean(this.basis.survival?.pending);
     return {
       name: this.actor.name,
       death: this.mode === "death",
@@ -120,7 +109,6 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
         this.basis.survival?.gritAvailable > 0 &&
         !this.pendingResponse,
       incoming: this.basis.incoming,
-      priorCount: this.priorCount,
       pendingResponse: this.pendingResponse,
       attributeName: game.i18n.localize(`HOL.Attributes.${this.attributeKey}`),
       attribute: this.basis.attribute,
@@ -171,9 +159,6 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
     this.draft = {
       ...this.draft,
       adjustment: Number(value("adjustment") ?? 0),
-      additionalAttempt:
-        this.element.querySelector("[name=additionalAttempt]")?.checked ===
-        true,
       perception: Object.fromEntries(
         this.fears.map((source, index) => [source, checked(`fear-${index}`) ? "yes" : "no"]),
       ),
@@ -190,10 +175,8 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
     const options = reviewedDefenseAbilityOptions(this.actor, {
       attackMessageId: this.attackMessageId,
       defenderTokenUuid: this.defenderTokenUuid,
-      additionalAttempt: this.draft.additionalAttempt,
     }).options;
     this.abilityOptions = options;
-    this.abilityPending = options.some((option) => option.pending);
     const list = this.element.querySelector(".hol-defense-abilities");
     if (!list) return;
     const rows = new Map(
@@ -241,10 +224,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       detail.textContent = `${plan.boons} Boons · ${plan.banes} Banes · ${plan.canceled} canceled pairs · net extras ${plan.net} (maximum 3)`;
       button.disabled =
         this.activating ||
-        this.abilityPending ||
-        this.pendingResponse ||
-        (this.priorCount > 0 &&
-          !this.draft.additionalAttempt);
+        this.pendingResponse;
     } catch (e) {
       output.textContent = e.message;
       detail.textContent = "";
@@ -282,7 +262,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
     if (this.rolling) return;
     this.readDraft();
     try {
-      if (this.activating || this.abilityPending)
+      if (this.activating)
         throw new Error(
           "The defender's ability activation is still pending. Review it before rolling.",
         );
@@ -350,7 +330,6 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
             shieldItemUuid:
               this.abilityOptions.find((option) => option.itemId === item.id)
                 ?.shieldItemUuid ?? null,
-            additionalAttempt: this.draft.additionalAttempt,
           })
         : await activateOwnedAbility(item);
       const status = await this.waitForAbility(message.id);

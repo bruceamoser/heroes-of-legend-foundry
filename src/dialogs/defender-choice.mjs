@@ -76,24 +76,4 @@ export function renderAttackCard(message, element) {
   );
   const card = element.querySelector(".hol-attack-card");
   card?.append(button);
-  const responses = message.getFlag(ID, "defenseResponses") ?? [];
-  if (responses.length) {
-    const list = document.createElement("ul");
-    for (const response of responses) {
-      const actor = fromUuidSync(response.actorUuid),
-        token = response.defenderTokenUuid
-          ? fromUuidSync(response.defenderTokenUuid)
-          : null;
-      const name =
-        token && !token.hidden
-          ? token.name
-          : actor?.testUserPermission(game.user, "OBSERVER")
-            ? actor.name
-            : "Defender";
-      const li = document.createElement("li");
-      li.textContent = `${name} · attempt ${response.attempt}: ${response.status}`;
-      list.append(li);
-    }
-    card?.append(list);
-  }
 }

@@ -490,6 +490,16 @@ try {
       game.actors.get(f.hero)?.items.get(f.shieldItem)?.system.held === true,
     fixture,
   );
+  // Earlier dice, even an unknown old operation, do not forbid selecting a
+  // forgotten ability. A fresh paid use still consumes the ordinary Reaction.
+  await gm.page.evaluate(async ({ attack, fixture }) => {
+    await game.messages.get(attack).update({
+      "flags.heroes-of-legend.defenseResponses": [
+        { requestId: "old-resolved", actorUuid: `Actor.${fixture.hero}`, attempt: 1, status: "resolved" },
+        { requestId: "old-unknown", actorUuid: `Actor.${fixture.hero}`, attempt: 2, status: "rolling" },
+      ],
+    });
+  }, { attack, fixture });
   await player.page
     .locator(`[data-message-id="${attack}"] .hol-defend-button`)
     .filter({ visible: true })
@@ -548,7 +558,7 @@ try {
   await player.page.waitForFunction(() =>
     document
       .querySelector(".hol-roll-dialog .hol-roll-sources")
-      ?.innerText.includes("Shield Block"),
+      ?.textContent.includes("Shield Block"),
   );
   assert.match(
     await dialog.locator(".hol-roll-sources").textContent(),

@@ -120,7 +120,7 @@ These are requirements for future tests and manual Foundry checks. **They have n
 | T87 | Select Shield Block, deselect, then cancel defense before commitment | No Reaction/effect/payment consumed; request remains pending. Submitting the selected reaction pays once before rolling. |
 | T88 | Creature attacks Hero A; Hero A clicks Defend | Show creature attack description and A's actual token, printed defense attribute/effective stat, Threat, conditions and benefits; allow eligible abilities without rebuilding context. |
 | T89 | Area attack on A and B; A defends with an ability | A and B have separate response IDs/results; A's choice does not change B's roll or resolve B automatically. |
-| T90 | Any player/non-owner clicks Defend; two players handle one defender; chat reloads | Dialog opens without ownership/target gating; actual roller and chosen defender recorded separately; accidental duplicate application prevented; card remains usable for other defenders and explicit additional attempts. |
+| T90 | Any player/non-owner clicks Defend; two players handle one defender; chat reloads | Dialog opens without ownership/target gating; actual roller and chosen defender recorded separately; same-operation retransmission is idempotent; fresh submissions for the same defender each roll without a checkbox, explanation or DA approval. |
 | T91 | Drag owned eligible ability into dialog, then a compendium/unowned ability | Owned ability becomes a draft selection; unowned source cannot grant free use. Invalid type/drop explains why. |
 | T92 | Drop same ability into acquisition twice; transfer equipment; drop summon into scene | No duplicate grant/payment; transfer preserves instance/supply and debits once; summon requires eligible paid workflow. |
 | T93 | Drag/drop after sheet rerender and in detached window; use keyboard alternative | Same UUID/permission validation and result as main sheet; no lost listeners, silent failure or acting-actor swap. |
@@ -176,6 +176,6 @@ signed −3…+3 slider and no Boon/Bane reason fields. Verify keyboard and mous
 With automatic +2, choosing −1 means final −1. Untouched controls follow ability
 changes; a deliberate slider override retains its chosen net. Optional fear
 and wound controls default off and do not block ordinary play. Preserve ability
-choices, any-player Defend and additional defender selection. Intentional additional defenses need no written reason; unresolved dice still require DA recovery.
+choices, any-player Defend and additional defender selection. Every intentional fresh defense may roll again without a checkbox, explanation or DA approval, including while an older operation's dice are unknown. Same-operation replay never rolls again.
 Unknown-dice recovery and exceptional DA rulings remain explicit. Native evidence must be
 recorded after serialized runtime testing; static checks alone do not prove UI.

@@ -110,8 +110,7 @@ try {
     (ids) =>
       ids.every(
         (id) =>
-          game.messages.get(id).getFlag("heroes-of-legend", "roll") ||
-          game.messages.get(id).content.includes("already has an attempt"),
+          game.messages.get(id).getFlag("heroes-of-legend", "roll"),
       ),
     race,
   );
@@ -122,7 +121,9 @@ try {
       ),
     race,
   );
-  assert.equal(rolled.length, 1);
+  assert.equal(rolled.length, 2);
+  assert.notEqual(race[0], race[1]);
+  await settled(rolled[1]);
   await settled(rolled[0]);
   const original = await gm.page.evaluate((id) => {
     const m = game.messages.get(id);
@@ -143,32 +144,18 @@ try {
     return resolveDefenseRequest(id);
   }, rolled[0]);
   assert(replay.replay);
-  await p1.page.evaluate(async (f) => {
-    const { promptDefenseRoll } = await import(
-      "/systems/heroes-of-legend/dialogs/attribute-roll.mjs"
-    );
-    await promptDefenseRoll(game.actors.get(f.actors[0]), "agility", {
-      attackMessageId: f.attack,
-    });
-  }, f);
+  await p1.page.evaluate(() => { ui.sidebar.expand(); ui.sidebar.changeTab("chat", "primary"); });
+  await p1.page.locator(`[data-message-id="${f.attack}"] .hol-defend-button`).filter({ visible: true }).first().click();
+  await p1.page.locator('.hol-defender-choice [name=additionalUuid]').fill(`Actor.${f.actors[0]}`);
+  await p1.page.locator('.hol-defender-choice').getByRole("button", { name: "Prepare defense", exact: true }).click();
   const dialog = p1.page.locator(".hol-roll-dialog");
-  assert(
-    await dialog
-      .getByRole("button", { name: "Roll", exact: true })
-      .isDisabled(),
-  );
-  await dialog.locator('[name="additionalAttempt"]').check();
-  assert.equal(await dialog.locator('[name="attemptReason"]').count(), 0);
+  assert.equal(await dialog.getByRole("button", { name: "Roll", exact: true }).isEnabled(), true);
+  assert.equal(await dialog.locator('[name="additionalAttempt"], [name="attemptReason"]').count(), 0);
+  await dialog.getByRole("slider", { name: "Boons or Banes", exact: true }).press("End");
   await dialog.getByRole("button", { name: "Roll", exact: true }).click();
   await gm.page.waitForFunction(
-    (f) =>
-      game.messages
-        .get(f.attack)
-        .getFlag("heroes-of-legend", "defenseResponses")
-        .filter(
-          (r) =>
-            r.actorUuid === `Actor.${f.actors[0]}` && r.status === "resolved",
-        ).length === 2,
+    (f) => game.messages.get(f.attack).getFlag("heroes-of-legend", "defenseResponses")
+      .filter(r => r.actorUuid === `Actor.${f.actors[0]}` && r.status === "resolved").length === 3,
     f,
   );
   const oldBasis = await p2.page.evaluate(async (f) => {
@@ -319,6 +306,9 @@ try {
     await gm.page.evaluate((id) => game.messages.get(id).rolls.length, pending),
     0,
   );
+  const whileUnknown = await submit(p1, 2);
+  await settled(whileUnknown);
+  assert.equal(await gm.page.evaluate((id) => game.messages.get(id).rolls.length, pending), 0);
   await gm.page.evaluate(async () => {
     const { AuthorityPanel } = await import(
       "/systems/heroes-of-legend/applications/authority.mjs"
@@ -349,10 +339,7 @@ try {
   await p1.page.evaluate(() =>
     game.settings.set("core", "messageMode", "blind"),
   );
-  const after = await submit(p1, 2, {
-    additionalAttempt: true,
-    attemptReason: "DA reviewed the abandoned attempt",
-  });
+  const after = await submit(p1, 2);
   await settled(after);
   const hidden = await gm.page.evaluate((id) => {
     const m = game.messages.get(id);
@@ -376,7 +363,7 @@ try {
         ).length,
       f,
     ),
-    4,
+    6,
   );
   assert.deepEqual(
     await gm.page.evaluate(
@@ -387,7 +374,7 @@ try {
   );
   assert.deepEqual(errors, []);
   console.info(
-    "PASS: two-player same-defender race yields one official roll, independent defenders, original native author, intentional additional-attempt UI without a written reason, stale-source rejection, saved-result settlement without reroll, unresolved-roll DA disposition, blind mode and no HP mutation.",
+    "PASS: two fresh same-defender requests each roll while same-request replay does not reroll, independent defenders, original native author, reopened native Defend allows an ordinary fresh roll with no repeat checkbox or written reason, stale-source rejection, saved-result settlement without reroll, fresh roll while an older result is unknown; DA disposition affects only that old operation, blind mode and no HP mutation.",
   );
 } finally {
   await p1?.context.close();

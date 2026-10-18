@@ -358,7 +358,7 @@ Shield Block requires an authentic GM attack card with an explicit DA `blockable
 
 The benefit is one automatic Boon until the start of that defender's next turn. It stacks with Defend because their benefit keys differ, but repeated Shield Block effects do not multiply. The effect stores both the reviewed Ability source and the exact held shield Item. If a later eligible Shield Block is paid for while a same-key benefit remains, that one effect is refreshed to the newly selected held shield before continuing. At roll preparation it applies only while that stable shield catalog Item (`item-ordinary-shield` in the current equipment model) remains held and the incoming card remains blockable. The current equipment model has no general shield category, so display names are never used as capability identity.
 
-The shared dialog lists only reviewed Defend and Shield Block options, available first and unavailable with specific own-turn, Maneuver, Reaction, attack-judgment and held-shield reasons. An unresolved defense attempt blocks activation; a completed or abandoned earlier attempt does not block forever when the player explicitly selects another attempt and records its reason. Activation settles before the dialog refreshes its source basis; no dice are evaluated while that activation is pending. The coordinator stores the original request and verified incoming-attack snapshot, so deleted request chat can be resumed without trusting a replacement entry or repeating its cost, and continuation rejects a changed attack snapshot. The serialized native runtime script is `HOL_TEST_URL=http://127.0.0.1:30014 HOL_TEST_ALLOW_WRITES=1 npm run test:shield-block`. It must run only against the isolated development world.
+The shared dialog lists only reviewed Defend and Shield Block options, available first and unavailable with specific own-turn, Maneuver, Reaction, attack-judgment and held-shield reasons. Prior defense results, including unknown older operations, do not block normal ability selection. Newly selected uses still pay normal resources; existing active benefits contribute on later rolls without an automatic new charge. Activation settles before the dialog refreshes its source basis; no dice are evaluated while that activation is pending. The coordinator stores the original request and verified incoming-attack snapshot, so deleted request chat can be resumed without trusting a replacement entry or repeating its cost, and continuation rejects a changed attack snapshot. The serialized native runtime script is `HOL_TEST_URL=http://127.0.0.1:30014 HOL_TEST_ALLOW_WRITES=1 npm run test:shield-block`. It must run only against the isolated development world.
 
 Validation for #88: Node 24 checks pass 134 tests after the inventory-plan integration. Isolated Foundry 14.369 suites pass for Defend, Shield Block, defense responses, NPC attacks, roll sources and passive defenses. The shield fixture uses a linked targeted defender so its Actor matches the encounter budget; unlinked-token isolation is covered separately by damage/defense tests. Both native opening-side paths are handled. Additional-attempt inputs update ability choices in place, preserving focus and the immediate Roll click. Visual inspection confirmed the HOL theme and disabled-reason presentation; reasons are joined as sentences rather than comma-coerced arrays. This remains bounded ability coverage, not full catalog automation.
 
@@ -453,11 +453,11 @@ listed Basic Melee paths, not the separate attack handlers above.
 
 Attack-linked defense submissions now use native ChatMessage requests and the selected GM coordinator. The original player remains the native message author and recorded roller; the coordinator evaluates native dice on their behalf with interactive/manual dice disabled, updates that same message with the result, then settles the attack-card receipt. Standalone attribute/defense checks retain their existing local roll path. Native public/GM/blind/self message mode is applied before submitting the request.
 
-Opening/canceling a dialog reserves nothing. Submission reserves one attempt for the native Actor identity; unlinked Token Actors are distinct defenders. The selected Token UUID is also preserved for attribution and the native speaker, including linked tokens. A second simultaneous submission cannot produce another official roll for that defender. Separate defenders remain independent. An explicit additional attempt requires a reason and retains prior results; no previous damage is silently undone or applied again. After an earlier attempt, the dialog exposes the additional-attempt controls. Unknown pending attempts require DA review rather than a new roll.
+Opening/canceling a dialog reserves nothing. Submission reserves only its request ID; Actor identity and unlinked Token identity identify the defender, not a roll-deduplication key. The selected Token UUID is also preserved for attribution and the native speaker, including linked tokens. Each intentional submission has a fresh request ID and may roll, even for the same defender and attack or alongside an unknown older result. Only retransmission of the same request ID is idempotent. Reopening Defend allows changed ability choices without a repeat control or approval. Prior results and already-applied damage are preserved.
 
 The public attack ledger stores a SHA-256 request digest instead of copying the complete submitted context. The full additional-attempt reason remains on the original request under its chosen message visibility. Public response rows reveal status, not dice or quality. This preserves native display behavior; it does not add a secrecy boundary beyond the previously documented Foundry client-data limits.
 
-The rolling phase is durable before dice evaluation. A saved child result can settle the final attack receipt without rerolling. If no saved result exists after interruption, retry does not evaluate dice again. Manage automation provides **Resume saved result** and an explicit DA **Abandon unknown result** disposition with a reason; abandonment preserves the audit and allows a subsequent explicitly requested attempt. A saved roll cannot be abandoned through that path. Unknown native write acknowledgments still require the coordinator's established reconciliation/relaunch protocol. The recovery fixture reconstructs persisted phases; it is not a claim to have simulated every network failure.
+The rolling phase is durable before dice evaluation. A saved child result can settle the final attack receipt without rerolling. If no saved result exists after interruption, retry does not evaluate dice again. Manage automation provides **Resume saved result** and an explicit DA **Abandon unknown result** disposition with a reason; abandonment preserves that old operation's audit; fresh rolls never require this disposition first. A saved roll cannot be abandoned through that path. Unknown native write acknowledgments still require the coordinator's established reconciliation/relaunch protocol. The recovery fixture reconstructs persisted phases; it is not a claim to have simulated every network failure.
 
 This replaces the earlier untracked repeat-roll limitation, but consequences remain manual. Reaction/ability costs, automatic damage/wounds and complete attack-perspective modifiers remain open #13/#14 and A03/A07 work.
 
@@ -869,8 +869,8 @@ Basic Melee shows the local native Foundry target read-only and subscribes to
 V14 `targetToken`; zero/multiple targets give an inline instruction. A single
 held weapon is read-only; multiple weapons retain a choice. Modifier reasons
 are removed. Optional fear/wound checkboxes default off without a roll gate.
-Deliberate additional defense attempts need an explicit checkbox, with no written
-reason; pending unknown dice still require DA recovery. Any-player Defend,
+Fresh defense submissions never require a repeat checkbox or reason, and an older
+unknown result does not block them. Recovery of the old ID does not reroll it. Any-player Defend,
 additional defender choice, permissions and durable operation receipts remain.
 
 Node 24.22.0 build, validation and 263 tests passed on the `26357b4` baseline.
@@ -902,3 +902,20 @@ features are preserved. Roll/attack/defense production files are byte-identical
 to the checkpoint after the targeted native run. Native coverage and the broader
 fixture limitation above remain the exact evidence; no new whole-suite pass is
 claimed after rebase.
+
+Latest #129 correction supersedes the earlier same-defender duplicate-roll policy:
+new submissions always get new ChatMessage/operation identities. Completed and
+unknown older results do not block rolling or ability selection. The audit and
+same-ID receipts remain; replaying an unknown old ID still cannot evaluate dice.
+Real selected ability costs remain serialized independently, and an already-active
+benefit remains a source without being automatically purchased again. The old
+native duplicate-race evidence above describes the superseded policy, not current
+acceptance. Updated fixtures now expect two fresh same-defender requests to both
+roll, reopened Defend without repeat controls, and a new roll alongside an older
+unknown result; those changes await exclusive native runtime access.
+
+The fresh-roll correction passes Node 24.22.0 build/validation and all 278 tests,
+with 14 focused modifier/defense tests. Updated defense-response and Shield Block
+fixtures parse, but their new fresh-roll/forgotten-ability cases have not yet run
+natively; another issue owns the isolated world. Same-ID replay/unknown-result
+behavior remains unchanged in the service and is asserted by those fixtures.

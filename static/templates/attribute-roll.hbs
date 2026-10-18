@@ -1,7 +1,7 @@
 <section class="hol-roll-shell">
   {{#if death}}<p class="hol-note">Dying turn: choose before seeing dice. Spend 1 Grit for full HP, or make this Fortitude death roll. Wounds remain. Grit available: {{gritAvailable}}</p><button type="button" data-action="grit" {{#unless canGrit}}disabled{{/unless}}>Spend 1 Grit · restore full HP</button>{{/if}}<header class="hol-banner"><p class="hol-kicker">{{#if defense}}Defense{{else}}Attribute check{{/if}}</p><h1>{{name}}</h1></header>
   <div class="hol-body">
-  {{#if incoming}}<p>Defending against {{incoming.attackerName}} · {{incoming.title}}</p><button type="button" data-action="changeDefender">Change defender</button>{{#if priorCount}}<p>{{priorCount}} earlier attempt(s) exist for this defender.</p>{{#if pendingResponse}}<p role="alert">An attempt is unresolved. The DA must review it before another roll.</p>{{/if}}<label class="hol-attempt-choice"><input type="checkbox" name="additionalAttempt" {{#if draft.additionalAttempt}}checked{{/if}}> Roll another defense</label>{{/if}}{{/if}}
+  {{#if incoming}}<p>Defending against {{incoming.attackerName}} · {{incoming.title}}</p><button type="button" data-action="changeDefender">Change defender</button>{{/if}}
   {{#if notice}}<p class="hol-note" role="alert">{{notice}}</p>{{/if}}
   <p>{{attributeName}}: <strong>{{attribute}}</strong></p>
   {{#if defense}}<p>Rolling this defense spends no Reaction. Any player may roll for this defender.</p>{{/if}}

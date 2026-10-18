@@ -65,13 +65,12 @@ test("derived Actor state and unsafe fields are never accepted from an imported 
   assert.equal(preview.valid, true);
   assert(preview.summary.maximumHp < 9999);
 });
-test("malformed, excessive and incompatible files fail before mutation", () => {
+test("malformed and excessive files fail before mutation", () => {
   const source = JSON.parse(
     writePortableCharacter(newCreationDraft(), catalogs),
   );
   for (const edit of [
     (v) => (v.schemaVersion = 4),
-    (v) => (v.sourceCommit = "old"),
     (v) => (v.draft.purchases[0] = null),
     (v) => (v.draft.languages.home = []),
     (v) => (v.draft.attributes.brawn = 99),
@@ -81,6 +80,12 @@ test("malformed, excessive and incompatible files fail before mutation", () => {
     edit(v);
     assert.throws(() => readPortableCharacter(v, catalogs));
   }
+  const old = structuredClone(source);
+  old.sourceCommit = "old";
+  assert.deepEqual(
+    readPortableCharacter(old, catalogs).draft,
+    readPortableCharacter(source, catalogs).draft,
+  );
   assert.throws(
     () => readPortableCharacter(" ".repeat(MAX_CHARACTER_BYTES + 1), catalogs),
     /too large/,

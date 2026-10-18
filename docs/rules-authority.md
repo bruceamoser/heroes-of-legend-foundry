@@ -80,3 +80,10 @@ Issue #171 follows approved, merged book PR #1278 at
 content. It adds 62 shared abilities and revises 12 origins. The six one-DP cards,
 light-armor correction, Universal actions, signatures, class prices and normal
 resource rules remain intact. See the [intake, behavior and migration audit](research/discipline-expansion-v16.3.0.md).
+
+## Current-only application (#173)
+
+Bruce's latest instruction supersedes the optional historical-origin behavior of
+#171: the current approved catalog is the only rules version. Saved character
+choices are resolved against it automatically. Do not offer old origin pairs or
+ask players to approve a rules-version switch.

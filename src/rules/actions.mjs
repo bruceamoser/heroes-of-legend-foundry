@@ -135,6 +135,12 @@ function adjudication(reasons, override) {
     exceptions: reasons,
   };
 }
+function actionGuidance(reasons, override) {
+  return reasons.length ? {
+    choice: "action-guidance", exceptions: reasons,
+    ...(override?.userId ? { userId: override.userId, reason: typeof override.reason === "string" ? override.reason.trim() : "" } : {}),
+  } : null;
+}
 export function movementRemaining(state, conditions = {}) {
   validateTurn(state);
   validateConditions(conditions);
@@ -168,18 +174,19 @@ export function convertAction(
   if (state.remaining[from] < 1) reasons.push(`No ${from} remains.`);
   if (to !== "movement" && !state.retained.includes(to))
     reasons.push(
-      "The destination category was not retained; DA adjudication is required.",
+      "The destination category was not retained.",
     );
-  const audit = adjudication(reasons, override),
+  const funded = state.remaining[from] > 0,
+    audit = actionGuidance(reasons, override),
     next = structuredClone(state);
   next.remaining[from] = Math.max(0, next.remaining[from] - 1);
-  if (to === "movement")
+  if (funded && to === "movement")
     next.movementAllowances = int(
       next.movementAllowances + 1,
       "Movement allowances",
     );
-  else next.remaining[to] = int(next.remaining[to] + 1, "Action allowance");
-  next.operations[operationId] = { signature, status: "complete", audit };
+  else if (funded) next.remaining[to] = int(next.remaining[to] + 1, "Action allowance");
+  next.operations[operationId] = { signature, status: "complete", audit, trackedCost: { category: from, availableBefore: state.remaining[from], spent: funded ? 1 : 0 } };
   return next;
 }
 export function spendMovement(
@@ -242,7 +249,7 @@ export function declareAction(
     if (ACTION_CATEGORIES.includes(category) && state.remaining[category] < 1)
       reasons.push(`No ${category} remains.`);
   }
-  const audit = adjudication(reasons, override),
+  const audit = actionGuidance(reasons, override),
     next = structuredClone(state);
   if (ACTION_CATEGORIES.includes(category))
     next.remaining[category] = Math.max(0, next.remaining[category] - 1);
@@ -252,6 +259,10 @@ export function declareAction(
     sourceId,
     category,
     audit,
+    trackedCost: ACTION_CATEGORIES.includes(category) ? {
+      category, availableBefore: state.remaining[category],
+      spent: state.remaining[category] > 0 ? 1 : 0,
+    } : null,
   };
   return next;
 }

@@ -20,6 +20,8 @@ This register separates confirmed direction from proposed engineering choices. I
 
 | D25 | Ordinary play uses table judgment without mandatory prose or adjudication questionnaires. Attack geometry and blockability are guidance; deliberate ability selection records intent. Single-condition Finish uses zero additional manual mitigation by default. Permissions, resources, source identity and operation receipts remain enforced. Creation/advancement retains strict eligible-first choices and visible disabled ineligible options. | Bruce’s October 17 ease-of-play correction; #133. |
 
+| D26 | Tracked action counters, own-turn status and ordinary condition applicability are advice for deliberate actions, without extra DA approval. Clamp counters at zero; unfunded conversions create no resources and active benefits are reused without another charge. Owners may correct equipment arrangements during encounters. Real Item/HP costs, source identity, permissions, consent, uncertain writes and creation/acquisition eligibility remain strict. | Bruce’s subsequent October 17 no-gates correction; #140. |
+
 ## Proposed engineering defaults
 
 | ID | Proposal | Reason / decision point |

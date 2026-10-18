@@ -179,11 +179,6 @@ try {
     return resolveAbilityRequest(id);
   }, first);
   assert(replay.replay);
-  await combatRequest("convert", {
-    id: fixture.hero,
-    from: "main",
-    to: "maneuver",
-  });
   const second = await abilityRequest();
   await gm.page.waitForFunction(
     ({ combat, id }) =>
@@ -199,12 +194,13 @@ try {
   assert.equal(s.state.budgets[fixture.hero].remaining.maneuver, 0);
   const third = await abilityRequest();
   await gm.page.waitForFunction(
-    (id) =>
-      game.messages
-        .get(id)
-        ?.content.includes("No Maneuver remains for Defend."),
-    third,
+    ({ combat, id }) => game.combats.get(combat)
+      .getFlag("heroes-of-legend", "abilityOperations")?.[id]?.status === "complete",
+    { combat: fixture.combat, id: third },
   );
+  const reused = await snapshot();
+  assert.equal(reused.state.budgets[fixture.hero].remaining.maneuver, 0);
+  assert.equal(reused.state.budgets[fixture.hero].operations[third].category, "free");
   assert.equal((await snapshot()).effects.length, 1);
   await combatRequest("finish");
   await combatRequest("choose", { id: fixture.opponent });
@@ -284,7 +280,7 @@ try {
   assert.deepEqual(await snapshot(), s);
   assert.deepEqual(errors, []);
   console.info(
-    "PASS: owned ability UI, one Maneuver per use, nonstacking native benefit, overspend denial, intervening-turn preservation, next-own-turn expiry, reservation failure, blocked progression, deleted-chat recovery panel and replay without duplicate payment.",
+    "PASS: owned ability UI, one Maneuver for initial use, nonstacking active-benefit reuse without further payment, intervening-turn preservation, next-own-turn expiry, reservation failure, blocked progression, deleted-chat recovery panel and replay without duplicate payment.",
   );
 } catch (e) {
   console.error(

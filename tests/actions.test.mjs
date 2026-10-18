@@ -44,15 +44,12 @@ test("downward conversion gives three movement allowances, with replay and terra
       convertAction(state, { operationId: "up", from: "maneuver", to: "main" }),
     /only Main/,
   );
-  assert.throws(
-    () =>
-      convertAction(state, {
-        operationId: "extra",
-        from: "maneuver",
-        to: "movement",
-      }),
-    /No maneuver/,
-  );
+  const emptyConversion = convertAction(state, {
+    operationId: "extra", from: "maneuver", to: "movement",
+  });
+  assert.equal(emptyConversion.movementAllowances, state.movementAllowances);
+  assert.equal(emptyConversion.operations.extra.trackedCost.spent, 0);
+  assert.match(emptyConversion.operations.extra.audit.exceptions.join(" "), /No maneuver/);
   assert.equal(movementRemaining(initial), 6);
 });
 test("Dazed and Grappled freeze category selection but live grapple and helpless states still restrict movement", () => {
@@ -70,29 +67,20 @@ test("Dazed and Grappled freeze category selection but live grapple and helpless
     conditions: { dazed: 3 },
   });
   assert.equal(laterDazed.remaining.main, 0);
-  assert.throws(
-    () =>
-      declareAction(state, {
-        operationId: "strike",
-        sourceId: "basic-melee",
-        category: "main",
-        conditions: { paralyzed: 1 },
-      }),
-    /prevents actions/,
-  );
+  const conditionGuidance = declareAction(state, {
+    operationId: "strike", sourceId: "basic-melee", category: "main",
+    conditions: { paralyzed: 1 },
+  });
+  assert.match(conditionGuidance.operations.strike.audit.exceptions.join(" "), /prevents actions/);
+  assert.equal(conditionGuidance.remaining.main, 0);
   assert.throws(
     () => turn({ conditions: { dazed: 2 }, retained: ["main", "reaction"] }),
     /exactly 1/,
   );
-  assert.throws(
-    () =>
-      convertAction(state, {
-        operationId: "convert",
-        from: "main",
-        to: "maneuver",
-      }),
-    /not retained/,
-  );
+  const advisedConversion = convertAction(state, {
+    operationId: "convert", from: "main", to: "maneuver",
+  });
+  assert.match(advisedConversion.operations.convert.audit.exceptions.join(" "), /not retained/);
   const overridden = convertAction(state, {
     operationId: "convert",
     from: "main",
@@ -102,8 +90,7 @@ test("Dazed and Grappled freeze category selection but live grapple and helpless
     },
   });
   assert.equal(overridden.operations.convert.audit.userId, "da");
-  assert.equal(overridden.operations.convert.audit.reason, "");
-  assert.equal(overridden.operations.convert.audit.choice, "budget-override");
+  assert.equal(overridden.operations.convert.audit.choice, "action-guidance");
   assert.equal(overridden.remaining.maneuver, 1);
   assert.equal(turn({ independentReaction: false }).remaining.reaction, 0);
 });
@@ -132,25 +119,18 @@ test("defense never spends a Reaction, while declared reactions spend once and m
     ownTurn: false,
   });
   assert.equal(defense.remaining.reaction, 0);
-  assert.throws(
-    () =>
-      declareAction(state, {
-        operationId: "block2",
-        sourceId: "shield-block",
-        category: "reaction",
-      }),
-    /No reaction/,
-  );
-  assert.throws(
-    () =>
-      declareAction(state, {
-        operationId: "attack",
-        sourceId: "basic-melee",
-        category: "main",
-        ownTurn: false,
-      }),
-    /requires your turn/,
-  );
+  const extraBlock = declareAction(state, {
+    operationId: "block2", sourceId: "shield-block", category: "reaction",
+  });
+  assert.equal(extraBlock.remaining.reaction, 0);
+  assert.equal(extraBlock.operations.block2.trackedCost.spent, 0);
+  assert.match(extraBlock.operations.block2.audit.exceptions.join(" "), /No reaction/);
+  assert.deepEqual(declareAction(extraBlock, { operationId: "block2", sourceId: "shield-block", category: "reaction" }), extraBlock);
+  const offTurn = declareAction(state, {
+    operationId: "attack", sourceId: "basic-melee", category: "main", ownTurn: false,
+  });
+  assert.equal(offTurn.remaining.main, 0);
+  assert.match(offTurn.operations.attack.audit.exceptions.join(" "), /requires your turn/);
   assert.throws(
     () =>
       declareAction(state, {

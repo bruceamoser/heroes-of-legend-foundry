@@ -194,3 +194,4 @@ enter automatic defense damage. Existing Basic Melee numeric cards/results retai
 their original contract. Any-player Defend uses the incoming attribute, existing
 slider/abilities and fresh operation identities. Costs and all compound effects
 remain manual on this reference path.
+Tracked action declarations may include `audit: { choice: "action-guidance", exceptions }` and `trackedCost: { category, availableBefore, spent }`. An empty counter records `spent: 0`; availability/own-turn/ordinary-condition advice grants no negative counter or extra resource. The receipt remains bound to the same operation signature. Explicit additional HP and Item costs retain typed validation and exactly-once continuation. A reused active defense benefit records a free declaration and `reusedBenefit: true`, keeping its current anchor and source identity rather than charging again.

@@ -131,6 +131,7 @@ export class BasicMeleeDialog extends foundry.applications.api.HandlebarsApplica
       weaponName: this.context.weapons.find(weapon => weapon.uuid === this.context.weaponItemUuid)?.name ?? "No held melee weapon",
       targetTokenUuid: this.context.targetTokenUuid,
       reasons: this.context.reasons,
+      actionGuidance: this.context.actionReason,
       rulingReason: this.draft.rulingReason,
       override: this.draft.override,
       gm: game.user.isGM,

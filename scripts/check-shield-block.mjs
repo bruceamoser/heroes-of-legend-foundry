@@ -479,6 +479,13 @@ shieldScenarios: try {
   await closePrompt(dialog);
 
   // Hold the stable-ID shield and reopen the same attack.
+  if (process.env.HOL_TEST_ADVISORY_ONLY === "1") {
+    await gm.page.evaluate(async f => {
+      const combat = game.combats.get(f.combat), state = foundry.utils.deepClone(combat.getFlag("heroes-of-legend", "encounter"));
+      state.budgets[f.heroCombatant].remaining.reaction = 0;
+      await combat.setFlag("heroes-of-legend", "encounter", state);
+    }, fixture);
+  }
   await gm.page.evaluate(async (f) => {
     await game.actors
       .get(f.hero)
@@ -533,6 +540,12 @@ shieldScenarios: try {
   assert.equal(await shieldButton.isEnabled(), true, await dialog.innerText());
   assert.match(await dialog.innerText(), /No Maneuver remains for Defend/);
   assert.match(await dialog.innerText(), /defender's own turn/);
+  if (process.env.HOL_TEST_ADVISORY_ONLY === "1") {
+    await closePrompt(dialog);
+    dialog = await openPrompt(attack);
+    assert.match(await dialog.innerText(), /No Reaction remains/);
+    assert.equal(await shieldButton.isEnabled(), true);
+  }
   const beforeItems = (await state()).items.length;
   await shieldButton.click();
   const shieldBlockRequest = await waitForAbility("ability-shield-block");
@@ -565,12 +578,21 @@ shieldScenarios: try {
     /Defend maneuver[\s\S]*Shield Block/,
   );
   assert(
-    await dialog.getByRole("button", { name: /Shield Block/ }).isDisabled(),
+    await dialog.getByRole("button", { name: /Shield Block/ }).isEnabled(),
   );
   assert.match(
     await dialog.innerText(),
     /No Reaction remains for Shield Block/,
   );
+  if (process.env.HOL_TEST_ADVISORY_ONLY === "1") {
+    const beforeReuse = await state();
+    const count = await gm.page.evaluate(f => game.messages.filter(m => m.getFlag("heroes-of-legend", "abilityStatus")?.definitionId === "ability-shield-block" && m.getFlag("heroes-of-legend", "abilityStatus")?.status === "complete").length, fixture);
+    await dialog.getByRole("button", { name: /Shield Block/ }).click();
+    await gm.page.waitForFunction(count => game.messages.filter(m => m.getFlag("heroes-of-legend", "abilityStatus")?.definitionId === "ability-shield-block" && m.getFlag("heroes-of-legend", "abilityStatus")?.status === "complete").length > count, count);
+    const afterReuse = await state();
+    assert.equal(afterReuse.budget.remaining.reaction, 0);
+    assert.deepEqual(afterReuse.effects, beforeReuse.effects);
+  }
   await screenshot("shield-block-defense-dialog");
   await dialog.getByRole("button", { name: "Roll", exact: true }).click();
   await gm.page.waitForFunction(
@@ -638,7 +660,7 @@ shieldScenarios: try {
   );
   assert(replay.replay);
   assert.deepEqual(await state(), beforeReplay);
-  if (process.env.HOL_TEST_SHIELD_CORE_ONLY === "1") {
+  if (process.env.HOL_TEST_SHIELD_CORE_ONLY === "1" || process.env.HOL_TEST_ADVISORY_ONLY === "1") {
     dialog = await openPrompt(attack);
     assert.equal(await dialog.locator('[name="additionalAttempt"], [name="attemptReason"]').count(), 0);
     assert.equal(await dialog.getByRole("button", { name: "Roll", exact: true }).isEnabled(), true);
@@ -651,7 +673,9 @@ shieldScenarios: try {
     ).length === 2, attack);
     assert.deepEqual(await state(), beforeFreshRoll);
     assert.deepEqual(errors, []);
-    console.info("PASS: forgotten Shield Block remains selectable after resolved and unknown older dice; one fresh use pays one Reaction; reopening Defend rolls again with active benefits and no new charge or repeat controls; same-operation replay is idempotent; zero page errors.");
+    console.info(process.env.HOL_TEST_ADVISORY_ONLY === "1"
+      ? "PASS: non-owner Shield Block with zero Reaction remains usable; active benefit reuse keeps counter zero and one effect; fresh defense rolls and same-operation idempotency retained; zero page errors."
+      : "PASS: forgotten Shield Block remains selectable after resolved and unknown older dice; normal Reaction tracked once; reopening Defend rolls again with active benefits and no new charge or repeat controls; same-operation replay is idempotent; zero page errors.");
     break shieldScenarios;
   }
 

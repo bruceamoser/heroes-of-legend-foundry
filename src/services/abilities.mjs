@@ -40,14 +40,13 @@ export async function activateOwnedAbility(item) {
           actorMatchesParticipant({
             actor: item.actor,
             participant: p,
-          }) &&
-          c.getFlag(ID, "encounter")?.current === p.id,
+          }) && Boolean(c.getFlag(ID, "encounter")?.budgets?.[p.id]),
       )
       .map((p) => ({ combat: c, id: p.id })),
   );
   if (matches.length !== 1)
     throw new Error(
-      "Select this character's turn in one encounter before using this action.",
+      "Place this character in exactly one encounter before using this action.",
     );
   const definition = itemAbilityDefinition(item);
   if (definition?.handler === "player-basic-melee-v1") {
@@ -431,10 +430,8 @@ function benefitEffect(operation) {
 }
 async function continuationCapable(operation, request, combat, actor) {
   if (!actor) return false;
-  const conditions = actionConditions(actor),
-    state = combat.getFlag(ID, "encounter"),
+  const state = combat.getFlag(ID, "encounter"),
     budget = state?.budgets?.[operation.participantId];
-  if (HELPLESS.some((key) => Boolean(conditions[key]))) return false;
   if (!budget || budget.turnId !== operation.turnId) return false;
   let currentAttack = null;
   if (operation.incomingAttack) {
@@ -451,8 +448,7 @@ async function continuationCapable(operation, request, combat, actor) {
     )
       return false;
   }
-  if (operation.handler === "defend-v1")
-    return state.current === operation.participantId;
+  if (operation.handler === "defend-v1") return true;
   if (operation.handler === "shield-block-v1") {
     if (!currentAttack || !operation.incomingAttack)
       return false;
@@ -512,19 +508,21 @@ async function apply(id, combatUuid) {
               : "shield-block") &&
           benefitCurrent(effect) &&
           benefit.anchor.combatId === combat.id &&
-          benefit.anchor.participantId === request.participantId
+          benefit.anchor.participantId === request.participantId &&
+          (!checked.shieldItem || benefit.shieldItemUuid === checked.shieldItem.uuid)
         );
       });
     state.budgets[request.participantId] = declareAction(budget, {
       operationId: id,
       sourceId: checked.definition.id,
-      category: checked.definition.category,
+      category: existing ? "free" : checked.definition.category,
       conditions: actionConditions(checked.actor),
       ownTurn: state.current === request.participantId,
     });
     state.revision++;
     operation = {
       status: "applying",
+      reusedBenefit: Boolean(existing),
       authorId: message.author.id,
       actorUuid: checked.actor.uuid,
       itemUuid: checked.item.uuid,
@@ -634,11 +632,13 @@ async function apply(id, combatUuid) {
     },
   });
   const content =
-    operation.status === "interrupted"
-      ? `The action could not continue. Its declared ${definition?.category ?? "action"} remains spent.`
+    operation.reusedBenefit && operation.status === "complete"
+      ? "Existing defense benefit reused; no additional action charged."
+      : operation.status === "interrupted"
+      ? `The action could not continue. Its declared ${definition?.category ?? "action"} remains recorded.`
       : operation.handler === "defend-v1"
-        ? "Defend: one Maneuver spent. Gain one defense Boon until the start of your next turn; repeating the benefit does not increase it."
-        : "Shield Block: one Reaction spent. Gain one defense Boon against eligible blockable defenses until the start of your next turn while using the selected held shield; repeating the benefit does not increase it.";
+        ? "Defend: Maneuver tracked. Gain one defense Boon until the start of your next turn; repeating the benefit does not increase it."
+        : "Shield Block: Reaction tracked. Gain one defense Boon against eligible blockable defenses until the start of your next turn while using the selected held shield; repeating the benefit does not increase it.";
   if (message)
     await message
       .update({

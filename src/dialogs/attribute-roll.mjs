@@ -121,7 +121,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       adjustmentLabel: situationalAdjustmentLabel(this.draft.adjustment),
       abilities: this.abilityOptions.map((option) => ({
         ...option,
-        reasonText: option.reasons.join(" "),
+        reasonText: [...option.reasons, ...(option.warnings ?? [])].join(" "),
       })),
       fears: fears.map((source, index) => ({
         source,
@@ -194,7 +194,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       button.disabled = this.activating || !option.available;
       button.textContent = `${option.available ? "Use " : ""}${option.name}`;
       row.querySelector(".hol-ability-reason").textContent =
-        option.reasons.join(" ");
+        [...option.reasons, ...(option.warnings ?? [])].join(" ");
       list.append(row);
     }
   }
@@ -342,7 +342,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       this.notice =
         status.status === "complete"
           ? `${item.name} activated. Roll sources refreshed.`
-          : `${item.name} could not continue; its declared cost remains spent.`;
+          : `${item.name} could not continue; its declared cost remains recorded.`;
     } catch (e) {
       this.notice = e.message;
       ui.notifications.error(e.message);

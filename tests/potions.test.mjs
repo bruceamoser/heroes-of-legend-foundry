@@ -285,7 +285,7 @@ test("a living other recipient spends a Reaction; a zero-HP recipient does not",
   assert.equal(zero.recipientSurvival.marks, 0);
 });
 
-test("target, hand, Reaction and action restrictions reject before a ready plan", () => {
+test("target and hand requirements stay strict while tracked action restrictions give guidance", () => {
   const other = {
     actorId: "actor-recipient",
     turn: turn(),
@@ -331,9 +331,7 @@ test("target, hand, Reaction and action restrictions reject before a ready plan"
       ),
     /free hand/,
   );
-  assert.throws(
-    () =>
-      planHealingPotion(
+  const advised1 = planHealingPotion(
         base({
           relation: "other",
           adjacent: true,
@@ -346,9 +344,10 @@ test("target, hand, Reaction and action restrictions reject before a ready plan"
             conditions: {},
           },
         }),
-      ),
-    /No reaction/,
   );
+  assert.equal(advised1.status, "ready");
+  assert(Object.values(advised1.recipientTurn.operations).some(operation => /No reaction/.test(operation.audit?.exceptions.join(" ") ?? "")));
+  assert.equal(advised1.recipientTurn.remaining.reaction, 0);
   assert.throws(
     () =>
       planHealingPotion(
@@ -365,9 +364,7 @@ test("target, hand, Reaction and action restrictions reject before a ready plan"
       ),
     /Unknown action restriction/,
   );
-  assert.throws(
-    () =>
-      planHealingPotion(
+  const advised2 = planHealingPotion(
         base({
           giver: {
             actorId: "actor-giver",
@@ -378,12 +375,10 @@ test("target, hand, Reaction and action restrictions reject before a ready plan"
             conditions: { paralyzed: 1 },
           },
         }),
-      ),
-    /condition prevents actions/,
   );
-  assert.throws(
-    () =>
-      planHealingPotion(
+  assert.equal(advised2.status, "ready");
+  assert(Object.values(advised2.giverTurn.operations).some(operation => /condition prevents actions/.test(operation.audit?.exceptions.join(" ") ?? "")));
+  const advised3 = planHealingPotion(
         base({
           giver: {
             actorId: "actor-giver",
@@ -398,12 +393,11 @@ test("target, hand, Reaction and action restrictions reject before a ready plan"
             survival: alive(),
           },
         }),
-      ),
-    /No maneuver/,
   );
-  assert.throws(
-    () =>
-      planHealingPotion(
+  assert.equal(advised3.status, "ready");
+  assert(Object.values(advised3.giverTurn.operations).some(operation => /No maneuver/.test(operation.audit?.exceptions.join(" ") ?? "")));
+  assert.equal(advised3.giverTurn.remaining.maneuver, 0);
+  const advised4 = planHealingPotion(
         base({
           relation: "other",
           adjacent: true,
@@ -416,9 +410,9 @@ test("target, hand, Reaction and action restrictions reject before a ready plan"
             conditions: { paralyzed: 1 },
           },
         }),
-      ),
-    /condition prevents actions/,
   );
+  assert.equal(advised4.status, "ready");
+  assert(Object.values(advised4.recipientTurn.operations).some(operation => /condition prevents actions/.test(operation.audit?.exceptions.join(" ") ?? "")));
 });
 
 test("exhausted bottles, terminal recipients and summons cannot be planned", () => {
@@ -538,15 +532,13 @@ test("interrupted other-recipient use snapshots the unchanged Reaction budget", 
   assert.equal(plan.costs.recipient.reaction, 0);
 });
 
-test("prior declaration and an exhausted maneuver cannot be bypassed", () => {
+test("prior declaration stays recorded while an exhausted maneuver gives guidance", () => {
   const spent = declareAction(turn(), {
     operationId: "other",
     sourceId: "basic-melee",
     category: "maneuver",
   });
-  assert.throws(
-    () =>
-      planHealingPotion(
+  const advised5 = planHealingPotion(
         base({
           giver: {
             actorId: "actor-giver",
@@ -556,12 +548,13 @@ test("prior declaration and an exhausted maneuver cannot be bypassed", () => {
             survival: alive(),
           },
         }),
-      ),
-    /No maneuver/,
   );
+  assert.equal(advised5.status, "ready");
+  assert(Object.values(advised5.giverTurn.operations).some(operation => /No maneuver/.test(operation.audit?.exceptions.join(" ") ?? "")));
+  assert.equal(advised5.giverTurn.remaining.maneuver, 0);
 });
 
-test("self use rejects mismatched identities, health snapshots and zero-HP givers", () => {
+test("self use preserves coherent identity and permits unconscious giver adjudication", () => {
   assert.throws(
     () =>
       planHealingPotion(
@@ -589,30 +582,28 @@ test("self use rejects mismatched identities, health snapshots and zero-HP giver
     /coherent.*snapshot/,
   );
   const unconscious = dying();
-  assert.throws(
-    () =>
-      planHealingPotion(
-        base({
-          giver: {
-            actorId: "actor-giver",
-            ownTurn: true,
-            turn: turn(),
-            items: freeHand,
-            survival: unconscious,
-            conditions: {},
-          },
-          recipient: {
-            actorId: "actor-giver",
-            survival: unconscious,
-            conditions: {},
-          },
-        }),
-      ),
-    /zero-HP giver is unconscious/,
+  const advised = planHealingPotion(
+    base({
+      giver: {
+        actorId: "actor-giver",
+        ownTurn: true,
+        turn: turn(),
+        items: freeHand,
+        survival: unconscious,
+        conditions: { unconscious: true },
+      },
+      recipient: {
+        actorId: "actor-giver",
+        survival: unconscious,
+        conditions: {},
+      },
+    }),
   );
+  assert.equal(advised.status, "ready");
+  assert.match(advised.giverTurn.operations["potion-use"].audit.exceptions.join(" "), /condition/i);
 });
 
-test("giver own-turn status is explicit and enforced by the action primitive", () => {
+test("giver own-turn status is explicit and becomes action guidance", () => {
   assert.throws(
     () =>
       planHealingPotion(
@@ -627,9 +618,7 @@ test("giver own-turn status is explicit and enforced by the action primitive", (
       ),
     /own-turn status must be boolean/,
   );
-  assert.throws(
-    () =>
-      planHealingPotion(
+  const advised6 = planHealingPotion(
         base({
           giver: {
             actorId: "actor-giver",
@@ -639,9 +628,9 @@ test("giver own-turn status is explicit and enforced by the action primitive", (
             survival: alive(),
           },
         }),
-      ),
-    /requires your turn/,
   );
+  assert.equal(advised6.status, "ready");
+  assert(Object.values(advised6.giverTurn.operations).some(operation => /requires your turn/.test(operation.audit?.exceptions.join(" ") ?? "")));
 });
 
 test("an already-recorded operation requires an authoritative receipt", () => {

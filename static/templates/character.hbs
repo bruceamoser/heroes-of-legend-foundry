@@ -25,7 +25,7 @@
   <ul class="hol-ability-list">{{#each abilities}}
     <li class="hol-item-row draggable" data-item-id="{{id}}">
       <button type="button" class="hol-item-open" data-action="openAbility"><span>{{name}}</span>{{#if ../owned}}<small>{{localize "HOL.DragToHotbar"}}</small>{{/if}}</button>
-      {{#if ../owned}}<div class="hol-shortcut-controls"><label class="hol-slot-picker"><span>{{localize "HOL.HotbarSlot"}}</span><input type="number" min="1" max="50" step="1" inputmode="numeric" data-hotbar-slot aria-label="{{localize 'HOL.HotbarSlot'}}: {{name}}"></label><button type="button" data-action="addShortcut">{{localize "HOL.AddShortcut"}}</button></div>{{/if}}
+      {{#if ../owned}}<button type="button" data-action="postReference" aria-label="Post {{name}} to chat">Post to chat</button><div class="hol-shortcut-controls"><label class="hol-slot-picker"><span>{{localize "HOL.HotbarSlot"}}</span><input type="number" min="1" max="50" step="1" inputmode="numeric" data-hotbar-slot aria-label="{{localize 'HOL.HotbarSlot'}}: {{name}}"></label><button type="button" data-action="addShortcut">{{localize "HOL.AddShortcut"}}</button></div>{{/if}}
     </li>
   {{else}}<li>{{localize "HOL.NoAbilities"}}</li>{{/each}}</ul>
   <h2>{{localize "HOL.Equipment"}}</h2>

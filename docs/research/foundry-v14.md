@@ -60,3 +60,6 @@ Issue #129 roll previews subscribe to the public V14
 which fires on targeting and untargeting. Refresh only for the local user and
 unregister on dialog close. Read `game.user.targets` again at submission; no
 attack-target selector or inferred single-scene candidate replaces native targets.
+
+
+Issue #134 uses the public V14 [`ChatMessage.applyMode`](https://foundryvtt.com/api/v14/classes/foundry.documents.ChatMessage.html#applyMode) for reference posts and keeps roll attachments on the existing message. `isContentVisible` guards the entire rendered roll summary. Full reference text is rebuilt from an inert HTML subset before posting; TextEditor enrichment alone is not treated as an HTML sanitizer. Item links use native `content-link` UUID anchors.

@@ -1,3 +1,4 @@
+import { postAbilityReference } from "../services/reference-play.mjs";
 import { WoundPanel } from "../applications/wounds.mjs";
 import { RecoveryPanel } from "../applications/recovery.mjs";
 import { DamagePanel } from "../applications/damage.mjs";
@@ -31,6 +32,7 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
       advanceHero: CharacterSheet.advanceHero,
       createHero: CharacterSheet.createHero,
       openAbility: CharacterSheet.openAbility,
+      postReference: CharacterSheet.postReference,
       addShortcut: CharacterSheet.addShortcut,
       rollAttribute: CharacterSheet.rollAttribute,
     },
@@ -86,6 +88,11 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
     if (!this.isEditable)
       throw new Error(game.i18n.localize("HOL.NoPermission"));
     return { updated: await updateOwnedDocument(this.actor, data, options) };
+  }
+  static async postReference(event, target) {
+    try {
+      await postAbilityReference(this.actor.items.get(target.closest("[data-item-id]")?.dataset.itemId));
+    } catch (e) { ui.notifications.error(e.message); }
   }
   static async death() {
     await new SharedRollDialog(this.actor, "fortitude", {

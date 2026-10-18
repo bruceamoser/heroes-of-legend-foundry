@@ -1,3 +1,4 @@
+import { selectedReferences } from "./reference-play.mjs";
 import { rollBasis, prepareRoll } from "./roll-preparation.mjs";
 import { classifyRoll } from "../rules/roll.mjs";
 
@@ -48,6 +49,9 @@ export async function evaluatePreparedRoll(
   draft,
   { rollerId = game.user.id, allowInteractive = false } = {},
 ) {
+  const references = selectedReferences(actor, draft, {
+    mode: basis.mode, defenderTokenUuid: basis.defenderTokenUuid, user: game.users?.get(rollerId) ?? game.user,
+  });
   const plan = prepareRoll(basis, draft);
   const roll = await new foundry.dice.Roll(plan.formula).evaluate({
     allowInteractive,
@@ -58,6 +62,7 @@ export async function evaluatePreparedRoll(
   const result = classifyRoll(retained, plan.attribute);
   const snapshot = {
     schemaVersion: 2,
+    references,
     actorUuid: actor.uuid,
     defenderTokenUuid: basis.defenderTokenUuid,
     rollerId,
@@ -125,6 +130,22 @@ export function renderRollSummary(message, element) {
       });
       summary.append(button);
     }
+  }
+  if (result.references?.length) {
+    const references = document.createElement("p");
+    references.className = "hol-roll-references";
+    references.append(document.createTextNode("References: "));
+    for (const [index, reference] of result.references.entries()) {
+      if (index) references.append(document.createTextNode(" · "));
+      const link = document.createElement("a");
+      link.className = "content-link";
+      link.dataset.uuid = reference.itemUuid;
+      link.dataset.type = "Item";
+      link.dataset.link = "";
+      link.textContent = reference.name;
+      references.append(link);
+    }
+    summary.append(references);
   }
   if (result.sources?.length) {
     const list = document.createElement("ul");

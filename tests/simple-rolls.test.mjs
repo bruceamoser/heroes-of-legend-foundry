@@ -101,7 +101,7 @@ test("attack follows one native target and unregisters its target hook", async (
   const shared = new SharedRollDialog({}, "agility");
   shared.fears = ["Ogre"];
   shared.basis = { ...basis, woundModifiers: [{ effectId: "injury" }] };
-  shared.element = { querySelector: selector =>
+  shared.element = { querySelectorAll: () => [], querySelector: selector =>
     selector === '[name="adjustment"]' ? { value: "-3" } : { checked: false },
   };
   shared.readDraft();

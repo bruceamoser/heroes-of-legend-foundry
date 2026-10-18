@@ -1,3 +1,4 @@
+import { postAbilityReference } from "../services/reference-play.mjs";
 import {
   itemAbilityDefinition,
   activateOwnedAbility,
@@ -14,7 +15,7 @@ export class AbilitySheet extends foundry.applications.api.HandlebarsApplication
     position: { width: 640, height: 720 },
     window: { resizable: true },
     form: { submitOnChange: false, closeOnSubmit: false },
-    actions: { useAbility: AbilitySheet.useAbility },
+    actions: { useAbility: AbilitySheet.useAbility, postReference: AbilitySheet.postReference },
   };
   static PARTS = {
     main: {
@@ -36,6 +37,7 @@ export class AbilitySheet extends foundry.applications.api.HandlebarsApplication
     return {
       ...context,
       definition,
+      canPost: Boolean(this.item.actor && this.item.isOwner),
       potionAbility: isPotionAbility(this.item),
       canUse: Boolean(
         (definition || isPotionAbility(this.item)) && this.item.actor?.isOwner,
@@ -61,6 +63,10 @@ export class AbilitySheet extends foundry.applications.api.HandlebarsApplication
       actions: labels(["main", "maneuver", "reaction", "passive"]),
       rollModes: labels(["attribute", "none", "delegated"]),
     };
+  }
+  static async postReference() {
+    try { await postAbilityReference(this.item); }
+    catch (e) { ui.notifications.error(e.message); }
   }
   static async useAbility() {
     try {

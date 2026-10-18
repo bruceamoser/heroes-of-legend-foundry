@@ -894,3 +894,11 @@ entire player-attack suite passed after #129. A final display-only adjustment ke
 the slider's accessible signed label current even when no target is selected;
 that branch is covered by a focused mock test. Potion recipient targeting belongs
 to #116. No other checkout was modified.
+
+Final #129 integration rebased onto `df5d415` (including the merged creature pack).
+Node 24.22.0 build, package/art validation and all 277 tests pass. Conflicts were
+append-only acceptance/CSS additions and equivalent NPC fixture formatting; both
+features are preserved. Roll/attack/defense production files are byte-identical
+to the checkpoint after the targeted native run. Native coverage and the broader
+fixture limitation above remain the exact evidence; no new whole-suite pass is
+claimed after rebase.

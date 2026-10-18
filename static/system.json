@@ -1,8 +1,8 @@
 {
   "id": "heroes-of-legend",
   "title": "Heroes of Legend",
-  "description": "Heroes of Legend for Foundry VTT. Development preview: native character, creature, ability and equipment content.",
-  "version": "0.1.0-alpha.1",
+  "description": "Heroes of Legend for Foundry VTT V14: guided heroes, native targeting and 3d6 rolls, creature defense cards, wounds, equipment and source compendiums. Specialty effects and summon lifecycle remain manual.",
+  "version": "0.1.0",
   "authors": [
     {
       "name": "Bruce Moser"
@@ -73,5 +73,5 @@
     "styles/heroes-of-legend.css"
   ],
   "manifest": "https://github.com/bruceamoser/heroes-of-legend-foundry/releases/latest/download/system.json",
-  "download": "https://github.com/bruceamoser/heroes-of-legend-foundry/releases/download/v0.1.0-alpha.1/heroes-of-legend.zip"
+  "download": "https://github.com/bruceamoser/heroes-of-legend-foundry/releases/download/v0.1.0/heroes-of-legend.zip"
 }

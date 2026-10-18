@@ -100,7 +100,6 @@ Hooks.once("ready", () => {
     value: SHORTCUT_API,
     enumerable: true,
   });
-  if (game.user.isGM) ui.notifications.info(game.i18n.localize("HOL.Preview"));
 });
 
 Hooks.on("renderChatMessageHTML", renderRollSummary);

@@ -109,7 +109,7 @@ export function renderRollSummary(message, element) {
     const outcome = document.createElement("p");
     outcome.textContent = result.attackOutcome.resolution === "reference"
       ? `${result.attackOutcome.text} · Resolve costs and effects manually.`
-      : `${result.attackOutcome.damage} physical damage before resistance. The DA can review and apply damage; reactions and wound resolution are still being integrated.`;
+      : `${result.attackOutcome.damage} physical damage before resistance. The DA can review and apply damage.`;
     summary.append(outcome);
     if (game.user.isGM && result.attackMessageId && result.attackOutcome.resolution !== "reference") {
       const button = document.createElement("button");

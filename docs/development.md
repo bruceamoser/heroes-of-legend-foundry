@@ -1,6 +1,6 @@
 # Development
 
-Issue #4 establishes the package and test harness. Issue #5 adds typed character and ability models and V2 editor sheets. Compendiums, the guided charactermancer and gameplay automation remain separately tracked work; the manifest only advertises implemented types.
+The V14 package includes guided creation/advancement, native character/creature/summon profiles, source compendiums and core play workflows. Specialty effects and summon lifecycle remain manual; see the current [release checklist and evidence](release-0.1.0.md). Historical issue notes below record the state and evidence at each implementation stage.
 
 ## Build and checks
 
@@ -11,7 +11,7 @@ npm ci
 npm run check
 ```
 
-The build copies `src/` and `static/` into `dist/heroes-of-legend/`. No transpiler or compatibility library is needed for native ES modules. Manifest validation rejects missing assets, unsafe paths, incompatible generations and mismatched source/package versions. Tests exercise broken-package rejection as well as successful output. CI runs these checks and uploads a development directory artifact. This is not a published installable release; release URLs and ZIP publishing will be added when a playable version is ready.
+The build copies `src/` and `static/` into `dist/heroes-of-legend/`. No transpiler or compatibility library is needed for native ES modules. Manifest validation rejects missing assets, unsafe paths, incompatible generations and mismatched source/package versions. Tests exercise broken-package rejection as well as successful output. CI runs these checks and uploads a development directory artifact. `npm run package:release` creates a reproducible ZIP, standalone manifest and SHA256SUMS in `release-artifacts/`. The tag-triggered release workflow validates and packages the candidate into a draft GitHub release. Publication and exact installed-package acceptance are tracked in [release-0.1.0.md](release-0.1.0.md); a local build or passing CI does not establish public installation.
 
 ### First-run processing and ordinary restarts — issue #121
 

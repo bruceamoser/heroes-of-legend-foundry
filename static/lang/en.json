@@ -1,6 +1,5 @@
 {
   "HOL": {
-    "Preview": "Heroes of Legend development preview: character and ability editors are available; encounter automation is in development.",
     "NoPermission": "You do not own this document.",
     "AcquisitionPending": "This drop does not change ownership. Use the character’s creation or advancement flow to acquire abilities and equipment.",
     "Character": "Heroes of Legend \u00b7 Hero",
@@ -37,7 +36,7 @@
     "ShortcutOwnerRequired": "Only an owner of this character can create its shortcuts.",
     "ShortcutCreationFailed": "The hotbar shortcut could not be created.",
     "ShortcutReady": "{name} is ready in hotbar slot {slot}.",
-    "ManualAbility": "Reference ability: outcomes are recorded here; automated effects will follow.",
+    "ManualAbility": "Reference ability: read the printed outcomes and resolve costs and effects at the table.",
     "Description": "Description and rules",
     "Action": "Action",
     "RollMode": "Roll mode",

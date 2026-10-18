@@ -39,13 +39,14 @@ test("reviewed defense abilities expose genuine context blockers", () => {
     heldShieldUuids: [],
   });
   assert.equal(unavailable.available, false);
-  assert.match(unavailable.reasons.join(" "), /not blockable/);
+  assert.doesNotMatch(unavailable.reasons.join(" "), /not blockable/);
   assert.match(unavailable.reasons.join(" "), /held shield/);
   assert.match(unavailable.reasons.join(" "), /No Reaction/);
 });
 
 test("blockable judgment distinguishes legacy cards, denial and approval", () => {
   assert.equal(blockableJudgment({}), null);
+  assert.equal(blockableJudgment({ blockable: null }), null);
   assert.equal(blockableJudgment({ blockable: false }), false);
   assert.equal(blockableJudgment({ blockable: true }), true);
   assert.equal(blockableJudgment({ blockable: "yes" }), undefined);
@@ -56,7 +57,8 @@ test("blockable judgment distinguishes legacy cards, denial and approval", () =>
     blockable: blockableJudgment({}),
     heldShieldUuids: ["shield"],
   });
-  assert.match(legacy.reasons.join(" "), /has not judged/);
+  assert.equal(legacy.available, true);
+  assert.equal(defenseAbilityAvailability("ability-shield-block", { capable: true, remaining: { reaction: 1 }, attackMessageId: "attack", blockable: false, heldShieldUuids: ["shield"] }).available, true);
 });
 
 test("prior completed or unknown defense dice do not gate a newly selected ability", () => {
@@ -97,7 +99,7 @@ test("Defend and Shield Block stack while repeated or ineligible sources do not"
     },
   ];
   const sources = defenseBenefitSources(entries, {
-    blockable: true,
+    incomingAttack: true,
     heldShieldUuids: ["Actor.a.Item.shield"],
   });
   assert.deepEqual(
@@ -106,14 +108,14 @@ test("Defend and Shield Block stack while repeated or ineligible sources do not"
   );
   assert.deepEqual(
     defenseBenefitSources(entries, {
-      blockable: false,
+      incomingAttack: false,
       heldShieldUuids: ["Actor.a.Item.shield"],
     }).map((source) => source.label),
     ["Defend maneuver"],
   );
   assert.deepEqual(
     defenseBenefitSources(entries, {
-      blockable: true,
+      incomingAttack: true,
       heldShieldUuids: [],
     }).map((source) => source.label),
     ["Defend maneuver"],

@@ -146,7 +146,7 @@ export function nativeBasicMeleeGeometry({
       status: "unverified",
       adjacent: null,
       reason:
-        "The tokens are on different scene levels. The DA must record an adjacency ruling.",
+        "The tokens are on different scene levels. The table decides whether melee reach applies.",
       spaces: null,
       ...common,
     };
@@ -159,7 +159,7 @@ export function nativeBasicMeleeGeometry({
       status: "unverified",
       adjacent: null,
       reason:
-        "The tokens have different elevations. The DA must record an adjacency ruling.",
+        "The tokens have different elevations. The table decides whether melee reach applies.",
       spaces: null,
       ...common,
     };
@@ -168,7 +168,7 @@ export function nativeBasicMeleeGeometry({
       status: "unverified",
       adjacent: null,
       reason:
-        "Native square-grid distance cannot be evaluated. The DA must record an adjacency ruling.",
+        "Native square-grid distance cannot be evaluated. The table decides whether melee reach applies.",
       spaces: null,
       ...common,
     };
@@ -185,7 +185,7 @@ export function nativeBasicMeleeGeometry({
       status: "unverified",
       adjacent: null,
       reason:
-        "Native squares are adjacent, but the collision backend cannot confirm an open attacker-to-target line. The DA must record an adjacency ruling.",
+        "Native squares are adjacent, but the collision backend cannot confirm an open attacker-to-target line. The table decides whether melee reach applies.",
       spaces,
       ...common,
     };

@@ -132,8 +132,8 @@ export function renderHOLCombatTracker(app, element) {
       details.append(summary);
       section.append(details);
       const reason = document.createElement("input");
-      reason.placeholder = "Reason for roster change";
-      reason.setAttribute("aria-label", "Roster decision reason");
+      reason.placeholder = "Optional roster note";
+      reason.setAttribute("aria-label", "Optional roster note");
       details.append(reason);
       for (const c of combat.combatants) {
         if (state.roster.some((p) => p.id === c.id && !p.withdrawn)) continue;

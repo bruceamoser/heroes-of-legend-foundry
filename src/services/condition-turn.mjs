@@ -32,16 +32,11 @@ export function prepareConditionTurn(actor, basis, request, id, authorId) {
   if (
     damaging &&
     !policy.reviewed &&
-    (requirements.typesNeedingReview.length > 0 || requirements.orderRequired)
+    requirements.orderRequired
   )
     throw Error(
-      "The DA must review condition tick defenses and order in Finish turn.",
+      "Choose the order of multiple condition ticks in Finish turn.",
     );
-  if (
-    request.conditionPolicy &&
-    (typeof policy.reason !== "string" || !policy.reason.trim())
-  )
-    throw Error("Explain the condition tick ruling.");
   const result = conditionTurn({
     ...basis,
     character: actor.type === "character",
@@ -81,6 +76,6 @@ export function prepareConditionTurn(actor, basis, request, id, authorId) {
   for (const wound of result.wounds)
     changes[`flags.${ID}.pendingWounds.${wound.eventId}`] = wound;
   if (request.conditionPolicy)
-    changes[`flags.${ID}.conditionTurnPolicy`] = { ...policy, authorId };
+    changes[`flags.${ID}.conditionTurnPolicy`] = { ...policy, authorId, choice: "condition-effects" };
   return changes;
 }

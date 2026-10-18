@@ -63,7 +63,7 @@ test("prior wounds add capped dice, keep highest three and never change the inpu
 });
 test("anatomy rulings advance consecutive results, never skip Last Words", () => {
   const result = woundResult(catalog, "physical", "116", [
-    { key: "116", reason: "No legs" },
+    { key: "116" },
   ]);
   assert.equal(result.record.key, "122");
   assert.equal(result.originalKey, "116");

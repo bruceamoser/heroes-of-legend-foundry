@@ -248,7 +248,7 @@ try {
     const m = await requestSurvival(
       a,
       null,
-      { reason: "Recover retained dice fixture", retained: [6, 6, 6] },
+      { reason: "", retained: [6, 6, 6] },
       "recover",
     );
     await resolveSurvivalRequest(m.id);

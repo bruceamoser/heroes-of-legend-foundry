@@ -144,7 +144,7 @@ async function apply(id) {
       });
     } else if (pending.status === "rolling")
       throw new Error(
-        "This wound may have rolled without a saved result. The DA must record a reasoned recovery; retry will not reroll.",
+        "This wound may have rolled without a saved result. The DA must record a retained-dice recovery; retry will not reroll.",
       );
     else
       throw new Error(
@@ -153,13 +153,9 @@ async function apply(id) {
     return { status: "complete", replay: false };
   }
   if (request.kind === "recover") {
-    if (
-      pending.status !== "rolling" ||
-      typeof request.reason !== "string" ||
-      !request.reason.trim()
-    )
+    if (pending.status !== "rolling")
       throw new Error(
-        "Only an unresolved roll can be recovered, with a DA reason.",
+        "Only an unresolved roll can be recovered, by the DA.",
       );
     const result = woundRoll(pending.priorWounds, request.faces);
     pending = {
@@ -167,7 +163,7 @@ async function apply(id) {
       status: "rolled",
       faces: request.faces,
       result,
-      recovered: { reason: request.reason, authorId: message.author.id },
+      recovered: { reason: typeof request.reason === "string" ? request.reason : "", authorId: message.author.id },
     };
     const originalReceipt =
       pending.rollRequestId && pending.rollAuthorId && pending.rollSignature

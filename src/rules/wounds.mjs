@@ -36,12 +36,10 @@ export function woundResult(catalog, damageType, key, skipped = []) {
   for (const ruling of skipped) {
     if (
       ruling?.key !== WOUND_KEYS[index] ||
-      typeof ruling.reason !== "string" ||
-      !ruling.reason.trim() ||
       ruling.key === "666"
     )
       throw new Error(
-        "Skip only the current inapplicable entry, with a reason; Last Words is terminal.",
+        "Skip only the current inapplicable entry, by explicit choice; Last Words is terminal.",
       );
     index++;
   }

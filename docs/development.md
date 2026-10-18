@@ -290,7 +290,7 @@ The native Combat document now uses `HOLCombat`, with a scoped enhancement of th
 
 Owners can request selection/end of their participant's turn; the DA can handle any participant. The actual native ChatMessage author is checked. Finish authorization uses the actual current combatant, never a caller-supplied alternative ID. The coordinator serializes requests and writes round, native turn index, HOL history/serial and the receipt in one Combat update. A completed request can be replayed after its turn has ended, but edited request payloads cannot reuse its receipt. A stale revision never selects a second participant. These ownership checks concern changing encounter state; they do not restrict the separate any-player Defend workflow.
 
-Late arrivals require a DA choice of this round or next round and a recorded reason. Withdrawals retain acted history; finish an active turn before withdrawing it. Native deletion/defeated flags do not silently rewrite the HOL roster. The DA explicitly withdraws a participant from the active roster when appropriate. Rewind deliberately does not refund actions, effects or time; audited exceptional-turn corrections remain a separate feature. New action budgets and condition timing are not yet connected to turn phases. No arbitrary six-second world-time advance is inferred from a HOL turn.
+Late arrivals require a DA choice of this round or next round and an optional note. Withdrawals retain acted history; finish an active turn before withdrawing it. Native deletion/defeated flags do not silently rewrite the HOL roster. The DA explicitly withdraws a participant from the active roster when appropriate. Rewind deliberately does not refund actions, effects or time; audited exceptional-turn corrections remain a separate feature. New action budgets and condition timing are not yet connected to turn phases. No arbitrary six-second world-time advance is inferred from a HOL turn.
 
 `HOL_TEST_URL=http://127.0.0.1:30014 HOL_TEST_ALLOW_WRITES=1 npm run test:combat` verifies native tracker clicks and opening dice, explicit sides, real player permission denial, owned choices, duplicate selection, uneven sides, fixed next-round starter, history/reload and late admission on 14.369. Pure sequence tests independently exercise both opening thresholds and roster edge cases. The native panel was visually inspected. The coordinator, creation-commit and effect-timing regression suites remain applicable after the shared service change.
 
@@ -324,7 +324,7 @@ Each coordinator request checks its last observed condition revision. Strict nat
 
 Encounter start initializes Reaction availability; selecting a participant refreshes that participant's counted Main/Maneuver/Reaction and movement budget in the same Combat update as the turn/receipt. Budgets persist between participants' turns rather than resetting on every global turn. Dazed/Grappled choices are requested at the selected participant's turn start and validated against current contributions. Later changes do not recalculate retained categories, while current Grappled/Paralyzed/helpless states still restrict movement/actions. A 0-HP actor cannot use ordinary actions or movement; full Dying/Grit/Last Words workflows remain C01.
 
-The tracker exposes Main → Maneuver and Maneuver → movement. Two resulting Maneuvers plus the original allowance produce a three-allowance sprint. Owner requests share the GM coordinator and encounter revision/receipt path. A DA exception must carry a reason and the actual author must be a GM; a player-supplied claim of DA authority is rejected. The pure planner records the exception. The service supports that explicit adjudication payload; a general exception-management UI is still pending.
+The tracker exposes Main → Maneuver and Maneuver → movement. Two resulting Maneuvers plus the original allowance produce a three-allowance sprint. Owner requests share the GM coordinator and encounter revision/receipt path. A DA exception records structured intent with an optional note; the actual author must be a GM; a player-supplied claim of DA authority is rejected. The pure planner records the exception. The service supports that explicit adjudication payload; a general exception-management UI is still pending.
 
 Created characters derive movement from frozen ancestry/trait speed base plus current Agility, current Brawn capacity, and every carried item's Bulk. Exactly one worn ordinary outfit is excluded; bags do not hide contents. Slowed is applied separately. For an incomplete/custom profile without a speed base, the DA enters a speed ruling and reason in the turn dialog; it persists for that encounter instead of guessing a speed. The budget snapshots the base movement for the turn; automatic mid-turn equipment/attribute speed changes and path charging remain D01/B05 integration.
 
@@ -457,7 +457,7 @@ Opening/canceling a dialog reserves nothing. Submission reserves only its reques
 
 The public attack ledger stores a SHA-256 request digest instead of copying the complete submitted context. The full additional-attempt reason remains on the original request under its chosen message visibility. Public response rows reveal status, not dice or quality. This preserves native display behavior; it does not add a secrecy boundary beyond the previously documented Foundry client-data limits.
 
-The rolling phase is durable before dice evaluation. A saved child result can settle the final attack receipt without rerolling. If no saved result exists after interruption, retry does not evaluate dice again. Manage automation provides **Resume saved result** and an explicit DA **Abandon unknown result** disposition with a reason; abandonment preserves that old operation's audit; fresh rolls never require this disposition first. A saved roll cannot be abandoned through that path. Unknown native write acknowledgments still require the coordinator's established reconciliation/relaunch protocol. The recovery fixture reconstructs persisted phases; it is not a claim to have simulated every network failure.
+The rolling phase is durable before dice evaluation. A saved child result can settle the final attack receipt without rerolling. If no saved result exists after interruption, retry does not evaluate dice again. Manage automation provides **Resume saved result** and an explicit DA **Abandon unknown result** disposition with an optional note; abandonment preserves that old operation's audit; fresh rolls never require this disposition first. A saved roll cannot be abandoned through that path. Unknown native write acknowledgments still require the coordinator's established reconciliation/relaunch protocol. The recovery fixture reconstructs persisted phases; it is not a claim to have simulated every network failure.
 
 This replaces the earlier untracked repeat-roll limitation, but consequences remain manual. Reaction/ability costs, automatic damage/wounds and complete attack-perspective modifiers remain open #13/#14 and A03/A07 work.
 
@@ -465,7 +465,7 @@ Validation: build/validation and 74 tests pass. Native 14.369 defense-response a
 
 ### Held and worn equipment (#68)
 
-`test:equipment` verifies owner preparation, native held stack state, exact replay, stale inventory rejection, DA-only reasoned encounter/anatomy corrections, observer denial and reload on isolated 14.369. The panel tracks held and worn state independently and counts one held unit per stack; holding does not remove that stack from carried Bulk. Worn state can change which single ordinary outfit qualifies for the Bulk exclusion. Existing items default to unheld and unworn; hand capacity defaults to two until a DA anatomy ruling. Owned item sheets route hand and worn changes through the arrangement panel. Draw/stow/pickup timing and ground transfers are not implemented by this preparation panel.
+`test:equipment` verifies owner preparation, native held stack state, exact replay, stale inventory rejection, DA-only encounter/anatomy corrections with optional notes, observer denial and reload on isolated 14.369. The panel tracks held and worn state independently and counts one held unit per stack; holding does not remove that stack from carried Bulk. Worn state can change which single ordinary outfit qualifies for the Bulk exclusion. Existing items default to unheld and unworn; hand capacity defaults to two until a DA anatomy ruling. Owned item sheets route hand and worn changes through the arrangement panel. Draw/stow/pickup timing and ground transfers are not implemented by this preparation panel.
 
 ### Survival rules (#74)
 
@@ -483,11 +483,11 @@ The DA opens Apply damage from a sheet or Review and apply damage on a settled d
 
 ### Recovery and reconciliation (#80)
 
-The DA Health and recovery panel records already-adjudicated healing, safe breath and stabilization, with a source/reason; it does not grant or pay spell/potion/stabilization action costs. Automatic worn Life resistance is included, while the panel field records only an additional event source. It also reconciles imported zero-HP characters and direct HP edits through an explicit audited correction. Ordinary recovery cannot reverse Last Words/death; repeating a correction to existing Last Words retains its deadline. Pending wounds/history and native spent Grit are preserved. `test:recovery` verifies the native panel, Life-resistance healing minimum and HP cap, safe breath, replay after new damage, scars/Grit preservation, Last Words boundaries, actual-author denial, stale state and reload on 14.369. This is DA event recording, not the final player healing-ability workflow.
+The DA Health and recovery panel records already-adjudicated healing, safe breath and stabilization, with an optional source note; it does not grant or pay spell/potion/stabilization action costs. Automatic worn Life resistance is included, while the panel field records only an additional event source. It also reconciles imported zero-HP characters and direct HP edits through an explicit audited correction. Ordinary recovery cannot reverse Last Words/death; repeating a correction to existing Last Words retains its deadline. Pending wounds/history and native spent Grit are preserved. `test:recovery` verifies the native panel, Life-resistance healing minimum and HP cap, safe breath, replay after new damage, scars/Grit preservation, Last Words boundaries, actual-author denial, stale state and reload on 14.369. This is DA event recording, not the final player healing-ability workflow.
 
 ### Native wound resolution (#82)
 
-Owners can request the saved pending wound’s eligible damage type and native capped roll from Wounds and scars. A durable rolling phase precedes evaluation; unknown results never reroll on retry. The DA can explicitly recover dice with a recorded reason, then review consecutive anatomy skips and apply the result once. Native condition effects, lasting modifier records, scar/remedy data, pending displacement and final receipt share one Actor update. 666 enters Last Words; conditions apply once and source commit changes require content review. Lasting movement/contextual modifiers are recorded but their automatic application and treatment are subsequent work; immediate displacement explicitly awaits legal DA placement.
+Owners can request the saved pending wound’s eligible damage type and native capped roll from Wounds and scars. A durable rolling phase precedes evaluation; unknown results never reroll on retry. The DA can explicitly recover dice with an optional note, then review consecutive anatomy skips and apply the result once. Native condition effects, lasting modifier records, scar/remedy data, pending displacement and final receipt share one Actor update. 666 enters Last Words; conditions apply once and source commit changes require content review. Lasting movement/contextual modifiers are recorded but their automatic application and treatment are subsequent work; immediate displacement explicitly awaits legal DA placement.
 
 `test:wounds` verifies owner UI/native dice, replay without evaluation, DA-only application/recovery, unknown-phase refusal, recovered Cold effects, once-only native conditions/scars, anatomy advancement, Last Words and reload on 14.369. Deterministic recovery/outcome phases are reconstructed fixtures, not injected network failures; selected-coordinator unknown-write recovery retains the existing relaunch requirements.
 
@@ -508,7 +508,7 @@ receipt. Manage automation can resume a reserved phase even after the original
 request chat is deleted; DA cancellation is limited to unapplied Actor phases.
 Other supported mutations wait while the phase is reserved. Pending death dice
 cannot be rerolled by retry: Health and recovery lets the DA record retained dice
-with a reason. Raw document edits that contradict a reserved snapshot require
+with an optional note. Raw document edits that contradict a reserved snapshot require
 reconciliation before that reservation can settle.
 
 This implements survival phases, not condition end ticks or summon controller
@@ -766,7 +766,7 @@ source-lock provenance test pass. Node 24 `npm run check` passes all 150 tests.
 
 An owned equipment Item's sheet now exposes **Check supply after use**. The
 control opens a native V2 panel showing the Actor, Item, quantity, current
-inventory die and the required completed-use reason. The sheet distinguishes
+inventory die and an optional completed-use note. The sheet distinguishes
 gear that never had supply from depleted supplies by using the stable catalog
 die, falling back to a prior check target for content without catalog metadata.
 A zero die has no Check control and native request validation rejects an
@@ -787,7 +787,7 @@ author/signature, target Item and a `reserved` or `result` phase. A known result
 including serialized native dice and retained face, is persisted before one
 Actor update changes only that Item's inventory die and writes the result,
 receipt and pending clear together. A saved roll must be an evaluated single
-die with the expected `1dX` formula, retained face and total. A reasoned DA
+die with the expected `1dX` formula, retained face and total. An explicit DA
 recovery may instead store the explicit face with `nativeRoll: null`. Every
 embedded Item and the parent are strictly prevalidated; all Item IDs and
 quantities are verified afterward. `inventoryRevision` increments on every
@@ -801,7 +801,7 @@ result resumes or is recovered through a new coordinator request, so any GM can
 use the panel while only the selected coordinator writes. An unresolved
 `reserved` phase never rerolls automatically. If an Item changes after a result
 was saved, the DA can explicitly close the check without changing supply, with
-a required reason; this stores the original snapshot and result, writes an
+an optional note; this stores the original snapshot and result, writes an
 abandoned receipt, clears pending and advances the inventory revision. Replay
 does not consume or roll again, and the basis is never replaced automatically.
 
@@ -1031,3 +1031,34 @@ Roll/defense source and templates are byte-identical to the pre-rebase checkpoin
 including the documented slider field-order change. Node 24.22.0 build, package/art
 validation and all 286 tests pass; no unrelated native suite was rerun after this
 integration.
+
+### Nonblocking play guidance (#133)
+
+October 17, 2026: mandatory prose was removed from damage, Speed settings,
+equipment corrections, healing, retained-dice recovery, roster corrections,
+supply use and technical dispositions. Notes remain optional; action/user/source
+and receipt identities remain recorded. Native targeting and the effective
+−3…+3 slider from #129 are preserved. Geometry is visible guidance; unspecified
+NPC blockability stays `null`. Choosing Shield Block supplies table intent without
+another judgment form, while the selected held shield and paid Reaction remain
+validated. Single-condition Finish defaults to automatic passives and zero extra
+manual mitigation. Ordering multiple ticks and choosing genuinely ambiguous
+source-duration treatment remain explicit. Creation/advancement eligibility is
+unchanged.
+
+Serialized native 14.369 acceptance passed NPC declarations, Shield Block core,
+condition turns, the full player Basic Melee suite, damage, recovery, equipment,
+budgets, wounds, survival turns and inventory. The fixtures submitted blank notes
+for the affected flows. Player geometry acceptance rendered the nonadjacency
+warning with Attack enabled and submitted as the owning player without a DA ruling;
+identity, visibility and source changes still rejected. Shield core verified an
+unspecified attack hint, any-player activation, held shield/Reaction behavior,
+fresh rolls and same-operation replay. This is bounded handler evidence, not an
+all-abilities automation claim. Geometry and defense screenshots were inspected.
+
+Evidence: `/tmp/hol133-native-{npc,shield,conditions,player-3,damage,recovery,equipment,budgets,wounds,survival-turns,inventory}.log`.
+Two initial player-suite runs exposed obsolete adjacency/old-slider expectations
+and a real dialog overwrite that reintroduced weapon/exception fields into the
+roll draft; the final run passed with the refreshed selection draft preserved.
+Cleanup checked the server log: all 58 created Actors, 27 Combats, 25 Scenes and
+16 Users were deleted; the isolated server was stopped and the world released.

@@ -5,7 +5,7 @@
  */
 export function defenseBenefitSources(
   entries,
-  { blockable = false, heldShieldUuids = [] } = {},
+  { incomingAttack = false, heldShieldUuids = [] } = {},
 ) {
   if (!Array.isArray(entries)) throw new Error("Invalid defense benefits.");
   const held = new Set(heldShieldUuids),
@@ -25,7 +25,7 @@ export function defenseBenefitSources(
       });
     } else if (
       entry.key === "shield-block" &&
-      blockable === true &&
+      incomingAttack &&
       typeof entry.shieldItemUuid === "string" &&
       held.has(entry.shieldItemUuid)
     ) {

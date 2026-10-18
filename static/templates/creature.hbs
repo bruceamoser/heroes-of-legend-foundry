@@ -56,7 +56,7 @@
 <p>Requires {{system.basicMelee.defenseAttribute}} defense. The declared NPC attack and Defend workflows use this exact printed profile.</p>
 {{#if gm}}
 <div class="hol-pair hol-creature-melee-declare">
-<label>DA blockable judgment<select data-npc-blockable><option value="">Choose explicitly</option><option value="true">Blockable</option><option value="false">Not blockable</option></select></label>
+<details><summary>Attack guidance (optional)</summary><label>Blockability hint<select data-npc-blockable><option value="">Table decides when needed</option><option value="true">Usually blockable</option><option value="false">Usually not blockable</option></select></label></details>
 <button type="button" data-action="npcMelee">Declare NPC Basic Melee</button>
 </div>
 {{/if}}

@@ -58,14 +58,13 @@ export function prepareParticipantBudget(combat, state, id, request, user) {
     if (
       !user.isGM ||
       !Number.isSafeInteger(request.speedOverride) ||
-      request.speedOverride < 0 ||
-      typeof request.reason !== "string" ||
-      !request.reason.trim()
+      request.speedOverride < 0
     )
-      throw new Error("A speed ruling needs the actual DA and a reason.");
+      throw new Error("A Speed setting needs the actual DA and a nonnegative integer.");
     ruling = {
       speed: request.speedOverride,
-      reason: request.reason.trim(),
+      reason: typeof request.reason === "string" ? request.reason.trim() : "",
+      choice: "set-speed",
       userId: user.id,
     };
   }

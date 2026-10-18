@@ -310,7 +310,7 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
     try {
       const result = await foundry.applications.api.DialogV2.input({
         window: { title: "Cancel unapplied turn change" },
-        content: '<label>DA reason<input name="reason" required></label>',
+        content: '<label>Note (optional)<input name="reason"></label>',
         ok: { label: "Record cancellation" },
       });
       if (result) await cancelTurnPhase(target.dataset.combat, result.reason);
@@ -344,7 +344,7 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
       const choice = await foundry.applications.api.DialogV2.input({
         window: { title: "Abandon unresolved defense" },
         content:
-          '<p>No saved roll may exist. This preserves the attempt without rerolling. Record the DA ruling.</p><label>Reason<input name="reason" required></label>',
+          '<p>No saved roll may exist. This preserves the attempt without rerolling. An optional note can record table context.</p><label>Note (optional)<input name="reason"></label>',
         ok: { label: "Record abandonment" },
       });
       if (!choice) return;
@@ -397,7 +397,7 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
       const choice = await foundry.applications.api.DialogV2.input({
         window: { title: "Recover retained Basic Melee dice" },
         content:
-          '<p>Do not roll again. Enter the three dice retained after Boons/Banes and record the DA source.</p><label>Retained d6 faces<input name="retained" required placeholder="Example: 3 5 6"></label><label>DA reason<input name="reason" required></label>',
+          '<p>Do not roll again. Enter the three dice retained after Boons/Banes.</p><label>Retained d6 faces<input name="retained" required placeholder="Example: 3 5 6"></label><label>Note (optional)<input name="reason"></label>',
         ok: { label: "Record retained result" },
       });
       if (!choice) return;
@@ -421,7 +421,7 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
       const choice = await foundry.applications.api.DialogV2.input({
         window: { title: "Acknowledge missing Basic Melee presentation" },
         content:
-          '<p>This records the missing presentation in the durable receipt and clears this attack’s pending action reservation. It preserves the authoritative result and does not recreate the message or roll again.</p><label>DA reason<input name="reason" required></label>',
+          '<p>This records the missing presentation in the durable receipt and clears this attack’s pending action reservation. It preserves the authoritative result and does not recreate the message or roll again.</p><label>Note (optional)<input name="reason"></label>',
         ok: { label: "Acknowledge and continue" },
       });
       if (!choice) return;

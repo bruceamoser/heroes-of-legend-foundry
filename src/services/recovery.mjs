@@ -142,17 +142,13 @@ async function apply(id) {
     throw new Error(
       "HP, survival or defenses changed. Review recovery again.",
     );
-  if (typeof request.draft?.reason !== "string" || !request.draft.reason.trim())
-    throw new Error(
-      "Record why this healing, safe breath, stabilization or correction applies.",
-    );
   const plan = recoveryPreview(actor, basis, request.draft);
   const changes = {
     "system.health.value": plan.after,
     [`flags.${ID}.damageRevision`]: basis.revision + 1,
     [`flags.${ID}.recoveryEvents.${id}`]: {
       kind: request.draft.kind,
-      reason: request.draft.reason,
+      reason: typeof request.draft.reason === "string" ? request.draft.reason : "",
       authorId: message.author.id,
       before: basis,
       after: plan,

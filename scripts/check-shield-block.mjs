@@ -424,7 +424,6 @@ shieldScenarios: try {
       ).id,
     );
   }, fixture);
-  await gm.page.locator("[data-npc-blockable]").selectOption("true");
   await gm.page
     .locator(".hol-creature")
     .getByRole("button", { name: "Declare NPC Basic Melee", exact: true })
@@ -434,7 +433,7 @@ shieldScenarios: try {
       game.messages.some(
         (message) =>
           message.getFlag("heroes-of-legend", "attackCard")?.blockable ===
-            true &&
+            null &&
           message.getFlag("heroes-of-legend", "attackCard")?.combatId ===
             f.combat,
       ),
@@ -445,7 +444,7 @@ shieldScenarios: try {
       game.messages.find(
         (message) =>
           message.getFlag("heroes-of-legend", "attackCard")?.blockable ===
-            true &&
+            null &&
           message.getFlag("heroes-of-legend", "attackCard")?.combatId ===
             f.combat,
       ).id,
@@ -656,13 +655,12 @@ shieldScenarios: try {
     break shieldScenarios;
   }
 
-  // A judged non-blockable attack and a legacy unjudged card do not expose Shield Block.
+  // Attack hints do not prohibit the player’s deliberate ability choice.
   const denied = await createAttack({ blockable: false });
   dialog = await openPrompt(denied);
   assert(
-    await dialog.getByRole("button", { name: /Shield Block/ }).isDisabled(),
+    await dialog.getByRole("button", { name: /Shield Block/ }).isEnabled(),
   );
-  assert.match(await dialog.innerText(), /judged this attack not blockable/);
   assert.doesNotMatch(
     await dialog.locator(".hol-roll-sources").textContent(),
     /Shield Block:/,
@@ -670,13 +668,7 @@ shieldScenarios: try {
   await closePrompt(dialog);
   const legacy = await createAttack({ legacy: true });
   dialog = await openPrompt(legacy);
-  assert(
-    await dialog.getByRole("button", { name: /Shield Block/ }).isDisabled(),
-  );
-  assert.match(
-    await dialog.innerText(),
-    /has not judged this attack blockable/,
-  );
+  assert(await dialog.getByRole("button", { name: /Shield Block/ }).isEnabled());
   assert.equal(
     await dialog.getByRole("button", { name: "Roll", exact: true }).isEnabled(),
     true,

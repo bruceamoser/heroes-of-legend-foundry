@@ -106,8 +106,6 @@ export class WoundPanel extends foundry.applications.api.HandlebarsApplicationMi
   static async skip() {
     try {
       const reason = this.element.querySelector("[name=anatomyReason]").value;
-      if (!reason.trim())
-        throw new Error("Record why this injury does not apply.");
       this.skipped.push({ key: this.result.record.key, reason });
       await this.render();
     } catch (e) {

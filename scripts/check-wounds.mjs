@@ -165,7 +165,7 @@ try {
   );
   const recovery = await request("unknown", "recover", {
     faces: [1, 5, 6],
-    reason: "DA records observed dice after interrupted presentation",
+    reason: "",
   });
   await done(recovery);
   const applyCold = await request("unknown", "apply");
@@ -206,7 +206,7 @@ try {
     before,
   );
   const anatomy = await request("anatomy", "apply", {
-    skipped: [{ key: "116", reason: "No matching leg anatomy" }],
+    skipped: [{ key: "116" }],
   });
   await done(anatomy);
   assert.equal(

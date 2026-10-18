@@ -114,23 +114,9 @@ try {
     (await decide("choose", { id: fixture.participant })).status,
     "complete",
   );
-  assert.match((await decide("finish")).error, /review condition/);
-  await page.evaluate(async (f) => {
-    const { finishCombatParticipant } = await import(
-      "/systems/heroes-of-legend/dialogs/turn-end.mjs"
-    );
-    void finishCombatParticipant(game.combats.get(f.combat));
-  }, fixture);
-  await page.locator("[name=fireResistance]").fill("2");
-  await page.locator("[name=reason]").fill("Fixture fire resistance");
-  await page
-    .getByRole("button", { name: "Apply effects and finish", exact: true })
-    .click();
-  await page.waitForFunction(
-    (f) => game.actors.get(f.actor).system.health.value === 11,
-    fixture,
-  );
-  assert.equal((await state()).hp, 11);
+  assert.equal((await decide("finish")).status, "complete");
+  assert.equal(await page.locator('[name=reason]').count(), 0);
+  assert.equal((await state()).hp, 9);
   const sources = await page.evaluate(async (f) => {
     const { actorContributions } = await import(
       "/systems/heroes-of-legend/services/conditions.mjs"
@@ -146,14 +132,19 @@ try {
     (await decide("choose", { id: fixture.participant })).status,
     "complete",
   );
-  const second = await decide("finish");
-  assert.equal(second.status, "complete");
-  assert.equal((await state()).hp, 10);
+  await page.evaluate(async (f) => {
+    const { finishCombatParticipant } = await import("/systems/heroes-of-legend/dialogs/turn-end.mjs");
+    void finishCombatParticipant(game.combats.get(f.combat), { review: true });
+  }, fixture);
+  await page.locator('[name=fireResistance]').fill("2");
+  await page.getByRole("button", { name: "Apply effects and finish", exact: true }).click();
+  await page.waitForFunction(f => game.actors.get(f.actor).system.health.value === 8, fixture);
+  assert.equal((await state()).hp, 8);
   await page.reload();
   await page.waitForFunction(() => globalThis.game?.ready);
-  assert.equal((await state()).hp, 10);
+  assert.equal((await state()).hp, 8);
   console.log(
-    "PASS native condition tick defense ruling, typed damage, aggregate temporary decay, starred preservation, next turn and reload.",
+    "PASS native single-condition finish without review; optional mitigation without prose, typed damage, aggregate temporary decay, starred preservation, next turn and reload.",
   );
 } finally {
   if (fixture)

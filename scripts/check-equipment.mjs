@@ -147,7 +147,7 @@ try {
         b,
         b.items.map((i) => ({ ...i, held: false })),
         3,
-        "Test anatomy correction",
+        "",
       )
     ).id;
   }, f);

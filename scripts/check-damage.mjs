@@ -117,7 +117,7 @@ try {
   await gm.page.locator(".hol-character [data-action=damage]").click();
   const panel = gm.page.locator(".hol-damage");
   await panel.locator("[data-damage-type=physical] [name=amount]").fill("4");
-  await panel.locator("[name=reason]").fill("Incoming blow");
+  assert.equal(await panel.locator("[name=reason]").inputValue(), "");
   assert.match(await panel.locator("[data-preview]").innerText(), /New wound/);
   await panel.screenshot({ path: "test-results/damage-preview.png" });
   await panel.locator("[data-action=apply]").click();

@@ -999,21 +999,21 @@ try {
         }, fixture),
     },
     {
-      name: "target",
-      expected: /within one adjacent square/,
+      name: "target identity",
+      expected: /weapon, target|target.*changed|target.*unavailable/,
       mutate: async (fixture) =>
         updateFixtureToken(
           gm.page,
           fixture,
           fixture.targetTokenId,
-          { x: 900 },
+          { actorId: fixture.attackerActorUuid.split(".").at(-1) },
         ),
       restore: async (fixture) =>
         updateFixtureToken(
           gm.page,
           fixture,
           fixture.targetTokenId,
-          { x: 200 },
+          { actorId: fixture.targetActorUuid.split(".").at(-1) },
         ),
     },
     {
@@ -1101,17 +1101,27 @@ try {
     ownerId: users.owner,
     targetOwnerId: users.targetOwner,
     targetType: "creature",
-    label: "DA exception",
+    label: "Geometry guidance",
   });
   await activateScenario(nonadjacent);
-  markDiagnostic(`${nonadjacent.label}: DA exception request`);
+  markDiagnostic(`${nonadjacent.label}: player request without ruling`);
   await updateFixtureToken(
     gm.page,
     nonadjacent,
     nonadjacent.targetTokenId,
     { x: 900 },
   );
-  const exceptionRequest = await gm.page.evaluate(async (fixture) => {
+  await player.page.evaluate(async (fixture) => {
+    const actor = await fromUuid(fixture.attackerActorUuid),
+      { promptBasicMelee } = await import("/systems/heroes-of-legend/dialogs/player-attack.mjs");
+    globalThis.holGeometryDialog = await promptBasicMelee(actor.items.get(fixture.abilityId), game.combats.get(fixture.combat), fixture.participant);
+  }, nonadjacent);
+  const geometryDialog = player.page.locator(".hol-player-attack");
+  assert.match(await geometryDialog.locator('[data-geometry-status="not-adjacent"]').innerText(), /adjacent/);
+  assert.equal(await geometryDialog.getByRole("button", { name: "Attack", exact: true }).isEnabled(), true);
+  await geometryDialog.screenshot({ path: "test-results/player-geometry-guidance.png" });
+  await player.page.evaluate(async () => { await globalThis.holGeometryDialog.close(); delete globalThis.holGeometryDialog; });
+  const exceptionRequest = await player.page.evaluate(async (fixture) => {
     const actor = await fromUuid(fixture.attackerActorUuid),
       { playerBasicMeleeRequestData } = await import(
         "/systems/heroes-of-legend/services/player-attacks.mjs"
@@ -1123,7 +1133,7 @@ try {
       {
         weaponItemUuid: actor.items.get(fixture.weaponId).uuid,
         targetTokenUuid: fixture.targetTokenUuid,
-        rulingReason: "The DA confirms melee reach across the fixture gap.",
+        rulingReason: "",
         draft: {
           boons: 0,
           banes: 0,
@@ -1136,9 +1146,9 @@ try {
     );
   }, nonadjacent);
   assert.equal(exceptionRequest.basis.geometry.status, "not-adjacent");
-  assert.match(exceptionRequest.ruling.reason, /melee reach/);
+  assert.equal(exceptionRequest.ruling, undefined);
   await release();
-  const exceptionId = await stageGmRequest(exceptionRequest);
+  const exceptionId = await stageRequest(exceptionRequest);
   await bind();
   const exceptionResult = await resolveAttack(exceptionId);
   assert.equal(exceptionResult.result.status, "complete");
@@ -1150,7 +1160,7 @@ try {
         .getFlag("heroes-of-legend", "playerAttackOperations")[id],
     { fixture: nonadjacent, id: exceptionId },
   );
-  assert.match(exceptionOperation.ruling.reason, /melee reach/);
+  assert.equal(exceptionOperation.ruling, null);
   assert.equal(exceptionOperation.result.snapshot.attackOutcome.type, "physical");
   await activateScenario(primary);
 
@@ -1240,7 +1250,13 @@ try {
     { weak: 2, standard: 3, strong: 5 }[rolled.tier],
   );
   assert.deepEqual(rolled.source, SOURCE);
-  assert.deepEqual(rolled.draft, baseline.draft);
+  assert.deepEqual(rolled.draft, {
+    ...baseline.draft,
+    adjustment: 3,
+    adjustmentOverride: false,
+    boonsLabel: "Player modifier override",
+    banesLabel: "Player modifier override",
+  });
   assert.equal(rolled.revision, encounterBefore.revision + 2);
   assert.deepEqual(rolled.encounter, encounterBefore.encounter);
   assert.equal(rolled.actionReceipt.status, "resolving");
@@ -1904,7 +1920,7 @@ try {
   assert.equal(deletedDamage.record.event.total, 2);
   assert.deepEqual(errors, []);
   console.info(
-    "PASS: native target visibility with DA adjudication, wound applicability refresh, encounter preservation, 5-unit grid-space adjacency, large footprints, collision-blocked geometry, reasoned nonadjacency exception, authoritative result projection/replay, forged roll/recovery and hidden-target rejection, late presentation recovery, acknowledged deleted-source recovery with operation-ID damage, PvP one-roll, Main once and linked damage deduplication.",
+    "PASS: native target visibility with DA adjudication, wound applicability refresh, encounter preservation, 5-unit grid-space adjacency, large footprints, collision-blocked geometry, nonblocking nonadjacency guidance, authoritative result projection/replay, forged roll/recovery and hidden-target rejection, late presentation recovery, acknowledged deleted-source recovery with operation-ID damage, PvP one-roll, Main once and linked damage deduplication.",
   );
 } catch (error) {
   const diagnostics = {

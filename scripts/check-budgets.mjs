@@ -321,9 +321,7 @@ try {
     );
   }, fixture);
   await gm.page.locator(".hol-turn-choice [name=speed]").fill("4");
-  await gm.page
-    .locator(".hol-turn-choice [name=reason]")
-    .fill("Printed custom profile");
+  assert.equal(await gm.page.locator(".hol-turn-choice [name=reason]").inputValue(), "");
   await gm.page
     .locator(".hol-turn-choice")
     .getByRole("button", { name: "Begin turn", exact: true })
@@ -337,7 +335,7 @@ try {
   assert.equal(await movement(), 4);
   assert.equal(
     (await state()).speedRulings[fixture.participant].reason,
-    "Printed custom profile",
+    "",
   );
   assert.deepEqual(errors, []);
   console.info(

@@ -75,7 +75,7 @@ test("an explicit DA Speed override remains a reviewable final ruling", () => {
       speed: 4,
       reason: "Printed custom profile",
     }),
-    "Speed 4 · DA override: Printed custom profile",
+    "Speed 4 · manual setting: Printed custom profile",
   );
 });
 test("missing movement identity and malformed equipment do not become a guessed speed", () => {
@@ -99,4 +99,8 @@ test("missing movement identity and malformed equipment do not become a guessed 
       }),
     /overflow/,
   );
+});
+
+test("manual Speed needs a number but no written explanation", () => {
+  assert.equal(movementBreakdown({ source: "da-speed-override", speed: 4 }), "Speed 4 · manual setting");
 });

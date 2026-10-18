@@ -13,8 +13,8 @@ export async function declareNpcMelee(actor, { blockable } = {}) {
   );
   if (!game.user.isGM || actor.type !== "creature")
     throw new Error("The DA declares this NPC creature attack.");
-  if (typeof blockable !== "boolean")
-    throw new Error("The DA must judge whether this attack is blockable.");
+  if (blockable != null && typeof blockable !== "boolean")
+    throw new Error("Invalid blockability hint.");
   if (!game.settings.get(ID, "creationAuthorityClient"))
     throw new Error("Enable the GM automation coordinator first.");
   const matches = game.combats.contents.flatMap((c) =>
@@ -39,7 +39,7 @@ export async function declareNpcMelee(actor, { blockable } = {}) {
           participantId: p.id,
           revision: c.getFlag(ID, "encounter").revision,
           suggestedDefenderTokenUuids,
-          blockable,
+          blockable: blockable ?? null,
         },
       },
     },
@@ -80,7 +80,7 @@ async function apply(id) {
       state?.current !== request.participantId ||
       request.revision !== state.revision ||
       !budget ||
-      typeof request.blockable !== "boolean"
+      (request.blockable != null && typeof request.blockable !== "boolean")
     )
       throw new Error(
         "The creature's selected turn changed. Review the attack again.",
@@ -126,8 +126,8 @@ async function apply(id) {
         ]),
       ),
       suggestedDefenderTokenUuids: [...request.suggestedDefenderTokenUuids],
-      blockable: request.blockable,
-      hasBlockableJudgment: true,
+      blockable: request.blockable ?? null,
+      hasBlockableJudgment: typeof request.blockable === "boolean",
       combatId: combat.id,
       perspective: "defender",
       title: "Basic Melee",

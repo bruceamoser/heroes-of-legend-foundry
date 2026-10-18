@@ -120,7 +120,6 @@ try {
       participant: participant.id,
     };
   });
-  await gm.page.locator("[data-npc-blockable]").selectOption("true");
   await gm.page
     .locator(".hol-creature")
     .getByRole("button", { name: "Declare NPC Basic Melee", exact: true })
@@ -163,7 +162,7 @@ try {
   assert.deepEqual(declared.attack.suggestedDefenderTokenUuids, [
     ...f.tokens.slice(0, 2),
   ]);
-  assert.equal(declared.attack.blockable, true);
+  assert.equal(declared.attack.blockable, null);
   assert.equal(declared.budget.remaining.main, 0);
   assert(declared.replay.replay);
   player = await join(f.name);

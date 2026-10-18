@@ -26,6 +26,7 @@ export class BasicMeleeDialog extends foundry.applications.api.HandlebarsApplica
       perception: {},
       woundApplicability: {},
       rulingReason: "",
+      override: false,
     };
     this.targetHook = (user) => {
       if (this.rendered && user.id === game.user.id) void this.render();
@@ -62,7 +63,7 @@ export class BasicMeleeDialog extends foundry.applications.api.HandlebarsApplica
   };
 
   selection() {
-    const { weaponItemUuid, ...draft } = this.draft;
+    const { weaponItemUuid, override, ...draft } = this.draft;
     const nativeTargets = [...game.user.targets];
     const targetTokenUuid = nativeTargets.length === 1
       ? nativeTargets[0].document?.uuid ?? nativeTargets[0].uuid : null;
@@ -71,6 +72,7 @@ export class BasicMeleeDialog extends foundry.applications.api.HandlebarsApplica
       targetTokenUuid,
       requireNativeTarget: true,
       rulingReason: this.draft.rulingReason,
+      override: this.draft.override,
       draft,
     };
   }
@@ -127,6 +129,7 @@ export class BasicMeleeDialog extends foundry.applications.api.HandlebarsApplica
       targetTokenUuid: this.context.targetTokenUuid,
       reasons: this.context.reasons,
       rulingReason: this.draft.rulingReason,
+      override: this.draft.override,
       gm: game.user.isGM,
       actorName: this.item.actor.name,
       actorTokenName: this.context.actorToken?.name ?? "",
@@ -214,6 +217,7 @@ export class BasicMeleeDialog extends foundry.applications.api.HandlebarsApplica
         ]),
       ),
       rulingReason: value("rulingReason") ?? "",
+      override: this.element.querySelector('[name="override"]')?.checked === true,
     };
   }
 
@@ -270,7 +274,7 @@ export class BasicMeleeDialog extends foundry.applications.api.HandlebarsApplica
     this.element.addEventListener("change", async (event) => {
       if (
         !event.target.closest(
-          "[name=weaponItemUuid], [name=rulingReason], [name^=fear-]",
+          "[name=weaponItemUuid], [name=rulingReason], [name=override], [name^=fear-]",
         )
       )
         return;
@@ -292,7 +296,7 @@ export class BasicMeleeDialog extends foundry.applications.api.HandlebarsApplica
       }
       this.submitting = true;
       await this.render();
-      selection.draft = structuredClone(this.draft);
+      selection.draft = structuredClone(this.selection().draft);
       await requestPlayerBasicMelee(
         this.item,
         this.combat,

@@ -93,9 +93,7 @@ export function finishTurn(state) {
   }
   return next;
 }
-export function changeRoster(state, { id, side, mode, reason }) {
-  if (typeof reason !== "string" || !reason.trim())
-    throw new Error("A roster decision needs a reason.");
+export function changeRoster(state, { id, side, mode, reason = "" }) {
   if (!["join-now", "join-next-round", "withdraw"].includes(mode))
     throw new Error("Unknown roster decision.");
   if (state.current === id)

@@ -123,8 +123,6 @@ function adjudication(reasons, override) {
   if (!reasons.length) return null;
   if (
     !override ||
-    typeof override.reason !== "string" ||
-    !override.reason.trim() ||
     typeof override.userId !== "string" ||
     !override.userId
   )
@@ -132,7 +130,8 @@ function adjudication(reasons, override) {
   // This is an audit plan, not authorization. A document service must verify this is the actual DA.
   return {
     userId: override.userId,
-    reason: override.reason.trim(),
+    reason: typeof override.reason === "string" ? override.reason.trim() : "",
+    choice: "budget-override",
     exceptions: reasons,
   };
 }

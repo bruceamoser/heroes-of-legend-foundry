@@ -24,12 +24,12 @@ export async function declareNpcMelee(actor, { blockable } = {}) {
       .filter(
         (p) =>
           p.actor?.uuid === actor.uuid &&
-          c.getFlag(ID, "encounter")?.current === p.id,
+          Boolean(c.getFlag(ID, "encounter")?.budgets?.[p.id]),
       )
       .map((p) => ({ c, p })),
   );
   if (matches.length !== 1)
-    throw new Error("Select this creature's turn in one encounter first.");
+    throw new Error("Place this creature in exactly one encounter first.");
   const { c, p } = matches[0];
   return ChatMessage.create({
     content: "NPC Basic Melee declaration pending.",
@@ -113,7 +113,6 @@ async function apply(id) {
       actor?.type !== "creature" ||
       combat.combatants.get(request.participantId)?.actor?.uuid !==
         actor.uuid ||
-      state?.current !== request.participantId ||
       request.revision !== state.revision ||
       !budget ||
       (request.blockable != null && typeof request.blockable !== "boolean")
@@ -137,7 +136,7 @@ async function apply(id) {
       sourceId: "npc-basic-melee",
       category: "main",
       conditions: actionConditions(actor),
-      ownTurn: true,
+      ownTurn: state.current === request.participantId,
     });
     const next = structuredClone(state);
     next.budgets[request.participantId] = continueAction(
@@ -150,6 +149,7 @@ async function apply(id) {
       id,
       actorUuid: actor.uuid,
       attackerName: actor.name,
+      guidance: declared.operations[id].audit?.exceptions.join(" ") ?? "",
       attributeKey: "agility",
       threat: {
         boons: actor.system.threat.boons,

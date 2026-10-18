@@ -37,7 +37,7 @@ export class EquipmentPanel extends foundry.applications.api.HandlebarsApplicati
       gm: game.user.isGM,
       encounter: this.basis.encounters.length > 0,
       editable:
-        this.actor.isOwner && (!this.basis.encounters.length || game.user.isGM),
+        this.actor.isOwner,
       items: this.basis.items.map((i) => ({
         ...i,
         name: this.actor.items.get(i.id).name,

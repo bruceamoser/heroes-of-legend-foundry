@@ -95,10 +95,10 @@ async function apply(id) {
     throw new Error(
       "Equipment or encounter state changed. Review the current arrangement.",
     );
-  if (basis.encounters.length || request.capacity !== basis.capacity) {
+  if (request.capacity !== basis.capacity) {
     if (!message.author.isGM)
       throw new Error(
-        "Encounter corrections and anatomy changes require the DA.",
+        "Anatomy changes require the DA.",
       );
   }
   if (

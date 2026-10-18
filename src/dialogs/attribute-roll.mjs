@@ -121,7 +121,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       adjustmentLabel: situationalAdjustmentLabel(this.draft.adjustment),
       abilities: this.abilityOptions.map((option) => ({
         ...option,
-        reasonText: option.reasons.join(" "),
+        reasonText: [...option.reasons, ...(option.warnings ?? [])].join(" "),
       })),
       fears: fears.map((source, index) => ({
         source,
@@ -194,7 +194,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       button.disabled = this.activating || !option.available;
       button.textContent = `${option.available ? "Use " : ""}${option.name}`;
       row.querySelector(".hol-ability-reason").textContent =
-        option.reasons.join(" ");
+        [...option.reasons, ...(option.warnings ?? [])].join(" ");
       list.append(row);
     }
   }

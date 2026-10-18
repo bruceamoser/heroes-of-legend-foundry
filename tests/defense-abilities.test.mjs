@@ -17,7 +17,7 @@ test("reviewed defense abilities expose genuine context blockers", () => {
       ownTurn: true,
       remaining: { maneuver: 1 },
     }),
-    { available: true, reasons: [] },
+    { available: true, reasons: [], warnings: [] },
   );
   assert.deepEqual(
     defenseAbilityAvailability("ability-shield-block", {
@@ -28,7 +28,7 @@ test("reviewed defense abilities expose genuine context blockers", () => {
       blockable: true,
       heldShieldUuids: ["Actor.a.Item.shield"],
     }),
-    { available: true, reasons: [] },
+    { available: true, reasons: [], warnings: [] },
   );
   const unavailable = defenseAbilityAvailability("ability-shield-block", {
     capable: true,
@@ -41,7 +41,7 @@ test("reviewed defense abilities expose genuine context blockers", () => {
   assert.equal(unavailable.available, false);
   assert.doesNotMatch(unavailable.reasons.join(" "), /not blockable/);
   assert.match(unavailable.reasons.join(" "), /held shield/);
-  assert.match(unavailable.reasons.join(" "), /No Reaction/);
+  assert.match(unavailable.warnings.join(" "), /No Reaction/);
 });
 
 test("blockable judgment distinguishes legacy cards, denial and approval", () => {
@@ -71,7 +71,7 @@ test("prior completed or unknown defense dice do not gate a newly selected abili
     { priorDefenses: 2, unresolvedDefense: true },
   ]) assert.deepEqual(
     defenseAbilityAvailability("ability-shield-block", { ...base, ...context }),
-    { available: true, reasons: [] },
+    { available: true, reasons: [], warnings: [] },
   );
 });
 
@@ -176,4 +176,20 @@ test("shield capability uses stable catalog identity rather than its name", () =
     }),
     true,
   );
+});
+
+
+test("empty tracked counters, off-turn status and condition advice do not disable deliberate abilities", () => {
+  const defend = defenseAbilityAvailability("ability-defend", {
+    capable: false, ownTurn: false, remaining: { maneuver: 0 },
+  });
+  assert.equal(defend.available, true);
+  assert.equal(defend.reasons.length, 0);
+  assert.equal(defend.warnings.length, 3);
+  const block = defenseAbilityAvailability("ability-shield-block", {
+    capable: false, remaining: { reaction: 0 }, attackMessageId: "attack", heldShieldUuids: ["shield"],
+  });
+  assert.equal(block.available, true);
+  assert.equal(block.warnings.length, 2);
+  assert.equal(defenseAbilityAvailability("ability-shield-block", { capable: false, remaining: { reaction: 0 }, attackMessageId: "attack", heldShieldUuids: ["shield"], pending: true }).available, false);
 });

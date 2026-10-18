@@ -430,7 +430,8 @@ export function basicMeleeDialogContext(
         game.user.isGM && (selection.override === true || rulingReason)
           ? { userId: game.user.id, choice: "budget-override", reason: rulingReason }
           : null;
-      actionPreview(actor, combat, participantId, "basic-melee-preview", ruling);
+      const action = actionPreview(actor, combat, participantId, "basic-melee-preview", ruling);
+      actionReason = action.declared.operations["basic-melee-preview"].audit?.exceptions.join(" ") ?? "";
       try {
         plan = prepareRoll(basis, selection.draft ?? {});
       } catch (error) {
@@ -779,7 +780,6 @@ async function loadCommittedRequest(operation, message) {
   if (
     !state ||
     state.revision !== operation.encounterRevision + 1 ||
-    state.current !== request.participantId ||
     !budget ||
     budget.turnId !== operation.turnId ||
     budget.remaining.main !== 0

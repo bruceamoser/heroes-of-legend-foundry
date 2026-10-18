@@ -1,0 +1,169 @@
+{
+  "_key": "!actors!9fa374855679463b",
+  "_id": "9fa374855679463b",
+  "name": "Crypt Ghoul",
+  "type": "summon",
+  "img": "icons/svg/mystery-man.svg",
+  "prototypeToken": {
+    "name": "Crypt Ghoul",
+    "actorLink": false,
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg"
+    }
+  },
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 1
+      },
+      "fortitude": {
+        "base": 1
+      },
+      "agility": {
+        "base": 2
+      },
+      "guile": {
+        "base": 0
+      },
+      "knowledge": {
+        "base": -1
+      },
+      "reason": {
+        "base": 1
+      }
+    },
+    "health": {
+      "value": 18,
+      "baseMax": 18
+    },
+    "cv": 17,
+    "eligibility": "Undead 3",
+    "speed": 7,
+    "speedSource": "Ground 7",
+    "alternateSpeeds": [],
+    "footprint": {
+      "width": 1,
+      "height": 1
+    },
+    "defenseModifier": {
+      "boons": 1,
+      "banes": 0,
+      "sourceText": "1 Boon"
+    },
+    "stability": 0,
+    "stabilitySource": "0",
+    "resistances": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "immunities": [
+      "Poisoned",
+      "Asleep"
+    ],
+    "senses": "Ordinary sight and hearing.",
+    "communication": "None",
+    "basicMelee": {
+      "orientation": "attacker",
+      "attribute": "brawn",
+      "attackModifier": {
+        "boons": 1,
+        "banes": 0,
+        "sourceText": "1 Boon"
+      },
+      "weak": 2,
+      "standard": 3,
+      "strong": 5
+    },
+    "attacks": [
+      {
+        "name": "Raking claws",
+        "attribute": "brawn",
+        "orientation": "attacker",
+        "attackModifier": {
+          "boons": 1,
+          "banes": 0,
+          "sourceText": "1 Boon"
+        },
+        "weak": "3 physical damage.",
+        "standard": "4 physical damage. Bleeding 1.",
+        "strong": "6 physical damage. Bleeding 2."
+      },
+      {
+        "name": "Grave touch",
+        "attribute": "brawn",
+        "orientation": "attacker",
+        "attackModifier": {
+          "boons": 1,
+          "banes": 0,
+          "sourceText": "1 Boon"
+        },
+        "weak": "2 cold damage.",
+        "standard": "3 cold damage.",
+        "strong": "4 cold damage. Paralyzed 1; cannot use this attack next turn."
+      }
+    ],
+    "commandSource": "Main command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use controller’s turn. Beyond 6 squares, or controller unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot.",
+    "healingSource": "Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body. Healing-harmed: ordinary healing resolves as Life damage instead; no beneficial riders.",
+    "restrictions": {
+      "canReceiveHealing": false,
+      "reactions": false,
+      "opportunityAttacks": false,
+      "independentTurns": false,
+      "turnAnchor": "controller",
+      "maximumCommandsPerTurn": 1,
+      "tetherSquares": 6,
+      "disappearsAtHp": 0,
+      "permanentLoot": false
+    },
+    "sourceMarkdown": "# Crypt Ghoul (CV 17)\n\n*A gaunt, corpse-eating undead with stretched lips, long nails and flesh drawn tight over its joints. It retains enough cunning to seek an isolated victim and avoid a determined group.*\n\n**HP:** 18 · **Speed:** Ground 7 · **Footprint:** 1x1\n\n**Summoned form — player reference.**\n\n**Defense modifier:** 1 Boon. · **Stability:** 0.\n\n**DR / resistance:** None · **Condition immunities:** Poisoned; Asleep\n\n**Weakness:** None\n\n**Healing:** Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body. Healing-harmed: ordinary healing resolves as Life damage instead; no beneficial riders.\n\n**Against offensive healing:** controller defends with Fortitude if this is player-controlled; a player attacking it still rolls only their attack.\n\n\n**Senses:** Ordinary sight and hearing.\n\n**Communication:** None\n\n**Attributes:** Brawn +1; Fortitude +1; Agility +2; Guile +0; Knowledge -1; Reason +1\n\n**Eligibility:** Undead 3\n\nMain command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use controller’s turn. Beyond 6 squares, or controller unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot.\n\n**Carrying:** up to 1 Bulk; anatomy limits handling. No granted crafting training.\n\nRoll its printed attack attribute and read the attacker outcomes below. When it is attacked, roll the defense attribute named by the incoming attack. Passive defenses remain; no independent active effects.\n\n**Lifeless Body — Passive:** does not breathe or eat; only listed immunities apply.\n\n## Attacks — Main Action\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Raking claws | Brawn | 1 Boon | 3 physical damage. | 4 physical damage. Bleeding 1. | 6 physical damage. Bleeding 2. |\n| Grave touch | Brawn | 1 Boon | 2 cold damage. | 3 cold damage. | 4 cold damage. Paralyzed 1; cannot use this attack next turn. |\n\n\n**Raking claws:** One adjacent creature.\n\n**Grave touch:** One adjacent creature. Cannot use this attack on consecutive turns, regardless of result.\n\n**Defend — Maneuver:** gain 1 Boon to defenses until the start of the controller’s next turn; repeated Defend does not stack.\n\n**Basic Melee — Main:** 1 Boon to attack; Brawn, one adjacent target; Weak attack 2, Standard 3, Strong 5 physical damage. No specialty riders. No opportunity Reaction.\n\n[DA creature card](../creatures/crypt-ghoul.md) · [Summon rules](../../rules/summoning.md)\n",
+    "referenceMarkdown": "# Crypt Ghoul (CV 17)\n\n*A gaunt, corpse-eating undead with stretched lips, long nails and flesh drawn tight over its joints. It retains enough cunning to seek an isolated victim and avoid a determined group.*\n\n**HP:** 18 · **Speed:** Ground 7 · **Footprint:** 1x1\n\n**Summoned form — player reference.**\n\n**Defense modifier:** 1 Boon. · **Stability:** 0.\n\n**DR / resistance:** None · **Condition immunities:** Poisoned; Asleep\n\n**Weakness:** None\n\n**Healing:** Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body. Healing-harmed: ordinary healing resolves as Life damage instead; no beneficial riders.\n\n**Against offensive healing:** controller defends with Fortitude if this is player-controlled; a player attacking it still rolls only their attack.\n\n\n**Senses:** Ordinary sight and hearing.\n\n**Communication:** None\n\n**Attributes:** Brawn +1; Fortitude +1; Agility +2; Guile +0; Knowledge -1; Reason +1\n\n**Eligibility:** Undead 3\n\nMain command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use controller’s turn. Beyond 6 squares, or controller unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot.\n\n**Carrying:** up to 1 Bulk; anatomy limits handling. No granted crafting training.\n\nRoll its printed attack attribute and read the attacker outcomes below. When it is attacked, roll the defense attribute named by the incoming attack. Passive defenses remain; no independent active effects.\n\n**Lifeless Body — Passive:** does not breathe or eat; only listed immunities apply.\n\n## Attacks — Main Action\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Raking claws | Brawn | 1 Boon | 3 physical damage. | 4 physical damage. Bleeding 1. | 6 physical damage. Bleeding 2. |\n| Grave touch | Brawn | 1 Boon | 2 cold damage. | 3 cold damage. | 4 cold damage. Paralyzed 1; cannot use this attack next turn. |\n\n\n**Raking claws:** One adjacent creature.\n\n**Grave touch:** One adjacent creature. Cannot use this attack on consecutive turns, regardless of result.\n\n**Defend — Maneuver:** gain 1 Boon to defenses until the start of the controller’s next turn; repeated Defend does not stack.\n\n**Basic Melee — Main:** 1 Boon to attack; Brawn, one adjacent target; Weak attack 2, Standard 3, Strong 5 physical damage. No specialty riders. No opportunity Reaction.\n\n[DA creature card](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/creatures/crypt-ghoul.md) · [Summon rules](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/rules/summoning.md)\n\n\n[Source profile](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/summons/crypt-ghoul.md)"
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "summon-crypt-ghoul",
+      "source": {
+        "path": "design/bestiary/summons/crypt-ghoul.md",
+        "sha256": "7aeee1cb26abf97213d3d5395c396d8da6b099effc977d7d9ad1fcc71b34303d"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "creatureId": "creature-crypt-ghoul",
+      "references": {
+        "creature": {
+          "kind": "creature-reference",
+          "id": "creature-crypt-ghoul",
+          "path": "design/bestiary/creatures/crypt-ghoul.md",
+          "sha256": "4e29b9741c41ecb7a7a86cd9ac1fed8101c5b042e1e305a6a7f4a454ce53390c"
+        },
+        "summonRules": {
+          "kind": "rules-reference",
+          "id": "summoning-rules",
+          "path": "design/rules/summoning.md",
+          "sha256": "2a97418d46d2ae018297ff27ffe0898fd8e649fdc09fd42cb92b23ebda9244db"
+        },
+        "summoning": {
+          "kind": "summon-profile",
+          "id": "summon-crypt-ghoul"
+        }
+      },
+      "automation": "pending",
+      "automationLabel": "Summon reference · command, spawn and tether automation pending",
+      "lifecycleAutomation": "pending"
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  }
+}

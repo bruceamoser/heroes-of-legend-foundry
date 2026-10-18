@@ -84,7 +84,7 @@ function sourceUrl(path, commit) {
   return `https://github.com/${SOURCE_REPOSITORY}/blob/${commit}/${encoded}`;
 }
 
-function rewriteSourceLinks(markdown, record, sourceCommit) {
+export function rewriteSourceLinks(markdown, record, sourceCommit) {
   text(record, markdown, "Reference Markdown");
   return markdown.replace(
     /\[([^\]\n]+)\]\(([^)\s]+)\)/g,

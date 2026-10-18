@@ -1,0 +1,162 @@
+{
+  "_key": "!actors!309fbc6c23b9cde0",
+  "_id": "309fbc6c23b9cde0",
+  "name": "Barrow Guard",
+  "type": "summon",
+  "img": "icons/svg/mystery-man.svg",
+  "prototypeToken": {
+    "name": "Barrow Guard",
+    "actorLink": false,
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg"
+    }
+  },
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 2
+      },
+      "fortitude": {
+        "base": 1
+      },
+      "agility": {
+        "base": 0
+      },
+      "guile": {
+        "base": 0
+      },
+      "knowledge": {
+        "base": 0
+      },
+      "reason": {
+        "base": 1
+      }
+    },
+    "health": {
+      "value": 23,
+      "baseMax": 23
+    },
+    "cv": 23,
+    "eligibility": "Undead 3",
+    "speed": 5,
+    "speedSource": "Ground 5",
+    "alternateSpeeds": [],
+    "footprint": {
+      "width": 1,
+      "height": 1
+    },
+    "defenseModifier": {
+      "boons": 0,
+      "banes": 0,
+      "sourceText": "None"
+    },
+    "stability": 0,
+    "stabilitySource": "0",
+    "resistances": {
+      "numeric": [
+        {
+          "type": "Physical",
+          "value": 2
+        }
+      ],
+      "special": [],
+      "sourceText": "Physical 2"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "immunities": [
+      "Bleeding",
+      "Poisoned",
+      "Asleep"
+    ],
+    "senses": "Ordinary sight and hearing.",
+    "communication": "None",
+    "basicMelee": {
+      "orientation": "attacker",
+      "attribute": "brawn",
+      "attackModifier": {
+        "boons": 1,
+        "banes": 0,
+        "sourceText": "1 Boon"
+      },
+      "weak": 2,
+      "standard": 3,
+      "strong": 5
+    },
+    "attacks": [
+      {
+        "name": "Oath blade",
+        "attribute": "brawn",
+        "orientation": "attacker",
+        "attackModifier": {
+          "boons": 1,
+          "banes": 0,
+          "sourceText": "1 Boon"
+        },
+        "weak": "3 physical damage.",
+        "standard": "5 physical damage. Push 1.",
+        "strong": "7 physical damage. Push 2."
+      }
+    ],
+    "commandSource": "Main command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use controller’s turn. Beyond 6 squares, or controller unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot.",
+    "healingSource": "Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body. Healing-harmed: ordinary healing resolves as Life damage instead; no beneficial riders.",
+    "restrictions": {
+      "canReceiveHealing": false,
+      "reactions": false,
+      "opportunityAttacks": false,
+      "independentTurns": false,
+      "turnAnchor": "controller",
+      "maximumCommandsPerTurn": 1,
+      "tetherSquares": 6,
+      "disappearsAtHp": 0,
+      "permanentLoot": false
+    },
+    "sourceMarkdown": "# Barrow Guard (CV 23)\n\n*An armed burial guardian in tarnished armor, with turf caught in its shield and remnants of an oath worked into its clothing. It remembers its duty more clearly than its life.*\n\n**HP:** 23 · **Speed:** Ground 5 · **Footprint:** 1x1\n\n**Summoned form — player reference.**\n\n**Defense modifier:** None. · **Stability:** 0.\n\n**DR / resistance:** Physical 2 · **Condition immunities:** Bleeding; Poisoned; Asleep\n\n**Weakness:** None\n\n**Healing:** Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body. Healing-harmed: ordinary healing resolves as Life damage instead; no beneficial riders.\n\n**Against offensive healing:** controller defends with Fortitude if this is player-controlled; a player attacking it still rolls only their attack.\n\n\n**Senses:** Ordinary sight and hearing.\n\n**Communication:** None\n\n**Attributes:** Brawn +2; Fortitude +1; Agility +0; Guile +0; Knowledge +0; Reason +1\n\n**Eligibility:** Undead 3\n\nMain command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use controller’s turn. Beyond 6 squares, or controller unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot.\n\n**Carrying:** up to 1 Bulk; anatomy limits handling. No granted crafting training.\n\nRoll its printed attack attribute and read the attacker outcomes below. When it is attacked, roll the defense attribute named by the incoming attack. Passive defenses remain; no independent active effects.\n\n**Lifeless Body — Passive:** does not breathe or eat; only listed immunities apply.\n\n## Attacks — Main Action\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Oath blade | Brawn | 1 Boon | 3 physical damage. | 5 physical damage. Push 1. | 7 physical damage. Push 2. |\n\n\n**Oath blade:** One adjacent creature.\n\n### Plant the Shield — Maneuver\n\nGain Stability 2 while on solid ground until its next turn; highest source only. This does not activate Shield Hunker.\n\n**Defend — Maneuver:** gain 1 Boon to defenses until the start of the controller’s next turn; repeated Defend does not stack.\n\n**Basic Melee — Main:** 1 Boon to attack; Brawn, one adjacent target; Weak attack 2, Standard 3, Strong 5 physical damage. No specialty riders. No opportunity Reaction.\n\n[DA creature card](../creatures/barrow-guard.md) · [Summon rules](../../rules/summoning.md)\n",
+    "referenceMarkdown": "# Barrow Guard (CV 23)\n\n*An armed burial guardian in tarnished armor, with turf caught in its shield and remnants of an oath worked into its clothing. It remembers its duty more clearly than its life.*\n\n**HP:** 23 · **Speed:** Ground 5 · **Footprint:** 1x1\n\n**Summoned form — player reference.**\n\n**Defense modifier:** None. · **Stability:** 0.\n\n**DR / resistance:** Physical 2 · **Condition immunities:** Bleeding; Poisoned; Asleep\n\n**Weakness:** None\n\n**Healing:** Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body. Healing-harmed: ordinary healing resolves as Life damage instead; no beneficial riders.\n\n**Against offensive healing:** controller defends with Fortitude if this is player-controlled; a player attacking it still rolls only their attack.\n\n\n**Senses:** Ordinary sight and hearing.\n\n**Communication:** None\n\n**Attributes:** Brawn +2; Fortitude +1; Agility +0; Guile +0; Knowledge +0; Reason +1\n\n**Eligibility:** Undead 3\n\nMain command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use controller’s turn. Beyond 6 squares, or controller unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot.\n\n**Carrying:** up to 1 Bulk; anatomy limits handling. No granted crafting training.\n\nRoll its printed attack attribute and read the attacker outcomes below. When it is attacked, roll the defense attribute named by the incoming attack. Passive defenses remain; no independent active effects.\n\n**Lifeless Body — Passive:** does not breathe or eat; only listed immunities apply.\n\n## Attacks — Main Action\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Oath blade | Brawn | 1 Boon | 3 physical damage. | 5 physical damage. Push 1. | 7 physical damage. Push 2. |\n\n\n**Oath blade:** One adjacent creature.\n\n### Plant the Shield — Maneuver\n\nGain Stability 2 while on solid ground until its next turn; highest source only. This does not activate Shield Hunker.\n\n**Defend — Maneuver:** gain 1 Boon to defenses until the start of the controller’s next turn; repeated Defend does not stack.\n\n**Basic Melee — Main:** 1 Boon to attack; Brawn, one adjacent target; Weak attack 2, Standard 3, Strong 5 physical damage. No specialty riders. No opportunity Reaction.\n\n[DA creature card](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/creatures/barrow-guard.md) · [Summon rules](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/rules/summoning.md)\n\n\n[Source profile](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/summons/barrow-guard.md)"
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "summon-barrow-guard",
+      "source": {
+        "path": "design/bestiary/summons/barrow-guard.md",
+        "sha256": "964d26ad50293f5a7975490231ec3c340b487f374fc7fa3c6025f114bee0df13"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "creatureId": "creature-barrow-guard",
+      "references": {
+        "creature": {
+          "kind": "creature-reference",
+          "id": "creature-barrow-guard",
+          "path": "design/bestiary/creatures/barrow-guard.md",
+          "sha256": "a6a16a7b595489cd51b406820a1b48c6c93b092c354813291b36c2ad8a55b082"
+        },
+        "summonRules": {
+          "kind": "rules-reference",
+          "id": "summoning-rules",
+          "path": "design/rules/summoning.md",
+          "sha256": "2a97418d46d2ae018297ff27ffe0898fd8e649fdc09fd42cb92b23ebda9244db"
+        },
+        "summoning": {
+          "kind": "summon-profile",
+          "id": "summon-barrow-guard"
+        }
+      },
+      "automation": "pending",
+      "automationLabel": "Summon reference · command, spawn and tether automation pending",
+      "lifecycleAutomation": "pending"
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  }
+}

@@ -1,0 +1,162 @@
+{
+  "_key": "!actors!1043f1e0b80cfcd3",
+  "_id": "1043f1e0b80cfcd3",
+  "name": "Cinder Strider",
+  "type": "summon",
+  "img": "icons/svg/mystery-man.svg",
+  "prototypeToken": {
+    "name": "Cinder Strider",
+    "actorLink": false,
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg"
+    }
+  },
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 1
+      },
+      "fortitude": {
+        "base": 1
+      },
+      "agility": {
+        "base": 2
+      },
+      "guile": {
+        "base": 0
+      },
+      "knowledge": {
+        "base": 0
+      },
+      "reason": {
+        "base": 0
+      }
+    },
+    "health": {
+      "value": 18,
+      "baseMax": 18
+    },
+    "cv": 18,
+    "eligibility": "Elemental 3",
+    "speed": 7,
+    "speedSource": "Ground 7",
+    "alternateSpeeds": [],
+    "footprint": {
+      "width": 1,
+      "height": 1
+    },
+    "defenseModifier": {
+      "boons": 1,
+      "banes": 0,
+      "sourceText": "1 Boon"
+    },
+    "stability": 0,
+    "stabilitySource": "0",
+    "resistances": {
+      "numeric": [
+        {
+          "type": "fire",
+          "value": 3
+        }
+      ],
+      "special": [],
+      "sourceText": "fire 3"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "immunities": [
+      "Bleeding",
+      "Poisoned",
+      "Asleep"
+    ],
+    "senses": "Ordinary sight and hearing.",
+    "communication": "None",
+    "basicMelee": {
+      "orientation": "attacker",
+      "attribute": "brawn",
+      "attackModifier": {
+        "boons": 1,
+        "banes": 0,
+        "sourceText": "1 Boon"
+      },
+      "weak": 2,
+      "standard": 3,
+      "strong": 5
+    },
+    "attacks": [
+      {
+        "name": "Cinder lash",
+        "attribute": "agility",
+        "orientation": "attacker",
+        "attackModifier": {
+          "boons": 1,
+          "banes": 0,
+          "sourceText": "1 Boon"
+        },
+        "weak": "3 fire damage.",
+        "standard": "4 fire damage. Burning 1.",
+        "strong": "6 fire damage. Burning 2."
+      }
+    ],
+    "commandSource": "Main command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use controller’s turn. Beyond 6 squares, or controller unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot.",
+    "healingSource": "Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body. Cannot swallow potions.",
+    "restrictions": {
+      "canReceiveHealing": false,
+      "reactions": false,
+      "opportunityAttacks": false,
+      "independentTurns": false,
+      "turnAnchor": "controller",
+      "maximumCommandsPerTurn": 1,
+      "tetherSquares": 6,
+      "disappearsAtHp": 0,
+      "permanentLoot": false
+    },
+    "sourceMarkdown": "# Cinder Strider (CV 18)\n\n*A tall, narrow fire elemental with ember-bright joints and smoke trailing from its shoulders. Its long limbs and hot surface make close pursuit dangerous.*\n\n**HP:** 18 · **Speed:** Ground 7 · **Footprint:** 1x1\n\n**Summoned form — player reference.**\n\n**Defense modifier:** 1 Boon. · **Stability:** 0.\n\n**DR / resistance:** fire 3 · **Condition immunities:** Bleeding; Poisoned; Asleep\n\n**Weakness:** None\n\n**Healing:** Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body. Cannot swallow potions.\n\n\n**Senses:** Ordinary sight and hearing.\n\n**Communication:** None\n\n**Attributes:** Brawn +1; Fortitude +1; Agility +2; Guile +0; Knowledge +0; Reason +0\n\n**Eligibility:** Elemental 3\n\nMain command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use controller’s turn. Beyond 6 squares, or controller unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot.\n\n**Carrying:** up to 1 Bulk; anatomy limits handling. No granted crafting training.\n\nRoll its printed attack attribute and read the attacker outcomes below. When it is attacked, roll the defense attribute named by the incoming attack. Passive defenses remain; no independent active effects.\n\n## Attacks — Main Action\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Cinder lash | Agility | 1 Boon | 3 fire damage. | 4 fire damage. Burning 1. | 6 fire damage. Burning 2. |\n\n\n**Cinder lash:** One creature within 2 squares.\n\n**Defend — Maneuver:** gain 1 Boon to defenses until the start of the controller’s next turn; repeated Defend does not stack.\n\n**Basic Melee — Main:** 1 Boon to attack; Brawn, one adjacent target; Weak attack 2, Standard 3, Strong 5 physical damage. No specialty riders. No opportunity Reaction.\n\n[DA creature card](../creatures/cinder-strider.md) · [Summon rules](../../rules/summoning.md)\n",
+    "referenceMarkdown": "# Cinder Strider (CV 18)\n\n*A tall, narrow fire elemental with ember-bright joints and smoke trailing from its shoulders. Its long limbs and hot surface make close pursuit dangerous.*\n\n**HP:** 18 · **Speed:** Ground 7 · **Footprint:** 1x1\n\n**Summoned form — player reference.**\n\n**Defense modifier:** 1 Boon. · **Stability:** 0.\n\n**DR / resistance:** fire 3 · **Condition immunities:** Bleeding; Poisoned; Asleep\n\n**Weakness:** None\n\n**Healing:** Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body. Cannot swallow potions.\n\n\n**Senses:** Ordinary sight and hearing.\n\n**Communication:** None\n\n**Attributes:** Brawn +1; Fortitude +1; Agility +2; Guile +0; Knowledge +0; Reason +0\n\n**Eligibility:** Elemental 3\n\nMain command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use controller’s turn. Beyond 6 squares, or controller unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot.\n\n**Carrying:** up to 1 Bulk; anatomy limits handling. No granted crafting training.\n\nRoll its printed attack attribute and read the attacker outcomes below. When it is attacked, roll the defense attribute named by the incoming attack. Passive defenses remain; no independent active effects.\n\n## Attacks — Main Action\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Cinder lash | Agility | 1 Boon | 3 fire damage. | 4 fire damage. Burning 1. | 6 fire damage. Burning 2. |\n\n\n**Cinder lash:** One creature within 2 squares.\n\n**Defend — Maneuver:** gain 1 Boon to defenses until the start of the controller’s next turn; repeated Defend does not stack.\n\n**Basic Melee — Main:** 1 Boon to attack; Brawn, one adjacent target; Weak attack 2, Standard 3, Strong 5 physical damage. No specialty riders. No opportunity Reaction.\n\n[DA creature card](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/creatures/cinder-strider.md) · [Summon rules](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/rules/summoning.md)\n\n\n[Source profile](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/summons/cinder-strider.md)"
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "summon-cinder-strider",
+      "source": {
+        "path": "design/bestiary/summons/cinder-strider.md",
+        "sha256": "d3d6a0c380d4a249d29ec3b51970ed385d4952f06daa3920b803ac6024f410dd"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "creatureId": "creature-cinder-strider",
+      "references": {
+        "creature": {
+          "kind": "creature-reference",
+          "id": "creature-cinder-strider",
+          "path": "design/bestiary/creatures/cinder-strider.md",
+          "sha256": "76457f9d898d9975b443b9512bdea13d9204914702e8348d4e69d63c9a368326"
+        },
+        "summonRules": {
+          "kind": "rules-reference",
+          "id": "summoning-rules",
+          "path": "design/rules/summoning.md",
+          "sha256": "2a97418d46d2ae018297ff27ffe0898fd8e649fdc09fd42cb92b23ebda9244db"
+        },
+        "summoning": {
+          "kind": "summon-profile",
+          "id": "summon-cinder-strider"
+        }
+      },
+      "automation": "pending",
+      "automationLabel": "Summon reference · command, spawn and tether automation pending",
+      "lifecycleAutomation": "pending"
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  }
+}

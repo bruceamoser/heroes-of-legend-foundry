@@ -1,0 +1,162 @@
+{
+  "_key": "!actors!2e9effbc9d51b883",
+  "_id": "2e9effbc9d51b883",
+  "name": "Stone Golem",
+  "type": "summon",
+  "img": "icons/svg/mystery-man.svg",
+  "prototypeToken": {
+    "name": "Stone Golem",
+    "actorLink": false,
+    "width": 2,
+    "height": 2,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg"
+    }
+  },
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 2
+      },
+      "fortitude": {
+        "base": 2
+      },
+      "agility": {
+        "base": -1
+      },
+      "guile": {
+        "base": -2
+      },
+      "knowledge": {
+        "base": -2
+      },
+      "reason": {
+        "base": 0
+      }
+    },
+    "health": {
+      "value": 40,
+      "baseMax": 40
+    },
+    "cv": 45,
+    "eligibility": "Construct 7",
+    "speed": 4,
+    "speedSource": "4",
+    "alternateSpeeds": [],
+    "footprint": {
+      "width": 2,
+      "height": 2
+    },
+    "defenseModifier": {
+      "boons": 0,
+      "banes": 0,
+      "sourceText": "None"
+    },
+    "stability": 3,
+    "stabilitySource": "3",
+    "resistances": {
+      "numeric": [
+        {
+          "type": "Physical",
+          "value": 3
+        }
+      ],
+      "special": [],
+      "sourceText": "Physical 3"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "immunities": [
+      "Bleeding",
+      "Poisoned",
+      "Asleep"
+    ],
+    "senses": "Dark sight 6 squares; ordinary hearing.",
+    "communication": "None",
+    "basicMelee": {
+      "orientation": "attacker",
+      "attribute": "brawn",
+      "attackModifier": {
+        "boons": 1,
+        "banes": 0,
+        "sourceText": "1 Boon"
+      },
+      "weak": 2,
+      "standard": 3,
+      "strong": 5
+    },
+    "attacks": [
+      {
+        "name": "Monument fist",
+        "attribute": "brawn",
+        "orientation": "attacker",
+        "attackModifier": {
+          "boons": 1,
+          "banes": 0,
+          "sourceText": "1 Boon"
+        },
+        "weak": "4 physical damage.",
+        "standard": "7 physical damage. Push 1.",
+        "strong": "10 physical damage. Push 3."
+      }
+    ],
+    "commandSource": "Main command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use the controller’s turn. Beyond 6 squares, or if the controller is unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot. No summon chains.",
+    "healingSource": "Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body.",
+    "restrictions": {
+      "canReceiveHealing": false,
+      "reactions": false,
+      "opportunityAttacks": false,
+      "independentTurns": false,
+      "turnAnchor": "controller",
+      "maximumCommandsPerTurn": 1,
+      "tetherSquares": 6,
+      "disappearsAtHp": 0,
+      "permanentLoot": false
+    },
+    "sourceMarkdown": "# Stone Golem (CV 45)\n\n*A carved guardian moves with the grinding patience of a gate being opened after centuries of rust.*\n\n**Attributes:** Brawn +2; Fortitude +2; Agility -1; Guile -2; Knowledge -2; Reason +0\n\n**HP:** 40 · **Speed:** 4 · **Footprint:** 2x2\n\n**Summoned form — player reference.**\n\n**Defense modifier:** None. · **Stability:** 3.\n\n**DR / resistance:** Physical 3 · **Condition immunities:** Bleeding; Poisoned; Asleep\n\n**Weakness:** None\n\n**Healing:** Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body.\n\n**Senses:** Dark sight 6 squares; ordinary hearing.\n\n**Communication:** None\n\n**Eligibility:** Construct 7\n\nMain command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use the controller’s turn. Beyond 6 squares, or if the controller is unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot. No summon chains.\n\n**Carrying:** At most 1 Bulk; anatomy limits handling. No crafting training.\n\n**Lifeless Body — Passive:** Does not breathe or eat; only its listed immunities apply.\n\n**Heavy Frame — Passive:** Stability 3; an explicit trait, not a bonus calculated from Size.\n\n## Attacks — Main Action\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Monument fist | Brawn | 1 Boon | 4 physical damage. | 7 physical damage. Push 1. | 10 physical damage. Push 3. |\n\n**Monument fist:** One visible creature within 2 squares. Apply Stability, terrain costs and normal collision rules to the printed distance.\n\n## Maneuvers\n\n**Become Still:** Gain 1 additional Bane against the next player attack before its next turn, or 1 defense Boon when player-controlled. Ends if it voluntarily moves. Does not make it Hidden, alter its resistance or stack with itself.\n\n**Defend:** Gain 1 Boon to defenses until the controller’s next turn; repeated Defend does not stack.\n\n**Basic Melee — Main:** Brawn 1 Boon; one adjacent target; Weak attack 2, Standard 3, Strong 5 physical damage. No specialty riders.\n\n[DA creature card](../creatures/stone-golem.md) · [Summon rules](../../rules/summoning.md)\n",
+    "referenceMarkdown": "# Stone Golem (CV 45)\n\n*A carved guardian moves with the grinding patience of a gate being opened after centuries of rust.*\n\n**Attributes:** Brawn +2; Fortitude +2; Agility -1; Guile -2; Knowledge -2; Reason +0\n\n**HP:** 40 · **Speed:** 4 · **Footprint:** 2x2\n\n**Summoned form — player reference.**\n\n**Defense modifier:** None. · **Stability:** 3.\n\n**DR / resistance:** Physical 3 · **Condition immunities:** Bleeding; Poisoned; Asleep\n\n**Weakness:** None\n\n**Healing:** Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body.\n\n**Senses:** Dark sight 6 squares; ordinary hearing.\n\n**Communication:** None\n\n**Eligibility:** Construct 7\n\nMain command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use the controller’s turn. Beyond 6 squares, or if the controller is unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot. No summon chains.\n\n**Carrying:** At most 1 Bulk; anatomy limits handling. No crafting training.\n\n**Lifeless Body — Passive:** Does not breathe or eat; only its listed immunities apply.\n\n**Heavy Frame — Passive:** Stability 3; an explicit trait, not a bonus calculated from Size.\n\n## Attacks — Main Action\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Monument fist | Brawn | 1 Boon | 4 physical damage. | 7 physical damage. Push 1. | 10 physical damage. Push 3. |\n\n**Monument fist:** One visible creature within 2 squares. Apply Stability, terrain costs and normal collision rules to the printed distance.\n\n## Maneuvers\n\n**Become Still:** Gain 1 additional Bane against the next player attack before its next turn, or 1 defense Boon when player-controlled. Ends if it voluntarily moves. Does not make it Hidden, alter its resistance or stack with itself.\n\n**Defend:** Gain 1 Boon to defenses until the controller’s next turn; repeated Defend does not stack.\n\n**Basic Melee — Main:** Brawn 1 Boon; one adjacent target; Weak attack 2, Standard 3, Strong 5 physical damage. No specialty riders.\n\n[DA creature card](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/creatures/stone-golem.md) · [Summon rules](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/rules/summoning.md)\n\n\n[Source profile](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/summons/stone-golem.md)"
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "summon-stone-golem",
+      "source": {
+        "path": "design/bestiary/summons/stone-golem.md",
+        "sha256": "1a1fb73247d7bb545add53f3abdadf0f064eabb657c5a5ce3c4add54df98fb53"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "creatureId": "creature-stone-golem",
+      "references": {
+        "creature": {
+          "kind": "creature-reference",
+          "id": "creature-stone-golem",
+          "path": "design/bestiary/creatures/stone-golem.md",
+          "sha256": "890e15828a315bc00f4a196d7dd395d6382403545e2330e05972dff915366d74"
+        },
+        "summonRules": {
+          "kind": "rules-reference",
+          "id": "summoning-rules",
+          "path": "design/rules/summoning.md",
+          "sha256": "2a97418d46d2ae018297ff27ffe0898fd8e649fdc09fd42cb92b23ebda9244db"
+        },
+        "summoning": {
+          "kind": "summon-profile",
+          "id": "summon-stone-golem"
+        }
+      },
+      "automation": "pending",
+      "automationLabel": "Summon reference · command, spawn and tether automation pending",
+      "lifecycleAutomation": "pending"
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  }
+}

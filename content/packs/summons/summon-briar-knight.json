@@ -1,0 +1,158 @@
+{
+  "_key": "!actors!5c3ac26295c229f6",
+  "_id": "5c3ac26295c229f6",
+  "name": "Briar Knight",
+  "type": "summon",
+  "img": "icons/svg/mystery-man.svg",
+  "prototypeToken": {
+    "name": "Briar Knight",
+    "actorLink": false,
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg"
+    }
+  },
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 2
+      },
+      "fortitude": {
+        "base": 1
+      },
+      "agility": {
+        "base": 1
+      },
+      "guile": {
+        "base": 1
+      },
+      "knowledge": {
+        "base": 0
+      },
+      "reason": {
+        "base": 1
+      }
+    },
+    "health": {
+      "value": 22,
+      "baseMax": 22
+    },
+    "cv": 19,
+    "eligibility": "Fey 3",
+    "speed": 6,
+    "speedSource": "Ground 6",
+    "alternateSpeeds": [],
+    "footprint": {
+      "width": 1,
+      "height": 1
+    },
+    "defenseModifier": {
+      "boons": 0,
+      "banes": 0,
+      "sourceText": "None"
+    },
+    "stability": 0,
+    "stabilitySource": "0",
+    "resistances": {
+      "numeric": [
+        {
+          "type": "Physical",
+          "value": 2
+        }
+      ],
+      "special": [],
+      "sourceText": "Physical 2"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "immunities": [],
+    "senses": "Ordinary sight and hearing.",
+    "communication": "Common and Fey",
+    "basicMelee": {
+      "orientation": "attacker",
+      "attribute": "brawn",
+      "attackModifier": {
+        "boons": 1,
+        "banes": 0,
+        "sourceText": "1 Boon"
+      },
+      "weak": 2,
+      "standard": 3,
+      "strong": 5
+    },
+    "attacks": [
+      {
+        "name": "Briar spear",
+        "attribute": "brawn",
+        "orientation": "attacker",
+        "attackModifier": {
+          "boons": 1,
+          "banes": 0,
+          "sourceText": "1 Boon"
+        },
+        "weak": "3 physical damage.",
+        "standard": "4 physical damage. Push 1.",
+        "strong": "6 physical damage. Push 2."
+      }
+    ],
+    "commandSource": "Main command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use controller’s turn. Beyond 6 squares, or controller unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot.",
+    "healingSource": "Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body.",
+    "restrictions": {
+      "canReceiveHealing": false,
+      "reactions": false,
+      "opportunityAttacks": false,
+      "independentTurns": false,
+      "turnAnchor": "controller",
+      "maximumCommandsPerTurn": 1,
+      "tetherSquares": 6,
+      "disappearsAtHp": 0,
+      "permanentLoot": false
+    },
+    "sourceMarkdown": "# Briar Knight (CV 19)\n\n*A fey guardian enclosed in barklike armor, with a thorn-grown shield and a long spear. A living blossom at the shoulder marks the promise it serves.*\n\n**HP:** 22 · **Speed:** Ground 6 · **Footprint:** 1x1\n\n**Summoned form — player reference.**\n\n**Defense modifier:** None. · **Stability:** 0.\n\n**DR / resistance:** Physical 2 · **Condition immunities:** None\n\n**Weakness:** None\n\n**Healing:** Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body.\n\n\n**Senses:** Ordinary sight and hearing.\n\n**Communication:** Common and Fey\n\n**Attributes:** Brawn +2; Fortitude +1; Agility +1; Guile +1; Knowledge +0; Reason +1\n\n**Eligibility:** Fey 3\n\nMain command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use controller’s turn. Beyond 6 squares, or controller unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot.\n\n**Carrying:** up to 1 Bulk; anatomy limits handling. No granted crafting training.\n\nRoll its printed attack attribute and read the attacker outcomes below. When it is attacked, roll the defense attribute named by the incoming attack. Passive defenses remain; no independent active effects.\n\n## Attacks — Main Action\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Briar spear | Brawn | 1 Boon | 3 physical damage. | 4 physical damage. Push 1. | 6 physical damage. Push 2. |\n\n\n**Briar spear:** One creature within 2 squares.\n\n### Root the Stance — Maneuver\n\nGain Stability 2 while on soil until its next turn; highest source only.\n\n**Defend — Maneuver:** gain 1 Boon to defenses until the start of the controller’s next turn; repeated Defend does not stack.\n\n**Basic Melee — Main:** 1 Boon to attack; Brawn, one adjacent target; Weak attack 2, Standard 3, Strong 5 physical damage. No specialty riders. No opportunity Reaction.\n\n[DA creature card](../creatures/briar-knight.md) · [Summon rules](../../rules/summoning.md)\n",
+    "referenceMarkdown": "# Briar Knight (CV 19)\n\n*A fey guardian enclosed in barklike armor, with a thorn-grown shield and a long spear. A living blossom at the shoulder marks the promise it serves.*\n\n**HP:** 22 · **Speed:** Ground 6 · **Footprint:** 1x1\n\n**Summoned form — player reference.**\n\n**Defense modifier:** None. · **Stability:** 0.\n\n**DR / resistance:** Physical 2 · **Condition immunities:** None\n\n**Weakness:** None\n\n**Healing:** Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body.\n\n\n**Senses:** Ordinary sight and hearing.\n\n**Communication:** Common and Fey\n\n**Attributes:** Brawn +2; Fortitude +1; Agility +1; Guile +1; Knowledge +0; Reason +1\n\n**Eligibility:** Fey 3\n\nMain command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use controller’s turn. Beyond 6 squares, or controller unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot.\n\n**Carrying:** up to 1 Bulk; anatomy limits handling. No granted crafting training.\n\nRoll its printed attack attribute and read the attacker outcomes below. When it is attacked, roll the defense attribute named by the incoming attack. Passive defenses remain; no independent active effects.\n\n## Attacks — Main Action\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Briar spear | Brawn | 1 Boon | 3 physical damage. | 4 physical damage. Push 1. | 6 physical damage. Push 2. |\n\n\n**Briar spear:** One creature within 2 squares.\n\n### Root the Stance — Maneuver\n\nGain Stability 2 while on soil until its next turn; highest source only.\n\n**Defend — Maneuver:** gain 1 Boon to defenses until the start of the controller’s next turn; repeated Defend does not stack.\n\n**Basic Melee — Main:** 1 Boon to attack; Brawn, one adjacent target; Weak attack 2, Standard 3, Strong 5 physical damage. No specialty riders. No opportunity Reaction.\n\n[DA creature card](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/creatures/briar-knight.md) · [Summon rules](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/rules/summoning.md)\n\n\n[Source profile](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/summons/briar-knight.md)"
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "summon-briar-knight",
+      "source": {
+        "path": "design/bestiary/summons/briar-knight.md",
+        "sha256": "5b82c6839de5172db0c6c721b3a583c035383384028c61cfa222a376ee478e56"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "creatureId": "creature-briar-knight",
+      "references": {
+        "creature": {
+          "kind": "creature-reference",
+          "id": "creature-briar-knight",
+          "path": "design/bestiary/creatures/briar-knight.md",
+          "sha256": "0a74617f7d48239a3c222c8df9df4dec6fa6e5068fbc29cb5aa51e7831c96869"
+        },
+        "summonRules": {
+          "kind": "rules-reference",
+          "id": "summoning-rules",
+          "path": "design/rules/summoning.md",
+          "sha256": "2a97418d46d2ae018297ff27ffe0898fd8e649fdc09fd42cb92b23ebda9244db"
+        },
+        "summoning": {
+          "kind": "summon-profile",
+          "id": "summon-briar-knight"
+        }
+      },
+      "automation": "pending",
+      "automationLabel": "Summon reference · command, spawn and tether automation pending",
+      "lifecycleAutomation": "pending"
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  }
+}

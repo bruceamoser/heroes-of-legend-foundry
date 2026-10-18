@@ -1,0 +1,176 @@
+{
+  "_key": "!actors!cfb58547823ba82d",
+  "_id": "cfb58547823ba82d",
+  "name": "Wraith",
+  "type": "summon",
+  "img": "icons/svg/mystery-man.svg",
+  "prototypeToken": {
+    "name": "Wraith",
+    "actorLink": false,
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg"
+    }
+  },
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 0
+      },
+      "fortitude": {
+        "base": 0
+      },
+      "agility": {
+        "base": 2
+      },
+      "guile": {
+        "base": 1
+      },
+      "knowledge": {
+        "base": 0
+      },
+      "reason": {
+        "base": 1
+      }
+    },
+    "health": {
+      "value": 28,
+      "baseMax": 28
+    },
+    "cv": 37,
+    "eligibility": "Undead 7",
+    "speed": 6,
+    "speedSource": "6; fly 6",
+    "alternateSpeeds": [
+      {
+        "mode": "fly",
+        "value": 6
+      }
+    ],
+    "footprint": {
+      "width": 1,
+      "height": 1
+    },
+    "defenseModifier": {
+      "boons": 1,
+      "banes": 0,
+      "sourceText": "1 Boon"
+    },
+    "stability": 0,
+    "stabilitySource": "0",
+    "resistances": {
+      "numeric": [
+        {
+          "type": "Physical",
+          "value": 2
+        },
+        {
+          "type": "Life",
+          "value": 1
+        }
+      ],
+      "special": [],
+      "sourceText": "Physical 2; Life 1"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [
+        {
+          "type": "weakness-special-1",
+          "reference": "In direct sunlight its attacks grant the defender 1 additional Boon (or impose 1 Bane on its attacks when player-controlled). This does not add damage or change ordinary illumination into sunlight."
+        }
+      ],
+      "sourceText": "In direct sunlight its attacks grant the defender 1 additional Boon (or impose 1 Bane on its attacks when player-controlled). This does not add damage or change ordinary illumination into sunlight."
+    },
+    "immunities": [
+      "Bleeding",
+      "Poisoned",
+      "Asleep"
+    ],
+    "senses": "Dark sight 6 squares; ordinary hearing.",
+    "communication": "Common; understands old oaths",
+    "basicMelee": {
+      "orientation": "attacker",
+      "attribute": "brawn",
+      "attackModifier": {
+        "boons": 1,
+        "banes": 0,
+        "sourceText": "1 Boon"
+      },
+      "weak": 2,
+      "standard": 3,
+      "strong": 5
+    },
+    "attacks": [
+      {
+        "name": "Winterless touch",
+        "attribute": "brawn",
+        "orientation": "attacker",
+        "attackModifier": {
+          "boons": 1,
+          "banes": 0,
+          "sourceText": "1 Boon"
+        },
+        "weak": "3 Life damage.",
+        "standard": "5 Life damage. Dazed 1.",
+        "strong": "8 Life damage. Dazed 2."
+      }
+    ],
+    "commandSource": "Main command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use the controller’s turn. Beyond 6 squares, or if the controller is unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot. No summon chains.",
+    "healingSource": "Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body. Healing-harmed: ordinary healing resolves as Life damage instead; no beneficial riders.",
+    "restrictions": {
+      "canReceiveHealing": false,
+      "reactions": false,
+      "opportunityAttacks": false,
+      "independentTurns": false,
+      "turnAnchor": "controller",
+      "maximumCommandsPerTurn": 1,
+      "tetherSquares": 6,
+      "disappearsAtHp": 0,
+      "permanentLoot": false
+    },
+    "sourceMarkdown": "# Wraith (CV 37)\n\n*A torn silhouette hangs in the air around two pale sparks, trailing the sound of someone trying to breathe underwater.*\n\n**Attributes:** Brawn +0; Fortitude +0; Agility +2; Guile +1; Knowledge +0; Reason +1\n\n**HP:** 28 · **Speed:** 6; fly 6 · **Footprint:** 1x1\n\n**Summoned form — player reference.**\n\n**Defense modifier:** 1 Boon. · **Stability:** 0.\n\n**DR / resistance:** Physical 2; Life 1 · **Condition immunities:** Bleeding; Poisoned; Asleep\n\n**Weakness:** In direct sunlight its attacks grant the defender 1 additional Boon (or impose 1 Bane on its attacks when player-controlled). This does not add damage or change ordinary illumination into sunlight.\n\n**Healing:** Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body. Healing-harmed: ordinary healing resolves as Life damage instead; no beneficial riders.\n\n**Senses:** Dark sight 6 squares; ordinary hearing.\n\n**Communication:** Common; understands old oaths\n\n**Eligibility:** Undead 7\n\nMain command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use the controller’s turn. Beyond 6 squares, or if the controller is unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot. No summon chains.\n\n**Carrying:** At most 1 Bulk; anatomy limits handling. No crafting training.\n\n**Against offensive healing:** Fortitude defense; ordinary player attacks still use the defense attribute named on that attack.\n\n**Lifeless Body — Passive:** Does not breathe or eat; only its listed immunities apply.\n\n## Attacks — Main Action\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Winterless touch | Brawn | 1 Boon | 3 Life damage. | 5 Life damage. Dazed 1. | 8 Life damage. Dazed 2. |\n\n**Winterless touch:** One adjacent creature.\n\n## Maneuvers\n\n**Slip Through Shadow:** Move up to 2 squares through connected dimly lit or dark squares without provoking. Normal terrain and occupancy rules apply. Does not grant Hidden or allow passage through solid objects.\n\n**Defend:** Gain 1 Boon to defenses until the controller’s next turn; repeated Defend does not stack.\n\n**Basic Melee — Main:** Brawn 1 Boon; one adjacent target; Weak attack 2, Standard 3, Strong 5 physical damage. No specialty riders.\n\n[DA creature card](../creatures/wraith.md) · [Summon rules](../../rules/summoning.md)\n",
+    "referenceMarkdown": "# Wraith (CV 37)\n\n*A torn silhouette hangs in the air around two pale sparks, trailing the sound of someone trying to breathe underwater.*\n\n**Attributes:** Brawn +0; Fortitude +0; Agility +2; Guile +1; Knowledge +0; Reason +1\n\n**HP:** 28 · **Speed:** 6; fly 6 · **Footprint:** 1x1\n\n**Summoned form — player reference.**\n\n**Defense modifier:** 1 Boon. · **Stability:** 0.\n\n**DR / resistance:** Physical 2; Life 1 · **Condition immunities:** Bleeding; Poisoned; Asleep\n\n**Weakness:** In direct sunlight its attacks grant the defender 1 additional Boon (or impose 1 Bane on its attacks when player-controlled). This does not add damage or change ordinary illumination into sunlight.\n\n**Healing:** Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body. Healing-harmed: ordinary healing resolves as Life damage instead; no beneficial riders.\n\n**Senses:** Dark sight 6 squares; ordinary hearing.\n\n**Communication:** Common; understands old oaths\n\n**Eligibility:** Undead 7\n\nMain command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use the controller’s turn. Beyond 6 squares, or if the controller is unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot. No summon chains.\n\n**Carrying:** At most 1 Bulk; anatomy limits handling. No crafting training.\n\n**Against offensive healing:** Fortitude defense; ordinary player attacks still use the defense attribute named on that attack.\n\n**Lifeless Body — Passive:** Does not breathe or eat; only its listed immunities apply.\n\n## Attacks — Main Action\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Winterless touch | Brawn | 1 Boon | 3 Life damage. | 5 Life damage. Dazed 1. | 8 Life damage. Dazed 2. |\n\n**Winterless touch:** One adjacent creature.\n\n## Maneuvers\n\n**Slip Through Shadow:** Move up to 2 squares through connected dimly lit or dark squares without provoking. Normal terrain and occupancy rules apply. Does not grant Hidden or allow passage through solid objects.\n\n**Defend:** Gain 1 Boon to defenses until the controller’s next turn; repeated Defend does not stack.\n\n**Basic Melee — Main:** Brawn 1 Boon; one adjacent target; Weak attack 2, Standard 3, Strong 5 physical damage. No specialty riders.\n\n[DA creature card](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/creatures/wraith.md) · [Summon rules](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/rules/summoning.md)\n\n\n[Source profile](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/summons/wraith.md)"
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "summon-wraith",
+      "source": {
+        "path": "design/bestiary/summons/wraith.md",
+        "sha256": "a4adfb720b658f23e25940cf844ef6bca003c5755b5ed62aa80dc6351382b239"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "creatureId": "creature-wraith",
+      "references": {
+        "creature": {
+          "kind": "creature-reference",
+          "id": "creature-wraith",
+          "path": "design/bestiary/creatures/wraith.md",
+          "sha256": "e414af4eddeb48d632528df43c4603c10dc0f996e985f80e2e7b281516721ac6"
+        },
+        "summonRules": {
+          "kind": "rules-reference",
+          "id": "summoning-rules",
+          "path": "design/rules/summoning.md",
+          "sha256": "2a97418d46d2ae018297ff27ffe0898fd8e649fdc09fd42cb92b23ebda9244db"
+        },
+        "summoning": {
+          "kind": "summon-profile",
+          "id": "summon-wraith"
+        }
+      },
+      "automation": "pending",
+      "automationLabel": "Summon reference · command, spawn and tether automation pending",
+      "lifecycleAutomation": "pending"
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  }
+}

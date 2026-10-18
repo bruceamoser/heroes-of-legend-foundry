@@ -1,0 +1,157 @@
+{
+  "_key": "!actors!e667f4405ef5ac59",
+  "_id": "e667f4405ef5ac59",
+  "name": "Skeleton Archer",
+  "type": "summon",
+  "img": "icons/svg/mystery-man.svg",
+  "prototypeToken": {
+    "name": "Skeleton Archer",
+    "actorLink": false,
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg"
+    }
+  },
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 0
+      },
+      "fortitude": {
+        "base": 0
+      },
+      "agility": {
+        "base": 1
+      },
+      "guile": {
+        "base": -2
+      },
+      "knowledge": {
+        "base": -2
+      },
+      "reason": {
+        "base": 0
+      }
+    },
+    "health": {
+      "value": 8,
+      "baseMax": 8
+    },
+    "cv": 6,
+    "eligibility": "Undead 1",
+    "speed": 5,
+    "speedSource": "Ground 5",
+    "alternateSpeeds": [],
+    "footprint": {
+      "width": 1,
+      "height": 1
+    },
+    "defenseModifier": {
+      "boons": 0,
+      "banes": 0,
+      "sourceText": "None"
+    },
+    "stability": 0,
+    "stabilitySource": "0",
+    "resistances": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "immunities": [
+      "Bleeding",
+      "Poisoned",
+      "Asleep"
+    ],
+    "senses": "Dark sight 6 squares.",
+    "communication": "None",
+    "basicMelee": {
+      "orientation": "attacker",
+      "attribute": "brawn",
+      "attackModifier": {
+        "boons": 0,
+        "banes": 0,
+        "sourceText": "None"
+      },
+      "weak": 1,
+      "standard": 2,
+      "strong": 4
+    },
+    "attacks": [
+      {
+        "name": "Dusty arrow",
+        "attribute": "agility",
+        "orientation": "attacker",
+        "attackModifier": {
+          "boons": 0,
+          "banes": 0,
+          "sourceText": "None"
+        },
+        "weak": "2 physical damage.",
+        "standard": "3 physical damage.",
+        "strong": "5 physical damage."
+      }
+    ],
+    "commandSource": "Main command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use controller’s turn. Beyond 6 squares, or controller unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot.",
+    "healingSource": "Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body. Healing-harmed: ordinary healing resolves as Life damage instead; no beneficial riders.",
+    "restrictions": {
+      "canReceiveHealing": false,
+      "reactions": false,
+      "opportunityAttacks": false,
+      "independentTurns": false,
+      "turnAnchor": "controller",
+      "maximumCommandsPerTurn": 1,
+      "tetherSquares": 6,
+      "disappearsAtHp": 0,
+      "permanentLoot": false
+    },
+    "sourceMarkdown": "# Skeleton Archer (CV 6)\n\n*A dry skeleton equipped with a maintained bow and a small bundle of arrows. Its stillness is absolute until an intruder crosses the lane it was ordered to watch.*\n\n**HP:** 8 · **Speed:** Ground 5 · **Footprint:** 1x1\n\n**Summoned form — player reference.**\n\n**Defense modifier:** None. · **Stability:** 0.\n\n**DR / resistance:** None · **Condition immunities:** Bleeding; Poisoned; Asleep\n\n**Weakness:** None\n\n**Healing:** Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body. Healing-harmed: ordinary healing resolves as Life damage instead; no beneficial riders.\n\n**Against offensive healing:** controller defends with Fortitude if this is player-controlled; a player attacking it still rolls only their attack.\n\n\n**Senses:** Dark sight 6 squares.\n\n**Communication:** None\n\n**Attributes:** Brawn +0; Fortitude +0; Agility +1; Guile -2; Knowledge -2; Reason +0\n\n**Eligibility:** Undead 1\n\nMain command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use controller’s turn. Beyond 6 squares, or controller unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot.\n\n**Carrying:** up to 1 Bulk; anatomy limits handling. No granted crafting training.\n\nRoll its printed attack attribute and read the attacker outcomes below. When it is attacked, roll the defense attribute named by the incoming attack. Passive defenses remain; no independent active effects.\n\n**Lifeless Body — Passive:** does not breathe or eat; only listed immunities apply.\n\n## Attacks — Main Action\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Dusty arrow | Agility | None | 2 physical damage. | 3 physical damage. | 5 physical damage. |\n\n\n**Dusty arrow:** One visible creature within 8 squares. Ammunition inventory d6; after each use, roll it. On 1, reduce d6 to d4, or d4 to empty. Cannot use this attack while empty. Summoned ammunition disappears with the summon.\n\n**Defend — Maneuver:** gain 1 Boon to defenses until the start of the controller’s next turn; repeated Defend does not stack.\n\n**Basic Melee — Main:** None to attack; Brawn, one adjacent target; Weak attack 1, Standard 2, Strong 4 physical damage. No specialty riders. No opportunity Reaction.\n\n[DA creature card](../creatures/bone-archer.md) · [Summon rules](../../rules/summoning.md)\n",
+    "referenceMarkdown": "# Skeleton Archer (CV 6)\n\n*A dry skeleton equipped with a maintained bow and a small bundle of arrows. Its stillness is absolute until an intruder crosses the lane it was ordered to watch.*\n\n**HP:** 8 · **Speed:** Ground 5 · **Footprint:** 1x1\n\n**Summoned form — player reference.**\n\n**Defense modifier:** None. · **Stability:** 0.\n\n**DR / resistance:** None · **Condition immunities:** Bleeding; Poisoned; Asleep\n\n**Weakness:** None\n\n**Healing:** Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body. Healing-harmed: ordinary healing resolves as Life damage instead; no beneficial riders.\n\n**Against offensive healing:** controller defends with Fortitude if this is player-controlled; a player attacking it still rolls only their attack.\n\n\n**Senses:** Dark sight 6 squares.\n\n**Communication:** None\n\n**Attributes:** Brawn +0; Fortitude +0; Agility +1; Guile -2; Knowledge -2; Reason +0\n\n**Eligibility:** Undead 1\n\nMain command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use controller’s turn. Beyond 6 squares, or controller unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot.\n\n**Carrying:** up to 1 Bulk; anatomy limits handling. No granted crafting training.\n\nRoll its printed attack attribute and read the attacker outcomes below. When it is attacked, roll the defense attribute named by the incoming attack. Passive defenses remain; no independent active effects.\n\n**Lifeless Body — Passive:** does not breathe or eat; only listed immunities apply.\n\n## Attacks — Main Action\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Dusty arrow | Agility | None | 2 physical damage. | 3 physical damage. | 5 physical damage. |\n\n\n**Dusty arrow:** One visible creature within 8 squares. Ammunition inventory d6; after each use, roll it. On 1, reduce d6 to d4, or d4 to empty. Cannot use this attack while empty. Summoned ammunition disappears with the summon.\n\n**Defend — Maneuver:** gain 1 Boon to defenses until the start of the controller’s next turn; repeated Defend does not stack.\n\n**Basic Melee — Main:** None to attack; Brawn, one adjacent target; Weak attack 1, Standard 2, Strong 4 physical damage. No specialty riders. No opportunity Reaction.\n\n[DA creature card](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/creatures/bone-archer.md) · [Summon rules](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/rules/summoning.md)\n\n\n[Source profile](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/summons/bone-archer.md)"
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "summon-bone-archer",
+      "source": {
+        "path": "design/bestiary/summons/bone-archer.md",
+        "sha256": "c4b2b28daa9308ff27e1b382a666caa247ea71bac1d9ffe38dbb0fd10e897100"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "creatureId": "creature-bone-archer",
+      "references": {
+        "creature": {
+          "kind": "creature-reference",
+          "id": "creature-bone-archer",
+          "path": "design/bestiary/creatures/bone-archer.md",
+          "sha256": "da92b9e9546b1cf7c5d499feff0dbb764ee5c954e5d8e9d7922b3b8723e5c3b9"
+        },
+        "summonRules": {
+          "kind": "rules-reference",
+          "id": "summoning-rules",
+          "path": "design/rules/summoning.md",
+          "sha256": "2a97418d46d2ae018297ff27ffe0898fd8e649fdc09fd42cb92b23ebda9244db"
+        },
+        "summoning": {
+          "kind": "summon-profile",
+          "id": "summon-bone-archer"
+        }
+      },
+      "automation": "pending",
+      "automationLabel": "Summon reference · command, spawn and tether automation pending",
+      "lifecycleAutomation": "pending"
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  }
+}

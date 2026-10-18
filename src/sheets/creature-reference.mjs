@@ -21,7 +21,7 @@ const HTML_ESCAPES = Object.freeze({
 const SOURCE_LINK_PATH =
   /^\/bruceamoser\/heroes-of-legend\/blob\/[a-f0-9]{40}\//;
 const TABLE_DELIMITER_CELL = /^:?-{3,}:?$/;
-const AUTHORED_HEADING = /^(#{2,6})[ \t]+(.+?)[ \t]*$/;
+const AUTHORED_HEADING = /^(#{1,6})[ \t]+(.+?)[ \t]*$/;
 const BACKSLASH_ESCAPABLE = new Set("\\*[]()`|".split(""));
 
 // Escape source text before generating the small authored subset TextEditor can enrich.
@@ -209,7 +209,7 @@ function renderTable({ header, rows }) {
   }</table>`;
 }
 
-function renderMarkdown(markdown) {
+export function renderMarkdown(markdown) {
   if (typeof markdown !== "string" || !markdown.trim()) return "";
   const lines = markdown.replace(/\r\n?/g, "\n").split("\n");
   const html = [];

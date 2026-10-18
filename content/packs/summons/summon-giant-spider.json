@@ -1,0 +1,171 @@
+{
+  "_key": "!actors!8cf398a71e83111f",
+  "_id": "8cf398a71e83111f",
+  "name": "Giant Spider",
+  "type": "summon",
+  "img": "icons/svg/mystery-man.svg",
+  "prototypeToken": {
+    "name": "Giant Spider",
+    "actorLink": false,
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg"
+    }
+  },
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 1
+      },
+      "fortitude": {
+        "base": 1
+      },
+      "agility": {
+        "base": 2
+      },
+      "guile": {
+        "base": 0
+      },
+      "knowledge": {
+        "base": -2
+      },
+      "reason": {
+        "base": 1
+      }
+    },
+    "health": {
+      "value": 16,
+      "baseMax": 16
+    },
+    "cv": 15,
+    "eligibility": "Animal 3",
+    "speed": 6,
+    "speedSource": "Ground 6; climb 6",
+    "alternateSpeeds": [
+      {
+        "mode": "climb",
+        "value": 6
+      }
+    ],
+    "footprint": {
+      "width": 1,
+      "height": 1
+    },
+    "defenseModifier": {
+      "boons": 1,
+      "banes": 0,
+      "sourceText": "1 Boon"
+    },
+    "stability": 0,
+    "stabilitySource": "0",
+    "resistances": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "immunities": [],
+    "senses": "Ordinary sight and hearing.",
+    "communication": "None",
+    "basicMelee": {
+      "orientation": "attacker",
+      "attribute": "brawn",
+      "attackModifier": {
+        "boons": 0,
+        "banes": 0,
+        "sourceText": "None"
+      },
+      "weak": 2,
+      "standard": 3,
+      "strong": 5
+    },
+    "attacks": [
+      {
+        "name": "Venomous fangs",
+        "attribute": "brawn",
+        "orientation": "attacker",
+        "attackModifier": {
+          "boons": 0,
+          "banes": 0,
+          "sourceText": "None"
+        },
+        "weak": "2 physical damage.",
+        "standard": "4 physical damage. Poisoned 1.",
+        "strong": "6 physical damage. Poisoned 2."
+      },
+      {
+        "name": "Web cast",
+        "attribute": "agility",
+        "orientation": "attacker",
+        "attackModifier": {
+          "boons": 0,
+          "banes": 0,
+          "sourceText": "None"
+        },
+        "weak": "No damage. Slowed 1.",
+        "standard": "No damage. Slowed 2.",
+        "strong": "No damage. Slowed 3."
+      }
+    ],
+    "commandSource": "Main command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use controller’s turn. Beyond 6 squares, or controller unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot.",
+    "healingSource": "Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body.",
+    "restrictions": {
+      "canReceiveHealing": false,
+      "reactions": false,
+      "opportunityAttacks": false,
+      "independentTurns": false,
+      "turnAnchor": "controller",
+      "maximumCommandsPerTurn": 1,
+      "tetherSquares": 6,
+      "disappearsAtHp": 0,
+      "permanentLoot": false
+    },
+    "sourceMarkdown": "# Giant Spider (CV 15)\n\n*A dog-sized hunting spider with a swollen abdomen, hooked feet and pale silk glands beneath its jaws. Its web is both a trap and an extension of its senses.*\n\n**HP:** 16 · **Speed:** Ground 6; climb 6 · **Footprint:** 1x1\n\n**Summoned form — player reference.**\n\n**Defense modifier:** 1 Boon. · **Stability:** 0.\n\n**DR / resistance:** None · **Condition immunities:** None\n\n**Weakness:** None\n\n**Healing:** Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body.\n\n\n**Senses:** Ordinary sight and hearing.\n\n**Communication:** None\n\n**Attributes:** Brawn +1; Fortitude +1; Agility +2; Guile +0; Knowledge -2; Reason +1\n\n**Eligibility:** Animal 3\n\nMain command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use controller’s turn. Beyond 6 squares, or controller unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot.\n\n**Carrying:** up to 1 Bulk; anatomy limits handling. No granted crafting training.\n\nRoll its printed attack attribute and read the attacker outcomes below. When it is attacked, roll the defense attribute named by the incoming attack. Passive defenses remain; no independent active effects.\n\n## Attacks — Main Action\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Venomous fangs | Brawn | None | 2 physical damage. | 4 physical damage. Poisoned 1. | 6 physical damage. Poisoned 2. |\n| Web cast | Agility | None | No damage. Slowed 1. | No damage. Slowed 2. | No damage. Slowed 3. |\n\n\n**Venomous fangs:** One adjacent creature.\n\n**Web cast:** One visible creature within 5 squares. An adjacent helper or the target may spend Main to remove 1 of this Slowed. Fire damage to the target removes all of this web’s Slowed after damage resolves. Otherwise decay normally.\n\n**Defend — Maneuver:** gain 1 Boon to defenses until the start of the controller’s next turn; repeated Defend does not stack.\n\n**Basic Melee — Main:** None to attack; Brawn, one adjacent target; Weak attack 2, Standard 3, Strong 5 physical damage. No specialty riders. No opportunity Reaction.\n\n[DA creature card](../creatures/giant-spider.md) · [Summon rules](../../rules/summoning.md)\n",
+    "referenceMarkdown": "# Giant Spider (CV 15)\n\n*A dog-sized hunting spider with a swollen abdomen, hooked feet and pale silk glands beneath its jaws. Its web is both a trap and an extension of its senses.*\n\n**HP:** 16 · **Speed:** Ground 6; climb 6 · **Footprint:** 1x1\n\n**Summoned form — player reference.**\n\n**Defense modifier:** 1 Boon. · **Stability:** 0.\n\n**DR / resistance:** None · **Condition immunities:** None\n\n**Weakness:** None\n\n**Healing:** Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body.\n\n\n**Senses:** Ordinary sight and hearing.\n\n**Communication:** None\n\n**Attributes:** Brawn +1; Fortitude +1; Agility +2; Guile +0; Knowledge -2; Reason +1\n\n**Eligibility:** Animal 3\n\nMain command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use controller’s turn. Beyond 6 squares, or controller unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot.\n\n**Carrying:** up to 1 Bulk; anatomy limits handling. No granted crafting training.\n\nRoll its printed attack attribute and read the attacker outcomes below. When it is attacked, roll the defense attribute named by the incoming attack. Passive defenses remain; no independent active effects.\n\n## Attacks — Main Action\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Venomous fangs | Brawn | None | 2 physical damage. | 4 physical damage. Poisoned 1. | 6 physical damage. Poisoned 2. |\n| Web cast | Agility | None | No damage. Slowed 1. | No damage. Slowed 2. | No damage. Slowed 3. |\n\n\n**Venomous fangs:** One adjacent creature.\n\n**Web cast:** One visible creature within 5 squares. An adjacent helper or the target may spend Main to remove 1 of this Slowed. Fire damage to the target removes all of this web’s Slowed after damage resolves. Otherwise decay normally.\n\n**Defend — Maneuver:** gain 1 Boon to defenses until the start of the controller’s next turn; repeated Defend does not stack.\n\n**Basic Melee — Main:** None to attack; Brawn, one adjacent target; Weak attack 2, Standard 3, Strong 5 physical damage. No specialty riders. No opportunity Reaction.\n\n[DA creature card](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/creatures/giant-spider.md) · [Summon rules](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/rules/summoning.md)\n\n\n[Source profile](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/summons/giant-spider.md)"
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "summon-giant-spider",
+      "source": {
+        "path": "design/bestiary/summons/giant-spider.md",
+        "sha256": "5ffde9058d9860fcd17bd2c1257f00bfa98b672cf377659cb38c089de12fb217"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "creatureId": "creature-giant-spider",
+      "references": {
+        "creature": {
+          "kind": "creature-reference",
+          "id": "creature-giant-spider",
+          "path": "design/bestiary/creatures/giant-spider.md",
+          "sha256": "14ece687f7575fd2c6d8542e9b776e248304dcf95c0a94f13acd098bf7f50972"
+        },
+        "summonRules": {
+          "kind": "rules-reference",
+          "id": "summoning-rules",
+          "path": "design/rules/summoning.md",
+          "sha256": "2a97418d46d2ae018297ff27ffe0898fd8e649fdc09fd42cb92b23ebda9244db"
+        },
+        "summoning": {
+          "kind": "summon-profile",
+          "id": "summon-giant-spider"
+        }
+      },
+      "automation": "pending",
+      "automationLabel": "Summon reference · command, spawn and tether automation pending",
+      "lifecycleAutomation": "pending"
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  }
+}

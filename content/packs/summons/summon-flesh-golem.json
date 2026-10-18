@@ -1,0 +1,162 @@
+{
+  "_key": "!actors!f2ea7534b63ce98c",
+  "_id": "f2ea7534b63ce98c",
+  "name": "Flesh Golem",
+  "type": "summon",
+  "img": "icons/svg/mystery-man.svg",
+  "prototypeToken": {
+    "name": "Flesh Golem",
+    "actorLink": false,
+    "width": 2,
+    "height": 2,
+    "texture": {
+      "src": "icons/svg/mystery-man.svg"
+    }
+  },
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 2
+      },
+      "fortitude": {
+        "base": 2
+      },
+      "agility": {
+        "base": -1
+      },
+      "guile": {
+        "base": -2
+      },
+      "knowledge": {
+        "base": -2
+      },
+      "reason": {
+        "base": 0
+      }
+    },
+    "health": {
+      "value": 30,
+      "baseMax": 30
+    },
+    "cv": 29,
+    "eligibility": "Construct 7",
+    "speed": 5,
+    "speedSource": "5",
+    "alternateSpeeds": [],
+    "footprint": {
+      "width": 2,
+      "height": 2
+    },
+    "defenseModifier": {
+      "boons": 0,
+      "banes": 0,
+      "sourceText": "None"
+    },
+    "stability": 1,
+    "stabilitySource": "1",
+    "resistances": {
+      "numeric": [
+        {
+          "type": "Physical",
+          "value": 1
+        }
+      ],
+      "special": [],
+      "sourceText": "Physical 1"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "immunities": [
+      "Bleeding",
+      "Poisoned",
+      "Asleep"
+    ],
+    "senses": "Dark sight 6 squares; ordinary hearing.",
+    "communication": "None",
+    "basicMelee": {
+      "orientation": "attacker",
+      "attribute": "brawn",
+      "attackModifier": {
+        "boons": 1,
+        "banes": 0,
+        "sourceText": "1 Boon"
+      },
+      "weak": 2,
+      "standard": 3,
+      "strong": 5
+    },
+    "attacks": [
+      {
+        "name": "Stitched fist",
+        "attribute": "brawn",
+        "orientation": "attacker",
+        "attackModifier": {
+          "boons": 1,
+          "banes": 0,
+          "sourceText": "1 Boon"
+        },
+        "weak": "3 physical damage.",
+        "standard": "6 physical damage. Dazed 1.",
+        "strong": "9 physical damage. Dazed 2."
+      }
+    ],
+    "commandSource": "Main command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use the controller’s turn. Beyond 6 squares, or if the controller is unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot. No summon chains.",
+    "healingSource": "Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body.",
+    "restrictions": {
+      "canReceiveHealing": false,
+      "reactions": false,
+      "opportunityAttacks": false,
+      "independentTurns": false,
+      "turnAnchor": "controller",
+      "maximumCommandsPerTurn": 1,
+      "tetherSquares": 6,
+      "disappearsAtHp": 0,
+      "permanentLoot": false
+    },
+    "sourceMarkdown": "# Flesh Golem (CV 29)\n\n*A body assembled from mismatched remains moves with the caution of someone learning where its hands end.*\n\n**Attributes:** Brawn +2; Fortitude +2; Agility -1; Guile -2; Knowledge -2; Reason +0\n\n**HP:** 30 · **Speed:** 5 · **Footprint:** 2x2\n\n**Summoned form — player reference.**\n\n**Defense modifier:** None. · **Stability:** 1.\n\n**DR / resistance:** Physical 1 · **Condition immunities:** Bleeding; Poisoned; Asleep\n\n**Weakness:** None\n\n**Healing:** Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body.\n\n**Senses:** Dark sight 6 squares; ordinary hearing.\n\n**Communication:** None\n\n**Eligibility:** Construct 7\n\nMain command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use the controller’s turn. Beyond 6 squares, or if the controller is unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot. No summon chains.\n\n**Carrying:** At most 1 Bulk; anatomy limits handling. No crafting training.\n\n**Lifeless Body — Passive:** Does not breathe or eat; only its listed immunities apply.\n\n**Heavy Frame — Passive:** Stability 1; an explicit trait, not a bonus calculated from Size.\n\n## Attacks — Main Action\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Stitched fist | Brawn | 1 Boon | 3 physical damage. | 6 physical damage. Dazed 1. | 9 physical damage. Dazed 2. |\n\n**Stitched fist:** One adjacent creature.\n\n## Maneuvers\n\n**Plant the Weight:** While standing on solid ground, gain Stability 3 until its next turn. Use the highest source only, never add sources.\n\n**Defend:** Gain 1 Boon to defenses until the controller’s next turn; repeated Defend does not stack.\n\n**Basic Melee — Main:** Brawn 1 Boon; one adjacent target; Weak attack 2, Standard 3, Strong 5 physical damage. No specialty riders.\n\n[DA creature card](../creatures/flesh-golem.md) · [Summon rules](../../rules/summoning.md)\n",
+    "referenceMarkdown": "# Flesh Golem (CV 29)\n\n*A body assembled from mismatched remains moves with the caution of someone learning where its hands end.*\n\n**Attributes:** Brawn +2; Fortitude +2; Agility -1; Guile -2; Knowledge -2; Reason +0\n\n**HP:** 30 · **Speed:** 5 · **Footprint:** 2x2\n\n**Summoned form — player reference.**\n\n**Defense modifier:** None. · **Stability:** 1.\n\n**DR / resistance:** Physical 1 · **Condition immunities:** Bleeding; Poisoned; Asleep\n\n**Weakness:** None\n\n**Healing:** Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body.\n\n**Senses:** Dark sight 6 squares; ordinary hearing.\n\n**Communication:** None\n\n**Eligibility:** Construct 7\n\nMain command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use the controller’s turn. Beyond 6 squares, or if the controller is unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot. No summon chains.\n\n**Carrying:** At most 1 Bulk; anatomy limits handling. No crafting training.\n\n**Lifeless Body — Passive:** Does not breathe or eat; only its listed immunities apply.\n\n**Heavy Frame — Passive:** Stability 1; an explicit trait, not a bonus calculated from Size.\n\n## Attacks — Main Action\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Stitched fist | Brawn | 1 Boon | 3 physical damage. | 6 physical damage. Dazed 1. | 9 physical damage. Dazed 2. |\n\n**Stitched fist:** One adjacent creature.\n\n## Maneuvers\n\n**Plant the Weight:** While standing on solid ground, gain Stability 3 until its next turn. Use the highest source only, never add sources.\n\n**Defend:** Gain 1 Boon to defenses until the controller’s next turn; repeated Defend does not stack.\n\n**Basic Melee — Main:** Brawn 1 Boon; one adjacent target; Weak attack 2, Standard 3, Strong 5 physical damage. No specialty riders.\n\n[DA creature card](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/creatures/flesh-golem.md) · [Summon rules](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/rules/summoning.md)\n\n\n[Source profile](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/summons/flesh-golem.md)"
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "summon-flesh-golem",
+      "source": {
+        "path": "design/bestiary/summons/flesh-golem.md",
+        "sha256": "4843ee2c234838e1ababb468f5654c1a9c1badce694f408e9de370455d9620c2"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "creatureId": "creature-flesh-golem",
+      "references": {
+        "creature": {
+          "kind": "creature-reference",
+          "id": "creature-flesh-golem",
+          "path": "design/bestiary/creatures/flesh-golem.md",
+          "sha256": "d98bc76ebc43edafc3c31626162c5dc17618623bd3217fa7743fc60180b7beb9"
+        },
+        "summonRules": {
+          "kind": "rules-reference",
+          "id": "summoning-rules",
+          "path": "design/rules/summoning.md",
+          "sha256": "2a97418d46d2ae018297ff27ffe0898fd8e649fdc09fd42cb92b23ebda9244db"
+        },
+        "summoning": {
+          "kind": "summon-profile",
+          "id": "summon-flesh-golem"
+        }
+      },
+      "automation": "pending",
+      "automationLabel": "Summon reference · command, spawn and tether automation pending",
+      "lifecycleAutomation": "pending"
+    }
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  }
+}

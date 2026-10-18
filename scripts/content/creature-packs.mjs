@@ -495,6 +495,10 @@ export function creatureActorSource(record, { sourceCommit }) {
     name: record.name,
     type: "creature",
     img: CREATURE_FALLBACK_IMAGE,
+    prototypeToken: structuredClone(record.size.footprint ?? {
+      width: record.size.value,
+      height: record.size.value,
+    }),
     system: actorSystem(record, sourceCommit),
     flags: {
       [SYSTEM_ID]: {
@@ -527,6 +531,7 @@ function authoredCreatureDocument(record, id, sourceCommit) {
     name: actor.name,
     type: actor.type,
     img: actor.img,
+    prototypeToken: actor.prototypeToken,
     system: actor.system,
     items: [],
     effects: [],

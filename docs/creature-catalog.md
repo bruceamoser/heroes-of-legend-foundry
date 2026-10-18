@@ -96,7 +96,8 @@ rendered as escaped text. The specialty coverage label and flags remain
 `pending`; no imported prose supplies a handler. Existing Basic Melee
 declaration/Defend and printed-Armor behavior remain in use.
 
-Creature Actors use Foundry's native fallback portrait. The pack does not copy
+Native prototype Token width and height use the printed footprint in grid squares;
+rectangular footprints retain their source orientation. Creature Actors use Foundry's native fallback portrait. The pack does not copy
 portrait binaries, set a book-local image path, or depend on the artwork pipeline
 tracked separately by #119.
 

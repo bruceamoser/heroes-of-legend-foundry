@@ -195,7 +195,8 @@
 .heroes-of-legend .hol-creature-editor fieldset { padding:14px; }
 .heroes-of-legend .hol-creature-editor[open] summary { margin-bottom:0; }
 @container (max-width:700px) {
- .heroes-of-legend .hol-stat-grid, .heroes-of-legend .hol-outcome-grid, .heroes-of-legend .hol-creature-mitigations { grid-template-columns:1fr; }
+ .heroes-of-legend .hol-stat-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+ .heroes-of-legend .hol-creature-mitigations { grid-template-columns:1fr; }
  .heroes-of-legend .hol-creature-reference .hol-reference-titlebar { align-items:flex-start; flex-direction:column; }
 }
 .heroes-of-legend.hol-creature button[data-action=conditions] { background:var(--hol-forest); color:var(--hol-ivory); border:1px solid var(--hol-gold); }
@@ -246,3 +247,7 @@
 
 .heroes-of-legend .hol-item-reference :is(dt, dd, h2, h3, h4, p, li) { color:var(--hol-ink); text-shadow:none; filter:none; }
 .heroes-of-legend .hol-item-reference code { overflow-wrap:anywhere; }
+
+@container (max-width:420px) {
+ .heroes-of-legend .hol-stat-grid, .heroes-of-legend .hol-outcome-grid { grid-template-columns:1fr; }
+}

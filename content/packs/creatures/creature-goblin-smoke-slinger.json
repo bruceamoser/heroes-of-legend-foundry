@@ -4,6 +4,10 @@
   "name": "Goblin Smoke Slinger",
   "type": "creature",
   "img": "icons/svg/mystery-man.svg",
+  "prototypeToken": {
+    "width": 1,
+    "height": 1
+  },
   "system": {
     "schemaVersion": 1,
     "attributes": {

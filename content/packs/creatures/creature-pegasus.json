@@ -4,6 +4,10 @@
   "name": "Pegasus",
   "type": "creature",
   "img": "icons/svg/mystery-man.svg",
+  "prototypeToken": {
+    "width": 2,
+    "height": 2
+  },
   "system": {
     "schemaVersion": 1,
     "attributes": {

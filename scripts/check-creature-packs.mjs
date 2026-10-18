@@ -57,6 +57,10 @@ function expectedProfile(record) {
       width: record.size.value,
       height: record.size.value,
     },
+    prototypeToken: record.size.footprint ?? {
+      width: record.size.value,
+      height: record.size.value,
+    },
     armor: record.armor.dr,
     armorMarker: record.armor.marker ?? "",
     armorSource: record.armor.sourceText,
@@ -144,6 +148,9 @@ try {
           }
           sourceActors.set(id, source);
           source.validate({ strict: true, fallback: false });
+          if (source.prototypeToken.width !== source.system.footprint.width ||
+              source.prototypeToken.height !== source.system.footprint.height)
+            sourceShapeErrors.push(`- ${id}: native prototype token differs from printed footprint`);
           for (const [section, expectedKeys] of [
             ["numeric", ["type", "value"]],
             ["special", ["reference", "type"]],
@@ -307,6 +314,10 @@ try {
             sizeLabel: actor.system.sizeLabel,
             sizeSource: actor.system.sizeSource,
             footprint: actor.system.footprint,
+            prototypeToken: {
+              width: actor.prototypeToken.width,
+              height: actor.prototypeToken.height,
+            },
             armor: actor.system.armor,
             armorMarker: actor.system.armorMarker,
             armorSource: actor.system.armorSource,

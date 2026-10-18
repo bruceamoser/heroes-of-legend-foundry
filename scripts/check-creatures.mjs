@@ -8,7 +8,9 @@ if (
   process.env.HOL_TEST_ALLOW_WRITES !== "1"
 )
   throw new Error("Use an authorized disposable local world.");
-const browser = await chromium.launch(),
+const browser = await chromium.launch({
+  args: ["--use-angle=swiftshader", "--enable-unsafe-swiftshader"],
+}),
   errors = [];
 let gm, player, f;
 async function join(name) {
@@ -24,7 +26,7 @@ async function join(name) {
   await page.goto(url);
   await selectTestUser(page, name);
   await page.locator("button[name=join]").click();
-  await page.waitForFunction(() => game.ready);
+  await page.waitForFunction(() => game.ready && game.canvas.initialized && !game.canvas.loading);
   return { context, page };
 }
 try {
@@ -41,6 +43,7 @@ try {
     });
     const scene = await Scene.create({
       name: "Creature token test",
+      active: false,
       width: 1000,
       height: 1000,
     });
@@ -141,7 +144,10 @@ try {
   assert.equal(result.hp, 8);
   assert.equal(result.tokenHp, 3);
   assert.equal(result.grit, null);
-  assert.deepEqual(result.profile, { weak: 4, standard: 2, strong: 1 });
+  assert.deepEqual(result.profile, {
+    weak: 4, standard: 2, strong: 1,
+    defenseAttribute: "agility", orientation: "player-defense",
+  });
   player = await join(f.name);
   await player.page.evaluate(
     async (f) => game.actors.get(f.actor).sheet.render({ force: true }),
@@ -197,7 +203,7 @@ try {
     f,
   );
   await gm.page.reload();
-  await gm.page.waitForFunction(() => game.ready);
+  await gm.page.waitForFunction(() => game.ready && game.canvas.initialized && !game.canvas.loading);
   const persisted = await gm.page.evaluate((f) => {
     const a = game.actors.get(f.actor);
     return {

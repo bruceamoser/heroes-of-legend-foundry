@@ -99,6 +99,7 @@ test("all 192 creatures are deterministic native Actor documents with pinned pro
         height: record.size.value,
       },
     );
+    assert.deepEqual(document.prototypeToken, document.system.footprint);
     assert.equal(document.system.armor, record.armor.dr);
     assert.equal(document.system.armorMarker, record.armor.marker ?? "");
     assert.equal(document.system.armorSource, record.armor.sourceText);
@@ -472,4 +473,14 @@ test("creature modifier summaries follow edits instead of stale pinned prose", (
   threat.banes = 0;
   assert.equal(creatureModifierLabel(threat), "None");
   assert.equal(threat.sourceText, "2 Banes");
+});
+
+
+test("native token projection preserves rectangular source footprint orientation", () => {
+  const changed = structuredClone(catalogs);
+  changed.creatures.creatures[0].size.footprint = { width: 1, height: 3 };
+  const projected = buildContentPackArtifacts(changed).documents.creatures.find(
+    d => d.flags[SYSTEM_ID].catalogId === changed.creatures.creatures[0].id,
+  );
+  assert.deepEqual(projected.prototypeToken, { width: 1, height: 3 });
 });

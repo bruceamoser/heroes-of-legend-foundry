@@ -202,15 +202,29 @@ HOL_TEST_URL=http://127.0.0.1:30014 HOL_TEST_ALLOW_WRITES=1 HOL_TEST_ISOLATED_WO
 Integration review rebased the pack pipeline onto the merged compact-art pipeline
 at `bf54200`. Build retains the exact-set artwork validation and byte report,
 then compiles all three native packs through the official CLI. Node 24.22.0
-`npm run check` passes build, validation and all 259 tests, including complete
+`npm run check` passes build, validation and all 260 tests, including complete
 artwork decoding and exact-set rejection cases. Current Evasion
 and Threat summary labels follow edited numeric modifiers while retaining the
-pinned source-stat prose as provenance. Foundry 14.369 native imports and visual
-QA remain unverified and must be recorded before merge.
-Primary verification must specifically confirm V14 nested `ArrayField` model
-cleaning, choice-backed blank/default validation, the core
-`icons/svg/mystery-man.svg` fallback, `keepId` Actor imports, awaited TextEditor
-enrichment and rendered-template DOM behavior in the isolated world.
+pinned source-stat prose as provenance. Native prototype Token dimensions now
+use the printed footprint in grid squares; a synthetic 1x3 projection verifies
+orientation because the current roster contains only square footprints.
+
+Foundry 14.369 / Node 24.22.0 native acceptance passes in the isolated world:
+all 192 source Actors strictly validate and import with retained IDs, exact
+mitigation shapes and native Token footprints; defaults and legal blank markers
+validate; invalid choices fail; Adder/Red Dragon profiles and signed CV survive
+UUID resolution; the enriched read-only sheet escapes hostile HTML/links. The
+creature and NPC attack regressions pass with zero page errors. Their fixtures
+wait for initialized canvas state and use software WebGL; the creature regression
+also checks the newly explicit Basic Melee defense/orientation fields.
+
+`npm run test:creature-pack-visual` dispatches a native DOM compendium drop,
+asserts a strict Red Dragon Actor and 3x3 Token, captures normal and 500px-wide
+sheet references, and verifies cleanup and zero page errors. Reviewed screenshots
+show readable headings/tables, wrapped narrow-screen cells and a compact default
+defense summary. All fixtures delete only their own documents. These results
+cover the current `bf54200` integration baseline; later main integration requires
+its own applicable checks.
 
 ### Guided creation draft
 

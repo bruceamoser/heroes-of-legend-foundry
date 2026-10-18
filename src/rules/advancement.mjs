@@ -1,7 +1,14 @@
 import { purchase } from "./development.mjs";
 import { acquireAbility, craftingPermissions } from "./acquisition.mjs";
 /** Review a draft against the current committed ledger; never mutate the input. */
-export function advancementPreview(current, draft, choices, inventory) {
+export function advancementPreview(
+  current,
+  draft,
+  choices,
+  inventory,
+  languages,
+  { knownLanguages } = {},
+) {
   let state = structuredClone(current);
   const errors = [],
     ledger = [];
@@ -14,6 +21,7 @@ export function advancementPreview(current, draft, choices, inventory) {
       id,
       draft.acquisitions?.[id] ?? {},
       inventory,
+      { languages, knownLanguages },
     );
     if (!outcome.valid)
       errors.push({

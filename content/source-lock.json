@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "repository": "https://github.com/bruceamoser/heroes-of-legend",
-  "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
-  "previousCommit": "9f1663f774164a014edcb879c50fcf02989d791b",
-  "approval": "Current approved two-book v16.1.0 baseline, 2026-10-17; source reconciliation in #72. Distribution licensing remains undecided.",
+  "commit": "64089a1c8961d7faff172f179448a8b6e57827ef",
+  "previousCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+  "approval": "Approved armor and six one-DP abilities, book PRs #1272/#1274 merged 2026-10-18; system reconciliation #168/#169. Distribution licensing remains undecided.",
   "counts": {
     "creatures": 192,
     "monsterAbilities": 93,
@@ -1389,7 +1389,7 @@
     },
     {
       "path": "design/card-conventions.md",
-      "sha256": "c716ec706e05ac02f0c73026a79b36560067fb092c5f3a58730b5d085c8d21e4"
+      "sha256": "68f2b7354bc78eb61eec8c4394004342eb575c0fb4b099257c230941fb9a1c3b"
     },
     {
       "path": "design/cards/a-bough-for-the-fallen.md",
@@ -1460,6 +1460,11 @@
       "path": "design/cards/a-marvel-on-wheels.md",
       "sha256": "027ad0ded624f864cab2b111f9f80cfa7e08ba9471f622d6dc4adc89280670b7",
       "id": "a-marvel-on-wheels"
+    },
+    {
+      "path": "design/cards/a-party-piece.md",
+      "sha256": "9d1aad26ea86b271593bb9e71893fff5413100398a7fbd35133b350f226b84aa",
+      "id": "a-party-piece"
     },
     {
       "path": "design/cards/a-place-at-any-fire.md",
@@ -1560,6 +1565,11 @@
       "path": "design/cards/anatomy-of-an-opening.md",
       "sha256": "0e5996ab2b9c1ad7200015d45f907af64745de8d48e10d8a2b22513df30fa89f",
       "id": "anatomy-of-an-opening"
+    },
+    {
+      "path": "design/cards/another-tongue.md",
+      "sha256": "1a157ac9501b2898a9a334d4e6c5037d9ab3e960dd08b6833fbd9c4a8f4dad38",
+      "id": "another-tongue"
     },
     {
       "path": "design/cards/answer-for-what-you-did.md",
@@ -1750,6 +1760,11 @@
       "path": "design/cards/catch-a-falling-friend.md",
       "sha256": "56e3011b59b414859817b6b9bf21fb3c2e4c7380745e2a435f508a29b4d310cc",
       "id": "catch-a-falling-friend"
+    },
+    {
+      "path": "design/cards/catch-that.md",
+      "sha256": "10305d031c2366ee61193e5fe560514f91bee9dbc42a1a2c179f889d6b8acb51",
+      "id": "catch-that"
     },
     {
       "path": "design/cards/catch-the-spell.md",
@@ -2017,6 +2032,11 @@
       "id": "live-in-the-mask"
     },
     {
+      "path": "design/cards/look-over-here.md",
+      "sha256": "15c51b9ec002817764e7cc9762c94533153ffc037d51062ab016c9f512a82fcd",
+      "id": "look-over-here"
+    },
+    {
       "path": "design/cards/make-something-useful.md",
       "sha256": "74d11c87a883a05ba14c637c1a52fe9aa39844f4548508628d9590a8f5b52731",
       "id": "make-something-useful"
@@ -2030,6 +2050,11 @@
       "path": "design/cards/mercy-in-the-light.md",
       "sha256": "92cda83704d8557f7e91ef6e4b7bb236d46e4883940eda605fae032811b47034",
       "id": "mercy-in-the-light"
+    },
+    {
+      "path": "design/cards/message-by-heart.md",
+      "sha256": "6ce73c543685e83865d637650e226926cc3c4faca68c0dfc1b136ddbf73edf28",
+      "id": "message-by-heart"
     },
     {
       "path": "design/cards/move.md",
@@ -2115,6 +2140,11 @@
       "path": "design/cards/procession-of-the-quiet.md",
       "sha256": "03999ea873b84bc6ad50cc58359ed5de845db3abb001ab693f710129e9eb3c93",
       "id": "procession-of-the-quiet"
+    },
+    {
+      "path": "design/cards/quick-exit.md",
+      "sha256": "de2be8860e513b6680455d204aee3e2b3df265a887cf7f74b28d0c7060caee6f",
+      "id": "quick-exit"
     },
     {
       "path": "design/cards/quiet-latch.md",
@@ -3093,12 +3123,17 @@
     },
     {
       "path": "design/cards/wear-heavy-armor.md",
-      "sha256": "0e894eed3c2e6522f08d5f5cbb133d3d0c2c85c21e6a9b9828ae1c1780da888f",
+      "sha256": "ef2ad8f5e77167bbecab905a9baad19b28ae0ce93d8e8953aa92824a8a48e864",
       "id": "wear-heavy-armor"
     },
     {
+      "path": "design/cards/wear-light-armor.md",
+      "sha256": "31528bc37c4e4e19233b05ae374d5f50f2818a7967da13f178b1d6ae80a028c3",
+      "id": "wear-light-armor"
+    },
+    {
       "path": "design/cards/wear-medium-armor.md",
-      "sha256": "2a042d1c36030ae7c5b2c648e380a7147ac0575e591019c89d264a9c99434ecc",
+      "sha256": "b27ceb2e48c3b53e4c35f02444d093d664af1a90d092e984108027bfef9f641b",
       "id": "wear-medium-armor"
     },
     {
@@ -3143,11 +3178,11 @@
     },
     {
       "path": "design/characters/README.md",
-      "sha256": "8a2ef61dc111e2e577e51ed3d3af357dac51ccefd41373ba482d9e8cb3f1bbde"
+      "sha256": "b0ac84186778d76181b4425f0746dbaa2a896ebdf235af30c8f0a6b1e2bb29c5"
     },
     {
       "path": "design/characters/borin-bridgekeeper.md",
-      "sha256": "64ce8bd9fe11bcc2271732e09e2bbc1b6a824b3ecd1b24db62b7ce43a427f076"
+      "sha256": "551645219e85d2369bd6064ed55f563d527c442e879f586d2c252bc70d973bf3"
     },
     {
       "path": "design/characters/lira-ashbow.md",
@@ -3159,15 +3194,15 @@
     },
     {
       "path": "design/characters/oren-brass.md",
-      "sha256": "6bc3a9570b916218ef6d8150816d4ae898ac1e4216f4910caa04df46a2e045b7"
+      "sha256": "23c3218511f5d15354202afffab61f64be5fcdf525afaa5da465133ab7a95297"
     },
     {
       "path": "design/characters/pip-copperwink.md",
-      "sha256": "6e55bcdef1c33db36c97ad1e916d91241839dcb65342d5fbac40e9dfb5c0e4ad"
+      "sha256": "6d0a1f21edd873baa2a26351a2f899591359444c41bb69caab90119394314928"
     },
     {
       "path": "design/characters/vaelis-emberglass.md",
-      "sha256": "b5585ecd1f072768bc2441f777717a00f1a57de068d47d1e6c783978194ba276"
+      "sha256": "3165959a11d41c82cff98df061d2971fe6afb0ccda6ff780f6ce332d57bc6b8e"
     },
     {
       "path": "design/classes/arcanist.md",
@@ -3279,7 +3314,7 @@
     },
     {
       "path": "design/development.md",
-      "sha256": "7174f8239b0aad8702819c276f6e3e54748647d78a0e16a3ee3f65f0256a884c"
+      "sha256": "59b243a1fdd690c28cba043e38d10a8f43b0e77e636f44f32c873d4b6b4f78fc"
     },
     {
       "path": "design/disciplines/armor.md",
@@ -3465,12 +3500,17 @@
     },
     {
       "path": "design/equipment/ordinary-heavy-armor.md",
-      "sha256": "288b57d9bc293cd2aa2c792b13a02f9a3eaefe6c899bb81979e46c62a1923d6f",
+      "sha256": "b3563ec47aaf8e91bfdfa1cbb637434b82f06700345b883f19eec6f7d49a5447",
       "id": "item-ordinary-heavy-armor"
     },
     {
+      "path": "design/equipment/ordinary-light-armor.md",
+      "sha256": "a26fc198de266b1f568079cea8333c2178bc40dabbf16a28fc8adf4a340af26a",
+      "id": "item-ordinary-light-armor"
+    },
+    {
       "path": "design/equipment/ordinary-medium-armor.md",
-      "sha256": "7050f7573563be9a52f12c746e67b31035782055296cce1d043e37bd860aad65",
+      "sha256": "a1e8320933f4d2a76805fa30546eef9ffef115a1bf410f3ae3af4418bf91525f",
       "id": "item-ordinary-medium-armor"
     },
     {
@@ -3570,7 +3610,7 @@
     },
     {
       "path": "design/market.md",
-      "sha256": "264e09450350f7955a59a6cc4d5e28d68bc3d1dace361eec34281c29662a920e"
+      "sha256": "4a85cc5e9d64eb27dd2ccb52b9cd9c03f4ea815210bc7a56abca6d037f0c5757"
     },
     {
       "path": "design/monster-abilities/README.md",
@@ -4239,7 +4279,7 @@
     },
     {
       "path": "design/origins/culture-walled-communities.md",
-      "sha256": "b7d2143fe55724ffce19ca3ce2604b21bd7b4bca0cd40e23ca67d5554eaf3ce8"
+      "sha256": "7d6ef9ad979c7563c4a478ff0a8682189572d0f54ffe05292d10436c2388df57"
     },
     {
       "path": "design/player-book/decision-log.md",
@@ -4251,7 +4291,7 @@
     },
     {
       "path": "design/player-book/manuscript/02-creation.md",
-      "sha256": "ec2ce921de8626df92071f2af06b1eb4fd11c279278c008ff462d33c6ba0b665"
+      "sha256": "e6eb04f4d70e658d479ddaa90a88ed9843ab9c1a6a50723a3ac1bece14997179"
     },
     {
       "path": "design/player-book/manuscript/05-disciplines.md",
@@ -4271,11 +4311,11 @@
     },
     {
       "path": "design/player-book/manuscript/09-abilities.md",
-      "sha256": "c9dedd620121367a069d98a216c96da061408ad9afcd8bbef8112d5c278dc9ff"
+      "sha256": "7a348363c91de1bd11a62916d1eb61549bf0118a449763262d7cd6bfaf0e8d93"
     },
     {
       "path": "design/player-book/manuscript/10-equipment.md",
-      "sha256": "02509bad245969b886b3d364475414bfc2fcb86c93fe2c352872a9525525bd70"
+      "sha256": "512a61d539d4dd1f10bb74a01343c305ac37f0136af5f5a64147215058204d57"
     },
     {
       "path": "design/player-book/manuscript/11-summons.md",
@@ -4283,7 +4323,7 @@
     },
     {
       "path": "design/player-book/manuscript/14-reference.md",
-      "sha256": "fa3a8fdf875cfb7b4159afeb98cbbffb90d4388ebf120559eb59fe6943c96428"
+      "sha256": "a152a28c026b6895287486aeec84c34f140020b5e1156da8bec1a55e7bb1be74"
     },
     {
       "path": "design/player-book/manuscript/intro-background.md",
@@ -4369,7 +4409,7 @@
     },
     {
       "path": "design/rules/languages.md",
-      "sha256": "9454cc9ef6f6de4d820dafeccb6215be9f6421abec8c3e196067bf218e5f2232"
+      "sha256": "e42c39e51153ba18ac5064718bb968f32876cbd7e82b0d09de0dc48a15c55429"
     },
     {
       "path": "design/rules/recovery.md",

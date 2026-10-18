@@ -19,6 +19,7 @@ const choices = await read("../static/data/choices.json"),
   heroes = await read("../tests/fixtures/reference-heroes.json");
 const playDraft = structuredClone(heroes.characters[0].draft);
 playDraft.play = {
+  memorizedMessage: "The bridge lantern burns until dawn.",
   inventory: {
     added: [
       { id: "item-rope-coil", instanceId: "inventory-rope", quantity: 2 },
@@ -145,12 +146,23 @@ try {
     await service.resolveCreationRequest(message.id);
     return {
       name: actor.name,
+      memorizedMessage: actor.system.memorizedMessage,
       hp: actor.system.health.baseMax,
       receipt: actor.getFlag("heroes-of-legend", "creationReceipt"),
       items: actor.items.size,
     };
   });
   assert.equal(result.name, "Borin Bridgekeeper");
+  assert.equal(result.memorizedMessage, playDraft.play.memorizedMessage);
+  await page.reload();
+  await page.waitForFunction(() => game.ready);
+  assert.equal(
+    await page.evaluate(
+      (id) => game.actors.get(id).system.memorizedMessage,
+      fixture.id,
+    ),
+    playDraft.play.memorizedMessage,
+  );
   assert.equal(result.hp, 25);
   assert.equal(result.receipt.status, "complete");
   assert(result.items > 10);

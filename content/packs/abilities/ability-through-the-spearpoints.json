@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You lower your head and commit to the narrow route through the reaching weapons.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>Self.</dd></div><div><dt>Duration</dt><dd>Only during the movement granted by this card.</dd></div><div><dt>Equipment / acquisition</dt><dd>No item needed unless named above.</dd></div><div><dt>Limits</dt><dd>Repeatable; pay the action and any stated costs each use.</dd></div><div><dt>Type</dt><dd>Skill</dd></div></dl><div class=\"hol-reference-rules\"><p>Move up to 3 squares toward a visible enemy along a legal route. You gain 1 Boon to physical defenses against opportunity attacks triggered by this movement. You still provoke and resolve those attacks. This adds no damage reduction beyond normal resistance.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/cards/through-the-spearpoints.md\" target=\"_blank\" rel=\"noopener\">design/cards/through-the-spearpoints.md</a> at <code>9bc9b4fe3256e68880b92c45facf0f25b98a1ea3</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You lower your head and commit to the narrow route through the reaching weapons.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>Self.</dd></div><div><dt>Duration</dt><dd>Only during the movement granted by this card.</dd></div><div><dt>Equipment / acquisition</dt><dd>No item needed unless named above.</dd></div><div><dt>Limits</dt><dd>Repeatable; pay the action and any stated costs each use.</dd></div><div><dt>Type</dt><dd>Skill</dd></div></dl><div class=\"hol-reference-rules\"><p>Move up to 3 squares toward a visible enemy along a legal route. You gain 1 Boon to physical defenses against opportunity attacks triggered by this movement. You still provoke and resolve those attacks. This adds no damage reduction beyond normal resistance.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/64089a1c8961d7faff172f179448a8b6e57827ef/design/cards/through-the-spearpoints.md\" target=\"_blank\" rel=\"noopener\">design/cards/through-the-spearpoints.md</a> at <code>64089a1c8961d7faff172f179448a8b6e57827ef</code>.</p></section>",
     "activity": {
       "action": "main",
       "rollMode": "none",
@@ -31,7 +31,7 @@
         "path": "design/cards/through-the-spearpoints.md",
         "sha256": "c85225bfdb7274e6749d15b064dfe0a3746d68ee9c0cce3ccdd641554c284bb8"
       },
-      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "sourceCommit": "64089a1c8961d7faff172f179448a8b6e57827ef",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · play automation in progress"

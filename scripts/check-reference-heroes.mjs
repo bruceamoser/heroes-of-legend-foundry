@@ -233,7 +233,19 @@ async function join(name, { canvas = false } = {}) {
 try {
   gm = await join(process.env.HOL_TEST_USER ?? "Gamemaster");
   const fixtureId = randomUUID();
-  fixtureState = await gm.evaluate(() => {
+  fixtureState = await gm.evaluate(async () => {
+    // A pristine disposable world now starts its coordinator automatically.
+    const authority = await import(
+      "/systems/heroes-of-legend/services/authority.mjs"
+    );
+    const currentCoordinator = game.settings.get(
+      "heroes-of-legend",
+      "creationAuthorityClient",
+    );
+    if (!currentCoordinator || currentCoordinator === game.socket.id) {
+      await authority.bindCreationAuthority();
+      await authority.releaseAuthority();
+    }
     if (!String(game.version).startsWith("14.369"))
       throw new Error(
         `Reference hero test requires Foundry 14.369, found ${game.version}`,
@@ -371,6 +383,16 @@ try {
       const { CreationWizard } = await import(
         "/systems/heroes-of-legend/applications/creation.mjs"
       );
+      // Previous commits may asynchronously render a sheet; close every registered
+      // Actor sheet, including instances which are not actor.sheet.
+      for (const app of [...foundry.applications.instances.values()])
+        if (app instanceof foundry.applications.sheets.ActorSheetV2)
+          await app.close();
+      // Joining may open the assigned character sheet above this fixture wizard.
+      await game.user.character?.sheet?.close();
+      await game.actors.get(actorId)?.sheet?.close();
+      // Creation opens the completed hero sheet; close it before the next fixture.
+      await globalThis.holReferenceWizard?.actor?.sheet?.close();
       await globalThis.holReferenceWizard?.close().catch(() => {});
       globalThis.holReferenceWizard = new CreationWizard(
         game.actors.get(actorId),
@@ -390,6 +412,12 @@ try {
       await commit.isEnabled(),
       `${hero.name} Review commit control is disabled`,
     );
+    await owner.evaluate(async () => {
+      for (const app of [...foundry.applications.instances.values()])
+        if (app instanceof foundry.applications.sheets.ActorSheetV2)
+          await app.close();
+      globalThis.holReferenceWizard.bringToFront();
+    });
     await commit.click();
 
     await gm.waitForFunction((actorId) => {

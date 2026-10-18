@@ -48,9 +48,9 @@ function authoredStrings(reference) {
 
 test("all source-locked Items have deterministic namespaced IDs and exact provenance", () => {
   const { abilities, equipment } = artifacts.documents;
-  assert.equal(abilities.length, 350);
-  assert.equal(equipment.length, 43);
-  assert.equal(artifacts.files.size, 394);
+  assert.equal(abilities.length, 357);
+  assert.equal(equipment.length, 44);
+  assert.equal(artifacts.files.size, 402);
   assert.equal(artifacts.index.sourceCommit, catalogs.lock.commit);
   assert.deepEqual(artifacts.index.catalogs, {
     choices: 2,
@@ -59,8 +59,8 @@ test("all source-locked Items have deterministic namespaced IDs and exact proven
   assert.deepEqual(
     artifacts.index.packs.map(({ name, count }) => [name, count]),
     [
-      ["abilities", 350],
-      ["equipment", 43],
+      ["abilities", 357],
+      ["equipment", 44],
     ],
   );
   const allIds = new Set();
@@ -74,8 +74,7 @@ test("all source-locked Items have deterministic namespaced IDs and exact proven
         flags = document.flags[SYSTEM_ID];
       assert.equal(document._key, `!items!${document._id}`);
       assert.equal(document._id, stableFoundryId(record.id));
-      if (kind === "ability")
-        assert.equal(document._id, record.foundryId);
+      if (kind === "ability") assert.equal(document._id, record.foundryId);
       assert.equal(document.type, kind);
       assert.equal(document.name, record.name);
       assert.deepEqual(flags.source, record.source);
@@ -100,14 +99,13 @@ test("all source-locked Items have deterministic namespaced IDs and exact proven
       allIds.add(document._id);
     }
   }
-  assert.equal(allIds.size, 393);
+  assert.equal(allIds.size, 401);
   assert.deepEqual(
     abilities
       .filter(
         (document) =>
           abilityRecords.find(
-            (record) =>
-              record.id === document.flags[SYSTEM_ID].catalogId,
+            (record) => record.id === document.flags[SYSTEM_ID].catalogId,
           ).universal,
       )
       .map((document) => document.flags[SYSTEM_ID].catalogId)
@@ -124,8 +122,7 @@ test("ability HTML preserves every authored reference section as escaped plain t
       (candidate) => candidate.id === "ability-a-bough-for-the-fallen",
     ),
     document = artifacts.documents.abilities.find(
-      (candidate) =>
-        candidate.flags[SYSTEM_ID].catalogId === record.id,
+      (candidate) => candidate.flags[SYSTEM_ID].catalogId === record.id,
     ),
     html = document.system.description;
   for (const text of authoredStrings(record.reference))
@@ -168,8 +165,13 @@ test("automation labels credit only reviewed handlers; prose never supplies a ha
       ])
       .sort(),
     [
+      ["ability-a-party-piece", "a-party-piece-v1"],
       ["ability-basic-melee", "player-basic-melee-v1"],
+      ["ability-catch-that", "catch-that-v1"],
       ["ability-defend", "defend-v1"],
+      ["ability-disengage", "disengage-v1"],
+      ["ability-look-over-here", "look-over-here-v1"],
+      ["ability-quick-exit", "quick-exit-v1"],
       ["ability-shield-block", "shield-block-v1"],
     ],
   );
@@ -211,8 +213,7 @@ test("equipment prototypes default to one unheld, unworn unit and preserve suppl
     assert.equal(document.system.worn, false);
   }
   const ammunition = artifacts.documents.equipment.find(
-    (document) =>
-      document.system.catalogId === "item-ammunition-bundle",
+    (document) => document.system.catalogId === "item-ammunition-bundle",
   );
   assert.equal(ammunition.system.inventoryDie, 8);
   assert(
@@ -288,9 +289,8 @@ test("stable ID generation rejects duplicate identities, hash collisions and cat
   );
   assert.throws(
     () =>
-      validateStableCatalogIds(
-        [{ id: "item-one" }, { id: "item-two" }],
-        (id) => stableFoundryId(id === "item-two" ? "item-one" : id),
+      validateStableCatalogIds([{ id: "item-one" }, { id: "item-two" }], (id) =>
+        stableFoundryId(id === "item-two" ? "item-one" : id),
       ),
     /Stable Foundry ID collision/,
   );
@@ -338,7 +338,7 @@ test("authored pack JSON is complete, deterministic and contains no compiled dat
       withFileTypes: true,
     }),
     files = entries.filter((entry) => entry.isFile());
-  assert.equal(files.length, 659);
+  assert.equal(files.length, 667);
   assert(files.every((entry) => entry.name.endsWith(".json")));
   for (const forbidden of ["CURRENT", "LOCK", "LOG", "MANIFEST-000001"])
     assert(!files.some((entry) => entry.name === forbidden));
@@ -397,8 +397,13 @@ test("manifest declares native content packs and sanitizes Item descriptions", a
 });
 
 test("reviewed actions retain their actual category and avoid an invented outcome roll", () => {
-  for (const [id, category] of [["ability-defend", "maneuver"], ["ability-shield-block", "reaction"]]) {
-    const item = artifacts.documents.abilities.find(i => i.flags[SYSTEM_ID].catalogId === id);
+  for (const [id, category] of [
+    ["ability-defend", "maneuver"],
+    ["ability-shield-block", "reaction"],
+  ]) {
+    const item = artifacts.documents.abilities.find(
+      (i) => i.flags[SYSTEM_ID].catalogId === id,
+    );
     assert.equal(item.system.activity.action, category);
     assert.equal(item.system.activity.rollMode, "none");
   }

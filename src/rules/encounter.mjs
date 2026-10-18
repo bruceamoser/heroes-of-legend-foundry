@@ -84,6 +84,10 @@ export function finishTurn(state) {
   if (!side) throw new Error("Current participant is missing from the roster.");
   if (!next.acted.includes(id)) next.acted.push(id);
   next.current = null;
+  if (next.budgets?.[id]) {
+    delete next.budgets[id].bonusMovement;
+    delete next.budgets[id].disengaged;
+  }
   audit(next, "end", { id });
   next.nextSide = availableSide(next, other(side));
   if (!next.nextSide && next.roster.some((p) => !p.withdrawn)) {

@@ -35,6 +35,17 @@ try {
     const { bindCreationAuthority } = await import(
       "/systems/heroes-of-legend/services/creation.mjs"
     );
+    const authority = await import(
+      "/systems/heroes-of-legend/services/authority.mjs"
+    );
+    const currentCoordinator = game.settings.get(
+      "heroes-of-legend",
+      "creationAuthorityClient",
+    );
+    if (!currentCoordinator || currentCoordinator === game.socket.id) {
+      await authority.bindCreationAuthority();
+      await authority.releaseAuthority();
+    }
     if (game.settings.get("heroes-of-legend", "creationAuthorityClient"))
       throw new Error("Expected unbound authority");
     await bindCreationAuthority();
@@ -59,6 +70,9 @@ try {
             dp: 0,
             classId: "class-intellect",
             ranks: { "discipline-craft": 1, "discipline-scholarship": 1 },
+            languages: [
+              { id: "common", name: "Common", source: "creation-common" },
+            ],
             abilities: [],
             recipes: [],
             purchases: [],
@@ -242,6 +256,50 @@ try {
     })
     .click();
   await player.waitForFunction(() => !advanceWizard.busy);
+  // Exercise the actual native acquisition widgets before the main spending plan.
+  await wizard
+    .getByRole("button", { name: "Add Another Tongue", exact: true })
+    .click();
+  await player.waitForFunction(() => !advanceWizard.busy);
+  const languageSelect = wizard.locator(
+    '[name="languageId-ability-another-tongue"]',
+  );
+  assert(await languageSelect.isVisible());
+  assert(
+    await languageSelect
+      .locator('option[value="common"]')
+      .evaluate((option) => option.disabled),
+  );
+  assert(
+    await languageSelect
+      .locator('option[value="draconic"]')
+      .evaluate((option) => option.disabled),
+  );
+  await languageSelect.selectOption("goblin");
+  await wizard
+    .getByRole("button", { name: "Add A Party Piece", exact: true })
+    .click();
+  await player.waitForFunction(() => !advanceWizard.busy);
+  const specialty = wizard.locator('[name="specialty-ability-a-party-piece"]');
+  assert(await specialty.isVisible());
+  await specialty.fill("juggling");
+  await wizard.getByRole("button", { name: "Save draft", exact: true }).click();
+  await player.waitForFunction(() => !advanceWizard.busy);
+  const acquisitionChoices = await player.evaluate(
+    () => advanceWizard.draft.acquisitions,
+  );
+  assert.equal(
+    acquisitionChoices["ability-another-tongue"].languageId,
+    "goblin",
+  );
+  assert.equal(
+    acquisitionChoices["ability-a-party-piece"].specialty,
+    "juggling",
+  );
+  await player.evaluate(async () => {
+    advanceWizard.draft = { purchases: [], signatures: {}, acquisitions: {} };
+    await advanceWizard.render({ force: true });
+  });
   await wizard
     .getByRole("button", { name: "Add Conditioned Body", exact: true })
     .click();

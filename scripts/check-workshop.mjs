@@ -148,21 +148,19 @@ try {
   // Equipment changes update play statistics, while grants and dice remain visible.
   const armorRow = page
     .locator(".inventory-table tr")
-    .filter({ hasText: "Ordinary Medium Armor" });
-  assert.match(await armorRow.innerText(), /Wear Medium Armor/);
+    .filter({ hasText: "Ordinary Light Armor" });
+  assert.match(await armorRow.innerText(), /Wear Light Armor/);
   assert.match(await page.locator(".inventory-table").innerText(), /d8/);
-  await page.getByLabel("Wear Ordinary Medium Armor", { exact: true }).check();
+  await page.getByLabel("Wear Ordinary Light Armor", { exact: true }).check();
   assert.equal(
     await page
       .locator(".vital")
       .filter({ hasText: "Armor DR" })
       .locator("strong")
       .innerText(),
-    "2",
+    "1",
   );
-  await page
-    .getByLabel("Wear Ordinary Medium Armor", { exact: true })
-    .uncheck();
+  await page.getByLabel("Wear Ordinary Light Armor", { exact: true }).uncheck();
   assert.equal(
     await page
       .locator(".vital")
@@ -172,10 +170,10 @@ try {
     "0",
   );
   await page
-    .getByLabel("Carry Ordinary Medium Armor", { exact: true })
+    .getByLabel("Carry Ordinary Light Armor", { exact: true })
     .uncheck();
   assert.match(await page.locator(".inventory-stats").innerText(), /10 \/ 13/);
-  await page.getByLabel("Carry Ordinary Medium Armor", { exact: true }).check();
+  await page.getByLabel("Carry Ordinary Light Armor", { exact: true }).check();
   await page.getByRole("tab", { name: "Main", exact: true }).click();
   await page.getByRole("button", { name: "✎ Edit", exact: true }).click();
   await page.getByLabel("Show Basic Melee", { exact: true }).uncheck();
@@ -292,7 +290,7 @@ try {
   await page.getByRole("button", { name: "7 Equipment", exact: true }).click();
   assert.match(
     await page.locator(".inventory-table").innerText(),
-    /Ordinary Medium Armor/,
+    /Ordinary Light Armor/,
   );
 
   // Remove a purchased shield directly from its row, preserving the granted shield.
@@ -409,12 +407,10 @@ try {
     "2",
   );
   await page
-    .getByRole("button", { name: "Delete Ordinary Medium Armor", exact: true })
+    .getByRole("button", { name: "Delete Ordinary Light Armor", exact: true })
     .click();
   assert.equal(
-    await page
-      .getByLabel("Wear Ordinary Medium Armor", { exact: true })
-      .count(),
+    await page.getByLabel("Wear Ordinary Light Armor", { exact: true }).count(),
     0,
   );
   await page.getByRole("tab", { name: "Character", exact: true }).click();
@@ -468,9 +464,7 @@ try {
   );
   await page.getByRole("tab", { name: "Inventory", exact: true }).click();
   assert.equal(
-    await page
-      .getByLabel("Wear Ordinary Medium Armor", { exact: true })
-      .count(),
+    await page.getByLabel("Wear Ordinary Light Armor", { exact: true }).count(),
     0,
   );
   assert(
@@ -963,6 +957,135 @@ try {
     .locator('[data-action="class"][data-id="class-protector"]')
     .click();
   assert.match(await page.locator(".hero-header").innerText(), /Protector/);
+  // Buy the new shared options through the real learning UI and retain their choices.
+  const utility = structuredClone(exported);
+  utility.draft.purchases = { 0: [], 1: [] };
+  delete utility.draft.progression;
+  delete utility.draft.play;
+  await page.locator("#import-file").setInputFiles({
+    name: "utility.json",
+    mimeType: "application/json",
+    buffer: Buffer.from(JSON.stringify(utility)),
+  });
+  await page
+    .getByRole("button", { name: "4 Early learning", exact: true })
+    .click();
+  const initialDp = Number(
+    (await page.locator("[data-dp-remaining]").innerText()).split(" ")[0],
+  );
+  for (const [id, name] of [
+    ["another-tongue", "Another Tongue"],
+    ["a-party-piece", "A Party Piece"],
+    ["message-by-heart", "Message by Heart"],
+    ["catch-that", "Catch That!"],
+    ["quick-exit", "Quick Exit"],
+    ["look-over-here", "Look Over Here!"],
+  ]) {
+    await page.getByLabel("Search abilities", { exact: true }).fill(name);
+    const learn = page.locator(
+      `[data-action="purchase"][data-id="ability-${id}"]`,
+    );
+    assert.equal(await learn.innerText(), "1 DP · Learn");
+    await learn.click();
+    assert(await learn.isDisabled());
+    if (id === "another-tongue")
+      await page.getByLabel("Language", { exact: true }).selectOption("goblin");
+    if (id === "a-party-piece") {
+      await page
+        .getByLabel("Performance specialty", { exact: true })
+        .fill("juggling");
+      await page
+        .getByLabel("Performance specialty", { exact: true })
+        .press("Tab");
+    }
+  }
+  assert.equal(
+    await page.locator("[data-dp-remaining]").innerText(),
+    `${initialDp - 6} DP remaining`,
+  );
+  await page.getByLabel("Search abilities", { exact: true }).fill("");
+  await page.screenshot({ path: `${output}/one-dp-learning.png` });
+  await page.getByRole("button", { name: "8 Review", exact: true }).click();
+  await page
+    .getByRole("button", { name: "View character sheet", exact: true })
+    .click();
+  await page.getByRole("tab", { name: "Character", exact: true }).click();
+  assert.match(await page.locator(".language-table").innerText(), /Goblin/);
+  await page.getByRole("tab", { name: "Abilities", exact: true }).click();
+  await page
+    .locator(
+      '#results [data-action="reference"][data-id="ability-a-party-piece"]',
+    )
+    .click();
+  assert.match(
+    await page.getByRole("dialog").innerText(),
+    /Your specialty: juggling/,
+  );
+  await page.keyboard.press("Escape");
+  await page
+    .locator(
+      '#results [data-action="reference"][data-id="ability-message-by-heart"]',
+    )
+    .click();
+  await page
+    .getByLabel("Memorized message", { exact: true })
+    .fill("Meet by the old bridge at dawn.");
+  await page.getByRole("button", { name: "Save message", exact: true }).click();
+  await page.reload();
+  await page
+    .locator(
+      '#results [data-action="reference"][data-id="ability-message-by-heart"]',
+    )
+    .click();
+  assert.equal(
+    await page.getByLabel("Memorized message", { exact: true }).inputValue(),
+    "Meet by the old bridge at dawn.",
+  );
+  await page.screenshot({ path: `${output}/memorized-message.png` });
+  await page.keyboard.press("Escape");
+  const savedUtility = await page.evaluate(
+    () => JSON.parse(localStorage.getItem("hol.workshop.v1")).character,
+  );
+  assert.equal(
+    savedUtility.draft.acquisitions["ability-another-tongue"].languageId,
+    "goblin",
+  );
+  assert.equal(
+    savedUtility.draft.acquisitions["ability-a-party-piece"].specialty,
+    "juggling",
+  );
+  assert.equal(
+    savedUtility.draft.play.memorizedMessage,
+    "Meet by the old bridge at dawn.",
+  );
+  // A previous-edition autosave is backed up and opened explicitly for review.
+  const legacy = structuredClone(exported);
+  legacy.sourceCommit = "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3";
+  await page.evaluate(
+    (character) =>
+      localStorage.setItem(
+        "hol.workshop.v1",
+        JSON.stringify({ character, mode: "sheet", tab: "Main" }),
+      ),
+    legacy,
+  );
+  await page.reload();
+  await page.getByRole("heading", { name: "Review", exact: true }).waitFor();
+  const backups = await page.evaluate(() =>
+    JSON.parse(localStorage.getItem("hol.workshop.library.v1")),
+  );
+  assert(
+    backups.some(
+      (entry) =>
+        entry.character.sourceCommit === legacy.sourceCommit &&
+        entry.name.includes("before rules update"),
+    ),
+  );
+  const revised = await page.evaluate(
+    () => JSON.parse(localStorage.getItem("hol.workshop.v1")).character,
+  );
+  assert.notEqual(revised.sourceCommit, legacy.sourceCommit);
+  assert.deepEqual(revised.draft.purchases, legacy.draft.purchases);
   assert.deepEqual(failures, []);
   console.info(
     "Workshop passed: fixed scrolling, live attributes, grants, armor/Bulk/supply, grouped actions, crafting rolls, level replay, independent/revisitable signatures, play inventory/languages/conditions, coin override, named saves, schema-3 export/import and 390px layout; no browser errors.",

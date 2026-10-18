@@ -106,6 +106,16 @@ export function readPortableCharacter(input, catalogs, languages) {
   for (const [id, entry] of Object.entries(d.acquisitions)) {
     if (!/^ability-[a-z0-9-]+$/.test(id) || !object(entry)) fail();
     const result = {};
+    for (const key of ["languageId", "specialty"]) {
+      if (entry[key] !== undefined) {
+        if (
+          !string(entry[key]) ||
+          entry[key].length > (key === "specialty" ? 120 : 64)
+        )
+          fail();
+        result[key] = entry[key];
+      }
+    }
     if (entry.weapon !== undefined) {
       if (!string(entry.weapon)) fail();
       result.weapon = entry.weapon;

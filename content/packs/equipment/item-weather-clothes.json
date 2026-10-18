@@ -12,7 +12,7 @@
     "inventoryDie": 0,
     "held": false,
     "worn": false,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Market reference · acquisition and use automation in progress</p><p><strong>Market price:</strong> 10 coins.</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/equipment/weather-clothes.md\" target=\"_blank\" rel=\"noopener\">design/equipment/weather-clothes.md</a> at <code>9bc9b4fe3256e68880b92c45facf0f25b98a1ea3</code>.</p></section>"
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Market reference · acquisition and use automation in progress</p><p><strong>Market price:</strong> 10 coins.</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/64089a1c8961d7faff172f179448a8b6e57827ef/design/equipment/weather-clothes.md\" target=\"_blank\" rel=\"noopener\">design/equipment/weather-clothes.md</a> at <code>64089a1c8961d7faff172f179448a8b6e57827ef</code>.</p></section>"
   },
   "effects": [],
   "folder": null,
@@ -26,7 +26,7 @@
         "path": "design/equipment/weather-clothes.md",
         "sha256": "b3fea16c52c181be45419e9249d3dc845b46e74dba6f8782c94d9a0fe80f8cec"
       },
-      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "sourceCommit": "64089a1c8961d7faff172f179448a8b6e57827ef",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Market reference · acquisition and use automation in progress"

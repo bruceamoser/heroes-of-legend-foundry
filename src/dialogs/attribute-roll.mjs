@@ -1,4 +1,9 @@
-import { referencePickerOptions, readReferenceSelection, bindReferenceSearch, bindReferenceDrops } from "../services/reference-play.mjs";
+import {
+  referencePickerOptions,
+  readReferenceSelection,
+  bindReferenceSearch,
+  bindReferenceDrops,
+} from "../services/reference-play.mjs";
 import {
   situationalRollDraft,
   situationalAdjustmentLabel,
@@ -103,7 +108,15 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
         : [];
     this.pendingResponse = Boolean(this.basis.survival?.pending);
     return {
-      references: referencePickerOptions(this.actor, this.draft, { mode: this.mode, defenderTokenUuid: this.defenderTokenUuid }),
+      partyPiece:
+        this.basis.mode === "attribute" && this.attributeKey === "guile"
+          ? this.basis.partyPiece
+          : null,
+      lookOverHere: this.mode === "defense" && Boolean(this.basis.incoming),
+      references: referencePickerOptions(this.actor, this.draft, {
+        mode: this.mode,
+        defenderTokenUuid: this.defenderTokenUuid,
+      }),
       name: this.actor.name,
       death: this.mode === "death",
       gritAvailable: this.basis.survival?.gritAvailable,
@@ -134,8 +147,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
         index,
         applies: this.draft.woundApplicability[modifier.effectId] === "applies",
         doesNotApply:
-          this.draft.woundApplicability[modifier.effectId] ===
-          "does-not-apply",
+          this.draft.woundApplicability[modifier.effectId] === "does-not-apply",
       })),
     };
   }
@@ -162,9 +174,14 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
     this.draft = {
       ...this.draft,
       adjustment: Number(value("adjustment") ?? 0),
+      partyPiece: checked("partyPiece"),
+      lookOverHere: checked("lookOverHere"),
       referenceItemIds: readReferenceSelection(this.element),
       perception: Object.fromEntries(
-        this.fears.map((source, index) => [source, checked(`fear-${index}`) ? "yes" : "no"]),
+        this.fears.map((source, index) => [
+          source,
+          checked(`fear-${index}`) ? "yes" : "no",
+        ]),
       ),
       woundApplicability: Object.fromEntries(
         this.basis.woundModifiers.map((modifier, index) => [
@@ -193,16 +210,27 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       const button = row.querySelector('[data-action="useAbility"]');
       button.disabled = this.activating || !option.available;
       button.textContent = `${option.available ? "Use " : ""}${option.name}`;
-      row.querySelector(".hol-ability-reason").textContent =
-        [...option.reasons, ...(option.warnings ?? [])].join(" ");
+      row.querySelector(".hol-ability-reason").textContent = [
+        ...option.reasons,
+        ...(option.warnings ?? []),
+      ].join(" ");
       list.append(row);
     }
   }
   syncAdjustment() {
-    const baseline = prepareRoll(this.basis, { ...this.draft, boons: 0, banes: 0 });
-    Object.assign(this.draft, effectiveRollDraft(
-      baseline, this.draft.adjustment, this.draft.adjustmentOverride,
-    ));
+    const baseline = prepareRoll(this.basis, {
+      ...this.draft,
+      boons: 0,
+      banes: 0,
+    });
+    Object.assign(
+      this.draft,
+      effectiveRollDraft(
+        baseline,
+        this.draft.adjustment,
+        this.draft.adjustmentOverride,
+      ),
+    );
   }
   preview() {
     const list = this.element.querySelector(".hol-roll-sources"),
@@ -214,7 +242,8 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       this.refreshDefenseAbilities();
       this.syncAdjustment();
       const adjustmentLabel = situationalAdjustmentLabel(this.draft.adjustment);
-      this.element.querySelector("[data-adjustment-label]").textContent = adjustmentLabel;
+      this.element.querySelector("[data-adjustment-label]").textContent =
+        adjustmentLabel;
       const slider = this.element.querySelector("[name=adjustment]");
       slider.value = this.draft.adjustment;
       slider.setAttribute("aria-valuetext", adjustmentLabel);
@@ -226,9 +255,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       }
       output.textContent = plan.formula;
       detail.textContent = `${plan.boons} Boons · ${plan.banes} Banes · ${plan.canceled} canceled pairs · net extras ${plan.net} (maximum 3)`;
-      button.disabled =
-        this.activating ||
-        this.pendingResponse;
+      button.disabled = this.activating || this.pendingResponse;
     } catch (e) {
       output.textContent = e.message;
       detail.textContent = "";
@@ -237,16 +264,26 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
   }
   async _onRender(context, options) {
     await super._onRender(context, options);
-    this.element.querySelector(".hol-body").addEventListener("input", (event) => {
-      if (event.target.name === "adjustment") this.draft.adjustmentOverride = true;
-      this.readDraft();
-      this.preview();
-    });
+    this.element
+      .querySelector(".hol-body")
+      .addEventListener("input", (event) => {
+        if (event.target.name === "adjustment")
+          this.draft.adjustmentOverride = true;
+        this.readDraft();
+        this.preview();
+      });
     bindReferenceSearch(this.element);
-    bindReferenceDrops(this.element, () => ({ actor: this.actor, options: { mode: this.mode, defenderTokenUuid: this.defenderTokenUuid } }), async () => {
-      this.readDraft();
-      await this.preview();
-    });
+    bindReferenceDrops(
+      this.element,
+      () => ({
+        actor: this.actor,
+        options: { mode: this.mode, defenderTokenUuid: this.defenderTokenUuid },
+      }),
+      async () => {
+        this.readDraft();
+        await this.preview();
+      },
+    );
     this.preview();
   }
   static async changeDefender() {
@@ -305,7 +342,10 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       const status = game.messages
         .get(messageId)
         ?.getFlag("heroes-of-legend", "abilityStatus");
-      if (status && ["complete", "interrupted", "failed"].includes(status.status))
+      if (
+        status &&
+        ["complete", "interrupted", "failed"].includes(status.status)
+      )
         return status;
       const settlement = game.combats.contents
         .map(

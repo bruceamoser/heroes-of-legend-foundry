@@ -10,6 +10,8 @@
     <span class="hol-adjustment-scale" aria-hidden="true"><span>−3 Banes</span><span>0</span><span>+3 Boons</span></span>
   </label>
   {{#if defense}}<p>Rolling this defense spends no Reaction. Any player may roll for this defender.</p>{{/if}}
+  {{#if partyPiece}}<label><input type="checkbox" name="partyPiece" {{#if draft.partyPiece}}checked{{/if}}> A Party Piece · +1 Boon when entertaining through your chosen specialty (<a class="content-link" data-link data-type="Item" data-uuid="{{partyPiece}}">ability</a>)</label>{{/if}}
+  {{#if lookOverHere}}<label><input type="checkbox" name="lookOverHere" {{#if draft.lookOverHere}}checked{{/if}}> Look Over Here! · +1 Boon if an ally spent their Reaction for this defense</label><p class="hol-note">Sight-dependent attack by an enemy adjacent to that ally who can see them. No cover, Hidden or canceled attack.</p>{{/if}}
   {{#if abilities}}<h2>Defense abilities</h2><ul class="hol-defense-abilities">{{#each abilities}}<li data-item-id="{{itemId}}" class="{{#unless available}}hol-unavailable{{/unless}}"><button type="button" data-action="useAbility" data-item-id="{{itemId}}" {{#unless available}}disabled{{/unless}}>{{#if available}}Use {{else}}{{/if}}{{name}}</button><span class="hol-ability-reason">{{reasonText}}</span></li>{{/each}}</ul>{{/if}}
   <p data-reference-drop-status role="status" aria-live="polite"></p>
   {{#if references}}<details class="hol-context-options hol-reference-picker"><summary>Ability references (optional)</summary>

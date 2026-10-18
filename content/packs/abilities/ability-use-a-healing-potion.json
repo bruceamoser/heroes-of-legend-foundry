@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You pull the stopper and swallow the sharp mouthful, feeling warmth return to aching limbs.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>Self or one adjacent willing creature</dd></div><div><dt>Duration</dt><dd>Instant</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Repeatable; pay the action and any stated costs each use.</dd></div><div><dt>Type</dt><dd>Universal</dd></div></dl><div class=\"hol-reference-rules\"><p>Requires a free hand. The giver spends the Maneuver; another recipient spends a Reaction unless at 0 HP. Restore the bottle’s printed fixed HP, apply Life resistance with minimum 1 actual healing where HP is missing, then check inventory. No outcome roll. Potions do not restore the dead or end Last Words.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/cards/use-a-healing-potion.md\" target=\"_blank\" rel=\"noopener\">design/cards/use-a-healing-potion.md</a> at <code>9bc9b4fe3256e68880b92c45facf0f25b98a1ea3</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You pull the stopper and swallow the sharp mouthful, feeling warmth return to aching limbs.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>Self or one adjacent willing creature</dd></div><div><dt>Duration</dt><dd>Instant</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Repeatable; pay the action and any stated costs each use.</dd></div><div><dt>Type</dt><dd>Universal</dd></div></dl><div class=\"hol-reference-rules\"><p>Requires a free hand. The giver spends the Maneuver; another recipient spends a Reaction unless at 0 HP. Restore the bottle’s printed fixed HP, apply Life resistance with minimum 1 actual healing where HP is missing, then check inventory. No outcome roll. Potions do not restore the dead or end Last Words.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/64089a1c8961d7faff172f179448a8b6e57827ef/design/cards/use-a-healing-potion.md\" target=\"_blank\" rel=\"noopener\">design/cards/use-a-healing-potion.md</a> at <code>64089a1c8961d7faff172f179448a8b6e57827ef</code>.</p></section>",
     "activity": {
       "action": "main",
       "rollMode": "none",
@@ -31,7 +31,7 @@
         "path": "design/cards/use-a-healing-potion.md",
         "sha256": "210f6e2c84a51dd31f6b44a534f602e703b137eec38cef08697a63d1fdec82ea"
       },
-      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "sourceCommit": "64089a1c8961d7faff172f179448a8b6e57827ef",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · play automation in progress"

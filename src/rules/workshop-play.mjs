@@ -22,6 +22,14 @@ export function normalizeWorkshopPlay(value, catalogs) {
     languages: { added: [], removed: [] },
     conditions: [],
   };
+  if (value.memorizedMessage !== undefined) {
+    if (
+      !text(value.memorizedMessage, 5000) ||
+      value.memorizedMessage.trim().split(/\s+/).filter(Boolean).length > 50
+    )
+      fail();
+    result.memorizedMessage = value.memorizedMessage;
+  }
   if (value.inventory !== undefined) {
     const inv = value.inventory;
     if (

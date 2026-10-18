@@ -4063,9 +4063,9 @@
   "schemaVersion": 1,
   "source": {
     "access": "git-blob",
-    "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+    "commit": "64089a1c8961d7faff172f179448a8b6e57827ef",
     "lockPath": "content/source-lock.json",
-    "lockSha256": "c97c43660fc61afc422416ffbf05929421d7e939322f681a59de852a7218e55b",
+    "lockSha256": "95aae51ee3015b2bfce1be061a7e691f17a49dbdfa66b5f421e09686545ef26e",
     "repository": "https://github.com/bruceamoser/heroes-of-legend"
   },
   "summary": {

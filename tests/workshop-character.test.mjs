@@ -27,13 +27,13 @@ test("grants, supply dice, armor and carried Bulk remain separate from creation 
   const d = borin(),
     original = workshopCharacter(d, catalogs);
   const armor = original.inventory.items.find(
-    (i) => i.catalogId === "item-ordinary-medium-armor",
+    (i) => i.catalogId === "item-ordinary-light-armor",
   );
-  assert.equal(armor.source, "ability-wear-medium-armor");
+  assert.equal(armor.source, "ability-wear-light-armor");
   assert.equal(original.resistances.physical ?? 0, 0);
   d.loadout = { [armor.instanceId]: { worn: true } };
   const worn = workshopCharacter(d, catalogs);
-  assert.equal(worn.resistances.physical, 2);
+  assert.equal(worn.resistances.physical, 1);
   assert.equal(worn.inventory.bulk, original.inventory.bulk);
   d.loadout[armor.instanceId] = { carried: false, worn: true };
   const stored = workshopCharacter(d, catalogs);
@@ -189,4 +189,74 @@ test("v1 files remain readable; v2 validates persistent choices before restoring
     mutate(invalid.draft);
     assert.throws(() => readPortableCharacter(invalid, catalogs));
   }
+});
+
+test("later language acquisition checks current play languages and retains its original grant once", () => {
+  const draft = borin();
+  draft.play = {
+    languages: {
+      added: [{ id: "goblin", name: "Goblin", form: "spoken", written: true }],
+      removed: [],
+    },
+  };
+  draft.progression = {
+    level: 2,
+    levels: {
+      2: {
+        purchases: [{ id: "ability-another-tongue" }],
+        signatures: {},
+        acquisitions: { "ability-another-tongue": { languageId: "goblin" } },
+      },
+    },
+  };
+  const invalid = workshopCharacter(draft, catalogs);
+  assert.equal(invalid.valid, false);
+  assert(
+    invalid.errors.some(
+      (error) =>
+        error.id === "ability-another-tongue" &&
+        error.reasons?.some((reason) => /already know/.test(reason.text)),
+    ),
+  );
+  assert.equal(
+    invalid.state.languages.some(
+      (language) => language.source === "ability-another-tongue",
+    ),
+    false,
+  );
+  draft.progression.levels[2].acquisitions[
+    "ability-another-tongue"
+  ].languageId = "orc";
+  const acquired = workshopCharacter(draft, catalogs);
+  assert.equal(acquired.valid, true, JSON.stringify(acquired.errors));
+  assert(acquired.play.languages.some((language) => language.id === "goblin"));
+  assert(acquired.play.languages.some((language) => language.id === "orc"));
+  draft.progression.level = 4;
+  const later = workshopCharacter(draft, catalogs);
+  assert.equal(
+    later.state.languages.filter(
+      (language) => language.source === "ability-another-tongue",
+    ).length,
+    1,
+  );
+  assert.equal(
+    later.state.acquisitionReceipts.filter(
+      (receipt) => receipt.abilityId === "ability-another-tongue",
+    ).length,
+    1,
+  );
+  assert.deepEqual(
+    later.creation.summary.languages,
+    acquired.creation.summary.languages,
+  );
+  draft.play.languages.removed = ["orc"];
+  const removed = workshopCharacter(draft, catalogs);
+  assert.equal(
+    removed.state.languages.filter((language) => language.id === "orc").length,
+    1,
+  );
+  assert.equal(
+    removed.play.languages.some((language) => language.id === "orc"),
+    false,
+  );
 });

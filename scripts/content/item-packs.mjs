@@ -26,10 +26,7 @@ export const ITEM_PACK_DEFINITIONS = Object.freeze([
   }),
 ]);
 
-export function stableFoundryId(
-  catalogId,
-  namespace = SYSTEM_ID,
-) {
+export function stableFoundryId(catalogId, namespace = SYSTEM_ID) {
   if (
     typeof catalogId !== "string" ||
     !catalogId ||
@@ -46,10 +43,7 @@ export function stableFoundryId(
   return id;
 }
 
-export function validateStableCatalogIds(
-  records,
-  deriveId = stableFoundryId,
-) {
+export function validateStableCatalogIds(records, deriveId = stableFoundryId) {
   const byCatalog = new Set();
   const byFoundry = new Map();
   return records.map((record) => {
@@ -80,9 +74,7 @@ function lockedSource(lock, record) {
     (candidate) => candidate.path === record.source?.path,
   );
   const lockedId =
-    record.kind === "ability"
-      ? record.id.slice("ability-".length)
-      : record.id;
+    record.kind === "ability" ? record.id.slice("ability-".length) : record.id;
   if (
     !source ||
     source.id !== lockedId ||
@@ -95,10 +87,7 @@ function lockedSource(lock, record) {
 export function validateCatalogBasis({ choices, inventory, lock }) {
   if (lock?.schemaVersion !== 1 || !/^[a-f0-9]{40}$/.test(lock.commit))
     throw new Error("Content source lock is invalid.");
-  if (
-    choices?.schemaVersion !== 2 ||
-    inventory?.schemaVersion !== 1
-  )
+  if (choices?.schemaVersion !== 2 || inventory?.schemaVersion !== 1)
     throw new Error("Unsupported content catalog schema.");
   if (
     choices.sourceCommit !== lock.commit ||
@@ -111,9 +100,9 @@ export function validateCatalogBasis({ choices, inventory, lock }) {
       (record) => record.kind === "ability",
     ),
     equipment = inventory.equipment;
-  if (abilities?.length !== 350 || equipment?.length !== 43)
+  if (abilities?.length !== 357 || equipment?.length !== 44)
     throw new Error(
-      `Expected 350 abilities and 43 equipment records; found ${abilities?.length ?? 0} and ${equipment?.length ?? 0}.`,
+      `Expected 357 abilities and 44 equipment records; found ${abilities?.length ?? 0} and ${equipment?.length ?? 0}.`,
     );
   if (abilities.filter((record) => record.universal).length !== 18)
     throw new Error("Expected 18 universal ability references.");
@@ -141,9 +130,7 @@ export function validateCatalogBasis({ choices, inventory, lock }) {
 }
 
 function canonicalHash(documents) {
-  return createHash("sha256")
-    .update(JSON.stringify(documents))
-    .digest("hex");
+  return createHash("sha256").update(JSON.stringify(documents)).digest("hex");
 }
 
 function serializedDocument(document) {
@@ -156,10 +143,7 @@ export function buildItemPackArtifacts({ choices, inventory, lock }) {
     inventory,
     lock,
   });
-  const identities = validateStableCatalogIds([
-    ...abilities,
-    ...equipment,
-  ]);
+  const identities = validateStableCatalogIds([...abilities, ...equipment]);
   const identityByCatalog = new Map(
     identities.map(({ id, foundryId }) => [id, foundryId]),
   );
@@ -247,8 +231,7 @@ export async function verifyAuthoredItemPacks(root, artifacts) {
   const actual = new Set();
   const itemFiles = new Set(
     [...artifacts.files.keys()].filter(
-      (path) =>
-        path.startsWith("abilities/") || path.startsWith("equipment/"),
+      (path) => path.startsWith("abilities/") || path.startsWith("equipment/"),
     ),
   );
   for (const entry of entries) {

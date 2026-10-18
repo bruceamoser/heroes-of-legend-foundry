@@ -43,6 +43,12 @@ export function workshopCharacter(draft, catalogs, languages) {
       draft.progression?.levels?.[level] ?? emptyLevelDraft(),
       catalogs.choices,
       catalogs.inventory,
+      languages,
+      // Play additions count as known; acquisition receipts and original grants remain historical.
+      {
+        knownLanguages: workshopPlay(draft, [], state.languages ?? [], catalogs)
+          .languages,
+      },
     );
     state = result.state;
     maximumHpDelta += result.maximumHpDelta;
@@ -62,7 +68,7 @@ export function workshopCharacter(draft, catalogs, languages) {
   const play = workshopPlay(
     draft,
     state.items,
-    creation.summary?.languages ?? [],
+    state.languages ?? creation.summary?.languages ?? [],
     catalogs,
   );
   const items = play.inventory.map((item) => {
@@ -138,6 +144,7 @@ export function workshopCharacter(draft, catalogs, languages) {
     summary: creation.summary
       ? {
           ...creation.summary,
+          languages: state.languages ?? creation.summary.languages,
           maximumHp: creation.summary.maximumHp + maximumHpDelta,
           gritGranted: state.gritGranted,
           speed: Math.max(0, creation.summary.unencumberedSpeed - encumbrance),

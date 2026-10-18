@@ -116,3 +116,14 @@ ability is learned. Put known disciplines and ranks above the Abilities search,
 and tighten Inventory and Abilities without removing their play controls or local
 references. Label slider ends Banes (left) and Boons (right), retaining the existing
 negative/positive roll convention. This pass changes the web workshop presentation.
+
+## October 18 approved source update (#168, #169)
+
+Bruce confirmed the book PRs approved/merging. Both #1272 (armor) and #1274 (six
+one-DP abilities) are merged at 64089a1c8961d7faff172f179448a8b6e57827ef. Repin
+all dependent catalogs/references together. Keep six one-DP exceptions explicit,
+ordinary tier pricing unchanged, and Universal actions free. Persist selected
+language/specialty and one memorized message. Use normal action budgets and
+contextual Boons; leave fictional trigger adjudication to the table. Preserve
+existing Actor snapshots and explicitly review old browser saves before adapting
+the armor grant. See the source-update review for compatibility and scope.

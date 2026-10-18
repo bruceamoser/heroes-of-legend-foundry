@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+  "sourceCommit": "64089a1c8961d7faff172f179448a8b6e57827ef",
   "adapters": [
     {
       "id": "ability-a-bough-for-the-fallen",
@@ -127,6 +127,16 @@
       },
       "items": [],
       "recipes": []
+    },
+    {
+      "id": "ability-a-party-piece",
+      "source": {
+        "path": "design/cards/a-party-piece.md",
+        "sha256": "9d1aad26ea86b271593bb9e71893fff5413100398a7fbd35133b350f226b84aa"
+      },
+      "items": [],
+      "recipes": [],
+      "specialtyChoice": true
     },
     {
       "id": "ability-a-place-at-any-fire",
@@ -308,6 +318,16 @@
       "items": [],
       "recipes": [],
       "weaponChoice": ["unarmed", "melee"]
+    },
+    {
+      "id": "ability-another-tongue",
+      "source": {
+        "path": "design/cards/another-tongue.md",
+        "sha256": "1a157ac9501b2898a9a334d4e6c5037d9ab3e960dd08b6833fbd9c4a8f4dad38"
+      },
+      "items": [],
+      "recipes": [],
+      "languageChoice": true
     },
     {
       "id": "ability-answer-for-what-you-did",
@@ -647,6 +667,15 @@
       "source": {
         "path": "design/cards/catch-a-falling-friend.md",
         "sha256": "56e3011b59b414859817b6b9bf21fb3c2e4c7380745e2a435f508a29b4d310cc"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
+      "id": "ability-catch-that",
+      "source": {
+        "path": "design/cards/catch-that.md",
+        "sha256": "10305d031c2366ee61193e5fe560514f91bee9dbc42a1a2c179f889d6b8acb51"
       },
       "items": [],
       "recipes": []
@@ -1130,6 +1159,15 @@
       "recipes": []
     },
     {
+      "id": "ability-look-over-here",
+      "source": {
+        "path": "design/cards/look-over-here.md",
+        "sha256": "15c51b9ec002817764e7cc9762c94533153ffc037d51062ab016c9f512a82fcd"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
       "id": "ability-make-something-useful",
       "source": {
         "path": "design/cards/make-something-useful.md",
@@ -1153,6 +1191,15 @@
       "source": {
         "path": "design/cards/mercy-in-the-light.md",
         "sha256": "92cda83704d8557f7e91ef6e4b7bb236d46e4883940eda605fae032811b47034"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
+      "id": "ability-message-by-heart",
+      "source": {
+        "path": "design/cards/message-by-heart.md",
+        "sha256": "6ce73c543685e83865d637650e226926cc3c4faca68c0dfc1b136ddbf73edf28"
       },
       "items": [],
       "recipes": []
@@ -1306,6 +1353,15 @@
       "source": {
         "path": "design/cards/procession-of-the-quiet.md",
         "sha256": "03999ea873b84bc6ad50cc58359ed5de845db3abb001ab693f710129e9eb3c93"
+      },
+      "items": [],
+      "recipes": []
+    },
+    {
+      "id": "ability-quick-exit",
+      "source": {
+        "path": "design/cards/quick-exit.md",
+        "sha256": "de2be8860e513b6680455d204aee3e2b3df265a887cf7f74b28d0c7060caee6f"
       },
       "items": [],
       "recipes": []
@@ -3071,16 +3127,25 @@
       "id": "ability-wear-heavy-armor",
       "source": {
         "path": "design/cards/wear-heavy-armor.md",
-        "sha256": "0e894eed3c2e6522f08d5f5cbb133d3d0c2c85c21e6a9b9828ae1c1780da888f"
+        "sha256": "ef2ad8f5e77167bbecab905a9baad19b28ae0ce93d8e8953aa92824a8a48e864"
       },
       "items": ["item-ordinary-heavy-armor"],
+      "recipes": []
+    },
+    {
+      "id": "ability-wear-light-armor",
+      "source": {
+        "path": "design/cards/wear-light-armor.md",
+        "sha256": "31528bc37c4e4e19233b05ae374d5f50f2818a7967da13f178b1d6ae80a028c3"
+      },
+      "items": ["item-ordinary-light-armor"],
       "recipes": []
     },
     {
       "id": "ability-wear-medium-armor",
       "source": {
         "path": "design/cards/wear-medium-armor.md",
-        "sha256": "2a042d1c36030ae7c5b2c648e380a7147ac0575e591019c89d264a9c99434ecc"
+        "sha256": "b27ceb2e48c3b53e4c35f02444d093d664af1a90d092e984108027bfef9f641b"
       },
       "items": ["item-ordinary-medium-armor"],
       "recipes": []

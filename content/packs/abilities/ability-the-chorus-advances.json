@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You catch the rhythm of your companions’ steps and give them the next beat.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>Two willing allies within 3 squares who hear you.</dd></div><div><dt>Duration</dt><dd>Instant. Applied conditions follow their normal duration and decay.</dd></div><div><dt>Equipment / acquisition</dt><dd>No item needed unless named above.</dd></div><div><dt>Limits</dt><dd>Repeatable; pay the action and any stated costs each use.</dd></div><div><dt>Type</dt><dd>Skill</dd></div></dl><div class=\"hol-reference-rules\"><p>Each moves 1 square toward a visible enemy without provoking, one at a time. Their actions remain their own.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/cards/the-chorus-advances.md\" target=\"_blank\" rel=\"noopener\">design/cards/the-chorus-advances.md</a> at <code>9bc9b4fe3256e68880b92c45facf0f25b98a1ea3</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You catch the rhythm of your companions’ steps and give them the next beat.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>Two willing allies within 3 squares who hear you.</dd></div><div><dt>Duration</dt><dd>Instant. Applied conditions follow their normal duration and decay.</dd></div><div><dt>Equipment / acquisition</dt><dd>No item needed unless named above.</dd></div><div><dt>Limits</dt><dd>Repeatable; pay the action and any stated costs each use.</dd></div><div><dt>Type</dt><dd>Skill</dd></div></dl><div class=\"hol-reference-rules\"><p>Each moves 1 square toward a visible enemy without provoking, one at a time. Their actions remain their own.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/64089a1c8961d7faff172f179448a8b6e57827ef/design/cards/the-chorus-advances.md\" target=\"_blank\" rel=\"noopener\">design/cards/the-chorus-advances.md</a> at <code>64089a1c8961d7faff172f179448a8b6e57827ef</code>.</p></section>",
     "activity": {
       "action": "main",
       "rollMode": "none",
@@ -31,7 +31,7 @@
         "path": "design/cards/the-chorus-advances.md",
         "sha256": "3d27e3ee0297450625ac0643385386e17e031f7945c16e0ade5b6101a4a04d28"
       },
-      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "sourceCommit": "64089a1c8961d7faff172f179448a8b6e57827ef",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · play automation in progress"

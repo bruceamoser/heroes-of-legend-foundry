@@ -99,9 +99,9 @@ advancement DP; spent/total include creation, with expired creation DP separatel
 identified. The creation ledger stays useful here; do not copy it into the
 future native Development tab.
 
-Wear Light Armor is absent from the pinned approved catalog and the current
-book design files inspected for #158. A search for it explains that the edition
-contains Wear Medium Armor and Wear Heavy Armor. No new rule was invented.
+The October 18 source update now includes Wear Light Armor and the corrected
+three-tier armor progression. Learning finds light training normally, and Walled
+Communities visibly grants it with ordinary light armor.
 
 ## Local references and assets
 
@@ -281,3 +281,19 @@ checks cover conditional tabs, keyboard navigation, reload and stale-tab fallbac
 discipline references, both slider ends and repeated rolls. Desktop Abilities,
 Inventory, the roll dialog and 390px Recipes screenshots were inspected. No native
 Foundry behavior or portable schema changes in this pass.
+
+
+## One-DP abilities and rules update (#168, #169)
+
+The six approved shared abilities are purchasable for their printed 1 DP at level
+0, level 1 and later. Another Tongue and A Party Piece expose their language and
+performance choices next to the learning choices. Known languages appear disabled;
+ordinary unknown languages remain selectable. Clicking a learned Party Piece shows
+the recorded specialty. Clicking learned Message by Heart opens the usual local
+reference with a saved message field (up to 50 words). These values survive browser
+reload and portable export/import.
+
+Old-baseline saves receive an explicit rules-update review and an original named
+backup. Walled Communities uses the corrected light-armor grant; purchased choices
+remain for repair rather than silently being replaced. See the [source update](research/book-update-one-dp-armor.md)
+for existing Actor behavior and the native JSON import boundary.

@@ -23,7 +23,7 @@ const acquire = (state, id, selection = {}) =>
 test("every pinned ability has one source-matched acquisition adapter and references resolve", () => {
   const abilities = choices.records.filter((r) => r.kind === "ability");
   assert.equal(catalog.acquisitions.length, abilities.length);
-  assert.equal(new Set(catalog.acquisitions.map((a) => a.id)).size, 350);
+  assert.equal(new Set(catalog.acquisitions.map((a) => a.id)).size, 357);
   for (const a of abilities) {
     const adapter = catalog.acquisitions.find((r) => r.id === a.id);
     assert.equal(adapter.source.sha256, a.source.sha256);
@@ -114,7 +114,7 @@ test("recipe grants include prose grants but never create ingredients or finishe
   assert.equal(valid.state.recipes.length, 2);
 });
 test("market metadata and Bulk keep containers, supplies and spare clothing visible", () => {
-  assert.equal(catalog.equipment.length, 43);
+  assert.equal(catalog.equipment.length, 44);
   assert.equal(catalog.recipes.length, 10);
   assert.equal(
     catalog.equipment.find((r) => r.id === "item-ordinary-heavy-armor").price,
@@ -136,5 +136,96 @@ test("market metadata and Bulk keep containers, supplies and spare clothing visi
   assert.throws(
     () => inventoryTotals([{ ...items[0], quantity: -1 }], catalog),
     /quantity/,
+  );
+});
+
+test("choice-once languages use campaign definitions and reject known or uncommon choices", () => {
+  const language = {
+    id: "river",
+    name: "River Sign",
+    ordinary: true,
+    form: "signed",
+    writing: false,
+  };
+  const inventory = {
+    ...catalog,
+    acquisitions: [
+      {
+        id: "ability-another-tongue",
+        items: [],
+        recipes: [],
+        languageChoice: true,
+        source: { sha256: "source" },
+      },
+    ],
+  };
+  const state = {
+    abilities: ["ability-another-tongue"],
+    languages: [{ id: "common" }],
+  };
+  const result = acquireAbility(
+    state,
+    "ability-another-tongue",
+    { languageId: "river" },
+    inventory,
+    { languages: [language] },
+  );
+  assert.equal(result.valid, true);
+  assert.equal(result.state.languages[1].permissions.sign, true);
+  assert.equal(result.state.languages[1].permissions.read, false);
+  assert.equal(result.state.languages[1].source, "ability-another-tongue");
+  assert.equal(state.languages.length, 1);
+  assert.equal(
+    acquireAbility(result.state, "ability-another-tongue", {}, inventory)
+      .replayed,
+    true,
+  );
+  for (const definition of [
+    { ...language, ordinary: false },
+    { ...language, id: "common" },
+  ])
+    assert.equal(
+      acquireAbility(
+        state,
+        "ability-another-tongue",
+        { languageId: definition.id },
+        inventory,
+        { languages: [definition] },
+      ).valid,
+      false,
+    );
+});
+
+test("performance specialty is required, bounded and retained in its acquisition receipt", () => {
+  const inventory = {
+    ...catalog,
+    acquisitions: [
+      {
+        id: "ability-a-party-piece",
+        items: [],
+        recipes: [],
+        specialtyChoice: true,
+        source: { sha256: "source" },
+      },
+    ],
+  };
+  for (const specialty of ["", " ", "a".repeat(121)])
+    assert.equal(
+      acquireAbility({}, "ability-a-party-piece", { specialty }, inventory)
+        .valid,
+      false,
+    );
+  const result = acquireAbility(
+    {},
+    "ability-a-party-piece",
+    { specialty: "  juggling  " },
+    inventory,
+  );
+  assert.deepEqual(result.state.specialties, [
+    { abilityId: "ability-a-party-piece", specialty: "juggling" },
+  ]);
+  assert.equal(
+    result.state.acquisitionReceipts[0].selection.specialty,
+    "  juggling  ",
   );
 });

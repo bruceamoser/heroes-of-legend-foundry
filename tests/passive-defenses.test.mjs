@@ -62,8 +62,9 @@ test("reviewed passive records match the pinned catalog paths and hashes", () =>
   }
 });
 
-test("medium and heavy armor require both learned training and the matching worn armor", () => {
+test("light, medium and heavy armor require both learned training and the matching worn armor", () => {
   for (const [abilityId, itemId, value] of [
+    ["ability-wear-light-armor", "item-ordinary-light-armor", 1],
     ["ability-wear-medium-armor", "item-ordinary-medium-armor", 2],
     ["ability-wear-heavy-armor", "item-ordinary-heavy-armor", 3],
   ]) {
@@ -102,6 +103,51 @@ test("medium and heavy armor require both learned training and the matching worn
       equipment: [equipment("item-ordinary-heavy-armor")],
     }).resistances.length,
     0,
+  );
+});
+
+test("reviewed legacy armor snapshots keep their resistance without changing owned records", () => {
+  for (const tier of ["medium", "heavy"]) {
+    const abilityId = `ability-wear-${tier}-armor`,
+      itemId = `item-ordinary-${tier}-armor`;
+    const abilities = [
+      {
+        ...ability(abilityId),
+        source: PASSIVE_DEFENSE_DEFINITIONS[abilityId].legacySources[0],
+      },
+    ];
+    const items = [
+      {
+        ...equipment(itemId),
+        source: PASSIVE_DEFENSE_DEFINITIONS[itemId].legacySources[0],
+      },
+    ];
+    const before = JSON.stringify({ abilities, items });
+    const result = passiveDefenseSources({ abilities, equipment: items });
+    assert.equal(result.resistances.length, 1);
+    assert.equal(result.resistances[0].value, tier === "medium" ? 2 : 3);
+    assert.equal(
+      result.resistances[0].provenance[0].commit,
+      "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+    );
+    assert.equal(JSON.stringify({ abilities, items }), before);
+    assert.throws(
+      () =>
+        passiveDefenseSources({
+          abilities,
+          equipment: [
+            { ...items[0], source: { ...items[0].source, sha256: "bad" } },
+          ],
+        }),
+      /source changed/,
+    );
+  }
+  assert.equal(
+    passiveDefenseSources({
+      abilities: [ability("ability-wear-light-armor")],
+      equipment: [equipment("item-ordinary-light-armor")],
+    }).resistances[0].value,
+    1,
   );
 });
 

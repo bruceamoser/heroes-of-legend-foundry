@@ -119,7 +119,10 @@ test("advancement preserves one-recipe repairs and records two-recipe purchases"
   };
   const rejected = advancementPreview(base, oldDraft, choices, inventory);
   assert(!rejected.valid);
-  assert.equal(rejected.draft.purchases[0].recipeId, "recipe-fletched-ammunition");
+  assert.equal(
+    rejected.draft.purchases[0].recipeId,
+    "recipe-fletched-ammunition",
+  );
   assert(
     rejected.errors.some((entry) =>
       entry.reasons?.some((reason) => reason.code === "recipe-legacy"),
@@ -165,4 +168,74 @@ test("committed legacy recipe grants are preserved without retroactive additions
   );
   assert(result.valid);
   assert.deepEqual(result.state.recipes, ["recipe-fletched-ammunition"]);
+});
+
+test("real one-DP acquisition choices preserve languages and specialties through advancement", () => {
+  const base = {
+    ...state(),
+    level: 2,
+    dp: 2,
+    languages: [
+      { id: "common", name: "Common", source: "creation-common" },
+      { id: "local", name: "Local", source: "custom" },
+    ],
+  };
+  const language = {
+    id: "river",
+    name: "River Tongue",
+    ordinary: true,
+    form: "spoken",
+    writing: true,
+  };
+  const draft = {
+    purchases: [
+      { id: "ability-another-tongue" },
+      { id: "ability-a-party-piece" },
+    ],
+    acquisitions: {
+      "ability-another-tongue": { languageId: "river" },
+      "ability-a-party-piece": { specialty: "juggling" },
+    },
+  };
+  const result = advancementPreview(base, draft, choices, inventory, [
+    language,
+  ]);
+  assert.equal(result.valid, true, JSON.stringify(result.errors));
+  assert.equal(result.state.dp, 0);
+  assert.equal(result.state.languages.length, 3);
+  assert.deepEqual(result.state.languages.slice(0, 2), base.languages);
+  assert.equal(result.state.languages[2].permissions.write, true);
+  assert.equal(result.state.languages[2].source, "ability-another-tongue");
+  assert.deepEqual(result.state.specialties, [
+    { abilityId: "ability-a-party-piece", specialty: "juggling" },
+  ]);
+  const duplicate = advancementPreview(
+    { ...base, languages: [...base.languages, { id: "river" }] },
+    draft,
+    choices,
+    inventory,
+    [language],
+  );
+  assert.equal(duplicate.valid, false);
+  assert(
+    duplicate.errors.some((error) =>
+      error.reasons?.some((reason) => /already know/.test(reason.text)),
+    ),
+  );
+  assert.equal(
+    advancementPreview(
+      base,
+      { ...draft, acquisitions: {} },
+      choices,
+      inventory,
+      [language],
+    ).valid,
+    false,
+  );
+  assert.equal(
+    advancementPreview(result.state, draft, choices, inventory, [language])
+      .valid,
+    false,
+  );
+  assert.equal(base.languages.length, 2);
 });

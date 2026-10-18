@@ -8,7 +8,7 @@ import { handLayout } from "./hands.mjs";
 import { receiveHealing, validateSurvival } from "./survival.mjs";
 import { inventoryCheck } from "./inventory.mjs";
 
-const SOURCE_COMMIT = "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3";
+const SOURCE_COMMIT = "64089a1c8961d7faff172f179448a8b6e57827ef";
 const ACTION = Object.freeze({
   id: "use-a-healing-potion",
   catalogId: "ability-use-a-healing-potion",
@@ -191,7 +191,8 @@ export function planHealingPotion({
       throw new Error("Another recipient must have a distinct Actor identity.");
     if (!advisoryGeometry) boolean(adjacent, "Adjacency");
     boolean(willing, "Willingness");
-    if (!advisoryGeometry && !adjacent) throw new Error("Another recipient must be adjacent.");
+    if (!advisoryGeometry && !adjacent)
+      throw new Error("Another recipient must be adjacent.");
     if (!willing) throw new Error("Another recipient must be willing.");
   }
 
@@ -209,17 +210,36 @@ export function planHealingPotion({
   if (!healing.allowed)
     throw new Error(`The recipient cannot be healed: ${healing.reason}.`);
   const recipientAfter = receiveHealing(recipient.survival, healing.restored);
-  if (!encounter) return {
-    status: capable ? "ready" : "interrupted", potion,
-    costs: { giver: { maneuver: 0, hp: 0, items: [] }, recipient: { reaction: 0 } },
-    targeting: { relation, adjacent: relation === "other" ? adjacent : null, willing },
-    order: [{ kind: "heal", status: capable ? "planned" : "skipped" },
-      { kind: "inventory-check", status: capable ? "pending" : "skipped" }],
-    giverTurn: null, recipientTurn: null,
-    healing: capable ? healing : null,
-    recipientSurvival: capable ? recipientAfter : null,
-    inventory: capable ? { die: potion.supplyDie, retained: null, status: "pending", mustResolveAfter: "heal" } : null,
-  };
+  if (!encounter)
+    return {
+      status: capable ? "ready" : "interrupted",
+      potion,
+      costs: {
+        giver: { maneuver: 0, hp: 0, items: [] },
+        recipient: { reaction: 0 },
+      },
+      targeting: {
+        relation,
+        adjacent: relation === "other" ? adjacent : null,
+        willing,
+      },
+      order: [
+        { kind: "heal", status: capable ? "planned" : "skipped" },
+        { kind: "inventory-check", status: capable ? "pending" : "skipped" },
+      ],
+      giverTurn: null,
+      recipientTurn: null,
+      healing: capable ? healing : null,
+      recipientSurvival: capable ? recipientAfter : null,
+      inventory: capable
+        ? {
+            die: potion.supplyDie,
+            retained: null,
+            status: "pending",
+            mustResolveAfter: "heal",
+          }
+        : null,
+    };
   const reactionRequired = relation === "other" && recipient.survival.hp > 0;
   if (reactionRequired)
     assertOperationUnused(

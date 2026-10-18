@@ -1,3 +1,4 @@
+import { resolveBuilderDrop, validateBuilderPurchase, bindBuilderDrop, acquisitionWeaponName } from "../services/builder-drop.mjs";
 import { bindCreationAuthority } from "../services/creation.mjs";
 import { loadCatalogs } from "../services/catalog.mjs";
 import {
@@ -80,6 +81,7 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
         name: get(a.id).name,
         weaponOptions: a.weaponChoice?.map((id) => ({
           id,
+          name: acquisitionWeaponName(id, inventory),
           selected: this.draft.acquisitions[a.id]?.weapon === id,
         })),
         needsHands:
@@ -314,6 +316,17 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
       this.busy = false;
     }
   }
+  async dropAbility(event) {
+    if (this.busy) return;
+    try {
+      const choice = await resolveBuilderDrop(event, this.catalogs.choices);
+      if (!this.actor.isOwner) throw new Error("Only a character owner can edit this draft.");
+      if (this.busy || !this.rendered) return;
+      validateBuilderPurchase(this, choice, draft => advancementPreview(currentDevelopment(this.actor),
+        draft, this.catalogs.choices, this.catalogs.inventory).state);
+      await AdvancementWizard.add.call(this, event, { dataset: { id: choice.id } });
+    } catch (error) { ui.notifications.warn(error.message); }
+  }
   syncRecipeStudySelects() {
     for (const group of this.element.querySelectorAll("[data-recipe-study]")) {
       const selects = [...group.querySelectorAll("select")];
@@ -335,6 +348,7 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
     for (const group of this.element.querySelectorAll("[data-recipe-study]"))
       group.addEventListener("change", () => this.syncRecipeStudySelects());
     this.syncRecipeStudySelects();
+    bindBuilderDrop(this);
     this.element
       .querySelector("[data-search]")
       ?.addEventListener("input", (event) => {

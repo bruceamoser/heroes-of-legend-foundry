@@ -1,3 +1,4 @@
+import { resolveBuilderDrop, validateBuilderPurchase, bindBuilderDrop, acquisitionWeaponName } from "../services/builder-drop.mjs";
 import {
   bindCreationAuthority,
   requestCreation,
@@ -160,7 +161,7 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
         name: name(a.id),
         weaponOptions: a.weaponChoice?.map((id) => ({
           id,
-          name: id,
+          name: acquisitionWeaponName(id, inventory),
           selected: d.acquisitions?.[a.id]?.weapon === id,
         })),
         needsHands:
@@ -502,6 +503,20 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
       this.draft.shopping.splice(Number(target.dataset.index), 1);
     });
   }
+  async dropAbility(event) {
+    if (this.busy) return;
+    try {
+      const choice = await resolveBuilderDrop(event, this.catalogs.choices);
+      if (!this.actor.isOwner) throw new Error("Only a character owner can edit this draft.");
+      if (this.busy || !this.rendered) return;
+      if (![3, 5].includes(this.step)) throw new Error("Drop abilities on a learning step.");
+      const stage = this.step === 3 ? 0 : 1;
+      validateBuilderPurchase(this, choice, draft => creationPreview(draft,
+        this.catalogs.choices, this.catalogs.inventory,
+        this.languageConfiguration.definitions).stages[stage]);
+      await CreationWizard.addPurchase.call(this, event, { dataset: { id: choice.id } });
+    } catch (error) { ui.notifications.warn(error.message); }
+  }
   syncRecipeStudySelects() {
     for (const group of this.element.querySelectorAll("[data-recipe-study]")) {
       const selects = [...group.querySelectorAll("select")];
@@ -526,6 +541,7 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
     for (const group of this.element.querySelectorAll("[data-recipe-study]"))
       group.addEventListener("change", () => this.syncRecipeStudySelects());
     this.syncRecipeStudySelects();
+    bindBuilderDrop(this);
     this.element
       .querySelector("[data-search]")
       ?.addEventListener("input", (event) => {

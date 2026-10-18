@@ -24,6 +24,7 @@
  <fieldset><legend>Choose two starting disciplines</legend>{{#each classDisciplines}}<label><input type="checkbox" name="classDiscipline" value="{{id}}" {{#if selected}}checked{{/if}}> {{name}}</label>{{/each}}</fieldset>
  <label>Level-1 signature<select name="signatureId"><option value="">Choose one signature</option>{{#each signatures}}<option value="{{id}}" {{#if selected}}selected{{/if}}>{{name}}</option>{{/each}}</select></label>{{/if}}
  {{#if learningStep}}
+ <p class="hol-note">Add a listed choice or drop a catalog ability here.</p>
  <div class="hol-budget"><strong>Level {{stage}} · {{dp}} DP remaining</strong><p>Unused DP expires when this creation stage closes. Later grants cannot qualify an earlier purchase.</p></div>
  <h3>Planned purchases</h3><ol>{{#each purchases}}<li>{{name}}{{#if recipeNames}} <small>Recipes: {{#each recipeNames}}{{#unless @first}}, {{/unless}}{{this}}{{/each}}</small>{{/if}} <button type="button" data-action="removePurchase" data-index="{{index}}" aria-label="Remove {{name}}">Remove</button>{{#if legacyRecipePurchase}}<p class="hol-error">This saved recipe purchase needs two recipe choices. Remove it, then add Ordinary Recipe Study with your chosen pair.</p>{{/if}}{{#if errors}}<p class="hol-error">{{errors}}</p>{{/if}}</li>{{else}}<li>No purchases yet.</li>{{/each}}</ol>
  {{/if}}

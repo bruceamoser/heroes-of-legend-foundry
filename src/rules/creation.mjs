@@ -76,7 +76,7 @@ export function creationPreview(
     }
     spent += cost;
     items.push({
-      instanceId: `purchase:${index}`,
+      instanceId: entry.instanceId ?? `purchase:${index}`,
       catalogId: entry.id,
       quantity: entry.quantity,
       hands: entry.hands ?? 0,
@@ -93,7 +93,7 @@ export function creationPreview(
       draft.culture?.id,
       draft.background?.id,
     ].reduce((n, id) => n + (get(id)?.coins ?? 0), 0);
-  if (spent > coins)
+  if (spent > coins && draft.coinOverride !== true)
     errors.push({
       code: "coins",
       text: `Equipment costs ${spent} coins; only ${coins} coins are available.`,
@@ -110,6 +110,8 @@ export function creationPreview(
       spent,
       startingCoins: coins,
       remainingCoins: coins - spent,
+      overBudget: Math.max(0, spent - coins),
+      coinOverride: draft.coinOverride === true,
       bulk,
     },
   };

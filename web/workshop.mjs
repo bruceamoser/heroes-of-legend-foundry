@@ -1,4 +1,12 @@
-import { newCreationDraft, creationPreview } from "./rules/creation.mjs";
+import {
+  workshopCharacter,
+  emptyLevelDraft,
+  mainActions,
+  actionTiming,
+  craftingActions,
+} from "./rules/workshop-character.mjs";
+import { rollPlan, classifyRoll } from "./rules/roll.mjs";
+import { newCreationDraft } from "./rules/creation.mjs";
 import { ATTRIBUTES } from "./rules/character.mjs";
 import {
   DEFAULT_LANGUAGES,
@@ -38,21 +46,17 @@ const steps = [
   "Equipment",
   "Review",
 ];
-const tabs = [
-  "Encounter",
-  "Abilities",
-  "Belongings",
-  "Character",
-  "Development",
-];
+const tabs = ["Main", "Abilities", "Inventory", "Character", "Development"];
 const storageKey = "hol.workshop.v1";
+const libraryKey = "hol.workshop.library.v1";
+let saveId = null;
 let catalogs,
   references,
   example,
   draft,
   preview,
   mode = "sheet",
-  tab = "Encounter",
+  tab = "Main",
   step = 0,
   edit = false,
   isExample = true;
@@ -84,11 +88,10 @@ function button(text, action, extra = "", style = "") {
   return `<button type="button" data-action="${action}" ${extra} class="${style}">${text}</button>`;
 }
 const navIcons = {
-  Encounter:
-    '<path d="m4 3 13 13m-2 3 4-4M3 4l1 5 4-1M20 3 7 16m-2-1 4 4m12-15-1 5-4-1"/>',
+  Main: '<path d="m4 3 13 13m-2 3 4-4M3 4l1 5 4-1M20 3 7 16m-2-1 4 4m12-15-1 5-4-1"/>',
   Abilities:
     '<path d="M12 5v16M3 4c4-1 6 0 9 2 3-2 5-3 9-2v15c-4-1-6 0-9 2-3-2-5-3-9-2z"/>',
-  Belongings:
+  Inventory:
     '<path d="M8 6V4a4 4 0 0 1 8 0v2M7 6h10l3 5v10H4V11zM4 13h16M9 13v3h6v-3"/>',
   Character:
     '<circle cx="12" cy="7" r="4"/><path d="M4 21v-3a8 8 0 0 1 16 0v3"/>',
@@ -115,7 +118,7 @@ function row(label, value) {
   return `<div class="stat-row"><span>${esc(label)}</span><strong>${esc(value)}</strong></div>`;
 }
 function heading(kicker, label, text, action = "") {
-  return `<div class="panel-heading"><div><p class="eyebrow">${esc(kicker)}</p><h2 tabindex="-1" id="panel-title">${esc(label)}</h2>${text ? `<p>${esc(text)}</p>` : ""}</div>${action}</div>`;
+  return `<div class="panel-heading"><h2 tabindex="-1" id="panel-title">${esc(label)}</h2>${action}</div>`;
 }
 function symbol(id) {
   const key = id?.replace("discipline-", "");
@@ -140,6 +143,7 @@ function persist() {
         tab,
         step,
         isExample,
+        saveId,
       }),
     );
   } catch {
@@ -151,10 +155,10 @@ function persist() {
   }
 }
 function header() {
-  const s = preview.summary;
-  return `<div class="workshop-header"><div class="toolbar"><div class="toolbar-group">${button(edit ? "✓ Finish editing" : "✎ Edit", "edit", `aria-pressed="${edit}"`, edit ? "selected" : "quiet")}</div><div class="toolbar-group">${button("New hero", "new", "", "quiet")}${button("Import JSON", "import", "", "quiet")}${button("Export JSON", "export", "", "small")}</div></div>
-  <header class="hero-header"><div class="identity-line"><img class="hero-mark" src="assets/crest.webp" alt=""><div><p class="eyebrow">${mode === "builder" ? "A hero in the making" : "Your legend begins"}</p>${edit ? field("Character name", "name", draft.name, "text", 'maxlength="200"') : `<h1>${esc(draft.name || "Your new hero")}</h1>`}<p>${esc(join([get(draft.ancestryId)?.name, get(draft.classId)?.name, "Level 1"]))}</p></div></div><div class="vitals"><div class="vital"><small>HP maximum</small><strong>${s?.maximumHp ?? "—"}</strong></div><div class="vital"><small>Grit</small><strong>${s?.gritGranted ?? "—"}</strong></div><div class="vital"><small>Speed</small><strong>${s?.unencumberedSpeed ?? "—"}</strong></div></div></header>
-  <div class="attributes">${ATTRIBUTES.map((key) => `<div class="attribute"><span>${title(key)}</span>${edit ? `<input aria-label="${title(key)}" type="number" min="-2" max="2" step="1" data-field="attributes.${key}" value="${draft.attributes[key]}">` : `<strong>${signed(draft.attributes[key])}</strong>`}</div>`).join("")}</div></div>`;
+  const stats = preview.summary;
+  return `<div class="workshop-header"><div class="toolbar"><div class="toolbar-group">${button(edit ? "✓ Done" : "✎ Edit", "edit", `aria-pressed="${edit}"`, edit ? "selected" : "quiet")}</div><div class="toolbar-group">${button("New", "new", 'aria-label="New hero"', "quiet")}${button("Save", "save", 'aria-label="Save character"', "quiet")}${button("Load", "library", 'aria-label="Load character"', "quiet")}${button("Import", "import", 'aria-label="Import JSON"', "quiet")}${button("Export", "export", 'aria-label="Export JSON"', "quiet")}</div></div>
+  <header class="hero-header"><div class="identity-line"><img class="hero-mark" src="assets/crest.webp" alt=""><div>${edit && mode === "sheet" ? field("Character name", "name", draft.name, "text", 'maxlength="200"') : `<h1>${esc(draft.name || "New hero")}</h1>`}<p>${esc(join([get(draft.ancestryId)?.name, get(draft.classId)?.name, `Level ${preview.development.level}`]))}</p></div></div><div class="vitals"><div class="vital"><small>HP max</small><strong>${stats?.maximumHp ?? "—"}</strong></div><div class="vital"><small>Grit</small><strong>${stats?.gritGranted ?? "—"}</strong></div><div class="vital"><small>Speed</small><strong>${stats?.speed ?? "—"}</strong></div><div class="vital"><small>Armor DR</small><strong>${preview.resistances.physical ?? 0}</strong></div></div></header>
+  <div class="attributes">${ATTRIBUTES.map((key) => `<div class="attribute"><span>${title(key)}</span><strong data-attribute="${key}">${signed(draft.attributes[key])}</strong></div>`).join("")}</div></div>`;
 }
 function abilityCard(
   r,
@@ -198,45 +202,137 @@ function sheet() {
   return `<div class="sheet-body"><nav class="edge-tabs" role="tablist" aria-label="Character sheet" aria-orientation="vertical">${tabs.map((t) => button(navIcon(t, t), "tab", `id="tab-${t}" aria-label="${t}" role="tab" aria-selected="${tab === t}" aria-controls="panel" tabindex="${tab === t ? 0 : -1}" data-tab="${t}"`)).join("")}</nav><section id="panel" class="panel" role="tabpanel" aria-labelledby="tab-${tab}">${sheetContent()}</section></div>`;
 }
 function sheetContent() {
-  const s = preview.summary;
-  if (tab === "Encounter")
-    return `${heading("At the table", "Ready for the next encounter", "Your most-used actions and defenses, close at hand.", button("Open character builder", "builder", "", "primary"))}<div class="columns"><div class="stack"><div><h3 class="section-title">Actions & reactions</h3><div class="cards">${
-      knownCards()
-        .filter((r) =>
-          r.reference?.rules.details.some(
-            (d) => d.label === "Action" && !d.value.startsWith("Passive"),
-          ),
-        )
-        .slice(0, 6)
-        .map((r) => abilityCard(r))
-        .join("") ||
-      '<p class="empty">Learn abilities in the character builder.</p>'
-    }</div></div></div><aside class="stack"><section class="box"><h3>Keep fighting</h3>${row("Maximum HP", s?.maximumHp ?? "Finish creation")}${row("Grit granted", s?.gritGranted ?? "—")}${row("Unencumbered speed", s ? `${s.unencumberedSpeed} squares` : "—")}${row("Base stability", s?.stability ?? "—")}${row("Bulk / capacity", `${preview.inventory.bulk} / ${s?.capacity ?? "—"}`)}</section><section class="callout"><h3>One roll. Three outcomes.</h3><p>3d6 + one attribute</p><p>Weak ≤ 8 · Standard 9–14 · Strong ≥ 15</p><p>Cancel Boons and Banes, then keep the best or worst three dice.</p></section><section class="box"><h3>Your training</h3>${
-      Object.entries(preview.state.ranks)
-        .map(([id, rank]) => row(name(id), `Rank ${rank}`))
-        .join("") ||
-      '<p class="empty">Your origins and class will grant starting disciplines.</p>'
-    }</section></aside></div>`;
+  if (tab === "Main") return mainPanel();
   if (tab === "Abilities")
-    return `${heading("Your repertoire", "Training & abilities", "Read the full rules without leaving your character.")}${searchRow()}<div class="cards" id="results">${
+    return `${heading("", "Abilities", "")}${searchRow()}<div class="cards" id="results">${
       knownCards()
         .filter(matches)
         .map((r) => abilityCard(r))
-        .join("") ||
-      '<p class="empty">No learned abilities match. Browse learning in the character builder.</p>'
-    }</div><details class="planned"><summary>Universal actions</summary><div class="cards">${catalogs.choices
-      .filter((r) => r.universal)
-      .map((r) => abilityCard(r))
-      .join("")}</div></details>`;
-  if (tab === "Belongings")
-    return `${heading("What you carry", "Belongings", "Starting equipment, supplies and the recipes you know.")}<div class="columns"><section class="box"><h3>Inventory</h3>${inventoryTable()}</section><aside class="stack"><section class="box"><h3>Travel light</h3>${row("Coins remaining", preview.inventory.remainingCoins)}${row("Carried Bulk", preview.inventory.bulk)}${row("Capacity", s?.capacity ?? "—")}</section><section class="box"><h3>Recipes</h3>${preview.state.recipes.map((id) => `<div class="stat-row"><span>${esc(name(id))}</span>${button("Read", "reference", `data-id="${id}"`, "small")}</div>`).join("") || '<p class="empty">No recipes learned.</p>'}</section></aside></div>`;
+        .join("") || '<p class="empty">No matching learned abilities.</p>'
+    }</div><details class="planned"><summary>Basic actions</summary>${actionTable(
+      catalogs.choices
+        .filter((r) => r.universal)
+        .map((record) => ({ record, basic: true, visible: true })),
+      false,
+    )}</details>`;
+  if (tab === "Inventory")
+    return `${heading("", "Inventory", "")}${inventoryStats()}${inventoryTable(true)}<h3 class="section-title">Recipes</h3>${recipeRows()}`;
   if (tab === "Character")
-    return `${heading("Beyond the numbers", "Character & origins", "The people, places and experiences that shaped your hero.")}<div class="columns"><div class="stack"><section class="box"><h3>Identity</h3>${edit ? `<div class="field-grid">${field("Pronouns", "profile.pronouns", draft.profile?.pronouns)}${field("Player", "profile.player", draft.profile?.player)}</div>` : row("Pronouns", draft.profile?.pronouns || "—") + row("Player", draft.profile?.player || "—")}${row("Ancestry", name(draft.ancestryId))}${row("Culture", name(draft.culture?.id))}${row("Background", name(draft.background?.id))}</section><section class="box"><h3>Your story</h3>${edit ? `<label>Notes<textarea data-field="profile.story" maxlength="10000">${esc(draft.profile?.story)}</textarea></label>` : `<p>${esc(draft.profile?.story || "Use Edit to add a few words about your hero.")}</p>`}</section></div><aside class="stack"><section class="box"><h3>Ancestry traits</h3>${draft.traitIds.map((id) => `<div class="stat-row"><span>${esc(name(id))}</span>${button("Read", "reference", `data-id="${id}"`, "small")}</div>`).join("")}</section><section class="box"><h3>Languages</h3>${(s?.languages ?? []).map((l) => row(l.name, l.permissions.read ? "Spoken & written" : l.form === "signed" ? "Signed" : "Spoken")).join("") || '<p class="empty">Choose a home language in creation.</p>'}</section></aside></div>`;
-  return `${heading("How your hero grows", "Development", "Your creation choices and DP history remain visible.", button("Review creation", "review", "", "primary"))}<div class="callout"><h3>Level 1 · Creation</h3><p>Level 0 and level 1 have separate DP pools. Unspent creation DP expires. At later levels, gain 8 + your new level in DP; unspent advancement DP can be saved.</p></div><details class="planned" open><summary>Creation ledger</summary>${ledgerTable()}</details>`;
+    return `${heading("", "Character", "")}<div class="columns"><section class="box">${edit ? `<div class="field-grid">${field("Pronouns", "profile.pronouns", draft.profile?.pronouns)}${field("Player", "profile.player", draft.profile?.player)}</div>` : row("Pronouns", draft.profile?.pronouns || "—") + row("Player", draft.profile?.player || "—")}${row("Ancestry", name(draft.ancestryId))}${row("Culture", name(draft.culture?.id))}${row("Background", name(draft.background?.id))}<h3 class="section-title">Story</h3>${edit ? `<label>Notes<textarea data-field="profile.story" maxlength="10000">${esc(draft.profile?.story)}</textarea></label>` : `<p>${esc(draft.profile?.story || "")}</p>`}</section><section class="box"><h3>Languages</h3>${(preview.summary?.languages ?? []).map((l) => row(l.name, l.permissions.read ? "Spoken & written" : l.form === "signed" ? "Signed" : "Spoken")).join("")}</section></div>`;
+  const dev = preview.development;
+  return `${heading("", "Development", "", button("Edit creation", "review", "", "small"))}<div class="development-summary"><div class="level-control"><span>Level</span>${button("−", "level-down", 'aria-label="Decrease level"')}<strong>${dev.level}</strong>${button("+", "level-up", 'aria-label="Increase level"')}</div><div><small>Current DP</small><strong data-dp="current">${dev.current}</strong></div><div><small>DP spent</small><strong data-dp="spent">${dev.spent}</strong></div><div><small>Total DP</small><strong data-dp="total">${dev.total}</strong></div></div>${dev.level > 1 ? button(`Develop level ${dev.level}`, "advance", "", "primary") : '<p class="inline-help">Increase your level to develop your hero.</p>'}<p class="inline-help">Advancement DP can be saved. Each new level grants 8 + that level.${dev.expired ? ` ${dev.expired} unspent creation DP expired.` : ""}</p>${
+    preview.errors.filter((e) => e.level).length
+      ? `<ul class="error-list">${preview.errors
+          .filter((e) => e.level)
+          .map(
+            (e) =>
+              `<li>Level ${e.level}: ${esc(e.text ?? (e.reasons ?? []).map((r) => r.text).join(" "))}</li>`,
+          )
+          .join("")}</ul>`
+      : ""
+  }<details class="planned"><summary>Advancement history</summary>${advancementTable()}</details><details class="planned"><summary>Creation ledger</summary>${ledgerTable()}</details>`;
 }
-function inventoryTable() {
-  return `<div class="table-wrap"><table><thead><tr><th>Item</th><th>Qty</th><th>Source</th><th>Rules</th></tr></thead><tbody>${preview.inventory.items.map((item) => `<tr><td>${esc(name(item.catalogId))}</td><td>${item.quantity}</td><td>${item.source === "coins" ? "Purchased" : "Granted"}</td><td>${button("Read", "reference", `data-id="${item.catalogId}"`, "quiet small")}</td></tr>`).join("")}</tbody></table></div>`;
+function brief(record) {
+  const body = record.reference?.rules.body ?? [];
+  const outcome = body.find((b) => b.outcomes)?.outcomes;
+  if (outcome) return outcome.map((o) => `${o.label}: ${o.text}`).join(" · ");
+  return body.find((b) => b.text)?.text ?? record.reference?.flavor?.[0] ?? "";
 }
+function attributeFor(record) {
+  const text =
+    record.reference?.rules.details.find((d) => d.label === "Attribute")
+      ?.value ?? "";
+  return ATTRIBUTES.find((key) => text.toLowerCase().startsWith(key)) ?? null;
+}
+function actionTable(entries, customize = edit) {
+  return `<div class="table-wrap"><table class="action-table"><thead><tr><th>Action</th><th>Attribute</th><th>Effect</th>${customize ? "<th>Show</th>" : ""}</tr></thead><tbody>${entries
+    .filter((e) => e.visible || customize)
+    .map(
+      (e) =>
+        `<tr class="${e.visible ? "" : "hidden-action"}"><td>${button(esc(e.record.name), "reference", `data-id="${e.record.id}"`, "table-link")}${e.basic ? '<small class="basic-tag">Basic</small>' : ""}</td><td>${esc(attributeFor(e.record) ? title(attributeFor(e.record)) : "—")}</td><td><span class="brief" title="${esc(brief(e.record))}">${esc(brief(e.record))}</span></td>${customize ? `<td>${e.basic ? `<input type="checkbox" data-basic="${e.record.id}" aria-label="Show ${esc(e.record.name)}" ${e.visible ? "checked" : ""}>` : ""}</td>` : ""}</tr>`,
+    )
+    .join("")}</tbody></table></div>`;
+}
+function mainPanel() {
+  const actions = mainActions(preview, draft, catalogs);
+  const groups = [
+    "Main Action",
+    "Maneuver",
+    "Reaction",
+    "Passive",
+    "Movement",
+    "Other",
+  ];
+  return `${heading("", "Main", "", button("Create / develop", "builder", 'aria-label="Open character builder"', "small"))}<div class="main-layout"><div class="action-groups">${groups
+    .map((group) => {
+      const entries = actions.filter((e) =>
+        actionTiming(e.record).includes(group),
+      );
+      if (!entries.some((e) => e.visible || edit)) return "";
+      return `<section class="action-group"><h3>${group}${edit && entries.some((e) => e.basic) ? `<label class="inline-toggle"><input type="checkbox" data-basic-group="${group}" ${entries.filter((e) => e.basic).every((e) => e.visible) ? "checked" : ""}> Basic actions</label>` : ""}</h3>${actionTable(entries)}</section>`;
+    })
+    .join(
+      "",
+    )}<section class="action-group"><h3>Ancestry traits</h3><div class="table-wrap"><table class="trait-table"><tbody>${draft.traitIds.map((id) => `<tr><td>${button(esc(name(id)), "reference", `data-id="${esc(id)}"`, "table-link")}</td><td><span class="brief">${esc(traitBrief(id))}</span></td></tr>`).join("")}</tbody></table></div></section>${craftingActions(preview, catalogs).length ? `<section class="action-group"><h3>Crafting</h3>${recipeRows()}</section>` : ""}</div><aside class="play-summary"><section class="box"><h3>Defenses</h3>${row("Armor / physical DR", preview.resistances.physical ?? 0)}${Object.entries(
+    preview.resistances,
+  )
+    .filter(([type]) => type !== "physical")
+    .map(([type, value]) => row(`${title(type)} resistance`, value))
+    .join(
+      "",
+    )}${preview.passiveSources.map((p) => `<small>${esc(p.label)}</small>`).join("")}</section><section class="box"><h3>Movement & carrying</h3>${row("Speed", `${preview.summary?.speed ?? "—"} squares`)}${row("Bulk / capacity", `${preview.inventory.bulk} / ${preview.inventory.capacity}`)}${row("Encumbrance", preview.inventory.encumbrance)}${row("Base stability", preview.summary?.stability ?? 0)}</section><section class="box"><h3>Supplies</h3>${
+    preview.inventory.items
+      .filter((i) => i.carried && i.inventoryDie)
+      .map((i) => row(name(i.catalogId), `d${i.inventoryDie}`))
+      .join("") || "<small>No supplies carried.</small>"
+  }</section></aside></div>`;
+}
+function traitBrief(id) {
+  return (
+    references.records[id]?.markdown
+      .split("## Rules")[1]
+      ?.split(/\n\s*\n/)
+      .find((p) => p.trim() && !p.startsWith("**")) ?? ""
+  )
+    .replace(/\*|\[|\]\([^)]*\)/g, "")
+    .trim();
+}
+function recipeRows() {
+  const rows = craftingActions(preview, catalogs);
+  return rows.length
+    ? `<div class="table-wrap"><table class="recipe-table"><thead><tr><th>Recipe</th><th>Crafting ability</th><th>Attempt</th><th>Roll</th></tr></thead><tbody>${rows.map(({ recipe, ability, attribute }) => `<tr><td>${button(esc(recipe.name), "reference", `data-id="${recipe.id}"`, "table-link")}</td><td>${button(esc(ability.name), "reference", `data-id="${ability.id}"`, "table-link")}</td><td>${recipe.attemptMinutes} min</td><td>${attributeFor(ability) ? button(esc(attribute), "recipe-roll", `data-id="${ability.id}" data-recipe-id="${recipe.id}"`, "small") : "—"}</td></tr>`).join("")}</tbody></table></div>`
+    : '<p class="empty">No recipes learned.</p>';
+}
+function inventoryStats() {
+  return `<div class="inventory-stats"><span><strong>${preview.inventory.remainingCoins}</strong> coins</span><span><strong>${preview.inventory.bulk} / ${preview.inventory.capacity}</strong> Bulk</span><span>Encumbrance <strong>${preview.inventory.encumbrance}</strong></span><span>Speed <strong>${preview.summary?.speed ?? "—"}</strong></span><span>Armor DR <strong>${preview.resistances.physical ?? 0}</strong></span></div>`;
+}
+function equipmentControl(item) {
+  const wearable = [
+    "item-travel-clothes",
+    "item-weather-clothes",
+    "item-disguise-clothes",
+    "item-ordinary-medium-armor",
+    "item-ordinary-heavy-armor",
+    "item-winter-lining",
+    "item-gravebound-brooch",
+    "item-cincture-of-might",
+    "item-travel-pack",
+  ];
+  if (!item.hands && !wearable.includes(item.catalogId)) return "—";
+  return button(
+    item.worn || item.held ? "Remove" : item.hands ? "Hold" : "Wear",
+    "equip",
+    `data-instance="${item.instanceId}" aria-label="${item.worn || item.held ? "Remove" : item.hands ? "Hold" : "Wear"} ${esc(name(item.catalogId))}"`,
+    "small",
+  );
+}
+function inventoryTable(controls = false) {
+  return `<div class="table-wrap"><table class="inventory-table"><thead><tr><th>Item</th><th>Qty</th><th>Bulk</th><th>Supply</th><th>Source</th>${controls ? "<th>Carried</th><th>Use</th>" : ""}</tr></thead><tbody>${preview.inventory.items.map((item) => `<tr data-instance="${item.instanceId}" class="${item.carried ? "" : "stored-item"}"><td>${button(esc(name(item.catalogId)), "reference", `data-id="${item.catalogId}"`, "table-link")}</td><td>${item.quantity}</td><td>${item.bulk}${item.catalogId === "item-travel-clothes" && item.worn ? " <small>(worn outfit exempt)</small>" : ""}</td><td>${item.inventoryDie ? `d${item.inventoryDie}` : "—"}</td><td>${esc(item.source === "coins" ? "Purchased" : item.source === "creation" ? "Starting outfit" : name(item.source))}</td>${controls ? `<td><input type="checkbox" data-loadout="${item.instanceId}" data-prop="carried" aria-label="Carry ${esc(name(item.catalogId))}" ${item.carried ? "checked" : ""}></td><td>${equipmentControl(item)}</td>` : ""}</tr>`).join("")}</tbody></table></div>`;
+}
+function advancementTable() {
+  return `<div class="table-wrap"><table><thead><tr><th>Level</th><th>Entry</th><th>DP</th></tr></thead><tbody>${preview.advancementLedger.map((e) => `<tr><td>${e.level}</td><td>${esc(e.kind === "award" ? "Level award" : name(e.id))}</td><td>${signed(e.delta)}</td></tr>`).join("")}</tbody></table></div>`;
+}
+
 function ledgerTable() {
   return `<div class="table-wrap"><table><thead><tr><th>Stage</th><th>Choice</th><th>DP</th><th>Remaining</th></tr></thead><tbody>${preview.ledger.map((e) => `<tr><td>Level ${e.stage}</td><td>${esc(e.kind === "pool" ? "Starting pool" : e.kind === "expired-pool" ? "Unspent DP expires at stage end" : name(e.sourceId))}</td><td>${signed(e.delta)}</td><td>${e.balance}</td></tr>`).join("")}</tbody></table></div>`;
 }
@@ -248,14 +344,14 @@ function builder() {
     "Abilities",
     "Class",
     "Heroic",
-    "Belongings",
+    "Inventory",
     "Review",
   ];
-  return `<div class="wizard"><nav class="edge-tabs" aria-label="Creation steps">${steps.map((label, i) => button(navIcon(icons[i], `${i + 1}. ${label}`), "step", `aria-label="${i + 1} ${label}" ${step === i ? 'aria-current="step"' : ""} data-step="${i}"`)).join("")}</nav><div class="wizard-body"><section id="panel" class="panel" aria-labelledby="panel-title">${builderContent()}</section><footer class="wizard-footer">${button(step ? "← Back" : "View sheet", step ? "back" : "sheet")}<small>${storageAvailable ? "Draft saved in this browser" : "Export JSON to keep your draft"}</small>${step < 7 ? button("Continue →", "next", "", "primary") : button("View character sheet", "sheet", "", "primary")}</footer></div></div>`;
+  return `<div class="wizard"><nav class="edge-tabs" aria-label="Creation steps">${steps.map((label, i) => button(navIcon(icons[i], `${i + 1}. ${label}`), "step", `aria-label="${i + 1} ${label}" ${step === i ? 'aria-current="step"' : ""} data-step="${i}"`)).join("")}</nav><div class="wizard-body">${contextStrip()}<section id="panel" class="panel" aria-labelledby="panel-title">${builderContent()}</section><footer class="wizard-footer">${button(step ? "← Back" : "View sheet", step ? "back" : "sheet")}<small>${storageAvailable ? "Draft saved in this browser" : "Export JSON to keep your draft"}</small>${step < 7 ? button("Continue →", "next", "", "primary") : button("View character sheet", "sheet", "", "primary")}</footer></div></div>`;
 }
 function builderContent() {
   if (step === 0)
-    return `${heading("Step 1 of 8", "Who will you become?", "Start with a name and six attributes. You can revisit every choice.")}<div class="field-grid">${field("Character name", "name", draft.name, "text", 'maxlength="200"')}${field("Pronouns (optional)", "profile.pronouns", draft.profile?.pronouns)}</div><h3 class="section-title" style="margin-top:28px">Your attributes</h3><p class="inline-help">Assign −2 to +2 to each attribute, totaling +3. Each creation DP pool is 10 + Knowledge + Reason + Guile.</p><div class="field-grid" style="margin-top:16px">${ATTRIBUTES.map((key) => field(title(key), `attributes.${key}`, draft.attributes[key], "number", 'min="-2" max="2" step="1"')).join("")}</div><div class="callout" style="margin-top:20px">Assigned total: <strong>${signed(Object.values(draft.attributes).reduce((a, b) => a + b, 0))} / +3</strong></div>`;
+    return `${heading("Step 1 of 8", "Identity & attributes", "Start with a name and six attributes. You can revisit every choice.")}<div class="field-grid">${field("Character name", "name", draft.name, "text", 'maxlength="200"')}${field("Pronouns (optional)", "profile.pronouns", draft.profile?.pronouns)}</div><h3 class="section-title" style="margin-top:14px">Your attributes</h3><p class="inline-help">Assign −2 to +2 to each attribute, totaling +3. Each creation DP pool is 10 + Knowledge + Reason + Guile.</p><div class="field-grid" style="margin-top:10px">${ATTRIBUTES.map((key) => field(title(key), `attributes.${key}`, draft.attributes[key], "number", 'min="-2" max="2" step="1"')).join("")}</div><div class="callout" style="margin-top:10px">Assigned total: <strong>${signed(Object.values(draft.attributes).reduce((a, b) => a + b, 0))} / +3</strong></div>`;
   if (step === 1) {
     const ancestry = get(draft.ancestryId),
       options = campaignLanguageOptions(DEFAULT_LANGUAGES, draft.languages);
@@ -267,30 +363,42 @@ function builderContent() {
       )
       .join(
         "",
-      )}</div><h3 class="section-title" style="margin-top:26px">Choose two traits</h3><div class="cards">${(ancestry?.traits ?? []).map((id) => choiceCheck(id, "traitIds", draft.traitIds)).join("") || '<p class="empty">Choose an ancestry to see its traits.</p>'}</div>${draft.traitIds.includes("trait-elf-age-of-memory") ? field("Remembered community", "rememberedCommunity", draft.rememberedCommunity) : ""}<div style="margin-top:22px">${select("Home language", "languages.home", option("", "Choose a home language", !draft.languages.home) + options.home.map((l) => option(l.id, `${l.name}${l.reason ? ` — ${l.reason}` : ""}`, l.selected, l.disabled)).join(""))}</div>${draft.traitIds.includes("trait-human-many-homes") ? `<h3 class="section-title" style="margin-top:24px">Two additional spoken languages</h3><div class="cards">${options.extraSpoken.map((l) => `<label class="check"><input type="checkbox" data-list="languages.extraSpoken" value="${l.id}" ${l.selected ? "checked" : ""} ${l.disabled ? "disabled" : ""}><span>${l.name}<small>${esc(l.reason || l.summary)}</small></span></label>`).join("")}</div>` : ""}${staleSelections("traitIds", ancestry?.traits ?? [])}`;
+      )}</div><h3 class="section-title" style="margin-top:14px">Choose two traits</h3><div class="cards">${(ancestry?.traits ?? []).map((id) => choiceCheck(id, "traitIds", draft.traitIds)).join("") || '<p class="empty">Choose an ancestry to see its traits.</p>'}</div>${draft.traitIds.includes("trait-elf-age-of-memory") ? field("Remembered community", "rememberedCommunity", draft.rememberedCommunity) : ""}<div style="margin-top:12px">${select("Home language", "languages.home", option("", "Choose a home language", !draft.languages.home) + options.home.map((l) => option(l.id, `${l.name}${l.reason ? ` — ${l.reason}` : ""}`, l.selected, l.disabled)).join(""))}</div>${draft.traitIds.includes("trait-human-many-homes") ? `<h3 class="section-title" style="margin-top:12px">Two additional spoken languages</h3><div class="cards">${options.extraSpoken.map((l) => `<label class="check"><input type="checkbox" data-list="languages.extraSpoken" value="${l.id}" ${l.selected ? "checked" : ""} ${l.disabled ? "disabled" : ""}><span>${l.name}<small>${esc(l.reason || l.summary)}</small></span></label>`).join("")}</div>` : ""}${staleSelections("traitIds", ancestry?.traits ?? [])}`;
   }
   if (step === 2)
-    return `${heading("Step 3 of 8", "Where you come from", "Each origin grants a complete pair: one discipline rank and one ability. Duplicate grants return 1 DP.")}<div class="stack">${[
+    return `${heading("", "Culture & background", "")}<div class="origin-grid">${[
       "culture",
       "background",
     ]
       .map(
         (kind) =>
-          `<section class="box">${select(
-            title(kind),
-            `${kind}.id`,
-            option("", `Choose a ${kind}`, !draft[kind]?.id) +
-              catalogs.choices
-                .filter((r) => r.originType === kind)
-                .map((r) => option(r.id, r.name, draft[kind]?.id === r.id))
-                .join(""),
-          )}${draft[kind]?.id ? `<div class="card-actions">${button("Read origin", "reference", `data-id="${draft[kind].id}"`, "quiet small")}</div><div class="stack">${(get(draft[kind].id)?.pairs ?? []).map((p, i) => `<label class="check"><input type="radio" data-field="${kind}.pair" name="${kind}-pair" value="${i}" ${draft[kind]?.pair === i ? "checked" : ""}><span><strong>${esc(name(p.disciplineId))} 1</strong>${esc(name(p.abilityId))}</span>${button("Read ability", "reference", `data-id="${p.abilityId}"`, "quiet small")}</label>`).join("")}</div>` : ""}</section>`,
+          `<section class="box"><label>${title(kind)}<select aria-label="${title(kind)}" data-origin="${kind}">${option("", `Choose ${kind} and grants`, !draft[kind]?.id)}${catalogs.choices
+            .filter((r) => r.originType === kind)
+            .flatMap((r) =>
+              r.pairs.map((pair, i) =>
+                option(
+                  `${r.id}|${i}`,
+                  `${r.name} — ${name(pair.disciplineId)} 1 + ${name(pair.abilityId)}`,
+                  draft[kind]?.id === r.id && draft[kind]?.pair === i,
+                ),
+              ),
+            )
+            .join("")}</select></label>${
+            draft[kind]?.id
+              ? (() => {
+                  const pair = get(draft[kind].id)?.pairs[draft[kind].pair];
+                  return `<div class="origin-grants">${button(esc(name(draft[kind].id)), "reference", `data-id="${esc(draft[kind].id)}"`, "table-link")}${pair ? `<div>${symbol(pair.disciplineId)}${esc(name(pair.disciplineId))} 1</div>${button(esc(name(pair.abilityId)), "reference", `data-id="${pair.abilityId}"`, "table-link")}` : ""}</div>`;
+                })()
+              : ""
+          }</section>`,
       )
-      .join("")}</div>`;
+      .join(
+        "",
+      )}</div><p class="inline-help">Each selection grants the named discipline rank and ability. A duplicate grant adds 1 DP.</p>`;
   if ([3, 5].includes(step)) return learning();
   if (step === 4) {
     const cls = get(draft.classId);
-    return `${heading("Step 5 of 8", "Choose your calling", "Classes you qualify for appear first. Then choose two starting disciplines and one signature.")}<div class="cards">${eligibleFirst(
+    return `${heading("Step 5 of 8", "Class", "Classes you qualify for appear first. Then choose two starting disciplines and one signature.")}<div class="cards">${eligibleFirst(
       catalogs.choices.filter((r) => r.kind === "class"),
       (r) => classEligibility(r, draft.attributes),
     )
@@ -300,34 +408,31 @@ function builderContent() {
       )
       .join(
         "",
-      )}</div>${cls ? `<h3 class="section-title" style="margin-top:26px">Two starting disciplines</h3><div class="cards">${cls.startingDisciplines.map((id) => choiceCheck(id, "classDisciplines", draft.classDisciplines)).join("")}</div><h3 class="section-title" style="margin-top:26px">Your first signature</h3><div class="cards">${cls.signatures[1].map((id) => `<article class="choice-card ${draft.signatureId === id ? "chosen" : ""}"><h3>${esc(name(id))}</h3><p class="card-copy">${esc(get(id)?.reference?.flavor?.[0])}</p><div class="card-actions">${button("Read signature", "reference", `data-id="${id}"`, "quiet small")}${button(draft.signatureId === id ? "Selected" : "Choose", "signature", `data-id="${id}"`, "small")}</div></article>`).join("")}</div>${staleSelections("classDisciplines", cls.startingDisciplines)}` : ""}`;
+      )}</div>${cls ? `<h3 class="section-title" style="margin-top:14px">Two starting disciplines</h3><div class="cards">${cls.startingDisciplines.map((id) => choiceCheck(id, "classDisciplines", draft.classDisciplines)).join("")}</div><h3 class="section-title" style="margin-top:14px">Your first signature</h3><div class="cards">${cls.signatures[1].map((id) => `<article class="choice-card ${draft.signatureId === id ? "chosen" : ""}"><h3>${esc(name(id))}</h3><p class="card-copy">${esc(get(id)?.reference?.flavor?.[0])}</p><div class="card-actions">${button("Read signature", "reference", `data-id="${esc(id)}"`, "quiet small")}${button(draft.signatureId === id ? "Selected" : "Choose", "signature", `data-id="${esc(id)}"`, "small")}</div></article>`).join("")}</div>${staleSelections("classDisciplines", cls.startingDisciplines)}` : ""}`;
   }
   if (step === 6) return equipment();
-  return `${heading("Step 8 of 8", "Meet your hero", preview.valid ? "Your character is ready. Export the file and import it through Create a Hero in Foundry." : "A few choices still need attention. Your draft is saved, and every step remains available.")}${
+  return `${heading("Step 8 of 8", "Review", preview.valid ? "Your character is ready. Export the file and import it through Create a Hero in Foundry." : "A few choices still need attention. Your draft is saved, and every step remains available.")}${
     preview.valid
-      ? `<div class="callout"><h3>Ready for Foundry</h3><p>${esc(draft.name)} · ${esc(name(draft.ancestryId))} ${esc(name(draft.classId))}</p></div>`
+      ? `<div class="callout"><h3>${preview.development.level > 1 ? "Character plan ready" : "Creation complete"}</h3><p>${esc(draft.name)} · ${esc(name(draft.ancestryId))} ${esc(name(draft.classId))}</p></div>`
       : `<ul class="error-list">${errors()
           .map((e) => `<li>${esc(e)}</li>`)
           .join("")}</ul>`
-  }<div class="columns" style="margin-top:22px"><section class="box"><h3>Your character</h3>${row("Maximum HP", preview.summary?.maximumHp ?? "—")}${row("Grit", preview.summary?.gritGranted ?? "—")}${row("Speed", preview.summary?.unencumberedSpeed ?? "—")}${row("Learned abilities", preview.state.abilities.length)}${row("Coins", preview.inventory.remainingCoins)}</section><section class="box"><h3>Take your hero with you</h3>${button("Export character JSON", "ready-export", preview.valid ? "" : "disabled", "primary")}<p class="file-hint">In Foundry: open a new character → Create a Hero → Import character JSON. Review with your campaign’s language settings, then complete creation.</p>${button("Save draft JSON", "export", "", "quiet")}</section></div><details class="planned"><summary>Creation ledger</summary>${ledgerTable()}</details>`;
+  }<div class="columns" style="margin-top:12px"><section class="box"><h3>Your character</h3>${row("Maximum HP", preview.summary?.maximumHp ?? "—")}${row("Grit", preview.summary?.gritGranted ?? "—")}${row("Speed", preview.summary?.speed ?? "—")}${row("Learned abilities", preview.state.abilities.length)}${row("Coins", preview.inventory.remainingCoins)}</section><section class="box"><h3>Take your hero with you</h3>${button("Export character JSON", "ready-export", preview.valid ? "" : "disabled", "primary")}<p class="file-hint">${preview.development.level > 1 ? "Save or export this plan to continue here. Foundry import currently supports level-1 creation." : "In Foundry: open a new character → Create a Hero → Import character JSON. Review with your campaign’s language settings, then complete creation."}</p>${button("Save draft JSON", "export", "", "quiet")}</section></div><details class="planned"><summary>Creation ledger</summary>${ledgerTable()}</details>`;
 }
 function choiceCheck(id, list, values) {
-  return `<div class="check"><label style="display:flex;gap:10px;flex:1"><input type="checkbox" data-list="${list}" value="${id}" ${values.includes(id) ? "checked" : ""}><span>${esc(name(id))}</span></label>${button("Read", "reference", `data-id="${id}"`, "quiet small")}</div>`;
+  return `<div class="check"><label style="display:flex;gap:10px;flex:1"><input type="checkbox" data-list="${list}" value="${esc(id)}" ${values.includes(id) ? "checked" : ""}><span>${esc(name(id))}</span></label>${button("Read", "reference", `data-id="${esc(id)}"`, "quiet small")}</div>`;
 }
 function staleSelections(list, valid) {
   const stale = draft[list].filter((id) => !valid.includes(id));
   return stale.length
-    ? `<div class="callout" style="margin-top:18px"><p>These choices belong to your earlier selection. Remove them to finish this step.</p>${stale.map((id) => choiceCheck(id, list, draft[list])).join("")}</div>`
+    ? `<div class="callout" style="margin-top:10px"><p>These choices belong to your earlier selection. Remove them to finish this step.</p>${stale.map((id) => choiceCheck(id, list, draft[list])).join("")}</div>`
     : "";
 }
 function stage() {
   return step === 3 ? 0 : 1;
 }
 function recipeSelects(r) {
-  const study = recipeStudyChoices(
-    preview.stages[stage()],
-    catalogs.inventory.recipes,
-  );
+  const study = recipeStudyChoices(learningState(), catalogs.inventory.recipes);
   const selected = recipeSelections[r.id] ?? study.defaultRecipeIds;
   return [0, 1]
     .map(
@@ -341,15 +446,13 @@ function selectionFor(r) {
     ? {
         recipeIds:
           recipeSelections[r.id] ??
-          recipeStudyChoices(
-            preview.stages[stage()],
-            catalogs.inventory.recipes,
-          ).defaultRecipeIds,
+          recipeStudyChoices(learningState(), catalogs.inventory.recipes)
+            .defaultRecipeIds,
       }
     : {};
 }
 function learning() {
-  const state = preview.stages[stage()];
+  const state = learningState();
   const options = eligibleFirst(
     catalogs.choices.filter(
       (r) =>
@@ -376,14 +479,33 @@ function learning() {
       );
     })
     .join("");
-  return `${heading(`Step ${step + 1} of 8`, stage() ? "Become a hero" : "What you learned before", stage() ? "Build on your class training. Learn abilities or improve discipline ranks." : "Spend your level-0 DP on abilities using the disciplines your origins granted.")}<div class="budget"><strong>${state.dp} DP remaining</strong><small>Level ${stage()} pool · Unspent DP expires at the end of this creation stage.</small></div><details class="planned"><summary>Planned choices (${draft.purchases[stage()].length})</summary><ul>${draft.purchases[stage()].map((p, i) => `<li><span>${esc(name(p.id))}${p.recipeIds ? `<small> · ${p.recipeIds.map(name).map(esc).join(", ")}</small>` : ""}</span>${button("Remove", "remove-purchase", `data-index="${i}"`, "quiet small")}</li>`).join("")}</ul></details><div class="drop-zone" data-drop>Drop an available ability here to learn it.</div>${acquisitions()}${searchRow()}<div class="cards" id="results">${groups || '<p class="empty">No matching choices. Try another keyword or discipline.</p>'}</div>`;
+  return `${heading(`Step ${step + 1} of 8`, mode === "advancement" ? `Level ${preview.development.level} learning` : `Level ${stage()} learning`, stage() ? "Build on your class training. Learn abilities or improve discipline ranks." : "Spend your level-0 DP on abilities using the disciplines your origins granted.")}<details class="planned"><summary>Planned choices (${learningPurchases().length})</summary><ul>${learningPurchases()
+    .map(
+      (p, i) =>
+        `<li><span>${esc(name(p.id))}${p.recipeIds ? `<small> · ${p.recipeIds.map(name).map(esc).join(", ")}</small>` : ""}</span>${button("Remove", "remove-purchase", `data-index="${i}"`, "quiet small")}</li>`,
+    )
+    .join(
+      "",
+    )}</ul></details><div class="drop-zone" data-drop>Drop an available ability here to learn it.</div>${acquisitions()}${searchRow()}${/light.*armor/i.test(query) ? '<p class="inline-help">This rules edition lists Wear Medium Armor and Wear Heavy Armor; it has no Wear Light Armor entry. Search “armor” to see the available training.</p>' : ""}<div class="cards" id="results">${groups || '<p class="empty">No matching choices. Try another keyword or discipline.</p>'}</div>`;
+}
+function acquisitionPath(id) {
+  return mode === "advancement"
+    ? `progression.levels.${preview.development.level}.acquisitions.${id}`
+    : `acquisitions.${id}`;
 }
 function acquisitions() {
-  return (
-    [3, 5].includes(step)
-      ? preview.stages[stage()].abilities
-      : preview.state.abilities
-  )
+  const state =
+    mode === "advancement" || [3, 5].includes(step)
+      ? learningState()
+      : preview.creation.state;
+  return state.abilities
+    .filter(
+      (id) =>
+        mode !== "advancement" ||
+        !preview.levels[preview.development.level].before.abilities.includes(
+          id,
+        ),
+    )
     .map((id) => catalogs.inventory.acquisitions.find((a) => a.id === id))
     .filter(
       (a) =>
@@ -393,18 +515,13 @@ function acquisitions() {
           a.items.includes("item-ordinary-melee-weapon")),
     )
     .map((a) => {
-      const d = draft.acquisitions[a.id] ?? {};
-      return `<details class="planned" ${preview.errors.some((e) => e.code === "acquisition" && e.id === a.id) ? "open" : ""}><summary>${esc(name(a.id))} · Choose your grants</summary><div class="field-grid">${a.weaponChoice ? select("Weapon", `acquisitions.${a.id}.weapon`, option("", "Choose weapon", !d.weapon) + a.weaponChoice.map((id) => option(id, id === "melee" ? "Ordinary melee weapon" : name(id), d.weapon === id)).join("")) : ""}${a.items.includes("item-ordinary-melee-weapon") || a.weaponChoice?.includes("melee") ? select("Melee weapon hands", `acquisitions.${a.id}.meleeHands`, option("", "Choose hands", !d.meleeHands) + [1, 2].map((n) => option(n, `${n} handed`, d.meleeHands === n)).join("")) : ""}</div>${
+      const path = acquisitionPath(a.id),
+        d = getValue(path) ?? {};
+      return `<details class="planned" ${preview.errors.some((e) => e.code === "acquisition" && e.id === a.id) ? "open" : ""}><summary>${esc(name(a.id))} · Granted choices</summary><div class="field-grid">${a.weaponChoice ? select("Weapon", `${path}.weapon`, option("", "Choose weapon", !d.weapon) + a.weaponChoice.map((id) => option(id, id === "melee" ? "Ordinary melee weapon" : id === "ranged" ? "Ranged weapon + d8 ammunition" : name(id), d.weapon === id)).join("")) : ""}${a.items.includes("item-ordinary-melee-weapon") || a.weaponChoice?.includes("melee") ? select("Melee weapon hands", `${path}.meleeHands`, option("", "Choose hands", !d.meleeHands) + [1, 2].map((n) => option(n, `${n} handed`, d.meleeHands === n)).join("")) : ""}</div>${
         a.recipeChoices
           ? `<p class="inline-help">Choose ${a.recipeChoices} recipes</p><div class="cards">${catalogs.inventory.recipes
               .filter((r) => r.genericChoice && r.permissions.includes(a.id))
-              .map((r) =>
-                choiceCheck(
-                  r.id,
-                  `acquisitions.${a.id}.recipes`,
-                  d.recipes ?? [],
-                ),
-              )
+              .map((r) => choiceCheck(r.id, `${path}.recipes`, d.recipes ?? []))
               .join("")}</div>`
           : ""
       }</details>`;
@@ -412,48 +529,251 @@ function acquisitions() {
     .join("");
 }
 function equipment() {
-  return `${heading("Step 7 of 8", "Pack for the road", "A plain worn outfit is included. Spend your starting coins and finish any granted equipment choices.")}<div class="budget"><strong>${preview.inventory.remainingCoins} coins</strong><small>${preview.inventory.bulk} Bulk · ${preview.summary?.capacity ?? "—"} capacity</small></div>${acquisitions()}<details class="planned" open><summary>Shopping list (${draft.shopping.length})</summary><ul>${draft.shopping.map((p, i) => `<li><span>${p.quantity} × ${esc(name(p.id))}</span>${button("Remove", "remove-equipment", `data-index="${i}"`, "quiet small")}</li>`).join("")}</ul></details>${searchRow("equipment")}<div class="cards">${catalogs.inventory.equipment
+  return `${heading("", "Equipment", "")}<label class="inline-toggle coin-override"><input type="checkbox" data-field="coinOverride" ${draft.coinOverride ? "checked" : ""}> Override coin limit${preview.inventory.overBudget ? ` · ${preview.inventory.overBudget} coins over budget` : ""}</label>${acquisitions()}<h3 class="section-title">Starting inventory · grants & purchases</h3>${inventoryTable()}${draft.shopping.length ? `<details class="planned"><summary>Remove purchased items</summary><ul>${draft.shopping.map((item, i) => `<li><span>${item.quantity} × ${esc(name(item.id))}</span>${button("Remove", "remove-equipment", `data-index="${i}"`, "small")}</li>`).join("")}</ul></details>` : ""}<h3 class="section-title">Buy equipment</h3>${searchRow("equipment")}<div class="table-wrap"><table class="market-table"><thead><tr><th>Item</th><th>Coins</th><th>Bulk</th><th>Supply</th><th>Qty</th><th>Hands</th><th></th></tr></thead><tbody>${catalogs.inventory.equipment
     .filter(matches)
     .map(
       (r) =>
-        `<article class="choice-card ${r.specialOrder ? "unavailable" : ""}"><h3>${esc(r.name)}</h3><p class="card-meta">${r.price} coins · ${r.bulk} Bulk${r.inventoryDie ? ` · d${r.inventoryDie} supply` : ""}</p>${r.specialOrder ? '<p class="requirement">Special order · arrange availability with your DA.</p>' : `<div class="field-grid"><label>Quantity<input type="number" id="quantity-${r.id}" min="1" max="10000" value="1" step="1"></label>${r.handChoices.length ? `<label>Hands<select id="hands-${r.id}">${r.handChoices.map((n) => option(n, n, false)).join("")}</select></label>` : ""}</div>`}<div class="card-actions">${button("Read rules", "reference", `data-id="${r.id}"`, "quiet small")}${button("Add to pack", "equipment", `data-id="${r.id}" ${r.specialOrder ? "disabled" : ""}`, "small")}</div></article>`,
+        `<tr><td>${button(esc(r.name), "reference", `data-id="${r.id}"`, "table-link")}</td><td>${r.price}</td><td>${r.bulk}</td><td>${r.inventoryDie ? `d${r.inventoryDie}` : "—"}</td><td><input aria-label="Quantity ${esc(r.name)}" type="number" id="quantity-${r.id}" min="1" max="10000" value="1" step="1"></td><td>${r.handChoices.length ? `<select aria-label="Hands ${esc(r.name)}" id="hands-${r.id}">${r.handChoices.map((n) => option(n, n, false)).join("")}</select>` : "—"}</td><td>${r.specialOrder ? "<small>Special order</small>" : button("Buy", "equipment", `data-id="${r.id}"`, "small")}</td></tr>`,
     )
-    .join("")}</div>`;
+    .join("")}</tbody></table></div>`;
 }
+function levelDraft() {
+  draft.progression ??= { level: 1, levels: {} };
+  return (draft.progression.levels[draft.progression.level] ??=
+    emptyLevelDraft());
+}
+function learningState() {
+  return mode === "advancement"
+    ? preview.levels[preview.development.level].state
+    : preview.stages[stage()];
+}
+function learningPurchases() {
+  return mode === "advancement"
+    ? levelDraft().purchases
+    : draft.purchases[stage()];
+}
+function contextStrip() {
+  if (mode === "advancement" || [3, 5].includes(step)) {
+    const state = learningState();
+    return `<div class="context-strip"><strong data-dp-remaining>${state.dp} DP remaining</strong><span>Level ${mode === "advancement" ? preview.development.level : stage()}</span><div class="discipline-strip" aria-label="Current disciplines">${
+      Object.entries(state.ranks)
+        .map(
+          ([id, rank]) =>
+            `<span class="chip">${symbol(id)}${esc(name(id))} ${rank}</span>`,
+        )
+        .join("") ||
+      "<small>Choose origins to receive starting disciplines.</small>"
+    }</div></div>`;
+  }
+  if (step === 6) return `<div class="context-strip">${inventoryStats()}</div>`;
+  return "";
+}
+function advancementBuilder() {
+  const level = preview.development.level;
+  if (level < 2) {
+    mode = "sheet";
+    tab = "Development";
+    return sheet();
+  }
+  const cls = get(draft.classId),
+    pending = preview.levels[level].before.pendingSignatures ?? [];
+  const choices = pending
+    .map(
+      (tier) =>
+        `<section class="signature-choice"><h3>Level ${tier} signature</h3><div class="cards">${(cls?.signatures[tier] ?? []).map((id) => `<article class="choice-card ${levelDraft().signatures[tier] === id ? "chosen" : ""}"><h3>${esc(name(id))}</h3><div class="card-actions">${button("Read", "reference", `data-id="${esc(id)}"`, "small quiet")}${button(levelDraft().signatures[tier] === id ? "Selected" : "Choose", "advance-signature", `data-id="${esc(id)}" data-tier="${tier}"`, "small")}</div></article>`).join("")}</div></section>`,
+    )
+    .join("");
+  return `<div class="wizard"><nav class="edge-tabs" aria-label="Advancement">${button(navIcon("Development", "Development"), "sheet-development", 'aria-label="Development"')}${button(navIcon("Abilities", `Level ${level} learning`), "advance", `aria-label="Level ${level} learning" aria-current="step"`)}</nav><div class="wizard-body">${contextStrip()}<section id="panel" class="panel">${choices}${learning()}${
+    preview.errors.filter((e) => e.level === level).length
+      ? `<ul class="error-list">${preview.errors
+          .filter((e) => e.level === level)
+          .map(
+            (e) =>
+              `<li>${esc(e.text ?? (e.reasons ?? []).map((r) => r.text).join(" "))}</li>`,
+          )
+          .join("")}</ul>`
+      : ""
+  }</section><footer class="wizard-footer">${button("Back to development", "sheet-development")}<small>Choices saved automatically</small>${button("Done", "sheet-development", "", "primary")}</footer></div></div>`;
+}
+
+function popup(titleText, body) {
+  const dialog = $("#reference");
+  dialog.innerHTML = `<header><h2 id="reference-title">${esc(titleText)}</h2>${button("Close", "close-reference", "", "quiet")}</header><div class="reference-body">${body}</div>`;
+  if (!dialog.open) dialog.showModal();
+  dialog.scrollTop = 0;
+}
+function library() {
+  const saved = JSON.parse(localStorage.getItem(libraryKey) ?? "[]");
+  if (
+    !Array.isArray(saved) ||
+    saved.some(
+      (r) =>
+        !r ||
+        typeof r.id !== "string" ||
+        typeof r.name !== "string" ||
+        !r.character,
+    )
+  )
+    throw new Error(
+      "The character library could not be read. Its contents have been preserved.",
+    );
+  return saved;
+}
+function saveDialog() {
+  const current = library().find((c) => c.id === saveId);
+  popup(
+    "Save character",
+    `<label>Save name<input id="save-name" maxlength="200" value="${esc(current?.name ?? draft.name ?? "New hero")}"></label><div class="dialog-actions">${button("Save", "save-confirm", "", "primary")}${current ? button("Save a copy", "save-copy") : ""}</div>`,
+  );
+  $("#save-name").focus();
+}
+function saveCharacter(copy = false) {
+  const label = $("#save-name").value.trim() || draft.name || "New hero";
+  const records = library(),
+    id = (!copy && saveId) || crypto.randomUUID();
+  const entry = {
+    id,
+    name: label,
+    updated: new Date().toISOString(),
+    character: JSON.parse(writePortableCharacter(draft, catalogs)),
+  };
+  const index = records.findIndex((r) => r.id === id);
+  if (index < 0) records.push(entry);
+  else records[index] = entry;
+  localStorage.setItem(libraryKey, JSON.stringify(records));
+  saveId = id;
+  persist();
+  $("#reference").close();
+  notice(`Saved ${label} in this browser.`);
+}
+function libraryDialog() {
+  const records = library();
+  popup(
+    "Saved characters",
+    records.length
+      ? `<div class="saved-characters">${records.map((r) => `<article><div><strong>${esc(r.name)}</strong><small>${esc(r.character?.draft?.name ?? "")} · Level ${Number(r.character?.draft?.progression?.level ?? 1)}</small></div>${button("Load", "load-saved", `data-id="${esc(r.id)}"`, "small primary")}${button("Delete", "delete-saved", `data-id="${esc(r.id)}"`, "small quiet")}</article>`).join("")}</div>`
+      : "<p>No saved characters yet. Use Save to keep a named character in this browser.</p>",
+  );
+}
+function loadSaved(id) {
+  const entry = library().find((r) => r.id === id);
+  if (!entry) throw new Error("That save is no longer in this browser.");
+  draft = readPortableCharacter(entry.character, catalogs).draft;
+  saveId = id;
+  mode = "sheet";
+  tab = "Main";
+  edit = false;
+  isExample = false;
+  normalizeShoppingIds();
+  persist();
+  render({ focusHeading: true });
+  $("#reference").close();
+  notice(`Loaded ${entry.name}.`);
+}
+function deleteSaved(id) {
+  const records = library(),
+    entry = records.find((r) => r.id === id);
+  if (!entry || !confirm(`Delete the saved copy of ${entry.name}?`)) return;
+  localStorage.setItem(
+    libraryKey,
+    JSON.stringify(records.filter((r) => r.id !== id)),
+  );
+  if (saveId === id) {
+    saveId = null;
+    persist();
+  }
+  libraryDialog();
+}
+function normalizeShoppingIds() {
+  draft.shopping.forEach((item, index) => {
+    if (item.instanceId) return;
+    item.instanceId = `shop-${crypto.randomUUID()}`;
+    if (draft.loadout?.[`purchase:${index}`]) {
+      draft.loadout[item.instanceId] = draft.loadout[`purchase:${index}`];
+      delete draft.loadout[`purchase:${index}`];
+    }
+  });
+}
+function recipeRoll(id, recipeId) {
+  const ability = get(id),
+    recipe = get(recipeId),
+    attribute = attributeFor(ability);
+  if (
+    !attribute ||
+    !preview.state.abilities.includes(id) ||
+    !preview.state.recipes.includes(recipeId)
+  )
+    throw new Error("Choose a known recipe and its learned crafting ability.");
+  popup(
+    `Craft ${recipe.name}`,
+    `<p><strong>${esc(ability.name)}</strong> · ${title(attribute)} ${signed(draft.attributes[attribute])} · ${recipe.attemptMinutes} min per attempt</p><label>Boons / Banes <output id="roll-net-value">0</output><input id="recipe-net" type="range" min="-3" max="3" step="1" value="0"></label><div id="recipe-roll-result" role="status" aria-live="polite"></div><div class="dialog-actions">${button("Roll", "roll-recipe", `data-id="${esc(id)}"`, "primary")}</div><details><summary>Recipe rules</summary>${markdown(references.records[recipeId]?.markdown ?? "")}</details>`,
+  );
+}
+function rollRecipeDice(id) {
+  const attribute = attributeFor(get(id)),
+    net = Number($("#recipe-net").value);
+  const plan = rollPlan({
+    attribute: draft.attributes[attribute],
+    boons: Math.max(0, net),
+    banes: Math.max(0, -net),
+  });
+  const faces = Array.from({ length: plan.count }, () => {
+    const n = new Uint32Array(1);
+    do {
+      crypto.getRandomValues(n);
+    } while (n[0] >= 4294967292);
+    return 1 + (n[0] % 6);
+  });
+  const retained = [...faces]
+    .sort((a, b) => (net < 0 ? a - b : b - a))
+    .slice(0, 3);
+  const result = classifyRoll(retained, plan.attribute);
+  $("#recipe-roll-result").innerHTML =
+    `<strong>${title(result.tier)} · ${result.total}</strong><p>${faces.join(" · ")} → keep ${retained.join(" + ")} ${signed(plan.attribute)}${result.natural !== "none" ? ` · ${result.natural === "critical" ? "Natural 666: additional benefit" : "Natural 111: complication"}` : ""}</p>`;
+}
+document.addEventListener("input", (event) => {
+  if (event.target.id === "recipe-net")
+    $("#roll-net-value").textContent = signed(Number(event.target.value));
+});
 
 function render({ focusHeading = false } = {}) {
   pendingRender = false;
-  preview = creationPreview(draft, catalogs.choices, catalogs.inventory);
+  preview = workshopCharacter(draft, catalogs);
   const active = document.activeElement,
-    key = active?.dataset.field,
-    list = active?.dataset.list,
+    identity = Object.entries(active?.dataset ?? {}),
     value = active?.value,
     id = active?.id;
   const position =
     active && ["text", "search"].includes(active.type)
       ? active.selectionStart
       : null;
-  const scroll = window.scrollY;
-  app.innerHTML = header() + (mode === "builder" ? builder() : sheet());
+  const scroll = $("#panel")?.scrollTop ?? 0;
+  app.innerHTML =
+    header() +
+    (mode === "builder"
+      ? builder()
+      : mode === "advancement"
+        ? advancementBuilder()
+        : sheet());
   app.removeAttribute("aria-busy");
-  const replacement = key
-    ? [...app.querySelectorAll("[data-field]")].find(
-        (e) => e.dataset.field === key,
-      )
-    : list
-      ? [...app.querySelectorAll("[data-list]")].find(
-          (e) => e.dataset.list === list && e.value === value,
+  // Preserve focus through live recalculation, including origin selects and
+  // play controls whose identity is not a creation field path.
+  const replacement = id
+    ? document.getElementById(id)
+    : identity.length
+      ? [...app.querySelectorAll("button,input,select,textarea")].find(
+          (e) =>
+            identity.every(([key, value]) => e.dataset[key] === value) &&
+            (!active.dataset.list || e.value === value),
         )
-      : id
-        ? document.getElementById(id)
-        : null;
+      : null;
   if (focusHeading) $("#panel-title")?.focus({ preventScroll: true });
   else if (replacement) {
     replacement.focus({ preventScroll: true });
     if (position !== null && replacement.setSelectionRange)
       replacement.setSelectionRange(position, position);
   }
-  window.scrollTo(0, scroll);
+  if ($("#panel")) $("#panel").scrollTop = focusHeading ? 0 : scroll;
 }
 function set(path, value) {
   const keys = path.split(".");
@@ -465,8 +785,12 @@ function getValue(path) {
   return path.split(".").reduce((value, key) => value?.[key], draft);
 }
 function updateField(target) {
-  if (target.dataset.field) {
-    let value = target.value;
+  if (target.dataset.origin) {
+    const [id, pair] = target.value.split("|");
+    if (id) draft[target.dataset.origin] = { id, pair: Number(pair) };
+    else delete draft[target.dataset.origin];
+  } else if (target.dataset.field) {
+    let value = target.type === "checkbox" ? target.checked : target.value;
     if (
       target.type === "number" ||
       target.dataset.field.endsWith(".pair") ||
@@ -519,24 +843,20 @@ function exportFile(ready = false) {
   }.hol.json`;
   link.click();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
-  notice(
-    ready
-      ? "Character exported. Import it through Create a Hero in Foundry."
-      : "Character draft exported.",
-  );
+  notice(ready ? "Character exported." : "Character draft exported.");
 }
 function learn(id) {
   const r = get(id),
     selection = selectionFor(r),
     result = purchaseEligibility(
       r,
-      preview.stages[stage()],
+      learningState(),
       catalogs.choices,
       selection,
     );
   if (!result.eligible)
     throw new Error(result.reasons.map((r) => r.text).join(" "));
-  draft.purchases[stage()].push({ id, ...selection });
+  learningPurchases().push({ id, ...selection });
   notice(`${r.name} added.`);
 }
 function inline(text) {
@@ -614,6 +934,15 @@ function showReference(id) {
 async function action(target) {
   const a = target.dataset.action;
   if (a === "reference") return showReference(target.dataset.id);
+  if (a === "save") return saveDialog();
+  if (a === "library") return libraryDialog();
+  if (a === "save-confirm" || a === "save-copy")
+    return saveCharacter(a === "save-copy");
+  if (a === "load-saved") return loadSaved(target.dataset.id);
+  if (a === "delete-saved") return deleteSaved(target.dataset.id);
+  if (a === "recipe-roll")
+    return recipeRoll(target.dataset.id, target.dataset.recipeId);
+  if (a === "roll-recipe") return rollRecipeDice(target.dataset.id);
   if (a === "close-reference") return $("#reference").close();
   if (a === "import") return $("#import-file").click();
   if (a === "export" || a === "ready-export")
@@ -622,15 +951,50 @@ async function action(target) {
     if (
       !isExample &&
       !confirm(
-        "Start a new hero? Export your current draft first if you want to keep it.",
+        "Start a new hero? Save or export your current draft first if you want to keep it.",
       )
     )
       return;
     draft = newCreationDraft();
+    saveId = null;
     isExample = false;
     mode = "builder";
     step = 0;
     edit = false;
+  }
+  if (a === "level-up" || a === "level-down") {
+    draft.progression ??= { level: 1, levels: {} };
+    draft.progression.level = Math.max(
+      1,
+      Math.min(100, draft.progression.level + (a === "level-up" ? 1 : -1)),
+    );
+  }
+  if (a === "advance") {
+    mode = "advancement";
+    edit = false;
+    query = "";
+    filter = "all";
+    levelDraft();
+  }
+  if (a === "sheet-development") {
+    mode = "sheet";
+    tab = "Development";
+    edit = false;
+  }
+  if (a === "advance-signature")
+    levelDraft().signatures[target.dataset.tier] = target.dataset.id;
+  if (a === "equip") {
+    const item = preview.inventory.items.find(
+      (i) => i.instanceId === target.dataset.instance,
+    );
+    if (!item) return;
+    draft.loadout ??= {};
+    const active = item.worn || item.held;
+    draft.loadout[item.instanceId] = {
+      carried: true,
+      worn: !active && !item.hands,
+      held: !active && Boolean(item.hands),
+    };
   }
   if (a === "more") visibleChoices[target.dataset.group] += 8;
   if (a === "edit") edit = !edit;
@@ -641,7 +1005,8 @@ async function action(target) {
     visibleChoices = { true: 6, false: 4 };
   }
   if (a === "builder") {
-    mode = "builder";
+    mode = preview.development.level > 1 ? "advancement" : "builder";
+    if (mode === "advancement") levelDraft();
     edit = false;
   }
   if (a === "sheet") {
@@ -669,7 +1034,7 @@ async function action(target) {
   if (a === "signature") draft.signatureId = target.dataset.id;
   if (a === "purchase") learn(target.dataset.id);
   if (a === "remove-purchase")
-    draft.purchases[stage()].splice(Number(target.dataset.index), 1);
+    learningPurchases().splice(Number(target.dataset.index), 1);
   if (a === "remove-equipment")
     draft.shopping.splice(Number(target.dataset.index), 1);
   if (a === "equipment") {
@@ -678,13 +1043,27 @@ async function action(target) {
       hands = Number($(`#hands-${r.id}`)?.value ?? 0);
     if (!Number.isSafeInteger(quantity) || quantity < 1 || quantity > 10000)
       throw new Error("Choose a positive whole quantity, up to 10,000.");
-    if (r.specialOrder || r.price * quantity > preview.inventory.remainingCoins)
-      throw new Error("There are not enough starting coins for this purchase.");
-    draft.shopping.push({ id: r.id, quantity, hands });
+    if (r.specialOrder)
+      throw new Error("Special-order availability is arranged with your DA.");
+    if (
+      !draft.coinOverride &&
+      r.price * quantity > preview.inventory.remainingCoins
+    )
+      throw new Error(
+        "This exceeds your starting coins. Enable Override coin limit on Equipment to continue.",
+      );
+    draft.shopping.push({
+      id: r.id,
+      quantity,
+      hands,
+      instanceId: `shop-${crypto.randomUUID()}`,
+    });
   }
   persist();
   render({
     focusHeading: [
+      "advance",
+      "sheet-development",
       "tab",
       "step",
       "next",
@@ -713,12 +1092,51 @@ for (const name of ["pointerup", "pointercancel"])
     }, 0);
   });
 app.addEventListener("change", (event) => {
+  const t = event.target;
+  if (t.dataset.loadout) {
+    draft.loadout ??= {};
+    draft.loadout[t.dataset.loadout] ??= {};
+    draft.loadout[t.dataset.loadout].carried = t.checked;
+    if (!t.checked)
+      Object.assign(draft.loadout[t.dataset.loadout], {
+        held: false,
+        worn: false,
+      });
+    persist();
+    render();
+    return;
+  }
+  if (t.dataset.basic || t.dataset.basicGroup) {
+    draft.basicActions ??= {};
+    if (t.dataset.basic) draft.basicActions[t.dataset.basic] = t.checked;
+    else
+      for (const entry of mainActions(preview, draft, catalogs).filter(
+        (e) => e.basic && actionTiming(e.record).includes(t.dataset.basicGroup),
+      ))
+        draft.basicActions[entry.record.id] = t.checked;
+    persist();
+    render();
+    return;
+  }
   if (event.target.id === "filter") {
     filter = event.target.value;
     render();
   } else updateField(event.target);
 });
 app.addEventListener("input", (event) => {
+  const t = event.target;
+  if (
+    t.dataset.field?.startsWith("attributes.") &&
+    t.value !== "" &&
+    Number.isInteger(Number(t.value)) &&
+    Number(t.value) >= -2 &&
+    Number(t.value) <= 2
+  ) {
+    set(t.dataset.field, Number(t.value));
+    persist();
+    render();
+    return;
+  }
   if (event.target.id === "search") {
     query = event.target.value;
     visibleChoices = { true: 6, false: 4 };
@@ -790,13 +1208,19 @@ $("#import-file").addEventListener("change", async (event) => {
     )
       return;
     draft = result.draft;
+    normalizeShoppingIds();
+    saveId = null;
     mode = "builder";
     step = 7;
     isExample = false;
     edit = false;
+    if ((draft.progression?.level ?? 1) > 1) {
+      mode = "sheet";
+      tab = "Development";
+    }
     persist();
     render({ focusHeading: true });
-    notice("Character imported. Review your choices.");
+    notice("Character imported.");
   } catch (e) {
     notice(e.message);
   } finally {
@@ -832,8 +1256,15 @@ try {
     const saved = JSON.parse(localStorage.getItem(storageKey) ?? "null");
     if (saved) {
       draft = readPortableCharacter(saved.character, catalogs).draft;
-      mode = saved.mode === "builder" ? "builder" : "sheet";
-      tab = tabs.includes(saved.tab) ? saved.tab : "Encounter";
+      mode = ["builder", "advancement"].includes(saved.mode)
+        ? saved.mode
+        : "sheet";
+      saveId = typeof saved.saveId === "string" ? saved.saveId : null;
+      tab = tabs.includes(saved.tab)
+        ? saved.tab
+        : saved.tab === "Belongings"
+          ? "Inventory"
+          : "Main";
       step = Number.isInteger(saved.step)
         ? Math.max(0, Math.min(7, saved.step))
         : 0;
@@ -844,6 +1275,7 @@ try {
       "The saved draft could not be opened. It has not been overwritten; export a new draft only when you are ready.",
     );
   }
+  normalizeShoppingIds();
   render();
 } catch (e) {
   app.removeAttribute("aria-busy");

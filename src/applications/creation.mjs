@@ -10,6 +10,7 @@ import { ATTRIBUTES } from "../rules/character.mjs";
 import { campaignLanguageOptions } from "../rules/languages.mjs";
 import { getCampaignLanguageConfiguration } from "../services/languages.mjs";
 import { abilityReferenceStatus } from "../rules/ability-definitions.mjs";
+import { readPortableCharacter, MAX_CHARACTER_BYTES } from "../rules/portable-character.mjs";
 import {
   eligibleFirst,
   purchaseEligibility,
@@ -44,6 +45,7 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
       removePurchase: CreationWizard.removePurchase,
       addEquipment: CreationWizard.addEquipment,
       removeEquipment: CreationWizard.removeEquipment,
+      importCharacter: CreationWizard.importCharacter,
     },
   };
   static PARTS = {
@@ -437,6 +439,30 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
   }
   static async saveDraft() {
     await this.act(async () => {});
+  }
+  static importCharacter() {
+    if (this.busy || !this.actor.isOwner) return;
+    if (this.actor.getFlag("heroes-of-legend", "creationReceipt")) {
+      ui.notifications.warn("Import creation choices into a new character. This hero has already completed creation.");
+      return;
+    }
+    const input = document.createElement("input");
+    input.type = "file";
+    input.accept = ".json,application/json";
+    input.addEventListener("change", async () => {
+      const file = input.files?.[0];
+      if (!file) return;
+      try {
+        if (file.size > MAX_CHARACTER_BYTES) throw new Error("Character file is too large.");
+        const text = await file.text();
+        if (this.actor.getFlag("heroes-of-legend", "creationReceipt"))
+          throw new Error("This hero has already completed creation.");
+        const languages = this.requireRenderedLanguageBasis();
+        const { draft } = readPortableCharacter(text, this.catalogs, languages.definitions);
+        await this.act(async () => { this.draft = draft; this.step = 7; });
+      } catch (error) { ui.notifications.error(error.message); }
+    }, { once: true });
+    input.click();
   }
   static async navigate(event, target) {
     await this.act(async () => {

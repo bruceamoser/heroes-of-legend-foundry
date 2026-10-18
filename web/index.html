@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#15221c" />
+    <title>Heroes of Legend · Character workshop</title>
+    <link rel="icon" href="assets/crest.webp" />
+    <link rel="stylesheet" href="workshop.css" />
+    <script type="module" src="workshop.mjs"></script>
+  </head>
+  <body>
+    <a class="skip" href="#panel">Skip to character</a>
+    <header class="site-header">
+      <a href="./" class="brand"
+        ><img src="assets/crest.webp" alt="" /><span
+          >Heroes of Legend<small>Character workshop</small></span
+        ></a
+      ><span class="edition">Player’s book · v16.1.0</span>
+    </header>
+    <main id="app" aria-busy="true">
+      <p class="loading">Opening your character workshop…</p>
+    </main>
+    <div id="notice" role="status" aria-live="polite"></div>
+    <dialog id="reference" aria-labelledby="reference-title"></dialog>
+    <input
+      type="file"
+      id="import-file"
+      accept=".json,application/json"
+      hidden
+    />
+    <footer class="site-footer">
+      Your draft stays in this browser. Export JSON to keep a copy or bring your
+      hero into Foundry.
+    </footer>
+  </body>
+</html>

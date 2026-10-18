@@ -200,9 +200,9 @@ HOL_TEST_URL=http://127.0.0.1:30014 HOL_TEST_ALLOW_WRITES=1 HOL_TEST_ISOLATED_WO
 ```
 
 Integration review rebased the pack pipeline onto the merged compact-art pipeline
-at `bf54200`. Build retains the exact-set artwork validation and byte report,
+at `26357b4`, including the merged Basic Melee handler. Build retains the exact-set artwork validation and byte report,
 then compiles all three native packs through the official CLI. Node 24.22.0
-`npm run check` passes build, validation and all 260 tests, including complete
+`npm run check` passes build, validation and all 272 tests, including complete
 artwork decoding and exact-set rejection cases. Current Evasion
 and Threat summary labels follow edited numeric modifiers while retaining the
 pinned source-stat prose as provenance. Native prototype Token dimensions now
@@ -223,8 +223,10 @@ asserts a strict Red Dragon Actor and 3x3 Token, captures normal and 500px-wide
 sheet references, and verifies cleanup and zero page errors. Reviewed screenshots
 show readable headings/tables, wrapped narrow-screen cells and a compact default
 defense summary. All fixtures delete only their own documents. These results
-cover the current `bf54200` integration baseline; later main integration requires
-its own applicable checks.
+were captured before the final rebase from `bf54200` onto `26357b4`. That rebase
+was conflict-free and changed no creature production files or generated Actor
+sources. Combined regeneration preserves the current Basic Melee handler and
+Item pack hashes byte-for-byte; the final integrated Node check passes above.
 
 ### Guided creation draft
 

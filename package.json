@@ -76,7 +76,8 @@
     "validate:summon-packs": "node scripts/generate-content-packs.mjs --check",
     "test:compendium-portraits": "node scripts/check-compendium-portraits.mjs",
     "test:compendium-content": "node scripts/check-creature-packs.mjs && node scripts/check-summon-packs.mjs && node scripts/check-compendium-portraits.mjs",
-    "test:creature-actions": "node scripts/check-creature-actions.mjs"
+    "test:creature-actions": "node scripts/check-creature-actions.mjs",
+    "test:installed-core": "node scripts/check-installed-core.mjs"
   },
   "devDependencies": {
     "@foundryvtt/foundryvtt-cli": "3.0.5",

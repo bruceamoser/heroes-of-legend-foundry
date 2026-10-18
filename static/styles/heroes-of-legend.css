@@ -277,3 +277,6 @@
 .hol-potion-proposal .hol-banner { background:#15221c; color:#f1e6ce; border:1px solid #b39253; }
 .hol-potion-proposal .hol-banner h1 { color:#f1e6ce; }
 .heroes-of-legend .hol-reference-picker input[type=checkbox] { width:auto; height:auto; }
+
+.heroes-of-legend.hol-reference-drop-hover { outline: 2px solid var(--hol-gold); outline-offset: -3px; }
+.heroes-of-legend [data-reference-drop-status]:empty { display: none; }

@@ -1,4 +1,4 @@
-import { referencePickerOptions, readReferenceSelection, bindReferenceSearch } from "../services/reference-play.mjs";
+import { referencePickerOptions, readReferenceSelection, bindReferenceSearch, bindReferenceDrops } from "../services/reference-play.mjs";
 import {
   situationalRollDraft,
   situationalAdjustmentLabel,
@@ -243,6 +243,10 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       this.preview();
     });
     bindReferenceSearch(this.element);
+    bindReferenceDrops(this.element, () => ({ actor: this.actor, options: { mode: this.mode, defenderTokenUuid: this.defenderTokenUuid } }), async () => {
+      this.readDraft();
+      await this.preview();
+    });
     this.preview();
   }
   static async changeDefender() {

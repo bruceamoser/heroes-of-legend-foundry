@@ -11,6 +11,7 @@
   </label>
   {{#if defense}}<p>Rolling this defense spends no Reaction. Any player may roll for this defender.</p>{{/if}}
   {{#if abilities}}<h2>Defense abilities</h2><ul class="hol-defense-abilities">{{#each abilities}}<li data-item-id="{{itemId}}" class="{{#unless available}}hol-unavailable{{/unless}}"><button type="button" data-action="useAbility" data-item-id="{{itemId}}" {{#unless available}}disabled{{/unless}}>{{#if available}}Use {{else}}{{/if}}{{name}}</button><span class="hol-ability-reason">{{reasonText}}</span></li>{{/each}}</ul>{{/if}}
+  <p data-reference-drop-status role="status" aria-live="polite"></p>
   {{#if references}}<details class="hol-context-options hol-reference-picker"><summary>Ability references (optional)</summary>
     <p>Reference only · no automatic bonus or cost</p>
     <label>Find ability<input type="search" data-reference-search></label>

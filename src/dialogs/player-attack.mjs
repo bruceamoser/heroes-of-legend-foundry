@@ -1,4 +1,4 @@
-import { referencePickerOptions, readReferenceSelection, bindReferenceSearch } from "../services/reference-play.mjs";
+import { referencePickerOptions, readReferenceSelection, bindReferenceSearch, bindReferenceDrops } from "../services/reference-play.mjs";
 import {
   situationalRollDraft,
   situationalAdjustmentLabel,
@@ -287,6 +287,10 @@ export class BasicMeleeDialog extends foundry.applications.api.HandlebarsApplica
       await this.render();
     });
     bindReferenceSearch(this.element);
+    bindReferenceDrops(this.element, () => ({ actor: this.item.actor, options: {} }), async () => {
+      this.readDraft();
+      await this.preview();
+    });
     this.preview();
   }
 

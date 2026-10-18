@@ -986,11 +986,20 @@ and enabled only read-only reference buttons for observers. Node 24 check passes
 including real drag/reorder, click/keyboard, permission changes, deleted/modified
 sources and unlinked-token identity.
 
-Remaining drag/drop matrix work is unchanged: owned abilities dropped into roll
-dialog selection, cross-character equipment transfer, compendium acquisition and
-charactermancer slot drops, inventory container moves, creature/summon scene
-drops, Actor/token targeting, rules links, detached-window coverage, visual
-valid/invalid drag feedback and the complete permission/error matrix.
+The later #15 reference-drop increment selects an existing owned ability reference
+in roll and player-attack dialogs through the same validation as the checkbox
+picker. It adds no mechanical bonus, activation, grant or cost. Persistent outer
+shells bind one delegated drop listener across rerenders; live UUID, Actor identity
+and current visibility are rechecked. Focused tests cover repeated binding,
+foreign/compendium/deleted/wrong-type drops, stale context and legitimate visible
+any-player defense references. Native reference-drop acceptance remains pending.
+
+The original matrix is broader than this increment. Native targeting supersedes
+Actor-to-target drop slots; specialty/summon lifecycle resolution remains manual
+where approved. Cross-character transfer, containers and detached-window parity
+need their own evidence. Current normal/narrow screenshots establish readable
+forest/gold/parchment styling, not complete T94–T95 or decorative book parity;
+explicit light/dark/detached coverage remains part of the final visual audit.
 
 
 Integrated shortcut validation: Node 24 checks and the full Foundry 14.369

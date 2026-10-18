@@ -44,7 +44,7 @@ try {
           message.getFlag("heroes-of-legend", "abilityReference")?.itemUuid === item.uuid)
         fixture.messages.push(message.id);
     });
-    return { actor: actor.id, item: item.id, itemUuid: item.uuid, users: [...fixture.users] };
+    return { actor: actor.id, item: item.id, itemUuid: item.uuid, compendiumUuid: source.uuid, users: [...fixture.users] };
   });
   await login(owner, "HOL134 Owner"); await login(other, "HOL134 Other");
   await owner.evaluate(async ({ actor, item }) => game.actors.get(actor).items.get(item).sheet.render({ force: true }), fixture);
@@ -70,12 +70,28 @@ try {
   await owner.evaluate(async id => {
     const { promptAttributeRoll } = await import("/systems/heroes-of-legend/dialogs/attribute-roll.mjs");
     await game.settings.set("core", "messageMode", "blind");
-    await promptAttributeRoll(game.actors.get(id), "knowledge");
+    const actor = game.actors.get(id);
+    actor.sheet.setPosition({ left: 10, top: 40, width: 500 });
+    globalThis.__holReferenceDropDialog = await promptAttributeRoll(actor, "knowledge");
+    __holReferenceDropDialog.setPosition({ left: 650, top: 40, width: 600 });
+    await __holReferenceDropDialog.render({ force: true });
+    await __holReferenceDropDialog.render({ force: true });
   }, fixture.actor);
   const dialog = owner.locator(".hol-roll-dialog");
   const formula = await dialog.locator("output").innerText();
-  await dialog.locator(".hol-reference-picker summary").click();
+  await owner.evaluate(({ compendiumUuid }) => {
+    const transfer = new DataTransfer();
+    transfer.setData("text/plain", JSON.stringify({ type: "Item", uuid: compendiumUuid }));
+    document.querySelector(".hol-roll-dialog").dispatchEvent(new DragEvent("drop", { dataTransfer: transfer, bubbles: true, cancelable: true }));
+  }, fixture);
+  await owner.waitForFunction(() => document.querySelector(".hol-roll-dialog [data-reference-drop-status]")?.textContent.includes("Compendium drops cannot grant"));
+  assert.equal(await dialog.getByRole("checkbox", { name: "Winter Hold", exact: true }).isChecked(), false);
+  await owner.locator(`.hol-character [data-item-id="${fixture.item}"]`).dragTo(dialog);
+  await owner.waitForFunction(() => document.querySelector(".hol-roll-dialog [data-reference-id]")?.checked === true);
   await dialog.getByRole("searchbox", { name: "Find ability" }).fill("Winter");
+  assert.equal(await dialog.getByRole("checkbox", { name: "Winter Hold", exact: true }).isChecked(), true);
+  // The existing keyboard/click selector remains equivalent to the drop.
+  await dialog.getByRole("checkbox", { name: "Winter Hold", exact: true }).uncheck();
   await dialog.getByRole("checkbox", { name: "Winter Hold", exact: true }).check();
   assert.equal(await dialog.locator("output").innerText(), formula);
   await mkdir("test-results", { recursive: true });
@@ -96,7 +112,7 @@ try {
   assert.equal(await other.evaluate(id => game.messages.get(id)?.isContentVisible === true, result.id), false);
   assert.equal(await other.locator(`[data-message-id="${result.id}"] .hol-roll-references`).count(), 0);
   assert.deepEqual(errors, []);
-  console.log("PASS: owned sheet/list reference posts, exact identity and safe full text, owner denial, searchable roll reference with unchanged dice, blind privacy, zero page errors.");
+  console.log("PASS: owned sheet/list reference posts, exact identity and safe full text, owner denial, native reference drop after rerender, rejected compendium drop, searchable/click reference with unchanged dice, blind privacy, zero page errors.");
 } finally {
   try {
     if (fixture) await owner.evaluate(async () => game.settings.set("core", "messageMode", "public"));

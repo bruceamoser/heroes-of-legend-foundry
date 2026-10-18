@@ -28,6 +28,7 @@
     <input type="range" name="adjustment" min="-3" max="3" step="1" value="{{draft.adjustment}}" aria-label="Boons or Banes" aria-valuetext="{{adjustmentLabel}}">
     <span class="hol-adjustment-scale" aria-hidden="true"><span>−3 Banes</span><span>0</span><span>+3 Boons</span></span>
   </label>
+  <p data-reference-drop-status role="status" aria-live="polite"></p>
   {{#if references}}<details class="hol-context-options hol-reference-picker"><summary>Ability references (optional)</summary>
     <p>Reference only · no automatic bonus or cost</p>
     <label>Find ability<input type="search" data-reference-search></label>

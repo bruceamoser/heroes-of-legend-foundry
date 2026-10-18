@@ -1,0 +1,149 @@
+{
+  "_key": "!actors!b9e330a0e476325c",
+  "_id": "b9e330a0e476325c",
+  "name": "Zombie Shambler",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "prototypeToken": {
+    "width": 1,
+    "height": 1
+  },
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 1
+      },
+      "fortitude": {
+        "base": 1
+      },
+      "agility": {
+        "base": -2
+      },
+      "guile": {
+        "base": -2
+      },
+      "knowledge": {
+        "base": -2
+      },
+      "reason": {
+        "base": -1
+      }
+    },
+    "attributesSource": "Brawn +1; Fortitude +1; Agility -2; Guile -2; Knowledge -2; Reason -1",
+    "health": {
+      "value": 16,
+      "baseMax": 16,
+      "sourceText": "16"
+    },
+    "cv": 8,
+    "speed": 3,
+    "speedSource": "3",
+    "alternateSpeeds": [],
+    "size": 1,
+    "sizeLabel": "medium",
+    "sizeSource": "1 (medium)",
+    "footprint": {
+      "width": 1,
+      "height": 1
+    },
+    "armor": 0,
+    "armorMarker": "",
+    "armorSource": "0",
+    "stability": 0,
+    "threat": {
+      "boons": 0,
+      "banes": 0,
+      "sourceText": "None"
+    },
+    "evasion": {
+      "boons": 1,
+      "banes": 0,
+      "sourceText": "1 Boon"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "resistances": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "immunities": [
+      "Bleeding",
+      "Poisoned",
+      "Asleep"
+    ],
+    "basicMelee": {
+      "weak": 5,
+      "standard": 3,
+      "strong": 2,
+      "defenseAttribute": "agility",
+      "orientation": "player-defense"
+    },
+    "actions": {
+      "orientation": "player-defense",
+      "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
+      "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Clutching hands | Agility | 3 + Grappled 2 / 2 + Grappled 1 / 1 |",
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Defend | +1 Bane |",
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Opportunity Attack | Basic Melee |"
+    },
+    "details": {
+      "flavorMarkdown": "*A swollen walking corpse with stiff joints, torn clothing and grasping hands. It has little judgment, but enough dead weight and persistence to obstruct a narrow passage.*",
+      "specialtyMarkdown": "### Clutching hands\n\n*A coil or grasping limb closes around the target and braces against its struggling weight.*\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Grappled 2. **Standard defense:** Grappled 1.\n\n**Limit:** The holder suffers its own Grappled contribution. A new result replaces its lower contribution, not adds to it. Release freely; separation beyond reach, unconsciousness or death ends the hold.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Lifeless Body:** does not breathe or eat; only the listed immunities apply.\n\n**Healing:** Healing-harmed: ordinary healing resolves as Life damage instead; no beneficial riders.\n\n**Against offensive healing:** controller defends with Fortitude if this is player-controlled; a player attacking it still rolls only their attack.\n\n**Senses:** Ordinary sight and hearing.\n\n**Signs:** Scrapes run low along doors and stairs.\n\n**Purpose:** Reach the place it was ordered to occupy.\n\n**Tactics and retreat:** Use its body to block a passage; seize anyone who stays adjacent.\n\n**Counterplay and conversation:** Lead it away from the route rather than being pinned in the doorway.\n\n**Habitat:** Graveyard; ruin · **Communication:** None\n\n**Loot:** A personal token can identify the dead.\n\n**Summoning:** Undead 1 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/summons/restless-corpse.md).",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-restless-corpse\n\n\n**Category:** Undead · **Role:** Blocker · **CV:** 8\n\n**Difficulty rationale:** A slow or broad exposed body gives the attacker a Boon. Ordinary attack difficulty; riders and positioning carry the threat.\n\n**Reference damage:** 1/2/3\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.35\n\n**Regeneration per turn:** 0\n\nReference I=5.596, O=1.162. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [lifeless body](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/monster-abilities/lifeless-body.md), [seizing limbs](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/monster-abilities/seizing-limbs.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/rules/stability.md)"
+    },
+    "biography": ""
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "creature-restless-corpse",
+      "source": {
+        "path": "design/bestiary/creatures/restless-corpse.md",
+        "sha256": "dfb9a5634514737f4ddc2f817f96839bf98ba50a36d83fa2b7af51d2e1c56b9d"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Printed profile · specialty automation pending",
+      "specialtyAutomation": "pending",
+      "classification": {
+        "category": "Undead",
+        "role": "Blocker",
+        "cv": 8
+      },
+      "family": "Zombies",
+      "abilitySources": [
+        {
+          "label": "lifeless body",
+          "id": "monster-lifeless-body",
+          "path": "design/monster-abilities/lifeless-body.md",
+          "sha256": "248c16c6e641d2042cd94a05e7e8bfce03b5177f4f57cda241b46d9b16de4d81"
+        },
+        {
+          "label": "seizing limbs",
+          "id": "monster-seizing-limbs",
+          "path": "design/monster-abilities/seizing-limbs.md",
+          "sha256": "66f2767bac03446133659d16daf8320854f42e75c80b88490fda96d517417737"
+        }
+      ],
+      "summoning": {
+        "eligible": true,
+        "summonId": "summon-restless-corpse",
+        "path": "design/bestiary/summons/restless-corpse.md",
+        "eligibility": "Undead 1",
+        "sourceText": "Undead 1 — [player reference](../summons/restless-corpse.md)."
+      }
+    }
+  }
+}

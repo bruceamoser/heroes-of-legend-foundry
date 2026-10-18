@@ -1,0 +1,174 @@
+{
+  "_key": "!actors!97f552b792fe84c8",
+  "_id": "97f552b792fe84c8",
+  "name": "Wraith",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "prototypeToken": {
+    "width": 1,
+    "height": 1
+  },
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 0
+      },
+      "fortitude": {
+        "base": 0
+      },
+      "agility": {
+        "base": 2
+      },
+      "guile": {
+        "base": 1
+      },
+      "knowledge": {
+        "base": 0
+      },
+      "reason": {
+        "base": 1
+      }
+    },
+    "attributesSource": "Brawn +0; Fortitude +0; Agility +2; Guile +1; Knowledge +0; Reason +1",
+    "health": {
+      "value": 28,
+      "baseMax": 28,
+      "sourceText": "28"
+    },
+    "cv": 37,
+    "speed": 6,
+    "speedSource": "6; fly 6",
+    "alternateSpeeds": [
+      {
+        "mode": "fly",
+        "value": 6
+      }
+    ],
+    "size": 1,
+    "sizeLabel": "medium",
+    "sizeSource": "1 (medium)",
+    "footprint": {
+      "width": 1,
+      "height": 1
+    },
+    "armor": 2,
+    "armorMarker": "*",
+    "armorSource": "2\\*",
+    "stability": 0,
+    "threat": {
+      "boons": 0,
+      "banes": 1,
+      "sourceText": "1 Bane"
+    },
+    "evasion": {
+      "boons": 0,
+      "banes": 1,
+      "sourceText": "1 Bane"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [
+        {
+          "type": "Direct sunlight",
+          "reference": "see details"
+        }
+      ],
+      "sourceText": "Direct sunlight (see details)"
+    },
+    "resistances": {
+      "numeric": [
+        {
+          "type": "Physical",
+          "value": 2
+        },
+        {
+          "type": "Life",
+          "value": 1
+        }
+      ],
+      "special": [],
+      "sourceText": "Physical (2), Life (1)"
+    },
+    "immunities": [
+      "Bleeding",
+      "Poisoned",
+      "Asleep"
+    ],
+    "basicMelee": {
+      "weak": 5,
+      "standard": 3,
+      "strong": 2,
+      "defenseAttribute": "agility",
+      "orientation": "player-defense"
+    },
+    "actions": {
+      "orientation": "player-defense",
+      "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
+      "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Winterless touch | Fortitude | 8 + Dazed 2 / 5 + Dazed 1 / 3 |",
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Slip Through Shadow | Move 2 through dim light/darkness; no opportunities. |\n| Defend | +1 Bane |",
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Opportunity Attack | Basic Melee |"
+    },
+    "details": {
+      "flavorMarkdown": "*A torn silhouette hangs in the air around two pale sparks, trailing the sound of someone trying to breathe underwater.*",
+      "specialtyMarkdown": "### Winterless touch\n\n**Target:** One adjacent creature. **Player defense:** Fortitude. **Damage type:** Life.\n\n**Weak defense:** Dazed 2. **Standard defense:** Dazed 1.\n\n### Slip Through Shadow\n\n*Its outline folds into a seam of darkness and gathers again a few steps away.*\n\nMove up to 2 squares through connected dimly lit or dark squares without provoking. Normal terrain and occupancy rules apply. Does not grant Hidden or allow passage through solid objects.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.\n\n**Lifeless Body — Passive:** Does not breathe or eat; only its listed immunities apply.\n\n**Weakness:** In direct sunlight its attacks grant the defender 1 additional Boon (or impose 1 Bane on its attacks when player-controlled). This does not add damage or change ordinary illumination into sunlight.\n\n**Healing:** Healing-harmed: ordinary healing resolves as Life damage instead; no beneficial riders.\n\n**Against offensive healing:** Its controller uses Fortitude defense when player-controlled; a player attacking it rolls only their attack.\n\n**Senses:** Dark sight 6 squares; ordinary hearing.\n\n**Tactics and retreat:** Approach through darkness and pressure a separated traveler. Its dark movement still cannot pass through a sealed wall.\n\n**Encounter and conversation:** Its hunting route circles the place its name was erased from a memorial.\n\n**Habitat:** Crypt; burial ground; ruined settlement · **Communication:** Common; understands old oaths\n\n**Loot:** Recoverable possessions or lair clues chosen for the adventure; body parts grant no automatic special equipment or coin value.\n\n**Summoning:** Undead 7 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/summons/wraith.md).",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-wraith\n\n\n**Category:** Undead · **Role:** Disabler · **CV:** 37\n\n### CV worksheet\n\n**Reference damage:** 3/5/8\n\n**Reference type:** Life\n\n**Expected targets:** 1\n\n**Utility factor:** 1.45\n\n**Regeneration per turn:** 0\n\nReference I=2.404, O=5.951. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [lifeless body](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/monster-abilities/lifeless-body.md), [shadow slip](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/monster-abilities/shadow-slip.md), [stunning strike](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/monster-abilities/stunning-strike.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/rules/stability.md)"
+    },
+    "biography": ""
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "creature-wraith",
+      "source": {
+        "path": "design/bestiary/creatures/wraith.md",
+        "sha256": "e414af4eddeb48d632528df43c4603c10dc0f996e985f80e2e7b281516721ac6"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Printed profile · specialty automation pending",
+      "specialtyAutomation": "pending",
+      "classification": {
+        "category": "Undead",
+        "role": "Disabler",
+        "cv": 37
+      },
+      "family": "Ghosts, shadows and wraiths",
+      "abilitySources": [
+        {
+          "label": "lifeless body",
+          "id": "monster-lifeless-body",
+          "path": "design/monster-abilities/lifeless-body.md",
+          "sha256": "248c16c6e641d2042cd94a05e7e8bfce03b5177f4f57cda241b46d9b16de4d81"
+        },
+        {
+          "label": "shadow slip",
+          "id": "monster-shadow-slip",
+          "path": "design/monster-abilities/shadow-slip.md",
+          "sha256": "b728000e9500465ce779b15c217ad18c6aa86a31a94e5bed43b7cb838f8eeab0"
+        },
+        {
+          "label": "stunning strike",
+          "id": "monster-stunning-strike",
+          "path": "design/monster-abilities/stunning-strike.md",
+          "sha256": "356a3a0e45c836d19381bc6edc261ce8a54c9720079189bd6226744e0099fc7e"
+        }
+      ],
+      "summoning": {
+        "eligible": true,
+        "summonId": "summon-wraith",
+        "path": "design/bestiary/summons/wraith.md",
+        "eligibility": "Undead 7",
+        "sourceText": "Undead 7 — [player reference](../summons/wraith.md)."
+      }
+    }
+  }
+}

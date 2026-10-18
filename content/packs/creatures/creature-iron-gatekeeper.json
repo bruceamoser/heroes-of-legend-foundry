@@ -1,0 +1,161 @@
+{
+  "_key": "!actors!1489d7bf563e808e",
+  "_id": "1489d7bf563e808e",
+  "name": "Iron Gatekeeper",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "prototypeToken": {
+    "width": 2,
+    "height": 2
+  },
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 2
+      },
+      "fortitude": {
+        "base": 2
+      },
+      "agility": {
+        "base": -1
+      },
+      "guile": {
+        "base": -2
+      },
+      "knowledge": {
+        "base": 0
+      },
+      "reason": {
+        "base": 1
+      }
+    },
+    "attributesSource": "Brawn +2; Fortitude +2; Agility -1; Guile -2; Knowledge +0; Reason +1",
+    "health": {
+      "value": 34,
+      "baseMax": 34,
+      "sourceText": "34"
+    },
+    "cv": 44,
+    "speed": 4,
+    "speedSource": "4",
+    "alternateSpeeds": [],
+    "size": 2,
+    "sizeLabel": "2x2 squares",
+    "sizeSource": "2 (2x2 squares)",
+    "footprint": {
+      "width": 2,
+      "height": 2
+    },
+    "armor": 3,
+    "armorMarker": "",
+    "armorSource": "3",
+    "stability": 2,
+    "threat": {
+      "boons": 0,
+      "banes": 1,
+      "sourceText": "1 Bane"
+    },
+    "evasion": {
+      "boons": 1,
+      "banes": 0,
+      "sourceText": "1 Boon"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "resistances": {
+      "numeric": [
+        {
+          "type": "Physical",
+          "value": 3
+        }
+      ],
+      "special": [],
+      "sourceText": "Physical (3)"
+    },
+    "immunities": [
+      "Bleeding",
+      "Poisoned",
+      "Asleep",
+      "Frightened"
+    ],
+    "basicMelee": {
+      "weak": 5,
+      "standard": 3,
+      "strong": 2,
+      "defenseAttribute": "agility",
+      "orientation": "player-defense"
+    },
+    "actions": {
+      "orientation": "player-defense",
+      "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
+      "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Gate bar | Agility | 8 + Push each 2 / 6 + Push each 1 / 4 |",
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Lock the Feet | Gain Stability 3 while on solid ground until its next turn; highest source only. |\n| Defend | +1 Bane |",
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Opportunity Attack | Basic Melee |"
+    },
+    "details": {
+      "flavorMarkdown": "*A massive iron guardian with a barred face, oversized hands and its charter engraved across the chest. Built for a particular threshold, it is difficult to displace and slow to redirect.*",
+      "specialtyMarkdown": "### Gate bar\n\n*A great limb scythes across the ground, forcing everyone nearby to move.*\n\n**Target:** Up to two creatures within 2 squares. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Push each 2. **Standard defense:** Push each 1.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Heavy Frame — Passive:** Stability 2; an explicit creature trait, not a bonus from size.\n\n**Lifeless Body:** does not breathe or eat; only the listed immunities apply.\n\n**Healing:** Construct: ordinary HP healing does not repair it; destroyed at 0. Combat repair requires an explicit repair ability. Workshop repair remains a design question.\n\n**Senses:** Ordinary sight and hearing.\n\n**Signs:** The gate’s counterweight has not moved, yet the gate opens each dawn.\n\n**Purpose:** Admit only those named by its charter.\n\n**Tactics and retreat:** Sweep two intruders away from the threshold and remain beside the gate.\n\n**Counterplay and conversation:** Produce valid authority or use an entrance outside its charter.\n\n**Habitat:** Fortress; city gate · **Communication:** None\n\n**Loot:** A command seal and 50 coins of salvage from a real body; no extra suit of wearable heavy armor.\n\n**Summoning:** Construct 7 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/summons/iron-gatekeeper.md).",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-iron-gatekeeper\n\n\n**Category:** Construct · **Role:** Heavy guardian · **CV:** 44\n\n**Difficulty rationale:** A slow or broad exposed body gives the attacker a Boon. Its dangerous attack imposes defense Banes.\n\n**Reference damage:** 4/6/8\n\n**Reference type:** physical\n\n**Expected targets:** 2\n\n**Utility factor:** 1.2\n\n**Regeneration per turn:** 0\n\nReference I=2.653, O=11.191. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [iron gatekeeper lock the feet](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/monster-abilities/iron-gatekeeper-lock-the-feet.md), [lifeless body](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/monster-abilities/lifeless-body.md), [sweeping attack](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/monster-abilities/sweeping-attack.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/rules/stability.md)"
+    },
+    "biography": ""
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "creature-iron-gatekeeper",
+      "source": {
+        "path": "design/bestiary/creatures/iron-gatekeeper.md",
+        "sha256": "89107cf537e59cde0ad128e03fdfdde9b163a40260dcd7cea245c12be2315706"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Printed profile · specialty automation pending",
+      "specialtyAutomation": "pending",
+      "classification": {
+        "category": "Construct",
+        "role": "Heavy guardian",
+        "cv": 44
+      },
+      "family": "Golems and animated guardians",
+      "abilitySources": [
+        {
+          "label": "iron gatekeeper lock the feet",
+          "id": "monster-iron-gatekeeper-lock-the-feet",
+          "path": "design/monster-abilities/iron-gatekeeper-lock-the-feet.md",
+          "sha256": "6dc7d34fcee7c1cb8865cc8a07d3d4c770cb4d123fbccabb87557538be82e36b"
+        },
+        {
+          "label": "lifeless body",
+          "id": "monster-lifeless-body",
+          "path": "design/monster-abilities/lifeless-body.md",
+          "sha256": "248c16c6e641d2042cd94a05e7e8bfce03b5177f4f57cda241b46d9b16de4d81"
+        },
+        {
+          "label": "sweeping attack",
+          "id": "monster-sweeping-attack",
+          "path": "design/monster-abilities/sweeping-attack.md",
+          "sha256": "c020cb46e9ffa42aeaedfc9612e6b364f4c415e591d874a9553e55ec2ca2d45c"
+        }
+      ],
+      "summoning": {
+        "eligible": true,
+        "summonId": "summon-iron-gatekeeper",
+        "path": "design/bestiary/summons/iron-gatekeeper.md",
+        "eligibility": "Construct 7",
+        "sourceText": "Construct 7 — [player reference](../summons/iron-gatekeeper.md)."
+      }
+    }
+  }
+}

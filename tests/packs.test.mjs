@@ -6,9 +6,9 @@ import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { compilePack, extractPack } from "@foundryvtt/foundryvtt-cli";
 import {
-  buildItemPackArtifacts,
-  readItemPackCatalogs,
-} from "../scripts/content/item-packs.mjs";
+  buildContentPackArtifacts,
+  readContentPackCatalogs,
+} from "../scripts/content/content-packs.mjs";
 for (const [kind, filename] of [
   ["actors", "hero.json"],
   ["journal", "reference.json"],
@@ -43,8 +43,8 @@ for (const [kind, filename] of [
 }
 
 const root = new URL("../", import.meta.url);
-const artifacts = buildItemPackArtifacts(
-  await readItemPackCatalogs(root),
+const artifacts = buildContentPackArtifacts(
+  await readContentPackCatalogs(root),
 );
 
 async function semanticPackDocuments(source) {
@@ -63,7 +63,7 @@ async function semanticPackDocuments(source) {
 }
 
 for (const [name, documents] of Object.entries(artifacts.documents)) {
-  test(`official CLI preserves all authored ${name} Items through two semantic round trips`, async (t) => {
+  test(`official CLI preserves all authored ${name} documents through two semantic round trips`, async (t) => {
     const temp = await mkdtemp(join(tmpdir(), `hol-${name}-pack-`));
     t.after(() => rm(temp, { recursive: true, force: true }));
     const source = fileURLToPath(
@@ -72,7 +72,10 @@ for (const [name, documents] of Object.entries(artifacts.documents)) {
       expected = documents
         .slice()
         .sort((a, b) => a._id.localeCompare(b._id));
-    assert.equal(expected.length, name === "abilities" ? 350 : 43);
+    assert.equal(
+      expected.length,
+      { abilities: 350, equipment: 43, creatures: 192 }[name],
+    );
 
     await compilePack(source, join(temp, "pack"));
     await extractPack(join(temp, "pack"), join(temp, "unpacked"));

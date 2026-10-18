@@ -245,20 +245,29 @@ export async function verifyAuthoredItemPacks(root, artifacts) {
     withFileTypes: true,
   });
   const actual = new Set();
+  const itemFiles = new Set(
+    [...artifacts.files.keys()].filter(
+      (path) =>
+        path.startsWith("abilities/") || path.startsWith("equipment/"),
+    ),
+  );
   for (const entry of entries) {
     if (entry.isDirectory()) continue;
-    if (!entry.name.endsWith(".json"))
-      throw new Error(
-        `Unexpected non-JSON authored pack file: ${entry.parentPath}/${entry.name}`,
-      );
     const path = relative(base, entry.parentPath)
       .split("\\")
       .filter(Boolean)
       .concat(entry.name)
       .join("/");
+    if (!path.startsWith("abilities/") && !path.startsWith("equipment/"))
+      continue;
+    if (!entry.name.endsWith(".json"))
+      throw new Error(
+        `Unexpected non-JSON authored pack file: ${entry.parentPath}/${entry.name}`,
+      );
     actual.add(path);
   }
-  for (const [path, expected] of artifacts.files) {
+  for (const path of itemFiles) {
+    const expected = artifacts.files.get(path);
     if (!actual.has(path))
       throw new Error(`Missing authored Item pack source: ${path}`);
     const content = await readFile(new URL(path, directory), "utf8");

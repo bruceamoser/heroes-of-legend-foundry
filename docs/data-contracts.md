@@ -142,6 +142,25 @@ Three separate versions: package SemVer, integer data schema, pinned content rev
 
 Persist known languages as stable campaign language IDs with a display name, form (`spoken`/`signed`/explicit campaign form), permissions (`understand`, `speak`, `read`, `write`) and grant source ID. Store the actual named regional language; a category placeholder is not a completed choice. Campaign definitions determine ordinary availability and Common's name. A spoken-only grant explicitly leaves read/write false. Creation and advancement use the same eligibility browser and preserve prior language grants on resume/rebuild. No attribute-derived free languages or implicit DP costs.
 
-## Implemented creature profile (issue #62)
+## Implemented creature profile (issues #62 and #122)
 
-The initial native `creature` model stores `attributes.<key>.base/effective`, `health.value/baseMax/max`, integer `cv`, printed `speed`, square-footprint `size`, `armor` (Physical resistance), `stability`, separate `threat.boons/banes` and `evasion.boons/banes`, plus `basicMelee.weak/standard/strong` in defender perspective. It deliberately has no PC Grit ledger. This is the current subset of the broader creature contract above; typed specialty actions, remaining defenses/movement modes and source-locked creature imports are not yet implemented. Changing size currently edits the profile, not existing Token dimensions.
+The native `creature` model stores signed `cv`, all six printed attributes,
+`health.value/baseMax/max`, ordinary `speed` plus typed alternate Speeds,
+footprint/size label, integer `armor` with its authored marker, `stability`,
+separate `threat`/`evasion` Boons/Banes, numeric and narrative weaknesses and
+resistances, immunities, and `basicMelee.weak/standard/strong` in explicit
+player-defense orientation. It deliberately has no PC Grit ledger.
+
+Imported Actors also retain exact printed source strings for attributes, HP,
+Speed, size, Armor, Evasion and Threat. Authored action tables and details remain
+Markdown. The sheet's read-only renderer escapes all source text and converts the
+supported headings, tables, paragraphs, strong/emphasis and pinned-link subset
+before Foundry enrichment; the specialty coverage is explicitly pending and has
+no handler. The `heroes-of-legend` flags carry the catalog ID, pinned
+`{ path, sha256 }` source, commit and related ability/summon references.
+
+The existing damage resolver continues to use printed `armor` as Physical DR.
+Imported numeric resistance/weakness data and narrative exceptions are not wired
+into that resolver in this increment. Signed CV has no nonnegative schema clamp.
+Changing size edits the profile, not existing Token dimensions, and artwork uses
+the native fallback until approved asset paths are available.

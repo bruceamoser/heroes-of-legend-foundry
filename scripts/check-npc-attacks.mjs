@@ -8,7 +8,9 @@ if (
   process.env.HOL_TEST_ALLOW_WRITES !== "1"
 )
   throw new Error("Use an authorized disposable local world.");
-const browser = await chromium.launch(),
+const browser = await chromium.launch({
+  args: ["--use-angle=swiftshader", "--enable-unsafe-swiftshader"],
+}),
   errors = [];
 let gm, player, f, attackId;
 async function join(name, canvas = false) {
@@ -26,6 +28,8 @@ async function join(name, canvas = false) {
   await selectTestUser(page, name);
   await page.locator("button[name=join]").click();
   await page.waitForFunction(() => globalThis.game?.ready);
+  if (canvas)
+    await page.waitForFunction(() => game.canvas.initialized && !game.canvas.loading);
   return { context, page };
 }
 async function cardClick() {
@@ -62,6 +66,7 @@ try {
       );
     const scene = await Scene.create({
       name: "Attack target snapshot test",
+      active: false,
       width: 1000,
       height: 1000,
     });
@@ -78,7 +83,10 @@ try {
     const tokens = heroes.map((a) =>
       createdTokens.find((t) => t.actorId === a.id),
     );
+    await new Promise((resolve) => setTimeout(resolve, 2100));
     await scene.view();
+    if (canvas.scene?.id !== scene.id || canvas.loading)
+      throw new Error("Native target scene did not finish viewing");
     for (const token of tokens.slice(0, 2))
       canvas.tokens.get(token.id).setTarget(true, { releaseOthers: false });
     const combat = await Combat.create({ active: true });

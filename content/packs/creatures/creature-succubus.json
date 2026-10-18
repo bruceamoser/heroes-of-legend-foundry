@@ -1,0 +1,150 @@
+{
+  "_key": "!actors!14fad5c9f177cf20",
+  "_id": "14fad5c9f177cf20",
+  "name": "Succubus",
+  "type": "creature",
+  "img": "icons/svg/mystery-man.svg",
+  "prototypeToken": {
+    "width": 1,
+    "height": 1
+  },
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 0
+      },
+      "fortitude": {
+        "base": 1
+      },
+      "agility": {
+        "base": 1
+      },
+      "guile": {
+        "base": 1
+      },
+      "knowledge": {
+        "base": 2
+      },
+      "reason": {
+        "base": 2
+      }
+    },
+    "attributesSource": "Brawn +0; Fortitude +1; Agility +1; Guile +1; Knowledge +2; Reason +2",
+    "health": {
+      "value": 26,
+      "baseMax": 26,
+      "sourceText": "26"
+    },
+    "cv": 26,
+    "speed": 6,
+    "speedSource": "6; fly 7",
+    "alternateSpeeds": [
+      {
+        "mode": "fly",
+        "value": 7
+      }
+    ],
+    "size": 1,
+    "sizeLabel": "medium",
+    "sizeSource": "1 (medium)",
+    "footprint": {
+      "width": 1,
+      "height": 1
+    },
+    "armor": 0,
+    "armorMarker": "",
+    "armorSource": "0",
+    "stability": 0,
+    "threat": {
+      "boons": 0,
+      "banes": 1,
+      "sourceText": "1 Bane"
+    },
+    "evasion": {
+      "boons": 0,
+      "banes": 1,
+      "sourceText": "1 Bane"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "resistances": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "immunities": [],
+    "basicMelee": {
+      "weak": 5,
+      "standard": 3,
+      "strong": 2,
+      "defenseAttribute": "agility",
+      "orientation": "player-defense"
+    },
+    "actions": {
+      "orientation": "player-defense",
+      "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
+      "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Whispered betrayal | Reason | 7 + Frightened 2 of this creature / 5 + Frightened 1 of this creature / 3 |",
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Borrow a Voice | Copy a heard voice until next turn; no automatic deception. |\n| Defend | +1 Bane |",
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Opportunity Attack | Basic Melee |"
+    },
+    "details": {
+      "flavorMarkdown": "*A graceful fiend changes posture and tone to mirror the person whose trust it wants, while its eyes remain watchful.*",
+      "specialtyMarkdown": "### Whispered betrayal\n\n**Target:** One visible creature within 5 squares. **Player defense:** Reason. **Damage type:** mental.\n\n**Weak defense:** Frightened 2 of this creature. **Standard defense:** Frightened 1 of this creature.\n\n### Borrow a Voice\n\n*A familiar voice comes from an unfamiliar mouth with exactly the remembered hesitation.*\n\nCopy the sound of a voice it has heard until its next turn. This grants no knowledge, obedience, language or combat modifier. A suspicious listener may use Reason with normal Boons/Banes when being deceived has consequences.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Dark sight 6 squares; ordinary hearing.\n\n**Tactics and retreat:** Pressure a perceptible fear while using a borrowed voice to create doubt. Neither ability forces affection, obedience or a player's decision.\n\n**Encounter and conversation:** It offers the truth about a betrayal but expects the hearer to act before checking the rest of the story.\n\n**Habitat:** Broken shrine; summoned court; place of conflict · **Communication:** Common\n\n**Loot:** Recoverable possessions or lair clues chosen for the adventure; body parts grant no automatic special equipment or coin value.\n\n**Summoning:** Ineligible.",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-succubus\n\n\n**Category:** Fiend · **Role:** Fear controller · **CV:** 26\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Whispered betrayal | Reason | 1 Boon | 3 mental damage. | 5 mental damage. Frightened 1 of this creature. | 7 mental damage. Frightened 2 of this creature. |\n\nUse the attributes above for defenses named by incoming attacks. Same targeting, limits and costs apply; no opposed second roll.\n\n### CV worksheet\n\n**Reference damage:** 3/5/7\n\n**Reference type:** mental\n\n**Expected targets:** 1\n\n**Utility factor:** 1.45\n\n**Regeneration per turn:** 0\n\nReference I=4.404, O=5.596. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [borrowed voice](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/monster-abilities/borrowed-voice.md), [dread cry](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/monster-abilities/dread-cry.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/rules/stability.md)"
+    },
+    "biography": ""
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "creature-succubus",
+      "source": {
+        "path": "design/bestiary/creatures/succubus.md",
+        "sha256": "5b0e8044681eda1922a00e6dfcff18f7daa4aeb14996a86d9989cafcdbc6e427"
+      },
+      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Printed profile · specialty automation pending",
+      "specialtyAutomation": "pending",
+      "classification": {
+        "category": "Fiend",
+        "role": "Fear controller",
+        "cv": 26
+      },
+      "family": "Fiends and infernal bargains",
+      "abilitySources": [
+        {
+          "label": "borrowed voice",
+          "id": "monster-borrowed-voice",
+          "path": "design/monster-abilities/borrowed-voice.md",
+          "sha256": "cd8cc49e4ca64ad20680f11688b20843c29534f08ec4130d067ab05357a64610"
+        },
+        {
+          "label": "dread cry",
+          "id": "monster-dread-cry",
+          "path": "design/monster-abilities/dread-cry.md",
+          "sha256": "d35c9d9fb02cdf716d44665b41a99421c1089cddcf9bc2e736a192e27d27efe0"
+        }
+      ],
+      "summoning": {
+        "eligible": false,
+        "summonId": null,
+        "path": null,
+        "eligibility": null,
+        "sourceText": "Ineligible."
+      }
+    }
+  }
+}

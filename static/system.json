@@ -1,7 +1,7 @@
 {
   "id": "heroes-of-legend",
   "title": "Heroes of Legend",
-  "description": "Heroes of Legend for Foundry VTT. Development preview: character and ability editors.",
+  "description": "Heroes of Legend for Foundry VTT. Development preview: native character, creature, ability and equipment content.",
   "version": "0.1.0-alpha.1",
   "authors": [
     {
@@ -51,6 +51,13 @@
       "label": "Heroes of Legend Equipment",
       "type": "Item",
       "path": "packs/equipment",
+      "system": "heroes-of-legend"
+    },
+    {
+      "name": "creatures",
+      "label": "Heroes of Legend Creatures",
+      "type": "Actor",
+      "path": "packs/creatures",
       "system": "heroes-of-legend"
     }
   ],

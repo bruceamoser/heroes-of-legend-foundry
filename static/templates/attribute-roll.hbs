@@ -4,6 +4,11 @@
   {{#if incoming}}<p>Defending against {{incoming.attackerName}} · {{incoming.title}}</p><button type="button" data-action="changeDefender">Change defender</button>{{/if}}
   {{#if notice}}<p class="hol-note" role="alert">{{notice}}</p>{{/if}}
   <p>{{attributeName}}: <strong>{{attribute}}</strong></p>
+  <label class="hol-adjustment">Boons / Banes
+    <span data-adjustment-label aria-live="polite">{{adjustmentLabel}}</span>
+    <input type="range" name="adjustment" min="-3" max="3" step="1" value="{{draft.adjustment}}" aria-label="Boons or Banes" aria-valuetext="{{adjustmentLabel}}">
+    <span class="hol-adjustment-scale" aria-hidden="true"><span>−3 Banes</span><span>0</span><span>+3 Boons</span></span>
+  </label>
   {{#if defense}}<p>Rolling this defense spends no Reaction. Any player may roll for this defender.</p>{{/if}}
   {{#if abilities}}<h2>Defense abilities</h2><ul class="hol-defense-abilities">{{#each abilities}}<li data-item-id="{{itemId}}" class="{{#unless available}}hol-unavailable{{/unless}}"><button type="button" data-action="useAbility" data-item-id="{{itemId}}" {{#unless available}}disabled{{/unless}}>{{#if available}}Use {{else}}{{/if}}{{name}}</button><span class="hol-ability-reason">{{reasonText}}</span></li>{{/each}}</ul>{{/if}}
   {{#if fears}}<details class="hol-context-options"><summary>Fear context (optional)</summary>
@@ -12,11 +17,7 @@
   <p>Apply a printed wound modifier when it fits this action.</p>
   {{#each wounds}}<label class="hol-wound-context" data-effect-id="{{effectId}}"><input type="checkbox" name="wound-{{index}}" {{#if applies}}checked{{/if}}> {{injury}} · {{amount}} {{#if (eq polarity "boon")}}Boon{{else}}Bane{{/if}} · {{printedContext}}</label>{{/each}}</details>{{/if}}
   <details class="hol-context-options"><summary>Roll details</summary><ul class="hol-roll-sources"></ul><p class="hol-roll-totals" aria-live="polite"></p></details>
-  <label class="hol-adjustment">Boons / Banes
-    <span data-adjustment-label aria-live="polite">{{adjustmentLabel}}</span>
-    <input type="range" name="adjustment" min="-3" max="3" step="1" value="{{draft.adjustment}}" aria-label="Boons or Banes" aria-valuetext="{{adjustmentLabel}}">
-    <span class="hol-adjustment-scale" aria-hidden="true"><span>−3 Banes</span><span>0</span><span>+3 Boons</span></span>
-  </label>
+
   </div><footer class="hol-roll-footer">
   <output aria-live="polite"></output>
   <button type="button" data-action="roll" class="hol-primary">{{localize "HOL.Roll"}}</button>

@@ -912,10 +912,23 @@ benefit remains a source without being automatically purchased again. The old
 native duplicate-race evidence above describes the superseded policy, not current
 acceptance. Updated fixtures now expect two fresh same-defender requests to both
 roll, reopened Defend without repeat controls, and a new roll alongside an older
-unknown result; those changes await exclusive native runtime access.
+unknown result. The bounded native results follow.
 
 The fresh-roll correction passes Node 24.22.0 build/validation and all 278 tests,
-with 14 focused modifier/defense tests. Updated defense-response and Shield Block
-fixtures parse, but their new fresh-roll/forgotten-ability cases have not yet run
-natively; another issue owns the isolated world. Same-ID replay/unknown-result
-behavior remains unchanged in the service and is asserted by those fixtures.
+with 14 focused modifier/defense tests. Foundry 14.369 native defense-response
+verification now passes both fresh same-defender submissions, native Defend
+reopening without repeat controls, changed modifiers, same-ID replay without new
+dice, and a fresh roll while an older result is unknown. The bounded Shield Block
+run (`HOL_TEST_SHIELD_CORE_ONLY=1`) passes forgotten-ability selection after
+resolved/unknown older dice, normal Reaction payment, and reopening to roll with
+active benefits without paying again. Same-operation ability replay stays
+idempotent. Both fixtures clean their own records and report zero page errors.
+The bounded fixture scopes new dialogs by actual Application element ID so an
+older closing window cannot confuse its assertions. Remaining unrelated Shield
+Block scenarios were not rerun. A fresh reroll screenshot was inspected.
+
+At the default dialog height, two ability rows pushed the slider thumb below the
+initial viewport. The existing slider block now comes before optional ability and
+detail sections, keeping the main modifier control visible. This final field-order
+change has no mechanics or gating changes; the native screenshot records the
+preceding order rather than claiming a new visual run.

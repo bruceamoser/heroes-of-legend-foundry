@@ -740,8 +740,7 @@ function render({ focusHeading = false } = {}) {
   pendingRender = false;
   preview = workshopCharacter(draft, catalogs);
   const active = document.activeElement,
-    key = active?.dataset.field,
-    list = active?.dataset.list,
+    identity = Object.entries(active?.dataset ?? {}),
     value = active?.value,
     id = active?.id;
   const position =
@@ -757,17 +756,17 @@ function render({ focusHeading = false } = {}) {
         ? advancementBuilder()
         : sheet());
   app.removeAttribute("aria-busy");
-  const replacement = key
-    ? [...app.querySelectorAll("[data-field]")].find(
-        (e) => e.dataset.field === key,
-      )
-    : list
-      ? [...app.querySelectorAll("[data-list]")].find(
-          (e) => e.dataset.list === list && e.value === value,
+  // Preserve focus through live recalculation, including origin selects and
+  // play controls whose identity is not a creation field path.
+  const replacement = id
+    ? document.getElementById(id)
+    : identity.length
+      ? [...app.querySelectorAll("button,input,select,textarea")].find(
+          (e) =>
+            identity.every(([key, value]) => e.dataset[key] === value) &&
+            (!active.dataset.list || e.value === value),
         )
-      : id
-        ? document.getElementById(id)
-        : null;
+      : null;
   if (focusHeading) $("#panel-title")?.focus({ preventScroll: true });
   else if (replacement) {
     replacement.focus({ preventScroll: true });

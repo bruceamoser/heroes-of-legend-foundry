@@ -113,6 +113,10 @@ try {
   await page.getByRole("tab", { name: "Main", exact: true }).click();
   await page.getByRole("button", { name: "✎ Edit", exact: true }).click();
   await page.getByLabel("Show Basic Melee", { exact: true }).uncheck();
+  assert.equal(
+    await page.evaluate(() => document.activeElement.dataset.basic),
+    "ability-basic-melee",
+  );
   await page.getByRole("button", { name: "✓ Done", exact: true }).click();
   assert.equal(
     await page.locator('.action-table [data-id="ability-basic-melee"]').count(),
@@ -325,9 +329,14 @@ try {
       .then((v) => v.join(" ")),
     /Bridge Worker.*Craft 1.*Trail Workshop/,
   );
+  await page.getByLabel("Culture", {exact:true}).focus();
   await page
     .getByLabel("Culture", { exact: true })
     .selectOption("origin-culture-deep-halls|0");
+  assert.equal(
+    await page.evaluate(() => document.activeElement.dataset.origin),
+    "culture",
+  );
   await page
     .getByLabel("Background", { exact: true })
     .selectOption("origin-background-bridge-worker|0");
@@ -479,13 +488,11 @@ try {
   // Unknown imported IDs remain inert text and repairable choices.
   const odd = { ...exported, draft: structuredClone(exported.draft) };
   odd.draft.traitIds[0] = 'trait-unknown" data-injected="yes';
-  await page
-    .locator("#import-file")
-    .setInputFiles({
-      name: "unknown-trait.json",
-      mimeType: "application/json",
-      buffer: Buffer.from(JSON.stringify(odd)),
-    });
+  await page.locator("#import-file").setInputFiles({
+    name: "unknown-trait.json",
+    mimeType: "application/json",
+    buffer: Buffer.from(JSON.stringify(odd)),
+  });
   await page
     .getByRole("heading", { name: "Borin Bridgekeeper", exact: true })
     .waitFor();

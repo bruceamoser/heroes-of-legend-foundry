@@ -59,6 +59,10 @@ async function apply(id, combatUuid) {
     typeof (combatUuid ?? request?.combatUuid) === "string"
       ? await fromUuid(combatUuid ?? request.combatUuid)
       : null;
+  if (combat?.getFlag(ID, "pendingPotion"))
+    throw new Error(
+      "Resume or reconcile the pending healing potion before advancing this encounter.",
+    );
   const pendingPhase = combat?.getFlag(ID, "pendingTurnPhase");
   if (pendingPhase) {
     if (pendingPhase.requestId !== id)

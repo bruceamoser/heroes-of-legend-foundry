@@ -685,6 +685,14 @@ and rejects changed healing receipts; the real coordinator gate also rejects
 a non-GM replay. These checks do not certify the latest Canvas fixture lifecycle
 fix, native ApplicationV2 controls, or multiplayer operation recovery.
 
+Integration with Basic Melee also blocks new player/NPC attacks, defense-ability
+activations and encounter transitions while a potion operation is reserved.
+Potion admission already rejects an existing action or turn-phase reservation.
+Service regressions exercise both admission directions and retain unchanged
+revision, budgets and zero authoritative writes on refusal. This is a #116
+reservation safety fix and partial progress toward #121; shared geometry and
+cross-workflow native acceptance remain open.
+
 ### Two-recipe Ordinary Recipe Study (#93)
 
 The current pinned `ordinary-recipe-study` card at

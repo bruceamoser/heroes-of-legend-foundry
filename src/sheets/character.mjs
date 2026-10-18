@@ -1,3 +1,6 @@
+import { copyEquipmentToActor, equipmentCopyOptions } from "../services/item-import.mjs";
+import { builderDropChoice } from "../services/builder-drop.mjs";
+import { loadCatalogs } from "../services/catalog.mjs";
 import { postAbilityReference } from "../services/reference-play.mjs";
 import { WoundPanel } from "../applications/wounds.mjs";
 import { RecoveryPanel } from "../applications/recovery.mjs";
@@ -23,6 +26,7 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
     window: { resizable: true },
     form: { submitOnChange: false, closeOnSubmit: false },
     actions: {
+      addEquipment: CharacterSheet.addEquipment,
       death: CharacterSheet.death,
       wounds: CharacterSheet.wounds,
       recovery: CharacterSheet.recovery,
@@ -156,15 +160,56 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
       ui.notifications.error(error.message);
     }
   }
-  // Acquisition requires the later purchase/grant service; core copying would bypass it.
-  async _onDropDocument(event, document) {
-    if (
-      document?.documentName === "Item" &&
-      document.parent?.uuid === this.actor.uuid
-    )
-      return super._onDropDocument(event, document);
-    ui.notifications.warn(game.i18n.localize("HOL.AcquisitionPending"));
+  static async addEquipment() {
+    try {
+      if (!this.actor.isOwner) throw new Error("Only this character's owner can add equipment.");
+      const sources = await equipmentCopyOptions();
+      if (!sources.length) throw new Error("No readable equipment sources are available.");
+      const escape = foundry.utils.escapeHTML;
+      const result = await foundry.applications.api.DialogV2.input({
+        window: { title: "Add equipment" },
+        content: `<label>Equipment<select name="equipmentSourceUuid">${sources.map(source =>
+          `<option value="${escape(source.uuid)}">${escape(source.name)}</option>`).join("")}</select></label><p>Add a copy to inventory. Purchases are resolved at the table.</p>`,
+        ok: { label: "Add" },
+      });
+      if (result) await copyEquipmentToActor(this.actor, result.equipmentSourceUuid);
+    } catch (error) { ui.notifications.warn(error.message); }
+  }
+
+  async openLearningReference(item) {
+    if (!this.actor.isOwner || !item.testUserPermission(game.user, "OBSERVER"))
+      throw new Error("This character or ability card is unavailable.");
+    const choice = builderDropChoice(item, (await loadCatalogs()).choices),
+      existing = [...foundry.applications.instances.values()].find(app =>
+        app.actor?.uuid === this.actor.uuid &&
+        (app instanceof CreationWizard || app instanceof AdvancementWizard)),
+      wizard = existing ?? (this.actor.getFlag("heroes-of-legend", "development")
+        ? new AdvancementWizard(this.actor) : new CreationWizard(this.actor));
+    if (wizard.busy) throw new Error("This learning window is already processing a change.");
+    if (existing?.rendered) existing.capture();
+    await wizard.render({ force: true });
+    const learning = wizard instanceof AdvancementWizard || [3, 5].includes(wizard.step);
+    const search = learning ? wizard.element.querySelector("[data-search]") : null;
+    if (search) {
+      search.value = choice.name;
+      search.dispatchEvent(new Event("input", { bubbles: true }));
+      search.focus();
+    } else ui.notifications.info("Ability choices are available on the creation learning steps. Your current step is unchanged.");
     return null;
+  }
+
+  async _onDropDocument(event, document) {
+    try {
+      if (!this.actor.isOwner) throw new Error("Only this character's owner can change its inventory or learning draft.");
+      if (document?.documentName !== "Item")
+        throw new Error("Drop equipment or an ability card here.");
+      if (document.parent?.uuid === this.actor.uuid)
+        return super._onDropDocument(event, document);
+      if (document.type === "equipment")
+        return await copyEquipmentToActor(this.actor, document.uuid);
+      if (document.type === "ability") return await this.openLearningReference(document);
+      throw new Error("Drop equipment or an ability card here.");
+    } catch (error) { ui.notifications.warn(error.message); return null; }
   }
   _canDragStart(selector) {
     return this.actor.isOwner && super._canDragStart(selector);

@@ -29,6 +29,7 @@
     </li>
   {{else}}<li>{{localize "HOL.NoAbilities"}}</li>{{/each}}</ul>
   <h2>{{localize "HOL.Equipment"}}</h2>
+  {{#if owned}}<button type="button" data-action="addEquipment">Add equipment</button>{{/if}}
   <ul class="hol-ability-list">{{#each equipment}}
     <li class="hol-item-row draggable" data-item-id="{{id}}">
       <button type="button" class="hol-item-open" data-action="openAbility"><span>{{system.quantity}} × {{name}}</span><small>{{#if ../owned}}{{localize "HOL.DragToHotbar"}} · {{/if}}Bulk {{system.bulk}}</small></button>

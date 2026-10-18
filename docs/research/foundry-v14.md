@@ -54,3 +54,9 @@ Proposed compatibility policy: V14 only, initially require the tested 14.369 bui
 - Confirm custom combat events do not double-fire effects or skip anchors after reload/turn correction.
 - Confirm square shapes, terrain and levels do not grant illegal targeting or tether distances.
 - Pin and test the official CLI's concrete commands and Node 24 support; no database format assumption is accepted merely because a custom LevelDB writer produces files.
+
+Issue #129 roll previews subscribe to the public V14
+[`targetToken(user, token, targeted)` hook](https://foundryvtt.com/api/v14/functions/hookEvents.targetToken.html),
+which fires on targeting and untargeting. Refresh only for the local user and
+unregister on dialog close. Read `game.user.targets` again at submission; no
+attack-target selector or inferred single-scene candidate replaces native targets.

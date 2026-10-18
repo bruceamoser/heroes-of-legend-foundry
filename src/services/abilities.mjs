@@ -3,7 +3,6 @@ import { declareAction, continueAction } from "../rules/actions.mjs";
 import {
   blockableJudgment,
   defenseAbilityAvailability,
-  defenseAttemptContext,
 } from "../rules/defense-abilities.mjs";
 import { isShieldEquipment } from "../rules/equipment-identity.mjs";
 import { upsertBenefitEffect } from "../rules/defense-benefits.mjs";
@@ -64,8 +63,6 @@ export async function requestAbility(
     attackMessageId = null,
     defenderTokenUuid = null,
     shieldItemUuid = null,
-    additionalAttempt = false,
-    attemptReason = "",
   } = {},
 ) {
   const definition = itemAbilityDefinition(item);
@@ -92,11 +89,6 @@ export async function requestAbility(
     request.attackMessageId = attackMessageId;
     if (defenderTokenUuid) request.defenderTokenUuid = defenderTokenUuid;
     if (shieldItemUuid) request.shieldItemUuid = shieldItemUuid;
-    request.defenseAttempt = {
-      additionalAttempt: additionalAttempt === true,
-      attemptReason:
-        typeof attemptReason === "string" ? attemptReason.trim() : "",
-    };
   }
   const recipients = game.users.filter(
     (user) =>
@@ -156,24 +148,15 @@ function availabilityContext({
   heldShieldUuids,
   incoming,
   judgmentError,
-  additionalAttempt,
-  attemptReason,
 }) {
   const state = combat?.getFlag(ID, "encounter"),
     budget = participant && state?.budgets?.[participant.id],
-    conditions = actor ? actionConditions(actor) : { unconscious: true },
-    attempt = defenseAttemptContext(
-      attack?.getFlag(ID, "defenseResponses"),
-      actor?.uuid,
-    );
+    conditions = actor ? actionConditions(actor) : { unconscious: true };
   return {
     capable: !HELPLESS.some((key) => Boolean(conditions[key])),
     ownTurn: Boolean(participant && state?.current === participant.id),
     remaining: budget?.remaining ?? {},
     pending: pendingActorAbility(combat, actor?.uuid),
-    ...attempt,
-    additionalAttempt,
-    attemptReason,
     attackMessageId: attack?.id,
     blockable: blockableJudgment(incoming),
     judgmentError,
@@ -187,8 +170,6 @@ export function reviewedDefenseAbilityOptions(
   {
     attackMessageId = null,
     defenderTokenUuid = null,
-    additionalAttempt = false,
-    attemptReason = "",
   } = {},
 ) {
   if (actor?.documentName !== "Actor")
@@ -228,8 +209,6 @@ export function reviewedDefenseAbilityOptions(
       heldShieldUuids: shields.map((item) => item.uuid),
       incoming,
       judgmentError,
-      additionalAttempt,
-      attemptReason,
     });
   const options = actor.items
     .filter(
@@ -281,8 +260,6 @@ export async function requestDefenseAbility(
     attackMessageId,
     defenderTokenUuid = null,
     shieldItemUuid = null,
-    additionalAttempt = false,
-    attemptReason = "",
   } = {},
 ) {
   if (!attackMessageId)
@@ -299,8 +276,6 @@ export async function requestDefenseAbility(
     review = reviewedDefenseAbilityOptions(actor, {
       attackMessageId,
       defenderTokenUuid,
-      additionalAttempt,
-      attemptReason,
     }),
     option = review.options.find((entry) => entry.itemUuid === item.uuid);
   if (!option?.available)
@@ -314,8 +289,6 @@ export async function requestDefenseAbility(
       option.id === "ability-shield-block"
         ? (shieldItemUuid ?? option.shieldItemUuid)
         : null,
-    additionalAttempt,
-    attemptReason,
   });
 }
 export function resolveAbilityRequest(id, combatUuid) {
@@ -402,11 +375,6 @@ async function preflight({ message, request, combat }) {
       attack,
       heldShieldUuids: shields.map((entry) => entry.uuid),
       incoming,
-      additionalAttempt: request.defenseAttempt?.additionalAttempt === true,
-      attemptReason:
-        typeof request.defenseAttempt?.attemptReason === "string"
-          ? request.defenseAttempt.attemptReason
-          : "",
     }),
     availability = defenseAbilityAvailability(definition.id, context);
   if (!availability.available) throw new Error(availability.reasons.join(" "));
@@ -484,16 +452,6 @@ async function continuationCapable(operation, request, combat, actor) {
     return state.current === operation.participantId;
   if (operation.handler === "shield-block-v1") {
     if (currentAttack?.blockable !== true || !operation.incomingAttack)
-      return false;
-    const attackMessage = game.messages.get(request.attackMessageId),
-      attempts = defenseAttemptContext(
-        attackMessage?.getFlag(ID, "defenseResponses"),
-        actor.uuid,
-      );
-    if (
-      attempts.unresolvedDefense ||
-      attempts.priorDefenses !== operation.defenseAttemptCount
-    )
       return false;
     const shield = actor.items.get(operation.shieldItemId);
     return Boolean(shield && isShieldEquipment(shield) && shield.system.held);
@@ -581,7 +539,6 @@ async function apply(id, combatUuid) {
       incomingAttack: checked.incomingAttack
         ? structuredClone(checked.incomingAttack)
         : null,
-      defenseAttemptCount: checked.context.priorDefenses,
     };
     for (const data of checked.actor.toObject().effects) {
       const effect = new foundry.documents.ActiveEffect(data, {

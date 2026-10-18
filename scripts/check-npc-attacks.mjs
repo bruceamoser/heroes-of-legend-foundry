@@ -198,7 +198,7 @@ try {
   assert.equal(await dialog.locator("output").innerText(), "5d6kl3 + (0)");
   await dialog.screenshot({ path: "test-results/incoming-defense.png" });
   assert.match(
-    await dialog.locator(".hol-roll-sources").innerText(),
+    await dialog.locator(".hol-roll-sources").textContent(),
     /Incoming Threat/,
   );
   assert.equal(
@@ -220,8 +220,10 @@ try {
     .click();
   dialog = player.page.locator(".hol-roll-dialog");
   assert.equal(await dialog.locator("output").innerText(), "5d6kl3 + (1)");
-  await dialog.locator('[name="boons"]').fill("1");
-  await dialog.locator('[name="boonsLabel"]').fill("DA-approved footing");
+  const slider = dialog.getByRole("slider", { name: "Boons or Banes" });
+  await slider.focus();
+  await slider.press("ArrowRight");
+  assert.equal(await dialog.locator('[name="boonsLabel"], [name="banesLabel"]').count(), 0);
   await dialog.getByRole("button", { name: "Roll", exact: true }).click();
   await player.page.waitForFunction(
     (id) =>

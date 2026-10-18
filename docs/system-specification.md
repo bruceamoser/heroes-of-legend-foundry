@@ -4,11 +4,17 @@ Version 0.2, October 17, 2026. Supports issues #2 and #12. **Status: proposed so
 
 ## 1. Product goal
 
-Deliver an installable V14 system that runs the current Heroes of Legend rules with comprehensive automation. A player should choose what their hero does and the system should handle all defined mechanical consequences, while the Dungeon Architect (DA) controls fictional judgments, hidden information and legitimate overrides.
+Deliver an installable V14 system that makes core Heroes of Legend play easy.
+Bruce's latest October 17 correction (#129) supersedes the earlier requirement to
+automate every last catalog detail. Use native Foundry targeting, one prefilled effective
+−3…+3 Boon/Bane slider, no modifier reason fields, and optional context controls
+that default to no adjustment. Preserve genuine mechanical choices and reliable
+costs, rolls, effects and receipts without routine questionnaires.
 
-Bruce explicitly requested maximum automation and use of Foundry features. The first playable slice is a development milestone, not the final automation boundary. Full release includes character building, all catalog entries, player and DA combat, target selection, action costs, reaction windows, damage/healing, conditions, movement, summons, wounds, crafting, advancement and session tools. Every catalog entry must be classified as automated, requiring a named human choice, or a documented release blocker.
-
-No silent fallback from unsupported mechanics to a misleading “automated” result. A narrative condition such as “a plausible anchor” can prompt the DA once; the resulting movement/cost/effect should then execute automatically. A defined Burning tick should not require repeated manual damage buttons.
+Automate dependable core workflows and present complete, readable source rules
+for specialty/manual adjudication. Classify content honestly as automated,
+partially automated or reference/manual; a manual specialty is not by itself a
+release blocker. Never claim an unsupported mechanic executed automatically.
 
 ## 2. Scope and staged delivery
 
@@ -16,8 +22,8 @@ No silent fallback from unsupported mechanics to a misleading “automated” re
 |---|---|---|
 | Foundation proof | A character, creature and Basic Melee can be loaded, rolled and persisted. | Validated V14 package, typed data and reliable dice/chat. |
 | Playable alpha | A small encounter including defense, damage, turns, common conditions and recovery works with two clients. | Automatic standard outcomes; clearly labeled temporary omissions. |
-| Feature beta | Creation, advancement, inventory, crafting, wounds, full combat economy, movement, reactions and summons work. | All general mechanics automated; full catalog coverage audit underway. |
-| Full release | Approved player and completed DA/bestiary content, integration tests, polished sheets and distributable release. | Every mechanical catalog behavior implemented and tested, or explicitly accepted by Bruce as a named exception. |
+| Feature beta | Creation, advancement, inventory, crafting, wounds, full combat economy, movement, reactions and summons work. | Core workflows reliable; manual specialty coverage labeled and reviewed. |
+| Full release | Approved player and completed DA/bestiary content, integration tests, polished sheets and distributable release. | Core play tested; every catalog record honestly labels automated versus reference/manual handling. |
 
 Initially support V14 only. No migration from Neon Relic, legacy HOL or V13 worlds is required. Optional module integrations must not be dependencies for ordinary HOL play. Automated encounter difficulty remains advisory until the game's balance model is certified; this does not prevent automatic budget calculation.
 
@@ -40,7 +46,7 @@ Initially support V14 only. No migration from Neon Relic, legacy HOL or V13 worl
 | World time and calendar | Treatment/day limits, crafting time and noncombat durations. | Explicit game-day boundary; no wall-clock reset or hidden passage of game time. |
 | Scenes, playlists and cards | Encounter setup, optional approved scene ambiance, printable/shareable ability presentations. | Use native Cards only if a demonstrated workflow benefits; HOL does not acquire a random hand/deck rule. |
 | Macros, hotbar and API | Actor-aware shortcuts for owned abilities and common actions. | Resolve stable UUIDs and actor context; stale macros fail intelligibly. |
-| Settings, localization and tours | World automation policy, per-user layout, English strings and onboarding. | Default is full automation; settings do not quietly rewrite HOL rules. |
+| Settings, localization and tours | World automation policy, per-user layout, English strings and onboarding. | Default supports easy core play; settings do not quietly rewrite HOL rules. |
 
 The feature choice follows the game. Native features should simplify play, not add unrelated subsystems.
 
@@ -211,7 +217,7 @@ Use [acceptance scenarios](acceptance-scenarios.md), a pure-rules suite, schema/
 
 Measure representative large sheets and full-compendium searches on a recorded reference environment; proposed targets are under 500 ms for warm local sheet render and under 300 ms for indexed local search, excluding network latency. These are engineering targets to calibrate, not measured results. Avoid eager loading every full document on each keystroke.
 
-Release requires final source intake, content automation coverage, stable IDs, migrations from earlier HOL test releases, cross-platform build, reproducible package contents, version assertions and installation from the actual release manifest. Do not ship a source ZIP as the installable artifact. Select code/content licenses and asset notices before distributing packs. Keep system version, schema revision and content revision distinct.
+Release requires final source intake, honest automated/manual content coverage, stable IDs, migrations from earlier HOL test releases, cross-platform build, reproducible package contents, version assertions and installation from the actual release manifest. Do not ship a source ZIP as the installable artifact. Select code/content licenses and asset notices before distributing packs. Keep system version, schema revision and content revision distinct.
 
 ## Completed-book language integration
 

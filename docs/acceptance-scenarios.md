@@ -105,7 +105,7 @@ These are requirements for future tests and manual Foundry checks. **They have n
 | T77 | Pack round trip | Actor embedded Items/effects and Journal pages remain accessible; no phantom records or broken links. |
 | T78 | Schema migration failure and rerun | Completion version not advanced prematurely; prior completed steps are safe to repeat/resume. |
 | T79 | Latest manifest installation followed by tagged upgrade | ZIP/manifest versions and paths match; same source IDs; playable fixture survives. |
-| T80 | Full catalog audit | Every active mechanical record has explicit automation coverage and scenario evidence; no warn-and-skip entries. |
+| T80 | Full catalog audit | Every active record honestly labels automated, partial or reference/manual handling. Automated claims have scenario evidence; readable manual specialties are accepted for core release. |
 | T81 | Keyboard, dark/light mode, detached sheet | No missing actions, inaccessible critical controls, clipped text or lost listeners. |
 | T82 | Group binary target 7, results Weak/Strong/Strong | Total 7 succeeds; Weak/Standard/Strong total 6 fails binary but retains 6 for cumulative task. |
 | T83 | Same actor aids and contributes to one group attempt | Reject double participation; no group wound treatment/crafting/derivation. |
@@ -120,7 +120,7 @@ These are requirements for future tests and manual Foundry checks. **They have n
 | T87 | Select Shield Block, deselect, then cancel defense before commitment | No Reaction/effect/payment consumed; request remains pending. Submitting the selected reaction pays once before rolling. |
 | T88 | Creature attacks Hero A; Hero A clicks Defend | Show creature attack description and A's actual token, printed defense attribute/effective stat, Threat, conditions and benefits; allow eligible abilities without rebuilding context. |
 | T89 | Area attack on A and B; A defends with an ability | A and B have separate response IDs/results; A's choice does not change B's roll or resolve B automatically. |
-| T90 | Any player/non-owner clicks Defend; two players handle one defender; chat reloads | Dialog opens without ownership/target gating; actual roller and chosen defender recorded separately; accidental duplicate application prevented; card remains usable for other defenders and explicit additional attempts. |
+| T90 | Any player/non-owner clicks Defend; two players handle one defender; chat reloads | Dialog opens without ownership/target gating; actual roller and chosen defender recorded separately; same-operation retransmission is idempotent; fresh submissions for the same defender each roll without a checkbox, explanation or DA approval. |
 | T91 | Drag owned eligible ability into dialog, then a compendium/unowned ability | Owned ability becomes a draft selection; unowned source cannot grant free use. Invalid type/drop explains why. |
 | T92 | Drop same ability into acquisition twice; transfer equipment; drop summon into scene | No duplicate grant/payment; transfer preserves instance/supply and debits once; summon requires eligible paid workflow. |
 | T93 | Drag/drop after sheet rerender and in detached window; use keyboard alternative | Same UUID/permission validation and result as main sheet; no lost listeners, silent failure or acting-actor swap. |
@@ -151,7 +151,7 @@ These are requirements for future tests and manual Foundry checks. **They have n
 
 Pure-rule tests cover T01–T05, damage aggregation, ledger math, state transitions, wound selection and grid calculations. Model tests verify invalid input, derived data and serialization. Content tests verify source coverage and complete outcomes. Runtime tests cover authoritative mutation, documents, effects, combat events, scene geometry and UI. Each content handler contributes additional fixtures beyond this seed matrix.
 
-For each runtime run record commit, package/schema/content versions, Foundry build, browser, OS, modules, client roles, fixture world, expected/actual outcome and console output. A mock pass is not a Foundry pass. Final release requires all applicable scenarios and full content coverage, with any intentional exceptions explicitly approved and named in release notes.
+For each runtime run record commit, package/schema/content versions, Foundry build, browser, OS, modules, client roles, fixture world, expected/actual outcome and console output. A mock pass is not a Foundry pass. Core release requires the applicable supported-workflow scenarios and honest content coverage labels. Readable manual specialties are accepted under #129; list them in release notes without claiming they are automated.
 
 ### T106 — completed-book languages
 
@@ -164,3 +164,18 @@ An owned ability or equipment row is a native live-Item drag source and a hotbar
 ### T108 — native creature Actor pack
 
 The creatures Actor compendium contains all 192 reviewed records with stable namespaced IDs and pinned `{ path, sha256 }` provenance. Before importing, the native fixture strictly validates every source Actor and reports aggregate field failures. Plain native creature defaults and a legitimate empty Armor marker validate; invalid nonempty values in every choice-backed field are rejected; and numeric and special mitigations keep their distinct authored shapes. Native prototype Token width and height match the printed footprint for all 192; a DOM compendium drop creates a strict Red Dragon Actor and a 3x3 Token. A clean isolated world imports all 192; Adder and Red Dragon retain their exact attributes, HP, signed CV, alternate Speeds, size/footprint, Armor marker, Evasion, Threat, Stability, mitigations, immunities and player-defense Basic Melee. A synthetic signed-negative CV Actor validates because the reviewed roster currently has no negative-CV record. The sheet safely converts and enriches the complete authored actions/details into a read-only reference region with real headings and tables, escaping hostile source HTML and unsafe links, while specialty automation remains visibly pending. Existing Basic Melee/Defend behavior continues to use the imported printed profile. Artwork uses the native fallback. The fixture refuses pre-existing fixture IDs, records each actual returned ID before assertions, tracks only its own imports and synthetic Actor, and deletes every fixture document before returning.
+
+## Simple core roll interaction — issue #129
+
+Use native Foundry targeting with read-only target preview; zero or multiple
+single-action targets produce a short inline targeting instruction. A target
+change refreshes the preview and submission validates the current target identity.
+Shared attribute/defense and player attack dialogs have exactly one accessible
+signed −3…+3 slider and no Boon/Bane reason fields. Verify keyboard and mouse use,
+−3/0/+3, automatic-source prefill/cancellation/cap and exact final formula.
+With automatic +2, choosing −1 means final −1. Untouched controls follow ability
+changes; a deliberate slider override retains its chosen net. Optional fear
+and wound controls default off and do not block ordinary play. Preserve ability
+choices, any-player Defend and additional defender selection. Every intentional fresh defense may roll again without a checkbox, explanation or DA approval, including while an older operation's dice are unknown. Same-operation replay never rolls again.
+Unknown-dice recovery and exceptional DA rulings remain explicit. Native evidence must be
+recorded after serialized runtime testing; static checks alone do not prove UI.

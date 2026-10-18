@@ -3,7 +3,6 @@ import assert from "node:assert/strict";
 import {
   blockableJudgment,
   defenseAbilityAvailability,
-  defenseAttemptContext,
 } from "../src/rules/defense-abilities.mjs";
 import {
   defenseBenefitSources,
@@ -60,51 +59,17 @@ test("blockable judgment distinguishes legacy cards, denial and approval", () =>
   assert.match(legacy.reasons.join(" "), /has not judged/);
 });
 
-test("resolved attempts allow an explicit reason while unresolved attempts block", () => {
-  const actorUuid = "Actor.defender",
-    base = {
-      capable: true,
-      ownTurn: false,
-      remaining: { reaction: 1 },
-      attackMessageId: "attack",
-      blockable: true,
-      heldShieldUuids: ["Actor.defender.Item.shield"],
-    },
-    resolved = defenseAttemptContext(
-      [{ actorUuid, status: "resolved" }],
-      actorUuid,
-    );
-  assert.deepEqual(resolved, {
-    priorDefenses: 1,
-    unresolvedDefense: false,
-  });
-  assert.match(
-    defenseAbilityAvailability("ability-shield-block", {
-      ...base,
-      ...resolved,
-    }).reasons.join(" "),
-    /explicit additional defense attempt and reason/,
-  );
-  assert.deepEqual(
-    defenseAbilityAvailability("ability-shield-block", {
-      ...base,
-      ...resolved,
-      additionalAttempt: true,
-      attemptReason: "DA approved a second defense",
-    }),
+test("prior completed or unknown defense dice do not gate a newly selected ability", () => {
+  const base = {
+    capable: true, remaining: { reaction: 1 }, attackMessageId: "attack",
+    blockable: true, heldShieldUuids: ["Actor.defender.Item.shield"],
+  };
+  for (const context of [
+    { priorDefenses: 1, unresolvedDefense: false },
+    { priorDefenses: 2, unresolvedDefense: true },
+  ]) assert.deepEqual(
+    defenseAbilityAvailability("ability-shield-block", { ...base, ...context }),
     { available: true, reasons: [] },
-  );
-  assert.match(
-    defenseAbilityAvailability("ability-shield-block", {
-      ...base,
-      ...defenseAttemptContext(
-        [{ actorUuid, status: "rolling" }],
-        actorUuid,
-      ),
-      additionalAttempt: true,
-      attemptReason: "DA approved a second defense",
-    }).reasons.join(" "),
-    /Resolve the current defense attempt/,
   );
 });
 

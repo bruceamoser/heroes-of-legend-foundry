@@ -5,48 +5,39 @@
     <h1>{{actorName}} · Basic Melee</h1>
     <p>{{actorTokenName}}{{#if targetName}} → {{targetName}}{{/if}}</p>
   </header>
-  <p class="hol-note">One Brawn attack roll against one adjacent creature. This roll uses the attacker's result directly; a player target does not make a second Defend roll.</p>
   {{#if notice}}<p class="hol-note" role="alert">{{notice}}</p>{{/if}}
   <div class="hol-pair">
-    <label>Held melee weapon
-      <select name="weaponItemUuid">
-        <option value="">Choose a held weapon</option>
-        {{#each weapons}}<option value="{{uuid}}" {{#if selected}}selected{{/if}}>{{name}}{{#if hands}} · {{hands}} hand(s){{/if}}</option>{{/each}}
+    {{#if multipleWeapons}}<label>Weapon
+      <select name="weaponItemUuid"><option value="">Choose a held weapon</option>
+        {{#each weapons}}<option value="{{uuid}}" {{#if selected}}selected{{/if}}>{{name}}</option>{{/each}}
       </select>
-    </label>
-    <label>Target
-      <select name="targetTokenUuid">
-        <option value="">Choose one adjacent creature</option>
-        {{#each targets}}<option value="{{uuid}}" {{#if selected}}selected{{/if}}>{{name}} · {{actorType}}</option>{{/each}}
-      </select>
-    </label>
+    </label>{{else}}<p>Weapon: <strong>{{weaponName}}</strong></p>{{/if}}
+    <p class="hol-native-target" data-target-uuid="{{targetTokenUuid}}" aria-live="polite">Target: <strong>{{#if targetName}}{{targetName}}{{else}}Use Foundry targeting to select one adjacent creature.{{/if}}</strong></p>
   </div>
-  <p>Brawn: <strong>{{attribute}}</strong> · Target Evasion and actual target Grappled sources are automatic.</p>
+  <p>Brawn: <strong>{{attribute}}</strong></p>
   {{#if geometryReason}}<p class="hol-note" data-geometry-status="{{geometryStatus}}">{{geometryReason}}</p>{{/if}}
-  {{#if reasons.length}}<section class="hol-errors" aria-live="polite"><h2>Visible requirements</h2><ul>{{#each reasons}}<li>{{this}}</li>{{/each}}</ul></section>{{/if}}
-  {{#if gm}}<label>DA encounter or geometry ruling
+  {{#if reasons.length}}<section class="hol-errors" aria-live="polite"><ul>{{#each reasons}}<li>{{this}}</li>{{/each}}</ul></section>{{/if}}
+  {{#if gm}}<details class="hol-context-options"><summary>DA ruling (optional)</summary><label>Encounter or geometry ruling
     <textarea name="rulingReason" rows="2" placeholder="Required only when the visible rules ask for an explicit DA judgment.">{{rulingReason}}</textarea>
-  </label>{{/if}}
-  {{#each fears}}<label>Can you perceive {{source}}?
-    <select name="fear-{{index}}"><option value="">Choose perception</option><option value="yes" {{#if yes}}selected{{/if}}>Yes</option><option value="no" {{#if no}}selected{{/if}}>No</option></select>
-  </label>{{/each}}
-  {{#if wounds}}<h2>Wound modifiers</h2><p class="hol-note">The DA/table decides whether each printed injury context applies to this action. The chosen attribute does not decide physical, mental, or social applicability.</p>{{#each wounds}}<fieldset class="hol-wound-context" data-effect-id="{{effectId}}"><legend>{{injury}}</legend><p><strong>{{amount}} {{#if (eq polarity "boon")}}Boon{{else}}Bane{{/if}}</strong> to {{printedContext}}</p><label>Applies to this roll<select name="wound-{{index}}"><option value="">Choose applies or does not apply</option><option value="applies" {{#if applies}}selected{{/if}}>Applies</option><option value="does-not-apply" {{#if doesNotApply}}selected{{/if}}>Does not apply</option></select></label></fieldset>{{/each}}{{/if}}
-  <h2>Sources applied to this attack roll</h2>
+  </label></details>{{/if}}
+  {{#if fears}}<details class="hol-context-options"><summary>Fear context (optional)</summary>
+  {{#each fears}}<label><input type="checkbox" name="fear-{{index}}" {{#if yes}}checked{{/if}}> Perceiving {{source}}</label>{{/each}}</details>{{/if}}
+  {{#if wounds}}<details class="hol-context-options"><summary>Wound adjustments (optional)</summary>
+  <p>Apply a printed wound modifier when it fits this action.</p>
+  {{#each wounds}}<label class="hol-wound-context" data-effect-id="{{effectId}}"><input type="checkbox" name="wound-{{index}}" {{#if applies}}checked{{/if}}> {{injury}} · {{amount}} {{#if (eq polarity "boon")}}Boon{{else}}Bane{{/if}} · {{printedContext}}</label>{{/each}}</details>{{/if}}
+  <label class="hol-adjustment">Boons / Banes
+    <span data-adjustment-label aria-live="polite">{{adjustmentLabel}}</span>
+    <input type="range" name="adjustment" min="-3" max="3" step="1" value="{{draft.adjustment}}" aria-label="Boons or Banes" aria-valuetext="{{adjustmentLabel}}">
+    <span class="hol-adjustment-scale" aria-hidden="true"><span>−3 Banes</span><span>0</span><span>+3 Boons</span></span>
+  </label>
+  <details class="hol-context-options"><summary>Roll details</summary>
   <ul class="hol-roll-sources">{{#each sources}}<li>{{label}}: {{amount}} {{kind}}{{#if automatic}} · automatic{{/if}}</li>{{/each}}</ul>
-  <h2>Situational Boons and Banes</h2>
-  <div class="hol-pair">
-    <label>Boons<input type="number" name="boons" min="0" step="1" value="{{draft.boons}}"></label>
-    <label>Banes<input type="number" name="banes" min="0" step="1" value="{{draft.banes}}"></label>
-  </div>
-  <div class="hol-pair">
-    <label>Boon reason<input name="boonsLabel" value="{{draft.boonsLabel}}"></label>
-    <label>Bane reason<input name="banesLabel" value="{{draft.banesLabel}}"></label>
-  </div>
-  <p class="hol-note">Damage is fixed by the result: Weak 2 · Standard 3 · Strong 5 Physical. The weapon adds no damage die.</p>
+    <p class="hol-roll-totals" aria-live="polite">{{totals}}</p>
+    <p>Physical damage: Weak 2 · Standard 3 · Strong 5.</p>
+  </details>
 </section>
 <footer class="hol-roll-footer">
-  <p class="hol-roll-totals" aria-live="polite">{{totals}}</p>
   <output aria-live="polite">{{formula}}</output>
-  <button type="button" data-action="attack" class="hol-primary" {{#unless canAttack}}disabled{{/unless}}>Commit one Main Action and roll</button>
+  <button type="button" data-action="attack" class="hol-primary" {{#unless canAttack}}disabled{{/unless}}>Attack</button>
 </footer>
 </section>

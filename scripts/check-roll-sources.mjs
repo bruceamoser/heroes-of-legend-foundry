@@ -133,18 +133,15 @@ try {
     original,
   );
   d = await open();
-  await player.page.waitForFunction(
-    () =>
-      document.querySelector('.hol-roll-dialog [data-action="roll"]')?.disabled,
-  );
-  assert.match(await d.locator("output").innerText(), /fear source/);
-  await d.locator('[name="fear-0"]').selectOption("yes");
+  assert.equal(await d.locator('[data-action="roll"]').isEnabled(), true);
+  await d.locator("summary").filter({ hasText: "Fear context" }).click();
+  await d.locator('[name="fear-0"]').check();
   assert.equal(await d.locator("output").innerText(), "6d6kl3 + (0)");
-  await d.locator('[name="boons"]').fill("4");
-  await d.locator('[name="boonsLabel"]').fill("DA-approved cover");
-  assert.equal(await d.locator("output").innerText(), "4d6kh3 + (0)");
+  const slider = d.getByRole("slider", { name: "Boons or Banes" });
+  await slider.focus(); await slider.press("End");
+  assert.equal(await d.locator("output").innerText(), "6d6kh3 + (0)");
   assert.match(
-    await d.locator(".hol-roll-sources").innerText(),
+    await d.locator(".hol-roll-sources").textContent(),
     /Defend maneuver/,
   );
   await gm.page.evaluate(async (f) => {
@@ -166,10 +163,10 @@ try {
   );
   await d.getByRole("button", { name: "Roll", exact: true }).click();
   await d.getByRole("alert").waitFor();
-  assert.equal(await d.locator("output").innerText(), "3d6 + (2)");
+  assert.equal(await d.locator("output").innerText(), "6d6kh3 + (2)");
   assert.equal(
-    await d.locator('[name="boonsLabel"]').inputValue(),
-    "DA-approved cover",
+    await d.locator('[name="adjustment"]').inputValue(),
+    "3",
   );
   assert.equal(
     await player.page.evaluate(
@@ -208,7 +205,7 @@ try {
   assert.equal(saved.roll.mode, "defense");
   assert.equal(saved.roll.rollerId, f.user);
   assert.equal(saved.author, f.user);
-  assert.equal(saved.roll.boons, 5);
+  assert.equal(saved.roll.boons, 8);
   assert.equal(saved.roll.banes, 5);
   assert.equal(saved.roll.attribute, 2);
   assert.equal(saved.roll.sources.length, 4);
@@ -245,10 +242,10 @@ try {
     f,
   );
   d = await open();
-  await d.locator('[name="fear-0"]').selectOption("no");
+  assert.equal(await d.locator('[name="fear-0"]').isChecked(), false);
   assert.equal(await d.locator("output").innerText(), "6d6kl3 + (2)");
   assert.doesNotMatch(
-    await d.locator(".hol-roll-sources").innerText(),
+    await d.locator(".hol-roll-sources").textContent(),
     /Defend maneuver|fear source/,
   );
   await d.locator('[data-action="close"]').click();

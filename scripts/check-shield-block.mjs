@@ -41,18 +41,19 @@ async function screenshot(label) {
     .screenshot({ path: `test-results/${label}.png` });
 }
 async function openPrompt(id = attack) {
-  await player.page.evaluate(
+  const applicationId = await player.page.evaluate(
     async ({ actor, attack }) => {
       const { promptDefenseRoll } = await import(
         "/systems/heroes-of-legend/dialogs/attribute-roll.mjs"
       );
-      await promptDefenseRoll(game.actors.get(actor), "agility", {
+      const application = await promptDefenseRoll(game.actors.get(actor), "agility", {
         attackMessageId: attack,
       });
+      return application.element.id;
     },
     { actor: fixture.hero, attack: id },
   );
-  return player.page.locator(".hol-roll-dialog");
+  return player.page.locator(`[id="${applicationId}"]`);
 }
 async function closePrompt(dialog) {
   await dialog.locator("[data-action=close]").click();
@@ -177,7 +178,7 @@ async function waitForAbility(definitionId, actorId = fixture.hero) {
     },
   );
 }
-try {
+shieldScenarios: try {
   gm = await join("Gamemaster", true);
   fixture = await gm.page.evaluate(async () => {
     const created = (globalThis.__holShieldBlockFixture = {
@@ -472,7 +473,7 @@ try {
   );
   assert.match(await dialog.innerText(), /A held shield is required/);
   assert.match(
-    await dialog.locator(".hol-roll-sources").innerText(),
+    await dialog.locator(".hol-roll-sources").textContent(),
     /Defend maneuver/,
   );
   await screenshot("shield-block-held-requirement");
@@ -490,6 +491,16 @@ try {
       game.actors.get(f.hero)?.items.get(f.shieldItem)?.system.held === true,
     fixture,
   );
+  // Earlier dice, even an unknown old operation, do not forbid selecting a
+  // forgotten ability. A fresh paid use still consumes the ordinary Reaction.
+  await gm.page.evaluate(async ({ attack, fixture }) => {
+    await game.messages.get(attack).update({
+      "flags.heroes-of-legend.defenseResponses": [
+        { requestId: "old-resolved", actorUuid: `Actor.${fixture.hero}`, attempt: 1, status: "resolved" },
+        { requestId: "old-unknown", actorUuid: `Actor.${fixture.hero}`, attempt: 2, status: "rolling" },
+      ],
+    });
+  }, { attack, fixture });
   await player.page
     .locator(`[data-message-id="${attack}"] .hol-defend-button`)
     .filter({ visible: true })
@@ -548,10 +559,10 @@ try {
   await player.page.waitForFunction(() =>
     document
       .querySelector(".hol-roll-dialog .hol-roll-sources")
-      ?.innerText.includes("Shield Block"),
+      ?.textContent.includes("Shield Block"),
   );
   assert.match(
-    await dialog.locator(".hol-roll-sources").innerText(),
+    await dialog.locator(".hol-roll-sources").textContent(),
     /Defend maneuver[\s\S]*Shield Block/,
   );
   assert(
@@ -628,6 +639,22 @@ try {
   );
   assert(replay.replay);
   assert.deepEqual(await state(), beforeReplay);
+  if (process.env.HOL_TEST_SHIELD_CORE_ONLY === "1") {
+    dialog = await openPrompt(attack);
+    assert.equal(await dialog.locator('[name="additionalAttempt"], [name="attemptReason"]').count(), 0);
+    assert.equal(await dialog.getByRole("button", { name: "Roll", exact: true }).isEnabled(), true);
+    assert.match(await dialog.locator(".hol-roll-sources").textContent(), /Shield Block/);
+    await dialog.screenshot({ path: "test-results/shield-block-fresh-reroll.png" });
+    const beforeFreshRoll = await state();
+    await dialog.getByRole("button", { name: "Roll", exact: true }).click();
+    await gm.page.waitForFunction(id => game.messages.filter(message =>
+      message.getFlag("heroes-of-legend", "roll")?.attackMessageId === id,
+    ).length === 2, attack);
+    assert.deepEqual(await state(), beforeFreshRoll);
+    assert.deepEqual(errors, []);
+    console.info("PASS: forgotten Shield Block remains selectable after resolved and unknown older dice; one fresh use pays one Reaction; reopening Defend rolls again with active benefits and no new charge or repeat controls; same-operation replay is idempotent; zero page errors.");
+    break shieldScenarios;
+  }
 
   // A judged non-blockable attack and a legacy unjudged card do not expose Shield Block.
   const denied = await createAttack({ blockable: false });
@@ -637,7 +664,7 @@ try {
   );
   assert.match(await dialog.innerText(), /judged this attack not blockable/);
   assert.doesNotMatch(
-    await dialog.locator(".hol-roll-sources").innerText(),
+    await dialog.locator(".hol-roll-sources").textContent(),
     /Shield Block:/,
   );
   await closePrompt(dialog);
@@ -817,7 +844,7 @@ try {
   dialog = await openPrompt(dropped);
   assert.match(await dialog.innerText(), /A held shield is required/);
   assert.doesNotMatch(
-    await dialog.locator(".hol-roll-sources").innerText(),
+    await dialog.locator(".hol-roll-sources").textContent(),
     /Shield Block:/,
   );
   await closePrompt(dialog);

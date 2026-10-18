@@ -6,16 +6,6 @@ import {
 import { rollBasis, prepareRoll } from "./roll-preparation.mjs";
 import { evaluatePreparedRoll } from "./roll.mjs";
 const ID = "heroes-of-legend";
-function pendingAbilityFor(actorUuid) {
-  return game.combats.contents.some((combat) => {
-    const pending = combat.getFlag(ID, "pendingAbility");
-    return Boolean(
-      pending &&
-        combat.getFlag(ID, "abilityOperations")?.[pending]?.actorUuid ===
-          actorUuid,
-    );
-  });
-}
 export async function defenseSignature(request) {
   const digest = await crypto.subtle.digest(
     "SHA-256",
@@ -48,10 +38,6 @@ export function defenseResponses(message) {
 export async function requestDefense(actor, basis, draft) {
   if (!game.settings.get(ID, "creationAuthorityClient"))
     throw new Error("Enable the GM automation coordinator first.");
-  if (pendingAbilityFor(actor.uuid))
-    throw new Error(
-      "The defender's ability activation is still pending. Review it before rolling.",
-    );
   prepareRoll(basis, draft);
   return ChatMessage.create(
     ChatMessage.applyMode({
@@ -115,10 +101,6 @@ async function apply(id) {
   }
   if (!record) {
     const actor = await fromUuid(request.actorUuid);
-    if (pendingAbilityFor(actor?.uuid))
-      throw new Error(
-        "The defender's ability activation is still pending. Review it before rolling.",
-      );
     const basis = rollBasis(
       actor,
       request.basis?.attributeKey,
@@ -132,19 +114,6 @@ async function apply(id) {
       );
     prepareRoll(basis, request.draft);
     const previous = responses.filter((r) => r.actorUuid === actor.uuid);
-    if (previous.some((r) => r.status === "rolling"))
-      throw new Error(
-        "This defender has an unresolved attempt. The DA must review it before another roll.",
-      );
-    if (
-      previous.length &&
-      (request.draft.additionalAttempt !== true ||
-        typeof request.draft.attemptReason !== "string" ||
-        !request.draft.attemptReason.trim())
-    )
-      throw new Error(
-        "This defender already has an attempt. Explicitly choose an additional attempt and give its reason.",
-      );
     record = {
       requestId: id,
       actorUuid: actor.uuid,
@@ -153,9 +122,7 @@ async function apply(id) {
       signature,
       attempt: previous.length + 1,
       status: "rolling",
-      reason: previous.length
-        ? "Explicit additional attempt"
-        : "Initial defense",
+      reason: "Defense submission",
     };
     responses.push(record);
     // Persist the uncertain-dice phase BEFORE evaluating. Recovery never rerolls it.
@@ -184,7 +151,7 @@ async function apply(id) {
         },
       });
       throw new Error(
-        "Sources changed before rolling. Review Defend and explicitly start a new attempt.",
+        "Sources changed before rolling. Reopen Defend to use the current values.",
       );
     }
     const { roll, snapshot } = await evaluatePreparedRoll(
@@ -251,7 +218,7 @@ export function abandonDefense(attackId, requestId, reason) {
         .get(requestId)
         ?.update({
           content:
-            "The DA abandoned this unresolved attempt without rerolling. Any new attempt needs an explicit reason.",
+            "The DA abandoned this unresolved operation without rerolling it. Fresh defense rolls remain available.",
           [`flags.${ID}.defenseStatus`]: "abandoned",
         })
         .catch(() => {});

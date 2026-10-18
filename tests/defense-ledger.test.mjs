@@ -35,3 +35,29 @@ test("public replay digest binds the complete request without copying private co
   assert.notEqual(first, await defenseSignature(request));
   assert(!first.includes("Private fear source"));
 });
+
+test("fresh defense submissions receive distinct identities without repeat permission", async (t) => {
+  const previous = { game: globalThis.game, ChatMessage: globalThis.ChatMessage };
+  t.after(() => Object.assign(globalThis, previous));
+  const { requestDefense } = await import("../src/services/defense-responses.mjs");
+  let sequence = 0;
+  globalThis.game = {
+    settings: { get: () => "coordinator" },
+    messages: { get: () => message([{ ...row, status: "rolling" }]) },
+  };
+  globalThis.ChatMessage = {
+    applyMode: data => data,
+    getSpeaker: () => ({}),
+    create: async data => ({ id: `fresh-${++sequence}`, ...data }),
+  };
+  const basis = {
+    attackMessageId: "attack", defenderTokenUuid: null,
+    attribute: 0, mode: "defense", contributions: [], woundModifiers: [], benefits: [],
+  };
+  const first = await requestDefense({ uuid: "Actor.defender" }, basis, {});
+  const second = await requestDefense({ uuid: "Actor.defender" }, basis, {});
+  assert.notEqual(first.id, second.id);
+  assert.deepEqual(first.flags, second.flags);
+  assert.equal(second.flags["heroes-of-legend"].defenseRequest.actorUuid, "Actor.defender");
+  assert.equal(Object.hasOwn(second.flags["heroes-of-legend"].defenseRequest.draft, "additionalAttempt"), false);
+});

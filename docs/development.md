@@ -691,7 +691,20 @@ Potion admission already rejects an existing action or turn-phase reservation.
 Service regressions exercise both admission directions and retain unchanged
 revision, budgets and zero authoritative writes on refusal. This is a #116
 reservation safety fix and partial progress toward #121; shared geometry and
-cross-workflow native acceptance remain open.
+cross-workflow native acceptance remain open. Native author checks on Foundry
+14.369 exercised the actual consent/ruling controls, Life resistance, exact
+Maneuver/Reaction receipts, completed replay, eight refused interleaved requests
+with unchanged Actor/budgets, synthetic-Actor d4 depletion without rerolling,
+source reconciliation, invalid embedded Items, dropped responses, zero-HP
+healing and interruption. Full fixture acceptance is still pending: runs that
+completed the mechanical assertions encountered native chat-toast insertion
+errors from temporary fixture cards. Opening real chat on every client removed
+those errors in the latest run, which then stopped when a random opening gave
+the zero-HP recipient a turn that the fixture tried to finish while Dying.
+Helper scenarios now put friendly recipients on the same side to avoid that
+unrelated turn setup, but this last fixture correction has not been natively
+rerun. Fixture documents were cleaned up and the isolated world was released
+for the UI work; no clean end-to-end native pass is claimed.
 
 ### Two-recipe Ordinary Recipe Study (#93)
 

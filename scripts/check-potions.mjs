@@ -11,7 +11,9 @@ if (
 )
   throw new Error("Use an authorized disposable local world.");
 
-const browser = await chromium.launch(),
+const browser = await chromium.launch({
+    args: ["--use-gl=angle", "--use-angle=swiftshader", "--enable-unsafe-swiftshader"],
+  }),
   errors = [],
   packItemId = (catalogId) => stableFoundryId(catalogId);
 let gm,
@@ -197,6 +199,12 @@ async function join(name) {
         formatBrowserErrors(connectionErrors),
       ].join("\n"),
     );
+  // Keep the real chat log visible on every client during rapid fixture cards.
+  // Hidden-sidebar toast insertion can outlive a temporary request card.
+  await page.evaluate(() => {
+    ui.sidebar.expand();
+    ui.sidebar.changeTab("chat", "primary");
+  });
   return { context, page };
 }
 
@@ -298,7 +306,11 @@ async function verifyNativeGeometryFixtures(fixture) {
         drawPlaceable = async (document, label) => {
           if (!document.rendered || !document.object)
             throw new Error(`${label} is not rendered on the fixture Canvas.`);
-          await document.object.draw();
+          // Creation schedules its native draw; a second draw races Wall graphics.
+          await new Promise(requestAnimationFrame);
+          await new Promise(requestAnimationFrame);
+          if (document.object.destroyed || !document.object.parent)
+            throw new Error(`${label} did not finish its native Canvas draw.`);
         },
         setRecipientElevation = async (requestedElevation) => {
           const updated = await recipient.update({
@@ -558,7 +570,8 @@ async function stageScenario({
                 : { actorId: actor.id }),
               name: actor.name,
               flags: {
-                [ID]: { side: index ? "opposition" : "players" },
+                // Helper scenarios are friendly potion recipients, including at 0 HP.
+                [ID]: { side: "players" },
               },
             })),
         );
@@ -582,15 +595,6 @@ async function stageScenario({
           : null;
       let message = await requestCombat(combat, "start");
       await resolveCombatRequest(message.id);
-      let state = combat.getFlag(ID, "encounter");
-      if (state.nextSide === "opposition") {
-        message = await requestCombat(combat, "choose", {
-          id: recipientCombatant.id,
-        });
-        await resolveCombatRequest(message.id);
-        message = await requestCombat(combat, "finish");
-        await resolveCombatRequest(message.id);
-      }
       message = await requestCombat(combat, "choose", {
         id: giverCombatant.id,
       });
@@ -890,6 +894,7 @@ try {
       giverTokenId: giverToken.id,
       recipientTokenId: recipientToken.id,
       combat: combat.id,
+      combatId: combat.id,
       giverParticipantId: giverCombatant.id,
       recipientParticipantId: recipientCombatant.id,
     };
@@ -938,6 +943,40 @@ try {
     await combatRequest("finish");
   }
   await combatRequest("choose", { id: first.giverParticipantId });
+  await gm.page.evaluate(async ({ giverActorUuid, abilityId }) => {
+    const { openPotionPreparation } = await import(
+      "/systems/heroes-of-legend/applications/potions.mjs"
+    );
+    const actor = await fromUuid(giverActorUuid);
+    globalThis.__holPotionUi = await openPotionPreparation(actor.items.get(abilityId));
+  }, first);
+  const gmPreparation = gm.page.locator(".hol-potion-preparation");
+  await gmPreparation.waitFor();
+  await gmPreparation.locator("[name=recipientParticipantId]").selectOption(first.recipientParticipantId);
+  const gmSubmitReady = (ready) => gm.page.waitForFunction((ready) =>
+    document.querySelector(".hol-potion-preparation [data-action=submit]")?.disabled === !ready,
+    ready,
+  );
+  await gmSubmitReady(false);
+  await gmPreparation.locator("[name=willing]").check();
+  await gmSubmitReady(true);
+  await gmPreparation.locator("[name=willing]").uncheck();
+  await gmSubmitReady(false);
+  await gmPreparation.locator("[name=daWillingnessReason]").fill("Fixture attributed willingness ruling");
+  await gmSubmitReady(true);
+  await gm.page.evaluate(async ({ sceneId, recipientTokenId }) => {
+    await game.scenes.get(sceneId).tokens.get(recipientTokenId).update({ elevation: 5 });
+  }, first);
+  await gmPreparation.locator("[name=daWillingnessReason]").fill("Fixture willingness at elevated position");
+  await gmSubmitReady(false);
+  await gmPreparation.locator("[name=geometryReason]").fill("Fixture DA confirms the elevated recipient is within reach");
+  await gmSubmitReady(true);
+  await gm.page.screenshot({ path: "/tmp/hol116-ui-rulings.png" });
+  await gm.page.evaluate(async ({ sceneId, recipientTokenId }) => {
+    await game.scenes.get(sceneId).tokens.get(recipientTokenId).update({ elevation: 0 });
+    await globalThis.__holPotionUi.close();
+    delete globalThis.__holPotionUi;
+  }, first);
   await giver.page.evaluate(
     async ({ actorUuid, itemId }) => {
       const actor = await fromUuid(actorUuid);
@@ -958,9 +997,14 @@ try {
   await preparation
     .locator("[name=recipientParticipantId]")
     .selectOption(first.recipientParticipantId);
+  await giver.page.screenshot({ path: "/tmp/hol116-ui-consent.png" });
   await preparation.locator("[data-action=submit]").click();
-  await recipient.page.locator(".hol-potion-consent").last().waitFor();
-  await recipient.page.locator(".hol-potion-consent").last().click();
+  await recipient.page.evaluate(() => {
+    ui.sidebar.expand();
+    ui.sidebar.changeTab("chat", "primary");
+  });
+  await recipient.page.locator("#chat .hol-potion-consent").last().waitFor();
+  await recipient.page.locator("#chat .hol-potion-consent").last().click();
   await waitPotion({ combatId: first.combat });
   const other = await gm.page.evaluate(
     async ({ combatId, giverActorUuid, recipientActorUuid }) => {
@@ -1060,6 +1104,7 @@ try {
     return resolvePotionRequest(operation.requestId, combat.uuid);
   }, first);
   assert.equal(replay.replay, true);
+  console.info("PASS native UI, two-owner consent, geometry, costs and completed replay");
 
   await gm.page.evaluate(() => {
     if (globalThis.__holPotionRollPatch) return;
@@ -1130,6 +1175,47 @@ try {
   });
   const recoveredRequest = await useScenario(recovered);
   await waitSupplyRolling(recovered, 7);
+  await gm.page.waitForFunction((id) =>
+    game.messages.get(id)?.content.includes("Injected unknown potion supply dice"), recoveredRequest);
+  const interleaving = await gm.page.evaluate(async ({ combatId, giverActorUuid }) => {
+    const ID = "heroes-of-legend", combat = game.combats.get(combatId),
+      actor = await fromUuid(giverActorUuid),
+      before = JSON.stringify({ encounter: combat.getFlag(ID, "encounter"), actor: actor.toObject() });
+    const cases = [
+      ["playerAttackRequest", {
+        handler: "player-basic-melee-v1", source: { path: "design/cards/basic-melee.md" },
+        itemUuid: `${giverActorUuid}.Item.fixture`, actorUuid: giverActorUuid,
+        combatUuid: combat.uuid, participantId: "fixture", basis: {}, draft: {},
+      }, "player-attacks", "resolvePlayerBasicMeleeRequest"],
+      ["npcAttackRequest", { combatUuid: combat.uuid }, "npc-attacks", "resolveNpcAttack"],
+      ["abilityRequest", { combatUuid: combat.uuid }, "abilities", "resolveAbilityRequest"],
+      ...["start", "choose", "finish", "roster", "convert"].map((kind) =>
+        ["combatRequest", { combatUuid: combat.uuid, kind }, "combat", "resolveCombatRequest"]),
+    ];
+    let refused = 0;
+    for (const [flag, request, module, method] of cases) {
+      // Admit through the selected coordinator once, without duplicate create-hook alerts.
+      const message = await ChatMessage.create({ content: "Fixture interleaving refusal" });
+      await message.update({ [`flags.${ID}.${flag}`]: request });
+      try {
+        const service = await import(`/systems/heroes-of-legend/services/${module}.mjs`);
+        await service[method](message.id);
+        throw new Error(`Interleaved ${flag} unexpectedly succeeded`);
+      } catch (error) {
+        if (!/pending encounter action|pending healing potion/.test(error.message)) throw error;
+        refused++;
+      } finally {
+        // Let native chat notification insertion finish before deleting its card.
+        await new Promise((resolve) => setTimeout(resolve, 350));
+        await message.delete();
+      }
+    }
+    const after = JSON.stringify({ encounter: combat.getFlag(ID, "encounter"), actor: actor.toObject() });
+    return { refused, unchanged: before === after, before: JSON.parse(before), after: JSON.parse(after) };
+  }, recovered);
+  assert.equal(interleaving.refused, 8);
+  assert.deepEqual(interleaving.after, interleaving.before);
+  console.info("PASS eight native interleaving refusals with unchanged Actor and budgets");
   const healedBeforeRecovery = await gm.page.evaluate(
     async (uuid) => (await fromUuid(uuid)).system.health.value,
     recovered.giverActorUuid,
@@ -1224,6 +1310,7 @@ try {
   );
   assert.equal(finalUse.die, 0);
   assert.equal(finalUse.status, "complete");
+  console.info("PASS synthetic Actor final d4-to-out recovery");
   assert.equal(finalUse.receipt.result.retained, 1);
   assert.equal(finalUse.receipt.nativeRoll, null);
   assert.equal(
@@ -1246,6 +1333,8 @@ try {
   });
   const changedRequest = await useScenario(changed);
   await waitSupplyRolling(changed, 11);
+  await gm.page.waitForFunction((id) =>
+    game.messages.get(id)?.content.includes("Injected unknown potion supply dice"), changedRequest);
   await gm.page.evaluate(
     async ({ actorUuid, bottleId, id }) => {
       const item = (await fromUuid(actorUuid)).items.get(bottleId);
@@ -1262,7 +1351,12 @@ try {
           "Fixture recovered a changed-source supply roll",
         );
       } catch (error) {
-        if (!/reconcile/i.test(error.message)) throw error;
+        if (!/reconcile/i.test(error.message)) {
+          const combat = game.combats.find((entry) => entry.getFlag("heroes-of-legend", "potionOperations")?.[id]);
+          const operation = combat?.getFlag("heroes-of-legend", "potionOperations")?.[id];
+          const child = item.actor.getFlag("heroes-of-legend", "potionSupplyOperations")?.[operation?.supplyOperationId];
+          throw new Error(`${error.message}\n${JSON.stringify({ id, operation, child }, null, 2)}`);
+        }
       }
     },
     {
@@ -1297,6 +1391,8 @@ try {
           operation.requestId
         ].status,
         disposition: operation.reconciliation.disposition,
+        operation,
+        currentSource: actor.items.get(operation.source.bottleItem.itemId).getFlag("heroes-of-legend", "source"),
       };
     },
     {
@@ -1589,6 +1685,8 @@ try {
     }
     if (released && fixtureTag) {
       try {
+        // Native scrolling text can retain token references for two seconds.
+        await gm.page.waitForTimeout(2100);
         await stabilizeFixtureCanvas(fixtureTag);
         const failures = await gm.page.evaluate(
           async ({ tag }) => {
@@ -1681,6 +1779,8 @@ try {
     recordCleanupError("browser teardown", error);
   }
 }
+if (!failure && errors.length)
+  failure = new Error(`Browser page errors, including teardown:\n${formatBrowserErrors(errors)}`);
 if (failure) {
   if (cleanupErrors.length)
     failure.message += `\nCleanup also failed:\n${cleanupErrors

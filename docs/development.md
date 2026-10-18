@@ -13,6 +13,39 @@ npm run check
 
 The build copies `src/` and `static/` into `dist/heroes-of-legend/`. No transpiler or compatibility library is needed for native ES modules. Manifest validation rejects missing assets, unsafe paths, incompatible generations and mismatched source/package versions. Tests exercise broken-package rejection as well as successful output. CI runs these checks and uploads a development directory artifact. This is not a published installable release; release URLs and ZIP publishing will be added when a playable version is ready.
 
+### First-run processing and ordinary restarts — issue #121
+
+A pristine world's active GM automatically claims the existing single-writer
+service during `ready`. Its initial binding, metadata and work checkpoint must
+all be empty. Other GMs and players do not claim it. Same-browser reloads retain
+the established path. A normal world relaunch can resume without a recovery
+checkbox only for the same active GM and browser, with matching binding/metadata
+and an explicitly idle, non-uncertain work checkpoint. The checkpoint is checked
+again after the activation fence; busy, mismatched or uncertain work never takes
+this shortcut. Different-browser handoff and explicit interrupted-write recovery
+retain their existing controls.
+
+Ten stateful VM tests cover automatic initial claims, duplicate tabs, ownership,
+partial-state refusal, same-browser resume, clean relaunch, unsafe checkpoints
+and actionable startup failure notices. On October 17, 2026 startup production
+commit `9e58068` passed the isolated Foundry 14.369 startup/restart fixture:
+fresh active-GM auto-start, a real clean world relaunch with same-GM/browser
+auto-resume, two-GM and duplicate-tab exclusion, queued handoff, lost-acknowledgment
+recovery, unknown-write suspension, blocked takeover before relaunch and explicit
+post-relaunch recovery with once-only grants/replay. The full Node 24 check passed
+347 tests. Restart phases captured zero uncaught page errors through teardown;
+all fixture Actors, requests and temporary users were cleaned. The coordinator
+panel screenshot was visually reviewed. This verifies startup, not the broader
+#121 integrated encounter acceptance.
+
+The existing two-GM fixture now waits for
+initial auto-start and releases only its own known lease before testing handoff.
+The restart fixture adds `--prepare-idle` and `--verify-idle`: run the first mode,
+close its clients, restart only the isolated server, then run the second mode.
+It retains only its test browser identifier between phases, creates no Actors,
+and releases the resumed lease after verification. Existing `--prepare`,
+`--check-blocked` and `--verify` continue to test uncertain-work recovery.
+
 ### Compact creature art — issue #119
 
 The checked-in runtime art under `static/assets/creatures/` is derived from the 192 portrait records pinned in `content/source-lock.json`. Each source is read from the locked Git commit with `git cat-file`; its SHA-256, native dimensions and alpha fact are checked before encoding. The initial runtime baseline is lossy WebP quality 85 at native dimensions, with method 6, exact transparent RGB, alpha quality 100 and no source metadata copied. The one non-square source remains non-square. Identical source blob hashes produce one shared content-addressed path.

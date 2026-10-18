@@ -21,12 +21,21 @@ async function action(wizard, name) {
 }
 async function drop(id, { invalid = false, type = "Item" } = {}) {
   const before = await owner.evaluate(() => ({ draft: JSON.stringify(holWizard.draft), revision: holWizard.revision, warnings: __hol137Warnings.length }));
-  await owner.evaluate(({ id, type }) => {
+  const calls = await owner.evaluate(({ id, type }) => {
+    const wizard = holWizard;
+    if (!Object.hasOwn(wizard, "fixtureDropCalls")) {
+      wizard.fixtureDropCalls = 0;
+      const original = wizard.dropAbility.bind(wizard);
+      wizard.dropAbility = (...args) => { wizard.fixtureDropCalls++; return original(...args); };
+    }
+    const calls = wizard.fixtureDropCalls;
     const choice = holWizard.catalogs.choices.find(record => record.id === id);
     const data = new DataTransfer();
     data.setData("text/plain", JSON.stringify({ type, uuid: `Compendium.heroes-of-legend.abilities.Item.${choice?.foundryId ?? "unsupported"}` }));
     holWizard.element.dispatchEvent(new DragEvent("drop", { bubbles: true, cancelable: true, dataTransfer: data }));
+    return wizard.fixtureDropCalls - calls;
   }, { id, type });
+  assert.equal(calls, 1, "One DOM drop must reach exactly one handler after rerenders.");
   if (invalid) {
     await owner.waitForFunction(count => __hol137Warnings.length > count, before.warnings);
     assert.deepEqual(await owner.evaluate(() => ({ draft: JSON.stringify(holWizard.draft), revision: holWizard.revision })), { draft: before.draft, revision: before.revision });
@@ -39,7 +48,8 @@ try {
   await login(gm, "Gamemaster");
   fixture = await gm.evaluate(async () => {
     const registry = globalThis.__hol137 = { actors: [], users: [], scenes: [], messages: [], hook: null, bound: false, previousScene: game.scenes.viewed?.id };
-    if (game.settings.get("heroes-of-legend", "creationAuthorityClient")) throw new Error("Expected unbound coordinator.");
+    const { isCreationAuthority } = await import("/systems/heroes-of-legend/services/authority.mjs");
+    if (game.settings.get("heroes-of-legend", "creationAuthorityClient") && !isCreationAuthority()) throw new Error("Another client owns the coordinator.");
     if (game.users.some(user => user.name === "HOL137 Owner")) throw new Error("Refusing existing fixture user.");
     const { bindCreationAuthority } = await import("/systems/heroes-of-legend/services/creation.mjs");
     await bindCreationAuthority(); registry.bound = true;
@@ -91,6 +101,7 @@ try {
   await action(wizard, "Add Conditioned Body"); await action(wizard, "Save and continue");
   await action(wizard, "Add Travel Pack"); await action(wizard, "Add Ordinary Melee Weapon"); await action(wizard, "Save and continue");
   await wizard.getByText("All creation choices are valid.", { exact: true }).waitFor();
+  await owner.evaluate(() => ui.notifications.clear());
   await wizard.screenshot({ path: "test-results/charactermancer-creation-review.png" });
   await action(wizard, "Create this character");
   await gm.waitForFunction(id => game.actors.get(id).getFlag("heroes-of-legend", "creationReceipt")?.status === "complete", fixture.actor);
@@ -99,6 +110,7 @@ try {
     return { hp: actor.system.health.baseMax, items: actor.items.size, meleeId: actor.items.find(item => item.system.catalogId === "item-ordinary-melee-weapon")?.id };
   }, fixture.actor);
   assert.equal(created.hp, 19); assert(created.meleeId);
+  console.log("CREATION: owner commit completed after drops/backtracking/reload.");
   await owner.evaluate(async id => { const { EquipmentPanel } = await import("/systems/heroes-of-legend/applications/equipment.mjs"); await new EquipmentPanel(game.actors.get(id)).render({ force: true }); }, fixture.actor);
   await owner.locator(`.hol-hands [data-equipment-id="${created.meleeId}"] [name=held]`).check();
   await owner.locator('.hol-hands [data-action="save"]').click();
@@ -121,6 +133,7 @@ try {
     const safe = await requestDevelopment(actor, "safePlace", { approved: true }); await resolveDevelopmentRequest(safe.id);
   }, fixture.actor);
   assert.deepEqual(await gm.evaluate(id => { const actor = game.actors.get(id), state = actor.getFlag("heroes-of-legend", "development"); return { dp: state.dp, awards: state.awards.length, hp: actor.system.health.value, spent: actor.system.grit.spent }; }, fixture.actor), { dp: 10, awards: 1, hp: 3, spent: 1 });
+  await owner.waitForFunction(id => { const state = game.actors.get(id)?.getFlag("heroes-of-legend", "development"); return state?.level === 2 && state.safePlace; }, fixture.actor);
   await owner.evaluate(async id => { const { AdvancementWizard } = await import("/systems/heroes-of-legend/applications/advancement.mjs"); globalThis.holWizard = new AdvancementWizard(game.actors.get(id)); await holWizard.render({ force: true }); globalThis.__hol137Warnings = []; const warn = ui.notifications.warn.bind(ui.notifications); ui.notifications.warn = (message, options) => { __hol137Warnings.push(message); return warn(message, options); }; }, fixture.actor);
   wizard = owner.locator(".hol-advancement");
   await drop("ability-the-cleverest-mixture", { invalid: true }); await drop("ability-conditioned-body"); await drop("ability-anatomy-of-an-opening");
@@ -128,13 +141,16 @@ try {
   assert.deepEqual(await weapons.locator("option").allTextContents(), ["Choose equipment", "Unarmed", "Ordinary Melee Weapon"]);
   await weapons.selectOption("melee"); await wizard.locator('[name="hands-ability-anatomy-of-an-opening"]').selectOption("1");
   await action(wizard, "Save draft");
+  await owner.evaluate(() => ui.notifications.clear());
   await wizard.screenshot({ path: "test-results/charactermancer-advancement-review.png" });
   const draftId = await owner.evaluate(() => holWizard.draftId);
   await action(wizard, "Commit reviewed advancement");
   await gm.waitForFunction(({ actor, draft }) => game.actors.get(actor).getFlag("heroes-of-legend", "development").commitReceipts?.[draft]?.status === "complete", { actor: fixture.actor, draft: draftId });
   const advanced = await gm.evaluate(id => { const actor = game.actors.get(id), state = actor.getFlag("heroes-of-legend", "development"); return { hp: actor.system.health.value, maximum: actor.system.health.baseMax, spent: actor.system.grit.spent, dp: state.dp, awards: state.awards.length, weapons: actor.items.filter(item => item.system.catalogId === "item-ordinary-melee-weapon").length }; }, fixture.actor);
-  assert.deepEqual(advanced, { hp: 3, maximum: 21, spent: 1, dp: 6, awards: 1, weapons: 1 });
+  assert.deepEqual(advanced, { hp: 3, maximum: 20, spent: 1, dp: 6, awards: 1, weapons: 1 });
   await gm.evaluate(async () => { const { resolveDevelopmentRequest } = await import("/systems/heroes-of-legend/services/advancement.mjs"); const message = __hol137.messages.map(id => game.messages.get(id)).find(message => message.getFlag("heroes-of-legend", "developmentRequest")?.kind === "commitDraft"); await resolveDevelopmentRequest(message.id); });
+  assert.equal(await gm.evaluate(id => game.actors.get(id).system.health.baseMax, fixture.actor), 20);
+  assert.equal(await gm.evaluate(id => game.actors.get(id).items.filter(item => item.system.catalogId === "item-ordinary-melee-weapon").length, fixture.actor), 1);
   assert.deepEqual(errors, []);
   console.log("PASS: continuous owner blank creation, legal-first disabled choices, eligible/ineligible/unsupported DOM drops, backtracking/reload, normal commit, equip, native Token placement, one advancement, readable weapon labels, unchanged current HP/spent Grit, exactly-once milestone and equipment grants.");
 } finally {

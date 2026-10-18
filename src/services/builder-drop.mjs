@@ -40,7 +40,10 @@ export function validateBuilderPurchase(wizard, choice, stateForDraft) {
     throw new Error(eligibility.reasons.map(reason => reason.text).join(" "));
 }
 
+const boundDropElements = new WeakSet();
 export function bindBuilderDrop(wizard) {
+  if (boundDropElements.has(wizard.element)) return;
+  boundDropElements.add(wizard.element);
   wizard.element.addEventListener("dragover", event => event.preventDefault());
   wizard.element.addEventListener("drop", event => {
     event.preventDefault(); event.stopPropagation();

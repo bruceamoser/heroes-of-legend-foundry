@@ -51,7 +51,9 @@ The same run captures light/dark, narrow and native detached character sheets,
 plus attack/defense views. Inspect the PNGs visually; screenshots existing on disk
 are not themselves a passing visual review. Evidence JSON records the exact ZIP
 hash and marks public URLs untested. Cleanup verifies deletion of all tracked
-fixture messages, Combat, Scene, Actors and Users. The separately edited import
+fixture messages, Combat, Scene, Actors and Users. Each client restores the prior
+Scene or tears down the fixture Canvas before deletion. Browser error checking
+continues through cleanup and browser teardown. The separately edited import
 used for installation/update preservation remains outside this fixture.
 
 This is a bounded core-play journey. It does not repeat full guided creation

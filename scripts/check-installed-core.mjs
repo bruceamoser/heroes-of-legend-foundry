@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { execFileSync } from "node:child_process";
-import { lstat, mkdir, readFile, realpath, writeFile } from "node:fs/promises";
+import { lstat, mkdir, readFile, realpath, rm, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { chromium } from "playwright";
 import { selectTestUser } from "./helpers/login.mjs";
@@ -25,9 +25,10 @@ assert.equal(manifest.version, "0.1.0", "Use the final unpublished 0.1.0 candida
 for (const path of ["heroes-of-legend.mjs", "services/abilities.mjs", "services/potions.mjs", "services/player-attacks.mjs"])
   assert.deepEqual(await readFile(resolve(installed, path)), execFileSync("unzip", ["-p", archive, path]), `Installed ${path} differs from accepted artifact.`);
 await mkdir("test-results", { recursive: true });
+await rm("test-results/installed-core-evidence.json", { force: true });
 const browser = await chromium.launch({ args: ["--use-angle=swiftshader", "--enable-unsafe-swiftshader"] });
 const errors = [], steps = [], clients = [];
-let gm, owner, other, fixture, cleanup;
+let gm, owner, other, fixture, cleanup, evidence;
 async function join(name) {
   const context = await browser.newContext({ viewport: { width: 1500, height: 1050 } });
   await context.addInitScript(() => {
@@ -67,6 +68,7 @@ try {
   await gm.waitForFunction(() => game.settings.get("heroes-of-legend", "creationAuthorityClient") === game.socket.id);
   fixture = await gm.evaluate(async ids => {
     const ID = "heroes-of-legend", registry = globalThis.__hol121Core = { actors: [], users: [], scenes: [], combats: [], messages: [] };
+    registry.priorScene = game.scenes.viewed?.id ?? null;
     registry.hook = Hooks.on("createChatMessage", message => registry.messages.push(message.id));
     const users = [];
     for (const name of ["Journey Arin", "Journey Bera"]) {
@@ -275,7 +277,7 @@ try {
   cleanup = await gm.evaluate(() => {
     const registry = globalThis.__hol121Core;
     Hooks.off("createChatMessage", registry.hook);
-    return { actors: registry.actors, users: registry.users, scenes: registry.scenes, combats: registry.combats, messages: registry.messages };
+    return { actors: registry.actors, users: registry.users, scenes: registry.scenes, combats: registry.combats, messages: registry.messages, priorScene: registry.priorScene };
   });
   const before = await gm.evaluate(f => ({ hp: f.actors.map(id => game.actors.get(id).system.health.value),
     dice: game.messages.get(f.attack).rolls[0].toJSON(), encounter: game.combats.get(f.combat).getFlag("heroes-of-legend", "encounter"),
@@ -315,29 +317,48 @@ try {
   await popup.screenshot({ path: "test-results/installed-core-detached.png" });
   await popup.close();
   passed("light/dark, narrow and native detached sheet screenshots captured for visual review");
-  assert.deepEqual(errors, []);
-  await writeFile("test-results/installed-core-evidence.json", JSON.stringify({ version: manifest.version, zipSha256,
-    installed: resolve(installed), foundry: await gm.evaluate(() => game.version), steps, screenshotsRequireVisualReview: true, publicUrlsTested: false }, null, 2) + "\n");
+  evidence = { version: manifest.version, zipSha256,
+    installed: resolve(installed), foundry: await gm.evaluate(() => game.version), steps, screenshotsRequireVisualReview: true, publicUrlsTested: false };
 } finally {
   if (gm && !gm.isClosed()) {
     const registry = cleanup ?? await gm.evaluate(() => {
       const registry = globalThis.__hol121Core;
       if (!registry) return null;
       Hooks.off("createChatMessage", registry.hook);
-      return { actors: registry.actors, users: registry.users, scenes: registry.scenes, combats: registry.combats, messages: registry.messages };
+      return { actors: registry.actors, users: registry.users, scenes: registry.scenes, combats: registry.combats, messages: registry.messages, priorScene: registry.priorScene };
     }).catch(() => null);
     if (registry) {
       try {
+        const restoreErrors = [];
+        for (const { page } of clients) {
+          if (page.isClosed()) continue;
+          await page.evaluate(async registry => {
+            for (const app of foundry.applications.instances.values()) {
+              if (registry.actors.includes(app.actor?.id) || registry.actors.includes(app.item?.actor?.id)) await app.close();
+            }
+            const prior = registry.priorScene && game.scenes.get(registry.priorScene);
+            if (prior) await prior.view();
+            else if (registry.scenes.includes(canvas.scene?.id)) await canvas.tearDown();
+          }, registry).catch(error => restoreErrors.push(error.message));
+        }
         const removed = await gm.evaluate(async registry => {
           for (const [kind, collection] of [["messages", game.messages], ["combats", game.combats], ["scenes", game.scenes], ["actors", game.actors], ["users", game.users]]) {
             for (const id of registry[kind]) await collection.get(id)?.delete();
             if (registry[kind].some(id => collection.has(id))) throw new Error(`Fixture ${kind} remain.`);
           }
-          return Object.fromEntries(Object.entries(registry).map(([kind, ids]) => [kind, ids.length]));
+          return Object.fromEntries(["actors", "users", "scenes", "combats", "messages"].map(kind => [kind, registry[kind].length]));
         }, registry);
+        if (restoreErrors.length) throw new Error(`Scene/application restoration failed: ${restoreErrors.join("; ")}`);
+        if (evidence) evidence.cleanup = removed;
         console.info("Cleanup verified:", JSON.stringify(removed));
       } catch (error) { console.error("Fixture cleanup failed:", error); process.exitCode = 1; }
     }
   }
   await browser.close();
 }
+
+assert.deepEqual(errors, [], "Browser errors include scene restoration, document cleanup and browser teardown.");
+if (process.exitCode) throw new Error("Installed core fixture cleanup failed; no acceptance record written.");
+assert(evidence?.cleanup, "Fixture cleanup must be verified before writing acceptance evidence.");
+await writeFile("test-results/installed-core-evidence.json", JSON.stringify({ ...evidence, browserErrors: errors }, null, 2) + "\n");
+console.info("PASS installed core fixture including cleanup and browser teardown; visual review still required.");

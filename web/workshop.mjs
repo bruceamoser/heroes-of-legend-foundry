@@ -279,17 +279,24 @@ function actionTable(entries, customize = edit) {
     )
     .join("")}</tbody></table></div>`;
 }
+function passiveTable(entries) {
+  return `<table class="passive-table"><tbody>${
+    entries
+      .filter((e) => e.visible || edit)
+      .map(
+        (e) =>
+          `<tr><td><div class="section-controls">${button(esc(e.record.name), "reference", `data-id="${esc(e.record.id)}"`, "table-link")}${edit && e.basic ? `<input type="checkbox" data-basic="${e.record.id}" aria-label="Show ${esc(e.record.name)}" ${e.visible ? "checked" : ""}>` : ""}</div><span class="brief" title="${esc(brief(e.record))}">${esc(brief(e.record))}</span></td></tr>`,
+      )
+      .join("") || "<tr><td><small>None</small></td></tr>"
+  }</tbody></table>`;
+}
 function mainPanel() {
   const actions = mainActions(preview, draft, catalogs);
-  const groups = [
-    "Main Action",
-    "Maneuver",
-    "Reaction",
-    "Passive",
-    "Movement",
-    "Other",
-  ];
-  return `${heading("", "Main", "", button("Create / develop", "builder", 'aria-label="Open character builder"', "small"))}${conditionBar()}<div class="main-layout"><div class="action-groups">${groups
+  const groups = ["Main Action", "Maneuver", "Reaction", "Movement", "Other"];
+  const passives = actions.filter((e) =>
+    actionTiming(e.record).includes("Passive"),
+  );
+  return `<div class="main-layout"><div class="action-groups">${groups
     .map((group) => {
       const entries = actions.filter((e) =>
         actionTiming(e.record).includes(group),
@@ -299,14 +306,14 @@ function mainPanel() {
     })
     .join(
       "",
-    )}<section class="action-group"><h3>Ancestry traits</h3><div class="table-wrap"><table class="trait-table"><tbody>${draft.traitIds.map((id) => `<tr><td>${button(esc(name(id)), "reference", `data-id="${esc(id)}"`, "table-link")}</td><td><span class="brief">${esc(traitBrief(id))}</span></td></tr>`).join("")}</tbody></table></div></section>${craftingActions(preview, catalogs).length ? `<section class="action-group"><h3>Crafting</h3>${recipeRows()}</section>` : ""}</div><aside class="play-summary"><section class="box"><h3>Defenses</h3>${row("Armor / physical DR", preview.resistances.physical ?? 0)}${Object.entries(
+    )}${craftingActions(preview, catalogs).length ? `<section class="action-group"><h3>Crafting</h3>${recipeRows()}</section>` : ""}</div><aside class="play-summary"><section class="box"><h3>Passives</h3>${passiveTable(passives)}</section><section class="box"><h3>Ancestry traits</h3><table class="trait-table"><tbody>${draft.traitIds.map((id) => `<tr><td>${button(esc(name(id)), "reference", `data-id="${esc(id)}"`, "table-link")}<span class="brief" title="${esc(traitBrief(id))}">${esc(traitBrief(id))}</span></td></tr>`).join("")}</tbody></table></section><section class="box"><h3>Defenses</h3>${row("Armor / physical DR", preview.resistances.physical ?? 0)}${Object.entries(
     preview.resistances,
   )
     .filter(([type]) => type !== "physical")
     .map(([type, value]) => row(`${title(type)} resistance`, value))
     .join(
       "",
-    )}${preview.passiveSources.map((p) => `<small>${esc(p.label)}</small>`).join("")}</section><section class="box"><h3>Movement & carrying</h3>${row("Speed", `${preview.summary?.speed ?? "—"} squares`)}${row("Bulk / capacity", `${preview.inventory.bulk} / ${preview.inventory.capacity}`)}${row("Encumbrance", preview.inventory.encumbrance)}${row("Base stability", preview.summary?.stability ?? 0)}</section><section class="box"><h3>Supplies</h3>${
+    )}${preview.passiveSources.map((p) => `<small>${esc(p.label)}</small>`).join("")}</section>${conditionBar()}<section class="box"><h3>Movement & carrying</h3>${row("Speed", `${preview.summary?.speed ?? "—"} squares`)}${row("Bulk / capacity", `${preview.inventory.bulk} / ${preview.inventory.capacity}`)}${row("Encumbrance", preview.inventory.encumbrance)}${row("Base stability", preview.summary?.stability ?? 0)}</section><section class="box"><h3>Supplies</h3>${
     preview.inventory.items
       .filter((i) => i.carried && i.inventoryDie)
       .map((i) => row(name(i.catalogId), `d${i.inventoryDie}`))
@@ -329,10 +336,30 @@ function recipeRows() {
     ? `<div class="table-wrap"><table class="recipe-table"><thead><tr><th>Recipe</th><th>Crafting ability</th><th>Attempt</th><th>Roll</th></tr></thead><tbody>${rows.map(({ recipe, ability, attribute }) => `<tr><td>${button(esc(recipe.name), "reference", `data-id="${recipe.id}"`, "table-link")}</td><td>${button(esc(ability.name), "reference", `data-id="${ability.id}"`, "table-link")}</td><td>${recipe.attemptMinutes} min</td><td>${attributeFor(ability) ? button(esc(attribute), "recipe-roll", `data-id="${ability.id}" data-recipe-id="${recipe.id}"`, "small") : "—"}</td></tr>`).join("")}</tbody></table></div>`
     : '<p class="empty">No recipes learned.</p>';
 }
-function inventoryStats() {
+function inventoryStats(starting = false) {
+  if (starting)
+    return `<div class="inventory-stats"><span><strong>${preview.creation.inventory.remainingCoins}</strong> coins</span><span><strong>${preview.creation.inventory.bulk} / ${preview.inventory.capacity}</strong> Bulk</span><span>Encumbrance <strong>${Math.max(0, preview.creation.inventory.bulk - preview.inventory.capacity)}</strong></span></div>`;
   return `<div class="inventory-stats"><span><strong>${preview.inventory.remainingCoins}</strong> coins</span><span><strong>${preview.inventory.bulk} / ${preview.inventory.capacity}</strong> Bulk</span><span>Encumbrance <strong>${preview.inventory.encumbrance}</strong></span><span>Speed <strong>${preview.summary?.speed ?? "—"}</strong></span><span>Armor DR <strong>${preview.resistances.physical ?? 0}</strong></span></div>`;
 }
 function inventoryTable(controls = false) {
+  const items = controls
+    ? preview.inventory.items
+    : preview.creation.inventory.items.map((item) => ({
+        ...item,
+        carried: true,
+        bulk: get(item.catalogId).bulk * item.quantity,
+        inventoryDie: item.inventoryDie ?? get(item.catalogId).inventoryDie,
+      }));
+  const purchaseRemoval = (item) =>
+    item.source === "coins" &&
+    draft.shopping.some((p) => p.instanceId === item.instanceId)
+      ? button(
+          "×",
+          "remove-equipment",
+          `data-instance="${esc(item.instanceId)}" aria-label="Remove purchased ${esc(name(item.catalogId))}"`,
+          "quiet small",
+        )
+      : "";
   const source = (item) =>
     item.source === "coins"
       ? "Purchased"
@@ -341,7 +368,7 @@ function inventoryTable(controls = false) {
         : item.source === "play"
           ? "Added"
           : name(item.source);
-  return `<div class="table-wrap"><table class="inventory-table"><thead><tr><th>Item</th><th>Qty</th><th>Bulk</th><th>Supply</th>${controls ? "<th>Held</th><th>Worn</th><th>Carried</th><th></th>" : "<th>Source</th>"}</tr></thead><tbody>${preview.inventory.items.map((item) => `<tr data-instance="${esc(item.instanceId)}" class="${item.carried ? "" : "stored-item"}"><td>${button(esc(name(item.catalogId)), "reference", `data-id="${esc(item.catalogId)}"`, "table-link")}${controls ? `<small class="item-source">${esc(source(item))}</small>` : ""}</td><td>${item.quantity}</td><td>${item.bulk}</td><td>${item.inventoryDie ? `d${item.inventoryDie}` : "—"}</td>${controls ? ["held", "worn", "carried"].map((prop) => `<td><input type="checkbox" data-loadout="${esc(item.instanceId)}" data-prop="${prop}" aria-label="${prop === "held" ? "Hold" : prop === "worn" ? "Wear" : "Carry"} ${esc(name(item.catalogId))}" ${item[prop] ? "checked" : ""}></td>`).join("") + `<td>${button("×", "delete-item", `data-instance="${esc(item.instanceId)}" aria-label="Delete ${esc(name(item.catalogId))}"`, "quiet small")}</td>` : `<td>${esc(source(item))}</td>`}</tr>`).join("")}</tbody></table></div>`;
+  return `<div class="table-wrap"><table class="inventory-table"><thead><tr><th>Item</th><th>Qty</th><th>Bulk</th><th>Supply</th>${controls ? "<th>Held</th><th>Worn</th><th>Carried</th><th></th>" : '<th>Source</th><th aria-label="Remove purchase"></th>'}</tr></thead><tbody>${items.map((item) => `<tr data-instance="${esc(item.instanceId)}" class="${item.carried ? "" : "stored-item"}"><td>${button(esc(name(item.catalogId)), "reference", `data-id="${esc(item.catalogId)}"`, "table-link")}${controls ? `<small class="item-source">${esc(source(item))}</small>` : ""}</td><td>${item.quantity}</td><td>${item.bulk}</td><td>${item.inventoryDie ? `d${item.inventoryDie}` : "—"}</td>${controls ? ["held", "worn", "carried"].map((prop) => `<td><input type="checkbox" data-loadout="${esc(item.instanceId)}" data-prop="${prop}" aria-label="${prop === "held" ? "Hold" : prop === "worn" ? "Wear" : "Carry"} ${esc(name(item.catalogId))}" ${item[prop] ? "checked" : ""}></td>`).join("") + `<td>${button("×", "delete-item", `data-instance="${esc(item.instanceId)}" aria-label="Delete ${esc(name(item.catalogId))}"`, "quiet small")}</td>` : `<td>${esc(source(item))}</td><td>${purchaseRemoval(item)}</td>`}</tr>`).join("")}</tbody></table></div>`;
 }
 function advancementTable() {
   return `<div class="table-wrap"><table><thead><tr><th>Level</th><th>Entry</th><th>DP</th></tr></thead><tbody>${preview.advancementLedger.map((e) => `<tr><td>${e.level}</td><td>${esc(e.kind === "award" ? "Level award" : name(e.id))}</td><td>${signed(e.delta)}</td></tr>`).join("")}</tbody></table></div>`;
@@ -556,7 +583,7 @@ function acquisitions() {
     .join("");
 }
 function equipment() {
-  return `${heading("", "Equipment", "")}<label class="inline-toggle coin-override"><input type="checkbox" data-field="coinOverride" ${draft.coinOverride ? "checked" : ""}> Override coin limit${preview.inventory.overBudget ? ` · ${preview.inventory.overBudget} coins over budget` : ""}</label>${acquisitions()}<h3 class="section-title">Starting inventory · grants & purchases</h3>${inventoryTable()}${draft.shopping.length ? `<details class="planned"><summary>Remove purchased items</summary><ul>${draft.shopping.map((item, i) => `<li><span>${item.quantity} × ${esc(name(item.id))}</span>${button("Remove", "remove-equipment", `data-index="${i}"`, "small")}</li>`).join("")}</ul></details>` : ""}<h3 class="section-title">Buy equipment</h3>${searchRow("equipment")}<div class="table-wrap"><table class="market-table"><thead><tr><th>Item</th><th>Coins</th><th>Bulk</th><th>Supply</th><th>Qty</th><th>Hands</th><th></th></tr></thead><tbody>${catalogs.inventory.equipment
+  return `${heading("", "Equipment", "")}<label class="inline-toggle coin-override"><input type="checkbox" data-field="coinOverride" ${draft.coinOverride ? "checked" : ""}> Override coin limit${preview.inventory.overBudget ? ` · ${preview.inventory.overBudget} coins over budget` : ""}</label>${acquisitions()}<h3 class="section-title">Starting inventory · grants & purchases</h3>${inventoryTable()}<h3 class="section-title">Buy equipment</h3>${searchRow("equipment")}<div class="table-wrap"><table class="market-table"><thead><tr><th>Item</th><th>Coins</th><th>Bulk</th><th>Supply</th><th>Qty</th><th>Hands</th><th></th></tr></thead><tbody>${catalogs.inventory.equipment
     .filter(matches)
     .map(
       (r) =>
@@ -591,7 +618,8 @@ function contextStrip() {
       "<small>Choose origins to receive starting disciplines.</small>"
     }</div></div>`;
   }
-  if (step === 6) return `<div class="context-strip">${inventoryStats()}</div>`;
+  if (step === 6)
+    return `<div class="context-strip">${inventoryStats(true)}</div>`;
   return "";
 }
 function missingSignatures() {
@@ -670,7 +698,7 @@ function languageTable() {
   return `<table class="language-table"><tbody>${preview.play.languages.map((lang) => `<tr><td>${esc(lang.name)}</td><td>${lang.form === "signed" ? "Signed" : "Spoken"}${lang.permissions.read ? " & written" : ""}</td><td>${button("×", "delete-language", `data-id="${esc(lang.id)}" aria-label="Remove language ${esc(lang.name)}"`, "small quiet")}</td></tr>`).join("") || "<tr><td>No languages</td></tr>"}</tbody></table>`;
 }
 function conditionBar() {
-  return `<section class="condition-bar" aria-label="Conditions"><strong>Conditions</strong><div class="condition-list">${preview.play.conditions.map((c) => `<span class="condition-chip">${esc(title(c.key))}${CONDITION_KINDS[c.key] === "binary" ? "" : ` ${c.rating}${CONDITION_KINDS[c.key] === "duration" ? " turns" : ""}`}${c.persistence === "starred" ? " ★" : ""}${button("×", "delete-condition", `data-id="${esc(c.id)}" aria-label="Remove ${esc(title(c.key))}"`, "quiet small")}</span>`).join("") || "<small>None</small>"}</div>${button("Add", "add-condition", 'aria-label="Add condition"', "small")}</section>`;
+  return `<section class="box condition-bar" aria-label="Conditions"><h3 class="section-controls">Conditions ${button("Add", "add-condition", 'aria-label="Add condition"', "small")}</h3><div class="condition-list">${preview.play.conditions.map((c) => `<span class="condition-chip">${esc(title(c.key))}${CONDITION_KINDS[c.key] === "binary" ? "" : ` ${c.rating}${CONDITION_KINDS[c.key] === "duration" ? " turns" : ""}`}${c.persistence === "starred" ? " ★" : ""}${button("×", "delete-condition", `data-id="${esc(c.id)}" aria-label="Remove ${esc(title(c.key))}"`, "quiet small")}</span>`).join("") || "<small>None</small>"}</div></section>`;
 }
 function addItemDialog() {
   popup(
@@ -884,7 +912,10 @@ function render({ focusHeading = false } = {}) {
             (!active.dataset.list || e.value === value),
         )
       : null;
-  if (focusHeading) $("#panel-title")?.focus({ preventScroll: true });
+  if (focusHeading)
+    ($("#panel-title") ?? $('[role="tab"][aria-selected="true"]'))?.focus({
+      preventScroll: true,
+    });
   else if (replacement) {
     replacement.focus({ preventScroll: true });
     if (position !== null && replacement.setSelectionRange)
@@ -1210,14 +1241,6 @@ async function action(target) {
     filter = "all";
     visibleChoices = { true: 6, false: 4 };
   }
-  if (a === "builder") {
-    mode = preview.development.level > 1 ? "advancement" : "builder";
-    if (mode === "advancement") {
-      mode = "sheet";
-      tab = "Development";
-    }
-    edit = false;
-  }
   if (a === "sheet") {
     mode = "sheet";
     edit = false;
@@ -1244,8 +1267,15 @@ async function action(target) {
   if (a === "purchase") learn(target.dataset.id);
   if (a === "remove-purchase")
     learningPurchases().splice(Number(target.dataset.index), 1);
-  if (a === "remove-equipment")
-    draft.shopping.splice(Number(target.dataset.index), 1);
+  if (a === "remove-equipment") {
+    const id = target.dataset.instance;
+    draft.shopping = draft.shopping.filter((item) => item.instanceId !== id);
+    if (draft.loadout) delete draft.loadout[id];
+    if (draft.play?.inventory)
+      draft.play.inventory.removed = draft.play.inventory.removed.filter(
+        (value) => value !== id,
+      );
+  }
   if (a === "equipment") {
     const r = get(target.dataset.id),
       quantity = Number($(`#quantity-${r.id}`).value),

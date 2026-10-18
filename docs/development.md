@@ -932,3 +932,10 @@ initial viewport. The existing slider block now comes before optional ability an
 detail sections, keeping the main modifier control visible. This final field-order
 change has no mechanics or gating changes; the native screenshot records the
 preceding order rather than claiming a new visual run.
+
+After native cleanup, #129 rebased onto `a31eaf0` (native summons and compact
+compendium portraits). Both appended CSS blocks and package scripts are preserved.
+Roll/defense source and templates are byte-identical to the pre-rebase checkpoint,
+including the documented slider field-order change. Node 24.22.0 build, package/art
+validation and all 286 tests pass; no unrelated native suite was rerun after this
+integration.

@@ -28,6 +28,7 @@ import { resolveConditionRequest } from "../services/conditions.mjs";
 import { resolveCombatRequest } from "../services/combat.mjs";
 import {
   findPotionCombat,
+  potionOperationHosts,
   recoverPotionSupplyOperation,
   reconcilePotionOperation,
   resolvePotionRequest,
@@ -217,7 +218,7 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
                 : "waiting for the DA",
           };
         }),
-      pendingPotions: game.combats
+      pendingPotions: potionOperationHosts()
         .filter((combat) => combat.getFlag(ID, "pendingPotion"))
         .map((combat) => {
           const requestId = combat.getFlag(ID, "pendingPotion"),

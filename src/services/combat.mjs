@@ -1,3 +1,4 @@
+import { assertNoPendingActorPotion } from "./turn-lock.mjs";
 import { prepareTurnPhase, resumeTurnPhase } from "./turn-phase.mjs";
 import { expireStaleBenefits } from "./benefits.mjs";
 import {
@@ -63,6 +64,7 @@ async function apply(id, combatUuid) {
     throw new Error(
       "Resume or reconcile the pending healing potion before advancing this encounter.",
     );
+  assertNoPendingActorPotion(combat);
   const pendingPhase = combat?.getFlag(ID, "pendingTurnPhase");
   if (pendingPhase) {
     if (pendingPhase.requestId !== id)

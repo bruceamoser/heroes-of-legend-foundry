@@ -65,7 +65,7 @@ export function findInventoryActor(requestId) {
 
 function assertNoInventoryConflict(actor, requestId = null) {
   assertNoPendingTurn(actor);
-  const potionPending = game.combats.find((combat) => {
+  const potionPending = [...game.combats, ...inventoryActorTargets()].find((combat) => {
     const requestId = combat.getFlag(ID, "pendingPotion"),
       operation = combat.getFlag(ID, "potionOperations")?.[requestId];
     return requestId && operation?.giver?.actorUuid === actor.uuid;

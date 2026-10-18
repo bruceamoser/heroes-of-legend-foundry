@@ -704,9 +704,21 @@ Fixture clients keep the real chat log visible while temporary request cards
 are tested; helper recipients are friendly so an unrelated random Dying turn
 does not block setup. Node 24 build, validation and the full test suite pass.
 
-This remains the encounter potion route. Out-of-combat use and advisory rather
-than blocking geometry are tracked under #133; removing mandatory prose does
-not claim those gameplay gates are already removed.
+#135 extends this route to free play. When the giver has no tracked encounter,
+its Actor hosts the same operation and final settlement receipt; no Combat,
+turn IDs or action budgets are invented. Exact native targets and genuine
+recipient-owner consent use the same request path. Native range measurements
+remain truthful advisory evidence, including unknown or nonadjacent results.
+Normal API calls default to continuing, and the compact potion dialog keeps
+supply math and range detail collapsed. Actor-host reservations also block
+interleaved encounter writes involving either participant.
+
+Stateful service regressions exercise ordinary self-use, fresh repeats, native
+target consent, unknown/distant geometry, duplicate delivery and saved-face
+recovery after a partial write. The extended `test:potions` fixture covers the
+native free-play dialog and consent; **#135 native acceptance is pending** until
+the shared disposable world is assigned. The #116 native results above remain
+historical evidence for the encounter route.
 
 ### Two-recipe Ordinary Recipe Study (#93)
 

@@ -1062,3 +1062,8 @@ and a real dialog overwrite that reintroduced weapon/exception fields into the
 roll draft; the final run passed with the refreshed selection draft preserved.
 Cleanup checked the server log: all 58 created Actors, 27 Combats, 25 Scenes and
 16 Users were deleted; the isolated server was stopped and the world released.
+### Issue #134 manual reference play
+
+Node 24.22.0 full check passed 321 tests on the integrated potion baseline. Native Foundry 14.369 bounded acceptance passed: an owner posted Winter Hold from its Item sheet and character list, preserved readable rules and exact Item/source identity, rejected unowned posting, and selected the searchable reference during an ordinary roll without changing its formula. A blind roll retained the attachment in the same message; the excluded second player saw no reference summary. Direct hostile-HTML checks removed scripts, event attributes, unsafe URLs and unrevealed secret sections. The bounded player Attack fixture preserved the pending reference through draft and authoritative snapshot while retaining actual Attack, native target changes, effective slider, single-weapon and wound-refresh assertions. Both fixtures exited successfully with zero page errors and exact fixture cleanup.
+
+Fresh screenshots `test-results/reference-roll-selection.png` and `test-results/player-attack-reference-selection.png` were viewed. They precede the narrow reference-checkbox height correction. Early fixture-only failures involved duplicate sidebar/notification selectors, the required sidebar tab group and a startup `game` guard; these were corrected before the successful runs. Broader late recovery cases were not rerun. Runtime ownership was released after clean server shutdown before subsequent build/rebase work.

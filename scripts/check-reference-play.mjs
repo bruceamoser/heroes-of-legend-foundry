@@ -15,7 +15,7 @@ for (const page of [gm, owner, other]) page.on("pageerror", error => errors.push
 async function login(page, name) {
   await page.goto(url); await selectTestUser(page, name);
   await page.locator("button[name=join]").click();
-  await page.waitForFunction(() => game.ready && game.canvas.initialized && !game.canvas.loading);
+  await page.waitForFunction(() => globalThis.game?.ready && game.canvas.initialized && !game.canvas.loading);
 }
 let fixture;
 try {
@@ -90,8 +90,9 @@ try {
   assert(!result.whisper.includes(fixture.users[1]));
   assert.equal(result.roll.formula, formula);
   assert.equal(result.roll.references[0].itemUuid, fixture.itemUuid);
-  await gm.locator(`[data-message-id="${result.id}"] .hol-roll-references`).waitFor();
-  assert.equal(await gm.locator(`[data-message-id="${result.id}"] .hol-roll-references a`).getAttribute("data-uuid"), fixture.itemUuid);
+  await gm.evaluate(() => ui.sidebar.changeTab("chat", "primary"));
+  await gm.locator(`#chat [data-message-id="${result.id}"] .hol-roll-references`).waitFor();
+  assert.equal(await gm.locator(`#chat [data-message-id="${result.id}"] .hol-roll-references a`).getAttribute("data-uuid"), fixture.itemUuid);
   assert.equal(await other.evaluate(id => game.messages.get(id)?.isContentVisible === true, result.id), false);
   assert.equal(await other.locator(`[data-message-id="${result.id}"] .hol-roll-references`).count(), 0);
   assert.deepEqual(errors, []);

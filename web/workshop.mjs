@@ -1,3 +1,5 @@
+import { itemArrangement } from "./rules/workshop-play.mjs";
+import { CONDITION_KINDS } from "./rules/conditions.mjs";
 import {
   workshopCharacter,
   emptyLevelDraft,
@@ -50,6 +52,7 @@ const tabs = ["Main", "Abilities", "Inventory", "Character", "Development"];
 const storageKey = "hol.workshop.v1";
 const libraryKey = "hol.workshop.library.v1";
 let saveId = null;
+let signatureTier = 1;
 let catalogs,
   references,
   example,
@@ -71,6 +74,17 @@ let storageAvailable = true;
 const app = $("#app");
 function notice(text) {
   $("#notice").textContent = text;
+  const dialog = $("#reference");
+  if (dialog?.open) {
+    let message = dialog.querySelector(".dialog-notice");
+    if (!message) {
+      message = document.createElement("p");
+      message.className = "dialog-notice";
+      message.setAttribute("role", "status");
+      dialog.querySelector(".reference-body").append(message);
+    }
+    message.textContent = text;
+  }
   clearTimeout(noticeTimer);
   noticeTimer = setTimeout(() => ($("#notice").textContent = ""), 7000);
 }
@@ -144,6 +158,7 @@ function persist() {
         step,
         isExample,
         saveId,
+        signatureTier,
       }),
     );
   } catch {
@@ -204,26 +219,37 @@ function sheet() {
 function sheetContent() {
   if (tab === "Main") return mainPanel();
   if (tab === "Abilities")
-    return `${heading("", "Abilities", "")}${searchRow()}<div class="cards" id="results">${
+    return `${heading("", "Abilities", "")}${searchRow()}<div id="results">${actionTable(
       knownCards()
         .filter(matches)
-        .map((r) => abilityCard(r))
-        .join("") || '<p class="empty">No matching learned abilities.</p>'
-    }</div><details class="planned"><summary>Basic actions</summary>${actionTable(
+        .map((record) => ({ record, basic: false, visible: true })),
+      false,
+    )}</div><details class="planned"><summary>Basic actions</summary>${actionTable(
       catalogs.choices
         .filter((r) => r.universal)
         .map((record) => ({ record, basic: true, visible: true })),
       false,
     )}</details>`;
   if (tab === "Inventory")
-    return `${heading("", "Inventory", "")}${inventoryStats()}${inventoryTable(true)}<h3 class="section-title">Recipes</h3>${recipeRows()}`;
+    return `${heading("", "Inventory", "", button("Add item", "add-item", "", "small"))}${inventoryStats()}${inventoryTable(true)}<h3 class="section-title">Recipes</h3>${recipeRows()}`;
   if (tab === "Character")
-    return `${heading("", "Character", "")}<div class="columns"><section class="box">${edit ? `<div class="field-grid">${field("Pronouns", "profile.pronouns", draft.profile?.pronouns)}${field("Player", "profile.player", draft.profile?.player)}</div>` : row("Pronouns", draft.profile?.pronouns || "—") + row("Player", draft.profile?.player || "—")}${row("Ancestry", name(draft.ancestryId))}${row("Culture", name(draft.culture?.id))}${row("Background", name(draft.background?.id))}<h3 class="section-title">Story</h3>${edit ? `<label>Notes<textarea data-field="profile.story" maxlength="10000">${esc(draft.profile?.story)}</textarea></label>` : `<p>${esc(draft.profile?.story || "")}</p>`}</section><section class="box"><h3>Languages</h3>${(preview.summary?.languages ?? []).map((l) => row(l.name, l.permissions.read ? "Spoken & written" : l.form === "signed" ? "Signed" : "Spoken")).join("")}</section></div>`;
+    return `${heading("", "Character", "")}<div class="columns"><section class="box">${edit ? field("Player", "profile.player", draft.profile?.player) : row("Player", draft.profile?.player || "—")}${row("Ancestry", name(draft.ancestryId))}${row("Culture", name(draft.culture?.id))}${row("Background", name(draft.background?.id))}<h3 class="section-title">Story</h3>${edit ? `<label>Notes<textarea data-field="profile.story" maxlength="10000">${esc(draft.profile?.story)}</textarea></label>` : `<p>${esc(draft.profile?.story || "")}</p>`}</section><section class="box"><h3 class="section-controls">Languages ${button("Add", "add-language", 'aria-label="Add language"', "small")}</h3>${languageTable()}</section></div>`;
   const dev = preview.development;
-  return `${heading("", "Development", "", button("Edit creation", "review", "", "small"))}<div class="development-summary"><div class="level-control"><span>Level</span>${button("−", "level-down", 'aria-label="Decrease level"')}<strong>${dev.level}</strong>${button("+", "level-up", 'aria-label="Increase level"')}</div><div><small>Current DP</small><strong data-dp="current">${dev.current}</strong></div><div><small>DP spent</small><strong data-dp="spent">${dev.spent}</strong></div><div><small>Total DP</small><strong data-dp="total">${dev.total}</strong></div></div>${dev.level > 1 ? button(`Develop level ${dev.level}`, "advance", "", "primary") : '<p class="inline-help">Increase your level to develop your hero.</p>'}<p class="inline-help">Advancement DP can be saved. Each new level grants 8 + that level.${dev.expired ? ` ${dev.expired} unspent creation DP expired.` : ""}</p>${
-    preview.errors.filter((e) => e.level).length
+  return `${heading("", "Development", "", button("Edit creation", "review", "", "small"))}<div class="development-summary"><div class="level-control"><span>Level</span>${button("−", "level-down", 'aria-label="Decrease level"')}<strong>${dev.level}</strong>${button("+", "level-up", 'aria-label="Increase level"')}</div><div><small>Current DP</small><strong data-dp="current">${dev.current}</strong></div><div><small>DP spent</small><strong data-dp="spent">${dev.spent}</strong></div><div><small>Total DP</small><strong data-dp="total">${dev.total}</strong></div></div><div class="development-actions">${button("Spend DP", "advance", dev.current > 0 || draft.progression?.levels?.[dev.level]?.purchases?.length ? "" : "disabled", "primary")}${missingSignatures()
+    .map((tier) =>
+      button(
+        `Choose level ${tier} signature`,
+        "choose-signature",
+        `data-tier="${tier}"`,
+        "small",
+      ),
+    )
+    .join(
+      "",
+    )}</div><p class="inline-help">Advancement DP can be saved. Each new level grants 8 + that level.${dev.expired ? ` ${dev.expired} unspent creation DP expired.` : ""}</p>${
+    preview.errors.filter((e) => e.level && e.code !== "signature").length
       ? `<ul class="error-list">${preview.errors
-          .filter((e) => e.level)
+          .filter((e) => e.level && e.code !== "signature")
           .map(
             (e) =>
               `<li>Level ${e.level}: ${esc(e.text ?? (e.reasons ?? []).map((r) => r.text).join(" "))}</li>`,
@@ -263,7 +289,7 @@ function mainPanel() {
     "Movement",
     "Other",
   ];
-  return `${heading("", "Main", "", button("Create / develop", "builder", 'aria-label="Open character builder"', "small"))}<div class="main-layout"><div class="action-groups">${groups
+  return `${heading("", "Main", "", button("Create / develop", "builder", 'aria-label="Open character builder"', "small"))}${conditionBar()}<div class="main-layout"><div class="action-groups">${groups
     .map((group) => {
       const entries = actions.filter((e) =>
         actionTiming(e.record).includes(group),
@@ -306,28 +332,16 @@ function recipeRows() {
 function inventoryStats() {
   return `<div class="inventory-stats"><span><strong>${preview.inventory.remainingCoins}</strong> coins</span><span><strong>${preview.inventory.bulk} / ${preview.inventory.capacity}</strong> Bulk</span><span>Encumbrance <strong>${preview.inventory.encumbrance}</strong></span><span>Speed <strong>${preview.summary?.speed ?? "—"}</strong></span><span>Armor DR <strong>${preview.resistances.physical ?? 0}</strong></span></div>`;
 }
-function equipmentControl(item) {
-  const wearable = [
-    "item-travel-clothes",
-    "item-weather-clothes",
-    "item-disguise-clothes",
-    "item-ordinary-medium-armor",
-    "item-ordinary-heavy-armor",
-    "item-winter-lining",
-    "item-gravebound-brooch",
-    "item-cincture-of-might",
-    "item-travel-pack",
-  ];
-  if (!item.hands && !wearable.includes(item.catalogId)) return "—";
-  return button(
-    item.worn || item.held ? "Remove" : item.hands ? "Hold" : "Wear",
-    "equip",
-    `data-instance="${item.instanceId}" aria-label="${item.worn || item.held ? "Remove" : item.hands ? "Hold" : "Wear"} ${esc(name(item.catalogId))}"`,
-    "small",
-  );
-}
 function inventoryTable(controls = false) {
-  return `<div class="table-wrap"><table class="inventory-table"><thead><tr><th>Item</th><th>Qty</th><th>Bulk</th><th>Supply</th><th>Source</th>${controls ? "<th>Carried</th><th>Use</th>" : ""}</tr></thead><tbody>${preview.inventory.items.map((item) => `<tr data-instance="${item.instanceId}" class="${item.carried ? "" : "stored-item"}"><td>${button(esc(name(item.catalogId)), "reference", `data-id="${item.catalogId}"`, "table-link")}</td><td>${item.quantity}</td><td>${item.bulk}${item.catalogId === "item-travel-clothes" && item.worn ? " <small>(worn outfit exempt)</small>" : ""}</td><td>${item.inventoryDie ? `d${item.inventoryDie}` : "—"}</td><td>${esc(item.source === "coins" ? "Purchased" : item.source === "creation" ? "Starting outfit" : name(item.source))}</td>${controls ? `<td><input type="checkbox" data-loadout="${item.instanceId}" data-prop="carried" aria-label="Carry ${esc(name(item.catalogId))}" ${item.carried ? "checked" : ""}></td><td>${equipmentControl(item)}</td>` : ""}</tr>`).join("")}</tbody></table></div>`;
+  const source = (item) =>
+    item.source === "coins"
+      ? "Purchased"
+      : item.source === "creation"
+        ? "Starting outfit"
+        : item.source === "play"
+          ? "Added"
+          : name(item.source);
+  return `<div class="table-wrap"><table class="inventory-table"><thead><tr><th>Item</th><th>Qty</th><th>Bulk</th><th>Supply</th>${controls ? "<th>Held</th><th>Worn</th><th>Carried</th><th></th>" : "<th>Source</th>"}</tr></thead><tbody>${preview.inventory.items.map((item) => `<tr data-instance="${esc(item.instanceId)}" class="${item.carried ? "" : "stored-item"}"><td>${button(esc(name(item.catalogId)), "reference", `data-id="${esc(item.catalogId)}"`, "table-link")}${controls ? `<small class="item-source">${esc(source(item))}</small>` : ""}</td><td>${item.quantity}</td><td>${item.bulk}</td><td>${item.inventoryDie ? `d${item.inventoryDie}` : "—"}</td>${controls ? ["held", "worn", "carried"].map((prop) => `<td><input type="checkbox" data-loadout="${esc(item.instanceId)}" data-prop="${prop}" aria-label="${prop === "held" ? "Hold" : prop === "worn" ? "Wear" : "Carry"} ${esc(name(item.catalogId))}" ${item[prop] ? "checked" : ""}></td>`).join("") + `<td>${button("×", "delete-item", `data-instance="${esc(item.instanceId)}" aria-label="Delete ${esc(name(item.catalogId))}"`, "quiet small")}</td>` : `<td>${esc(source(item))}</td>`}</tr>`).join("")}</tbody></table></div>`;
 }
 function advancementTable() {
   return `<div class="table-wrap"><table><thead><tr><th>Level</th><th>Entry</th><th>DP</th></tr></thead><tbody>${preview.advancementLedger.map((e) => `<tr><td>${e.level}</td><td>${esc(e.kind === "award" ? "Level award" : name(e.id))}</td><td>${signed(e.delta)}</td></tr>`).join("")}</tbody></table></div>`;
@@ -351,7 +365,7 @@ function builder() {
 }
 function builderContent() {
   if (step === 0)
-    return `${heading("Step 1 of 8", "Identity & attributes", "Start with a name and six attributes. You can revisit every choice.")}<div class="field-grid">${field("Character name", "name", draft.name, "text", 'maxlength="200"')}${field("Pronouns (optional)", "profile.pronouns", draft.profile?.pronouns)}</div><h3 class="section-title" style="margin-top:14px">Your attributes</h3><p class="inline-help">Assign −2 to +2 to each attribute, totaling +3. Each creation DP pool is 10 + Knowledge + Reason + Guile.</p><div class="field-grid" style="margin-top:10px">${ATTRIBUTES.map((key) => field(title(key), `attributes.${key}`, draft.attributes[key], "number", 'min="-2" max="2" step="1"')).join("")}</div><div class="callout" style="margin-top:10px">Assigned total: <strong>${signed(Object.values(draft.attributes).reduce((a, b) => a + b, 0))} / +3</strong></div>`;
+    return `${heading("Step 1 of 8", "Identity & attributes", "Start with a name and six attributes. You can revisit every choice.")}<div class="field-grid">${field("Character name", "name", draft.name, "text", 'maxlength="200"')}</div><h3 class="section-title" style="margin-top:14px">Your attributes</h3><p class="inline-help">Assign −2 to +2 to each attribute, totaling +3. Each creation DP pool is 10 + Knowledge + Reason + Guile.</p><div class="field-grid" style="margin-top:10px">${ATTRIBUTES.map((key) => field(title(key), `attributes.${key}`, draft.attributes[key], "number", 'min="-2" max="2" step="1"')).join("")}</div><div class="callout" style="margin-top:10px">Assigned total: <strong>${signed(Object.values(draft.attributes).reduce((a, b) => a + b, 0))} / +3</strong></div>`;
   if (step === 1) {
     const ancestry = get(draft.ancestryId),
       options = campaignLanguageOptions(DEFAULT_LANGUAGES, draft.languages);
@@ -491,22 +505,33 @@ function learning() {
     )}</ul></details><div class="drop-zone" data-drop>Drop an available ability here to learn it.</div>${acquisitions()}${searchRow()}${/light.*armor/i.test(query) ? '<p class="inline-help">This rules edition lists Wear Medium Armor and Wear Heavy Armor; it has no Wear Light Armor entry. Search “armor” to see the available training.</p>' : ""}<div class="cards" id="results">${groups || '<p class="empty">No matching choices. Try another keyword or discipline.</p>'}</div>`;
 }
 function acquisitionPath(id) {
-  return mode === "advancement"
-    ? `progression.levels.${preview.development.level}.acquisitions.${id}`
-    : `acquisitions.${id}`;
+  return mode === "signature" && signatureTier > 1
+    ? `progression.levels.${signatureTier}.acquisitions.${id}`
+    : mode === "advancement"
+      ? `progression.levels.${preview.development.level}.acquisitions.${id}`
+      : `acquisitions.${id}`;
 }
 function acquisitions() {
+  const classSignatures = Object.values(
+    catalogs.choices.find((r) => r.kind === "class" && r.id === draft.classId)
+      ?.signatures ?? {},
+  ).flat();
   const state =
     mode === "advancement" || [3, 5].includes(step)
       ? learningState()
       : preview.creation.state;
-  return state.abilities
+  return (
+    mode === "signature"
+      ? [selectedSignature()].filter(Boolean)
+      : state.abilities
+  )
     .filter(
       (id) =>
         mode !== "advancement" ||
-        !preview.levels[preview.development.level].before.abilities.includes(
-          id,
-        ),
+        (!classSignatures.includes(id) &&
+          !preview.levels[preview.development.level].before.abilities.includes(
+            id,
+          )),
     )
     .map((id) => catalogs.inventory.acquisitions.find((a) => a.id === id))
     .filter(
@@ -539,10 +564,9 @@ function equipment() {
     )
     .join("")}</tbody></table></div>`;
 }
-function levelDraft() {
+function levelDraft(level = preview.development.level) {
   draft.progression ??= { level: 1, levels: {} };
-  return (draft.progression.levels[draft.progression.level] ??=
-    emptyLevelDraft());
+  return (draft.progression.levels[level] ??= emptyLevelDraft());
 }
 function learningState() {
   return mode === "advancement"
@@ -570,36 +594,123 @@ function contextStrip() {
   if (step === 6) return `<div class="context-strip">${inventoryStats()}</div>`;
   return "";
 }
+function missingSignatures() {
+  const cls = catalogs.choices.find(
+    (r) => r.kind === "class" && r.id === draft.classId,
+  );
+  return cls
+    ? [1, 3, 7].filter(
+        (tier) =>
+          tier <= preview.development.level &&
+          (!cls.signatures[tier].some((id) =>
+            preview.state.abilities.includes(id),
+          ) ||
+            preview.errors.some(
+              (e) =>
+                e.code === "acquisition" && cls.signatures[tier].includes(e.id),
+            )),
+      )
+    : [];
+}
+function learningFrame(content, label = "Spend DP") {
+  return `<div class="wizard"><nav class="edge-tabs" aria-label="Development">${button(navIcon("Development", "Development"), "sheet-development", 'aria-label="Development"')}${button(navIcon(mode === "signature" ? "Heroic" : "Abilities", label), mode === "signature" ? "choose-signature" : "advance", `aria-label="${esc(label)}" data-tier="${signatureTier}" aria-current="step"`)}</nav><div class="wizard-body">${mode === "signature" ? "" : contextStrip()}<section id="panel" class="panel">${content}</section><footer class="wizard-footer">${button("Back to development", "sheet-development")}<small>Choices saved automatically</small>${button("Done", "sheet-development", "", "primary")}</footer></div></div>`;
+}
 function advancementBuilder() {
-  const level = preview.development.level;
-  if (level < 2) {
+  if (preview.development.level < 2) {
     mode = "sheet";
     tab = "Development";
     return sheet();
   }
+  return learningFrame(
+    learning() +
+      (preview.errors.some(
+        (e) => e.level === preview.development.level && e.code !== "signature",
+      )
+        ? `<ul class="error-list">${preview.errors
+            .filter(
+              (e) =>
+                e.level === preview.development.level && e.code !== "signature",
+            )
+            .map(
+              (e) =>
+                `<li>${esc(e.text ?? (e.reasons ?? []).map((r) => r.text).join(" "))}</li>`,
+            )
+            .join("")}</ul>`
+        : ""),
+  );
+}
+function selectedSignature() {
+  return signatureTier === 1
+    ? draft.signatureId
+    : levelDraft(signatureTier).signatures[signatureTier];
+}
+function signatureBuilder() {
   const cls = catalogs.choices.find(
-      (r) => r.kind === "class" && r.id === draft.classId,
-    ),
-    pending = preview.levels[level].before.pendingSignatures ?? [];
-  const choices = pending
-    .map(
-      (tier) =>
-        `<section class="signature-choice"><h3>Level ${tier} signature</h3><div class="cards">${(cls?.signatures[tier] ?? []).map((id) => `<article class="choice-card ${levelDraft().signatures[tier] === id ? "chosen" : ""}"><h3>${esc(name(id))}</h3><div class="card-actions">${button("Read", "reference", `data-id="${esc(id)}"`, "small quiet")}${button(levelDraft().signatures[tier] === id ? "Selected" : "Choose", "advance-signature", `data-id="${esc(id)}" data-tier="${tier}"`, "small")}</div></article>`).join("")}</div></section>`,
-    )
-    .join("");
-  return `<div class="wizard"><nav class="edge-tabs" aria-label="Advancement">${button(navIcon("Development", "Development"), "sheet-development", 'aria-label="Development"')}${button(navIcon("Abilities", `Level ${level} learning`), "advance", `aria-label="Level ${level} learning" aria-current="step"`)}</nav><div class="wizard-body">${contextStrip()}<section id="panel" class="panel">${choices}${learning()}${
-    preview.errors.filter((e) => e.level === level).length
-      ? `<ul class="error-list">${preview.errors
-          .filter((e) => e.level === level)
-          .map(
-            (e) =>
-              `<li>${esc(e.text ?? (e.reasons ?? []).map((r) => r.text).join(" "))}</li>`,
-          )
-          .join("")}</ul>`
-      : ""
-  }</section><footer class="wizard-footer">${button("Back to development", "sheet-development")}<small>Choices saved automatically</small>${button("Done", "sheet-development", "", "primary")}</footer></div></div>`;
+    (r) => r.kind === "class" && r.id === draft.classId,
+  );
+  if (!cls || signatureTier > preview.development.level) {
+    mode = "sheet";
+    tab = "Development";
+    return sheet();
+  }
+  const ids = cls.signatures[signatureTier],
+    selected = selectedSignature();
+  const content = `${heading("", `Choose level ${signatureTier} signature`, "")}<div class="cards">${ids.map((id) => `<article class="choice-card ${selected === id ? "chosen" : ""}"><h3>${esc(name(id))}</h3><p class="card-copy">${esc(get(id).reference.flavor[0])}</p><div class="card-actions">${button("Read", "reference", `data-id="${esc(id)}"`, "small quiet")}${button(selected === id ? "Selected" : "Choose", "advance-signature", `data-id="${esc(id)}" data-tier="${signatureTier}"`, "small")}</div></article>`).join("")}</div>${acquisitions()}`;
+  return learningFrame(content, `Level ${signatureTier} signature`);
 }
 
+function playDraft() {
+  draft.play ??= {};
+  draft.play.inventory ??= { added: [], removed: [] };
+  draft.play.languages ??= { added: [], removed: [] };
+  draft.play.conditions ??= [];
+  return draft.play;
+}
+function languageTable() {
+  return `<table class="language-table"><tbody>${preview.play.languages.map((lang) => `<tr><td>${esc(lang.name)}</td><td>${lang.form === "signed" ? "Signed" : "Spoken"}${lang.permissions.read ? " & written" : ""}</td><td>${button("×", "delete-language", `data-id="${esc(lang.id)}" aria-label="Remove language ${esc(lang.name)}"`, "small quiet")}</td></tr>`).join("") || "<tr><td>No languages</td></tr>"}</tbody></table>`;
+}
+function conditionBar() {
+  return `<section class="condition-bar" aria-label="Conditions"><strong>Conditions</strong><div class="condition-list">${preview.play.conditions.map((c) => `<span class="condition-chip">${esc(title(c.key))}${CONDITION_KINDS[c.key] === "binary" ? "" : ` ${c.rating}${CONDITION_KINDS[c.key] === "duration" ? " turns" : ""}`}${c.persistence === "starred" ? " ★" : ""}${button("×", "delete-condition", `data-id="${esc(c.id)}" aria-label="Remove ${esc(title(c.key))}"`, "quiet small")}</span>`).join("") || "<small>None</small>"}</div>${button("Add", "add-condition", 'aria-label="Add condition"', "small")}</section>`;
+}
+function addItemDialog() {
+  popup(
+    "Add item",
+    `<label>Item<select id="play-item" aria-label="Item">${catalogs.inventory.equipment.map((r) => option(r.id, r.name, false)).join("")}</select></label><label>Quantity<input id="play-quantity" type="number" min="1" max="10000" step="1" value="1"></label><div class="dialog-actions">${button("Add item", "confirm-item", "", "primary")}</div>`,
+  );
+}
+function addLanguageDialog() {
+  popup(
+    "Add language",
+    `<label>Language<select id="play-language" aria-label="Language">${option("", "Custom language", true)}${DEFAULT_LANGUAGES.filter(
+      (l) => !preview.play.languages.some((k) => k.id === l.id),
+    )
+      .map((l) => option(l.id, l.name, false))
+      .join(
+        "",
+      )}</select></label><label>Name<input id="language-name" maxlength="80"></label><div class="field-grid"><label>Form<select id="language-form" aria-label="Form">${option("spoken", "Spoken", true)}${option("signed", "Signed", false)}</select></label><label class="inline-toggle"><input id="language-written" type="checkbox" checked> Read & write</label></div><div class="dialog-actions">${button("Add language", "confirm-language", "", "primary")}</div>`,
+  );
+}
+function addConditionDialog() {
+  popup(
+    "Add condition",
+    `<label>Condition<select id="play-condition" aria-label="Condition">${Object.keys(
+      CONDITION_KINDS,
+    )
+      .sort()
+      .map((key) => option(key, title(key), false))
+      .join(
+        "",
+      )}</select></label><label id="condition-rating-label">Rating / turns<input id="condition-rating" type="number" min="1" max="10000" step="1" value="1"></label><label id="condition-starred-label" class="inline-toggle"><input id="condition-starred" type="checkbox"> Starred</label><div class="dialog-actions">${button("Add condition", "confirm-condition", "", "primary")}</div>`,
+  );
+  conditionFields();
+}
+function conditionFields() {
+  const kind = CONDITION_KINDS[$("#play-condition").value];
+  $("#condition-rating-label").hidden = kind === "binary";
+  $("#condition-starred-label").hidden = ["binary", "maintained"].includes(
+    kind,
+  );
+}
 function popup(titleText, body) {
   const dialog = $("#reference");
   dialog.innerHTML = `<header><h2 id="reference-title">${esc(titleText)}</h2>${button("Close", "close-reference", "", "quiet")}</header><div class="reference-body">${body}</div>`;
@@ -758,7 +869,9 @@ function render({ focusHeading = false } = {}) {
       ? builder()
       : mode === "advancement"
         ? advancementBuilder()
-        : sheet());
+        : mode === "signature"
+          ? signatureBuilder()
+          : sheet());
   app.removeAttribute("aria-busy");
   // Preserve focus through live recalculation, including origin selects and
   // play controls whose identity is not a creation field path.
@@ -938,6 +1051,100 @@ function showReference(id) {
 async function action(target) {
   const a = target.dataset.action;
   if (a === "reference") return showReference(target.dataset.id);
+  if (a === "add-item") return addItemDialog();
+  if (a === "add-language") return addLanguageDialog();
+  if (a === "add-condition") return addConditionDialog();
+  if (a === "confirm-item") {
+    const quantity = Number($("#play-quantity").value),
+      id = $("#play-item").value;
+    if (!Number.isSafeInteger(quantity) || quantity < 1 || quantity > 10000)
+      throw new Error("Choose a whole quantity from 1 to 10,000.");
+    if (playDraft().inventory.added.length >= 500)
+      throw new Error(
+        "The character file supports up to 500 added item stacks.",
+      );
+    playDraft().inventory.added.push({
+      id,
+      quantity,
+      instanceId: `inventory-${crypto.randomUUID()}`,
+    });
+    $("#reference").close();
+  }
+  if (a === "delete-item") {
+    const inv = playDraft().inventory,
+      id = target.dataset.instance;
+    const added = inv.added.some((i) => i.instanceId === id);
+    if (!added && inv.removed.length >= 500)
+      throw new Error(
+        "The character file supports up to 500 removed grant entries.",
+      );
+    inv.added = inv.added.filter((i) => i.instanceId !== id);
+    if (!added) inv.removed = [...new Set([...inv.removed, id])];
+    if (draft.loadout) delete draft.loadout[id];
+  }
+  if (a === "confirm-language") {
+    const name = $("#language-name").value.trim(),
+      form = $("#language-form").value,
+      written = $("#language-written").checked;
+    if (!name) throw new Error("Name the language.");
+    if (
+      preview.play.languages.some(
+        (l) => l.name.toLocaleLowerCase() === name.toLocaleLowerCase(),
+      )
+    )
+      throw new Error("That language is already on the sheet.");
+    const id = $("#play-language").value || `language-${crypto.randomUUID()}`,
+      langs = playDraft().languages;
+    if (langs.added.length >= 100 && !langs.added.some((l) => l.id === id))
+      throw new Error("The character file supports up to 100 added languages.");
+    langs.removed = langs.removed.filter((value) => value !== id);
+    langs.added = langs.added.filter((l) => l.id !== id);
+    langs.added.push({ id, name, form, written });
+    $("#reference").close();
+  }
+  if (a === "delete-language") {
+    const langs = playDraft().languages,
+      id = target.dataset.id;
+    const granted = preview.creation.summary?.languages.some(
+      (l) => l.id === id,
+    );
+    if (granted && langs.removed.length >= 100)
+      throw new Error(
+        "The character file supports up to 100 removed languages.",
+      );
+    langs.added = langs.added.filter((l) => l.id !== id);
+    if (granted) langs.removed = [...new Set([...langs.removed, id])];
+  }
+  if (a === "confirm-condition") {
+    const key = $("#play-condition").value,
+      kind = CONDITION_KINDS[key],
+      rating = kind === "binary" ? 1 : Number($("#condition-rating").value);
+    if (!Number.isSafeInteger(rating) || rating < 1 || rating > 10000)
+      throw new Error("Choose a whole rating or duration from 1 to 10,000.");
+    if (playDraft().conditions.length >= 100)
+      throw new Error(
+        "The character file supports up to 100 condition entries.",
+      );
+    playDraft().conditions.push({
+      id: `condition-${crypto.randomUUID()}`,
+      key,
+      rating,
+      source: "sheet",
+      persistence:
+        kind === "binary"
+          ? "binary"
+          : kind === "maintained"
+            ? "maintained"
+            : $("#condition-starred").checked
+              ? "starred"
+              : "temporary",
+    });
+    $("#reference").close();
+  }
+  if (a === "delete-condition")
+    playDraft().conditions = playDraft().conditions.filter(
+      (c) => c.id !== target.dataset.id,
+    );
   if (a === "save") return saveDialog();
   if (a === "library") return libraryDialog();
   if (a === "save-confirm" || a === "save-copy")
@@ -985,20 +1192,15 @@ async function action(target) {
     tab = "Development";
     edit = false;
   }
-  if (a === "advance-signature")
-    levelDraft().signatures[target.dataset.tier] = target.dataset.id;
-  if (a === "equip") {
-    const item = preview.inventory.items.find(
-      (i) => i.instanceId === target.dataset.instance,
-    );
-    if (!item) return;
-    draft.loadout ??= {};
-    const active = item.worn || item.held;
-    draft.loadout[item.instanceId] = {
-      carried: true,
-      worn: !active && !item.hands,
-      held: !active && Boolean(item.hands),
-    };
+  if (a === "choose-signature") {
+    signatureTier = Number(target.dataset.tier);
+    mode = "signature";
+    edit = false;
+  }
+  if (a === "advance-signature") {
+    if (signatureTier === 1) draft.signatureId = target.dataset.id;
+    else
+      levelDraft(signatureTier).signatures[signatureTier] = target.dataset.id;
   }
   if (a === "more") visibleChoices[target.dataset.group] += 8;
   if (a === "edit") edit = !edit;
@@ -1010,7 +1212,10 @@ async function action(target) {
   }
   if (a === "builder") {
     mode = preview.development.level > 1 ? "advancement" : "builder";
-    if (mode === "advancement") levelDraft();
+    if (mode === "advancement") {
+      mode = "sheet";
+      tab = "Development";
+    }
     edit = false;
   }
   if (a === "sheet") {
@@ -1067,6 +1272,7 @@ async function action(target) {
   render({
     focusHeading: [
       "advance",
+      "choose-signature",
       "sheet-development",
       "tab",
       "step",
@@ -1098,14 +1304,15 @@ for (const name of ["pointerup", "pointercancel"])
 app.addEventListener("change", (event) => {
   const t = event.target;
   if (t.dataset.loadout) {
+    const item = preview.inventory.items.find(
+      (i) => i.instanceId === t.dataset.loadout,
+    );
     draft.loadout ??= {};
-    draft.loadout[t.dataset.loadout] ??= {};
-    draft.loadout[t.dataset.loadout].carried = t.checked;
-    if (!t.checked)
-      Object.assign(draft.loadout[t.dataset.loadout], {
-        held: false,
-        worn: false,
-      });
+    draft.loadout[item.instanceId] = itemArrangement(
+      item,
+      t.dataset.prop,
+      t.checked,
+    );
     persist();
     render();
     return;
@@ -1260,9 +1467,12 @@ try {
     const saved = JSON.parse(localStorage.getItem(storageKey) ?? "null");
     if (saved) {
       draft = readPortableCharacter(saved.character, catalogs).draft;
-      mode = ["builder", "advancement"].includes(saved.mode)
+      mode = ["builder", "advancement", "signature"].includes(saved.mode)
         ? saved.mode
         : "sheet";
+      signatureTier = [1, 3, 7].includes(saved.signatureTier)
+        ? saved.signatureTier
+        : 1;
       saveId = typeof saved.saveId === "string" ? saved.saveId : null;
       tab = tabs.includes(saved.tab)
         ? saved.tab
@@ -1285,3 +1495,13 @@ try {
   app.removeAttribute("aria-busy");
   app.innerHTML = `<div class="loading"><h1>Could not open the workshop</h1><p>${esc(e.message)}</p><p>Reload the page to try again.</p></div>`;
 }
+
+document.addEventListener("change", (event) => {
+  if (event.target.id === "play-condition") conditionFields();
+  if (event.target.id === "play-language") {
+    const lang = DEFAULT_LANGUAGES.find((l) => l.id === event.target.value);
+    $("#language-name").value = lang?.name ?? "";
+    $("#language-form").value = lang?.form ?? "spoken";
+    $("#language-written").checked = lang?.writing ?? true;
+  }
+});

@@ -75,3 +75,23 @@ exists in the inspected approved source; do not invent one.
 - Interrupted action and additional cost timing, mixed temporary/starred tracking, and falling rounding are taught in the approved player manuscript; older proposal markers do not make them globally unresolved.
 
 If later completed DA text conflicts with these records, flag the exact discrepancy for Bruce. Do not silently restore an older version because it appears in a PDF or an old open issue.
+
+
+## October 18 sheet refinement (#162)
+
+Bruce requested a Foundry-sized sheet, no pronouns field, tabular learned abilities,
+editable inventory/languages/conditions, and independent signature selection.
+Cap the web sheet at 900px, retain the fixed header and hanging icon rail, and
+keep normal play controls available outside structural Edit mode. Every item can
+be held or worn; a separate Carried checkbox controls encumbrance and is implied
+by Held/Worn. Clearing Carried clears both. Development uses Spend DP whenever
+current DP is positive; missing signatures have dedicated tier-specific screens.
+Track browser play edits separately from creation receipts and preserve them in
+portable schema 3. Native document application remains a later adaptation.
+
+Bruce also corrected Walled Communities to Wear Light Armor and medium training
+to multiple Armor ranks, authorizing inference of the rest. Book issue #1270 now
+specifies the consistent proposed Armor 1/2/3, levels 1/3/7, DP 2/4/8, resistance
+1/2/3 progression, with light's 10-coin price explicitly identified as inferred.
+Keep that correction in canonical book review and then repin all dependent system
+content together. The current pinned edition still contains the old armor grants.

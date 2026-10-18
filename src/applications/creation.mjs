@@ -462,8 +462,8 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
         if ((draft.progression?.level ?? 1) > 1)
           throw new Error("This file includes later-level advancement. Keep it in the web character library; this Foundry importer currently handles level-1 creation only.");
         await this.act(async () => { this.draft = draft; this.step = 7; });
-        if (draft.loadout || draft.basicActions)
-          ui.notifications.info("Creation choices imported. Equip items on the Foundry sheet; browser equipment arrangements and action visibility remain in the saved draft.");
+        if (draft.loadout || draft.basicActions || draft.play)
+          ui.notifications.info("Creation choices imported. Equip items on the Foundry sheet; browser inventory edits, languages, conditions, equipment arrangements and action visibility remain in the saved draft.");
       } catch (error) { ui.notifications.error(error.message); }
     }, { once: true });
     input.click();

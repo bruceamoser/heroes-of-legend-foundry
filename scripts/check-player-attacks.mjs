@@ -649,6 +649,7 @@ async function mainState(fixture) {
 }
 
 try {
+  referenceAcceptance: {
   gm = await join("Gamemaster");
   await initializeCleanupRegistry();
   await assertCoordinatorUnbound();
@@ -797,6 +798,17 @@ try {
     wounds: 2,
   });
   await activateScenario(woundScenario);
+  const referenceItem = await gm.page.evaluate(async fixture => {
+    const pack = game.packs.get("heroes-of-legend.abilities");
+    const index = await pack.getIndex();
+    const entry = index.find(item => item.name === "Winter Hold");
+    const data = (await pack.getDocument(entry._id)).toObject(); delete data._id;
+    const actor = await fromUuid(fixture.attackerActorUuid);
+    const [item] = await actor.createEmbeddedDocuments("Item", [data]);
+    return { id: item.id, uuid: item.uuid };
+  }, woundScenario);
+  await player.page.waitForFunction(({ actorUuid, itemId }) => fromUuidSync(actorUuid)?.items.has(itemId), { actorUuid: woundScenario.attackerActorUuid, itemId: referenceItem.id });
+
   await player.page.evaluate(async (fixture) => {
     const actor = await fromUuid(fixture.attackerActorUuid),
       { BasicMeleeDialog } = await import(
@@ -904,6 +916,12 @@ try {
         ".hol-player-attack [data-action=attack]",
       )?.disabled,
   );
+  await woundDialog.locator(".hol-reference-picker summary").click();
+  await woundDialog.getByRole("searchbox", { name: "Find ability" }).fill("Winter");
+  const referenceFormula = await woundDialog.locator("output").innerText();
+  await woundDialog.getByRole("checkbox", { name: "Winter Hold", exact: true }).check();
+  assert.equal(await woundDialog.locator("output").innerText(), referenceFormula);
+  await woundDialog.screenshot({ path: "test-results/player-attack-reference-selection.png" });
   await woundAttack.click();
   const woundAttackId = await waitForAttackCard(woundScenario);
   const woundResult = await gm.page.evaluate(
@@ -913,6 +931,8 @@ try {
           .getFlag("heroes-of-legend", "playerAttackOperations")[id],
         snapshot = operation.result.snapshot;
       return {
+        referenceIds: operation.draft.referenceItemIds,
+        references: snapshot.references,
         draft: operation.draft.woundApplicability,
         saved: snapshot.woundApplicability,
         woundEffects: snapshot.sources
@@ -935,6 +955,14 @@ try {
   assert.deepEqual(woundResult.saved, expectedWoundApplicability);
   assert.deepEqual(woundResult.woundEffects, [woundEffectOrder[0]]);
   assert.deepEqual(woundResult.woundAmounts, [2]);
+  assert.deepEqual(woundResult.referenceIds, [referenceItem.id]);
+  assert.equal(woundResult.references[0].itemUuid, referenceItem.uuid);
+  if (process.env.HOL_TEST_REFERENCE_ONLY === "1") {
+    assert.deepEqual(errors, []);
+    console.info("PASS: native player Attack reference selection reaches authoritative snapshot unchanged in dice; native target/slider, single weapon, wound refresh and exact cleanup retained.");
+    break referenceAcceptance;
+  }
+
 
   const largeFootprints = await makeScenario({
     ownerId: users.owner,
@@ -1922,6 +1950,7 @@ try {
   console.info(
     "PASS: native target visibility with DA adjudication, wound applicability refresh, encounter preservation, 5-unit grid-space adjacency, large footprints, collision-blocked geometry, nonblocking nonadjacency guidance, authoritative result projection/replay, forged roll/recovery and hidden-target rejection, late presentation recovery, acknowledged deleted-source recovery with operation-ID damage, PvP one-roll, Main once and linked damage deduplication.",
   );
+  }
 } catch (error) {
   const diagnostics = {
     label: scenarioDiagnostic,

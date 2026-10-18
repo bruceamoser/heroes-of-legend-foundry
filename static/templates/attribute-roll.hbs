@@ -11,6 +11,11 @@
   </label>
   {{#if defense}}<p>Rolling this defense spends no Reaction. Any player may roll for this defender.</p>{{/if}}
   {{#if abilities}}<h2>Defense abilities</h2><ul class="hol-defense-abilities">{{#each abilities}}<li data-item-id="{{itemId}}" class="{{#unless available}}hol-unavailable{{/unless}}"><button type="button" data-action="useAbility" data-item-id="{{itemId}}" {{#unless available}}disabled{{/unless}}>{{#if available}}Use {{else}}{{/if}}{{name}}</button><span class="hol-ability-reason">{{reasonText}}</span></li>{{/each}}</ul>{{/if}}
+  {{#if references}}<details class="hol-context-options hol-reference-picker"><summary>Ability references (optional)</summary>
+    <p>Reference only · no automatic bonus or cost</p>
+    <label>Find ability<input type="search" data-reference-search></label>
+    <ul>{{#each references}}<li data-reference-row><label><input type="checkbox" data-reference-id="{{id}}" {{#if selected}}checked{{/if}}> {{name}}</label></li>{{/each}}</ul>
+  </details>{{/if}}
   {{#if fears}}<details class="hol-context-options"><summary>Fear context (optional)</summary>
   {{#each fears}}<label><input type="checkbox" name="fear-{{index}}" {{#if yes}}checked{{/if}}> Perceiving {{source}}</label>{{/each}}</details>{{/if}}
   {{#if wounds}}<details class="hol-context-options"><summary>Wound adjustments (optional)</summary>

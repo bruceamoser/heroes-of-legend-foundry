@@ -71,7 +71,9 @@ Keep repeated equipment inventory as actual instances where state differs. Store
 
 ## 4. Ability contract
 
-All abilities carry full narrative/rules and these structured fields:
+All imported abilities carry readable narrative/rules. The table below is the target automation contract, not a claim that every pending reference has typed play mechanics. Pending `AbilityData.activity` values can be schema defaults; never infer a roll attribute, applicability, action cost or effect from them. Acquisition eligibility remains separately typed in the choice catalog.
+
+Reviewed adapters use these structured fields:
 
 | Group | Fields |
 |---|---|
@@ -166,3 +168,10 @@ Imported numeric resistance/weakness data and narrative exceptions are not wired
 into that resolver in this increment. Signed CV has no nonnegative schema clamp.
 Changing size edits the profile, not existing Token dimensions, and artwork uses
 the native fallback until approved asset paths are available.
+
+
+## Manual ability references (#134)
+
+An owned embedded ability may be posted as a reference card using ordinary document ownership and the current native chat mode. Cards preserve the live Item UUID, pinned source identity and readable rules; copied formatting is restricted to inert headings, lists, tables, emphasis and safe HTTP(S) links. Unrevealed secret sections are excluded.
+
+Optional shared-roll and player-attack `draft.referenceItemIds` selects live Items embedded in the rolling Actor. Snapshot `references` contains `{ itemUuid, name, source, sourceCommit }` only. It does not contribute dice, costs, targets or effects. Visibility follows observed Actors and the existing visible-token defender workflow, without adding a Defend permission gate. Reviewed automatic controls remain separate. Reference links render inside the existing roll summary only when the message content is visible; no separate public attachment message is created.

@@ -1,3 +1,4 @@
+import { referencePickerOptions, readReferenceSelection, bindReferenceSearch } from "../services/reference-play.mjs";
 import {
   situationalRollDraft,
   situationalAdjustmentLabel,
@@ -32,6 +33,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
     this.draft = {
       ...situationalRollDraft(),
       adjustmentOverride: false,
+      referenceItemIds: [],
       perception: {},
       woundApplicability: {},
     };
@@ -101,6 +103,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
         : [];
     this.pendingResponse = Boolean(this.basis.survival?.pending);
     return {
+      references: referencePickerOptions(this.actor, this.draft, { mode: this.mode, defenderTokenUuid: this.defenderTokenUuid }),
       name: this.actor.name,
       death: this.mode === "death",
       gritAvailable: this.basis.survival?.gritAvailable,
@@ -159,6 +162,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
     this.draft = {
       ...this.draft,
       adjustment: Number(value("adjustment") ?? 0),
+      referenceItemIds: readReferenceSelection(this.element),
       perception: Object.fromEntries(
         this.fears.map((source, index) => [source, checked(`fear-${index}`) ? "yes" : "no"]),
       ),
@@ -238,6 +242,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       this.readDraft();
       this.preview();
     });
+    bindReferenceSearch(this.element);
     this.preview();
   }
   static async changeDefender() {

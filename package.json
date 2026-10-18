@@ -15,6 +15,7 @@
     "test:sheets": "node scripts/test-sheets.mjs",
     "test:shortcuts": "node scripts/test-shortcuts.mjs",
     "test:rolls": "node scripts/check-rolls.mjs",
+    "test:reference-play": "node scripts/check-reference-play.mjs",
     "test:simple-rolls": "node scripts/check-simple-rolls.mjs",
     "test:authority": "node scripts/check-authority.mjs",
     "probe:claims": "node scripts/probe-document-claims.mjs",

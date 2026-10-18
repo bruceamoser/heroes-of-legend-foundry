@@ -1,5 +1,6 @@
 <section class="hol-body">
   <header class="hol-banner"><p class="hol-kicker">{{localize "HOL.Ability"}}</p><h1>{{item.name}}</h1></header>
+  {{#if canPost}}<button type="button" data-action="postReference">Post to chat</button>{{/if}}
   {{#if definition}}<p class="hol-note">{{definition.summary}}</p>{{#if canUse}}<button type="button" class="hol-primary" data-action="useAbility">Use {{definition.name}}</button>{{/if}}{{else}}
   {{#unless pendingAutomation}}<p class="hol-note">{{localize "HOL.ManualAbility"}}</p>{{/unless}}
   {{/if}}

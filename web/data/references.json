@@ -1,0 +1,1090 @@
+{
+  "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+  "records": {
+    "ancestry-dwarf": {
+      "markdown": "# Dwarf\n\n*Stone, craft, stubborn loyalty and a memory for debts both kind and cruel.*\n\n## Rules\n\nChoose two of the five traits below. These are invitations to a familiar fantasy,\nnot a required personality. Any ancestry may grow up in any culture.\n\n**Starting values:** HP +4; base Speed 5.\n\n- [Stubborn as Bedrock](trait-dwarf-deep-constitution.md) — Your ancestors did not dig a home from the mountain by yielding politely.\n- [The Mountain Remembers](trait-dwarf-stone-reader.md) — You know a mason’s lie by the stone around it.\n- [Rooted in Stone](trait-dwarf-low-center.md) — Let the storm waste its strength on you.\n- [An Honest Maker’s Hand](trait-dwarf-maker-s-eye.md) — Your thumb finds the seam; your ear knows the ring of sound metal.\n- [A Grudge Well Kept](trait-dwarf-carved-history.md) — You remember who struck first. You intend them to remember what followed.\n\n**Starting coin contribution:** +2 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/ancestries/dwarf.md",
+        "sha256": "35a839193aa090923d62b7f3ebb9a9639a27c694f7f12250db219028814026c7"
+      }
+    },
+    "ancestry-elf": {
+      "markdown": "# Elf\n\n*Old memory, woodland grace and a sense that the hurried world has forgotten how to listen.*\n\n## Rules\n\nChoose two of the five traits below. These are invitations to a familiar fantasy,\nnot a required personality. Any ancestry may grow up in any culture.\n\n**Starting values:** HP +2; base Speed 6.\n\n- [Footfall on the Leaves](trait-elf-light-tread.md) — Even the fallen leaves seem reluctant to betray your passing.\n- [A Lifetime Ago](trait-elf-age-of-memory.md) — You remember when the old road was new.\n- [The Wood Whispers](trait-elf-leaf-listener.md) — A startled bird tells you what a shouted warning never could.\n- [Grace of the Elder Folk](trait-elf-unhurried-grace.md) — Where others hurry, you seem simply to arrive.\n- [Dream beneath the Stars](trait-elf-star-familiar.md) — Your body rests while part of you walks old paths.\n\n**Starting coin contribution:** +2 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/ancestries/elf.md",
+        "sha256": "c91ede2fb5e2bb0ace52f63c38c5a606355f415a5818fe3ad98eb7164f729f1b"
+      }
+    },
+    "ancestry-halfling": {
+      "markdown": "# Halfling\n\n*Quiet feet, a generous table and courage that surprises people who judge by height.*\n\n## Rules\n\nChoose two of the five traits below. These are invitations to a familiar fantasy,\nnot a required personality. Any ancestry may grow up in any culture.\n\n**Starting values:** HP +1; base Speed 5.\n\n- [Bigger on the Inside](trait-halfling-stout-heart.md) — Your knees may shake. Your friends will never see you leave them.\n- [Under Their Noses](trait-halfling-small-passage.md) — The grand folk rarely remember to look beneath the table.\n- [Quiet as a Burrow](trait-halfling-quiet-company.md) — You learned to come home late without waking the household.\n- [A Little Luck](trait-halfling-good-cheer.md) — The latch catches your coat a heartbeat before you step into trouble.\n- [Second Breakfast](trait-halfling-resilient.md) — You know how to make a small comfort last.\n\n**Starting coin contribution:** +0 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/ancestries/halfling.md",
+        "sha256": "3631a9c5acf31774eead6963c5d9dbd5f2ae4d1d830c25dd40c6b7835093e79f"
+      }
+    },
+    "ancestry-human": {
+      "markdown": "# Human\n\n*Restless, adaptable and fiercely invested in a life that never feels long enough.*\n\n## Rules\n\nChoose two of the five traits below. These are invitations to a familiar fantasy,\nnot a required personality. Any ancestry may grow up in any culture.\n\n**Starting values:** HP +2; base Speed 6.\n\n- [Never Quite Finished](trait-human-weathered.md) — There is always one more person to help, one more hill to cross.\n- [Road in the Blood](trait-human-far-walker.md) — The horizon has never looked like a place to stop.\n- [A Foot in Two Worlds](trait-human-many-homes.md) — You learned early that a stranger is sometimes only a person whose words you do not know.\n- [Make Room at the Fire](trait-human-shared-table.md) — You can turn a cold greeting into a place at the table.\n- [The Impossible Streak](trait-human-practiced-patience.md) — Someone says it cannot be done, and you hear a challenge.\n\n**Starting coin contribution:** +1 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/ancestries/human.md",
+        "sha256": "6295900564112ba0ee375c96343a1258898e5cbe0122672ea2c04e9a33dbaa1f"
+      }
+    },
+    "class-arcanist": {
+      "markdown": "# Arcanist\n\n*You study the impossible until your hands can give it a shape the world must briefly accept.*\n\n## Rules\n\n**Agreed:** minimum 0 in Agility, Knowledge; HP contribution +2. No multiclassing.\n\n**Starting disciplines:** choose two distinct rank-1 disciplines from Flame, Frost, Storm, Scholarship, Calling.\n\n**Discipline pricing:** Home: Flame, Frost. Adjacent: Storm, Scholarship, Calling. All others Foreign; no Opposed disciplines.\n\nChoose one class-exclusive signature at levels 1, 3 and 7. Extra signatures cost 2/4/8 DP. No discipline requirements.\n\n## Level 1 choices\n\n- [Bent Trajectory](../cards/signature-arcanist-bent-trajectory.md)\n- [Deliberate Spark](../cards/signature-arcanist-deliberate-spark.md)\n- [Study the Pattern](../cards/signature-arcanist-study-the-pattern.md)\n\n## Level 3 choices\n\n- [Cast and Scatter](../cards/signature-arcanist-cast-and-scatter.md)\n- [Leave a Window](../cards/signature-arcanist-leave-a-window.md)\n- [Arcane Deflection](../cards/signature-arcanist-arcane-deflection.md)\n\n## Level 7 choices\n\n- [Fold the Distance](../cards/signature-arcanist-fold-the-distance.md)\n- [Choose the Edge](../cards/signature-arcanist-choose-the-edge.md)\n- [Open the Circle](../cards/signature-arcanist-open-the-circle.md)\n\n## Signature identity in play\n\nThe revised options aim for these moments, with a deliberate advantage over shared\ncards of their tier. Each is an independent choice, not a progression chain.\n\n- **Level 1:** Bend spell angles, add a spark's shove, or read active magic.\n- **Level 3:** Move after casting, protect one creature from an area, or turn spell pressure aside.\n- **Level 7:** Move a companion through space, shape a spell's final displacement, or ward a circle.\n\n\n**Starting coin contribution:** +6 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/classes/arcanist.md",
+        "sha256": "ac860b32928d31096ae998ef023cf8d4e529df5d97c6a547ed5a86daddc2fd80"
+      }
+    },
+    "class-blade": {
+      "markdown": "# Blade\n\n*You make the hard choices in the space between one stroke and the next.*\n\n## Rules\n\n**Agreed:** minimum 0 in Agility, Brawn; HP contribution +4. No multiclassing.\n\n**Starting disciplines:** choose two distinct rank-1 disciplines from Arms, Marksmanship, Athletics, Subterfuge.\n\n**Discipline pricing:** Home: Arms, Marksmanship. Adjacent: Athletics, Subterfuge. All others Foreign; no Opposed disciplines.\n\nChoose one class-exclusive signature at levels 1, 3 and 7. Extra signatures cost 2/4/8 DP. No discipline requirements.\n\n## Level 1 choices\n\n- [Cut and Turn](../cards/signature-blade-cut-and-turn.md)\n- [Pressure Point](../cards/signature-blade-pressure-point.md)\n- [Measured Guard](../cards/signature-blade-measured-guard.md)\n\n## Level 3 choices\n\n- [Sweeping Entry](../cards/signature-blade-sweeping-entry.md)\n- [Return Stroke](../cards/signature-blade-return-stroke.md)\n- [Fell the Balance](../cards/signature-blade-fell-the-balance.md)\n\n## Level 7 choices\n\n- [Dance Through Steel](../cards/signature-blade-dance-through-steel.md)\n- [Relentless Pursuit](../cards/signature-blade-relentless-pursuit.md)\n- [Perfect Placement](../cards/signature-blade-perfect-placement.md)\n\n## Signature identity in play\n\nThe revised options aim for these moments, with a deliberate advantage over shared\ncards of their tier. Each is an independent choice, not a progression chain.\n\n- **Level 1:** Flow through melee, hinder a target, or guard and reposition.\n- **Level 3:** Enter decisively, counterattack, or take an opponent's footing.\n- **Level 7:** Strike a surrounding group, pursue and strike, or dictate where the duel moves.\n\n\n**Starting coin contribution:** +4 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/classes/blade.md",
+        "sha256": "3712a05aca5b71f61f8775012823c522eefff445ace7f701094329bfcace5e60"
+      }
+    },
+    "class-intellect": {
+      "markdown": "# Intellect\n\n*You see a pattern where others see only trouble, and trust your understanding enough to act.*\n\n## Rules\n\n**Agreed:** minimum 0 in Knowledge, Reason; HP contribution +2. No multiclassing.\n\n**Starting disciplines:** choose two distinct rank-1 disciplines from Scholarship, Craft, Medicine, Mind.\n\n**Discipline pricing:** Home: Scholarship, Craft. Adjacent: Medicine, Mind. All others Foreign; no Opposed disciplines.\n\nChoose one class-exclusive signature at levels 1, 3 and 7. Extra signatures cost 2/4/8 DP. No discipline requirements.\n\n## Level 1 choices\n\n- [Spot the Leverage](../cards/signature-intellect-spot-the-leverage.md)\n- [Make the Connection](../cards/signature-intellect-make-the-connection.md)\n- [Prepared Explanation](../cards/signature-intellect-prepared-explanation.md)\n\n## Level 3 choices\n\n- [A Better Angle](../cards/signature-intellect-a-better-angle.md)\n- [Diagnose the Failure](../cards/signature-intellect-diagnose-the-failure.md)\n- [Predict the Motion](../cards/signature-intellect-predict-the-motion.md)\n\n## Level 7 choices\n\n- [A Route for Everyone](../cards/signature-intellect-a-route-for-everyone.md)\n- [Test the Hypothesis](../cards/signature-intellect-test-the-hypothesis.md)\n- [Expose the Mechanism](../cards/signature-intellect-expose-the-mechanism.md)\n\n## Signature identity in play\n\nThe revised options aim for these moments, with a deliberate advantage over shared\ncards of their tier. Each is an independent choice, not a progression chain.\n\n- **Level 1:** Find leverage, connect evidence, or give useful directions.\n- **Level 3:** Direct an ally, diagnose mechanisms, or predict an attack.\n- **Level 7:** Route the party, reconstruct events, or expose a target for allies.\n\n\n**Starting coin contribution:** +8 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/classes/intellect.md",
+        "sha256": "a23b2b2e14a545e687bf405a4cec83a964809788b41eefd922bbe9e3c6517c1f"
+      }
+    },
+    "class-leader": {
+      "markdown": "# Leader\n\n*You turn to your companions and give them a reason to move together.*\n\n## Rules\n\n**Agreed:** minimum 0 in Guile, Fortitude; HP contribution +4. No multiclassing.\n\n**Starting disciplines:** choose two distinct rank-1 disciplines from Influence, Guard, Arms, Scholarship.\n\n**Discipline pricing:** Home: Influence, Guard. Adjacent: Arms, Scholarship. All others Foreign; no Opposed disciplines.\n\nChoose one class-exclusive signature at levels 1, 3 and 7. Extra signatures cost 2/4/8 DP. No discipline requirements.\n\n## Level 1 choices\n\n- [Follow My Signal](../cards/signature-leader-follow-my-signal.md)\n- [Lead the Step](../cards/signature-leader-lead-the-step.md)\n- [Stand Together](../cards/signature-leader-stand-together.md)\n\n## Level 3 choices\n\n- [Press the Opening](../cards/signature-leader-press-the-opening.md)\n- [Orderly Withdrawal](../cards/signature-leader-orderly-withdrawal.md)\n- [Hold Your Nerve](../cards/signature-leader-hold-your-nerve.md)\n\n## Level 7 choices\n\n- [Coordinated Rush](../cards/signature-leader-coordinated-rush.md)\n- [Refuse the Rout](../cards/signature-leader-refuse-the-rout.md)\n- [Watch the Rear](../cards/signature-leader-watch-the-rear.md)\n\n## Signature identity in play\n\nThe revised options aim for these moments, with a deliberate advantage over shared\ncards of their tier. Each is an independent choice, not a progression chain.\n\n- **Level 1:** Signal two allies, withdraw together, or hold a paired line.\n- **Level 3:** Order a retreat, call a basic strike, or interrupt panic and shock.\n- **Level 7:** Coordinate a rush, rally a group, or cover an ally's escape.\n\n\n**Starting coin contribution:** +6 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/classes/leader.md",
+        "sha256": "170cc7b68abcfd15510f1288e0a867e300a42ad77511294d379b206c5fce9242"
+      }
+    },
+    "class-odd": {
+      "markdown": "# Odd\n\n*You have never fit the expected answer, and have learned to make that useful.*\n\n## Rules\n\n**Agreed:** no attribute minimums; HP contribution +3. No multiclassing.\n\n**Starting disciplines:** choose two distinct rank-1 disciplines from Arms, Marksmanship, Armor, Guard, Athletics, Subterfuge, Influence, Scholarship, Wilderness, Craft, Medicine, Flame, Frost, Storm, Life, Radiance, Mind, Calling.\n\n**Discipline pricing:** Adjacent for every discipline.\n\nChoose one class-exclusive signature at levels 1, 3 and 7. Extra signatures cost 2/4/8 DP. No discipline requirements.\n\n## Level 1 choices\n\n- [Sideways Thinking](../cards/signature-odd-sideways-thinking.md)\n- [Useful Interruption](../cards/signature-odd-useful-interruption.md)\n- [Always a Way Around](../cards/signature-odd-always-a-way-around.md)\n\n## Level 3 choices\n\n- [Unlikely Assistant](../cards/signature-odd-unlikely-assistant.md)\n- [Change the Question](../cards/signature-odd-change-the-question.md)\n- [Wrong Place for That](../cards/signature-odd-wrong-place-for-that.md)\n\n## Level 7 choices\n\n- [Strange but Effective](../cards/signature-odd-strange-but-effective.md)\n- [An Unexpected Exit](../cards/signature-odd-an-unexpected-exit.md)\n- [One Last Remark](../cards/signature-odd-one-last-remark.md)\n\n## Signature identity in play\n\nThe revised options aim for these moments, with a deliberate advantage over shared\ncards of their tier. Each is an independent choice, not a progression chain.\n\n- **Level 1:** Reframe a task, distract usefully, or escape after exertion.\n- **Level 3:** Assist unusually well, uncover an alternate approach, or pull a companion out of trouble.\n- **Level 7:** Apply ingenious force, escape with a partner, or turn pain into a response.\n\n\n**Starting coin contribution:** +0 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/classes/odd.md",
+        "sha256": "d56f26685e1d3d3a432af85bcd6a9cdb9e561ed3ac6045fd2b49b8d2765aa5e5"
+      }
+    },
+    "class-protector": {
+      "markdown": "# Protector\n\n*You see who needs shelter and step into the space between them and harm.*\n\n## Rules\n\n**Agreed:** minimum 0 in Fortitude, Reason; HP contribution +5. No multiclassing.\n\n**Starting disciplines:** choose two distinct rank-1 disciplines from Armor, Guard, Arms, Medicine.\n\n**Discipline pricing:** Home: Armor, Guard. Adjacent: Arms, Medicine. All others Foreign; no Opposed disciplines.\n\nChoose one class-exclusive signature at levels 1, 3 and 7. Extra signatures cost 2/4/8 DP. No discipline requirements.\n\n## Level 1 choices\n\n- [Between Them](../cards/signature-protector-between-them.md)\n- [Set Your Feet](../cards/signature-protector-set-your-feet.md)\n- [Close the Gap](../cards/signature-protector-close-the-gap.md)\n\n## Level 3 choices\n\n- [Break Their Advance](../cards/signature-protector-break-their-advance.md)\n- [Shelter the Fallen](../cards/signature-protector-shelter-the-fallen.md)\n- [Make a Refuge](../cards/signature-protector-make-a-refuge.md)\n\n## Level 7 choices\n\n- [Unbroken Passage](../cards/signature-protector-unbroken-passage.md)\n- [Defiant Rescue](../cards/signature-protector-defiant-rescue.md)\n- [Drive Back the Circle](../cards/signature-protector-drive-back-the-circle.md)\n\n## Signature identity in play\n\nThe revised options aim for these moments, with a deliberate advantage over shared\ncards of their tier. Each is an independent choice, not a progression chain.\n\n- **Level 1:** Intercept, anchor, or arrive ready to defend.\n- **Level 3:** Push an attacker back, extract the fallen, or make a refuge.\n- **Level 7:** Charge into a strike, clear the circle, or escort companions through danger.\n\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/classes/protector.md",
+        "sha256": "9ea54f0bfeed4c720145566fd7c2cecc85920d3f636f4949f647ad98271a3acb"
+      }
+    },
+    "class-shadow": {
+      "markdown": "# Shadow\n\n*You learn the unguarded routes through a world that rarely looks in the right direction.*\n\n## Rules\n\n**Agreed:** minimum 0 in Agility, Guile; HP contribution +3. No multiclassing.\n\n**Starting disciplines:** choose two distinct rank-1 disciplines from Subterfuge, Marksmanship, Mind, Athletics.\n\n**Discipline pricing:** Home: Subterfuge, Marksmanship. Adjacent: Mind, Athletics. All others Foreign; no Opposed disciplines.\n\nChoose one class-exclusive signature at levels 1, 3 and 7. Extra signatures cost 2/4/8 DP. No discipline requirements.\n\n## Level 1 choices\n\n- [Fade Behind](../cards/signature-shadow-fade-behind.md)\n- [Soft Landing](../cards/signature-shadow-soft-landing.md)\n- [Turn Their Eye](../cards/signature-shadow-turn-their-eye.md)\n\n## Level 3 choices\n\n- [Pass the Guard](../cards/signature-shadow-pass-the-guard.md)\n- [Strike and Vanish](../cards/signature-shadow-strike-and-vanish.md)\n- [Open the Way](../cards/signature-shadow-open-the-way.md)\n\n## Level 7 choices\n\n- [Unseen Passage](../cards/signature-shadow-unseen-passage.md)\n- [Exploit Confusion](../cards/signature-shadow-exploit-confusion.md)\n- [Leave No Pursuit](../cards/signature-shadow-leave-no-pursuit.md)\n\n## Signature identity in play\n\nThe revised options aim for these moments, with a deliberate advantage over shared\ncards of their tier. Each is an independent choice, not a progression chain.\n\n- **Level 1:** Slip away, land quietly, or cover an ally's passage.\n- **Level 3:** Cross difficult ground, strike and leave, or open a lock quickly.\n- **Level 7:** Shroud an escape, exploit a companion's disabling effect, or hide a party's trail.\n\n\n**Starting coin contribution:** +3 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/classes/shadow.md",
+        "sha256": "f013e655d990baf99be380fda64393f76895e12882030db7af96e0ec7410456a"
+      }
+    },
+    "class-shepherd": {
+      "markdown": "# Shepherd\n\n*You listen for the wavering voice and help it find its way back to the others.*\n\n## Rules\n\n**Agreed:** minimum 0 in Reason, Guile; HP contribution +3. No multiclassing.\n\n**Starting disciplines:** choose two distinct rank-1 disciplines from Life, Radiance, Medicine, Wilderness.\n\n**Discipline pricing:** Home: Life, Radiance. Adjacent: Medicine, Wilderness. All others Foreign; no Opposed disciplines.\n\nChoose one class-exclusive signature at levels 1, 3 and 7. Extra signatures cost 2/4/8 DP. No discipline requirements.\n\n## Level 1 choices\n\n- [Gentle Return](../cards/signature-shepherd-gentle-return.md)\n- [Hear Me Still](../cards/signature-shepherd-hear-me-still.md)\n- [Ease the Burden](../cards/signature-shepherd-ease-the-burden.md)\n\n## Level 3 choices\n\n- [Quiet the Tremor](../cards/signature-shepherd-quiet-the-tremor.md)\n- [Bring Them Near](../cards/signature-shepherd-bring-them-near.md)\n- [Careful Transfer](../cards/signature-shepherd-careful-transfer.md)\n\n## Level 7 choices\n\n- [A Hand in Darkness](../cards/signature-shepherd-a-hand-in-darkness.md)\n- [Restore Composure](../cards/signature-shepherd-restore-composure.md)\n- [Shared Resolve](../cards/signature-shepherd-shared-resolve.md)\n\n## Signature identity in play\n\nThe revised options aim for these moments, with a deliberate advantage over shared\ncards of their tier. Each is an independent choice, not a progression chain.\n\n- **Level 1:** Support returning movement, stabilize at range, or ease a condition.\n- **Level 3:** Calm shock, call the wounded nearer, or transfer life carefully.\n- **Level 7:** Reach the dying, restore health and composure, or settle a whole group's distress.\n\n\n**Starting coin contribution:** +3 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/classes/shepherd.md",
+        "sha256": "70b08bc1a5b6abccb4b9fdfe018f718c7a2c1d03fe2ca9b69a2ab6a3312b15fe"
+      }
+    },
+    "class-unbalanced": {
+      "markdown": "# Unbalanced\n\n*You meet the obstacle with everything you are, and let it discover whether that is enough.*\n\n## Rules\n\n**Agreed:** minimum 0 in Brawn, Fortitude; HP contribution +6. No multiclassing.\n\n**Starting disciplines:** choose two distinct rank-1 disciplines from Arms, Athletics, Armor, Storm.\n\n**Discipline pricing:** Home: Arms, Athletics. Adjacent: Armor, Storm. All others Foreign; no Opposed disciplines.\n\nChoose one class-exclusive signature at levels 1, 3 and 7. Extra signatures cost 2/4/8 DP. No discipline requirements.\n\n## Level 1 choices\n\n- [Shoulder Through](../cards/signature-unbalanced-shoulder-through.md)\n- [Wild Approach](../cards/signature-unbalanced-wild-approach.md)\n- [Laugh at the Fall](../cards/signature-unbalanced-laugh-at-the-fall.md)\n\n## Level 3 choices\n\n- [Crush the Barrier](../cards/signature-unbalanced-crush-the-barrier.md)\n- [Fling the Captive](../cards/signature-unbalanced-fling-the-captive.md)\n- [Raging Recoil](../cards/signature-unbalanced-raging-recoil.md)\n\n## Level 7 choices\n\n- [Scatter the Line](../cards/signature-unbalanced-scatter-the-line.md)\n- [Break Their Grip](../cards/signature-unbalanced-break-their-grip.md)\n- [Crash Down](../cards/signature-unbalanced-crash-down.md)\n\n## Signature identity in play\n\nThe revised options aim for these moments, with a deliberate advantage over shared\ncards of their tier. Each is an independent choice, not a progression chain.\n\n- **Level 1:** Drive through, charge, or rise fighting.\n- **Level 3:** Break an obstruction, throw a creature, or shove back through pain.\n- **Level 7:** Scatter enemies, wrench free and retaliate, or finish a push with a knockdown.\n\n\n**Starting coin contribution:** +0 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/classes/unbalanced.md",
+        "sha256": "26b627a470e050d03244bb7e24055905baae4323ecff38ecfc196050b6836189"
+      }
+    },
+    "class-warden": {
+      "markdown": "# Warden\n\n*You read the broken fern, the distant cry and the turn of a fleeing creature. When the road ends, your companions look to you.*\n\n## Rules\n\n**Agreed concept:** wilderness guide, tracker and hunter. Nature magic and animal companions are optional shared purchases, not required class features.\n\n**Class foundations:** minimum 0 in Fortitude and Knowledge; HP contribution +4. No multiclassing.\n\n**Starting disciplines:** choose two distinct rank-1 disciplines from Wilderness, Marksmanship, Arms, Athletics.\n\n**Discipline pricing:** Home: Wilderness, Marksmanship. Adjacent: Arms, Athletics. All others Foreign; no Opposed disciplines. Use the normal sequential rank prices.\n\nChoose one class-exclusive signature at levels 1, 3 and 7. Extra signatures cost 2/4/8 DP. Requirements are class and minimum level only; no discipline or earlier signature is required.\n\n## Level 1 choices\n\n- [Keep the Quarry Close](../cards/signature-warden-keep-the-quarry-close.md)\n- [Read the Passing](../cards/signature-warden-read-the-passing.md)\n- [Follow My Footsteps](../cards/signature-warden-follow-my-footsteps.md)\n\n## Level 3 choices\n\n- [Stay on the Scent](../cards/signature-warden-stay-on-the-scent.md)\n- [Through Bramble and Stone](../cards/signature-warden-through-bramble-and-stone.md)\n- [A Watchful Rest](../cards/signature-warden-a-watchful-rest.md)\n\n## Level 7 choices\n\n- [Turn the Hunt](../cards/signature-warden-turn-the-hunt.md)\n- [Bring Them Through](../cards/signature-warden-bring-them-through.md)\n- [Know What You Hunt](../cards/signature-warden-know-what-you-hunt.md)\n\n## The character at the table\n\nA hunter closes distance after a shot or a sword stroke. A tracker reads actual evidence. A guide gives companions a route they can use now. All three approaches remain available at each milestone; there are no locked subclasses.\n\nFortitude and Knowledge express endurance and understanding. Agility remains valuable to an archer, but the class does not demand one weapon or one attack attribute. +4 HP places its contribution beside Blade and Leader, below Protector and Unbalanced.\n\n\n**Starting coin contribution:** +2 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/classes/warden.md",
+        "sha256": "e5d84aac8cb2cb143b900f8a6f3cd62e947e7cc4da3cf190932333ba59f49fac"
+      }
+    },
+    "discipline-armor": {
+      "markdown": "# Armor\n\n*You learn to carry protection as part of your own body, moving with its weight instead of against it.*\n\n## Rules\n\n\nUsing armor and moving effectively while protected.\n\nRanks 1, 2 and 3 are purchased in order. Rank alone grants no action, attribute\nbonus, equipment or permission to use every card in this field. A card prints the\nrank required before purchase. No additional level gate applies to ranks.\n\nClass affinity sets the cost of each rank: Home 1/2/4 DP; Adjacent 2/4/8;\nForeign 3/6/12; Opposed 4/8/16. These prices are the agreed starting scheme.\nNo discipline may be bought at level 0.\n\n[Discipline index](../disciplines.md) · [Catalog](../catalog.md)\n",
+      "source": {
+        "path": "design/disciplines/armor.md",
+        "sha256": "0ca4f7960b7eb7fb1b908a35563d312b001bfd41ef70f38546f1f160dc82c0f2"
+      }
+    },
+    "discipline-arms": {
+      "markdown": "# Arms\n\n*You practice until distance, timing and the turn of a weapon become familiar companions.*\n\n## Rules\n\n\nPracticed melee techniques; weapon appearance never determines damage.\n\nRanks 1, 2 and 3 are purchased in order. Rank alone grants no action, attribute\nbonus, equipment or permission to use every card in this field. A card prints the\nrank required before purchase. No additional level gate applies to ranks.\n\nClass affinity sets the cost of each rank: Home 1/2/4 DP; Adjacent 2/4/8;\nForeign 3/6/12; Opposed 4/8/16. These prices are the agreed starting scheme.\nNo discipline may be bought at level 0.\n\n[Discipline index](../disciplines.md) · [Catalog](../catalog.md)\n",
+      "source": {
+        "path": "design/disciplines/arms.md",
+        "sha256": "e39fbdd29266df95112e1710cbef400bd194e9ae07647ec7dc1ecb3bbfc2faff"
+      }
+    },
+    "discipline-athletics": {
+      "markdown": "# Athletics\n\n*You learn what your body can do when the easy path ends.*\n\n## Rules\n\n\nExpert movement and exertion beyond ordinary Brawn or Agility tasks.\n\nRanks 1, 2 and 3 are purchased in order. Rank alone grants no action, attribute\nbonus, equipment or permission to use every card in this field. A card prints the\nrank required before purchase. No additional level gate applies to ranks.\n\nClass affinity sets the cost of each rank: Home 1/2/4 DP; Adjacent 2/4/8;\nForeign 3/6/12; Opposed 4/8/16. These prices are the agreed starting scheme.\nNo discipline may be bought at level 0.\n\n[Discipline index](../disciplines.md) · [Catalog](../catalog.md)\n",
+      "source": {
+        "path": "design/disciplines/athletics.md",
+        "sha256": "97fc543899f94379552cd7df2f228b956deddc50c62555f9e8e43426a614a866"
+      }
+    },
+    "discipline-calling": {
+      "markdown": "# Calling\n\n*You learn the names and gestures that bring an answer from somewhere beyond your reach.*\n\n## Rules\n\n\nSummoned creatures and command techniques.\n\nRanks 1, 2 and 3 are purchased in order. Rank alone grants no action, attribute\nbonus, equipment or permission to use every card in this field. A card prints the\nrank required before purchase. No additional level gate applies to ranks.\n\nClass affinity sets the cost of each rank: Home 1/2/4 DP; Adjacent 2/4/8;\nForeign 3/6/12; Opposed 4/8/16. These prices are the agreed starting scheme.\nNo discipline may be bought at level 0.\n\n[Discipline index](../disciplines.md) · [Catalog](../catalog.md)\n",
+      "source": {
+        "path": "design/disciplines/calling.md",
+        "sha256": "6eb1796c52656e19b0c034d31cf189fd212ebe5f844b288d1b86e288322e95af"
+      }
+    },
+    "discipline-craft": {
+      "markdown": "# Craft\n\n*You learn to see the useful thing waiting inside the raw material.*\n\n## Rules\n\n\nRecipes, repairs and derivation; no group crafting.\n\nRanks 1, 2 and 3 are purchased in order. Rank alone grants no action, attribute\nbonus, equipment or permission to use every card in this field. A card prints the\nrank required before purchase. No additional level gate applies to ranks.\n\nClass affinity sets the cost of each rank: Home 1/2/4 DP; Adjacent 2/4/8;\nForeign 3/6/12; Opposed 4/8/16. These prices are the agreed starting scheme.\nNo discipline may be bought at level 0.\n\n[Discipline index](../disciplines.md) · [Catalog](../catalog.md)\n",
+      "source": {
+        "path": "design/disciplines/craft.md",
+        "sha256": "148f82464c976b92193600e999cde1ce0efadef4132d3a9cc5313ae5dcbea35d"
+      }
+    },
+    "discipline-flame": {
+      "markdown": "# Flame\n\n*You come to know the difference between a warming ember and a fire asking to be freed.*\n\n## Rules\n\n\nFire damage, heat and controlled ignition.\n\nRanks 1, 2 and 3 are purchased in order. Rank alone grants no action, attribute\nbonus, equipment or permission to use every card in this field. A card prints the\nrank required before purchase. No additional level gate applies to ranks.\n\nClass affinity sets the cost of each rank: Home 1/2/4 DP; Adjacent 2/4/8;\nForeign 3/6/12; Opposed 4/8/16. These prices are the agreed starting scheme.\nNo discipline may be bought at level 0.\n\n[Discipline index](../disciplines.md) · [Catalog](../catalog.md)\n",
+      "source": {
+        "path": "design/disciplines/flame.md",
+        "sha256": "8cadd9634182a80d0019403fce56a946b2b1fccf8a1e319696ae193216df7887"
+      }
+    },
+    "discipline-frost": {
+      "markdown": "# Frost\n\n*You learn to listen to stillness and give it the shape of winter.*\n\n## Rules\n\n\nCold damage, freezing and ice shaping.\n\nRanks 1, 2 and 3 are purchased in order. Rank alone grants no action, attribute\nbonus, equipment or permission to use every card in this field. A card prints the\nrank required before purchase. No additional level gate applies to ranks.\n\nClass affinity sets the cost of each rank: Home 1/2/4 DP; Adjacent 2/4/8;\nForeign 3/6/12; Opposed 4/8/16. These prices are the agreed starting scheme.\nNo discipline may be bought at level 0.\n\n[Discipline index](../disciplines.md) · [Catalog](../catalog.md)\n",
+      "source": {
+        "path": "design/disciplines/frost.md",
+        "sha256": "75bfed12e1522e4a4e02b6f5ef1440c4c6c1abaa2c0d675de2367ca56a215190"
+      }
+    },
+    "discipline-guard": {
+      "markdown": "# Guard\n\n*You practice being where another person needs you before they have to ask.*\n\n## Rules\n\n\nShields, interception and protection of others.\n\nRanks 1, 2 and 3 are purchased in order. Rank alone grants no action, attribute\nbonus, equipment or permission to use every card in this field. A card prints the\nrank required before purchase. No additional level gate applies to ranks.\n\nClass affinity sets the cost of each rank: Home 1/2/4 DP; Adjacent 2/4/8;\nForeign 3/6/12; Opposed 4/8/16. These prices are the agreed starting scheme.\nNo discipline may be bought at level 0.\n\n[Discipline index](../disciplines.md) · [Catalog](../catalog.md)\n",
+      "source": {
+        "path": "design/disciplines/guard.md",
+        "sha256": "d9ea8675d8ac10c16f815e96c90a938fc595c4bde6a450c93111bd45358418b2"
+      }
+    },
+    "discipline-influence": {
+      "markdown": "# Influence\n\n*You learn how a voice can open a door, steady a friend or turn a room.*\n\n## Rules\n\n\nLeadership, negotiation and credible social pressure; never mind control.\n\nRanks 1, 2 and 3 are purchased in order. Rank alone grants no action, attribute\nbonus, equipment or permission to use every card in this field. A card prints the\nrank required before purchase. No additional level gate applies to ranks.\n\nClass affinity sets the cost of each rank: Home 1/2/4 DP; Adjacent 2/4/8;\nForeign 3/6/12; Opposed 4/8/16. These prices are the agreed starting scheme.\nNo discipline may be bought at level 0.\n\n[Discipline index](../disciplines.md) · [Catalog](../catalog.md)\n",
+      "source": {
+        "path": "design/disciplines/influence.md",
+        "sha256": "c0bc2df526d6fe65d39f83c045ff1ff658757aab6b99a6100cb10a26aaa8a565"
+      }
+    },
+    "discipline-life": {
+      "markdown": "# Life\n\n*You learn to feel the fragile warmth that living things carry between one breath and the next.*\n\n## Rules\n\n\nHealing and draining the same life energy; resistance interacts with both.\n\nRanks 1, 2 and 3 are purchased in order. Rank alone grants no action, attribute\nbonus, equipment or permission to use every card in this field. A card prints the\nrank required before purchase. No additional level gate applies to ranks.\n\nClass affinity sets the cost of each rank: Home 1/2/4 DP; Adjacent 2/4/8;\nForeign 3/6/12; Opposed 4/8/16. These prices are the agreed starting scheme.\nNo discipline may be bought at level 0.\n\n[Discipline index](../disciplines.md) · [Catalog](../catalog.md)\n",
+      "source": {
+        "path": "design/disciplines/life.md",
+        "sha256": "ad824fe8ec1c6b2bad11737fffb3d0ca25c77f42a35f8386d98d9f3f0bfa7a36"
+      }
+    },
+    "discipline-marksmanship": {
+      "markdown": "# Marksmanship\n\n*You practice until the distant mark feels connected to the movement of your hand.*\n\n## Rules\n\n\nRanged and thrown techniques, including precise placement.\n\nRanks 1, 2 and 3 are purchased in order. Rank alone grants no action, attribute\nbonus, equipment or permission to use every card in this field. A card prints the\nrank required before purchase. No additional level gate applies to ranks.\n\nClass affinity sets the cost of each rank: Home 1/2/4 DP; Adjacent 2/4/8;\nForeign 3/6/12; Opposed 4/8/16. These prices are the agreed starting scheme.\nNo discipline may be bought at level 0.\n\n[Discipline index](../disciplines.md) · [Catalog](../catalog.md)\n",
+      "source": {
+        "path": "design/disciplines/marksmanship.md",
+        "sha256": "221e3a57e586c6d42b5c5b72e544e90013438188a3fc24b1e095595d03bb3c2e"
+      }
+    },
+    "discipline-medicine": {
+      "markdown": "# Medicine\n\n*You learn to recognize hurt, and to remain patient when the injured cannot.*\n\n## Rules\n\n\nNonmagical wound treatment and condition care.\n\nRanks 1, 2 and 3 are purchased in order. Rank alone grants no action, attribute\nbonus, equipment or permission to use every card in this field. A card prints the\nrank required before purchase. No additional level gate applies to ranks.\n\nClass affinity sets the cost of each rank: Home 1/2/4 DP; Adjacent 2/4/8;\nForeign 3/6/12; Opposed 4/8/16. These prices are the agreed starting scheme.\nNo discipline may be bought at level 0.\n\n[Discipline index](../disciplines.md) · [Catalog](../catalog.md)\n",
+      "source": {
+        "path": "design/disciplines/medicine.md",
+        "sha256": "8f19afe9ba5e9995c0819fc0a66ca61085556388583afb6390b781e2ff83835c"
+      }
+    },
+    "discipline-mind": {
+      "markdown": "# Mind\n\n*You learn to touch the uncertain border between what is there and what is perceived.*\n\n## Rules\n\n\nMental attacks and temporary disabling effects.\n\nRanks 1, 2 and 3 are purchased in order. Rank alone grants no action, attribute\nbonus, equipment or permission to use every card in this field. A card prints the\nrank required before purchase. No additional level gate applies to ranks.\n\nClass affinity sets the cost of each rank: Home 1/2/4 DP; Adjacent 2/4/8;\nForeign 3/6/12; Opposed 4/8/16. These prices are the agreed starting scheme.\nNo discipline may be bought at level 0.\n\n[Discipline index](../disciplines.md) · [Catalog](../catalog.md)\n",
+      "source": {
+        "path": "design/disciplines/mind.md",
+        "sha256": "092ee93b2bfdcd974d1aff27cc8f5b6c3beef080c4afab1aa62e7a3bfd62770c"
+      }
+    },
+    "discipline-radiance": {
+      "markdown": "# Radiance\n\n*You learn to shape brightness into something that reveals, shelters or confronts.*\n\n## Rules\n\n\nRadiant attacks, illumination and revealing magic.\n\nRanks 1, 2 and 3 are purchased in order. Rank alone grants no action, attribute\nbonus, equipment or permission to use every card in this field. A card prints the\nrank required before purchase. No additional level gate applies to ranks.\n\nClass affinity sets the cost of each rank: Home 1/2/4 DP; Adjacent 2/4/8;\nForeign 3/6/12; Opposed 4/8/16. These prices are the agreed starting scheme.\nNo discipline may be bought at level 0.\n\n[Discipline index](../disciplines.md) · [Catalog](../catalog.md)\n",
+      "source": {
+        "path": "design/disciplines/radiance.md",
+        "sha256": "75a170f2fc5cff1ecb74112182646df1bdf9d2eaf20f5727efa16915ff06ce35"
+      }
+    },
+    "discipline-scholarship": {
+      "markdown": "# Scholarship\n\n*You learn to ask the question that makes an old fact useful in a new place.*\n\n## Rules\n\n\nInterpreting evidence, languages, histories and unfamiliar devices.\n\nRanks 1, 2 and 3 are purchased in order. Rank alone grants no action, attribute\nbonus, equipment or permission to use every card in this field. A card prints the\nrank required before purchase. No additional level gate applies to ranks.\n\nClass affinity sets the cost of each rank: Home 1/2/4 DP; Adjacent 2/4/8;\nForeign 3/6/12; Opposed 4/8/16. These prices are the agreed starting scheme.\nNo discipline may be bought at level 0.\n\n[Discipline index](../disciplines.md) · [Catalog](../catalog.md)\n",
+      "source": {
+        "path": "design/disciplines/scholarship.md",
+        "sha256": "2865b0894c7f65936790eb4e530b50ff35a19c07a8041a2f8f010d859e2f0066"
+      }
+    },
+    "discipline-storm": {
+      "markdown": "# Storm\n\n*You learn the moods of moving air and the restless energy that gathers within it.*\n\n## Rules\n\n\nLightning, thunder and wind-driven displacement.\n\nRanks 1, 2 and 3 are purchased in order. Rank alone grants no action, attribute\nbonus, equipment or permission to use every card in this field. A card prints the\nrank required before purchase. No additional level gate applies to ranks.\n\nClass affinity sets the cost of each rank: Home 1/2/4 DP; Adjacent 2/4/8;\nForeign 3/6/12; Opposed 4/8/16. These prices are the agreed starting scheme.\nNo discipline may be bought at level 0.\n\n[Discipline index](../disciplines.md) · [Catalog](../catalog.md)\n",
+      "source": {
+        "path": "design/disciplines/storm.md",
+        "sha256": "efe22f54f7f9eba0b5c358c8f623ce3ba982ed18028e25873eeb1719e14efd10"
+      }
+    },
+    "discipline-subterfuge": {
+      "markdown": "# Subterfuge\n\n*You learn to work in the space between what people notice and what they assume.*\n\n## Rules\n\n\nStealth, misdirection and quiet access.\n\nRanks 1, 2 and 3 are purchased in order. Rank alone grants no action, attribute\nbonus, equipment or permission to use every card in this field. A card prints the\nrank required before purchase. No additional level gate applies to ranks.\n\nClass affinity sets the cost of each rank: Home 1/2/4 DP; Adjacent 2/4/8;\nForeign 3/6/12; Opposed 4/8/16. These prices are the agreed starting scheme.\nNo discipline may be bought at level 0.\n\n[Discipline index](../disciplines.md) · [Catalog](../catalog.md)\n",
+      "source": {
+        "path": "design/disciplines/subterfuge.md",
+        "sha256": "7e44e20c11baefd1a352a00815174c88b77ca5fe6aa93832fb86242a4ee9a592"
+      }
+    },
+    "discipline-wilderness": {
+      "markdown": "# Wilderness\n\n*You learn to read a living landscape and find your place within it.*\n\n## Rules\n\n\nEnvironment-specific foraging and outdoor expertise.\n\nRanks 1, 2 and 3 are purchased in order. Rank alone grants no action, attribute\nbonus, equipment or permission to use every card in this field. A card prints the\nrank required before purchase. No additional level gate applies to ranks.\n\nClass affinity sets the cost of each rank: Home 1/2/4 DP; Adjacent 2/4/8;\nForeign 3/6/12; Opposed 4/8/16. These prices are the agreed starting scheme.\nNo discipline may be bought at level 0.\n\n[Discipline index](../disciplines.md) · [Catalog](../catalog.md)\n",
+      "source": {
+        "path": "design/disciplines/wilderness.md",
+        "sha256": "7f82fe780c900fa31dc654a16ff2635d474aaeeb73d1a35c618355ab64f2d539"
+      }
+    },
+    "origin-background-apothecary-s-helper": {
+      "markdown": "# Apothecary’s Helper\n\n*You learned the smell of good medicine and the patience of people waiting for it.*\n\n*Which remedy always reminds you of someone?*\n\n## Rules\n\n**Type:** Background. **Status:** Proposal. Choose one paired option; do not mix the rank from one with the card from another.\n\n- Scholarship 1 and [Identify a Mixture](../cards/identify-a-mixture.md).\n- Medicine 1 and [Relieve Poison](../cards/relieve-poison.md).\n\nGrant at level 0. Duplicate grants provide 1 stage DP each; never promote a rank automatically. No discipline purchases at level 0. Ancestry does not restrict this choice. Follow each card’s explicit equipment grant.\n\n**Starting coin contribution:** +10 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/background-apothecary-s-helper.md",
+        "sha256": "774113ba5208d64f817bd54d3edb1087f4c62f4a71cac42dc48ec8e6b87772c7"
+      }
+    },
+    "origin-background-bargain-keeper": {
+      "markdown": "# Bargain Keeper\n\n*You agreed to something in a place where the terms were hard to read.*\n\n*What part of the bargain are you determined to interpret generously?*\n\n## Rules\n\nChoose one:\n\n- **Flame 1** and [A Coal for a Promise](../cards/a-coal-for-a-promise.md).\n- **Mind 1** and [An Invitation Elsewhere](../cards/an-invitation-elsewhere.md).\n\n**Type:** Background\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/background-bargain-keeper.md",
+        "sha256": "b05516ada53f152a6376e7a60414281d017d671855d94d57b8aa4d9ed39e669c"
+      }
+    },
+    "origin-background-beast-reared": {
+      "markdown": "# Beast-Reared\n\n*Whether raised, rescued or apprenticed among beasts, you know a world of scent and posture.*\n\n*Which animal behavior do you still find reassuring?*\n\n## Rules\n\nChoose one:\n\n- **Wilderness 1** and [Borrow the Beast](../cards/borrow-the-beast.md).\n- **Calling 1** and [Summon Animal — Novice](../cards/call-the-faithful-hound.md).\n\n**Type:** Background\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/background-beast-reared.md",
+        "sha256": "93fbad407968b950fdc50865a501c49d41ab31d1dedaa9905fd7f7ce8e8daf1b"
+      }
+    },
+    "origin-background-bone-tender": {
+      "markdown": "# Bone Tender\n\n*You prepared the dead with care; eventually some seemed reluctant to leave your company.*\n\n*Who taught you that respect and fear are different things?*\n\n## Rules\n\nChoose one:\n\n- **Calling 1** and [Summon Undead — Novice](../cards/the-bones-rise.md).\n- **Life 1** and [Keep the Door Closed](../cards/keep-the-door-closed.md).\n\n**Type:** Background\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/background-bone-tender.md",
+        "sha256": "b6f6df241500fc66f28427b2d0f064c5947bd60f427227685f5ef17361e65790"
+      }
+    },
+    "origin-background-bridge-worker": {
+      "markdown": "# Bridge Worker\n\n*You have trusted your weight to a knot you tied yourself.*\n\n*Who was beside you the first time the scaffolding shook?*\n\n## Rules\n\n**Type:** Background. **Status:** Proposal. Choose one paired option; do not mix the rank from one with the card from another.\n\n- Craft 1 and [Trail Workshop](../cards/trail-workshop.md).\n- Athletics 1 and [Sure Ascent](../cards/sure-ascent.md).\n\nGrant at level 0. Duplicate grants provide 1 stage DP each; never promote a rank automatically. No discipline purchases at level 0. Ancestry does not restrict this choice. Follow each card’s explicit equipment grant.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/background-bridge-worker.md",
+        "sha256": "b065ad35f4803d76c584e496ca37c38e2c482a855a93fe2ddbb24478b909eb6b"
+      }
+    },
+    "origin-background-burglar": {
+      "markdown": "# Burglar\n\n*Every fine house has a service door and every service door has a story.*\n\n*Which room did you leave untouched?*\n\n## Rules\n\nChoose one:\n\n- **Subterfuge 1** and [The Key Changes Hands](../cards/the-key-changes-hands.md).\n- **Subterfuge 1** and [Quiet Latch](../cards/quiet-latch.md).\n\n**Type:** Background\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/background-burglar.md",
+        "sha256": "c93545774938c67a151207c071f2a0885a80009b535c513f0938a5ba7a7abbdc"
+      }
+    },
+    "origin-background-confidence-artist": {
+      "markdown": "# Confidence Artist\n\n*People remember the smile long after they notice what is missing.*\n\n*Who believed in you when you were finally telling the truth?*\n\n## Rules\n\nChoose one:\n\n- **Arms 1** and [Smile Before Steel](../cards/smile-before-steel.md).\n- **Subterfuge 1** and [Create a Distraction](../cards/create-a-distraction.md).\n\n**Type:** Background\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/background-confidence-artist.md",
+        "sha256": "d099dc6b450115fe8559c222da1889480478e21fa95da2123ed89da72b26fec2"
+      }
+    },
+    "origin-background-court-questioner": {
+      "markdown": "# Court Questioner\n\n*You learned that an answer can be perfectly truthful and still hide everything important.*\n\n*Who once answered a question you were afraid to ask?*\n\n## Rules\n\nChoose one:\n\n- **Scholarship 1** and [Anatomy of an Opening](../cards/anatomy-of-an-opening.md).\n- **Influence 1** and [Measured Appeal](../cards/measured-appeal.md).\n\n**Type:** Background\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +10 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/background-court-questioner.md",
+        "sha256": "fcc332e854838d05cef2813699451cd85f846ab42a78196e1094934dc9d9f8ef"
+      }
+    },
+    "origin-background-dragon-dreamer": {
+      "markdown": "# Dragon-Dreamer\n\n*You dreamed of heat, wings and a voice calling you kin. Then you woke with smoke on your breath.*\n\n*Was the dream a memory, a gift or an invitation?*\n\n## Rules\n\nChoose one:\n\n- **Flame 1** and [Breath of the Wyrmling](../cards/breath-of-the-wyrmling.md).\n- **Flame 1** and [Let the Spark Decide](../cards/let-the-spark-decide.md).\n\n**Type:** Background\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/background-dragon-dreamer.md",
+        "sha256": "3011985529a20e1e7f09014006a598b4277abd6a720a614d71f2a953045a8804"
+      }
+    },
+    "origin-background-duelist-s-second": {
+      "markdown": "# Duelist’s Second\n\n*You carried the spare blade, watched every mistake, and sometimes prevented the duel entirely.*\n\n*Which duel should never have happened?*\n\n## Rules\n\nChoose one:\n\n- **Arms 1** and [Invitation to the Blade](../cards/invitation-to-the-blade.md).\n- **Influence 1** and [Measured Appeal](../cards/measured-appeal.md).\n\n**Type:** Background\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/background-duelist-s-second.md",
+        "sha256": "ba27319605ef9f7024f9498fb3334e8354a9181767b070d893c531b0e335175d"
+      }
+    },
+    "origin-background-grave-attendant": {
+      "markdown": "# Grave Attendant\n\n*You made sure someone remembered the names after the mourners went home.*\n\n*Whose grave do you still visit?*\n\n## Rules\n\n**Type:** Background. **Status:** Proposal. Choose one paired option; do not mix the rank from one with the card from another.\n\n- Medicine 1 and [Treat Soft Tissue](../cards/treat-soft-tissue.md).\n- Life 1 and [Shared Breath](../cards/shared-breath.md).\n\nGrant at level 0. Duplicate grants provide 1 stage DP each; never promote a rank automatically. No discipline purchases at level 0. Ancestry does not restrict this choice. Follow each card’s explicit equipment grant.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/background-grave-attendant.md",
+        "sha256": "8096a947d2a0271afe317d477b64e9586de27bd8beccaab68245a56db006f9d5"
+      }
+    },
+    "origin-background-grove-tended": {
+      "markdown": "# Grove Tended\n\n*You learned the names of growing things before you learned the names of distant rulers.*\n\n*What place do you consider a patient rather than a possession?*\n\n## Rules\n\nChoose one:\n\n- **Life 1** and [Sap and Breath](../cards/sap-and-breath.md).\n- **Wilderness 1** and [Roots Remember Feet](../cards/roots-remember-feet.md).\n\n**Type:** Background\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/background-grove-tended.md",
+        "sha256": "fefc71cfff09e596f9ac4d8fe085facaa3907beeba600720d369acfd803147e1"
+      }
+    },
+    "origin-background-household-guard": {
+      "markdown": "# Household Guard\n\n*Keeping a household safe meant knowing its people, not only its locks.*\n\n*Whose laughter could you recognize from the gate?*\n\n## Rules\n\n**Type:** Background. **Status:** Proposal. Choose one paired option; do not mix the rank from one with the card from another.\n\n- Arms 1 and [Hook and Drive](../cards/hook-and-drive.md).\n- Guard 1 and [Shielding Step](../cards/shielding-step.md).\n\nGrant at level 0. Duplicate grants provide 1 stage DP each; never promote a rank automatically. No discipline purchases at level 0. Ancestry does not restrict this choice. Follow each card’s explicit equipment grant.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/background-household-guard.md",
+        "sha256": "9c24e4f76d9de82aa3ea01b7fbb443967c2bdc4a1384a697db3d83818766e645"
+      }
+    },
+    "origin-background-itinerant-tinker": {
+      "markdown": "# Itinerant Tinker\n\n*Your workshop fit on your back, and your reputation traveled a village ahead.*\n\n*What repair earned you a lifelong welcome?*\n\n## Rules\n\nChoose one:\n\n- **Craft 1** and [Spring in the Sleeve](../cards/spring-in-the-sleeve.md).\n- **Craft 1** and [Make Something Useful](../cards/make-something-useful.md).\n\n**Type:** Background\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/background-itinerant-tinker.md",
+        "sha256": "c188562d394572660ccffa8c584e2773cbcecf7cc1c3b0d2029cfc7e3b1f81bd"
+      }
+    },
+    "origin-background-kennel-keeper": {
+      "markdown": "# Kennel Keeper\n\n*The hounds knew your footsteps and the difference between your whistle and anyone else’s.*\n\n*Which companion never came back from a hunt?*\n\n## Rules\n\nChoose one:\n\n- **Calling 1** and [Summon Animal — Novice](../cards/call-the-faithful-hound.md).\n- **Wilderness 1** and [Guide a Frightened Animal](../cards/guide-a-frightened-animal.md).\n\n**Type:** Background\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/background-kennel-keeper.md",
+        "sha256": "d04a428d5a4948944a1354b172b8b87245826867ffea6255d4503e8e677fa021"
+      }
+    },
+    "origin-background-market-chemist": {
+      "markdown": "# Market Chemist\n\n*You know which bottle smells like a cure and which only smells expensive.*\n\n*Which customer made you stop exaggerating?*\n\n## Rules\n\nChoose one:\n\n- **Craft 1** and [Smoke in a Bottle](../cards/smoke-in-a-bottle.md).\n- **Scholarship 1** and [Identify a Mixture](../cards/identify-a-mixture.md).\n\n**Type:** Background\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +10 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/background-market-chemist.md",
+        "sha256": "71ce8514d90892747a4bde614a0e5f6a906d34f7d1a1f07a6d0c87ccd354d972"
+      }
+    },
+    "origin-background-messenger": {
+      "markdown": "# Messenger\n\n*You carried words that changed lives and learned when not to ask what they meant.*\n\n*Which message did you refuse to deliver?*\n\n## Rules\n\n**Type:** Background. **Status:** Proposal. Choose one paired option; do not mix the rank from one with the card from another.\n\n- Marksmanship 1 and [Pinning Shot](../cards/pinning-shot.md).\n- Influence 1 and [Measured Appeal](../cards/measured-appeal.md).\n\nGrant at level 0. Duplicate grants provide 1 stage DP each; never promote a rank automatically. No discipline purchases at level 0. Ancestry does not restrict this choice. Follow each card’s explicit equipment grant.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/background-messenger.md",
+        "sha256": "9fc609b2eb84c68cec9d6f5ce724ac2ef2c0def330314a5655bf91441787846b"
+      }
+    },
+    "origin-background-monastery-runaway": {
+      "markdown": "# Monastery Runaway\n\n*You left with a discipline in your bones and an unanswered question in your chest.*\n\n*What did you take besides your training?*\n\n## Rules\n\nChoose one:\n\n- **Athletics 1** and [The Untroubled Hand](../cards/the-untroubled-hand.md).\n- **Storm 1** and [Palm of the Gale](../cards/palm-of-the-gale.md).\n\n**Type:** Background\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/background-monastery-runaway.md",
+        "sha256": "162267340817affe41a8ae3e5f07248dbe55cf56b2503bade7bab4dfce6593af"
+      }
+    },
+    "origin-background-oath-witness": {
+      "markdown": "# Oath Witness\n\n*You stood beside people when they promised what they could not yet know they could bear.*\n\n*Which broken promise still follows you?*\n\n## Rules\n\nChoose one:\n\n- **Influence 1** and [Name the Reckoning](../cards/name-the-reckoning.md).\n- **Scholarship 1** and [Read the Remains](../cards/read-the-remains.md).\n\n**Type:** Background\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +10 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/background-oath-witness.md",
+        "sha256": "d75d0f0d7eb926b5a60c19adcaf98e03b2f7efb943cec44a83b9619a08a8e843"
+      }
+    },
+    "origin-background-physician-s-student": {
+      "markdown": "# Physician’s Student\n\n*Bones, bruises and patient observation taught you how a body works—and where it fails.*\n\n*Who taught you to look twice?*\n\n## Rules\n\nChoose one:\n\n- **Scholarship 1** and [Anatomy of an Opening](../cards/anatomy-of-an-opening.md).\n- **Medicine 1** and [Treat Bone](../cards/treat-bone.md).\n\n**Type:** Background\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +10 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/background-physician-s-student.md",
+        "sha256": "c9c5bcc28082b319e81cbabae00427e702ad23e83ca9708e475a362f97997740"
+      }
+    },
+    "origin-background-pit-fighter": {
+      "markdown": "# Pit Fighter\n\n*You learned what a crowd sounds like when it decides someone will not get up.*\n\n*Who did you refuse to finish?*\n\n## Rules\n\nChoose one:\n\n- **Arms 1** and [Blood in the Teeth](../cards/blood-in-the-teeth.md).\n- **Athletics 1** and [Secure a Hold](../cards/secure-a-hold.md).\n\n**Type:** Background\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/background-pit-fighter.md",
+        "sha256": "02813a28f8c9cb937dac16c0b45d3d51104957215c9a0c19e85d9e78fa67c4ed"
+      }
+    },
+    "origin-background-poacher": {
+      "markdown": "# Poacher\n\n*A forbidden boundary never made a hungry household less hungry.*\n\n*Who looked the other way for you?*\n\n## Rules\n\nChoose one:\n\n- **Marksmanship 1** and [Read the Quarry](../cards/read-the-quarry.md).\n- **Subterfuge 1** and [Step Between Lanterns](../cards/step-between-lanterns.md).\n\n**Type:** Background\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/background-poacher.md",
+        "sha256": "42b7c49d2eb4d5109b227ab2debe550429b4c1dec31b2a4375cad118f7af0d01"
+      }
+    },
+    "origin-background-reluctant-knife": {
+      "markdown": "# Reluctant Knife\n\n*Someone once paid you to make a problem disappear. You still decide what that made you.*\n\n*Which name did you cross off without taking the job?*\n\n## Rules\n\nChoose one:\n\n- **Subterfuge 1** and [A Courtesy Unanswered](../cards/a-courtesy-unanswered.md).\n- **Arms 1** and [Take Them Alive](../cards/take-them-alive.md).\n\n**Type:** Background\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/background-reluctant-knife.md",
+        "sha256": "bdd8f5ca00b00f4654ead88dd3133512790e2cbf51bfa1666768c1455d5c13f9"
+      }
+    },
+    "origin-background-shore-gatherer": {
+      "markdown": "# Shore Gatherer\n\n*The shore fed you if you learned when to arrive and what to leave alone.*\n\n*What did the tide bring you once that it should not have?*\n\n## Rules\n\n**Type:** Background. **Status:** Proposal. Choose one paired option; do not mix the rank from one with the card from another.\n\n- Wilderness 1 and [Forage Coast](../cards/forage-coast.md).\n- Athletics 1 and [Expert River Crossing](../cards/expert-river-crossing.md).\n\nGrant at level 0. Duplicate grants provide 1 stage DP each; never promote a rank automatically. No discipline purchases at level 0. Ancestry does not restrict this choice. Follow each card’s explicit equipment grant.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/background-shore-gatherer.md",
+        "sha256": "f2d923b7f696e979edb83a6bcd39b07d6d1956c9e9759ac65def1e94d74097ca"
+      }
+    },
+    "origin-background-stage-assistant": {
+      "markdown": "# Stage Assistant\n\n*You made the impossible happen from behind the curtain.*\n\n*What trick did the star never learn you invented?*\n\n## Rules\n\n**Type:** Background. **Status:** Proposal. Choose one paired option; do not mix the rank from one with the card from another.\n\n- Subterfuge 1 and [Create a Distraction](../cards/create-a-distraction.md).\n- Mind 1 and [Intrusive Echo](../cards/intrusive-echo.md).\n\nGrant at level 0. Duplicate grants provide 1 stage DP each; never promote a rank automatically. No discipline purchases at level 0. Ancestry does not restrict this choice. Follow each card’s explicit equipment grant.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/background-stage-assistant.md",
+        "sha256": "83d3039f90f0911536665d10a5a9c9cc339ef3283f662c0af9144ad30b5257bb"
+      }
+    },
+    "origin-background-star-touched": {
+      "markdown": "# Star-Touched\n\n*A night sky, an old mirror or a deep well showed you more than it should.*\n\n*What familiar sight now seems slightly wrong?*\n\n## Rules\n\nChoose one:\n\n- **Mind 1** and [A Thought That Is Not Yours](../cards/a-thought-that-is-not-yours.md).\n- **Scholarship 1** and [I Have Seen This Step](../cards/i-have-seen-this-step.md).\n\n**Type:** Background\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/background-star-touched.md",
+        "sha256": "b614c1947882247c5ab2ff0df2d7f457d646ca12feea7210aff8db4135289bcd"
+      }
+    },
+    "origin-background-storm-survivor": {
+      "markdown": "# Storm Survivor\n\n*You came back from the weather with something in your voice that was not there before.*\n\n*What did the storm leave behind?*\n\n## Rules\n\nChoose one:\n\n- **Storm 1** and [Thunder at the Door](../cards/thunder-at-the-door.md).\n- **Wilderness 1** and [The Otter’s Bargain](../cards/the-otter-s-bargain.md).\n\n**Type:** Background\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/background-storm-survivor.md",
+        "sha256": "baac6d69228d4b80ff708794da0bab99d3d6e8bea2db7a90a0ba979dc45c7a9d"
+      }
+    },
+    "origin-background-temple-attendant": {
+      "markdown": "# Temple Attendant\n\n*You have swept the steps and held the hands of people whose prayers had no words left.*\n\n*What promise outlasted your service?*\n\n## Rules\n\nChoose one:\n\n- **Radiance 1** and [Oathlight Strike](../cards/oathlight-strike.md).\n- **Life 1** and [Shared Breath](../cards/shared-breath.md).\n\n**Type:** Background\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/background-temple-attendant.md",
+        "sha256": "ad79c6aac2c7d711154f4af786fb1f38c608df21ba90e9f9748f8cf8d60d4728"
+      }
+    },
+    "origin-background-traveling-player": {
+      "markdown": "# Traveling Player\n\n*You have been cheered, chased away, badly paid and invited back under a different name.*\n\n*Which audience surprised you?*\n\n## Rules\n\nChoose one:\n\n- **Influence 1** and [A Verse for Courage](../cards/a-verse-for-courage.md).\n- **Mind 1** and [A Door That Is Not There](../cards/a-door-that-is-not-there.md).\n\n**Type:** Background\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/background-traveling-player.md",
+        "sha256": "55f852185ff240473b7948f0558fc324c1c1495744cc7b733ef416462b19bc9a"
+      }
+    },
+    "origin-background-war-drummer": {
+      "markdown": "# War Drummer\n\n*You know how to make frightened feet move together.*\n\n*Whose pace do you still hear beneath the beat?*\n\n## Rules\n\nChoose one:\n\n- **Influence 1** and [Keep Time with Steel](../cards/keep-time-with-steel.md).\n- **Guard 1** and [Shielding Step](../cards/shielding-step.md).\n\n**Type:** Background\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/background-war-drummer.md",
+        "sha256": "a728b174dc9fd7b59e26b327b6abfd0d5ee3916dcc0e8cb257e722c4f68d6874"
+      }
+    },
+    "origin-background-ward-scribe": {
+      "markdown": "# Ward Scribe\n\n*Your marks appeared over doors, cradles and caravan wheels. Sometimes they held.*\n\n*Which mark will you never draw carelessly?*\n\n## Rules\n\nChoose one:\n\n- **Guard 1** and [A Sign against Harm](../cards/a-sign-against-harm.md).\n- **Armor 1** and [Wake the Iron Rune](../cards/wake-the-iron-rune.md).\n\n**Type:** Background\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +10 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/background-ward-scribe.md",
+        "sha256": "d25e9a38fd83713353ba3084d0bc6190a18b0a6aba8c3a9a0bf1e0897c7ff741"
+      }
+    },
+    "origin-background-weather-apprentice": {
+      "markdown": "# Weather Apprentice\n\n*Your teacher watched the clouds as if reading a difficult letter.*\n\n*Which warning did you finally learn to hear?*\n\n## Rules\n\n**Type:** Background. **Status:** Proposal. Choose one paired option; do not mix the rank from one with the card from another.\n\n- Storm 1 and [Gust Hammer](../cards/gust-hammer.md).\n- Frost 1 and [Rime Grip](../cards/rime-grip.md).\n\nGrant at level 0. Duplicate grants provide 1 stage DP each; never promote a rank automatically. No discipline purchases at level 0. Ancestry does not restrict this choice. Follow each card’s explicit equipment grant.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/background-weather-apprentice.md",
+        "sha256": "081609c83ddbc18c638fb861ab47a98202d8d7411f3dca8525c7f25acd104631"
+      }
+    },
+    "origin-culture-border-marches": {
+      "markdown": "# Border Marches\n\n*Your neighbors know the difference between vigilance and fear, though keeping that distinction takes work.*\n\n*Who taught you to welcome a traveler and watch the road at once?*\n\n## Rules\n\nChoose one:\n\n- **Guard 1** and [A Sign against Harm](../cards/a-sign-against-harm.md).\n- **Marksmanship 1** and [Read the Quarry](../cards/read-the-quarry.md).\n\n**Type:** Culture\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/culture-border-marches.md",
+        "sha256": "adf450658754041e3922649d0e948e80ff8cd83d1a71c2d51cc901b2c6f496f7"
+      }
+    },
+    "origin-culture-cairn-communities": {
+      "markdown": "# Cairn Communities\n\n*The dead are remembered at supper and in council, while the living argue freely about their advice.*\n\n*Whose name do you speak when courage runs short?*\n\n## Rules\n\nChoose one:\n\n- **Calling 1** and [A Hand from Before](../cards/a-hand-from-before.md).\n- **Life 1** and [Keep the Door Closed](../cards/keep-the-door-closed.md).\n\n**Type:** Culture\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/culture-cairn-communities.md",
+        "sha256": "c7000b0f71d8df4a0a2032f70dff7fdbfc61396e5031774650fc24ba9423aea7"
+      }
+    },
+    "origin-culture-cloister-valleys": {
+      "markdown": "# Cloister Valleys\n\n*Bells mark the day, but no two residents agree about what a disciplined life should become.*\n\n*Which lesson did you question before you left?*\n\n## Rules\n\nChoose one:\n\n- **Athletics 1** and [The Untroubled Hand](../cards/the-untroubled-hand.md).\n- **Medicine 1** and [Treat Mental Trauma](../cards/treat-mental-trauma.md).\n\n**Type:** Culture\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/culture-cloister-valleys.md",
+        "sha256": "ea78fce218250527ad31c945431d4d7fc005743a826eb2fe8c22d6b17cd8a2c1"
+      }
+    },
+    "origin-culture-deep-halls": {
+      "markdown": "# Deep Halls\n\n*Homes, gardens and markets fill the chambers beneath the hills; the surface is only one neighborhood.*\n\n*What does your home smell like after the forge fires dim?*\n\n## Rules\n\nChoose one:\n\n- **Craft 1** and [Trail Workshop](../cards/trail-workshop.md).\n- **Armor 1** and [Wake the Iron Rune](../cards/wake-the-iron-rune.md).\n\n**Type:** Culture\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/culture-deep-halls.md",
+        "sha256": "b2f97735b3fd44bcd5c31551c6a9ebc0a4fd1e3c40c1a8a137ac643c849efd2d"
+      }
+    },
+    "origin-culture-ember-cities": {
+      "markdown": "# Ember Cities\n\n*Kilns, glassworks and night markets make the streets glow after sundown.*\n\n*What beautiful thing did you first learn to make?*\n\n## Rules\n\nChoose one:\n\n- **Flame 1** and [Speak with the Hearth](../cards/speak-with-the-hearth.md).\n- **Craft 1** and [Make Something Useful](../cards/make-something-useful.md).\n\n**Type:** Culture\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +10 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/culture-ember-cities.md",
+        "sha256": "838d9f4035581d0602e6b2ab13c83971afaca3f6f24fdb5080afd59da4bf2a55"
+      }
+    },
+    "origin-culture-forest-communities": {
+      "markdown": "# Forest Communities\n\n*Paths change with the season, and your neighbors know the trees by more than their timber.*\n\n*Which tree marks the way home?*\n\n## Rules\n\n**Type:** Culture. **Status:** Proposal. Choose one paired option; do not mix the rank from one with the card from another.\n\n- Wilderness 1 and [Forage Woodland](../cards/forage-woodland.md).\n- Athletics 1 and [Sure Ascent](../cards/sure-ascent.md).\n\nGrant at level 0. Duplicate grants provide 1 stage DP each; never promote a rank automatically. No discipline purchases at level 0. Ancestry does not restrict this choice. Follow each card’s explicit equipment grant.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/culture-forest-communities.md",
+        "sha256": "8475083da6c046e51d53854e52b0ea87065af5fb8acdb9fe27a9567bd9e01c0f"
+      }
+    },
+    "origin-culture-free-harbors": {
+      "markdown": "# Free Harbors\n\n*Cargoes and rumors change hands faster than the tide. You learned to listen in three directions.*\n\n*Who will always give you a berth?*\n\n## Rules\n\nChoose one:\n\n- **Influence 1** and [A Place at Any Fire](../cards/a-place-at-any-fire.md).\n- **Subterfuge 1** and [The Key Changes Hands](../cards/the-key-changes-hands.md).\n\n**Type:** Culture\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +10 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/culture-free-harbors.md",
+        "sha256": "d32e3e455956b6a7b5d854d026fcffac75ebd5be0d4b8124a3be1c75f812fe10"
+      }
+    },
+    "origin-culture-gathered-peoples": {
+      "markdown": "# Gathered Peoples\n\n*Displacement brought strangers together; shared work made a new home.*\n\n*Which old custom did your new neighbors adopt?*\n\n## Rules\n\nChoose one:\n\n- **Influence 1** and [A Verse for Courage](../cards/a-verse-for-courage.md).\n- **Medicine 1** and [Treat Soft Tissue](../cards/treat-soft-tissue.md).\n\n**Type:** Culture\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/culture-gathered-peoples.md",
+        "sha256": "93e7d8542d1b09c18b95c306391e2852061e586ffcefb9d1b5be075b69c37694"
+      }
+    },
+    "origin-culture-grass-sea-clans": {
+      "markdown": "# Grass Sea Clans\n\n*A roof of stars, a road of grass, and neighbors who may be a day’s ride away.*\n\n*What promise brings you back to the traveling camp?*\n\n## Rules\n\nChoose one:\n\n- **Marksmanship 1** and [Read the Quarry](../cards/read-the-quarry.md).\n- **Wilderness 1** and [The Otter’s Bargain](../cards/the-otter-s-bargain.md).\n\n**Type:** Culture\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/culture-grass-sea-clans.md",
+        "sha256": "07dfc06c1a85a7783cb7bd0033e7aef74e5569940518e0035d26cd4a10623e55"
+      }
+    },
+    "origin-culture-highland-holds": {
+      "markdown": "# Highland Holds\n\n*The climb is long, the welcome warm, and every tool has a place by the hearth.*\n\n*What did your neighbors trust you to carry?*\n\n## Rules\n\n**Type:** Culture. **Status:** Proposal. Choose one paired option; do not mix the rank from one with the card from another.\n\n- Wilderness 1 and [Forage Mountains](../cards/forage-mountains.md).\n- Craft 1 and [Trail Workshop](../cards/trail-workshop.md).\n\nGrant at level 0. Duplicate grants provide 1 stage DP each; never promote a rank automatically. No discipline purchases at level 0. Ancestry does not restrict this choice. Follow each card’s explicit equipment grant.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/culture-highland-holds.md",
+        "sha256": "47ef86bb5b277c66daca7b43af16d607407a76873c03d7e3284dc1adb2d25615"
+      }
+    },
+    "origin-culture-island-kinships": {
+      "markdown": "# Island Kinships\n\n*You grew up with a horizon on every side and family on more than one shore.*\n\n*What signal means home is waiting?*\n\n## Rules\n\nChoose one:\n\n- **Wilderness 1** and [Forage Coast](../cards/forage-coast.md).\n- **Storm 1** and [Thunder at the Door](../cards/thunder-at-the-door.md).\n\n**Type:** Culture\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/culture-island-kinships.md",
+        "sha256": "ce9099bcb9589756ef8a0f0b1d6198e3fb9d707fc85e517b3af1aa047ec40289"
+      }
+    },
+    "origin-culture-learning-houses": {
+      "markdown": "# Learning Houses\n\n*Debate followed you from the lesson room to supper. Curiosity was a habit before it was a profession.*\n\n*Which question earned you trouble?*\n\n## Rules\n\n**Type:** Culture. **Status:** Proposal. Choose one paired option; do not mix the rank from one with the card from another.\n\n- Scholarship 1 and [Read the Remains](../cards/read-the-remains.md).\n- Flame 1 and [Cinder Cast](../cards/cinder-cast.md).\n\nGrant at level 0. Duplicate grants provide 1 stage DP each; never promote a rank automatically. No discipline purchases at level 0. Ancestry does not restrict this choice. Follow each card’s explicit equipment grant.\n\n**Starting coin contribution:** +10 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/culture-learning-houses.md",
+        "sha256": "f963c0f7a1eaab104557a6ee28ad890fa7397b9a0628d04b63a6aba74c9bb14a"
+      }
+    },
+    "origin-culture-oasis-cities": {
+      "markdown": "# Oasis Cities\n\n*Water is hospitality, memory and responsibility. Every caravan brings another version of the world.*\n\n*Whose well did your family help keep?*\n\n## Rules\n\nChoose one:\n\n- **Influence 1** and [Measured Appeal](../cards/measured-appeal.md).\n- **Scholarship 1** and [Read the Remains](../cards/read-the-remains.md).\n\n**Type:** Culture\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +10 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/culture-oasis-cities.md",
+        "sha256": "8f4f2c393c049fe5edda9dd1be50f7748a004234a016c5ce62c4364ba8ee7810"
+      }
+    },
+    "origin-culture-reed-villages": {
+      "markdown": "# Reed Villages\n\n*Raised walkways and low boats connect homes that seem to float between sky and water.*\n\n*Which channel could you navigate with your eyes closed?*\n\n## Rules\n\nChoose one:\n\n- **Wilderness 1** and [Forage Wetlands](../cards/forage-wetlands.md).\n- **Wilderness 1** and [The Otter’s Bargain](../cards/the-otter-s-bargain.md).\n\n**Type:** Culture\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/culture-reed-villages.md",
+        "sha256": "c5131ebe5882d18d0fb0bdf4d40163faf774446c9bc9d036a5b2790d3f307a32"
+      }
+    },
+    "origin-culture-river-settlements": {
+      "markdown": "# River Settlements\n\n*The river brought work, travelers and news long before it brought you an urge to leave.*\n\n*What do you miss about the sound of the docks?*\n\n## Rules\n\n**Type:** Culture. **Status:** Proposal. Choose one paired option; do not mix the rank from one with the card from another.\n\n- Athletics 1 and [Expert River Crossing](../cards/expert-river-crossing.md).\n- Wilderness 1 and [Forage Wetlands](../cards/forage-wetlands.md).\n\nGrant at level 0. Duplicate grants provide 1 stage DP each; never promote a rank automatically. No discipline purchases at level 0. Ancestry does not restrict this choice. Follow each card’s explicit equipment grant.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/culture-river-settlements.md",
+        "sha256": "324f06ecfabc1f4ad96d84b9cbc8bdc4a3daf10b1b82b05087a1f50aa8740572"
+      }
+    },
+    "origin-culture-terrace-towns": {
+      "markdown": "# Terrace Towns\n\n*Gardens climb the cliffs and stairs stitch whole neighborhoods together.*\n\n*Which impossible-looking route was your childhood shortcut?*\n\n## Rules\n\nChoose one:\n\n- **Athletics 1** and [Swing into Trouble](../cards/swing-into-trouble.md).\n- **Wilderness 1** and [Roots Remember Feet](../cards/roots-remember-feet.md).\n\n**Type:** Culture\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/culture-terrace-towns.md",
+        "sha256": "3cd7bc9fcb2250c7b7fc05d34022a9a93bb197e756a73124dbb4f36689d3c3a1"
+      }
+    },
+    "origin-culture-traveling-companies": {
+      "markdown": "# Traveling Companies\n\n*Home was whoever helped raise the awning when the rain began.*\n\n*What song announced your arrival?*\n\n## Rules\n\n**Type:** Culture. **Status:** Proposal. Choose one paired option; do not mix the rank from one with the card from another.\n\n- Influence 1 and [Measured Appeal](../cards/measured-appeal.md).\n- Subterfuge 1 and [Create a Distraction](../cards/create-a-distraction.md).\n\nGrant at level 0. Duplicate grants provide 1 stage DP each; never promote a rank automatically. No discipline purchases at level 0. Ancestry does not restrict this choice. Follow each card’s explicit equipment grant.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/culture-traveling-companies.md",
+        "sha256": "a13c3f0f1326d9553f225aee51de0f1de9aacba8bff3b8eee6d8470490ea42dd"
+      }
+    },
+    "origin-culture-walled-communities": {
+      "markdown": "# Walled Communities\n\n*Your home knows the comfort of a gate and the danger of believing it solves everything.*\n\n*Who always greeted you from the wall?*\n\n## Rules\n\n**Type:** Culture. **Status:** Proposal. Choose one paired option; do not mix the rank from one with the card from another.\n\n- Armor 1 and [Wear Medium Armor](../cards/wear-medium-armor.md).\n- Guard 1 and [Shielding Step](../cards/shielding-step.md).\n\nGrant at level 0. Duplicate grants provide 1 stage DP each; never promote a rank automatically. No discipline purchases at level 0. Ancestry does not restrict this choice. Follow each card’s explicit equipment grant.\n\n**Starting coin contribution:** +10 coins. See [starting coins](../starting-coins.md).\n",
+      "source": {
+        "path": "design/origins/culture-walled-communities.md",
+        "sha256": "b7d2143fe55724ffce19ca3ce2604b21bd7b4bca0cd40e23ca67d5554eaf3ce8"
+      }
+    },
+    "trait-dwarf-carved-history": {
+      "markdown": "# A Grudge Well Kept\n\n*You rub the place the blow landed, fix its giver in your gaze and step back into the fight.*\n\n## Rules\n\nOnce per combat, after a creature damages you, gain 1 Boon to your next attack against it before the end of your next turn. Choose whether to invoke the trait when the damage occurs. No damage bonus or extra attack.\n\n**Ancestry:** Dwarf · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-dwarf-carved-history\n\n[Ancestry choices](dwarf.md)\n",
+      "source": {
+        "path": "design/ancestries/trait-dwarf-carved-history.md",
+        "sha256": "8cf415c52575f2fd4c6ebe14e56a18ae0cc75c26a7a307f4b8e72fd5a92458d2"
+      }
+    },
+    "trait-dwarf-deep-constitution": {
+      "markdown": "# Stubborn as Bedrock\n\n*You draw a deep breath, tighten the strap over your bruised shoulder and shoulder the load again.*\n\n## Rules\n\nMaximum HP +1. Gain no additional resistance from this trait.\n\n**Ancestry:** Dwarf · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-dwarf-deep-constitution\n\n[Ancestry choices](dwarf.md)\n",
+      "source": {
+        "path": "design/ancestries/trait-dwarf-deep-constitution.md",
+        "sha256": "6c6fefe4440ceea6bc36e3d0b7afab6d96967761086f1ee6b7b3d2d6580dde2c"
+      }
+    },
+    "trait-dwarf-low-center": {
+      "markdown": "# Rooted in Stone\n\n*You spread your boots against the stone and lean into the approaching shove.*\n\n## Rules\n\nWhile standing on solid ground, gain 1 Boon to defense against forced movement. This is not immunity and does not reduce the resulting distance separately.\n\n**Ancestry:** Dwarf · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-dwarf-low-center\n\n[Ancestry choices](dwarf.md)\n",
+      "source": {
+        "path": "design/ancestries/trait-dwarf-low-center.md",
+        "sha256": "1cd9672345f6b284456ee5d2da58ec92536b68b69d9a7e980516a7a1f25ed99b"
+      }
+    },
+    "trait-dwarf-maker-s-eye": {
+      "markdown": "# An Honest Maker’s Hand\n\n*Your thumb finds the seam; your ear knows the ring of sound metal.*\n\n## Rules\n\nAfter handling an ordinary metal or stone item, recognize shoddy workmanship and common material without a roll. Gain 1 Boon when a consequential inspection seeks subtler defects. This is not crafting or magical identification permission.\n\n**Ancestry:** Dwarf · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-dwarf-maker-s-eye\n\n[Ancestry choices](dwarf.md)\n",
+      "source": {
+        "path": "design/ancestries/trait-dwarf-maker-s-eye.md",
+        "sha256": "2cdfc39d9d943b40d87fc51ba681551dca62f5a96cf0890ac3110bacaafc9e59"
+      }
+    },
+    "trait-dwarf-stone-reader": {
+      "markdown": "# The Mountain Remembers\n\n*You run your fingers across the stonework, stopping where an old seam has been cut anew.*\n\n## Rules\n\nGain 1 Boon to examining stonework for an unsafe passage, concealed join or later alteration. Obvious construction clues need no roll; the trait does not reveal an untouched wall’s far side.\n\n**Ancestry:** Dwarf · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-dwarf-stone-reader\n\n[Ancestry choices](dwarf.md)\n",
+      "source": {
+        "path": "design/ancestries/trait-dwarf-stone-reader.md",
+        "sha256": "ab811121c561c4ac750579444f4a7e0d8a064fdaa47a561d4c92a4ee48b5f0a8"
+      }
+    },
+    "trait-elf-age-of-memory": {
+      "markdown": "# A Lifetime Ago\n\n*You pause beside the broken road and recall the voices of the people who laid its first stones.*\n\n## Rules\n\nChoose one place or community you knew in an earlier age. Gain 1 Boon to Knowledge or Reason rolls recalling its history, people or construction. The DA can tell you what you genuinely witnessed without a roll; memory reveals no events you never knew.\n\n**Ancestry:** Elf · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-elf-age-of-memory\n\n[Ancestry choices](elf.md)\n",
+      "source": {
+        "path": "design/ancestries/trait-elf-age-of-memory.md",
+        "sha256": "9de3568b331b5d6dda64c69f08e44875770f385f30c09c2fc0c10484480256c0"
+      }
+    },
+    "trait-elf-leaf-listener": {
+      "markdown": "# The Wood Whispers\n\n*You stop talking as the birds fall quiet, turning toward the rustle that disturbed them.*\n\n## Rules\n\nIn woodland, gain 1 Boon to a consequential roll interpreting living signs of nearby disturbance. The signs can indicate a general direction, not an unseen creature’s exact square; this does not bypass Hidden.\n\n**Ancestry:** Elf · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-elf-leaf-listener\n\n[Ancestry choices](elf.md)\n",
+      "source": {
+        "path": "design/ancestries/trait-elf-leaf-listener.md",
+        "sha256": "db15f3d1761fda18483b4fe600131dc404bc496502bbba7e855605341f7518eb"
+      }
+    },
+    "trait-elf-light-tread": {
+      "markdown": "# Footfall on the Leaves\n\n*You step between stems and over tangled roots, leaving the leaves scarcely trembling behind you.*\n\n## Rules\n\nNatural undergrowth does not increase the cost of your voluntary movement. Other difficult terrain, forced movement and occupied-square rules are unchanged.\n\n**Ancestry:** Elf · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-elf-light-tread\n\n[Ancestry choices](elf.md)\n",
+      "source": {
+        "path": "design/ancestries/trait-elf-light-tread.md",
+        "sha256": "50cd344c089351be0bb82aa49079b98a14c114014f283c2c28071c4f9a77539d"
+      }
+    },
+    "trait-elf-star-familiar": {
+      "markdown": "# Dream beneath the Stars\n\n*You settle beneath the stars with your eyes half open, letting old memories drift through the sounds of the waking camp.*\n\n## Rules\n\nYou may rest in a quiet waking reverie instead of sleeping, remaining aware of nearby ordinary sights and sounds. It grants no automatic detection, extra downtime work, shorter treatment interval or Grit recovery. Magical Asleep still works normally.\n\n**Ancestry:** Elf · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-elf-star-familiar\n\n[Ancestry choices](elf.md)\n",
+      "source": {
+        "path": "design/ancestries/trait-elf-star-familiar.md",
+        "sha256": "06f800801729528d4cf1b9b90c070076baefaa74e6646fad9bda93ec50afaf22"
+      }
+    },
+    "trait-elf-unhurried-grace": {
+      "markdown": "# Grace of the Elder Folk\n\n*You lengthen your stride and weave past the obstacles without breaking the rhythm of your steps.*\n\n## Rules\n\nBase Speed +1. Describe whether your grace is effortless balance, long strides or a dancer’s economy.\n\n**Ancestry:** Elf · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-elf-unhurried-grace\n\n[Ancestry choices](elf.md)\n",
+      "source": {
+        "path": "design/ancestries/trait-elf-unhurried-grace.md",
+        "sha256": "fc03ce8b811275e9ff82af44a433fdd51c31929a1b07c11e4fda274eb1f903cd"
+      }
+    },
+    "trait-halfling-good-cheer": {
+      "markdown": "# A Little Luck\n\n*The latch catches your coat a heartbeat before you step into trouble.*\n\n## Rules\n\nOnce per day, before a roll that uses an attribute, gain 1 Boon. Describe a small piece of good fortune. No reroll after seeing the result and no effect on inventory dice.\n\n**Ancestry:** Halfling · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-halfling-good-cheer\n\n[Ancestry choices](halfling.md)\n",
+      "source": {
+        "path": "design/ancestries/trait-halfling-good-cheer.md",
+        "sha256": "1ea5f424f5ee76412247fc85833995d8d609e118852bf44217436b2a6c3a63d0"
+      }
+    },
+    "trait-halfling-quiet-company": {
+      "markdown": "# Quiet as a Burrow\n\n*You ease your heel onto the floor and lift the latch with the care of someone coming home to a sleeping household.*\n\n## Rules\n\nGain 1 Boon to quiet movement outside combat. On a Strong result, one willing companion following your route gains 1 Boon to their next quiet-movement roll this scene. You cannot confer Hidden by walking in open view.\n\n**Ancestry:** Halfling · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-halfling-quiet-company\n\n[Ancestry choices](halfling.md)\n",
+      "source": {
+        "path": "design/ancestries/trait-halfling-quiet-company.md",
+        "sha256": "59adb5530403fa82a75c2cc5a37a4e476c188f19ace59ff62e4a6cfa759733b9"
+      }
+    },
+    "trait-halfling-resilient": {
+      "markdown": "# Second Breakfast\n\n*You break the bread, tuck the smallest crumbs into the wrapping and make room beside you for a second breakfast.*\n\n## Rules\n\nWhen sharing a food bundle with one companion during a safe meal, make one inventory check for the two of you instead of one each. Food is still required; this grants no healing, resistance or extra recovery.\n\n**Ancestry:** Halfling · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-halfling-resilient\n\n[Ancestry choices](halfling.md)\n",
+      "source": {
+        "path": "design/ancestries/trait-halfling-resilient.md",
+        "sha256": "76494a9a7c169563c856a9341b71acb9d46ecc0872dbba875c7fcc3aceeaac25"
+      }
+    },
+    "trait-halfling-small-passage": {
+      "markdown": "# Under Their Noses\n\n*You duck beneath the table and draw your knees behind its legs as the hurried footsteps pass.*\n\n## Rules\n\nYou fit through openings the DA judges suitable for your actual small size, and gain 1 Boon to hiding behind ordinary furniture that plausibly conceals you. Standing creatures still block their squares; no free movement through enemies.\n\n**Ancestry:** Halfling · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-halfling-small-passage\n\n[Ancestry choices](halfling.md)\n",
+      "source": {
+        "path": "design/ancestries/trait-halfling-small-passage.md",
+        "sha256": "bafeccb9da9bbc829a64a4d2ee5fe92cc9e3bba166ed3dbcad7a8c5818f36ff5"
+      }
+    },
+    "trait-halfling-stout-heart": {
+      "markdown": "# Bigger on the Inside\n\n*You swallow, glance at the friends beside you and step forward even while your knees shake.*\n\n## Rules\n\nGain 1 Boon to rolls affected by Frightened. Resolve the Boon and Banes normally; you are not immune to fear.\n\n**Ancestry:** Halfling · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-halfling-stout-heart\n\n[Ancestry choices](halfling.md)\n",
+      "source": {
+        "path": "design/ancestries/trait-halfling-stout-heart.md",
+        "sha256": "af044f8bdb08579f6a531ff865274ef5436c206af13bf84b0eee29eeb7e0574c"
+      }
+    },
+    "trait-human-far-walker": {
+      "markdown": "# Road in the Blood\n\n*You settle your pack higher on your shoulders and lengthen your stride toward the next rise.*\n\n## Rules\n\nBase Speed +1. Long journeys remain ordinary travel; this creates no exhaustion rule.\n\n**Ancestry:** Human · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-human-far-walker\n\n[Ancestry choices](human.md)\n",
+      "source": {
+        "path": "design/ancestries/trait-human-far-walker.md",
+        "sha256": "3098dbf772119289b861386987ce3ea550386837c18d179acbdc100af0a3582d"
+      }
+    },
+    "trait-human-many-homes": {
+      "markdown": "# A Foot in Two Worlds\n\n*You greet a stranger in the words of another home, smiling as they answer in the same tongue.*\n\n## Rules\n\nKnow two additional ordinary spoken [languages](../rules/languages.md). Choose the communities that taught you; this does not grant a second culture’s discipline or card.\n\n**Ancestry:** Human · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-human-many-homes\n\n[Ancestry choices](human.md)\n",
+      "source": {
+        "path": "design/ancestries/trait-human-many-homes.md",
+        "sha256": "c67dadfa3fe434c84a7f6d4f602c6ec9910d6c372135862f06770e09ead505c8"
+      }
+    },
+    "trait-human-practiced-patience": {
+      "markdown": "# The Impossible Streak\n\n*You study the harder route, tighten your grip and begin with the stubborn care of someone determined to finish.*\n\n## Rules\n\nOnce per day, declare before an ordinary noncombat roll that you are taking the difficult way on purpose. Gain 1 Boon. You still need a plausible method and any specialist permission; this does not change a card’s attribute.\n\n**Ancestry:** Human · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-human-practiced-patience\n\n[Ancestry choices](human.md)\n",
+      "source": {
+        "path": "design/ancestries/trait-human-practiced-patience.md",
+        "sha256": "13c8607f57263eb51eca19176aeee301cc146289acff07491041b420b36bcb46"
+      }
+    },
+    "trait-human-shared-table": {
+      "markdown": "# Make Room at the Fire\n\n*You shift a bowl toward the stranger and offer a place beside the fire before asking their name.*\n\n## Rules\n\nOnce per scene, when you offer genuine food, shelter or shared work to a nonhostile person, gain 1 Boon to the next Guile roll seeking ordinary hospitality or trust from them before the scene ends. No automatic friendship or compelled response.\n\n**Ancestry:** Human · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-human-shared-table\n\n[Ancestry choices](human.md)\n",
+      "source": {
+        "path": "design/ancestries/trait-human-shared-table.md",
+        "sha256": "d015a9582ba67abf66d0b5ebab2bc98cf4b8eadd8519b2842c01371e2b7ba813"
+      }
+    },
+    "trait-human-weathered": {
+      "markdown": "# Never Quite Finished\n\n*You wipe the sweat from your face and lift the load again, remembering the people still waiting for you.*\n\n## Rules\n\nMaximum HP +1. Describe the ordinary hardship that taught you to keep going.\n\n**Ancestry:** Human · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-human-weathered\n\n[Ancestry choices](human.md)\n",
+      "source": {
+        "path": "design/ancestries/trait-human-weathered.md",
+        "sha256": "5e0cde04539c77c6d6490412531423a2e61b7f9502fa269b1272f7eedd214982"
+      }
+    },
+    "item-ammunition-bundle": {
+      "markdown": "# Ammunition Bundle\n\n*You loosen the binding and feel the familiar shapes waiting for your hand.*\n\n## Rules\n\n- **ID:** item-ammunition-bundle\n- **Bulk:** 1\n- **Requirements / supply:** Inventory d8\n- **Acquisition:** Explicit ability grant, coins, or DA treasure; no automatic extra starting kit.\n\nCheck after each attack that consumes ammunition; on 1 reduce a die step. Last use works. One bundle, not one Bulk per arrow.\n\nNo DP price. Purchase does not grant training or an ability.\n\n[Equipment index](../equipment.md)\n\n**Market price:** 9 coins. Proposal; see [market rules](../market.md).\n",
+      "source": {
+        "path": "design/equipment/ammunition-bundle.md",
+        "sha256": "c02935b51488491b7bd0f00ae0c1926e9cf0778e0895bb13b6489389c16020f6"
+      }
+    },
+    "item-book-of-quiet-doors": {
+      "markdown": "# Book of Quiet Doors\n\n*You turn the thin pages, following diagrams whose locks seem almost to breathe.*\n\n## Rules\n\n**ID:** item-book-of-quiet-doors. **Status:** Proposal — special equipment. **Form:** Tome. **Bulk:** 1.\n\n**Requirements:** Scholarship 1; identification required. **Action:** Main Action; ten minutes of study.\n\nAfter studying for 10 minutes, gain 1 Boon to your next mundane lock attempt this scene. Further study before using it does not add another Boon from this item. Grants no lock-working permission.\n\nApply this item’s printed benefit only; it grants no ability or action beyond what it states. No DP purchase; found or bought when the DA makes it available. No special recipe is supplied by owning it.\n\n[Equipment index](../equipment.md)\n\n**Market price:** 150 coins (special-order benchmark; availability is not guaranteed). Proposal; see [market rules](../market.md).\n",
+      "source": {
+        "path": "design/equipment/book-of-quiet-doors.md",
+        "sha256": "2eb2fc988fa75c00f37395a9fe4a98112cc11a5fed90146602ba1f5fbd46aeab"
+      }
+    },
+    "item-chain-coil": {
+      "markdown": "# Chain Coil\n\n*You feed the links through your hands, listening for the clear ring of sound metal.*\n\n## Rules\n\n**ID:** item-chain-coil\n\n**Market price:** 12 coins. **Bulk:** 1.\n\nA practical portable coil for securing or hauling, with length agreed with the DA when bought. No infinite reach or automatic restraint.\n\nBuying equipment grants no DP advancement, training or ability. Use normal item-handling actions unless an applicable card says otherwise.\n\n[Market rules](../market.md) · [Equipment index](../equipment.md)\n",
+      "source": {
+        "path": "design/equipment/chain-coil.md",
+        "sha256": "c11703294ad3bd70f86283d19ffa5481c30d76e8ab3038b4609576bcd3eb6f55"
+      }
+    },
+    "item-cincture-of-might": {
+      "markdown": "# Cincture of Might\n\n*You tighten the belt and feel the next burden settle more easily against your body.*\n\n## Rules\n\n**ID:** item-cincture-of-might. **Status:** Proposal — special equipment. **Form:** Belt. **Bulk:** 1.\n\n**Requirements:** No discipline requirement; understanding not required. **Action:** Passive unless the effect says otherwise.\n\nBrawn +1 while worn. Does not stack with another positive Brawn item; does not change creation DP or class eligibility.\n\nApply this item’s printed benefit only; it grants no ability or action beyond what it states. No DP purchase; found or bought when the DA makes it available. No special recipe is supplied by owning it.\n\n[Equipment index](../equipment.md)\n\n**Market price:** 500 coins (special-order benchmark; availability is not guaranteed). Proposal; see [market rules](../market.md).\n",
+      "source": {
+        "path": "design/equipment/cincture-of-might.md",
+        "sha256": "b3481b295d1e2a375daa923cbf2900172b6eb4e5b1bbcfb51232f887d188e53e"
+      }
+    },
+    "item-clearing-tonic": {
+      "markdown": "# Clearing Tonic Supply\n\n*You lift the bottle to the light and watch its sharp green tint settle.*\n\n## Rules\n\n**ID:** item-clearing-tonic\n\n**Market price:** 30 coins. **Bulk:** 1.\n\nA d4 Clearing Tonic supply. Requires The Cleverest Mixture to administer its printed effect. Owning the bottle grants no ability or recipe. No HP restoration is implied.\n\nBuying equipment grants no DP advancement, training or ability. Use normal item-handling actions unless an applicable card says otherwise.\n\n[Market rules](../market.md) · [Equipment index](../equipment.md)\n",
+      "source": {
+        "path": "design/equipment/clearing-tonic.md",
+        "sha256": "03d95367106bb3d1190b006a01486d854bdd9beeb36b35c357f1b72e79504e6f"
+      }
+    },
+    "item-climbing-fittings": {
+      "markdown": "# Climbing Fittings\n\n*You lay out the hook, harness and iron fittings, testing each before trusting your weight to it.*\n\n## Rules\n\n**ID:** item-climbing-fittings\n\n**Market price:** 8 coins. **Bulk:** 1.\n\nReusable harness, hook, hammer and anchors. Rope is separate. Enables plausible anchoring; no automatic climb, Boon or specialist permission. Abandoned fittings need replacement at a DA-quoted fraction of the kit price.\n\nBuying equipment grants no DP advancement, training or ability. Use normal item-handling actions unless an applicable card says otherwise.\n\n[Market rules](../market.md) · [Equipment index](../equipment.md)\n",
+      "source": {
+        "path": "design/equipment/climbing-fittings.md",
+        "sha256": "b7052601ccd087483d6824a838d8a80754856e77a796da5a599445b0fe17b700"
+      }
+    },
+    "item-craft-tools": {
+      "markdown": "# Craft Tools\n\n*You unroll the worn cloth and set each trusted tool within reach.*\n\n## Rules\n\n- **ID:** item-craft-tools\n- **Bulk:** 1\n- **Requirements / supply:** Reusable\n- **Acquisition:** Explicit ability grant, coins, or DA treasure; no automatic extra starting kit.\n\nRequired for recipes that list them; no inventory die.\n\nNo DP price. Purchase does not grant training or an ability.\n\n[Equipment index](../equipment.md)\n\n**Market price:** 15 coins. Proposal; see [market rules](../market.md).\n",
+      "source": {
+        "path": "design/equipment/craft-tools.md",
+        "sha256": "ffed6d1a46d316f0b9434c6575fd59e9766733c701d2c9c38567984853996edf"
+      }
+    },
+    "item-digging-tools": {
+      "markdown": "# Digging Tools\n\n*You plant the spade and turn the first heavy clod aside.*\n\n## Rules\n\n**ID:** item-digging-tools\n\n**Market price:** 6 coins. **Bulk:** 1.\n\nCompact shovel and pick for ordinary digging. Time and feasibility depend on the material; no combat damage profile or tunneling magic.\n\nBuying equipment grants no DP advancement, training or ability. Use normal item-handling actions unless an applicable card says otherwise.\n\n[Market rules](../market.md) · [Equipment index](../equipment.md)\n",
+      "source": {
+        "path": "design/equipment/digging-tools.md",
+        "sha256": "ec3263f560891397286f988c82b5bcea679dbd5fd67a85520f37937a497f8b6d"
+      }
+    },
+    "item-disguise-clothes": {
+      "markdown": "# Disguise Clothes\n\n*You exchange familiar colors for another trade’s working clothes and check the fit.*\n\n## Rules\n\n**ID:** item-disguise-clothes\n\n**Market price:** 10 coins. **Bulk:** 1.\n\nOne plausible outfit for a declared mundane role. No automatic identity, credential or Boon; a special disguise ability still follows its card.\n\nBuying equipment grants no DP advancement, training or ability. Use normal item-handling actions unless an applicable card says otherwise.\n\n[Market rules](../market.md) · [Equipment index](../equipment.md)\n",
+      "source": {
+        "path": "design/equipment/disguise-clothes.md",
+        "sha256": "eb79e3b0d58ba6d3e29af4c4d701a49c96e1ae342bceb0f95fb53d40d81b69d1"
+      }
+    },
+    "item-ember-edge": {
+      "markdown": "# Ember Edge\n\n*You lift the weapon and watch a red gleam travel along its working edge.*\n\n## Rules\n\n**ID:** item-ember-edge. **Status:** Proposal — special equipment. **Form:** A melee weapon. **Bulk:** 1.\n\n**Requirements:** Flame 1; understanding not required. **Action:** Passive unless the effect says otherwise.\n\nAdds 1 fire damage to attacks made with it. On Strong also applies Burning 1. Cannot apply to ranged attacks.\n\nApply this item’s printed benefit only; it grants no ability or action beyond what it states. No DP purchase; found or bought when the DA makes it available. No special recipe is supplied by owning it.\n\n[Equipment index](../equipment.md)\n\n**Market price:** 400 coins (special-order benchmark; availability is not guaranteed). Proposal; see [market rules](../market.md).\n",
+      "source": {
+        "path": "design/equipment/ember-edge.md",
+        "sha256": "5b00f7bea7d60e3dd13570c4bc47bed8c854eba70d4977f4787e709c1e7dfeab"
+      }
+    },
+    "item-food-bundle": {
+      "markdown": "# Food Bundle\n\n*You unwrap a little comfort from home and share the smell of a proper meal.*\n\n## Rules\n\n- **ID:** item-food-bundle\n- **Bulk:** 1\n- **Requirements / supply:** Inventory d8\n- **Acquisition:** Explicit ability grant, coins, or DA treasure; no automatic extra starting kit.\n\nOne supply check per person-day consumed. No exhaustion subsystem is implied.\n\nNo DP price. Purchase does not grant training or an ability.\n\n[Equipment index](../equipment.md)\n\n**Market price:** 9 coins. Proposal; see [market rules](../market.md).\n",
+      "source": {
+        "path": "design/equipment/food-bundle.md",
+        "sha256": "df20fdfeae70df214cf1076a27ae0a4a6036b550ad50d82202a57f3151dfec40"
+      }
+    },
+    "item-glass-of-fine-detail": {
+      "markdown": "# Glass of Fine Detail\n\n*You bring the glass close, and the tiny imperfections become a landscape.*\n\n## Rules\n\n**ID:** item-glass-of-fine-detail. **Status:** Proposal — special equipment. **Form:** Eyeglass. **Bulk:** 1.\n\n**Requirements:** No discipline requirement; understanding not required. **Action:** Passive unless the effect says otherwise.\n\nGain 1 Boon to inspecting an accessible small object while holding the glass; not distant detection.\n\nApply this item’s printed benefit only; it grants no ability or action beyond what it states. No DP purchase; found or bought when the DA makes it available. No special recipe is supplied by owning it.\n\n[Equipment index](../equipment.md)\n\n**Market price:** 100 coins (special-order benchmark; availability is not guaranteed). Proposal; see [market rules](../market.md).\n",
+      "source": {
+        "path": "design/equipment/glass-of-fine-detail.md",
+        "sha256": "3ace7427d54c7b622f9314eb4672490bb6d87ffe841d8fa5e942a5baf72bf82d"
+      }
+    },
+    "item-gravebound-brooch": {
+      "markdown": "# Gravebound Brooch\n\n*You fasten the cold brooch and feel its chill linger against your skin.*\n\n## Rules\n\n**ID:** item-gravebound-brooch. **Status:** Proposal — special equipment. **Form:** Brooch. **Bulk:** 1.\n\n**Requirements:** No discipline requirement; understanding not required. **Action:** Passive unless the effect says otherwise.\n\nLife resistance 1 while worn. Reduces both Life damage and Life healing; minimum 1 still applies.\n\nApply this item’s printed benefit only; it grants no ability or action beyond what it states. No DP purchase; found or bought when the DA makes it available. No special recipe is supplied by owning it.\n\n[Equipment index](../equipment.md)\n\n**Market price:** 180 coins (special-order benchmark; availability is not guaranteed). Proposal; see [market rules](../market.md).\n",
+      "source": {
+        "path": "design/equipment/gravebound-brooch.md",
+        "sha256": "261ba1de92ca5ce990992ad8e7975c9620454d30038ac8e1a78b53efb29fcf8e"
+      }
+    },
+    "item-greater-healing-bottle": {
+      "markdown": "# Greater Healing Bottle\n\n*You swallow the strong draught and feel warmth spread deep into the hurt.*\n\n## Rules\n\n- **ID:** item-greater-healing-bottle\n- **Bulk:** 1\n- **Requirements / supply:** Inventory d4\n- **Acquisition:** Explicit ability grant, coins, or DA treasure; no automatic extra starting kit.\n\nUse [Use a Healing Potion](../cards/use-a-healing-potion.md): restore 10 HP before Life resistance, capped by missing HP. The giver needs a free hand and spends a Maneuver; another recipient spends a Reaction unless at 0 HP. Check the bottle’s inventory die after use; the final use still works.\n\nNo DP price. Purchase does not grant training or an ability.\n\n[Equipment index](../equipment.md)\n\n**Market price:** 50 coins. Proposal; see [market rules](../market.md).\n",
+      "source": {
+        "path": "design/equipment/greater-healing-bottle.md",
+        "sha256": "981b29855f56405816cfb0555dac87d99c205a8a41c63b3aaff1263feb6a85e7"
+      }
+    },
+    "item-lesser-healing-bottle": {
+      "markdown": "# Lesser Healing Bottle\n\n*You take a bitter mouthful and wait for the familiar warmth to follow.*\n\n## Rules\n\n- **ID:** item-lesser-healing-bottle\n- **Bulk:** 1\n- **Requirements / supply:** Inventory d4\n- **Acquisition:** Explicit ability grant, coins, or DA treasure; no automatic extra starting kit.\n\nUse [Use a Healing Potion](../cards/use-a-healing-potion.md): restore 6 HP before Life resistance, capped by missing HP. The giver needs a free hand and spends a Maneuver; another recipient spends a Reaction unless at 0 HP. Check the bottle’s inventory die after use; the final use still works.\n\nNo DP price. Purchase does not grant training or an ability.\n\n[Equipment index](../equipment.md)\n\n**Market price:** 20 coins. Proposal; see [market rules](../market.md).\n",
+      "source": {
+        "path": "design/equipment/lesser-healing-bottle.md",
+        "sha256": "0f42396a08389a7ccb921ba2dc398778a0870af8a151238811b66de0c7cb588d"
+      }
+    },
+    "item-lever-and-wedges": {
+      "markdown": "# Lever and Wedges\n\n*You work the iron tip into the seam and tap a wedge into place.*\n\n## Rules\n\n**ID:** item-lever-and-wedges\n\n**Market price:** 5 coins. **Bulk:** 1.\n\nReusable prying bar and wedges. Provides leverage where physically possible; no automatic Force progress or bonus.\n\nBuying equipment grants no DP advancement, training or ability. Use normal item-handling actions unless an applicable card says otherwise.\n\n[Market rules](../market.md) · [Equipment index](../equipment.md)\n",
+      "source": {
+        "path": "design/equipment/lever-and-wedges.md",
+        "sha256": "d947fcbfe91a440befede4166427c09774ef42638709768322526810c552b1d0"
+      }
+    },
+    "item-lighting-bundle": {
+      "markdown": "# Lighting Bundle\n\n*You shelter the first small flame until it takes hold and pushes back the dark.*\n\n## Rules\n\n- **ID:** item-lighting-bundle\n- **Bulk:** 1\n- **Requirements / supply:** Inventory d6\n- **Acquisition:** Explicit ability grant, coins, or DA treasure; no automatic extra starting kit.\n\nLight radius: the bearer’s square and all squares within 3 squares. Lighting or extinguishing costs a Maneuver and requires a free hand; carrying a lit torch occupies that hand. One check per hour of use. Ordinary light reveals what could be seen, not Hidden targets automatically.\n\nNo DP price. Purchase does not grant training or an ability.\n\n[Equipment index](../equipment.md)\n\n**Market price:** 5 coins. Proposal; see [market rules](../market.md).\n",
+      "source": {
+        "path": "design/equipment/lighting-bundle.md",
+        "sha256": "f852194a730246192d11f4bd2c7bc24f2f8f1dddf3d969ba7ac3b536b07e08d8"
+      }
+    },
+    "item-local-map": {
+      "markdown": "# Local Map\n\n*You trace the road with a fingertip and compare the inked ridge to the skyline.*\n\n## Rules\n\n**ID:** item-local-map\n\n**Market price:** 5 coins. **Bulk:** 1.\n\nA map and protective case. Contains the publicly known routes the seller actually knows; no secret discoveries or guaranteed accuracy.\n\nBuying equipment grants no DP advancement, training or ability. Use normal item-handling actions unless an applicable card says otherwise.\n\n[Market rules](../market.md) · [Equipment index](../equipment.md)\n",
+      "source": {
+        "path": "design/equipment/local-map.md",
+        "sha256": "013ccd4aca49de93fa83f9cc3f5d9d6807efda78041f7406be83b543aa283b20"
+      }
+    },
+    "item-lock-tools": {
+      "markdown": "# Lock Tools\n\n*You choose the slender piece that feels right for the work beneath your fingers.*\n\n## Rules\n\n- **ID:** item-lock-tools\n- **Bulk:** 1\n- **Requirements / supply:** Reusable\n- **Acquisition:** Explicit ability grant, coins, or DA treasure; no automatic extra starting kit.\n\nRequired for fine mundane lock work; no inventory die.\n\nNo DP price. Purchase does not grant training or an ability.\n\n[Equipment index](../equipment.md)\n\n**Market price:** 20 coins. Proposal; see [market rules](../market.md).\n",
+      "source": {
+        "path": "design/equipment/lock-tools.md",
+        "sha256": "f026f86b2e7da159dc03563d775858ad7ba22947170cc216dcb2c41a8a84bf41"
+      }
+    },
+    "item-material-bundle": {
+      "markdown": "# Material Bundle\n\n*You spread out your gathered materials, already imagining what your hands will make of them.*\n\n## Rules\n\n- **ID:** item-material-bundle\n- **Bulk:** 1\n- **Requirements / supply:** Inventory d6\n- **Acquisition:** Explicit ability grant, coins, or DA treasure; no automatic extra starting kit.\n\nMark material type. One use and inventory check per crafting attempt requiring it. Incompatible material cannot substitute.\n\nNo DP price. Purchase does not grant training or an ability.\n\n[Equipment index](../equipment.md)\n\n**Market price:** 12 coins. Proposal; see [market rules](../market.md).\n\nThis 12-coin d6 price is for one named ordinary material type. Prepared healing ingredients cost 80 coins per d6 bundle instead; other rare materials require a DA quote. A cheap ordinary bundle cannot substitute for life salts or other specialist ingredients.\n",
+      "source": {
+        "path": "design/equipment/material-bundle.md",
+        "sha256": "b3f6a85c25e80ed5b9e0b53e028211334da7d17afa1d1107cd59436a454ce9d9"
+      }
+    },
+    "item-mixing-kit": {
+      "markdown": "# Mixing Kit\n\n*Stained spoons, a little mortar and bottles whose labels only you can read.*\n\n## Rules\n\n**Bulk:** 1. **Use:** Reusable tools for a recipe that names a mixing kit.\nNo inventory die; ingredients and finished mixtures have their own supply dice.\nAn ability that grants a missing kit supplies it on acquisition, not on every use.\n\n**ID:** item-mixing-kit\n\n**Market price:** 20 coins. Proposal; see [market rules](../market.md).\n",
+      "source": {
+        "path": "design/equipment/mixing-kit.md",
+        "sha256": "1a6084d7e6a5a1822fb03be8123393951cc3fb74e3a252bbcd94fcd59032331a"
+      }
+    },
+    "item-musical-instrument": {
+      "markdown": "# Musical Instrument\n\n*You sound a familiar note and adjust the tuning until it settles.*\n\n## Rules\n\n**ID:** item-musical-instrument\n\n**Market price:** 12 coins. **Bulk:** 1.\n\nOne portable ordinary instrument chosen by the owner. Enables ordinary performance, not an ability grant or social bonus.\n\nBuying equipment grants no DP advancement, training or ability. Use normal item-handling actions unless an applicable card says otherwise.\n\n[Market rules](../market.md) · [Equipment index](../equipment.md)\n",
+      "source": {
+        "path": "design/equipment/musical-instrument.md",
+        "sha256": "200cd2a56fe9b6a043054c1662ebe4dbda38c81cba2785e134388fd42693045e"
+      }
+    },
+    "item-ordinary-heavy-armor": {
+      "markdown": "# Ordinary Heavy Armor\n\n*You settle into its reassuring weight, each fastening bearing the marks of your care.*\n\n## Rules\n\n- **ID:** item-ordinary-heavy-armor\n- **Bulk:** 1\n- **Requirements / supply:** Requires Wear Heavy Armor to benefit\n- **Acquisition:** Explicit ability grant, coins, or DA treasure; no automatic extra starting kit.\n\nAppearance is chosen by owner. The training card grants physical resistance 3; no additional resistance from this item.\n\nNo DP price. Purchase does not grant training or an ability.\n\n[Equipment index](../equipment.md)\n\n**Market price:** 90 coins. Proposal; see [market rules](../market.md).\n",
+      "source": {
+        "path": "design/equipment/ordinary-heavy-armor.md",
+        "sha256": "288b57d9bc293cd2aa2c792b13a02f9a3eaefe6c899bb81979e46c62a1923d6f"
+      }
+    },
+    "item-ordinary-medium-armor": {
+      "markdown": "# Ordinary Medium Armor\n\n*You brush a hand over the familiar surface and check the fit before setting out.*\n\n## Rules\n\n- **ID:** item-ordinary-medium-armor\n- **Bulk:** 1\n- **Requirements / supply:** Requires Wear Medium Armor to benefit\n- **Acquisition:** Explicit ability grant, coins, or DA treasure; no automatic extra starting kit.\n\nAppearance is chosen by owner. The training card grants physical resistance 2; no additional resistance from this item.\n\nNo DP price. Purchase does not grant training or an ability.\n\n[Equipment index](../equipment.md)\n\n**Market price:** 40 coins. Proposal; see [market rules](../market.md).\n",
+      "source": {
+        "path": "design/equipment/ordinary-medium-armor.md",
+        "sha256": "7050f7573563be9a52f12c746e67b31035782055296cce1d043e37bd860aad65"
+      }
+    },
+    "item-ordinary-melee-weapon": {
+      "markdown": "# Ordinary Melee Weapon\n\n*You turn the weapon in your hand, remembering why you chose this shape to carry.*\n\n## Rules\n\n- **ID:** item-ordinary-melee-weapon\n- **Bulk:** 1\n- **Requirements / supply:** No DP; ordinary equipment\n- **Acquisition:** Explicit ability grant, coins, or DA treasure; no automatic extra starting kit.\n\nA melee implement described by its owner. Attacks define damage, range, restrictions and other mechanics. Multiple compatible learned attacks share this item. No inherent damage profile. Record whether it occupies one hand or two when described; appearance still adds no damage. Changing grip follows Handle an Item, not an assumed free potion hand.\n\nNo DP price. Purchase does not grant training or an ability.\n\n[Equipment index](../equipment.md)\n\n**Market price:** 12 coins. Proposal; see [market rules](../market.md).\n",
+      "source": {
+        "path": "design/equipment/ordinary-melee-weapon.md",
+        "sha256": "541a3db620061e7a67ab8dd2ff0535df2749b413ce45689296ba48f40c8eefee"
+      }
+    },
+    "item-ordinary-ranged-weapon": {
+      "markdown": "# Ordinary Ranged Weapon\n\n*You check your weapon with the familiar care that makes the first shot feel right.*\n\n## Rules\n\n- **ID:** item-ordinary-ranged-weapon\n- **Bulk:** 1\n- **Requirements / supply:** No DP; ordinary equipment\n- **Acquisition:** Explicit ability grant, coins, or DA treasure; no automatic extra starting kit.\n\nA ranged implement described by its owner. Attack card supplies mechanics. Uses a separate ammunition bundle where required. Two hands while in use.\n\nNo DP price. Purchase does not grant training or an ability.\n\n[Equipment index](../equipment.md)\n\n**Market price:** 18 coins. Proposal; see [market rules](../market.md).\n",
+      "source": {
+        "path": "design/equipment/ordinary-ranged-weapon.md",
+        "sha256": "9c69356c4e6fcf554f80a24f700311290ae8c5472d009ab64c1c6e1b6822ceb9"
+      }
+    },
+    "item-ordinary-shield": {
+      "markdown": "# Ordinary Shield\n\n*You slip your arm into place and feel the worn grip fit your palm.*\n\n## Rules\n\n- **ID:** item-ordinary-shield\n- **Bulk:** 1\n- **Requirements / supply:** No DP; ordinary equipment\n- **Acquisition:** Explicit ability grant, coins, or DA treasure; no automatic extra starting kit.\n\nA held shield enables universal Shield Block. Grants no automatic resistance or defense bonus without spending its Reaction.\n\nNo DP price. Purchase does not grant training or an ability.\n\n[Equipment index](../equipment.md)\n\n**Market price:** 10 coins. Proposal; see [market rules](../market.md).\n",
+      "source": {
+        "path": "design/equipment/ordinary-shield.md",
+        "sha256": "bb1853376e23ce49755c14aa8ec9899512540bc529a4448a42c3e78f9654dc0f"
+      }
+    },
+    "item-padlock": {
+      "markdown": "# Padlock\n\n*The shackle closes with a solid click as you turn the small key.*\n\n## Rules\n\n**ID:** item-padlock\n\n**Market price:** 5 coins. **Bulk:** 1.\n\nA mundane lock and key for a suitable closure. The DA sets any forced-entry or lock task from the situation; the price grants no universal difficulty.\n\nBuying equipment grants no DP advancement, training or ability. Use normal item-handling actions unless an applicable card says otherwise.\n\n[Market rules](../market.md) · [Equipment index](../equipment.md)\n",
+      "source": {
+        "path": "design/equipment/padlock.md",
+        "sha256": "2486954008ddd2e6cef47efc32456f759f326c06bec006cc5b6e92b0576cb2b6"
+      }
+    },
+    "item-restraints": {
+      "markdown": "# Restraints\n\n*You check the key against the lock before closing the irons.*\n\n## Rules\n\n**ID:** item-restraints\n\n**Market price:** 8 coins. **Bulk:** 1.\n\nReusable manacles and key. Applying to an unwilling resisting target requires first securing them under the existing restraint rules; purchase grants no grapple or attack.\n\nBuying equipment grants no DP advancement, training or ability. Use normal item-handling actions unless an applicable card says otherwise.\n\n[Market rules](../market.md) · [Equipment index](../equipment.md)\n",
+      "source": {
+        "path": "design/equipment/restraints.md",
+        "sha256": "472eba5c95bca72355a9659320b50bc536cbc8686a1bf169173aea477bcbdd7e"
+      }
+    },
+    "item-rope-coil": {
+      "markdown": "# Rope Coil\n\n*You shake out a loop and test the fibers between your hands.*\n\n## Rules\n\n- **ID:** item-rope-coil\n- **Bulk:** 1\n- **Requirements / supply:** Reusable\n- **Acquisition:** Explicit ability grant, coins, or DA treasure; no automatic extra starting kit.\n\nAn ordinary rope; DA judges plausible length/use from the description. Does not automatically grant climbing success.\n\nNo DP price. Purchase does not grant training or an ability.\n\n[Equipment index](../equipment.md)\n\n**Market price:** 5 coins. Proposal; see [market rules](../market.md).\n",
+      "source": {
+        "path": "design/equipment/rope-coil.md",
+        "sha256": "36764f0405445fb2479940770dc7cc0e2fe27b00b8703bbd16a56149820bc83a"
+      }
+    },
+    "item-signal-kit": {
+      "markdown": "# Signal Kit\n\n*You lift the whistle and angle the polished mirror toward the sun.*\n\n## Rules\n\n**ID:** item-signal-kit\n\n**Market price:** 4 coins. **Bulk:** 1.\n\nWhistle, small bell and ordinary signaling mirror. Works only where sound or reflected light can reach; no magical communication, special detection or bonus.\n\nBuying equipment grants no DP advancement, training or ability. Use normal item-handling actions unless an applicable card says otherwise.\n\n[Market rules](../market.md) · [Equipment index](../equipment.md)\n",
+      "source": {
+        "path": "design/equipment/signal-kit.md",
+        "sha256": "c48685f7a976efb358a4990488cbc565a2714885806ce13cdc959783ecbef8e0"
+      }
+    },
+    "item-sleeping-roll": {
+      "markdown": "# Sleeping Roll\n\n*You unroll the blanket and tuck its worn edge beneath your head.*\n\n## Rules\n\n**ID:** item-sleeping-roll\n\n**Market price:** 4 coins. **Bulk:** 1.\n\nA bedroll, blanket and ground cloth for one sleeper. Ordinary comfort and protection from damp ground, not automatic protection from dangerous cold or a safe-place ruling.\n\nBuying equipment grants no DP advancement, training or ability. Use normal item-handling actions unless an applicable card says otherwise.\n\n[Market rules](../market.md) · [Equipment index](../equipment.md)\n",
+      "source": {
+        "path": "design/equipment/sleeping-roll.md",
+        "sha256": "3e89c7c5aa5c2f64d28108e47c10b3544d00fa2e4dcfdc4406279b2af65e44ce"
+      }
+    },
+    "item-small-necessities": {
+      "markdown": "# Small Necessities\n\n*You unfold a cloth of useful odds and ends: thread, chalk, soap and a flint worn smooth by use.*\n\n## Rules\n\n**ID:** item-small-necessities\n\n**Market price:** 2 coins. **Bulk:** 1.\n\nBundle of ordinary firestarting, cleaning, sewing and marking supplies. Inventory d6; check after a scene of substantial consumption, not after every strike of the flint. Supplies no lock tools, medicine, ammo, food or crafting recipe ingredients.\n\nBuying equipment grants no DP advancement, training or ability. Use normal item-handling actions unless an applicable card says otherwise.\n\n[Market rules](../market.md) · [Equipment index](../equipment.md)\n",
+      "source": {
+        "path": "design/equipment/small-necessities.md",
+        "sha256": "3e246478e7a9231240b81111def96bd089dbede5f08ad1687761da026a9437c7"
+      }
+    },
+    "item-small-tent": {
+      "markdown": "# Small Tent\n\n*You pull the canvas taut and listen as the rain begins to patter above it.*\n\n## Rules\n\n**ID:** item-small-tent\n\n**Market price:** 12 coins. **Bulk:** 1.\n\nShelters two resting people from ordinary weather. Needs a suitable site and ten minutes to pitch or pack. No guarantee of safe rest or weather immunity.\n\nBuying equipment grants no DP advancement, training or ability. Use normal item-handling actions unless an applicable card says otherwise.\n\n[Market rules](../market.md) · [Equipment index](../equipment.md)\n",
+      "source": {
+        "path": "design/equipment/small-tent.md",
+        "sha256": "32d20a1accd35e707e8bbd8ebb50f7220d6d697d80ea38123682677288ea25bb"
+      }
+    },
+    "item-smoke-supply": {
+      "markdown": "# Smoke Supply\n\n*You turn the stoppered flask carefully, watching the murky liquid cling to its sides.*\n\n## Rules\n\n**ID:** item-smoke-supply\n\n**Market price:** 15 coins. **Bulk:** 1.\n\nA d4 Smoke Flask supply. Requires the Smoke in a Bottle ability to use its printed effect; buying this supply grants no crafting recipe or ability. Check its die after use.\n\nBuying equipment grants no DP advancement, training or ability. Use normal item-handling actions unless an applicable card says otherwise.\n\n[Market rules](../market.md) · [Equipment index](../equipment.md)\n",
+      "source": {
+        "path": "design/equipment/smoke-supply.md",
+        "sha256": "cd0822857564820ad59bdd3600c312833578b6467351e7b62542d89d154ab21d"
+      }
+    },
+    "item-superior-healing-bottle": {
+      "markdown": "# Superior Healing Bottle\n\n*You break the seal and drink, feeling the powerful draught answer the deepest ache.*\n\n## Rules\n\n- **ID:** item-superior-healing-bottle\n- **Bulk:** 1\n- **Requirements / supply:** Inventory d4\n- **Acquisition:** Explicit ability grant, coins, or DA treasure; no automatic extra starting kit.\n\nUse [Use a Healing Potion](../cards/use-a-healing-potion.md): restore 16 HP before Life resistance, capped by missing HP. The giver needs a free hand and spends a Maneuver; another recipient spends a Reaction unless at 0 HP. Check the bottle’s inventory die after use; the final use still works.\n\nNo DP price. Purchase does not grant training or an ability.\n\n[Equipment index](../equipment.md)\n\n**Market price:** 120 coins. Proposal; see [market rules](../market.md).\n",
+      "source": {
+        "path": "design/equipment/superior-healing-bottle.md",
+        "sha256": "dbdf3a0e75e909f6dceee8111d94b0000e7b822179735e9e17ea8e3b0d6f9434"
+      }
+    },
+    "item-trade-sack": {
+      "markdown": "# Trade Sack\n\n*You knot the mouth of the sack and test whether the load will hold.*\n\n## Rules\n\n**ID:** item-trade-sack\n\n**Market price:** 1 coins. **Bulk:** 1.\n\nReusable sack, Bulk 1 in addition to contents. It provides no extra carrying capacity. Large collections of small valuables must be bundled and counted; no infinite coin pouch.\n\nBuying equipment grants no DP advancement, training or ability. Use normal item-handling actions unless an applicable card says otherwise.\n\n[Market rules](../market.md) · [Equipment index](../equipment.md)\n",
+      "source": {
+        "path": "design/equipment/trade-sack.md",
+        "sha256": "dde790f4d6d6a1bac96852aee86642a0218bdf3531113372a702e6ca81ee2409"
+      }
+    },
+    "item-travel-clothes": {
+      "markdown": "# Travel Clothes\n\n*You pull on well-mended clothes whose seams have learned your stride.*\n\n## Rules\n\n**ID:** item-travel-clothes\n\n**Market price:** 4 coins. **Bulk:** 1.\n\nA durable outfit with boots and cloak. One ordinary worn outfit is descriptive and contributes 0 Bulk; a carried spare is Bulk 1. Creation baseline: everyone already owns one plain outfit, with no coin credit for declining it. This is the only new free starting equipment here.\n\nBuying equipment grants no DP advancement, training or ability. Use normal item-handling actions unless an applicable card says otherwise.\n\n[Market rules](../market.md) · [Equipment index](../equipment.md)\n",
+      "source": {
+        "path": "design/equipment/travel-clothes.md",
+        "sha256": "21a9543719a33322d80883f656a08ac7809b772133da34aba45b5160acd2b9c2"
+      }
+    },
+    "item-travel-pack": {
+      "markdown": "# Travel Pack\n\n*You tighten the straps and tuck the loose ends away before shouldering the load.*\n\n## Rules\n\n**ID:** item-travel-pack\n\n**Market price:** 3 coins. **Bulk:** 1.\n\nA reusable backpack or shoulder pack. Its own Bulk is 1, even when empty. Contents retain their full Bulk; it grants no capacity increase or concealed inventory slots.\n\nBuying equipment grants no DP advancement, training or ability. Use normal item-handling actions unless an applicable card says otherwise.\n\n[Market rules](../market.md) · [Equipment index](../equipment.md)\n",
+      "source": {
+        "path": "design/equipment/travel-pack.md",
+        "sha256": "7ba4d0fa1492af9f7ae6b20fea45323de34e592e04ddda2d9b8fdf74f3a3c918"
+      }
+    },
+    "item-water-flask": {
+      "markdown": "# Water Flask\n\n*You test the stopper, listening to the water shift inside.*\n\n## Rules\n\n**ID:** item-water-flask\n\n**Market price:** 3 coins. **Bulk:** 1.\n\nIncludes a filled reusable container and one person-day of drinking water. Count days when water matters; refill freely from an accessible safe source. No inventory die for water . Empty container remains Bulk 1; no exhaustion or dehydration subsystem is added.\n\nBuying equipment grants no DP advancement, training or ability. Use normal item-handling actions unless an applicable card says otherwise.\n\n[Market rules](../market.md) · [Equipment index](../equipment.md)\n",
+      "source": {
+        "path": "design/equipment/water-flask.md",
+        "sha256": "8cf8c47a61c315ba014e7f081afbd4853848c60602c57142cacb287581f4def4"
+      }
+    },
+    "item-weather-clothes": {
+      "markdown": "# Weather Clothes\n\n*You fasten the heavy outer layer against the weather.*\n\n## Rules\n\n**ID:** item-weather-clothes\n\n**Market price:** 10 coins. **Bulk:** 1.\n\nA cold- or wet-weather outfit, specified when bought. Bulk 1 even when worn over ordinary clothes. Enables plausible travel in its intended weather; grants no resistance, immunity or automatic survival.\n\nBuying equipment grants no DP advancement, training or ability. Use normal item-handling actions unless an applicable card says otherwise.\n\n[Market rules](../market.md) · [Equipment index](../equipment.md)\n",
+      "source": {
+        "path": "design/equipment/weather-clothes.md",
+        "sha256": "b3fea16c52c181be45419e9249d3dc845b46e74dba6f8782c94d9a0fe80f8cec"
+      }
+    },
+    "item-winter-lining": {
+      "markdown": "# Winter Lining\n\n*You draw the lining close and let its quiet warmth meet the bitter air.*\n\n## Rules\n\n**ID:** item-winter-lining. **Status:** Proposal — special equipment. **Form:** Armor lining. **Bulk:** 1.\n\n**Requirements:** No discipline requirement; understanding not required. **Action:** Passive unless the effect says otherwise.\n\nGrants cold resistance 1 while worn; highest matching resistance applies, cap 3. Does not grant armor training.\n\nApply this item’s printed benefit only; it grants no ability or action beyond what it states. No DP purchase; found or bought when the DA makes it available. No special recipe is supplied by owning it.\n\n[Equipment index](../equipment.md)\n\n**Market price:** 180 coins (special-order benchmark; availability is not guaranteed). Proposal; see [market rules](../market.md).\n",
+      "source": {
+        "path": "design/equipment/winter-lining.md",
+        "sha256": "4834218c2ea801166992f2a64aaac68f94ec0645364c592283f80d7f909f5bde"
+      }
+    },
+    "item-writing-kit": {
+      "markdown": "# Writing Kit\n\n*You open the wrap and smooth a clean page beside the ink.*\n\n## Rules\n\n**ID:** item-writing-kit\n\n**Market price:** 6 coins. **Bulk:** 1.\n\nInk, paper and pen as a d6 supply. Check once per substantial writing or mapping session, not each sentence. No automatic map accuracy or scholarly knowledge.\n\nBuying equipment grants no DP advancement, training or ability. Use normal item-handling actions unless an applicable card says otherwise.\n\n[Market rules](../market.md) · [Equipment index](../equipment.md)\n",
+      "source": {
+        "path": "design/equipment/writing-kit.md",
+        "sha256": "21dc1c071c004e87f0f2044faaa27f65b80af14822d09347b0109ea37949d9a6"
+      }
+    },
+    "recipe-bound-torches": {
+      "markdown": "# Bound Torches\n\n*You bind the dry fibers tightly, leaving a head that will take the flame evenly.*\n\n## Rules\n\n- **ID:** recipe-bound-torches\n- **Permission:** Trail Workshop, Make Something Useful or Enchanting Workshop; the recipe alone grants no crafting permission\n- **Tools:** Craft tools\n- **Materials per attempt:** Suitable wood, fiber and fat, obtained in the scene or one compatible carried bundle use\n- **Time per attempt:** One hour\n- **Result:** Inventory supply, maximum d6\n\nRoll the crafting card’s attribute. Weak raises one matching supply by 1 inventory step; Standard by 2; Strong by 3, up to the printed cap. The first step from out creates d4; later steps are d6, d8, d10, d12, d20. Check carried material supply after the attempt. No group crafting.\n\n[Product](../equipment/lighting-bundle.md). This recipe can be one of the two ordinary choices granted by Trail Workshop or Ordinary Recipe Study. It is reusable and does not grant free ingredients.\n",
+      "source": {
+        "path": "design/recipes/bound-torches.md",
+        "sha256": "53a0214b47523fc2f4a497b8f474c58a92bbe20a70d37eea6bb41d658181756a"
+      }
+    },
+    "recipe-camp-shelter": {
+      "markdown": "# Camp Shelter\n\n*You test the woven roof with a handful of water and make room beneath it for tired friends.*\n\n## Rules\n\n**ID:** recipe-camp-shelter\n\n**Permission:** [A Roof before Nightfall](../cards/a-roof-before-nightfall.md).\n**Tools:** Craft tools. **Time per attempt:** One hour.\n**Materials per attempt:** Suitable supports and weatherproof covering, gathered locally or one compatible carried material-bundle use.\n**Completion target:** 4 progress.\n\nRoll Knowledge using the crafting card's outcomes. Add 1/2/3 progress. Inspect materials before consuming them; reject unsuitable materials without consuming the rejected portion. Check any used carried material supply after the attempt. No group crafting.\n\nOn completion, the shelter accommodates the crafter and up to six companions against ordinary rain and wind. It provides no fortification or protection against extreme weather. If the completing result is Strong, it can be packed in ten minutes into one Bulk 1 bundle and erected again in one hour without a new crafting roll or new materials, while intact. Otherwise it must be rebuilt when dismantled. The DA states visible material and site limitations before the attempt.\n\nThe shelter lasts until dismantled or damaged. The recipe is granted by its crafting card and may also be learned through Ordinary Recipe Study if already compatible; recipe knowledge grants no tools, ingredients or crafting permission.\n\n[Recipe index](../recipes.md)\n",
+      "source": {
+        "path": "design/recipes/camp-shelter.md",
+        "sha256": "04dae7a08f2e8873854ca6e960398e81a98278a10e458e0c5ea8646dd0efc6f2"
+      }
+    },
+    "recipe-clearing-tonic": {
+      "markdown": "# Clearing Tonic\n\n*You crush the sharp-smelling leaves and strain the mixture until it runs clear.*\n\n## Rules\n\n**Recipe permission:** [The Cleverest Mixture](../cards/the-cleverest-mixture.md).\n**Tools:** Mixing kit. **Time:** One hour per attempt.\n**Materials:** Bitter starleaf, clean water and a filtering cloth; one compatible material-bundle use per attempt if carried.\n\nRoll the crafting card’s attribute. Weak/Standard/Strong raises one bundle by 1/2/3 inventory steps, from out to d4 first, maximum d4. Check material supply after the attempt. No group crafting. Ingredients must actually be acquired.\n\nTonic supply for The Cleverest Mixture; restores no HP.\n\nEach finished bundle/bottle is Bulk 1. Recipe knowledge creates no free stock. This is a ordinary recipe; the plants and salts are fictional ingredients, not real preparation instructions.\n\n**ID:** recipe-clearing-tonic\n",
+      "source": {
+        "path": "design/recipes/clearing-tonic.md",
+        "sha256": "cb28cc3bec879260657add0a650445b4edf3f2433a1d3fa15a8c0542d6d04fd2"
+      }
+    },
+    "recipe-fletched-ammunition": {
+      "markdown": "# Fletched Ammunition\n\n*You smooth each feather into place and sight down the finished shaft.*\n\n## Rules\n\n- **ID:** recipe-fletched-ammunition\n- **Permission:** Trail Workshop, Make Something Useful or Enchanting Workshop; the recipe alone grants no crafting permission\n- **Tools:** Craft tools\n- **Materials per attempt:** Suitable wood, feathers and binding, obtained in the scene or one compatible carried bundle use\n- **Time per attempt:** One hour\n- **Result:** Inventory supply, maximum d8\n\nRoll the crafting card’s attribute. Weak raises one matching supply by 1 inventory step; Standard by 2; Strong by 3, up to the printed cap. The first step from out creates d4; later steps are d6, d8, d10, d12, d20. Check carried material supply after the attempt. No group crafting.\n\n[Product](../equipment/ammunition-bundle.md). This recipe can be one of the two ordinary choices granted by Trail Workshop or Ordinary Recipe Study. It is reusable and does not grant free ingredients.\n",
+      "source": {
+        "path": "design/recipes/fletched-ammunition.md",
+        "sha256": "3916bf843328bb6793df1c7dde51bb7e0006e84abadcecdce4fc609226e8bcee"
+      }
+    },
+    "recipe-lesser-healing-bottle": {
+      "markdown": "# Lesser Healing Bottle\n\n*You keep the mixture at a patient simmer, watching for the color your teacher showed you.*\n\n## Rules\n\nThe useful bottle is the one you prepared before you needed it.\n\n**Recipe permission:** [Bottled Morning](../cards/bottled-morning.md).\n**Tools:** Mixing kit. **Time:** One hour per attempt.\n**Materials:** Fresh moonmint, clean water and one measure of prepared life salts; one compatible material-bundle use per attempt if carried.\n\nRoll the crafting card’s attribute. Weak/Standard/Strong raises one bundle by 1/2/3 inventory steps, from out to d4 first, maximum d4. Check material supply after the attempt. No group crafting. Ingredients must actually be acquired.\n\nA Lesser Healing Bottle restoring 6 HP before Life resistance. Use the universal potion action.\n\nEach finished bundle/bottle is Bulk 1. Recipe knowledge creates no free stock. This is a ordinary recipe; the plants and salts are fictional ingredients, not real preparation instructions.\n\n**ID:** recipe-lesser-healing-bottle\n",
+      "source": {
+        "path": "design/recipes/lesser-healing-bottle.md",
+        "sha256": "c9a2375a070c708517bf027ab6430531753771deac5f72c51cc6286a928d4c11"
+      }
+    },
+    "recipe-simple-replacement-leg": {
+      "markdown": "# Simple Replacement Leg\n\n*You shape and fit the pieces around the person who will have to trust their weight to them.*\n\n## Rules\n\n- **ID:** recipe-simple-replacement-leg\n- **Permission:** Trail Workshop, Make Something Useful or Enchanting Workshop; the recipe alone grants no crafting permission\n- **Tools:** Craft tools\n- **Materials per attempt:** Suitable wood, leather straps and padding, obtained in the scene or one compatible carried bundle use\n- **Time per attempt:** One hour\n- **Result:** Permanent prosthesis, target 8\n\nRoll the crafting card’s attribute. Weak adds 1 progress; Standard 2; Strong 3. Accumulate progress until the printed target is met, then receive one finished product. Check carried material supply after each attempt. No group crafting.\n\nRequires Fit a Replacement before relieving any wound effect; the wound must permit replacement. This recipe can be one of the two ordinary choices granted by Trail Workshop or Ordinary Recipe Study. It is reusable and does not grant free ingredients.\n",
+      "source": {
+        "path": "design/recipes/simple-replacement-leg.md",
+        "sha256": "9a3f71de4645e06d785e16472eefea707c3a2f5fdf7dd33d4497de11a78a2d82"
+      }
+    },
+    "recipe-smoke-flask": {
+      "markdown": "# Smoke Flask\n\n*You seal the cloudy mixture quickly, before the first acrid curl reaches your eyes.*\n\n## Rules\n\nThe useful bottle is the one you prepared before you needed it.\n\n**Recipe permission:** [Smoke in a Bottle](../cards/smoke-in-a-bottle.md).\n**Tools:** Mixing kit. **Time:** One hour per attempt.\n**Materials:** Dry puffleaf, prepared mineral dust and a stoppered bottle; one compatible material-bundle use per attempt if carried.\n\nRoll the crafting card’s attribute. Weak/Standard/Strong raises one bundle by 1/2/3 inventory steps, from out to d4 first, maximum d6. Check material supply after the attempt. No group crafting. Ingredients must actually be acquired.\n\nSmoke supply for Smoke in a Bottle; no damage or poison.\n\nEach finished bundle/bottle is Bulk 1. Recipe knowledge creates no free stock. This is a ordinary recipe; the plants and salts are fictional ingredients, not real preparation instructions.\n\n**ID:** recipe-smoke-flask\n",
+      "source": {
+        "path": "design/recipes/smoke-flask.md",
+        "sha256": "176921cb1fe64bcfd34e7a228b27e1bba867897b618e8c83720a5aac99ba6099"
+      }
+    },
+    "recipe-travel-food": {
+      "markdown": "# Travel Food\n\n*You salt, wrap and dry the ingredients, packing a little hospitality for the road.*\n\n## Rules\n\n- **ID:** recipe-travel-food\n- **Permission:** Trail Workshop, Make Something Useful, Enchanting Workshop, or a mixing card that explicitly grants this recipe; the recipe alone grants no crafting permission\n- **Tools:** Craft tools or the granting card’s mixing kit\n- **Materials per attempt:** Safe edible forage, obtained in the scene or one compatible carried bundle use\n- **Time per attempt:** One hour\n- **Result:** Inventory supply, maximum d8\n\nRoll the crafting card’s attribute. Weak raises one matching supply by 1 inventory step; Standard by 2; Strong by 3, up to the printed cap. The first step from out creates d4; later steps are d6, d8, d10, d12, d20. Check carried material supply after the attempt. No group crafting.\n\n[Product](../equipment/food-bundle.md). This recipe can be one of the two ordinary choices granted by Trail Workshop or Ordinary Recipe Study. It is reusable and does not grant free ingredients.\n",
+      "source": {
+        "path": "design/recipes/travel-food.md",
+        "sha256": "77183cad6e6e3d286b660064550d792a69574ac48bcf34576c2d2bcdaf32ff92"
+      }
+    },
+    "recipe-twisted-cord": {
+      "markdown": "# Twisted Cord\n\n*You roll the fibers together until many small strands become something worth trusting.*\n\n## Rules\n\n- **ID:** recipe-twisted-cord\n- **Permission:** Trail Workshop, Make Something Useful or Enchanting Workshop; the recipe alone grants no crafting permission\n- **Tools:** Craft tools\n- **Materials per attempt:** Suitable long fibers, obtained in the scene or one compatible carried bundle use\n- **Time per attempt:** One hour\n- **Result:** Permanent item, target 4\n\nRoll the crafting card’s attribute. Weak adds 1 progress; Standard 2; Strong 3. Accumulate progress until the printed target is met, then receive one finished product. Check carried material supply after each attempt. No group crafting.\n\n[Product](../equipment/rope-coil.md). This recipe can be one of the two ordinary choices granted by Trail Workshop or Ordinary Recipe Study. It is reusable and does not grant free ingredients.\n",
+      "source": {
+        "path": "design/recipes/twisted-cord.md",
+        "sha256": "b8669f25fce8c2aa801b9a161a8a29f00c6abb820d3c0c6fd3c4db5d7f332bcd"
+      }
+    },
+    "recipe-wooden-brace": {
+      "markdown": "# Wooden Brace\n\n*You trim the supports until they meet snugly, then bind the join against its load.*\n\n## Rules\n\n- **ID:** recipe-wooden-brace\n- **Permission:** Trail Workshop, Make Something Useful or Enchanting Workshop; the recipe alone grants no crafting permission\n- **Tools:** Craft tools\n- **Materials per attempt:** Suitable wood and bindings, obtained in the scene or one compatible carried bundle use\n- **Time per attempt:** One hour\n- **Result:** Permanent ordinary repair aid, target 4\n\nRoll the crafting card’s attribute. Weak adds 1 progress; Standard 2; Strong 3. Accumulate progress until the printed target is met, then receive one finished product. Check carried material supply after each attempt. No group crafting.\n\nThe product is one ordinary support brace, Bulk 1, not a second tools grant. This recipe can be one of the two ordinary choices granted by Trail Workshop or Ordinary Recipe Study. It is reusable and does not grant free ingredients.\n",
+      "source": {
+        "path": "design/recipes/wooden-brace.md",
+        "sha256": "b00828366ce91de171c355628183567352e2e6e6f267c3667cddc27280f7e4fa"
+      }
+    }
+  }
+}

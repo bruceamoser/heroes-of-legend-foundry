@@ -24,6 +24,15 @@ This register separates confirmed direction from proposed engineering choices. I
 
 ## Proposed engineering defaults
 
+Latest interface direction (October 17, 2026): bundle native rules journals and
+open gameplay references locally; iterate character creation/sheet design in a
+GitHub Pages builder with portable JSON and shared calculations. Keep a common
+hero header above the content, a top-left Edit toggle, and minimal icon tabs
+hanging off the left edge with hover/focus labels. Match the book's visual style
+without requiring pixel fidelity. Do not add preview disclaimers to the product
+interface. Bruce requested direct implementation without delegation for this
+design work. Tracked in #155 and #156.
+
 | ID | Proposal | Reason / decision point |
 |---|---|---|
 | D04 | Package ID `heroes-of-legend`; V14 only; first runtime target 14.369. | Stable compact system identity; no V13 compatibility baggage. Confirm availability before package listing. |

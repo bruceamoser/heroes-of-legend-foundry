@@ -716,9 +716,19 @@ interleaved encounter writes involving either participant.
 Stateful service regressions exercise ordinary self-use, fresh repeats, native
 target consent, unknown/distant geometry, duplicate delivery and saved-face
 recovery after a partial write. The extended `test:potions` fixture covers the
-native free-play dialog and consent; **#135 native acceptance is pending** until
-the shared disposable world is assigned. The #116 native results above remain
-historical evidence for the encounter route.
+native free-play dialog and consent. On October 17, 2026 the complete serial
+fixture passed against isolated Foundry 14.369 with Node 24 and software WebGL,
+including cleanup and zero uncaught page errors. It verified native self-use
+without Combat, two completed no-write replay attempts, a fresh distant-token
+offer, actual recipient-owner one-click consent, truthful `adjacent: false`
+and no invented encounter budgets. `/tmp/hol135-ui-offer.png` was visually
+reviewed. The inherited encounter/fault/reservation scenarios also passed.
+
+Native review found and fixed self-preview passing one token twice into the
+two-token adjacency helper; a stateful service regression now covers this.
+The fixture waits for local Actor receipts synchronously and for the first
+dialog to detach before opening the next, avoiding UI timing races. The #116
+native results above remain historical evidence for the encounter route.
 
 ### Two-recipe Ordinary Recipe Study (#93)
 

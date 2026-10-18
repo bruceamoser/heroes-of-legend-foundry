@@ -249,6 +249,8 @@ function nativeCombatantAdjacency(giverCombatant, recipientCombatant) {
       distance: null,
       reason: "The potion participants have no exact tokens.",
     };
+  if (giverToken.uuid === recipientToken.uuid)
+    return { known: true, adjacent: true, distance: 0 };
   return nativeTokenAdjacency(giverToken, recipientToken);
 }
 

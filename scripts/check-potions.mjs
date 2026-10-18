@@ -1630,8 +1630,8 @@ try {
   await freePreparation.waitFor();
   assert.equal(await freePreparation.locator("select[name=bottleUuid]").count(), 0);
   await freePreparation.locator("[data-action=submit]").click();
-  await gm.page.waitForFunction(async ({ giverActorUuid }) => {
-    const actor = await fromUuid(giverActorUuid);
+  await gm.page.waitForFunction(({ giverActorUuid }) => {
+    const actor = fromUuidSync(giverActorUuid);
     return Object.values(actor.getFlag("heroes-of-legend", "potionOperations") ?? {}).some((operation) => operation.status === "complete");
   }, first);
   const freeSelf = await gm.page.evaluate(async ({ giverActorUuid }) => {
@@ -1644,6 +1644,8 @@ try {
   assert.equal(freeSelf.unchanged, true);
   assert.equal(freeSelf.operation.outsideCombat, true);
   assert.equal(freeSelf.operation.giver.turnId, null);
+  console.info("PASS native Actor-host self-use and duplicate replay without Combat");
+  await freePreparation.waitFor({ state: "detached" });
   // A fresh offer still uses genuine recipient-owner one-click consent.
   await gm.page.evaluate(async ({ giverActorUuid, bottleId }) => {
     const actor = await fromUuid(giverActorUuid);
@@ -1663,8 +1665,8 @@ try {
   await recipient.page.waitForFunction((count) => document.querySelectorAll("#chat .hol-potion-consent").length > count, consentCount);
   await recipient.page.locator("#chat .hol-potion-consent").last().waitFor();
   await recipient.page.locator("#chat .hol-potion-consent").last().click();
-  await gm.page.waitForFunction(async ({ giverActorUuid }) => {
-    const actor = await fromUuid(giverActorUuid);
+  await gm.page.waitForFunction(({ giverActorUuid }) => {
+    const actor = fromUuidSync(giverActorUuid);
     return Object.values(actor.getFlag("heroes-of-legend", "potionOperations") ?? {}).filter((operation) => operation.status === "complete").length === 2;
   }, first);
   const freeOffer = await gm.page.evaluate(async ({ giverActorUuid, recipientActorUuid }) => {

@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFile } from 'node:fs/promises';
 import { createContext, SourceTextModule, SyntheticModule } from 'node:vm';
+import { startTurn } from '../src/rules/actions.mjs';
 import { assertNoPendingActorPotion } from '../src/services/turn-lock.mjs';
 import { selectPotionRecipient } from '../src/rules/potion-targets.mjs';
 
@@ -72,7 +73,7 @@ async function fixture() {
       item: { itemId: item.id, itemUuid: item.uuid, name: item.name, catalogId: item.system.catalogId,
         inventoryDie: item.system.inventoryDie, quantity: item.system.quantity, source: record.source } }) },
     './turn-budget.mjs': { actionConditions: () => ({}) }, './turn-lock.mjs': { assertNoPendingTurn() {} },
-    './native-adjacency.mjs': { nativeTokenAdjacency: () => ({ known: true, adjacent: false, distance: 9 }) },
+    './native-adjacency.mjs': { nativeTokenAdjacency: (giver, recipient) => { if (giver.uuid === recipient.uuid) throw new Error('Native adjacency needs two different tokens.'); return { known: true, adjacent: false, distance: 9 }; } },
   };
   await module.link(async (specifier) => {
     const exports = overrides[specifier] ?? await import(new URL(specifier, url));
@@ -190,4 +191,17 @@ for (const pendingFlag of ['pendingAbility', 'pendingTurnPhase']) test(`free-pla
   assert.equal(f.writes.length, 0);
   assert.equal(f.recipient.system.health.value, 2);
   assert.equal(f.rolls(), 0);
+});
+
+test('native encounter self preview never sends the same token to two-token adjacency', async () => {
+  const f = await fixture(), token = { uuid: 'Scene.test.Token.giver' },
+    budget = startTurn({ turnId: 'turn', speed: 5 }),
+    combatants = [{ id: 'giver', actor: f.giver, token }];
+  combatants.get = (id) => combatants.find((participant) => participant.id === id);
+  f.game.combats.push({ uuid: 'Combat.self', active: true, combatants,
+    getFlag() { return { current: 'giver', budgets: { giver: budget }, revision: 1 }; } });
+  const preview = await f.service.previewPotionUse({ sourceItemUuid: f.bottle.uuid });
+  assert.equal(preview.canDeclare, true);
+  assert.equal(preview.geometry.adjacent, true);
+  assert.equal(preview.geometry.distance, 0);
 });

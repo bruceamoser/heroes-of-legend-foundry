@@ -26,23 +26,39 @@ for (const path of ["heroes-of-legend.mjs", "services/abilities.mjs", "services/
   assert.deepEqual(await readFile(resolve(installed, path)), execFileSync("unzip", ["-p", archive, path]), `Installed ${path} differs from accepted artifact.`);
 await mkdir("test-results", { recursive: true });
 await rm("test-results/installed-core-evidence.json", { force: true });
-const browser = await chromium.launch({ args: ["--use-angle=swiftshader", "--enable-unsafe-swiftshader"] });
+const browser = await chromium.launch({ args: ["--use-gl=angle", "--use-angle=swiftshader", "--enable-unsafe-swiftshader"] });
 const errors = [], steps = [], clients = [];
 let gm, owner, other, fixture, cleanup, evidence;
 async function join(name) {
   const context = await browser.newContext({ viewport: { width: 1500, height: 1050 } });
   await context.addInitScript(() => {
+    if (!["http:", "https:"].includes(location.protocol)) return;
     localStorage.setItem("core.noCanvas", "false");
     localStorage.setItem("core.maxFPS", "10");
   });
   const page = await context.newPage();
   context.on("page", child => child.on("pageerror", error => errors.push(error.message)));
   page.on("pageerror", error => errors.push(error.message));
+  clients.push({ context, page });
+  console.info("Joining client:", name);
   await page.goto(url); await selectTestUser(page, name);
   await page.locator("button[name=join]").click();
-  await page.waitForFunction(() => globalThis.game?.ready && game.canvas.initialized && !game.canvas.loading);
+  try {
+    await page.waitForFunction(() => globalThis.game?.ready && game.canvas.initialized && !game.canvas.loading, null, { timeout: 60_000 });
+  } catch (error) {
+    const state = await page.evaluate(() => ({ url: location.href, ready: globalThis.game?.ready,
+      canvas: { initialized: globalThis.game?.canvas?.initialized, loading: globalThis.game?.canvas?.loading, ready: globalThis.game?.canvas?.ready },
+      text: document.body.innerText.slice(0, 1500) })).catch(failure => ({ diagnosticError: failure.message }));
+    console.error("Client-ready diagnostic:", name, JSON.stringify({ state, errors }));
+    await page.screenshot({ path: `test-results/installed-core-join-${name.replace(/[^a-z0-9]/gi, "-")}.png` }).catch(() => {});
+    throw error;
+  }
   await page.evaluate(() => foundry.nue.Tour.activeTour?.exit());
-  clients.push({ context, page });
+  const playerConfig = page.getByRole("button", { name: "Save Player Configuration", exact: true });
+  if (await playerConfig.count()) await playerConfig.click();
+  const hardwareNotice = page.locator("#notifications .notification").filter({ hasText: "does not have hardware acceleration enabled" });
+  if (await hardwareNotice.count()) await hardwareNotice.click();
+  console.info("Client ready:", name);
   return page;
 }
 function passed(step) { steps.push(step); console.info(`PASS ${step}`); }
@@ -88,6 +104,7 @@ try {
         flags: { [ID]: { development: { creationSummary: { speedBase: 5 } } } },
         system: { health: { value: index ? 14 : 10, baseMax: 20 }, attributes: { brawn: { base: 2 }, fortitude: { base: 1 } } } });
       registry.actors.push(actor.id); actors.push(actor);
+      await game.users.get(users[index].id).update({ character: actor.id });
       await actor.createEmbeddedDocuments("Item", index ? [shield, { name: "Held shield", type: "equipment", system: {
         catalogId: "item-ordinary-shield", quantity: 1, bulk: 1, hands: 1, held: true } }] : [basic, potion, reference, bottle, spareBottle,
         { name: "Held sword", type: "equipment", system: { catalogId: "item-ordinary-melee-weapon", quantity: 1, bulk: 1, hands: 1, held: true } }]);
@@ -128,8 +145,11 @@ try {
   owner = await join(fixture.users[0].name); other = await join(fixture.users[1].name);
   await view(owner); await view(other);
   // #15's ordinary equipment acquisition path: a native source copy, no manual raw Item construction.
-  await owner.evaluate(async id => { await game.actors.get(id).sheet.render({ force: true }); }, fixture.actors[0]);
-  await owner.locator(".hol-character [data-action=addEquipment]").click();
+  fixture.ownerSheetSelector = await owner.evaluate(async id => {
+    const sheet = game.actors.get(id).sheet; await sheet.render({ force: true });
+    return `#${CSS.escape(sheet.element.id)}`;
+  }, fixture.actors[0]);
+  await owner.locator(fixture.ownerSheetSelector).locator("[data-action=addEquipment]").click();
   const equipmentSource = `Compendium.heroes-of-legend.equipment.Item.${stableFoundryId("item-lesser-healing-bottle")}`;
   const equipmentDialog = owner.getByRole("dialog").filter({ has: owner.locator('[name="equipmentSourceUuid"]') });
   await equipmentDialog.locator('[name="equipmentSourceUuid"]').selectOption(equipmentSource);
@@ -233,8 +253,11 @@ try {
   }
   passed("native two-target creature card, any-player defense, Shield Block and fresh repeat");
   // Printed specialty outcomes stay manual; apply a separate explicit physical hit through the normal DA UI.
-  await gm.evaluate(async f => { await game.actors.get(f.actors[1]).sheet.render({ force: true }); }, fixture);
-  await gm.locator(".hol-character [data-action=damage]").click();
+  const defenderSheetSelector = await gm.evaluate(async f => {
+    const sheet = game.actors.get(f.actors[1]).sheet; await sheet.render({ force: true });
+    return `#${CSS.escape(sheet.element.id)}`;
+  }, fixture);
+  await gm.locator(defenderSheetSelector).locator("[data-action=damage]").click();
   const damage = gm.locator(".hol-damage");
   await damage.locator("[data-damage-type=physical] [name=amount]").fill("4");
   assert.equal(await damage.locator("[name=reason]").inputValue(), "");
@@ -298,22 +321,28 @@ try {
   passed("reload and same-operation attack/potion replay preserve dice, HP and receipts");
   await owner.evaluate(async id => { await game.actors.get(id).sheet.render({ force: true }); }, fixture.actors[0]);
   for (const theme of ["light", "dark"]) {
-    await owner.evaluate(async ({ id, theme }) => {
-      const themes = foundry.utils.deepClone(game.settings.get("core", "sheetThemes"));
-      (themes.documents ??= {})[`Actor.${id}`] = theme;
-      await game.settings.set("core", "sheetThemes", themes);
-      await game.actors.get(id).sheet.close(); await game.actors.get(id).sheet.render({ force: true });
-    }, { id: fixture.actors[0], theme });
-    assert.equal(await owner.locator(`.hol-character.theme-${theme}`).count(), 1);
-    await owner.locator(".hol-character").screenshot({ path: `test-results/installed-core-${theme}.png` });
+    await owner.evaluate(async id => {
+      const Config = foundry.applications.apps.DocumentSheetConfig;
+      await new Config({ document: game.actors.get(id) }).render({ force: true });
+    }, fixture.actors[0]);
+    const config = owner.locator(".sheet-config");
+    await config.locator('[name="theme"]').selectOption(theme);
+    await config.locator('button[type="submit"]').click();
+    await config.waitFor({ state: "detached" });
+    fixture.ownerSheetSelector = await owner.evaluate(id => `#${CSS.escape(game.actors.get(id).sheet.element.id)}`, fixture.actors[0]);
+    await owner.locator(fixture.ownerSheetSelector).waitFor();
+    assert((await owner.locator(fixture.ownerSheetSelector).getAttribute("class")).split(/\s+/).includes(`theme-${theme}`));
+    await owner.locator(fixture.ownerSheetSelector).screenshot({ path: `test-results/installed-core-${theme}.png` });
   }
   await owner.setViewportSize({ width: 820, height: 900 });
   await owner.evaluate(id => game.actors.get(id).sheet.setPosition({ width: 600, height: 760 }), fixture.actors[0]);
-  await owner.locator(".hol-character").screenshot({ path: "test-results/installed-core-narrow.png" });
+  const resolutionNotice = owner.locator("#notifications .notification").filter({ hasText: "requires a screen resolution" });
+  if (await resolutionNotice.count()) await resolutionNotice.click();
+  await owner.locator(fixture.ownerSheetSelector).screenshot({ path: "test-results/installed-core-narrow.png" });
   const popupPromise = owner.waitForEvent("popup");
   await owner.evaluate(async id => { await game.actors.get(id).sheet.detachWindow(); }, fixture.actors[0]);
   const popup = await popupPromise;
-  await popup.locator(".hol-character").waitFor();
+  await popup.locator(fixture.ownerSheetSelector).waitFor();
   await popup.screenshot({ path: "test-results/installed-core-detached.png" });
   await popup.close();
   passed("light/dark, narrow and native detached sheet screenshots captured for visual review");
@@ -332,6 +361,10 @@ try {
         const restoreErrors = [];
         for (const { page } of clients) {
           if (page.isClosed()) continue;
+          if (!await page.evaluate(() => globalThis.game?.ready && !globalThis.game?.canvas?.loading).catch(() => false)) {
+            await page.context().close();
+            continue;
+          }
           await page.evaluate(async registry => {
             for (const app of foundry.applications.instances.values()) {
               if (registry.actors.includes(app.actor?.id) || registry.actors.includes(app.item?.actor?.id)) await app.close();
@@ -348,6 +381,10 @@ try {
           }
           return Object.fromEntries(["actors", "users", "scenes", "combats", "messages"].map(kind => [kind, registry[kind].length]));
         }, registry);
+        await gm.evaluate(async () => {
+          const authority = await import("/systems/heroes-of-legend/services/authority.mjs");
+          if (authority.isCreationAuthority()) await authority.releaseAuthority();
+        });
         if (restoreErrors.length) throw new Error(`Scene/application restoration failed: ${restoreErrors.join("; ")}`);
         if (evidence) evidence.cleanup = removed;
         console.info("Cleanup verified:", JSON.stringify(removed));

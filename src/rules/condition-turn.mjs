@@ -14,24 +14,12 @@ export function conditionTickRequirements(
           )
           .map((condition) => condition.key),
       ),
-    ],
-    defenseTypes = keys
-      .filter((key) => key !== "bleeding")
-      .map((key) => (key === "burning" ? "fire" : "cold")),
-    automaticTypes = new Set(
-      [
-        ...(passiveDefenses.resistances ?? []),
-        ...(passiveDefenses.weaknesses ?? []),
-      ]
-        .filter((source) => source.value > 0)
-        .map((source) => source.type),
-    );
+    ];
   return {
     keys,
     orderRequired: keys.length > 1,
-    typesNeedingReview: defenseTypes.filter(
-      (type) => !automaticTypes.has(type),
-    ),
+    // No extra mitigation is an ordinary zero, not missing adjudication.
+    typesNeedingReview: [],
   };
 }
 /** Every damaging condition is a separate event; DA records their order when needed. */

@@ -89,9 +89,7 @@ try {
   await panel.locator("[name=kind]").selectOption("correct");
   await panel.locator("[name=status]").selectOption("stable");
   await panel.locator("[name=wounds]").fill("2");
-  await panel
-    .locator("[name=reason]")
-    .fill("Import existing stabilized character");
+  assert.equal(await panel.locator("[name=reason]").inputValue(), "");
   await panel.screenshot({ path: "test-results/recovery-panel.png" });
   await panel.locator("[data-action=apply]").click();
   await gm.page.waitForFunction(
@@ -102,7 +100,7 @@ try {
   );
   const breath = await request({
     kind: "breath",
-    reason: "Safe and quiet after the encounter",
+    reason: "",
   });
   await done(breath);
   let s = await state();
@@ -140,7 +138,7 @@ try {
     kind: "heal",
     amount: 1,
     lifeResistance: 3,
-    reason: "Resolved healing spell",
+    reason: "",
   });
   await done(heal);
   s = await state();
@@ -187,7 +185,7 @@ try {
     status: "active",
     marks: 0,
     wounds: 3,
-    reason: "DA corrects imported HP/status",
+    reason: "",
   });
   await done(corrected);
   player = await join(f.name);

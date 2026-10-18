@@ -21,6 +21,18 @@ The dialog contains:
 - **Cost/result preview:** actions or Reactions to be spent, HP/item costs, selected attribute replacements and modified outcomes. An ability can affect damage or riders without changing the dice; show those changes too.
 - **Controls:** inspect an ability's full rules, select/deselect applicable options, confirm **Roll**, and cancel. Keep the primary button and formula visible while browsing long ability lists.
 
+Ordinary play must not require written explanations (#133). Damage, Speed,
+equipment corrections, healing, supply use/recovery and technical disposition notes are optional.
+Record the chosen action, acting user and operation identity rather than inventing
+an explanation. Permission, numeric/resource and saved-result integrity checks remain.
+Attack geometry and blockability hints never require a DA questionnaire; choosing
+Shield Block records the table's intent while still requiring the held shield and
+Reaction. Do not change immutable attack metadata to pretend all attacks are blockable.
+Normal single-condition Finish applies automatic passives and zero extra manual
+mitigation directly. Optional review can add mitigation; actual multiple-effect
+ordering or overlapping-duration choices remain explicit when needed. This does not
+relax creation or advancement eligibility described below.
+
 Recompute the preview when an ability or modifier changes. Validate applicability from the current trigger, actor, target, range, hands, remaining resources and source rules. Distinguish choosing the primary action from adding permitted modifiers: this is not permission to combine unrelated Main Actions into one roll. Mutually exclusive choices cannot coexist, duplicate benefits cannot stack, and free attacks cannot recurse.
 
 Selection is initially a draft. Browsing/toggling an ability does not spend resources or create effects. At submission, revalidate, commit the selected ability's costs at its actual rules timing, and resolve the same operation once. Pre-roll reactions such as Shield Block are paid before the defense dice are rolled. If a separate immediate ability must resolve before the roll, expose a clearly labeled **Use ability** action with its own confirmation/result; canceling the later roll does not undo an already resolved ability. Post-roll-only abilities become available at their printed window, not prematurely. An out-of-window ability remains viewable with a rules explanation and an explicit DA-adjudicated exception path; encounter eligibility is guidance rather than a blanket hard gate.

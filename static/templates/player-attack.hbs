@@ -17,9 +17,7 @@
   <p>Brawn: <strong>{{attribute}}</strong></p>
   {{#if geometryReason}}<p class="hol-note" data-geometry-status="{{geometryStatus}}">{{geometryReason}}</p>{{/if}}
   {{#if reasons.length}}<section class="hol-errors" aria-live="polite"><ul>{{#each reasons}}<li>{{this}}</li>{{/each}}</ul></section>{{/if}}
-  {{#if gm}}<details class="hol-context-options"><summary>DA ruling (optional)</summary><label>Encounter or geometry ruling
-    <textarea name="rulingReason" rows="2" placeholder="Required only when the visible rules ask for an explicit DA judgment.">{{rulingReason}}</textarea>
-  </label></details>{{/if}}
+  {{#if gm}}<details class="hol-context-options"><summary>Action budget exception (optional)</summary><label><input type="checkbox" name="override" {{#if override}}checked{{/if}}> Override the encounter action budget</label><label>Note (optional)<textarea name="rulingReason" rows="2">{{rulingReason}}</textarea></label></details>{{/if}}
   {{#if fears}}<details class="hol-context-options"><summary>Fear context (optional)</summary>
   {{#each fears}}<label><input type="checkbox" name="fear-{{index}}" {{#if yes}}checked{{/if}}> Perceiving {{source}}</label>{{/each}}</details>{{/if}}
   {{#if wounds}}<details class="hol-context-options"><summary>Wound adjustments (optional)</summary>

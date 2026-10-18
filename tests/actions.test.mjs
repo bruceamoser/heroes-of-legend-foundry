@@ -99,10 +99,11 @@ test("Dazed and Grappled freeze category selection but live grapple and helpless
     to: "maneuver",
     override: {
       userId: "da",
-      reason: "Explicit table ruling for this conversion",
     },
   });
   assert.equal(overridden.operations.convert.audit.userId, "da");
+  assert.equal(overridden.operations.convert.audit.reason, "");
+  assert.equal(overridden.operations.convert.audit.choice, "budget-override");
   assert.equal(overridden.remaining.maneuver, 1);
   assert.equal(turn({ independentReaction: false }).remaining.reaction, 0);
 });

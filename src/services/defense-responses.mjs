@@ -190,11 +190,11 @@ async function apply(id) {
   });
   return { status: "resolved", replay: false };
 }
-export function abandonDefense(attackId, requestId, reason) {
+export function abandonDefense(attackId, requestId, reason = "") {
   return enqueueCharacterOperation(
     async () => {
-      if (!game.user.isGM || typeof reason !== "string" || !reason.trim())
-        throw new Error("A DA disposition needs a reason.");
+      if (!game.user.isGM)
+        throw new Error("Only the actual DA can abandon an unresolved defense.");
       const attack = game.messages.get(attackId),
         responses = structuredClone(defenseResponses(attack)),
         record = responses.find((r) => r.requestId === requestId);

@@ -425,8 +425,8 @@ export function basicMeleeDialogContext(
       });
       geometry = basis.geometry;
       ruling =
-        game.user.isGM && rulingReason
-          ? { userId: game.user.id, reason: rulingReason }
+        game.user.isGM && (selection.override === true || rulingReason)
+          ? { userId: game.user.id, choice: "budget-override", reason: rulingReason }
           : null;
       actionPreview(actor, combat, participantId, "basic-melee-preview", ruling);
       try {
@@ -437,11 +437,10 @@ export function basicMeleeDialogContext(
       if (geometry.status !== "adjacent") {
         if (ruling)
           ruling = {
-            userId: game.user.id,
-            reason: ruling.reason,
+            ...ruling,
             geometryStatus: geometry.status,
           };
-        else reasons.push(geometry.reason);
+        // Geometry is table guidance; identity and cost checks remain authoritative.
       }
     } catch (error) {
       actionReason = error.message;
@@ -530,16 +529,7 @@ export function playerBasicMeleeRequestData(
         "Basic Melee could not be prepared.",
     );
   const draft = structuredClone(selection.draft ?? {}),
-    ruling =
-      context.ruling ??
-      (game.user.isGM &&
-      typeof selection.rulingReason === "string" &&
-      selection.rulingReason.trim()
-        ? {
-            userId: game.user.id,
-            reason: selection.rulingReason.trim(),
-          }
-        : null),
+    ruling = context.ruling,
     request = {
       itemUuid: item.uuid,
       actorUuid: item.actor.uuid,
@@ -655,11 +645,10 @@ async function loadFrozenRequest(
         ? request.ruling.reason.trim()
         : "",
     ruling =
-      message.author.isGM && rulingReason
-        ? { userId: message.author.id, reason: rulingReason }
+      message.author.isGM && (request.ruling?.choice === "budget-override" || rulingReason)
+        ? { userId: message.author.id, choice: "budget-override", reason: rulingReason }
         : null;
-  if (currentGeometry.status !== "adjacent" && !ruling)
-    throw new Error(currentGeometry.reason);
+  // Range/collision uncertainty is visible guidance, not a required DA form.
   const action = actionPreview(
     actor,
     combat,
@@ -815,8 +804,7 @@ async function loadCommittedRequest(operation, message) {
     throw new Error(
       "The weapon, target, roll sources or adjacency changed. The declared Main remains spent.",
     );
-  if (geometry.status !== "adjacent" && !operation.ruling)
-    throw new Error(geometry.reason);
+  // The table may proceed despite the recorded geometry hint.
   return {
     actor,
     actorToken,
@@ -876,7 +864,6 @@ function validateOperationResult(operation) {
       !recovery.userId ||
       !game.users.get(recovery.userId)?.isGM ||
       typeof recovery.reason !== "string" ||
-      !recovery.reason.trim() ||
       !Array.isArray(recovery.retained) ||
       JSON.stringify(recovery.retained) !== JSON.stringify(retained)
     )
@@ -1160,8 +1147,7 @@ function validateSettledReceipt(receipt, operation) {
     (receipt.presentation !== "missing" ||
       typeof acknowledgement?.userId !== "string" ||
       !game.users.get(acknowledgement.userId)?.isGM ||
-      typeof acknowledgement?.reason !== "string" ||
-      !acknowledgement.reason.trim())
+      typeof acknowledgement?.reason !== "string")
   )
     throw new Error(
       "The missing Basic Melee presentation acknowledgement changed.",
@@ -1278,7 +1264,7 @@ async function apply(id) {
   return continueAndEvaluate(id, combat);
 }
 
-export function recoverPlayerBasicMeleeRequest(id, { retained, reason } = {}) {
+export function recoverPlayerBasicMeleeRequest(id, { retained, reason = "" } = {}) {
   return enqueueCharacterOperation(
     async () => {
       if (!game.user.isGM)
@@ -1288,13 +1274,8 @@ export function recoverPlayerBasicMeleeRequest(id, { retained, reason } = {}) {
         combat = found?.combat;
       let operation = found?.operation,
         receipt = found?.receipt;
-      if (
-        !combat ||
-        !operation ||
-        typeof reason !== "string" ||
-        !reason.trim()
-      )
-        throw new Error("A retained-dice recovery needs the original request and a DA reason.");
+      if (!combat || !operation)
+        throw new Error("A retained-dice recovery needs the original request.");
       validateStoredPlayerAttackOperation(operation);
       if (message && message.author?.id !== operation.authorId)
         throw new Error("The Basic Melee presentation author changed.");
@@ -1377,17 +1358,13 @@ export function recoverPlayerBasicMeleeRequest(id, { retained, reason } = {}) {
 
 export function acknowledgeMissingPlayerBasicMeleePresentation(
   id,
-  { reason } = {},
+  { reason = "" } = {},
 ) {
   return enqueueCharacterOperation(
     async () => {
       if (!game.user.isGM)
         throw new Error(
           "Only the actual DA can acknowledge a missing attack presentation.",
-        );
-      if (typeof reason !== "string" || !reason.trim())
-        throw new Error(
-          "A missing Basic Melee presentation acknowledgement needs a DA reason.",
         );
       if (game.messages.has(id))
         throw new Error("The Basic Melee presentation is available.");

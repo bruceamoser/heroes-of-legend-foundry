@@ -92,10 +92,8 @@ function requestRecipients(actor) {
     .map((user) => user.id);
 }
 
-function validatedReason(value, label = "Completed use or reason") {
-  if (typeof value !== "string" || !value.trim())
-    throw new Error(`${label} is required.`);
-  return value.trim();
+function optionalNote(value) {
+  return typeof value === "string" ? value.trim() : "";
 }
 
 export async function requestInventory(
@@ -123,7 +121,7 @@ export async function requestInventory(
         inventoryRequest: {
           actorUuid: actor.uuid,
           basis: mutableJson(basis),
-          reason: validatedReason(reason),
+          reason: optionalNote(reason),
         },
       },
     },
@@ -165,7 +163,7 @@ export async function requestInventoryRecovery(
           pendingRequestId: pending.requestId,
           targetItemId: pending.target.itemId,
           retainedFace,
-          reason: validatedReason(reason, "DA recovery reason"),
+          reason: optionalNote(reason),
         },
       },
     },
@@ -218,7 +216,7 @@ export async function requestInventoryAbandon(actor, reason) {
           actorUuid: actor.uuid,
           pendingRequestId: pending.requestId,
           targetItemId: pending.target.itemId,
-          reason: validatedReason(reason, "DA reason"),
+          reason: optionalNote(reason),
         },
       },
     },
@@ -250,7 +248,6 @@ function recoveryAudit(recovery) {
     throw new Error(
       "The missing supply result has no recorded DA review. Do not roll again.",
     );
-  validatedReason(recovery.reason, "DA recovery reason");
   return recovery;
 }
 
@@ -521,7 +518,7 @@ async function abandonPending(actor, pending, message, request, signature) {
   try {
     assertCurrentBasis(actor, pending.basis);
   } catch {
-    const reason = validatedReason(request.reason, "DA reason"),
+    const reason = optionalNote(request.reason),
       originalId = pending.requestId,
       revision = currentInventoryRevision(actor) + 1,
       disposition = mutableJson({
@@ -531,7 +528,7 @@ async function abandonPending(actor, pending, message, request, signature) {
         signature,
         reason,
       }),
-      content = `${foundry.utils.escapeHTML(actor.name)}: the saved ${foundry.utils.escapeHTML(pending.target.name)} supply check was closed without changing supply. The original check and saved result remain for review. DA reason: ${foundry.utils.escapeHTML(reason)}. No quantities were changed by this closure.`,
+      content = `${foundry.utils.escapeHTML(actor.name)}: the saved ${foundry.utils.escapeHTML(pending.target.name)} supply check was closed without changing supply. The original check and saved result remain for review. ${reason ? `Note: ${foundry.utils.escapeHTML(reason)}.` : ""} No quantities were changed by this closure.`,
       stored = mutableJson({
         content,
         target: pending.target,
@@ -669,7 +666,7 @@ async function apply(id, requestedActorUuid) {
       recovery: {
         authorId: message.author.id,
         signature,
-        reason: validatedReason(request.reason, "DA recovery reason"),
+        reason: optionalNote(request.reason),
       },
     };
     await writeAuthorityDocument(actor, {
@@ -703,7 +700,7 @@ async function apply(id, requestedActorUuid) {
       originalRequest: request,
       basis: request.basis,
       target: request.basis.item,
-      reason: validatedReason(request.reason),
+      reason: optionalNote(request.reason),
       phase: "reserved",
     });
     await writeAuthorityDocument(actor, {

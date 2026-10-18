@@ -123,10 +123,10 @@ export async function resumeTurnPhase(combat, message) {
   });
   return { status: "complete", replay: false };
 }
-export function cancelTurnPhase(combatUuid, reason) {
+export function cancelTurnPhase(combatUuid, reason = "") {
   return enqueueCharacterOperation(async () => {
-    if (!game.user.isGM || typeof reason !== "string" || !reason.trim())
-      throw new Error("Turn cancellation needs the actual DA and a reason.");
+    if (!game.user.isGM)
+      throw new Error("Turn cancellation needs the actual DA.");
     const combat = await fromUuid(combatUuid),
       phase = combat?.getFlag(ID, "pendingTurnPhase");
     if (!phase) throw new Error("No pending turn phase.");

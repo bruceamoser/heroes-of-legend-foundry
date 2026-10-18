@@ -312,7 +312,7 @@ test("saved reviewed manual condition policy finishes without reopening the dial
   );
 });
 
-test("initial manual defenses and explicit review always open the dialog", () => {
+test("additional mitigation is optional while explicit review opens the dialog", () => {
   assert.equal(
     conditionFinishAction({
       requirements: {
@@ -321,7 +321,7 @@ test("initial manual defenses and explicit review always open the dialog", () =>
         typesNeedingReview: ["cold"],
       },
     }),
-    "review",
+    "finish",
   );
   assert.equal(
     conditionFinishAction({

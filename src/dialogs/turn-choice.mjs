@@ -19,7 +19,7 @@ export async function chooseCombatParticipant(combat, id) {
       "Ask the DA to set this participant's movement speed before its turn.",
     );
   if ((count > 0 && count < 3) || needsSpeed) {
-    const content = `<div class="hol-body"><p>Choose the categories retained for this turn. Later Dazed/Grappled changes do not change this selection.</p>${count > 0 && count < 3 ? `<p>Retain exactly ${count}.</p>${ACTION_CATEGORIES.map((c) => `<label><input type="checkbox" name="${c}">${c}</label>`).join("")}` : ""}${needsSpeed ? '<label>Speed before Slowed or grapple<input name="speed" type="number" min="0" step="1" required></label><label>DA ruling reason<input name="reason" type="text" required></label>' : ""}</div>`;
+    const content = `<div class="hol-body"><p>Choose the categories retained for this turn. Later Dazed/Grappled changes do not change this selection.</p>${count > 0 && count < 3 ? `<p>Retain exactly ${count}.</p>${ACTION_CATEGORIES.map((c) => `<label><input type="checkbox" name="${c}">${c}</label>`).join("")}` : ""}${needsSpeed ? '<label>Speed before Slowed or grapple<input name="speed" type="number" min="0" step="1" required></label><label>Note (optional)<input name="reason" type="text"></label>' : ""}</div>`;
     const result = await foundry.applications.api.DialogV2.input({
       window: { title: `${actor.name}: begin turn` },
       classes: ["heroes-of-legend", "hol-turn-choice"],

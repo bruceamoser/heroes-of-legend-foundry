@@ -198,3 +198,26 @@ centers and grid spaces, including large footprints and 5-unit scenes; walls,
 non-square grids, unavailable geometry, scene levels and altitude never fall back
 to pixel distance or an invented ruling. Prevalidation rejects an invalid
 embedded Item before the supply Actor write.
+
+## Nonblocking table guidance (#133)
+
+- A player can submit Basic Melee with native targeting when geometry reports
+  nonadjacency or uncertainty; the hint stays visible. Hidden targets, changed
+  Actor/Token identities, permissions, source snapshots and action receipts remain
+  checked. A DA action-budget exception is a structured checkbox with an optional note.
+- Declare NPC Basic Melee without opening optional attack guidance. Persist unknown
+  blockability as `null`, preserve explicit hints, and never rewrite all attacks as
+  blockable. Choosing Shield Block records intent without another judgment form;
+  its held shield, Reaction, source provenance and same-operation receipts still apply.
+- Finish a single damaging condition directly with automatic passives and zero
+  additional manual mitigation. Explicit review accepts mitigation with a blank note.
+  Multiple tick ordering and genuinely ambiguous overlapping durations still need
+  their concrete choices.
+- Submit manual damage, Speed settings, equipment corrections, healing, retained-dice
+  recovery and technical disposition with blank notes. Preserve actual document
+  permissions, required numbers, saved dice and immutable operation identity.
+- Supply-use and supply-recovery notes are optional; the deliberate Check supply,
+  Record observed result or Close check action records intent. Supply dice and
+  quantity/identity/permission checks remain unchanged.
+- Creation and advancement remain eligible-first, with ineligible choices visible,
+  disabled and accompanied by their exact unmet requirements.

@@ -219,8 +219,7 @@ async function apply(id) {
     draft.components = attack.components;
     eventId = attack.eventId;
     attackLink = attack;
-  } else if (typeof draft.reason !== "string" || !draft.reason.trim())
-    throw new Error("Describe the source of manual damage.");
+  }
   const applied = actor.getFlag(ID, "damageEvents")?.[eventId];
   if (applied) {
     await message.update({
@@ -249,7 +248,8 @@ async function apply(id) {
     event: plan.event,
     resistances: plan.resistances,
     weaknesses: plan.weaknesses,
-    reason: draft.reason ?? "Settled defense",
+    kind: attackLink ? "basic-melee-damage" : request.rollMessageId ? "defense-damage" : "manual-damage",
+    reason: typeof draft.reason === "string" ? draft.reason.trim() : "",
     wound: plan.wound,
   };
   const changes = {

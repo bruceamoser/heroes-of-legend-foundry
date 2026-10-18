@@ -79,15 +79,13 @@ async function apply(id) {
   if (request.kind === "recover") {
     if (
       !message.author.isGM ||
-      !pending ||
-      typeof request.draft?.reason !== "string" ||
-      !request.draft.reason.trim()
+      !pending
     )
       throw new Error(
-        "Recover an unresolved death roll with an actual DA reason.",
+        "Recover an unresolved death roll as the actual DA.",
       );
     retained = request.draft.retained;
-    recovery = { reason: request.draft.reason, authorId: message.author.id };
+    recovery = { reason: typeof request.draft.reason === "string" ? request.draft.reason : "", authorId: message.author.id };
     basis = pending.basis;
     choice = pending.choice;
     originalId = pending.requestId;

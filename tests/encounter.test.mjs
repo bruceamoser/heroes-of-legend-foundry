@@ -37,7 +37,7 @@ test("opening 12 threshold, side choice, uneven sides and fixed first side each 
 });
 test("roster changes preserve acted history and require explicit current/next-round decisions", () => {
   let s = finishTurn(chooseParticipant(startEncounter(roster, [4, 4, 4]), "a"));
-  s = changeRoster(s, { id: "a", mode: "withdraw", reason: "Leaving scene" });
+  s = changeRoster(s, { id: "a", mode: "withdraw" });
   s = changeRoster(s, {
     id: "a",
     side: "players",

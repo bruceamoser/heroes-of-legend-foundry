@@ -452,7 +452,7 @@ async function continuationCapable(operation, request, combat, actor) {
   if (operation.handler === "defend-v1")
     return state.current === operation.participantId;
   if (operation.handler === "shield-block-v1") {
-    if (currentAttack?.blockable !== true || !operation.incomingAttack)
+    if (!currentAttack || !operation.incomingAttack)
       return false;
     const shield = actor.items.get(operation.shieldItemId);
     return Boolean(shield && isShieldEquipment(shield) && shield.system.held);

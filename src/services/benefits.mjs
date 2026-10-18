@@ -10,7 +10,7 @@ export function benefitCurrent(effect) {
     budget = state?.budgets?.[benefit.anchor?.participantId];
   return Boolean(budget && budget.turnId === benefit.anchor.turnId);
 }
-export function defenseBenefits(actor, { blockable = false } = {}) {
+export function defenseBenefits(actor, { incomingAttack = false } = {}) {
   const heldShieldUuids = actor.items
       .filter((item) => isShieldEquipment(item) && item.system.held)
       .map((item) => item.uuid),
@@ -24,7 +24,7 @@ export function defenseBenefits(actor, { blockable = false } = {}) {
           shieldItemUuid: benefit?.shieldItemUuid,
         };
       });
-  return defenseBenefitSources(entries, { blockable, heldShieldUuids });
+  return defenseBenefitSources(entries, { incomingAttack, heldShieldUuids });
 }
 /** Mechanical expiry follows the anchor immediately; this reconciles the native visual record. */
 export async function expireStaleBenefits(combat) {

@@ -393,7 +393,7 @@ try {
   assert.match(await panel.textContent(), /Supply d20/);
   assert.match(await panel.textContent(), /changes only supply/);
   assert.match(await panel.textContent(), /quantity/i);
-  await panel.locator("[name=reason]").fill("The DA adjudicated the tonic use");
+  assert.equal(await panel.locator("[name=reason]").inputValue(), "");
   await panel.locator("[data-action=check]").click();
 
   const settled = await owner.page.evaluate(async (actorId) => {
@@ -406,7 +406,7 @@ try {
           ];
         return (
           request?.actorUuid === actor.uuid &&
-          request.reason === "The DA adjudicated the tonic use" &&
+          request.reason === "" &&
           receipt?.kind === "inventory" &&
           receipt.applied === true
         );

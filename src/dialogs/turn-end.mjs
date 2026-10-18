@@ -19,7 +19,7 @@ export function conditionFinishAction({
   if (review) return "review";
   if (policy?.reviewed === true && orderReady && durationsReady)
     return "use-saved-policy";
-  if (!requirements.typesNeedingReview.length && orderReady && durationsReady)
+  if (orderReady && durationsReady)
     return "finish";
   return "review";
 }
@@ -65,7 +65,7 @@ export async function finishCombatParticipant(combat, { review = false } = {}) {
     automaticText = automatic.length
       ? `<ul>${automatic.map((line) => `<li>${line}</li>`).join("")}</ul>`
       : "<p>No reviewed automatic passive defense applies to these ticks.</p>",
-    content = `<p>Review condition damage modifiers. Bleeding bypasses resistance. Automatic catalog passives always apply; the manual values below are additional DA sources and do not replace or cache those passives.</p>${automaticText}${["fire", "cold"].map((type) => `<label>Additional ${type} resistance<input name="${type}Resistance" type="number" min="0" max="3" value="${old?.resistances?.find((source) => source.type === type)?.value ?? 0}"></label><label>Additional ${type} weakness<input name="${type}Weakness" type="number" min="0" max="3" value="${old?.weaknesses?.find((source) => source.type === type)?.value ?? 0}"></label>`).join("")}<label>Tick order<select name="order">${["burning,freezing,bleeding", "burning,bleeding,freezing", "freezing,burning,bleeding", "freezing,bleeding,burning", "bleeding,burning,freezing", "bleeding,freezing,burning"].map((order) => `<option value="${order}" ${old?.order?.join(",") === order ? "selected" : ""}>${order}</option>`).join("")}</select></label>${durationKeys.map((key) => `<label>${key} overlapping durations<select name="${key}"><option value="">DA ruling</option><option value="independent" ${old?.durationPolicies?.[key] === "independent" ? "selected" : ""}>Each source decays</option><option value="combined" ${old?.durationPolicies?.[key] === "combined" ? "selected" : ""}>Combined duration decays once</option></select></label>`).join("")}<label>DA reason<input name="reason" value="${escape(old?.reason ?? "")}" required></label>`;
+    content = `<p>Review condition damage modifiers. Bleeding bypasses resistance. Automatic catalog passives always apply; the manual values below are additional DA sources and do not replace or cache those passives.</p>${automaticText}${["fire", "cold"].map((type) => `<label>Additional ${type} resistance<input name="${type}Resistance" type="number" min="0" max="3" value="${old?.resistances?.find((source) => source.type === type)?.value ?? 0}"></label><label>Additional ${type} weakness<input name="${type}Weakness" type="number" min="0" max="3" value="${old?.weaknesses?.find((source) => source.type === type)?.value ?? 0}"></label>`).join("")}${requirements.orderRequired ? `<label>Tick order<select name="order">${["burning,freezing,bleeding", "burning,bleeding,freezing", "freezing,burning,bleeding", "freezing,bleeding,burning", "bleeding,burning,freezing", "bleeding,freezing,burning"].map((order) => `<option value="${order}" ${old?.order?.join(",") === order ? "selected" : ""}>${order}</option>`).join("")}</select></label>` : ""}${durationKeys.map((key) => `<label>${key} overlapping durations<select name="${key}"><option value="">DA ruling</option><option value="independent" ${old?.durationPolicies?.[key] === "independent" ? "selected" : ""}>Each source decays</option><option value="combined" ${old?.durationPolicies?.[key] === "combined" ? "selected" : ""}>Combined duration decays once</option></select></label>`).join("")}<label>Note (optional)<input name="reason" value="${escape(old?.reason ?? "")}"></label>`;
   const result = await foundry.applications.api.DialogV2.input({
     window: { title: "Finish turn · condition effects" },
     classes: ["heroes-of-legend"],
@@ -75,8 +75,8 @@ export async function finishCombatParticipant(combat, { review = false } = {}) {
   if (!result) return;
   const policy = {
     reviewed: true,
-    reason: result.reason,
-    order: result.order.split(","),
+    reason: result.reason ?? "",
+    order: result.order?.split(",") ?? requirements.keys,
     durationPolicies: { ...old?.durationPolicies },
     resistances: [],
     weaknesses: [],

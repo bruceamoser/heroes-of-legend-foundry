@@ -5,8 +5,6 @@ const blocker = {
   },
   "shield-block": {
     attack: "Shield Block requires an incoming attack.",
-    judgment: "The DA has not judged this attack blockable.",
-    notBlockable: "The DA judged this attack not blockable.",
     shield: "A held shield is required.",
     reaction: "No Reaction remains for Shield Block.",
   },
@@ -35,10 +33,6 @@ export function defenseAbilityAvailability(id, context = {}) {
     const shieldBlock = blocker["shield-block"];
     if (!context.attackMessageId) reasons.push(shieldBlock.attack);
     if (context.judgmentError) reasons.push(context.judgmentError);
-    else if (context.blockable === undefined || context.blockable === null)
-      reasons.push(shieldBlock.judgment);
-    else if (context.blockable !== true)
-      reasons.push(shieldBlock.notBlockable);
     if (!Array.isArray(context.heldShieldUuids) || !context.heldShieldUuids.length)
       reasons.push(shieldBlock.shield);
     if ((context.remaining?.reaction ?? 0) < 1)
@@ -50,6 +44,6 @@ export function defenseAbilityAvailability(id, context = {}) {
 }
 
 export function blockableJudgment(incoming) {
-  if (!incoming || !Object.hasOwn(incoming, "blockable")) return null;
+  if (!incoming || incoming.blockable === null || !Object.hasOwn(incoming, "blockable")) return null;
   return typeof incoming.blockable === "boolean" ? incoming.blockable : undefined;
 }

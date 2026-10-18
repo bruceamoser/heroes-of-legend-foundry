@@ -36,7 +36,7 @@ export function incomingAttackContext(attackMessageId) {
 export function verifiedIncomingAttackContext(attackMessageId) {
   const attack = incomingAttackContext(attackMessageId);
   if (!Object.hasOwn(attack, "blockable")) return attack;
-  if (typeof attack.blockable !== "boolean")
+  if (attack.blockable !== null && typeof attack.blockable !== "boolean")
     throw new Error("The DA's blockable judgment is invalid.");
   const combat =
       typeof attack.combatId === "string" && game.combats.get(attack.combatId),
@@ -182,7 +182,7 @@ export function rollBasis(
     woundModifiers,
     benefits:
       mode === "defense"
-        ? defenseBenefits(actor, { blockable: incoming?.blockable === true })
+        ? defenseBenefits(actor, { incomingAttack: Boolean(incoming) })
         : [],
   };
 }

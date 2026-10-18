@@ -74,12 +74,10 @@ export function movementBreakdown(profile) {
   if (profile.source === "da-speed-override") {
     if (
       !Number.isSafeInteger(profile.speed) ||
-      profile.speed < 0 ||
-      typeof profile.reason !== "string" ||
-      !profile.reason.trim()
+      profile.speed < 0
     )
       throw new Error("Invalid DA Speed override breakdown.");
-    return `Speed ${profile.speed} · DA override: ${profile.reason.trim()}`;
+    return `Speed ${profile.speed} · manual setting${profile.reason?.trim() ? `: ${profile.reason.trim()}` : ""}`;
   }
   for (const key of [
     "speedBase",

@@ -1,7 +1,7 @@
 # Heroes of Legend for Foundry VTT
 
 Bruce Moser's **Heroes of Legend**, for Foundry Virtual Tabletop **V14**.
-Version **0.1.0**, verified against Foundry **14.369**. See the [release checklist](docs/release-0.1.0.md) for publication and installation evidence; an unpublished candidate does not make the public URLs available.
+Version **0.1.0**, verified against Foundry **14.369**. See the [release evidence](docs/release-0.1.0.md) for the published artifact, installation results and known update boundary.
 
 ## Install and update
 
@@ -11,9 +11,13 @@ In Foundry **Setup → Game Systems → Install System**, paste this manifest UR
 https://github.com/bruceamoser/heroes-of-legend-foundry/releases/latest/download/system.json
 ```
 
-Select **Install**, then create a world using **Heroes of Legend**. The manifest becomes available when a full release is published on [GitHub Releases](https://github.com/bruceamoser/heroes-of-legend-foundry/releases). No account on another service or external module is required.
+Select **Install**, then create a world using **Heroes of Legend**. The full release is published on [GitHub Releases](https://github.com/bruceamoser/heroes-of-legend-foundry/releases). No account on another service or external module is required.
 
-Before updating, back up your world and return to Setup. Use the system's **Update** control, then launch the world again. The release ZIP is version-specific:
+Before updating, back up your world and return to Setup. Use the system's **Update** control when Foundry offers a newer version, then launch the world again.
+
+**Local development alpha:** Foundry 14.369 does not flag `0.1.0` as newer than `0.1.0-alpha.1`. Reinstall through **Setup → Game Systems → Install System** using the manifest URL above. This public installation path was verified with edited world-Actor preservation; an Update-button transition from the alpha is not claimed.
+
+The release ZIP is version-specific:
 
 ```text
 https://github.com/bruceamoser/heroes-of-legend-foundry/releases/download/v0.1.0/heroes-of-legend.zip

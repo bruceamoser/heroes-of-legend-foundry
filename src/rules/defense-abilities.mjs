@@ -16,7 +16,8 @@ const blocker = {
  * by any player handling the selected defender's incoming defense.
  */
 export function defenseAbilityAvailability(id, context = {}) {
-  const reasons = [], warnings = [];
+  const reasons = [],
+    warnings = [];
   if (context.pending)
     reasons.push("The defender's earlier action is still pending.");
   if (context.capable === false)
@@ -29,11 +30,14 @@ export function defenseAbilityAvailability(id, context = {}) {
     if (!context.ownTurn) warnings.push(blocker.defend.ownTurn);
     if ((context.remaining?.maneuver ?? 0) < 1)
       warnings.push(blocker.defend.maneuver);
-  } else if (id === "ability-shield-block") {
+  } else if (["ability-shield-block", "ability-high-guard"].includes(id)) {
     const shieldBlock = blocker["shield-block"];
     if (!context.attackMessageId) reasons.push(shieldBlock.attack);
     if (context.judgmentError) reasons.push(context.judgmentError);
-    if (!Array.isArray(context.heldShieldUuids) || !context.heldShieldUuids.length)
+    if (
+      !Array.isArray(context.heldShieldUuids) ||
+      !context.heldShieldUuids.length
+    )
       reasons.push(shieldBlock.shield);
     if ((context.remaining?.reaction ?? 0) < 1)
       warnings.push(shieldBlock.reaction);
@@ -44,6 +48,13 @@ export function defenseAbilityAvailability(id, context = {}) {
 }
 
 export function blockableJudgment(incoming) {
-  if (!incoming || incoming.blockable === null || !Object.hasOwn(incoming, "blockable")) return null;
-  return typeof incoming.blockable === "boolean" ? incoming.blockable : undefined;
+  if (
+    !incoming ||
+    incoming.blockable === null ||
+    !Object.hasOwn(incoming, "blockable")
+  )
+    return null;
+  return typeof incoming.blockable === "boolean"
+    ? incoming.blockable
+    : undefined;
 }

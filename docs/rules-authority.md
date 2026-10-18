@@ -72,3 +72,11 @@ confirmation and the merged book PRs #1272/#1274. It supersedes the v16.1.0 pin
 above for new content and development choices. See [source update and existing
 character handling](research/book-update-one-dp-armor.md). The new lock covers
 927 sources; creature/summon/art mechanics and portrait bytes are unchanged.
+
+## October 18 discipline expansion — v16.3.0
+
+Issue #171 follows approved, merged book PR #1278 at
+**d67e046466bdd5052360b96ed91861d607091446**, superseding the pin above for current
+content. It adds 62 shared abilities and revises 12 origins. The six one-DP cards,
+light-armor correction, Universal actions, signatures, class prices and normal
+resource rules remain intact. See the [intake, behavior and migration audit](research/discipline-expansion-v16.3.0.md).

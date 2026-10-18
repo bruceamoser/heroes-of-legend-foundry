@@ -23,7 +23,7 @@ const acquire = (state, id, selection = {}) =>
 test("every pinned ability has one source-matched acquisition adapter and references resolve", () => {
   const abilities = choices.records.filter((r) => r.kind === "ability");
   assert.equal(catalog.acquisitions.length, abilities.length);
-  assert.equal(new Set(catalog.acquisitions.map((a) => a.id)).size, 357);
+  assert.equal(new Set(catalog.acquisitions.map((a) => a.id)).size, 419);
   for (const a of abilities) {
     const adapter = catalog.acquisitions.find((r) => r.id === a.id);
     assert.equal(adapter.source.sha256, a.source.sha256);

@@ -12,7 +12,7 @@
     "inventoryDie": 6,
     "held": false,
     "worn": false,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Market reference · acquisition and use automation in progress</p><p><strong>Market price:</strong> 12 coins.</p><p><strong>Normal supply die:</strong> d6.</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/64089a1c8961d7faff172f179448a8b6e57827ef/design/equipment/material-bundle.md\" target=\"_blank\" rel=\"noopener\">design/equipment/material-bundle.md</a> at <code>64089a1c8961d7faff172f179448a8b6e57827ef</code>.</p></section>"
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Market reference · acquisition and use automation in progress</p><p><strong>Market price:</strong> 12 coins.</p><p><strong>Normal supply die:</strong> d6.</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/equipment/material-bundle.md\" target=\"_blank\" rel=\"noopener\">design/equipment/material-bundle.md</a> at <code>d67e046466bdd5052360b96ed91861d607091446</code>.</p></section>"
   },
   "effects": [],
   "folder": null,
@@ -26,7 +26,7 @@
         "path": "design/equipment/material-bundle.md",
         "sha256": "b3f6a85c25e80ed5b9e0b53e028211334da7d17afa1d1107cd59436a454ce9d9"
       },
-      "sourceCommit": "64089a1c8961d7faff172f179448a8b6e57827ef",
+      "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Market reference · acquisition and use automation in progress"

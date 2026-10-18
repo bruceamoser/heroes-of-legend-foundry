@@ -48,9 +48,9 @@ function authoredStrings(reference) {
 
 test("all source-locked Items have deterministic namespaced IDs and exact provenance", () => {
   const { abilities, equipment } = artifacts.documents;
-  assert.equal(abilities.length, 357);
+  assert.equal(abilities.length, 419);
   assert.equal(equipment.length, 44);
-  assert.equal(artifacts.files.size, 402);
+  assert.equal(artifacts.files.size, 464);
   assert.equal(artifacts.index.sourceCommit, catalogs.lock.commit);
   assert.deepEqual(artifacts.index.catalogs, {
     choices: 2,
@@ -59,7 +59,7 @@ test("all source-locked Items have deterministic namespaced IDs and exact proven
   assert.deepEqual(
     artifacts.index.packs.map(({ name, count }) => [name, count]),
     [
-      ["abilities", 357],
+      ["abilities", 419],
       ["equipment", 44],
     ],
   );
@@ -99,7 +99,7 @@ test("all source-locked Items have deterministic namespaced IDs and exact proven
       allIds.add(document._id);
     }
   }
-  assert.equal(allIds.size, 401);
+  assert.equal(allIds.size, 463);
   assert.deepEqual(
     abilities
       .filter(
@@ -170,6 +170,7 @@ test("automation labels credit only reviewed handlers; prose never supplies a ha
       ["ability-catch-that", "catch-that-v1"],
       ["ability-defend", "defend-v1"],
       ["ability-disengage", "disengage-v1"],
+      ["ability-high-guard", "high-guard-v1"],
       ["ability-look-over-here", "look-over-here-v1"],
       ["ability-quick-exit", "quick-exit-v1"],
       ["ability-shield-block", "shield-block-v1"],
@@ -338,7 +339,7 @@ test("authored pack JSON is complete, deterministic and contains no compiled dat
       withFileTypes: true,
     }),
     files = entries.filter((entry) => entry.isFile());
-  assert.equal(files.length, 667);
+  assert.equal(files.length, 729);
   assert(files.every((entry) => entry.name.endsWith(".json")));
   for (const forbidden of ["CURRENT", "LOCK", "LOG", "MANIFEST-000001"])
     assert(!files.some((entry) => entry.name === forbidden));

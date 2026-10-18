@@ -82,7 +82,7 @@ export class CampaignLanguageSettings extends HandlebarsApplicationMixin(
       notice: this.notice,
       valid: result.valid,
       sourceUrl:
-        "https://github.com/bruceamoser/heroes-of-legend/blob/64089a1c8961d7faff172f179448a8b6e57827ef/design/rules/languages.md",
+        "https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/rules/languages.md",
     };
   }
   readForm() {

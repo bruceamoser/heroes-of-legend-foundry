@@ -1,5 +1,5 @@
 {
-  "sourceCommit": "64089a1c8961d7faff172f179448a8b6e57827ef",
+  "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
   "records": {
     "ancestry-dwarf": {
       "markdown": "# Dwarf\n\n*Stone, craft, stubborn loyalty and a memory for debts both kind and cruel.*\n\n## Rules\n\nChoose two of the five traits below. These are invitations to a familiar fantasy,\nnot a required personality. Any ancestry may grow up in any culture.\n\n**Starting values:** HP +4; base Speed 5.\n\n- [Stubborn as Bedrock](trait-dwarf-deep-constitution.md) — Your ancestors did not dig a home from the mountain by yielding politely.\n- [The Mountain Remembers](trait-dwarf-stone-reader.md) — You know a mason’s lie by the stone around it.\n- [Rooted in Stone](trait-dwarf-low-center.md) — Let the storm waste its strength on you.\n- [An Honest Maker’s Hand](trait-dwarf-maker-s-eye.md) — Your thumb finds the seam; your ear knows the ring of sound metal.\n- [A Grudge Well Kept](trait-dwarf-carved-history.md) — You remember who struck first. You intend them to remember what followed.\n\n**Starting coin contribution:** +2 coins. See [starting coins](../starting-coins.md).\n",
@@ -289,10 +289,10 @@
       }
     },
     "origin-background-duelist-s-second": {
-      "markdown": "# Duelist’s Second\n\n*You carried the spare blade, watched every mistake, and sometimes prevented the duel entirely.*\n\n*Which duel should never have happened?*\n\n## Rules\n\nChoose one:\n\n- **Arms 1** and [Invitation to the Blade](../cards/invitation-to-the-blade.md).\n- **Influence 1** and [Measured Appeal](../cards/measured-appeal.md).\n\n**Type:** Background\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n",
+      "markdown": "# Duelist’s Second\n\n*You checked straps, carried spare blades and stood ready when a formal duel became a messy fight. You learned both the invitation to a clean exchange and the value of armor when it fails.*\n\n*Which duel should never have happened?*\n\n## Rules\n\nChoose one:\n\n- **Arms 1** and [Invitation to the Blade](../cards/invitation-to-the-blade.md).\n- **Armor 1** and [Wear Light Armor](../cards/wear-light-armor.md).\n\n**Type:** Background\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n",
       "source": {
         "path": "design/origins/background-duelist-s-second.md",
-        "sha256": "ba27319605ef9f7024f9498fb3334e8354a9181767b070d893c531b0e335175d"
+        "sha256": "65e0bf9921e9dcd585f958e4680c4258456ac7eed1eeae4f695a52c4662ce8d7"
       }
     },
     "origin-background-grave-attendant": {
@@ -352,10 +352,10 @@
       }
     },
     "origin-background-oath-witness": {
-      "markdown": "# Oath Witness\n\n*You stood beside people when they promised what they could not yet know they could bear.*\n\n*Which broken promise still follows you?*\n\n## Rules\n\nChoose one:\n\n- **Influence 1** and [Name the Reckoning](../cards/name-the-reckoning.md).\n- **Scholarship 1** and [Read the Remains](../cards/read-the-remains.md).\n\n**Type:** Background\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +10 coins. See [starting coins](../starting-coins.md).\n",
+      "markdown": "# Oath Witness\n\n*You stood beside people as they swore their promises, carrying a bright oath-blade as a reminder that some words demand more than witnesses.*\n\n*Which broken promise still follows you?*\n\n## Rules\n\nChoose one:\n\n- **Influence 1** and [Name the Reckoning](../cards/name-the-reckoning.md).\n- **Radiance 1** and [Oathlight Strike](../cards/oathlight-strike.md).\n\n**Type:** Background\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +10 coins. See [starting coins](../starting-coins.md).\n",
       "source": {
         "path": "design/origins/background-oath-witness.md",
-        "sha256": "d75d0f0d7eb926b5a60c19adcaf98e03b2f7efb943cec44a83b9619a08a8e843"
+        "sha256": "313b926d79c0fa09c6da6f2ae8e7c2fdf7d16eec51c3ed11f54010fba14160ae"
       }
     },
     "origin-background-physician-s-student": {
@@ -373,10 +373,10 @@
       }
     },
     "origin-background-poacher": {
-      "markdown": "# Poacher\n\n*A forbidden boundary never made a hungry household less hungry.*\n\n*Who looked the other way for you?*\n\n## Rules\n\nChoose one:\n\n- **Marksmanship 1** and [Read the Quarry](../cards/read-the-quarry.md).\n- **Subterfuge 1** and [Step Between Lanterns](../cards/step-between-lanterns.md).\n\n**Type:** Background\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n",
+      "markdown": "# Poacher\n\n*You learned to bring down game quietly or keep the hidden catch cold until it could reach hungry households. A forbidden boundary never made them less hungry.*\n\n*Who looked the other way for you?*\n\n## Rules\n\nChoose one:\n\n- **Marksmanship 1** and [Read the Quarry](../cards/read-the-quarry.md).\n- **Frost 1** and [Winter Store](../cards/winter-store.md).\n\n**Type:** Background\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n",
       "source": {
         "path": "design/origins/background-poacher.md",
-        "sha256": "42b7c49d2eb4d5109b227ab2debe550429b4c1dec31b2a4375cad118f7af0d01"
+        "sha256": "8d4bf41f5a14e6e878af65b9a62da4f27cc9fdec0b5e84e3bebe041277e7f8cb"
       }
     },
     "origin-background-reluctant-knife": {
@@ -464,10 +464,10 @@
       }
     },
     "origin-culture-cloister-valleys": {
-      "markdown": "# Cloister Valleys\n\n*Bells mark the day, but no two residents agree about what a disciplined life should become.*\n\n*Which lesson did you question before you left?*\n\n## Rules\n\nChoose one:\n\n- **Athletics 1** and [The Untroubled Hand](../cards/the-untroubled-hand.md).\n- **Medicine 1** and [Treat Mental Trauma](../cards/treat-mental-trauma.md).\n\n**Type:** Culture\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n",
+      "markdown": "# Cloister Valleys\n\n*Little lights drift above the cloister paths after dusk. In the quiet rooms below, patient listeners teach troubled minds to find their footing again.*\n\n*Which lesson did you question before you left?*\n\n## Rules\n\nChoose one:\n\n- **Radiance 1** and [Lantern Moths](../cards/lantern-moths.md).\n- **Medicine 1** and [Treat Mental Trauma](../cards/treat-mental-trauma.md).\n\n**Type:** Culture\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n",
       "source": {
         "path": "design/origins/culture-cloister-valleys.md",
-        "sha256": "ea78fce218250527ad31c945431d4d7fc005743a826eb2fe8c22d6b17cd8a2c1"
+        "sha256": "fb539cf1908973447cd5fc9f8dbdfa111c9c8076b0f0776260e0688834069605"
       }
     },
     "origin-culture-deep-halls": {
@@ -485,10 +485,10 @@
       }
     },
     "origin-culture-forest-communities": {
-      "markdown": "# Forest Communities\n\n*Paths change with the season, and your neighbors know the trees by more than their timber.*\n\n*Which tree marks the way home?*\n\n## Rules\n\n**Type:** Culture. **Status:** Proposal. Choose one paired option; do not mix the rank from one with the card from another.\n\n- Wilderness 1 and [Forage Woodland](../cards/forage-woodland.md).\n- Athletics 1 and [Sure Ascent](../cards/sure-ascent.md).\n\nGrant at level 0. Duplicate grants provide 1 stage DP each; never promote a rank automatically. No discipline purchases at level 0. Ancestry does not restrict this choice. Follow each card’s explicit equipment grant.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n",
+      "markdown": "# Forest Communities\n\n*You learned the woodland paths by gathering beside your elders and learned its stories by giving each remembered speaker a different voice.*\n\n*Which tree marks the way home?*\n\n## Rules\n\n**Type:** Culture. **Status:** Proposal. Choose one paired option; do not mix the rank from one with the card from another.\n\n- **Wilderness 1** and [Forage Woodland](../cards/forage-woodland.md).\n- **Mind 1** and [Borrow a Voice](../cards/borrow-a-voice.md).\n\nGrant at level 0. Duplicate grants provide 1 stage DP each; never promote a rank automatically. No discipline purchases at level 0. Ancestry does not restrict this choice. Follow each card’s explicit equipment grant.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n",
       "source": {
         "path": "design/origins/culture-forest-communities.md",
-        "sha256": "8475083da6c046e51d53854e52b0ea87065af5fb8acdb9fe27a9567bd9e01c0f"
+        "sha256": "63443efa0bd5cb77b480cfef2f85b93034165d9187b8beb357b10639e092b1a7"
       }
     },
     "origin-culture-free-harbors": {
@@ -499,24 +499,24 @@
       }
     },
     "origin-culture-gathered-peoples": {
-      "markdown": "# Gathered Peoples\n\n*Displacement brought strangers together; shared work made a new home.*\n\n*Which old custom did your new neighbors adopt?*\n\n## Rules\n\nChoose one:\n\n- **Influence 1** and [A Verse for Courage](../cards/a-verse-for-courage.md).\n- **Medicine 1** and [Treat Soft Tissue](../cards/treat-soft-tissue.md).\n\n**Type:** Culture\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n",
+      "markdown": "# Gathered Peoples\n\n*Many peoples share your streets. A quiet thought across a crowded room and a practiced hand with a bandage both say that someone is looking out for you.*\n\n*Which old custom did your new neighbors adopt?*\n\n## Rules\n\nChoose one:\n\n- **Mind 1** and [Silent Cue](../cards/silent-cue.md).\n- **Medicine 1** and [Treat Soft Tissue](../cards/treat-soft-tissue.md).\n\n**Type:** Culture\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n",
       "source": {
         "path": "design/origins/culture-gathered-peoples.md",
-        "sha256": "93e7d8542d1b09c18b95c306391e2852061e586ffcefb9d1b5be075b69c37694"
+        "sha256": "5f242e20e6a6729769daf7baa216ff2e7efe02c2f79500280c77c729840d8271"
       }
     },
     "origin-culture-grass-sea-clans": {
-      "markdown": "# Grass Sea Clans\n\n*A roof of stars, a road of grass, and neighbors who may be a day’s ride away.*\n\n*What promise brings you back to the traveling camp?*\n\n## Rules\n\nChoose one:\n\n- **Marksmanship 1** and [Read the Quarry](../cards/read-the-quarry.md).\n- **Wilderness 1** and [The Otter’s Bargain](../cards/the-otter-s-bargain.md).\n\n**Type:** Culture\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n",
+      "markdown": "# Grass Sea Clans\n\n*You grew up beneath an open sky, watching riders test their aim and blades at the gathering grounds before the herds moved on.*\n\n*What promise brings you back to the traveling camp?*\n\n## Rules\n\nChoose one:\n\n- **Marksmanship 1** and [Read the Quarry](../cards/read-the-quarry.md).\n- **Arms 1** and [Invitation to the Blade](../cards/invitation-to-the-blade.md).\n\n**Type:** Culture\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n",
       "source": {
         "path": "design/origins/culture-grass-sea-clans.md",
-        "sha256": "07dfc06c1a85a7783cb7bd0033e7aef74e5569940518e0035d26cd4a10623e55"
+        "sha256": "749364d1c1586a908155350761c745997467fa88e88432943b021095135b4ad4"
       }
     },
     "origin-culture-highland-holds": {
-      "markdown": "# Highland Holds\n\n*The climb is long, the welcome warm, and every tool has a place by the hearth.*\n\n*What did your neighbors trust you to carry?*\n\n## Rules\n\n**Type:** Culture. **Status:** Proposal. Choose one paired option; do not mix the rank from one with the card from another.\n\n- Wilderness 1 and [Forage Mountains](../cards/forage-mountains.md).\n- Craft 1 and [Trail Workshop](../cards/trail-workshop.md).\n\nGrant at level 0. Duplicate grants provide 1 stage DP each; never promote a rank automatically. No discipline purchases at level 0. Ancestry does not restrict this choice. Follow each card’s explicit equipment grant.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n",
+      "markdown": "# Highland Holds\n\n*Your neighbors keep winter in their storehouses and thunder in their songs. Frost preserves the harvest; a sharp report carries a warning across the crags.*\n\n*What did your neighbors trust you to carry?*\n\n## Rules\n\n**Type:** Culture. **Status:** Proposal. Choose one paired option; do not mix the rank from one with the card from another.\n\n- **Frost 1** and [Winter Store](../cards/winter-store.md).\n- **Storm 1** and [Thunder at the Door](../cards/thunder-at-the-door.md).\n\nGrant at level 0. Duplicate grants provide 1 stage DP each; never promote a rank automatically. No discipline purchases at level 0. Ancestry does not restrict this choice. Follow each card’s explicit equipment grant.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n",
       "source": {
         "path": "design/origins/culture-highland-holds.md",
-        "sha256": "47ef86bb5b277c66daca7b43af16d607407a76873c03d7e3284dc1adb2d25615"
+        "sha256": "967a230b01033e91f9647a448509437bc8618a1f3078f305294b8b13950bc2f2"
       }
     },
     "origin-culture-island-kinships": {
@@ -541,31 +541,31 @@
       }
     },
     "origin-culture-reed-villages": {
-      "markdown": "# Reed Villages\n\n*Raised walkways and low boats connect homes that seem to float between sky and water.*\n\n*Which channel could you navigate with your eyes closed?*\n\n## Rules\n\nChoose one:\n\n- **Wilderness 1** and [Forage Wetlands](../cards/forage-wetlands.md).\n- **Wilderness 1** and [The Otter’s Bargain](../cards/the-otter-s-bargain.md).\n\n**Type:** Culture\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n",
+      "markdown": "# Reed Villages\n\n*On cold mornings, elders shape icy handholds along the pilings. At night, families leave a place by the fire for the ancestors who still watch over them.*\n\n*Which channel could you navigate with your eyes closed?*\n\n## Rules\n\nChoose one:\n\n- **Frost 1** and [Rime Footholds](../cards/rime-footholds.md).\n- **Calling 1** and [A Hand from Before](../cards/a-hand-from-before.md).\n\n**Type:** Culture\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n",
       "source": {
         "path": "design/origins/culture-reed-villages.md",
-        "sha256": "c5131ebe5882d18d0fb0bdf4d40163faf774446c9bc9d036a5b2790d3f307a32"
+        "sha256": "f9ef70b590a49f1a1108bcfa7a27c1afacc6097f97243baa40aba3c710e1a19e"
       }
     },
     "origin-culture-river-settlements": {
-      "markdown": "# River Settlements\n\n*The river brought work, travelers and news long before it brought you an urge to leave.*\n\n*What do you miss about the sound of the docks?*\n\n## Rules\n\n**Type:** Culture. **Status:** Proposal. Choose one paired option; do not mix the rank from one with the card from another.\n\n- Athletics 1 and [Expert River Crossing](../cards/expert-river-crossing.md).\n- Wilderness 1 and [Forage Wetlands](../cards/forage-wetlands.md).\n\nGrant at level 0. Duplicate grants provide 1 stage DP each; never promote a rank automatically. No discipline purchases at level 0. Ancestry does not restrict this choice. Follow each card’s explicit equipment grant.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n",
+      "markdown": "# River Settlements\n\n*The river gives your people passage and livelihood. You learned to cross its currents and to lend breath to those it almost took.*\n\n*What do you miss about the sound of the docks?*\n\n## Rules\n\n**Type:** Culture. **Status:** Proposal. Choose one paired option; do not mix the rank from one with the card from another.\n\n- **Athletics 1** and [Expert River Crossing](../cards/expert-river-crossing.md).\n- **Life 1** and [Shared Breath](../cards/shared-breath.md).\n\nGrant at level 0. Duplicate grants provide 1 stage DP each; never promote a rank automatically. No discipline purchases at level 0. Ancestry does not restrict this choice. Follow each card’s explicit equipment grant.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n",
       "source": {
         "path": "design/origins/culture-river-settlements.md",
-        "sha256": "324f06ecfabc1f4ad96d84b9cbc8bdc4a3daf10b1b82b05087a1f50aa8740572"
+        "sha256": "5de505fdf32cf7772d1165be5164a99fbd148ee15ce223c2d0a2ab738434d186"
       }
     },
     "origin-culture-terrace-towns": {
-      "markdown": "# Terrace Towns\n\n*Gardens climb the cliffs and stairs stitch whole neighborhoods together.*\n\n*Which impossible-looking route was your childhood shortcut?*\n\n## Rules\n\nChoose one:\n\n- **Athletics 1** and [Swing into Trouble](../cards/swing-into-trouble.md).\n- **Wilderness 1** and [Roots Remember Feet](../cards/roots-remember-feet.md).\n\n**Type:** Culture\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n",
+      "markdown": "# Terrace Towns\n\n*Children swing between the terraces while lamplighters carry warm light along the evening stairs. You learned to make a steep place feel like home.*\n\n*Which impossible-looking route was your childhood shortcut?*\n\n## Rules\n\nChoose one:\n\n- **Athletics 1** and [Swing into Trouble](../cards/swing-into-trouble.md).\n- **Radiance 1** and [Lantern in the Palm](../cards/lantern-in-the-palm.md).\n\n**Type:** Culture\n\nEach option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n",
       "source": {
         "path": "design/origins/culture-terrace-towns.md",
-        "sha256": "3cd7bc9fcb2250c7b7fc05d34022a9a93bb197e756a73124dbb4f36689d3c3a1"
+        "sha256": "07556533bacd4be9edc5bb567ee05b9b911b523e64c49c2a6ce867bc67b7f1a1"
       }
     },
     "origin-culture-traveling-companies": {
-      "markdown": "# Traveling Companies\n\n*Home was whoever helped raise the awning when the rain began.*\n\n*What song announced your arrival?*\n\n## Rules\n\n**Type:** Culture. **Status:** Proposal. Choose one paired option; do not mix the rank from one with the card from another.\n\n- Influence 1 and [Measured Appeal](../cards/measured-appeal.md).\n- Subterfuge 1 and [Create a Distraction](../cards/create-a-distraction.md).\n\nGrant at level 0. Duplicate grants provide 1 stage DP each; never promote a rank automatically. No discipline purchases at level 0. Ancestry does not restrict this choice. Follow each card’s explicit equipment grant.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n",
+      "markdown": "# Traveling Companies\n\n*You learned to hold an audience with a flashing blade, a sweeping bow and the well-timed distraction that lets a companion make their entrance.*\n\n*What song announced your arrival?*\n\n## Rules\n\n**Type:** Culture. **Status:** Proposal. Choose one paired option; do not mix the rank from one with the card from another.\n\n- **Arms 1** and [Smile Before Steel](../cards/smile-before-steel.md).\n- **Subterfuge 1** and [Create a Distraction](../cards/create-a-distraction.md).\n\nGrant at level 0. Duplicate grants provide 1 stage DP each; never promote a rank automatically. No discipline purchases at level 0. Ancestry does not restrict this choice. Follow each card’s explicit equipment grant.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n",
       "source": {
         "path": "design/origins/culture-traveling-companies.md",
-        "sha256": "a13c3f0f1326d9553f225aee51de0f1de9aacba8bff3b8eee6d8470490ea42dd"
+        "sha256": "c27185e67217c0d4b45391e447dffeac6b1c06505efb3d49e941b2686fe7542d"
       }
     },
     "origin-culture-walled-communities": {

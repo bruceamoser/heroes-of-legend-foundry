@@ -1,5 +1,6 @@
 import { acquireAbility, craftingPermissions } from "./acquisition.mjs";
 import { ATTRIBUTES } from "./character.mjs";
+import { originPair } from "./origin-history.mjs";
 const clone = (value) => structuredClone(value);
 const find = (catalog, id) => catalog.find((r) => r.id === id);
 const reason = (code, text) => ({ code, text });
@@ -298,9 +299,7 @@ export function creationLedger(
   for (const originType of ["culture", "background"]) {
     const selection = draft[originType];
     const origin = find(catalog, selection?.id);
-    const pair = Number.isInteger(selection?.pair)
-      ? origin?.pairs?.[selection.pair]
-      : null;
+    const pair = originPair(origin, selection);
     if (
       origin?.kind !== "origin" ||
       origin.originType !== originType ||

@@ -293,7 +293,7 @@ try {
     await settingsWindow
       .getByRole("link", { name: "Read language rules" })
       .getAttribute("href"),
-    /64089a1c8961d7faff172f179448a8b6e57827ef/,
+    /d67e046466bdd5052360b96ed91861d607091446/,
   );
 
   await owner.evaluate(async (id) => {

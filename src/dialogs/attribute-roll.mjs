@@ -39,6 +39,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       ...situationalRollDraft(),
       adjustmentOverride: false,
       referenceItemIds: [],
+      defenseSubstitutionItemUuid: "",
       perception: {},
       woundApplicability: {},
     };
@@ -87,6 +88,16 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       this.draft.woundApplicability = {};
     }
     this.basis = basis;
+    if (
+      this.draft.defenseSubstitutionItemUuid &&
+      !basis.defenseSubstitutions?.some(
+        (option) => option.itemUuid === this.draft.defenseSubstitutionItemUuid,
+      )
+    ) {
+      this.notice =
+        "The selected defense card changed. Review the ordinary defense attribute or choose another card.";
+      this.draft.defenseSubstitutionItemUuid = "";
+    }
     const fears = [
       ...new Set(
         this.basis.contributions
@@ -128,6 +139,14 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       pendingResponse: this.pendingResponse,
       attributeName: game.i18n.localize(`HOL.Attributes.${this.attributeKey}`),
       attribute: this.basis.attribute,
+      defenseSubstitutions:
+        this.basis.defenseSubstitutions?.map((option) => ({
+          ...option,
+          attributeName: game.i18n.localize(
+            `HOL.Attributes.${option.attributeKey}`,
+          ),
+          selected: this.draft.defenseSubstitutionItemUuid === option.itemUuid,
+        })) ?? [],
       defense: this.mode === "defense",
       notice: this.notice,
       draft: this.draft,
@@ -177,6 +196,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       partyPiece: checked("partyPiece"),
       lookOverHere: checked("lookOverHere"),
       referenceItemIds: readReferenceSelection(this.element),
+      defenseSubstitutionItemUuid: value("defenseSubstitutionItemUuid") ?? "",
       perception: Object.fromEntries(
         this.fears.map((source, index) => [
           source,
@@ -248,6 +268,12 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       slider.value = this.draft.adjustment;
       slider.setAttribute("aria-valuetext", adjustmentLabel);
       const plan = prepareRoll(this.basis, this.draft);
+      const chosen = this.basis.defenseSubstitutions?.find(
+        (option) => option.itemUuid === plan.defenseSubstitutionItemUuid,
+      );
+      const stat = this.element.querySelector("[data-roll-attribute]");
+      if (stat)
+        stat.textContent = `${game.i18n.localize(`HOL.Attributes.${plan.resolvedAttributeKey}`)}: ${chosen?.attribute ?? this.basis.attribute}`;
       for (const source of plan.sources) {
         const li = document.createElement("li");
         li.textContent = `${source.label}: ${source.amount} ${source.kind === "boon" ? "Boon(s)" : "Bane(s)"}${source.automatic ? " · automatic" : ""}`;

@@ -1,0 +1,40 @@
+{
+  "_key": "!items!759d3c083d44c819",
+  "_id": "759d3c083d44c819",
+  "name": "Bank the Embers",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You cup a hand over the flames and draw their heat into a tiny coal that crumbles between your fingers.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>Self or one adjacent willing creature.</dd></div><div><dt>Duration</dt><dd>Instant.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Repeatable; pay the action and any stated costs each use.</dd></div><div><dt>Type</dt><dd>Magic / Recovery</dd></div></dl><div class=\"hol-reference-rules\"><p>Reduce temporary Burning by 1, minimum 0. This does not remove a starred source or prevent the surrounding hazard from applying Burning again. It causes no damage and restores no HP.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/cards/bank-the-embers.md\" target=\"_blank\" rel=\"noopener\">design/cards/bank-the-embers.md</a> at <code>d67e046466bdd5052360b96ed91861d607091446</code>.</p></section>",
+    "activity": {
+      "action": "main",
+      "rollMode": "none",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-bank-the-embers",
+      "source": {
+        "path": "design/cards/bank-the-embers.md",
+        "sha256": "d36ad5d9f909e9b3ac5460aa43c600f62a1a47b04e36c7fbf65d34f896863910"
+      },
+      "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Rules reference · play automation in progress"
+    }
+  }
+}

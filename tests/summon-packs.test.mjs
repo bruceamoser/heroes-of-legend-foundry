@@ -17,7 +17,7 @@ const records = new Map(catalogs.summons.records.map((r) => [r.id, r]));
 test("all 73 summon Actors retain exact source identities, printed statistics and attacker outcomes", async () => {
   const variants = new Set();
   assert.equal(artifacts.documents.summons.length, 73);
-  assert.equal(artifacts.files.size, 667);
+  assert.equal(artifacts.files.size, 729);
   for (const actor of artifacts.documents.summons) {
     const flags = actor.flags["heroes-of-legend"];
     const r = records.get(flags.catalogId),

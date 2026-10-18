@@ -1,5 +1,6 @@
 import { normalizeWorkshopPlay } from "./workshop-play.mjs";
 import { ATTRIBUTES } from "./character.mjs";
+import { originPair } from "./origin-history.mjs";
 import { workshopCharacter } from "./workshop-character.mjs";
 
 export const PORTABLE_FORMAT = "heroes-of-legend-character";
@@ -83,6 +84,14 @@ export function readPortableCharacter(input, catalogs, languages) {
       if (!object(d[key]) || !string(d[key].id) || !integer(d[key].pair))
         fail();
       draft[key] = { id: d[key].id, pair: d[key].pair };
+      if (d[key].retainedFrom !== undefined) {
+        if (!string(d[key].retainedFrom, 40)) fail();
+        draft[key].retainedFrom = d[key].retainedFrom;
+        const origin = catalogs.choices.find(
+          (record) => record.id === d[key].id,
+        );
+        if (!originPair(origin, draft[key])) fail();
+      }
     }
   for (const stage of [0, 1]) {
     if (!Array.isArray(d.purchases[stage]) || d.purchases[stage].length > 200)

@@ -22,6 +22,7 @@ export function defenseBenefits(actor, { incomingAttack = false } = {}) {
           key: benefit?.key,
           effectUuid: effect.uuid,
           shieldItemUuid: benefit?.shieldItemUuid,
+          sourceId: benefit?.sourceId,
         };
       });
   return defenseBenefitSources(entries, { incomingAttack, heldShieldUuids });

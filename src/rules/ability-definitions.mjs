@@ -124,6 +124,19 @@ export const ABILITY_DEFINITIONS = Object.freeze({
     summary:
       "Before an eligible blockable defense while holding a shield, spend one Reaction to gain one defense Boon until the start of your next turn. This does not grant a shield and does not stack with itself.",
   }),
+  "ability-high-guard": Object.freeze({
+    id: "ability-high-guard",
+    name: "High Guard",
+    category: "reaction",
+    handler: "high-guard-v1",
+    source: {
+      path: "design/cards/high-guard.md",
+      sha256:
+        "a6f5ffeca1d6d1d298cdbfddec8680423fae5eae1e8ae6a8ce33ecbacfe3c3ef",
+    },
+    summary:
+      "Before a shield-blockable defense while holding a shield, spend one Reaction to use Shield Block with 2 defense Boons instead of 1 until the start of your next turn. This replaces the Shield Block benefit rather than adding another. The shield must remain held and the DA judges blockability.",
+  }),
 });
 export function abilityDefinition(id, source) {
   const definition = ABILITY_DEFINITIONS[id];

@@ -23,7 +23,7 @@ const get = (id) => records.find((r) => r.id === id);
 test("complete learning catalog has stable unique IDs and exact pinned sources", () => {
   assert.equal(catalog.schemaVersion, 2);
   assert.equal(catalog.sourceCommit, lock.commit);
-  assert.equal(records.length, 459);
+  assert.equal(records.length, 521);
   assert.deepEqual(
     Object.fromEntries(
       ["ability", "ancestry", "class", "discipline", "origin", "trait"].map(
@@ -31,7 +31,7 @@ test("complete learning catalog has stable unique IDs and exact pinned sources",
       ),
     ),
     {
-      ability: 357,
+      ability: 419,
       ancestry: 4,
       class: 10,
       discipline: 18,
@@ -84,12 +84,12 @@ test("complete learning catalog has stable unique IDs and exact pinned sources",
   }
   assert.equal(records.filter((r) => r.universal).length, 18);
   assert(records.filter((r) => r.universal).every((r) => r.cost === null));
-  assert.equal(records.filter((r) => r.reference).length, 357);
+  assert.equal(records.filter((r) => r.reference).length, 419);
   assert.equal(
     records.filter((r) =>
       r.reference?.rules.body.some((block) => block.outcomes),
     ).length,
-    162,
+    166,
   );
 });
 test("catalog references preserve exact acquisition details and outcomes", () => {

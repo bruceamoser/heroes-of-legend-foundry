@@ -1,6 +1,6 @@
 # Pinned content metadata
 
-`source-lock.json` records immutable book inputs, hashes, portrait provenance and summon links. `static/data/choices.json` is the generated learning catalog used by character development: 350 ability records (18 universal, 332 purchasable), 4 ancestries, 20 traits, 50 origins, 10 classes and 18 disciplines.
+`source-lock.json` records immutable book inputs, hashes, portrait provenance and summon links. The current approved source is `d67e046466bdd5052360b96ed91861d607091446` (book PR #1278; Foundry issue #171). `static/data/choices.json` is the generated learning catalog used by character development: 419 ability records (18 universal, 401 purchasable), 4 ancestries, 20 traits, 50 origins, 10 classes and 18 disciplines.
 
 `static/data/creatures.json` is the separately generated intake catalog for all
 192 creatures, with complete player-defense action tables, authored reference
@@ -24,7 +24,7 @@ This is reference text and learning metadata, not imported art or complete per-c
 
 ## Native Item pack sources — issue #115
 
-`packs/abilities/` contains one generated authored source per all 350 source-locked ability records, including the 18 universal references. `packs/equipment/` contains one source per all 43 source-locked equipment records. `packs/index.json` records the shared source commit, supported catalog schemas, counts and semantic hashes for both Item packs.
+`packs/abilities/` contains one generated authored source per all 419 source-locked ability records, including the 18 universal references. `packs/equipment/` contains one source per all 44 source-locked equipment records. `packs/index.json` records the shared source commit, supported catalog schemas, counts and semantic hashes for both Item packs.
 
 Regenerate after an intentional catalog change with Node 24:
 
@@ -33,7 +33,7 @@ node scripts/generate-item-packs.mjs
 node scripts/generate-item-packs.mjs --check
 ```
 
-The generator fails unless `choices.json`, `inventory.json` and `source-lock.json` agree on the same commit, every record source exactly matches its lock entry, the counts remain 350/18 and 43, and every stable Foundry ID is a unique 16-character hash of `heroes-of-legend:<catalogId>`. Ability IDs must also match the existing `foundryId` in the learning catalog. Authored filenames use the stable HOL catalog ID; document IDs do not depend on display names.
+The generator fails unless `choices.json`, `inventory.json` and `source-lock.json` agree on the same commit, every record source exactly matches its lock entry, the counts remain 419/18 and 44, and every stable Foundry ID is a unique 16-character hash of `heroes-of-legend:<catalogId>`. Ability IDs must also match the existing `foundryId` in the learning catalog. Authored filenames use the stable HOL catalog ID; document IDs do not depend on display names.
 
 Each Item stores its exact source path/hash and immutable source commit in `flags.heroes-of-legend`, using the same `catalogId`, `source` and pack model shape as creation/advancement Items. A compendium Item by itself is only a copyable prototype: it carries no creation grant, acquisition receipt, quantity grant, embedded effect or free-use transaction. Equipment prototypes default to quantity 1, Bulk from the inventory catalog, hands 0, held false, worn false and the catalog's normal supply die (or 0 when none is recorded).
 

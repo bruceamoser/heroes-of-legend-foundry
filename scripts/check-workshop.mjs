@@ -1086,6 +1086,63 @@ try {
   );
   assert.notEqual(revised.sourceCommit, legacy.sourceCommit);
   assert.deepEqual(revised.draft.purchases, legacy.draft.purchases);
+  // Expansion updates keep the selected historical grant instead of silently swapping it.
+  const expansion = structuredClone(exported);
+  expansion.sourceCommit = "64089a1c8961d7faff172f179448a8b6e57827ef";
+  expansion.draft.culture = { id: "origin-culture-cloister-valleys", pair: 0 };
+  await page
+    .locator("#import-file")
+    .setInputFiles({
+      name: "previous-origin.json",
+      mimeType: "application/json",
+      buffer: Buffer.from(JSON.stringify(expansion)),
+    });
+  await page.getByRole("heading", { name: "Review", exact: true }).waitFor();
+  await page.getByRole("button", { name: "3 Origins", exact: true }).click();
+  const culture = page.getByLabel("Culture", { exact: true });
+  assert.equal(
+    await culture.inputValue(),
+    "origin-culture-cloister-valleys|0|64089a1c8961d7faff172f179448a8b6e57827ef",
+  );
+  assert.match(
+    await culture.locator("option:checked").innerText(),
+    /Athletics 1.*Untroubled Hand.*retained choice/,
+  );
+  assert.match(
+    (await culture.locator("option").allTextContents()).join(" "),
+    /Cloister Valleys.*Radiance 1.*Lantern Moths/,
+  );
+  assert.match(
+    (await culture.locator("option").allTextContents()).join(" "),
+    /Highland Holds.*Frost 1.*Winter Store/,
+  );
+  assert.match(
+    (await culture.locator("option").allTextContents()).join(" "),
+    /Reed Villages.*Frost 1.*Rime Footholds/,
+  );
+  await page.reload();
+  await page.getByRole("button", { name: "3 Origins", exact: true }).click();
+  assert.match(
+    await page.getByLabel("Culture", { exact: true }).inputValue(),
+    /64089/,
+  );
+  await page.screenshot({ path: `${output}/retained-origin.png` });
+  await page
+    .getByLabel("Culture", { exact: true })
+    .selectOption("origin-culture-cloister-valleys|0");
+  const updatedOrigin = await page.evaluate(
+    () =>
+      JSON.parse(localStorage.getItem("hol.workshop.v1")).character.draft
+        .culture,
+  );
+  assert.deepEqual(updatedOrigin, {
+    id: "origin-culture-cloister-valleys",
+    pair: 0,
+  });
+  assert.match(
+    await page.locator(".origin-grants").first().innerText(),
+    /Radiance 1.*Lantern Moths/s,
+  );
   assert.deepEqual(failures, []);
   console.info(
     "Workshop passed: fixed scrolling, live attributes, grants, armor/Bulk/supply, grouped actions, crafting rolls, level replay, independent/revisitable signatures, play inventory/languages/conditions, coin override, named saves, schema-3 export/import and 390px layout; no browser errors.",

@@ -3,7 +3,14 @@
   <div class="hol-body">
   {{#if incoming}}<p>Defending against {{incoming.attackerName}} · {{incoming.title}}</p><button type="button" data-action="changeDefender">Change defender</button>{{/if}}
   {{#if notice}}<p class="hol-note" role="alert">{{notice}}</p>{{/if}}
-  <p>{{attributeName}}: <strong>{{attribute}}</strong></p>
+  <p data-roll-attribute>{{attributeName}}: {{attribute}}</p>
+  {{#if defenseSubstitutions}}<label>Defense attribute (optional)
+    <select name="defenseSubstitutionItemUuid">
+      <option value="">Printed defense attribute · {{attributeName}}</option>
+      {{#each defenseSubstitutions}}<option value="{{itemUuid}}" {{#if selected}}selected{{/if}}>{{name}} · {{attributeName}}{{#if boons}} · +{{boons}} Boon{{/if}}</option>{{/each}}
+    </select>
+  </label>
+  <p class="hol-note">Choose a card before this defense roll. The table judges its printed trigger and equipment and records its one Reaction. This selector changes the same roll; it does not spend the Reaction. {{#each defenseSubstitutions}}<a class="content-link" data-link data-type="Item" data-uuid="{{itemUuid}}">{{name}}</a>: {{guidance}} {{/each}}</p>{{/if}}
   <label class="hol-adjustment">Boons / Banes
     <span data-adjustment-label aria-live="polite">{{adjustmentLabel}}</span>
     <input type="range" name="adjustment" min="-3" max="3" step="1" value="{{draft.adjustment}}" aria-label="Boons or Banes" aria-valuetext="{{adjustmentLabel}}">

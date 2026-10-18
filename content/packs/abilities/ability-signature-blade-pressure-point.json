@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You turn your strike across a joint or supporting limb, leaving your opponent struggling to keep pace.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>One target of your Main Action melee attack.</dd></div><div><dt>Duration</dt><dd>Slowed uses normal decay.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Once on your turn; no benefit from free attacks.</dd></div><div><dt>Type</dt><dd>Signature</dd></div></dl><div class=\"hol-reference-rules\"><p>After a Standard result, apply Slowed 1 to one target. After Strong, apply Slowed 2 instead. The attack otherwise resolves normally.</p></div><h3>Additional rulings</h3><p><strong>Tags:</strong> Skill / Control</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/64089a1c8961d7faff172f179448a8b6e57827ef/design/cards/signature-blade-pressure-point.md\" target=\"_blank\" rel=\"noopener\">design/cards/signature-blade-pressure-point.md</a> at <code>64089a1c8961d7faff172f179448a8b6e57827ef</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You turn your strike across a joint or supporting limb, leaving your opponent struggling to keep pace.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>One target of your Main Action melee attack.</dd></div><div><dt>Duration</dt><dd>Slowed uses normal decay.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Once on your turn; no benefit from free attacks.</dd></div><div><dt>Type</dt><dd>Signature</dd></div></dl><div class=\"hol-reference-rules\"><p>After a Standard result, apply Slowed 1 to one target. After Strong, apply Slowed 2 instead. The attack otherwise resolves normally.</p></div><h3>Additional rulings</h3><p><strong>Tags:</strong> Skill / Control</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/cards/signature-blade-pressure-point.md\" target=\"_blank\" rel=\"noopener\">design/cards/signature-blade-pressure-point.md</a> at <code>d67e046466bdd5052360b96ed91861d607091446</code>.</p></section>",
     "activity": {
       "action": "main",
       "rollMode": "none",
@@ -31,7 +31,7 @@
         "path": "design/cards/signature-blade-pressure-point.md",
         "sha256": "f36a04352650ace1ac53f99b69e8bd8642c696aab47d3e0ade4e507bc22c97e3"
       },
-      "sourceCommit": "64089a1c8961d7faff172f179448a8b6e57827ef",
+      "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · play automation in progress"

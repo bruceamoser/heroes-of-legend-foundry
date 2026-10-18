@@ -1,0 +1,40 @@
+{
+  "_key": "!items!196bfeef0f24f22e",
+  "_id": "196bfeef0f24f22e",
+  "name": "Read the Ward",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You follow the shimmer to its edges and trace the repeating mark where the magic holds itself together.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>One visible ongoing magical effect within 6 squares.</dd></div><div><dt>Duration</dt><dd>Information is retained; the Boon ends when used or this turn ends.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Repeated uses do not multiply this card’s benefit on the same roll.</dd></div><div><dt>Type</dt><dd>Skill / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>The DA tells you its remaining duration and any stated way to end it early. You or an ally gains 1 Boon to the next attribute roll specifically made to escape or disrupt that effect this turn. This grants no new way to cancel magic, identify an item’s other powers or learn a recipe.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/d67e046466bdd5052360b96ed91861d607091446/design/cards/read-the-ward.md\" target=\"_blank\" rel=\"noopener\">design/cards/read-the-ward.md</a> at <code>d67e046466bdd5052360b96ed91861d607091446</code>.</p></section>",
+    "activity": {
+      "action": "main",
+      "rollMode": "none",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-read-the-ward",
+      "source": {
+        "path": "design/cards/read-the-ward.md",
+        "sha256": "fd13c8645ac6b5b805b8517ef0012e6f0751ec51c99a16d5c1b47d94be7da66f"
+      },
+      "sourceCommit": "d67e046466bdd5052360b96ed91861d607091446",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Rules reference · play automation in progress"
+    }
+  }
+}

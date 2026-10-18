@@ -34,7 +34,7 @@ test("all 192 creatures are deterministic native Actor documents with pinned pro
   const documents = artifacts.documents.creatures;
   assert.equal(documents.length, 192);
   assert.equal(new Set(documents.map(({ _id }) => _id)).size, 192);
-  assert.equal(artifacts.files.size, 667);
+  assert.equal(artifacts.files.size, 729);
   assert.deepEqual(artifacts.index.catalogs, {
     choices: 2,
     inventory: 1,
@@ -44,7 +44,7 @@ test("all 192 creatures are deterministic native Actor documents with pinned pro
   assert.deepEqual(
     artifacts.index.packs.map(({ name, type, count }) => [name, type, count]),
     [
-      ["abilities", "Item", 357],
+      ["abilities", "Item", 419],
       ["equipment", "Item", 44],
       ["creatures", "Actor", 192],
       ["summons", "Actor", 73],
@@ -432,7 +432,7 @@ test("authored Actor JSON is exact, deterministic and contains no compiled datab
     withFileTypes: true,
   });
   const files = entries.filter((entry) => entry.isFile());
-  assert.equal(files.length, 667);
+  assert.equal(files.length, 729);
   assert(files.every((entry) => entry.name.endsWith(".json")));
   for (const forbidden of ["CURRENT", "LOCK", "LOG", "MANIFEST-000001"])
     assert(!files.some((entry) => entry.name === forbidden));

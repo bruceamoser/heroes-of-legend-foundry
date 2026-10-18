@@ -89,6 +89,104 @@
     },
     "actions": {
       "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Stone-brow axe",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "10 + Prone",
+            "standard": "7",
+            "strong": "4"
+          },
+          "effect": "10 + Prone / 7 / 4",
+          "referenceMarkdown": "### Stone-brow axe\n\n**Target:** One visible creature within 2 squares. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Prone."
+        },
+        {
+          "id": "main-2",
+          "category": "main",
+          "name": "Thrown stone",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "7",
+            "standard": "5",
+            "strong": "3"
+          },
+          "effect": "7/5/3",
+          "referenceMarkdown": "### Thrown stone\n\n**Target:** One visible creature within 7 squares. **Player defense:** Agility. **Damage type:** physical.\n\n**Limit:** Requires an available loose stone; picking it up is part of this attack. No stone means this attack is unavailable."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Study the Opening",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Threat Bane on next attack this turn.",
+          "referenceMarkdown": "### Study the Opening\n\n*It waits for a tell in the stance, then turns its attention to the exposed line.*\n\nIts next attack before the end of this turn imposes 1 additional Bane on player defense, or gains 1 Boon when player-controlled. One attack only; no stacking with itself."
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
+          "name": "Defend",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Stone-brow axe | Agility | 10 + Prone / 7 / 4 |\n| Thrown stone | Agility | 7/5/3 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Study the Opening | +1 Threat Bane on next attack this turn. |\n| Defend | +1 Bane |",

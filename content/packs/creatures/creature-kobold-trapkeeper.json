@@ -84,6 +84,88 @@
     },
     "actions": {
       "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "4",
+            "standard": "2",
+            "strong": "1"
+          },
+          "effect": "4/2/1",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Dart",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "4",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "4/3/2",
+          "referenceMarkdown": "### Dart\n\n**Ammunition:** inventory d6. After each use, roll the inventory die; on 1, reduce d6 to d4, or d4 to empty. Cannot use this attack while empty.\n\n**Target:** One visible creature within 6 squares. **Player defense:** Agility. **Damage type:** physical."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Scatter caltrops",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Choose 2 connected empty ground squares within 2 squares. They are difficult terrain until cleared with a Main Action from an adjacent square. No damage or entry attack. Once per scene.",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
+          "name": "Defend",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 4/2/1 |\n| Dart | Agility | 4/3/2 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Scatter caltrops | Choose 2 connected empty ground squares within 2 squares. They are difficult terrain until cleared with a Main Action from an adjacent square. No damage or entry attack. Once per scene. |\n| Defend | +1 Bane |",

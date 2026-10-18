@@ -94,6 +94,104 @@
     },
     "actions": {
       "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Many-necked strike",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "10 + Grappled 2",
+            "standard": "7 + Grappled 1",
+            "strong": "4"
+          },
+          "effect": "10 + Grappled 2 / 7 + Grappled 1 / 4",
+          "referenceMarkdown": "### Many-necked strike\n\n**Target:** Up to two adjacent creatures; each player rolls defense separately. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Grappled 2. **Standard defense:** Grappled 1.\n\n**Limit:** The holder suffers its own Grappled contribution. A new result replaces its lower contribution, not adds to it. Release freely; separation beyond reach, unconsciousness or death ends the hold."
+        },
+        {
+          "id": "main-2",
+          "category": "main",
+          "name": "Driving strike",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "6 + Push 3",
+            "standard": "4 + Push 1",
+            "strong": "2"
+          },
+          "effect": "6 + Push 3 / 4 + Push 1 / 2",
+          "referenceMarkdown": "### Driving strike\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Push 3. **Standard defense:** Push 1.\n\n**Limit:** Apply Stability, terrain costs and normal collision rules to the printed distance."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Plant the Weight",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Stability 3 on solid ground until next turn.",
+          "referenceMarkdown": "### Plant the Weight\n\n*It spreads its stance and settles its weight into the ground.*\n\nWhile standing on solid ground, gain Stability 3 until its next turn. Use the highest source only, never add sources."
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
+          "name": "Defend",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Many-necked strike | Agility | 10 + Grappled 2 / 7 + Grappled 1 / 4 |\n| Driving strike | Agility | 6 + Push 3 / 4 + Push 1 / 2 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Plant the Weight | Stability 3 on solid ground until next turn. |\n| Defend | +1 Bane |",

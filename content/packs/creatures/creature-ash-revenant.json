@@ -98,6 +98,88 @@
     },
     "actions": {
       "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Ashen fist",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "9 + Push 2",
+            "standard": "6 + Push 1",
+            "strong": "4"
+          },
+          "effect": "9 + Push 2 / 6 + Push 1 / 4",
+          "referenceMarkdown": "### Ashen fist\n\n*The blow lands with enough force to send its victim stumbling backward.*\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Push 2. **Standard defense:** Push 1."
+        },
+        {
+          "id": "main-2",
+          "category": "main",
+          "name": "Ashen cry",
+          "attributeKey": "reason",
+          "defenseSource": "Reason",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "0 + Frightened 3",
+            "standard": "0 + Frightened 2",
+            "strong": "0 + Frightened 1"
+          },
+          "effect": "0 + Frightened 3 / 0 + Frightened 2 / 0 + Frightened 1",
+          "referenceMarkdown": "### Ashen cry\n\n*Its cry seems to come from somewhere behind your ribs.*\n\n**Target:** One hearing creature within 4 squares. **Player defense:** Reason. **Damage type:** None.\n\n**Weak defense:** Frightened 3. **Standard defense:** Frightened 2. **Strong defense:** Frightened 1."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Defend",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Ashen fist | Agility | 9 + Push 2 / 6 + Push 1 / 4 |\n| Ashen cry | Reason | 0 + Frightened 3 / 0 + Frightened 2 / 0 + Frightened 1 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Defend | +1 Bane |",

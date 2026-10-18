@@ -89,6 +89,88 @@
     },
     "actions": {
       "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Heavy bite",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "6",
+            "standard": "4",
+            "strong": "3"
+          },
+          "effect": "6/4/3",
+          "referenceMarkdown": "### Heavy bite\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical."
+        },
+        {
+          "id": "main-2",
+          "category": "main",
+          "name": "Stone stare",
+          "attributeKey": "fortitude",
+          "defenseSource": "Fortitude",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "0 + Paralyzed 1",
+            "standard": "0 + Slowed 2",
+            "strong": "0 + Slowed 1"
+          },
+          "effect": "0 + Paralyzed 1 / 0 + Slowed 2 / 0 + Slowed 1",
+          "referenceMarkdown": "### Stone stare\n\n*Gray veins climb from the victim’s feet while the creature holds an unblinking stare.*\n\n**Target:** One visible creature within 4 squares that can see it. **Player defense:** Fortitude. **Damage type:** None.\n\n**Weak defense:** Paralyzed 1. **Standard defense:** Slowed 2. **Strong defense:** Slowed 1.\n\n**Spell:** Provokes when cast beside an enemy.\n\n**Limit:** The target may avert its eyes before this resolves until its next turn: this gaze cannot target it, but it has 1 Bane on attacks against this creature and defenses against its attacks. No permanent petrification."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Defend",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Heavy bite | Agility | 6/4/3 |\n| Stone stare | Fortitude | 0 + Paralyzed 1 / 0 + Slowed 2 / 0 + Slowed 1 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Defend | +1 Bane |",

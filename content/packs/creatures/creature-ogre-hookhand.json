@@ -89,6 +89,104 @@
     },
     "actions": {
       "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Long iron hook",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "9 + Pull 3",
+            "standard": "6 + Pull 1",
+            "strong": "3"
+          },
+          "effect": "9 + Pull 3 / 6 + Pull 1 / 3",
+          "referenceMarkdown": "### Long iron hook\n\n**Target:** One visible creature within 2 squares. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Pull 3. **Standard defense:** Pull 1.\n\n**Limit:** Apply Stability, terrain costs and normal collision rules to the printed distance."
+        },
+        {
+          "id": "main-2",
+          "category": "main",
+          "name": "Thrown stone",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "7",
+            "standard": "5",
+            "strong": "3"
+          },
+          "effect": "7/5/3",
+          "referenceMarkdown": "### Thrown stone\n\n**Target:** One visible creature within 7 squares. **Player defense:** Agility. **Damage type:** physical.\n\n**Limit:** Requires an available loose stone; picking it up is part of this attack. No stone means this attack is unavailable."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Plant the Weight",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Stability 3 on solid ground until next turn.",
+          "referenceMarkdown": "### Plant the Weight\n\n*It spreads its stance and settles its weight into the ground.*\n\nWhile standing on solid ground, gain Stability 3 until its next turn. Use the highest source only, never add sources."
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
+          "name": "Defend",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Long iron hook | Agility | 9 + Pull 3 / 6 + Pull 1 / 3 |\n| Thrown stone | Agility | 7/5/3 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Plant the Weight | Stability 3 on solid ground until next turn. |\n| Defend | +1 Bane |",

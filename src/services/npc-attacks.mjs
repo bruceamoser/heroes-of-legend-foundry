@@ -1,4 +1,5 @@
 import { assertNoPendingActorPotion } from "./turn-lock.mjs";
+import { renderMarkdown } from "../sheets/creature-reference.mjs";
 import { declareAction, continueAction } from "../rules/actions.mjs";
 import { actionConditions } from "./turn-budget.mjs";
 import {
@@ -46,6 +47,39 @@ export async function declareNpcMelee(actor, { blockable } = {}) {
     },
   });
 }
+/** A GM reference declaration records intent; costs and effects remain manual. */
+export async function declareCreatureAction(actor, actionId) {
+  if (!game.user.isGM || actor?.type !== "creature")
+    throw new Error("The DA declares this creature action.");
+  const action = actor.system.actions.entries.find(entry => entry.id === actionId);
+  if (!action) throw new Error("This creature action is unavailable.");
+  const encounters = game.combats.contents.filter(combat =>
+    combat.combatants.some(participant => participant.actor?.uuid === actor.uuid));
+  const reference = {
+    ...(encounters.length === 1 ? { combatId: encounters[0].id } : {}),
+    resolution: "reference", actorUuid: actor.uuid, attackerName: actor.name,
+    actionId: action.id, category: action.category, title: action.name,
+    perspective: "defender", attributeKey: action.attributeKey,
+    defenseSource: action.defenseSource, harmfulOnly: action.harmfulOnly,
+    threat: { boons: actor.system.threat.boons, banes: actor.system.threat.banes },
+    outcomes: action.hasOutcomes ? structuredClone(action.outcomes) : null,
+    effect: action.effect, referenceMarkdown: action.referenceMarkdown,
+    suggestedDefenderTokenUuids: [...game.user.targets].map(token => token.document.uuid),
+    source: actor.getFlag(ID, "source") ?? null,
+    sourceCommit: actor.getFlag(ID, "sourceCommit") ?? null,
+  };
+  const content = await foundry.applications.handlebars.renderTemplate(
+    "systems/heroes-of-legend/templates/creature-action-card.hbs",
+    { ...reference, categoryLabel: { main: "Main Action", maneuver: "Maneuver", reaction: "Reaction" }[reference.category],
+      referenceHTML: renderMarkdown(reference.referenceMarkdown) },
+  );
+  return ChatMessage.create({
+    content, speaker: ChatMessage.getSpeaker({ actor }),
+    flags: { [ID]: { creatureAction: reference,
+      ...(reference.attributeKey ? { attackCard: reference } : {}) } },
+  });
+}
+
 export function resolveNpcAttack(id) {
   return enqueueCharacterOperation(() => apply(id), { requestId: id });
 }

@@ -89,6 +89,88 @@
     },
     "actions": {
       "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Whispered betrayal",
+          "attributeKey": "reason",
+          "defenseSource": "Reason",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "7 + Frightened 2 of this creature",
+            "standard": "5 + Frightened 1 of this creature",
+            "strong": "3"
+          },
+          "effect": "7 + Frightened 2 of this creature / 5 + Frightened 1 of this creature / 3",
+          "referenceMarkdown": "### Whispered betrayal\n\n**Target:** One visible creature within 5 squares. **Player defense:** Reason. **Damage type:** mental.\n\n**Weak defense:** Frightened 2 of this creature. **Standard defense:** Frightened 1 of this creature."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Borrow a Voice",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Copy a heard voice until next turn; no automatic deception.",
+          "referenceMarkdown": "### Borrow a Voice\n\n*A familiar voice comes from an unfamiliar mouth with exactly the remembered hesitation.*\n\nCopy the sound of a voice it has heard until its next turn. This grants no knowledge, obedience, language or combat modifier. A suspicious listener may use Reason with normal Boons/Banes when being deceived has consequences."
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
+          "name": "Defend",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Whispered betrayal | Reason | 7 + Frightened 2 of this creature / 5 + Frightened 1 of this creature / 3 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Borrow a Voice | Copy a heard voice until next turn; no automatic deception. |\n| Defend | +1 Bane |",

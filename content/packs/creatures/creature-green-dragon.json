@@ -94,6 +94,104 @@
     },
     "actions": {
       "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Bitter mist",
+          "attributeKey": "fortitude",
+          "defenseSource": "Fortitude",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "10 + Poisoned 2",
+            "standard": "7 + Poisoned 1",
+            "strong": "4"
+          },
+          "effect": "10 + Poisoned 2 / 7 + Poisoned 1 / 4",
+          "referenceMarkdown": "### Bitter mist\n\n**Target:** All creatures in a cone of 3 rows, 1/3/5 squares wide; no exclusions. Each player rolls defense separately. **Player defense:** Fortitude. **Damage type:** physical.\n\n**Weak defense:** Poisoned 2. **Standard defense:** Poisoned 1.\n\n**Limit:** Cannot use this attack on consecutive turns, regardless of result."
+        },
+        {
+          "id": "main-2",
+          "category": "main",
+          "name": "Raking claws",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "8 + Push 3",
+            "standard": "5 + Push 1",
+            "strong": "3"
+          },
+          "effect": "8 + Push 3 / 5 + Push 1 / 3",
+          "referenceMarkdown": "### Raking claws\n\n**Target:** One visible creature within 2 squares. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Push 3. **Standard defense:** Push 1.\n\n**Limit:** Apply Stability, terrain costs and normal collision rules to the printed distance."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Draw a Veil",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "3 connected squares within 3: partial obstruction until next turn.",
+          "referenceMarkdown": "### Draw a Veil\n\n*Mist gathers in a thin curtain that blurs the line of approach.*\n\nPlace partial obstruction in up to 3 connected visible squares within 3 squares until its next turn. It adds 1 Bane to attacks whose path crosses the veil. Normal cover rules apply; it does not grant Hidden, block movement or cause damage."
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
+          "name": "Defend",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Bitter mist | Fortitude | 10 + Poisoned 2 / 7 + Poisoned 1 / 4 |\n| Raking claws | Agility | 8 + Push 3 / 5 + Push 1 / 3 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Draw a Veil | 3 connected squares within 3: partial obstruction until next turn. |\n| Defend | +1 Bane |",

@@ -99,6 +99,88 @@
     },
     "actions": {
       "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Crossing jaws",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "9",
+            "standard": "7",
+            "strong": "5"
+          },
+          "effect": "9/7/5",
+          "referenceMarkdown": "### Crossing jaws\n\n*A great limb scythes across the ground, forcing everyone nearby to move.*\n\n**Target:** Up to two creatures within 2 squares. **Player defense:** Agility. **Damage type:** physical."
+        },
+        {
+          "id": "main-2",
+          "category": "main",
+          "name": "Anchoring bite",
+          "attributeKey": "brawn",
+          "defenseSource": "Brawn",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "7 + Grappled 2",
+            "standard": "5 + Grappled 1",
+            "strong": "3"
+          },
+          "effect": "7 + Grappled 2 / 5 + Grappled 1 / 3",
+          "referenceMarkdown": "### Anchoring bite\n\n*One head holds the prey while the others watch its companions.*\n\n**Target:** One creature within 2 squares. **Player defense:** Brawn. **Damage type:** physical.\n\n**Weak defense:** Grappled 2. **Standard defense:** Grappled 1.\n\n**Limit:** The holder suffers its own Grappled contribution. A new result replaces its lower contribution, not adds to it. Release freely; separation beyond reach, unconsciousness or death ends the hold."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Defend",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Crossing jaws | Agility | 9/7/5 |\n| Anchoring bite | Brawn | 7 + Grappled 2 / 5 + Grappled 1 / 3 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Defend | +1 Bane |",

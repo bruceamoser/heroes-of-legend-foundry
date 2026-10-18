@@ -94,6 +94,88 @@
     },
     "actions": {
       "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "River coils",
+          "attributeKey": "brawn",
+          "defenseSource": "Brawn",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "8 + Pull 2",
+            "standard": "6 + Pull 1",
+            "strong": "4"
+          },
+          "effect": "8 + Pull 2 / 6 + Pull 1 / 4",
+          "referenceMarkdown": "### River coils\n\n*A hooked limb braces against the bank and heaves its catch toward the dark water.*\n\n**Target:** One creature within 2 squares. **Player defense:** Brawn. **Damage type:** physical.\n\n**Weak defense:** Pull 2. **Standard defense:** Pull 1."
+        },
+        {
+          "id": "main-2",
+          "category": "main",
+          "name": "Coiling grip",
+          "attributeKey": "brawn",
+          "defenseSource": "Brawn",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "4 + Grappled 2",
+            "standard": "3 + Grappled 1",
+            "strong": "2"
+          },
+          "effect": "4 + Grappled 2 / 3 + Grappled 1 / 2",
+          "referenceMarkdown": "### Coiling grip\n\n*A coil or grasping limb closes around the target and braces against its struggling weight.*\n\n**Target:** One adjacent creature. **Player defense:** Brawn. **Damage type:** physical.\n\n**Weak defense:** Grappled 2. **Standard defense:** Grappled 1.\n\n**Limit:** The holder suffers its own Grappled contribution. A new result replaces its lower contribution, not adds to it. Release freely; separation beyond reach, unconsciousness or death ends the hold."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Defend",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| River coils | Brawn | 8 + Pull 2 / 6 + Pull 1 / 4 |\n| Coiling grip | Brawn | 4 + Grappled 2 / 3 + Grappled 1 / 2 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Defend | +1 Bane |",

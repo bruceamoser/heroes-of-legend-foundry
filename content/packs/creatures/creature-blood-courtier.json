@@ -106,6 +106,88 @@
     },
     "actions": {
       "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Life-drinking bite",
+          "attributeKey": "fortitude",
+          "defenseSource": "Fortitude",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "8 + Recover up to 2 HP actually drained",
+            "standard": "6 + Recover up to 1 HP actually drained",
+            "strong": "4"
+          },
+          "effect": "8 + Recover up to 2 HP actually drained / 6 + Recover up to 1 HP actually drained / 4",
+          "referenceMarkdown": "### Life-drinking bite\n\n*The victim pales as a stolen flush of warmth returns to the attacker’s face.*\n\n**Target:** One adjacent creature. **Player defense:** Fortitude. **Damage type:** Life.\n\n**Weak defense:** Recover up to 2 HP actually drained. **Standard defense:** Recover up to 1 HP actually drained.\n\n**Limit:** Restoration cannot exceed actual HP removed or maximum HP. This is explicitly undead-compatible life theft, not ordinary healing."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Borrowed Face",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Copy a person’s appearance and voice; keep its own statistics. See details.",
+          "referenceMarkdown": "### Borrowed Face\n\nTake the appearance and voice of a person of the same footprint, until dismissed or reduced to 0 HP. Keep statistics and equipment; gain no memories, languages or powers. Suspicious examination uses normal player Reason. Direct sunlight prevents this ability and ends the disguise."
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
+          "name": "Defend",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Life-drinking bite | Fortitude | 8 + Recover up to 2 HP actually drained / 6 + Recover up to 1 HP actually drained / 4 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Borrowed Face | Copy a person’s appearance and voice; keep its own statistics. See details. |\n| Defend | +1 Bane |",

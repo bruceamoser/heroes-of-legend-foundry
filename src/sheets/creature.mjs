@@ -1,5 +1,5 @@
 import { viewPortrait } from "./portrait.mjs";
-import { declareNpcMelee } from "../services/npc-attacks.mjs";
+import { declareNpcMelee, declareCreatureAction } from "../services/npc-attacks.mjs";
 import { CharacterSheet } from "./character.mjs";
 import {
   creatureReferenceHtml,
@@ -19,7 +19,7 @@ function sourceLink(source, commit) {
 export class CreatureSheet extends CharacterSheet {
   static DEFAULT_OPTIONS = {
     classes: ["hol-creature"],
-    actions: { npcMelee: CreatureSheet.npcMelee, viewPortrait },
+    actions: { npcMelee: CreatureSheet.npcMelee, creatureAction: CreatureSheet.creatureAction, viewPortrait },
     position: { width: 740, height: 800 },
   };
   async _prepareContext(options) {
@@ -49,6 +49,9 @@ export class CreatureSheet extends CharacterSheet {
     return {
       ...context,
       gm: game.user.isGM,
+      actionGroups: [["main", "Main Actions"], ["maneuver", "Maneuvers"], ["reaction", "Reactions"]]
+        .map(([category, label]) => ({ label, entries: system.actions.entries.filter(entry =>
+          entry.category === category && !(category === "main" && entry.name === "Basic Melee")) })),
       sourceLink: sourceLink(flags.source, flags.sourceCommit),
       sourcePath: flags.source?.path ?? "",
       sourceCommit: flags.sourceCommit ?? "",
@@ -70,6 +73,10 @@ export class CreatureSheet extends CharacterSheet {
           )
         : "",
     };
+  }
+  static async creatureAction(event, target) {
+    try { await declareCreatureAction(this.actor, target.dataset.creatureAction); }
+    catch (error) { ui.notifications.error(error.message); }
   }
   static async npcMelee() {
     try {

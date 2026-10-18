@@ -89,6 +89,88 @@
     },
     "actions": {
       "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Silken needle",
+          "attributeKey": "fortitude",
+          "defenseSource": "Fortitude",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5 + Poisoned 2",
+            "standard": "3 + Poisoned 1",
+            "strong": "2"
+          },
+          "effect": "5 + Poisoned 2 / 3 + Poisoned 1 / 2",
+          "referenceMarkdown": "### Silken needle\n\n**Target:** One visible creature within 5 squares. **Player defense:** Fortitude. **Damage type:** physical.\n\n**Weak defense:** Poisoned 2. **Standard defense:** Poisoned 1.\n\n**Limit:** Ammunition inventory d6. After each use, roll it; on 1 reduce d6 to d4, or d4 to empty. Cannot use this attack while empty."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Lay a Silken Path",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Up to 2 difficult squares within 3 become normal until next turn.",
+          "referenceMarkdown": "### Lay a Silken Path\n\n*A strong thread snaps between two handholds and draws tight.*\n\nChoose up to 2 connected difficult-terrain squares within 3 squares on a surface it can see. They count as normal terrain until its next turn. Cannot bridge empty space, remove a wall or change occupied-square rules."
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
+          "name": "Defend",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Silken needle | Fortitude | 5 + Poisoned 2 / 3 + Poisoned 1 / 2 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Lay a Silken Path | Up to 2 difficult squares within 3 become normal until next turn. |\n| Defend | +1 Bane |",

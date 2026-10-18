@@ -62,6 +62,11 @@
 {{/if}}
 </section>
 
+{{#if gm}}<section class="hol-creature-specialty-actions">
+<h2>Creature actions</h2><p class="hol-note">Post an action for the table. Costs and effects are resolved manually.</p>
+{{#each actionGroups}}{{#if entries.length}}<h3>{{label}}</h3><div class="hol-creature-actions">{{#each entries}}<button type="button" data-action="creatureAction" data-creature-action="{{id}}">{{name}}{{#if attributeKey}} · {{defenseSource}}{{/if}}</button>{{/each}}</div>{{/if}}{{/each}}
+</section>{{/if}}
+
 {{#if referenceHTML}}
 <section class="hol-creature-reference" aria-labelledby="hol-creature-reference-heading">
 <div class="hol-reference-titlebar"><h2 id="hol-creature-reference-heading">Actions and details</h2><span class="hol-reference-badge">Read-only source reference</span></div>

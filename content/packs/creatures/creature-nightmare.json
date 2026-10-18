@@ -98,6 +98,88 @@
     },
     "actions": {
       "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Funeral hooves",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "8 + Frightened 2 of this creature",
+            "standard": "5 + Frightened 1 of this creature",
+            "strong": "3"
+          },
+          "effect": "8 + Frightened 2 of this creature / 5 + Frightened 1 of this creature / 3",
+          "referenceMarkdown": "### Funeral hooves\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** fire.\n\n**Weak defense:** Frightened 2 of this creature. **Standard defense:** Frightened 1 of this creature."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Slip Through Shadow",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Move 2 through dim light/darkness; no opportunities.",
+          "referenceMarkdown": "### Slip Through Shadow\n\n*Its outline folds into a seam of darkness and gathers again a few steps away.*\n\nMove up to 2 squares through connected dimly lit or dark squares without provoking. Normal terrain and occupancy rules apply. Does not grant Hidden or allow passage through solid objects."
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
+          "name": "Defend",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
       "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
       "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Funeral hooves | Agility | 8 + Frightened 2 of this creature / 5 + Frightened 1 of this creature / 3 |",
       "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Slip Through Shadow | Move 2 through dim light/darkness; no opportunities. |\n| Defend | +1 Bane |",

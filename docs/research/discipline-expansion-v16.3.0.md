@@ -113,27 +113,23 @@ ledgers, HP, conditions, spent Grit and command history. Updating installed
 content does not rebuild them. New advancement uses the current catalog against
 the persisted development state and requires saving/reviewing its current draft.
 
-Browser imports, named saves and autosaves from either supported prior baseline
-receive explicit review and an original backup. Where an origin's selected pair
-changed, the reviewed previous pair remains selected, labeled as a retained
-choice. Its discipline, ability, grant receipts, duplicate compensation, equipment
-and purchases rebuild exactly as before. The selector also offers today's pairs;
-choosing one deliberately replaces the retained selection. Historical options
-are not offered to new characters. Portable JSON retains only a bounded reviewed
-source marker, never arbitrary grant definitions.
+Bruce's later correction in #173 supersedes the initial optional update behavior.
+Browser imports, named saves and autosaves apply the current catalog automatically.
+Earlier origin markers are discarded; each selection resolves to its current pair.
+Native creation drafts use the same current-only choices and save normally, without
+an update approval or historical grant option. Committed world Actors are not
+rebuilt and live resources are not reset.
 
-Earlier native creation drafts open on Review with their old choices retained.
-The update button saves an original draft backup on the Actor before updating
-the source pin. Native creation and the importer understand the same retained
-origin marker. Replacing it uses Foundry's explicit nested-flag deletion so the
-old marker cannot survive a save and silently restore the previous grant.
+Old Walled Communities equipment arrangement/removal keys normalize to the current
+light-armor grant. The parser continues to validate file structure and ignores
+untrusted derived state; the input source pin does not select an alternate ruleset.
+Native JSON import still covers level-1 creation; later-level web plans use the
+existing native advancement workflow.
 
-The older armor update path remains available, including Walled Communities'
-explicit light-armor correction. Unknown source editions remain rejected without
-overwriting the source file. Native JSON import still covers level-1 creation;
-later-level web plans require the existing native advancement workflow.
+## Initial verification and author review (#171)
 
-## Verification and author review
+The retained-choice checks below describe the initial implementation, superseded
+by #173. Current-only update validation is recorded in that PR.
 
 - Node 24 `npm run check` passed: build, package validation and **416 tests**.
   Coverage includes all 62 IDs, exact tiers/actions, full mixed requirements,

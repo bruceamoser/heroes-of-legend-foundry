@@ -293,14 +293,18 @@ the recorded specialty. Clicking learned Message by Heart opens the usual local
 reference with a saved message field (up to 50 words). These values survive browser
 reload and portable export/import.
 
-Old-baseline saves receive an explicit rules-update review and an original named
-backup. Walled Communities uses the corrected light-armor grant; purchased choices
-remain for repair rather than silently being replaced. See the [source update](research/book-update-one-dp-armor.md)
-for existing Actor behavior and the native JSON import boundary.
+Saved characters always use the current rules. Reload, named saves and JSON imports
+apply current culture/background grants automatically. There are no retained-origin
+choices, version prompts or separate rules-update step. Purchases, play notes and
+equipment arrangements remain part of the character; ordinary incomplete-choice
+validation still applies.
 
 The v16.3.0 discipline expansion adds 62 shared abilities and updated culture and
-background pairs. Previous-edition characters keep their original selected pair
-through an explicit rules review, with a named original backup. The origin
-selector marks that retained choice and offers the current alternatives. New
-characters see only the current pairs. Saved purchases, play notes and equipment
-arrangements survive the update; no new ability is bought automatically.
+background pairs. These are the only available origin pairs for every character.
+
+Validation for #173: Node 24 build/package checks and 415 tests passed. Browser
+checks cover automatic autosave/named-save updates, unchanged tab and save identity,
+current origin grants, obsolete marker removal, JSON import and absence of update
+prompts or duplicate library entries. The isolated Foundry 14.369 check passed
+ordinary saving of an earlier draft, current-only origin options and old-file
+import without creating an approval or backup step.

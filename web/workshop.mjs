@@ -1,8 +1,3 @@
-import { originPair, originPairOptions } from "./rules/origin-history.mjs";
-import {
-  reviewRulesUpdate,
-  SUPPORTED_BOOK_SOURCES,
-} from "./rules/source-edition.mjs";
 import { itemArrangement } from "./rules/workshop-play.mjs";
 import { CONDITION_KINDS } from "./rules/conditions.mjs";
 import {
@@ -454,18 +449,18 @@ function builderContent() {
           `<section class="box"><label>${title(kind)}<select aria-label="${title(kind)}" data-origin="${kind}">${option("", `Choose ${kind} and grants`, !draft[kind]?.id)}${catalogs.choices
             .filter((r) => r.originType === kind)
             .flatMap((r) =>
-              originPairOptions(r, draft[kind]).map((pair) =>
+              r.pairs.map((pair, index) =>
                 option(
-                  pair.value,
-                  `${r.name} — ${name(pair.disciplineId)} 1 + ${name(pair.abilityId)}${pair.retained ? " (retained choice)" : ""}`,
-                  pair.selected,
+                  `${r.id}|${index}`,
+                  `${r.name} — ${name(pair.disciplineId)} 1 + ${name(pair.abilityId)}`,
+                  draft[kind]?.id === r.id && draft[kind]?.pair === index,
                 ),
               ),
             )
             .join("")}</select></label>${
             draft[kind]?.id
               ? (() => {
-                  const pair = originPair(get(draft[kind].id), draft[kind]);
+                  const pair = get(draft[kind].id)?.pairs?.[draft[kind].pair];
                   return `<div class="origin-grants">${button(esc(name(draft[kind].id)), "reference", `data-id="${esc(draft[kind].id)}"`, "table-link")}${pair ? `<div>${symbol(pair.disciplineId)}${esc(name(pair.disciplineId))} 1</div>${button(esc(name(pair.abilityId)), "reference", `data-id="${pair.abilityId}"`, "table-link")}` : ""}</div>`;
                 })()
               : ""
@@ -825,7 +820,28 @@ function library() {
     throw new Error(
       "The character library could not be read. Its contents have been preserved.",
     );
-  return saved;
+  const current = saved.map((entry) => {
+    if (
+      entry.character.sourceCommit === catalogs.commit &&
+      entry.character.draft?.culture?.retainedFrom === undefined &&
+      entry.character.draft?.background?.retainedFrom === undefined &&
+      !entry.name.endsWith(" (before rules update)")
+    )
+      return entry;
+    try {
+      const { draft } = readPortableCharacter(entry.character, catalogs);
+      return {
+        ...entry,
+        name: entry.name.replace(/ \(before rules update\)$/, ""),
+        character: JSON.parse(writePortableCharacter(draft, catalogs)),
+      };
+    } catch {
+      return entry;
+    }
+  });
+  if (JSON.stringify(current) !== JSON.stringify(saved))
+    localStorage.setItem(libraryKey, JSON.stringify(current));
+  return current;
 }
 function saveDialog() {
   const current = library().find((c) => c.id === saveId);
@@ -863,41 +879,13 @@ function libraryDialog() {
       : "<p>No saved characters yet. Use Save to keep a named character in this browser.</p>",
   );
 }
-function readWithRulesReview(character) {
-  const value =
-    typeof character === "string" ? JSON.parse(character) : character;
-  if (!SUPPORTED_BOOK_SOURCES.includes(value?.sourceCommit))
-    return readPortableCharacter(character, catalogs);
-  const review = reviewRulesUpdate(character, catalogs);
-  const records = library();
-  const snapshot = JSON.stringify(review.original);
-  if (!records.some((entry) => JSON.stringify(entry.character) === snapshot)) {
-    records.push({
-      id: crypto.randomUUID(),
-      name: `${value.draft.name || "Hero"} (before rules update)`,
-      updated: new Date().toISOString(),
-      character: review.original,
-    });
-    localStorage.setItem(libraryKey, JSON.stringify(records));
-  }
-  if (
-    !confirm(
-      `Review this character with the updated rules?\n\n${review.changes.join("\n\n")}\n\nThe original is kept in Saved characters.`,
-    )
-  )
-    throw new Error(
-      "Original character preserved in Saved characters. Load it again when ready to review the rules update.",
-    );
-  return { ...review, updatedEdition: true };
-}
 function loadSaved(id) {
   const entry = library().find((r) => r.id === id);
   if (!entry) throw new Error("That save is no longer in this browser.");
-  const loaded = readWithRulesReview(entry.character);
+  const loaded = readPortableCharacter(entry.character, catalogs);
   draft = loaded.draft;
-  saveId = loaded.updatedEdition ? null : id;
-  mode = loaded.updatedEdition ? "builder" : "sheet";
-  if (loaded.updatedEdition) step = 7;
+  saveId = id;
+  mode = "sheet";
   tab = "Main";
   edit = false;
   isExample = false;
@@ -1034,12 +1022,11 @@ function getValue(path) {
 }
 function updateField(target) {
   if (target.dataset.origin) {
-    const [id, pair, retainedFrom] = target.value.split("|");
+    const [id, pair] = target.value.split("|");
     if (id)
       draft[target.dataset.origin] = {
         id,
         pair: Number(pair),
-        ...(retainedFrom ? { retainedFrom } : {}),
       };
     else delete draft[target.dataset.origin];
   } else if (target.dataset.field) {
@@ -1567,7 +1554,7 @@ $("#import-file").addEventListener("change", async (event) => {
     if (!file) return;
     if (file.size > MAX_CHARACTER_BYTES)
       throw new Error("Character file is too large.");
-    const result = readWithRulesReview(await file.text());
+    const result = readPortableCharacter(await file.text(), catalogs);
     if (
       !isExample &&
       !confirm("Replace this browser draft with the imported character?")
@@ -1619,9 +1606,14 @@ try {
   example = sample;
   draft = structuredClone(example);
   try {
+    library();
+  } catch {
+    /* Keep an unreadable library independent of the active draft. */
+  }
+  try {
     const saved = JSON.parse(localStorage.getItem(storageKey) ?? "null");
     if (saved) {
-      const loaded = readWithRulesReview(saved.character);
+      const loaded = readPortableCharacter(saved.character, catalogs);
       draft = loaded.draft;
       mode = ["builder", "advancement", "signature"].includes(saved.mode)
         ? saved.mode
@@ -1629,10 +1621,7 @@ try {
       signatureTier = [1, 3, 7].includes(saved.signatureTier)
         ? saved.signatureTier
         : 1;
-      saveId =
-        !loaded.updatedEdition && typeof saved.saveId === "string"
-          ? saved.saveId
-          : null;
+      saveId = typeof saved.saveId === "string" ? saved.saveId : null;
       tab = tabs.includes(saved.tab)
         ? saved.tab
         : saved.tab === "Belongings"
@@ -1642,12 +1631,7 @@ try {
         ? Math.max(0, Math.min(7, saved.step))
         : 0;
       isExample = Boolean(saved.isExample);
-      if (loaded.updatedEdition) {
-        mode = "builder";
-        step = 7;
-        isExample = false;
-        persist();
-      }
+      persist();
     }
   } catch {
     notice(

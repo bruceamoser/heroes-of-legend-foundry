@@ -40,7 +40,11 @@ page.on("pageerror", (e) => failures.push(e.message));
 page.on("response", (r) => {
   if (r.status() >= 400) failures.push(`${r.status()} ${r.url()}`);
 });
-page.on("dialog", (d) => d.accept());
+const dialogs = [];
+page.on("dialog", (d) => {
+  dialogs.push(d.message());
+  d.accept();
+});
 const output = resolve("test-results/workshop");
 await mkdir(output, { recursive: true });
 try {
@@ -1058,90 +1062,127 @@ try {
     savedUtility.draft.play.memorizedMessage,
     "Meet by the old bridge at dawn.",
   );
-  // A previous-edition autosave is backed up and opened explicitly for review.
-  const legacy = structuredClone(exported);
-  legacy.sourceCommit = "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3";
-  await page.evaluate(
-    (character) =>
-      localStorage.setItem(
-        "hol.workshop.v1",
-        JSON.stringify({ character, mode: "sheet", tab: "Main" }),
-      ),
-    legacy,
-  );
-  await page.reload();
-  await page.getByRole("heading", { name: "Review", exact: true }).waitFor();
-  const backups = await page.evaluate(() =>
-    JSON.parse(localStorage.getItem("hol.workshop.library.v1")),
-  );
-  assert(
-    backups.some(
-      (entry) =>
-        entry.character.sourceCommit === legacy.sourceCommit &&
-        entry.name.includes("before rules update"),
-    ),
-  );
-  const revised = await page.evaluate(
-    () => JSON.parse(localStorage.getItem("hol.workshop.v1")).character,
-  );
-  assert.notEqual(revised.sourceCommit, legacy.sourceCommit);
-  assert.deepEqual(revised.draft.purchases, legacy.draft.purchases);
-  // Expansion updates keep the selected historical grant instead of silently swapping it.
-  const expansion = structuredClone(exported);
-  expansion.sourceCommit = "64089a1c8961d7faff172f179448a8b6e57827ef";
-  expansion.draft.culture = { id: "origin-culture-cloister-valleys", pair: 0 };
-  await page
-    .locator("#import-file")
-    .setInputFiles({
-      name: "previous-origin.json",
-      mimeType: "application/json",
-      buffer: Buffer.from(JSON.stringify(expansion)),
+  // Every saved/imported hero uses the current catalog immediately, without a version choice.
+  const previous = structuredClone(exported);
+  previous.sourceCommit = "64089a1c8961d7faff172f179448a8b6e57827ef";
+  previous.draft.culture = {
+    id: "origin-culture-cloister-valleys",
+    pair: 0,
+    retainedFrom: previous.sourceCommit,
+  };
+  const beforeUpdateDialogs = dialogs.length;
+  const previousLibraryCount = await page.evaluate((character) => {
+    const key = "hol.workshop.library.v1";
+    const entries = JSON.parse(localStorage.getItem(key) ?? "[]");
+    entries.push({
+      id: "current-rules-save",
+      name: "Current rules hero (before rules update)",
+      updated: "2026-10-18",
+      character,
     });
-  await page.getByRole("heading", { name: "Review", exact: true }).waitFor();
-  await page.getByRole("button", { name: "3 Origins", exact: true }).click();
-  const culture = page.getByLabel("Culture", { exact: true });
-  assert.equal(
-    await culture.inputValue(),
-    "origin-culture-cloister-valleys|0|64089a1c8961d7faff172f179448a8b6e57827ef",
-  );
-  assert.match(
-    await culture.locator("option:checked").innerText(),
-    /Athletics 1.*Untroubled Hand.*retained choice/,
-  );
-  assert.match(
-    (await culture.locator("option").allTextContents()).join(" "),
-    /Cloister Valleys.*Radiance 1.*Lantern Moths/,
-  );
-  assert.match(
-    (await culture.locator("option").allTextContents()).join(" "),
-    /Highland Holds.*Frost 1.*Winter Store/,
-  );
-  assert.match(
-    (await culture.locator("option").allTextContents()).join(" "),
-    /Reed Villages.*Frost 1.*Rime Footholds/,
-  );
+    localStorage.setItem(key, JSON.stringify(entries));
+    localStorage.setItem(
+      "hol.workshop.v1",
+      JSON.stringify({
+        character,
+        mode: "sheet",
+        tab: "Abilities",
+        saveId: "current-rules-save",
+      }),
+    );
+    return entries.length;
+  }, previous);
   await page.reload();
-  await page.getByRole("button", { name: "3 Origins", exact: true }).click();
-  assert.match(
-    await page.getByLabel("Culture", { exact: true }).inputValue(),
-    /64089/,
+  await page.getByRole("tab", { name: "Abilities", exact: true }).waitFor();
+  assert.equal(
+    await page
+      .getByRole("tab", { name: "Abilities", exact: true })
+      .getAttribute("aria-selected"),
+    "true",
   );
-  await page.screenshot({ path: `${output}/retained-origin.png` });
-  await page
-    .getByLabel("Culture", { exact: true })
-    .selectOption("origin-culture-cloister-valleys|0");
-  const updatedOrigin = await page.evaluate(
-    () =>
-      JSON.parse(localStorage.getItem("hol.workshop.v1")).character.draft
-        .culture,
+  assert.equal(dialogs.length, beforeUpdateDialogs);
+  const refreshed = await page.evaluate(() => ({
+    saved: JSON.parse(localStorage.getItem("hol.workshop.v1")),
+    library: JSON.parse(localStorage.getItem("hol.workshop.library.v1")),
+  }));
+  assert.equal(refreshed.library.length, previousLibraryCount);
+  assert.equal(
+    refreshed.library.find((entry) => entry.id === "current-rules-save").name,
+    "Current rules hero",
   );
-  assert.deepEqual(updatedOrigin, {
+  assert.notEqual(
+    refreshed.saved.character.sourceCommit,
+    previous.sourceCommit,
+  );
+  assert.deepEqual(refreshed.saved.character.draft.culture, {
     id: "origin-culture-cloister-valleys",
     pair: 0,
   });
+  assert.deepEqual(
+    refreshed.saved.character.draft.purchases,
+    previous.draft.purchases,
+  );
+  assert.equal(refreshed.saved.saveId, "current-rules-save");
+  assert.equal(
+    refreshed.library.find((entry) => entry.id === "current-rules-save")
+      .character.sourceCommit,
+    refreshed.saved.character.sourceCommit,
+  );
+  await page
+    .getByRole("button", { name: "Load character", exact: true })
+    .click();
+  await page
+    .locator(".saved-characters article")
+    .filter({ hasText: "Current rules hero" })
+    .getByRole("button", { name: "Load", exact: true })
+    .click();
+  assert.equal(
+    await page
+      .getByRole("tab", { name: "Main", exact: true })
+      .getAttribute("aria-selected"),
+    "true",
+  );
+  assert.equal(dialogs.length, beforeUpdateDialogs);
+  await page.getByRole("tab", { name: "Development", exact: true }).click();
+  await page
+    .getByRole("button", { name: "Edit creation", exact: true })
+    .click();
+  await page.getByRole("button", { name: "3 Origins", exact: true }).click();
+  const culture = page.getByLabel("Culture", { exact: true });
+  assert.equal(await culture.inputValue(), "origin-culture-cloister-valleys|0");
   assert.match(
-    await page.locator(".origin-grants").first().innerText(),
-    /Radiance 1.*Lantern Moths/s,
+    await culture.locator("option:checked").innerText(),
+    /Radiance 1.*Lantern Moths/,
+  );
+  assert(
+    (await culture.locator("option").allTextContents()).every(
+      (text) => !/retained choice|Cloister Valleys.*Athletics 1/.test(text),
+    ),
+  );
+  await page.locator(".brand").hover();
+  await page.screenshot({ path: `${output}/current-origin.png` });
+  // Import old files directly under the current rules, including obsolete retention markers.
+  await page.locator("#import-file").setInputFiles({
+    name: "previous-origin.json",
+    mimeType: "application/json",
+    buffer: Buffer.from(JSON.stringify(previous)),
+  });
+  await page.getByRole("heading", { name: "Review", exact: true }).waitFor();
+  const importedCurrent = await page.evaluate(
+    () => JSON.parse(localStorage.getItem("hol.workshop.v1")).character,
+  );
+  assert.deepEqual(importedCurrent.draft.culture, {
+    id: "origin-culture-cloister-valleys",
+    pair: 0,
+  });
+  assert.equal(
+    importedCurrent.sourceCommit,
+    refreshed.saved.character.sourceCommit,
+  );
+  assert(
+    !dialogs
+      .slice(beforeUpdateDialogs)
+      .some((text) => /rules update|updated rules|rules edition/i.test(text)),
   );
   assert.deepEqual(failures, []);
   console.info(

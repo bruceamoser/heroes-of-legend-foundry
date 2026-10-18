@@ -1,6 +1,5 @@
 <section class="hol-wizard">
  <header class="hol-banner"><p class="hol-kicker">Heroes of Legend · Character creation</p><h1>{{draft.name}}</h1><p>Your draft is separate from your character. Save at any time, then resume from the sheet.</p>{{#unless committed}}<button type="button" data-action="importCharacter">Import character JSON</button>{{/unless}}</header>
- {{#if rulesUpdate}}<section class="hol-note"><h2>Rules update</h2><ul>{{#each rulesUpdate}}<li>{{this}}</li>{{/each}}</ul><p>Your original draft will be kept on this character.</p><button type="button" data-action="reviewRulesUpdate">Keep these choices and update draft</button></section>{{/if}}
  <div class="hol-wizard-layout">
  <nav aria-label="Creation steps">{{#each steps}}<button type="button" data-action="navigate" data-step="{{index}}" {{#if active}}aria-current="step"{{/if}}>{{name}}</button>{{/each}}<small>Saved revision {{revision}}</small></nav>
  <main class="hol-wizard-main"><h2>{{title}}</h2>

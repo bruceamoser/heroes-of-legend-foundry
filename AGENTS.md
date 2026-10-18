@@ -50,3 +50,12 @@ outside the repository; never include them in prompts, logs or Git.
 ## Validation
 
 Use Node 24 (see `.node-version`), `npm ci`, then `npm run check`. Run `npm run test:runtime` only against an isolated local Foundry development world with `HOL_TEST_URL` set explicitly. See `docs/development.md` for setup and the limits of current runtime evidence. Never use live campaign data for automated testing.
+
+## Current-only character rules
+
+Bruce's #173 correction makes the current approved catalog the only character
+rules version. Web autosaves, named saves, imports and creation drafts apply it
+automatically. Do not retain historical origin choices, add version-switch
+prompts or force a rules-update review. This authorizes recalculating saved
+character choices from the current catalog; it does not authorize rebuilding
+committed world Actors or resetting live resources.

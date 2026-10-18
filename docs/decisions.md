@@ -137,3 +137,12 @@ Shield Block under its existing benefit key. Four pre-roll attribute substitutio
 use the existing defense response. Other specialty triggers and outcomes remain
 readable local rules with table adjudication, using established roll, condition,
 movement and inventory rules rather than new global mechanics or approval gates.
+
+## Current rules only (#173)
+
+Bruce superseded the optional update behavior: the current book catalog is the
+only rules version. Apply it automatically to web reloads, named saves, JSON
+imports and creation drafts. Remove historical origin options, rules-update
+confirmations and forced update-review screens. Previous saved markers are
+ignored; origin selections use their current paired grants. Keep ordinary
+character-editing controls and structural validation.

@@ -1,6 +1,5 @@
 import { normalizeWorkshopPlay } from "./workshop-play.mjs";
 import { ATTRIBUTES } from "./character.mjs";
-import { originPair } from "./origin-history.mjs";
 import { workshopCharacter } from "./workshop-character.mjs";
 
 export const PORTABLE_FORMAT = "heroes-of-legend-character";
@@ -13,6 +12,35 @@ const string = (value, max = 200) =>
 const strings = (value, max = 100) =>
   Array.isArray(value) && value.length <= max && value.every((v) => string(v));
 const integer = (value) => Number.isSafeInteger(value);
+
+const BEFORE_LIGHT_ARMOR_SOURCE = "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3";
+const OLD_ARMOR_KEY =
+  "grant:ability-wear-medium-armor:item-ordinary-medium-armor";
+const LIGHT_ARMOR_KEY =
+  "grant:ability-wear-light-armor:item-ordinary-light-armor";
+
+/** Normalize saved choices for the only supported rules catalog, without changing the input. */
+export function currentCreationDraft(input, sourceCommit) {
+  const draft = structuredClone(input);
+  for (const kind of ["culture", "background"])
+    if (object(draft?.[kind])) delete draft[kind].retainedFrom;
+  if (
+    sourceCommit === BEFORE_LIGHT_ARMOR_SOURCE &&
+    draft?.culture?.id === "origin-culture-walled-communities" &&
+    draft.culture.pair === 0
+  ) {
+    if (Object.hasOwn(draft.loadout ?? {}, OLD_ARMOR_KEY)) {
+      draft.loadout ??= {};
+      draft.loadout[LIGHT_ARMOR_KEY] = draft.loadout[OLD_ARMOR_KEY];
+      delete draft.loadout[OLD_ARMOR_KEY];
+    }
+    if (Array.isArray(draft.play?.inventory?.removed))
+      draft.play.inventory.removed = draft.play.inventory.removed.map((id) =>
+        id === OLD_ARMOR_KEY ? LIGHT_ARMOR_KEY : id,
+      );
+  }
+  return draft;
+}
 
 /** Import choices, never trusted derived statistics, executable content or Actor IDs. */
 export function readPortableCharacter(input, catalogs, languages) {
@@ -28,11 +56,7 @@ export function readPortableCharacter(input, catalogs, languages) {
     ![1, 2, PORTABLE_VERSION].includes(value.schemaVersion)
   )
     throw new Error("Choose a supported Heroes of Legend character JSON file.");
-  if (value.sourceCommit !== catalogs.commit)
-    throw new Error(
-      "This character uses a different rules edition. Keep the file and open it with its matching system version.",
-    );
-  const d = value.draft;
+  const d = currentCreationDraft(value.draft, value.sourceCommit);
   const fail = () => {
     throw new Error("The character file contains malformed creation choices.");
   };
@@ -84,14 +108,6 @@ export function readPortableCharacter(input, catalogs, languages) {
       if (!object(d[key]) || !string(d[key].id) || !integer(d[key].pair))
         fail();
       draft[key] = { id: d[key].id, pair: d[key].pair };
-      if (d[key].retainedFrom !== undefined) {
-        if (!string(d[key].retainedFrom, 40)) fail();
-        draft[key].retainedFrom = d[key].retainedFrom;
-        const origin = catalogs.choices.find(
-          (record) => record.id === d[key].id,
-        );
-        if (!originPair(origin, draft[key])) fail();
-      }
     }
   for (const stage of [0, 1]) {
     if (!Array.isArray(d.purchases[stage]) || d.purchases[stage].length > 200)

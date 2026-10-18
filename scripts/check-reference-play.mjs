@@ -29,7 +29,10 @@ try {
     }
     const actor = await Actor.create({ name: "HOL134 reference hero", type: "character", ownership: { default: 0, [fixture.users[0]]: 3 } });
     fixture.actors.push(actor.id);
-    const response = await fetch("/systems/heroes-of-legend/../heroes-of-legend/data/choices.json");
+    const { safeReferenceHTML } = await import("/systems/heroes-of-legend/services/reference-play.mjs");
+    const clean = safeReferenceHTML('<h2>Preserved heading</h2><p onclick="alert(1)">safe</p><script>alert(1)</script><a href="javascript:alert(1)">unsafe</a><section class="secret">hidden secret</section><a href="https://example.com/source">source</a>');
+    if (/onclick|<script|javascript:|hidden secret/.test(clean) || !clean.includes("Preserved heading") || !clean.includes("https://example.com/source")) throw new Error("Unsafe or incomplete reference HTML");
+    const response = await fetch("/systems/heroes-of-legend/data/choices.json");
     const choices = await response.json();
     const record = choices.records.find(record => record.id === "ability-winter-hold");
     const source = await game.packs.get("heroes-of-legend.abilities").getDocument(record.foundryId);

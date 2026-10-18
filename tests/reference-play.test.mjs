@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { referenceAbilities, selectedReferences, postAbilityReference } from "../src/services/reference-play.mjs";
-import { evaluatePreparedRoll } from "../src/services/roll.mjs";
+import { renderRollSummary, evaluatePreparedRoll } from "../src/services/roll.mjs";
 
 function fixture() {
   const user = { id: "owner", isGM: false };
@@ -58,4 +58,10 @@ test("reference selection leaves evaluated dice, modifier sources and action sta
   assert.deepEqual(snapshot, plainSnapshot);
   assert.equal(references.length, 1);
   assert.equal(plainReferences.length, 0);
+});
+
+
+test("private roll content guard prevents rendering reference names and links", () => {
+  const message = { isContentVisible: false, getFlag: () => ({ references: [{ itemUuid: "Actor.secret.Item.secret", name: "Secret ability" }] }) };
+  renderRollSummary(message, { querySelector() { throw new Error("Hidden content must not inspect or populate chat DOM"); } });
 });

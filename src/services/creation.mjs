@@ -162,6 +162,7 @@ async function applyCreation(messageId) {
     "system.health.value": preview.summary.maximumHp,
     "system.grit.granted": preview.summary.gritGranted,
     "system.grit.spent": 0,
+    "system.memorizedMessage": saved.data.play?.memorizedMessage ?? "",
     [`flags.${ID}.development`]: state,
     [`flags.${ID}.creationReceipt`]: {
       status: "pending-verification",

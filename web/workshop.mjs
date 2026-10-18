@@ -1,3 +1,7 @@
+import {
+  reviewRulesUpdate,
+  PREVIOUS_BOOK_SOURCE,
+} from "./rules/source-edition.mjs";
 import { itemArrangement } from "./rules/workshop-play.mjs";
 import { CONDITION_KINDS } from "./rules/conditions.mjs";
 import {
@@ -13,6 +17,7 @@ import { ATTRIBUTES } from "./rules/character.mjs";
 import {
   DEFAULT_LANGUAGES,
   campaignLanguageOptions,
+  additionalLanguageOptions,
 } from "./rules/languages.mjs";
 import {
   eligibleFirst,
@@ -561,7 +566,7 @@ function learning() {
     )
     .join(
       "",
-    )}</ul></details><div class="drop-zone" data-drop>Drop an available ability here to learn it.</div>${acquisitions()}${searchRow()}${/light.*armor/i.test(query) ? '<p class="inline-help">This rules edition lists Wear Medium Armor and Wear Heavy Armor; it has no Wear Light Armor entry. Search “armor” to see the available training.</p>' : ""}<div class="cards" id="results">${groups || '<p class="empty">No matching choices. Try another keyword or discipline.</p>'}</div>`;
+    )}</ul></details><div class="drop-zone" data-drop>Drop an available ability here to learn it.</div>${acquisitions()}${searchRow()}<div class="cards" id="results">${groups || '<p class="empty">No matching choices. Try another keyword or discipline.</p>'}</div>`;
 }
 function acquisitionPath(id) {
   return mode === "signature" && signatureTier > 1
@@ -598,12 +603,39 @@ function acquisitions() {
         a &&
         (a.weaponChoice ||
           a.recipeChoices ||
+          a.languageChoice ||
+          a.specialtyChoice ||
           a.items.includes("item-ordinary-melee-weapon")),
     )
     .map((a) => {
       const path = acquisitionPath(a.id),
         d = getValue(path) ?? {};
-      return `<details class="planned" ${preview.errors.some((e) => e.code === "acquisition" && e.id === a.id) ? "open" : ""}><summary>${esc(name(a.id))} · Granted choices</summary><div class="field-grid">${a.weaponChoice ? select("Weapon", `${path}.weapon`, option("", "Choose weapon", !d.weapon) + a.weaponChoice.map((id) => option(id, id === "melee" ? "Ordinary melee weapon" : id === "ranged" ? "Ranged weapon + d8 ammunition" : name(id), d.weapon === id)).join("")) : ""}${a.items.includes("item-ordinary-melee-weapon") || a.weaponChoice?.includes("melee") ? select("Melee weapon hands", `${path}.meleeHands`, option("", "Choose hands", !d.meleeHands) + [1, 2].map((n) => option(n, `${n} handed`, d.meleeHands === n)).join("")) : ""}</div>${
+      return `<details class="planned" ${preview.errors.some((e) => e.code === "acquisition" && e.id === a.id) ? "open" : ""}><summary>${esc(name(a.id))} · Choices</summary><div class="field-grid">${
+        a.languageChoice
+          ? select(
+              "Language",
+              `${path}.languageId`,
+              option("", "Choose language", !d.languageId) +
+                additionalLanguageOptions(
+                  DEFAULT_LANGUAGES,
+                  mode === "advancement"
+                    ? preview.play.languages
+                    : state.languages,
+                  d.languageId,
+                  a.id,
+                )
+                  .map((l) =>
+                    option(
+                      l.id,
+                      `${l.name}${l.reason ? ` · ${l.reason}` : ""}`,
+                      l.selected,
+                      l.disabled,
+                    ),
+                  )
+                  .join(""),
+            )
+          : ""
+      }${a.specialtyChoice ? field("Performance specialty", `${path}.specialty`, d.specialty, "text", 'maxlength="120" placeholder="e.g. singing or juggling"') : ""}${a.weaponChoice ? select("Weapon", `${path}.weapon`, option("", "Choose weapon", !d.weapon) + a.weaponChoice.map((id) => option(id, id === "melee" ? "Ordinary melee weapon" : id === "ranged" ? "Ranged weapon + d8 ammunition" : name(id), d.weapon === id)).join("")) : ""}${a.items.includes("item-ordinary-melee-weapon") || a.weaponChoice?.includes("melee") ? select("Melee weapon hands", `${path}.meleeHands`, option("", "Choose hands", !d.meleeHands) + [1, 2].map((n) => option(n, `${n} handed`, d.meleeHands === n)).join("")) : ""}</div>${
         a.recipeChoices
           ? `<p class="inline-help">Choose ${a.recipeChoices} recipes</p><div class="cards">${catalogs.inventory.recipes
               .filter((r) => r.genericChoice && r.permissions.includes(a.id))
@@ -830,12 +862,41 @@ function libraryDialog() {
       : "<p>No saved characters yet. Use Save to keep a named character in this browser.</p>",
   );
 }
+function readWithRulesReview(character) {
+  const value =
+    typeof character === "string" ? JSON.parse(character) : character;
+  if (value?.sourceCommit !== PREVIOUS_BOOK_SOURCE)
+    return readPortableCharacter(character, catalogs);
+  const review = reviewRulesUpdate(character, catalogs);
+  const records = library();
+  const snapshot = JSON.stringify(review.original);
+  if (!records.some((entry) => JSON.stringify(entry.character) === snapshot)) {
+    records.push({
+      id: crypto.randomUUID(),
+      name: `${value.draft.name || "Hero"} (before rules update)`,
+      updated: new Date().toISOString(),
+      character: review.original,
+    });
+    localStorage.setItem(libraryKey, JSON.stringify(records));
+  }
+  if (
+    !confirm(
+      `Review this character with the updated rules?\n\n${review.changes.join("\n\n")}\n\nThe original is kept in Saved characters.`,
+    )
+  )
+    throw new Error(
+      "Original character preserved in Saved characters. Load it again when ready to review the rules update.",
+    );
+  return { ...review, updatedEdition: true };
+}
 function loadSaved(id) {
   const entry = library().find((r) => r.id === id);
   if (!entry) throw new Error("That save is no longer in this browser.");
-  draft = readPortableCharacter(entry.character, catalogs).draft;
-  saveId = id;
-  mode = "sheet";
+  const loaded = readWithRulesReview(entry.character);
+  draft = loaded.draft;
+  saveId = loaded.updatedEdition ? null : id;
+  mode = loaded.updatedEdition ? "builder" : "sheet";
+  if (loaded.updatedEdition) step = 7;
   tab = "Main";
   edit = false;
   isExample = false;
@@ -1112,6 +1173,15 @@ function showReference(id) {
       references.records[id]?.markdown ??
         "This reference is unavailable in this build.",
     );
+  const specialty = preview.state.specialties?.find(
+    (entry) => entry.abilityId === id,
+  )?.specialty;
+  if (specialty)
+    body = `<p><strong>Your specialty:</strong> ${esc(specialty)}</p>` + body;
+  if (id === "ability-message-by-heart" && preview.state.abilities.includes(id))
+    body =
+      `<label>Memorized message<textarea id="memorized-message" aria-label="Memorized message" maxlength="5000">${esc(draft.play?.memorizedMessage ?? "")}</textarea></label><p class="inline-help">Up to 50 words. Rehearse a replacement for one minute.</p><div class="dialog-actions">${button("Save message", "save-message", "", "primary")}</div>` +
+      body;
   $("#reference").innerHTML =
     `<header><h2 id="reference-title">${esc(r.name)}</h2>${button("Close", "close-reference", "", "quiet")}</header><div class="reference-body">${body}</div>`;
   $("#reference").showModal();
@@ -1120,6 +1190,16 @@ function showReference(id) {
 async function action(target) {
   const a = target.dataset.action;
   if (a === "reference") return showReference(target.dataset.id);
+  if (a === "save-message") {
+    const message = $("#memorized-message").value.trim();
+    if (message.split(/\s+/).filter(Boolean).length > 50)
+      throw new Error("Keep the memorized message to 50 words or fewer.");
+    playDraft().memorizedMessage = message;
+    persist();
+    $("#reference").close();
+    notice("Message saved.");
+    return;
+  }
   if (a === "add-item") return addItemDialog();
   if (a === "add-language") return addLanguageDialog();
   if (a === "add-condition") return addConditionDialog();
@@ -1481,7 +1561,7 @@ $("#import-file").addEventListener("change", async (event) => {
     if (!file) return;
     if (file.size > MAX_CHARACTER_BYTES)
       throw new Error("Character file is too large.");
-    const result = readPortableCharacter(await file.text(), catalogs);
+    const result = readWithRulesReview(await file.text());
     if (
       !isExample &&
       !confirm("Replace this browser draft with the imported character?")
@@ -1535,14 +1615,18 @@ try {
   try {
     const saved = JSON.parse(localStorage.getItem(storageKey) ?? "null");
     if (saved) {
-      draft = readPortableCharacter(saved.character, catalogs).draft;
+      const loaded = readWithRulesReview(saved.character);
+      draft = loaded.draft;
       mode = ["builder", "advancement", "signature"].includes(saved.mode)
         ? saved.mode
         : "sheet";
       signatureTier = [1, 3, 7].includes(saved.signatureTier)
         ? saved.signatureTier
         : 1;
-      saveId = typeof saved.saveId === "string" ? saved.saveId : null;
+      saveId =
+        !loaded.updatedEdition && typeof saved.saveId === "string"
+          ? saved.saveId
+          : null;
       tab = tabs.includes(saved.tab)
         ? saved.tab
         : saved.tab === "Belongings"
@@ -1552,6 +1636,12 @@ try {
         ? Math.max(0, Math.min(7, saved.step))
         : 0;
       isExample = Boolean(saved.isExample);
+      if (loaded.updatedEdition) {
+        mode = "builder";
+        step = 7;
+        isExample = false;
+        persist();
+      }
     }
   } catch {
     notice(

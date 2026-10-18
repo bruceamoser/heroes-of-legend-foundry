@@ -1,6 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
+  additionalLanguageOptions,
   COMMON_LANGUAGE_ID,
   DEFAULT_LANGUAGES,
   LANGUAGE_CONFIGURATION_SCHEMA,
@@ -265,4 +266,37 @@ test("the GM editor preserves invalid saved shapes for explicit repair", () => {
   assert.equal(rows[0].writing, false);
   assert.equal(rows[0].writingInvalid, true);
   assert(!validateLanguageConfiguration(raw).valid);
+});
+
+test("additional language options put legal choices first and retain blocked and own-source choices", () => {
+  const known = [
+    { id: "common", source: "creation-common" },
+    { id: "goblin", source: "play" },
+    { id: "orc", source: "ability-another-tongue" },
+  ];
+  const rows = additionalLanguageOptions(
+    DEFAULT_LANGUAGES,
+    known,
+    "orc",
+    "ability-another-tongue",
+  );
+  const firstBlocked = rows.findIndex((row) => row.disabled);
+  assert(firstBlocked > 0);
+  assert(rows.slice(0, firstBlocked).every((row) => row.eligible));
+  assert(rows.slice(firstBlocked).every((row) => row.disabled));
+  assert.equal(rows.find((row) => row.id === "goblin").disabled, true);
+  assert.match(rows.find((row) => row.id === "goblin").reason, /already known/);
+  assert.equal(rows.find((row) => row.id === "draconic").disabled, true);
+  assert.match(rows.find((row) => row.id === "draconic").reason, /uncommon/);
+  assert.equal(rows.find((row) => row.id === "orc").eligible, true);
+  assert.equal(rows.find((row) => row.id === "orc").selected, true);
+  const removed = additionalLanguageOptions(
+    DEFAULT_LANGUAGES,
+    known,
+    "lost",
+    "ability-another-tongue",
+  ).find((row) => row.id === "lost");
+  assert.equal(removed.selected, true);
+  assert.equal(removed.disabled, true);
+  assert.equal(removed.repair, true);
 });

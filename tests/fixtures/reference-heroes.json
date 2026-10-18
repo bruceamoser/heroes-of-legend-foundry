@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "provenance": {
     "repository": "bruceamoser/heroes-of-legend",
-    "commit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+    "commit": "64089a1c8961d7faff172f179448a8b6e57827ef",
     "index": {
       "path": "design/characters/README.md",
-      "sha256": "8a2ef61dc111e2e577e51ed3d3af357dac51ccefd41373ba482d9e8cb3f1bbde"
+      "sha256": "b0ac84186778d76181b4425f0746dbaa2a896ebdf235af30c8f0a6b1e2bb29c5"
     },
     "characters": {
       "borin-bridgekeeper": {
         "path": "design/characters/borin-bridgekeeper.md",
-        "sha256": "64ce8bd9fe11bcc2271732e09e2bbc1b6a824b3ecd1b24db62b7ce43a427f076"
+        "sha256": "551645219e85d2369bd6064ed55f563d527c442e879f586d2c252bc70d973bf3"
       },
       "lira-ashbow": {
         "path": "design/characters/lira-ashbow.md",
@@ -22,15 +22,15 @@
       },
       "oren-brass": {
         "path": "design/characters/oren-brass.md",
-        "sha256": "6bc3a9570b916218ef6d8150816d4ae898ac1e4216f4910caa04df46a2e045b7"
+        "sha256": "23c3218511f5d15354202afffab61f64be5fcdf525afaa5da465133ab7a95297"
       },
       "pip-copperwink": {
         "path": "design/characters/pip-copperwink.md",
-        "sha256": "6e55bcdef1c33db36c97ad1e916d91241839dcb65342d5fbac40e9dfb5c0e4ad"
+        "sha256": "6d0a1f21edd873baa2a26351a2f899591359444c41bb69caab90119394314928"
       },
       "vaelis-emberglass": {
         "path": "design/characters/vaelis-emberglass.md",
-        "sha256": "b5585ecd1f072768bc2441f777717a00f1a57de068d47d1e6c783978194ba276"
+        "sha256": "3165959a11d41c82cff98df061d2971fe6afb0ccda6ff780f6ce332d57bc6b8e"
       }
     }
   },
@@ -182,9 +182,9 @@
           },
           "ancestryId": "ancestry-dwarf",
           "traitIds": [
-            "trait-dwarf-deep-constitution",
-            "trait-dwarf-carved-history"
-          ],
+          "trait-dwarf-deep-constitution",
+          "trait-dwarf-carved-history"
+        ],
           "classId": "class-protector",
           "classDisciplines": ["discipline-armor", "discipline-guard"],
           "signatureId": "ability-signature-protector-between-them"
@@ -195,7 +195,7 @@
             "origin-culture-walled-communities",
             0,
             "discipline-armor",
-            "ability-wear-medium-armor"
+            "ability-wear-light-armor"
           ],
           [
             "background",
@@ -230,7 +230,7 @@
           "ability-take-them-alive",
           "ability-tell-a-worthy-story",
           "ability-treat-soft-tissue",
-          "ability-wear-medium-armor"
+          "ability-wear-light-armor"
         ],
         "ranks": {
           "discipline-armor": 1,
@@ -248,7 +248,7 @@
           ["item-food-bundle", 0],
           ["item-lesser-healing-bottle", 0],
           ["item-lighting-bundle", 0],
-          ["item-ordinary-medium-armor", 0],
+          ["item-ordinary-light-armor", 0],
           ["item-ordinary-melee-weapon", 1],
           ["item-ordinary-shield", 1],
           ["item-rope-coil", 0],
@@ -705,6 +705,9 @@
             },
             {
               "id": "ability-conditioned-body"
+            },
+            {
+              "id": "ability-message-by-heart"
             }
           ],
           "1": [
@@ -816,7 +819,7 @@
           ]
         ],
         "stages": [
-          [13, 0, 12, 1],
+          [13, 0, 13, 0],
           [13, 2, 15, 0]
         ],
         "stats": {
@@ -835,6 +838,7 @@
           "ability-identify-a-mixture",
           "ability-identify-an-enchantment",
           "ability-make-something-useful",
+          "ability-message-by-heart",
           "ability-ordinary-recipe-study",
           "ability-read-the-remains",
           "ability-rouse-the-senses",
@@ -928,6 +932,9 @@
             },
             {
               "id": "ability-notice-the-human-detail"
+            },
+            {
+              "id": "ability-quick-exit"
             }
           ],
           "1": [
@@ -1013,9 +1020,9 @@
           },
           "ancestryId": "ancestry-halfling",
           "traitIds": [
-            "trait-halfling-small-passage",
-            "trait-halfling-quiet-company"
-          ],
+          "trait-halfling-small-passage",
+          "trait-halfling-quiet-company"
+        ],
           "classId": "class-shadow",
           "classDisciplines": ["discipline-subterfuge", "discipline-athletics"],
           "signatureId": "ability-signature-shadow-fade-behind"
@@ -1037,7 +1044,7 @@
           ]
         ],
         "stages": [
-          [11, 0, 10, 1],
+          [11, 0, 11, 0],
           [11, 1, 12, 0]
         ],
         "stats": {
@@ -1057,6 +1064,7 @@
           "ability-borrow-a-voice",
           "ability-invitation-to-the-blade",
           "ability-notice-the-human-detail",
+          "ability-quick-exit",
           "ability-quiet-latch",
           "ability-sell-the-feint",
           "ability-signature-shadow-fade-behind",
@@ -1141,6 +1149,9 @@
             },
             {
               "id": "ability-keep-your-bearings"
+            },
+            {
+              "id": "ability-another-tongue"
             }
           ],
           "1": [
@@ -1162,10 +1173,17 @@
             },
             {
               "id": "ability-gust-hammer"
+            },
+            {
+              "id": "ability-catch-that"
             }
           ]
         },
-        "acquisitions": {},
+        "acquisitions": {
+          "ability-another-tongue": {
+            "languageId": "dwarven"
+          }
+        },
         "shopping": [
           {
             "id": "item-travel-pack",
@@ -1237,8 +1255,8 @@
           ]
         ],
         "stages": [
-          [13, 0, 12, 1],
-          [13, 0, 12, 1]
+          [13, 0, 13, 0],
+          [13, 0, 13, 0]
         ],
         "stats": {
           "hp": 17,
@@ -1254,7 +1272,9 @@
           "ability-a-coal-for-a-promise",
           "ability-a-friend-beneath-the-door",
           "ability-a-hand-from-before",
+          "ability-another-tongue",
           "ability-breath-of-the-wyrmling",
+          "ability-catch-that",
           "ability-cinder-cast",
           "ability-conditioned-body",
           "ability-gust-hammer",
@@ -1276,7 +1296,8 @@
         "recipes": [],
         "languages": [
           ["common", "Common", "full"],
-          ["elven", "Elven", "full"]
+          ["elven", "Elven", "full"],
+          ["dwarven", "Dwarven", "full"]
         ],
         "items": [
           ["item-food-bundle", 0],

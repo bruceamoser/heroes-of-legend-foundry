@@ -151,16 +151,14 @@ test("recipe study requires exactly two distinct compatible unlearned recipes", 
     ]).some((r) => r.text.includes("exactly two")),
   );
   assert(
-    reasons([
-      "recipe-bound-torches",
-      "recipe-bound-torches",
-    ]).some((r) => r.text.includes("distinct")),
+    reasons(["recipe-bound-torches", "recipe-bound-torches"]).some((r) =>
+      r.text.includes("distinct"),
+    ),
   );
   assert(
-    reasons([
-      "recipe-bound-torches",
-      "recipe-camp-shelter",
-    ]).some((r) => r.text.includes("compatible")),
+    reasons(["recipe-bound-torches", "recipe-camp-shelter"]).some((r) =>
+      r.text.includes("compatible"),
+    ),
   );
   assert(
     purchaseEligibility(
@@ -168,10 +166,7 @@ test("recipe study requires exactly two distinct compatible unlearned recipes", 
       { ...state, recipes: ["recipe-bound-torches"] },
       catalog,
       {
-        recipeIds: [
-          "recipe-bound-torches",
-          "recipe-fletched-ammunition",
-        ],
+        recipeIds: ["recipe-bound-torches", "recipe-fletched-ammunition"],
       },
     ).reasons.some((r) => r.text.includes("not already be known")),
   );
@@ -183,10 +178,7 @@ test("saved one-recipe purchases are rejected without inventing a second recipe"
     {
       ...base(),
       capabilities: ["compatible-crafting"],
-      compatibleRecipes: [
-        "recipe-bound-torches",
-        "recipe-fletched-ammunition",
-      ],
+      compatibleRecipes: ["recipe-bound-torches", "recipe-fletched-ammunition"],
     },
     catalog,
     { recipeId: "recipe-bound-torches" },
@@ -226,9 +218,7 @@ test("recipe study availability requires two remaining compatible choices", () =
   ]);
   assert(!oneRemaining.eligible);
   assert(
-    oneRemaining.reasons.some((r) =>
-      r.text.includes("only 1 is available"),
-    ),
+    oneRemaining.reasons.some((r) => r.text.includes("only 1 is available")),
   );
 });
 test("recipe study options keep blocked ordinary recipes visible after eligible choices", () => {
@@ -251,14 +241,10 @@ test("recipe study options keep blocked ordinary recipes visible after eligible 
     eligibleCount = result.options.filter((option) => !option.disabled).length;
   assert.equal(result.options.length, ordinaryRecipeCount);
   assert(
-    result.options
-      .slice(0, eligibleCount)
-      .every((option) => !option.disabled),
+    result.options.slice(0, eligibleCount).every((option) => !option.disabled),
   );
   assert(
-    result.options
-      .slice(eligibleCount)
-      .every((option) => option.disabled),
+    result.options.slice(eligibleCount).every((option) => option.disabled),
   );
   assert.deepEqual(result.defaultRecipeIds, [
     "recipe-bound-torches",
@@ -320,10 +306,7 @@ test("one recipe-study purchase spends 2 DP and repeat purchases accept new pair
     study,
     catalog,
     {
-      recipeIds: [
-        "recipe-bound-torches",
-        "recipe-fletched-ammunition",
-      ],
+      recipeIds: ["recipe-bound-torches", "recipe-fletched-ammunition"],
     },
   );
   assert(first.applied);
@@ -334,10 +317,7 @@ test("one recipe-study purchase spends 2 DP and repeat purchases accept new pair
     "recipe-fletched-ammunition",
   ]);
   const second = purchase(first.state, study, catalog, {
-    recipeIds: [
-      "recipe-simple-replacement-leg",
-      "recipe-travel-food",
-    ],
+    recipeIds: ["recipe-simple-replacement-leg", "recipe-travel-food"],
   });
   assert(second.applied);
   assert.equal(second.state.dp, 6);
@@ -361,10 +341,7 @@ test("one recipe-study purchase spends 2 DP and repeat purchases accept new pair
   ]);
   assert(
     !purchase(second.state, study, catalog, {
-      recipeIds: [
-        "recipe-bound-torches",
-        "recipe-simple-replacement-leg",
-      ],
+      recipeIds: ["recipe-bound-torches", "recipe-simple-replacement-leg"],
     }).applied,
   );
 });
@@ -377,10 +354,7 @@ test("downstream recipe context comes from crafting grants", () => {
     ...craftingPermissions(["ability-trail-workshop"], inventory),
   };
   const result = purchase(state, study, catalog, {
-    recipeIds: [
-      "recipe-fletched-ammunition",
-      "recipe-simple-replacement-leg",
-    ],
+    recipeIds: ["recipe-fletched-ammunition", "recipe-simple-replacement-leg"],
   });
   assert(result.applied);
   assert(result.state.compatibleRecipes.includes("recipe-fletched-ammunition"));
@@ -464,4 +438,70 @@ test("malformed persisted resources cannot turn into free or NaN purchases", () 
     () => awardMilestones({ ...base(), gritSpent: 3 }, 3),
     /Spent Grit/,
   );
+});
+
+test("all six one-DP general abilities spend exactly one at novice creation, level one and later", () => {
+  const ids = [
+    "a-party-piece",
+    "another-tongue",
+    "catch-that",
+    "look-over-here",
+    "message-by-heart",
+    "quick-exit",
+  ].map((id) => `ability-${id}`);
+  for (const level of [0, 1, 4]) {
+    let state = {
+      ...base(),
+      level,
+      stage: level < 2 ? level : "advancement",
+      dp: 6,
+    };
+    for (const id of ids) {
+      const eligibility = purchaseEligibility(get(id), state, catalog);
+      assert.equal(eligibility.eligible, true, `${id} at level ${level}`);
+      assert.equal(eligibility.cost, 1);
+      const before = state.dp;
+      const result = purchase(state, get(id), catalog);
+      assert.equal(result.applied, true);
+      assert.equal(result.state.dp, before - 1);
+      state = result.state;
+      assert.equal(
+        purchase(state, get(id), catalog).applied,
+        false,
+        "once only",
+      );
+    }
+    assert.equal(state.dp, 0);
+    const unowned = { ...state, abilities: [], purchases: [] };
+    assert.equal(
+      purchase(unowned, get(ids[0]), catalog).applied,
+      false,
+      "no overspending",
+    );
+    const universal = catalog.find(
+      (choice) => choice.kind === "ability" && choice.universal,
+    );
+    const free = purchaseEligibility(universal, state, catalog);
+    assert.equal(free.eligible, false);
+    assert(free.reasons.some((reason) => reason.code === "universal"));
+  }
+});
+
+test("creation ledgers record one-DP purchases at each creation stage", () => {
+  for (const stage of [0, 1]) {
+    const entry = draft();
+    entry.purchases[stage] = [
+      "a-party-piece",
+      "another-tongue",
+      "catch-that",
+      "look-over-here",
+      "message-by-heart",
+      "quick-exit",
+    ].map((id) => ({ id: `ability-${id}` }));
+    const result = creationLedger(entry, catalog);
+    assert.equal(result.valid, true, JSON.stringify(result.errors));
+    const purchases = result.ledger.filter((row) => row.kind === "purchase");
+    assert.equal(purchases.length, 6);
+    assert(purchases.every((row) => row.delta === -1 && row.stage === stage));
+  }
 });

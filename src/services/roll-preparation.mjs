@@ -1,3 +1,5 @@
+import { contextualAbilitySources } from "../rules/one-dp-play.mjs";
+import { abilityDefinition } from "../rules/ability-definitions.mjs";
 import { validReferenceAttack } from "../rules/creature-actions.mjs";
 import { ATTRIBUTES } from "../rules/character.mjs";
 import { conditionRollSources } from "../rules/conditions.mjs";
@@ -19,10 +21,14 @@ export function incomingAttackContext(attackMessageId) {
   )
     throw new Error("The incoming attack is unavailable or changed.");
   const attack = structuredClone(incoming);
-  const valid = attack.resolution === "reference"
-    ? validReferenceAttack(attack)
-    : ["weak", "standard", "strong"].every(key =>
-      Number.isSafeInteger(attack.damage?.[key]) && attack.damage[key] >= 0);
+  const valid =
+    attack.resolution === "reference"
+      ? validReferenceAttack(attack)
+      : ["weak", "standard", "strong"].every(
+          (key) =>
+            Number.isSafeInteger(attack.damage?.[key]) &&
+            attack.damage[key] >= 0,
+        );
   if (!valid) throw new Error("The incoming attack is unavailable or changed.");
   return attack;
 }
@@ -38,8 +44,11 @@ export function verifiedIncomingAttackContext(attackMessageId) {
     const message = game.messages.get(attackMessageId),
       source = message?.getFlag(ID, "creatureAction"),
       actor = fromUuidSync(attack.actorUuid);
-    if (actor?.type !== "creature" || actor.uuid !== attack.actorUuid ||
-        JSON.stringify(source) !== JSON.stringify(attack))
+    if (
+      actor?.type !== "creature" ||
+      actor.uuid !== attack.actorUuid ||
+      JSON.stringify(source) !== JSON.stringify(attack)
+    )
       throw new Error("The incoming reference action could not be verified.");
     return attack;
   }
@@ -157,10 +166,7 @@ export function rollBasis(
   let incoming = null;
   if (attackMessageId) {
     incoming = incomingAttackContext(attackMessageId);
-    if (
-      mode !== "defense" ||
-      incoming.attributeKey !== attributeKey
-    )
+    if (mode !== "defense" || incoming.attributeKey !== attributeKey)
       throw new Error("The incoming attack is unavailable or changed.");
   }
   return {
@@ -168,6 +174,16 @@ export function rollBasis(
     defenderTokenUuid,
     survival,
     incoming,
+    partyPiece:
+      actor.items.find(
+        (item) =>
+          item.type === "ability" &&
+          item.getFlag(ID, "catalogId") === "ability-a-party-piece" &&
+          abilityDefinition(
+            item.getFlag(ID, "catalogId"),
+            item.getFlag(ID, "source"),
+          ),
+      )?.uuid ?? null,
     actorUuid: actor.uuid,
     ...(mode === "attack"
       ? {
@@ -216,13 +232,11 @@ export function prepareRoll(basis, draft = {}) {
       draft.woundApplicability ?? {},
     ),
     ...basis.benefits,
+    ...contextualAbilitySources(basis, draft),
   ];
   if (basis.mode === "attack")
     sources.push(
-      ...targetEvasionSources(
-        basis.targetEvasion,
-        basis.targetTokenUuid,
-      ),
+      ...targetEvasionSources(basis.targetEvasion, basis.targetTokenUuid),
     );
   if (basis.incoming)
     for (const [field, kind] of [

@@ -12,7 +12,7 @@
     "inventoryDie": 0,
     "held": false,
     "worn": false,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Market reference · acquisition and use automation in progress</p><p><strong>Market price:</strong> 400 coins; special order.</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/equipment/ember-edge.md\" target=\"_blank\" rel=\"noopener\">design/equipment/ember-edge.md</a> at <code>9bc9b4fe3256e68880b92c45facf0f25b98a1ea3</code>.</p></section>"
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Market reference · acquisition and use automation in progress</p><p><strong>Market price:</strong> 400 coins; special order.</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/64089a1c8961d7faff172f179448a8b6e57827ef/design/equipment/ember-edge.md\" target=\"_blank\" rel=\"noopener\">design/equipment/ember-edge.md</a> at <code>64089a1c8961d7faff172f179448a8b6e57827ef</code>.</p></section>"
   },
   "effects": [],
   "folder": null,
@@ -26,7 +26,7 @@
         "path": "design/equipment/ember-edge.md",
         "sha256": "5b00f7bea7d60e3dd13570c4bc47bed8c854eba70d4977f4787e709c1e7dfeab"
       },
-      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "sourceCommit": "64089a1c8961d7faff172f179448a8b6e57827ef",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Market reference · acquisition and use automation in progress"

@@ -1,3 +1,4 @@
+import { DEFAULT_LANGUAGES } from "./languages.mjs";
 /** Pure acquisition plans. Persist the returned inventory and receipts together. */
 export function craftingPermissions(abilityIds, catalog) {
   const recipes = catalog.recipes
@@ -8,7 +9,13 @@ export function craftingPermissions(abilityIds, catalog) {
     compatibleRecipes: recipes,
   };
 }
-export function acquireAbility(state, abilityId, selection, catalog) {
+export function acquireAbility(
+  state,
+  abilityId,
+  selection = {},
+  catalog,
+  { languages = DEFAULT_LANGUAGES, knownLanguages } = {},
+) {
   const adapter = catalog.acquisitions.find((a) => a.id === abilityId);
   if (!adapter) throw new Error(`Unreviewed acquisition ${abilityId}`);
   const next = structuredClone(state);
@@ -42,6 +49,49 @@ export function acquireAbility(state, abilityId, selection, catalog) {
         `Choose ${adapter.recipeChoices} distinct compatible ordinary recipes.`,
       );
     else recipeIds.push(...chosen);
+  }
+  if (adapter.languageChoice) {
+    const definition = languages.find(
+      (entry) => entry.id === selection.languageId,
+    );
+    if (!definition?.ordinary)
+      errors.push("Choose an ordinary language approved for this campaign.");
+    else if (
+      [...(next.languages ?? []), ...(knownLanguages ?? [])].some(
+        (entry) => entry.id === definition.id,
+      )
+    )
+      errors.push("Choose a distinct language you do not already know.");
+    else {
+      next.languages ??= [];
+      next.languages.push({
+        ...definition,
+        source: abilityId,
+        permissions: {
+          understand: true,
+          express: true,
+          speak: definition.form === "spoken",
+          sign: definition.form === "signed",
+          read: definition.writing,
+          write: definition.writing,
+        },
+      });
+    }
+  }
+  if (adapter.specialtyChoice) {
+    const specialty = selection.specialty;
+    if (
+      typeof specialty !== "string" ||
+      !specialty.trim() ||
+      specialty.trim().length > 120
+    )
+      errors.push(
+        "Name one mundane performance specialty (up to 120 characters).",
+      );
+    else {
+      next.specialties ??= [];
+      next.specialties.push({ abilityId, specialty: specialty.trim() });
+    }
   }
   const grants = [];
   for (const id of itemIds) {

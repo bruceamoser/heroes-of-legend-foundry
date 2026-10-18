@@ -100,3 +100,53 @@ test("campaign language differences become repairable review errors, never world
   assert.equal(result.preview.valid, false);
   assert(result.preview.errors.some((e) => e.code === "language-availability"));
 });
+
+test("choice fields survive portable parsing at creation and later levels without derived grants", () => {
+  const draft = structuredClone(fixtures.characters[0].draft);
+  draft.acquisitions["ability-another-tongue"] = { languageId: "goblin" };
+  draft.acquisitions["ability-a-party-piece"] = { specialty: "juggling" };
+  draft.progression = {
+    level: 2,
+    levels: {
+      2: {
+        purchases: [],
+        signatures: {},
+        acquisitions: {
+          "ability-a-party-piece": { specialty: "singing" },
+          "ability-another-tongue": { languageId: "orc" },
+        },
+      },
+    },
+  };
+  draft.play = { memorizedMessage: "Meet at dawn." };
+  const result = readPortableCharacter(
+    writePortableCharacter(draft, catalogs, { languages }),
+    catalogs,
+    languages,
+  );
+  assert.equal(
+    result.draft.acquisitions["ability-another-tongue"].languageId,
+    "goblin",
+  );
+  assert.equal(
+    result.draft.acquisitions["ability-a-party-piece"].specialty,
+    "juggling",
+  );
+  assert.equal(
+    result.draft.progression.levels[2].acquisitions["ability-a-party-piece"]
+      .specialty,
+    "singing",
+  );
+  assert.equal(
+    result.draft.progression.levels[2].acquisitions["ability-another-tongue"]
+      .languageId,
+    "orc",
+  );
+  assert.equal(result.draft.play.memorizedMessage, "Meet at dawn.");
+  assert.equal(
+    result.preview.state.languages.some(
+      (entry) => entry.source === "ability-another-tongue",
+    ),
+    false,
+  );
+});

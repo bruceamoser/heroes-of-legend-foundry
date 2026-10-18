@@ -1,36 +1,82 @@
 /** Reviewed passive sources only. Names and narrative text never select mechanics. */
-const PINNED_COMMIT = "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3";
-const source = (path, sha256) =>
-  Object.freeze({ commit: PINNED_COMMIT, path, sha256 });
+const PINNED_COMMIT = "64089a1c8961d7faff172f179448a8b6e57827ef";
+const source = (path, sha256, commit = PINNED_COMMIT) =>
+  Object.freeze({ commit, path, sha256 });
 
 export const PASSIVE_DEFENSE_DEFINITIONS = Object.freeze({
+  "ability-wear-light-armor": Object.freeze({
+    kind: "ability",
+    source: source(
+      "design/cards/wear-light-armor.md",
+      "31528bc37c4e4e19233b05ae374d5f50f2818a7967da13f178b1d6ae80a028c3",
+    ),
+  }),
+  "item-ordinary-light-armor": Object.freeze({
+    kind: "equipment",
+    source: source(
+      "design/equipment/ordinary-light-armor.md",
+      "a26fc198de266b1f568079cea8333c2178bc40dabbf16a28fc8adf4a340af26a",
+    ),
+  }),
   "ability-wear-medium-armor": Object.freeze({
     kind: "ability",
     source: source(
       "design/cards/wear-medium-armor.md",
-      "2a042d1c36030ae7c5b2c648e380a7147ac0575e591019c89d264a9c99434ecc",
+      "b27ceb2e48c3b53e4c35f02444d093d664af1a90d092e984108027bfef9f641b",
     ),
+    // Previously committed world items retain their reviewed resistance.
+    legacySources: Object.freeze([
+      source(
+        "design/cards/wear-medium-armor.md",
+        "2a042d1c36030ae7c5b2c648e380a7147ac0575e591019c89d264a9c99434ecc",
+        "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      ),
+    ]),
   }),
   "item-ordinary-medium-armor": Object.freeze({
     kind: "equipment",
     source: source(
       "design/equipment/ordinary-medium-armor.md",
-      "7050f7573563be9a52f12c746e67b31035782055296cce1d043e37bd860aad65",
+      "a1e8320933f4d2a76805fa30546eef9ffef115a1bf410f3ae3af4418bf91525f",
     ),
+    // Previously committed world items retain their reviewed resistance.
+    legacySources: Object.freeze([
+      source(
+        "design/equipment/ordinary-medium-armor.md",
+        "7050f7573563be9a52f12c746e67b31035782055296cce1d043e37bd860aad65",
+        "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      ),
+    ]),
   }),
   "ability-wear-heavy-armor": Object.freeze({
     kind: "ability",
     source: source(
       "design/cards/wear-heavy-armor.md",
-      "0e894eed3c2e6522f08d5f5cbb133d3d0c2c85c21e6a9b9828ae1c1780da888f",
+      "ef2ad8f5e77167bbecab905a9baad19b28ae0ce93d8e8953aa92824a8a48e864",
     ),
+    // Previously committed world items retain their reviewed resistance.
+    legacySources: Object.freeze([
+      source(
+        "design/cards/wear-heavy-armor.md",
+        "0e894eed3c2e6522f08d5f5cbb133d3d0c2c85c21e6a9b9828ae1c1780da888f",
+        "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      ),
+    ]),
   }),
   "item-ordinary-heavy-armor": Object.freeze({
     kind: "equipment",
     source: source(
       "design/equipment/ordinary-heavy-armor.md",
-      "288b57d9bc293cd2aa2c792b13a02f9a3eaefe6c899bb81979e46c62a1923d6f",
+      "b3563ec47aaf8e91bfdfa1cbb637434b82f06700345b883f19eec6f7d49a5447",
     ),
+    // Previously committed world items retain their reviewed resistance.
+    legacySources: Object.freeze([
+      source(
+        "design/equipment/ordinary-heavy-armor.md",
+        "288b57d9bc293cd2aa2c792b13a02f9a3eaefe6c899bb81979e46c62a1923d6f",
+        "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      ),
+    ]),
   }),
   "item-winter-lining": Object.freeze({
     kind: "equipment",
@@ -49,6 +95,14 @@ export const PASSIVE_DEFENSE_DEFINITIONS = Object.freeze({
 });
 
 const ARMOR_RULES = Object.freeze([
+  Object.freeze({
+    abilityId: "ability-wear-light-armor",
+    itemId: "item-ordinary-light-armor",
+    sourceId: "passive-wear-light-armor",
+    type: "physical",
+    value: 1,
+    label: "Wear Light Armor with ordinary light armor",
+  }),
   Object.freeze({
     abilityId: "ability-wear-medium-armor",
     itemId: "item-ordinary-medium-armor",
@@ -99,19 +153,24 @@ function validateProvenance(kind, catalogId, provenance) {
   if (!definition) return null;
   if (definition.kind !== kind)
     throw new Error(`Reviewed source ${catalogId} has the wrong record kind.`);
-  if (
-    provenance?.path !== definition.source.path ||
-    provenance?.sha256 !== definition.source.sha256
-  )
+  const reviewedSource = [
+    definition.source,
+    ...(definition.legacySources ?? []),
+  ].find(
+    (candidate) =>
+      provenance?.path === candidate.path &&
+      provenance?.sha256 === candidate.sha256,
+  );
+  if (!reviewedSource)
     throw new Error(
       `${catalogId} source changed; its passive automation needs review.`,
     );
   return {
     kind,
     catalogId,
-    commit: definition.source.commit,
-    path: definition.source.path,
-    sha256: definition.source.sha256,
+    commit: reviewedSource.commit,
+    path: reviewedSource.path,
+    sha256: reviewedSource.sha256,
   };
 }
 

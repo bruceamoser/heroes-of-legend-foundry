@@ -10,7 +10,7 @@
  * never infers them.
  */
 export const MOVEMENT_RULES_SOURCE = Object.freeze({
-  commit: "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+  commit: "64089a1c8961d7faff172f179448a8b6e57827ef",
   paths: Object.freeze([
     "design/rules/foundations.md",
     "design/rules/session-resolution.md",
@@ -40,8 +40,7 @@ const point = (value, label) => {
 const key = ({ x, y }) => `${x},${y}`;
 const adjacent = (a, b) =>
   Math.max(Math.abs(a.x - b.x), Math.abs(a.y - b.y)) === 1;
-const edgeKey = (a, b) =>
-  [key(a), key(b)].sort().join("|");
+const edgeKey = (a, b) => [key(a), key(b)].sort().join("|");
 
 const cloneCoordinates = (points) => points.map(({ x, y }) => ({ x, y }));
 
@@ -197,14 +196,16 @@ export function planOrdinaryMovement({
   squares,
   barriers = [],
 }) {
-  return { kind: "ordinary", ...planPath({ movement, path, squares, barriers }) };
+  return {
+    kind: "ordinary",
+    ...planPath({ movement, path, squares, barriers }),
+  };
 }
 
 /** Standing is a movement action, not square traversal. */
 export function planStanding({ movement }) {
   const movementAvailable = movementInteger(movement);
-  if (movementAvailable < 2)
-    throw new Error("Insufficient movement to stand.");
+  if (movementAvailable < 2) throw new Error("Insufficient movement to stand.");
   return {
     kind: "stand",
     spent: 2,
@@ -279,12 +280,7 @@ export function planJump({
     squareFacts = readSquares(squares),
     blockedEdges = readBarriers(barriers);
   if (approachPath.length) {
-    validateOrdinarySquares(
-      squareFacts,
-      approachPath,
-      blockedEdges,
-      false,
-    );
+    validateOrdinarySquares(squareFacts, approachPath, blockedEdges, false);
     assertOpenEdge(blockedEdges, approachPath.at(-1), jumpPath[0]);
   }
   const facts = requireSquares(squareFacts, jumpPath);
@@ -334,11 +330,7 @@ export function planJump({
 
 /** Physical falling damage before the existing damage-plan resistance step. */
 export function planFalling({ squares }) {
-  if (
-    typeof squares !== "number" ||
-    !Number.isFinite(squares) ||
-    squares < 0
-  )
+  if (typeof squares !== "number" || !Number.isFinite(squares) || squares < 0)
     throw new Error("Falling distance must be a nonnegative finite number.");
   const completePairs = Math.floor(squares / 2);
   if (!Number.isSafeInteger(completePairs))

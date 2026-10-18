@@ -86,7 +86,16 @@ export function creationIdentity(
   definitions = DEFAULT_LANGUAGES,
   options = {},
 ) {
-  const result = creationLedger(draft, catalog, options);
+  const baseLanguages = languageGrants(
+    draft.languages ?? {},
+    draft.traitIds ?? [],
+    definitions,
+  );
+  const result = creationLedger(draft, catalog, {
+    ...options,
+    languages: definitions,
+    initialLanguages: baseLanguages.languages,
+  });
   const errors = [...result.errors];
   const get = (id) => catalog.find((r) => r.id === id);
   const ancestry = get(draft.ancestryId),
@@ -152,7 +161,7 @@ export function creationIdentity(
       capacity: 10 + 3 * attributes.brawn,
       startingCoins:
         40 + ancestry.coins + cls.coins + culture.coins + background.coins,
-      languages: languages.languages,
+      languages: result.state.languages,
     };
   }
   return { ...result, valid: errors.length === 0, errors, summary };

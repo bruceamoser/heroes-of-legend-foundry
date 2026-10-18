@@ -34,7 +34,7 @@ test("all 192 creatures are deterministic native Actor documents with pinned pro
   const documents = artifacts.documents.creatures;
   assert.equal(documents.length, 192);
   assert.equal(new Set(documents.map(({ _id }) => _id)).size, 192);
-  assert.equal(artifacts.files.size, 659);
+  assert.equal(artifacts.files.size, 667);
   assert.deepEqual(artifacts.index.catalogs, {
     choices: 2,
     inventory: 1,
@@ -42,14 +42,10 @@ test("all 192 creatures are deterministic native Actor documents with pinned pro
     summons: 1,
   });
   assert.deepEqual(
-    artifacts.index.packs.map(({ name, type, count }) => [
-      name,
-      type,
-      count,
-    ]),
+    artifacts.index.packs.map(({ name, type, count }) => [name, type, count]),
     [
-      ["abilities", "Item", 350],
-      ["equipment", "Item", 43],
+      ["abilities", "Item", 357],
+      ["equipment", "Item", 44],
       ["creatures", "Actor", 192],
       ["summons", "Actor", 73],
     ],
@@ -63,7 +59,10 @@ test("all 192 creatures are deterministic native Actor documents with pinned pro
     assert.equal(document._id, record.foundryId);
     assert.equal(document.type, "creature");
     assert.equal(document.name, record.name);
-    assert.equal(document.img, `systems/heroes-of-legend/${catalogs.art.portraits.find(p => p.id === record.id).asset}`);
+    assert.equal(
+      document.img,
+      `systems/heroes-of-legend/${catalogs.art.portraits.find((p) => p.id === record.id).asset}`,
+    );
     assert.equal(document.prototypeToken.texture.src, document.img);
     assert.deepEqual(flags.source, {
       path: record.source.path,
@@ -101,7 +100,13 @@ test("all 192 creatures are deterministic native Actor documents with pinned pro
         height: record.size.value,
       },
     );
-    assert.deepEqual({width:document.prototypeToken.width,height:document.prototypeToken.height}, document.system.footprint);
+    assert.deepEqual(
+      {
+        width: document.prototypeToken.width,
+        height: document.prototypeToken.height,
+      },
+      document.system.footprint,
+    );
     assert.equal(document.system.armor, record.armor.dr);
     assert.equal(document.system.armorMarker, record.armor.marker ?? "");
     assert.equal(document.system.armorSource, record.armor.sourceText);
@@ -150,9 +155,7 @@ test("Adder and Red Dragon retain exact printed statistics and defense orientati
   assert.equal(adder.system.health.max, undefined);
   assert.equal(adder.system.health.baseMax, 5);
   assert.equal(adder.system.speed, 5);
-  assert.deepEqual(adder.system.alternateSpeeds, [
-    { mode: "swim", value: 4 },
-  ]);
+  assert.deepEqual(adder.system.alternateSpeeds, [{ mode: "swim", value: 4 }]);
   assert.equal(adder.system.size, 1);
   assert.equal(adder.system.sizeLabel, "medium");
   assert.deepEqual(adder.system.footprint, { width: 1, height: 1 });
@@ -168,9 +171,7 @@ test("Adder and Red Dragon retain exact printed statistics and defense orientati
   assert.equal(dragon.system.cv, 95);
   assert.equal(dragon.system.health.baseMax, 56);
   assert.equal(dragon.system.speed, 7);
-  assert.deepEqual(dragon.system.alternateSpeeds, [
-    { mode: "fly", value: 10 },
-  ]);
+  assert.deepEqual(dragon.system.alternateSpeeds, [{ mode: "fly", value: 10 }]);
   assert.equal(dragon.system.size, 3);
   assert.equal(dragon.system.sizeLabel, "3x3 squares");
   assert.deepEqual(dragon.system.footprint, { width: 3, height: 3 });
@@ -204,9 +205,7 @@ test("Adder and Red Dragon retain exact printed statistics and defense orientati
       "Cannot use this attack on consecutive turns",
     ),
   );
-  assert(
-    dragon.system.actions.mainMarkdown.includes("Furnace breath"),
-  );
+  assert(dragon.system.actions.mainMarkdown.includes("Furnace breath"));
 });
 
 test("constrained creature values retain legal blanks and exact mitigation shapes", () => {
@@ -225,9 +224,14 @@ test("constrained creature values retain legal blanks and exact mitigation shape
     assert.equal(system.basicMelee.orientation, "player-defense");
     assert.equal(system.actions.orientation, "player-defense");
     assert(
-      ["brawn", "fortitude", "agility", "guile", "knowledge", "reason"].includes(
-        system.basicMelee.defenseAttribute,
-      ),
+      [
+        "brawn",
+        "fortitude",
+        "agility",
+        "guile",
+        "knowledge",
+        "reason",
+      ].includes(system.basicMelee.defenseAttribute),
     );
     for (const collection of [system.weaknesses, system.resistances]) {
       for (const entry of collection.numeric) {
@@ -274,8 +278,7 @@ test("signed CV is accepted by the pack projection without a roster-only clamp",
     creatures: negativeCatalog,
   });
   const actor = negative.documents.creatures.find(
-    (document) =>
-      document.flags[SYSTEM_ID].catalogId === "creature-adder",
+    (document) => document.flags[SYSTEM_ID].catalogId === "creature-adder",
   );
   assert.equal(actor.system.cv, -5);
   assert.equal(actor.flags[SYSTEM_ID].classification.cv, -5);
@@ -292,9 +295,7 @@ test("signed CV is accepted by the pack projection without a roster-only clamp",
 });
 
 test("authored actions and details use pinned absolute source links", () => {
-  const dragonRecord = creatures.find(
-    ({ id }) => id === "creature-red-dragon",
-  );
+  const dragonRecord = creatures.find(({ id }) => id === "creature-red-dragon");
   const markdown = creatureReferenceMarkdown(
     dragonRecord,
     catalogs.lock.commit,
@@ -342,10 +343,8 @@ test("creature reference rendering escapes hostile HTML and unsafe links", () =>
   const dragon = actorByCatalogId.get("creature-red-dragon");
   const system = structuredClone(dragon.system);
   const commit = catalogs.lock.commit;
-  const script =
-    '<script data-payload="reference">alert("hostile")</script>';
-  system.details.flavorMarkdown =
-    `${script} Plain <unknown> text with **strong prose** and *italic prose*.`;
+  const script = '<script data-payload="reference">alert("hostile")</script>';
+  system.details.flavorMarkdown = `${script} Plain <unknown> text with **strong prose** and *italic prose*.`;
   system.actions.mainMarkdown = [
     "| Action | Source |",
     "|---|---|",
@@ -433,7 +432,7 @@ test("authored Actor JSON is exact, deterministic and contains no compiled datab
     withFileTypes: true,
   });
   const files = entries.filter((entry) => entry.isFile());
-  assert.equal(files.length, 659);
+  assert.equal(files.length, 667);
   assert(files.every((entry) => entry.name.endsWith(".json")));
   for (const forbidden of ["CURRENT", "LOCK", "LOG", "MANIFEST-000001"])
     assert(!files.some((entry) => entry.name === forbidden));
@@ -443,8 +442,7 @@ test("changed source-locked creature data fails closed", () => {
   const changedHash = structuredClone(catalogs);
   changedHash.creatures.creatures[0].source.sha256 = "0".repeat(64);
   assert.throws(
-    () =>
-      buildContentPackArtifacts(changedHash),
+    () => buildContentPackArtifacts(changedHash),
     /not the pinned locked record/,
   );
   const changedCommit = structuredClone(catalogs);
@@ -477,12 +475,17 @@ test("creature modifier summaries follow edits instead of stale pinned prose", (
   assert.equal(threat.sourceText, "2 Banes");
 });
 
-
 test("native token projection preserves rectangular source footprint orientation", () => {
   const changed = structuredClone(catalogs);
   changed.creatures.creatures[0].size.footprint = { width: 1, height: 3 };
   const projected = buildContentPackArtifacts(changed).documents.creatures.find(
-    d => d.flags[SYSTEM_ID].catalogId === changed.creatures.creatures[0].id,
+    (d) => d.flags[SYSTEM_ID].catalogId === changed.creatures.creatures[0].id,
   );
-  assert.deepEqual({width:projected.prototypeToken.width,height:projected.prototypeToken.height}, { width: 1, height: 3 });
+  assert.deepEqual(
+    {
+      width: projected.prototypeToken.width,
+      height: projected.prototypeToken.height,
+    },
+    { width: 1, height: 3 },
+  );
 });

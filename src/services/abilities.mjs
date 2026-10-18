@@ -1,3 +1,4 @@
+import { planSimpleAbility } from "../rules/one-dp-play.mjs";
 import { assertNoPendingActorPotion } from "./turn-lock.mjs";
 import { abilityDefinition } from "../rules/ability-definitions.mjs";
 import { declareAction, continueAction } from "../rules/actions.mjs";
@@ -63,6 +64,7 @@ export async function requestAbility(
     attackMessageId = null,
     defenderTokenUuid = null,
     shieldItemUuid = null,
+    targetTokenUuid = null,
   } = {},
 ) {
   const definition = itemAbilityDefinition(item);
@@ -85,6 +87,13 @@ export async function requestAbility(
       participantId,
       revision: combat.getFlag(ID, "encounter")?.revision ?? 0,
     };
+  if (definition.handler === "look-over-here-v1") {
+    targetTokenUuid ??=
+      [...(game.user.targets ?? [])][0]?.document?.uuid ?? null;
+    if (!targetTokenUuid || game.user.targets?.size > 1)
+      throw new Error("Target one ally for Look Over Here!.");
+    request.targetTokenUuid = targetTokenUuid;
+  }
   if (attackMessageId) {
     request.attackMessageId = attackMessageId;
     if (defenderTokenUuid) request.defenderTokenUuid = defenderTokenUuid;
@@ -167,10 +176,7 @@ function availabilityContext({
 }
 export function reviewedDefenseAbilityOptions(
   actor,
-  {
-    attackMessageId = null,
-    defenderTokenUuid = null,
-  } = {},
+  { attackMessageId = null, defenderTokenUuid = null } = {},
 ) {
   if (actor?.documentName !== "Actor")
     throw new Error("Choose an available defender.");
@@ -256,11 +262,7 @@ export function reviewedDefenseAbilityOptions(
 }
 export async function requestDefenseAbility(
   item,
-  {
-    attackMessageId,
-    defenderTokenUuid = null,
-    shieldItemUuid = null,
-  } = {},
+  { attackMessageId, defenderTokenUuid = null, shieldItemUuid = null } = {},
 ) {
   if (!attackMessageId)
     throw new Error(
@@ -450,8 +452,7 @@ async function continuationCapable(operation, request, combat, actor) {
   }
   if (operation.handler === "defend-v1") return true;
   if (operation.handler === "shield-block-v1") {
-    if (!currentAttack || !operation.incomingAttack)
-      return false;
+    if (!currentAttack || !operation.incomingAttack) return false;
     const shield = actor.items.get(operation.shieldItemId);
     return Boolean(shield && isShieldEquipment(shield) && shield.system.held);
   }
@@ -477,6 +478,11 @@ async function apply(id, combatUuid) {
     if (!request)
       throw new Error("The original ability request snapshot is unavailable.");
     await validateOperationSource(operation);
+    if (operation.simple && operation.status === "complete") {
+      if (!combat.getFlag(ID, "operationReceipts")?.[id]?.applied)
+        throw new Error("The completed action needs reconciliation.");
+      return { status: "complete", replay: true };
+    }
     if (operation.status !== "applying") {
       const actor = await fromUuid(operation.actorUuid),
         receipt = actor?.getFlag(ID, "abilityEffectReceipts")?.[id],
@@ -496,6 +502,8 @@ async function apply(id, combatUuid) {
   } else {
     if (!message?.author)
       throw new Error("The original ability request is unavailable.");
+    const simple = await applySimpleAbility(message, request, combat);
+    if (simple) return simple;
     const checked = await preflight({ message, request, combat }),
       state = structuredClone(combat.getFlag(ID, "encounter")),
       budget = state.budgets[request.participantId],
@@ -509,7 +517,8 @@ async function apply(id, combatUuid) {
           benefitCurrent(effect) &&
           benefit.anchor.combatId === combat.id &&
           benefit.anchor.participantId === request.participantId &&
-          (!checked.shieldItem || benefit.shieldItemUuid === checked.shieldItem.uuid)
+          (!checked.shieldItem ||
+            benefit.shieldItemUuid === checked.shieldItem.uuid)
         );
       });
     state.budgets[request.participantId] = declareAction(budget, {
@@ -635,10 +644,10 @@ async function apply(id, combatUuid) {
     operation.reusedBenefit && operation.status === "complete"
       ? "Existing defense benefit reused; no additional action charged."
       : operation.status === "interrupted"
-      ? `The action could not continue. Its declared ${definition?.category ?? "action"} remains recorded.`
-      : operation.handler === "defend-v1"
-        ? "Defend: Maneuver tracked. Gain one defense Boon until the start of your next turn; repeating the benefit does not increase it."
-        : "Shield Block: Reaction tracked. Gain one defense Boon against eligible blockable defenses until the start of your next turn while using the selected held shield; repeating the benefit does not increase it.";
+        ? `The action could not continue. Its declared ${definition?.category ?? "action"} remains recorded.`
+        : operation.handler === "defend-v1"
+          ? "Defend: Maneuver tracked. Gain one defense Boon until the start of your next turn; repeating the benefit does not increase it."
+          : "Shield Block: Reaction tracked. Gain one defense Boon against eligible blockable defenses until the start of your next turn while using the selected held shield; repeating the benefit does not increase it.";
   if (message)
     await message
       .update({
@@ -652,6 +661,108 @@ async function apply(id, combatUuid) {
       // Presentation failure must not turn a settled action into a retryable cost.
       .catch(() => {});
   return { status: operation.status, replay: false };
+}
+async function applySimpleAbility(message, request, combat) {
+  const item = await fromUuid(request?.itemUuid ?? ""),
+    definition = item?.type === "ability" ? itemAbilityDefinition(item) : null;
+  if (
+    !["disengage-v1", "catch-that-v1", "look-over-here-v1"].includes(
+      definition?.handler,
+    )
+  )
+    return null;
+  const actor = item.actor,
+    participant = combat.combatants.get(request.participantId),
+    state = structuredClone(combat.getFlag(ID, "encounter"));
+  if (
+    !actor ||
+    actor.uuid !== request.actorUuid ||
+    !actorMatchesParticipant({ actor, participant }) ||
+    (!message.author.isGM && !actor.testUserPermission(message.author, "OWNER"))
+  )
+    throw new Error(
+      "Use an ability belonging to a character you own, or as the DA.",
+    );
+  if (
+    !state?.budgets?.[request.participantId] ||
+    state.revision !== request.revision
+  )
+    throw new Error("The encounter changed. Review this action again.");
+  if (
+    combat.getFlag(ID, "pendingAbility") ||
+    combat.getFlag(ID, "pendingPotion") ||
+    combat.getFlag(ID, "pendingTurnPhase")
+  )
+    throw new Error("Resolve the pending encounter action first.");
+  assertNoPendingActorPotion(combat);
+  let target = null;
+  if (definition.handler === "look-over-here-v1") {
+    target = await fromUuid(request.targetTokenUuid ?? "");
+    if (
+      target?.documentName !== "Token" ||
+      !target.actor ||
+      target.actor.uuid === actor.uuid
+    )
+      throw new Error("Target one ally for Look Over Here!.");
+  }
+  const quickExit = actor.items.some(
+    (owned) =>
+      owned.type === "ability" &&
+      owned.getFlag(ID, "catalogId") === "ability-quick-exit" &&
+      itemAbilityDefinition(owned),
+  );
+  state.budgets[request.participantId] = planSimpleAbility(
+    state.budgets[request.participantId],
+    {
+      operationId: message.id,
+      definition,
+      conditions: actionConditions(actor),
+      ownTurn: state.current === request.participantId,
+      quickExit,
+    },
+  );
+  state.revision++;
+  const operation = {
+    simple: true,
+    status: "complete",
+    authorId: message.author.id,
+    actorUuid: actor.uuid,
+    itemUuid: item.uuid,
+    handler: definition.handler,
+    source: structuredClone(definition.source),
+    requestSignature: JSON.stringify(request),
+    requestSnapshot: structuredClone(request),
+    targetTokenUuid: target?.uuid ?? null,
+  };
+  await writeAuthorityDocument(combat, {
+    [`flags.${ID}.encounter`]: state,
+    [`flags.${ID}.abilityOperations.${message.id}`]: operation,
+    [`flags.${ID}.operationReceipts.${message.id}`]: {
+      applied: true,
+      kind: "ability",
+      status: "complete",
+    },
+  });
+  const content =
+    definition.handler === "disengage-v1"
+      ? "Disengage: Maneuver tracked. Voluntary movement does not provoke opportunity attacks for the rest of this turn." +
+        (quickExit
+          ? " Quick Exit grants 1 additional square once per turn; normal movement costs apply."
+          : "")
+      : definition.handler === "catch-that-v1"
+        ? "Catch That!: Reaction tracked. Catch one reachable falling unattended item in a free hand; resolve the item placement at the table. This cannot intercept an attack or take a held item."
+        : `Look Over Here!: Reaction tracked. ${foundry.utils.escapeHTML(target.name)} gains 1 Boon to the triggering defense roll against a sight-dependent attack by an adjacent enemy that can see you. Select Look Over Here! in that defense roll. This creates no cover or Hidden condition and does not cancel the attack.`;
+  await message
+    .update({
+      content,
+      [`flags.${ID}.abilityStatus`]: {
+        status: "complete",
+        requestId: message.id,
+        definitionId: definition.id,
+      },
+    })
+    .catch(() => {});
+  return { status: "complete", replay: false };
 }
 export function registerAbilityRequests() {
   Hooks.on("createChatMessage", (message) => {

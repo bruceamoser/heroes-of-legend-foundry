@@ -1,3 +1,4 @@
+import { getCampaignLanguageConfiguration } from "./languages.mjs";
 import { writeCharacterActor } from "./authority.mjs";
 import {
   enqueueCharacterOperation,
@@ -23,6 +24,7 @@ export function registerAdvancement() {
 export function currentDevelopment(actor) {
   const state = structuredClone(actor.getFlag(ID, "development"));
   if (!state) throw new Error("Complete character creation first.");
+  state.languages ??= structuredClone(state.creationSummary?.languages ?? []);
   state.gritGranted = actor.system.grit.granted;
   state.gritSpent = actor.system.grit.spent;
   state.items = actor.items
@@ -123,14 +125,26 @@ async function apply(id) {
     const catalogs = await loadCatalogs();
     if (draft.sourceCommit !== catalogs.commit)
       throw new Error("Review the current book baseline before committing.");
+    const languageConfiguration = getCampaignLanguageConfiguration();
+    if (draft.languageBasis !== languageConfiguration.basis)
+      throw new Error(
+        "Campaign languages changed. Review and save the advancement draft before committing.",
+      );
     const preview = advancementPreview(
       current,
       draft.data,
       catalogs.choices,
       catalogs.inventory,
+      languageConfiguration.definitions,
     );
     if (!preview.valid)
       throw new Error("The advancement draft has unresolved choices.");
+    if (
+      getCampaignLanguageConfiguration().basis !== languageConfiguration.basis
+    )
+      throw new Error(
+        "Campaign languages changed during validation. Review and save the draft again.",
+      );
     state = preview.state;
     const newInventory = state.items.filter(
       (i) => !current.items.some((old) => old.instanceId === i.instanceId),

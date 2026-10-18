@@ -23,7 +23,7 @@ const get = (id) => records.find((r) => r.id === id);
 test("complete learning catalog has stable unique IDs and exact pinned sources", () => {
   assert.equal(catalog.schemaVersion, 2);
   assert.equal(catalog.sourceCommit, lock.commit);
-  assert.equal(records.length, 452);
+  assert.equal(records.length, 459);
   assert.deepEqual(
     Object.fromEntries(
       ["ability", "ancestry", "class", "discipline", "origin", "trait"].map(
@@ -31,7 +31,7 @@ test("complete learning catalog has stable unique IDs and exact pinned sources",
       ),
     ),
     {
-      ability: 350,
+      ability: 357,
       ancestry: 4,
       class: 10,
       discipline: 18,
@@ -84,7 +84,7 @@ test("complete learning catalog has stable unique IDs and exact pinned sources",
   }
   assert.equal(records.filter((r) => r.universal).length, 18);
   assert(records.filter((r) => r.universal).every((r) => r.cost === null));
-  assert.equal(records.filter((r) => r.reference).length, 350);
+  assert.equal(records.filter((r) => r.reference).length, 357);
   assert.equal(
     records.filter((r) =>
       r.reference?.rules.body.some((block) => block.outcomes),
@@ -97,8 +97,9 @@ test("catalog references preserve exact acquisition details and outcomes", () =>
     detail = (label) =>
       clever.reference.rules.details.find((entry) => entry.label === label)
         ?.value,
-    outcomes = clever.reference.rules.body.find((block) => block.outcomes)
-      .outcomes;
+    outcomes = clever.reference.rules.body.find(
+      (block) => block.outcomes,
+    ).outcomes;
   assert.equal(detail("Action"), "Maneuver");
   assert.equal(detail("Attribute"), "Knowledge");
   assert.equal(
@@ -299,5 +300,71 @@ test("parser fails unknown requirements and keeps IDs stable across display-name
         { ...sample(), text: sample().text.replace("**DP:** 2", "**DP:** 8") },
       ]),
     /tier cost/,
+  );
+});
+
+test("only the six approved shared cards use the one-DP exception", () => {
+  const ids = [
+    "a-party-piece",
+    "another-tongue",
+    "catch-that",
+    "look-over-here",
+    "message-by-heart",
+    "quick-exit",
+  ];
+  assert.deepEqual(
+    records
+      .filter((r) => r.cost === 1)
+      .map((r) => r.id)
+      .sort(),
+    ids.map((id) => `ability-${id}`),
+  );
+  for (const id of ids) {
+    const record = get(`ability-${id}`);
+    assert.equal(record.minimumLevel, 1);
+    assert.equal(record.purchasePolicy, "once");
+    assert.equal(record.universal, false);
+    assert.deepEqual(record.requirements, []);
+    const fixture = sample(record.name);
+    fixture.path = record.source.path;
+    fixture.text = fixture.text
+      .replace("**DP:** 2", "**DP:** 1")
+      .replace("**ID:** fixture", `**ID:** ${id}`)
+      .replace(
+        "**Limits:** Purchase once.",
+        `**Limits:** ${record.reference.rules.details.find((d) => d.label === "Limits").value}`,
+      );
+    assert.equal(parseChoices([fixture])[0].cost, 1);
+    const invalid = {
+      ...fixture,
+      text: fixture.text.replace("**DP:** 1", "**DP:** 2"),
+    };
+    assert.throws(() => parseChoices([invalid]), /tier cost/);
+  }
+  assert.throws(
+    () =>
+      parseChoices([
+        { ...sample(), text: sample().text.replace("**DP:** 2", "**DP:** 1") },
+      ]),
+    /tier cost/,
+  );
+});
+
+test("armor tiers require independent Armor ranks and Walled Communities grants light", () => {
+  for (const [tier, rank, level, cost] of [
+    ["light", 1, 1, 2],
+    ["medium", 2, 3, 4],
+    ["heavy", 3, 7, 8],
+  ]) {
+    const r = get(`ability-wear-${tier}-armor`);
+    assert.equal(r.cost, cost);
+    assert.equal(r.minimumLevel, level);
+    assert.deepEqual(r.requirements, [
+      { kind: "discipline", id: "discipline-armor", rank },
+    ]);
+  }
+  assert.equal(
+    get("origin-culture-walled-communities").pairs[0].abilityId,
+    "ability-wear-light-armor",
   );
 });

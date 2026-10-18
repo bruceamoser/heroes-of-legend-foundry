@@ -1,4 +1,13 @@
 import { createHash } from "node:crypto";
+// Reviewed exceptions; all other shared and signature cards retain tier pricing.
+const oneDpLimits = new Map([
+  ["another-tongue", "Purchase once; choose one language when learned."],
+  ["a-party-piece", "Purchase once; choose one specialty when learned."],
+  ["catch-that", "Purchase once; each use spends your Reaction."],
+  ["look-over-here", "Purchase once; each use spends your Reaction."],
+  ["message-by-heart", "Purchase once; one retained message at a time."],
+  ["quick-exit", "Purchase once; this benefit can trigger only once per turn."],
+]);
 const affinities = {
   home: [1, 2, 4],
   adjacent: [2, 4, 8],
@@ -73,7 +82,9 @@ function labelled(block) {
   return value ? { label: value[1], text: plainText(value[2]) } : null;
 }
 export function parseAbilityReference(text) {
-  const header = text.match(/^# ([^\n]+)\n\n([\s\S]*?)\n\n## Rules\n([\s\S]*)$/);
+  const header = text.match(
+    /^# ([^\n]+)\n\n([\s\S]*?)\n\n## Rules\n([\s\S]*)$/,
+  );
   if (!header) throw new Error("Unrecognized ability reference");
   const flavor = blocks(header[2]).map(plainText);
   if (!flavor.length) throw new Error("Missing ability flavor");
@@ -134,9 +145,7 @@ export function parseAbilityReference(text) {
   const details = [
     { label: "Action", value: plainText(action[1]) },
     { label: "Attribute", value: plainText(action[2]) },
-    fields.get("Time")
-      ? { label: "Time", value: fields.get("Time") }
-      : null,
+    fields.get("Time") ? { label: "Time", value: fields.get("Time") } : null,
     {
       label: "Target / range / shape",
       value: fields.get("Target / range / shape"),
@@ -238,7 +247,9 @@ export function parseChoices(sources) {
       if (
         r.universal
           ? meta[2] !== "Not purchased"
-          : r.cost !== { 1: 2, 3: 4, 7: 8 }[r.minimumLevel]
+          : oneDpLimits.has(r.id.slice(8))
+            ? r.minimumLevel !== 1 || r.cost !== 1 || meta[3] !== "None"
+            : r.cost !== { 1: 2, 3: 4, 7: 8 }[r.minimumLevel]
       )
         throw new Error(`Unexpected tier cost ${path}`);
       const limits = match(
@@ -254,7 +265,11 @@ export function parseChoices(sources) {
         r.purchasePolicy = "per-level";
       else if (limits === "Repeatable purchase of new recipe choices.")
         r.purchasePolicy = "new-recipe";
-      else if (/purchase/i.test(limits) && limits !== "Purchase once.")
+      else if (
+        /purchase/i.test(limits) &&
+        limits !== "Purchase once." &&
+        limits !== oneDpLimits.get(r.id.slice(8))
+      )
         throw new Error(`Unknown purchase policy ${path}`);
       const requirements = meta[3];
       r.requirements = [];

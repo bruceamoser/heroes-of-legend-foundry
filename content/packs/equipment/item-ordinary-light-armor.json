@@ -1,0 +1,35 @@
+{
+  "_key": "!items!8ab5117d87438053",
+  "_id": "8ab5117d87438053",
+  "name": "Ordinary Light Armor",
+  "type": "equipment",
+  "system": {
+    "schemaVersion": 1,
+    "catalogId": "item-ordinary-light-armor",
+    "quantity": 1,
+    "bulk": 1,
+    "hands": 0,
+    "inventoryDie": 0,
+    "held": false,
+    "worn": false,
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Market reference · acquisition and use automation in progress</p><p><strong>Market price:</strong> 10 coins.</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/64089a1c8961d7faff172f179448a8b6e57827ef/design/equipment/ordinary-light-armor.md\" target=\"_blank\" rel=\"noopener\">design/equipment/ordinary-light-armor.md</a> at <code>64089a1c8961d7faff172f179448a8b6e57827ef</code>.</p></section>"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "source": {
+        "path": "design/equipment/ordinary-light-armor.md",
+        "sha256": "a26fc198de266b1f568079cea8333c2178bc40dabbf16a28fc8adf4a340af26a"
+      },
+      "sourceCommit": "64089a1c8961d7faff172f179448a8b6e57827ef",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Market reference · acquisition and use automation in progress"
+    }
+  }
+}

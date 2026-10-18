@@ -1,4 +1,10 @@
-import { resolveBuilderDrop, validateBuilderPurchase, bindBuilderDrop, acquisitionWeaponName } from "../services/builder-drop.mjs";
+import { additionalLanguageOptions } from "../rules/languages.mjs";
+import {
+  resolveBuilderDrop,
+  validateBuilderPurchase,
+  bindBuilderDrop,
+  acquisitionWeaponName,
+} from "../services/builder-drop.mjs";
 import {
   bindCreationAuthority,
   requestCreation,
@@ -10,7 +16,10 @@ import { ATTRIBUTES } from "../rules/character.mjs";
 import { campaignLanguageOptions } from "../rules/languages.mjs";
 import { getCampaignLanguageConfiguration } from "../services/languages.mjs";
 import { abilityReferenceStatus } from "../rules/ability-definitions.mjs";
-import { readPortableCharacter, MAX_CHARACTER_BYTES } from "../rules/portable-character.mjs";
+import {
+  readPortableCharacter,
+  MAX_CHARACTER_BYTES,
+} from "../rules/portable-character.mjs";
 import {
   eligibleFirst,
   purchaseEligibility,
@@ -149,12 +158,15 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
       })),
       nextRank: r.rank,
     }));
+    this.languageDefinitions = getCampaignLanguageConfiguration().definitions;
     const acquisitions = preview.state.abilities
       .map((id) => inventory.acquisitions.find((a) => a.id === id))
       .filter(
         (a) =>
           a &&
-          (a.weaponChoice ||
+          (a.languageChoice ||
+            a.specialtyChoice ||
+            a.weaponChoice ||
             a.recipeChoices ||
             a.items.includes("item-ordinary-melee-weapon")),
       )
@@ -173,6 +185,15 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
           value,
           selected: d.acquisitions?.[a.id]?.meleeHands === value,
         })),
+        languageChoice: a.languageChoice,
+        languageOptions: additionalLanguageOptions(
+          this.languageDefinitions,
+          preview.state.languages ?? [],
+          d.acquisitions?.[a.id]?.languageId,
+          a.id,
+        ),
+        specialtyChoice: a.specialtyChoice,
+        specialty: d.acquisitions?.[a.id]?.specialty ?? "",
         recipeChoices: a.recipeChoices,
         recipes: options(
           inventory.recipes.filter(
@@ -356,6 +377,9 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
       for (const field of this.element.querySelectorAll("[data-acquisition]")) {
         const id = field.dataset.acquisition;
         d.acquisitions[id] ??= {};
+        for (const key of ["languageId", "specialty"])
+          if (f.has(`${key}-${id}`))
+            d.acquisitions[id][key] = String(f.get(`${key}-${id}`));
         if (f.has(`weapon-${id}`))
           d.acquisitions[id].weapon = String(f.get(`weapon-${id}`));
         if (f.has(`hands-${id}`))
@@ -443,29 +467,49 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
   static importCharacter() {
     if (this.busy || !this.actor.isOwner) return;
     if (this.actor.getFlag("heroes-of-legend", "creationReceipt")) {
-      ui.notifications.warn("Import creation choices into a new character. This hero has already completed creation.");
+      ui.notifications.warn(
+        "Import creation choices into a new character. This hero has already completed creation.",
+      );
       return;
     }
     const input = document.createElement("input");
     input.type = "file";
     input.accept = ".json,application/json";
-    input.addEventListener("change", async () => {
-      const file = input.files?.[0];
-      if (!file) return;
-      try {
-        if (file.size > MAX_CHARACTER_BYTES) throw new Error("Character file is too large.");
-        const text = await file.text();
-        if (this.actor.getFlag("heroes-of-legend", "creationReceipt"))
-          throw new Error("This hero has already completed creation.");
-        const languages = this.requireRenderedLanguageBasis();
-        const { draft } = readPortableCharacter(text, this.catalogs, languages.definitions);
-        if ((draft.progression?.level ?? 1) > 1)
-          throw new Error("This file includes later-level advancement. Keep it in the web character library; this Foundry importer currently handles level-1 creation only.");
-        await this.act(async () => { this.draft = draft; this.step = 7; });
-        if (draft.loadout || draft.basicActions || draft.play)
-          ui.notifications.info("Creation choices imported. Equip items on the Foundry sheet; browser inventory edits, languages, conditions, equipment arrangements and action visibility remain in the saved draft.");
-      } catch (error) { ui.notifications.error(error.message); }
-    }, { once: true });
+    input.addEventListener(
+      "change",
+      async () => {
+        const file = input.files?.[0];
+        if (!file) return;
+        try {
+          if (file.size > MAX_CHARACTER_BYTES)
+            throw new Error("Character file is too large.");
+          const text = await file.text();
+          if (this.actor.getFlag("heroes-of-legend", "creationReceipt"))
+            throw new Error("This hero has already completed creation.");
+          const languages = this.requireRenderedLanguageBasis();
+          const { draft } = readPortableCharacter(
+            text,
+            this.catalogs,
+            languages.definitions,
+          );
+          if ((draft.progression?.level ?? 1) > 1)
+            throw new Error(
+              "This file includes later-level advancement. Keep it in the web character library; this Foundry importer currently handles level-1 creation only.",
+            );
+          await this.act(async () => {
+            this.draft = draft;
+            this.step = 7;
+          });
+          if (draft.loadout || draft.basicActions || draft.play)
+            ui.notifications.info(
+              "Creation choices imported. Equip items on the Foundry sheet; browser inventory edits, languages, conditions, equipment arrangements and action visibility remain in the saved draft.",
+            );
+        } catch (error) {
+          ui.notifications.error(error.message);
+        }
+      },
+      { once: true },
+    );
     input.click();
   }
   static async navigate(event, target) {
@@ -537,15 +581,29 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
     if (this.busy) return;
     try {
       const choice = await resolveBuilderDrop(event, this.catalogs.choices);
-      if (!this.actor.isOwner) throw new Error("Only a character owner can edit this draft.");
+      if (!this.actor.isOwner)
+        throw new Error("Only a character owner can edit this draft.");
       if (this.busy || !this.rendered) return;
-      if (![3, 5].includes(this.step)) throw new Error("Drop abilities on a learning step.");
+      if (![3, 5].includes(this.step))
+        throw new Error("Drop abilities on a learning step.");
       const stage = this.step === 3 ? 0 : 1;
-      validateBuilderPurchase(this, choice, draft => creationPreview(draft,
-        this.catalogs.choices, this.catalogs.inventory,
-        this.languageConfiguration.definitions).stages[stage]);
-      await CreationWizard.addPurchase.call(this, event, { dataset: { id: choice.id } });
-    } catch (error) { ui.notifications.warn(error.message); }
+      validateBuilderPurchase(
+        this,
+        choice,
+        (draft) =>
+          creationPreview(
+            draft,
+            this.catalogs.choices,
+            this.catalogs.inventory,
+            this.languageConfiguration.definitions,
+          ).stages[stage],
+      );
+      await CreationWizard.addPurchase.call(this, event, {
+        dataset: { id: choice.id },
+      });
+    } catch (error) {
+      ui.notifications.warn(error.message);
+    }
   }
   syncRecipeStudySelects() {
     for (const group of this.element.querySelectorAll("[data-recipe-study]")) {

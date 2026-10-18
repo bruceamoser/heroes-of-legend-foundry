@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>Your hands know where each familiar piece belongs, even when you have to hurry.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Varies</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>An accessible item</dd></div><div><dt>Duration</dt><dd>Instant</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Repeatable; pay the action and any stated costs each use.</dd></div><div><dt>Type</dt><dd>Universal</dd></div></dl><div class=\"hol-reference-rules\"><p>Drawing a weapon is included in its attack action. Dropping is free. Proper stowing or picking up costs a Maneuver. Ordinary item use follows its own card. No free two-handed grip exception is assumed.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/cards/handle-an-item.md\" target=\"_blank\" rel=\"noopener\">design/cards/handle-an-item.md</a> at <code>9bc9b4fe3256e68880b92c45facf0f25b98a1ea3</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>Your hands know where each familiar piece belongs, even when you have to hurry.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Varies</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>An accessible item</dd></div><div><dt>Duration</dt><dd>Instant</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Repeatable; pay the action and any stated costs each use.</dd></div><div><dt>Type</dt><dd>Universal</dd></div></dl><div class=\"hol-reference-rules\"><p>Drawing a weapon is included in its attack action. Dropping is free. Proper stowing or picking up costs a Maneuver. Ordinary item use follows its own card. No free two-handed grip exception is assumed.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/64089a1c8961d7faff172f179448a8b6e57827ef/design/cards/handle-an-item.md\" target=\"_blank\" rel=\"noopener\">design/cards/handle-an-item.md</a> at <code>64089a1c8961d7faff172f179448a8b6e57827ef</code>.</p></section>",
     "activity": {
       "action": "main",
       "rollMode": "none",
@@ -31,7 +31,7 @@
         "path": "design/cards/handle-an-item.md",
         "sha256": "5669b050822aea10a0b7f333e24d4f83ad085bfa1f6eabfd06adcf7f4a746dfc"
       },
-      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "sourceCommit": "64089a1c8961d7faff172f179448a8b6e57827ef",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · play automation in progress"

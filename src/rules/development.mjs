@@ -206,7 +206,11 @@ export function purchase(state, choice, catalog, selection = {}) {
   return { state: next, reasons: [], applied: true };
 }
 /** Rebuild in order: invalid choices remain in the returned draft and receive repair reasons. */
-export function creationLedger(draft, catalog, { inventoryCatalog } = {}) {
+export function creationLedger(
+  draft,
+  catalog,
+  { inventoryCatalog, languages, initialLanguages = [] } = {},
+) {
   const errors = [],
     ledger = [],
     stages = {};
@@ -228,6 +232,7 @@ export function creationLedger(draft, catalog, { inventoryCatalog } = {}) {
     ? null
     : 10 + attributes.knowledge + attributes.reason + attributes.guile;
   let state = {
+    languages: structuredClone(initialLanguages),
     stage: 0,
     level: 0,
     dp: pool ?? 0,
@@ -253,6 +258,7 @@ export function creationLedger(draft, catalog, { inventoryCatalog } = {}) {
         id,
         draft.acquisitions?.[id] ?? {},
         inventoryCatalog,
+        { languages },
       );
       if (result.valid) state = result.state;
     }
@@ -378,6 +384,7 @@ export function creationLedger(draft, catalog, { inventoryCatalog } = {}) {
         id,
         draft.acquisitions?.[id] ?? {},
         inventoryCatalog,
+        { languages },
       );
       if (!result.valid)
         errors.push({

@@ -12,7 +12,7 @@
     "inventoryDie": 0,
     "held": false,
     "worn": false,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Market reference · acquisition and use automation in progress</p><p><strong>Market price:</strong> 4 coins.</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/9bc9b4fe3256e68880b92c45facf0f25b98a1ea3/design/equipment/sleeping-roll.md\" target=\"_blank\" rel=\"noopener\">design/equipment/sleeping-roll.md</a> at <code>9bc9b4fe3256e68880b92c45facf0f25b98a1ea3</code>.</p></section>"
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Market reference · acquisition and use automation in progress</p><p><strong>Market price:</strong> 4 coins.</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/64089a1c8961d7faff172f179448a8b6e57827ef/design/equipment/sleeping-roll.md\" target=\"_blank\" rel=\"noopener\">design/equipment/sleeping-roll.md</a> at <code>64089a1c8961d7faff172f179448a8b6e57827ef</code>.</p></section>"
   },
   "effects": [],
   "folder": null,
@@ -26,7 +26,7 @@
         "path": "design/equipment/sleeping-roll.md",
         "sha256": "3e89c7c5aa5c2f64d28108e47c10b3544d00fa2e4dcfdc4406279b2af65e44ce"
       },
-      "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+      "sourceCommit": "64089a1c8961d7faff172f179448a8b6e57827ef",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Market reference · acquisition and use automation in progress"

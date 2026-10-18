@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "sourceCommit": "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
+  "sourceCommit": "64089a1c8961d7faff172f179448a8b6e57827ef",
   "scope": "ability reference text and learning metadata; action, acquisition and trait automation pending",
   "records": [
     {
@@ -1093,6 +1093,65 @@
           "rank": 1
         }
       ]
+    },
+    {
+      "id": "ability-a-party-piece",
+      "foundryId": "9c14af4a227ba8f8",
+      "kind": "ability",
+      "name": "A Party Piece",
+      "source": {
+        "path": "design/cards/a-party-piece.md",
+        "sha256": "9d1aad26ea86b271593bb9e71893fff5413100398a7fbd35133b350f226b84aa"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You begin your familiar song or send three cups spinning, drawing smiles from the people gathered around you."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Passive"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "Your own performance using the specialty chosen when you learn this ability."
+            },
+            {
+              "label": "Duration",
+              "value": "While performing the chosen specialty."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "Requires any ordinary props or instrument needed for your chosen performance; grants none."
+            },
+            {
+              "label": "Limits",
+              "value": "Purchase once; choose one specialty when learned."
+            },
+            {
+              "label": "Type",
+              "value": "Skill / Utility"
+            }
+          ],
+          "body": [
+            {
+              "text": "Choose one mundane performance specialty when you learn this ability, such as singing, juggling, storytelling or playing a particular instrument. Gain 1 Boon to Guile rolls made to entertain through that specialty. Use the ordinary task’s stakes and outcomes; this grants no automatic persuasion, deception or change of attitude. Anyone can attempt a performance without this ability, and a performance with no uncertain consequence needs no roll."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 1,
+      "cost": 1,
+      "purchasePolicy": "once",
+      "requirements": []
     },
     {
       "id": "ability-a-place-at-any-fire",
@@ -2593,6 +2652,65 @@
           "rank": 1
         }
       ]
+    },
+    {
+      "id": "ability-another-tongue",
+      "foundryId": "e4db1d49261f9987",
+      "kind": "ability",
+      "name": "Another Tongue",
+      "source": {
+        "path": "design/cards/another-tongue.md",
+        "sha256": "1a157ac9501b2898a9a334d4e6c5037d9ab3e960dd08b6833fbd9c4a8f4dad38"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You answer the stranger in the language of their childhood, and hear their surprise give way to recognition."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Passive"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "Self"
+            },
+            {
+              "label": "Duration",
+              "value": "Permanent knowledge of the chosen language."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "None."
+            },
+            {
+              "label": "Limits",
+              "value": "Purchase once; choose one language when learned."
+            },
+            {
+              "label": "Type",
+              "value": "Skill / Utility"
+            }
+          ],
+          "body": [
+            {
+              "text": "When you learn this ability, choose one ordinary language you do not already know. You can speak and understand it, and read and write its usual script if it has one. Record the language on your sheet. A signed language uses signing instead of speech. Choose from the campaign’s ordinary languages with the DA; this grants no secret or supernatural language."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 1,
+      "cost": 1,
+      "purchasePolicy": "once",
+      "requirements": []
     },
     {
       "id": "ability-answer-for-what-you-did",
@@ -5479,6 +5597,65 @@
       "universal": false,
       "minimumLevel": 1,
       "cost": 2,
+      "purchasePolicy": "once",
+      "requirements": []
+    },
+    {
+      "id": "ability-catch-that",
+      "foundryId": "b34d455395b8587a",
+      "kind": "ability",
+      "name": "Catch That!",
+      "source": {
+        "path": "design/cards/catch-that.md",
+        "sha256": "10305d031c2366ee61193e5fe560514f91bee9dbc42a1a2c179f889d6b8acb51"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "Your hand snaps out beneath the falling bottle, catching it before it shatters on the stones."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Reaction"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "One falling, unattended item in your square or an adjacent square, within reach. Before it lands or falls out of reach."
+            },
+            {
+              "label": "Duration",
+              "value": "Instant."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "None."
+            },
+            {
+              "label": "Limits",
+              "value": "Purchase once; each use spends your Reaction."
+            },
+            {
+              "label": "Type",
+              "value": "Skill / Utility"
+            }
+          ],
+          "body": [
+            {
+              "text": "Catch the item in a free hand. It must be small enough to hold in that hand. This cannot intercept an attack or take an item another creature is holding."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 1,
+      "cost": 1,
       "purchasePolicy": "once",
       "requirements": []
     },
@@ -9522,6 +9699,65 @@
       ]
     },
     {
+      "id": "ability-look-over-here",
+      "foundryId": "a0dcee1faf17608b",
+      "kind": "ability",
+      "name": "Look Over Here!",
+      "source": {
+        "path": "design/cards/look-over-here.md",
+        "sha256": "15c51b9ec002817764e7cc9762c94533153ffc037d51062ab016c9f512a82fcd"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You snap your cloak across the attacker’s view, drawing their eye just as your companion needs an opening."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Reaction"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "One ally about to make a defense roll against a sight-dependent attack declared by an adjacent enemy that can see you. Before the roll."
+            },
+            {
+              "label": "Duration",
+              "value": "The triggering defense roll."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "None."
+            },
+            {
+              "label": "Limits",
+              "value": "Purchase once; each use spends your Reaction."
+            },
+            {
+              "label": "Type",
+              "value": "Skill / Defense"
+            }
+          ],
+          "body": [
+            {
+              "text": "Grant the ally 1 Boon to that defense roll. This momentary distraction does not create cover, make anyone Hidden or cancel the attack. Apply the normal Boon/Bane rules."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 1,
+      "cost": 1,
+      "purchasePolicy": "once",
+      "requirements": []
+    },
+    {
       "id": "ability-make-something-useful",
       "foundryId": "8b90f0982d7042bb",
       "kind": "ability",
@@ -9782,6 +10018,69 @@
           "rank": 1
         }
       ]
+    },
+    {
+      "id": "ability-message-by-heart",
+      "foundryId": "b47b7b83133fc5ec",
+      "kind": "ability",
+      "name": "Message by Heart",
+      "source": {
+        "path": "design/cards/message-by-heart.md",
+        "sha256": "6ce73c543685e83865d637650e226926cc3c4faca68c0dfc1b136ddbf73edf28"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You repeat the message under your breath, matching every word until you can hear it without the speaker."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Main Action"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Time",
+              "value": "One minute of rehearsal."
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "One message of up to 50 words that you can hear, or read in a script you know."
+            },
+            {
+              "label": "Duration",
+              "value": "Until you memorize a replacement message."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "None."
+            },
+            {
+              "label": "Limits",
+              "value": "Purchase once; one retained message at a time."
+            },
+            {
+              "label": "Type",
+              "value": "Skill / Utility"
+            }
+          ],
+          "body": [
+            {
+              "text": "After rehearsing the message for one minute, you can reproduce its words exactly from memory. You may retain unfamiliar words this way without understanding them. You can retain only one message with this ability; memorizing another replaces it. Recalling the stored message requires only the normal time to speak or write it, not another minute of rehearsal. This grants no translation or additional ability."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 1,
+      "cost": 1,
+      "purchasePolicy": "once",
+      "requirements": []
     },
     {
       "id": "ability-move",
@@ -11012,6 +11311,65 @@
           "rank": 3
         }
       ]
+    },
+    {
+      "id": "ability-quick-exit",
+      "foundryId": "2894c9c472fea320",
+      "kind": "ability",
+      "name": "Quick Exit",
+      "source": {
+        "path": "design/cards/quick-exit.md",
+        "sha256": "de2be8860e513b6680455d204aee3e2b3df265a887cf7f74b28d0c7060caee6f"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You turn a careful retreat into one last quick step beyond the enemy’s reach."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Passive"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "Self, when you use Disengage."
+            },
+            {
+              "label": "Duration",
+              "value": "Until the end of this turn; unused movement expires."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "None."
+            },
+            {
+              "label": "Limits",
+              "value": "Purchase once; this benefit can trigger only once per turn."
+            },
+            {
+              "label": "Type",
+              "value": "Skill / Movement"
+            }
+          ],
+          "body": [
+            {
+              "text": "Gain 1 additional square of available movement for this turn. Spend it using normal terrain costs and movement restrictions. This does not increase Speed or add movement to each allowance gained by converting actions. Disengage’s protection from opportunity attacks applies normally."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 1,
+      "cost": 1,
+      "purchasePolicy": "once",
+      "requirements": []
     },
     {
       "id": "ability-quiet-latch",
@@ -25181,7 +25539,7 @@
       "name": "Wear Heavy Armor",
       "source": {
         "path": "design/cards/wear-heavy-armor.md",
-        "sha256": "0e894eed3c2e6522f08d5f5cbb133d3d0c2c85c21e6a9b9828ae1c1780da888f"
+        "sha256": "ef2ad8f5e77167bbecab905a9baad19b28ae0ce93d8e8953aa92824a8a48e864"
       },
       "automation": "pending",
       "reference": {
@@ -25221,21 +25579,86 @@
           ],
           "body": [
             {
-              "text": "While wearing the trained armor, physical resistance 3. No lower-tier training prerequisite."
+              "text": "While wearing heavy armor, gain physical resistance 3. Use the highest matching resistance; normal cap 3."
             }
           ],
           "notes": []
         }
       },
       "universal": false,
-      "minimumLevel": 3,
-      "cost": 4,
+      "minimumLevel": 7,
+      "cost": 8,
       "purchasePolicy": "once",
       "requirements": [
         {
           "kind": "discipline",
           "id": "discipline-armor",
-          "rank": 2
+          "rank": 3
+        }
+      ]
+    },
+    {
+      "id": "ability-wear-light-armor",
+      "foundryId": "3b3610eb134387fb",
+      "kind": "ability",
+      "name": "Wear Light Armor",
+      "source": {
+        "path": "design/cards/wear-light-armor.md",
+        "sha256": "31528bc37c4e4e19233b05ae374d5f50f2818a7967da13f178b1d6ae80a028c3"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You snug the straps of your light armor and twist at the waist, feeling its protection follow your movements."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Action",
+              "value": "Passive"
+            },
+            {
+              "label": "Attribute",
+              "value": "None — no roll"
+            },
+            {
+              "label": "Target / range / shape",
+              "value": "Self"
+            },
+            {
+              "label": "Duration",
+              "value": "While wearing the trained armor."
+            },
+            {
+              "label": "Equipment / acquisition",
+              "value": "One ordinary light armor, Bulk 1, if absent."
+            },
+            {
+              "label": "Limits",
+              "value": "Purchase once."
+            },
+            {
+              "label": "Type",
+              "value": "Training / Passive"
+            }
+          ],
+          "body": [
+            {
+              "text": "While wearing light armor, gain physical resistance 1. Use the highest matching resistance; normal cap 3."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "universal": false,
+      "minimumLevel": 1,
+      "cost": 2,
+      "purchasePolicy": "once",
+      "requirements": [
+        {
+          "kind": "discipline",
+          "id": "discipline-armor",
+          "rank": 1
         }
       ]
     },
@@ -25246,7 +25669,7 @@
       "name": "Wear Medium Armor",
       "source": {
         "path": "design/cards/wear-medium-armor.md",
-        "sha256": "2a042d1c36030ae7c5b2c648e380a7147ac0575e591019c89d264a9c99434ecc"
+        "sha256": "b27ceb2e48c3b53e4c35f02444d093d664af1a90d092e984108027bfef9f641b"
       },
       "automation": "pending",
       "reference": {
@@ -25286,21 +25709,21 @@
           ],
           "body": [
             {
-              "text": "While wearing the trained armor, physical resistance 2. No roll; highest matching resistance applies."
+              "text": "While wearing medium armor, gain physical resistance 2. Use the highest matching resistance; normal cap 3."
             }
           ],
           "notes": []
         }
       },
       "universal": false,
-      "minimumLevel": 1,
-      "cost": 2,
+      "minimumLevel": 3,
+      "cost": 4,
       "purchasePolicy": "once",
       "requirements": [
         {
           "kind": "discipline",
           "id": "discipline-armor",
-          "rank": 1
+          "rank": 2
         }
       ]
     },
@@ -28772,7 +29195,7 @@
       "name": "Walled Communities",
       "source": {
         "path": "design/origins/culture-walled-communities.md",
-        "sha256": "b7d2143fe55724ffce19ca3ce2604b21bd7b4bca0cd40e23ca67d5554eaf3ce8"
+        "sha256": "7d6ef9ad979c7563c4a478ff0a8682189572d0f54ffe05292d10436c2388df57"
       },
       "automation": "pending",
       "originType": "culture",
@@ -28781,7 +29204,7 @@
         {
           "disciplineId": "discipline-armor",
           "rank": 1,
-          "abilityId": "ability-wear-medium-armor"
+          "abilityId": "ability-wear-light-armor"
         },
         {
           "disciplineId": "discipline-guard",

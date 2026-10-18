@@ -15,7 +15,10 @@ export class AbilitySheet extends foundry.applications.api.HandlebarsApplication
     position: { width: 640, height: 720 },
     window: { resizable: true },
     form: { submitOnChange: false, closeOnSubmit: false },
-    actions: { useAbility: AbilitySheet.useAbility, postReference: AbilitySheet.postReference },
+    actions: {
+      useAbility: AbilitySheet.useAbility,
+      postReference: AbilitySheet.postReference,
+    },
   };
   static PARTS = {
     main: {
@@ -40,7 +43,9 @@ export class AbilitySheet extends foundry.applications.api.HandlebarsApplication
       canPost: Boolean(this.item.actor && this.item.isOwner),
       potionAbility: isPotionAbility(this.item),
       canUse: Boolean(
-        (definition || isPotionAbility(this.item)) && this.item.actor?.isOwner,
+        ((definition && definition.category !== "passive") ||
+          isPotionAbility(this.item)) &&
+          this.item.actor?.isOwner,
       ),
       pendingAutomation:
         !definition &&
@@ -65,13 +70,15 @@ export class AbilitySheet extends foundry.applications.api.HandlebarsApplication
     };
   }
   static async postReference() {
-    try { await postAbilityReference(this.item); }
-    catch (e) { ui.notifications.error(e.message); }
+    try {
+      await postAbilityReference(this.item);
+    } catch (e) {
+      ui.notifications.error(e.message);
+    }
   }
   static async useAbility() {
     try {
-      if (isPotionAbility(this.item))
-        return openPotionPreparation(this.item);
+      if (isPotionAbility(this.item)) return openPotionPreparation(this.item);
       await activateOwnedAbility(this.item);
     } catch (e) {
       ui.notifications.error(e.message);

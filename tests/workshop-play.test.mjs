@@ -50,7 +50,7 @@ test("play inventory changes affect Bulk and defenses but never rewrite or rerun
   const d = borin(),
     original = workshopCharacter(d, catalogs);
   const armor = original.inventory.items.find(
-    (i) => i.catalogId === "item-ordinary-medium-armor",
+    (i) => i.catalogId === "item-ordinary-light-armor",
   );
   d.play = {
     inventory: {
@@ -236,4 +236,16 @@ test("unselected signatures do not block spending; choosing an earlier signature
     signatures: { 3: signature },
   };
   assert.deepEqual(workshopCharacter(d, catalogs).errors, []);
+});
+
+test("memorized message persists with a strict 50 word editing bound", () => {
+  const message = Array(50).fill("word").join(" ");
+  assert.equal(
+    normalizeWorkshopPlay({ memorizedMessage: message }, catalogs)
+      .memorizedMessage,
+    message,
+  );
+  assert.throws(() =>
+    normalizeWorkshopPlay({ memorizedMessage: message + " extra" }, catalogs),
+  );
 });

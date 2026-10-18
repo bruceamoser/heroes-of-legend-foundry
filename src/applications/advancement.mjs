@@ -1,4 +1,11 @@
-import { resolveBuilderDrop, validateBuilderPurchase, bindBuilderDrop, acquisitionWeaponName } from "../services/builder-drop.mjs";
+import { additionalLanguageOptions } from "../rules/languages.mjs";
+import { getCampaignLanguageConfiguration } from "../services/languages.mjs";
+import {
+  resolveBuilderDrop,
+  validateBuilderPurchase,
+  bindBuilderDrop,
+  acquisitionWeaponName,
+} from "../services/builder-drop.mjs";
 import { bindCreationAuthority } from "../services/creation.mjs";
 import { loadCatalogs } from "../services/catalog.mjs";
 import {
@@ -59,7 +66,16 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
     const { choices, inventory, commit } = this.catalogs;
     const current = currentDevelopment(this.actor),
       get = (id) => choices.find((r) => r.id === id);
-    this.preview = advancementPreview(current, this.draft, choices, inventory);
+    const languageConfiguration = getCampaignLanguageConfiguration();
+    this.languageDefinitions = languageConfiguration.definitions;
+    this.languageBasis = languageConfiguration.basis;
+    this.preview = advancementPreview(
+      current,
+      this.draft,
+      choices,
+      inventory,
+      this.languageDefinitions,
+    );
     const state = this.preview.state;
     const recipeName = (id) =>
       get(id)?.name ??
@@ -72,7 +88,9 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
       .filter(
         (a) =>
           a &&
-          (a.weaponChoice ||
+          (a.languageChoice ||
+            a.specialtyChoice ||
+            a.weaponChoice ||
             a.recipeChoices ||
             a.items.includes("item-ordinary-melee-weapon")),
       )
@@ -91,6 +109,15 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
           value,
           selected: this.draft.acquisitions[a.id]?.meleeHands === value,
         })),
+        languageChoice: a.languageChoice,
+        languageOptions: additionalLanguageOptions(
+          this.languageDefinitions,
+          state.languages ?? [],
+          this.draft.acquisitions?.[a.id]?.languageId,
+          a.id,
+        ),
+        specialtyChoice: a.specialtyChoice,
+        specialty: this.draft.acquisitions?.[a.id]?.specialty ?? "",
         recipeChoices: a.recipeChoices,
         recipes: inventory.recipes
           .filter((r) => r.genericChoice && r.permissions.includes(a.id))
@@ -153,8 +180,8 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
             choices,
             recipeIds ? { recipeIds } : {},
           );
-      },
-    ).map((r) => ({
+        },
+      ).map((r) => ({
         ...r,
         reference: r.choice.reference,
         automationStatus: abilityReferenceStatus(r.choice.id, r.choice.source),
@@ -179,6 +206,8 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
     for (const field of this.element.querySelectorAll("[data-acquisition]")) {
       const id = field.dataset.acquisition,
         s = (this.draft.acquisitions[id] ??= {});
+      for (const key of ["languageId", "specialty"])
+        if (f.has(`${key}-${id}`)) s[key] = String(f.get(`${key}-${id}`));
       if (f.has(`weapon-${id}`)) s.weapon = String(f.get(`weapon-${id}`));
       if (f.has(`hands-${id}`)) s.meleeHands = Number(f.get(`hands-${id}`));
       if (field.querySelector("[data-recipes]"))
@@ -186,6 +215,10 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
     }
   }
   async persist() {
+    if (getCampaignLanguageConfiguration().basis !== this.languageBasis)
+      throw new Error(
+        "Campaign languages changed. Refresh and review the language choices before saving.",
+      );
     if (
       (this.actor.getFlag(ID, "advancementDraft")?.revision ?? 0) !==
       this.revision
@@ -200,6 +233,7 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
         revision,
         baseRevision: this.baseRevision,
         sourceCommit: this.catalogs.commit,
+        languageBasis: this.languageBasis,
         data: this.draft,
       },
     });
@@ -254,6 +288,7 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
         this.draft,
         this.catalogs.choices,
         this.catalogs.inventory,
+        this.languageDefinitions,
       );
       const eligibility = purchaseEligibility(
         choice,
@@ -320,12 +355,27 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
     if (this.busy) return;
     try {
       const choice = await resolveBuilderDrop(event, this.catalogs.choices);
-      if (!this.actor.isOwner) throw new Error("Only a character owner can edit this draft.");
+      if (!this.actor.isOwner)
+        throw new Error("Only a character owner can edit this draft.");
       if (this.busy || !this.rendered) return;
-      validateBuilderPurchase(this, choice, draft => advancementPreview(currentDevelopment(this.actor),
-        draft, this.catalogs.choices, this.catalogs.inventory).state);
-      await AdvancementWizard.add.call(this, event, { dataset: { id: choice.id } });
-    } catch (error) { ui.notifications.warn(error.message); }
+      validateBuilderPurchase(
+        this,
+        choice,
+        (draft) =>
+          advancementPreview(
+            currentDevelopment(this.actor),
+            draft,
+            this.catalogs.choices,
+            this.catalogs.inventory,
+            this.languageDefinitions,
+          ).state,
+      );
+      await AdvancementWizard.add.call(this, event, {
+        dataset: { id: choice.id },
+      });
+    } catch (error) {
+      ui.notifications.warn(error.message);
+    }
   }
   syncRecipeStudySelects() {
     for (const group of this.element.querySelectorAll("[data-recipe-study]")) {

@@ -121,11 +121,7 @@ function replay(state, id, signature) {
 }
 function adjudication(reasons, override) {
   if (!reasons.length) return null;
-  if (
-    !override ||
-    typeof override.userId !== "string" ||
-    !override.userId
-  )
+  if (!override || typeof override.userId !== "string" || !override.userId)
     throw new Error(reasons.join(" "));
   // This is an audit plan, not authorization. A document service must verify this is the actual DA.
   return {
@@ -136,16 +132,31 @@ function adjudication(reasons, override) {
   };
 }
 function actionGuidance(reasons, override) {
-  return reasons.length ? {
-    choice: "action-guidance", exceptions: reasons,
-    ...(override?.userId ? { userId: override.userId, reason: typeof override.reason === "string" ? override.reason.trim() : "" } : {}),
-  } : null;
+  return reasons.length
+    ? {
+        choice: "action-guidance",
+        exceptions: reasons,
+        ...(override?.userId
+          ? {
+              userId: override.userId,
+              reason:
+                typeof override.reason === "string"
+                  ? override.reason.trim()
+                  : "",
+            }
+          : {}),
+      }
+    : null;
 }
 export function movementRemaining(state, conditions = {}) {
   validateTurn(state);
   validateConditions(conditions);
   const speed = Math.max(0, state.speed - (conditions.slowed ?? 0));
-  const allowance = int(speed * state.movementAllowances, "Movement allowance");
+  const allowance = int(
+    speed * state.movementAllowances +
+      int(state.bonusMovement ?? 0, "Bonus movement"),
+    "Movement allowance",
+  );
   return helpless(conditions) || conditions.grappled > 0
     ? 0
     : Math.max(0, allowance - state.movementSpent);
@@ -173,9 +184,7 @@ export function convertAction(
     reasons.push("The current condition prevents actions.");
   if (state.remaining[from] < 1) reasons.push(`No ${from} remains.`);
   if (to !== "movement" && !state.retained.includes(to))
-    reasons.push(
-      "The destination category was not retained.",
-    );
+    reasons.push("The destination category was not retained.");
   const funded = state.remaining[from] > 0,
     audit = actionGuidance(reasons, override),
     next = structuredClone(state);
@@ -185,8 +194,18 @@ export function convertAction(
       next.movementAllowances + 1,
       "Movement allowances",
     );
-  else if (funded) next.remaining[to] = int(next.remaining[to] + 1, "Action allowance");
-  next.operations[operationId] = { signature, status: "complete", audit, trackedCost: { category: from, availableBefore: state.remaining[from], spent: funded ? 1 : 0 } };
+  else if (funded)
+    next.remaining[to] = int(next.remaining[to] + 1, "Action allowance");
+  next.operations[operationId] = {
+    signature,
+    status: "complete",
+    audit,
+    trackedCost: {
+      category: from,
+      availableBefore: state.remaining[from],
+      spent: funded ? 1 : 0,
+    },
+  };
   return next;
 }
 export function spendMovement(
@@ -259,10 +278,13 @@ export function declareAction(
     sourceId,
     category,
     audit,
-    trackedCost: ACTION_CATEGORIES.includes(category) ? {
-      category, availableBefore: state.remaining[category],
-      spent: state.remaining[category] > 0 ? 1 : 0,
-    } : null,
+    trackedCost: ACTION_CATEGORIES.includes(category)
+      ? {
+          category,
+          availableBefore: state.remaining[category],
+          spent: state.remaining[category] > 0 ? 1 : 0,
+        }
+      : null,
   };
   return next;
 }

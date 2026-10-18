@@ -69,12 +69,10 @@ for (const [name, documents] of Object.entries(artifacts.documents)) {
     const source = fileURLToPath(
         new URL(`../content/packs/${name}/`, import.meta.url),
       ),
-      expected = documents
-        .slice()
-        .sort((a, b) => a._id.localeCompare(b._id));
+      expected = documents.slice().sort((a, b) => a._id.localeCompare(b._id));
     assert.equal(
       expected.length,
-      { abilities: 350, equipment: 43, creatures: 192, summons: 73 }[name],
+      { abilities: 357, equipment: 44, creatures: 192, summons: 73 }[name],
     );
 
     await compilePack(source, join(temp, "pack"));

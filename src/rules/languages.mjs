@@ -370,3 +370,56 @@ export function campaignLanguageOptions(
     extraSpoken: orderedChoices(extraChoices),
   };
 }
+
+/** Ordinary acquisition choices retain blocked and removed saved entries for repair. */
+export function additionalLanguageOptions(
+  definitions,
+  knownLanguages = [],
+  selectedId = "",
+  sourceId,
+) {
+  const entries = requireLanguageConfiguration({
+    schemaVersion: LANGUAGE_CONFIGURATION_SCHEMA,
+    definitions,
+  }).definitions;
+  const rows = entries.map((definition) => {
+    const reasons = [];
+    if (!definition.ordinary)
+      reasons.push(
+        `${definition.name} is uncommon and unavailable to this ordinary-language grant.`,
+      );
+    if (
+      knownLanguages.some(
+        (known) =>
+          known.id === definition.id &&
+          !(sourceId && known.source === sourceId),
+      )
+    )
+      reasons.push(`${definition.name} is already known.`);
+    return {
+      ...definition,
+      selected: definition.id === selectedId,
+      eligible: reasons.length === 0,
+      disabled: reasons.length > 0,
+      repair: definition.id === selectedId && reasons.length > 0,
+      summary: displayForm(definition),
+      reasons,
+      reason: reasons.join(" "),
+    };
+  });
+  if (selectedId && !entries.some((entry) => entry.id === selectedId)) {
+    const reason = `This saved language is no longer defined in Campaign Languages. Choose another language or have the DA restore “${selectedId}”.`;
+    rows.push({
+      id: selectedId,
+      name: `${selectedId} (no longer defined)`,
+      selected: true,
+      eligible: false,
+      disabled: true,
+      repair: true,
+      reasons: [reason],
+      reason,
+      summary: "Saved choice",
+    });
+  }
+  return orderedChoices(rows);
+}

@@ -64,3 +64,11 @@ Reproduce the immutable audit with `HOL_BOOK_REPOSITORY=/path/to/heroes-of-legen
 ## Current approved baseline: two-book v16.1.0
 
 Issue #72 reconciles the current source at **9bc9b4fe3256e68880b92c45facf0f25b98a1ea3**. The current `design/**` catalog and book sources take precedence over historical research snapshots. See [reviewed changes and compatibility](research/book-baseline-v16.1.0.md). The lock still covers 919 source files, 192 portrait records and 73 summon links; no book checkout or existing world content is modified.
+
+## October 18 armor and one-DP additions
+
+The current pin is **64089a1c8961d7faff172f179448a8b6e57827ef**, following Bruce's
+confirmation and the merged book PRs #1272/#1274. It supersedes the v16.1.0 pin
+above for new content and development choices. See [source update and existing
+character handling](research/book-update-one-dp-armor.md). The new lock covers
+927 sources; creature/summon/art mechanics and portrait bytes are unchanged.

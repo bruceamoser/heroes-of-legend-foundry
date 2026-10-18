@@ -360,8 +360,8 @@ export class PotionPreparation extends foundry.applications.api.HandlebarsApplic
       });
       ui.notifications.info(
         result.status === "proposal"
-          ? "Recipient consent request posted to chat."
-          : "Healing potion request sent to the automation coordinator.",
+          ? "Potion offered."
+          : "Potion requested.",
       );
       await this.close();
     } catch (error) {

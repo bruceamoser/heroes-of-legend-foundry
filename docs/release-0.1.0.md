@@ -26,12 +26,12 @@ and prereleases from latest ([GitHub release API](https://docs.github.com/en/res
 
 | Step | Status | Evidence required |
 |---|---|---|
-| Final integrated main | Pending | Include core-play branches 138, 137, 121, 140; record commit SHA and review results. |
+| Final integrated main | Pending | Include core-play branches 138, 137, 121, 140 and 15; record commit SHA and review results. |
 | Version, build, source/art validation and tests | Pending | `npm ci && npm run check`, Node version, full test count/log on final candidate. |
 | Exact candidate ZIP | Pending | Download the draft workflow assets; verify SHA256SUMS, record source/tag SHA and byte/file counts. Repacking one built directory proves archive repeatability, not independent CLI/LevelDB build determinism. |
 | Native Setup install | Pending | Install the exact ZIP into a separate disposable data directory through a transient local manifest; verify installed version/packs/art and world launch. |
 | Native Setup update and local edits | Pending | Upgrade from the retained development-alpha package; preserve an edited imported world Actor's identity, name, HP, biography and custom flag. |
-| Installed-package core play | Pending | Run the agreed bounded integrated workflows against the extracted/installed package, including creation, references, creature Defend, potions and source compendiums; no source-worktree symlink. |
+| Installed-package core play | Pending | Run the bounded #121 core workflows against the installed draft package: equipment/source compendiums, references, creature Defend, damage/turns, potions and replay; no source-worktree symlink. Retain separately accepted #137 creation/advancement evidence; this fixture uses constructor-built PCs. |
 | Draft artifacts | Pending | Tag the integrated code/static-accepted commit, wait for workflow success, download all three draft assets and verify their recorded hashes. Use this exact ZIP for native acceptance. |
 | Public publication and URLs | Pending | Publish only after integrated acceptance, as a full latest release; fetch public manifest/ZIP, compare checksums and version/link consistency. |
 | Public Foundry install/update | Pending | Confirm normal Setup manifest installation/update against published URLs; record 14.369 launch and edited-Actor preservation. |

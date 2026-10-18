@@ -329,7 +329,7 @@ try {
       .then((v) => v.join(" ")),
     /Bridge Worker.*Craft 1.*Trail Workshop/,
   );
-  await page.getByLabel("Culture", {exact:true}).focus();
+  await page.getByLabel("Culture", { exact: true }).focus();
   await page
     .getByLabel("Culture", { exact: true })
     .selectOption("origin-culture-deep-halls|0");
@@ -487,6 +487,8 @@ try {
   assert.match(rangedInventory, /d8/);
   // Unknown imported IDs remain inert text and repairable choices.
   const odd = { ...exported, draft: structuredClone(exported.draft) };
+  odd.draft.classId = "ability-wear-medium-armor";
+  odd.draft.culture = { id: "ability-wear-medium-armor", pair: 0 };
   odd.draft.traitIds[0] = 'trait-unknown" data-injected="yes';
   await page.locator("#import-file").setInputFiles({
     name: "unknown-trait.json",
@@ -502,6 +504,22 @@ try {
   await page.getByRole("tab", { name: "Main", exact: true }).click();
   assert.equal(await page.locator("[data-injected]").count(), 0);
   assert.match(await page.locator(".trait-table").innerText(), /trait-unknown/);
+  await page
+    .getByRole("button", { name: "Open character builder", exact: true })
+    .click();
+  await page.getByRole("button", { name: "3 Origins", exact: true }).click();
+  await page
+    .getByLabel("Culture", { exact: true })
+    .selectOption("origin-culture-walled-communities|0");
+  assert.match(
+    await page.locator(".origin-grants").first().innerText(),
+    /Armor 1/,
+  );
+  await page.getByRole("button", { name: "5 Class", exact: true }).click();
+  await page
+    .locator('[data-action="class"][data-id="class-protector"]')
+    .click();
+  assert.match(await page.locator(".hero-header").innerText(), /Protector/);
   assert.deepEqual(failures, []);
   console.info(
     "Workshop passed: fixed scrolling, live attributes, grants, armor/Bulk/supply, grouped actions, crafting rolls, level replay, coin override, named saves, export/import and 390px layout; no browser errors.",

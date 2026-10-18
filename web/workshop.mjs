@@ -386,7 +386,7 @@ function builderContent() {
             .join("")}</select></label>${
             draft[kind]?.id
               ? (() => {
-                  const pair = get(draft[kind].id)?.pairs[draft[kind].pair];
+                  const pair = get(draft[kind].id)?.pairs?.[draft[kind].pair];
                   return `<div class="origin-grants">${button(esc(name(draft[kind].id)), "reference", `data-id="${esc(draft[kind].id)}"`, "table-link")}${pair ? `<div>${symbol(pair.disciplineId)}${esc(name(pair.disciplineId))} 1</div>${button(esc(name(pair.abilityId)), "reference", `data-id="${pair.abilityId}"`, "table-link")}` : ""}</div>`;
                 })()
               : ""
@@ -397,7 +397,9 @@ function builderContent() {
       )}</div><p class="inline-help">Each selection grants the named discipline rank and ability. A duplicate grant adds 1 DP.</p>`;
   if ([3, 5].includes(step)) return learning();
   if (step === 4) {
-    const cls = get(draft.classId);
+    const cls = catalogs.choices.find(
+      (r) => r.kind === "class" && r.id === draft.classId,
+    );
     return `${heading("Step 5 of 8", "Class", "Classes you qualify for appear first. Then choose two starting disciplines and one signature.")}<div class="cards">${eligibleFirst(
       catalogs.choices.filter((r) => r.kind === "class"),
       (r) => classEligibility(r, draft.attributes),
@@ -575,7 +577,9 @@ function advancementBuilder() {
     tab = "Development";
     return sheet();
   }
-  const cls = get(draft.classId),
+  const cls = catalogs.choices.find(
+      (r) => r.kind === "class" && r.id === draft.classId,
+    ),
     pending = preview.levels[level].before.pendingSignatures ?? [];
   const choices = pending
     .map(

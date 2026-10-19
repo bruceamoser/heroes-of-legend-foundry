@@ -22,6 +22,37 @@ export function normalizeWorkshopPlay(value, catalogs) {
     languages: { added: [], removed: [] },
     conditions: [],
   };
+  for (const key of ["hp", "failedDeathRolls"]) {
+    if (value[key] !== undefined) {
+      if (
+        !Number.isSafeInteger(value[key]) ||
+        value[key] < 0 ||
+        value[key] > (key === "failedDeathRolls" ? 3 : 1000000)
+      )
+        fail();
+      result[key] = value[key];
+    }
+  }
+  if (value.wounds !== undefined) {
+    if (
+      !list(value.wounds, 100) ||
+      value.wounds.some(
+        (w) =>
+          !object(w) ||
+          !instance(w.id) ||
+          !text(w.name, 200) ||
+          !w.name.trim() ||
+          !text(w.notes, 2000),
+      ) ||
+      new Set(value.wounds.map((w) => w.id)).size !== value.wounds.length
+    )
+      fail();
+    result.wounds = value.wounds.map((w) => ({
+      id: w.id,
+      name: w.name.trim(),
+      notes: w.notes,
+    }));
+  }
   if (value.memorizedMessage !== undefined) {
     if (
       !text(value.memorizedMessage, 5000) ||

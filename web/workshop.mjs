@@ -1,3 +1,7 @@
+import {
+  workshopVitals,
+  workshopDeathResult,
+} from "./rules/workshop-vitals.mjs";
 import { itemArrangement } from "./rules/workshop-play.mjs";
 import { CONDITION_KINDS } from "./rules/conditions.mjs";
 import {
@@ -180,11 +184,27 @@ function persist() {
     storageAvailable = false;
   }
 }
+const diceIcon =
+  '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="8" cy="8" r="1.5" fill="currentColor"/><circle cx="16" cy="16" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>';
+const skullIcon =
+  '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 19H6v-4C0 10 5 2 12 2s12 8 6 13v4h-2v3H8zM12 18v4M9 18v4M15 18v4"/><circle cx="8" cy="11" r="2"/><circle cx="16" cy="11" r="2"/><path d="m12 13-1 3h2z"/></svg>';
+function rollButton(label, extra) {
+  return button(
+    diceIcon,
+    "open-roll",
+    `aria-label="Roll ${esc(label)}" title="Roll ${esc(label)}" ${extra}`,
+    "icon-button roll-button",
+  );
+}
+function liveVitals() {
+  return workshopVitals(preview, draft);
+}
 function header() {
-  const stats = preview.summary;
+  const stats = preview.summary,
+    vitals = liveVitals();
   return `<div class="workshop-header"><div class="toolbar"><div class="toolbar-group">${button(edit ? "✓ Done" : "✎ Edit", "edit", `aria-pressed="${edit}"`, edit ? "selected" : "quiet")}</div><div class="toolbar-group">${button("New", "new", 'aria-label="New hero"', "quiet")}${button("Save", "save", 'aria-label="Save character"', "quiet")}${button("Load", "library", 'aria-label="Load character"', "quiet")}${button("Import", "import", 'aria-label="Import JSON"', "quiet")}${button("Export", "export", 'aria-label="Export JSON"', "quiet")}</div></div>
-  <header class="hero-header"><div class="identity-line"><img class="hero-mark" src="assets/crest.webp" alt=""><div>${edit && mode === "sheet" ? field("Character name", "name", draft.name, "text", 'maxlength="200"') : `<h1>${esc(draft.name || "New hero")}</h1>`}<p>${esc(join([get(draft.ancestryId)?.name, get(draft.classId)?.name, `Level ${preview.development.level}`]))}</p></div></div><div class="vitals"><div class="vital"><small>HP max</small><strong>${stats?.maximumHp ?? "—"}</strong></div><div class="vital"><small>Grit</small><strong>${stats?.gritGranted ?? "—"}</strong></div><div class="vital"><small>Speed</small><strong>${stats?.speed ?? "—"}</strong></div><div class="vital"><small>Armor DR</small><strong>${preview.resistances.physical ?? 0}</strong></div></div></header>
-  <div class="attributes">${ATTRIBUTES.map((key) => `<div class="attribute"><span>${title(key)}</span><strong data-attribute="${key}">${signed(draft.attributes[key])}</strong></div>`).join("")}</div></div>`;
+  <header class="hero-header"><div class="identity-line"><img class="hero-mark" src="assets/crest.webp" alt=""><div><div class="name-line">${edit && mode === "sheet" ? field("Character name", "name", draft.name, "text", 'maxlength="200"') : `<h1>${esc(draft.name || "New hero")}</h1>`}${button(skullIcon + (vitals.failed ? `<span>${vitals.failed}</span>` : ""), "death-roll", `aria-label="Death roll; ${vitals.failed} failed" title="Death roll · ${vitals.failed} failed"`, "icon-button death-button")}</div><p>${esc(join([get(draft.ancestryId)?.name, get(draft.classId)?.name, `Level ${preview.development.level}`]))}</p></div></div><div class="vitals"><div class="vital"><small>HP</small><strong class="hp-value"><input aria-label="Current HP" data-field="play.hp" type="number" min="0" max="${vitals.max}" step="1" value="${vitals.hp}"><span>/ ${vitals.max || "—"}</span></strong></div><div class="vital"><small>Grit</small><strong>${stats?.gritGranted ?? "—"}</strong></div><div class="vital"><small>Speed</small><strong data-speed>${vitals.speed}${vitals.speed < vitals.maxSpeed ? ` / ${vitals.maxSpeed}` : ""}</strong></div><div class="vital"><small>Wounds</small><strong data-wound-count>${vitals.wounds.length}</strong></div><div class="vital"><small>Armor DR</small><strong>${preview.resistances.physical ?? 0}</strong></div></div></header>
+  <div class="attributes">${ATTRIBUTES.map((key) => `<div class="attribute"><span>${title(key)}</span>${rollButton(title(key), `data-attribute-key="${key}"`)}<strong data-attribute="${key}">${signed(draft.attributes[key])}</strong></div>`).join("")}</div></div>`;
 }
 function abilityCard(
   r,
@@ -245,12 +265,28 @@ function disciplineTable() {
 function sheetContent() {
   if (tab === "Main") return mainPanel();
   if (tab === "Abilities")
-    return `${disciplineTable()}${searchRow()}<div id="results">${actionTable(
-      knownCards()
-        .filter(matches)
-        .map((record) => ({ record, basic: false, visible: true })),
-      false,
-    )}</div><details class="planned"><summary>Basic actions</summary>${actionTable(
+    return `${disciplineTable()}${searchRow()}<div id="results">${[
+      "Main Action",
+      "Maneuver",
+      "Reaction",
+      "Passive",
+      "Other",
+    ]
+      .map((group) => {
+        const entries = knownCards()
+          .filter(matches)
+          .filter((record) => {
+            const timing = actionTiming(record);
+            return group === "Other"
+              ? timing.includes("Other") || timing.includes("Movement")
+              : timing.includes(group);
+          })
+          .map((record) => ({ record, basic: false, visible: true }));
+        return `<section class="action-group" data-ability-group="${group}"><h3>${group}</h3>${entries.length ? actionTable(entries, false) : "<small>None</small>"}</section>`;
+      })
+      .join(
+        "",
+      )}</div><details class="planned"><summary>Basic actions</summary>${actionTable(
       catalogs.choices
         .filter((r) => r.universal)
         .map((record) => ({ record, basic: true, visible: true })),
@@ -260,7 +296,7 @@ function sheetContent() {
     return `${heading("", "Inventory", "", button("Add item", "add-item", "", "small"))}${inventoryStats()}${inventoryTable(true)}`;
   if (tab === "Recipes") return `${heading("", "Recipes", "")}${recipeRows()}`;
   if (tab === "Character")
-    return `${heading("", "Character", "")}<div class="columns"><section class="box">${edit ? field("Player", "profile.player", draft.profile?.player) : row("Player", draft.profile?.player || "—")}${row("Ancestry", name(draft.ancestryId))}${row("Culture", name(draft.culture?.id))}${row("Background", name(draft.background?.id))}<h3 class="section-title">Story</h3>${edit ? `<label>Notes<textarea data-field="profile.story" maxlength="10000">${esc(draft.profile?.story)}</textarea></label>` : `<p>${esc(draft.profile?.story || "")}</p>`}</section><section class="box"><h3 class="section-controls">Languages ${button("Add", "add-language", 'aria-label="Add language"', "small")}</h3>${languageTable()}</section></div>`;
+    return `${heading("", "Character", "")}<div class="columns"><section class="box">${edit ? field("Player", "profile.player", draft.profile?.player) : row("Player", draft.profile?.player || "—")}${row("Ancestry", name(draft.ancestryId))}${row("Culture", name(draft.culture?.id))}${row("Background", name(draft.background?.id))}<h3 class="section-title">Story</h3>${edit ? `<label>Notes<textarea data-field="profile.story" maxlength="10000">${esc(draft.profile?.story)}</textarea></label>` : `<p>${esc(draft.profile?.story || "")}</p>`}</section><section class="box"><h3 class="section-controls">Languages ${button("Add", "add-language", 'aria-label="Add language"', "small")}</h3>${languageTable()}</section></div>${woundTable()}`;
   const dev = preview.development;
   return `${heading("", "Development", "", button("Edit creation", "review", "", "small"))}<div class="development-summary"><div class="level-control"><span>Level</span>${button("−", "level-down", 'aria-label="Decrease level"')}<strong>${dev.level}</strong>${button("+", "level-up", 'aria-label="Increase level"')}</div><div><small>Current DP</small><strong data-dp="current">${dev.current}</strong></div><div><small>DP spent</small><strong data-dp="spent">${dev.spent}</strong></div><div><small>Total DP</small><strong data-dp="total">${dev.total}</strong></div></div><div class="development-actions">${button("Spend DP", "advance", dev.current > 0 || draft.progression?.levels?.[dev.level]?.purchases?.length ? "" : "disabled", "primary")}${missingSignatures()
     .map((tier) =>
@@ -302,7 +338,7 @@ function actionTable(entries, customize = edit) {
     .filter((e) => e.visible || customize)
     .map(
       (e) =>
-        `<tr class="${e.visible ? "" : "hidden-action"}"><td>${button(esc(e.record.name), "reference", `data-id="${e.record.id}"`, "table-link")}${e.basic ? '<small class="basic-tag">Basic</small>' : ""}</td><td>${esc(attributeFor(e.record) ? title(attributeFor(e.record)) : "—")}</td><td><span class="brief" title="${esc(brief(e.record))}">${esc(brief(e.record))}</span></td>${customize ? `<td>${e.basic ? `<input type="checkbox" data-basic="${e.record.id}" aria-label="Show ${esc(e.record.name)}" ${e.visible ? "checked" : ""}>` : ""}</td>` : ""}</tr>`,
+        `<tr class="${e.visible ? "" : "hidden-action"}"><td><div class="action-name">${button(esc(e.record.name), "reference", `data-id="${e.record.id}"`, "table-link")}${attributeFor(e.record) ? rollButton(e.record.name, `data-id="${e.record.id}"`) : ""}</div>${e.basic ? '<small class="basic-tag">Basic</small>' : ""}</td><td>${esc(attributeFor(e.record) ? title(attributeFor(e.record)) : "—")}</td><td><span class="brief" title="${esc(brief(e.record))}">${esc(brief(e.record))}</span></td>${customize ? `<td>${e.basic ? `<input type="checkbox" data-basic="${e.record.id}" aria-label="Show ${esc(e.record.name)}" ${e.visible ? "checked" : ""}>` : ""}</td>` : ""}</tr>`,
     )
     .join("")}</tbody></table></div>`;
 }
@@ -340,7 +376,7 @@ function mainPanel() {
     .map(([type, value]) => row(`${title(type)} resistance`, value))
     .join(
       "",
-    )}${preview.passiveSources.map((p) => `<small>${esc(p.label)}</small>`).join("")}</section>${conditionBar()}<section class="box"><h3>Movement & carrying</h3>${row("Speed", `${preview.summary?.speed ?? "—"} squares`)}${row("Bulk / capacity", `${preview.inventory.bulk} / ${preview.inventory.capacity}`)}${row("Encumbrance", preview.inventory.encumbrance)}${row("Base stability", preview.summary?.stability ?? 0)}</section><section class="box"><h3>Supplies</h3>${
+    )}${preview.passiveSources.map((p) => `<small>${esc(p.label)}</small>`).join("")}</section>${conditionBar()}<section class="box"><h3>Movement & carrying</h3>${row("Speed", `${liveVitals().speed}${liveVitals().speed < liveVitals().maxSpeed ? ` / ${liveVitals().maxSpeed}` : ""} squares`)}${row("Bulk / capacity", `${preview.inventory.bulk} / ${preview.inventory.capacity}`)}${row("Encumbrance", preview.inventory.encumbrance)}${row("Base stability", preview.summary?.stability ?? 0)}</section><section class="box"><h3>Supplies</h3>${
     preview.inventory.items
       .filter((i) => i.carried && i.inventoryDie)
       .map((i) => row(name(i.catalogId), `d${i.inventoryDie}`))
@@ -754,6 +790,16 @@ function playDraft() {
   draft.play.conditions ??= [];
   return draft.play;
 }
+function woundTable() {
+  return `<section class="box wound-box"><h3 class="section-controls">Wounds ${button("Add", "add-wound", 'aria-label="Add wound"', "small")}</h3><table><thead><tr><th>Wound</th><th>Effects / notes</th><th></th></tr></thead><tbody>${
+    liveVitals()
+      .wounds.map(
+        (w) =>
+          `<tr><td>${esc(w.name)}</td><td>${esc(w.notes)}</td><td>${button("×", "delete-wound", `data-id="${esc(w.id)}" aria-label="Remove wound ${esc(w.name)}"`, "small quiet")}</td></tr>`,
+      )
+      .join("") || '<tr><td colspan="3">No wounds recorded.</td></tr>'
+  }</tbody></table></section>`;
+}
 function languageTable() {
   return `<table class="language-table"><tbody>${preview.play.languages.map((lang) => `<tr><td>${esc(lang.name)}</td><td>${lang.form === "signed" ? "Signed" : "Spoken"}${lang.permissions.read ? " & written" : ""}</td><td>${button("×", "delete-language", `data-id="${esc(lang.id)}" aria-label="Remove language ${esc(lang.name)}"`, "small quiet")}</td></tr>`).join("") || "<tr><td>No languages</td></tr>"}</tbody></table>`;
 }
@@ -919,6 +965,76 @@ function normalizeShoppingIds() {
     }
   });
 }
+let activeRoll = null;
+function openSheetRoll({ key, id, death = false }) {
+  const record = get(id),
+    attribute = death ? "fortitude" : (key ?? attributeFor(record));
+  if (!ATTRIBUTES.includes(attribute))
+    throw new Error("Choose an attribute for this roll.");
+  activeRoll = { death, id };
+  const failed = liveVitals().failed;
+  popup(
+    death ? "Death roll" : (record?.name ?? title(attribute)),
+    `
+    ${death ? `<label>Failed death rolls<input id="death-failures" aria-label="Failed death rolls" type="number" min="0" max="3" step="1" value="${failed}"></label><p class="inline-help">Fortitude. Weak: one mark; Standard: no change; Strong: stabilize. Natural 111: two marks; natural 666: regain 1 HP. Three marks: Last Words.</p>` : ""}
+    <label>Attribute<select id="sheet-roll-attribute" aria-label="Roll attribute">${(death ? ["fortitude"] : ATTRIBUTES).map((k) => option(k, `${title(k)} ${signed(draft.attributes[k])}`, k === attribute)).join("")}</select></label>
+    <div class="roll-net"><label for="recipe-net" class="roll-net-labels"><span>Banes</span><output id="roll-net-value">Even</output><span>Boons</span></label><input id="recipe-net" aria-label="Banes / Boons" aria-valuetext="Even" type="range" min="-3" max="3" step="1" value="0"></div>
+    ${
+      death
+        ? ""
+        : `<details><summary>Abilities</summary><div class="roll-abilities">${knownCards()
+            .filter((r) => attributeFor(r) || r.id === id)
+            .map(
+              (r) =>
+                `<label class="inline-toggle"><input type="checkbox" data-roll-ability="${esc(r.id)}" ${r.id === id ? "checked" : ""}>${esc(r.name)}</label>`,
+            )
+            .join(
+              "",
+            )}</div><small>Choose applicable abilities; adjust the attribute and net Boons/Banes above.</small></details>`
+    }
+    <div id="recipe-roll-result" role="status" aria-live="polite"></div><div class="dialog-actions">${button("Roll", "roll-sheet", "", "primary")}</div>${record ? `<details><summary>Ability rules</summary>${markdown(references.records[id]?.markdown ?? "")}</details>` : ""}`,
+  );
+  const net = -Math.min(3, preview.play.conditionSummary.poisoned.rating);
+  $("#recipe-net").value = String(net);
+  $("#recipe-net").dispatchEvent(new Event("input", { bubbles: true }));
+}
+function rollSheetDice() {
+  const key = $("#sheet-roll-attribute").value;
+  const failed = activeRoll.death ? Number($("#death-failures").value) : 0;
+  if (!Number.isInteger(failed) || failed < 0 || failed > 3)
+    throw new Error("Use 0–3 failed death rolls.");
+  const result = displayDice(draft.attributes[key]);
+  const selected = [
+    ...document.querySelectorAll("[data-roll-ability]:checked"),
+  ].map((e) => name(e.dataset.rollAbility));
+  if (selected.length)
+    $("#recipe-roll-result").insertAdjacentHTML(
+      "beforeend",
+      `<p>${selected.map(esc).join(" · ")}</p>`,
+    );
+  if (activeRoll.death) {
+    const marks = Number($("#death-failures").value);
+    if (!Number.isInteger(marks) || marks < 0 || marks > 3)
+      throw new Error("Use 0–3 failed death rolls.");
+    const play = playDraft();
+    const death = workshopDeathResult({
+      failed: marks,
+      hp: liveVitals().hp,
+      retained: result.retained,
+      fortitude: draft.attributes[key],
+    });
+    play.failedDeathRolls = death.failed;
+    play.hp = death.hp;
+    const outcome = death.outcome;
+    $("#death-failures").value = String(play.failedDeathRolls);
+    $("#recipe-roll-result").insertAdjacentHTML(
+      "beforeend",
+      `<p>${outcome} Failed death rolls: ${play.failedDeathRolls}.</p>`,
+    );
+    persist();
+    render();
+  }
+}
 function recipeRoll(id, recipeId) {
   const ability = get(id),
     recipe = get(recipeId),
@@ -935,10 +1051,12 @@ function recipeRoll(id, recipeId) {
   );
 }
 function rollRecipeDice(id) {
-  const attribute = attributeFor(get(id)),
-    net = Number($("#recipe-net").value);
+  displayDice(draft.attributes[attributeFor(get(id))]);
+}
+function displayDice(attribute) {
+  const net = Number($("#recipe-net").value);
   const plan = rollPlan({
-    attribute: draft.attributes[attribute],
+    attribute,
     boons: Math.max(0, net),
     banes: Math.max(0, -net),
   });
@@ -955,7 +1073,20 @@ function rollRecipeDice(id) {
   const result = classifyRoll(retained, plan.attribute);
   $("#recipe-roll-result").innerHTML =
     `<strong>${title(result.tier)} · ${result.total}</strong><p>${faces.join(" · ")} → keep ${retained.join(" + ")} ${signed(plan.attribute)}${result.natural !== "none" ? ` · ${result.natural === "critical" ? "Natural 666: additional benefit" : "Natural 111: complication"}` : ""}</p>`;
+  return { ...result, retained };
 }
+document.addEventListener("change", (event) => {
+  if (event.target.id === "death-failures") {
+    const value = Number(event.target.value);
+    if (!Number.isInteger(value) || value < 0 || value > 3) {
+      event.target.value = String(liveVitals().failed);
+      return;
+    }
+    playDraft().failedDeathRolls = value;
+    persist();
+    render();
+  }
+});
 document.addEventListener("input", (event) => {
   if (event.target.id === "recipe-net") {
     const value = Number(event.target.value);
@@ -1048,6 +1179,8 @@ function updateField(target) {
       return;
     }
     set(target.dataset.field, value);
+    if (target.dataset.field === "play.hp" && value > 0)
+      playDraft().failedDeathRolls = 0;
   } else if (target.dataset.list) {
     const values = [...(getValue(target.dataset.list) ?? [])];
     set(
@@ -1182,6 +1315,33 @@ function showReference(id) {
 }
 async function action(target) {
   const a = target.dataset.action;
+  if (a === "open-roll")
+    return openSheetRoll({
+      key: target.dataset.attributeKey,
+      id: target.dataset.id,
+    });
+  if (a === "death-roll") return openSheetRoll({ death: true });
+  if (a === "roll-sheet") return rollSheetDice();
+  if (a === "add-wound")
+    return popup(
+      "Add wound",
+      `<label>Wound<input id="wound-name" maxlength="200"></label><label>Effects / notes<textarea id="wound-notes" maxlength="2000"></textarea></label><div class="dialog-actions">${button("Add wound", "confirm-wound", "", "primary")}</div>`,
+    );
+  if (a === "confirm-wound") {
+    const name = $("#wound-name").value.trim(),
+      notes = $("#wound-notes").value;
+    if (!name) throw new Error("Name the wound.");
+    const play = playDraft();
+    play.wounds ??= [];
+    if (play.wounds.length >= 100)
+      throw new Error("The character supports 100 recorded wounds.");
+    play.wounds.push({ id: `wound-${crypto.randomUUID()}`, name, notes });
+    $("#reference").close();
+  }
+  if (a === "delete-wound")
+    playDraft().wounds = (playDraft().wounds ?? []).filter(
+      (w) => w.id !== target.dataset.id,
+    );
   if (a === "reference") return showReference(target.dataset.id);
   if (a === "save-message") {
     const message = $("#memorized-message").value.trim();

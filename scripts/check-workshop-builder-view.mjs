@@ -269,9 +269,129 @@ try {
   await page.getByLabel("Resupply steps", { exact: true }).selectOption("6");
   await page.getByRole("button", { name: "Resupply", exact: true }).click();
   assert.match(await supplies.innerText(), /Food Bundle.*d8/s);
+  // Character story is independent of edit mode and remembers disclosure state.
+  await page.setViewportSize({ width: 760, height: 900 });
+  await page.getByRole("tab", { name: "Character", exact: true }).click();
+  assert.equal(await page.getByLabel("Player", { exact: true }).count(), 0);
+  const story = page.locator('[data-collapse="story"]');
+  assert(
+    await story.evaluate(
+      (e) =>
+        e.compareDocumentPosition(document.querySelector(".wound-box")) &
+        Node.DOCUMENT_POSITION_FOLLOWING,
+    ),
+  );
+  await page
+    .getByLabel("Story", { exact: true })
+    .fill("A bridgekeeper’s unfinished journey.\nA promise to return.");
+  await page.getByLabel("Story", { exact: true }).press("Tab");
+  await story.locator("summary").click();
+  await page.reload();
+  assert.equal(await story.evaluate((e) => e.open), false);
+  await story.locator("summary").click();
+  assert.equal(
+    await page.getByLabel("Story", { exact: true }).inputValue(),
+    "A bridgekeeper’s unfinished journey.\nA promise to return.",
+  );
+  await page.getByRole("button", { name: "Add wound", exact: true }).click();
+  const woundDialog = await page.getByRole("dialog").innerText();
+  assert(
+    await page.getByLabel("Wound damage type", { exact: true }).isVisible(),
+  );
+  await page.keyboard.press("Escape");
+  await page
+    .getByRole("button", { name: "Roll a new wound", exact: true })
+    .click();
+  assert.equal(await page.getByRole("dialog").innerText(), woundDialog);
+  await page.keyboard.press("Escape");
+  await page.getByRole("tab", { name: "Development", exact: true }).click();
+  for (let i = 0; i < 5; i++)
+    await page
+      .getByRole("button", { name: "Increase level", exact: true })
+      .click();
+  const dp = await page.locator('[data-dp="current"]').innerText();
+  assert.match(
+    await page.locator(".identity-line p").innerText(),
+    new RegExp(
+      `Dwarf.*Walled Communities.*Household Guard.*Protector.*Level 7\\(${dp}\\)`,
+    ),
+  );
+  assert.equal(await page.locator(".signature-progress tbody tr").count(), 3);
+  assert(
+    await page
+      .getByRole("button", { name: "Choose level 3 signature", exact: true })
+      .isVisible(),
+  );
+  assert(
+    await page
+      .getByRole("button", { name: "Choose level 7 signature", exact: true })
+      .isVisible(),
+  );
+  for (const width of [760, 390]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.screenshot({ path: `${output}/development-${width}.png` });
+    assert(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth,
+      ),
+    );
+  }
+  // Reopen an incomplete book example choice; canonical validation drives guidance.
+  await page.evaluate(() => {
+    const saved = JSON.parse(localStorage.getItem("hol.workshop.v1"));
+    delete saved.character.draft.acquisitions["ability-hook-and-drive"];
+    saved.mode = "builder";
+    saved.step = 6;
+    localStorage.setItem("hol.workshop.v1", JSON.stringify(saved));
+  });
+  await page.reload();
+  const banner = page.getByRole("status", {
+    name: "Missing choices",
+    exact: true,
+  });
+  assert.match(
+    await banner.innerText(),
+    /Hook and Drive.*one-handed or two-handed/s,
+  );
+  const incomplete = page.locator(
+    '[data-acquisition="ability-hook-and-drive"]',
+  );
+  assert(
+    await incomplete.evaluate(
+      (e) => e.open && e.classList.contains("choice-missing"),
+    ),
+  );
+  assert.equal(
+    await incomplete
+      .getByLabel("Melee weapon hands", { exact: true })
+      .inputValue(),
+    "",
+  );
+  const bannerY = (await banner.boundingBox()).y;
+  await page.locator("#panel").evaluate((e) => (e.scrollTop = e.scrollHeight));
+  assert.equal((await banner.boundingBox()).y, bannerY);
+  await page.setViewportSize({ width: 760, height: 900 });
+  await page.locator("#panel").evaluate((e) => (e.scrollTop = 0));
+  await page.screenshot({ path: `${output}/required-choice-760.png` });
+  await incomplete
+    .getByLabel("Melee weapon hands", { exact: true })
+    .selectOption("2");
+  assert.equal(await banner.count(), 0);
+  assert.equal(await page.locator(".choice-missing").count(), 0);
+  await page.reload();
+  assert.equal(await banner.count(), 0);
+  await page.getByRole("button", { name: "8 Review", exact: true }).click();
+  await page
+    .getByRole("button", { name: "View character sheet", exact: true })
+    .click();
+  await page.getByRole("tab", { name: "Inventory", exact: true }).click();
+  const melee = page
+    .locator(".inventory-table tbody tr")
+    .filter({ hasText: "Ordinary Melee Weapon" });
+  assert(await melee.count());
   assert.deepEqual(failures, []);
   console.info(
-    "PASS separate legal-first discipline/ability purchases, remembered discipline list, all rank overlays and A/M/R/P badges, wound type/separate Apply, repeatable attributed Evade with defense conditions/perspective and Main resupply; compact layouts and zero browser errors.",
+    "PASS separate legal-first discipline/ability purchases, remembered discipline list, all rank overlays and A/M/R/P badges, wound type/separate Apply, repeatable attributed Evade with defense conditions/perspective and Main resupply; persistent required choices, story, shared wound flow, header DP/origins and themed Development; compact layouts and zero browser errors.",
   );
 } catch (error) {
   await page.screenshot({

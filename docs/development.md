@@ -1332,7 +1332,8 @@ weapon/ability action favorites are combined. Opportunity uses Basic Melee's
 printed roll. Favorites remains first on narrow screens, above the summary boxes.
 
 Conditions have rating +/- and explicit Apply for Burning, Freezing and Bleeding.
-Apply uses native pure condition damage: fire/cold resistance and minimum apply;
+Apply combines all sources of the same condition before native pure damage:
+fire/cold resistance and minimum apply once to the combined event;
 Bleeding bypasses resistance. It changes HP/death marks without simultaneously
 decaying or deleting the condition. Repeating Apply is allowed for another tick
 or table correction. Reaching 0 HP directs the player to the existing header

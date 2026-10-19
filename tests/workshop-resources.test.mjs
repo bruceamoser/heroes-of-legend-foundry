@@ -377,6 +377,14 @@ test("manual condition damage uses resistance/minimum and bleeding bypass withou
     maxHp: 25,
     resistances: { fire: 3 },
   });
+  const stacked = workshopConditionDamage({
+    condition: burning,
+    contributions: [burning, { ...burning, id: "fire-two", rating: 3 }],
+    hp: 10,
+    maxHp: 25,
+    resistances: { fire: 3 },
+  });
+  assert.equal(stacked.amount, 2);
   assert.equal(result.amount, 1);
   assert.equal(result.hp, 9);
   assert.equal(burning.rating, 2);

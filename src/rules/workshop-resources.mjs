@@ -151,22 +151,26 @@ export function workshopResupply({ item, steps, catalog }) {
   return refillInventory({ die: item.inventoryDie, steps, maximumDie });
 }
 
-/** Manual Apply deals this contribution's damage without also decaying it. */
+/** Apply one condition's combined damage, with resistance once and no decay. */
 export function workshopConditionDamage({
   condition,
+  contributions = [condition],
   hp,
   maxHp,
   failed = 0,
   lastWords = false,
   resistances = {},
 }) {
-  const event = conditionEndPlan([condition], {
-    turnId: "web-manual",
-    resistances: Object.entries(resistances).map(([type, value]) => ({
-      type,
-      value,
-    })),
-  }).events[0];
+  const event = conditionEndPlan(
+    contributions.filter((c) => c.key === condition.key),
+    {
+      turnId: "web-manual",
+      resistances: Object.entries(resistances).map(([type, value]) => ({
+        type,
+        value,
+      })),
+    },
+  ).events[0];
   if (!event) throw new Error("This condition does not deal HP damage.");
   if (lastWords || (hp === 0 && failed >= 3))
     return {

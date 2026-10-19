@@ -938,7 +938,7 @@ function conditionBar() {
   return collapsible(
     "conditions",
     "Conditions",
-    `<div class="condition-list">${preview.play.conditions.map((c) => `<span class="condition-chip">${esc(title(c.key))}${CONDITION_KINDS[c.key] === "binary" ? "" : ` ${c.rating}${CONDITION_KINDS[c.key] === "duration" ? " turns" : ""}`}${c.persistence === "starred" ? " ★" : ""}${button("−", "adjust-condition", `data-id="${esc(c.id)}" data-delta="-1" aria-label="Decrease ${esc(title(c.key))}"`, "icon-button condition-control")}${CONDITION_KINDS[c.key] !== "binary" ? button("+", "adjust-condition", `data-id="${esc(c.id)}" data-delta="1" aria-label="Increase ${esc(title(c.key))}"`, "icon-button condition-control") : ""}${["burning", "freezing", "bleeding"].includes(c.key) ? button("Apply", "condition-damage", `data-id="${esc(c.id)}" aria-label="Apply ${esc(title(c.key))} damage"`, "small") : ""}${button("×", "delete-condition", `data-id="${esc(c.id)}" aria-label="Remove ${esc(title(c.key))}"`, "quiet small")}</span>`).join("") || "<small>None</small>"}</div>`,
+    `<div class="condition-list">${preview.play.conditions.map((c) => `<span class="condition-chip">${esc(title(c.key))}${CONDITION_KINDS[c.key] === "binary" ? "" : ` ${c.rating}${CONDITION_KINDS[c.key] === "duration" ? " turns" : ""}`}${c.persistence === "starred" ? " ★" : ""}${button("−", "adjust-condition", `data-id="${esc(c.id)}" data-delta="-1" aria-label="Decrease ${esc(title(c.key))}"`, "icon-button condition-control")}${CONDITION_KINDS[c.key] !== "binary" ? button("+", "adjust-condition", `data-id="${esc(c.id)}" data-delta="1" aria-label="Increase ${esc(title(c.key))}"`, "icon-button condition-control") : ""}${["burning", "freezing", "bleeding"].includes(c.key) && preview.play.conditions.find((v) => v.key === c.key).id === c.id ? button("Apply", "condition-damage", `data-id="${esc(c.id)}" aria-label="Apply ${esc(title(c.key))} damage" title="Apply combined ${esc(title(c.key))} damage from all sources"`, "small") : ""}${button("×", "delete-condition", `data-id="${esc(c.id)}" aria-label="Remove ${esc(title(c.key))}"`, "quiet small")}</span>`).join("") || "<small>None</small>"}</div>`,
     button("Add", "add-condition", 'aria-label="Add condition"', "small"),
     "box condition-bar",
   );
@@ -1670,6 +1670,7 @@ async function action(target) {
     if (!condition) throw new Error("This condition is no longer active.");
     const result = workshopConditionDamage({
       condition,
+      contributions: preview.play.conditions,
       hp: liveVitals().hp,
       maxHp: liveVitals().max,
       failed: liveVitals().failed,

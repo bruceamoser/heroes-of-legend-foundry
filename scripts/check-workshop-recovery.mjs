@@ -205,11 +205,22 @@ try {
     .getByRole("button", { name: "Decrease Burning", exact: true })
     .click();
   assert.match(await page.locator(".condition-bar").innerText(), /Burning 2/);
+  await condition("burning", 1);
+  assert.equal(
+    await page
+      .getByRole("button", { name: "Apply Burning damage", exact: true })
+      .count(),
+    1,
+  );
+  await page
+    .getByRole("button", { name: "Apply Burning damage", exact: true })
+    .click();
+  assert.equal(await hp.inputValue(), "14");
   await condition("bleeding", 2);
   await page
     .getByRole("button", { name: "Apply Bleeding damage", exact: true })
     .click();
-  assert.equal(await hp.inputValue(), "15");
+  assert.equal(await hp.inputValue(), "12");
   const downloaded = page.waitForEvent("download");
   await page.getByRole("button", { name: "Export JSON", exact: true }).click();
   const file = `${output}/recovery-favorites.hol.json`;
@@ -219,7 +230,7 @@ try {
   assert.equal(saved.draft.play.wounds[1].progress, 5);
   await page.reload();
   await hp.waitFor();
-  assert.equal(await hp.inputValue(), "15");
+  assert.equal(await hp.inputValue(), "12");
   assert.match(
     await page.locator('[data-collapse="favorites"]').innerText(),
     /Basic Unarmed/,
@@ -251,7 +262,7 @@ try {
   assert.equal(await page.locator("[data-wound-count]").innerText(), "2");
   await page.locator("#import-file").setInputFiles(file);
   await page.getByRole("heading", { name: "Review", exact: true }).waitFor();
-  assert.equal(await hp.inputValue(), "15");
+  assert.equal(await hp.inputValue(), "12");
   await page
     .getByRole("button", { name: "View character sheet", exact: true })
     .click();

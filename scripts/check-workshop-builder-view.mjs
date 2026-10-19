@@ -202,9 +202,8 @@ try {
   }
   await page.setViewportSize({ width: 760, height: 900 });
   await page.screenshot({ path: `${output}/learning-picker-760.png` });
-  await picker
-    .getByRole("button", { name: "Close selection", exact: true })
-    .click();
+  await page.keyboard.press("Escape");
+  assert.equal(await picker.evaluate((e) => e.open), false);
   await page.screenshot({ path: `${output}/current-build-760.png` });
   await page.getByRole("button", { name: "7 Equipment", exact: true }).click();
   assert.equal(await page.locator("#panel [data-acquisition]").count(), 0);

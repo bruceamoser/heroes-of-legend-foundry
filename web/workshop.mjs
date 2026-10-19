@@ -777,6 +777,13 @@ function renderPicker() {
       replacement.setSelectionRange(pos, pos);
   }
 }
+$("#picker").addEventListener("keydown", (event) => {
+  if (event.key !== "Escape") return;
+  event.preventDefault();
+  event.stopPropagation();
+  pickerKind = null;
+  $("#picker").close();
+});
 $("#picker").addEventListener("close", () => {
   if (!$("#picker").open) pickerKind = null;
 });

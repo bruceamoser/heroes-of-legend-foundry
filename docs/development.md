@@ -1305,3 +1305,48 @@ reviewed compact Main, Inventory and Abilities captures. Pure tests cover every
 approved wound type/key, prior-dice cap, safe portable state, Bulk/zero-quantity
 benefits, Grit and supply rules. All three suites are required in CI and Pages.
 This is web acceptance; native Foundry sheets were not changed or retested.
+
+
+### Issue #181 wound recovery, resupply, Favorites and condition use
+
+Character wound names open local detail dialogs. The table separates scar/history,
+active effects and recovery progress/value. Apply healing records 1/2/3 progress;
+Bruce explicitly confirmed completion when progress **reaches** the printed value.
+Completion removes the printed treatable consequences (lasting Speed/roll
+modifiers and this wound's starred conditions), preserving the scar, original
+roll, wound count and unrelated/ordinary temporary conditions. No HP is restored
+by a treatment-progress entry. Non-track remedies and Last Words retain their
+printed rules. The table records an adjudicated treatment result; it adds no
+calendar, permission or prerequisite gates.
+
+Every inventory supply has Resupply at every die state, including empty or already
+full. Steps use the shared refill ladder and cap at the item's printed starting
+maximum; all healing bottles cap at d4. Resupply leaves quantity unchanged and can
+also correct a zero-quantity stack's supply state without inventing new quantity.
+Basic/universal actions can be starred. Main starts with a collapsible Favorites
+section for learned/universal abilities and favorited inventory basics: melee,
+throw and opportunity actions for melee weapons; ranged for ranged weapons;
+Shield Block for shields; the potion action for healing bottles; ordinary item
+handling otherwise. Supply favorites act on their exact instance. Duplicate
+weapon/ability action favorites are combined. Opportunity uses Basic Melee's
+printed roll. Favorites remains first on narrow screens, above the summary boxes.
+
+Conditions have rating +/- and explicit Apply for Burning, Freezing and Bleeding.
+Apply combines all sources of the same condition before native pure damage:
+fire/cold resistance and minimum apply once to the combined event;
+Bleeding bypasses resistance. It changes HP/death marks without simultaneously
+decaying or deleting the condition. Repeating Apply is allowed for another tick
+or table correction. Reaching 0 HP directs the player to the existing header
+wound control. Browser play still has no complete encounter clock or automatic
+wound roll triggered by HP loss.
+
+Node 24 build/validation and all 445 tests pass. The full workshop, play, resource
+and new `test:workshop-recovery` browser suites pass with zero browser errors;
+all four are required in CI/Pages. New evidence covers exact-threshold healing,
+starred removal/retained scars and Speed restoration, wound details, capped empty
+resupply, universal/learned/inventory Favorites, manual condition damage without
+decay, saved/reloaded/JSON state and 760/390px layout. Main and wound-table captures
+were visually reviewed; Favorites position is asserted at both sizes. Pure checks
+also cover every consumable at each valid die state (including quantity zero),
+printed caps, bleeding bypass/minimum damage and duplicate favorite actions.
+Native Foundry UI and book sources were not changed.

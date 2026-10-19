@@ -84,6 +84,15 @@ export function normalizeWorkshopPlay(value, catalogs) {
       fail();
     result.wounds = value.wounds.map((w) => {
       const next = { id: w.id, name: w.name.trim(), notes: w.notes };
+      if (w.progress !== undefined) {
+        if (
+          !Number.isSafeInteger(w.progress) ||
+          w.progress < 0 ||
+          w.progress > 1000000
+        )
+          fail();
+        next.progress = w.progress;
+      }
       if (w.catalogId !== undefined) {
         if (
           !text(w.catalogId) ||

@@ -2,6 +2,11 @@ import {
   rolledWorkshopWound,
   workshopSupplyUse,
   workshopSpendGrit,
+  workshopWoundDetails,
+  workshopTreatWound,
+  workshopResupply,
+  workshopConditionDamage,
+  workshopFavorites,
 } from "./rules/workshop-resources.mjs";
 import { DAMAGE_TYPES } from "./rules/damage.mjs";
 import { HEALING_POTION_IDS } from "./rules/potions.mjs";
@@ -335,6 +340,9 @@ function brief(record) {
   return body.find((b) => b.text)?.text ?? record.reference?.flavor?.[0] ?? "";
 }
 function attributeFor(record) {
+  // The universal opportunity is one Basic Melee, using that action's printed roll.
+  if (record?.id === "ability-opportunity-attack")
+    return attributeFor(get("ability-basic-melee"));
   const text =
     record.reference?.rules.details.find((d) => d.label === "Attribute")
       ?.value ?? "";
@@ -379,7 +387,7 @@ function actionTable(entries, customize = edit) {
     .filter((e) => e.visible || customize)
     .map(
       (e) =>
-        `<tr class="${e.visible ? "" : "hidden-action"}"><td><div class="action-name">${tab === "Abilities" && !e.basic ? favorite("abilities", e.record.id) : ""}${button(esc(e.record.name), "reference", `data-id="${e.record.id}"`, "table-link")}${e.record.id === "ability-use-a-healing-potion" ? button(diceIcon, "potion-dialog", 'aria-label="Use a healing potion" title="Use a healing potion"', "icon-button") : attributeFor(e.record) ? rollButton(e.record.name, `data-id="${e.record.id}"`) : ""}</div>${e.basic ? '<small class="basic-tag">Basic</small>' : ""}</td><td>${esc(attributeFor(e.record) ? title(attributeFor(e.record)) : "—")}</td><td><span class="brief" title="${esc(brief(e.record))}">${esc(brief(e.record))}</span></td>${customize ? `<td>${e.basic ? `<input type="checkbox" data-basic="${e.record.id}" aria-label="Show ${esc(e.record.name)}" ${e.visible ? "checked" : ""}>` : ""}</td>` : ""}</tr>`,
+        `<tr class="${e.visible ? "" : "hidden-action"}"><td><div class="action-name">${tab === "Abilities" ? favorite("abilities", e.record.id) : ""}${button(esc(e.record.name), "reference", `data-id="${e.record.id}"`, "table-link")}${e.inventoryInstance ? (e.inventoryInstance.quantity > 0 && e.inventoryInstance.inventoryDie > 0 ? itemUseButton(e.inventoryInstance) : "") : e.record.id === "ability-use-a-healing-potion" ? button(diceIcon, "potion-dialog", 'aria-label="Use a healing potion" title="Use a healing potion"', "icon-button") : attributeFor(e.record) ? rollButton(e.record.name, `data-id="${e.record.id}"`) : ""}</div>${e.favoriteRow ? `<small class="item-source">${esc(actionTiming(e.record).join(" / "))}${e.sourceItems.length ? ` · ${e.sourceItems.map((i) => esc(name(i.catalogId))).join(", ")}` : ""}</small>` : e.basic ? '<small class="basic-tag">Basic</small>' : ""}</td><td>${esc(attributeFor(e.record) ? title(attributeFor(e.record)) : "—")}</td><td><span class="brief" title="${esc(brief(e.record))}">${esc(brief(e.record))}</span></td>${customize ? `<td>${e.basic ? `<input type="checkbox" data-basic="${e.record.id}" aria-label="Show ${esc(e.record.name)}" ${e.visible ? "checked" : ""}>` : ""}</td>` : ""}</tr>`,
     )
     .join("")}</tbody></table></div>`;
 }
@@ -404,25 +412,36 @@ function mainPanel() {
     "movement",
     "other",
   ];
-  const left = groups
-    .map((group, index) => {
-      const entries = actions.filter((e) =>
-        actionTiming(e.record).includes(group),
-      );
-      if (!entries.some((e) => e.visible || edit)) return "";
-      const toggle =
-        edit && entries.some((e) => e.basic)
-          ? `<label class="inline-toggle"><input type="checkbox" data-basic-group="${group}" ${entries.filter((e) => e.basic).every((e) => e.visible) ? "checked" : ""}> Basic actions</label>`
-          : "";
-      return collapsible(
-        `actions-${groupKeys[index]}`,
-        group,
-        actionTable(entries),
-        toggle,
-        "action-group",
-      );
-    })
-    .join("");
+  const favorites = workshopFavorites(preview, draft, catalogs);
+  const left =
+    collapsible(
+      "favorites",
+      "Favorites",
+      favorites.length
+        ? actionTable(favorites, false)
+        : "<small>Star abilities or inventory items to keep their actions here.</small>",
+      "",
+      "action-group favorite-actions",
+    ) +
+    groups
+      .map((group, index) => {
+        const entries = actions.filter((e) =>
+          actionTiming(e.record).includes(group),
+        );
+        if (!entries.some((e) => e.visible || edit)) return "";
+        const toggle =
+          edit && entries.some((e) => e.basic)
+            ? `<label class="inline-toggle"><input type="checkbox" data-basic-group="${group}" ${entries.filter((e) => e.basic).every((e) => e.visible) ? "checked" : ""}> Basic actions</label>`
+            : "";
+        return collapsible(
+          `actions-${groupKeys[index]}`,
+          group,
+          actionTable(entries),
+          toggle,
+          "action-group",
+        );
+      })
+      .join("");
   const traits = `<table class="trait-table"><tbody>${draft.traitIds.map((id) => `<tr><td>${button(esc(name(id)), "reference", `data-id="${esc(id)}"`, "table-link")}<span class="brief">${esc(traitBrief(id))}</span></td></tr>`).join("")}</tbody></table>`;
   const defenses =
     row("Armor / physical DR", preview.resistances.physical ?? 0) +
@@ -501,7 +520,7 @@ function inventoryTable(controls = false) {
         : item.source === "play"
           ? "Added"
           : name(item.source);
-  return `<div class="table-wrap"><table class="inventory-table"><thead><tr><th>Item</th><th>Qty</th><th>Bulk</th><th>Supply</th>${controls ? "<th>Held</th><th>Worn</th><th>Carried</th><th></th>" : '<th>Source</th><th aria-label="Remove purchase"></th>'}</tr></thead><tbody>${items.map((item) => `<tr data-instance="${esc(item.instanceId)}" class="${item.carried ? "" : "stored-item"}"><td>${controls ? favorite("items", item.instanceId) : ""}${button(esc(name(item.catalogId)), "reference", `data-id="${esc(item.catalogId)}"`, "table-link")}${controls ? `<small class="item-source">${esc(source(item))}</small>` : ""}</td><td>${controls ? `<input type="number" class="quantity-input" data-quantity="${esc(item.instanceId)}" aria-label="Quantity ${esc(name(item.catalogId))}" min="0" max="10000" step="1" value="${item.quantity}">` : item.quantity}</td><td>${item.bulk}</td><td>${item.inventoryDie ? `d${item.inventoryDie}` : item.inventoryDie === 0 ? "Empty" : "—"}${controls && item.inventoryDie && item.quantity ? itemUseButton(item) : ""}</td>${controls ? ["held", "worn", "carried"].map((prop) => `<td><input type="checkbox" data-loadout="${esc(item.instanceId)}" data-prop="${prop}" aria-label="${prop === "held" ? "Hold" : prop === "worn" ? "Wear" : "Carry"} ${esc(name(item.catalogId))}" ${item[prop] ? "checked" : ""}></td>`).join("") + `<td>${button("×", "delete-item", `data-instance="${esc(item.instanceId)}" aria-label="Delete ${esc(name(item.catalogId))}"`, "quiet small")}</td>` : `<td>${esc(source(item))}</td><td>${purchaseRemoval(item)}</td>`}</tr>`).join("")}</tbody></table></div>`;
+  return `<div class="table-wrap"><table class="inventory-table"><thead><tr><th>Item</th><th>Qty</th><th>Bulk</th><th>Supply</th>${controls ? "<th>Held</th><th>Worn</th><th>Carried</th><th></th>" : '<th>Source</th><th aria-label="Remove purchase"></th>'}</tr></thead><tbody>${items.map((item) => `<tr data-instance="${esc(item.instanceId)}" class="${item.carried ? "" : "stored-item"}"><td>${controls ? favorite("items", item.instanceId) : ""}${button(esc(name(item.catalogId)), "reference", `data-id="${esc(item.catalogId)}"`, "table-link")}${controls ? `<small class="item-source">${esc(source(item))}</small>` : ""}</td><td>${controls ? `<input type="number" class="quantity-input" data-quantity="${esc(item.instanceId)}" aria-label="Quantity ${esc(name(item.catalogId))}" min="0" max="10000" step="1" value="${item.quantity}">` : item.quantity}</td><td>${item.bulk}</td><td>${item.inventoryDie ? `d${item.inventoryDie}` : item.inventoryDie === 0 ? "Empty" : "—"}${controls && item.inventoryDie && item.quantity ? itemUseButton(item) : ""}${controls && item.inventoryDie !== null && item.inventoryDie !== undefined ? button("↥", "resupply-dialog", `data-instance="${esc(item.instanceId)}" aria-label="Resupply ${esc(name(item.catalogId))}" title="Resupply"`, "icon-button") : ""}</td>${controls ? ["held", "worn", "carried"].map((prop) => `<td><input type="checkbox" data-loadout="${esc(item.instanceId)}" data-prop="${prop}" aria-label="${prop === "held" ? "Hold" : prop === "worn" ? "Wear" : "Carry"} ${esc(name(item.catalogId))}" ${item[prop] ? "checked" : ""}></td>`).join("") + `<td>${button("×", "delete-item", `data-instance="${esc(item.instanceId)}" aria-label="Delete ${esc(name(item.catalogId))}"`, "quiet small")}</td>` : `<td>${esc(source(item))}</td><td>${purchaseRemoval(item)}</td>`}</tr>`).join("")}</tbody></table></div>`;
 }
 function advancementTable() {
   return `<div class="table-wrap"><table><thead><tr><th>Level</th><th>Entry</th><th>DP</th></tr></thead><tbody>${preview.advancementLedger.map((e) => `<tr><td>${e.level}</td><td>${esc(e.kind === "award" ? "Level award" : name(e.id))}</td><td>${signed(e.delta)}</td></tr>`).join("")}</tbody></table></div>`;
@@ -854,22 +873,63 @@ function playDraft() {
   draft.play.conditions ??= [];
   return draft.play;
 }
+function woundScar(wound) {
+  const text =
+    workshopWoundDetails(wound, catalogs.wounds).record?.injury ?? wound.name;
+  return text.includes(";") ? text.slice(text.indexOf(";") + 1).trim() : text;
+}
+function currentWoundEffects(wound) {
+  return liveVitals()
+    .woundEffects.filter((e) => e.id.startsWith(`${wound.id}-`))
+    .filter(
+      (e) =>
+        e.kind !== "condition" ||
+        preview.play.conditions.some((c) => c.id === e.id),
+    );
+}
+function healingButton(wound) {
+  const d = workshopWoundDetails(wound, catalogs.wounds);
+  return d.required === null || d.healed
+    ? ""
+    : button(
+        "Apply healing",
+        "heal-wound-dialog",
+        `data-id="${esc(wound.id)}" ${d.healed ? "disabled" : ""}`,
+        "small",
+      );
+}
 function woundTable() {
-  return `<section class="box wound-box"><h3 class="section-controls">Wounds ${button("Add", "add-wound", 'aria-label="Add wound"', "small")}</h3><table><thead><tr><th>Wound</th><th>Effects / notes</th><th></th></tr></thead><tbody>${
+  return `<section class="box wound-box"><h3 class="section-controls">Wounds ${button("Add", "add-wound", 'aria-label="Add wound"', "small")}</h3><table><thead><tr><th>Wound / scar</th><th>Active effects</th><th>Healing</th><th></th></tr></thead><tbody>${
     liveVitals()
-      .wounds.map(
-        (w) =>
-          `<tr><td>${esc(w.name)}</td><td>${esc(w.notes)}${
-            w.catalogId
-              ? `<small class="wound-effects">${liveVitals()
-                  .woundEffects.filter((e) => e.id.startsWith(`${w.id}-`))
-                  .map((e) => esc(woundEffectLabel(e)))
-                  .join("; ")}</small>`
-              : ""
-          }</td><td>${button("×", "delete-wound", `data-id="${esc(w.id)}" aria-label="Remove wound ${esc(w.name)}"`, "small quiet")}</td></tr>`,
-      )
-      .join("") || '<tr><td colspan="3">No wounds recorded.</td></tr>'
+      .wounds.map((w) => {
+        const d = workshopWoundDetails(w, catalogs.wounds),
+          effects = currentWoundEffects(w);
+        return `<tr data-wound="${esc(w.id)}"><td>${button(esc(w.name), "wound-details", `data-id="${esc(w.id)}"`, "table-link")}<small class="item-source">Scar: ${esc(woundScar(w))}</small></td><td>${effects.map((e) => esc(woundEffectLabel(e))).join("; ") || (w.catalogId ? "None" : esc(w.notes))}</td><td>${d.required !== null ? `<span>${d.progress} / ${d.required}${d.healed ? " · Healed" : ""}</span>${healingButton(w)}` : `<small>${esc(d.record?.remedy ?? "Manual record")}</small>`}</td><td>${button("×", "delete-wound", `data-id="${esc(w.id)}" aria-label="Remove wound ${esc(w.name)}"`, "small quiet")}</td></tr>`;
+      })
+      .join("") || '<tr><td colspan="4">No wounds recorded.</td></tr>'
   }</tbody></table></section>`;
+}
+function woundDetailsDialog(id) {
+  const w = liveVitals().wounds.find((w) => w.id === id);
+  if (!w) throw new Error("This wound is no longer recorded.");
+  const d = workshopWoundDetails(w, catalogs.wounds);
+  popup(
+    w.name,
+    `<dl class="wound-details"><dt>Scar</dt><dd>${esc(woundScar(w))}</dd><dt>Active effects</dt><dd>${
+      currentWoundEffects(w)
+        .map((e) => esc(woundEffectLabel(e)))
+        .join("; ") || esc(w.catalogId ? "None" : w.notes)
+    }</dd><dt>Remedy</dt><dd>${esc(d.record?.remedy ?? w.notes)}</dd><dt>Recovery value</dt><dd>${d.required ?? "—"}</dd><dt>Healing progress</dt><dd>${d.progress}${d.healed ? " · Healed; scar retained" : ""}</dd>${w.roll ? `<dt>Wound roll</dt><dd>${esc(title(w.damageType))} · ${w.roll.faces.join(" · ")} → ${esc(w.roll.key)}</dd>` : ""}</dl><div class="dialog-actions">${healingButton(w)}</div>`,
+  );
+}
+function healWoundDialog(id) {
+  const w = liveVitals().wounds.find((w) => w.id === id);
+  if (!w) throw new Error("This wound is no longer recorded.");
+  const d = workshopWoundDetails(w, catalogs.wounds);
+  popup(
+    `Heal ${w.name}`,
+    `<p>${d.progress} / ${d.required ?? "—"} progress. Reaching the recovery value clears treatable effects; the scar remains.</p><label>Healing progress<select id="healing-progress" aria-label="Healing progress">${[1, 2, 3].map((n) => option(n, `${n} progress`, n === 1)).join("")}</select></label><div class="dialog-actions">${button("Apply healing", "confirm-heal-wound", `data-id="${esc(id)}"`, "primary")}</div>`,
+  );
 }
 function languageTable() {
   return `<table class="language-table"><tbody>${preview.play.languages.map((lang) => `<tr><td>${esc(lang.name)}</td><td>${lang.form === "signed" ? "Signed" : "Spoken"}${lang.permissions.read ? " & written" : ""}</td><td>${button("×", "delete-language", `data-id="${esc(lang.id)}" aria-label="Remove language ${esc(lang.name)}"`, "small quiet")}</td></tr>`).join("") || "<tr><td>No languages</td></tr>"}</tbody></table>`;
@@ -878,7 +938,7 @@ function conditionBar() {
   return collapsible(
     "conditions",
     "Conditions",
-    `<div class="condition-list">${preview.play.conditions.map((c) => `<span class="condition-chip">${esc(title(c.key))}${CONDITION_KINDS[c.key] === "binary" ? "" : ` ${c.rating}${CONDITION_KINDS[c.key] === "duration" ? " turns" : ""}`}${c.persistence === "starred" ? " ★" : ""}${button("×", "delete-condition", `data-id="${esc(c.id)}" aria-label="Remove ${esc(title(c.key))}"`, "quiet small")}</span>`).join("") || "<small>None</small>"}</div>`,
+    `<div class="condition-list">${preview.play.conditions.map((c) => `<span class="condition-chip">${esc(title(c.key))}${CONDITION_KINDS[c.key] === "binary" ? "" : ` ${c.rating}${CONDITION_KINDS[c.key] === "duration" ? " turns" : ""}`}${c.persistence === "starred" ? " ★" : ""}${button("−", "adjust-condition", `data-id="${esc(c.id)}" data-delta="-1" aria-label="Decrease ${esc(title(c.key))}"`, "icon-button condition-control")}${CONDITION_KINDS[c.key] !== "binary" ? button("+", "adjust-condition", `data-id="${esc(c.id)}" data-delta="1" aria-label="Increase ${esc(title(c.key))}"`, "icon-button condition-control") : ""}${["burning", "freezing", "bleeding"].includes(c.key) && preview.play.conditions.find((v) => v.key === c.key).id === c.id ? button("Apply", "condition-damage", `data-id="${esc(c.id)}" aria-label="Apply ${esc(title(c.key))} damage" title="Apply combined ${esc(title(c.key))} damage from all sources"`, "small") : ""}${button("×", "delete-condition", `data-id="${esc(c.id)}" aria-label="Remove ${esc(title(c.key))}"`, "quiet small")}</span>`).join("") || "<small>None</small>"}</div>`,
     button("Add", "add-condition", 'aria-label="Add condition"', "small"),
     "box condition-bar",
   );
@@ -1111,6 +1171,14 @@ function gritDialog() {
   popup(
     "Use Grit",
     `<p>Spend 1 Grit to restore HP to ${liveVitals().max} and clear death marks? Wounds remain.</p><p>${available} Grit remaining.${draft.play?.lastWords ? " Ordinary Grit cannot reverse Last Words." : ""}</p><div class="dialog-actions">${button("Cancel", "close-reference")}${button("Spend 1 Grit", "confirm-grit", available > 0 && !draft.play?.lastWords ? "" : "disabled", "primary")}</div>`,
+  );
+}
+function resupplyDialog(instance) {
+  const item = preview.inventory.items.find((i) => i.instanceId === instance);
+  if (!item) throw new Error("This supply is no longer in inventory.");
+  popup(
+    `Resupply ${name(item.catalogId)}`,
+    `<p>Current supply: ${item.inventoryDie ? `d${item.inventoryDie}` : "Empty"}. Each step restores one die size, up to its original d${get(item.catalogId).inventoryDie}.</p><label>Resupply steps<select id="resupply-steps" aria-label="Resupply steps">${[1, 2, 3, 4, 5, 6].map((n) => option(n, `${n} step${n === 1 ? "" : "s"}`, n === 1)).join("")}</select></label><div class="dialog-actions">${button("Resupply", "confirm-resupply", `data-instance="${esc(instance)}"`, "primary")}</div>`,
   );
 }
 let supplyInstance = null;
@@ -1542,6 +1610,85 @@ function showReference(id) {
 }
 async function action(target) {
   const a = target.dataset.action;
+  if (a === "wound-details") return woundDetailsDialog(target.dataset.id);
+  if (a === "heal-wound-dialog") return healWoundDialog(target.dataset.id);
+  if (a === "confirm-heal-wound") {
+    const play = playDraft(),
+      index = play.wounds.findIndex((w) => w.id === target.dataset.id);
+    if (index < 0) throw new Error("This wound is no longer recorded.");
+    const result = workshopTreatWound({
+      wound: play.wounds[index],
+      steps: Number($("#healing-progress").value),
+      catalog: catalogs.wounds,
+    });
+    play.wounds[index] = result.wound;
+    play.conditions = play.conditions.filter(
+      (c) => !result.removedConditionIds.includes(c.id),
+    );
+    persist();
+    render();
+    woundDetailsDialog(result.wound.id);
+    return;
+  }
+  if (a === "resupply-dialog") return resupplyDialog(target.dataset.instance);
+  if (a === "confirm-resupply") {
+    const item = preview.inventory.items.find(
+      (i) => i.instanceId === target.dataset.instance,
+    );
+    const result = workshopResupply({
+      item,
+      steps: Number($("#resupply-steps").value),
+      catalog: catalogs.inventory,
+    });
+    const inv = playDraft().inventory;
+    inv.overrides ??= {};
+    inv.overrides[item.instanceId] = {
+      ...inv.overrides[item.instanceId],
+      inventoryDie: result.after,
+    };
+    $("#reference").close();
+    persist();
+    render();
+    notice(`Supply restored to d${result.after}.`);
+    return;
+  }
+  if (a === "adjust-condition") {
+    const play = playDraft(),
+      c = play.conditions.find((c) => c.id === target.dataset.id);
+    if (!c) return;
+    c.rating = Math.min(10000, c.rating + Number(target.dataset.delta));
+    if (c.rating <= 0)
+      play.conditions = play.conditions.filter((v) => v.id !== c.id);
+    persist();
+    render();
+    return;
+  }
+  if (a === "condition-damage") {
+    const condition = preview.play.conditions.find(
+      (c) => c.id === target.dataset.id,
+    );
+    if (!condition) throw new Error("This condition is no longer active.");
+    const result = workshopConditionDamage({
+      condition,
+      contributions: preview.play.conditions,
+      hp: liveVitals().hp,
+      maxHp: liveVitals().max,
+      failed: liveVitals().failed,
+      lastWords: draft.play?.lastWords ?? false,
+      resistances: preview.resistances,
+    });
+    Object.assign(playDraft(), {
+      hp: result.hp,
+      failedDeathRolls: result.failedDeathRolls,
+      lastWords: result.lastWords,
+    });
+    persist();
+    render();
+    notice(
+      `${title(condition.key)}: ${result.amount} damage.${result.woundRequired ? " At 0 HP: roll a wound using the header." : ""}`,
+    );
+    return;
+  }
   if (a === "roll-wound-dialog") return woundDialog();
   if (a === "confirm-roll-wound") return rollNewWound();
   if (a === "use-grit") return gritDialog();

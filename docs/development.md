@@ -1231,3 +1231,34 @@ object available. The ordinary package does not require a book checkout.
 Specialty effects/timing, AoE worst-target choice, and forced movement/terrain
 remain DA adjudication with complete local rules; pure primitive tests do not
 establish automatic specialty resolution. See the action-expansion audit.
+
+
+### Issue #177 web sheet play controls
+
+The web header has editable current/max HP, reduced current/max Speed, wound
+count, a skull death-roll control and six attribute dice buttons. Main and
+Abilities action tables expose dice for records with a printed attribute; the
+roll dialog keeps an editable attribute, a −3…+3 Banes/Boons slider and optional
+learned ability selections. These selections document use; printed specialty
+costs/effects remain table adjudication. Recipe rolls retain their existing path.
+Abilities groups are Main Action, Maneuver, Reaction, Passive and Other.
+Character records a wound history with names and effects/notes. Adding/removing
+wounds is a manual record/correction, not a new wound generation/treatment rule.
+
+Current HP, failed death rolls and wound history persist in browser saves and
+portable character JSON. Positive HP edits clear death marks. The skull dialog
+allows repeated rolls and manual mark corrections; browser play does not impose
+an encounter clock or Last Words lock. Standard, Weak, Strong and natural 111/666
+results follow the existing survival rules. Poisoned prefills the net slider;
+Speed reflects existing encumbrance and Slowed. No wound penalties are inferred
+from prose or automatically applied by the wound-note list.
+
+Node 24 build/validation and all 435 tests pass. The full workshop browser suite
+and new `npm run test:workshop-play` pass with zero browser errors. The latter
+checks HP reload, attribute/ability rolls, repeatable death rolls with known dice,
+failed-mark corrections/healing reset, wound history/count, five ability groups,
+Slowed Speed, JSON round trips and 900/760/390px overflow. Primary visually
+reviewed the native-sized and narrow web screenshots. Pure browser death results
+are compared against native survival for all 216 die triples and three prior
+mark counts. No Foundry runtime test or native sheet UI change is claimed here.
+Both browser suites now run in validation and Pages deployment workflows.

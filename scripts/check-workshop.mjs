@@ -371,7 +371,7 @@ try {
     .getByRole("button", { name: "View character sheet", exact: true })
     .click();
   await page.getByRole("tab", { name: "Abilities", exact: true }).click();
-  assert(await page.locator("#results .action-table").isVisible());
+  assert(await page.locator("#results .action-table").first().isVisible());
   await page.locator('#results [data-action="reference"]').first().click();
   assert(await page.getByRole("dialog").isVisible());
   await page.keyboard.press("Escape");

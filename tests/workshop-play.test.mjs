@@ -249,3 +249,79 @@ test("memorized message persists with a strict 50 word editing bound", () => {
     normalizeWorkshopPlay({ memorizedMessage: message + " extra" }, catalogs),
   );
 });
+
+test("web vitals and wound history survive portable current-only saves with bounded validation", () => {
+  const draft = borin();
+  draft.play = {
+    hp: 3,
+    failedDeathRolls: 2,
+    wounds: [{ id: "wound-arm", name: "Broken arm", notes: "Bone injury" }],
+  };
+  const saved = readPortableCharacter(
+    writePortableCharacter(draft, catalogs),
+    catalogs,
+  ).draft;
+  assert.deepEqual(saved.play.hp, 3);
+  assert.deepEqual(saved.play.failedDeathRolls, 2);
+  assert.deepEqual(saved.play.wounds, draft.play.wounds);
+  for (const play of [
+    { hp: -1 },
+    { hp: 0.5 },
+    { failedDeathRolls: 4 },
+    { wounds: [{ id: "bad", name: "", notes: "" }] },
+    { wounds: [draft.play.wounds[0], draft.play.wounds[0]] },
+  ])
+    assert.throws(() => normalizeWorkshopPlay(play, catalogs), /malformed/);
+});
+
+test("browser death-roll outcomes agree with native survival for every 3d6 result and prior mark count", async () => {
+  const { workshopDeathResult } = await import(
+    "../src/rules/workshop-vitals.mjs"
+  );
+  const { survivalState, resolveSurvival } = await import(
+    "../src/rules/survival.mjs"
+  );
+  for (let failed = 0; failed < 3; failed++)
+    for (let a = 1; a <= 6; a++)
+      for (let b = 1; b <= 6; b++)
+        for (let c = 1; c <= 6; c++) {
+          const retained = [a, b, c],
+            fortitude = 2;
+          const state = survivalState({ hp: 0, maxHp: 20, marks: failed });
+          state.due = 0;
+          state.choice = { kind: "roll", turn: 0, resolved: false };
+          const native = resolveSurvival(state, { retained, fortitude });
+          const web = workshopDeathResult({
+            failed,
+            hp: 0,
+            retained,
+            fortitude,
+          });
+          assert.equal(web.failed, native.marks);
+          assert.equal(web.hp, native.hp);
+        }
+});
+
+test("web Speed shows Slowed and encumbrance against unencumbered maximum; missing HP starts full", async () => {
+  const { workshopVitals } = await import("../src/rules/workshop-vitals.mjs");
+  const d = borin(),
+    initial = workshopCharacter(d, catalogs);
+  assert.equal(workshopVitals(initial, d).hp, initial.summary.maximumHp);
+  d.play = {
+    hp: 2,
+    conditions: [
+      {
+        id: "slow",
+        key: "slowed",
+        source: "spell",
+        rating: 2,
+        persistence: "temporary",
+      },
+    ],
+  };
+  const p = workshopCharacter(d, catalogs),
+    live = workshopVitals(p, d);
+  assert.equal(live.hp, 2);
+  assert.equal(live.speed, Math.max(0, p.summary.speed - 2));
+  assert.equal(live.maxSpeed, p.summary.unencumberedSpeed);
+});

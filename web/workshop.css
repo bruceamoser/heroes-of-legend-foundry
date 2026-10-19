@@ -1434,3 +1434,123 @@ dialog header button {
     width: 32px;
   }
 }
+
+/* Compact play controls share the sheet's existing header and table rhythm. */
+.name-line {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+.name-line h1 {
+  overflow-wrap: anywhere;
+}
+.icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px;
+  min-width: 25px;
+  min-height: 25px;
+  background: transparent;
+  border: 0;
+  color: inherit;
+  vertical-align: middle;
+}
+.icon-button svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+.icon-button:hover {
+  background: #9d824528;
+}
+.death-button {
+  color: var(--gold);
+  flex-shrink: 0;
+}
+.death-button span {
+  font-size: 0.75rem;
+}
+.attribute {
+  gap: 5px;
+}
+.attribute .roll-button {
+  min-width: 22px;
+  min-height: 24px;
+  padding: 2px;
+}
+.attribute .roll-button svg {
+  width: 16px;
+  height: 16px;
+}
+.vital {
+  min-width: 48px;
+  padding: 0 7px;
+}
+.vital .hp-value {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+  white-space: nowrap;
+}
+.hero-header .hp-value input {
+  width: 2.5em;
+  min-width: 0;
+  padding: 1px 2px;
+  font: inherit;
+  text-align: center;
+  color: inherit;
+  background: #ffffff12;
+  border: 1px solid #ffffff40;
+  border-radius: 3px;
+}
+.hp-value input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.action-table td:first-child .roll-button {
+  margin-left: 3px;
+}
+.wound-box {
+  margin-top: 10px;
+}
+.wound-box td {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.roll-abilities {
+  display: grid;
+  gap: 5px;
+  padding: 6px 0;
+}
+@media (max-width: 600px) {
+  .vital {
+    padding: 0 3px;
+  }
+  .vital strong {
+    font-size: 1.15rem;
+  }
+  .hero-header .identity-line {
+    min-width: 0;
+  }
+}
+
+.hero-header .hp-value input {
+  margin: 0;
+  min-height: 27px;
+}
+.action-name {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.action-name .table-link {
+  min-width: 0;
+}
+.action-name .roll-button {
+  flex-shrink: 0;
+  margin-left: 0;
+}
+.action-table th:first-child {
+  width: 32%;
+}

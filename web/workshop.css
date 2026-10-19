@@ -2001,3 +2001,74 @@ dialog header button {
   margin-top: 10px;
   font-size: 0.73rem;
 }
+
+.picker-reference {
+  flex: 0 0 auto;
+  padding: 7px 14px;
+  border-bottom: 1px solid var(--line);
+  max-height: 25vh;
+  overflow: auto;
+}
+.picker-disciplines {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.picker-disciplines .chip {
+  color: var(--ink);
+  font-size: 0.75rem;
+}
+.picker-disciplines .sigil {
+  width: 20px;
+  height: 20px;
+}
+.purchased-abilities {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: 6px;
+  font-size: 0.75rem;
+}
+.purchased-abilities > strong {
+  flex: none;
+}
+.purchased-abilities > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px 6px;
+}
+.reference-chip {
+  font-size: 0.73rem;
+  padding: 2px 5px;
+  background: transparent;
+}
+.already-owned {
+  color: var(--muted);
+  background: #dedbd2;
+}
+.already-owned small {
+  display: block;
+  font-size: 0.72rem;
+}
+.market-table tr.unavailable {
+  color: var(--muted);
+  background: #dedbd24d;
+}
+dialog header button[data-action],
+#picker > header button {
+  color: var(--paper);
+  background: transparent;
+  border: 1px solid #b2a58d;
+}
+dialog header button[data-action]:hover,
+dialog header button[data-action]:focus-visible,
+#picker > header button:hover,
+#picker > header button:focus-visible {
+  color: var(--forest);
+  background: var(--paper);
+  border-color: var(--gold);
+}
+dialog header button[data-action]:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}

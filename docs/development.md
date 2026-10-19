@@ -1428,3 +1428,28 @@ buying, dialogs remaining open, over-budget acceptance/decline on repeated buys,
 warning navigation including previous levels, and skull roll/correction/reload.
 760/390px layouts and dialog screenshots were visually reviewed. Native Foundry
 UI and book sources were not changed.
+
+### Learning references and equipment eligibility (#189)
+
+The learning dialog pins known discipline ranks and a compact purchased-ability
+reference above its scrolling choices. The discipline filter includes All and
+Universal; Universal selects abilities without discipline requirements, including
+purchasable utility abilities. Free basic actions remain available without a DP
+purchase. Class starting-discipline choices already held before class selection
+are gray and disabled when unselected. Saved duplicate selections remain
+removable rather than silently changing an existing build.
+
+One shared equipment-eligibility helper covers the printed Light/Medium/Heavy
+Armor training and Smoke Supply requirements. Both the creation market and play
+Add item dropdown keep unavailable equipment visible with the required ability;
+the purchase/add actions also enforce the same check. Existing inventory/imports
+are retained. Equipment tests use unrestricted tents for quantity and over-budget
+scenarios; separate assertions cover unavailable armor/smoke and attempted
+manipulation of the Add item dropdown. Dialog close controls use transparent dark
+header backgrounds and invert to dark text on parchment on hover/focus.
+
+Node 24 build/validation and all 449 tests pass, as do all five browser suites.
+New checks cover printed requirement parity, Universal classification, pinned
+references, updating purchases, disabled already-known class choices, disabled
+inventory options, action-level enforcement and close-button colors. Dialog
+screenshots visually reviewed. No rules or native Foundry UI changes.

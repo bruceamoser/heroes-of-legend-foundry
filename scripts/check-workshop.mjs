@@ -434,7 +434,7 @@ try {
     await page.getByLabel("Carry Food Bundle", { exact: true }).isChecked(),
   );
   await page.getByRole("button", { name: "Add item", exact: true }).click();
-  await page.locator("#play-item").selectOption("item-ordinary-heavy-armor");
+  await page.locator("#play-item").selectOption("item-small-tent");
   await page.locator("#play-quantity").fill("2");
   await page
     .getByRole("dialog")
@@ -443,7 +443,7 @@ try {
   assert.equal(
     await page
       .locator(".inventory-table tr")
-      .filter({ hasText: "Ordinary Heavy Armor" })
+      .filter({ hasText: "Small Tent" })
       .locator("td")
       .nth(1)
       .locator("input")
@@ -516,10 +516,10 @@ try {
   );
   await page.screenshot({ path: `${output}/play-inventory.png` });
   await page
-    .getByRole("button", { name: "Delete Ordinary Heavy Armor", exact: true })
+    .getByRole("button", { name: "Delete Small Tent", exact: true })
     .click();
   assert.equal(
-    await page.getByLabel("Wear Ordinary Heavy Armor", { exact: true }).count(),
+    await page.getByLabel("Wear Small Tent", { exact: true }).count(),
     0,
   );
   await page.getByRole("tab", { name: "Character", exact: true }).click();
@@ -701,7 +701,8 @@ try {
   await page
     .locator('[data-action="class"][data-id="class-intellect"]')
     .click();
-  await page.locator('input[value="discipline-craft"]').check();
+  assert(await page.locator('input[value="discipline-craft"]').isDisabled());
+  await page.locator('input[value="discipline-medicine"]').check();
   await page.locator('input[value="discipline-scholarship"]').check();
   await page
     .locator(
@@ -817,14 +818,10 @@ try {
   await closePicker();
   await page.getByRole("button", { name: "7 Equipment", exact: true }).click();
   await picker("equipment");
+  await page.getByLabel("Search equipment", { exact: true }).fill("Small Tent");
+  await page.getByLabel("Quantity Small Tent", { exact: true }).fill("100");
   await page
-    .getByLabel("Search equipment", { exact: true })
-    .fill("Ordinary Heavy Armor");
-  await page
-    .getByLabel("Quantity Ordinary Heavy Armor", { exact: true })
-    .fill("100");
-  await page
-    .locator('[data-action="equipment"][data-id="item-ordinary-heavy-armor"]')
+    .locator('[data-action="equipment"][data-id="item-small-tent"]')
     .click();
   assert(
     dialogs.some((message) => /exceeds your available coins/.test(message)),
@@ -832,7 +829,7 @@ try {
   await closePicker();
   assert.match(
     await page.locator(".inventory-table").innerText(),
-    /Ordinary Heavy Armor/,
+    /Small Tent/,
   );
   assert.match(
     await page.locator(".inventory-stats").innerText(),

@@ -30,6 +30,7 @@ test("Universal filter includes purchasable no-discipline abilities and free bas
     isUniversalAbility(catalog.find((r) => r.id === "ability-another-tongue")),
   );
   assert(isUniversalAbility(catalog.find((r) => r.universal)));
+  assert(!isUniversalAbility(catalog.find((r) => r.classId)));
   assert(
     !isUniversalAbility(catalog.find((r) => r.id === "ability-hook-and-drive")),
   );

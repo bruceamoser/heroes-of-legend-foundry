@@ -15,6 +15,7 @@ export function equipmentEligibility(id, abilities) {
 export function isUniversalAbility(record) {
   return (
     record.kind === "ability" &&
+    !record.classId &&
     !(record.requirements ?? []).some((r) => r.kind === "discipline")
   );
 }

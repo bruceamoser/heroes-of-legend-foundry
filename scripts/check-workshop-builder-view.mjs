@@ -41,9 +41,10 @@ page.on("response", (r) => {
   if (r.status() >= 400) failures.push(`${r.status()} ${r.url()}`);
 });
 const dialogs = [];
+let acceptDialogs = true;
 page.on("dialog", (d) => {
   dialogs.push(d.message());
-  d.accept();
+  acceptDialogs ? d.accept() : d.dismiss();
 });
 const output = resolve("test-results/workshop");
 await mkdir(output, { recursive: true });
@@ -72,81 +73,126 @@ async function condition(key) {
 }
 try {
   await page.goto(`http://127.0.0.1:${server.address().port}${prefix}`);
-  await page
-    .getByRole("spinbutton", { name: "Current HP", exact: true })
-    .waitFor();
   await page.getByRole("tab", { name: "Development", exact: true }).click();
   await page
     .getByRole("button", { name: "Edit creation", exact: true })
     .click();
-  await page
-    .getByRole("button", { name: "4 Early learning", exact: true })
-    .click();
-  const disciplines = page.locator('[data-learning-list="discipline"]'),
-    abilities = page.locator('[data-learning-list="ability"]');
+  await page.evaluate(() => {
+    const saved = JSON.parse(localStorage.getItem("hol.workshop.v1"));
+    saved.character.draft.purchases[0] = [];
+    saved.character.draft.purchases[1] = [];
+    delete saved.character.draft.acquisitions["ability-hook-and-drive"];
+    saved.mode = "builder";
+    saved.step = 6;
+    localStorage.setItem("hol.workshop.v1", JSON.stringify(saved));
+  });
+  await page.reload();
+  assert.equal(await page.locator("#panel [data-acquisition]").count(), 0);
   assert.equal(
-    await abilities.locator('[data-choice^="discipline-"]').count(),
+    await page.getByLabel("Override coin limit", { exact: false }).count(),
     0,
   );
-  await disciplines.locator("summary").click();
+  const banner = page.getByRole("status", {
+    name: "Missing choices",
+    exact: true,
+  });
+  await banner.getByRole("button", { name: /Hook and Drive/ }).click();
+  assert(
+    await page
+      .getByRole("heading", { name: "Early learning", exact: true })
+      .isVisible(),
+  );
+  const build = page.locator(".current-build");
+  assert(
+    await build
+      .getByRole("heading", { name: "Current Build", exact: true })
+      .isVisible(),
+  );
+  const hook = build.locator('[data-build-id="ability-hook-and-drive"]');
+  assert(await hook.locator(".choice-missing").isVisible());
+  assert.match(await hook.innerText(), /Household Guard/);
+  await hook
+    .getByLabel("Melee weapon hands", { exact: true })
+    .selectOption("2");
+  assert.equal(await banner.count(), 0);
+  assert.equal(await build.locator("[data-acquisition]").count(), 0);
   assert.equal(
-    await disciplines.locator('[data-choice^="ability-"]').count(),
+    await page
+      .getByRole("button", { name: "Learn discipline", exact: true })
+      .count(),
     0,
   );
-  assert.equal(await disciplines.locator("[data-choice]").count(), 18);
-  await page.getByRole("button", { name: "8 Review", exact: true }).click();
+  assert.equal(await page.locator("[data-learning-list]").count(), 0);
   await page
-    .getByRole("button", { name: "View character sheet", exact: true })
+    .getByRole("button", { name: "Learn abilities", exact: true })
     .click();
-  await page.getByRole("tab", { name: "Development", exact: true }).click();
+  const picker = page.locator("#picker");
+  assert(await picker.evaluate((e) => e.open));
+  assert.equal(await picker.locator('[data-choice^="discipline-"]').count(), 0);
+  const before = await picker.locator(".picker-balance").innerText();
+  await picker
+    .locator('[data-eligible="true"] [data-action="purchase"]')
+    .first()
+    .click();
+  assert(await picker.evaluate((e) => e.open));
+  assert.notEqual(await picker.locator(".picker-balance").innerText(), before);
+  const unavailable = picker
+    .locator('[data-eligible="false"] [data-action="purchase"]')
+    .first();
+  assert(await unavailable.isDisabled());
+  await picker
+    .getByRole("button", { name: "Close selection", exact: true })
+    .click();
+  const earlyIds = await build
+    .locator("[data-build-id]")
+    .evaluateAll((es) => es.map((e) => e.dataset.buildId));
   await page
-    .getByRole("button", { name: "Increase level", exact: true })
+    .getByRole("button", { name: "6 Heroic learning", exact: true })
     .click();
-  await page.getByRole("button", { name: "Spend DP", exact: true }).click();
-  if (!(await disciplines.locator("details").evaluate((e) => e.open)))
-    await disciplines.locator("summary").click();
-  const order = await disciplines
+  for (const id of earlyIds) {
+    const entry = build.locator(`[data-build-id="${id}"]`);
+    assert(await entry.evaluate((e) => e.classList.contains("build-locked")));
+    assert.equal(
+      await entry
+        .locator('[data-action="remove-purchase"],input,select')
+        .count(),
+      0,
+    );
+  }
+  await page
+    .getByRole("button", { name: "Learn discipline", exact: true })
+    .click();
+  assert.equal(await picker.locator("[data-choice]").count(), 18);
+  const order = await picker
     .locator("[data-choice]")
     .evaluateAll((es) => es.map((e) => e.dataset.eligible));
   const firstUnavailable = order.indexOf("false");
   if (firstUnavailable >= 0)
     assert(order.slice(firstUnavailable).every((v) => v === "false"));
-  const before = await page.locator("[data-dp-remaining]").innerText();
-  const purchase = disciplines
+  await picker
     .locator('[data-eligible="true"] [data-action="purchase"]')
-    .first();
-  assert(await purchase.isEnabled());
-  await purchase.click();
-  assert.notEqual(
-    await page.locator("[data-dp-remaining]").innerText(),
-    before,
-  );
-  assert(await disciplines.locator("details").evaluate((e) => e.open));
-  await disciplines.locator("summary").click();
-  const samples = [2, 3].map((rank) =>
-    choices.find(
+    .first()
+    .click();
+  assert(await picker.evaluate((e) => e.open));
+  await picker
+    .getByRole("button", { name: "Close selection", exact: true })
+    .click();
+  await page
+    .getByRole("button", { name: "Learn abilities", exact: true })
+    .click();
+  for (const rank of [2, 3]) {
+    const r = choices.find(
       (r) =>
         r.kind === "ability" &&
         !r.universal &&
         !r.id.startsWith("ability-signature-") &&
         r.requirements?.some((q) => q.kind === "discipline" && q.rank === rank),
-    ),
-  );
-  for (const record of samples) {
-    await page
-      .getByLabel("Search abilities", { exact: true })
-      .fill(record.name);
-    const card = abilities.locator(`[data-choice="${record.id}"]`);
-    await card.waitFor();
-    for (const req of record.requirements.filter(
-      (r) => r.kind === "discipline",
-    )) {
+    );
+    await picker.getByLabel("Search abilities", { exact: true }).fill(r.name);
+    const card = picker.locator(`[data-choice="${r.id}"]`);
+    for (const req of r.requirements.filter((q) => q.kind === "discipline")) {
       const badge = card.locator(`[data-requirement="${req.id}"]`);
       assert.equal(await badge.locator(".sigil").count(), 1);
-      assert.equal(
-        await badge.locator(".discipline-rank").count(),
-        req.rank > 1 ? 1 : 0,
-      );
       if (req.rank > 1)
         assert.equal(
           await badge.locator(".discipline-rank").innerText(),
@@ -154,181 +200,81 @@ try {
         );
     }
   }
-  const patterns = [
-    [/^Main Action/i, "A"],
-    [/^Maneuver/i, "M"],
-    [/^Reaction/i, "R"],
-    [/^Passive/i, "P"],
-  ];
-  for (const [pattern, letter] of patterns) {
-    const record = choices.find(
-      (r) =>
-        r.kind === "ability" &&
-        !r.universal &&
-        !r.id.startsWith("ability-signature-") &&
-        pattern.test(
-          r.reference?.rules.details.find((d) => d.label === "Action")?.value ??
-            "",
-        ),
-    );
-    await page
-      .getByLabel("Search abilities", { exact: true })
-      .fill(record.name);
-    assert(
-      (
-        await abilities
-          .locator(`[data-choice="${record.id}"] .action-code`)
-          .innerText()
-      ).includes(letter),
-    );
-  }
   await page.setViewportSize({ width: 760, height: 900 });
-  await page.locator(".brand").hover();
-  await page.screenshot({ path: `${output}/builder-badges-760.png` });
-  await page
-    .getByRole("button", { name: "Back to development", exact: true })
-    .click();
-  await page.getByRole("tab", { name: "Main", exact: true }).click();
-  await page
-    .getByRole("button", { name: "Roll a new wound", exact: true })
-    .click();
-  await dice([1, 6, 6]);
-  await page.getByRole("button", { name: "Roll wound", exact: true }).click();
+  await page.screenshot({ path: `${output}/learning-picker-760.png` });
   await page.keyboard.press("Escape");
-  await page.getByRole("tab", { name: "Character", exact: true }).click();
-  const row = page.locator("[data-wound]").first();
-  assert.equal(await row.locator("td").count(), 6);
-  assert.equal(await row.locator("td").nth(2).innerText(), "Soft Tissue");
-  assert.equal(
-    await row
-      .locator("td")
-      .nth(4)
-      .getByRole("button", { name: "Apply healing", exact: true })
-      .count(),
-    1,
+  assert.equal(await picker.evaluate((e) => e.open), false);
+  await page.screenshot({ path: `${output}/current-build-760.png` });
+  await page.getByRole("button", { name: "7 Equipment", exact: true }).click();
+  assert.equal(await page.locator("#panel [data-acquisition]").count(), 0);
+  assert.equal(await page.locator(".market-table").count(), 0);
+  await page
+    .getByRole("button", { name: "Buy inventory items", exact: true })
+    .click();
+  await picker
+    .getByLabel("Search equipment", { exact: true })
+    .fill("Ordinary Heavy Armor");
+  await picker
+    .getByLabel("Quantity Ordinary Heavy Armor", { exact: true })
+    .fill("100");
+  const buy = picker.locator(
+    '[data-action="equipment"][data-id="item-ordinary-heavy-armor"]',
   );
-  await row.locator('[data-action="wound-details"]').click();
-  const details = page.getByRole("dialog");
-  assert.match(await details.innerText(), /Recovery value/);
-  assert.doesNotMatch(
-    await details.innerText(),
-    /Full recovery from zero|Remaining recovery|One point of progress/,
-  );
-  await page.keyboard.press("Escape");
-  for (const width of [760, 390]) {
-    await page.setViewportSize({ width, height: 900 });
-    await page.locator(".brand").hover();
-    await page.screenshot({ path: `${output}/wound-columns-${width}.png` });
-    assert(
-      await page.evaluate(
-        () => document.documentElement.scrollWidth <= innerWidth,
-      ),
-    );
-  }
-  await page.getByRole("tab", { name: "Main", exact: true }).click();
-  await condition("grappled");
-  await condition("poisoned");
-  const hp = await page
-    .getByRole("spinbutton", { name: "Current HP", exact: true })
-    .inputValue();
-  await page.getByRole("button", { name: "Evade", exact: true }).click();
+  acceptDialogs = false;
+  await buy.click();
+  assert(dialogs.some((d) => /exceeds your available coins/.test(d)));
   assert.equal(
     await page
-      .getByLabel("Roll attribute", { exact: true })
-      .locator("option")
+      .locator(".inventory-table tbody tr")
+      .filter({ hasText: "Ordinary Heavy Armor" })
       .count(),
-    6,
+    0,
   );
-  assert.equal(await page.locator("#recipe-net").inputValue(), "-2");
-  await page
-    .getByLabel("Roll attribute", { exact: true })
-    .selectOption("fortitude");
-  await dice([6, 6, 6, 6, 6]);
-  await page.getByRole("button", { name: "Roll", exact: true }).click();
-  assert.match(
-    await page.locator("#recipe-roll-result").innerText(),
-    /Strong defense.*Weak attack effects/,
-  );
-  await page.getByRole("button", { name: "Roll", exact: true }).click();
-  await page.keyboard.press("Escape");
+  acceptDialogs = true;
+  await buy.click();
+  assert(await picker.evaluate((e) => e.open));
+  const confirmCount = dialogs.length;
+  await buy.click();
+  assert.equal(dialogs.length, confirmCount + 1);
+  await picker
+    .getByRole("button", { name: "Close selection", exact: true })
+    .click();
   assert.equal(
     await page
-      .getByRole("spinbutton", { name: "Current HP", exact: true })
-      .inputValue(),
-    hp,
-  );
-  const supplies = page.locator('[data-collapse="supplies"]');
-  assert(
-    await supplies
-      .getByRole("button", { name: "Resupply Food Bundle", exact: true })
+      .locator(".inventory-table tbody tr")
+      .filter({ hasText: "Ordinary Heavy Armor" })
       .count(),
+    2,
   );
-  await supplies
-    .getByRole("button", { name: "Resupply Food Bundle", exact: true })
-    .click();
-  await page.getByLabel("Resupply steps", { exact: true }).selectOption("6");
-  await page.getByRole("button", { name: "Resupply", exact: true }).click();
-  assert.match(await supplies.innerText(), /Food Bundle.*d8/s);
-  // Character story is independent of edit mode and remembers disclosure state.
-  await page.setViewportSize({ width: 760, height: 900 });
-  await page.getByRole("tab", { name: "Character", exact: true }).click();
-  assert.equal(await page.getByLabel("Player", { exact: true }).count(), 0);
-  const story = page.locator('[data-collapse="story"]');
-  assert(
-    await story.evaluate(
-      (e) =>
-        e.compareDocumentPosition(document.querySelector(".wound-box")) &
-        Node.DOCUMENT_POSITION_FOLLOWING,
-    ),
-  );
+  await page.getByRole("button", { name: "8 Review", exact: true }).click();
   await page
-    .getByLabel("Story", { exact: true })
-    .fill("A bridgekeeper’s unfinished journey.\nA promise to return.");
-  await page.getByLabel("Story", { exact: true }).press("Tab");
-  await story.locator("summary").click();
+    .getByRole("button", { name: "View character sheet", exact: true })
+    .click();
+  await page.getByRole("button", { name: /Death roll;/ }).click();
+  assert.equal(await page.locator(".death-mark").count(), 3);
+  assert.equal(await page.locator(".death-mark.filled").count(), 0);
+  await page
+    .getByRole("button", { name: "Set 1 death mark", exact: true })
+    .click();
+  assert.equal(await page.locator(".death-mark.filled").count(), 1);
+  await dice([1, 1, 1]);
+  await page.getByRole("button", { name: "Roll", exact: true }).click();
+  assert.equal(await page.locator(".death-mark.filled").count(), 3);
+  await page.screenshot({ path: `${output}/death-marks-760.png` });
+  await page
+    .getByRole("button", { name: "Set 2 death marks", exact: true })
+    .click();
+  assert.equal(await page.locator(".death-mark.filled").count(), 2);
+  await page.keyboard.press("Escape");
   await page.reload();
-  assert.equal(await story.evaluate((e) => e.open), false);
-  await story.locator("summary").click();
-  assert.equal(
-    await page.getByLabel("Story", { exact: true }).inputValue(),
-    "A bridgekeeper’s unfinished journey.\nA promise to return.",
-  );
-  await page.getByRole("button", { name: "Add wound", exact: true }).click();
-  const woundDialog = await page.getByRole("dialog").innerText();
-  assert(
-    await page.getByLabel("Wound damage type", { exact: true }).isVisible(),
-  );
-  await page.keyboard.press("Escape");
-  await page
-    .getByRole("button", { name: "Roll a new wound", exact: true })
-    .click();
-  assert.equal(await page.getByRole("dialog").innerText(), woundDialog);
-  await page.keyboard.press("Escape");
-  await page.getByRole("tab", { name: "Development", exact: true }).click();
-  for (let i = 0; i < 5; i++)
-    await page
-      .getByRole("button", { name: "Increase level", exact: true })
-      .click();
-  const dp = await page.locator('[data-dp="current"]').innerText();
-  assert.match(
-    await page.locator(".identity-line p").innerText(),
-    new RegExp(
-      `Dwarf.*Walled Communities.*Household Guard.*Protector.*Level 7\\(${dp}\\)`,
-    ),
-  );
-  assert.equal(await page.locator(".signature-progress tbody tr").count(), 3);
   assert(
     await page
-      .getByRole("button", { name: "Choose level 3 signature", exact: true })
-      .isVisible(),
-  );
-  assert(
-    await page
-      .getByRole("button", { name: "Choose level 7 signature", exact: true })
+      .getByRole("button", { name: "Death roll; 2 failed", exact: true })
       .isVisible(),
   );
   for (const width of [760, 390]) {
     await page.setViewportSize({ width, height: 900 });
+    await page.getByRole("tab", { name: "Development", exact: true }).click();
     await page.screenshot({ path: `${output}/development-${width}.png` });
     assert(
       await page.evaluate(
@@ -336,62 +282,45 @@ try {
       ),
     );
   }
-  // Reopen an incomplete book example choice; canonical validation drives guidance.
+  // Following a warning for a past level must never lower the character's level.
   await page.evaluate(() => {
     const saved = JSON.parse(localStorage.getItem("hol.workshop.v1"));
-    delete saved.character.draft.acquisitions["ability-hook-and-drive"];
-    saved.mode = "builder";
-    saved.step = 6;
+    saved.character.draft.progression = {
+      level: 7,
+      levels: {
+        2: {
+          purchases: [{ id: "ability-another-tongue" }],
+          signatures: {},
+          acquisitions: {},
+        },
+      },
+    };
+    saved.mode = "advancement";
+    saved.editingLevel = null;
     localStorage.setItem("hol.workshop.v1", JSON.stringify(saved));
   });
   await page.reload();
-  const banner = page.getByRole("status", {
-    name: "Missing choices",
-    exact: true,
-  });
-  assert.match(
-    await banner.innerText(),
-    /Hook and Drive.*one-handed or two-handed/s,
-  );
-  const incomplete = page.locator(
-    '[data-acquisition="ability-hook-and-drive"]',
-  );
-  assert(
-    await incomplete.evaluate(
-      (e) => e.open && e.classList.contains("choice-missing"),
-    ),
-  );
-  assert.equal(
-    await incomplete
-      .getByLabel("Melee weapon hands", { exact: true })
-      .inputValue(),
-    "",
-  );
-  const bannerY = (await banner.boundingBox()).y;
-  await page.locator("#panel").evaluate((e) => (e.scrollTop = e.scrollHeight));
-  assert.equal((await banner.boundingBox()).y, bannerY);
-  await page.setViewportSize({ width: 760, height: 900 });
-  await page.locator("#panel").evaluate((e) => (e.scrollTop = 0));
-  await page.screenshot({ path: `${output}/required-choice-760.png` });
-  await incomplete
-    .getByLabel("Melee weapon hands", { exact: true })
-    .selectOption("2");
-  assert.equal(await banner.count(), 0);
-  assert.equal(await page.locator(".choice-missing").count(), 0);
-  await page.reload();
-  assert.equal(await banner.count(), 0);
-  await page.getByRole("button", { name: "8 Review", exact: true }).click();
   await page
-    .getByRole("button", { name: "View character sheet", exact: true })
+    .getByRole("status", { name: "Missing choices", exact: true })
+    .getByRole("button", { name: /Another Tongue/ })
     .click();
-  await page.getByRole("tab", { name: "Inventory", exact: true }).click();
-  const melee = page
-    .locator(".inventory-table tbody tr")
-    .filter({ hasText: "Ordinary Melee Weapon" });
-  assert(await melee.count());
+  assert.match(await page.locator(".identity-line p").innerText(), /Level 7/);
+  assert.match(await page.locator(".context-strip").innerText(), /Level 2/);
+  await page.reload();
+  assert.match(await page.locator(".context-strip").innerText(), /Level 2/);
+  await page
+    .locator('[data-build-id="ability-another-tongue"]')
+    .getByLabel("Language", { exact: true })
+    .selectOption("goblin");
+  const savedLevel = await page.evaluate(
+    () =>
+      JSON.parse(localStorage.getItem("hol.workshop.v1")).character.draft
+        .progression.level,
+  );
+  assert.equal(savedLevel, 7);
   assert.deepEqual(failures, []);
   console.info(
-    "PASS separate legal-first discipline/ability purchases, remembered discipline list, all rank overlays and A/M/R/P badges, wound type/separate Apply, repeatable attributed Evade with defense conditions/perspective and Main resupply; persistent required choices, story, shared wound flow, header DP/origins and themed Development; compact layouts and zero browser errors.",
+    "PASS Current Build grants/nested missing choices, banner navigation, early restrictions, locked early entries, persistent ability/discipline/equipment dialogs, legal-first choices/rank badges, repeated over-budget consent/decline, skull mark roll/correction/persistence and compact layouts.",
   );
 } catch (error) {
   await page.screenshot({

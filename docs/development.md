@@ -1396,3 +1396,35 @@ scrolling, resolution and reload, Story editing/collapse persistence, shared wou
 dialog content, Level 7/current-DP header, origin order, signature status and
 760/390px Development layouts. All 447 pure tests and all five browser suites
 pass. Screenshots were visually reviewed. No native Foundry UI or rules changes.
+
+### Current Build and purchase dialogs (#187)
+
+Early/Heroic learning use an always-open Current Build list. Required acquisition
+choices appear only while unresolved, nested beneath the granting ability. The
+Heroic list locks the Early Learning entries; earlier advancement entries are
+likewise read-only. Early Learning has no discipline market. Separate Learn
+abilities and Learn discipline dialogs preserve eligible-first ordering, visible
+unavailable choices, discipline rank badges and available DP. Purchases update the
+dialog without closing it; Close or Escape dismisses it. Reading rules uses the
+separate reference dialog.
+
+Equipment keeps only its compact starting inventory and purchase button. Its
+inventory market remains open for repeated purchases. Every purchase exceeding
+remaining coins asks for confirmation, even after a previously approved overage;
+declining changes nothing. The portable coinOverride approval remains supported,
+but no checkbox or acquisition forms are shown on Equipment.
+
+Missing-choice messages navigate to the appropriate creation, signature or
+advancement screen. Reviewing a previous level uses a persisted editor level,
+without changing the character's actual level. Death rolls show three outlined
+skull buttons, filling marks red after rolls or manual correction; keyboard and
+saved-state behavior remain available. Existing death-roll rules are unchanged.
+
+Validation: Node 24 build/validation and 447 tests passed, along with all five
+workshop browser suites. Updated coverage follows the new dialogs through full
+creation, advancement and import/repair flows. Dedicated checks cover Current
+Build grants, nested missing choices, locked entries, absence of early discipline
+buying, dialogs remaining open, over-budget acceptance/decline on repeated buys,
+warning navigation including previous levels, and skull roll/correction/reload.
+760/390px layouts and dialog screenshots were visually reviewed. Native Foundry
+UI and book sources were not changed.

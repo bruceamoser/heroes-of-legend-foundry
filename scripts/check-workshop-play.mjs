@@ -114,12 +114,10 @@ try {
     ["Main Action", "Maneuver", "Reaction", "Passive", "Other"],
   );
   await page.getByRole("button", { name: /Death roll;/ }).click();
-  assert.equal(
-    await page.getByLabel("Failed death rolls", { exact: true }).inputValue(),
-    "0",
-  );
-  await page.getByLabel("Failed death rolls", { exact: true }).fill("1");
-  await page.getByLabel("Failed death rolls", { exact: true }).press("Tab");
+  assert.equal(await page.locator("#death-failures").inputValue(), "0");
+  await page
+    .getByRole("button", { name: "Set 1 death mark", exact: true })
+    .click();
   // Inject known die faces into the normal UI roll path, not a mocked result.
   await page.evaluate(() => {
     globalThis.originalDice = crypto.getRandomValues.bind(crypto);
@@ -129,10 +127,7 @@ try {
     };
   });
   await page.getByRole("button", { name: "Roll", exact: true }).click();
-  assert.equal(
-    await page.getByLabel("Failed death rolls", { exact: true }).inputValue(),
-    "3",
-  );
+  assert.equal(await page.locator("#death-failures").inputValue(), "3");
   assert.match(
     await page.locator("#recipe-roll-result").innerText(),
     /Last Words/,
@@ -144,15 +139,13 @@ try {
     };
   });
   await page.getByRole("button", { name: "Roll", exact: true }).click();
-  assert.equal(
-    await page.getByLabel("Failed death rolls", { exact: true }).inputValue(),
-    "0",
-  );
+  assert.equal(await page.locator("#death-failures").inputValue(), "0");
   await page.evaluate(() => {
     crypto.getRandomValues = globalThis.originalDice;
   });
-  await page.getByLabel("Failed death rolls", { exact: true }).fill("2");
-  await page.getByLabel("Failed death rolls", { exact: true }).press("Tab");
+  await page
+    .getByRole("button", { name: "Set 2 death marks", exact: true })
+    .click();
   await page.keyboard.press("Escape");
   await page.reload();
   await hp.waitFor();
@@ -161,10 +154,7 @@ try {
   await page
     .getByRole("button", { name: "Death roll; 2 failed", exact: true })
     .click();
-  assert.equal(
-    await page.getByLabel("Failed death rolls", { exact: true }).inputValue(),
-    "2",
-  );
+  assert.equal(await page.locator("#death-failures").inputValue(), "2");
   await page.keyboard.press("Escape");
   await hp.fill("4");
   await hp.press("Tab");

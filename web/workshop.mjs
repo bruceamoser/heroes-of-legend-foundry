@@ -187,6 +187,7 @@ function persist() {
         isExample,
         saveId,
         signatureTier,
+        editingLevel,
       }),
     );
   } catch {
@@ -562,7 +563,7 @@ function builder() {
     "Inventory",
     "Review",
   ];
-  return `<div class="wizard"><nav class="edge-tabs" aria-label="Creation steps">${steps.map((label, i) => button(navIcon(icons[i], `${i + 1}. ${label}`), "step", `aria-label="${i + 1} ${label}" ${step === i ? 'aria-current="step"' : ""} data-step="${i}"`)).join("")}</nav><div class="wizard-body">${requiredChoicesBanner()}${contextStrip()}<section id="panel" class="panel" aria-labelledby="panel-title">${![3, 5, 6].includes(step) ? acquisitions(true) : ""}${builderContent()}</section><footer class="wizard-footer">${button(step ? "← Back" : "View sheet", step ? "back" : "sheet")}<small>${storageAvailable ? "Draft saved in this browser" : "Export JSON to keep your draft"}</small>${step < 7 ? button("Continue →", "next", "", "primary") : button("View character sheet", "sheet", "", "primary")}</footer></div></div>`;
+  return `<div class="wizard"><nav class="edge-tabs" aria-label="Creation steps">${steps.map((label, i) => button(navIcon(icons[i], `${i + 1}. ${label}`), "step", `aria-label="${i + 1} ${label}" ${step === i ? 'aria-current="step"' : ""} data-step="${i}"`)).join("")}</nav><div class="wizard-body">${requiredChoicesBanner()}${contextStrip()}<section id="panel" class="panel" aria-labelledby="panel-title">${builderContent()}</section><footer class="wizard-footer">${button(step ? "← Back" : "View sheet", step ? "back" : "sheet")}<small>${storageAvailable ? "Draft saved in this browser" : "Export JSON to keep your draft"}</small>${step < 7 ? button("Continue →", "next", "", "primary") : button("View character sheet", "sheet", "", "primary")}</footer></div></div>`;
 }
 function builderContent() {
   if (step === 0)
@@ -668,7 +669,7 @@ function selectionFor(r) {
       }
     : {};
 }
-function learning() {
+function learningMarket() {
   const state = learningState();
   const options = eligibleFirst(
     catalogs.choices.filter(
@@ -688,7 +689,6 @@ function learning() {
         : "";
     })
     .join("");
-  const disciplineList = `<section data-learning-list="discipline">${collapsible("buy-disciplines", "Disciplines", `<div class="cards">${disciplineCards}</div>`, "", "learning-list", false)}</section>`;
   const groups = [true, false]
     .map((eligible) => {
       const records = options.filter((e) => e.eligible === eligible);
@@ -706,28 +706,101 @@ function learning() {
       );
     })
     .join("");
-  return `${heading(`Step ${step + 1} of 8`, mode === "advancement" ? `Level ${preview.development.level} learning` : `Level ${stage()} learning`, stage() ? "Build on your class training. Learn abilities or improve discipline ranks." : "Spend your level-0 DP on abilities using the disciplines your origins granted.")}<details class="planned"><summary>Planned choices (${learningPurchases().length})</summary><ul>${learningPurchases()
-    .map(
-      (p, i) =>
-        `<li><span>${esc(name(p.id))}${p.recipeIds ? `<small> · ${p.recipeIds.map(name).map(esc).join(", ")}</small>` : ""}</span>${button("Remove", "remove-purchase", `data-index="${i}"`, "quiet small")}</li>`,
-    )
-    .join(
-      "",
-    )}</ul></details><div class="drop-zone" data-drop>Drop an available ability or discipline here to learn it.</div>${acquisitions()}${disciplineList}${searchRow()}<section class="learning-abilities" data-learning-list="ability"><h3>Abilities</h3><div class="cards" id="results">${groups || '<p class="empty">No matching choices. Try another keyword or discipline.</p>'}</div></section>`;
+  return pickerKind === "discipline"
+    ? `<section data-learning-list="discipline"><div class="cards">${disciplineCards}</div></section>`
+    : `${searchRow()}<section data-learning-list="ability"><div class="cards" id="results">${groups || '<p class="empty">No matching abilities.</p>'}</div></section>`;
 }
+let pickerKind = null;
+let editingLevel = null;
+const activeLearningLevel = () => editingLevel ?? preview.development.level;
+function learning() {
+  return `${heading("", mode === "advancement" ? `Level ${activeLearningLevel()} learning` : stage() ? "Heroic learning" : "Early learning", "")}<div class="build-controls">${button("Learn abilities", "open-picker", 'data-kind="ability"', "primary small")}${mode === "advancement" || stage() ? button("Learn discipline", "open-picker", 'data-kind="discipline"', "small") : ""}</div>${currentBuild()}`;
+}
+function currentBuild() {
+  const advancement = mode === "advancement",
+    heroic = advancement || stage() === 1;
+  const state = learningState();
+  const early = new Set(preview.stages[0].abilities);
+  const entries = [];
+  for (const id of state.abilities) {
+    const currentIndex = learningPurchases().findIndex((p) => p.id === id);
+    const locked = advancement
+      ? preview.levels[activeLearningLevel()].before.abilities.includes(id)
+      : heroic && early.has(id);
+    let source = locked
+      ? advancement
+        ? "Earlier levels"
+        : "Early learning"
+      : currentIndex >= 0
+        ? "Learned"
+        : "Granted";
+    for (const kind of ["culture", "background"]) {
+      const origin = get(draft[kind]?.id);
+      if (origin?.pairs?.[draft[kind]?.pair]?.abilityId === id)
+        source = name(origin.id);
+    }
+    if (id === draft.signatureId) source = name(draft.classId);
+    entries.push({ id, currentIndex, locked, source });
+  }
+  for (const [index, p] of learningPurchases().entries())
+    if (get(p.id)?.kind === "discipline")
+      entries.push({
+        id: p.id,
+        currentIndex: index,
+        locked: false,
+        source: `Rank ${state.ranks[p.id] ?? ""}`,
+      });
+  return `<section class="box current-build"><h3>Current Build</h3><ul>${entries.map((e) => `<li class="build-entry ${e.locked ? "build-locked" : ""}" data-build-id="${esc(e.id)}"><div class="build-row"><div>${button(esc(name(e.id)), "reference", `data-id="${esc(e.id)}"`, "table-link")}<small>${esc(e.source)}${e.locked ? " · Locked" : ""}</small></div>${!e.locked && e.currentIndex >= 0 ? button("Remove", "remove-purchase", `data-index="${e.currentIndex}"`, "small quiet") : ""}</div>${!e.locked ? acquisitions(true, e.id) : ""}</li>`).join("") || '<li class="empty">Learn an ability to begin.</li>'}</ul></section>`;
+}
+function openPicker(kind) {
+  if (kind === "discipline" && mode !== "advancement" && !stage()) return;
+  pickerKind = kind;
+  query = "";
+  filter = "all";
+  visibleChoices = { true: 6, false: 4 };
+  renderPicker();
+  $("#picker").showModal();
+}
+function renderPicker() {
+  if (!pickerKind) return;
+  const dialog = $("#picker"),
+    scroll = dialog.querySelector(".picker-body")?.scrollTop ?? 0;
+  const active = document.activeElement,
+    id = active?.id,
+    pos = active?.selectionStart;
+  dialog.innerHTML = `<header><h2 id="picker-title">${pickerKind === "equipment" ? "Buy inventory items" : pickerKind === "discipline" ? "Learn disciplines" : "Learn abilities"}</h2>${button("Close", "close-picker", 'aria-label="Close selection"', "small")}</header><div class="picker-balance">${pickerKind === "equipment" ? `${preview.inventory.remainingCoins} coins remaining${preview.inventory.overBudget ? ` · ${preview.inventory.overBudget} over budget` : ""}` : `${learningState().dp} DP remaining`}</div><div class="picker-body">${pickerKind === "equipment" ? equipmentMarket() : learningMarket()}</div>`;
+  dialog.querySelector(".picker-body").scrollTop = scroll;
+  if (id && dialog.querySelector(`#${id}`)) {
+    const replacement = dialog.querySelector(`#${id}`);
+    replacement.focus({ preventScroll: true });
+    if (typeof pos === "number" && replacement.setSelectionRange)
+      replacement.setSelectionRange(pos, pos);
+  }
+}
+$("#picker").addEventListener("keydown", (event) => {
+  if (event.key !== "Escape") return;
+  event.preventDefault();
+  event.stopPropagation();
+  pickerKind = null;
+  $("#picker").close();
+});
+$("#picker").addEventListener("close", () => {
+  if (!$("#picker").open) pickerKind = null;
+});
+
 function acquisitionPath(id) {
   return mode === "signature" && signatureTier > 1
     ? `progression.levels.${signatureTier}.acquisitions.${id}`
     : mode === "advancement"
-      ? `progression.levels.${preview.development.level}.acquisitions.${id}`
+      ? `progression.levels.${activeLearningLevel()}.acquisitions.${id}`
       : `acquisitions.${id}`;
 }
 function requiredChoicesBanner() {
   const pending = preview.errors.filter((e) => e.code === "acquisition");
   if (!pending.length) return "";
-  return `<aside class="choice-alert" role="status" aria-label="Missing choices"><strong>Choices needed</strong><ul>${pending.map((e) => `<li><b>${esc(name(e.id))}</b> · ${esc((e.reasons ?? []).map((r) => r.text).join(" "))}</li>`).join("")}</ul></aside>`;
+  return `<aside class="choice-alert" role="status" aria-label="Missing choices"><strong>Choices needed</strong><ul>${pending.map((e) => `<li>${button(`<b>${esc(name(e.id))}</b> · ${esc((e.reasons ?? []).map((r) => r.text).join(" "))}`, "locate-choice", `data-id="${esc(e.id)}" data-level="${e.level ?? 0}"`, "table-link")}</li>`).join("")}</ul></aside>`;
 }
-function acquisitions(onlyMissing = false) {
+function acquisitions(onlyMissing = false, onlyId = null) {
   const classSignatures = Object.values(
     catalogs.choices.find((r) => r.kind === "class" && r.id === draft.classId)
       ?.signatures ?? {},
@@ -745,9 +818,7 @@ function acquisitions(onlyMissing = false) {
       (id) =>
         mode !== "advancement" ||
         (!classSignatures.includes(id) &&
-          !preview.levels[preview.development.level].before.abilities.includes(
-            id,
-          )),
+          !preview.levels[activeLearningLevel()].before.abilities.includes(id)),
     )
     .map((id) => catalogs.inventory.acquisitions.find((a) => a.id === id))
     .filter(
@@ -760,6 +831,7 @@ function acquisitions(onlyMissing = false) {
           a.items.includes("item-ordinary-melee-weapon")),
     )
     .map((a) => {
+      if (onlyId && a.id !== onlyId) return "";
       const path = acquisitionPath(a.id),
         d = getValue(path) ?? {},
         missing = preview.errors.some(
@@ -768,7 +840,7 @@ function acquisitions(onlyMissing = false) {
             e.id === a.id &&
             (e.level ?? null) ===
               (mode === "advancement"
-                ? preview.development.level
+                ? activeLearningLevel()
                 : mode === "signature" && signatureTier > 1
                   ? signatureTier
                   : null),
@@ -819,7 +891,10 @@ function acquisitions(onlyMissing = false) {
     .join("");
 }
 function equipment() {
-  return `${heading("", "Equipment", "")}<label class="inline-toggle coin-override"><input type="checkbox" data-field="coinOverride" ${draft.coinOverride ? "checked" : ""}> Override coin limit${preview.inventory.overBudget ? ` · ${preview.inventory.overBudget} coins over budget` : ""}</label>${acquisitions()}<h3 class="section-title">Starting inventory · grants & purchases</h3>${inventoryTable()}<h3 class="section-title">Buy equipment</h3>${searchRow("equipment")}<div class="table-wrap"><table class="market-table"><thead><tr><th>Item</th><th>Coins</th><th>Bulk</th><th>Supply</th><th>Qty</th><th>Hands</th><th></th></tr></thead><tbody>${catalogs.inventory.equipment
+  return `${heading("", "Equipment", "", button("Buy inventory items", "open-picker", 'data-kind="equipment"', "primary small"))}${inventoryTable()}`;
+}
+function equipmentMarket() {
+  return `${searchRow("equipment")}<div class="table-wrap"><table class="market-table"><thead><tr><th>Item</th><th>Coins</th><th>Bulk</th><th>Supply</th><th>Qty</th><th>Hands</th><th></th></tr></thead><tbody>${catalogs.inventory.equipment
     .filter(matches)
     .map(
       (r) =>
@@ -827,13 +902,13 @@ function equipment() {
     )
     .join("")}</tbody></table></div>`;
 }
-function levelDraft(level = preview.development.level) {
+function levelDraft(level = activeLearningLevel()) {
   draft.progression ??= { level: 1, levels: {} };
   return (draft.progression.levels[level] ??= emptyLevelDraft());
 }
 function learningState() {
   return mode === "advancement"
-    ? preview.levels[preview.development.level].state
+    ? preview.levels[activeLearningLevel()].state
     : preview.stages[stage()];
 }
 function learningPurchases() {
@@ -844,7 +919,7 @@ function learningPurchases() {
 function contextStrip() {
   if (mode === "advancement" || [3, 5].includes(step)) {
     const state = learningState();
-    return `<div class="context-strip"><strong data-dp-remaining>${state.dp} DP remaining</strong><span>Level ${mode === "advancement" ? preview.development.level : stage()}</span><div class="discipline-strip" aria-label="Current disciplines">${
+    return `<div class="context-strip"><strong data-dp-remaining>${state.dp} DP remaining</strong><span>Level ${mode === "advancement" ? activeLearningLevel() : stage()}</span><div class="discipline-strip" aria-label="Current disciplines">${
       Object.entries(state.ranks)
         .map(
           ([id, rank]) =>
@@ -888,12 +963,12 @@ function advancementBuilder() {
   return learningFrame(
     learning() +
       (preview.errors.some(
-        (e) => e.level === preview.development.level && e.code !== "signature",
+        (e) => e.level === activeLearningLevel() && e.code !== "signature",
       )
         ? `<ul class="error-list">${preview.errors
             .filter(
               (e) =>
-                e.level === preview.development.level && e.code !== "signature",
+                e.level === activeLearningLevel() && e.code !== "signature",
             )
             .map(
               (e) =>
@@ -919,7 +994,7 @@ function signatureBuilder() {
   }
   const ids = cls.signatures[signatureTier],
     selected = selectedSignature();
-  const content = `${heading("", `Choose level ${signatureTier} signature`, "")}<div class="cards">${ids.map((id) => `<article class="choice-card ${selected === id ? "chosen" : ""}"><h3>${esc(name(id))}</h3><p class="card-copy">${esc(get(id).reference.flavor[0])}</p><div class="card-actions">${button("Read", "reference", `data-id="${esc(id)}"`, "small quiet")}${button(selected === id ? "Selected" : "Choose", "advance-signature", `data-id="${esc(id)}" data-tier="${signatureTier}"`, "small")}</div></article>`).join("")}</div>${acquisitions()}`;
+  const content = `${heading("", `Choose level ${signatureTier} signature`, "")}<div class="cards">${ids.map((id) => `<article class="choice-card ${selected === id ? "chosen" : ""}"><h3>${esc(name(id))}</h3><p class="card-copy">${esc(get(id).reference.flavor[0])}</p><div class="card-actions">${button("Read", "reference", `data-id="${esc(id)}"`, "small quiet")}${button(selected === id ? "Selected" : "Choose", "advance-signature", `data-id="${esc(id)}" data-tier="${signatureTier}"`, "small")}</div></article>`).join("")}</div><section class="box current-build"><h3>Current Build</h3><ul><li>${selected ? esc(name(selected)) : "Choose a signature"}${acquisitions(true)}</li></ul></section>`;
   return learningFrame(content, `Level ${signatureTier} signature`);
 }
 
@@ -1289,6 +1364,13 @@ function useSupply() {
     $("#reference [data-action=confirm-supply]").disabled = true;
 }
 let activeRoll = null;
+function deathMarks(value) {
+  return `<div class="death-marks" role="group" aria-label="Death marks">${[1, 2, 3].map((n) => button(skullIcon, "death-mark", `data-marks="${n}" aria-label="Set ${n} death mark${n === 1 ? "" : "s"}" aria-pressed="${n <= value}"`, `death-mark ${n <= value ? "filled" : ""}`)).join("")}</div><p class="death-count">Failed death rolls: <strong>${value} / 3</strong></p>`;
+}
+function refreshDeathMarks(value) {
+  $("#death-failures").value = String(value);
+  $("#death-mark-display").innerHTML = deathMarks(value);
+}
 function openSheetRoll({ key, id, death = false, defense = false }) {
   const record = get(id),
     attribute = death ? "fortitude" : (key ?? attributeFor(record));
@@ -1303,7 +1385,7 @@ function openSheetRoll({ key, id, death = false, defense = false }) {
         ? "Evade"
         : (record?.name ?? title(attribute)),
     `
-    ${death ? `<label>Failed death rolls<input id="death-failures" aria-label="Failed death rolls" type="number" min="0" max="3" step="1" value="${failed}"></label><p class="inline-help">Fortitude. Weak: one mark; Standard: no change; Strong: stabilize. Natural 111: two marks; natural 666: regain 1 HP. Three marks: Last Words.</p>` : ""}
+    ${death ? `<section class="death-panel"><input id="death-failures" type="hidden" value="${failed}"><div id="death-mark-display">${deathMarks(failed)}</div><div class="death-outcomes"><span><b>Weak</b> +1 mark</span><span><b>Standard</b> No change</span><span><b>Strong</b> Stabilize</span></div><p class="inline-help">Fortitude · Natural 111: two marks · Natural 666: regain 1 HP · Three marks: Last Words</p></section>` : ""}
     ${defense ? '<p class="inline-help">Choose the defense attribute named by the attack. Strong defense takes Weak attack effects; Weak defense takes Strong attack effects.</p>' : ""}
     <label>Attribute<select id="sheet-roll-attribute" aria-label="Roll attribute">${(death ? ["fortitude"] : ATTRIBUTES).map((k) => option(k, `${title(k)} ${signed(draft.attributes[k])}`, k === attribute)).join("")}</select></label>
     <div class="roll-net"><label for="recipe-net" class="roll-net-labels"><span>Banes</span><output id="roll-net-value">Even</output><span>Boons</span></label><input id="recipe-net" aria-label="Banes / Boons" aria-valuetext="Even" type="range" min="-3" max="3" step="1" value="0"></div>
@@ -1390,7 +1472,7 @@ function rollSheetDice() {
     play.failedDeathRolls = death.failed;
     play.hp = death.hp;
     const outcome = death.outcome;
-    $("#death-failures").value = String(play.failedDeathRolls);
+    refreshDeathMarks(play.failedDeathRolls);
     $("#recipe-roll-result").insertAdjacentHTML(
       "beforeend",
       `<p>${outcome} Failed death rolls: ${play.failedDeathRolls}.</p>`,
@@ -1493,6 +1575,7 @@ function render({ focusHeading = false } = {}) {
           ? signatureBuilder()
           : sheet());
   app.removeAttribute("aria-busy");
+  if (pickerKind) renderPicker();
   // Preserve focus through live recalculation, including origin selects and
   // play controls whose identity is not a creation field path.
   const replacement = id
@@ -1769,6 +1852,43 @@ async function action(target) {
     );
     return;
   }
+  if (a === "death-mark") {
+    const current = Number($("#death-failures").value),
+      requested = Number(target.dataset.marks),
+      value = current === requested ? requested - 1 : requested;
+    playDraft().failedDeathRolls = value;
+    refreshDeathMarks(value);
+    persist();
+    render();
+    return;
+  }
+  if (a === "open-picker") return openPicker(target.dataset.kind);
+  if (a === "close-picker") {
+    pickerKind = null;
+    return $("#picker").close();
+  }
+  if (a === "locate-choice") {
+    const id = target.dataset.id,
+      level = Number(target.dataset.level);
+    if (level) {
+      editingLevel = level;
+      const cls = get(draft.classId);
+      const tier = [3, 7].find((t) => cls?.signatures?.[t]?.includes(id));
+      mode = tier ? "signature" : "advancement";
+      if (tier) signatureTier = tier;
+    } else {
+      mode = "builder";
+      step = preview.stages[0].abilities.includes(id) ? 3 : 5;
+    }
+    persist();
+    render({ focusHeading: true });
+    const entry = [
+      ...app.querySelectorAll("[data-build-id],[data-acquisition]"),
+    ].find((e) => (e.dataset.buildId ?? e.dataset.acquisition) === id);
+    entry?.scrollIntoView({ block: "center" });
+    entry?.querySelector("select,input,button")?.focus({ preventScroll: true });
+    return;
+  }
   if (a === "evade") return openSheetRoll({ key: "agility", defense: true });
   if (a === "roll-wound-dialog") return woundDialog();
   if (a === "confirm-roll-wound") return rollNewWound();
@@ -1964,6 +2084,7 @@ async function action(target) {
     );
   }
   if (a === "advance") {
+    editingLevel = null;
     mode = "advancement";
     edit = false;
     query = "";
@@ -1971,6 +2092,7 @@ async function action(target) {
     levelDraft();
   }
   if (a === "sheet-development") {
+    editingLevel = null;
     mode = "sheet";
     tab = "Development";
     edit = false;
@@ -2036,13 +2158,15 @@ async function action(target) {
       throw new Error("Choose a positive whole quantity, up to 10,000.");
     if (r.specialOrder)
       throw new Error("Special-order availability is arranged with your DA.");
-    if (
-      !draft.coinOverride &&
-      r.price * quantity > preview.inventory.remainingCoins
-    )
-      throw new Error(
-        "This exceeds your starting coins. Enable Override coin limit on Equipment to continue.",
-      );
+    if (r.price * quantity > preview.inventory.remainingCoins) {
+      if (
+        !confirm(
+          `This purchase exceeds your available coins by ${r.price * quantity - preview.inventory.remainingCoins}. Buy anyway?`,
+        )
+      )
+        return;
+      draft.coinOverride = true;
+    }
     draft.shopping.push({
       id: r.id,
       quantity,
@@ -2116,7 +2240,7 @@ app.addEventListener(
   },
   true,
 );
-app.addEventListener("change", (event) => {
+document.addEventListener("change", (event) => {
   const t = event.target;
   if (t.dataset.quantity) {
     const quantity = Number(t.value);
@@ -2166,7 +2290,7 @@ app.addEventListener("change", (event) => {
     render();
   } else updateField(event.target);
 });
-app.addEventListener("input", (event) => {
+document.addEventListener("input", (event) => {
   const t = event.target;
   if (
     t.dataset.field?.startsWith("attributes.") &&
@@ -2213,7 +2337,7 @@ app.addEventListener("keydown", (event) => {
           visibleTabs.length;
   action({ dataset: { action: "tab", tab: visibleTabs[next] } });
 });
-app.addEventListener("dragstart", (event) => {
+document.addEventListener("dragstart", (event) => {
   const card = event.target.closest("[data-choice]");
   if (card?.dataset.eligible === "true")
     event.dataTransfer.setData("application/x-hol-choice", card.dataset.choice);
@@ -2315,6 +2439,12 @@ try {
       signatureTier = [1, 3, 7].includes(saved.signatureTier)
         ? saved.signatureTier
         : 1;
+      editingLevel =
+        Number.isInteger(saved.editingLevel) &&
+        saved.editingLevel >= 2 &&
+        saved.editingLevel <= (draft.progression?.level ?? 1)
+          ? saved.editingLevel
+          : null;
       saveId = typeof saved.saveId === "string" ? saved.saveId : null;
       tab = tabs.includes(saved.tab)
         ? saved.tab
@@ -2336,6 +2466,7 @@ try {
   render();
 } catch (e) {
   app.removeAttribute("aria-busy");
+  if (pickerKind) renderPicker();
   app.innerHTML = `<div class="loading"><h1>Could not open the workshop</h1><p>${esc(e.message)}</p><p>Reload the page to try again.</p></div>`;
 }
 

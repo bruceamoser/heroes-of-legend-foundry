@@ -1872,3 +1872,132 @@ dialog header button {
 .sheet-development > .box + .box {
   margin-top: 10px;
 }
+
+.build-controls {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.current-build > ul {
+  list-style: none;
+  margin: 7px 0 0;
+  padding: 0;
+}
+.build-entry {
+  border-top: 1px solid var(--line);
+  padding: 5px 0;
+}
+.build-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+.build-row small {
+  display: block;
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+.build-locked {
+  background: #ddd6c524;
+}
+.current-build .acquisition-choice {
+  margin: 5px 0;
+}
+.current-build .acquisition-choice > summary {
+  display: none;
+}
+#picker {
+  width: min(820px, calc(100vw - 24px));
+  max-height: min(850px, calc(100dvh - 24px));
+  padding: 0;
+  overflow: hidden;
+}
+#picker[open] {
+  display: flex;
+  flex-direction: column;
+}
+#picker > header {
+  background: var(--forest);
+  color: var(--paper);
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex: none;
+}
+#picker h2 {
+  font:
+    600 1.15rem Cinzel,
+    serif;
+  margin: 0;
+}
+#picker > header button {
+  color: var(--paper);
+  border-color: #888;
+}
+.picker-balance {
+  padding: 7px 14px;
+  background: #e9dfca;
+  font-weight: bold;
+  font-size: 0.85rem;
+  flex: none;
+}
+.picker-body {
+  overflow: auto;
+  padding: 12px 14px;
+  min-height: 0;
+}
+.choice-alert button {
+  text-align: left;
+  font-size: inherit;
+  padding: 1px 0;
+}
+.death-panel {
+  background: #eee8db;
+  border: 1px solid var(--line);
+  padding: 14px;
+  text-align: center;
+  margin-bottom: 12px;
+}
+.death-marks {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+}
+.death-mark {
+  background: none;
+  border: 0;
+  padding: 5px;
+  color: #655e50;
+}
+.death-mark svg {
+  width: 42px;
+  height: 42px;
+}
+.death-mark.filled svg {
+  color: #a32629;
+  fill: #a32629;
+}
+.death-mark.filled svg circle {
+  fill: var(--paper);
+  stroke: var(--paper);
+}
+.death-count {
+  margin: 6px 0 12px;
+}
+.death-outcomes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+  font-size: 0.78rem;
+}
+.death-outcomes b {
+  display: block;
+  font-family: Cinzel, serif;
+}
+.death-panel .inline-help {
+  margin-top: 10px;
+  font-size: 0.73rem;
+}

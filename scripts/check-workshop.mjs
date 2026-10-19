@@ -47,6 +47,21 @@ page.on("dialog", (d) => {
 });
 const output = resolve("test-results/workshop");
 await mkdir(output, { recursive: true });
+async function picker(kind) {
+  if (await page.locator("#picker[open]").count()) return;
+  await page
+    .getByRole("button", {
+      name: kind === "equipment" ? "Buy inventory items" : "Learn abilities",
+      exact: true,
+    })
+    .click();
+}
+async function closePicker() {
+  if (await page.locator("#picker[open]").count())
+    await page
+      .getByRole("button", { name: "Close selection", exact: true })
+      .click();
+}
 try {
   await page.goto(`http://127.0.0.1:${server.address().port}${prefix}`);
   await page
@@ -204,6 +219,8 @@ try {
     .click();
   assert.equal(await page.locator('[data-dp="current"]').innerText(), "10");
   await page.getByRole("button", { name: "Spend DP", exact: true }).click();
+  if (!(await page.getByLabel("Search abilities", { exact: true }).count()))
+    await picker("ability");
   await page
     .getByLabel("Search abilities", { exact: true })
     .fill("Conditioned Body");
@@ -214,6 +231,7 @@ try {
     await page.locator("[data-dp-remaining]").innerText(),
     "8 DP remaining",
   );
+  await closePicker();
   await page.getByRole("button", { name: "Done", exact: true }).click();
   assert.equal(await page.locator('[data-dp="spent"]').innerText(), "23");
   await page
@@ -270,6 +288,7 @@ try {
     await page.locator('[aria-label="Current disciplines"]').innerText(),
     /Armor 1/,
   );
+  await picker("ability");
   await page
     .getByRole("button", { name: "Show more future choices", exact: true })
     .click();
@@ -278,8 +297,8 @@ try {
       (s) => document.querySelector(s).getBoundingClientRect().top,
     ),
   );
-  await page.locator("#panel").evaluate((el) => (el.scrollTop = 500));
-  assert(await page.locator("#panel").evaluate((el) => el.scrollTop > 0));
+  await page.locator(".picker-body").evaluate((el) => (el.scrollTop = 500));
+  assert(await page.locator(".picker-body").evaluate((el) => el.scrollTop > 0));
   assert.deepEqual(
     await page.evaluate(() =>
       [".workshop-header", ".context-strip", ".edge-tabs"].map(
@@ -289,18 +308,20 @@ try {
     fixedBefore,
   );
   assert.equal(await page.evaluate(() => window.scrollY), 0);
-  await page.locator("#panel").evaluate((el) => (el.scrollTop = 0));
-  await page.locator(".brand").hover();
+  await page.locator(".picker-body").evaluate((el) => (el.scrollTop = 0));
+  await page.locator("#picker-title").hover();
   await page.screenshot({
     path: `${output}/desktop-learning.png`,
     fullPage: false,
   });
+  await picker("ability");
   assert(
     await page
       .locator('[data-eligible="false"] button[data-action="purchase"]')
       .first()
       .isDisabled(),
   );
+  await closePicker();
   await page.getByRole("button", { name: "7 Equipment", exact: true }).click();
   assert.match(
     await page.locator(".inventory-table").innerText(),
@@ -315,12 +336,15 @@ try {
   const beforePurchase = await page
     .locator(".context-strip .inventory-stats")
     .innerText();
+  await picker("equipment");
   await page
     .getByLabel("Search equipment", { exact: true })
     .fill("Ordinary Shield");
   await page
     .locator('[data-action="equipment"][data-id="item-ordinary-shield"]')
     .click();
+  assert(await page.locator("#picker").evaluate((e) => e.open));
+  await closePicker();
   const shieldRows = page
     .locator(".inventory-table tbody tr")
     .filter({ hasText: "Ordinary Shield" });
@@ -335,6 +359,7 @@ try {
     /Purchased/,
   );
   // Even a later play removal must not hide the original purchase from creation editing.
+  await closePicker();
   await page.getByRole("button", { name: "8 Review", exact: true }).click();
   await page
     .getByRole("button", { name: "View character sheet", exact: true })
@@ -350,6 +375,7 @@ try {
   await page
     .getByRole("button", { name: "Edit creation", exact: true })
     .click();
+  await closePicker();
   await page.getByRole("button", { name: "7 Equipment", exact: true }).click();
   assert.equal(await shieldRows.count(), 2);
   await removeShield.click();
@@ -359,8 +385,11 @@ try {
     await page.locator(".context-strip .inventory-stats").innerText(),
     beforePurchase,
   );
+  await picker("equipment");
   await page.getByLabel("Search equipment", { exact: true }).fill("");
+  await closePicker();
   await page.screenshot({ path: `${output}/desktop-equipment.png` });
+  await closePicker();
   await page.getByRole("button", { name: "8 Review", exact: true }).click();
   assert(
     await page
@@ -541,6 +570,7 @@ try {
     0,
   );
   assert(await page.locator("[data-dp-remaining]").isVisible());
+  await closePicker();
   await page.getByRole("button", { name: "Done", exact: true }).click();
   await page
     .getByRole("button", { name: "Choose level 3 signature", exact: true })
@@ -548,6 +578,7 @@ try {
   assert.equal(await page.locator("[data-dp-remaining]").count(), 0);
   await page.locator('[data-action="advance-signature"]').first().click();
   await page.screenshot({ path: `${output}/signature-choice.png` });
+  await closePicker();
   await page.getByRole("button", { name: "Done", exact: true }).click();
   assert.equal(
     await page
@@ -677,9 +708,14 @@ try {
       '[data-action="signature"][data-id="ability-signature-intellect-spot-the-leverage"]',
     )
     .click();
+  await closePicker();
   await page.getByRole("button", { name: "7 Equipment", exact: true }).click();
-  await page.locator('input[value="recipe-travel-food"]').check();
-  await page.locator('input[value="recipe-bound-torches"]').check();
+  await page
+    .getByRole("button", { name: "4 Early learning", exact: true })
+    .click();
+  await page.locator('input[value="recipe-travel-food"]').click();
+  await page.locator('input[value="recipe-bound-torches"]').click();
+  await closePicker();
   await page.getByRole("button", { name: "8 Review", exact: true }).click();
   assert(
     await page
@@ -778,7 +814,9 @@ try {
   await page
     .getByRole("button", { name: "Edit creation", exact: true })
     .click();
+  await closePicker();
   await page.getByRole("button", { name: "7 Equipment", exact: true }).click();
+  await picker("equipment");
   await page
     .getByLabel("Search equipment", { exact: true })
     .fill("Ordinary Heavy Armor");
@@ -788,17 +826,10 @@ try {
   await page
     .locator('[data-action="equipment"][data-id="item-ordinary-heavy-armor"]')
     .click();
-  assert.match(
-    await page.locator("#notice").innerText(),
-    /Override coin limit/,
+  assert(
+    dialogs.some((message) => /exceeds your available coins/.test(message)),
   );
-  await page.getByLabel("Override coin limit", { exact: false }).check();
-  await page
-    .getByLabel("Quantity Ordinary Heavy Armor", { exact: true })
-    .fill("100");
-  await page
-    .locator('[data-action="equipment"][data-id="item-ordinary-heavy-armor"]')
-    .click();
+  await closePicker();
   assert.match(
     await page.locator(".inventory-table").innerText(),
     /Ordinary Heavy Armor/,
@@ -807,6 +838,7 @@ try {
     await page.locator(".inventory-stats").innerText(),
     /-[0-9]+ coins/,
   );
+  await closePicker();
   await page.getByRole("button", { name: "8 Review", exact: true }).click();
   assert(
     await page
@@ -867,6 +899,7 @@ try {
   await page
     .getByRole("heading", { name: "Lira Ashbow", exact: true })
     .waitFor();
+  await closePicker();
   await page.getByRole("button", { name: "7 Equipment", exact: true }).click();
   const rangedInventory = await page.locator(".inventory-table").innerText();
   assert.match(rangedInventory, /Ordinary Ranged Weapon/);
@@ -916,6 +949,7 @@ try {
       '[data-action="advance-signature"][data-id="ability-signature-warden-turn-the-hunt"]',
     )
     .click();
+  await closePicker();
   await page.getByRole("button", { name: "Done", exact: true }).click();
   assert(
     await page
@@ -924,11 +958,13 @@ try {
   );
   await page.getByRole("button", { name: "Spend DP", exact: true }).click();
   assert.equal(await page.getByLabel("Weapon", { exact: true }).count(), 0);
+  await closePicker();
   await page.getByRole("button", { name: "Done", exact: true }).click();
   await page
     .getByRole("button", { name: "Choose level 7 signature", exact: true })
     .click();
   await page.getByLabel("Weapon", { exact: true }).selectOption("ranged");
+  await closePicker();
   await page.getByRole("button", { name: "Done", exact: true }).click();
   assert.equal(
     await page
@@ -996,6 +1032,7 @@ try {
     ["quick-exit", "Quick Exit"],
     ["look-over-here", "Look Over Here!"],
   ]) {
+    await picker("ability");
     await page.getByLabel("Search abilities", { exact: true }).fill(name);
     const learn = page.locator(
       `[data-action="purchase"][data-id="ability-${id}"]`,
@@ -1003,6 +1040,7 @@ try {
     assert.equal(await learn.innerText(), "1 DP · Learn");
     await learn.click();
     assert(await learn.isDisabled());
+    await closePicker();
     if (id === "another-tongue")
       await page.getByLabel("Language", { exact: true }).selectOption("goblin");
     if (id === "a-party-piece") {
@@ -1018,8 +1056,11 @@ try {
     await page.locator("[data-dp-remaining]").innerText(),
     `${initialDp - 6} DP remaining`,
   );
+  await picker("ability");
   await page.getByLabel("Search abilities", { exact: true }).fill("");
+  await closePicker();
   await page.screenshot({ path: `${output}/one-dp-learning.png` });
+  await closePicker();
   await page.getByRole("button", { name: "8 Review", exact: true }).click();
   await page
     .getByRole("button", { name: "View character sheet", exact: true })

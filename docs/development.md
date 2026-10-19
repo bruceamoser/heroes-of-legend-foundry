@@ -1453,3 +1453,12 @@ New checks cover printed requirement parity, Universal classification, pinned
 references, updating purchases, disabled already-known class choices, disabled
 inventory options, action-level enforcement and close-button colors. Dialog
 screenshots visually reviewed. No rules or native Foundry UI changes.
+
+### Compact Current Build (#191)
+
+Learning headings share a row with their purchase buttons. Current Build uses
+compact aligned ability/source/control columns, 27px rows for ordinary entries at
+760px, and reduced padding; required choices still expand below their granting
+entry. Long text wraps on narrow screens. Browser acceptance checks row density,
+heading alignment and 390px overflow; sheet/phone screenshots were reviewed.
+Node 24 checks and all 449 tests pass; the targeted builder browser suite passes.

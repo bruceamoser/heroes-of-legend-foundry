@@ -1876,7 +1876,7 @@ dialog header button {
 .build-controls {
   display: flex;
   gap: 8px;
-  margin-bottom: 10px;
+  margin: 0;
 }
 .current-build > ul {
   list-style: none;
@@ -1885,16 +1885,19 @@ dialog header button {
 }
 .build-entry {
   border-top: 1px solid var(--line);
-  padding: 5px 0;
+  padding: 2px 0;
 }
 .build-row {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(100px, 0.8fr) 64px;
   align-items: center;
   gap: 8px;
 }
+.build-row > div {
+  display: contents;
+}
 .build-row small {
-  display: block;
+  line-height: 1.25;
   color: var(--muted);
   font-size: 0.72rem;
 }
@@ -2071,4 +2074,49 @@ dialog header button[data-action]:focus-visible,
 dialog header button[data-action]:focus-visible {
   outline: 2px solid var(--gold);
   outline-offset: 2px;
+}
+
+/* Keep build rows at table density without hiding names or required choices. */
+.current-build {
+  padding: 7px 10px;
+}
+.current-build > h3 {
+  margin: 0 0 4px;
+  font-size: 0.9rem;
+}
+.current-build > ul {
+  margin-top: 0;
+}
+.build-row button {
+  min-height: 22px;
+  padding: 1px 4px;
+  font-size: 0.84rem;
+  line-height: 1.2;
+}
+.build-row .table-link {
+  text-align: left;
+  padding-left: 0;
+}
+.build-row [data-action="remove-purchase"] {
+  justify-self: end;
+  font-size: 0.72rem;
+}
+.learning-heading .panel-heading {
+  margin-bottom: 7px;
+  flex-wrap: wrap;
+}
+@media (max-width: 600px) {
+  .build-row {
+    grid-template-columns: minmax(0, 1fr) minmax(75px, 0.8fr) 44px;
+    gap: 5px;
+  }
+  .build-row button {
+    font-size: 0.8rem;
+  }
+  .build-row small {
+    font-size: 0.68rem;
+  }
+  .current-build {
+    padding: 6px 8px;
+  }
 }

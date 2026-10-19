@@ -235,7 +235,34 @@ try {
   await page.screenshot({ path: `${output}/learning-picker-760.png` });
   await page.keyboard.press("Escape");
   assert.equal(await picker.evaluate((e) => e.open), false);
+  const rows = await page
+    .locator(".build-row")
+    .evaluateAll((es) => es.map((e) => e.getBoundingClientRect().height));
+  assert(
+    rows.length > 0 && rows.every((h) => h <= 30),
+    `compact row heights: ${rows}`,
+  );
+  const headingY = (
+    await page
+      .getByRole("heading", { name: "Heroic learning", exact: true })
+      .boundingBox()
+  ).y;
+  const learnY = (
+    await page
+      .getByRole("button", { name: "Learn abilities", exact: true })
+      .boundingBox()
+  ).y;
+  assert(Math.abs(headingY - learnY) < 12);
   await page.screenshot({ path: `${output}/current-build-760.png` });
+  await page.setViewportSize({ width: 390, height: 900 });
+  assert(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
+  );
+  await page.screenshot({ path: `${output}/current-build-390.png` });
+  await page.setViewportSize({ width: 760, height: 900 });
+
   await page.getByRole("button", { name: "7 Equipment", exact: true }).click();
   assert.equal(await page.locator("#panel [data-acquisition]").count(), 0);
   assert.equal(await page.locator(".market-table").count(), 0);

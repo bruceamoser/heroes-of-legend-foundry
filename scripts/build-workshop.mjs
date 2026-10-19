@@ -44,7 +44,7 @@ for (const [from, to] of [
 ])
   await cp(new URL(from, root), new URL(to, out), { recursive: true });
 await mkdir(new URL("data/", out), { recursive: true });
-for (const name of ["choices", "inventory"])
+for (const name of ["choices", "inventory", "wounds"])
   await cp(
     new URL(`static/data/${name}.json`, root),
     new URL(`data/${name}.json`, out),

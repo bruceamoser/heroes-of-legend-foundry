@@ -84,7 +84,8 @@
     "test:workshop": "node scripts/check-workshop.mjs",
     "test:creature-expansion": "node scripts/check-creature-expansion.mjs",
     "test:profile-update": "node scripts/check-profile-update.mjs",
-    "test:workshop-play": "node scripts/check-workshop-play.mjs"
+    "test:workshop-play": "node scripts/check-workshop-play.mjs",
+    "test:workshop-resources": "node scripts/check-workshop-resources.mjs"
   },
   "devDependencies": {
     "@foundryvtt/foundryvtt-cli": "3.0.5",

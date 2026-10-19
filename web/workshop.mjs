@@ -1,4 +1,11 @@
 import {
+  rolledWorkshopWound,
+  workshopSupplyUse,
+  workshopSpendGrit,
+} from "./rules/workshop-resources.mjs";
+import { DAMAGE_TYPES } from "./rules/damage.mjs";
+import { HEALING_POTION_IDS } from "./rules/potions.mjs";
+import {
   workshopVitals,
   workshopDeathResult,
 } from "./rules/workshop-vitals.mjs";
@@ -197,13 +204,13 @@ function rollButton(label, extra) {
   );
 }
 function liveVitals() {
-  return workshopVitals(preview, draft);
+  return workshopVitals(preview, draft, catalogs.wounds);
 }
 function header() {
   const stats = preview.summary,
     vitals = liveVitals();
   return `<div class="workshop-header"><div class="toolbar"><div class="toolbar-group">${button(edit ? "✓ Done" : "✎ Edit", "edit", `aria-pressed="${edit}"`, edit ? "selected" : "quiet")}</div><div class="toolbar-group">${button("New", "new", 'aria-label="New hero"', "quiet")}${button("Save", "save", 'aria-label="Save character"', "quiet")}${button("Load", "library", 'aria-label="Load character"', "quiet")}${button("Import", "import", 'aria-label="Import JSON"', "quiet")}${button("Export", "export", 'aria-label="Export JSON"', "quiet")}</div></div>
-  <header class="hero-header"><div class="identity-line"><img class="hero-mark" src="assets/crest.webp" alt=""><div><div class="name-line">${edit && mode === "sheet" ? field("Character name", "name", draft.name, "text", 'maxlength="200"') : `<h1>${esc(draft.name || "New hero")}</h1>`}${button(skullIcon + (vitals.failed ? `<span>${vitals.failed}</span>` : ""), "death-roll", `aria-label="Death roll; ${vitals.failed} failed" title="Death roll · ${vitals.failed} failed"`, "icon-button death-button")}</div><p>${esc(join([get(draft.ancestryId)?.name, get(draft.classId)?.name, `Level ${preview.development.level}`]))}</p></div></div><div class="vitals"><div class="vital"><small>HP</small><strong class="hp-value"><input aria-label="Current HP" data-field="play.hp" type="number" min="0" max="${vitals.max}" step="1" value="${vitals.hp}"><span>/ ${vitals.max || "—"}</span></strong></div><div class="vital"><small>Grit</small><strong>${stats?.gritGranted ?? "—"}</strong></div><div class="vital"><small>Speed</small><strong data-speed>${vitals.speed}${vitals.speed < vitals.maxSpeed ? ` / ${vitals.maxSpeed}` : ""}</strong></div><div class="vital"><small>Wounds</small><strong data-wound-count>${vitals.wounds.length}</strong></div><div class="vital"><small>Armor DR</small><strong>${preview.resistances.physical ?? 0}</strong></div></div></header>
+  <header class="hero-header"><div class="identity-line"><img class="hero-mark" src="assets/crest.webp" alt=""><div><div class="name-line">${edit && mode === "sheet" ? field("Character name", "name", draft.name, "text", 'maxlength="200"') : `<h1>${esc(draft.name || "New hero")}</h1>`}${button(skullIcon + (vitals.failed ? `<span>${vitals.failed}</span>` : ""), "death-roll", `aria-label="Death roll; ${vitals.failed} failed" title="Death roll · ${vitals.failed} failed"`, "icon-button death-button")}</div><p>${esc(join([get(draft.ancestryId)?.name, get(draft.classId)?.name, `Level ${preview.development.level}`]))}</p></div></div><div class="vitals"><div class="vital"><small>HP</small><strong class="hp-value"><input aria-label="Current HP" data-field="play.hp" type="number" min="0" max="${vitals.max}" step="1" value="${vitals.hp}"><span>/ ${vitals.max || "—"}</span></strong></div><div class="vital"><small>${button("Grit", "use-grit", 'aria-label="Use Grit"', "vital-link")}</small><strong>${vitals.grit}</strong></div><div class="vital"><small>Speed</small><strong data-speed>${vitals.speed}${vitals.speed < vitals.maxSpeed ? ` / ${vitals.maxSpeed}` : ""}</strong></div><div class="vital"><small>${button("Wounds", "roll-wound-dialog", 'aria-label="Roll a new wound"', "vital-link")}</small><strong data-wound-count>${vitals.wounds.length}</strong></div><div class="vital"><small>Armor DR</small><strong>${preview.resistances.physical ?? 0}</strong></div></div></header>
   <div class="attributes">${ATTRIBUTES.map((key) => `<div class="attribute"><span>${title(key)}</span>${rollButton(title(key), `data-attribute-key="${key}"`)}<strong data-attribute="${key}">${signed(draft.attributes[key])}</strong></div>`).join("")}</div></div>`;
 }
 function abilityCard(
@@ -333,12 +340,46 @@ function attributeFor(record) {
       ?.value ?? "";
   return ATTRIBUTES.find((key) => text.toLowerCase().startsWith(key)) ?? null;
 }
+function favorite(kind, id) {
+  const active = draft.play?.favorites?.[kind]?.includes(id) ?? false;
+  return button(
+    active ? "★" : "☆",
+    "favorite",
+    `data-kind="${kind}" data-id="${esc(id)}" aria-label="${active ? "Unfavorite" : "Favorite"} ${esc(kind === "abilities" ? name(id) : name(preview.inventory.items.find((i) => i.instanceId === id)?.catalogId))}" aria-pressed="${active}"`,
+    "star-button",
+  );
+}
+function collapsible(key, label, body, extra = "", style = "box") {
+  return `<details class="${style} play-section" data-collapse="${key}" ${draft.play?.collapsed?.[key] ? "" : "open"}><summary><h3>${esc(label)}</h3>${extra}</summary>${body}</details>`;
+}
+function itemUseButton(item) {
+  return button(
+    diceIcon,
+    "use-supply-dialog",
+    `data-instance="${esc(item.instanceId)}" aria-label="Use ${esc(name(item.catalogId))}" title="Use ${esc(name(item.catalogId))}"`,
+    "icon-button",
+  );
+}
+function supplyRows() {
+  return (
+    preview.inventory.items
+      .filter(
+        (i) =>
+          i.carried && i.inventoryDie !== null && i.inventoryDie !== undefined,
+      )
+      .map(
+        (i) =>
+          `<div class="stat-row"><span>${esc(name(i.catalogId))}</span><strong>${i.inventoryDie ? `d${i.inventoryDie}` : "Empty"}${i.inventoryDie && i.quantity ? itemUseButton(i) : ""}</strong></div>`,
+      )
+      .join("") || "<small>No supplies carried.</small>"
+  );
+}
 function actionTable(entries, customize = edit) {
   return `<div class="table-wrap"><table class="action-table"><thead><tr><th>Action</th><th>Attribute</th><th>Effect</th>${customize ? "<th>Show</th>" : ""}</tr></thead><tbody>${entries
     .filter((e) => e.visible || customize)
     .map(
       (e) =>
-        `<tr class="${e.visible ? "" : "hidden-action"}"><td><div class="action-name">${button(esc(e.record.name), "reference", `data-id="${e.record.id}"`, "table-link")}${attributeFor(e.record) ? rollButton(e.record.name, `data-id="${e.record.id}"`) : ""}</div>${e.basic ? '<small class="basic-tag">Basic</small>' : ""}</td><td>${esc(attributeFor(e.record) ? title(attributeFor(e.record)) : "—")}</td><td><span class="brief" title="${esc(brief(e.record))}">${esc(brief(e.record))}</span></td>${customize ? `<td>${e.basic ? `<input type="checkbox" data-basic="${e.record.id}" aria-label="Show ${esc(e.record.name)}" ${e.visible ? "checked" : ""}>` : ""}</td>` : ""}</tr>`,
+        `<tr class="${e.visible ? "" : "hidden-action"}"><td><div class="action-name">${tab === "Abilities" && !e.basic ? favorite("abilities", e.record.id) : ""}${button(esc(e.record.name), "reference", `data-id="${e.record.id}"`, "table-link")}${e.record.id === "ability-use-a-healing-potion" ? button(diceIcon, "potion-dialog", 'aria-label="Use a healing potion" title="Use a healing potion"', "icon-button") : attributeFor(e.record) ? rollButton(e.record.name, `data-id="${e.record.id}"`) : ""}</div>${e.basic ? '<small class="basic-tag">Basic</small>' : ""}</td><td>${esc(attributeFor(e.record) ? title(attributeFor(e.record)) : "—")}</td><td><span class="brief" title="${esc(brief(e.record))}">${esc(brief(e.record))}</span></td>${customize ? `<td>${e.basic ? `<input type="checkbox" data-basic="${e.record.id}" aria-label="Show ${esc(e.record.name)}" ${e.visible ? "checked" : ""}>` : ""}</td>` : ""}</tr>`,
     )
     .join("")}</tbody></table></div>`;
 }
@@ -356,32 +397,55 @@ function passiveTable(entries) {
 function mainPanel() {
   const actions = mainActions(preview, draft, catalogs);
   const groups = ["Main Action", "Maneuver", "Reaction", "Movement", "Other"];
-  const passives = actions.filter((e) =>
-    actionTiming(e.record).includes("Passive"),
-  );
-  return `<div class="main-layout"><div class="action-groups">${groups
-    .map((group) => {
+  const groupKeys = [
+    "main-action",
+    "maneuver",
+    "reaction",
+    "movement",
+    "other",
+  ];
+  const left = groups
+    .map((group, index) => {
       const entries = actions.filter((e) =>
         actionTiming(e.record).includes(group),
       );
       if (!entries.some((e) => e.visible || edit)) return "";
-      return `<section class="action-group"><h3>${group}${edit && entries.some((e) => e.basic) ? `<label class="inline-toggle"><input type="checkbox" data-basic-group="${group}" ${entries.filter((e) => e.basic).every((e) => e.visible) ? "checked" : ""}> Basic actions</label>` : ""}</h3>${actionTable(entries)}</section>`;
+      const toggle =
+        edit && entries.some((e) => e.basic)
+          ? `<label class="inline-toggle"><input type="checkbox" data-basic-group="${group}" ${entries.filter((e) => e.basic).every((e) => e.visible) ? "checked" : ""}> Basic actions</label>`
+          : "";
+      return collapsible(
+        `actions-${groupKeys[index]}`,
+        group,
+        actionTable(entries),
+        toggle,
+        "action-group",
+      );
     })
-    .join(
-      "",
-    )}</div><aside class="play-summary"><section class="box"><h3>Passives</h3>${passiveTable(passives)}</section><section class="box"><h3>Ancestry traits</h3><table class="trait-table"><tbody>${draft.traitIds.map((id) => `<tr><td>${button(esc(name(id)), "reference", `data-id="${esc(id)}"`, "table-link")}<span class="brief" title="${esc(traitBrief(id))}">${esc(traitBrief(id))}</span></td></tr>`).join("")}</tbody></table></section><section class="box"><h3>Defenses</h3>${row("Armor / physical DR", preview.resistances.physical ?? 0)}${Object.entries(
-    preview.resistances,
-  )
-    .filter(([type]) => type !== "physical")
-    .map(([type, value]) => row(`${title(type)} resistance`, value))
-    .join(
-      "",
-    )}${preview.passiveSources.map((p) => `<small>${esc(p.label)}</small>`).join("")}</section>${conditionBar()}<section class="box"><h3>Movement & carrying</h3>${row("Speed", `${liveVitals().speed}${liveVitals().speed < liveVitals().maxSpeed ? ` / ${liveVitals().maxSpeed}` : ""} squares`)}${row("Bulk / capacity", `${preview.inventory.bulk} / ${preview.inventory.capacity}`)}${row("Encumbrance", preview.inventory.encumbrance)}${row("Base stability", preview.summary?.stability ?? 0)}</section><section class="box"><h3>Supplies</h3>${
-    preview.inventory.items
-      .filter((i) => i.carried && i.inventoryDie)
-      .map((i) => row(name(i.catalogId), `d${i.inventoryDie}`))
-      .join("") || "<small>No supplies carried.</small>"
-  }</section></aside></div>`;
+    .join("");
+  const traits = `<table class="trait-table"><tbody>${draft.traitIds.map((id) => `<tr><td>${button(esc(name(id)), "reference", `data-id="${esc(id)}"`, "table-link")}<span class="brief">${esc(traitBrief(id))}</span></td></tr>`).join("")}</tbody></table>`;
+  const defenses =
+    row("Armor / physical DR", preview.resistances.physical ?? 0) +
+    Object.entries(preview.resistances)
+      .filter(([k]) => k !== "physical")
+      .map(([k, v]) => row(`${title(k)} resistance`, v))
+      .join("") +
+    preview.passiveSources
+      .map((p) => `<small>${esc(p.label)}</small>`)
+      .join("");
+  const v = liveVitals();
+  const carrying =
+    row(
+      "Speed",
+      `${v.speed}${v.speed < v.maxSpeed ? ` / ${v.maxSpeed}` : ""} squares`,
+    ) +
+    row(
+      "Bulk / capacity",
+      `${preview.inventory.bulk} / ${preview.inventory.capacity}`,
+    ) +
+    row("Encumbrance", preview.inventory.encumbrance) +
+    row("Base stability", preview.summary?.stability ?? 0);
+  return `<div class="main-layout"><div class="action-groups">${left}</div><aside class="play-summary">${collapsible("passives", "Passives", passiveTable(actions.filter((e) => actionTiming(e.record).includes("Passive"))))}${collapsible("ancestry-traits", "Ancestry traits", traits)}${collapsible("defenses", "Defenses", defenses)}${conditionBar()}${collapsible("movement-carrying", "Movement & carrying", carrying)}${collapsible("supplies", "Supplies", supplyRows())}</aside></div>`;
 }
 function traitBrief(id) {
   return (
@@ -408,7 +472,7 @@ function recipeRows() {
 function inventoryStats(starting = false) {
   if (starting)
     return `<div class="inventory-stats"><span><strong>${preview.creation.inventory.remainingCoins}</strong> coins</span><span><strong>${preview.creation.inventory.bulk} / ${preview.inventory.capacity}</strong> Bulk</span><span>Encumbrance <strong>${Math.max(0, preview.creation.inventory.bulk - preview.inventory.capacity)}</strong></span></div>`;
-  return `<div class="inventory-stats"><span><strong>${preview.inventory.remainingCoins}</strong> coins</span><span><strong>${preview.inventory.bulk} / ${preview.inventory.capacity}</strong> Bulk</span><span>Encumbrance <strong>${preview.inventory.encumbrance}</strong></span><span>Speed <strong>${preview.summary?.speed ?? "—"}</strong></span><span>Armor DR <strong>${preview.resistances.physical ?? 0}</strong></span></div>`;
+  return `<div class="inventory-stats"><span><strong>${preview.inventory.remainingCoins}</strong> coins</span><span><strong>${preview.inventory.bulk} / ${preview.inventory.capacity}</strong> Bulk</span><span>Encumbrance <strong>${preview.inventory.encumbrance}</strong></span><span>Speed <strong>${liveVitals().speed}</strong></span><span>Armor DR <strong>${preview.resistances.physical ?? 0}</strong></span></div>`;
 }
 function inventoryTable(controls = false) {
   const items = controls
@@ -437,7 +501,7 @@ function inventoryTable(controls = false) {
         : item.source === "play"
           ? "Added"
           : name(item.source);
-  return `<div class="table-wrap"><table class="inventory-table"><thead><tr><th>Item</th><th>Qty</th><th>Bulk</th><th>Supply</th>${controls ? "<th>Held</th><th>Worn</th><th>Carried</th><th></th>" : '<th>Source</th><th aria-label="Remove purchase"></th>'}</tr></thead><tbody>${items.map((item) => `<tr data-instance="${esc(item.instanceId)}" class="${item.carried ? "" : "stored-item"}"><td>${button(esc(name(item.catalogId)), "reference", `data-id="${esc(item.catalogId)}"`, "table-link")}${controls ? `<small class="item-source">${esc(source(item))}</small>` : ""}</td><td>${item.quantity}</td><td>${item.bulk}</td><td>${item.inventoryDie ? `d${item.inventoryDie}` : "—"}</td>${controls ? ["held", "worn", "carried"].map((prop) => `<td><input type="checkbox" data-loadout="${esc(item.instanceId)}" data-prop="${prop}" aria-label="${prop === "held" ? "Hold" : prop === "worn" ? "Wear" : "Carry"} ${esc(name(item.catalogId))}" ${item[prop] ? "checked" : ""}></td>`).join("") + `<td>${button("×", "delete-item", `data-instance="${esc(item.instanceId)}" aria-label="Delete ${esc(name(item.catalogId))}"`, "quiet small")}</td>` : `<td>${esc(source(item))}</td><td>${purchaseRemoval(item)}</td>`}</tr>`).join("")}</tbody></table></div>`;
+  return `<div class="table-wrap"><table class="inventory-table"><thead><tr><th>Item</th><th>Qty</th><th>Bulk</th><th>Supply</th>${controls ? "<th>Held</th><th>Worn</th><th>Carried</th><th></th>" : '<th>Source</th><th aria-label="Remove purchase"></th>'}</tr></thead><tbody>${items.map((item) => `<tr data-instance="${esc(item.instanceId)}" class="${item.carried ? "" : "stored-item"}"><td>${controls ? favorite("items", item.instanceId) : ""}${button(esc(name(item.catalogId)), "reference", `data-id="${esc(item.catalogId)}"`, "table-link")}${controls ? `<small class="item-source">${esc(source(item))}</small>` : ""}</td><td>${controls ? `<input type="number" class="quantity-input" data-quantity="${esc(item.instanceId)}" aria-label="Quantity ${esc(name(item.catalogId))}" min="0" max="10000" step="1" value="${item.quantity}">` : item.quantity}</td><td>${item.bulk}</td><td>${item.inventoryDie ? `d${item.inventoryDie}` : item.inventoryDie === 0 ? "Empty" : "—"}${controls && item.inventoryDie && item.quantity ? itemUseButton(item) : ""}</td>${controls ? ["held", "worn", "carried"].map((prop) => `<td><input type="checkbox" data-loadout="${esc(item.instanceId)}" data-prop="${prop}" aria-label="${prop === "held" ? "Hold" : prop === "worn" ? "Wear" : "Carry"} ${esc(name(item.catalogId))}" ${item[prop] ? "checked" : ""}></td>`).join("") + `<td>${button("×", "delete-item", `data-instance="${esc(item.instanceId)}" aria-label="Delete ${esc(name(item.catalogId))}"`, "quiet small")}</td>` : `<td>${esc(source(item))}</td><td>${purchaseRemoval(item)}</td>`}</tr>`).join("")}</tbody></table></div>`;
 }
 function advancementTable() {
   return `<div class="table-wrap"><table><thead><tr><th>Level</th><th>Entry</th><th>DP</th></tr></thead><tbody>${preview.advancementLedger.map((e) => `<tr><td>${e.level}</td><td>${esc(e.kind === "award" ? "Level award" : name(e.id))}</td><td>${signed(e.delta)}</td></tr>`).join("")}</tbody></table></div>`;
@@ -795,7 +859,14 @@ function woundTable() {
     liveVitals()
       .wounds.map(
         (w) =>
-          `<tr><td>${esc(w.name)}</td><td>${esc(w.notes)}</td><td>${button("×", "delete-wound", `data-id="${esc(w.id)}" aria-label="Remove wound ${esc(w.name)}"`, "small quiet")}</td></tr>`,
+          `<tr><td>${esc(w.name)}</td><td>${esc(w.notes)}${
+            w.catalogId
+              ? `<small class="wound-effects">${liveVitals()
+                  .woundEffects.filter((e) => e.id.startsWith(`${w.id}-`))
+                  .map((e) => esc(woundEffectLabel(e)))
+                  .join("; ")}</small>`
+              : ""
+          }</td><td>${button("×", "delete-wound", `data-id="${esc(w.id)}" aria-label="Remove wound ${esc(w.name)}"`, "small quiet")}</td></tr>`,
       )
       .join("") || '<tr><td colspan="3">No wounds recorded.</td></tr>'
   }</tbody></table></section>`;
@@ -804,7 +875,13 @@ function languageTable() {
   return `<table class="language-table"><tbody>${preview.play.languages.map((lang) => `<tr><td>${esc(lang.name)}</td><td>${lang.form === "signed" ? "Signed" : "Spoken"}${lang.permissions.read ? " & written" : ""}</td><td>${button("×", "delete-language", `data-id="${esc(lang.id)}" aria-label="Remove language ${esc(lang.name)}"`, "small quiet")}</td></tr>`).join("") || "<tr><td>No languages</td></tr>"}</tbody></table>`;
 }
 function conditionBar() {
-  return `<section class="box condition-bar" aria-label="Conditions"><h3 class="section-controls">Conditions ${button("Add", "add-condition", 'aria-label="Add condition"', "small")}</h3><div class="condition-list">${preview.play.conditions.map((c) => `<span class="condition-chip">${esc(title(c.key))}${CONDITION_KINDS[c.key] === "binary" ? "" : ` ${c.rating}${CONDITION_KINDS[c.key] === "duration" ? " turns" : ""}`}${c.persistence === "starred" ? " ★" : ""}${button("×", "delete-condition", `data-id="${esc(c.id)}" aria-label="Remove ${esc(title(c.key))}"`, "quiet small")}</span>`).join("") || "<small>None</small>"}</div></section>`;
+  return collapsible(
+    "conditions",
+    "Conditions",
+    `<div class="condition-list">${preview.play.conditions.map((c) => `<span class="condition-chip">${esc(title(c.key))}${CONDITION_KINDS[c.key] === "binary" ? "" : ` ${c.rating}${CONDITION_KINDS[c.key] === "duration" ? " turns" : ""}`}${c.persistence === "starred" ? " ★" : ""}${button("×", "delete-condition", `data-id="${esc(c.id)}" aria-label="Remove ${esc(title(c.key))}"`, "quiet small")}</span>`).join("") || "<small>None</small>"}</div>`,
+    button("Add", "add-condition", 'aria-label="Add condition"', "small"),
+    "box condition-bar",
+  );
 }
 function addItemDialog() {
   popup(
@@ -965,6 +1042,127 @@ function normalizeShoppingIds() {
     }
   });
 }
+function randomDie(sides) {
+  const a = new Uint32Array(1),
+    limit = Math.floor(4294967296 / sides) * sides;
+  do {
+    crypto.getRandomValues(a);
+  } while (a[0] >= limit);
+  return 1 + (a[0] % sides);
+}
+function woundEffectLabel(e) {
+  if (e.kind === "condition")
+    return `${title(e.key)} ${e.rating}${e.persistence === "starred" ? " ★" : ""}`;
+  if (e.kind === "movementPenalty") return `Speed −${e.amount}`;
+  if (e.kind === "rollModifier")
+    return `${e.amount} ${e.polarity}${e.amount > 1 ? "s" : ""}: ${e.printedContext ?? e.context}`;
+  if (e.kind === "forcedMovement")
+    return `${title(e.direction)} ${e.distance} squares; choose direction and legal placement at the table`;
+  return "Last Words";
+}
+function woundDialog() {
+  popup(
+    "New wound",
+    `<label>Damage type<select id="wound-type" aria-label="Wound damage type">${DAMAGE_TYPES.map((type) => option(type, title(type), type === "physical")).join("")}</select></label><p>${liveVitals().wounds.length} prior wounds · roll ${Math.min(5, 3 + liveVitals().wounds.length)}d6, keep the highest three.</p><div id="wound-roll-result" role="status" aria-live="polite"></div><div class="dialog-actions">${button("Roll wound", "confirm-roll-wound", "", "primary")}</div>`,
+  );
+}
+function rollNewWound() {
+  const wounds = (playDraft().wounds ??= []);
+  if (wounds.length >= 100)
+    throw new Error("The character supports 100 recorded wounds.");
+  const prior = wounds.length,
+    faces = Array.from({ length: Math.min(5, 3 + prior) }, () => randomDie(6));
+  const result = rolledWorkshopWound({
+    catalog: catalogs.wounds,
+    damageType: $("#wound-type").value,
+    priorWounds: prior,
+    faces,
+    id: `wound-${crypto.randomUUID()}`,
+  });
+  const conditions = result.effects.filter((e) => e.kind === "condition");
+  if (playDraft().conditions.length + conditions.length > 100)
+    throw new Error(
+      "The character supports 100 conditions. Remove resolved conditions first.",
+    );
+  wounds.push(result.wound);
+  result.effects.forEach((effect, index) => {
+    if (effect.kind === "condition")
+      playDraft().conditions.push({
+        id: `${result.wound.id}-${index}`,
+        key: effect.key,
+        rating: effect.rating,
+        persistence: effect.persistence,
+        source: result.wound.name,
+      });
+    if (effect.kind === "lastWords")
+      Object.assign(playDraft(), {
+        hp: 0,
+        failedDeathRolls: 3,
+        lastWords: true,
+      });
+  });
+  persist();
+  render();
+  $("#wound-roll-result").innerHTML =
+    `<p>${faces.join(" · ")} → <strong>${result.wound.roll.key}</strong></p><strong>${esc(result.wound.name)}</strong><p>${result.effects.map((e) => esc(woundEffectLabel(e))).join("; ") || "Scar recorded; no mechanical penalty."}</p><p>${esc(result.wound.notes)}</p>`;
+}
+function gritDialog() {
+  const available = liveVitals().grit;
+  popup(
+    "Use Grit",
+    `<p>Spend 1 Grit to restore HP to ${liveVitals().max} and clear death marks? Wounds remain.</p><p>${available} Grit remaining.${draft.play?.lastWords ? " Ordinary Grit cannot reverse Last Words." : ""}</p><div class="dialog-actions">${button("Cancel", "close-reference")}${button("Spend 1 Grit", "confirm-grit", available > 0 && !draft.play?.lastWords ? "" : "disabled", "primary")}</div>`,
+  );
+}
+let supplyInstance = null;
+function supplyDialog(instance) {
+  const potions = preview.inventory.items.filter(
+    (i) =>
+      i.carried &&
+      i.quantity > 0 &&
+      i.inventoryDie > 0 &&
+      HEALING_POTION_IDS.includes(i.catalogId),
+  );
+  const item = instance
+    ? preview.inventory.items.find((i) => i.instanceId === instance)
+    : null;
+  if (instance && (!item || item.inventoryDie < 1 || item.quantity < 1))
+    throw new Error("This supply is exhausted.");
+  supplyInstance = instance ?? null;
+  popup(
+    item ? name(item.catalogId) : "Use a healing potion",
+    `${item ? `<p>Use this supply, then check d${item.inventoryDie}. A 1 steps it down; the final use still works.</p>` : potions.length ? `<label>Potion<select id="potion-instance" aria-label="Healing potion">${potions.map((i) => option(i.instanceId, `${name(i.catalogId)} · d${i.inventoryDie}`, false)).join("")}</select></label><p>Healing is fixed by the bottle; roll its supply die after use.</p>` : "<p>No carried healing potion with supply remaining.</p>"}<div id="supply-roll-result" role="status" aria-live="polite"></div><div class="dialog-actions">${button("Use & roll supply", "confirm-supply", item || potions.length ? "" : "disabled", "primary")}</div>`,
+  );
+}
+function useSupply() {
+  const id = supplyInstance ?? $("#potion-instance")?.value;
+  const item = preview.inventory.items.find((i) => i.instanceId === id);
+  if (!item || !item.carried || !item.inventoryDie || !item.quantity)
+    throw new Error("This supply is exhausted or no longer carried.");
+  if (draft.play?.lastWords && HEALING_POTION_IDS.includes(item.catalogId))
+    throw new Error("Ordinary healing cannot reverse Last Words.");
+  const face = randomDie(item.inventoryDie);
+  const result = workshopSupplyUse({
+    item,
+    face,
+    hp: liveVitals().hp,
+    maxHp: liveVitals().max,
+    catalog: catalogs.inventory,
+    lastWords: draft.play?.lastWords ?? false,
+  });
+  const inv = playDraft().inventory;
+  inv.overrides ??= {};
+  inv.overrides[id] = { ...inv.overrides[id], inventoryDie: result.after };
+  if (result.potion) {
+    playDraft().hp = result.hp;
+    if (result.hp > 0) playDraft().failedDeathRolls = 0;
+  }
+  persist();
+  render();
+  $("#supply-roll-result").innerHTML =
+    `<p>${esc(name(item.catalogId))}: d${result.before} → <strong>${face}</strong> · ${result.after ? `d${result.after}` : "Exhausted"}</p>${result.potion ? `<p>Restored ${result.healed} HP · ${result.hp} / ${liveVitals().max}. The final dose still heals.</p>` : "<p>Supply check recorded after use.</p>"}`;
+  if (result.exhausted)
+    $("#reference [data-action=confirm-supply]").disabled = true;
+}
 let activeRoll = null;
 function openSheetRoll({ key, id, death = false }) {
   const record = get(id),
@@ -992,6 +1190,17 @@ function openSheetRoll({ key, id, death = false }) {
               "",
             )}</div><small>Choose applicable abilities; adjust the attribute and net Boons/Banes above.</small></details>`
     }
+    ${
+      !death && liveVitals().woundEffects.some((e) => e.kind === "rollModifier")
+        ? `<details><summary>Wound effects</summary>${liveVitals()
+            .woundEffects.filter((e) => e.kind === "rollModifier")
+            .map(
+              (e) =>
+                `<label class="inline-toggle"><input type="checkbox" data-wound-net="${e.polarity === "boon" ? e.amount : -e.amount}">${esc(e.injury)} · ${esc(woundEffectLabel(e))}</label>`,
+            )
+            .join("")}</details>`
+        : ""
+    }
     <div id="recipe-roll-result" role="status" aria-live="polite"></div><div class="dialog-actions">${button("Roll", "roll-sheet", "", "primary")}</div>${record ? `<details><summary>Ability rules</summary>${markdown(references.records[id]?.markdown ?? "")}</details>` : ""}`,
   );
   const net = -Math.min(3, preview.play.conditionSummary.poisoned.rating);
@@ -1012,6 +1221,13 @@ function rollSheetDice() {
       "beforeend",
       `<p>${selected.map(esc).join(" · ")}</p>`,
     );
+  if (activeRoll.death && draft.play?.lastWords) {
+    $("#recipe-roll-result").insertAdjacentHTML(
+      "beforeend",
+      "<p>Last Words remains; an ordinary death roll cannot reverse it.</p>",
+    );
+    return;
+  }
   if (activeRoll.death) {
     const marks = Number($("#death-failures").value);
     if (!Number.isInteger(marks) || marks < 0 || marks > 3)
@@ -1060,13 +1276,7 @@ function displayDice(attribute) {
     boons: Math.max(0, net),
     banes: Math.max(0, -net),
   });
-  const faces = Array.from({ length: plan.count }, () => {
-    const n = new Uint32Array(1);
-    do {
-      crypto.getRandomValues(n);
-    } while (n[0] >= 4294967292);
-    return 1 + (n[0] % 6);
-  });
+  const faces = Array.from({ length: plan.count }, () => randomDie(6));
   const retained = [...faces]
     .sort((a, b) => (net < 0 ? a - b : b - a))
     .slice(0, 3);
@@ -1076,6 +1286,21 @@ function displayDice(attribute) {
   return { ...result, retained };
 }
 document.addEventListener("change", (event) => {
+  if (event.target.dataset.woundNet) {
+    const slider = $("#recipe-net");
+    slider.value = String(
+      Math.max(
+        -3,
+        Math.min(
+          3,
+          Number(slider.value) +
+            Number(event.target.dataset.woundNet) *
+              (event.target.checked ? 1 : -1),
+        ),
+      ),
+    );
+    slider.dispatchEvent(new Event("input", { bubbles: true }));
+  }
   if (event.target.id === "death-failures") {
     const value = Number(event.target.value);
     if (!Number.isInteger(value) || value < 0 || value > 3) {
@@ -1179,8 +1404,10 @@ function updateField(target) {
       return;
     }
     set(target.dataset.field, value);
-    if (target.dataset.field === "play.hp" && value > 0)
+    if (target.dataset.field === "play.hp" && value > 0) {
       playDraft().failedDeathRolls = 0;
+      playDraft().lastWords = false;
+    }
   } else if (target.dataset.list) {
     const values = [...(getValue(target.dataset.list) ?? [])];
     set(
@@ -1315,6 +1542,41 @@ function showReference(id) {
 }
 async function action(target) {
   const a = target.dataset.action;
+  if (a === "roll-wound-dialog") return woundDialog();
+  if (a === "confirm-roll-wound") return rollNewWound();
+  if (a === "use-grit") return gritDialog();
+  if (a === "confirm-grit") {
+    Object.assign(
+      playDraft(),
+      workshopSpendGrit({
+        spent: draft.play?.gritSpent ?? 0,
+        granted: preview.summary?.gritGranted ?? 0,
+        maxHp: liveVitals().max,
+        lastWords: draft.play?.lastWords ?? false,
+      }),
+    );
+    $("#reference").close();
+    persist();
+    render();
+    notice("Grit spent; HP restored.");
+    return;
+  }
+  if (a === "potion-dialog") return supplyDialog();
+  if (a === "use-supply-dialog") return supplyDialog(target.dataset.instance);
+  if (a === "confirm-supply") return useSupply();
+  if (a === "favorite") {
+    const kind = target.dataset.kind,
+      id = target.dataset.id;
+    const play = playDraft();
+    play.favorites ??= { abilities: [], items: [] };
+    const list = play.favorites[kind] ?? [];
+    play.favorites[kind] = list.includes(id)
+      ? list.filter((v) => v !== id)
+      : [...list, id];
+    persist();
+    render();
+    return;
+  }
   if (a === "open-roll")
     return openSheetRoll({
       key: target.dataset.attributeKey,
@@ -1338,10 +1600,16 @@ async function action(target) {
     play.wounds.push({ id: `wound-${crypto.randomUUID()}`, name, notes });
     $("#reference").close();
   }
-  if (a === "delete-wound")
+  if (a === "delete-wound") {
     playDraft().wounds = (playDraft().wounds ?? []).filter(
       (w) => w.id !== target.dataset.id,
     );
+    playDraft().conditions = playDraft().conditions.filter(
+      (c) => !c.id.startsWith(`${target.dataset.id}-`),
+    );
+    if (!playDraft().wounds.some((w) => w.catalogId?.endsWith("-666")))
+      playDraft().lastWords = false;
+  }
   if (a === "reference") return showReference(target.dataset.id);
   if (a === "save-message") {
     const message = $("#memorized-message").value.trim();
@@ -1602,8 +1870,58 @@ for (const name of ["pointerup", "pointercancel"])
       if (pendingRender) render();
     }, 0);
   });
+// Persist the impending native toggle synchronously, including keyboard clicks.
+// The later toggle event also covers programmatic changes.
+app.addEventListener(
+  "click",
+  (event) => {
+    const summary = event.target.closest("summary"),
+      section = summary?.parentElement;
+    if (
+      !section?.dataset.collapse ||
+      event.target.closest("button,input,select,a,label")
+    )
+      return;
+    const play = playDraft();
+    play.collapsed ??= {};
+    play.collapsed[section.dataset.collapse] = section.open;
+    persist();
+  },
+  true,
+);
+app.addEventListener(
+  "toggle",
+  (event) => {
+    const key = event.target.dataset.collapse;
+    if (!key) return;
+    const closed = !event.target.open;
+    if ((draft.play?.collapsed?.[key] ?? false) === closed) return;
+    const play = playDraft();
+    play.collapsed ??= {};
+    play.collapsed[key] = closed;
+    persist();
+  },
+  true,
+);
 app.addEventListener("change", (event) => {
   const t = event.target;
+  if (t.dataset.quantity) {
+    const quantity = Number(t.value);
+    if (!Number.isSafeInteger(quantity) || quantity < 0 || quantity > 10000) {
+      notice("Use a whole quantity from 0 to 10,000.");
+      render();
+      return;
+    }
+    const inv = playDraft().inventory;
+    inv.overrides ??= {};
+    inv.overrides[t.dataset.quantity] = {
+      ...inv.overrides[t.dataset.quantity],
+      quantity,
+    };
+    persist();
+    render();
+    return;
+  }
   if (t.dataset.loadout) {
     const item = preview.inventory.items.find(
       (i) => i.instanceId === t.dataset.loadout,
@@ -1746,20 +2064,23 @@ try {
     if (!r.ok) throw new Error(`Could not load ${name}.`);
     return r.json();
   };
-  const [choices, inventory, refs, sample] = await Promise.all([
+  const [choices, inventory, refs, sample, wounds] = await Promise.all([
     load("choices"),
     load("inventory"),
     load("references"),
     load("example"),
+    load("wounds"),
   ]);
   if (
     choices.sourceCommit !== inventory.sourceCommit ||
+    wounds.sourceCommit !== choices.sourceCommit ||
     refs.sourceCommit !== choices.sourceCommit
   )
     throw new Error("The workshop catalogs do not use the same rules edition.");
   catalogs = {
     choices: choices.records,
     inventory,
+    wounds,
     commit: choices.sourceCommit,
   };
   references = refs;

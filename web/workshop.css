@@ -1554,3 +1554,77 @@ dialog header button {
 .action-table th:first-child {
   width: 32%;
 }
+
+.vital .vital-link {
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-transform: inherit;
+  letter-spacing: inherit;
+  text-decoration: underline dotted;
+  text-underline-offset: 3px;
+}
+.play-section > summary {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  list-style: none;
+}
+.play-section > summary::-webkit-details-marker {
+  display: none;
+}
+.play-section > summary::before {
+  content: "▾";
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.play-section:not([open]) > summary::before {
+  content: "▸";
+}
+.play-section > summary h3 {
+  margin: 0;
+  flex: 1;
+}
+.play-section[open] > summary {
+  margin-bottom: 5px;
+}
+.action-group.play-section > summary {
+  border-bottom: 2px solid var(--gold);
+  padding-bottom: 4px;
+}
+.action-group.play-section h3 {
+  border: 0;
+  padding: 0;
+}
+.star-button {
+  display: inline-flex;
+  justify-content: center;
+  min-width: 22px;
+  min-height: 24px;
+  padding: 1px;
+  border: 0;
+  background: transparent;
+  color: #79612e;
+  font-size: 1.15rem;
+  vertical-align: middle;
+}
+.star-button[aria-pressed="true"] {
+  color: #8a6519;
+}
+.inventory-table input.quantity-input {
+  width: 46px;
+  padding: 2px 3px;
+  min-height: 26px;
+  margin: 0;
+}
+.inventory-table td:nth-child(2) {
+  min-width: 46px;
+}
+.wound-effects {
+  display: block;
+  margin-top: 3px;
+}

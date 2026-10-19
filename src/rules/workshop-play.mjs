@@ -1,3 +1,5 @@
+import { WOUND_TABLES } from "./damage.mjs";
+import { woundRoll } from "./wounds.mjs";
 import {
   CONDITION_KINDS,
   conditionSummary,
@@ -33,6 +35,39 @@ export function normalizeWorkshopPlay(value, catalogs) {
       result[key] = value[key];
     }
   }
+  if (value.gritSpent !== undefined) {
+    if (
+      !Number.isSafeInteger(value.gritSpent) ||
+      value.gritSpent < 0 ||
+      value.gritSpent > 10000
+    )
+      fail();
+    result.gritSpent = value.gritSpent;
+  }
+  if (value.lastWords !== undefined) {
+    if (typeof value.lastWords !== "boolean") fail();
+    result.lastWords = value.lastWords;
+  }
+  if (value.collapsed !== undefined) {
+    if (
+      !object(value.collapsed) ||
+      Object.keys(value.collapsed).length > 100 ||
+      Object.entries(value.collapsed).some(
+        ([k, v]) => !instance(k) || typeof v !== "boolean",
+      )
+    )
+      fail();
+    result.collapsed = Object.fromEntries(Object.entries(value.collapsed));
+  }
+  if (value.favorites !== undefined) {
+    if (!object(value.favorites)) fail();
+    result.favorites = {};
+    for (const key of ["abilities", "items"]) {
+      const values = value.favorites[key] ?? [];
+      if (!list(values, 1000) || !values.every(instance)) fail();
+      result.favorites[key] = [...new Set(values)];
+    }
+  }
   if (value.wounds !== undefined) {
     if (
       !list(value.wounds, 100) ||
@@ -47,11 +82,47 @@ export function normalizeWorkshopPlay(value, catalogs) {
       new Set(value.wounds.map((w) => w.id)).size !== value.wounds.length
     )
       fail();
-    result.wounds = value.wounds.map((w) => ({
-      id: w.id,
-      name: w.name.trim(),
-      notes: w.notes,
-    }));
+    result.wounds = value.wounds.map((w) => {
+      const next = { id: w.id, name: w.name.trim(), notes: w.notes };
+      if (w.catalogId !== undefined) {
+        if (
+          !text(w.catalogId) ||
+          !/^wound-(physical|elemental|mental|radiant|life)-[1-6]{3}$/.test(
+            w.catalogId,
+          ) ||
+          ![
+            "physical",
+            "fire",
+            "cold",
+            "lightning",
+            "mental",
+            "radiant",
+            "life",
+          ].includes(w.damageType) ||
+          !object(w.roll) ||
+          !Number.isSafeInteger(w.roll.priorWounds) ||
+          w.roll.priorWounds < 0 ||
+          w.roll.priorWounds > 100
+        )
+          fail();
+        const roll = woundRoll(w.roll.priorWounds, w.roll.faces);
+        if (
+          roll.key !== w.roll.key ||
+          w.catalogId !== `wound-${WOUND_TABLES[w.damageType]}-${roll.key}`
+        )
+          fail();
+        Object.assign(next, {
+          catalogId: w.catalogId,
+          damageType: w.damageType,
+          roll: {
+            priorWounds: w.roll.priorWounds,
+            faces: [...w.roll.faces],
+            key: roll.key,
+          },
+        });
+      }
+      return next;
+    });
   }
   if (value.memorizedMessage !== undefined) {
     if (
@@ -70,6 +141,37 @@ export function normalizeWorkshopPlay(value, catalogs) {
       !inv.removed.every(instance)
     )
       fail();
+    if (inv.overrides !== undefined) {
+      if (!object(inv.overrides) || Object.keys(inv.overrides).length > 1000)
+        fail();
+      result.inventory.overrides = Object.fromEntries(
+        Object.entries(inv.overrides).map(([id, v]) => {
+          if (
+            !instance(id) ||
+            !object(v) ||
+            Object.keys(v).some(
+              (k) => !["quantity", "inventoryDie"].includes(k),
+            )
+          )
+            fail();
+          const next = {};
+          if (v.quantity !== undefined) {
+            if (
+              !Number.isSafeInteger(v.quantity) ||
+              v.quantity < 0 ||
+              v.quantity > 10000
+            )
+              fail();
+            next.quantity = v.quantity;
+          }
+          if (v.inventoryDie !== undefined) {
+            if (![0, 4, 6, 8, 10, 12, 20].includes(v.inventoryDie)) fail();
+            next.inventoryDie = v.inventoryDie;
+          }
+          return [id, next];
+        }),
+      );
+    }
     const seen = new Set();
     result.inventory.removed = [...new Set(inv.removed)];
     result.inventory.added = inv.added.map((item) => {
@@ -180,7 +282,12 @@ export function workshopPlay(draft, inventoryItems, languages, catalogs) {
         source: "play",
       };
     }),
-  ].filter((item) => !play.inventory.removed.includes(item.instanceId));
+  ]
+    .filter((item) => !play.inventory.removed.includes(item.instanceId))
+    .map((item) => ({
+      ...item,
+      ...play.inventory.overrides?.[item.instanceId],
+    }));
   const known = new Map(
     languages.map((lang) => [lang.id, structuredClone(lang)]),
   );

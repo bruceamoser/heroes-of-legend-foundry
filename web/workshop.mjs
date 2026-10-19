@@ -719,8 +719,10 @@ let pickerKind = null;
 let editingLevel = null;
 const activeLearningLevel = () => editingLevel ?? preview.development.level;
 function learning() {
-  return `${heading("", mode === "advancement" ? `Level ${activeLearningLevel()} learning` : stage() ? "Heroic learning" : "Early learning", "")}<div class="build-controls">${button("Learn abilities", "open-picker", 'data-kind="ability"', "primary small")}${mode === "advancement" || stage() ? button("Learn discipline", "open-picker", 'data-kind="discipline"', "small") : ""}</div>${currentBuild()}`;
+  const controls = `<div class="build-controls">${button("Learn abilities", "open-picker", 'data-kind="ability"', "primary small")}${mode === "advancement" || stage() ? button("Learn discipline", "open-picker", 'data-kind="discipline"', "small") : ""}</div>`;
+  return `<div class="learning-heading">${heading("", mode === "advancement" ? `Level ${activeLearningLevel()} learning` : stage() ? "Heroic learning" : "Early learning", "", controls)}</div>${currentBuild()}`;
 }
+
 function currentBuild() {
   const advancement = mode === "advancement",
     heroic = advancement || stage() === 1;

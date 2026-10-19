@@ -1687,3 +1687,85 @@ dialog header button {
     order: -1;
   }
 }
+
+.card-badges {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 7px;
+  flex-shrink: 0;
+}
+.card-badges .sigil {
+  display: block;
+}
+.action-code {
+  font:
+    700 1.45rem Cinzel,
+    serif;
+  color: var(--forest);
+  line-height: 1;
+}
+.discipline-badge {
+  position: relative;
+  display: inline-flex;
+}
+.discipline-rank {
+  position: absolute;
+  right: -3px;
+  top: -5px;
+  min-width: 17px;
+  height: 17px;
+  padding: 0 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  background: var(--forest);
+  color: var(--paper);
+  font:
+    bold 0.75rem Georgia,
+    serif;
+}
+.learning-list {
+  margin: 10px 0;
+  border-block: 1px solid var(--line);
+  padding: 7px 0;
+}
+.learning-abilities > h3 {
+  margin: 8px 0;
+}
+.wound-box table {
+  font-size: 0.78rem;
+}
+.wound-box th:first-child {
+  width: 29%;
+}
+.wound-box td:nth-child(4) span {
+  white-space: nowrap;
+}
+.wound-box td:nth-child(5) button {
+  padding: 3px 5px;
+  font-size: 0.73rem;
+}
+@media (max-width: 600px) {
+  .wound-box table {
+    font-size: 0.7rem;
+  }
+  .wound-box td,
+  .wound-box th {
+    padding: 4px 2px;
+  }
+  .card-badges {
+    gap: 4px;
+  }
+}
+.card-badges .sigil {
+  width: 28px;
+  height: 28px;
+}
+@media (max-width: 600px) {
+  .wound-box table {
+    min-width: 520px;
+  }
+}

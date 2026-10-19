@@ -1350,3 +1350,25 @@ were visually reviewed; Favorites position is asserted at both sizes. Pure check
 also cover every consumable at each valid die state (including quantity zero),
 printed caps, bleeding bypass/minimum damage and duplicate favorite actions.
 Native Foundry UI and book sources were not changed.
+
+### Web builder and play controls (#183)
+
+Discipline purchases have a separate, remembered disclosure above the ability
+list. Both lists keep eligible choices first and unavailable choices visible;
+ability search filters only abilities. Ability headers show A/M/R/P timing and
+every required discipline icon, with rank 2/3 overlays where required. Existing
+purchase, drag/drop, DP and creation/advancement rules remain shared.
+
+Wounds have separate treatment capability, progress and Apply healing columns.
+Bruce withdrew the natural-healing-time request: the rules provide no universal
+rest timer, so no healing-time estimates were added. Main Defenses has repeatable
+Evade with attribute selection, the existing net slider/ability selections,
+applicable condition modifiers and reversed attack-effect tier guidance. Main
+Supplies shares Inventory's resupply flow and printed caps.
+
+Validation: Node 24 build/validation and 447 tests; workshop, play, resources,
+recovery and new builder-view browser suites. The new suite checks separated
+lists through advancement purchases, remembered disclosure, every requirement
+badge, four action letters, separate wound columns, selectable/repeatable Evade,
+condition modifiers and Main resupply at 760/390px. These are web browser checks;
+no native Foundry UI or book sources changed.

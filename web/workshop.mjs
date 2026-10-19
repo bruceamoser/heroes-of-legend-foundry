@@ -1,3 +1,4 @@
+import { abilityHeaderBadges } from "./rules/workshop-card-view.mjs";
 import {
   rolledWorkshopWound,
   workshopSupplyUse,
@@ -15,7 +16,7 @@ import {
   workshopDeathResult,
 } from "./rules/workshop-vitals.mjs";
 import { itemArrangement } from "./rules/workshop-play.mjs";
-import { CONDITION_KINDS } from "./rules/conditions.mjs";
+import { CONDITION_KINDS, conditionRollSources } from "./rules/conditions.mjs";
 import {
   workshopCharacter,
   emptyLevelDraft,
@@ -228,10 +229,11 @@ function abilityCard(
   const requirements = (r.requirements ?? []).filter(
     (v) => v.kind === "discipline",
   );
+  const badges = abilityHeaderBadges(r);
   const summary =
     r.reference?.flavor?.[0] ??
     (r.kind === "discipline" ? `Develop your training in ${r.name}.` : "");
-  return `<article class="choice-card ${eligible ? "" : "unavailable"}" data-choice="${r.id}" data-eligible="${eligible}" draggable="${learning && eligible}"><div class="card-top">${r.kind === "ability" && !r.universal ? `<span class="tier" title="Available from level ${r.minimumLevel}"><span>${r.minimumLevel}</span></span>` : ""}<h3>${esc(r.name)}</h3>${symbol(r.kind === "discipline" ? r.id : requirements[0]?.id)}</div><div class="card-meta">${action ? `<span>${esc(action)}</span>` : ""}${requirements.map((req) => `<span>${esc(name(req.id))} ${req.rank}</span>`).join("")}${rank ? `<span>Rank ${rank}</span>` : ""}</div>${summary ? `<p class="card-copy">${esc(summary)}</p>` : ""}${reasons.length ? `<p class="requirement">${reasons.map((r) => esc(r.text)).join(" ")}</p>` : ""}<div class="card-actions">${button("Read rules", "reference", `data-id="${r.id}"`, "quiet small")}${learning ? button(`${cost ?? "—"} DP · Learn`, "purchase", `data-id="${r.id}" ${eligible ? "" : "disabled"}`, "small") : ""}</div>${learning && r.purchasePolicy === "new-recipe" ? recipeSelects(r) : ""}</article>`;
+  return `<article class="choice-card ${eligible ? "" : "unavailable"}" data-choice="${r.id}" data-eligible="${eligible}" draggable="${learning && eligible}"><div class="card-top">${r.kind === "ability" && !r.universal ? `<span class="tier" title="Available from level ${r.minimumLevel}"><span>${r.minimumLevel}</span></span>` : ""}<h3>${esc(r.name)}</h3><div class="card-badges">${r.kind === "ability" && badges.codes.length ? `<span class="action-code" aria-label="${esc(badges.action)}" title="${esc(badges.action)}">${badges.codes.join("/")}</span>` : ""}${r.kind === "discipline" ? symbol(r.id) : badges.disciplines.map((req) => `<span class="discipline-badge" data-requirement="${esc(req.id)}" title="${esc(name(req.id))} ${req.rank}">${symbol(req.id)}${req.rank > 1 ? `<span class="discipline-rank" aria-label="Requires rank ${req.rank}">${req.rank}</span>` : ""}</span>`).join("")}</div></div><div class="card-meta">${action ? `<span>${esc(action)}</span>` : ""}${requirements.map((req) => `<span>${esc(name(req.id))} ${req.rank}</span>`).join("")}${rank ? `<span>Rank ${rank}</span>` : ""}</div>${summary ? `<p class="card-copy">${esc(summary)}</p>` : ""}${reasons.length ? `<p class="requirement">${reasons.map((r) => esc(r.text)).join(" ")}</p>` : ""}<div class="card-actions">${button("Read rules", "reference", `data-id="${r.id}"`, "quiet small")}${learning ? button(`${cost ?? "—"} DP · Learn`, "purchase", `data-id="${r.id}" ${eligible ? "" : "disabled"}`, "small") : ""}</div>${learning && r.purchasePolicy === "new-recipe" ? recipeSelects(r) : ""}</article>`;
 }
 function knownCards() {
   return [...new Set(preview.state.abilities)].map(get).filter(Boolean);
@@ -357,14 +359,29 @@ function favorite(kind, id) {
     "star-button",
   );
 }
-function collapsible(key, label, body, extra = "", style = "box") {
-  return `<details class="${style} play-section" data-collapse="${key}" ${draft.play?.collapsed?.[key] ? "" : "open"}><summary><h3>${esc(label)}</h3>${extra}</summary>${body}</details>`;
+function collapsible(
+  key,
+  label,
+  body,
+  extra = "",
+  style = "box",
+  initiallyOpen = true,
+) {
+  return `<details class="${style} play-section" data-collapse="${key}" ${(draft.play?.collapsed?.[key] ?? !initiallyOpen) ? "" : "open"}><summary><h3>${esc(label)}</h3>${extra}</summary>${body}</details>`;
 }
 function itemUseButton(item) {
   return button(
     diceIcon,
     "use-supply-dialog",
     `data-instance="${esc(item.instanceId)}" aria-label="Use ${esc(name(item.catalogId))}" title="Use ${esc(name(item.catalogId))}"`,
+    "icon-button",
+  );
+}
+function resupplyButton(item) {
+  return button(
+    "↥",
+    "resupply-dialog",
+    `data-instance="${esc(item.instanceId)}" aria-label="Resupply ${esc(name(item.catalogId))}" title="Resupply"`,
     "icon-button",
   );
 }
@@ -377,7 +394,7 @@ function supplyRows() {
       )
       .map(
         (i) =>
-          `<div class="stat-row"><span>${esc(name(i.catalogId))}</span><strong>${i.inventoryDie ? `d${i.inventoryDie}` : "Empty"}${i.inventoryDie && i.quantity ? itemUseButton(i) : ""}</strong></div>`,
+          `<div class="stat-row"><span>${esc(name(i.catalogId))}</span><strong>${i.inventoryDie ? `d${i.inventoryDie}` : "Empty"}${i.inventoryDie && i.quantity ? itemUseButton(i) : ""}${resupplyButton(i)}</strong></div>`,
       )
       .join("") || "<small>No supplies carried.</small>"
   );
@@ -464,7 +481,7 @@ function mainPanel() {
     ) +
     row("Encumbrance", preview.inventory.encumbrance) +
     row("Base stability", preview.summary?.stability ?? 0);
-  return `<div class="main-layout"><div class="action-groups">${left}</div><aside class="play-summary">${collapsible("passives", "Passives", passiveTable(actions.filter((e) => actionTiming(e.record).includes("Passive"))))}${collapsible("ancestry-traits", "Ancestry traits", traits)}${collapsible("defenses", "Defenses", defenses)}${conditionBar()}${collapsible("movement-carrying", "Movement & carrying", carrying)}${collapsible("supplies", "Supplies", supplyRows())}</aside></div>`;
+  return `<div class="main-layout"><div class="action-groups">${left}</div><aside class="play-summary">${collapsible("passives", "Passives", passiveTable(actions.filter((e) => actionTiming(e.record).includes("Passive"))))}${collapsible("ancestry-traits", "Ancestry traits", traits)}${collapsible("defenses", "Defenses", defenses, button("Evade", "evade", 'aria-label="Evade"', "small"))}${conditionBar()}${collapsible("movement-carrying", "Movement & carrying", carrying)}${collapsible("supplies", "Supplies", supplyRows())}</aside></div>`;
 }
 function traitBrief(id) {
   return (
@@ -650,13 +667,23 @@ function learning() {
   const state = learningState();
   const options = eligibleFirst(
     catalogs.choices.filter(
-      (r) =>
-        ["ability", "discipline"].includes(r.kind) &&
-        !r.universal &&
-        matches(r),
+      (r) => r.kind === "ability" && !r.universal && matches(r),
     ),
     (r) => purchaseEligibility(r, state, catalogs.choices, selectionFor(r)),
   );
+  const disciplineOptions = eligibleFirst(
+    catalogs.choices.filter((r) => r.kind === "discipline"),
+    (r) => purchaseEligibility(r, state, catalogs.choices, selectionFor(r)),
+  );
+  const disciplineCards = [true, false]
+    .map((eligible) => {
+      const entries = disciplineOptions.filter((e) => e.eligible === eligible);
+      return entries.length
+        ? `<div class="group-label">${eligible ? "Available to learn" : "Not available yet"} · ${entries.length}</div>${entries.map((e) => abilityCard(e.choice, { ...e, learning: true })).join("")}`
+        : "";
+    })
+    .join("");
+  const disciplineList = `<section data-learning-list="discipline">${collapsible("buy-disciplines", "Disciplines", `<div class="cards">${disciplineCards}</div>`, "", "learning-list", false)}</section>`;
   const groups = [true, false]
     .map((eligible) => {
       const records = options.filter((e) => e.eligible === eligible);
@@ -681,7 +708,7 @@ function learning() {
     )
     .join(
       "",
-    )}</ul></details><div class="drop-zone" data-drop>Drop an available ability here to learn it.</div>${acquisitions()}${searchRow()}<div class="cards" id="results">${groups || '<p class="empty">No matching choices. Try another keyword or discipline.</p>'}</div>`;
+    )}</ul></details><div class="drop-zone" data-drop>Drop an available ability or discipline here to learn it.</div>${acquisitions()}${disciplineList}${searchRow()}<section class="learning-abilities" data-learning-list="ability"><h3>Abilities</h3><div class="cards" id="results">${groups || '<p class="empty">No matching choices. Try another keyword or discipline.</p>'}</div></section>`;
 }
 function acquisitionPath(id) {
   return mode === "signature" && signatureTier > 1
@@ -899,15 +926,15 @@ function healingButton(wound) {
       );
 }
 function woundTable() {
-  return `<section class="box wound-box"><h3 class="section-controls">Wounds ${button("Add", "add-wound", 'aria-label="Add wound"', "small")}</h3><table><thead><tr><th>Wound / scar</th><th>Active effects</th><th>Healing</th><th></th></tr></thead><tbody>${
+  return `<section class="box wound-box"><h3 class="section-controls">Wounds ${button("Add", "add-wound", 'aria-label="Add wound"', "small")}</h3><div class="table-wrap"><table><thead><tr><th>Wound / scar</th><th>Active effects</th><th>Treatment</th><th>Progress</th><th>Apply healing</th><th></th></tr></thead><tbody>${
     liveVitals()
       .wounds.map((w) => {
         const d = workshopWoundDetails(w, catalogs.wounds),
           effects = currentWoundEffects(w);
-        return `<tr data-wound="${esc(w.id)}"><td>${button(esc(w.name), "wound-details", `data-id="${esc(w.id)}"`, "table-link")}<small class="item-source">Scar: ${esc(woundScar(w))}</small></td><td>${effects.map((e) => esc(woundEffectLabel(e))).join("; ") || (w.catalogId ? "None" : esc(w.notes))}</td><td>${d.required !== null ? `<span>${d.progress} / ${d.required}${d.healed ? " · Healed" : ""}</span>${healingButton(w)}` : `<small>${esc(d.record?.remedy ?? "Manual record")}</small>`}</td><td>${button("×", "delete-wound", `data-id="${esc(w.id)}" aria-label="Remove wound ${esc(w.name)}"`, "small quiet")}</td></tr>`;
+        return `<tr data-wound="${esc(w.id)}"><td>${button(esc(w.name), "wound-details", `data-id="${esc(w.id)}"`, "table-link")}<small class="item-source">Scar: ${esc(woundScar(w))}</small></td><td>${effects.map((e) => esc(woundEffectLabel(e))).join("; ") || (w.catalogId ? "None" : esc(w.notes))}</td><td>${esc(d.record?.capability ?? "—")}</td><td>${d.required !== null ? `<span>${d.progress} / ${d.required}${d.healed ? " · Healed" : ""}</span>` : `<small>${esc(d.record?.remedy ?? "Manual record")}</small>`}</td><td>${healingButton(w)}</td><td>${button("×", "delete-wound", `data-id="${esc(w.id)}" aria-label="Remove wound ${esc(w.name)}"`, "small quiet")}</td></tr>`;
       })
-      .join("") || '<tr><td colspan="4">No wounds recorded.</td></tr>'
-  }</tbody></table></section>`;
+      .join("") || '<tr><td colspan="6">No wounds recorded.</td></tr>'
+  }</tbody></table></div></section>`;
 }
 function woundDetailsDialog(id) {
   const w = liveVitals().wounds.find((w) => w.id === id);
@@ -1232,17 +1259,22 @@ function useSupply() {
     $("#reference [data-action=confirm-supply]").disabled = true;
 }
 let activeRoll = null;
-function openSheetRoll({ key, id, death = false }) {
+function openSheetRoll({ key, id, death = false, defense = false }) {
   const record = get(id),
     attribute = death ? "fortitude" : (key ?? attributeFor(record));
   if (!ATTRIBUTES.includes(attribute))
     throw new Error("Choose an attribute for this roll.");
-  activeRoll = { death, id };
+  activeRoll = { death, id, defense };
   const failed = liveVitals().failed;
   popup(
-    death ? "Death roll" : (record?.name ?? title(attribute)),
+    death
+      ? "Death roll"
+      : defense
+        ? "Evade"
+        : (record?.name ?? title(attribute)),
     `
     ${death ? `<label>Failed death rolls<input id="death-failures" aria-label="Failed death rolls" type="number" min="0" max="3" step="1" value="${failed}"></label><p class="inline-help">Fortitude. Weak: one mark; Standard: no change; Strong: stabilize. Natural 111: two marks; natural 666: regain 1 HP. Three marks: Last Words.</p>` : ""}
+    ${defense ? '<p class="inline-help">Choose the defense attribute named by the attack. Strong defense takes Weak attack effects; Weak defense takes Strong attack effects.</p>' : ""}
     <label>Attribute<select id="sheet-roll-attribute" aria-label="Roll attribute">${(death ? ["fortitude"] : ATTRIBUTES).map((k) => option(k, `${title(k)} ${signed(draft.attributes[k])}`, k === attribute)).join("")}</select></label>
     <div class="roll-net"><label for="recipe-net" class="roll-net-labels"><span>Banes</span><output id="roll-net-value">Even</output><span>Boons</span></label><input id="recipe-net" aria-label="Banes / Boons" aria-valuetext="Even" type="range" min="-3" max="3" step="1" value="0"></div>
     ${
@@ -1271,7 +1303,20 @@ function openSheetRoll({ key, id, death = false }) {
     }
     <div id="recipe-roll-result" role="status" aria-live="polite"></div><div class="dialog-actions">${button("Roll", "roll-sheet", "", "primary")}</div>${record ? `<details><summary>Ability rules</summary>${markdown(references.records[id]?.markdown ?? "")}</details>` : ""}`,
   );
-  const net = -Math.min(3, preview.play.conditionSummary.poisoned.rating);
+  const automatic = conditionRollSources(preview.play.conditions, {
+    mode: death ? "death" : defense ? "defense" : "attribute",
+    perceivedSources: [],
+  });
+  const net = Math.max(
+    -3,
+    Math.min(
+      3,
+      automatic.reduce(
+        (n, s) => n + (s.kind === "boon" ? s.amount : -s.amount),
+        0,
+      ),
+    ),
+  );
   $("#recipe-net").value = String(net);
   $("#recipe-net").dispatchEvent(new Event("input", { bubbles: true }));
 }
@@ -1281,6 +1326,11 @@ function rollSheetDice() {
   if (!Number.isInteger(failed) || failed < 0 || failed > 3)
     throw new Error("Use 0–3 failed death rolls.");
   const result = displayDice(draft.attributes[key]);
+  if (activeRoll.defense)
+    $("#recipe-roll-result").insertAdjacentHTML(
+      "beforeend",
+      `<p>${title(result.tier)} defense · read the ${result.tier === "weak" ? "Strong" : result.tier === "strong" ? "Weak" : "Standard"} attack effects.</p>`,
+    );
   const selected = [
     ...document.querySelectorAll("[data-roll-ability]:checked"),
   ].map((e) => name(e.dataset.rollAbility));
@@ -1689,6 +1739,7 @@ async function action(target) {
     );
     return;
   }
+  if (a === "evade") return openSheetRoll({ key: "agility", defense: true });
   if (a === "roll-wound-dialog") return woundDialog();
   if (a === "confirm-roll-wound") return rollNewWound();
   if (a === "use-grit") return gritDialog();

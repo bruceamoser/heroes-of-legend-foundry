@@ -23,6 +23,7 @@ jobs:
       - run: npm run test:workshop-play
       - run: npm run test:workshop-resources
       - run: npm run test:workshop-recovery
+      - run: npm run test:workshop-builder-view
       - uses: actions/upload-artifact@v4
         with:
           name: character-workshop-screenshots

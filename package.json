@@ -86,6 +86,7 @@
     "test:profile-update": "node scripts/check-profile-update.mjs",
     "test:workshop-play": "node scripts/check-workshop-play.mjs",
     "test:workshop-resources": "node scripts/check-workshop-resources.mjs",
+    "test:workshop-builder-view": "node scripts/check-workshop-builder-view.mjs",
     "test:workshop-recovery": "node scripts/check-workshop-recovery.mjs"
   },
   "devDependencies": {

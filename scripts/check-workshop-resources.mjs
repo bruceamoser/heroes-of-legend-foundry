@@ -198,7 +198,9 @@ try {
   );
   await page.keyboard.press("Escape");
   await page
-    .locator(`[data-collapse="supplies"] [data-instance="${foodId}"]`)
+    .locator(
+      `[data-collapse="supplies"] [data-action="use-supply-dialog"][data-instance="${foodId}"]`,
+    )
     .click();
   await dice([1]);
   await page
@@ -233,8 +235,8 @@ try {
   await page.getByRole("tab", { name: "Inventory", exact: true }).click();
   assert.equal(await row.locator('[data-action="favorite"]').innerText(), "★");
   assert.match(await row.innerText(), /Empty/);
-  await page.setViewportSize({width:760,height:900});
-  await page.screenshot({path:`${output}/resources-inventory-760.png`});
+  await page.setViewportSize({ width: 760, height: 900 });
+  await page.screenshot({ path: `${output}/resources-inventory-760.png` });
   await page.getByRole("tab", { name: "Abilities", exact: true }).click();
   assert.equal(
     await page
@@ -242,7 +244,7 @@ try {
       .innerText(),
     "★",
   );
-  await page.screenshot({path:`${output}/resources-abilities-760.png`});
+  await page.screenshot({ path: `${output}/resources-abilities-760.png` });
   // Terminal wounds stay printable and apply their ordinary Last Words consequence.
   await page
     .getByRole("button", { name: "Roll a new wound", exact: true })

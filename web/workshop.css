@@ -1628,3 +1628,62 @@ dialog header button {
   display: block;
   margin-top: 3px;
 }
+
+.wound-box td:nth-child(3) span {
+  display: block;
+  white-space: nowrap;
+  font-size: 0.78rem;
+}
+.wound-box th:first-child {
+  width: 35%;
+}
+.wound-details {
+  margin: 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px 12px;
+}
+.wound-details dt {
+  font-weight: 700;
+}
+.wound-details dd {
+  margin: 0;
+  white-space: pre-wrap;
+}
+.condition-chip {
+  flex-wrap: wrap;
+  gap: 3px;
+}
+.condition-control {
+  min-width: 20px;
+  min-height: 22px;
+  padding: 0 2px;
+}
+.favorite-actions {
+  margin-bottom: 10px;
+}
+.inventory-table td:nth-child(4) {
+  white-space: nowrap;
+}
+.condition-chip button.small {
+  font-size: 0.75rem;
+  padding: 1px 4px;
+}
+.condition-chip .condition-control {
+  font-size: 0.9rem;
+  padding: 0 3px;
+}
+@media (max-width: 600px) {
+  .main-layout {
+    flex-direction: column;
+  }
+  .main-layout .action-groups {
+    display: contents;
+  }
+  .main-layout .favorite-actions {
+    order: -2;
+  }
+  .main-layout .play-summary {
+    order: -1;
+  }
+}

@@ -259,3 +259,185 @@ test("malformed resource state cannot inject effects, impossible wound identitie
   );
   assert.equal(normalized.wounds[0].effects, undefined);
 });
+
+test("healing at the exact recovery value clears treatable effects without removing scars or unrelated conditions", async () => {
+  const { workshopTreatWound, workshopWoundDetails } = await import(
+    "../src/rules/workshop-resources.mjs"
+  );
+  const wound = rolledWorkshopWound({
+    catalog: wounds,
+    damageType: "physical",
+    priorWounds: 0,
+    faces: [1, 6, 6],
+    id: "wound-foot",
+  }).wound;
+  const first = workshopTreatWound({ wound, steps: 1, catalog: wounds });
+  assert.equal(first.healed, false);
+  assert.equal(workshopWoundEffects([first.wound], wounds)[0].amount, 1);
+  const second = workshopTreatWound({
+    wound: first.wound,
+    steps: 1,
+    catalog: wounds,
+  });
+  assert.equal(second.healed, true);
+  assert.equal(workshopWoundDetails(second.wound, wounds).progress, 2);
+  assert.equal(second.wound.name, wound.name);
+  assert.deepEqual(workshopWoundEffects([second.wound], wounds), []);
+  const eye = rolledWorkshopWound({
+    catalog: wounds,
+    damageType: "physical",
+    priorWounds: 0,
+    faces: [3, 6, 6],
+    id: "wound-eye",
+  }).wound;
+  const partial = workshopTreatWound({ wound: eye, steps: 3, catalog: wounds });
+  const healed = workshopTreatWound({
+    wound: partial.wound,
+    steps: 2,
+    catalog: wounds,
+  });
+  assert.deepEqual(healed.removedConditionIds, ["wound-eye-0"]);
+  assert.equal(healed.wound.catalogId, eye.catalogId);
+  assert.throws(() => workshopTreatWound({ wound, steps: 4, catalog: wounds }));
+  const last = rolledWorkshopWound({
+    catalog: wounds,
+    damageType: "physical",
+    priorWounds: 0,
+    faces: [6, 6, 6],
+    id: "wound-last",
+  }).wound;
+  assert.throws(
+    () => workshopTreatWound({ wound: last, steps: 3, catalog: wounds }),
+    /printed remedy/,
+  );
+  const d = hero();
+  d.play = { wounds: [second.wound] };
+  const saved = readPortableCharacter(
+    writePortableCharacter(d, catalogs),
+    catalogs,
+  ).draft;
+  assert.equal(saved.play.wounds[0].progress, 2);
+  assert.throws(() =>
+    normalizeWorkshopPlay({ wounds: [{ ...wound, progress: -1 }] }, catalogs),
+  );
+});
+
+test("resupply steps restore empty supplies without exceeding their original die", async () => {
+  const { workshopResupply } = await import(
+    "../src/rules/workshop-resources.mjs"
+  );
+  const food = { catalogId: "item-food-bundle", quantity: 1, inventoryDie: 0 };
+  assert.equal(
+    workshopResupply({ item: food, steps: 1, catalog: inventory }).after,
+    4,
+  );
+  assert.equal(
+    workshopResupply({ item: food, steps: 6, catalog: inventory }).after,
+    8,
+  );
+  assert.equal(
+    workshopResupply({
+      item: { ...food, inventoryDie: 6 },
+      steps: 2,
+      catalog: inventory,
+    }).after,
+    8,
+  );
+  for (const record of inventory.equipment.filter((e) => e.inventoryDie)) {
+    for (const die of [0, 4, 6, 8, 10, 12, 20].filter(
+      (d) => d <= record.inventoryDie,
+    )) {
+      const restored = workshopResupply({
+        item: { catalogId: record.id, quantity: 0, inventoryDie: die },
+        steps: 6,
+        catalog: inventory,
+      });
+      assert.equal(restored.after, record.inventoryDie);
+    }
+  }
+  assert.throws(() =>
+    workshopResupply({ item: food, steps: 0, catalog: inventory }),
+  );
+});
+
+test("manual condition damage uses resistance/minimum and bleeding bypass without decaying the source", async () => {
+  const { workshopConditionDamage } = await import(
+    "../src/rules/workshop-resources.mjs"
+  );
+  const burning = {
+    id: "fire",
+    key: "burning",
+    rating: 2,
+    persistence: "temporary",
+    source: "spell",
+  };
+  const result = workshopConditionDamage({
+    condition: burning,
+    hp: 10,
+    maxHp: 25,
+    resistances: { fire: 3 },
+  });
+  assert.equal(result.amount, 1);
+  assert.equal(result.hp, 9);
+  assert.equal(burning.rating, 2);
+  const bleed = workshopConditionDamage({
+    condition: { ...burning, key: "bleeding" },
+    hp: 10,
+    maxHp: 25,
+    resistances: { physical: 3 },
+  });
+  assert.equal(bleed.hp, 8);
+  const down = workshopConditionDamage({
+    condition: burning,
+    hp: 1,
+    maxHp: 25,
+  });
+  assert.equal(down.hp, 0);
+  assert.equal(down.woundRequired, true);
+  const dying = workshopConditionDamage({
+    condition: burning,
+    hp: 0,
+    maxHp: 25,
+    failed: 2,
+  });
+  assert.equal(dying.failedDeathRolls, 3);
+  assert.equal(dying.lastWords, true);
+  assert.throws(() =>
+    workshopConditionDamage({
+      condition: { ...burning, key: "poisoned" },
+      hp: 10,
+      maxHp: 25,
+    }),
+  );
+});
+
+test("Favorites include universal and learned abilities plus inventory basics, with deduplicated weapon actions", async () => {
+  const { workshopFavorites } = await import(
+    "../src/rules/workshop-resources.mjs"
+  );
+  const d = hero(),
+    p = workshopCharacter(d, catalogs),
+    weapon = p.inventory.items.find(
+      (i) => i.catalogId === "item-ordinary-melee-weapon",
+    ),
+    food = p.inventory.items.find((i) => i.catalogId === "item-food-bundle");
+  d.play = {
+    favorites: {
+      abilities: [
+        "ability-basic-melee",
+        "ability-basic-unarmed",
+        "ability-hook-and-drive",
+      ],
+      items: [weapon.instanceId, food.instanceId],
+    },
+  };
+  const rows = workshopFavorites(p, d, catalogs);
+  assert.equal(
+    rows.filter((r) => r.record.id === "ability-basic-melee").length,
+    1,
+  );
+  assert(rows.some((r) => r.record.id === "ability-opportunity-attack"));
+  assert(rows.some((r) => r.record.id === "ability-basic-unarmed"));
+  assert(rows.some((r) => r.record.id === "ability-hook-and-drive"));
+  assert(rows.some((r) => r.inventoryInstance?.instanceId === food.instanceId));
+});

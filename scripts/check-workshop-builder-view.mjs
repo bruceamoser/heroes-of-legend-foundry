@@ -129,6 +129,32 @@ try {
   const picker = page.locator("#picker");
   assert(await picker.evaluate((e) => e.open));
   assert.equal(await picker.locator('[data-choice^="discipline-"]').count(), 0);
+  assert.match(
+    await picker.getByLabel("Known disciplines", { exact: true }).innerText(),
+    /Armor 1/,
+  );
+  assert.match(
+    await picker.locator(".purchased-abilities").innerText(),
+    /None yet/,
+  );
+  const filter = picker.locator("#filter");
+  assert.equal(await filter.locator('option[value="all"]').innerText(), "All");
+  assert.equal(
+    await filter.locator('option[value="universal"]').innerText(),
+    "Universal",
+  );
+  await filter.selectOption("universal");
+  const universalIds = await picker
+    .locator("[data-choice]")
+    .evaluateAll((es) => es.map((e) => e.dataset.choice));
+  assert(universalIds.length > 0);
+  for (const id of universalIds)
+    assert(
+      !(choices.find((r) => r.id === id).requirements ?? []).some(
+        (q) => q.kind === "discipline",
+      ),
+    );
+  await filter.selectOption("all");
   const before = await picker.locator(".picker-balance").innerText();
   await picker
     .locator('[data-eligible="true"] [data-action="purchase"]')
@@ -136,6 +162,11 @@ try {
     .click();
   assert(await picker.evaluate((e) => e.open));
   assert.notEqual(await picker.locator(".picker-balance").innerText(), before);
+  assert(
+    (await picker
+      .locator('.purchased-abilities [data-action="reference"]')
+      .count()) > 0,
+  );
   const unavailable = picker
     .locator('[data-eligible="false"] [data-action="purchase"]')
     .first();
@@ -214,11 +245,21 @@ try {
   await picker
     .getByLabel("Search equipment", { exact: true })
     .fill("Ordinary Heavy Armor");
+  assert(
+    await picker
+      .locator('[data-action="equipment"][data-id="item-ordinary-heavy-armor"]')
+      .isDisabled(),
+  );
+  assert.match(
+    await picker.locator(".market-table").innerText(),
+    /Requires Wear Heavy Armor/,
+  );
   await picker
-    .getByLabel("Quantity Ordinary Heavy Armor", { exact: true })
-    .fill("100");
+    .getByLabel("Search equipment", { exact: true })
+    .fill("Small Tent");
+  await picker.getByLabel("Quantity Small Tent", { exact: true }).fill("100");
   const buy = picker.locator(
-    '[data-action="equipment"][data-id="item-ordinary-heavy-armor"]',
+    '[data-action="equipment"][data-id="item-small-tent"]',
   );
   acceptDialogs = false;
   await buy.click();
@@ -226,7 +267,7 @@ try {
   assert.equal(
     await page
       .locator(".inventory-table tbody tr")
-      .filter({ hasText: "Ordinary Heavy Armor" })
+      .filter({ hasText: "Small Tent" })
       .count(),
     0,
   );
@@ -242,7 +283,7 @@ try {
   assert.equal(
     await page
       .locator(".inventory-table tbody tr")
-      .filter({ hasText: "Ordinary Heavy Armor" })
+      .filter({ hasText: "Small Tent" })
       .count(),
     2,
   );
@@ -251,6 +292,21 @@ try {
     .getByRole("button", { name: "View character sheet", exact: true })
     .click();
   await page.getByRole("button", { name: /Death roll;/ }).click();
+  const close = page.locator(
+    '#reference header [data-action="close-reference"]',
+  );
+  assert.equal(
+    await close.evaluate((e) => getComputedStyle(e).backgroundColor),
+    "rgba(0, 0, 0, 0)",
+  );
+  await close.hover();
+  assert.deepEqual(
+    await close.evaluate((e) => [
+      getComputedStyle(e).color,
+      getComputedStyle(e).backgroundColor,
+    ]),
+    ["rgb(21, 34, 28)", "rgb(247, 243, 233)"],
+  );
   assert.equal(await page.locator(".death-mark").count(), 3);
   assert.equal(await page.locator(".death-mark.filled").count(), 0);
   await page
@@ -318,6 +374,49 @@ try {
         .progression.level,
   );
   assert.equal(savedLevel, 7);
+  await page.evaluate(() => {
+    const saved = JSON.parse(localStorage.getItem("hol.workshop.v1"));
+    saved.character.draft.culture = {
+      id: "origin-culture-deep-halls",
+      pair: 0,
+    };
+    saved.mode = "sheet";
+    saved.tab = "Inventory";
+    localStorage.setItem("hol.workshop.v1", JSON.stringify(saved));
+  });
+  await page.reload();
+  await page.getByRole("button", { name: "Add item", exact: true }).click();
+  for (const id of [
+    "item-ordinary-light-armor",
+    "item-ordinary-medium-armor",
+    "item-ordinary-heavy-armor",
+    "item-smoke-supply",
+  ])
+    assert(
+      await page
+        .locator(`#play-item option[value="${id}"]`)
+        .evaluate((e) => e.disabled),
+      `${id} should be disabled`,
+    );
+  // The add action independently enforces eligibility, including a manipulated dropdown.
+  const countBefore = await page.locator(".inventory-table tbody tr").count();
+  await page
+    .locator('#play-item option[value="item-ordinary-light-armor"]')
+    .evaluate((e) => (e.disabled = false));
+  await page.locator("#play-item").selectOption("item-ordinary-light-armor");
+  await page
+    .getByRole("dialog")
+    .getByRole("button", { name: "Add item", exact: true })
+    .click();
+  assert.match(
+    await page.locator("#notice").innerText(),
+    /Requires Wear Light Armor/,
+  );
+  assert.equal(
+    await page.locator(".inventory-table tbody tr").count(),
+    countBefore,
+  );
+  await page.keyboard.press("Escape");
   assert.deepEqual(failures, []);
   console.info(
     "PASS Current Build grants/nested missing choices, banner navigation, early restrictions, locked early entries, persistent ability/discipline/equipment dialogs, legal-first choices/rank badges, repeated over-budget consent/decline, skull mark roll/correction/persistence and compact layouts.",

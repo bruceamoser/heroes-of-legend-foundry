@@ -1,3 +1,7 @@
+import {
+  equipmentEligibility,
+  isUniversalAbility,
+} from "./rules/equipment-eligibility.mjs";
 import { abilityHeaderBadges } from "./rules/workshop-card-view.mjs";
 import {
   rolledWorkshopWound,
@@ -242,7 +246,7 @@ function knownCards() {
 function searchRow(kind = "abilities") {
   return `<div class="search-row"><label>Search ${kind}<input id="search" type="search" value="${esc(query)}" placeholder="Name, discipline or keyword…" autocomplete="off"></label>${
     kind === "abilities"
-      ? `<label>Discipline<select id="filter">${option("all", "All disciplines", filter === "all")}${catalogs.choices
+      ? `<label>Discipline<select id="filter">${option("all", "All", filter === "all")}${option("universal", "Universal", filter === "universal")}${catalogs.choices
           .filter((r) => r.kind === "discipline")
           .map((r) => option(r.id, r.name, filter === r.id))
           .join("")}</select></label>`
@@ -255,6 +259,7 @@ function matches(r) {
   return (
     text.includes(query.toLowerCase()) &&
     (filter === "all" ||
+      (filter === "universal" && isUniversalAbility(r)) ||
       r.id === filter ||
       r.requirements?.some((v) => v.id === filter))
   );
@@ -626,7 +631,7 @@ function builderContent() {
       )
       .join(
         "",
-      )}</div>${cls ? `<h3 class="section-title" style="margin-top:14px">Two starting disciplines</h3><div class="cards">${cls.startingDisciplines.map((id) => choiceCheck(id, "classDisciplines", draft.classDisciplines)).join("")}</div><h3 class="section-title" style="margin-top:14px">Your first signature</h3><div class="cards">${cls.signatures[1].map((id) => `<article class="choice-card ${draft.signatureId === id ? "chosen" : ""}"><h3>${esc(name(id))}</h3><p class="card-copy">${esc(get(id)?.reference?.flavor?.[0])}</p><div class="card-actions">${button("Read signature", "reference", `data-id="${esc(id)}"`, "quiet small")}${button(draft.signatureId === id ? "Selected" : "Choose", "signature", `data-id="${esc(id)}"`, "small")}</div></article>`).join("")}</div>${staleSelections("classDisciplines", cls.startingDisciplines)}` : ""}`;
+      )}</div>${cls ? `<h3 class="section-title" style="margin-top:14px">Two starting disciplines</h3><div class="cards">${cls.startingDisciplines.map((id) => choiceCheck(id, "classDisciplines", draft.classDisciplines, (preview.stages[0].ranks[id] ?? 0) > 0)).join("")}</div><h3 class="section-title" style="margin-top:14px">Your first signature</h3><div class="cards">${cls.signatures[1].map((id) => `<article class="choice-card ${draft.signatureId === id ? "chosen" : ""}"><h3>${esc(name(id))}</h3><p class="card-copy">${esc(get(id)?.reference?.flavor?.[0])}</p><div class="card-actions">${button("Read signature", "reference", `data-id="${esc(id)}"`, "quiet small")}${button(draft.signatureId === id ? "Selected" : "Choose", "signature", `data-id="${esc(id)}"`, "small")}</div></article>`).join("")}</div>${staleSelections("classDisciplines", cls.startingDisciplines)}` : ""}`;
   }
   if (step === 6) return equipment();
   return `${heading("Step 8 of 8", "Review", preview.valid ? "Your character is ready. Export the file and import it through Create a Hero in Foundry." : "A few choices still need attention. Your draft is saved, and every step remains available.")}${
@@ -637,8 +642,8 @@ function builderContent() {
           .join("")}</ul>`
   }<div class="columns" style="margin-top:12px"><section class="box"><h3>Your character</h3>${row("Maximum HP", preview.summary?.maximumHp ?? "—")}${row("Grit", preview.summary?.gritGranted ?? "—")}${row("Speed", preview.summary?.speed ?? "—")}${row("Learned abilities", preview.state.abilities.length)}${row("Coins", preview.inventory.remainingCoins)}</section><section class="box"><h3>Take your hero with you</h3>${button("Export character JSON", "ready-export", preview.valid ? "" : "disabled", "primary")}<p class="file-hint">${preview.development.level > 1 ? "Save or export this plan to continue here. Foundry import currently supports level-1 creation." : "In Foundry: open a new character → Create a Hero → Import character JSON. Review with your campaign’s language settings, then complete creation."}</p>${button("Save draft JSON", "export", "", "quiet")}</section></div><details class="planned"><summary>Creation ledger</summary>${ledgerTable()}</details>`;
 }
-function choiceCheck(id, list, values) {
-  return `<div class="check"><label style="display:flex;gap:10px;flex:1"><input type="checkbox" data-list="${list}" value="${esc(id)}" ${values.includes(id) ? "checked" : ""}><span>${esc(name(id))}</span></label>${button("Read", "reference", `data-id="${esc(id)}"`, "quiet small")}</div>`;
+function choiceCheck(id, list, values, owned = false) {
+  return `<div class="check ${owned ? "already-owned" : ""}"><label style="display:flex;gap:10px;flex:1"><input type="checkbox" data-list="${list}" value="${esc(id)}" ${values.includes(id) ? "checked" : ""} ${owned && !values.includes(id) ? "disabled" : ""}><span>${esc(name(id))}${owned ? "<small>Already known</small>" : ""}</span></label>${button("Read", "reference", `data-id="${esc(id)}"`, "quiet small")}</div>`;
 }
 function staleSelections(list, valid) {
   const stale = draft[list].filter((id) => !valid.includes(id));
@@ -761,6 +766,24 @@ function openPicker(kind) {
   renderPicker();
   $("#picker").showModal();
 }
+function pickerReferences() {
+  if (pickerKind === "equipment") return "";
+  const state = learningState();
+  const ranks = Object.entries(state.ranks).filter(([, rank]) => rank > 0);
+  const purchases = [
+    ...draft.purchases[0],
+    ...(mode === "advancement" || stage() ? draft.purchases[1] : []),
+    ...(mode === "advancement"
+      ? Object.entries(draft.progression?.levels ?? {})
+          .filter(([level]) => Number(level) <= activeLearningLevel())
+          .flatMap(([, d]) => d.purchases ?? [])
+      : []),
+  ];
+  const ids = [...new Set(purchases.map((p) => p.id))].filter(
+    (id) => get(id)?.kind === "ability" && state.abilities.includes(id),
+  );
+  return `<div class="picker-reference"><div class="picker-disciplines" aria-label="Known disciplines">${ranks.map(([id, rank]) => `<span class="chip">${symbol(id)}${esc(name(id))} ${rank}</span>`).join("") || "No disciplines yet"}</div>${pickerKind === "ability" ? `<div class="purchased-abilities"><strong>Purchased abilities</strong><div>${ids.map((id) => button(esc(name(id)), "reference", `data-id="${esc(id)}"`, "reference-chip")).join("") || "<small>None yet</small>"}</div></div>` : ""}</div>`;
+}
 function renderPicker() {
   if (!pickerKind) return;
   const dialog = $("#picker"),
@@ -768,7 +791,7 @@ function renderPicker() {
   const active = document.activeElement,
     id = active?.id,
     pos = active?.selectionStart;
-  dialog.innerHTML = `<header><h2 id="picker-title">${pickerKind === "equipment" ? "Buy inventory items" : pickerKind === "discipline" ? "Learn disciplines" : "Learn abilities"}</h2>${button("Close", "close-picker", 'aria-label="Close selection"', "small")}</header><div class="picker-balance">${pickerKind === "equipment" ? `${preview.inventory.remainingCoins} coins remaining${preview.inventory.overBudget ? ` · ${preview.inventory.overBudget} over budget` : ""}` : `${learningState().dp} DP remaining`}</div><div class="picker-body">${pickerKind === "equipment" ? equipmentMarket() : learningMarket()}</div>`;
+  dialog.innerHTML = `<header><h2 id="picker-title">${pickerKind === "equipment" ? "Buy inventory items" : pickerKind === "discipline" ? "Learn disciplines" : "Learn abilities"}</h2>${button("Close", "close-picker", 'aria-label="Close selection"', "small")}</header><div class="picker-balance">${pickerKind === "equipment" ? `${preview.inventory.remainingCoins} coins remaining${preview.inventory.overBudget ? ` · ${preview.inventory.overBudget} over budget` : ""}` : `${learningState().dp} DP remaining`}</div>${pickerReferences()}<div class="picker-body">${pickerKind === "equipment" ? equipmentMarket() : learningMarket()}</div>`;
   dialog.querySelector(".picker-body").scrollTop = scroll;
   if (id && dialog.querySelector(`#${id}`)) {
     const replacement = dialog.querySelector(`#${id}`);
@@ -898,7 +921,7 @@ function equipmentMarket() {
     .filter(matches)
     .map(
       (r) =>
-        `<tr><td>${button(esc(r.name), "reference", `data-id="${r.id}"`, "table-link")}</td><td>${r.price}</td><td>${r.bulk}</td><td>${r.inventoryDie ? `d${r.inventoryDie}` : "—"}</td><td><input aria-label="Quantity ${esc(r.name)}" type="number" id="quantity-${r.id}" min="1" max="10000" value="1" step="1"></td><td>${r.handChoices.length ? `<select aria-label="Hands ${esc(r.name)}" id="hands-${r.id}">${r.handChoices.map((n) => option(n, n, false)).join("")}</select>` : "—"}</td><td>${r.specialOrder ? "<small>Special order</small>" : button("Buy", "equipment", `data-id="${r.id}"`, "small")}</td></tr>`,
+        `<tr class="${equipmentEligibility(r.id, preview.state.abilities).eligible ? "" : "unavailable"}"><td>${button(esc(r.name), "reference", `data-id="${r.id}"`, "table-link")}${equipmentEligibility(r.id, preview.state.abilities).eligible ? "" : `<small class="item-source">Requires ${esc(name(equipmentEligibility(r.id, preview.state.abilities).requiredAbilityId))}</small>`}</td><td>${r.price}</td><td>${r.bulk}</td><td>${r.inventoryDie ? `d${r.inventoryDie}` : "—"}</td><td><input aria-label="Quantity ${esc(r.name)}" type="number" id="quantity-${r.id}" min="1" max="10000" value="1" step="1"></td><td>${r.handChoices.length ? `<select aria-label="Hands ${esc(r.name)}" id="hands-${r.id}">${r.handChoices.map((n) => option(n, n, false)).join("")}</select>` : "—"}</td><td>${r.specialOrder ? "<small>Special order</small>" : button("Buy", "equipment", `data-id="${r.id}" ${equipmentEligibility(r.id, preview.state.abilities).eligible ? "" : "disabled"}`, "small")}</td></tr>`,
     )
     .join("")}</tbody></table></div>`;
 }
@@ -1078,7 +1101,19 @@ function conditionBar() {
 function addItemDialog() {
   popup(
     "Add item",
-    `<label>Item<select id="play-item" aria-label="Item">${catalogs.inventory.equipment.map((r) => option(r.id, r.name, false)).join("")}</select></label><label>Quantity<input id="play-quantity" type="number" min="1" max="10000" step="1" value="1"></label><div class="dialog-actions">${button("Add item", "confirm-item", "", "primary")}</div>`,
+    `<label>Item<select id="play-item" aria-label="Item">${catalogs.inventory.equipment
+      .map((r) => {
+        const e = equipmentEligibility(r.id, preview.state.abilities);
+        return option(
+          r.id,
+          `${r.name}${e.eligible ? "" : ` · Requires ${name(e.requiredAbilityId)}`}`,
+          false,
+          !e.eligible,
+        );
+      })
+      .join(
+        "",
+      )}</select></label><label>Quantity<input id="play-quantity" type="number" min="1" max="10000" step="1" value="1"></label><div class="dialog-actions">${button("Add item", "confirm-item", "", "primary")}</div>`,
   );
 }
 function addLanguageDialog() {
@@ -1958,6 +1993,12 @@ async function action(target) {
   if (a === "add-language") return addLanguageDialog();
   if (a === "add-condition") return addConditionDialog();
   if (a === "confirm-item") {
+    const eligibility = equipmentEligibility(
+      $("#play-item").value,
+      preview.state.abilities,
+    );
+    if (!eligibility.eligible)
+      throw new Error(`Requires ${name(eligibility.requiredAbilityId)}.`);
     const quantity = Number($("#play-quantity").value),
       id = $("#play-item").value;
     if (!Number.isSafeInteger(quantity) || quantity < 1 || quantity > 10000)
@@ -2151,6 +2192,12 @@ async function action(target) {
       );
   }
   if (a === "equipment") {
+    const eligibility = equipmentEligibility(
+      target.dataset.id,
+      preview.state.abilities,
+    );
+    if (!eligibility.eligible)
+      throw new Error(`Requires ${name(eligibility.requiredAbilityId)}.`);
     const r = get(target.dataset.id),
       quantity = Number($(`#quantity-${r.id}`).value),
       hands = Number($(`#hands-${r.id}`)?.value ?? 0);

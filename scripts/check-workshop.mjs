@@ -63,7 +63,11 @@ try {
   );
   assert.equal(await page.locator('[data-action="builder"]').count(), 0);
   assert.deepEqual(
-    (await page.locator(".play-summary > .box > summary > h3").allTextContents())
+    (
+      await page
+        .locator(".play-summary > .box > summary > h3")
+        .allTextContents()
+    )
       .slice(0, 4)
       .map((s) => s.trim()),
     ["Passives", "Ancestry traits", "Defenses", "Conditions"],
@@ -233,10 +237,16 @@ try {
     .click();
   await page.getByRole("tab", { name: "Character", exact: true }).click();
   await page.getByRole("button", { name: "✎ Edit", exact: true }).click();
-  await page.getByLabel("Player", { exact: true }).fill("Bruce");
-  await page.getByLabel("Player", { exact: true }).press("Tab");
+  await page
+    .getByLabel("Story", { exact: true })
+    .fill("Borin guards the bridge.");
+  await page.getByLabel("Story", { exact: true }).press("Tab");
   await page.getByRole("button", { name: "✓ Done", exact: true }).click();
-  assert(await page.getByText("Bruce", { exact: true }).isVisible());
+  assert.equal(
+    await page.getByLabel("Story", { exact: true }).inputValue(),
+    "Borin guards the bridge.",
+  );
+  assert.equal(await page.getByLabel("Player", { exact: true }).count(), 0);
   await page.getByRole("tab", { name: "Main", exact: true }).click();
   await page
     .getByRole("button", { name: "Basic Melee", exact: true })
@@ -365,7 +375,7 @@ try {
   const file = `${output}/borin.hol.json`;
   await download.saveAs(file);
   const exported = JSON.parse(await readFile(file, "utf8"));
-  assert.equal(exported.draft.profile.player, "Bruce");
+  assert.equal(exported.draft.profile.story, "Borin guards the bridge.");
   // Play controls change the sheet directly and survive autosave/JSON transfer.
   await page
     .getByRole("button", { name: "View character sheet", exact: true })

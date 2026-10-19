@@ -1769,3 +1769,106 @@ dialog header button {
     min-width: 520px;
   }
 }
+
+/* Required grants remain visible above the wizard's scrolling content. */
+.choice-alert {
+  flex: 0 0 auto;
+  border-bottom: 2px solid #aa782b;
+  background: #f2e5c7;
+  color: #523815;
+  padding: 7px 12px;
+  max-height: 25vh;
+  overflow: auto;
+  font-size: 0.8rem;
+}
+.choice-alert strong {
+  font-family: Cinzel, serif;
+}
+.choice-alert ul {
+  margin: 3px 0 0;
+  padding-left: 18px;
+}
+.choice-missing {
+  border: 2px solid #aa782b;
+  background: #f7eddb;
+  padding: 9px;
+}
+.choice-missing summary {
+  color: #704a12;
+  font-weight: bold;
+}
+.choice-missing select,
+.choice-missing input {
+  border-color: #aa782b;
+}
+.choice-instruction {
+  margin: 6px 0;
+  color: #704a12;
+  font-size: 0.8rem;
+}
+.story-editor textarea {
+  min-height: 105px;
+  resize: vertical;
+  white-space: pre-wrap;
+}
+.story-editor {
+  margin-top: 9px;
+}
+.development-training .development-summary {
+  display: grid;
+  grid-template-columns: 1.5fr repeat(3, 1fr);
+  gap: 10px;
+  padding: 14px 0;
+  align-items: center;
+}
+.development-training .development-summary > div:not(.level-control) {
+  border-left: 1px solid var(--line);
+  padding-left: 12px;
+}
+.development-training .development-summary strong {
+  font-size: 1.45rem;
+}
+.development-training .level-control {
+  gap: 6px;
+}
+.training-footer {
+  border-top: 1px solid var(--line);
+  padding-top: 9px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+}
+.training-footer small {
+  max-width: 340px;
+  font-size: 0.76rem;
+}
+.signature-progress th:first-child {
+  width: 50px;
+}
+.signature-progress td:last-child {
+  text-align: right;
+}
+.signature-complete {
+  color: var(--forest);
+}
+@media (max-width: 600px) {
+  .development-training .development-summary {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .development-training .level-control {
+    grid-column: 1/-1;
+  }
+  .development-training .development-summary > div:not(.level-control) {
+    padding-left: 7px;
+  }
+  .training-footer {
+    align-items: flex-start;
+  }
+  .signature-progress button {
+    white-space: normal;
+  }
+}
+.sheet-development > .box + .box {
+  margin-top: 10px;
+}

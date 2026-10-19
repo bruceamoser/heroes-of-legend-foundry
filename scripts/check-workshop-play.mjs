@@ -86,15 +86,27 @@ try {
   await page.keyboard.press("Escape");
   await page.getByRole("tab", { name: "Character", exact: true }).click();
   await page.getByRole("button", { name: "Add wound", exact: true }).click();
-  await page.locator("#wound-name").fill("Broken arm");
-  await page
-    .locator("#wound-notes")
-    .fill("Bone injury — recorded at the table");
-  await page
-    .getByRole("dialog")
-    .getByRole("button", { name: "Add wound", exact: true })
-    .click();
-  assert.match(await page.locator(".wound-box").innerText(), /Broken arm/);
+  assert(
+    await page
+      .getByRole("button", { name: "Roll wound", exact: true })
+      .isVisible(),
+  );
+  await page.evaluate(() => {
+    globalThis.woundRandom = crypto.getRandomValues.bind(crypto);
+    crypto.getRandomValues = (a) => {
+      a.fill(0);
+      return a;
+    };
+  });
+  await page.getByRole("button", { name: "Roll wound", exact: true }).click();
+  await page.evaluate(() => {
+    crypto.getRandomValues = globalThis.woundRandom;
+  });
+  await page.keyboard.press("Escape");
+  const woundName = await page
+    .locator('.wound-box [data-action="wound-details"]')
+    .first()
+    .innerText();
   assert.equal(await page.locator("[data-wound-count]").innerText(), "1");
   await page.getByRole("tab", { name: "Abilities", exact: true }).click();
   assert.deepEqual(
@@ -186,7 +198,7 @@ try {
   await (await downloaded).saveAs(file);
   const exported = JSON.parse(await readFile(file, "utf8"));
   assert.equal(exported.draft.play.hp, 4);
-  assert.equal(exported.draft.play.wounds[0].name, "Broken arm");
+  assert.equal(exported.draft.play.wounds[0].name, woundName);
   for (const width of [900, 760, 390]) {
     await page.setViewportSize({ width, height: 900 });
     await page.screenshot({ path: `${output}/play-vitals-${width}.png` });

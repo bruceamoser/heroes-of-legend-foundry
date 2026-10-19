@@ -216,7 +216,7 @@ function header() {
   const stats = preview.summary,
     vitals = liveVitals();
   return `<div class="workshop-header"><div class="toolbar"><div class="toolbar-group">${button(edit ? "✓ Done" : "✎ Edit", "edit", `aria-pressed="${edit}"`, edit ? "selected" : "quiet")}</div><div class="toolbar-group">${button("New", "new", 'aria-label="New hero"', "quiet")}${button("Save", "save", 'aria-label="Save character"', "quiet")}${button("Load", "library", 'aria-label="Load character"', "quiet")}${button("Import", "import", 'aria-label="Import JSON"', "quiet")}${button("Export", "export", 'aria-label="Export JSON"', "quiet")}</div></div>
-  <header class="hero-header"><div class="identity-line"><img class="hero-mark" src="assets/crest.webp" alt=""><div><div class="name-line">${edit && mode === "sheet" ? field("Character name", "name", draft.name, "text", 'maxlength="200"') : `<h1>${esc(draft.name || "New hero")}</h1>`}${button(skullIcon + (vitals.failed ? `<span>${vitals.failed}</span>` : ""), "death-roll", `aria-label="Death roll; ${vitals.failed} failed" title="Death roll · ${vitals.failed} failed"`, "icon-button death-button")}</div><p>${esc(join([get(draft.ancestryId)?.name, get(draft.classId)?.name, `Level ${preview.development.level}`]))}</p></div></div><div class="vitals"><div class="vital"><small>HP</small><strong class="hp-value"><input aria-label="Current HP" data-field="play.hp" type="number" min="0" max="${vitals.max}" step="1" value="${vitals.hp}"><span>/ ${vitals.max || "—"}</span></strong></div><div class="vital"><small>${button("Grit", "use-grit", 'aria-label="Use Grit"', "vital-link")}</small><strong>${vitals.grit}</strong></div><div class="vital"><small>Speed</small><strong data-speed>${vitals.speed}${vitals.speed < vitals.maxSpeed ? ` / ${vitals.maxSpeed}` : ""}</strong></div><div class="vital"><small>${button("Wounds", "roll-wound-dialog", 'aria-label="Roll a new wound"', "vital-link")}</small><strong data-wound-count>${vitals.wounds.length}</strong></div><div class="vital"><small>Armor DR</small><strong>${preview.resistances.physical ?? 0}</strong></div></div></header>
+  <header class="hero-header"><div class="identity-line"><img class="hero-mark" src="assets/crest.webp" alt=""><div><div class="name-line">${edit && mode === "sheet" ? field("Character name", "name", draft.name, "text", 'maxlength="200"') : `<h1>${esc(draft.name || "New hero")}</h1>`}${button(skullIcon + (vitals.failed ? `<span>${vitals.failed}</span>` : ""), "death-roll", `aria-label="Death roll; ${vitals.failed} failed" title="Death roll · ${vitals.failed} failed"`, "icon-button death-button")}</div><p>${esc(join([get(draft.ancestryId)?.name, get(draft.culture?.id)?.name, get(draft.background?.id)?.name, get(draft.classId)?.name, `Level ${preview.development.level}(${preview.development.current})`]))}</p></div></div><div class="vitals"><div class="vital"><small>HP</small><strong class="hp-value"><input aria-label="Current HP" data-field="play.hp" type="number" min="0" max="${vitals.max}" step="1" value="${vitals.hp}"><span>/ ${vitals.max || "—"}</span></strong></div><div class="vital"><small>${button("Grit", "use-grit", 'aria-label="Use Grit"', "vital-link")}</small><strong>${vitals.grit}</strong></div><div class="vital"><small>Speed</small><strong data-speed>${vitals.speed}${vitals.speed < vitals.maxSpeed ? ` / ${vitals.maxSpeed}` : ""}</strong></div><div class="vital"><small>${button("Wounds", "roll-wound-dialog", 'aria-label="Roll a new wound"', "vital-link")}</small><strong data-wound-count>${vitals.wounds.length}</strong></div><div class="vital"><small>Armor DR</small><strong>${preview.resistances.physical ?? 0}</strong></div></div></header>
   <div class="attributes">${ATTRIBUTES.map((key) => `<div class="attribute"><span>${title(key)}</span>${rollButton(title(key), `data-attribute-key="${key}"`)}<strong data-attribute="${key}">${signed(draft.attributes[key])}</strong></div>`).join("")}</div></div>`;
 }
 function abilityCard(
@@ -310,30 +310,35 @@ function sheetContent() {
     return `${heading("", "Inventory", "", button("Add item", "add-item", "", "small"))}${inventoryStats()}${inventoryTable(true)}`;
   if (tab === "Recipes") return `${heading("", "Recipes", "")}${recipeRows()}`;
   if (tab === "Character")
-    return `${heading("", "Character", "")}<div class="columns"><section class="box">${edit ? field("Player", "profile.player", draft.profile?.player) : row("Player", draft.profile?.player || "—")}${row("Ancestry", name(draft.ancestryId))}${row("Culture", name(draft.culture?.id))}${row("Background", name(draft.background?.id))}<h3 class="section-title">Story</h3>${edit ? `<label>Notes<textarea data-field="profile.story" maxlength="10000">${esc(draft.profile?.story)}</textarea></label>` : `<p>${esc(draft.profile?.story || "")}</p>`}</section><section class="box"><h3 class="section-controls">Languages ${button("Add", "add-language", 'aria-label="Add language"', "small")}</h3>${languageTable()}</section></div>${woundTable()}`;
+    return `${heading("", "Character", "")}<div class="columns"><section class="box"><h3>Origins</h3>${row("Ancestry", name(draft.ancestryId))}${row("Culture", name(draft.culture?.id))}${row("Background", name(draft.background?.id))}</section><section class="box"><h3 class="section-controls">Languages ${button("Add", "add-language", 'aria-label="Add language"', "small")}</h3>${languageTable()}</section></div>${collapsible("story", "Story", `<label class="story-editor"><textarea aria-label="Story" data-field="profile.story" maxlength="10000" placeholder="Write your character’s story…">${esc(draft.profile?.story ?? "")}</textarea></label>`)}${woundTable()}`;
   const dev = preview.development;
-  return `${heading("", "Development", "", button("Edit creation", "review", "", "small"))}<div class="development-summary"><div class="level-control"><span>Level</span>${button("−", "level-down", 'aria-label="Decrease level"')}<strong>${dev.level}</strong>${button("+", "level-up", 'aria-label="Increase level"')}</div><div><small>Current DP</small><strong data-dp="current">${dev.current}</strong></div><div><small>DP spent</small><strong data-dp="spent">${dev.spent}</strong></div><div><small>Total DP</small><strong data-dp="total">${dev.total}</strong></div></div><div class="development-actions">${button("Spend DP", "advance", dev.current > 0 || draft.progression?.levels?.[dev.level]?.purchases?.length ? "" : "disabled", "primary")}${missingSignatures()
-    .map((tier) =>
-      button(
-        `Choose level ${tier} signature`,
-        "choose-signature",
-        `data-tier="${tier}"`,
-        "small",
-      ),
-    )
-    .join(
-      "",
-    )}</div><p class="inline-help">Advancement DP can be saved. Each new level grants 8 + that level.${dev.expired ? ` ${dev.expired} unspent creation DP expired.` : ""}</p>${
+  return `${heading("", "Development", "")}<section class="box development-training"><h3 class="section-controls">Training ${button("Edit creation", "review", "", "small quiet")}</h3><div class="development-summary"><div class="level-control"><span>Level</span>${button("−", "level-down", 'aria-label="Decrease level"')}<strong>${dev.level}</strong>${button("+", "level-up", 'aria-label="Increase level"')}</div><div><small>Current DP</small><strong data-dp="current">${dev.current}</strong></div><div><small>DP spent</small><strong data-dp="spent">${dev.spent}</strong></div><div><small>Total DP</small><strong data-dp="total">${dev.total}</strong></div></div><div class="training-footer"><small>Each new level grants 8 + level DP. Unspent advancement DP carries forward.</small>${button("Spend DP", "advance", dev.current > 0 || draft.progression?.levels?.[dev.level]?.purchases?.length ? "" : "disabled", "primary small")}</div></section>${collapsible("signatures", "Class signatures", signatureProgress())}${
     preview.errors.filter((e) => e.level && e.code !== "signature").length
-      ? `<ul class="error-list">${preview.errors
+      ? `<section class="box"><h3>Choices to finish</h3><ul class="error-list">${preview.errors
           .filter((e) => e.level && e.code !== "signature")
           .map(
             (e) =>
               `<li>Level ${e.level}: ${esc(e.text ?? (e.reasons ?? []).map((r) => r.text).join(" "))}</li>`,
           )
-          .join("")}</ul>`
+          .join("")}</ul></section>`
       : ""
-  }<details class="planned"><summary>Advancement history</summary>${advancementTable()}</details><details class="planned"><summary>Creation ledger</summary>${ledgerTable()}</details>`;
+  }${collapsible("advancement-history", "Advancement history", advancementTable())}${collapsible("creation-ledger", "Creation ledger", ledgerTable() + (dev.expired ? `<small>${dev.expired} unspent creation DP expired.</small>` : ""), "", "box", false)}`;
+}
+function signatureProgress() {
+  const cls = get(draft.classId),
+    missing = missingSignatures();
+  if (cls?.kind !== "class")
+    return '<p class="empty">Choose a class to see its signatures.</p>';
+  return `<div class="table-wrap"><table class="signature-progress"><thead><tr><th>Level</th><th>Signature</th><th></th></tr></thead><tbody>${[
+    1, 3, 7,
+  ]
+    .map((tier) => {
+      const id = cls.signatures[tier].find((id) =>
+        preview.state.abilities.includes(id),
+      );
+      return `<tr><td>${tier}</td><td>${id ? button(esc(name(id)), "reference", `data-id="${id}"`, "table-link") : tier > preview.development.level ? "Available at level " + tier : "Choose a signature"}</td><td>${missing.includes(tier) ? button(`Choose level ${tier} signature`, "choose-signature", `data-tier="${tier}"`, "small") : id ? '<span class="signature-complete">✓</span>' : "—"}</td></tr>`;
+    })
+    .join("")}</tbody></table></div>`;
 }
 function brief(record) {
   const body = record.reference?.rules.body ?? [];
@@ -557,7 +562,7 @@ function builder() {
     "Inventory",
     "Review",
   ];
-  return `<div class="wizard"><nav class="edge-tabs" aria-label="Creation steps">${steps.map((label, i) => button(navIcon(icons[i], `${i + 1}. ${label}`), "step", `aria-label="${i + 1} ${label}" ${step === i ? 'aria-current="step"' : ""} data-step="${i}"`)).join("")}</nav><div class="wizard-body">${contextStrip()}<section id="panel" class="panel" aria-labelledby="panel-title">${builderContent()}</section><footer class="wizard-footer">${button(step ? "← Back" : "View sheet", step ? "back" : "sheet")}<small>${storageAvailable ? "Draft saved in this browser" : "Export JSON to keep your draft"}</small>${step < 7 ? button("Continue →", "next", "", "primary") : button("View character sheet", "sheet", "", "primary")}</footer></div></div>`;
+  return `<div class="wizard"><nav class="edge-tabs" aria-label="Creation steps">${steps.map((label, i) => button(navIcon(icons[i], `${i + 1}. ${label}`), "step", `aria-label="${i + 1} ${label}" ${step === i ? 'aria-current="step"' : ""} data-step="${i}"`)).join("")}</nav><div class="wizard-body">${requiredChoicesBanner()}${contextStrip()}<section id="panel" class="panel" aria-labelledby="panel-title">${![3, 5, 6].includes(step) ? acquisitions(true) : ""}${builderContent()}</section><footer class="wizard-footer">${button(step ? "← Back" : "View sheet", step ? "back" : "sheet")}<small>${storageAvailable ? "Draft saved in this browser" : "Export JSON to keep your draft"}</small>${step < 7 ? button("Continue →", "next", "", "primary") : button("View character sheet", "sheet", "", "primary")}</footer></div></div>`;
 }
 function builderContent() {
   if (step === 0)
@@ -717,7 +722,12 @@ function acquisitionPath(id) {
       ? `progression.levels.${preview.development.level}.acquisitions.${id}`
       : `acquisitions.${id}`;
 }
-function acquisitions() {
+function requiredChoicesBanner() {
+  const pending = preview.errors.filter((e) => e.code === "acquisition");
+  if (!pending.length) return "";
+  return `<aside class="choice-alert" role="status" aria-label="Missing choices"><strong>Choices needed</strong><ul>${pending.map((e) => `<li><b>${esc(name(e.id))}</b> · ${esc((e.reasons ?? []).map((r) => r.text).join(" "))}</li>`).join("")}</ul></aside>`;
+}
+function acquisitions(onlyMissing = false) {
   const classSignatures = Object.values(
     catalogs.choices.find((r) => r.kind === "class" && r.id === draft.classId)
       ?.signatures ?? {},
@@ -751,8 +761,28 @@ function acquisitions() {
     )
     .map((a) => {
       const path = acquisitionPath(a.id),
-        d = getValue(path) ?? {};
-      return `<details class="planned" ${preview.errors.some((e) => e.code === "acquisition" && e.id === a.id) ? "open" : ""}><summary>${esc(name(a.id))} · Choices</summary><div class="field-grid">${
+        d = getValue(path) ?? {},
+        missing = preview.errors.some(
+          (e) =>
+            e.code === "acquisition" &&
+            e.id === a.id &&
+            (e.level ?? null) ===
+              (mode === "advancement"
+                ? preview.development.level
+                : mode === "signature" && signatureTier > 1
+                  ? signatureTier
+                  : null),
+        );
+      if (onlyMissing && !missing) return "";
+      return `<details class="planned acquisition-choice ${missing ? "choice-missing" : ""}" data-acquisition="${esc(a.id)}" ${missing ? "open" : ""}><summary>${esc(name(a.id))} · ${missing ? "Choice needed" : "Choices"}</summary>${
+        missing
+          ? `<p class="choice-instruction">${preview.errors
+              .filter((e) => e.code === "acquisition" && e.id === a.id)
+              .flatMap((e) => e.reasons ?? [])
+              .map((r) => esc(r.text))
+              .join(" ")}</p>`
+          : ""
+      }<div class="field-grid">${
         a.languageChoice
           ? select(
               "Language",
@@ -777,7 +807,7 @@ function acquisitions() {
                   .join(""),
             )
           : ""
-      }${a.specialtyChoice ? field("Performance specialty", `${path}.specialty`, d.specialty, "text", 'maxlength="120" placeholder="e.g. singing or juggling"') : ""}${a.weaponChoice ? select("Weapon", `${path}.weapon`, option("", "Choose weapon", !d.weapon) + a.weaponChoice.map((id) => option(id, id === "melee" ? "Ordinary melee weapon" : id === "ranged" ? "Ranged weapon + d8 ammunition" : name(id), d.weapon === id)).join("")) : ""}${a.items.includes("item-ordinary-melee-weapon") || a.weaponChoice?.includes("melee") ? select("Melee weapon hands", `${path}.meleeHands`, option("", "Choose hands", !d.meleeHands) + [1, 2].map((n) => option(n, `${n} handed`, d.meleeHands === n)).join("")) : ""}</div>${
+      }${a.specialtyChoice ? field("Performance specialty", `${path}.specialty`, d.specialty, "text", 'maxlength="120" placeholder="e.g. singing or juggling"') : ""}${a.weaponChoice ? select("Weapon", `${path}.weapon`, option("", "Choose weapon", !d.weapon) + a.weaponChoice.map((id) => option(id, id === "melee" ? "Ordinary melee weapon" : id === "ranged" ? "Ranged weapon + d8 ammunition" : name(id), d.weapon === id)).join("")) : ""}${a.items.includes("item-ordinary-melee-weapon") || (a.weaponChoice?.includes("melee") && d.weapon === "melee") ? select("Melee weapon hands", `${path}.meleeHands`, option("", "Choose hands", !d.meleeHands) + [1, 2].map((n) => option(n, `${n} handed`, d.meleeHands === n)).join("")) : ""}</div>${
         a.recipeChoices
           ? `<p class="inline-help">Choose ${a.recipeChoices} recipes</p><div class="cards">${catalogs.inventory.recipes
               .filter((r) => r.genericChoice && r.permissions.includes(a.id))
@@ -847,7 +877,7 @@ function missingSignatures() {
     : [];
 }
 function learningFrame(content, label = "Spend DP") {
-  return `<div class="wizard"><nav class="edge-tabs" aria-label="Development">${button(navIcon("Development", "Development"), "sheet-development", 'aria-label="Development"')}${button(navIcon(mode === "signature" ? "Heroic" : "Abilities", label), mode === "signature" ? "choose-signature" : "advance", `aria-label="${esc(label)}" data-tier="${signatureTier}" aria-current="step"`)}</nav><div class="wizard-body">${mode === "signature" ? "" : contextStrip()}<section id="panel" class="panel">${content}</section><footer class="wizard-footer">${button("Back to development", "sheet-development")}<small>Choices saved automatically</small>${button("Done", "sheet-development", "", "primary")}</footer></div></div>`;
+  return `<div class="wizard"><nav class="edge-tabs" aria-label="Development">${button(navIcon("Development", "Development"), "sheet-development", 'aria-label="Development"')}${button(navIcon(mode === "signature" ? "Heroic" : "Abilities", label), mode === "signature" ? "choose-signature" : "advance", `aria-label="${esc(label)}" data-tier="${signatureTier}" aria-current="step"`)}</nav><div class="wizard-body">${requiredChoicesBanner()}${mode === "signature" ? "" : contextStrip()}<section id="panel" class="panel">${content}</section><footer class="wizard-footer">${button("Back to development", "sheet-development")}<small>Choices saved automatically</small>${button("Done", "sheet-development", "", "primary")}</footer></div></div>`;
 }
 function advancementBuilder() {
   if (preview.development.level < 2) {
@@ -1782,22 +1812,7 @@ async function action(target) {
     });
   if (a === "death-roll") return openSheetRoll({ death: true });
   if (a === "roll-sheet") return rollSheetDice();
-  if (a === "add-wound")
-    return popup(
-      "Add wound",
-      `<label>Wound<input id="wound-name" maxlength="200"></label><label>Effects / notes<textarea id="wound-notes" maxlength="2000"></textarea></label><div class="dialog-actions">${button("Add wound", "confirm-wound", "", "primary")}</div>`,
-    );
-  if (a === "confirm-wound") {
-    const name = $("#wound-name").value.trim(),
-      notes = $("#wound-notes").value;
-    if (!name) throw new Error("Name the wound.");
-    const play = playDraft();
-    play.wounds ??= [];
-    if (play.wounds.length >= 100)
-      throw new Error("The character supports 100 recorded wounds.");
-    play.wounds.push({ id: `wound-${crypto.randomUUID()}`, name, notes });
-    $("#reference").close();
-  }
+  if (a === "add-wound") return woundDialog();
   if (a === "delete-wound") {
     playDraft().wounds = (playDraft().wounds ?? []).filter(
       (w) => w.id !== target.dataset.id,

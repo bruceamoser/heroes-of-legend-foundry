@@ -1372,3 +1372,27 @@ lists through advancement purchases, remembered disclosure, every requirement
 badge, four action letters, separate wound columns, selectable/repeatable Evade,
 condition modifiers and Main resupply at 760/390px. These are web browser checks;
 no native Foundry UI or book sources changed.
+
+### Web required choices and sheet layout (#185)
+
+A pinned charactermancer banner names unresolved acquisition choices using the
+same validation results that govern the granted item/language/recipe. Required
+choice panels open with an amber highlight and instructions. On creation steps
+without the normal acquisition list, missing choices appear directly above the
+step content. Resolved choices lose their warning. This adds guidance, no new
+play restrictions. Ranged equipment does not request melee hand use.
+
+The header shows ancestry, culture, background, class and Level N(current DP).
+Character omits the Player field and puts an always-editable, remembered Story
+disclosure immediately above Wounds. Existing stored Player metadata is retained
+in portable files. Character's Add wound opens the exact header wound-roll flow.
+Development uses themed Training, Class signatures, Advancement history and
+Creation ledger panels, retaining level adjustment, DP spending and independent
+signature selection. Signature rendering tolerates unknown/mistyped imported
+class IDs so users can repair them.
+
+Validation covers missing Hook and Drive weapon choice, pinned warning while
+scrolling, resolution and reload, Story editing/collapse persistence, shared wound
+dialog content, Level 7/current-DP header, origin order, signature status and
+760/390px Development layouts. All 447 pure tests and all five browser suites
+pass. Screenshots were visually reviewed. No native Foundry UI or rules changes.

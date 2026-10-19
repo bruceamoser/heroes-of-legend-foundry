@@ -63,10 +63,10 @@ try {
   );
   assert.equal(await page.locator('[data-action="builder"]').count(), 0);
   assert.deepEqual(
-    (await page.locator(".play-summary > .box > h3").allTextContents())
+    (await page.locator(".play-summary > .box > summary > h3").allTextContents())
       .slice(0, 4)
       .map((s) => s.trim()),
-    ["Passives", "Ancestry traits", "Defenses", "Conditions Add"],
+    ["Passives", "Ancestry traits", "Defenses", "Conditions"],
   );
   assert.equal(
     await page
@@ -407,7 +407,8 @@ try {
       .filter({ hasText: "Ordinary Heavy Armor" })
       .locator("td")
       .nth(1)
-      .innerText(),
+      .locator("input")
+      .inputValue(),
     "2",
   );
   await page

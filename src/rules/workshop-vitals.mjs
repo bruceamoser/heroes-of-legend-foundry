@@ -1,3 +1,4 @@
+import { workshopWoundEffects } from "./workshop-resources.mjs";
 import { classifyRoll } from "./roll.mjs";
 
 /** Browser play has no encounter clock; the table decides when to roll. */
@@ -34,13 +35,17 @@ export function workshopDeathResult({
   };
 }
 
-export function workshopVitals(character, draft) {
+export function workshopVitals(character, draft, catalog) {
+  const woundEffects = workshopWoundEffects(draft.play?.wounds ?? [], catalog);
   const max = character.summary?.maximumHp ?? 0;
   const maxSpeed = character.summary?.unencumberedSpeed ?? 0;
   const speed = Math.max(
     0,
     (character.summary?.speed ?? 0) -
-      character.play.conditionSummary.slowed.rating,
+      character.play.conditionSummary.slowed.rating -
+      woundEffects
+        .filter((e) => e.kind === "movementPenalty")
+        .reduce((n, e) => n + e.amount, 0),
   );
   return {
     max,
@@ -48,6 +53,11 @@ export function workshopVitals(character, draft) {
     maxSpeed,
     speed,
     wounds: draft.play?.wounds ?? [],
+    grit: Math.max(
+      0,
+      (character.summary?.gritGranted ?? 0) - (draft.play?.gritSpent ?? 0),
+    ),
+    woundEffects,
     failed: draft.play?.failedDeathRolls ?? 0,
   };
 }

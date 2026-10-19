@@ -76,7 +76,7 @@ export function workshopCharacter(draft, catalogs, languages) {
       (r) => r.id === item.catalogId,
     );
     const saved = draft.loadout?.[item.instanceId];
-    const carried = saved?.carried !== false;
+    const carried = saved?.carried !== false && item.quantity > 0;
     return {
       ...item,
       carried,

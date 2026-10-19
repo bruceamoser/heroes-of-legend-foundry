@@ -1262,3 +1262,46 @@ reviewed the native-sized and narrow web screenshots. Pure browser death results
 are compared against native survival for all 216 die triples and three prior
 mark counts. No Foundry runtime test or native sheet UI change is claimed here.
 Both browser suites now run in validation and Pages deployment workflows.
+
+
+### Issue #179 web resources and remembered presentation
+
+Header **Wounds** opens a damage-type selector and rolls the shared wound rules:
+3d6 plus prior-wound dice, capped at five; keep highest three and read ascending.
+The current pinned 280-entry wound catalog is shipped with the web app. A roll
+records the wound/scar, applies printed conditions, contributes lasting Speed
+penalties, and exposes contextual wound Boons/Banes in the roll dialog. Wound
+conditions are recorded once rather than re-created on reload; lasting effects
+are derived from the canonical catalog ID/type/dice, never imported effect code.
+Directional displacement is readable for table placement; the web app has no
+canvas. Treatment/remedy text is retained, not an automated treatment procedure.
+Last Words from a wound is recorded with 0 HP and three marks; ordinary Grit,
+potions and death rolls do not reverse it. Manual HP/wound controls remain
+available for table corrections.
+
+Header **Grit** confirms one expenditure, restores full HP and clears marks;
+wounds remain. Main's potion action and individual carried supply rows have dice
+controls. Potions apply their printed fixed healing before the supply check,
+including the final dose. Inventory dice step down only on 1; quantity is not
+silently decremented or used to refill a supply. The inventory quantity input
+updates the existing stack and recalculates Bulk, carrying, defenses and Speed;
+zero quantity cannot grant worn/held benefits.
+
+Every right-column section and action group is collapsible. State is saved
+synchronously on summary activation, before the later native toggle event, so
+an immediate reload retains the final change. Existing basic-action visibility
+choices remain character data. Abilities and inventory instances have outline/
+filled favorite stars. All these choices, rolled wound evidence, Grit expenditure
+and per-instance quantity/supply overrides survive browser and portable saves.
+No historical rules choices are introduced.
+
+Node 24 build/validation and all 441 tests pass. The full workshop, #177 play and
+new `test:workshop-resources` browser suites pass with zero browser errors. The
+new suite uses known dice to verify wound conditions/Speed/context/Last Words,
+confirmed/cancelled Grit, all collapsed sections through immediate reload,
+final-dose potion healing, supply decay without quantity change, editable
+quantity, stars and JSON persistence. It checks 900/760/390px overflow. Primary
+reviewed compact Main, Inventory and Abilities captures. Pure tests cover every
+approved wound type/key, prior-dice cap, safe portable state, Bulk/zero-quantity
+benefits, Grit and supply rules. All three suites are required in CI and Pages.
+This is web acceptance; native Foundry sheets were not changed or retested.

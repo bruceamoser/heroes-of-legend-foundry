@@ -1,3 +1,4 @@
+import { rollCard } from "./chat-cards.mjs";
 import { rollSetup, bindRollSetup } from "./roll-ui.mjs";
 import { rollPlan, classifyRoll } from "./rules/roll.mjs";
 import { ATTRIBUTES } from "./rules/character.mjs";
@@ -25,10 +26,18 @@ const character = workshopCharacter(draft, {
 const cards = character.state.abilities
   .map((id) => choices.records.find((c) => c.id === id))
   .filter(Boolean);
-const incoming = creatures.creatures
-  .find((r) => r.id === "creature-goblin-scrapper")
-  .actions.main.actions.find((a) => a.name === "Scrap knife");
+const opponent = creatures.creatures.find(
+  (r) => r.id === "creature-goblin-scrapper",
+);
+const incoming = opponent.actions.main.actions.find(
+  (a) => a.name === "Scrap knife",
+);
+const damageType = opponent.reference.specialtyDetails
+  .find((d) => d.title === incoming.name)
+  .fields.find((f) => f.label === "Damage type")
+  .text.replace(/\.$/, "");
 const dialog = document.querySelector("#reference");
+const chatMode = document.body.classList.contains("chat-preview");
 let mode = "ability";
 function open(next) {
   mode = next;
@@ -75,6 +84,9 @@ function die() {
 document.addEventListener("click", (e) => {
   const opener = e.target.closest("[data-open]");
   if (opener) open(opener.dataset.open);
+  const reroll = e.target.closest("[data-chat-reroll]");
+  if (reroll) open(reroll.dataset.chatReroll);
+  if (e.target.closest("[data-chat-defend]")) open("defense");
   if (e.target.closest("[data-close]")) dialog.close();
   if (e.target.closest("[data-preview-roll]")) {
     const attribute =
@@ -86,18 +98,52 @@ document.addEventListener("click", (e) => {
       banes: Math.max(0, -net),
     });
     const faces = Array.from({ length: plan.count }, () => die());
-    const retained = [...faces]
-      .sort((a, b) => (net < 0 ? a - b : b - a))
-      .slice(0, 3);
+    const retainedIndices = faces
+      .map((face, index) => ({ face, index }))
+      .sort(
+        (a, b) =>
+          (net < 0 ? a.face - b.face : b.face - a.face) || a.index - b.index,
+      )
+      .slice(0, 3)
+      .map((d) => d.index);
+    const retained = retainedIndices.map((i) => faces[i]);
     const result = classifyRoll(retained, attribute);
     const selected = [
       ...dialog.querySelectorAll("[data-preview-ability]:checked"),
     ].map((e) => cards.find((r) => r.id === e.dataset.previewAbility).name);
-    document.querySelector("#preview-result").innerHTML =
-      `<strong>${result.tier[0].toUpperCase() + result.tier.slice(1)}${mode === "defense" ? " defense" : ""} · ${result.total}</strong><p>${faces.join(" · ")} → keep ${retained.join(" + ")} ${attribute >= 0 ? "+" : ""}${attribute}</p>${result.natural !== "none" ? `<p>${result.natural === "critical" ? "Natural 666 · additional benefit" : "Natural 111 · complication"}</p>` : ""}${mode === "defense" ? `<p>${esc(incoming.outcomes[result.tier])} · ${esc(incoming.name)}</p>` : ""}${selected.length ? `<p>${selected.map(esc).join(" · ")}</p>` : ""}`;
+    const selectedRecord = cards.find((r) => r.id === "ability-hook-and-drive");
+    const effect =
+      mode === "defense"
+        ? `${incoming.outcomes[result.tier]} ${damageType} damage before resistance.`
+        : mode === "ability"
+          ? selectedRecord.reference.rules.body
+              .find((b) => b.outcomes)
+              ?.outcomes.find((o) => o.label.toLowerCase() === result.tier)
+              ?.text
+          : null;
+    const message = {
+      actor: "Borin Bridgekeeper",
+      target: mode === "attribute" ? null : opponent.name,
+      title:
+        mode === "defense"
+          ? `Defend · ${incoming.name}`
+          : mode === "ability"
+            ? "Hook and Drive"
+            : "Attribute check",
+      mode,
+      attribute: document.querySelector("#preview-attribute").value,
+      abilities: selected,
+      effect,
+      roll: { plan, faces, retainedIndices, result },
+    };
+    document.querySelector("#preview-result").innerHTML = rollCard(message);
+    document.dispatchEvent(
+      new CustomEvent("hol-preview-roll", { detail: message }),
+    );
+    if (chatMode) dialog.close();
   }
 });
 dialog.addEventListener("change", (e) => {
   if (e.target.matches("[data-preview-ability]")) updateRules();
 });
-open("ability");
+if (!chatMode) open("ability");

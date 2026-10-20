@@ -26,6 +26,7 @@ jobs:
       - run: npm run test:workshop-builder-view
       - run: npm run test:sheet-prototypes
       - run: npm run test:roll-preview
+      - run: npm run test:chat-preview
       - uses: actions/upload-artifact@v4
         with:
           name: character-workshop-screenshots
@@ -33,6 +34,7 @@ jobs:
             test-results/workshop/*.png
             test-results/sheets/*.png
             test-results/roll/*.png
+            test-results/chat/*.png
       - uses: actions/upload-artifact@v4
         with:
           name: heroes-of-legend-development

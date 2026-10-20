@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#15221c" />
+    <title>Heroes of Legend · Chat</title>
+    <link rel="icon" href="assets/crest.webp" />
+    <link rel="stylesheet" href="workshop.css" />
+    <link rel="stylesheet" href="roll-ui.css" />
+    <link rel="stylesheet" href="chat-cards.css" />
+    <script type="module" src="chat-preview.mjs"></script>
+    <script type="module" src="roll-preview.mjs"></script>
+  </head>
+  <body class="chat-preview">
+    <header class="site-header">
+      <a href="./" class="brand"
+        ><img src="assets/crest.webp" alt="" /><span>Heroes of Legend</span></a
+      >
+      <nav class="sheet-links" aria-label="Sheets">
+        <a href="./">Character</a><a href="npc.html">NPC</a
+        ><a href="creature.html">Creature</a><a href="item.html">Item</a
+        ><a href="roll.html">Roll</a
+        ><a href="chat.html" aria-current="page">Chat</a>
+      </nav>
+    </header>
+    <main class="chat-workbench">
+      <aside class="chat-controls">
+        <h1>Chat cards</h1>
+        <button type="button" data-example="request">Creature attack</button
+        ><button type="button" data-open="ability">Player attack</button
+        ><button type="button" data-open="attribute">Attribute check</button
+        ><button type="button" data-example="healing">Healing</button
+        ><button type="button" data-example="supply">Supply</button
+        ><button type="button" data-example="benefit">Natural 666</button
+        ><button type="button" data-example="complication">Natural 111</button
+        ><button type="button" data-example="reset">Reset examples</button>
+        <p>Local preview · saved characters stay unchanged.</p>
+      </aside>
+      <section
+        class="chat-log"
+        role="log"
+        aria-label="Chat messages"
+        aria-live="polite"
+      ></section>
+    </main>
+    <dialog id="reference" aria-labelledby="reference-title"></dialog>
+  </body>
+</html>

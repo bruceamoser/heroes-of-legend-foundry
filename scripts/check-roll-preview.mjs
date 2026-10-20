@@ -49,7 +49,7 @@ try {
   await page
     .getByRole("heading", { name: "Hook and Drive", exact: true })
     .waitFor();
-  assert.equal(await page.locator(".sheet-links a").count(), 5);
+  assert.equal(await page.locator(".sheet-links a").count(), 6);
   const range = page.getByRole("slider", {
     name: "Banes / Boons",
     exact: true,
@@ -115,10 +115,20 @@ try {
   );
   await ability.uncheck();
   await page.getByRole("button", { name: "Roll", exact: true }).click();
-  assert.doesNotMatch(
-    await page.locator("#preview-result").innerText(),
-    /Hook and Drive/,
+  assert.equal(
+    await page.locator("#preview-result .hol-chat-abilities").count(),
+    0,
   );
+  const referenceAbility = page.locator(
+    '[data-preview-ability="ability-braced-harness"]',
+  );
+  await referenceAbility.check();
+  await page.getByRole("button", { name: "Roll", exact: true }).click();
+  assert.match(
+    await page.locator("#preview-result .hol-chat-abilities").innerText(),
+    /Braced Harness/,
+  );
+  await referenceAbility.uncheck();
   await ability.check();
   await page.getByText("Selected ability rules", { exact: true }).click();
   assert.match(

@@ -62,7 +62,7 @@ async function choose(search, id) {
 try {
   await page.goto(base + "npc.html");
   await page.getByRole("heading", { name: "Edda Vale", exact: true }).waitFor();
-  assert.equal(await page.locator(".sheet-links a").count(), 5);
+  assert.equal(await page.locator(".sheet-links a").count(), 6);
   assert.equal(await page.getByRole("tab").count(), 0);
   assert.equal(await page.locator(".combat-stats > div").count(), 7);
   for (const label of [

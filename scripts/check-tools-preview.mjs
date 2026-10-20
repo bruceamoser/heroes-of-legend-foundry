@@ -247,6 +247,22 @@ try {
     );
     await page.screenshot({ path: `${output}/crafting-${width}.png` });
   }
+  // Resolving an older queued recipe must show that recipe's resulting stock.
+  await page
+    .getByRole("button", { name: "Begin attempt", exact: true })
+    .click();
+  await page
+    .getByRole("button", { name: "Bound Torches", exact: true })
+    .click();
+  await page.getByRole("button", { name: "Resolve", exact: true }).click();
+  await page
+    .getByRole("button", { name: "Complete attempt", exact: true })
+    .click();
+  assert(
+    await page
+      .getByRole("heading", { name: "Travel Food", exact: true })
+      .isVisible(),
+  );
   await page.getByRole("button", { name: "Twisted Cord", exact: true }).click();
   await page.evaluate(() => {
     globalThis.projectDice = crypto.getRandomValues;

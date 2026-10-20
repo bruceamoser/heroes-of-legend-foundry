@@ -465,6 +465,7 @@ document.addEventListener("click", (e) => {
         craftNotice = `${result.tier}: ${steps} progress · ${after} / ${j.recipe.target}${after >= j.recipe.target ? " · One product finished" : ""}`;
       }
       j.complete = true;
+      recipeId = j.recipe.id;
       craftNotice += ` · ${j.recipe.attemptMinutes} min. ${faces.join(" · ")} → keep ${kept.join(" + ")}`;
       if (materialCheck) {
         materialDie = materialCheck.after;

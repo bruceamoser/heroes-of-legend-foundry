@@ -49,7 +49,7 @@ try {
   await page
     .getByRole("heading", { name: "Hook and Drive", exact: true })
     .waitFor();
-  assert.equal(await page.locator(".sheet-links a").count(), 6);
+  assert.equal(await page.locator(".sheet-links a").count(), 7);
   const range = page.getByRole("slider", {
     name: "Banes / Boons",
     exact: true,

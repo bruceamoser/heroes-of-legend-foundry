@@ -90,7 +90,9 @@
     "test:workshop-builder-view": "node scripts/check-workshop-builder-view.mjs",
     "test:workshop-recovery": "node scripts/check-workshop-recovery.mjs",
     "test:roll-preview": "node scripts/check-roll-preview.mjs",
-    "test:chat-preview": "node scripts/check-chat-preview.mjs"
+    "test:chat-preview": "node scripts/check-chat-preview.mjs",
+    "test:tools-preview": "node scripts/check-tools-preview.mjs",
+    "import:web-journals": "node scripts/build-web-journals.mjs"
   },
   "devDependencies": {
     "@foundryvtt/foundryvtt-cli": "3.0.5",

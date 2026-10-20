@@ -52,7 +52,7 @@ try {
   });
   await page.goto(base + "chat.html");
   await page.locator('.chat-log [data-chat-kind="request"]').waitFor();
-  assert.equal(await page.locator(".sheet-links a").count(), 6);
+  assert.equal(await page.locator(".sheet-links a").count(), 7);
   const request = page.locator('.chat-log [data-chat-kind="request"]').first();
   assert.match(await request.innerText(), /Goblin Scrapper/);
   assert.match(await request.innerText(), /Agility defense/);

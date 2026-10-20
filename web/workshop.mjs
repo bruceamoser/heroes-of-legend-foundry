@@ -75,12 +75,12 @@ const tabs = [
   "Main",
   "Abilities",
   "Inventory",
-  "Recipes",
+  "Crafting",
   "Character",
   "Development",
 ];
 const sheetTabs = () =>
-  tabs.filter((t) => t !== "Recipes" || preview.state.recipes.length > 0);
+  tabs.filter((t) => t !== "Crafting" || preview.state.recipes.length > 0);
 const storageKey = "hol.workshop.v1";
 const libraryKey = "hol.workshop.library.v1";
 let saveId = null;
@@ -139,7 +139,7 @@ const navIcons = {
     '<path d="M12 5v16M3 4c4-1 6 0 9 2 3-2 5-3 9-2v15c-4-1-6 0-9 2-3-2-5-3-9-2z"/>',
   Inventory:
     '<path d="M8 6V4a4 4 0 0 1 8 0v2M7 6h10l3 5v10H4V11zM4 13h16M9 13v3h6v-3"/>',
-  Recipes: '<path d="M9 3h6M10 3v7L4 20h16l-6-10V3M7 15h10"/>',
+  Crafting: '<path d="M9 3h6M10 3v7L4 20h16l-6-10V3M7 15h10"/>',
   Character:
     '<circle cx="12" cy="7" r="4"/><path d="M4 21v-3a8 8 0 0 1 16 0v3"/>',
   Development: '<path d="M5 21v-7h5V9h5V4h6M16 4h5v5"/>',
@@ -315,7 +315,8 @@ function sheetContent() {
     )}</details>`;
   if (tab === "Inventory")
     return `${heading("", "Inventory", "", button("Add item", "add-item", "", "small"))}${inventoryStats()}${inventoryTable(true)}`;
-  if (tab === "Recipes") return `${heading("", "Recipes", "")}${recipeRows()}`;
+  if (tab === "Crafting")
+    return `${heading("", "Crafting", "")}${recipeRows()}`;
   if (tab === "Character")
     return `${heading("", "Character", "")}<div class="columns"><section class="box"><h3>Origins</h3>${row("Ancestry", name(draft.ancestryId))}${row("Culture", name(draft.culture?.id))}${row("Background", name(draft.background?.id))}</section><section class="box"><h3 class="section-controls">Languages ${button("Add", "add-language", 'aria-label="Add language"', "small")}</h3>${languageTable()}</section></div>${collapsible("story", "Story", `<label class="story-editor"><textarea aria-label="Story" data-field="profile.story" maxlength="10000" placeholder="Write your character’s story…">${esc(draft.profile?.story ?? "")}</textarea></label>`)}${woundTable()}`;
   const dev = preview.development;
@@ -2503,9 +2504,11 @@ try {
       saveId = typeof saved.saveId === "string" ? saved.saveId : null;
       tab = tabs.includes(saved.tab)
         ? saved.tab
-        : saved.tab === "Belongings"
-          ? "Inventory"
-          : "Main";
+        : saved.tab === "Recipes"
+          ? "Crafting"
+          : saved.tab === "Belongings"
+            ? "Inventory"
+            : "Main";
       step = Number.isInteger(saved.step)
         ? Math.max(0, Math.min(7, saved.step))
         : 0;

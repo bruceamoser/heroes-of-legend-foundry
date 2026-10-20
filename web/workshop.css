@@ -1336,7 +1336,7 @@ dialog header button {
 
 /* Dense sheet tables; creation choice cards keep their existing controls. */
 .sheet-inventory .panel-heading,
-.sheet-recipes .panel-heading {
+.sheet-crafting .panel-heading {
   margin-bottom: 4px;
 }
 .sheet-inventory .inventory-stats {
@@ -1346,7 +1346,7 @@ dialog header button {
 }
 .sheet-inventory td,
 .sheet-abilities td,
-.sheet-recipes td {
+.sheet-crafting td {
   padding-top: 3px;
   padding-bottom: 3px;
 }

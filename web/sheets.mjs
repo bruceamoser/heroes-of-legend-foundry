@@ -22,23 +22,17 @@ const signed = (n) => (n >= 0 ? `+${n}` : String(n));
 const btn = (text, action, extra = "", style = "small") =>
   `<button type="button" data-action="${action}" ${extra} class="${style}">${text}</button>`;
 const icons = {
-  Main: '<path d="m3 10 9-7 9 7v11H3zM9 21v-8h6v8"/>',
-  Combat: '<path d="m4 3 17 17M20 3 3 20M2 16l6 6M16 2l6 6"/>',
-  World:
-    '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c-7 6-7 12 0 18 7-6 7-12 0-18"/>',
-  Notes: '<path d="M5 2h14v20H5zM8 7h8M8 12h8M8 17h5"/>',
   die: '<rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8" cy="8" r="1"/><circle cx="16" cy="16" r="1"/><circle cx="12" cy="12" r="1"/>',
 };
 const icon = (name) =>
-  `<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5">${icons[name] ?? icons.Main}</svg>`;
+  `<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5">${icons[name] ?? icons.die}</svg>`;
 let creatures,
   inventory,
   choices,
   refs,
   art,
   state,
-  edit = false,
-  tab = "Main";
+  edit = false;
 const key = `hol.sheet.${kind}.v1`,
   libraryKey = `${key}.library`;
 const note = (v) => {
@@ -166,7 +160,7 @@ const field = (label, path, value, type = "text", extra = "") =>
 const row = (label, value) =>
   `<div class="stat-row"><span>${esc(label)}</span><strong>${esc(value ?? "—")}</strong></div>`;
 function section(id, label, body, extra = "") {
-  return `<details class="box sheet-section" data-collapse="${id}" ${state.collapsed[id] ? "" : "open"}><summary><h3>${esc(label)}</h3>${extra}</summary>${body}</details>`;
+  return `<details class="box sheet-section" data-collapse="${id}" ${(state.collapsed[id] ?? ["npc-details", "book-details", "notes"].includes(id)) ? "" : "open"}><summary><h3>${esc(label)}</h3>${extra}</summary>${body}</details>`;
 }
 function popup(name, body) {
   dialog.innerHTML = `<header><h2 id="reference-title">${esc(name)}</h2>${btn("Close", "close")}</header><div class="reference-body">${body}</div>`;
@@ -180,6 +174,7 @@ function textMarkup(text) {
 }
 function markdown(text) {
   return String(text ?? "")
+    .replace(/^- \*\*ID:\*\*.*$/gm, "")
     .split(/\n\s*\n/)
     .filter((b) => !b.startsWith("**ID:**"))
     .map((b) => {
@@ -241,20 +236,23 @@ function itemVitals(r) {
 function header(r) {
   const name = state.name ?? r?.name ?? "New NPC";
   const max = state.maxHp ?? r?.hp?.max ?? 0;
-  return `<div class="workshop-header"><div class="toolbar"><div>${btn(edit ? "✓ Done" : "✎ Edit", "edit", "", "quiet")}${btn(kind === "npc" ? "New NPC" : `Choose ${kind}`, "choose", "", "quiet")}</div><div>${["Save", "Load", "Import", "Export"].map((a) => btn(a, a.toLowerCase(), "", "quiet")).join("")}</div></div><header class="hero-header prototype-header"><div>${edit ? field("Name", "name", name) : `<h1>${esc(name)}</h1>`}<p>${esc(kind === "npc" ? [state.role, state.location].filter(Boolean).join(" · ") : kind === "creature" ? `${r.family} · ${r.classification.role}` : title(r.kind ?? (r.price !== undefined ? "equipment" : "recipe")))}</p></div><div class="vitals">${kind === "item" ? itemVitals(r) : r ? `<div class="vital"><small>HP</small><div class="hp-value"><input aria-label="Current HP" data-field="hp" type="number" min="0" max="100000" value="${state.hp ?? max}"><span>/ ${max}</span></div></div><div class="vital"><small>Speed</small><strong>${r.speed.ordinary}</strong></div><div class="vital"><small>CV</small><strong>${r.cv}</strong></div>` : ""}</div></header>${kind !== "item" && r ? attributes(r) : ""}</div>`;
+  return `<div class="workshop-header"><div class="toolbar"><div>${btn(edit ? "✓ Done" : "✎ Edit", "edit", "", "quiet")}${btn(kind === "npc" ? "New NPC" : `Choose ${kind}`, "choose", "", "quiet")}</div><div>${["Save", "Load", "Import", "Export"].map((a) => btn(a, a.toLowerCase(), "", "quiet")).join("")}</div></div><header class="hero-header prototype-header">${kind !== "item" ? portrait(r) : ""}<div class="card-identity">${kind === "item" ? `<img class="item-mark" src="assets/${esc(r.requirements?.find((q) => q.kind === "discipline")?.id.replace("discipline-", "") ?? (r.id.includes("armor") ? "armor" : "craft"))}.webp" alt="">` : ""}${edit ? field("Name", "name", name) : `<h1>${esc(name)}</h1>`}<p>${esc(kind === "npc" ? [state.role, state.location].filter(Boolean).join(" · ") : kind === "creature" ? `${r.family} · ${r.classification.role}` : title(r.kind ?? (r.price !== undefined ? "equipment" : "recipe")))}</p></div><div class="vitals">${kind === "item" ? itemVitals(r) : r ? `<div class="vital"><small>HP</small><div class="hp-value"><input aria-label="Current HP" data-field="hp" type="number" min="0" max="100000" value="${state.hp ?? max}"><span>/ ${max}</span></div></div><div class="vital"><small>Speed</small><strong>${r.speed.ordinary}</strong></div><div class="vital"><small>CV</small><strong>${r.cv}</strong></div>` : ""}</div></header>${kind !== "item" && r ? attributes(r) + defenses(r) : ""}</div>`;
 }
 function defenses(r) {
-  return section(
-    "defenses",
-    "Defenses",
-    row("Armor DR", r.armor.sourceText) +
-      row("Evasion", r.defenses.evasion.sourceText) +
-      row("Threat", r.defenses.threat.sourceText) +
-      row("Stability", r.defenses.stability) +
-      row("Resistance", r.resistances.sourceText) +
-      row("Weakness", r.weaknesses.sourceText) +
-      row("Immunity", r.immunities.length ? r.immunities.join(", ") : "None"),
-  );
+  return `<div class="combat-stats" aria-label="Combat statistics">${[
+    ["Armor DR", r.armor.sourceText],
+    ["Evasion", r.defenses.evasion.sourceText],
+    ["Threat", r.defenses.threat.sourceText],
+    ["Stability", r.defenses.stability],
+    ["Resistance", r.resistances.sourceText],
+    ["Weakness", r.weaknesses.sourceText],
+    ["Immunity", r.immunities.length ? r.immunities.join(", ") : "None"],
+  ]
+    .map(
+      ([label, value]) =>
+        `<div><small>${label}</small><strong>${esc(value)}</strong></div>`,
+    )
+    .join("")}</div>`;
 }
 function conditions() {
   return section(
@@ -265,8 +263,9 @@ function conditions() {
         (c, i) =>
           `<div class="stat-row"><span>${title(c.key)} ${c.rating}</span>${btn("×", "remove-condition", `data-index="${i}" aria-label="Remove ${title(c.key)}"`, "quiet small")}</div>`,
       )
-      .join("") || "<small>No conditions.</small>",
-    btn("+", "add-condition", 'aria-label="Add condition"', "small"),
+      .join(""),
+    (state.conditions.length ? "" : "<small>No conditions.</small>") +
+      btn("+", "add-condition", 'aria-label="Add condition"', "small"),
   );
 }
 const actionGroups = [
@@ -274,23 +273,93 @@ const actionGroups = [
   ["maneuvers", "Maneuvers"],
   ["reactions", "Reactions"],
 ];
+function actionContext(r, a) {
+  const d = r.reference.specialtyDetails.find(
+    (d) => d.title.toLowerCase() === a.name.toLowerCase(),
+  );
+  return (
+    d?.fields
+      .filter((f) => ["Target", "Damage type", "Limit"].includes(f.label))
+      .map((f) => `${f.label}: ${f.text}`)
+      .join(" · ") ?? ""
+  );
+}
 function actions(r) {
-  return `<div class="action-groups">${actionGroups.map(([key, label]) => section(key, label, `<div class="table-wrap"><table class="action-table"><thead><tr><th>${key === "main" ? "Action" : "Name"}</th>${key === "main" ? "<th>Defense</th><th>Weak</th><th>Standard</th><th>Strong</th>" : "<th>Effect</th>"}</tr></thead><tbody>${r.actions[key].actions.map((a, i) => `<tr><td>${btn(esc(a.name), "action", `data-group="${key}" data-index="${i}"`, "table-link")}</td>${key === "main" ? `<td>${esc(a.defense.sourceText)}</td>${["weak", "standard", "strong"].map((t) => `<td><span title="${esc(a.outcomes[t])}">${esc(a.outcomes[t])}</span></td>`).join("")}` : `<td><span title="${esc(a.effect)}">${esc(a.effect)}</span></td>`}</tr>`).join("")}</tbody></table></div>`)).join("")}</div>`;
+  return `<div class="action-groups">${actionGroups.map(([key, label]) => section(key, label, `<div class="table-wrap"><table class="action-table"><thead><tr><th>${key === "main" ? "Action" : "Name"}</th>${key === "main" ? "<th>Defense</th><th>Weak</th><th>Standard</th><th>Strong</th>" : "<th>Effect</th>"}</tr></thead><tbody>${r.actions[key].actions.map((a, i) => `<tr><td>${btn(esc(a.name), "action", `data-group="${key}" data-index="${i}"`, "table-link")}</td>${key === "main" ? `<td>${esc(a.defense.sourceText)}</td>${["weak", "standard", "strong"].map((t) => `<td><span title="${esc(a.outcomes[t])}">${esc(a.outcomes[t])}</span></td>`).join("")}` : `<td><span title="${esc(a.effect)}">${esc(a.effect)}</span></td>`}</tr>${key === "main" && actionContext(r, a) ? `<tr class="action-context-row"><td colspan="5">${esc(actionContext(r, a))}</td></tr>` : ""}`).join("")}</tbody></table></div>`)).join("")}</div>`;
+}
+function specialties(r) {
+  const names = Object.values(r.actions)
+    .flatMap((g) => g?.actions ?? [])
+    .map((a) => a.name.toLowerCase());
+  const extra = r.reference.specialtyDetails
+    .map((d, i) => ({ ...d, i }))
+    .filter((d) => !names.includes(d.title.toLowerCase()));
+  return extra.length
+    ? section(
+        "combat-specialties",
+        "Specialties",
+        extra
+          .map((d) =>
+            btn(
+              esc(d.title),
+              "specialty",
+              `data-index="${d.i}"`,
+              "quiet small",
+            ),
+          )
+          .join(""),
+      )
+    : "";
 }
 function combat(r) {
   if (!r)
     return `<section class="box"><h3>Combat profile</h3><p>Choose a creature profile when this person needs combat statistics.</p>${btn("Choose combat profile", "profile", "", "primary small")}</section>`;
-  return `<div class="combat-label">Player defense outcomes · Weak / Standard / Strong</div><div class="main-layout">${actions(r)}<aside class="play-summary">${portrait(r)}${defenses(r)}${conditions()}${section("movement", "Movement", row("Speed", r.speed.sourceText) + row("Size", r.size.sourceText))}</aside></div>`;
+  return `<div class="combat-label">Player defense outcomes · Weak / Standard / Strong <span>${esc(r.size.sourceText)} · Speed ${esc(r.speed.sourceText)}</span></div>${actions(r)}${specialties(r)}${conditions()}`;
 }
 function npcMain() {
-  return `<div class="main-layout"><div>${section("portrayal", "At the table", ["detail", "want", "knowledge", "boundary"].map((k) => (edit ? `<label>${title(k)}<textarea data-field="${k}" aria-label="${title(k)}" maxlength="10000">${esc(state[k])}</textarea></label>` : `<div class="portrayal-line"><h4>${{ detail: "Recognizable detail", want: "Wants", knowledge: "Knows", boundary: "Boundary" }[k]}</h4><p>${esc(state[k] || "—")}</p></div>`)).join(""))}${section("relationship", "Relationship", edit ? `<textarea aria-label="Relationship" data-field="relationship" maxlength="10000">${esc(state.relationship)}</textarea>` : `<p>${esc(state.relationship || "—")}</p>`)}</div><aside class="play-summary">${portrait(record())}${section("identity", "Identity", edit ? field("Role", "role", state.role) + field("Location", "location", state.location) : row("Role", state.role) + row("Location", state.location))}${section("profile", "Combat profile", `<p>${esc(record()?.name ?? "None linked")}</p>${btn(record() ? "Change profile" : "Choose profile", "profile", "", "small")}${record() ? btn("Unlink", "unlink", "", "quiet small") : ""}`)}</aside></div>`;
+  return `<div class="main-layout"><div>${section("portrayal", "At the table", ["detail", "want", "knowledge", "boundary"].map((k) => (edit ? `<label>${title(k)}<textarea data-field="${k}" aria-label="${title(k)}" maxlength="10000">${esc(state[k])}</textarea></label>` : `<div class="portrayal-line"><h4>${{ detail: "Recognizable detail", want: "Wants", knowledge: "Knows", boundary: "Boundary" }[k]}</h4><p>${esc(state[k] || "—")}</p></div>`)).join(""))}${section("relationship", "Relationship", edit ? `<textarea aria-label="Relationship" data-field="relationship" maxlength="10000">${esc(state.relationship)}</textarea>` : `<p>${esc(state.relationship || "—")}</p>`)}</div><aside class="play-summary">${section("identity", "Identity", edit ? field("Role", "role", state.role) + field("Location", "location", state.location) : row("Role", state.role) + row("Location", state.location))}${section("profile", "Combat profile", `<p>${esc(record()?.name ?? "None linked")}</p>${btn(record() ? "Change profile" : "Choose profile", "profile", "", "small")}${record() ? btn("Unlink", "unlink", "", "quiet small") : ""}`)}</aside></div>`;
 }
 function itemMain(r) {
-  const ref = r.reference,
-    details = ref?.rules?.details ?? [];
+  const ref = r.reference;
+  const details = ref?.rules?.details ?? [];
   const die = state.supply ?? r.inventoryDie;
-  return `<div class="item-layout"><article class="rule-card"><header><span class="item-emblem">${r.requirements?.find((q) => q.kind === "discipline") ? `<img src="assets/${esc(r.requirements.find((q) => q.kind === "discipline").id.replace("discipline-", ""))}.webp" alt="">` : `<img src="assets/${r.id.includes("armor") ? "armor" : r.id.includes("weapon") ? "arms" : r.id.includes("healing") ? "life" : "craft"}.webp" alt="">`}</span><div><h2>${esc(state.name ?? r.name)}</h2><small>${esc(title(r.kind ?? "Equipment"))}${r.minimumLevel ? " · Level " + r.minimumLevel : ""}</small></div></header><div class="rule-card-body">${ref?.flavor?.length ? `<p class="flavor">${esc(ref.flavor.join(" "))}</p>` : ""}${details.length ? `<dl class="card-metadata">${details.map((d) => `<dt>${esc(d.label)}</dt><dd>${esc(d.value)}</dd>`).join("")}</dl>` : ""}${ref?.rules?.body ? ref.rules.body.map((b) => (b.outcomes ? `<table class="outcome-table">${b.outcomes.map((o) => `<tr><th>${esc(o.label)}</th><td>${esc(o.text)}</td></tr>`).join("")}</table>` : b.text ? `<p>${esc(b.text)}</p>` : "")).join("") : markdown(refs[r.id]?.markdown?.replace(/^# .+\n/, ""))}${ref?.rules?.notes?.map((n) => `<p>${esc(typeof n === "string" ? n : n.text)}</p>`).join("") ?? ""}</div></article><aside>${section("properties", "Properties", (r.bulk !== undefined ? row("Bulk", r.bulk) : "") + (r.price !== undefined ? row("Price", `${r.price} coins`) : "") + (r.cost !== undefined ? row("DP", r.cost) : "") + (r.handChoices?.length ? row("Hands", r.handChoices.join(" / ")) : "") + row("Acquisition", r.kind === "ability" ? "Development points" : r.attemptMinutes !== undefined ? "Crafting permission" : r.specialOrder ? "Special order" : "Ordinary availability") + (EQUIPMENT_TRAINING[r.id] ? row("Training", choices.find((c) => c.id === EQUIPMENT_TRAINING[r.id])?.name) : ""))}${die !== null && die !== undefined ? section("supply", "Supply", `<div class="supply-current">${die ? `d${die}` : "Empty"}</div>${die ? btn(icon("die") + " Use supply", "supply", "", "small") : ""}${btn("Resupply", "resupply", "", "small")}`) : ""}${r.requirements?.length ? section("requirements", "Requirements", r.requirements.map((q) => row(choices.find((c) => c.id === q.id)?.name ?? title(q.kind), q.rank ?? q.value ?? "")).join("")) : ""}</aside></div>`;
+  const properties =
+    (r.handChoices?.length ? row("Hands", r.handChoices.join(" / ")) : "") +
+    (r.specialOrder ? row("Acquisition", "Special order") : "") +
+    (EQUIPMENT_TRAINING[r.id]
+      ? row(
+          "Training",
+          choices.find((c) => c.id === EQUIPMENT_TRAINING[r.id])?.name,
+        )
+      : "");
+  const equipmentText = refs[r.id]?.markdown
+    ?.replace(/^# .+\n/, "")
+    .replace(/^## Rules\s*$/gm, "")
+    .replace(/^- \*\*(ID|Bulk):\*\*.*$/gm, "")
+    .replace(/^\[Equipment index\].*$/gm, "")
+    .replace(/^\*\*Market price:\*\*.*$/gm, "");
+  const body = ref?.rules?.body
+    ? ref.rules.body
+        .map((b) =>
+          b.outcomes
+            ? `<table class="outcome-table">${b.outcomes.map((o) => `<tr><th>${esc(o.label)}</th><td>${esc(o.text)}</td></tr>`).join("")}</table>`
+            : b.text
+              ? `<p>${esc(b.text)}</p>`
+              : "",
+        )
+        .join("")
+    : markdown(equipmentText);
+  return `<div class="item-layout"><article class="rule-card"><div class="rule-card-body">
+    ${ref?.flavor?.length ? `<p class="flavor">${esc(ref.flavor.join(" "))}</p>` : ""}
+    ${details.length ? `<dl class="card-metadata">${details.map((d) => `<dt>${esc(d.label)}</dt><dd>${esc(d.value)}</dd>`).join("")}</dl>` : ""}
+    ${body}${ref?.rules?.notes?.map((n) => `<p>${esc(typeof n === "string" ? n : n.text)}</p>`).join("") ?? ""}
+    </div></article><aside>
+    ${properties ? section("properties", "Properties", properties) : ""}
+    ${die !== null && die !== undefined ? section("supply", "Supply", `<div class="supply-current">${die ? `d${die}` : "Empty"}</div>${die ? btn(icon("die") + " Use supply", "supply", "", "small") : ""}${btn("Resupply", "resupply", "", "small")}`) : ""}
+    ${r.requirements?.length ? section("requirements", "Requirements", r.requirements.map((q) => row(choices.find((c) => c.id === q.id)?.name ?? title(q.kind), q.rank ?? q.value ?? "")).join("")) : ""}
+    </aside></div>`;
 }
+
 function world(r) {
   return `${section("flavor", "In the world", markdown(r.reference.flavorMarkdown))}${section("world", "Details", `<dl class="world-fields">${r.reference.generalFields.map((f) => `<dt>${esc(f.label)}</dt><dd>${textMarkup(f.text)}</dd>`).join("")}</dl>`)}${section("specialties", "Specialties", r.reference.specialtyDetails.map((d, i) => `<div class="stat-row"><span>${esc(d.title)}</span>${btn("Read", "specialty", `data-index="${i}"`, "small quiet")}</div>`).join("") || "<small>No additional specialties.</small>")}`;
 }
@@ -305,17 +374,10 @@ function render() {
       ? active.selectionStart
       : null;
   const r = record();
-  const tabs =
-    kind === "npc"
-      ? ["Main", "Combat", "Notes"]
-      : kind === "creature"
-        ? ["Main", "World", "Notes"]
-        : ["Main", "Notes"];
-  if (!tabs.includes(tab)) tab = "Main";
   const scroll = document.querySelector("#panel")?.scrollTop ?? 0;
   app.innerHTML =
     header(r) +
-    `<div class="sheet-body"><nav class="edge-tabs" role="tablist" aria-label="${title(kind)} sheet" aria-orientation="vertical">${tabs.map((t) => btn(icon(t) + `<span class="nav-tooltip">${t}</span>`, "tab", `role="tab" aria-label="${t}" aria-selected="${tab === t}" aria-controls="panel" id="tab-${t}" data-tab="${t}" tabindex="${tab === t ? 0 : -1}"`)).join("")}</nav><section id="panel" class="panel sheet-panel prototype-panel" role="tabpanel" aria-labelledby="tab-${tab}">${tab === "Notes" ? `<section class="box"><h3>Notes</h3><textarea aria-label="Notes" data-field="notes" class="notes-editor" maxlength="10000" placeholder="Notes for this ${kind}…">${esc(state.notes)}</textarea></section>` : kind === "npc" && tab === "Main" ? npcMain() : tab === "World" ? world(r) : kind === "item" ? itemMain(r) : combat(r)}</section></div>`;
+    `<div class="sheet-body"><section id="panel" class="panel sheet-panel prototype-panel" aria-label="${title(kind)} card">${kind === "item" ? itemMain(r) : combat(r)}${kind === "npc" ? section("npc-details", "Portrayal & profile", npcMain()) : kind === "creature" ? section("book-details", "World & specialties", world(r)) : ""}${section("notes", "Notes", `<textarea aria-label="Notes" data-field="notes" class="notes-editor" maxlength="10000" placeholder="Notes for this ${kind}…">${esc(state.notes)}</textarea>`)}</section></div>`;
   app.removeAttribute("aria-busy");
   document.querySelector("#panel").scrollTop = scroll;
   if (activeField) {
@@ -399,13 +461,7 @@ async function action(t) {
   const a = t.dataset.action,
     r = record();
   if (a === "close") return dialog.close();
-  if (a === "tab") {
-    tab = t.dataset.tab;
-    render();
-    document.querySelector("#panel").scrollTop = 0;
-    document.querySelector(`#tab-${tab}`).focus();
-    return;
-  }
+
   if (a === "edit") {
     edit = !edit;
     render();
@@ -426,7 +482,6 @@ async function action(t) {
         relationship: "",
       };
       edit = true;
-      tab = "Main";
       persist();
       render();
     } else showPicker();
@@ -468,11 +523,14 @@ async function action(t) {
   if (a === "action") {
     const group = t.dataset.group,
       entry = r.actions[group].actions[Number(t.dataset.index)];
-    if (group !== "main")
-      return popup(entry.name, `<p>${esc(entry.effect)}</p>`);
     const d = r.reference.specialtyDetails.find(
       (d) => d.title.toLowerCase() === entry.name.toLowerCase(),
     );
+    if (group !== "main")
+      return popup(
+        entry.name,
+        d ? markdown(d.markdown) : `<p>${esc(entry.effect)}</p>`,
+      );
     return popup(
       entry.name,
       `<div class="attack-card"><p><b>${esc(state.name ?? r.name)}</b> · Defend with ${esc(entry.defense.sourceText)}</p><table class="outcome-table">${["weak", "standard", "strong"].map((v) => `<tr><th>${title(v)} defense</th><td>${esc(entry.outcomes[v])}</td></tr>`).join("")}</table>${d ? markdown(d.markdown) : ""}${entry.defense.attribute ? btn("Defend", "defend", `data-index="${t.dataset.index}"`, "primary small") : ""}</div>`,
@@ -698,23 +756,7 @@ app.addEventListener(
   },
   true,
 );
-app.addEventListener("keydown", (e) => {
-  if (
-    e.target.getAttribute("role") !== "tab" ||
-    !["ArrowDown", "ArrowUp", "Home", "End"].includes(e.key)
-  )
-    return;
-  e.preventDefault();
-  const tabs = [...app.querySelectorAll('[role="tab"]')],
-    i = tabs.indexOf(e.target),
-    next =
-      e.key === "Home"
-        ? 0
-        : e.key === "End"
-          ? tabs.length - 1
-          : (i + (e.key === "ArrowDown" ? 1 : -1) + tabs.length) % tabs.length;
-  tabs[next].click();
-});
+
 document
   .querySelector("#sheet-import")
   .addEventListener("change", async (e) => {
@@ -733,7 +775,6 @@ document
         );
       state = validate(data.state);
       edit = false;
-      tab = "Main";
       persist();
       render();
       note("Sheet imported.");

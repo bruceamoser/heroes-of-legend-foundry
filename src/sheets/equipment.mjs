@@ -1,3 +1,6 @@
+import { equipmentReferenceHtml } from "../rules/item-construction.mjs";
+import { itemCardContext, formatItemCard } from "./item-card-view.mjs";
+import { localRulePage } from "../services/journals.mjs";
 import { itemDisplayIcon } from "../rules/item-icons.mjs";
 import { requestResupply } from "../services/resupply.mjs";
 import { cardContext, bindCardState, toggleCardEdit } from "./card-state.mjs";
@@ -19,14 +22,15 @@ export class EquipmentSheet extends foundry.applications.api.HandlebarsApplicati
       usePotion: EquipmentSheet.usePotion,
     },
     classes: ["heroes-of-legend", "hol-equipment"],
-    position: { width: 480, height: "auto" },
+    position: { width: 510, height: "auto" },
+    window: { resizable:true },
     form: { submitOnChange: false, closeOnSubmit: false },
   };
   static PARTS = {
     main: { template: "systems/heroes-of-legend/templates/equipment.hbs", scrollable: [".hol-card-scroll"] },
   };
   async _prepareContext(options) {
-    const catalogs = this.item.actor ? await loadCatalogs() : null,
+    const catalogs = await loadCatalogs(),
       description = this.item.system.description,
       pending = this.item.actor?.getFlag(
         "heroes-of-legend",
@@ -50,16 +54,25 @@ export class EquipmentSheet extends foundry.applications.api.HandlebarsApplicati
       hadSupply =
         Number.isSafeInteger(originalSupplyDie) && originalSupplyDie > 0,
       hasSupply = hadSupply || this.item.system.inventoryDie > 0;
+    const presentation = itemCardContext(this.item, catalogs);
+    let rules = description;
+    if (presentation.cardSourcePath) {
+      try { rules = (await localRulePage(presentation.cardSourcePath)).text.content; }
+      catch (error) { console.warn("heroes-of-legend | Equipment rule reference unavailable", error.message); }
+    }
     return {
       ...(await super._prepareContext(options)),
+      ...presentation,
+      customDescriptionHTML: description && presentation.cardRecord && description !== equipmentReferenceHtml(presentation.cardRecord,{sourceCommit:catalogs.commit})
+        ? await foundry.applications.ux.TextEditor.implementation.enrichHTML(description,{relativeTo:this.item}) : "",
       ...cardContext(this, this.item),
       item: this.item,
       cardMark: itemDisplayIcon(this.item.toObject(), catalogs),
       system: this.item.system,
       editable: this.isEditable,
-      descriptionHTML: description
+      descriptionHTML: rules
         ? await foundry.applications.ux.TextEditor.implementation.enrichHTML(
-            description,
+            rules,
             { relativeTo: this.item },
           )
         : "",
@@ -115,6 +128,16 @@ export class EquipmentSheet extends foundry.applications.api.HandlebarsApplicati
   _onRender(context, options) {
     super._onRender(context, options);
     bindCardState(this, this.item);
+    formatItemCard(this.element);
+    this.element.querySelector("[data-item-quantity]")?.addEventListener("change", async event => {
+      try {
+        if (!this.isEditable) throw new Error(game.i18n.localize("HOL.NoPermission"));
+        const quantity = Number(event.target.value);
+        if (!Number.isSafeInteger(quantity) || quantity < 0) throw new Error("Quantity must be a nonnegative whole number.");
+        await updateOwnedDocument(this.item,{"system.quantity":quantity});
+        await this.render({force:true});
+      } catch (error) { ui.notifications.error(error.message); await this.render({force:true}); }
+    });
   }
   async _processSubmitData(event, form, data, options) {
     if (

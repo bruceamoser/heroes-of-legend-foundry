@@ -1,3 +1,5 @@
+import { actorContributions } from "../services/conditions.mjs";
+import { conditionSummary } from "../rules/conditions.mjs";
 import { selectNpcProfile } from "../services/npc-profile.mjs";
 import { cardContext, bindCardState, toggleCardEdit, mitigationLabel } from "./card-state.mjs";
 import { updateOwnedDocument } from "../services/documents.mjs";
@@ -7,6 +9,8 @@ import {
   declareCreatureAction,
 } from "../services/npc-attacks.mjs";
 import { CharacterSheet } from "./character.mjs";
+import { hpInputValue } from "./hp-input.mjs";
+import { numericCreatureAction } from "../rules/numeric-creature-actions.mjs";
 import {
   profileUpdateAvailable,
   updateCreatureProfile,
@@ -36,12 +40,13 @@ export class CreatureSheet extends CharacterSheet {
       viewCreatureAction: CreatureSheet.viewCreatureAction,
       updateProfile: CreatureSheet.updateProfile,
       viewPortrait,
+      editImage: CharacterSheet.editPortrait,
       cardEdit: toggleCardEdit,
       npcMode: CreatureSheet.npcMode,
       chooseNpcProfile: CreatureSheet.chooseNpcProfile,
       unlinkNpcProfile: CreatureSheet.unlinkNpcProfile,
     },
-    position: { width: 760, height: 720 },
+    position: { width: 700, height: 720 },
   };
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
@@ -67,6 +72,11 @@ export class CreatureSheet extends CharacterSheet {
     return {
       ...context,
       ...cardContext(this, this.actor),
+      conditionsList: Object.values(conditionSummary(actorContributions(this.actor))).filter(condition => condition.active),
+      attributes: context.attributes.map(attribute => ({...attribute, signed: `${attribute.effective >= 0 ? "+" : ""}${attribute.effective}`})),
+      referenceOpen: cardContext(this, this.actor).cardCollapsed.reference === false,
+      portrayalOpen: cardContext(this, this.actor).cardCollapsed.portrayal === false,
+      notesOpen: cardContext(this, this.actor).cardCollapsed.notes === false,
       npc: this.actor.getFlag("heroes-of-legend", "npc") ?? {},
       npcMode: Boolean(this.actor.getFlag("heroes-of-legend", "npc")?.enabled),
       combatLinked: !this.actor.getFlag("heroes-of-legend", "npc")?.enabled || this.actor.getFlag("heroes-of-legend", "npc")?.profileLinked !== false,
@@ -79,14 +89,17 @@ export class CreatureSheet extends CharacterSheet {
         ["main", "Main Actions"],
         ["maneuver", "Maneuvers"],
         ["reaction", "Reactions"],
-      ].map(([category, label]) => ({
+      ].map(([category, label], index) => ({
         label,
+        collapsed: Boolean(cardContext(this, this.actor).cardCollapsed[`actions-${index}`]),
         main: category === "main",
+        hasEntries: category === "main" || system.actions.entries.some(entry => entry.category === category),
         entries: system.actions.entries.filter(
-          (entry) =>
-            entry.category === category &&
-            !(category === "main" && entry.name === "Basic Melee"),
-        ),
+          entry => entry.category === category && !(category === "main" && entry.name === "Basic Melee"),
+        ).map(entry => ({...entry, automaticDamage: Boolean(numericCreatureAction(flags.catalogId,flags.sourceCommit,entry)), context: ["Target", "Damage type", "Limit"].map(label => {
+          const match = entry.referenceMarkdown?.match(new RegExp(`\\*\\*${label}:\\*\\*\\s*([^*\\n]+)`));
+          return match ? `${label}: ${match[1].trim()}` : "";
+        }).filter(Boolean).join(" · ")})),
       })),
       sourceLink: sourceLink(flags.source, flags.sourceCommit),
       sourcePath: flags.source?.path ?? "",
@@ -110,10 +123,22 @@ export class CreatureSheet extends CharacterSheet {
         : "",
     };
   }
-  _onRender(context, options) {
-    super._onRender(context, options);
+  async _onRender(context, options) {
+    await super._onRender(context, options);
     bindCardState(this, this.actor);
     bindPortraitControls(this);
+    const hp = this.element.querySelector("[data-current-hp]");
+    if (hp && !hp.dataset.hpBound) {
+      hp.dataset.hpBound = "true";
+      hp.addEventListener("change", async event => {
+        try {
+          const value = hpInputValue(event.target.value, this.actor.system.health.max);
+          const {requestRecovery} = await import("../services/recovery.mjs");
+          const {damageBasis} = await import("../services/damage.mjs");
+          await requestRecovery(this.actor, damageBasis(this.actor), {kind:"setHp",hp:value});
+        } catch(error) { ui.notifications.error(error.message); await this.render(); }
+      });
+    }
   }
   static async npcMode() {
     try {
@@ -131,7 +156,7 @@ export class CreatureSheet extends CharacterSheet {
       if (!pack) throw new Error("The creature compendium is unavailable.");
       const index = await pack.getIndex();
       const escape = foundry.utils.escapeHTML;
-      const selection = await foundry.applications.api.DialogV2.input({
+      const selection = await foundry.applications.api.DialogV2.input({classes: ["heroes-of-legend", "hol-native-dialog"],
         window: { title: "Choose NPC combat profile" },
         content: `<p>Replace printed combat statistics and actions. Portrayal, current HP (up to the new maximum), notes, inventory and conditions are retained.</p><label>Profile<select name="profileId">${[...index].sort((a,b)=>a.name.localeCompare(b.name)).map(entry=>`<option value="${escape(entry._id)}">${escape(entry.name)}</option>`).join("")}</select></label>`,
         ok: { label: "Use profile" }

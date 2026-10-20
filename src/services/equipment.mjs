@@ -1,3 +1,4 @@
+import { ensureAuthorityReady } from "./authority.mjs";
 import { assertNoPendingTurn } from "./turn-lock.mjs";
 import { handLayout } from "../rules/hands.mjs";
 import {
@@ -19,6 +20,7 @@ export function equipmentBasis(actor) {
         hands: i.system.hands,
         held: i.system.held,
         worn: i.system.worn,
+        carried: i.system.carried !== false,
         quantity: i.system.quantity,
       }))
       .sort((a, b) => a.id.localeCompare(b.id)),
@@ -43,8 +45,7 @@ export async function requestEquipment(
   capacity,
   reason = "",
 ) {
-  if (!game.settings.get(ID, "creationAuthorityClient"))
-    throw new Error("Enable the GM automation coordinator first.");
+  await ensureAuthorityReady();
   return ChatMessage.create({
     content: "Hand arrangement requested.",
     whisper: game.users
@@ -107,7 +108,8 @@ async function apply(id) {
     request.items.some(
       (i) =>
         !basis.items.some((b) => b.id === i.id) ||
-        typeof i.worn !== "boolean",
+        typeof i.worn !== "boolean" ||
+        (i.carried !== undefined && typeof i.carried !== "boolean"),
     )
   )
     throw new Error(
@@ -121,6 +123,7 @@ async function apply(id) {
       item.system.hands = state.hands;
       item.system.held = state.held;
       item.system.worn = state.worn;
+      item.system.carried = state.carried ?? basis.items.find(current => current.id === item._id).carried;
     }
     const native = new CONFIG.Item.documentClass(item, {
       parent: actor,
@@ -150,7 +153,8 @@ async function apply(id) {
       !actual ||
       actual.hands !== expected.hands ||
       actual.held !== expected.held ||
-      actual.worn !== expected.worn
+      actual.worn !== expected.worn ||
+      actual.carried !== (expected.carried ?? basis.items.find(current => current.id === expected.id).carried)
     )
       throw new Error(
         "Equipment needs reconciliation; do not repeat the change.",

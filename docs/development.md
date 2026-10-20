@@ -2,6 +2,41 @@
 
 The V14 package includes guided creation/advancement, native character/creature/summon profiles, source compendiums and core play workflows. Specialty effects and summon lifecycle remain manual; see the current [release checklist and evidence](release-0.1.0.md). Historical issue notes below record the state and evidence at each implementation stage.
 
+## Browser prerequisite
+
+Open the world over **HTTPS**, or use **localhost** for local development. Automated
+requests require Web Crypto for persistent request signatures; the GM coordinator
+also requires Web Locks to exclude competing tabs. Browsers expose these APIs only
+in secure contexts. An ordinary remote HTTP address does not meet this requirement,
+even if Foundry itself loads. Missing capabilities produce an actionable error
+before a defense request is posted, and one visible GM startup notice.
+
+The system does not substitute a weaker lock or remove receipt validation on HTTP.
+Foundry's public User query and socket dispatch APIs do not provide a documented
+atomic per-client lock to replace Web Locks. See [Web Locks](https://developer.mozilla.org/en-US/docs/Web/API/Web_Locks_API),
+[Web Crypto](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto), and
+[Foundry V14 SocketInterface](https://foundryvtt.com/api/v14/classes/foundry.helpers.SocketInterface.html).
+
+A coordinator activation interrupted between lease and binding writes can leave
+its candidate lease beside the predecessor's binding and idle checkpoint. Once
+that lease expires (or its valid prior launch differs after a clean restart),
+the active GM may recover automatically only if its owner snapshot exactly
+matches metadata, and the binding still matches a
+settled, nonuncertain checkpoint. The full checkpoint and lease are checked
+again after the claim round trip. The expired candidate never acquired the
+binding and cannot have executed requests; the predecessor is fenced by the
+foreign metadata and lease. Uptime expiry is never compared across launches.
+Within the same launch, unexpired claims remain blocked. Busy, uncertain or unproven mixed tuples
+remain blocked. Ordinary relaunch also recovers matching binding/lease/idle work,
+and coherent same-browser pre-lease checkpoints from older versions. No uncertain
+flags are cleared. A prior-launch interruption after binding but before the
+final idle checkpoint write also recovers only when metadata and lease owner
+exactly agree with the binding and the predecessor checkpoint is explicitly idle
+and nonuncertain. The complete saved checkpoint and lease are rechecked; missing
+checkpoint identity or a current-launch mismatch remains blocked. Current-launch metadata repair also
+requires the exact still-locked owner, an unexpired matching lease and an idle,
+non-uncertain matching checkpoint.
+
 ## Build and checks
 
 Use Node **24.22.0** (`.node-version`; minimum 24.13.1) and npm:
@@ -1488,3 +1523,46 @@ crafting and a complete local rules library. See [native-web-integration.md](nat
 for the surface mapping, deliberate automation boundaries and isolated-world checks.
 Player and DA references are separate JournalEntry compendiums; the Rules Library
 opens local entries and offers an explicit DA import that preserves existing edits.
+
+## October 20 native parity corrections — #221–#226
+
+Bruce's review supersedes earlier statements of web/native visual parity. Previous
+scenario logs remain historical evidence for those specific mechanics only. The
+new acceptance contract is [native-parity-acceptance.md](native-parity-acceptance.md).
+
+The defense selection descriptions above (suggested targets, chooser and Change
+defender) are historical and superseded: a player uses their assigned character;
+a GM uses exactly one selected token's Actor. Missing assignment or selection gives
+an actionable message, with no dropdown. Numeric attack damage now settles with the
+defense result through durable operation receipts; specialty outcomes still retain
+their explicit printed resolution. A stale idle browser coordinator can be reclaimed
+after its lease expires; busy or uncertain work still requires reconciliation.
+
+Rules are now native paged books by audience instead of individual journal entries
+per source. Explicit book import preserves old world journals and all edits. Inline
+Read controls stay in the current sheet; opening the full book is a separate action.
+See [landing-scene.md](landing-scene.md) for theme and scene setup.
+
+Final validation evidence is recorded in [native parity acceptance](native-parity-acceptance.md).
+Intermediate screenshots remain diagnostic comparisons; use the final installed-package
+captures and recorded scenarios for acceptance.
+
+Named creature attacks with simple physical damage use a bounded pinned adapter
+(`#222`). `scripts/generate-numeric-creature-actions.mjs` records 21 exact reviewed
+catalog entries from the locked source commit. Eligibility requires three exact
+nonnegative integer outcomes and specialty metadata containing only target,
+player defense and explicit physical damage type. The runtime compares the full
+imported action contract, catalog identity and source commit with that manifest;
+custom edits and unknown entries remain manual references. The numbers already
+use player-defense Weak/Standard/Strong orientation and are never reversed.
+Specialties with extra clauses, mixed damage or freeform outcomes explain their
+manual status. Numeric declarations retain their source snapshot on the GM chat
+card; ordinary defense uses the same result binding and atomic damage receipt as
+Basic Melee. Upgrades do not rewrite existing actor actions to grant eligibility.
+
+The 2.0.0 acceptance archive contains 483 files. `npm run check` includes a Chromium
+DOM regression, so run `npx playwright install --with-deps chromium` after `npm ci`
+on a new machine. Both validation and release CI install the browser before checks.
+Native tests use an isolated world and wait for a coherent idle coordinator before
+closing/restarting clients. A clean server restart can recover a proven idle partial
+activation before or after binding; busy/uncertain work is never cleared implicitly.

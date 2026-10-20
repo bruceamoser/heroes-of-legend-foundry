@@ -37,3 +37,14 @@ export function bindPortraitControls(app) {
     });
   }
 }
+
+/** The standard native image browser persists its selection immediately. */
+export async function editPortrait() {
+  if (!this.isEditable || !this.actor.testUserPermission(game.user,"OWNER")) throw new Error("Only this Actor's owner can change its portrait.");
+  const actor=this.actor;
+  const picker=new CONFIG.ux.FilePicker({type:"image",current:actor.img,document:actor,callback:async img=>{
+    try {if (typeof img !== "string" || !img.trim()) throw new Error("Choose a portrait image.");await updateOwnedDocument(actor,{img});}
+    catch(error) {ui.notifications.error(error.message);}
+  }});
+  return picker.browse();
+}

@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You gather the shining tether around your wrist and step toward your summoned companion, drawing its outline into sharper focus.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>Self and one of your visible summons within 6 squares.</dd></div><div><dt>Duration</dt><dd>Until used or the end of this turn.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Repeated uses do not multiply this card’s benefit on the same summon.</dd></div><div><dt>Type</dt><dd>Magic / Movement</dd></div></dl><div class=\"hol-reference-rules\"><p>Move up to 2 squares toward the summon, following normal movement and opportunity rules. The summon gains 1 Boon to its next attack this turn if you subsequently command it. This does not command it, move it or grant an attack.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/cards/draw-the-tether.md\" target=\"_blank\" rel=\"noopener\">design/cards/draw-the-tether.md</a> at <code>bdfd18ed535fbd0e1892b9344444abf6da644809</code>.</p></section>",
     "activity": {
-      "action": "main",
+      "action": "maneuver",
       "rollMode": "none",
       "attribute": "brawn",
       "defenseAttribute": "agility"

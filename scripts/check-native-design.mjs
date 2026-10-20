@@ -58,12 +58,8 @@ try {
   await mkdir("test-results/native-design", { recursive: true });
   gm = await join(process.env.HOL_TEST_USER ?? "Gamemaster");
   await gm.evaluate(async()=>{
-    const ID="heroes-of-legend";
-    if(game.settings.get(ID,"creationAuthorityClient")!==game.socket.id){
-      const work=game.settings.get(ID,"authorityWork");if(work.busy||work.uncertain)throw new Error("Isolated coordinator has unresolved work.");
-      await game.settings.set(ID,"creationAuthorityClient","");await game.settings.set(ID,"authorityMeta",{});await game.settings.set(ID,"authorityWork",{});
-      const {bindCreationAuthority}=await import("/systems/heroes-of-legend/services/authority.mjs");await bindCreationAuthority();
-    }
+    const {ensureAuthorityReady}=await import("/systems/heroes-of-legend/services/authority.mjs");
+    await ensureAuthorityReady();
   });
   fixture = await gm.evaluate(async () => {
     const ID = "heroes-of-legend";
@@ -79,13 +75,14 @@ try {
     const ability = catalogs.choices.find(r=>r.id===recipe.permissions[0]);
     const equipment = catalogs.inventory.equipment.find(r=>r.inventoryDie && !r.specialOrder);
     const items = await actor.createEmbeddedDocuments("Item",[abilityItemSource(ability,{sourceCommit:catalogs.commit}),equipmentItemSource(equipment,{sourceCommit:catalogs.commit,quantity:1,inventoryDie:0})]);
-    if (items.some(item => !item.img.startsWith(`systems/${ID}/assets/`) || item.img.includes("item-bag"))) throw new Error("Catalog Items retained generic artwork");
+    if (items.some(item => !(item.img.startsWith(`systems/${ID}/assets/marks/`) || (item.img.startsWith("icons/") && item.img.endsWith(".webp"))) || item.img.includes("item-bag"))) throw new Error("Catalog Items retained generic artwork");
     const artProbes = await actor.createEmbeddedDocuments("Item", [
       {name:"Default artwork probe",type:"equipment",system:{catalogId:"item-water-flask"}},
       {name:"Chosen artwork probe",type:"equipment",img:`systems/${ID}/assets/icons/mask.svg`,system:{catalogId:"item-water-flask"}}
     ]);
     const defaultItem = artProbes.find(item => item.name === "Default artwork probe"), customItem = artProbes.find(item => item.name === "Chosen artwork probe");
-    if (defaultItem.img !== `systems/${ID}/assets/icons/flask.svg` || customItem.img !== `systems/${ID}/assets/icons/mask.svg`) throw new Error("Native Item creation did not preserve default/custom artwork policy");
+    const {catalogItemIcon} = await import("/systems/heroes-of-legend/rules/item-icons.mjs");
+    if (defaultItem.img !== catalogItemIcon({id:"item-water-flask"}) || customItem.img !== `systems/${ID}/assets/icons/mask.svg`) throw new Error("Native Item creation did not preserve default/custom artwork policy");
     await actor.deleteEmbeddedDocuments("Item", [defaultItem.id,customItem.id]);
     const supply = items.find(item=>item.type==="equipment");
     const creatureProfiles=await game.packs.get(`${ID}.creatures`).getDocuments();const source = (creatureProfiles.find(profile=>profile.name==="Shield Soldier")??creatureProfiles[0]).toObject();delete source._id;source.name="Edda · native design";source.flags[ID].npc={enabled:true,detail:"A gold clasp",want:"Keep the crossing open"};
@@ -132,6 +129,7 @@ try {
   await owner.locator('.hol-character [data-action="crafting"]').click();
   await owner.locator('.hol-crafting [data-action="start"]').click();
   await waitActor(({id,recipe})=>game.actors.get(id).getFlag("heroes-of-legend","craftingState")?.[recipe]?.active,{id:fixture.actor,recipe:fixture.recipe});
+  await owner.locator('.hol-crafting [data-action="resolve"]').first().click();
   await owner.locator('.hol-crafting [data-action="attempt"]').click();
   await waitActor(({id,recipe})=>game.actors.get(id).getFlag("heroes-of-legend","craftingState")?.[recipe]?.progress>0,{id:fixture.actor,recipe:fixture.recipe});
   await capture(owner,owner.locator(".hol-crafting"),"test-results/native-design/crafting.png");
@@ -174,14 +172,14 @@ try {
   const journals=await gm.evaluate(async()=>{
     const {importRuleJournals}=await import("/systems/heroes-of-legend/services/journals.mjs");
     const first=await importRuleJournals();
-    const entry=game.journal.find(e=>e.getFlag("heroes-of-legend","ruleSource")?.path==="design/rules/languages.md");
+    const entry=game.journal.find(e=>e.getFlag("heroes-of-legend","ruleBook")?.key==="player-rules");
     await entry.update({name:"Our renamed local rules"});
-    const again=await importRuleJournals();return {first,again,id:entry.id,name:entry.name,total:(await (await import("/systems/heroes-of-legend/services/journals.mjs")).ruleIndex()).length};
+    const again=await importRuleJournals();return {first,again,id:entry.id,name:entry.name,total:2,sourcePages:(await (await import("/systems/heroes-of-legend/services/journals.mjs")).ruleIndex()).length,pages:game.journal.filter(e=>e.getFlag("heroes-of-legend","ruleBook")).reduce((sum,e)=>sum+e.pages.size,0)};
   });
-  assert.equal(journals.first.created+journals.first.retained,journals.total);assert.equal(journals.again.created,0);assert.equal(journals.name,"Our renamed local rules");
+  assert.equal(journals.first.created+journals.first.retained,journals.total);assert.equal(journals.sourcePages,1018);assert.equal(journals.pages,1048);assert.equal(journals.again.created,0);assert.equal(journals.name,"Our renamed local rules");
   await owner.evaluate(async()=>{const {openLocalRule,ruleIndex}=await import("/systems/heroes-of-legend/services/journals.mjs");if((await ruleIndex()).some(r=>r.pack==="da-rules"))throw new Error("DA index leaked");await openLocalRule("design/rules/languages.md");});
   await owner.bringToFront();
-  await capture(owner,owner.locator(".journal-entry"),"test-results/native-design/journal.png");
+  await capture(owner,owner.locator(".hol-native-book"),"test-results/native-design/journal.png");
   await gm.bringToFront();
   await gm.evaluate(async id=>{await game.actors.get(id).sheet.close();await game.actors.get(id).sheet.render({force:true,position:{width:390,height:760,left:10,top:10}});},fixture.actor);
   await capture(gm,sheet,"test-results/native-design/character-narrow.png");
@@ -195,12 +193,13 @@ try {
     const r=globalThis.__holDesign;if(!r)return;
     Hooks.off("createChatMessage",r.hook);Hooks.off("createJournalEntry",r.journalHook);
     for(const app of Object.values(ui.windows))if(app.options?.classes?.includes("heroes-of-legend"))await app.close();
+    const work=game.settings.get("heroes-of-legend","authorityWork");
+    if(work.busy||work.uncertain)throw new Error("Preserving fixtures for unsettled coordinator work; do not clear its checkpoint.");
     const counts={};
     for(const [type,collection,ids] of [[ChatMessage,game.messages,r.messages],[JournalEntry,game.journal,r.journals],[Actor,game.actors,r.actors],[User,game.users,r.users]]){
       const existing=ids.filter(id=>collection.has(id));if(existing.length)await type.deleteDocuments(existing);counts[type.name]=existing.length;
       if(ids.some(id=>collection.has(id)))throw new Error(`Fixture ${type.name} cleanup incomplete`);
     }
-    await game.settings.set("heroes-of-legend","creationAuthorityClient","");await game.settings.set("heroes-of-legend","authorityMeta",{});await game.settings.set("heroes-of-legend","authorityWork",{});
     delete globalThis.__holDesign;return counts;
   }).then(counts=>console.info("CLEANUP",JSON.stringify(counts))).catch(error=>{cleanupError=error;console.error("Cleanup failed",error);});
   await browser.close();

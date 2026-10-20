@@ -83,3 +83,28 @@ test("reference verification uses live GM source identity, not numeric Combat re
     assert.throws(() => verifiedIncomingAttackContext("attack"), /unavailable/);
   } finally { delete globalThis.game; delete globalThis.fromUuidSync; }
 });
+
+test('pinned simple named physical attacks automate exact player-defense outcomes only', async()=>{
+ const {numericCreatureAction}=await import('../src/rules/numeric-creature-actions.mjs');
+ let count=0;
+ for(const document of artifacts.documents.creatures)for(const action of document.system.actions.entries){
+  const numeric=numericCreatureAction(document.flags['heroes-of-legend'].catalogId,catalogs.lock.commit,action);
+  if(numeric){count++;for(const tier of ['weak','standard','strong'])assert.deepEqual(incomingOutcome(numeric,tier),{damage:Number(action.outcomes[tier]),type:'physical',applied:false});}
+ }
+ assert.equal(count,21);
+ const goblin=artifacts.documents.creatures.find(d=>d.flags['heroes-of-legend'].catalogId==='creature-goblin-scrapper');
+ const action=goblin.system.actions.entries.find(a=>a.name==='Scrap knife');
+ const resolve=a=>numericCreatureAction('creature-goblin-scrapper',catalogs.lock.commit,a);
+ assert.deepEqual(resolve(action).damage,{weak:5,standard:3,strong:2});
+ for(const edited of [{...action,name:'Custom knife'},{...action,outcomes:{...action.outcomes,weak:'5 + Bleeding 1'}},{...action,referenceMarkdown:action.referenceMarkdown+' Extra effect.'}])assert.equal(resolve(edited),null);
+ assert.equal(numericCreatureAction('creature-other',catalogs.lock.commit,action),null);
+ assert.equal(numericCreatureAction('creature-goblin-scrapper','other-commit',action),null);
+});
+
+test('numeric named attack verification binds exact pinned entry and source identity',async()=>{
+ const {numericCreatureAction}=await import('../src/rules/numeric-creature-actions.mjs');
+ const goblin=artifacts.documents.creatures.find(d=>d.flags['heroes-of-legend'].catalogId==='creature-goblin-scrapper'),action=goblin.system.actions.entries.find(a=>a.name==='Scrap knife');
+ const attack={...numericCreatureAction('creature-goblin-scrapper',catalogs.lock.commit,action),perspective:'defender',actorUuid:'Actor.goblin',attributeKey:action.attributeKey,numericSource:{catalogId:'creature-goblin-scrapper',sourceCommit:catalogs.lock.commit,action}};
+ const message={author:{isGM:true},isContentVisible:true,getFlag:()=>attack};globalThis.game={messages:new Map([['attack',message]])};globalThis.fromUuidSync=()=>({uuid:'Actor.goblin',type:'creature'});
+ try {assert.deepEqual(verifiedIncomingAttackContext('attack'),attack);attack.damage.weak=99;assert.throws(()=>verifiedIncomingAttackContext('attack'),/numeric creature action could not be verified/);}finally{delete globalThis.game;delete globalThis.fromUuidSync;}
+});

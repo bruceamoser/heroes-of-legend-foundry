@@ -1,3 +1,5 @@
+import {loadCatalogs} from "./catalog.mjs";
+import {abilityRuleReferenceHTML} from "../rules/rule-reference-view.mjs";
 const ID = "heroes-of-legend";
 let indexPromise;
 const searchDocuments = new Map();
@@ -19,60 +21,96 @@ export async function searchLocalRules(query, collection = "all") {
   const text = new Map();
   for (const name of new Set(records.map(record => record.pack))) for (const document of await searchDocuments.get(name)) {
     if (!document.testUserPermission(game.user, "OBSERVER")) continue;
-    text.set(document.id, document.pages.map(page => page.text?.content ?? "").join(" ").replace(/<[^>]*>/g, " ").toLocaleLowerCase());
+    for (const page of document.pages) text.set(page.id, (page.text?.content ?? "").replace(/<[^>]*>/g, " ").toLocaleLowerCase());
   }
-  return new Set(records.filter(record => `${record.name} ${record.path}`.toLocaleLowerCase().includes(normalized) || text.get(record.id)?.includes(normalized)).map(record => record.path));
+  return new Set(records.filter(record => `${record.name} ${record.path}`.toLocaleLowerCase().includes(normalized) || text.get(record.pageId)?.includes(normalized)).map(record => record.path));
 }
-export async function openLocalRule(path) {
+/** Resolve the matching native book page, preserving edited world book copies. */
+export async function localRulePage(path) {
   const record = (await ruleIndex()).find(record => record.path === path);
   if (!record) throw new Error("This rule is unavailable to this user.");
-  const imported = game.journal.find(entry => entry.getFlag(ID, "ruleSource")?.path === path && entry.testUserPermission(game.user, "OBSERVER"));
-  const page = imported?.pages.find(page => page.id === record.pageId) ?? imported?.pages.contents?.[0];
+  const imported = game.journal.find(entry => entry.getFlag(ID, "ruleBook")?.key === record.pack && entry.testUserPermission(game.user, "OBSERVER"));
+  const page = imported?.pages.find(page => page.id === record.pageId);
   const document = page ?? await fromUuid(record.uuid);
   if (!document || !document.testUserPermission(game.user, "OBSERVER")) throw new Error("You cannot read this rule reference.");
-  await (document.parent?.sheet ?? document.sheet).render({ force: true, pageId: document.id, mode: "single" });
   return document;
 }
+/** Explicit full-book navigation uses Foundry's native TOC, search and paging. */
+export async function openLocalRule(path) {
+  const page = await localRulePage(path);
+  await page.parent.sheet.render({ force: true, pageId: page.id, mode: foundry.applications.sheets.journal.JournalEntrySheet.VIEW_MODES.SINGLE });
+  return page;
+}
+/** Close a reference without destroying the host retained by a sheet or wizard. */
+export function closeInlineRule(container) {
+  if (container.hasAttribute("data-library-reader")) container.replaceChildren();
+  else if (container.hasAttribute("data-rule-content")) {
+    container.replaceChildren();
+    const panel=container.closest("[data-character-reference],[data-creation-reference]");
+    if(panel)panel.hidden=true;
+  } else container.remove();
+}
+/** A copied or renamed page keeps its own prose; only pristine references use
+ * the catalog's alternate web presentation. Source flags alone do not prove it.
+ */
+export function inlineAbilityUsesCatalog(page,canonical){
+  return Boolean(canonical && page.name===canonical.name && page.text?.content===canonical.text?.content);
+}
+/** Inline presentation for ability cards, character choices and rule links. */
+export async function renderInlineRule(path, container) {
+  const page = await localRulePage(path);
+  let markup=page.text.content,structured=false;
+  if(path.startsWith("design/cards/")){
+    const record=(await loadCatalogs()).choices.find(record=>record.kind==="ability"&&record.source.path===path);
+    const indexed=(await ruleIndex()).find(source=>source.path===path);
+    const canonical=indexed?await fromUuid(indexed.uuid):null;
+    if(record && inlineAbilityUsesCatalog(page,canonical)){markup=abilityRuleReferenceHTML(record);structured=true;}
+  }
+  if(!structured){
+    const heading=`<h2>${foundry.utils.escapeHTML(page.name)}</h2>`;
+    markup=/^<article[^>]*>/.test(markup)?markup.replace(/^(<article[^>]*>)/,`$1${heading}`):`<article class="hol-journal-page">${heading}${markup}</article>`;
+  }
+  const html = await foundry.applications.ux.TextEditor.implementation.enrichHTML(markup, {async:true, relativeTo:page, secrets:game.user.isGM});
+  // The content is sanitized by TextEditor; controls are built through DOM APIs.
+  container.replaceChildren();
+  container.classList.add("hol-inline-rule");
+  const controls = document.createElement("header");
+  const book = document.createElement("button"); book.type = "button"; book.textContent = "Open full book";
+  book.addEventListener("click", () => openLocalRule(path).catch(error => ui.notifications.error(error.message)));
+  const close = document.createElement("button"); close.type = "button"; close.textContent = "Close rules";
+  close.addEventListener("click", () => {
+    closeInlineRule(container);
+  });
+  controls.append(book, close);
+  const content = document.createElement("div"); content.innerHTML = html;
+  container.append(controls, content);
+  await localizeRuleLinks(container);
+  return page;
+}
 let importing;
-/** Explicit GM import. Existing source identities are retained, including renamed/edited entries. */
+/** Explicit GM import creates two new books; legacy journals and all edits survive. */
 export async function importRuleJournals() {
   if (!game.user.isGM) throw new Error("Only the Dungeon Architect can import rule journals.");
   if (importing) return importing;
   importing = (async () => {
     const records = await ruleIndex();
     let created = 0, retained = 0;
-    const sources = new Map();
     for (const name of new Set(records.map(record => record.pack))) {
+      if (game.journal.some(entry => entry.getFlag(ID,"ruleBook")?.key === name)) { retained++; continue; }
       const pack = game.packs.get(`${ID}.${name}`);
       if (!pack) throw new Error(`Missing rules compendium: ${name}`);
-      sources.set(name, new Map((await pack.getDocuments()).map(document => [document.id, document])));
-    }
-    let batch = [];
-    const flush = async () => {
-      if (!batch.length) return;
-      try {
-        const documents = await JournalEntry.createDocuments(batch, { keepId: true, keepEmbeddedIds: true });
-        created += documents.length;
-      } catch (error) {
-        // Concurrent GM imports use the same IDs. A retry cannot create a second copy.
-        if (!batch.every(data => game.journal.some(entry => entry.getFlag(ID, "ruleSource")?.path === data.flags[ID].ruleSource.path))) throw error;
-        retained += batch.length;
-      }
-      batch = [];
-    };
-    for (const record of records) {
-      if (game.journal.some(entry => entry.getFlag(ID, "ruleSource")?.path === record.path)) { retained++; continue; }
-      const source = sources.get(record.pack)?.get(record.id);
-      if (!source) throw new Error(`Missing local rule: ${record.name}`);
+      const source = (await pack.getDocuments()).find(entry => entry.getFlag(ID,"ruleBook")?.key === name);
+      if (!source) throw new Error(`Missing native rule book: ${name}`);
+      if (game.journal.some(entry => entry.id === source.id)) throw new Error(`An unrelated world journal occupies the rule ID for ${source.name}; it was preserved.`);
       const data = source.toObject();
-      data._id = record.id;
-      if (game.journal.some(entry => entry.id === record.id)) throw new Error(`An unrelated world journal occupies the rule ID for ${record.name}; it was preserved.`);
-      data.ownership = { default: record.pack === "player-rules" ? 2 : 0 };
-      batch.push(data);
-      if (batch.length === 50) await flush();
+      data.ownership = {default:name === "player-rules" ? 2 : 0};
+      try { created += (await JournalEntry.createDocuments([data],{keepId:true,keepEmbeddedIds:true})).length; }
+      catch (error) {
+        if (!game.journal.some(entry => entry.getFlag(ID,"ruleBook")?.key === name)) throw error;
+        retained++;
+      }
     }
-    await flush();
-    return { created, retained };
+    return {created,retained};
   })();
   try { return await importing; } finally { importing = null; }
 }
@@ -83,7 +121,13 @@ export function bindLocalRuleLinks(root) {
     link.dataset.holRuleBound = "true";
     link.addEventListener("click", event => {
       event.preventDefault();
-      openLocalRule(link.dataset.holRulePath).catch(error => ui.notifications.error(error.message));
+      event.stopPropagation();
+      const existing = link.nextElementSibling;
+      if (existing?.classList.contains("hol-inline-rule")) { existing.remove(); return; }
+      const container = document.createElement("section");
+      container.setAttribute("aria-label", "Rule reference");
+      link.insertAdjacentElement("afterend", container);
+      renderInlineRule(link.dataset.holRulePath, container).catch(error => { container.remove(); ui.notifications.error(error.message); });
     });
   }
 }
@@ -103,6 +147,11 @@ export async function localizeRuleLinks(root) {
     link.href = "#";
     link.removeAttribute("target");
     link.removeAttribute("rel");
+  }
+  const byUuid = new Map(records.flatMap(record => [[record.uuid, record.path], ...(record.legacyUuid ? [[record.legacyUuid, record.path]] : [])]));
+  for (const link of root.querySelectorAll('a[data-uuid]')) {
+    const path = byUuid.get(link.dataset.uuid);
+    if (path) { link.dataset.holRulePath = path; link.href = "#"; }
   }
   bindLocalRuleLinks(root);
 }

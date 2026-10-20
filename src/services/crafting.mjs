@@ -1,3 +1,5 @@
+import { ensureAuthorityReady } from "./authority.mjs";
+import { inventoryCheck } from "../rules/inventory.mjs";
 import { classifyRoll } from "../rules/roll.mjs";
 import { loadCatalogs } from "./catalog.mjs";
 import { enqueueCharacterOperation, isCreationAuthority, writeAuthorityDocument } from "./authority.mjs";
@@ -43,8 +45,8 @@ export function craftingBasis(actor) {
 }
 export async function requestCrafting(actor, payload) {
   if (actor.pack || actor.type !== "character" || !actor.testUserPermission(game.user, "OWNER")) throw new Error("Only this character’s owner can craft.");
-  if (!game.settings.get(ID, "creationAuthorityClient")) throw new Error("The DA must enable automation before crafting.");
   const request = { ...payload, actorUuid: actor.uuid, basis: craftingBasis(actor) };
+  await ensureAuthorityReady();
   return ChatMessage.create({ content: "Crafting requested.", whisper: game.users.filter(u => u.isGM || u.id === game.user.id || actor.testUserPermission(u, "OWNER")).map(u => u.id), flags: { [ID]: { craftingRequest: request } } });
 }
 export function resolveCraftingRequest(messageId) {
@@ -66,9 +68,13 @@ async function applyCrafting(messageId) {
   assertNoPendingTurn(actor);
   let pending = actor.getFlag(ID, "pendingCrafting");
   const recovery = request.kind === "recover" ? request : null;
-  if (recovery && !message.author.isGM) throw new Error("Only the DA can reconcile the original retained dice.");
-  const operationId = ["resume", "recover"].includes(request.kind) ? pending?.requestId : messageId;
-  if (request.kind === "recover") {
+  const materialRecovery = request.kind === "recoverMaterial" ? request : null;
+  if ((recovery || materialRecovery) && !message.author.isGM) throw new Error("Only the DA can reconcile the original retained dice.");
+  const operationId = ["resume", "recover", "recoverMaterial"].includes(request.kind) ? pending?.requestId : messageId;
+  if (request.kind === "recoverMaterial") {
+    if (!pending || pending.status !== "rolled" || pending.material?.phase !== "rolling") throw new Error("Only an unresolved material supply check can be recovered.");
+    request = structuredClone(pending.request);
+  } else if (request.kind === "recover") {
     if (!pending || pending.status !== "rolling") throw new Error("Only an unresolved crafting roll can be recovered.");
     request = structuredClone(pending.request);
   } else if (request.kind === "resume") {
@@ -90,14 +96,23 @@ async function applyCrafting(messageId) {
     const ability = recipe.abilities.find(a => a.id === request.abilityId);
     if (!ability) throw new Error("Choose a learned crafting ability for this recipe.");
     if (!Number.isInteger(request.adjustment) || Math.abs(request.adjustment) > 3) throw new Error("Choose net Boons/Banes from −3 to +3.");
-    const basis = rollBasis(actor, ability.attribute);
+    const attribute = request.attribute ?? ability.attribute;
+    if (!["brawn","fortitude","agility","guile","knowledge","reason"].includes(attribute) || !actor.system.attributes[attribute]) throw new Error("Choose a character attribute for the crafting attempt.");
+    let materialItem;
+    if (request.materialSupplyId) {
+      materialItem = actor.items.find(item => item.id === request.materialSupplyId);
+      if (!materialItem || materialItem.type !== "equipment" || materialItem.system.catalogId !== "item-material-bundle" || materialItem.system.carried === false || materialItem.system.quantity < 1 || ![4,6,8,10,12,20].includes(materialItem.system.inventoryDie)) throw new Error("Choose an active carried material supply.");
+      if (actor.getFlag(ID,"pendingInventory") || actor.getFlag(ID,"pendingPotion")) throw new Error("Finish the pending supply operation before checking crafting materials.");
+      if (request.supplyId === request.materialSupplyId) throw new Error("Crafting output and checked material supply must be separate stacks.");
+    }
+    const basis = rollBasis(actor, attribute);
     const base = prepareRoll(basis, situationalRollDraft());
     const draft = { ...situationalRollDraft(), ...effectiveRollDraft(base, request.adjustment, true) };
     if (recovery) {
       const plan = pending.plan;
       if (!plan) throw new Error("The saved roll plan is unavailable; reconcile this attempt with the DA.");
       const classified = classifyRoll(recovery.faces, plan.attribute);
-      result = { ...plan, ...classified, retained: recovery.faces, dice: recovery.faces.map((face, index) => ({ face, index, kept: true })), attributeKey: ability.attribute, mode: "attribute", actorUuid: actor.uuid, recovery: { authorId: message.author.id, reason: typeof recovery.reason === "string" ? recovery.reason : "" } };
+      result = { ...plan, ...classified, retained: recovery.faces, dice: recovery.faces.map((face, index) => ({ face, index, kept: true })), attributeKey: attribute, mode: "attribute", actorUuid: actor.uuid, recovery: { authorId: message.author.id, reason: typeof recovery.reason === "string" ? recovery.reason : "" } };
       pending = { ...pending, status: "rolled", result, roll: null };
       await writeAuthorityDocument(actor, { [`flags.${ID}.pendingCrafting`]: pending });
     }
@@ -112,10 +127,24 @@ async function applyCrafting(messageId) {
       pending = { ...pending, status: "rolled", result, roll: roll.toJSON() };
       await writeAuthorityDocument(actor, { [`flags.${ID}.pendingCrafting`]: pending });
     }
+    if (materialItem) {
+      if (!pending.material) {
+        pending = {...pending,material:{phase:"rolling",itemId:materialItem.id,before:materialItem.system.inventoryDie}};
+        await writeAuthorityDocument(actor,{[`flags.${ID}.pendingCrafting`]:pending});
+        const supplyRoll = await new foundry.dice.Roll(`1d${pending.material.before}`).evaluate();
+        pending = {...pending,material:{...pending.material,phase:"rolled",...inventoryCheck({die:pending.material.before,retained:supplyRoll.total}),roll:supplyRoll.toJSON()}};
+        await writeAuthorityDocument(actor,{[`flags.${ID}.pendingCrafting`]:pending});
+      } else if (pending.material.phase === "rolling") {
+        if (!materialRecovery) throw new Error("The material supply check may have rolled. The DA must record its original face; it will not reroll.");
+        pending = {...pending,material:{...pending.material,phase:"rolled",...inventoryCheck({die:pending.material.before,retained:materialRecovery.materialFace}),recoveredBy:message.author.id}};
+        await writeAuthorityDocument(actor,{[`flags.${ID}.pendingCrafting`]:pending});
+      }
+    }
     const inventory = actor.items.filter(i => i.type === "equipment").map(i => ({ instanceId: i.id, catalogId: i.system.catalogId, quantity: i.system.quantity, inventoryDie: i.system.inventoryDie }));
     const attempt = workshopCraft({ play, recipe, tier: result.tier, items: inventory, instanceId: foundry.utils.randomID(), supplyId: request.supplyId || "" });
     play = attempt.play;
-    summary = `${recipe.name} · ${result.tier} (${result.total}) · ${attempt.message}`;
+    if (pending.material?.phase === "rolled") play.inventory.overrides[pending.material.itemId] = {inventoryDie:pending.material.after};
+    summary = `${recipe.name} · ${result.tier} (${result.total}) · ${attempt.message}${pending.material ? ` · Material d${pending.material.before}: ${pending.material.retained} → ${pending.material.after ? "d"+pending.material.after : "Empty"}` : ""}`;
   } else throw new Error("Unknown crafting operation.");
   const items = actor.toObject().items;
   for (const added of play.inventory.added) {
@@ -129,11 +158,12 @@ async function applyCrafting(messageId) {
   }
   if (JSON.stringify(craftingBasis(actor)) !== JSON.stringify(request.basis)) throw new Error("Character changed during the attempt. No project or inventory changes were applied.");
   const inventoryChanged = play.inventory.added.length > 0 || Object.keys(play.inventory.overrides).length > 0;
-  const changes = { items, [`flags.${ID}.pendingCrafting`]: null, ...(inventoryChanged ? { [`flags.${ID}.inventoryRevision`]: (actor.getFlag(ID, "inventoryRevision") ?? 0) + 1, [`flags.${ID}.equipmentRevision`]: (actor.getFlag(ID, "equipmentRevision") ?? 0) + 1 } : {}), [`flags.${ID}.craftingState`]: play.crafting, [`flags.${ID}.operationReceipts.${messageId}`]: { applied: true, kind: "crafting", authorId: message.author.id, request: signature, summary, ...(result ? { result } : {}) } };
-  if (operationId !== messageId) changes[`flags.${ID}.operationReceipts.${operationId}`] = { applied: true, kind: "crafting", authorId: pending.authorId, request: JSON.stringify(pending.request), summary, ...(result ? { result } : {}) };
+  const changes = { items, [`flags.${ID}.pendingCrafting`]: null, ...(inventoryChanged ? { [`flags.${ID}.inventoryRevision`]: (actor.getFlag(ID, "inventoryRevision") ?? 0) + 1, [`flags.${ID}.equipmentRevision`]: (actor.getFlag(ID, "equipmentRevision") ?? 0) + 1 } : {}), [`flags.${ID}.craftingState`]: play.crafting, [`flags.${ID}.operationReceipts.${messageId}`]: { applied: true, kind: "crafting", authorId: message.author.id, request: signature, summary, ...(result ? { result, ...(pending?.material ? { material:pending.material } : {}) } : {}) } };
+  if (operationId !== messageId) changes[`flags.${ID}.operationReceipts.${operationId}`] = { applied: true, kind: "crafting", authorId: pending.authorId, request: JSON.stringify(pending.request), summary, ...(result ? { result, ...(pending?.material ? { material:pending.material } : {}) } : {}) };
   validateCreationChanges(actor, changes);
   await writeAuthorityDocument(actor, changes);
-  await message.update({ content: foundry.utils.escapeHTML(summary), ...(roll ? { rolls: [roll] } : {}), ...(result ? { [`flags.${ID}.roll`]: result } : {}) });
+  const rolls = [...(roll ? [roll] : []), ...(pending?.material?.roll ? [foundry.dice.Roll.fromData(structuredClone(pending.material.roll))] : [])];
+  await message.update({ content: foundry.utils.escapeHTML(summary), ...(rolls.length ? { rolls } : {}), ...(result ? { [`flags.${ID}.roll`]: result } : {}) });
   return { applied: true };
 }
 export function registerCraftingRequests() {

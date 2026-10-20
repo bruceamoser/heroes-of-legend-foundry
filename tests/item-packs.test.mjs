@@ -268,6 +268,7 @@ test("shared creation constructor adds grant provenance only when explicitly req
     bulk: equipment.bulk,
     hands: 0,
     inventoryDie: 8,
+    carried: true,
     held: false,
     worn: false,
   });
@@ -407,5 +408,14 @@ test("reviewed actions retain their actual category and avoid an invented outcom
     );
     assert.equal(item.system.activity.action, category);
     assert.equal(item.system.activity.rollMode, "none");
+  }
+});
+
+test("all native catalog ability categories retain their printed timing rather than defaulting to Main Action", async () => {
+  const {actionTiming} = await import("../src/rules/workshop-character.mjs");
+  const labels={main:"Main Action",maneuver:"Maneuver",reaction:"Reaction",passive:"Passive",movement:"Movement",other:"Other"};
+  for(const record of abilityRecords) {
+    const item=abilityItemSource(record,{sourceCommit:catalogs.lock.commit});
+    assert(actionTiming(record).includes(labels[item.system.activity.action]),`${record.id}: ${item.system.activity.action} does not match its printed timing`);
   }
 });

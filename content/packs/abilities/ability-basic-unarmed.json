@@ -3,7 +3,7 @@
   "_id": "f461ae4343e34ad4",
   "name": "Basic Unarmed",
   "type": "ability",
-  "img": "systems/heroes-of-legend/assets/icons/fist.svg",
+  "img": "icons/skills/melee/unarmed-punch-fist.webp",
   "system": {
     "schemaVersion": 1,
     "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You close the distance with fist, heel or shoulder, putting your whole body behind the blow.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Brawn</dd></div><div><dt>Target / range / shape</dt><dd>One adjacent creature</dd></div><div><dt>Duration</dt><dd>Instant</dd></div><div><dt>Equipment / acquisition</dt><dd>No equipment required or granted.</dd></div><div><dt>Limits</dt><dd>Repeatable; pay the action and any stated costs each use.</dd></div><div><dt>Type</dt><dd>Attack</dd></div></dl><div class=\"hol-reference-rules\"><p>Choose your target and make the attack.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>1 physical damage.</dd><dt>Standard</dt><dd>2 physical damage.</dd><dt>Strong</dt><dd>4 physical damage.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/cards/basic-unarmed.md\" target=\"_blank\" rel=\"noopener\">design/cards/basic-unarmed.md</a> at <code>bdfd18ed535fbd0e1892b9344444abf6da644809</code>.</p></section>",

@@ -24,7 +24,7 @@ export function movementProfile({
       item.quantity < 0
     )
       throw new Error("Invalid carried item Bulk or quantity.");
-    if (item.quantity === 0) continue;
+    if (item.quantity === 0 || item.carried === false) continue;
     bulk += item.bulk * item.quantity;
     if (
       !wornOutfitExcluded &&

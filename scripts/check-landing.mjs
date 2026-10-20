@@ -1,0 +1,78 @@
+import assert from "node:assert/strict";
+import {mkdir, writeFile} from "node:fs/promises";
+import {resolve} from "node:path";
+import {chromium} from "playwright";
+import {selectTestUser} from "./helpers/login.mjs";
+const url = process.env.HOL_TEST_URL;
+if (!url || !["localhost", "127.0.0.1"].includes(new URL(url).hostname) || process.env.HOL_TEST_ALLOW_WRITES !== "1" || process.env.HOL_TEST_ISOLATED_WORLD !== "1") throw Error("Set isolated localhost HOL_TEST_URL and both write/isolated guards.");
+const output = resolve("test-results/landing"); await mkdir(output, {recursive: true});
+const browser = await chromium.launch({args: ["--use-gl=angle", "--use-angle=swiftshader", "--enable-unsafe-swiftshader"]});
+const context = await browser.newContext({viewport: {width: 1600, height: 1000}});
+await context.addInitScript(() => localStorage.setItem("core.maxFPS", "10"));
+const page = await context.newPage(), errors = [];
+page.on("pageerror", error => errors.push(error.message));
+let created, wasPaused, playerUser, playerContext;
+try {
+  await page.goto(url + "/join"); await selectTestUser(page, "Gamemaster");
+  await page.locator('button[name="join"]').click();
+  await page.waitForFunction(() => globalThis.game?.ready, null, {timeout: 60000});
+  await page.evaluate(() => foundry.nue.Tour.activeTour?.exit());
+  wasPaused = await page.evaluate(() => {const paused = game.paused; game.togglePause(false, true); return paused;});
+  created = await page.evaluate(async () => {
+    const {createLandingScene, LANDING_ID} = await import("/systems/heroes-of-legend/services/landing.mjs");
+    if (game.scenes.get(LANDING_ID)) throw Error("Landing fixture would collide with existing content");
+    const active = game.scenes.active?.id;
+    const scene = await createLandingScene();
+    globalThis.__landingFixture = scene.id;
+    if (game.scenes.active?.id !== active) throw Error("Landing creation changed active scene");
+    if (scene.invalid || scene.tiles.some(tile => tile.invalid) || scene.drawings.some(drawing => drawing.invalid)) throw Error("Invalid native landing document");
+    await scene.update({name: "The gathering · preserved campaign title"});
+    const again = await createLandingScene();
+    if (again.id !== scene.id || again.name !== "The gathering · preserved campaign title") throw Error("Repeated setup changed campaign edits");
+    await scene.view();
+    return scene.id;
+  });
+  await page.locator("#hol-landing-navigation").waitFor();
+  await page.evaluate(() => document.fonts.ready);
+  await page.waitForFunction(() => canvas.ready && canvas.scene?.id === globalThis.__landingFixture);
+  await page.locator("#notifications .notification .close").evaluateAll(nodes => nodes.forEach(node => node.click()));
+  await page.screenshot({path: resolve(output, "native-gathering.png"), style: "#notifications {visibility:hidden}"});
+  assert.equal(await page.locator("#hol-landing-navigation button").count(), 4);
+  await page.getByRole("button", {name: "Player’s Book", exact: true}).click();
+  await page.locator(".hol-native-book").waitFor();
+  await page.evaluate(async () => {for (const app of foundry.applications.instances.values()) if (app.rendered && app.document?.documentName === "JournalEntry") await app.close();});
+  await page.evaluate(() => game.settings.set("heroes-of-legend", "theme", false));
+  assert.equal(await page.locator("body.hol-theme").count(), 0);
+  await page.evaluate(() => game.settings.set("heroes-of-legend", "theme", true));
+  assert.equal(await page.locator("body.hol-theme").count(), 1);
+  playerUser = await page.evaluate(async () => {const user = await User.create({name: `Landing check ${foundry.utils.randomID(6)}`, role: 1}); return {id: user.id, name: user.name};});
+  playerContext = await browser.newContext({viewport: {width: 1600, height: 1000}});
+  await playerContext.addInitScript(() => localStorage.setItem("core.maxFPS", "10"));
+  const player = await playerContext.newPage();
+  player.on("pageerror", error => errors.push(error.message));
+  await player.goto(url + "/join"); await selectTestUser(player, playerUser.name);
+  await player.locator('button[name="join"]').click();
+  await player.waitForFunction(() => globalThis.game?.ready, null, {timeout: 60000});
+  await player.evaluate(async id => {await foundry.nue.Tour.activeTour?.exit(); await game.scenes.get(id).view();}, created);
+  await player.locator("#hol-landing-navigation").waitFor();
+  assert.equal(await player.locator("#hol-landing-navigation button").count(), 3);
+  assert.equal(await player.getByRole("button", {name: "DA’s Guide", exact: true}).count(), 0);
+  assert.match(await player.evaluate(async () => {try {const {createLandingScene} = await import("/systems/heroes-of-legend/services/landing.mjs"); await createLandingScene(); return "Unexpectedly created";} catch (error) {return error.message;}}), /Only the Dungeon Architect/);
+  await player.getByRole("button", {name: "Player’s Book", exact: true}).click();
+  await player.locator(".hol-native-book").waitFor();
+  await playerContext.close(); playerContext = null;
+  const evidence = await page.evaluate(() => ({foundry: game.version, scene: canvas.scene.toObject(), active: game.scenes.active?.id, theme: document.body.classList.contains("hol-theme")}));
+  evidence.checks = ["Native scene/tiles/drawings valid", "Creation leaves active scene unchanged", "Repeat setup preserves custom scene title", "Player book navigation opens native book", "Client theme toggle applies immediately", "Player sees three links with no DA link, opens Player’s Book and cannot create landing scenes"];
+  evidence.errors = errors; assert.deepEqual(errors, []);
+  await writeFile(resolve(output, "evidence.json"), JSON.stringify(evidence, null, 2));
+  console.log("Landing scene and theme runtime passed");
+} finally {
+  if (playerContext) await playerContext.close();
+  if (playerUser && !page.isClosed()) await page.evaluate(async id => game.users.get(id)?.delete(), playerUser.id).catch(error => {console.error("Landing user cleanup failed", error); process.exitCode = 1;});
+  if (!page.isClosed()) await page.evaluate(async id => {
+    const fixture = game.scenes.get(id ?? globalThis.__landingFixture);
+    if (fixture) {await fixture.unview(); await fixture.delete();}
+  }, created).catch(error => {console.error("Landing fixture cleanup failed", error); process.exitCode = 1;});
+  if (wasPaused !== undefined && !page.isClosed()) await page.evaluate(paused => game.togglePause(paused, true), wasPaused).catch(() => {});
+  await browser.close();
+}

@@ -8,7 +8,7 @@ export class AbilityData extends foundry.abstract.TypeDataModel {
       schemaVersion: new NumberField({ required: true, nullable: false, integer: true, initial: 1, min: 1, max: 1 }),
       description: new HTMLField({ required: true, nullable: false, initial: "" }),
       activity: new SchemaField({
-        action: text("main", ["main", "maneuver", "reaction", "passive"]),
+        action: text("main", ["main", "maneuver", "reaction", "passive", "movement", "other"]),
         rollMode: text("attribute", ["attribute", "none", "delegated"]),
         attribute: text("brawn", ATTRIBUTES),
         defenseAttribute: text("agility", ATTRIBUTES)

@@ -1,11 +1,13 @@
-<section class="hol-body hol-native-card hol-item-card"><div class="hol-card-fixed"><div class="hol-card-toolbar">{{#if editable}}<button type="button" data-action="cardEdit">{{#if cardEditing}}✓ Done{{else}}✎ Edit{{/if}}</button>{{/if}}</div>
-  <header class="hol-banner"><img class="hol-item-mark" src="{{cardMark}}" alt=""><p class="hol-kicker">{{localize "HOL.Ability"}}</p><h1>{{item.name}}</h1></header></div><div class="hol-card-scroll">
-  {{#if canPost}}<button type="button" data-action="postReference">Post to chat</button>{{/if}}
-  {{#if definition}}<p class="hol-note">{{definition.summary}}</p>{{#if canUse}}<button type="button" class="hol-primary" data-action="useAbility">Use {{definition.name}}</button>{{/if}}{{else}}
-  {{#unless pendingAutomation}}<p class="hol-note">{{localize "HOL.ManualAbility"}}</p>{{/unless}}
-  {{/if}}
-    {{#if potionAbility}}<p class="hol-note">Choose a healing bottle and recipient. Healing occurs before the bottle’s supply check.</p>{{#if canUse}}<button type="button" class="hol-primary" data-action="useAbility">Prepare Use a Healing Potion</button>{{/if}}{{/if}}
-{{#if descriptionHTML}}<div class="hol-item-reference-output">{{{descriptionHTML}}}</div>{{/if}}
+<section class="hol-body hol-native-card hol-item-card hol-approved-item-card">
+  <div class="hol-card-fixed"><div class="hol-card-toolbar">{{#if editable}}<button type="button" data-action="cardEdit">{{#if cardEditing}}✓ Done{{else}}✎ Edit{{/if}}</button>{{/if}}{{#if canPost}}<button type="button" data-action="postReference">Post to chat</button>{{/if}}</div>
+  <header class="hol-item-header"><div class="hol-item-identity"><img class="hol-item-mark" src="{{cardMark}}" alt=""><div><h1>{{item.name}}</h1><p>Ability</p></div></div><dl class="hol-item-vitals"><div><dt>Level</dt><dd>{{cardLevel}}</dd></div><div><dt>DP</dt><dd>{{cardCost}}</dd></div></dl></header></div>
+  <div class="hol-card-scroll"><div class="hol-item-layout">
+    <article class="hol-item-rule-card"><div class="hol-item-rule-body" data-item-rules>{{{descriptionHTML}}}{{#if manualOutcomes}}<table class="hol-item-outcome-table"><tbody>{{#each manualOutcomes}}<tr><th scope="row">{{label}}</th><td>{{text}}</td></tr>{{/each}}</tbody></table>{{/if}}</div></article>
+    <div class="hol-item-use">{{#if canUse}}<button type="button" class="hol-primary" data-action="useAbility">{{#if potionAbility}}Prepare Use a Healing Potion{{else}}Use {{item.name}}{{/if}}</button>{{/if}}</div>
+    <aside class="hol-item-boxes">{{#if cardRequirements}}<details data-card-section="requirements" {{#unless cardCollapsed.requirements}}open{{/unless}}><summary>Requirements</summary>{{#each cardRequirements}}<div class="hol-item-stat-row"><span>{{name}}</span><strong>{{value}}</strong></div>{{/each}}</details>{{/if}}</aside>
+    <details data-card-section="itemNotes" {{#unless cardCollapsed.itemNotes}}open{{/unless}}><summary>Notes</summary>{{#if cardEditing}}<textarea name="flags.heroes-of-legend.itemNotes" rows="3" maxlength="10000" placeholder="Notes for this ability…">{{itemNotes}}</textarea>{{else}}<p class="hol-item-notes">{{#if itemNotes}}{{itemNotes}}{{else}}No notes.{{/if}}</p>{{/if}}</details>
+    <details data-card-section="provenance"><summary>Source & implementation</summary><div data-item-provenance></div>{{#unless definition}}<p>{{#if pendingAutomation}}Resolve the printed rules manually.{{else}}{{localize "HOL.ManualAbility"}}{{/if}}</p>{{/unless}}</details>
+  </div>
   {{#if cardEditing}}
   <fieldset {{#unless editable}}disabled{{/unless}}>
     <label>{{localize "HOL.Name"}}<input name="name" type="text" value="{{item.name}}" required></label>

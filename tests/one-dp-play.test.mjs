@@ -164,6 +164,10 @@ test("Look Over Here records one native ally target while Catch That has no targ
     users: [{ id: "owner" }],
     settings: { get: () => "coordinator" },
   };
+  game.users ??= [];
+  game.users.activeGM = {id:"coordinator-gm",isSelf:false};
+  game.world = {lastPlayed:"launch"};
+  game.settings = {get:(_id,key)=>key === "authorityMeta" ? {clientId:"coordinator",userId:"coordinator-gm",launch:"launch",leaseVersion:1} : key === "authorityLease" ? {clientId:"coordinator",expires:Date.now()+60000} : "coordinator"};
   globalThis.ChatMessage = { create: async (data) => data };
   const item = (key) => ({
     uuid: `Actor.hero.Item.${key}`,

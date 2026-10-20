@@ -690,7 +690,7 @@ function builderContent() {
       : `<ul class="error-list">${errors()
           .map((e) => `<li>${esc(e)}</li>`)
           .join("")}</ul>`
-  }<div class="columns" style="margin-top:12px"><section class="box"><h3>Your character</h3>${row("Maximum HP", preview.summary?.maximumHp ?? "—")}${row("Grit", preview.summary?.gritGranted ?? "—")}${row("Speed", preview.summary?.speed ?? "—")}${row("Learned abilities", preview.state.abilities.length)}${row("Coins", preview.inventory.remainingCoins)}</section><section class="box"><h3>Take your hero with you</h3>${button("Export character JSON", "ready-export", preview.valid ? "" : "disabled", "primary")}<p class="file-hint">${preview.development.level > 1 ? "Save or export this plan to continue here. Foundry import currently supports level-1 creation." : "In Foundry: open a new character → Create a Hero → Import character JSON. Review with your campaign’s language settings, then complete creation."}</p>${button("Save draft JSON", "export", "", "quiet")}</section></div><details class="planned"><summary>Creation ledger</summary>${ledgerTable()}</details>`;
+  }<div class="columns" style="margin-top:12px"><section class="box"><h3>Your character</h3>${row("Maximum HP", preview.summary?.maximumHp ?? "—")}${row("Grit", preview.summary?.gritGranted ?? "—")}${row("Speed", preview.summary?.speed ?? "—")}${row("Learned abilities", preview.state.abilities.length)}${row("Coins", preview.inventory.remainingCoins)}</section><section class="box"><h3>Take your hero with you</h3>${button("Export character JSON", "ready-export", preview.valid ? "" : "disabled", "primary")}<p class="file-hint">In Foundry: open a new character → Create a Hero → Import character JSON. Review with your campaign’s language settings, then save your character.</p>${button("Save draft JSON", "export", "", "quiet")}</section></div><details class="planned"><summary>Creation ledger</summary>${ledgerTable()}</details>`;
 }
 function choiceCheck(id, list, values, owned = false) {
   return `<div class="check ${owned ? "already-owned" : ""}"><label style="display:flex;gap:10px;flex:1"><input type="checkbox" data-list="${list}" value="${esc(id)}" ${values.includes(id) ? "checked" : ""} ${owned && !values.includes(id) ? "disabled" : ""}><span>${esc(name(id))}${owned ? "<small>Already known</small>" : ""}</span></label>${button("Read", "reference", `data-id="${esc(id)}"`, "quiet small")}</div>`;
@@ -1434,7 +1434,7 @@ function useSupply() {
     hp: liveVitals().hp,
     maxHp: liveVitals().max,
     catalog: catalogs.inventory,
-    lastWords: draft.play?.lastWords ?? false,
+    lastWords: Boolean(draft.play?.lastWords || draft.play?.failedDeathRolls === 3),
   });
   const inv = playDraft().inventory;
   inv.overrides ??= {};
@@ -1540,7 +1540,7 @@ function rollSheetDice() {
       "beforeend",
       `<p>${selected.map(esc).join(" · ")}</p>`,
     );
-  if (activeRoll.death && draft.play?.lastWords) {
+  if (activeRoll.death && (draft.play?.lastWords || draft.play?.failedDeathRolls === 3)) {
     $("#recipe-roll-result").insertAdjacentHTML(
       "beforeend",
       "<p>Last Words remains; an ordinary death roll cannot reverse it.</p>",
@@ -1559,6 +1559,7 @@ function rollSheetDice() {
       fortitude: draft.attributes[key],
     });
     play.failedDeathRolls = death.failed;
+    if (death.failed === 3) play.lastWords = true;
     play.hp = death.hp;
     const outcome = death.outcome;
     refreshDeathMarks(play.failedDeathRolls);
@@ -1975,7 +1976,7 @@ async function action(target) {
       hp: liveVitals().hp,
       maxHp: liveVitals().max,
       failed: liveVitals().failed,
-      lastWords: draft.play?.lastWords ?? false,
+      lastWords: Boolean(draft.play?.lastWords || draft.play?.failedDeathRolls === 3),
       resistances: preview.resistances,
     });
     Object.assign(playDraft(), {
@@ -1995,6 +1996,7 @@ async function action(target) {
       requested = Number(target.dataset.marks),
       value = current === requested ? requested - 1 : requested;
     playDraft().failedDeathRolls = value;
+    playDraft().lastWords = value === 3 || (playDraft().wounds ?? []).some(wound => wound.catalogId?.endsWith("-666"));
     refreshDeathMarks(value);
     persist();
     render();
@@ -2038,7 +2040,7 @@ async function action(target) {
         spent: draft.play?.gritSpent ?? 0,
         granted: preview.summary?.gritGranted ?? 0,
         maxHp: liveVitals().max,
-        lastWords: draft.play?.lastWords ?? false,
+        lastWords: Boolean(draft.play?.lastWords || draft.play?.failedDeathRolls === 3),
       }),
     );
     $("#reference").close();

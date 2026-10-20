@@ -55,7 +55,7 @@ async function fixture() {
   const url = new URL('../src/services/potions.mjs', import.meta.url);
   const module = new SourceTextModule(await readFile(url, 'utf8'), { context });
   const overrides = {
-    './authority.mjs': { isCreationAuthority: () => true,
+    './authority.mjs': {ensureAuthorityReady:async()=>{}, isCreationAuthority: () => true,
       enqueueCharacterOperation: async (run) => { if (game.user !== gm) throw new Error('coordinator required'); return run(); },
       writeAuthorityDocument: async (document, changes) => {
         writes.push({ uuid: document.uuid, changes: structuredClone(changes) });

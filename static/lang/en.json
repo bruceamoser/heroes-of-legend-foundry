@@ -50,6 +50,8 @@
       "maneuver": "Maneuver",
       "reaction": "Reaction",
       "passive": "Passive",
+      "movement": "Movement",
+      "other": "Other activity",
       "attribute": "Attribute roll",
       "none": "No roll",
       "delegated": "Defender rolls"

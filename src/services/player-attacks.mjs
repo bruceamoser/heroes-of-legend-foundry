@@ -1,3 +1,4 @@
+import { ensureAuthorityReady } from "./authority.mjs";
 import { selectedReferences } from "./reference-play.mjs";
 import { assertNoPendingActorPotion } from "./turn-lock.mjs";
 import { continueAction, declareAction } from "../rules/actions.mjs";
@@ -495,14 +496,13 @@ export async function requestPlayerBasicMelee(
   participantId,
   selection,
 ) {
-  if (!game.settings.get(ID, "creationAuthorityClient"))
-    throw new Error("Enable the GM automation coordinator first.");
   const request = playerBasicMeleeRequestData(
     item,
     combat,
     participantId,
     selection,
   );
+  await ensureAuthorityReady();
   return ChatMessage.create({
     content: "Basic Melee prepared; waiting for the GM coordinator.",
     speaker: ChatMessage.getSpeaker({

@@ -1,3 +1,4 @@
+import { ensureAuthorityReady } from "./authority.mjs";
 import { assertNoPendingActorPotion } from "./turn-lock.mjs";
 import { prepareTurnPhase, resumeTurnPhase } from "./turn-phase.mjs";
 import { expireStaleBenefits } from "./benefits.mjs";
@@ -5,6 +6,7 @@ import {
   initialBudgets,
   prepareParticipantBudget,
   convertParticipantBudget,
+  spendParticipantBudget,
 } from "./turn-budget.mjs";
 import {
   enqueueCharacterOperation,
@@ -25,8 +27,8 @@ export function combatSide(combatant) {
   );
 }
 export async function requestCombat(combat, kind, payload = {}) {
-  if (!combat || !game.settings.get(ID, "creationAuthorityClient"))
-    throw new Error("A GM must enable the automation coordinator first.");
+  if (!combat) throw new Error("Choose an encounter before requesting an action.");
+  await ensureAuthorityReady();
   return ChatMessage.create({
     content: `Encounter ${kind} requested.`,
     ...(kind === "start"
@@ -77,7 +79,7 @@ async function apply(id, combatUuid) {
   if (
     combat?.documentName !== "Combat" ||
     !message.author ||
-    !["start", "choose", "finish", "roster", "convert"].includes(request.kind)
+    !["start", "choose", "finish", "roster", "convert", "spend"].includes(request.kind)
   )
     throw new Error("Invalid encounter request.");
   const receipt = combat.getFlag(ID, "operationReceipts")?.[id];
@@ -99,11 +101,11 @@ async function apply(id, combatUuid) {
     );
   const state = combat.getFlag(ID, "encounter"),
     actor = combat.combatants.get(
-      ["choose", "convert"].includes(request.kind)
+      ["choose", "convert", "spend"].includes(request.kind)
         ? (request.id ?? state?.current)
         : state?.current,
     )?.actor;
-  if (["choose", "finish", "convert"].includes(request.kind)) {
+  if (["choose", "finish", "convert", "spend"].includes(request.kind)) {
     if (
       !message.author.isGM &&
       !actor?.testUserPermission(message.author, "OWNER")
@@ -160,6 +162,7 @@ async function apply(id, combatUuid) {
           [request.id]: ruling,
         };
     } else if (request.kind === "finish") next = finishTurn(state);
+    else if (request.kind === "spend") next = spendParticipantBudget(combat,state,request,message.author,id);
     else if (request.kind === "convert")
       next = convertParticipantBudget(
         combat,

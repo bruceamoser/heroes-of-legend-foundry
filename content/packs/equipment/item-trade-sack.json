@@ -3,7 +3,7 @@
   "_id": "7efa7d2b1ee5dc6a",
   "name": "Trade Sack",
   "type": "equipment",
-  "img": "systems/heroes-of-legend/assets/icons/pouch.svg",
+  "img": "icons/containers/bags/pouch-simple-leather-tan.webp",
   "system": {
     "schemaVersion": 1,
     "catalogId": "item-trade-sack",
@@ -11,6 +11,7 @@
     "bulk": 1,
     "hands": 0,
     "inventoryDie": 0,
+    "carried": true,
     "held": false,
     "worn": false,
     "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Market reference · acquisition and use automation in progress</p><p><strong>Market price:</strong> 1 coins.</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/equipment/trade-sack.md\" target=\"_blank\" rel=\"noopener\">design/equipment/trade-sack.md</a> at <code>bdfd18ed535fbd0e1892b9344444abf6da644809</code>.</p></section>"

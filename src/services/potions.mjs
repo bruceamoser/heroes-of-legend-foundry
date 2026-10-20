@@ -1,3 +1,4 @@
+import { ensureAuthorityReady } from "./authority.mjs";
 import {
   HEALING_POTION_IDS,
   healingPotionAdapter,
@@ -623,8 +624,6 @@ export async function requestPotionUse({
     giver = assertWorldActor(sourceItem?.actor, "Potion giver");
   if (!giver.testUserPermission(game.user, "OWNER") && !game.user.isGM)
     throw new Error("Only the giver's owner or the DA can prepare this use.");
-  if (!game.settings.get(ID, "creationAuthorityClient"))
-    throw new Error("Enable the GM automation coordinator first.");
   const preview = await previewPotionUse({
       sourceItemUuid,
       bottleItemUuid,
@@ -2316,7 +2315,7 @@ export function renderPotionProposal(message, element) {
     try {
       let daReason = "";
       if (!canAccept) {
-        const result = await foundry.applications.api.DialogV2.input({
+        const result = await foundry.applications.api.DialogV2.input({classes: ["heroes-of-legend", "hol-native-dialog"],
           window: { title: "Adjudicate recipient willingness" },
           content:
             '<label>Optional note<input name="reason"></label>',

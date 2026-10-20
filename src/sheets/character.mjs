@@ -25,12 +25,15 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
 ) {
   static DEFAULT_OPTIONS = {
     classes: ["heroes-of-legend", "hol-character"],
-    position: { width: 720, height: 760 },
+    position: { width: 940, height: 940 },
     window: { resizable: true },
     form: { submitOnChange: false, closeOnSubmit: false },
     actions: {
       addEquipment: CharacterSheet.addEquipment,
+      removeEquipment: CharacterSheet.removeEquipment,
+      confirmEquipment: CharacterSheet.confirmEquipment,
       viewPortrait: CharacterSheet.viewPortrait,
+      editImage: CharacterSheet.editPortrait,
       savePortrait: CharacterSheet.savePortrait,
       switchTab: CharacterSheet.switchTab,
       toggleEdit: CharacterSheet.toggleEdit,
@@ -41,17 +44,32 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
       supply: CharacterSheet.supply,
       resupply: CharacterSheet.resupply,
       crafting: CharacterSheet.crafting,
+      startCraft: CharacterSheet.startCraft,
+      attemptCraft: CharacterSheet.attemptCraft,
       death: CharacterSheet.death,
       spendGrit: CharacterSheet.spendGrit,
       evade: CharacterSheet.evade,
       wounds: CharacterSheet.wounds,
+      treatWound: CharacterSheet.treatWound,
+      addScar: CharacterSheet.addScar,
+      removeScar: CharacterSheet.removeScar,
       recovery: CharacterSheet.recovery,
       damage: CharacterSheet.damage,
       equipment: CharacterSheet.equipment,
       conditions: CharacterSheet.conditions,
+      addCondition: CharacterSheet.addCondition,
+      confirmCondition: CharacterSheet.confirmCondition,
+      adjustCondition: CharacterSheet.adjustCondition,
+      removeCondition: CharacterSheet.removeCondition,
+      applyConditionDamage: CharacterSheet.applyConditionDamage,
       advanceHero: CharacterSheet.advanceHero,
       createHero: CharacterSheet.createHero,
       openAbility: CharacterSheet.openAbility,
+      closeReference: CharacterSheet.closeReference,
+      referenceChoice: CharacterSheet.referenceChoice,
+      addLanguage: CharacterSheet.addLanguage,
+      confirmLanguage: CharacterSheet.confirmLanguage,
+      removeLanguage: CharacterSheet.removeLanguage,
       postReference: CharacterSheet.postReference,
       addShortcut: CharacterSheet.addShortcut,
       rollAttribute: CharacterSheet.rollAttribute,
@@ -77,21 +95,42 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
       development, equipment: this.actor.items.filter((i) => i.type === "equipment"),
       abilities: this.actor.items.filter((i) => i.type === "ability"),
       choices: catalogs.choices, inventory: catalogs.inventory, sheetState: !this.actor.isOwner && this.observerTab ? {...sheetState, tab:this.observerTab} : sheetState,
+      craftingState: this.actor.getFlag("heroes-of-legend", "craftingState") ?? {},
       survival: this.actor.getFlag("heroes-of-legend", "survival") ?? {},
       wounds: Object.values(this.actor.getFlag("heroes-of-legend", "wounds") ?? {}),
     }) : {};
+    if(character){
+      const {manualScarRecords}=await import("../services/scars.mjs");
+      const manual=new Set(manualScarRecords(this.actor).map(record=>record.id));
+      view.wounds=view.wounds.map(wound=>({...wound,manual:manual.has(wound.eventId),canTreat:this.actor.isOwner&&Boolean(wound.recoveryValue)&&(wound.recoveryProgress??0)<wound.recoveryValue,effectSummary:this.actor.effects.filter(effect=>effect.active&&!effect.getFlag("heroes-of-legend","retired")&&effect.getFlag("heroes-of-legend","woundEvent")===wound.eventId).map(effect=>effect.name).join(" · ")||"—"}));
+      view.priorWounds=this.actor.getFlag("heroes-of-legend","survival")?.wounds ?? view.wounds.length;
+      const {localRulePage}=await import("../services/journals.mjs");
+      await Promise.all(view.traits.map(async trait=>{const record=catalogs.choices.find(record=>record.id===trait.id);if(!record?.source?.path)return;try{const page=await localRulePage(record.source.path);const html=document.createElement("div");html.innerHTML=await foundry.applications.ux.TextEditor.implementation.enrichHTML(page.text.content,{relativeTo:page,secrets:page.isOwner});const headings=[...html.querySelectorAll("h2")];const rules=headings.find(heading=>heading.textContent.trim()==="Rules");let node=rules?.nextElementSibling;while(node&&node.tagName!=="H2"){if(node.tagName==="P"&&!node.querySelector("strong")){trait.brief=node.textContent.trim();break;}node=node.nextElementSibling;}}catch(error){console.warn("heroes-of-legend | Trait summary",error.message);}}));
+    }
     const defenses = character ? damageBasis(this.actor).passiveDefenses : null;
+    const {CONDITION_KINDS} = character ? await import("../rules/conditions.mjs") : {};
+    const {nativeCraftingRecipes} = character ? await import("../services/crafting.mjs") : {};
+    const craftingRecipes = character ? nativeCraftingRecipes(this.actor,catalogs).map(recipe => ({...recipe,
+      available: recipe.abilities.length > 0,
+      supplies: this.actor.items.filter(item => item.type === "equipment" && item.system.catalogId === recipe.product && item.system.quantity > 0).map(item => ({id:item.id,name:item.name,die:item.system.inventoryDie,selected:recipe.project?.supplyId === item.id})),
+    })) : [];
     let movement = null;
     if (character && Number.isSafeInteger(development.creationSummary?.speedBase)) {
       const {actorMovement} = await import("../services/turn-budget.mjs");
       movement = actorMovement(this.actor);
+      movement = {...movement,speed:Math.max(0,movement.speed - conditionSummary(actorContributions(this.actor)).slowed.rating)};
+      movement.speedReduced=movement.speed < movement.unencumbered;
     }
     return {
       ...context,
       ...view,
+      craftingRecipes,
+      craftingProjects: craftingRecipes.filter(recipe => recipe.project?.active),
       movement,
       bulk: movement?.bulk ?? view.bulk,
+      conditionSources: character ? actorContributions(this.actor).map((contribution,index,all) => ({...contribution, binary:CONDITION_KINDS[contribution.key] === "binary",starred:contribution.persistence === "starred",duration:CONDITION_KINDS[contribution.key] === "duration",canApply:["burning","freezing","bleeding"].includes(contribution.key) && all.findIndex(other => other.key === contribution.key) === index})) : [],
       conditionsList: character ? Object.values(conditionSummary(actorContributions(this.actor))).filter((c) => c.active) : [],
+      armorDr: defenses?.resistances?.find(resistance => resistance.type === "physical")?.value ?? 0,
       resistances: defenses?.resistances ?? [],
       weaknesses: defenses?.weaknesses ?? [],
       actor: this.actor,
@@ -108,6 +147,7 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
         label: game.i18n.localize(`HOL.Attributes.${key}`),
         base: this.actor.system.attributes[key].base,
         effective: this.actor.system.attributes[key].effective,
+        signedEffective:`${this.actor.system.attributes[key].effective>0?"+":""}${this.actor.system.attributes[key].effective}`,
       })),
       development: this.actor.getFlag("heroes-of-legend", "development"),
       created: Boolean(
@@ -131,16 +171,51 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
     const root = this.element.querySelector(".hol-character-sheet");
     if (!root || root.dataset.bound) return;
     root.dataset.bound = "true";
+    if (this.pendingTabFocus) {
+      root.querySelector(`[data-action="switchTab"][data-tab="${this.pendingTabFocus}"]`)?.focus();this.pendingTabFocus=null;
+    }
+    root.querySelector(".hol-character-tabs")?.addEventListener("keydown",event=>{
+      const buttons=[...root.querySelectorAll('[data-action="switchTab"]')],index=buttons.indexOf(event.target);
+      if(index<0 || !["ArrowUp","ArrowDown","Home","End"].includes(event.key))return;
+      event.preventDefault();const next=buttons[event.key === "Home" ? 0 : event.key === "End" ? buttons.length-1 : (index+(event.key === "ArrowDown" ? 1 : -1)+buttons.length)%buttons.length];
+      this.pendingTabFocus=next.dataset.tab;next.click();if(!this.actor.isOwner)next.focus();
+    });
     for (const detail of root.querySelectorAll("details[data-disclosure]")) {
       const state = this.actor.getFlag("heroes-of-legend", "characterSheet") ?? {};
-      detail.open = state.closed?.[detail.dataset.disclosure] !== true;
+      if(state.closed?.[detail.dataset.disclosure] !== undefined) detail.open = !state.closed[detail.dataset.disclosure];
       detail.addEventListener("toggle", () => {
         if (!this.actor.isOwner || Boolean(this.actor.getFlag("heroes-of-legend", "characterSheet")?.closed?.[detail.dataset.disclosure]) === !detail.open) return;
         void updateOwnedDocument(this.actor, { [`flags.heroes-of-legend.characterSheet.closed.${detail.dataset.disclosure}`]: !detail.open }).catch((error) => ui.notifications.error(error.message));
       });
     }
+    const filterAbilities = () => {
+      const query = root.querySelector("[data-ability-search]")?.value.toLowerCase() ?? "";
+      const discipline = root.querySelector("[data-ability-filter]")?.value ?? "all";
+      for (const row of root.querySelectorAll("[data-ability-row]")) row.hidden = !row.dataset.searchName.toLowerCase().includes(query) || (discipline !== "all" && !row.dataset.disciplineIds.split(" ").includes(discipline));
+    };
+    root.querySelector("[data-ability-search]")?.addEventListener("input", filterAbilities);
+    root.querySelector("[data-ability-filter]")?.addEventListener("change", filterAbilities);
     for (const field of root.querySelectorAll('[name="system.biography"], [name="system.memorizedMessage"]')) field.addEventListener("change", () => {
       void this.saveStory().catch((error) => ui.notifications.error(error.message));
+    });
+    root.querySelector("[data-current-hp]")?.addEventListener("change", async event => {
+      try {
+        const {currentHpInput}=await import("../rules/resource-input.mjs");
+        const hp=currentHpInput(event.target.value,this.actor.system.health.max);
+        const {requestRecovery} = await import("../services/recovery.mjs");
+        const {damageBasis} = await import("../services/damage.mjs");
+        await requestRecovery(this.actor,damageBasis(this.actor),{kind:"setHp",hp});
+      } catch(error) { ui.notifications.error(error.message); await this.render(); }
+    });
+    for (const input of root.querySelectorAll("[data-arrangement]")) input.addEventListener("change", async () => {
+      try {
+        const {equipmentBasis, requestEquipment} = await import("../services/equipment.mjs");
+        const {itemArrangement} = await import("../rules/workshop-play.mjs");
+        const basis = equipmentBasis(this.actor);
+        const id = input.dataset.arrangement, prop = input.dataset.prop;
+        const items = basis.items.map(item => item.id === id ? {...item, ...itemArrangement(item, prop, input.checked)} : item);
+        await requestEquipment(this.actor, basis, items, basis.capacity);
+      } catch (error) { ui.notifications.error(error.message); await this.render(); }
     });
     for (const input of root.querySelectorAll("[data-quantity]")) input.addEventListener("change", async () => {
       try {
@@ -176,6 +251,8 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
       for (const button of this.element.querySelectorAll('[data-action="switchTab"]')) {
         if (button.dataset.tab === tab) button.setAttribute("aria-current", "page");
         else button.removeAttribute("aria-current");
+        button.setAttribute("aria-selected",String(button.dataset.tab === tab));
+        button.setAttribute("tabindex",button.dataset.tab === tab ? "0" : "-1");
       }
       return;
     }
@@ -187,6 +264,9 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
   static async viewPortrait() {
     const {viewPortrait} = await import("./portrait.mjs");
     return viewPortrait.call(this);
+  }
+  static async editPortrait() {
+    try {const {editPortrait}=await import("./portrait.mjs");return await editPortrait.call(this);} catch(error) {ui.notifications.error(error.message);}
   }
   static async savePortrait() {
     try {
@@ -217,7 +297,7 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
     } catch (error) { ui.notifications.error(error.message); }
   }
   static async useItem(event, target) {
-    const item = this.actor.items.get(target.closest("[data-item-id]")?.dataset.itemId);
+    const item = this.actor.items.get(target.dataset.useItemId || target.closest("[data-item-id]")?.dataset.itemId);
     if (!item || !this.actor.isOwner) return;
     if (item.type === "equipment") {
       try {
@@ -225,6 +305,11 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
         if (isHealingPotionItem(item)) {
           const {openPotionPreparation} = await import("../applications/potions.mjs");
           return openPotionPreparation(item, {bottleItemUuid: item.uuid});
+        }
+        if (target.dataset.supplyUse === "true") {
+          const {InventoryPanel} = await import("../applications/inventory.mjs");
+          await new InventoryPanel(this.actor,item.id).render({force:true});
+          return;
         }
         const {isMeleeWeaponEquipment} = await import("../rules/equipment-identity.mjs");
         const abilityId = isMeleeWeaponEquipment(item) ? "ability-basic-melee" : item.system.catalogId === "item-ordinary-ranged-weapon" ? "ability-basic-ranged" : item.system.catalogId === "item-ordinary-shield" ? "ability-shield-block" : null;
@@ -267,7 +352,7 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
       return ability.sheet.render({force:true});
     }
     const escape = foundry.utils.escapeHTML;
-    const selection = await foundry.applications.api.DialogV2.input({window:{title:"Shield Block · choose incoming attack"}, content:`<p>Prepare a defense, then use Shield Block from its applicable abilities before rolling.</p><label>Incoming attack<select name="attackId">${attacks.map((message) => { const attack=message.getFlag("heroes-of-legend", "attackCard"); return `<option value="${escape(message.id)}">${escape(attack.name ?? attack.actionName ?? message.speaker?.alias ?? "Incoming attack")} · ${escape(message.id)}</option>`; }).join("")}</select></label>`, ok:{label:"Prepare defense"}});
+    const selection = await foundry.applications.api.DialogV2.input({classes: ["heroes-of-legend", "hol-native-dialog"], window:{title:"Shield Block · choose incoming attack"}, content:`<p>Prepare a defense, then use Shield Block from its applicable abilities before rolling.</p><label>Incoming attack<select name="attackId">${attacks.map((message) => { const attack=message.getFlag("heroes-of-legend", "attackCard"); return `<option value="${escape(message.id)}">${escape(attack.name ?? attack.actionName ?? message.speaker?.alias ?? "Incoming attack")} · ${escape(message.id)}</option>`; }).join("")}</select></label>`, ok:{label:"Prepare defense"}});
     if (!selection) return;
     const attack = game.messages.get(selection.attackId)?.getFlag("heroes-of-legend", "attackCard");
     const {promptDefenseRoll} = await import("../dialogs/attribute-roll.mjs");
@@ -290,6 +375,19 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
       await requestResupply(this.actor, item, 1);
     } catch (error) { ui.notifications.error(error.message); }
   }
+  static async startCraft(event,target) {
+    try {
+      const {requestCrafting} = await import("../services/crafting.mjs");
+      await requestCrafting(this.actor,{kind:"start",recipeId:target.dataset.recipeId});
+    } catch(error) { ui.notifications.error(error.message); }
+  }
+  static async attemptCraft(event,target) {
+    try {
+      const row = target.closest("[data-craft-project]");
+      const {openCraftingAttempt} = await import("../applications/crafting.mjs");
+      await openCraftingAttempt(this.actor,row.dataset.craftProject,target.dataset.abilityId);
+    } catch(error) { ui.notifications.error(error.message); }
+  }
   static async crafting() {
     const {CraftingPanel} = await import("../applications/crafting.mjs");
     await new CraftingPanel(this.actor).render({force:true});
@@ -299,7 +397,7 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
     // Opening a reference is read-only; all edit controls keep native disabling.
     if (disabled && this.actor.testUserPermission(game.user, "OBSERVER"))
       for (const button of this.element.querySelectorAll(
-        '[data-action="openAbility"], [data-action="switchTab"], [data-action="viewPortrait"]',
+        '[data-action="openAbility"], [data-action="referenceChoice"], [data-action="closeReference"], [data-action="switchTab"], [data-action="viewPortrait"]',
       ))
         button.disabled = false;
   }
@@ -329,7 +427,7 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
     try {
       if (!this.actor.isOwner) throw new Error("Only the character owner can spend Grit.");
       if (!this.actor.system.grit.available) throw new Error("No Grit remains.");
-      const confirmed = await foundry.applications.api.DialogV2.confirm({window: {title: "Spend one Grit?"}, content: "<p>Restore full HP and clear death marks. Wounds remain.</p>"});
+      const confirmed = await foundry.applications.api.DialogV2.confirm({classes: ["heroes-of-legend", "hol-native-dialog"], window: {title: "Spend one Grit?"}, content: "<p>Restore full HP and clear death marks. Wounds remain.</p>"});
       if (!confirmed) return;
       const {requestRecovery} = await import("../services/recovery.mjs");
       const {damageBasis} = await import("../services/damage.mjs");
@@ -337,13 +435,23 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
     } catch (error) { ui.notifications.error(error.message); }
   }
   static async evade() {
-    const result = await foundry.applications.api.DialogV2.input({window: {title: "Evade"}, content: `<p>Choose the attribute appropriate to the incoming attack. Strong defense uses its Weak effect; Weak defense uses its Strong effect.</p><label>Attribute<select name="attribute">${ATTRIBUTES.map((key) => `<option value="${key}" ${key === "agility" ? "selected" : ""}>${game.i18n.localize(`HOL.Attributes.${key}`)}</option>`).join("")}</select></label>`, ok: {label: "Prepare Evade"}});
+    const result = await foundry.applications.api.DialogV2.input({classes: ["heroes-of-legend", "hol-native-dialog"], window: {title: "Evade"}, content: `<p>Choose the attribute appropriate to the incoming attack. Strong defense uses its Weak effect; Weak defense uses its Strong effect.</p><label>Attribute<select name="attribute">${ATTRIBUTES.map((key) => `<option value="${key}" ${key === "agility" ? "selected" : ""}>${game.i18n.localize(`HOL.Attributes.${key}`)}</option>`).join("")}</select></label>`, ok: {label: "Prepare Evade"}});
     if (result) await promptAttributeRoll(this.actor, result.attribute);
   }
   static async death() {
     await new SharedRollDialog(this.actor, "fortitude", {
       mode: "death",
     }).render({ force: true });
+  }
+  static async treatWound(event,target) {
+    try { const {requestWoundTreatment}=await import("../services/wound-treatment.mjs"); await requestWoundTreatment(this.actor,target.dataset.eventId,Number(target.dataset.progress)); }
+    catch(error){ui.notifications.error(error.message);}
+  }
+  static async addScar() {
+    try {const value=await foundry.applications.api.DialogV2.prompt({classes: ["heroes-of-legend", "hol-native-dialog"], window:{title:"Add scar note"},content:'<label>Scar name<input name="scarName" maxlength="200" required></label><label>Notes<textarea name="scarNotes" maxlength="2000"></textarea></label>',ok:{label:"Add note",callback:(event,button,dialog)=>({name:dialog.element.querySelector('[name=scarName]').value,notes:dialog.element.querySelector('[name=scarNotes]').value})}});if(!value)return;const {requestManualScar}=await import("../services/scars.mjs");await requestManualScar(this.actor,{kind:"add",...value});await this.render();}catch(error){ui.notifications.error(error.message);}
+  }
+  static async removeScar(event,target) {
+    try {const {requestManualScar}=await import("../services/scars.mjs");await requestManualScar(this.actor,{kind:"remove",id:target.dataset.eventId});await this.render();}catch(error){ui.notifications.error(error.message);}
   }
   static async wounds() {
     await new WoundPanel(this.actor).render({ force: true });
@@ -376,17 +484,95 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
     }
   }
   static async openAbility(event, target) {
-    const itemId = target.closest("[data-item-id]")?.dataset.itemId,
-      item = this.actor.items.get(itemId);
-    if (!item) {
-      ui.notifications.warn(game.i18n.localize("HOL.ShortcutSourceMissing"));
+    const item = this.actor.items.get(target.closest("[data-item-id]")?.dataset.itemId);
+    const path = item?.getFlag("heroes-of-legend", "source")?.path;
+    if (!path) {
+      if (!item?.testUserPermission(game.user, "OBSERVER")) return;
+      const panel = this.element.querySelector("[data-character-reference]");
+      panel.hidden = false;
+      const content = panel.querySelector("[data-rule-content]");
+      content.innerHTML = `<h2>${foundry.utils.escapeHTML(item.name)}</h2>${await foundry.applications.ux.TextEditor.implementation.enrichHTML(item.system.description ?? "", {async:true, secrets:item.isOwner, relativeTo:item})}`;
+      panel.querySelector("[data-action=closeReference]").focus();
       return;
     }
+    await this.showRule(path);
+  }
+  async showRule(path) {
     try {
-      await openItemShortcut(item.uuid);
-    } catch (error) {
-      ui.notifications.error(error.message);
-    }
+      const panel = this.element.querySelector("[data-character-reference]");
+      panel.hidden = false;
+      const {renderInlineRule} = await import("../services/journals.mjs");
+      await renderInlineRule(path, panel.querySelector("[data-rule-content]"));
+      panel.querySelector("[data-action=closeReference]").focus();
+    } catch(error) { ui.notifications.error(error.message); }
+  }
+  static async addCondition() {
+    if (!this.actor.isOwner) return;
+    const {CONDITION_KINDS} = await import("../rules/conditions.mjs");
+    const panel = this.element.querySelector("[data-character-reference]");panel.hidden = false;
+    panel.querySelector("[data-rule-content]").innerHTML = `<h2>Add condition</h2><label>Condition<select name="sheetCondition">${Object.keys(CONDITION_KINDS).sort().map(key => `<option value="${key}">${key[0].toUpperCase()+key.slice(1)}</option>`).join("")}</select></label><label data-condition-rating>Rating / turns<input name="sheetConditionRating" type="number" min="1" max="10000" step="1" value="1"></label><label data-condition-starred><input name="sheetConditionStarred" type="checkbox"> Starred</label><button type="button" data-action="confirmCondition">Add condition</button>`;
+    const select = panel.querySelector("[name=sheetCondition]");
+    const sync = () => {const kind = CONDITION_KINDS[select.value];panel.querySelector("[data-condition-rating]").hidden = kind === "binary";panel.querySelector("[data-condition-starred]").hidden = ["binary","maintained"].includes(kind);};
+    select.addEventListener("change",sync);sync();
+  }
+  static async confirmCondition() {
+    try {
+      const panel = this.element.querySelector("[data-character-reference]");
+      const {CONDITION_KINDS} = await import("../rules/conditions.mjs");
+      const {requestCondition} = await import("../services/conditions.mjs");
+      const key = panel.querySelector("[name=sheetCondition]").value,kind = CONDITION_KINDS[key];
+      const rating = kind === "binary" ? 1 : Number(panel.querySelector("[name=sheetConditionRating]").value);
+      if (!Number.isSafeInteger(rating) || rating < 1 || rating > 10000) throw new Error("Choose a whole rating or duration from 1 to 10,000.");
+      const persistence = kind === "binary" ? "binary" : kind === "maintained" ? "maintained" : panel.querySelector("[name=sheetConditionStarred]").checked ? "starred" : "temporary";
+      await requestCondition(this.actor,"add",{key,rating,persistence,source:"sheet"});panel.hidden = true;
+    } catch(error) { ui.notifications.error(error.message); }
+  }
+  static async adjustCondition(event,target) {
+    try {const {requestCondition} = await import("../services/conditions.mjs");await requestCondition(this.actor,"adjust",{effectId:target.dataset.id,delta:Number(target.dataset.delta)});} catch(error) {ui.notifications.error(error.message);}
+  }
+  static async removeCondition(event,target) {
+    try {const {requestCondition} = await import("../services/conditions.mjs");await requestCondition(this.actor,"remove",{effectId:target.dataset.id});} catch(error) {ui.notifications.error(error.message);}
+  }
+  static async applyConditionDamage(event,target) {
+    try {const {requestConditionApply} = await import("../services/condition-apply.mjs");await requestConditionApply(this.actor,target.dataset.key);} catch(error) {ui.notifications.error(error.message);}
+  }
+  static async addLanguage() {
+    if (!this.actor.isOwner) return;
+    const {getCampaignLanguageConfiguration} = await import("../services/languages.mjs");
+    const definitions = getCampaignLanguageConfiguration().definitions;
+    const known = this.actor.getFlag("heroes-of-legend","development")?.languages ?? [];
+    const escape = foundry.utils.escapeHTML;
+    const panel = this.element.querySelector("[data-character-reference]");
+    panel.hidden = false;
+    panel.querySelector("[data-rule-content]").innerHTML = `<h2>Add language</h2><label>Language<select name="sheetLanguage"><option value="">Custom language</option>${definitions.filter(language => !known.some(entry => entry.id === language.id)).map(language => `<option value="${escape(language.id)}">${escape(language.name)}</option>`).join("")}</select></label><label>Name<input name="sheetLanguageName" maxlength="80"></label><div class="hol-character-columns"><label>Form<select name="sheetLanguageForm"><option value="spoken">Spoken</option><option value="signed">Signed</option></select></label><label><input name="sheetLanguageWritten" type="checkbox" checked> Read & write</label></div><button type="button" data-action="confirmLanguage">Add language</button>`;
+    const select = panel.querySelector("[name=sheetLanguage]");
+    select.addEventListener("change", () => {
+      const language = definitions.find(language => language.id === select.value);
+      if (!language) return;
+      panel.querySelector("[name=sheetLanguageName]").value = language.name;
+      panel.querySelector("[name=sheetLanguageForm]").value = language.form;
+    });
+  }
+  static async confirmLanguage() {
+    try {
+      const panel = this.element.querySelector("[data-character-reference]");
+      const {requestDevelopment} = await import("../services/advancement.mjs");
+      const language = {id:panel.querySelector("[name=sheetLanguage]").value || `language-${crypto.randomUUID()}`,name:panel.querySelector("[name=sheetLanguageName]").value,form:panel.querySelector("[name=sheetLanguageForm]").value,written:panel.querySelector("[name=sheetLanguageWritten]").checked};
+      await requestDevelopment(this.actor,"editLanguage",{revision:this.actor.getFlag("heroes-of-legend","development")?.revision ?? 0,language});
+      panel.hidden = true;
+    } catch(error) { ui.notifications.error(error.message); }
+  }
+  static async removeLanguage(event,target) {
+    try {
+      const {requestDevelopment} = await import("../services/advancement.mjs");
+      await requestDevelopment(this.actor,"editLanguage",{revision:this.actor.getFlag("heroes-of-legend","development")?.revision ?? 0,removeId:target.dataset.id});
+    } catch(error) { ui.notifications.error(error.message); }
+  }
+  static closeReference() { this.element.querySelector("[data-character-reference]").hidden = true; }
+  static async referenceChoice(event,target) {
+    const catalogs = await loadCatalogs();
+    const record = catalogs.choices.find(record => record.id === target.dataset.id) ?? catalogs.inventory.recipes.find(record => record.id === target.dataset.id);
+    if (record?.source?.path) await this.showRule(record.source.path);
   }
   static async addShortcut(event, target) {
     const row = target.closest("[data-item-id]"),
@@ -404,29 +590,32 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
   }
   static async addEquipment() {
     try {
-      if (!this.actor.isOwner)
-        throw new Error("Only this character's owner can add equipment.");
+      if (!this.actor.isOwner) throw new Error("Only this character's owner can add equipment.");
       const sources = await equipmentCopyOptions();
-      if (!sources.length)
-        throw new Error("No readable equipment sources are available.");
+      if (!sources.length) throw new Error("No readable equipment sources are available.");
       const escape = foundry.utils.escapeHTML;
-      const result = await foundry.applications.api.DialogV2.input({
-        window: { title: "Add equipment" },
-        content: `<label>Equipment<select name="equipmentSourceUuid">${sources
-          .map(
-            (source) =>
-              `<option value="${escape(source.uuid)}">${escape(source.name)}</option>`,
-          )
-          .join(
-            "",
-          )}</select></label><p>Add a copy to inventory. Purchases are resolved at the table.</p>`,
-        ok: { label: "Add" },
-      });
-      if (result)
-        await copyEquipmentToActor(this.actor, result.equipmentSourceUuid);
-    } catch (error) {
-      ui.notifications.warn(error.message);
-    }
+      const panel = this.element.querySelector("[data-character-reference]");panel.hidden = false;
+      panel.querySelector("[data-rule-content]").innerHTML = `<h2>Add item</h2><label>Item<select name="equipmentSourceUuid">${sources.map(source => `<option value="${escape(source.uuid)}">${escape(source.name)}</option>`).join("")}</select></label><label>Quantity<input name="equipmentQuantity" type="number" min="1" max="10000" step="1" value="1"></label><button type="button" data-action="confirmEquipment">Add item</button>`;
+    } catch(error) {ui.notifications.warn(error.message);}
+  }
+  static async confirmEquipment() {
+    try {
+      const panel = this.element.querySelector("[data-character-reference]");
+      const uuid = panel.querySelector("[name=equipmentSourceUuid]").value;
+      const quantity = Number(panel.querySelector("[name=equipmentQuantity]").value);
+      if (!Number.isSafeInteger(quantity) || quantity < 1 || quantity > 10000) throw new Error("Choose a whole quantity from 1 to 10,000.");
+      const source = await fromUuid(uuid), catalogs = await loadCatalogs();
+      const {equipmentEligibility} = await import("../rules/equipment-eligibility.mjs");
+      const id = source?.system.catalogId;
+      if (catalogs.inventory.equipment.some(record => record.id === id)) {
+        const result = equipmentEligibility(id,this.actor.items.filter(item => item.type === "ability").map(item => item.getFlag("heroes-of-legend","catalogId")));
+        if (!result.eligible) throw new Error(`Requires ${catalogs.choices.find(record => record.id === result.requiredAbilityId)?.name ?? result.requiredAbilityId}.`);
+      }
+      await copyEquipmentToActor(this.actor,uuid,{quantity});panel.hidden = true;
+    } catch(error) {ui.notifications.error(error.message);}
+  }
+  static async removeEquipment(event,target) {
+    try {const {removeEquipmentFromActor} = await import("../services/item-import.mjs");await removeEquipmentFromActor(this.actor,target.closest("[data-item-id]").dataset.itemId);} catch(error) {ui.notifications.error(error.message);}
   }
 
   async openLearningReference(item) {

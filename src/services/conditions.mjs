@@ -1,3 +1,4 @@
+import { ensureAuthorityReady } from "./authority.mjs";
 import { assertNoPendingTurn } from "./turn-lock.mjs";
 import {
   CONDITION_KINDS,
@@ -45,8 +46,7 @@ export function registerHOLStatuses() {
   CONFIG.specialStatusEffects.INVISIBLE = "hol.invisible";
 }
 export async function requestCondition(actor, kind, payload = {}) {
-  if (!game.settings.get(ID, "creationAuthorityClient"))
-    throw new Error("Enable the GM automation coordinator first.");
+  await ensureAuthorityReady();
   return ChatMessage.create({
     content: "Condition adjustment requested.",
     whisper: game.users
@@ -77,7 +77,7 @@ async function apply(id) {
   if (
     actor?.documentName !== "Actor" ||
     actor.pack ||
-    !["add", "remove", "reduce"].includes(request.kind)
+    !["add", "remove", "reduce", "adjust"].includes(request.kind)
   )
     throw new Error("Invalid condition target or adjustment.");
   if (!message?.author || !actor.testUserPermission(message.author, "OWNER")) throw new Error("Only an owner or the Dungeon Architect can adjust conditions.");
@@ -133,6 +133,19 @@ async function apply(id) {
       effect.disabled = true;
       effect.statuses = [];
       effect.flags[ID].retired = { requestId: id, reason: "DA removed source" };
+    } else if (request.kind === "adjust") {
+      if (![-1,1].includes(request.delta)) throw new Error("Choose a one-step condition adjustment.");
+      const rating = Math.min(10000,contribution.rating + request.delta);
+      if (rating <= 0) {
+        effect.disabled = true;
+        effect.statuses = [];
+        effect.flags[ID].retired = {requestId:id,reason:"Manual condition rating reached zero"};
+      } else {
+        const adjusted = {...contribution,rating};
+        validateContributions([adjusted]);
+        effect.flags[ID].condition = adjusted;
+        effect.name = `${adjusted.key[0].toUpperCase() + adjusted.key.slice(1)} ${rating}${adjusted.persistence === "starred" ? "*" : ""}`;
+      }
     } else {
       if (contribution.persistence !== "temporary")
         throw new Error(

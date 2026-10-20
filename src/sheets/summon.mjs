@@ -1,5 +1,5 @@
 import { cardContext, bindCardState } from "./card-state.mjs";
-import { viewPortrait, savePortrait, bindPortraitControls } from "./portrait.mjs";
+import { viewPortrait, savePortrait, editPortrait, bindPortraitControls } from "./portrait.mjs";
 import { ATTRIBUTES } from "../rules/character.mjs";
 import {
   creatureModifierLabel,
@@ -16,7 +16,7 @@ export class SummonSheet extends foundry.applications.api.HandlebarsApplicationM
 ) {
   static DEFAULT_OPTIONS = {
     classes: ["heroes-of-legend", "hol-summon"],
-    actions: { viewPortrait, savePortrait: SummonSheet.savePortrait, updateProfile: SummonSheet.updateProfile },
+    actions: { viewPortrait, editImage: SummonSheet.editPortrait, savePortrait: SummonSheet.savePortrait, updateProfile: SummonSheet.updateProfile },
     position: { width: 700, height: 660 },
   };
   static PARTS = {
@@ -61,6 +61,10 @@ export class SummonSheet extends foundry.applications.api.HandlebarsApplicationM
     super._toggleDisabled(disabled);
     if (disabled && this.actor.testUserPermission(game.user, "OBSERVER"))
       for (const button of this.element.querySelectorAll('[data-action="viewPortrait"]')) button.disabled = false;
+  }
+  static async editPortrait() {
+    try {return await editPortrait.call(this);}
+    catch(error) {ui.notifications.error(error.message);}
   }
   static async savePortrait() {
     try { return await savePortrait.call(this); }

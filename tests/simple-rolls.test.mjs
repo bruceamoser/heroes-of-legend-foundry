@@ -118,7 +118,7 @@ test("roll surfaces expose one accessible slider and no modifier reason fields",
     const template = await readFile(new URL(`../static/templates/${file}`, import.meta.url), "utf8");
     assert.equal((template.match(/type="range"/g) ?? []).length, 1);
     assert.match(template, /name="adjustment" min="-3" max="3" step="1"/);
-    assert.match(template, /aria-label="Boons or Banes"/);
+    assert.match(template, /aria-label="(?:Boons or Banes|Banes \/ Boons)"/);
     assert.doesNotMatch(template, /name="(?:boons|banes|boonsLabel|banesLabel|additionalAttempt|attemptReason)"/);
     assert.doesNotMatch(template, /select name="(?:fear-|wound-|targetTokenUuid)/);
   }

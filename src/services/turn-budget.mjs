@@ -4,6 +4,8 @@ import {
   ACTION_CATEGORIES,
   startTurn,
   convertAction,
+  declareAction,
+  spendMovement,
   movementRemaining,
 } from "../rules/actions.mjs";
 import {
@@ -146,4 +148,18 @@ export function displayedBudget(combat, id) {
       ? movementBreakdown(movementProfile)
       : null,
   };
+}
+
+/** Record the table's explicitly completed action/movement through normal budgets. */
+export function spendParticipantBudget(combat,state,request,user,operationId){
+  const actor=combat.combatants.get(request.id)?.actor,budget=state.budgets?.[request.id];
+  if(!actor||!budget||state.current!==request.id)throw Error("Choose the active participant’s budget.");
+  const next=structuredClone(state),conditions=actionConditions(actor);
+  if(request.category === "movement") next.budgets[request.id]=spendMovement(budget,{operationId,amount:1,conditions,ownTurn:true});
+  else {
+    if(!ACTION_CATEGORIES.includes(request.category))throw Error("Choose Main, Maneuver, Reaction or movement.");
+    next.budgets[request.id]=declareAction(budget,{operationId,sourceId:"manual-table-action",category:request.category,conditions,ownTurn:true});
+  }
+  if(budget.operations[operationId])return structuredClone(state);
+  next.revision++;next.history.push({kind:"budget-spend",id:request.id,category:request.category,round:state.round,operationId});return next;
 }

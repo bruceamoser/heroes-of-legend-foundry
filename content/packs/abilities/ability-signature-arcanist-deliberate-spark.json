@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You flick a final spark into the ground beside your target’s foot, forcing a stumbling step as the spell lands.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>One creature hit by your Main Action damaging spell.</dd></div><div><dt>Duration</dt><dd>Immediate push after the spell.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Once on your turn; no benefit from free attacks.</dd></div><div><dt>Type</dt><dd>Signature</dd></div></dl><div class=\"hol-reference-rules\"><p>On a Standard or Strong result, after resolving the spell, you may push one of its targets 1 square directly away from you. Use this once on your turn. It adds no direct damage; normal collision rules apply.</p></div><h3>Additional rulings</h3><p><strong>Tags:</strong> Magic / Control</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/cards/signature-arcanist-deliberate-spark.md\" target=\"_blank\" rel=\"noopener\">design/cards/signature-arcanist-deliberate-spark.md</a> at <code>bdfd18ed535fbd0e1892b9344444abf6da644809</code>.</p></section>",
     "activity": {
-      "action": "main",
+      "action": "passive",
       "rollMode": "none",
       "attribute": "brawn",
       "defenseAttribute": "agility"

@@ -1,3 +1,4 @@
+import { ensureAuthorityReady } from "./authority.mjs";
 import { conditionApplication } from "./condition-apply.mjs";
 import { assertNoPendingTurn } from "./turn-lock.mjs";
 import { classifyRoll } from "../rules/roll.mjs";
@@ -158,6 +159,49 @@ export function defenseDamage(message) {
     eventId: `defense-${message.id}`,
   };
 }
+/** Run within the defense coordinator operation. The GM-authored attack and
+ * saved native dice authorize only its exact fixed outcome, never arbitrary damage.
+ * HP, survival, event and receipt share one Actor update for crash-safe replay. */
+export async function settleDefenseDamage(message) {
+  if (!isCreationAuthority()) throw new Error("Only the active GM coordinator can settle defense damage.");
+  const snapshot = message.getFlag(ID, "roll");
+  const ledger = game.messages.get(snapshot?.attackMessageId)?.getFlag(ID, "defenseResponses")?.find(row => row.requestId === message.id);
+  const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(JSON.stringify(snapshot)));
+  const signature = Array.from(new Uint8Array(digest), byte => byte.toString(16).padStart(2, "0")).join("");
+  if (!ledger?.resultSignature || ledger.resultSignature !== signature)
+    throw new Error("The saved defense result is unverified or changed. The DA must reconcile this attempt.");
+  const defense = defenseDamage(message);
+  const actor = await fromUuid(defense.actorUuid);
+  const source = JSON.stringify({ attackMessageId: message.getFlag(ID, "roll").attackMessageId,
+    actorUuid: defense.actorUuid, components: defense.components });
+  const prior = actor.getFlag(ID, "damageEvents")?.[defense.eventId];
+  if (prior) {
+    if (prior.source !== source || prior.requestId !== message.id)
+      throw new Error("The applied defense damage source changed.");
+    return prior;
+  }
+  assertNoPendingTurn(actor);
+  const basis = damageBasis(actor);
+  const plan = damagePreview(actor, basis, { components: defense.components });
+  const record = { eventId: defense.eventId, requestId: message.id,
+    authorId: message.author.id, rollMessageId: message.id,
+    kind: "defense-damage", source, before: basis.hp, after: plan.after,
+    event: plan.event, resistances: plan.resistances, weaknesses: plan.weaknesses,
+    wound: plan.wound };
+  const changes = { "system.health.value": plan.after,
+    [`flags.${ID}.damageRevision`]: basis.revision + 1,
+    [`flags.${ID}.damageEvents.${defense.eventId}`]: record,
+    [`flags.${ID}.operationReceipts.${message.id}`]: { applied: true, kind: "defense-damage", source } };
+  if (plan.survival) changes[`flags.${ID}.survival`] = plan.survival;
+  else changes[`flags.${ID}.creatureDefeated`] = plan.after === 0;
+  if (plan.wound) changes[`flags.${ID}.pendingWounds.${defense.eventId}`] = {
+    eventId: defense.eventId, priorWounds: plan.survival.wounds - 1,
+    types: plan.event.woundTypes, status: "awaiting-roll" };
+  actor.validate({ changes: foundry.utils.expandObject(changes), strict: true, fallback: false });
+  await writeAuthorityDocument(actor, changes);
+  Hooks.callAll("holDamageApplied", { actor, event: record });
+  return record;
+}
 export async function requestDamage(
   actor,
   basis,
@@ -165,8 +209,7 @@ export async function requestDamage(
   rollMessageId = null,
   attackMessageId = null,
 ) {
-  if (!game.settings.get(ID, "creationAuthorityClient"))
-    throw new Error("Enable the GM automation coordinator first.");
+  await ensureAuthorityReady();
   return ChatMessage.create({
     content: "Damage application requested.",
     whisper: game.users.filter((u) => u.isGM).map((u) => u.id),

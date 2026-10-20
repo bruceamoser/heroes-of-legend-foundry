@@ -1,5 +1,6 @@
+import { editCharacterLanguage } from "../rules/character-languages.mjs";
 import { getCampaignLanguageConfiguration } from "./languages.mjs";
-import { writeCharacterActor } from "./authority.mjs";
+import { writeCharacterActor, ensureAuthorityReady } from "./authority.mjs";
 import {
   enqueueCharacterOperation,
   isCreationAuthority,
@@ -17,6 +18,7 @@ export function registerAdvancement() {
         ui.notifications.error(error.message);
         await message.update({
           content: `Development needs attention: ${foundry.utils.escapeHTML(error.message)}`,
+          [`flags.${ID}.developmentFailure`]: error.message,
         });
       });
   });
@@ -40,6 +42,7 @@ export function currentDevelopment(actor) {
 }
 export async function requestDevelopment(actor, kind, payload = {}) {
   if (!actor.isOwner) throw new Error("You must own this character.");
+  await ensureAuthorityReady();
   if (!game.settings.get(ID, "creationAuthorityClient"))
     throw new Error("A GM must enable character processing first.");
   return ChatMessage.create({
@@ -51,6 +54,31 @@ export async function requestDevelopment(actor, kind, payload = {}) {
       [ID]: { developmentRequest: { actorUuid: actor.uuid, kind, ...payload } },
     },
   });
+}
+export async function waitForDevelopment(actor, requestId, draftId, { timeout = 30000, interval = 100 } = {}) {
+  const start = Date.now();
+  while (true) {
+    const receipt = actor.getFlag(ID, "development")?.commitReceipts?.[draftId];
+    if (receipt?.status === "complete") return receipt;
+    const failure = game.messages.get(requestId)?.getFlag(ID, "developmentFailure");
+    if (failure) throw new Error(failure);
+    if (Date.now() - start >= timeout) throw new Error("Development has not completed. Your choices are saved; check the GM automation coordinator before retrying.");
+    await new Promise(resolve => setTimeout(resolve, interval));
+  }
+}
+export async function waitForDevelopmentOperation(actor, requestId, {timeout=30000, interval=100}={}) {
+  const start=Date.now();
+  while (true) {
+    const receipt=actor.getFlag(ID,"operationReceipts")?.[requestId];
+    if(receipt?.applied) return receipt;
+    const message=game.messages.get(requestId);
+    const failure=message?.getFlag(ID,"developmentFailure");
+    if(failure) throw new Error(failure);
+    const result=message?.getFlag(ID,"developmentResult");
+    if(result?.complete) return result;
+    if(Date.now()-start>=timeout) throw new Error("Development has not completed. Check the GM automation coordinator before retrying.");
+    await new Promise(resolve=>setTimeout(resolve,interval));
+  }
 }
 export function resolveDevelopmentRequest(id) {
   return enqueueCharacterOperation(() => apply(id), { requestId: id });
@@ -75,20 +103,29 @@ async function apply(id) {
     changes = {};
   let state,
     createdIds = [];
-  if (["award", "safePlace"].includes(request.kind)) {
+  if (request.kind === "editLanguage") {
+    if (request.revision !== (current.revision ?? 0)) throw new Error("Character languages or development changed. Review and retry.");
+    state = editCharacterLanguage(current,request);
+  } else if (["award", "safePlace"].includes(request.kind)) {
     if (!message.author.isGM)
       throw new Error("The DA must award milestones and approve a safe place.");
     if (request.kind === "award") {
       if (!Number.isSafeInteger(request.level) || request.level < 1)
         throw new Error("Invalid milestone level.");
-      if (request.level <= current.level) return { status: "already-awarded" };
+      if (request.level <= current.level) {
+        await message.update({[`flags.${ID}.developmentResult`]:{complete:true,status:"already-awarded"}});
+        return {status:"already-awarded"};
+      }
       state = awardMilestones(current, request.level);
+      state.ledger=[...(current.ledger ?? []),...Array.from({length:request.level-current.level},(_,index)=>({kind:"award",level:current.level+index+1,delta:8+current.level+index+1,operationId:message.id}))];
       changes["system.grit.granted"] = state.gritGranted;
     } else {
       if (typeof request.approved !== "boolean")
         throw new Error("Invalid safe-place decision.");
-      if (current.safePlace === request.approved)
-        return { status: "unchanged" };
+      if (current.safePlace === request.approved) {
+        await message.update({[`flags.${ID}.developmentResult`]:{complete:true,status:"unchanged"}});
+        return {status:"unchanged"};
+      }
       state = { ...current, safePlace: request.approved };
     }
   } else if (request.kind === "commitDraft") {

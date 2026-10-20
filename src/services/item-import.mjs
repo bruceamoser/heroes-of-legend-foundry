@@ -1,13 +1,14 @@
+import { assertNoPendingTurn } from "./turn-lock.mjs";
 const ID = "heroes-of-legend";
 
 function assertInventoryOwner(actor) {
   if (actor?.documentName !== "Actor" || actor.pack || !actor.id ||
       !actor.testUserPermission(game.user, "OWNER"))
-    throw new Error("Only this character's owner can add equipment.");
+    throw new Error("Only this character's owner can edit equipment.");
 }
 
 /** Intentional catalog/world copy; an Actor-owned Item requires a separate move. */
-export async function copyEquipmentToActor(actor, sourceUuid) {
+export async function copyEquipmentToActor(actor, sourceUuid, {quantity} = {}) {
   assertInventoryOwner(actor);
   const source = typeof sourceUuid === "string" ? await fromUuid(sourceUuid) : null;
   if (source?.documentName !== "Item" || source.type !== "equipment" || source.uuid !== sourceUuid)
@@ -19,6 +20,10 @@ export async function copyEquipmentToActor(actor, sourceUuid) {
   const data = source.inCompendium
     ? game.items.fromCompendium(source, { clearFolder: true, keepId: false })
     : source.toObject();
+  if (quantity !== undefined) {
+    if (!Number.isSafeInteger(quantity) || quantity < 1 || quantity > 10000) throw new Error("Choose a whole quantity from 1 to 10,000.");
+    data.system.quantity = quantity;
+  }
   // The native embedded Item receives a new identity and inherits its Actor's access.
   delete data._id;
   delete data.parent;
@@ -47,4 +52,19 @@ export async function equipmentCopyOptions() {
         options.push({ uuid: entry.uuid ?? pack.getUuid(entry._id), name: `Equipment catalog — ${entry.name}` });
   }
   return options.sort((a, b) => a.name.localeCompare(b.name));
+}
+
+export async function removeEquipmentFromActor(actor, itemId) {
+  assertInventoryOwner(actor);
+  assertNoPendingTurn(actor);
+  const item = actor.items.get(itemId);
+  if (item?.type !== "equipment" || item.actor?.uuid !== actor.uuid) throw new Error("That equipment is no longer owned by this character.");
+  const {inventoryActorTargets}=await import("./inventory.mjs");
+  for (const host of [...game.combats,...inventoryActorTargets()]) {
+    const operationId=host.getFlag(ID,"pendingPotion"),operation=host.getFlag(ID,"potionOperations")?.[operationId];
+    if (operationId && operation?.giver?.actorUuid === actor.uuid) throw new Error("Finish the pending healing-potion use before deleting equipment.");
+  }
+  for (const key of ["pendingCrafting","pendingPotion","pendingDamage","pendingInventory"])
+    if (actor.getFlag(ID,key)) throw new Error("Finish the pending character operation before deleting equipment.");
+  return actor.deleteEmbeddedDocuments("Item",[itemId]);
 }

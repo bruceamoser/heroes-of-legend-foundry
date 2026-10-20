@@ -1,9 +1,8 @@
 <section class="hol-roll-shell">
-  {{#if death}}<p class="hol-note">Dying turn: choose before seeing dice. Spend 1 Grit for full HP, or make this Fortitude death roll. Wounds remain. Grit available: {{gritAvailable}}</p><button type="button" data-action="grit" {{#unless canGrit}}disabled{{/unless}}>Spend 1 Grit · restore full HP</button>{{/if}}<header class="hol-banner"><p class="hol-kicker">{{#if defense}}Defense{{else}}Attribute check{{/if}}</p><h1>{{name}}</h1></header>
+  {{#if death}}<p class="hol-note">Dying turn: choose before seeing dice. Spend 1 Grit for full HP, or make this Fortitude death roll. Wounds remain. Grit available: {{gritAvailable}}</p><button type="button" data-action="grit" {{#unless canGrit}}disabled{{/unless}}>Spend 1 Grit · restore full HP</button>{{/if}}<header class="hol-banner"><p class="hol-kicker">{{#if defense}}Defense{{else}}Attribute check{{/if}}</p><span class="hol-roll-context">{{name}}{{#if defense}} · Defense{{/if}}</span><h1>{{#if defense}}Defend{{#if incoming}} · {{incoming.title}}{{/if}}{{else}}Attribute check{{/if}}</h1></header>
   <div class="hol-body">
-  {{#if incoming}}<p>Defending against {{incoming.attackerName}} · {{incoming.title}}</p><button type="button" data-action="changeDefender">Change defender</button>{{/if}}
   {{#if notice}}<p class="hol-note" role="alert">{{notice}}</p>{{/if}}
-  <p data-roll-attribute>{{attributeName}}: {{attribute}}</p>
+  <section class="hol-roll-setup"><div class="hol-roll-fields"><label>Attribute<select name="attributeKey" aria-label="Roll attribute" {{#unless attributeEditable}}disabled{{/unless}}>{{#each attributeOptions}}<option value="{{key}}" {{#if selected}}selected{{/if}}>{{name}}</option>{{/each}}</select></label><label>Value<output data-roll-value>{{attribute}}</output></label></div>
   {{#if defenseSubstitutions}}<label>Defense attribute (optional)
     <select name="defenseSubstitutionItemUuid">
       <option value="">Printed defense attribute · {{attributeName}}</option>
@@ -11,20 +10,16 @@
     </select>
   </label>
   <p class="hol-note">Choose a card before this defense roll. The table judges its printed trigger and equipment and records its one Reaction. This selector changes the same roll; it does not spend the Reaction. {{#each defenseSubstitutions}}<a class="content-link" data-link data-type="Item" data-uuid="{{itemUuid}}">{{name}}</a>: {{guidance}} {{/each}}</p>{{/if}}
-  <label class="hol-adjustment">Boons / Banes
-    <span data-adjustment-label aria-live="polite">{{adjustmentLabel}}</span>
-    <input type="range" name="adjustment" min="-3" max="3" step="1" value="{{draft.adjustment}}" aria-label="Boons or Banes" aria-valuetext="{{adjustmentLabel}}">
-    <span class="hol-adjustment-scale" aria-hidden="true"><span>−3 Banes</span><span>0</span><span>+3 Boons</span></span>
-  </label>
-  {{#if defense}}<p>Rolling this defense spends no Reaction. Any player may roll for this defender.</p>{{/if}}
+  <div class="hol-net" data-net-control><label class="hol-net-heading"><span>Banes</span><output data-adjustment-label>{{adjustmentLabel}}</output><span>Boons</span></label><div class="hol-net-track"><span class="hol-net-fill"></span><input type="range" name="adjustment" min="-3" max="3" step="1" value="{{draft.adjustment}}" aria-label="Banes / Boons" aria-valuetext="{{adjustmentLabel}}"></div></div>
+  <div class="hol-roll-pool" aria-live="polite"><div class="hol-pool-count"><strong data-roll-count>3</strong><span>d6</span></div><div class="hol-pool-detail"><div data-roll-dice class="hol-pool-dice" aria-hidden="true"></div><strong data-roll-keep>Keep all three</strong><code data-roll-formula></code></div></div></section>
   {{#if partyPiece}}<label><input type="checkbox" name="partyPiece" {{#if draft.partyPiece}}checked{{/if}}> A Party Piece · +1 Boon when entertaining through your chosen specialty (<a class="content-link" data-link data-type="Item" data-uuid="{{partyPiece}}">ability</a>)</label>{{/if}}
-  {{#if lookOverHere}}<label><input type="checkbox" name="lookOverHere" {{#if draft.lookOverHere}}checked{{/if}}> Look Over Here! · +1 Boon if an ally spent their Reaction for this defense</label><p class="hol-note">Sight-dependent attack by an enemy adjacent to that ally who can see them. No cover, Hidden or canceled attack.</p>{{/if}}
-  {{#if abilities}}<h2>Defense abilities</h2><ul class="hol-defense-abilities">{{#each abilities}}<li data-item-id="{{itemId}}" class="{{#unless available}}hol-unavailable{{/unless}}"><button type="button" data-action="useAbility" data-item-id="{{itemId}}" {{#unless available}}disabled{{/unless}}>{{#if available}}Use {{else}}{{/if}}{{name}}</button><span class="hol-ability-reason">{{reasonText}}</span></li>{{/each}}</ul>{{/if}}
+  {{#if lookOverHere}}<details class="hol-context-options"><summary>Ally assistance</summary><label><input type="checkbox" name="lookOverHere" {{#if draft.lookOverHere}}checked{{/if}}> Look Over Here! · +1 Boon if an ally spent their Reaction for this defense</label><p class="hol-note">Sight-dependent attack by an enemy adjacent to that ally who can see them. No cover, Hidden or canceled attack.</p></details>{{/if}}
+  {{#if abilities}}<details open class="hol-roll-abilities"><summary>Defense abilities</summary><ul class="hol-defense-abilities">{{#each abilities}}<li data-item-id="{{itemId}}" class="{{#unless available}}hol-unavailable{{/unless}}"><button type="button" data-action="useAbility" data-item-id="{{itemId}}" {{#unless available}}disabled{{/unless}}>{{#if available}}Use {{else}}{{/if}}{{name}}</button><span class="hol-ability-reason">{{reasonText}}</span></li>{{/each}}</ul></details>{{/if}}
   <p data-reference-drop-status role="status" aria-live="polite"></p>
-  {{#if references}}<details class="hol-context-options hol-reference-picker"><summary>Ability references (optional)</summary>
-    <p>Reference only · no automatic bonus or cost</p>
+  {{#if references}}<details open class="hol-roll-abilities hol-reference-picker"><summary>Abilities</summary>
+    <small>Choose applicable abilities; use the slider for the net Boons or Banes. Reference choices spend no costs.</small>
     <label>Find ability<input type="search" data-reference-search></label>
-    <ul>{{#each references}}<li data-reference-row><label><input type="checkbox" data-reference-id="{{id}}" {{#if selected}}checked{{/if}}> {{name}}</label></li>{{/each}}</ul>
+    <ul class="roll-abilities">{{#each references}}<li data-reference-row><label class="inline-toggle"><input type="checkbox" data-reference-id="{{id}}" {{#if selected}}checked{{/if}}> {{name}}</label></li>{{/each}}</ul>
   </details>{{/if}}
   {{#if fears}}<details class="hol-context-options"><summary>Fear context (optional)</summary>
   {{#each fears}}<label><input type="checkbox" name="fear-{{index}}" {{#if yes}}checked{{/if}}> Perceiving {{source}}</label>{{/each}}</details>{{/if}}
@@ -34,6 +29,6 @@
   <details class="hol-context-options"><summary>Roll details</summary><ul class="hol-roll-sources"></ul><p class="hol-roll-totals" aria-live="polite"></p></details>
 
   </div><footer class="hol-roll-footer">
-  <output aria-live="polite"></output>
+  <span data-roll-error role="alert"></span>
   <button type="button" data-action="roll" class="hol-primary">{{localize "HOL.Roll"}}</button>
 </footer></section>

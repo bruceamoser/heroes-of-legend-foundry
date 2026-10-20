@@ -1,3 +1,4 @@
+import { registerHOLTheme } from "./applications/theme.mjs";
 import { registerItemIcons } from "./services/item-icons.mjs";
 import { registerResupplyRequests } from "./services/resupply.mjs";
 import { registerCraftingRequests } from "./services/crafting.mjs";
@@ -76,6 +77,7 @@ Hooks.once("init", () => {
   registerCreationAuthority();
   registerLanguageSettings();
   registerRulesLibrary();
+  registerHOLTheme();
   registerAdvancement();
   registerAuthorityPanel();
   registerTimingPrototype();

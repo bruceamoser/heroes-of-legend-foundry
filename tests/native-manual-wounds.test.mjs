@@ -30,7 +30,7 @@ async function fixture({ owner = true, state = null } = {}) {
     "../rules/damage.mjs": { DAMAGE_TYPES },
     "../rules/survival.mjs": { enterLastWords, validateSurvival, survivalState },
     "./conditions.mjs": { conditionIcon: key => key },
-    "./authority.mjs": { isCreationAuthority: () => true, enqueueCharacterOperation: fn => fn(), writeAuthorityDocument: async (_actor, changes) => { writes++; for (const [key,value] of Object.entries(changes)) if (key !== "effects") set(key,value); } },
+    "./authority.mjs": {ensureAuthorityReady:async()=>{}, isCreationAuthority: () => true, enqueueCharacterOperation: fn => fn(), writeAuthorityDocument: async (_actor, changes) => { writes++; for (const [key,value] of Object.entries(changes)) if (key !== "effects") set(key,value); } },
   };
   const module = new SourceTextModule(source, { context });
   await module.link(name => { const values = mocks[name]; return new SyntheticModule(Object.keys(values), function() { for (const [key,value] of Object.entries(values)) this.setExport(key,value); }, { context }); });

@@ -1,0 +1,131 @@
+/* Measured from the actual web/workshop.css, scoped to native creation/development.
+   Pixel equivalents intentionally avoid Foundry's different root rem size. */
+.heroes-of-legend.hol-creation .hol-wizard {
+  --hol-forest: #15221c; --hol-gold: #b39253; --hol-ivory: #f1e6ce;
+  --hol-ink: #28251c; color-scheme: light; background: #f7f3e9;
+  color: #28251c; font: 14px system-ui, sans-serif;
+}
+.heroes-of-legend.hol-creation .hol-wizard :is(h1,h2,h3,h4,p) {margin: 0;}
+.heroes-of-legend.hol-creation .hol-wizard :is(h1,h2,h3,h4) {font-family: "HOL Cinzel",serif; border: 0; text-shadow: none;}
+.heroes-of-legend.hol-creation .hol-wizard h1 {font-size: 22.4px; line-height: 1.2;}
+.heroes-of-legend.hol-creation .hol-wizard h2 {font-size: 15.82px; line-height: 1.4;}
+.heroes-of-legend.hol-creation .hol-wizard h3 {font-size: 12.74px; line-height: 1.4;}
+.heroes-of-legend.hol-creation .hol-wizard h4 {font-size: 11.9px;}
+.heroes-of-legend.hol-creation .hol-wizard p {line-height: 1.45;}
+.heroes-of-legend.hol-creation .hol-wizard label {display: block; font-size: 11.2px; font-weight: 600; line-height: 1.4; margin: 0;}
+.heroes-of-legend.hol-creation .hol-wizard :is(input:not([type=checkbox]):not([type=radio]),select,textarea) {
+  display: block; width: 100%; min-height: 32px; height: auto; margin-top: 3px;
+  padding: 6px 8px; border: 1px solid #b9b09d; border-radius: 3px;
+  background: #fffdf8; color: #28251c; font: inherit; box-shadow: none;
+}
+.heroes-of-legend.hol-creation .hol-wizard :is(input[type=checkbox],input[type=radio]) {
+  appearance: auto; -webkit-appearance: auto; accent-color: #15221c;
+  width: 17px; height: 17px; min-width: 17px; min-height: 17px;
+  flex: 0 0 17px; margin: 2px; padding: 0; border: 0; background: transparent;
+  box-shadow: none; position: static; transform: none;
+}
+.heroes-of-legend.hol-creation .hol-wizard :is(input[type=checkbox],input[type=radio])::before,
+.heroes-of-legend.hol-creation .hol-wizard :is(input[type=checkbox],input[type=radio])::after {display: none;}
+.heroes-of-legend.hol-creation .hol-wizard button {
+  width: auto; height: auto; min-height: 30px; padding: 5px 9px;
+  border: 1px solid #d6cdb9; border-radius: 3px; background: #f7f3e9;
+  color: #28251c; font: 600 14px system-ui,sans-serif; line-height: normal;
+  box-shadow: none; text-shadow: none;
+}
+.heroes-of-legend.hol-creation .hol-wizard button:hover:not(:disabled) {background: #f1e6ce; border-color: #b39253;}
+.heroes-of-legend.hol-creation .hol-wizard button:disabled {color: #736e63; background: #eeebe4;}
+.heroes-of-legend.hol-creation .hol-wizard button.hol-primary,
+.heroes-of-legend.hol-creation .hol-wizard button[data-open-market] {background: #15221c; border-color: #15221c; color: #f7f3e9;}
+.heroes-of-legend.hol-creation .hol-wizard button[data-open-market] {font-size: 11.2px; min-height: 27px; padding: 3px 7px;}
+.heroes-of-legend.hol-creation .hol-wizard :is(button,a,input,select,textarea,summary):focus-visible {outline: 2px solid #226c8a; outline-offset: 2px;}
+.heroes-of-legend.hol-creation .hol-workshop-toolbar {min-height: 36px; padding: 3px 10px;}
+.heroes-of-legend.hol-creation .hol-workshop-toolbar button {font-size: 11.2px; background: transparent;}
+.heroes-of-legend.hol-creation .hol-workshop-hero {padding: 9px 14px; gap: 12px;}
+.heroes-of-legend.hol-creation .hol-workshop-hero p {margin-top: 3px; font-size: 10.92px;}
+.heroes-of-legend.hol-creation .hol-workshop-vitals strong,
+.heroes-of-legend.hol-creation .hol-workshop-attributes strong {font: 600 20.3px/1.2 "HOL Garamond",serif;}
+.heroes-of-legend.hol-creation .hol-workshop-vitals small {font-size: 8.4px; letter-spacing: .04em;}
+.heroes-of-legend.hol-creation .hol-workshop-attributes span {font: 600 9.52px "HOL Cinzel",serif;}
+.heroes-of-legend.hol-creation .hol-wizard-main {padding: 12px 14px; overscroll-behavior: contain;}
+.heroes-of-legend.hol-creation .hol-wizard-main > h2 {margin-bottom: 12px;}
+.heroes-of-legend.hol-creation .hol-wizard-main > h3 {margin: 14px 0 8px; padding-bottom: 6px; border-bottom: 1px solid #d6cdb9;}
+.heroes-of-legend.hol-creation .hol-wizard-main > label:has([name=heroName]) {max-width: calc(50% - 5px);}
+.heroes-of-legend.hol-creation .hol-attributes {gap: 10px;}
+.heroes-of-legend.hol-creation .hol-workshop-context {font-size: 11.2px; padding: 7px 14px;}
+.heroes-of-legend.hol-creation .hol-workshop-cards {margin: 0 0 14px; gap: 8px;}
+.heroes-of-legend.hol-creation .hol-workshop-choice {padding: 10px; gap: 6px;}
+.heroes-of-legend.hol-creation .hol-workshop-choice h3 {font-size: 12.74px;}
+.heroes-of-legend.hol-creation .hol-workshop-choice p {font-size: 10.5px; color: #6a6457;}
+.heroes-of-legend.hol-creation .hol-choice-actions {justify-content: space-between; align-items: center; padding-top: 3px;}
+.heroes-of-legend.hol-creation .hol-choice-actions button {font-size: 10.92px; min-height: 27px; padding: 3px 7px;}
+.heroes-of-legend.hol-creation .hol-choice-actions button:first-child {background: transparent; color: #28251c; border-color: transparent;}
+.heroes-of-legend.hol-creation .hol-workshop-checks {margin: 14px 0;}
+.heroes-of-legend.hol-creation .hol-workshop-checks legend,
+.heroes-of-legend.hol-creation .hol-language-choices legend {font: 700 12.74px "HOL Cinzel",serif; border-bottom: 1px solid #d6cdb9; padding-bottom: 6px; margin-bottom: 8px; width: 100%;}
+.heroes-of-legend.hol-creation .hol-workshop-checks > label {display: flex; flex-direction: row; align-items: center; gap: 7px; padding: 8px; font-size: 11.2px; min-height: 45px;}
+.heroes-of-legend.hol-creation .hol-workshop-checks > label > button {margin-left: auto; font-size: 10.92px; min-height: 27px; padding: 3px 7px; border-color: transparent; background: transparent;}
+.heroes-of-legend.hol-creation .hol-language-choices {border: 0; padding: 0; margin: 14px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px;}
+.heroes-of-legend.hol-creation .hol-language-choices > p {grid-column: 1 / -1; font-size: 11.2px; color: #6a6457;}
+.heroes-of-legend.hol-creation .hol-language-choice {display: grid; grid-template-columns: 21px 1fr; gap: 3px 7px; padding: 8px; font-size: 11.2px; font-weight: 400; background: #fffdf8; border: 1px solid #d6cdb9;}
+.heroes-of-legend.hol-creation .hol-language-choice > input {grid-column: 1; grid-row: 1 / span 2;}
+.heroes-of-legend.hol-creation .hol-language-choice :is(strong,small) {grid-column: 2; font-size: inherit;}
+.heroes-of-legend.hol-creation .hol-language-choice strong {font-weight: 400;}
+.heroes-of-legend.hol-creation .hol-language-choice small {color: #6a6457; font-size: 10px;}
+.heroes-of-legend.hol-creation .hol-origin-grid {display: grid; gap: 10px;}
+.heroes-of-legend.hol-creation .hol-origin-card {padding: 10px; border: 1px solid #d6cdb9; border-radius: 4px; background: #fcfaf4;}
+.heroes-of-legend.hol-creation .hol-origin-grants {display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 8px; font-size: 12px;}
+.heroes-of-legend.hol-creation .hol-origin-grants img,
+.heroes-of-legend.hol-creation .hol-origin-grants svg {width: 23px; height: 23px; object-fit: contain; border: 0;}
+.heroes-of-legend.hol-creation .hol-assigned-total {margin-top: 10px; padding: 10px 12px; border-left: 3px solid #b39253; background: #f1e6ce; font-size: 11.9px;}
+.heroes-of-legend.hol-creation .hol-build-table {width: 100%; border-collapse: collapse; background: #fcfaf4; font-size: 11.2px;}
+.heroes-of-legend.hol-creation .hol-build-table td {padding: 6px 4px; border-bottom: 1px solid #d6cdb9;}
+.heroes-of-legend.hol-creation .hol-build-table td:last-child {text-align: right;}
+.heroes-of-legend.hol-creation .hol-build-table button {font-size: 10.92px; min-height: 24px; padding: 2px 5px; background: transparent; border-color: transparent;}
+.heroes-of-legend.hol-creation .hol-acquisition-summary {font-size: 11.2px; color: #6a6457;}
+.heroes-of-legend.hol-creation .hol-wizard-footer {padding: 6px 12px; min-height: 44px;}
+.heroes-of-legend.hol-creation .hol-wizard-layout > nav button {width: 40px; height: 38px; min-height: 38px; padding: 8px; background: #e4dcc9; color: #51482f; border-color: #b7aa8c; border-right: 0; border-radius: 4px 0 0 4px;}
+.heroes-of-legend.hol-creation .hol-wizard-layout > nav button[aria-current] {background: #15221c; color: #f1e6ce; box-shadow: inset 3px 0 #b39253;}
+@media (max-width: 600px) {
+  .heroes-of-legend.hol-creation .hol-language-choices {grid-template-columns: 1fr;}
+  .heroes-of-legend.hol-creation .hol-wizard-main > label:has([name=heroName]) {max-width: none;}
+}
+.heroes-of-legend.hol-creation .hol-name-grid {display: grid; grid-template-columns: 1fr 1fr; gap: 10px;}
+.heroes-of-legend.hol-creation .hol-inline-help {font-size: 10.92px; color: #6a6457; margin: 8px 0 10px;}
+.heroes-of-legend.hol-creation .hol-section-title {padding-bottom: 6px; border-bottom: 1px solid #d6cdb9; margin: 14px 0 8px;}
+.heroes-of-legend.hol-creation .hol-origin-grants button {padding: 0; min-height: 24px; border: 0; background: transparent; font-size: 12px;}
+.heroes-of-legend.hol-creation .hol-origin-grants span {display: inline-flex; align-items: center; gap: 4px;}
+.heroes-of-legend.hol-creation .hol-build-box {border: 1px solid #d6cdb9; border-radius: 4px; background: #fcfaf4; padding: 10px;}
+.heroes-of-legend.hol-creation .hol-build-box > h3 {margin-bottom: 6px;}
+.heroes-of-legend.hol-creation .hol-build-table {margin: 0;}
+.heroes-of-legend.hol-creation .hol-build-table td {padding: 3px 0; line-height: 1.4;}
+.heroes-of-legend.hol-creation .hol-build-table td:nth-child(2) {font-size: 10.5px; color: #6a6457;}
+.heroes-of-legend.hol-creation .hol-build-table td:first-child {width: 52%; font-weight: 600;}
+.heroes-of-legend.hol-creation .hol-build-table tr:last-child td {border-bottom: 0;}
+.heroes-of-legend.hol-creation .hol-discipline-strip {display: flex; gap: 4px; align-items: center; flex-wrap: wrap;}
+.heroes-of-legend.hol-creation .hol-discipline-chip {display: inline-flex; align-items: center; gap: 4px; background: #24382e; border: 1px solid #59604a; border-radius: 3px; padding: 2px 5px; font-size: 10.08px;}
+.heroes-of-legend.hol-creation .hol-discipline-chip img {width: 17px; height: 17px; border: 0; object-fit: contain;}
+.heroes-of-legend.hol-creation .hol-equipment-heading {margin-top: -35px; margin-bottom: 16px; justify-content: flex-end;}
+.heroes-of-legend.hol-creation .hol-creation-inventory {width: 100%; margin: 0; border-collapse: collapse; background: transparent; font-size: 11.2px;}
+.heroes-of-legend.hol-creation .hol-creation-inventory :is(th,td) {padding: 6px 0; border-bottom: 1px solid #d6cdb9; text-align: left; background: transparent; color: #28251c;}
+.heroes-of-legend.hol-creation .hol-creation-inventory th {font-size: 8.4px; letter-spacing: .05em; text-transform: uppercase; color: #6a6457;}
+.heroes-of-legend.hol-creation .hol-creation-inventory td:first-child {width: 36%; font-weight: 600;}
+.heroes-of-legend.hol-creation .hol-creation-inventory td:nth-child(4) {width: 19%;}
+.heroes-of-legend.hol-creation .hol-creation-inventory button {font-size: 11.2px; min-height: 24px; padding: 3px 0; border: 0; background: transparent; text-align: left;}
+.heroes-of-legend.hol-creation .hol-review-complete {padding: 10px 12px; background: #f1e6ce; border-left: 3px solid #b39253; margin-bottom: 12px; font-size: 11.9px;}
+.heroes-of-legend.hol-creation .hol-review-complete h3 {margin-bottom: 4px;}
+.heroes-of-legend.hol-creation .hol-review-columns {display: grid; grid-template-columns: minmax(0,1.5fr) minmax(220px,1fr); gap: 12px;}
+.heroes-of-legend.hol-creation .hol-review-card {border: 1px solid #d6cdb9; border-radius: 4px; background: #fcfaf4; padding: 10px; font-size: 11.2px;}
+.heroes-of-legend.hol-creation .hol-review-card > h3 {margin-bottom: 6px;}
+.heroes-of-legend.hol-creation .hol-review-card table {width: 100%; background: transparent; border-collapse: collapse; margin: 0; font-size: 11.2px;}
+.heroes-of-legend.hol-creation .hol-review-card td {padding: 6px 0; border-bottom: 1px solid #e6dfcf;}
+.heroes-of-legend.hol-creation .hol-review-card tr:last-child td {border-bottom: 0;}
+.heroes-of-legend.hol-creation .hol-review-card td:last-child {text-align: right; font-weight: 600;}
+.heroes-of-legend.hol-creation .hol-review-card p {margin: 8px 0; color: #6a6457;}
+.heroes-of-legend.hol-creation .hol-creation-ledger {border: 0; background: transparent; margin-top: 12px; padding: 0; font-size: 11.2px;}
+.heroes-of-legend.hol-creation .hol-creation-ledger summary {font-weight: 600;}
+@media(max-width:600px) {.heroes-of-legend.hol-creation .hol-review-columns {grid-template-columns: 1fr;}}
+.heroes-of-legend.hol-creation .hol-build-table button {min-height: 21px; padding: 0;}
+.heroes-of-legend.hol-creation .hol-section-heading:not(.hol-equipment-heading) {margin-bottom: 10px;}
+.heroes-of-legend.hol-creation .hol-wizard :is(thead,tbody,tr,tr:nth-child(even),tr:nth-child(odd)) { background:transparent; color:#28251c; border:0; text-shadow:none; }
+.heroes-of-legend.hol-creation .hol-wizard th { color:#6a6457; background:transparent; text-shadow:none; }
+.heroes-of-legend.hol-creation .hol-section-heading > span { display:flex; gap:6px; }

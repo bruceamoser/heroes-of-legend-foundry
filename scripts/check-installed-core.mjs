@@ -165,9 +165,11 @@ try {
     const index = await ruleIndex();
     if (index.some(record => record.pack !== "player-rules")) throw new Error("DA references leaked into the player library.");
     const entry = await openLocalRule("design/rules/languages.md");
-    return { count: index.length, readable: entry.testUserPermission(game.user, "OBSERVER") };
+    const book = entry.parent;
+    if (book.pages.size !== 625 || book.getFlag("heroes-of-legend", "ruleBook")?.key !== "player-rules") throw new Error("Expected a complete native Player book.");
+    return { count: index.length, readable: entry.testUserPermission(game.user, "OBSERVER"), sourcePages:book.pages.filter(page => page.getFlag("heroes-of-legend", "ruleSource")).length };
   });
-  assert.deepEqual(playerRules, { count: 610, readable: true });
+  assert.deepEqual(playerRules, { count: 610, readable: true, sourcePages:610 });
   await owner.evaluate(async path => {
     for (const app of foundry.applications.instances.values())
       if (app.document?.documentName === "JournalEntry") await app.close();
@@ -261,14 +263,13 @@ try {
     if (JSON.stringify([...card.suggestedDefenderTokenUuids].sort()) !== JSON.stringify(f.tokens.slice(0, 2).map(token => token.uuid).sort())) throw new Error("Native target suggestions changed.");
     return message.id;
   }, { f: fixture, actionId });
+  await gm.evaluate(async f => game.users.get(f.users[0].id).update({character:f.actors[1]}), fixture);
+  await owner.waitForFunction(f=>game.user.character?.id===f.actors[1],fixture);
   for (let attempt = 0; attempt < 2; attempt++) {
-    // Arin's player deliberately rolls for Bera: any-player Defend remains available.
+    // The player defends as their assigned hero, independently of attack suggestions.
     await owner.bringToFront();
     await owner.evaluate(() => { ui.sidebar.expand(); ui.sidebar.changeTab("chat", "primary"); });
     await owner.locator(`#chat [data-message-id="${fixture.creatureAttack}"] .hol-defend-button`).click();
-    const chooser = owner.locator(".hol-defender-choice");
-    await chooser.locator('[name="defenderUuid"]').selectOption(fixture.tokens[1].uuid);
-    await chooser.getByRole("button", { name: "Prepare defense", exact: true }).click();
     const defense = owner.locator(".hol-roll-dialog");
     assert.equal(await defense.locator('[name="attemptReason"], [name="additionalAttempt"]').count(), 0);
     if (attempt === 0) {

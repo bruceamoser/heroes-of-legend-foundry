@@ -3,7 +3,7 @@
   "_id": "6b67b67345bcb480",
   "name": "Winter Lining",
   "type": "equipment",
-  "img": "systems/heroes-of-legend/assets/icons/cloak.svg",
+  "img": "icons/equipment/back/cloak-plain-green.webp",
   "system": {
     "schemaVersion": 1,
     "catalogId": "item-winter-lining",
@@ -11,6 +11,7 @@
     "bulk": 1,
     "hands": 0,
     "inventoryDie": 0,
+    "carried": true,
     "held": false,
     "worn": false,
     "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Market reference · acquisition and use automation in progress</p><p><strong>Market price:</strong> 180 coins; special order.</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/equipment/winter-lining.md\" target=\"_blank\" rel=\"noopener\">design/equipment/winter-lining.md</a> at <code>bdfd18ed535fbd0e1892b9344444abf6da644809</code>.</p></section>"

@@ -1,3 +1,4 @@
+import { ensureAuthorityReady } from "./authority.mjs";
 import { assertNoPendingTurn } from "./turn-lock.mjs";
 import { woundRoll, woundResult } from "../rules/wounds.mjs";
 import { DAMAGE_TYPES } from "../rules/damage.mjs";
@@ -30,8 +31,7 @@ export function woundBasis(actor, eventId) {
   };
 }
 export async function requestWound(actor, eventId, kind, payload = {}) {
-  if (!game.settings.get(ID, "creationAuthorityClient"))
-    throw new Error("Enable the GM automation coordinator first.");
+  await ensureAuthorityReady();
   return ChatMessage.create({
     content: `Wound ${kind} requested.`,
     whisper: game.users

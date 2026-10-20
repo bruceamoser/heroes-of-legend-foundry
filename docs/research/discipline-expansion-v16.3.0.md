@@ -123,8 +123,9 @@ rebuilt and live resources are not reset.
 Old Walled Communities equipment arrangement/removal keys normalize to the current
 light-armor grant. The parser continues to validate file structure and ignores
 untrusted derived state; the input source pin does not select an alternate ruleset.
-Native JSON import still covers level-1 creation; later-level web plans use the
-existing native advancement workflow.
+Native JSON import now rebuilds exported higher-level plans through the shared
+workshop progression rules, including signatures, purchases and acquisition grants
+(#221). It preserves live resources and commits only into a new character.
 
 ## Initial verification and author review (#171)
 

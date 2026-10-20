@@ -47,3 +47,139 @@
 .combatant.hol-side-start { flex-wrap:wrap; }
 .heroes-of-legend .hol-recovery-stats { display:flex; flex-wrap:wrap; gap:6px; margin:5px 0 10px; }
 .heroes-of-legend .hol-recovery-stats strong { flex:1; min-width:90px; padding:8px; text-align:center; border:1px solid #bcaa7d; background:#f7f0df; }
+/* Exact compact web/tools hierarchy; scoped to standalone recovery/crafting only. */
+.heroes-of-legend :is(.hol-approved-tool){background:#f5eddc;color:#292a22;font:13px/1.35 system-ui,sans-serif}
+.heroes-of-legend .hol-approved-tool .hol-tool-banner{display:flex;justify-content:space-between;align-items:center;gap:8px;background:#214b38;color:#f5eddc;padding:7px 9px;border-bottom:2px solid #ad8b49}
+.heroes-of-legend .hol-approved-tool .hol-tool-banner h1{font:600 17px/1.2 "HOL Cinzel",Georgia,serif;color:#f5eddc;border:0;margin:0}
+.heroes-of-legend .hol-approved-tool .hol-tool-banner small{font-size:11px;color:#d6c6a5}
+.heroes-of-legend .hol-approved-tool .hol-tool-content{padding:8px}
+.heroes-of-legend .hol-approved-tool .hol-tool-box{border:1px solid #c8b893;border-radius:3px;background:#fcfaf4;padding:7px;margin-bottom:6px;min-width:0}
+.heroes-of-legend .hol-approved-tool .hol-tool-box h2{font:600 14px/1.3 "HOL Cinzel",Georgia,serif;color:#214b38;margin:0 0 5px}
+.heroes-of-legend .hol-approved-tool .hol-tool-box p{font-size:13px;margin:4px 0}
+.heroes-of-legend .hol-approved-tool .hol-tool-stats{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:7px}
+.heroes-of-legend .hol-approved-tool .hol-tool-stats span{background:#eae2cf;border:1px solid #c8b893;padding:3px 7px;border-radius:3px;font-size:12px}
+.heroes-of-legend .hol-approved-tool .hol-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.heroes-of-legend .hol-approved-tool .hol-tool-actions{display:flex;gap:5px;flex-wrap:wrap;align-items:center;margin:6px 0}
+.heroes-of-legend .hol-approved-tool .hol-tool-content button{height:auto;min-height:24px;width:auto;font-size:12px;line-height:1.25;padding:4px 8px;white-space:normal}
+.heroes-of-legend .hol-approved-tool .hol-tool-content :is(input,select){font-size:12px;color:#292a22;background:#fdfaf1}
+.heroes-of-legend .hol-approved-tool label{font-size:12px}
+.heroes-of-legend .hol-approved-tool .hol-tool-content input[type=checkbox]{width:auto;height:auto}
+.heroes-of-legend .hol-approved-tool .hol-tool-fields{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.heroes-of-legend .hol-approved-tool .hol-tool-result{background:#eae2cf;border-left:3px solid #ad8b49;padding:7px;font-size:13px}
+.heroes-of-legend .hol-approved-tool .hol-tool-help{font-size:11px;color:#686353;margin:5px 0}
+.heroes-of-legend .hol-approved-tool .hol-tool-wounds{width:100%;table-layout:fixed;font-size:12px;background:transparent}
+.heroes-of-legend .hol-approved-tool .hol-tool-wounds :is(td,th){padding:4px;vertical-align:top;overflow-wrap:anywhere;color:#292a22}
+.heroes-of-legend .hol-approved-tool .hol-tool-wounds th{background:#eae2cf;font-weight:600;text-align:left}
+.heroes-of-legend .hol-approved-tool .hol-tool-progress{display:flex;gap:5px;align-items:center;font-size:12px}
+.heroes-of-legend .hol-approved-tool progress{max-width:100%;min-width:0;accent-color:#214b38}
+.heroes-of-legend .hol-approved-tool a{color:#214b38;text-decoration:underline dotted;font-size:12px}
+.heroes-of-legend .hol-approved-tool .hol-craft-layout{display:grid;grid-template-columns:160px minmax(0,1fr);gap:8px;min-width:0}
+.heroes-of-legend .hol-approved-tool .hol-craft-list{display:flex;flex-direction:column;gap:3px}
+.heroes-of-legend .hol-approved-tool .hol-craft-list button{text-align:left;width:100%;font-size:12px;padding:5px 7px}
+.heroes-of-legend .hol-approved-tool .hol-craft-list button[aria-pressed=true]{background:#214b38;color:#f5eddc;border-color:#ad8b49}
+.heroes-of-legend .hol-approved-tool .hol-craft-metadata{padding-left:15px;margin:5px 0;font-size:12px}
+.heroes-of-legend .hol-approved-tool .hol-item-stat-row{display:flex;align-items:center;justify-content:space-between;gap:8px;border-bottom:1px solid #c8b893;padding:4px 0;font-size:12px}
+.hol-encounter{padding:7px;background:#f5eddc;border-color:#c8b893;font:12px/1.3 system-ui,sans-serif}
+.hol-encounter .hol-encounter-heading{background:#214b38;color:#f5eddc;padding:7px 9px;margin:-7px -7px 6px;border-bottom:2px solid #ad8b49;font:600 15px/1.2 "HOL Cinzel",Georgia,serif}
+.hol-encounter .hol-budget-stat{background:#ede5d3;color:#292a22;border:1px solid #c8b893;border-radius:3px;font-size:10px;padding:4px 2px;height:auto;min-width:0}
+.hol-encounter .hol-budget-stat strong{font:600 21px/1.2 Garamond,Georgia,serif;color:#214b38}
+.hol-encounter .hol-budget-stat:disabled{opacity:.55}
+.hol-turn-status{display:block;font-size:10px;color:#686353}
+.combatant.hol-side-start::before{background:#eae2cf;color:#214b38;font-size:12px;padding:4px 6px;border-color:#c8b893}
+@media(max-width:500px){.heroes-of-legend .hol-approved-tool .hol-tool-grid{grid-template-columns:1fr}.heroes-of-legend .hol-approved-tool .hol-craft-layout{grid-template-columns:115px minmax(0,1fr)}.heroes-of-legend .hol-approved-tool .hol-tool-wounds{font-size:11px}}
+/* Measured against tools.css at the web's 14px root. */
+.heroes-of-legend .hol-approved-tool{height:auto;max-height:calc(100dvh - 100px);background:#f7f3e9;font-size:11.2px}
+.heroes-of-legend .hol-approved-tool .hol-tool-banner{display:block;background:#15221c;padding:7px 9px;border-color:#b39253}
+.heroes-of-legend .hol-approved-tool .hol-tool-banner h1{font-size:14.7px}
+.heroes-of-legend .hol-approved-tool .hol-tool-banner small{display:block;margin-top:3px;font-size:9.8px}
+.heroes-of-legend .hol-approved-tool .hol-tool-content{flex:0 1 auto;max-height:calc(100dvh - 175px)}
+.heroes-of-legend .hol-approved-tool .hol-tool-box{border-color:#d6cdb9}
+.heroes-of-legend .hol-approved-tool .hol-tool-box h2{font-size:12.2px;border:0;margin:0 0 5px;padding:0;color:#15221c}
+.heroes-of-legend .hol-approved-tool .hol-tool-box p{font-size:11.2px;margin:4px 0}
+.heroes-of-legend .hol-approved-tool .hol-tool-stats span{font-size:10.8px;background:#eae2cf;border-color:#d6cdb9}
+.heroes-of-legend .hol-approved-tool .hol-tool-content button{font:600 10.5px/1.25 system-ui,sans-serif;padding:4px 8px;background:#f7f3e9;border-color:#d6cdb9}
+.heroes-of-legend .hol-approved-tool .hol-tool-content button.hol-primary{background:#15221c;color:#f7f3e9}
+.heroes-of-legend .hol-approved-tool .hol-tool-content :is(input,select),.heroes-of-legend .hol-approved-tool label{font-size:10.5px}
+.heroes-of-legend .hol-approved-tool .hol-tool-wounds{font-size:10.8px;border:0}
+.heroes-of-legend .hol-approved-tool .hol-tool-wounds th{font:600 9px/1.3 system-ui,sans-serif;text-transform:uppercase;letter-spacing:.04em;background:transparent;color:#6a6457;border:0;border-bottom:1px solid #d6cdb9}
+.heroes-of-legend .hol-approved-tool .hol-tool-progress{font-size:10.5px}
+.heroes-of-legend .hol-approved-tool .hol-craft-list button{font-size:10.5px}
+.heroes-of-legend .hol-approved-tool .hol-craft-metadata{font-size:10.5px}
+.heroes-of-legend .hol-approved-tool a{font:600 10.5px/1.3 system-ui,sans-serif}
+.heroes-of-legend .hol-approved-tool .hol-tool-wounds progress{height:6px}
+.heroes-of-legend .hol-approved-tool .hol-tool-wounds thead{background:transparent;color:#6a6457}
+.heroes-of-legend .hol-approved-tool .hol-tool-content button{min-height:27px}
+.heroes-of-legend .hol-approved-tool .hol-tool-content button.hol-primary{min-height:30px}
+.heroes-of-legend .hol-approved-tool a[data-hol-rule-path]{display:inline-flex;align-items:center;min-height:27px;padding:3px 7px;border:1px solid transparent;border-radius:3px;background:transparent;color:#28251c;text-decoration:none;font:600 10.5px/1.3 system-ui,sans-serif}
+.heroes-of-legend .hol-approved-tool a[data-hol-rule-path]:hover,.heroes-of-legend .hol-approved-tool a[data-hol-rule-path]:focus-visible{background:#f1e6ce;border-color:#b39253}
+.heroes-of-legend .hol-approved-tool .hol-craft-layout{grid-template-columns:170px minmax(0,1fr)}
+.heroes-of-legend .hol-approved-tool .hol-tool-wounds td :is(button,a){display:inline-flex;vertical-align:middle}
+@media(max-width:500px){.heroes-of-legend .hol-approved-tool .hol-craft-layout{grid-template-columns:115px minmax(0,1fr)}}
+/* The actual combat tool uses a compact, stacked two-side roster. */
+.heroes-of-legend.hol-encounter-panel .hol-combat-side h2{display:flex;justify-content:space-between;font:600 10.92px "HOL Cinzel",serif;background:#eae2cf;padding:4px 6px;margin:6px 0 0;color:#28251c;border:0}
+.heroes-of-legend.hol-encounter-panel .hol-combat-row{display:grid;grid-template-columns:35px minmax(0,1fr) auto;align-items:center;gap:6px;border-bottom:1px solid #b8ad92;padding:5px 3px}
+.heroes-of-legend.hol-encounter-panel .hol-combat-row.active{background:#e4d7b3;border-left:3px solid #b39554;padding-left:3px}
+.heroes-of-legend.hol-encounter-panel .hol-combat-row.acted{opacity:.65}
+.heroes-of-legend.hol-encounter-panel .hol-combat-portrait{width:35px;height:39px;object-fit:contain;background:#eae2cf;border:0;padding:1px}
+.heroes-of-legend.hol-encounter-panel .hol-combat-row strong{display:block;font-size:11.2px}
+.heroes-of-legend.hol-encounter-panel .hol-combat-row small{font-size:9.1px}
+.heroes-of-legend.hol-encounter-panel .hol-combat-row button{font-size:9.8px;padding:3px 5px;min-height:24px}
+.heroes-of-legend.hol-encounter-panel .hol-combat-row .hol-combat-portrait-button{padding:0;width:35px;height:39px;min-height:0;line-height:0;background:transparent;border:0}
+.heroes-of-legend.hol-encounter-panel .hol-combat-row select{height:24px;font-size:10px}
+.heroes-of-legend.hol-encounter-panel .hol-panel-budget{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin:6px 0}
+.heroes-of-legend.hol-encounter-panel .hol-panel-budget button{padding:4px 2px;font-size:9.1px;background:#ede5d3;display:block;line-height:normal;height:auto;min-height:48px;color:#28251c}
+.heroes-of-legend.hol-encounter-panel .hol-panel-budget strong{display:block;font:600 18.2px "HOL Garamond",serif}
+.hol-encounter{font:13px "HOL Garamond",serif}
+.hol-encounter .hol-encounter-heading{font:600 12px "HOL Cinzel",serif}
+.heroes-of-legend .hol-approved-tool .hol-craft-pool{display:flex;align-items:center;gap:12px;margin:8px 0;padding:8px;border:1px solid #d6cdb9;background:#ede5d3;border-radius:3px}
+.heroes-of-legend .hol-approved-tool .hol-craft-pool>div:first-child{font:600 14px "HOL Garamond",serif;text-align:center;min-width:42px}
+.heroes-of-legend .hol-approved-tool .hol-craft-pool [data-count]{font-size:28px}
+.heroes-of-legend .hol-approved-tool .hol-craft-pool :is([data-dice],[data-keep],code){display:block}
+.heroes-of-legend .hol-approved-tool .hol-craft-pool [data-dice]{font-size:23px;line-height:1.1;letter-spacing:2px;color:#214b38}
+.heroes-of-legend .hol-approved-tool .hol-craft-pool code{font-size:10px;margin-top:2px;background:transparent;color:#28251c}
+.heroes-of-legend .hol-approved-tool [data-craft-value]{font-weight:bold;margin-left:4px}
+.heroes-of-legend .hol-approved-tool .hol-craft-pool{gap:14px;padding:7px 10px;margin-bottom:8px;border-color:#c6b68e;background:linear-gradient(110deg,#e9e1cf,#f5f0e5)}
+.heroes-of-legend .hol-approved-tool .hol-craft-pool>div:first-child{display:flex;align-items:baseline;gap:3px;min-width:55px;border-right:1px solid #d6cdb9;padding-right:12px;color:#15221c;font-size:11.2px}
+.heroes-of-legend .hol-approved-tool .hol-craft-pool [data-count]{font:600 35px/1 "HOL Garamond",serif}
+.heroes-of-legend .hol-approved-tool .hol-craft-pool>div:last-child{display:grid;gap:2px;font-size:10.5px}
+.heroes-of-legend .hol-approved-tool .hol-craft-pool [data-dice]{display:flex;gap:4px}
+.heroes-of-legend .hol-approved-tool .hol-craft-pool svg{width:19px;height:19px;fill:#15221c}
+.heroes-of-legend .hol-approved-tool .hol-craft-pool svg circle{fill:#f7f3e9}
+.heroes-of-legend .hol-approved-tool .hol-craft-pool .extra-die svg{fill:#b39253}
+.heroes-of-legend .hol-approved-tool .hol-craft-attribute-fields{display:grid;grid-template-columns:minmax(0,1fr) 65px;gap:8px;align-items:start}
+.heroes-of-legend .hol-approved-tool .hol-craft-attribute-fields output{display:block;margin:0;padding:7px 0;font-weight:bold}
+.heroes-of-legend .hol-approved-tool .hol-craft-net-heading{display:flex;justify-content:space-between;align-items:center;font-weight:bold;margin:8px 0}
+.heroes-of-legend .hol-approved-tool .hol-craft-net-heading>span:first-child{color:#883e35}
+.heroes-of-legend .hol-approved-tool .hol-craft-net-heading>span:last-child{color:#214b38}
+.heroes-of-legend .hol-approved-tool .hol-craft-net-heading output{border:1px solid #d6cdb9;background:#ede5d3;border-radius:20px;min-width:80px;text-align:center}
+.heroes-of-legend .hol-approved-tool .hol-craft-net>.hol-adjustment-scale{display:none}
+.heroes-of-legend .hol-approved-tool .hol-net-choices button[aria-pressed=true]{background:#214b38;color:#f7f3e9;border-color:#b39253}
+.heroes-of-legend .hol-approved-tool label.hol-craft-material-check{display:flex;align-items:center;gap:5px;margin:8px 0;font-weight:bold}
+.heroes-of-legend .hol-approved-tool .hol-craft-material-check input[type=checkbox]{width:17px;height:17px;min-height:0;flex:none;margin:0;padding:0}
+.heroes-of-legend .hol-approved-tool .hol-tool-wounds thead{border:0;outline:0}
+/* Native wound recording uses the same paper, compact forms and scar table. */
+.heroes-of-legend.hol-wounds .window-content{overflow:hidden}
+.heroes-of-legend.hol-wounds .hol-tool-content{overflow:auto}
+.heroes-of-legend.hol-wounds .hol-wound-events{display:flex;flex-wrap:wrap;gap:4px;margin:6px 0}
+.heroes-of-legend.hol-wounds .hol-wound-events button[aria-pressed=true]{background:#15221c;color:#f7f3e9}
+.heroes-of-legend.hol-wounds .hol-wound-roll-fields{display:flex;align-items:end;gap:8px}
+.heroes-of-legend.hol-wounds .hol-wound-roll-fields label{flex:1;max-width:300px}
+.heroes-of-legend.hol-wounds .hol-wound-roll-fields button{margin-bottom:1px}
+.heroes-of-legend.hol-wounds .hol-wound-exception{border-top:1px solid #d6cdb9;margin-top:8px;padding-top:6px}
+.heroes-of-legend.hol-wounds .hol-wound-exception summary{cursor:pointer;font-weight:bold;font-size:10.5px;margin-bottom:5px}
+.heroes-of-legend.hol-wounds .hol-wound-result dl{display:grid;grid-template-columns:100px minmax(0,1fr);gap:3px 6px;margin:6px 0;font-size:11px}
+.heroes-of-legend.hol-wounds .hol-wound-result :is(dt,dd){margin:0;color:#28251c;text-shadow:none;background:transparent}
+.heroes-of-legend.hol-wounds .hol-wound-result dt{font-weight:bold}
+.heroes-of-legend.hol-wounds .hol-wound-result ul{padding-left:16px;font-size:11.2px;margin:5px 0}
+.heroes-of-legend.hol-wounds .hol-wound-table-wrap{overflow-x:auto}
+.heroes-of-legend.hol-wounds .hol-tool-wounds{width:100%;table-layout:fixed;background:transparent}
+.heroes-of-legend.hol-wounds .hol-tool-wounds th:nth-child(1){width:22%}
+.heroes-of-legend.hol-wounds .hol-tool-wounds th:nth-child(2){width:24%}
+.heroes-of-legend.hol-wounds .hol-tool-wounds th:nth-child(3){width:25%}
+.heroes-of-legend.hol-wounds .hol-tool-wounds th:nth-child(4){width:10%}
+.heroes-of-legend.hol-wounds .hol-tool-wounds th:nth-child(5){width:19%}
+.heroes-of-legend.hol-wounds .hol-tool-wounds td{vertical-align:top;border-bottom:1px solid #d6cdb9;padding:5px 4px;overflow-wrap:anywhere}
+.heroes-of-legend.hol-wounds .hol-tool-wounds td strong,.heroes-of-legend.hol-wounds .hol-tool-wounds td small{display:block}
+.heroes-of-legend.hol-wounds .hol-tool-wounds :is(button,select){max-width:100%;font-size:10px}
+.heroes-of-legend.hol-wounds .hol-wound-visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.heroes-of-legend .hol-approved-tool label.hol-craft-material-check{flex-direction:row;justify-content:flex-start;text-align:left}

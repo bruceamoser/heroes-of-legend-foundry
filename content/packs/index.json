@@ -13,14 +13,14 @@
       "type": "Item",
       "path": "packs/abilities",
       "count": 419,
-      "semanticSha256": "fdcda4b2bb70619630647b30c5ce6477ada787a9204c46b6d40a02aed8d3509a"
+      "semanticSha256": "a75e971c9b1583e4b8ac8462c5cc50e66f118260cd4f58845ef9ae5ee0963a65"
     },
     {
       "name": "equipment",
       "type": "Item",
       "path": "packs/equipment",
       "count": 44,
-      "semanticSha256": "b445d828d757f81b2b8b07ae3cb780fa8ee790adf1dd7cca867245527aeef52d"
+      "semanticSha256": "fd88fdb8d7632ccc195955910bf1302f2c8ec9005bad37c58e83ef926191d2d2"
     },
     {
       "name": "creatures",

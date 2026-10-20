@@ -9,6 +9,7 @@ export class WoundPanel extends foundry.applications.api.HandlebarsApplicationMi
     this.actor = actor;
     this.eventId = null;
     this.skipped = [];
+    this.effectHooks=["createActiveEffect","updateActiveEffect","deleteActiveEffect"].map(name=>[name,Hooks.on(name,effect=>{if(effect.parent?.uuid===actor.uuid&&this.rendered)void this.render();})]);
     this.hook = Hooks.on("updateActor", (a) => {
       if (a.uuid === actor.uuid && this.rendered) this.render();
     });
@@ -85,16 +86,17 @@ export class WoundPanel extends foundry.applications.api.HandlebarsApplicationMi
       ),
       wounds: Object.values(
         this.actor.getFlag("heroes-of-legend", "wounds") ?? {},
-      ).map(wound => ({ ...wound, canTreat: this.actor.isOwner && Boolean(wound.recoveryValue) && (wound.recoveryProgress ?? 0) < wound.recoveryValue })),
+      ).map(wound => ({ ...wound, effectSummary:this.actor.effects.filter(effect=>effect.active&&!effect.getFlag("heroes-of-legend","retired")&&effect.getFlag("heroes-of-legend","woundEvent")===wound.eventId).map(effect=>effect.name).join(" · ")||"—", canTreat: this.actor.isOwner && Boolean(wound.recoveryValue) && (wound.recoveryProgress ?? 0) < wound.recoveryValue })),
     };
   }
   async _onClose(options) {
+    for(const [name,id]of this.effectHooks)Hooks.off(name,id);
     Hooks.off("updateActor", this.hook);
     return super._onClose(options);
   }
   static async record() {
     try {
-      const confirmed = await foundry.applications.api.DialogV2.confirm({
+      const confirmed = await foundry.applications.api.DialogV2.confirm({classes: ["heroes-of-legend", "hol-native-dialog"],
         window: { title: "Record additional wound" },
         content: "<p>Record one additional wound and increase the accumulated wound count? HP and survival status stay as they are. Existing pending wounds remain available.</p>",
         yes: { label: "Record wound" }, no: { label: "Cancel" },

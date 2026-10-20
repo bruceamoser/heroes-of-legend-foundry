@@ -3,12 +3,12 @@
   "_id": "ecb1bca9372be9c3",
   "name": "Conditioned Body",
   "type": "ability",
-  "img": "systems/heroes-of-legend/assets/icons/fist.svg",
+  "img": "icons/skills/melee/unarmed-punch-fist.webp",
   "system": {
     "schemaVersion": 1,
     "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You remember the work that built this strength: another load, another climb, another day you kept going.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>Self</dd></div><div><dt>Duration</dt><dd>Permanent maximum HP increase for each permitted purchase.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>At most one purchase per level; unused purchases cannot be saved.</dd></div><div><dt>Type</dt><dd>Training / Passive</dd></div></dl><div class=\"hol-reference-rules\"><p>Maximum HP +1. At most one purchase at each level; missed purchases cannot be banked. No attribute increase.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/cards/conditioned-body.md\" target=\"_blank\" rel=\"noopener\">design/cards/conditioned-body.md</a> at <code>bdfd18ed535fbd0e1892b9344444abf6da644809</code>.</p></section>",
     "activity": {
-      "action": "main",
+      "action": "passive",
       "rollMode": "none",
       "attribute": "brawn",
       "defenseAttribute": "agility"

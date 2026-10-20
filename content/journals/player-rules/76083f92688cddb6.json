@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!76083f92688cddb6",
+  "_id": "76083f92688cddb6",
+  "name": "Cast through the Reflection",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/cast-through-the-reflection.md",
+        "sha256": "bc55d291e3aeb7f44a0ee50b2993b21458fb1e21d46fc2a470971887ff4bdca4",
+        "id": "cast-through-the-reflection",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!76083f92688cddb6.8a54ec9851d1af30",
+      "_id": "8a54ec9851d1af30",
+      "name": "Cast through the Reflection",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Cast through the Reflection</h1><p><em>You turn your palm as though tilting a mirror. A wavering image of your casting hand appears across the room, pointing toward a new angle of attack.</em></p><h2>Rules</h2><p><strong>Action:</strong> Maneuver · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> One visible empty square within 3 squares.</p><p>Place a shimmering casting point in the chosen square. Your next Main Action spell this turn may originate there. Determine its attack path, cover and area origin from that point; measure the spell’s cast range from your own square. You must still see all targets the spell requires you to see. You must have an unobstructed path to the casting point; this does not cast through an opaque barrier. The point grants no extra range, spell or roll and disappears after that spell.</p><p><strong>Duration:</strong> Until used or the end of this turn.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 7 · <strong>DP:</strong> 8 · <strong>Requirements to learn:</strong> Scholarship 3 and Mind 1</p><p><strong>Type:</strong> Magic / Utility</p><p><strong>Limits:</strong> Repeated uses do not multiply this card’s benefit on the same recipient or prepared attack. Pay a Maneuver for each use.</p><p><strong>ID:</strong> cast-through-the-reflection</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

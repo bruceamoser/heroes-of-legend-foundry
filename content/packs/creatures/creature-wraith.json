@@ -236,10 +236,12 @@
       "portrait": {
         "creatureId": "creature-wraith",
         "asset": "assets/creatures/fe0286dbb160cef1312c09dbfb317ba285a60a644eb2a0ebf6231d8e09da5615.webp",
-        "sha256": "a477882920e64384af723abf441a3a4892b0c3ffb355373d4a9d8808d653e3ed",
+        "sha256": "fd1b432818144e8c9f75c224f2ff9a8ea87fda24ad8ad90da8c7d67b09257864",
         "sourceSha256": "fe0286dbb160cef1312c09dbfb317ba285a60a644eb2a0ebf6231d8e09da5615",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

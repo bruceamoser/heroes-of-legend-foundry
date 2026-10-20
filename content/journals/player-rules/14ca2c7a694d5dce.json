@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!14ca2c7a694d5dce",
+  "_id": "14ca2c7a694d5dce",
+  "name": "Command a Summon",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/command-a-summon.md",
+        "sha256": "552d6916a86335b9965d86e45862ab9c6abf1e9366689f573332ba2847acd959",
+        "id": "command-a-summon",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!14ca2c7a694d5dce.a02885b08ca4b2b9",
+      "_id": "a02885b08ca4b2b9",
+      "name": "Command a Summon",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Command a Summon</h1><p><em>You point toward the opening and give a sharp instruction. The creature moves to carry it out, then stills when its task is done.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action or Maneuver · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> One of your summons within its tether.</p><p>Spend Main Action to grant it Main Action plus Maneuver, or spend Maneuver to grant it Maneuver plus movement. Resolve its activity during your turn. Normal downward conversions apply; a Main command can convert the granted Maneuver to movement before an attack.</p><p>One command per summon on your turn. You may command two different summons using your Main Action and Maneuver. A new summon receives the summoning card’s immediate free Main command, which counts as its command that turn.</p><p><strong>An uncommanded summon does nothing.</strong> No following, attacks, hiding, aid, lookout, alerts or independent Reactions. Prior orders do not continue. Existing conditions and durations still resolve; passive defenses still apply. No summon chains.</p><p>Name the desired task; the chosen bestiary summon profile determines whether it can perform it and the action/roll required. A command grants neither extra capabilities nor automatic success. See the @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.56367e2f9016dd21.JournalEntryPage.9ff12960a5e160cc]{command examples and bestiary requirements}.</p><p><strong>Duration:</strong> Granted actions are used immediately during your turn; none are saved for later turns.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> Universal · <strong>DP:</strong> Not purchased · <strong>Requirements to learn:</strong> None</p><p><strong>Type:</strong> Universal</p><p><strong>Limits:</strong> Pay each command’s action cost; at most one command per summon per controller turn, including its immediate summoning command.</p><p><strong>ID:</strong> command-a-summon</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

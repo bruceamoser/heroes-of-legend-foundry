@@ -3,6 +3,7 @@
   "_id": "777296af2de861d3",
   "name": "Lock Tools",
   "type": "equipment",
+  "img": "systems/heroes-of-legend/assets/icons/key.svg",
   "system": {
     "schemaVersion": 1,
     "catalogId": "item-lock-tools",

@@ -3,6 +3,7 @@
   "_id": "6b67b67345bcb480",
   "name": "Winter Lining",
   "type": "equipment",
+  "img": "systems/heroes-of-legend/assets/icons/cloak.svg",
   "system": {
     "schemaVersion": 1,
     "catalogId": "item-winter-lining",

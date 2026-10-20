@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!f61b6abce0f1a0c1",
+  "_id": "f61b6abce0f1a0c1",
+  "name": "Wolf (CV 9)",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/bestiary/creatures/wolf.md",
+        "sha256": "9aea450040a4544db5cb22ae111badb9d64d5a5270d1c510af8beabc1536db02",
+        "id": "creature-wolf",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!f61b6abce0f1a0c1.0b725aa87815a4ce",
+      "_id": "0b725aa87815a4ce",
+      "name": "Wolf (CV 9)",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Wolf (CV 9)</h1><p><em>A rangy predator with dense gray fur, a narrow muzzle and long legs built for patient pursuit. Wolves live and hunt as a pack, protecting the den before risking a disabling fight.</em></p><p><strong>Attributes:</strong> Brawn +1; Fortitude +1; Agility +2; Guile +0; Knowledge -2; Reason +1</p><p><strong>HP:</strong> 10 · <strong>Speed:</strong> 8 · <strong>Size:</strong> 1 (medium) · <strong>Armor DR:</strong> 0</p><p><strong>Evasion:</strong> 1 Bane · <strong>Threat:</strong> None · <strong>Stability:</strong> 0</p><p><strong>Weaknesses:</strong> None\\ <strong>Resistances:</strong> None\\ <strong>Immunities:</strong> None</p><h2>Actions</h2><p>Damage and effects are <strong>Weak / Standard / Strong player defense</strong>. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.</p><table><thead><tr><th scope=\"col\">Main Actions</th><th scope=\"col\">Defense</th><th scope=\"col\">Damage</th></tr></thead><tbody><tr><td>Basic Melee</td><td>Agility</td><td>5/3/2</td></tr><tr><td>Snapping jaws</td><td>Agility</td><td>4/3/2</td></tr><tr><td>Pinning bite</td><td>Brawn</td><td>3 + Grappled 1 / 2 + Grappled 1 / 1</td></tr></tbody></table><table><thead><tr><th scope=\"col\">Maneuvers</th><th scope=\"col\">Effect</th></tr></thead><tbody><tr><td>Circle the Prey</td><td>If another conscious, non-Paralyzed ally (not an uncommanded summon) is adjacent to an adjacent enemy, move up to 2 squares without provoking from that enemy. End adjacent to it. Other opportunity attacks and terrain costs apply.</td></tr><tr><td>Defend</td><td>+1 Bane</td></tr></tbody></table><table><thead><tr><th scope=\"col\">Reactions</th><th scope=\"col\">Effect</th></tr></thead><tbody><tr><td>Follow the Pack</td><td>After an ally closes on an enemy within 3: move 2 to that ally; provokes.</td></tr><tr><td>Opportunity Attack</td><td>Basic Melee</td></tr></tbody></table><h2>Details</h2><h3>Snapping jaws</h3><p><strong>Target:</strong> One adjacent creature. <strong>Player defense:</strong> Agility. <strong>Damage type:</strong> physical.</p><h3>Pinning bite</h3><p><em>The wolf hangs its weight from a limb to hold the prey in place.</em></p><p><strong>Target:</strong> One adjacent creature. <strong>Player defense:</strong> Brawn. <strong>Damage type:</strong> physical.</p><p><strong>Weak defense:</strong> Grappled 1. <strong>Standard defense:</strong> Grappled 1.</p><p><strong>Limit:</strong> The holder suffers its own Grappled contribution. A new result replaces its lower contribution, not adds to it. Release freely; separation beyond reach, unconsciousness or death ends the hold.</p><h3>Follow the Pack</h3><p><em>One hunter moves and another flows into its wake, tightening the circle without a sound.</em></p><p>After a visible active ally ends voluntary movement adjacent to a visible enemy within 3 squares of this creature, move up to 2 squares, ending adjacent to that ally. Pay normal terrain costs and provoke normally. The ally must be conscious and not Paralyzed; an uncommanded summon cannot trigger this. No attack or command is granted, and movement granted by a free attack cannot trigger it.</p><h3>General details</h3><p><strong>Basic Melee:</strong> One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.</p><p><strong>Defend:</strong> Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.</p><p><strong>Opportunity Attack:</strong> Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.</p><p><strong>Pack Hunter:</strong> When attacking a target adjacent to another active ally, impose 1 additional Bane on that target’s defense (or gain 1 attack Boon when controlled). Unconscious, Paralyzed and uncommanded summoned allies do not qualify.</p><p><strong>Healing:</strong> Living: ordinary HP healing applies.</p><p><strong>Senses:</strong> Keen scent within 6 squares.</p><p><strong>Signs:</strong> Parallel tracks keep to the downwind side of the trail.</p><p><strong>Purpose:</strong> Drive intruders from a den or bring food back to it.</p><p><strong>Tactics and retreat:</strong> Use Pack Hunter against an isolated target; flee once half the pack is down.</p><p><strong>Counterplay and conversation:</strong> Stay together, protect the flanks, and leave a clear route back to the den.</p><p><strong>Habitat:</strong> Wilderness · <strong>Communication:</strong> None</p><p><strong>Loot:</strong> A den may hold a lost traveler’s belongings; the wolf carries no coins.</p><p><strong>Summoning:</strong> Animal 1 — @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.feb6c43d46d12bb5.JournalEntryPage.118f57a5483f9cff]{player reference}.</p><h2>Design notes — not needed during play</h2><p><strong>ID:</strong> creature-wolf</p><p><strong>Category:</strong> Animal · <strong>Role:</strong> Pack hunter · <strong>CV:</strong> 9</p><p><strong>Difficulty rationale:</strong> An agile or elusive body warrants attack Banes. Ordinary attack difficulty; riders and positioning carry the threat.</p><p><strong>Reference damage:</strong> 2/3/4</p><p><strong>Reference type:</strong> physical</p><p><strong>Expected targets:</strong> 1</p><p><strong>Utility factor:</strong> 1.3</p><p><strong>Action review (#1279):</strong> U 1.2 → 1.3: Maneuver allowance +0, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.</p><p><strong>Regeneration per turn:</strong> 0</p><p>Reference I=4.404, O=2.000. CV uses the seed worksheet; action choices, Stability and control are not simulated. Recalibration remains required.</p><p><strong>Ability sources:</strong> @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.864b1e7d555b46ae.JournalEntryPage.3608b7d64edb914d]{Follow the Pack}, @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.e6ac639f6d47dbe7.JournalEntryPage.9bbe4fbfb16e32fa]{pack hunter}, @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.e8285016e04ed4cc.JournalEntryPage.66e413a387bb37b3]{wolf circle the prey}.</p><p>Roster · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.5ebfaad0d5ed6813.JournalEntryPage.3292b6a49dcf7236]{Agreed Stability}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

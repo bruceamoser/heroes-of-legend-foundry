@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!df88475aa1da8afe",
+  "_id": "df88475aa1da8afe",
+  "name": "Look Over Here!",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/look-over-here.md",
+        "sha256": "15c51b9ec002817764e7cc9762c94533153ffc037d51062ab016c9f512a82fcd",
+        "id": "look-over-here",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!df88475aa1da8afe.c77bfa5af0bcbb7e",
+      "_id": "c77bfa5af0bcbb7e",
+      "name": "Look Over Here!",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Look Over Here!</h1><p><em>You snap your cloak across the attacker’s view, drawing their eye just as your companion needs an opening.</em></p><h2>Rules</h2><p><strong>Action:</strong> Reaction · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> One ally about to make a defense roll against a sight-dependent attack declared by an adjacent enemy that can see you. Before the roll.</p><p>Grant the ally 1 Boon to that defense roll. This momentary distraction does not create cover, make anyone Hidden or cancel the attack. Apply the normal Boon/Bane rules.</p><p><strong>Duration:</strong> The triggering defense roll.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 1 · <strong>DP:</strong> 1 · <strong>Requirements to learn:</strong> None</p><p><strong>Type:</strong> Skill / Defense</p><p><strong>Limits:</strong> Purchase once; each use spends your Reaction.</p><p><strong>ID:</strong> look-over-here</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

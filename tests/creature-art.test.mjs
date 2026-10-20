@@ -15,6 +15,8 @@ import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { promisify } from "node:util";
 import {
+  CREATURE_ART_MAX_EDGE,
+  creatureArtDimensions,
   formatCreatureArtReport,
   readWebpInfo,
   validateCreatureArt,
@@ -101,6 +103,15 @@ test("pinned source lock and runtime manifest cover every portrait deterministic
         alpha,
       })),
   );
+  assert.equal(manifest.encoding.maxEdge, 768);
+  assert.equal(manifest.encoding.nativeDimensions, false);
+  assert.equal(manifest.encoding.allowUpscale, false);
+  assert.equal(manifest.encoding.resample, "lanczos");
+  for (const asset of manifest.assets) {
+    assert(Math.max(asset.width, asset.height) <= CREATURE_ART_MAX_EDGE);
+    const portrait = manifest.portraits.find(record => record.asset === asset.runtimePath);
+    assert.deepEqual({ width: asset.width, height: asset.height }, creatureArtDimensions(portrait.width, portrait.height));
+  }
   for (const portrait of manifest.portraits)
     assert.equal(
       portrait.asset,
@@ -118,7 +129,7 @@ test("pinned source lock and runtime manifest cover every portrait deterministic
   assert.match(formatCreatureArtReport(report), /192 portrait mappings/);
 });
 
-test("Pillow decodes every derivative and preserves native dimensions and alpha", async () => {
+test("Pillow decodes every derivative and preserves bounded dimensions and alpha", async () => {
   const python = process.env.PYTHON ?? "python3";
   const { stdout } = await execFileAsync(
     python,
@@ -332,4 +343,117 @@ test("release validator rejects hash drift, missing assets, extras and masters",
     );
     await rm(master);
   });
+});
+
+
+test("dimension policy preserves rectangular shape, rounds nearest pixel and never upscales", () => {
+  for (const [width, height, expected] of [
+    [1254, 1254, [768, 768]], [1536, 1024, [768, 512]],
+    [1300, 900, [768, 532]], [900, 1300, [532, 768]],
+    [600, 300, [600, 300]], [768, 768, [768, 768]], [1, 1, [1, 1]],
+    [2000, 1, [768, 1]],
+  ]) assert.deepEqual(creatureArtDimensions(width, height), { width: expected[0], height: expected[1] });
+  for (const dimensions of [[0, 2], [2, -1], [1.5, 2], [NaN, 1]])
+    assert.throws(() => creatureArtDimensions(...dimensions), /positive whole/);
+});
+
+test("Python resize and WebP encoding retain the exact resampled alpha and small-image dimensions", async () => {
+  const python = process.env.PYTHON ?? "python3";
+  const verifier = `
+import importlib.util
+import io
+import sys
+from pathlib import Path
+from PIL import Image, ImageDraw
+sys.dont_write_bytecode = True
+spec = importlib.util.spec_from_file_location("build_creature_art", Path(sys.argv[1]))
+module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(module)
+for width, height, target, alpha in [(1536, 1024, (768, 512), True), (900, 1300, (532, 768), True), (600, 300, (600, 300), True), (640, 480, (640, 480), False)]:
+    source = Image.new("RGBA" if alpha else "RGB", (width, height), (20, 70, 30, 0) if alpha else (20, 70, 30))
+    if alpha:
+        ImageDraw.Draw(source).rectangle((width//4, height//4, width*3//4, height*3//4), fill=(100, 160, 60, 197))
+    original = io.BytesIO()
+    source.save(original, format="PNG")
+    encoded, info = module.encode_webp(original.getvalue(), "synthetic", {"width": width, "height": height, "alpha": alpha})
+    assert module.derived_dimensions(width, height) == target
+    with Image.open(io.BytesIO(encoded)) as decoded:
+        decoded.load()
+        assert decoded.size == target
+        assert ("A" in decoded.getbands()) == alpha
+        if alpha:
+            expected = source if source.size == target else source.resize(target, Image.Resampling.LANCZOS)
+            assert decoded.getchannel("A").tobytes() == expected.getchannel("A").tobytes()
+print("resize geometry, alpha and no-upscale verified")
+`.trim();
+  const { stdout } = await execFileAsync(python, ["-c", verifier, fileURLToPath(new URL("scripts/build-creature-art.py", root))]);
+  assert.match(stdout, /resize geometry, alpha and no-upscale verified/);
+});
+
+test("release validator rejects aspect distortion, upscaling and altered size policy", async t => {
+  const directory = await fixture(t);
+  const path = new URL("assets/creatures/manifest.json", directory);
+  const original = await readFile(path);
+  const manifest = JSON.parse(original);
+  await t.test("wrong aspect", async () => {
+    const altered = structuredClone(manifest);
+    altered.portraits[0].height *= 2;
+    await writeFile(path, JSON.stringify(altered));
+    await assert.rejects(validateCreatureArt(directory), /resize policy/);
+  });
+  await t.test("small sources must not upscale", async () => {
+    const altered = structuredClone(manifest);
+    altered.portraits[0].width = 384;
+    altered.portraits[0].height = 384;
+    await writeFile(path, JSON.stringify(altered));
+    await assert.rejects(validateCreatureArt(directory), /resize policy/);
+  });
+  await t.test("reviewed maximum edge", async () => {
+    const altered = structuredClone(manifest);
+    altered.encoding.maxEdge = 1536;
+    await writeFile(path, JSON.stringify(altered));
+    await assert.rejects(validateCreatureArt(directory), /encoding setting: maxEdge/);
+  });
+  await writeFile(path, original);
+});
+
+test("bounded parallel encoders are byte-identical to sequential encoding and propagate worker errors", async () => {
+  const python = process.env.PYTHON ?? "python3";
+  const verifier = `
+import importlib
+import io
+import sys
+from pathlib import Path
+from PIL import Image, ImageDraw
+sys.dont_write_bytecode = True
+sys.path.insert(0, str(Path(sys.argv[1]).parent))
+module = importlib.import_module("build-creature-art")
+tasks = []
+for index, size in enumerate([(80, 40), (900, 600), (100, 160)]):
+    source = Image.new("RGBA", size, (20, 70, 30, 0))
+    ImageDraw.Draw(source).ellipse((10, 10, size[0]-10, size[1]-10), fill=(100, 160, 60, 197))
+    data = io.BytesIO()
+    source.save(data, format="PNG")
+    tasks.append((str(index), data.getvalue(), f"synthetic-{index}", {"width": size[0], "height": size[1], "alpha": True}))
+sequential = list(module.encode_assets(tasks, 1))
+parallel = list(module.encode_assets(tasks, 2))
+assert sequential == parallel
+assert [record[0] for record in parallel] == ["0", "1", "2"]
+try:
+    list(module.encode_assets([tasks[0], ("invalid", b"broken PNG", "invalid", tasks[0][3])], 2))
+except module.ArtError as error:
+    assert "Unable to encode invalid" in str(error)
+else:
+    raise AssertionError("parallel worker failure was silently ignored")
+for workers in [0, 9]:
+    try:
+        list(module.encode_assets(tasks, workers))
+    except module.ArtError:
+        pass
+    else:
+        raise AssertionError("unbounded worker count accepted")
+print("parallel equality, stable order, bounded workers and failure propagation verified")
+`.trim();
+  const { stdout } = await execFileAsync(python, ["-c", verifier, fileURLToPath(new URL("scripts/build-creature-art.py", root))]);
+  assert.match(stdout, /parallel equality, stable order, bounded workers and failure propagation verified/);
 });

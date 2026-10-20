@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!0f05b84228b9fe68",
+  "_id": "0f05b84228b9fe68",
+  "name": "Read the Blood Trail",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/blood-scent.md",
+        "sha256": "e59c5e063a00af7caa8af14af966978837c5f673dde3601ea844e24fcde1614e",
+        "id": "monster-blood-scent",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!0f05b84228b9fe68.f3b631136277c0b7",
+      "_id": "f3b631136277c0b7",
+      "name": "Read the Blood Trail",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Read the Blood Trail</h1><p><em>Its nose lifts, separating the sharp scent of fresh blood from the rest of the air.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-blood-scent</p><p><strong>Action:</strong> Maneuver</p><p>Learn the direction of the nearest Bleeding creature within 6 squares. This does not reveal Hidden, give an exact square or permit a sight-required attack against an unseen target.</p><p>Only creatures whose entries list this ability possess it. Printed limits apply.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

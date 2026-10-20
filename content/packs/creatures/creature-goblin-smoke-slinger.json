@@ -213,10 +213,12 @@
       "portrait": {
         "creatureId": "creature-goblin-smoke-slinger",
         "asset": "assets/creatures/1cfee132d00a29e6b4a8e310e9729a8f738a3d58a47b737a17baa0b69eb47e3d.webp",
-        "sha256": "61ff815d457326db32382bb190283d7ebfed391512c97429d8b0701d486d5031",
+        "sha256": "6cb381144a15c9f7e1bd9978d4ca3455c63682d28e0af6e4799142cde4a55d57",
         "sourceSha256": "1cfee132d00a29e6b4a8e310e9729a8f738a3d58a47b737a17baa0b69eb47e3d",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

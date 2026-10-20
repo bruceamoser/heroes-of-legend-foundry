@@ -3,6 +3,7 @@
   "_id": "fee970dac534bb08",
   "name": "Gravebound Brooch",
   "type": "equipment",
+  "img": "systems/heroes-of-legend/assets/icons/jewel.svg",
   "system": {
     "schemaVersion": 1,
     "catalogId": "item-gravebound-brooch",

@@ -120,7 +120,7 @@ export async function requestAbility(
 }
 function heldShields(actor) {
   return actor.items
-    .filter((item) => isShieldEquipment(item) && item.system.held)
+    .filter((item) => isShieldEquipment(item) && item.system.quantity > 0 && item.system.held)
     .sort((a, b) => a.id.localeCompare(b.id));
 }
 function combatForAttackActor(actor, attack) {
@@ -391,7 +391,7 @@ async function preflight({ message, request, combat }) {
     if (
       shieldItem?.actor?.uuid !== actor.uuid ||
       !isShieldEquipment(shieldItem) ||
-      !shieldItem.system.held
+      (!shieldItem.system.held || shieldItem.system.quantity === 0)
     )
       throw new Error(
         "The selected shield is no longer held by this defender.",
@@ -462,7 +462,7 @@ async function continuationCapable(operation, request, combat, actor) {
   if (SHIELD_HANDLERS.has(operation.handler)) {
     if (!currentAttack || !operation.incomingAttack) return false;
     const shield = actor.items.get(operation.shieldItemId);
-    return Boolean(shield && isShieldEquipment(shield) && shield.system.held);
+    return Boolean(shield && isShieldEquipment(shield) && shield.system.quantity > 0 && shield.system.held);
   }
   return false;
 }

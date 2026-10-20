@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!b340190eb95205d1",
+  "_id": "b340190eb95205d1",
+  "name": "Wind the Sight",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/wind-the-sight.md",
+        "sha256": "e18bfb5b553db617c0a5a33e23dc7e1b72eda316272c71cea148afbbcae9a53f",
+        "id": "wind-the-sight",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!b340190eb95205d1.67a7ecdc7c26ba4f",
+      "_id": "67a7ecdc7c26ba4f",
+      "name": "Wind the Sight",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Wind the Sight</h1><p><em>You tighten the little sight on your weapon and watch the narrow opening settle between its marks.</em></p><h2>Rules</h2><p><strong>Action:</strong> Maneuver · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Your next ranged attack this turn.</p><p>For that attack, ignore the 1 Bane from partial cover, or reduce heavy cover from 3 Banes to 2. Other Banes apply normally. The target must still be visible with an attack path. This does not grant an attack.</p><p><strong>Duration:</strong> Until used or the end of this turn.</p><p><strong>Equipment / acquisition:</strong> Requires a ranged weapon and craft tools; grants neither.</p><p>---</p><p><strong>Tier / minimum level:</strong> 3 · <strong>DP:</strong> 4 · <strong>Requirements to learn:</strong> Craft 2 and Marksmanship 2</p><p><strong>Type:</strong> Skill / Attack</p><p><strong>Limits:</strong> Repeated uses do not improve the same attack again.</p><p><strong>ID:</strong> wind-the-sight</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

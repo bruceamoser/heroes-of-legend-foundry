@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!02215d8363d9869e",
+  "_id": "02215d8363d9869e",
+  "name": "Warning Bellow",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/brown-bear-warning-bellow.md",
+        "sha256": "ffc972538520afbd3efa136513c213a9d88f5049e04db3c615df4107f56f92ef",
+        "id": "monster-brown-bear-warning-bellow",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!02215d8363d9869e.93a093a02048c8d1",
+      "_id": "93a093a02048c8d1",
+      "name": "Warning Bellow",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Warning Bellow</h1><p><em>The bear’s roar fills the space between itself and its cubs.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-brown-bear-warning-bellow</p><p><strong>Action:</strong> Maneuver</p><p>One hearing creature within 3 squares gains Frightened 1 of the bear; once per turn.</p><p><strong>Limits:</strong> Costs its Maneuver; no extra action is granted.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

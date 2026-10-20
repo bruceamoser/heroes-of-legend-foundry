@@ -240,10 +240,12 @@
       "portrait": {
         "creatureId": "creature-lantern-angel",
         "asset": "assets/creatures/538633c813c53a0ea87769db4314f77c8f39169f128567226cf21d540b7e510f.webp",
-        "sha256": "ad63040faceea45c0054dcccd4c5fd9023fb6abdbd1c97f7908fbb1bb35442ac",
+        "sha256": "20aa83644668eeb59a85db2c384eed8ce1cfa77095669b30b093546534319e0a",
         "sourceSha256": "538633c813c53a0ea87769db4314f77c8f39169f128567226cf21d540b7e510f",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

@@ -1,0 +1,39 @@
+{
+  "_key": "!journal!e4a6819cd75a06d8",
+  "_id": "e4a6819cd75a06d8",
+  "name": "Bargain Keeper",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/origins/background-bargain-keeper.md",
+        "sha256": "b05516ada53f152a6376e7a60414281d017d671855d94d57b8aa4d9ed39e669c",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!e4a6819cd75a06d8.52c1056f81636891",
+      "_id": "52c1056f81636891",
+      "name": "Bargain Keeper",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Bargain Keeper</h1><p><em>You agreed to something in a place where the terms were hard to read.</em></p><p><em>What part of the bargain are you determined to interpret generously?</em></p><h2>Rules</h2><p>Choose one:</p><p>- <strong>Flame 1</strong> and @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.13677c0dc1cd1380.JournalEntryPage.cd21969a936db170]{A Coal for a Promise}. - <strong>Mind 1</strong> and @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.d7d4ff1e43859673.JournalEntryPage.5258b9fc621e5856]{An Invitation Elsewhere}.</p><p><strong>Type:</strong> Background</p><p>Each option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.</p><p><strong>Starting coin contribution:</strong> +7 coins. See @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0558be1f6014ee71.JournalEntryPage.880380bcd80cfec6]{starting coins}.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

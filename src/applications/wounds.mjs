@@ -1,3 +1,4 @@
+import { woundTreatmentBasis, requestWoundTreatment } from "../services/wound-treatment.mjs";
 import { woundCatalog, woundBasis, requestWound } from "../services/wounds.mjs";
 import { woundResult } from "../rules/wounds.mjs";
 export class WoundPanel extends foundry.applications.api.HandlebarsApplicationMixin(
@@ -17,11 +18,13 @@ export class WoundPanel extends foundry.applications.api.HandlebarsApplicationMi
     window: { title: "Wounds and scars", resizable: true },
     position: { width: 720, height: 700 },
     actions: {
+      record: WoundPanel.record,
       select: WoundPanel.select,
       roll: WoundPanel.roll,
       skip: WoundPanel.skip,
       apply: WoundPanel.apply,
       recover: WoundPanel.recover,
+      treat: WoundPanel.treat,
     },
   };
   static PARTS = {
@@ -82,12 +85,26 @@ export class WoundPanel extends foundry.applications.api.HandlebarsApplicationMi
       ),
       wounds: Object.values(
         this.actor.getFlag("heroes-of-legend", "wounds") ?? {},
-      ),
+      ).map(wound => ({ ...wound, canTreat: this.actor.isOwner && Boolean(wound.recoveryValue) && (wound.recoveryProgress ?? 0) < wound.recoveryValue })),
     };
   }
   async _onClose(options) {
     Hooks.off("updateActor", this.hook);
     return super._onClose(options);
+  }
+  static async record() {
+    try {
+      const confirmed = await foundry.applications.api.DialogV2.confirm({
+        window: { title: "Record additional wound" },
+        content: "<p>Record one additional wound and increase the accumulated wound count? HP and survival status stay as they are. Existing pending wounds remain available.</p>",
+        yes: { label: "Record wound" }, no: { label: "Cancel" },
+      });
+      if (!confirmed) return;
+      const message = await requestWound(this.actor, null, "record");
+      this.eventId = `manual-wound-${message.id}`;
+      this.skipped = [];
+      await this.render();
+    } catch (e) { ui.notifications.error(e.message); }
   }
   static async select(event, target) {
     this.eventId = target.dataset.eventId;
@@ -123,6 +140,15 @@ export class WoundPanel extends foundry.applications.api.HandlebarsApplicationMi
     } catch (e) {
       ui.notifications.error(e.message);
     }
+  }
+  static async treat(event, target) {
+    target.disabled = true;
+    try {
+      const row = target.closest("[data-wound-event]");
+      const eventId = row.dataset.woundEvent;
+      await requestWoundTreatment(this.actor, eventId, Number(row.querySelector("[name=treatmentProgress]").value), woundTreatmentBasis(this.actor, eventId));
+    } catch (e) { ui.notifications.error(e.message); }
+    finally { if (target.isConnected) target.disabled = false; }
   }
   static async recover() {
     try {

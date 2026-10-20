@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!52233758ecd90971",
+  "_id": "52233758ecd90971",
+  "name": "A Knot You Can Trust",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/a-knot-you-can-trust.md",
+        "sha256": "1764cef76d35c7f10e37c68052b44ebf477b33427607dde6a1be60cbb22921ec",
+        "id": "a-knot-you-can-trust",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!52233758ecd90971.8bc332f82abd3d45",
+      "_id": "8bc332f82abd3d45",
+      "name": "A Knot You Can Trust",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>A Knot You Can Trust</h1><p><em>You tie the knot without looking, then tug it once before trusting it with a friend’s weight.</em></p><h2>Rules</h2><p><strong>Action:</strong> Passive · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> A rope you hold and a reachable suitable anchor.</p><p>While making a climb, you may secure or release one held rope at a suitable anchor you reach as part of that climb, without a separate action. You still need a free hand. The rope must be long and strong enough for its intended use; this grants no automatic success, extra movement or immunity to falling.</p><p><strong>Duration:</strong> During the climb.</p><p><strong>Equipment / acquisition:</strong> One ordinary rope coil, Bulk 1, on learning this card if absent.</p><p>---</p><p><strong>Tier / minimum level:</strong> 1 · <strong>DP:</strong> 2 · <strong>Requirements to learn:</strong> Athletics 1</p><p><strong>Type:</strong> Skill / Utility</p><p><strong>Limits:</strong> Ordinary activities remain available without this card. Roll only when uncertainty has consequences.</p><p><strong>ID:</strong> a-knot-you-can-trust</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Adventure development</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

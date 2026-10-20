@@ -213,10 +213,12 @@
       "portrait": {
         "creatureId": "creature-giant-flytrap",
         "asset": "assets/creatures/d20e24cea3341fa7402eebf80d67baf2c0b9155cca4554a6bf4fe42a842d6be2.webp",
-        "sha256": "b7c89006cfc438c666edcc2a6845a0e17a3d081063a881b59c66526426c82e23",
+        "sha256": "92e997cfadd22ef075f719bcdaa5e5348f88c3ad9104f74e2ab32a592f862f8e",
         "sourceSha256": "d20e24cea3341fa7402eebf80d67baf2c0b9155cca4554a6bf4fe42a842d6be2",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

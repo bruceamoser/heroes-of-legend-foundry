@@ -218,10 +218,12 @@
       "portrait": {
         "creatureId": "creature-lizardfolk-starspeaker",
         "asset": "assets/creatures/33a88cdb6b901b3d1fc4218a42cdad55b775a70785d5f86d460cce4365b5438b.webp",
-        "sha256": "23c9df89fba5c2126b3c37bf76459f8773ad3f6b028fa42cbc9239085874787e",
+        "sha256": "393cd4e3dabd2450420f88987bb8dfb6ed1693942827e53c61d7d578d01bef6a",
         "sourceSha256": "33a88cdb6b901b3d1fc4218a42cdad55b775a70785d5f86d460cce4365b5438b",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!2343eada9cf245ec",
+  "_id": "2343eada9cf245ec",
+  "name": "Ironbound Advance",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/ironbound-advance.md",
+        "sha256": "edd843dcd800781c3b5a89efdf251bff397ee1036ef67e8bac3f3c7304a952de",
+        "id": "ironbound-advance",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!2343eada9cf245ec.eafd17089d030147",
+      "_id": "eafd17089d030147",
+      "name": "Ironbound Advance",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Ironbound Advance</h1><p><em>You put your armored shoulder behind your weapon and walk straight into the press of steel.</em></p><h2>Rules</h2><p><strong>Action:</strong> Maneuver · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Self.</p><p>Move up to 3 squares without provoking. While wearing armor and holding a melee weapon, gain Stability 3 until the start of your next turn. Movement must follow a legal path and end in a free supported square. This grants no attack.</p><p><strong>Duration:</strong> Movement is immediate; Stability lasts until your next turn.</p><p><strong>Equipment / acquisition:</strong> Requires worn armor and a melee weapon; grants neither.</p><p>---</p><p><strong>Tier / minimum level:</strong> 7 · <strong>DP:</strong> 8 · <strong>Requirements to learn:</strong> Armor 3 and Arms 2</p><p><strong>Type:</strong> Skill / Movement / Defense</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> ironbound-advance</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

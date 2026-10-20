@@ -3,6 +3,7 @@
   "_id": "3418dba4628c39ff",
   "name": "Mixing Kit",
   "type": "equipment",
+  "img": "systems/heroes-of-legend/assets/icons/potion.svg",
   "system": {
     "schemaVersion": 1,
     "catalogId": "item-mixing-kit",

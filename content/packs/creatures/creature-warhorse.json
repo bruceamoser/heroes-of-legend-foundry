@@ -196,10 +196,12 @@
       "portrait": {
         "creatureId": "creature-warhorse",
         "asset": "assets/creatures/cd6b7b21e595699bcdbc66ccf860aa758397efe8d956f69f6e306fac7c72d459.webp",
-        "sha256": "ad104853dcd5d760ae3b83fce8b0eab96cf8528c6044c2ae3f6789440df10d67",
+        "sha256": "75dfb79d1725c13a03c08c5613b08141cb6c75225963116cd60f19d622ace594",
         "sourceSha256": "cd6b7b21e595699bcdbc66ccf860aa758397efe8d956f69f6e306fac7c72d459",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

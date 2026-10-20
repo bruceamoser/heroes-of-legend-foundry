@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!ea37c5e7ae24da0d",
+  "_id": "ea37c5e7ae24da0d",
+  "name": "Set the Wedge",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/set-the-wedge.md",
+        "sha256": "aac44ccc004c848d852828daef1a7cb85d90db6d452417729d4d44c5b29bd2bb",
+        "id": "set-the-wedge",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!ea37c5e7ae24da0d.1fab659115845e83",
+      "_id": "1fab659115845e83",
+      "name": "Set the Wedge",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Set the Wedge</h1><p><em>You slide a wedge into the joint and tap it home, giving the next shove somewhere to bite.</em></p><h2>Rules</h2><p><strong>Action:</strong> Maneuver · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> One adjacent unattended door, lid or movable obstacle.</p><p>Using a lever and wedges, prepare the obstacle. The next Force action by you or an ally against that obstacle gains 1 Boon. Describe whether you are helping open, close or move it; the benefit applies only to that task. No change to the obstacle’s strength occurs without the Force action.</p><p><strong>Duration:</strong> Until used or 1 minute passes.</p><p><strong>Equipment / acquisition:</strong> Requires lever and wedges, Bulk 1; grants one set if absent.</p><p>---</p><p><strong>Tier / minimum level:</strong> 1 · <strong>DP:</strong> 2 · <strong>Requirements to learn:</strong> Craft 1</p><p><strong>Type:</strong> Skill / Utility</p><p><strong>Limits:</strong> One prepared obstacle at a time; repeated preparation does not add Boons.</p><p><strong>ID:</strong> set-the-wedge</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

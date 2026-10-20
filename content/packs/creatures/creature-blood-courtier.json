@@ -235,10 +235,12 @@
       "portrait": {
         "creatureId": "creature-blood-courtier",
         "asset": "assets/creatures/3937aacf74393578126c437cf882cfe4adafc56633445c634e0108e035af4ea0.webp",
-        "sha256": "8a83d872988df2200fcde7d82eab1502cd9db7eb20fa2c112c923de59dc817e2",
+        "sha256": "7795c4df1c595bbf0561bf1f06ba39d2ac98a3af2d2150d1aee65baa2d3f7a4d",
         "sourceSha256": "3937aacf74393578126c437cf882cfe4adafc56633445c634e0108e035af4ea0",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

@@ -240,10 +240,12 @@
       "portrait": {
         "creatureId": "creature-wyvern",
         "asset": "assets/creatures/54e6e212ce89be6318714745410a46a41bfd81f2e0e4478f5d8b08bd90932c6f.webp",
-        "sha256": "9b6fad162b8c00e3e0127ab86c2ef0d0b955e269b948e57b192561e4c822d086",
+        "sha256": "cc54c218ac3c14706b62c96b9a09f7bcca0a497c7db8cbe6e44160aed3720980",
         "sourceSha256": "54e6e212ce89be6318714745410a46a41bfd81f2e0e4478f5d8b08bd90932c6f",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

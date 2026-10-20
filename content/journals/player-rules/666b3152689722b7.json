@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!666b3152689722b7",
+  "_id": "666b3152689722b7",
+  "name": "Noonday Judgment",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/noonday-judgment.md",
+        "sha256": "a8b3295cd21186f8b3963bc8b6e4a77a9eea083fbc0496b164366f3a09ff23b0",
+        "id": "noonday-judgment",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!666b3152689722b7.00bab1c45f6f5ff5",
+      "_id": "00bab1c45f6f5ff5",
+      "name": "Noonday Judgment",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Noonday Judgment</h1><p><em>You lift your hand, and a harsh brightness gathers over the place you have chosen.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> Reason</p><p><strong>Target / range / shape:</strong> Every creature in a visible 3-by-3 area within 6 squares</p><p>For a player attack, work out each target’s net Boons or Banes. Make one attack roll using the combination least favorable to you and apply that result to every target. Affect the creatures specified under Target, including allies if the area includes them. When an NPC attacks, each affected player makes a separate defense roll. Proposed NPC defense attribute: Agility.</p><p>- <strong>Weak:</strong> 4 radiant damage. - <strong>Standard:</strong> 4 radiant damage; Blinded 1. - <strong>Strong:</strong> 6 radiant damage; Blinded 2.</p><p><strong>Duration:</strong> Instant</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 7 · <strong>DP:</strong> 8 · <strong>Requirements to learn:</strong> Radiance 3</p><p><strong>Type:</strong> Magic / Attack</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> noonday-judgment</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

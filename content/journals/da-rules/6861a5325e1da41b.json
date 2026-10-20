@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!6861a5325e1da41b",
+  "_id": "6861a5325e1da41b",
+  "name": "Carrion Rat Swarm (CV 12)",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/bestiary/creatures/carrion-rat-swarm.md",
+        "sha256": "ffd8cf5e6ae713d89360d87267c09777246034c39aad54c884af08d0ad2a084d",
+        "id": "creature-carrion-rat-swarm",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!6861a5325e1da41b.f2b90eb5cf3ff883",
+      "_id": "f2b90eb5cf3ff883",
+      "name": "Carrion Rat Swarm (CV 12)",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Carrion Rat Swarm (CV 12)</h1><p><em>A dense group of oversized scavenging rats with scarred tails, dirty fur and sharp yellow teeth. The swarm behaves as a single hungry mass but occupies a definite patch of ground.</em></p><p><strong>Attributes:</strong> Brawn +0; Fortitude +1; Agility +1; Guile +0; Knowledge -2; Reason +0</p><p><strong>HP:</strong> 14 · <strong>Speed:</strong> 6; climb 4 · <strong>Size:</strong> 2 (2x2 squares) · <strong>Armor DR:</strong> 2</p><p><strong>Evasion:</strong> None · <strong>Threat:</strong> None · <strong>Stability:</strong> 0</p><p><strong>Weaknesses:</strong> None\\ <strong>Resistances:</strong> Physical (2)\\ <strong>Immunities:</strong> None</p><h2>Actions</h2><p>Damage and effects are <strong>Weak / Standard / Strong player defense</strong>. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.</p><table><thead><tr><th scope=\"col\">Main Actions</th><th scope=\"col\">Defense</th><th scope=\"col\">Damage</th></tr></thead><tbody><tr><td>Basic Melee</td><td>Agility</td><td>5/3/2</td></tr><tr><td>Gnawing edge</td><td>Agility</td><td>4/3/2</td></tr></tbody></table><table><thead><tr><th scope=\"col\">Maneuvers</th><th scope=\"col\">Effect</th></tr></thead><tbody><tr><td>Defend</td><td>+1 Bane</td></tr></tbody></table><table><thead><tr><th scope=\"col\">Reactions</th><th scope=\"col\">Effect</th></tr></thead><tbody><tr><td>Scatter Before the Blast</td><td>Before an area attack: +1 Bane to that attack.</td></tr><tr><td>Opportunity Attack</td><td>Basic Melee</td></tr></tbody></table><h2>Details</h2><h3>Gnawing edge</h3><p><strong>Target:</strong> One adjacent creature. <strong>Player defense:</strong> Agility. <strong>Damage type:</strong> physical.</p><h3>Scatter Before the Blast</h3><p><em>The swarm opens around the incoming sweep, then folds back into a ragged cloud of wings or fur.</em></p><p>Before an area attack that includes this creature is rolled, impose 1 Bane on that attack. Against an NPC area attack, grant 1 Boon to this creature&#39;s defense instead. This protection belongs to the swarm; a player area attack still uses one roll with the worst relevant target modifiers. No movement, new swarm or immunity is granted.</p><h3>General details</h3><p><strong>Basic Melee:</strong> One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.</p><p><strong>Defend:</strong> Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.</p><p><strong>Opportunity Attack:</strong> Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.</p><p><strong>Scatter Body:</strong> Area attacks ignore its physical DR, not other resistance. One HP pool and one turn; cannot overlap another creature at rest.</p><p><strong>Healing:</strong> Living: ordinary HP healing applies.</p><p><strong>Senses:</strong> Ordinary sight and hearing.</p><p><strong>Signs:</strong> Food sacks have been opened from beneath, with no large footprints nearby.</p><p><strong>Purpose:</strong> Reach food and escape larger predators.</p><p><strong>Tactics and retreat:</strong> Bite at the edge of a crowd and flow back toward shelter.</p><p><strong>Counterplay and conversation:</strong> Use an area attack or remove the food source; the swarm cannot occupy a hero’s square.</p><p><strong>Habitat:</strong> Cellar; sewer · <strong>Communication:</strong> None</p><p><strong>Loot:</strong> Spoiled stores and evidence of a breached cellar.</p><p><strong>Summoning:</strong> Ineligible.</p><h2>Design notes — not needed during play</h2><p><strong>ID:</strong> creature-carrion-rat-swarm</p><p><strong>Category:</strong> Animal · <strong>Role:</strong> Swarm · <strong>CV:</strong> 12</p><h3>Creature-roll reference</h3><table><thead><tr><th scope=\"col\">Attack</th><th scope=\"col\">Attribute</th><th scope=\"col\">Attack modifier</th><th scope=\"col\">Weak attack</th><th scope=\"col\">Standard attack</th><th scope=\"col\">Strong attack</th></tr></thead><tbody><tr><td>Gnawing edge</td><td>Brawn</td><td>None</td><td>2 physical damage.</td><td>3 physical damage.</td><td>4 physical damage.</td></tr></tbody></table><p>The incoming attack names the defense attribute; use the six values above. Same targeting, costs and limits apply in either perspective. No opposed second roll.</p><h3>CV worksheet</h3><p><strong>Difficulty rationale:</strong> No innate attack modifier; armor, cover and chosen actions provide its defenses. Ordinary attack difficulty; riders and positioning carry the threat.</p><p><strong>Reference damage:</strong> 2/3/4</p><p><strong>Reference type:</strong> physical</p><p><strong>Expected targets:</strong> 1</p><p><strong>Utility factor:</strong> 1.25</p><p><strong>Action review (#1279):</strong> U 1.15 → 1.25: Maneuver allowance +0, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.</p><p><strong>Regeneration per turn:</strong> 0</p><p>Reference I=3.000, O=2.000. CV uses the seed worksheet; action choices, Stability and control are not simulated. Recalibration remains required.</p><p><strong>Ability sources:</strong> @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.7c970415190b26cf.JournalEntryPage.3b6dda6b6e81f087]{Scatter Before the Blast}, @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.0398ea7168d0651a.JournalEntryPage.94a382f82ca4498c]{scatter body}.</p><p>Roster · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.5ebfaad0d5ed6813.JournalEntryPage.3292b6a49dcf7236]{Agreed Stability}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

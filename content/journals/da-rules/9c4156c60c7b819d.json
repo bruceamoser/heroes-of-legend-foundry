@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!9c4156c60c7b819d",
+  "_id": "9c4156c60c7b819d",
+  "name": "Driving Gust",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/gust.md",
+        "sha256": "65f0a756abe0f03508deec797a2c11b8ebcd3ae816228801cc5ab4e8d33694f2",
+        "id": "monster-gust",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!9c4156c60c7b819d.dbd4c50d468d1d61",
+      "_id": "dbd4c50d468d1d61",
+      "name": "Driving Gust",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Driving Gust</h1><p><em>Dust lifts in a sheet and cloaks snap straight behind their wearers.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-gust</p><p><strong>Action:</strong> Main Action</p><p>The printed area attack pushes 1/2/3 squares on Weak/Standard/Strong, away from its origin. Apply Stability to each target. No direct damage; collisions can hurt. A single target is moved once even if it occupies several affected squares.</p><p><strong>Limits:</strong> Only creatures whose entries list this ability possess it. Printed entry values and restrictions apply; no ability grants unlisted actions.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

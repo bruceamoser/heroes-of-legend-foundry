@@ -235,10 +235,12 @@
       "portrait": {
         "creatureId": "creature-griffin",
         "asset": "assets/creatures/a6c6c35329c4efbedd511ac008cf4c8502a84862757fe08ea3702f368ccb4976.webp",
-        "sha256": "852984639eb6969953d9de86b0891323f1be4afe97812f4a5996cbbdb66d89ba",
+        "sha256": "2b70d4a2c1b528132ce7976de370908fd3b638616bb92de153d87a48f891294f",
         "sourceSha256": "a6c6c35329c4efbedd511ac008cf4c8502a84862757fe08ea3702f368ccb4976",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

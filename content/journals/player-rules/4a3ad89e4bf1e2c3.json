@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!4a3ad89e4bf1e2c3",
+  "_id": "4a3ad89e4bf1e2c3",
+  "name": "Basic Ranged",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/basic-ranged.md",
+        "sha256": "a9533cbe2e5d4d40304aafc2b119ad941616db097362363a8f85781131fa4bf8",
+        "id": "basic-ranged",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!4a3ad89e4bf1e2c3.701e4e50ba986184",
+      "_id": "701e4e50ba986184",
+      "name": "Basic Ranged",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Basic Ranged</h1><p><em>You steady your breathing, pick your mark, and release.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> Agility</p><p><strong>Target / range / shape:</strong> One visible creature within 8 squares</p><p>Choose your target and make the attack.</p><p>- <strong>Weak:</strong> 2 physical damage. - <strong>Standard:</strong> 3 physical damage. - <strong>Strong:</strong> 5 physical damage.</p><p><strong>Duration:</strong> Instant</p><p><strong>Equipment / acquisition:</strong> Requires a ranged weapon, Bulk 1, and ammunition, Bulk 1; grants neither. Check ammunition after use.</p><p>---</p><p><strong>Tier / minimum level:</strong> Universal · <strong>DP:</strong> Not purchased · <strong>Requirements to learn:</strong> None</p><p><strong>Type:</strong> Attack</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> basic-ranged</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

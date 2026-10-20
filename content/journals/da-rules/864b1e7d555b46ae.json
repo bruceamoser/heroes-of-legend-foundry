@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!864b1e7d555b46ae",
+  "_id": "864b1e7d555b46ae",
+  "name": "Follow the Pack",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/follow-the-pack.md",
+        "sha256": "65848bdf5f8b2af9eae4b9737baf6c45433a03c7cb6baed06b92fe8469a50c4c",
+        "id": "monster-follow-the-pack",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!864b1e7d555b46ae.3608b7d64edb914d",
+      "_id": "3608b7d64edb914d",
+      "name": "Follow the Pack",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Follow the Pack</h1><p><em>One hunter moves and another flows into its wake, tightening the circle without a sound.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-follow-the-pack</p><p><strong>Action:</strong> Reaction</p><p>After a visible active ally ends voluntary movement adjacent to a visible enemy within 3 squares of this creature, move up to 2 squares, ending adjacent to that ally. Pay normal terrain costs and provoke normally. The ally must be conscious and not Paralyzed; an uncommanded summon cannot trigger this. No attack or command is granted, and movement granted by a free attack cannot trigger it.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

@@ -1,3 +1,5 @@
+import { bindLearningMarket } from "./learning-market.mjs";
+import { equipmentEligibility, isUniversalAbility } from "../rules/equipment-eligibility.mjs";
 import { additionalLanguageOptions } from "../rules/languages.mjs";
 import {
   resolveBuilderDrop,
@@ -148,6 +150,8 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
     ).map((r) => ({
       ...r,
       reference: r.choice.reference,
+      disciplineIds: (r.choice.requirements ?? []).filter((q) => q.kind === "discipline").map((q) => q.id).join(" "),
+      universal: isUniversalAbility(r.choice),
       automationStatus: abilityReferenceStatus(r.choice.id, r.choice.source),
       source: source(r.choice),
       reasons: r.reasons.map((x) => x.text).join(" "),
@@ -184,7 +188,7 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
         })),
         needsHands:
           a.items.includes("item-ordinary-melee-weapon") ||
-          a.weaponChoice?.includes("melee"),
+          (a.weaponChoice?.includes("melee") && d.acquisitions?.[a.id]?.weapon === "melee"),
         handOptions: [1, 2].map((value) => ({
           value,
           selected: d.acquisitions?.[a.id]?.meleeHands === value,
@@ -285,7 +289,7 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
       classDisciplines: options(
         (cls?.startingDisciplines ?? []).map(get),
         d.classDisciplines,
-      ),
+      ).map((r) => ({...r, disabled: !r.selected && (preview.stages[0]?.ranks?.[r.id] ?? 0) > 0})),
       signatures: options((cls?.signatures[1] ?? []).map(get), d.signatureId),
       learning,
       dp: state.dp,
@@ -310,7 +314,13 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
         };
       }),
       acquisitions,
-      equipment: inventory.equipment.map((r) => ({ ...r, source: source(r) })),
+      requiredChoices: acquisitions.filter((a) => preview.errors.some((e) => e.code === "acquisition" && e.id === a.id)),
+      currentBuild: state.abilities.map((id) => ({ id, name: name(id), acquisition: acquisitions.find((a) => a.id === id && preview.errors.some((e) => e.code === "acquisition" && e.id === id)), index: (d.purchases[stage] ?? []).findIndex((p) => p.id === id), removable: (d.purchases[stage] ?? []).some((p) => p.id === id) })),
+      disciplineFilters: choices.filter((r) => r.kind === "discipline"),
+      disciplinePurchases: (d.purchases[stage] ?? []).map((p, index) => ({...p,index,name: name(p.id)})).filter((p) => get(p.id)?.kind === "discipline"),
+      knownRanks: Object.entries(state.ranks ?? {}).map(([id, rank]) => ({name: name(id), rank})),
+      showDisciplineMarket: stage > 0,
+      equipment: inventory.equipment.map((r) => ({ ...r, source: source(r), ...equipmentEligibility(r.id, state.abilities) })),
       shopping: (d.shopping ?? []).map((r, index) => ({
         ...r,
         index,
@@ -579,6 +589,16 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
       const hands = Number(
         this.element.querySelector(`[name="shop-hands-${id}"]`)?.value ?? 0,
       );
+      const choice = this.catalogs.inventory.equipment.find((r) => r.id === id);
+      const preview = creationPreview(this.draft, this.catalogs.choices, this.catalogs.inventory, this.languageConfiguration.definitions);
+      const eligibility = equipmentEligibility(id, preview.state.abilities);
+      if (!eligibility.eligible) throw new Error(`Requires ${eligibility.requiredAbilityId}.`);
+      if (!Number.isSafeInteger(quantity) || quantity < 1) throw new Error("Choose a positive whole quantity.");
+      if (choice.price * quantity > preview.inventory.remainingCoins) {
+        const approved = await foundry.applications.api.DialogV2.confirm({window: {title: "Spend beyond available coins?"}, content: `<p>This purchase costs ${choice.price * quantity} coins; ${preview.inventory.remainingCoins} remain.</p>`});
+        if (!approved) return;
+        this.draft.coinOverride = true;
+      }
       this.draft.shopping.push({ id, quantity, hands });
     });
   }
@@ -633,6 +653,7 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
   }
   _onRender(context, options) {
     super._onRender(context, options);
+    bindLearningMarket(this);
     if (this.renderedStep !== this.step)
       this.element.querySelector(".hol-wizard-main").scrollTop = 0;
     this.renderedStep = this.step;
@@ -640,15 +661,7 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
       group.addEventListener("change", () => this.syncRecipeStudySelects());
     this.syncRecipeStudySelects();
     bindBuilderDrop(this);
-    this.element
-      .querySelector("[data-search]")
-      ?.addEventListener("input", (event) => {
-        const query = event.target.value.toLocaleLowerCase();
-        for (const row of this.element.querySelectorAll("[data-search-name]"))
-          row.hidden = !row.dataset.searchName
-            .toLocaleLowerCase()
-            .includes(query);
-      });
+
     for (const input of this.element.querySelectorAll(
       'label.hol-repair input[name="extraLanguage"]',
     ))

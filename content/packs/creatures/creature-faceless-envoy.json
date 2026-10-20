@@ -196,10 +196,12 @@
       "portrait": {
         "creatureId": "creature-faceless-envoy",
         "asset": "assets/creatures/8f6bbb98290b189c0de80cac5719a0944d9f1d04360adba27e2a222c82649423.webp",
-        "sha256": "5901cbc5704c26fcd5c05c28cfc99d22641bbde5e1072a0f20c2ce751f8d56d2",
+        "sha256": "d10a470ece228434f91cb70df06e07709b239759f33036b9dd4cdf45fb8e42b7",
         "sourceSha256": "8f6bbb98290b189c0de80cac5719a0944d9f1d04360adba27e2a222c82649423",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

@@ -1,6 +1,7 @@
 import { cp, mkdir, rm } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { compilePack } from "@foundryvtt/foundryvtt-cli";
+import { validateNativeJournals } from "./validate-native-journals.mjs";
 import {
   buildContentPackArtifacts,
   CONTENT_PACK_DEFINITIONS,
@@ -14,6 +15,7 @@ import {
 
 const root = new URL("../", import.meta.url);
 const output = new URL("dist/heroes-of-legend/", root);
+await validateNativeJournals(root);
 const artifacts = buildContentPackArtifacts(
   await readContentPackCatalogs(root),
 );
@@ -32,6 +34,9 @@ for (const pack of CONTENT_PACK_DEFINITIONS) {
     fileURLToPath(new URL(`content/packs/${pack.directory}/`, root)),
     fileURLToPath(new URL(pack.path, output)),
   );
+}
+for (const name of ["player-rules", "da-rules"]) {
+  await compilePack(fileURLToPath(new URL(`content/journals/${name}/`, root)), fileURLToPath(new URL(`packs/${name}`, output)));
 }
 console.info(
   `Built ${fileURLToPath(output)} with ${formatCreatureArtReport(creatureArt)}`,

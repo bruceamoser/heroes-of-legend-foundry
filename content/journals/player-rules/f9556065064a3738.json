@@ -1,0 +1,39 @@
+{
+  "_key": "!journal!f9556065064a3738",
+  "_id": "f9556065064a3738",
+  "name": "Influence",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/disciplines/influence.md",
+        "sha256": "c0bc2df526d6fe65d39f83c045ff1ff658757aab6b99a6100cb10a26aaa8a565",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!f9556065064a3738.a0dc9886b09ca790",
+      "_id": "a0dc9886b09ca790",
+      "name": "Influence",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Influence</h1><p><em>You learn how a voice can open a door, steady a friend or turn a room.</em></p><h2>Rules</h2><p>Leadership, negotiation and credible social pressure; never mind control.</p><p>Ranks 1, 2 and 3 are purchased in order. Rank alone grants no action, attribute bonus, equipment or permission to use every card in this field. A card prints the rank required before purchase. No additional level gate applies to ranks.</p><p>Class affinity sets the cost of each rank: Home 1/2/4 DP; Adjacent 2/4/8; Foreign 3/6/12; Opposed 4/8/16. These prices are the agreed starting scheme. No discipline may be bought at level 0.</p><p>Discipline index · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

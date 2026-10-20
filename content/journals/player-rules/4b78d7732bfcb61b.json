@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!4b78d7732bfcb61b",
+  "_id": "4b78d7732bfcb61b",
+  "name": "Strike and Vanish",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/signature-shadow-strike-and-vanish.md",
+        "sha256": "ef1ed7bb5dea4634bb65649f1e555c54f4d15b1fce3915f0fac986db8a820275",
+        "id": "signature-shadow-strike-and-vanish",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!4b78d7732bfcb61b.d9a8142fc8daa3a3",
+      "_id": "d9a8142fc8daa3a3",
+      "name": "Strike and Vanish",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Strike and Vanish</h1><p><em>Your strike lands and you slip away on its follow-through, already looking for the next patch of cover.</em></p><h2>Rules</h2><p><strong>Action:</strong> Passive · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Self, after your Main Action attack resolves.</p><p>After any result, move up to 1 square without provoking. After a Standard or Strong result, move up to 3 squares instead. An attack from Hidden ends Hidden normally; this movement does not automatically hide you again.</p><p><strong>Duration:</strong> Immediate movement.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 3 · <strong>DP:</strong> 4 · <strong>Requirements to learn:</strong> Class Shadow; minimum level 3</p><p><strong>Type:</strong> Signature</p><p><strong>Tags:</strong> Skill / Movement</p><p><strong>Limits:</strong> Once on your turn; no benefit from free attacks.</p><p><strong>ID:</strong> signature-shadow-strike-and-vanish</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.659f046648036560.JournalEntryPage.6f9998008dd8a1fb]{Class choices} · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

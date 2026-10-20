@@ -3,6 +3,7 @@
   "_id": "a098a2e5c1470770",
   "name": "Writing Kit",
   "type": "equipment",
+  "img": "systems/heroes-of-legend/assets/icons/quill.svg",
   "system": {
     "schemaVersion": 1,
     "catalogId": "item-writing-kit",

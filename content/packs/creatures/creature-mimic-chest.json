@@ -201,10 +201,12 @@
       "portrait": {
         "creatureId": "creature-mimic-chest",
         "asset": "assets/creatures/37aca50b3266e37781a340ffe9f514bb61f62748de8bd93806bdb446daf194e6.webp",
-        "sha256": "69802bf1088d173e48ee2423fffe31d0423a8704f94d0d40c47051ff0e8eb52d",
+        "sha256": "367c6396efaa575f94f3aa8768e493812557dce071087beed29a3a1b830635e8",
         "sourceSha256": "37aca50b3266e37781a340ffe9f514bb61f62748de8bd93806bdb446daf194e6",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

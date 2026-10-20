@@ -1,4 +1,7 @@
-import { viewPortrait } from "./portrait.mjs";
+import { selectNpcProfile } from "../services/npc-profile.mjs";
+import { cardContext, bindCardState, toggleCardEdit, mitigationLabel } from "./card-state.mjs";
+import { updateOwnedDocument } from "../services/documents.mjs";
+import { viewPortrait, bindPortraitControls } from "./portrait.mjs";
 import {
   declareNpcMelee,
   declareCreatureAction,
@@ -11,6 +14,7 @@ import {
 import {
   creatureReferenceHtml,
   creatureModifierLabel,
+  renderMarkdown,
 } from "./creature-reference.mjs";
 
 function sourceLink(source, commit) {
@@ -29,10 +33,15 @@ export class CreatureSheet extends CharacterSheet {
     actions: {
       npcMelee: CreatureSheet.npcMelee,
       creatureAction: CreatureSheet.creatureAction,
+      viewCreatureAction: CreatureSheet.viewCreatureAction,
       updateProfile: CreatureSheet.updateProfile,
       viewPortrait,
+      cardEdit: toggleCardEdit,
+      npcMode: CreatureSheet.npcMode,
+      chooseNpcProfile: CreatureSheet.chooseNpcProfile,
+      unlinkNpcProfile: CreatureSheet.unlinkNpcProfile,
     },
-    position: { width: 740, height: 800 },
+    position: { width: 760, height: 720 },
   };
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
@@ -57,6 +66,13 @@ export class CreatureSheet extends CharacterSheet {
     const referenceHtml = creatureReferenceHtml(system);
     return {
       ...context,
+      ...cardContext(this, this.actor),
+      npc: this.actor.getFlag("heroes-of-legend", "npc") ?? {},
+      npcMode: Boolean(this.actor.getFlag("heroes-of-legend", "npc")?.enabled),
+      combatLinked: !this.actor.getFlag("heroes-of-legend", "npc")?.enabled || this.actor.getFlag("heroes-of-legend", "npc")?.profileLinked !== false,
+      resistanceLabel: mitigationLabel(system.resistances),
+      weaknessLabel: mitigationLabel(system.weaknesses),
+      immunityLabel: system.immunities.join("; ") || "None",
       gm: game.user.isGM,
       canUpdateProfile: profileUpdateAvailable(this.actor),
       actionGroups: [
@@ -65,6 +81,7 @@ export class CreatureSheet extends CharacterSheet {
         ["reaction", "Reactions"],
       ].map(([category, label]) => ({
         label,
+        main: category === "main",
         entries: system.actions.entries.filter(
           (entry) =>
             entry.category === category &&
@@ -92,6 +109,55 @@ export class CreatureSheet extends CharacterSheet {
           )
         : "",
     };
+  }
+  _onRender(context, options) {
+    super._onRender(context, options);
+    bindCardState(this, this.actor);
+    bindPortraitControls(this);
+  }
+  static async npcMode() {
+    try {
+      await updateOwnedDocument(this.actor, { "flags.heroes-of-legend.npc.enabled": !this.actor.getFlag("heroes-of-legend", "npc")?.enabled });
+    } catch(error) { ui.notifications.error(error.message); }
+  }
+  static async unlinkNpcProfile() {
+    try { await updateOwnedDocument(this.actor, { "flags.heroes-of-legend.npc.profileLinked": false }); }
+    catch(error) { ui.notifications.error(error.message); }
+  }
+  static async chooseNpcProfile() {
+    try {
+      if (!game.user.isGM || !this.actor.isOwner) throw new Error("Only a DA owner can replace this NPC's combat profile.");
+      const pack = game.packs.get("heroes-of-legend.creatures");
+      if (!pack) throw new Error("The creature compendium is unavailable.");
+      const index = await pack.getIndex();
+      const escape = foundry.utils.escapeHTML;
+      const selection = await foundry.applications.api.DialogV2.input({
+        window: { title: "Choose NPC combat profile" },
+        content: `<p>Replace printed combat statistics and actions. Portrayal, current HP (up to the new maximum), notes, inventory and conditions are retained.</p><label>Profile<select name="profileId">${[...index].sort((a,b)=>a.name.localeCompare(b.name)).map(entry=>`<option value="${escape(entry._id)}">${escape(entry.name)}</option>`).join("")}</select></label>`,
+        ok: { label: "Use profile" }
+      });
+      if (!selection) return;
+      await selectNpcProfile(this.actor, selection.profileId);
+    } catch(error) { ui.notifications.error(error.message); }
+  }
+  _toggleDisabled(disabled) {
+    super._toggleDisabled(disabled);
+    if (disabled && this.actor.testUserPermission(game.user, "OBSERVER"))
+      for (const button of this.element.querySelectorAll('[data-action="viewCreatureAction"], [data-action="viewPortrait"]')) button.disabled = false;
+  }
+  static async viewCreatureAction(event, target) {
+    try {
+      if (!this.actor.testUserPermission(game.user, "OBSERVER")) throw new Error("This action is unavailable.");
+      const entry = this.actor.system.actions.entries.find(action => action.id === target.dataset.creatureAction);
+      if (!entry) throw new Error("This action is unavailable.");
+      const content = await foundry.applications.ux.TextEditor.implementation.enrichHTML(renderMarkdown(entry.referenceMarkdown || entry.effect), { relativeTo: this.actor, links: false });
+      await foundry.applications.api.DialogV2.wait({
+        window: { title: entry.name },
+        classes: ["heroes-of-legend"],
+        content: `<div class="hol-item-reference">${content}</div>`,
+        buttons: [...(game.user.isGM ? [{action:"post",label:"Post action",callback:()=>declareCreatureAction(this.actor,entry.id)}] : []), {action:"close",label:"Close"}],
+      });
+    } catch(error) { ui.notifications.error(error.message); }
   }
   static async creatureAction(event, target) {
     try {
@@ -130,7 +196,7 @@ export class CreatureSheet extends CharacterSheet {
   static PARTS = {
     main: {
       template: "systems/heroes-of-legend/templates/creature.hbs",
-      scrollable: [""],
+      scrollable: [".hol-card-scroll"],
     },
   };
 }

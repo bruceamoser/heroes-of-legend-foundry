@@ -227,10 +227,12 @@
       "portrait": {
         "creatureId": "creature-sword-angel",
         "asset": "assets/creatures/f6fde6ebe1f60daabb1ab9bf7e543da7682e82e061cd75f0ed100709fd8f73d4.webp",
-        "sha256": "9557920a43f8f9cceda97b8fa6b9d57b97641189e0636ec812f3017f7801cd26",
+        "sha256": "5a1e78658a096a4b5b69141b46b9026da6a2e13751ce371379bc7f23c5c71858",
         "sourceSha256": "f6fde6ebe1f60daabb1ab9bf7e543da7682e82e061cd75f0ed100709fd8f73d4",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

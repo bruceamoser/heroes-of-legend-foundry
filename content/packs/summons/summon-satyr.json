@@ -116,10 +116,12 @@
       "portrait": {
         "creatureId": "creature-satyr",
         "asset": "assets/creatures/dcc3dfdd49a2425cf354d9cd7630f1836e8987d46d6f91f396b2423ac2de720e.webp",
-        "sha256": "cce4ea75e341fe744a7d636ca2cc245e57d861cba66b1b99e7ad83efc14cec1b",
+        "sha256": "a5d80c2c1baa40e335bd8f781d400580ebc46fce3b186e5af3ee65e5ea4b2cfd",
         "sourceSha256": "dcc3dfdd49a2425cf354d9cd7630f1836e8987d46d6f91f396b2423ac2de720e",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

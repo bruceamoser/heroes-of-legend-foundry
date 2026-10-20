@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!5bfa497ab137d560",
+  "_id": "5bfa497ab137d560",
+  "name": "Take the Measure",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/take-the-measure.md",
+        "sha256": "58fda17fcd90762708d853a67367b4ddc66fc7b25ccb9292cde20a591ec3bf36",
+        "id": "take-the-measure",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!5bfa497ab137d560.c473671abd337b79",
+      "_id": "c473671abd337b79",
+      "name": "Take the Measure",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Take the Measure</h1><p><em>You hold your aim through a slow breath, watching the opening appear between your target’s movements.</em></p><h2>Rules</h2><p><strong>Action:</strong> Maneuver · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> One visible creature within your ranged attack’s range.</p><p>Choose the creature. Gain 1 Boon to your next ranged attack against it this turn. If you move or are moved before that attack, lose this benefit. This grants no attack and does not extend the attack’s range.</p><p><strong>Duration:</strong> Until used or the end of this turn.</p><p><strong>Equipment / acquisition:</strong> Requires the ranged weapon used by the attack; grants no item.</p><p>---</p><p><strong>Tier / minimum level:</strong> 1 · <strong>DP:</strong> 2 · <strong>Requirements to learn:</strong> Marksmanship 1</p><p><strong>Type:</strong> Skill / Attack</p><p><strong>Limits:</strong> Repeated uses do not multiply this card’s benefit on the same recipient or prepared attack. Pay a Maneuver for each use.</p><p><strong>ID:</strong> take-the-measure</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

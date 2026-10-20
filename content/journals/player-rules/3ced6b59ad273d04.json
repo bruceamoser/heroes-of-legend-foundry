@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!3ced6b59ad273d04",
+  "_id": "3ced6b59ad273d04",
+  "name": "Local Map",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/equipment/local-map.md",
+        "sha256": "013ccd4aca49de93fa83f9cc3f5d9d6807efda78041f7406be83b543aa283b20",
+        "id": "item-local-map",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!3ced6b59ad273d04.03ac7fd5ee26f4a6",
+      "_id": "03ac7fd5ee26f4a6",
+      "name": "Local Map",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Local Map</h1><p><em>You trace the road with a fingertip and compare the inked ridge to the skyline.</em></p><h2>Rules</h2><p><strong>ID:</strong> item-local-map</p><p><strong>Market price:</strong> 5 coins. <strong>Bulk:</strong> 1.</p><p>A map and protective case. Contains the publicly known routes the seller actually knows; no secret discoveries or guaranteed accuracy.</p><p>Buying equipment grants no DP advancement, training or ability. Use normal item-handling actions unless an applicable card says otherwise.</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.a8b099af3500d9f6.JournalEntryPage.cfa94361944ba875]{Market rules} · Equipment index</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

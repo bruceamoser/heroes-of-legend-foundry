@@ -1,0 +1,39 @@
+{
+  "_key": "!journal!e77b4be978c9d6ac",
+  "_id": "e77b4be978c9d6ac",
+  "name": "Satyr (CV 16)",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/bestiary/summons/satyr.md",
+        "sha256": "a62b203d7f018b5b57fe033a5b306a9fe78ff1a03900415bbd8376c4f31c387e",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!e77b4be978c9d6ac.534cd163db8eb7c8",
+      "_id": "534cd163db8eb7c8",
+      "name": "Satyr (CV 16)",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Satyr (CV 16)</h1><p><em>A goat-legged musician wears a travelling coat full of reeds, ribbons and invitations to celebrations long past.</em></p><p><strong>Attributes:</strong> Brawn +0; Fortitude +1; Agility +1; Guile +1; Knowledge +2; Reason +2</p><p><strong>HP:</strong> 18 · <strong>Speed:</strong> 7 · <strong>Footprint:</strong> 1x1</p><p><strong>Summoned form — player reference.</strong></p><p><strong>Defense modifier:</strong> 1 Boon. · <strong>Stability:</strong> 0.</p><p><strong>DR / resistance:</strong> None · <strong>Condition immunities:</strong> None</p><p><strong>Weakness:</strong> None</p><p><strong>Healing:</strong> Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body.</p><p><strong>Senses:</strong> Ordinary sight and hearing.</p><p><strong>Communication:</strong> Common</p><p><strong>Eligibility:</strong> Fey 3</p><p>Main command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use the controller’s turn. Beyond 6 squares, or if the controller is unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot. No summon chains.</p><p><strong>Carrying:</strong> At most 1 Bulk; anatomy limits handling. No crafting training.</p><h2>Attacks — Main Action</h2><table><thead><tr><th scope=\"col\">Attack</th><th scope=\"col\">Attribute</th><th scope=\"col\">Attack modifier</th><th scope=\"col\">Weak attack</th><th scope=\"col\">Standard attack</th><th scope=\"col\">Strong attack</th></tr></thead><tbody><tr><td>Bewildering reed</td><td>Reason</td><td>None</td><td>2 mental damage.</td><td>3 mental damage. Dazed 1.</td><td>5 mental damage. Dazed 2.</td></tr></tbody></table><p><strong>Bewildering reed:</strong> One visible creature within 5 squares.</p><h2>Maneuvers</h2><p><strong>Keep the Rhythm:</strong> One willing ally within 3 squares that can hear it reduces either Frightened or Dazed by 1. Once per turn. This does not recalculate action categories already selected at turn start.</p><p><strong>Defend:</strong> Gain 1 Boon to defenses until the controller’s next turn; repeated Defend does not stack.</p><p><strong>Basic Melee — Main:</strong> Brawn None; one adjacent target; Weak attack 2, Standard 3, Strong 5 physical damage. No specialty riders.</p><p>@UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.cf5cfbadcc0d35d4.JournalEntryPage.9859cfc970164144]{DA creature card} · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.56367e2f9016dd21.JournalEntryPage.9ff12960a5e160cc]{Summon rules}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

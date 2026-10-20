@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!34ec072441b2d762",
+  "_id": "34ec072441b2d762",
+  "name": "Travel Food",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/recipes/travel-food.md",
+        "sha256": "77183cad6e6e3d286b660064550d792a69574ac48bcf34576c2d2bcdaf32ff92",
+        "id": "recipe-travel-food",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!34ec072441b2d762.31fca134f7e885b5",
+      "_id": "31fca134f7e885b5",
+      "name": "Travel Food",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Travel Food</h1><p><em>You salt, wrap and dry the ingredients, packing a little hospitality for the road.</em></p><h2>Rules</h2><p>- <strong>ID:</strong> recipe-travel-food - <strong>Permission:</strong> Trail Workshop, Make Something Useful, Enchanting Workshop, or a mixing card that explicitly grants this recipe; the recipe alone grants no crafting permission - <strong>Tools:</strong> Craft tools or the granting card’s mixing kit - <strong>Materials per attempt:</strong> Safe edible forage, obtained in the scene or one compatible carried bundle use - <strong>Time per attempt:</strong> One hour - <strong>Result:</strong> Inventory supply, maximum d8</p><p>Roll the crafting card’s attribute. Weak raises one matching supply by 1 inventory step; Standard by 2; Strong by 3, up to the printed cap. The first step from out creates d4; later steps are d6, d8, d10, d12, d20. Check carried material supply after the attempt. No group crafting.</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.b056a97d404b4adb.JournalEntryPage.8220b0d2885b2af0]{Product}. This recipe can be one of the two ordinary choices granted by Trail Workshop or Ordinary Recipe Study. It is reusable and does not grant free ingredients.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

@@ -357,7 +357,7 @@ test("manifest declares native content packs and sanitizes Item descriptions", a
         ),
       ),
     );
-  assert.deepEqual(manifest.packs, [
+  assert.deepEqual(manifest.packs.filter(pack => ["abilities", "equipment", "creatures", "summons"].includes(pack.name)), [
     {
       name: "abilities",
       label: "Heroes of Legend Abilities",

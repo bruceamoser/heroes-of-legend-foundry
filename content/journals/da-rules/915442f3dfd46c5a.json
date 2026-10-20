@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!915442f3dfd46c5a",
+  "_id": "915442f3dfd46c5a",
+  "name": "Numbing Strike",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/numbing-strike.md",
+        "sha256": "d9bd9109809a7d1990c95ff1d4e3868d5093f961640e31d69101a188149364b3",
+        "id": "monster-numbing-strike",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!915442f3dfd46c5a.813df0d314e58ebe",
+      "_id": "813df0d314e58ebe",
+      "name": "Numbing Strike",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Numbing Strike</h1><p><em>The struck limb goes rigid for one terrifying instant.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-numbing-strike</p><p><strong>Action:</strong> Main Action</p><p>The worst player defense outcome applies Paralyzed 1 as printed. This attack cannot be used on consecutive turns, regardless of outcome. This is not lasting petrification.</p><p>Actual damage, targeting and defense attribute are printed on the creature card.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

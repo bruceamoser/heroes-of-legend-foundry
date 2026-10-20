@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!04beff9651e41b7e",
+  "_id": "04beff9651e41b7e",
+  "name": "Snare the Missile",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/snare-the-missile.md",
+        "sha256": "7cf8c76643b934e75974edc02f9e278e908bb2338e10e9f4425a82c25f65872a",
+        "id": "snare-the-missile",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!04beff9651e41b7e.0a2160f7bbdf3fe5",
+      "_id": "0a2160f7bbdf3fe5",
+      "name": "Snare the Missile",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Snare the Missile</h1><p><em>You flick a hooked tool into the missile’s path, trusting the angle and the length of the line more than your reflexes.</em></p><h2>Rules</h2><p><strong>Action:</strong> Reaction · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Self, before a defense roll against one physical projectile attack.</p><p>Use Knowledge instead of the normal defense attribute and gain 1 Boon to this defense. Make only the existing defense roll. This does not work against an area attack or a projectile larger than your own footprint.</p><p><strong>Duration:</strong> Instant.</p><p><strong>Equipment / acquisition:</strong> Requires held craft tools and a free hand; grants craft tools, Bulk 1, if absent.</p><p>---</p><p><strong>Tier / minimum level:</strong> 3 · <strong>DP:</strong> 4 · <strong>Requirements to learn:</strong> Craft 2 and Marksmanship 2</p><p><strong>Type:</strong> Skill / Defense</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> snare-the-missile</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

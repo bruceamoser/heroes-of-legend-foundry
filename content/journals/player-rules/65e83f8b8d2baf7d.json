@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!65e83f8b8d2baf7d",
+  "_id": "65e83f8b8d2baf7d",
+  "name": "Turn the Crowd",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/turn-the-crowd.md",
+        "sha256": "84eb5427945fd62fd30c0062652eb4adb1bc0f2f1418e7e8305ecdc5e2476cb6",
+        "id": "turn-the-crowd",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!65e83f8b8d2baf7d.eff782e45139c482",
+      "_id": "eff782e45139c482",
+      "name": "Turn the Crowd",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Turn the Crowd</h1><p><em>You find the words people begin repeating to one another before you have finished speaking.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> Guile</p><p><strong>Time:</strong> Ten minutes per attempt.</p><p><strong>Target / range / shape:</strong> An audience able to hear; 10 minutes</p><p>Address an audience able to hear and understand you. Propose one plausible collective objective, such as providing volunteers, granting access or organizing evacuation. The DA states a binary or cumulative progress target and which listeners are willing to consider it. Completion secures the stated cooperation from willing participants, not authority over everyone present; their own choices and new events still matter.</p><p>- <strong>Weak:</strong> 1 progress; identify an objection voiced by the audience. - <strong>Standard:</strong> 2 progress; also identify a willing spokesperson who can explain that objection. - <strong>Strong:</strong> 3 progress; also identify willing volunteers who can organize the agreed practical next step, if such people are present.</p><p><strong>Duration:</strong> Information and earned progress persist for the stated task; completed changes remain until circumstances alter them.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 7 · <strong>DP:</strong> 8 · <strong>Requirements to learn:</strong> Influence 3</p><p><strong>Type:</strong> Skill</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> turn-the-crowd</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

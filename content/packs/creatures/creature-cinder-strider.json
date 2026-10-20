@@ -205,10 +205,12 @@
       "portrait": {
         "creatureId": "creature-cinder-strider",
         "asset": "assets/creatures/b08d5790a77161b8a69cfbd35f50f7a2f303914d68c8c2f4fe2c2e9d0d0fba2c.webp",
-        "sha256": "cbc33cf5d1c27b03839d532a1a419f17071b85febcae9a7be6ea302d2ead57d6",
+        "sha256": "cffbe1d341632f1cf1765ce5a0bae8b01a5dc969a79af7ae5dcd9e608fd86265",
         "sourceSha256": "b08d5790a77161b8a69cfbd35f50f7a2f303914d68c8c2f4fe2c2e9d0d0fba2c",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

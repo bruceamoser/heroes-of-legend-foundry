@@ -12,3 +12,4 @@ playwright-report/
 foundry-data/
 
 release-artifacts/
+__pycache__/

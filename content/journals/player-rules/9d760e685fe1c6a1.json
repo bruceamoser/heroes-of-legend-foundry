@@ -1,0 +1,39 @@
+{
+  "_key": "!journal!9d760e685fe1c6a1",
+  "_id": "9d760e685fe1c6a1",
+  "name": "Pit Fighter",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/origins/background-pit-fighter.md",
+        "sha256": "02813a28f8c9cb937dac16c0b45d3d51104957215c9a0c19e85d9e78fa67c4ed",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!9d760e685fe1c6a1.af2665dd80dbdce1",
+      "_id": "af2665dd80dbdce1",
+      "name": "Pit Fighter",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Pit Fighter</h1><p><em>You learned what a crowd sounds like when it decides someone will not get up.</em></p><p><em>Who did you refuse to finish?</em></p><h2>Rules</h2><p>Choose one:</p><p>- <strong>Arms 1</strong> and @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.cfab926fcbbaf49e.JournalEntryPage.f0020b88c5663d9e]{Blood in the Teeth}. - <strong>Athletics 1</strong> and @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.b5bd6a790ca68620.JournalEntryPage.20d78c4719b165f2]{Secure a Hold}.</p><p><strong>Type:</strong> Background</p><p>Each option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.</p><p><strong>Starting coin contribution:</strong> +5 coins. See @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0558be1f6014ee71.JournalEntryPage.880380bcd80cfec6]{starting coins}.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

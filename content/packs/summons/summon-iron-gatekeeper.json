@@ -126,10 +126,12 @@
       "portrait": {
         "creatureId": "creature-iron-gatekeeper",
         "asset": "assets/creatures/91c830289b636a4a682cdf84da986778e0d217b8f48a44211c1f9dfdba314fe5.webp",
-        "sha256": "273eb9f897875e0402d41935d66142a9222e93dfc57c4174ae2654ea5637ed45",
+        "sha256": "8e17c4d531d877407a5327478af3ab2dfe2da74cf07341ab650c3d89652a53e8",
         "sourceSha256": "91c830289b636a4a682cdf84da986778e0d217b8f48a44211c1f9dfdba314fe5",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

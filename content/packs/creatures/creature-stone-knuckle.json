@@ -227,10 +227,12 @@
       "portrait": {
         "creatureId": "creature-stone-knuckle",
         "asset": "assets/creatures/b4a3841a3827eb44b4256baaa5b5608f2ef198917ee36f92a24f44d62f5de099.webp",
-        "sha256": "00c55444b0ef1f624fd1995cd9be8f3d5e2d973038c0fc949f332e37dd5d1e5b",
+        "sha256": "4f75339b05f495e57726a0d51c844a47adb19669ae7117654ce77d3e20f50a86",
         "sourceSha256": "b4a3841a3827eb44b4256baaa5b5608f2ef198917ee36f92a24f44d62f5de099",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

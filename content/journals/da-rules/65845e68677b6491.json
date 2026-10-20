@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!65845e68677b6491",
+  "_id": "65845e68677b6491",
+  "name": "Venom",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/venom.md",
+        "sha256": "7f9de07c3efecfa084b884f9b9032c9f6cc9d113e4f2c5428a32070b0f5e38fe",
+        "id": "monster-venom",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!65845e68677b6491.82273175e7416ab0",
+      "_id": "82273175e7416ab0",
+      "name": "Venom",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Venom</h1><p><em>A needle catches the skin, and a bitter numbness spreads from the puncture.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-venom</p><p><strong>Action:</strong> Main Action</p><p>Use the printed attack. Standard also applies Poisoned 1; Strong applies Poisoned 2. Poisoned gives Banes, not additional HP damage, and follows ordinary decay. No second resistance roll.</p><p><strong>Limits:</strong> Only creatures whose entries list this ability possess it. Printed entry values and restrictions apply; no ability grants unlisted actions.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

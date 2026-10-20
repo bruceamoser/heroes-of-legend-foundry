@@ -218,10 +218,12 @@
       "portrait": {
         "creatureId": "creature-medusa",
         "asset": "assets/creatures/354252cd34ec63b56ab4195cda5b0829571a1e2cbb93ad70b4ffa6bfac0a9388.webp",
-        "sha256": "bfab751f4ceab33c9858ddd39f736e55b1194447ab4153ce260ca3cef67e8a43",
+        "sha256": "575c2c6d1974adb6568c82f6d030d95c2cd9016737db75f9f9dc19527fb9426b",
         "sourceSha256": "354252cd34ec63b56ab4195cda5b0829571a1e2cbb93ad70b4ffa6bfac0a9388",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

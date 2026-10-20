@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!40ad482d4a5cee43",
+  "_id": "40ad482d4a5cee43",
+  "name": "Life Drink",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/life-drink.md",
+        "sha256": "074121e244350ec466a25e2a445f38d4de14a09c386c39d98bc80f98d6467796",
+        "id": "monster-life-drink",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!40ad482d4a5cee43.e91770faa9e80db7",
+      "_id": "e91770faa9e80db7",
+      "name": "Life Drink",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Life Drink</h1><p><em>The victim pales as a stolen flush of warmth returns to the attacker’s face.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-life-drink</p><p><strong>Action:</strong> Main Action</p><p>Use the printed Life attack. If at least 1 HP is actually lost, the attacker recovers 1 HP on Standard or 2 HP on Strong, capped by the target’s actual HP loss and the attacker’s maximum. This explicitly grants undead-compatible restoration, not a healing spell. An uncommanded summon cannot trigger this attack. Defeat at 0 still happens immediately.</p><p><strong>Limits:</strong> Only creatures whose entries list this ability possess it. Printed entry values and restrictions apply; no ability grants unlisted actions.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

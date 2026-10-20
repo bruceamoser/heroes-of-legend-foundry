@@ -3,6 +3,7 @@
   "_id": "5c0db059f0fe1aa8",
   "name": "Ordinary Heavy Armor",
   "type": "equipment",
+  "img": "systems/heroes-of-legend/assets/icons/armor.svg",
   "system": {
     "schemaVersion": 1,
     "catalogId": "item-ordinary-heavy-armor",

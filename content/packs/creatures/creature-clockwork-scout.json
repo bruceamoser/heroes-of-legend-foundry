@@ -205,10 +205,12 @@
       "portrait": {
         "creatureId": "creature-clockwork-scout",
         "asset": "assets/creatures/a41d63d045d85d13eb44dc00f1acfcb895f62e8942a7385dbe2db240a6846237.webp",
-        "sha256": "ec1a9ff44cb26b3cbe161c90a20d26bc020335aa6f9c16e53d488c691ad08fc8",
+        "sha256": "2410dca7d74b8f93a47afa5cd9f5e494f8e1c4a6ad8cd268e4508bce67394d89",
         "sourceSha256": "a41d63d045d85d13eb44dc00f1acfcb895f62e8942a7385dbe2db240a6846237",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

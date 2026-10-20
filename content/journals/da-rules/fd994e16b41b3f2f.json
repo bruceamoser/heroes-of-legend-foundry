@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!fd994e16b41b3f2f",
+  "_id": "fd994e16b41b3f2f",
+  "name": "Closing Jaws",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/swallow-threat.md",
+        "sha256": "b3fd2cb580a27d9cc173d7a5fecb6357cdcbc5d4127758f1d84d95cf7d15cf0c",
+        "id": "monster-swallow-threat",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!fd994e16b41b3f2f.a91d48a533546456",
+      "_id": "a91d48a533546456",
+      "name": "Closing Jaws",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Closing Jaws</h1><p><em>The mouth opens wide enough to swallow the light behind its prey.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-swallow-threat</p><p><strong>Action:</strong> Main Action</p><p>One target already Grappled by this creature and no larger than 1×1: use the printed bite attack; Strong also applies Blinded 1 as the jaws close around the victim. The victim remains in its square and the holder keeps all grapple restrictions. This card does not create an off-map stomach, automatic death or an extra damage tick.</p><p><strong>Limits:</strong> Only creatures whose entries list this ability possess it. Printed entry values and restrictions apply; no ability grants unlisted actions.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

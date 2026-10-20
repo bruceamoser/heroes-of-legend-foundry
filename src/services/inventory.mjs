@@ -110,6 +110,7 @@ export async function requestInventory(
     throw new Error(
       "Ask the DA to enable the automation coordinator before checking supply.",
     );
+  if (item.system.quantity === 0) throw new Error("This item has no quantity remaining.");
   activeInventoryDie(item.system.inventoryDie);
   assertNoInventoryConflict(actor);
   assertCurrentBasis(actor, basis);
@@ -689,6 +690,7 @@ async function apply(id, requestedActorUuid) {
     assertNoInventoryConflict(actor);
     const item = actor.items.get(request.basis?.item?.itemId);
     if (!item) throw new Error("The checked item is unavailable.");
+    if (item.system.quantity === 0) throw new Error("This item has no quantity remaining.");
     if (item.system.inventoryDie === 0)
       throw new Error("This item’s supply is already out.");
     assertCurrentBasis(actor, request.basis);

@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!72b8a5672ae63413",
+  "_id": "72b8a5672ae63413",
+  "name": "Kobold Tunnel Scout (CV 10)",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/bestiary/creatures/kobold-tunnel-scout.md",
+        "sha256": "e1dd79ec1921494be9934cab981e6215c10e3da36a64154d652cec18f620e905",
+        "id": "creature-kobold-tunnel-scout",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!72b8a5672ae63413.2eb4fb5dcff65b21",
+      "_id": "2eb4fb5dcff65b21",
+      "name": "Kobold Tunnel Scout (CV 10)",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Kobold Tunnel Scout (CV 10)</h1><p><em>A narrow-shouldered kobold carries chalk, twine and a small dart launcher, pausing to feel air currents with a ribbon.</em></p><p><strong>Attributes:</strong> Brawn +0; Fortitude +0; Agility +2; Guile +1; Knowledge +0; Reason +1</p><p><strong>HP:</strong> 9 · <strong>Speed:</strong> 7 · <strong>Size:</strong> 1 (medium) · <strong>Armor DR:</strong> 0</p><p><strong>Evasion:</strong> 1 Bane · <strong>Threat:</strong> None · <strong>Stability:</strong> 0</p><p><strong>Weaknesses:</strong> None\\ <strong>Resistances:</strong> None\\ <strong>Immunities:</strong> None</p><h2>Actions</h2><p>Damage and effects are <strong>Weak / Standard / Strong player defense</strong>. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.</p><table><thead><tr><th scope=\"col\">Main Actions</th><th scope=\"col\">Defense</th><th scope=\"col\">Damage</th></tr></thead><tbody><tr><td>Basic Melee</td><td>Agility</td><td>5/3/2</td></tr><tr><td>Corner-shot dart</td><td>Agility</td><td>5 + Slowed 2 / 3 + Slowed 1 / 2</td></tr></tbody></table><table><thead><tr><th scope=\"col\">Maneuvers</th><th scope=\"col\">Effect</th></tr></thead><tbody><tr><td>Tunnel Scamper</td><td>Move 2; rubble costs 1; no opportunity from one chosen visible enemy.</td></tr><tr><td>Defend</td><td>+1 Bane</td></tr></tbody></table><table><thead><tr><th scope=\"col\">Reactions</th><th scope=\"col\">Effect</th></tr></thead><tbody><tr><td>Slip the Rush</td><td>After an enemy voluntarily closes: move 1; no opportunity from that enemy.</td></tr><tr><td>Opportunity Attack</td><td>Basic Melee</td></tr></tbody></table><h2>Details</h2><h3>Corner-shot dart</h3><p><strong>Target:</strong> One visible creature within 6 squares. <strong>Player defense:</strong> Agility. <strong>Damage type:</strong> physical.</p><p><strong>Weak defense:</strong> Slowed 2. <strong>Standard defense:</strong> Slowed 1.</p><p><strong>Limit:</strong> Ammunition inventory d6. After each use, roll it; on 1 reduce d6 to d4, or d4 to empty. Cannot use this attack while empty.</p><h3>Tunnel Scamper</h3><p><em>It drops low and races along the wall where the loose stones are thinnest.</em></p><p>Move up to 2 squares without provoking from one visible enemy chosen before moving. Treat rubble as normal terrain for this movement only; all other terrain costs and occupied-square restrictions apply. Provoke normally from other enemies.</p><h3>Slip the Rush</h3><p><em>As the pursuer lunges into reach, it ducks sideways through the space the rush left open.</em></p><p>After a visible enemy ends voluntary movement adjacent to this creature, move up to 1 square without provoking from that enemy. Other opportunity attacks and normal terrain costs apply. This movement grants no attack; it cannot trigger from forced movement or movement granted by a free attack.</p><h3>General details</h3><p><strong>Basic Melee:</strong> One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.</p><p><strong>Defend:</strong> Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.</p><p><strong>Opportunity Attack:</strong> Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.</p><p><strong>Healing:</strong> Living: ordinary HP healing applies.</p><p><strong>Senses:</strong> Ordinary sight and hearing.</p><p><strong>Tactics and retreat:</strong> Use rubble to change firing angles. The scout values an unblocked tunnel behind it and abandons an exposed straight corridor.</p><p><strong>Encounter and conversation:</strong> Its tunnel marks identify both escape routes and places where the ceiling is about to fail.</p><p><strong>Habitat:</strong> Settlement; frontier; contested road · <strong>Communication:</strong> Common and its community’s language</p><p><strong>Loot:</strong> Ordinary carried gear and 8 coins; special rewards belong to the adventure.</p><p><strong>Summoning:</strong> Ineligible.</p><h2>Design notes — not needed during play</h2><p><strong>ID:</strong> creature-kobold-tunnel-scout</p><p><strong>Category:</strong> Mortal · <strong>Role:</strong> Pursuit controller · <strong>CV:</strong> 10</p><h3>Creature-roll reference</h3><table><thead><tr><th scope=\"col\">Attack</th><th scope=\"col\">Attribute</th><th scope=\"col\">Attack modifier</th><th scope=\"col\">Weak attack</th><th scope=\"col\">Standard attack</th><th scope=\"col\">Strong attack</th></tr></thead><tbody><tr><td>Corner-shot dart</td><td>Agility</td><td>None</td><td>2 physical damage.</td><td>3 physical damage. Slowed 1.</td><td>5 physical damage. Slowed 2.</td></tr></tbody></table><p>Use the attributes above for defenses named by incoming attacks. Same targeting, limits and costs apply; no opposed second roll.</p><h3>CV worksheet</h3><p><strong>Reference damage:</strong> 2/3/5</p><p><strong>Reference type:</strong> physical</p><p><strong>Expected targets:</strong> 1</p><p><strong>Utility factor:</strong> 1.45</p><p><strong>Action review (#1279):</strong> U 1.3 → 1.45: Maneuver allowance +0.05, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.</p><p><strong>Regeneration per turn:</strong> 0</p><p>Reference I=4.404, O=2.162. Uses the seed worksheet. Utility is provisional and does not simulate control, positioning or summon choices.</p><p><strong>Ability sources:</strong> @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.23f72fa51411695e.JournalEntryPage.6cd94863a83419f1]{hampering strike}, @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.899fdbdd497cd807.JournalEntryPage.aad1285d9b2b8f31]{Slip the Rush}, @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.afe2fe73a45d95ed.JournalEntryPage.d2b2390f28f8b88f]{Tunnel Scamper}.</p><p><strong>Coverage reference:</strong> Pathfinder family survey; original HOL prose and mechanics.</p><p>Roster · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.5ebfaad0d5ed6813.JournalEntryPage.3292b6a49dcf7236]{Stability}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

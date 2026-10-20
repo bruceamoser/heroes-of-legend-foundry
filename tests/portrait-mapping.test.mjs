@@ -19,8 +19,12 @@ test("all creature and linked summon portraits use installed shared assets witho
     assert.equal(actor.prototypeToken.width, footprint.width);
     assert.equal(actor.prototypeToken.height, footprint.height);
     assert.equal(flags.portrait.sourceSha256, portrait.sourceSha256);
-    assert.equal(flags.portrait.width, portrait.width);
-    assert.equal(flags.portrait.height, portrait.height);
+    const asset = catalogs.art.assets.find(asset => asset.runtimePath === portrait.asset);
+    assert.equal(flags.portrait.width, asset.width);
+    assert.equal(flags.portrait.height, asset.height);
+    assert.equal(flags.portrait.sourceWidth, portrait.width);
+    assert.equal(flags.portrait.sourceHeight, portrait.height);
+    assert(Math.max(flags.portrait.width, flags.portrait.height) <= 768);
     assert.equal(flags.portrait.alpha, portrait.alpha);
     if (actor.type === 'summon') {
       const link = catalogs.lock.summonLinks.find(l => l.id === flags.catalogId);
@@ -36,6 +40,7 @@ test("missing, unsafe or stale source portrait mappings fail generation and enco
     c => c.art.portraits[0].sourceSha256='0'.repeat(64),
     c => c.art.portraits[0].sourcePath='guessed.png', c => c.art.source.lockSha256='0'.repeat(64),
     c => c.art.assets.pop(),
+    c => c.art.assets[0].width *= 2, c => c.art.assets[0].height *= 2,
   ]) {
     const changed=structuredClone(catalogs); mutate(changed);
     assert.throws(()=>buildContentPackArtifacts(changed));

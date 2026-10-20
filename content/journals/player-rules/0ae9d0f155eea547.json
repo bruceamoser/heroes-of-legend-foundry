@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!0ae9d0f155eea547",
+  "_id": "0ae9d0f155eea547",
+  "name": "A Camp without a Trace",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/a-camp-without-a-trace.md",
+        "sha256": "b2f2e0ad3051adfcc2a677c07e5664e12bf56954ed0d6bc79aff407d4438a6d9",
+        "id": "a-camp-without-a-trace",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!0ae9d0f155eea547.1e0b0ac1b0e55dfd",
+      "_id": "1e0b0ac1b0e55dfd",
+      "name": "A Camp without a Trace",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>A Camp without a Trace</h1><p><em>You lift the crushed leaves, scatter the cold ash and leave the place looking as though it never held a story.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> Guile</p><p><strong>Time:</strong> One hour per attempt.</p><p><strong>Target / range / shape:</strong> One departed campsite used by up to six people; one hour.</p><p>Conceal ordinary evidence of your camp. The DA sets a progress target for its size and disturbance. On completion, attempts to track your departure from this site take 1 Bane. This does not erase magical marks, remove witnesses or hide occupants.</p><p>- <strong>Weak:</strong> 1 progress; identify one conspicuous trace still needing work. - <strong>Standard:</strong> 2 progress; also learn which approach shows the clearest remaining trail. - <strong>Strong:</strong> 3 progress; gain both details and preserve one useful ordinary item found while cleaning, if any is present.</p><p><strong>Duration:</strong> Until new evidence exposes the departure route.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 3 · <strong>DP:</strong> 4 · <strong>Requirements to learn:</strong> Subterfuge 2 and Wilderness 1</p><p><strong>Type:</strong> Skill / Utility</p><p><strong>Limits:</strong> One application per departure; no stacking Banes from repeated cleanup.</p><p><strong>ID:</strong> a-camp-without-a-trace</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Adventure development</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

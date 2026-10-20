@@ -1,0 +1,39 @@
+{
+  "_key": "!journal!afae2de317dc041a",
+  "_id": "afae2de317dc041a",
+  "name": "Giant Eagle (CV 18)",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/bestiary/summons/giant-eagle.md",
+        "sha256": "5c58873413a373d78057966ea81a39f0ed27010813401967781cf97ed4ca6c5a",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!afae2de317dc041a.06e40eef6b35dd1e",
+      "_id": "06e40eef6b35dd1e",
+      "name": "Giant Eagle (CV 18)",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Giant Eagle (CV 18)</h1><p><em>An eagle large enough to shadow a cart watches the valley with amber eyes and a ragged crest of wind-bent feathers.</em></p><p><strong>Attributes:</strong> Brawn +0; Fortitude +0; Agility +2; Guile +1; Knowledge +0; Reason +1</p><p><strong>HP:</strong> 18 · <strong>Speed:</strong> 3; fly 10 · <strong>Footprint:</strong> 1x1</p><p><strong>Summoned form — player reference.</strong></p><p><strong>Defense modifier:</strong> 1 Boon. · <strong>Stability:</strong> 0.</p><p><strong>DR / resistance:</strong> None · <strong>Condition immunities:</strong> None</p><p><strong>Weakness:</strong> None</p><p><strong>Healing:</strong> Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body.</p><p><strong>Senses:</strong> Ordinary sight and hearing.</p><p><strong>Communication:</strong> None</p><p><strong>Eligibility:</strong> Animal 3</p><p>Main command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use the controller’s turn. Beyond 6 squares, or if the controller is unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot. No summon chains.</p><p><strong>Carrying:</strong> At most 1 Bulk; anatomy limits handling. No crafting training.</p><h2>Attacks — Main Action</h2><table><thead><tr><th scope=\"col\">Attack</th><th scope=\"col\">Attribute</th><th scope=\"col\">Attack modifier</th><th scope=\"col\">Weak attack</th><th scope=\"col\">Standard attack</th><th scope=\"col\">Strong attack</th></tr></thead><tbody><tr><td>Hooking talons</td><td>Brawn</td><td>None</td><td>2 physical damage.</td><td>4 physical damage. Pull 1.</td><td>7 physical damage. Pull 3.</td></tr></tbody></table><p><strong>Hooking talons:</strong> One adjacent creature. Apply Stability, terrain costs and normal collision rules to the printed distance.</p><h2>Maneuvers</h2><p><strong>Wing Step — Maneuver:</strong> Move up to 2 squares using its printed fly speed without provoking from one visible enemy chosen before moving. Pay normal terrain costs and provoke normally from other enemies. This grants no attack, automatic lift of another creature or hovering exception.</p><p><strong>Defend:</strong> Gain 1 Boon to defenses until the controller’s next turn; repeated Defend does not stack.</p><p><strong>Basic Melee — Main:</strong> Brawn None; one adjacent target; Weak attack 2, Standard 3, Strong 5 physical damage. No specialty riders.</p><p>@UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ec2d39aa15b5c8fd.JournalEntryPage.19d51a5a3f79368f]{DA creature card} · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.56367e2f9016dd21.JournalEntryPage.9ff12960a5e160cc]{Summon rules}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

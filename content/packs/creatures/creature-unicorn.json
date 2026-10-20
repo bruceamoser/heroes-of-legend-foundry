@@ -213,10 +213,12 @@
       "portrait": {
         "creatureId": "creature-unicorn",
         "asset": "assets/creatures/c1e5b3a08b841444cb467e827e9332abbdce88b418e3d620d3990123d4caea96.webp",
-        "sha256": "676822d79e2872cec8208c3ce48d33ba780c58805c561832b78712c73a329d97",
+        "sha256": "3417130d0c18b88f9a5a860ee80d0eaf2c73077d06022aa0297a57bc2f3ef5e1",
         "sourceSha256": "c1e5b3a08b841444cb467e827e9332abbdce88b418e3d620d3990123d4caea96",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

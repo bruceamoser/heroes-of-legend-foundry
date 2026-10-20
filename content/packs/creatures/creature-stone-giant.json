@@ -252,10 +252,12 @@
       "portrait": {
         "creatureId": "creature-stone-giant",
         "asset": "assets/creatures/c4d693200024d5a6fcff62b8fb79829ffcd7a2c6796c981e9d293a33bc7c220f.webp",
-        "sha256": "4cfe15d3a4018366b54e19c39ac2ff16b1ba5b252bc6818406dedd3523486aa8",
+        "sha256": "a73263edbcf0bcd61961945c65902d15ab02e184c3afcb7ecb0f0dea4358a42e",
         "sourceSha256": "c4d693200024d5a6fcff62b8fb79829ffcd7a2c6796c981e9d293a33bc7c220f",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

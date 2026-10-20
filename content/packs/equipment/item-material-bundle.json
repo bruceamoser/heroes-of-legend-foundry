@@ -3,6 +3,7 @@
   "_id": "989b14e8eaac58bc",
   "name": "Material Bundle",
   "type": "equipment",
+  "img": "systems/heroes-of-legend/assets/icons/materials.svg",
   "system": {
     "schemaVersion": 1,
     "catalogId": "item-material-bundle",

@@ -125,10 +125,12 @@
       "portrait": {
         "creatureId": "creature-wight",
         "asset": "assets/creatures/f59326b199c898666fd41881bc7f23e20b43a92fe66f7b21db260a6a1d06bd7b.webp",
-        "sha256": "7fe71da6eb9ecb6030401f9e91c83606a812bb42a516c5f4e7d15dae9a9f77b6",
+        "sha256": "30b23196d33d5e46b5000a391c22fa43ae38794f299a4d1c2643ab89e70e8469",
         "sourceSha256": "f59326b199c898666fd41881bc7f23e20b43a92fe66f7b21db260a6a1d06bd7b",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!d997d0024436e664",
+  "_id": "d997d0024436e664",
+  "name": "Choose the Edge",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/signature-arcanist-choose-the-edge.md",
+        "sha256": "b95d0445f08582b69b10754436a152c253f250922b1cea0ebe97c81ccb2706a0",
+        "id": "signature-arcanist-choose-the-edge",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!d997d0024436e664.281b8bbb56401841",
+      "_id": "281b8bbb56401841",
+      "name": "Choose the Edge",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Choose the Edge</h1><p><em>You turn both hands as the spell breaks, guiding its last rush of force toward the places you want emptied.</em></p><h2>Rules</h2><p><strong>Action:</strong> Passive · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Up to two creatures affected by your Standard or Strong Main Action spell.</p><p>After the spell resolves, push each chosen creature up to 2 squares directly away from you. Choose the order. This adds no direct damage; use normal forced movement and collisions. The spell need not already cause displacement.</p><p><strong>Duration:</strong> Immediate displacement.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 7 · <strong>DP:</strong> 8 · <strong>Requirements to learn:</strong> Class Arcanist; minimum level 7</p><p><strong>Type:</strong> Signature</p><p><strong>Tags:</strong> Magic / Control</p><p><strong>Limits:</strong> Once on your turn; no benefit from free attacks.</p><p><strong>ID:</strong> signature-arcanist-choose-the-edge</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.89ce8e1d2af8a0be.JournalEntryPage.0f7b9607ec6639ab]{Class choices} · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

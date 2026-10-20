@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!74b07d8959f90fc6",
+  "_id": "74b07d8959f90fc6",
+  "name": "Exploit Confusion",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/signature-shadow-exploit-confusion.md",
+        "sha256": "af4fc135aa820d8b8a7a61649800f1e11c0fc744b7ec99d839420f911b6371b2",
+        "id": "signature-shadow-exploit-confusion",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!74b07d8959f90fc6.3c2a135b5c4dc418",
+      "_id": "3c2a135b5c4dc418",
+      "name": "Exploit Confusion",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Exploit Confusion</h1><p><em>You see the enemy stagger under a companion’s blow and dart in before they can gather themselves.</em></p><h2>Rules</h2><p><strong>Action:</strong> Reaction · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> A visible enemy within 3 squares, after another creature applies temporary Dazed, Blinded or Frightened to it.</p><p>Move up to 2 squares toward that enemy without provoking. If you finish adjacent, make one free Basic Melee attack using Brawn; on Strong you may also move 1 square without provoking afterward. You need a melee weapon and must be able to attack. If the triggering condition came from a free attack, it cannot trigger this card’s free attack. No further free attacks arise from your attack.</p><p><strong>Duration:</strong> Immediate approach, attack and possible exit.</p><p><strong>Equipment / acquisition:</strong> Requires a melee weapon for the attack; grants one ordinary melee weapon, Bulk 1, if absent.</p><p>---</p><p><strong>Tier / minimum level:</strong> 7 · <strong>DP:</strong> 8 · <strong>Requirements to learn:</strong> Class Shadow; minimum level 7</p><p><strong>Type:</strong> Signature</p><p><strong>Tags:</strong> Skill / Attack / Movement</p><p><strong>Limits:</strong> Repeatable; normal action economy applies.</p><p><strong>ID:</strong> signature-shadow-exploit-confusion</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.659f046648036560.JournalEntryPage.6f9998008dd8a1fb]{Class choices} · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

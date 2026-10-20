@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!d5a71a6164588abc",
+  "_id": "d5a71a6164588abc",
+  "name": "Marsh Crocodile (CV 18)",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/bestiary/creatures/marsh-crocodile.md",
+        "sha256": "43b79db5b35c145fbe6c263eb84aaacd66a0c3613a5ab7c23b17ab2db86aeaec",
+        "id": "creature-marsh-crocodile",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!d5a71a6164588abc.a32ae754b8585f00",
+      "_id": "a32ae754b8585f00",
+      "name": "Marsh Crocodile (CV 18)",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Marsh Crocodile (CV 18)</h1><p><em>An immense water predator with armored ridges, a muscular tail and jaws broad enough to seize a grown traveler. Its low silhouette is almost indistinguishable from a muddy log.</em></p><p><strong>Attributes:</strong> Brawn +2; Fortitude +2; Agility +0; Guile +0; Knowledge -2; Reason +0</p><p><strong>HP:</strong> 20 · <strong>Speed:</strong> 4; swim 7 · <strong>Size:</strong> 2 (2x2 squares) · <strong>Armor DR:</strong> 1</p><p><strong>Evasion:</strong> None · <strong>Threat:</strong> 1 Bane · <strong>Stability:</strong> 1</p><p><strong>Weaknesses:</strong> None\\ <strong>Resistances:</strong> Physical (1)\\ <strong>Immunities:</strong> None</p><h2>Actions</h2><p>Damage and effects are <strong>Weak / Standard / Strong player defense</strong>. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.</p><table><thead><tr><th scope=\"col\">Main Actions</th><th scope=\"col\">Defense</th><th scope=\"col\">Damage</th></tr></thead><tbody><tr><td>Basic Melee</td><td>Agility</td><td>5/3/2</td></tr><tr><td>Bank drag</td><td>Agility</td><td>6 + Pull 2 / 4 + Pull 1 / 3</td></tr><tr><td>Locking jaws</td><td>Brawn</td><td>5 + Grappled 2 / 3 + Grappled 1 / 2</td></tr></tbody></table><table><thead><tr><th scope=\"col\">Maneuvers</th><th scope=\"col\">Effect</th></tr></thead><tbody><tr><td>Brace the Tail</td><td>While touching the bed or bank, gain Stability 2 until its next turn; highest source only.</td></tr><tr><td>Defend</td><td>+1 Bane</td></tr></tbody></table><table><thead><tr><th scope=\"col\">Reactions</th><th scope=\"col\">Effect</th></tr></thead><tbody><tr><td>Coil Against the Pull</td><td>Before forced movement against a support: Stability 2 for that movement.</td></tr><tr><td>Opportunity Attack</td><td>Basic Melee</td></tr></tbody></table><h2>Details</h2><h3>Bank drag</h3><p><em>A hooked limb braces against the bank and heaves its catch toward the dark water.</em></p><p><strong>Target:</strong> One adjacent creature. <strong>Player defense:</strong> Agility. <strong>Damage type:</strong> physical.</p><p><strong>Weak defense:</strong> Pull 2. <strong>Standard defense:</strong> Pull 1.</p><h3>Locking jaws</h3><p><em>The crocodile locks its jaws and braces its body against the bank.</em></p><p><strong>Target:</strong> One adjacent creature. <strong>Player defense:</strong> Brawn. <strong>Damage type:</strong> physical.</p><p><strong>Weak defense:</strong> Grappled 2. <strong>Standard defense:</strong> Grappled 1.</p><p><strong>Limit:</strong> The holder suffers its own Grappled contribution. A new result replaces its lower contribution, not adds to it. Release freely; separation beyond reach, unconsciousness or death ends the hold.</p><h3>Coil Against the Pull</h3><p><em>Claws dig into the bank and the tail braces beneath its heavy body as the pull takes hold.</em></p><p>Before this creature is forcibly moved while touching solid ground or a fixed support, gain Stability 2 for that forced movement only. Use the highest Stability, maximum 3. In a collision chain, declare before its Stability is deducted; this does not prevent prior collision damage. No effect on Prone or grapples.</p><h3>General details</h3><p><strong>Basic Melee:</strong> One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.</p><p><strong>Defend:</strong> Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.</p><p><strong>Opportunity Attack:</strong> Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.</p><p><strong>Heavy Frame — Passive:</strong> Stability 1; an explicit creature trait, not a bonus from size.</p><p><strong>Healing:</strong> Living: ordinary HP healing applies.</p><p><strong>Senses:</strong> Ordinary sight and hearing.</p><p><strong>Signs:</strong> A polished slide leads from the bank into deep water.</p><p><strong>Purpose:</strong> Drag food away from competitors.</p><p><strong>Tactics and retreat:</strong> Strike from the water’s edge and pull prey toward the channel; retreat underwater if badly hurt.</p><p><strong>Counterplay and conversation:</strong> Fight from a high bank; crossing on a raft keeps the whole party together.</p><p><strong>Habitat:</strong> Marsh; river · <strong>Communication:</strong> None</p><p><strong>Loot:</strong> Its old feeding hollow may contain a dropped pack.</p><p><strong>Summoning:</strong> Animal 3 — @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.1fa6a7dfa9d7aac2.JournalEntryPage.e33de9992c75c038]{player reference}.</p><h2>Design notes — not needed during play</h2><p><strong>ID:</strong> creature-marsh-crocodile</p><p><strong>Category:</strong> Animal · <strong>Role:</strong> Ambusher · <strong>CV:</strong> 18</p><p><strong>Difficulty rationale:</strong> No innate attack modifier; armor, cover and chosen actions provide its defenses. Its dangerous attack imposes defense Banes.</p><p><strong>Reference damage:</strong> 3/4/6</p><p><strong>Reference type:</strong> physical</p><p><strong>Expected targets:</strong> 1</p><p><strong>Utility factor:</strong> 1.35</p><p><strong>Action review (#1279):</strong> U 1.25 → 1.35: Maneuver allowance +0, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.</p><p><strong>Regeneration per turn:</strong> 0</p><p>Reference I=4.000, O=3.653. CV uses the seed worksheet; action choices, Stability and control are not simulated. Recalibration remains required.</p><p><strong>Ability sources:</strong> @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.027dde7c915aab9b.JournalEntryPage.f68ddd07dd34140a]{Coil Against the Pull}, @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.cfbe9a0027acc4ac.JournalEntryPage.25c098275cb77e80]{drag under}, @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.df8442d0613b051f.JournalEntryPage.ced9a8ab87d50cc9]{marsh crocodile brace the tail}.</p><p>Roster · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.5ebfaad0d5ed6813.JournalEntryPage.3292b6a49dcf7236]{Agreed Stability}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!cf5cfbadcc0d35d4",
+  "_id": "cf5cfbadcc0d35d4",
+  "name": "Satyr (CV 16)",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/bestiary/creatures/satyr.md",
+        "sha256": "398d258de9cf08fac803f90880788eaf55c2a4ca57f67ca012b749cdd1f5b0cc",
+        "id": "creature-satyr",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!cf5cfbadcc0d35d4.9859cfc970164144",
+      "_id": "9859cfc970164144",
+      "name": "Satyr (CV 16)",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Satyr (CV 16)</h1><p><em>A goat-legged musician wears a travelling coat full of reeds, ribbons and invitations to celebrations long past.</em></p><p><strong>Attributes:</strong> Brawn +0; Fortitude +1; Agility +1; Guile +1; Knowledge +2; Reason +2</p><p><strong>HP:</strong> 18 · <strong>Speed:</strong> 7 · <strong>Size:</strong> 1 (medium) · <strong>Armor DR:</strong> 0</p><p><strong>Evasion:</strong> 1 Bane · <strong>Threat:</strong> None · <strong>Stability:</strong> 0</p><p><strong>Weaknesses:</strong> None\\ <strong>Resistances:</strong> None\\ <strong>Immunities:</strong> None</p><h2>Actions</h2><p>Damage and effects are <strong>Weak / Standard / Strong player defense</strong>. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.</p><table><thead><tr><th scope=\"col\">Main Actions</th><th scope=\"col\">Defense</th><th scope=\"col\">Damage</th></tr></thead><tbody><tr><td>Basic Melee</td><td>Agility</td><td>5/3/2</td></tr><tr><td>Bewildering reed</td><td>Reason</td><td>5 + Dazed 2 / 3 + Dazed 1 / 2</td></tr></tbody></table><table><thead><tr><th scope=\"col\">Maneuvers</th><th scope=\"col\">Effect</th></tr></thead><tbody><tr><td>Keep the Rhythm</td><td>One hearing ally within 3: reduce Frightened or Dazed by 1.</td></tr><tr><td>Defend</td><td>+1 Bane</td></tr></tbody></table><table><thead><tr><th scope=\"col\">Reactions</th><th scope=\"col\">Effect</th></tr></thead><tbody><tr><td>Opportunity Attack</td><td>Basic Melee</td></tr></tbody></table><h2>Details</h2><h3>Bewildering reed</h3><p><strong>Target:</strong> One visible creature within 5 squares. <strong>Player defense:</strong> Reason. <strong>Damage type:</strong> mental.</p><p><strong>Weak defense:</strong> Dazed 2. <strong>Standard defense:</strong> Dazed 1.</p><h3>Keep the Rhythm</h3><p><em>A familiar rhythm cuts through panic and brings one companion back to the moment.</em></p><p>One willing ally within 3 squares that can hear it reduces either Frightened or Dazed by 1. Once per turn. This does not recalculate action categories already selected at turn start.</p><h3>General details</h3><p><strong>Basic Melee:</strong> One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.</p><p><strong>Defend:</strong> Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.</p><p><strong>Opportunity Attack:</strong> Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.</p><p><strong>Healing:</strong> Living: ordinary HP healing applies.</p><p><strong>Senses:</strong> Ordinary sight and hearing.</p><p><strong>Tactics and retreat:</strong> Distract the most aggressive listener while helping an ally recover composure. A completed song or honest admission may settle the encounter.</p><p><strong>Encounter and conversation:</strong> The satyr knows the road out of a dangerous revel but wants someone to admit why they entered it.</p><p><strong>Habitat:</strong> Old woodland; crossroads; hidden court · <strong>Communication:</strong> Common</p><p><strong>Loot:</strong> Recoverable possessions or lair clues chosen for the adventure; body parts grant no automatic special equipment or coin value.</p><p><strong>Summoning:</strong> Fey 3 — @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.e77b4be978c9d6ac.JournalEntryPage.534cd163db8eb7c8]{player reference}.</p><h2>Design notes — not needed during play</h2><p><strong>ID:</strong> creature-satyr</p><p><strong>Category:</strong> Fey · <strong>Role:</strong> Disabler · <strong>CV:</strong> 16</p><h3>CV worksheet</h3><p><strong>Reference damage:</strong> 2/3/5</p><p><strong>Reference type:</strong> mental</p><p><strong>Expected targets:</strong> 1</p><p><strong>Utility factor:</strong> 1.45</p><p><strong>Regeneration per turn:</strong> 0</p><p>Reference I=4.404, O=3.162. Uses the seed worksheet. Utility is provisional and does not simulate control, positioning or summon choices.</p><p><strong>Ability sources:</strong> @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.f7876ef6c63f0094.JournalEntryPage.15c473d000a1662b]{rousing beat}, @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.da3471b99c645f6a.JournalEntryPage.ed9b95b1b7e7785b]{stunning strike}.</p><p><strong>Coverage reference:</strong> Pathfinder family survey; original HOL prose and mechanics.</p><p>Roster · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.5ebfaad0d5ed6813.JournalEntryPage.3292b6a49dcf7236]{Stability}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

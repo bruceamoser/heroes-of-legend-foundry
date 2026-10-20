@@ -196,10 +196,12 @@
       "portrait": {
         "creatureId": "creature-kobold-emberkeeper",
         "asset": "assets/creatures/a16b1d79ca3050249acbde961f48f9ef8130280440065d2719ca58706554460a.webp",
-        "sha256": "d7d661c52ba08642c1fe736e019f95db3ed2480334a324a80123cf14e1bd8418",
+        "sha256": "6ad84d86b748e2badc885b6e1f1f85cd13210a87b2a647cd780b9e28a437ac51",
         "sourceSha256": "a16b1d79ca3050249acbde961f48f9ef8130280440065d2719ca58706554460a",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

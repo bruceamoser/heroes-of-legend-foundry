@@ -248,10 +248,12 @@
       "portrait": {
         "creatureId": "creature-storm-column",
         "asset": "assets/creatures/4f75e5dc16c930e2ce95e6dafa8e6ca357d40c7d31a24c871bbc2fb9486ded00.webp",
-        "sha256": "2806dc099aa396792531673f3260fd6bfad023f56cd50d1b1586f1fd59b541d1",
+        "sha256": "2f72eb71d0e58b22e4f62386f35bbb5950a57951c38468c63a844739536adb00",
         "sourceSha256": "4f75e5dc16c930e2ce95e6dafa8e6ca357d40c7d31a24c871bbc2fb9486ded00",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

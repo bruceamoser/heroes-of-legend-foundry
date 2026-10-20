@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!5152510524a91adb",
+  "_id": "5152510524a91adb",
+  "name": "Silken Scuttle",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/silken-scuttle.md",
+        "sha256": "8b93468c42d1e96675eb40264914df0e3f400bac124ded6c65067127dc7a6809",
+        "id": "monster-silken-scuttle",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!5152510524a91adb.8ec61b092ff1df21",
+      "_id": "8ec61b092ff1df21",
+      "name": "Silken Scuttle",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Silken Scuttle</h1><p><em>Its feet drum across its own silk, drawing the whole web tight as it changes its hunting angle.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-silken-scuttle</p><p><strong>Action:</strong> Maneuver</p><p>Move up to 3 squares along existing web on a supporting surface, using its printed movement modes, without provoking from one visible enemy chosen before moving. Treat those web-covered squares as normal terrain for this movement only. Other opportunities apply. It cannot create a bridge, cross an occupied square or carry a grappled creature through this movement.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

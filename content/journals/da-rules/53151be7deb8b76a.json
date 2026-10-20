@@ -1,0 +1,39 @@
+{
+  "_key": "!journal!53151be7deb8b76a",
+  "_id": "53151be7deb8b76a",
+  "name": "Monster Ability Reference",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/da-book/manuscript/appendix-b-monster-abilities.md",
+        "sha256": "1020152bcfc37d29769e96c8216c7b13fee8ea23092477d39ad75fa5081fe675",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!53151be7deb8b76a.fce9df8199e50f75",
+      "_id": "fce9df8199e50f75",
+      "name": "Monster Ability Reference",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Monster Ability Reference</h1><p>These <strong>126 monster-only abilities</strong> are tools for preparing and adapting creatures. They are separate from learned player abilities, with no DP price or permission to purchase them. A creature gains only the abilities printed in its own entry.</p><p>Templates may describe attacker outcomes for construction. During play, use the creature&#39;s complete defense-outcome table or the appropriate summoned player profile. Per-creature values and restrictions govern where they specialize a template.</p><p>Entries follow in alphabetical order. Their mechanical text comes directly from the authored monster catalog. The assembled reference omits editorial status lines and shared navigation links; it retains every specific action, effect and limit.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

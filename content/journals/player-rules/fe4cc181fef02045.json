@@ -1,0 +1,39 @@
+{
+  "_key": "!journal!fe4cc181fef02045",
+  "_id": "fe4cc181fef02045",
+  "name": "War Drummer",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/origins/background-war-drummer.md",
+        "sha256": "a728b174dc9fd7b59e26b327b6abfd0d5ee3916dcc0e8cb257e722c4f68d6874",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!fe4cc181fef02045.d3629a3a9aa165f8",
+      "_id": "d3629a3a9aa165f8",
+      "name": "War Drummer",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>War Drummer</h1><p><em>You know how to make frightened feet move together.</em></p><p><em>Whose pace do you still hear beneath the beat?</em></p><h2>Rules</h2><p>Choose one:</p><p>- <strong>Influence 1</strong> and @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.72c9b5b537fad77d.JournalEntryPage.e91be48a8e1daf06]{Keep Time with Steel}. - <strong>Guard 1</strong> and @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.f90d324afc1f7997.JournalEntryPage.0a730e9328c623f4]{Shielding Step}.</p><p><strong>Type:</strong> Background</p><p>Each option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.</p><p><strong>Starting coin contribution:</strong> +7 coins. See @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0558be1f6014ee71.JournalEntryPage.880380bcd80cfec6]{starting coins}.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!170d40b5589377d6",
+  "_id": "170d40b5589377d6",
+  "name": "A Shelter of Light",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/a-shelter-of-light.md",
+        "sha256": "c16b755029a1ac6888f9f4addfa249648e5bfbc11714f94de3dd1900e14df78f",
+        "id": "a-shelter-of-light",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!170d40b5589377d6.1bc0f3c2cbc31134",
+      "_id": "1bc0f3c2cbc31134",
+      "name": "A Shelter of Light",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>A Shelter of Light</h1><p><em>You stand beside your friend, holding a small brightness between them and the dark.</em></p><h2>Rules</h2><p><strong>Action:</strong> Maneuver · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> One adjacent willing ally.</p><p>Hold your place beside them. Until the start of your next turn, that ally gains 1 Boon to defense while adjacent to you. You must remain able to act; this is one continuing benefit, not a new Boon on every use.</p><p><strong>Duration:</strong> Until the start of your next turn, while the ally remains adjacent and you can act.</p><p><strong>Equipment / acquisition:</strong> No item needed unless named above.</p><p>---</p><p><strong>Tier / minimum level:</strong> 3 · <strong>DP:</strong> 4 · <strong>Requirements to learn:</strong> Radiance 2</p><p><strong>Type:</strong> Magic</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> a-shelter-of-light</p><p>Build this character · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

@@ -239,10 +239,12 @@
       "portrait": {
         "creatureId": "creature-frost-giant",
         "asset": "assets/creatures/19de84db73dfead1c158ecb52d72929fd24977f8791a20f7009d65bf9d186d29.webp",
-        "sha256": "8f3f1e80780f067d96d29edbcb89b7566c44b19650e2b66901ccfb4344ebd984",
+        "sha256": "d10a15087cc0de5f40d9ea14bd96167daa378a3983dbf5714bc58f7a5a5790df",
         "sourceSha256": "19de84db73dfead1c158ecb52d72929fd24977f8791a20f7009d65bf9d186d29",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

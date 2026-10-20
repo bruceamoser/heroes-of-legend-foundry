@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!295809c4a41d591e",
+  "_id": "295809c4a41d591e",
+  "name": "Plant the Shield",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/barrow-guard-plant-the-shield.md",
+        "sha256": "8473cf3fc89249f82cfe0ab0bcf0de4c6bf329fbf868ca4d73b91b33b354b21d",
+        "id": "monster-barrow-guard-plant-the-shield",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!295809c4a41d591e.f5564091340e3029",
+      "_id": "f5564091340e3029",
+      "name": "Plant the Shield",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Plant the Shield</h1><p><em>The shield’s rim bites into the earth beside the tomb.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-barrow-guard-plant-the-shield</p><p><strong>Action:</strong> Maneuver</p><p>Gain Stability 2 while on solid ground until its next turn; highest source only. This does not activate Shield Hunker.</p><p><strong>Limits:</strong> Costs its Maneuver; no extra action is granted.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

@@ -1,3 +1,5 @@
+import { bindLearningMarket } from "./learning-market.mjs";
+import { equipmentEligibility, isUniversalAbility } from "../rules/equipment-eligibility.mjs";
 import { additionalLanguageOptions } from "../rules/languages.mjs";
 import { getCampaignLanguageConfiguration } from "../services/languages.mjs";
 import {
@@ -104,7 +106,7 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
         })),
         needsHands:
           a.items.includes("item-ordinary-melee-weapon") ||
-          a.weaponChoice?.includes("melee"),
+          (a.weaponChoice?.includes("melee") && this.draft.acquisitions?.[a.id]?.weapon === "melee"),
         handOptions: [1, 2].map((value) => ({
           value,
           selected: this.draft.acquisitions[a.id]?.meleeHands === value,
@@ -152,6 +154,11 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
         })),
       })),
       acquisitions,
+      requiredChoices: acquisitions.filter((a) => this.preview.errors.some((e) => e.id === a.id)),
+      currentBuild: state.abilities.map((id) => ({id, name: get(id)?.name ?? id, acquisition: acquisitions.find((a) => a.id === id && this.preview.errors.some((e) => e.code === "acquisition" && e.id === id)), index: this.draft.purchases.findIndex((p) => p.id === id), removable: this.draft.purchases.some((p) => p.id === id)})),
+      disciplineFilters: choices.filter((r) => r.kind === "discipline"),
+      disciplinePurchases: this.draft.purchases.map((p, index) => ({...p,index,name: get(p.id)?.name ?? p.id})).filter((p) => get(p.id)?.kind === "discipline"),
+      knownRanks: Object.entries(state.ranks ?? {}).map(([id, rank]) => ({name: get(id)?.name ?? id, rank})),
       purchases: this.draft.purchases.map((p, index) => ({
         ...p,
         index,
@@ -184,6 +191,8 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
       ).map((r) => ({
         ...r,
         reference: r.choice.reference,
+      disciplineIds: (r.choice.requirements ?? []).filter((q) => q.kind === "discipline").map((q) => q.id).join(" "),
+      universal: isUniversalAbility(r.choice),
         automationStatus: abilityReferenceStatus(r.choice.id, r.choice.source),
         reasons: r.reasons.map((e) => e.text).join(" "),
         source: `https://github.com/bruceamoser/heroes-of-legend/blob/${commit}/${r.choice.source.path}`,
@@ -395,17 +404,11 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
   }
   _onRender(context, options) {
     super._onRender(context, options);
+    bindLearningMarket(this);
     for (const group of this.element.querySelectorAll("[data-recipe-study]"))
       group.addEventListener("change", () => this.syncRecipeStudySelects());
     this.syncRecipeStudySelects();
     bindBuilderDrop(this);
-    this.element
-      .querySelector("[data-search]")
-      ?.addEventListener("input", (event) => {
-        for (const row of this.element.querySelectorAll("[data-search-name]"))
-          row.hidden = !row.dataset.searchName
-            .toLowerCase()
-            .includes(event.target.value.toLowerCase());
-      });
+
   }
 }

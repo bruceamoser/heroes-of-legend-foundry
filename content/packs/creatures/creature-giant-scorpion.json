@@ -218,10 +218,12 @@
       "portrait": {
         "creatureId": "creature-giant-scorpion",
         "asset": "assets/creatures/901e91f6037b07dd9d8a11822d6a70b82840e7829a4384b33f7f4ad108c75c2e.webp",
-        "sha256": "20a0a380bbaa0550304a98f0bf2c5b39e2ec3d2295ad189a79deb888b98b34fb",
+        "sha256": "5dd7b996e6f483dbcd796bb3cefaad32a97755e2d03a376ad81364f18ac8c7a4",
         "sourceSha256": "901e91f6037b07dd9d8a11822d6a70b82840e7829a4384b33f7f4ad108c75c2e",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

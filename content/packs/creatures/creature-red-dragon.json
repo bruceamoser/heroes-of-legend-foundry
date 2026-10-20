@@ -295,10 +295,12 @@
       "portrait": {
         "creatureId": "creature-red-dragon",
         "asset": "assets/creatures/916ba7ba46f0e18f607f253d5256b9d6ff1d3630f3910148f9ff884334cb92b3.webp",
-        "sha256": "53b1a599802a5d0dc608b0a1e28cb46032d98a43e43c7156bfef89cb59e31a44",
+        "sha256": "ce5f6d82e1aa55f0bf6716ab874ca0143bbae9fb9b2906036c85006825d3f7b9",
         "sourceSha256": "916ba7ba46f0e18f607f253d5256b9d6ff1d3630f3910148f9ff884334cb92b3",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

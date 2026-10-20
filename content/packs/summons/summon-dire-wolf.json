@@ -116,10 +116,12 @@
       "portrait": {
         "creatureId": "creature-dire-wolf",
         "asset": "assets/creatures/caec96cfddc79d3a8cbc7af4e8b4701d60f307c724c45ad9f59759ae712da7ec.webp",
-        "sha256": "bd39a318abf28e866e3e2bbef7a12f3ad6382430bc796f3d1842e9fd2bb42d9c",
+        "sha256": "4b336186241a13f2a5168e3175d0f70bf0ceec4d6baa5347d767a40aaac815ed",
         "sourceSha256": "caec96cfddc79d3a8cbc7af4e8b4701d60f307c724c45ad9f59759ae712da7ec",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

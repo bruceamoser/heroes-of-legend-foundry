@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!799d832cf3fad8d2",
+  "_id": "799d832cf3fad8d2",
+  "name": "Tail Retort",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/tail-retort.md",
+        "sha256": "fe2d45e693f3832560c498c0ed2a9cb38e3edb9f38b8e27b5dcd0eb80919cd43",
+        "id": "monster-tail-retort",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!799d832cf3fad8d2.349e54c850e12f99",
+      "_id": "349e54c850e12f99",
+      "name": "Tail Retort",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Tail Retort</h1><p><em>The dragon twists with the blow and its heavy tail sweeps across the attacker&#39;s footing.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-tail-retort</p><p><strong>Action:</strong> Reaction</p><p>After an adjacent attacker&#39;s attack resolves and deals HP damage to this creature, push that attacker 2 squares directly away. This creature must survive and remain capable. Apply Stability, terrain costs and normal collision damage; no separate attack damage. Cannot trigger from a free attack or another retaliatory effect.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!a8b0b5826a29489e",
+  "_id": "a8b0b5826a29489e",
+  "name": "Shed the Grasp",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/slough-skin.md",
+        "sha256": "2df266f1dbb6f5d6d5394823b77cbca90ad727409bdd69708417acee3090bd05",
+        "id": "monster-slough-skin",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!a8b0b5826a29489e.c1fa2db773eccf25",
+      "_id": "c1fa2db773eccf25",
+      "name": "Shed the Grasp",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Shed the Grasp</h1><p><em>The surface peels away, leaving a useless handful while the body gathers again.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-slough-skin</p><p><strong>Action:</strong> Maneuver</p><p>Choose one holder and reduce that holder’s Grappled contribution by 1, also reducing this creature’s total Grappled rating by 1. End that hold if its contribution reaches 0. It must have a Maneuver available; cannot use this while Grappled 3. No damage or free movement.</p><p>Only creatures whose entries list this ability possess it. Printed limits apply.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

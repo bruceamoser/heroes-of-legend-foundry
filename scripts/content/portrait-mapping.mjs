@@ -1,3 +1,4 @@
+import { creatureArtDimensions } from "../creature-art.mjs";
 import assert from "node:assert/strict";
 
 /** Resolve installed-system URLs exclusively from the source-locked art manifest. */
@@ -26,13 +27,15 @@ export function resolvePortraitMappings({ art, lock, lockSha256 }) {
     const asset = assets.get(portrait.asset);
     assert(asset, `Missing portrait asset mapping: ${portrait.id}`);
     assert.match(asset.sha256, /^[a-f0-9]{64}$/);
-    assert.equal(asset.width, source.width);
-    assert.equal(asset.height, source.height);
+    const dimensions = creatureArtDimensions(source.width, source.height);
+    assert.equal(asset.width, dimensions.width);
+    assert.equal(asset.height, dimensions.height);
     assert.equal(asset.hasAlpha, source.alpha);
     mappings.set(portrait.id, {
       img: `systems/heroes-of-legend/${portrait.asset}`,
       provenance: { creatureId: portrait.id, asset: portrait.asset, sha256: asset.sha256,
-        sourceSha256: source.sha256, width: source.width, height: source.height,
+        sourceSha256: source.sha256, width: asset.width, height: asset.height,
+        sourceWidth: source.width, sourceHeight: source.height,
         alpha: source.alpha, provenance: source.provenance },
     });
   }

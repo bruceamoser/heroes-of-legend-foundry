@@ -206,10 +206,12 @@
       "portrait": {
         "creatureId": "creature-lizardfolk-reedguard",
         "asset": "assets/creatures/3b108c8fa3cfcd95c34ddfdb30689b7526919d6770b279c5917ac7b772db2bf4.webp",
-        "sha256": "7a9d67ef7504f40f383f6b29304294419d0f77dcfe054d9c98f6910d448707f1",
+        "sha256": "94a36c433aac92b90f55c3a398bb95f6934454d4a70cd138e6bd1e9a8f8198c6",
         "sourceSha256": "3b108c8fa3cfcd95c34ddfdb30689b7526919d6770b279c5917ac7b772db2bf4",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

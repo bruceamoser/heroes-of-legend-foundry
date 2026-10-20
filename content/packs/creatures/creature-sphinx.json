@@ -223,10 +223,12 @@
       "portrait": {
         "creatureId": "creature-sphinx",
         "asset": "assets/creatures/da330221c5046cd40c929399641ae1d0307eb473e54daec0ec5954f543ae4ef5.webp",
-        "sha256": "c102fa06fb7e667cec14c684e322cecbeed08ac8246a5552e8840dcb4d4a256c",
+        "sha256": "35b035766d4a4d7c3436bf871eb29c76790112893e11b964e268e7e5b4798f73",
         "sourceSha256": "da330221c5046cd40c929399641ae1d0307eb473e54daec0ec5954f543ae4ef5",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

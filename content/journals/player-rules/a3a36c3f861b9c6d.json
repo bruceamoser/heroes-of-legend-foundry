@@ -1,0 +1,39 @@
+{
+  "_key": "!journal!a3a36c3f861b9c6d",
+  "_id": "a3a36c3f861b9c6d",
+  "name": "Elf",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/ancestries/elf.md",
+        "sha256": "c91ede2fb5e2bb0ace52f63c38c5a606355f415a5818fe3ad98eb7164f729f1b",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!a3a36c3f861b9c6d.937339711b359405",
+      "_id": "937339711b359405",
+      "name": "Elf",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Elf</h1><p><em>Old memory, woodland grace and a sense that the hurried world has forgotten how to listen.</em></p><h2>Rules</h2><p>Choose two of the five traits below. These are invitations to a familiar fantasy, not a required personality. Any ancestry may grow up in any culture.</p><p><strong>Starting values:</strong> HP +2; base Speed 6.</p><p>- @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.5bee2af81ab3c671.JournalEntryPage.47bee4a5c33159db]{Footfall on the Leaves} — Even the fallen leaves seem reluctant to betray your passing. - @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.13cb3a0fb9fb2e9e.JournalEntryPage.15d5be6aa14c44b9]{A Lifetime Ago} — You remember when the old road was new. - @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.271c4e6498cc6e00.JournalEntryPage.5374b74555777a1c]{The Wood Whispers} — A startled bird tells you what a shouted warning never could. - @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.63416df199209454.JournalEntryPage.40f75495ea459a58]{Grace of the Elder Folk} — Where others hurry, you seem simply to arrive. - @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.262ef689d8185dd3.JournalEntryPage.112aaae66756a291]{Dream beneath the Stars} — Your body rests while part of you walks old paths.</p><p><strong>Starting coin contribution:</strong> +2 coins. See @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0558be1f6014ee71.JournalEntryPage.880380bcd80cfec6]{starting coins}.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

@@ -3,6 +3,7 @@
   "_id": "489bd0b5ba342c92",
   "name": "Lighting Bundle",
   "type": "equipment",
+  "img": "systems/heroes-of-legend/assets/icons/torch.svg",
   "system": {
     "schemaVersion": 1,
     "catalogId": "item-lighting-bundle",

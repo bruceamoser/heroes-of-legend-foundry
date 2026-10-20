@@ -235,10 +235,12 @@
       "portrait": {
         "creatureId": "creature-owlbear",
         "asset": "assets/creatures/a415f3caeb092204a040b87dcc9033e04348b0d7a416487330e23783b08dffae.webp",
-        "sha256": "07bdba3b8fa403ed75e528ddfcdc31aecc53237750240a64349482eec7db2dc3",
+        "sha256": "18d44c7bbcb0e498cfbc7ced4961a59e580ee1ce957f8f7b5a62fc0ea0207ca9",
         "sourceSha256": "a415f3caeb092204a040b87dcc9033e04348b0d7a416487330e23783b08dffae",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

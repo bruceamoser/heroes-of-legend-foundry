@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!049752f9959c6e53",
+  "_id": "049752f9959c6e53",
+  "name": "Make Room at the Fire",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/ancestries/trait-human-shared-table.md",
+        "sha256": "d015a9582ba67abf66d0b5ebab2bc98cf4b8eadd8519b2842c01371e2b7ba813",
+        "id": "trait-human-shared-table",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!049752f9959c6e53.c17d086cf4b23a5f",
+      "_id": "c17d086cf4b23a5f",
+      "name": "Make Room at the Fire",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Make Room at the Fire</h1><p><em>You shift a bowl toward the stranger and offer a place beside the fire before asking their name.</em></p><h2>Rules</h2><p>Once per scene, when you offer genuine food, shelter or shared work to a nonhostile person, gain 1 Boon to the next Guile roll seeking ordinary hospitality or trust from them before the scene ends. No automatic friendship or compelled response.</p><p><strong>Ancestry:</strong> Human · <strong>Choice:</strong> one of your two traits · <strong>Action:</strong> Passive unless the effect says otherwise.</p><p><strong>Duration:</strong> While its stated circumstances apply; permanent for base statistics.</p><p><strong>ID:</strong> trait-human-shared-table</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.2c7d63ec0fceaaeb.JournalEntryPage.a1f2f2c04154f50a]{Ancestry choices}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

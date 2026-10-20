@@ -1,0 +1,39 @@
+{
+  "_key": "!journal!5365454ad0c5fedf",
+  "_id": "5365454ad0c5fedf",
+  "name": "Halfling",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/ancestries/halfling.md",
+        "sha256": "3631a9c5acf31774eead6963c5d9dbd5f2ae4d1d830c25dd40c6b7835093e79f",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!5365454ad0c5fedf.6819ea3497079763",
+      "_id": "6819ea3497079763",
+      "name": "Halfling",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Halfling</h1><p><em>Quiet feet, a generous table and courage that surprises people who judge by height.</em></p><h2>Rules</h2><p>Choose two of the five traits below. These are invitations to a familiar fantasy, not a required personality. Any ancestry may grow up in any culture.</p><p><strong>Starting values:</strong> HP +1; base Speed 5.</p><p>- @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.23cbb6b6a4ee0b6e.JournalEntryPage.5d6933a5da46e615]{Bigger on the Inside} — Your knees may shake. Your friends will never see you leave them. - @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.32afe77bcb9f00a1.JournalEntryPage.b39265b53fcf58e8]{Under Their Noses} — The grand folk rarely remember to look beneath the table. - @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.cba4ce77e3253c0a.JournalEntryPage.69c266abd0aebc93]{Quiet as a Burrow} — You learned to come home late without waking the household. - @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.f9c4afe42a2e6b5d.JournalEntryPage.c33f980179b59773]{A Little Luck} — The latch catches your coat a heartbeat before you step into trouble. - @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.8bbd8025fa76f820.JournalEntryPage.4add1f263e38864d]{Second Breakfast} — You know how to make a small comfort last.</p><p><strong>Starting coin contribution:</strong> +0 coins. See @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0558be1f6014ee71.JournalEntryPage.880380bcd80cfec6]{starting coins}.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

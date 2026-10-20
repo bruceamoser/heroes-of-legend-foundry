@@ -1,0 +1,39 @@
+{
+  "_key": "!journal!e82253434c10a0a4",
+  "_id": "e82253434c10a0a4",
+  "name": "River Settlements",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/origins/culture-river-settlements.md",
+        "sha256": "5de505fdf32cf7772d1165be5164a99fbd148ee15ce223c2d0a2ab738434d186",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!e82253434c10a0a4.3d85ca57c727263b",
+      "_id": "3d85ca57c727263b",
+      "name": "River Settlements",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>River Settlements</h1><p><em>The river gives your people passage and livelihood. You learned to cross its currents and to lend breath to those it almost took.</em></p><p><em>What do you miss about the sound of the docks?</em></p><h2>Rules</h2><p><strong>Type:</strong> Culture. <strong>Status:</strong> Proposal. Choose one paired option; do not mix the rank from one with the card from another.</p><p>- <strong>Athletics 1</strong> and @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.3f16fc9d850d0e0a.JournalEntryPage.5b778e503e5fd64a]{Expert River Crossing}. - <strong>Life 1</strong> and @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.85442bfefbe9d679.JournalEntryPage.3a15668fd31a6c80]{Shared Breath}.</p><p>Grant at level 0. Duplicate grants provide 1 stage DP each; never promote a rank automatically. No discipline purchases at level 0. Ancestry does not restrict this choice. Follow each card’s explicit equipment grant.</p><p><strong>Starting coin contribution:</strong> +7 coins. See @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0558be1f6014ee71.JournalEntryPage.880380bcd80cfec6]{starting coins}.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

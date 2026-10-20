@@ -218,10 +218,12 @@
       "portrait": {
         "creatureId": "creature-redcap",
         "asset": "assets/creatures/acbbd6b3dbcd8b76d6f16b6e6c72a8de49a3aebb72a236ee7cf0e4f5368935d9.webp",
-        "sha256": "67fe8b4b3e6efb5eee892dd4726bd6954050242bc050e3d454d2f2936a3a10e0",
+        "sha256": "d6232c3ee2f3a2bd52b27228528100caeec4ab386f0cfaeb3b0fc9974055fbcb",
         "sourceSha256": "acbbd6b3dbcd8b76d6f16b6e6c72a8de49a3aebb72a236ee7cf0e4f5368935d9",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

@@ -201,10 +201,12 @@
       "portrait": {
         "creatureId": "creature-succubus",
         "asset": "assets/creatures/163b729922fcefda3b2b1a6b53572fb6ea607080ea0b91117f6cfec4b63794f2.webp",
-        "sha256": "e5f8655729ab3df5063a8e749162eb27f69590ffa7e4cbf50ca6b3f9c7415531",
+        "sha256": "8190f7c02a0a7901554f44cf107773a3fa42099b05580100d2c3297131646629",
         "sourceSha256": "163b729922fcefda3b2b1a6b53572fb6ea607080ea0b91117f6cfec4b63794f2",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

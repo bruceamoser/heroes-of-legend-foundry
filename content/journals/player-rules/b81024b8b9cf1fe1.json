@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!b81024b8b9cf1fe1",
+  "_id": "b81024b8b9cf1fe1",
+  "name": "Cut and Turn",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/signature-blade-cut-and-turn.md",
+        "sha256": "a103687a4c3f1a90274359d7d978b4c1c240d90e9f14fe8e7852b6417f980e05",
+        "id": "signature-blade-cut-and-turn",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!b81024b8b9cf1fe1.058c5dc014b67c3d",
+      "_id": "058c5dc014b67c3d",
+      "name": "Cut and Turn",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Cut and Turn</h1><p><em>You follow the stroke through with your feet and slip around the edge of your opponent’s guard.</em></p><h2>Rules</h2><p><strong>Action:</strong> Passive · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Self, after your Main Action melee attack resolves.</p><p>Move up to 1 square without provoking. On a Standard or Strong attack, you may move up to 2 squares instead. Use a legal route and free endpoint; this grants no additional attack.</p><p><strong>Duration:</strong> Immediate movement.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 1 · <strong>DP:</strong> 2 · <strong>Requirements to learn:</strong> Class Blade; minimum level 1</p><p><strong>Type:</strong> Signature</p><p><strong>Tags:</strong> Skill / Movement</p><p><strong>Limits:</strong> Once on your turn.</p><p><strong>ID:</strong> signature-blade-cut-and-turn</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.3ba04b7b5637ef56.JournalEntryPage.a9a21da370b45af6]{Class choices} · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

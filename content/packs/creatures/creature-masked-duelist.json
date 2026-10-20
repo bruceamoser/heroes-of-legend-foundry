@@ -213,10 +213,12 @@
       "portrait": {
         "creatureId": "creature-masked-duelist",
         "asset": "assets/creatures/db8b1ac1f8c05e402a5a420f23d5f35316514a2c013965861e56482b760753c1.webp",
-        "sha256": "1a0fa6034eb911a3f6664cbd6a271cc74a07bde368eb446531b4532da13992b9",
+        "sha256": "d8ac36862b74eed1588f63cdce7f156be987aa5976478625adf23b907a31dd67",
         "sourceSha256": "db8b1ac1f8c05e402a5a420f23d5f35316514a2c013965861e56482b760753c1",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

@@ -3,6 +3,7 @@
   "_id": "7bcb4455b292b8ee",
   "name": "Restraints",
   "type": "equipment",
+  "img": "systems/heroes-of-legend/assets/icons/chain.svg",
   "system": {
     "schemaVersion": 1,
     "catalogId": "item-restraints",

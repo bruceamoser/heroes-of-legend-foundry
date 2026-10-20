@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!cfa9ba9a67b27db0",
+  "_id": "cfa9ba9a67b27db0",
+  "name": "Always a Way Around",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/signature-odd-always-a-way-around.md",
+        "sha256": "59520a9a87ff4cecb376e45c52b85cfafa4c758841d5ad79086639442f953530",
+        "id": "signature-odd-always-a-way-around",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!cfa9ba9a67b27db0.b09be2f267ec6857",
+      "_id": "b09be2f267ec6857",
+      "name": "Always a Way Around",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Always a Way Around</h1><p><em>You brace, tug or shove until something gives, then slip into the space the struggle has opened.</em></p><h2>Rules</h2><p><strong>Action:</strong> Passive · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Self, after you resolve Force.</p><p>Move up to 2 squares without provoking after your Force action. If you reduced your own Grappled rating to 0, you may stand without spending movement before taking this move. The card does not let you use Force without a Main Action or move while still Grappled.</p><p><strong>Duration:</strong> Immediate stand and movement if allowed.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 1 · <strong>DP:</strong> 2 · <strong>Requirements to learn:</strong> Class Odd; minimum level 1</p><p><strong>Type:</strong> Signature</p><p><strong>Tags:</strong> Skill / Movement</p><p><strong>Limits:</strong> Once on your turn.</p><p><strong>ID:</strong> signature-odd-always-a-way-around</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.b958699795c40aff.JournalEntryPage.5ab16268111adc1e]{Class choices} · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

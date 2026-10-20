@@ -1,0 +1,39 @@
+{
+  "_key": "!journal!27e3b8ab6796f2c7",
+  "_id": "27e3b8ab6796f2c7",
+  "name": "Stone Knuckle (CV 9)",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/bestiary/summons/stone-knuckle.md",
+        "sha256": "f7bd13683ab372f1b17deca51cb68819614b818ed72d6222414cdb011ee256d4",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!27e3b8ab6796f2c7.40b352c8b7edd533",
+      "_id": "40b352c8b7edd533",
+      "name": "Stone Knuckle (CV 9)",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Stone Knuckle (CV 9)</h1><p><em>A squat elemental assembled from pebbles and rough stones around a dense central core. Its blunt hands and planted feet suit it to guarding a small patch of ground.</em></p><p><strong>HP:</strong> 12 · <strong>Speed:</strong> Ground 4; burrow 2 · <strong>Footprint:</strong> 1x1</p><p><strong>Summoned form — player reference.</strong></p><p><strong>Defense modifier:</strong> None. · <strong>Stability:</strong> 1 (Heavy Frame, passive grant; not derived from size).</p><p><strong>DR / resistance:</strong> Physical 1 · <strong>Condition immunities:</strong> Bleeding; Poisoned; Asleep</p><p><strong>Weakness:</strong> None</p><p><strong>Healing:</strong> Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body. Cannot swallow potions.</p><p><strong>Senses:</strong> Ordinary sight and hearing.</p><p><strong>Communication:</strong> None</p><p><strong>Attributes:</strong> Brawn +2; Fortitude +1; Agility -1; Guile -1; Knowledge -1; Reason +0</p><p><strong>Eligibility:</strong> Elemental 1</p><p>Main command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use controller’s turn. Beyond 6 squares, or controller unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot.</p><p><strong>Carrying:</strong> up to 1 Bulk; anatomy limits handling. No granted crafting training.</p><p>Roll its printed attack attribute and read the attacker outcomes below. When it is attacked, roll the defense attribute named by the incoming attack. Passive defenses remain; no independent active effects.</p><h2>Attacks — Main Action</h2><table><thead><tr><th scope=\"col\">Attack</th><th scope=\"col\">Attribute</th><th scope=\"col\">Attack modifier</th><th scope=\"col\">Weak attack</th><th scope=\"col\">Standard attack</th><th scope=\"col\">Strong attack</th></tr></thead><tbody><tr><td>Pebble fist</td><td>Brawn</td><td>None</td><td>2 physical damage.</td><td>3 physical damage.</td><td>4 physical damage.</td></tr></tbody></table><p><strong>Pebble fist:</strong> One adjacent creature.</p><h2>Maneuvers</h2><h3>Plant the Weight — Maneuver</h3><p><em>It spreads its stance and settles its weight into the ground.</em></p><p>While standing on solid ground, gain Stability 3 until the start of the controller’s next turn. Use the highest source only, never add sources.</p><p>Use only as part of a command; no independent activity.</p><p><strong>Defend — Maneuver:</strong> gain 1 Boon to defenses until the start of the controller’s next turn; repeated Defend does not stack.</p><p><strong>Basic Melee — Main:</strong> None to attack; Brawn, one adjacent target; Weak attack 2, Standard 3, Strong 5 physical damage. No specialty riders. No opportunity Reaction.</p><p>@UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.7c98b728b187f48e.JournalEntryPage.8fef259fa5ee1318]{DA creature card} · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.56367e2f9016dd21.JournalEntryPage.9ff12960a5e160cc]{Summon rules}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

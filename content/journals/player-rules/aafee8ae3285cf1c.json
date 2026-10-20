@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!aafee8ae3285cf1c",
+  "_id": "aafee8ae3285cf1c",
+  "name": "Cast and Scatter",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/signature-arcanist-cast-and-scatter.md",
+        "sha256": "1bea10f32abc085634b2c61eadc74bbdf3c6a1ac1ab3cb6a72c21a9b967eafff",
+        "id": "signature-arcanist-cast-and-scatter",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!aafee8ae3285cf1c.df650a7d388abbe5",
+      "_id": "df650a7d388abbe5",
+      "name": "Cast and Scatter",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Cast and Scatter</h1><p><em>Your spell bursts from your hands and you follow its recoil into a quick sidestep, robes brushing the space where you stood.</em></p><h2>Rules</h2><p><strong>Action:</strong> Passive · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Self, after your Main Action spell resolves.</p><p>Move up to 2 squares without provoking. Choose a legal route and free endpoint. This uses no movement allowance and does not change the spell’s result.</p><p><strong>Duration:</strong> Immediate movement.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 3 · <strong>DP:</strong> 4 · <strong>Requirements to learn:</strong> Class Arcanist; minimum level 3</p><p><strong>Type:</strong> Signature</p><p><strong>Tags:</strong> Magic / Movement</p><p><strong>Limits:</strong> Once on your turn.</p><p><strong>ID:</strong> signature-arcanist-cast-and-scatter</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.89ce8e1d2af8a0be.JournalEntryPage.0f7b9607ec6639ab]{Class choices} · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

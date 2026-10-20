@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!7c970415190b26cf",
+  "_id": "7c970415190b26cf",
+  "name": "Scatter Before the Blast",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/scatter-before-the-blast.md",
+        "sha256": "0c032a62e8467c2ff89c96e41ec5a0adb11431a8ea0c65d9432f3c362d914960",
+        "id": "monster-scatter-before-the-blast",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!7c970415190b26cf.3b6dda6b6e81f087",
+      "_id": "3b6dda6b6e81f087",
+      "name": "Scatter Before the Blast",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Scatter Before the Blast</h1><p><em>The swarm opens around the incoming sweep, then folds back into a ragged cloud of wings or fur.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-scatter-before-the-blast</p><p><strong>Action:</strong> Reaction</p><p>Before an area attack that includes this creature is rolled, impose 1 Bane on that attack. Against an NPC area attack, grant 1 Boon to this creature&#39;s defense instead. This protection belongs to the swarm; a player area attack still uses one roll with the worst relevant target modifiers. No movement, new swarm or immunity is granted.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

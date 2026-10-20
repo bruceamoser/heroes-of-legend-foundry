@@ -201,10 +201,12 @@
       "portrait": {
         "creatureId": "creature-cockatrice",
         "asset": "assets/creatures/f41149a42b53a48c8f7d7b6f2ed13c6f94f203846198f2b93049f18adb7b5f2e.webp",
-        "sha256": "f3ecf02a5a4811004680b835fa9fe1a0b03c3620b63ad67f6ca943063b38afa1",
+        "sha256": "009f27b88ab9a437eacdc93c92b36437f7d8b9e7c479051e75be2fec4ffa4839",
         "sourceSha256": "f41149a42b53a48c8f7d7b6f2ed13c6f94f203846198f2b93049f18adb7b5f2e",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!deba940242ac95e9",
+  "_id": "deba940242ac95e9",
+  "name": "Trail Workshop",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/trail-workshop.md",
+        "sha256": "6c378c643c1d7f4f0fa4f62c2257de8d326b096a7ad3aca8844648644b37088f",
+        "id": "trail-workshop",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!deba940242ac95e9.5b27b2d6ea512a01",
+      "_id": "5b27b2d6ea512a01",
+      "name": "Trail Workshop",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Trail Workshop</h1><p><em>You spread your tools on a cloth and turn a stopping place into a workshop.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> Knowledge</p><p><strong>Time:</strong> The recipe’s stated interval per attempt.</p><p><strong>Target / range / shape:</strong> One known compatible ordinary recipe; recipe interval</p><p>Requires a known ordinary recipe. Grants craft tools if absent and two compatible ordinary recipe choices. Recipe defines materials, time and completion; no free materials.</p><p>- <strong>Weak:</strong> 1 progress or inventory step. - <strong>Standard:</strong> 2 progress or inventory steps. - <strong>Strong:</strong> 3 progress or inventory steps.</p><p>Compatible ordinary choices are Bound Torches, Fletched Ammunition, Travel Food, Twisted Cord, Wooden Brace and Simple Replacement Leg. Other recipe types require their named crafting permission.</p><p><strong>Duration:</strong> Crafted items and supplies persist until used or destroyed.</p><p><strong>Equipment / acquisition:</strong> Craft tools, Bulk 1, if absent; choose two compatible ordinary recipes. No materials granted.</p><p>---</p><p><strong>Tier / minimum level:</strong> 1 · <strong>DP:</strong> 2 · <strong>Requirements to learn:</strong> Craft 1</p><p><strong>Type:</strong> Skill / Crafting / Utility</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> trail-workshop</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

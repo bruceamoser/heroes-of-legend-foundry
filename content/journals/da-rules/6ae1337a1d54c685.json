@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!6ae1337a1d54c685",
+  "_id": "6ae1337a1d54c685",
+  "name": "Recoil into Shadow",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/recoil-into-shadow.md",
+        "sha256": "9e691ad1ee321332565ea4dbcd719f31b9ed2358ef1743973f713c6075be0815",
+        "id": "monster-recoil-into-shadow",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!6ae1337a1d54c685.08f1f8f7106fbb3e",
+      "_id": "08f1f8f7106fbb3e",
+      "name": "Recoil into Shadow",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Recoil into Shadow</h1><p><em>Its wounded outline stretches into the nearest shadow and runs along the dark edge of the room.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-recoil-into-shadow</p><p><strong>Action:</strong> Reaction</p><p>After an attack resolves and deals HP damage to this creature, move up to 2 squares through connected dimly lit or dark squares without provoking. This creature must survive and remain capable. Pay normal terrain costs and obey occupancy; no passage through solid objects or automatic Hidden. No trigger from a free attack; no attack is granted.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

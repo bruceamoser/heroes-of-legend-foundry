@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!cba4ce77e3253c0a",
+  "_id": "cba4ce77e3253c0a",
+  "name": "Quiet as a Burrow",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/ancestries/trait-halfling-quiet-company.md",
+        "sha256": "59adb5530403fa82a75c2cc5a37a4e476c188f19ace59ff62e4a6cfa759733b9",
+        "id": "trait-halfling-quiet-company",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!cba4ce77e3253c0a.69c266abd0aebc93",
+      "_id": "69c266abd0aebc93",
+      "name": "Quiet as a Burrow",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Quiet as a Burrow</h1><p><em>You ease your heel onto the floor and lift the latch with the care of someone coming home to a sleeping household.</em></p><h2>Rules</h2><p>Gain 1 Boon to quiet movement outside combat. On a Strong result, one willing companion following your route gains 1 Boon to their next quiet-movement roll this scene. You cannot confer Hidden by walking in open view.</p><p><strong>Ancestry:</strong> Halfling · <strong>Choice:</strong> one of your two traits · <strong>Action:</strong> Passive unless the effect says otherwise.</p><p><strong>Duration:</strong> While its stated circumstances apply; permanent for base statistics.</p><p><strong>ID:</strong> trait-halfling-quiet-company</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.5365454ad0c5fedf.JournalEntryPage.6819ea3497079763]{Ancestry choices}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

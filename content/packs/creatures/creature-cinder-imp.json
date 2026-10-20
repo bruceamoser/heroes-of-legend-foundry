@@ -206,10 +206,12 @@
       "portrait": {
         "creatureId": "creature-cinder-imp",
         "asset": "assets/creatures/889a59124f681bec257d27b5173e872dbfae07129245fdc95f250b526853e3b3.webp",
-        "sha256": "0998b38e9ade0d95698e5acce46c6dcd3d798bbdc426acfcfd7d5260eb394360",
+        "sha256": "a6fe9307a547d89685c6d83db746c239286b48bef3ebcd77abb5c3330c7ac9d9",
         "sourceSha256": "889a59124f681bec257d27b5173e872dbfae07129245fdc95f250b526853e3b3",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

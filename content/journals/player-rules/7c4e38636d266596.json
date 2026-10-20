@@ -1,0 +1,39 @@
+{
+  "_key": "!journal!7c4e38636d266596",
+  "_id": "7c4e38636d266596",
+  "name": "Bridge Worker",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/origins/background-bridge-worker.md",
+        "sha256": "b065ad35f4803d76c584e496ca37c38e2c482a855a93fe2ddbb24478b909eb6b",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!7c4e38636d266596.bc4b38f0494ae890",
+      "_id": "bc4b38f0494ae890",
+      "name": "Bridge Worker",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Bridge Worker</h1><p><em>You have trusted your weight to a knot you tied yourself.</em></p><p><em>Who was beside you the first time the scaffolding shook?</em></p><h2>Rules</h2><p><strong>Type:</strong> Background. <strong>Status:</strong> Proposal. Choose one paired option; do not mix the rank from one with the card from another.</p><p>- Craft 1 and @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.deba940242ac95e9.JournalEntryPage.5b27b2d6ea512a01]{Trail Workshop}. - Athletics 1 and @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.45cb1cbd9671a862.JournalEntryPage.61900a872a850d7c]{Sure Ascent}.</p><p>Grant at level 0. Duplicate grants provide 1 stage DP each; never promote a rank automatically. No discipline purchases at level 0. Ancestry does not restrict this choice. Follow each card’s explicit equipment grant.</p><p><strong>Starting coin contribution:</strong> +7 coins. See @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0558be1f6014ee71.JournalEntryPage.880380bcd80cfec6]{starting coins}.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

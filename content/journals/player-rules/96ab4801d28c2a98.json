@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!96ab4801d28c2a98",
+  "_id": "96ab4801d28c2a98",
+  "name": "A Voice across the Valley",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/a-voice-across-the-valley.md",
+        "sha256": "f4d56254bb1ef18b5d6cbf3685a257feb36f533a294e68396978dd819b52380a",
+        "id": "a-voice-across-the-valley",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!96ab4801d28c2a98.fb932a01f56aecfa",
+      "_id": "fb932a01f56aecfa",
+      "name": "A Voice across the Valley",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>A Voice across the Valley</h1><p><em>You whisper into the wind and wait for the familiar answer to find its way home.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> Reason</p><p><strong>Time:</strong> Ten minutes to contact; up to one minute of exchange.</p><p><strong>Target / range / shape:</strong> One willing creature personally known to you within one day’s ordinary travel; ten minutes.</p><p>Name the recipient and speak a message of up to twenty words. If the recipient is outside range or unwilling, learn only that no contact was made. The message conveys your identity but reveals no location. No sight or attack path is required; this is communication, not targeting for another card.</p><p>- <strong>Weak:</strong> Deliver the message; the recipient may acknowledge receipt with a yes or no. - <strong>Standard:</strong> Deliver it and receive a willing reply of up to twenty words. - <strong>Strong:</strong> Deliver it and exchange up to three messages of twenty words each in both directions during the next minute.</p><p><strong>Duration:</strong> The exchange lasts at most one minute after contact.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 7 · <strong>DP:</strong> 8 · <strong>Requirements to learn:</strong> Mind 2 and Storm 2</p><p><strong>Type:</strong> Magic / Utility</p><p><strong>Limits:</strong> Once per recipient per day. No mind reading or ability to command the listener.</p><p><strong>ID:</strong> a-voice-across-the-valley</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Adventure development</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

@@ -244,10 +244,12 @@
       "portrait": {
         "creatureId": "creature-black-dragon",
         "asset": "assets/creatures/f9d773b0ba726bb32a3de58821f4e3c78e6fd55bd4246c22e2cb0176c7cc17dc.webp",
-        "sha256": "bf1ebeb81e4141e6c3a9a1079c6392faa8be87313ef6e7bdd203939dc2c05fb7",
+        "sha256": "5ff3ad53418ea12ca4709e7aae35237920ad2ed95f41447f0babf2ab10f008d9",
         "sourceSha256": "f9d773b0ba726bb32a3de58821f4e3c78e6fd55bd4246c22e2cb0176c7cc17dc",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

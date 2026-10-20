@@ -1,4 +1,5 @@
-import { viewPortrait } from "./portrait.mjs";
+import { cardContext, bindCardState } from "./card-state.mjs";
+import { viewPortrait, savePortrait, bindPortraitControls } from "./portrait.mjs";
 import { ATTRIBUTES } from "../rules/character.mjs";
 import {
   creatureModifierLabel,
@@ -15,13 +16,13 @@ export class SummonSheet extends foundry.applications.api.HandlebarsApplicationM
 ) {
   static DEFAULT_OPTIONS = {
     classes: ["heroes-of-legend", "hol-summon"],
-    actions: { viewPortrait, updateProfile: SummonSheet.updateProfile },
-    position: { width: 760, height: 820 },
+    actions: { viewPortrait, savePortrait: SummonSheet.savePortrait, updateProfile: SummonSheet.updateProfile },
+    position: { width: 700, height: 660 },
   };
   static PARTS = {
     main: {
       template: "systems/heroes-of-legend/templates/summon.hbs",
-      scrollable: [""],
+      scrollable: [".hol-card-scroll"],
     },
   };
   async _prepareContext(options) {
@@ -30,7 +31,9 @@ export class SummonSheet extends foundry.applications.api.HandlebarsApplicationM
     const flags = this.actor.flags["heroes-of-legend"] ?? {};
     return {
       ...context,
+      ...cardContext(this, this.actor),
       actor: this.actor,
+      editable: this.isEditable,
       system,
       canUpdateProfile: profileUpdateAvailable(this.actor),
       attributes: ATTRIBUTES.map((key) => ({
@@ -48,6 +51,20 @@ export class SummonSheet extends foundry.applications.api.HandlebarsApplicationM
           { relativeTo: this.actor, links: false },
         ),
     };
+  }
+  _onRender(context, options) {
+    super._onRender(context, options);
+    bindCardState(this, this.actor);
+    bindPortraitControls(this);
+  }
+  _toggleDisabled(disabled) {
+    super._toggleDisabled(disabled);
+    if (disabled && this.actor.testUserPermission(game.user, "OBSERVER"))
+      for (const button of this.element.querySelectorAll('[data-action="viewPortrait"]')) button.disabled = false;
+  }
+  static async savePortrait() {
+    try { return await savePortrait.call(this); }
+    catch (error) { ui.notifications.error(error.message); }
   }
   static async updateProfile() {
     try {

@@ -1,0 +1,39 @@
+{
+  "_key": "!journal!f14c2b4ee543b0f4",
+  "_id": "f14c2b4ee543b0f4",
+  "name": "Market Chemist",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/origins/background-market-chemist.md",
+        "sha256": "71ce8514d90892747a4bde614a0e5f6a906d34f7d1a1f07a6d0c87ccd354d972",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!f14c2b4ee543b0f4.352c104ed000265f",
+      "_id": "352c104ed000265f",
+      "name": "Market Chemist",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Market Chemist</h1><p><em>You know which bottle smells like a cure and which only smells expensive.</em></p><p><em>Which customer made you stop exaggerating?</em></p><h2>Rules</h2><p>Choose one:</p><p>- <strong>Craft 1</strong> and @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.2321f6abd483bf9b.JournalEntryPage.a0575a82d5fd2963]{Smoke in a Bottle}. - <strong>Scholarship 1</strong> and @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.d2131c1e1e2a8d2e.JournalEntryPage.6f80563d010710d7]{Identify a Mixture}.</p><p><strong>Type:</strong> Background</p><p>Each option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.</p><p><strong>Starting coin contribution:</strong> +10 coins. See @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0558be1f6014ee71.JournalEntryPage.880380bcd80cfec6]{starting coins}.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

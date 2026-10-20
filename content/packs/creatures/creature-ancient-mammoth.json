@@ -235,10 +235,12 @@
       "portrait": {
         "creatureId": "creature-ancient-mammoth",
         "asset": "assets/creatures/6b4aa3d560fa8d8e35060bc08bec4321c24f2d4aee99b4aadeb579cdc975e9b4.webp",
-        "sha256": "4f386640a0cfd12f52968bad3e01e8048af458f23ced0a43eef69d862d8a1108",
+        "sha256": "5a6adec561e94503fe97c2e438c1b571e169cbc35ab80568113a147589b71ace",
         "sourceSha256": "6b4aa3d560fa8d8e35060bc08bec4321c24f2d4aee99b4aadeb579cdc975e9b4",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

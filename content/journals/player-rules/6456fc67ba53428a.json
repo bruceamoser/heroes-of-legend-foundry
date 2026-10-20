@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!6456fc67ba53428a",
+  "_id": "6456fc67ba53428a",
+  "name": "An Unexpected Exit",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/signature-odd-an-unexpected-exit.md",
+        "sha256": "033f89b76784e1d0ceb3f1abcbb3dca46a916a2a41d17d8005c5a9d8eb63f8c5",
+        "id": "signature-odd-an-unexpected-exit",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!6456fc67ba53428a.98c27266e8eed6a5",
+      "_id": "98c27266e8eed6a5",
+      "name": "An Unexpected Exit",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>An Unexpected Exit</h1><p><em>You spot the half-hidden stair, haul your companion toward it and disappear from the place everyone thought had you cornered.</em></p><h2>Rules</h2><p><strong>Action:</strong> Maneuver · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Self and optionally one adjacent willing ally.</p><p>Move up to your Speed without provoking. The ally may follow along a legal route up to the same distance, spending no action, and must end in a separate free square adjacent to you. Both must be able to move; this does not cross standing occupied squares, barriers or otherwise impassable terrain.</p><p><strong>Duration:</strong> Immediate movement.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 7 · <strong>DP:</strong> 8 · <strong>Requirements to learn:</strong> Class Odd; minimum level 7</p><p><strong>Type:</strong> Signature</p><p><strong>Tags:</strong> Skill / Movement</p><p><strong>Limits:</strong> Once on your turn.</p><p><strong>ID:</strong> signature-odd-an-unexpected-exit</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.b958699795c40aff.JournalEntryPage.5ab16268111adc1e]{Class choices} · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

@@ -1,3 +1,6 @@
+import { itemDisplayIcon, hasGenericItemIcon } from "../rules/item-icons.mjs";
+import { loadCatalogs } from "../services/catalog.mjs";
+import { cardContext, bindCardState, toggleCardEdit } from "./card-state.mjs";
 import { postAbilityReference } from "../services/reference-play.mjs";
 import {
   itemAbilityDefinition,
@@ -12,10 +15,11 @@ export class AbilitySheet extends foundry.applications.api.HandlebarsApplication
 ) {
   static DEFAULT_OPTIONS = {
     classes: ["heroes-of-legend", "hol-ability"],
-    position: { width: 640, height: 720 },
+    position: { width: 500, height: "auto" },
     window: { resizable: true },
     form: { submitOnChange: false, closeOnSubmit: false },
     actions: {
+      cardEdit: toggleCardEdit,
       useAbility: AbilitySheet.useAbility,
       postReference: AbilitySheet.postReference,
     },
@@ -23,7 +27,7 @@ export class AbilitySheet extends foundry.applications.api.HandlebarsApplication
   static PARTS = {
     main: {
       template: "systems/heroes-of-legend/templates/ability.hbs",
-      scrollable: [""],
+      scrollable: [".hol-card-scroll"],
     },
   };
   async _prepareContext(options) {
@@ -33,13 +37,16 @@ export class AbilitySheet extends foundry.applications.api.HandlebarsApplication
       definition = itemAbilityDefinition(this.item);
     } catch {}
     const description = this.item.system.description;
+    const iconCatalogs = hasGenericItemIcon(this.item.img) ? await loadCatalogs() : null;
     const labels = (keys) =>
       Object.fromEntries(
         keys.map((key) => [key, game.i18n.localize(`HOL.Choices.${key}`)]),
       );
     return {
       ...context,
+      ...cardContext(this, this.item),
       definition,
+      cardMark: itemDisplayIcon(this.item.toObject(), iconCatalogs),
       canPost: Boolean(this.item.actor && this.item.isOwner),
       potionAbility: isPotionAbility(this.item),
       canUse: Boolean(
@@ -83,6 +90,10 @@ export class AbilitySheet extends foundry.applications.api.HandlebarsApplication
     } catch (e) {
       ui.notifications.error(e.message);
     }
+  }
+  _onRender(context, options) {
+    super._onRender(context, options);
+    bindCardState(this, this.item);
   }
   async _processSubmitData(event, form, data, options) {
     if (!this.isEditable)

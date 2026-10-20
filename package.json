@@ -92,7 +92,9 @@
     "test:roll-preview": "node scripts/check-roll-preview.mjs",
     "test:chat-preview": "node scripts/check-chat-preview.mjs",
     "test:tools-preview": "node scripts/check-tools-preview.mjs",
-    "import:web-journals": "node scripts/build-web-journals.mjs"
+    "import:web-journals": "node scripts/build-web-journals.mjs",
+    "test:native-design": "node scripts/check-native-design.mjs",
+    "import:native-journals": "node scripts/build-native-journals.mjs"
   },
   "devDependencies": {
     "@foundryvtt/foundryvtt-cli": "3.0.5",

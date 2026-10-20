@@ -196,10 +196,12 @@
       "portrait": {
         "creatureId": "creature-orc-outrider",
         "asset": "assets/creatures/6ad8a9fd2ebb0a1b55d735ef5d5d2a996c1cfddff7e2eb5de870867c0e8fdbc5.webp",
-        "sha256": "2bfea8c50f8b31078797d46d382da67ae590a32b34c8f78c441f9c417e35e2c9",
+        "sha256": "8f119776b165f48c0eadd3bf2abca0ce8d734679f84acf2660bf9784f4a35b6c",
         "sourceSha256": "6ad8a9fd2ebb0a1b55d735ef5d5d2a996c1cfddff7e2eb5de870867c0e8fdbc5",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

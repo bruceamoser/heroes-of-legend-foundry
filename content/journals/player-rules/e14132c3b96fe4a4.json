@@ -1,0 +1,39 @@
+{
+  "_key": "!journal!e14132c3b96fe4a4",
+  "_id": "e14132c3b96fe4a4",
+  "name": "Warden",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/classes/warden.md",
+        "sha256": "e5d84aac8cb2cb143b900f8a6f3cd62e947e7cc4da3cf190932333ba59f49fac",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!e14132c3b96fe4a4.c1929845d3e12b65",
+      "_id": "c1929845d3e12b65",
+      "name": "Warden",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Warden</h1><p><em>You read the broken fern, the distant cry and the turn of a fleeing creature. When the road ends, your companions look to you.</em></p><h2>Rules</h2><p><strong>Agreed concept:</strong> wilderness guide, tracker and hunter. Nature magic and animal companions are optional shared purchases, not required class features.</p><p><strong>Class foundations:</strong> minimum 0 in Fortitude and Knowledge; HP contribution +4. No multiclassing.</p><p><strong>Starting disciplines:</strong> choose two distinct rank-1 disciplines from Wilderness, Marksmanship, Arms, Athletics.</p><p><strong>Discipline pricing:</strong> Home: Wilderness, Marksmanship. Adjacent: Arms, Athletics. All others Foreign; no Opposed disciplines. Use the normal sequential rank prices.</p><p>Choose one class-exclusive signature at levels 1, 3 and 7. Extra signatures cost 2/4/8 DP. Requirements are class and minimum level only; no discipline or earlier signature is required.</p><h2>Level 1 choices</h2><p>- @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.3e5ddf459c07cbbc.JournalEntryPage.13755d18add79c3e]{Keep the Quarry Close} - @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.cabc18ac24a36e30.JournalEntryPage.8ea8d3bc36a35186]{Read the Passing} - @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.e3d4d4673732f4c0.JournalEntryPage.c373528e3d3a0950]{Follow My Footsteps}</p><h2>Level 3 choices</h2><p>- @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.45baf03c303f81a1.JournalEntryPage.664bb3ae0e5b7003]{Stay on the Scent} - @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.f600e8bf041f0aaa.JournalEntryPage.2a0bfaff49598758]{Through Bramble and Stone} - @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.99e7e45f3c416f63.JournalEntryPage.318dde9d85da2816]{A Watchful Rest}</p><h2>Level 7 choices</h2><p>- @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.3771cb85fb00c722.JournalEntryPage.11836b1980fce017]{Turn the Hunt} - @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.767977889f6327a5.JournalEntryPage.56a7f67de5dbcb88]{Bring Them Through} - @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.8bd8c64c831fef3b.JournalEntryPage.8c9119b11c2d596a]{Know What You Hunt}</p><h2>The character at the table</h2><p>A hunter closes distance after a shot or a sword stroke. A tracker reads actual evidence. A guide gives companions a route they can use now. All three approaches remain available at each milestone; there are no locked subclasses.</p><p>Fortitude and Knowledge express endurance and understanding. Agility remains valuable to an archer, but the class does not demand one weapon or one attack attribute. +4 HP places its contribution beside Blade and Leader, below Protector and Unbalanced.</p><p><strong>Starting coin contribution:</strong> +2 coins. See @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0558be1f6014ee71.JournalEntryPage.880380bcd80cfec6]{starting coins}.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

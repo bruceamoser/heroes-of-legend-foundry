@@ -125,10 +125,12 @@
       "portrait": {
         "creatureId": "creature-grave-wisp",
         "asset": "assets/creatures/88baa473cee3375b2367803a1493c814f19a8d4e6851694d66ce3bbbac102aae.webp",
-        "sha256": "2b563903573150826cdc4ba483476c3f969b5c8b40d66f4257c3cd2bab930d05",
+        "sha256": "b3e829b09d13e837ca75798cdeb945e5790d51e83e78bf1f4450ac6118acba2d",
         "sourceSha256": "88baa473cee3375b2367803a1493c814f19a8d4e6851694d66ce3bbbac102aae",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

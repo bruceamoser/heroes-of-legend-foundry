@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!ace34bb84ae65542",
+  "_id": "ace34bb84ae65542",
+  "name": "Craft Tools",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/equipment/craft-tools.md",
+        "sha256": "ffed6d1a46d316f0b9434c6575fd59e9766733c701d2c9c38567984853996edf",
+        "id": "item-craft-tools",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!ace34bb84ae65542.ecb7de22b405a5a7",
+      "_id": "ecb7de22b405a5a7",
+      "name": "Craft Tools",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Craft Tools</h1><p><em>You unroll the worn cloth and set each trusted tool within reach.</em></p><h2>Rules</h2><p>- <strong>ID:</strong> item-craft-tools - <strong>Bulk:</strong> 1 - <strong>Requirements / supply:</strong> Reusable - <strong>Acquisition:</strong> Explicit ability grant, coins, or DA treasure; no automatic extra starting kit.</p><p>Required for recipes that list them; no inventory die.</p><p>No DP price. Purchase does not grant training or an ability.</p><p>Equipment index</p><p><strong>Market price:</strong> 15 coins. Proposal; see @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.a8b099af3500d9f6.JournalEntryPage.cfa94361944ba875]{market rules}.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

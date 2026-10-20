@@ -3,6 +3,7 @@
   "_id": "9ebeccd276521016",
   "name": "Rope Coil",
   "type": "equipment",
+  "img": "systems/heroes-of-legend/assets/icons/rope.svg",
   "system": {
     "schemaVersion": 1,
     "catalogId": "item-rope-coil",

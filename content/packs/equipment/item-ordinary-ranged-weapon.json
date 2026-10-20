@@ -3,6 +3,7 @@
   "_id": "4ce291e252882eb5",
   "name": "Ordinary Ranged Weapon",
   "type": "equipment",
+  "img": "systems/heroes-of-legend/assets/icons/bow.svg",
   "system": {
     "schemaVersion": 1,
     "catalogId": "item-ordinary-ranged-weapon",

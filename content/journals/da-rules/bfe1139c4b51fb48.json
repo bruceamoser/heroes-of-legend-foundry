@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!bfe1139c4b51fb48",
+  "_id": "bfe1139c4b51fb48",
+  "name": "Dazzling Strike",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/dazzling-strike.md",
+        "sha256": "8e56d772f0e831427a59fa79dfe0c7cff4ee54f1a00b69850a0b2cdac947ff50",
+        "id": "monster-dazzling-strike",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!bfe1139c4b51fb48.acc156d544d3fd0e",
+      "_id": "acc156d544d3fd0e",
+      "name": "Dazzling Strike",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Dazzling Strike</h1><p><em>Light or a sudden wash of sensation overwhelms the target’s sight.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-dazzling-strike</p><p><strong>Action:</strong> Main Action</p><p>The printed attack applies Blinded for the listed duration. Use normal decay; no permanent blindness is implied.</p><p>Actual damage, targeting and defense attribute are printed on the creature card.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

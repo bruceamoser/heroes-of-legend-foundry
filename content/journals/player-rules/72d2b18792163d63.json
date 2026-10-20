@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!72d2b18792163d63",
+  "_id": "72d2b18792163d63",
+  "name": "Shared Resolve",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/signature-shepherd-shared-resolve.md",
+        "sha256": "410fd0ffc503eb0a0565fabdeb0e048414e86eb72bba646d29f8535a18963750",
+        "id": "signature-shepherd-shared-resolve",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!72d2b18792163d63.0d31c92de528bf1f",
+      "_id": "0d31c92de528bf1f",
+      "name": "Shared Resolve",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Shared Resolve</h1><p><em>You gather your companions with a few familiar words, steadying one trembling voice after another until they answer together.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Self and up to three willing allies within 3 squares that can hear you.</p><p>Each recipient chooses one temporary condition from Frightened, Dazed or Poisoned and reduces it by up to 2, minimum 0. Each also gains 1 Boon to its next defense before the start of your next turn. No HP restored, no starred source removed and no spent actions returned. A recipient without those conditions still gains the defensive Boon.</p><p><strong>Duration:</strong> Reductions are immediate; Boons expire when used or the start of your next turn.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 7 · <strong>DP:</strong> 8 · <strong>Requirements to learn:</strong> Class Shepherd; minimum level 7</p><p><strong>Type:</strong> Signature</p><p><strong>Tags:</strong> Skill / Recovery / Defense</p><p><strong>Limits:</strong> Repeatable; normal action economy applies.</p><p><strong>ID:</strong> signature-shepherd-shared-resolve</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.9f89a95738256790.JournalEntryPage.0577d987ea27d2c6]{Class choices} · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

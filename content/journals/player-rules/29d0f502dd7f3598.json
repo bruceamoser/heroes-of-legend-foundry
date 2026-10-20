@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!29d0f502dd7f3598",
+  "_id": "29d0f502dd7f3598",
+  "name": "Refuse the Rout",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/signature-leader-refuse-the-rout.md",
+        "sha256": "323c1859a095ce53fefee80ed4cc5302073d2e87c7efdcf0621e7b3d70a189bb",
+        "id": "signature-leader-refuse-the-rout",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!29d0f502dd7f3598.51027fd52037b955",
+      "_id": "51027fd52037b955",
+      "name": "Refuse the Rout",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Refuse the Rout</h1><p><em>You stand where everyone can see you, raise your voice and turn a scattering retreat into a line that holds.</em></p><h2>Rules</h2><p><strong>Action:</strong> Maneuver · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Self and up to three willing allies within 4 squares that can hear you.</p><p>Each recipient reduces temporary Frightened by up to 2, minimum 0, and gains 1 Boon to its next defense before the start of your next turn. Each may immediately move 1 square without provoking. Resolve movement in an order you choose. No effect on starred conditions, and no restoration of actions already spent.</p><p><strong>Duration:</strong> Condition reduction and movement are immediate; Boons expire when used or the start of your next turn.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 7 · <strong>DP:</strong> 8 · <strong>Requirements to learn:</strong> Class Leader; minimum level 7</p><p><strong>Type:</strong> Signature</p><p><strong>Tags:</strong> Skill / Recovery / Defense / Movement</p><p><strong>Limits:</strong> Once on your turn.</p><p><strong>ID:</strong> signature-leader-refuse-the-rout</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.b6af900ccf7538e1.JournalEntryPage.8fdc8974392e9d32]{Class choices} · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

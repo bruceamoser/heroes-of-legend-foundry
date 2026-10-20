@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!0a9e55dce7f33aad",
+  "_id": "0a9e55dce7f33aad",
+  "name": "Lever and Wedges",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/equipment/lever-and-wedges.md",
+        "sha256": "d947fcbfe91a440befede4166427c09774ef42638709768322526810c552b1d0",
+        "id": "item-lever-and-wedges",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!0a9e55dce7f33aad.86ced226f67fbe00",
+      "_id": "86ced226f67fbe00",
+      "name": "Lever and Wedges",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Lever and Wedges</h1><p><em>You work the iron tip into the seam and tap a wedge into place.</em></p><h2>Rules</h2><p><strong>ID:</strong> item-lever-and-wedges</p><p><strong>Market price:</strong> 5 coins. <strong>Bulk:</strong> 1.</p><p>Reusable prying bar and wedges. Provides leverage where physically possible; no automatic Force progress or bonus.</p><p>Buying equipment grants no DP advancement, training or ability. Use normal item-handling actions unless an applicable card says otherwise.</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.a8b099af3500d9f6.JournalEntryPage.cfa94361944ba875]{Market rules} · Equipment index</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

@@ -210,10 +210,12 @@
       "portrait": {
         "creatureId": "creature-nightmare",
         "asset": "assets/creatures/68fad3aa791217f026dacd8327d5c71cd1e759c365447148642670ad5e1ac3a0.webp",
-        "sha256": "599c0c8ad109f683f0009304a2598ccc6616dce76716cb41a347e237f1dfabd5",
+        "sha256": "9a9d7e7610f098ceb295a15d17e3bd89c3ca730384bff9b4196df98d3cc7c398",
         "sourceSha256": "68fad3aa791217f026dacd8327d5c71cd1e759c365447148642670ad5e1ac3a0",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

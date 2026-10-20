@@ -1,0 +1,39 @@
+{
+  "_key": "!journal!23bab1f3998b2c33",
+  "_id": "23bab1f3998b2c33",
+  "name": "Deep Halls",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/origins/culture-deep-halls.md",
+        "sha256": "b2f97735b3fd44bcd5c31551c6a9ebc0a4fd1e3c40c1a8a137ac643c849efd2d",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!23bab1f3998b2c33.b9856d7d299f638b",
+      "_id": "b9856d7d299f638b",
+      "name": "Deep Halls",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Deep Halls</h1><p><em>Homes, gardens and markets fill the chambers beneath the hills; the surface is only one neighborhood.</em></p><p><em>What does your home smell like after the forge fires dim?</em></p><h2>Rules</h2><p>Choose one:</p><p>- <strong>Craft 1</strong> and @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.deba940242ac95e9.JournalEntryPage.5b27b2d6ea512a01]{Trail Workshop}. - <strong>Armor 1</strong> and @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.68753f5663bfea67.JournalEntryPage.fa5e21fa615d88a0]{Wake the Iron Rune}.</p><p><strong>Type:</strong> Culture</p><p>Each option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.</p><p><strong>Starting coin contribution:</strong> +7 coins. See @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0558be1f6014ee71.JournalEntryPage.880380bcd80cfec6]{starting coins}.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

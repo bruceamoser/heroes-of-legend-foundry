@@ -1,0 +1,39 @@
+{
+  "_key": "!journal!369482970756237a",
+  "_id": "369482970756237a",
+  "name": "Weather Apprentice",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/origins/background-weather-apprentice.md",
+        "sha256": "081609c83ddbc18c638fb861ab47a98202d8d7411f3dca8525c7f25acd104631",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!369482970756237a.8f5e3e8382a75ea8",
+      "_id": "8f5e3e8382a75ea8",
+      "name": "Weather Apprentice",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Weather Apprentice</h1><p><em>Your teacher watched the clouds as if reading a difficult letter.</em></p><p><em>Which warning did you finally learn to hear?</em></p><h2>Rules</h2><p><strong>Type:</strong> Background. <strong>Status:</strong> Proposal. Choose one paired option; do not mix the rank from one with the card from another.</p><p>- Storm 1 and @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.566b8e77d24f8d03.JournalEntryPage.67a65a7762642b45]{Gust Hammer}. - Frost 1 and @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.be172e1d57286496.JournalEntryPage.96aebec2a1c38bb6]{Rime Grip}.</p><p>Grant at level 0. Duplicate grants provide 1 stage DP each; never promote a rank automatically. No discipline purchases at level 0. Ancestry does not restrict this choice. Follow each card’s explicit equipment grant.</p><p><strong>Starting coin contribution:</strong> +7 coins. See @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0558be1f6014ee71.JournalEntryPage.880380bcd80cfec6]{starting coins}.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

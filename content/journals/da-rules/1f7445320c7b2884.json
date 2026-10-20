@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!1f7445320c7b2884",
+  "_id": "1f7445320c7b2884",
+  "name": "Driving Stride",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/grave-gallop.md",
+        "sha256": "e571e13113174880fe48f9105587741b190ff7d31dd4b947a43cdac830e25940",
+        "id": "monster-grave-gallop",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!1f7445320c7b2884.ab9f70864a32865f",
+      "_id": "ab9f70864a32865f",
+      "name": "Driving Stride",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Driving Stride</h1><p><em>Hooves hammer a straight course through dust and broken grass.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-grave-gallop</p><p><strong>Action:</strong> Maneuver</p><p>Move up to 3 squares in a straight line without provoking from one visible enemy chosen before moving. Pay normal terrain costs and provoke normally from other enemies. Grants no attack or automatic movement of a rider or held creature.</p><p>Only creatures whose entries list this ability possess it. Printed limits apply.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

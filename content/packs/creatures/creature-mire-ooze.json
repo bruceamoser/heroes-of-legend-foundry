@@ -223,10 +223,12 @@
       "portrait": {
         "creatureId": "creature-mire-ooze",
         "asset": "assets/creatures/3bc8611591becef0cbd751c48c4282dc1a158e3c02c79cb1d56207c13c57f3a9.webp",
-        "sha256": "0bd7880fecece1ca368e5e020a039934d8b8f797b6085ef517510cd2a3fb4498",
+        "sha256": "e8316fc13ef518124bb3f7b4a1a44c522b591c126b7bc9ba0d55701660053bea",
         "sourceSha256": "3bc8611591becef0cbd751c48c4282dc1a158e3c02c79cb1d56207c13c57f3a9",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

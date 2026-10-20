@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!566b8e77d24f8d03",
+  "_id": "566b8e77d24f8d03",
+  "name": "Gust Hammer",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/gust-hammer.md",
+        "sha256": "1ee969476b6db3199dadf2e4b87d3907def5b895c5d84a51611743767507c467",
+        "id": "gust-hammer",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!566b8e77d24f8d03.67a65a7762642b45",
+      "_id": "67a65a7762642b45",
+      "name": "Gust Hammer",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Gust Hammer</h1><p><em>You thrust your palm forward. A compressed rush of air strikes your enemy squarely and drives them backward.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> Reason</p><p><strong>Target / range / shape:</strong> One visible creature within 4 squares</p><p>Proposed NPC defense attribute: Fortitude.</p><p>- <strong>Weak:</strong> 2 physical damage; push 1. - <strong>Standard:</strong> 2 physical damage; push 2. - <strong>Strong:</strong> 4 physical damage; push 3.</p><p><strong>Duration:</strong> Instant</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 1 · <strong>DP:</strong> 2 · <strong>Requirements to learn:</strong> Storm 1</p><p><strong>Type:</strong> Magic / Attack</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> gust-hammer</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!5612a98784835c7c",
+  "_id": "5612a98784835c7c",
+  "name": "Lifeless Body",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/lifeless-body.md",
+        "sha256": "248c16c6e641d2042cd94a05e7e8bfce03b5177f4f57cda241b46d9b16de4d81",
+        "id": "monster-lifeless-body",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!5612a98784835c7c.e8e8b18438a523a4",
+      "_id": "e8e8b18438a523a4",
+      "name": "Lifeless Body",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Lifeless Body</h1><p><em>Nothing breathes beneath the torn coat; nothing living looks through the visor.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-lifeless-body</p><p><strong>Action:</strong> Passive</p><p>The card must list its exact condition immunities; this trait grants no additional unlisted ones. It does not breathe or need food. Undead entries marked healing-harmed take a healing result as Life damage; constructs marked repair-only do not regain HP from ordinary healing. Neither rule prevents physical attacks from dealing their normal minimum damage.</p><p><strong>Limits:</strong> Only creatures whose entries list this ability possess it. Printed entry values and restrictions apply; no ability grants unlisted actions.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

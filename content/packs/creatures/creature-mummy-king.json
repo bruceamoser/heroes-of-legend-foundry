@@ -239,10 +239,12 @@
       "portrait": {
         "creatureId": "creature-mummy-king",
         "asset": "assets/creatures/926a02d833c629ab7e0afae18ea53c841daf82c67439448daf2df8bac14d6787.webp",
-        "sha256": "292f0bde19c93b7c5509b17ff4f50bd9bebbd47bbf61a527b408c43895725319",
+        "sha256": "d22614d79c2e41994202ec9e2adfe415c777c2a67101651205e2e9ef09cd0e43",
         "sourceSha256": "926a02d833c629ab7e0afae18ea53c841daf82c67439448daf2df8bac14d6787",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

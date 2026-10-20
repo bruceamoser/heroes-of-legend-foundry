@@ -1,3 +1,8 @@
+import { registerItemIcons } from "./services/item-icons.mjs";
+import { registerResupplyRequests } from "./services/resupply.mjs";
+import { registerCraftingRequests } from "./services/crafting.mjs";
+import { registerWoundTreatmentRequests } from "./services/wound-treatment.mjs";
+import { registerRulesLibrary } from "./applications/journals.mjs";
 import { SummonData } from "./models/summon.mjs";
 import { SummonSheet } from "./sheets/summon.mjs";
 import { registerSurvivalRequests } from "./services/survival.mjs";
@@ -51,11 +56,15 @@ Hooks.once("init", () => {
   registerConditionRequests();
   registerEquipmentRequests();
   registerInventoryRequests();
+  registerItemIcons();
+  registerResupplyRequests();
+  registerCraftingRequests();
   registerPotionRequests();
   registerItemShortcuts();
   registerDamageRequests();
   registerRecoveryRequests();
   registerWoundRequests();
+  registerWoundTreatmentRequests();
   registerSurvivalRequests();
   registerAbilityRequests();
   registerNpcAttacks();
@@ -66,6 +75,7 @@ Hooks.once("init", () => {
   registerAuthorityPrototype();
   registerCreationAuthority();
   registerLanguageSettings();
+  registerRulesLibrary();
   registerAdvancement();
   registerAuthorityPanel();
   registerTimingPrototype();

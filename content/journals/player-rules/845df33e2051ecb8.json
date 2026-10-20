@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!845df33e2051ecb8",
+  "_id": "845df33e2051ecb8",
+  "name": "Study the Pattern",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/signature-arcanist-study-the-pattern.md",
+        "sha256": "f9a6a26b4a48ca583896bd80428a1f55995ce07cd63be25484ae069de6b4af3a",
+        "id": "signature-arcanist-study-the-pattern",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!845df33e2051ecb8.eee0e32e6040fcf9",
+      "_id": "eee0e32e6040fcf9",
+      "name": "Study the Pattern",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Study the Pattern</h1><p><em>You trace the glowing lines in the air until you can feel which thread is holding the magic together.</em></p><h2>Rules</h2><p><strong>Action:</strong> Maneuver · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> One visible ongoing magical effect within 5 squares.</p><p>Learn its purpose, whether it is sustained by a creature or an object, and its remaining duration if it has one. The DA also identifies one actual way to end or avoid it, if one exists. Gain 1 Boon to your next roll using that information before the scene ends. This reveals no hidden caster location, grants no dispelling ability, and does not identify an item’s dormant properties or curses.</p><p><strong>Duration:</strong> Information remains known; the Boon ends when used or the scene ends.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 1 · <strong>DP:</strong> 2 · <strong>Requirements to learn:</strong> Class Arcanist; minimum level 1</p><p><strong>Type:</strong> Signature</p><p><strong>Tags:</strong> Magic / Utility</p><p><strong>Limits:</strong> One Boon from studying a given effect per scene; reexamining it does not refresh that Boon.</p><p><strong>ID:</strong> signature-arcanist-study-the-pattern</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.89ce8e1d2af8a0be.JournalEntryPage.0f7b9607ec6639ab]{Class choices} · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

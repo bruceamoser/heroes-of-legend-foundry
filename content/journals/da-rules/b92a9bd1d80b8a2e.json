@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!b92a9bd1d80b8a2e",
+  "_id": "b92a9bd1d80b8a2e",
+  "name": "Reproach the Caster",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/reproach-the-caster.md",
+        "sha256": "7b7111d01bd308b5b6cdb4f9cb436baeeba82b913dd2b264844ff7d98d0a17a4",
+        "id": "monster-reproach-the-caster",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!b92a9bd1d80b8a2e.9523dce8f2ec80d2",
+      "_id": "9523dce8f2ec80d2",
+      "name": "Reproach the Caster",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Reproach the Caster</h1><p><em>A whispered accusation rides the fading spell back toward the one who shaped it.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-reproach-the-caster</p><p><strong>Action:</strong> Reaction</p><p>After a spell attack resolves and deals HP damage to this creature, its visible caster within 6 squares gains Frightened 2 of this creature if the caster can hear it. This creature must survive and remain capable. No trigger from a free attack or another retaliatory effect. Frightened applies only while this creature is perceptible; the spell is not canceled.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

@@ -79,6 +79,7 @@ export async function evaluatePreparedRoll(
     woundApplicability: structuredClone(draft.woundApplicability ?? {}),
     ...plan,
     retained,
+    dice: roll.dice[0].results.map((die, index) => ({ index, face: die.result, kept: Boolean(die.active) })),
     ...result,
   };
   return { roll, snapshot };
@@ -95,10 +96,32 @@ export function renderRollSummary(message, element) {
   const summary = document.createElement("div");
   summary.className = "hol-roll-summary";
   const title = document.createElement("strong");
-  title.textContent = game.i18n.localize(`HOL.Tiers.${result.tier}`);
-  summary.append(title);
+  title.textContent = `${result.total} · ${game.i18n.localize(`HOL.Tiers.${result.tier}`)}`;
+  title.className = "hol-chat-verdict";
+  summary.dataset.tier = result.tier;
+  const header = document.createElement("header");
+  header.className = "hol-chat-header";
+  header.textContent = `${message.speaker?.alias ?? ""} · ${game.i18n.localize(`HOL.Attributes.${result.attributeKey}`)}`;
+  summary.append(header, title);
+  const original = result.dice ?? message.rolls?.[0]?.dice?.[0]?.results?.map((die, index) => ({ index, face: die.result, kept: Boolean(die.active) })) ?? [];
+  if (original.length) {
+    const dice = document.createElement("div");
+    dice.className = "hol-chat-dice";
+    dice.setAttribute("aria-label", "Rolled dice");
+    for (const die of original) {
+      const face = document.createElement("span");
+      face.className = `hol-chat-die ${die.kept ? "kept" : "discarded"}`;
+      face.dataset.dieIndex = die.index;
+      face.textContent = die.face;
+      face.setAttribute("role", "img");
+      face.setAttribute("aria-label", `${die.face}, ${die.kept ? "kept" : "discarded"}`);
+      dice.append(face);
+    }
+    summary.append(dice);
+  }
   if (result.natural !== "none") {
     const natural = document.createElement("p");
+    natural.className = "hol-chat-natural";
     natural.textContent = game.i18n.localize(`HOL.Naturals.${result.natural}`);
     summary.append(natural);
   }
@@ -160,7 +183,10 @@ export function renderRollSummary(message, element) {
       li.textContent = `${source.label}: ${source.amount} ${source.kind}`;
       list.append(li);
     }
-    summary.append(list);
+    const details = document.createElement("details"), heading = document.createElement("summary");
+    heading.textContent = "Roll details";
+    details.append(heading, list);
+    summary.append(details);
   }
   element.querySelector(".message-content")?.append(summary);
 }

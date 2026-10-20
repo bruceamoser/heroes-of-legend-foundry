@@ -201,10 +201,12 @@
       "portrait": {
         "creatureId": "creature-bugbear-ambusher",
         "asset": "assets/creatures/d866ab9ca5f6c087982f9f7d2e8d79ddcca05f2a1f027348019711ad852d3af7.webp",
-        "sha256": "2c824384714b0a5ed88f026c45a3d38a240ea4ce175f687402e7e26f78cb0eb9",
+        "sha256": "9307743637a4be52b5ea589e6b9ac2a2dce55bc47bdb92e0246064970a310009",
         "sourceSha256": "d866ab9ca5f6c087982f9f7d2e8d79ddcca05f2a1f027348019711ad852d3af7",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

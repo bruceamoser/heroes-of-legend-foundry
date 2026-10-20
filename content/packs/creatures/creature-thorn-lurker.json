@@ -255,10 +255,12 @@
       "portrait": {
         "creatureId": "creature-thorn-lurker",
         "asset": "assets/creatures/8064bbaaac80aaa3fa3621772624fa78edf0d45524b021ae4262217ab20ad898.webp",
-        "sha256": "b79bdf083873d623004fff4a5e7ec3a11af13362b9bbc9643c1377a1e35897e3",
+        "sha256": "8c279f98c9927767c5ce8b9ff805de67ccdeb2bea95ec4910d153bba199912c9",
         "sourceSha256": "8064bbaaac80aaa3fa3621772624fa78edf0d45524b021ae4262217ab20ad898",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

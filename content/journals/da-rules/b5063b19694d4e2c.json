@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!b5063b19694d4e2c",
+  "_id": "b5063b19694d4e2c",
+  "name": "Wing Step",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/wing-step.md",
+        "sha256": "2c6ada11d4acf3ee1748e92674a42b9173c128bd6761e88b84373160b8b4b098",
+        "id": "monster-wing-step",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!b5063b19694d4e2c.420938e5bda6d129",
+      "_id": "420938e5bda6d129",
+      "name": "Wing Step",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Wing Step</h1><p><em>A single hard wingbeat carries it toward a better angle.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-wing-step</p><p><strong>Action:</strong> Maneuver</p><p>Move up to 2 squares using its printed fly speed without provoking from one visible enemy chosen before moving. Pay normal terrain costs and provoke normally from other enemies. This grants no attack, automatic lift of another creature or hovering exception.</p><p>Only creatures whose entries list this ability possess it. Printed limits apply.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

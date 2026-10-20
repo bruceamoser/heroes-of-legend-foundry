@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!b84c716937b11884",
+  "_id": "b84c716937b11884",
+  "name": "Sheltering Light",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/sheltering-light.md",
+        "sha256": "018734662d30a44935b3065bb1fa17fe9bfba3df97654aa01ebaaea607fcf0a3",
+        "id": "monster-sheltering-light",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!b84c716937b11884.6a07cea2475fca17",
+      "_id": "6a07cea2475fca17",
+      "name": "Sheltering Light",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Sheltering Light</h1><p><em>Light gathers over a companion like overlapping feathers, taking the harsh edge from the impact.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-sheltering-light</p><p><strong>Action:</strong> Reaction</p><p>Before one visible willing ally within 3 squares takes damage from an attack, grant that ally Physical resistance 2 for that attack only. Use the highest matching resistance, not an added reduction; minimum damage rules remain. This does not heal, transfer damage or grant resistance to other types.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

@@ -3,6 +3,7 @@
   "_id": "8e641a4eab79df0c",
   "name": "Ordinary Shield",
   "type": "equipment",
+  "img": "systems/heroes-of-legend/assets/icons/shield.svg",
   "system": {
     "schemaVersion": 1,
     "catalogId": "item-ordinary-shield",

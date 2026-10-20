@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!533a9b640cc24ef0",
+  "_id": "533a9b640cc24ef0",
+  "name": "The Mountain Remembers",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/ancestries/trait-dwarf-stone-reader.md",
+        "sha256": "ab811121c561c4ac750579444f4a7e0d8a064fdaa47a561d4c92a4ee48b5f0a8",
+        "id": "trait-dwarf-stone-reader",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!533a9b640cc24ef0.c9e99d0eee8886be",
+      "_id": "c9e99d0eee8886be",
+      "name": "The Mountain Remembers",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>The Mountain Remembers</h1><p><em>You run your fingers across the stonework, stopping where an old seam has been cut anew.</em></p><h2>Rules</h2><p>Gain 1 Boon to examining stonework for an unsafe passage, concealed join or later alteration. Obvious construction clues need no roll; the trait does not reveal an untouched wall’s far side.</p><p><strong>Ancestry:</strong> Dwarf · <strong>Choice:</strong> one of your two traits · <strong>Action:</strong> Passive unless the effect says otherwise.</p><p><strong>Duration:</strong> While its stated circumstances apply; permanent for base statistics.</p><p><strong>ID:</strong> trait-dwarf-stone-reader</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.549990a021d2f695.JournalEntryPage.2ab42086c744e8cb]{Ancestry choices}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

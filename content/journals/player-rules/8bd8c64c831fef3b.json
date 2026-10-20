@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!8bd8c64c831fef3b",
+  "_id": "8bd8c64c831fef3b",
+  "name": "Know What You Hunt",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/signature-warden-know-what-you-hunt.md",
+        "sha256": "e33941d89f70d24032e7c21f79863b44ba45fb745e5bcdc76c97f314e382ea31",
+        "id": "signature-warden-know-what-you-hunt",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!8bd8c64c831fef3b.8c9119b11c2d596a",
+      "_id": "8c9119b11c2d596a",
+      "name": "Know What You Hunt",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Know What You Hunt</h1><p><em>You point out the plates that overlap, the limb it favors and the moment its breath catches, telling your companions where to meet it.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> One visible creature within 8 squares that you have seen perform an ability or leave physical evidence.</p><p>Study the creature and name up to three willing allies within 5 squares who can hear you. The DA reveals two true, useful facts from its actual resistances, weaknesses or observed ability restrictions. If fewer exist, learn all that exist; invent none. Each chosen ally gains 1 Boon to its next roll acting against that creature this scene. This does not expose its thoughts, unseen location or an unobserved secret identity.</p><p><strong>Duration:</strong> Facts remain known; each Boon ends when used or the scene ends.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 7 · <strong>DP:</strong> 8 · <strong>Requirements to learn:</strong> Class Warden; minimum level 7</p><p><strong>Type:</strong> Signature</p><p><strong>Tags:</strong> Skill / Utility</p><p><strong>Limits:</strong> Once per creature per scene; repeated uses do not renew spent benefits.</p><p><strong>ID:</strong> signature-warden-know-what-you-hunt</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

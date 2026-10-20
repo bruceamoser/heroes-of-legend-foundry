@@ -222,10 +222,12 @@
       "portrait": {
         "creatureId": "creature-hell-hound",
         "asset": "assets/creatures/5030db0ed09e13254295e9e0e96938382f72deef54219512ea465246a30219a2.webp",
-        "sha256": "f3cf4d051a0b5ad30aaece4bb8e571e6e807c6731be68f3e255465d5e3d2b7c0",
+        "sha256": "8c123e260d1a7031ee879ad572583ee258ebd4aadcbdc29a59dd8b36c8f6254d",
         "sourceSha256": "5030db0ed09e13254295e9e0e96938382f72deef54219512ea465246a30219a2",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

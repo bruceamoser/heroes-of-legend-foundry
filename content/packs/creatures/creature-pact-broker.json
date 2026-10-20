@@ -218,10 +218,12 @@
       "portrait": {
         "creatureId": "creature-pact-broker",
         "asset": "assets/creatures/17507fc17113fef437381e960a714cc070fd65db145b8467f63dbd6c9a859611.webp",
-        "sha256": "dbd11e7dea2c2a03da60f37fece264007766a72438726b950833a994a01464af",
+        "sha256": "54c1739820c3fea0c9eaac00475e725bd89a0d8a875695c25e418f4443b7bed5",
         "sourceSha256": "17507fc17113fef437381e960a714cc070fd65db145b8467f63dbd6c9a859611",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

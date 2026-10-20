@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!0f20822d73e3a14c",
+  "_id": "0f20822d73e3a14c",
+  "name": "A Hand in Darkness",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/signature-shepherd-a-hand-in-darkness.md",
+        "sha256": "1fe7e6f66faf5db2016217232bc35cd7f2f2008c4e5fccd6384de93846ac8601",
+        "id": "signature-shepherd-a-hand-in-darkness",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!0f20822d73e3a14c.16d5333f2d33dd35",
+      "_id": "16d5333f2d33dd35",
+      "name": "A Hand in Darkness",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>A Hand in Darkness</h1><p><em>You hurry to the fallen voice, keep a hand against the wound and draw your companion into the shelter beside you.</em></p><h2>Rules</h2><p><strong>Action:</strong> Reaction · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> One ally within 3 squares, immediately after it enters Dying and its wound is resolved.</p><p>Move up to 3 squares without provoking to a free square adjacent to the ally, then Stabilize it. You may move the ally 1 square to another free square adjacent to you without provoking if you have a free hand and can support its weight. If no route reaches it, you cannot use this card. Restore no HP and remove no wound; Last Words cannot be interrupted.</p><p><strong>Duration:</strong> Immediate approach, stabilization and optional extraction.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 7 · <strong>DP:</strong> 8 · <strong>Requirements to learn:</strong> Class Shepherd; minimum level 7</p><p><strong>Type:</strong> Signature</p><p><strong>Tags:</strong> Skill / Recovery / Movement</p><p><strong>Limits:</strong> Repeatable; normal action economy applies.</p><p><strong>ID:</strong> signature-shepherd-a-hand-in-darkness</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.9f89a95738256790.JournalEntryPage.0577d987ea27d2c6]{Class choices} · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

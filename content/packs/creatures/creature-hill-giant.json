@@ -235,10 +235,12 @@
       "portrait": {
         "creatureId": "creature-hill-giant",
         "asset": "assets/creatures/c95764cdd1ab4866f0b1ed001d50c80cc0c46575dfafbc24b479c556a43d5cee.webp",
-        "sha256": "c69cd8bf43c9e4a7dd675d8ec20cb819de3dfb0d4d8b34f10e02e10dae54ed62",
+        "sha256": "bd4fcaad038d841d21fc8fd1c32c5413e5ccc78267cbdc54534ee826ba67427b",
         "sourceSha256": "c95764cdd1ab4866f0b1ed001d50c80cc0c46575dfafbc24b479c556a43d5cee",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

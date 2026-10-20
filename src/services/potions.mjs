@@ -105,6 +105,7 @@ function recognizedPotionSource(sourceItem) {
 }
 
 function recognizedPotionItem(item, catalog) {
+  if (item?.system?.quantity === 0) throw new Error("This healing bottle has no quantity remaining.");
   if (!isHealingPotionItem(item))
     throw new Error("Choose an exact owned healing bottle.");
   const potion = healingPotionAdapter(item.system.catalogId, catalog);
@@ -175,6 +176,7 @@ function actorPotionBasis(actor) {
       .filter((item) => item.type === "equipment")
       .map((item) => ({
         id: item.id,
+        quantity: item.system.quantity,
         hands: item.system.hands,
         held: item.system.held,
       })),

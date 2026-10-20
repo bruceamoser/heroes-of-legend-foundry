@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!711448e49ed6b550",
+  "_id": "711448e49ed6b550",
+  "name": "Bat Aside the Missile",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/bat-aside-the-missile.md",
+        "sha256": "15c9510df66322b501bed76dfacb9a1843ef46ce2bddf989fd080c4ebb528056",
+        "id": "monster-bat-aside-the-missile",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!711448e49ed6b550.9b633695a3fa08ec",
+      "_id": "9b633695a3fa08ec",
+      "name": "Bat Aside the Missile",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Bat Aside the Missile</h1><p><em>A broad hand or haft meets the incoming missile with the ease of brushing a branch aside.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-bat-aside-the-missile</p><p><strong>Action:</strong> Reaction</p><p>Before one physical ranged attack from a visible attacker against this creature is rolled, impose 1 Bane on that attack. Against an NPC attack, grant 1 Boon to its defense instead. No protection against area attacks; no missile is returned and the attack still resolves.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

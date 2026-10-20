@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!4711910bbd725f4f",
+  "_id": "4711910bbd725f4f",
+  "name": "Drain Warmth",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/drain-warmth.md",
+        "sha256": "2fbea4f5057126d767762a8ed100476b772ba74f8ba54c4677821f00a7d28fe0",
+        "id": "drain-warmth",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!4711910bbd725f4f.10497f00918ebd55",
+      "_id": "10497f00918ebd55",
+      "name": "Drain Warmth",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Drain Warmth</h1><p><em>You curl your fingers and watch a little color leave their face.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> Guile</p><p><strong>Target / range / shape:</strong> One visible creature within 4 squares</p><p>Choose one creature you can see within 4 squares and make an attack using Guile. Deal Life damage as shown below; Life resistance applies. This attack does not heal you. When an NPC uses it against a player character, that character defends with Fortitude.</p><p>- <strong>Weak:</strong> 2 Life damage. - <strong>Standard:</strong> 3 Life damage. - <strong>Strong:</strong> 5 Life damage.</p><p><strong>Duration:</strong> Instant. Applied conditions follow their normal duration and decay.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 1 · <strong>DP:</strong> 2 · <strong>Requirements to learn:</strong> Life 1</p><p><strong>Type:</strong> Magic / Attack</p><p><strong>Limits:</strong> Pay the printed action and any full activity time for each use.</p><p><strong>ID:</strong> drain-warmth</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

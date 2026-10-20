@@ -3,6 +3,7 @@
   "_id": "6627e12b5d3c83f9",
   "name": "Lesser Healing Bottle",
   "type": "equipment",
+  "img": "systems/heroes-of-legend/assets/icons/potion.svg",
   "system": {
     "schemaVersion": 1,
     "catalogId": "item-lesser-healing-bottle",

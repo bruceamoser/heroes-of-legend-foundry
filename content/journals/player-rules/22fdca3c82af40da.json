@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!22fdca3c82af40da",
+  "_id": "22fdca3c82af40da",
+  "name": "Wear Heavy Armor",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/wear-heavy-armor.md",
+        "sha256": "ef2ad8f5e77167bbecab905a9baad19b28ae0ce93d8e8953aa92824a8a48e864",
+        "id": "wear-heavy-armor",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!22fdca3c82af40da.f657cf6ea4f1a314",
+      "_id": "f657cf6ea4f1a314",
+      "name": "Wear Heavy Armor",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Wear Heavy Armor</h1><p><em>You settle the last strap and feel the weight become part of the way you stand.</em></p><h2>Rules</h2><p><strong>Action:</strong> Passive · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Self</p><p>While wearing heavy armor, gain physical resistance 3. Use the highest matching resistance; normal cap 3.</p><p><strong>Duration:</strong> While wearing the trained armor.</p><p><strong>Equipment / acquisition:</strong> One ordinary heavy armor, Bulk 1, if absent.</p><p>---</p><p><strong>Tier / minimum level:</strong> 7 · <strong>DP:</strong> 8 · <strong>Requirements to learn:</strong> Armor 3</p><p><strong>Type:</strong> Training / Passive</p><p><strong>Limits:</strong> Purchase once.</p><p><strong>ID:</strong> wear-heavy-armor</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

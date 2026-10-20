@@ -3,6 +3,7 @@
   "_id": "03c46c1854e085d0",
   "name": "Musical Instrument",
   "type": "equipment",
+  "img": "systems/heroes-of-legend/assets/icons/lute.svg",
   "system": {
     "schemaVersion": 1,
     "catalogId": "item-musical-instrument",

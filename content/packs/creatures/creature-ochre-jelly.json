@@ -222,10 +222,12 @@
       "portrait": {
         "creatureId": "creature-ochre-jelly",
         "asset": "assets/creatures/936ae66c8dbe158576a0e7175ef535e817e87a3f53423d3e8b7abd656e44374b.webp",
-        "sha256": "7b52cce952c3d73bd71642ba13cda0dc1bd0fafbeae607e695986ac88e84fae4",
+        "sha256": "b4eb8fc49dd7f135109db878e3208145b8cc81b11380625d30cce8138561b511",
         "sourceSha256": "936ae66c8dbe158576a0e7175ef535e817e87a3f53423d3e8b7abd656e44374b",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

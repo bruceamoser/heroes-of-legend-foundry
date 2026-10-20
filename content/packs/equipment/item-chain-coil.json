@@ -3,6 +3,7 @@
   "_id": "942b9a953760ecaa",
   "name": "Chain Coil",
   "type": "equipment",
+  "img": "systems/heroes-of-legend/assets/icons/chain.svg",
   "system": {
     "schemaVersion": 1,
     "catalogId": "item-chain-coil",

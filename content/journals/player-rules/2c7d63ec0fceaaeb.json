@@ -1,0 +1,39 @@
+{
+  "_key": "!journal!2c7d63ec0fceaaeb",
+  "_id": "2c7d63ec0fceaaeb",
+  "name": "Human",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/ancestries/human.md",
+        "sha256": "6295900564112ba0ee375c96343a1258898e5cbe0122672ea2c04e9a33dbaa1f",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!2c7d63ec0fceaaeb.a1f2f2c04154f50a",
+      "_id": "a1f2f2c04154f50a",
+      "name": "Human",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Human</h1><p><em>Restless, adaptable and fiercely invested in a life that never feels long enough.</em></p><h2>Rules</h2><p>Choose two of the five traits below. These are invitations to a familiar fantasy, not a required personality. Any ancestry may grow up in any culture.</p><p><strong>Starting values:</strong> HP +2; base Speed 6.</p><p>- @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.61b0d88447c2e217.JournalEntryPage.7ec549a88d2c0fd2]{Never Quite Finished} — There is always one more person to help, one more hill to cross. - @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.842bdbfabf5a03a8.JournalEntryPage.245562163cefc790]{Road in the Blood} — The horizon has never looked like a place to stop. - @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.9359afe57094a038.JournalEntryPage.3dbcab3603c8f263]{A Foot in Two Worlds} — You learned early that a stranger is sometimes only a person whose words you do not know. - @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.049752f9959c6e53.JournalEntryPage.c17d086cf4b23a5f]{Make Room at the Fire} — You can turn a cold greeting into a place at the table. - @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.68c8ac2592b5b5b3.JournalEntryPage.aacc4de0d7e4c5f2]{The Impossible Streak} — Someone says it cannot be done, and you hear a challenge.</p><p><strong>Starting coin contribution:</strong> +1 coins. See @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0558be1f6014ee71.JournalEntryPage.880380bcd80cfec6]{starting coins}.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

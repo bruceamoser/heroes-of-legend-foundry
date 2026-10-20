@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!5b70c2319ab8508e",
+  "_id": "5b70c2319ab8508e",
+  "name": "Pounce of the Red Claw",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/pounce-of-the-red-claw.md",
+        "sha256": "2977ef9d8d7fcf90f95f3aaa2b3da690d6b896ac6fbf772ff12a3c669e4f1365",
+        "id": "pounce-of-the-red-claw",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!5b70c2319ab8508e.440a4fd0423a8acc",
+      "_id": "440a4fd0423a8acc",
+      "name": "Pounce of the Red Claw",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Pounce of the Red Claw</h1><p><em>You gather yourself low and spring with a hunter’s sudden certainty.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> Agility</p><p><strong>Target / range / shape:</strong> One creature reachable by a legal move of up to 2 squares.</p><p>Claws or a fleeting beast-shape carry you into the leap. Move up to 2 squares, then strike an adjacent target; no prior transformation is required. Movement provokes normally.</p><p>- <strong>Weak:</strong> 3 physical damage. - <strong>Standard:</strong> 4 physical damage and knock prone. - <strong>Strong:</strong> 6 physical damage and knock prone; move 1 square without provoking afterward.</p><p><strong>Duration:</strong> Instant. Applied conditions follow their normal duration and decay.</p><p><strong>Equipment / acquisition:</strong> No item needed unless named above.</p><p>---</p><p><strong>Tier / minimum level:</strong> 3 · <strong>DP:</strong> 4 · <strong>Requirements to learn:</strong> Wilderness 2 and Athletics 1</p><p><strong>Type:</strong> Magic / Attack</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> pounce-of-the-red-claw</p><p>Build this character · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

@@ -3,6 +3,7 @@
   "_id": "1957ce7e11fe0e39",
   "name": "Lever and Wedges",
   "type": "equipment",
+  "img": "systems/heroes-of-legend/assets/icons/tools.svg",
   "system": {
     "schemaVersion": 1,
     "catalogId": "item-lever-and-wedges",

@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!b5bd6a790ca68620",
+  "_id": "b5bd6a790ca68620",
+  "name": "Secure a Hold",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/secure-a-hold.md",
+        "sha256": "7db5bedcb166f94b5861caf29946dbd1a7cf376642431ff16023fd18247b3322",
+        "id": "secure-a-hold",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!b5bd6a790ca68620.20d78c4719b165f2",
+      "_id": "20d78c4719b165f2",
+      "name": "Secure a Hold",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Secure a Hold</h1><p><em>You step close, catch your opponent’s arm or body, and lock your weight against theirs. Holding them still leaves you committed to the same struggle.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> Brawn</p><p><strong>Target / range / shape:</strong> One adjacent creature</p><p>Roll Brawn.</p><p>- <strong>Weak:</strong> Apply Grappled 1. - <strong>Standard:</strong> Apply Grappled 2. - <strong>Strong:</strong> Apply Grappled 3.</p><p>You suffer the same rating as your contribution; other grapplers add to the target. No damage. Maintained, no decay; freely release your contribution. Attacks gain Boons equal to target Grappled rating. NPC defense: Brawn.</p><p><strong>Duration:</strong> While the grapple is maintained; ends when its contribution is released or removed.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 1 · <strong>DP:</strong> 2 · <strong>Requirements to learn:</strong> Athletics 1</p><p><strong>Type:</strong> Skill / Utility</p><p><strong>Limits:</strong> Pay the printed action and any full activity time for each use.</p><p><strong>ID:</strong> secure-a-hold</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

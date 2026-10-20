@@ -1,0 +1,39 @@
+{
+  "_key": "!journal!a40af9fbf2f30635",
+  "_id": "a40af9fbf2f30635",
+  "name": "Backgrounds",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/player-book/manuscript/intro-background.md",
+        "sha256": "a24f44dd16d4a67e91cdf5736e93088ce8579506d233eb3010b5da7fdf6512f4",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!a40af9fbf2f30635.ca18aacf719c1deb",
+      "_id": "ca18aacf719c1deb",
+      "name": "Backgrounds",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Backgrounds</h1><p>Your background is a chapter of your life before adventuring. You might have watched a gate, tended the wounded, traveled with performers or learned to survive by a quick hand and a quicker smile. Choose something that gives you a memory, a connection and a reason to leave familiar ground.</p><p>Choose <strong>one complete paired option</strong> from the background. It grants a rank-1 discipline and its accompanying ability at level 0, and contributes to starting coins. Culture and background can point in the same direction or reveal different sides of your hero. Resolve duplicate grants before spending your level-0 DP. The @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.f96a6421bb52ac90.JournalEntryPage.b84fcd9536c51a01]{discipline chapter} explains the requirements those ranks satisfy.</p><p>Each duplicate grant gives <strong>1 level-0 DP</strong> instead of an automatic higher rank or a replacement choice. Spend it before closing that stage. Follow the granted ability’s equipment line; an item is supplied only if its grant calls for one.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

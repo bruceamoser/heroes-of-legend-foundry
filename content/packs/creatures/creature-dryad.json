@@ -196,10 +196,12 @@
       "portrait": {
         "creatureId": "creature-dryad",
         "asset": "assets/creatures/ea3b3b69e1deaa98f22187652af73619d4b586ebcf67e4ee983194b25a62b7cd.webp",
-        "sha256": "3418daf5039adb4c7ca9611a3ffcac0ad59e72b9d327919a59fcc0d00cb23dcf",
+        "sha256": "7cf1a7c408e22d5d4362ef0ff5ad0c65efa4b8521074e79a41fd2319339d0f31",
         "sourceSha256": "ea3b3b69e1deaa98f22187652af73619d4b586ebcf67e4ee983194b25a62b7cd",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

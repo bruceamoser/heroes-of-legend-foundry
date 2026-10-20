@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!dab37c0b893b18ce",
+  "_id": "dab37c0b893b18ce",
+  "name": "Four Winds at Once",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/four-winds-at-once.md",
+        "sha256": "033d78b68af946e4ebbb57c30ce1ed094cfa64686efab8b042c619092e99b380",
+        "id": "four-winds-at-once",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!dab37c0b893b18ce.56822c81754d0000",
+      "_id": "56822c81754d0000",
+      "name": "Four Winds at Once",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Four Winds at Once</h1><p><em>You turn on your heel, breathing out as the air whirls outward with you.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> Fortitude</p><p><strong>Target / range / shape:</strong> Every other adjacent creature.</p><p>Turn with the wind at your heels. Make one roll using the net Boons or Banes least favorable to you among the targets; apply the result to all of them.</p><p>- <strong>Weak:</strong> 3 physical damage and push 1. - <strong>Standard:</strong> 4 physical damage and push 2. - <strong>Strong:</strong> 6 physical damage and push 2; you may move 2 squares without provoking afterward.</p><p><strong>Duration:</strong> Instant. Applied conditions follow their normal duration and decay.</p><p><strong>Equipment / acquisition:</strong> No item needed unless named above.</p><p>---</p><p><strong>Tier / minimum level:</strong> 7 · <strong>DP:</strong> 8 · <strong>Requirements to learn:</strong> Storm 2 and Athletics 2</p><p><strong>Type:</strong> Magic / Attack</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> four-winds-at-once</p><p>Build this character · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

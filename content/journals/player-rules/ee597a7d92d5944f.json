@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!ee597a7d92d5944f",
+  "_id": "ee597a7d92d5944f",
+  "name": "A Splendid Mistake",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/a-splendid-mistake.md",
+        "sha256": "7f8749e6efc6000bd503e8a1fd8cc6829ba07102259d6125f5a3643a94d034b6",
+        "id": "a-splendid-mistake",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!ee597a7d92d5944f.d4debf6e9e409c89",
+      "_id": "d4debf6e9e409c89",
+      "name": "A Splendid Mistake",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>A Splendid Mistake</h1><p><em>You cup a swelling ball of magic between your hands and hurl it away before it bursts. A final twist turns the blast into a rush of fire or branching lightning.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> Guile</p><p><strong>Target / range / shape:</strong> Every creature in a visible 3-by-3 area within 5 squares.</p><p>Choose fire or lightning and the area before rolling. Affect every creature in it, including allies. Make one Guile attack using the least favorable net Boons/Banes among those targets.</p><p>- <strong>Weak:</strong> Deal 4 damage of the chosen type to each target. - <strong>Standard:</strong> Deal 4 damage to each, then push each 1 square away from the area’s center. - <strong>Strong:</strong> Deal 6 damage to each, then push each 2 squares away from the center.</p><p>Resolve the pushes in an order you choose. For a target in the center square, choose its push direction before moving it.</p><p><strong>Duration:</strong> Instant. Applied conditions follow their normal duration and decay.</p><p><strong>Equipment / acquisition:</strong> No item needed unless named above.</p><p>---</p><p><strong>Tier / minimum level:</strong> 7 · <strong>DP:</strong> 8 · <strong>Requirements to learn:</strong> Flame 3</p><p><strong>Type:</strong> Magic / Attack</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> a-splendid-mistake</p><p>Build this character · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

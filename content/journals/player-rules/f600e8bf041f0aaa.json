@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!f600e8bf041f0aaa",
+  "_id": "f600e8bf041f0aaa",
+  "name": "Through Bramble and Stone",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/signature-warden-through-bramble-and-stone.md",
+        "sha256": "e73b56834cb1f5e12cb10c42e3986739e25507151ed1aa750cf8a0e4ce96b3eb",
+        "id": "signature-warden-through-bramble-and-stone",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!f600e8bf041f0aaa.2a0bfaff49598758",
+      "_id": "2a0bfaff49598758",
+      "name": "Through Bramble and Stone",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Through Bramble and Stone</h1><p><em>You lift a thorny branch, find a foothold between the stones and turn to show your companion the way through.</em></p><h2>Rules</h2><p><strong>Action:</strong> Maneuver · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Self and one willing ally initially adjacent.</p><p>Move up to 3 squares along a legal route, ignoring difficult-terrain surcharges and without provoking. Then the ally may move up to 1 square with the same benefits, ending adjacent to you. Both must be able to move and finish in supported free squares. If the ally cannot reach a legal adjacent endpoint, it stays where it is. No gaps, barriers or occupied standing squares are crossed.</p><p><strong>Duration:</strong> Instant.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 3 · <strong>DP:</strong> 4 · <strong>Requirements to learn:</strong> Class Warden; minimum level 3</p><p><strong>Type:</strong> Signature</p><p><strong>Tags:</strong> Skill / Movement</p><p><strong>Limits:</strong> Each participant moves once per use.</p><p><strong>ID:</strong> signature-warden-through-bramble-and-stone</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

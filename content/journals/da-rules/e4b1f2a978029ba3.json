@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!e4b1f2a978029ba3",
+  "_id": "e4b1f2a978029ba3",
+  "name": "Kobold Trapkeeper (CV 7)",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/bestiary/creatures/kobold-trapkeeper.md",
+        "sha256": "6af12e09cdfa5a12d1ca81ef458c92d4057975969d8a0a4865731a78456511c6",
+        "id": "creature-kobold-trapkeeper",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!e4b1f2a978029ba3.ca18e3485911e4a1",
+      "_id": "ca18e3485911e4a1",
+      "name": "Kobold Trapkeeper (CV 7)",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Kobold Trapkeeper (CV 7)</h1><p><em>A small, lightly built kobold with a dart case, tool belt and marked cords identifying safe routes. Careful preparation lets the trapkeeper defend a home against much larger intruders.</em></p><p><strong>Attributes:</strong> Brawn -1; Fortitude +0; Agility +2; Guile +1; Knowledge +1; Reason +0</p><p><strong>HP:</strong> 8 · <strong>Speed:</strong> 6 · <strong>Size:</strong> 1 (medium) · <strong>Armor DR:</strong> 0</p><p><strong>Evasion:</strong> 1 Bane · <strong>Threat:</strong> None · <strong>Stability:</strong> 0</p><p><strong>Weaknesses:</strong> None\\ <strong>Resistances:</strong> None\\ <strong>Immunities:</strong> None</p><h2>Actions</h2><p>Damage and effects are <strong>Weak / Standard / Strong player defense</strong>. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.</p><table><thead><tr><th scope=\"col\">Main Actions</th><th scope=\"col\">Defense</th><th scope=\"col\">Damage</th></tr></thead><tbody><tr><td>Basic Melee</td><td>Agility</td><td>4/2/1</td></tr><tr><td>Dart</td><td>Agility</td><td>4/3/2</td></tr></tbody></table><table><thead><tr><th scope=\"col\">Maneuvers</th><th scope=\"col\">Effect</th></tr></thead><tbody><tr><td>Scatter caltrops</td><td>Choose 2 connected empty ground squares within 2 squares. They are difficult terrain until cleared with a Main Action from an adjacent square. No damage or entry attack. Once per scene.</td></tr><tr><td>Defend</td><td>+1 Bane</td></tr></tbody></table><table><thead><tr><th scope=\"col\">Reactions</th><th scope=\"col\">Effect</th></tr></thead><tbody><tr><td>Opportunity Attack</td><td>Basic Melee</td></tr></tbody></table><h2>Details</h2><h3>Dart</h3><p><strong>Ammunition:</strong> inventory d6. After each use, roll the inventory die; on 1, reduce d6 to d4, or d4 to empty. Cannot use this attack while empty.</p><p><strong>Target:</strong> One visible creature within 6 squares. <strong>Player defense:</strong> Agility. <strong>Damage type:</strong> physical.</p><h3>General details</h3><p><strong>Basic Melee:</strong> One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.</p><p><strong>Defend:</strong> Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.</p><p><strong>Opportunity Attack:</strong> Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.</p><p><strong>Healing:</strong> Living: ordinary HP healing applies.</p><p><strong>Senses:</strong> Ordinary sight and hearing.</p><p><strong>Signs:</strong> Colored knots identify safe footholds to those who know the code.</p><p><strong>Purpose:</strong> Keep larger intruders out of a shared home.</p><p><strong>Tactics and retreat:</strong> Fight behind prepared rubble and retreat through known gaps.</p><p><strong>Counterplay and conversation:</strong> Ask for a guide or follow the marked safe path; the traps defend a place, not a species-wide grudge.</p><p><strong>Habitat:</strong> Mine; warren · <strong>Communication:</strong> Common and Kobold</p><p><strong>Loot:</strong> Light tools, ranged weapon and 4 coins.</p><p><strong>Summoning:</strong> Ineligible.</p><h2>Design notes — not needed during play</h2><p><strong>ID:</strong> creature-kobold-trapkeeper</p><p><strong>Category:</strong> Mortal · <strong>Role:</strong> Terrain keeper · <strong>CV:</strong> 7</p><h3>Creature-roll reference</h3><table><thead><tr><th scope=\"col\">Attack</th><th scope=\"col\">Attribute</th><th scope=\"col\">Attack modifier</th><th scope=\"col\">Weak attack</th><th scope=\"col\">Standard attack</th><th scope=\"col\">Strong attack</th></tr></thead><tbody><tr><td>Dart</td><td>Agility</td><td>None</td><td>2 physical damage.</td><td>3 physical damage.</td><td>4 physical damage.</td></tr></tbody></table><p>The incoming attack names the defense attribute; use the six values above. Same targeting, costs and limits apply in either perspective. No opposed second roll.</p><h3>CV worksheet</h3><p><strong>Difficulty rationale:</strong> An agile or elusive body warrants attack Banes. Ordinary attack difficulty; riders and positioning carry the threat.</p><p><strong>Reference damage:</strong> 2/3/4</p><p><strong>Reference type:</strong> physical</p><p><strong>Expected targets:</strong> 1</p><p><strong>Utility factor:</strong> 1.2</p><p><strong>Regeneration per turn:</strong> 0</p><p>Reference I=4.404, O=2.000. CV uses the seed worksheet; action choices, Stability and control are not simulated. Recalibration remains required.</p><p>Roster · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.5ebfaad0d5ed6813.JournalEntryPage.3292b6a49dcf7236]{Agreed Stability}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

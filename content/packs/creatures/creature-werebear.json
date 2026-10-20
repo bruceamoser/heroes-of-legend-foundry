@@ -218,10 +218,12 @@
       "portrait": {
         "creatureId": "creature-werebear",
         "asset": "assets/creatures/848730fbf6d4c8f7c0d1e1aff96b12fca9698e22927dd6516ed5419decf2772f.webp",
-        "sha256": "a64dea4208b895db314ad402f36b4b122d79aee963b122aa0255af93db0a0680",
+        "sha256": "128b79e4b26dacb3af74bf91af4a0d581662e020baa7ab2641b95f6b141646cb",
         "sourceSha256": "848730fbf6d4c8f7c0d1e1aff96b12fca9698e22927dd6516ed5419decf2772f",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

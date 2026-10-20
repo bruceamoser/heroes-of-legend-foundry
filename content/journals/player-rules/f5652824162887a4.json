@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!f5652824162887a4",
+  "_id": "f5652824162887a4",
+  "name": "Catch That!",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/catch-that.md",
+        "sha256": "10305d031c2366ee61193e5fe560514f91bee9dbc42a1a2c179f889d6b8acb51",
+        "id": "catch-that",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!f5652824162887a4.d8a671e34b09d015",
+      "_id": "d8a671e34b09d015",
+      "name": "Catch That!",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Catch That!</h1><p><em>Your hand snaps out beneath the falling bottle, catching it before it shatters on the stones.</em></p><h2>Rules</h2><p><strong>Action:</strong> Reaction · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> One falling, unattended item in your square or an adjacent square, within reach. Before it lands or falls out of reach.</p><p>Catch the item in a free hand. It must be small enough to hold in that hand. This cannot intercept an attack or take an item another creature is holding.</p><p><strong>Duration:</strong> Instant.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 1 · <strong>DP:</strong> 1 · <strong>Requirements to learn:</strong> None</p><p><strong>Type:</strong> Skill / Utility</p><p><strong>Limits:</strong> Purchase once; each use spends your Reaction.</p><p><strong>ID:</strong> catch-that</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

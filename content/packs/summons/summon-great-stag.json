@@ -116,10 +116,12 @@
       "portrait": {
         "creatureId": "creature-great-stag",
         "asset": "assets/creatures/736a58085e838b140638ef5b352430ab185d42c1275650450f9d6cb71173809c.webp",
-        "sha256": "bfd720b52a218c9118694ea431dc4ba2c5c9780c8b77898df999e95dd809630e",
+        "sha256": "321365dc4fe10d6f935ff6b9e4f027a3a73e80c6fbd84371eb65af88c8155e1c",
         "sourceSha256": "736a58085e838b140638ef5b352430ab185d42c1275650450f9d6cb71173809c",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

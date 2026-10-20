@@ -3,6 +3,7 @@
   "_id": "1013231672e8c6da",
   "name": "Ordinary Medium Armor",
   "type": "equipment",
+  "img": "systems/heroes-of-legend/assets/icons/armor.svg",
   "system": {
     "schemaVersion": 1,
     "catalogId": "item-ordinary-medium-armor",

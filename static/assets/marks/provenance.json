@@ -1,0 +1,100 @@
+{
+  "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+  "assets": [
+    {
+      "asset": "crest.webp",
+      "source": "design/player-book/art/hol-crest-v2.png",
+      "sourceSha256": "0af633af682a86709d7359adba668e3abc529f3fe3970cb7b2279763d006015e"
+    },
+    {
+      "asset": "arms.webp",
+      "source": "design/player-book/art/interior/symbol-arms.png",
+      "sourceSha256": "80ccb98ec28724f627a142194c94b13e61ef5dbdee88112135c7d264c420f2d2"
+    },
+    {
+      "asset": "armor.webp",
+      "source": "design/player-book/art/interior/symbol-armor.png",
+      "sourceSha256": "97c57b9b33f37e0303f3dd59e8711f67ac5344fbb4ab519c6d0d6b2ea0b489e6"
+    },
+    {
+      "asset": "athletics.webp",
+      "source": "design/player-book/art/interior/symbol-athletics.png",
+      "sourceSha256": "b2e92d9847c139a5e3be71ceabdb76048a243f48d5c09ee47a4432d203ad51df"
+    },
+    {
+      "asset": "calling.webp",
+      "source": "design/player-book/art/interior/symbol-calling.png",
+      "sourceSha256": "0673e766aff9c0d27381f6298fe24d05e825670f825341124d11280305aa9b85"
+    },
+    {
+      "asset": "craft.webp",
+      "source": "design/player-book/art/interior/symbol-craft.png",
+      "sourceSha256": "879038e69cc97c887da3629ba262ada70288d645855a19c35e2eaaf058565ece"
+    },
+    {
+      "asset": "flame.webp",
+      "source": "design/player-book/art/interior/symbol-flame.png",
+      "sourceSha256": "4141ceaaa01f4a68d57a2a3707fd812f5101ea2b30e1189a3edbf6c430cb3247"
+    },
+    {
+      "asset": "frost.webp",
+      "source": "design/player-book/art/interior/symbol-frost.png",
+      "sourceSha256": "298a708b92ce174bd18bbe46d39dff8972d029a7e924f7e9415ea6b7ba9cb3ff"
+    },
+    {
+      "asset": "guard.webp",
+      "source": "design/player-book/art/interior/symbol-guard.png",
+      "sourceSha256": "4f7c999934b3de0a7d8e140505ae5e93cc5793d485d355ed20fd112567fba065"
+    },
+    {
+      "asset": "influence.webp",
+      "source": "design/player-book/art/interior/symbol-influence.png",
+      "sourceSha256": "b32e36c597be0389205e75ba6858cfaf3a0d523937247672be948a9bf2296ff0"
+    },
+    {
+      "asset": "life.webp",
+      "source": "design/player-book/art/interior/symbol-life.png",
+      "sourceSha256": "ae5dcd6ce83301574af5b2d1ffc2cce42ac6779d8f8956bb54a609dd778970b2"
+    },
+    {
+      "asset": "marksmanship.webp",
+      "source": "design/player-book/art/interior/symbol-marksmanship.png",
+      "sourceSha256": "450b1a6e11000a99823d2d768b5d75bf2e5b607a56df8a696eff6d8878d54f44"
+    },
+    {
+      "asset": "medicine.webp",
+      "source": "design/player-book/art/interior/symbol-medicine.png",
+      "sourceSha256": "441c09f3fbcc670563026fbcbbd3618e54ef3c0926a67aeb68d3776ea6df0f61"
+    },
+    {
+      "asset": "mind.webp",
+      "source": "design/player-book/art/interior/symbol-mind.png",
+      "sourceSha256": "def8da57766486cc88031ddbe9a09d6e4c4b31c5b71eabcb61b391ca0afd23f7"
+    },
+    {
+      "asset": "radiance.webp",
+      "source": "design/player-book/art/interior/symbol-radiance.png",
+      "sourceSha256": "406fe22869dcdc26ca215bd44222fe1e6f2bcd145a973b83b410632f426bb9b5"
+    },
+    {
+      "asset": "scholarship.webp",
+      "source": "design/player-book/art/interior/symbol-scholarship.png",
+      "sourceSha256": "3b1d7e99594e2876e4aba79c1e82672633900e6b98361495e8986cb9d2529d3a"
+    },
+    {
+      "asset": "storm.webp",
+      "source": "design/player-book/art/interior/symbol-storm.png",
+      "sourceSha256": "4a575440ef3fd0d06fb50a0a28ae574bd49252d52a5d4b6f8c4f08026878c8aa"
+    },
+    {
+      "asset": "subterfuge.webp",
+      "source": "design/player-book/art/interior/symbol-subterfuge.png",
+      "sourceSha256": "9f09bb08ea3093685dca1ca7b5e3f8b08b2fb484962e9437bfafa622a1560a3b"
+    },
+    {
+      "asset": "wilderness.webp",
+      "source": "design/player-book/art/interior/symbol-wilderness.png",
+      "sourceSha256": "b6de3eb6b6f276c5ea2816c12aa91716c2e458895cfed6240147243bc614ff52"
+    }
+  ]
+}

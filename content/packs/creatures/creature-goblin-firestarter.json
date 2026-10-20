@@ -196,10 +196,12 @@
       "portrait": {
         "creatureId": "creature-goblin-firestarter",
         "asset": "assets/creatures/a14c8100421a4c27169f94c736da8c417c6432c12e3f248e49cc3a4ff953a1d3.webp",
-        "sha256": "7635440a9e13b749d6ea82e3e9f3bebfcd841e11cc577f3304dc064efa1f8b67",
+        "sha256": "6a24764c0b4e483340624b977426f72ffe47d9a0575afb6eb3355931b11b2aca",
         "sourceSha256": "a14c8100421a4c27169f94c736da8c417c6432c12e3f248e49cc3a4ff953a1d3",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

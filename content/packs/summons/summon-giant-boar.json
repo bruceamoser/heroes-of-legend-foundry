@@ -121,10 +121,12 @@
       "portrait": {
         "creatureId": "creature-giant-boar",
         "asset": "assets/creatures/32dac82ef4076d8e0863cac2ab05845e97c9bfbf37011e2a8d34768ab3e6a196.webp",
-        "sha256": "778d6be3039f763d86892e60b1228e3bc171c65af99f5e8e90bee97b58558dee",
+        "sha256": "ddac0b6072306867db1af3b0bdac58ebf0c23de5e8f70ee404ac1b7cce8372f9",
         "sourceSha256": "32dac82ef4076d8e0863cac2ab05845e97c9bfbf37011e2a8d34768ab3e6a196",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

@@ -125,10 +125,12 @@
       "portrait": {
         "creatureId": "creature-air-elemental",
         "asset": "assets/creatures/f5b6c68e7c5683ae5844d5fec415ff6a18ac9547f8ef1ce3b6d9afb7a34a2694.webp",
-        "sha256": "fb50e96865c97be72823ff10d7184a9c18a2144a437efdedb9dc41a77c2913d1",
+        "sha256": "0efa3de32d57a9c19294b6dd4aacbce3deaa8c1946e8ef85b42c0bf81986da3d",
         "sourceSha256": "f5b6c68e7c5683ae5844d5fec415ff6a18ac9547f8ef1ce3b6d9afb7a34a2694",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

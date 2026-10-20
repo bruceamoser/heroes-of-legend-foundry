@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!8a23b1c3c9ccfbe1",
+  "_id": "8a23b1c3c9ccfbe1",
+  "name": "Open the Circle",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/signature-arcanist-open-the-circle.md",
+        "sha256": "ee3a03f5fe0c5e1e36c848ec97477e2aeaff781c1cb0a28d3549644ff7b37b97",
+        "id": "signature-arcanist-open-the-circle",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!8a23b1c3c9ccfbe1.7a5f9a7a9e7359d3",
+      "_id": "7a5f9a7a9e7359d3",
+      "name": "Open the Circle",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Open the Circle</h1><p><em>You sweep a ring of light around your companions, its edge rising like a thin glass wall when magic strikes.</em></p><h2>Rules</h2><p><strong>Action:</strong> Maneuver · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Self and willing allies within 2 squares when used.</p><p>Each recipient gains 1 Boon to defenses against spells until the start of your next turn. During that time, each recipient gains Stability 2 for the first forced movement against them, including being struck in a collision chain. Use the highest applicable Stability, maximum 3. This grant expires after that forced movement even if a higher Stability applied; it never reduces distance a second time. This is a ward, not physical cover.</p><p><strong>Duration:</strong> Until the start of your next turn; mark each recipient’s Stability grant when used.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 7 · <strong>DP:</strong> 8 · <strong>Requirements to learn:</strong> Class Arcanist; minimum level 7</p><p><strong>Type:</strong> Signature</p><p><strong>Tags:</strong> Magic / Defense</p><p><strong>Limits:</strong> Reapplying replaces your previous ward; it does not refresh a recipient’s spent Stability grant before your next turn.</p><p><strong>ID:</strong> signature-arcanist-open-the-circle</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.89ce8e1d2af8a0be.JournalEntryPage.0f7b9607ec6639ab]{Class choices} · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

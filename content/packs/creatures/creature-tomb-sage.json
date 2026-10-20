@@ -243,10 +243,12 @@
       "portrait": {
         "creatureId": "creature-tomb-sage",
         "asset": "assets/creatures/cbf1f5ecf6a2c6b728d2c2394808675978e4cd242469879b144506f4a9c0bd56.webp",
-        "sha256": "25b38dde0fa751d6ea74c06900848d04d29e925dca76cd0260532be3e9fe64b9",
+        "sha256": "b559d0d122b850bc22ac6c7dda5d9186ce229af15bf52d84924fd9ea3714bacc",
         "sourceSha256": "cbf1f5ecf6a2c6b728d2c2394808675978e4cd242469879b144506f4a9c0bd56",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

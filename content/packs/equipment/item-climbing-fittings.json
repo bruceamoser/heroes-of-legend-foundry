@@ -3,6 +3,7 @@
   "_id": "814d72df23e488e6",
   "name": "Climbing Fittings",
   "type": "equipment",
+  "img": "systems/heroes-of-legend/assets/icons/tools.svg",
   "system": {
     "schemaVersion": 1,
     "catalogId": "item-climbing-fittings",

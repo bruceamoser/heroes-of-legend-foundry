@@ -1,0 +1,39 @@
+{
+  "_key": "!journal!9a49536bb8ceb71d",
+  "_id": "9a49536bb8ceb71d",
+  "name": "Dragon-Dreamer",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/origins/background-dragon-dreamer.md",
+        "sha256": "3011985529a20e1e7f09014006a598b4277abd6a720a614d71f2a953045a8804",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!9a49536bb8ceb71d.1c992165f98ddaea",
+      "_id": "1c992165f98ddaea",
+      "name": "Dragon-Dreamer",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Dragon-Dreamer</h1><p><em>You dreamed of heat, wings and a voice calling you kin. Then you woke with smoke on your breath.</em></p><p><em>Was the dream a memory, a gift or an invitation?</em></p><h2>Rules</h2><p>Choose one:</p><p>- <strong>Flame 1</strong> and @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.c632cc8aace5d93d.JournalEntryPage.d7638c4e63b059f6]{Breath of the Wyrmling}. - <strong>Flame 1</strong> and @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.84088e5b4a5fe3cc.JournalEntryPage.40829df09873d845]{Let the Spark Decide}.</p><p><strong>Type:</strong> Background</p><p>Each option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.</p><p><strong>Starting coin contribution:</strong> +7 coins. See @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0558be1f6014ee71.JournalEntryPage.880380bcd80cfec6]{starting coins}.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

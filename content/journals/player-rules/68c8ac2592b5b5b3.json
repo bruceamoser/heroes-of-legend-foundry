@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!68c8ac2592b5b5b3",
+  "_id": "68c8ac2592b5b5b3",
+  "name": "The Impossible Streak",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/ancestries/trait-human-practiced-patience.md",
+        "sha256": "13c8607f57263eb51eca19176aeee301cc146289acff07491041b420b36bcb46",
+        "id": "trait-human-practiced-patience",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!68c8ac2592b5b5b3.aacc4de0d7e4c5f2",
+      "_id": "aacc4de0d7e4c5f2",
+      "name": "The Impossible Streak",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>The Impossible Streak</h1><p><em>You study the harder route, tighten your grip and begin with the stubborn care of someone determined to finish.</em></p><h2>Rules</h2><p>Once per day, declare before an ordinary noncombat roll that you are taking the difficult way on purpose. Gain 1 Boon. You still need a plausible method and any specialist permission; this does not change a card’s attribute.</p><p><strong>Ancestry:</strong> Human · <strong>Choice:</strong> one of your two traits · <strong>Action:</strong> Passive unless the effect says otherwise.</p><p><strong>Duration:</strong> While its stated circumstances apply; permanent for base statistics.</p><p><strong>ID:</strong> trait-human-practiced-patience</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.2c7d63ec0fceaaeb.JournalEntryPage.a1f2f2c04154f50a]{Ancestry choices}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

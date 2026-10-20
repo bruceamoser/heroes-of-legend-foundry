@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!cb1e8d87935009a5",
+  "_id": "cb1e8d87935009a5",
+  "name": "Breaking Roar",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/breaking-roar.md",
+        "sha256": "15d8f43da3fa65061494259e6a39a357b7fbc14090c38709e0e8a9a0632e4e53",
+        "id": "monster-breaking-roar",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!cb1e8d87935009a5.333b4bdad5d20751",
+      "_id": "333b4bdad5d20751",
+      "name": "Breaking Roar",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Breaking Roar</h1><p><em>The roar shakes the rafters; even the confident hesitate for half a breath.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-breaking-roar</p><p><strong>Action:</strong> Maneuver</p><p>One creature within 3 squares that can hear it gains Frightened 1, with this creature as the source. Once per turn. No roll and no damage; ordinary decay and immunity apply. This is deliberately limited to one target, not an automatic battlefield-wide fear aura.</p><p><strong>Limits:</strong> Only creatures whose entries list this ability possess it. Printed entry values and restrictions apply; no ability grants unlisted actions.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

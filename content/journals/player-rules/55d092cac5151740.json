@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!55d092cac5151740",
+  "_id": "55d092cac5151740",
+  "name": "Mercy in the Light",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/mercy-in-the-light.md",
+        "sha256": "92cda83704d8557f7e91ef6e4b7bb236d46e4883940eda605fae032811b47034",
+        "id": "mercy-in-the-light",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!55d092cac5151740.d4a93eab3d3b587c",
+      "_id": "d4a93eab3d3b587c",
+      "name": "Mercy in the Light",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Mercy in the Light</h1><p><em>You speak a blessing over your companion. Warm light spreads beneath your palm, easing their wounds and trembling as your own strength ebbs.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> Reason</p><p><strong>Target / range / shape:</strong> One visible willing creature within 3 squares, including self.</p><p>Pay 1 HP before rolling, ignoring resistance; you must remain above 0 HP. Requires a free hand. Life resistance reduces HP restored, to a minimum of 1 where HP is missing, capped by missing HP. A willing creature harmed by healing instead takes the printed HP amount as Life damage, with normal resistance and minimum damage, and gains no beneficial rider. This card does not permit targeting an unwilling creature. No resurrection, wound removal or Grit restoration.</p><p>- <strong>Weak:</strong> Restore 3 HP. - <strong>Standard:</strong> Restore 5 HP and reduce temporary Frightened by 1. - <strong>Strong:</strong> Restore 7 HP and reduce temporary Frightened by 2.</p><p>Reduce the condition no lower than 0; starred conditions require their stated remedy. This blessing can express a deity, a sacred oath or a personal faith; it requires no additional religious prerequisite.</p><p><strong>Duration:</strong> Healing and condition reduction are immediate.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 1 · <strong>DP:</strong> 2 · <strong>Requirements to learn:</strong> Radiance 1</p><p><strong>Type:</strong> Magic / Recovery</p><p><strong>Limits:</strong> Repeatable; pay the action and HP cost each time.</p><p><strong>ID:</strong> mercy-in-the-light</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p><p><strong>Offensive healing — latest agreement:</strong> this spell may target an unwilling creature harmed by healing. Resolve it as an attack using its printed attribute, range, action and HP cost; the HP result becomes Life damage, without beneficial recovery riders. This is the explicit exception to willing-only targeting above. Use the creature’s printed defense when a player defends; no opposed second roll.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

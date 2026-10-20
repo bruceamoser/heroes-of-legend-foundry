@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!096fa156eca0a693",
+  "_id": "096fa156eca0a693",
+  "name": "Shelter the Fallen",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/signature-protector-shelter-the-fallen.md",
+        "sha256": "0da6754f6c2ec594d538ceaa2348dd6c536800c18d2fb0d6f8614e5591cf7444",
+        "id": "signature-protector-shelter-the-fallen",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!096fa156eca0a693.70ef02f3a0dabb81",
+      "_id": "70ef02f3a0dabb81",
+      "name": "Shelter the Fallen",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Shelter the Fallen</h1><p><em>You drop beside your fallen companion, steady their breathing and drag them behind your guard in one practiced motion.</em></p><h2>Rules</h2><p><strong>Action:</strong> Maneuver · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> One adjacent Dying player-character ally.</p><p>Stabilize it, then move it up to 2 squares to a free square adjacent to you without provoking. You need a free hand and must be able to support its weight. Gain Defend until the start of your next turn. This restores no HP and removes no wound; it cannot interrupt Last Words.</p><p><strong>Duration:</strong> Stabilization and relocation are immediate; your Defend ends at the start of your next turn.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 3 · <strong>DP:</strong> 4 · <strong>Requirements to learn:</strong> Class Protector; minimum level 3</p><p><strong>Type:</strong> Signature</p><p><strong>Tags:</strong> Skill / Recovery / Movement / Defense</p><p><strong>Limits:</strong> Repeatable; normal action economy applies.</p><p><strong>ID:</strong> signature-protector-shelter-the-fallen</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.fec08732fb31ffd9.JournalEntryPage.bdb294c8658c26c8]{Class choices} · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

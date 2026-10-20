@@ -1,0 +1,39 @@
+{
+  "_key": "!journal!e441cfe2c60d86b8",
+  "_id": "e441cfe2c60d86b8",
+  "name": "Recipes",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/player-book/manuscript/intro-recipes.md",
+        "sha256": "32859a813a0d08f7cccd7d80183a87cd854a8c6a77afec3134249d83f5b866a0",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!e441cfe2c60d86b8.68831018055ccff4",
+      "_id": "68831018055ccff4",
+      "name": "Recipes",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Recipes</h1><p>A recipe is the knowledge of how to make a particular thing. It tells you which crafting ability permits the work, what tools and materials you need, how long an attempt takes, and what the result produces. Knowing a recipe does not supply its ingredients or grant the ability needed to use it.</p><p>Read the entry before beginning. A project may accumulate progress toward a completion target; a supply recipe may instead raise an existing inventory die. Follow the printed outcomes and limits. Starting crafting abilities provide their stated recipe choices; you can learn further compatible recipes through the appropriate ability or discover them during play.</p><p><strong>Granted by</strong> tells you how a recipe enters your repertoire. <strong>Used with</strong> lists abilities that can carry out its work. Ordinary Recipe Study grants two compatible recipes, but you must already know an ability that can use them.</p><p>For every recipe, roll the crafting ability’s printed attribute at the end of an attempt. Work alone; there is no group crafting. Accumulate project progress until you meet the completion target. For supplies, the first inventory step from empty creates d4; later steps are d6, d8, d10, d12 and d20, up to the recipe’s cap. Check any carried material supply after each attempt. You must actually obtain the ingredients; recipe knowledge supplies no free stock. Recipes remain known for reuse. The plants and mixtures here are fictional game ingredients.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

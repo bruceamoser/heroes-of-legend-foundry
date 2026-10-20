@@ -222,10 +222,12 @@
       "portrait": {
         "creatureId": "creature-gate-archon",
         "asset": "assets/creatures/e311b8f2d2cfa4eaa994d340797a32f495f9d1e8b5ea4f9c0df19675eb7e933a.webp",
-        "sha256": "d88605ca5f14c7980c36a7701ba493c73e50e2f319906a997ec2daf746c6e43c",
+        "sha256": "2a78453ce6403edbfb00341a7faaf3ac50059baa28d6bfaca8d93eb0b9db912b",
         "sourceSha256": "e311b8f2d2cfa4eaa994d340797a32f495f9d1e8b5ea4f9c0df19675eb7e933a",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

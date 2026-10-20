@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!36c6bbc089ea67cd",
+  "_id": "36c6bbc089ea67cd",
+  "name": "Mark the Boundary",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/binding-circle.md",
+        "sha256": "8efb762bf0b099ab4fb3022d6526ee4fd4985a10241bcd9c20fe690b1f81274e",
+        "id": "monster-binding-circle",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!36c6bbc089ea67cd.ad18c8a952e6d590",
+      "_id": "ad18c8a952e6d590",
+      "name": "Mark the Boundary",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Mark the Boundary</h1><p><em>A sharp line of light marks a boundary across the floor.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-binding-circle</p><p><strong>Action:</strong> Maneuver</p><p>Place up to 3 connected empty ground squares within 3 squares as difficult terrain until its next turn. No damage, wall or prohibition against crossing; all creatures pay the same terrain costs.</p><p>Only creatures whose entries list this ability possess it. Printed limits apply.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

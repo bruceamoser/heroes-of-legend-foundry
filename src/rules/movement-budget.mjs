@@ -21,9 +21,10 @@ export function movementProfile({
       !Number.isSafeInteger(item.bulk) ||
       item.bulk < 0 ||
       !Number.isSafeInteger(item.quantity) ||
-      item.quantity < 1
+      item.quantity < 0
     )
       throw new Error("Invalid carried item Bulk or quantity.");
+    if (item.quantity === 0) continue;
     bulk += item.bulk * item.quantity;
     if (
       !wornOutfitExcluded &&

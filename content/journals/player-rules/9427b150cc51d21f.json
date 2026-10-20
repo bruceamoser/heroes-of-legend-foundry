@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!9427b150cc51d21f",
+  "_id": "9427b150cc51d21f",
+  "name": "Shade the Eyes",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/shade-the-eyes.md",
+        "sha256": "24cd9c9a6e949c1b15c78dc753e58bcdc9e0193faa02c396fe8f70541c952d51",
+        "id": "shade-the-eyes",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!9427b150cc51d21f.707e47ac7c1578cd",
+      "_id": "707e47ac7c1578cd",
+      "name": "Shade the Eyes",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Shade the Eyes</h1><p><em>You spread two fingers before the glare, casting a cool golden shade over your companion’s face.</em></p><h2>Rules</h2><p><strong>Action:</strong> Reaction · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Self or one visible willing ally within 3 squares, before one event deals radiant damage.</p><p>Grant radiant resistance 2 against that event. Use the highest matching resistance, not their sum. This does not prevent a separate condition imposed by the event.</p><p><strong>Duration:</strong> Instant.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 1 · <strong>DP:</strong> 2 · <strong>Requirements to learn:</strong> Radiance 1</p><p><strong>Type:</strong> Magic / Defense</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> shade-the-eyes</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

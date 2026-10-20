@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!5802acb56025728a",
+  "_id": "5802acb56025728a",
+  "name": "Saddle and Rein",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/saddle-and-rein.md",
+        "sha256": "3233c71994527205b42fee401f2603b5c9cb4b1adef3f1155f679c081bf0f1cd",
+        "id": "saddle-and-rein",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!5802acb56025728a.d32283390c3b811b",
+      "_id": "d32283390c3b811b",
+      "name": "Saddle and Rein",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Saddle and Rein</h1><p><em>You settle into the animal’s movement until your hands and its breathing find a rhythm.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> Guile</p><p><strong>Target / range / shape:</strong> One willing mount you are riding; one consequential noncombat obstacle.</p><p>Describe how you guide the mount. The DA states the obstacle’s progress target before the roll. Use only routes the mount can physically negotiate. This card grants neither a mount nor extra combat actions.</p><p>- <strong>Weak:</strong> 1 progress; keep one held item secure. - <strong>Standard:</strong> 2 progress; keep that item secure and identify a nearby place to steady the mount. - <strong>Strong:</strong> 3 progress; gain both benefits and give one following rider 1 Boon to their next roll at this obstacle.</p><p><strong>Duration:</strong> For this obstacle.</p><p><strong>Equipment / acquisition:</strong> A willing mount; none granted.</p><p>---</p><p><strong>Tier / minimum level:</strong> 1 · <strong>DP:</strong> 2 · <strong>Requirements to learn:</strong> Wilderness 1</p><p><strong>Type:</strong> Skill / Utility</p><p><strong>Limits:</strong> Ordinary activities remain available without this card. Roll only when uncertainty has consequences.</p><p><strong>ID:</strong> saddle-and-rein</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Adventure development</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

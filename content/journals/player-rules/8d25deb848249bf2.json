@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!8d25deb848249bf2",
+  "_id": "8d25deb848249bf2",
+  "name": "Forage Coast",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/forage-coast.md",
+        "sha256": "d674da811dd659526c144d7f3b4860e956a85c1df4ac8348c4cdb07603742326",
+        "id": "forage-coast",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!8d25deb848249bf2.6924f2460ad8493d",
+      "_id": "6924f2460ad8493d",
+      "name": "Forage Coast",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Forage Coast</h1><p><em>You read the tide line and turn over the stones the gulls have left alone.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> Knowledge</p><p><strong>Time:</strong> One hour per attempt.</p><p><strong>Target / range / shape:</strong> A viable shore; one hour</p><p>Spend one hour searching a place that contains usable resources. Choose food or ordinary coastal materials, then roll Knowledge. Improve one matching supply bundle; if you have none, its first step creates a d4 supply. Further steps raise it to d6, then d8. This card cannot raise a bundle above d8.</p><p>- <strong>Weak:</strong> Raise the bundle by 1 inventory step. - <strong>Standard:</strong> Raise it by 2 inventory steps. - <strong>Strong:</strong> Raise it by 3 inventory steps.</p><p>The DA determines what resources are present. You cannot produce rare treasure or harvest a patch that has already been exhausted.</p><p><strong>Duration:</strong> Information and earned progress persist for the stated task; completed changes remain until circumstances alter them.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 1 · <strong>DP:</strong> 2 · <strong>Requirements to learn:</strong> Wilderness 1</p><p><strong>Type:</strong> Skill / Utility</p><p><strong>Limits:</strong> Pay the printed action and any full activity time for each use.</p><p><strong>ID:</strong> forage-coast</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!d7d4ff1e43859673",
+  "_id": "d7d4ff1e43859673",
+  "name": "An Invitation Elsewhere",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/an-invitation-elsewhere.md",
+        "sha256": "7097de5a950a7e1e94a3fc6ec5f5a31c011dc87b35a0ab914f6ddea183c2cf8e",
+        "id": "an-invitation-elsewhere",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!d7d4ff1e43859673.5258b9fc621e5856",
+      "_id": "5258b9fc621e5856",
+      "name": "An Invitation Elsewhere",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>An Invitation Elsewhere</h1><p><em>You bow and extend a hand as though inviting your enemy to dance. An unseen tug draws them across the ground toward you.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> Guile</p><p><strong>Target / range / shape:</strong> One visible creature within 4 squares.</p><p>Offer the impossible courtesy of a dance-step somewhere else. Magical force moves the target; it does not compel agreement or belief.</p><p>- <strong>Weak:</strong> Pull it 1 square toward you. - <strong>Standard:</strong> Pull it 2 squares. - <strong>Strong:</strong> Pull it 2 squares; you may move 1 square without provoking afterward.</p><p><strong>Duration:</strong> Instant. Applied conditions follow their normal duration and decay.</p><p><strong>Equipment / acquisition:</strong> No item needed unless named above.</p><p>---</p><p><strong>Tier / minimum level:</strong> 1 · <strong>DP:</strong> 2 · <strong>Requirements to learn:</strong> Mind 1</p><p><strong>Type:</strong> Magic</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> an-invitation-elsewhere</p><p>Build this character · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

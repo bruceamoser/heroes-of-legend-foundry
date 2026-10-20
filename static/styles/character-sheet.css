@@ -1,0 +1,83 @@
+/* Native character surface follows the approved workshop's parchment/forest cards. */
+.heroes-of-legend .sr-only { position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important; }
+.heroes-of-legend .hol-character-sheet button { height:auto;min-height:28px;line-height:1.25;background:#f1e6ce;color:#243b2e;border:1px solid #b39253;box-shadow:none; }
+.heroes-of-legend .hol-character-sheet button:hover { background:#e7d7b6;color:#15221c; }
+.heroes-of-legend .hol-character-sheet dl, .heroes-of-legend .hol-character-sheet dt, .heroes-of-legend .hol-character-sheet dd { color:#28251c; }
+.heroes-of-legend .hol-character-sheet .hol-character-vitals>button { min-height:43px; }
+.heroes-of-legend .hol-character-sheet .hol-character-attributes button { min-height:45px; }
+.heroes-of-legend.hol-character .window-content { overflow: hidden; padding: 0; }
+.hol-character-sheet { --hol-sheet-forest: #15221c; --hol-sheet-gold: #b39253; --hol-sheet-paper: #f7f3e9; display: flex; flex-direction: column; height: 100%; min-height: 0; color: #28251c; background: var(--hol-sheet-paper); }
+.hol-character-sheet .hol-character-header { flex: none; padding: 10px 14px 8px 48px; color: #f7f3e9; background: var(--hol-sheet-forest); border-bottom: 2px solid var(--hol-sheet-gold); }
+.hol-character-title { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.hol-character-title h1 { flex: 1; border: 0; margin: 0; color: #f1e6ce; font-size: 24px; overflow-wrap: anywhere; }
+.hol-character-origin { margin: 3px 0 8px; color: #e2d2ad; font-size: 12px; }
+.hol-character-sheet .hol-character-header button { color: #f1e6ce; background: #24382e; border: 1px solid #6b6647; box-shadow: none; }
+.hol-character-vitals { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; }
+.hol-character-vitals > button { display: flex; flex-direction: column; min-width: 65px; padding: 3px 8px; line-height: 1.15; }
+.hol-character-vitals > button span { font-size: 10px; text-transform: uppercase; letter-spacing: .07em; }
+.hol-character-vitals strong { font-size: 20px; }
+.hol-death-marks { display: flex; gap: 3px; }
+.hol-character-sheet .hol-death-marks button { color: #7f897f; border: 0; background: transparent; width: 23px; padding: 2px; }
+.hol-character-sheet .hol-death-marks button.is-filled { color: #f08a7b; }
+.hol-character-attributes { display: grid; grid-template-columns: repeat(6,minmax(0,1fr)); gap: 4px; margin-top: 8px; }
+.hol-character-attributes button { display: flex; flex-direction: column; gap: 1px; padding: 4px 1px; min-width: 0; line-height: 1.2; }
+.hol-character-attributes span { font-size: 11px; }
+.hol-character-attributes strong { font-size: 20px; }
+.hol-character-frame { display: flex; flex: 1; min-height: 0; }
+.hol-character-tabs { flex: 0 0 40px; background: #e5decd; display: flex; flex-direction: column; gap: 4px; padding-top: 7px; }
+.hol-character-sheet .hol-character-tabs button { position: relative; min-height: 38px; padding: 4px; border: 1px solid #bfb395; border-left: 0; border-radius: 0 5px 5px 0; background: #ede5d3; color: #314d3b; }
+.hol-character-sheet .hol-character-tabs button[aria-current] { background: var(--hol-sheet-forest); color: #e3c88a; }
+.hol-character-tabs button span { display: none; position: absolute; left: 34px; top: 0; z-index: 5; width: max-content; padding: 8px; background: #15221c; color: #f7f3e9; border: 1px solid #b39253; border-radius: 3px; }
+.hol-character-tabs button:hover span, .hol-character-tabs button:focus-visible span { display: block; }
+.hol-character-content { overflow-y: auto; overflow-x: hidden; flex: 1; min-width: 0; padding: 10px 12px 20px; scrollbar-gutter: stable; }
+.hol-character-content [hidden] { display: none !important; }
+.hol-character-sheet details { border: 1px solid #d6cdb9; border-radius: 4px; margin-bottom: 8px; padding: 0 8px 7px; background: #fffaf0; }
+.hol-character-sheet summary { color: #314d3b; padding: 6px 0; cursor: pointer; font-weight: bold; }
+.hol-character-sheet .hol-character-summary { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.hol-character-sheet .hol-compact-list { list-style: none; margin: 0; padding: 0; }
+.hol-character-sheet .hol-compact-list li { display: flex; gap: 5px; align-items: center; min-height: 29px; padding: 3px 0; border-bottom: 1px solid #dfd5c0; }
+.hol-character-sheet .hol-compact-list li > button:first-of-type { flex: 1; text-align: left; min-width: 0; overflow-wrap: anywhere; }
+.hol-character-sheet .hol-compact-list button { height: auto; min-height: 25px; line-height: 1.2; padding: 3px 6px; margin: 0; }
+.hol-character-sheet .hol-compact-list small { display: block; font-size: 11px; color: #6a6457; }
+.hol-character-sheet .hol-star { border: 0; background: transparent; color: #6a6457; font-size: 21px; }
+.hol-character-sheet .hol-star.is-favorite { color: #916d22; }
+.hol-character-sheet .hol-timing { color: #314d3b; font-size: 11px; font-weight: bold; width: 15px; text-align: center; }
+.hol-character-sheet .hol-quantity { display: flex; width: 47px; flex: none; flex-direction: column; font-size: 9px; gap: 0; }
+.hol-character-sheet .hol-quantity input { width: 47px; height: 23px; }
+.hol-character-sheet .hol-section-heading { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 8px; }
+.hol-character-sheet .hol-section-heading h2 { margin: 0; }
+.hol-character-sheet dl { display: grid; grid-template-columns: auto 1fr; gap: 3px 10px; font-size: 12px; }
+.hol-character-sheet dd { margin: 0; }
+.hol-character-sheet textarea { color: #28251c; background: #f7f3e9; }
+@media(max-width: 500px) { .hol-character-sheet .hol-character-header { padding-left: 8px; } .hol-character-title h1 { font-size: 20px; } .hol-character-attributes span { font-size: 9px; } .hol-character-content { padding: 8px; } .hol-character-sheet .hol-character-summary { grid-template-columns: 1fr; } .hol-character-sheet .hol-inventory-row { flex-wrap: wrap; } }
+.heroes-of-legend .hol-learning-market { width: min(750px, 92vw); max-height: 88vh; overflow: auto; color: #28251c; background: #f7f3e9; border: 2px solid #b39253; border-radius: 6px; padding: 0 12px 12px; }
+.heroes-of-legend .hol-learning-market::backdrop { background: #15221c99; }
+.heroes-of-legend .hol-learning-market > header { display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:2; margin:0 -12px; padding:7px 12px; background:#15221c; color:#f1e6ce; }
+.heroes-of-legend .hol-learning-market h2 { color:#f1e6ce; margin:0; border:0; }
+.heroes-of-legend .hol-learning-market [data-close-market] { width:30px; color:#f1e6ce; background:transparent; }
+.heroes-of-legend .hol-learning-market [data-close-market]:hover, .heroes-of-legend .hol-learning-market [data-close-market]:focus-visible { color:#15221c; background:#f7f3e9; }
+.heroes-of-legend .hol-market-known { position:sticky; top:45px; padding:7px 0; background:#f7f3e9; border-bottom:1px solid #d6cdb9; z-index:1; font-size:12px; }
+.heroes-of-legend .hol-market-known p { margin:3px 0; }
+.heroes-of-legend .hol-current-build { list-style:none; padding:0; margin:0 0 10px; }
+.heroes-of-legend .hol-current-build > li { padding:3px 0; border-bottom:1px solid #d6cdb9; }
+.heroes-of-legend .hol-current-build > li > div:first-child { display:grid; grid-template-columns:minmax(0,1fr) 135px 70px; align-items:center; gap:8px; min-height:27px; font-size:12px; }
+.heroes-of-legend .hol-current-build button { height:24px; line-height:1; margin:0; }
+.heroes-of-legend .hol-required-choice { background:#fff0c3; border-left:3px solid #b39253; padding:6px; margin:3px 0; }
+.heroes-of-legend .hol-required-banner { position:sticky; top:0; z-index:3; padding:8px; background:#fff0c3; border:1px solid #b39253; margin-bottom:8px; }
+.heroes-of-legend .hol-required-banner button { display:inline; width:auto; margin:2px; }
+.heroes-of-legend .hol-section-heading { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+.heroes-of-legend .hol-section-heading h3 { margin:0; }
+@media(max-width:500px) { .heroes-of-legend .hol-current-build > li > div:first-child { grid-template-columns:minmax(0,1fr) 75px 50px; gap:4px; } }
+.heroes-of-legend .hol-discipline-marks { display:inline-flex;gap:2px;flex:none; }
+.heroes-of-legend .hol-discipline-marks>span { position:relative;display:inline-block;width:23px;height:23px; }
+.heroes-of-legend .hol-discipline-marks img { width:23px;height:23px;object-fit:contain;border:0; }
+.heroes-of-legend .hol-discipline-marks b { position:absolute;right:-2px;bottom:-2px;background:#15221c;color:#f1e6ce;border-radius:50%;padding:0 3px;font-size:10px;line-height:13px; }
+/* Actor artwork uses the native image browser; the heading remains outside sheet scrolling. */
+.hol-character-sheet .hol-character-heading { display:flex; align-items:center; gap:12px; }
+.hol-character-sheet .hol-character-heading-copy { flex:1; min-width:0; }
+.hol-character-sheet .hol-portrait-space { flex:0 0 90px; width:90px; }
+.hol-character-sheet .hol-portrait-space > img { display:block; width:90px; height:96px; object-fit:contain; border:1px solid #b39253; border-radius:4px; cursor:pointer; background:#24382e; }
+.hol-character-sheet .hol-portrait-space > img:focus-visible { outline:2px solid #f1e6ce; outline-offset:2px; }
+.hol-character-sheet .hol-portrait-controls { display:flex; gap:3px; margin-top:4px; flex-wrap:wrap; }
+.hol-character-sheet .hol-portrait-controls button { font-size:10px; padding:2px 3px; height:auto; min-height:20px; line-height:1.1; flex:1; }
+@media(max-width:500px) { .hol-character-sheet .hol-character-heading { gap:7px; } .hol-character-sheet .hol-portrait-space { flex-basis:74px; width:74px; } .hol-character-sheet .hol-portrait-space > img { width:74px; height:84px; } }

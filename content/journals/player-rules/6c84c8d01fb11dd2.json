@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!6c84c8d01fb11dd2",
+  "_id": "6c84c8d01fb11dd2",
+  "name": "Chain Coil",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/equipment/chain-coil.md",
+        "sha256": "c11703294ad3bd70f86283d19ffa5481c30d76e8ab3038b4609576bcd3eb6f55",
+        "id": "item-chain-coil",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!6c84c8d01fb11dd2.c7b6299d107ddb0d",
+      "_id": "c7b6299d107ddb0d",
+      "name": "Chain Coil",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Chain Coil</h1><p><em>You feed the links through your hands, listening for the clear ring of sound metal.</em></p><h2>Rules</h2><p><strong>ID:</strong> item-chain-coil</p><p><strong>Market price:</strong> 12 coins. <strong>Bulk:</strong> 1.</p><p>A practical portable coil for securing or hauling, with length agreed with the DA when bought. No infinite reach or automatic restraint.</p><p>Buying equipment grants no DP advancement, training or ability. Use normal item-handling actions unless an applicable card says otherwise.</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.a8b099af3500d9f6.JournalEntryPage.cfa94361944ba875]{Market rules} · Equipment index</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

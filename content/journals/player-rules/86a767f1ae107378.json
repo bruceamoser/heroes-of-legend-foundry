@@ -1,0 +1,39 @@
+{
+  "_key": "!journal!86a767f1ae107378",
+  "_id": "86a767f1ae107378",
+  "name": "Ward Scribe",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/origins/background-ward-scribe.md",
+        "sha256": "d25e9a38fd83713353ba3084d0bc6190a18b0a6aba8c3a9a0bf1e0897c7ff741",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!86a767f1ae107378.d548a97694661673",
+      "_id": "d548a97694661673",
+      "name": "Ward Scribe",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Ward Scribe</h1><p><em>Your marks appeared over doors, cradles and caravan wheels. Sometimes they held.</em></p><p><em>Which mark will you never draw carelessly?</em></p><h2>Rules</h2><p>Choose one:</p><p>- <strong>Guard 1</strong> and @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.65bc5b597540c33a.JournalEntryPage.486b7a184a71013a]{A Sign against Harm}. - <strong>Armor 1</strong> and @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.68753f5663bfea67.JournalEntryPage.fa5e21fa615d88a0]{Wake the Iron Rune}.</p><p><strong>Type:</strong> Background</p><p>Each option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.</p><p><strong>Starting coin contribution:</strong> +10 coins. See @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0558be1f6014ee71.JournalEntryPage.880380bcd80cfec6]{starting coins}.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!3dc4d5001abd056f",
+  "_id": "3dc4d5001abd056f",
+  "name": "Giant Constrictor (CV 26)",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/bestiary/creatures/giant-constrictor.md",
+        "sha256": "feca67e020ea1e0feeae4587c44ca215e893510e1630b84fcfe0e32f5e261c83",
+        "id": "creature-giant-constrictor",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!3dc4d5001abd056f.059bd3b0302e598a",
+      "_id": "059bd3b0302e598a",
+      "name": "Giant Constrictor (CV 26)",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Giant Constrictor (CV 26)</h1><p><em>A thick-bodied serpent carries green water between its overlapping scales, its weight bending young trees as it passes.</em></p><p><strong>Attributes:</strong> Brawn +2; Fortitude +2; Agility +0; Guile -1; Knowledge -1; Reason +0</p><p><strong>HP:</strong> 24 · <strong>Speed:</strong> 5; swim 5 · <strong>Size:</strong> 2 (2x2 squares) · <strong>Armor DR:</strong> 1</p><p><strong>Evasion:</strong> None · <strong>Threat:</strong> 1 Bane · <strong>Stability:</strong> 1</p><p><strong>Weaknesses:</strong> None\\ <strong>Resistances:</strong> Physical (1)\\ <strong>Immunities:</strong> None</p><h2>Actions</h2><p>Damage and effects are <strong>Weak / Standard / Strong player defense</strong>. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.</p><table><thead><tr><th scope=\"col\">Main Actions</th><th scope=\"col\">Defense</th><th scope=\"col\">Damage</th></tr></thead><tbody><tr><td>Basic Melee</td><td>Agility</td><td>5/3/2</td></tr><tr><td>Crushing coil</td><td>Brawn</td><td>7 + Grappled 2 / 5 + Grappled 1 / 3</td></tr></tbody></table><table><thead><tr><th scope=\"col\">Maneuvers</th><th scope=\"col\">Effect</th></tr></thead><tbody><tr><td>Sound the Depths</td><td>Swim 2; no opportunity from one chosen visible enemy.</td></tr><tr><td>Defend</td><td>+1 Bane</td></tr></tbody></table><table><thead><tr><th scope=\"col\">Reactions</th><th scope=\"col\">Effect</th></tr></thead><tbody><tr><td>Coil Against the Pull</td><td>Before forced movement against a support: Stability 2 for that movement.</td></tr><tr><td>Opportunity Attack</td><td>Basic Melee</td></tr></tbody></table><h2>Details</h2><h3>Crushing coil</h3><p><strong>Target:</strong> One adjacent creature. <strong>Player defense:</strong> Brawn. <strong>Damage type:</strong> physical.</p><p><strong>Weak defense:</strong> Grappled 2. <strong>Standard defense:</strong> Grappled 1.</p><p><strong>Limit:</strong> The holder suffers its own Grappled contribution. A new result replaces its lower contribution, not adds to it. Release freely; separation beyond reach, unconsciousness or death ends the hold.</p><h3>Sound the Depths</h3><p><em>It slips beneath the surface with scarcely a ripple.</em></p><p>Move up to 2 squares using its printed swim speed without provoking from one visible enemy chosen before moving. Pay normal terrain costs and provoke normally from other enemies. Water grants only the cover or concealment the scene actually provides; no automatic Hidden.</p><h3>Coil Against the Pull</h3><p><em>Coils knot and the heavy body locks against the ground before it can be dragged away.</em></p><p>Before this creature is forcibly moved while touching solid ground or a fixed support, gain Stability 2 for that forced movement only. Use the highest Stability, maximum 3. In a collision chain, declare before its Stability is deducted; this does not prevent prior collision damage. No effect on Prone or grapples.</p><h3>General details</h3><p><strong>Basic Melee:</strong> One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.</p><p><strong>Defend:</strong> Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.</p><p><strong>Opportunity Attack:</strong> Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.</p><p><strong>Heavy Frame — Passive:</strong> Stability 1; an explicit trait, not a bonus calculated from Size.</p><p><strong>Healing:</strong> Living: ordinary HP healing applies.</p><p><strong>Senses:</strong> Ordinary sight and hearing.</p><p><strong>Tactics and retreat:</strong> Coil around one intruder and accept the shared Grappled burden. Release if holding the target leaves its eggs exposed.</p><p><strong>Encounter and conversation:</strong> It guards a warm clutch beneath a ruined bathhouse and retreats if the eggs can be left undisturbed.</p><p><strong>Habitat:</strong> Wilderness; nesting ground · <strong>Communication:</strong> None</p><p><strong>Loot:</strong> Recoverable possessions or lair clues chosen for the adventure; body parts grant no automatic special equipment or coin value.</p><p><strong>Summoning:</strong> Animal 3 — @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.66409a6f78b064a3.JournalEntryPage.4e3ea1e68010e013]{player reference}.</p><h2>Design notes — not needed during play</h2><p><strong>ID:</strong> creature-giant-constrictor</p><p><strong>Category:</strong> Animal · <strong>Role:</strong> Holder · <strong>CV:</strong> 26</p><h3>CV worksheet</h3><p><strong>Reference damage:</strong> 3/5/7</p><p><strong>Reference type:</strong> physical</p><p><strong>Expected targets:</strong> 1</p><p><strong>Utility factor:</strong> 1.6</p><p><strong>Action review (#1279):</strong> U 1.45 → 1.6: Maneuver allowance +0.05, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.</p><p><strong>Regeneration per turn:</strong> 0</p><p>Reference I=4.000, O=4.596. Uses the seed worksheet. Utility is provisional and does not simulate control, positioning or summon choices.</p><p><strong>Ability sources:</strong> @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.027dde7c915aab9b.JournalEntryPage.f68ddd07dd34140a]{Coil Against the Pull}, @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.67f342e5ec5a11ee.JournalEntryPage.31fee754d3ab5f8c]{seizing limbs}, @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.987587e52d580671.JournalEntryPage.db6c1ee499d7ac81]{Sound the Depths}.</p><p><strong>Coverage reference:</strong> Pathfinder family survey; original HOL prose and mechanics.</p><p>Roster · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.5ebfaad0d5ed6813.JournalEntryPage.3292b6a49dcf7236]{Stability}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

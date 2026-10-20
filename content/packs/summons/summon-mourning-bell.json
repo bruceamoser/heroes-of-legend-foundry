@@ -130,10 +130,12 @@
       "portrait": {
         "creatureId": "creature-mourning-bell",
         "asset": "assets/creatures/80d2b151837fccc233f1c56efe3120d369716549774caad039c9130c0365be66.webp",
-        "sha256": "2fdda69c9bc61b4064abb1431bff41af41994046b8deb70b4e53f375671d354f",
+        "sha256": "8fcfb61bfbb174fbba724be1a82aeff17c1923bae44467784fb8d9c2586859f5",
         "sourceSha256": "80d2b151837fccc233f1c56efe3120d369716549774caad039c9130c0365be66",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

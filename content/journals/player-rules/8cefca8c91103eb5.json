@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!8cefca8c91103eb5",
+  "_id": "8cefca8c91103eb5",
+  "name": "Lock Tools",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/equipment/lock-tools.md",
+        "sha256": "f026f86b2e7da159dc03563d775858ad7ba22947170cc216dcb2c41a8a84bf41",
+        "id": "item-lock-tools",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!8cefca8c91103eb5.e3bdc67cf17faeb9",
+      "_id": "e3bdc67cf17faeb9",
+      "name": "Lock Tools",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Lock Tools</h1><p><em>You choose the slender piece that feels right for the work beneath your fingers.</em></p><h2>Rules</h2><p>- <strong>ID:</strong> item-lock-tools - <strong>Bulk:</strong> 1 - <strong>Requirements / supply:</strong> Reusable - <strong>Acquisition:</strong> Explicit ability grant, coins, or DA treasure; no automatic extra starting kit.</p><p>Required for fine mundane lock work; no inventory die.</p><p>No DP price. Purchase does not grant training or an ability.</p><p>Equipment index</p><p><strong>Market price:</strong> 20 coins. Proposal; see @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.a8b099af3500d9f6.JournalEntryPage.cfa94361944ba875]{market rules}.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

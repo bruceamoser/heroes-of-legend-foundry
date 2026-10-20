@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!2d39c345b21b6fa1",
+  "_id": "2d39c345b21b6fa1",
+  "name": "Breakaway Rig",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/breakaway-rig.md",
+        "sha256": "19a284706b0e609c19f264247a1e257a1c456035fa51190ca2b0e3620734d49b",
+        "id": "breakaway-rig",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!2d39c345b21b6fa1.207355fd86a7f6b3",
+      "_id": "207355fd86a7f6b3",
+      "name": "Breakaway Rig",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Breakaway Rig</h1><p><em>You pull a concealed fastening. Sleeves, straps and outer layers slip loose in the hands trying to hold you.</em></p><h2>Rules</h2><p><strong>Action:</strong> Reaction · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Self, immediately before a grapple would add to your Grappled rating.</p><p>Reduce this new contribution by 2, minimum 0, before applying it. Existing contributions remain. If no contribution remains, that grappler establishes no hold. You must be wearing accessible clothing or a harness you can release. This grants no protection against a later attempt.</p><p><strong>Duration:</strong> Instant.</p><p><strong>Equipment / acquisition:</strong> Requires worn clothing or a harness; grants no item.</p><p>---</p><p><strong>Tier / minimum level:</strong> 7 · <strong>DP:</strong> 8 · <strong>Requirements to learn:</strong> Craft 3 and Subterfuge 1</p><p><strong>Type:</strong> Skill / Defense</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> breakaway-rig</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

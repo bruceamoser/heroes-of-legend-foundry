@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!819563eb9aab7488",
+  "_id": "819563eb9aab7488",
+  "name": "Cave Bat (CV 4)",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/bestiary/creatures/cave-bat.md",
+        "sha256": "77b00be66aaee92e8897313220bed2abcb94c7583d2a57c68a8936ee6ac3aec7",
+        "id": "creature-cave-bat",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!819563eb9aab7488.7ba9e8a33503edeb",
+      "_id": "7ba9e8a33503edeb",
+      "name": "Cave Bat (CV 4)",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Cave Bat (CV 4)</h1><p><em>A small cave-dwelling bat with oversized ears, thin dark wings and tiny hooked feet. Sound guides it through darkness, while bright light and loud disturbances unsettle its roost.</em></p><p><strong>Attributes:</strong> Brawn -2; Fortitude -1; Agility +2; Guile +0; Knowledge -2; Reason +1</p><p><strong>HP:</strong> 4 · <strong>Speed:</strong> 1; fly 8 · <strong>Size:</strong> 1 (medium) · <strong>Armor DR:</strong> 0</p><p><strong>Evasion:</strong> 1 Bane · <strong>Threat:</strong> 1 Boon · <strong>Stability:</strong> 0</p><p><strong>Weaknesses:</strong> None\\ <strong>Resistances:</strong> None\\ <strong>Immunities:</strong> None</p><h2>Actions</h2><p>Damage and effects are <strong>Weak / Standard / Strong player defense</strong>. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.</p><table><thead><tr><th scope=\"col\">Main Actions</th><th scope=\"col\">Defense</th><th scope=\"col\">Damage</th></tr></thead><tbody><tr><td>Basic Melee</td><td>Agility</td><td>2/1/1</td></tr><tr><td>Small bite</td><td>Agility</td><td>2/1/1</td></tr></tbody></table><table><thead><tr><th scope=\"col\">Maneuvers</th><th scope=\"col\">Effect</th></tr></thead><tbody><tr><td>Defend</td><td>+1 Bane</td></tr></tbody></table><table><thead><tr><th scope=\"col\">Reactions</th><th scope=\"col\">Effect</th></tr></thead><tbody><tr><td>Opportunity Attack</td><td>Basic Melee</td></tr></tbody></table><h2>Details</h2><h3>Small bite</h3><p><strong>Target:</strong> One adjacent creature. <strong>Player defense:</strong> Agility. <strong>Damage type:</strong> physical.</p><h3>General details</h3><p><strong>Basic Melee:</strong> One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.</p><p><strong>Defend:</strong> Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.</p><p><strong>Opportunity Attack:</strong> Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.</p><p><strong>Healing:</strong> Living: ordinary HP healing applies.</p><p><strong>Senses:</strong> Sound-based sight 6 squares; fails while Deafened and does not penetrate walls.</p><p><strong>Signs:</strong> Fine droppings beneath a dry ceiling shelf.</p><p><strong>Purpose:</strong> Find insects and a quiet roost.</p><p><strong>Tactics and retreat:</strong> Flee light and noise; bite only when trapped.</p><p><strong>Counterplay and conversation:</strong> Open a route to the ceiling and stop pursuing it.</p><p><strong>Habitat:</strong> Wilderness · <strong>Communication:</strong> None</p><p><strong>Loot:</strong> No saleable treasure.</p><p><strong>Summoning:</strong> Animal 1 — @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.816ce2dd1be6c92c.JournalEntryPage.a231a8fcbc506c2f]{player reference}.</p><h2>Design notes — not needed during play</h2><p><strong>ID:</strong> creature-cave-bat</p><p><strong>Category:</strong> Animal · <strong>Role:</strong> Cavern scout · <strong>CV:</strong> 4</p><p><strong>Difficulty rationale:</strong> An agile or elusive body warrants attack Banes. Its minor attack is easier to defend, granting a Boon.</p><p><strong>Reference damage:</strong> 1/1/2</p><p><strong>Reference type:</strong> physical</p><p><strong>Expected targets:</strong> 1</p><p><strong>Utility factor:</strong> 1.1</p><p><strong>Regeneration per turn:</strong> 0</p><p>Reference I=4.404, O=1.000. CV uses the seed worksheet; action choices, Stability and control are not simulated. Recalibration remains required.</p><p>Roster · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.5ebfaad0d5ed6813.JournalEntryPage.3292b6a49dcf7236]{Agreed Stability}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

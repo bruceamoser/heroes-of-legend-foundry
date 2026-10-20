@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!02600df61dac7310",
+  "_id": "02600df61dac7310",
+  "name": "Open the Furnace Door",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/open-the-furnace-door.md",
+        "sha256": "46f453cd2e81b69f054c1509d149e26cf9b0382d5c0c0f2945e7c2ea4b64d834",
+        "id": "open-the-furnace-door",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!02600df61dac7310.7d61c3858fb183b8",
+      "_id": "7d61c3858fb183b8",
+      "name": "Open the Furnace Door",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Open the Furnace Door</h1><p><em>You pull an unseen latch, and heat rolls over your face like an opened forge.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> Guile</p><p><strong>Target / range / shape:</strong> Every creature in a 3-wide, 2-deep rectangle immediately ahead of you.</p><p>A furnace door opens for a heartbeat. Include allies in the area. Work out each target’s net Boons or Banes; make one roll using the combination least favorable to you and apply it to all targets.</p><p>- <strong>Weak:</strong> 4 fire damage and push 1. - <strong>Standard:</strong> 4 fire damage and push 2. - <strong>Strong:</strong> 6 fire damage, push 2 and Frightened 1 of you.</p><p><strong>Duration:</strong> Instant. Applied conditions follow their normal duration and decay.</p><p><strong>Equipment / acquisition:</strong> No item needed unless named above.</p><p>---</p><p><strong>Tier / minimum level:</strong> 7 · <strong>DP:</strong> 8 · <strong>Requirements to learn:</strong> Flame 3</p><p><strong>Type:</strong> Magic / Attack</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> open-the-furnace-door</p><p>Build this character · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

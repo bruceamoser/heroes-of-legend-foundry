@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!257d7a0fa8ca5bb6",
+  "_id": "257d7a0fa8ca5bb6",
+  "name": "Step Through the Spark",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/step-through-the-spark.md",
+        "sha256": "ed65d646d69ed79720eae6b575bf66c48bf5989e5c5fb4b3231346d42fe17787",
+        "id": "step-through-the-spark",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!257d7a0fa8ca5bb6.0af5ee6782c5b495",
+      "_id": "0af5ee6782c5b495",
+      "name": "Step Through the Spark",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Step Through the Spark</h1><p><em>You follow a skipping spark and arrive with its warmth still brushing your cheek.</em></p><h2>Rules</h2><p><strong>Action:</strong> Maneuver · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> A visible free square within 2 squares.</p><p>Follow a leaping spark to the chosen square. This is teleportation and does not provoke. You must see the destination and cannot cross an opaque barrier.</p><p><strong>Duration:</strong> Instant. Applied conditions follow their normal duration and decay.</p><p><strong>Equipment / acquisition:</strong> No item needed unless named above.</p><p>---</p><p><strong>Tier / minimum level:</strong> 3 · <strong>DP:</strong> 4 · <strong>Requirements to learn:</strong> Flame 2</p><p><strong>Type:</strong> Magic</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> step-through-the-spark</p><p>Build this character · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

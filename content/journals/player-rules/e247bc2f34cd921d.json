@@ -1,0 +1,39 @@
+{
+  "_key": "!journal!e247bc2f34cd921d",
+  "_id": "e247bc2f34cd921d",
+  "name": "Equipment and Recipes",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/player-book/manuscript/10-equipment.md",
+        "sha256": "512a61d539d4dd1f10bb74a01343c305ac37f0136af5f5a64147215058204d57",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!e247bc2f34cd921d.fe4cfea054174e98",
+      "_id": "fe4cfea054174e98",
+      "name": "Equipment and Recipes",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Equipment and Recipes</h1><p>A coil of rope is easy to overlook until someone is hanging above a ravine. Choose equipment for the journey you expect, leave room for what you might find, and know which hand will reach your potion when the fight goes badly.</p><h2>Coins and trade</h2><p>HOL uses one currency: <strong>coins</strong>. A listed price buys the described ordinary item or full supply. Training, discipline ranks and signature access are purchased through character development, not coins. Owning armor does not teach you to use its gated capabilities.</p><p>Useful intact gear sells for <strong>half its listed value</strong>, rounded down, or trades at <strong>full value</strong> with a willing trader. A 12-coin weapon sells for 6 or trades for 12 coins of goods. Pay any shortfall in coins; excess trade value is not cash change. A merchant does not have unlimited stock or an obligation to buy everything you make.</p><h2>Armor and training</h2><p>Choose armor you have learned to wear. Each training grants one ordinary matching suit, Bulk 1, if you do not already own one. Its resistance applies only while wearing that armor. Buying a suit with coins grants neither training nor resistance.</p><table><thead><tr><th scope=\"col\">Training</th><th scope=\"col\">Armor rank</th><th scope=\"col\">Minimum level</th><th scope=\"col\">DP</th><th scope=\"col\">Physical resistance</th></tr></thead><tbody><tr><td>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.1f6b36c34db9c5eb.JournalEntryPage.36ac9af60144cf5c]{Wear Light Armor}</td><td>1</td><td>1</td><td>2</td><td>1</td></tr><tr><td>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.522e9f3510ca7e13.JournalEntryPage.c545bfd9b2ba9f0c]{Wear Medium Armor}</td><td>2</td><td>3</td><td>4</td><td>2</td></tr><tr><td>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.22fdca3c82af40da.JournalEntryPage.f657cf6ea4f1a314]{Wear Heavy Armor}</td><td>3</td><td>7</td><td>8</td><td>3</td></tr></tbody></table><p>Novice training can be granted or purchased during level-0 creation. Buy discipline ranks in order, but you do not need a lower-tier armor training card to learn a higher one. Matching resistances use the highest value, normally capped at 3.</p><h2>Bulk and hands</h2><p>Record each carried item&#39;s <strong>Bulk</strong>. Most individual equipment entries and supply bundles use 1 Bulk; the entry tells you otherwise. A pack adds its own Bulk and does not erase its contents. Capacity is 10 + 3 × Brawn. Each Bulk above capacity reduces Speed by 1, to a minimum of 0.</p><p>A single compatible weapon serves all the attacks that can use it. Ordinary weapon appearance changes no mechanics. A flaming melee weapon can add its printed fire effect to a compatible attack; it cannot become a ranged weapon simply because you chose a ranged card.</p><p>Track occupied hands. Healing requires a free hand. A bow, two-handed weapon, or weapon-and-shield combination leaves none. Drawing for an attack is part of that attack, dropping is free, and proper stowing or picking up costs a Maneuver. There is no automatic free grip-change exception.</p><h2>Inventory dice</h2><p>A supply bundle has an inventory die instead of a counted number of uses. After using it, roll that die. On a <strong>1</strong>, reduce it one step. On any other result it stays where it is. The use you just completed still works.</p><p><strong>d20 → d12 → d10 → d8 → d6 → d4 → out</strong></p><p>Check at the interval printed on the supply: ammunition when used, food by its person-day rule, lighting by its hour, and so on. A d4 healing bottle has a one-in-four chance of becoming empty after each use. It is not a promise of four doses.</p><p>&gt; <strong>Example — the last swallow.</strong> You drink a lesser healing bottle and restore its &gt; 6 HP, reduced by Life resistance if applicable. Then roll its d4 inventory die. &gt; A 1 empties the bottle; you still received that healing. At full HP the bottle &gt; cannot heal beyond your maximum.</p><p>Recipes raise an existing supply by their permitted number of steps, up to the recipe&#39;s cap. A store refill uses the listed policy. Do not turn unknown leftovers into additional full bottles by splitting them among containers.</p><h2>Special equipment and understanding</h2><p>A special item adds only the effects it prints: damage, resistance, an ability or another explicit benefit. Apply normal nonstacking rules to matching numerical bonuses. Different damage-type resistances can coexist; use the highest of each.</p><p>The item states whether understanding is required. Identification abilities reveal different kinds of information. Knowing a recipe is a separate permission from knowing what an item does. The recipe section lists tools, materials, time and what the crafting result produces; none of those are supplied by the recipe&#39;s name alone.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

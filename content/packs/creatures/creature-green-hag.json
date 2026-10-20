@@ -213,10 +213,12 @@
       "portrait": {
         "creatureId": "creature-green-hag",
         "asset": "assets/creatures/74b708323b06d94f25e362846fd4c9d81a68f2c648369cac04a40d104b501450.webp",
-        "sha256": "e98a985d3f72ca058e640f0bbd1c32542c38525aedfa60e30dad4e0779d41048",
+        "sha256": "19feb2597b2043c2043c5ec1df4f8b06b3bf294072dccddcb03221f3da2a372d",
         "sourceSha256": "74b708323b06d94f25e362846fd4c9d81a68f2c648369cac04a40d104b501450",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

@@ -1,3 +1,4 @@
+import { bindNetChoices } from "./net-control.mjs";
 import {
   referencePickerOptions,
   readReferenceSelection,
@@ -279,7 +280,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
         li.textContent = `${source.label}: ${source.amount} ${source.kind === "boon" ? "Boon(s)" : "Bane(s)"}${source.automatic ? " · automatic" : ""}`;
         list.append(li);
       }
-      output.textContent = plan.formula;
+      output.textContent = `${plan.count}d6 · ${plan.net ? `keep ${plan.net > 0 ? "highest" : "lowest"} 3` : "keep 3"} · ${plan.formula}`;
       detail.textContent = `${plan.boons} Boons · ${plan.banes} Banes · ${plan.canceled} canceled pairs · net extras ${plan.net} (maximum 3)`;
       button.disabled = this.activating || this.pendingResponse;
     } catch (e) {
@@ -298,6 +299,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
         this.readDraft();
         this.preview();
       });
+    bindNetChoices(this.element);
     bindReferenceSearch(this.element);
     bindReferenceDrops(
       this.element,

@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!88676c6c8a8fd7fe",
+  "_id": "88676c6c8a8fd7fe",
+  "name": "The Debt Comes Due",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/the-debt-comes-due.md",
+        "sha256": "20afac7569b252d0a56dc959fc54f3fa9add7c10502e216ca61f2aae20f17430",
+        "id": "the-debt-comes-due",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!88676c6c8a8fd7fe.1c3e94dc8f5c664e",
+      "_id": "1c3e94dc8f5c664e",
+      "name": "The Debt Comes Due",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>The Debt Comes Due</h1><p><em>You touch the place they hurt you, and the mark answers in heat.</em></p><h2>Rules</h2><p><strong>Action:</strong> Reaction · <strong>Attribute:</strong> Guile</p><p><strong>Target / range / shape:</strong> A visible creature within 4 squares after it damages you.</p><p>The mark answers with heat. This attack cannot trigger further free attacks.</p><p>- <strong>Weak:</strong> 2 fire damage. - <strong>Standard:</strong> 3 fire damage. - <strong>Strong:</strong> 5 fire damage and Burning 1.</p><p><strong>Duration:</strong> Resolve once at the stated trigger; applied conditions follow normal decay.</p><p><strong>Equipment / acquisition:</strong> No item needed unless named above.</p><p>---</p><p><strong>Tier / minimum level:</strong> 3 · <strong>DP:</strong> 4 · <strong>Requirements to learn:</strong> Flame 2</p><p><strong>Type:</strong> Magic / Attack</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> the-debt-comes-due</p><p>Build this character · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

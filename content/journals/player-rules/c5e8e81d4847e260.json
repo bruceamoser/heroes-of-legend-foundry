@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!c5e8e81d4847e260",
+  "_id": "c5e8e81d4847e260",
+  "name": "Catch Them Falling",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/catch-them-falling.md",
+        "sha256": "09df01c9e59b050c58a67869578aa332894654168cc46e4a760222b9486f4db2",
+        "id": "catch-them-falling",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!c5e8e81d4847e260.6c14ec222eb17fa7",
+      "_id": "6c14ec222eb17fa7",
+      "name": "Catch Them Falling",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Catch Them Falling</h1><p><em>You dive flat and seize your companion’s arm, hauling them over the edge in one desperate heave.</em></p><h2>Rules</h2><p><strong>Action:</strong> Reaction · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> One adjacent willing creature when it begins to fall.</p><p>If you are supported and have a free hand, move the target into one free supported square adjacent to you. This stops the fall before it travels. It does not stop ongoing forced movement or move a target larger than your own footprint. You become Prone.</p><p><strong>Duration:</strong> Instant.</p><p><strong>Equipment / acquisition:</strong> Requires one free hand; grants no item.</p><p>---</p><p><strong>Tier / minimum level:</strong> 7 · <strong>DP:</strong> 8 · <strong>Requirements to learn:</strong> Athletics 3</p><p><strong>Type:</strong> Skill / Movement / Defense</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> catch-them-falling</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

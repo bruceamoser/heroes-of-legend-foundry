@@ -222,10 +222,12 @@
       "portrait": {
         "creatureId": "creature-chain-jailer",
         "asset": "assets/creatures/14f545e0c4982f8fde6bc41975b00b44a124546962af75ad6fc4bb65224965b5.webp",
-        "sha256": "bac9ba7945828a2c22d6c20bac735d625e0c08d08b484f668c43220f3bc9d0d0",
+        "sha256": "ca499e3499aa31574f1c672b5e67044adf3090167585946f66c2deb0fb1ec439",
         "sourceSha256": "14f545e0c4982f8fde6bc41975b00b44a124546962af75ad6fc4bb65224965b5",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

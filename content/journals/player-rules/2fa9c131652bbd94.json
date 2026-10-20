@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!2fa9c131652bbd94",
+  "_id": "2fa9c131652bbd94",
+  "name": "Sideways Thinking",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/signature-odd-sideways-thinking.md",
+        "sha256": "930c48b06082b837f02f0a95d7df91ac9022912c39ea0a38878ea4eef85dca1b",
+        "id": "signature-odd-sideways-thinking",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!2fa9c131652bbd94.1bbc193cac7dec07",
+      "_id": "1bbc193cac7dec07",
+      "name": "Sideways Thinking",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Sideways Thinking</h1><p><em>You turn the problem around in your hands, notice a familiar principle and begin doing something no one else thought to try.</em></p><h2>Rules</h2><p><strong>Action:</strong> Passive · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Self, before an ordinary noncombat task roll.</p><p>Describe a plausible approach based on reasoning. Use Reason for that roll and gain 1 Boon. You still need any specialist permission and suitable tools. This cannot replace an attribute printed on another learned card or make an impossible action possible.</p><p><strong>Duration:</strong> That roll only.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 1 · <strong>DP:</strong> 2 · <strong>Requirements to learn:</strong> Class Odd; minimum level 1</p><p><strong>Type:</strong> Signature</p><p><strong>Tags:</strong> Skill / Utility</p><p><strong>Limits:</strong> Once per scene, declared before rolling.</p><p><strong>ID:</strong> signature-odd-sideways-thinking</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.b958699795c40aff.JournalEntryPage.5ab16268111adc1e]{Class choices} · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!27af4fd06b911c44",
+  "_id": "27af4fd06b911c44",
+  "name": "A Road through Rain",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/a-road-through-rain.md",
+        "sha256": "9ed41f041ec04422a7aa841a95c33bb16f930a3ad047f1d4f24de55b6dcac199",
+        "id": "a-road-through-rain",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!27af4fd06b911c44.b63eeb81aa7b1af7",
+      "_id": "b63eeb81aa7b1af7",
+      "name": "A Road through Rain",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>A Road through Rain</h1><p><em>You draw your hand through the rain, dust or smoke ahead. It parts along your gesture, leaving a narrow strip of clear air through which your companions can see.</em></p><h2>Rules</h2><p><strong>Action:</strong> Maneuver · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> A straight route of up to 3 visible squares beginning adjacent to you.</p><p>Part nonmagical rain, airborne dust or smoke along that route until the start of your next turn. It removes those visibility obstructions only; solid cover and magical darkness remain. The cleared route improves visibility for everyone, including enemies; it grants no movement.</p><p><strong>Duration:</strong> Until the start of your next turn; a next-roll benefit ends when used.</p><p><strong>Equipment / acquisition:</strong> No item needed unless named above.</p><p>---</p><p><strong>Tier / minimum level:</strong> 3 · <strong>DP:</strong> 4 · <strong>Requirements to learn:</strong> Storm 2</p><p><strong>Type:</strong> Magic</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> a-road-through-rain</p><p>Build this character · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

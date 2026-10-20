@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!ca2e804501a669cd",
+  "_id": "ca2e804501a669cd",
+  "name": "Medusa (CV 31)",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/bestiary/creatures/medusa.md",
+        "sha256": "422d11422faa814fcac575f58fa012a1299aa71d44b7f0c471198e0cd3879dcd",
+        "id": "creature-medusa",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!ca2e804501a669cd.d294ed1214baf20f",
+      "_id": "d294ed1214baf20f",
+      "name": "Medusa (CV 31)",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Medusa (CV 31)</h1><p><em>Living serpents stir beneath a medusa&#39;s hood, while polished stones hang at the belt as reminders of unfinished sculptures.</em></p><p><strong>Attributes:</strong> Brawn +0; Fortitude +0; Agility +2; Guile +1; Knowledge +0; Reason +1</p><p><strong>HP:</strong> 26 · <strong>Speed:</strong> 6 · <strong>Size:</strong> 1 (medium) · <strong>Armor DR:</strong> 1</p><p><strong>Evasion:</strong> 1 Bane · <strong>Threat:</strong> 1 Bane · <strong>Stability:</strong> 0</p><p><strong>Weaknesses:</strong> None\\ <strong>Resistances:</strong> Physical (1)\\ <strong>Immunities:</strong> None</p><h2>Actions</h2><p>Damage and effects are <strong>Weak / Standard / Strong player defense</strong>. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.</p><table><thead><tr><th scope=\"col\">Main Actions</th><th scope=\"col\">Defense</th><th scope=\"col\">Damage</th></tr></thead><tbody><tr><td>Basic Melee</td><td>Agility</td><td>5/3/2</td></tr><tr><td>Stoneward gaze</td><td>Fortitude</td><td>7 + Paralyzed 1 / 5 / 3</td></tr></tbody></table><table><thead><tr><th scope=\"col\">Maneuvers</th><th scope=\"col\">Effect</th></tr></thead><tbody><tr><td>Study the Opening</td><td>+1 Threat Bane on next attack this turn.</td></tr><tr><td>Defend</td><td>+1 Bane</td></tr></tbody></table><table><thead><tr><th scope=\"col\">Reactions</th><th scope=\"col\">Effect</th></tr></thead><tbody><tr><td>Warning Hiss</td><td>Before a hearing adjacent enemy makes a melee attack: +1 Bane.</td></tr><tr><td>Opportunity Attack</td><td>Basic Melee</td></tr></tbody></table><h2>Details</h2><h3>Stoneward gaze</h3><p><strong>Target:</strong> Only a creature that can see this creature. One visible creature within 4 squares. <strong>Player defense:</strong> Fortitude. <strong>Damage type:</strong> physical.</p><p><strong>Weak defense:</strong> Paralyzed 1.</p><p><strong>Limit:</strong> Cannot use this attack on consecutive turns, regardless of result.</p><h3>Study the Opening</h3><p><em>It waits for a tell in the stance, then turns its attention to the exposed line.</em></p><p>Its next attack before the end of this turn imposes 1 additional Bane on player defense, or gains 1 Boon when player-controlled. One attack only; no stacking with itself.</p><h3>Warning Hiss</h3><p><em>The snakes beneath the hood rear together, filling the attacker&#39;s vision with open mouths and hissing fangs.</em></p><p>Before one adjacent enemy that can hear it makes a melee attack against this creature, impose 1 Bane on that attack. Against an NPC attack, grant 1 Boon to its defense instead. No Frightened condition, extra gaze or counterattack is granted.</p><h3>General details</h3><p><strong>Basic Melee:</strong> One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.</p><p><strong>Defend:</strong> Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.</p><p><strong>Opportunity Attack:</strong> Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.</p><p><strong>Healing:</strong> Living: ordinary HP healing applies.</p><p><strong>Senses:</strong> Ordinary sight and hearing.</p><p><strong>Tactics and retreat:</strong> Study an opening before the gaze, then reposition or use Basic Melee during its required pause. A target that cannot see the medusa is safe from this gaze.</p><p><strong>Encounter and conversation:</strong> The medusa has been blamed for statues far older than its arrival and wants the true sculptor found.</p><p><strong>Habitat:</strong> Settlement; frontier; contested road · <strong>Communication:</strong> Common and its community’s language</p><p><strong>Loot:</strong> Ordinary carried gear and 8 coins; special rewards belong to the adventure.</p><p><strong>Summoning:</strong> Ineligible.</p><h2>Design notes — not needed during play</h2><p><strong>ID:</strong> creature-medusa</p><p><strong>Category:</strong> Mortal · <strong>Role:</strong> Disabler · <strong>CV:</strong> 31</p><h3>Creature-roll reference</h3><table><thead><tr><th scope=\"col\">Attack</th><th scope=\"col\">Attribute</th><th scope=\"col\">Attack modifier</th><th scope=\"col\">Weak attack</th><th scope=\"col\">Standard attack</th><th scope=\"col\">Strong attack</th></tr></thead><tbody><tr><td>Stoneward gaze</td><td>Brawn</td><td>1 Boon</td><td>3 physical damage.</td><td>5 physical damage.</td><td>7 physical damage. Paralyzed 1.</td></tr></tbody></table><p>Use the attributes above for defenses named by incoming attacks. Same targeting, limits and costs apply; no opposed second roll.</p><h3>CV worksheet</h3><p><strong>Reference damage:</strong> 3/5/7</p><p><strong>Reference type:</strong> physical</p><p><strong>Expected targets:</strong> 1</p><p><strong>Utility factor:</strong> 1.7</p><p><strong>Action review (#1279):</strong> U 1.6 → 1.7: Maneuver allowance +0, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.</p><p><strong>Regeneration per turn:</strong> 0</p><p>Reference I=3.404, O=4.596. Uses the seed worksheet. Utility is provisional and does not simulate control, positioning or summon choices.</p><p><strong>Ability sources:</strong> @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.915442f3dfd46c5a.JournalEntryPage.813df0d314e58ebe]{numbing strike}, @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.d4cde56db2f95302.JournalEntryPage.067fd6dc9b46ec1b]{Warning Hiss}, @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.f54ae44cde08a4cb.JournalEntryPage.a8d631521bcf6ded]{watch the opening}.</p><p><strong>Coverage reference:</strong> Pathfinder family survey; original HOL prose and mechanics.</p><p>Roster · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.5ebfaad0d5ed6813.JournalEntryPage.3292b6a49dcf7236]{Stability}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

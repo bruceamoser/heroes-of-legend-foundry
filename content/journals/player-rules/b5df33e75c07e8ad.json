@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!b5df33e75c07e8ad",
+  "_id": "b5df33e75c07e8ad",
+  "name": "Hold the Passage",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/hold-the-passage.md",
+        "sha256": "76de6d98cd87b6b482744cc67d7c066b11f0bcc913f4e74a031ff97eef304b17",
+        "id": "hold-the-passage",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!b5df33e75c07e8ad.60c43ede5f01ad87",
+      "_id": "60c43ede5f01ad87",
+      "name": "Hold the Passage",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Hold the Passage</h1><p><em>You brace your shield in the narrow way and make room for your friends behind it.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Self and adjacent willing allies</p><p>You and willing allies adjacent to you when this action resolves each gain 1 Boon to defense until the start of your next turn. An ally keeps this benefit only while adjacent to you and while you can act and hold the shield. This is one continuing benefit from this use; follow normal Boon/Bane stacking with other sources.</p><p><strong>Duration:</strong> Until the start of your next turn</p><p><strong>Equipment / acquisition:</strong> Requires a shield. Grants one ordinary shield, Bulk 1, if absent.</p><p>---</p><p><strong>Tier / minimum level:</strong> 3 · <strong>DP:</strong> 4 · <strong>Requirements to learn:</strong> Guard 2</p><p><strong>Type:</strong> Skill</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> hold-the-passage</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

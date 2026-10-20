@@ -213,10 +213,12 @@
       "portrait": {
         "creatureId": "creature-wild-boar",
         "asset": "assets/creatures/04b2274aa51ecb4ad28ef1165f25a4221106622453847e6323c1e174a6a4d8c3.webp",
-        "sha256": "e1b20b817854a9a226b5d1955dc0af1f2cc6e4b1a6cd8a1c9af00288154f0f32",
+        "sha256": "ab677a0e16a4cf2b004469dbef537e7b8fe0ee6a61dc715d933c31dd02e52d29",
         "sourceSha256": "04b2274aa51ecb4ad28ef1165f25a4221106622453847e6323c1e174a6a4d8c3",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

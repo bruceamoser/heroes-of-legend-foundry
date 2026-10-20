@@ -218,10 +218,12 @@
       "portrait": {
         "creatureId": "creature-harpy",
         "asset": "assets/creatures/72599f0263d9f2741be629e2ff40580c150cc11322dc1924215c4def0c960dea.webp",
-        "sha256": "3490bd5a66ca822d58b9dca2db77a23520f12ad69f15149a1f24886847e777a5",
+        "sha256": "b738f58fe1487727efca6a36cf1042db9fc75221f02c260c5764f6fc3eaba360",
         "sourceSha256": "72599f0263d9f2741be629e2ff40580c150cc11322dc1924215c4def0c960dea",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

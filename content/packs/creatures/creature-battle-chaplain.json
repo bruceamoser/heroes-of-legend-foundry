@@ -213,10 +213,12 @@
       "portrait": {
         "creatureId": "creature-battle-chaplain",
         "asset": "assets/creatures/75f452a65e6d53bba934bde783f70ef2d9b6e555d95506d19553e9c5a42e87f0.webp",
-        "sha256": "2929298ec1e681a2480b157fa00d112dbc655a5fff5ed059243d10a2ca9f0b87",
+        "sha256": "9c07b783aff4cea82bf83539106647f154f641663fcad8d4f2a5f376cfe1b087",
         "sourceSha256": "75f452a65e6d53bba934bde783f70ef2d9b6e555d95506d19553e9c5a42e87f0",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

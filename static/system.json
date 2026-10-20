@@ -32,10 +32,14 @@
     },
     "Item": {
       "ability": {
-        "htmlFields": ["description"]
+        "htmlFields": [
+          "description"
+        ]
       },
       "equipment": {
-        "htmlFields": ["description"]
+        "htmlFields": [
+          "description"
+        ]
       }
     }
   },
@@ -67,10 +71,40 @@
       "type": "Actor",
       "path": "packs/summons",
       "system": "heroes-of-legend"
+    },
+    {
+      "name": "player-rules",
+      "label": "Heroes of Legend Player Rules",
+      "type": "JournalEntry",
+      "path": "packs/player-rules",
+      "system": "heroes-of-legend",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OBSERVER",
+        "TRUSTED": "OBSERVER",
+        "GAMEMASTER": "OWNER"
+      }
+    },
+    {
+      "name": "da-rules",
+      "label": "Heroes of Legend DA Reference",
+      "type": "JournalEntry",
+      "path": "packs/da-rules",
+      "system": "heroes-of-legend",
+      "ownership": {
+        "PLAYER": "NONE",
+        "ASSISTANT": "NONE",
+        "TRUSTED": "NONE",
+        "GAMEMASTER": "OWNER"
+      }
     }
   ],
   "styles": [
-    "styles/heroes-of-legend.css"
+    "styles/heroes-of-legend.css",
+    "styles/character-sheet.css",
+    "styles/native-cards.css",
+    "styles/native-tools.css",
+    "styles/native-library.css"
   ],
   "manifest": "https://github.com/bruceamoser/heroes-of-legend-foundry/releases/latest/download/system.json",
   "download": "https://github.com/bruceamoser/heroes-of-legend-foundry/releases/download/v0.1.0/heroes-of-legend.zip"

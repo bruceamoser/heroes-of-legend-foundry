@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!481e56ee5617f310",
+  "_id": "481e56ee5617f310",
+  "name": "Superior Healing Bottle",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/equipment/superior-healing-bottle.md",
+        "sha256": "dbdf3a0e75e909f6dceee8111d94b0000e7b822179735e9e17ea8e3b0d6f9434",
+        "id": "item-superior-healing-bottle",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!481e56ee5617f310.77f2bea1246e656d",
+      "_id": "77f2bea1246e656d",
+      "name": "Superior Healing Bottle",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Superior Healing Bottle</h1><p><em>You break the seal and drink, feeling the powerful draught answer the deepest ache.</em></p><h2>Rules</h2><p>- <strong>ID:</strong> item-superior-healing-bottle - <strong>Bulk:</strong> 1 - <strong>Requirements / supply:</strong> Inventory d4 - <strong>Acquisition:</strong> Explicit ability grant, coins, or DA treasure; no automatic extra starting kit.</p><p>Use @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.d719e1776cec64e8.JournalEntryPage.5fce3ed6d7178857]{Use a Healing Potion}: restore 16 HP before Life resistance, capped by missing HP. The giver needs a free hand and spends a Maneuver; another recipient spends a Reaction unless at 0 HP. Check the bottle’s inventory die after use; the final use still works.</p><p>No DP price. Purchase does not grant training or an ability.</p><p>Equipment index</p><p><strong>Market price:</strong> 120 coins. Proposal; see @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.a8b099af3500d9f6.JournalEntryPage.cfa94361944ba875]{market rules}.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

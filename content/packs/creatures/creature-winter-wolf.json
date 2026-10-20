@@ -235,10 +235,12 @@
       "portrait": {
         "creatureId": "creature-winter-wolf",
         "asset": "assets/creatures/d5e0c847649a15d0b712b52b2a76411dbe35fd5d85b07d6d1108b386ba480d89.webp",
-        "sha256": "7b8e8fd2e63d21c1da61e5437df65054de6dec94166461aab6e0a3e639b08927",
+        "sha256": "62181afbdeef1d25938d646682ce61244c448fc2cadbf09483d8641e91aa835c",
         "sourceSha256": "d5e0c847649a15d0b712b52b2a76411dbe35fd5d85b07d6d1108b386ba480d89",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

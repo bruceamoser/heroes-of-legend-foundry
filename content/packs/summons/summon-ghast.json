@@ -119,10 +119,12 @@
       "portrait": {
         "creatureId": "creature-ghast",
         "asset": "assets/creatures/6dd94d5650819088efd4d7e99eade30274c055a26637e1e416de782580c7c843.webp",
-        "sha256": "fdfa63f01521d5817bbf03a6a742fe8e77cf7ad6eaf04efa03ce3ae726b941bd",
+        "sha256": "97f3ce78f49a4ee541b79f2729fbd85a9e271cde103e126299320668cf21645f",
         "sourceSha256": "6dd94d5650819088efd4d7e99eade30274c055a26637e1e416de782580c7c843",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

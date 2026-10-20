@@ -121,10 +121,12 @@
       "portrait": {
         "creatureId": "creature-reed-piper",
         "asset": "assets/creatures/0b69bd79810eee7d8f8b5b15486e2f601e1edcd5aa80a089593a192b0d4c9b98.webp",
-        "sha256": "f75bb771a000dfb2046a2e2363d879b008ae774c73e02f02a299d69f29e62644",
+        "sha256": "b13b946774f1e186c2a573e6853d727f5164182fb025b3dc33d606d697bc3420",
         "sourceSha256": "0b69bd79810eee7d8f8b5b15486e2f601e1edcd5aa80a089593a192b0d4c9b98",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

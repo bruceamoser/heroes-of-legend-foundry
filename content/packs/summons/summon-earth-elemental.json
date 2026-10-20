@@ -125,10 +125,12 @@
       "portrait": {
         "creatureId": "creature-earth-elemental",
         "asset": "assets/creatures/b3fb01f0cf8129e8efe06c6f32317de8c19ba6ea84a7e6fcdf70df83e6fcc68b.webp",
-        "sha256": "dae9f5d7ac14b043ecd0b44d8a94207af3b45716078f83af14285e56b3512aea",
+        "sha256": "824a067fcabbdfa784c2ac4d16487df932b6dea33d6e781ec07ef2c857c6a76c",
         "sourceSha256": "b3fb01f0cf8129e8efe06c6f32317de8c19ba6ea84a7e6fcdf70df83e6fcc68b",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

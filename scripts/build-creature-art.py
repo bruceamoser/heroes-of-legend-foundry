@@ -11,6 +11,7 @@ import os
 import subprocess
 import sys
 from collections import Counter
+from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path, PurePosixPath
 from typing import Any
 
@@ -33,6 +34,7 @@ SCHEMA_VERSION = 1
 WEBP_QUALITY = 85
 WEBP_METHOD = 6
 ALPHA_QUALITY = 100
+MAX_EDGE = 768
 SHA256_LENGTH = 64
 # Reviewed provenance for the checked-in bytes. Update with the manifest and
 # Node release baseline when a regeneration intentionally changes encoders.
@@ -152,6 +154,17 @@ def require_webp_decoder() -> None:
         raise ArtError("Pillow WebP decoder version is unavailable")
 
 
+def derived_dimensions(width: int, height: int) -> tuple[int, int]:
+    """Nearest whole-pixel aspect fit, with no upscaling or cropping."""
+    longest = max(width, height)
+    if longest <= MAX_EDGE:
+        return width, height
+    return (
+        max(1, (width * MAX_EDGE + longest // 2) // longest),
+        max(1, (height * MAX_EDGE + longest // 2) // longest),
+    )
+
+
 def encode_webp(data: bytes, label: str, expected: dict[str, Any]) -> tuple[bytes, dict[str, Any]]:
     try:
         with Image.open(io.BytesIO(data)) as source:
@@ -167,7 +180,10 @@ def encode_webp(data: bytes, label: str, expected: dict[str, Any]) -> tuple[byte
             if source_has_alpha != expected["alpha"]:
                 raise ArtError(f"Source alpha flag changed for {label}")
             working = source.convert("RGBA") if source_has_alpha else source.convert("RGB")
-            source_alpha = (
+            output_dimensions = derived_dimensions(source.width, source.height)
+            if working.size != output_dimensions:
+                working = working.resize(output_dimensions, Image.Resampling.LANCZOS)
+            resized_alpha = (
                 working.getchannel("A").tobytes() if source_has_alpha else None
             )
             output = io.BytesIO()
@@ -187,29 +203,49 @@ def encode_webp(data: bytes, label: str, expected: dict[str, Any]) -> tuple[byte
         raise ArtError(f"Unable to encode {label}: {error}") from error
 
     decoded = image_info(encoded, f"derived image for {label}")
-    if decoded["width"] != expected["width"] or decoded["height"] != expected["height"]:
+    if (decoded["width"], decoded["height"]) != output_dimensions:
         raise ArtError(f"Derived dimensions changed for {label}")
     if decoded["alpha"] != expected["alpha"]:
         raise ArtError(f"Derived alpha channel changed for {label}")
-    if source_alpha is not None:
+    if resized_alpha is not None:
         with Image.open(io.BytesIO(encoded)) as image:
             image.load()
-            if image.convert("RGBA").getchannel("A").tobytes() != source_alpha:
-                raise ArtError(f"Derived alpha values changed for {label}")
+            if image.convert("RGBA").getchannel("A").tobytes() != resized_alpha:
+                raise ArtError(f"Derived resampled alpha values changed for {label}")
     return encoded, decoded
 
 
-def expected_manifest(lock: dict[str, Any], repository: Path) -> tuple[dict[str, Any], dict[str, bytes]]:
+def encode_asset_task(task: tuple[str, bytes, str, dict[str, Any]]) -> tuple[str, bytes, dict[str, Any]]:
+    """Picklable worker; source pin validation and manifest assembly stay in the parent."""
+    source_hash, data, label, note = task
+    encoded, decoded = encode_webp(data, label, note)
+    return source_hash, encoded, decoded
+
+
+def encode_assets(tasks: list[tuple[str, bytes, str, dict[str, Any]]], workers: int):
+    if not isinstance(workers, int) or not 1 <= workers <= 8:
+        raise ArtError("Choose 1–8 creature-art encode workers")
+    if workers == 1:
+        yield from map(encode_asset_task, tasks)
+    else:
+        with ProcessPoolExecutor(max_workers=workers) as executor:
+            # map preserves input order; worker exceptions propagate before any files are written.
+            yield from executor.map(encode_asset_task, tasks)
+
+
+def expected_manifest(lock: dict[str, Any], repository: Path, workers: int = 8) -> tuple[dict[str, Any], dict[str, bytes]]:
     commit = lock["commit"]
     verify_repository(repository, commit)
     generated: dict[str, bytes] = {}
     assets_by_source_hash: dict[str, dict[str, Any]] = {}
     source_notes: dict[str, dict[str, Any]] = {}
+    inputs: dict[str, tuple[str, bytes, str, dict[str, Any]]] = {}
     portraits: list[dict[str, Any]] = []
     mapping_counts: Counter[str] = Counter()
     unique_source_bytes = 0
+    records = sorted(lock["assets"], key=lambda item: item["id"])
 
-    for record in sorted(lock["assets"], key=lambda item: item["id"]):
+    for record in records:
         data = git_blob(repository, commit, record["path"])
         source_hash = sha256(data)
         if source_hash != record["sha256"]:
@@ -217,61 +253,46 @@ def expected_manifest(lock: dict[str, Any], repository: Path) -> tuple[dict[str,
                 f"Source hash mismatch for {record['id']}: expected "
                 f"{record['sha256']}, read {source_hash}"
             )
-
-        note = source_notes.get(source_hash)
-        if note is None:
-            note = {
-                "width": record["width"],
-                "height": record["height"],
-                "alpha": record["alpha"],
-            }
+        note = {"width": record["width"], "height": record["height"], "alpha": record["alpha"]}
+        if source_hash not in source_notes:
             info = image_info(data, f"source {record['id']}")
-            if (
-                info["width"] != record["width"]
-                or info["height"] != record["height"]
-                or info["alpha"] != record["alpha"]
-            ):
+            if any(info[key] != note[key] for key in note):
                 raise ArtError(f"Source metadata mismatch for {record['id']}")
             source_notes[source_hash] = note
-        elif note != {
-            "width": record["width"],
-            "height": record["height"],
-            "alpha": record["alpha"],
-        }:
+            inputs[source_hash] = (source_hash, data, record["id"], note)
+            unique_source_bytes += len(data)
+        elif source_notes[source_hash] != note:
             raise ArtError(f"Shared source metadata disagrees for {record['id']}")
 
-        if source_hash not in assets_by_source_hash:
-            encoded, decoded = encode_webp(data, record["id"], note)
-            filename = f"{source_hash}.webp"
-            runtime_path = f"{RUNTIME_PREFIX}/{filename}"
-            asset = {
-                "bytes": len(encoded),
-                "hasAlpha": decoded["alpha"],
-                "height": decoded["height"],
-                "repositoryPath": f"{REPOSITORY_PREFIX}/{filename}",
-                "runtimePath": runtime_path,
-                "sha256": sha256(encoded),
-                "sourceBytes": len(data),
-                "sourceSha256": source_hash,
-                "width": decoded["width"],
-            }
-            assets_by_source_hash[source_hash] = asset
-            generated[filename] = encoded
-            unique_source_bytes += len(data)
+    print(f"Validated {len(records)} pinned portrait sources; encoding {len(inputs)} assets with {workers} workers.", file=sys.stderr, flush=True)
+    for index, (source_hash, encoded, decoded) in enumerate(encode_assets(list(inputs.values()), workers), 1):
+        filename = f"{source_hash}.webp"
+        runtime_path = f"{RUNTIME_PREFIX}/{filename}"
+        asset = {
+            "bytes": len(encoded),
+            "hasAlpha": decoded["alpha"],
+            "height": decoded["height"],
+            "repositoryPath": f"{REPOSITORY_PREFIX}/{filename}",
+            "runtimePath": runtime_path,
+            "sha256": sha256(encoded),
+            "sourceBytes": len(inputs[source_hash][1]),
+            "sourceSha256": source_hash,
+            "width": decoded["width"],
+        }
+        assets_by_source_hash[source_hash] = asset
+        generated[filename] = encoded
+        if index % 16 == 0 or index == len(inputs):
+            print(f"Encoded {index}/{len(inputs)} creature-art assets.", file=sys.stderr, flush=True)
 
+    for record in records:
+        source_hash = record["sha256"]
         asset = assets_by_source_hash[source_hash]
-        portraits.append(
-            {
-                "alpha": record["alpha"],
-                "asset": asset["runtimePath"],
-                "height": record["height"],
-                "id": record["id"],
-                "provenance": record["provenance"],
-                "sourcePath": record["path"],
-                "sourceSha256": source_hash,
-                "width": record["width"],
-            }
-        )
+        portraits.append({
+            "alpha": record["alpha"], "asset": asset["runtimePath"],
+            "height": record["height"], "id": record["id"],
+            "provenance": record["provenance"], "sourcePath": record["path"],
+            "sourceSha256": source_hash, "width": record["width"],
+        })
         mapping_counts[record["provenance"]] += 1
 
     assets = sorted(
@@ -290,7 +311,10 @@ def expected_manifest(lock: dict[str, Any], repository: Path) -> tuple[dict[str,
             },
             "lossless": False,
             "method": WEBP_METHOD,
-            "nativeDimensions": True,
+            "nativeDimensions": False,
+            "maxEdge": MAX_EDGE,
+            "resample": "lanczos",
+            "allowUpscale": False,
             "quality": WEBP_QUALITY,
         },
         "portraits": sorted(portraits, key=lambda item: item["id"]),
@@ -370,7 +394,10 @@ def validate_artifacts() -> dict[str, Any]:
         "lossless": False,
         "exact": True,
         "alphaQuality": ALPHA_QUALITY,
-        "nativeDimensions": True,
+        "nativeDimensions": False,
+        "maxEdge": MAX_EDGE,
+        "resample": "lanczos",
+        "allowUpscale": False,
     }
     for key, value in expected_encoding.items():
         if encoding.get(key) != value:
@@ -480,11 +507,10 @@ def validate_artifacts() -> dict[str, Any]:
             raise ArtError(f"Unreferenced creature-art asset: {runtime_path}")
         for portrait in mapped:
             if (
-                portrait["width"] != info["width"]
-                or portrait["height"] != info["height"]
+                derived_dimensions(portrait["width"], portrait["height"]) != (info["width"], info["height"])
                 or portrait["alpha"] != info["alpha"]
             ):
-                raise ArtError(f"Source/output dimensions differ: {portrait['id']}")
+                raise ArtError(f"Source/output resize policy differs: {portrait['id']}")
         referenced_paths.add(runtime_path)
         source_bytes += asset["sourceBytes"]
         total_bytes += len(data)
@@ -547,6 +573,7 @@ def main() -> int:
         ),
         help="local Git repository containing the pinned book commit",
     )
+    parser.add_argument("--workers", type=int, choices=range(1, 9), default=8, help="bounded parallel encoders; use 1 for sequential reproduction")
     args = parser.parse_args()
 
     try:
@@ -562,7 +589,7 @@ def main() -> int:
         if not args.book_repository.is_dir():
             raise ArtError(f"Book repository does not exist: {args.book_repository}")
         lock = load_lock()
-        manifest, generated = expected_manifest(lock, args.book_repository)
+        manifest, generated = expected_manifest(lock, args.book_repository, workers=args.workers)
 
         ART_DIR.mkdir(parents=True, exist_ok=True)
         expected_names = {"manifest.json"} | set(generated)

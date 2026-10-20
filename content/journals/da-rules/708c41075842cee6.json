@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!708c41075842cee6",
+  "_id": "708c41075842cee6",
+  "name": "Borrow a Voice",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/borrowed-voice.md",
+        "sha256": "cd8cc49e4ca64ad20680f11688b20843c29534f08ec4130d067ab05357a64610",
+        "id": "monster-borrowed-voice",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!708c41075842cee6.61ff660f88311757",
+      "_id": "61ff660f88311757",
+      "name": "Borrow a Voice",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Borrow a Voice</h1><p><em>A familiar voice comes from an unfamiliar mouth with exactly the remembered hesitation.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-borrowed-voice</p><p><strong>Action:</strong> Maneuver</p><p>Copy the sound of a voice it has heard until its next turn. This grants no knowledge, obedience, language or combat modifier. A suspicious listener may use Reason with normal Boons/Banes when being deceived has consequences.</p><p>Only creatures whose entries list this ability possess it. Printed limits apply.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

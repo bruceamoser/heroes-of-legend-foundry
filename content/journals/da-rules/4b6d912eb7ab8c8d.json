@@ -1,0 +1,39 @@
+{
+  "_key": "!journal!4b6d912eb7ab8c8d",
+  "_id": "4b6d912eb7ab8c8d",
+  "name": "Lantern Spirit (CV 6)",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/bestiary/summons/lantern-spirit.md",
+        "sha256": "c27fc67d24495a1f420d95383af74a2063e18610a63d4f9ab749f43b156b28f6",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!4b6d912eb7ab8c8d.a6c8cd787f810e61",
+      "_id": "a6c8cd787f810e61",
+      "name": "Lantern Spirit (CV 6)",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Lantern Spirit (CV 6)</h1><p><em>A small lantern-shaped spirit with legs of light and a steady, smokeless glow. It remembers a particular route with great fidelity, but knows little beyond it.</em></p><p><strong>HP:</strong> 6 · <strong>Speed:</strong> Ground 0; fly 6 · <strong>Footprint:</strong> 1x1</p><p><strong>Summoned form — player reference.</strong></p><p><strong>Defense modifier:</strong> 1 Boon. · <strong>Stability:</strong> 0.</p><p><strong>DR / resistance:</strong> None · <strong>Condition immunities:</strong> Bleeding; Poisoned; Asleep</p><p><strong>Weakness:</strong> None</p><p><strong>Healing:</strong> Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body. Cannot swallow potions.</p><p><strong>Senses:</strong> Ordinary sight and hearing.</p><p><strong>Communication:</strong> Understands Common; answers by pointing light while active</p><p><strong>Attributes:</strong> Brawn -2; Fortitude +0; Agility +1; Guile +0; Knowledge +1; Reason +2</p><p><strong>Eligibility:</strong> Spirit 1</p><p>Main command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use controller’s turn. Beyond 6 squares, or controller unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot.</p><p><strong>Carrying:</strong> up to 1 Bulk; anatomy limits handling. No granted crafting training.</p><p>Roll its printed attack attribute and read the attacker outcomes below. When it is attacked, roll the defense attribute named by the incoming attack. Passive defenses remain; no independent active effects.</p><p><strong>Lifeless Body — Passive:</strong> does not breathe or eat; only listed immunities apply.</p><h2>Attacks — Main Action</h2><table><thead><tr><th scope=\"col\">Attack</th><th scope=\"col\">Attribute</th><th scope=\"col\">Attack modifier</th><th scope=\"col\">Weak attack</th><th scope=\"col\">Standard attack</th><th scope=\"col\">Strong attack</th></tr></thead><tbody><tr><td>Warning flash</td><td>Reason</td><td>1 Bane</td><td>1 radiant damage.</td><td>2 radiant damage.</td><td>3 radiant damage.</td></tr></tbody></table><p><strong>Warning flash:</strong> One visible creature within 3 squares.</p><h2>Maneuvers</h2><h3>Guide the Light — Maneuver</h3><p><em>A ribbon of lanternlight runs along the path, picking out each stone on the way to shelter.</em></p><p>Brightly light up to 3 connected squares within 3 squares until the start of the controller’s next turn. Requires an unobstructed path from this creature to each square; it may choose unlit squares. Ordinary darkness imposes no Boons or Banes for seeing those squares; cover, concealment and hiding still use the normal rules. This neither reveals Hidden creatures automatically nor penetrates opaque obstacles. Reusing this ability replaces its previous illuminated area.</p><p>Use only as part of a command; no independent activity.</p><p><strong>Defend — Maneuver:</strong> gain 1 Boon to defenses until the start of the controller’s next turn; repeated Defend does not stack.</p><p><strong>Basic Melee — Main:</strong> 1 Bane to attack; Brawn, one adjacent target; Weak attack 1, Standard 2, Strong 4 physical damage. No specialty riders. No opportunity Reaction.</p><p>@UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.fbdae7412dd46e77.JournalEntryPage.eeb792639627b72d]{DA creature card} · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.56367e2f9016dd21.JournalEntryPage.9ff12960a5e160cc]{Summon rules}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

@@ -196,10 +196,12 @@
       "portrait": {
         "creatureId": "creature-grave-cultist",
         "asset": "assets/creatures/0c8937fcdfe9bfd784151d2531ea1cf9b02715fc60e74d4f9ad63548d03fd395.webp",
-        "sha256": "101be67b603cf09044b4ab68b365d9ad0dc6c50379117f2ee516113def444bfb",
+        "sha256": "49a16a40ce4dae016ddc820061725ebd9403d0cb23d8698101273d60ac9a268b",
         "sourceSha256": "0c8937fcdfe9bfd784151d2531ea1cf9b02715fc60e74d4f9ad63548d03fd395",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

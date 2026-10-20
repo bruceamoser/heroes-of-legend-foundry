@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!e1df27cc15939486",
+  "_id": "e1df27cc15939486",
+  "name": "Shelter the Young",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/shelter-the-young.md",
+        "sha256": "0f6b568d847b1acbdec379bd0df8d5ab8b534765cf0ba6fb7a099a14b3d3312e",
+        "id": "monster-shelter-the-young",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!e1df27cc15939486.c63ef7feb106cadb",
+      "_id": "c63ef7feb106cadb",
+      "name": "Shelter the Young",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Shelter the Young</h1><p><em>It turns at the cry beside it, bringing its whole body between the danger and the one it protects.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-shelter-the-young</p><p><strong>Action:</strong> Reaction</p><p>After a visible enemy ends voluntary movement adjacent to a willing ally within 3 squares, move up to 2 squares, ending adjacent to that ally. Pay normal terrain costs and provoke normally. This movement grants no attack or automatic protection; its body obstructs only the squares it actually occupies. Movement granted by a free attack cannot trigger it.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

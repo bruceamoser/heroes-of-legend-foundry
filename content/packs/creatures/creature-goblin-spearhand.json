@@ -196,10 +196,12 @@
       "portrait": {
         "creatureId": "creature-goblin-spearhand",
         "asset": "assets/creatures/9bbd23f53fa3a44feae6fcebd8eb0bcac03c61e62bb7ffc1730bef67f3ef7248.webp",
-        "sha256": "acffeebd3fa7d1403f5aa904aa978903e92b1ad09d55f19d2d2f1af02cc45a1e",
+        "sha256": "c7e05bc3b502f458075004cf2fc5701db1567106cf7014842bdb906f7025158b",
         "sourceSha256": "9bbd23f53fa3a44feae6fcebd8eb0bcac03c61e62bb7ffc1730bef67f3ef7248",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

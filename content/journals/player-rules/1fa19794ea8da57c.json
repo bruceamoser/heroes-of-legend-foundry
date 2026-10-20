@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!1fa19794ea8da57c",
+  "_id": "1fa19794ea8da57c",
+  "name": "Conditioned Body",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/conditioned-body.md",
+        "sha256": "8e1601a28d2a708cd33e9b51953940319612f1d19c7ba1553ebdb11176187bae",
+        "id": "conditioned-body",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!1fa19794ea8da57c.fe296af24cb67927",
+      "_id": "fe296af24cb67927",
+      "name": "Conditioned Body",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Conditioned Body</h1><p><em>You remember the work that built this strength: another load, another climb, another day you kept going.</em></p><h2>Rules</h2><p><strong>Action:</strong> Passive · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Self</p><p>Maximum HP +1. At most one purchase at each level; missed purchases cannot be banked. No attribute increase.</p><p><strong>Duration:</strong> Permanent maximum HP increase for each permitted purchase.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 1 · <strong>DP:</strong> 2 · <strong>Requirements to learn:</strong> None</p><p><strong>Type:</strong> Training / Passive</p><p><strong>Limits:</strong> At most one purchase per level; unused purchases cannot be saved.</p><p><strong>ID:</strong> conditioned-body</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

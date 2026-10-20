@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!fbb32ea4a33ea0c1",
+  "_id": "fbb32ea4a33ea0c1",
+  "name": "Fold the Distance",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/signature-arcanist-fold-the-distance.md",
+        "sha256": "ee955c6fb116f6c4c4ddbf08596ef7deed0244faa20de2c73d204dca10e11731",
+        "id": "signature-arcanist-fold-the-distance",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!fbb32ea4a33ea0c1.e5bb1eb9af6aec0c",
+      "_id": "e5bb1eb9af6aec0c",
+      "name": "Fold the Distance",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Fold the Distance</h1><p><em>You pinch a crease in the air and step through it, drawing a companion across with your outstretched hand.</em></p><h2>Rules</h2><p><strong>Action:</strong> Maneuver · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Self and optionally one adjacent willing ally; visible free destinations within 4 squares of you.</p><p>Teleport yourself to a chosen destination. You may bring the ally to a separate free square adjacent to your destination, also within range. Both destinations must fit their occupants; no opaque barrier may separate either traveler from its destination. Neither traveler provokes, and the ally spends no action.</p><p><strong>Duration:</strong> Immediate teleportation.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 7 · <strong>DP:</strong> 8 · <strong>Requirements to learn:</strong> Class Arcanist; minimum level 7</p><p><strong>Type:</strong> Signature</p><p><strong>Tags:</strong> Magic / Movement</p><p><strong>Limits:</strong> Repeatable; normal action economy applies.</p><p><strong>ID:</strong> signature-arcanist-fold-the-distance</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.89ce8e1d2af8a0be.JournalEntryPage.0f7b9607ec6639ab]{Class choices} · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

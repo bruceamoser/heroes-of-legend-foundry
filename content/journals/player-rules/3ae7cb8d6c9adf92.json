@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!3ae7cb8d6c9adf92",
+  "_id": "3ae7cb8d6c9adf92",
+  "name": "Close the Gap",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/signature-protector-close-the-gap.md",
+        "sha256": "7fb1ed1f72341d8ca14691fb5bb83386cc097dc4bec11730960270614fa560b5",
+        "id": "signature-protector-close-the-gap",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!3ae7cb8d6c9adf92.b7e69bd04d8917b1",
+      "_id": "b7e69bd04d8917b1",
+      "name": "Close the Gap",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Close the Gap</h1><p><em>You hurry to a companion’s side and turn outward, ready to meet whatever followed them.</em></p><h2>Rules</h2><p><strong>Action:</strong> Maneuver · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Self; one visible ally.</p><p>Move up to 2 squares toward that ally without provoking. If you end adjacent to it, gain Defend’s 1 Boon to defense until the start of your next turn. This is the ordinary Defend benefit and does not multiply an existing Defend.</p><p><strong>Duration:</strong> Movement is immediate; Defend ends at the start of your next turn.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 1 · <strong>DP:</strong> 2 · <strong>Requirements to learn:</strong> Class Protector; minimum level 1</p><p><strong>Type:</strong> Signature</p><p><strong>Tags:</strong> Skill / Movement / Defense</p><p><strong>Limits:</strong> Repeatable; normal action economy applies.</p><p><strong>ID:</strong> signature-protector-close-the-gap</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.fec08732fb31ffd9.JournalEntryPage.bdb294c8658c26c8]{Class choices} · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

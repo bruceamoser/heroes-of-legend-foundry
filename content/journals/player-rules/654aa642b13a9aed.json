@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!654aa642b13a9aed",
+  "_id": "654aa642b13a9aed",
+  "name": "Guide a Frightened Animal",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/guide-a-frightened-animal.md",
+        "sha256": "4492b39ad043a818886152abcfe0e3628951c988a209df4eb9a138640fa8fa31",
+        "id": "guide-a-frightened-animal",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!654aa642b13a9aed.0d7eac3ca940bf5f",
+      "_id": "0d7eac3ca940bf5f",
+      "name": "Guide a Frightened Animal",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Guide a Frightened Animal</h1><p><em>You lower your voice and let the animal see that your hands are quiet.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> Guile</p><p><strong>Time:</strong> One minute per attempt.</p><p><strong>Target / range / shape:</strong> One nonhostile animal able to perceive you; one minute</p><p>Spend one minute calming a nonhostile animal that can see or hear you. State the behavior you want, such as letting a companion approach. The DA sets a progress target for a behavior the animal could plausibly accept. Roll Guile. This card gives no control over hostile or intelligent creatures.</p><p>- <strong>Weak:</strong> Add 1 progress toward calming the animal. - <strong>Standard:</strong> Add 2 progress and identify an immediate cause of its distress. - <strong>Strong:</strong> Add 3 progress, identify that cause, and when this completes the target, one willing companion may approach without upsetting it.</p><p><strong>Duration:</strong> Progress toward the declared behavior persists while the situation remains applicable.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 1 · <strong>DP:</strong> 2 · <strong>Requirements to learn:</strong> Wilderness 1</p><p><strong>Type:</strong> Skill / Utility</p><p><strong>Limits:</strong> Pay the printed action and any full activity time for each use.</p><p><strong>ID:</strong> guide-a-frightened-animal</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

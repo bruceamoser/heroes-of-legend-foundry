@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!b170d6b8298f519d",
+  "_id": "b170d6b8298f519d",
+  "name": "Dread Reflection",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/dread-reflection.md",
+        "sha256": "b1d1d0f7890498b310e05655131054cd6fb4d188f24463f6d40f5b78e8cf98f3",
+        "id": "dread-reflection",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!b170d6b8298f519d.094f5c63a35e571e",
+      "_id": "094f5c63a35e571e",
+      "name": "Dread Reflection",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Dread Reflection</h1><p><em>You spread your arms, and your outline twists into something your enemy dreads. They recoil as the vision presses against their thoughts.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> Guile</p><p><strong>Target / range / shape:</strong> One visible creature within 5 squares</p><p>Proposed NPC defense attribute: Reason.</p><p>- <strong>Weak:</strong> 3 mental damage. - <strong>Standard:</strong> 3 mental damage; Frightened 1 of you. - <strong>Strong:</strong> 5 mental damage; Frightened 2 of you.</p><p><strong>Duration:</strong> Instant</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 3 · <strong>DP:</strong> 4 · <strong>Requirements to learn:</strong> Mind 2</p><p><strong>Type:</strong> Magic / Attack</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> dread-reflection</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

@@ -3,6 +3,7 @@
   "_id": "2cfd58efb5b4b01d",
   "name": "Sleeping Roll",
   "type": "equipment",
+  "img": "systems/heroes-of-legend/assets/icons/bedroll.svg",
   "system": {
     "schemaVersion": 1,
     "catalogId": "item-sleeping-roll",

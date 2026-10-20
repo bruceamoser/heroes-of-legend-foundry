@@ -18,7 +18,7 @@ export class EquipmentData extends foundry.abstract.TypeDataModel {
         nullable: false,
         initial: "",
       }),
-      quantity: integer(1, 1),
+      quantity: integer(1, 0),
       bulk: integer(1, 0),
       hands: integer(0, 0, 2),
       inventoryDie: integer(0, 0, 20),

@@ -206,10 +206,12 @@
       "portrait": {
         "creatureId": "creature-merfolk-tideguard",
         "asset": "assets/creatures/0f0edf229c204a91fa5b4c7569458615c1d2f05a28fa9555abde2206b4b74ac8.webp",
-        "sha256": "f509dd005e4efc0b8f1c45697b813a1ca5d4984d40db8af64c22172babd8cf7f",
+        "sha256": "0d1777f89f35b5ed4042c905955760e883b1579eabfb4ebefe3c30fff07c4717",
         "sourceSha256": "0f0edf229c204a91fa5b4c7569458615c1d2f05a28fa9555abde2206b4b74ac8",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

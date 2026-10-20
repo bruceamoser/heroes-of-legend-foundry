@@ -1,6 +1,7 @@
 import { assertNoPendingTurn } from "./turn-lock.mjs";
 import { woundRoll, woundResult } from "../rules/wounds.mjs";
-import { enterLastWords, validateSurvival } from "../rules/survival.mjs";
+import { DAMAGE_TYPES } from "../rules/damage.mjs";
+import { enterLastWords, validateSurvival, survivalState } from "../rules/survival.mjs";
 import { conditionIcon } from "./conditions.mjs";
 import {
   enqueueCharacterOperation,
@@ -66,10 +67,12 @@ async function apply(id) {
     !actor.testUserPermission(message.author, "OWNER")
   )
     throw new Error("A character owner or the DA must request this wound.");
-  if (!["roll", "apply", "recover"].includes(request.kind))
+  if (!["record", "roll", "apply", "recover"].includes(request.kind))
     throw new Error("Unknown wound operation.");
-  if (request.kind !== "roll" && !message.author.isGM)
-    throw new Error("The DA reviews anatomy and applies or recovers a wound.");
+  if (request.kind === "recover" && !message.author.isGM)
+    throw new Error("Only the DA can recover an unresolved wound roll.");
+  if (request.skipped?.length && !message.author.isGM)
+    throw new Error("Only the DA can record an anatomy exception.");
   const signature = JSON.stringify(request),
     receipt = actor.getFlag(ID, "operationReceipts")?.[id];
   if (receipt?.applied) {
@@ -89,6 +92,35 @@ async function apply(id) {
     return { status: "complete", replay: true };
   }
   assertNoPendingTurn(actor);
+  if (request.kind === "record") {
+    if (request.eventId !== null || JSON.stringify(woundBasis(actor, null)) !== JSON.stringify(request.basis))
+      throw new Error("Character state changed. Review the wound count and record again.");
+    const existing = actor.getFlag(ID, "survival");
+    if (!existing && actor.system.health.value === 0)
+      throw new Error("Reconcile this zero-HP character’s survival state before recording an additional wound.");
+    const state = existing ? structuredClone(existing) : survivalState({
+      hp: actor.system.health.value,
+      maxHp: actor.system.health.max,
+      gritAvailable: actor.system.grit.available,
+      wounds: Object.keys(actor.getFlag(ID, "wounds") ?? {}).length,
+    });
+    validateSurvival(state);
+    if (state.hp !== actor.system.health.value) throw new Error("Reconcile HP and survival before recording an additional wound.");
+    const priorWounds = state.wounds;
+    state.wounds += 1;
+    validateSurvival(state);
+    const eventId = `manual-wound-${id}`;
+    const changes = {
+      [`flags.${ID}.pendingWounds.${eventId}`]: { eventId, priorWounds, types: [...DAMAGE_TYPES], status: "awaiting-roll", manual: true },
+      [`flags.${ID}.survival`]: state,
+      [`flags.${ID}.damageRevision`]: request.basis.revision + 1,
+      [`flags.${ID}.operationReceipts.${id}`]: { applied: true, authorId: message.author.id, request: signature },
+    };
+    actor.validate({ changes: foundry.utils.expandObject(changes), strict: true, fallback: false });
+    await writeAuthorityDocument(actor, changes);
+    await message.update({ content: "Additional wound recorded. Choose its damage type and roll once. HP and survival status were preserved." });
+    return { status: "complete", replay: false, eventId };
+  }
   let pending = structuredClone(
     actor.getFlag(ID, "pendingWounds")?.[request.eventId],
   );
@@ -139,7 +171,7 @@ async function apply(id) {
         },
       });
       await message.update({
-        content: `Wound result ${result.key}. The DA can review anatomy and apply its consequences.`,
+        content: `Wound result ${result.key}. Review and apply its consequences; the DA resolves anatomy exceptions and placement.`,
         rolls: [roll],
       });
     } else if (pending.status === "rolling")

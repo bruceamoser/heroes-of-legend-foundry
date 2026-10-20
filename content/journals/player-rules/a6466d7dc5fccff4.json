@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!a6466d7dc5fccff4",
+  "_id": "a6466d7dc5fccff4",
+  "name": "Crash Down",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/signature-unbalanced-crash-down.md",
+        "sha256": "87f6487ec32ade42f7c2be0370824ade4a7a7e99a558af02630828814242d8ec",
+        "id": "signature-unbalanced-crash-down",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!a6466d7dc5fccff4.d8059370a29fdd0a",
+      "_id": "d8059370a29fdd0a",
+      "name": "Crash Down",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Crash Down</h1><p><em>You drive the target backward and finish the motion with a downward wrench that leaves them sprawled where they land.</em></p><h2>Rules</h2><p><strong>Action:</strong> Passive · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> One creature pushed by your Main Action attack or Force action.</p><p>After that push resolves, you may knock the target prone even if it did not strike an obstruction. Then you may move 1 square toward it without provoking if a legal free square is available. This adds no collision damage and cannot create numbered Prone.</p><p><strong>Duration:</strong> Immediate knockdown and step.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 7 · <strong>DP:</strong> 8 · <strong>Requirements to learn:</strong> Class Unbalanced; minimum level 7</p><p><strong>Type:</strong> Signature</p><p><strong>Tags:</strong> Skill / Control / Movement</p><p><strong>Limits:</strong> Once on your turn; no benefit from free attacks.</p><p><strong>ID:</strong> signature-unbalanced-crash-down</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.c52e568f60caf216.JournalEntryPage.e4c268a3f92809d7]{Class choices} · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

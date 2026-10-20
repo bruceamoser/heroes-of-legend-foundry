@@ -125,10 +125,12 @@
       "portrait": {
         "creatureId": "creature-ancestor-guardian",
         "asset": "assets/creatures/aefb2e5c8636a766c9649a374fdf4cc87baf4447183da0877d9b21effbec7994.webp",
-        "sha256": "e6f26670c2b53252dfd5082196235dd577047824cfd0b34454532966c74c80c7",
+        "sha256": "dd9d8bd5384f24b75debcc9dc69def2f6663b5ff6368f9c11dc2cd16766e2064",
         "sourceSha256": "aefb2e5c8636a766c9649a374fdf4cc87baf4447183da0877d9b21effbec7994",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

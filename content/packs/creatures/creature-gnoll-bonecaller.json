@@ -213,10 +213,12 @@
       "portrait": {
         "creatureId": "creature-gnoll-bonecaller",
         "asset": "assets/creatures/3ee7aab66279e2ae832512d5059fe44c179127eda287a7bf9c2db3a8edcd9786.webp",
-        "sha256": "aabe21112cdcb063f94b6a7d408951b8d4b8a4b54e38b45db7192947a68c55aa",
+        "sha256": "cc96208a705c2a4060cbf6a6c65b78bca42c3b6b07babc14b91700fa47c3e02a",
         "sourceSha256": "3ee7aab66279e2ae832512d5059fe44c179127eda287a7bf9c2db3a8edcd9786",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

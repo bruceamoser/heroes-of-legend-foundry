@@ -116,10 +116,12 @@
       "portrait": {
         "creatureId": "creature-trail-hound",
         "asset": "assets/creatures/8fb4c13f3446cf774cba5d9b012ccf8207e76183f3817d8b8058969a292bc686.webp",
-        "sha256": "e16b8c3143a5e3e70a66afdd5d8ed6fb117ecda9558d797ae5f3b833bc344da4",
+        "sha256": "006e1bcedf52b599355e4738a8fdaaa3c70fa7a6531c6c501a9266470e23fe6e",
         "sourceSha256": "8fb4c13f3446cf774cba5d9b012ccf8207e76183f3817d8b8058969a292bc686",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

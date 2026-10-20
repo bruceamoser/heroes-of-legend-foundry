@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!1bef6907de5558b6",
+  "_id": "1bef6907de5558b6",
+  "name": "Battle Mending",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/battle-mending.md",
+        "sha256": "041f2b5a0da4e71bb1a75a15c76fd16fbf907055abbc0b6e8fb420927d9db143",
+        "id": "monster-battle-mending",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!1bef6907de5558b6.b55a1a0ad1a58a67",
+      "_id": "b55a1a0ad1a58a67",
+      "name": "Battle Mending",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Battle Mending</h1><p><em>Light travels from the healer’s shaking hands into another body, leaving the healer visibly diminished.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-battle-mending</p><p><strong>Action:</strong> Main Action; spell</p><p>One visible adjacent living creature; free hand required. Pay the printed life cost first, bypassing resistance, and remain above 0 HP. A player controller rolls the creature’s printed healing attribute for its printed HP outcomes. For a hostile NPC healing an ally, ask a player to make that same creature-attribute roll, including its applicable Boons/Banes. The DA still chooses its action and target; being the dice roller grants no control of the NPC. Life resistance reduces healing normally. This may instead target a healing-harmed creature: the result becomes Life damage, with Fortitude defense if a player is defending for that creature and no extra opposed roll. Keep the same range, life cost and free-hand requirement. This can be repeated while affordable. Provokes as spellcasting; no separate spell slots.</p><p><strong>Limits:</strong> Only creatures whose entries list this ability possess it. Printed entry values and restrictions apply; no ability grants unlisted actions.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

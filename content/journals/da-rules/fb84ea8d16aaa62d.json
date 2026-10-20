@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!fb84ea8d16aaa62d",
+  "_id": "fb84ea8d16aaa62d",
+  "name": "Stone Stare",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/stone-stare.md",
+        "sha256": "e99acb7ce4e3ed92a186ab45572a8740a3530e66d122da366984e3e46a5247ba",
+        "id": "monster-stone-stare",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!fb84ea8d16aaa62d.c8ae18a7b271f394",
+      "_id": "c8ae18a7b271f394",
+      "name": "Stone Stare",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Stone Stare</h1><p><em>Gray veins climb from the victim’s feet while the creature holds an unblinking stare.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-stone-stare</p><p><strong>Action:</strong> Main Action; spell</p><p>One target within the printed range that can see the creature: Weak Slowed 1; Standard Slowed 2; Strong Paralyzed 1. No HP damage. A target may avert their eyes until their next turn: the gaze cannot select them, but they have 1 Bane on attacks against this creature and defenses against its attacks during that time. Declare before the gaze resolves. There is no permanent petrification or instant death in this card.</p><p><strong>Limits:</strong> Only creatures whose entries list this ability possess it. Printed entry values and restrictions apply; no ability grants unlisted actions.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

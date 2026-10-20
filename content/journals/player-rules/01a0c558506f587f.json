@@ -1,0 +1,39 @@
+{
+  "_key": "!journal!01a0c558506f587f",
+  "_id": "01a0c558506f587f",
+  "name": "Calling",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/disciplines/calling.md",
+        "sha256": "6eb1796c52656e19b0c034d31cf189fd212ebe5f844b288d1b86e288322e95af",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!01a0c558506f587f.4c454969a9e48ce0",
+      "_id": "4c454969a9e48ce0",
+      "name": "Calling",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Calling</h1><p><em>You learn the names and gestures that bring an answer from somewhere beyond your reach.</em></p><h2>Rules</h2><p>Summoned creatures and command techniques.</p><p>Ranks 1, 2 and 3 are purchased in order. Rank alone grants no action, attribute bonus, equipment or permission to use every card in this field. A card prints the rank required before purchase. No additional level gate applies to ranks.</p><p>Class affinity sets the cost of each rank: Home 1/2/4 DP; Adjacent 2/4/8; Foreign 3/6/12; Opposed 4/8/16. These prices are the agreed starting scheme. No discipline may be bought at level 0.</p><p>Discipline index · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

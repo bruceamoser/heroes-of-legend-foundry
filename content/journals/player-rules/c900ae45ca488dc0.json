@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!c900ae45ca488dc0",
+  "_id": "c900ae45ca488dc0",
+  "name": "Lantern Moths",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/lantern-moths.md",
+        "sha256": "4457733faa91fa43e7070df559eb58dc2d20c46640531e007f5a22d44cfccdea",
+        "id": "lantern-moths",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!c900ae45ca488dc0.948806b049c9575a",
+      "_id": "948806b049c9575a",
+      "name": "Lantern Moths",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Lantern Moths</h1><p><em>A small constellation of moths rises from your open palm.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Up to three visible unoccupied squares within 4 squares</p><p>Lights last one scene, illuminate their square and adjacent squares, and cannot blind or deal damage. With one Maneuver you may move each light up to 2 squares; they vanish beyond 6 squares from you. They are effects, not summons or blockers.</p><p><strong>Duration:</strong> Until the scene ends, unless ended earlier as stated above.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 1 · <strong>DP:</strong> 2 · <strong>Requirements to learn:</strong> Radiance 1</p><p><strong>Type:</strong> Magic / Utility</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> lantern-moths</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

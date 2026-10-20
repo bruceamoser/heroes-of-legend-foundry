@@ -3,6 +3,7 @@
   "_id": "63162f750dd35819",
   "name": "Padlock",
   "type": "equipment",
+  "img": "systems/heroes-of-legend/assets/icons/lock.svg",
   "system": {
     "schemaVersion": 1,
     "catalogId": "item-padlock",

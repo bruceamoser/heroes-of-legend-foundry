@@ -70,8 +70,6 @@ export function resolveConditionRequest(id) {
 async function apply(id) {
   const message = game.messages.get(id),
     request = message?.getFlag(ID, "conditionRequest");
-  if (!message?.author?.isGM)
-    throw new Error("The DA must authorize manual condition adjustments.");
   const actor =
     typeof request?.actorUuid === "string"
       ? await fromUuid(request.actorUuid)
@@ -82,6 +80,7 @@ async function apply(id) {
     !["add", "remove", "reduce"].includes(request.kind)
   )
     throw new Error("Invalid condition target or adjustment.");
+  if (!message?.author || !actor.testUserPermission(message.author, "OWNER")) throw new Error("Only an owner or the Dungeon Architect can adjust conditions.");
   const receipt = actor.getFlag(ID, "operationReceipts")?.[id];
   if (receipt?.applied) {
     if (

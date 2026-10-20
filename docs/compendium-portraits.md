@@ -6,11 +6,12 @@ their explicitly linked creature. Actor images and prototype Token textures use
 installed URLs under `systems/heroes-of-legend/assets/creatures/`; stable Actor
 IDs, footprint width/height, source identities and printed rules are preserved.
 Missing mappings or source-lock drift fail generation. Asset file, byte/hash,
-native dimensions, alpha, exact file set and provenance validation remain in the
+source/derivative dimensions and the 768px/no-upscale policy, alpha, exact file set and provenance validation remain in the
 build and release checks. Manifest changes affect deterministic Actor pack hashes.
 
-No image was regenerated, resized or cropped, and no duplicate summon image or
-thumbnail was created. A compact portrait on each creature/summon sheet opens the
+The initial #124 wiring created no new image derivatives. Issue #213 now bounds
+those shared assets to a 768px maximum edge, preserving aspect and alpha without
+upscaling or cropping; no duplicate summon image is created. A compact portrait on each creature/summon sheet opens the
 native [V14 ImagePopout](https://foundryvtt.com/api/v14/classes/foundry.applications.apps.ImagePopout.html).
 The sheet does not automatically share the image. Generation modifies authored
 compendium sources only; existing world Actors and their edited images remain

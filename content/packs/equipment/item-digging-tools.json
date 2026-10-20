@@ -3,6 +3,7 @@
   "_id": "4154985380e9cc81",
   "name": "Digging Tools",
   "type": "equipment",
+  "img": "systems/heroes-of-legend/assets/icons/pick.svg",
   "system": {
     "schemaVersion": 1,
     "catalogId": "item-digging-tools",

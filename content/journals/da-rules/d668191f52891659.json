@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!d668191f52891659",
+  "_id": "d668191f52891659",
+  "name": "Cover a Companion",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/cover-a-companion.md",
+        "sha256": "733b77faf7e43e226c8b409418d45bf77766f563b89f66ee72f6f2e5bc3ab190",
+        "id": "monster-cover-a-companion",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!d668191f52891659.dc41e6847403820c",
+      "_id": "dc41e6847403820c",
+      "name": "Cover a Companion",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Cover a Companion</h1><p><em>The guardian steps into the line of danger, making the attacker work around its raised guard.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-cover-a-companion</p><p><strong>Action:</strong> Reaction</p><p>Before a visible enemy attacks a willing ally adjacent to this creature, impose 1 Bane on that attack roll if this creature can see the attacker. Against an NPC attack, grant that ally 1 Boon to its defense instead. This creature must also be adjacent to the attacker, or hold a shield the DA judges can obstruct the attack. No movement, target substitution or damage transfer. For a single player area attack, use the normal worst-target modifiers; do not roll again.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

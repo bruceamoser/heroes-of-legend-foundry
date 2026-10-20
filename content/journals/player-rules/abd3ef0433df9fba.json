@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!abd3ef0433df9fba",
+  "_id": "abd3ef0433df9fba",
+  "name": "Smile Before Steel",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/smile-before-steel.md",
+        "sha256": "c38750b23d5595d0529d4e25c9c3b9adcb488a3b66248c29c4878cf942798e34",
+        "id": "smile-before-steel",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!abd3ef0433df9fba.3ef2b184e21593b5",
+      "_id": "3ef2b184e21593b5",
+      "name": "Smile Before Steel",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Smile Before Steel</h1><p><em>You smile and feint toward one side, then strike from the other and step away as your opponent turns after you.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> Guile</p><p><strong>Target / range / shape:</strong> One adjacent creature.</p><p>Use a melee weapon, a wink and a deliberately misleading step.</p><p>- <strong>Weak:</strong> 3 physical damage. - <strong>Standard:</strong> 3 physical damage; move 1 square without provoking. - <strong>Strong:</strong> 5 physical damage; move 2 squares without provoking.</p><p><strong>Duration:</strong> Instant. Applied conditions follow their normal duration and decay.</p><p><strong>Equipment / acquisition:</strong> Use one ordinary melee weapon; gain one on learning this card if you do not own one. Bulk 1.</p><p>---</p><p><strong>Tier / minimum level:</strong> 1 · <strong>DP:</strong> 2 · <strong>Requirements to learn:</strong> Arms 1</p><p><strong>Type:</strong> Skill / Attack</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> smile-before-steel</p><p>Build this character · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

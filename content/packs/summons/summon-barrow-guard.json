@@ -125,10 +125,12 @@
       "portrait": {
         "creatureId": "creature-barrow-guard",
         "asset": "assets/creatures/e8980afe63e23d4e1a65e54412654234ca5ce14e49bd063e47e79afe8dd30533.webp",
-        "sha256": "684eb2e52404fc4a95bf0f77078df231a0776f416ff737658dbd3b39f9f0f856",
+        "sha256": "edd33c4659e21d9e9cc3bc344ce6899cd4401a0f3817e2d2602e9d9495b4b257",
         "sourceSha256": "e8980afe63e23d4e1a65e54412654234ca5ce14e49bd063e47e79afe8dd30533",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

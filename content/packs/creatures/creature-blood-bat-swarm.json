@@ -206,10 +206,12 @@
       "portrait": {
         "creatureId": "creature-blood-bat-swarm",
         "asset": "assets/creatures/447d56df9f23531674ca0c13dfcd5ada266192e8d4127a6fe1fa1bab73a55fb8.webp",
-        "sha256": "da9508c23d09c8275f35aa4549948ef98e45f49b2153a64a41bcd21ea0b347ba",
+        "sha256": "a3330e36e18f8f8f69ff01fe246b081d704d07525a51a1c479f9cc7fb870465c",
         "sourceSha256": "447d56df9f23531674ca0c13dfcd5ada266192e8d4127a6fe1fa1bab73a55fb8",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

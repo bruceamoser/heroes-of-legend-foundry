@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!f166c8f6b43fecd9",
+  "_id": "f166c8f6b43fecd9",
+  "name": "Clearing Tonic Supply",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/equipment/clearing-tonic.md",
+        "sha256": "03d95367106bb3d1190b006a01486d854bdd9beeb36b35c357f1b72e79504e6f",
+        "id": "item-clearing-tonic",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!f166c8f6b43fecd9.61cdd1f6598adae5",
+      "_id": "61cdd1f6598adae5",
+      "name": "Clearing Tonic Supply",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Clearing Tonic Supply</h1><p><em>You lift the bottle to the light and watch its sharp green tint settle.</em></p><h2>Rules</h2><p><strong>ID:</strong> item-clearing-tonic</p><p><strong>Market price:</strong> 30 coins. <strong>Bulk:</strong> 1.</p><p>A d4 Clearing Tonic supply. Requires The Cleverest Mixture to administer its printed effect. Owning the bottle grants no ability or recipe. No HP restoration is implied.</p><p>Buying equipment grants no DP advancement, training or ability. Use normal item-handling actions unless an applicable card says otherwise.</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.a8b099af3500d9f6.JournalEntryPage.cfa94361944ba875]{Market rules} · Equipment index</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

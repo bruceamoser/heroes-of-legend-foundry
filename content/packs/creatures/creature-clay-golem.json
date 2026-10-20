@@ -222,10 +222,12 @@
       "portrait": {
         "creatureId": "creature-clay-golem",
         "asset": "assets/creatures/7da763fdeeafbaac3e6ecb862d1071c3b0fbd5ab6637c2961744ff9e0c2b043d.webp",
-        "sha256": "e177f3c4aff890fc851ce840bfcc615d2370b60f812c2c41f480fcc1688b2593",
+        "sha256": "83095b92cdda42a5f668d78c1acd79d6ddcb4da1d98c20a73bf7198e06099b79",
         "sourceSha256": "7da763fdeeafbaac3e6ecb862d1071c3b0fbd5ab6637c2961744ff9e0c2b043d",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

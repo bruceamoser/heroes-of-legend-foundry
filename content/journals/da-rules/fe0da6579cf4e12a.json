@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!fe0da6579cf4e12a",
+  "_id": "fe0da6579cf4e12a",
+  "name": "Gate Archon (CV 47)",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/bestiary/creatures/gate-archon.md",
+        "sha256": "267b818ff2f0a8536c6df2d53fec392e83b79b97a436cf41aade75fa81ef2499",
+        "id": "creature-gate-archon",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!fe0da6579cf4e12a.5d01d3c47975128b",
+      "_id": "5d01d3c47975128b",
+      "name": "Gate Archon (CV 47)",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Gate Archon (CV 47)</h1><p><em>A broad celestial sentinel wears a gate&#39;s geometry in its armor, with keys that ring only when a boundary is crossed.</em></p><p><strong>Attributes:</strong> Brawn +0; Fortitude +1; Agility +1; Guile +1; Knowledge +2; Reason +2</p><p><strong>HP:</strong> 38 · <strong>Speed:</strong> 5 · <strong>Size:</strong> 1 (medium) · <strong>Armor DR:</strong> 3*</p><p><strong>Evasion:</strong> None · <strong>Threat:</strong> 1 Bane · <strong>Stability:</strong> 2</p><p><strong>Weaknesses:</strong> None\\ <strong>Resistances:</strong> Physical (3), Radiant (2)\\ <strong>Immunities:</strong> None</p><h2>Actions</h2><p>Damage and effects are <strong>Weak / Standard / Strong player defense</strong>. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.</p><table><thead><tr><th scope=\"col\">Main Actions</th><th scope=\"col\">Defense</th><th scope=\"col\">Damage</th></tr></thead><tbody><tr><td>Basic Melee</td><td>Agility</td><td>5/3/2</td></tr><tr><td>Threshold hammer</td><td>Fortitude</td><td>9 + Push 3 / 6 + Push 1 / 3</td></tr></tbody></table><table><thead><tr><th scope=\"col\">Maneuvers</th><th scope=\"col\">Effect</th></tr></thead><tbody><tr><td>Mark the Boundary</td><td>3 empty ground squares within 3: difficult terrain until next turn.</td></tr><tr><td>Defend</td><td>+1 Bane</td></tr></tbody></table><table><thead><tr><th scope=\"col\">Reactions</th><th scope=\"col\">Effect</th></tr></thead><tbody><tr><td>Sheltering Light</td><td>Before an ally within 3 takes attack damage: Physical resistance 2 for that attack.</td></tr><tr><td>Opportunity Attack</td><td>Basic Melee</td></tr></tbody></table><h2>Details</h2><h3>Threshold hammer</h3><p><strong>Target:</strong> One visible creature within 2 squares. <strong>Player defense:</strong> Fortitude. <strong>Damage type:</strong> radiant.</p><p><strong>Weak defense:</strong> Push 3. <strong>Standard defense:</strong> Push 1.</p><p><strong>Limit:</strong> Apply Stability, terrain costs and normal collision rules to the printed distance.</p><h3>Mark the Boundary</h3><p><em>A sharp line of light marks a boundary across the floor.</em></p><p>Place up to 3 connected empty ground squares within 3 squares as difficult terrain until its next turn. No damage, wall or prohibition against crossing; all creatures pay the same terrain costs.</p><h3>Sheltering Light</h3><p><em>Light gathers over a companion like overlapping feathers, taking the harsh edge from the impact.</em></p><p>Before one visible willing ally within 3 squares takes damage from an attack, grant that ally Physical resistance 2 for that attack only. Use the highest matching resistance, not an added reduction; minimum damage rules remain. This does not heal, transfer damage or grant resistance to other types.</p><h3>General details</h3><p><strong>Basic Melee:</strong> One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.</p><p><strong>Defend:</strong> Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.</p><p><strong>Opportunity Attack:</strong> Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.</p><p><strong>Heavy Frame — Passive:</strong> Stability 2; an explicit trait, not a bonus calculated from Size.</p><p><strong>Healing:</strong> Living: ordinary HP healing applies.</p><p><strong>Senses:</strong> Ordinary sight and hearing.</p><p><strong>Tactics and retreat:</strong> Mark a difficult approach, then push intruders back across it.</p><p><strong>Encounter and conversation:</strong> It cannot abandon its post, but it can authorize someone else to deal with the threat beyond it.</p><p><strong>Habitat:</strong> Sacred boundary; refuge; contested oath · <strong>Communication:</strong> Common</p><p><strong>Loot:</strong> Recoverable possessions or lair clues chosen for the adventure; body parts grant no automatic special equipment or coin value.</p><p><strong>Summoning:</strong> Ineligible.</p><h2>Design notes — not needed during play</h2><p><strong>ID:</strong> creature-gate-archon</p><p><strong>Category:</strong> Celestial · <strong>Role:</strong> Displacer · <strong>CV:</strong> 47</p><h3>Creature-roll reference</h3><table><thead><tr><th scope=\"col\">Attack</th><th scope=\"col\">Attribute</th><th scope=\"col\">Attack modifier</th><th scope=\"col\">Weak attack</th><th scope=\"col\">Standard attack</th><th scope=\"col\">Strong attack</th></tr></thead><tbody><tr><td>Threshold hammer</td><td>Reason</td><td>1 Boon</td><td>3 radiant damage.</td><td>6 radiant damage. Push 1.</td><td>9 radiant damage. Push 3.</td></tr></tbody></table><p>Use the attributes above for defenses named by incoming attacks. Same targeting, limits and costs apply; no opposed second roll.</p><h3>CV worksheet</h3><p><strong>Reference damage:</strong> 3/6/9</p><p><strong>Reference type:</strong> radiant</p><p><strong>Expected targets:</strong> 1</p><p><strong>Utility factor:</strong> 1.4</p><p><strong>Action review (#1279):</strong> U 1.3 → 1.4: Maneuver allowance +0, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.</p><p><strong>Regeneration per turn:</strong> 0</p><p>Reference I=2.162, O=6.894. Uses the seed worksheet. Utility is provisional and does not simulate control, positioning or summon choices.</p><p><strong>Ability sources:</strong> @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.36c6bbc089ea67cd.JournalEntryPage.ad18c8a952e6d590]{binding circle}, @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.8a7e9a683f51d9bf.JournalEntryPage.ae02613749cc32a2]{driving blow}, @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.b84c716937b11884.JournalEntryPage.6a07cea2475fca17]{Sheltering Light}.</p><p><strong>Coverage reference:</strong> Pathfinder family survey; original HOL prose and mechanics.</p><p>Roster · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.5ebfaad0d5ed6813.JournalEntryPage.3292b6a49dcf7236]{Stability}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

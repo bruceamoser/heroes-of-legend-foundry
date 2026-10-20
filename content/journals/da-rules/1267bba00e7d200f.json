@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!1267bba00e7d200f",
+  "_id": "1267bba00e7d200f",
+  "name": "Cyclops (CV 34)",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/bestiary/creatures/cyclops.md",
+        "sha256": "5e98bf71ca60248043fa07b30d35344fca1192deb6a8c5894bae88be31e45f2f",
+        "id": "creature-cyclops",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!1267bba00e7d200f.286df1ad9573a5f4",
+      "_id": "286df1ad9573a5f4",
+      "name": "Cyclops (CV 34)",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Cyclops (CV 34)</h1><p><em>A single cloudy eye dominates the face of a giant who carves fragments of dreams into roadside stones.</em></p><p><strong>Attributes:</strong> Brawn +2; Fortitude +2; Agility +0; Guile -1; Knowledge -1; Reason +0</p><p><strong>HP:</strong> 38 · <strong>Speed:</strong> 6 · <strong>Size:</strong> 2 (2x2 squares) · <strong>Armor DR:</strong> 1</p><p><strong>Evasion:</strong> None · <strong>Threat:</strong> 1 Bane · <strong>Stability:</strong> 2</p><p><strong>Weaknesses:</strong> None\\ <strong>Resistances:</strong> Physical (1)\\ <strong>Immunities:</strong> None</p><h2>Actions</h2><p>Damage and effects are <strong>Weak / Standard / Strong player defense</strong>. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.</p><table><thead><tr><th scope=\"col\">Main Actions</th><th scope=\"col\">Defense</th><th scope=\"col\">Damage</th></tr></thead><tbody><tr><td>Basic Melee</td><td>Agility</td><td>5/3/2</td></tr><tr><td>Stone-brow axe</td><td>Agility</td><td>10 + Prone / 7 / 4</td></tr><tr><td>Thrown stone</td><td>Agility</td><td>7/5/3</td></tr></tbody></table><table><thead><tr><th scope=\"col\">Maneuvers</th><th scope=\"col\">Effect</th></tr></thead><tbody><tr><td>Study the Opening</td><td>+1 Threat Bane on next attack this turn.</td></tr><tr><td>Defend</td><td>+1 Bane</td></tr></tbody></table><table><thead><tr><th scope=\"col\">Reactions</th><th scope=\"col\">Effect</th></tr></thead><tbody><tr><td>Seen It Already</td><td>Before a visible attacker rolls: +1 Bane to that attack.</td></tr><tr><td>Opportunity Attack</td><td>Basic Melee</td></tr></tbody></table><h2>Details</h2><h3>Stone-brow axe</h3><p><strong>Target:</strong> One visible creature within 2 squares. <strong>Player defense:</strong> Agility. <strong>Damage type:</strong> physical.</p><p><strong>Weak defense:</strong> Prone.</p><h3>Thrown stone</h3><p><strong>Target:</strong> One visible creature within 7 squares. <strong>Player defense:</strong> Agility. <strong>Damage type:</strong> physical.</p><p><strong>Limit:</strong> Requires an available loose stone; picking it up is part of this attack. No stone means this attack is unavailable.</p><h3>Study the Opening</h3><p><em>It waits for a tell in the stance, then turns its attention to the exposed line.</em></p><p>Its next attack before the end of this turn imposes 1 additional Bane on player defense, or gains 1 Boon when player-controlled. One attack only; no stacking with itself.</p><h3>Seen It Already</h3><p><em>It starts moving a heartbeat before the strike, following a future the attacker has not yet reached.</em></p><p>Before one attack from a visible attacker against this creature is rolled, impose 1 Bane on that attack. Against an NPC attack, grant 1 Boon to its single defense roll instead. This changes no target or outcome after dice have been rolled; it does not cancel the action.</p><h3>General details</h3><p><strong>Basic Melee:</strong> One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.</p><p><strong>Defend:</strong> Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.</p><p><strong>Opportunity Attack:</strong> Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.</p><p><strong>Heavy Frame — Passive:</strong> Stability 2; an explicit trait, not a bonus calculated from Size.</p><p><strong>Healing:</strong> Living: ordinary HP healing applies.</p><p><strong>Senses:</strong> Ordinary sight and hearing.</p><p><strong>Tactics and retreat:</strong> Study the opening before committing to the axe, or throw a stone when a narrow approach would surrender its reach advantage.</p><p><strong>Encounter and conversation:</strong> The cyclops recognizes the party from a vision but has misunderstood which part of it was a warning.</p><p><strong>Habitat:</strong> Highland; quarry; remote stronghold · <strong>Communication:</strong> Common and Giant</p><p><strong>Loot:</strong> Recoverable possessions or lair clues chosen for the adventure; body parts grant no automatic special equipment or coin value.</p><p><strong>Summoning:</strong> Ineligible.</p><h2>Design notes — not needed during play</h2><p><strong>ID:</strong> creature-cyclops</p><p><strong>Category:</strong> Giant · <strong>Role:</strong> Knockdown fighter · <strong>CV:</strong> 34</p><h3>Creature-roll reference</h3><table><thead><tr><th scope=\"col\">Attack</th><th scope=\"col\">Attribute</th><th scope=\"col\">Attack modifier</th><th scope=\"col\">Weak attack</th><th scope=\"col\">Standard attack</th><th scope=\"col\">Strong attack</th></tr></thead><tbody><tr><td>Stone-brow axe</td><td>Brawn</td><td>1 Boon</td><td>4 physical damage.</td><td>7 physical damage.</td><td>10 physical damage. Prone.</td></tr><tr><td>Thrown stone</td><td>Brawn</td><td>1 Boon</td><td>3 physical damage.</td><td>5 physical damage.</td><td>7 physical damage.</td></tr></tbody></table><p>Use the attributes above for defenses named by incoming attacks. Same targeting, limits and costs apply; no opposed second roll.</p><h3>CV worksheet</h3><p><strong>Reference damage:</strong> 4/7/10</p><p><strong>Reference type:</strong> physical</p><p><strong>Expected targets:</strong> 1</p><p><strong>Utility factor:</strong> 1.4</p><p><strong>Action review (#1279):</strong> U 1.3 → 1.4: Maneuver allowance +0, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.</p><p><strong>Regeneration per turn:</strong> 0</p><p>Reference I=4.000, O=6.894. Uses the seed worksheet. Utility is provisional and does not simulate control, positioning or summon choices.</p><p><strong>Ability sources:</strong> @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.97f21bb2ae2b46fb.JournalEntryPage.1a5f388995d9b6bc]{knockdown strike}, @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.1462e34ba33eb6f9.JournalEntryPage.1c35812a102a88dd]{Seen It Already}, @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.f54ae44cde08a4cb.JournalEntryPage.a8d631521bcf6ded]{watch the opening}.</p><p><strong>Coverage reference:</strong> Pathfinder family survey; original HOL prose and mechanics.</p><p>Roster · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.5ebfaad0d5ed6813.JournalEntryPage.3292b6a49dcf7236]{Stability}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

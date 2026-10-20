@@ -218,10 +218,12 @@
       "portrait": {
         "creatureId": "creature-night-hag",
         "asset": "assets/creatures/7847141c377b0136c2794a0a37b54f65b5aba2b364b40edfb700af31ea2547bb.webp",
-        "sha256": "581318757f20bdc0b2b8049fc4db62792048f7a7bb31e52e06c799e2acb11846",
+        "sha256": "c7e8415d02b753c2c0e4eb4ebd4d0b84d11046603f74f57ab1024dd1f53ba669",
         "sourceSha256": "7847141c377b0136c2794a0a37b54f65b5aba2b364b40edfb700af31ea2547bb",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

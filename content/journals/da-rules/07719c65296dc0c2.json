@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!07719c65296dc0c2",
+  "_id": "07719c65296dc0c2",
+  "name": "Become Still",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/stone-still.md",
+        "sha256": "c6c2e230c6118bb27e308b7bf59cd4d8755cc83f3b74065990d45ba872f37eb3",
+        "id": "monster-stone-still",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!07719c65296dc0c2.c9f52751eb79cd4f",
+      "_id": "c9f52751eb79cd4f",
+      "name": "Become Still",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Become Still</h1><p><em>Its body settles into the posture of a piece of the surrounding stonework.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-stone-still</p><p><strong>Action:</strong> Maneuver</p><p>Gain 1 additional Bane against the next player attack before its next turn, or 1 defense Boon when player-controlled. Ends if it voluntarily moves. Does not make it Hidden, alter its resistance or stack with itself.</p><p>Only creatures whose entries list this ability possess it. Printed limits apply.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

@@ -222,10 +222,12 @@
       "portrait": {
         "creatureId": "creature-death-knight",
         "asset": "assets/creatures/aaafd85d8ad750f0c0f9c9bc9d3df6a7683b4e9a6b2b2a75bdc89dbda3871201.webp",
-        "sha256": "039acc4e64dfc16f016c8233974eeda94b0c29a35ee7a90ac62dac947c5e9dd4",
+        "sha256": "cc9f9e0128de4d0a0d9ee9826a918444f3204e512ecba8540f3d4c46ea4439f7",
         "sourceSha256": "aaafd85d8ad750f0c0f9c9bc9d3df6a7683b4e9a6b2b2a75bdc89dbda3871201",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

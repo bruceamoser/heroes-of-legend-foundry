@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!1188da9545fdfba9",
+  "_id": "1188da9545fdfba9",
+  "name": "Soft Landing",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/signature-shadow-soft-landing.md",
+        "sha256": "409ba3000680c411ac9848c0793ad2086ff67ac047069bf59e4c28c7e021e0ff",
+        "id": "signature-shadow-soft-landing",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!1188da9545fdfba9.c711f918d88000cb",
+      "_id": "c711f918d88000cb",
+      "name": "Soft Landing",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Soft Landing</h1><p><em>You vault the low rail and land on bent knees, catching your balance before a loose stone can rattle.</em></p><h2>Rules</h2><p><strong>Action:</strong> Maneuver · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Self; a visible supported free landing within 2 squares.</p><p>Jump to the destination without provoking. You may cross a gap or low obstacle but not a wall or an occupied standing creature’s square. Land standing without audible footfalls. This grants no protection from a separate fall and requires a landing you can reach within the printed distance.</p><p><strong>Duration:</strong> Immediate jump.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 1 · <strong>DP:</strong> 2 · <strong>Requirements to learn:</strong> Class Shadow; minimum level 1</p><p><strong>Type:</strong> Signature</p><p><strong>Tags:</strong> Skill / Movement</p><p><strong>Limits:</strong> Repeatable; normal action economy applies.</p><p><strong>ID:</strong> signature-shadow-soft-landing</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.659f046648036560.JournalEntryPage.6f9998008dd8a1fb]{Class choices} · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

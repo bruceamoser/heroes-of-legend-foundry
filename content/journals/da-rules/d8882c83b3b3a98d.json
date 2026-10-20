@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!d8882c83b3b3a98d",
+  "_id": "d8882c83b3b3a98d",
+  "name": "Root Snare",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/root-snare.md",
+        "sha256": "57c7283eb68c62cc9e0a0984da38e232df0c39330bfc703ee6e2f6345f12842c",
+        "id": "monster-root-snare",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!d8882c83b3b3a98d.f790f24ae14cdabb",
+      "_id": "f790f24ae14cdabb",
+      "name": "Root Snare",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Root Snare</h1><p><em>Roots punch through the ground and lace together around the trespassers’ legs.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-root-snare</p><p><strong>Action:</strong> Main Action; spell</p><p>Choose the printed number of connected visible ground squares within range. They become difficult terrain until the start of this creature’s next turn. A creature in a chosen square when the ability resolves defends with Agility: Weak attack adds no condition, Standard applies Slowed 1, Strong Slowed 2. No damage; no repeated entry or turn-end attack. The creature’s card prints the controller’s attack attribute. Flying creatures above the ground are unaffected.</p><p><strong>Limits:</strong> Only creatures whose entries list this ability possess it. Printed entry values and restrictions apply; no ability grants unlisted actions.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

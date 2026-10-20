@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!b17ce9b211193c7f",
+  "_id": "b17ce9b211193c7f",
+  "name": "Measured Guard",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/signature-blade-measured-guard.md",
+        "sha256": "5d3f95c380606649465c190aeba7c64074c944e88a52666bab335aec54a3076d",
+        "id": "signature-blade-measured-guard",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!b17ce9b211193c7f.6b4bca7533b85309",
+      "_id": "6b4bca7533b85309",
+      "name": "Measured Guard",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Measured Guard</h1><p><em>You catch the incoming blow on your guard and turn your shoulders, stepping smoothly past its line.</em></p><h2>Rules</h2><p><strong>Action:</strong> Reaction · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Self, before a defense against an adjacent enemy.</p><p>Gain 1 Boon to the defense. After the attack resolves, you may move up to 2 squares without provoking, whatever the defense result. This does not prevent the attack’s damage or conditions; you must still be able to move.</p><p><strong>Duration:</strong> The triggering defense and immediate movement.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 1 · <strong>DP:</strong> 2 · <strong>Requirements to learn:</strong> Class Blade; minimum level 1</p><p><strong>Type:</strong> Signature</p><p><strong>Tags:</strong> Skill / Defense / Movement</p><p><strong>Limits:</strong> Repeatable; normal action economy applies.</p><p><strong>ID:</strong> signature-blade-measured-guard</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.3ba04b7b5637ef56.JournalEntryPage.a9a21da370b45af6]{Class choices} · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

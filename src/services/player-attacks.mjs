@@ -65,7 +65,7 @@ export function heldMeleeWeapons(actor) {
     .filter(
       (item) =>
         isMeleeWeaponEquipment(item) &&
-        item.system.held,
+        item.system.held && item.system.quantity > 0,
     )
     .sort((a, b) => a.uuid.localeCompare(b.uuid));
 }
@@ -281,7 +281,7 @@ function buildBasis({
     !weapon ||
     weapon.actor?.uuid !== actor.uuid ||
     !isMeleeWeaponEquipment(weapon) ||
-    weapon.system.held !== true
+    (weapon.system.held !== true || weapon.system.quantity === 0)
   )
     throw new Error("Hold a compatible melee weapon before making Basic Melee.");
   const target = targetToken?.actor;

@@ -218,10 +218,12 @@
       "portrait": {
         "creatureId": "creature-walking-thorn",
         "asset": "assets/creatures/cd178dd4b63a3007dfc3b2490c7f25e2b737a32828e6503d8329dd4964c04bd3.webp",
-        "sha256": "2dfbd5efa7f11ee5011d6929e51e5c7e21a30be284fd7dd1a980e2b795469d1d",
+        "sha256": "b9da13a5cb7c355e409c3e3f96d095b821f9f380dbd5b507120a00d322921016",
         "sourceSha256": "cd178dd4b63a3007dfc3b2490c7f25e2b737a32828e6503d8329dd4964c04bd3",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

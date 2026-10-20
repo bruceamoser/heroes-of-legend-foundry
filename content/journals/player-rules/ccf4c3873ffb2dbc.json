@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!ccf4c3873ffb2dbc",
+  "_id": "ccf4c3873ffb2dbc",
+  "name": "Rouse the Senses",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/rouse-the-senses.md",
+        "sha256": "c96f89bdc00bde8c360c79be3809bfc01be1e3104a3417a1426d5222e6c62deb",
+        "id": "rouse-the-senses",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!ccf4c3873ffb2dbc.ba04439c49f24c6e",
+      "_id": "ba04439c49f24c6e",
+      "name": "Rouse the Senses",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Rouse the Senses</h1><p><em>You speak a familiar word and hold their gaze until the world begins to settle around them.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> Reason</p><p><strong>Target / range / shape:</strong> One adjacent willing creature</p><p>Choose an eligible willing creature and roll Reason. Reduce its temporary Dazed by the amount below, to a minimum of 0. This restores no HP. A persistent condition marked with an asterisk requires the treatment or remedy stated by its source.</p><p>- <strong>Weak:</strong> Reduce Dazed by 1. - <strong>Standard:</strong> Reduce Dazed by 2. - <strong>Strong:</strong> Reduce Dazed by 3.</p><p><strong>Duration:</strong> Instant. Applied conditions follow their normal duration and decay.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 1 · <strong>DP:</strong> 2 · <strong>Requirements to learn:</strong> Medicine 1</p><p><strong>Type:</strong> Recovery</p><p><strong>Limits:</strong> Pay the printed action and any full activity time for each use.</p><p><strong>ID:</strong> rouse-the-senses</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

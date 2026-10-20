@@ -218,10 +218,12 @@
       "portrait": {
         "creatureId": "creature-sea-hag",
         "asset": "assets/creatures/46231c69abc8e5cbfb5a2ad3216f5c95f8e9d7753abffafa26c91518241d7d13.webp",
-        "sha256": "db765218297b4d473ee100d8711e3947c8d67bc6c315a1964833aca684bd37fc",
+        "sha256": "116a78f1cfff6fb3cf4dcbfa0c64adb8230078eb559e858f0f1ecb60342abc5a",
         "sourceSha256": "46231c69abc8e5cbfb5a2ad3216f5c95f8e9d7753abffafa26c91518241d7d13",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

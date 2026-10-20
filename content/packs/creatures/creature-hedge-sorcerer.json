@@ -196,10 +196,12 @@
       "portrait": {
         "creatureId": "creature-hedge-sorcerer",
         "asset": "assets/creatures/59806801acd55420239d34893f3d4d07b68faebee9799c0936cda9f064e5c007.webp",
-        "sha256": "1c1398d187803448a80416627787a660965408f6316115a32b69ba41a41fe6b3",
+        "sha256": "6daf307cdb3892d2e96ba47f0566df4161c900bc6292dcd462953936a1afc47d",
         "sourceSha256": "59806801acd55420239d34893f3d4d07b68faebee9799c0936cda9f064e5c007",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

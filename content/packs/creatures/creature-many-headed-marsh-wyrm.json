@@ -228,10 +228,12 @@
       "portrait": {
         "creatureId": "creature-many-headed-marsh-wyrm",
         "asset": "assets/creatures/05ff0674cd063e36647f8b8ff2a48aeef140c83212285e812c18064e31a9f029.webp",
-        "sha256": "0a3f128a0efd2ed3db8158c8280bf0da788a1fd102c264063428b2fe9972567f",
+        "sha256": "eb82d4affcf5f73627585f3f43e905ef2596fce5474b593e24cc42510ed9aa04",
         "sourceSha256": "05ff0674cd063e36647f8b8ff2a48aeef140c83212285e812c18064e31a9f029",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

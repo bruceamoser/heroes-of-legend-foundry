@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!b85724bf9a522237",
+  "_id": "b85724bf9a522237",
+  "name": "Flicker Aside",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/flicker-aside.md",
+        "sha256": "a7b83551d94cfbdb670102c36287532efd3bef72f1981337e21415dac9833206",
+        "id": "monster-flicker-aside",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!b85724bf9a522237.ca4ce674c5235f91",
+      "_id": "ca4ce674c5235f91",
+      "name": "Flicker Aside",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Flicker Aside</h1><p><em>Its outline gutters like a flame in a draft and catches again just beyond the reaching hand.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-flicker-aside</p><p><strong>Action:</strong> Reaction</p><p>After an attack resolves and deals HP damage to this creature, teleport to a visible empty square within 1 square. This creature must survive and remain capable. The destination must support its footprint and be reachable by an unobstructed straight path; this does not pass through walls or occupied squares. No opportunity attacks from this teleport. No trigger from a free attack; no attack is granted.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

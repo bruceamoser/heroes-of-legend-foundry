@@ -213,10 +213,12 @@
       "portrait": {
         "creatureId": "creature-kobold-tunnel-scout",
         "asset": "assets/creatures/d07f2bb3c790ab3cbd4ddc063d7c6ac0c7d43c0468f548fc84cee414b6f6fc86.webp",
-        "sha256": "8208502c9cd23b365c38146df516e7a0faf6ebac58661f1129119329a1ef34fb",
+        "sha256": "1b6f21a1c9b784dcc6c656791d6fc6e22fb79d86cf688c27dd5f3cf4437c5da0",
         "sourceSha256": "d07f2bb3c790ab3cbd4ddc063d7c6ac0c7d43c0468f548fc84cee414b6f6fc86",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

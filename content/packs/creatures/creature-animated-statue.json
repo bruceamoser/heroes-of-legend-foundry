@@ -222,10 +222,12 @@
       "portrait": {
         "creatureId": "creature-animated-statue",
         "asset": "assets/creatures/47235a7a27468885b95fc10b63d94ef3a60a875a354cb2e626c0cc4a3cbc659e.webp",
-        "sha256": "f7511241bbb5c8db775740373fc07817c07205a9f4e4daaa189a023fd11e1219",
+        "sha256": "787ac2aabc0234b5b75ed77df453573e2200b0b61532790a53576663930415a6",
         "sourceSha256": "47235a7a27468885b95fc10b63d94ef3a60a875a354cb2e626c0cc4a3cbc659e",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

@@ -113,7 +113,7 @@ async function apply(id) {
     throw new Error(
       "The arrangement must include every owned equipment item exactly once.",
     );
-  handLayout(request.items, request.capacity);
+  handLayout(request.items.map(item => ({ ...item, quantity: basis.items.find(current => current.id === item.id).quantity })), request.capacity);
   const items = actor.toObject().items;
   for (const item of items) {
     const state = request.items.find((i) => i.id === item._id);

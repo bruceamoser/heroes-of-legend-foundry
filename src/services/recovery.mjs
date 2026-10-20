@@ -16,7 +16,7 @@ import {
 } from "./authority.mjs";
 const ID = "heroes-of-legend";
 export function recoveryPreview(actor, basis, draft) {
-  if (!["heal", "breath", "stabilize", "correct"].includes(draft.kind))
+  if (!["heal", "breath", "stabilize", "grit", "correct"].includes(draft.kind))
     throw new Error("Unknown recovery operation.");
   let state = null,
     after = basis.hp;
@@ -77,7 +77,15 @@ export function recoveryPreview(actor, basis, draft) {
       throw new Error(
         "Ordinary recovery cannot revive a defeated creature. Use an explicit DA correction for an exception.",
       );
-    if (draft.kind === "heal") {
+    if (draft.kind === "grit") {
+      if (!state || actor.type !== "character") throw new Error("Only a character can spend Grit.");
+      if (basis.gritAvailable < 1) throw new Error("No Grit remains.");
+      if (["lastWords", "dead"].includes(state.status)) throw new Error("Ordinary Grit cannot reverse Last Words or death.");
+      if (Object.values(actor.getFlag(ID, "pendingWounds") ?? {}).some(wound => wound.status !== "resolved")) throw new Error("Resolve the pending wound before spending Grit.");
+      state = { ...state, status: "active", hp: basis.maxHp, marks: 0, due: null, choice: null, gritAvailable: basis.gritAvailable - 1 };
+      validateSurvival(state);
+      after = basis.maxHp;
+    } else if (draft.kind === "heal") {
       const plan = healingPlan({
         amount: draft.amount,
         current: basis.hp,
@@ -123,12 +131,12 @@ export function resolveRecoveryRequest(id) {
 async function apply(id) {
   const message = game.messages.get(id),
     request = message?.getFlag(ID, "recoveryRequest");
-  if (!message?.author?.isGM)
-    throw new Error("The DA must authorize recorded recovery or corrections.");
   const actor =
     typeof request?.actorUuid === "string"
       ? await fromUuid(request.actorUuid)
       : null;
+  if (!message?.author || !actor?.testUserPermission(message.author, "OWNER") || (request?.draft?.kind === "correct" && !message.author.isGM))
+    throw new Error("Recovery requires ownership; corrections require the Dungeon Architect.");
   const basis = damageBasis(actor),
     signature = JSON.stringify(request),
     receipt = actor.getFlag(ID, "operationReceipts")?.[id];
@@ -159,6 +167,7 @@ async function apply(id) {
       request: signature,
     },
   };
+  if (request.draft.kind === "grit") changes["system.grit.spent"] = actor.system.grit.spent + 1;
   if (plan.state) changes[`flags.${ID}.survival`] = plan.state;
   else changes[`flags.${ID}.creatureDefeated`] = plan.after === 0;
   actor.validate({
@@ -168,7 +177,7 @@ async function apply(id) {
   });
   await writeAuthorityDocument(actor, changes);
   await message.update({
-    content: `Recovery recorded: HP ${basis.hp} → ${plan.after}. Spent Grit and wound records remain.`,
+    content: `Recovery recorded: HP ${basis.hp} → ${plan.after}. ${request.draft.kind === "grit" ? "One Grit spent; death marks cleared." : "Spent Grit remains."} Wound records remain.`,
   });
   return { status: "complete", replay: false };
 }

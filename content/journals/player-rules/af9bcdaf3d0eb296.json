@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!af9bcdaf3d0eb296",
+  "_id": "af9bcdaf3d0eb296",
+  "name": "Reduce a Condition",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/reduce-a-condition.md",
+        "sha256": "6bfbae67317b15acfaec490f185cc3e9ee4c4c828c408538a767d6b57882c0be",
+        "id": "reduce-a-condition",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!af9bcdaf3d0eb296.d4e3c2440f909ff9",
+      "_id": "d4e3c2440f909ff9",
+      "name": "Reduce a Condition",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Reduce a Condition</h1><p><em>You smother the flame, bind the cut or steady your breath, attending to the hurt before it worsens.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Self or one adjacent creature</p><p>With a plausible method, reduce Bleeding, Burning, or Freezing by 1. This is not a general cure for all conditions. A persistent source can require a specific remedy.</p><p><strong>Duration:</strong> Instant</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> Universal · <strong>DP:</strong> Not purchased · <strong>Requirements to learn:</strong> None</p><p><strong>Type:</strong> Universal</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> reduce-a-condition</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

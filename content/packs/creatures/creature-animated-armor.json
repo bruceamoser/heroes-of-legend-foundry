@@ -223,10 +223,12 @@
       "portrait": {
         "creatureId": "creature-animated-armor",
         "asset": "assets/creatures/3bd17234404aa871566cb6bec36791ec99bc0cf90cc6e7ed355e38ced0c5911d.webp",
-        "sha256": "2f547f82a66f44977c23efed00237376a6db80c51ec889952b95c3944bc08422",
+        "sha256": "ca90a262208799caa8a1c36bb8109ca25fbcf80196c0819628e5a81dbe79f1ca",
         "sourceSha256": "3bd17234404aa871566cb6bec36791ec99bc0cf90cc6e7ed355e38ced0c5911d",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!3e05c64fae88465b",
+  "_id": "3e05c64fae88465b",
+  "name": "Ordinary Recipe Study",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/ordinary-recipe-study.md",
+        "sha256": "c170945a96b3eec157181c03fd7695be172502e1e6ce7d07d0782851697d21f8",
+        "id": "ordinary-recipe-study",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!3e05c64fae88465b.ed944bde3c75d894",
+      "_id": "ed944bde3c75d894",
+      "name": "Ordinary Recipe Study",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Ordinary Recipe Study</h1><p><em>You copy the useful notes, stain the page with practice, and make the method your own.</em></p><h2>Rules</h2><p><strong>Action:</strong> Passive · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Two compatible ordinary recipes chosen on purchase</p><p>No roll. Learn two recipes usable with a crafting card you already know. Repeatable purchase; no duplicate recipe choice. Does not grant materials or equipment.</p><p><strong>Duration:</strong> The recipes are learned permanently.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 1 · <strong>DP:</strong> 2 · <strong>Requirements to learn:</strong> Craft 1; known compatible crafting card</p><p><strong>Type:</strong> Skill / Utility</p><p><strong>Limits:</strong> Repeatable purchase of new recipe choices.</p><p><strong>ID:</strong> ordinary-recipe-study</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

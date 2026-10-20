@@ -240,10 +240,12 @@
       "portrait": {
         "creatureId": "creature-hydra",
         "asset": "assets/creatures/401810a8ade519588ec51a382288e7320a07fd20bd1ccc0d74168a7deea6ec82.webp",
-        "sha256": "eb87c51f3583ecf28738465d93773d5f54b83398a4d20b83f149452f0efffb2f",
+        "sha256": "52e0dce3b9f1065b99479ceaf07c74014ba7203f578df1c9e086be5296ac304a",
         "sourceSha256": "401810a8ade519588ec51a382288e7320a07fd20bd1ccc0d74168a7deea6ec82",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

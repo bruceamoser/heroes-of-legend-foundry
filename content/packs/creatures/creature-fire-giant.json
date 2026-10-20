@@ -239,10 +239,12 @@
       "portrait": {
         "creatureId": "creature-fire-giant",
         "asset": "assets/creatures/e5f4e9e2b6812fc0cbe24785369d237920688b9ebe0a4310be3ec5b2a7905c3a.webp",
-        "sha256": "ef2374d6fec17b8551cec13af95480b7b293bd6e98b635dd5f71b3aac1793e8a",
+        "sha256": "c775389eeb2c734fb1257fe20ab091219650018d719b6550cd21125ff80be10c",
         "sourceSha256": "e5f4e9e2b6812fc0cbe24785369d237920688b9ebe0a4310be3ec5b2a7905c3a",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

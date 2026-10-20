@@ -221,10 +221,12 @@
       "portrait": {
         "creatureId": "creature-old-root-guardian",
         "asset": "assets/creatures/357ece2d1ad107d643e72b63b5734d4576a7b3bce86ce966e216369af6e737a7.webp",
-        "sha256": "9c9fe003273919e1501486c34173bf71d88f897c90ef5500c5bb6bc5de817207",
+        "sha256": "0e2b57a84ee9449d03df277df741a9481c274a6c90b3c57dbd18b5abb9042d15",
         "sourceSha256": "357ece2d1ad107d643e72b63b5734d4576a7b3bce86ce966e216369af6e737a7",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

@@ -1,7 +1,7 @@
 import { createServer } from "node:http";
 import { readFile, mkdir } from "node:fs/promises";
 import { resolve, extname } from "node:path";
-import { chromium } from "@playwright/test";
+import { chromium, expect } from "@playwright/test";
 import assert from "node:assert/strict";
 const root = resolve("dist/workshop"),
   prefix = "/heroes-of-legend-foundry/";
@@ -282,9 +282,8 @@ try {
     mimeType: "application/json",
     buffer: Buffer.from(JSON.stringify(exported)),
   });
-  assert.match(
-    await page.locator("#notice").innerText(),
-    /Choose an item sheet export/,
+  await expect(page.locator("#notice")).toContainText(
+    "Choose an item sheet export",
   );
   await page.getByRole("button", { name: "Choose item", exact: true }).click();
   await choose("Hook and Drive", "ability-hook-and-drive");

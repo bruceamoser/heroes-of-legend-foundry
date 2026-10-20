@@ -1,3 +1,4 @@
+import { rollSetup, bindRollSetup } from "./roll-ui.mjs";
 import { EQUIPMENT_TRAINING } from "./rules/equipment-eligibility.mjs";
 import { ATTRIBUTES } from "./rules/character.mjs";
 import { rollPlan, classifyRoll } from "./rules/roll.mjs";
@@ -435,7 +436,7 @@ function rollDialog(attribute, action = null) {
   defenseAction = action;
   popup(
     action ? "Defend" : `${title(attribute)} roll`,
-    `<div class="field-grid"><label>Attribute<select id="roll-attribute" aria-label="Roll attribute">${ATTRIBUTES.map((a) => `<option value="${a}" ${a === attribute ? "selected" : ""}>${title(a)}</option>`).join("")}</select></label><label>Attribute value<input id="roll-value" aria-label="Attribute value" type="number" min="-2" max="2" value="${action ? 0 : (state.attrs?.[attribute] ?? record()?.attributes?.[attribute] ?? 0)}"></label></div><div class="roll-net"><label class="roll-net-labels" for="roll-net"><span>Banes</span><output id="net-label">Even</output><span>Boons</span></label><input id="roll-net" aria-label="Banes / Boons" type="range" min="-3" max="3" value="0"></div><div id="roll-result" role="status" aria-live="polite"></div>${btn("Roll", "roll-now", "", "primary small")}`,
+    `${action ? `<p class="inline-help">${esc(record().name)} · ${esc(action.name)}</p>` : ""}${rollSetup({ attributes: Object.fromEntries(ATTRIBUTES.map((a) => [a, 0])), selected: attribute, attributeId: "roll-attribute", valueId: "roll-value", editableValue: true, value: action ? 0 : (state.attrs?.[attribute] ?? record()?.attributes?.[attribute] ?? 0), netId: "roll-net", labelId: "net-label" })}<div id="roll-result" role="status" aria-live="polite"></div><div class="dialog-actions">${btn("Roll", "roll-now", "", "primary small")}</div>`,
   );
   document.querySelector("#roll-attribute").addEventListener("change", (e) => {
     if (!defenseAction)
@@ -443,6 +444,9 @@ function rollDialog(attribute, action = null) {
         state.attrs?.[e.target.value] ??
         record()?.attributes?.[e.target.value] ??
         0;
+  });
+  bindRollSetup(dialog.querySelector(".reference-body"), {
+    getAttributeValue: () => document.querySelector("#roll-value").value,
   });
 }
 function library() {

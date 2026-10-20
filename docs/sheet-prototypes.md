@@ -62,3 +62,14 @@ remembered collapse, escaped edits and 760/390px layouts. CI and Pages require t
 suite in addition to the existing five workshop suites. Pure checks verify each
 preview's catalog coverage, pinned provenance, exact hash and total size. All 192
 previews were also decoded with Pillow and checked against the size bound.
+
+## Character crafting tab
+
+Characters with known recipes have a hanging Crafting tab. Its compact table
+shows each recipe, the character's learned crafting ability, printed attempt
+duration and the corresponding roll. Recipe and ability names open full details.
+Known recipes whose crafting permission has not been learned remain visible,
+without a roll action. Characters without recipes have no Crafting tab.
+Existing browser saves selecting the former Recipes tab reopen Crafting.
+This character-backed sheet view is separate from the disposable example jobs
+on the standalone crafting design page.

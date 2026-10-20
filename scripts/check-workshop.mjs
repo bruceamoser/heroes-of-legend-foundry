@@ -69,7 +69,7 @@ try {
     .waitFor();
   assert.equal(await page.getByRole("tab").count(), 5);
   assert.equal(
-    await page.getByRole("tab", { name: "Recipes", exact: true }).count(),
+    await page.getByRole("tab", { name: "Crafting", exact: true }).count(),
     0,
   );
   assert.equal(
@@ -738,22 +738,29 @@ try {
   await page.getByRole("tab", { name: "Inventory", exact: true }).click();
   assert.equal(await page.locator(".recipe-table").count(), 0);
   assert.equal(
-    await page.getByRole("heading", { name: "Recipes", exact: true }).count(),
+    await page.getByRole("heading", { name: "Crafting", exact: true }).count(),
     0,
   );
   await page.getByRole("tab", { name: "Inventory", exact: true }).focus();
   await page.keyboard.press("ArrowRight");
   assert.equal(
     await page
-      .getByRole("tab", { name: "Recipes", exact: true })
+      .getByRole("tab", { name: "Crafting", exact: true })
       .getAttribute("aria-selected"),
     "true",
   );
+  // Older saves retain their selected tab after Recipes becomes Crafting.
+  await page.evaluate(() => {
+    const key = "hol.workshop.v1";
+    const saved = JSON.parse(localStorage.getItem(key));
+    saved.tab = "Recipes";
+    localStorage.setItem(key, JSON.stringify(saved));
+  });
   await page.reload();
-  await page.getByRole("heading", { name: "Recipes", exact: true }).waitFor();
+  await page.getByRole("heading", { name: "Crafting", exact: true }).waitFor();
   assert.equal(
     await page
-      .getByRole("tab", { name: "Recipes", exact: true })
+      .getByRole("tab", { name: "Crafting", exact: true })
       .getAttribute("aria-selected"),
     "true",
   );
@@ -914,7 +921,7 @@ try {
     .getByRole("heading", { name: "Lira Ashbow", exact: true })
     .waitFor();
   assert.equal(
-    await page.getByRole("tab", { name: "Recipes", exact: true }).count(),
+    await page.getByRole("tab", { name: "Crafting", exact: true }).count(),
     0,
   );
   assert.equal(

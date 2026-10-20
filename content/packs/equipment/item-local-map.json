@@ -3,6 +3,7 @@
   "_id": "888a4ea2d95801e2",
   "name": "Local Map",
   "type": "equipment",
+  "img": "systems/heroes-of-legend/assets/icons/map.svg",
   "system": {
     "schemaVersion": 1,
     "catalogId": "item-local-map",

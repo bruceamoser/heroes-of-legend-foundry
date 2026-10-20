@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!99e7e45f3c416f63",
+  "_id": "99e7e45f3c416f63",
+  "name": "A Watchful Rest",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/signature-warden-a-watchful-rest.md",
+        "sha256": "a4e08f1a663d60839378cfbec71581655e2ef6178ba7a1db4d4dfe1e99dc960d",
+        "id": "signature-warden-a-watchful-rest",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!99e7e45f3c416f63.318dde9d85da2816",
+      "_id": "318dde9d85da2816",
+      "name": "A Watchful Rest",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>A Watchful Rest</h1><p><em>You circle the camp, test the ground for water and point out the approaches before assigning the first watch.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> None — no roll</p><p><strong>Time:</strong> Ten minutes.</p><p><strong>Target / range / shape:</strong> A possible resting place and up to six willing companions; ten minutes of examination.</p><p>Spend ten minutes examining an accessible resting place. Learn its exposed approaches and any local environmental danger that observable signs can reveal. Prepare a watch plan. For the next eight hours while remaining there, you and the chosen companions gain 1 Boon to consequential rolls noticing approaching danger. This grants no automatic detection, shelter, supplies, safe-place ruling or Grit recovery. Sleeping characters do not become awake observers.</p><p><strong>Duration:</strong> Eight hours or until the group leaves.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 3 · <strong>DP:</strong> 4 · <strong>Requirements to learn:</strong> Class Warden; minimum level 3</p><p><strong>Type:</strong> Signature</p><p><strong>Tags:</strong> Skill / Utility</p><p><strong>Limits:</strong> One prepared resting place per Warden; preparing another ends the previous benefit.</p><p><strong>ID:</strong> signature-warden-a-watchful-rest</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

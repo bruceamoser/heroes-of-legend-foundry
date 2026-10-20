@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!7727febedd6bd471",
+  "_id": "7727febedd6bd471",
+  "name": "Travel Clothes",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/equipment/travel-clothes.md",
+        "sha256": "21a9543719a33322d80883f656a08ac7809b772133da34aba45b5160acd2b9c2",
+        "id": "item-travel-clothes",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!7727febedd6bd471.8574618bf79e980c",
+      "_id": "8574618bf79e980c",
+      "name": "Travel Clothes",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Travel Clothes</h1><p><em>You pull on well-mended clothes whose seams have learned your stride.</em></p><h2>Rules</h2><p><strong>ID:</strong> item-travel-clothes</p><p><strong>Market price:</strong> 4 coins. <strong>Bulk:</strong> 1.</p><p>A durable outfit with boots and cloak. One ordinary worn outfit is descriptive and contributes 0 Bulk; a carried spare is Bulk 1. Creation baseline: everyone already owns one plain outfit, with no coin credit for declining it. This is the only new free starting equipment here.</p><p>Buying equipment grants no DP advancement, training or ability. Use normal item-handling actions unless an applicable card says otherwise.</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.a8b099af3500d9f6.JournalEntryPage.cfa94361944ba875]{Market rules} · Equipment index</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

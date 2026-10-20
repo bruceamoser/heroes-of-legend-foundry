@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!10d3f7a4bcced414",
+  "_id": "10d3f7a4bcced414",
+  "name": "Corrosive Smear",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/corrosive-smear.md",
+        "sha256": "3d2400aac1dea7a525ff0034dca8782bd305557c017132ea89eb9e42cd24dcb6",
+        "id": "monster-corrosive-smear",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!10d3f7a4bcced414.3553383d06fe0b6b",
+      "_id": "3553383d06fe0b6b",
+      "name": "Corrosive Smear",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Corrosive Smear</h1><p><em>A sticky film clings to boots and joints, slowing each movement with a gritty drag.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-corrosive-smear</p><p><strong>Action:</strong> Maneuver</p><p>One adjacent creature gains Slowed 1. Once per turn; no immediate damage. This does not destroy equipment, reduce resistance or change inventory permanently.</p><p>Only creatures whose entries list this ability possess it. Printed limits apply.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

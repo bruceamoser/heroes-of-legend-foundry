@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!8e5de6c78c0d2025",
+  "_id": "8e5de6c78c0d2025",
+  "name": "Musical Instrument",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/equipment/musical-instrument.md",
+        "sha256": "200cd2a56fe9b6a043054c1662ebe4dbda38c81cba2785e134388fd42693045e",
+        "id": "item-musical-instrument",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!8e5de6c78c0d2025.c3327a02a76a48e6",
+      "_id": "c3327a02a76a48e6",
+      "name": "Musical Instrument",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Musical Instrument</h1><p><em>You sound a familiar note and adjust the tuning until it settles.</em></p><h2>Rules</h2><p><strong>ID:</strong> item-musical-instrument</p><p><strong>Market price:</strong> 12 coins. <strong>Bulk:</strong> 1.</p><p>One portable ordinary instrument chosen by the owner. Enables ordinary performance, not an ability grant or social bonus.</p><p>Buying equipment grants no DP advancement, training or ability. Use normal item-handling actions unless an applicable card says otherwise.</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.a8b099af3500d9f6.JournalEntryPage.cfa94361944ba875]{Market rules} · Equipment index</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

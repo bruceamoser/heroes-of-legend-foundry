@@ -223,10 +223,12 @@
       "portrait": {
         "creatureId": "creature-horned-devil",
         "asset": "assets/creatures/8e490da7e5c5faff1905e7d5f30df8e9dc1fdcd5585f79a362b9a13bf48e5ab7.webp",
-        "sha256": "154bfb933c428b8183cb5b0fe3785cfef57099f817760e259696082c09854b45",
+        "sha256": "6d7034b668d01988096100cdf0beb2d92543cfe11358178fd90aabeae833faeb",
         "sourceSha256": "8e490da7e5c5faff1905e7d5f30df8e9dc1fdcd5585f79a362b9a13bf48e5ab7",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

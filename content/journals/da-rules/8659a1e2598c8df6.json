@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!8659a1e2598c8df6",
+  "_id": "8659a1e2598c8df6",
+  "name": "Skeleton Colossus (CV 46)",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/bestiary/creatures/bone-colossus.md",
+        "sha256": "afad610f8ae9eff2b95298791f4b4ff2c4f481f5e008df9c72bbbbe686664816",
+        "id": "creature-bone-colossus",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!8659a1e2598c8df6.8d40485411835608",
+      "_id": "8d40485411835608",
+      "name": "Skeleton Colossus (CV 46)",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Skeleton Colossus (CV 46)</h1><p><em>A towering assembly of skulls, ribs and long bones bound into a single siege body. Many dead supplied its frame, but only one controlling purpose directs it.</em></p><p><strong>Attributes:</strong> Brawn +2; Fortitude +2; Agility -1; Guile -2; Knowledge -2; Reason +0</p><p><strong>HP:</strong> 38 · <strong>Speed:</strong> 5 · <strong>Size:</strong> 3 (3x3 squares) · <strong>Armor DR:</strong> 2</p><p><strong>Evasion:</strong> 1 Boon · <strong>Threat:</strong> 1 Bane · <strong>Stability:</strong> 2</p><p><strong>Weaknesses:</strong> None\\ <strong>Resistances:</strong> Physical (2)\\ <strong>Immunities:</strong> Bleeding; Poisoned; Asleep</p><h2>Actions</h2><p>Damage and effects are <strong>Weak / Standard / Strong player defense</strong>. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.</p><table><thead><tr><th scope=\"col\">Main Actions</th><th scope=\"col\">Defense</th><th scope=\"col\">Damage</th></tr></thead><tbody><tr><td>Basic Melee</td><td>Agility</td><td>5/3/2</td></tr><tr><td>Ossuary sweep</td><td>Agility</td><td>9 + Push each 4 / 6 + Push each 2 / 4</td></tr></tbody></table><table><thead><tr><th scope=\"col\">Maneuvers</th><th scope=\"col\">Effect</th></tr></thead><tbody><tr><td>Set the Frame</td><td>Gain Stability 3 until its next turn; highest source only.</td></tr><tr><td>Defend</td><td>+1 Bane</td></tr></tbody></table><table><thead><tr><th scope=\"col\">Reactions</th><th scope=\"col\">Effect</th></tr></thead><tbody><tr><td>Fall to Pieces</td><td>Before physical attack: Physical resistance 3 for it; become Prone afterward.</td></tr><tr><td>Opportunity Attack</td><td>Basic Melee</td></tr></tbody></table><h2>Details</h2><h3>Ossuary sweep</h3><p><em>A great limb scythes across the ground, forcing everyone nearby to move.</em></p><p><strong>Target:</strong> Up to two creatures within 2 squares. <strong>Player defense:</strong> Agility. <strong>Damage type:</strong> physical.</p><p><strong>Weak defense:</strong> Push each 4. <strong>Standard defense:</strong> Push each 2.</p><h3>Fall to Pieces</h3><p><em>The skeleton lets its joints collapse, spilling loose bones beneath the passing blow.</em></p><p>Before a physical attack against this creature is rolled, gain Physical resistance 3 against that attack only. Use the highest matching resistance. After the attack resolves, it becomes Prone if still present, even if it was already Prone. This does not move its occupied footprint or reassemble it; standing costs the normal 2 movement.</p><h3>General details</h3><p><strong>Basic Melee:</strong> One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.</p><p><strong>Defend:</strong> Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.</p><p><strong>Opportunity Attack:</strong> Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.</p><p><strong>Heavy Frame — Passive:</strong> Stability 2; an explicit creature trait, not a bonus from size.</p><p><strong>Lifeless Body:</strong> does not breathe or eat; only the listed immunities apply.</p><p><strong>Healing:</strong> Healing-harmed: ordinary healing resolves as Life damage instead; no beneficial riders.</p><p><strong>Against offensive healing:</strong> controller defends with Fortitude if this is player-controlled; a player attacking it still rolls only their attack.</p><p><strong>Senses:</strong> Ordinary sight and hearing.</p><p><strong>Signs:</strong> Graves stand empty in a widening circle.</p><p><strong>Purpose:</strong> Break whatever its maker marked with a black handprint.</p><p><strong>Tactics and retreat:</strong> Sweep two defenders aside and advance toward the marked structure.</p><p><strong>Counterplay and conversation:</strong> Destroy or obscure the mark; exploit doors too small for the assembled body.</p><p><strong>Habitat:</strong> Battlefield; necropolis · <strong>Communication:</strong> None</p><p><strong>Loot:</strong> One command plaque; the bones carry no usable armor.</p><p><strong>Summoning:</strong> Undead 7 — @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.edebfc0c73a582fb.JournalEntryPage.98fe9c1f226cbe55]{player reference}.</p><h2>Design notes — not needed during play</h2><p><strong>ID:</strong> creature-bone-colossus</p><p><strong>Category:</strong> Undead · <strong>Role:</strong> Siege body · <strong>CV:</strong> 46</p><p><strong>Difficulty rationale:</strong> A slow or broad exposed body gives the attacker a Boon. Its dangerous attack imposes defense Banes.</p><p><strong>Reference damage:</strong> 4/6/9</p><p><strong>Reference type:</strong> physical</p><p><strong>Expected targets:</strong> 2</p><p><strong>Utility factor:</strong> 1.35</p><p><strong>Action review (#1279):</strong> U 1.25 → 1.35: Maneuver allowance +0, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.</p><p><strong>Regeneration per turn:</strong> 0</p><p>Reference I=3.596, O=11.901. CV uses the seed worksheet; action choices, Stability and control are not simulated. Recalibration remains required.</p><p><strong>Ability sources:</strong> @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.b531d4c5f9567821.JournalEntryPage.61f8ce672af47ef7]{bone colossus set the frame}, @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.484134c0d560dbd6.JournalEntryPage.fa16a07de0e1ca30]{Fall to Pieces}, @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.5612a98784835c7c.JournalEntryPage.e8e8b18438a523a4]{lifeless body}, @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.d299f9f5ad259722.JournalEntryPage.49fae50d762ba269]{sweeping attack}.</p><p>Roster · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.5ebfaad0d5ed6813.JournalEntryPage.3292b6a49dcf7236]{Agreed Stability}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

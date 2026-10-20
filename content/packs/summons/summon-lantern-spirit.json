@@ -125,10 +125,12 @@
       "portrait": {
         "creatureId": "creature-lantern-spirit",
         "asset": "assets/creatures/a37171714198a20340890ff6f8c74bb8e5ade2dbd9b384ff00fa5aff3fe81a0b.webp",
-        "sha256": "05ae5baf4fc46e4a805fe317149d73045e6128cb60eb5ad00d2db90ab70e7350",
+        "sha256": "ed8ed892fa1a68ab9f3be5fbfea44b04465f0e2d7e880d199f7e0dae380b7394",
         "sourceSha256": "a37171714198a20340890ff6f8c74bb8e5ade2dbd9b384ff00fa5aff3fe81a0b",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

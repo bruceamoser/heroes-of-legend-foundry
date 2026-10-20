@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!d57ea2e9d641fd35",
+  "_id": "d57ea2e9d641fd35",
+  "name": "Ordinary Heavy Armor",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/equipment/ordinary-heavy-armor.md",
+        "sha256": "b3563ec47aaf8e91bfdfa1cbb637434b82f06700345b883f19eec6f7d49a5447",
+        "id": "item-ordinary-heavy-armor",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!d57ea2e9d641fd35.35ed778bdf96d079",
+      "_id": "35ed778bdf96d079",
+      "name": "Ordinary Heavy Armor",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Ordinary Heavy Armor</h1><p><em>You settle into its reassuring weight, each fastening bearing the marks of your care.</em></p><h2>Rules</h2><p>- <strong>ID:</strong> item-ordinary-heavy-armor - <strong>Bulk:</strong> 1 - <strong>Requirements / supply:</strong> Requires @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.22fdca3c82af40da.JournalEntryPage.f657cf6ea4f1a314]{Wear Heavy Armor} to benefit - <strong>Acquisition:</strong> Explicit ability grant, coins, or DA treasure; no automatic extra starting kit.</p><p>Appearance is chosen by owner. The training card grants physical resistance 3; no additional resistance from this item.</p><p>No DP price. Purchase does not grant training or an ability.</p><p>Equipment index</p><p><strong>Market price:</strong> 90 coins. Proposal; see @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.a8b099af3500d9f6.JournalEntryPage.cfa94361944ba875]{market rules}.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

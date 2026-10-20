@@ -36,9 +36,22 @@ try {
     return a.id;
   });
   const wizard = page.locator(".hol-creation");
+  async function closeMarket() {
+    const dialog = wizard.locator("dialog[open]");
+    if (await dialog.count()) await dialog.locator("[data-close-market]").click();
+  }
+  async function openMarket(kind = "ability") {
+    if (!(await wizard.locator("dialog[open]").count()))
+      await wizard.locator(`[data-open-market="${kind}"]`).click();
+    assert(await wizard.locator("dialog[open]").isVisible());
+  }
   async function action(name) {
+    await page.waitForFunction(() => !holWizard.busy);
+    if (name.startsWith("Add ")) await openMarket(await page.evaluate(() => holWizard.step === 6) ? "equipment" : "ability");
+    else await closeMarket();
     await wizard.getByRole("button", { name, exact: true }).click();
     await page.waitForFunction(() => !holWizard.busy);
+    if (name.startsWith("Add ")) assert(await wizard.locator("dialog[open]").isVisible(), "Purchase keeps its native market open");
   }
   await wizard.locator("[name=heroName]").fill("Reed of the Deep Halls");
   for (const key of ["brawn", "knowledge", "reason"])
@@ -62,12 +75,16 @@ try {
       '[name="recipes-ability-trail-workshop"][value=recipe-travel-food]',
     )
     .check();
+  await page.waitForFunction(() => !holWizard.busy);
   await wizard
     .locator(
       '[name="recipes-ability-trail-workshop"][value=recipe-bound-torches]',
     )
     .check();
+  await page.waitForFunction(() => !holWizard.busy);
   await action("Save choices");
+  assert.equal(await wizard.locator('[data-open-market="discipline"]').count(), 0, "Early learning has no discipline market");
+  await openMarket();
   const invalid = wizard.locator("[data-id=ability-the-cleverest-mixture]");
   assert(await invalid.isDisabled());
   const study = wizard
@@ -144,18 +161,13 @@ try {
   await firstRecipe.selectOption("recipe-fletched-ammunition");
   await secondRecipe.selectOption("recipe-simple-replacement-leg");
   await action("Add Ordinary Recipe Study");
-  assert(
-    await wizard
-      .getByText("Recipes: Fletched Ammunition, Simple Replacement Leg", {
-        exact: true,
-      })
-      .isVisible(),
-  );
+  assert.deepEqual(await page.evaluate(() => holWizard.draft.purchases[0].find((entry) => entry.id === "ability-ordinary-recipe-study").recipeIds), ["recipe-fletched-ammunition", "recipe-simple-replacement-leg"]);
   await action("Add Conditioned Body");
   await action("Save and continue");
   await wizard.locator("[name=classId][value=class-intellect]").check();
   await action("Save choices");
-  for (const id of ["discipline-craft", "discipline-scholarship"])
+  assert(await wizard.locator("[name=classDiscipline][value=discipline-craft]").isDisabled(), "A class cannot grant a discipline already learned from an origin");
+  for (const id of ["discipline-medicine", "discipline-scholarship"])
     await wizard.locator(`[name=classDiscipline][value=${id}]`).check();
   await wizard
     .locator("[name=signatureId]")
@@ -213,9 +225,10 @@ try {
       .isVisible(),
   );
   await action("Level 0 learning");
+  await openMarket();
   assert.equal(
     await wizard
-      .locator(".hol-choice-list article")
+      .locator(".hol-choice-list article:visible")
       .first()
       .locator("button")
       .isDisabled(),
@@ -275,7 +288,7 @@ try {
   });
   await page.evaluate(() => holWizard.setPosition({ width: 620, height: 800 }));
   const narrow = await clever.evaluate((el) => {
-    const main = el.closest(".hol-wizard-main"),
+    const main = el.closest("dialog") ?? el.closest(".hol-wizard-main"),
       list = el.closest(".hol-choice-list"),
       button = el.querySelector("button"),
       mainBox = main.getBoundingClientRect(),

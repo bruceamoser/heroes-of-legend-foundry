@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!50dc1476efcd8873",
+  "_id": "50dc1476efcd8873",
+  "name": "Anatomy of an Opening",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/anatomy-of-an-opening.md",
+        "sha256": "0e5996ab2b9c1ad7200015d45f907af64745de8d48e10d8a2b22513df30fa89f",
+        "id": "anatomy-of-an-opening",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!50dc1476efcd8873.184736687b49e23c",
+      "_id": "184736687b49e23c",
+      "name": "Anatomy of an Opening",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Anatomy of an Opening</h1><p><em>You watch an opponent favor one leg, predict where their weight will fall, and strike the opening their next step leaves behind.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> Knowledge</p><p><strong>Target / range / shape:</strong> One adjacent creature.</p><p>A limp, a lifted elbow, the way the armor closes: attack what you understand. Use a melee weapon or your empty hand; this card supplies the damage.</p><p>- <strong>Weak:</strong> 3 physical damage. - <strong>Standard:</strong> 3 physical damage; learn whether it has physical resistance. - <strong>Strong:</strong> 5 physical damage; learn the physical resistance value and move 1 square without provoking.</p><p><strong>Duration:</strong> Instant. Applied conditions follow their normal duration and decay.</p><p><strong>Equipment / acquisition:</strong> Your empty hand is enough. If you prefer a weapon, this card grants one ordinary melee weapon, Bulk 1, if absent; both use the same printed damage.</p><p>---</p><p><strong>Tier / minimum level:</strong> 1 · <strong>DP:</strong> 2 · <strong>Requirements to learn:</strong> Scholarship 1</p><p><strong>Type:</strong> Skill / Attack</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> anatomy-of-an-opening</p><p>Build this character · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

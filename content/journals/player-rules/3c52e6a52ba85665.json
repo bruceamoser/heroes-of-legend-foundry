@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!3c52e6a52ba85665",
+  "_id": "3c52e6a52ba85665",
+  "name": "Storm on a String",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/storm-on-a-string.md",
+        "sha256": "3ecb4b930084bbf95dbf3861ec0e0032d274a5f877e48af75b75de90b35b9519",
+        "id": "storm-on-a-string",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!3c52e6a52ba85665.afa1eceb99c9845d",
+      "_id": "afa1eceb99c9845d",
+      "name": "Storm on a String",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Storm on a String</h1><p><em>You curl a finger toward the unattended object. A thin spiral of wind catches it and draws it across the ground toward your hand.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> Reason</p><p><strong>Target / range / shape:</strong> One visible unattended object of up to Bulk 1 within 5 squares</p><p>Cannot take worn or held objects, deal impact damage, open locks or carry creatures. Path must be clear; use ordinary terrain cost. Repeatable.</p><p>- <strong>Weak:</strong> Pull it 1 square. - <strong>Standard:</strong> Pull it 3 squares. - <strong>Strong:</strong> Pull it 5 squares into your free hand if reachable.</p><p><strong>Duration:</strong> Instant. Applied conditions follow their normal duration and decay.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 3 · <strong>DP:</strong> 4 · <strong>Requirements to learn:</strong> Storm 1 and Craft 1</p><p><strong>Type:</strong> Magic / Utility</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> storm-on-a-string</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

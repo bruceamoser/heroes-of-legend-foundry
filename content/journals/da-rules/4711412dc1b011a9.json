@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!4711412dc1b011a9",
+  "_id": "4711412dc1b011a9",
+  "name": "Goblin Scrapper (CV 8)",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/bestiary/creatures/goblin-scrapper.md",
+        "sha256": "47ef4163c610f70b6d9f809123f0bdecc43e065c3d183c936c3b49457fbee1fa",
+        "id": "creature-goblin-scrapper",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!4711412dc1b011a9.d65ecdabb2fc906b",
+      "_id": "d65ecdabb2fc906b",
+      "name": "Goblin Scrapper (CV 8)",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Goblin Scrapper (CV 8)</h1><p><em>A small, wiry goblin salvager with keen eyes, patched work clothes and pockets full of useful scraps. Quick hands and knowledge of the ruins compensate for modest reach.</em></p><p><strong>Attributes:</strong> Brawn +0; Fortitude +0; Agility +2; Guile +1; Knowledge +0; Reason +0</p><p><strong>HP:</strong> 8 · <strong>Speed:</strong> 7 · <strong>Size:</strong> 1 (medium) · <strong>Armor DR:</strong> 0</p><p><strong>Evasion:</strong> 1 Bane · <strong>Threat:</strong> None · <strong>Stability:</strong> 0</p><p><strong>Weaknesses:</strong> None\\ <strong>Resistances:</strong> None\\ <strong>Immunities:</strong> None</p><h2>Actions</h2><p>Damage and effects are <strong>Weak / Standard / Strong player defense</strong>. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.</p><table><thead><tr><th scope=\"col\">Main Actions</th><th scope=\"col\">Defense</th><th scope=\"col\">Damage</th></tr></thead><tbody><tr><td>Basic Melee</td><td>Agility</td><td>4/2/1</td></tr><tr><td>Scrap knife</td><td>Agility</td><td>5/3/2</td></tr></tbody></table><table><thead><tr><th scope=\"col\">Maneuvers</th><th scope=\"col\">Effect</th></tr></thead><tbody><tr><td>Roll Away</td><td>Move up to 2 squares in a straight line without provoking opportunity attacks.</td></tr><tr><td>Defend</td><td>+1 Bane</td></tr></tbody></table><table><thead><tr><th scope=\"col\">Reactions</th><th scope=\"col\">Effect</th></tr></thead><tbody><tr><td>Slip the Rush</td><td>After an enemy voluntarily closes: move 1; no opportunity from that enemy.</td></tr><tr><td>Opportunity Attack</td><td>Basic Melee</td></tr></tbody></table><h2>Details</h2><h3>Scrap knife</h3><p><strong>Target:</strong> One adjacent creature. <strong>Player defense:</strong> Agility. <strong>Damage type:</strong> physical.</p><h3>Slip the Rush</h3><p><em>As the pursuer lunges into reach, it ducks sideways through the space the rush left open.</em></p><p>After a visible enemy ends voluntary movement adjacent to this creature, move up to 1 square without provoking from that enemy. Other opportunity attacks and normal terrain costs apply. This movement grants no attack; it cannot trigger from forced movement or movement granted by a free attack.</p><h3>General details</h3><p><strong>Basic Melee:</strong> One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.</p><p><strong>Defend:</strong> Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.</p><p><strong>Opportunity Attack:</strong> Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.</p><p><strong>Roll Away:</strong> Normal terrain costs and occupied-square restrictions apply.</p><p><strong>Healing:</strong> Living: ordinary HP healing applies.</p><p><strong>Senses:</strong> Ordinary sight and hearing.</p><p><strong>Signs:</strong> Bright scraps are tied to trip-free routes through the rubble.</p><p><strong>Purpose:</strong> Protect a salvage claim and avoid being cheated.</p><p><strong>Tactics and retreat:</strong> Roll Away between cover and a distracted opponent; bargain when cornered.</p><p><strong>Counterplay and conversation:</strong> Recognize the salvage claim or trade a useful tool.</p><p><strong>Habitat:</strong> Ruin; roadside · <strong>Communication:</strong> Common and Goblin</p><p><strong>Loot:</strong> Melee weapon, tool scraps and 3 coins.</p><p><strong>Summoning:</strong> Ineligible.</p><h2>Design notes — not needed during play</h2><p><strong>ID:</strong> creature-goblin-scrapper</p><p><strong>Category:</strong> Mortal · <strong>Role:</strong> Scavenger · <strong>CV:</strong> 8</p><h3>Creature-roll reference</h3><table><thead><tr><th scope=\"col\">Attack</th><th scope=\"col\">Attribute</th><th scope=\"col\">Attack modifier</th><th scope=\"col\">Weak attack</th><th scope=\"col\">Standard attack</th><th scope=\"col\">Strong attack</th></tr></thead><tbody><tr><td>Scrap knife</td><td>Agility</td><td>None</td><td>2 physical damage.</td><td>3 physical damage.</td><td>5 physical damage.</td></tr></tbody></table><p>The incoming attack names the defense attribute; use the six values above. Same targeting, costs and limits apply in either perspective. No opposed second roll.</p><h3>CV worksheet</h3><p><strong>Difficulty rationale:</strong> An agile or elusive body warrants attack Banes. Ordinary attack difficulty; riders and positioning carry the threat.</p><p><strong>Reference damage:</strong> 2/3/5</p><p><strong>Reference type:</strong> physical</p><p><strong>Expected targets:</strong> 1</p><p><strong>Utility factor:</strong> 1.2</p><p><strong>Action review (#1279):</strong> U 1.1 → 1.2: Maneuver allowance +0, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.</p><p><strong>Regeneration per turn:</strong> 0</p><p>Reference I=4.404, O=2.162. CV uses the seed worksheet; action choices, Stability and control are not simulated. Recalibration remains required.</p><p><strong>Ability sources:</strong> @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ec309ae23f3da381.JournalEntryPage.acc3331376d11702]{roll away}, @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.899fdbdd497cd807.JournalEntryPage.aad1285d9b2b8f31]{Slip the Rush}.</p><p>Roster · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.5ebfaad0d5ed6813.JournalEntryPage.3292b6a49dcf7236]{Agreed Stability}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

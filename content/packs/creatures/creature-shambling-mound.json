@@ -223,10 +223,12 @@
       "portrait": {
         "creatureId": "creature-shambling-mound",
         "asset": "assets/creatures/a3520212752d216f03148688630123807466af1a72badd772cc3a31bbdb9efd8.webp",
-        "sha256": "672011948ba3463e517a707009553cb1ffb56d1ec4b55ffa8b694abcf38dbc9f",
+        "sha256": "628f850854fe03cfc7fcdb1d0e78b37147df18564ea83c166649f4235d0010a3",
         "sourceSha256": "a3520212752d216f03148688630123807466af1a72badd772cc3a31bbdb9efd8",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

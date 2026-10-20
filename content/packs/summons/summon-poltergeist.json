@@ -130,10 +130,12 @@
       "portrait": {
         "creatureId": "creature-poltergeist",
         "asset": "assets/creatures/d498ae2269105e69504e60aae30b33fda366916ce652438cfbfc532730699c8a.webp",
-        "sha256": "5973ec8b1f3cf1a7b344415f665b09d60581c565d214f6441a701080d724301c",
+        "sha256": "30631ffad4c2572861e7bd697a306df55aa4df2ecddb781cf9dffd65f3b4c6f7",
         "sourceSha256": "d498ae2269105e69504e60aae30b33fda366916ce652438cfbfc532730699c8a",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

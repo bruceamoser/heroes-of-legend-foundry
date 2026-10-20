@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!ae7851888e28b306",
+  "_id": "ae7851888e28b306",
+  "name": "Mixing Kit",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/equipment/mixing-kit.md",
+        "sha256": "1a6084d7e6a5a1822fb03be8123393951cc3fb74e3a252bbcd94fcd59032331a",
+        "id": "item-mixing-kit",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!ae7851888e28b306.f4e5aa8b0a4cb354",
+      "_id": "f4e5aa8b0a4cb354",
+      "name": "Mixing Kit",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Mixing Kit</h1><p><em>Stained spoons, a little mortar and bottles whose labels only you can read.</em></p><h2>Rules</h2><p><strong>Bulk:</strong> 1. <strong>Use:</strong> Reusable tools for a recipe that names a mixing kit. No inventory die; ingredients and finished mixtures have their own supply dice. An ability that grants a missing kit supplies it on acquisition, not on every use.</p><p><strong>ID:</strong> item-mixing-kit</p><p><strong>Market price:</strong> 20 coins. Proposal; see @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.a8b099af3500d9f6.JournalEntryPage.cfa94361944ba875]{market rules}.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

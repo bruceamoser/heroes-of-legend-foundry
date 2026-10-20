@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!30c0dc2f9ccfd83e",
+  "_id": "30c0dc2f9ccfd83e",
+  "name": "A Grudge Well Kept",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/ancestries/trait-dwarf-carved-history.md",
+        "sha256": "8cf415c52575f2fd4c6ebe14e56a18ae0cc75c26a7a307f4b8e72fd5a92458d2",
+        "id": "trait-dwarf-carved-history",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!30c0dc2f9ccfd83e.5fd2f2804da92cc3",
+      "_id": "5fd2f2804da92cc3",
+      "name": "A Grudge Well Kept",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>A Grudge Well Kept</h1><p><em>You rub the place the blow landed, fix its giver in your gaze and step back into the fight.</em></p><h2>Rules</h2><p>Once per combat, after a creature damages you, gain 1 Boon to your next attack against it before the end of your next turn. Choose whether to invoke the trait when the damage occurs. No damage bonus or extra attack.</p><p><strong>Ancestry:</strong> Dwarf · <strong>Choice:</strong> one of your two traits · <strong>Action:</strong> Passive unless the effect says otherwise.</p><p><strong>Duration:</strong> While its stated circumstances apply; permanent for base statistics.</p><p><strong>ID:</strong> trait-dwarf-carved-history</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.549990a021d2f695.JournalEntryPage.2ab42086c744e8cb]{Ancestry choices}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

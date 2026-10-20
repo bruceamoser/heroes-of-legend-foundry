@@ -235,10 +235,12 @@
       "portrait": {
         "creatureId": "creature-cyclops",
         "asset": "assets/creatures/1278229fbdd753ebf26129d5c4733201274cbec36b31afc60561455362896290.webp",
-        "sha256": "07072a90bf84dd54eb2c12c95280fec4c1176d92cb8028779d2067bbf7a2cef5",
+        "sha256": "a09cbd0d65969e8ec710c2d5ac408a9dc8dea9ee52986c5fc34088cc9cb32491",
         "sourceSha256": "1278229fbdd753ebf26129d5c4733201274cbec36b31afc60561455362896290",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

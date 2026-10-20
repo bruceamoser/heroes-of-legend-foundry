@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!90683ba6523ef697",
+  "_id": "90683ba6523ef697",
+  "name": "Borrow the Shadow",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/borrow-the-shadow.md",
+        "sha256": "d769c69068ebef26b7fe769037ed8316315b81f9948af90055b8c95bbaaa57c4",
+        "id": "borrow-the-shadow",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!90683ba6523ef697.b62677258d94d1e0",
+      "_id": "b62677258d94d1e0",
+      "name": "Borrow the Shadow",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Borrow the Shadow</h1><p><em>You wait for someone to pass the concealment, then follow close behind their movement and slip into the hidden space they leave beside them.</em></p><h2>Rules</h2><p><strong>Action:</strong> Reaction · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Self, when a visible creature within 2 squares moves past actual concealment</p><p>After the triggering creature finishes its movement, move up to your Speed along a legal route toward the concealment it passed. Do not provoke. You may become Hidden at the endpoint only if the concealment actually hides you under the normal Hidden rule; the card does not conceal an exposed creature. No teleportation or movement through occupied standing squares.</p><p><strong>Duration:</strong> Movement resolves immediately; Hidden follows its normal rules.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 7 · <strong>DP:</strong> 8 · <strong>Requirements to learn:</strong> Subterfuge 3</p><p><strong>Type:</strong> Skill / Utility</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> borrow-the-shadow</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

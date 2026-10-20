@@ -409,7 +409,7 @@ test("the sheet template has one root, one ApplicationV2 part and a read-only en
   assert(!template.includes("{{{system.details"));
   const reference = template.slice(
     template.indexOf('class="hol-creature-reference"'),
-    template.indexOf('class="hol-creature-editor"'),
+    template.indexOf('</details>', template.indexOf('class="hol-creature-reference"')),
   );
   assert(!reference.includes("<input"));
   assert(!reference.includes("<textarea"));

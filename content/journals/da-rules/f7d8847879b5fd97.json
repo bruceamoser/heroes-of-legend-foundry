@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!f7d8847879b5fd97",
+  "_id": "f7d8847879b5fd97",
+  "name": "Plant the Weight",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/brace-ground.md",
+        "sha256": "44e9935b7e9ca1b0062e00df0ba15e789c3de578dc3659f79f3c8497c559e61f",
+        "id": "monster-brace-ground",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!f7d8847879b5fd97.d46f94dc00697e75",
+      "_id": "d46f94dc00697e75",
+      "name": "Plant the Weight",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Plant the Weight</h1><p><em>It spreads its stance and settles its weight into the ground.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-brace-ground</p><p><strong>Action:</strong> Maneuver</p><p>While standing on solid ground, gain Stability 3 until its next turn. Use the highest source only, never add sources.</p><p>Only creatures whose entries list this ability possess it. Printed limits apply.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

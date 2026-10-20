@@ -3,6 +3,7 @@
   "_id": "7efa7d2b1ee5dc6a",
   "name": "Trade Sack",
   "type": "equipment",
+  "img": "systems/heroes-of-legend/assets/icons/pouch.svg",
   "system": {
     "schemaVersion": 1,
     "catalogId": "item-trade-sack",

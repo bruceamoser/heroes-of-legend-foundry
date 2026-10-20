@@ -240,10 +240,12 @@
       "portrait": {
         "creatureId": "creature-green-dragon",
         "asset": "assets/creatures/b913b4aaedfdc76837766d06ba1f84c704fe7d488187fcac53f036e375bb50ac.webp",
-        "sha256": "77397989860ab903ad5aa88af1b73624d0d3b09eb609ba4c09fc7f16e0530c3f",
+        "sha256": "abf9d626273f054bbcdf43bd6a67588027c05baec3976224d0ebe27859f22604",
         "sourceSha256": "b913b4aaedfdc76837766d06ba1f84c704fe7d488187fcac53f036e375bb50ac",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

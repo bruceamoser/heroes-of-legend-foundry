@@ -218,10 +218,12 @@
       "portrait": {
         "creatureId": "creature-wererat",
         "asset": "assets/creatures/c4e354696e5460b0717d5012783e174c21eceb7d1486846553cb00285960a4c4.webp",
-        "sha256": "41bb39eb55751a13c273287043e68d5de54cdd466098eb26b210c971177a0fb6",
+        "sha256": "7fb367049000217f2e92477114364a49644e6dc01956dd85d636b7278803a5bb",
         "sourceSha256": "c4e354696e5460b0717d5012783e174c21eceb7d1486846553cb00285960a4c4",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

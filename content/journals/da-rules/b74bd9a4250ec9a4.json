@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!b74bd9a4250ec9a4",
+  "_id": "b74bd9a4250ec9a4",
+  "name": "Pounce",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/pounce.md",
+        "sha256": "cca3f2a4e205132c94511ac28420a070bad93e1d6e8d52a500137bd4c9a707a7",
+        "id": "monster-pounce",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!b74bd9a4250ec9a4.e9e1e625ea63c603",
+      "_id": "e9e1e625ea63c603",
+      "name": "Pounce",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Pounce</h1><p><em>It gathers itself, then arrives in a rush of claws and weight.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-pounce</p><p><strong>Action:</strong> Main Action</p><p>Use the printed attack. If the creature moved at least 2 squares toward this target immediately before the attack this turn, Standard or Strong also makes the target Prone. Movement is paid normally, not supplied by Pounce.</p><p><strong>Limits:</strong> Only creatures whose entries list this ability possess it. Printed entry values and restrictions apply; no ability grants unlisted actions.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

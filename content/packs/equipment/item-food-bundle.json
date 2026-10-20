@@ -3,6 +3,7 @@
   "_id": "78dd48bbc98610d4",
   "name": "Food Bundle",
   "type": "equipment",
+  "img": "systems/heroes-of-legend/assets/icons/food.svg",
   "system": {
     "schemaVersion": 1,
     "catalogId": "item-food-bundle",

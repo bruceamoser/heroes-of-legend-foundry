@@ -230,10 +230,12 @@
       "portrait": {
         "creatureId": "creature-wolf",
         "asset": "assets/creatures/77b60dac60e0257284185a65d04737877a03a13f0ffc08189b32a85b7cbec44f.webp",
-        "sha256": "7cb737b6d9b6b58cacd0ef9fe1236212307d8a8f7c3cf82b69d2899bf773826c",
+        "sha256": "c9043346ebff830487fb0cd9afaab24129433bad69802df1a29074bb5d8599f6",
         "sourceSha256": "77b60dac60e0257284185a65d04737877a03a13f0ffc08189b32a85b7cbec44f",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

@@ -223,10 +223,12 @@
       "portrait": {
         "creatureId": "creature-cloud-giant",
         "asset": "assets/creatures/37a59e13a5424eb91fb899277325f8895a59604c29b9a4e4fd43d921c1a4f81f.webp",
-        "sha256": "6dbd5b65828aaf32f0d04757d4afbba97a2dcb946944df0f0309924add481bf3",
+        "sha256": "9f878c62f0ca407a40eda08a30f59f1e2d8974589c34964088ed8cfea0661c84",
         "sourceSha256": "37a59e13a5424eb91fb899277325f8895a59604c29b9a4e4fd43d921c1a4f81f",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

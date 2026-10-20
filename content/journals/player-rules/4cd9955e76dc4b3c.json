@@ -1,0 +1,39 @@
+{
+  "_key": "!journal!4cd9955e76dc4b3c",
+  "_id": "4cd9955e76dc4b3c",
+  "name": "Duelist’s Second",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/origins/background-duelist-s-second.md",
+        "sha256": "65e0bf9921e9dcd585f958e4680c4258456ac7eed1eeae4f695a52c4662ce8d7",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!4cd9955e76dc4b3c.7d271ffe2f8c23fd",
+      "_id": "7d271ffe2f8c23fd",
+      "name": "Duelist’s Second",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Duelist’s Second</h1><p><em>You checked straps, carried spare blades and stood ready when a formal duel became a messy fight. You learned both the invitation to a clean exchange and the value of armor when it fails.</em></p><p><em>Which duel should never have happened?</em></p><h2>Rules</h2><p>Choose one:</p><p>- <strong>Arms 1</strong> and @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.5ee0ed01fff955fd.JournalEntryPage.c21c86fbb31c186c]{Invitation to the Blade}. - <strong>Armor 1</strong> and @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.1f6b36c34db9c5eb.JournalEntryPage.36ac9af60144cf5c]{Wear Light Armor}.</p><p><strong>Type:</strong> Background</p><p>Each option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.</p><p><strong>Starting coin contribution:</strong> +7 coins. See @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0558be1f6014ee71.JournalEntryPage.880380bcd80cfec6]{starting coins}.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

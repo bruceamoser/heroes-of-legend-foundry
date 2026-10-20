@@ -1,0 +1,39 @@
+{
+  "_key": "!journal!5ebfaad0d5ed6813",
+  "_id": "5ebfaad0d5ed6813",
+  "name": "Stability",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/rules/stability.md",
+        "sha256": "0a7d00c2421d5161555c45061ef04e1fbff46ee23786f1ee5fb005ef575d616b",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!5ebfaad0d5ed6813.3292b6a49dcf7236",
+      "_id": "3292b6a49dcf7236",
+      "name": "Stability",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Stability</h1><p><strong>Approved by Bruce, October 13, 2026.</strong> Every character and creature starts with Stability 0. An ancestry trait, ability, equipment card or printed creature trait must explicitly grant a higher value. Stability is not calculated from attributes, ancestry size, armor, HP or level. Use the highest applicable grant, never their sum, to a maximum of <strong>3</strong>.</p><p>Stability consumes the movement of a push, pull or throw, minimum 0. Apply the initial target’s Stability once before it moves. When the moving group strikes a new creature, that creature’s Stability consumes remaining movement once as it joins the chain, after contact collision damage resolves. If none remains, the group stops. Never charge the same creature twice during one forced movement, even if several occupied squares collide.</p><p>Stability does not resist Prone, grappling, conditions or damage. It does not reduce voluntary movement or a thrown projectile’s range. A printed push of 1 can therefore move a Stability-0 target but not a Stability-1 target; its other effects still resolve. A stopped push does not erase the attack’s damage or conditions.</p><p><strong>Example:</strong> a push of 5 strikes a creature with Stability 1, leaving 4. It moves one normal square, leaving 3, then strikes a creature with Stability 2. That new contact deals 3 collision damage to both participants, subject to applicable resistance. The newly struck creature’s Stability then consumes 2, leaving 1 for the moving group: enough to move one more normal square before stopping.</p><p>Use the existing terrain and collision rules. Spending Stability does not itself create damage. <strong>Collision timing — approved October 16, 2026:</strong> resolve contact collision damage using the movement remaining on arrival, then deduct the new member’s Stability before further travel. This preserves an impact even when the new member stops the chain. Stability resists displacement; applicable resistance reduces damage.</p><h2>Crowded moving groups — approved October 16, 2026</h2><p>Move the creatures together along the forced-movement path. They must finish in separate legal spaces. If the group cannot fit, stop at the last position where everyone can fit. The DA determines the exact arrangement.</p><p>Placement cannot send a creature through a wall or grant extra forward movement. The original mover’s one-square backward bounce still applies where possible. Use the existing collision damage and Stability rules; placement does not erase an impact. No separate formation or packing procedure is required.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

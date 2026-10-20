@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!fd9bb2a05b624de6",
+  "_id": "fd9bb2a05b624de6",
+  "name": "The Shape of Escape",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/the-shape-of-escape.md",
+        "sha256": "04a0b829e9dfdfd95c6b892d644d6f1b24a39df24b5160f155148ccf63665556",
+        "id": "the-shape-of-escape",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!fd9bb2a05b624de6.7bf36a9c6c209a85",
+      "_id": "7bf36a9c6c209a85",
+      "name": "The Shape of Escape",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>The Shape of Escape</h1><p><em>You soften into a ribbon of clay and feel the narrow opening slide around you.</em></p><h2>Rules</h2><p><strong>Action:</strong> Maneuver · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Self, through one narrow opening to a visible free square within 3 squares.</p><p>Become a ribbon of living clay and slip through a continuous open route to the destination. Carried equipment travels with you; reform immediately. This movement does not provoke. You cannot pass a sealed barrier, end inside an object, or remain amorphous for protection.</p><p><strong>Duration:</strong> Instant. Applied conditions follow their normal duration and decay.</p><p><strong>Equipment / acquisition:</strong> No item needed unless named above.</p><p>---</p><p><strong>Tier / minimum level:</strong> 7 · <strong>DP:</strong> 8 · <strong>Requirements to learn:</strong> Scholarship 3</p><p><strong>Type:</strong> Magic / Movement / Utility</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> the-shape-of-escape</p><p>Build this character · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

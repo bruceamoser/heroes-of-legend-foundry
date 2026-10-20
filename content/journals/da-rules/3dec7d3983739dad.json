@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!3dec7d3983739dad",
+  "_id": "3dec7d3983739dad",
+  "name": "Winter Wolf (CV 46)",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/bestiary/creatures/winter-wolf.md",
+        "sha256": "2bf5a99ad276946fd64a9b44d9e4da6954015906005b47e4461da5059382608a",
+        "id": "creature-winter-wolf",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!3dec7d3983739dad.eb37fffad25eeb59",
+      "_id": "eb37fffad25eeb59",
+      "name": "Winter Wolf (CV 46)",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Winter Wolf (CV 46)</h1><p><em>A white wolf speaks through teeth furred with frost and leaves no melted prints even on sunlit snow.</em></p><p><strong>Attributes:</strong> Brawn +0; Fortitude +0; Agility +2; Guile +1; Knowledge +0; Reason +1</p><p><strong>HP:</strong> 26 · <strong>Speed:</strong> 8 · <strong>Size:</strong> 1 (medium) · <strong>Armor DR:</strong> 0*</p><p><strong>Evasion:</strong> 1 Bane · <strong>Threat:</strong> 1 Bane · <strong>Stability:</strong> 0</p><p><strong>Weaknesses:</strong> None\\ <strong>Resistances:</strong> Cold (2)\\ <strong>Immunities:</strong> None</p><h2>Actions</h2><p>Damage and effects are <strong>Weak / Standard / Strong player defense</strong>. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.</p><table><thead><tr><th scope=\"col\">Main Actions</th><th scope=\"col\">Defense</th><th scope=\"col\">Damage</th></tr></thead><tbody><tr><td>Basic Melee</td><td>Agility</td><td>5/3/2</td></tr><tr><td>Rime breath</td><td>Fortitude</td><td>8 + Freezing 2 / 5 + Freezing 1 / 3</td></tr></tbody></table><table><thead><tr><th scope=\"col\">Maneuvers</th><th scope=\"col\">Effect</th></tr></thead><tbody><tr><td>Lay the Rime</td><td>3 connected empty ground squares within 3: difficult terrain until its next turn.</td></tr><tr><td>Read the Blood Trail</td><td>Direction of nearest Bleeding creature within 6.</td></tr><tr><td>Defend</td><td>+1 Bane</td></tr></tbody></table><table><thead><tr><th scope=\"col\">Reactions</th><th scope=\"col\">Effect</th></tr></thead><tbody><tr><td>Follow the Pack</td><td>After an ally closes on an enemy within 3: move 2 to that ally; provokes.</td></tr><tr><td>Opportunity Attack</td><td>Basic Melee</td></tr></tbody></table><h2>Details</h2><h3>Rime breath</h3><p><strong>Target:</strong> All creatures in a cone of 3 rows, 1/3/5 squares wide; no exclusions. Each player rolls defense separately. <strong>Player defense:</strong> Fortitude. <strong>Damage type:</strong> cold.</p><p><strong>Weak defense:</strong> Freezing 2. <strong>Standard defense:</strong> Freezing 1.</p><p><strong>Limit:</strong> Cannot use this attack on consecutive turns, regardless of result.</p><h3>Read the Blood Trail</h3><p><em>Its nose lifts, separating the sharp scent of fresh blood from the rest of the air.</em></p><p>Learn the direction of the nearest Bleeding creature within 6 squares. This does not reveal Hidden, give an exact square or permit a sight-required attack against an unseen target.</p><h3>Follow the Pack</h3><p><em>One hunter moves and another flows into its wake, tightening the circle without a sound.</em></p><p>After a visible active ally ends voluntary movement adjacent to a visible enemy within 3 squares of this creature, move up to 2 squares, ending adjacent to that ally. Pay normal terrain costs and provoke normally. The ally must be conscious and not Paralyzed; an uncommanded summon cannot trigger this. No attack or command is granted, and movement granted by a free attack cannot trigger it.</p><h3>Lay the Rime</h3><p><em>It exhales a low stream of white breath, crusting the ground with brittle ice in front of the pack.</em></p><p>Make up to 3 connected empty ground squares within 3 squares difficult terrain for everyone until the start of this creature&#39;s next turn. Requires a supporting surface. No entry damage, automatic fall or bridge over empty space. Reusing this ability replaces its previous patch.</p><h3>General details</h3><p><strong>Basic Melee:</strong> One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.</p><p><strong>Defend:</strong> Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.</p><p><strong>Opportunity Attack:</strong> Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.</p><p><strong>Healing:</strong> Living: ordinary HP healing applies.</p><p><strong>Senses:</strong> Ordinary sight and hearing.</p><p><strong>Tactics and retreat:</strong> Breathe across a clustered pursuit, then bite or reposition while the breath is unavailable. Use scent to follow the wounded without granting unseen targeting.</p><p><strong>Encounter and conversation:</strong> It offers guidance through a blizzard in exchange for an oath that sounds easier than it is.</p><p><strong>Habitat:</strong> Wild frontier; ancient ruin · <strong>Communication:</strong> None</p><p><strong>Loot:</strong> Recoverable possessions or lair clues chosen for the adventure; body parts grant no automatic special equipment or coin value.</p><p><strong>Summoning:</strong> Ineligible.</p><h2>Design notes — not needed during play</h2><p><strong>ID:</strong> creature-winter-wolf</p><p><strong>Category:</strong> Beast · <strong>Role:</strong> Cold controller · <strong>CV:</strong> 46</p><h3>Creature-roll reference</h3><table><thead><tr><th scope=\"col\">Attack</th><th scope=\"col\">Attribute</th><th scope=\"col\">Attack modifier</th><th scope=\"col\">Weak attack</th><th scope=\"col\">Standard attack</th><th scope=\"col\">Strong attack</th></tr></thead><tbody><tr><td>Rime breath</td><td>Brawn</td><td>1 Boon</td><td>3 cold damage.</td><td>5 cold damage. Freezing 1.</td><td>8 cold damage. Freezing 2.</td></tr></tbody></table><p>Use the attributes above for defenses named by incoming attacks. Same targeting, limits and costs apply; no opposed second roll.</p><h3>CV worksheet</h3><p><strong>Reference damage:</strong> 3/5/8</p><p><strong>Reference type:</strong> cold</p><p><strong>Expected targets:</strong> 2</p><p><strong>Utility factor:</strong> 1.8</p><p><strong>Action review (#1279):</strong> U 1.6 → 1.8: Maneuver allowance +0.1, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.</p><p><strong>Regeneration per turn:</strong> 0</p><p>Reference I=4.404, O=11.901. Uses the seed worksheet. Utility is provisional and does not simulate control, positioning or summon choices.</p><p><strong>Ability sources:</strong> @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.0f05b84228b9fe68.JournalEntryPage.f3b631136277c0b7]{blood scent}, @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.af7995da32da1756.JournalEntryPage.cc64ee0aeb416081]{elemental burn}, @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.864b1e7d555b46ae.JournalEntryPage.3608b7d64edb914d]{Follow the Pack}, @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.d7e68923caab9abd.JournalEntryPage.b43509936f2b7559]{Lay the Rime}.</p><p><strong>Coverage reference:</strong> Pathfinder family survey; original HOL prose and mechanics.</p><p>Roster · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.5ebfaad0d5ed6813.JournalEntryPage.3292b6a49dcf7236]{Stability}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

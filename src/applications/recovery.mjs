@@ -1,3 +1,4 @@
+import { WoundPanel } from "./wounds.mjs";
 import { requestSurvival } from "../services/survival.mjs";
 import { damageBasis } from "../services/damage.mjs";
 import { recoveryPreview, requestRecovery } from "../services/recovery.mjs";
@@ -14,21 +15,23 @@ export class RecoveryPanel extends foundry.applications.api.HandlebarsApplicatio
     position: { width: 660, height: 650 },
     actions: {
       apply: RecoveryPanel.apply,
+      wounds: RecoveryPanel.wounds,
       recoverDeath: RecoveryPanel.recoverDeath,
     },
   };
   static PARTS = {
     main: {
       template: "systems/heroes-of-legend/templates/recovery.hbs",
-      scrollable: [""],
+      scrollable: [".hol-tool-content"],
     },
   };
   async _prepareContext() {
-    if (!game.user.isGM)
-      throw new Error("Only the DA records recovery or corrections.");
+    if (!this.actor.testUserPermission(game.user, "OWNER"))
+      throw new Error("Only this actor’s owner can record recovery.");
     this.basis = damageBasis(this.actor);
     return {
       name: this.actor.name,
+      gm: game.user.isGM,
       pendingDeath: Boolean(
         this.actor.getFlag("heroes-of-legend", "pendingDeath"),
       ),
@@ -87,6 +90,7 @@ export class RecoveryPanel extends foundry.applications.api.HandlebarsApplicatio
     this.element.addEventListener("change", preview);
     preview();
   }
+  static async wounds() { await new WoundPanel(this.actor).render({ force: true }); }
   static async recoverDeath() {
     try {
       const retained = this.element

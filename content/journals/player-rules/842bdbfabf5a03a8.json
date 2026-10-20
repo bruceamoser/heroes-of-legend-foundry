@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!842bdbfabf5a03a8",
+  "_id": "842bdbfabf5a03a8",
+  "name": "Road in the Blood",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/ancestries/trait-human-far-walker.md",
+        "sha256": "3098dbf772119289b861386987ce3ea550386837c18d179acbdc100af0a3582d",
+        "id": "trait-human-far-walker",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!842bdbfabf5a03a8.245562163cefc790",
+      "_id": "245562163cefc790",
+      "name": "Road in the Blood",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Road in the Blood</h1><p><em>You settle your pack higher on your shoulders and lengthen your stride toward the next rise.</em></p><h2>Rules</h2><p>Base Speed +1. Long journeys remain ordinary travel; this creates no exhaustion rule.</p><p><strong>Ancestry:</strong> Human · <strong>Choice:</strong> one of your two traits · <strong>Action:</strong> Passive unless the effect says otherwise.</p><p><strong>Duration:</strong> While its stated circumstances apply; permanent for base statistics.</p><p><strong>ID:</strong> trait-human-far-walker</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.2c7d63ec0fceaaeb.JournalEntryPage.a1f2f2c04154f50a]{Ancestry choices}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!3adf3ec0124b38e8",
+  "_id": "3adf3ec0124b38e8",
+  "name": "Web Cast",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/web-cast.md",
+        "sha256": "7dda668a04be5196948d41a309d26c725b3173e32b532c903f2621432a4a9c3c",
+        "id": "monster-web-cast",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!3adf3ec0124b38e8.4dccc3c3f07f7a9d",
+      "_id": "4dccc3c3f07f7a9d",
+      "name": "Web Cast",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Web Cast</h1><p><em>White strands snap between the pillars and tighten around boots and wrists.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-web-cast</p><p><strong>Action:</strong> Main Action</p><p>A printed web attack applies Slowed 1/2/3 on Weak/Standard/Strong, without damage. The strands decay normally. The target or an adjacent helper can spend Main to remove 1 Slowed from this source; fire damage to the target removes all of it after resolving that damage. Webbing is not a free, one-sided grapple.</p><p><strong>Limits:</strong> Only creatures whose entries list this ability possess it. Printed entry values and restrictions apply; no ability grants unlisted actions.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

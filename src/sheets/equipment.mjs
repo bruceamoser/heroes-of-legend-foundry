@@ -1,3 +1,6 @@
+import { itemDisplayIcon } from "../rules/item-icons.mjs";
+import { requestResupply } from "../services/resupply.mjs";
+import { cardContext, bindCardState, toggleCardEdit } from "./card-state.mjs";
 import { EquipmentPanel } from "../applications/equipment.mjs";
 import { InventoryPanel } from "../applications/inventory.mjs";
 import { openPotionPreparation } from "../applications/potions.mjs";
@@ -9,16 +12,18 @@ export class EquipmentSheet extends foundry.applications.api.HandlebarsApplicati
 ) {
   static DEFAULT_OPTIONS = {
     actions: {
+      cardEdit: toggleCardEdit,
+      resupply: EquipmentSheet.resupply,
       hands: EquipmentSheet.hands,
       supply: EquipmentSheet.supply,
       usePotion: EquipmentSheet.usePotion,
     },
     classes: ["heroes-of-legend", "hol-equipment"],
-    position: { width: 520, height: 540 },
+    position: { width: 480, height: "auto" },
     form: { submitOnChange: false, closeOnSubmit: false },
   };
   static PARTS = {
-    main: { template: "systems/heroes-of-legend/templates/equipment.hbs" },
+    main: { template: "systems/heroes-of-legend/templates/equipment.hbs", scrollable: [".hol-card-scroll"] },
   };
   async _prepareContext(options) {
     const catalogs = this.item.actor ? await loadCatalogs() : null,
@@ -47,7 +52,9 @@ export class EquipmentSheet extends foundry.applications.api.HandlebarsApplicati
       hasSupply = hadSupply || this.item.system.inventoryDie > 0;
     return {
       ...(await super._prepareContext(options)),
+      ...cardContext(this, this.item),
       item: this.item,
+      cardMark: itemDisplayIcon(this.item.toObject(), catalogs),
       system: this.item.system,
       editable: this.isEditable,
       descriptionHTML: description
@@ -63,6 +70,7 @@ export class EquipmentSheet extends foundry.applications.api.HandlebarsApplicati
           this.item.system.inventoryDie > 0 &&
           (this.item.actor.isOwner || game.user.isGM),
       ),
+      canResupply: Boolean(this.item.actor?.isOwner && hasSupply),
       supplyOut:
         Boolean(this.item.actor) &&
         hadSupply &&
@@ -73,6 +81,10 @@ export class EquipmentSheet extends foundry.applications.api.HandlebarsApplicati
           (this.item.actor.isOwner || game.user.isGM),
       ),
     };
+  }
+  static async resupply() {
+    try { await requestResupply(this.item.actor, this.item); }
+    catch(error) { ui.notifications.error(error.message); }
   }
   static async hands() {
     if (this.item.actor)
@@ -99,6 +111,10 @@ export class EquipmentSheet extends foundry.applications.api.HandlebarsApplicati
     } catch (error) {
       ui.notifications.error(error.message);
     }
+  }
+  _onRender(context, options) {
+    super._onRender(context, options);
+    bindCardState(this, this.item);
   }
   async _processSubmitData(event, form, data, options) {
     if (

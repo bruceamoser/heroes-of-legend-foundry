@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!d6c51512173c544f",
+  "_id": "d6c51512173c544f",
+  "name": "A Steady Hand at Dawn",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/a-steady-hand-at-dawn.md",
+        "sha256": "85a1233222097225e227e8cd2048d4382c609410034466755f01374f2be2e97e",
+        "id": "a-steady-hand-at-dawn",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!d6c51512173c544f.8710c413592b0ccb",
+      "_id": "8710c413592b0ccb",
+      "name": "A Steady Hand at Dawn",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>A Steady Hand at Dawn</h1><p><em>You return to the bedside with clean hands and the patience to do the small things properly.</em></p><h2>Rules</h2><p><strong>Action:</strong> Passive · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> A wound you treat using a learned treatment card.</p><p>When your treatment roll is Weak, add 2 recovery progress instead of 1. Standard and Strong remain unchanged. The wound must list that treatment; time, tools and the once-per-wound-per-day limit still apply. This grants no treatment permission and restores no HP.</p><p><strong>Duration:</strong> When resolving an eligible treatment.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 3 · <strong>DP:</strong> 4 · <strong>Requirements to learn:</strong> Medicine 2</p><p><strong>Type:</strong> Skill / Utility</p><p><strong>Limits:</strong> Cannot exceed the treatment’s normal Strong recovery result or add a second treatment attempt.</p><p><strong>ID:</strong> a-steady-hand-at-dawn</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Adventure development</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

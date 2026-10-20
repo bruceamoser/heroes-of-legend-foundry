@@ -3,6 +3,7 @@
   "_id": "b116e8ff032b05a6",
   "name": "Water Flask",
   "type": "equipment",
+  "img": "systems/heroes-of-legend/assets/icons/flask.svg",
   "system": {
     "schemaVersion": 1,
     "catalogId": "item-water-flask",

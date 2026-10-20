@@ -1,0 +1,39 @@
+{
+  "_key": "!journal!c48311328c973001",
+  "_id": "c48311328c973001",
+  "name": "Guard",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/disciplines/guard.md",
+        "sha256": "d9ea8675d8ac10c16f815e96c90a938fc595c4bde6a450c93111bd45358418b2",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!c48311328c973001.7bafb0b9a4953c39",
+      "_id": "7bafb0b9a4953c39",
+      "name": "Guard",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Guard</h1><p><em>You practice being where another person needs you before they have to ask.</em></p><h2>Rules</h2><p>Shields, interception and protection of others.</p><p>Ranks 1, 2 and 3 are purchased in order. Rank alone grants no action, attribute bonus, equipment or permission to use every card in this field. A card prints the rank required before purchase. No additional level gate applies to ranks.</p><p>Class affinity sets the cost of each rank: Home 1/2/4 DP; Adjacent 2/4/8; Foreign 3/6/12; Opposed 4/8/16. These prices are the agreed starting scheme. No discipline may be bought at level 0.</p><p>Discipline index · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

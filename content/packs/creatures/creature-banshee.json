@@ -227,10 +227,12 @@
       "portrait": {
         "creatureId": "creature-banshee",
         "asset": "assets/creatures/94c63f860f4713941ff94bbbb0a531932d912e845838235a5d03d2005da20a9b.webp",
-        "sha256": "b030f1480faabf26c2da3eaa403fd82baeeb3291d105da0bd8a3716f8d4b43d0",
+        "sha256": "79ce4adbf587f7a12f51a9178e78acba4f88fb15de05cd1f7665080b4fb12703",
         "sourceSha256": "94c63f860f4713941ff94bbbb0a531932d912e845838235a5d03d2005da20a9b",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

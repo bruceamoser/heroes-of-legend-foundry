@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!f086f8027e4e4b70",
+  "_id": "f086f8027e4e4b70",
+  "name": "A Shadow at the Heart",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/a-shadow-at-the-heart.md",
+        "sha256": "5470ed9fce2a57c77ce6212f1e2e36f9dec67c05c5ffa8a1f8d5cb45ef395186",
+        "id": "a-shadow-at-the-heart",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!f086f8027e4e4b70.2fe3a319564b4bf0",
+      "_id": "2fe3a319564b4bf0",
+      "name": "A Shadow at the Heart",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>A Shadow at the Heart</h1><p><em>You step so close that your enemy’s certainty falters before your blade arrives.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> Guile</p><p><strong>Target / range / shape:</strong> One adjacent creature.</p><p>Make a melee attack from the closest, least expected angle. If you began Hidden, gain 1 Boon, then end Hidden.</p><p>- <strong>Weak:</strong> 5 physical damage. - <strong>Standard:</strong> 5 physical damage and Dazed 1. - <strong>Strong:</strong> 7 physical damage and Dazed 2.</p><p><strong>Duration:</strong> Instant. Applied conditions follow their normal duration and decay.</p><p><strong>Equipment / acquisition:</strong> Use one ordinary melee weapon; gain one on learning this card if you do not own one. Bulk 1.</p><p>---</p><p><strong>Tier / minimum level:</strong> 7 · <strong>DP:</strong> 8 · <strong>Requirements to learn:</strong> Subterfuge 3</p><p><strong>Type:</strong> Skill / Attack</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> a-shadow-at-the-heart</p><p>Build this character · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

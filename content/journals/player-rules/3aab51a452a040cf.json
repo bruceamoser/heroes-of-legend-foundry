@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!3aab51a452a040cf",
+  "_id": "3aab51a452a040cf",
+  "name": "Make a Refuge",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/signature-protector-make-a-refuge.md",
+        "sha256": "8eac21ef3fa4af6fbb66216514f374ff8a8b1a4af745f31b935680b2f791b5f5",
+        "id": "signature-protector-make-a-refuge",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!3aab51a452a040cf.b29d58a57c279c1c",
+      "_id": "b29d58a57c279c1c",
+      "name": "Make a Refuge",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Make a Refuge</h1><p><em>You draw a companion into the shelter of your stance and meet the next threat with both of you behind your guard.</em></p><h2>Rules</h2><p><strong>Action:</strong> Maneuver · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Self and one adjacent willing ally.</p><p>Use Defend and extend its 1 Boon to that ally. Both benefits last until the start of your next turn; the ally must remain adjacent while you can act. The ally gains Stability 1 for the first forced movement during the ward, including joining a collision chain. Use the highest applicable Stability, maximum 3. Consume this grant after that event even if another source was higher. Reusing this card replaces the ward, not its spent Stability grant.</p><p><strong>Duration:</strong> Until the start of your next turn; adjacency is required for the ally.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 3 · <strong>DP:</strong> 4 · <strong>Requirements to learn:</strong> Class Protector; minimum level 3</p><p><strong>Type:</strong> Signature</p><p><strong>Tags:</strong> Skill / Defense</p><p><strong>Limits:</strong> Repeatable; normal action economy applies.</p><p><strong>ID:</strong> signature-protector-make-a-refuge</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.fec08732fb31ffd9.JournalEntryPage.bdb294c8658c26c8]{Class choices} · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

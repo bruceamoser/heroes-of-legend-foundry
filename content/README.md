@@ -43,9 +43,9 @@ The editable JSON is the only pack source in Git. `scripts/build.mjs` verifies i
 
 ## Creature runtime art — issue #119
 
-`static/assets/creatures/` contains one WebP derivative for each distinct approved portrait blob in the source lock. Paths are stable content addresses (`<source-sha256>.webp`), so future mappings that share identical source bytes share the same runtime file. `manifest.json` sorts asset and portrait records and records the pinned source commit/path/hash/provenance, native dimensions, alpha facts, output hash/bytes, encoder versions and settings. It makes no distribution-license assumption; rights remain undecided.
+`static/assets/creatures/` contains one WebP derivative for each distinct approved portrait blob in the source lock. Paths are stable content addresses (`<source-sha256>.webp`), so future mappings that share identical source bytes share the same runtime file. `manifest.json` sorts asset and portrait records and records the pinned source commit/path/hash/provenance, original and derived dimensions, alpha facts, output hash/bytes, encoder versions and settings. It makes no distribution-license assumption; rights remain undecided.
 
-The current baseline maps 192 portraits to 192 unique assets totaling **93,699,982 bytes**. Sources include one non-square portrait; derivatives preserve the source dimensions and full aspect ratio without cropping or resizing. The initial encoding is lossy WebP quality 85 with method 6, exact transparent-RGB preservation and alpha quality 100. Source metadata is not copied. Source and decoded alpha bytes are checked for exact equality.
+The current baseline maps 192 portraits to 192 unique assets totaling **41,666,026 bytes**. Issue #213 fits each derivative inside a 768px maximum edge using Lanczos resampling, preserving the full aspect ratio without cropping and never upscaling smaller sources. Original dimensions remain in portrait provenance; asset dimensions describe the runtime output. Sources include one non-square portrait. The initial encoding is lossy WebP quality 85 with method 6, exact transparent-RGB preservation and alpha quality 100. Source metadata is not copied. The resized alpha channel and decoded WebP alpha bytes are checked for exact equality; source originals and their pinned hashes remain unchanged.
 
 Regenerate only from the pinned Git blobs, using a local virtual environment so no system-wide Python packages are installed:
 
@@ -55,5 +55,7 @@ python3 -m venv /tmp/hol-creature-art-venv
 HOL_BOOK_REPOSITORY=/path/to/heroes-of-legend \
   /tmp/hol-creature-art-venv/bin/python scripts/build-creature-art.py
 ```
+
+Encoding uses at most eight worker processes after the parent verifies every source hash and original image metadata. Results and manifest records retain deterministic ordering; `--workers 1` reproduces the same bytes sequentially. Worker failures abort before any artifact writes. Progress is printed every 16 encoded assets.
 
 `requirements-art.txt` pins Pillow 12.1.1 and `.python-version` pins Python 3.14.4; the manifest separately records the encoder provenance, including the linked WebP 1.5.0 library. `python3 scripts/build-creature-art.py --check` validates the manifest's exact encoder versions, then uses the available WebP decoder to verify the checked-in asset set, dimensions, alpha, hashes, sizes and canonical serialization without source access. A different capable Pillow or linked WebP decoder may perform that read-only verification; it does not replace the encoded provenance. Regeneration records the environment's actual Pillow and WebP encoder versions, so any version change appears in the reviewed manifest diff. `node scripts/validate-creature-art.mjs` additionally performs release-oriented container and cross-reference checks against the pinned encoder baseline. Missing, extra, stale or unreferenced assets fail; PNG/lossless masters and QA/reference images are never part of this directory.

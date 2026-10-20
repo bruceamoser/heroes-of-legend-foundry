@@ -1,0 +1,39 @@
+{
+  "_key": "!journal!dfb56d40a57f888f",
+  "_id": "dfb56d40a57f888f",
+  "name": "Crypt Ghoul (CV 18)",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/bestiary/summons/crypt-ghoul.md",
+        "sha256": "01243c3f47e471979701c220009c7143bfbfb279aaecd4dd07a88f82a872fb49",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!dfb56d40a57f888f.2f69762bc9160de8",
+      "_id": "2f69762bc9160de8",
+      "name": "Crypt Ghoul (CV 18)",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Crypt Ghoul (CV 18)</h1><p><em>A gaunt, corpse-eating undead with stretched lips, long nails and flesh drawn tight over its joints. It retains enough cunning to seek an isolated victim and avoid a determined group.</em></p><p><strong>HP:</strong> 18 · <strong>Speed:</strong> Ground 7 · <strong>Footprint:</strong> 1x1</p><p><strong>Summoned form — player reference.</strong></p><p><strong>Defense modifier:</strong> 1 Boon. · <strong>Stability:</strong> 0.</p><p><strong>DR / resistance:</strong> None · <strong>Condition immunities:</strong> Poisoned; Asleep</p><p><strong>Weakness:</strong> None</p><p><strong>Healing:</strong> Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body. Healing-harmed: ordinary healing resolves as Life damage instead; no beneficial riders.</p><p><strong>Against offensive healing:</strong> controller defends with Fortitude if this is player-controlled; a player attacking it still rolls only their attack.</p><p><strong>Senses:</strong> Ordinary sight and hearing.</p><p><strong>Communication:</strong> None</p><p><strong>Attributes:</strong> Brawn +1; Fortitude +1; Agility +2; Guile +0; Knowledge -1; Reason +1</p><p><strong>Eligibility:</strong> Undead 3</p><p>Main command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use controller’s turn. Beyond 6 squares, or controller unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot.</p><p><strong>Carrying:</strong> up to 1 Bulk; anatomy limits handling. No granted crafting training.</p><p>Roll its printed attack attribute and read the attacker outcomes below. When it is attacked, roll the defense attribute named by the incoming attack. Passive defenses remain; no independent active effects.</p><p><strong>Lifeless Body — Passive:</strong> does not breathe or eat; only listed immunities apply.</p><h2>Attacks — Main Action</h2><table><thead><tr><th scope=\"col\">Attack</th><th scope=\"col\">Attribute</th><th scope=\"col\">Attack modifier</th><th scope=\"col\">Weak attack</th><th scope=\"col\">Standard attack</th><th scope=\"col\">Strong attack</th></tr></thead><tbody><tr><td>Raking claws</td><td>Brawn</td><td>1 Boon</td><td>3 physical damage.</td><td>4 physical damage. Bleeding 1.</td><td>6 physical damage. Bleeding 2.</td></tr><tr><td>Grave touch</td><td>Brawn</td><td>1 Boon</td><td>2 cold damage.</td><td>3 cold damage.</td><td>4 cold damage. Paralyzed 1; cannot use this attack next turn.</td></tr></tbody></table><p><strong>Raking claws:</strong> One adjacent creature.</p><p><strong>Grave touch:</strong> One adjacent creature. Cannot use this attack on consecutive turns, regardless of result.</p><h2>Maneuvers</h2><h3>Shambling Advance — Maneuver</h3><p><em>The corpse lurches after the nearest warm body, dragging its ruined feet without ever looking away.</em></p><p>Move up to 2 squares toward a visible living creature within 6 squares; its next attack against that creature before the end of the controller’s turn gains 1 Boon. It must end closer to that creature than it began. For this movement only, treat difficult ground as normal; pay other costs and provoke normally. One attack only; repeated uses do not stack. This grants no attack and cannot be used while movement is prevented.</p><p>Use only as part of a command; no independent activity.</p><h3>Rattle of the Grave — Maneuver</h3><p><em>A dry sound rises from the corpse, like someone knocking from inside a coffin.</em></p><p>One creature within 2 squares that can hear it gains Frightened 1 of this summoned form. Once per controller turn; no damage. Frightened applies only while the form is perceptible.</p><p>Use only as part of a command; no independent activity.</p><p><strong>Defend — Maneuver:</strong> gain 1 Boon to defenses until the start of the controller’s next turn; repeated Defend does not stack.</p><p><strong>Basic Melee — Main:</strong> 1 Boon to attack; Brawn, one adjacent target; Weak attack 2, Standard 3, Strong 5 physical damage. No specialty riders. No opportunity Reaction.</p><p>@UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.df61917d8f13ae5d.JournalEntryPage.b04e1dca8e81ecbf]{DA creature card} · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.56367e2f9016dd21.JournalEntryPage.9ff12960a5e160cc]{Summon rules}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

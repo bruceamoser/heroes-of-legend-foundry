@@ -218,10 +218,12 @@
       "portrait": {
         "creatureId": "creature-hobgoblin-marshal",
         "asset": "assets/creatures/69e0e26322fb5945a24cd92d314aefb3d5e660ef83ec97350d84177f4884dd6a.webp",
-        "sha256": "8360b01048e2f4f98f2a22ecac4216a42ebabb7889b2ba895e4211fa2a46c8c6",
+        "sha256": "e5cd7cbc25629973ef1b1f9c26c8de8b7934e11e896b04eec37a75332d18270d",
         "sourceSha256": "69e0e26322fb5945a24cd92d314aefb3d5e660ef83ec97350d84177f4884dd6a",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

@@ -3,6 +3,7 @@
   "_id": "9e1ce42ae6491dcf",
   "name": "Superior Healing Bottle",
   "type": "equipment",
+  "img": "systems/heroes-of-legend/assets/icons/potion.svg",
   "system": {
     "schemaVersion": 1,
     "catalogId": "item-superior-healing-bottle",

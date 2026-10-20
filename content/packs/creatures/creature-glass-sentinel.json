@@ -205,10 +205,12 @@
       "portrait": {
         "creatureId": "creature-glass-sentinel",
         "asset": "assets/creatures/283a69f30e2789d77837592c8194ef482f2aa51757ae3f7f8fe8c570735fd0a6.webp",
-        "sha256": "d676fd5a0a55f9e2c7c90b3e57e47e10407b18567aabf6061a665e0ff054d0f6",
+        "sha256": "60711c6370825a597007822bf45f04a9cdd4b6ecf5954263712baf8b97ccfa23",
         "sourceSha256": "283a69f30e2789d77837592c8194ef482f2aa51757ae3f7f8fe8c570735fd0a6",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

@@ -3,6 +3,7 @@
   "_id": "e289004f85c1eb68",
   "name": "Ordinary Melee Weapon",
   "type": "equipment",
+  "img": "systems/heroes-of-legend/assets/icons/sword.svg",
   "system": {
     "schemaVersion": 1,
     "catalogId": "item-ordinary-melee-weapon",

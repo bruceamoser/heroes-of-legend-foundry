@@ -1,3 +1,4 @@
+import { requestConditionApply } from "../services/condition-apply.mjs";
 import {
   actorContributions,
   requestCondition,
@@ -24,6 +25,7 @@ export class ConditionPanel extends foundry.applications.api.HandlebarsApplicati
     position: { width: 700, height: 650 },
     actions: {
       add: ConditionPanel.add,
+      applyTick: ConditionPanel.applyTick,
       remove: ConditionPanel.remove,
       reduce: ConditionPanel.reduce,
     },
@@ -49,6 +51,7 @@ export class ConditionPanel extends foundry.applications.api.HandlebarsApplicati
     return {
       name: this.actor.name,
       gm: game.user.isGM,
+      owner: this.actor.isOwner,
       key: this.key,
       binary: kind === "binary",
       keys: Object.keys(CONDITION_KINDS).map((key) => ({
@@ -64,7 +67,7 @@ export class ConditionPanel extends foundry.applications.api.HandlebarsApplicati
             ? this.draft.persistence
             : persistence[0]),
       })),
-      summary: Object.values(summary).filter((s) => s.active),
+      summary: Object.values(summary).filter((s) => s.active).map(s => ({ ...s, canApply: this.actor.isOwner && ["burning", "freezing", "bleeding"].includes(s.key) })),
       contributions: contributions.map((c) => ({
         ...c,
         temporary: c.persistence === "temporary",
@@ -94,6 +97,12 @@ export class ConditionPanel extends foundry.applications.api.HandlebarsApplicati
     Hooks.off("updateActor", this.hook);
     Hooks.off("updateActiveEffect", this.effectHook);
     return super._onClose(options);
+  }
+  static async applyTick(event, target) {
+    target.disabled = true;
+    try { await requestConditionApply(this.actor, target.dataset.key); }
+    catch (e) { ui.notifications.error(e.message); }
+    finally { if (target.isConnected) target.disabled = false; }
   }
   static async add() {
     try {

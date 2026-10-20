@@ -1,3 +1,4 @@
+import { bindNetChoices } from "./net-control.mjs";
 import { referencePickerOptions, readReferenceSelection, bindReferenceSearch, bindReferenceDrops } from "../services/reference-play.mjs";
 import {
   situationalRollDraft,
@@ -286,6 +287,7 @@ export class BasicMeleeDialog extends foundry.applications.api.HandlebarsApplica
       this.readDraft();
       await this.render();
     });
+    bindNetChoices(this.element);
     bindReferenceSearch(this.element);
     bindReferenceDrops(this.element, () => ({ actor: this.item.actor, options: {} }), async () => {
       this.readDraft();

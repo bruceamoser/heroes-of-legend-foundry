@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!979fde3c8e254b1b",
+  "_id": "979fde3c8e254b1b",
+  "name": "Duck into the Brush",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/duck-into-the-brush.md",
+        "sha256": "f9b628addd2d72d5c1aa6d0c5eb31fae0e1e1204907bcd4917ff0e0bb3df1852",
+        "id": "duck-into-the-brush",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!979fde3c8e254b1b.3fc4e60e3e54daff",
+      "_id": "3fc4e60e3e54daff",
+      "name": "Duck into the Brush",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Duck into the Brush</h1><p><em>You drop behind a twist of roots, letting the branches catch at the blow meant for you.</em></p><h2>Rules</h2><p><strong>Action:</strong> Reaction · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Self, before a defense roll against an attack dealing physical damage while occupying vegetation that already supplies cover.</p><p>Gain 1 Boon to this defense. This is in addition to the existing cover modifier, under normal Boon/Bane rules. It does not grant Hidden or change the vegetation’s cover rating.</p><p><strong>Duration:</strong> Instant.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 1 · <strong>DP:</strong> 2 · <strong>Requirements to learn:</strong> Wilderness 1</p><p><strong>Type:</strong> Skill / Defense</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> duck-into-the-brush</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!4878d9951fd66b06",
+  "_id": "4878d9951fd66b06",
+  "name": "Translate the Fragment",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/translate-the-fragment.md",
+        "sha256": "bc8399c8b7973067456c1d0abffb186f03c597dc2935f4bbf2085b99bd71894c",
+        "id": "translate-the-fragment",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!4878d9951fd66b06.73fb6a176fc94f69",
+      "_id": "73fb6a176fc94f69",
+      "name": "Translate the Fragment",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Translate the Fragment</h1><p><em>You recognize one familiar root in the strange writing, and the next line begins to open.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> Knowledge</p><p><strong>Time:</strong> One hour per attempt.</p><p><strong>Target / range / shape:</strong> One accessible unfamiliar written text; one hour</p><p>This translates the chosen text; it does not teach the whole @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.b65e9644d24629f2.JournalEntryPage.0237eee3512bbfa9]{language}.</p><p>Before rolling, agree with the DA on what you are trying to accomplish and what is at risk. The DA states how much progress completes the task and whether progress carries over between attempts. Add the progress shown by your result. If the action has no uncertain consequence, resolve it without a roll.</p><p>- <strong>Weak:</strong> 1 progress toward interpreting its meaning; recognize the text’s evident purpose, such as warning, account or prayer, if the surviving words support it. - <strong>Standard:</strong> 2 progress and the same insight into the text’s purpose. - <strong>Strong:</strong> 3 progress and that insight; distinguish one literal phrase from metaphor.</p><p><strong>Duration:</strong> Information and earned progress persist for the stated task; completed changes remain until circumstances alter them.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 3 · <strong>DP:</strong> 4 · <strong>Requirements to learn:</strong> Scholarship 2</p><p><strong>Type:</strong> Skill</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> translate-the-fragment</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

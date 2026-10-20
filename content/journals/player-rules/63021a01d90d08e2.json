@@ -1,0 +1,39 @@
+{
+  "_key": "!journal!63021a01d90d08e2",
+  "_id": "63021a01d90d08e2",
+  "name": "Poacher",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/origins/background-poacher.md",
+        "sha256": "8d4bf41f5a14e6e878af65b9a62da4f27cc9fdec0b5e84e3bebe041277e7f8cb",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!63021a01d90d08e2.b084412db74576b2",
+      "_id": "b084412db74576b2",
+      "name": "Poacher",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Poacher</h1><p><em>You learned to bring down game quietly or keep the hidden catch cold until it could reach hungry households. A forbidden boundary never made them less hungry.</em></p><p><em>Who looked the other way for you?</em></p><h2>Rules</h2><p>Choose one:</p><p>- <strong>Marksmanship 1</strong> and @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.06eff8e70c891b11.JournalEntryPage.d599f57e5650e7f2]{Read the Quarry}. - <strong>Frost 1</strong> and @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.8b295167b8732413.JournalEntryPage.1478af2a406eb919]{Winter Store}.</p><p><strong>Type:</strong> Background</p><p>Each option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.</p><p><strong>Starting coin contribution:</strong> +7 coins. See @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0558be1f6014ee71.JournalEntryPage.880380bcd80cfec6]{starting coins}.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

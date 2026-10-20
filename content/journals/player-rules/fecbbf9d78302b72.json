@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!fecbbf9d78302b72",
+  "_id": "fecbbf9d78302b72",
+  "name": "Crush the Barrier",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/signature-unbalanced-crush-the-barrier.md",
+        "sha256": "f51904ce05c711b5374ed0ee6b46ca932b795be3ba5f6b35c1a0706e148330f5",
+        "id": "signature-unbalanced-crush-the-barrier",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!fecbbf9d78302b72.5db2fddba6f81b60",
+      "_id": "5db2fddba6f81b60",
+      "name": "Crush the Barrier",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Crush the Barrier</h1><p><em>You hear the first crack, plant your feet and drive through the weak point with another heave.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> Brawn</p><p><strong>Target / range / shape:</strong> One adjacent ordinary physical obstruction.</p><p>Use Force to overcome the obstruction; the DA states its progress target and consequences before rolling.</p><p>- <strong>Weak:</strong> Add 2 progress. - <strong>Standard:</strong> Add 4 progress. - <strong>Strong:</strong> Add 6 progress.</p><p>If this completes the target, you may move up to 2 squares through the opened route without provoking. This affects no creature or grapple and cannot force an impossible structure.</p><p><strong>Duration:</strong> Progress and any completed opening persist; movement is immediate.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 3 · <strong>DP:</strong> 4 · <strong>Requirements to learn:</strong> Class Unbalanced; minimum level 3</p><p><strong>Type:</strong> Signature</p><p><strong>Tags:</strong> Skill / Utility / Movement</p><p><strong>Limits:</strong> Repeatable; normal action economy applies.</p><p><strong>ID:</strong> signature-unbalanced-crush-the-barrier</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.c52e568f60caf216.JournalEntryPage.e4c268a3f92809d7]{Class choices} · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

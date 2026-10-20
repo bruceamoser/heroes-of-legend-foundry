@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!6dcdc4b2400a5e14",
+  "_id": "6dcdc4b2400a5e14",
+  "name": "Fell the Balance",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/signature-blade-fell-the-balance.md",
+        "sha256": "6031a8e0d80daf33530c83cff5314e545be30c7f1a307d9a598ab20b7b277e3b",
+        "id": "signature-blade-fell-the-balance",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!6dcdc4b2400a5e14.b9e14fcf2dce6504",
+      "_id": "b9e14fcf2dce6504",
+      "name": "Fell the Balance",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Fell the Balance</h1><p><em>You feel their weight shift, hook their footing with your own and let the strike finish the fall.</em></p><h2>Rules</h2><p><strong>Action:</strong> Passive · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> One target of your Standard or Strong Main Action melee attack.</p><p>After the attack resolves, you may knock that target prone. This does not require a push rider or replace another effect. It adds no damage and cannot turn Prone into a numbered condition.</p><p><strong>Duration:</strong> Prone lasts until removed normally.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 3 · <strong>DP:</strong> 4 · <strong>Requirements to learn:</strong> Class Blade; minimum level 3</p><p><strong>Type:</strong> Signature</p><p><strong>Tags:</strong> Skill / Control</p><p><strong>Limits:</strong> Once on your turn; no benefit from free attacks.</p><p><strong>ID:</strong> signature-blade-fell-the-balance</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.3ba04b7b5637ef56.JournalEntryPage.a9a21da370b45af6]{Class choices} · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

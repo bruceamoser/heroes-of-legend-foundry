@@ -49,6 +49,7 @@ export class EquipmentPanel extends foundry.applications.api.HandlebarsApplicati
       items: [...this.element.querySelectorAll("[data-equipment-id]")].map(
         (row) => ({
           id: row.dataset.equipmentId,
+          quantity: this.basis.items.find(item => item.id === row.dataset.equipmentId)?.quantity,
           hands: Number(row.querySelector("[name=hands]").value),
           held: row.querySelector("[name=held]").checked,
           worn: row.querySelector("[name=worn]").checked,

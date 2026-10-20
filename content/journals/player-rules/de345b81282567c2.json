@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!de345b81282567c2",
+  "_id": "de345b81282567c2",
+  "name": "One Last Remark",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/signature-odd-one-last-remark.md",
+        "sha256": "6b3715d26c9c84a2d6d67ed2b4e428768409dc9668dfb4a14d484b13f637094b",
+        "id": "signature-odd-one-last-remark",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!de345b81282567c2.43315784cd9f0b9a",
+      "_id": "43315784cd9f0b9a",
+      "name": "One Last Remark",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>One Last Remark</h1><p><em>You answer the cry of pain with a sharp, stubborn joke, giving your companion something to do before despair catches up.</em></p><h2>Rules</h2><p><strong>Action:</strong> Reaction · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> One willing ally within 4 squares that can hear you, after it takes damage; alternatively, when you hear an ally’s Last Words within 4 squares.</p><p>After damage resolves, the chosen ally may move up to 3 squares without provoking or make one free Basic Melee attack against an adjacent enemy. It must be able to take the chosen action.</p><p>If triggered by Last Words instead, choose up to two other willing allies within 4 squares that can hear you; each chooses one of those benefits. The dying speaker gains no action, and its death is neither delayed nor reversed.</p><p>Basic Melee uses each attacker’s Brawn, weapon and normal outcomes. Damage from a free attack cannot trigger a free attack through this card; no further free attacks arise from these attacks.</p><p><strong>Duration:</strong> Immediate chosen benefits.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 7 · <strong>DP:</strong> 8 · <strong>Requirements to learn:</strong> Class Odd; minimum level 7</p><p><strong>Type:</strong> Signature</p><p><strong>Tags:</strong> Skill / Movement / Attack</p><p><strong>Limits:</strong> Normal Reaction cost; the Last Words benefit can trigger once per dying ally.</p><p><strong>ID:</strong> signature-odd-one-last-remark</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.b958699795c40aff.JournalEntryPage.5ab16268111adc1e]{Class choices} · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

@@ -201,10 +201,12 @@
       "portrait": {
         "creatureId": "creature-giant-rat",
         "asset": "assets/creatures/e1d3fa6cde0dea5757f5349e90b95ddc9f1d9707aaa5548c2e5c4ed6fa801158.webp",
-        "sha256": "d5cc00bbf32e5d8c313d8ee93904368ca5b639aa2eb32f9c298d04c12b88aed4",
+        "sha256": "eadb45b7d1250d85ef3ba38d0d5e36d895aceedf4fe9c68ef6dc467145843f0a",
         "sourceSha256": "e1d3fa6cde0dea5757f5349e90b95ddc9f1d9707aaa5548c2e5c4ed6fa801158",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

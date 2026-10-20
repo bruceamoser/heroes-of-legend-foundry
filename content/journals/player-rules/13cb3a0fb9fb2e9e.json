@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!13cb3a0fb9fb2e9e",
+  "_id": "13cb3a0fb9fb2e9e",
+  "name": "A Lifetime Ago",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/ancestries/trait-elf-age-of-memory.md",
+        "sha256": "9de3568b331b5d6dda64c69f08e44875770f385f30c09c2fc0c10484480256c0",
+        "id": "trait-elf-age-of-memory",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!13cb3a0fb9fb2e9e.15d5be6aa14c44b9",
+      "_id": "15d5be6aa14c44b9",
+      "name": "A Lifetime Ago",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>A Lifetime Ago</h1><p><em>You pause beside the broken road and recall the voices of the people who laid its first stones.</em></p><h2>Rules</h2><p>Choose one place or community you knew in an earlier age. Gain 1 Boon to Knowledge or Reason rolls recalling its history, people or construction. The DA can tell you what you genuinely witnessed without a roll; memory reveals no events you never knew.</p><p><strong>Ancestry:</strong> Elf · <strong>Choice:</strong> one of your two traits · <strong>Action:</strong> Passive unless the effect says otherwise.</p><p><strong>Duration:</strong> While its stated circumstances apply; permanent for base statistics.</p><p><strong>ID:</strong> trait-elf-age-of-memory</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.a3a36c3f861b9c6d.JournalEntryPage.937339711b359405]{Ancestry choices}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

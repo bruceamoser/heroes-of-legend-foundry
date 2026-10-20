@@ -121,10 +121,12 @@
       "portrait": {
         "creatureId": "creature-hedge-sprite",
         "asset": "assets/creatures/4a69d2737d3f386b274af9cdab19a934df7629c6a5e9fac96b533d60ea3ec434.webp",
-        "sha256": "679b7fec3837f19dc05ed534e83b867c68dd0d5cc5ca76b4a8159792a1f607fc",
+        "sha256": "2b0224eb1b2dcfd0cbaaf4d59b7d250a2427407f41df864aacb8bdd49b3853e3",
         "sourceSha256": "4a69d2737d3f386b274af9cdab19a934df7629c6a5e9fac96b533d60ea3ec434",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

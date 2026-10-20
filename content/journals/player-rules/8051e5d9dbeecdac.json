@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!8051e5d9dbeecdac",
+  "_id": "8051e5d9dbeecdac",
+  "name": "Weight of Iron",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/weight-of-iron.md",
+        "sha256": "940f3e1c35fc689b724eb8fd32dbe30fb49990aa8e5bb1368b2aa48465eecadf",
+        "id": "weight-of-iron",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!8051e5d9dbeecdac.2278b3253b6034ce",
+      "_id": "2278b3253b6034ce",
+      "name": "Weight of Iron",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Weight of Iron</h1><p><em>You feel the blow travel down through your armor and into the ground beneath your feet.</em></p><h2>Rules</h2><p><strong>Action:</strong> Reaction · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Self, when an effect would knock you prone</p><p>Remain standing.</p><p><strong>Duration:</strong> Instant</p><p><strong>Equipment / acquisition:</strong> Requires armor.</p><p>---</p><p><strong>Tier / minimum level:</strong> 7 · <strong>DP:</strong> 8 · <strong>Requirements to learn:</strong> Armor 3</p><p><strong>Type:</strong> Skill</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> weight-of-iron</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

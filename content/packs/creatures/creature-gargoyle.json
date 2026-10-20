@@ -223,10 +223,12 @@
       "portrait": {
         "creatureId": "creature-gargoyle",
         "asset": "assets/creatures/3156b5624d0c91c5c4c17e6523a0ca7d64242febe23f7fca0623bdfe5eaca9e9.webp",
-        "sha256": "62affd4647a6e37ba8dfb4ebe3b714c1fcccfcac42a19e23391e702eaeae84f3",
+        "sha256": "b9eda7d68e9b5e338b72f3b9430bb642cf3d90855cd0310d5bec9fb336119030",
         "sourceSha256": "3156b5624d0c91c5c4c17e6523a0ca7d64242febe23f7fca0623bdfe5eaca9e9",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

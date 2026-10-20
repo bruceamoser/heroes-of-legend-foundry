@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!f0727d18d2ef1361",
+  "_id": "f0727d18d2ef1361",
+  "name": "Wight (CV 29)",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/bestiary/creatures/wight.md",
+        "sha256": "d7d513311c7699d72210e7a806a90d12fe2495989cd0e84f3cc140c277cb64d2",
+        "id": "creature-wight",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!f0727d18d2ef1361.e622f1f61f9ca454",
+      "_id": "e622f1f61f9ca454",
+      "name": "Wight (CV 29)",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Wight (CV 29)</h1><p><em>An armored corpse watches with the offended dignity of a lord whose court has forgotten to die.</em></p><p><strong>Attributes:</strong> Brawn +2; Fortitude +1; Agility +1; Guile +0; Knowledge +0; Reason +1</p><p><strong>HP:</strong> 24 · <strong>Speed:</strong> 6 · <strong>Size:</strong> 1 (medium) · <strong>Armor DR:</strong> 2</p><p><strong>Evasion:</strong> None · <strong>Threat:</strong> 1 Bane · <strong>Stability:</strong> 0</p><p><strong>Weaknesses:</strong> None\\ <strong>Resistances:</strong> Physical (2)\\ <strong>Immunities:</strong> Bleeding; Poisoned; Asleep</p><h2>Actions</h2><p>Damage and effects are <strong>Weak / Standard / Strong player defense</strong>. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.</p><table><thead><tr><th scope=\"col\">Main Actions</th><th scope=\"col\">Defense</th><th scope=\"col\">Damage</th></tr></thead><tbody><tr><td>Basic Melee</td><td>Agility</td><td>5/3/2</td></tr><tr><td>Oath-draining blade</td><td>Fortitude</td><td>7 + Slowed 2 / 5 + Slowed 1 / 3</td></tr></tbody></table><table><thead><tr><th scope=\"col\">Maneuvers</th><th scope=\"col\">Effect</th></tr></thead><tbody><tr><td>Rattle of the Grave</td><td>One hearing target within 2: Frightened 1.</td></tr><tr><td>Defend</td><td>+1 Bane</td></tr></tbody></table><table><thead><tr><th scope=\"col\">Reactions</th><th scope=\"col\">Effect</th></tr></thead><tbody><tr><td>Turn the Blade</td><td>Before an adjacent melee attack: +1 Bane to that attack; held weapon required.</td></tr><tr><td>Opportunity Attack</td><td>Basic Melee</td></tr></tbody></table><h2>Details</h2><h3>Oath-draining blade</h3><p><strong>Target:</strong> One adjacent creature. <strong>Player defense:</strong> Fortitude. <strong>Damage type:</strong> Life.</p><p><strong>Weak defense:</strong> Slowed 2. <strong>Standard defense:</strong> Slowed 1.</p><h3>Rattle of the Grave</h3><p><em>A dry sound rises from the corpse, like someone knocking from inside a coffin.</em></p><p>One creature within 2 squares that can hear it gains Frightened 1 of this creature. Once per turn; no damage.</p><h3>Turn the Blade</h3><p><em>A small turn of the wrist catches the blow on a waiting edge and sends it sliding past.</em></p><p>Before one adjacent enemy makes a melee attack against this creature, impose 1 Bane on that attack roll. Requires a held melee weapon. Against an NPC attack, grant 1 Boon to the single defense roll instead. Applies to this attack only; it does not grant a counterattack.</p><h3>General details</h3><p><strong>Basic Melee:</strong> One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.</p><p><strong>Defend:</strong> Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.</p><p><strong>Opportunity Attack:</strong> Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.</p><p><strong>Lifeless Body — Passive:</strong> Does not breathe or eat; only its listed immunities apply.</p><p><strong>Healing:</strong> Healing-harmed: ordinary healing resolves as Life damage instead; no beneficial riders.</p><p><strong>Against offensive healing:</strong> Its controller uses Fortitude defense when player-controlled; a player attacking it rolls only their attack.</p><p><strong>Senses:</strong> Dark sight 6 squares; ordinary hearing.</p><p><strong>Tactics and retreat:</strong> Separate the oath-breaker from companions, then use fear to make the approach costly. It values its old post more than pursuit.</p><p><strong>Encounter and conversation:</strong> It demands a toll once lawful but now ruinous; the original charter can expose its limits.</p><p><strong>Habitat:</strong> Crypt; burial ground; ruined settlement · <strong>Communication:</strong> Common; understands old oaths</p><p><strong>Loot:</strong> Recoverable possessions or lair clues chosen for the adventure; body parts grant no automatic special equipment or coin value.</p><p><strong>Summoning:</strong> Undead 7 — @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.bb5cf20d5aac9b93.JournalEntryPage.c8f96348816f1214]{player reference}.</p><h2>Design notes — not needed during play</h2><p><strong>ID:</strong> creature-wight</p><p><strong>Category:</strong> Undead · <strong>Role:</strong> Pursuit controller · <strong>CV:</strong> 29</p><h3>CV worksheet</h3><p><strong>Reference damage:</strong> 3/5/7</p><p><strong>Reference type:</strong> Life</p><p><strong>Expected targets:</strong> 1</p><p><strong>Utility factor:</strong> 1.4</p><p><strong>Action review (#1279):</strong> U 1.3 → 1.4: Maneuver allowance +0, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.</p><p><strong>Regeneration per turn:</strong> 0</p><p>Reference I=3.000, O=5.596. Uses the seed worksheet. Utility is provisional and does not simulate control, positioning or summon choices.</p><p><strong>Ability sources:</strong> @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.23f72fa51411695e.JournalEntryPage.6cd94863a83419f1]{hampering strike}, @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.5612a98784835c7c.JournalEntryPage.e8e8b18438a523a4]{lifeless body}, @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.8a19d32972195c6c.JournalEntryPage.34c9dfe70552e989]{rattle bones}, @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.f5c32ebb08b1ad1f.JournalEntryPage.8df4af15aad9e3af]{Turn the Blade}.</p><p><strong>Coverage reference:</strong> Pathfinder family survey; original HOL prose and mechanics.</p><p>Roster · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.5ebfaad0d5ed6813.JournalEntryPage.3292b6a49dcf7236]{Stability}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

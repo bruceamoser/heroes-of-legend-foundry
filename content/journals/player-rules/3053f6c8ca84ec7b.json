@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!3053f6c8ca84ec7b",
+  "_id": "3053f6c8ca84ec7b",
+  "name": "Last Light of the Watch",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/last-light-of-the-watch.md",
+        "sha256": "79ee2d0da447a6a9b2c8092c76609d601ac87c4299abc4330f9d6d258ba69521",
+        "id": "last-light-of-the-watch",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!3053f6c8ca84ec7b.da13cd8e45116779",
+      "_id": "da13cd8e45116779",
+      "name": "Last Light of the Watch",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Last Light of the Watch</h1><p><em>You thrust a shining palm between your companion and the blow; for an instant their outline burns brighter than the danger.</em></p><h2>Rules</h2><p><strong>Action:</strong> Reaction · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> One visible willing ally within 3 squares, before a defense roll.</p><p>Grant 2 Boons to that defense. On a Strong defense, reduce the target’s temporary Blinded by 1 after the attack resolves. Starred blindness remains. Use the existing roll; this does not create a defense against an automatic effect.</p><p><strong>Duration:</strong> Instant.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 7 · <strong>DP:</strong> 8 · <strong>Requirements to learn:</strong> Radiance 3</p><p><strong>Type:</strong> Magic / Defense / Recovery</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> last-light-of-the-watch</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

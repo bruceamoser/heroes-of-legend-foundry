@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!1d33a734a8e1418e",
+  "_id": "1d33a734a8e1418e",
+  "name": "Perfect Placement",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/signature-blade-perfect-placement.md",
+        "sha256": "dac2a5ec827c1c7e15bfa05dba0a30fafeae113d19cd346aa37f4637abfb901a",
+        "id": "signature-blade-perfect-placement",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!1d33a734a8e1418e.bb068adaf288a810",
+      "_id": "bb068adaf288a810",
+      "name": "Perfect Placement",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Perfect Placement</h1><p><em>You turn your opponent with the flat of your weapon, then step into the ground you have made them surrender.</em></p><h2>Rules</h2><p><strong>Action:</strong> Passive · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> One target of your Standard or Strong Main Action melee attack, then self.</p><p>After resolving the attack, push the target up to 2 squares directly away from you. Then you may move up to 2 squares without provoking. Resolve both in order along legal routes; normal collision rules apply to the push.</p><p><strong>Duration:</strong> Immediate push and personal movement.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 7 · <strong>DP:</strong> 8 · <strong>Requirements to learn:</strong> Class Blade; minimum level 7</p><p><strong>Type:</strong> Signature</p><p><strong>Tags:</strong> Skill / Control / Movement</p><p><strong>Limits:</strong> Once on your turn; no benefit from free attacks.</p><p><strong>ID:</strong> signature-blade-perfect-placement</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.3ba04b7b5637ef56.JournalEntryPage.a9a21da370b45af6]{Class choices} · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

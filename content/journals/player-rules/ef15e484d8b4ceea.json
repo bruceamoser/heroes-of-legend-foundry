@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!ef15e484d8b4ceea",
+  "_id": "ef15e484d8b4ceea",
+  "name": "Catch the Ledge",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/catch-the-ledge.md",
+        "sha256": "a6c8faa08b33168ccc981f27af7c6a4e4aeb667ae75e2e62f62899c33d2536f3",
+        "id": "catch-the-ledge",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!ef15e484d8b4ceea.5646eea46178ec0a",
+      "_id": "5646eea46178ec0a",
+      "name": "Catch the Ledge",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Catch the Ledge</h1><p><em>Your hand snaps out and closes over the ledge as your feet swing into empty air.</em></p><h2>Rules</h2><p><strong>Action:</strong> Reaction · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Self, when a fall begins beside a ledge or secure handhold within reach.</p><p>With a free hand, catch the hold before falling and hang there. You do not move onto the ledge; climbing back uses ordinary movement. This cannot stop a push or pull that is still moving you away from the hold.</p><p><strong>Duration:</strong> Instant.</p><p><strong>Equipment / acquisition:</strong> Requires one free hand; grants no item.</p><p>---</p><p><strong>Tier / minimum level:</strong> 1 · <strong>DP:</strong> 2 · <strong>Requirements to learn:</strong> Athletics 1</p><p><strong>Type:</strong> Skill / Defense / Movement</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> catch-the-ledge</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

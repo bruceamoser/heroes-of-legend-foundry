@@ -30,10 +30,10 @@ try {
     version: game.system.version,
     foundry: game.version,
     user: game.user.name,
-    preview: game.i18n.localize("HOL.Preview")
+    preview: game.i18n.localize("HOL.Attributes.brawn")
   }));
   assert.equal(state.system, "heroes-of-legend");
-  assert.notEqual(state.preview, "HOL.Preview");
+  assert.notEqual(state.preview, "HOL.Attributes.brawn");
   assert(startup.some(line => line.includes("Initializing package foundation")));
   assert.deepEqual(errors, []);
   console.info(JSON.stringify({ state, startup, pageErrors: errors }, null, 2));

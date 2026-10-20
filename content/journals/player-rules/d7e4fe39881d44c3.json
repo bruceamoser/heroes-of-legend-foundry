@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!d7e4fe39881d44c3",
+  "_id": "d7e4fe39881d44c3",
+  "name": "Wrong Place for That",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/signature-odd-wrong-place-for-that.md",
+        "sha256": "b0ef4029449c36a65fc23322de52c6667c682aff113ffac2e79be886a396917c",
+        "id": "signature-odd-wrong-place-for-that",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!d7e4fe39881d44c3.d7188cf999ea95df",
+      "_id": "d7188cf999ea95df",
+      "name": "Wrong Place for That",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Wrong Place for That</h1><p><em>You catch a companion by the sleeve and stumble away together, leaving the next blow aimed at suddenly empty ground.</em></p><h2>Rules</h2><p><strong>Action:</strong> Reaction · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Self and one adjacent willing ally, after an attack against either of you resolves.</p><p>You and that ally may each move up to 2 squares without provoking. Choose the order and legal free endpoints. Each must still be able to move. The triggering attack has already resolved; this provides no retroactive protection.</p><p><strong>Duration:</strong> Immediate movement.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 3 · <strong>DP:</strong> 4 · <strong>Requirements to learn:</strong> Class Odd; minimum level 3</p><p><strong>Type:</strong> Signature</p><p><strong>Tags:</strong> Skill / Movement</p><p><strong>Limits:</strong> Repeatable; normal action economy applies.</p><p><strong>ID:</strong> signature-odd-wrong-place-for-that</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.b958699795c40aff.JournalEntryPage.5ab16268111adc1e]{Class choices} · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

@@ -79,9 +79,17 @@ export function renderHOLCombatTracker(app, element) {
       if (game.user.isGM || current?.actor?.isOwner) {
         const budget = displayedBudget(combat, state.current);
         if (budget) {
-          line(
-            `Main ${budget.remaining.main} · Maneuver ${budget.remaining.maneuver} · Reaction ${budget.remaining.reaction} · Movement ${budget.movementRemaining}`,
-          );
+          const counters = document.createElement("div");
+          counters.className = "hol-combat-budget";
+          for (const [name, value] of [["Main", budget.remaining.main], ["Maneuver", budget.remaining.maneuver], ["Reaction", budget.remaining.reaction], ["Movement", budget.movementRemaining]]) {
+            const stat = document.createElement("span"), number = document.createElement("strong");
+            stat.className = "hol-budget-stat";
+            stat.append(name);
+            number.textContent = value;
+            stat.append(number);
+            counters.append(stat);
+          }
+          section.append(counters);
           if (budget.movementBreakdown)
             line(budget.movementBreakdown);
           button(
@@ -167,7 +175,16 @@ export function renderHOLCombatTracker(app, element) {
       }
     }
   }
-  for (const row of element.querySelectorAll(".combatant[data-combatant-id]")) {
+  const nativeRows = [...element.querySelectorAll(".combatant[data-combatant-id]")];
+  for (const side of ["players", "opposition"]) {
+    const rows = nativeRows.filter(row => combatSide(combat.combatants.get(row.dataset.combatantId)) === side);
+    for (const [index, row] of rows.entries()) {
+      row.classList.toggle("hol-side-start", index === 0);
+      row.dataset.holSide = side === "players" ? "Players" : "Opposition";
+      row.parentElement.append(row);
+    }
+  }
+  for (const row of nativeRows) {
     const id = row.dataset.combatantId,
       c = combat.combatants.get(id),
       p = state?.roster.find((p) => p.id === id);

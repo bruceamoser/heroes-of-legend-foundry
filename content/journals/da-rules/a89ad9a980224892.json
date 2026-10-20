@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!a89ad9a980224892",
+  "_id": "a89ad9a980224892",
+  "name": "Mimic Shell",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/mimic-shell.md",
+        "sha256": "ce95fa747dda51cee3285340c4bd3221fa0e5ab924e50939f3f47aed4781bba0",
+        "id": "monster-mimic-shell",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!a89ad9a980224892.e5d5e12bc5e79327",
+      "_id": "e5d5e12bc5e79327",
+      "name": "Mimic Shell",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Mimic Shell</h1><p><em>The hinges are teeth; the leather grain shivers like skin.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-mimic-shell</p><p><strong>Action:</strong> Passive</p><p>While still, this creature may resemble the ordinary object named in its entry. Reason search can expose the disguise using normal perception outcomes; touching or opening it reveals it before its next action, not a free attack. Once exposed, it needs concealment and a Hide action to become Hidden again.</p><p><strong>Limits:</strong> Only creatures whose entries list this ability possess it. Printed entry values and restrictions apply; no ability grants unlisted actions.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

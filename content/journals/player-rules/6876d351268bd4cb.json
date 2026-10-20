@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!6876d351268bd4cb",
+  "_id": "6876d351268bd4cb",
+  "name": "Break Their Advance",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/signature-protector-break-their-advance.md",
+        "sha256": "e94fa1b06aff734e02dc7e6c7706d746a605b4436d0d8bf78da77353c8692f74",
+        "id": "signature-protector-break-their-advance",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!6876d351268bd4cb.d8119e194d423109",
+      "_id": "d8119e194d423109",
+      "name": "Break Their Advance",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Break Their Advance</h1><p><em>You absorb the hit and answer with a hard shove, stepping forward as the attacker stumbles away.</em></p><h2>Rules</h2><p><strong>Action:</strong> Reaction · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> One adjacent enemy, after it damages you.</p><p>Push it up to 2 squares directly away from you, then you may move 1 square toward it without provoking. Use legal routes and a free endpoint. The damage already taken remains; normal collision rules apply.</p><p><strong>Duration:</strong> Immediate push and movement.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 3 · <strong>DP:</strong> 4 · <strong>Requirements to learn:</strong> Class Protector; minimum level 3</p><p><strong>Type:</strong> Signature</p><p><strong>Tags:</strong> Skill / Control / Movement</p><p><strong>Limits:</strong> Repeatable; normal action economy applies.</p><p><strong>ID:</strong> signature-protector-break-their-advance</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.fec08732fb31ffd9.JournalEntryPage.bdb294c8658c26c8]{Class choices} · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

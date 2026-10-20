@@ -1,0 +1,39 @@
+{
+  "_key": "!journal!63ca68bda72d01e0",
+  "_id": "63ca68bda72d01e0",
+  "name": "Cultures",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/player-book/manuscript/intro-culture.md",
+        "sha256": "225a54ff2513fdaeb526221f880a436f4c6917f546640def3a4f2633fc777239",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!63ca68bda72d01e0.a3833198bcf44e7a",
+      "_id": "a3833198bcf44e7a",
+      "name": "Cultures",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Cultures</h1><p>Your culture is the community that taught you how to live: its customs, shared knowledge and ways of meeting hardship. An elf raised among dwarven halls may know their songs and stonework; a human from a wandering company may feel at home wherever people gather around a fire. Choose a culture independently of your ancestry.</p><p>Choose <strong>one complete paired option</strong> from its entry. You gain the listed rank-1 discipline and ability together at level 0. Its coin contribution also helps determine your starting purse. These gifts describe what you learned, not what you must believe or how you must behave. See @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.f96a6421bb52ac90.JournalEntryPage.b84fcd9536c51a01]{Disciplines and Character Paths} for how your new discipline opens further choices.</p><p>Each duplicate grant gives <strong>1 level-0 DP</strong> instead of an automatic higher rank or a replacement choice. Spend it before closing that stage. Follow the granted ability’s equipment line; an item is supplied only if its grant calls for one.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

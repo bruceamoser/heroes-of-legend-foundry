@@ -235,10 +235,12 @@
       "portrait": {
         "creatureId": "creature-thorn-queen",
         "asset": "assets/creatures/11a33554225719aaacbcc757f25ada927bc8e494aa5125eaaeeafe5da585c9b1.webp",
-        "sha256": "7b1071f56da627c67a689fdfa41df57c4587993c0934673a252d09b3dc239d22",
+        "sha256": "b9da925c91c97faa9f0d820121d3e98853dd61688804546fe2ab47fe74a6959c",
         "sourceSha256": "11a33554225719aaacbcc757f25ada927bc8e494aa5125eaaeeafe5da585c9b1",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!d91d5f778f7d0308",
+  "_id": "d91d5f778f7d0308",
+  "name": "Ordinary Medium Armor",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/equipment/ordinary-medium-armor.md",
+        "sha256": "a1e8320933f4d2a76805fa30546eef9ffef115a1bf410f3ae3af4418bf91525f",
+        "id": "item-ordinary-medium-armor",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!d91d5f778f7d0308.00ec4e88c828431b",
+      "_id": "00ec4e88c828431b",
+      "name": "Ordinary Medium Armor",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Ordinary Medium Armor</h1><p><em>You brush a hand over the familiar surface and check the fit before setting out.</em></p><h2>Rules</h2><p>- <strong>ID:</strong> item-ordinary-medium-armor - <strong>Bulk:</strong> 1 - <strong>Requirements / supply:</strong> Requires @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.522e9f3510ca7e13.JournalEntryPage.c545bfd9b2ba9f0c]{Wear Medium Armor} to benefit - <strong>Acquisition:</strong> Explicit ability grant, coins, or DA treasure; no automatic extra starting kit.</p><p>Appearance is chosen by owner. The training card grants physical resistance 2; no additional resistance from this item.</p><p>No DP price. Purchase does not grant training or an ability.</p><p>Equipment index</p><p><strong>Market price:</strong> 40 coins. Proposal; see @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.a8b099af3500d9f6.JournalEntryPage.cfa94361944ba875]{market rules}.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

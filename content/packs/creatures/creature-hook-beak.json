@@ -201,10 +201,12 @@
       "portrait": {
         "creatureId": "creature-hook-beak",
         "asset": "assets/creatures/5a526515e3d7020381b346904ac46ee9952c69e0a7fb5442f36002c9ec681887.webp",
-        "sha256": "d2ec1fd2217b9cccafb7ab646efe40a78d7abb21cdc77dfed89f8f566ecb1cd0",
+        "sha256": "4e60e55b5ee904b82ead8603d970e630f705e9fc2cf211d075754da80d2ea8ba",
         "sourceSha256": "5a526515e3d7020381b346904ac46ee9952c69e0a7fb5442f36002c9ec681887",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

@@ -1,0 +1,39 @@
+{
+  "_key": "!journal!22daf3c3ac76c03a",
+  "_id": "22daf3c3ac76c03a",
+  "name": "Skeleton Giant (CV 30)",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/bestiary/summons/skeleton-giant.md",
+        "sha256": "8350bd3f039399d55e48bf6c9735b663cd148b93b272cba531b0334c7161199e",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!22daf3c3ac76c03a.ad6ed72bee890009",
+      "_id": "ad6ed72bee890009",
+      "name": "Skeleton Giant (CV 30)",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Skeleton Giant (CV 30)</h1><p><em>A giant&#39;s bones rise inside a cage of splintered siege timbers, with old arrowheads rattling in the hollow joints.</em></p><p><strong>Attributes:</strong> Brawn +2; Fortitude +2; Agility +0; Guile -1; Knowledge -1; Reason +0</p><p><strong>HP:</strong> 30 · <strong>Speed:</strong> 6 · <strong>Footprint:</strong> 2x2</p><p><strong>Summoned form — player reference.</strong></p><p><strong>Defense modifier:</strong> 1 Bane. · <strong>Stability:</strong> 2.</p><p><strong>DR / resistance:</strong> Physical 2 · <strong>Condition immunities:</strong> Bleeding; Poisoned; Asleep</p><p><strong>Weakness:</strong> None</p><p><strong>Healing:</strong> Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body. Healing-harmed: ordinary healing resolves as Life damage instead; no beneficial riders.</p><p><strong>Senses:</strong> Dark sight 6 squares; ordinary hearing.</p><p><strong>Communication:</strong> Common</p><p><strong>Eligibility:</strong> Undead 7</p><p>Main command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use the controller’s turn. Beyond 6 squares, or if the controller is unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot. No summon chains.</p><p><strong>Carrying:</strong> At most 1 Bulk; anatomy limits handling. No crafting training.</p><p><strong>Against offensive healing:</strong> Fortitude defense; ordinary player attacks still use the defense attribute named on that attack.</p><p><strong>Lifeless Body — Passive:</strong> Does not breathe or eat; only its listed immunities apply.</p><p><strong>Heavy Frame — Passive:</strong> Stability 2; an explicit trait, not a bonus calculated from Size.</p><h2>Attacks — Main Action</h2><table><thead><tr><th scope=\"col\">Attack</th><th scope=\"col\">Attribute</th><th scope=\"col\">Attack modifier</th><th scope=\"col\">Weak attack</th><th scope=\"col\">Standard attack</th><th scope=\"col\">Strong attack</th></tr></thead><tbody><tr><td>Broken gatebeam</td><td>Brawn</td><td>1 Boon</td><td>3 physical damage.</td><td>6 physical damage. Push 1.</td><td>9 physical damage. Push 3.</td></tr></tbody></table><p><strong>Broken gatebeam:</strong> One visible creature within 2 squares. Apply Stability, terrain costs and normal collision rules to the printed distance.</p><h2>Maneuvers</h2><p><strong>Rattle of the Grave:</strong> One creature within 2 squares that can hear it gains Frightened 1 of this creature. Once per turn; no damage.</p><p><strong>Defend:</strong> Gain 1 Boon to defenses until the controller’s next turn; repeated Defend does not stack.</p><p><strong>Basic Melee — Main:</strong> Brawn 1 Boon; one adjacent target; Weak attack 2, Standard 3, Strong 5 physical damage. No specialty riders.</p><p>@UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.074c4dc28ce165b7.JournalEntryPage.4cc71c9d7d6c7b19]{DA creature card} · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.56367e2f9016dd21.JournalEntryPage.9ff12960a5e160cc]{Summon rules}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

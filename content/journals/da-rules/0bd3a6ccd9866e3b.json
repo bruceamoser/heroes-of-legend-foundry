@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!0bd3a6ccd9866e3b",
+  "_id": "0bd3a6ccd9866e3b",
+  "name": "Skeleton Archer (CV 7)",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/bestiary/creatures/bone-archer.md",
+        "sha256": "247e30fe7c1b4410e950d651af705f3ce14b7d6592c4f8ba12b23848c1262b6e",
+        "id": "creature-bone-archer",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!0bd3a6ccd9866e3b.768977bff9f13b40",
+      "_id": "768977bff9f13b40",
+      "name": "Skeleton Archer (CV 7)",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Skeleton Archer (CV 7)</h1><p><em>A dry skeleton equipped with a maintained bow and a small bundle of arrows. Its stillness is absolute until an intruder crosses the lane it was ordered to watch.</em></p><p><strong>Attributes:</strong> Brawn +0; Fortitude +0; Agility +1; Guile -2; Knowledge -2; Reason +0</p><p><strong>HP:</strong> 8 · <strong>Speed:</strong> 5 · <strong>Size:</strong> 1 (medium) · <strong>Armor DR:</strong> 0</p><p><strong>Evasion:</strong> None · <strong>Threat:</strong> None · <strong>Stability:</strong> 0</p><p><strong>Weaknesses:</strong> None\\ <strong>Resistances:</strong> None\\ <strong>Immunities:</strong> Bleeding; Poisoned; Asleep</p><h2>Actions</h2><p>Damage and effects are <strong>Weak / Standard / Strong player defense</strong>. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.</p><table><thead><tr><th scope=\"col\">Main Actions</th><th scope=\"col\">Defense</th><th scope=\"col\">Damage</th></tr></thead><tbody><tr><td>Basic Melee</td><td>Agility</td><td>4/2/1</td></tr><tr><td>Dusty arrow</td><td>Agility</td><td>5/3/2</td></tr></tbody></table><table><thead><tr><th scope=\"col\">Maneuvers</th><th scope=\"col\">Effect</th></tr></thead><tbody><tr><td>Study the Opening</td><td>Next attack this turn: 1 additional Bane on its target’s defense.</td></tr><tr><td>Defend</td><td>+1 Bane</td></tr></tbody></table><table><thead><tr><th scope=\"col\">Reactions</th><th scope=\"col\">Effect</th></tr></thead><tbody><tr><td>Fall to Pieces</td><td>Before physical attack: Physical resistance 3 for it; become Prone afterward.</td></tr><tr><td>Opportunity Attack</td><td>Basic Melee</td></tr></tbody></table><h2>Details</h2><h3>Dusty arrow</h3><p><strong>Ammunition:</strong> inventory d6. After each use, roll the inventory die; on 1, reduce d6 to d4, or d4 to empty. Cannot use this attack while empty.</p><p><strong>Target:</strong> One visible creature within 8 squares. <strong>Player defense:</strong> Agility. <strong>Damage type:</strong> physical.</p><h3>Fall to Pieces</h3><p><em>The skeleton lets its joints collapse, spilling loose bones beneath the passing blow.</em></p><p>Before a physical attack against this creature is rolled, gain Physical resistance 3 against that attack only. Use the highest matching resistance. After the attack resolves, it becomes Prone if still present, even if it was already Prone. This does not move its occupied footprint or reassemble it; standing costs the normal 2 movement.</p><h3>Study the Opening</h3><p><em>It waits for a tell in the stance, then turns its attention to the exposed line.</em></p><p>Its next attack before the end of this turn imposes 1 additional Bane on player defense, or gains 1 Boon when player-controlled. One attack only; no stacking with itself.</p><h3>General details</h3><p><strong>Basic Melee:</strong> One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.</p><p><strong>Defend:</strong> Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.</p><p><strong>Opportunity Attack:</strong> Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.</p><p><strong>Lifeless Body:</strong> does not breathe or eat; only the listed immunities apply.</p><p><strong>Healing:</strong> Healing-harmed: ordinary healing resolves as Life damage instead; no beneficial riders.</p><p><strong>Against offensive healing:</strong> controller defends with Fortitude if this is player-controlled; a player attacking it still rolls only their attack.</p><p><strong>Senses:</strong> Dark sight 6 squares.</p><p><strong>Signs:</strong> Arrows lie in neat bundles beneath an undisturbed layer of dust.</p><p><strong>Purpose:</strong> Deny passage through a marked lane.</p><p><strong>Tactics and retreat:</strong> Shoot from a narrow opening; use Defend if forced into melee.</p><p><strong>Counterplay and conversation:</strong> Approach outside its firing lane or remove the command marker.</p><p><strong>Habitat:</strong> Crypt; fortress · <strong>Communication:</strong> None</p><p><strong>Loot:</strong> Ranged weapon and ammunition d6 if not expended.</p><p><strong>Summoning:</strong> Undead 1 — @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.f47f02c4f00a4af4.JournalEntryPage.73dc542e144ff744]{player reference}.</p><h2>Design notes — not needed during play</h2><p><strong>ID:</strong> creature-bone-archer</p><p><strong>Category:</strong> Undead · <strong>Role:</strong> Artillery · <strong>CV:</strong> 7</p><p><strong>Difficulty rationale:</strong> No innate attack modifier; armor, cover and chosen actions provide its defenses. Ordinary attack difficulty; riders and positioning carry the threat.</p><p><strong>Reference damage:</strong> 2/3/5</p><p><strong>Reference type:</strong> physical</p><p><strong>Expected targets:</strong> 1</p><p><strong>Utility factor:</strong> 1.15</p><p><strong>Action review (#1279):</strong> U 1 → 1.15: Maneuver allowance +0.05, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.</p><p><strong>Regeneration per turn:</strong> 0</p><p>Reference I=5.000, O=2.162. CV uses the seed worksheet; action choices, Stability and control are not simulated. Recalibration remains required.</p><p><strong>Ability sources:</strong> @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.484134c0d560dbd6.JournalEntryPage.fa16a07de0e1ca30]{Fall to Pieces}, @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.5612a98784835c7c.JournalEntryPage.e8e8b18438a523a4]{lifeless body}, @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.f54ae44cde08a4cb.JournalEntryPage.a8d631521bcf6ded]{Study the Opening}.</p><p>Roster · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.5ebfaad0d5ed6813.JournalEntryPage.3292b6a49dcf7236]{Agreed Stability}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

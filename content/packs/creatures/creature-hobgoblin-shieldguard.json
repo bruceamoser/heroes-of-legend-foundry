@@ -218,10 +218,12 @@
       "portrait": {
         "creatureId": "creature-hobgoblin-shieldguard",
         "asset": "assets/creatures/8f2c2d2f60e9d6a78fa424126ad8f2c64392756912a143bc2c349425594392d7.webp",
-        "sha256": "e804ee642bd3205889e372f0d84a046f1df3ce553cf0069ba3ef45c0067b4026",
+        "sha256": "b60242ee17cb12b58bb8d3a8b101c27628ff841b5ae2590f7c3a8953b6f1ef4b",
         "sourceSha256": "8f2c2d2f60e9d6a78fa424126ad8f2c64392756912a143bc2c349425594392d7",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

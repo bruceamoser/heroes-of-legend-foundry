@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!d05ae00389833159",
+  "_id": "d05ae00389833159",
+  "name": "Deliberate Spark",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/signature-arcanist-deliberate-spark.md",
+        "sha256": "0f9e4f7840eb54f3471f0a044f7061be61032d8cfabba4b6d63b965d1fd4e4bc",
+        "id": "signature-arcanist-deliberate-spark",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!d05ae00389833159.21fcaf9e7fd6e445",
+      "_id": "21fcaf9e7fd6e445",
+      "name": "Deliberate Spark",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Deliberate Spark</h1><p><em>You flick a final spark into the ground beside your target’s foot, forcing a stumbling step as the spell lands.</em></p><h2>Rules</h2><p><strong>Action:</strong> Passive · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> One creature hit by your Main Action damaging spell.</p><p>On a Standard or Strong result, after resolving the spell, you may push one of its targets 1 square directly away from you. Use this once on your turn. It adds no direct damage; normal collision rules apply.</p><p><strong>Duration:</strong> Immediate push after the spell.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 1 · <strong>DP:</strong> 2 · <strong>Requirements to learn:</strong> Class Arcanist; minimum level 1</p><p><strong>Type:</strong> Signature</p><p><strong>Tags:</strong> Magic / Control</p><p><strong>Limits:</strong> Once on your turn; no benefit from free attacks.</p><p><strong>ID:</strong> signature-arcanist-deliberate-spark</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.89ce8e1d2af8a0be.JournalEntryPage.0f7b9607ec6639ab]{Class choices} · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

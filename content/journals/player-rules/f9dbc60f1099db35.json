@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!f9dbc60f1099db35",
+  "_id": "f9dbc60f1099db35",
+  "name": "Quick Exit",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/quick-exit.md",
+        "sha256": "de2be8860e513b6680455d204aee3e2b3df265a887cf7f74b28d0c7060caee6f",
+        "id": "quick-exit",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!f9dbc60f1099db35.415ad91e3af6e6c1",
+      "_id": "415ad91e3af6e6c1",
+      "name": "Quick Exit",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Quick Exit</h1><p><em>You turn a careful retreat into one last quick step beyond the enemy’s reach.</em></p><h2>Rules</h2><p><strong>Action:</strong> Passive · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Self, when you use Disengage.</p><p>Gain 1 additional square of available movement for this turn. Spend it using normal terrain costs and movement restrictions. This does not increase Speed or add movement to each allowance gained by converting actions. Disengage’s protection from opportunity attacks applies normally.</p><p><strong>Duration:</strong> Until the end of this turn; unused movement expires.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 1 · <strong>DP:</strong> 1 · <strong>Requirements to learn:</strong> None</p><p><strong>Type:</strong> Skill / Movement</p><p><strong>Limits:</strong> Purchase once; this benefit can trigger only once per turn.</p><p><strong>ID:</strong> quick-exit</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

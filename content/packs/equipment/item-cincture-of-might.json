@@ -3,6 +3,7 @@
   "_id": "0f47054e7e385a9f",
   "name": "Cincture of Might",
   "type": "equipment",
+  "img": "systems/heroes-of-legend/assets/icons/belt.svg",
   "system": {
     "schemaVersion": 1,
     "catalogId": "item-cincture-of-might",

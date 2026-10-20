@@ -205,10 +205,12 @@
       "portrait": {
         "creatureId": "creature-water-elemental",
         "asset": "assets/creatures/832b745b76e7fc8af4d153bf26a4d542465507ee4290edfb096a4dc18147d78e.webp",
-        "sha256": "bfab056e5bb11d7959ff0d762ff05b343ed1ab299ffaabf385e0b5839034042e",
+        "sha256": "5ff685abf01f75a57b6256e3c736153fb6e483c00c03f16a8fef9ad1067a635a",
         "sourceSha256": "832b745b76e7fc8af4d153bf26a4d542465507ee4290edfb096a4dc18147d78e",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!2a9b7551c305ee5c",
+  "_id": "2a9b7551c305ee5c",
+  "name": "Force",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/force.md",
+        "sha256": "b6a84c55a7cec479d15bdbc9b55dcba483a469d301f33f2f8f2588f1b3b9b0c3",
+        "id": "force",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!2a9b7551c305ee5c.8e207d670b3162fb",
+      "_id": "8e207d670b3162fb",
+      "name": "Force",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Force</h1><p><em>You set your shoulder, plant your feet and make the stubborn thing give ground.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> Brawn</p><p><strong>Target / range / shape:</strong> An adjacent obstacle, grapple, or creature</p><p>Choose the intended result before rolling: reduce an obstacle’s remaining strength, reduce your Grappled rating, or push a creature. DA establishes any obstacle target. Grappled 3 leaves no Main Action to spend.</p><p>- <strong>Weak:</strong> 1 progress, grapple reduction, or square of push. - <strong>Standard:</strong> 2 progress, grapple reduction, or squares of push. - <strong>Strong:</strong> 3 progress, grapple reduction, or squares of push.</p><p><strong>Stability:</strong> apply it only to the push option, not obstacle progress or Grappled reduction.</p><p><strong>Duration:</strong> Instant</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> Universal · <strong>DP:</strong> Not purchased · <strong>Requirements to learn:</strong> None</p><p><strong>Type:</strong> Universal</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> force</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "_key": "!journal!fc175a17c2ce4cad",
+  "_id": "fc175a17c2ce4cad",
+  "name": "Icebound Warden (CV 23)",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/bestiary/summons/icebound-warden.md",
+        "sha256": "c4ba8c09a44c74a4547f64c5bd965793ac41f34861953073905aa406d82ea2c0",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!fc175a17c2ce4cad.5b4dce8814548696",
+      "_id": "5b4dce8814548696",
+      "name": "Icebound Warden (CV 23)",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Icebound Warden (CV 23)</h1><p><em>A broad elemental body of layered lake ice, with trapped bubbles for eyes and thick, blunt hands. It exists to preserve something beneath the cold rather than to spread winter indiscriminately.</em></p><p><strong>HP:</strong> 22 · <strong>Speed:</strong> Ground 5 · <strong>Footprint:</strong> 1x1</p><p><strong>Summoned form — player reference.</strong></p><p><strong>Defense modifier:</strong> None. · <strong>Stability:</strong> 1 (Heavy Frame, passive grant; not derived from size).</p><p><strong>DR / resistance:</strong> Physical 1; cold 3 · <strong>Condition immunities:</strong> Bleeding; Poisoned; Asleep</p><p><strong>Weakness:</strong> None</p><p><strong>Healing:</strong> Summoned energy form: cannot be healed; disappears at 0 HP without leaving a body. Cannot swallow potions.</p><p><strong>Senses:</strong> Ordinary sight and hearing.</p><p><strong>Communication:</strong> None</p><p><strong>Attributes:</strong> Brawn +2; Fortitude +2; Agility -1; Guile +0; Knowledge +0; Reason +1</p><p><strong>Eligibility:</strong> Elemental 3</p><p>Main command: Main + Maneuver; Maneuver command: Maneuver + movement. One command per summon per controller turn; immediate summoning command counts. No activity or alerts without a command; no Reactions or opportunity attacks. Turn ticks use controller’s turn. Beyond 6 squares, or controller unconscious/dead, it disappears; at 0 HP it disappears. No permanent loot.</p><p><strong>Carrying:</strong> up to 1 Bulk; anatomy limits handling. No granted crafting training.</p><p>Roll its printed attack attribute and read the attacker outcomes below. When it is attacked, roll the defense attribute named by the incoming attack. Passive defenses remain; no independent active effects.</p><h2>Attacks — Main Action</h2><table><thead><tr><th scope=\"col\">Attack</th><th scope=\"col\">Attribute</th><th scope=\"col\">Attack modifier</th><th scope=\"col\">Weak attack</th><th scope=\"col\">Standard attack</th><th scope=\"col\">Strong attack</th></tr></thead><tbody><tr><td>Rime fist</td><td>Brawn</td><td>1 Boon</td><td>3 cold damage.</td><td>4 cold damage. Freezing 1.</td><td>6 cold damage. Freezing 2.</td></tr></tbody></table><p><strong>Rime fist:</strong> One adjacent creature.</p><h2>Maneuvers</h2><h3>Lay the Rime — Maneuver</h3><p><em>It sweeps a frozen hand across the ground, leaving raised crusts of ice that catch at hurried feet.</em></p><p>Make up to 3 connected empty ground squares within 3 squares difficult terrain for everyone until the start of the controller’s next turn. Requires a supporting surface. No entry damage, automatic fall or bridge over empty space. Reusing this ability replaces its previous patch.</p><p>Use only as part of a command; no independent activity.</p><p><strong>Defend — Maneuver:</strong> gain 1 Boon to defenses until the start of the controller’s next turn; repeated Defend does not stack.</p><p><strong>Basic Melee — Main:</strong> 1 Boon to attack; Brawn, one adjacent target; Weak attack 2, Standard 3, Strong 5 physical damage. No specialty riders. No opportunity Reaction.</p><p>@UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.39c5eff5371be50d.JournalEntryPage.dd063f16ea33f992]{DA creature card} · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.56367e2f9016dd21.JournalEntryPage.9ff12960a5e160cc]{Summon rules}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!d464c828f5ee723d",
+  "_id": "d464c828f5ee723d",
+  "name": "Restraints",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/equipment/restraints.md",
+        "sha256": "472eba5c95bca72355a9659320b50bc536cbc8686a1bf169173aea477bcbdd7e",
+        "id": "item-restraints",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!d464c828f5ee723d.da003d91ba817502",
+      "_id": "da003d91ba817502",
+      "name": "Restraints",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Restraints</h1><p><em>You check the key against the lock before closing the irons.</em></p><h2>Rules</h2><p><strong>ID:</strong> item-restraints</p><p><strong>Market price:</strong> 8 coins. <strong>Bulk:</strong> 1.</p><p>Reusable manacles and key. Applying to an unwilling resisting target requires first securing them under the existing restraint rules; purchase grants no grapple or attack.</p><p>Buying equipment grants no DP advancement, training or ability. Use normal item-handling actions unless an applicable card says otherwise.</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.a8b099af3500d9f6.JournalEntryPage.cfa94361944ba875]{Market rules} · Equipment index</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

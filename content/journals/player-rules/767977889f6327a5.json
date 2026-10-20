@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!767977889f6327a5",
+  "_id": "767977889f6327a5",
+  "name": "Bring Them Through",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/signature-warden-bring-them-through.md",
+        "sha256": "fff70bb8ca78fac3799372baec1781cd5d5d66dd0acd8561acdfea48a4237d8a",
+        "id": "signature-warden-bring-them-through",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!767977889f6327a5.56a7f67de5dbcb88",
+      "_id": "56a7f67de5dbcb88",
+      "name": "Bring Them Through",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Bring Them Through</h1><p><em>You call out footholds and openings in a steady voice, guiding your companions through the broken ground before the enemy can close it.</em></p><h2>Rules</h2><p><strong>Action:</strong> Maneuver · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Up to three willing allies visible within 4 squares, able to hear your directions and move.</p><p>Each ally may move up to 3 squares along a legal route without provoking, ignoring difficult-terrain surcharges. Resolve them one at a time; each ends in a supported free square. This does not cross gaps, barriers or occupied standing creatures. Allies spend no actions.</p><p><strong>Duration:</strong> Instant.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 7 · <strong>DP:</strong> 8 · <strong>Requirements to learn:</strong> Class Warden; minimum level 7</p><p><strong>Type:</strong> Signature</p><p><strong>Tags:</strong> Skill / Movement</p><p><strong>Limits:</strong> Each ally moves once per use.</p><p><strong>ID:</strong> signature-warden-bring-them-through</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

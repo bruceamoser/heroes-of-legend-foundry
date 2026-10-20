@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!59610933d8c043bd",
+  "_id": "59610933d8c043bd",
+  "name": "Answer for What You Did",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/answer-for-what-you-did.md",
+        "sha256": "4567f71e3a0aeedd5a5ad5298df01082533e4750d73939981d38cbc0c004f001",
+        "id": "answer-for-what-you-did",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!59610933d8c043bd.7783ec7a0bcf679e",
+      "_id": "7783ec7a0bcf679e",
+      "name": "Answer for What You Did",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Answer for What You Did</h1><p><em>You tell your quarry why you came, then step in and strike to stop their retreat.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> Guile</p><p><strong>Target / range / shape:</strong> One adjacent creature.</p><p>Bring the pursuit to a close with a melee attack. Against a quarry you marked with Name the Reckoning, gain 1 Boon; that card is helpful, not required.</p><p>- <strong>Weak:</strong> 5 physical damage. - <strong>Standard:</strong> 5 physical damage and Slowed 2. - <strong>Strong:</strong> 7 physical damage, Slowed 2 and knock prone.</p><p><strong>Duration:</strong> Instant. Applied conditions follow their normal duration and decay.</p><p><strong>Equipment / acquisition:</strong> Use one ordinary melee weapon; gain one on learning this card if you do not own one. Bulk 1.</p><p>---</p><p><strong>Tier / minimum level:</strong> 7 · <strong>DP:</strong> 8 · <strong>Requirements to learn:</strong> Influence 3</p><p><strong>Type:</strong> Skill / Attack</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> answer-for-what-you-did</p><p>Build this character · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

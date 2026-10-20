@@ -30,7 +30,20 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
     form: { submitOnChange: false, closeOnSubmit: false },
     actions: {
       addEquipment: CharacterSheet.addEquipment,
+      viewPortrait: CharacterSheet.viewPortrait,
+      savePortrait: CharacterSheet.savePortrait,
+      switchTab: CharacterSheet.switchTab,
+      toggleEdit: CharacterSheet.toggleEdit,
+      saveStory: CharacterSheet.saveStoryAction,
+      basicVisibility: CharacterSheet.basicVisibility,
+      favorite: CharacterSheet.favorite,
+      useItem: CharacterSheet.useItem,
+      supply: CharacterSheet.supply,
+      resupply: CharacterSheet.resupply,
+      crafting: CharacterSheet.crafting,
       death: CharacterSheet.death,
+      spendGrit: CharacterSheet.spendGrit,
+      evade: CharacterSheet.evade,
       wounds: CharacterSheet.wounds,
       recovery: CharacterSheet.recovery,
       damage: CharacterSheet.damage,
@@ -47,13 +60,40 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
   static PARTS = {
     main: {
       template: "systems/heroes-of-legend/templates/character.hbs",
-      scrollable: [""],
+      scrollable: [".hol-character-content"],
     },
   };
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
+    const character = this.actor.type === "character";
+    const {characterSheetView} = character ? await import("./character-view.mjs") : {};
+    const {actorContributions} = character ? await import("../services/conditions.mjs") : {};
+    const {conditionSummary} = character ? await import("../rules/conditions.mjs") : {};
+    const {damageBasis} = character ? await import("../services/damage.mjs") : {};
+    const catalogs = character ? await loadCatalogs() : null;
+    const development = this.actor.getFlag("heroes-of-legend", "development") ?? {};
+    const sheetState = this.actor.getFlag("heroes-of-legend", "characterSheet") ?? {};
+    const view = character ? characterSheetView({
+      development, equipment: this.actor.items.filter((i) => i.type === "equipment"),
+      abilities: this.actor.items.filter((i) => i.type === "ability"),
+      choices: catalogs.choices, inventory: catalogs.inventory, sheetState: !this.actor.isOwner && this.observerTab ? {...sheetState, tab:this.observerTab} : sheetState,
+      survival: this.actor.getFlag("heroes-of-legend", "survival") ?? {},
+      wounds: Object.values(this.actor.getFlag("heroes-of-legend", "wounds") ?? {}),
+    }) : {};
+    const defenses = character ? damageBasis(this.actor).passiveDefenses : null;
+    let movement = null;
+    if (character && Number.isSafeInteger(development.creationSummary?.speedBase)) {
+      const {actorMovement} = await import("../services/turn-budget.mjs");
+      movement = actorMovement(this.actor);
+    }
     return {
       ...context,
+      ...view,
+      movement,
+      bulk: movement?.bulk ?? view.bulk,
+      conditionsList: character ? Object.values(conditionSummary(actorContributions(this.actor))).filter((c) => c.active) : [],
+      resistances: defenses?.resistances ?? [],
+      weaknesses: defenses?.weaknesses ?? [],
       actor: this.actor,
       gm: game.user.isGM,
       dyingDue:
@@ -82,12 +122,184 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
         .sort((a, b) => (a.sort ?? 0) - (b.sort ?? 0)),
     };
   }
+  async _onRender(context, options) {
+    await super._onRender(context, options);
+    if (this.actor.type !== "character") return;
+    const {bindPortraitControls} = await import("./portrait.mjs");
+    bindPortraitControls(this);
+    // Bind once to each freshly rendered part, not to the persistent window.
+    const root = this.element.querySelector(".hol-character-sheet");
+    if (!root || root.dataset.bound) return;
+    root.dataset.bound = "true";
+    for (const detail of root.querySelectorAll("details[data-disclosure]")) {
+      const state = this.actor.getFlag("heroes-of-legend", "characterSheet") ?? {};
+      detail.open = state.closed?.[detail.dataset.disclosure] !== true;
+      detail.addEventListener("toggle", () => {
+        if (!this.actor.isOwner || Boolean(this.actor.getFlag("heroes-of-legend", "characterSheet")?.closed?.[detail.dataset.disclosure]) === !detail.open) return;
+        void updateOwnedDocument(this.actor, { [`flags.heroes-of-legend.characterSheet.closed.${detail.dataset.disclosure}`]: !detail.open }).catch((error) => ui.notifications.error(error.message));
+      });
+    }
+    for (const field of root.querySelectorAll('[name="system.biography"], [name="system.memorizedMessage"]')) field.addEventListener("change", () => {
+      void this.saveStory().catch((error) => ui.notifications.error(error.message));
+    });
+    for (const input of root.querySelectorAll("[data-quantity]")) input.addEventListener("change", async () => {
+      try {
+        const item = this.actor.items.get(input.dataset.quantity), quantity = Number(input.value);
+        if (!Number.isSafeInteger(quantity) || quantity < 0) throw new Error("Quantity must be a whole number of at least zero.");
+        await updateOwnedDocument(item, {"system.quantity": quantity});
+      } catch (error) { ui.notifications.error(error.message); await this.render(); }
+    });
+  }
+  async saveStory() {
+    if (!this.actor.isOwner) return;
+    const biography = this.element.querySelector('[name="system.biography"]')?.value;
+    const message = this.element.querySelector('[name="system.memorizedMessage"]')?.value;
+    if (typeof message === "string" && message.trim().split(/\s+/).filter(Boolean).length > 50)
+      throw new Error("Message by Heart holds at most 50 words.");
+    const data = {};
+    if (typeof biography === "string" && biography !== this.actor.system.biography) data["system.biography"] = biography;
+    if (typeof message === "string" && message !== this.actor.system.memorizedMessage) data["system.memorizedMessage"] = message;
+    this.storySavePromise = (this.storySavePromise ?? Promise.resolve()).catch(() => {}).then(async () => {
+      if (Object.keys(data).length) await updateOwnedDocument(this.actor, data, {render:false});
+    });
+    return this.storySavePromise;
+  }
+  static async saveStoryAction() {
+    try { await this.saveStory(); } catch(error) { ui.notifications.error(error.message); }
+  }
+  static async switchTab(event, target) {
+    const tab = target.dataset.tab;
+    if (!this.actor.isOwner) {
+      // Observers navigate locally without changing an owner's preferred view.
+      this.observerTab = tab;
+      for (const pane of this.element.querySelectorAll("[data-tab-pane]")) pane.hidden = pane.dataset.tabPane !== tab;
+      for (const button of this.element.querySelectorAll('[data-action="switchTab"]')) {
+        if (button.dataset.tab === tab) button.setAttribute("aria-current", "page");
+        else button.removeAttribute("aria-current");
+      }
+      return;
+    }
+    try {
+      await this.saveStory();
+      await updateOwnedDocument(this.actor, {"flags.heroes-of-legend.characterSheet.tab": tab});
+    } catch (error) { ui.notifications.error(error.message); }
+  }
+  static async viewPortrait() {
+    const {viewPortrait} = await import("./portrait.mjs");
+    return viewPortrait.call(this);
+  }
+  static async savePortrait() {
+    try {
+      const {savePortrait} = await import("./portrait.mjs");
+      return await savePortrait.call(this);
+    } catch (error) { ui.notifications.error(error.message); }
+  }
+  static async toggleEdit() {
+    if (!this.actor.isOwner) return;
+    await updateOwnedDocument(this.actor, {"flags.heroes-of-legend.characterSheet.edit": !this.actor.getFlag("heroes-of-legend", "characterSheet")?.edit});
+  }
+  static async basicVisibility(event, target) {
+    try {
+      const item = this.actor.items.get(target.closest("[data-item-id]")?.dataset.itemId);
+      const id = item?.getFlag("heroes-of-legend", "catalogId");
+      if (!this.actor.isOwner || !(await loadCatalogs()).choices.find(record => record.id === id)?.universal) throw new Error("Choose an owned basic action.");
+      await updateOwnedDocument(this.actor, { [`flags.heroes-of-legend.characterSheet.basicActions.${id}`]: target.dataset.visible !== "true" });
+    } catch(error) { ui.notifications.error(error.message); }
+  }
+  static async favorite(event, target) {
+    try {
+      if (!this.actor.isOwner) throw new Error("Only this character's owner can change favorites.");
+      const id = target.closest("[data-item-id]")?.dataset.itemId;
+      if (!this.actor.items.get(id)) throw new Error("This item is no longer available.");
+      const favorites = new Set(this.actor.getFlag("heroes-of-legend", "characterSheet")?.favorites ?? []);
+      favorites.has(id) ? favorites.delete(id) : favorites.add(id);
+      await updateOwnedDocument(this.actor, {"flags.heroes-of-legend.characterSheet.favorites": [...favorites]});
+    } catch (error) { ui.notifications.error(error.message); }
+  }
+  static async useItem(event, target) {
+    const item = this.actor.items.get(target.closest("[data-item-id]")?.dataset.itemId);
+    if (!item || !this.actor.isOwner) return;
+    if (item.type === "equipment") {
+      try {
+        const {isHealingPotionItem} = await import("../services/potions.mjs");
+        if (isHealingPotionItem(item)) {
+          const {openPotionPreparation} = await import("../applications/potions.mjs");
+          return openPotionPreparation(item, {bottleItemUuid: item.uuid});
+        }
+        const {isMeleeWeaponEquipment} = await import("../rules/equipment-identity.mjs");
+        const abilityId = isMeleeWeaponEquipment(item) ? "ability-basic-melee" : item.system.catalogId === "item-ordinary-ranged-weapon" ? "ability-basic-ranged" : item.system.catalogId === "item-ordinary-shield" ? "ability-shield-block" : null;
+        const ability = abilityId && this.actor.items.find((candidate) => candidate.type === "ability" && candidate.getFlag("heroes-of-legend", "catalogId") === abilityId);
+        if (!ability) return item.sheet.render({force:true});
+        if (abilityId === "ability-shield-block") return this.openShieldDefense(ability);
+        if (abilityId === "ability-basic-ranged") return ability.sheet.render({force:true});
+        const {activateOwnedAbility} = await import("../services/abilities.mjs");
+        const dialog = await activateOwnedAbility(ability);
+        if (dialog?.draft && "weaponItemUuid" in dialog.draft) {
+          dialog.draft.weaponItemUuid = item.uuid;
+          await dialog.render({force:true});
+        }
+        return dialog;
+      } catch (error) { ui.notifications.error(error.message); return; }
+    }
+    try {
+      const {isPotionAbility} = await import("../services/potions.mjs");
+      if (isPotionAbility(item)) {
+        const {openPotionPreparation} = await import("../applications/potions.mjs");
+        return openPotionPreparation(item);
+      }
+      const {activateOwnedAbility, itemAbilityDefinition} = await import("../services/abilities.mjs");
+      const definition = itemAbilityDefinition(item);
+      if (!definition) {
+        if (item.system.activity.rollMode === "attribute") {
+          const dialog = new SharedRollDialog(this.actor, item.system.activity.attribute);
+          dialog.draft.referenceItemIds = [item.id];
+          return dialog.render({force:true});
+        }
+        return item.sheet.render({force:true});
+      }
+      await activateOwnedAbility(item);
+    } catch (error) { ui.notifications.error(error.message); }
+  }
+  async openShieldDefense(ability) {
+    const attacks = game.messages.contents.filter((message) => message.isContentVisible && message.author?.isGM && message.getFlag("heroes-of-legend", "attackCard")).slice(-20).reverse();
+    if (!attacks.length) {
+      ui.notifications.info("Use Shield Block from an incoming attack's Defend dialog before rolling.");
+      return ability.sheet.render({force:true});
+    }
+    const escape = foundry.utils.escapeHTML;
+    const selection = await foundry.applications.api.DialogV2.input({window:{title:"Shield Block · choose incoming attack"}, content:`<p>Prepare a defense, then use Shield Block from its applicable abilities before rolling.</p><label>Incoming attack<select name="attackId">${attacks.map((message) => { const attack=message.getFlag("heroes-of-legend", "attackCard"); return `<option value="${escape(message.id)}">${escape(attack.name ?? attack.actionName ?? message.speaker?.alias ?? "Incoming attack")} · ${escape(message.id)}</option>`; }).join("")}</select></label>`, ok:{label:"Prepare defense"}});
+    if (!selection) return;
+    const attack = game.messages.get(selection.attackId)?.getFlag("heroes-of-legend", "attackCard");
+    const {promptDefenseRoll} = await import("../dialogs/attribute-roll.mjs");
+    const dialog = await promptDefenseRoll(this.actor, attack.attributeKey, {attackMessageId:selection.attackId, defenderTokenUuid:this.actor.isToken ? this.actor.parent?.uuid ?? null : null});
+    dialog.draft.referenceItemIds = [ability.id];
+    await dialog.render({force:true});
+    return dialog;
+  }
+  static async supply(event, target) {
+    const item = this.actor.items.get(target.closest("[data-item-id]")?.dataset.itemId);
+    if (item && this.actor.isOwner) {
+      const {InventoryPanel} = await import("../applications/inventory.mjs");
+      await new InventoryPanel(this.actor, item.id).render({force:true});
+    }
+  }
+  static async resupply(event, target) {
+    try {
+      const item = this.actor.items.get(target.closest("[data-item-id]")?.dataset.itemId);
+      const {requestResupply} = await import("../services/resupply.mjs");
+      await requestResupply(this.actor, item, 1);
+    } catch (error) { ui.notifications.error(error.message); }
+  }
+  static async crafting() {
+    const {CraftingPanel} = await import("../applications/crafting.mjs");
+    await new CraftingPanel(this.actor).render({force:true});
+  }
   _toggleDisabled(disabled) {
     super._toggleDisabled(disabled);
     // Opening a reference is read-only; all edit controls keep native disabling.
     if (disabled && this.actor.testUserPermission(game.user, "OBSERVER"))
       for (const button of this.element.querySelectorAll(
-        '[data-action="openAbility"]',
+        '[data-action="openAbility"], [data-action="switchTab"], [data-action="viewPortrait"]',
       ))
         button.disabled = false;
   }
@@ -112,6 +324,21 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
     } catch (e) {
       ui.notifications.error(e.message);
     }
+  }
+  static async spendGrit() {
+    try {
+      if (!this.actor.isOwner) throw new Error("Only the character owner can spend Grit.");
+      if (!this.actor.system.grit.available) throw new Error("No Grit remains.");
+      const confirmed = await foundry.applications.api.DialogV2.confirm({window: {title: "Spend one Grit?"}, content: "<p>Restore full HP and clear death marks. Wounds remain.</p>"});
+      if (!confirmed) return;
+      const {requestRecovery} = await import("../services/recovery.mjs");
+      const {damageBasis} = await import("../services/damage.mjs");
+      await requestRecovery(this.actor, damageBasis(this.actor), {kind: "grit"});
+    } catch (error) { ui.notifications.error(error.message); }
+  }
+  static async evade() {
+    const result = await foundry.applications.api.DialogV2.input({window: {title: "Evade"}, content: `<p>Choose the attribute appropriate to the incoming attack. Strong defense uses its Weak effect; Weak defense uses its Strong effect.</p><label>Attribute<select name="attribute">${ATTRIBUTES.map((key) => `<option value="${key}" ${key === "agility" ? "selected" : ""}>${game.i18n.localize(`HOL.Attributes.${key}`)}</option>`).join("")}</select></label>`, ok: {label: "Prepare Evade"}});
+    if (result) await promptAttributeRoll(this.actor, result.attribute);
   }
   static async death() {
     await new SharedRollDialog(this.actor, "fortitude", {

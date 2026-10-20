@@ -201,10 +201,12 @@
       "portrait": {
         "creatureId": "creature-orc-shieldbreaker",
         "asset": "assets/creatures/9fcc64569c657a11316aea52616fad217a7c44e7b21cc70a10cc7001027c3dfe.webp",
-        "sha256": "d9a899db4f7475030fd4f5ae17a8574cc83e4612ea96666b8aad5dc6fede3282",
+        "sha256": "0bdfb75e01bc2d79e4f3909f7a42b0af8d2f74e15b77cb00a6751aa141a5d92f",
         "sourceSha256": "9fcc64569c657a11316aea52616fad217a7c44e7b21cc70a10cc7001027c3dfe",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

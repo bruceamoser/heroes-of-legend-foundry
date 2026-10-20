@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!2043699a543b8b3b",
+  "_id": "2043699a543b8b3b",
+  "name": "Forked Sky",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/forked-sky.md",
+        "sha256": "f5bfd57e000a2a3a3ef6a7db59f65e2d2d929fcbba56b5aa377f61d588fc017f",
+        "id": "forked-sky",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!2043699a543b8b3b.cef996d5d05e960a",
+      "_id": "cef996d5d05e960a",
+      "name": "Forked Sky",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Forked Sky</h1><p><em>You point at the creatures you have chosen. A bolt of lightning forks through the air and leaps between them.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> Knowledge</p><p><strong>Target / range / shape:</strong> Up to three visible creatures within 6 squares</p><p>For a player attack, work out each target’s net Boons or Banes. Make one attack roll using the combination least favorable to you and apply that result to every target. Affect the creatures specified under Target, including allies if the area includes them. When an NPC attacks, each affected player makes a separate defense roll. Proposed NPC defense attribute: Fortitude.</p><p>- <strong>Weak:</strong> 4 lightning damage to each. - <strong>Standard:</strong> 4 lightning damage to each; Burning 1. - <strong>Strong:</strong> 6 lightning damage to each; Burning 2.</p><p><strong>Duration:</strong> Instant</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 7 · <strong>DP:</strong> 8 · <strong>Requirements to learn:</strong> Storm 3</p><p><strong>Type:</strong> Magic / Attack</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> forked-sky</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

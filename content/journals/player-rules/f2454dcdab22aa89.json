@@ -1,0 +1,39 @@
+{
+  "_key": "!journal!f2454dcdab22aa89",
+  "_id": "f2454dcdab22aa89",
+  "name": "Burglar",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/origins/background-burglar.md",
+        "sha256": "c93545774938c67a151207c071f2a0885a80009b535c513f0938a5ba7a7abbdc",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!f2454dcdab22aa89.5598d5d8aaa7d0e0",
+      "_id": "5598d5d8aaa7d0e0",
+      "name": "Burglar",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Burglar</h1><p><em>Every fine house has a service door and every service door has a story.</em></p><p><em>Which room did you leave untouched?</em></p><h2>Rules</h2><p>Choose one:</p><p>- <strong>Subterfuge 1</strong> and @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.6bf89941b4a7b13f.JournalEntryPage.3eb015b3aee8b36e]{The Key Changes Hands}. - <strong>Subterfuge 1</strong> and @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.47d60e90e67d229e.JournalEntryPage.105a78a12b99382f]{Quiet Latch}.</p><p><strong>Type:</strong> Background</p><p>Each option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.</p><p><strong>Starting coin contribution:</strong> +7 coins. See @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0558be1f6014ee71.JournalEntryPage.880380bcd80cfec6]{starting coins}.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

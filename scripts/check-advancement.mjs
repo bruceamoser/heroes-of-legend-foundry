@@ -31,7 +31,7 @@ async function join(name, canvas = false) {
 try {
   await mkdir("test-results", { recursive: true });
   gm = await join("Gamemaster");
-  fixture = await gm.evaluate(async () => {
+  fixture = await gm.evaluate(async (isolated) => {
     const { bindCreationAuthority } = await import(
       "/systems/heroes-of-legend/services/creation.mjs"
     );
@@ -42,6 +42,13 @@ try {
       "heroes-of-legend",
       "creationAuthorityClient",
     );
+    if (currentCoordinator && currentCoordinator !== game.socket.id && isolated) {
+      const work = game.settings.get("heroes-of-legend", "authorityWork");
+      if (work.busy || work.uncertain) throw new Error("Isolated coordinator has unresolved work");
+      await game.settings.set("heroes-of-legend", "creationAuthorityClient", "");
+      await game.settings.set("heroes-of-legend", "authorityMeta", {});
+      await game.settings.set("heroes-of-legend", "authorityWork", {});
+    }
     if (!currentCoordinator || currentCoordinator === game.socket.id) {
       await authority.bindCreationAuthority();
       await authority.releaseAuthority();
@@ -65,6 +72,7 @@ try {
         "heroes-of-legend": {
           creationReceipt: { status: "complete" },
           development: {
+            creationSummary: {speedBase: 6, unencumberedSpeed: 6, capacity: 10},
             level: 1,
             stage: "advancement",
             dp: 0,
@@ -89,7 +97,7 @@ try {
       },
     });
     return { actor: actor.id, user: user.id, name: user.name };
-  });
+  }, process.env.HOL_TEST_ISOLATED_WORLD === "1");
   const player = await join(fixture.name, true);
   const unauthorized = await player.evaluate(async (id) => {
     const { requestDevelopment } = await import(
@@ -136,6 +144,22 @@ try {
     await advanceWizard.render({ force: true });
   }, fixture.actor);
   const wizard = player.locator(".hol-advancement");
+  async function closeMarket() {
+    const dialog = wizard.locator("dialog[open]");
+    if (await dialog.count()) await dialog.locator("[data-close-market]").click();
+  }
+  async function openMarket() {
+    if (!(await wizard.locator("dialog[open]").count())) await wizard.locator('[data-open-market="ability"]').click();
+    assert(await wizard.locator("dialog[open]").isVisible());
+  }
+  async function purchase(name) {
+    await player.waitForFunction(() => !advanceWizard.busy);
+    await openMarket();
+    await wizard.getByRole("button", {name, exact:true}).click();
+    await player.waitForFunction(() => !advanceWizard.busy);
+    assert(await wizard.locator("dialog[open]").isVisible(), "Purchase keeps its native market open");
+  }
+  await openMarket();
   const initialStudy = wizard
     .locator("article.hol-choice")
     .filter({ has: player.locator("[data-id=ability-ordinary-recipe-study]") });
@@ -209,7 +233,7 @@ try {
     advanceWizard.setPosition({ width: 620, height: 800 }),
   );
   const narrow = await clever.evaluate((el) => {
-    const main = el.closest(".hol-wizard-main"),
+    const main = el.closest("dialog") ?? el.closest(".hol-wizard-main"),
       list = el.closest(".hol-choice-list"),
       button = el.querySelector("button"),
       mainBox = main.getBoundingClientRect(),
@@ -249,6 +273,7 @@ try {
     });
     await resolveDevelopmentRequest(m.id);
   }, fixture.actor);
+  await closeMarket();
   await wizard
     .getByRole("button", {
       name: "Refresh and review current ledger",
@@ -257,10 +282,8 @@ try {
     .click();
   await player.waitForFunction(() => !advanceWizard.busy);
   // Exercise the actual native acquisition widgets before the main spending plan.
-  await wizard
-    .getByRole("button", { name: "Add Another Tongue", exact: true })
-    .click();
-  await player.waitForFunction(() => !advanceWizard.busy);
+  await purchase("Add Another Tongue");
+  await closeMarket();
   const languageSelect = wizard.locator(
     '[name="languageId-ability-another-tongue"]',
   );
@@ -276,10 +299,9 @@ try {
       .evaluate((option) => option.disabled),
   );
   await languageSelect.selectOption("goblin");
-  await wizard
-    .getByRole("button", { name: "Add A Party Piece", exact: true })
-    .click();
   await player.waitForFunction(() => !advanceWizard.busy);
+  await purchase("Add A Party Piece");
+  await closeMarket();
   const specialty = wizard.locator('[name="specialty-ability-a-party-piece"]');
   assert(await specialty.isVisible());
   await specialty.fill("juggling");
@@ -300,27 +322,22 @@ try {
     advanceWizard.draft = { purchases: [], signatures: {}, acquisitions: {} };
     await advanceWizard.render({ force: true });
   });
-  await wizard
-    .getByRole("button", { name: "Add Conditioned Body", exact: true })
-    .click();
-  await player.waitForFunction(() => !advanceWizard.busy);
-  await wizard
-    .getByRole("button", { name: "Add Smoke in a Bottle", exact: true })
-    .click();
-  await player.waitForFunction(() => !advanceWizard.busy);
-  await wizard
-    .getByRole("button", { name: "Add Make Something Useful", exact: true })
-    .click();
-  await player.waitForFunction(() => !advanceWizard.busy);
+  await purchase("Add Conditioned Body");
+  await purchase("Add Smoke in a Bottle");
+  await purchase("Add Make Something Useful");
+  await closeMarket();
   const craftRecipes = wizard.locator(
     '[data-acquisition="ability-make-something-useful"]',
   );
-  for (const id of ["recipe-twisted-cord", "recipe-wooden-brace"])
+  for (const id of ["recipe-twisted-cord", "recipe-wooden-brace"]) {
     await craftRecipes
       .locator(`[name="recipes-ability-make-something-useful"][value="${id}"]`)
       .check();
+    await player.waitForFunction(() => !advanceWizard.busy);
+  }
   await wizard.getByRole("button", { name: "Save draft", exact: true }).click();
   await player.waitForFunction(() => !advanceWizard.busy);
+  await openMarket();
   const study = wizard
     .locator("article.hol-choice")
     .filter({ has: player.locator("[data-id=ability-ordinary-recipe-study]") });
@@ -395,13 +412,7 @@ try {
   );
   await firstRecipe.selectOption("recipe-bound-torches");
   await secondRecipe.selectOption("recipe-fletched-ammunition");
-  await wizard
-    .getByRole("button", {
-      name: "Add Ordinary Recipe Study",
-      exact: true,
-    })
-    .click();
-  await player.waitForFunction(() => !advanceWizard.busy);
+  await purchase("Add Ordinary Recipe Study");
   await player.reload();
   await player.waitForFunction(() => game.ready);
   await player.evaluate(async (id) => {
@@ -488,9 +499,9 @@ try {
   await wizard.getByRole("button", { name: "Save draft", exact: true }).click();
   await player.waitForFunction(() => !advanceWizard.busy);
   for (const name of ["Add One More Dawn", "Add Conditioned Body"]) {
-    await wizard.getByRole("button", { name, exact: true }).click();
-    await player.waitForFunction(() => !advanceWizard.busy);
+    await purchase(name);
   }
+  await closeMarket();
   const secondDraft = await player.evaluate(() => advanceWizard.draftId);
   await wizard
     .getByRole("button", { name: "Commit reviewed advancement", exact: true })

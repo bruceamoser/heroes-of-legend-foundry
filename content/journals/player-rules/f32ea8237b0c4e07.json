@@ -1,0 +1,39 @@
+{
+  "_key": "!journal!f32ea8237b0c4e07",
+  "_id": "f32ea8237b0c4e07",
+  "name": "Life",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/disciplines/life.md",
+        "sha256": "ad824fe8ec1c6b2bad11737fffb3d0ca25c77f42a35f8386d98d9f3f0bfa7a36",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!f32ea8237b0c4e07.b1bfbc1dffe2978c",
+      "_id": "b1bfbc1dffe2978c",
+      "name": "Life",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Life</h1><p><em>You learn to feel the fragile warmth that living things carry between one breath and the next.</em></p><h2>Rules</h2><p>Healing and draining the same life energy; resistance interacts with both.</p><p>Ranks 1, 2 and 3 are purchased in order. Rank alone grants no action, attribute bonus, equipment or permission to use every card in this field. A card prints the rank required before purchase. No additional level gate applies to ranks.</p><p>Class affinity sets the cost of each rank: Home 1/2/4 DP; Adjacent 2/4/8; Foreign 3/6/12; Opposed 4/8/16. These prices are the agreed starting scheme. No discipline may be bought at level 0.</p><p>Discipline index · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

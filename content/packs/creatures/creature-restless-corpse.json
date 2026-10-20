@@ -217,10 +217,12 @@
       "portrait": {
         "creatureId": "creature-restless-corpse",
         "asset": "assets/creatures/36c1b7f992ed82d01bdc0471880619c7f4a3ae3632271cde0993c59539063665.webp",
-        "sha256": "406eca18bcaca2a83db6d1fca7c38a6d5fb710d76407ade12093fbb98de5d539",
+        "sha256": "4173e8b42c266dd8ce938f9349021089d694bbaa47229df80d174db6000767a3",
         "sourceSha256": "36c1b7f992ed82d01bdc0471880619c7f4a3ae3632271cde0993c59539063665",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

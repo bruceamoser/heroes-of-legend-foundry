@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!c50330ab58dad12d",
+  "_id": "c50330ab58dad12d",
+  "name": "Call Their Name",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/call-their-name.md",
+        "sha256": "fc9dd3d1b0f3a4735617a620093d2096d0ed94f0b45bc21ca4f17eab37f198de",
+        "id": "call-their-name",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!c50330ab58dad12d.16a0a3fa2f706526",
+      "_id": "16a0a3fa2f706526",
+      "name": "Call Their Name",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Call Their Name</h1><p><em>You call your companion by a name that belongs to better days, cutting through the panic for a heartbeat.</em></p><h2>Rules</h2><p><strong>Action:</strong> Reaction · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> One willing ally within 3 squares who hears you, before an attribute roll penalized by Frightened.</p><p>Reduce the ally’s temporary Frightened by 1, minimum 0, before applying its Banes to this roll. Starred contributions remain. This restores no HP and does not change the creature causing the fear.</p><p><strong>Duration:</strong> Instant.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 1 · <strong>DP:</strong> 2 · <strong>Requirements to learn:</strong> Influence 1</p><p><strong>Type:</strong> Skill / Recovery</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> call-their-name</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

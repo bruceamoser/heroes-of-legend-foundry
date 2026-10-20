@@ -218,10 +218,12 @@
       "portrait": {
         "creatureId": "creature-deep-elf-webweaver",
         "asset": "assets/creatures/8199e291b8e362fa953c5614a3f8cfa969d2bea423967f05a404fdd7ae53f028.webp",
-        "sha256": "5daeb6e2ab6b129613b0d847995daffc60155454110808eb7a56d5dc1fa5b3ba",
+        "sha256": "820a44fb8580b91a7c0411cea64972cfc9413daed2fc200b42e629403284c6b0",
         "sourceSha256": "8199e291b8e362fa953c5614a3f8cfa969d2bea423967f05a404fdd7ae53f028",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

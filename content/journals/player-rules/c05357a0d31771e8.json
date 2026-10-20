@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!c05357a0d31771e8",
+  "_id": "c05357a0d31771e8",
+  "name": "Break Their Grip",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/signature-unbalanced-break-their-grip.md",
+        "sha256": "8fff45635b2876d0eac8e842ada191517432abb2b8f03e562f050fdd8ab0157a",
+        "id": "signature-unbalanced-break-their-grip",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!c05357a0d31771e8.025ae9d7d636a4cf",
+      "_id": "025ae9d7d636a4cf",
+      "name": "Break Their Grip",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Break Their Grip</h1><p><em>You wrench your shoulders free and crash back against the hands that tried to hold you.</em></p><h2>Rules</h2><p><strong>Action:</strong> Maneuver · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Self while Grappled 1 or 2, and one adjacent creature contributing to that grapple.</p><p>Reduce your Grappled rating by up to 2, removing actual contributions you choose and the matching burden on those grapplers. Then push one contributing adjacent grappler up to 2 squares directly away and move 1 square without provoking if now able. You must have retained a Maneuver; at Grappled 3 you cannot use this card.</p><p><strong>Duration:</strong> Immediate release, push and possible step.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 7 · <strong>DP:</strong> 8 · <strong>Requirements to learn:</strong> Class Unbalanced; minimum level 7</p><p><strong>Type:</strong> Signature</p><p><strong>Tags:</strong> Skill / Control / Movement</p><p><strong>Limits:</strong> Repeatable; normal action economy applies.</p><p><strong>ID:</strong> signature-unbalanced-break-their-grip</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.c52e568f60caf216.JournalEntryPage.e4c268a3f92809d7]{Class choices} · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!de257a6cc46d2a1e",
+  "_id": "de257a6cc46d2a1e",
+  "name": "Giant Boar (CV 23)",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/bestiary/creatures/giant-boar.md",
+        "sha256": "a8d605a529342adad7209024343357e62630b5ff7acec067cdbccb6d5df49806",
+        "id": "creature-giant-boar",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!de257a6cc46d2a1e.0901430422c2c719",
+      "_id": "0901430422c2c719",
+      "name": "Giant Boar (CV 23)",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Giant Boar (CV 23)</h1><p><em>A boar with a ridge of iron-gray bristles has tusks polished by years of uprooting saplings and turning stones.</em></p><p><strong>Attributes:</strong> Brawn +2; Fortitude +2; Agility +0; Guile -1; Knowledge -1; Reason +0</p><p><strong>HP:</strong> 24 · <strong>Speed:</strong> 7 · <strong>Size:</strong> 2 (2x2 squares) · <strong>Armor DR:</strong> 1</p><p><strong>Evasion:</strong> None · <strong>Threat:</strong> 1 Bane · <strong>Stability:</strong> 1</p><p><strong>Weaknesses:</strong> None\\ <strong>Resistances:</strong> Physical (1)\\ <strong>Immunities:</strong> None</p><h2>Actions</h2><p>Damage and effects are <strong>Weak / Standard / Strong player defense</strong>. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.</p><table><thead><tr><th scope=\"col\">Main Actions</th><th scope=\"col\">Defense</th><th scope=\"col\">Damage</th></tr></thead><tbody><tr><td>Basic Melee</td><td>Agility</td><td>5/3/2</td></tr><tr><td>Ploughing tusks</td><td>Agility</td><td>8 + Push 3 / 5 + Push 1 / 3</td></tr></tbody></table><table><thead><tr><th scope=\"col\">Maneuvers</th><th scope=\"col\">Effect</th></tr></thead><tbody><tr><td>Shoulder Through</td><td>Push one adjacent target 1; Stability applies.</td></tr><tr><td>Defend</td><td>+1 Bane</td></tr></tbody></table><table><thead><tr><th scope=\"col\">Reactions</th><th scope=\"col\">Effect</th></tr></thead><tbody><tr><td>Break the Approach</td><td>After an enemy voluntarily closes: push 1; Stability applies.</td></tr><tr><td>Opportunity Attack</td><td>Basic Melee</td></tr></tbody></table><h2>Details</h2><h3>Ploughing tusks</h3><p><strong>Target:</strong> One adjacent creature. <strong>Player defense:</strong> Agility. <strong>Damage type:</strong> physical.</p><p><strong>Weak defense:</strong> Push 3. <strong>Standard defense:</strong> Push 1.</p><p><strong>Limit:</strong> Apply Stability, terrain costs and normal collision rules to the printed distance.</p><h3>Shoulder Through</h3><p><em>It lowers its weight and makes the space in front of it suddenly too small.</em></p><p>Push one adjacent creature 1 square. Apply Stability and normal collision rules. Once per turn; no separate damage.</p><h3>Break the Approach</h3><p><em>It lashes out with shoulder or horn, spoiling the straight line of the charging foe.</em></p><p>After a visible enemy ends voluntary movement adjacent to this creature, push that enemy 1 square directly away. Apply Stability, terrain costs and normal collision rules; no separate attack damage. Forced movement and movement granted by a free attack cannot trigger this.</p><h3>General details</h3><p><strong>Basic Melee:</strong> One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.</p><p><strong>Defend:</strong> Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.</p><p><strong>Opportunity Attack:</strong> Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.</p><p><strong>Heavy Frame — Passive:</strong> Stability 1; an explicit trait, not a bonus calculated from Size.</p><p><strong>Healing:</strong> Living: ordinary HP healing applies.</p><p><strong>Senses:</strong> Ordinary sight and hearing.</p><p><strong>Tactics and retreat:</strong> Drive straight through a defended approach, using the shoulder to clear a lightly braced foe. Turn away once the grain or escape route is secured.</p><p><strong>Encounter and conversation:</strong> It has learned that grain carts are easier to raid than fenced fields.</p><p><strong>Habitat:</strong> Wilderness; nesting ground · <strong>Communication:</strong> None</p><p><strong>Loot:</strong> Recoverable possessions or lair clues chosen for the adventure; body parts grant no automatic special equipment or coin value.</p><p><strong>Summoning:</strong> Animal 3 — @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.3de5320ea3c5cd21.JournalEntryPage.5461590e6f6036ba]{player reference}.</p><h2>Design notes — not needed during play</h2><p><strong>ID:</strong> creature-giant-boar</p><p><strong>Category:</strong> Animal · <strong>Role:</strong> Displacer · <strong>CV:</strong> 23</p><h3>CV worksheet</h3><p><strong>Reference damage:</strong> 3/5/8</p><p><strong>Reference type:</strong> physical</p><p><strong>Expected targets:</strong> 1</p><p><strong>Utility factor:</strong> 1.4</p><p><strong>Action review (#1279):</strong> U 1.3 → 1.4: Maneuver allowance +0, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.</p><p><strong>Regeneration per turn:</strong> 0</p><p>Reference I=4.000, O=4.951. Uses the seed worksheet. Utility is provisional and does not simulate control, positioning or summon choices.</p><p><strong>Ability sources:</strong> @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.8857da462f893153.JournalEntryPage.888adbeb385250bd]{barrel through}, @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.43b8e088c5da6c0c.JournalEntryPage.6eaec1a35335f8cf]{Break the Approach}, @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.8a7e9a683f51d9bf.JournalEntryPage.ae02613749cc32a2]{driving blow}.</p><p><strong>Coverage reference:</strong> Pathfinder family survey; original HOL prose and mechanics.</p><p>Roster · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.5ebfaad0d5ed6813.JournalEntryPage.3292b6a49dcf7236]{Stability}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

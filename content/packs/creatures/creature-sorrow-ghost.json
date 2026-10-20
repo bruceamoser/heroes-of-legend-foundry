@@ -222,10 +222,12 @@
       "portrait": {
         "creatureId": "creature-sorrow-ghost",
         "asset": "assets/creatures/b95c7765659ebb33149989be8125b78102b0a6a3db00ca7941c69f7a7ef5ace9.webp",
-        "sha256": "531e9fdcf6f23b61fcc8326467d58e08ad9ad8d2a004a82af06d764ef81be8c8",
+        "sha256": "c56198de99acefdf3eafa1d52b8f9f118bcc89a0a39da0564a134e6198ac45cd",
         "sourceSha256": "b95c7765659ebb33149989be8125b78102b0a6a3db00ca7941c69f7a7ef5ace9",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

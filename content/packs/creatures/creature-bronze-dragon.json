@@ -244,10 +244,12 @@
       "portrait": {
         "creatureId": "creature-bronze-dragon",
         "asset": "assets/creatures/aa00259075dc9a87a5e75428025665b93079e8d5ac6855cd04cdf295bf25c98b.webp",
-        "sha256": "8b26d479fea2fb7e4f3071fdc5ee0625ee0f5b7bc9e702d09c977a37e9f0be61",
+        "sha256": "abe9412fd81a3f615a29c0301c89793c37e6ac21cc6cca297123665f907a8ac3",
         "sourceSha256": "aa00259075dc9a87a5e75428025665b93079e8d5ac6855cd04cdf295bf25c98b",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

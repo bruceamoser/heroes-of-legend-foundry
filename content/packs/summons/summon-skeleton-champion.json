@@ -138,10 +138,12 @@
       "portrait": {
         "creatureId": "creature-skeleton-champion",
         "asset": "assets/creatures/876555ebd20b36624ea6bc0dd508c38639efede758a97a5211863f1ab490d8bd.webp",
-        "sha256": "99ced7b036d4ada8227f0093d7c7dadf22d9bdb48b9b035c14cd084043501db1",
+        "sha256": "ac3e31f28affc0e597c656cfd73a6239c680f73b69f08e94d8b1657df58cf34a",
         "sourceSha256": "876555ebd20b36624ea6bc0dd508c38639efede758a97a5211863f1ab490d8bd",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

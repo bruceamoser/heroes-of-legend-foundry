@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!5019b6b0e969af00",
+  "_id": "5019b6b0e969af00",
+  "name": "Camp Shelter",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/recipes/camp-shelter.md",
+        "sha256": "04dae7a08f2e8873854ca6e960398e81a98278a10e458e0c5ea8646dd0efc6f2",
+        "id": "recipe-camp-shelter",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!5019b6b0e969af00.28012fb87352faca",
+      "_id": "28012fb87352faca",
+      "name": "Camp Shelter",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Camp Shelter</h1><p><em>You test the woven roof with a handful of water and make room beneath it for tired friends.</em></p><h2>Rules</h2><p><strong>ID:</strong> recipe-camp-shelter</p><p><strong>Permission:</strong> @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.a173741618b7465d.JournalEntryPage.bf844a0b6625f732]{A Roof before Nightfall}. <strong>Tools:</strong> Craft tools. <strong>Time per attempt:</strong> One hour. <strong>Materials per attempt:</strong> Suitable supports and weatherproof covering, gathered locally or one compatible carried material-bundle use. <strong>Completion target:</strong> 4 progress.</p><p>Roll Knowledge using the crafting card&#39;s outcomes. Add 1/2/3 progress. Inspect materials before consuming them; reject unsuitable materials without consuming the rejected portion. Check any used carried material supply after the attempt. No group crafting.</p><p>On completion, the shelter accommodates the crafter and up to six companions against ordinary rain and wind. It provides no fortification or protection against extreme weather. If the completing result is Strong, it can be packed in ten minutes into one Bulk 1 bundle and erected again in one hour without a new crafting roll or new materials, while intact. Otherwise it must be rebuilt when dismantled. The DA states visible material and site limitations before the attempt.</p><p>The shelter lasts until dismantled or damaged. The recipe is granted by its crafting card and may also be learned through Ordinary Recipe Study if already compatible; recipe knowledge grants no tools, ingredients or crafting permission.</p><p>Recipe index</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

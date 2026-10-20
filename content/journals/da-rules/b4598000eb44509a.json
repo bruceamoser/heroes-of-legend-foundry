@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!b4598000eb44509a",
+  "_id": "b4598000eb44509a",
+  "name": "Emberling (CV 8)",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/bestiary/creatures/emberling.md",
+        "sha256": "e25aa7b00bb9ce91d3f5378dc56b7d1fbb16f71ed46010ec1be6b8eefd42f1d2",
+        "id": "creature-emberling",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!b4598000eb44509a.e52c4349cb4f7299",
+      "_id": "e52c4349cb4f7299",
+      "name": "Emberling (CV 8)",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Emberling (CV 8)</h1><p><em>A small elemental made of glowing coals and flickering flame, with bright cracks for eyes. Warmth draws it; uncontrolled curiosity makes it dangerous around dry fuel.</em></p><p><strong>Attributes:</strong> Brawn +0; Fortitude +0; Agility +2; Guile +0; Knowledge -1; Reason +0</p><p><strong>HP:</strong> 8 · <strong>Speed:</strong> 6 · <strong>Size:</strong> 1 (medium) · <strong>Armor DR:</strong> 0*</p><p><strong>Evasion:</strong> 1 Bane · <strong>Threat:</strong> None · <strong>Stability:</strong> 0</p><p><strong>Weaknesses:</strong> Cold (see details)\\ <strong>Resistances:</strong> Fire (3)\\ <strong>Immunities:</strong> Bleeding; Poisoned; Asleep</p><h2>Actions</h2><p>Damage and effects are <strong>Weak / Standard / Strong player defense</strong>. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.</p><table><thead><tr><th scope=\"col\">Main Actions</th><th scope=\"col\">Defense</th><th scope=\"col\">Damage</th></tr></thead><tbody><tr><td>Basic Melee</td><td>Agility</td><td>4/2/1</td></tr><tr><td>Coal touch</td><td>Agility</td><td>3 + Burning 2 / 2 + Burning 1 / 1</td></tr></tbody></table><table><thead><tr><th scope=\"col\">Maneuvers</th><th scope=\"col\">Effect</th></tr></thead><tbody><tr><td>Stoke the Core</td><td>Next damaging Main Action attack this turn: +1 Fire damage per target.</td></tr><tr><td>Defend</td><td>+1 Bane</td></tr></tbody></table><table><thead><tr><th scope=\"col\">Reactions</th><th scope=\"col\">Effect</th></tr></thead><tbody><tr><td>Opportunity Attack</td><td>Basic Melee</td></tr></tbody></table><h2>Details</h2><h3>Coal touch</h3><p><em>Heat crawls along the strike, or frost flowers across the skin where it passes.</em></p><p><strong>Target:</strong> One adjacent creature. <strong>Player defense:</strong> Agility. <strong>Damage type:</strong> fire.</p><p><strong>Weak defense:</strong> Burning 2. <strong>Standard defense:</strong> Burning 1.</p><h3>Stoke the Core</h3><p><em>Coals brighten inside its body and a hot breath spills between teeth or iron seams.</em></p><p>Add 1 Fire damage to its next damaging Main Action attack before the end of this turn. Apply it once per target damaged by that attack, using the normal mixed-damage resistance and minimum rules. This grants no extra attack or Burning. Repeated uses do not add more Fire damage.</p><h3>General details</h3><p><strong>Basic Melee:</strong> One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.</p><p><strong>Defend:</strong> Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.</p><p><strong>Opportunity Attack:</strong> Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.</p><p><strong>Weakness:</strong> Cold damage gives it 1 Bane on its next attack before its next turn (1 Boon to that player defense). Does not stack with itself.</p><p><strong>Healing:</strong> Elemental: magical HP healing applies; cannot swallow potions. Printed immunities only.</p><p><strong>Senses:</strong> Ordinary sight and hearing.</p><p><strong>Signs:</strong> Small footprints of soot lead out of a cold hearth.</p><p><strong>Purpose:</strong> Find something warm enough to call home.</p><p><strong>Tactics and retreat:</strong> Sting an intruder and retreat behind hot ground.</p><p><strong>Counterplay and conversation:</strong> Offer a safe brazier instead of chasing it through dry grass.</p><p><strong>Habitat:</strong> Hearth; volcanic field · <strong>Communication:</strong> None</p><p><strong>Loot:</strong> A useful clue in its hearth; no endless fuel.</p><p><strong>Summoning:</strong> Elemental 1 — @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.66ee426419c00ee8.JournalEntryPage.e1b2efb7c0e88d86]{player reference}.</p><h2>Design notes — not needed during play</h2><p><strong>ID:</strong> creature-emberling</p><p><strong>Category:</strong> Elemental · <strong>Role:</strong> Fire skirmisher · <strong>CV:</strong> 8</p><p><strong>Difficulty rationale:</strong> An agile or elusive body warrants attack Banes. Ordinary attack difficulty; riders and positioning carry the threat.</p><p><strong>Reference damage:</strong> 1/2/3</p><p><strong>Reference type:</strong> fire</p><p><strong>Expected targets:</strong> 1</p><p><strong>Utility factor:</strong> 1.35</p><p><strong>Action review (#1279):</strong> U 1.25 → 1.35: Maneuver allowance +0.1, Reaction allowance +0. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.</p><p><strong>Regeneration per turn:</strong> 0</p><p>Reference I=4.404, O=2.000. CV uses the seed worksheet; action choices, Stability and control are not simulated. Recalibration remains required.</p><p><strong>Ability sources:</strong> @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.af7995da32da1756.JournalEntryPage.cc64ee0aeb416081]{elemental burn}, @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.6178ba8b101509f0.JournalEntryPage.e384e521c3d7b183]{Stoke the Core}.</p><p>Roster · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.5ebfaad0d5ed6813.JournalEntryPage.3292b6a49dcf7236]{Agreed Stability}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

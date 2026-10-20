@@ -1,0 +1,49 @@
+/* Native presentation of the approved web roll, chat and play tools. */
+.heroes-of-legend .hol-tool-shell>.hol-banner { margin:0;padding:12px 14px; }
+.heroes-of-legend.hol-crafting .window-content,.heroes-of-legend.hol-recovery .window-content { overflow:hidden; }
+.heroes-of-legend .hol-tool-content button:not(.hol-primary),.heroes-of-legend .hol-craft-project h2 button { height:auto;min-height:28px;background:#f1e6ce;color:#243b2e;border:1px solid #b39253;box-shadow:none; }
+.heroes-of-legend .hol-tool-content button:hover { background:#e7d7b6;color:#15221c; }
+.heroes-of-legend .hol-net-choices { display:grid; grid-template-columns:repeat(7,minmax(0,1fr)); gap:3px; margin:5px 0 8px; }
+.heroes-of-legend .hol-net-choices button { min-width:0; min-height:27px; padding:2px; border:1px solid #a89771; background:#eee8d9; color:#213c2b; font-weight:600; }
+.heroes-of-legend .hol-net-choices button[aria-pressed="true"] { color:#fff8e9; background:#395d42; border-color:#b38b40; outline:2px solid #b38b40; outline-offset:-2px; }
+.heroes-of-legend .hol-net-choices[data-polarity="bane"] button[aria-pressed="true"] { background:#803f3b; }
+.heroes-of-legend.hol-roll-dialog .hol-banner { padding:10px 14px; }
+.heroes-of-legend.hol-roll-dialog .hol-body { padding:10px 14px; gap:7px; }
+.heroes-of-legend.hol-roll-dialog .hol-roll-footer { border-top:2px solid #af8c45; background:#e9e2d0; padding:10px 14px; }
+.heroes-of-legend.hol-roll-dialog .hol-roll-footer output { font-size:1.05rem; font-weight:bold; color:#213c2b; }
+.heroes-of-legend.hol-roll-dialog .hol-reference-picker ul { max-height:170px; overflow:auto; }
+.hol-roll-summary { background:#f3eddf; border:1px solid #b29a63; border-radius:4px; overflow:hidden; padding:0 10px 8px; color:#25392b; }
+.hol-roll-summary .hol-chat-header { margin:0 -10px 8px; padding:7px 10px; background:#233f2c; color:#f7efdc; font-weight:bold; border-bottom:2px solid #b38b40; }
+.hol-roll-summary .hol-chat-verdict { display:block; font:700 1.25rem Georgia,serif; border-bottom:1px solid #b9a573; padding-bottom:5px; }
+.hol-roll-summary[data-tier="weak"] .hol-chat-verdict { color:#803f3b; }
+.hol-roll-summary .hol-chat-dice { display:flex; flex-wrap:wrap; gap:5px; padding:9px 0; }
+.hol-roll-summary .hol-chat-die { display:inline-grid; place-items:center; height:32px; width:30px; font-weight:bold; font-size:1.1rem; border:1px solid #9d8040; border-radius:4px; background:#fffaf0; }
+.hol-roll-summary .hol-chat-die.discarded { border-style:dashed; opacity:.55; text-decoration:line-through; }
+.hol-roll-summary .hol-chat-natural { background:#e5d7b2; border-left:3px solid #a48135; padding:5px 7px; }
+.hol-roll-summary p { margin:6px 0; }
+.hol-roll-summary details { border-top:1px solid #c2b18a; margin-top:6px; padding-top:4px; }
+.hol-attack-card { background:#f3eddf; border:1px solid #b29a63; border-radius:4px; padding:0 10px 8px; color:#25392b; }
+.hol-attack-card h3 { background:#233f2c; color:#f7efdc; border-bottom:2px solid #b38b40; margin:0 -10px 8px; padding:8px 10px; }
+.hol-attack-card table { table-layout:fixed; width:100%; font-size:.8rem; }
+.hol-attack-card th,.hol-attack-card td { padding:4px; vertical-align:top; overflow-wrap:anywhere; }
+.heroes-of-legend .hol-tool-shell { display:flex; flex-direction:column; min-height:0; height:100%; }
+.heroes-of-legend .hol-tool-content { flex:1; min-height:0; overflow:auto; padding:10px 14px; }
+.heroes-of-legend .hol-craft-project { border:1px solid #bcaa7d; border-radius:4px; padding:8px; margin:8px 0; background:#f2ecdc; }
+.heroes-of-legend .hol-craft-project h2 { margin:0 0 5px; }
+.heroes-of-legend .hol-craft-project p { margin:5px 0; }
+.hol-encounter { background:#eee7d6; border:1px solid #9d8040; border-radius:4px; color:#25392b; margin:5px; padding:8px; }
+.hol-encounter p { margin:4px 0; }
+.hol-encounter button { border:1px solid #9d8040; color:#f8f0dd; background:#294833; margin:3px 0; }
+.hol-encounter h3 { font:700 1rem Georgia,serif; color:#294833; margin:5px 0; border-bottom:1px solid #b29a63; }
+.hol-encounter .hol-combat-budget { display:grid; grid-template-columns:repeat(4,1fr); gap:3px; margin:6px 0; }
+.hol-encounter .hol-budget-stat { text-align:center; background:#fff8e9; border:1px solid #c5b58e; padding:3px; font-size:.75rem; }
+.hol-encounter .hol-budget-stat strong { display:block; font-size:1rem; }
+.hol-encounter .hol-combat-roster { list-style:none; margin:0; padding:0; }
+.hol-encounter .hol-combat-roster li { display:flex; align-items:center; gap:5px; border-bottom:1px solid #c5b58e; padding:3px 0; }
+.hol-encounter .hol-combat-roster button { flex:1; text-align:left; padding:3px 5px; }
+.hol-encounter .hol-combat-roster img { width:27px; height:27px; object-fit:contain; border:0; }
+@media(max-width:460px) { .heroes-of-legend .hol-tool-content { padding:7px; } .hol-roll-summary { font-size:.85rem; } }
+.combatant.hol-side-start::before { content:attr(data-hol-side); display:block; flex-basis:100%; width:100%; font-weight:bold; background:#233f2c; color:#f7efdc; padding:2px 6px; border-top:1px solid #b38b40; }
+.combatant.hol-side-start { flex-wrap:wrap; }
+.heroes-of-legend .hol-recovery-stats { display:flex; flex-wrap:wrap; gap:6px; margin:5px 0 10px; }
+.heroes-of-legend .hol-recovery-stats strong { flex:1; min-width:90px; padding:8px; text-align:center; border:1px solid #bcaa7d; background:#f7f0df; }

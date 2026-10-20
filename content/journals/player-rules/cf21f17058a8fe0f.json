@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!cf21f17058a8fe0f",
+  "_id": "cf21f17058a8fe0f",
+  "name": "Haul Them Home",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/haul-them-home.md",
+        "sha256": "eba92ac13b2314a6519b7ee17251854a84503c6fac030d8cf66d0843b6d3943c",
+        "id": "haul-them-home",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!cf21f17058a8fe0f.18036ed560e3ace9",
+      "_id": "18036ed560e3ace9",
+      "name": "Haul Them Home",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Haul Them Home</h1><p><em>You wrap the rope across your back and lean into the pull, bringing your companion over the lip a handspan at a time.</em></p><h2>Rules</h2><p><strong>Action:</strong> Maneuver · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> One willing creature within 3 squares, secured to a rope you hold.</p><p>Move the creature up to 2 squares toward you along a clear route the rope can support, including upward. It need not spend movement or a Reaction, and this movement does not provoke. It cannot pass through a barrier or an occupied standing creature; finish in a free square supported by ground or the secured rope. You must have secure footing, a free hand, and be able to support its weight as judged by the DA. This cannot extract a Grappled creature or deal collision damage. Ordinary rope use remains available without this card.</p><p><strong>Stability exception:</strong> this willing rescue movement ignores Stability. It does not allow moving an unwilling target or bypassing a grapple.</p><p><strong>Duration:</strong> Instant.</p><p><strong>Equipment / acquisition:</strong> Requires a rope, supplied separately. Attaching it to the recipient is not part of this Maneuver.</p><p>---</p><p><strong>Tier / minimum level:</strong> 3 · <strong>DP:</strong> 4 · <strong>Requirements to learn:</strong> Athletics 2 and Guard 1</p><p><strong>Type:</strong> Skill / Movement / Utility</p><p><strong>Limits:</strong> Repeatable while the rope, route and support requirements hold. Each use costs a Maneuver.</p><p><strong>ID:</strong> haul-them-home</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

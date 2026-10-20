@@ -3,6 +3,7 @@
   "_id": "5b51c22837be1352",
   "name": "Clearing Tonic Supply",
   "type": "equipment",
+  "img": "systems/heroes-of-legend/assets/icons/potion.svg",
   "system": {
     "schemaVersion": 1,
     "catalogId": "item-clearing-tonic",

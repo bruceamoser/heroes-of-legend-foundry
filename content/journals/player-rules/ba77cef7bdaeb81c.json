@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!ba77cef7bdaeb81c",
+  "_id": "ba77cef7bdaeb81c",
+  "name": "Drive Back the Circle",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/signature-protector-drive-back-the-circle.md",
+        "sha256": "484e12c571b237295ebb4e9877a3e3ccabbc4956c783f3f301be75e7f220e7e5",
+        "id": "signature-protector-drive-back-the-circle",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!ba77cef7bdaeb81c.2738a6a087c9fec4",
+      "_id": "2738a6a087c9fec4",
+      "name": "Drive Back the Circle",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Drive Back the Circle</h1><p><em>You brace and surge outward, forcing the surrounding enemies back while your companions scramble into the room you have made.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Every enemy adjacent when you begin; up to two willing allies initially within 2 squares.</p><p>Push each enemy 2 squares directly away from you, in an order you choose. Then each chosen ally may move up to 2 squares without provoking. The allies need legal routes and free endpoints. No direct damage; collisions resolve normally.</p><p><strong>Duration:</strong> Immediate displacement and ally movement.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 7 · <strong>DP:</strong> 8 · <strong>Requirements to learn:</strong> Class Protector; minimum level 7</p><p><strong>Type:</strong> Signature</p><p><strong>Tags:</strong> Skill / Control / Movement</p><p><strong>Limits:</strong> Repeatable; normal action economy applies.</p><p><strong>ID:</strong> signature-protector-drive-back-the-circle</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.fec08732fb31ffd9.JournalEntryPage.bdb294c8658c26c8]{Class choices} · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

@@ -223,10 +223,12 @@
       "portrait": {
         "creatureId": "creature-cavern-lurker",
         "asset": "assets/creatures/5747fdb00ca6fc77e6cbf66699a09ec773320632f5af6f9a7586ea01b0661e68.webp",
-        "sha256": "59680d01a9f9ca55cc5df422e095eabdab68e40ea7e76c781f6ef3e4a1672c96",
+        "sha256": "9b9eef6e2e046187a99fe0418cf30cda7bb779fddcad1b9286f2553680ea012a",
         "sourceSha256": "5747fdb00ca6fc77e6cbf66699a09ec773320632f5af6f9a7586ea01b0661e68",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

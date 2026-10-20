@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!64e182c67add9b3f",
+  "_id": "64e182c67add9b3f",
+  "name": "Ice across the Break",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/ice-across-the-break.md",
+        "sha256": "88b489d73a8c01d7f4b4046a3f8f52a6e7a413fc075e967e7ff79c61c59e0b78",
+        "id": "ice-across-the-break",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!64e182c67add9b3f.790f69df38970bdd",
+      "_id": "790f69df38970bdd",
+      "name": "Ice across the Break",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Ice across the Break</h1><p><em>You sweep your hand across the broken path. Ice grows from both edges and meets with a sharp crack, leaving a narrow bridge shining between them.</em></p><h2>Rules</h2><p><strong>Action:</strong> Maneuver · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> A straight line of up to 3 empty squares, all visible within 4 squares.</p><p>Form a one-square-wide bridge across a gap or water. Both ends must join solid supports at the same height; the bridge fills the selected squares and supports creatures crossing one at a time. Those squares cost 1 movement and are not slippery. Everyone can use the bridge. It causes no damage, traps no creature and cannot replace an existing surface or pass through a barrier. Only one bridge from this card per caster can exist; casting again ends the previous bridge.</p><p><strong>Duration:</strong> Ten minutes; announce its impending end to anyone on it.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 3 · <strong>DP:</strong> 4 · <strong>Requirements to learn:</strong> Frost 2 and Wilderness 1</p><p><strong>Type:</strong> Magic / Utility</p><p><strong>Limits:</strong> One active bridge per caster. Creatures cannot be enclosed or lifted by its creation.</p><p><strong>ID:</strong> ice-across-the-break</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

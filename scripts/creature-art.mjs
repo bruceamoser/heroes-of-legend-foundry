@@ -9,7 +9,20 @@ const RUNTIME_PREFIX = "assets/creatures";
 const REPOSITORY_PREFIX = "static/assets/creatures";
 const COMMIT = /^[a-f0-9]{40}$/;
 const HASH = /^[a-f0-9]{64}$/;
+export const CREATURE_ART_MAX_EDGE = 768;
 const MASTER_OR_REFERENCE = /\.(?:png|jpe?g|tiff?|psd|xcf|avif)$/i;
+
+/** Match the generator's integer nearest-pixel fit, never enlarge small sources. */
+export function creatureArtDimensions(width, height) {
+  if (![width, height].every(value => Number.isSafeInteger(value) && value > 0))
+    throw new Error("Creature source dimensions must be positive whole numbers.");
+  const longest = Math.max(width, height);
+  if (longest <= CREATURE_ART_MAX_EDGE) return { width, height };
+  return {
+    width: Math.max(1, Math.floor((width * CREATURE_ART_MAX_EDGE + Math.floor(longest / 2)) / longest)),
+    height: Math.max(1, Math.floor((height * CREATURE_ART_MAX_EDGE + Math.floor(longest / 2)) / longest)),
+  };
+}
 
 function sha256(bytes) {
   return createHash("sha256").update(bytes).digest("hex");
@@ -196,7 +209,10 @@ export async function validateCreatureArt(root) {
     lossless: false,
     exact: true,
     alphaQuality: 100,
-    nativeDimensions: true,
+    nativeDimensions: false,
+    maxEdge: CREATURE_ART_MAX_EDGE,
+    resample: "lanczos",
+    allowUpscale: false,
   };
   for (const [key, value] of Object.entries(expectedEncoding))
     if (manifest.encoding?.[key] !== value)
@@ -296,11 +312,11 @@ export async function validateCreatureArt(root) {
       throw new Error(`Unreferenced creature-art asset: ${asset.runtimePath}`);
     for (const portrait of mapped)
       if (
-        portrait.width !== decoded.width ||
-        portrait.height !== decoded.height ||
+        creatureArtDimensions(portrait.width, portrait.height).width !== decoded.width ||
+        creatureArtDimensions(portrait.width, portrait.height).height !== decoded.height ||
         portrait.alpha !== decoded.alpha
       )
-        throw new Error(`Source/output dimensions differ: ${portrait.id}`);
+        throw new Error(`Source/output resize policy differs: ${portrait.id}`);
     sourceBytes += asset.sourceBytes;
     totalBytes += bytes.length;
   }

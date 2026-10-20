@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!484134c0d560dbd6",
+  "_id": "484134c0d560dbd6",
+  "name": "Fall to Pieces",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/fall-to-pieces.md",
+        "sha256": "a4d3259cabca53573dbf124b67c8ed7a94450eed915176a22c8995187e48711b",
+        "id": "monster-fall-to-pieces",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!484134c0d560dbd6.fa16a07de0e1ca30",
+      "_id": "fa16a07de0e1ca30",
+      "name": "Fall to Pieces",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Fall to Pieces</h1><p><em>The skeleton lets its joints collapse, spilling loose bones beneath the passing blow.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-fall-to-pieces</p><p><strong>Action:</strong> Reaction</p><p>Before a physical attack against this creature is rolled, gain Physical resistance 3 against that attack only. Use the highest matching resistance. After the attack resolves, it becomes Prone if still present, even if it was already Prone. This does not move its occupied footprint or reassemble it; standing costs the normal 2 movement.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

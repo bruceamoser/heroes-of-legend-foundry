@@ -244,10 +244,12 @@
       "portrait": {
         "creatureId": "creature-gold-dragon",
         "asset": "assets/creatures/7322c023ded24d6fa1a7af3e574e43cb21a4235a03f3bed35fd1c18bdb995bf6.webp",
-        "sha256": "ca14aacaac2787301e05b66238918c9a0142c4d4a888cef25a86a5c5fcd2734d",
+        "sha256": "0014a3d339e0f39458fa5705ffdd5dda5c20214fe4de0a843363603e4259f69f",
         "sourceSha256": "7322c023ded24d6fa1a7af3e574e43cb21a4235a03f3bed35fd1c18bdb995bf6",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

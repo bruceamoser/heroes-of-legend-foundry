@@ -121,10 +121,12 @@
       "portrait": {
         "creatureId": "creature-giant-octopus",
         "asset": "assets/creatures/5b0d8572dee71f65a6f7e38c0293238d048419fac84760a684d9771564545d65.webp",
-        "sha256": "239edc2cb425d67693212fbb6f165ac176773306542da6949a48cafbe7c515b3",
+        "sha256": "48e1d92bb4dadb4c67b7d02e1df62d27bfacaa3acf589cc91bb5ebc05553fe53",
         "sourceSha256": "5b0d8572dee71f65a6f7e38c0293238d048419fac84760a684d9771564545d65",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

@@ -1,2119 +1,2120 @@
 {
   "assets": [
     {
-      "bytes": 460384,
+      "bytes": 199358,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/03589b953adf87663f23ebd9be397814d7b75066fa3211df691a39b9f90878fa.webp",
       "runtimePath": "assets/creatures/03589b953adf87663f23ebd9be397814d7b75066fa3211df691a39b9f90878fa.webp",
-      "sha256": "170ec5fab72c8c5006a97e227353bb92eb7158e377e1b0ae7b9847a7a37697b9",
+      "sha256": "f159966feb4d6c9ec56c57e124e39c31120b617e5d7c7dbd79136b72a1c8f664",
       "sourceBytes": 2479251,
       "sourceSha256": "03589b953adf87663f23ebd9be397814d7b75066fa3211df691a39b9f90878fa",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 634784,
+      "bytes": 278174,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/04b2274aa51ecb4ad28ef1165f25a4221106622453847e6323c1e174a6a4d8c3.webp",
       "runtimePath": "assets/creatures/04b2274aa51ecb4ad28ef1165f25a4221106622453847e6323c1e174a6a4d8c3.webp",
-      "sha256": "e1b20b817854a9a226b5d1955dc0af1f2cc6e4b1a6cd8a1c9af00288154f0f32",
+      "sha256": "ab677a0e16a4cf2b004469dbef537e7b8fe0ee6a61dc715d933c31dd02e52d29",
       "sourceBytes": 3226885,
       "sourceSha256": "04b2274aa51ecb4ad28ef1165f25a4221106622453847e6323c1e174a6a4d8c3",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 582766,
+      "bytes": 267830,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/05ff0674cd063e36647f8b8ff2a48aeef140c83212285e812c18064e31a9f029.webp",
       "runtimePath": "assets/creatures/05ff0674cd063e36647f8b8ff2a48aeef140c83212285e812c18064e31a9f029.webp",
-      "sha256": "0a3f128a0efd2ed3db8158c8280bf0da788a1fd102c264063428b2fe9972567f",
+      "sha256": "eb82d4affcf5f73627585f3f43e905ef2596fce5474b593e24cc42510ed9aa04",
       "sourceBytes": 2804506,
       "sourceSha256": "05ff0674cd063e36647f8b8ff2a48aeef140c83212285e812c18064e31a9f029",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 519118,
+      "bytes": 235572,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/0804b648298ee229565f752955e32751e2561e03808d42f6b0195f475aff8f74.webp",
       "runtimePath": "assets/creatures/0804b648298ee229565f752955e32751e2561e03808d42f6b0195f475aff8f74.webp",
-      "sha256": "22909cca84ca872db1fc66cc4750ae549b24e9a98e1fe3417c7179da9314c6ac",
+      "sha256": "772c8cfa2eab1b745148e638904c94dddbd49e4221afbd76ccc940b7d362046e",
       "sourceBytes": 2713459,
       "sourceSha256": "0804b648298ee229565f752955e32751e2561e03808d42f6b0195f475aff8f74",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 354832,
+      "bytes": 160634,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/0890183aa65768cca22994df4b987df1a914d837c1d7ec61c76ff27eb6c8a982.webp",
       "runtimePath": "assets/creatures/0890183aa65768cca22994df4b987df1a914d837c1d7ec61c76ff27eb6c8a982.webp",
-      "sha256": "b8725cea169b1bd93ad42087c34fd2a7d4d908d123717cf54d6960cc86b67de5",
+      "sha256": "a310df114036bc732ae3e32321e97561a01a0119df1142ab3e039a21696e933b",
       "sourceBytes": 2053468,
       "sourceSha256": "0890183aa65768cca22994df4b987df1a914d837c1d7ec61c76ff27eb6c8a982",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 540164,
+      "bytes": 237364,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/0b69bd79810eee7d8f8b5b15486e2f601e1edcd5aa80a089593a192b0d4c9b98.webp",
       "runtimePath": "assets/creatures/0b69bd79810eee7d8f8b5b15486e2f601e1edcd5aa80a089593a192b0d4c9b98.webp",
-      "sha256": "f75bb771a000dfb2046a2e2363d879b008ae774c73e02f02a299d69f29e62644",
+      "sha256": "b13b946774f1e186c2a573e6853d727f5164182fb025b3dc33d606d697bc3420",
       "sourceBytes": 2129918,
       "sourceSha256": "0b69bd79810eee7d8f8b5b15486e2f601e1edcd5aa80a089593a192b0d4c9b98",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 578124,
+      "bytes": 258024,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/0c77f6b89dafac5f824c2e976bb2944d8f0173952b98d9fc929b4cd5646b2023.webp",
       "runtimePath": "assets/creatures/0c77f6b89dafac5f824c2e976bb2944d8f0173952b98d9fc929b4cd5646b2023.webp",
-      "sha256": "6d6c8cfe6a1e587659d078de7e92119dac5ecd913dc741fc98fa12b528e00660",
+      "sha256": "c8f97c8fa5e7ae1fe7d325d485be2600c84b7f43732a8c82ddcc9916b3298bcb",
       "sourceBytes": 2670158,
       "sourceSha256": "0c77f6b89dafac5f824c2e976bb2944d8f0173952b98d9fc929b4cd5646b2023",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 320346,
+      "bytes": 148088,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/0c8937fcdfe9bfd784151d2531ea1cf9b02715fc60e74d4f9ad63548d03fd395.webp",
       "runtimePath": "assets/creatures/0c8937fcdfe9bfd784151d2531ea1cf9b02715fc60e74d4f9ad63548d03fd395.webp",
-      "sha256": "101be67b603cf09044b4ab68b365d9ad0dc6c50379117f2ee516113def444bfb",
+      "sha256": "49a16a40ce4dae016ddc820061725ebd9403d0cb23d8698101273d60ac9a268b",
       "sourceBytes": 1818072,
       "sourceSha256": "0c8937fcdfe9bfd784151d2531ea1cf9b02715fc60e74d4f9ad63548d03fd395",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 481034,
+      "bytes": 213702,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/0d26c658c862b53aa058ccbde1f1913175d59177f78701ab4c71d9288cb416c9.webp",
       "runtimePath": "assets/creatures/0d26c658c862b53aa058ccbde1f1913175d59177f78701ab4c71d9288cb416c9.webp",
-      "sha256": "a6d7994e5751536d19ccc51fb6ae141ef9edbe15db87d95eef8cbfefa84a8c55",
+      "sha256": "05c5f64ec51487d9c2bc9cd0ad9e1d3a0dd35b90a1d26264436c69fae89e21bb",
       "sourceBytes": 2455888,
       "sourceSha256": "0d26c658c862b53aa058ccbde1f1913175d59177f78701ab4c71d9288cb416c9",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 483840,
+      "bytes": 217918,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/0f0edf229c204a91fa5b4c7569458615c1d2f05a28fa9555abde2206b4b74ac8.webp",
       "runtimePath": "assets/creatures/0f0edf229c204a91fa5b4c7569458615c1d2f05a28fa9555abde2206b4b74ac8.webp",
-      "sha256": "f509dd005e4efc0b8f1c45697b813a1ca5d4984d40db8af64c22172babd8cf7f",
+      "sha256": "0d1777f89f35b5ed4042c905955760e883b1579eabfb4ebefe3c30fff07c4717",
       "sourceBytes": 2401445,
       "sourceSha256": "0f0edf229c204a91fa5b4c7569458615c1d2f05a28fa9555abde2206b4b74ac8",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 503298,
+      "bytes": 227470,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/11a33554225719aaacbcc757f25ada927bc8e494aa5125eaaeeafe5da585c9b1.webp",
       "runtimePath": "assets/creatures/11a33554225719aaacbcc757f25ada927bc8e494aa5125eaaeeafe5da585c9b1.webp",
-      "sha256": "7b1071f56da627c67a689fdfa41df57c4587993c0934673a252d09b3dc239d22",
+      "sha256": "b9da925c91c97faa9f0d820121d3e98853dd61688804546fe2ab47fe74a6959c",
       "sourceBytes": 2351653,
       "sourceSha256": "11a33554225719aaacbcc757f25ada927bc8e494aa5125eaaeeafe5da585c9b1",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 422858,
+      "bytes": 184680,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/1278229fbdd753ebf26129d5c4733201274cbec36b31afc60561455362896290.webp",
       "runtimePath": "assets/creatures/1278229fbdd753ebf26129d5c4733201274cbec36b31afc60561455362896290.webp",
-      "sha256": "07072a90bf84dd54eb2c12c95280fec4c1176d92cb8028779d2067bbf7a2cef5",
+      "sha256": "a09cbd0d65969e8ec710c2d5ac408a9dc8dea9ee52986c5fc34088cc9cb32491",
       "sourceBytes": 2364466,
       "sourceSha256": "1278229fbdd753ebf26129d5c4733201274cbec36b31afc60561455362896290",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 602044,
+      "bytes": 274854,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/14f545e0c4982f8fde6bc41975b00b44a124546962af75ad6fc4bb65224965b5.webp",
       "runtimePath": "assets/creatures/14f545e0c4982f8fde6bc41975b00b44a124546962af75ad6fc4bb65224965b5.webp",
-      "sha256": "bac9ba7945828a2c22d6c20bac735d625e0c08d08b484f668c43220f3bc9d0d0",
+      "sha256": "ca499e3499aa31574f1c672b5e67044adf3090167585946f66c2deb0fb1ec439",
       "sourceBytes": 2931661,
       "sourceSha256": "14f545e0c4982f8fde6bc41975b00b44a124546962af75ad6fc4bb65224965b5",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 550146,
+      "bytes": 242044,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/161908d012340107dcd59943625c7106ccbd4211e801ecb94edd7b2f5700e086.webp",
       "runtimePath": "assets/creatures/161908d012340107dcd59943625c7106ccbd4211e801ecb94edd7b2f5700e086.webp",
-      "sha256": "899f2e0f423624db55139b5b5892fec3fae7dd71ba86043e367fe62d13e68857",
+      "sha256": "a2a334011d524135b59051cf30ec5397021f2b38bf967df6677075289fffa690",
       "sourceBytes": 2848468,
       "sourceSha256": "161908d012340107dcd59943625c7106ccbd4211e801ecb94edd7b2f5700e086",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 191112,
+      "bytes": 86660,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/163b729922fcefda3b2b1a6b53572fb6ea607080ea0b91117f6cfec4b63794f2.webp",
       "runtimePath": "assets/creatures/163b729922fcefda3b2b1a6b53572fb6ea607080ea0b91117f6cfec4b63794f2.webp",
-      "sha256": "e5f8655729ab3df5063a8e749162eb27f69590ffa7e4cbf50ca6b3f9c7415531",
+      "sha256": "8190f7c02a0a7901554f44cf107773a3fa42099b05580100d2c3297131646629",
       "sourceBytes": 1308282,
       "sourceSha256": "163b729922fcefda3b2b1a6b53572fb6ea607080ea0b91117f6cfec4b63794f2",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 526212,
+      "bytes": 238014,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/17507fc17113fef437381e960a714cc070fd65db145b8467f63dbd6c9a859611.webp",
       "runtimePath": "assets/creatures/17507fc17113fef437381e960a714cc070fd65db145b8467f63dbd6c9a859611.webp",
-      "sha256": "dbd11e7dea2c2a03da60f37fece264007766a72438726b950833a994a01464af",
+      "sha256": "54c1739820c3fea0c9eaac00475e725bd89a0d8a875695c25e418f4443b7bed5",
       "sourceBytes": 2664338,
       "sourceSha256": "17507fc17113fef437381e960a714cc070fd65db145b8467f63dbd6c9a859611",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 498874,
+      "bytes": 228470,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/175e8445f46d8dd767b7f735001bfd10f390396bc8e62cc9de6d932e32614de9.webp",
       "runtimePath": "assets/creatures/175e8445f46d8dd767b7f735001bfd10f390396bc8e62cc9de6d932e32614de9.webp",
-      "sha256": "4f1440d8e0e8141aa8d8e1955c7c4c36ca7e9b1db9f024b28a630db1548d5f83",
+      "sha256": "7b77880043e324fc8bc8d134f1b1ae01fa85e35b66ad911368dfac89e56bb7f8",
       "sourceBytes": 2624248,
       "sourceSha256": "175e8445f46d8dd767b7f735001bfd10f390396bc8e62cc9de6d932e32614de9",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 446280,
+      "bytes": 191408,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/18cca5bfc73db1c504680c80e2e3828104c77c1faef72850eb2a0add13cd7e3a.webp",
       "runtimePath": "assets/creatures/18cca5bfc73db1c504680c80e2e3828104c77c1faef72850eb2a0add13cd7e3a.webp",
-      "sha256": "48ae914a9806fc699a104e547e68f72b94656e46fb73b0e5d91db6a102093851",
+      "sha256": "98207ba8577a772a0494ced937f80ee619f502fa4e261b4d632aa00d6ed759db",
       "sourceBytes": 2390276,
       "sourceSha256": "18cca5bfc73db1c504680c80e2e3828104c77c1faef72850eb2a0add13cd7e3a",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 538522,
+      "bytes": 240550,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/19de84db73dfead1c158ecb52d72929fd24977f8791a20f7009d65bf9d186d29.webp",
       "runtimePath": "assets/creatures/19de84db73dfead1c158ecb52d72929fd24977f8791a20f7009d65bf9d186d29.webp",
-      "sha256": "8f3f1e80780f067d96d29edbcb89b7566c44b19650e2b66901ccfb4344ebd984",
+      "sha256": "d10a15087cc0de5f40d9ea14bd96167daa378a3983dbf5714bc58f7a5a5790df",
       "sourceBytes": 2765441,
       "sourceSha256": "19de84db73dfead1c158ecb52d72929fd24977f8791a20f7009d65bf9d186d29",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 372214,
+      "bytes": 165426,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/1cfee132d00a29e6b4a8e310e9729a8f738a3d58a47b737a17baa0b69eb47e3d.webp",
       "runtimePath": "assets/creatures/1cfee132d00a29e6b4a8e310e9729a8f738a3d58a47b737a17baa0b69eb47e3d.webp",
-      "sha256": "61ff815d457326db32382bb190283d7ebfed391512c97429d8b0701d486d5031",
+      "sha256": "6cb381144a15c9f7e1bd9978d4ca3455c63682d28e0af6e4799142cde4a55d57",
       "sourceBytes": 1892412,
       "sourceSha256": "1cfee132d00a29e6b4a8e310e9729a8f738a3d58a47b737a17baa0b69eb47e3d",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 516286,
+      "bytes": 238158,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/1f299b8114e834c4c3f4bd7879c6480a638da06f2fd66c072a4b50a22b00d9fe.webp",
       "runtimePath": "assets/creatures/1f299b8114e834c4c3f4bd7879c6480a638da06f2fd66c072a4b50a22b00d9fe.webp",
-      "sha256": "6bb87c49adba830574ef9b6618d474e59234ac7f2ef7c8c01319f4cce47867da",
+      "sha256": "c3ac0f670c028519454430399c564aa115c365e7f1a070bbf8d9d2174d7f94b5",
       "sourceBytes": 2746190,
       "sourceSha256": "1f299b8114e834c4c3f4bd7879c6480a638da06f2fd66c072a4b50a22b00d9fe",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 422726,
+      "bytes": 188372,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/1fc8c755acac0aa4702db9c283c8795897e0d03e2a8593b80feab94793ea84be.webp",
       "runtimePath": "assets/creatures/1fc8c755acac0aa4702db9c283c8795897e0d03e2a8593b80feab94793ea84be.webp",
-      "sha256": "12fdeda9653c87b1939a574cca4cb2b4430613a5bb23fc09bde591f76e0b4071",
+      "sha256": "8d8d659a3815a2de5cf6915bce31b781e0059231a52a3f9478ac1eb1bf553b61",
       "sourceBytes": 2278252,
       "sourceSha256": "1fc8c755acac0aa4702db9c283c8795897e0d03e2a8593b80feab94793ea84be",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 412498,
+      "bytes": 182910,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/228cdde5c2b18b7e443f1722755acd0702d78f1d3a169f0446332088ec5de572.webp",
       "runtimePath": "assets/creatures/228cdde5c2b18b7e443f1722755acd0702d78f1d3a169f0446332088ec5de572.webp",
-      "sha256": "6ec955fbda3a5548a9a947f02266edfea8d8daf5447a46a88d19dbeda0a99145",
+      "sha256": "67e962e70e5a985688fc6c624cf4368b0297a08c3485fe7afc8a3d07b1b19fdf",
       "sourceBytes": 2194473,
       "sourceSha256": "228cdde5c2b18b7e443f1722755acd0702d78f1d3a169f0446332088ec5de572",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 396026,
+      "bytes": 182148,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/24105645bafd0a7624b9145cc35baea8f7754e1956300a9e279b2da48a6594d4.webp",
       "runtimePath": "assets/creatures/24105645bafd0a7624b9145cc35baea8f7754e1956300a9e279b2da48a6594d4.webp",
-      "sha256": "374d9f34516a1cb4102deeafe1f8ea2814f813f923220b7c02ee3f3a4b78632c",
+      "sha256": "c112eea8bd7fb31bfd3017d00fba63af5fe9483b6945a12c5e8ba4bd94bf038f",
       "sourceBytes": 1947751,
       "sourceSha256": "24105645bafd0a7624b9145cc35baea8f7754e1956300a9e279b2da48a6594d4",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 416968,
+      "bytes": 186664,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/244d74f5996f7a1f86ca5e1c4089990355230a1bb6686747390312eee5b4d026.webp",
       "runtimePath": "assets/creatures/244d74f5996f7a1f86ca5e1c4089990355230a1bb6686747390312eee5b4d026.webp",
-      "sha256": "fb9f9a019c823ab0a5ed64012bb28b00bb6f1d41b04ebd3955fcde728873594c",
+      "sha256": "e17fe60874108894064186d458b9c80ccee494aaf79f99ec390a82837ae6f219",
       "sourceBytes": 2332699,
       "sourceSha256": "244d74f5996f7a1f86ca5e1c4089990355230a1bb6686747390312eee5b4d026",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 421878,
+      "bytes": 185530,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/25ebefc770cfb421747236971317913dcc6e9412010310d6ded36ecf6124bfc9.webp",
       "runtimePath": "assets/creatures/25ebefc770cfb421747236971317913dcc6e9412010310d6ded36ecf6124bfc9.webp",
-      "sha256": "746b7e32e785f9f68c342200ad49a8a782e9207d4a4a54f2913e7a770b1d0284",
+      "sha256": "c9a2d31778212db379996e825324ae2fd001efb23f279d83b052decc6c0e1a1f",
       "sourceBytes": 2348522,
       "sourceSha256": "25ebefc770cfb421747236971317913dcc6e9412010310d6ded36ecf6124bfc9",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 598334,
+      "bytes": 265672,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/271d9c66c6d39a3cddd5ac04bacae2e671650117103144ede6d34cbf80568411.webp",
       "runtimePath": "assets/creatures/271d9c66c6d39a3cddd5ac04bacae2e671650117103144ede6d34cbf80568411.webp",
-      "sha256": "2c0fe865da6975cd1e1dae5d9304c2e0db00f883128c4710b4280dbcc13fce78",
+      "sha256": "fb11469989dffe98ceb525ff9de67a19595ccaedf7eec4b61c22ecd7d3626aae",
       "sourceBytes": 3083277,
       "sourceSha256": "271d9c66c6d39a3cddd5ac04bacae2e671650117103144ede6d34cbf80568411",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 479182,
+      "bytes": 209734,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/283a69f30e2789d77837592c8194ef482f2aa51757ae3f7f8fe8c570735fd0a6.webp",
       "runtimePath": "assets/creatures/283a69f30e2789d77837592c8194ef482f2aa51757ae3f7f8fe8c570735fd0a6.webp",
-      "sha256": "d676fd5a0a55f9e2c7c90b3e57e47e10407b18567aabf6061a665e0ff054d0f6",
+      "sha256": "60711c6370825a597007822bf45f04a9cdd4b6ecf5954263712baf8b97ccfa23",
       "sourceBytes": 2021746,
       "sourceSha256": "283a69f30e2789d77837592c8194ef482f2aa51757ae3f7f8fe8c570735fd0a6",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 540296,
+      "bytes": 239132,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/2ab5effb71b32ddfc29b9552defbe089aacd6cabd9e062d32f36d3fdc038a8c8.webp",
       "runtimePath": "assets/creatures/2ab5effb71b32ddfc29b9552defbe089aacd6cabd9e062d32f36d3fdc038a8c8.webp",
-      "sha256": "633bb267839c463290c5294feeca257991440c1e3444ddbe1f27381994202958",
+      "sha256": "0a577b0484ea12c2b26d6cad75f39d8169f8aa1b4e02add143f9e072a834b731",
       "sourceBytes": 2453703,
       "sourceSha256": "2ab5effb71b32ddfc29b9552defbe089aacd6cabd9e062d32f36d3fdc038a8c8",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 472510,
+      "bytes": 219172,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/3156b5624d0c91c5c4c17e6523a0ca7d64242febe23f7fca0623bdfe5eaca9e9.webp",
       "runtimePath": "assets/creatures/3156b5624d0c91c5c4c17e6523a0ca7d64242febe23f7fca0623bdfe5eaca9e9.webp",
-      "sha256": "62affd4647a6e37ba8dfb4ebe3b714c1fcccfcac42a19e23391e702eaeae84f3",
+      "sha256": "b9eda7d68e9b5e338b72f3b9430bb642cf3d90855cd0310d5bec9fb336119030",
       "sourceBytes": 2616071,
       "sourceSha256": "3156b5624d0c91c5c4c17e6523a0ca7d64242febe23f7fca0623bdfe5eaca9e9",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 461504,
+      "bytes": 206268,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/31c7be82591fbf873e1de96a162075d9cfde5ed150811cd96a846d613eb1da58.webp",
       "runtimePath": "assets/creatures/31c7be82591fbf873e1de96a162075d9cfde5ed150811cd96a846d613eb1da58.webp",
-      "sha256": "178f57b2fb1d6c75c060025d3aaf0d2de9ac03b3c6353709e1563e8dfffb7a32",
+      "sha256": "b03958a5f90e11f20976ec8f925836744034dc2c351fad20d9f8273ce940d0b8",
       "sourceBytes": 2214746,
       "sourceSha256": "31c7be82591fbf873e1de96a162075d9cfde5ed150811cd96a846d613eb1da58",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 607302,
+      "bytes": 266362,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/32dac82ef4076d8e0863cac2ab05845e97c9bfbf37011e2a8d34768ab3e6a196.webp",
       "runtimePath": "assets/creatures/32dac82ef4076d8e0863cac2ab05845e97c9bfbf37011e2a8d34768ab3e6a196.webp",
-      "sha256": "778d6be3039f763d86892e60b1228e3bc171c65af99f5e8e90bee97b58558dee",
+      "sha256": "ddac0b6072306867db1af3b0bdac58ebf0c23de5e8f70ee404ac1b7cce8372f9",
       "sourceBytes": 3147393,
       "sourceSha256": "32dac82ef4076d8e0863cac2ab05845e97c9bfbf37011e2a8d34768ab3e6a196",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 433136,
+      "bytes": 193342,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/33a88cdb6b901b3d1fc4218a42cdad55b775a70785d5f86d460cce4365b5438b.webp",
       "runtimePath": "assets/creatures/33a88cdb6b901b3d1fc4218a42cdad55b775a70785d5f86d460cce4365b5438b.webp",
-      "sha256": "23c9df89fba5c2126b3c37bf76459f8773ad3f6b028fa42cbc9239085874787e",
+      "sha256": "393cd4e3dabd2450420f88987bb8dfb6ed1693942827e53c61d7d578d01bef6a",
       "sourceBytes": 2132818,
       "sourceSha256": "33a88cdb6b901b3d1fc4218a42cdad55b775a70785d5f86d460cce4365b5438b",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 416014,
+      "bytes": 189072,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/3497671b1a5eaac88f7542a9b49d7d7a866c441a6a49d658f56e006ce0c0b8be.webp",
       "runtimePath": "assets/creatures/3497671b1a5eaac88f7542a9b49d7d7a866c441a6a49d658f56e006ce0c0b8be.webp",
-      "sha256": "9101ab9476d364f2b489e90231fc917ba15bc912390f63b5ca6c0ec19a82dad3",
+      "sha256": "86385fa8f1ad75aa627cc9769c94777196be26bfbc379f46d90f6d8263894273",
       "sourceBytes": 2543949,
       "sourceSha256": "3497671b1a5eaac88f7542a9b49d7d7a866c441a6a49d658f56e006ce0c0b8be",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 449852,
+      "bytes": 204730,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/354252cd34ec63b56ab4195cda5b0829571a1e2cbb93ad70b4ffa6bfac0a9388.webp",
       "runtimePath": "assets/creatures/354252cd34ec63b56ab4195cda5b0829571a1e2cbb93ad70b4ffa6bfac0a9388.webp",
-      "sha256": "bfab751f4ceab33c9858ddd39f736e55b1194447ab4153ce260ca3cef67e8a43",
+      "sha256": "575c2c6d1974adb6568c82f6d030d95c2cd9016737db75f9f9dc19527fb9426b",
       "sourceBytes": 2388678,
       "sourceSha256": "354252cd34ec63b56ab4195cda5b0829571a1e2cbb93ad70b4ffa6bfac0a9388",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 703082,
+      "bytes": 306666,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/357ece2d1ad107d643e72b63b5734d4576a7b3bce86ce966e216369af6e737a7.webp",
       "runtimePath": "assets/creatures/357ece2d1ad107d643e72b63b5734d4576a7b3bce86ce966e216369af6e737a7.webp",
-      "sha256": "9c9fe003273919e1501486c34173bf71d88f897c90ef5500c5bb6bc5de817207",
+      "sha256": "0e2b57a84ee9449d03df277df741a9481c274a6c90b3c57dbd18b5abb9042d15",
       "sourceBytes": 3197670,
       "sourceSha256": "357ece2d1ad107d643e72b63b5734d4576a7b3bce86ce966e216369af6e737a7",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 427552,
+      "bytes": 188296,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/36c1b7f992ed82d01bdc0471880619c7f4a3ae3632271cde0993c59539063665.webp",
       "runtimePath": "assets/creatures/36c1b7f992ed82d01bdc0471880619c7f4a3ae3632271cde0993c59539063665.webp",
-      "sha256": "406eca18bcaca2a83db6d1fca7c38a6d5fb710d76407ade12093fbb98de5d539",
+      "sha256": "4173e8b42c266dd8ce938f9349021089d694bbaa47229df80d174db6000767a3",
       "sourceBytes": 2089119,
       "sourceSha256": "36c1b7f992ed82d01bdc0471880619c7f4a3ae3632271cde0993c59539063665",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 554514,
+      "bytes": 252938,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/37a59e13a5424eb91fb899277325f8895a59604c29b9a4e4fd43d921c1a4f81f.webp",
       "runtimePath": "assets/creatures/37a59e13a5424eb91fb899277325f8895a59604c29b9a4e4fd43d921c1a4f81f.webp",
-      "sha256": "6dbd5b65828aaf32f0d04757d4afbba97a2dcb946944df0f0309924add481bf3",
+      "sha256": "9f878c62f0ca407a40eda08a30f59f1e2d8974589c34964088ed8cfea0661c84",
       "sourceBytes": 2751285,
       "sourceSha256": "37a59e13a5424eb91fb899277325f8895a59604c29b9a4e4fd43d921c1a4f81f",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 455314,
+      "bytes": 207412,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/37aca50b3266e37781a340ffe9f514bb61f62748de8bd93806bdb446daf194e6.webp",
       "runtimePath": "assets/creatures/37aca50b3266e37781a340ffe9f514bb61f62748de8bd93806bdb446daf194e6.webp",
-      "sha256": "69802bf1088d173e48ee2423fffe31d0423a8704f94d0d40c47051ff0e8eb52d",
+      "sha256": "367c6396efaa575f94f3aa8768e493812557dce071087beed29a3a1b830635e8",
       "sourceBytes": 2553770,
       "sourceSha256": "37aca50b3266e37781a340ffe9f514bb61f62748de8bd93806bdb446daf194e6",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 304862,
+      "bytes": 139372,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/3937aacf74393578126c437cf882cfe4adafc56633445c634e0108e035af4ea0.webp",
       "runtimePath": "assets/creatures/3937aacf74393578126c437cf882cfe4adafc56633445c634e0108e035af4ea0.webp",
-      "sha256": "8a83d872988df2200fcde7d82eab1502cd9db7eb20fa2c112c923de59dc817e2",
+      "sha256": "7795c4df1c595bbf0561bf1f06ba39d2ac98a3af2d2150d1aee65baa2d3f7a4d",
       "sourceBytes": 1948723,
       "sourceSha256": "3937aacf74393578126c437cf882cfe4adafc56633445c634e0108e035af4ea0",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 376676,
+      "bytes": 175764,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/3b108c8fa3cfcd95c34ddfdb30689b7526919d6770b279c5917ac7b772db2bf4.webp",
       "runtimePath": "assets/creatures/3b108c8fa3cfcd95c34ddfdb30689b7526919d6770b279c5917ac7b772db2bf4.webp",
-      "sha256": "7a9d67ef7504f40f383f6b29304294419d0f77dcfe054d9c98f6910d448707f1",
+      "sha256": "94a36c433aac92b90f55c3a398bb95f6934454d4a70cd138e6bd1e9a8f8198c6",
       "sourceBytes": 1959485,
       "sourceSha256": "3b108c8fa3cfcd95c34ddfdb30689b7526919d6770b279c5917ac7b772db2bf4",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 455458,
+      "bytes": 207222,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/3bc8611591becef0cbd751c48c4282dc1a158e3c02c79cb1d56207c13c57f3a9.webp",
       "runtimePath": "assets/creatures/3bc8611591becef0cbd751c48c4282dc1a158e3c02c79cb1d56207c13c57f3a9.webp",
-      "sha256": "0bd7880fecece1ca368e5e020a039934d8b8f797b6085ef517510cd2a3fb4498",
+      "sha256": "e8316fc13ef518124bb3f7b4a1a44c522b591c126b7bc9ba0d55701660053bea",
       "sourceBytes": 2335234,
       "sourceSha256": "3bc8611591becef0cbd751c48c4282dc1a158e3c02c79cb1d56207c13c57f3a9",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 578064,
+      "bytes": 256990,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/3bd17234404aa871566cb6bec36791ec99bc0cf90cc6e7ed355e38ced0c5911d.webp",
       "runtimePath": "assets/creatures/3bd17234404aa871566cb6bec36791ec99bc0cf90cc6e7ed355e38ced0c5911d.webp",
-      "sha256": "2f547f82a66f44977c23efed00237376a6db80c51ec889952b95c3944bc08422",
+      "sha256": "ca90a262208799caa8a1c36bb8109ca25fbcf80196c0819628e5a81dbe79f1ca",
       "sourceBytes": 2824268,
       "sourceSha256": "3bd17234404aa871566cb6bec36791ec99bc0cf90cc6e7ed355e38ced0c5911d",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 477930,
+      "bytes": 219154,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/3ee7aab66279e2ae832512d5059fe44c179127eda287a7bf9c2db3a8edcd9786.webp",
       "runtimePath": "assets/creatures/3ee7aab66279e2ae832512d5059fe44c179127eda287a7bf9c2db3a8edcd9786.webp",
-      "sha256": "aabe21112cdcb063f94b6a7d408951b8d4b8a4b54e38b45db7192947a68c55aa",
+      "sha256": "cc96208a705c2a4060cbf6a6c65b78bca42c3b6b07babc14b91700fa47c3e02a",
       "sourceBytes": 2315655,
       "sourceSha256": "3ee7aab66279e2ae832512d5059fe44c179127eda287a7bf9c2db3a8edcd9786",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 344528,
+      "bytes": 153332,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/3f4fe745b94e9c46f405f87c2ab6c9949cfe5227701f2a596897dd7b03bb1dc4.webp",
       "runtimePath": "assets/creatures/3f4fe745b94e9c46f405f87c2ab6c9949cfe5227701f2a596897dd7b03bb1dc4.webp",
-      "sha256": "36adb18a64cb419161f6652c994ffcbabc17b2e1d1487236ae50aa3b04658fb4",
+      "sha256": "b3513a3c0800167f931f8c05af96a252d9c69506463888df88aeca03c3c6ccae",
       "sourceBytes": 1784859,
       "sourceSha256": "3f4fe745b94e9c46f405f87c2ab6c9949cfe5227701f2a596897dd7b03bb1dc4",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 580350,
+      "bytes": 257034,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/401810a8ade519588ec51a382288e7320a07fd20bd1ccc0d74168a7deea6ec82.webp",
       "runtimePath": "assets/creatures/401810a8ade519588ec51a382288e7320a07fd20bd1ccc0d74168a7deea6ec82.webp",
-      "sha256": "eb87c51f3583ecf28738465d93773d5f54b83398a4d20b83f149452f0efffb2f",
+      "sha256": "52e0dce3b9f1065b99479ceaf07c74014ba7203f578df1c9e086be5296ac304a",
       "sourceBytes": 2838086,
       "sourceSha256": "401810a8ade519588ec51a382288e7320a07fd20bd1ccc0d74168a7deea6ec82",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 438404,
+      "bytes": 197876,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/447d56df9f23531674ca0c13dfcd5ada266192e8d4127a6fe1fa1bab73a55fb8.webp",
       "runtimePath": "assets/creatures/447d56df9f23531674ca0c13dfcd5ada266192e8d4127a6fe1fa1bab73a55fb8.webp",
-      "sha256": "da9508c23d09c8275f35aa4549948ef98e45f49b2153a64a41bcd21ea0b347ba",
+      "sha256": "a3330e36e18f8f8f69ff01fe246b081d704d07525a51a1c479f9cc7fb870465c",
       "sourceBytes": 2263374,
       "sourceSha256": "447d56df9f23531674ca0c13dfcd5ada266192e8d4127a6fe1fa1bab73a55fb8",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 483608,
+      "bytes": 213168,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/44bdcbcc721ee52ad14c95b68762f6c4533049700bd6b28bf0baa331813178db.webp",
       "runtimePath": "assets/creatures/44bdcbcc721ee52ad14c95b68762f6c4533049700bd6b28bf0baa331813178db.webp",
-      "sha256": "03db5310a4b004e63e75de75e43313d5fa67b56f9abbab613949ad7ad6f33a5f",
+      "sha256": "9d659b09e62b0c2208bc80aaf2edfd6e3ef34b6510150d7d43334a7af817069b",
       "sourceBytes": 2283771,
       "sourceSha256": "44bdcbcc721ee52ad14c95b68762f6c4533049700bd6b28bf0baa331813178db",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 317380,
+      "bytes": 141188,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/45cf4323933eb577398b95c1adcfcdf96d9ffc6a842a4279f08b738d4c6b695d.webp",
       "runtimePath": "assets/creatures/45cf4323933eb577398b95c1adcfcdf96d9ffc6a842a4279f08b738d4c6b695d.webp",
-      "sha256": "f25ec797fd5c421f3c2fefd50ea487cee4c18e2d3c41abd45c9536b74a5365f2",
+      "sha256": "808a1dbd199264564a543c9c99f443fe65e09cb465353253f1490c28a8f10141",
       "sourceBytes": 1434916,
       "sourceSha256": "45cf4323933eb577398b95c1adcfcdf96d9ffc6a842a4279f08b738d4c6b695d",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 397900,
+      "bytes": 178524,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/45fa942554e9d6543430e620b96f2f6ac160881df1a9b3f4c098666c8e4e8a53.webp",
       "runtimePath": "assets/creatures/45fa942554e9d6543430e620b96f2f6ac160881df1a9b3f4c098666c8e4e8a53.webp",
-      "sha256": "5cfbcc5f2d9da24d4f06f9c55721180ba1d6edf27b2586002b1e03e79b3e1d94",
+      "sha256": "545249e7f6d1b1d184f49041956dd7f206d8e3f8f505665e107fd1f9a6dc4ea8",
       "sourceBytes": 2565232,
       "sourceSha256": "45fa942554e9d6543430e620b96f2f6ac160881df1a9b3f4c098666c8e4e8a53",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 577892,
+      "bytes": 256952,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/46231c69abc8e5cbfb5a2ad3216f5c95f8e9d7753abffafa26c91518241d7d13.webp",
       "runtimePath": "assets/creatures/46231c69abc8e5cbfb5a2ad3216f5c95f8e9d7753abffafa26c91518241d7d13.webp",
-      "sha256": "db765218297b4d473ee100d8711e3947c8d67bc6c315a1964833aca684bd37fc",
+      "sha256": "116a78f1cfff6fb3cf4dcbfa0c64adb8230078eb559e858f0f1ecb60342abc5a",
       "sourceBytes": 2705208,
       "sourceSha256": "46231c69abc8e5cbfb5a2ad3216f5c95f8e9d7753abffafa26c91518241d7d13",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 339028,
+      "bytes": 149592,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/47235a7a27468885b95fc10b63d94ef3a60a875a354cb2e626c0cc4a3cbc659e.webp",
       "runtimePath": "assets/creatures/47235a7a27468885b95fc10b63d94ef3a60a875a354cb2e626c0cc4a3cbc659e.webp",
-      "sha256": "f7511241bbb5c8db775740373fc07817c07205a9f4e4daaa189a023fd11e1219",
+      "sha256": "787ac2aabc0234b5b75ed77df453573e2200b0b61532790a53576663930415a6",
       "sourceBytes": 1910294,
       "sourceSha256": "47235a7a27468885b95fc10b63d94ef3a60a875a354cb2e626c0cc4a3cbc659e",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 482132,
+      "bytes": 210366,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/4a69d2737d3f386b274af9cdab19a934df7629c6a5e9fac96b533d60ea3ec434.webp",
       "runtimePath": "assets/creatures/4a69d2737d3f386b274af9cdab19a934df7629c6a5e9fac96b533d60ea3ec434.webp",
-      "sha256": "679b7fec3837f19dc05ed534e83b867c68dd0d5cc5ca76b4a8159792a1f607fc",
+      "sha256": "2b0224eb1b2dcfd0cbaaf4d59b7d250a2427407f41df864aacb8bdd49b3853e3",
       "sourceBytes": 2151845,
       "sourceSha256": "4a69d2737d3f386b274af9cdab19a934df7629c6a5e9fac96b533d60ea3ec434",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 483168,
+      "bytes": 212550,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/4d36a43a5d58573f96d7411b305058723b02b96d1635b74a5eaa85786d703c23.webp",
       "runtimePath": "assets/creatures/4d36a43a5d58573f96d7411b305058723b02b96d1635b74a5eaa85786d703c23.webp",
-      "sha256": "a120fef20032588bc7d4f233d7d23323903ad73e3acba4e8cb4d81962ade7c41",
+      "sha256": "9e9c7d11c66513f44142affd63e39b46e296b86f7727c6bf78c2853e1e599b94",
       "sourceBytes": 2124755,
       "sourceSha256": "4d36a43a5d58573f96d7411b305058723b02b96d1635b74a5eaa85786d703c23",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 415238,
+      "bytes": 198064,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/4dd9b895be2c74cd91a291084dddf4c0e68bfdcd5c94027c56aa5bbf4347d33e.webp",
       "runtimePath": "assets/creatures/4dd9b895be2c74cd91a291084dddf4c0e68bfdcd5c94027c56aa5bbf4347d33e.webp",
-      "sha256": "7ffe91934a7ae2f8dd59c8bf3506c9a4090b357c60a39cd4433bdd88dcfa81d1",
+      "sha256": "afcbf078840a0a4bc1c2e3ec18c933fa35c91663ab3096322adf17a3a1794300",
       "sourceBytes": 2670642,
       "sourceSha256": "4dd9b895be2c74cd91a291084dddf4c0e68bfdcd5c94027c56aa5bbf4347d33e",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 617646,
+      "bytes": 272874,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/4e35042f9556df408a325ad62ba1b7315306b44627901e33b5531110ae4b3ffa.webp",
       "runtimePath": "assets/creatures/4e35042f9556df408a325ad62ba1b7315306b44627901e33b5531110ae4b3ffa.webp",
-      "sha256": "2973d7cfd882c4cead0efd691a9703c46c829de513494ed00bb54c7b3a5e8966",
+      "sha256": "12af5bb07782b28947be47aa9c08cee8c64da99f7b40e50531c346fa0eee0623",
       "sourceBytes": 2757457,
       "sourceSha256": "4e35042f9556df408a325ad62ba1b7315306b44627901e33b5531110ae4b3ffa",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 799116,
+      "bytes": 347124,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/4f75e5dc16c930e2ce95e6dafa8e6ca357d40c7d31a24c871bbc2fb9486ded00.webp",
       "runtimePath": "assets/creatures/4f75e5dc16c930e2ce95e6dafa8e6ca357d40c7d31a24c871bbc2fb9486ded00.webp",
-      "sha256": "2806dc099aa396792531673f3260fd6bfad023f56cd50d1b1586f1fd59b541d1",
+      "sha256": "2f72eb71d0e58b22e4f62386f35bbb5950a57951c38468c63a844739536adb00",
       "sourceBytes": 3377997,
       "sourceSha256": "4f75e5dc16c930e2ce95e6dafa8e6ca357d40c7d31a24c871bbc2fb9486ded00",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 408432,
+      "bytes": 186156,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/5030db0ed09e13254295e9e0e96938382f72deef54219512ea465246a30219a2.webp",
       "runtimePath": "assets/creatures/5030db0ed09e13254295e9e0e96938382f72deef54219512ea465246a30219a2.webp",
-      "sha256": "f3cf4d051a0b5ad30aaece4bb8e571e6e807c6731be68f3e255465d5e3d2b7c0",
+      "sha256": "8c123e260d1a7031ee879ad572583ee258ebd4aadcbdc29a59dd8b36c8f6254d",
       "sourceBytes": 1901582,
       "sourceSha256": "5030db0ed09e13254295e9e0e96938382f72deef54219512ea465246a30219a2",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 429252,
+      "bytes": 190274,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/52e437d913ac182d9d4b3e9e6f6a6214a7ecf7ddde2f4b1b4d4484db01d16cbe.webp",
       "runtimePath": "assets/creatures/52e437d913ac182d9d4b3e9e6f6a6214a7ecf7ddde2f4b1b4d4484db01d16cbe.webp",
-      "sha256": "740ffe3fcc8e7f4b40672bb7f8946c97d8a2f1a5220d5aa5588459509c0a5896",
+      "sha256": "24d33ef4a85a48440336e8e95377aa12081c5d50107af018fda307afb102d0f3",
       "sourceBytes": 2205005,
       "sourceSha256": "52e437d913ac182d9d4b3e9e6f6a6214a7ecf7ddde2f4b1b4d4484db01d16cbe",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 465614,
+      "bytes": 209664,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/538633c813c53a0ea87769db4314f77c8f39169f128567226cf21d540b7e510f.webp",
       "runtimePath": "assets/creatures/538633c813c53a0ea87769db4314f77c8f39169f128567226cf21d540b7e510f.webp",
-      "sha256": "ad63040faceea45c0054dcccd4c5fd9023fb6abdbd1c97f7908fbb1bb35442ac",
+      "sha256": "20aa83644668eeb59a85db2c384eed8ce1cfa77095669b30b093546534319e0a",
       "sourceBytes": 2387267,
       "sourceSha256": "538633c813c53a0ea87769db4314f77c8f39169f128567226cf21d540b7e510f",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 449260,
+      "bytes": 211234,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/53cea73d41bf17eee1ca07bcb6e612310fe538cecb81a729a27ce2c6687f516b.webp",
       "runtimePath": "assets/creatures/53cea73d41bf17eee1ca07bcb6e612310fe538cecb81a729a27ce2c6687f516b.webp",
-      "sha256": "47e6ea3eb3cc9360a7f5179169f36af42e89af2c5892162a2f793446f6a14f62",
+      "sha256": "0d35b2c7eacb39b57c90bee61408975083c1fc40c473aeed999fb89212777da3",
       "sourceBytes": 2043883,
       "sourceSha256": "53cea73d41bf17eee1ca07bcb6e612310fe538cecb81a729a27ce2c6687f516b",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 392606,
+      "bytes": 179672,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/54e6e212ce89be6318714745410a46a41bfd81f2e0e4478f5d8b08bd90932c6f.webp",
       "runtimePath": "assets/creatures/54e6e212ce89be6318714745410a46a41bfd81f2e0e4478f5d8b08bd90932c6f.webp",
-      "sha256": "9b6fad162b8c00e3e0127ab86c2ef0d0b955e269b948e57b192561e4c822d086",
+      "sha256": "cc54c218ac3c14706b62c96b9a09f7bcca0a497c7db8cbe6e44160aed3720980",
       "sourceBytes": 2135229,
       "sourceSha256": "54e6e212ce89be6318714745410a46a41bfd81f2e0e4478f5d8b08bd90932c6f",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 408230,
+      "bytes": 184946,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/554ab23299f22d8d9560cee3fc9a508bf5a1f0fc89f602fcfee324ec48b3c51c.webp",
       "runtimePath": "assets/creatures/554ab23299f22d8d9560cee3fc9a508bf5a1f0fc89f602fcfee324ec48b3c51c.webp",
-      "sha256": "ac2ccd8742149cb8a84dc600de642e7eebd2d1c9f29893f359086533ac9ea3f6",
+      "sha256": "0e77ac14bf552465d748d268f15081e836ba7bdb98739508387ba062cf40a1d1",
       "sourceBytes": 2212406,
       "sourceSha256": "554ab23299f22d8d9560cee3fc9a508bf5a1f0fc89f602fcfee324ec48b3c51c",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 523666,
+      "bytes": 232786,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/5747fdb00ca6fc77e6cbf66699a09ec773320632f5af6f9a7586ea01b0661e68.webp",
       "runtimePath": "assets/creatures/5747fdb00ca6fc77e6cbf66699a09ec773320632f5af6f9a7586ea01b0661e68.webp",
-      "sha256": "59680d01a9f9ca55cc5df422e095eabdab68e40ea7e76c781f6ef3e4a1672c96",
+      "sha256": "9b9eef6e2e046187a99fe0418cf30cda7bb779fddcad1b9286f2553680ea012a",
       "sourceBytes": 2181139,
       "sourceSha256": "5747fdb00ca6fc77e6cbf66699a09ec773320632f5af6f9a7586ea01b0661e68",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 680960,
+      "bytes": 294846,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/597c02e305cbd6f58e1c8c8c78eeff31b2c058cc0783f74ec0e2caf0f26cc351.webp",
       "runtimePath": "assets/creatures/597c02e305cbd6f58e1c8c8c78eeff31b2c058cc0783f74ec0e2caf0f26cc351.webp",
-      "sha256": "c56bcc3ff61e9632c99fe6f8ad41b61eb54508383035c8679e007da7c038a2e5",
+      "sha256": "5e3aa09ac137124f3cc25fa57039c480be51e8040e62292969a188d46132e844",
       "sourceBytes": 3460989,
       "sourceSha256": "597c02e305cbd6f58e1c8c8c78eeff31b2c058cc0783f74ec0e2caf0f26cc351",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 395860,
+      "bytes": 175022,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/59806801acd55420239d34893f3d4d07b68faebee9799c0936cda9f064e5c007.webp",
       "runtimePath": "assets/creatures/59806801acd55420239d34893f3d4d07b68faebee9799c0936cda9f064e5c007.webp",
-      "sha256": "1c1398d187803448a80416627787a660965408f6316115a32b69ba41a41fe6b3",
+      "sha256": "6daf307cdb3892d2e96ba47f0566df4161c900bc6292dcd462953936a1afc47d",
       "sourceBytes": 2038017,
       "sourceSha256": "59806801acd55420239d34893f3d4d07b68faebee9799c0936cda9f064e5c007",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 412150,
+      "bytes": 188378,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/5a526515e3d7020381b346904ac46ee9952c69e0a7fb5442f36002c9ec681887.webp",
       "runtimePath": "assets/creatures/5a526515e3d7020381b346904ac46ee9952c69e0a7fb5442f36002c9ec681887.webp",
-      "sha256": "d2ec1fd2217b9cccafb7ab646efe40a78d7abb21cdc77dfed89f8f566ecb1cd0",
+      "sha256": "4e60e55b5ee904b82ead8603d970e630f705e9fc2cf211d075754da80d2ea8ba",
       "sourceBytes": 2453851,
       "sourceSha256": "5a526515e3d7020381b346904ac46ee9952c69e0a7fb5442f36002c9ec681887",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 634284,
+      "bytes": 275662,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/5b0d8572dee71f65a6f7e38c0293238d048419fac84760a684d9771564545d65.webp",
       "runtimePath": "assets/creatures/5b0d8572dee71f65a6f7e38c0293238d048419fac84760a684d9771564545d65.webp",
-      "sha256": "239edc2cb425d67693212fbb6f165ac176773306542da6949a48cafbe7c515b3",
+      "sha256": "48e1d92bb4dadb4c67b7d02e1df62d27bfacaa3acf589cc91bb5ebc05553fe53",
       "sourceBytes": 3033675,
       "sourceSha256": "5b0d8572dee71f65a6f7e38c0293238d048419fac84760a684d9771564545d65",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 443672,
+      "bytes": 197802,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/5fe8e261fecac9d2fa9d2d0313ca866c0e7c43db27b8f55649d0ade460652627.webp",
       "runtimePath": "assets/creatures/5fe8e261fecac9d2fa9d2d0313ca866c0e7c43db27b8f55649d0ade460652627.webp",
-      "sha256": "a3e7620ff1305a8ae2694b8f7f5e8842f297af353e784fc74065174a06056402",
+      "sha256": "0d824cbe3839b108914c37a29e10b053a62ca9c1fff7fa2e421e2d1b9c37cfc9",
       "sourceBytes": 2197885,
       "sourceSha256": "5fe8e261fecac9d2fa9d2d0313ca866c0e7c43db27b8f55649d0ade460652627",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 494108,
+      "bytes": 210350,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/64863f8b7dee08fca027f5a4672d9a13f27d21422fbc2c85fbba8d24ab4bead1.webp",
       "runtimePath": "assets/creatures/64863f8b7dee08fca027f5a4672d9a13f27d21422fbc2c85fbba8d24ab4bead1.webp",
-      "sha256": "266f5d3587f0b59e3686bb251192861af3542c778cb74fcdcb8c2802ba88070b",
+      "sha256": "38b52d379933b7d72e5e0c359eb45e891a51e30e6955ffe966498178e4728336",
       "sourceBytes": 3289166,
       "sourceSha256": "64863f8b7dee08fca027f5a4672d9a13f27d21422fbc2c85fbba8d24ab4bead1",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 347590,
+      "bytes": 156744,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/656300d3e73e566da07ad2e947c171ed96b6ea62188da433bb470da3f199efb3.webp",
       "runtimePath": "assets/creatures/656300d3e73e566da07ad2e947c171ed96b6ea62188da433bb470da3f199efb3.webp",
-      "sha256": "137b9a9052eaa8c3ccf5f7a5a19f7038dc152022b2d90e8a2e5701352e697599",
+      "sha256": "d6c6cf618a2e583534d7371e34b38751b5be4714c3e5ed1948adce3711595ba7",
       "sourceBytes": 1888624,
       "sourceSha256": "656300d3e73e566da07ad2e947c171ed96b6ea62188da433bb470da3f199efb3",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 438822,
+      "bytes": 188860,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/68fad3aa791217f026dacd8327d5c71cd1e759c365447148642670ad5e1ac3a0.webp",
       "runtimePath": "assets/creatures/68fad3aa791217f026dacd8327d5c71cd1e759c365447148642670ad5e1ac3a0.webp",
-      "sha256": "599c0c8ad109f683f0009304a2598ccc6616dce76716cb41a347e237f1dfabd5",
+      "sha256": "9a9d7e7610f098ceb295a15d17e3bd89c3ca730384bff9b4196df98d3cc7c398",
       "sourceBytes": 2203375,
       "sourceSha256": "68fad3aa791217f026dacd8327d5c71cd1e759c365447148642670ad5e1ac3a0",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 272308,
+      "bytes": 126480,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/69e0e26322fb5945a24cd92d314aefb3d5e660ef83ec97350d84177f4884dd6a.webp",
       "runtimePath": "assets/creatures/69e0e26322fb5945a24cd92d314aefb3d5e660ef83ec97350d84177f4884dd6a.webp",
-      "sha256": "8360b01048e2f4f98f2a22ecac4216a42ebabb7889b2ba895e4211fa2a46c8c6",
+      "sha256": "e5cd7cbc25629973ef1b1f9c26c8de8b7934e11e896b04eec37a75332d18270d",
       "sourceBytes": 1752726,
       "sourceSha256": "69e0e26322fb5945a24cd92d314aefb3d5e660ef83ec97350d84177f4884dd6a",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 247570,
+      "bytes": 113700,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/6ad8a9fd2ebb0a1b55d735ef5d5d2a996c1cfddff7e2eb5de870867c0e8fdbc5.webp",
       "runtimePath": "assets/creatures/6ad8a9fd2ebb0a1b55d735ef5d5d2a996c1cfddff7e2eb5de870867c0e8fdbc5.webp",
-      "sha256": "2bfea8c50f8b31078797d46d382da67ae590a32b34c8f78c441f9c417e35e2c9",
+      "sha256": "8f119776b165f48c0eadd3bf2abca0ce8d734679f84acf2660bf9784f4a35b6c",
       "sourceBytes": 1452601,
       "sourceSha256": "6ad8a9fd2ebb0a1b55d735ef5d5d2a996c1cfddff7e2eb5de870867c0e8fdbc5",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 431152,
+      "bytes": 189514,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/6b3a9a59ba40274638c22babc2c01d1c25127f4f530a07e28196ef0f263cc1bb.webp",
       "runtimePath": "assets/creatures/6b3a9a59ba40274638c22babc2c01d1c25127f4f530a07e28196ef0f263cc1bb.webp",
-      "sha256": "5ac3ceb2d87a250a7b4a2454d466686d5d88f04ef29c22894cca252917852cc2",
+      "sha256": "48240c651d2abbda0f7ac2bcf16c93a3788188e6a288f89bd584e636cac93a74",
       "sourceBytes": 1900611,
       "sourceSha256": "6b3a9a59ba40274638c22babc2c01d1c25127f4f530a07e28196ef0f263cc1bb",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 604290,
+      "bytes": 263092,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/6b4aa3d560fa8d8e35060bc08bec4321c24f2d4aee99b4aadeb579cdc975e9b4.webp",
       "runtimePath": "assets/creatures/6b4aa3d560fa8d8e35060bc08bec4321c24f2d4aee99b4aadeb579cdc975e9b4.webp",
-      "sha256": "4f386640a0cfd12f52968bad3e01e8048af458f23ced0a43eef69d862d8a1108",
+      "sha256": "5a6adec561e94503fe97c2e438c1b571e169cbc35ab80568113a147589b71ace",
       "sourceBytes": 2896270,
       "sourceSha256": "6b4aa3d560fa8d8e35060bc08bec4321c24f2d4aee99b4aadeb579cdc975e9b4",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 496886,
+      "bytes": 220250,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/6dd94d5650819088efd4d7e99eade30274c055a26637e1e416de782580c7c843.webp",
       "runtimePath": "assets/creatures/6dd94d5650819088efd4d7e99eade30274c055a26637e1e416de782580c7c843.webp",
-      "sha256": "fdfa63f01521d5817bbf03a6a742fe8e77cf7ad6eaf04efa03ce3ae726b941bd",
+      "sha256": "97f3ce78f49a4ee541b79f2729fbd85a9e271cde103e126299320668cf21645f",
       "sourceBytes": 2416295,
       "sourceSha256": "6dd94d5650819088efd4d7e99eade30274c055a26637e1e416de782580c7c843",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 501358,
+      "bytes": 217910,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/72599f0263d9f2741be629e2ff40580c150cc11322dc1924215c4def0c960dea.webp",
       "runtimePath": "assets/creatures/72599f0263d9f2741be629e2ff40580c150cc11322dc1924215c4def0c960dea.webp",
-      "sha256": "3490bd5a66ca822d58b9dca2db77a23520f12ad69f15149a1f24886847e777a5",
+      "sha256": "b738f58fe1487727efca6a36cf1042db9fc75221f02c260c5764f6fc3eaba360",
       "sourceBytes": 2798853,
       "sourceSha256": "72599f0263d9f2741be629e2ff40580c150cc11322dc1924215c4def0c960dea",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 588168,
+      "bytes": 262276,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/72ebffeb31d0334d430c2d205e7af85f2d8af12ae8fe4c01e728df51097e6077.webp",
       "runtimePath": "assets/creatures/72ebffeb31d0334d430c2d205e7af85f2d8af12ae8fe4c01e728df51097e6077.webp",
-      "sha256": "8066e300db1b7094e8fd00d12d00aef42aa183c21f534e4c9a04b061bfb401c6",
+      "sha256": "d9196d23dff97759cb78f98320782a7434448c0d70361f1594d271c20f59f29c",
       "sourceBytes": 2464905,
       "sourceSha256": "72ebffeb31d0334d430c2d205e7af85f2d8af12ae8fe4c01e728df51097e6077",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 607030,
+      "bytes": 270204,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/7322c023ded24d6fa1a7af3e574e43cb21a4235a03f3bed35fd1c18bdb995bf6.webp",
       "runtimePath": "assets/creatures/7322c023ded24d6fa1a7af3e574e43cb21a4235a03f3bed35fd1c18bdb995bf6.webp",
-      "sha256": "ca14aacaac2787301e05b66238918c9a0142c4d4a888cef25a86a5c5fcd2734d",
+      "sha256": "0014a3d339e0f39458fa5705ffdd5dda5c20214fe4de0a843363603e4259f69f",
       "sourceBytes": 2963323,
       "sourceSha256": "7322c023ded24d6fa1a7af3e574e43cb21a4235a03f3bed35fd1c18bdb995bf6",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 640550,
+      "bytes": 271094,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/736a58085e838b140638ef5b352430ab185d42c1275650450f9d6cb71173809c.webp",
       "runtimePath": "assets/creatures/736a58085e838b140638ef5b352430ab185d42c1275650450f9d6cb71173809c.webp",
-      "sha256": "bfd720b52a218c9118694ea431dc4ba2c5c9780c8b77898df999e95dd809630e",
+      "sha256": "321365dc4fe10d6f935ff6b9e4f027a3a73e80c6fbd84371eb65af88c8155e1c",
       "sourceBytes": 2933579,
       "sourceSha256": "736a58085e838b140638ef5b352430ab185d42c1275650450f9d6cb71173809c",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 527192,
+      "bytes": 236690,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/74b708323b06d94f25e362846fd4c9d81a68f2c648369cac04a40d104b501450.webp",
       "runtimePath": "assets/creatures/74b708323b06d94f25e362846fd4c9d81a68f2c648369cac04a40d104b501450.webp",
-      "sha256": "e98a985d3f72ca058e640f0bbd1c32542c38525aedfa60e30dad4e0779d41048",
+      "sha256": "19feb2597b2043c2043c5ec1df4f8b06b3bf294072dccddcb03221f3da2a372d",
       "sourceBytes": 2624887,
       "sourceSha256": "74b708323b06d94f25e362846fd4c9d81a68f2c648369cac04a40d104b501450",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 313876,
+      "bytes": 138454,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/75f452a65e6d53bba934bde783f70ef2d9b6e555d95506d19553e9c5a42e87f0.webp",
       "runtimePath": "assets/creatures/75f452a65e6d53bba934bde783f70ef2d9b6e555d95506d19553e9c5a42e87f0.webp",
-      "sha256": "2929298ec1e681a2480b157fa00d112dbc655a5fff5ed059243d10a2ca9f0b87",
+      "sha256": "9c07b783aff4cea82bf83539106647f154f641663fcad8d4f2a5f376cfe1b087",
       "sourceBytes": 1876881,
       "sourceSha256": "75f452a65e6d53bba934bde783f70ef2d9b6e555d95506d19553e9c5a42e87f0",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 518426,
+      "bytes": 228532,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/77b60dac60e0257284185a65d04737877a03a13f0ffc08189b32a85b7cbec44f.webp",
       "runtimePath": "assets/creatures/77b60dac60e0257284185a65d04737877a03a13f0ffc08189b32a85b7cbec44f.webp",
-      "sha256": "7cb737b6d9b6b58cacd0ef9fe1236212307d8a8f7c3cf82b69d2899bf773826c",
+      "sha256": "c9043346ebff830487fb0cd9afaab24129433bad69802df1a29074bb5d8599f6",
       "sourceBytes": 2672996,
       "sourceSha256": "77b60dac60e0257284185a65d04737877a03a13f0ffc08189b32a85b7cbec44f",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 369882,
+      "bytes": 164202,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/7847141c377b0136c2794a0a37b54f65b5aba2b364b40edfb700af31ea2547bb.webp",
       "runtimePath": "assets/creatures/7847141c377b0136c2794a0a37b54f65b5aba2b364b40edfb700af31ea2547bb.webp",
-      "sha256": "581318757f20bdc0b2b8049fc4db62792048f7a7bb31e52e06c799e2acb11846",
+      "sha256": "c7e8415d02b753c2c0e4eb4ebd4d0b84d11046603f74f57ab1024dd1f53ba669",
       "sourceBytes": 2043499,
       "sourceSha256": "7847141c377b0136c2794a0a37b54f65b5aba2b364b40edfb700af31ea2547bb",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 410154,
+      "bytes": 189738,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/7d68d441284417e700b72808b823568463e1ceaf8a45665e50309a48e01295c0.webp",
       "runtimePath": "assets/creatures/7d68d441284417e700b72808b823568463e1ceaf8a45665e50309a48e01295c0.webp",
-      "sha256": "1458a4b02091b77f49118211b06f0eb1af29d9663f02769904d996b5e1187364",
+      "sha256": "7ff661a9e814db919cb75e05f96b827022401d8a743ed8799033d3a6ede187e1",
       "sourceBytes": 2072223,
       "sourceSha256": "7d68d441284417e700b72808b823568463e1ceaf8a45665e50309a48e01295c0",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 399892,
+      "bytes": 180454,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/7d91330fcea9d7dffc3ff61c8f8708b0ea788c280e0c004a05e415e5fa25a0dc.webp",
       "runtimePath": "assets/creatures/7d91330fcea9d7dffc3ff61c8f8708b0ea788c280e0c004a05e415e5fa25a0dc.webp",
-      "sha256": "8e2aae9dfe5984d206e820f4cc57c55677a15683dd5b8565e60b582f74ba58fc",
+      "sha256": "118040397eebe19157c5cd696bb5f5107de623df40810d4d205c4c35e78b1b75",
       "sourceBytes": 2042697,
       "sourceSha256": "7d91330fcea9d7dffc3ff61c8f8708b0ea788c280e0c004a05e415e5fa25a0dc",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 509208,
+      "bytes": 228314,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/7da763fdeeafbaac3e6ecb862d1071c3b0fbd5ab6637c2961744ff9e0c2b043d.webp",
       "runtimePath": "assets/creatures/7da763fdeeafbaac3e6ecb862d1071c3b0fbd5ab6637c2961744ff9e0c2b043d.webp",
-      "sha256": "e177f3c4aff890fc851ce840bfcc615d2370b60f812c2c41f480fcc1688b2593",
+      "sha256": "83095b92cdda42a5f668d78c1acd79d6ddcb4da1d98c20a73bf7198e06099b79",
       "sourceBytes": 2657617,
       "sourceSha256": "7da763fdeeafbaac3e6ecb862d1071c3b0fbd5ab6637c2961744ff9e0c2b043d",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 460354,
+      "bytes": 209916,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/7fc2e4353931bd9fbb24abe0d3752ad89d534790fde1ca3a63c82536f63431e6.webp",
       "runtimePath": "assets/creatures/7fc2e4353931bd9fbb24abe0d3752ad89d534790fde1ca3a63c82536f63431e6.webp",
-      "sha256": "3d7aaa97f98a7d4874ca3f1305cc71b1abef32152eb9c82815a50cacbc0e5449",
+      "sha256": "6614da1652f3ee36037304d8d2f194278bf6a9778f3a60c8c776965c00d7eee3",
       "sourceBytes": 2631993,
       "sourceSha256": "7fc2e4353931bd9fbb24abe0d3752ad89d534790fde1ca3a63c82536f63431e6",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 500266,
+      "bytes": 221652,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/7fedba7ed64fbd6251d730ebc67dabcb2be78e87bb1fb63266e8df848964f56f.webp",
       "runtimePath": "assets/creatures/7fedba7ed64fbd6251d730ebc67dabcb2be78e87bb1fb63266e8df848964f56f.webp",
-      "sha256": "aaf3a8f747ff8a3fd411670f00a488bafd1413d4023b4bf73eb56c8c9de4938b",
+      "sha256": "cb36caa913a8a5e202f6d796c033acf49f6a475af785a3a6111d39af355a71df",
       "sourceBytes": 2642052,
       "sourceSha256": "7fedba7ed64fbd6251d730ebc67dabcb2be78e87bb1fb63266e8df848964f56f",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 614122,
+      "bytes": 277506,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/8064bbaaac80aaa3fa3621772624fa78edf0d45524b021ae4262217ab20ad898.webp",
       "runtimePath": "assets/creatures/8064bbaaac80aaa3fa3621772624fa78edf0d45524b021ae4262217ab20ad898.webp",
-      "sha256": "b79bdf083873d623004fff4a5e7ec3a11af13362b9bbc9643c1377a1e35897e3",
+      "sha256": "8c279f98c9927767c5ce8b9ff805de67ccdeb2bea95ec4910d153bba199912c9",
       "sourceBytes": 2626323,
       "sourceSha256": "8064bbaaac80aaa3fa3621772624fa78edf0d45524b021ae4262217ab20ad898",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 606612,
+      "bytes": 267306,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/80d2b151837fccc233f1c56efe3120d369716549774caad039c9130c0365be66.webp",
       "runtimePath": "assets/creatures/80d2b151837fccc233f1c56efe3120d369716549774caad039c9130c0365be66.webp",
-      "sha256": "2fdda69c9bc61b4064abb1431bff41af41994046b8deb70b4e53f375671d354f",
+      "sha256": "8fcfb61bfbb174fbba724be1a82aeff17c1923bae44467784fb8d9c2586859f5",
       "sourceBytes": 3006578,
       "sourceSha256": "80d2b151837fccc233f1c56efe3120d369716549774caad039c9130c0365be66",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 452318,
+      "bytes": 199784,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/8199e291b8e362fa953c5614a3f8cfa969d2bea423967f05a404fdd7ae53f028.webp",
       "runtimePath": "assets/creatures/8199e291b8e362fa953c5614a3f8cfa969d2bea423967f05a404fdd7ae53f028.webp",
-      "sha256": "5daeb6e2ab6b129613b0d847995daffc60155454110808eb7a56d5dc1fa5b3ba",
+      "sha256": "820a44fb8580b91a7c0411cea64972cfc9413daed2fc200b42e629403284c6b0",
       "sourceBytes": 2134049,
       "sourceSha256": "8199e291b8e362fa953c5614a3f8cfa969d2bea423967f05a404fdd7ae53f028",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 620368,
+      "bytes": 277928,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/823b8dbc1334c3d867b41ce06c7a200c02d7558c85e62f920fda0f576f0a8a9c.webp",
       "runtimePath": "assets/creatures/823b8dbc1334c3d867b41ce06c7a200c02d7558c85e62f920fda0f576f0a8a9c.webp",
-      "sha256": "6e58287b8badbe0d9e5e1608fa93e3b0ac4bed2ba6b99ad2045b1badf1e044fc",
+      "sha256": "48985a7adde3c79e67aa123f87c34ca01df1ce26f596bb5e73a2ae031d2ec889",
       "sourceBytes": 2991601,
       "sourceSha256": "823b8dbc1334c3d867b41ce06c7a200c02d7558c85e62f920fda0f576f0a8a9c",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 773868,
+      "bytes": 335636,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/832b745b76e7fc8af4d153bf26a4d542465507ee4290edfb096a4dc18147d78e.webp",
       "runtimePath": "assets/creatures/832b745b76e7fc8af4d153bf26a4d542465507ee4290edfb096a4dc18147d78e.webp",
-      "sha256": "bfab056e5bb11d7959ff0d762ff05b343ed1ab299ffaabf385e0b5839034042e",
+      "sha256": "5ff685abf01f75a57b6256e3c736153fb6e483c00c03f16a8fef9ad1067a635a",
       "sourceBytes": 3463553,
       "sourceSha256": "832b745b76e7fc8af4d153bf26a4d542465507ee4290edfb096a4dc18147d78e",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 548822,
+      "bytes": 242028,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/83a5240ebfba1e94b26cf311ab731e5ff9731ea040f45243edec3e5435b5320f.webp",
       "runtimePath": "assets/creatures/83a5240ebfba1e94b26cf311ab731e5ff9731ea040f45243edec3e5435b5320f.webp",
-      "sha256": "ba8574e9848f3aeb0c1650a03d3f6bb58423d056b8db961708df0dcedbfaa716",
+      "sha256": "3aef92c0bd060f964aa6603ed7015f12a746b8c08acd9507393d236a879ee905",
       "sourceBytes": 2479578,
       "sourceSha256": "83a5240ebfba1e94b26cf311ab731e5ff9731ea040f45243edec3e5435b5320f",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 391322,
+      "bytes": 171090,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/848730fbf6d4c8f7c0d1e1aff96b12fca9698e22927dd6516ed5419decf2772f.webp",
       "runtimePath": "assets/creatures/848730fbf6d4c8f7c0d1e1aff96b12fca9698e22927dd6516ed5419decf2772f.webp",
-      "sha256": "a64dea4208b895db314ad402f36b4b122d79aee963b122aa0255af93db0a0680",
+      "sha256": "128b79e4b26dacb3af74bf91af4a0d581662e020baa7ab2641b95f6b141646cb",
       "sourceBytes": 2237296,
       "sourceSha256": "848730fbf6d4c8f7c0d1e1aff96b12fca9698e22927dd6516ed5419decf2772f",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 372146,
+      "bytes": 171316,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/85423a395845c6b9554e9d81dedcd7fb555cf8d913352c249560ffeb3e21b3ee.webp",
       "runtimePath": "assets/creatures/85423a395845c6b9554e9d81dedcd7fb555cf8d913352c249560ffeb3e21b3ee.webp",
-      "sha256": "0c431c3c9f2ef2b6f8bd618e7f3952c90ac6dc4df32f6bf997399388d104952b",
+      "sha256": "ead72ab520a1e3d77719e153162b67d7820f2a4a41da8f57590980e5890cfd68",
       "sourceBytes": 1997832,
       "sourceSha256": "85423a395845c6b9554e9d81dedcd7fb555cf8d913352c249560ffeb3e21b3ee",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 446128,
+      "bytes": 198810,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/876555ebd20b36624ea6bc0dd508c38639efede758a97a5211863f1ab490d8bd.webp",
       "runtimePath": "assets/creatures/876555ebd20b36624ea6bc0dd508c38639efede758a97a5211863f1ab490d8bd.webp",
-      "sha256": "99ced7b036d4ada8227f0093d7c7dadf22d9bdb48b9b035c14cd084043501db1",
+      "sha256": "ac3e31f28affc0e597c656cfd73a6239c680f73b69f08e94d8b1657df58cf34a",
       "sourceBytes": 2078482,
       "sourceSha256": "876555ebd20b36624ea6bc0dd508c38639efede758a97a5211863f1ab490d8bd",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 364450,
+      "bytes": 164316,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/889a59124f681bec257d27b5173e872dbfae07129245fdc95f250b526853e3b3.webp",
       "runtimePath": "assets/creatures/889a59124f681bec257d27b5173e872dbfae07129245fdc95f250b526853e3b3.webp",
-      "sha256": "0998b38e9ade0d95698e5acce46c6dcd3d798bbdc426acfcfd7d5260eb394360",
+      "sha256": "a6fe9307a547d89685c6d83db746c239286b48bef3ebcd77abb5c3330c7ac9d9",
       "sourceBytes": 1794431,
       "sourceSha256": "889a59124f681bec257d27b5173e872dbfae07129245fdc95f250b526853e3b3",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 482438,
+      "bytes": 211222,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/88baa473cee3375b2367803a1493c814f19a8d4e6851694d66ce3bbbac102aae.webp",
       "runtimePath": "assets/creatures/88baa473cee3375b2367803a1493c814f19a8d4e6851694d66ce3bbbac102aae.webp",
-      "sha256": "2b563903573150826cdc4ba483476c3f969b5c8b40d66f4257c3cd2bab930d05",
+      "sha256": "b3e829b09d13e837ca75798cdeb945e5790d51e83e78bf1f4450ac6118acba2d",
       "sourceBytes": 2040144,
       "sourceSha256": "88baa473cee3375b2367803a1493c814f19a8d4e6851694d66ce3bbbac102aae",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 418296,
+      "bytes": 187730,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/8e490da7e5c5faff1905e7d5f30df8e9dc1fdcd5585f79a362b9a13bf48e5ab7.webp",
       "runtimePath": "assets/creatures/8e490da7e5c5faff1905e7d5f30df8e9dc1fdcd5585f79a362b9a13bf48e5ab7.webp",
-      "sha256": "154bfb933c428b8183cb5b0fe3785cfef57099f817760e259696082c09854b45",
+      "sha256": "6d7034b668d01988096100cdf0beb2d92543cfe11358178fd90aabeae833faeb",
       "sourceBytes": 2124363,
       "sourceSha256": "8e490da7e5c5faff1905e7d5f30df8e9dc1fdcd5585f79a362b9a13bf48e5ab7",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 316106,
+      "bytes": 143870,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/8f2c2d2f60e9d6a78fa424126ad8f2c64392756912a143bc2c349425594392d7.webp",
       "runtimePath": "assets/creatures/8f2c2d2f60e9d6a78fa424126ad8f2c64392756912a143bc2c349425594392d7.webp",
-      "sha256": "e804ee642bd3205889e372f0d84a046f1df3ce553cf0069ba3ef45c0067b4026",
+      "sha256": "b60242ee17cb12b58bb8d3a8b101c27628ff841b5ae2590f7c3a8953b6f1ef4b",
       "sourceBytes": 1897813,
       "sourceSha256": "8f2c2d2f60e9d6a78fa424126ad8f2c64392756912a143bc2c349425594392d7",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 456198,
+      "bytes": 201370,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/8f6bbb98290b189c0de80cac5719a0944d9f1d04360adba27e2a222c82649423.webp",
       "runtimePath": "assets/creatures/8f6bbb98290b189c0de80cac5719a0944d9f1d04360adba27e2a222c82649423.webp",
-      "sha256": "5901cbc5704c26fcd5c05c28cfc99d22641bbde5e1072a0f20c2ce751f8d56d2",
+      "sha256": "d10a470ece228434f91cb70df06e07709b239759f33036b9dd4cdf45fb8e42b7",
       "sourceBytes": 2230462,
       "sourceSha256": "8f6bbb98290b189c0de80cac5719a0944d9f1d04360adba27e2a222c82649423",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 509706,
+      "bytes": 219856,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/8fb4c13f3446cf774cba5d9b012ccf8207e76183f3817d8b8058969a292bc686.webp",
       "runtimePath": "assets/creatures/8fb4c13f3446cf774cba5d9b012ccf8207e76183f3817d8b8058969a292bc686.webp",
-      "sha256": "e16b8c3143a5e3e70a66afdd5d8ed6fb117ecda9558d797ae5f3b833bc344da4",
+      "sha256": "006e1bcedf52b599355e4738a8fdaaa3c70fa7a6531c6c501a9266470e23fe6e",
       "sourceBytes": 3083406,
       "sourceSha256": "8fb4c13f3446cf774cba5d9b012ccf8207e76183f3817d8b8058969a292bc686",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 531264,
+      "bytes": 231476,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/901e91f6037b07dd9d8a11822d6a70b82840e7829a4384b33f7f4ad108c75c2e.webp",
       "runtimePath": "assets/creatures/901e91f6037b07dd9d8a11822d6a70b82840e7829a4384b33f7f4ad108c75c2e.webp",
-      "sha256": "20a0a380bbaa0550304a98f0bf2c5b39e2ec3d2295ad189a79deb888b98b34fb",
+      "sha256": "5dd7b996e6f483dbcd796bb3cefaad32a97755e2d03a376ad81364f18ac8c7a4",
       "sourceBytes": 2447842,
       "sourceSha256": "901e91f6037b07dd9d8a11822d6a70b82840e7829a4384b33f7f4ad108c75c2e",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 548630,
+      "bytes": 246116,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/916ba7ba46f0e18f607f253d5256b9d6ff1d3630f3910148f9ff884334cb92b3.webp",
       "runtimePath": "assets/creatures/916ba7ba46f0e18f607f253d5256b9d6ff1d3630f3910148f9ff884334cb92b3.webp",
-      "sha256": "53b1a599802a5d0dc608b0a1e28cb46032d98a43e43c7156bfef89cb59e31a44",
+      "sha256": "ce5f6d82e1aa55f0bf6716ab874ca0143bbae9fb9b2906036c85006825d3f7b9",
       "sourceBytes": 2774054,
       "sourceSha256": "916ba7ba46f0e18f607f253d5256b9d6ff1d3630f3910148f9ff884334cb92b3",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 567318,
+      "bytes": 252624,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/91c830289b636a4a682cdf84da986778e0d217b8f48a44211c1f9dfdba314fe5.webp",
       "runtimePath": "assets/creatures/91c830289b636a4a682cdf84da986778e0d217b8f48a44211c1f9dfdba314fe5.webp",
-      "sha256": "273eb9f897875e0402d41935d66142a9222e93dfc57c4174ae2654ea5637ed45",
+      "sha256": "8e17c4d531d877407a5327478af3ab2dfe2da74cf07341ab650c3d89652a53e8",
       "sourceBytes": 3024012,
       "sourceSha256": "91c830289b636a4a682cdf84da986778e0d217b8f48a44211c1f9dfdba314fe5",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 648512,
+      "bytes": 294792,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/91ea293f8836965248fd97e629dad2ae3f71b0473c8c14ab2b7527b86279761d.webp",
       "runtimePath": "assets/creatures/91ea293f8836965248fd97e629dad2ae3f71b0473c8c14ab2b7527b86279761d.webp",
-      "sha256": "cca9d243a1173c598a1cd76d4cfcd6230017a98e170afb94b63d6945b626dc75",
+      "sha256": "9d154e26fbfa457d2033ca8cadd64a3e48c647dfaca2f1e3f1e627cbd0096448",
       "sourceBytes": 2729748,
       "sourceSha256": "91ea293f8836965248fd97e629dad2ae3f71b0473c8c14ab2b7527b86279761d",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 519198,
+      "bytes": 230728,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/926a02d833c629ab7e0afae18ea53c841daf82c67439448daf2df8bac14d6787.webp",
       "runtimePath": "assets/creatures/926a02d833c629ab7e0afae18ea53c841daf82c67439448daf2df8bac14d6787.webp",
-      "sha256": "292f0bde19c93b7c5509b17ff4f50bd9bebbd47bbf61a527b408c43895725319",
+      "sha256": "d22614d79c2e41994202ec9e2adfe415c777c2a67101651205e2e9ef09cd0e43",
       "sourceBytes": 2585570,
       "sourceSha256": "926a02d833c629ab7e0afae18ea53c841daf82c67439448daf2df8bac14d6787",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 489782,
+      "bytes": 216278,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/936ae66c8dbe158576a0e7175ef535e817e87a3f53423d3e8b7abd656e44374b.webp",
       "runtimePath": "assets/creatures/936ae66c8dbe158576a0e7175ef535e817e87a3f53423d3e8b7abd656e44374b.webp",
-      "sha256": "7b52cce952c3d73bd71642ba13cda0dc1bd0fafbeae607e695986ac88e84fae4",
+      "sha256": "b4eb8fc49dd7f135109db878e3208145b8cc81b11380625d30cce8138561b511",
       "sourceBytes": 2260190,
       "sourceSha256": "936ae66c8dbe158576a0e7175ef535e817e87a3f53423d3e8b7abd656e44374b",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 619238,
+      "bytes": 274976,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/94c63f860f4713941ff94bbbb0a531932d912e845838235a5d03d2005da20a9b.webp",
       "runtimePath": "assets/creatures/94c63f860f4713941ff94bbbb0a531932d912e845838235a5d03d2005da20a9b.webp",
-      "sha256": "b030f1480faabf26c2da3eaa403fd82baeeb3291d105da0bd8a3716f8d4b43d0",
+      "sha256": "79ce4adbf587f7a12f51a9178e78acba4f88fb15de05cd1f7665080b4fb12703",
       "sourceBytes": 2871055,
       "sourceSha256": "94c63f860f4713941ff94bbbb0a531932d912e845838235a5d03d2005da20a9b",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 622370,
+      "bytes": 273592,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/9896ade7804145f875389753f8afcf883b3c129c9eddbe98ee576f36379c3f40.webp",
       "runtimePath": "assets/creatures/9896ade7804145f875389753f8afcf883b3c129c9eddbe98ee576f36379c3f40.webp",
-      "sha256": "5dbc98790cfaf11ca88986467621215d25ba8a0ed5728653a31571f06a07ced3",
+      "sha256": "b3629fa845aefbf296f80adea62d81652a24126b16c5229b1c0dec72f4c13a1c",
       "sourceBytes": 3258260,
       "sourceSha256": "9896ade7804145f875389753f8afcf883b3c129c9eddbe98ee576f36379c3f40",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 428724,
+      "bytes": 193668,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/991195627ce641c0a293beee325a1dc6531c6470abe85f4b92adbad008ad1976.webp",
       "runtimePath": "assets/creatures/991195627ce641c0a293beee325a1dc6531c6470abe85f4b92adbad008ad1976.webp",
-      "sha256": "d919324a747c9354a6c41d3639aa621003abc598bd00aa98dab5e51705b42c62",
+      "sha256": "9376a2eeeff8402991305249b14dfbe42e6af7cc6cf916b7440c24f7f88ab9ec",
       "sourceBytes": 1860661,
       "sourceSha256": "991195627ce641c0a293beee325a1dc6531c6470abe85f4b92adbad008ad1976",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 496284,
+      "bytes": 224504,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/99d918c4d67e87cc55882898997ab677bd37b0f012c9011c1570619748a0bd69.webp",
       "runtimePath": "assets/creatures/99d918c4d67e87cc55882898997ab677bd37b0f012c9011c1570619748a0bd69.webp",
-      "sha256": "afe75dd982450f64b35adbdfa9135ea3eacc7430d6495d859a78190ac9576085",
+      "sha256": "6482b15e966eb306e9fcdcdb6c0718c80129915a583f7597337f987c2ff5d448",
       "sourceBytes": 2681603,
       "sourceSha256": "99d918c4d67e87cc55882898997ab677bd37b0f012c9011c1570619748a0bd69",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 513714,
+      "bytes": 224512,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/9a13c7312faba2f021b99b965060cbdaee2563fb9fd3c5917e95d328bf5cc643.webp",
       "runtimePath": "assets/creatures/9a13c7312faba2f021b99b965060cbdaee2563fb9fd3c5917e95d328bf5cc643.webp",
-      "sha256": "5da1c47c5ed2c7132743129fc1f9a716e81767a4b7403cbd4afce3467b2cc3b9",
+      "sha256": "7e27871fe2fadad19f69bcce7945a5fe2940bf627e69786846532252392d7bde",
       "sourceBytes": 2633707,
       "sourceSha256": "9a13c7312faba2f021b99b965060cbdaee2563fb9fd3c5917e95d328bf5cc643",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 339982,
+      "bytes": 153874,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/9bbd23f53fa3a44feae6fcebd8eb0bcac03c61e62bb7ffc1730bef67f3ef7248.webp",
       "runtimePath": "assets/creatures/9bbd23f53fa3a44feae6fcebd8eb0bcac03c61e62bb7ffc1730bef67f3ef7248.webp",
-      "sha256": "acffeebd3fa7d1403f5aa904aa978903e92b1ad09d55f19d2d2f1af02cc45a1e",
+      "sha256": "c7e05bc3b502f458075004cf2fc5701db1567106cf7014842bdb906f7025158b",
       "sourceBytes": 1678907,
       "sourceSha256": "9bbd23f53fa3a44feae6fcebd8eb0bcac03c61e62bb7ffc1730bef67f3ef7248",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 427184,
+      "bytes": 166998,
       "hasAlpha": true,
-      "height": 1374,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/9ccd819e9a3ebd0190b901283bc3ea4839dd8d1797032ddb0d89ef0130cb3823.webp",
       "runtimePath": "assets/creatures/9ccd819e9a3ebd0190b901283bc3ea4839dd8d1797032ddb0d89ef0130cb3823.webp",
-      "sha256": "1eaec9d43d078758599892a1aed975ad572ec48e735ac698577737ef3a93b554",
+      "sha256": "8a467f5e8e7731ec3f52a7bede228a63f120153cfdac3d250ad9f5f654a13904",
       "sourceBytes": 2328232,
       "sourceSha256": "9ccd819e9a3ebd0190b901283bc3ea4839dd8d1797032ddb0d89ef0130cb3823",
-      "width": 1145
+      "width": 640
     },
     {
-      "bytes": 568166,
+      "bytes": 254344,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/9e2900a60ad5270601add6bdf3bf164a40b4ebe45ef0a4762003306f2fe80cee.webp",
       "runtimePath": "assets/creatures/9e2900a60ad5270601add6bdf3bf164a40b4ebe45ef0a4762003306f2fe80cee.webp",
-      "sha256": "d106deae4b163b33a8baffeb84e860d524334ab45b17e4db61a80062fdbaeaad",
+      "sha256": "cac55b31075c4866142371123127b966298be5389f91c1c35bec53a0cf47a89a",
       "sourceBytes": 2267313,
       "sourceSha256": "9e2900a60ad5270601add6bdf3bf164a40b4ebe45ef0a4762003306f2fe80cee",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 368888,
+      "bytes": 171948,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/9fcc64569c657a11316aea52616fad217a7c44e7b21cc70a10cc7001027c3dfe.webp",
       "runtimePath": "assets/creatures/9fcc64569c657a11316aea52616fad217a7c44e7b21cc70a10cc7001027c3dfe.webp",
-      "sha256": "d9a899db4f7475030fd4f5ae17a8574cc83e4612ea96666b8aad5dc6fede3282",
+      "sha256": "0bdfb75e01bc2d79e4f3909f7a42b0af8d2f74e15b77cb00a6751aa141a5d92f",
       "sourceBytes": 2012225,
       "sourceSha256": "9fcc64569c657a11316aea52616fad217a7c44e7b21cc70a10cc7001027c3dfe",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 394396,
+      "bytes": 180538,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/a14c8100421a4c27169f94c736da8c417c6432c12e3f248e49cc3a4ff953a1d3.webp",
       "runtimePath": "assets/creatures/a14c8100421a4c27169f94c736da8c417c6432c12e3f248e49cc3a4ff953a1d3.webp",
-      "sha256": "7635440a9e13b749d6ea82e3e9f3bebfcd841e11cc577f3304dc064efa1f8b67",
+      "sha256": "6a24764c0b4e483340624b977426f72ffe47d9a0575afb6eb3355931b11b2aca",
       "sourceBytes": 1968691,
       "sourceSha256": "a14c8100421a4c27169f94c736da8c417c6432c12e3f248e49cc3a4ff953a1d3",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 415822,
+      "bytes": 192552,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/a16b1d79ca3050249acbde961f48f9ef8130280440065d2719ca58706554460a.webp",
       "runtimePath": "assets/creatures/a16b1d79ca3050249acbde961f48f9ef8130280440065d2719ca58706554460a.webp",
-      "sha256": "d7d661c52ba08642c1fe736e019f95db3ed2480334a324a80123cf14e1bd8418",
+      "sha256": "6ad84d86b748e2badc885b6e1f1f85cd13210a87b2a647cd780b9e28a437ac51",
       "sourceBytes": 2144221,
       "sourceSha256": "a16b1d79ca3050249acbde961f48f9ef8130280440065d2719ca58706554460a",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 693290,
+      "bytes": 304276,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/a3520212752d216f03148688630123807466af1a72badd772cc3a31bbdb9efd8.webp",
       "runtimePath": "assets/creatures/a3520212752d216f03148688630123807466af1a72badd772cc3a31bbdb9efd8.webp",
-      "sha256": "672011948ba3463e517a707009553cb1ffb56d1ec4b55ffa8b694abcf38dbc9f",
+      "sha256": "628f850854fe03cfc7fcdb1d0e78b37147df18564ea83c166649f4235d0010a3",
       "sourceBytes": 3099889,
       "sourceSha256": "a3520212752d216f03148688630123807466af1a72badd772cc3a31bbdb9efd8",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 433106,
+      "bytes": 192150,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/a37171714198a20340890ff6f8c74bb8e5ade2dbd9b384ff00fa5aff3fe81a0b.webp",
       "runtimePath": "assets/creatures/a37171714198a20340890ff6f8c74bb8e5ade2dbd9b384ff00fa5aff3fe81a0b.webp",
-      "sha256": "05ae5baf4fc46e4a805fe317149d73045e6128cb60eb5ad00d2db90ab70e7350",
+      "sha256": "ed8ed892fa1a68ab9f3be5fbfea44b04465f0e2d7e880d199f7e0dae380b7394",
       "sourceBytes": 1920459,
       "sourceSha256": "a37171714198a20340890ff6f8c74bb8e5ade2dbd9b384ff00fa5aff3fe81a0b",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 408802,
+      "bytes": 191990,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/a415f3caeb092204a040b87dcc9033e04348b0d7a416487330e23783b08dffae.webp",
       "runtimePath": "assets/creatures/a415f3caeb092204a040b87dcc9033e04348b0d7a416487330e23783b08dffae.webp",
-      "sha256": "07bdba3b8fa403ed75e528ddfcdc31aecc53237750240a64349482eec7db2dc3",
+      "sha256": "18d44c7bbcb0e498cfbc7ced4961a59e580ee1ce957f8f7b5a62fc0ea0207ca9",
       "sourceBytes": 2556049,
       "sourceSha256": "a415f3caeb092204a040b87dcc9033e04348b0d7a416487330e23783b08dffae",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 410984,
+      "bytes": 188186,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/a41d63d045d85d13eb44dc00f1acfcb895f62e8942a7385dbe2db240a6846237.webp",
       "runtimePath": "assets/creatures/a41d63d045d85d13eb44dc00f1acfcb895f62e8942a7385dbe2db240a6846237.webp",
-      "sha256": "ec1a9ff44cb26b3cbe161c90a20d26bc020335aa6f9c16e53d488c691ad08fc8",
+      "sha256": "2410dca7d74b8f93a47afa5cd9f5e494f8e1c4a6ad8cd268e4508bce67394d89",
       "sourceBytes": 2016398,
       "sourceSha256": "a41d63d045d85d13eb44dc00f1acfcb895f62e8942a7385dbe2db240a6846237",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 451856,
+      "bytes": 198214,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/a6c6c35329c4efbedd511ac008cf4c8502a84862757fe08ea3702f368ccb4976.webp",
       "runtimePath": "assets/creatures/a6c6c35329c4efbedd511ac008cf4c8502a84862757fe08ea3702f368ccb4976.webp",
-      "sha256": "852984639eb6969953d9de86b0891323f1be4afe97812f4a5996cbbdb66d89ba",
+      "sha256": "2b70d4a2c1b528132ce7976de370908fd3b638616bb92de153d87a48f891294f",
       "sourceBytes": 2471120,
       "sourceSha256": "a6c6c35329c4efbedd511ac008cf4c8502a84862757fe08ea3702f368ccb4976",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 507062,
+      "bytes": 227884,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/a74271222f0172880f523e2d542bb09426c178d551343be8493cde58834db3aa.webp",
       "runtimePath": "assets/creatures/a74271222f0172880f523e2d542bb09426c178d551343be8493cde58834db3aa.webp",
-      "sha256": "0249efa640ce9b84aec979ded811aaf6083684f5adecb4e0cbdb6833dd8620f0",
+      "sha256": "da34a55af23b12cbb4ccbf538bd3b723f0f2d57241f6ddc309d24c17c1f063cf",
       "sourceBytes": 2524237,
       "sourceSha256": "a74271222f0172880f523e2d542bb09426c178d551343be8493cde58834db3aa",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 612086,
+      "bytes": 264366,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/a7d67b275f996a189bef898878b619ea68f1c91f142c60966d2ba69ed588c301.webp",
       "runtimePath": "assets/creatures/a7d67b275f996a189bef898878b619ea68f1c91f142c60966d2ba69ed588c301.webp",
-      "sha256": "c8d859b6c80b268408acde11a9ab5fbe0cd4223e525330da082a3a332dbd5039",
+      "sha256": "776195f2f09f7202395401b2fbd56c6d81ab15c351c67ffd59e733eb99718de6",
       "sourceBytes": 2585795,
       "sourceSha256": "a7d67b275f996a189bef898878b619ea68f1c91f142c60966d2ba69ed588c301",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 535018,
+      "bytes": 242528,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/aa00259075dc9a87a5e75428025665b93079e8d5ac6855cd04cdf295bf25c98b.webp",
       "runtimePath": "assets/creatures/aa00259075dc9a87a5e75428025665b93079e8d5ac6855cd04cdf295bf25c98b.webp",
-      "sha256": "8b26d479fea2fb7e4f3071fdc5ee0625ee0f5b7bc9e702d09c977a37e9f0be61",
+      "sha256": "abe9412fd81a3f615a29c0301c89793c37e6ac21cc6cca297123665f907a8ac3",
       "sourceBytes": 2770214,
       "sourceSha256": "aa00259075dc9a87a5e75428025665b93079e8d5ac6855cd04cdf295bf25c98b",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 427934,
+      "bytes": 190224,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/aaafd85d8ad750f0c0f9c9bc9d3df6a7683b4e9a6b2b2a75bdc89dbda3871201.webp",
       "runtimePath": "assets/creatures/aaafd85d8ad750f0c0f9c9bc9d3df6a7683b4e9a6b2b2a75bdc89dbda3871201.webp",
-      "sha256": "039acc4e64dfc16f016c8233974eeda94b0c29a35ee7a90ac62dac947c5e9dd4",
+      "sha256": "cc9f9e0128de4d0a0d9ee9826a918444f3204e512ecba8540f3d4c46ea4439f7",
       "sourceBytes": 2202825,
       "sourceSha256": "aaafd85d8ad750f0c0f9c9bc9d3df6a7683b4e9a6b2b2a75bdc89dbda3871201",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 552890,
+      "bytes": 246228,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/ab4d008d2d538719061b8c58b6b502a6cc736cd427bee3dcb7499b7a88271ca4.webp",
       "runtimePath": "assets/creatures/ab4d008d2d538719061b8c58b6b502a6cc736cd427bee3dcb7499b7a88271ca4.webp",
-      "sha256": "4827213d607f69d86b5c93dd9d346965cb139f739bb46f7fe2732d862a65c730",
+      "sha256": "d229e4264826d64e250386e6e59b0a5abf3e354869684e9110ede371b049e277",
       "sourceBytes": 2321412,
       "sourceSha256": "ab4d008d2d538719061b8c58b6b502a6cc736cd427bee3dcb7499b7a88271ca4",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 485910,
+      "bytes": 216412,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/acbbd6b3dbcd8b76d6f16b6e6c72a8de49a3aebb72a236ee7cf0e4f5368935d9.webp",
       "runtimePath": "assets/creatures/acbbd6b3dbcd8b76d6f16b6e6c72a8de49a3aebb72a236ee7cf0e4f5368935d9.webp",
-      "sha256": "67fe8b4b3e6efb5eee892dd4726bd6954050242bc050e3d454d2f2936a3a10e0",
+      "sha256": "d6232c3ee2f3a2bd52b27228528100caeec4ab386f0cfaeb3b0fc9974055fbcb",
       "sourceBytes": 2266749,
       "sourceSha256": "acbbd6b3dbcd8b76d6f16b6e6c72a8de49a3aebb72a236ee7cf0e4f5368935d9",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 423346,
+      "bytes": 188358,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/ad43dc9e5fa11c60cac7685444cca33376648773c65564547096df57b2568481.webp",
       "runtimePath": "assets/creatures/ad43dc9e5fa11c60cac7685444cca33376648773c65564547096df57b2568481.webp",
-      "sha256": "aa364f5a53cc9a69a56567cae97ac423ca07334a74833a9a8a23866e425cde7a",
+      "sha256": "c9d8125852219a477f33c59d5a458343ae0299cfb2a899cad7cfd31da2615172",
       "sourceBytes": 1836412,
       "sourceSha256": "ad43dc9e5fa11c60cac7685444cca33376648773c65564547096df57b2568481",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 636990,
+      "bytes": 272026,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/aefb2e5c8636a766c9649a374fdf4cc87baf4447183da0877d9b21effbec7994.webp",
       "runtimePath": "assets/creatures/aefb2e5c8636a766c9649a374fdf4cc87baf4447183da0877d9b21effbec7994.webp",
-      "sha256": "e6f26670c2b53252dfd5082196235dd577047824cfd0b34454532966c74c80c7",
+      "sha256": "dd9d8bd5384f24b75debcc9dc69def2f6663b5ff6368f9c11dc2cd16766e2064",
       "sourceBytes": 3367779,
       "sourceSha256": "aefb2e5c8636a766c9649a374fdf4cc87baf4447183da0877d9b21effbec7994",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 541522,
+      "bytes": 237550,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/b08d5790a77161b8a69cfbd35f50f7a2f303914d68c8c2f4fe2c2e9d0d0fba2c.webp",
       "runtimePath": "assets/creatures/b08d5790a77161b8a69cfbd35f50f7a2f303914d68c8c2f4fe2c2e9d0d0fba2c.webp",
-      "sha256": "cbc33cf5d1c27b03839d532a1a419f17071b85febcae9a7be6ea302d2ead57d6",
+      "sha256": "cffbe1d341632f1cf1765ce5a0bae8b01a5dc969a79af7ae5dcd9e608fd86265",
       "sourceBytes": 1913156,
       "sourceSha256": "b08d5790a77161b8a69cfbd35f50f7a2f303914d68c8c2f4fe2c2e9d0d0fba2c",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 521316,
+      "bytes": 236092,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/b232e35496ee5169277e577bc41f89422be72c3373f3dd3550e5feedba345bc7.webp",
       "runtimePath": "assets/creatures/b232e35496ee5169277e577bc41f89422be72c3373f3dd3550e5feedba345bc7.webp",
-      "sha256": "c8d42462a3b829e159ad88d5fafc708a3861850fd2db69aa70082360a6226985",
+      "sha256": "eebe5044cb1be0d059c443907f7f2264b7f30f84f5cd2450195c5467c141fcb2",
       "sourceBytes": 2747655,
       "sourceSha256": "b232e35496ee5169277e577bc41f89422be72c3373f3dd3550e5feedba345bc7",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 587772,
+      "bytes": 259254,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/b3076603d247550dc1e9b551bda1ffe7d6ffb5c4fa608d97f01a6e3ff70dade5.webp",
       "runtimePath": "assets/creatures/b3076603d247550dc1e9b551bda1ffe7d6ffb5c4fa608d97f01a6e3ff70dade5.webp",
-      "sha256": "05f1cbe116a399fa3183338f4fa318de443dba259809287f510426f87b2228dd",
+      "sha256": "0905e8f2513997ff5e2a8f362463f897d37cd9cb10bbab5bc44b30799beb223d",
       "sourceBytes": 3001018,
       "sourceSha256": "b3076603d247550dc1e9b551bda1ffe7d6ffb5c4fa608d97f01a6e3ff70dade5",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 665094,
+      "bytes": 298452,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/b3fb01f0cf8129e8efe06c6f32317de8c19ba6ea84a7e6fcdf70df83e6fcc68b.webp",
       "runtimePath": "assets/creatures/b3fb01f0cf8129e8efe06c6f32317de8c19ba6ea84a7e6fcdf70df83e6fcc68b.webp",
-      "sha256": "dae9f5d7ac14b043ecd0b44d8a94207af3b45716078f83af14285e56b3512aea",
+      "sha256": "824a067fcabbdfa784c2ac4d16487df932b6dea33d6e781ec07ef2c857c6a76c",
       "sourceBytes": 3263220,
       "sourceSha256": "b3fb01f0cf8129e8efe06c6f32317de8c19ba6ea84a7e6fcdf70df83e6fcc68b",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 559272,
+      "bytes": 245216,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/b4a3841a3827eb44b4256baaa5b5608f2ef198917ee36f92a24f44d62f5de099.webp",
       "runtimePath": "assets/creatures/b4a3841a3827eb44b4256baaa5b5608f2ef198917ee36f92a24f44d62f5de099.webp",
-      "sha256": "00c55444b0ef1f624fd1995cd9be8f3d5e2d973038c0fc949f332e37dd5d1e5b",
+      "sha256": "4f75339b05f495e57726a0d51c844a47adb19669ae7117654ce77d3e20f50a86",
       "sourceBytes": 2884040,
       "sourceSha256": "b4a3841a3827eb44b4256baaa5b5608f2ef198917ee36f92a24f44d62f5de099",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 400372,
+      "bytes": 186998,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/b902e688bdb66d894ee4e23105d7a8e2757b2d8c49410276dfd7f508ddaa3e57.webp",
       "runtimePath": "assets/creatures/b902e688bdb66d894ee4e23105d7a8e2757b2d8c49410276dfd7f508ddaa3e57.webp",
-      "sha256": "cf267e21567bfe27457100b184521775bf8490b90c57833c162a4b5ef8a0556e",
+      "sha256": "744a34f70de7c861708046d41f96368148644ca8d5496a7d03bf680356a81787",
       "sourceBytes": 2333009,
       "sourceSha256": "b902e688bdb66d894ee4e23105d7a8e2757b2d8c49410276dfd7f508ddaa3e57",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 598832,
+      "bytes": 268646,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/b913b4aaedfdc76837766d06ba1f84c704fe7d488187fcac53f036e375bb50ac.webp",
       "runtimePath": "assets/creatures/b913b4aaedfdc76837766d06ba1f84c704fe7d488187fcac53f036e375bb50ac.webp",
-      "sha256": "77397989860ab903ad5aa88af1b73624d0d3b09eb609ba4c09fc7f16e0530c3f",
+      "sha256": "abf9d626273f054bbcdf43bd6a67588027c05baec3976224d0ebe27859f22604",
       "sourceBytes": 2811260,
       "sourceSha256": "b913b4aaedfdc76837766d06ba1f84c704fe7d488187fcac53f036e375bb50ac",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 469814,
+      "bytes": 204934,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/b95c7765659ebb33149989be8125b78102b0a6a3db00ca7941c69f7a7ef5ace9.webp",
       "runtimePath": "assets/creatures/b95c7765659ebb33149989be8125b78102b0a6a3db00ca7941c69f7a7ef5ace9.webp",
-      "sha256": "531e9fdcf6f23b61fcc8326467d58e08ad9ad8d2a004a82af06d764ef81be8c8",
+      "sha256": "c56198de99acefdf3eafa1d52b8f9f118bcc89a0a39da0564a134e6198ac45cd",
       "sourceBytes": 2124300,
       "sourceSha256": "b95c7765659ebb33149989be8125b78102b0a6a3db00ca7941c69f7a7ef5ace9",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 400874,
+      "bytes": 179962,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/b9f5b3f8b8d0334c0cd870850d29ee8d4a3454535f0d700d01630d84899e432b.webp",
       "runtimePath": "assets/creatures/b9f5b3f8b8d0334c0cd870850d29ee8d4a3454535f0d700d01630d84899e432b.webp",
-      "sha256": "e2e284701809598eb30a69bec4b0abd7743ca3c0608e1945606cb594a7f708cb",
+      "sha256": "1ef8496bf15e765b1ae1b9f5dc8929c03f51deef661273715d9ed44a19c0bfdd",
       "sourceBytes": 1976519,
       "sourceSha256": "b9f5b3f8b8d0334c0cd870850d29ee8d4a3454535f0d700d01630d84899e432b",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 590722,
+      "bytes": 265338,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/badf2d35b7e6d402365337049ac37b16ec3137113867a0db7a91b4df919afd2c.webp",
       "runtimePath": "assets/creatures/badf2d35b7e6d402365337049ac37b16ec3137113867a0db7a91b4df919afd2c.webp",
-      "sha256": "c1b6b7f9fe056f3f1c62a0be7492001f2be96e96b5c13111b33e0975ccc7db00",
+      "sha256": "6596ca29b3ebb5250ca58e4cb8a1dddaf65b25337ef843e5edb8226f6a01b4b1",
       "sourceBytes": 3134376,
       "sourceSha256": "badf2d35b7e6d402365337049ac37b16ec3137113867a0db7a91b4df919afd2c",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 571262,
+      "bytes": 256758,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/bc079998621b182b69b8120d805df0eb90d669d1cf9c4f77b03c2b934e6c88fd.webp",
       "runtimePath": "assets/creatures/bc079998621b182b69b8120d805df0eb90d669d1cf9c4f77b03c2b934e6c88fd.webp",
-      "sha256": "b62693b7b774e368c00a29628523dd54867b4cc202f43f1c0ccd51431ddc6ab9",
+      "sha256": "cd45f71a1f3172471e7c45849fd20c9e66162d1adae4454321502a2c46e07a49",
       "sourceBytes": 2977897,
       "sourceSha256": "bc079998621b182b69b8120d805df0eb90d669d1cf9c4f77b03c2b934e6c88fd",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 255958,
+      "bytes": 117600,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/be1d28456964a10913abb186bf693f3796ad8f58e524af40b63e91c1e5a738e7.webp",
       "runtimePath": "assets/creatures/be1d28456964a10913abb186bf693f3796ad8f58e524af40b63e91c1e5a738e7.webp",
-      "sha256": "ad36181dc521cacb6c8775decfcdb6b2280854bed6f7a7c748a6223bec0d7858",
+      "sha256": "25951728967589e092c3b789279fee6b7d183beaee7dd27978360100f1839209",
       "sourceBytes": 1634616,
       "sourceSha256": "be1d28456964a10913abb186bf693f3796ad8f58e524af40b63e91c1e5a738e7",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 565986,
+      "bytes": 248964,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/c1e5b3a08b841444cb467e827e9332abbdce88b418e3d620d3990123d4caea96.webp",
       "runtimePath": "assets/creatures/c1e5b3a08b841444cb467e827e9332abbdce88b418e3d620d3990123d4caea96.webp",
-      "sha256": "676822d79e2872cec8208c3ce48d33ba780c58805c561832b78712c73a329d97",
+      "sha256": "3417130d0c18b88f9a5a860ee80d0eaf2c73077d06022aa0297a57bc2f3ef5e1",
       "sourceBytes": 2597897,
       "sourceSha256": "c1e5b3a08b841444cb467e827e9332abbdce88b418e3d620d3990123d4caea96",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 353640,
+      "bytes": 156838,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/c4d693200024d5a6fcff62b8fb79829ffcd7a2c6796c981e9d293a33bc7c220f.webp",
       "runtimePath": "assets/creatures/c4d693200024d5a6fcff62b8fb79829ffcd7a2c6796c981e9d293a33bc7c220f.webp",
-      "sha256": "4cfe15d3a4018366b54e19c39ac2ff16b1ba5b252bc6818406dedd3523486aa8",
+      "sha256": "a73263edbcf0bcd61961945c65902d15ab02e184c3afcb7ecb0f0dea4358a42e",
       "sourceBytes": 2028208,
       "sourceSha256": "c4d693200024d5a6fcff62b8fb79829ffcd7a2c6796c981e9d293a33bc7c220f",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 383024,
+      "bytes": 171818,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/c4e354696e5460b0717d5012783e174c21eceb7d1486846553cb00285960a4c4.webp",
       "runtimePath": "assets/creatures/c4e354696e5460b0717d5012783e174c21eceb7d1486846553cb00285960a4c4.webp",
-      "sha256": "41bb39eb55751a13c273287043e68d5de54cdd466098eb26b210c971177a0fb6",
+      "sha256": "7fb367049000217f2e92477114364a49644e6dc01956dd85d636b7278803a5bb",
       "sourceBytes": 2128651,
       "sourceSha256": "c4e354696e5460b0717d5012783e174c21eceb7d1486846553cb00285960a4c4",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 572754,
+      "bytes": 253828,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/c95764cdd1ab4866f0b1ed001d50c80cc0c46575dfafbc24b479c556a43d5cee.webp",
       "runtimePath": "assets/creatures/c95764cdd1ab4866f0b1ed001d50c80cc0c46575dfafbc24b479c556a43d5cee.webp",
-      "sha256": "c69cd8bf43c9e4a7dd675d8ec20cb819de3dfb0d4d8b34f10e02e10dae54ed62",
+      "sha256": "bd4fcaad038d841d21fc8fd1c32c5413e5ccc78267cbdc54534ee826ba67427b",
       "sourceBytes": 2818306,
       "sourceSha256": "c95764cdd1ab4866f0b1ed001d50c80cc0c46575dfafbc24b479c556a43d5cee",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 580974,
+      "bytes": 251096,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/caec96cfddc79d3a8cbc7af4e8b4701d60f307c724c45ad9f59759ae712da7ec.webp",
       "runtimePath": "assets/creatures/caec96cfddc79d3a8cbc7af4e8b4701d60f307c724c45ad9f59759ae712da7ec.webp",
-      "sha256": "bd39a318abf28e866e3e2bbef7a12f3ad6382430bc796f3d1842e9fd2bb42d9c",
+      "sha256": "4b336186241a13f2a5168e3175d0f70bf0ceec4d6baa5347d767a40aaac815ed",
       "sourceBytes": 2984420,
       "sourceSha256": "caec96cfddc79d3a8cbc7af4e8b4701d60f307c724c45ad9f59759ae712da7ec",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 465718,
+      "bytes": 208340,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/cbf1f5ecf6a2c6b728d2c2394808675978e4cd242469879b144506f4a9c0bd56.webp",
       "runtimePath": "assets/creatures/cbf1f5ecf6a2c6b728d2c2394808675978e4cd242469879b144506f4a9c0bd56.webp",
-      "sha256": "25b38dde0fa751d6ea74c06900848d04d29e925dca76cd0260532be3e9fe64b9",
+      "sha256": "b559d0d122b850bc22ac6c7dda5d9186ce229af15bf52d84924fd9ea3714bacc",
       "sourceBytes": 2346691,
       "sourceSha256": "cbf1f5ecf6a2c6b728d2c2394808675978e4cd242469879b144506f4a9c0bd56",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 263424,
+      "bytes": 122566,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/ccb92d3dea6926fa1e37a2f2df88e1923db8e3400d09f448bded0e4991312db8.webp",
       "runtimePath": "assets/creatures/ccb92d3dea6926fa1e37a2f2df88e1923db8e3400d09f448bded0e4991312db8.webp",
-      "sha256": "3273fdf1d6b4b1678c81ee89858643fb17964c257ec9b358cdb2834a2584f94d",
+      "sha256": "e776bf89efe545ca555259e9f57768b90baddbf5cbbd89d05ff95e9709e14f83",
       "sourceBytes": 1440554,
       "sourceSha256": "ccb92d3dea6926fa1e37a2f2df88e1923db8e3400d09f448bded0e4991312db8",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 490164,
+      "bytes": 215746,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/cd178dd4b63a3007dfc3b2490c7f25e2b737a32828e6503d8329dd4964c04bd3.webp",
       "runtimePath": "assets/creatures/cd178dd4b63a3007dfc3b2490c7f25e2b737a32828e6503d8329dd4964c04bd3.webp",
-      "sha256": "2dfbd5efa7f11ee5011d6929e51e5c7e21a30be284fd7dd1a980e2b795469d1d",
+      "sha256": "b9da13a5cb7c355e409c3e3f96d095b821f9f380dbd5b507120a00d322921016",
       "sourceBytes": 1958143,
       "sourceSha256": "cd178dd4b63a3007dfc3b2490c7f25e2b737a32828e6503d8329dd4964c04bd3",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 475274,
+      "bytes": 210040,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/cd6b7b21e595699bcdbc66ccf860aa758397efe8d956f69f6e306fac7c72d459.webp",
       "runtimePath": "assets/creatures/cd6b7b21e595699bcdbc66ccf860aa758397efe8d956f69f6e306fac7c72d459.webp",
-      "sha256": "ad104853dcd5d760ae3b83fce8b0eab96cf8528c6044c2ae3f6789440df10d67",
+      "sha256": "75dfb79d1725c13a03c08c5613b08141cb6c75225963116cd60f19d622ace594",
       "sourceBytes": 2508346,
       "sourceSha256": "cd6b7b21e595699bcdbc66ccf860aa758397efe8d956f69f6e306fac7c72d459",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 322018,
+      "bytes": 147680,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/d07f2bb3c790ab3cbd4ddc063d7c6ac0c7d43c0468f548fc84cee414b6f6fc86.webp",
       "runtimePath": "assets/creatures/d07f2bb3c790ab3cbd4ddc063d7c6ac0c7d43c0468f548fc84cee414b6f6fc86.webp",
-      "sha256": "8208502c9cd23b365c38146df516e7a0faf6ebac58661f1129119329a1ef34fb",
+      "sha256": "1b6f21a1c9b784dcc6c656791d6fc6e22fb79d86cf688c27dd5f3cf4437c5da0",
       "sourceBytes": 1713492,
       "sourceSha256": "d07f2bb3c790ab3cbd4ddc063d7c6ac0c7d43c0468f548fc84cee414b6f6fc86",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 653242,
+      "bytes": 283382,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/d14f3ee17369cbb845952358e269117295cf168d78e921cd33580cde4d22cc5c.webp",
       "runtimePath": "assets/creatures/d14f3ee17369cbb845952358e269117295cf168d78e921cd33580cde4d22cc5c.webp",
-      "sha256": "3c9e3e3d53d875f2b397a86eac6c412fbb32a0c68b7b03eeb46bd84b7a29a7fd",
+      "sha256": "69d735a95a09c1b9d23e554cd6e39929de2d767c63e47331b090ae4564c4923f",
       "sourceBytes": 2895355,
       "sourceSha256": "d14f3ee17369cbb845952358e269117295cf168d78e921cd33580cde4d22cc5c",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 638888,
+      "bytes": 282076,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/d20e24cea3341fa7402eebf80d67baf2c0b9155cca4554a6bf4fe42a842d6be2.webp",
       "runtimePath": "assets/creatures/d20e24cea3341fa7402eebf80d67baf2c0b9155cca4554a6bf4fe42a842d6be2.webp",
-      "sha256": "b7c89006cfc438c666edcc2a6845a0e17a3d081063a881b59c66526426c82e23",
+      "sha256": "92e997cfadd22ef075f719bcdaa5e5348f88c3ad9104f74e2ab32a592f862f8e",
       "sourceBytes": 3085329,
       "sourceSha256": "d20e24cea3341fa7402eebf80d67baf2c0b9155cca4554a6bf4fe42a842d6be2",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 523616,
+      "bytes": 236622,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/d48515bc45bd515b8775f6417bcc6637e274e19c10f0f8cf2224741052918507.webp",
       "runtimePath": "assets/creatures/d48515bc45bd515b8775f6417bcc6637e274e19c10f0f8cf2224741052918507.webp",
-      "sha256": "be1d064ab02f215449b92ce1f994aea4b30853f58225b49d2592dd53dac9045a",
+      "sha256": "dc3523366e54f4a4d3898059f7814b2979649abcb79224c3ec8599309a37fb61",
       "sourceBytes": 2897740,
       "sourceSha256": "d48515bc45bd515b8775f6417bcc6637e274e19c10f0f8cf2224741052918507",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 941048,
+      "bytes": 397032,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/d498ae2269105e69504e60aae30b33fda366916ce652438cfbfc532730699c8a.webp",
       "runtimePath": "assets/creatures/d498ae2269105e69504e60aae30b33fda366916ce652438cfbfc532730699c8a.webp",
-      "sha256": "5973ec8b1f3cf1a7b344415f665b09d60581c565d214f6441a701080d724301c",
+      "sha256": "30631ffad4c2572861e7bd697a306df55aa4df2ecddb781cf9dffd65f3b4c6f7",
       "sourceBytes": 3768667,
       "sourceSha256": "d498ae2269105e69504e60aae30b33fda366916ce652438cfbfc532730699c8a",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 481900,
+      "bytes": 212682,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/d5e0c847649a15d0b712b52b2a76411dbe35fd5d85b07d6d1108b386ba480d89.webp",
       "runtimePath": "assets/creatures/d5e0c847649a15d0b712b52b2a76411dbe35fd5d85b07d6d1108b386ba480d89.webp",
-      "sha256": "7b8e8fd2e63d21c1da61e5437df65054de6dec94166461aab6e0a3e639b08927",
+      "sha256": "62181afbdeef1d25938d646682ce61244c448fc2cadbf09483d8641e91aa835c",
       "sourceBytes": 2505404,
       "sourceSha256": "d5e0c847649a15d0b712b52b2a76411dbe35fd5d85b07d6d1108b386ba480d89",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 493496,
+      "bytes": 222754,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/d866ab9ca5f6c087982f9f7d2e8d79ddcca05f2a1f027348019711ad852d3af7.webp",
       "runtimePath": "assets/creatures/d866ab9ca5f6c087982f9f7d2e8d79ddcca05f2a1f027348019711ad852d3af7.webp",
-      "sha256": "2c824384714b0a5ed88f026c45a3d38a240ea4ce175f687402e7e26f78cb0eb9",
+      "sha256": "9307743637a4be52b5ea589e6b9ac2a2dce55bc47bdb92e0246064970a310009",
       "sourceBytes": 2705548,
       "sourceSha256": "d866ab9ca5f6c087982f9f7d2e8d79ddcca05f2a1f027348019711ad852d3af7",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 509900,
+      "bytes": 231160,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/da330221c5046cd40c929399641ae1d0307eb473e54daec0ec5954f543ae4ef5.webp",
       "runtimePath": "assets/creatures/da330221c5046cd40c929399641ae1d0307eb473e54daec0ec5954f543ae4ef5.webp",
-      "sha256": "c102fa06fb7e667cec14c684e322cecbeed08ac8246a5552e8840dcb4d4a256c",
+      "sha256": "35b035766d4a4d7c3436bf871eb29c76790112893e11b964e268e7e5b4798f73",
       "sourceBytes": 3046408,
       "sourceSha256": "da330221c5046cd40c929399641ae1d0307eb473e54daec0ec5954f543ae4ef5",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 363462,
+      "bytes": 163060,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/db7a92bafa3d1f21545947b6ef6227f642dddb9891d808211637701f5220f5a9.webp",
       "runtimePath": "assets/creatures/db7a92bafa3d1f21545947b6ef6227f642dddb9891d808211637701f5220f5a9.webp",
-      "sha256": "7f8958ff40185623c4344f8c8ffa1273fb11354aa6b4f2fb1d2ea24f4363abeb",
+      "sha256": "e23d872c17e1ef775ba82f9d1d2dadc995664016e06d989841c1624a9aafddad",
       "sourceBytes": 2213533,
       "sourceSha256": "db7a92bafa3d1f21545947b6ef6227f642dddb9891d808211637701f5220f5a9",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 322028,
+      "bytes": 150056,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/db8b1ac1f8c05e402a5a420f23d5f35316514a2c013965861e56482b760753c1.webp",
       "runtimePath": "assets/creatures/db8b1ac1f8c05e402a5a420f23d5f35316514a2c013965861e56482b760753c1.webp",
-      "sha256": "1a0fa6034eb911a3f6664cbd6a271cc74a07bde368eb446531b4532da13992b9",
+      "sha256": "d8ac36862b74eed1588f63cdce7f156be987aa5976478625adf23b907a31dd67",
       "sourceBytes": 1686669,
       "sourceSha256": "db8b1ac1f8c05e402a5a420f23d5f35316514a2c013965861e56482b760753c1",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 339998,
+      "bytes": 150144,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/dcc3dfdd49a2425cf354d9cd7630f1836e8987d46d6f91f396b2423ac2de720e.webp",
       "runtimePath": "assets/creatures/dcc3dfdd49a2425cf354d9cd7630f1836e8987d46d6f91f396b2423ac2de720e.webp",
-      "sha256": "cce4ea75e341fe744a7d636ca2cc245e57d861cba66b1b99e7ad83efc14cec1b",
+      "sha256": "a5d80c2c1baa40e335bd8f781d400580ebc46fce3b186e5af3ee65e5ea4b2cfd",
       "sourceBytes": 1647956,
       "sourceSha256": "dcc3dfdd49a2425cf354d9cd7630f1836e8987d46d6f91f396b2423ac2de720e",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 293668,
+      "bytes": 126630,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/dd9b873dd55f1d6b6605a7710537330ee79aacae875c3abe3406b673ca01e084.webp",
       "runtimePath": "assets/creatures/dd9b873dd55f1d6b6605a7710537330ee79aacae875c3abe3406b673ca01e084.webp",
-      "sha256": "baaad6a9b18364b4a1d1044dd8ffe08a5c75d9b3816f9580612314f68d3ac309",
+      "sha256": "ec626607997aaa0a8441a179c3179d24392f589bbfffc6d3824dd954277df8be",
       "sourceBytes": 1680205,
       "sourceSha256": "dd9b873dd55f1d6b6605a7710537330ee79aacae875c3abe3406b673ca01e084",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 573620,
+      "bytes": 252914,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/e0c9593509bf3d4d2b184b2639840456b282c30d3e6e994865dd75a722d9f28e.webp",
       "runtimePath": "assets/creatures/e0c9593509bf3d4d2b184b2639840456b282c30d3e6e994865dd75a722d9f28e.webp",
-      "sha256": "9fabe188a8f940ec0f9a34314e354ee013efd3208ed622d99fb7ec6c1ca419fc",
+      "sha256": "9bfe8ad7189398a95f701f8fb91226d6064346b05ad0ff018cb0d4da482ed78c",
       "sourceBytes": 2528761,
       "sourceSha256": "e0c9593509bf3d4d2b184b2639840456b282c30d3e6e994865dd75a722d9f28e",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 780296,
+      "bytes": 327536,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/e1d3fa6cde0dea5757f5349e90b95ddc9f1d9707aaa5548c2e5c4ed6fa801158.webp",
       "runtimePath": "assets/creatures/e1d3fa6cde0dea5757f5349e90b95ddc9f1d9707aaa5548c2e5c4ed6fa801158.webp",
-      "sha256": "d5cc00bbf32e5d8c313d8ee93904368ca5b639aa2eb32f9c298d04c12b88aed4",
+      "sha256": "eadb45b7d1250d85ef3ba38d0d5e36d895aceedf4fe9c68ef6dc467145843f0a",
       "sourceBytes": 3766605,
       "sourceSha256": "e1d3fa6cde0dea5757f5349e90b95ddc9f1d9707aaa5548c2e5c4ed6fa801158",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 617820,
+      "bytes": 266414,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/e311b8f2d2cfa4eaa994d340797a32f495f9d1e8b5ea4f9c0df19675eb7e933a.webp",
       "runtimePath": "assets/creatures/e311b8f2d2cfa4eaa994d340797a32f495f9d1e8b5ea4f9c0df19675eb7e933a.webp",
-      "sha256": "d88605ca5f14c7980c36a7701ba493c73e50e2f319906a997ec2daf746c6e43c",
+      "sha256": "2a78453ce6403edbfb00341a7faaf3ac50059baa28d6bfaca8d93eb0b9db912b",
       "sourceBytes": 2978665,
       "sourceSha256": "e311b8f2d2cfa4eaa994d340797a32f495f9d1e8b5ea4f9c0df19675eb7e933a",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 493256,
+      "bytes": 219670,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/e5f4e9e2b6812fc0cbe24785369d237920688b9ebe0a4310be3ec5b2a7905c3a.webp",
       "runtimePath": "assets/creatures/e5f4e9e2b6812fc0cbe24785369d237920688b9ebe0a4310be3ec5b2a7905c3a.webp",
-      "sha256": "ef2374d6fec17b8551cec13af95480b7b293bd6e98b635dd5f71b3aac1793e8a",
+      "sha256": "c775389eeb2c734fb1257fe20ab091219650018d719b6550cd21125ff80be10c",
       "sourceBytes": 2520829,
       "sourceSha256": "e5f4e9e2b6812fc0cbe24785369d237920688b9ebe0a4310be3ec5b2a7905c3a",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 499340,
+      "bytes": 219006,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/e8980afe63e23d4e1a65e54412654234ca5ce14e49bd063e47e79afe8dd30533.webp",
       "runtimePath": "assets/creatures/e8980afe63e23d4e1a65e54412654234ca5ce14e49bd063e47e79afe8dd30533.webp",
-      "sha256": "684eb2e52404fc4a95bf0f77078df231a0776f416ff737658dbd3b39f9f0f856",
+      "sha256": "edd33c4659e21d9e9cc3bc344ce6899cd4401a0f3817e2d2602e9d9495b4b257",
       "sourceBytes": 2376999,
       "sourceSha256": "e8980afe63e23d4e1a65e54412654234ca5ce14e49bd063e47e79afe8dd30533",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 534708,
+      "bytes": 235288,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/e965f69da6674a7c6298fd663e373b43fac6d134fce326cf58fe673ac1b04a53.webp",
       "runtimePath": "assets/creatures/e965f69da6674a7c6298fd663e373b43fac6d134fce326cf58fe673ac1b04a53.webp",
-      "sha256": "b5daad2e4aefe9e5def35cf2a23a8204492cf0cf7ff68c9901ed8034e223165b",
+      "sha256": "ff16a38335ccb15ea712b660c6883f18312bd27302db8d4903fd0b54eac4863a",
       "sourceBytes": 2866448,
       "sourceSha256": "e965f69da6674a7c6298fd663e373b43fac6d134fce326cf58fe673ac1b04a53",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 263764,
+      "bytes": 116942,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/e989d385c3dab43e5480ae7a75fea5515e94d7c86a44d19b8ca3e1b8006b4867.webp",
       "runtimePath": "assets/creatures/e989d385c3dab43e5480ae7a75fea5515e94d7c86a44d19b8ca3e1b8006b4867.webp",
-      "sha256": "f3dca41a12c8fd5dd009f4dc5be49581a02c386324877e038a3e5848b16bbcf3",
+      "sha256": "2282113c69cc07933538b57ee759551c126bf6fb31c5d0e820c0a36e41a38a77",
       "sourceBytes": 1656713,
       "sourceSha256": "e989d385c3dab43e5480ae7a75fea5515e94d7c86a44d19b8ca3e1b8006b4867",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 389408,
+      "bytes": 171896,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/ea3b3b69e1deaa98f22187652af73619d4b586ebcf67e4ee983194b25a62b7cd.webp",
       "runtimePath": "assets/creatures/ea3b3b69e1deaa98f22187652af73619d4b586ebcf67e4ee983194b25a62b7cd.webp",
-      "sha256": "3418daf5039adb4c7ca9611a3ffcac0ad59e72b9d327919a59fcc0d00cb23dcf",
+      "sha256": "7cf1a7c408e22d5d4362ef0ff5ad0c65efa4b8521074e79a41fd2319339d0f31",
       "sourceBytes": 1702348,
       "sourceSha256": "ea3b3b69e1deaa98f22187652af73619d4b586ebcf67e4ee983194b25a62b7cd",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 300124,
+      "bytes": 137492,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/ebf17880bdf7c0a5783f7f81e2810d70acad269d6ef2f628af896e7e8737bcb3.webp",
       "runtimePath": "assets/creatures/ebf17880bdf7c0a5783f7f81e2810d70acad269d6ef2f628af896e7e8737bcb3.webp",
-      "sha256": "fc4ab39c6a25c0c4451613f6f693978e638a9b494f98f356511bfed88120e32d",
+      "sha256": "4717071d8372f409ab7c129ccb3c825a79ed24abb24499fcd5e0e5848b04b2d7",
       "sourceBytes": 1660163,
       "sourceSha256": "ebf17880bdf7c0a5783f7f81e2810d70acad269d6ef2f628af896e7e8737bcb3",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 540794,
+      "bytes": 238216,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/ede1dd70d1bf0eb6f4841252287c83c759233e302d0c25aa3856d59fd67f6e7e.webp",
       "runtimePath": "assets/creatures/ede1dd70d1bf0eb6f4841252287c83c759233e302d0c25aa3856d59fd67f6e7e.webp",
-      "sha256": "6c962c9a4c7548125d695d9824bcbfe66bb0b84a882302a61d5a180f46f50c93",
+      "sha256": "362fc4d8f7929eb8fda10c22f24d206aa5b357e3c39fc0b81bedff799eaa8660",
       "sourceBytes": 3003182,
       "sourceSha256": "ede1dd70d1bf0eb6f4841252287c83c759233e302d0c25aa3856d59fd67f6e7e",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 491404,
+      "bytes": 218046,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/ee090c68f467e861b35f0b43e4f9bc19b642507a3fb854bfa97a9abf0352fc84.webp",
       "runtimePath": "assets/creatures/ee090c68f467e861b35f0b43e4f9bc19b642507a3fb854bfa97a9abf0352fc84.webp",
-      "sha256": "1ce7c956714572cd5dd4af1be89d1b427973410f5939ed9cbf03659f9bffd6d5",
+      "sha256": "2f93ffc22d90aa89985ff384f8509b9836e48f49642667056a8063d0dfbc646f",
       "sourceBytes": 2217605,
       "sourceSha256": "ee090c68f467e861b35f0b43e4f9bc19b642507a3fb854bfa97a9abf0352fc84",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 322956,
+      "bytes": 146012,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/f2590d8d79cd7958d00bc67986841f5faca954c09221ddddceb7dbe29d29ebed.webp",
       "runtimePath": "assets/creatures/f2590d8d79cd7958d00bc67986841f5faca954c09221ddddceb7dbe29d29ebed.webp",
-      "sha256": "890d0b8ec70520599ac86ceec95e0ff99c1030dd422a8b1eb4189cd9e276ddea",
+      "sha256": "a10efed547d35293bf13a76a904e1f1a5f467058ca414f0bf42825d0e6aada4f",
       "sourceBytes": 1763959,
       "sourceSha256": "f2590d8d79cd7958d00bc67986841f5faca954c09221ddddceb7dbe29d29ebed",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 652704,
+      "bytes": 285436,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/f266ae6fb9dc1a78cbe9dfb9103915d4eb4e8a0df5915bc552c3fef08c0aad80.webp",
       "runtimePath": "assets/creatures/f266ae6fb9dc1a78cbe9dfb9103915d4eb4e8a0df5915bc552c3fef08c0aad80.webp",
-      "sha256": "0fb67eac798637ffab7858b2c0e38a16e84b6348e21506d5f5bffaf4c9b595d0",
+      "sha256": "f8944740dc4ba55e3dee953e9d672487928151e6b4340200e1b46b248bf0b0b9",
       "sourceBytes": 3188780,
       "sourceSha256": "f266ae6fb9dc1a78cbe9dfb9103915d4eb4e8a0df5915bc552c3fef08c0aad80",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 346026,
+      "bytes": 158864,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/f277b7e9f8ef30816039eaf4cb8e751a684a42cdff199ace21a464da8dfb05dd.webp",
       "runtimePath": "assets/creatures/f277b7e9f8ef30816039eaf4cb8e751a684a42cdff199ace21a464da8dfb05dd.webp",
-      "sha256": "1c973bbcdb2a58e04f906825ae28f4cf9840583163c4c7e8315fab88b16b99a4",
+      "sha256": "4d63c0366e959a6a677cedc67eba799fa2fc6b7fe569e9dbe74de71fa904c433",
       "sourceBytes": 1767513,
       "sourceSha256": "f277b7e9f8ef30816039eaf4cb8e751a684a42cdff199ace21a464da8dfb05dd",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 752934,
+      "bytes": 321498,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/f321164fa89396da97b48f9722ae8e39682d6de3bd42ae385210814524d26b4c.webp",
       "runtimePath": "assets/creatures/f321164fa89396da97b48f9722ae8e39682d6de3bd42ae385210814524d26b4c.webp",
-      "sha256": "c1ed66520fe01a3e99b7f8db292a07365237750e2216217a65355556b70eca75",
+      "sha256": "9a3564fd636dbced09cb47cdf3bdb10436190d819e759c3ba521548a180574d8",
       "sourceBytes": 3039945,
       "sourceSha256": "f321164fa89396da97b48f9722ae8e39682d6de3bd42ae385210814524d26b4c",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 504776,
+      "bytes": 224084,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/f41149a42b53a48c8f7d7b6f2ed13c6f94f203846198f2b93049f18adb7b5f2e.webp",
       "runtimePath": "assets/creatures/f41149a42b53a48c8f7d7b6f2ed13c6f94f203846198f2b93049f18adb7b5f2e.webp",
-      "sha256": "f3ecf02a5a4811004680b835fa9fe1a0b03c3620b63ad67f6ca943063b38afa1",
+      "sha256": "009f27b88ab9a437eacdc93c92b36437f7d8b9e7c479051e75be2fec4ffa4839",
       "sourceBytes": 2422857,
       "sourceSha256": "f41149a42b53a48c8f7d7b6f2ed13c6f94f203846198f2b93049f18adb7b5f2e",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 522026,
+      "bytes": 233922,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/f57d228a0557b51168ee4d7ef830c48f1786f4e1d5ff948d0f32446cee5611ff.webp",
       "runtimePath": "assets/creatures/f57d228a0557b51168ee4d7ef830c48f1786f4e1d5ff948d0f32446cee5611ff.webp",
-      "sha256": "db7b87e994d276ba6070dd6d6cd9b9e230c3a9a191c850d669c667e1e6ccf6c2",
+      "sha256": "280e02fca932deb8a4a7100c029a9d32ad4fd363fb0f6ef02778a9aac177746b",
       "sourceBytes": 2479493,
       "sourceSha256": "f57d228a0557b51168ee4d7ef830c48f1786f4e1d5ff948d0f32446cee5611ff",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 443418,
+      "bytes": 197874,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/f59326b199c898666fd41881bc7f23e20b43a92fe66f7b21db260a6a1d06bd7b.webp",
       "runtimePath": "assets/creatures/f59326b199c898666fd41881bc7f23e20b43a92fe66f7b21db260a6a1d06bd7b.webp",
-      "sha256": "7fe71da6eb9ecb6030401f9e91c83606a812bb42a516c5f4e7d15dae9a9f77b6",
+      "sha256": "30b23196d33d5e46b5000a391c22fa43ae38794f299a4d1c2643ab89e70e8469",
       "sourceBytes": 2199358,
       "sourceSha256": "f59326b199c898666fd41881bc7f23e20b43a92fe66f7b21db260a6a1d06bd7b",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 782094,
+      "bytes": 333156,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/f5b6c68e7c5683ae5844d5fec415ff6a18ac9547f8ef1ce3b6d9afb7a34a2694.webp",
       "runtimePath": "assets/creatures/f5b6c68e7c5683ae5844d5fec415ff6a18ac9547f8ef1ce3b6d9afb7a34a2694.webp",
-      "sha256": "fb50e96865c97be72823ff10d7184a9c18a2144a437efdedb9dc41a77c2913d1",
+      "sha256": "0efa3de32d57a9c19294b6dd4aacbce3deaa8c1946e8ef85b42c0bf81986da3d",
       "sourceBytes": 3184466,
       "sourceSha256": "f5b6c68e7c5683ae5844d5fec415ff6a18ac9547f8ef1ce3b6d9afb7a34a2694",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 517080,
+      "bytes": 230180,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/f6fde6ebe1f60daabb1ab9bf7e543da7682e82e061cd75f0ed100709fd8f73d4.webp",
       "runtimePath": "assets/creatures/f6fde6ebe1f60daabb1ab9bf7e543da7682e82e061cd75f0ed100709fd8f73d4.webp",
-      "sha256": "9557920a43f8f9cceda97b8fa6b9d57b97641189e0636ec812f3017f7801cd26",
+      "sha256": "5a1e78658a096a4b5b69141b46b9026da6a2e13751ce371379bc7f23c5c71858",
       "sourceBytes": 2608916,
       "sourceSha256": "f6fde6ebe1f60daabb1ab9bf7e543da7682e82e061cd75f0ed100709fd8f73d4",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 518932,
+      "bytes": 232864,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/f9d773b0ba726bb32a3de58821f4e3c78e6fd55bd4246c22e2cb0176c7cc17dc.webp",
       "runtimePath": "assets/creatures/f9d773b0ba726bb32a3de58821f4e3c78e6fd55bd4246c22e2cb0176c7cc17dc.webp",
-      "sha256": "bf1ebeb81e4141e6c3a9a1079c6392faa8be87313ef6e7bdd203939dc2c05fb7",
+      "sha256": "5ff3ad53418ea12ca4709e7aae35237920ad2ed95f41447f0babf2ab10f008d9",
       "sourceBytes": 2877340,
       "sourceSha256": "f9d773b0ba726bb32a3de58821f4e3c78e6fd55bd4246c22e2cb0176c7cc17dc",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 543238,
+      "bytes": 231744,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/fa23d6a65845b7c96c7c2bcd894b5d7cc7215f77714c6f1faf9a64d08d8eb9c1.webp",
       "runtimePath": "assets/creatures/fa23d6a65845b7c96c7c2bcd894b5d7cc7215f77714c6f1faf9a64d08d8eb9c1.webp",
-      "sha256": "3d182f8fe04b36574547b3d35707a8d2a2b915a0f68b0831438443a6e875146a",
+      "sha256": "576851ee7b1888e4fd52c4e2b00243458cdd33b0b97aad9ca31f4b23efe3b68d",
       "sourceBytes": 2708063,
       "sourceSha256": "fa23d6a65845b7c96c7c2bcd894b5d7cc7215f77714c6f1faf9a64d08d8eb9c1",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 465770,
+      "bytes": 209172,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/fc08a5c0127fdfec1ad890336394c772ea6f499868d8adbbeb9ad0671481a9cd.webp",
       "runtimePath": "assets/creatures/fc08a5c0127fdfec1ad890336394c772ea6f499868d8adbbeb9ad0671481a9cd.webp",
-      "sha256": "79238c82f8e28946025ab28fd21a91d56696aac1c15e05abfcaeb190d67c71a6",
+      "sha256": "36f9b0c91e7cb51f4ba39a5a07ffbe9a9d2fa908b783804645d7ad1954be6e56",
       "sourceBytes": 2409979,
       "sourceSha256": "fc08a5c0127fdfec1ad890336394c772ea6f499868d8adbbeb9ad0671481a9cd",
-      "width": 1254
+      "width": 768
     },
     {
-      "bytes": 610442,
+      "bytes": 271524,
       "hasAlpha": true,
-      "height": 1254,
+      "height": 768,
       "repositoryPath": "static/assets/creatures/fe0286dbb160cef1312c09dbfb317ba285a60a644eb2a0ebf6231d8e09da5615.webp",
       "runtimePath": "assets/creatures/fe0286dbb160cef1312c09dbfb317ba285a60a644eb2a0ebf6231d8e09da5615.webp",
-      "sha256": "a477882920e64384af723abf441a3a4892b0c3ffb355373d4a9d8808d653e3ed",
+      "sha256": "fd1b432818144e8c9f75c224f2ff9a8ea87fda24ad8ad90da8c7d67b09257864",
       "sourceBytes": 2634376,
       "sourceSha256": "fe0286dbb160cef1312c09dbfb317ba285a60a644eb2a0ebf6231d8e09da5615",
-      "width": 1254
+      "width": 768
     }
   ],
   "encoding": {
+    "allowUpscale": false,
     "alphaQuality": 100,
     "exact": true,
     "format": "webp",
@@ -2122,9 +2123,11 @@
       "webp": "1.5.0"
     },
     "lossless": false,
+    "maxEdge": 768,
     "method": 6,
-    "nativeDimensions": true,
-    "quality": 85
+    "nativeDimensions": false,
+    "quality": 85,
+    "resample": "lanczos"
   },
   "portraits": [
     {
@@ -4054,7 +4057,7 @@
       "built-in image_gen": 119
     },
     "sourceBytes": 468337800,
-    "totalBytes": 93699982
+    "totalBytes": 41666026
   },
   "rights": {
     "distributionLicense": "undecided",

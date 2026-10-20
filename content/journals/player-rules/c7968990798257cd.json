@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!c7968990798257cd",
+  "_id": "c7968990798257cd",
+  "name": "Find the Seam",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/find-the-seam.md",
+        "sha256": "e0d8c14f75ef1fa03897b6d98cdeaa7420a9d02df6300a1aa985409e4a7c179e",
+        "id": "find-the-seam",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!c7968990798257cd.5ef077693347a002",
+      "_id": "5ef077693347a002",
+      "name": "Find the Seam",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Find the Seam</h1><p><em>You follow the shifting plates until the same small gap opens twice, then settle your aim on the next opening.</em></p><h2>Rules</h2><p><strong>Action:</strong> Maneuver · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> One visible creature within your ranged weapon’s attack range.</p><p>Your next ranged attack against that creature this turn treats its physical resistance as 1 lower, minimum 0. It also ignores partial cover’s 1 Bane, but not heavy cover. The target still requires an attack path. This grants no attack and does not alter any other damage type or later attack.</p><p><strong>Duration:</strong> Until used or the end of this turn.</p><p><strong>Equipment / acquisition:</strong> Requires a ranged weapon; grants no item.</p><p>---</p><p><strong>Tier / minimum level:</strong> 7 · <strong>DP:</strong> 8 · <strong>Requirements to learn:</strong> Marksmanship 3</p><p><strong>Type:</strong> Skill / Attack</p><p><strong>Limits:</strong> Repeated uses do not improve the same attack again.</p><p><strong>ID:</strong> find-the-seam</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

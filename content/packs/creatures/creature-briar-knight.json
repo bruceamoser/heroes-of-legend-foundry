@@ -235,10 +235,12 @@
       "portrait": {
         "creatureId": "creature-briar-knight",
         "asset": "assets/creatures/31c7be82591fbf873e1de96a162075d9cfde5ed150811cd96a846d613eb1da58.webp",
-        "sha256": "178f57b2fb1d6c75c060025d3aaf0d2de9ac03b3c6353709e1563e8dfffb7a32",
+        "sha256": "b03958a5f90e11f20976ec8f925836744034dc2c351fad20d9f8273ce940d0b8",
         "sourceSha256": "31c7be82591fbf873e1de96a162075d9cfde5ed150811cd96a846d613eb1da58",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

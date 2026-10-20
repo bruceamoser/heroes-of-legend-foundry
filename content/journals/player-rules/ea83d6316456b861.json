@@ -1,0 +1,39 @@
+{
+  "_key": "!journal!ea83d6316456b861",
+  "_id": "ea83d6316456b861",
+  "name": "Free Harbors",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/origins/culture-free-harbors.md",
+        "sha256": "d32e3e455956b6a7b5d854d026fcffac75ebd5be0d4b8124a3be1c75f812fe10",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!ea83d6316456b861.fe73592dc200e68b",
+      "_id": "fe73592dc200e68b",
+      "name": "Free Harbors",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Free Harbors</h1><p><em>Cargoes and rumors change hands faster than the tide. You learned to listen in three directions.</em></p><p><em>Who will always give you a berth?</em></p><h2>Rules</h2><p>Choose one:</p><p>- <strong>Influence 1</strong> and @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.476c4db41e22a7f0.JournalEntryPage.cae466163083eea9]{A Place at Any Fire}. - <strong>Subterfuge 1</strong> and @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.6bf89941b4a7b13f.JournalEntryPage.3eb015b3aee8b36e]{The Key Changes Hands}.</p><p><strong>Type:</strong> Culture</p><p>Each option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.</p><p><strong>Starting coin contribution:</strong> +10 coins. See @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0558be1f6014ee71.JournalEntryPage.880380bcd80cfec6]{starting coins}.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

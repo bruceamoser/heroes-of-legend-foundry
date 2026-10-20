@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!a299a09bb044a19f",
+  "_id": "a299a09bb044a19f",
+  "name": "Identify an Enchantment",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/identify-an-enchantment.md",
+        "sha256": "67ef0db5259decba3f27dd4d78700e29af0b3b23b9c6c979c6db0260bd596207",
+        "id": "identify-an-enchantment",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!a299a09bb044a19f.d504056618b6e136",
+      "_id": "d504056618b6e136",
+      "name": "Identify an Enchantment",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Identify an Enchantment</h1><p><em>You study the object until its small strangenesses begin to form a language you understand.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> Knowledge</p><p><strong>Time:</strong> Ten minutes.</p><p><strong>Target / range / shape:</strong> One accessible magical item; 10 minutes</p><p>Weak: learn broad purpose. Standard: learn function and activation requirements. Strong: also reveal any curse and its activation. No recipe or waived prerequisites.</p><p><strong>Duration:</strong> The result applies when the stated activity is complete; information and earned progress persist.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 1 · <strong>DP:</strong> 2 · <strong>Requirements to learn:</strong> Scholarship 1</p><p><strong>Type:</strong> Skill / Utility</p><p><strong>Limits:</strong> Pay the printed action and any full activity time for each use.</p><p><strong>ID:</strong> identify-an-enchantment</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "_key": "!journal!4e4801a6f8e5818e",
+  "_id": "4e4801a6f8e5818e",
+  "name": "Grass Sea Clans",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/origins/culture-grass-sea-clans.md",
+        "sha256": "749364d1c1586a908155350761c745997467fa88e88432943b021095135b4ad4",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!4e4801a6f8e5818e.2912cbc3e3755d8b",
+      "_id": "2912cbc3e3755d8b",
+      "name": "Grass Sea Clans",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Grass Sea Clans</h1><p><em>You grew up beneath an open sky, watching riders test their aim and blades at the gathering grounds before the herds moved on.</em></p><p><em>What promise brings you back to the traveling camp?</em></p><h2>Rules</h2><p>Choose one:</p><p>- <strong>Marksmanship 1</strong> and @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.06eff8e70c891b11.JournalEntryPage.d599f57e5650e7f2]{Read the Quarry}. - <strong>Arms 1</strong> and @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.5ee0ed01fff955fd.JournalEntryPage.c21c86fbb31c186c]{Invitation to the Blade}.</p><p><strong>Type:</strong> Culture</p><p>Each option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.</p><p><strong>Starting coin contribution:</strong> +5 coins. See @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0558be1f6014ee71.JournalEntryPage.880380bcd80cfec6]{starting coins}.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

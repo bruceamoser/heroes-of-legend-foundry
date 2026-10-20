@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!1332b3f43ee07b2f",
+  "_id": "1332b3f43ee07b2f",
+  "name": "Wings over the Battle",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/wings-over-the-battle.md",
+        "sha256": "cb9dadf315aec512058477a04ee8442b3441419c54bd8d1f94d33cc27b72b9ff",
+        "id": "wings-over-the-battle",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!1332b3f43ee07b2f.cfa787ccfa0e0b8a",
+      "_id": "cfa787ccfa0e0b8a",
+      "name": "Wings over the Battle",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Wings over the Battle</h1><p><em>You spread sudden wings and feel the ground drop beneath your first sweeping beat.</em></p><h2>Rules</h2><p><strong>Action:</strong> Maneuver · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Self.</p><p>Wings carry you up to 4 squares, over creatures and difficult ground, to a visible free supported square. You may cross a gap but cannot pass through barriers. This movement does not provoke; you must land immediately. No hovering or permanent flight.</p><p><strong>Duration:</strong> Instant. Applied conditions follow their normal duration and decay.</p><p><strong>Equipment / acquisition:</strong> No item needed unless named above.</p><p>---</p><p><strong>Tier / minimum level:</strong> 7 · <strong>DP:</strong> 8 · <strong>Requirements to learn:</strong> Flame 3</p><p><strong>Type:</strong> Magic</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> wings-over-the-battle</p><p>Build this character · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

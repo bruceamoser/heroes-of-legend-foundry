@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!f4b07fb747ae4bef",
+  "_id": "f4b07fb747ae4bef",
+  "name": "Spectral Passage",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/spectral-passage.md",
+        "sha256": "bf8df97f2ce18a68e7ec05a916ede170222122421f6a7f51d05b6909fa9d26ef",
+        "id": "monster-spectral-passage",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!f4b07fb747ae4bef.7d975262c9132d08",
+      "_id": "7d975262c9132d08",
+      "name": "Spectral Passage",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Spectral Passage</h1><p><em>The outline goes thin as candle smoke and spills through a crack in the stone.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-spectral-passage</p><p><strong>Action:</strong> Maneuver</p><p>Move up to 2 squares, including through nonliving walls at movement cost 1, but finish in a visible legal unoccupied space. Cannot pass through living occupants or remain inside a wall. This voluntary movement can provoke when leaving reach. It does not grant invisibility, flight, damage immunity or passage through a ward expressly barring spirits.</p><p><strong>Limits:</strong> Only creatures whose entries list this ability possess it. Printed entry values and restrictions apply; no ability grants unlisted actions.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

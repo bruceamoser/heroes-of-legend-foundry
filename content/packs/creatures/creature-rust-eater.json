@@ -218,10 +218,12 @@
       "portrait": {
         "creatureId": "creature-rust-eater",
         "asset": "assets/creatures/9e2900a60ad5270601add6bdf3bf164a40b4ebe45ef0a4762003306f2fe80cee.webp",
-        "sha256": "d106deae4b163b33a8baffeb84e860d524334ab45b17e4db61a80062fdbaeaad",
+        "sha256": "cac55b31075c4866142371123127b966298be5389f91c1c35bec53a0cf47a89a",
         "sourceSha256": "9e2900a60ad5270601add6bdf3bf164a40b4ebe45ef0a4762003306f2fe80cee",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

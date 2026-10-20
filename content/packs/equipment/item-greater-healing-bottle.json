@@ -3,6 +3,7 @@
   "_id": "534a1e5a55474cb7",
   "name": "Greater Healing Bottle",
   "type": "equipment",
+  "img": "systems/heroes-of-legend/assets/icons/potion.svg",
   "system": {
     "schemaVersion": 1,
     "catalogId": "item-greater-healing-bottle",

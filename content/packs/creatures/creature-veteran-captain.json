@@ -235,10 +235,12 @@
       "portrait": {
         "creatureId": "creature-veteran-captain",
         "asset": "assets/creatures/e989d385c3dab43e5480ae7a75fea5515e94d7c86a44d19b8ca3e1b8006b4867.webp",
-        "sha256": "f3dca41a12c8fd5dd009f4dc5be49581a02c386324877e038a3e5848b16bbcf3",
+        "sha256": "2282113c69cc07933538b57ee759551c126bf6fb31c5d0e820c0a36e41a38a77",
         "sourceSha256": "e989d385c3dab43e5480ae7a75fea5515e94d7c86a44d19b8ca3e1b8006b4867",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

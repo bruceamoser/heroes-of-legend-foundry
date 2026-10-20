@@ -196,10 +196,12 @@
       "portrait": {
         "creatureId": "creature-chorus-maw",
         "asset": "assets/creatures/b902e688bdb66d894ee4e23105d7a8e2757b2d8c49410276dfd7f508ddaa3e57.webp",
-        "sha256": "cf267e21567bfe27457100b184521775bf8490b90c57833c162a4b5ef8a0556e",
+        "sha256": "744a34f70de7c861708046d41f96368148644ca8d5496a7d03bf680356a81787",
         "sourceSha256": "b902e688bdb66d894ee4e23105d7a8e2757b2d8c49410276dfd7f508ddaa3e57",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

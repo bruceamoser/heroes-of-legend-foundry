@@ -222,10 +222,12 @@
       "portrait": {
         "creatureId": "creature-skeleton-giant",
         "asset": "assets/creatures/ee090c68f467e861b35f0b43e4f9bc19b642507a3fb854bfa97a9abf0352fc84.webp",
-        "sha256": "1ce7c956714572cd5dd4af1be89d1b427973410f5939ed9cbf03659f9bffd6d5",
+        "sha256": "2f93ffc22d90aa89985ff384f8509b9836e48f49642667056a8063d0dfbc646f",
         "sourceSha256": "ee090c68f467e861b35f0b43e4f9bc19b642507a3fb854bfa97a9abf0352fc84",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

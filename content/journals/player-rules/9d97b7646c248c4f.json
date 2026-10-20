@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!9d97b7646c248c4f",
+  "_id": "9d97b7646c248c4f",
+  "name": "White Heat",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/white-heat.md",
+        "sha256": "a67460289b65c7d62dfd7e6f61283381897862758835998d0f8dba1ab6637b6c",
+        "id": "white-heat",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!9d97b7646c248c4f.003e79d5703f8751",
+      "_id": "003e79d5703f8751",
+      "name": "White Heat",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>White Heat</h1><p><em>You draw a narrow line toward your enemy with one finger. White fire flashes around their body and leaves flames clinging where it passed.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> Knowledge</p><p><strong>Target / range / shape:</strong> One visible creature within 6 squares</p><p>Proposed NPC defense attribute: Agility.</p><p>- <strong>Weak:</strong> 5 fire damage; Burning 1. - <strong>Standard:</strong> 5 fire damage; Burning 2. - <strong>Strong:</strong> 7 fire damage; Burning 3.</p><p><strong>Duration:</strong> Instant</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 7 · <strong>DP:</strong> 8 · <strong>Requirements to learn:</strong> Flame 3</p><p><strong>Type:</strong> Magic / Attack</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> white-heat</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

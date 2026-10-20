@@ -3,6 +3,7 @@
   "_id": "0deffcf548f5ead1",
   "name": "Disguise Clothes",
   "type": "equipment",
+  "img": "systems/heroes-of-legend/assets/icons/mask.svg",
   "system": {
     "schemaVersion": 1,
     "catalogId": "item-disguise-clothes",

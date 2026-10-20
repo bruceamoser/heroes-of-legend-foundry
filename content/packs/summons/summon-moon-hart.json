@@ -116,10 +116,12 @@
       "portrait": {
         "creatureId": "creature-moon-hart",
         "asset": "assets/creatures/a7d67b275f996a189bef898878b619ea68f1c91f142c60966d2ba69ed588c301.webp",
-        "sha256": "c8d859b6c80b268408acde11a9ab5fbe0cd4223e525330da082a3a332dbd5039",
+        "sha256": "776195f2f09f7202395401b2fbd56c6d81ab15c351c67ffd59e733eb99718de6",
         "sourceSha256": "a7d67b275f996a189bef898878b619ea68f1c91f142c60966d2ba69ed588c301",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

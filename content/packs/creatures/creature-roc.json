@@ -223,10 +223,12 @@
       "portrait": {
         "creatureId": "creature-roc",
         "asset": "assets/creatures/9a13c7312faba2f021b99b965060cbdaee2563fb9fd3c5917e95d328bf5cc643.webp",
-        "sha256": "5da1c47c5ed2c7132743129fc1f9a716e81767a4b7403cbd4afce3467b2cc3b9",
+        "sha256": "7e27871fe2fadad19f69bcce7945a5fe2940bf627e69786846532252392d7bde",
         "sourceSha256": "9a13c7312faba2f021b99b965060cbdaee2563fb9fd3c5917e95d328bf5cc643",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

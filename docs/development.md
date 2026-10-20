@@ -48,9 +48,9 @@ and releases the resumed lease after verification. Existing `--prepare`,
 
 ### Compact creature art — issue #119
 
-The checked-in runtime art under `static/assets/creatures/` is derived from the 192 portrait records pinned in `content/source-lock.json`. Each source is read from the locked Git commit with `git cat-file`; its SHA-256, native dimensions and alpha fact are checked before encoding. The initial runtime baseline is lossy WebP quality 85 at native dimensions, with method 6, exact transparent RGB, alpha quality 100 and no source metadata copied. The one non-square source remains non-square. Identical source blob hashes produce one shared content-addressed path.
+The checked-in runtime art under `static/assets/creatures/` is derived from the 192 portrait records pinned in `content/source-lock.json`. Each source is read from the locked Git commit with `git cat-file`; its SHA-256, native dimensions and alpha fact are checked before encoding. The current runtime baseline (#213) is lossy WebP quality 85, fitted within a 768px maximum edge using Lanczos resampling with no upscaling or cropping, method 6, exact transparent RGB, alpha quality 100 and no source metadata copied. The WebP alpha matches the resampled channel exactly. The one non-square source remains non-square. Identical source blob hashes produce one shared content-addressed path.
 
-The sorted `manifest.json` records source commit/path/hash/provenance, source/output dimensions, output hash and bytes, encoding versions/settings and aggregate byte reports. The current 192 mappings use 192 unique assets totaling 93,699,982 bytes. There is no invented universal size ceiling: byte totals and provenance counts are an exact reviewed baseline, and the build prints them for review when art changes. Rights remain explicitly undecided.
+The sorted `manifest.json` records source commit/path/hash/provenance, source/output dimensions, output hash and bytes, encoding versions/settings and aggregate byte reports. The current 192 mappings use 192 unique assets totaling 41,666,026 bytes, down from 93,699,982 bytes (55.53% smaller). The 191 square derivatives are 768×768; Ettin is 640×768. All 192 retain alpha. The maximum edge is the approved #213 runtime size policy; byte totals and provenance counts remain measured evidence, and the build prints them for review when art changes. Rights remain explicitly undecided.
 
 Use Python 3.14.4 in a local virtual environment with the pinned `requirements-art.txt`; do not install packages system-wide. Source regeneration requires `HOL_BOOK_REPOSITORY` and reads only immutable blobs. `python3 scripts/build-creature-art.py --check` verifies the manifest's exact encoder provenance, then uses Pillow's available WebP decoder to inspect every immutable asset. The decoder version may differ from the recorded encoder version, but it must be capable of fully decoding the files; regenerating records the environment's actual Pillow and WebP encoder versions so their changed bytes and metadata are reviewable. The pure Node release validator is invoked by both `scripts/build.mjs` and `scripts/validate.mjs`, rejects missing, extra, stale, unreferenced or master/reference files, verifies static WebP container/image headers, dimensions, hashes and exact aggregate bytes, and keeps the reviewed encoder baseline pinned. According to the [WebP lossless bitstream specification](https://developers.google.com/speed/webp/docs/webp_lossless_bitstream_specification), the VP8L alpha flag is only a decoder hint, so Pillow's full decode remains the authoritative alpha check. CI installs the pinned Python dependency before the existing Node check.
 
@@ -1480,3 +1480,11 @@ layouts. NPC, creature, equipment and ability views were visually reviewed at
 760/390px. All 192 small portrait previews decode successfully, retain source
 hash provenance and fit 384px; total 11,816,500 bytes. No native Foundry sheets or
 book sources changed.
+
+## Native web design integration (#209)
+
+The web designs now have native Foundry sheets, builder markets, resource actions,
+crafting and a complete local rules library. See [native-web-integration.md](native-web-integration.md)
+for the surface mapping, deliberate automation boundaries and isolated-world checks.
+Player and DA references are separate JournalEntry compendiums; the Rules Library
+opens local entries and offers an explicit DA import that preserves existing edits.

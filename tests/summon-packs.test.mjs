@@ -141,7 +141,7 @@ test("summon sheet offers source references without character or lifecycle contr
   assert(!/<input|<textarea|<select/.test(template));
   assert.deepEqual(
     [...template.matchAll(/data-action="([^"]+)"/g)].map((m) => m[1]),
-    ["viewPortrait", "updateProfile"],
+    ["editImage", "viewPortrait", "viewPortrait", "savePortrait", "updateProfile"],
   );
   assert(!sheet.includes("extends CharacterSheet"));
   assert(!sheet.includes("CreatureSheet"));
@@ -149,5 +149,6 @@ test("summon sheet offers source references without character or lifecycle contr
   assert(template.includes("attacker outcomes"));
   assert(template.includes("Reference profile; lifecycle managed by DA."));
   assert(!template.includes("summon chains"));
-  assert(template.includes('<details class="hol-creature-reference">'));
+  assert(template.includes('<details class="hol-creature-reference"'));
+  assert(template.includes('data-card-section="commands"'));
 });

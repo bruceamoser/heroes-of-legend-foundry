@@ -218,10 +218,12 @@
       "portrait": {
         "creatureId": "creature-goblin-boss",
         "asset": "assets/creatures/3497671b1a5eaac88f7542a9b49d7d7a866c441a6a49d658f56e006ce0c0b8be.webp",
-        "sha256": "9101ab9476d364f2b489e90231fc917ba15bc912390f63b5ca6c0ec19a82dad3",
+        "sha256": "86385fa8f1ad75aa627cc9769c94777196be26bfbc379f46d90f6d8263894273",
         "sourceSha256": "3497671b1a5eaac88f7542a9b49d7d7a866c441a6a49d658f56e006ce0c0b8be",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

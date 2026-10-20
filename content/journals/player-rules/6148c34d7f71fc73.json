@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!6148c34d7f71fc73",
+  "_id": "6148c34d7f71fc73",
+  "name": "Catch the Root",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/catch-the-root.md",
+        "sha256": "0dfb98df6ed1555257bedd808f504fd560cad202db52f31354d92887d3e6731b",
+        "id": "catch-the-root",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!6148c34d7f71fc73.b05900a0a95c1330",
+      "_id": "b05900a0a95c1330",
+      "name": "Catch the Root",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Catch the Root</h1><p><em>Your boot hooks a root as the shove lands, and your hand closes around a low branch before it can tear you away.</em></p><h2>Rules</h2><p><strong>Action:</strong> Reaction · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Self, before forced movement while beside rooted vegetation you can reach.</p><p>Gain Stability 2 for this forced movement, including if you join a collision group. This requires a usable root or branch; loose grass and carried plants are insufficient. It does not prevent Prone or reduce collision damage.</p><p><strong>Duration:</strong> Instant.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 3 · <strong>DP:</strong> 4 · <strong>Requirements to learn:</strong> Wilderness 2</p><p><strong>Type:</strong> Skill / Defense</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> catch-the-root</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

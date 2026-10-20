@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!8f0023a0fe72ea68",
+  "_id": "8f0023a0fe72ea68",
+  "name": "Carry the Sunrise",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/carry-the-sunrise.md",
+        "sha256": "421247e7a5cb5543e847e617394778a8f79ecf183a6edae9a2c4fbeea721f81d",
+        "id": "carry-the-sunrise",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!8f0023a0fe72ea68.52d16208cc15755a",
+      "_id": "52d16208cc15755a",
+      "name": "Carry the Sunrise",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Carry the Sunrise</h1><p><em>You raise the light and step forward, giving your companions something bright to follow.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Willing allies within 2 squares.</p><p>Carry the light forward. Move up to 2 squares without provoking, then each willing ally initially in range may move up to 2 squares toward your new position without provoking. At their endpoints they gain 1 Boon to their next defense before the start of your next turn.</p><p><strong>Duration:</strong> Until the start of your next turn; a next-roll benefit ends when used.</p><p><strong>Equipment / acquisition:</strong> No item needed unless named above.</p><p>---</p><p><strong>Tier / minimum level:</strong> 7 · <strong>DP:</strong> 8 · <strong>Requirements to learn:</strong> Radiance 3</p><p><strong>Type:</strong> Magic</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> carry-the-sunrise</p><p>Build this character · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

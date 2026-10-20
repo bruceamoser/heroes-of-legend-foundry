@@ -227,10 +227,12 @@
       "portrait": {
         "creatureId": "creature-black-pudding",
         "asset": "assets/creatures/45fa942554e9d6543430e620b96f2f6ac160881df1a9b3f4c098666c8e4e8a53.webp",
-        "sha256": "5cfbcc5f2d9da24d4f06f9c55721180ba1d6edf27b2586002b1e03e79b3e1d94",
+        "sha256": "545249e7f6d1b1d184f49041956dd7f206d8e3f8f505665e107fd1f9a6dc4ea8",
         "sourceSha256": "45fa942554e9d6543430e620b96f2f6ac160881df1a9b3f4c098666c8e4e8a53",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

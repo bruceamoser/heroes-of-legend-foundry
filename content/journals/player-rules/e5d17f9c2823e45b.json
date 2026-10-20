@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!e5d17f9c2823e45b",
+  "_id": "e5d17f9c2823e45b",
+  "name": "Rest for the Restless",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/rest-for-the-restless.md",
+        "sha256": "efd4ca7602342b7ee295c7c5a4c1a99a4fd0afca0dfa878a88dd62a6843b18c1",
+        "id": "rest-for-the-restless",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!e5d17f9c2823e45b.db52668fd89bfd40",
+      "_id": "db52668fd89bfd40",
+      "name": "Rest for the Restless",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Rest for the Restless</h1><p><em>You extend a hand toward the restless creature and speak a quiet dismissal. A pale thread of Life energy lashes from your fingers into it.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> Reason</p><p><strong>Target / range / shape:</strong> One visible creature within 4 squares.</p><p>Speak a quiet dismissal and send a thread of Life energy into the target. This is a damaging spell, not free healing; it restores no HP.</p><p>- <strong>Weak:</strong> 3 Life damage. - <strong>Standard:</strong> 3 Life damage; a creature explicitly harmed by healing is also pushed 1 square. - <strong>Strong:</strong> 5 Life damage; such a creature is pushed 2 squares.</p><p><strong>Duration:</strong> Instant. Applied conditions follow their normal duration and decay.</p><p><strong>Equipment / acquisition:</strong> No item needed unless named above.</p><p>---</p><p><strong>Tier / minimum level:</strong> 3 · <strong>DP:</strong> 4 · <strong>Requirements to learn:</strong> Life 2</p><p><strong>Type:</strong> Magic / Attack / Recovery</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> rest-for-the-restless</p><p>Build this character · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

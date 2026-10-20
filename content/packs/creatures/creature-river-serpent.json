@@ -240,10 +240,12 @@
       "portrait": {
         "creatureId": "creature-river-serpent",
         "asset": "assets/creatures/d48515bc45bd515b8775f6417bcc6637e274e19c10f0f8cf2224741052918507.webp",
-        "sha256": "be1d064ab02f215449b92ce1f994aea4b30853f58225b49d2592dd53dac9045a",
+        "sha256": "dc3523366e54f4a4d3898059f7814b2979649abcb79224c3ec8599309a37fb61",
         "sourceSha256": "d48515bc45bd515b8775f6417bcc6637e274e19c10f0f8cf2224741052918507",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

@@ -3,6 +3,7 @@
   "_id": "1682a63c4725dc0d",
   "name": "Book of Quiet Doors",
   "type": "equipment",
+  "img": "systems/heroes-of-legend/assets/icons/book.svg",
   "system": {
     "schemaVersion": 1,
     "catalogId": "item-book-of-quiet-doors",

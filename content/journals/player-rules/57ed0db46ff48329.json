@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!57ed0db46ff48329",
+  "_id": "57ed0db46ff48329",
+  "name": "Treat Radiant Injury",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/treat-radiant-injury.md",
+        "sha256": "b5af45302790861eb6e1ce49de255a17ec0181c73df0168b5ff63d72fe2035b6",
+        "id": "treat-radiant-injury",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!57ed0db46ff48329.ebca3f6118f21563",
+      "_id": "ebca3f6118f21563",
+      "name": "Treat Radiant Injury",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Treat Radiant Injury</h1><p><em>You shade the injured eyes and work gently around the marks the terrible light has left.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> Reason</p><p><strong>Time:</strong> One hour per attempt; at most once per wound per day.</p><p><strong>Target / range / shape:</strong> One wound listing Radiant treatment; one hour</p><p>Choose one wound that lists Radiant treatment. Spend one hour treating it, then roll Reason and add recovery progress:</p><p>- <strong>Weak:</strong> Add 1 recovery progress. - <strong>Standard:</strong> Add 2 recovery progress. - <strong>Strong:</strong> Add 3 recovery progress.</p><p>Keep a running total for that wound. When the total reaches its recovery value, remove only the penalties it lists as treatable by this method. The scar and accumulated wound count remain. This restores no HP, regrows no missing body part and replaces no lost equipment. The same wound may be treated only once per day, even by different healers.</p><p><strong>Duration:</strong> Recovery progress persists for that wound; completed treatment removes only its listed treatable penalties.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 1 · <strong>DP:</strong> 2 · <strong>Requirements to learn:</strong> Medicine 1</p><p><strong>Type:</strong> Recovery</p><p><strong>Limits:</strong> Each wound can be treated only once per day across all healers.</p><p><strong>ID:</strong> treat-radiant-injury</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

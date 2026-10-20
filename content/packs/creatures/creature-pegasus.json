@@ -218,10 +218,12 @@
       "portrait": {
         "creatureId": "creature-pegasus",
         "asset": "assets/creatures/fa23d6a65845b7c96c7c2bcd894b5d7cc7215f77714c6f1faf9a64d08d8eb9c1.webp",
-        "sha256": "3d182f8fe04b36574547b3d35707a8d2a2b915a0f68b0831438443a6e875146a",
+        "sha256": "576851ee7b1888e4fd52c4e2b00243458cdd33b0b97aad9ca31f4b23efe3b68d",
         "sourceSha256": "fa23d6a65845b7c96c7c2bcd894b5d7cc7215f77714c6f1faf9a64d08d8eb9c1",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

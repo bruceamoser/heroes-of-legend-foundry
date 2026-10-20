@@ -213,10 +213,12 @@
       "portrait": {
         "creatureId": "creature-bandit-bow",
         "asset": "assets/creatures/f2590d8d79cd7958d00bc67986841f5faca954c09221ddddceb7dbe29d29ebed.webp",
-        "sha256": "890d0b8ec70520599ac86ceec95e0ff99c1030dd422a8b1eb4189cd9e276ddea",
+        "sha256": "a10efed547d35293bf13a76a904e1f1a5f467058ca414f0bf42825d0e6aada4f",
         "sourceSha256": "f2590d8d79cd7958d00bc67986841f5faca954c09221ddddceb7dbe29d29ebed",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!45baf03c303f81a1",
+  "_id": "45baf03c303f81a1",
+  "name": "Stay on the Scent",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/signature-warden-stay-on-the-scent.md",
+        "sha256": "a8c56057640d671c6fdb3ace8c9636602562a35b8cd383886ac7ca48c978ab3c",
+        "id": "signature-warden-stay-on-the-scent",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!45baf03c303f81a1.664bb3ae0e5b7003",
+      "_id": "664bb3ae0e5b7003",
+      "name": "Stay on the Scent",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Stay on the Scent</h1><p><em>You watch the first turn of their shoulders and cut toward their escape route before their footsteps fade.</em></p><h2>Rules</h2><p><strong>Action:</strong> Reaction · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> One visible enemy within 5 squares when it begins voluntary movement.</p><p>After that movement ends, move up to 3 squares toward its final position without provoking, if you can still see it. Gain 1 Boon to your next attack against it before the end of your next turn. You must be able to move; this grants no attack and does not reveal a creature that becomes Hidden.</p><p><strong>Duration:</strong> Movement is immediate; the Boon ends when used or at the end of your next turn.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 3 · <strong>DP:</strong> 4 · <strong>Requirements to learn:</strong> Class Warden; minimum level 3</p><p><strong>Type:</strong> Signature</p><p><strong>Tags:</strong> Skill / Movement</p><p><strong>Limits:</strong> One Reaction per use; repeated uses do not multiply the unused Boon.</p><p><strong>ID:</strong> signature-warden-stay-on-the-scent</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

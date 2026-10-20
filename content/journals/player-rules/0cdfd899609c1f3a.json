@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!0cdfd899609c1f3a",
+  "_id": "0cdfd899609c1f3a",
+  "name": "Still the Avalanche",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/still-the-avalanche.md",
+        "sha256": "b8ebfc3ffee8db6dad0122394aff93d8e799c0170b8c884660ce9958beef9732",
+        "id": "still-the-avalanche",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!0cdfd899609c1f3a.1baca9b3251aabbd",
+      "_id": "1baca9b3251aabbd",
+      "name": "Still the Avalanche",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Still the Avalanche</h1><p><em>You stamp a ring of blue ice beneath your companion while a turning wind catches the falling snow and stone.</em></p><h2>Rules</h2><p><strong>Action:</strong> Reaction · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Self or one visible willing ally within 3 squares, when one effect would forcibly move it; declare before that effect’s damage or displacement resolves.</p><p>The target gains Stability 3 for this forced movement and cold resistance 3 against damage from the same triggering effect. Apply Stability once before moving, including when the target joins a moving collision group. This does not stop falling, Prone or other conditions.</p><p><strong>Duration:</strong> Instant.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 7 · <strong>DP:</strong> 8 · <strong>Requirements to learn:</strong> Frost 3 and Storm 2</p><p><strong>Type:</strong> Magic / Defense</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> still-the-avalanche</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

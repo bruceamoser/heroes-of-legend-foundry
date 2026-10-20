@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!6065dd6bfb98bf18",
+  "_id": "6065dd6bfb98bf18",
+  "name": "Goblin Spearhand (CV 9)",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/bestiary/creatures/goblin-spearhand.md",
+        "sha256": "7be8dd0bd20b0697925e2d0d13b6c746e84afbd8ed895e7406dfbd39d3604e92",
+        "id": "creature-goblin-spearhand",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!6065dd6bfb98bf18.90253a7db98635f7",
+      "_id": "90253a7db98635f7",
+      "name": "Goblin Spearhand (CV 9)",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Goblin Spearhand (CV 9)</h1><p><em>A goblin braces a spear assembled from several broken weapons, wearing a saucepan polished like a badge of office.</em></p><p><strong>Attributes:</strong> Brawn +0; Fortitude +0; Agility +2; Guile +1; Knowledge +0; Reason +1</p><p><strong>HP:</strong> 10 · <strong>Speed:</strong> 7 · <strong>Size:</strong> 1 (medium) · <strong>Armor DR:</strong> 0</p><p><strong>Evasion:</strong> 1 Bane · <strong>Threat:</strong> None · <strong>Stability:</strong> 0</p><p><strong>Weaknesses:</strong> None\\ <strong>Resistances:</strong> None\\ <strong>Immunities:</strong> None</p><h2>Actions</h2><p>Damage and effects are <strong>Weak / Standard / Strong player defense</strong>. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.</p><table><thead><tr><th scope=\"col\">Main Actions</th><th scope=\"col\">Defense</th><th scope=\"col\">Damage</th></tr></thead><tbody><tr><td>Basic Melee</td><td>Agility</td><td>5/3/2</td></tr><tr><td>Patchwork spear</td><td>Agility</td><td>5 + Push 3 / 3 + Push 1 / 2</td></tr></tbody></table><table><thead><tr><th scope=\"col\">Maneuvers</th><th scope=\"col\">Effect</th></tr></thead><tbody><tr><td>Roll Away</td><td>Move 2 in a straight line; no opportunity attacks.</td></tr><tr><td>Defend</td><td>+1 Bane</td></tr></tbody></table><table><thead><tr><th scope=\"col\">Reactions</th><th scope=\"col\">Effect</th></tr></thead><tbody><tr><td>Opportunity Attack</td><td>Basic Melee</td></tr></tbody></table><h2>Details</h2><h3>Patchwork spear</h3><p><strong>Target:</strong> One visible creature within 2 squares. <strong>Player defense:</strong> Agility. <strong>Damage type:</strong> physical.</p><p><strong>Weak defense:</strong> Push 3. <strong>Standard defense:</strong> Push 1.</p><p><strong>Limit:</strong> Apply Stability, terrain costs and normal collision rules to the printed distance.</p><h3>Roll Away</h3><p>Move up to 2 squares in a straight line without provoking opportunity attacks. Normal terrain costs and occupied-square restrictions apply.</p><h3>General details</h3><p><strong>Basic Melee:</strong> One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.</p><p><strong>Defend:</strong> Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.</p><p><strong>Opportunity Attack:</strong> Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.</p><p><strong>Healing:</strong> Living: ordinary HP healing applies.</p><p><strong>Senses:</strong> Ordinary sight and hearing.</p><p><strong>Tactics and retreat:</strong> Keep foes at spear reach and Roll Away toward companions. A blocked escape lane matters more than a small loss of HP.</p><p><strong>Encounter and conversation:</strong> The spearhand protects a salvage crew&#39;s exit and will negotiate for safe passage.</p><p><strong>Habitat:</strong> Settlement; frontier; contested road · <strong>Communication:</strong> Common and its community’s language</p><p><strong>Loot:</strong> Ordinary carried gear and 8 coins; special rewards belong to the adventure.</p><p><strong>Summoning:</strong> Ineligible.</p><h2>Design notes — not needed during play</h2><p><strong>ID:</strong> creature-goblin-spearhand</p><p><strong>Category:</strong> Mortal · <strong>Role:</strong> Displacer · <strong>CV:</strong> 9</p><h3>Creature-roll reference</h3><table><thead><tr><th scope=\"col\">Attack</th><th scope=\"col\">Attribute</th><th scope=\"col\">Attack modifier</th><th scope=\"col\">Weak attack</th><th scope=\"col\">Standard attack</th><th scope=\"col\">Strong attack</th></tr></thead><tbody><tr><td>Patchwork spear</td><td>Brawn</td><td>None</td><td>2 physical damage.</td><td>3 physical damage. Push 1.</td><td>5 physical damage. Push 3.</td></tr></tbody></table><p>Use the attributes above for defenses named by incoming attacks. Same targeting, limits and costs apply; no opposed second roll.</p><h3>CV worksheet</h3><p><strong>Reference damage:</strong> 2/3/5</p><p><strong>Reference type:</strong> physical</p><p><strong>Expected targets:</strong> 1</p><p><strong>Utility factor:</strong> 1.3</p><p><strong>Regeneration per turn:</strong> 0</p><p>Reference I=4.404, O=2.162. Uses the seed worksheet. Utility is provisional and does not simulate control, positioning or summon choices.</p><p><strong>Ability sources:</strong> @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.8a7e9a683f51d9bf.JournalEntryPage.ae02613749cc32a2]{driving blow}, @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ec309ae23f3da381.JournalEntryPage.acc3331376d11702]{roll away}.</p><p><strong>Coverage reference:</strong> Pathfinder family survey; original HOL prose and mechanics.</p><p>Roster · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.5ebfaad0d5ed6813.JournalEntryPage.3292b6a49dcf7236]{Stability}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

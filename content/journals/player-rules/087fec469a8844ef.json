@@ -1,0 +1,39 @@
+{
+  "_key": "!journal!087fec469a8844ef",
+  "_id": "087fec469a8844ef",
+  "name": "Storm Survivor",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/origins/background-storm-survivor.md",
+        "sha256": "baac6d69228d4b80ff708794da0bab99d3d6e8bea2db7a90a0ba979dc45c7a9d",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!087fec469a8844ef.10d606b31757ebaf",
+      "_id": "10d606b31757ebaf",
+      "name": "Storm Survivor",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Storm Survivor</h1><p><em>You came back from the weather with something in your voice that was not there before.</em></p><p><em>What did the storm leave behind?</em></p><h2>Rules</h2><p>Choose one:</p><p>- <strong>Storm 1</strong> and @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.e58831a6b6ad0d96.JournalEntryPage.c22beedf9cebd649]{Thunder at the Door}. - <strong>Wilderness 1</strong> and @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.a5bfbe37870f8895.JournalEntryPage.dfa455aa5fddfe8c]{The Otter’s Bargain}.</p><p><strong>Type:</strong> Background</p><p>Each option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.</p><p><strong>Starting coin contribution:</strong> +5 coins. See @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0558be1f6014ee71.JournalEntryPage.880380bcd80cfec6]{starting coins}.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

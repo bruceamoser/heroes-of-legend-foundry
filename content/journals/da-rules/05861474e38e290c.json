@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!05861474e38e290c",
+  "_id": "05861474e38e290c",
+  "name": "Second Head Watches",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/second-head-watches.md",
+        "sha256": "5fe1a81418ac74da89b477fe7a9b4f6af41c6704e448358a1f9afc5e613de54a",
+        "id": "monster-second-head-watches",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!05861474e38e290c.f3fca95ee4073a63",
+      "_id": "f3fca95ee4073a63",
+      "name": "Second Head Watches",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Second Head Watches</h1><p><em>While one head snaps forward, another turns toward the hand reaching for a spell or weapon.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-second-head-watches</p><p><strong>Action:</strong> Reaction</p><p>When a visible enemy within 2 squares starts an action that normally provokes an opportunity attack, make one free Basic Melee attack against it before the action resolves. Spend the Reaction. The 2-square reach applies only to this Reaction; the provoking action continues if its actor remains capable. No specialty attack or free-attack chain; cannot trigger from a free attack or its granted movement. This grants no extra Reaction and is an alternative to the normal adjacent opportunity attack.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

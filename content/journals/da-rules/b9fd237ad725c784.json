@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!b9fd237ad725c784",
+  "_id": "b9fd237ad725c784",
+  "name": "Warhorse (CV 14)",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/bestiary/creatures/warhorse.md",
+        "sha256": "376dcb0635a2708a586777c587247c2f9cbe533ea71d5e116f15bf583e2d6b7a",
+        "id": "creature-warhorse",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!b9fd237ad725c784.922a2127011ccd35",
+      "_id": "922a2127011ccd35",
+      "name": "Warhorse (CV 14)",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Warhorse (CV 14)</h1><p><em>A broad-chested horse bears the marks of old harness straps and turns toward familiar commands even in chaos.</em></p><p><strong>Attributes:</strong> Brawn +2; Fortitude +2; Agility +0; Guile -1; Knowledge -1; Reason +0</p><p><strong>HP:</strong> 18 · <strong>Speed:</strong> 9 · <strong>Size:</strong> 2 (2x2 squares) · <strong>Armor DR:</strong> 0</p><p><strong>Evasion:</strong> None · <strong>Threat:</strong> None · <strong>Stability:</strong> 1</p><p><strong>Weaknesses:</strong> None\\ <strong>Resistances:</strong> None\\ <strong>Immunities:</strong> None</p><h2>Actions</h2><p>Damage and effects are <strong>Weak / Standard / Strong player defense</strong>. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.</p><table><thead><tr><th scope=\"col\">Main Actions</th><th scope=\"col\">Defense</th><th scope=\"col\">Damage</th></tr></thead><tbody><tr><td>Basic Melee</td><td>Agility</td><td>5/3/2</td></tr><tr><td>Trained kick</td><td>Agility</td><td>6 + Push 3 / 4 + Push 1 / 2</td></tr></tbody></table><table><thead><tr><th scope=\"col\">Maneuvers</th><th scope=\"col\">Effect</th></tr></thead><tbody><tr><td>Driving Stride</td><td>Move 3 straight; no opportunity from one chosen visible enemy.</td></tr><tr><td>Defend</td><td>+1 Bane</td></tr></tbody></table><table><thead><tr><th scope=\"col\">Reactions</th><th scope=\"col\">Effect</th></tr></thead><tbody><tr><td>Opportunity Attack</td><td>Basic Melee</td></tr></tbody></table><h2>Details</h2><h3>Trained kick</h3><p><strong>Target:</strong> One adjacent creature. <strong>Player defense:</strong> Agility. <strong>Damage type:</strong> physical.</p><p><strong>Weak defense:</strong> Push 3. <strong>Standard defense:</strong> Push 1.</p><p><strong>Limit:</strong> Apply Stability, terrain costs and normal collision rules to the printed distance.</p><h3>Driving Stride</h3><p><em>Hooves hammer a straight course through dust and broken grass.</em></p><p>Move up to 3 squares in a straight line without provoking from one visible enemy chosen before moving. Pay normal terrain costs and provoke normally from other enemies. Grants no attack or automatic movement of a rider or held creature.</p><h3>General details</h3><p><strong>Basic Melee:</strong> One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.</p><p><strong>Defend:</strong> Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.</p><p><strong>Opportunity Attack:</strong> Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.</p><p><strong>Heavy Frame — Passive:</strong> Stability 1; an explicit trait, not a bonus calculated from Size.</p><p><strong>Healing:</strong> Living: ordinary HP healing applies.</p><p><strong>Senses:</strong> Ordinary sight and hearing.</p><p><strong>Tactics and retreat:</strong> Kick a nearby threat, then use a straight stride to clear the danger. It responds to known handling rather than a stranger&#39;s shouted tactical plan.</p><p><strong>Encounter and conversation:</strong> Its rider is missing, but the horse knows the route back to the last camp.</p><p><strong>Habitat:</strong> Wilderness; nesting ground · <strong>Communication:</strong> None</p><p><strong>Loot:</strong> Recoverable possessions or lair clues chosen for the adventure; body parts grant no automatic special equipment or coin value.</p><p><strong>Summoning:</strong> Animal 1 — @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.eb08f4a31b294a44.JournalEntryPage.41f80f004ff7a526]{player reference}.</p><h2>Design notes — not needed during play</h2><p><strong>ID:</strong> creature-warhorse</p><p><strong>Category:</strong> Animal · <strong>Role:</strong> Displacer · <strong>CV:</strong> 14</p><h3>CV worksheet</h3><p><strong>Reference damage:</strong> 2/4/6</p><p><strong>Reference type:</strong> physical</p><p><strong>Expected targets:</strong> 1</p><p><strong>Utility factor:</strong> 1.35</p><p><strong>Action review (#1279):</strong> U 1.3 → 1.35: Maneuver allowance +0.05, Reaction allowance +0. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.</p><p><strong>Regeneration per turn:</strong> 0</p><p>Reference I=5.000, O=3.000. Uses the seed worksheet. Utility is provisional and does not simulate control, positioning or summon choices.</p><p><strong>Ability sources:</strong> @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.8a7e9a683f51d9bf.JournalEntryPage.ae02613749cc32a2]{driving blow}, @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.1f7445320c7b2884.JournalEntryPage.ab9f70864a32865f]{Driving Stride}.</p><p><strong>Coverage reference:</strong> Pathfinder family survey; original HOL prose and mechanics.</p><p>Roster · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.5ebfaad0d5ed6813.JournalEntryPage.3292b6a49dcf7236]{Stability}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

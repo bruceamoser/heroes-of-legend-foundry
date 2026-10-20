@@ -218,10 +218,12 @@
       "portrait": {
         "creatureId": "creature-shield-soldier",
         "asset": "assets/creatures/be1d28456964a10913abb186bf693f3796ad8f58e524af40b63e91c1e5a738e7.webp",
-        "sha256": "ad36181dc521cacb6c8775decfcdb6b2280854bed6f7a7c748a6223bec0d7858",
+        "sha256": "25951728967589e092c3b789279fee6b7d183beaee7dd27978360100f1839209",
         "sourceSha256": "be1d28456964a10913abb186bf693f3796ad8f58e524af40b63e91c1e5a738e7",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

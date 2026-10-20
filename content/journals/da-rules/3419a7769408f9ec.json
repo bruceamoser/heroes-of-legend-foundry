@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!3419a7769408f9ec",
+  "_id": "3419a7769408f9ec",
+  "name": "Hobgoblin Shieldguard (CV 22)",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/bestiary/creatures/hobgoblin-shieldguard.md",
+        "sha256": "9159ea327c4df676d1c9c53c62495c1fa9140f945b9f35072995d592932ba209",
+        "id": "creature-hobgoblin-shieldguard",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!3419a7769408f9ec.fe3943adba9f4f56",
+      "_id": "fe3943adba9f4f56",
+      "name": "Hobgoblin Shieldguard (CV 22)",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Hobgoblin Shieldguard (CV 22)</h1><p><em>A disciplined soldier carries a rectangular shield painted with the names of former squadmates.</em></p><p><strong>Attributes:</strong> Brawn +2; Fortitude +2; Agility +0; Guile -1; Knowledge -1; Reason +0</p><p><strong>HP:</strong> 18 · <strong>Speed:</strong> 5 · <strong>Size:</strong> 1 (medium) · <strong>Armor DR:</strong> 2</p><p><strong>Evasion:</strong> None · <strong>Threat:</strong> 1 Bane · <strong>Stability:</strong> 0</p><p><strong>Weaknesses:</strong> None\\ <strong>Resistances:</strong> Physical (2)\\ <strong>Immunities:</strong> None</p><h2>Actions</h2><p>Damage and effects are <strong>Weak / Standard / Strong player defense</strong>. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.</p><table><thead><tr><th scope=\"col\">Main Actions</th><th scope=\"col\">Defense</th><th scope=\"col\">Damage</th></tr></thead><tbody><tr><td>Basic Melee</td><td>Agility</td><td>5/3/2</td></tr><tr><td>Ranked spear</td><td>Agility</td><td>6 + Push 3 / 4 + Push 1 / 3</td></tr></tbody></table><table><thead><tr><th scope=\"col\">Maneuvers</th><th scope=\"col\">Effect</th></tr></thead><tbody><tr><td>Defend</td><td>+1 Bane</td></tr></tbody></table><table><thead><tr><th scope=\"col\">Reactions</th><th scope=\"col\">Effect</th></tr></thead><tbody><tr><td>Cover a Companion</td><td>Before an attack on an adjacent ally: +1 Bane if it can obstruct the attacker.</td></tr><tr><td>Shield Hunker</td><td>+1 Bane to blockable attacks; see details.</td></tr><tr><td>Opportunity Attack</td><td>Basic Melee</td></tr></tbody></table><h2>Details</h2><h3>Ranked spear</h3><p><strong>Target:</strong> One visible creature within 2 squares. <strong>Player defense:</strong> Agility. <strong>Damage type:</strong> physical.</p><p><strong>Weak defense:</strong> Push 3. <strong>Standard defense:</strong> Push 1.</p><p><strong>Limit:</strong> Apply Stability, terrain costs and normal collision rules to the printed distance.</p><h3>Shield Hunker</h3><p>Before a shield-blockable attack resolves, spend its Reaction to impose 1 Bane on player attacks it can block until the start of its next turn. The DA judges blockability. Stacks with Defend through normal Boon/Bane rules, not with another activation of itself.</p><h3>Cover a Companion</h3><p><em>The guardian steps into the line of danger, making the attacker work around its raised guard.</em></p><p>Before a visible enemy attacks a willing ally adjacent to this creature, impose 1 Bane on that attack roll if this creature can see the attacker. Against an NPC attack, grant that ally 1 Boon to its defense instead. This creature must also be adjacent to the attacker, or hold a shield the DA judges can obstruct the attack. No movement, target substitution or damage transfer. For a single player area attack, use the normal worst-target modifiers; do not roll again.</p><h3>General details</h3><p><strong>Basic Melee:</strong> One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.</p><p><strong>Defend:</strong> Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.</p><p><strong>Opportunity Attack:</strong> Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.</p><p><strong>Healing:</strong> Living: ordinary HP healing applies.</p><p><strong>Senses:</strong> Ordinary sight and hearing.</p><p><strong>Tactics and retreat:</strong> Brace the approach and use the spear to push foes out of formation. Keep the shield Reaction for a consequential blockable attack.</p><p><strong>Encounter and conversation:</strong> The guard&#39;s orders require protecting civilians, creating leverage against a reckless commander.</p><p><strong>Habitat:</strong> Settlement; frontier; contested road · <strong>Communication:</strong> Common and its community’s language</p><p><strong>Loot:</strong> Ordinary carried gear and 8 coins; special rewards belong to the adventure.</p><p><strong>Summoning:</strong> Ineligible.</p><h2>Design notes — not needed during play</h2><p><strong>ID:</strong> creature-hobgoblin-shieldguard</p><p><strong>Category:</strong> Mortal · <strong>Role:</strong> Displacer · <strong>CV:</strong> 22</p><h3>Creature-roll reference</h3><table><thead><tr><th scope=\"col\">Attack</th><th scope=\"col\">Attribute</th><th scope=\"col\">Attack modifier</th><th scope=\"col\">Weak attack</th><th scope=\"col\">Standard attack</th><th scope=\"col\">Strong attack</th></tr></thead><tbody><tr><td>Ranked spear</td><td>Brawn</td><td>1 Boon</td><td>3 physical damage.</td><td>4 physical damage. Push 1.</td><td>6 physical damage. Push 3.</td></tr></tbody></table><p>Use the attributes above for defenses named by incoming attacks. Same targeting, limits and costs apply; no opposed second roll.</p><h3>CV worksheet</h3><p><strong>Reference damage:</strong> 3/4/6</p><p><strong>Reference type:</strong> physical</p><p><strong>Expected targets:</strong> 1</p><p><strong>Utility factor:</strong> 1.5</p><p><strong>Action review (#1279):</strong> U 1.4 → 1.5: Maneuver allowance +0, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.</p><p><strong>Regeneration per turn:</strong> 0</p><p>Reference I=3.000, O=3.653. Uses the seed worksheet. Utility is provisional and does not simulate control, positioning or summon choices.</p><p><strong>Ability sources:</strong> @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.d668191f52891659.JournalEntryPage.dc41e6847403820c]{Cover a Companion}, @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.8a7e9a683f51d9bf.JournalEntryPage.ae02613749cc32a2]{driving blow}, @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.8ccbee43d37e22d5.JournalEntryPage.2506e936fe6aac13]{shield hunker}.</p><p><strong>Coverage reference:</strong> Pathfinder family survey; original HOL prose and mechanics.</p><p>Roster · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.5ebfaad0d5ed6813.JournalEntryPage.3292b6a49dcf7236]{Stability}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

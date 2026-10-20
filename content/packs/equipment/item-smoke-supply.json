@@ -3,6 +3,7 @@
   "_id": "29c27eb61541daed",
   "name": "Smoke Supply",
   "type": "equipment",
+  "img": "systems/heroes-of-legend/assets/icons/smoke.svg",
   "system": {
     "schemaVersion": 1,
     "catalogId": "item-smoke-supply",

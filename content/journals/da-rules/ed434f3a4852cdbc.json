@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!ed434f3a4852cdbc",
+  "_id": "ed434f3a4852cdbc",
+  "name": "Ice Anchor",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/rime-dragon-ice-anchor.md",
+        "sha256": "6cddeccae0b1621ae6baccd270ea82b04f136af880f91b7848d2cf8721fe13e5",
+        "id": "monster-rime-dragon-ice-anchor",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!ed434f3a4852cdbc.702166e98d81c7ba",
+      "_id": "702166e98d81c7ba",
+      "name": "Ice Anchor",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Ice Anchor</h1><p><em>Its claws sink deep into the ice.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-rime-dragon-ice-anchor</p><p><strong>Action:</strong> Maneuver</p><p>Gain Stability 3 while on ice or solid ground until its next turn; highest source only.</p><p><strong>Limits:</strong> Costs its Maneuver; no extra action is granted.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

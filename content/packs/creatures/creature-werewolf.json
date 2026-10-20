@@ -218,10 +218,12 @@
       "portrait": {
         "creatureId": "creature-werewolf",
         "asset": "assets/creatures/18cca5bfc73db1c504680c80e2e3828104c77c1faef72850eb2a0add13cd7e3a.webp",
-        "sha256": "48ae914a9806fc699a104e547e68f72b94656e46fb73b0e5d91db6a102093851",
+        "sha256": "98207ba8577a772a0494ced937f80ee619f502fa4e261b4d632aa00d6ed759db",
         "sourceSha256": "18cca5bfc73db1c504680c80e2e3828104c77c1faef72850eb2a0add13cd7e3a",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

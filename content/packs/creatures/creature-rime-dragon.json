@@ -282,10 +282,12 @@
       "portrait": {
         "creatureId": "creature-rime-dragon",
         "asset": "assets/creatures/91ea293f8836965248fd97e629dad2ae3f71b0473c8c14ab2b7527b86279761d.webp",
-        "sha256": "cca9d243a1173c598a1cd76d4cfcd6230017a98e170afb94b63d6945b626dc75",
+        "sha256": "9d154e26fbfa457d2033ca8cadd64a3e48c647dfaca2f1e3f1e627cbd0096448",
         "sourceSha256": "91ea293f8836965248fd97e629dad2ae3f71b0473c8c14ab2b7527b86279761d",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

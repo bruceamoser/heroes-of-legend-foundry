@@ -1,3 +1,4 @@
+import { catalogItemIcon } from "./item-icons.mjs";
 import {
   abilityDefinition,
   abilityReferenceStatus,
@@ -231,6 +232,7 @@ export function abilityItemSource(
   return {
     name: record.name,
     type: "ability",
+    img: catalogItemIcon(record, "ability"),
     system: abilitySystem(reference, definition),
     flags: {
       [SYSTEM_ID]: {
@@ -278,6 +280,7 @@ export function equipmentItemSource(
   return {
     name: record.name,
     type: "equipment",
+    img: catalogItemIcon(record, "equipment"),
     system: equipmentSystem(record, reference, {
       quantity,
       hands,
@@ -310,6 +313,7 @@ export function authoredItemDocument(item, id) {
     _id: id,
     name: item.name,
     type: item.type,
+    img: item.img,
     system: item.system,
     effects: [],
     folder: null,

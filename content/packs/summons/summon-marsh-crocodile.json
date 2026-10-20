@@ -139,10 +139,12 @@
       "portrait": {
         "creatureId": "creature-marsh-crocodile",
         "asset": "assets/creatures/0d26c658c862b53aa058ccbde1f1913175d59177f78701ab4c71d9288cb416c9.webp",
-        "sha256": "a6d7994e5751536d19ccc51fb6ae141ef9edbe15db87d95eef8cbfefa84a8c55",
+        "sha256": "05c5f64ec51487d9c2bc9cd0ad9e1d3a0dd35b90a1d26264436c69fae89e21bb",
         "sourceSha256": "0d26c658c862b53aa058ccbde1f1913175d59177f78701ab4c71d9288cb416c9",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

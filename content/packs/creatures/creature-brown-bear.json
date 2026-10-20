@@ -235,10 +235,12 @@
       "portrait": {
         "creatureId": "creature-brown-bear",
         "asset": "assets/creatures/e965f69da6674a7c6298fd663e373b43fac6d134fce326cf58fe673ac1b04a53.webp",
-        "sha256": "b5daad2e4aefe9e5def35cf2a23a8204492cf0cf7ff68c9901ed8034e223165b",
+        "sha256": "ff16a38335ccb15ea712b660c6883f18312bd27302db8d4903fd0b54eac4863a",
         "sourceSha256": "e965f69da6674a7c6298fd663e373b43fac6d134fce326cf58fe673ac1b04a53",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

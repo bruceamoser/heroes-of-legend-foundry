@@ -3,6 +3,7 @@
   "_id": "e4cc9194ee2bf207",
   "name": "Travel Pack",
   "type": "equipment",
+  "img": "systems/heroes-of-legend/assets/icons/pack.svg",
   "system": {
     "schemaVersion": 1,
     "catalogId": "item-travel-pack",

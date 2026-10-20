@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!987587e52d580671",
+  "_id": "987587e52d580671",
+  "name": "Sound the Depths",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/submerge.md",
+        "sha256": "0fb15ad95f0d37a19e48af1912b0b052bd98f6830397eed78e3f77f0cdbd1f24",
+        "id": "monster-submerge",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!987587e52d580671.db6c1ee499d7ac81",
+      "_id": "db6c1ee499d7ac81",
+      "name": "Sound the Depths",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Sound the Depths</h1><p><em>It slips beneath the surface with scarcely a ripple.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-submerge</p><p><strong>Action:</strong> Maneuver</p><p>Move up to 2 squares using its printed swim speed without provoking from one visible enemy chosen before moving. Pay normal terrain costs and provoke normally from other enemies. Water grants only the cover or concealment the scene actually provides; no automatic Hidden.</p><p>Only creatures whose entries list this ability possess it. Printed limits apply.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!a0de25c1fe23feb8",
+  "_id": "a0de25c1fe23feb8",
+  "name": "No Footfall at All",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/no-footfall-at-all.md",
+        "sha256": "867ee374e3354d76b28f4dd30139159fe05a6121b3f940a2c7048444b6aedd5d",
+        "id": "no-footfall-at-all",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!a0de25c1fe23feb8.d9ece4c10553556c",
+      "_id": "d9ece4c10553556c",
+      "name": "No Footfall at All",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>No Footfall at All</h1><p><em>You place each foot as though the floor were listening for your name.</em></p><h2>Rules</h2><p><strong>Action:</strong> Maneuver · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Self.</p><p>For the rest of this turn, your movement makes no audible footfalls and does not provoke. Move up to 2 squares immediately as part of this Maneuver. You remain visible unless actual concealment hides you; you do not silence speech or equipment deliberately used.</p><p><strong>Duration:</strong> Until the end of your current turn.</p><p><strong>Equipment / acquisition:</strong> No item needed unless named above.</p><p>---</p><p><strong>Tier / minimum level:</strong> 7 · <strong>DP:</strong> 8 · <strong>Requirements to learn:</strong> Subterfuge 3</p><p><strong>Type:</strong> Skill</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> no-footfall-at-all</p><p>Build this character · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

@@ -213,10 +213,12 @@
       "portrait": {
         "creatureId": "creature-ogre-glutton",
         "asset": "assets/creatures/7fc2e4353931bd9fbb24abe0d3752ad89d534790fde1ca3a63c82536f63431e6.webp",
-        "sha256": "3d7aaa97f98a7d4874ca3f1305cc71b1abef32152eb9c82815a50cacbc0e5449",
+        "sha256": "6614da1652f3ee36037304d8d2f194278bf6a9778f3a60c8c776965c00d7eee3",
         "sourceSha256": "7fc2e4353931bd9fbb24abe0d3752ad89d534790fde1ca3a63c82536f63431e6",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

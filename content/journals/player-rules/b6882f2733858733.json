@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!b6882f2733858733",
+  "_id": "b6882f2733858733",
+  "name": "Unbroken Passage",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/signature-protector-unbroken-passage.md",
+        "sha256": "06479674f3f81e9b76a8f1a51827a5e8913a37997cae3e00ebcb4a557d865d98",
+        "id": "signature-protector-unbroken-passage",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!b6882f2733858733.4e0345c3173c4f5d",
+      "_id": "4e0345c3173c4f5d",
+      "name": "Unbroken Passage",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Unbroken Passage</h1><p><em>You put yourself at the front and guide your companions through the press, keeping each dangerous opening behind your shoulder.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Self and up to two adjacent willing allies.</p><p>Move yourself and the chosen allies up to your Speed each without provoking, in an order you choose. Choose legal routes and separate free endpoints; the allies must finish adjacent to you. Each ally gains 1 Boon to its next defense before the start of your next turn while it remains adjacent to you and you can act. This does not carry an immobile creature or grant attacks.</p><p><strong>Duration:</strong> Movement is immediate; each defensive Boon expires when used, adjacency is lost or your next turn starts.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 7 · <strong>DP:</strong> 8 · <strong>Requirements to learn:</strong> Class Protector; minimum level 7</p><p><strong>Type:</strong> Signature</p><p><strong>Tags:</strong> Skill / Movement / Defense</p><p><strong>Limits:</strong> Repeatable; normal action economy applies.</p><p><strong>ID:</strong> signature-protector-unbroken-passage</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.fec08732fb31ffd9.JournalEntryPage.bdb294c8658c26c8]{Class choices} · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

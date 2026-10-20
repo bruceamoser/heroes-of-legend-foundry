@@ -189,10 +189,12 @@
       "portrait": {
         "creatureId": "creature-bridge-troll",
         "asset": "assets/creatures/25ebefc770cfb421747236971317913dcc6e9412010310d6ded36ecf6124bfc9.webp",
-        "sha256": "746b7e32e785f9f68c342200ad49a8a782e9207d4a4a54f2913e7a770b1d0284",
+        "sha256": "c9a2d31778212db379996e825324ae2fd001efb23f279d83b052decc6c0e1a1f",
         "sourceSha256": "25ebefc770cfb421747236971317913dcc6e9412010310d6ded36ecf6124bfc9",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

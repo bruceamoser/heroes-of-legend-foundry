@@ -1,5 +1,8 @@
 # Web sheet prototypes
 
+The approved screens now have a [native Foundry implementation](native-web-integration.md).
+The browser-only storage and disposable examples described below remain separate.
+
 The Pages workshop connects Character (`index.html`), NPC (`npc.html`),
 Creature (`creature.html`), Item (`item.html`) and the [roll dialog](roll-dialog-design.md)
 (`roll.html`), [chat cards](chat-card-design.md) (`chat.html`) and
@@ -49,7 +52,7 @@ embedded rules references. All 192 creature profiles are available. Existing
 approved portrait derivatives provide transparent WebP previews, at most 384px,
 produced by `python3 scripts/build-sheet-art.py` with Pillow. Their manifest records
 source and preview hashes. Total previews are approximately 11.8 MB instead of
-93.7 MB of runtime portraits; catalog images load lazily. No new artwork or rules
+41.7 MB of runtime portraits after the #213 768px bound; catalog images load lazily. No new artwork or rules
 were authored. The original art and licensing metadata remain unchanged.
 
 ## Validation

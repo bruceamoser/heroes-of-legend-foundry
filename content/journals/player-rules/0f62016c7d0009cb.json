@@ -1,0 +1,39 @@
+{
+  "_key": "!journal!0f62016c7d0009cb",
+  "_id": "0f62016c7d0009cb",
+  "name": "Border Marches",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/origins/culture-border-marches.md",
+        "sha256": "adf450658754041e3922649d0e948e80ff8cd83d1a71c2d51cc901b2c6f496f7",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!0f62016c7d0009cb.4b49f864e3ea1fba",
+      "_id": "4b49f864e3ea1fba",
+      "name": "Border Marches",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Border Marches</h1><p><em>Your neighbors know the difference between vigilance and fear, though keeping that distinction takes work.</em></p><p><em>Who taught you to welcome a traveler and watch the road at once?</em></p><h2>Rules</h2><p>Choose one:</p><p>- <strong>Guard 1</strong> and @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.65bc5b597540c33a.JournalEntryPage.486b7a184a71013a]{A Sign against Harm}. - <strong>Marksmanship 1</strong> and @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.06eff8e70c891b11.JournalEntryPage.d599f57e5650e7f2]{Read the Quarry}.</p><p><strong>Type:</strong> Culture</p><p>Each option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.</p><p><strong>Starting coin contribution:</strong> +7 coins. See @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0558be1f6014ee71.JournalEntryPage.880380bcd80cfec6]{starting coins}.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

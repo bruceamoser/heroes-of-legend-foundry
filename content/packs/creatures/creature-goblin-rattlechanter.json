@@ -213,10 +213,12 @@
       "portrait": {
         "creatureId": "creature-goblin-rattlechanter",
         "asset": "assets/creatures/7d68d441284417e700b72808b823568463e1ceaf8a45665e50309a48e01295c0.webp",
-        "sha256": "1458a4b02091b77f49118211b06f0eb1af29d9663f02769904d996b5e1187364",
+        "sha256": "7ff661a9e814db919cb75e05f96b827022401d8a743ed8799033d3a6ede187e1",
         "sourceSha256": "7d68d441284417e700b72808b823568463e1ceaf8a45665e50309a48e01295c0",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

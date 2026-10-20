@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!fec5982042360fb0",
+  "_id": "fec5982042360fb0",
+  "name": "Guide the Crossing",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/guide-the-crossing.md",
+        "sha256": "820d8ffced031868511d67bd77ca260287b9772d3fd3a87053cd8b6df06b6ab1",
+        "id": "guide-the-crossing",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!fec5982042360fb0.129f0f9574efb6a9",
+      "_id": "129f0f9574efb6a9",
+      "name": "Guide the Crossing",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Guide the Crossing</h1><p><em>You study the dangerous ground until a route appears in your mind, then turn to bring everyone through.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> Reason</p><p><strong>Time:</strong> Ten minutes per attempt.</p><p><strong>Target / range / shape:</strong> One noncombat natural hazard and companions; 10 minutes</p><p>Prepare and lead a route through one noncombat natural hazard for yourself and up to six companions. The DA sets its progress target and confirms a physically possible method before rolling. You may attempt terrain ordinary travelers could not cross unaided if you supply the needed ropes, supports or other means. When the target is met, companions who can follow your directions and method cross without separate rolls for the same hazard. New hazards or changed circumstances are resolved separately.</p><p>- <strong>Weak:</strong> 1 progress; identify a safe place to pause before the next attempt, if one is present. - <strong>Standard:</strong> 2 progress; also identify which visible part of the route most threatens a carried load. - <strong>Strong:</strong> 3 progress; also adapt the route for one willing or unconscious companion unable to make the crossing unaided, provided the party can physically carry them.</p><p><strong>Duration:</strong> Progress persists on this route; the completed crossing covers the named hazard only.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 7 · <strong>DP:</strong> 8 · <strong>Requirements to learn:</strong> Wilderness 3</p><p><strong>Type:</strong> Skill</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> guide-the-crossing</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

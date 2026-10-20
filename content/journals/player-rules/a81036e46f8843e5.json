@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!a81036e46f8843e5",
+  "_id": "a81036e46f8843e5",
+  "name": "Shielded Advance",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/shielded-advance.md",
+        "sha256": "b67cc92c5940931e525ca1775f4b01d50df3c4268bae47af3609bcaa69cec4ef",
+        "id": "shielded-advance",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!a81036e46f8843e5.54a34780195a8b01",
+      "_id": "54a34780195a8b01",
+      "name": "Shielded Advance",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Shielded Advance</h1><p><em>You keep your shield toward the threat and slide into place beside a friend, giving them room behind its edge.</em></p><h2>Rules</h2><p><strong>Action:</strong> Maneuver · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Self, then one adjacent willing ally at your destination.</p><p>Move up to 2 squares using normal movement and opportunity rules. Choose the ally after moving. While you remain adjacent and hold the shield, that ally gains 1 Boon to its next defense against an attack the DA judges shield-blockable. This grants neither Shield Block nor an attack.</p><p><strong>Duration:</strong> Until used or the start of your next turn.</p><p><strong>Equipment / acquisition:</strong> Requires a held shield. Grants one ordinary shield, Bulk 1, if absent.</p><p>---</p><p><strong>Tier / minimum level:</strong> 1 · <strong>DP:</strong> 2 · <strong>Requirements to learn:</strong> Guard 1</p><p><strong>Type:</strong> Skill / Movement / Defense</p><p><strong>Limits:</strong> Repeated uses do not multiply this card’s benefit on the same ally.</p><p><strong>ID:</strong> shielded-advance</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

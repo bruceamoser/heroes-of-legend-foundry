@@ -217,10 +217,12 @@
       "portrait": {
         "creatureId": "creature-gelatinous-cube",
         "asset": "assets/creatures/4dd9b895be2c74cd91a291084dddf4c0e68bfdcd5c94027c56aa5bbf4347d33e.webp",
-        "sha256": "7ffe91934a7ae2f8dd59c8bf3506c9a4090b357c60a39cd4433bdd88dcfa81d1",
+        "sha256": "afcbf078840a0a4bc1c2e3ec18c933fa35c91663ab3096322adf17a3a1794300",
         "sourceSha256": "4dd9b895be2c74cd91a291084dddf4c0e68bfdcd5c94027c56aa5bbf4347d33e",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

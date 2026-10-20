@@ -213,10 +213,12 @@
       "portrait": {
         "creatureId": "creature-gnoll-tracker",
         "asset": "assets/creatures/52e437d913ac182d9d4b3e9e6f6a6214a7ecf7ddde2f4b1b4d4484db01d16cbe.webp",
-        "sha256": "740ffe3fcc8e7f4b40672bb7f8946c97d8a2f1a5220d5aa5588459509c0a5896",
+        "sha256": "24d33ef4a85a48440336e8e95377aa12081c5d50107af018fda307afb102d0f3",
         "sourceSha256": "52e437d913ac182d9d4b3e9e6f6a6214a7ecf7ddde2f4b1b4d4484db01d16cbe",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!7f2ba854775959a6",
+  "_id": "7f2ba854775959a6",
+  "name": "Shoulder Through",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/signature-unbalanced-shoulder-through.md",
+        "sha256": "03e7d1e1b5e11e576df9a4939b12ed7bb5664ccbaf21cece1c719c3df5ddf219",
+        "id": "signature-unbalanced-shoulder-through",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!7f2ba854775959a6.af55105b197150ac",
+      "_id": "af55105b197150ac",
+      "name": "Shoulder Through",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Shoulder Through</h1><p><em>You drive your shoulder into the resistance and keep pushing after the first step gives way.</em></p><h2>Rules</h2><p><strong>Action:</strong> Passive · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> One creature pushed by your Force action.</p><p>Add 1 square to your Force push, on any result. You may then move 1 square directly toward the target without provoking if the square is free. This adds no grapple reduction or obstacle progress, and grants no attack.</p><p><strong>Duration:</strong> Immediate additional push and following step.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 1 · <strong>DP:</strong> 2 · <strong>Requirements to learn:</strong> Class Unbalanced; minimum level 1</p><p><strong>Type:</strong> Signature</p><p><strong>Tags:</strong> Skill / Control / Movement</p><p><strong>Limits:</strong> Once on your turn.</p><p><strong>ID:</strong> signature-unbalanced-shoulder-through</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.c52e568f60caf216.JournalEntryPage.e4c268a3f92809d7]{Class choices} · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

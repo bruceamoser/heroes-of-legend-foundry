@@ -21,10 +21,10 @@ async function join(name) {
   );
   const page = await context.newPage();
   page.on("pageerror", (e) => errors.push(e.message));
-  await page.goto(url);
+  await page.goto(`${url}/join`);
   await selectTestUser(page, name);
-  await page.locator("button[name=join]").click();
-  await page.waitForFunction(() => game.ready);
+  await page.locator("button[name=join]").evaluate(button => button.click());
+  await page.waitForFunction(() => globalThis.game?.ready);
   return { context, page };
 }
 async function request(
@@ -79,6 +79,7 @@ try {
       type: "character",
       ownership: { [user.id]: CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER },
     });
+    const observed = await Actor.create({ name: "Condition observer fixture", type: "character", ownership: { [user.id]: CONST.DOCUMENT_OWNERSHIP_LEVELS.OBSERVER } });
     await actor.createEmbeddedDocuments("ActiveEffect", [
       { name: "Unrelated fixture", flags: { other: { preserve: true } } },
     ]);
@@ -90,6 +91,8 @@ try {
       { name: actor.name, actorId: actor.id, actorLink: false },
     ]);
     return {
+      observed: observed.id,
+      observedUuid: observed.uuid,
       actor: actor.id,
       actorUuid: actor.uuid,
       scene: scene.id,
@@ -108,8 +111,9 @@ try {
       source: "Unauthorized player",
     },
     player.page,
+    fixture.observedUuid,
   );
-  assert.match(denied.result.error, /DA must/);
+  assert.match(denied.result.error, /Only an owner/);
   const first = await request("add", {
     key: "burning",
     rating: 3,
@@ -214,7 +218,7 @@ try {
   );
   assert.deepEqual(errors, []);
   console.info(
-    "PASS: native sourced ActiveEffects, GM permission, temporary/starred separation, source-specific reduction/removal, preserved unrelated effects, HUD entry/panel, unlinked-token isolation, reload and replay.",
+    "PASS: native sourced ActiveEffects, owner permission and observer denial, temporary/starred separation, source-specific reduction/removal, preserved unrelated effects, HUD entry/panel, unlinked-token isolation, reload and replay.",
   );
 } catch (e) {
   console.error(
@@ -234,13 +238,14 @@ try {
         );
         await releaseAuthority();
         for (const m of game.messages.filter((m) =>
-          [f.actorUuid, f.tokenUuid].includes(
+          [f.actorUuid, f.observedUuid, f.tokenUuid].includes(
             m.getFlag("heroes-of-legend", "conditionRequest")?.actorUuid,
           ),
         ))
           await m.delete();
         await game.scenes.get(f.scene)?.delete();
         await game.actors.get(f.actor)?.delete();
+        await game.actors.get(f.observed)?.delete();
         await game.users.get(f.user)?.delete();
       }, fixture)
       .catch((e) => console.error("Cleanup:", e.message));

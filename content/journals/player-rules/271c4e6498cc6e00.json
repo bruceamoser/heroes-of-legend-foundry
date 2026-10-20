@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!271c4e6498cc6e00",
+  "_id": "271c4e6498cc6e00",
+  "name": "The Wood Whispers",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/ancestries/trait-elf-leaf-listener.md",
+        "sha256": "db15f3d1761fda18483b4fe600131dc404bc496502bbba7e855605341f7518eb",
+        "id": "trait-elf-leaf-listener",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!271c4e6498cc6e00.5374b74555777a1c",
+      "_id": "5374b74555777a1c",
+      "name": "The Wood Whispers",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>The Wood Whispers</h1><p><em>You stop talking as the birds fall quiet, turning toward the rustle that disturbed them.</em></p><h2>Rules</h2><p>In woodland, gain 1 Boon to a consequential roll interpreting living signs of nearby disturbance. The signs can indicate a general direction, not an unseen creature’s exact square; this does not bypass Hidden.</p><p><strong>Ancestry:</strong> Elf · <strong>Choice:</strong> one of your two traits · <strong>Action:</strong> Passive unless the effect says otherwise.</p><p><strong>Duration:</strong> While its stated circumstances apply; permanent for base statistics.</p><p><strong>ID:</strong> trait-elf-leaf-listener</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.a3a36c3f861b9c6d.JournalEntryPage.937339711b359405]{Ancestry choices}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

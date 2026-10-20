@@ -230,10 +230,12 @@
       "portrait": {
         "creatureId": "creature-hill-ogre",
         "asset": "assets/creatures/0890183aa65768cca22994df4b987df1a914d837c1d7ec61c76ff27eb6c8a982.webp",
-        "sha256": "b8725cea169b1bd93ad42087c34fd2a7d4d908d123717cf54d6960cc86b67de5",
+        "sha256": "a310df114036bc732ae3e32321e97561a01a0119df1142ab3e039a21696e933b",
         "sourceSha256": "0890183aa65768cca22994df4b987df1a914d837c1d7ec61c76ff27eb6c8a982",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

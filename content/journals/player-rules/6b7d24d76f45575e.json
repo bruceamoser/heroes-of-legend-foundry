@@ -1,0 +1,39 @@
+{
+  "_key": "!journal!6b7d24d76f45575e",
+  "_id": "6b7d24d76f45575e",
+  "name": "Island Kinships",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/origins/culture-island-kinships.md",
+        "sha256": "ce9099bcb9589756ef8a0f0b1d6198e3fb9d707fc85e517b3af1aa047ec40289",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!6b7d24d76f45575e.8c73b1d5c0f2f635",
+      "_id": "8c73b1d5c0f2f635",
+      "name": "Island Kinships",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Island Kinships</h1><p><em>You grew up with a horizon on every side and family on more than one shore.</em></p><p><em>What signal means home is waiting?</em></p><h2>Rules</h2><p>Choose one:</p><p>- <strong>Wilderness 1</strong> and @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.8d25deb848249bf2.JournalEntryPage.6924f2460ad8493d]{Forage Coast}. - <strong>Storm 1</strong> and @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.e58831a6b6ad0d96.JournalEntryPage.c22beedf9cebd649]{Thunder at the Door}.</p><p><strong>Type:</strong> Culture</p><p>Each option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.</p><p><strong>Starting coin contribution:</strong> +7 coins. See @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0558be1f6014ee71.JournalEntryPage.880380bcd80cfec6]{starting coins}.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

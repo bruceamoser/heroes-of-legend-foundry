@@ -223,10 +223,12 @@
       "portrait": {
         "creatureId": "creature-crystal-ooze",
         "asset": "assets/creatures/ede1dd70d1bf0eb6f4841252287c83c759233e302d0c25aa3856d59fd67f6e7e.webp",
-        "sha256": "6c962c9a4c7548125d695d9824bcbfe66bb0b84a882302a61d5a180f46f50c93",
+        "sha256": "362fc4d8f7929eb8fda10c22f24d206aa5b357e3c39fc0b81bedff799eaa8660",
         "sourceSha256": "ede1dd70d1bf0eb6f4841252287c83c759233e302d0c25aa3856d59fd67f6e7e",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

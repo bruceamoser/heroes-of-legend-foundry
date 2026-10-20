@@ -3,6 +3,7 @@
   "_id": "bc4db84b27135eae",
   "name": "Travel Clothes",
   "type": "equipment",
+  "img": "systems/heroes-of-legend/assets/icons/clothes.svg",
   "system": {
     "schemaVersion": 1,
     "catalogId": "item-travel-clothes",

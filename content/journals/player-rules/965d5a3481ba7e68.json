@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!965d5a3481ba7e68",
+  "_id": "965d5a3481ba7e68",
+  "name": "Summon Fey — Novice",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/a-friend-beneath-the-door.md",
+        "sha256": "f19520798200ce644ee616b4115800890f3c19d4d01b204b086811d7a24564f4",
+        "id": "a-friend-beneath-the-door",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!965d5a3481ba7e68.8b70db493803f2eb",
+      "_id": "8b70db493803f2eb",
+      "name": "Summon Fey — Novice",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Summon Fey — Novice</h1><p><em>You trace an opening in the air. A scent of strange blossoms escapes before your chosen fey steps through and waits for your word.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> One visible unoccupied placement within 3 squares, with enough legal space to fit the chosen creature’s entire footprint.</p><p>Choose one bestiary entry explicitly approved for <strong>Fey summoning</strong> with a minimum summoning tier no higher than <strong>1</strong>. Summon one instance of that creature. Choose anew each casting; this card does not bind you to one species. Use that entry’s summon profile for HP, resistance, size, Speed, senses and permitted abilities. Creature appearance alone grants none of these capabilities.</p><p>Immediately give the new summon one free Main command: it receives a Main Action and a Maneuver, with normal downward conversions. This counts as its one command on this turn. Further activity on later turns requires a paid command. <strong>Without a command it does nothing:</strong> no movement, following, attacks, aid, lookout, alerts or new ability use. An old order grants no ongoing activity.</p><p>The summon acts during your turn. It disappears immediately if it goes more than 6 squares from you, including through forced movement. It cannot summon other creatures or take independent Reactions. Apply @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.14ca2c7a694d5dce.JournalEntryPage.a02885b08ca4b2b9]{Command a Summon} and the @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.56367e2f9016dd21.JournalEntryPage.9ff12960a5e160cc]{summoning reference}.</p><p><strong>Duration:</strong> One scene; ends sooner if the summon reaches 0 HP or breaks its tether.</p><p><strong>Equipment / acquisition:</strong> No equipment, corpse or consumable supplied or required. Summoned forms and their inherent gear provide no permanent loot or free supplies.</p><p>---</p><p><strong>Tier / minimum level:</strong> 1 · <strong>DP:</strong> 2 · <strong>Requirements to learn:</strong> Calling 1</p><p><strong>Type:</strong> Magic / Summoning</p><p><strong>Limits:</strong> One creature per casting; no total summon cap. No earlier summon card required. Only explicitly eligible bestiary entries can be selected; ordinary monster statistics or encounter CV alone do not establish eligibility.</p><p><strong>ID:</strong> a-friend-beneath-the-door</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

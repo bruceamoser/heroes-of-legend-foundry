@@ -3,6 +3,7 @@
   "_id": "d87cb47dfc6bdae8",
   "name": "Small Tent",
   "type": "equipment",
+  "img": "systems/heroes-of-legend/assets/icons/tent.svg",
   "system": {
     "schemaVersion": 1,
     "catalogId": "item-small-tent",

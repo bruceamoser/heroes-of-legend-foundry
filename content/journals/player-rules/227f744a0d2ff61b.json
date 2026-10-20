@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!227f744a0d2ff61b",
+  "_id": "227f744a0d2ff61b",
+  "name": "A Line for Everyone",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/a-line-for-everyone.md",
+        "sha256": "e57f88887124fba834dd46553dece3fb08bfd5c1f4186fa819c32a4667caec1a",
+        "id": "a-line-for-everyone",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!227f744a0d2ff61b.eac965dbac08f739",
+      "_id": "eac965dbac08f739",
+      "name": "A Line for Everyone",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>A Line for Everyone</h1><p><em>You test the line, look back at your companions and show them where to put their hands.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> Brawn</p><p><strong>Time:</strong> Ten minutes per attempt.</p><p><strong>Target / range / shape:</strong> One natural climb or gap and a suitable rope; ten minutes per attempt.</p><p>Establish a roped route toward a DA-declared progress target. You must reach and secure its anchors; this grants no remote placement or impossible foothold. On completion, you and up to six companions gain 1 Boon each to their next roll traversing this route while the rope remains secured.</p><p>- <strong>Weak:</strong> 1 progress; retain your safe grip. - <strong>Standard:</strong> 2 progress; retain your grip and secure one carried item. - <strong>Strong:</strong> 3 progress; gain both benefits and identify an available resting point along the route, if one exists.</p><p><strong>Duration:</strong> Until the rope is removed or the route changes.</p><p><strong>Equipment / acquisition:</strong> Suitable rope required; grants an ordinary rope coil, Bulk 1, if absent.</p><p>---</p><p><strong>Tier / minimum level:</strong> 3 · <strong>DP:</strong> 4 · <strong>Requirements to learn:</strong> Athletics 2 and Wilderness 1</p><p><strong>Type:</strong> Skill / Utility</p><p><strong>Limits:</strong> One Boon per traveler per route; rebuilding the same route does not refresh it. Existing ordinary rope use remains possible.</p><p><strong>ID:</strong> a-line-for-everyone</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Adventure development</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

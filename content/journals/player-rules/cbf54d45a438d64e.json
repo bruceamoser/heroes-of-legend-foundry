@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!cbf54d45a438d64e",
+  "_id": "cbf54d45a438d64e",
+  "name": "Ordinary Light Armor",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/equipment/ordinary-light-armor.md",
+        "sha256": "a26fc198de266b1f568079cea8333c2178bc40dabbf16a28fc8adf4a340af26a",
+        "id": "item-ordinary-light-armor",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!cbf54d45a438d64e.cce0b47f263f5c95",
+      "_id": "cce0b47f263f5c95",
+      "name": "Ordinary Light Armor",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Ordinary Light Armor</h1><p><em>You pull the light armor close and fasten its straps; the fitted layers guard your body without swallowing your outline.</em></p><h2>Rules</h2><p>- <strong>ID:</strong> item-ordinary-light-armor - <strong>Bulk:</strong> 1 - <strong>Requirements / supply:</strong> Requires @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.1f6b36c34db9c5eb.JournalEntryPage.36ac9af60144cf5c]{Wear Light Armor} to benefit - <strong>Acquisition:</strong> Explicit ability grant, coins, or DA treasure; no automatic extra starting kit.</p><p>Appearance is chosen by owner. The training card grants physical resistance 1; no additional resistance from this item.</p><p>No DP price. Purchase does not grant training or an ability.</p><p>Equipment index</p><p><strong>Market price:</strong> 10 coins; see @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.a8b099af3500d9f6.JournalEntryPage.cfa94361944ba875]{market rules}.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!ba33a0152f1c822c",
+  "_id": "ba33a0152f1c822c",
+  "name": "Rally",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/rally.md",
+        "sha256": "b7b76dfe3363632a7a9cbcb91614ac1929bf0a494b59670de9a39513aa55b0e2",
+        "id": "monster-rally",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!ba33a0152f1c822c.088a185df46835d9",
+      "_id": "088a185df46835d9",
+      "name": "Rally",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Rally</h1><p><em>A barked order cuts through the noise, and a wavering fighter finds their footing.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-rally</p><p><strong>Action:</strong> Maneuver</p><p>Choose one ally within 3 squares that can hear this creature. Remove 1 Frightened from that ally. Alternatively, grant 1 Boon to the ally’s next attack before the start of this creature’s next turn (1 Threat Bane if an NPC attacks a player). Multiple copies of this named bonus do not stack. No free attack is granted.</p><p><strong>Limits:</strong> Only creatures whose entries list this ability possess it. Printed entry values and restrictions apply; no ability grants unlisted actions.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

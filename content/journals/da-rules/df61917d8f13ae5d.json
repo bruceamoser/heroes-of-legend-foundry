@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!df61917d8f13ae5d",
+  "_id": "df61917d8f13ae5d",
+  "name": "Crypt Ghoul (CV 18)",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/bestiary/creatures/crypt-ghoul.md",
+        "sha256": "52b129b7e466b6f66814d58d2b965b3c73a0dbf49c9ca29f0b6a61b6cabd1733",
+        "id": "creature-crypt-ghoul",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!df61917d8f13ae5d.b04e1dca8e81ecbf",
+      "_id": "b04e1dca8e81ecbf",
+      "name": "Crypt Ghoul (CV 18)",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Crypt Ghoul (CV 18)</h1><p><em>A gaunt, corpse-eating undead with stretched lips, long nails and flesh drawn tight over its joints. It retains enough cunning to seek an isolated victim and avoid a determined group.</em></p><p><strong>Attributes:</strong> Brawn +1; Fortitude +1; Agility +2; Guile +0; Knowledge -1; Reason +1</p><p><strong>HP:</strong> 18 · <strong>Speed:</strong> 7 · <strong>Size:</strong> 1 (medium) · <strong>Armor DR:</strong> 0</p><p><strong>Evasion:</strong> 1 Bane · <strong>Threat:</strong> 1 Bane · <strong>Stability:</strong> 0</p><p><strong>Weaknesses:</strong> None\\ <strong>Resistances:</strong> None\\ <strong>Immunities:</strong> Poisoned; Asleep</p><h2>Actions</h2><p>Damage and effects are <strong>Weak / Standard / Strong player defense</strong>. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.</p><table><thead><tr><th scope=\"col\">Main Actions</th><th scope=\"col\">Defense</th><th scope=\"col\">Damage</th></tr></thead><tbody><tr><td>Basic Melee</td><td>Agility</td><td>5/3/2</td></tr><tr><td>Raking claws</td><td>Agility</td><td>6 + Bleeding 2 / 4 + Bleeding 1 / 3</td></tr><tr><td>Grave touch</td><td>Fortitude</td><td>4 + Paralyzed 1; cannot use this attack next turn / 3 / 2</td></tr></tbody></table><table><thead><tr><th scope=\"col\">Maneuvers</th><th scope=\"col\">Effect</th></tr></thead><tbody><tr><td>Rattle of the Grave</td><td>One hearing target within 2: Frightened 1 of this creature.</td></tr><tr><td>Shambling Advance</td><td>Move 2 toward living prey; difficult ground costs 1; next attack against it +1 Bane.</td></tr><tr><td>Defend</td><td>+1 Bane</td></tr></tbody></table><table><thead><tr><th scope=\"col\">Reactions</th><th scope=\"col\">Effect</th></tr></thead><tbody><tr><td>Opportunity Attack</td><td>Basic Melee</td></tr></tbody></table><h2>Details</h2><h3>Raking claws</h3><p><em>The claws snag and drag; blood follows the withdrawing talons.</em></p><p><strong>Target:</strong> One adjacent creature. <strong>Player defense:</strong> Agility. <strong>Damage type:</strong> physical.</p><p><strong>Weak defense:</strong> Bleeding 2. <strong>Standard defense:</strong> Bleeding 1.</p><h3>Grave touch</h3><p><em>The touch is colder than winter iron, and the limb refuses to answer.</em></p><p><strong>Target:</strong> One adjacent creature. <strong>Player defense:</strong> Fortitude. <strong>Damage type:</strong> cold.</p><p><strong>Weak defense:</strong> Paralyzed 1; cannot use this attack next turn.</p><p><strong>Limit:</strong> Cannot use this attack on consecutive turns, regardless of result.</p><h3>Shambling Advance</h3><p><em>The corpse lurches after the nearest warm body, dragging its ruined feet without ever looking away.</em></p><p>Move up to 2 squares toward a visible living creature within 6 squares; its next attack against that creature before turn end imposes 1 additional Bane on the player defense. For a player-controlled creature, gain 1 attack Boon instead. It must end closer to that creature than it began. For this movement only, treat difficult ground as normal; pay other costs and provoke normally. One attack only; repeated uses do not stack. This grants no attack and cannot be used while movement is prevented.</p><h3>Rattle of the Grave</h3><p><em>A dry sound rises from the corpse, like someone knocking from inside a coffin.</em></p><p>One creature within 2 squares that can hear it gains Frightened 1 of this creature. Once per turn; no damage.</p><h3>General details</h3><p><strong>Basic Melee:</strong> One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.</p><p><strong>Defend:</strong> Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.</p><p><strong>Opportunity Attack:</strong> Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.</p><p><strong>Lifeless Body:</strong> does not breathe or eat; only the listed immunities apply.</p><p><strong>Healing:</strong> Healing-harmed: ordinary healing resolves as Life damage instead; no beneficial riders.</p><p><strong>Against offensive healing:</strong> controller defends with Fortitude if this is player-controlled; a player attacking it still rolls only their attack.</p><p><strong>Senses:</strong> Ordinary sight and hearing.</p><p><strong>Signs:</strong> Bones are cracked for marrow and stacked with unnatural care.</p><p><strong>Purpose:</strong> Feed without returning to the grave.</p><p><strong>Tactics and retreat:</strong> Strike with Grave Chill, then rake on the intervening turn; avoid concentrated light and numbers.</p><p><strong>Counterplay and conversation:</strong> Keep a rescuer beside the front line and deny isolated feeding targets.</p><p><strong>Habitat:</strong> Crypt; battlefield · <strong>Communication:</strong> None</p><p><strong>Loot:</strong> The latest victim’s recoverable pack.</p><p><strong>Summoning:</strong> Undead 3 — @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.dfb56d40a57f888f.JournalEntryPage.2f69762bc9160de8]{player reference}.</p><h2>Design notes — not needed during play</h2><p><strong>ID:</strong> creature-crypt-ghoul</p><p><strong>Category:</strong> Undead · <strong>Role:</strong> Disabler · <strong>CV:</strong> 18</p><p><strong>Difficulty rationale:</strong> An agile or elusive body warrants attack Banes. Its dangerous attack imposes defense Banes.</p><p><strong>Reference damage:</strong> 3/4/6</p><p><strong>Reference type:</strong> physical</p><p><strong>Expected targets:</strong> 1</p><p><strong>Utility factor:</strong> 1.55</p><p><strong>Action review (#1279):</strong> U 1.45 → 1.55: Maneuver allowance +0.1, Reaction allowance +0. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.</p><p><strong>Regeneration per turn:</strong> 0</p><p>Reference I=4.404, O=3.653. CV uses the seed worksheet; action choices, Stability and control are not simulated. Recalibration remains required.</p><p><strong>Ability sources:</strong> @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.915ba0a267e5cdca.JournalEntryPage.aa271bd04a561f91]{grave chill}, @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.5612a98784835c7c.JournalEntryPage.e8e8b18438a523a4]{lifeless body}, @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.8a19d32972195c6c.JournalEntryPage.34c9dfe70552e989]{Rattle of the Grave}, @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.1227a58b2835a419.JournalEntryPage.f92cb5694a7fcf57]{rending blow}, @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.c467efdda4cc40fa.JournalEntryPage.d968191bc9d4a814]{Shambling Advance}.</p><p>Roster · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.5ebfaad0d5ed6813.JournalEntryPage.3292b6a49dcf7236]{Agreed Stability}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!8e509cd8c94fc406",
+  "_id": "8e509cd8c94fc406",
+  "name": "Close the Line",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/veteran-captain-close-the-line.md",
+        "sha256": "bf35ca342db0ffae200409ced1deb215f20d0ac91e03282bb70e99c034af0517",
+        "id": "monster-veteran-captain-close-the-line",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!8e509cd8c94fc406.1b5453aa11ef54aa",
+      "_id": "1b5453aa11ef54aa",
+      "name": "Close the Line",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Close the Line</h1><p><em>The captain points to the gap before anyone else sees it.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-veteran-captain-close-the-line</p><p><strong>Action:</strong> Maneuver</p><p>One willing ally within 3 squares that can hear may move 1 square immediately, ending adjacent to another ally. This voluntary movement provokes normally; once per turn.</p><p><strong>Limits:</strong> Costs its Maneuver; no extra action is granted.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

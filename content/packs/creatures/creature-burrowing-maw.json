@@ -206,10 +206,12 @@
       "portrait": {
         "creatureId": "creature-burrowing-maw",
         "asset": "assets/creatures/1fc8c755acac0aa4702db9c283c8795897e0d03e2a8593b80feab94793ea84be.webp",
-        "sha256": "12fdeda9653c87b1939a574cca4cb2b4430613a5bb23fc09bde591f76e0b4071",
+        "sha256": "8d8d659a3815a2de5cf6915bce31b781e0059231a52a3f9478ac1eb1bf553b61",
         "sourceSha256": "1fc8c755acac0aa4702db9c283c8795897e0d03e2a8593b80feab94793ea84be",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

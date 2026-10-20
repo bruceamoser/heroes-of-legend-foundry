@@ -126,10 +126,12 @@
       "portrait": {
         "creatureId": "creature-giant-constrictor",
         "asset": "assets/creatures/f266ae6fb9dc1a78cbe9dfb9103915d4eb4e8a0df5915bc552c3fef08c0aad80.webp",
-        "sha256": "0fb67eac798637ffab7858b2c0e38a16e84b6348e21506d5f5bffaf4c9b595d0",
+        "sha256": "f8944740dc4ba55e3dee953e9d672487928151e6b4340200e1b46b248bf0b0b9",
         "sourceSha256": "f266ae6fb9dc1a78cbe9dfb9103915d4eb4e8a0df5915bc552c3fef08c0aad80",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

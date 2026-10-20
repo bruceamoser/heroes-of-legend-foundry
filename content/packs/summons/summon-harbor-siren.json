@@ -121,10 +121,12 @@
       "portrait": {
         "creatureId": "creature-harbor-siren",
         "asset": "assets/creatures/823b8dbc1334c3d867b41ce06c7a200c02d7558c85e62f920fda0f576f0a8a9c.webp",
-        "sha256": "6e58287b8badbe0d9e5e1608fa93e3b0ac4bed2ba6b99ad2045b1badf1e044fc",
+        "sha256": "48985a7adde3c79e67aa123f87c34ca01df1ce26f596bb5e73a2ae031d2ec889",
         "sourceSha256": "823b8dbc1334c3d867b41ce06c7a200c02d7558c85e62f920fda0f576f0a8a9c",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

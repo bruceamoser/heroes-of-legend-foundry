@@ -240,10 +240,12 @@
       "portrait": {
         "creatureId": "creature-chimera",
         "asset": "assets/creatures/175e8445f46d8dd767b7f735001bfd10f390396bc8e62cc9de6d932e32614de9.webp",
-        "sha256": "4f1440d8e0e8141aa8d8e1955c7c4c36ca7e9b1db9f024b28a630db1548d5f83",
+        "sha256": "7b77880043e324fc8bc8d134f1b1ae01fa85e35b66ad911368dfac89e56bb7f8",
         "sourceSha256": "175e8445f46d8dd767b7f735001bfd10f390396bc8e62cc9de6d932e32614de9",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

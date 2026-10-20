@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!cc8a1c420f1dde08",
+  "_id": "cc8a1c420f1dde08",
+  "name": "Derive a Mechanism",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/derive-a-mechanism.md",
+        "sha256": "4a1a64d733319c0976963f81ae8898f122fa0f78edbe8adb8f9a4c61a06e90b5",
+        "id": "derive-a-mechanism",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!cc8a1c420f1dde08.43a72c2d86d79d4c",
+      "_id": "43a72c2d86d79d4c",
+      "name": "Derive a Mechanism",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Derive a Mechanism</h1><p><em>You lay out the pieces and follow the maker’s thinking, one ingenious decision at a time.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> Reason</p><p><strong>Time:</strong> Four hours per attempt.</p><p><strong>Target / range / shape:</strong> One accessible ordinary mechanical item; four hours</p><p>Proposal: target 12 for an ordinary mechanism. Requires tools and access to the item at every attempt. Creates a recipe, not the item or permission to craft it. Special items excluded.</p><p>- <strong>Weak:</strong> 1 derivation progress. - <strong>Standard:</strong> 2 derivation progress. - <strong>Strong:</strong> 3 derivation progress.</p><p><strong>Duration:</strong> Information and earned progress persist for the stated task; completed changes remain until circumstances alter them.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 3 · <strong>DP:</strong> 4 · <strong>Requirements to learn:</strong> Craft 2</p><p><strong>Type:</strong> Skill</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> derive-a-mechanism</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

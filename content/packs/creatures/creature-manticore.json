@@ -240,10 +240,12 @@
       "portrait": {
         "creatureId": "creature-manticore",
         "asset": "assets/creatures/7fedba7ed64fbd6251d730ebc67dabcb2be78e87bb1fb63266e8df848964f56f.webp",
-        "sha256": "aaf3a8f747ff8a3fd411670f00a488bafd1413d4023b4bf73eb56c8c9de4938b",
+        "sha256": "cb36caa913a8a5e202f6d796c033acf49f6a475af785a3a6111d39af355a71df",
         "sourceSha256": "7fedba7ed64fbd6251d730ebc67dabcb2be78e87bb1fb63266e8df848964f56f",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

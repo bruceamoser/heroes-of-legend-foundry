@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!12fdd0d4c34e381b",
+  "_id": "12fdd0d4c34e381b",
+  "name": "Lock the Frame",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/lock-the-frame.md",
+        "sha256": "5bd1acc51f685b552dcb2f8c4a8aecb6fb4ab10629af7cdf4fccbc16e3c07afd",
+        "id": "monster-lock-the-frame",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!12fdd0d4c34e381b.dbf44e196febb659",
+      "_id": "dbf44e196febb659",
+      "name": "Lock the Frame",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Lock the Frame</h1><p><em>The joints grind shut and the body becomes a single weight planted against the shove.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-lock-the-frame</p><p><strong>Action:</strong> Reaction</p><p>Before this creature is forcibly moved while on solid ground, gain Stability 3 for that forced movement only. Use the highest source. In a collision chain, declare before its Stability is deducted; prior collision damage still resolves. This does not resist Prone or grapples.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

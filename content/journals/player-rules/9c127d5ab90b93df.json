@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!9c127d5ab90b93df",
+  "_id": "9c127d5ab90b93df",
+  "name": "Wake the Nerves",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/wake-the-nerves.md",
+        "sha256": "8c4fe28c1fa7464013e067871a5b8e19474328b68b95706953b9a8af7f0b1b66",
+        "id": "wake-the-nerves",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!9c127d5ab90b93df.b8a273c63706b74f",
+      "_id": "b8a273c63706b74f",
+      "name": "Wake the Nerves",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Wake the Nerves</h1><p><em>You touch two fingers to your companion’s temple and send a small pulse down their trembling limbs.</em></p><h2>Rules</h2><p><strong>Action:</strong> Maneuver · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> One adjacent willing living creature.</p><p>Reduce temporary Dazed by 1, minimum 0. This does not restore action categories already determined for the current turn; it can improve the target’s next turn. It restores no HP and does not treat a lasting wound.</p><p><strong>Duration:</strong> Instant.</p><p><strong>Equipment / acquisition:</strong> Requires one free hand; grants no item.</p><p>---</p><p><strong>Tier / minimum level:</strong> 3 · <strong>DP:</strong> 4 · <strong>Requirements to learn:</strong> Life 2 and Medicine 1</p><p><strong>Type:</strong> Magic / Recovery</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> wake-the-nerves</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

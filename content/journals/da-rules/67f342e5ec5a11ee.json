@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!67f342e5ec5a11ee",
+  "_id": "67f342e5ec5a11ee",
+  "name": "Seizing Limbs",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/seizing-limbs.md",
+        "sha256": "66f2767bac03446133659d16daf8320854f42e75c80b88490fda96d517417737",
+        "id": "monster-seizing-limbs",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!67f342e5ec5a11ee.31fee754d3ab5f8c",
+      "_id": "31fee754d3ab5f8c",
+      "name": "Seizing Limbs",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Seizing Limbs</h1><p><em>A coil or grasping limb closes around the target and braces against its struggling weight.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-seizing-limbs</p><p><strong>Action:</strong> Main Action</p><p>Use the printed attack. Standard also establishes Grappled 1; Strong establishes Grappled 2. A single holder’s contribution is replaced by its higher new result, not added to itself. Other holders stack normally. The holder suffers its own grapple contribution and cannot move while maintaining it. Release at any time without an action; death, unconsciousness or separation beyond the attack’s reach ends the hold. Force and external aid follow the core grapple rules.</p><p><strong>Limits:</strong> Only creatures whose entries list this ability possess it. Printed entry values and restrictions apply; no ability grants unlisted actions.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

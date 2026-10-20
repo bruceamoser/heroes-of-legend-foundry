@@ -218,10 +218,12 @@
       "portrait": {
         "creatureId": "creature-giant-spider",
         "asset": "assets/creatures/d14f3ee17369cbb845952358e269117295cf168d78e921cd33580cde4d22cc5c.webp",
-        "sha256": "3c9e3e3d53d875f2b397a86eac6c412fbb32a0c68b7b03eeb46bd84b7a29a7fd",
+        "sha256": "69d735a95a09c1b9d23e554cd6e39929de2d767c63e47331b090ae4564c4923f",
         "sourceSha256": "d14f3ee17369cbb845952358e269117295cf168d78e921cd33580cde4d22cc5c",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!979653a009b7f8b3",
+  "_id": "979653a009b7f8b3",
+  "name": "The Untroubled Hand",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/the-untroubled-hand.md",
+        "sha256": "dcee9c3caf4c66cdab77b9ad0ae02cf616674ea547a87f6a53312fe84a946d6e",
+        "id": "the-untroubled-hand",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!979653a009b7f8b3.21c9d8baaccef6da",
+      "_id": "21c9d8baaccef6da",
+      "name": "The Untroubled Hand",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>The Untroubled Hand</h1><p><em>You breathe out, catch the line of your opponent’s movement with an open hand, and strike while guiding their weight past you.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> Reason</p><p><strong>Target / range / shape:</strong> One adjacent creature.</p><p>Strike with an empty hand, foot or shoulder. You read balance, not anatomy alone.</p><p>- <strong>Weak:</strong> 3 physical damage. - <strong>Standard:</strong> 3 physical damage and push 1 square. - <strong>Strong:</strong> 5 physical damage and push 2 squares.</p><p><strong>Duration:</strong> Instant. Applied conditions follow their normal duration and decay.</p><p><strong>Equipment / acquisition:</strong> No item needed unless named above.</p><p>---</p><p><strong>Tier / minimum level:</strong> 1 · <strong>DP:</strong> 2 · <strong>Requirements to learn:</strong> Athletics 1</p><p><strong>Type:</strong> Skill / Attack</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> the-untroubled-hand</p><p>Build this character · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

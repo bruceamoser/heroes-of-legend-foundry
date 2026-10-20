@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!2321f6abd483bf9b",
+  "_id": "2321f6abd483bf9b",
+  "name": "Smoke in a Bottle",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/smoke-in-a-bottle.md",
+        "sha256": "4d1826157a57b237a529c4280583197affc3f43acf5d777a7616f62e496a4445",
+        "id": "smoke-in-a-bottle",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!2321f6abd483bf9b.a0575a82d5fd2963",
+      "_id": "a0575a82d5fd2963",
+      "name": "Smoke in a Bottle",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Smoke in a Bottle</h1><p><em>You shake the prepared bottle and throw it onto the ground. It breaks with a sharp pop, spilling a thick cloud of smoke across the nearby space.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> Knowledge</p><p><strong>Time:</strong> Main Action to throw; one hour per crafting attempt.</p><p><strong>Target / range / shape:</strong> Up to 3/5/7 connected visible unoccupied ground squares, each within 3 squares.</p><p><strong>Throw the smoke — Main Action.</strong> Use a prepared Smoke Flask supply. Roll Knowledge, then place one connected smoke area with squares joined along their edges. Check the supply’s inventory die after use; its last use still works.</p><p>- <strong>Weak:</strong> Fill up to 3 squares. - <strong>Standard:</strong> Fill up to 5 squares. - <strong>Strong:</strong> Fill up to 7 squares.</p><p>Smoke provides heavy cover across these squares until the end of your next turn. It deals no damage and does not make occupants automatically Hidden.</p><p><strong>Make the supply — one hour per attempt.</strong> This card permits the Smoke Flask and Travel Food recipes and grants both on learning. Use the recipe’s materials, tools and supply cap. Roll Knowledge: Weak raises one supply by 1 inventory step; Standard by 2; Strong by 3. Check any carried ingredient supply after the attempt. No group crafting.</p><p><strong>Duration:</strong> Smoke: until the end of your next turn. Crafted supplies remain until used.</p><p><strong>Equipment / acquisition:</strong> One mixing kit, Bulk 1, if absent. No ingredients or finished smoke granted.</p><p>---</p><p><strong>Tier / minimum level:</strong> 1 · <strong>DP:</strong> 2 · <strong>Requirements to learn:</strong> Craft 1</p><p><strong>Type:</strong> Skill / Crafting / Control / Utility</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> smoke-in-a-bottle</p><p>Build this character · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

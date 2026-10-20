@@ -3,6 +3,7 @@
   "_id": "1e63858582aa4a51",
   "name": "Small Necessities",
   "type": "equipment",
+  "img": "systems/heroes-of-legend/assets/icons/pouch.svg",
   "system": {
     "schemaVersion": 1,
     "catalogId": "item-small-necessities",

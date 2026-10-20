@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!7c98b728b187f48e",
+  "_id": "7c98b728b187f48e",
+  "name": "Stone Knuckle (CV 9)",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/bestiary/creatures/stone-knuckle.md",
+        "sha256": "57c2258a6cb0bec393babdaa9185c51ff558ad37f85769b454794c7399e02be4",
+        "id": "creature-stone-knuckle",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!7c98b728b187f48e.8fef259fa5ee1318",
+      "_id": "8fef259fa5ee1318",
+      "name": "Stone Knuckle (CV 9)",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Stone Knuckle (CV 9)</h1><p><em>A squat elemental assembled from pebbles and rough stones around a dense central core. Its blunt hands and planted feet suit it to guarding a small patch of ground.</em></p><p><strong>Attributes:</strong> Brawn +2; Fortitude +1; Agility -1; Guile -1; Knowledge -1; Reason +0</p><p><strong>HP:</strong> 12 · <strong>Speed:</strong> 4; burrow 2 · <strong>Size:</strong> 1 (medium) · <strong>Armor DR:</strong> 1</p><p><strong>Evasion:</strong> None · <strong>Threat:</strong> None · <strong>Stability:</strong> 1</p><p><strong>Weaknesses:</strong> None\\ <strong>Resistances:</strong> Physical (1)\\ <strong>Immunities:</strong> Bleeding; Poisoned; Asleep</p><h2>Actions</h2><p>Damage and effects are <strong>Weak / Standard / Strong player defense</strong>. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.</p><table><thead><tr><th scope=\"col\">Main Actions</th><th scope=\"col\">Defense</th><th scope=\"col\">Damage</th></tr></thead><tbody><tr><td>Basic Melee</td><td>Agility</td><td>5/3/2</td></tr><tr><td>Pebble fist</td><td>Agility</td><td>4/3/2</td></tr></tbody></table><table><thead><tr><th scope=\"col\">Maneuvers</th><th scope=\"col\">Effect</th></tr></thead><tbody><tr><td>Plant the Weight</td><td>On solid ground: Stability 3 until its next turn; highest source only.</td></tr><tr><td>Defend</td><td>+1 Bane</td></tr></tbody></table><table><thead><tr><th scope=\"col\">Reactions</th><th scope=\"col\">Effect</th></tr></thead><tbody><tr><td>Lock the Frame</td><td>Before forced movement on solid ground: Stability 3 for that movement.</td></tr><tr><td>Opportunity Attack</td><td>Basic Melee</td></tr></tbody></table><h2>Details</h2><h3>Pebble fist</h3><p><strong>Target:</strong> One adjacent creature. <strong>Player defense:</strong> Agility. <strong>Damage type:</strong> physical.</p><h3>Lock the Frame</h3><p><em>The joints grind shut and the body becomes a single weight planted against the shove.</em></p><p>Before this creature is forcibly moved while on solid ground, gain Stability 3 for that forced movement only. Use the highest source. In a collision chain, declare before its Stability is deducted; prior collision damage still resolves. This does not resist Prone or grapples.</p><h3>Plant the Weight</h3><p><em>It spreads its stance and settles its weight into the ground.</em></p><p>While standing on solid ground, gain Stability 3 until its next turn. Use the highest source only, never add sources.</p><h3>General details</h3><p><strong>Basic Melee:</strong> One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.</p><p><strong>Defend:</strong> Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.</p><p><strong>Opportunity Attack:</strong> Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.</p><p><strong>Heavy Frame — Passive:</strong> Stability 1; an explicit creature trait, not a bonus from size.</p><p><strong>Healing:</strong> Elemental: magical HP healing applies; cannot swallow potions. Printed immunities only.</p><p><strong>Senses:</strong> Ordinary sight and hearing.</p><p><strong>Signs:</strong> Fresh pebbles pile around an undisturbed buried marker.</p><p><strong>Purpose:</strong> Keep the ground around its resting place unbroken.</p><p><strong>Tactics and retreat:</strong> Defend a narrow route and jab whoever tries to move it.</p><p><strong>Counterplay and conversation:</strong> Restore the marker or agree to dig elsewhere.</p><p><strong>Habitat:</strong> Quarry; cave · <strong>Communication:</strong> None</p><p><strong>Loot:</strong> No gemstones are guaranteed inside it.</p><p><strong>Summoning:</strong> Elemental 1 — @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.27e3b8ab6796f2c7.JournalEntryPage.40b352c8b7edd533]{player reference}.</p><h2>Design notes — not needed during play</h2><p><strong>ID:</strong> creature-stone-knuckle</p><p><strong>Category:</strong> Elemental · <strong>Role:</strong> Small blocker · <strong>CV:</strong> 9</p><p><strong>Difficulty rationale:</strong> No innate attack modifier; armor, cover and chosen actions provide its defenses. Ordinary attack difficulty; riders and positioning carry the threat.</p><p><strong>Reference damage:</strong> 2/3/4</p><p><strong>Reference type:</strong> physical</p><p><strong>Expected targets:</strong> 1</p><p><strong>Utility factor:</strong> 1.2</p><p><strong>Action review (#1279):</strong> U 1.1 → 1.2: Maneuver allowance +0.05, Reaction allowance +0.05. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.</p><p><strong>Regeneration per turn:</strong> 0</p><p>Reference I=4.000, O=2.000. CV uses the seed worksheet; action choices, Stability and control are not simulated. Recalibration remains required.</p><p><strong>Ability sources:</strong> @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.f7d8847879b5fd97.JournalEntryPage.d46f94dc00697e75]{Plant the Weight}, @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.12fdd0d4c34e381b.JournalEntryPage.dbf44e196febb659]{Lock the Frame}.</p><p>Roster · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.5ebfaad0d5ed6813.JournalEntryPage.3292b6a49dcf7236]{Agreed Stability}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

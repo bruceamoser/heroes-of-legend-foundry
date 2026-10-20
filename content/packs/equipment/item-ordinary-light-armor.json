@@ -3,6 +3,7 @@
   "_id": "8ab5117d87438053",
   "name": "Ordinary Light Armor",
   "type": "equipment",
+  "img": "systems/heroes-of-legend/assets/icons/armor.svg",
   "system": {
     "schemaVersion": 1,
     "catalogId": "item-ordinary-light-armor",

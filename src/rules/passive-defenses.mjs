@@ -233,7 +233,7 @@ export function passiveDefenseSources({ abilities = [], equipment = [] } = {}) {
       continue;
     }
     provenanceByCatalog.set(catalogId, provenance);
-    if (!item.worn) continue;
+    if (!item.worn || item.quantity === 0) continue;
 
     const armor = ARMOR_RULES.find((rule) => rule.itemId === catalogId);
     if (armor) {

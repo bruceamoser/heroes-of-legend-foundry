@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!3771cb85fb00c722",
+  "_id": "3771cb85fb00c722",
+  "name": "Turn the Hunt",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/signature-warden-turn-the-hunt.md",
+        "sha256": "badadfcb36afee4ca5444f8e3762449a42af94461c2d91747c3e3a4ef23d206f",
+        "id": "signature-warden-turn-the-hunt",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!3771cb85fb00c722.11836b1980fce017",
+      "_id": "11836b1980fce017",
+      "name": "Turn the Hunt",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Turn the Hunt</h1><p><em>You read the turn of the beast’s weight and strike where its next step must fall, driving it toward the ground you chose.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> Knowledge</p><p><strong>Target / range / shape:</strong> One visible creature: adjacent with a melee weapon, or within 8 squares with a ranged weapon and ammunition.</p><p>Choose melee or ranged before rolling Knowledge. Make one attack.</p><p>- <strong>Weak:</strong> Deal 4 physical damage and push the target 1 square. - <strong>Standard:</strong> Deal 5 physical damage and push it 2 squares. - <strong>Strong:</strong> Deal 7 physical damage, push it 3 squares and apply Slowed 2.</p><p>After resolving the attack, you may move 1 square without provoking. Ranged use checks ammunition once after the attack. These are complete outcomes; this card requires no earlier signature.</p><p><strong>Duration:</strong> Damage and movement are immediate; Slowed decays normally.</p><p><strong>Equipment / acquisition:</strong> On learning, choose one ordinary melee weapon or one ordinary ranged weapon with a d8 ammunition bundle; grant each chosen item only if absent. Each item is Bulk 1. Each use requires the equipment for its chosen attack mode.</p><p>---</p><p><strong>Tier / minimum level:</strong> 7 · <strong>DP:</strong> 8 · <strong>Requirements to learn:</strong> Class Warden; minimum level 7</p><p><strong>Type:</strong> Signature</p><p><strong>Tags:</strong> Skill / Attack / Movement</p><p><strong>Limits:</strong> One attack per use.</p><p><strong>ID:</strong> signature-warden-turn-the-hunt</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

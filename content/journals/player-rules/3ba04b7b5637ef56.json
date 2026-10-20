@@ -1,0 +1,39 @@
+{
+  "_key": "!journal!3ba04b7b5637ef56",
+  "_id": "3ba04b7b5637ef56",
+  "name": "Blade",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/classes/blade.md",
+        "sha256": "3712a05aca5b71f61f8775012823c522eefff445ace7f701094329bfcace5e60",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!3ba04b7b5637ef56.a9a21da370b45af6",
+      "_id": "a9a21da370b45af6",
+      "name": "Blade",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Blade</h1><p><em>You make the hard choices in the space between one stroke and the next.</em></p><h2>Rules</h2><p><strong>Agreed:</strong> minimum 0 in Agility, Brawn; HP contribution +4. No multiclassing.</p><p><strong>Starting disciplines:</strong> choose two distinct rank-1 disciplines from Arms, Marksmanship, Athletics, Subterfuge.</p><p><strong>Discipline pricing:</strong> Home: Arms, Marksmanship. Adjacent: Athletics, Subterfuge. All others Foreign; no Opposed disciplines.</p><p>Choose one class-exclusive signature at levels 1, 3 and 7. Extra signatures cost 2/4/8 DP. No discipline requirements.</p><h2>Level 1 choices</h2><p>- @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.b81024b8b9cf1fe1.JournalEntryPage.058c5dc014b67c3d]{Cut and Turn} - @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.27674ae32fd6acd4.JournalEntryPage.d982fe095c98ceda]{Pressure Point} - @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.b17ce9b211193c7f.JournalEntryPage.6b4bca7533b85309]{Measured Guard}</p><h2>Level 3 choices</h2><p>- @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.c1224f63533d49c6.JournalEntryPage.598b944885d66dc1]{Sweeping Entry} - @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.1cc9e3bafcf7a84e.JournalEntryPage.062d4ae9a28c847c]{Return Stroke} - @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.6dcdc4b2400a5e14.JournalEntryPage.b9e14fcf2dce6504]{Fell the Balance}</p><h2>Level 7 choices</h2><p>- @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.9d3f63935dd7065c.JournalEntryPage.fc0b6b64271eb15a]{Dance Through Steel} - @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.e04cc138089557e7.JournalEntryPage.e00eb8e6b6140d3e]{Relentless Pursuit} - @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.1d33a734a8e1418e.JournalEntryPage.bb068adaf288a810]{Perfect Placement}</p><h2>Signature identity in play</h2><p>The revised options aim for these moments, with a deliberate advantage over shared cards of their tier. Each is an independent choice, not a progression chain.</p><p>- <strong>Level 1:</strong> Flow through melee, hinder a target, or guard and reposition. - <strong>Level 3:</strong> Enter decisively, counterattack, or take an opponent&#39;s footing. - <strong>Level 7:</strong> Strike a surrounding group, pursue and strike, or dictate where the duel moves.</p><p><strong>Starting coin contribution:</strong> +4 coins. See @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0558be1f6014ee71.JournalEntryPage.880380bcd80cfec6]{starting coins}.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

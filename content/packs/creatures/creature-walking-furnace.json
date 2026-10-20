@@ -243,10 +243,12 @@
       "portrait": {
         "creatureId": "creature-walking-furnace",
         "asset": "assets/creatures/fc08a5c0127fdfec1ad890336394c772ea6f499868d8adbbeb9ad0671481a9cd.webp",
-        "sha256": "79238c82f8e28946025ab28fd21a91d56696aac1c15e05abfcaeb190d67c71a6",
+        "sha256": "36f9b0c91e7cb51f4ba39a5a07ffbe9a9d2fa908b783804645d7ad1954be6e56",
         "sourceSha256": "fc08a5c0127fdfec1ad890336394c772ea6f499868d8adbbeb9ad0671481a9cd",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!fce35207c0d5fa56",
+  "_id": "fce35207c0d5fa56",
+  "name": "Lower the Tusks",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/wild-boar-lower-the-tusks.md",
+        "sha256": "597f0f8b465dc0c1cde0d58480a033117ca0b938a5b29479d9aa7dd35f7688ca",
+        "id": "monster-wild-boar-lower-the-tusks",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!fce35207c0d5fa56.08ac6d03ec25c587",
+      "_id": "08ac6d03ec25c587",
+      "name": "Lower the Tusks",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Lower the Tusks</h1><p><em>Its shoulders bunch behind the lowered tusks.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-wild-boar-lower-the-tusks</p><p><strong>Action:</strong> Maneuver</p><p>Gain Stability 1 until its next turn. Use the highest Stability; also gain 1 Boon on its next Tusks attack this turn (1 extra Bane on that target’s defense).</p><p><strong>Limits:</strong> Costs its Maneuver; no extra action is granted.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

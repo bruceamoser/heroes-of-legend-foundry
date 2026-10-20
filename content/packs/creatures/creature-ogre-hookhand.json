@@ -235,10 +235,12 @@
       "portrait": {
         "creatureId": "creature-ogre-hookhand",
         "asset": "assets/creatures/db7a92bafa3d1f21545947b6ef6227f642dddb9891d808211637701f5220f5a9.webp",
-        "sha256": "7f8958ff40185623c4344f8c8ffa1273fb11354aa6b4f2fb1d2ea24f4363abeb",
+        "sha256": "e23d872c17e1ef775ba82f9d1d2dadc995664016e06d989841c1624a9aafddad",
         "sourceSha256": "db7a92bafa3d1f21545947b6ef6227f642dddb9891d808211637701f5220f5a9",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

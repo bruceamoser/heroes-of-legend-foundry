@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!6885c62767a638fa",
+  "_id": "6885c62767a638fa",
+  "name": "An Honest Maker’s Hand",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/ancestries/trait-dwarf-maker-s-eye.md",
+        "sha256": "2cdfc39d9d943b40d87fc51ba681551dca62f5a96cf0890ac3110bacaafc9e59",
+        "id": "trait-dwarf-maker-s-eye",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!6885c62767a638fa.b27b61f1605cdbc9",
+      "_id": "b27b61f1605cdbc9",
+      "name": "An Honest Maker’s Hand",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>An Honest Maker’s Hand</h1><p><em>Your thumb finds the seam; your ear knows the ring of sound metal.</em></p><h2>Rules</h2><p>After handling an ordinary metal or stone item, recognize shoddy workmanship and common material without a roll. Gain 1 Boon when a consequential inspection seeks subtler defects. This is not crafting or magical identification permission.</p><p><strong>Ancestry:</strong> Dwarf · <strong>Choice:</strong> one of your two traits · <strong>Action:</strong> Passive unless the effect says otherwise.</p><p><strong>Duration:</strong> While its stated circumstances apply; permanent for base statistics.</p><p><strong>ID:</strong> trait-dwarf-maker-s-eye</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.549990a021d2f695.JournalEntryPage.2ab42086c744e8cb]{Ancestry choices}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

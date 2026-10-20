@@ -196,10 +196,12 @@
       "portrait": {
         "creatureId": "creature-centaur-scout",
         "asset": "assets/creatures/656300d3e73e566da07ad2e947c171ed96b6ea62188da433bb470da3f199efb3.webp",
-        "sha256": "137b9a9052eaa8c3ccf5f7a5a19f7038dc152022b2d90e8a2e5701352e697599",
+        "sha256": "d6c6cf618a2e583534d7371e34b38751b5be4714c3e5ed1948adce3711595ba7",
         "sourceSha256": "656300d3e73e566da07ad2e947c171ed96b6ea62188da433bb470da3f199efb3",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

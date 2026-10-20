@@ -1,0 +1,39 @@
+{
+  "_key": "!journal!549990a021d2f695",
+  "_id": "549990a021d2f695",
+  "name": "Dwarf",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/ancestries/dwarf.md",
+        "sha256": "35a839193aa090923d62b7f3ebb9a9639a27c694f7f12250db219028814026c7",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!549990a021d2f695.2ab42086c744e8cb",
+      "_id": "2ab42086c744e8cb",
+      "name": "Dwarf",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Dwarf</h1><p><em>Stone, craft, stubborn loyalty and a memory for debts both kind and cruel.</em></p><h2>Rules</h2><p>Choose two of the five traits below. These are invitations to a familiar fantasy, not a required personality. Any ancestry may grow up in any culture.</p><p><strong>Starting values:</strong> HP +4; base Speed 5.</p><p>- @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.90de291d03b1a841.JournalEntryPage.98941c8f591a35c8]{Stubborn as Bedrock} — Your ancestors did not dig a home from the mountain by yielding politely. - @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.533a9b640cc24ef0.JournalEntryPage.c9e99d0eee8886be]{The Mountain Remembers} — You know a mason’s lie by the stone around it. - @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.e2213d13a5e3457c.JournalEntryPage.4c8a691af33f941c]{Rooted in Stone} — Let the storm waste its strength on you. - @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.6885c62767a638fa.JournalEntryPage.b27b61f1605cdbc9]{An Honest Maker’s Hand} — Your thumb finds the seam; your ear knows the ring of sound metal. - @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.30c0dc2f9ccfd83e.JournalEntryPage.5fd2f2804da92cc3]{A Grudge Well Kept} — You remember who struck first. You intend them to remember what followed.</p><p><strong>Starting coin contribution:</strong> +2 coins. See @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0558be1f6014ee71.JournalEntryPage.880380bcd80cfec6]{starting coins}.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

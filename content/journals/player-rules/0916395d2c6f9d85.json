@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!0916395d2c6f9d85",
+  "_id": "0916395d2c6f9d85",
+  "name": "Digging Tools",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/equipment/digging-tools.md",
+        "sha256": "ec3263f560891397286f988c82b5bcea679dbd5fd67a85520f37937a497f8b6d",
+        "id": "item-digging-tools",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!0916395d2c6f9d85.75bc187db2438420",
+      "_id": "75bc187db2438420",
+      "name": "Digging Tools",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Digging Tools</h1><p><em>You plant the spade and turn the first heavy clod aside.</em></p><h2>Rules</h2><p><strong>ID:</strong> item-digging-tools</p><p><strong>Market price:</strong> 6 coins. <strong>Bulk:</strong> 1.</p><p>Compact shovel and pick for ordinary digging. Time and feasibility depend on the material; no combat damage profile or tunneling magic.</p><p>Buying equipment grants no DP advancement, training or ability. Use normal item-handling actions unless an applicable card says otherwise.</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.a8b099af3500d9f6.JournalEntryPage.cfa94361944ba875]{Market rules} · Equipment index</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

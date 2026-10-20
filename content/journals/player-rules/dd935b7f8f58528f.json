@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!dd935b7f8f58528f",
+  "_id": "dd935b7f8f58528f",
+  "name": "Urgent Bandaging",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/urgent-bandaging.md",
+        "sha256": "81fbc2675dd6d86aeffe84d4b3b8d6cef038d709009b309766eed2d5e7326b31",
+        "id": "urgent-bandaging",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!dd935b7f8f58528f.d66dce5b21978b4b",
+      "_id": "d66dce5b21978b4b",
+      "name": "Urgent Bandaging",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Urgent Bandaging</h1><p><em>You tear a strip, press hard and tie the knot while the battle rages around you.</em></p><h2>Rules</h2><p><strong>Action:</strong> Maneuver · <strong>Attribute:</strong> Knowledge</p><p><strong>Target / range / shape:</strong> Self or one adjacent willing creature</p><p>Reduce temporary Bleeding only, to a minimum of 0. A starred source requires its stated remedy.</p><p>- <strong>Weak:</strong> Reduce Bleeding by 1. - <strong>Standard:</strong> Reduce Bleeding by 2. - <strong>Strong:</strong> Reduce Bleeding by 3.</p><p><strong>Duration:</strong> Instant</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 3 · <strong>DP:</strong> 4 · <strong>Requirements to learn:</strong> Medicine 2</p><p><strong>Type:</strong> Skill</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> urgent-bandaging</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

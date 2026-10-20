@@ -1,3 +1,4 @@
+import { conditionApplication } from "./condition-apply.mjs";
 import { assertNoPendingTurn } from "./turn-lock.mjs";
 import { classifyRoll } from "../rules/roll.mjs";
 import { damageEvent } from "../rules/damage.mjs";
@@ -24,6 +25,7 @@ function passiveCatalogRecords(actor, type) {
           ? item.system.catalogId
           : item.getFlag(ID, "catalogId")) ?? "",
       worn: type === "equipment" ? item.system.worn : undefined,
+      quantity: type === "equipment" ? item.system.quantity : undefined,
       source: structuredClone(item.getFlag(ID, "source") ?? null),
     }))
     .sort((a, b) => a.instanceId.localeCompare(b.instanceId));
@@ -51,7 +53,7 @@ export function damageBasis(actor) {
     printedArmor: actor.type === "creature" ? actor.system.armor : 0,
   };
 }
-export function damagePreview(actor, basis, draft) {
+export function damagePreview(actor, basis, draft, { bypassResistance = false } = {}) {
   const resistances = [
       ...(basis.passiveDefenses?.resistances ?? []),
       ...(draft.resistances ?? []),
@@ -74,8 +76,8 @@ export function damagePreview(actor, basis, draft) {
       throw new Error("Label each damage modifier source.");
   const event = damageEvent({
     components: draft.components,
-    resistances: sources,
-    weaknesses,
+    resistances: bypassResistance ? [] : sources,
+    weaknesses: bypassResistance ? [] : weaknesses,
   });
   let survival = null,
     wound = false,
@@ -187,14 +189,16 @@ export function resolveDamageRequest(id) {
 async function apply(id) {
   const message = game.messages.get(id),
     request = message?.getFlag(ID, "damageRequest");
-  if (!message?.author?.isGM)
-    throw new Error("The DA must authorize damage application.");
+  if (!message?.author) throw new Error("The damage request has no author.");
   const actor =
     typeof request?.actorUuid === "string"
       ? await fromUuid(request.actorUuid)
       : null;
   if (actor?.documentName !== "Actor" || actor.pack)
     throw new Error("Damage target is unavailable.");
+  const conditionKey = request.draft?.conditionKey;
+  if (!message.author.isGM && !(conditionKey && actor.testUserPermission(message.author, "OWNER"))) throw new Error("The DA must authorize damage application.");
+  if (conditionKey && (request.rollMessageId || request.attackMessageId)) throw new Error("A condition event cannot also be an attack result.");
   const signature = JSON.stringify(request),
     receipt = actor.getFlag(ID, "operationReceipts")?.[id];
   if (receipt?.applied) {
@@ -206,6 +210,11 @@ async function apply(id) {
   let eventId = id,
     draft = structuredClone(request.draft),
     attackLink = null;
+  if (conditionKey) {
+    const current = conditionApplication(actor, conditionKey);
+    if (JSON.stringify(current.conditionSnapshot) !== JSON.stringify(draft.conditionSnapshot)) throw new Error("Condition sources changed. Review and apply again.");
+    draft = current;
+  }
   if (request.rollMessageId) {
     const defense = defenseDamage(game.messages.get(request.rollMessageId));
     if (defense.actorUuid !== actor.uuid)
@@ -237,7 +246,7 @@ async function apply(id) {
     throw new Error(
       "HP, survival or defenses changed. Review the damage preview again.",
     );
-  const plan = damagePreview(actor, basis, draft);
+  const plan = damagePreview(actor, basis, draft, { bypassResistance: conditionKey === "bleeding" });
   const record = {
     eventId,
     requestId: id,
@@ -250,7 +259,7 @@ async function apply(id) {
     event: plan.event,
     resistances: plan.resistances,
     weaknesses: plan.weaknesses,
-    kind: attackLink ? "basic-melee-damage" : request.rollMessageId ? "defense-damage" : "manual-damage",
+    kind: conditionKey ? "condition-damage" : attackLink ? "basic-melee-damage" : request.rollMessageId ? "defense-damage" : "manual-damage",
     reason: typeof draft.reason === "string" ? draft.reason.trim() : "",
     wound: plan.wound,
   };

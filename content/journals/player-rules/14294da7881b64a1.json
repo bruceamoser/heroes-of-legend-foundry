@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!14294da7881b64a1",
+  "_id": "14294da7881b64a1",
+  "name": "Keep Pressure",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/keep-pressure.md",
+        "sha256": "4a5cb0e5b8e46225d24de45ffa44b7d0b219bcff0c7104ddb880d0b5d604a63f",
+        "id": "keep-pressure",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!14294da7881b64a1.6640dea516b0db70",
+      "_id": "6640dea516b0db70",
+      "name": "Keep Pressure",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Keep Pressure</h1><p><em>You catch the loosening bandage and press down firmly before another pulse of blood escapes.</em></p><h2>Rules</h2><p><strong>Action:</strong> Reaction · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Self or one adjacent willing creature, before its Bleeding damage at turn end.</p><p>Reduce temporary Bleeding by 1, minimum 0, then resolve remaining Bleeding and its normal decay. This does not remove a starred contribution, heal a wound or restore HP.</p><p><strong>Duration:</strong> Instant.</p><p><strong>Equipment / acquisition:</strong> Requires a free hand and cloth; grants no item.</p><p>---</p><p><strong>Tier / minimum level:</strong> 1 · <strong>DP:</strong> 2 · <strong>Requirements to learn:</strong> Medicine 1</p><p><strong>Type:</strong> Skill / Recovery</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> keep-pressure</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!27c10643209114c0",
+  "_id": "27c10643209114c0",
+  "name": "Follow the Echo",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/echo-step.md",
+        "sha256": "e05f1d77ec247369ab006294cb7feaae600734fcb74d7cb96ea28ca7d424ab1f",
+        "id": "monster-echo-step",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!27c10643209114c0.f2a100d8ac92a416",
+      "_id": "f2a100d8ac92a416",
+      "name": "Follow the Echo",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Follow the Echo</h1><p><em>The sound arrives from the wrong corner as the figure drifts out of reach.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-echo-step</p><p><strong>Action:</strong> Maneuver</p><p>Move up to 2 squares using a printed movement mode without provoking. Normal terrain and occupancy rules apply; no passage through solid objects or automatic Hidden.</p><p>Only creatures whose entries list this ability possess it. Printed limits apply.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

@@ -129,10 +129,12 @@
       "portrait": {
         "creatureId": "creature-icebound-warden",
         "asset": "assets/creatures/b3076603d247550dc1e9b551bda1ffe7d6ffb5c4fa608d97f01a6e3ff70dade5.webp",
-        "sha256": "05f1cbe116a399fa3183338f4fa318de443dba259809287f510426f87b2228dd",
+        "sha256": "0905e8f2513997ff5e2a8f362463f897d37cd9cb10bbab5bc44b30799beb223d",
         "sourceSha256": "b3076603d247550dc1e9b551bda1ffe7d6ffb5c4fa608d97f01a6e3ff70dade5",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

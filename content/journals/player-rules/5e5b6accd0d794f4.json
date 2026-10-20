@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!5e5b6accd0d794f4",
+  "_id": "5e5b6accd0d794f4",
+  "name": "The Tale Will Tell of You",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/the-tale-will-tell-of-you.md",
+        "sha256": "c75c7b4f5debaf28d9232e62faf710ae4517342a4064edb9a38ad44048891689",
+        "id": "the-tale-will-tell-of-you",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!5e5b6accd0d794f4.13812de8cd7230c5",
+      "_id": "13812de8cd7230c5",
+      "name": "The Tale Will Tell of You",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>The Tale Will Tell of You</h1><p><em>You call your companion’s name with all the certainty of someone who has not finished their story.</em></p><h2>Rules</h2><p><strong>Action:</strong> Reaction · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> One ally within 4 squares after it enters Dying.</p><p>Your voice reaches it through the noise. If it can hear, it may immediately spend one of its own Grit to regain full HP. The wound remains. Cannot interrupt Last Words; grants no Grit and cannot be used when none remains.</p><p><strong>Duration:</strong> Resolve once at the stated trigger; applied conditions follow normal decay.</p><p><strong>Equipment / acquisition:</strong> No item needed unless named above.</p><p>---</p><p><strong>Tier / minimum level:</strong> 7 · <strong>DP:</strong> 8 · <strong>Requirements to learn:</strong> Influence 3</p><p><strong>Type:</strong> Skill</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> the-tale-will-tell-of-you</p><p>Build this character · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

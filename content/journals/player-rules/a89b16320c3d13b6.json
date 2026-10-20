@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!a89b16320c3d13b6",
+  "_id": "a89b16320c3d13b6",
+  "name": "Material Bundle",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/equipment/material-bundle.md",
+        "sha256": "b3f6a85c25e80ed5b9e0b53e028211334da7d17afa1d1107cd59436a454ce9d9",
+        "id": "item-material-bundle",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!a89b16320c3d13b6.d3676f84da3dfc56",
+      "_id": "d3676f84da3dfc56",
+      "name": "Material Bundle",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Material Bundle</h1><p><em>You spread out your gathered materials, already imagining what your hands will make of them.</em></p><h2>Rules</h2><p>- <strong>ID:</strong> item-material-bundle - <strong>Bulk:</strong> 1 - <strong>Requirements / supply:</strong> Inventory d6 - <strong>Acquisition:</strong> Explicit ability grant, coins, or DA treasure; no automatic extra starting kit.</p><p>Mark material type. One use and inventory check per crafting attempt requiring it. Incompatible material cannot substitute.</p><p>No DP price. Purchase does not grant training or an ability.</p><p>Equipment index</p><p><strong>Market price:</strong> 12 coins. Proposal; see @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.a8b099af3500d9f6.JournalEntryPage.cfa94361944ba875]{market rules}.</p><p>This 12-coin d6 price is for one named ordinary material type. Prepared healing ingredients cost 80 coins per d6 bundle instead; other rare materials require a DA quote. A cheap ordinary bundle cannot substitute for life salts or other specialist ingredients.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

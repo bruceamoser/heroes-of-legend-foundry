@@ -3,6 +3,7 @@
   "_id": "b4fe3f99b89c53ae",
   "name": "Signal Kit",
   "type": "equipment",
+  "img": "systems/heroes-of-legend/assets/icons/horn.svg",
   "system": {
     "schemaVersion": 1,
     "catalogId": "item-signal-kit",

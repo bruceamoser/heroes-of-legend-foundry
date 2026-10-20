@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!f5bd34b7bbc7716c",
+  "_id": "f5bd34b7bbc7716c",
+  "name": "Leave No Pursuit",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/signature-shadow-leave-no-pursuit.md",
+        "sha256": "987128e7c36b7ff87a9fcd70a9d670a692493f13c2b83a1ae2057fc44f4ee8dc",
+        "id": "signature-shadow-leave-no-pursuit",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!f5bd34b7bbc7716c.aa6c4ae80c590621",
+      "_id": "aa6c4ae80c590621",
+      "name": "Leave No Pursuit",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Leave No Pursuit</h1><p><em>You brush away the obvious prints, point out the stones that keep none and lead the party off the route their pursuers expect.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> None — no roll</p><p><strong>Time:</strong> Ten minutes preparation, then up to one hour of guided travel.</p><p><strong>Target / range / shape:</strong> Self and up to six willing companions following your route outside combat.</p><p>Spend ten minutes preparing a departure from a campsite or other stopping place. Conceal ordinary traces of the departure and guide the group for up to one hour. Attempts to follow those ordinary tracks take 2 Banes. This does not erase magical marks, remove witnesses or conceal people from direct view. The protection ends where the party leaves your guidance or creates a conspicuous new trail.</p><p><strong>Duration:</strong> The concealed trail remains difficult to follow until new evidence exposes it.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 7 · <strong>DP:</strong> 8 · <strong>Requirements to learn:</strong> Class Shadow; minimum level 7</p><p><strong>Type:</strong> Signature</p><p><strong>Tags:</strong> Skill / Utility</p><p><strong>Limits:</strong> One application per departure; repeated preparation does not add more Banes.</p><p><strong>ID:</strong> signature-shadow-leave-no-pursuit</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.659f046648036560.JournalEntryPage.6f9998008dd8a1fb]{Class choices} · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

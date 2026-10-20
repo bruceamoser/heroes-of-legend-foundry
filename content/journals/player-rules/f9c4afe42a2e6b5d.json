@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!f9c4afe42a2e6b5d",
+  "_id": "f9c4afe42a2e6b5d",
+  "name": "A Little Luck",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/ancestries/trait-halfling-good-cheer.md",
+        "sha256": "1ea5f424f5ee76412247fc85833995d8d609e118852bf44217436b2a6c3a63d0",
+        "id": "trait-halfling-good-cheer",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!f9c4afe42a2e6b5d.c33f980179b59773",
+      "_id": "c33f980179b59773",
+      "name": "A Little Luck",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>A Little Luck</h1><p><em>The latch catches your coat a heartbeat before you step into trouble.</em></p><h2>Rules</h2><p>Once per day, before a roll that uses an attribute, gain 1 Boon. Describe a small piece of good fortune. No reroll after seeing the result and no effect on inventory dice.</p><p><strong>Ancestry:</strong> Halfling · <strong>Choice:</strong> one of your two traits · <strong>Action:</strong> Passive unless the effect says otherwise.</p><p><strong>Duration:</strong> While its stated circumstances apply; permanent for base statistics.</p><p><strong>ID:</strong> trait-halfling-good-cheer</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.5365454ad0c5fedf.JournalEntryPage.6819ea3497079763]{Ancestry choices}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

@@ -231,10 +231,12 @@
       "portrait": {
         "creatureId": "creature-shadow",
         "asset": "assets/creatures/4d36a43a5d58573f96d7411b305058723b02b96d1635b74a5eaa85786d703c23.webp",
-        "sha256": "a120fef20032588bc7d4f233d7d23323903ad73e3acba4e8cb4d81962ade7c41",
+        "sha256": "9e9c7d11c66513f44142affd63e39b46e296b86f7727c6bf78c2853e1e599b94",
         "sourceSha256": "4d36a43a5d58573f96d7411b305058723b02b96d1635b74a5eaa85786d703c23",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

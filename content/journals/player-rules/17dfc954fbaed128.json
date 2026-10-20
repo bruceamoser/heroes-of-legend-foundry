@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!17dfc954fbaed128",
+  "_id": "17dfc954fbaed128",
+  "name": "The City Opens Its Doors",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/the-city-opens-its-doors.md",
+        "sha256": "51a982f4fedc1a27e9ff461f8ed4b52d0c047e5204afdd87f8663f94405b81ed",
+        "id": "the-city-opens-its-doors",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!17dfc954fbaed128.192dc313c700871b",
+      "_id": "192dc313c700871b",
+      "name": "The City Opens Its Doors",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>The City Opens Its Doors</h1><p><em>You follow a familiar sign to a side entrance, and someone inside recognizes how you knock.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> Guile</p><p><strong>Time:</strong> Four hours per attempt.</p><p><strong>Target / range / shape:</strong> An inhabited settlement where an illicit network could plausibly operate; four hours.</p><p>Seek a willing contact for one specific clandestine service: an introduction, passage or a hiding place. The DA confirms a suitable provider could be found and states available leads, stakes and a progress target before rolling. Completion finds a willing provider if one exists, not free service or guaranteed loyalty. The price and risk must be stated before you accept.</p><p>- <strong>Weak:</strong> 1 progress; learn one local sign or custom actually used by the network. - <strong>Standard:</strong> 2 progress; also learn one requirement a potential contact publicly or privately communicates. - <strong>Strong:</strong> 3 progress; also identify a practical way to verify that contact’s stated offer.</p><p><strong>Duration:</strong> Information and earned contacts persist; their circumstances may change.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 7 · <strong>DP:</strong> 8 · <strong>Requirements to learn:</strong> Subterfuge 3</p><p><strong>Type:</strong> Skill / Utility</p><p><strong>Limits:</strong> Cannot invent a network in an empty ruin or repeatedly roll without pursuing a new lead.</p><p><strong>ID:</strong> the-city-opens-its-doors</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Adventure development</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

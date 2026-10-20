@@ -1,0 +1,39 @@
+{
+  "_key": "!journal!c17eba3361923f91",
+  "_id": "c17eba3361923f91",
+  "name": "Itinerant Tinker",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/origins/background-itinerant-tinker.md",
+        "sha256": "c188562d394572660ccffa8c584e2773cbcecf7cc1c3b0d2029cfc7e3b1f81bd",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!c17eba3361923f91.a37089e6b63a84ab",
+      "_id": "a37089e6b63a84ab",
+      "name": "Itinerant Tinker",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Itinerant Tinker</h1><p><em>Your workshop fit on your back, and your reputation traveled a village ahead.</em></p><p><em>What repair earned you a lifelong welcome?</em></p><h2>Rules</h2><p>Choose one:</p><p>- <strong>Craft 1</strong> and @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.1f6d24b0a249869c.JournalEntryPage.74567059f78f57b6]{Spring in the Sleeve}. - <strong>Craft 1</strong> and @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.604becedb40956f0.JournalEntryPage.dea12cab64b41c6a]{Make Something Useful}.</p><p><strong>Type:</strong> Background</p><p>Each option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.</p><p><strong>Starting coin contribution:</strong> +7 coins. See @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0558be1f6014ee71.JournalEntryPage.880380bcd80cfec6]{starting coins}.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

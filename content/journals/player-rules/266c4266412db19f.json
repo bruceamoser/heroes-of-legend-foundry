@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!266c4266412db19f",
+  "_id": "266c4266412db19f",
+  "name": "Bring Them Near",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/signature-shepherd-bring-them-near.md",
+        "sha256": "5dc5cb0a4900673939aeccbce0f2843d003609e2a7f4d9230655fdd21c32dd7e",
+        "id": "signature-shepherd-bring-them-near",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!266c4266412db19f.0fb042e3bb4de94a",
+      "_id": "0fb042e3bb4de94a",
+      "name": "Bring Them Near",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Bring Them Near</h1><p><em>You reach toward your companion as the blow lands, calling them back along the safe route you can see.</em></p><h2>Rules</h2><p><strong>Action:</strong> Reaction · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> One willing ally within 4 squares, after it takes damage.</p><p>If still able to move, the ally may move up to 3 squares toward you without provoking. If it ends adjacent to you, it gains 1 Boon to its next defense before the start of your next turn. The attack already resolved; this does not undo its damage or move a Dying or restrained creature.</p><p><strong>Duration:</strong> Movement is immediate; Boon expires when used or the start of your next turn.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 3 · <strong>DP:</strong> 4 · <strong>Requirements to learn:</strong> Class Shepherd; minimum level 3</p><p><strong>Type:</strong> Signature</p><p><strong>Tags:</strong> Skill / Movement / Defense</p><p><strong>Limits:</strong> Repeatable; normal action economy applies.</p><p><strong>ID:</strong> signature-shepherd-bring-them-near</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.9f89a95738256790.JournalEntryPage.0577d987ea27d2c6]{Class choices} · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

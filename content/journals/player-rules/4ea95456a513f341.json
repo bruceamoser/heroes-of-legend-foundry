@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!4ea95456a513f341",
+  "_id": "4ea95456a513f341",
+  "name": "Useful Interruption",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/signature-odd-useful-interruption.md",
+        "sha256": "cf83a5a3f16bdf5f01359e132aa2e5ef16b427919a007d18fae59305fa54980d",
+        "id": "signature-odd-useful-interruption",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!4ea95456a513f341.80d7820a0f81a501",
+      "_id": "80d7820a0f81a501",
+      "name": "Useful Interruption",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Useful Interruption</h1><p><em>You interrupt with a question, a spilled drink or an absurdly well-timed cough, and your companion moves while everyone looks at you.</em></p><h2>Rules</h2><p><strong>Action:</strong> Maneuver · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> One creature within 3 squares that can see or hear your distraction; one willing ally within 3 squares.</p><p>Describe a distraction the creature can perceive. The ally may move up to 2 squares without provoking from that creature. It also gains 1 Boon to its next roll against that creature before the start of your next turn. Other enemies can still react to the movement. This does not compel belief or grant Hidden.</p><p><strong>Duration:</strong> Movement is immediate; the Boon expires when used or the start of your next turn.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 1 · <strong>DP:</strong> 2 · <strong>Requirements to learn:</strong> Class Odd; minimum level 1</p><p><strong>Type:</strong> Signature</p><p><strong>Tags:</strong> Skill / Utility / Movement</p><p><strong>Limits:</strong> Repeatable; normal action economy applies.</p><p><strong>ID:</strong> signature-odd-useful-interruption</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.b958699795c40aff.JournalEntryPage.5ab16268111adc1e]{Class choices} · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

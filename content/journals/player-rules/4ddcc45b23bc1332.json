@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!4ddcc45b23bc1332",
+  "_id": "4ddcc45b23bc1332",
+  "name": "The Road Remembers",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/the-road-remembers.md",
+        "sha256": "0aabe430238f59680b143d6fd7b4e9c736138f4ce77e8ee51d1e63a89c17aa6b",
+        "id": "the-road-remembers",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!4ddcc45b23bc1332.c6e661ffa66ac9ea",
+      "_id": "c6e661ffa66ac9ea",
+      "name": "The Road Remembers",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>The Road Remembers</h1><p><em>You part the grass, examine the crushed stems and touch the cold ash, following the signs of those who stopped here before you.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> Reason</p><p><strong>Time:</strong> Ten minutes.</p><p><strong>Target / range / shape:</strong> A natural trail or campsite; 10 minutes</p><p>Only evidence present can be read. Mundane tracking remains possible without this card; the expert gains the information listed below. No automatic tracking through erased evidence.</p><p>- <strong>Weak:</strong> Learn the direction of recent passage. - <strong>Standard:</strong> Also learn approximate group size. - <strong>Strong:</strong> Also identify a distinctive trace useful for following that group.</p><p><strong>Duration:</strong> The result applies when the stated activity is complete; information and earned progress persist.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 3 · <strong>DP:</strong> 4 · <strong>Requirements to learn:</strong> Wilderness 2</p><p><strong>Type:</strong> Skill / Utility</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> the-road-remembers</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

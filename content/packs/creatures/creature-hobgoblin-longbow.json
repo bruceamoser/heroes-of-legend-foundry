@@ -201,10 +201,12 @@
       "portrait": {
         "creatureId": "creature-hobgoblin-longbow",
         "asset": "assets/creatures/ebf17880bdf7c0a5783f7f81e2810d70acad269d6ef2f628af896e7e8737bcb3.webp",
-        "sha256": "fc4ab39c6a25c0c4451613f6f693978e638a9b494f98f356511bfed88120e32d",
+        "sha256": "4717071d8372f409ab7c129ccb3c825a79ed24abb24499fcd5e0e5848b04b2d7",
         "sourceSha256": "ebf17880bdf7c0a5783f7f81e2810d70acad269d6ef2f628af896e7e8737bcb3",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

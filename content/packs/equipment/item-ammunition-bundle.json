@@ -3,6 +3,7 @@
   "_id": "356133969e3b7922",
   "name": "Ammunition Bundle",
   "type": "equipment",
+  "img": "systems/heroes-of-legend/assets/icons/arrows.svg",
   "system": {
     "schemaVersion": 1,
     "catalogId": "item-ammunition-bundle",

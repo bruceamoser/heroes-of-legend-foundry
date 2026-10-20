@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!c4bc1a52ede2c60c",
+  "_id": "c4bc1a52ede2c60c",
+  "name": "Thunderclap",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/thunderclap.md",
+        "sha256": "a3baa716587a884036dff61303c56e697e0dfc265696fc93bd0947b330dbc53c",
+        "id": "monster-thunderclap",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!c4bc1a52ede2c60c.49fc38d5f305fa48",
+      "_id": "49fc38d5f305fa48",
+      "name": "Thunderclap",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Thunderclap</h1><p><em>A sharp report rolls through the space like a door slammed by the sky.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-thunderclap</p><p><strong>Action:</strong> Maneuver</p><p>One hearing creature within 2 squares gains Deafened 1. Once per turn; no damage.</p><p>Only creatures whose entries list this ability possess it. Printed limits apply.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

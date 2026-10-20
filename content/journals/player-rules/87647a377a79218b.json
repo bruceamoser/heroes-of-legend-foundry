@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!87647a377a79218b",
+  "_id": "87647a377a79218b",
+  "name": "Veiled Crossing",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/veiled-crossing.md",
+        "sha256": "1e50f9f542c519da52921d5eb49cbf8bfafae6d95e167103525b765fdbe6ed7a",
+        "id": "veiled-crossing",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!87647a377a79218b.80f6426c325ef002",
+      "_id": "80f6426c325ef002",
+      "name": "Veiled Crossing",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Veiled Crossing</h1><p><em>You wait for the shadows to join, then lead your companion along their quiet seam.</em></p><h2>Rules</h2><p><strong>Action:</strong> Maneuver · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Self, with an actual concealed route</p><p>Move up to your Speed along a legal concealed route without provoking. One adjacent willing ally may follow that route up to the same distance, spending its Reaction and ending in a separate free square. A participant already Hidden remains Hidden only while the route continues to conceal them. A participant not Hidden gains no automatic concealment. This card does not permit movement through exposed or occupied standing squares.</p><p><strong>Duration:</strong> Instant</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 3 · <strong>DP:</strong> 4 · <strong>Requirements to learn:</strong> Subterfuge 2</p><p><strong>Type:</strong> Skill</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> veiled-crossing</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Catalog</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

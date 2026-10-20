@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!ceb2f58b2c9b1524",
+  "_id": "ceb2f58b2c9b1524",
+  "name": "Weave the Roots",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/root-bridge.md",
+        "sha256": "e9f51a3bb7ad6d595882bb6915478b157aaa2adcacf53138cff1c5cf7d35fe00",
+        "id": "monster-root-bridge",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!ceb2f58b2c9b1524.92095cee043ca226",
+      "_id": "92095cee043ca226",
+      "name": "Weave the Roots",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Weave the Roots</h1><p><em>Roots braid themselves into firm footholds across the treacherous ground.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-root-bridge</p><p><strong>Action:</strong> Maneuver</p><p>Choose up to 3 connected difficult-terrain ground squares within 3 squares; they count as normal terrain until its next turn. Requires soil or living vegetation; cannot bridge empty space or bypass occupied squares.</p><p>Only creatures whose entries list this ability possess it. Printed limits apply.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

@@ -13,28 +13,28 @@
       "type": "Item",
       "path": "packs/abilities",
       "count": 419,
-      "semanticSha256": "61982b2a6014c7e0254f3fdbcfda7480944cc0f0a1d6e94e56f0da3d9bd55606"
+      "semanticSha256": "fdcda4b2bb70619630647b30c5ce6477ada787a9204c46b6d40a02aed8d3509a"
     },
     {
       "name": "equipment",
       "type": "Item",
       "path": "packs/equipment",
       "count": 44,
-      "semanticSha256": "1e8c479c275f6bd91fd634376a9db50a9286f2e135afc5b207a6aa2876f93801"
+      "semanticSha256": "b445d828d757f81b2b8b07ae3cb780fa8ee790adf1dd7cca867245527aeef52d"
     },
     {
       "name": "creatures",
       "type": "Actor",
       "path": "packs/creatures",
       "count": 192,
-      "semanticSha256": "4333c242946443b5998507bba01604104d4dd545acbacd1394eda1f1a4159ab9"
+      "semanticSha256": "6d50fc1a38b87627107c80dd63dff318c1743bbdc6cd8bac659767c705089079"
     },
     {
       "name": "summons",
       "type": "Actor",
       "path": "packs/summons",
       "count": 73,
-      "semanticSha256": "24f1a47722cd44784e446a38bdff52f403799ff38322e81cfbc29af4ea634a6f"
+      "semanticSha256": "a77a6c14057b00d71cea0ab1a162aaf982257f3b3f91f4ddb9b7a6912ce95c44"
     }
   ]
 }

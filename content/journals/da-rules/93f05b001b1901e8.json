@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!93f05b001b1901e8",
+  "_id": "93f05b001b1901e8",
+  "name": "Dread Cry",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/dread-cry.md",
+        "sha256": "d35c9d9fb02cdf716d44665b41a99421c1089cddcf9bc2e736a192e27d27efe0",
+        "id": "monster-dread-cry",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!93f05b001b1901e8.efdc6b723c1f2fbe",
+      "_id": "efdc6b723c1f2fbe",
+      "name": "Dread Cry",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Dread Cry</h1><p><em>Its cry seems to come from somewhere behind your ribs.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-dread-cry</p><p><strong>Action:</strong> Main Action</p><p>A printed mental attack applies Frightened 1/2/3 on Weak/Standard/Strong, with no damage unless separately printed. The source is this creature; Banes apply while the target perceives it. The cry must be heard. Ordinary decay applies and no second save is made.</p><p><strong>Limits:</strong> Only creatures whose entries list this ability possess it. Printed entry values and restrictions apply; no ability grants unlisted actions.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

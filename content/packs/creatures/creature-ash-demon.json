@@ -222,10 +222,12 @@
       "portrait": {
         "creatureId": "creature-ash-demon",
         "asset": "assets/creatures/72ebffeb31d0334d430c2d205e7af85f2d8af12ae8fe4c01e728df51097e6077.webp",
-        "sha256": "8066e300db1b7094e8fd00d12d00aef42aa183c21f534e4c9a04b061bfb401c6",
+        "sha256": "d9196d23dff97759cb78f98320782a7434448c0d70361f1594d271c20f59f29c",
         "sourceSha256": "72ebffeb31d0334d430c2d205e7af85f2d8af12ae8fe4c01e728df51097e6077",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

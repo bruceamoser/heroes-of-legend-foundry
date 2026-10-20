@@ -201,10 +201,12 @@
       "portrait": {
         "creatureId": "creature-thought-leech",
         "asset": "assets/creatures/53cea73d41bf17eee1ca07bcb6e612310fe538cecb81a729a27ce2c6687f516b.webp",
-        "sha256": "47e6ea3eb3cc9360a7f5179169f36af42e89af2c5892162a2f793446f6a14f62",
+        "sha256": "0d35b2c7eacb39b57c90bee61408975083c1fc40c473aeed999fb89212777da3",
         "sourceSha256": "53cea73d41bf17eee1ca07bcb6e612310fe538cecb81a729a27ce2c6687f516b",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

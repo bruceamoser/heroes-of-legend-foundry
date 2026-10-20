@@ -200,10 +200,12 @@
       "portrait": {
         "creatureId": "creature-spore-shepherd",
         "asset": "assets/creatures/0c77f6b89dafac5f824c2e976bb2944d8f0173952b98d9fc929b4cd5646b2023.webp",
-        "sha256": "6d6c8cfe6a1e587659d078de7e92119dac5ecd913dc741fc98fa12b528e00660",
+        "sha256": "c8f97c8fa5e7ae1fe7d325d485be2600c84b7f43732a8c82ddcc9916b3298bcb",
         "sourceSha256": "0c77f6b89dafac5f824c2e976bb2944d8f0173952b98d9fc929b4cd5646b2023",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

@@ -218,10 +218,12 @@
       "portrait": {
         "creatureId": "creature-minotaur",
         "asset": "assets/creatures/228cdde5c2b18b7e443f1722755acd0702d78f1d3a169f0446332088ec5de572.webp",
-        "sha256": "6ec955fbda3a5548a9a947f02266edfea8d8daf5447a46a88d19dbeda0a99145",
+        "sha256": "67e962e70e5a985688fc6c624cf4368b0297a08c3485fe7afc8a3d07b1b19fdf",
         "sourceSha256": "228cdde5c2b18b7e443f1722755acd0702d78f1d3a169f0446332088ec5de572",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

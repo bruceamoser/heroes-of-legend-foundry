@@ -3,6 +3,7 @@
   "_id": "a8a6ea8481d4187f",
   "name": "Craft Tools",
   "type": "equipment",
+  "img": "systems/heroes-of-legend/assets/icons/tools.svg",
   "system": {
     "schemaVersion": 1,
     "catalogId": "item-craft-tools",

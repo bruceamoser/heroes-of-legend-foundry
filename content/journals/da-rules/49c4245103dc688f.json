@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!49c4245103dc688f",
+  "_id": "49c4245103dc688f",
+  "name": "Wing Beat",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/wing-beat.md",
+        "sha256": "6cf725260c51b0a73801bf6e3abf9f113a69a0de8b5e825e6579556b6f1e4f3d",
+        "id": "monster-wing-beat",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!49c4245103dc688f.1d2564ce651f0cfd",
+      "_id": "1d2564ce651f0cfd",
+      "name": "Wing Beat",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Wing Beat</h1><p><em>Great wings beat downward, throwing loose earth into every nearby face.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-wing-beat</p><p><strong>Action:</strong> Maneuver</p><p>Choose one adjacent creature. It becomes Slowed 1 until its normal decay removes it. No damage or roll. This is not a push, extra movement or a free attack. Once per turn; immunity to Slowed applies. The narrative dust does not also blind anyone.</p><p><strong>Limits:</strong> Only creatures whose entries list this ability possess it. Printed entry values and restrictions apply; no ability grants unlisted actions.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

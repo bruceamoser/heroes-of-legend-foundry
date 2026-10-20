@@ -226,10 +226,12 @@
       "portrait": {
         "creatureId": "creature-vampire-spawn",
         "asset": "assets/creatures/f277b7e9f8ef30816039eaf4cb8e751a684a42cdff199ace21a464da8dfb05dd.webp",
-        "sha256": "1c973bbcdb2a58e04f906825ae28f4cf9840583163c4c7e8315fab88b16b99a4",
+        "sha256": "4d63c0366e959a6a677cedc67eba799fa2fc6b7fe569e9dbe74de71fa904c433",
         "sourceSha256": "f277b7e9f8ef30816039eaf4cb8e751a684a42cdff199ace21a464da8dfb05dd",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

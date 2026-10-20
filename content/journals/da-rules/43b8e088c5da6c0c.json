@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!43b8e088c5da6c0c",
+  "_id": "43b8e088c5da6c0c",
+  "name": "Break the Approach",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/break-the-approach.md",
+        "sha256": "0cca1a4008284400eb8ac6814f739a29ab1f3d30518098e0a9749b1cdfe9ae5d",
+        "id": "monster-break-the-approach",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!43b8e088c5da6c0c.6eaec1a35335f8cf",
+      "_id": "6eaec1a35335f8cf",
+      "name": "Break the Approach",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Break the Approach</h1><p><em>It lashes out with shoulder or horn, spoiling the straight line of the charging foe.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-break-the-approach</p><p><strong>Action:</strong> Reaction</p><p>After a visible enemy ends voluntary movement adjacent to this creature, push that enemy 1 square directly away. Apply Stability, terrain costs and normal collision rules; no separate attack damage. Forced movement and movement granted by a free attack cannot trigger this.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

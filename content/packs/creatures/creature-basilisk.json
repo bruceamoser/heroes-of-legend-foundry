@@ -218,10 +218,12 @@
       "portrait": {
         "creatureId": "creature-basilisk",
         "asset": "assets/creatures/99d918c4d67e87cc55882898997ab677bd37b0f012c9011c1570619748a0bd69.webp",
-        "sha256": "afe75dd982450f64b35adbdfa9135ea3eacc7430d6495d859a78190ac9576085",
+        "sha256": "6482b15e966eb306e9fcdcdb6c0718c80129915a583f7597337f987c2ff5d448",
         "sourceSha256": "99d918c4d67e87cc55882898997ab677bd37b0f012c9011c1570619748a0bd69",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

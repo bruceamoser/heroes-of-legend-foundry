@@ -222,10 +222,12 @@
       "portrait": {
         "creatureId": "creature-oath-devourer",
         "asset": "assets/creatures/44bdcbcc721ee52ad14c95b68762f6c4533049700bd6b28bf0baa331813178db.webp",
-        "sha256": "03db5310a4b004e63e75de75e43313d5fa67b56f9abbab613949ad7ad6f33a5f",
+        "sha256": "9d659b09e62b0c2208bc80aaf2edfd6e3ef34b6510150d7d43334a7af817069b",
         "sourceSha256": "44bdcbcc721ee52ad14c95b68762f6c4533049700bd6b28bf0baa331813178db",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

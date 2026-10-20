@@ -235,10 +235,12 @@
       "portrait": {
         "creatureId": "creature-ettin",
         "asset": "assets/creatures/9ccd819e9a3ebd0190b901283bc3ea4839dd8d1797032ddb0d89ef0130cb3823.webp",
-        "sha256": "1eaec9d43d078758599892a1aed975ad572ec48e735ac698577737ef3a93b554",
+        "sha256": "8a467f5e8e7731ec3f52a7bede228a63f120153cfdac3d250ad9f5f654a13904",
         "sourceSha256": "9ccd819e9a3ebd0190b901283bc3ea4839dd8d1797032ddb0d89ef0130cb3823",
-        "width": 1145,
-        "height": 1374,
+        "width": 640,
+        "height": 768,
+        "sourceWidth": 1145,
+        "sourceHeight": 1374,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

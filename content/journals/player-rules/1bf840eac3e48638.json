@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!1bf840eac3e48638",
+  "_id": "1bf840eac3e48638",
+  "name": "Small Tent",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/equipment/small-tent.md",
+        "sha256": "32d20a1accd35e707e8bbd8ebb50f7220d6d697d80ea38123682677288ea25bb",
+        "id": "item-small-tent",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!1bf840eac3e48638.600415f8e4bc48c6",
+      "_id": "600415f8e4bc48c6",
+      "name": "Small Tent",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Small Tent</h1><p><em>You pull the canvas taut and listen as the rain begins to patter above it.</em></p><h2>Rules</h2><p><strong>ID:</strong> item-small-tent</p><p><strong>Market price:</strong> 12 coins. <strong>Bulk:</strong> 1.</p><p>Shelters two resting people from ordinary weather. Needs a suitable site and ten minutes to pitch or pack. No guarantee of safe rest or weather immunity.</p><p>Buying equipment grants no DP advancement, training or ability. Use normal item-handling actions unless an applicable card says otherwise.</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.a8b099af3500d9f6.JournalEntryPage.cfa94361944ba875]{Market rules} · Equipment index</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

@@ -235,10 +235,12 @@
       "portrait": {
         "creatureId": "creature-ogre-taskmaster",
         "asset": "assets/creatures/244d74f5996f7a1f86ca5e1c4089990355230a1bb6686747390312eee5b4d026.webp",
-        "sha256": "fb9f9a019c823ab0a5ed64012bb28b00bb6f1d41b04ebd3955fcde728873594c",
+        "sha256": "e17fe60874108894064186d458b9c80ccee494aaf79f99ec390a82837ae6f219",
         "sourceSha256": "244d74f5996f7a1f86ca5e1c4089990355230a1bb6686747390312eee5b4d026",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

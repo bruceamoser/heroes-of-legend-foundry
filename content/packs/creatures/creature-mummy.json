@@ -239,10 +239,12 @@
       "portrait": {
         "creatureId": "creature-mummy",
         "asset": "assets/creatures/ad43dc9e5fa11c60cac7685444cca33376648773c65564547096df57b2568481.webp",
-        "sha256": "aa364f5a53cc9a69a56567cae97ac423ca07334a74833a9a8a23866e425cde7a",
+        "sha256": "c9d8125852219a477f33c59d5a458343ae0299cfb2a899cad7cfd31da2615172",
         "sourceSha256": "ad43dc9e5fa11c60cac7685444cca33376648773c65564547096df57b2568481",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "approved Player Book creature illustration"
       },

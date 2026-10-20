@@ -1,0 +1,39 @@
+{
+  "_key": "!journal!e146d440a9e7ba6f",
+  "_id": "e146d440a9e7ba6f",
+  "name": "Walled Communities",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/origins/culture-walled-communities.md",
+        "sha256": "7d6ef9ad979c7563c4a478ff0a8682189572d0f54ffe05292d10436c2388df57",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!e146d440a9e7ba6f.c1be9fbba68ff05e",
+      "_id": "c1be9fbba68ff05e",
+      "name": "Walled Communities",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Walled Communities</h1><p><em>Your home knows the comfort of a gate and the danger of believing it solves everything.</em></p><p><em>Who always greeted you from the wall?</em></p><h2>Rules</h2><p><strong>Type:</strong> Culture. <strong>Status:</strong> Proposal. Choose one paired option; do not mix the rank from one with the card from another.</p><p>- Armor 1 and @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.1f6b36c34db9c5eb.JournalEntryPage.36ac9af60144cf5c]{Wear Light Armor}. - Guard 1 and @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.f90d324afc1f7997.JournalEntryPage.0a730e9328c623f4]{Shielding Step}.</p><p>Grant at level 0. Duplicate grants provide 1 stage DP each; never promote a rank automatically. No discipline purchases at level 0. Ancestry does not restrict this choice. Follow each card’s explicit equipment grant.</p><p><strong>Starting coin contribution:</strong> +10 coins. See @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0558be1f6014ee71.JournalEntryPage.880380bcd80cfec6]{starting coins}.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

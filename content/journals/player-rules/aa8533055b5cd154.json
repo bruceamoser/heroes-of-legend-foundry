@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!aa8533055b5cd154",
+  "_id": "aa8533055b5cd154",
+  "name": "Live in the Mask",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/live-in-the-mask.md",
+        "sha256": "73ae7b6219aad1fa7abd3e7fc8ed626565ebe9329c85b382d81d87e9981e1c71",
+        "id": "live-in-the-mask",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!aa8533055b5cd154.14eb9273e51f2146",
+      "_id": "14eb9273e51f2146",
+      "name": "Live in the Mask",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Live in the Mask</h1><p><em>You remember to be the borrowed person even when no one seems to be watching.</em></p><h2>Rules</h2><p><strong>Action:</strong> Passive · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Your mundane disguise or impersonation.</p><p>Gain 1 Boon to a consequential Guile roll maintaining a plausible disguise during conversation. After a Standard or Strong result, learn one expectation the listener has visibly expressed about your assumed role. This does not reveal unspoken thoughts or supply clothing, languages or memories.</p><p><strong>Duration:</strong> While the disguise is in use.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 3 · <strong>DP:</strong> 4 · <strong>Requirements to learn:</strong> Subterfuge 2 and Influence 1</p><p><strong>Type:</strong> Skill / Utility</p><p><strong>Limits:</strong> Ordinary activities remain available without this card. Roll only when uncertainty has consequences.</p><p><strong>ID:</strong> live-in-the-mask</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions} · Adventure development</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

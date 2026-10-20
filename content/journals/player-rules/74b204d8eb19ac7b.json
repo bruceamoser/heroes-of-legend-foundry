@@ -1,0 +1,39 @@
+{
+  "_key": "!journal!74b204d8eb19ac7b",
+  "_id": "74b204d8eb19ac7b",
+  "name": "Court Questioner",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/origins/background-court-questioner.md",
+        "sha256": "fcc332e854838d05cef2813699451cd85f846ab42a78196e1094934dc9d9f8ef",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!74b204d8eb19ac7b.93a11e3b34d0f06e",
+      "_id": "93a11e3b34d0f06e",
+      "name": "Court Questioner",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Court Questioner</h1><p><em>You learned that an answer can be perfectly truthful and still hide everything important.</em></p><p><em>Who once answered a question you were afraid to ask?</em></p><h2>Rules</h2><p>Choose one:</p><p>- <strong>Scholarship 1</strong> and @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.50dc1476efcd8873.JournalEntryPage.184736687b49e23c]{Anatomy of an Opening}. - <strong>Influence 1</strong> and @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.b02ee871184ccbb6.JournalEntryPage.6f896fcaf7855c66]{Measured Appeal}.</p><p><strong>Type:</strong> Background</p><p>Each option is a pair. Duplicate grants give 1 level-0 DP each; no automatic higher rank. Follow the card’s equipment grant.</p><p><strong>Starting coin contribution:</strong> +10 coins. See @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0558be1f6014ee71.JournalEntryPage.880380bcd80cfec6]{starting coins}.</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

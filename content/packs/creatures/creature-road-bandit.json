@@ -196,10 +196,12 @@
       "portrait": {
         "creatureId": "creature-road-bandit",
         "asset": "assets/creatures/ccb92d3dea6926fa1e37a2f2df88e1923db8e3400d09f448bded0e4991312db8.webp",
-        "sha256": "3273fdf1d6b4b1678c81ee89858643fb17964c257ec9b358cdb2834a2584f94d",
+        "sha256": "e776bf89efe545ca555259e9f57768b90baddbf5cbbd89d05ff95e9709e14f83",
         "sourceSha256": "ccb92d3dea6926fa1e37a2f2df88e1923db8e3400d09f448bded0e4991312db8",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

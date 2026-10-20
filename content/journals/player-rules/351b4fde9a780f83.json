@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!351b4fde9a780f83",
+  "_id": "351b4fde9a780f83",
+  "name": "Strange but Effective",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/signature-odd-strange-but-effective.md",
+        "sha256": "3edeb1378ce1a261255d0bb912e70e1e946f385977d29f30ed18fe2169e8033c",
+        "id": "signature-odd-strange-but-effective",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!351b4fde9a780f83.4857ac9941d26330",
+      "_id": "4857ac9941d26330",
+      "name": "Strange but Effective",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Strange but Effective</h1><p><em>You loop a strap, plant your heel against a unlikely purchase and pull with a grin as the whole problem lurches sideways.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> Guile</p><p><strong>Target / range / shape:</strong> One adjacent obstacle or creature, or your own Grappled condition.</p><p>Choose Force’s intended result before rolling: obstacle progress, reducing your Grappled rating, or pushing a creature. Describe a plausible means of exerting force.</p><p>- <strong>Weak:</strong> 2 progress, Grappled reduction, or squares of push. - <strong>Standard:</strong> 3 progress, Grappled reduction, or squares of push. - <strong>Strong:</strong> 4 progress, Grappled reduction, or squares of push.</p><p>Afterward you may move up to 2 squares without provoking if able. Grappled 3 leaves no Main Action to spend; this cannot release a fully restrained user.</p><p><strong>Stability:</strong> apply it only to the push option, not obstacle progress or Grappled reduction.</p><p><strong>Duration:</strong> Immediate progress, reduction or push, then movement.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 7 · <strong>DP:</strong> 8 · <strong>Requirements to learn:</strong> Class Odd; minimum level 7</p><p><strong>Type:</strong> Signature</p><p><strong>Tags:</strong> Skill / Control / Utility</p><p><strong>Limits:</strong> Repeatable; normal action economy applies.</p><p><strong>ID:</strong> signature-odd-strange-but-effective</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.b958699795c40aff.JournalEntryPage.5ab16268111adc1e]{Class choices} · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

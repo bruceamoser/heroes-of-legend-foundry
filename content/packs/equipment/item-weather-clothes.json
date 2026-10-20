@@ -3,6 +3,7 @@
   "_id": "1d6ef3c051cc5689",
   "name": "Weather Clothes",
   "type": "equipment",
+  "img": "systems/heroes-of-legend/assets/icons/cloak.svg",
   "system": {
     "schemaVersion": 1,
     "catalogId": "item-weather-clothes",

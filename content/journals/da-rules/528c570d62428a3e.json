@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!528c570d62428a3e",
+  "_id": "528c570d62428a3e",
+  "name": "Splintering Rime",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/splintering-rime.md",
+        "sha256": "0882f39e2b9e4e9e68a7d4a788fb987fddbf1235963ebeb74e6b470fd7b4814d",
+        "id": "monster-splintering-rime",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!528c570d62428a3e.0abb81e88d27328f",
+      "_id": "0abb81e88d27328f",
+      "name": "Splintering Rime",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Splintering Rime</h1><p><em>Cracked ice bursts outward in a glittering spray that freezes across the attacker&#39;s skin.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-splintering-rime</p><p><strong>Action:</strong> Reaction</p><p>After an adjacent attacker&#39;s attack resolves and deals HP damage to this creature, apply Freezing 1 to that attacker. This creature must survive and remain capable. No trigger from a free attack or another retaliatory effect. This is a condition, not another attack.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

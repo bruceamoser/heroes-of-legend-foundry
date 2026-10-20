@@ -2,6 +2,6 @@
 <h3>{{attackerName}} · {{title}}</h3>
 <p>{{categoryLabel}} · Costs and effects resolved manually.</p>
 {{#if attributeKey}}<p>{{defenseSource}} player defense · Threat: {{threat.boons}} Boons / {{threat.banes}} Banes.</p>{{/if}}
-{{#if outcomes}}<dl>{{#each outcomes}}<dt>{{@key}} defense</dt><dd>{{this}}</dd>{{/each}}</dl>{{else}}<p>{{effect}}</p>{{/if}}
+{{#if outcomes}}<table><caption>Player defense outcome</caption><thead><tr>{{#each outcomes}}<th scope="col">{{@key}}</th>{{/each}}</tr></thead><tbody><tr>{{#each outcomes}}<td>{{this}}</td>{{/each}}</tr></tbody></table>{{else}}<p>{{effect}}</p>{{/if}}
 {{#if referenceHTML}}<details><summary>Action details</summary>{{{referenceHTML}}}</details>{{/if}}
 </section>

@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!d751c8ba5d21e462",
+  "_id": "d751c8ba5d21e462",
+  "name": "Circle of Old Names",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/circle-of-old-names.md",
+        "sha256": "5df2e59e2cb7f1bc4901ccafa7ee1f2aa509649299a81650db64e8482b171f1d",
+        "id": "circle-of-old-names",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!d751c8ba5d21e462.f463b721a8df0172",
+      "_id": "f463b721a8df0172",
+      "name": "Circle of Old Names",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Circle of Old Names</h1><p><em>You speak the names that once meant safety, and hear your companions breathe more steadily.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Self and willing allies within 2 squares.</p><p>Call the names of those who kept you safe. Until the start of your next turn, these allies gain 1 Boon to defense against forced movement and may reduce temporary Frightened by 1 immediately.</p><p><strong>Duration:</strong> Remove Frightened immediately; the defensive Boon lasts until the start of your next turn.</p><p><strong>Equipment / acquisition:</strong> No item needed unless named above.</p><p>---</p><p><strong>Tier / minimum level:</strong> 3 · <strong>DP:</strong> 4 · <strong>Requirements to learn:</strong> Calling 2 and Guard 1</p><p><strong>Type:</strong> Magic</p><p><strong>Limits:</strong> Repeatable; pay the action and any stated costs each use.</p><p><strong>ID:</strong> circle-of-old-names</p><p>Build this character · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

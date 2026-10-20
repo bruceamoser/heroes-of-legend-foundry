@@ -19,7 +19,7 @@ export function handLayout(items, capacity = 2) {
       );
     if (item.held && !item.hands)
       throw new Error("A held item must occupy at least one hand.");
-    if (item.held) occupied += item.hands;
+    if (item.held && item.quantity !== 0) occupied += item.hands;
   }
   if (occupied > capacity)
     throw new Error(

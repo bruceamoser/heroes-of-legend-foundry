@@ -12,7 +12,7 @@ export function benefitCurrent(effect) {
 }
 export function defenseBenefits(actor, { incomingAttack = false } = {}) {
   const heldShieldUuids = actor.items
-      .filter((item) => isShieldEquipment(item) && item.system.held)
+      .filter((item) => isShieldEquipment(item) && item.system.quantity > 0 && item.system.held)
       .map((item) => item.uuid),
     entries = actor.effects
       .filter((effect) => benefitCurrent(effect))

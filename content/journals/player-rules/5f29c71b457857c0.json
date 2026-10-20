@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!5f29c71b457857c0",
+  "_id": "5f29c71b457857c0",
+  "name": "Unseen Passage",
+  "categories": [],
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/cards/signature-shadow-unseen-passage.md",
+        "sha256": "bce85fbf29f81cfd3f593a8fd00fd1d5c7bc233da1a6f96e619ff0a7d3ae8464",
+        "id": "signature-shadow-unseen-passage",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "player-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!5f29c71b457857c0.3da54551af2ff0dc",
+      "_id": "3da54551af2ff0dc",
+      "name": "Unseen Passage",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Unseen Passage</h1><p><em>You draw the surrounding shadow across your body like a cloak and slip away while your outline fades from sight.</em></p><h2>Rules</h2><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Self.</p><p>Shroud yourself from sight, then move up to 3 squares without provoking. Until the end of your next turn, you cannot be selected as a visible target. Attacks that do not require seeing you and areas covering your square can still affect you. You remain solid and audible; this grants no passage through barriers or occupied squares.</p><p>The shroud ends immediately after you make an attack, cast another spell or use a card on another creature. Your own movement does not end it. This card supplies its complete concealment effect; it does not require a separate Invisible condition or change anyone else’s detection rules.</p><p><strong>Duration:</strong> Until the end of your next turn, or immediately after an ending action.</p><p><strong>Equipment / acquisition:</strong> None.</p><p>---</p><p><strong>Tier / minimum level:</strong> 7 · <strong>DP:</strong> 8 · <strong>Requirements to learn:</strong> Class Shadow; minimum level 7</p><p><strong>Type:</strong> Signature</p><p><strong>Tags:</strong> Magic / Utility / Movement</p><p><strong>Limits:</strong> Repeatable; normal action economy applies.</p><p><strong>ID:</strong> signature-shadow-unseen-passage</p><p>@UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.659f046648036560.JournalEntryPage.6f9998008dd8a1fb]{Class choices} · @UUID[Compendium.heroes-of-legend.player-rules.JournalEntry.0bf4c8ad89113132.JournalEntryPage.c0c043f22d65aa20]{Card conventions}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

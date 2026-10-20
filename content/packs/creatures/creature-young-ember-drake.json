@@ -261,10 +261,12 @@
       "portrait": {
         "creatureId": "creature-young-ember-drake",
         "asset": "assets/creatures/0804b648298ee229565f752955e32751e2561e03808d42f6b0195f475aff8f74.webp",
-        "sha256": "22909cca84ca872db1fc66cc4750ae549b24e9a98e1fe3417c7179da9314c6ac",
+        "sha256": "772c8cfa2eab1b745148e638904c94dddbd49e4221afbd76ccc940b7d362046e",
         "sourceSha256": "0804b648298ee229565f752955e32751e2561e03808d42f6b0195f475aff8f74",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

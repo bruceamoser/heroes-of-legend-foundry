@@ -244,10 +244,12 @@
       "portrait": {
         "creatureId": "creature-storm-giant",
         "asset": "assets/creatures/7d91330fcea9d7dffc3ff61c8f8708b0ea788c280e0c004a05e415e5fa25a0dc.webp",
-        "sha256": "8e2aae9dfe5984d206e820f4cc57c55677a15683dd5b8565e60b582f74ba58fc",
+        "sha256": "118040397eebe19157c5cd696bb5f5107de623df40810d4d205c4c35e78b1b75",
         "sourceSha256": "7d91330fcea9d7dffc3ff61c8f8708b0ea788c280e0c004a05e415e5fa25a0dc",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

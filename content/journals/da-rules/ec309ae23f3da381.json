@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!ec309ae23f3da381",
+  "_id": "ec309ae23f3da381",
+  "name": "Roll Away",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/roll-away.md",
+        "sha256": "c1c376f3d81ef98533ffbb89a02ca22f7970bbb2200f7b28f5217cb8950cd917",
+        "id": "monster-roll-away",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!ec309ae23f3da381.acc3331376d11702",
+      "_id": "acc3331376d11702",
+      "name": "Roll Away",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Roll Away</h1><p><em>The goblin drops a shoulder, tumbles across the rubble and springs up beyond the answering blade.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-roll-away</p><p><strong>Action:</strong> Maneuver</p><p>Move up to 2 squares in a straight line without provoking opportunity attacks. Pay normal terrain costs from the 2-square allowance. Normal occupied-square restrictions apply.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

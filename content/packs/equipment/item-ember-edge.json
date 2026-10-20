@@ -3,6 +3,7 @@
   "_id": "73aa9cb7c937e1ea",
   "name": "Ember Edge",
   "type": "equipment",
+  "img": "systems/heroes-of-legend/assets/icons/sword.svg",
   "system": {
     "schemaVersion": 1,
     "catalogId": "item-ember-edge",

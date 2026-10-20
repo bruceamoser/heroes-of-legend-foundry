@@ -1,0 +1,40 @@
+{
+  "_key": "!journal!d299f9f5ad259722",
+  "_id": "d299f9f5ad259722",
+  "name": "Sweeping Attack",
+  "categories": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "ruleSource": {
+        "path": "design/monster-abilities/sweeping-attack.md",
+        "sha256": "c020cb46e9ffa42aeaedfc9612e6b364f4c415e591d874a9553e55ec2ca2d45c",
+        "id": "monster-sweeping-attack",
+        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "pack": "da-rules"
+      }
+    }
+  },
+  "pages": [
+    {
+      "_key": "!journal.pages!d299f9f5ad259722.49fae50d762ba269",
+      "_id": "49fae50d762ba269",
+      "name": "Sweeping Attack",
+      "type": "text",
+      "sort": 0,
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h1>Sweeping Attack</h1><p><em>A great limb scythes across the ground, forcing everyone nearby to move.</em></p><h2>Rules</h2><p><strong>ID:</strong> monster-sweeping-attack</p><p><strong>Action:</strong> Main Action</p><p>Use the printed attack against up to two different creatures within its printed reach, including allies if deliberately selected. Each player target defends separately. A player-controlled sweep rolls once at the worst target modifiers. This replaces, rather than accompanies, a single-target attack.</p><p><strong>Limits:</strong> Only creatures whose entries list this ability possess it. Printed entry values and restrictions apply; no ability grants unlisted actions.</p><p>Creature procedure · @UUID[Compendium.heroes-of-legend.da-rules.JournalEntry.ede987849436bd79.JournalEntryPage.743fa3bd946d24fb]{Monster ability index}</p>"
+      },
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

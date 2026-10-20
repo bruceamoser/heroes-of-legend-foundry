@@ -1,88 +1,34 @@
-<section class="hol-body hol-creature-sheet">
-<header class="hol-banner">
-<button type="button" class="hol-profile-portrait" data-action="viewPortrait" aria-label="View {{actor.name}} portrait"><img src="{{actor.img}}" alt="{{actor.name}}"></button>
-<p class="hol-kicker">{{#if classification}}{{classification.category}} · {{/if}}Creature · CV {{system.cv}}</p>
-<h1>{{actor.name}}</h1>
-{{#if family}}<p>{{family}}</p>{{/if}}
-</header>
-
-{{#if automationLabel}}<p class="hol-note hol-creature-automation"><strong>Automation:</strong> {{automationLabel}}.</p>{{/if}}
-<div class="hol-creature-actions" role="group" aria-label="Creature controls">
-<button type="button" data-action="conditions">Condition sources</button>
-{{#if canUpdateProfile}}<button type="button" data-action="updateProfile" title="Update printed actions and CV; keep live resources and local edits">Update profile</button>{{/if}}
-{{#if gm}}<button type="button" data-action="damage">Apply damage</button><button type="button" data-action="recovery">Health and recovery</button>{{/if}}
-<button type="button" data-action="equipment">Hands, worn gear and equipment</button>
-</div>
-
-<section class="hol-creature-summary" aria-labelledby="hol-creature-defenses-heading">
-<h2 id="hol-creature-defenses-heading">Printed defenses</h2>
-<dl class="hol-stat-grid">
-<div><dt>HP</dt><dd>{{system.health.value}} / {{system.health.max}}</dd></div>
-<div><dt>CV</dt><dd>{{system.cv}}</dd></div>
-<div><dt>Speed</dt><dd>{{system.speed}}{{#each alternateSpeeds}} · {{mode}} {{value}}{{/each}}</dd></div>
-<div><dt>Size</dt><dd>{{system.size}}{{#if system.sizeLabel}} · {{system.sizeLabel}}{{/if}}</dd></div>
-<div><dt>Armor DR</dt><dd>{{system.armor}}{{system.armorMarker}}</dd></div>
-<div><dt>Stability</dt><dd>{{system.stability}}</dd></div>
-<div><dt>Evasion</dt><dd>{{evasionLabel}}</dd></div>
-<div><dt>Threat</dt><dd>{{threatLabel}}</dd></div>
-</dl>
-
-<div class="hol-creature-mitigations">
-<section>
-<h3>Weaknesses</h3>
-{{#if system.weaknesses.sourceText}}<p class="hol-source-text">{{system.weaknesses.sourceText}}</p>{{/if}}
-{{#if system.weaknesses.numeric.length}}<ul>{{#each system.weaknesses.numeric}}<li>{{type}} {{value}}</li>{{/each}}</ul>{{else}}<p>None numeric.</p>{{/if}}
-{{#if system.weaknesses.special.length}}<ul>{{#each system.weaknesses.special}}<li>{{type}} — {{reference}}</li>{{/each}}</ul>{{/if}}
-</section>
-<section>
-<h3>Resistances</h3>
-{{#if system.resistances.sourceText}}<p class="hol-source-text">{{system.resistances.sourceText}}</p>{{/if}}
-{{#if system.resistances.numeric.length}}<ul>{{#each system.resistances.numeric}}<li>{{type}} {{value}}</li>{{/each}}</ul>{{else}}<p>None numeric.</p>{{/if}}
-{{#if system.resistances.special.length}}<ul>{{#each system.resistances.special}}<li>{{type}} — {{reference}}</li>{{/each}}</ul>{{/if}}
-</section>
-<section>
-<h3>Immunities</h3>
-{{#if system.immunities.length}}<ul>{{#each system.immunities}}<li>{{this}}</li>{{/each}}</ul>{{else}}<p>None.</p>{{/if}}
-</section>
-</div>
-</section>
-
-<section class="hol-creature-melee" aria-labelledby="hol-creature-melee-heading">
-<h2 id="hol-creature-melee-heading">Basic Melee · player-defense orientation</h2>
-<dl class="hol-outcome-grid">
-<div><dt>Weak defense</dt><dd>{{system.basicMelee.weak}}</dd></div>
-<div><dt>Standard defense</dt><dd>{{system.basicMelee.standard}}</dd></div>
-<div><dt>Strong defense</dt><dd>{{system.basicMelee.strong}}</dd></div>
-</dl>
-<p>Requires {{system.basicMelee.defenseAttribute}} defense. The declared NPC attack and Defend workflows use this exact printed profile.</p>
-{{#if gm}}
-<div class="hol-pair hol-creature-melee-declare">
-<details><summary>Attack guidance (optional)</summary><label>Blockability hint<select data-npc-blockable><option value="">Table decides when needed</option><option value="true">Usually blockable</option><option value="false">Usually not blockable</option></select></label></details>
-<button type="button" data-action="npcMelee">Declare NPC Basic Melee</button>
-</div>
-{{/if}}
-</section>
-
-{{#if gm}}<section class="hol-creature-specialty-actions">
-<h2>Creature actions</h2><p class="hol-note">Post an action for the table. Costs and effects are resolved manually.</p>
-{{#each actionGroups}}{{#if entries.length}}<h3>{{label}}</h3><div class="hol-creature-actions">{{#each entries}}<button type="button" data-action="creatureAction" data-creature-action="{{id}}">{{name}}{{#if attributeKey}} · {{defenseSource}}{{/if}}</button>{{/each}}</div>{{/if}}{{/each}}
+<section class="hol-body hol-creature-sheet hol-native-card">
+<div class="hol-card-fixed">
+<div class="hol-card-toolbar">{{#if editable}}<button type="button" data-action="cardEdit">{{#if cardEditing}}✓ Done{{else}}✎ Edit{{/if}}</button>{{#if cardEditing}}<button type="button" data-action="npcMode">{{#if npcMode}}Use creature view{{else}}Use NPC portrayal{{/if}}</button>{{/if}}{{/if}}<button type="button" data-action="conditions">Conditions</button>{{#if gm}}<button type="button" data-action="damage">Damage</button><button type="button" data-action="recovery">Recovery</button>{{/if}}<button type="button" data-action="equipment">Equipment</button></div>
+<header class="hol-banner hol-card-banner"><div class="hol-portrait-space" data-hol-portrait><img data-portrait-image src="{{actor.img}}" alt="{{actor.name}} portrait" role="button" tabindex="0" {{#if editable}}data-action="editImage" data-edit="img" title="Change portrait with Foundry's image browser, then Save portrait" aria-label="Change {{actor.name}} portrait"{{else}}data-action="viewPortrait" title="View portrait" aria-label="View {{actor.name}} portrait"{{/if}}><div class="hol-portrait-controls"><button type="button" data-action="viewPortrait" title="View full portrait">View</button>{{#if editable}}<button type="button" data-action="savePortrait" title="Save the selected portrait image">Save portrait</button>{{/if}}</div></div><div class="hol-card-identity"><p class="hol-kicker">{{#if npcMode}}NPC{{else}}Creature{{/if}}{{#if classification}} · {{classification.category}}{{/if}}</p><h1>{{actor.name}}</h1><p>{{#if npcMode}}{{npc.role}}{{#if npc.location}} · {{npc.location}}{{/if}}{{else}}{{family}}{{/if}}</p></div>{{#if combatLinked}}<div class="hol-card-vitals"><label>HP<input name="system.health.value" type="number" min="0" max="{{system.health.max}}" value="{{system.health.value}}" {{#unless editable}}disabled{{/unless}}></label><span>/ {{system.health.max}}</span><div><small>Speed</small><strong>{{system.speed}}</strong></div><div><small>CV</small><strong>{{system.cv}}</strong></div>{{#if editable}}<button type="submit" title="Save current HP">Save HP</button>{{/if}}</div>{{/if}}</header>
+{{#if combatLinked}}
+<div class="hol-card-attributes">{{#each attributes}}<button type="button" data-action="rollAttribute" data-attribute="{{key}}" {{#unless ../owned}}disabled{{/unless}}><small>{{label}}</small><strong>{{effective}}</strong></button>{{/each}}</div>
+<dl class="hol-card-defenses"><div><dt>Armor DR</dt><dd>{{system.armor}}{{system.armorMarker}}</dd></div><div><dt>Evasion</dt><dd>{{evasionLabel}}</dd></div><div><dt>Threat</dt><dd>{{threatLabel}}</dd></div><div><dt>Stability</dt><dd>{{system.stability}}</dd></div><div><dt>Resistance</dt><dd>{{resistanceLabel}}</dd></div><div><dt>Weakness</dt><dd>{{weaknessLabel}}</dd></div><div><dt>Immunity</dt><dd>{{immunityLabel}}</dd></div></dl>
+{{/if}}</div>
+<div class="hol-card-scroll">
+{{#if combatLinked}}<p class="hol-card-subline">Size {{system.size}}{{#if system.sizeLabel}} · {{system.sizeLabel}}{{/if}}{{#each alternateSpeeds}} · {{mode}} {{value}}{{/each}}</p>
+<section class="hol-card-actions"><h2>Main Actions</h2><div class="hol-card-action"><div><strong>Basic Melee</strong><small>{{system.basicMelee.defenseAttribute}} defense · adjacent target · Physical</small></div>{{#if gm}}<button type="button" data-action="npcMelee">Declare attack</button>{{/if}}</div><dl class="hol-outcome-grid"><div><dt>Weak defense</dt><dd>{{system.basicMelee.weak}}</dd></div><div><dt>Standard defense</dt><dd>{{system.basicMelee.standard}}</dd></div><div><dt>Strong defense</dt><dd>{{system.basicMelee.strong}}</dd></div></dl>
+{{#each actionGroups}}{{#if entries.length}}<h3>{{label}}</h3><div class="hol-card-table-wrap"><table class="hol-card-action-table"><thead><tr><th>Action</th>{{#if main}}<th>Defense</th><th>Weak</th><th>Standard</th><th>Strong</th>{{else}}<th>Effect</th>{{/if}}{{#if ../gm}}<th><span class="sr-only">Post</span></th>{{/if}}</tr></thead><tbody>{{#each entries}}<tr><td><button type="button" data-action="viewCreatureAction" data-creature-action="{{id}}">{{name}}</button></td>{{#if ../main}}<td>{{defenseSource}}</td><td>{{outcomes.weak}}</td><td>{{outcomes.standard}}</td><td>{{outcomes.strong}}</td>{{else}}<td>{{effect}}</td>{{/if}}{{#if ../../gm}}<td><button type="button" data-action="creatureAction" data-creature-action="{{id}}" title="Post {{name}}">Post</button></td>{{/if}}</tr>{{/each}}</tbody></table></div>{{/if}}{{/each}}
 </section>{{/if}}
-
-{{#if referenceHTML}}
-<section class="hol-creature-reference" aria-labelledby="hol-creature-reference-heading">
-<div class="hol-reference-titlebar"><h2 id="hol-creature-reference-heading">Actions and details</h2><span class="hol-reference-badge">Read-only source reference</span></div>
-<div class="hol-item-reference">{{{referenceHTML}}}</div>
-<p class="hol-note">Specialty action cards show the pinned defense outcomes and rules. Resolve their costs, effects and exceptions at the table.</p>
-</section>
-{{/if}}
-
-<details class="hol-creature-editor" open>
+{{#if npcMode}}<details data-card-section="portrayal" {{#unless cardCollapsed.portrayal}}open{{/unless}}><summary>Portrayal &amp; profile</summary><div class="hol-card-portrayal">
+{{#if cardEditing}}<label>Recognizable detail<textarea name="flags.heroes-of-legend.npc.detail" maxlength="10000" rows="2">{{npc.detail}}</textarea></label>{{else}}<div><h3>Recognizable detail</h3><p>{{#if npc.detail}}{{npc.detail}}{{else}}—{{/if}}</p></div>{{/if}}
+{{#if cardEditing}}<label>Wants<textarea name="flags.heroes-of-legend.npc.want" maxlength="10000" rows="2">{{npc.want}}</textarea></label>{{else}}<div><h3>Wants</h3><p>{{#if npc.want}}{{npc.want}}{{else}}—{{/if}}</p></div>{{/if}}
+{{#if cardEditing}}<label>Knows<textarea name="flags.heroes-of-legend.npc.knowledge" maxlength="10000" rows="2">{{npc.knowledge}}</textarea></label>{{else}}<div><h3>Knows</h3><p>{{#if npc.knowledge}}{{npc.knowledge}}{{else}}—{{/if}}</p></div>{{/if}}
+{{#if cardEditing}}<label>Boundary<textarea name="flags.heroes-of-legend.npc.boundary" maxlength="10000" rows="2">{{npc.boundary}}</textarea></label>{{else}}<div><h3>Boundary</h3><p>{{#if npc.boundary}}{{npc.boundary}}{{else}}—{{/if}}</p></div>{{/if}}
+{{#if cardEditing}}<label>Relationship<textarea name="flags.heroes-of-legend.npc.relationship" maxlength="10000" rows="2">{{npc.relationship}}</textarea></label>{{else}}<div><h3>Relationship</h3><p>{{#if npc.relationship}}{{npc.relationship}}{{else}}—{{/if}}</p></div>{{/if}}
+{{#if cardEditing}}<label>Role<textarea name="flags.heroes-of-legend.npc.role" maxlength="10000" rows="2">{{npc.role}}</textarea></label>{{else}}<div><h3>Role</h3><p>{{#if npc.role}}{{npc.role}}{{else}}—{{/if}}</p></div>{{/if}}
+{{#if cardEditing}}<label>Location<textarea name="flags.heroes-of-legend.npc.location" maxlength="10000" rows="2">{{npc.location}}</textarea></label>{{else}}<div><h3>Location</h3><p>{{#if npc.location}}{{npc.location}}{{else}}—{{/if}}</p></div>{{/if}}
+</div><p>Combat profile: {{#if combatLinked}}{{#if npc.profileName}}{{npc.profileName}}{{else}}{{actor.name}}{{/if}}{{else}}Hidden · stored statistics still apply to attacks and damage{{/if}}</p>{{#if gm}}<button type="button" data-action="chooseNpcProfile">Choose profile</button>{{#if combatLinked}}<button type="button" data-action="unlinkNpcProfile">Hide combat profile</button>{{/if}}{{/if}}{{#if cardEditing}}<button type="submit">Save portrayal</button>{{/if}}</details>{{/if}}
+{{#if referenceHTML}}<details data-card-section="reference" {{#unless cardCollapsed.reference}}open{{/unless}} class="hol-creature-reference"><summary>World &amp; specialties</summary><div class="hol-item-reference">{{{referenceHTML}}}</div></details>{{/if}}
+<details data-card-section="notes" {{#unless cardCollapsed.notes}}open{{/unless}}><summary>Notes</summary>{{#if editable}}<textarea name="system.biography" rows="3">{{system.biography}}</textarea><button type="submit">Save notes</button>{{else}}<p>{{system.biography}}</p>{{/if}}</details>
+{{#if cardEditing}}<details class="hol-creature-editor" open>
 <summary>Editable native profile</summary>
 <fieldset {{#unless editable}}disabled{{/unless}}>
 <label>Name<input name="name" value="{{actor.name}}"></label>
 <div class="hol-attributes">{{#each attributes}}<label>{{label}}<input name="system.attributes.{{key}}.base" type="number" min="-2" max="2" step="1" value="{{base}}"><button type="button" data-action="rollAttribute" data-attribute="{{key}}">Roll {{label}}</button></label>{{/each}}</div>
 <div class="hol-pair">
-<label>Current HP<input name="system.health.value" type="number" min="0" step="1" value="{{system.health.value}}"></label>
+
 <label>Maximum HP<input name="system.health.baseMax" type="number" min="1" step="1" value="{{system.health.baseMax}}"></label>
 <label>CV<input name="system.cv" type="number" step="1" value="{{system.cv}}"></label>
 <label>Printed Speed<input name="system.speed" type="number" min="0" step="1" value="{{system.speed}}"></label>
@@ -93,11 +39,11 @@
 <h2>Evasion · modifier to incoming player attacks</h2><div class="hol-pair"><label>Boons<input name="system.evasion.boons" type="number" min="0" step="1" value="{{system.evasion.boons}}"></label><label>Banes<input name="system.evasion.banes" type="number" min="0" step="1" value="{{system.evasion.banes}}"></label></div>
 <h2>Threat · modifier to player defenses</h2><div class="hol-pair"><label>Boons<input name="system.threat.boons" type="number" min="0" step="1" value="{{system.threat.boons}}"></label><label>Banes<input name="system.threat.banes" type="number" min="0" step="1" value="{{system.threat.banes}}"></label></div>
 <h2>Basic Melee · physical damage by defense result</h2><div class="hol-attributes"><label>Weak defense<input name="system.basicMelee.weak" type="number" min="0" step="1" value="{{system.basicMelee.weak}}"></label><label>Standard defense<input name="system.basicMelee.standard" type="number" min="0" step="1" value="{{system.basicMelee.standard}}"></label><label>Strong defense<input name="system.basicMelee.strong" type="number" min="0" step="1" value="{{system.basicMelee.strong}}"></label></div>
-<label>Notes<textarea name="system.biography" rows="4">{{system.biography}}</textarea></label>
+
 {{#if editable}}<button type="submit" class="hol-primary">Save changes</button>{{/if}}
 </fieldset>
-</details>
+</details>{{/if}}
 
-<h2>Abilities</h2><ul class="hol-ability-list">{{#each abilities}}<li><button type="button" data-action="openAbility" data-item-id="{{id}}">{{name}}</button></li>{{else}}<li>No ability Items.</li>{{/each}}</ul>
-{{#if sourceLink}}<p class="hol-reference-source">Source: <a href="{{sourceLink}}" target="_blank" rel="noopener">{{sourcePath}}</a> at <code>{{sourceCommit}}</code>.</p>{{/if}}
-</section>
+<details data-card-section="abilities" {{#unless cardCollapsed.abilities}}open{{/unless}}><summary>Ability Items</summary><ul class="hol-ability-list">{{#each abilities}}<li><button type="button" data-action="openAbility" data-item-id="{{id}}">{{name}}</button></li>{{else}}<li>No ability Items.</li>{{/each}}</ul></details>
+{{#if canUpdateProfile}}<button type="button" data-action="updateProfile">Update profile</button>{{/if}}{{#if sourceLink}}<p class="hol-reference-source"><a href="{{sourceLink}}" target="_blank" rel="noopener">{{sourcePath}}</a> · {{sourceCommit}}</p>{{/if}}
+</div></section>

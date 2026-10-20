@@ -227,10 +227,12 @@
       "portrait": {
         "creatureId": "creature-ash-revenant",
         "asset": "assets/creatures/991195627ce641c0a293beee325a1dc6531c6470abe85f4b92adbad008ad1976.webp",
-        "sha256": "d919324a747c9354a6c41d3639aa621003abc598bd00aa98dab5e51705b42c62",
+        "sha256": "9376a2eeeff8402991305249b14dfbe42e6af7cc6cf916b7440c24f7f88ab9ec",
         "sourceSha256": "991195627ce641c0a293beee325a1dc6531c6470abe85f4b92adbad008ad1976",
-        "width": 1254,
-        "height": 1254,
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
         "alpha": true,
         "provenance": "built-in image_gen"
       },

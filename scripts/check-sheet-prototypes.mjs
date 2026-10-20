@@ -44,8 +44,10 @@ page.on("dialog", (d) => d.accept());
 const output = resolve("test-results/sheets");
 await mkdir(output, { recursive: true });
 const base = `http://127.0.0.1:${server.address().port}${prefix}`;
-async function tab(name) {
-  await page.getByRole("tab", { name, exact: true }).click();
+async function expand(id) {
+  const section = page.locator(`[data-collapse="${id}"]`).first();
+  if (!(await section.evaluate((e) => e.open)))
+    await section.locator(":scope > summary").click();
 }
 async function close() {
   await page.locator('#reference [data-action="close"]').click();
@@ -61,6 +63,32 @@ try {
   await page.goto(base + "npc.html");
   await page.getByRole("heading", { name: "Edda Vale", exact: true }).waitFor();
   assert.equal(await page.locator(".sheet-links a").count(), 4);
+  assert.equal(await page.getByRole("tab").count(), 0);
+  assert.equal(await page.locator(".combat-stats > div").count(), 7);
+  for (const label of [
+    "Armor DR",
+    "Evasion",
+    "Threat",
+    "Stability",
+    "Resistance",
+    "Weakness",
+    "Immunity",
+  ]) {
+    assert(
+      await page
+        .locator(".combat-stats")
+        .getByText(label, { exact: true })
+        .isVisible(),
+    );
+  }
+  assert(await page.locator('[data-group="main"]').first().isVisible());
+  await page.screenshot({ path: `${output}/npc-default.png` });
+  const card = await page.locator("#app").boundingBox();
+  assert(
+    card.width <= 700 && card.height < 700,
+    `Compact default NPC card: ${JSON.stringify(card)}`,
+  );
+  await expand("npc-details");
   await page.getByRole("button", { name: "✎ Edit", exact: true }).click();
   await page
     .getByLabel("Want", { exact: true })
@@ -71,19 +99,19 @@ try {
     await page.locator("#panel").innerText(),
     /Find the missing patrol/,
   );
-  await tab("Notes");
+  await expand("notes");
   await page
     .getByRole("textbox", { name: "Notes", exact: true })
     .fill("Promised the heroes a safe route.");
   await page.reload();
-  await tab("Notes");
+  await expand("notes");
   assert.equal(
     await page
       .getByRole("textbox", { name: "Notes", exact: true })
       .inputValue(),
     "Promised the heroes a safe route.",
   );
-  await tab("Main");
+
   await page.getByRole("button", { name: "Save", exact: true }).click();
   await page.getByRole("button", { name: "New NPC", exact: true }).click();
   await page.getByRole("button", { name: "Load", exact: true }).click();
@@ -92,7 +120,7 @@ try {
     await page.locator("#panel").innerText(),
     /Find the missing patrol/,
   );
-  await tab("Combat");
+
   assert.match(
     await page.locator(".combat-label").innerText(),
     /Player defense/,
@@ -154,9 +182,9 @@ try {
   await page
     .getByRole("button", { name: "Remove Poisoned", exact: true })
     .click();
-  await tab("World");
+  await expand("book-details");
   assert((await page.locator(".world-fields dt").count()) > 0);
-  await tab("Main");
+
   await page
     .getByRole("button", { name: "Choose creature", exact: true })
     .click();
@@ -164,6 +192,21 @@ try {
   await page
     .getByRole("heading", { name: "Red Dragon", exact: true })
     .waitFor();
+  assert.equal(await page.getByRole("tab").count(), 0);
+  assert.match(
+    await page.locator(".combat-stats").innerText(),
+    /Threat\s+2 Banes/,
+  );
+  assert.match(
+    (await page.locator(".action-context-row").allTextContents()).join(" "),
+    /Cannot use this attack on consecutive turns/,
+  );
+  await page.getByRole("button", { name: "Tail Retort", exact: true }).click();
+  assert.match(
+    await page.getByRole("dialog").innerText(),
+    /must survive and remain capable/,
+  );
+  await close();
   await page.locator(".portrait-button img").evaluate((img) => img.decode());
   assert(
     await page
@@ -199,6 +242,21 @@ try {
   await page.reload();
   assert.equal(await maneuvers.evaluate((e) => e.open), false);
   await page.goto(base + "item.html");
+  await page
+    .getByRole("heading", { name: "Ordinary Light Armor", exact: true })
+    .waitFor();
+  assert.equal(await page.getByRole("tab").count(), 0);
+  assert.equal(
+    await page
+      .getByRole("heading", { name: "Ordinary Light Armor", exact: true })
+      .count(),
+    1,
+  );
+  assert.doesNotMatch(
+    await page.locator("#panel").innerText(),
+    /item-ordinary-light-armor/,
+  );
+
   await page
     .getByRole("heading", { name: "Ordinary Light Armor", exact: true })
     .first()
@@ -263,6 +321,7 @@ try {
   assert.equal(await page.locator(".supply-current").innerText(), "d8");
 
   await page.goto(base + "npc.html");
+  await expand("npc-details");
   await page.getByRole("button", { name: "✎ Edit", exact: true }).click();
   await page
     .getByLabel("Name", { exact: true })
@@ -274,6 +333,7 @@ try {
     .getByRole("button", { name: "Change profile", exact: true })
     .click();
   await choose("Shield Soldier", "creature-shield-soldier");
+  await expand("npc-details");
   await page.getByRole("button", { name: "✎ Edit", exact: true }).click();
   await page.getByLabel("Name", { exact: true }).fill("Edda Vale");
   await page.getByLabel("Name", { exact: true }).press("Tab");
@@ -289,7 +349,7 @@ try {
   }
   assert.deepEqual(failures, []);
   console.log(
-    "PASS NPC portrayal/profile/combat, all sheet tabs, HP, conditions, defense rolls, complete catalog selection, book thumbnails, item rules/supply, isolated autosave/named saves, export/kind rejection, escaped edits and 760/390px layouts; zero browser errors.",
+    "PASS NPC portrayal/profile/combat, single cards and seven visible combat statistics, HP, conditions, defense rolls, complete catalog selection, book thumbnails, item rules/supply, isolated autosave/named saves, export/kind rejection, escaped edits and 760/390px layouts; zero browser errors.",
   );
 } catch (e) {
   await page.screenshot({ path: `${output}/failure.png`, fullPage: true });

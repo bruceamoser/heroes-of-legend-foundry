@@ -3,21 +3,28 @@
 The Pages workshop has four connected entry points: Character (`index.html`),
 NPC (`npc.html`), Creature (`creature.html`) and Item (`item.html`). The latter three
 share `web/sheets.mjs` and `web/sheets.css`, plus the character workshop's theme,
-fonts, controls and hanging-tab styles. These pages are a design workspace for
-future native sheet work; no Foundry world or campaign data is accessed.
+fonts and controls. These pages preview future native sheet design; no Foundry
+world or campaign data is accessed.
 
-| Sheet    | Main view                                                                                      | Other views                                              |
-| -------- | ---------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
-| NPC      | Recognizable detail, want, knowledge, boundary, relationship and identity                      | Combat uses an optional approved creature profile; Notes |
-| Creature | Compact Main Action, Maneuver and Reaction tables; portrait, defenses, conditions and movement | World details and specialties from the book; Notes       |
-| Item     | Book-style ability/equipment/recipe card, outcomes, requirements, properties and supply        | Notes                                                    |
+NPCs and creatures use one compact card without tabs. The image, editable HP,
+Speed, CV, six rollable attributes and all seven combat statistics remain above
+the internally scrolling action list: Armor DR, Evasion, Threat, Stability,
+Resistance, Weakness and Immunity. Printed modifiers and explicit None values
+are preserved. Main actions, maneuvers, reactions, specialty reference buttons,
+size, movement modes and conditions are on the same surface. Action rows include
+printed targets, damage types and limits where provided; clicking opens full rules.
+Portrayal/profile, world details and notes are collapsible secondary sections.
 
-The header and tabs stay outside the internal scrolling content. Each sheet has
-an edit toggle, independent browser autosave, named snapshots, import/export and
-small-screen layouts. Source catalogs are immutable: edits are local overrides.
-NPC Edda Vale is illustrative worksheet content, linked initially to the approved
-Shield Soldier profile. Choosing another combat profile does not change the NPC's
-portrayal. NPCs are not given a fabricated character class or skill system.
+Items use a narrower single card with one title, a discipline/equipment icon,
+compact rules and outcomes, requirements, properties and supply controls.
+Cards grow with their content up to the viewport bound rather than filling an
+empty fixed-height window. Header information stays outside the scrolling pane.
+
+Each sheet has an edit toggle, independent browser autosave, named snapshots and
+import/export. Source catalogs are immutable: edits are local overrides. NPC Edda
+Vale is illustrative worksheet content linked initially to the approved Shield
+Soldier profile. Changing the profile preserves portrayal. NPCs are not given a
+fabricated character class or skill system.
 
 Creature attack columns preserve the book's **player defense** orientation.
 Clicking an action opens the full card and a repeatable Defend roll with the
@@ -46,7 +53,8 @@ were authored. The original art and licensing metadata remain unchanged.
 ## Validation
 
 `npm run test:sheet-prototypes` covers NPC editing/profile changes, independent
-saves, all tabs, HP, conditions, repeatable defense rolls, catalog selection,
+saves, visible combat statistics and actions without tabs, compact bounds, HP,
+conditions, repeatable defense rolls, catalog selection,
 portrait size, item outcomes and supply checks, JSON round-trip/kind rejection,
 remembered collapse, escaped edits and 760/390px layouts. CI and Pages require this
 suite in addition to the existing five workshop suites. Pure checks verify each

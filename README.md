@@ -1,7 +1,7 @@
 # Heroes of Legend for Foundry VTT
 
 Bruce Moser's **Heroes of Legend**, for Foundry Virtual Tabletop **V14**.
-Version **1.0.0** release candidate, targeting Foundry **14.369**. See the [1.0.0 release evidence](docs/release-1.0.0.md) for publication and installation status; the [0.1.0 evidence](docs/release-0.1.0.md) records the preceding public release.
+Version **1.0.0** is published for Foundry **14.369**; **1.0.1** is a visual patch candidate. See the [1.0.1 checklist](docs/release-1.0.1.md) for patch publication status and the [1.0.0 release evidence](docs/release-1.0.0.md) for the major release.
 
 ## Install and update
 
@@ -17,11 +17,13 @@ Before updating, back up your world and return to Setup. Use the system's **Upda
 
 **Local development alpha:** Foundry 14.369 does not flag `0.1.0` as newer than `0.1.0-alpha.1`. Reinstall through **Setup → Game Systems → Install System** using the manifest URL above. This public installation path was verified with edited world-Actor preservation; an Update-button transition from the alpha is not claimed.
 
-The 1.0.0 candidate ZIP URL is version-specific and becomes public when that release is published:
+The published 1.0.0 ZIP is version-specific; the 1.0.1 patch uses its own immutable URL after publication:
 
 ```text
 https://github.com/bruceamoser/heroes-of-legend-foundry/releases/download/v1.0.0/heroes-of-legend.zip
 ```
+
+The 1.0.1 candidate changes only item-card readability and the equipment type label; it does not change core mechanics or replace the published 1.0.0 assets.
 
 For a local candidate, extract the ZIP directly into your isolated test data directory's `Data/systems/heroes-of-legend/`, with `system.json` immediately inside that directory. Never replace a running system's files. Public manifest/update checks and the exact-package isolated test are separate steps in the release checklist.
 

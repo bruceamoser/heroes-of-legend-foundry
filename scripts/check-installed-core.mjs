@@ -45,6 +45,11 @@ async function join(name) {
     localStorage.setItem("core.maxFPS", "10");
   });
   const page = await context.newPage();
+  // Foundry may start an automatic tour after game.ready. Dismiss its native
+  // overlay at actionability boundaries rather than bypassing covered controls.
+  await page.addLocatorHandler(page.locator(".tour-overlay"), async () => {
+    await page.evaluate(() => foundry.nue.Tour.activeTour?.exit());
+  });
   context.on("page", child => child.on("pageerror", error => errors.push(error.message)));
   page.on("pageerror", error => errors.push(error.message));
   clients.push({ context, page });
@@ -79,6 +84,7 @@ async function combat(kind, payload = {}) {
   }, { id: fixture.combat, kind, payload });
 }
 async function view(page) {
+  await page.bringToFront();
   await page.evaluate(async id => { await game.scenes.get(id).view(); }, fixture.scene);
   await page.waitForFunction(({ scene, tokens }) => canvas.scene?.id === scene && canvas.ready && !canvas.loading &&
     tokens.every(id => canvas.tokens.get(id)?.document.actor), { scene: fixture.scene, tokens: fixture.tokens.map(token => token.id) });
@@ -171,6 +177,7 @@ try {
   }, restrictedRule.path).then(denied => assert.equal(denied, true, "Players cannot open existing DA rule paths"));
   passed("installed player journal access and DA-reference denial");
   // #15's ordinary equipment acquisition path: a native source copy, no manual raw Item construction.
+  await owner.bringToFront();
   fixture.ownerSheetSelector = await owner.evaluate(async id => {
     const sheet = game.actors.get(id).sheet; await sheet.render({ force: true });
     return `#${CSS.escape(sheet.element.id)}`;
@@ -197,6 +204,7 @@ try {
   const opening = await gm.evaluate(f => game.combats.get(f.combat).getFlag("heroes-of-legend", "encounter").nextSide, fixture);
   if (opening === "opposition") { await combat("choose", { id: fixture.participants[2] }); await combat("finish"); }
   await combat("choose", { id: fixture.participants[0] });
+  await owner.bringToFront();
   await owner.evaluate(async f => {
     canvas.tokens.setTargets([f.tokens[2].id]);
     await game.actors.get(f.actors[0]).items.get(f.basic).sheet.render({ force: true });
@@ -223,6 +231,7 @@ try {
     const actor = game.actors.get(f.actors[2]), card = game.messages.get(f.attack).getFlag("heroes-of-legend", "playerAttack");
     return actor.system.health.value - Math.max(1, card.damage - actor.system.armor);
   }, fixture);
+  await gm.bringToFront();
   await gm.evaluate(() => { ui.sidebar.expand(); ui.sidebar.changeTab("chat", "primary"); });
   for (let attempt = 0; attempt < 2; attempt++) {
     await gm.locator(`#chat [data-message-id="${fixture.attack}"] .hol-player-attack-damage`).click();
@@ -238,6 +247,7 @@ try {
   // the remaining ordinary turn before its next declaration.
   if (afterAttackSide === "players") { await combat("choose", { id: fixture.participants[1] }); await combat("finish"); }
   await combat("choose", { id: fixture.participants[2] });
+  await gm.bringToFront();
   await gm.evaluate(async f => {
     canvas.tokens.setTargets(f.tokens.slice(0, 2).map(token => token.id));
     await game.actors.get(f.actors[2]).sheet.render({ force: true });
@@ -253,6 +263,7 @@ try {
   }, { f: fixture, actionId });
   for (let attempt = 0; attempt < 2; attempt++) {
     // Arin's player deliberately rolls for Bera: any-player Defend remains available.
+    await owner.bringToFront();
     await owner.evaluate(() => { ui.sidebar.expand(); ui.sidebar.changeTab("chat", "primary"); });
     await owner.locator(`#chat [data-message-id="${fixture.creatureAttack}"] .hol-defend-button`).click();
     const chooser = owner.locator(".hol-defender-choice");
@@ -282,6 +293,7 @@ try {
   assert.equal(await gm.evaluate(f => game.combats.get(f.combat).getFlag("heroes-of-legend", "encounter").budgets[f.participants[1]].remaining.reaction, fixture), 0, "Shield Block consumes one Reaction and the fresh repeat reuses its retained effect");
   passed("native two-target creature card, any-player defense, Shield Block and fresh repeat");
   // Printed specialty outcomes stay manual; apply a separate explicit physical hit through the normal DA UI.
+  await gm.bringToFront();
   const defenderSheetSelector = await gm.evaluate(async f => {
     const sheet = game.actors.get(f.actors[1]).sheet; await sheet.render({ force: true });
     return `#${CSS.escape(sheet.element.id)}`;
@@ -303,6 +315,7 @@ try {
   const state = await gm.evaluate(f => game.combats.get(f.combat).getFlag("heroes-of-legend", "encounter"), fixture);
   if (state.nextSide === "opposition") { await combat("choose", { id: fixture.participants[2] }); await combat("finish"); }
   await combat("choose", { id: fixture.participants[0] });
+  await owner.bringToFront();
   await owner.evaluate(async f => {
     canvas.tokens.setTargets([f.tokens[1].id]);
     const { openPotionPreparation } = await import("/systems/heroes-of-legend/applications/potions.mjs");
@@ -310,6 +323,7 @@ try {
   }, fixture);
   const preparation = owner.locator(".hol-potion-preparation");
   await preparation.locator("[data-action=submit]").click();
+  await other.bringToFront();
   await other.evaluate(() => { ui.sidebar.expand(); ui.sidebar.changeTab("chat", "primary"); });
   await other.locator("#chat .hol-potion-consent").last().click();
   await gm.waitForFunction(f => Object.values(game.combats.get(f.combat).getFlag("heroes-of-legend", "potionOperations") ?? {}).some(operation => operation.status === "complete"), fixture);
@@ -318,6 +332,7 @@ try {
   passed("other-player healing-potion consent with encounter receipt");
   await gm.evaluate(async f => { await game.combats.get(f.combat).update({ active: false }); }, fixture);
   await owner.waitForFunction(() => !game.combat?.active);
+  await owner.bringToFront();
   await owner.evaluate(async f => {
     canvas.tokens.setTargets([]);
     const { openPotionPreparation } = await import("/systems/heroes-of-legend/applications/potions.mjs");
@@ -334,6 +349,7 @@ try {
   const before = await gm.evaluate(f => ({ hp: f.actors.map(id => game.actors.get(id).system.health.value),
     dice: game.messages.get(f.attack).rolls[0].toJSON(), encounter: game.combats.get(f.combat).getFlag("heroes-of-legend", "encounter"),
     potion: game.combats.get(f.combat).getFlag("heroes-of-legend", "potionOperations")[f.potionRequest] }), fixture);
+  await gm.bringToFront();
   await gm.reload(); await gm.waitForFunction(() => globalThis.game?.ready);
   await gm.waitForFunction(() => game.settings.get("heroes-of-legend", "creationAuthorityClient") === game.socket.id);
   const replay = await gm.evaluate(async f => {
@@ -348,6 +364,7 @@ try {
     potion: game.combats.get(f.combat).getFlag("heroes-of-legend", "potionOperations")[f.potionRequest] }), fixture);
   assert.deepEqual(after, before);
   passed("reload and same-operation attack/potion replay preserve dice, HP and receipts");
+  await owner.bringToFront();
   await owner.evaluate(async id => { await game.actors.get(id).sheet.render({ force: true }); }, fixture.actors[0]);
   await owner.locator(fixture.ownerSheetSelector).locator('[data-tab="main"]').click();
   for (const theme of ["light", "dark"]) {
@@ -372,6 +389,7 @@ try {
   const popupPromise = owner.waitForEvent("popup");
   await owner.evaluate(async id => { await game.actors.get(id).sheet.detachWindow(); }, fixture.actors[0]);
   const popup = await popupPromise;
+  await popup.bringToFront();
   await popup.locator(fixture.ownerSheetSelector).waitFor();
   await popup.screenshot({ path: "test-results/installed-core-detached.png" });
   await popup.close();

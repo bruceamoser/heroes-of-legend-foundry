@@ -38,6 +38,9 @@
 .heroes-of-legend .hol-card-item-stats { display:flex; justify-content:space-around; gap:8px; margin:0; padding:6px; background:var(--hol-ivory); }
 .heroes-of-legend .hol-card-item-stats dt { font-size:12px; }
 .heroes-of-legend .hol-card-item-stats dd { margin:0; font-weight:bold; }
+/* Read-only item values must contrast with the HOL ivory surface in either Foundry theme. */
+.heroes-of-legend .hol-native-card .hol-card-item-stats dt,
+.heroes-of-legend .hol-native-card .hol-card-item-stats dd { color:var(--hol-ink); text-shadow:none; }
 .heroes-of-legend .hol-item-card .hol-item-reference-output { padding:0; border:0; background:transparent; font-size:16px; }
 .heroes-of-legend .hol-item-card .hol-item-reference-output h1 { color:var(--hol-forest); font-size:20px; }
 @media (max-width:600px) { .heroes-of-legend .hol-native-card .hol-banner { flex-wrap:wrap; } .heroes-of-legend .hol-card-vitals { max-width:none; } .heroes-of-legend .hol-card-attributes small { font-size:10px; } .heroes-of-legend .hol-card-defenses { grid-template-columns:repeat(4,minmax(0,1fr)); } .heroes-of-legend .hol-card-portrayal { grid-template-columns:minmax(0,1fr); } }

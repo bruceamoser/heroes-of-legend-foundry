@@ -45,6 +45,11 @@ const output = resolve("test-results/chat");
 await mkdir(output, { recursive: true });
 const base = `http://127.0.0.1:${server.address().port}${prefix}`;
 try {
+  // A request must not appear before its shared defense controller is ready.
+  await page.route("**/data/example.json", async (route) => {
+    await new Promise((resolve) => setTimeout(resolve, 300));
+    await route.continue();
+  });
   await page.goto(base + "chat.html");
   await page.locator('.chat-log [data-chat-kind="request"]').waitFor();
   assert.equal(await page.locator(".sheet-links a").count(), 6);

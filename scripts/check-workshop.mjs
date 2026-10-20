@@ -817,7 +817,45 @@ try {
     .getByRole("dialog")
     .getByRole("button", { name: "Roll", exact: true })
     .click();
+  // Rerolls do not alter inventory until the player records the attempt.
+  const beforeCraft = await page.evaluate(
+    () =>
+      JSON.parse(localStorage.getItem("hol.workshop.v1")).character.draft.play
+        ?.crafting,
+  );
+  assert.equal(beforeCraft, undefined);
+  await page.locator("#craft-supply").selectOption("");
+  await page
+    .getByRole("dialog")
+    .getByRole("button", { name: "Roll", exact: true })
+    .click();
+  await page
+    .getByRole("button", { name: "Record attempt", exact: true })
+    .click();
+  assert.match(
+    await page.locator("#recipe-roll-result").innerText(),
+    /Attempt recorded/,
+  );
+  const crafted = await page.evaluate(
+    () =>
+      JSON.parse(localStorage.getItem("hol.workshop.v1")).character.draft.play,
+  );
+  assert.equal(crafted.crafting["recipe-travel-food"].attempts, 1);
+  const product = crafted.inventory.added.find(
+    (i) => i.id === "item-food-bundle",
+  );
+  assert(product);
+  assert(
+    [4, 6, 8].includes(
+      crafted.inventory.overrides[product.instanceId].inventoryDie,
+    ),
+  );
   await page.keyboard.press("Escape");
+  await page.reload();
+  await page.getByRole("heading", { name: "Crafting", exact: true }).waitFor();
+  assert.match(await page.locator(".recipe-table").innerText(), /1 attempts/);
+  await page.getByRole("tab", { name: "Inventory", exact: true }).click();
+  assert.match(await page.locator(".inventory-table").innerText(), /Added/);
   await page.getByRole("tab", { name: "Development", exact: true }).click();
   await page
     .getByRole("button", { name: "Edit creation", exact: true })

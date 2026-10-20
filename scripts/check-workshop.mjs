@@ -788,6 +788,8 @@ try {
     0,
   );
   const recipe = page.locator('[data-project="recipe-travel-food"]');
+  const craftingDie = await recipe.locator("svg").first().boundingBox();
+  assert(craftingDie.width <= 18 && craftingDie.height <= 18);
   await recipe.locator('[data-action="recipe-roll"]').first().click();
   assert.equal(await page.locator("#roll-net-value").innerText(), "Even");
   assert.deepEqual(

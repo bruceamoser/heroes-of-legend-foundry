@@ -49,7 +49,7 @@ outside the repository; never include them in prompts, logs or Git.
 
 ## Validation
 
-Use Node 24 (see `.node-version`), `npm ci`, then `npm run check`. Run `npm run test:runtime` only against an isolated local Foundry development world with `HOL_TEST_URL` set explicitly. See `docs/development.md` for setup and the limits of current runtime evidence. Never use live campaign data for automated testing.
+Use Node 24 (see `.node-version`), `npm ci`, `npx playwright install --with-deps chromium`, then `npm run check` (the card DOM regression uses Chromium). Run `npm run test:runtime` only against an isolated local Foundry development world with `HOL_TEST_URL` set explicitly. See `docs/development.md` for setup and the limits of current runtime evidence. Never use live campaign data for automated testing.
 
 ## Current-only character rules
 

@@ -81,7 +81,7 @@ World Actors and Items imported from compendiums are editable snapshots. Updatin
 
 ## Development and sources
 
-Use Node 24 (`.node-version`), `npm ci`, then `npm run check`. Build output is `dist/heroes-of-legend/`; `npm run package:release` creates the install artifacts. Read [AGENTS.md](AGENTS.md), [development and native test evidence](docs/development.md), [data contracts](docs/data-contracts.md) and [acceptance scenarios](docs/acceptance-scenarios.md).
+Use Node 24 (`.node-version`), `npm ci`, `npx playwright install --with-deps chromium`, then `npm run check`. Build output is `dist/heroes-of-legend/`; `npm run package:release` creates the install artifacts. Read [AGENTS.md](AGENTS.md), [development and native test evidence](docs/development.md), [data contracts](docs/data-contracts.md) and [acceptance scenarios](docs/acceptance-scenarios.md).
 
 Rules are authored in the [Heroes of Legend book repository](https://github.com/bruceamoser/heroes-of-legend). The system uses the pinned approved player/DA source baseline recorded in [rules authority](docs/rules-authority.md) and `content/source-lock.json`. [Interaction design](docs/interaction-design.md) and the [decision register](docs/decisions.md) describe the current scope.
 

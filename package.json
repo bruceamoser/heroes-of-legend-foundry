@@ -81,6 +81,7 @@
     "test:creature-actions": "node scripts/check-creature-actions.mjs",
     "test:installed-core": "node scripts/check-installed-core.mjs",
     "build:workshop": "node scripts/build-workshop.mjs",
+    "test:sheet-prototypes": "node scripts/check-sheet-prototypes.mjs",
     "test:workshop": "node scripts/check-workshop.mjs",
     "test:creature-expansion": "node scripts/check-creature-expansion.mjs",
     "test:profile-update": "node scripts/check-profile-update.mjs",

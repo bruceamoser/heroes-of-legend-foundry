@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#15221c" />
+    <title>Heroes of Legend · NPC</title>
+    <link rel="icon" href="assets/crest.webp" />
+    <link rel="stylesheet" href="workshop.css" />
+    <link rel="stylesheet" href="sheets.css" />
+    <script type="module" src="sheets.mjs"></script>
+  </head>
+  <body data-sheet="npc">
+    <a class="skip" href="#panel">Skip to sheet</a>
+    <header class="site-header">
+      <a href="./" class="brand"
+        ><img src="assets/crest.webp" alt="" /><span>Heroes of Legend</span></a
+      >
+      <nav class="sheet-links" aria-label="Sheets">
+        <a href="./">Character</a><a href="npc.html">NPC</a
+        ><a href="creature.html">Creature</a><a href="item.html">Item</a>
+      </nav>
+    </header>
+    <main id="app" aria-busy="true"><p class="loading">Opening sheet…</p></main>
+    <dialog id="reference" aria-labelledby="reference-title"></dialog>
+    <div id="notice" role="status" aria-live="polite"></div>
+    <input
+      type="file"
+      id="sheet-import"
+      accept=".json,application/json"
+      hidden
+    />
+  </body>
+</html>

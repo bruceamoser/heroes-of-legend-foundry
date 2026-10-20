@@ -1,0 +1,1349 @@
+{
+  "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+  "records": [
+    {
+      "id": "creature-adder",
+      "asset": "assets/bestiary/creature-adder.webp",
+      "sourceSha256": "b232e35496ee5169277e577bc41f89422be72c3373f3dd3550e5feedba345bc7",
+      "sha256": "2d6399dae2dda97076931324e6f901df47dd3bdaed3ca4e4c6153bccd7fdebf7",
+      "bytes": 57418
+    },
+    {
+      "id": "creature-air-elemental",
+      "asset": "assets/bestiary/creature-air-elemental.webp",
+      "sourceSha256": "f5b6c68e7c5683ae5844d5fec415ff6a18ac9547f8ef1ce3b6d9afb7a34a2694",
+      "sha256": "9a26a0e9ed43360fa8e99f7ab529309702732e93ca3ccb687acdcd673a020b59",
+      "bytes": 89780
+    },
+    {
+      "id": "creature-ancestor-guardian",
+      "asset": "assets/bestiary/creature-ancestor-guardian.webp",
+      "sourceSha256": "aefb2e5c8636a766c9649a374fdf4cc87baf4447183da0877d9b21effbec7994",
+      "sha256": "e609541931cf1fca58fa9380d4e5adb839b396c55050e6910ffb7aaa3addee6e",
+      "bytes": 64706
+    },
+    {
+      "id": "creature-ancient-mammoth",
+      "asset": "assets/bestiary/creature-ancient-mammoth.webp",
+      "sourceSha256": "6b4aa3d560fa8d8e35060bc08bec4321c24f2d4aee99b4aadeb579cdc975e9b4",
+      "sha256": "0fb7815f97ae08f3ca49663ed96e667dda99f7ebd4be5c6768f7b1d8f78b3abe",
+      "bytes": 65562
+    },
+    {
+      "id": "creature-animated-armor",
+      "asset": "assets/bestiary/creature-animated-armor.webp",
+      "sourceSha256": "3bd17234404aa871566cb6bec36791ec99bc0cf90cc6e7ed355e38ced0c5911d",
+      "sha256": "214d7b80c078047502b44808a669ecfabf7bbad620b6039ab346e288f46363c0",
+      "bytes": 65778
+    },
+    {
+      "id": "creature-animated-statue",
+      "asset": "assets/bestiary/creature-animated-statue.webp",
+      "sourceSha256": "47235a7a27468885b95fc10b63d94ef3a60a875a354cb2e626c0cc4a3cbc659e",
+      "sha256": "6c4eae108f3966b63fbc430721299ddf9c0e8d438c53a8cc3ab9ee7280d619a6",
+      "bytes": 39864
+    },
+    {
+      "id": "creature-ash-demon",
+      "asset": "assets/bestiary/creature-ash-demon.webp",
+      "sourceSha256": "72ebffeb31d0334d430c2d205e7af85f2d8af12ae8fe4c01e728df51097e6077",
+      "sha256": "47217e793da1416aef203104e7033fa1015b8e207f3bcf928782a516dcdb504e",
+      "bytes": 72632
+    },
+    {
+      "id": "creature-ash-revenant",
+      "asset": "assets/bestiary/creature-ash-revenant.webp",
+      "sourceSha256": "991195627ce641c0a293beee325a1dc6531c6470abe85f4b92adbad008ad1976",
+      "sha256": "20af4d6c0073ac66c0ae740969b0403fe2fc7b0dd75282b1267f4c9a3b9f9166",
+      "bytes": 54878
+    },
+    {
+      "id": "creature-bandit-bow",
+      "asset": "assets/bestiary/creature-bandit-bow.webp",
+      "sourceSha256": "f2590d8d79cd7958d00bc67986841f5faca954c09221ddddceb7dbe29d29ebed",
+      "sha256": "cb57b5b7c64f35d095bb7443c74c3bf827a0b669eade782bcda42bf6096a5618",
+      "bytes": 40342
+    },
+    {
+      "id": "creature-banshee",
+      "asset": "assets/bestiary/creature-banshee.webp",
+      "sourceSha256": "94c63f860f4713941ff94bbbb0a531932d912e845838235a5d03d2005da20a9b",
+      "sha256": "ff030ad98a83b906462116c3a0df4279b5c4ba6249b9e4279ad6972ced5203c9",
+      "bytes": 72378
+    },
+    {
+      "id": "creature-barrow-guard",
+      "asset": "assets/bestiary/creature-barrow-guard.webp",
+      "sourceSha256": "e8980afe63e23d4e1a65e54412654234ca5ce14e49bd063e47e79afe8dd30533",
+      "sha256": "d195e0fed6f002e15446b62d0b5bea8b4095586ffbd82c4779d17039c60ef188",
+      "bytes": 57564
+    },
+    {
+      "id": "creature-basilisk",
+      "asset": "assets/bestiary/creature-basilisk.webp",
+      "sourceSha256": "99d918c4d67e87cc55882898997ab677bd37b0f012c9011c1570619748a0bd69",
+      "sha256": "5fb2b752156b626f78a0973ec32915138c9f8f44c9f5eafeac9ce410a7e2d534",
+      "bytes": 58820
+    },
+    {
+      "id": "creature-battle-chaplain",
+      "asset": "assets/bestiary/creature-battle-chaplain.webp",
+      "sourceSha256": "75f452a65e6d53bba934bde783f70ef2d9b6e555d95506d19553e9c5a42e87f0",
+      "sha256": "975e28c81f69def8778bd30808f1aa10037da2303712a804c45dbe6715ef3722",
+      "bytes": 36528
+    },
+    {
+      "id": "creature-black-dragon",
+      "asset": "assets/bestiary/creature-black-dragon.webp",
+      "sourceSha256": "f9d773b0ba726bb32a3de58821f4e3c78e6fd55bd4246c22e2cb0176c7cc17dc",
+      "sha256": "bdb1591fa271905cae09a103d2b325aedd4a12dd970d779e659c36a63c6a2973",
+      "bytes": 63998
+    },
+    {
+      "id": "creature-black-pudding",
+      "asset": "assets/bestiary/creature-black-pudding.webp",
+      "sourceSha256": "45fa942554e9d6543430e620b96f2f6ac160881df1a9b3f4c098666c8e4e8a53",
+      "sha256": "4a55d4fad8f4f8a0645901841c25ab68c446ffa11a7f3b279a88eb8abbc59131",
+      "bytes": 43836
+    },
+    {
+      "id": "creature-blood-bat-swarm",
+      "asset": "assets/bestiary/creature-blood-bat-swarm.webp",
+      "sourceSha256": "447d56df9f23531674ca0c13dfcd5ada266192e8d4127a6fe1fa1bab73a55fb8",
+      "sha256": "d399df61eddc0eb208b37f72e7c1bc387740de1433f1faf018aa358a6dce9b9a",
+      "bytes": 57744
+    },
+    {
+      "id": "creature-blood-courtier",
+      "asset": "assets/bestiary/creature-blood-courtier.webp",
+      "sourceSha256": "3937aacf74393578126c437cf882cfe4adafc56633445c634e0108e035af4ea0",
+      "sha256": "6b44299b18c09ed8e8128eb45e72e0773ff34cbc83006f7e4d93e971cf2018ab",
+      "bytes": 36412
+    },
+    {
+      "id": "creature-blue-dragon",
+      "asset": "assets/bestiary/creature-blue-dragon.webp",
+      "sourceSha256": "271d9c66c6d39a3cddd5ac04bacae2e671650117103144ede6d34cbf80568411",
+      "sha256": "f9372f4ca8c20a9bcd0ac8a09958999077189a0faa47f977fea9856e1958b7ac",
+      "bytes": 70590
+    },
+    {
+      "id": "creature-bone-archer",
+      "asset": "assets/bestiary/creature-bone-archer.webp",
+      "sourceSha256": "03589b953adf87663f23ebd9be397814d7b75066fa3211df691a39b9f90878fa",
+      "sha256": "3f05b931f977831448a5023b1c6a08ba068b7f1f7716c92c335a131f5cc392a9",
+      "bytes": 51466
+    },
+    {
+      "id": "creature-bone-colossus",
+      "asset": "assets/bestiary/creature-bone-colossus.webp",
+      "sourceSha256": "4e35042f9556df408a325ad62ba1b7315306b44627901e33b5531110ae4b3ffa",
+      "sha256": "22de464085b64137f1b440c17a2a91685eaafa6fcf9bab5e59cbf351b2d86a6c",
+      "bytes": 74108
+    },
+    {
+      "id": "creature-bone-sentry",
+      "asset": "assets/bestiary/creature-bone-sentry.webp",
+      "sourceSha256": "45cf4323933eb577398b95c1adcfcdf96d9ffc6a842a4279f08b738d4c6b695d",
+      "sha256": "7ea34c173324063b9af2e84a802e496ac28fa753d325eab868b308cb5aa9211b",
+      "bytes": 39902
+    },
+    {
+      "id": "creature-briar-knight",
+      "asset": "assets/bestiary/creature-briar-knight.webp",
+      "sourceSha256": "31c7be82591fbf873e1de96a162075d9cfde5ed150811cd96a846d613eb1da58",
+      "sha256": "8db2e1d33ddd58e67206d949b221da196e6cf11d4b40422177f73a324a658f01",
+      "bytes": 57860
+    },
+    {
+      "id": "creature-bridge-troll",
+      "asset": "assets/bestiary/creature-bridge-troll.webp",
+      "sourceSha256": "25ebefc770cfb421747236971317913dcc6e9412010310d6ded36ecf6124bfc9",
+      "sha256": "4786b779ff9eb1988a769895e378684365685e97925377a56b597be31ba71962",
+      "bytes": 47512
+    },
+    {
+      "id": "creature-bronze-dragon",
+      "asset": "assets/bestiary/creature-bronze-dragon.webp",
+      "sourceSha256": "aa00259075dc9a87a5e75428025665b93079e8d5ac6855cd04cdf295bf25c98b",
+      "sha256": "28e53a826146818e6a4a005599c02b7010e7bc9df8f32f71decf92940a6fd0ef",
+      "bytes": 64918
+    },
+    {
+      "id": "creature-brown-bear",
+      "asset": "assets/bestiary/creature-brown-bear.webp",
+      "sourceSha256": "e965f69da6674a7c6298fd663e373b43fac6d134fce326cf58fe673ac1b04a53",
+      "sha256": "338716a8c7059192a919719deaacd7025c6fc6252550873fcd290a6f368276e5",
+      "bytes": 55840
+    },
+    {
+      "id": "creature-bugbear-ambusher",
+      "asset": "assets/bestiary/creature-bugbear-ambusher.webp",
+      "sourceSha256": "d866ab9ca5f6c087982f9f7d2e8d79ddcca05f2a1f027348019711ad852d3af7",
+      "sha256": "c52c869080e5a0cbb84cc1ae09c90d7fcca95f2fa472224e95e38af82ea7f91a",
+      "bytes": 56456
+    },
+    {
+      "id": "creature-burrowing-maw",
+      "asset": "assets/bestiary/creature-burrowing-maw.webp",
+      "sourceSha256": "1fc8c755acac0aa4702db9c283c8795897e0d03e2a8593b80feab94793ea84be",
+      "sha256": "c53314a921fc601f717fce71def2ad28bc7c1edf1f9dc1f1b826eb37c6c4dc86",
+      "bytes": 49022
+    },
+    {
+      "id": "creature-carrion-rat-swarm",
+      "asset": "assets/bestiary/creature-carrion-rat-swarm.webp",
+      "sourceSha256": "bc079998621b182b69b8120d805df0eb90d669d1cf9c4f77b03c2b934e6c88fd",
+      "sha256": "4acc4b7bfe35131a8416d6ae09663f8a37dba5af4dfcedabd6cc8c592742e133",
+      "bytes": 64728
+    },
+    {
+      "id": "creature-cave-bat",
+      "asset": "assets/bestiary/creature-cave-bat.webp",
+      "sourceSha256": "161908d012340107dcd59943625c7106ccbd4211e801ecb94edd7b2f5700e086",
+      "sha256": "03aa96153cb57b7f1c14faed34310f9afb14089ed2b361e7131bf4a3781e474f",
+      "bytes": 59400
+    },
+    {
+      "id": "creature-cavern-lurker",
+      "asset": "assets/bestiary/creature-cavern-lurker.webp",
+      "sourceSha256": "5747fdb00ca6fc77e6cbf66699a09ec773320632f5af6f9a7586ea01b0661e68",
+      "sha256": "7b86feab0b728fd101440a9775f6ae6afcafe76747ef9f1119cd8a795e111cdf",
+      "bytes": 66368
+    },
+    {
+      "id": "creature-centaur-scout",
+      "asset": "assets/bestiary/creature-centaur-scout.webp",
+      "sourceSha256": "656300d3e73e566da07ad2e947c171ed96b6ea62188da433bb470da3f199efb3",
+      "sha256": "9b0b59f9ff3651017f900eb5ba4cb21b991817f7aea3c2eca471e6e3c0aa9998",
+      "bytes": 43184
+    },
+    {
+      "id": "creature-chain-jailer",
+      "asset": "assets/bestiary/creature-chain-jailer.webp",
+      "sourceSha256": "14f545e0c4982f8fde6bc41975b00b44a124546962af75ad6fc4bb65224965b5",
+      "sha256": "82fb2a5129a0faa786c5b1b50ceff3d267ba09287c15932af97358864403e8bc",
+      "bytes": 75192
+    },
+    {
+      "id": "creature-chimera",
+      "asset": "assets/bestiary/creature-chimera.webp",
+      "sourceSha256": "175e8445f46d8dd767b7f735001bfd10f390396bc8e62cc9de6d932e32614de9",
+      "sha256": "0d99627cdce0422a51e38830849ebe8009fc6e461c789ed8423c4d60bbb00d93",
+      "bytes": 60178
+    },
+    {
+      "id": "creature-chorus-maw",
+      "asset": "assets/bestiary/creature-chorus-maw.webp",
+      "sourceSha256": "b902e688bdb66d894ee4e23105d7a8e2757b2d8c49410276dfd7f508ddaa3e57",
+      "sha256": "584e86574f66253eef97e041bff21d5a03aa3f240c49709f352e6e612f93eb31",
+      "bytes": 47400
+    },
+    {
+      "id": "creature-cinder-imp",
+      "asset": "assets/bestiary/creature-cinder-imp.webp",
+      "sourceSha256": "889a59124f681bec257d27b5173e872dbfae07129245fdc95f250b526853e3b3",
+      "sha256": "1ca235a3fb739dbada8ec18af1089eda38e92e18ef96a057de655421a1ad0a00",
+      "bytes": 46594
+    },
+    {
+      "id": "creature-cinder-strider",
+      "asset": "assets/bestiary/creature-cinder-strider.webp",
+      "sourceSha256": "b08d5790a77161b8a69cfbd35f50f7a2f303914d68c8c2f4fe2c2e9d0d0fba2c",
+      "sha256": "728473b69964b3c21627e8159c253815afe6de20f9ef62daa0566de6c06fb1a9",
+      "bytes": 64360
+    },
+    {
+      "id": "creature-clay-golem",
+      "asset": "assets/bestiary/creature-clay-golem.webp",
+      "sourceSha256": "7da763fdeeafbaac3e6ecb862d1071c3b0fbd5ab6637c2961744ff9e0c2b043d",
+      "sha256": "7fcf5622d671b6c7a784e0f7925baea18df842fafe57545e507e68f12608ca72",
+      "bytes": 55820
+    },
+    {
+      "id": "creature-clay-helper",
+      "asset": "assets/bestiary/creature-clay-helper.webp",
+      "sourceSha256": "554ab23299f22d8d9560cee3fc9a508bf5a1f0fc89f602fcfee324ec48b3c51c",
+      "sha256": "31c2d02666aee62df430c17076a9aace697767251fb6d6f4ab6731528c3d48a5",
+      "bytes": 52192
+    },
+    {
+      "id": "creature-clockwork-scout",
+      "asset": "assets/bestiary/creature-clockwork-scout.webp",
+      "sourceSha256": "a41d63d045d85d13eb44dc00f1acfcb895f62e8942a7385dbe2db240a6846237",
+      "sha256": "924d7c5c195f97c59e0a48080c0e84b82c5ba6dc414da2cd2e8baa34a4b03910",
+      "bytes": 57656
+    },
+    {
+      "id": "creature-cloud-giant",
+      "asset": "assets/bestiary/creature-cloud-giant.webp",
+      "sourceSha256": "37a59e13a5424eb91fb899277325f8895a59604c29b9a4e4fd43d921c1a4f81f",
+      "sha256": "2983eee884112fc9f7fe97e037b2eb6226d5e867720de8d7933a6c65dd47a1da",
+      "bytes": 73974
+    },
+    {
+      "id": "creature-cockatrice",
+      "asset": "assets/bestiary/creature-cockatrice.webp",
+      "sourceSha256": "f41149a42b53a48c8f7d7b6f2ed13c6f94f203846198f2b93049f18adb7b5f2e",
+      "sha256": "5d1c5391ddc12356dcd16cc1884134d3a16c9e40a62458d3037d5e7cc63ec82d",
+      "bytes": 65752
+    },
+    {
+      "id": "creature-crypt-ghoul",
+      "asset": "assets/bestiary/creature-crypt-ghoul.webp",
+      "sourceSha256": "6b3a9a59ba40274638c22babc2c01d1c25127f4f530a07e28196ef0f263cc1bb",
+      "sha256": "c804c934a411a27a115f3c38c7d1c8aebf77895aac45bbd2c7b4db53536312c1",
+      "bytes": 60088
+    },
+    {
+      "id": "creature-crystal-ooze",
+      "asset": "assets/bestiary/creature-crystal-ooze.webp",
+      "sourceSha256": "ede1dd70d1bf0eb6f4841252287c83c759233e302d0c25aa3856d59fd67f6e7e",
+      "sha256": "fa12239e324cec742e10e670e85c4dd735c77d73587db27d5747b308a6d80cfd",
+      "bytes": 64286
+    },
+    {
+      "id": "creature-cyclops",
+      "asset": "assets/bestiary/creature-cyclops.webp",
+      "sourceSha256": "1278229fbdd753ebf26129d5c4733201274cbec36b31afc60561455362896290",
+      "sha256": "ddd641b64f15e0ffa7db1f09706c4c378b26780eb3ce4a4cc450ce9c4cdbc24e",
+      "bytes": 52124
+    },
+    {
+      "id": "creature-dawn-emissary",
+      "asset": "assets/bestiary/creature-dawn-emissary.webp",
+      "sourceSha256": "1f299b8114e834c4c3f4bd7879c6480a638da06f2fd66c072a4b50a22b00d9fe",
+      "sha256": "774cef05eb6c784718b4ddf1bc5707ac0f781a3ff927bf71d78c3e10ab9d9d0c",
+      "bytes": 68370
+    },
+    {
+      "id": "creature-death-knight",
+      "asset": "assets/bestiary/creature-death-knight.webp",
+      "sourceSha256": "aaafd85d8ad750f0c0f9c9bc9d3df6a7683b4e9a6b2b2a75bdc89dbda3871201",
+      "sha256": "e28ab617c7d7b7017ccaefea592c387b31aa81efef42fab1cfbd30991fdd77a7",
+      "bytes": 55374
+    },
+    {
+      "id": "creature-deep-elf-webweaver",
+      "asset": "assets/bestiary/creature-deep-elf-webweaver.webp",
+      "sourceSha256": "8199e291b8e362fa953c5614a3f8cfa969d2bea423967f05a404fdd7ae53f028",
+      "sha256": "6ae1a54c9b14201c1681685c65bf6bdf6252b2e2e9c204b261213419ef33328a",
+      "bytes": 59044
+    },
+    {
+      "id": "creature-dire-wolf",
+      "asset": "assets/bestiary/creature-dire-wolf.webp",
+      "sourceSha256": "caec96cfddc79d3a8cbc7af4e8b4701d60f307c724c45ad9f59759ae712da7ec",
+      "sha256": "a91f72904bd58909057cf7d611078a01975e8a449b48bf0061c51f9e8188e022",
+      "bytes": 67878
+    },
+    {
+      "id": "creature-dryad",
+      "asset": "assets/bestiary/creature-dryad.webp",
+      "sourceSha256": "ea3b3b69e1deaa98f22187652af73619d4b586ebcf67e4ee983194b25a62b7cd",
+      "sha256": "9500dc9a8f6c9ac95c691307c699b271baea97e20b1165d8d5c04474990dc824",
+      "bytes": 50772
+    },
+    {
+      "id": "creature-earth-elemental",
+      "asset": "assets/bestiary/creature-earth-elemental.webp",
+      "sourceSha256": "b3fb01f0cf8129e8efe06c6f32317de8c19ba6ea84a7e6fcdf70df83e6fcc68b",
+      "sha256": "d07db5e0ace11474b4fb141c28a57b8b81081deb245e8360fb4c3193dc8ed730",
+      "bytes": 80924
+    },
+    {
+      "id": "creature-emberling",
+      "asset": "assets/bestiary/creature-emberling.webp",
+      "sourceSha256": "f321164fa89396da97b48f9722ae8e39682d6de3bd42ae385210814524d26b4c",
+      "sha256": "a1e8cc0a52908f3054158737a7e7e9ec24177f2772e72cdb46a4fac1a40791a4",
+      "bytes": 85608
+    },
+    {
+      "id": "creature-ettin",
+      "asset": "assets/bestiary/creature-ettin.webp",
+      "sourceSha256": "9ccd819e9a3ebd0190b901283bc3ea4839dd8d1797032ddb0d89ef0130cb3823",
+      "sha256": "081557e424b96ad5ce5def6704ea3411669b934fd2b73a99d2bf14330d9a5e3b",
+      "bytes": 49770
+    },
+    {
+      "id": "creature-faceless-envoy",
+      "asset": "assets/bestiary/creature-faceless-envoy.webp",
+      "sourceSha256": "8f6bbb98290b189c0de80cac5719a0944d9f1d04360adba27e2a222c82649423",
+      "sha256": "a5464a8a206cf7ede7486c3c44d21ac43a330a1a9bdda6a300874c791d2bb40e",
+      "bytes": 63832
+    },
+    {
+      "id": "creature-fire-giant",
+      "asset": "assets/bestiary/creature-fire-giant.webp",
+      "sourceSha256": "e5f4e9e2b6812fc0cbe24785369d237920688b9ebe0a4310be3ec5b2a7905c3a",
+      "sha256": "6a229795b65a84ac268cc58dbf809ee60a044673558871d02230aa1f74952481",
+      "bytes": 60664
+    },
+    {
+      "id": "creature-flesh-golem",
+      "asset": "assets/bestiary/creature-flesh-golem.webp",
+      "sourceSha256": "85423a395845c6b9554e9d81dedcd7fb555cf8d913352c249560ffeb3e21b3ee",
+      "sha256": "a380e43fa24956b36e3bb98c24d41f315419ba4c37e2b3f3867953012ded736b",
+      "bytes": 50200
+    },
+    {
+      "id": "creature-frost-giant",
+      "asset": "assets/bestiary/creature-frost-giant.webp",
+      "sourceSha256": "19de84db73dfead1c158ecb52d72929fd24977f8791a20f7009d65bf9d186d29",
+      "sha256": "ed94f5f757303bd823f29797cf0a9ab3c56d0f360e9feefc31d5e9540fbc71e1",
+      "bytes": 66762
+    },
+    {
+      "id": "creature-gargoyle",
+      "asset": "assets/bestiary/creature-gargoyle.webp",
+      "sourceSha256": "3156b5624d0c91c5c4c17e6523a0ca7d64242febe23f7fca0623bdfe5eaca9e9",
+      "sha256": "8548650c77c80c444d7e2897baf9c14f29c05887d2dfb9d90c5a477297289987",
+      "bytes": 62302
+    },
+    {
+      "id": "creature-gate-archon",
+      "asset": "assets/bestiary/creature-gate-archon.webp",
+      "sourceSha256": "e311b8f2d2cfa4eaa994d340797a32f495f9d1e8b5ea4f9c0df19675eb7e933a",
+      "sha256": "f7c5a258cc27296bf501190ec0535b587a57442f59f54301d42f820be5eba2f3",
+      "bytes": 80626
+    },
+    {
+      "id": "creature-gelatinous-cube",
+      "asset": "assets/bestiary/creature-gelatinous-cube.webp",
+      "sourceSha256": "4dd9b895be2c74cd91a291084dddf4c0e68bfdcd5c94027c56aa5bbf4347d33e",
+      "sha256": "587c2e46f44ec53db4b62b555b5e1e1c2e1fd5a16bc4e18a7527e2518e8d1f4c",
+      "bytes": 56880
+    },
+    {
+      "id": "creature-ghast",
+      "asset": "assets/bestiary/creature-ghast.webp",
+      "sourceSha256": "6dd94d5650819088efd4d7e99eade30274c055a26637e1e416de782580c7c843",
+      "sha256": "c2dbaa845e19fcd172ae539e23310fe9156f0256a455567d51f3b29afe7f17f3",
+      "bytes": 68680
+    },
+    {
+      "id": "creature-giant-boar",
+      "asset": "assets/bestiary/creature-giant-boar.webp",
+      "sourceSha256": "32dac82ef4076d8e0863cac2ab05845e97c9bfbf37011e2a8d34768ab3e6a196",
+      "sha256": "0bb51926357fa35c7ee424f41ba8f8c84d38c2c3a38421f688280e53135589ad",
+      "bytes": 68854
+    },
+    {
+      "id": "creature-giant-constrictor",
+      "asset": "assets/bestiary/creature-giant-constrictor.webp",
+      "sourceSha256": "f266ae6fb9dc1a78cbe9dfb9103915d4eb4e8a0df5915bc552c3fef08c0aad80",
+      "sha256": "05efe3a5e8f561ebff32dde3a6ad2a4eff11b6ab7240bebc2f62ebcf589f13d1",
+      "bytes": 76898
+    },
+    {
+      "id": "creature-giant-eagle",
+      "asset": "assets/bestiary/creature-giant-eagle.webp",
+      "sourceSha256": "9896ade7804145f875389753f8afcf883b3c129c9eddbe98ee576f36379c3f40",
+      "sha256": "d9e7ab2075afcee9a8325ce84cd0981f455b0277b12600db9c18a03f0da964fc",
+      "bytes": 76388
+    },
+    {
+      "id": "creature-giant-flytrap",
+      "asset": "assets/bestiary/creature-giant-flytrap.webp",
+      "sourceSha256": "d20e24cea3341fa7402eebf80d67baf2c0b9155cca4554a6bf4fe42a842d6be2",
+      "sha256": "39c4176ac879e4867815b7ff09440a9a8625ecd907972f6e37793713e18093a1",
+      "bytes": 82104
+    },
+    {
+      "id": "creature-giant-octopus",
+      "asset": "assets/bestiary/creature-giant-octopus.webp",
+      "sourceSha256": "5b0d8572dee71f65a6f7e38c0293238d048419fac84760a684d9771564545d65",
+      "sha256": "01ffa711061555868b2e7444c48341e9ec32e09f9b3d1e449c1427e8caeed3c5",
+      "bytes": 78634
+    },
+    {
+      "id": "creature-giant-rat",
+      "asset": "assets/bestiary/creature-giant-rat.webp",
+      "sourceSha256": "e1d3fa6cde0dea5757f5349e90b95ddc9f1d9707aaa5548c2e5c4ed6fa801158",
+      "sha256": "36c2e6f987fd7fcb2e4be36f7729685551c69a560115eba49509835a58658622",
+      "bytes": 85606
+    },
+    {
+      "id": "creature-giant-scorpion",
+      "asset": "assets/bestiary/creature-giant-scorpion.webp",
+      "sourceSha256": "901e91f6037b07dd9d8a11822d6a70b82840e7829a4384b33f7f4ad108c75c2e",
+      "sha256": "e0a11d6c069f1e097b3e24e29981e00c60141e5fbb1955efb1f0834355fbd8c8",
+      "bytes": 65782
+    },
+    {
+      "id": "creature-giant-spider",
+      "asset": "assets/bestiary/creature-giant-spider.webp",
+      "sourceSha256": "d14f3ee17369cbb845952358e269117295cf168d78e921cd33580cde4d22cc5c",
+      "sha256": "3f49bb54a73c61c3edab69c79105c571da82f7b456baa0a9491afa61c73a3265",
+      "bytes": 82544
+    },
+    {
+      "id": "creature-glass-sentinel",
+      "asset": "assets/bestiary/creature-glass-sentinel.webp",
+      "sourceSha256": "283a69f30e2789d77837592c8194ef482f2aa51757ae3f7f8fe8c570735fd0a6",
+      "sha256": "bd00d277ba28c05f3f0ced7538fd72902f05516874444ed3f373a98881d6660c",
+      "bytes": 58376
+    },
+    {
+      "id": "creature-gnoll-bonecaller",
+      "asset": "assets/bestiary/creature-gnoll-bonecaller.webp",
+      "sourceSha256": "3ee7aab66279e2ae832512d5059fe44c179127eda287a7bf9c2db3a8edcd9786",
+      "sha256": "efe4d7ace2733121aed85978fee53f5e203a65ec5bfb498834ff553a0f7f9c87",
+      "bytes": 67390
+    },
+    {
+      "id": "creature-gnoll-tracker",
+      "asset": "assets/bestiary/creature-gnoll-tracker.webp",
+      "sourceSha256": "52e437d913ac182d9d4b3e9e6f6a6214a7ecf7ddde2f4b1b4d4484db01d16cbe",
+      "sha256": "e236ca415df412ffd72aaf1ffd1895b53e4089f0ec5ba6cf392770a8e62498b6",
+      "bytes": 56302
+    },
+    {
+      "id": "creature-goblin-boss",
+      "asset": "assets/bestiary/creature-goblin-boss.webp",
+      "sourceSha256": "3497671b1a5eaac88f7542a9b49d7d7a866c441a6a49d658f56e006ce0c0b8be",
+      "sha256": "ec79d0676cadafa8ecf8f5a748e9a775247e47b4bab4d8ed240d5999e1c04b9f",
+      "bytes": 54738
+    },
+    {
+      "id": "creature-goblin-firestarter",
+      "asset": "assets/bestiary/creature-goblin-firestarter.webp",
+      "sourceSha256": "a14c8100421a4c27169f94c736da8c417c6432c12e3f248e49cc3a4ff953a1d3",
+      "sha256": "3b5455fb2e049014fda3222caf4fac04fbceeabc54fa0091561eeb408c9847ed",
+      "bytes": 53078
+    },
+    {
+      "id": "creature-goblin-rattlechanter",
+      "asset": "assets/bestiary/creature-goblin-rattlechanter.webp",
+      "sourceSha256": "7d68d441284417e700b72808b823568463e1ceaf8a45665e50309a48e01295c0",
+      "sha256": "5bcbb82434651a60cc60f98d9c7f2fab655351d747615d576bb8cebaad199522",
+      "bytes": 57830
+    },
+    {
+      "id": "creature-goblin-scrapper",
+      "asset": "assets/bestiary/creature-goblin-scrapper.webp",
+      "sourceSha256": "3f4fe745b94e9c46f405f87c2ab6c9949cfe5227701f2a596897dd7b03bb1dc4",
+      "sha256": "dc3358805136489a5ae07408fdc811c97ce9906ff31f8410e6b098f78eac3490",
+      "bytes": 45776
+    },
+    {
+      "id": "creature-goblin-smoke-slinger",
+      "asset": "assets/bestiary/creature-goblin-smoke-slinger.webp",
+      "sourceSha256": "1cfee132d00a29e6b4a8e310e9729a8f738a3d58a47b737a17baa0b69eb47e3d",
+      "sha256": "3d344e58002742f56f2def93f13398c6c72c3ff01fc63785cbe705d404afc7d0",
+      "bytes": 49886
+    },
+    {
+      "id": "creature-goblin-spearhand",
+      "asset": "assets/bestiary/creature-goblin-spearhand.webp",
+      "sourceSha256": "9bbd23f53fa3a44feae6fcebd8eb0bcac03c61e62bb7ffc1730bef67f3ef7248",
+      "sha256": "aab27d207034c8798e110e57e493ec89094a6f2816cb79e9d8a4ab16604c4601",
+      "bytes": 44052
+    },
+    {
+      "id": "creature-gold-dragon",
+      "asset": "assets/bestiary/creature-gold-dragon.webp",
+      "sourceSha256": "7322c023ded24d6fa1a7af3e574e43cb21a4235a03f3bed35fd1c18bdb995bf6",
+      "sha256": "6d7a17b5d30d3a1f5b42f2abc281257fcc555502dfee4d3459ecfe7823808671",
+      "bytes": 78686
+    },
+    {
+      "id": "creature-grave-cultist",
+      "asset": "assets/bestiary/creature-grave-cultist.webp",
+      "sourceSha256": "0c8937fcdfe9bfd784151d2531ea1cf9b02715fc60e74d4f9ad63548d03fd395",
+      "sha256": "0a52c66290c8a59b37f90251162d8b90d125032aef0d5cfbff78281acd153a44",
+      "bytes": 44282
+    },
+    {
+      "id": "creature-grave-wisp",
+      "asset": "assets/bestiary/creature-grave-wisp.webp",
+      "sourceSha256": "88baa473cee3375b2367803a1493c814f19a8d4e6851694d66ce3bbbac102aae",
+      "sha256": "ee8fd184f9ae8d01db17f7aa9e67dd050c316ea427e6eb5e6e70651200753055",
+      "bytes": 56908
+    },
+    {
+      "id": "creature-great-cat",
+      "asset": "assets/bestiary/creature-great-cat.webp",
+      "sourceSha256": "a74271222f0172880f523e2d542bb09426c178d551343be8493cde58834db3aa",
+      "sha256": "a9c3204d0453455a1681f79561b829e4404d4f8aa12d2d784a23d2a881f54247",
+      "bytes": 67178
+    },
+    {
+      "id": "creature-great-stag",
+      "asset": "assets/bestiary/creature-great-stag.webp",
+      "sourceSha256": "736a58085e838b140638ef5b352430ab185d42c1275650450f9d6cb71173809c",
+      "sha256": "c3b51fd3fb34ee6d5184f61774f1bfa92466179cf9ca778e383463e1bf78e43a",
+      "bytes": 73886
+    },
+    {
+      "id": "creature-green-dragon",
+      "asset": "assets/bestiary/creature-green-dragon.webp",
+      "sourceSha256": "b913b4aaedfdc76837766d06ba1f84c704fe7d488187fcac53f036e375bb50ac",
+      "sha256": "3304da57ed5a589f86011678ee1327ec2488d0f1246d55d461648ccf9f807770",
+      "bytes": 78892
+    },
+    {
+      "id": "creature-green-hag",
+      "asset": "assets/bestiary/creature-green-hag.webp",
+      "sourceSha256": "74b708323b06d94f25e362846fd4c9d81a68f2c648369cac04a40d104b501450",
+      "sha256": "1ba41524051a4e063a4dc0d8528228b054df6bf8cf76c493ace89134fd539ce8",
+      "bytes": 66238
+    },
+    {
+      "id": "creature-griffin",
+      "asset": "assets/bestiary/creature-griffin.webp",
+      "sourceSha256": "a6c6c35329c4efbedd511ac008cf4c8502a84862757fe08ea3702f368ccb4976",
+      "sha256": "5f9941d143c30409b67fd8be28648f99b2c8f25f020763212eb6f424c24c148f",
+      "bytes": 58342
+    },
+    {
+      "id": "creature-harbor-siren",
+      "asset": "assets/bestiary/creature-harbor-siren.webp",
+      "sourceSha256": "823b8dbc1334c3d867b41ce06c7a200c02d7558c85e62f920fda0f576f0a8a9c",
+      "sha256": "170678e639cd0263bcb781c1f03bfdd2d87890c2c80f9e04cac76e3be440ab7a",
+      "bytes": 78034
+    },
+    {
+      "id": "creature-harpy",
+      "asset": "assets/bestiary/creature-harpy.webp",
+      "sourceSha256": "72599f0263d9f2741be629e2ff40580c150cc11322dc1924215c4def0c960dea",
+      "sha256": "66537d368ed766506fc4b0a677dc4c29e7654ba93903d4f1c39677dc3490df96",
+      "bytes": 63434
+    },
+    {
+      "id": "creature-hearth-brownie",
+      "asset": "assets/bestiary/creature-hearth-brownie.webp",
+      "sourceSha256": "5fe8e261fecac9d2fa9d2d0313ca866c0e7c43db27b8f55649d0ade460652627",
+      "sha256": "e68b8026277ecedfca913624771f9881a9fdca5ef3a16c6a1c359062598668a2",
+      "bytes": 56616
+    },
+    {
+      "id": "creature-hedge-sorcerer",
+      "asset": "assets/bestiary/creature-hedge-sorcerer.webp",
+      "sourceSha256": "59806801acd55420239d34893f3d4d07b68faebee9799c0936cda9f064e5c007",
+      "sha256": "8527d350e26c06e584a1a2d6bd9701be7a9dd0dba55cd48cbd8f89686870208b",
+      "bytes": 51714
+    },
+    {
+      "id": "creature-hedge-sprite",
+      "asset": "assets/bestiary/creature-hedge-sprite.webp",
+      "sourceSha256": "4a69d2737d3f386b274af9cdab19a934df7629c6a5e9fac96b533d60ea3ec434",
+      "sha256": "ab6bf7160731c7544c817fe3e124cf9414ad40e9c6b851519e526a72f0c11dc3",
+      "bytes": 63032
+    },
+    {
+      "id": "creature-hell-hound",
+      "asset": "assets/bestiary/creature-hell-hound.webp",
+      "sourceSha256": "5030db0ed09e13254295e9e0e96938382f72deef54219512ea465246a30219a2",
+      "sha256": "5577609c05a41662eee028921e08d0326cc6cac96eacfa47a2cedd017f0a505b",
+      "bytes": 55042
+    },
+    {
+      "id": "creature-hill-giant",
+      "asset": "assets/bestiary/creature-hill-giant.webp",
+      "sourceSha256": "c95764cdd1ab4866f0b1ed001d50c80cc0c46575dfafbc24b479c556a43d5cee",
+      "sha256": "a3e6aca371d83ff89ba057caf0a012a5611b79ea628869df68eea4006fe216d0",
+      "bytes": 72750
+    },
+    {
+      "id": "creature-hill-ogre",
+      "asset": "assets/bestiary/creature-hill-ogre.webp",
+      "sourceSha256": "0890183aa65768cca22994df4b987df1a914d837c1d7ec61c76ff27eb6c8a982",
+      "sha256": "d497ffb5d61a41d818eba9b17a02975436c3569659566e4699190e055de4e6c9",
+      "bytes": 44646
+    },
+    {
+      "id": "creature-hobgoblin-longbow",
+      "asset": "assets/bestiary/creature-hobgoblin-longbow.webp",
+      "sourceSha256": "ebf17880bdf7c0a5783f7f81e2810d70acad269d6ef2f628af896e7e8737bcb3",
+      "sha256": "493c1cce981c4d0f77ed69db174f2d357d315cfc473a1e46933258a5e3981864",
+      "bytes": 41150
+    },
+    {
+      "id": "creature-hobgoblin-marshal",
+      "asset": "assets/bestiary/creature-hobgoblin-marshal.webp",
+      "sourceSha256": "69e0e26322fb5945a24cd92d314aefb3d5e660ef83ec97350d84177f4884dd6a",
+      "sha256": "272a811a40bb2038ede28f09bf12076b596e1e8af2f7e246c643a3d4056fb28e",
+      "bytes": 37208
+    },
+    {
+      "id": "creature-hobgoblin-shieldguard",
+      "asset": "assets/bestiary/creature-hobgoblin-shieldguard.webp",
+      "sourceSha256": "8f2c2d2f60e9d6a78fa424126ad8f2c64392756912a143bc2c349425594392d7",
+      "sha256": "568428576cdf6cf2c2c16ce439bb591eb0263d66660b12891bc200e44cd6e7c9",
+      "bytes": 42702
+    },
+    {
+      "id": "creature-hook-beak",
+      "asset": "assets/bestiary/creature-hook-beak.webp",
+      "sourceSha256": "5a526515e3d7020381b346904ac46ee9952c69e0a7fb5442f36002c9ec681887",
+      "sha256": "16876db0cf759982aa1aa6884ab4588899ab2ed154c0424a87e2f3e1b4f16aaf",
+      "bytes": 53230
+    },
+    {
+      "id": "creature-horned-devil",
+      "asset": "assets/bestiary/creature-horned-devil.webp",
+      "sourceSha256": "8e490da7e5c5faff1905e7d5f30df8e9dc1fdcd5585f79a362b9a13bf48e5ab7",
+      "sha256": "9d2bbfcd272547ee7388a967069f693695a1251e27aa66dbb938e882d9de8516",
+      "bytes": 54152
+    },
+    {
+      "id": "creature-hydra",
+      "asset": "assets/bestiary/creature-hydra.webp",
+      "sourceSha256": "401810a8ade519588ec51a382288e7320a07fd20bd1ccc0d74168a7deea6ec82",
+      "sha256": "18127b7805e5f633ddffda92162a117bf161a2781071205b15834a7c83e6e368",
+      "bytes": 72296
+    },
+    {
+      "id": "creature-icebound-warden",
+      "asset": "assets/bestiary/creature-icebound-warden.webp",
+      "sourceSha256": "b3076603d247550dc1e9b551bda1ffe7d6ffb5c4fa608d97f01a6e3ff70dade5",
+      "sha256": "445fed744b128b49a937ea8a3a05d12c2d37a12a0bac24d7b9b4ddc41a6003dd",
+      "bytes": 71244
+    },
+    {
+      "id": "creature-iron-gatekeeper",
+      "asset": "assets/bestiary/creature-iron-gatekeeper.webp",
+      "sourceSha256": "91c830289b636a4a682cdf84da986778e0d217b8f48a44211c1f9dfdba314fe5",
+      "sha256": "193f62716a4035403d58cd9a045302ceb02dd94a5a9f7b3985355f82caec10bd",
+      "bytes": 72318
+    },
+    {
+      "id": "creature-kobold-emberkeeper",
+      "asset": "assets/bestiary/creature-kobold-emberkeeper.webp",
+      "sourceSha256": "a16b1d79ca3050249acbde961f48f9ef8130280440065d2719ca58706554460a",
+      "sha256": "71f70bacaf708b327efe3ea6f31b35116e3cde68d62be839272ee262e90253af",
+      "bytes": 58750
+    },
+    {
+      "id": "creature-kobold-trapkeeper",
+      "asset": "assets/bestiary/creature-kobold-trapkeeper.webp",
+      "sourceSha256": "24105645bafd0a7624b9145cc35baea8f7754e1956300a9e279b2da48a6594d4",
+      "sha256": "ade3c911913f32d19fde7616401512063ad1a0142a1a6f83c50d81b2afaf1486",
+      "bytes": 54166
+    },
+    {
+      "id": "creature-kobold-tunnel-scout",
+      "asset": "assets/bestiary/creature-kobold-tunnel-scout.webp",
+      "sourceSha256": "d07f2bb3c790ab3cbd4ddc063d7c6ac0c7d43c0468f548fc84cee414b6f6fc86",
+      "sha256": "dc7ed712621dc510862eaf5ffa46104b10a7b9cf66135543f48239ffd9ac588a",
+      "bytes": 43210
+    },
+    {
+      "id": "creature-lantern-angel",
+      "asset": "assets/bestiary/creature-lantern-angel.webp",
+      "sourceSha256": "538633c813c53a0ea87769db4314f77c8f39169f128567226cf21d540b7e510f",
+      "sha256": "293a885360a9ce8057eb14ada1e803b597e69a6161ef1b4fbc5a80e804807ad2",
+      "bytes": 61432
+    },
+    {
+      "id": "creature-lantern-spirit",
+      "asset": "assets/bestiary/creature-lantern-spirit.webp",
+      "sourceSha256": "a37171714198a20340890ff6f8c74bb8e5ade2dbd9b384ff00fa5aff3fe81a0b",
+      "sha256": "fffc4df4c551abeed55bd75694cfb6d43cf0ec3877a60b57d129ee50f8b7d395",
+      "bytes": 56896
+    },
+    {
+      "id": "creature-lizardfolk-reedguard",
+      "asset": "assets/bestiary/creature-lizardfolk-reedguard.webp",
+      "sourceSha256": "3b108c8fa3cfcd95c34ddfdb30689b7526919d6770b279c5917ac7b772db2bf4",
+      "sha256": "2b88823dafefd846a70227c3bc5bdf54b86c7d727dcb99fb90628f2d47298d52",
+      "bytes": 50994
+    },
+    {
+      "id": "creature-lizardfolk-starspeaker",
+      "asset": "assets/bestiary/creature-lizardfolk-starspeaker.webp",
+      "sourceSha256": "33a88cdb6b901b3d1fc4218a42cdad55b775a70785d5f86d460cce4365b5438b",
+      "sha256": "798da0c7df3948985d59961ed8cbadb1ce0e1357bb271a7e17da91fcf053ded4",
+      "bytes": 56560
+    },
+    {
+      "id": "creature-manticore",
+      "asset": "assets/bestiary/creature-manticore.webp",
+      "sourceSha256": "7fedba7ed64fbd6251d730ebc67dabcb2be78e87bb1fb63266e8df848964f56f",
+      "sha256": "044fd9e965b407649a292f5599393c72d7fe8c071e08a9f87497584a81189049",
+      "bytes": 64452
+    },
+    {
+      "id": "creature-many-headed-marsh-wyrm",
+      "asset": "assets/bestiary/creature-many-headed-marsh-wyrm.webp",
+      "sourceSha256": "05ff0674cd063e36647f8b8ff2a48aeef140c83212285e812c18064e31a9f029",
+      "sha256": "d619039783d5628487960da69106c13b7fec6472ab9a86102a3358646086a420",
+      "bytes": 77478
+    },
+    {
+      "id": "creature-marsh-crocodile",
+      "asset": "assets/bestiary/creature-marsh-crocodile.webp",
+      "sourceSha256": "0d26c658c862b53aa058ccbde1f1913175d59177f78701ab4c71d9288cb416c9",
+      "sha256": "32d4fa00b3f5bd70a04ead61d8d0b01cb4033edb518ff209f4a8c9b3282aae43",
+      "bytes": 58776
+    },
+    {
+      "id": "creature-masked-duelist",
+      "asset": "assets/bestiary/creature-masked-duelist.webp",
+      "sourceSha256": "db8b1ac1f8c05e402a5a420f23d5f35316514a2c013965861e56482b760753c1",
+      "sha256": "0b4f8c1ea99c57c9fd0a7f35e5e30896e2792a63ff9536398c2b073f222eaeab",
+      "bytes": 46272
+    },
+    {
+      "id": "creature-medusa",
+      "asset": "assets/bestiary/creature-medusa.webp",
+      "sourceSha256": "354252cd34ec63b56ab4195cda5b0829571a1e2cbb93ad70b4ffa6bfac0a9388",
+      "sha256": "acb3e64ff7b554f9972f5d88941db09dfc8e306e35255115567f6056bef98ff0",
+      "bytes": 59788
+    },
+    {
+      "id": "creature-merfolk-tideguard",
+      "asset": "assets/bestiary/creature-merfolk-tideguard.webp",
+      "sourceSha256": "0f0edf229c204a91fa5b4c7569458615c1d2f05a28fa9555abde2206b4b74ac8",
+      "sha256": "fcb50b6967d17711a5635fd3bf4a4b273ef515a16ce0af043465c3f67c123c83",
+      "bytes": 66620
+    },
+    {
+      "id": "creature-mimic-chest",
+      "asset": "assets/bestiary/creature-mimic-chest.webp",
+      "sourceSha256": "37aca50b3266e37781a340ffe9f514bb61f62748de8bd93806bdb446daf194e6",
+      "sha256": "117d849164fb65564a55e810a35dd1d7b2a5f7881a45453fb93e95104a424547",
+      "bytes": 57498
+    },
+    {
+      "id": "creature-minotaur",
+      "asset": "assets/bestiary/creature-minotaur.webp",
+      "sourceSha256": "228cdde5c2b18b7e443f1722755acd0702d78f1d3a169f0446332088ec5de572",
+      "sha256": "7545db38c3597ec456b77fea4c040e98379eaff86d7211655967cfa8deff86f7",
+      "bytes": 53446
+    },
+    {
+      "id": "creature-mire-ooze",
+      "asset": "assets/bestiary/creature-mire-ooze.webp",
+      "sourceSha256": "3bc8611591becef0cbd751c48c4282dc1a158e3c02c79cb1d56207c13c57f3a9",
+      "sha256": "18da6ede5229d9a17b8d56c1f14849fc9d2ced5d056a32094fbc1ebd6bf70d21",
+      "bytes": 59342
+    },
+    {
+      "id": "creature-moon-hart",
+      "asset": "assets/bestiary/creature-moon-hart.webp",
+      "sourceSha256": "a7d67b275f996a189bef898878b619ea68f1c91f142c60966d2ba69ed588c301",
+      "sha256": "8c3bad69bcef318e3b36962bb6f09c954ba5438bfe35449425058ac5c94ca885",
+      "bytes": 71200
+    },
+    {
+      "id": "creature-mourning-bell",
+      "asset": "assets/bestiary/creature-mourning-bell.webp",
+      "sourceSha256": "80d2b151837fccc233f1c56efe3120d369716549774caad039c9130c0365be66",
+      "sha256": "e9eecfe8a1feeae235eb8743278bcf12e67267759fad8aed1eae8f2649ead68b",
+      "bytes": 75732
+    },
+    {
+      "id": "creature-mummy",
+      "asset": "assets/bestiary/creature-mummy.webp",
+      "sourceSha256": "ad43dc9e5fa11c60cac7685444cca33376648773c65564547096df57b2568481",
+      "sha256": "c09c8ea07eb8e1586c337f6b17c58d3332302e7adae913d471ebce60fc19d61f",
+      "bytes": 56180
+    },
+    {
+      "id": "creature-mummy-king",
+      "asset": "assets/bestiary/creature-mummy-king.webp",
+      "sourceSha256": "926a02d833c629ab7e0afae18ea53c841daf82c67439448daf2df8bac14d6787",
+      "sha256": "2d418cfd415f0b4d59936539528c940664a81126681d02945dee99ee862d6633",
+      "bytes": 66818
+    },
+    {
+      "id": "creature-night-hag",
+      "asset": "assets/bestiary/creature-night-hag.webp",
+      "sourceSha256": "7847141c377b0136c2794a0a37b54f65b5aba2b364b40edfb700af31ea2547bb",
+      "sha256": "2e4acf3bf9d27cbf1f0ecb942b158c55e18fb88997fd625050c9a01f9a5c826b",
+      "bytes": 47378
+    },
+    {
+      "id": "creature-nightmare",
+      "asset": "assets/bestiary/creature-nightmare.webp",
+      "sourceSha256": "68fad3aa791217f026dacd8327d5c71cd1e759c365447148642670ad5e1ac3a0",
+      "sha256": "304f2bde7726a5e094097056c822ab64a65c37e03069cbd84079035700161399",
+      "bytes": 60144
+    },
+    {
+      "id": "creature-oath-devourer",
+      "asset": "assets/bestiary/creature-oath-devourer.webp",
+      "sourceSha256": "44bdcbcc721ee52ad14c95b68762f6c4533049700bd6b28bf0baa331813178db",
+      "sha256": "3ac52ecd93a8dda83298fa855590ce6c3c81ca2f2ac1cbafc6e8040260614c88",
+      "bytes": 64626
+    },
+    {
+      "id": "creature-oath-flame",
+      "asset": "assets/bestiary/creature-oath-flame.webp",
+      "sourceSha256": "597c02e305cbd6f58e1c8c8c78eeff31b2c058cc0783f74ec0e2caf0f26cc351",
+      "sha256": "0ae5b64a74aa6bd95d2e9552d1f8706fbb5d9e82d2496c6b863f50e07949e75b",
+      "bytes": 80380
+    },
+    {
+      "id": "creature-ochre-jelly",
+      "asset": "assets/bestiary/creature-ochre-jelly.webp",
+      "sourceSha256": "936ae66c8dbe158576a0e7175ef535e817e87a3f53423d3e8b7abd656e44374b",
+      "sha256": "313c5458f2b4a8075dd16009153736b8f8eca3dc0b2b8aadee7bfc20042e81ec",
+      "bytes": 63702
+    },
+    {
+      "id": "creature-ogre-glutton",
+      "asset": "assets/bestiary/creature-ogre-glutton.webp",
+      "sourceSha256": "7fc2e4353931bd9fbb24abe0d3752ad89d534790fde1ca3a63c82536f63431e6",
+      "sha256": "7bf92c08161fcc67330d2c3a32f294fc72035639a5a62b42f4acf5b7fa11e5d5",
+      "bytes": 56440
+    },
+    {
+      "id": "creature-ogre-hookhand",
+      "asset": "assets/bestiary/creature-ogre-hookhand.webp",
+      "sourceSha256": "db7a92bafa3d1f21545947b6ef6227f642dddb9891d808211637701f5220f5a9",
+      "sha256": "ff1f76f02cf6a304622a1e59e7e5771fa6da66b5f2ff42324f14d105e092a761",
+      "bytes": 47240
+    },
+    {
+      "id": "creature-ogre-taskmaster",
+      "asset": "assets/bestiary/creature-ogre-taskmaster.webp",
+      "sourceSha256": "244d74f5996f7a1f86ca5e1c4089990355230a1bb6686747390312eee5b4d026",
+      "sha256": "5d0065df17225a5dd7cc102bf81cc8a90d0e84fdd1fe2e608e79034e6ce15720",
+      "bytes": 52908
+    },
+    {
+      "id": "creature-old-root-guardian",
+      "asset": "assets/bestiary/creature-old-root-guardian.webp",
+      "sourceSha256": "357ece2d1ad107d643e72b63b5734d4576a7b3bce86ce966e216369af6e737a7",
+      "sha256": "7ecc1a788827b5a674ad09cbc953282198991f2bf85a1f3d63fb82f7e7b85849",
+      "bytes": 85860
+    },
+    {
+      "id": "creature-orc-outrider",
+      "asset": "assets/bestiary/creature-orc-outrider.webp",
+      "sourceSha256": "6ad8a9fd2ebb0a1b55d735ef5d5d2a996c1cfddff7e2eb5de870867c0e8fdbc5",
+      "sha256": "87ea1ad231d3465f7e685106d53f11ac4b57ac62a294162d8f46e1e7846966c6",
+      "bytes": 32602
+    },
+    {
+      "id": "creature-orc-shieldbreaker",
+      "asset": "assets/bestiary/creature-orc-shieldbreaker.webp",
+      "sourceSha256": "9fcc64569c657a11316aea52616fad217a7c44e7b21cc70a10cc7001027c3dfe",
+      "sha256": "9d66123c31e653fc08363a58a1578a7d34575537c5457793f8c1dff6df79fce3",
+      "bytes": 50888
+    },
+    {
+      "id": "creature-orc-warcaller",
+      "asset": "assets/bestiary/creature-orc-warcaller.webp",
+      "sourceSha256": "b9f5b3f8b8d0334c0cd870850d29ee8d4a3454535f0d700d01630d84899e432b",
+      "sha256": "718f134b7f21f139a2f1075729f141cc0f84c13955cd9ae7c5d6f0990838a4cc",
+      "bytes": 53242
+    },
+    {
+      "id": "creature-owlbear",
+      "asset": "assets/bestiary/creature-owlbear.webp",
+      "sourceSha256": "a415f3caeb092204a040b87dcc9033e04348b0d7a416487330e23783b08dffae",
+      "sha256": "a2ba33e9ff675e1ae9564ddae684aa6ed0c4f9286ece6c2a259d79bf225a26aa",
+      "bytes": 53902
+    },
+    {
+      "id": "creature-pact-broker",
+      "asset": "assets/bestiary/creature-pact-broker.webp",
+      "sourceSha256": "17507fc17113fef437381e960a714cc070fd65db145b8467f63dbd6c9a859611",
+      "sha256": "2b4d6e1bf5c45dd34730387d2a555498fb7044ec639281cd26100819eba4c738",
+      "bytes": 69222
+    },
+    {
+      "id": "creature-pegasus",
+      "asset": "assets/bestiary/creature-pegasus.webp",
+      "sourceSha256": "fa23d6a65845b7c96c7c2bcd894b5d7cc7215f77714c6f1faf9a64d08d8eb9c1",
+      "sha256": "7fe099f7eb848b3ac4dca2a6b46e1d27397cb447ba85a5332822a9b5f5140257",
+      "bytes": 67002
+    },
+    {
+      "id": "creature-plague-zombie",
+      "asset": "assets/bestiary/creature-plague-zombie.webp",
+      "sourceSha256": "2ab5effb71b32ddfc29b9552defbe089aacd6cabd9e062d32f36d3fdc038a8c8",
+      "sha256": "83892797a3844bf613ceae52fd67e2bdb9a0766cd1bf0da4a4f2b5d08e96b189",
+      "bytes": 71056
+    },
+    {
+      "id": "creature-poltergeist",
+      "asset": "assets/bestiary/creature-poltergeist.webp",
+      "sourceSha256": "d498ae2269105e69504e60aae30b33fda366916ce652438cfbfc532730699c8a",
+      "sha256": "389eb9208d047b106209f7f97d67fdc23b28bcb2bedd36a2a73886c6054883db",
+      "bytes": 115694
+    },
+    {
+      "id": "creature-raven",
+      "asset": "assets/bestiary/creature-raven.webp",
+      "sourceSha256": "64863f8b7dee08fca027f5a4672d9a13f27d21422fbc2c85fbba8d24ab4bead1",
+      "sha256": "a26d31c1ff527d54c20e800d8589ec6efcfd5c419fd716fe598b3ad689aafbeb",
+      "bytes": 54544
+    },
+    {
+      "id": "creature-red-dragon",
+      "asset": "assets/bestiary/creature-red-dragon.webp",
+      "sourceSha256": "916ba7ba46f0e18f607f253d5256b9d6ff1d3630f3910148f9ff884334cb92b3",
+      "sha256": "0c2511fb0f4be37bb7fb5add3c4059d08195ffa89db77be796b90db21a429ac0",
+      "bytes": 71770
+    },
+    {
+      "id": "creature-redcap",
+      "asset": "assets/bestiary/creature-redcap.webp",
+      "sourceSha256": "acbbd6b3dbcd8b76d6f16b6e6c72a8de49a3aebb72a236ee7cf0e4f5368935d9",
+      "sha256": "68ba33ff7d417639830073b8443e3026a2ccd79d50132f9c7fbed7728505cbb6",
+      "bytes": 62848
+    },
+    {
+      "id": "creature-reed-piper",
+      "asset": "assets/bestiary/creature-reed-piper.webp",
+      "sourceSha256": "0b69bd79810eee7d8f8b5b15486e2f601e1edcd5aa80a089593a192b0d4c9b98",
+      "sha256": "90ef1b4ed3dca0c530f27b4389360e7548cebc6cbfb80e45f51fe37b336c70de",
+      "bytes": 71110
+    },
+    {
+      "id": "creature-reef-hunter",
+      "asset": "assets/bestiary/creature-reef-hunter.webp",
+      "sourceSha256": "dd9b873dd55f1d6b6605a7710537330ee79aacae875c3abe3406b673ca01e084",
+      "sha256": "dafd7ae407bf2c576d6649c829bc83a437fe0ae000f02e89259fa4264071b430",
+      "bytes": 33928
+    },
+    {
+      "id": "creature-restless-corpse",
+      "asset": "assets/bestiary/creature-restless-corpse.webp",
+      "sourceSha256": "36c1b7f992ed82d01bdc0471880619c7f4a3ae3632271cde0993c59539063665",
+      "sha256": "f95b94d561fdc4a8259f5affeac4beaf645a7ca15f2039b855016de8c5878f56",
+      "bytes": 55818
+    },
+    {
+      "id": "creature-rill-sprite",
+      "asset": "assets/bestiary/creature-rill-sprite.webp",
+      "sourceSha256": "ab4d008d2d538719061b8c58b6b502a6cc736cd427bee3dcb7499b7a88271ca4",
+      "sha256": "fe338cb7f341ee3a7a80c3ccbefc3093e5c5d2672b32f491507633ee22641ff4",
+      "bytes": 73840
+    },
+    {
+      "id": "creature-rime-dragon",
+      "asset": "assets/bestiary/creature-rime-dragon.webp",
+      "sourceSha256": "91ea293f8836965248fd97e629dad2ae3f71b0473c8c14ab2b7527b86279761d",
+      "sha256": "f647a19fa16c917d204fbce23d1876f2f6ed8493f389ff1299fa3d279849f4c8",
+      "bytes": 75982
+    },
+    {
+      "id": "creature-river-serpent",
+      "asset": "assets/bestiary/creature-river-serpent.webp",
+      "sourceSha256": "d48515bc45bd515b8775f6417bcc6637e274e19c10f0f8cf2224741052918507",
+      "sha256": "b5158c6cf4a464ee1ac10990f539c663134023a4df68cdf0d4adc663b1b3d14b",
+      "bytes": 63108
+    },
+    {
+      "id": "creature-road-bandit",
+      "asset": "assets/bestiary/creature-road-bandit.webp",
+      "sourceSha256": "ccb92d3dea6926fa1e37a2f2df88e1923db8e3400d09f448bded0e4991312db8",
+      "sha256": "74fd1c81aad028c7e5786f0684c022f59290b53b26ae98b18e55d572a0741554",
+      "bytes": 37300
+    },
+    {
+      "id": "creature-roc",
+      "asset": "assets/bestiary/creature-roc.webp",
+      "sourceSha256": "9a13c7312faba2f021b99b965060cbdaee2563fb9fd3c5917e95d328bf5cc643",
+      "sha256": "653666c0c58b61c83337e55661891598bf08ae2c34de02d5f57474d6fe7769ad",
+      "bytes": 64988
+    },
+    {
+      "id": "creature-rust-eater",
+      "asset": "assets/bestiary/creature-rust-eater.webp",
+      "sourceSha256": "9e2900a60ad5270601add6bdf3bf164a40b4ebe45ef0a4762003306f2fe80cee",
+      "sha256": "516f06342dc919feaa509b87c699e5c69ad0ac533479077b3a7b0c0ecc88288c",
+      "bytes": 75204
+    },
+    {
+      "id": "creature-satyr",
+      "asset": "assets/bestiary/creature-satyr.webp",
+      "sourceSha256": "dcc3dfdd49a2425cf354d9cd7630f1836e8987d46d6f91f396b2423ac2de720e",
+      "sha256": "b2ce53e959224d01c87e0680e441d8ae310c5c81e52abb950012ba7ec6546fdd",
+      "bytes": 45918
+    },
+    {
+      "id": "creature-sea-hag",
+      "asset": "assets/bestiary/creature-sea-hag.webp",
+      "sourceSha256": "46231c69abc8e5cbfb5a2ad3216f5c95f8e9d7753abffafa26c91518241d7d13",
+      "sha256": "c0fc787c18ce63a31911430805d3e8de05f8e0e0ff55aff5f05fdf01b3e17975",
+      "bytes": 74670
+    },
+    {
+      "id": "creature-shadow",
+      "asset": "assets/bestiary/creature-shadow.webp",
+      "sourceSha256": "4d36a43a5d58573f96d7411b305058723b02b96d1635b74a5eaa85786d703c23",
+      "sha256": "1bc1ecafc4fee725f0ec50f5d4ad1d81122fa7575923d466e7f13a5c532631ed",
+      "bytes": 67476
+    },
+    {
+      "id": "creature-shambling-mound",
+      "asset": "assets/bestiary/creature-shambling-mound.webp",
+      "sourceSha256": "a3520212752d216f03148688630123807466af1a72badd772cc3a31bbdb9efd8",
+      "sha256": "3c8362319bd154c5d9f62523c8b530667aa537c8f4131d1e960769005b947777",
+      "bytes": 86152
+    },
+    {
+      "id": "creature-shield-soldier",
+      "asset": "assets/bestiary/creature-shield-soldier.webp",
+      "sourceSha256": "be1d28456964a10913abb186bf693f3796ad8f58e524af40b63e91c1e5a738e7",
+      "sha256": "1ab06f27f0ad4939b4815b0d9fb823ebeab7d2369a06fe400ba2d945082064a1",
+      "bytes": 34386
+    },
+    {
+      "id": "creature-skeleton-champion",
+      "asset": "assets/bestiary/creature-skeleton-champion.webp",
+      "sourceSha256": "876555ebd20b36624ea6bc0dd508c38639efede758a97a5211863f1ab490d8bd",
+      "sha256": "f9dc1c69a5fa97593e74941dbca616b338039e371faa0919c5e8bf34e5983742",
+      "bytes": 60434
+    },
+    {
+      "id": "creature-skeleton-giant",
+      "asset": "assets/bestiary/creature-skeleton-giant.webp",
+      "sourceSha256": "ee090c68f467e861b35f0b43e4f9bc19b642507a3fb854bfa97a9abf0352fc84",
+      "sha256": "8552e930545c34d5dc16f9f5bdbddbc359445db8e78ac1ed2ba17534599ccf8c",
+      "bytes": 63364
+    },
+    {
+      "id": "creature-skeleton-horse",
+      "asset": "assets/bestiary/creature-skeleton-horse.webp",
+      "sourceSha256": "e0c9593509bf3d4d2b184b2639840456b282c30d3e6e994865dd75a722d9f28e",
+      "sha256": "c32ba1e9ce1297f4ebe931f3f92ba4ae851492f8cf63299eb1ee02f9f9011eb1",
+      "bytes": 81754
+    },
+    {
+      "id": "creature-sorrow-ghost",
+      "asset": "assets/bestiary/creature-sorrow-ghost.webp",
+      "sourceSha256": "b95c7765659ebb33149989be8125b78102b0a6a3db00ca7941c69f7a7ef5ace9",
+      "sha256": "a2a455e303a151f87b66d8b24139dd7ab87ef1a59dee9c9465dc33831c6e47c3",
+      "bytes": 64664
+    },
+    {
+      "id": "creature-sphinx",
+      "asset": "assets/bestiary/creature-sphinx.webp",
+      "sourceSha256": "da330221c5046cd40c929399641ae1d0307eb473e54daec0ec5954f543ae4ef5",
+      "sha256": "cd82b2f04fdda6c8b5314e7bae9b13d7541dca79cb15e99f779efecccfd03f9d",
+      "bytes": 64532
+    },
+    {
+      "id": "creature-spore-shepherd",
+      "asset": "assets/bestiary/creature-spore-shepherd.webp",
+      "sourceSha256": "0c77f6b89dafac5f824c2e976bb2944d8f0173952b98d9fc929b4cd5646b2023",
+      "sha256": "0ded07ec5181bb682886eaacd397a808039647e9a3d929836021c9d8ca2946cb",
+      "bytes": 73150
+    },
+    {
+      "id": "creature-starless-oracle",
+      "asset": "assets/bestiary/creature-starless-oracle.webp",
+      "sourceSha256": "83a5240ebfba1e94b26cf311ab731e5ff9731ea040f45243edec3e5435b5320f",
+      "sha256": "426b9a9d27d28949214ec48cc10a1cdee45a40242a5dba6b68c53101643bfe65",
+      "bytes": 73242
+    },
+    {
+      "id": "creature-stone-giant",
+      "asset": "assets/bestiary/creature-stone-giant.webp",
+      "sourceSha256": "c4d693200024d5a6fcff62b8fb79829ffcd7a2c6796c981e9d293a33bc7c220f",
+      "sha256": "cd074afc766ec1b3944de31dc665feeb834aba21ce07ac8e53701196879c715c",
+      "bytes": 42842
+    },
+    {
+      "id": "creature-stone-golem",
+      "asset": "assets/bestiary/creature-stone-golem.webp",
+      "sourceSha256": "badf2d35b7e6d402365337049ac37b16ec3137113867a0db7a91b4df919afd2c",
+      "sha256": "311ae71b5f9804e9a2f6472fa5601c12e6762eec5183383a9bf1b85e5fb2f0e8",
+      "bytes": 73356
+    },
+    {
+      "id": "creature-stone-knuckle",
+      "asset": "assets/bestiary/creature-stone-knuckle.webp",
+      "sourceSha256": "b4a3841a3827eb44b4256baaa5b5608f2ef198917ee36f92a24f44d62f5de099",
+      "sha256": "d561483c61f4d3c8959511f5ccdf82ebef572caed79a4054e206a09f36b75bc5",
+      "bytes": 67540
+    },
+    {
+      "id": "creature-storm-column",
+      "asset": "assets/bestiary/creature-storm-column.webp",
+      "sourceSha256": "4f75e5dc16c930e2ce95e6dafa8e6ca357d40c7d31a24c871bbc2fb9486ded00",
+      "sha256": "03f774435df5fe3a756e970b9a6d248574f1877f8365137e213cc6052cd10ee3",
+      "bytes": 98228
+    },
+    {
+      "id": "creature-storm-giant",
+      "asset": "assets/bestiary/creature-storm-giant.webp",
+      "sourceSha256": "7d91330fcea9d7dffc3ff61c8f8708b0ea788c280e0c004a05e415e5fa25a0dc",
+      "sha256": "5844690d40d974b9a3378f8106e0cbb20edaa3380dc98906112865ab02ac4809",
+      "bytes": 53370
+    },
+    {
+      "id": "creature-succubus",
+      "asset": "assets/bestiary/creature-succubus.webp",
+      "sourceSha256": "163b729922fcefda3b2b1a6b53572fb6ea607080ea0b91117f6cfec4b63794f2",
+      "sha256": "1e5b6c5a5b3e024496512a5335c034b04dabb44d29a43db1cb3870e0cf779f36",
+      "bytes": 25604
+    },
+    {
+      "id": "creature-sword-angel",
+      "asset": "assets/bestiary/creature-sword-angel.webp",
+      "sourceSha256": "f6fde6ebe1f60daabb1ab9bf7e543da7682e82e061cd75f0ed100709fd8f73d4",
+      "sha256": "cfd42d5e6b256bddb2995e05d1f9a3f785baa4f9578551004ab056295db2d7bb",
+      "bytes": 69438
+    },
+    {
+      "id": "creature-thorn-lurker",
+      "asset": "assets/bestiary/creature-thorn-lurker.webp",
+      "sourceSha256": "8064bbaaac80aaa3fa3621772624fa78edf0d45524b021ae4262217ab20ad898",
+      "sha256": "02e720e3259e8a50bc25401c9d7f1859bb82dffcc79033a3fef507109908553e",
+      "bytes": 85602
+    },
+    {
+      "id": "creature-thorn-queen",
+      "asset": "assets/bestiary/creature-thorn-queen.webp",
+      "sourceSha256": "11a33554225719aaacbcc757f25ada927bc8e494aa5125eaaeeafe5da585c9b1",
+      "sha256": "7747949092cef585e12283aa674a63be705b7413d5f98a12ed88e6b30567320d",
+      "bytes": 68850
+    },
+    {
+      "id": "creature-thought-leech",
+      "asset": "assets/bestiary/creature-thought-leech.webp",
+      "sourceSha256": "53cea73d41bf17eee1ca07bcb6e612310fe538cecb81a729a27ce2c6687f516b",
+      "sha256": "54edaffc1b087fd2c6269940144f9a90bcd2be43ed37d4e376df00534f4817e5",
+      "bytes": 64298
+    },
+    {
+      "id": "creature-tomb-sage",
+      "asset": "assets/bestiary/creature-tomb-sage.webp",
+      "sourceSha256": "cbf1f5ecf6a2c6b728d2c2394808675978e4cd242469879b144506f4a9c0bd56",
+      "sha256": "ff053ad6d13c3b22bf6adc454811f2ed0390dd9b8865abd464469d9a8ac3fb4d",
+      "bytes": 61828
+    },
+    {
+      "id": "creature-trail-hound",
+      "asset": "assets/bestiary/creature-trail-hound.webp",
+      "sourceSha256": "8fb4c13f3446cf774cba5d9b012ccf8207e76183f3817d8b8058969a292bc686",
+      "sha256": "d9b5e32c7f7eb976b710be2f66587201353f3007814315650eb5a7a17ccf4fef",
+      "bytes": 57644
+    },
+    {
+      "id": "creature-unicorn",
+      "asset": "assets/bestiary/creature-unicorn.webp",
+      "sourceSha256": "c1e5b3a08b841444cb467e827e9332abbdce88b418e3d620d3990123d4caea96",
+      "sha256": "60671e4f779480c50835e5955befa32fdbe0edf24dd464ce78339e296d7f9d40",
+      "bytes": 68568
+    },
+    {
+      "id": "creature-vampire-spawn",
+      "asset": "assets/bestiary/creature-vampire-spawn.webp",
+      "sourceSha256": "f277b7e9f8ef30816039eaf4cb8e751a684a42cdff199ace21a464da8dfb05dd",
+      "sha256": "6af31c6b182f5d2b81cc683b2e124ce2e62b24cb998a33deb8c06d5d997024fc",
+      "bytes": 48114
+    },
+    {
+      "id": "creature-veteran-captain",
+      "asset": "assets/bestiary/creature-veteran-captain.webp",
+      "sourceSha256": "e989d385c3dab43e5480ae7a75fea5515e94d7c86a44d19b8ca3e1b8006b4867",
+      "sha256": "d37e2dc02e23e4a53d5d1ddf697f09ecb9ee124b4317c5c9eea16811851c03fd",
+      "bytes": 33392
+    },
+    {
+      "id": "creature-walking-furnace",
+      "asset": "assets/bestiary/creature-walking-furnace.webp",
+      "sourceSha256": "fc08a5c0127fdfec1ad890336394c772ea6f499868d8adbbeb9ad0671481a9cd",
+      "sha256": "f457ad6c3cb10b004ca51cfe45bd63b27379d8716341d2319195f2f8c5d8d910",
+      "bytes": 61064
+    },
+    {
+      "id": "creature-walking-thorn",
+      "asset": "assets/bestiary/creature-walking-thorn.webp",
+      "sourceSha256": "cd178dd4b63a3007dfc3b2490c7f25e2b737a32828e6503d8329dd4964c04bd3",
+      "sha256": "6fde7cc2b55ac5f350d194925802a5ed80189264b850afdff87dd8edde19b1e3",
+      "bytes": 66328
+    },
+    {
+      "id": "creature-warhorse",
+      "asset": "assets/bestiary/creature-warhorse.webp",
+      "sourceSha256": "cd6b7b21e595699bcdbc66ccf860aa758397efe8d956f69f6e306fac7c72d459",
+      "sha256": "de630956a0a98b2025344c280cb45beef27e1d387bf5352030f68b13060887e4",
+      "bytes": 59472
+    },
+    {
+      "id": "creature-water-elemental",
+      "asset": "assets/bestiary/creature-water-elemental.webp",
+      "sourceSha256": "832b745b76e7fc8af4d153bf26a4d542465507ee4290edfb096a4dc18147d78e",
+      "sha256": "c62ae778c1a21a69b4a51d88c4c934576b2b759b8f6702acb9de5afded9bf8f9",
+      "bytes": 97630
+    },
+    {
+      "id": "creature-werebear",
+      "asset": "assets/bestiary/creature-werebear.webp",
+      "sourceSha256": "848730fbf6d4c8f7c0d1e1aff96b12fca9698e22927dd6516ed5419decf2772f",
+      "sha256": "895e0bc3263339ff4bd82fe132307026195b92e0dfaa3048c2409b19e163d2a9",
+      "bytes": 47330
+    },
+    {
+      "id": "creature-wererat",
+      "asset": "assets/bestiary/creature-wererat.webp",
+      "sourceSha256": "c4e354696e5460b0717d5012783e174c21eceb7d1486846553cb00285960a4c4",
+      "sha256": "b84d64d5767863b929aadfa0bac8fa87fb3d5603d659852bcefabfbe44875253",
+      "bytes": 49884
+    },
+    {
+      "id": "creature-werewolf",
+      "asset": "assets/bestiary/creature-werewolf.webp",
+      "sourceSha256": "18cca5bfc73db1c504680c80e2e3828104c77c1faef72850eb2a0add13cd7e3a",
+      "sha256": "328f48a164e2e021b52a4bdcbe8c52045e6c97cf5a80a8be1de088a612a1e55a",
+      "bytes": 55002
+    },
+    {
+      "id": "creature-wight",
+      "asset": "assets/bestiary/creature-wight.webp",
+      "sourceSha256": "f59326b199c898666fd41881bc7f23e20b43a92fe66f7b21db260a6a1d06bd7b",
+      "sha256": "4e626c597108d9482b276679226822822fc8bf00caa25e97689d35a1df2b23f6",
+      "bytes": 56342
+    },
+    {
+      "id": "creature-wild-boar",
+      "asset": "assets/bestiary/creature-wild-boar.webp",
+      "sourceSha256": "04b2274aa51ecb4ad28ef1165f25a4221106622453847e6323c1e174a6a4d8c3",
+      "sha256": "3bbd3b943fcca008a3d06c240fd116c161dbff4da6adc4d2c4e310fb4f829834",
+      "bytes": 74802
+    },
+    {
+      "id": "creature-winter-wolf",
+      "asset": "assets/bestiary/creature-winter-wolf.webp",
+      "sourceSha256": "d5e0c847649a15d0b712b52b2a76411dbe35fd5d85b07d6d1108b386ba480d89",
+      "sha256": "84c09a089b2167aa36b8b3415c36df1da9f10c67dbe72cca55189610882f1a17",
+      "bytes": 59642
+    },
+    {
+      "id": "creature-wolf",
+      "asset": "assets/bestiary/creature-wolf.webp",
+      "sourceSha256": "77b60dac60e0257284185a65d04737877a03a13f0ffc08189b32a85b7cbec44f",
+      "sha256": "e683ed46b5a264287a2aca5bf7d28af8e922d500bb5206a4d2fc36c233ce8af2",
+      "bytes": 62566
+    },
+    {
+      "id": "creature-wraith",
+      "asset": "assets/bestiary/creature-wraith.webp",
+      "sourceSha256": "fe0286dbb160cef1312c09dbfb317ba285a60a644eb2a0ebf6231d8e09da5615",
+      "sha256": "2a05ec49655fb42477267610517747fa874e5b864a13dde0acb6c25dae9f22f7",
+      "bytes": 83326
+    },
+    {
+      "id": "creature-wyvern",
+      "asset": "assets/bestiary/creature-wyvern.webp",
+      "sourceSha256": "54e6e212ce89be6318714745410a46a41bfd81f2e0e4478f5d8b08bd90932c6f",
+      "sha256": "02b21cef568d078d8345da24fff00b3993de76c138b367557fae9647d05709a5",
+      "bytes": 52922
+    },
+    {
+      "id": "creature-young-ember-drake",
+      "asset": "assets/bestiary/creature-young-ember-drake.webp",
+      "sourceSha256": "0804b648298ee229565f752955e32751e2561e03808d42f6b0195f475aff8f74",
+      "sha256": "5228f4693895917ec486d64f377413eacddfe553ffbc04a3662ac61652a13bae",
+      "bytes": 65764
+    },
+    {
+      "id": "creature-zombie-brute",
+      "asset": "assets/bestiary/creature-zombie-brute.webp",
+      "sourceSha256": "f57d228a0557b51168ee4d7ef830c48f1786f4e1d5ff948d0f32446cee5611ff",
+      "sha256": "6709c7f0d693d31f8186f996561aa18902cc96a67294a0e537cd48864a8e8580",
+      "bytes": 66560
+    }
+  ]
+}

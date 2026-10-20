@@ -24,10 +24,13 @@ jobs:
       - run: npm run test:workshop-resources
       - run: npm run test:workshop-recovery
       - run: npm run test:workshop-builder-view
+      - run: npm run test:sheet-prototypes
       - uses: actions/upload-artifact@v4
         with:
           name: character-workshop-screenshots
-          path: test-results/workshop/*.png
+          path: |
+            test-results/workshop/*.png
+            test-results/sheets/*.png
       - uses: actions/upload-artifact@v4
         with:
           name: heroes-of-legend-development

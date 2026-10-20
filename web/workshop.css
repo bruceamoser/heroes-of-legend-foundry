@@ -2120,3 +2120,37 @@ dialog header button[data-action]:focus-visible {
     padding: 6px 8px;
   }
 }
+
+.sheet-links {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+.sheet-links a {
+  color: var(--forest);
+  text-decoration: none;
+  padding: 3px 0;
+}
+.sheet-links a:hover {
+  text-decoration: underline;
+}
+@media (max-width: 600px) {
+  .site-header {
+    gap: 6px;
+    padding-inline: 8px;
+  }
+  .sheet-links {
+    gap: 6px;
+    font-size: 0.65rem;
+  }
+  .brand {
+    font-size: 0.78rem;
+    gap: 4px;
+  }
+  .brand img {
+    width: 24px;
+    height: 24px;
+  }
+}

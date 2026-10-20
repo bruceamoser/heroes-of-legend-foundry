@@ -1462,3 +1462,21 @@ compact aligned ability/source/control columns, 27px rows for ordinary entries a
 entry. Long text wraps on narrow screens. Browser acceptance checks row density,
 heading alignment and 390px overflow; sheet/phone screenshots were reviewed.
 Node 24 checks and all 449 tests pass; the targeted builder browser suite passes.
+
+### NPC, creature and item web sheets (#193)
+
+Three linked Pages prototypes share the character theme and book card styling;
+see `docs/sheet-prototypes.md` for the tab map, export format and interaction limits.
+NPC portrayal follows the DA book's four-field guidance with an optional linked
+creature combat profile. Creature tables retain player-defense outcomes. Item
+cards use embedded approved rules and shared supply arithmetic. Local state,
+named saves and JSON files are isolated from character creation and Foundry data.
+
+Validation: Node 24 build/validation and 450 tests pass. All five existing workshop
+browser suites pass, and the new sheet suite covers editing, persistence, named
+saves, JSON round-trip, wrong-kind rejection, source selection, HP/conditions,
+repeatable defense rolls, supply checks, collapse state, escaped text and compact
+layouts. NPC, creature, equipment and ability views were visually reviewed at
+760/390px. All 192 small portrait previews decode successfully, retain source
+hash provenance and fit 384px; total 11,816,500 bytes. No native Foundry sheets or
+book sources changed.

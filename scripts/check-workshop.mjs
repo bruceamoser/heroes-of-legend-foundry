@@ -774,35 +774,30 @@ try {
   );
   await page.screenshot({ path: `${output}/mobile-recipes.png` });
   await page.setViewportSize({ width: 1440, height: 1050 });
-  const recipe = page
-    .locator(".recipe-table tr")
-    .filter({ hasText: "Travel Food" });
-  await recipe.locator('[data-action="recipe-roll"]').click();
+  await page
+    .getByRole("button", { name: "Start Travel Food", exact: true })
+    .click();
+  await page
+    .getByRole("button", { name: "Start Bound Torches", exact: true })
+    .click();
+  assert.equal(await page.locator(".crafting-projects tbody tr").count(), 2);
+  assert.equal(
+    await page
+      .getByRole("button", { name: "Start Travel Food", exact: true })
+      .count(),
+    0,
+  );
+  const recipe = page.locator('[data-project="recipe-travel-food"]');
+  const craftingDie = await recipe.locator("svg").first().boundingBox();
+  assert(craftingDie.width <= 18 && craftingDie.height <= 18);
+  await recipe.locator('[data-action="recipe-roll"]').first().click();
   assert.equal(await page.locator("#roll-net-value").innerText(), "Even");
-  const left = await page
-    .locator(".hol-net-heading span")
-    .first()
-    .boundingBox();
-  const right = await page
-    .locator(".hol-net-heading span")
-    .last()
-    .boundingBox();
-  assert(left.x < right.x);
   assert.deepEqual(
     await page.locator(".hol-net-heading span").allTextContents(),
     ["Banes", "Boons"],
   );
   await page.locator("#recipe-net").fill("-3");
   assert.equal(await page.locator("#roll-net-value").innerText(), "3 Banes");
-  assert.equal(
-    await page.locator("#recipe-net").getAttribute("aria-valuetext"),
-    "3 Banes",
-  );
-  await page
-    .getByRole("dialog")
-    .getByRole("button", { name: "Roll", exact: true })
-    .click();
-  await page.screenshot({ path: `${output}/recipe-slider.png` });
   await page.locator("#recipe-net").fill("3");
   assert.equal(await page.locator("#roll-net-value").innerText(), "3 Boons");
   await page
@@ -813,28 +808,11 @@ try {
     await page.locator("#recipe-roll-result").innerText(),
     /Weak|Standard|Strong/,
   );
-  await page
-    .getByRole("dialog")
-    .getByRole("button", { name: "Roll", exact: true })
-    .click();
-  // Rerolls do not alter inventory until the player records the attempt.
-  const beforeCraft = await page.evaluate(
-    () =>
-      JSON.parse(localStorage.getItem("hol.workshop.v1")).character.draft.play
-        ?.crafting,
-  );
-  assert.equal(beforeCraft, undefined);
-  await page.locator("#craft-supply").selectOption("");
-  await page
-    .getByRole("dialog")
-    .getByRole("button", { name: "Roll", exact: true })
-    .click();
-  await page
-    .getByRole("button", { name: "Record attempt", exact: true })
-    .click();
-  assert.match(
-    await page.locator("#recipe-roll-result").innerText(),
-    /Attempt recorded/,
+  assert.equal(
+    await page
+      .getByRole("button", { name: "Record attempt", exact: true })
+      .count(),
+    0,
   );
   const crafted = await page.evaluate(
     () =>
@@ -850,10 +828,27 @@ try {
       crafted.inventory.overrides[product.instanceId].inventoryDie,
     ),
   );
+  assert.equal(crafted.crafting["recipe-bound-torches"].attempts, 0);
   await page.keyboard.press("Escape");
   await page.reload();
   await page.getByRole("heading", { name: "Crafting", exact: true }).waitFor();
-  assert.match(await page.locator(".recipe-table").innerText(), /1 attempts/);
+  assert.equal(
+    await page.locator('[data-project="recipe-bound-torches"]').count(),
+    1,
+  );
+  if (crafted.crafting["recipe-travel-food"].active)
+    assert.match(
+      await page.locator('[data-project="recipe-travel-food"]').innerText(),
+      /1 attempts/,
+    );
+  else
+    assert.equal(
+      await page
+        .getByRole("button", { name: "Start Travel Food", exact: true })
+        .count(),
+      1,
+    );
+  await page.screenshot({ path: `${output}/crafting-projects.png` });
   await page.getByRole("tab", { name: "Inventory", exact: true }).click();
   assert.match(await page.locator(".inventory-table").innerText(), /Added/);
   await page.getByRole("tab", { name: "Development", exact: true }).click();

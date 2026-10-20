@@ -2141,3 +2141,24 @@ dialog header button[data-action]:focus-visible {
     height: 24px;
   }
 }
+
+.crafting-projects td {
+  padding: 3px 6px;
+}
+.crafting-projects [data-action="recipe-roll"] {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  margin: 1px;
+}
+.crafting-projects [data-action="recipe-roll"] svg {
+  width: 15px;
+  height: 15px;
+  flex: 0 0 15px;
+}
+.crafting-projects progress {
+  display: block;
+  width: 72px;
+  height: 7px;
+  accent-color: var(--forest, #15221c);
+}

@@ -1,4 +1,7 @@
-import { workshopCraft } from "./rules/workshop-crafting.mjs";
+import {
+  workshopCraft,
+  startWorkshopCraft,
+} from "./rules/workshop-crafting.mjs";
 import { rollSetup, netControl, bindRollSetup } from "./roll-ui.mjs";
 import {
   equipmentEligibility,
@@ -510,7 +513,12 @@ function traitBrief(id) {
 function craftingStatus(recipe) {
   const state = draft.play?.crafting?.[recipe.id];
   const supplies = preview.inventory.items
-    .filter((i) => i.catalogId === recipe.product && i.quantity > 0)
+    .filter(
+      (i) =>
+        i.catalogId === recipe.product &&
+        i.quantity > 0 &&
+        (!state?.active || i.instanceId === state.supplyId),
+    )
     .map((i) => (i.inventoryDie ? `d${i.inventoryDie}` : "Empty"));
   return recipe.maximumDie
     ? `${supplies.join(", ") || "Empty"} · cap d${recipe.maximumDie}${state ? `<small class="item-source">${state.attempts} attempts</small>` : ""}`
@@ -518,15 +526,45 @@ function craftingStatus(recipe) {
 }
 function recipeRows() {
   const actions = craftingActions(preview, catalogs);
-  const rows = [...new Set(preview.state.recipes)].flatMap((id) => {
-    const recipe = get(id);
-    if (!recipe) return [];
-    const usable = actions.filter((action) => action.recipe.id === id);
-    return usable.length ? usable : [{ recipe }];
-  });
-  return rows.length
-    ? `<div class="table-wrap"><table class="recipe-table"><thead><tr><th>Recipe</th><th>Crafting ability</th><th>Attempt</th><th>Progress</th><th>Roll</th></tr></thead><tbody>${rows.map(({ recipe, ability, attribute }) => `<tr><td>${button(esc(recipe.name), "reference", `data-id="${recipe.id}"`, "table-link")}</td><td>${ability ? button(esc(ability.name), "reference", `data-id="${ability.id}"`, "table-link") : recipe.permissions.map((id) => button(esc(name(id)), "reference", `data-id="${esc(id)}"`, "table-link")).join(", ") + '<small class="item-source">Not learned</small>'}</td><td>${recipe.attemptMinutes} min</td><td>${craftingStatus(recipe)}</td><td>${ability && attributeFor(ability) ? button(esc(attribute), "recipe-roll", `data-id="${ability.id}" data-recipe-id="${recipe.id}"`, "small") : "—"}</td></tr>`).join("")}</tbody></table></div>`
-    : '<p class="empty">No recipes learned.</p>';
+  const recipes = [...new Set(preview.state.recipes)].map(get).filter(Boolean);
+  const project = (recipe) => draft.play?.crafting?.[recipe.id];
+  const abilityChoices = (recipe) =>
+    actions.filter((a) => a.recipe.id === recipe.id);
+  const table = `<div class="table-wrap"><table class="recipe-table"><thead><tr><th>Recipe</th><th>Crafting ability</th><th>Attempt</th><th></th></tr></thead><tbody>${recipes
+    .map((recipe) => {
+      const abilities = abilityChoices(recipe);
+      return `<tr><td>${button(esc(recipe.name), "reference", `data-id="${recipe.id}"`, "table-link")}</td><td>${abilities.length ? abilities.map((a) => button(esc(a.ability.name), "reference", `data-id="${a.ability.id}"`, "table-link")).join(" / ") : "Not learned"}</td><td>${recipe.attemptMinutes} min</td><td>${abilities.length ? (project(recipe)?.active ? "In progress" : button("Start", "start-craft", `data-recipe-id="${recipe.id}" aria-label="Start ${esc(recipe.name)}"`, "small")) : "—"}</td></tr>`;
+    })
+    .join("")}</tbody></table></div>`;
+  const projects = recipes.filter((r) => project(r)?.active);
+  return `${table}<h3>Crafting projects</h3>${
+    projects.length
+      ? `<div class="table-wrap"><table class="crafting-projects"><thead><tr><th>Project</th><th>Progress</th><th>Roll</th></tr></thead><tbody>${projects
+          .map(
+            (recipe) =>
+              `<tr data-project="${recipe.id}"><td>${button(esc(recipe.name), "reference", `data-id="${recipe.id}"`, "table-link")}<small class="item-source">${recipe.attemptMinutes} min / attempt</small></td><td>${craftingStatus(recipe)}${recipe.target ? `<progress value="${project(recipe).progress}" max="${recipe.target}" aria-label="${esc(recipe.name)} progress"></progress>` : ""}</td><td>${abilityChoices(
+                recipe,
+              )
+                .map(({ ability, attribute }) =>
+                  button(
+                    `${diceIcon} ${esc(title(attribute))}`,
+                    "recipe-roll",
+                    `data-id="${ability.id}" data-recipe-id="${recipe.id}" aria-label="Roll ${esc(recipe.name)} with ${esc(ability.name)}"`,
+                    "small",
+                  ),
+                )
+                .join("")}</td></tr>`,
+          )
+          .join("")}</tbody></table></div>`
+      : '<p class="empty">Start a recipe to begin a project.</p>'
+  }${
+    recipes.some((r) => project(r)?.completed)
+      ? `<p class="item-source">Completed: ${recipes
+          .filter((r) => project(r)?.completed)
+          .map((r) => `${esc(r.name)} ×${project(r).completed}`)
+          .join(" · ")}</p>`
+      : ""
+  }`;
 }
 function inventoryStats(starting = false) {
   if (starting)
@@ -1532,9 +1570,7 @@ function rollSheetDice() {
     render();
   }
 }
-let pendingCraft = null;
 function recipeRoll(id, recipeId) {
-  pendingCraft = null;
   const ability = get(id),
     recipe = get(recipeId),
     attribute = attributeFor(ability);
@@ -1542,7 +1578,8 @@ function recipeRoll(id, recipeId) {
     !attribute ||
     !preview.state.abilities.includes(id) ||
     !preview.state.recipes.includes(recipeId) ||
-    !recipe.permissions.includes(id)
+    !recipe.permissions.includes(id) ||
+    !draft.play?.crafting?.[recipeId]?.active
   )
     throw new Error("Choose a known recipe and its learned crafting ability.");
   const supplies = preview.inventory.items.filter(
@@ -1550,58 +1587,53 @@ function recipeRoll(id, recipeId) {
   );
   popup(
     `Craft ${recipe.name}`,
-    `<p><strong>${esc(ability.name)}</strong> · ${title(attribute)} ${signed(draft.attributes[attribute])} · ${recipe.attemptMinutes} min per attempt</p>${recipe.maximumDie ? `<label>Supply<select id="craft-supply">${supplies.map((i) => `<option value="${esc(i.instanceId)}">${esc(name(i.catalogId))} · ${i.inventoryDie ? "d" + i.inventoryDie : "Empty"}</option>`).join("")}<option value="">New supply</option></select></label>` : `<p id="craft-progress">${craftingStatus(recipe)}</p>`}<p>Weak 1 · Standard 2 · Strong 3 ${recipe.maximumDie ? "supply steps" : "progress"}. Tools, materials and time follow the recipe.</p>${netControl({ id: "recipe-net", labelId: "roll-net-value" })}<div id="recipe-roll-result" role="status" aria-live="polite"></div><div class="dialog-actions">${button("Roll", "roll-recipe", `data-id="${esc(id)}" data-recipe-id="${esc(recipeId)}"`, "primary")}${button("Record attempt", "record-craft", 'hidden id="record-craft"', "primary")}</div><details><summary>Recipe rules</summary>${markdown(references.records[recipeId]?.markdown ?? "")}</details>`,
+    `<p><strong>${esc(ability.name)}</strong> · ${title(attribute)} ${signed(draft.attributes[attribute])} · ${recipe.attemptMinutes} min per attempt</p>${recipe.maximumDie ? `<label>Supply<select id="craft-supply">${supplies.map((i) => `<option value="${esc(i.instanceId)}">${esc(name(i.catalogId))} · ${i.inventoryDie ? "d" + i.inventoryDie : "Empty"}</option>`).join("")}<option value="">New supply</option></select></label>` : `<p id="craft-progress">${craftingStatus(recipe)}</p>`}<p>Weak 1 · Standard 2 · Strong 3 ${recipe.maximumDie ? "supply steps" : "progress"}. Tools, materials and time follow the recipe.</p>${netControl({ id: "recipe-net", labelId: "roll-net-value" })}<div id="recipe-roll-result" role="status" aria-live="polite"></div><div class="dialog-actions">${button("Roll", "roll-recipe", `data-id="${esc(id)}" data-recipe-id="${esc(recipeId)}"`, "primary")}</div><details><summary>Recipe rules</summary>${markdown(references.records[recipeId]?.markdown ?? "")}</details>`,
   );
+  if (recipe.maximumDie)
+    $("#craft-supply").value = draft.play.crafting[recipeId].supplyId ?? "";
   bindRollSetup($("#reference .reference-body"), {
     getAttributeValue: () => draft.attributes[attributeFor(ability)],
   });
 }
 function rollRecipeDice(id, recipeId) {
-  const result = displayDice(draft.attributes[attributeFor(get(id))]);
-  pendingCraft = {
-    recipeId,
-    tier: result.tier,
-    supplyId: $("#craft-supply")?.value,
-  };
-  $("#record-craft").hidden = false;
-}
-function recordCraft() {
-  if (!pendingCraft) return;
+  if (!draft.play?.crafting?.[recipeId]?.active) return;
+  const rolled = displayDice(draft.attributes[attributeFor(get(id))]);
   const result = workshopCraft({
     play: playDraft(),
-    recipe: get(pendingCraft.recipeId),
-    tier: pendingCraft.tier,
+    recipe: get(recipeId),
+    tier: rolled.tier,
     items: preview.inventory.items,
-    supplyId: pendingCraft.supplyId,
+    supplyId: $("#craft-supply")?.value,
     instanceId: `inventory-${crypto.randomUUID()}`,
   });
   draft.play = result.play;
-  pendingCraft = null;
   persist();
   render();
-  $("#record-craft").hidden = true;
   $("#recipe-roll-result").insertAdjacentHTML(
     "beforeend",
-    `<p>${esc(result.message)} · Attempt recorded</p>`,
+    `<p>${esc(result.message)}</p>`,
   );
   if ($("#craft-progress"))
-    $("#craft-progress").innerHTML = craftingStatus(
-      get($("[data-action=roll-recipe]").dataset.recipeId),
+    $("#craft-progress").innerHTML = craftingStatus(get(recipeId));
+  const state = draft.play.crafting[recipeId];
+  if (!state.active) {
+    $("[data-action=roll-recipe]").hidden = true;
+    $("#recipe-roll-result").insertAdjacentHTML(
+      "beforeend",
+      "<p>Project complete. Start the recipe again to make another.</p>",
     );
+  }
   const select = $("#craft-supply");
   if (select) {
-    const selected =
-      select.value || draft.play.inventory.added.at(-1).instanceId;
-    const recipe = get($("[data-action=roll-recipe]").dataset.recipeId);
     select.innerHTML =
       preview.inventory.items
-        .filter((i) => i.catalogId === recipe.product && i.quantity > 0)
+        .filter((i) => i.catalogId === get(recipeId).product && i.quantity > 0)
         .map(
           (i) =>
             `<option value="${esc(i.instanceId)}">${esc(name(i.catalogId))} · ${i.inventoryDie ? "d" + i.inventoryDie : "Empty"}</option>`,
         )
         .join("") + '<option value="">New supply</option>';
-    select.value = selected;
+    select.value = state.supplyId;
   }
 }
 
@@ -2170,7 +2202,20 @@ async function action(target) {
     return recipeRoll(target.dataset.id, target.dataset.recipeId);
   if (a === "roll-recipe")
     return rollRecipeDice(target.dataset.id, target.dataset.recipeId);
-  if (a === "record-craft") return recordCraft();
+  if (a === "start-craft") {
+    const recipe = get(target.dataset.recipeId);
+    if (
+      !craftingActions(preview, catalogs).some((a) => a.recipe.id === recipe.id)
+    )
+      return;
+    draft.play = startWorkshopCraft(playDraft(), recipe);
+    persist();
+    render();
+    document
+      .querySelector(`[data-project="${recipe.id}"]`)
+      ?.scrollIntoView({ block: "nearest" });
+    return;
+  }
   if (a === "close-reference") return $("#reference").close();
   if (a === "import") return $("#import-file").click();
   if (a === "export" || a === "ready-export")

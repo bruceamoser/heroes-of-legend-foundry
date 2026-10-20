@@ -1,3 +1,4 @@
+import "./roll-preview.mjs";
 import { attackCard, rollCard, resourceCard } from "./chat-cards.mjs";
 import { rollPlan, classifyRoll } from "./rules/roll.mjs";
 import { inventoryCheck } from "./rules/inventory.mjs";

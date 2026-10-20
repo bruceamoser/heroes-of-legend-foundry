@@ -59,6 +59,35 @@ export function normalizeWorkshopPlay(value, catalogs) {
       fail();
     result.collapsed = Object.fromEntries(Object.entries(value.collapsed));
   }
+  if (value.crafting !== undefined) {
+    if (!object(value.crafting) || Object.keys(value.crafting).length > 100)
+      fail();
+    result.crafting = Object.fromEntries(
+      Object.entries(value.crafting).map(([id, state]) => {
+        const recipe = catalogs.inventory.recipes.find((r) => r.id === id);
+        if (
+          !recipe ||
+          !object(state) ||
+          ["progress", "completed", "attempts"].some(
+            (k) =>
+              !Number.isSafeInteger(state[k]) ||
+              state[k] < 0 ||
+              state[k] > 1000000,
+          ) ||
+          state.progress > (recipe.target ?? 0)
+        )
+          fail();
+        return [
+          id,
+          {
+            progress: state.progress,
+            completed: state.completed,
+            attempts: state.attempts,
+          },
+        ];
+      }),
+    );
+  }
   if (value.favorites !== undefined) {
     if (!object(value.favorites)) fail();
     result.favorites = {};

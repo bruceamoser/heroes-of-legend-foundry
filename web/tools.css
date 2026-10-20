@@ -1,0 +1,391 @@
+body.tools-preview .site-header {
+  max-width: 900px;
+  height: auto;
+  min-height: 42px;
+  flex-wrap: wrap;
+  padding-block: 5px;
+}
+.tools-shell {
+  width: min(780px, calc(100% - 20px));
+  margin: 8px auto;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  box-shadow: 0 3px 15px #30291915;
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100dvh - 80px);
+}
+.tools-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 5px 7px;
+  border-bottom: 1px solid var(--line);
+  flex: none;
+}
+.tools-tabs a {
+  text-decoration: none;
+  padding: 3px 8px;
+  font-size: 0.75rem;
+  border-radius: 3px;
+}
+.tools-tabs a[aria-current="page"] {
+  background: var(--forest);
+  color: var(--paper);
+}
+.tools-content {
+  padding: 8px;
+  overflow: auto;
+  min-height: 0;
+}
+.tool-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  background: var(--forest);
+  color: var(--paper);
+  padding: 7px 9px;
+  margin: -8px -8px 7px;
+  border-bottom: 2px solid var(--gold);
+}
+.tool-banner h1 {
+  font-size: 1.05rem;
+}
+.tool-banner small {
+  font-size: 0.7rem;
+  color: #d6c6a5;
+}
+.tool-help {
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin: 5px 0;
+}
+.tool-actions {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 6px 0;
+}
+.tool-actions button {
+  font-size: 0.75rem;
+  padding: 4px 8px;
+}
+.tool-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.tool-box {
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: #fcfaf4;
+  padding: 7px;
+  margin-bottom: 6px;
+}
+.tool-box h2 {
+  font-size: 0.87rem;
+  margin: 0 0 5px;
+}
+.tool-box p {
+  font-size: 0.8rem;
+  margin: 4px 0;
+}
+.tool-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 7px;
+}
+.tool-stats span {
+  background: #eae2cf;
+  border: 1px solid var(--line);
+  padding: 3px 7px;
+  border-radius: 3px;
+  font-size: 0.77rem;
+}
+.tools-content label {
+  font-size: 0.75rem;
+}
+.tools-content input,
+.tools-content select {
+  padding: 4px 6px;
+}
+.tool-result {
+  border-left: 3px solid var(--gold);
+  padding: 5px 8px;
+  margin: 7px 0;
+  font-size: 0.8rem;
+  background: #eae2cf;
+}
+.tools-shell:has(.combat-roster) {
+  max-width: 370px;
+}
+.combat-side h2 {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  background: #eae2cf;
+  padding: 4px 6px;
+  margin: 6px 0 0;
+}
+.combat-row {
+  display: grid;
+  grid-template-columns: 35px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 6px;
+  border-bottom: 1px solid var(--line);
+  padding: 5px 3px;
+}
+.combat-row.active {
+  background: #e4d7b3;
+  border-left: 3px solid var(--gold);
+  padding-left: 3px;
+}
+.combat-row.acted {
+  opacity: 0.65;
+}
+.combat-portrait {
+  width: 35px;
+  height: 39px;
+  object-fit: contain;
+  background: #eae2cf;
+  border: 0;
+  padding: 1px;
+}
+.combat-row strong {
+  display: block;
+  font-size: 0.8rem;
+}
+.combat-row small {
+  font-size: 0.65rem;
+}
+.combat-row button {
+  font-size: 0.7rem;
+  padding: 3px 5px;
+  min-height: 24px;
+}
+.combat-budget {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  margin: 6px 0;
+}
+.combat-budget button {
+  padding: 4px 2px;
+  font-size: 0.65rem;
+  background: #ede5d3;
+}
+.combat-budget strong {
+  display: block;
+  font:
+    600 1.3rem Garamond,
+    serif;
+}
+.journal-layout {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: 10px;
+  height: 650px;
+  max-height: calc(100dvh - 150px);
+}
+.journal-index {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  gap: 4px;
+}
+.journal-list {
+  overflow: auto;
+  min-height: 0;
+}
+.journal-list button {
+  display: block;
+  width: 100%;
+  padding: 5px 6px;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  text-align: left;
+  background: transparent;
+  font-size: 0.75rem;
+}
+.journal-list button[aria-current="true"] {
+  background: var(--forest);
+  color: var(--paper);
+}
+.journal-page {
+  overflow: auto;
+  min-width: 0;
+  padding: 2px 8px 8px;
+  font:
+    0.9rem/1.45 Garamond,
+    serif;
+}
+.journal-page h2 {
+  font-size: 1.2rem;
+  border-bottom: 1px solid var(--gold);
+  margin: 0 0 7px;
+}
+.journal-page h3 {
+  font-size: 1rem;
+  margin: 12px 0 5px;
+}
+.journal-page h4 {
+  font-size: 0.9rem;
+  margin: 9px 0 4px;
+}
+.journal-page p {
+  margin: 6px 0;
+}
+.journal-page ul {
+  padding-left: 18px;
+}
+.journal-page dl {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 3px 7px;
+  font:
+    0.75rem/1.4 system-ui,
+    sans-serif;
+}
+.journal-page dt {
+  font-weight: 600;
+}
+.journal-page dd {
+  margin: 0;
+}
+.rule-table {
+  overflow: auto;
+}
+.journal-page table {
+  font:
+    0.74rem/1.35 system-ui,
+    sans-serif;
+}
+.journal-page td,
+.journal-page th {
+  padding: 4px;
+}
+.rule-link {
+  color: var(--forest);
+  border: 0;
+  padding: 0;
+  background: transparent;
+  text-decoration: underline dotted;
+  font: inherit;
+}
+.tool-wounds {
+  width: 100%;
+  font-size: 0.76rem;
+}
+.tool-wounds th,
+.tool-wounds td {
+  padding: 4px;
+  vertical-align: top;
+}
+.tool-wounds button {
+  font-size: 0.7rem;
+  padding: 3px 5px;
+}
+.tool-progress {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.tool-progress progress {
+  width: 70px;
+  accent-color: var(--forest);
+}
+.craft-layout {
+  display: grid;
+  grid-template-columns: 170px minmax(0, 1fr);
+  gap: 8px;
+}
+.craft-list button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 3px;
+  font-size: 0.76rem;
+}
+.craft-list button[aria-pressed="true"] {
+  background: var(--forest);
+  color: var(--paper);
+}
+.tools-content .hol-net {
+  margin: 8px 0;
+}
+#rules-reference {
+  width: min(650px, calc(100% - 20px));
+}
+#rules-reference .journal-page {
+  max-height: 65vh;
+  padding: 10px 12px;
+}
+@media (max-width: 550px) {
+  .tool-grid,
+  .craft-layout {
+    grid-template-columns: 1fr;
+  }
+  .craft-list {
+    display: flex;
+    gap: 4px;
+    overflow: auto;
+  }
+  .craft-list button {
+    width: auto;
+    flex: none;
+  }
+  .journal-layout {
+    grid-template-columns: 115px minmax(0, 1fr);
+    gap: 4px;
+  }
+  .journal-index input,
+  .journal-index select {
+    width: 100%;
+    min-width: 0;
+    font-size: 0.7rem;
+  }
+  .journal-page {
+    padding-inline: 3px;
+  }
+  .journal-page dl {
+    grid-template-columns: 1fr;
+  }
+  .tool-wounds th,
+  .tool-wounds td {
+    padding: 3px;
+  }
+  .tool-progress {
+    flex-wrap: wrap;
+  }
+  .tools-tabs a {
+    padding: 3px 5px;
+    font-size: 0.7rem;
+  }
+}
+.tool-wounds {
+  table-layout: fixed;
+}
+.tool-wounds th,
+.tool-wounds td {
+  overflow-wrap: anywhere;
+}
+.tool-progress progress {
+  max-width: 100%;
+}
+.tool-box ul {
+  font-size: 0.77rem;
+  padding-left: 16px;
+  margin: 4px 0;
+}
+.combat-row > button {
+  padding: 0;
+  width: 35px;
+  height: 39px;
+  min-height: 0;
+  line-height: 0;
+}

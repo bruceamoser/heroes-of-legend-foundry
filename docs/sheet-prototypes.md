@@ -2,7 +2,8 @@
 
 The Pages workshop connects Character (`index.html`), NPC (`npc.html`),
 Creature (`creature.html`), Item (`item.html`) and the [roll dialog](roll-dialog-design.md)
-(`roll.html`) and [chat cards](chat-card-design.md) (`chat.html`). The NPC, creature and item pages
+(`roll.html`), [chat cards](chat-card-design.md) (`chat.html`) and
+[play tools](play-tools-design.md) (combat, journals, recovery and crafting). The NPC, creature and item pages
 share `web/sheets.mjs` and `web/sheets.css`, plus the character workshop's theme,
 fonts and controls. These pages preview future native sheet design; no Foundry
 world or campaign data is accessed.

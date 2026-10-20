@@ -18,6 +18,33 @@ if (
   throw new Error(
     "Workshop references need to match the current catalog edition.",
   );
+const journals = JSON.parse(
+  await readFile(new URL("web/data/journals.json", root)),
+);
+const sourceLock = JSON.parse(
+  await readFile(new URL("content/source-lock.json", root)),
+);
+if (journals.sourceCommit !== choices.sourceCommit)
+  throw new Error("Journal edition differs from catalogs.");
+const lockedRules = sourceLock.records.filter((r) =>
+  r.path.startsWith("design/rules/"),
+);
+if (
+  journals.records.length !== lockedRules.length ||
+  new Set(journals.records.map((r) => r.source.path)).size !==
+    lockedRules.length ||
+  new Set(journals.records.map((r) => r.id)).size !== lockedRules.length
+)
+  throw new Error("Incomplete rule journals.");
+for (const record of journals.records) {
+  const locked = lockedRules.find((r) => r.path === record.source.path);
+  if (
+    !locked ||
+    locked.sha256 !== record.source.sha256 ||
+    createHash("sha256").update(record.markdown).digest("hex") !== locked.sha256
+  )
+    throw new Error(`Journal differs from pinned source: ${record.id}`);
+}
 for (const record of [
   ...choices.records,
   ...inventory.equipment,
@@ -58,6 +85,12 @@ await writeFile(
   JSON.stringify(fixtures.characters[0].draft),
 );
 await writeFile(new URL(".nojekyll", out), "");
+await writeFile(
+  new URL("data/party.json", out),
+  JSON.stringify(
+    fixtures.characters.map((c) => ({ id: c.id, draft: c.draft })),
+  ),
+);
 console.info(
   "Built dist/workshop (shared rules and catalogs; no Foundry runtime).",
 );

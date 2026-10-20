@@ -1,5 +1,23 @@
 import { refillInventory } from "./inventory.mjs";
 
+export function startWorkshopCraft(play, recipe) {
+  const next = structuredClone(play);
+  next.crafting ??= {};
+  const previous = next.crafting[recipe.id] ?? {
+    progress: 0,
+    completed: 0,
+    attempts: 0,
+  };
+  if (previous.active) return next;
+  next.crafting[recipe.id] = {
+    ...previous,
+    progress: 0,
+    active: true,
+    supplyId: "",
+  };
+  return next;
+}
+
 /** Apply one reviewed attempt to a copy of the character's play controls. */
 export function workshopCraft({
   play,
@@ -18,7 +36,11 @@ export function workshopCraft({
     completed: 0,
     attempts: 0,
   };
-  const state = { ...previous, attempts: previous.attempts + 1 };
+  const state = {
+    ...previous,
+    supplyId: previous.supplyId ?? "",
+    attempts: previous.attempts + 1,
+  };
   let message;
   next.inventory ??= { added: [], removed: [] };
   const add = () => {
@@ -53,10 +75,14 @@ export function workshopCraft({
       ...next.inventory.overrides[target],
       inventoryDie: after,
     };
+    state.supplyId = target;
+    state.active = after < recipe.maximumDie;
+    if (!state.active) state.completed += 1;
     message = `${before ? "d" + before : "Empty"} → d${after}`;
   } else {
     const before = previous.progress >= recipe.target ? 0 : previous.progress;
     state.progress = Math.min(recipe.target, before + steps);
+    state.active = state.progress < recipe.target;
     if (state.progress >= recipe.target) {
       state.completed += 1;
       if (recipe.product) add();

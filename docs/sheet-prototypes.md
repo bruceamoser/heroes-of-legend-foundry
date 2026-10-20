@@ -74,11 +74,12 @@ Existing browser saves selecting the former Recipes tab reopen Crafting.
 This character-backed sheet view is separate from the disposable example jobs
 on the standalone crafting design page.
 
-Crafting attempts can be rerolled before choosing Record attempt. Recording
-saves per-recipe progress, attempt count and completed permanent products with
-the character (autosave, named saves and portable JSON). Reaching a permanent
-project target adds one catalog product when defined; the next attempt begins a
-new project. Recipes without a catalog product record completion only. Supply
-recipes raise the selected matching inventory supply, or create a new one from
-empty, up to the printed recipe cap. Existing higher dice are never reduced.
-Tools, materials and elapsed time remain governed by the recipe at the table.
+Start creates one saved project per recipe beneath the recipe list. Different
+recipes may be in progress together. Each entry shows progress and the attribute
+roll buttons for its learned crafting abilities. Rolling immediately applies the
+result, updates progress and saves the character; there is no Record attempt step.
+Completion adds a catalog product when defined and frees the recipe for another
+Start. Completed counts remain visible. Supply projects begin empty, raise their
+matching supply and complete at the recipe cap. Existing incomplete permanent
+projects reopen automatically. Project state travels with autosaves, named saves
+and portable JSON. Tools, materials and elapsed time follow the printed recipe.

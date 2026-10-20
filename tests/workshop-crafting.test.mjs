@@ -1,7 +1,10 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
-import { workshopCraft } from "../src/rules/workshop-crafting.mjs";
+import {
+  workshopCraft,
+  startWorkshopCraft,
+} from "../src/rules/workshop-crafting.mjs";
 import { normalizeWorkshopPlay } from "../src/rules/workshop-play.mjs";
 import {
   writePortableCharacter,
@@ -108,4 +111,54 @@ test("portable crafting rejects unknown recipes and malformed progress", () => {
       () => normalizeWorkshopPlay({ crafting }, catalogs),
       /malformed/,
     );
+});
+
+test("Start creates one project per recipe while allowing different recipes", () => {
+  let play = startWorkshopCraft({}, recipe("twisted-cord"));
+  play = apply(play, "twisted-cord", "weak");
+  const repeated = startWorkshopCraft(play, recipe("twisted-cord"));
+  assert.deepEqual(repeated, play);
+  play = startWorkshopCraft(play, recipe("wooden-brace"));
+  assert.equal(play.crafting["recipe-wooden-brace"].active, true);
+  assert.equal(play.crafting["recipe-twisted-cord"].progress, 1);
+  play = apply(play, "twisted-cord", "strong");
+  assert.equal(play.crafting["recipe-twisted-cord"].active, false);
+  play = startWorkshopCraft(play, recipe("twisted-cord"));
+  assert.equal(play.crafting["recipe-twisted-cord"].progress, 0);
+  assert.equal(play.crafting["recipe-twisted-cord"].completed, 1);
+});
+
+test("legacy incomplete progress reopens as an active saved project", () => {
+  const play = normalizeWorkshopPlay(
+    {
+      crafting: {
+        "recipe-twisted-cord": { progress: 2, completed: 0, attempts: 1 },
+      },
+    },
+    catalogs,
+  );
+  assert.equal(play.crafting["recipe-twisted-cord"].active, true);
+  assert.equal(
+    startWorkshopCraft(play, recipe("twisted-cord")).crafting[
+      "recipe-twisted-cord"
+    ].progress,
+    2,
+  );
+  assert.throws(
+    () =>
+      normalizeWorkshopPlay(
+        {
+          crafting: {
+            "recipe-twisted-cord": {
+              progress: 2,
+              completed: 0,
+              attempts: 1,
+              active: "yes",
+            },
+          },
+        },
+        catalogs,
+      ),
+    /malformed/,
+  );
 });

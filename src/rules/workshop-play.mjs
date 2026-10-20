@@ -77,9 +77,21 @@ export function normalizeWorkshopPlay(value, catalogs) {
           state.progress > (recipe.target ?? 0)
         )
           fail();
+        if (state.active !== undefined && typeof state.active !== "boolean")
+          fail();
+        if (
+          state.supplyId !== undefined &&
+          state.supplyId !== "" &&
+          !instance(state.supplyId)
+        )
+          fail();
         return [
           id,
           {
+            active:
+              state.active ??
+              (state.progress > 0 && state.progress < (recipe.target ?? 0)),
+            supplyId: state.supplyId ?? "",
             progress: state.progress,
             completed: state.completed,
             attempts: state.attempts,

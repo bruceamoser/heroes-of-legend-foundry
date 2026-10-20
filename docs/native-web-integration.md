@@ -74,5 +74,6 @@ without cropping or upscaling, with resampled alpha preserved. Total runtime art
 is 41,666,026 bytes versus 93,699,982 bytes before resizing (55.53% smaller).
 Pinned source originals and source hashes remain unchanged. Regeneration supports
 1–8 bounded workers with deterministic output; ordinary builds use the checked-in
-derivatives. All nine existing web browser suites also passed; the builder-view
-persistence check required a solo rerun after a concurrent run hit its reload timing.
+derivatives. All nine existing web browser suites also passed. CI exposed a builder-view
+persistence assertion running before the asynchronous reload render; it now waits
+for the exact restored control to become visible.

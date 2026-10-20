@@ -350,11 +350,10 @@ try {
   assert.equal(await page.locator(".death-mark.filled").count(), 2);
   await page.keyboard.press("Escape");
   await page.reload();
-  assert(
-    await page
-      .getByRole("button", { name: "Death roll; 2 failed", exact: true })
-      .isVisible(),
-  );
+  // Reload finishes navigation before the asynchronous saved-character render.
+  await page
+    .getByRole("button", { name: "Death roll; 2 failed", exact: true })
+    .waitFor({ state: "visible" });
   for (const width of [760, 390]) {
     await page.setViewportSize({ width, height: 900 });
     await page.getByRole("tab", { name: "Development", exact: true }).click();

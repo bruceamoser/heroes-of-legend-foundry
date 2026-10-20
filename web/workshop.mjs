@@ -1,3 +1,4 @@
+import { rollSetup, netControl, bindRollSetup } from "./roll-ui.mjs";
 import {
   equipmentEligibility,
   isUniversalAbility,
@@ -1424,13 +1425,12 @@ function openSheetRoll({ key, id, death = false, defense = false }) {
     `
     ${death ? `<section class="death-panel"><input id="death-failures" type="hidden" value="${failed}"><div id="death-mark-display">${deathMarks(failed)}</div><div class="death-outcomes"><span><b>Weak</b> +1 mark</span><span><b>Standard</b> No change</span><span><b>Strong</b> Stabilize</span></div><p class="inline-help">Fortitude · Natural 111: two marks · Natural 666: regain 1 HP · Three marks: Last Words</p></section>` : ""}
     ${defense ? '<p class="inline-help">Choose the defense attribute named by the attack. Strong defense takes Weak attack effects; Weak defense takes Strong attack effects.</p>' : ""}
-    <label>Attribute<select id="sheet-roll-attribute" aria-label="Roll attribute">${(death ? ["fortitude"] : ATTRIBUTES).map((k) => option(k, `${title(k)} ${signed(draft.attributes[k])}`, k === attribute)).join("")}</select></label>
-    <div class="roll-net"><label for="recipe-net" class="roll-net-labels"><span>Banes</span><output id="roll-net-value">Even</output><span>Boons</span></label><input id="recipe-net" aria-label="Banes / Boons" aria-valuetext="Even" type="range" min="-3" max="3" step="1" value="0"></div>
+    ${rollSetup({ attributes: Object.fromEntries((death ? ["fortitude"] : ATTRIBUTES).map((k) => [k, draft.attributes[k]])), selected: attribute, attributeId: "sheet-roll-attribute", value: draft.attributes[attribute], netId: "recipe-net", labelId: "roll-net-value" })}
     ${
       death
         ? ""
-        : `<details><summary>Abilities</summary><div class="roll-abilities">${knownCards()
-            .filter((r) => attributeFor(r) || r.id === id)
+        : `<details class="hol-roll-abilities" open><summary>Abilities</summary><div class="roll-abilities">${knownCards()
+            .sort((a, b) => Number(b.id === id) - Number(a.id === id))
             .map(
               (r) =>
                 `<label class="inline-toggle"><input type="checkbox" data-roll-ability="${esc(r.id)}" ${r.id === id ? "checked" : ""}>${esc(r.name)}</label>`,
@@ -1452,6 +1452,9 @@ function openSheetRoll({ key, id, death = false, defense = false }) {
     }
     <div id="recipe-roll-result" role="status" aria-live="polite"></div><div class="dialog-actions">${button("Roll", "roll-sheet", "", "primary")}</div>${record ? `<details><summary>Ability rules</summary>${markdown(references.records[id]?.markdown ?? "")}</details>` : ""}`,
   );
+  bindRollSetup($("#reference .reference-body"), {
+    getAttributeValue: () => draft.attributes[$("#sheet-roll-attribute").value],
+  });
   const automatic = conditionRollSources(preview.play.conditions, {
     mode: death ? "death" : defense ? "defense" : "attribute",
     perceivedSources: [],
@@ -1530,8 +1533,11 @@ function recipeRoll(id, recipeId) {
     throw new Error("Choose a known recipe and its learned crafting ability.");
   popup(
     `Craft ${recipe.name}`,
-    `<p><strong>${esc(ability.name)}</strong> · ${title(attribute)} ${signed(draft.attributes[attribute])} · ${recipe.attemptMinutes} min per attempt</p><div class="roll-net"><label for="recipe-net" class="roll-net-labels"><span>Banes</span><output id="roll-net-value">Even</output><span>Boons</span></label><input id="recipe-net" aria-label="Banes / Boons" aria-valuetext="Even" type="range" min="-3" max="3" step="1" value="0"></div><div id="recipe-roll-result" role="status" aria-live="polite"></div><div class="dialog-actions">${button("Roll", "roll-recipe", `data-id="${esc(id)}"`, "primary")}</div><details><summary>Recipe rules</summary>${markdown(references.records[recipeId]?.markdown ?? "")}</details>`,
+    `<p><strong>${esc(ability.name)}</strong> · ${title(attribute)} ${signed(draft.attributes[attribute])} · ${recipe.attemptMinutes} min per attempt</p>${netControl({ id: "recipe-net", labelId: "roll-net-value" })}<div id="recipe-roll-result" role="status" aria-live="polite"></div><div class="dialog-actions">${button("Roll", "roll-recipe", `data-id="${esc(id)}"`, "primary")}</div><details><summary>Recipe rules</summary>${markdown(references.records[recipeId]?.markdown ?? "")}</details>`,
   );
+  bindRollSetup($("#reference .reference-body"), {
+    getAttributeValue: () => draft.attributes[attributeFor(ability)],
+  });
 }
 function rollRecipeDice(id) {
   displayDice(draft.attributes[attributeFor(get(id))]);

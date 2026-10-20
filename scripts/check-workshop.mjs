@@ -773,16 +773,16 @@ try {
   await recipe.locator('[data-action="recipe-roll"]').click();
   assert.equal(await page.locator("#roll-net-value").innerText(), "Even");
   const left = await page
-    .locator(".roll-net-labels span")
+    .locator(".hol-net-heading span")
     .first()
     .boundingBox();
   const right = await page
-    .locator(".roll-net-labels span")
+    .locator(".hol-net-heading span")
     .last()
     .boundingBox();
   assert(left.x < right.x);
   assert.deepEqual(
-    await page.locator(".roll-net-labels span").allTextContents(),
+    await page.locator(".hol-net-heading span").allTextContents(),
     ["Banes", "Boons"],
   );
   await page.locator("#recipe-net").fill("-3");

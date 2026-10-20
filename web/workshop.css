@@ -1412,19 +1412,6 @@ dialog header button {
 .sheet-abilities .planned {
   margin-top: 6px;
 }
-.roll-net-labels {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-}
-.roll-net-labels output {
-  font-weight: 400;
-}
-.roll-net input[type="range"] {
-  width: 100%;
-  direction: ltr;
-}
 @media (max-width: 600px) {
   .sheet-abilities .brief {
     -webkit-line-clamp: 2;

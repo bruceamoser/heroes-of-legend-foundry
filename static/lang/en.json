@@ -77,7 +77,8 @@
       "summon": "Summon"
     },
     "Item": {
-      "ability": "Ability"
+      "ability": "Ability",
+      "equipment": "Equipment"
     }
   }
 }

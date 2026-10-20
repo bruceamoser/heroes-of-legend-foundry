@@ -125,3 +125,32 @@ public installation and world-document preservation checks.
 After acceptance the isolated runtime (PID 3452062) was stopped, port 30024 was
 verified closed and the transport was stopped. The disposable world, including
 the separately preserved edited Actor, remains available for review.
+
+## Release 1.0.0 candidate procedure (#216)
+
+The harness now defaults to `HOL_TEST_RELEASE_VERSION=1.0.0`, verifies both
+release asset checksums and the standalone/embedded manifest identity, and checks
+current native sheets plus all six compendiums: 419 abilities, 44 equipment,
+192 creatures, 73 summon profiles, 610 player rules and 408 DA rules. It opens a
+player rule as a player and rejects an existing DA rule path. The historical
+0.1.0 evidence above remains historical; these changes are instructions, not a
+claim that the 1.0.0 candidate has passed installation or gameplay acceptance.
+
+After native Setup installation of the exact downloaded draft and world launch:
+
+```sh
+HOL_TEST_URL=http://127.0.0.1:30016 \
+HOL_TEST_ALLOW_WRITES=1 HOL_TEST_ISOLATED_WORLD=1 \
+HOL_TEST_RELEASE_VERSION=1.0.0 \
+HOL_TEST_INSTALLED_PACKAGE=/absolute/disposable-data/Data/systems/heroes-of-legend \
+HOL_RELEASE_ARTIFACT_DIR=/absolute/path/to/downloaded-draft-assets \
+npm run test:installed-core
+```
+
+The fixture enters the native Inventory tab before Add equipment, returns to Main
+for sheet screenshots, and preserves the original targeting, attack/defense,
+turn budgets, consent, damage, replay, persistence and exact cleanup checks. Run
+`test:native-design` separately against that installed candidate for portraits,
+icons, new owner tools, journal import preservation and observer access. Serialize
+these native runs; screenshots still require visual review. Record completed
+1.0.0 evidence in [release-1.0.0.md](release-1.0.0.md).

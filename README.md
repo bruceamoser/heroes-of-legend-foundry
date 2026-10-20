@@ -1,7 +1,7 @@
 # Heroes of Legend for Foundry VTT
 
 Bruce Moser's **Heroes of Legend**, for Foundry Virtual Tabletop **V14**.
-Version **0.1.0**, verified against Foundry **14.369**. See the [release evidence](docs/release-0.1.0.md) for the published artifact, installation results and known update boundary.
+Version **1.0.0** release candidate, targeting Foundry **14.369**. See the [1.0.0 release evidence](docs/release-1.0.0.md) for publication and installation status; the [0.1.0 evidence](docs/release-0.1.0.md) records the preceding public release.
 
 ## Install and update
 
@@ -17,10 +17,10 @@ Before updating, back up your world and return to Setup. Use the system's **Upda
 
 **Local development alpha:** Foundry 14.369 does not flag `0.1.0` as newer than `0.1.0-alpha.1`. Reinstall through **Setup → Game Systems → Install System** using the manifest URL above. This public installation path was verified with edited world-Actor preservation; an Update-button transition from the alpha is not claimed.
 
-The release ZIP is version-specific:
+The 1.0.0 candidate ZIP URL is version-specific and becomes public when that release is published:
 
 ```text
-https://github.com/bruceamoser/heroes-of-legend-foundry/releases/download/v0.1.0/heroes-of-legend.zip
+https://github.com/bruceamoser/heroes-of-legend-foundry/releases/download/v1.0.0/heroes-of-legend.zip
 ```
 
 For a local candidate, extract the ZIP directly into your isolated test data directory's `Data/systems/heroes-of-legend/`, with `system.json` immediately inside that directory. Never replace a running system's files. Public manifest/update checks and the exact-package isolated test are separate steps in the release checklist.
@@ -57,8 +57,11 @@ GM processing requires HTTPS or localhost for the browser's exclusive-tab lock.
 
 ## Included content and manual resolution
 
-- Import abilities, equipment, creatures and summon profiles from the four compendiums. Creature action cards use their printed defense attribute and exact player-defense outcomes.
-- Use the implemented condition, wound, survival, equipment and healing-potion workflows where applicable; keep source rules available at the table.
+- Import 419 abilities, 44 equipment entries, 192 creatures and 73 summon profiles from the four content compendiums. Creature action cards use their printed defense attribute and exact player-defense outcomes.
+- Open the **Rules Library** for searchable local references: 610 player rules and 408 DA references in two additional JournalEntry compendiums. The DA can explicitly import world journals; repeated imports preserve existing source identities and edits.
+- Use the native character, NPC/creature and item cards, Favorites and creation/advancement markets. Owners can select sheet portraits through Foundry’s image picker and **Save portrait**; custom item artwork is preserved when generic bag icons are refreshed.
+- Creature artwork fits a 768px maximum edge with transparency retained. The 192 packaged portraits total 41.7 MB, 55.5% smaller than the previous derivatives.
+- Use the implemented condition, wound, survival, equipment, resupply, healing-potion and crafting workflows where applicable. Crafting records immediate progress and catalog products; printed time, tools and optional carried materials remain table-resolved.
 
 Specialty action cards and optional ability references support **manual costs and effects**. They do not automatically interpret every condition, movement clause or special rule. Summons have distinct native reference profiles, portraits and attacker-oriented outcomes; spawning, controller commands, tether checks and lifecycle management remain with the DA. This release does not claim all-ability automation.
 

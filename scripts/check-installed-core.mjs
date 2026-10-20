@@ -17,13 +17,21 @@ if (!installed || !artifacts || (await lstat(installed)).isSymbolicLink())
 assert.equal(await realpath(installed), resolve(installed), "Installed package must not resolve through a worktree symlink.");
 const archive = resolve(artifacts, "heroes-of-legend.zip"), zip = await readFile(archive),
   zipSha256 = createHash("sha256").update(zip).digest("hex");
-assert((await readFile(resolve(artifacts, "SHA256SUMS"), "utf8")).split(/\r?\n/).includes(`${zipSha256}  heroes-of-legend.zip`));
+const checksums = (await readFile(resolve(artifacts, "SHA256SUMS"), "utf8")).split(/\r?\n/);
+assert(checksums.includes(`${zipSha256}  heroes-of-legend.zip`));
+const manifestBytes = await readFile(resolve(artifacts, "system.json"));
+assert(checksums.includes(`${createHash("sha256").update(manifestBytes).digest("hex")}  system.json`));
 const manifest = JSON.parse(execFileSync("unzip", ["-p", archive, "system.json"]));
 assert.equal(manifest.id, ID);
-assert.equal(manifest.version, "0.1.0", "Use the final unpublished 0.1.0 candidate.");
+assert.deepEqual(JSON.parse(manifestBytes), manifest, "Standalone and embedded release manifests differ.");
+const expectedVersion = process.env.HOL_TEST_RELEASE_VERSION ?? "1.0.0";
+assert.equal(manifest.version, expectedVersion, "Use the exact downloaded candidate for this acceptance run.");
 // Setup may persist its local transport URLs; runtime code must still be the exact ZIP's bytes.
-for (const path of ["heroes-of-legend.mjs", "services/abilities.mjs", "services/potions.mjs", "services/player-attacks.mjs"])
+for (const path of ["heroes-of-legend.mjs", "services/abilities.mjs", "services/potions.mjs", "services/player-attacks.mjs", "services/journals.mjs", "services/crafting.mjs", "sheets/character.mjs", "templates/character.hbs", "styles/character-sheet.css", "data/journal-index.json"])
   assert.deepEqual(await readFile(resolve(installed, path)), execFileSync("unzip", ["-p", archive, path]), `Installed ${path} differs from accepted artifact.`);
+const journalIndex = JSON.parse(await readFile(resolve(installed, "data/journal-index.json"), "utf8"));
+const restrictedRule = journalIndex.records.find(record => record.pack === "da-rules");
+assert(restrictedRule, "The installed rules index must contain DA references.");
 await mkdir("test-results", { recursive: true });
 await rm("test-results/installed-core-evidence.json", { force: true });
 const browser = await chromium.launch({ args: ["--use-gl=angle", "--use-angle=swiftshader", "--enable-unsafe-swiftshader"] });
@@ -41,8 +49,10 @@ async function join(name) {
   page.on("pageerror", error => errors.push(error.message));
   clients.push({ context, page });
   console.info("Joining client:", name);
-  await page.goto(url); await selectTestUser(page, name);
-  await page.locator("button[name=join]").click();
+  await page.goto(`${url}/join`, { waitUntil: "domcontentloaded" });
+  await page.bringToFront();
+  await selectTestUser(page, name);
+  await page.locator("button[name=join]").evaluate(button => button.click());
   try {
     await page.waitForFunction(() => globalThis.game?.ready && game.canvas.initialized && !game.canvas.loading, null, { timeout: 60_000 });
   } catch (error) {
@@ -78,9 +88,9 @@ try {
   assert.equal(await gm.evaluate(() => game.system.version), manifest.version);
   assert.deepEqual(await gm.evaluate(async () => {
     const counts = {};
-    for (const name of ["abilities", "equipment", "creatures", "summons"]) counts[name] = (await game.packs.get(`heroes-of-legend.${name}`).getIndex()).size;
+    for (const name of ["abilities", "equipment", "creatures", "summons", "player-rules", "da-rules"]) counts[name] = (await game.packs.get(`heroes-of-legend.${name}`).getIndex()).size;
     return counts;
-  }), { abilities: 350, equipment: 43, creatures: 192, summons: 73 });
+  }), { abilities: 419, equipment: 44, creatures: 192, summons: 73, "player-rules": 610, "da-rules": 408 });
   await gm.waitForFunction(() => game.settings.get("heroes-of-legend", "creationAuthorityClient") === game.socket.id);
   fixture = await gm.evaluate(async ids => {
     const ID = "heroes-of-legend", registry = globalThis.__hol121Core = { actors: [], users: [], scenes: [], combats: [], messages: [] };
@@ -101,7 +111,7 @@ try {
     for (let index = 0; index < 2; index++) {
       const actor = await Actor.create({ name: index ? "Bera · journey" : "Arin · journey", type: "character",
         ownership: { default: CONST.DOCUMENT_OWNERSHIP_LEVELS.OBSERVER, [users[index].id]: CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER },
-        flags: { [ID]: { development: { creationSummary: { speedBase: 5 } } } },
+        flags: { [ID]: { development: { creationSummary: { speedBase: 5, unencumberedSpeed: 5, capacity: 10 } } } },
         system: { health: { value: index ? 14 : 10, baseMax: 20 }, attributes: { brawn: { base: 2 }, fortitude: { base: 1 } } } });
       registry.actors.push(actor.id); actors.push(actor);
       await game.users.get(users[index].id).update({ character: actor.id });
@@ -144,11 +154,28 @@ try {
   }, fixture) };
   owner = await join(fixture.users[0].name); other = await join(fixture.users[1].name);
   await view(owner); await view(other);
+  const playerRules = await owner.evaluate(async () => {
+    const { ruleIndex, openLocalRule } = await import("/systems/heroes-of-legend/services/journals.mjs");
+    const index = await ruleIndex();
+    if (index.some(record => record.pack !== "player-rules")) throw new Error("DA references leaked into the player library.");
+    const entry = await openLocalRule("design/rules/languages.md");
+    return { count: index.length, readable: entry.testUserPermission(game.user, "OBSERVER") };
+  });
+  assert.deepEqual(playerRules, { count: 610, readable: true });
+  await owner.evaluate(async path => {
+    for (const app of foundry.applications.instances.values())
+      if (app.document?.documentName === "JournalEntry") await app.close();
+    const { openLocalRule } = await import("/systems/heroes-of-legend/services/journals.mjs");
+    try { await openLocalRule(path); return false; }
+    catch (error) { return error.message.includes("unavailable"); }
+  }, restrictedRule.path).then(denied => assert.equal(denied, true, "Players cannot open existing DA rule paths"));
+  passed("installed player journal access and DA-reference denial");
   // #15's ordinary equipment acquisition path: a native source copy, no manual raw Item construction.
   fixture.ownerSheetSelector = await owner.evaluate(async id => {
     const sheet = game.actors.get(id).sheet; await sheet.render({ force: true });
     return `#${CSS.escape(sheet.element.id)}`;
   }, fixture.actors[0]);
+  await owner.locator(fixture.ownerSheetSelector).locator('[data-tab="inventory"]').click();
   await owner.locator(fixture.ownerSheetSelector).locator("[data-action=addEquipment]").click();
   const equipmentSource = `Compendium.heroes-of-legend.equipment.Item.${stableFoundryId("item-lesser-healing-bottle")}`;
   const equipmentDialog = owner.getByRole("dialog").filter({ has: owner.locator('[name="equipmentSourceUuid"]') });
@@ -190,6 +217,7 @@ try {
     if (roll.references[0]?.itemUuid !== f.reference) throw new Error("Reference snapshot changed identity.");
     return message.id;
   }, fixture);
+  assert.equal(await gm.evaluate(f => game.combats.get(f.combat).getFlag("heroes-of-legend", "encounter").budgets[f.participants[0]].remaining.main, fixture), 0, "Basic Melee consumes the current Main Action once");
   passed("native player attack and optional owned reference reach authoritative roll");
   const expectedDragonHp = await gm.evaluate(f => {
     const actor = game.actors.get(f.actors[2]), card = game.messages.get(f.attack).getFlag("heroes-of-legend", "playerAttack");
@@ -251,6 +279,7 @@ try {
     assert.equal(Object.hasOwn(result.attackOutcome, "damage"), false);
     assert.equal(result.sources.filter(source => source.label === "Shield Block").length, 1);
   }
+  assert.equal(await gm.evaluate(f => game.combats.get(f.combat).getFlag("heroes-of-legend", "encounter").budgets[f.participants[1]].remaining.reaction, fixture), 0, "Shield Block consumes one Reaction and the fresh repeat reuses its retained effect");
   passed("native two-target creature card, any-player defense, Shield Block and fresh repeat");
   // Printed specialty outcomes stay manual; apply a separate explicit physical hit through the normal DA UI.
   const defenderSheetSelector = await gm.evaluate(async f => {
@@ -320,6 +349,7 @@ try {
   assert.deepEqual(after, before);
   passed("reload and same-operation attack/potion replay preserve dice, HP and receipts");
   await owner.evaluate(async id => { await game.actors.get(id).sheet.render({ force: true }); }, fixture.actors[0]);
+  await owner.locator(fixture.ownerSheetSelector).locator('[data-tab="main"]').click();
   for (const theme of ["light", "dark"]) {
     await owner.evaluate(async id => {
       const Config = foundry.applications.apps.DocumentSheetConfig;

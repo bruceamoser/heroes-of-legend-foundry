@@ -28,48 +28,72 @@ The secure browser APIs required by coordination and signed defense snapshots ne
 HTTPS for remote clients (localhost is also supported). This is an environment
 prerequisite, not an accepted silent failure or a reason to remove validation.
 
-## Current correction evidence (October 20)
+## Release acceptance (October 20)
 
-These results describe the correction branch before final release packaging:
+The corrected source passed build/content validation and **585 tests** under Node
+24. The actual web application's workshop, play, resources, recovery, builder,
+NPC/item prototypes, roll, chat and tool browser checks passed. The CI workflows
+install Chromium before the card DOM regression; the initial missing-browser
+failure was an environment setup error and is not counted as a passing run.
 
-- `check-landing.mjs` passed on licensed Foundry 14.369 in the isolated
-  `hol-release-patch-fresh` world: valid native scene/tiles/drawings, unchanged
-  active scene on creation, preservation of an edited title, immediate theme
-  toggle, GM book navigation, and player navigation with no DA link. The player
-  could open the Player’s Book and could not create landing scenes. Fixtures
-  were removed. The screenshot review corrected native tile texture anchors;
-  the final scene keeps the full cover illustration and title in frame.
-- `test:workshop`, `test:chat-preview` and `test:tools-preview` passed against
-  the actual web application, including responsive layouts and no uncaught
-  browser errors. These establish the reference behavior; they do not replace
-  native runtime checks.
-- `npm run check` passed all 566 tests on the 2.0.0 candidate, including build,
-  validation, release byte round-trip, import, coordination and native rules
-  regressions. Later source changes require the final check again.
-- Native creation validation exercised blank name, attribute overspend, changed
-  ancestry/origin dependencies and blur followed by Continue. Invalid Save stays
-  blocked with a repairable draft, while navigation preserves the latest input.
-- A clean-restart runtime exposed mixed coordinator metadata despite an agreed
-  idle binding, lease and checkpoint. The guarded repair was verified against
-  that exact saved state on ordinary GM login, without resetting settings or
-  calling recovery controls. Busy/uncertain and competing claims remain guarded
-  by focused tests.
+Licensed **Foundry 14.369**, isolated world `hol-release-patch-fresh`:
 
-- The actual workshop exported a level-3 character which the GM imported and
-  saved through the native UI. The complete state comparison passed, including
-  progression, inventory identities, live resources, conditions, languages,
-  favorites and crafting. Standard FilePicker selection saved immediately;
-  Read → Close → Read remained inline. A normal browser reopened and reloaded
-  the persisted Actor successfully. Forced graphics flags in one test browser
-  caused a blank reload and were removed from the harness.
-- Fresh-browser NPC/chat checks passed full defense resolution and numeric
-  damage, native dice tooltip access, and role-specific defender selection.
-  Computed result-card typography was checked against the actual web app.
-- Author review identified an interrupted startup claim and an editable-defense
-  result trust gap. Guarded idle-claim recovery and GM-ledger result binding
-  have focused regressions. The refreshed package repaired the exact preserved
-  interrupted claim on ordinary GM login after a clean server restart, with all
-  binding/metadata/lease/work records agreeing and no reset or recovery call.
+- Actual web UI level-3 export → native UI import → Save → updated sheet → reload
+  passed as both GM and player. Exact comparisons covered progression, Item
+  identities/quantities/equipment/supply, live HP and spent Grit, conditions,
+  wounds, languages, biography, favorites and crafting. Native FilePicker saved
+  immediately. Read → Close → Read stayed inside the sheet.
+- Blank name, attribute overspend, changed ancestry/origin dependencies and
+  blur → Continue were exercised. Draft HP/Grit/wound/death controls changed
+  only the draft. A real level-4 award, safe-place approval and Conditioned Body
+  purchase completed through its receipt, returned to the sheet and survived
+  reload: exactly 2 DP spent, maximum HP +1, no healing, no Grit refill, no
+  duplicate grant. Scar-note edits and inline wound treatment preserved permanent
+  wound history.
+- Eight creation steps, six character tabs for both clients, advancement and
+  draft wound/death dialogs were captured alongside the actual web reference.
+  Rendered review corrected native global table backgrounds, column widths,
+  checkbox presentation, inherited fonts, missing dice glyphs, raw UUID text,
+  secondary dialog styling and dialog padding. Final package captures are the
+  acceptance images; older captures remain diagnostic evidence only.
+- Actual imported Goblin **Scrap knife** → Defend → evaluated result → fixed
+  physical damage passed. Same-request replay, reload and replay again preserved
+  HP and original dice without a second damage application. Actual canvas checks
+  proved GM selected-token and player assigned-Actor selection, including missing
+  and ambiguous selection messages. NPC HP edits at zero/restoration survived
+  reload. Whole chat cards and original dice tooltips were inspected against the
+  web typography.
+- Ordinary GM login recovered the exact preserved prior-launch interrupted
+  claim and interrupted-finalization states without resetting settings or
+  invoking recovery. Tests refuse busy, uncertain, current-launch competing and
+  mismatched-owner states. The shutdown harness now waits for coherent idle
+  state before returning to Setup.
+- Native books contain 610 player and 408 DA source pages plus 15 section pages
+  each. Next/previous, contents, search, explicit import, repeated import and
+  edited world-page preservation passed. Player tests denied DA paths through
+  the library, world documents and compendium. Inline ability reading preserved
+  edited book content.
+- Recovery healing, canonical wound treatment, native wound Record → Roll →
+  Apply, crafting with a selected material check, and encounter action spending,
+  conversion and turn completion passed with persisted results. Scars/counts,
+  HP and spent Grit were checked. Native tools and item cards were captured and
+  reviewed; the suite reported zero uncaught browser errors and cleaned fixtures.
+- Theme opt-out, native landing tiles/drawings, full approved artwork, ordinary
+  activation controls, navigation, player/DA links, repeated setup preserving
+  an edited title and player creation denial passed. The scene never replaced
+  or automatically activated another scene.
 
-Final player import, complete advancement, latest tool/sheet visual comparisons
-and the complete release artifact check are still pending here.
+The local 2.0.0 archive contains **483 files**. Packaging extracted it, validated
+it and compared every staged byte; all 446 directly shipped source/static files
+also matched the current source. The archive was installed into a real isolated
+system directory and all entries were compared before the final character run.
+That exact-package run passed all 38 character/reference captures and complete
+GM/player workflows; the NPC/chat and rules/tools suites also passed on the
+installed ZIP, including the final dialog title and material-checkbox styling.
+The release workflow creates a draft; publication follows passing CI and final
+artifact checks, not this document alone.
+
+This is author review under the repository's recorded authorization, not an
+independent review. Evidence establishes the scenarios above, not every possible
+module combination, arbitrary specialty effect or summon lifecycle. Existing
+explicit manual-resolution boundaries remain documented in README and release notes.

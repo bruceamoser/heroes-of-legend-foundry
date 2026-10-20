@@ -1543,8 +1543,9 @@ per source. Explicit book import preserves old world journals and all edits. Inl
 Read controls stay in the current sheet; opening the full book is a separate action.
 See [landing-scene.md](landing-scene.md) for theme and scene setup.
 
-Current validation evidence is recorded after final integration. Intermediate
-screenshots are diagnostic comparisons, not a declaration of acceptance.
+Final validation evidence is recorded in [native parity acceptance](native-parity-acceptance.md).
+Intermediate screenshots remain diagnostic comparisons; use the final installed-package
+captures and recorded scenarios for acceptance.
 
 Named creature attacks with simple physical damage use a bounded pinned adapter
 (`#222`). `scripts/generate-numeric-creature-actions.mjs` records 21 exact reviewed
@@ -1558,3 +1559,10 @@ Specialties with extra clauses, mixed damage or freeform outcomes explain their
 manual status. Numeric declarations retain their source snapshot on the GM chat
 card; ordinary defense uses the same result binding and atomic damage receipt as
 Basic Melee. Upgrades do not rewrite existing actor actions to grant eligibility.
+
+The 2.0.0 acceptance archive contains 483 files. `npm run check` includes a Chromium
+DOM regression, so run `npx playwright install --with-deps chromium` after `npm ci`
+on a new machine. Both validation and release CI install the browser before checks.
+Native tests use an isolated world and wait for a coherent idle coordinator before
+closing/restarting clients. A clean server restart can recover a proven idle partial
+activation before or after binding; busy/uncertain work is never cleared implicitly.

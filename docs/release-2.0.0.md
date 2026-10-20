@@ -1,6 +1,6 @@
 # Heroes of Legend 2.0.0
 
-**Candidate — not yet published.** Issues #221–#226 correct the native/web
+Issues #221–#226 correct the native/web
 interface and workflow gaps reported against 1.0.1. Final validation is recorded
 in [native parity acceptance](native-parity-acceptance.md).
 
@@ -47,5 +47,11 @@ ability or summon lifecycle rule.
 
 ## Validation
 
-Release publication remains blocked until the current source check, native
-functional and visual acceptance, author review and exact ZIP round-trip pass.
+Build and content validation, 585 automated tests, and the web browser checks passed.
+The exact 483-file release archive passed extraction and byte comparison. Native
+GM/player import, saving, advancement, combat, rules, tools and visual comparisons
+were exercised in an isolated licensed Foundry 14.369 world. See the linked
+acceptance record for the precise scenarios and manual boundaries.
+
+Reviewed as author review under the repository’s authorization; no independent
+approval is claimed. The release workflow builds a draft before final publication.

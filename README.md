@@ -1,7 +1,7 @@
 # Heroes of Legend for Foundry VTT
 
 Bruce Moser's **Heroes of Legend**, for Foundry Virtual Tabletop **V14**.
-Version **2.0.0** is being validated for Foundry **14.369**. It rebuilds the native interface against the actual web application and adds native rules books, a Foundry theme and an illustrated landing scene. See the [correction acceptance record](docs/native-parity-acceptance.md). The latest published version remains 1.0.1 until the new release passes its remaining gates.
+Version **2.0.0**, validated on Foundry **14.369**, rebuilds the native interface against the actual web application and adds native rules books, a Foundry theme and an illustrated landing scene. See the [release notes](docs/release-2.0.0.md) and [native acceptance record](docs/native-parity-acceptance.md).
 
 ## Install and update
 
@@ -17,13 +17,13 @@ Before updating, back up your world and return to Setup. Use the system's **Upda
 
 **Local development alpha:** Foundry 14.369 does not flag `0.1.0` as newer than `0.1.0-alpha.1`. Reinstall through **Setup → Game Systems → Install System** using the manifest URL above. This public installation path was verified with edited world-Actor preservation; an Update-button transition from the alpha is not claimed.
 
-The latest published ZIP is version-specific:
+The 2.0.0 ZIP is version-specific:
 
 ```text
-https://github.com/bruceamoser/heroes-of-legend-foundry/releases/download/v1.0.1/heroes-of-legend.zip
+https://github.com/bruceamoser/heroes-of-legend-foundry/releases/download/v2.0.0/heroes-of-legend.zip
 ```
 
-Version 1.0.1 changes only item-card readability and the equipment type label; it preserves the published 1.0.0 assets. If GitHub temporarily caches the preceding stable manifest after publication, use the [version-specific 1.0.1 manifest](https://github.com/bruceamoser/heroes-of-legend-foundry/releases/download/v1.0.1/system.json).
+If GitHub temporarily caches the preceding stable manifest after publication, use the [version-specific 2.0.0 manifest](https://github.com/bruceamoser/heroes-of-legend-foundry/releases/download/v2.0.0/system.json).
 
 For a local candidate, extract the ZIP directly into your isolated test data directory's `Data/systems/heroes-of-legend/`, with `system.json` immediately inside that directory. Never replace a running system's files. Public manifest/update checks and the exact-package isolated test are separate steps in the release checklist.
 

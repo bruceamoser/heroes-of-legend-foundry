@@ -5,7 +5,7 @@ web-design integration in [#215](https://github.com/bruceamoser/heroes-of-legend
 Published October 20, 2026 as [v1.0.0](https://github.com/bruceamoser/heroes-of-legend-foundry/releases/tag/v1.0.0).
 Fresh native Setup installation, the public 0.1.0 upgrade/preservation checks,
 installed core gameplay and anonymous artifact verification passed on Foundry 14.369.
-A final item-card visual finding is tracked in #218 for an immutable 1.0.1 patch.
+The final item-card visual finding in #218 is corrected in published [1.0.1](release-1.0.1.md), the latest patch on the 1.0 major line.
 
 ## Release identity
 
@@ -73,7 +73,7 @@ the world; fresh installation of this exact candidate passed separately.
 | Gate | Status | Evidence |
 |---|---|---|
 | Integrated implementation | Passed | #215 merged as `6909593a09d552ecd453080729103930c717ca68`; author review under repository authorization, not independent approval. |
-| Release build/validation/tests | Passed locally | Node 24: 508 tests after version bump; both final #215 CI runs also passed. New release CI remains pending below. |
+| Release build/validation/tests | Passed locally | Node 24: 508 tests after version bump; both final #215 CI runs and the tagged release workflow passed. |
 | Native development acceptance | Passed on 14.369 | Separate GM/owner/observer clients; Grit, crafting, manual wounds, exact-RV treatment, condition damage, empty-stack resupply/Favorites, observer denial and all 1,018 journals. Zero browser errors; exact fixture cleanup. |
 | Portrait/icon and visual development checks | Passed on 14.369 | Native portrait picker invocation, image-only save/reload, NPC image update, custom/default item-art policy; character/NPC/item/tool/library visuals reviewed. Resized-art visual check passed. |
 | Builders, conditions and startup | Passed on 14.369 | Native creation/advancement markets, grants, persistence/replay; sourced conditions, observer denial/unlinked tokens; startup smoke. |

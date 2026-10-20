@@ -1,7 +1,7 @@
 # Heroes of Legend for Foundry VTT
 
 Bruce Moser's **Heroes of Legend**, for Foundry Virtual Tabletop **V14**.
-Version **1.0.0** is published for Foundry **14.369**; **1.0.1** is a visual patch candidate. See the [1.0.1 checklist](docs/release-1.0.1.md) for patch publication status and the [1.0.0 release evidence](docs/release-1.0.0.md) for the major release.
+Version **1.0.1** is published for Foundry **14.369**, completing the **1.0 major release** with an item-card visual correction. See the [1.0.1 release evidence](docs/release-1.0.1.md) and [1.0.0 major release evidence](docs/release-1.0.0.md).
 
 ## Install and update
 
@@ -17,13 +17,13 @@ Before updating, back up your world and return to Setup. Use the system's **Upda
 
 **Local development alpha:** Foundry 14.369 does not flag `0.1.0` as newer than `0.1.0-alpha.1`. Reinstall through **Setup → Game Systems → Install System** using the manifest URL above. This public installation path was verified with edited world-Actor preservation; an Update-button transition from the alpha is not claimed.
 
-The published 1.0.0 ZIP is version-specific; the 1.0.1 patch uses its own immutable URL after publication:
+The latest published ZIP is version-specific:
 
 ```text
-https://github.com/bruceamoser/heroes-of-legend-foundry/releases/download/v1.0.0/heroes-of-legend.zip
+https://github.com/bruceamoser/heroes-of-legend-foundry/releases/download/v1.0.1/heroes-of-legend.zip
 ```
 
-The 1.0.1 candidate changes only item-card readability and the equipment type label; it does not change core mechanics or replace the published 1.0.0 assets.
+Version 1.0.1 changes only item-card readability and the equipment type label; it preserves the published 1.0.0 assets. If GitHub temporarily caches the preceding stable manifest after publication, use the [version-specific 1.0.1 manifest](https://github.com/bruceamoser/heroes-of-legend-foundry/releases/download/v1.0.1/system.json).
 
 For a local candidate, extract the ZIP directly into your isolated test data directory's `Data/systems/heroes-of-legend/`, with `system.json` immediately inside that directory. Never replace a running system's files. Public manifest/update checks and the exact-package isolated test are separate steps in the release checklist.
 

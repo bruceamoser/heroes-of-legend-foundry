@@ -1,3 +1,4 @@
+import { ensureAuthorityReady } from "./authority.mjs";
 import { HEALING_POTION_IDS } from "../rules/potions.mjs";
 import { refillInventory } from "../rules/inventory.mjs";
 import { loadCatalogs } from "./catalog.mjs";
@@ -26,10 +27,10 @@ export function planResupply(actor, item, steps, inventory) {
 }
 export async function requestResupply(actor, item, steps = 1, basis = resupplyBasis(actor, item)) {
   if (!actor.testUserPermission(game.user, "OWNER")) throw new Error("Only an owner or the DA can resupply this item.");
-  if (!game.settings.get(ID, "creationAuthorityClient")) throw new Error("Enable the automation coordinator before resupplying.");
   assertAvailable(actor);
   if (JSON.stringify(resupplyBasis(actor,item)) !== JSON.stringify(basis)) throw new Error("The item changed. Review its current supply.");
   planResupply(actor,item,steps,(await loadCatalogs()).inventory);
+  await ensureAuthorityReady();
   return ChatMessage.create({
     content: `Resupply ${foundry.utils.escapeHTML(item.name)}.`,
     whisper: game.users.filter(user=>user.isGM || user.id===game.user.id || actor.testUserPermission(user,"OWNER")).map(user=>user.id),

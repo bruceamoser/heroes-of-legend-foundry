@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You put your armored shoulder behind your weapon and walk straight into the press of steel.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>Self.</dd></div><div><dt>Duration</dt><dd>Movement is immediate; Stability lasts until your next turn.</dd></div><div><dt>Equipment / acquisition</dt><dd>Requires worn armor and a melee weapon; grants neither.</dd></div><div><dt>Limits</dt><dd>Repeatable; pay the action and any stated costs each use.</dd></div><div><dt>Type</dt><dd>Skill / Movement / Defense</dd></div></dl><div class=\"hol-reference-rules\"><p>Move up to 3 squares without provoking. While wearing armor and holding a melee weapon, gain Stability 3 until the start of your next turn. Movement must follow a legal path and end in a free supported square. This grants no attack.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/cards/ironbound-advance.md\" target=\"_blank\" rel=\"noopener\">design/cards/ironbound-advance.md</a> at <code>bdfd18ed535fbd0e1892b9344444abf6da644809</code>.</p></section>",
     "activity": {
-      "action": "main",
+      "action": "maneuver",
       "rollMode": "none",
       "attribute": "brawn",
       "defenseAttribute": "agility"

@@ -48,11 +48,17 @@ test("observer navigation changes local pane and accessible current tab without 
 test("favorite melee Use selects the exact embedded weapon through owned Basic Melee",async()=>{
   const f=await fixture();const weapon={id:"weapon",uuid:"Actor.hero.Item.weapon",type:"equipment",system:{catalogId:"item-ordinary-melee-weapon"}};
   const ability={type:"ability",getFlag:()=>"ability-basic-melee"};f.actor.items=[weapon,ability];f.actor.items.get=(id)=>f.actor.items.find((item)=>item.id===id);
-  await f.Sheet.useItem.call(f.sheet,null,{closest:()=>({dataset:{itemId:"weapon"}})});
+  await f.Sheet.useItem.call(f.sheet,null,{dataset:{},closest:()=>({dataset:{itemId:"weapon"}})});
   assert.equal(f.uses[0],ability);assert.equal(f.uses[1],weapon.uuid);assert.equal(f.errors.length,0);
 });
 test("favorite potion Use retains its exact bottle identity",async()=>{
   const f=await fixture();const bottle={id:"bottle",uuid:"Actor.hero.Item.bottle",type:"equipment",system:{catalogId:"potion"}};f.actor.items.get=()=>bottle;
-  await f.Sheet.useItem.call(f.sheet,null,{closest:()=>({dataset:{itemId:"bottle"}})});
+  await f.Sheet.useItem.call(f.sheet,null,{dataset:{},closest:()=>({dataset:{itemId:"bottle"}})});
+  assert.equal(f.potions[0][0],bottle);assert.equal(f.potions[0][1].bottleItemUuid,bottle.uuid);assert.equal(f.uses.length,0);
+});
+test("contextual favorite potion action uses its source bottle rather than the linked ability row",async()=>{
+  const f=await fixture();const bottle={id:"bottle",uuid:"Actor.hero.Item.bottle",type:"equipment",system:{catalogId:"potion"}},ability={id:"action",type:"ability"};
+  f.actor.items.get=id=>id==="bottle"?bottle:ability;
+  await f.Sheet.useItem.call(f.sheet,null,{dataset:{useItemId:"bottle",supplyUse:"true"},closest:()=>({dataset:{itemId:"action"}})});
   assert.equal(f.potions[0][0],bottle);assert.equal(f.potions[0][1].bottleItemUuid,bottle.uuid);assert.equal(f.uses.length,0);
 });

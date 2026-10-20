@@ -309,7 +309,7 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
   }
   static async cancelTurn(event, target) {
     try {
-      const result = await foundry.applications.api.DialogV2.input({
+      const result = await foundry.applications.api.DialogV2.input({classes: ["heroes-of-legend", "hol-native-dialog"],
         window: { title: "Cancel unapplied turn change" },
         content: '<label>Note (optional)<input name="reason"></label>',
         ok: { label: "Record cancellation" },
@@ -342,7 +342,7 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
   }
   static async abandonDefense(event, target) {
     try {
-      const choice = await foundry.applications.api.DialogV2.input({
+      const choice = await foundry.applications.api.DialogV2.input({classes: ["heroes-of-legend", "hol-native-dialog"],
         window: { title: "Abandon unresolved defense" },
         content:
           '<p>No saved roll may exist. This preserves the attempt without rerolling. An optional note can record table context.</p><label>Note (optional)<input name="reason"></label>',
@@ -395,7 +395,7 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
     try {
       if (!isCreationAuthority())
         throw new Error("Enable this coordinator first.");
-      const choice = await foundry.applications.api.DialogV2.input({
+      const choice = await foundry.applications.api.DialogV2.input({classes: ["heroes-of-legend", "hol-native-dialog"],
         window: { title: "Recover retained Basic Melee dice" },
         content:
           '<p>Do not roll again. Enter the three dice retained after Boons/Banes.</p><label>Retained d6 faces<input name="retained" required placeholder="Example: 3 5 6"></label><label>Note (optional)<input name="reason"></label>',
@@ -419,7 +419,7 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
     try {
       if (!isCreationAuthority())
         throw new Error("Enable this coordinator first.");
-      const choice = await foundry.applications.api.DialogV2.input({
+      const choice = await foundry.applications.api.DialogV2.input({classes: ["heroes-of-legend", "hol-native-dialog"],
         window: { title: "Acknowledge missing Basic Melee presentation" },
         content:
           '<p>This records the missing presentation in the durable receipt and clears this attack’s pending action reservation. It preserves the authoritative result and does not recreate the message or roll again.</p><label>Note (optional)<input name="reason"></label>',
@@ -466,7 +466,7 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
         ];
       if (!child || child.phase !== "rolling")
         throw new Error("This potion supply check has no unknown dice.");
-      const result = await foundry.applications.api.DialogV2.input({
+      const result = await foundry.applications.api.DialogV2.input({classes: ["heroes-of-legend", "hol-native-dialog"],
         window: { title: "Recover observed potion supply face" },
         content: `<p>The dice may have rolled without a saved result. Enter the face that was seen; no new roll will occur.</p><label>Observed d${child.target.inventoryDie} face<input name="retainedFace" type="number" min="1" max="${child.target.inventoryDie}" step="1" required></label><label>Optional note<input name="reason"></label>`,
         ok: { label: "Record observed face" },
@@ -504,7 +504,7 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
               `<option value="${choice}">${labels[choice] ?? choice}</option>`,
           )
           .join("");
-      const result = await foundry.applications.api.DialogV2.input({
+      const result = await foundry.applications.api.DialogV2.input({classes: ["heroes-of-legend", "hol-native-dialog"],
         window: { title: "Reconcile changed potion source" },
         content:
           `<p>Healing may already be applied. Choose only from the reconciliation options retained by this operation.</p><label>Disposition<select name="choice">${options}</select></label><label>Optional note<input name="reason"></label>`,

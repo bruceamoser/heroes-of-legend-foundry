@@ -1,62 +1,20 @@
+import { selectedDefender } from "../services/defender-selection.mjs";
 import { promptDefenseRoll } from "./attribute-roll.mjs";
 const ID = "heroes-of-legend";
-export async function chooseDefender(messageId, { forceChoice = false } = {}) {
+export async function chooseDefender(messageId) {
   const message = game.messages.get(messageId),
     attack = message?.getFlag(ID, "attackCard");
   if (!message?.author?.isGM || !attack || !message.isContentVisible)
     throw new Error("This attack card is unavailable.");
-  const entries = new Map();
-  for (const uuid of attack.suggestedDefenderTokenUuids) {
-    const token = await fromUuid(uuid);
-    if (token?.actor && (!token.hidden || game.user.isGM))
-      entries.set(uuid, { uuid, name: token.name, suggested: true });
-  }
-  const suggested = [...entries.values()];
-  if (suggested.length === 1 && !forceChoice)
-    return open(suggested[0].uuid, messageId);
-  for (const token of game.scenes.viewed?.tokens ?? [])
-    if (
-      token.actor &&
-      (!token.hidden || game.user.isGM) &&
-      !entries.has(token.uuid)
-    )
-      entries.set(token.uuid, { uuid: token.uuid, name: token.name });
-  for (const actor of game.actors)
-    if (actor.testUserPermission(game.user, "OBSERVER"))
-      entries.set(actor.uuid, { uuid: actor.uuid, name: actor.name });
-  const content = await foundry.applications.handlebars.renderTemplate(
-    "systems/heroes-of-legend/templates/defender-choice.hbs",
-    {
-      entries: [...entries.values()],
-      missing: attack.suggestedDefenderTokenUuids.length - suggested.length,
-    },
-  );
-  const choice = await foundry.applications.api.DialogV2.input({
-    window: { title: "Choose defender" },
-    classes: ["heroes-of-legend", "hol-defender-choice"],
-    position: { width: 500 },
-    content,
-    ok: { label: "Prepare defense" },
+  const { actor, tokenUuid } = selectedDefender({
+    isGM: game.user.isGM,
+    controlled: canvas.tokens?.controlled ?? [],
+    character: game.user.character,
+    tokens: [...(game.scenes.viewed?.tokens ?? [])],
   });
-  if (!choice) return;
-  return open(choice.additionalUuid?.trim() || choice.defenderUuid, messageId);
-}
-async function open(uuid, messageId) {
-  const document =
-    typeof uuid === "string" && uuid ? await fromUuid(uuid) : null;
-  const actor =
-    document?.documentName === "Token"
-      ? document.actor
-      : document?.documentName === "Actor"
-        ? document
-        : null;
-  if (!actor)
-    throw new Error(
-      "Choose an available defender; this entry may have been deleted.",
-    );
-  return promptDefenseRoll(actor, game.messages.get(messageId).getFlag(ID, "attackCard").attributeKey, {
+  return promptDefenseRoll(actor, attack.attributeKey, {
     attackMessageId: messageId,
-    defenderTokenUuid: document.documentName === "Token" ? document.uuid : null,
+    defenderTokenUuid: tokenUuid,
   });
 }
 export function renderAttackCard(message, element) {
@@ -75,5 +33,5 @@ export function renderAttackCard(message, element) {
     chooseDefender(message.id).catch((e) => ui.notifications.error(e.message)),
   );
   const card = element.querySelector(".hol-attack-card");
-  card?.append(button);
+  (card?.querySelector(".hol-chat-footer") ?? card)?.append(button);
 }

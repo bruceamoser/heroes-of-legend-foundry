@@ -1,3 +1,4 @@
+import { ensureAuthorityReady } from "./authority.mjs";
 import { planSimpleAbility } from "../rules/one-dp-play.mjs";
 import { assertNoPendingActorPotion } from "./turn-lock.mjs";
 import { abilityDefinition } from "../rules/ability-definitions.mjs";
@@ -80,8 +81,6 @@ export async function requestAbility(
   const definition = itemAbilityDefinition(item);
   if (!definition)
     throw new Error("This ability has no reviewed action handler yet.");
-  if (!game.settings.get(ID, "creationAuthorityClient"))
-    throw new Error("Enable the GM automation coordinator first.");
   if (isShieldAbility(definition) && typeof attackMessageId !== "string")
     throw new Error(
       "Shield Block must be activated before a blockable incoming defense.",
@@ -112,6 +111,7 @@ export async function requestAbility(
       user.id === game.user.id ||
       actor.testUserPermission(user, "OWNER"),
   );
+  await ensureAuthorityReady();
   return ChatMessage.create({
     content: `${definition.name} requested.`,
     whisper: recipients.map((user) => user.id),

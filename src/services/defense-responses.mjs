@@ -1,10 +1,12 @@
 import {
   enqueueCharacterOperation,
+  ensureAuthorityReady,
   isCreationAuthority,
   writeAuthorityDocument,
 } from "./authority.mjs";
 import { rollBasis, prepareRoll } from "./roll-preparation.mjs";
 import { evaluatePreparedRoll } from "./roll.mjs";
+import { settleDefenseDamage } from "./damage.mjs";
 const ID = "heroes-of-legend";
 export async function defenseSignature(request) {
   const digest = await crypto.subtle.digest(
@@ -36,8 +38,7 @@ export function defenseResponses(message) {
   return rows;
 }
 export async function requestDefense(actor, basis, draft) {
-  if (!game.settings.get(ID, "creationAuthorityClient"))
-    throw new Error("Enable the GM automation coordinator first.");
+  await ensureAuthorityReady();
   prepareRoll(basis, draft);
   return ChatMessage.create(
     ChatMessage.applyMode({
@@ -160,6 +161,10 @@ async function apply(id) {
       request.draft,
       { rollerId: message.author.id },
     );
+    // The author owns their ChatMessage. Bind the coordinator's exact result on
+    // the GM-owned attack before exposing an editable saved result.
+    record.resultSignature = await defenseSignature(snapshot);
+    await writeAuthorityDocument(attack, { [`flags.${ID}.defenseResponses`]: responses });
     await writeAuthorityDocument(message, {
       content: "Defense rolled. The DA can review and apply damage.",
       rolls: [roll],
@@ -179,7 +184,24 @@ async function apply(id) {
     throw new Error(
       "This attempt may have rolled without a saved result. The DA must review and abandon it explicitly; retry will not reroll.",
     );
+  if (!record.resultSignature || record.resultSignature !== await defenseSignature(saved))
+    throw new Error("The saved defense result is unverified or changed. The DA must reconcile this attempt; retry will not reroll.");
   record.status = "resolved";
+  // The validated saved dice may be resumed without rerolling after any later failure.
+  await writeAuthorityDocument(attack, { [`flags.${ID}.defenseResponses`]: responses });
+  if (saved.attackOutcome?.resolution !== "reference") {
+    const damage = await settleDefenseDamage(message);
+    await writeAuthorityDocument(message, {
+      content: `Damage applied: ${damage.event.total}; HP ${damage.before} → ${damage.after}.${damage.wound ? " A wound is awaiting resolution." : ""}`,
+      [`flags.${ID}.defenseDamage`]: damage,
+      [`flags.${ID}.defenseStatus`]: "resolved",
+    });
+  } else {
+    await writeAuthorityDocument(message, {
+      content: "Defense rolled. Resolve the printed attack effects at the table.",
+      [`flags.${ID}.defenseStatus`]: "resolved",
+    });
+  }
   await writeAuthorityDocument(attack, {
     [`flags.${ID}.defenseResponses`]: responses,
     [`flags.${ID}.operationReceipts.${id}`]: {

@@ -10,6 +10,10 @@ test("owned reviewed ability entry selects its participant without requiring the
   const state = { current: "other", revision: 5, budgets: { hero: { remaining: { maneuver: 0 } } } };
   const combat = { uuid: "Combat.encounter", combatants: [participant], getFlag: (_, key) => key === "encounter" ? state : null };
   globalThis.game = { user: { id: "owner", isGM: false }, users: [{ id: "owner" }, { id: "gm", isGM: true }], settings: { get: () => "coordinator" }, combats: { contents: [combat] } };
+  game.users ??= [];
+  game.users.activeGM = {id:"coordinator-gm",isSelf:false};
+  game.world = {lastPlayed:"launch"};
+  game.settings = {get:(_id,key)=>key === "authorityMeta" ? {clientId:"coordinator",userId:"coordinator-gm",launch:"launch",leaseVersion:1} : key === "authorityLease" ? {clientId:"coordinator",expires:Date.now()+60000} : "coordinator"};
   globalThis.ChatMessage = { create: async data => data };
   const definition = ABILITY_DEFINITIONS["ability-defend"];
   const item = { uuid: "Actor.hero.Item.defend", actor, getFlag: (_, key) => key === "catalogId" ? definition.id : definition.source };
@@ -26,6 +30,10 @@ test("DA NPC attack entry uses unique roster identity rather than selected turn"
   const state = { current: "other", revision: 8, budgets: { creature: { remaining: { main: 0 } } } };
   const combat = { uuid: "Combat.encounter", combatants: [{ id: "creature", actor }], getFlag: () => state };
   globalThis.game = { user: { isGM: true, targets: new Set() }, settings: { get: () => "coordinator" }, combats: { contents: [combat] } };
+  game.users ??= [];
+  game.users.activeGM = {id:"coordinator-gm",isSelf:false};
+  game.world = {lastPlayed:"launch"};
+  game.settings = {get:(_id,key)=>key === "authorityMeta" ? {clientId:"coordinator",userId:"coordinator-gm",launch:"launch",leaseVersion:1} : key === "authorityLease" ? {clientId:"coordinator",expires:Date.now()+60000} : "coordinator"};
   globalThis.ChatMessage = { create: async data => data };
   const message = await declareNpcMelee(actor);
   assert.equal(message.flags["heroes-of-legend"].npcAttackRequest.participantId, "creature");

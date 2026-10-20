@@ -74,7 +74,8 @@ them; a converted save starts as a separate copy.
 Native JSON import continues to require the matching source edition and a new
 level-1 Actor. Review/export an older file through the workshop first. Existing
 native creation drafts need review against the new catalog before commitment.
-Later-level web plans are still not a native advancement-import feature.
+The later #221 correction adds higher-level web plan import into new native
+characters, including the existing advancement purchases and acquisition grants.
 
 ## Validation — October 18, 2026
 

@@ -1,0 +1,40 @@
+/* Foundry chrome shares the workshop palette; document content keeps its own contrast. */
+body.hol-theme {
+  --hol-forest: #15221c; --hol-forest-soft: #24382e; --hol-gold: #b39253;
+  --hol-paper: #f7f3e9; --hol-ivory: #f1e6ce; --hol-line: #d6cdb9;
+  --color-warm-1: #e3d4ae; --color-warm-2: #b39253; --color-warm-3: #92723f;
+  --color-cool-3: #536557; --color-cool-4: #24382e; --color-cool-5: #15221c;
+}
+body.hol-theme :is(#sidebar, #players, #hotbar, #scene-navigation, #ui-left) {
+  --color-text-primary: #f1e6ce; --color-text-secondary: #ddd2bb;
+  --color-text-emphatic: #fff9eb; --color-text-subtle: #c7bea8;
+  --color-border: #716247; --color-border-highlight: #b39253;
+  --background: #15221cf2; --color-cool-5-90: #15221cf2;
+  --color-cool-5-75: #15221cdd;
+}
+body.hol-theme :is(#sidebar, #players, #hotbar) {background-color: #15221cf2; border-color: #716247;}
+body.hol-theme :is(#sidebar-tabs, #sidebar .directory-header, #sidebar .directory-footer) {background: #15221c;}
+body.hol-theme :is(#sidebar .directory-header, #sidebar .directory-footer) {padding: 8px;}
+body.hol-theme #sidebar :is(.folder-header, .directory-item.entry-name) {border-color: #716247;}
+body.hol-theme #sidebar :is(button, input, select) {border-color: #716247;}
+body.hol-theme #sidebar :is(h2, h3, .directory-header h1) {font-family: "HOL Cinzel", serif;}
+body.hol-theme :is(.window-app, .application) > .window-header {background: #15221c; color: #f1e6ce; border-bottom: 1px solid #b39253;}
+body.hol-theme :is(.window-app, .application) > .window-header .window-title {font-family: "HOL Cinzel", serif; font-size: 14px; letter-spacing: .03em;}
+body.hol-theme :is(.window-app, .application) > .window-header button {color: #f1e6ce;}
+body.hol-theme #chat-log .chat-message {background: #f7f3e9; color: #28251c; border: 1px solid #b39253; border-radius: 5px;}
+body.hol-theme #chat-log .chat-message :is(.message-header, .message-sender, .message-metadata) {color: #6a6457;}
+body.hol-theme #chat-log .chat-message :is(a, button) {--color-text-primary: #28251c; --color-text-secondary: #6a6457;}
+body.hol-theme #pause figcaption {font-family: "HOL Cinzel", serif; color: #f1e6ce;}
+.hol-landing-setup .window-content {padding: 0; background: #15221c; color: #f1e6ce;}
+.hol-landing-preview {display: grid; grid-template-columns: 42% 1fr; align-items: center; font: 15px/1.55 system-ui, sans-serif;}
+.hol-landing-preview > img {width: 100%; height: 100%; object-fit: cover; border: 0;}
+.hol-landing-preview > div {padding: 24px;}
+.hol-landing-preview .hol-landing-crest {display: block; width: 80px; height: 80px; object-fit: contain; margin: 0 auto 12px; border: 0;}
+.hol-landing-preview h1 {font: 27px "HOL Cinzel", serif; color: #f1e6ce; border: 0;}
+.hol-landing-preview button {background: #b39253; border: 1px solid #d1b77d; color: #15221c; font-weight: 700;}
+#hol-landing-navigation {position: fixed; z-index: 20; bottom: 115px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; padding: 10px; border: 1px solid #b39253; border-radius: 6px; background: #15221cee; box-shadow: 0 5px 25px #0008; max-width: calc(100vw - 400px); flex-wrap: wrap; justify-content: center;}
+#hol-landing-navigation button {width: auto; min-width: 100px; padding: 6px 14px; border: 1px solid #b39253; background: #24382e; color: #f1e6ce; font: 15px "HOL Cinzel", serif;}
+#hol-landing-navigation button:hover {background: #b39253; color: #15221c;}
+#hol-landing-navigation button:focus-visible {outline: 2px solid #f1e6ce; outline-offset: 3px;}
+@media (max-width: 900px) {#hol-landing-navigation {left: 20px; right: 20px; transform: none; max-width: none; bottom: 100px;}}
+body.hol-theme #pause img {content: url("../assets/marks/crest.webp"); object-fit: contain; opacity: .8;}

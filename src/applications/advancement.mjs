@@ -1,3 +1,6 @@
+import {bindWizardHp,wizardGrit,wizardWounds,wizardDeath} from "./wizard-play.mjs";
+import { workshopNavIcon } from "../sheets/workshop-icons.mjs";
+import { ATTRIBUTES } from "../rules/character.mjs";
 import { bindLearningMarket } from "./learning-market.mjs";
 import { equipmentEligibility, isUniversalAbility } from "../rules/equipment-eligibility.mjs";
 import { additionalLanguageOptions } from "../rules/languages.mjs";
@@ -13,6 +16,8 @@ import { loadCatalogs } from "../services/catalog.mjs";
 import {
   currentDevelopment,
   requestDevelopment,
+  waitForDevelopment,
+  waitForDevelopmentOperation,
 } from "../services/advancement.mjs";
 import { updateOwnedDocument } from "../services/documents.mjs";
 import { advancementPreview } from "../rules/advancement.mjs";
@@ -30,17 +35,22 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
     tag: "form",
     classes: ["heroes-of-legend", "hol-creation", "hol-advancement"],
     window: { title: "Develop your Hero", resizable: true },
-    position: { width: 940, height: 800 },
+    position: { width: 940, height: 940 },
     form: { closeOnSubmit: false, handler: AdvancementWizard.save },
     actions: {
+      wizardGrit,wizardWounds,wizardDeath,
       bindAuthority: AdvancementWizard.bindAuthority,
       save: AdvancementWizard.save,
       refresh: AdvancementWizard.refresh,
       add: AdvancementWizard.add,
       remove: AdvancementWizard.remove,
+      chooseSignature: AdvancementWizard.chooseSignature,
       award: AdvancementWizard.award,
       safePlace: AdvancementWizard.safePlace,
       commit: AdvancementWizard.commit,
+      referenceChoice: AdvancementWizard.referenceChoice,
+      closeReference: AdvancementWizard.closeReference,
+      returnSheet: AdvancementWizard.returnSheet,
     },
   };
   static PARTS = {
@@ -52,6 +62,7 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
   constructor(actor, options = {}) {
     super(options);
     this.actor = actor;
+    this.committedPlay = true;
     const state = currentDevelopment(actor),
       saved = actor.getFlag(ID, "advancementDraft"),
       resume = saved && !state.commitReceipts?.[saved.id];
@@ -128,8 +139,21 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
             selected: this.draft.acquisitions[a.id]?.recipes?.includes(r.id),
           })),
       }));
+    const {actorMovement}=await import("../services/turn-budget.mjs");
+    const {actorContributions}=await import("../services/conditions.mjs");
+    const {conditionSummary}=await import("../rules/conditions.mjs");
+    const {damageBasis}=await import("../services/damage.mjs");
+    const movement=actorMovement(this.actor);
+    movement.speed=Math.max(0,movement.speed-conditionSummary(actorContributions(this.actor)).slowed.rating);
+    movement.speedReduced=movement.speed<movement.unencumbered;
+    const armorDr=damageBasis(this.actor).passiveDefenses.resistances.find(resistance=>resistance.type==="physical")?.value??0;
     return {
       actor: this.actor,
+      movement,armorDr,woundCount:Object.keys(this.actor.getFlag(ID,"wounds")??{}).length,
+      developmentIcon: workshopNavIcon("Development"),
+      learningIcon: workshopNavIcon("Abilities"),
+      headerAttributes: ATTRIBUTES.map(key => ({name:game.i18n.localize(`HOL.Attributes.${key}`),value:this.actor.system.attributes[key].effective > 0 ? `+${this.actor.system.attributes[key].effective}` : this.actor.system.attributes[key].effective})),
+      identityLine: [current.creation?.ancestryId,current.creation?.culture?.id,current.creation?.background?.id,current.classId].map(id=>get(id)?.name).filter(Boolean).join(" · "),
       current,
       isGM: game.user.isGM,
       authorityBound: Boolean(game.settings.get(ID, "creationAuthorityClient")),
@@ -137,28 +161,34 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
       stale: this.baseRevision !== (current.revision ?? 0),
       canCommit:
         this.preview.valid &&
-        this.baseRevision === (current.revision ?? 0) &&
-        (this.draft.purchases.length > 0 ||
-          (current.pendingSignatures ?? []).length > 0),
+        this.baseRevision === (current.revision ?? 0),
       dp: state.dp,
       maximumHp: this.actor.system.health.baseMax + this.preview.maximumHpDelta,
       grit: state.gritGranted,
+      gritAvailable: Math.max(0,state.gritGranted-state.gritSpent),
       spent: state.gritSpent,
       signatures: (current.pendingSignatures ?? []).map((level) => ({
         level,
         options: (get(current.classId)?.signatures[level] ?? []).map((id) => ({
           id,
-          name: get(id).name,
+          name: get(id)?.name ?? id,
+          flavor: get(id)?.reference?.flavor?.[0] ?? "",
           selected: this.draft.signatures[level] === id,
           disabled: current.abilities.includes(id),
         })),
       })),
       acquisitions,
       requiredChoices: acquisitions.filter((a) => this.preview.errors.some((e) => e.id === a.id)),
-      currentBuild: state.abilities.map((id) => ({id, name: get(id)?.name ?? id, acquisition: acquisitions.find((a) => a.id === id && this.preview.errors.some((e) => e.code === "acquisition" && e.id === id)), index: this.draft.purchases.findIndex((p) => p.id === id), removable: this.draft.purchases.some((p) => p.id === id)})),
+      currentBuild: state.abilities.map(id=>{
+        const index=this.draft.purchases.findIndex(p=>p.id===id),locked=current.abilities.includes(id);
+        let source=locked?"Earlier levels":index>=0?"Learned":"Granted";
+        for(const kind of ["culture","background"]){const origin=get(current.creation?.[kind]?.id);if(origin?.pairs?.[current.creation?.[kind]?.pair]?.abilityId===id)source=origin.name;}
+        if(id===current.creation?.signatureId)source=get(current.classId)?.name??source;
+        return {id,name:get(id)?.name??id,grantSource:source,locked,acquisition:this.preview.errors.some(error=>error.id===id)?acquisitions.find(a=>a.id===id):null,index,removable:index>=0};
+      }),
       disciplineFilters: choices.filter((r) => r.kind === "discipline"),
       disciplinePurchases: this.draft.purchases.map((p, index) => ({...p,index,name: get(p.id)?.name ?? p.id})).filter((p) => get(p.id)?.kind === "discipline"),
-      knownRanks: Object.entries(state.ranks ?? {}).map(([id, rank]) => ({name: get(id)?.name ?? id, rank})),
+      knownRanks: Object.entries(state.ranks ?? {}).map(([id, rank]) => ({name: get(id)?.name ?? id, rank,mark:`systems/heroes-of-legend/assets/marks/${id.replace(/^discipline-/,"")}.webp`})),
       purchases: this.draft.purchases.map((p, index) => ({
         ...p,
         index,
@@ -175,7 +205,7 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
           `${get(e.id)?.name ?? e.id}: ${(e.reasons ?? []).map((r) => r.text).join(" ")}`,
       ),
       learning: eligibleFirst(
-        choices.filter((r) => ["ability", "discipline"].includes(r.kind)),
+        choices.filter((r) => r.kind === "discipline" || (r.kind === "ability" && !r.universal)),
         (r) => {
           const recipeIds =
             r.purchasePolicy === "new-recipe"
@@ -195,7 +225,7 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
       universal: isUniversalAbility(r.choice),
         automationStatus: abilityReferenceStatus(r.choice.id, r.choice.source),
         reasons: r.reasons.map((e) => e.text).join(" "),
-        source: `https://github.com/bruceamoser/heroes-of-legend/blob/${commit}/${r.choice.source.path}`,
+        source: r.choice.source?.path ? `https://github.com/bruceamoser/heroes-of-legend/blob/${commit}/${r.choice.source.path}` : "",
         recipeStudy: r.choice.purchasePolicy === "new-recipe",
         recipeSelections: [0, 1].map((slot) => ({
           label: slot === 0 ? "First recipe" : "Second recipe",
@@ -211,7 +241,7 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
   capture() {
     const f = new FormData(this.element);
     for (const field of this.element.querySelectorAll("[data-signature]"))
-      this.draft.signatures[field.dataset.signature] = field.value;
+      if (field.type !== "radio" || field.checked) this.draft.signatures[field.dataset.signature] = field.value;
     for (const field of this.element.querySelectorAll("[data-acquisition]")) {
       const id = field.dataset.acquisition,
         s = (this.draft.acquisitions[id] ??= {});
@@ -249,7 +279,13 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
     this.revision = revision;
   }
   async act(fn) {
-    if (this.busy) return;
+    if (this.committing) return;
+    // Blur/change fires before a navigation click. Keep that click in order
+    // instead of dropping it while the automatic draft save is in flight.
+    if (this.busy) {
+      this.pendingActions ??= [];
+      return new Promise(resolve => this.pendingActions.push({fn,resolve}));
+    }
     this.busy = true;
     try {
       this.capture();
@@ -260,8 +296,33 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
       ui.notifications.error(e.message);
     } finally {
       this.busy = false;
+      const next = this.pendingActions?.shift();
+      if (next) void this.act(next.fn).finally(next.resolve);
+      else for (const resolve of this.idleWaiters?.splice(0) ?? []) resolve();
     }
   }
+  static async returnSheet() {
+    await this.act(async()=>{});
+    await this.close();
+    await this.actor.sheet.render({force:true});
+  }
+  static async referenceChoice(event, target) {
+    const record = this.catalogs.choices.find(record => record.id === target.dataset.id) ?? this.catalogs.inventory.equipment.find(record => record.id === target.dataset.id) ?? this.catalogs.inventory.recipes.find(record => record.id === target.dataset.id);
+    if (!record?.source?.path) return;
+    try {
+      const panel = this.element.querySelector("[data-creation-reference]");
+      this.referenceMarket = this.element.querySelector("dialog[open]");
+      this.referenceMarket?.close();
+      panel.hidden = false;
+      const {renderInlineRule} = await import("../services/journals.mjs");
+      const content=panel.querySelector("[data-rule-content]");
+      await renderInlineRule(record.source.path,content);
+      const close=[...content.querySelectorAll(":scope > header button")].find(button=>button.textContent === "Close rules");
+      close?.addEventListener("click",()=>{this.referenceMarket?.showModal();this.referenceMarket=null;});
+      panel.querySelector("[data-action=closeReference]").focus();
+    } catch(error) { ui.notifications.error(error.message); }
+  }
+  static closeReference() { this.element.querySelector("[data-creation-reference]").hidden = true; this.referenceMarket?.showModal(); this.referenceMarket = null; }
   static async bindAuthority() {
     try {
       await bindCreationAuthority();
@@ -318,46 +379,56 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
       this.draft.purchases.splice(Number(target.dataset.index), 1);
     });
   }
+  static async chooseSignature(event,target) {
+    await this.act(async()=>{this.draft.signatures[target.dataset.level]=target.dataset.id;});
+  }
   static async award() {
     try {
-      await requestDevelopment(this.actor, "award", {
+      const request = await requestDevelopment(this.actor, "award", {
         level: Number(this.element.querySelector("[name=newLevel]").value),
       });
-      ui.notifications.info(
-        "Milestone requested. Refresh the ledger after the DA processes it.",
-      );
+      await waitForDevelopmentOperation(this.actor,request.id);
+      await AdvancementWizard.refresh.call(this);
     } catch (e) {
       ui.notifications.error(e.message);
     }
   }
   static async safePlace() {
     try {
-      await requestDevelopment(this.actor, "safePlace", {
+      const request = await requestDevelopment(this.actor, "safePlace", {
         approved: this.element.querySelector("[name=safePlace]").checked,
       });
-      ui.notifications.info(
-        "Safe-place decision requested. Refresh the ledger after it is processed.",
-      );
+      await waitForDevelopmentOperation(this.actor,request.id);
+      await AdvancementWizard.refresh.call(this);
     } catch (e) {
       ui.notifications.error(e.message);
     }
   }
   static async commit() {
-    if (this.busy) return;
+    if (this.committing) return;
+    if (this.busy) await new Promise(resolve => {this.idleWaiters ??= [];this.idleWaiters.push(resolve);});
+    if (this.committing) return;
+    if(this.preview?.valid && !this.draft.purchases.length && !(currentDevelopment(this.actor).pendingSignatures??[]).length) return AdvancementWizard.returnSheet.call(this);
+    this.committing = true;
     this.busy = true;
+    if(this.element){this.element.inert=true;this.element.setAttribute("aria-busy","true");}
     try {
       this.capture();
       await this.persist();
-      await requestDevelopment(this.actor, "commitDraft", {
+      const request = await requestDevelopment(this.actor, "commitDraft", {
         draftId: this.draftId,
         revision: this.revision,
       });
+      await waitForDevelopment(this.actor, request.id, this.draftId);
       await this.close();
       await this.actor.sheet.render({ force: true });
     } catch (e) {
       ui.notifications.error(e.message);
     } finally {
+      this.committing = false;
+      if(this.element){this.element.inert=false;this.element.removeAttribute("aria-busy");}
       this.busy = false;
+      for (const resolve of this.idleWaiters?.splice(0) ?? []) resolve();
     }
   }
   async dropAbility(event) {
@@ -404,11 +475,13 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
   }
   _onRender(context, options) {
     super._onRender(context, options);
+    bindWizardHp(this);
     bindLearningMarket(this);
     for (const group of this.element.querySelectorAll("[data-recipe-study]"))
       group.addEventListener("change", () => this.syncRecipeStudySelects());
     this.syncRecipeStudySelects();
     bindBuilderDrop(this);
+    for (const input of this.element.querySelectorAll("[data-acquisition] input, [data-acquisition] select, [data-signature]")) input.addEventListener("change", () => this.act(async () => {}));
 
   }
 }

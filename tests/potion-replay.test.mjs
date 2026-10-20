@@ -65,6 +65,7 @@ test("settled potion replay uses durable receipts after chat deletion without re
   await module.link(async (specifier) => {
     // Replace only the coordinator boundary; execute the actual service and rules.
     const exports = specifier === "./authority.mjs" ? {
+      ensureAuthorityReady: async () => {},
       enqueueCharacterOperation: async (run, options) => {
         queued++;
         assert.equal(options.targetUuid, combat.uuid);

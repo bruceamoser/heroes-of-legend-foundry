@@ -1,6 +1,6 @@
 {
   "name": "heroes-of-legend-foundry",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "private": true,
   "type": "module",
   "engines": {
@@ -94,7 +94,12 @@
     "test:tools-preview": "node scripts/check-tools-preview.mjs",
     "import:web-journals": "node scripts/build-web-journals.mjs",
     "test:native-design": "node scripts/check-native-design.mjs",
-    "import:native-journals": "node scripts/build-native-journals.mjs"
+    "import:native-journals": "node scripts/build-native-journals.mjs",
+    "test:native-parity": "node scripts/check-native-parity.mjs",
+    "test:native-character-parity": "node scripts/check-native-character-parity.mjs",
+    "test:npc-chat-parity": "node scripts/check-npc-chat-parity.mjs",
+    "test:landing": "node scripts/check-landing.mjs",
+    "test:defense-selection": "node scripts/check-defense-selection.mjs"
   },
   "devDependencies": {
     "@foundryvtt/foundryvtt-cli": "3.0.5",

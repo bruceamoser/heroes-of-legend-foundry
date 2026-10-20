@@ -1,0 +1,189 @@
+/* Exact web/chat-cards.css at workshop.css's 14px root; scoped over legacy native rules. */
+.message-content .hol-chat-card {--forest:#15221c;--gold:#b39253;--paper:#f7f3e9;--ink:#28251c;--line:#d6cdb9;--muted:#6a6457;padding:0;}
+.message-content .hol-chat-card {
+  font:
+    11.06px/1.35 system-ui,
+    sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid #b7aa8b;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px #15221c14;
+}.message-content .hol-chat-card + .hol-chat-card {
+  margin-top: 8px;
+}.message-content .hol-chat-card .hol-chat-header {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 8px;
+  background: var(--forest);
+  color: var(--paper);
+  border-bottom: 2px solid var(--gold);
+}.message-content .hol-chat-card .hol-chat-header img {
+  width: 31px;
+  height: 35px;
+  object-fit: contain;
+  background: #e9e0cc;
+  border-radius: 2px;
+}.message-content .hol-chat-card .hol-chat-header > div {
+  min-width: 0;
+}.message-content .hol-chat-card .hol-chat-header small {
+  font-size: 9.1px;
+  color: #d4c7a9;
+}.message-content .hol-chat-card .hol-chat-header h3 {
+  font:
+    600 13.3px/1.2 "HOL Cinzel",
+    serif;
+  margin: 1px 0 0;
+  overflow-wrap: anywhere;
+}.message-content .hol-chat-card .hol-chat-bar {
+  display: flex;
+  gap: 4px 10px;
+  flex-wrap: wrap;
+  padding: 4px 8px;
+  background: #ece5d5;
+  border-bottom: 1px solid var(--line);
+  font-size: 9.38px;
+  color: #4c5143;
+}.message-content .hol-chat-card .hol-chat-resolution {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 7px;
+  padding: 7px 8px;
+}.message-content .hol-chat-card .hol-chat-dice {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}.message-content .hol-chat-card .hol-chat-die {
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 30px;
+  border: 1px solid var(--forest);
+  border-radius: 4px;
+  background: var(--forest);
+  color: var(--paper);
+  font:
+    600 16.8px/1 "HOL Garamond",
+    serif;
+}.message-content .hol-chat-card .hol-chat-die.discarded {
+  border: 1px dashed #9a9383;
+  background: #e6e0d4;
+  color: #756f62;
+  text-decoration: line-through;
+}.message-content .hol-chat-card .hol-chat-verdict {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  min-width: 60px;
+  color: var(--forest);
+}.message-content .hol-chat-card .hol-chat-verdict strong {
+  font:
+    600 25.2px/1 "HOL Garamond",
+    serif;
+}.message-content .hol-chat-card .hol-chat-verdict span {
+  font-size: 9.52px;
+  font-weight: 700;
+  white-space: nowrap;
+}.message-content .hol-chat-card .hol-chat-verdict.weak {
+  color: #8c4240;
+}.message-content .hol-chat-card .hol-chat-verdict.strong {
+  color: #3e6045;
+}.message-content .hol-chat-card .hol-chat-effect {
+  padding: 6px 8px;
+  border-block: 1px solid var(--line);
+  background: #eae1ca;
+  font-weight: 600;
+  font-size: 10.92px;
+}.message-content .hol-chat-card .hol-chat-description {
+  padding: 5px 8px 0;
+  font-size: 10.36px;
+}.message-content .hol-chat-card .hol-chat-outcomes {
+  width: calc(100% - 16px);
+  margin: 4px 8px;
+  table-layout: fixed;
+  font-size: 10.36px;
+}.message-content .hol-chat-card .hol-chat-outcomes caption {
+  text-align: left;
+  font-size: 9.1px;
+  color: var(--muted);
+}.message-content .hol-chat-card .hol-chat-outcomes th, .message-content .hol-chat-card .hol-chat-outcomes td {
+  padding: 3px 4px;
+  text-align: left;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+}.message-content .hol-chat-card .hol-chat-outcomes th {
+  font-size: 9.24px;
+}.message-content .hol-chat-card .hol-chat-natural {
+  padding: 4px 8px;
+  border-block: 1px solid #c9b582;
+  background: #e8d7ab;
+  color: #53421d;
+  font-size: 10.22px;
+  font-weight: 600;
+}.message-content .hol-chat-card .hol-chat-abilities {
+  padding: 4px 8px;
+  font-size: 9.8px;
+  color: var(--muted);
+}.message-content .hol-chat-card .hol-chat-targets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+  padding: 4px 8px;
+  font-size: 9.52px;
+}.message-content .hol-chat-card .hol-chat-targets small {
+  margin-right: 3px;
+}.message-content .hol-chat-card .hol-chat-targets span {
+  background: #ece5d5;
+  border: 1px solid var(--line);
+  padding: 1px 5px;
+  border-radius: 3px;
+}.message-content .hol-chat-card .hol-chat-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 4px 8px;
+  font-size: 9.38px;
+  color: var(--muted);
+}.message-content .hol-chat-card .hol-chat-footer button {
+  min-height: 25px;
+  font-size: 10.22px;
+  padding: 3px 10px;
+}.message-content .hol-chat-card .hol-chat-details {
+  border-top: 1px solid var(--line);
+  padding: 3px 8px;
+  font-size: 9.1px;
+  color: var(--muted);
+}.message-content .hol-chat-card .hol-chat-details summary {
+  cursor: pointer;
+}.message-content .hol-chat-card .hol-chat-details p {
+  margin: 3px 0;
+}.message-content .hol-chat-card .hol-chat-supply {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  font-size: 10.36px;
+}.message-content .hol-chat-card .hol-chat-resource-note {
+  padding: 0 8px;
+  margin: 3px 0;
+  font-size: 9.8px;
+  color: var(--muted);
+}
+
+.message-content .hol-chat-card .hol-chat-header {margin:0;}
+.message-content .hol-chat-card .hol-chat-header h3 {background:none;border:0;padding:0;color:#f7f3e9;}
+.message-content .hol-chat-card .hol-chat-dice {padding:0;}
+.message-content .hol-chat-card .hol-chat-footer button {width:auto;min-width:0;min-height:25px;font-size:10.22px;line-height:1.2;font-family:Arial,sans-serif;box-shadow:none;}
+.message-content .hol-chat-card[data-chat-kind="request"] .hol-defend-button {background:#15221c;color:#f7f3e9;border:1px solid #15221c;}
+.message-content .hol-chat-card.hol-roll-summary .hol-chat-footer button {background:transparent;color:#15221c;border:0;font-weight:600;}
+.message-content .hol-chat-card.hol-roll-summary p {margin:0;}
+.message-content .hol-chat-card .hol-chat-outcomes {border:0;background:transparent;}
+.message-content .hol-chat-card .hol-chat-outcomes thead {background:transparent;border:0;box-shadow:none;}
+.message-content .hol-chat-card .hol-chat-outcomes tr {background:transparent;}
+.message-content .hol-chat-card .hol-chat-outcomes th {border:0;border-bottom:1px solid #d6cdb9;text-transform:uppercase;letter-spacing:.04em;}
+.message-content .hol-chat-card .hol-chat-verdict {border:0;padding:0;margin:0;}

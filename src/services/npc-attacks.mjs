@@ -1,5 +1,7 @@
+import { ensureAuthorityReady } from "./authority.mjs";
 import { assertNoPendingActorPotion } from "./turn-lock.mjs";
 import { renderMarkdown } from "../sheets/creature-reference.mjs";
+import { numericCreatureAction } from "../rules/numeric-creature-actions.mjs";
 import { declareAction, continueAction } from "../rules/actions.mjs";
 import { actionConditions } from "./turn-budget.mjs";
 import {
@@ -17,8 +19,6 @@ export async function declareNpcMelee(actor, { blockable } = {}) {
     throw new Error("The DA declares this NPC creature attack.");
   if (blockable != null && typeof blockable !== "boolean")
     throw new Error("Invalid blockability hint.");
-  if (!game.settings.get(ID, "creationAuthorityClient"))
-    throw new Error("Enable the GM automation coordinator first.");
   const matches = game.combats.contents.flatMap((c) =>
     c.combatants
       .filter(
@@ -31,6 +31,7 @@ export async function declareNpcMelee(actor, { blockable } = {}) {
   if (matches.length !== 1)
     throw new Error("Place this creature in exactly one encounter first.");
   const { c, p } = matches[0];
+  await ensureAuthorityReady();
   return ChatMessage.create({
     content: "NPC Basic Melee declaration pending.",
     flags: {
@@ -55,6 +56,8 @@ export async function declareCreatureAction(actor, actionId) {
     (entry) => entry.id === actionId,
   );
   if (!action) throw new Error("This creature action is unavailable.");
+  const catalogId = actor.getFlag(ID, "catalogId"), sourceCommit = actor.getFlag(ID, "sourceCommit");
+  const numeric = numericCreatureAction(catalogId, sourceCommit, action);
   const encounters = game.combats.contents.filter((combat) =>
     combat.combatants.some(
       (participant) => participant.actor?.uuid === actor.uuid,
@@ -62,7 +65,10 @@ export async function declareCreatureAction(actor, actionId) {
   );
   const reference = {
     ...(encounters.length === 1 ? { combatId: encounters[0].id } : {}),
-    resolution: "reference",
+    resolution: numeric ? "numeric" : "reference",
+    ...(numeric ? { damage: numeric.damage, damageType: numeric.damageType,
+      numericSource: {catalogId, sourceCommit, action: structuredClone(action)} } : {
+      manualReason: "Specialty, mixed damage, unreviewed or edited source: resolve the printed effects at the table." }),
     actorUuid: actor.uuid,
     attackerName: actor.name,
     actionId: action.id,
@@ -90,6 +96,8 @@ export async function declareCreatureAction(actor, actionId) {
     "systems/heroes-of-legend/templates/creature-action-card.hbs",
     {
       ...reference,
+      automaticDamage: Boolean(numeric),
+      portrait: actor.img,
       categoryLabel: {
         main: "Main Action",
         maneuver: "Maneuver",
@@ -98,6 +106,7 @@ export async function declareCreatureAction(actor, actionId) {
       referenceHTML: renderMarkdown(reference.referenceMarkdown),
     },
   );
+  await ensureAuthorityReady();
   return ChatMessage.create({
     content,
     speaker: ChatMessage.getSpeaker({ actor }),
@@ -211,7 +220,7 @@ async function apply(id) {
   }
   const content = await foundry.applications.handlebars.renderTemplate(
     "systems/heroes-of-legend/templates/attack-card.hbs",
-    snapshot,
+    {...snapshot, portrait: (await fromUuid(request.actorUuid))?.img},
   );
   await message.update({ content, [`flags.${ID}.attackCard`]: snapshot });
   return { status: "complete", replay: Boolean(receipt?.applied) };

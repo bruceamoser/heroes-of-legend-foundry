@@ -5,7 +5,8 @@ const url = process.env.HOL_TEST_URL;
 if (
   !url ||
   !["localhost", "127.0.0.1"].includes(new URL(url).hostname) ||
-  process.env.HOL_TEST_ALLOW_WRITES !== "1"
+  process.env.HOL_TEST_ALLOW_WRITES !== "1" ||
+  process.env.HOL_TEST_ISOLATED_WORLD !== "1"
 )
   throw new Error("Use an authorized disposable local world.");
 const browser = await chromium.launch(),
@@ -73,6 +74,9 @@ try {
         await Actor.create({
           name: `Response defender ${i}`,
           type: "character",
+          system: { health: { value: 100, baseMax: 100 } },
+          flags: { "heroes-of-legend": { development: { creationSummary: { speedBase: 6, capacity: 10 } } } },
+          ownership: Object.fromEntries(users.map(user => [user.id, CONST.DOCUMENT_OWNERSHIP_LEVELS.OBSERVER])),
         }),
       );
     const attack = await ChatMessage.create({
@@ -93,16 +97,15 @@ try {
         },
       },
     });
-    const { bindCreationAuthority } = await import(
-      "/systems/heroes-of-legend/services/authority.mjs"
-    );
-    await bindCreationAuthority();
+    await users[0].update({character:actors[0].id});
+    await users[1].update({character:actors[1].id});
     return {
       users: users.map((u) => ({ id: u.id, name: u.name })),
       actors: actors.map((a) => a.id),
       attack: attack.id,
     };
   });
+  await gm.page.waitForFunction(() => game.settings.get("heroes-of-legend", "creationAuthorityClient") === game.socket.id);
   p1 = await join(f.users[0].name);
   p2 = await join(f.users[1].name);
   const race = await Promise.all([submit(p1, 0), submit(p2, 0)]);
@@ -146,12 +149,10 @@ try {
   assert(replay.replay);
   await p1.page.evaluate(() => { ui.sidebar.expand(); ui.sidebar.changeTab("chat", "primary"); });
   await p1.page.locator(`[data-message-id="${f.attack}"] .hol-defend-button`).filter({ visible: true }).first().click();
-  await p1.page.locator('.hol-defender-choice [name=additionalUuid]').fill(`Actor.${f.actors[0]}`);
-  await p1.page.locator('.hol-defender-choice').getByRole("button", { name: "Prepare defense", exact: true }).click();
   const dialog = p1.page.locator(".hol-roll-dialog");
   assert.equal(await dialog.getByRole("button", { name: "Roll", exact: true }).isEnabled(), true);
   assert.equal(await dialog.locator('[name="additionalAttempt"], [name="attemptReason"]').count(), 0);
-  await dialog.getByRole("slider", { name: "Boons or Banes", exact: true }).press("End");
+  await dialog.getByRole("slider", { name: "Banes / Boons", exact: true }).press("End");
   await dialog.getByRole("button", { name: "Roll", exact: true }).click();
   await gm.page.waitForFunction(
     (f) => game.messages.get(f.attack).getFlag("heroes-of-legend", "defenseResponses")
@@ -365,16 +366,20 @@ try {
     ),
     6,
   );
-  assert.deepEqual(
-    await gm.page.evaluate(
-      (f) => f.actors.map((id) => game.actors.get(id).system.health.value),
-      f,
-    ),
-    [12, 12, 12],
-  );
+  const damageState = await gm.page.evaluate(f => f.actors.map(id => {
+    const actor = game.actors.get(id);
+    const events = Object.values(actor.getFlag("heroes-of-legend", "damageEvents") ?? {});
+    return { hp: actor.system.health.value, total: events.reduce((sum,event)=>sum+event.event.total,0), count:events.length };
+  }), f);
+  assert.deepEqual(damageState.map(row=>row.hp),damageState.map(row=>100-row.total));
+  assert.equal(damageState.reduce((sum,row)=>sum+row.count,0),6);
+  await gm.page.reload();
+  await gm.page.waitForFunction(()=>game.ready && game.settings.get("heroes-of-legend","creationAuthorityClient")===game.socket.id);
+  const persisted = await gm.page.evaluate(f=>f.actors.map(id=>game.actors.get(id).system.health.value),f);
+  assert.deepEqual(persisted,damageState.map(row=>row.hp));
   assert.deepEqual(errors, []);
   console.info(
-    "PASS: two fresh same-defender requests each roll while same-request replay does not reroll, independent defenders, original native author, reopened native Defend allows an ordinary fresh roll with no repeat checkbox or written reason, stale-source rejection, saved-result settlement without reroll, fresh roll while an older result is unknown; DA disposition affects only that old operation, blind mode and no HP mutation.",
+    "PASS: two fresh same-defender requests each roll while same-request replay does not reroll, independent defenders, original native author, reopened native Defend allows an ordinary fresh roll with no repeat checkbox or written reason, stale-source rejection, saved-result settlement without reroll, fresh roll while an older result is unknown; DA disposition affects only that old operation, blind mode, exact once fixed damage and persisted HP after reload.",
   );
 } finally {
   await p1?.context.close();

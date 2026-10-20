@@ -1,3 +1,5 @@
+import { openEncounterPanel } from "./encounter.mjs";
+import { localizeRuleLinks } from "../services/journals.mjs";
 import { finishCombatParticipant } from "../dialogs/turn-end.mjs";
 import { chooseCombatParticipant } from "../dialogs/turn-choice.mjs";
 import { displayedBudget } from "../services/turn-budget.mjs";
@@ -11,6 +13,7 @@ export function renderHOLCombatTracker(app, element) {
   if (!combat) return;
   const section = document.createElement("section");
   section.className = "hol-encounter";
+  const heading=document.createElement("h3");heading.className="hol-encounter-heading";heading.textContent="Heroes of Legend · Encounter";section.append(heading);
   const state = combat.getFlag(ID, "encounter");
   const line = (text) => {
     const p = document.createElement("p");
@@ -34,6 +37,7 @@ export function renderHOLCombatTracker(app, element) {
     });
     section.append(b);
   };
+  button("Open encounter",()=>openEncounterPanel(combat));
   if (!state) {
     line("HOL · One opening roll, then alternate sides.");
     for (const c of combat.combatants) {
@@ -82,7 +86,12 @@ export function renderHOLCombatTracker(app, element) {
           const counters = document.createElement("div");
           counters.className = "hol-combat-budget";
           for (const [name, value] of [["Main", budget.remaining.main], ["Maneuver", budget.remaining.maneuver], ["Reaction", budget.remaining.reaction], ["Movement", budget.movementRemaining]]) {
-            const stat = document.createElement("span"), number = document.createElement("strong");
+            const stat = document.createElement("button"), number = document.createElement("strong");
+            stat.type="button";
+            const category=name === "Movement" ? "movement" : name.toLowerCase();
+            stat.disabled=value < 1;
+            stat.setAttribute("aria-label",name === "Movement" ? "Use one square of movement" : `Spend ${name}`);
+            stat.addEventListener("click",async()=>{stat.disabled=true;try{await requestCombat(combat,"spend",{id:state.current,category});}catch(error){ui.notifications.error(error.message);}finally{if(stat.isConnected)stat.disabled=value<1;}});
             stat.className = "hol-budget-stat";
             stat.append(name);
             number.textContent = value;
@@ -177,10 +186,11 @@ export function renderHOLCombatTracker(app, element) {
   }
   const nativeRows = [...element.querySelectorAll(".combatant[data-combatant-id]")];
   for (const side of ["players", "opposition"]) {
-    const rows = nativeRows.filter(row => combatSide(combat.combatants.get(row.dataset.combatantId)) === side);
+    const rows = nativeRows.filter(row => (state?.roster.find(participant=>participant.id===row.dataset.combatantId)?.side??combatSide(combat.combatants.get(row.dataset.combatantId))) === side);
     for (const [index, row] of rows.entries()) {
       row.classList.toggle("hol-side-start", index === 0);
-      row.dataset.holSide = side === "players" ? "Players" : "Opposition";
+      const ready=state?.roster.filter(participant=>participant.side===side&&!participant.withdrawn&&!state.acted.includes(participant.id)&&participant.id!==state.current&&participant.eligibleRound<=state.round&&(!combat.combatants.get(participant.id)?.hidden||game.user.isGM)).length;
+      row.dataset.holSide = `${side === "players" ? "Players" : "Opposition"}${state ? ` · ${ready} ready` : ""}`;
       row.parentElement.append(row);
     }
   }
@@ -205,7 +215,10 @@ export function renderHOLCombatTracker(app, element) {
               : p.eligibleRound > state.round
                 ? "Next round"
                 : "Ready";
-    row.querySelector(".token-initiative")?.replaceChildren(status);
+    row.querySelector(".hol-turn-status")?.remove();
+    (row.querySelector(".combatant-name")??row).append(status);
   }
+  const rules=document.createElement("a");rules.href="#";rules.dataset.holRulePath="design/rules/encounters.md";rules.textContent="Read encounter rules";section.append(rules);
   element.prepend(section);
+  localizeRuleLinks(section).catch(error=>console.error("heroes-of-legend | Encounter rules",error));
 }

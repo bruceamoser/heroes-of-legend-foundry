@@ -1,7 +1,7 @@
 # Heroes of Legend for Foundry VTT
 
 Bruce Moser's **Heroes of Legend**, for Foundry Virtual Tabletop **V14**.
-Version **1.0.1** is published for Foundry **14.369**, completing the **1.0 major release** with an item-card visual correction. See the [1.0.1 release evidence](docs/release-1.0.1.md) and [1.0.0 major release evidence](docs/release-1.0.0.md).
+Version **2.0.0** is being validated for Foundry **14.369**. It rebuilds the native interface against the actual web application and adds native rules books, a Foundry theme and an illustrated landing scene. See the [correction acceptance record](docs/native-parity-acceptance.md). The latest published version remains 1.0.1 until the new release passes its remaining gates.
 
 ## Install and update
 
@@ -35,7 +35,8 @@ For a local candidate, extract the ZIP directly into your isolated test data dir
 2. Join as the GM. A fresh world starts request processing automatically in the
    active GM's window; players do not need to enable a service or seek approval
    for ordinary actions. Keep that GM window connected while playing. A clean
-   daily restart resumes in that same GM browser automatically.
+   daily restart resumes automatically; an expired idle coordinator can be reclaimed
+   by a fresh GM browser without clearing saved operations.
 3. Create a character with the guided creation flow, then equip its owned Items
    and place its native Token. Legal creation and advancement options appear
    first; unavailable choices remain visible with their reasons.
@@ -46,7 +47,10 @@ For a local candidate, extract the ZIP directly into your isolated test data dir
    Foundry's native token targeting. Use the −3…+3 slider to adjust Boons/Banes;
    ordinary play does not require written reasons. Freely repeat a fresh Defend
    roll when the table needs a correction.
-5. For a healing potion, target one other Token or leave targets clear for
+5. Defend uses the player’s assigned character, or the GM’s selected token Actor.
+   Missing or ambiguous selection gives a message. Numeric creature-attack damage
+   is applied with the saved defense result.
+6. For a healing potion, target one other Token or leave targets clear for
    self-use. Another owner's character receives a one-click consent offer.
    Encounter costs remain tracked during an active encounter; free play does
    not create a Combat or artificial action budgets.
@@ -55,15 +59,21 @@ If processing needs recovery, the GM can open **Game Settings → Manage automat
 Use its existing handoff and recovery controls when changing GM windows or
 resuming interrupted work; do not clear saved state or reroll an uncertain old
 operation to force it through. A fresh intentional use or roll is a new action.
-GM processing requires HTTPS or localhost for the browser's exclusive-tab lock.
+Remote connections require HTTPS; localhost is also supported. Coordination uses
+the browser’s exclusive-tab lock and signed defense snapshots use Web Crypto.
+
+Prepare **The gathering** from Scenes or the system settings to create the editable
+landing scene. It uses the Player’s Book artwork and links to the hero and rules
+books. Activate it with Foundry’s normal scene controls when ready. See the
+[landing scene guide](docs/landing-scene.md).
 
 ## Included content and manual resolution
 
 - Import 419 abilities, 44 equipment entries, 192 creatures and 73 summon profiles from the four content compendiums. Creature action cards use their printed defense attribute and exact player-defense outcomes.
-- Open the **Rules Library** for searchable local references: 610 player rules and 408 DA references in two additional JournalEntry compendiums. The DA can explicitly import world journals; repeated imports preserve existing source identities and edits.
-- Use the native character, NPC/creature and item cards, Favorites and creation/advancement markets. Owners can select sheet portraits through Foundry’s image picker and **Save portrait**; custom item artwork is preserved when generic bag icons are refreshed.
+- Open the **Rules Library** for searchable local references: one Player’s Book with 610 pages and one DA book with 408 pages, using native sections, contents, search and paging. The DA can explicitly import the books; repeated imports preserve existing books and edits. Legacy imported entries remain untouched.
+- Use the native character, NPC/creature and item cards, Favorites and creation/advancement markets. Owners can select sheet portraits through Foundry’s image picker; selection saves immediately; custom item artwork is preserved when generic bag icons are refreshed.
 - Creature artwork fits a 768px maximum edge with transparency retained. The 192 packaged portraits total 41.7 MB, 55.5% smaller than the previous derivatives.
-- Use the implemented condition, wound, survival, equipment, resupply, healing-potion and crafting workflows where applicable. Crafting records immediate progress and catalog products; printed time, tools and optional carried materials remain table-resolved.
+- Use the implemented condition, wound, survival, equipment, resupply, healing-potion and crafting workflows where applicable. Crafting records progress and catalog products and can check a selected carried material supply exactly once. The table still decides fictional time and tool requirements.
 
 Specialty action cards and optional ability references support **manual costs and effects**. They do not automatically interpret every condition, movement clause or special rule. Summons have distinct native reference profiles, portraits and attacker-oriented outcomes; spawning, controller commands, tether checks and lifecycle management remain with the DA. This release does not claim all-ability automation.
 

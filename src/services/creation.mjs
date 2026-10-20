@@ -1,5 +1,6 @@
 import {
   registerAuthority,
+  ensureAuthorityReady,
   writeCharacterActor,
   isCreationAuthority,
   bindCreationAuthority,
@@ -12,7 +13,9 @@ export {
 } from "./authority.mjs";
 import { loadCatalogs } from "./catalog.mjs";
 import { getCampaignLanguageConfiguration } from "./languages.mjs";
-import { creationPreview } from "../rules/creation.mjs";
+import { workshopCharacter } from "../rules/workshop-character.mjs";
+import { nativePlayEffects } from "../rules/native-play-import.mjs";
+import { importedCharacterState } from "../rules/native-character-state.mjs";
 import {
   abilityItemSource,
   equipmentItemSource,
@@ -26,6 +29,7 @@ export function registerCreationAuthority() {
         ui.notifications.error(error.message);
         await message.update({
           content: `Character creation needs attention: ${foundry.utils.escapeHTML(error.message)}`,
+          [`flags.${ID}.creationFailure`]: error.message,
         });
       });
   });
@@ -33,6 +37,7 @@ export function registerCreationAuthority() {
 export async function requestCreation(actor, revision) {
   if (!actor.testUserPermission(game.user, "OWNER"))
     throw new Error("You must own the character.");
+  await ensureAuthorityReady();
   if (!game.settings.get(ID, "creationAuthorityClient"))
     throw new Error(
       "A GM must enable character processing in their creation window first.",
@@ -46,6 +51,18 @@ export async function requestCreation(actor, revision) {
     flags: { [ID]: { creationRequest: { actorUuid: actor.uuid, revision } } },
   });
 }
+/** Wait for the authoritative document receipt, never for request dispatch alone. */
+export async function waitForCreation(actor, requestId, revision, { timeout = 30000, interval = 100 } = {}) {
+  const start = Date.now();
+  while (true) {
+    const receipt = actor.getFlag(ID, "creationReceipt");
+    if (receipt?.requestId === requestId && receipt.revision === revision && receipt.status === "complete") return receipt;
+    const failure = game.messages.get(requestId)?.getFlag(ID, "creationFailure");
+    if (failure) throw new Error(failure);
+    if (Date.now() - start >= timeout) throw new Error("Character processing has not completed. Your draft is saved; keep this window open and check that the GM automation coordinator is online before retrying.");
+    await new Promise(resolve => setTimeout(resolve, interval));
+  }
+}
 export function resolveCreationRequest(messageId) {
   return enqueueCharacterOperation(() => applyCreation(messageId), {
     requestId: messageId,
@@ -55,6 +72,10 @@ export function validateCreationChanges(actor, changes) {
   for (const data of changes.items ?? []) {
     const item = new Item(data, { parent: actor, strict: true });
     item.validate({ strict: true, fallback: false });
+  }
+  for (const data of changes.effects ?? []) {
+    const effect = new foundry.documents.ActiveEffect(data, { parent: actor, strict: true });
+    effect.validate({ strict: true, fallback: false });
   }
   actor.validate({
     changes: foundry.utils.expandObject(changes),
@@ -90,7 +111,7 @@ async function applyCreation(messageId) {
         "Character creation is already complete. Use advancement or a DA correction.",
       );
     if (receipt.status !== "complete") {
-      if (receipt.createdIds.some((id) => !actor.items.has(id)))
+      if (receipt.createdIds.some((id) => !actor.items.has(id)) || (receipt.createdEffectIds ?? []).some(id => !actor.effects.has(id)))
         throw new Error(
           "Creation needs reconciliation: a committed Item is unavailable. Do not repeat grants.",
         );
@@ -119,17 +140,12 @@ async function applyCreation(messageId) {
     throw new Error(
       "Campaign language settings changed after review. Review and save the draft again before committing.",
     );
-  const preview = creationPreview(
-    saved.data,
-    choices,
-    inventory,
-    languages.definitions,
-  );
+  const preview = workshopCharacter(saved.data, { choices, inventory, commit }, languages.definitions);
   if (!preview.valid)
     throw new Error(
       "The creation draft has unresolved choices. Return to Review.",
     );
-  const { items, createdIds, reusedIds } = buildCharacterItems(
+  const { items, createdIds, reusedIds, instanceIds } = buildCharacterItems(
     actor,
     [
       ...preview.state.abilities,
@@ -142,13 +158,16 @@ async function applyCreation(messageId) {
   );
   const state = {
     ...preview.state,
-    level: 1,
+    level: preview.state.level,
     stage: "advancement",
-    dp: 0,
+    // Web planning approval is not campaign authority to spend banked DP.
+    safePlace: preview.state.level > 1 ? false : preview.state.safePlace,
+    dp: preview.state.dp,
     sourceCommit: commit,
     creation: structuredClone(saved.data),
-    creationSummary: preview.summary,
-    ledger: preview.ledger,
+    creationSummary: preview.creation.summary,
+    languages: preview.play.languages,
+    ledger: [...preview.ledger, ...preview.advancementLedger],
     coins: preview.inventory.remainingCoins,
   };
   const changes = {
@@ -159,9 +178,10 @@ async function applyCreation(messageId) {
     name: saved.data.name.trim(),
     items,
     "system.health.baseMax": preview.summary.maximumHp,
-    "system.health.value": preview.summary.maximumHp,
+    "system.health.value": Math.min(preview.summary.maximumHp, saved.data.play?.hp ?? preview.summary.maximumHp),
     "system.grit.granted": preview.summary.gritGranted,
-    "system.grit.spent": 0,
+    "system.grit.spent": Math.min(preview.summary.gritGranted, saved.data.play?.gritSpent ?? 0),
+    "system.biography": saved.data.profile?.story ?? "",
     "system.memorizedMessage": saved.data.play?.memorizedMessage ?? "",
     [`flags.${ID}.development`]: state,
     [`flags.${ID}.creationReceipt`]: {
@@ -174,6 +194,18 @@ async function applyCreation(messageId) {
       reusedIds,
     },
   };
+  let woundsCatalog;
+  if (saved.data.play?.wounds?.some(wound => wound.catalogId)) {
+    const response = await fetch("systems/heroes-of-legend/data/wounds.json");
+    if (!response.ok) throw new Error("Cannot load the wound catalog required by this character.");
+    woundsCatalog = await response.json();
+  }
+  const effects = nativePlayEffects(saved.data, {choices, inventory, commit}, {randomID: () => foundry.utils.randomID(), woundsCatalog});
+  changes.effects = [...(actor.toObject().effects ?? []), ...effects.effects];
+  changes[`flags.${ID}.wounds`] = {...(actor.getFlag(ID, "wounds") ?? {}), ...effects.wounds};
+  changes[`flags.${ID}.creationReceipt`].createdEffectIds = effects.effects.map(effect => effect._id);
+  const imported = importedCharacterState(saved.data, preview, items, instanceIds);
+  Object.assign(changes, imported);
   for (const [key, value] of Object.entries(preview.summary.creationAttributes))
     changes[`system.attributes.${key}.base`] = value;
   // One Actor update carries nested Items, statistics and the receipt. No separate item grant calls.
@@ -186,7 +218,7 @@ async function applyCreation(messageId) {
     throw new Error("Draft changed during validation. Review and retry.");
   validateCreationChanges(actor, changes);
   await writeCharacterActor(actor, changes);
-  if (createdIds.some((id) => !actor.items.has(id)))
+  if (createdIds.some((id) => !actor.items.has(id)) || effects.effects.some(effect => !actor.effects.has(effect._id)))
     throw new Error(
       "Creation needs reconciliation: a committed Item is unavailable. Do not repeat grants.",
     );
@@ -206,11 +238,14 @@ export function buildCharacterItems(
 ) {
   const items = actor.toObject().items ?? [];
   const createdIds = [],
-    reusedIds = [];
+    reusedIds = [],
+    instanceIds = {},
+    matchedExisting = new Set();
   const add = (data) => {
     const id = foundry.utils.randomID();
     createdIds.push(id);
     items.push({ _id: id, ...data });
+    return id;
   };
   for (const id of new Set([...abilityIds])) {
     const existing = actor.items.find(
@@ -233,15 +268,19 @@ export function buildCharacterItems(
     const existing = actor.items.find(
       (i) =>
         i.type === "equipment" &&
+        !matchedExisting.has(i.id) &&
         i.system.catalogId === item.catalogId &&
-        (item.source !== "creation" || i.system.worn),
+        (i.getFlag(ID, "acquisitionInstance") === item.instanceId ||
+          (!i.getFlag(ID, "acquisitionInstance") && (item.source !== "creation" || i.system.worn))),
     );
     if (item.source !== "coins" && existing) {
+      matchedExisting.add(existing.id);
+      instanceIds[item.instanceId] = existing.id;
       reusedIds.push(existing.id);
       continue;
     }
     const def = inventory.equipment.find((r) => r.id === item.catalogId);
-    add(
+    instanceIds[item.instanceId] = add(
       equipmentItemSource(def, {
         sourceCommit: commit,
         creationGrant: grantKind === "creation",
@@ -249,10 +288,12 @@ export function buildCharacterItems(
         acquisitionInstance: item.instanceId,
         quantity: item.quantity,
         hands: item.hands ?? 0,
-        inventoryDie: item.inventoryDie,
-        worn: item.instanceId === "creation-outfit",
+        inventoryDie: item.inventoryDie ?? 0,
+        worn: item.worn ?? item.instanceId === "creation-outfit",
+        held: item.held ?? false,
+        carried: item.carried ?? true,
       }),
     );
   }
-  return { items, createdIds, reusedIds };
+  return { items, createdIds, reusedIds, instanceIds };
 }

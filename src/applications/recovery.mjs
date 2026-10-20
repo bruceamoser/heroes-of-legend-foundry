@@ -1,3 +1,6 @@
+import { survivalState } from "../rules/survival.mjs";
+import { localizeRuleLinks } from "../services/journals.mjs";
+import { woundTreatmentBasis, requestWoundTreatment } from "../services/wound-treatment.mjs";
 import { WoundPanel } from "./wounds.mjs";
 import { requestSurvival } from "../services/survival.mjs";
 import { damageBasis } from "../services/damage.mjs";
@@ -8,13 +11,21 @@ export class RecoveryPanel extends foundry.applications.api.HandlebarsApplicatio
   constructor(actor) {
     super();
     this.actor = actor;
+    this.operation = "";
+    this.effectHooks=["createActiveEffect","updateActiveEffect","deleteActiveEffect"].map(name=>[name,Hooks.on(name,effect=>{if(effect.parent?.uuid===actor.uuid&&this.rendered)void this.render();})]);
+    this.actorHook=Hooks.on("updateActor",changed=>{if(changed.uuid===actor.uuid&&this.rendered)void this.render();});
   }
   static DEFAULT_OPTIONS = {
     classes: ["heroes-of-legend", "hol-recovery"],
     window: { title: "Health and recovery", resizable: true },
-    position: { width: 660, height: 650 },
+    position: { width: 780, height: "auto" },
     actions: {
       apply: RecoveryPanel.apply,
+      operation: RecoveryPanel.operation,
+      quick: RecoveryPanel.quick,
+      treatment: RecoveryPanel.treatment,
+      treat: RecoveryPanel.treat,
+      previewDying: RecoveryPanel.previewDying,
       wounds: RecoveryPanel.wounds,
       recoverDeath: RecoveryPanel.recoverDeath,
     },
@@ -28,9 +39,19 @@ export class RecoveryPanel extends foundry.applications.api.HandlebarsApplicatio
   async _prepareContext() {
     if (!this.actor.testUserPermission(game.user, "OWNER"))
       throw new Error("Only this actor’s owner can record recovery.");
-    this.basis = damageBasis(this.actor);
+    const actualBasis = damageBasis(this.actor);
+    this.basis = this.previewState ? {...actualBasis,hp:this.previewState.hp,survival:this.previewState,gritAvailable:this.previewState.gritAvailable} : actualBasis;
     return {
       name: this.actor.name,
+      operation:this.operation,
+      healing:this.operation === "heal", correction:this.operation === "correct", grit:this.operation === "grit",
+      notice:this.notice,previewDying:Boolean(this.previewState),
+      records:Object.values(this.actor.getFlag("heroes-of-legend","wounds")??{}).map(wound=>({...wound,
+        progress:Math.min(wound.recoveryProgress??0,wound.recoveryValue??0),
+        canTreat:Boolean(wound.recoveryValue&&(wound.recoveryProgress??0)<wound.recoveryValue),
+        treating:wound.eventId===this.treating,
+        effectText:this.actor.effects.filter(effect=>effect.active&&!effect.getFlag("heroes-of-legend","retired")&&effect.getFlag("heroes-of-legend","woundEvent")===wound.eventId).map(effect=>effect.name).join(" · ")||"—",
+      })),
       gm: game.user.isGM,
       pendingDeath: Boolean(
         this.actor.getFlag("heroes-of-legend", "pendingDeath"),
@@ -61,24 +82,18 @@ export class RecoveryPanel extends foundry.applications.api.HandlebarsApplicatio
   }
   draft() {
     const value = (name) => this.element.querySelector(`[name=${name}]`)?.value;
-    return {
-      kind: value("kind"),
-      reason: value("reason"),
-      amount: Number(value("amount")),
-      lifeResistance: Number(value("lifeResistance")),
-      hp: Number(value("hp")),
-      status: value("status"),
-      wounds: Number(value("wounds")),
-      marks: Number(value("marks")),
-    };
+    const draft={kind:value("kind"),reason:value("reason")??""};
+    for(const name of ["amount","lifeResistance","hp","wounds","marks"])if(value(name)!==undefined)draft[name]=String(value(name)).trim()===""?NaN:Number(value(name));
+    if(value("status")!==undefined)draft.status=value("status");
+    return draft;
   }
   async _onRender(context, options) {
     await super._onRender(context, options);
+    const root=this.element;if(!root)return;
     const preview = () => {
       const draft = this.draft();
-      for (const part of this.element.querySelectorAll("[data-kind]"))
-        part.hidden = part.dataset.kind !== draft.kind;
-      const output = this.element.querySelector("[data-preview]");
+      const output = root.querySelector("[data-preview]");
+      if (!output) return;
       try {
         const plan = recoveryPreview(this.actor, this.basis, draft);
         output.textContent = `HP ${this.basis.hp} → ${plan.after}${plan.state ? ` · ${plan.state.status}` : ""}`;
@@ -86,9 +101,26 @@ export class RecoveryPanel extends foundry.applications.api.HandlebarsApplicatio
         output.textContent = e.message;
       }
     };
-    this.element.addEventListener("input", preview);
-    this.element.addEventListener("change", preview);
+    this.renderEvents?.abort();this.renderEvents=new AbortController();
+    root.addEventListener("input", preview,{signal:this.renderEvents.signal});
+    root.addEventListener("change", preview,{signal:this.renderEvents.signal});
     preview();
+    await localizeRuleLinks(root);
+  }
+  async _onClose(options){for(const [name,id]of this.effectHooks)Hooks.off(name,id);this.renderEvents?.abort();Hooks.off("updateActor",this.actorHook);return super._onClose(options);}
+  static async operation(event,target){this.operation=target.dataset.kind;if(this.operation==="correct")this.previewState=null;await this.render();}
+  static async previewDying(){
+    if(this.previewState)this.previewState=null;
+    else{const basis=damageBasis(this.actor);this.previewState=survivalState({hp:0,maxHp:basis.maxHp,marks:1,wounds:basis.survival?.wounds??0,gritAvailable:basis.gritAvailable});}
+    this.notice=this.previewState?"Dying example · 0 HP, one death mark. These controls now change only this preview.":"Preview closed; showing the recorded character.";await this.render();
+  }
+  static async quick(event,target){
+    try{if(!this.previewState)this.basis=damageBasis(this.actor);const draft={kind:target.dataset.kind,reason:""};const plan=recoveryPreview(this.actor,this.basis,draft);if(this.previewState){this.previewState=plan.state;this.notice=`Preview · HP ${plan.after} · ${plan.state.status}. The recorded character is unchanged.`;await this.render();return;}await requestRecovery(this.actor,this.basis,draft);this.notice="Recovery requested; the recorded result will update these vitals.";await this.render();}catch(error){ui.notifications.error(error.message);}
+  }
+  static async treatment(event,target){this.treating=target.dataset.eventId;await this.render();}
+  static async treat(event,target){
+    target.disabled=true;
+    try{await requestWoundTreatment(this.actor,target.dataset.eventId,Number(target.dataset.steps),woundTreatmentBasis(this.actor,target.dataset.eventId));this.treating=null;this.notice="Treatment progress requested; the scar remains.";await this.render();}catch(error){ui.notifications.error(error.message);}finally{if(target.isConnected)target.disabled=false;}
   }
   static async wounds() { await new WoundPanel(this.actor).render({ force: true }); }
   static async recoverDeath() {
@@ -107,9 +139,12 @@ export class RecoveryPanel extends foundry.applications.api.HandlebarsApplicatio
   static async apply() {
     try {
       const draft = this.draft();
-      recoveryPreview(this.actor, this.basis, draft);
+      const plan=recoveryPreview(this.actor, this.basis, draft);
+      if(this.previewState){this.previewState=plan.state;this.notice=`Preview · HP ${plan.after} · ${plan.state.status}. The recorded character is unchanged.`;this.operation="";await this.render();return;}
       await requestRecovery(this.actor, this.basis, draft);
-      await this.close();
+      this.notice="Recovery requested; the recorded result will update these vitals.";
+      this.operation="";
+      await this.render();
     } catch (e) {
       ui.notifications.error(e.message);
     }

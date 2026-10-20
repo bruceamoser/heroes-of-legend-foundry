@@ -59,3 +59,21 @@ automatically. Do not retain historical origin choices, add version-switch
 prompts or force a rules-update review. This authorizes recalculating saved
 character choices from the current catalog; it does not authorize rebuilding
 committed world Actors or resetting live resources.
+
+## Web-to-Foundry acceptance
+
+Bruce rejected the 1.0.1 visual/functional parity on October 20, 2026 (#221–#226).
+The running web app is the acceptance reference for layouts and interactions.
+Passing static assertions, a smoke test or a themed approximation does not establish
+parity. Compare equivalent actual web and native screens at matching content widths;
+inspect rendered captures and exercise the complete workflow, including validation,
+save, returned sheet and reload. Preserve native document permissions and standard
+portrait editing. Report a demonstrated platform limitation before accepting a
+reduced feature. Never substitute a generic native chooser for a specified workflow.
+Defense selects the player's assigned Actor or the GM's selected token Actor; missing
+or ambiguous selection gives an actionable message, without a defender dropdown.
+Release evidence must distinguish individual proven scenarios from untested surfaces.
+Foundry's root font size and global label/input/table rules differ from the web
+app. Port typography with explicit scoped sizes (web `rem` values use a 14px root),
+reset checkbox/radio presentation and inspect the entire native window/message,
+not only an inner card. Use the packaged `HOL Cinzel` and `HOL Garamond` names.

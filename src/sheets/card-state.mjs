@@ -3,6 +3,7 @@ const stateKey = (document) => `${ID}.card.${game.user.id}.${document.uuid}`;
 export function cardContext(app, document) {
   let collapsed = {};
   try { collapsed = JSON.parse(localStorage.getItem(stateKey(document)) ?? "{}"); } catch {}
+  if (["ability","equipment"].includes(document.type)) collapsed={itemNotes:true,...collapsed};
   return { cardEditing: Boolean(app._cardEditing && app.isEditable), cardCollapsed: collapsed };
 }
 /** Disclosure preferences are client UI state, never a change to the Actor. */

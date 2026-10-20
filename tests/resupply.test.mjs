@@ -21,7 +21,7 @@ async function fixture({die=0,quantity=1,maximum=4}={}) {
  "./catalog.mjs":{loadCatalogs:async()=>({inventory:{equipment:[{id:"equipment-healing",inventoryDie:maximum}]}})},
  "./turn-lock.mjs":{assertNoPendingTurn:()=>{}},
  "./inventory.mjs":{inventoryBasis:basis,inventoryActorTargets:()=>[actor],validateEmbeddedItems:()=>{}},
- "./authority.mjs":{enqueueCharacterOperation:async(fn)=>fn(),isCreationAuthority:()=>true,writeAuthorityDocument:async(a,changes)=>{writes++;item.system=changes.items[0].system;for(const [path,value]of Object.entries(changes)){if(path===`flags.${ID}.inventoryRevision`)flags.inventoryRevision=value;const prefix=`flags.${ID}.operationReceipts.`;if(path.startsWith(prefix)){flags.operationReceipts??={};flags.operationReceipts[path.slice(prefix.length)]=value;}}}},
+ "./authority.mjs":{ensureAuthorityReady:async()=>{},enqueueCharacterOperation:async(fn)=>fn(),isCreationAuthority:()=>true,writeAuthorityDocument:async(a,changes)=>{writes++;item.system=changes.items[0].system;for(const [path,value]of Object.entries(changes)){if(path===`flags.${ID}.inventoryRevision`)flags.inventoryRevision=value;const prefix=`flags.${ID}.operationReceipts.`;if(path.startsWith(prefix)){flags.operationReceipts??={};flags.operationReceipts[path.slice(prefix.length)]=value;}}}},
  };
  const mod=new vm.SourceTextModule(await readFile(new URL('../src/services/resupply.mjs',import.meta.url),'utf8'),{context});
  await mod.link(async(specifier)=>{const values=deps[specifier];const m=new vm.SyntheticModule(Object.keys(values),function(){for(const[k,v]of Object.entries(values))this.setExport(k,v);},{context});return m;});await mod.evaluate();

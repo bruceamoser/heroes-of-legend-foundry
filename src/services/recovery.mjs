@@ -1,3 +1,4 @@
+import { ensureAuthorityReady } from "./authority.mjs";
 import { assertNoPendingTurn } from "./turn-lock.mjs";
 import { damageBasis } from "./damage.mjs";
 import { healingPlan } from "../rules/damage.mjs";
@@ -16,11 +17,22 @@ import {
 } from "./authority.mjs";
 const ID = "heroes-of-legend";
 export function recoveryPreview(actor, basis, draft) {
-  if (!["heal", "breath", "stabilize", "grit", "correct"].includes(draft.kind))
+  if (!["heal", "breath", "stabilize", "grit", "correct", "setHp"].includes(draft.kind))
     throw new Error("Unknown recovery operation.");
   let state = null,
     after = basis.hp;
-  if (draft.kind === "correct") {
+  if (draft.kind === "setHp") {
+    if (!Number.isSafeInteger(draft.hp) || draft.hp < 0 || draft.hp > basis.maxHp) throw new Error("HP must be a whole number within the actor’s maximum.");
+    after = draft.hp;
+    if (actor.type === "character") {
+      const previous = basis.survival ?? survivalState({hp:basis.hp,maxHp:basis.maxHp,gritAvailable:basis.gritAvailable});
+      if (after > 0) state = {...previous,hp:after,maxHp:basis.maxHp,gritAvailable:basis.gritAvailable,status:"active",marks:0,due:null,choice:null};
+      else if (basis.hp === 0) state = {...previous,hp:0,maxHp:basis.maxHp,gritAvailable:basis.gritAvailable};
+      else state = {...previous,hp:0,maxHp:basis.maxHp,gritAvailable:basis.gritAvailable,status:"dying",marks:0,due:null,choice:null};
+      if (after > 0) {delete state.lastWordsAt;delete state.lastWordsEnds;}
+      validateSurvival(state);
+    }
+  } else if (draft.kind === "correct") {
     if (
       !Number.isSafeInteger(draft.hp) ||
       draft.hp < 0 ||
@@ -115,8 +127,7 @@ export function recoveryPreview(actor, basis, draft) {
   return { after, state };
 }
 export async function requestRecovery(actor, basis, draft) {
-  if (!game.settings.get(ID, "creationAuthorityClient"))
-    throw new Error("Enable the GM automation coordinator first.");
+  await ensureAuthorityReady();
   return ChatMessage.create({
     content: "Recovery adjustment requested.",
     whisper: game.users.filter((u) => u.isGM).map((u) => u.id),

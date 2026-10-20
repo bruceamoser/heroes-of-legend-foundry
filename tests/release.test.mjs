@@ -29,10 +29,7 @@ test("release package round-trips and rebuilds byte-identically", async (t) => {
   await packageRelease(opts);
   const first = await readFile(join(directory, "heroes-of-legend.zip"));
   await packageRelease(opts);
-  assert.deepEqual(
-    await readFile(join(directory, "heroes-of-legend.zip")),
-    first,
-  );
+  assert.ok((await readFile(join(directory, "heroes-of-legend.zip"))).equals(first), "Rebuilt ZIP must be byte-identical");
   const manifest = JSON.parse(
     await readFile(join(directory, "system.json"), "utf8"),
   );
@@ -43,7 +40,7 @@ test("release package round-trips and rebuilds byte-identically", async (t) => {
     const evidence = service.evidence[0];
     const localManifest = await fetch(evidence.manifest).then(response => response.json());
     assert.deepEqual({ ...localManifest, manifest: manifest.manifest, download: manifest.download }, manifest);
-    assert.deepEqual(Buffer.from(await fetch(localManifest.download).then(response => response.arrayBuffer())), first);
+    assert.ok(Buffer.from(await fetch(localManifest.download).then(response => response.arrayBuffer())).equals(first), "Served ZIP must match packaged bytes");
     assert.equal(evidence.publicUrlsTested, false);
     assert.equal(evidence.zipBytes, first.length);
     assert.equal((await fetch(new URL("/candidate/../../package.json", evidence.manifest))).status, 404);

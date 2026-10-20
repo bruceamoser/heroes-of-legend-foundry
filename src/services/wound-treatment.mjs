@@ -1,3 +1,4 @@
+import { ensureAuthorityReady } from "./authority.mjs";
 import { assertNoPendingTurn } from "./turn-lock.mjs";
 import { enqueueCharacterOperation, isCreationAuthority, writeAuthorityDocument } from "./authority.mjs";
 const ID = "heroes-of-legend";
@@ -9,7 +10,7 @@ export function woundTreatmentBasis(actor, eventId) {
 }
 export async function requestWoundTreatment(actor, eventId, progress, basis = woundTreatmentBasis(actor, eventId)) {
   if (!actor.testUserPermission(game.user, "OWNER")) throw new Error("Only an owner can record wound treatment.");
-  if (!game.settings.get(ID, "creationAuthorityClient")) throw new Error("Enable the GM automation coordinator first.");
+  await ensureAuthorityReady();
   return ChatMessage.create({ content: "Wound treatment requested.", whisper: game.users.filter(user => user.isGM || user.id === game.user.id).map(user => user.id), flags: { [ID]: { woundTreatmentRequest: { actorUuid: actor.uuid, eventId, progress, basis } } } });
 }
 export function resolveWoundTreatmentRequest(id) {

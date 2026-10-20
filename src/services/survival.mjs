@@ -1,3 +1,4 @@
+import { ensureAuthorityReady } from "./authority.mjs";
 import {
   chooseSurvival,
   resolveSurvival,
@@ -13,8 +14,7 @@ import {
 } from "./authority.mjs";
 const ID = "heroes-of-legend";
 export async function requestSurvival(actor, basis, draft, kind = "roll") {
-  if (!game.settings.get(ID, "creationAuthorityClient"))
-    throw new Error("Enable the GM automation coordinator first.");
+  await ensureAuthorityReady();
   return ChatMessage.create({
     content: `Survival ${kind} requested.`,
     whisper: game.users

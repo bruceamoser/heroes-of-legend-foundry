@@ -86,7 +86,8 @@ try {
   });
   await gm.page.locator(".hol-character [data-action=recovery]").click();
   const panel = gm.page.locator(".hol-recovery");
-  await panel.locator("[name=kind]").selectOption("correct");
+  await panel.locator("details > summary").last().click();
+  await panel.locator('[data-action="operation"][data-kind="correct"]').click();
   await panel.locator("[name=status]").selectOption("stable");
   await panel.locator("[name=wounds]").fill("2");
   assert.equal(await panel.locator("[name=reason]").inputValue(), "");

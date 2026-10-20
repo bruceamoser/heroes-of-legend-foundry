@@ -10,6 +10,7 @@ async function loadService(name, context, onWrite) {
   });
   await module.link(async (specifier) => {
     const exports = specifier === "./authority.mjs" ? {
+      ensureAuthorityReady: async () => {},
       enqueueCharacterOperation: async (run) => run(),
       isCreationAuthority: () => true,
       writeAuthorityDocument: onWrite,

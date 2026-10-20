@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import {readFile} from "node:fs/promises";
-import {savePortrait, viewPortrait, bindPortraitControls} from "../src/sheets/portrait.mjs";
+import {savePortrait, viewPortrait, bindPortraitControls, editPortrait} from "../src/sheets/portrait.mjs";
 
 test("portrait save persists only the native picker image, never pending statistics or narrative edits",async()=>{
   const writes=[];globalThis.game={user:{id:"owner"}};
@@ -32,13 +32,24 @@ test("native IMG image editing and viewing support Enter and Space without dupli
   for(const key of ["Enter"," ","Escape"])listener({key,preventDefault:()=>prevented++});
   assert.equal(bindings,1);assert.equal(clicks,2);assert.equal(prevented,2);
 });
-test("actor portrait templates keep native editing owner-only and separate Save from form submission",async()=>{
+test("actor portrait templates keep native editing owner-only with immediate selection persistence",async()=>{
   for(const kind of ["character","creature","summon"]){
     const template=await readFile(new URL(`../static/templates/${kind}.hbs`,import.meta.url),"utf8");
     assert(template.includes('{{#if editable}}data-action="editImage" data-edit="img"'),kind);
-    assert(template.includes('{{#if editable}}<button type="button" data-action="savePortrait"'),kind);
+    assert(!template.includes('data-action="savePortrait"'),kind);
     assert(template.includes('data-portrait-image'),kind);
     assert(template.includes('data-action="viewPortrait"'),kind);
     assert(!template.includes('name="img"'),"No ad hoc path field");
   }
+});
+
+
+test("standard native FilePicker selection saves the portrait immediately while unrelated edits remain untouched",async()=>{
+  const writes=[],errors=[];globalThis.game={user:{id:"owner"}};globalThis.ui={notifications:{error:message=>errors.push(message)}};
+  const actor={id:"actor",uuid:"Actor.actor",img:"before.webp",testUserPermission:()=>true,update:async data=>{writes.push(data);actor.img=data.img;}};
+  let options;globalThis.CONFIG={ux:{FilePicker:class{constructor(value){options=value;}async browse(){await options.callback("selected.webp");return this;}}}};
+  await editPortrait.call({actor,isEditable:true});
+  assert.equal(options.type,"image");assert.equal(options.current,"before.webp");assert.equal(options.document,actor);
+  assert.deepEqual(writes,[{img:"selected.webp"}]);assert.equal(actor.img,"selected.webp");assert.deepEqual(errors,[]);
+  actor.testUserPermission=()=>false;await assert.rejects(editPortrait.call({actor,isEditable:true}),/owner/);
 });

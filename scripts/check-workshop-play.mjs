@@ -139,6 +139,11 @@ try {
     };
   });
   await page.getByRole("button", { name: "Roll", exact: true }).click();
+  assert.equal(await page.locator("#death-failures").inputValue(), "3", "An ordinary roll cannot reverse Last Words");
+  assert.match(await page.locator("#recipe-roll-result").innerText(), /Last Words remains/);
+  // A deliberate correction is distinct from an ordinary recovery roll.
+  await page.getByRole("button", { name: "Set 2 death marks", exact: true }).click();
+  await page.getByRole("button", { name: "Roll", exact: true }).click();
   assert.equal(await page.locator("#death-failures").inputValue(), "0");
   await page.evaluate(() => {
     crypto.getRandomValues = globalThis.originalDice;

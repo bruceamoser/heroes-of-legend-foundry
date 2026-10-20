@@ -1,3 +1,4 @@
+import { ensureAuthorityReady } from "./authority.mjs";
 import { inventoryCheck } from "../rules/inventory.mjs";
 import { assertNoPendingTurn } from "./turn-lock.mjs";
 import {
@@ -65,6 +66,7 @@ export function findInventoryActor(requestId) {
 
 function assertNoInventoryConflict(actor, requestId = null) {
   assertNoPendingTurn(actor);
+  if (actor.getFlag(ID,"pendingCrafting")?.material) throw new Error("Finish or reconcile the pending crafting material check before changing supply.");
   const potionPending = [...game.combats, ...inventoryActorTargets()].find((combat) => {
     const requestId = combat.getFlag(ID, "pendingPotion"),
       operation = combat.getFlag(ID, "potionOperations")?.[requestId];
@@ -106,14 +108,11 @@ export async function requestInventory(
     throw new Error("Choose an equipment item owned by this character.");
   if (!actor.testUserPermission(game.user, "OWNER"))
     throw new Error("Only an owner or the DA can check this item’s supply.");
-  if (!game.settings.get(ID, "creationAuthorityClient"))
-    throw new Error(
-      "Ask the DA to enable the automation coordinator before checking supply.",
-    );
   if (item.system.quantity === 0) throw new Error("This item has no quantity remaining.");
   activeInventoryDie(item.system.inventoryDie);
   assertNoInventoryConflict(actor);
   assertCurrentBasis(actor, basis);
+  await ensureAuthorityReady();
   return ChatMessage.create({
     content: `Check ${foundry.utils.escapeHTML(item.name)} supply after its approved use.`,
     whisper: requestRecipients(actor),
@@ -137,10 +136,6 @@ export async function requestInventoryRecovery(
 ) {
   if (!game.user.isGM)
     throw new Error("Only the DA can recover a missing supply result.");
-  if (!game.settings.get(ID, "creationAuthorityClient"))
-    throw new Error(
-      "Enable the automation coordinator before recovering supply.",
-    );
   const pending = actor.getFlag(ID, "pendingInventory");
   if (
     !pending ||
@@ -153,6 +148,7 @@ export async function requestInventoryRecovery(
     die: pending.target.inventoryDie,
     retained: wholeFaces(retainedFace),
   });
+  await ensureAuthorityReady();
   return ChatMessage.create({
     content: `Record the supply result seen for ${foundry.utils.escapeHTML(pending.target.name)} without rolling again.`,
     whisper: requestRecipients(actor),
@@ -174,13 +170,10 @@ export async function requestInventoryRecovery(
 export async function requestInventoryResume(actor) {
   if (!game.user.isGM)
     throw new Error("Only the DA can apply a saved supply result.");
-  if (!game.settings.get(ID, "creationAuthorityClient"))
-    throw new Error(
-      "Enable the automation coordinator before applying supply.",
-    );
   const pending = actor.getFlag(ID, "pendingInventory");
   if (!pending || pending.phase !== "result")
     throw new Error("This supply check does not have a saved result.");
+  await ensureAuthorityReady();
   return ChatMessage.create({
     content: `Apply the saved supply result for ${foundry.utils.escapeHTML(pending.target.name)} without rolling again.`,
     whisper: requestRecipients(actor),
@@ -200,13 +193,10 @@ export async function requestInventoryResume(actor) {
 export async function requestInventoryAbandon(actor, reason) {
   if (!game.user.isGM)
     throw new Error("Only the DA can close a supply check without changes.");
-  if (!game.settings.get(ID, "creationAuthorityClient"))
-    throw new Error(
-      "Enable the automation coordinator before closing a supply check.",
-    );
   const pending = actor.getFlag(ID, "pendingInventory");
   if (!pending || pending.phase !== "result")
     throw new Error("Only a supply check with a saved result can be closed.");
+  await ensureAuthorityReady();
   return ChatMessage.create({
     content: `Close the saved supply check for ${foundry.utils.escapeHTML(pending.target.name)} without changing supply.`,
     whisper: requestRecipients(actor),

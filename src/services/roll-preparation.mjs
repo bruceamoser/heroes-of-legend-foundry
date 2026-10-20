@@ -1,6 +1,7 @@
 import { contextualAbilitySources } from "../rules/one-dp-play.mjs";
 import { abilityDefinition } from "../rules/ability-definitions.mjs";
 import { validReferenceAttack } from "../rules/creature-actions.mjs";
+import { numericCreatureAction } from "../rules/numeric-creature-actions.mjs";
 import { ATTRIBUTES } from "../rules/character.mjs";
 import { conditionRollSources } from "../rules/conditions.mjs";
 import { targetEvasionSources } from "../rules/player-attacks.mjs";
@@ -44,7 +45,7 @@ export function incomingAttackContext(attackMessageId) {
  */
 export function verifiedIncomingAttackContext(attackMessageId) {
   const attack = incomingAttackContext(attackMessageId);
-  if (attack.resolution === "reference") {
+  if (attack.resolution === "reference" || attack.numericSource) {
     const message = game.messages.get(attackMessageId),
       source = message?.getFlag(ID, "creatureAction"),
       actor = fromUuidSync(attack.actorUuid);
@@ -54,6 +55,13 @@ export function verifiedIncomingAttackContext(attackMessageId) {
       JSON.stringify(source) !== JSON.stringify(attack)
     )
       throw new Error("The incoming reference action could not be verified.");
+    if (attack.numericSource) {
+      const {catalogId, sourceCommit, action} = attack.numericSource;
+      const numeric = numericCreatureAction(catalogId, sourceCommit, action);
+      if (!numeric || attack.resolution !== "numeric" || attack.attributeKey !== action.attributeKey ||
+          JSON.stringify(attack.damage) !== JSON.stringify(numeric.damage) || attack.damageType !== "physical")
+        throw new Error("The incoming numeric creature action could not be verified.");
+    }
     return attack;
   }
   if (!Object.hasOwn(attack, "blockable")) return attack;

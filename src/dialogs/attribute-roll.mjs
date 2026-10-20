@@ -7,7 +7,6 @@ import {
 } from "../services/reference-play.mjs";
 import {
   situationalRollDraft,
-  situationalAdjustmentLabel,
   effectiveRollDraft,
 } from "../rules/situational-adjustment.mjs";
 import { rollPrepared } from "../services/roll.mjs";
@@ -18,6 +17,7 @@ import {
   reviewedDefenseAbilityOptions,
 } from "../services/abilities.mjs";
 const ID = "heroes-of-legend";
+const netLabel = (n) => n ? `${Math.abs(n)} ${n < 0 ? "Bane" : "Boon"}${Math.abs(n) === 1 ? "" : "s"}` : "Even";
 export class SharedRollDialog extends foundry.applications.api.HandlebarsApplicationMixin(
   foundry.applications.api.ApplicationV2,
 ) {
@@ -57,11 +57,10 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
   static DEFAULT_OPTIONS = {
     classes: ["heroes-of-legend", "hol-roll-dialog"],
     window: { title: "Prepare roll", resizable: true },
-    position: { width: 560, height: 650 },
+    position: { width: 470, height: "auto" },
     actions: {
       grit: SharedRollDialog.grit,
       roll: SharedRollDialog.roll,
-      changeDefender: SharedRollDialog.changeDefender,
       useAbility: SharedRollDialog.useAbility,
     },
   };
@@ -129,6 +128,10 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
         mode: this.mode,
         defenderTokenUuid: this.defenderTokenUuid,
       }),
+      attributeEditable: this.mode === "attribute",
+      attributeOptions: Object.keys(this.actor.system.attributes ?? {}).map((key) => ({
+        key, name: game.i18n.localize(`HOL.Attributes.${key}`), selected: key === this.attributeKey,
+      })),
       name: this.actor.name,
       death: this.mode === "death",
       gritAvailable: this.basis.survival?.gritAvailable,
@@ -151,7 +154,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       defense: this.mode === "defense",
       notice: this.notice,
       draft: this.draft,
-      adjustmentLabel: situationalAdjustmentLabel(this.draft.adjustment),
+      adjustmentLabel: netLabel(this.draft.adjustment),
       abilities: this.abilityOptions.map((option) => ({
         ...option,
         reasonText: [...option.reasons, ...(option.warnings ?? [])].join(" "),
@@ -255,14 +258,14 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
   }
   preview() {
     const list = this.element.querySelector(".hol-roll-sources"),
-      output = this.element.querySelector("output"),
+      output = this.element.querySelector("[data-roll-error]"),
       detail = this.element.querySelector(".hol-roll-totals"),
       button = this.element.querySelector('[data-action="roll"]');
     list.replaceChildren();
     try {
       this.refreshDefenseAbilities();
       this.syncAdjustment();
-      const adjustmentLabel = situationalAdjustmentLabel(this.draft.adjustment);
+      const adjustmentLabel = netLabel(this.draft.adjustment);
       this.element.querySelector("[data-adjustment-label]").textContent =
         adjustmentLabel;
       const slider = this.element.querySelector("[name=adjustment]");
@@ -272,6 +275,8 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       const chosen = this.basis.defenseSubstitutions?.find(
         (option) => option.itemUuid === plan.defenseSubstitutionItemUuid,
       );
+      const selector = this.element.querySelector('[name="attributeKey"]');
+      if (selector) selector.value = plan.resolvedAttributeKey;
       const stat = this.element.querySelector("[data-roll-attribute]");
       if (stat)
         stat.textContent = `${game.i18n.localize(`HOL.Attributes.${plan.resolvedAttributeKey}`)}: ${chosen?.attribute ?? this.basis.attribute}`;
@@ -280,7 +285,19 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
         li.textContent = `${source.label}: ${source.amount} ${source.kind === "boon" ? "Boon(s)" : "Bane(s)"}${source.automatic ? " · automatic" : ""}`;
         list.append(li);
       }
-      output.textContent = `${plan.count}d6 · ${plan.net ? `keep ${plan.net > 0 ? "highest" : "lowest"} 3` : "keep 3"} · ${plan.formula}`;
+      output.textContent = "";
+      this.element.querySelector("[data-roll-count]").textContent = plan.count;
+      this.element.querySelector("[data-roll-keep]").textContent = plan.net ? `Keep ${plan.net > 0 ? "highest" : "lowest"} three` : "Keep all three";
+      this.element.querySelector("[data-roll-formula]").textContent = plan.formula;
+      const value = this.element.querySelector("[data-roll-value]");
+      value.textContent = `${plan.attribute >= 0 ? "+" : ""}${plan.attribute}`;
+      const dice = this.element.querySelector("[data-roll-dice]");
+      dice.innerHTML = Array.from({ length: plan.count }, (_, i) => `<span class="${i >= 3 ? "extra-die" : ""}"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="3"/><circle cx="7" cy="7" r="1.4"/><circle cx="17" cy="17" r="1.4"/><circle cx="12" cy="12" r="1.4"/></svg></span>`).join("");
+      const net = this.element.querySelector("[data-net-control]");
+      const n = this.draft.adjustment;
+      net.dataset.polarity = n < 0 ? "bane" : n > 0 ? "boon" : "even";
+      net.style.setProperty("--net-start", `${Math.min(50, ((n + 3) / 6) * 100)}%`);
+      net.style.setProperty("--net-size", `${Math.abs(n) / 6 * 100}%`);
       detail.textContent = `${plan.boons} Boons · ${plan.banes} Banes · ${plan.canceled} canceled pairs · net extras ${plan.net} (maximum 3)`;
       button.disabled = this.activating || this.pendingResponse;
     } catch (e) {
@@ -296,10 +313,18 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       .addEventListener("input", (event) => {
         if (event.target.name === "adjustment")
           this.draft.adjustmentOverride = true;
+        if (event.target.name === "attributeKey" && this.mode === "attribute") {
+          this.readDraft();
+          this.attributeKey = event.target.value;
+          void this.render();
+          return;
+        }
         this.readDraft();
         this.preview();
       });
     bindNetChoices(this.element);
+    const choices = this.element.querySelector(".hol-net-choices");
+    this.element.querySelector("[data-net-control]").append(choices);
     bindReferenceSearch(this.element);
     bindReferenceDrops(
       this.element,
@@ -313,15 +338,6 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       },
     );
     this.preview();
-  }
-  static async changeDefender() {
-    try {
-      const { chooseDefender } = await import("./defender-choice.mjs");
-      await this.close();
-      await chooseDefender(this.attackMessageId, { forceChoice: true });
-    } catch (e) {
-      ui.notifications.error(e.message);
-    }
   }
   static async grit() {
     try {
@@ -355,7 +371,19 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       }
       this.rolling = true;
       this.element.querySelector('[data-action="roll"]').disabled = true;
-      await rollPrepared(this.actor, this.basis, this.draft);
+      const message = await rollPrepared(this.actor, this.basis, this.draft);
+      if (this.mode === "defense" && this.attackMessageId) {
+        const deadline = Date.now() + 15000;
+        while (Date.now() < deadline) {
+          const current = game.messages.get(message.id);
+          if (current?.getFlag(ID, "defenseStatus") === "resolved") break;
+          if (current?.content?.startsWith("Defense needs attention:"))
+            throw new Error("Defense needs attention. Review the chat message; the GM can resume this same operation in Manage automation.");
+          await new Promise(resolve => setTimeout(resolve, 100));
+        }
+        if (game.messages.get(message.id)?.getFlag(ID, "defenseStatus") !== "resolved")
+          throw new Error("The defense is still pending. Ask the GM to resume it in Manage automation. This submission remains in chat; do not roll again to retry it.");
+      }
       await this.close();
     } catch (e) {
       ui.notifications.error(e.message);

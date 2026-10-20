@@ -1,7 +1,2 @@
-<section class="hol-attack-card hol-creature-action-card">
-<h3>{{attackerName}} · {{title}}</h3>
-<p>{{categoryLabel}} · Costs and effects resolved manually.</p>
-{{#if attributeKey}}<p>{{defenseSource}} player defense · Threat: {{threat.boons}} Boons / {{threat.banes}} Banes.</p>{{/if}}
-{{#if outcomes}}<table><caption>Player defense outcome</caption><thead><tr>{{#each outcomes}}<th scope="col">{{@key}}</th>{{/each}}</tr></thead><tbody><tr>{{#each outcomes}}<td>{{this}}</td>{{/each}}</tr></tbody></table>{{else}}<p>{{effect}}</p>{{/if}}
-{{#if referenceHTML}}<details><summary>Action details</summary>{{{referenceHTML}}}</details>{{/if}}
-</section>
+<section class="hol-attack-card hol-creature-action-card hol-chat-card" data-chat-kind="request"><header class="hol-chat-header">{{#if portrait}}<img src="{{portrait}}" alt="">{{/if}}<div><small>{{attackerName}} · {{categoryLabel}}</small><h3>{{title}}</h3></div></header>{{#if attributeKey}}<div class="hol-chat-bar"><span>{{defenseSource}} defense</span><span>Threat {{threat.boons}} Boons / {{threat.banes}} Banes</span></div>{{/if}}
+{{#if outcomes}}<table class="hol-chat-outcomes"><caption>Defense outcome</caption><thead><tr>{{#each outcomes}}<th scope="col">{{@key}}</th>{{/each}}</tr></thead><tbody><tr>{{#each outcomes}}<td>{{this}}</td>{{/each}}</tr></tbody></table>{{else}}<div class="hol-chat-effect">{{effect}}</div>{{/if}}<footer class="hol-chat-footer"><span>{{#if automaticDamage}}Awaiting defense · physical damage{{else}}{{manualReason}}{{/if}}</span></footer>{{#if referenceHTML}}<details class="hol-chat-details"><summary>Action details</summary>{{{referenceHTML}}}</details>{{/if}}</section>

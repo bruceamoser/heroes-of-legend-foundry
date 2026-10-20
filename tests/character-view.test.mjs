@@ -19,10 +19,12 @@ test("basic visibility follows current gear and explicit preferences; edit revea
   assert.equal(armed.actionGroups[0].entries.length,2);
 });
 test("native character favorites use live embedded identities and retain exhausted supplies", () => {
-  const input = {abilities: [ability("a"), ability("b", "reaction")], equipment: [equipment("e", 0)], sheetState: {favorites: ["deleted", "e", "b"]}, inventory: {equipment: [{id:"supply", inventoryDie:4}]}};
+  const input = {abilities: [ability("a"), ability("b", "reaction"), {...ability("handle"),catalogId:"ability-handle-an-item"}], choices:[{id:"ability-handle-an-item",name:"Handle an Item",universal:true}], equipment: [equipment("e", 0)], sheetState: {favorites: ["deleted", "e", "b"]}, inventory: {equipment: [{id:"supply", inventoryDie:4}]}};
   const original = structuredClone(input);
   const view = characterSheetView(input);
-  assert.deepEqual(view.favorites.map((r) => r.id), ["b", "e"]);
+  assert.deepEqual(view.favorites.map((r) => r.id), ["b", "handle"]);
+  assert.equal(view.favorites[1].useItemId,"e");
+  assert.equal(view.favorites[1].canUse,false,"An exhausted supply remains visible without a use action");
   assert.equal(view.equipmentRows[0].hasSupply, true);
   assert.equal(view.equipmentRows[0].supplyLabel, "Empty");
   assert.equal(view.bulk, 0);
@@ -42,4 +44,16 @@ test("native identity and action grouping reflect committed state without rebuil
   assert.equal(view.level,7);assert.equal(view.dp,3);
   assert.deepEqual(view.marks.map((m)=>m.filled),[true,true,false]);
   assert.deepEqual(view.actionGroups.find((g)=>g.key==="reaction").entries.map((r)=>r.id),["reaction"]);
+});
+test("workshop presentation pairs sorted disciplines, combines language form and retains signed advancement awards and grants",()=>{
+ const view=characterSheetView({development:{level:3,ranks:{z:2,a:1,b:3},languages:[{id:"common",name:"Common",form:"spoken",permissions:{read:true,write:true}},{id:"sign",form:"signed",permissions:{}}],ledger:[{kind:"pool",stage:0,delta:13},{kind:"award",level:2,delta:10},{kind:"purchase",level:2,id:"a",delta:-2},{kind:"signature-grant",level:3,id:"b",delta:0}]},choices:[{id:"z",name:"Zoology"},{id:"a",name:"Athletics"},{id:"b",name:"Brew"}]});
+ assert.deepEqual(view.rankPairs.map(pair=>[pair.left.name,pair.right?.name]),[["Athletics","Brew"],["Zoology",undefined]]);
+ assert.deepEqual(view.languages.map(language=>language.formLabel),["Spoken & written","Signed"]);
+ assert.deepEqual(view.purchases.map(entry=>[entry.name,entry.cost]),[["Level award","+10"],["Athletics",-2],["Brew",0]]);
+ assert.equal(view.ledger.length,1);
+});
+test("inventory sources retain portable acquisition provenance independently of held arrangement",()=>{
+ const item={id:"native",name:"Tools",getFlag:()=>"grant:ability-tools:item-tools",system:{catalogId:"item-tools",quantity:1,bulk:1,held:true,hands:1}};
+ const view=characterSheetView({equipment:[item],choices:[{id:"ability-tools",name:"Trail Workshop"}],development:{items:[{instanceId:"grant:ability-tools:item-tools",source:"ability-tools"}]}});
+ assert.equal(view.equipmentRows[0].sourceLabel,"Trail Workshop");assert.equal(view.equipmentRows[0].arrangement,"Held");
 });

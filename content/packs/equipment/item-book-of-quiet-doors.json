@@ -3,7 +3,7 @@
   "_id": "1682a63c4725dc0d",
   "name": "Book of Quiet Doors",
   "type": "equipment",
-  "img": "systems/heroes-of-legend/assets/icons/book.svg",
+  "img": "icons/sundries/books/book-worn-green.webp",
   "system": {
     "schemaVersion": 1,
     "catalogId": "item-book-of-quiet-doors",
@@ -11,6 +11,7 @@
     "bulk": 1,
     "hands": 0,
     "inventoryDie": 0,
+    "carried": true,
     "held": false,
     "worn": false,
     "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Market reference · acquisition and use automation in progress</p><p><strong>Market price:</strong> 150 coins; special order.</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/equipment/book-of-quiet-doors.md\" target=\"_blank\" rel=\"noopener\">design/equipment/book-of-quiet-doors.md</a> at <code>bdfd18ed535fbd0e1892b9344444abf6da644809</code>.</p></section>"

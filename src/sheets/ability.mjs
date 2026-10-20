@@ -1,4 +1,5 @@
-import { itemDisplayIcon, hasGenericItemIcon } from "../rules/item-icons.mjs";
+import { itemCardContext, formatItemCard } from "./item-card-view.mjs";
+import { itemDisplayIcon } from "../rules/item-icons.mjs";
 import { loadCatalogs } from "../services/catalog.mjs";
 import { cardContext, bindCardState, toggleCardEdit } from "./card-state.mjs";
 import { postAbilityReference } from "../services/reference-play.mjs";
@@ -15,7 +16,7 @@ export class AbilitySheet extends foundry.applications.api.HandlebarsApplication
 ) {
   static DEFAULT_OPTIONS = {
     classes: ["heroes-of-legend", "hol-ability"],
-    position: { width: 500, height: "auto" },
+    position: { width: 510, height: "auto" },
     window: { resizable: true },
     form: { submitOnChange: false, closeOnSubmit: false },
     actions: {
@@ -37,7 +38,7 @@ export class AbilitySheet extends foundry.applications.api.HandlebarsApplication
       definition = itemAbilityDefinition(this.item);
     } catch {}
     const description = this.item.system.description;
-    const iconCatalogs = hasGenericItemIcon(this.item.img) ? await loadCatalogs() : null;
+    const iconCatalogs = await loadCatalogs();
     const labels = (keys) =>
       Object.fromEntries(
         keys.map((key) => [key, game.i18n.localize(`HOL.Choices.${key}`)]),
@@ -45,7 +46,9 @@ export class AbilitySheet extends foundry.applications.api.HandlebarsApplication
     return {
       ...context,
       ...cardContext(this, this.item),
+      ...itemCardContext(this.item, iconCatalogs),
       definition,
+      manualOutcomes: !description.includes("hol-reference-outcomes") ? ["weak","standard","strong"].filter(tier=>this.item.system.outcomes?.[tier]).map(tier=>({label:game.i18n.localize(`HOL.${tier[0].toUpperCase()+tier.slice(1)}`),text:this.item.system.outcomes[tier]})) : [],
       cardMark: itemDisplayIcon(this.item.toObject(), iconCatalogs),
       canPost: Boolean(this.item.actor && this.item.isOwner),
       potionAbility: isPotionAbility(this.item),
@@ -72,7 +75,7 @@ export class AbilitySheet extends foundry.applications.api.HandlebarsApplication
           game.i18n.localize(`HOL.Attributes.${key}`),
         ]),
       ),
-      actions: labels(["main", "maneuver", "reaction", "passive"]),
+      actions: labels(["main", "maneuver", "reaction", "passive", "movement", "other"]),
       rollModes: labels(["attribute", "none", "delegated"]),
     };
   }
@@ -94,6 +97,7 @@ export class AbilitySheet extends foundry.applications.api.HandlebarsApplication
   _onRender(context, options) {
     super._onRender(context, options);
     bindCardState(this, this.item);
+    formatItemCard(this.element);
   }
   async _processSubmitData(event, form, data, options) {
     if (!this.isEditable)

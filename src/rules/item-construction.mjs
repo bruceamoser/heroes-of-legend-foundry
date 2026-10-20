@@ -1,3 +1,4 @@
+import { actionTiming } from "./workshop-character.mjs";
 import { catalogItemIcon } from "./item-icons.mjs";
 import {
   abilityDefinition,
@@ -161,12 +162,13 @@ export function equipmentReferenceHtml(
   ].join("");
 }
 
-function abilitySystem(description, definition) {
+function abilitySystem(description, definition, record) {
+  const printedCategory = actionTiming(record).map(timing => ({"Main Action":"main",Maneuver:"maneuver",Reaction:"reaction",Passive:"passive",Movement:"movement",Other:"other"}[timing])).find(Boolean);
   return {
     schemaVersion: ITEM_SCHEMA_VERSION,
     description,
     activity: {
-      action: definition?.category ?? "main",
+      action: definition?.category ?? printedCategory ?? "passive",
       rollMode: definition?.attribute ? "attribute" : "none",
       attribute: definition?.attribute ?? "brawn",
       defenseAttribute: "agility",
@@ -190,6 +192,7 @@ function equipmentSystem(record, description, options) {
       options.inventoryDie === undefined
         ? (record.inventoryDie ?? 0)
         : options.inventoryDie,
+    carried: options.carried ?? true,
     held: options.held ?? false,
     worn: options.worn ?? false,
     description,
@@ -233,7 +236,7 @@ export function abilityItemSource(
     name: record.name,
     type: "ability",
     img: catalogItemIcon(record, "ability"),
-    system: abilitySystem(reference, definition),
+    system: abilitySystem(reference, definition, record),
     flags: {
       [SYSTEM_ID]: {
         ...grantFlags({
@@ -266,6 +269,7 @@ export function equipmentItemSource(
     inventoryDie,
     held,
     worn,
+    carried,
   } = {},
 ) {
   if (!record?.id?.startsWith("item-"))
@@ -287,6 +291,7 @@ export function equipmentItemSource(
       inventoryDie,
       held,
       worn,
+      carried,
     }),
     flags: {
       [SYSTEM_ID]: {

@@ -2,7 +2,7 @@ import { itemIconForData } from "../rules/item-icons.mjs";
 import { loadCatalogs } from "./catalog.mjs";
 import { updateOwnedDocument } from "./documents.mjs";
 
-/** Cosmetic upgrade of core defaults only; chosen artwork and compendiums are untouched. */
+/** Cosmetic upgrade of core defaults and exact prior catalog defaults only; chosen artwork and compendiums are untouched. */
 export async function refreshDefaultItemIcons(documents, catalogs) {
   let updated = 0;
   for (const item of documents) {

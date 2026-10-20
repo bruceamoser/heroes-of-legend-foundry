@@ -3,7 +3,7 @@
   "_id": "b4fe3f99b89c53ae",
   "name": "Signal Kit",
   "type": "equipment",
-  "img": "systems/heroes-of-legend/assets/icons/horn.svg",
+  "img": "icons/commodities/treasure/horn-carved-banded.webp",
   "system": {
     "schemaVersion": 1,
     "catalogId": "item-signal-kit",
@@ -11,6 +11,7 @@
     "bulk": 1,
     "hands": 0,
     "inventoryDie": 0,
+    "carried": true,
     "held": false,
     "worn": false,
     "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Market reference · acquisition and use automation in progress</p><p><strong>Market price:</strong> 4 coins.</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/equipment/signal-kit.md\" target=\"_blank\" rel=\"noopener\">design/equipment/signal-kit.md</a> at <code>bdfd18ed535fbd0e1892b9344444abf6da644809</code>.</p></section>"

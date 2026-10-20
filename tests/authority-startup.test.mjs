@@ -6,13 +6,16 @@ import { createContext, SourceTextModule } from 'node:vm';
 const source = await readFile(new URL('../src/services/authority.mjs', import.meta.url), 'utf8');
 const stamp = '2026-10-18T00:00:00.000Z';
 function state(values = {}) {
-  return { values: new Map(Object.entries({ creationAuthorityClient: '', authorityMeta: {}, authorityWork: {}, ...values })),
-    writes: [], lockHeld: false };
+  return { values: new Map(Object.entries({ creationAuthorityClient: '', authorityMeta: {}, authorityWork: {}, authorityLease:{}, ...values })),
+    writes: [], lockHeld: false, now: Date.now() };
 }
-async function client(shared, { userId = 'gm', isGM = true, active = true, socketId = 'socket', browserId = 'browser', locks = true } = {}) {
+async function client(shared, { userId = 'gm', isGM = true, active = true, socketId = 'socket', browserId = 'browser', locks = true, secure = true, cryptoAvailable = true } = {}) {
   let ready;
-  const warnings = [], events = [];
-  const context = createContext({ structuredClone,
+  const warnings = [], events = [], timers = [];
+  const context = createContext({ structuredClone, console,
+    isSecureContext: secure, crypto: cryptoAvailable ? {subtle:{digest(){}}} : {},
+    setInterval(callback) { timers.push(callback); return timers.length; }, clearInterval() {},
+    setTimeout(callback) { shared.onTimeout?.(); callback(); },
     localStorage: { getItem: () => browserId },
     navigator: locks ? { locks: { async request(_name, _options, run) {
       if (shared.lockHeld) return run(null);
@@ -24,11 +27,11 @@ async function client(shared, { userId = 'gm', isGM = true, active = true, socke
     Hooks: { once(event, callback) { assert.equal(event, 'ready'); ready = callback; },
       callAll(event, data) { events.push([event, data]); } },
     game: { user: { id: userId, isGM }, users: { activeGM: { isSelf: active } },
-      socket: { id: socketId, connected: true }, world: { id: 'test', lastPlayed: stamp },
+      socket: { id: socketId, connected: true }, time:{get serverTime(){return shared.now;}}, world: { id: 'test', lastPlayed: stamp },
       messages: new Map(), settings: {
         register(_id, key, options) { if (!shared.values.has(key)) shared.values.set(key, structuredClone(options.default)); },
         get(_id, key) { return structuredClone(shared.values.get(key)); },
-        async set(_id, key, value) { shared.beforeSet?.(key, value); shared.writes.push([key, structuredClone(value)]); shared.values.set(key, structuredClone(value)); },
+        async set(_id, key, value) { await shared.beforeSet?.(key, value); shared.writes.push([key, structuredClone(value)]); shared.values.set(key, structuredClone(value)); await shared.afterSet?.(key,value); },
       } },
     fromUuid: async () => null,
   });
@@ -36,7 +39,7 @@ async function client(shared, { userId = 'gm', isGM = true, active = true, socke
   await module.link(() => { throw new Error('Unexpected module dependency'); });
   await module.evaluate();
   module.namespace.registerAuthority();
-  return { service: module.namespace, ready: () => ready(), warnings, events };
+  return { service: module.namespace, ready: () => ready(), warnings, events, heartbeat: () => timers.at(-1)?.() };
 }
 
 test('pristine world auto-starts existing authority path in active GM window', async () => {
@@ -101,8 +104,8 @@ test('fresh-world setup failure gives one actionable notice without a wizard or 
   await gm.ready();
   assert.equal(shared.writes.length, 0);
   assert.equal(gm.warnings.length, 1);
-  assert.match(gm.warnings[0], /Game Settings → Manage automation/);
   assert.match(gm.warnings[0], /HTTPS or localhost/);
+  assert.match(gm.warnings[0], /Web Locks/);
 });
 
 test('world relaunch and uncertain old work retain explicit recovery checks', async () => {
@@ -118,13 +121,13 @@ test('world relaunch and uncertain old work retain explicit recovery checks', as
   }
 });
 
-test('settled idle relaunch auto-resumes only in the active GM same browser', async () => {
+test('settled idle relaunch auto-resumes in active GM even after browser changes', async () => {
   for (const options of [{}, { browserId: 'another' }, { active: false }]) {
     const shared = state({ creationAuthorityClient: 'former',
       authorityMeta: { clientId: 'former', userId: 'gm', browserId: 'browser', launch: '2026-10-17T00:00:00.000Z' },
-      authorityWork: { clientId: 'former', busy: false, uncertain: false } }), gm = await client(shared, options);
+      authorityWork: { clientId: 'former', busy: false, uncertain: false }, authorityLease:{clientId:'former',expires:Date.now()+900000} }), gm = await client(shared, options);
     await gm.ready();
-    const eligible = !options.browserId && options.active !== false;
+    const eligible = options.active !== false;
     assert.equal(gm.service.isCreationAuthority(), eligible);
     if (eligible) {
       assert.equal(shared.values.get('authorityMeta').launch, stamp);
@@ -156,4 +159,208 @@ test('partial initial-claim failure reports recovery without clearing its saved 
   assert.equal(shared.values.get('creationAuthorityClient'), 'socket');
   assert.equal(gm.warnings.length, 1);
   assert.match(gm.warnings[0], /Manage automation/);
+});
+
+ test('GM preflight reports a stale foreign browser binding instead of submitting an unresolvable request', async () => {
+  const shared = state({ creationAuthorityClient: 'former', authorityMeta: {clientId:'former', userId:'gm', browserId:'old-browser', launch:stamp}, authorityWork:{clientId:'former',busy:false} });
+  const gm = await client(shared);
+  await assert.rejects(gm.service.ensureAuthorityReady(), /Automation is unavailable.*Manage automation/);
+  assert.equal(shared.writes.length,0);
+});
+
+ test('a new browser automatically takes only an expired idle coordinator and fences the old client', async()=>{
+  const shared=state(), old=await client(shared,{socketId:'old',browserId:'first'});await old.ready();
+  assert.equal(old.service.isCreationAuthority(),true);
+  // Separate browsers have independent Web Locks, as in ordinary GM reconnects.
+  shared.lockHeld=false;shared.now+=16000;
+  assert.equal(old.service.isCreationAuthority(),false);
+  const next=await client(shared,{socketId:'new',browserId:'second'});await next.ready();
+  assert.equal(next.service.isCreationAuthority(),true);assert.equal(old.service.isCreationAuthority(),false);
+  let wrote=false;await old.service.enqueueCharacterOperation(async()=>{wrote=true;});assert.equal(wrote,false);
+  await next.service.releaseAuthority();
+ });
+ test('an unexpired lease or uncertain work is never stolen by a different browser',async()=>{
+  for(const uncertain of [false,true]){
+   const shared=state(),old=await client(shared,{socketId:'old',browserId:'first'});await old.ready();shared.lockHeld=false;
+   if(uncertain){shared.now+=16000;shared.values.set('authorityWork',{clientId:'old',busy:true,uncertain:true,requestId:'saved'});}
+   const before=shared.writes.length,next=await client(shared,{socketId:'new',browserId:'second'});await next.ready();
+   assert.equal(next.service.isCreationAuthority(),false);assert.equal(shared.writes.length,before);
+  }
+ });
+
+test('expired takeover restores only its own incomplete metadata when renewal or busy work arrives', async () => {
+  for (const change of ['renewal','work']) {
+    const shared=state(),old=await client(shared,{socketId:'old',browserId:'first'});await old.ready();
+    shared.lockHeld=false;shared.now+=16000;
+    const priorMeta=structuredClone(shared.values.get('authorityMeta'));
+    shared.afterSet=(key,value)=>{
+      if(key!=='authorityMeta'||value.clientId!=='new')return;
+      if(change==='renewal')shared.values.set('authorityLease',{clientId:'old',expires:shared.now+15000});
+      else shared.values.set('authorityWork',{clientId:'old',busy:true,uncertain:true,requestId:'saved'});
+    };
+    const next=await client(shared,{socketId:'new',browserId:'second'});await next.ready();
+    assert.deepEqual(shared.values.get('authorityMeta'),priorMeta);
+    assert.equal(shared.values.get('creationAuthorityClient'),'old');
+    assert.equal(next.service.isCreationAuthority(),false);
+    assert.equal(shared.lockHeld,false);
+    if(change==='work')assert.deepEqual(shared.values.get('authorityWork'),{clientId:'old',busy:true,uncertain:true,requestId:'saved'});
+    else assert.equal(old.service.isCreationAuthority(),true);
+  }
+});
+
+test('rejected activation never rolls back a competing metadata claim',async()=>{
+ const shared=state(),old=await client(shared,{socketId:'old',browserId:'first'});await old.ready();shared.lockHeld=false;shared.now+=16000;
+ const competitor={clientId:'competitor',userId:'gm',browserId:'third',launch:stamp,leaseVersion:1};
+ shared.afterSet=(key,value)=>{if(key==='authorityMeta'&&value.clientId==='new')shared.values.set(key,competitor);};
+ const next=await client(shared,{socketId:'new',browserId:'second'});await next.ready();
+ assert.deepEqual(shared.values.get('authorityMeta'),competitor);assert.equal(shared.values.get('creationAuthorityClient'),'old');
+ assert.equal(shared.writes.filter(([key])=>key==='authorityMeta').length,2);
+});
+
+test('heartbeat repairs delayed former lease only from the still-locked current binding',async()=>{
+ const shared=state(),old=await client(shared,{socketId:'old',browserId:'first'});await old.ready();
+ let releaseRenewal, renewalEntered;
+ const entered=new Promise(resolve=>renewalEntered=resolve);
+ shared.beforeSet=async(key,value)=>{if(key==='authorityLease'&&value.clientId==='old'){renewalEntered();await new Promise(resolve=>releaseRenewal=resolve);}};
+ const delayed=old.heartbeat();await entered;
+ shared.lockHeld=false;shared.now+=16000;
+ const next=await client(shared,{socketId:'new',browserId:'second'});await next.ready();assert.equal(next.service.isCreationAuthority(),true);
+ releaseRenewal();await delayed;
+ assert.equal(shared.values.get('authorityLease').clientId,'old');assert.equal(next.service.isCreationAuthority(),false);
+ await next.heartbeat();assert.equal(next.service.isCreationAuthority(),true);assert.equal(shared.values.get('authorityLease').clientId,'new');
+ const writes=shared.writes.length;await old.heartbeat();assert.equal(shared.writes.length,writes);assert.equal(old.service.isCreationAuthority(),false);
+});
+
+test('own expired busy uncertain lease cannot be revived by heartbeat or cleared',async()=>{
+ const shared=state(),gm=await client(shared);await gm.ready();shared.now+=16000;
+ const work={clientId:'socket',busy:true,uncertain:true,requestId:'saved'};shared.values.set('authorityWork',work);
+ const writes=shared.writes.length;await gm.heartbeat();assert.equal(shared.writes.length,writes);assert.deepEqual(shared.values.get('authorityWork'),work);assert.equal(gm.service.isCreationAuthority(),false);
+});
+
+test('preflight observes renewal but rejects mixed metadata rather than accepting setting progress',async()=>{
+ for(const mixed of [false,true]){
+  const shared=state(),old=await client(shared,{socketId:'old',browserId:'first'});await old.ready();shared.lockHeld=false;
+  const gm=await client(shared,{socketId:'new',browserId:'second'});
+  shared.onTimeout=()=>{shared.now+=200;shared.values.set('authorityLease',{clientId:'old',expires:shared.now+20000});if(mixed)shared.values.set('authorityMeta',{clientId:'partial',userId:'gm',browserId:'third',launch:stamp,leaseVersion:1});};
+  if(mixed)await assert.rejects(gm.service.ensureAuthorityReady(),/session is not ready/);
+  else await gm.service.ensureAuthorityReady();
+  assert.equal(shared.values.get('creationAuthorityClient'),'old');
+ }
+});
+
+test('player preflight rejects expired or foreign leases even with matching metadata',async()=>{
+ for(const lease of [{clientId:'old',expires:0},{clientId:'foreign',expires:Date.now()+50000}]){
+  const shared=state({creationAuthorityClient:'old',authorityMeta:{clientId:'old',userId:'gm',launch:stamp,leaseVersion:1},authorityLease:lease});
+  const player=await client(shared,{isGM:false});await assert.rejects(player.service.ensureAuthorityReady(),/session is not ready/);assert.equal(shared.writes.length,0);
+ }
+});
+
+test('missing secure context, crypto or GM locks fails before coordinator writes with one startup notice', async()=>{
+ for(const options of [{secure:false},{cryptoAvailable:false},{locks:false}]){
+  const shared=state(),gm=await client(shared,options);await gm.ready();
+  assert.equal(gm.warnings.length,1);assert.match(gm.warnings[0],/HTTPS or localhost/);
+  assert.match(gm.warnings[0],new RegExp(options.secure===false?"secure browser context":options.cryptoAvailable===false?"Web Crypto":"Web Locks"));
+  await assert.rejects(gm.service.ensureAuthorityReady(),/HTTPS or localhost/);
+  assert.equal(shared.writes.length,0);
+ }
+ const shared=state(),player=await client(shared,{isGM:false,secure:false});await player.ready();assert.equal(player.warnings.length,0);
+ await assert.rejects(player.service.ensureAuthorityReady(),/HTTPS or localhost/);assert.equal(shared.writes.length,0);
+});
+
+test('ordinary relaunch repairs mixed old metadata only with matching settled binding, lease and work',async()=>{
+ for(const work of [{clientId:'winner',busy:false,uncertain:false},{clientId:'winner',busy:true},{clientId:'winner',busy:false,uncertain:true},{clientId:'other',busy:false}]){
+  const shared=state({creationAuthorityClient:'winner',authorityMeta:{clientId:'older',userId:'gm',browserId:'old',launch:'2026-10-17T00:00:00.000Z',leaseVersion:1},authorityLease:{clientId:'winner',expires:Date.now()+900000},authorityWork:work});
+  const gm=await client(shared);await gm.ready();
+  const eligible=work.clientId==='winner'&&work.busy===false&&!work.uncertain;
+  assert.equal(gm.service.isCreationAuthority(),eligible);
+  if(!eligible){assert.equal(shared.writes.length,0);assert.deepEqual(shared.values.get('authorityWork'),work);}
+  else assert.equal(gm.events.filter(([event])=>event==='holAuthorityReady').length,1);
+ }
+});
+
+test('late competing activation is detected before ready or checkpoint overwrite',async()=>{
+ for(const phase of ['authorityLease','creationAuthorityClient','authorityWork']){
+  const shared=state(),gm=await client(shared,{socketId:'new'});
+  const winner={clientId:'winner',userId:'gm',browserId:'winnerBrowser',launch:stamp,leaseVersion:1};
+  shared.afterSet=(key,value)=>{if(key!==phase||value?.clientId==='winner')return;shared.values.set('authorityMeta',winner);shared.values.set('creationAuthorityClient','winner');shared.values.set('authorityLease',{clientId:'winner',expires:shared.now+15000,owner:winner});shared.values.set('authorityWork',{clientId:'winner',busy:false});};
+  await gm.ready();assert.equal(gm.service.isCreationAuthority(),false);assert.equal(gm.events.length,0);assert.equal(shared.values.get('authorityMeta').clientId,'winner');assert.deepEqual(shared.values.get('authorityWork'),{clientId:'winner',busy:false});
+ }
+});
+
+test('current locked owner repairs metadata clobbered by delayed old rollback without changing work',async()=>{
+ const shared=state(),gm=await client(shared,{socketId:'winner',browserId:'winnerBrowser'});await gm.ready();
+ const owner=structuredClone(shared.values.get('authorityMeta')),work=structuredClone(shared.values.get('authorityWork'));
+ // The old claim's metadata restoration arrived after all winner writes.
+ shared.values.set('authorityMeta',{clientId:'old',userId:'gm',browserId:'oldBrowser',launch:stamp,leaseVersion:1});
+ assert.equal(gm.service.isCreationAuthority(),false);await gm.heartbeat();
+ assert.equal(gm.service.isCreationAuthority(),true);assert.deepEqual(shared.values.get('authorityMeta'),owner);assert.deepEqual(shared.values.get('authorityWork'),work);
+});
+
+test('metadata repair never clears busy or uncertain work or restores another owner',async()=>{
+ for(const changed of ['busy','uncertain','foreignBinding','expiredLease']){
+  const shared=state(),gm=await client(shared,{socketId:'winner'});await gm.ready();
+  shared.values.set('authorityMeta',{clientId:'old',launch:stamp});
+  if(changed==='foreignBinding')shared.values.set('creationAuthorityClient','other');
+  else if(changed==='expiredLease')shared.now+=16000;
+  else shared.values.set('authorityWork',{clientId:'winner',busy:changed==='busy',uncertain:changed==='uncertain',requestId:'saved'});
+  const before=JSON.stringify([...shared.values]),writes=shared.writes.length;await gm.heartbeat();assert.equal(JSON.stringify([...shared.values]),before);assert.equal(shared.writes.length,writes);
+ }
+});
+
+test('failure after lease commit before binding keeps an explicit recoverable checkpoint, never claims ready',async()=>{
+ const shared=state(),old=await client(shared,{socketId:'old',browserId:'oldBrowser'});await old.ready();shared.lockHeld=false;shared.now+=16000;
+ const beforeWork=structuredClone(shared.values.get('authorityWork'));
+ shared.beforeSet=(key,value)=>{if(key==='creationAuthorityClient'&&value==='new')throw Error('Injected binding write failure');};
+ const next=await client(shared,{socketId:'new',browserId:'newBrowser'});await next.ready();
+ assert.equal(next.service.isCreationAuthority(),false);assert.equal(next.events.length,0);
+ assert.equal(shared.values.get('creationAuthorityClient'),'old');assert.equal(shared.values.get('authorityLease').clientId,'new');assert.deepEqual(shared.values.get('authorityWork'),beforeWork);
+ await assert.rejects(next.service.ensureAuthorityReady(),/Automation is unavailable.*Manage automation/);
+ assert.deepEqual(shared.values.get('authorityWork'),beforeWork);
+});
+
+test('coherent same-browser pre-lease idle upgrade resumes only after relaunch',async()=>{
+ for(const options of [{}, {busy:true}, {uncertain:true}, {foreign:true}, {lease:true}]){
+  const work={clientId:'old',busy:!!options.busy,uncertain:!!options.uncertain};
+  const shared=state({creationAuthorityClient:'old',authorityMeta:{clientId:'old',userId:'gm',browserId:options.foreign?'foreign':'browser',launch:'2026-10-17T00:00:00.000Z'},authorityWork:work,authorityLease:options.lease?{clientId:'partial'}:{}});
+  const gm=await client(shared);await gm.ready();
+  assert.equal(gm.service.isCreationAuthority(),Object.keys(options).length===0);
+  if(Object.keys(options).length)assert.deepEqual(shared.values.get('authorityWork'),work);
+ }
+});
+
+test('expired interrupted activation reclaims only an exact idle binding/work and meta/lease owner pair',async()=>{
+ for(const variant of ['idle','live','busy','uncertain','work','owner']){
+  const meta={clientId:'claim',userId:'gm',browserId:'closedBrowser',launch:stamp,leaseVersion:1};
+  const shared=state();shared.values.set('creationAuthorityClient','old');shared.values.set('authorityMeta',meta);shared.values.set('authorityLease',{clientId:'claim',expires:shared.now+(variant==='live'?15000:-1),owner:variant==='owner'?{...meta,clientId:'foreign'}:meta});
+  const work={clientId:variant==='work'?'foreign':'old',busy:variant==='busy',uncertain:variant==='uncertain'};shared.values.set('authorityWork',work);
+  const gm=await client(shared);await gm.ready();assert.equal(gm.service.isCreationAuthority(),variant==='idle');
+  if(variant!=='idle')assert.deepEqual(shared.values.get('authorityWork'),work);
+ }
+});
+
+test('interrupted expired claim refuses checkpoint changes during activation',async()=>{
+ const shared=state(),meta={clientId:'candidate',userId:'gm',browserId:'closed',launch:stamp,leaseVersion:1};
+ shared.values.set('creationAuthorityClient','old');shared.values.set('authorityMeta',meta);shared.values.set('authorityLease',{clientId:'candidate',owner:meta,expires:shared.now-1});shared.values.set('authorityWork',{clientId:'old',busy:false,requestId:'before'});
+ shared.afterSet=(key)=>{if(key==='authorityMeta')shared.values.set('authorityWork',{clientId:'old',busy:false,requestId:'changed'});};
+ const gm=await client(shared);await gm.ready();assert.equal(gm.service.isCreationAuthority(),false);assert.equal(shared.values.get('authorityWork').requestId,'changed');assert.equal(gm.events.length,0);
+});
+
+test('clean restart recovers proven idle interrupted claim without comparing previous uptime expiry',async()=>{
+ for(const variant of ['idle','busy','uncertain','owner','invalidLaunch']){
+  const meta={clientId:'candidate',userId:'gm',browserId:'closed',launch:variant==='invalidLaunch'?'invalid':'2026-10-17T00:00:00.000Z',leaseVersion:1};
+  const shared=state({creationAuthorityClient:'predecessor',authorityMeta:meta,authorityLease:{clientId:'candidate',owner:variant==='owner'?{...meta,clientId:'other'}:meta,expires:99999999999999},authorityWork:{clientId:'predecessor',busy:variant==='busy',uncertain:variant==='uncertain'}});
+  const oldWork=structuredClone(shared.values.get('authorityWork'));
+  const gm=await client(shared);await gm.ready();assert.equal(gm.service.isCreationAuthority(),variant==='idle');
+  if(variant!=='idle'){assert.deepEqual(shared.values.get('authorityWork'),oldWork);assert.equal(gm.events.length,0);}
+ }
+});
+
+test('prior-launch interrupted finalization preserves settled predecessor work and refuses unknown or unsettled state',async()=>{
+ for(const variant of ['idle','busy','uncertain','missingClient','owner','currentLaunch']){
+  const meta={clientId:'candidate',userId:'gm',browserId:'closed',launch:variant==='currentLaunch'?stamp:'2026-10-17T00:00:00.000Z',leaseVersion:1};
+  const work={clientId:variant==='missingClient'?'':'predecessor',busy:variant==='busy',uncertain:variant==='uncertain',requestId:'settled'};
+  const shared=state({creationAuthorityClient:'candidate',authorityMeta:meta,authorityLease:{clientId:'candidate',expires:99999999999999,owner:variant==='owner'?{...meta,userId:'foreign'}:meta},authorityWork:work});
+  const gm=await client(shared);await gm.ready();assert.equal(gm.service.isCreationAuthority(),variant==='idle');
+  if(variant!=='idle'){assert.deepEqual(shared.values.get('authorityWork'),work);assert.equal(gm.events.length,0);}
+ }
 });

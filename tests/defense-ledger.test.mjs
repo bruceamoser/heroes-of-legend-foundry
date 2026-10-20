@@ -42,7 +42,10 @@ test("fresh defense submissions receive distinct identities without repeat permi
   const { requestDefense } = await import("../src/services/defense-responses.mjs");
   let sequence = 0;
   globalThis.game = {
-    settings: { get: () => "coordinator" },
+    user: { isGM: false },
+    users: { activeGM: { id: "gm" } },
+    world: { lastPlayed: "launch" },
+    settings: { get: (_id, key) => key === "authorityMeta" ? {clientId:"coordinator",userId:"gm",launch:"launch",leaseVersion:1} : key === "authorityLease" ? {clientId:"coordinator",expires:Date.now()+60000} : "coordinator" },
     messages: { get: () => message([{ ...row, status: "rolling" }]) },
   };
   globalThis.ChatMessage = {
@@ -60,4 +63,27 @@ test("fresh defense submissions receive distinct identities without repeat permi
   assert.deepEqual(first.flags, second.flags);
   assert.equal(second.flags["heroes-of-legend"].defenseRequest.actorUuid, "Actor.defender");
   assert.equal(Object.hasOwn(second.flags["heroes-of-legend"].defenseRequest.draft, "additionalAttempt"), false);
+});
+
+test("defense reports missing GM or stale automation before posting a waiting message", async (t) => {
+  const previous = { game: globalThis.game, ChatMessage: globalThis.ChatMessage };
+  t.after(() => Object.assign(globalThis, previous));
+  const { requestDefense } = await import("../src/services/defense-responses.mjs");
+  let writes = 0;
+  globalThis.ChatMessage = { create: async () => { writes++; } };
+  globalThis.game = { user: {isGM:false}, users: {activeGM:null}, world:{lastPlayed:"now"}, settings:{get:()=>"stale"} };
+  await assert.rejects(requestDefense({}, {}, {}), /GM must be connected/);
+  game.users.activeGM = {id:"gm"};
+  await assert.rejects(requestDefense({}, {}, {}), /automation session is not ready/);
+  assert.equal(writes,0);
+});
+
+test("unsupported browser capabilities reject a defense without creating a request", async(t)=>{
+ const previous={game:globalThis.game,ChatMessage:globalThis.ChatMessage};
+ const secureDescriptor=Object.getOwnPropertyDescriptor(globalThis,"isSecureContext");
+ t.after(()=>{Object.assign(globalThis,previous);if(secureDescriptor)Object.defineProperty(globalThis,"isSecureContext",secureDescriptor);else delete globalThis.isSecureContext;});
+ globalThis.game={user:{isGM:false}};let writes=0;globalThis.ChatMessage={create:async()=>{writes++;}};
+ Object.defineProperty(globalThis,"isSecureContext",{configurable:true,value:false});
+ const {requestDefense}=await import("../src/services/defense-responses.mjs");
+ await assert.rejects(requestDefense({}, {}, {}),/HTTPS or localhost.*secure browser context/);assert.equal(writes,0);
 });

@@ -8,7 +8,7 @@
     "schemaVersion": 1,
     "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You notice the dry ground beneath the roots and the way the wind bends around the rise.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Time</dt><dd>Ten minutes of examination.</dd></div><div><dt>Target / range / shape</dt><dd>A campsite you can examine for ten minutes.</dd></div><div><dt>Duration</dt><dd>Information learned remains known.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Ordinary activities remain available without this card. Roll only when uncertainty has consequences.</dd></div><div><dt>Type</dt><dd>Skill / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>After examining a site, learn one present, observable environmental danger to camping there, if any, and one available way to shelter from it, if one exists. No roll. This does not reveal hidden creatures, create shelter or promise safety from later events.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/cards/a-good-place-to-stop.md\" target=\"_blank\" rel=\"noopener\">design/cards/a-good-place-to-stop.md</a> at <code>bdfd18ed535fbd0e1892b9344444abf6da644809</code>.</p></section>",
     "activity": {
-      "action": "main",
+      "action": "passive",
       "rollMode": "none",
       "attribute": "brawn",
       "defenseAttribute": "agility"

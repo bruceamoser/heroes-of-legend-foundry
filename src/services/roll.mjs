@@ -94,15 +94,32 @@ export function renderRollSummary(message, element) {
   )
     return;
   const summary = document.createElement("div");
-  summary.className = "hol-roll-summary";
-  const title = document.createElement("strong");
-  title.textContent = `${result.total} · ${game.i18n.localize(`HOL.Tiers.${result.tier}`)}`;
-  title.className = "hol-chat-verdict";
+  summary.className = "hol-roll-summary hol-chat-card";
   summary.dataset.tier = result.tier;
+  summary.dataset.chatKind = result.mode;
   const header = document.createElement("header");
   header.className = "hol-chat-header";
-  header.textContent = `${message.speaker?.alias ?? ""} · ${game.i18n.localize(`HOL.Attributes.${result.attributeKey}`)}`;
-  summary.append(header, title);
+  const identity = document.createElement("div"), actorName = document.createElement("small"), heading = document.createElement("h3");
+  actorName.textContent = `${message.speaker?.alias ?? ""} · ${result.mode === "defense" ? "Defense" : "Check"}`;
+  const attributeName = game.i18n.localize(`HOL.Attributes.${result.resolvedAttributeKey ?? result.attributeKey}`);
+  const incoming = game.messages?.get?.(result.attackMessageId)?.getFlag("heroes-of-legend", "attackCard");
+  heading.textContent = result.mode === "defense" ? `Defend${incoming?.title ? ` · ${incoming.title}` : ""}` : "Attribute check";
+  identity.append(actorName, heading);
+  const actor = game.actors?.get?.(message.speaker?.actor);
+  header.append(identity);
+  const bar = document.createElement("div"); bar.className = "hol-chat-bar";
+  const barPart = text => { const part = document.createElement("span"); part.textContent = text; bar.append(part); };
+  if (incoming?.attackerName) barPart(`Against ${incoming.attackerName}`);
+  barPart(`${attributeName} ${result.attribute >= 0 ? "+" : ""}${result.attribute}`);
+  barPart(result.net ? `${Math.abs(result.net)} ${result.net < 0 ? "Banes" : "Boons"}` : "Even");
+  barPart(`${result.count}d6 · ${result.net ? `keep ${result.net > 0 ? "highest" : "lowest"} 3` : "keep 3"}`);
+  const resolution = document.createElement("div"); resolution.className = "hol-chat-resolution";
+  const verdict = document.createElement("div"); verdict.className = `hol-chat-verdict ${result.tier}`;
+  const total = document.createElement("strong"), tier = document.createElement("span");
+  total.textContent = result.total;
+  tier.textContent = `${game.i18n.localize(`HOL.Tiers.${result.tier}`)}${result.mode === "defense" ? " defense" : ""}`;
+  verdict.append(total, tier);
+  summary.append(header, bar, resolution);
   const original = result.dice ?? message.rolls?.[0]?.dice?.[0]?.results?.map((die, index) => ({ index, face: die.result, kept: Boolean(die.active) })) ?? [];
   if (original.length) {
     const dice = document.createElement("div");
@@ -117,30 +134,37 @@ export function renderRollSummary(message, element) {
       face.setAttribute("aria-label", `${die.face}, ${die.kept ? "kept" : "discarded"}`);
       dice.append(face);
     }
-    summary.append(dice);
+    resolution.append(dice);
   }
+  resolution.append(verdict);
   if (result.natural !== "none") {
     const natural = document.createElement("p");
     natural.className = "hol-chat-natural";
     natural.textContent = game.i18n.localize(`HOL.Naturals.${result.natural}`);
     summary.append(natural);
   }
-  const detail = document.createElement("p");
-  detail.textContent = game.i18n.format("HOL.RollDetails", {
+  const detail = document.createElement("details"), detailLabel = document.createElement("summary"), audit = document.createElement("p");
+  detailLabel.textContent = "Roll details";
+  audit.textContent = game.i18n.format("HOL.RollDetails", {
     faces: result.retained.join(", "),
     boons: result.boons,
     banes: result.banes,
   });
-  summary.append(detail);
+  detail.className = "hol-chat-details";
+  detail.append(detailLabel, audit);
   if (result.attackOutcome) {
     const outcome = document.createElement("p");
-    outcome.textContent =
-      result.attackOutcome.resolution === "reference"
+    outcome.className = "hol-chat-effect";
+    const settledDamage = message.getFlag("heroes-of-legend", "defenseDamage");
+    outcome.textContent = settledDamage
+      ? `${settledDamage.event.total} damage applied · HP ${settledDamage.before} → ${settledDamage.after}${settledDamage.wound ? " · Wound awaiting resolution" : ""}`
+      : result.attackOutcome.resolution === "reference"
         ? `${result.attackOutcome.text} · Resolve costs and effects manually.`
         : `${result.attackOutcome.damage} physical damage before resistance. The DA can review and apply damage.`;
     summary.append(outcome);
     if (
       game.user.isGM &&
+      !settledDamage &&
       result.attackMessageId &&
       result.attackOutcome.resolution !== "reference"
     ) {
@@ -183,10 +207,39 @@ export function renderRollSummary(message, element) {
       li.textContent = `${source.label}: ${source.amount} ${source.kind}`;
       list.append(li);
     }
-    const details = document.createElement("details"), heading = document.createElement("summary");
-    heading.textContent = "Roll details";
-    details.append(heading, list);
-    summary.append(details);
+    detail.append(list);
   }
-  element.querySelector(".message-content")?.append(summary);
+  const footer = document.createElement("footer"); footer.className = "hol-chat-footer";
+  const status = document.createElement("span");
+  status.textContent = message.getFlag("heroes-of-legend", "defenseDamage") ? "Damage applied" : "Rolled";
+  footer.append(status);
+  if (result.mode === "defense" && result.attackMessageId || actor?.isOwner && result.mode === "attribute") {
+    const again = document.createElement("button"); again.type = "button"; again.textContent = "Roll again";
+    again.addEventListener("click", async () => {
+      try {
+        if (result.mode === "defense") {
+          const {chooseDefender} = await import("../dialogs/defender-choice.mjs");
+          await chooseDefender(result.attackMessageId);
+        } else {
+          const {promptAttributeRoll} = await import("../dialogs/attribute-roll.mjs");
+          await promptAttributeRoll(actor, result.resolvedAttributeKey ?? result.attributeKey);
+        }
+      } catch (error) { ui.notifications.error(error.message); }
+    });
+    footer.append(again);
+  }
+  summary.append(footer);
+  const content = element.querySelector(".message-content");
+  if (!content) return;
+  // Keep Foundry's evaluated dice and tooltip controls available without a
+  // second primary result panel above the approved card. Never rebuild dice.
+  const nativeNodes = [...content.querySelectorAll(".dice-roll"), ...element.querySelectorAll(".message-flavor, .flavor-text")];
+  if (["attribute", "defense"].includes(result.mode))
+    nativeNodes.push(...Array.from(content.childNodes).filter(node => node.nodeType === 3 && node.textContent.trim()));
+  if (nativeNodes.length) {
+    detail.classList.add("hol-native-roll-details");
+    detail.append(...nativeNodes);
+  }
+  summary.append(detail);
+  content.append(summary);
 }

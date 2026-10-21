@@ -134,3 +134,29 @@ export function changeRoster(state, { id, side, mode, reason = "" }) {
   }
   return audit(next, "roster", { id, side, mode, reason: reason.trim() });
 }
+
+/** Current table-controlled turn selector. Legacy side/round algorithms above
+ * remain available for old records, but never gate the active tracker. */
+export function startTurnSelection(participants) {
+  const roster = participants.map(participant);
+  if (!roster.length || new Set(roster.map(p => p.id)).size !== roster.length)
+    throw new Error("Choose a nonempty unique roster.");
+  return {schemaVersion:2,revision:1,round:1,serial:0,current:null,
+    roster:roster.map(p=>({...p,withdrawn:false})),history:[]};
+}
+export function availableTurnParticipants(state) {
+  return state.current ? [] : state.roster.filter(p=>!p.withdrawn);
+}
+export function selectTurn(state,id) {
+  if(state.current)throw new Error("Finish the current turn before choosing another.");
+  if(!state.roster.some(p=>p.id===id&&!p.withdrawn))throw new Error("Choose an encounter participant.");
+  const next=structuredClone(state);next.schemaVersion=2;next.current=id;next.serial=(next.serial??0)+1;
+  delete next.budgets;delete next.acted;delete next.opening;delete next.nextSide;delete next.startingSide;
+  return audit(next,"start",{id});
+}
+export function finishSelectedTurn(state) {
+  if(!state.current)throw new Error("No current turn to finish.");
+  const next=structuredClone(state),id=next.current;next.current=null;next.schemaVersion=2;
+  delete next.budgets;delete next.acted;delete next.opening;delete next.nextSide;delete next.startingSide;
+  return audit(next,"end",{id});
+}

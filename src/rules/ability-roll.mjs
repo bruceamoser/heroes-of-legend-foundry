@@ -14,8 +14,13 @@ export function abilityRollConfiguration(item, record) {
   const configured = item.system?.activity;
   const attribute = configured?.rollMode === 'attribute' && ATTRIBUTES.has(configured.attribute)
     ? configured.attribute : printed.attribute;
-  const attack = record?.reference?.rules?.details?.some(detail => detail.label === "Type" && detail.value === "Attack") ?? false;
-  return {itemUuid:item.uuid, name:item.name, attribute, attack,
+  const rules=record?.reference?.rules;
+  const tags=[...(rules?.details ?? []).filter(detail=>detail.label === "Type").map(detail=>detail.value),
+    ...(rules?.notes ?? []).filter(note=>note.label === "Tags").map(note=>note.text)];
+  const attack=tags.some(value=>String(value).split("/").some(tag=>tag.trim() === "Attack"));
+  const ranged = attack && (/ranged weapon/i.test(JSON.stringify(record?.reference?.rules ?? {})) || record?.id === "ability-basic-ranged");
+  return {itemUuid:item.uuid, name:item.name, attribute, attack, ranged,
+    effect:(record?.reference?.rules?.body ?? []).flatMap(block=>block.text ? [block.text] : block.items ?? []).join(" ") || String(item.system?.description ?? "").replace(/<[^>]*>/g," ").replace(/\s+/g," ").trim(),
     outcomes:Object.fromEntries(['weak','standard','strong'].map(tier => [tier,item.system?.outcomes?.[tier] || printed.outcomes[tier] || '']))};
 }
 export function assertAbilityConfiguration(current, opened) {

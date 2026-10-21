@@ -1,20 +1,14 @@
 import { createActionMessage, shouldProcessRequest } from "./authority.mjs";
 import { ensureAuthorityReady } from "./authority.mjs";
 import {
-  initialBudgets,
-  convertParticipantBudget,
-  spendParticipantBudget,
-} from "./turn-budget.mjs";
-import {
   enqueueCharacterOperation,
   isCreationAuthority,
   writeAuthorityDocument,
 } from "./authority.mjs";
 import {
-  startEncounter,
-  chooseParticipant,
-  finishTurn,
-  changeRoster,
+  startTurnSelection,
+  selectTurn,
+  finishSelectedTurn,
 } from "../rules/encounter.mjs";
 const ID = "heroes-of-legend";
 export function combatSide(combatant) {
@@ -62,7 +56,7 @@ async function apply(id, combatUuid) {
   if (
     combat?.documentName !== "Combat" ||
     !message.author ||
-    !["start", "choose", "finish", "roster", "convert", "spend"].includes(request.kind)
+    !["start", "choose", "finish", "roster"].includes(request.kind)
   )
     throw new Error("Invalid encounter request.");
   const receipt = combat.getFlag(ID, "operationReceipts")?.[id];
@@ -79,11 +73,11 @@ async function apply(id, combatUuid) {
   }
   const state = combat.getFlag(ID, "encounter"),
     actor = combat.combatants.get(
-      ["choose", "convert", "spend"].includes(request.kind)
+      request.kind === "choose"
         ? (request.id ?? state?.current)
         : state?.current,
     )?.actor;
-  if (["choose", "finish", "convert", "spend"].includes(request.kind)) {
+  if (["choose", "finish"].includes(request.kind)) {
     if (
       !message.author.isGM &&
       !actor?.testUserPermission(message.author, "OWNER")
@@ -99,53 +93,32 @@ async function apply(id, combatUuid) {
     request.revision !== (state?.revision ?? 0)
   )
     throw new Error(
-      "The encounter changed. Review the current side and choose again.",
+      "The encounter changed. Choose again.",
     );
-  let next, openingRoll;
+  let next;
+  const participants = () => combat.combatants.map(c=>({id:c.id,side:combatSide(c)}));
   if (request.kind === "start") {
     if (state) throw new Error("This encounter has already started.");
-    const participants = combat.combatants
-      .filter((c) => !c.isDefeated)
-      .map((c) => ({ id: c.id, side: combatSide(c) }));
-    if (!participants.length)
-      throw new Error("Add at least one participating combatant first.");
-    openingRoll = await new foundry.dice.Roll("3d6").evaluate();
-    next = startEncounter(
-      participants,
-      openingRoll.dice[0].results.map((r) => r.result),
-    );
-    next.opening.roll = openingRoll.toJSON();
-    next.budgets = initialBudgets(combat, next.roster);
-  } else {
-    if (!state) throw new Error("Start the encounter first.");
-    if (request.kind === "choose") {
-      if (!combat.combatants.has(request.id))
-        throw new Error(
-          "That participant was removed; the DA can withdraw it from the roster.",
-        );
-      next = chooseParticipant(state, request.id);
-    } else if (request.kind === "finish") next = finishTurn(state);
-    else if (request.kind === "spend") next = spendParticipantBudget(combat,state,request,message.author,id);
-    else if (request.kind === "convert")
-      next = convertParticipantBudget(
-        combat,
-        state,
-        request,
-        message.author,
-        id,
-      );
-    else {
-      if (request.mode !== "withdraw" && !combat.combatants.has(request.id))
-        throw new Error(
-          "Add the native combatant before admitting it to the roster.",
-        );
-      next = changeRoster(state, request);
-      if (request.mode !== "withdraw" && !next.budgets?.[request.id])
-        next.budgets = {
-          ...(next.budgets ?? {}),
-          ...initialBudgets(combat, [{ id: request.id }]),
-        };
+    next = startTurnSelection(participants());
+  } else if (request.kind === "choose") {
+    if (!combat.combatants.has(request.id)) throw new Error("That participant is no longer in the encounter.");
+    const current = state ? structuredClone(state) : startTurnSelection(participants());
+    if (!current.roster.some(p=>p.id===request.id&&!p.withdrawn)) {
+      const combatant=combat.combatants.get(request.id);
+      current.roster=current.roster.filter(p=>p.id!==request.id);
+      current.roster.push({id:request.id,side:combatSide(combatant),withdrawn:false});
     }
+    next = selectTurn(current, request.id);
+  } else if (request.kind === "finish") {
+    if (!state) throw new Error("Choose a participant first.");
+    next = finishSelectedTurn(state);
+  } else {
+    if (!state) throw new Error("Choose a participant first.");
+    if (request.mode !== "withdraw" && !combat.combatants.has(request.id)) throw new Error("Add the combatant first.");
+    if(state.current===request.id)throw new Error("Finish the current turn first.");
+    next=structuredClone(state);next.revision++;
+    next.roster=next.roster.filter(participant=>participant.id!==request.id);
+    if(request.mode!=="withdraw")next.roster.push({id:request.id,side:combatSide(combat.combatants.get(request.id)),withdrawn:false});
   }
   if (!isCreationAuthority()) return { status: "authority-lost" };
   const turn = next.current
@@ -181,12 +154,8 @@ async function presentResult(message, combat) {
     });
     return;
   }
-  if (kind === "start")
-    await message.update({
-      content: `Opening roll: ${state.opening.total}. ${state.startingSide === "players" ? "Players" : "Opposition"} start each round. Choose the first participant in the encounter tracker.`,
-      rolls: [state.opening.roll],
-    });
-  else await message.update({ content: "Encounter decision recorded." });
+  const current=combat.combatants.get(state.current);
+  await message.update({content:current ? `${foundry.utils.escapeHTML(current.name)}’s turn.` : kind === "finish" ? "Turn finished." : "Encounter ready."});
 }
 export function registerCombatRequests() {
   Hooks.on("createChatMessage", (message) => {

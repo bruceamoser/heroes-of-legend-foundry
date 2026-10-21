@@ -35,7 +35,6 @@ export class CreatureSheet extends CharacterSheet {
   static DEFAULT_OPTIONS = {
     classes: ["hol-creature"],
     actions: {
-      resetActions: CreatureSheet.resetActions,
       npcMelee: CreatureSheet.npcMelee,
       creatureAction: CreatureSheet.creatureAction,
       viewCreatureAction: CreatureSheet.viewCreatureAction,
@@ -51,7 +50,6 @@ export class CreatureSheet extends CharacterSheet {
   };
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
-    context.actionUses = {main:0,maneuver:0,reaction:0,...this.actor.getFlag("heroes-of-legend", "actionUses")};
     const system = this.actor.system;
     const flags = this.actor.getFlag("heroes-of-legend", "automation")
       ? {
@@ -98,7 +96,7 @@ export class CreatureSheet extends CharacterSheet {
         hasEntries: category === "main" || system.actions.entries.some(entry => entry.category === category),
         entries: system.actions.entries.filter(
           entry => entry.category === category && !(category === "main" && entry.name === "Basic Melee"),
-        ).map(entry => ({...entry, automaticDamage: Boolean(numericCreatureAction(flags.catalogId,flags.sourceCommit,entry)), context: ["Target", "Damage type", "Limit"].map(label => {
+        ).sort((a,b)=>Number(Boolean(b.defenseSource)) - Number(Boolean(a.defenseSource))).map(entry => ({...entry, automaticDamage: Boolean(numericCreatureAction(flags.catalogId,flags.sourceCommit,entry)), context: ["Target", "Damage type", "Limit"].map(label => {
           const match = entry.referenceMarkdown?.match(new RegExp(`\\*\\*${label}:\\*\\*\\s*([^*\\n]+)`));
           return match ? `${label}: ${match[1].trim()}` : "";
         }).filter(Boolean).join(" · ")})),
@@ -124,10 +122,6 @@ export class CreatureSheet extends CharacterSheet {
           )
         : "",
     };
-  }
-  static async resetActions() {
-    try { const {resetOwnedActions} = await import("../services/action-uses.mjs"); await resetOwnedActions(this.actor); await this.render(); }
-    catch(error) { ui.notifications.error(error.message); }
   }
   async _onRender(context, options) {
     await super._onRender(context, options);

@@ -19,7 +19,7 @@ export function purchaseEligibility(choice, state, catalog, selection = {}) {
   let { rank } = selection;
   const { recipeIds } = selection;
   integer(state.level, "level");
-  integer(state.dp, "DP");
+  integer(state.dp, "DP", Number.MIN_SAFE_INTEGER);
   const reasons = [];
   let cost = null;
   if (!choice || !["ability", "discipline"].includes(choice.kind))
@@ -28,10 +28,6 @@ export function purchaseEligibility(choice, state, catalog, selection = {}) {
       cost,
       reasons: [reason("kind", "This choice is not a purchase.")],
     };
-  if (state.stage === "advancement" && !state.safePlace)
-    reasons.push(
-      reason("safe-place", "Confirm that the character is in a safe place before spending DP."),
-    );
   if (choice.kind === "discipline") {
     const current = state.ranks[choice.id] ?? 0;
     rank ??= current + 1;
@@ -436,5 +432,36 @@ export function awardMilestones(state, newLevel) {
     ...(state.awards ?? []),
     { from: state.level, to: newLevel, dp, grit: milestones.length },
   ];
+  return next;
+}
+
+/** Explicit level correction changes level and DP only. Existing choices remain
+ * visible for the player to review rather than being silently rebuilt. */
+export function changeCharacterLevel(state, direction) {
+  integer(state.level,"current level",1);
+  if(![-1,1].includes(direction))throw new Error("Add or remove one level.");
+  if(direction<0&&state.level===1)throw new Error("A character cannot be below level 1.");
+  if(!Number.isSafeInteger(state.dp))throw new Error("Invalid DP balance.");
+  const next=clone(state),level=state.level+direction;
+  const delta=direction>0?8+level:-(8+state.level);
+  next.level=level;next.dp=state.dp+delta;
+  return {state:next,delta};
+}
+export function refundableAbilityPurchase(state,id) {
+  const refunded=new Set((state.ledger??[]).filter(entry=>entry.kind==="refund").map(entry=>entry.refundOf));
+  const ledger=state.ledger??[];
+  for(let index=ledger.length-1;index>=0;index--){const entry=ledger[index];if(entry.kind==="purchase"&&(entry.id??entry.sourceId)===id&&entry.delta<0&&!refunded.has(index))return {index,cost:-entry.delta};}
+  return null;
+}
+export function refundLearnedAbility(state,id) {
+  if(!state.abilities.includes(id))throw new Error("This ability is not learned.");
+  const purchase=refundableAbilityPurchase(state,id);
+  if(!purchase)throw new Error("This ability was granted or has no paid purchase to refund.");
+  const next=clone(state);next.dp+=purchase.cost;
+  next.ledger=[...(state.ledger??[]),{kind:"refund",id,delta:purchase.cost,balance:next.dp,refundOf:purchase.index}];
+  const purchaseIndex=(next.purchases??[]).findLastIndex(entry=>entry.id===id);
+  if(purchaseIndex>=0)next.purchases.splice(purchaseIndex,1);
+  const granted=next.ledger.some(entry=>["ability-grant","signature-grant"].includes(entry.kind)&&entry.id===id);
+  if(!refundableAbilityPurchase(next,id)&&!granted)next.abilities=next.abilities.filter(ability=>ability!==id);
   return next;
 }

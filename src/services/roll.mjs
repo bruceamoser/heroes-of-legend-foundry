@@ -1,3 +1,4 @@
+import { outcomeEffects } from "../rules/outcome-effects.mjs";
 import { abilityRollConfiguration, assertAbilityConfiguration, outcomeDamage } from "../rules/ability-roll.mjs";
 import { loadCatalogs } from "./catalog.mjs";
 import { selectedReferences } from "./reference-play.mjs";
@@ -24,6 +25,16 @@ export async function rollPrepared(actor, basis, draft) {
   );
   if (JSON.stringify(current) !== JSON.stringify(basis))
     throw new Error("Roll sources changed. Review the dialog before rolling.");
+  let ammunition;
+  let abilityConfiguration=draft.abilityConfiguration;
+  if(draft.abilityItemId){
+    const item=actor.items.get(draft.abilityItemId), catalogs=await loadCatalogs();
+    abilityConfiguration=abilityRollConfiguration(item,catalogs.choices.find(choice=>choice.id===item.getFlag("heroes-of-legend","catalogId")));
+  }
+  if (abilityConfiguration?.ranged) {
+    const {rangedAmmunition} = await import("./ranged-ammunition.mjs");
+    ammunition = rangedAmmunition(actor,draft.rangedWeaponItemId);
+  }
   const prepared = prepareRoll(current, draft);
   const mode = game.settings.get("core", "messageMode");
   const { roll, snapshot } = await evaluatePreparedRoll(actor, basis, draft, {
@@ -39,10 +50,11 @@ export async function rollPrepared(actor, basis, draft) {
     },
     { messageMode: mode },
   );
-  if (draft.abilityItemId) {
-    const {spendOwnedAction} = await import("./action-uses.mjs");
-    await spendOwnedAction(actor, actor.items.get(draft.abilityItemId)?.system.activity.action, {operationId: message.id})
-      .catch(error => ui.notifications.warn(`Roll posted; action counter needs correction: ${error.message}`));
+  if (ammunition) {
+    try {
+      const {consumeOwnedSupply} = await import("./inventory.mjs");
+      await consumeOwnedSupply(actor,ammunition.ammo,{operationId:message.id,label:ammunition.ammo.name});
+    } catch(error) { ui.notifications.error(`Attack rolled; ammunition check failed: ${error.message}`); }
   }
   return message;
 }
@@ -160,16 +172,16 @@ export function renderRollSummary(message, element) {
     resolution.append(dice);
   }
   resolution.append(verdict);
-  if (result.ability?.outcomes?.[result.tier]) {
+  if (result.ability?.outcomes?.[result.tier] || result.ability?.effect) {
     const outcome = document.createElement("p");
     outcome.className = "hol-chat-effect";
-    outcome.textContent = result.ability.outcomes[result.tier];
+    outcome.textContent = result.ability.outcomes[result.tier] || result.ability.effect;
     summary.append(outcome);
   }
   if (result.mode === "death") {
     const effect = document.createElement("p"); effect.className = "hol-chat-effect";
     effect.textContent = result.natural === "fumble" ? "Two death marks." : result.natural === "critical" ? "Regain 1 HP." : result.tier === "weak" ? "One death mark." : result.tier === "strong" ? "Stabilize." : "No change.";
-    effect.append(" Update the character when ready."); summary.append(effect);
+    summary.append(effect);
   }
   if (result.natural !== "none") {
     const natural = document.createElement("p");
@@ -186,36 +198,32 @@ export function renderRollSummary(message, element) {
   });
   detail.className = "hol-chat-details";
   detail.append(detailLabel, audit);
-  const damage = result.attackOutcome?.resolution !== "reference" && Number.isSafeInteger(result.attackOutcome?.damage)
-    ? [{type: result.attackOutcome.type, amount: result.attackOutcome.damage}]
-    : outcomeDamage(result.ability?.outcomes?.[result.tier] ?? result.attackOutcome?.text);
+  const damageText = result.ability?.outcomes?.[result.tier] ?? result.attackOutcome?.text ?? "";
+  const effects = result.attackOutcome?.components ? {components:result.attackOutcome.components,conditions:result.attackOutcome.conditions ?? []}
+    : Number.isSafeInteger(result.attackOutcome?.damage)
+      ? {components:[{type:result.attackOutcome.type,amount:result.attackOutcome.damage}],conditions:[]}
+      : outcomeEffects(damageText);
   if (result.attackOutcome) {
-    const outcome = document.createElement("p");
-    outcome.className = "hol-chat-effect";
-    outcome.textContent = result.attackOutcome.resolution === "reference"
-      ? result.attackOutcome.text
-      : `${result.attackOutcome.damage} ${result.attackOutcome.type} damage before resistance.`;
+    const outcome = document.createElement("p"); outcome.className = "hol-chat-effect";
+    outcome.textContent = result.attackOutcome.text ?? `${result.attackOutcome.damage} ${result.attackOutcome.type} damage`;
     summary.append(outcome);
   }
-  const damageText = result.ability?.outcomes?.[result.tier] ?? result.attackOutcome?.text ?? "";
   let damageButton;
-  if (damage || /\bdamage\b/i.test(damageText)) {
-    const button = document.createElement("button");
-    button.type = "button";
-    button.className = "hol-apply-damage";
-    button.textContent = "Apply Damage";
-    button.title = "Apply to all selected tokens";
+  if (effects?.components.length || effects?.conditions.length || result.attackOutcome || /\bdamage\b/i.test(damageText)) {
+    const button = document.createElement("button"); button.type = "button";
+    button.className = "hol-apply-damage"; button.textContent = "Apply Damage";
     button.addEventListener("click", async () => {
       if (button.disabled) return;
       button.disabled = true;
       try {
-        const { applySelectedDamage } = await import("./explicit-damage.mjs");
-        if (damage) await applySelectedDamage(damage, {sourceMessageId: message.id, label: heading.textContent});
-        else {
+        if (effects) {
+          const {applySelectedDamage} = await import("./explicit-damage.mjs");
+          await applySelectedDamage(effects.components,{conditions:effects.conditions,sourceMessageId:message.id,label:heading.textContent});
+        } else {
           const {promptChatDamage} = await import("../dialogs/chat-damage.mjs");
-          await promptChatDamage(message, damageText);
+          await promptChatDamage(message,damageText);
         }
-      } catch (error) { ui.notifications.error(error.message); }
+      } catch(error) { ui.notifications.error(error.message); }
       finally { button.disabled = false; }
     });
     damageButton = button;
@@ -282,4 +290,14 @@ export function renderRollSummary(message, element) {
   }
   summary.append(detail);
   content.append(summary);
+}
+
+export function showAbilityOutcome(message) {
+  const result=message.getFlag("heroes-of-legend","roll"), ability=result?.ability;
+  if(!ability || /\bdamage\b/i.test(ability.outcomes?.[result.tier] || ability.effect || ""))return;
+  const escape=foundry.utils.escapeHTML;
+  const attribute=game.i18n.localize(`HOL.Attributes.${result.resolvedAttributeKey ?? result.attributeKey}`);
+  const modifier=result.attribute>=0?`+${result.attribute}`:String(result.attribute);
+  const content=`<section class="hol-ability-outcome"><div class="hol-outcome-total"><strong>${escape(String(result.total))} · ${escape(game.i18n.localize(`HOL.Tiers.${result.tier}`))}</strong><span>${escape(attribute)} ${escape(modifier)} · ${(result.retained??[]).join(" · ")}</span></div><p>${escape(ability.outcomes?.[result.tier] || ability.effect || "")}</p><a class="content-link" data-link data-type="Item" data-uuid="${escape(ability.itemUuid)}">Full ability details</a></section>`;
+  void foundry.applications.api.DialogV2.prompt({classes:["heroes-of-legend","hol-native-dialog"],window:{title:ability.name},content,ok:{label:"Close"}}).catch(error=>ui.notifications.error(error.message));
 }

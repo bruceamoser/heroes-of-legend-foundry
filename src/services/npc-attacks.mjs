@@ -31,8 +31,6 @@ export async function declareNpcMelee(actor, { blockable } = {}) {
     "systems/heroes-of-legend/templates/attack-card.hbs", {...snapshot, portrait: actor.img});
   const message = await ChatMessage.create({content, speaker: ChatMessage.getSpeaker({actor}),
     flags: {[ID]: {attackCard: snapshot}}});
-  const {spendOwnedAction} = await import("./action-uses.mjs");
-  await spendOwnedAction(actor, "main", {operationId: message.id}).catch(error => ui.notifications.warn(`Attack posted; action counter needs correction: ${error.message}`));
   return message;
 }
 /** A GM reference declaration records intent; costs and effects remain manual. */
@@ -53,9 +51,9 @@ export async function declareCreatureAction(actor, actionId) {
   const reference = {
     ...(encounters.length === 1 ? { combatId: encounters[0].id } : {}),
     resolution: numeric ? "numeric" : "reference",
+    damageType: /\*\*Damage type:\*\*\s*(physical|fire|cold|lightning|mental|radiant|life)/i.exec(action.referenceMarkdown ?? "")?.[1]?.toLowerCase() ?? null,
     ...(numeric ? { damage: numeric.damage, damageType: numeric.damageType,
-      numericSource: {catalogId, sourceCommit, action: structuredClone(action)} } : {
-      manualReason: "Specialty, mixed damage, unreviewed or edited source: resolve the printed effects at the table." }),
+      numericSource: {catalogId, sourceCommit, action: structuredClone(action)} } : {}),
     actorUuid: actor.uuid,
     attackerName: actor.name,
     actionId: action.id,
@@ -103,8 +101,6 @@ export async function declareCreatureAction(actor, actionId) {
       },
     },
   });
-  const {spendOwnedAction} = await import("./action-uses.mjs");
-  await spendOwnedAction(actor, action.category, {operationId: message.id}).catch(error => ui.notifications.warn(`Action posted; action counter needs correction: ${error.message}`));
   return message;
 }
 

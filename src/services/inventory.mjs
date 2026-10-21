@@ -465,13 +465,9 @@ async function evaluateInventory(actor, pending) {
 }
 
 function resultContent(actor, pending, result, recovered = false) {
-  const name = foundry.utils.escapeHTML(pending.target.name),
-    actorName = foundry.utils.escapeHTML(actor.name),
-    outcome = result.after === 0 ? "out" : `d${result.after}`,
-    dice = recovered
-      ? `The DA entered the observed result ${result.retained}; no new roll was made.`
-      : `The supply roll was ${result.retained}.`;
-  return `${actorName}: ${name} supply check recorded. ${dice} Supply d${result.before} → ${outcome}. Quantity remains ${pending.target.quantity}. This records only the supply check.`;
+  const escape=foundry.utils.escapeHTML;
+  const state=result.exhausted ? "Depleted" : result.after !== result.before ? `Not depleted · d${result.after}` : "Not depleted";
+  return `<section class="hol-chat-card hol-supply-chat"><p class="hol-chat-effect"><strong>${escape(actor.name)}</strong> used <strong>${escape(pending.target.name)}</strong></p><div class="hol-chat-bar"><span>d${result.before} · rolled <strong>${result.retained}</strong></span><strong>${state}</strong></div></section>`;
 }
 
 function resultProvenance(pending) {
@@ -790,4 +786,46 @@ export function registerInventoryRequests() {
         });
       });
   });
+}
+
+const supplyQueues = new Map();
+/** One supply-die button press: roll, step down on 1, then report the actual use. */
+export function consumeOwnedSupply(actor, item, {operationId = foundry.utils.randomID(), label = ""} = {}) {
+  const previous = supplyQueues.get(actor.uuid) ?? Promise.resolve();
+  const run = previous.catch(() => {}).then(async () => {
+    if (!actor.testUserPermission(game.user,"OWNER") || actor.pack) throw new Error("Choose an actor you own.");
+    if (!/^[A-Za-z0-9_-]{1,100}$/.test(operationId)) throw new Error("Invalid supply action identity.");
+    const saved = actor.getFlag(ID,"supplyActions")?.[operationId];
+    let record = saved;
+    if (saved && saved.itemId !== item?.id) throw new Error("This supply action refers to another item.");
+    if (!record) {
+      item = actor.items.get(item?.id);
+      if (!item || item.type !== "equipment" || item.actor?.uuid !== actor.uuid) throw new Error("Choose an owned supply item.");
+      if (!item.system.quantity || !item.system.inventoryDie) throw new Error(`${item.name} is depleted.`);
+      const before = activeInventoryDie(item.system.inventoryDie);
+      const roll = await new foundry.dice.Roll(`1d${before}`).evaluate({allowInteractive:false});
+      const retained = roll.dice[0]?.results?.find(result=>result.active)?.result;
+      const result = inventoryCheck({die:before,retained});
+      record = {operationId,itemId:item.id,itemName:item.name,actorUuid:actor.uuid,actorName:actor.name,label,
+        ...result,nativeRoll:roll.toJSON(),messageId:null};
+      const items = actor.toObject().items;
+      const target = items.find(candidate=>candidate._id===item.id);
+      if (!target) throw new Error("The supply item is unavailable.");
+      target.system.inventoryDie = result.after;
+      const {updateOwnedDocument} = await import("./documents.mjs");
+      await updateOwnedDocument(actor,{items,[`flags.${ID}.inventoryRevision`]:(actor.getFlag(ID,"inventoryRevision")??0)+1,[`flags.${ID}.supplyActions.${operationId}`]:record});
+    }
+    let message = game.messages.get(record.messageId) ?? game.messages.find(message=>message.getFlag(ID,"supplyResult")?.operationId===operationId && message.getFlag(ID,"supplyResult")?.actorUuid===actor.uuid);
+    if (!message) {
+      const escape = foundry.utils.escapeHTML;
+      const state = record.exhausted ? "Depleted" : record.after !== record.before ? `Not depleted · d${record.after}` : "Not depleted";
+      const content = `<section class="hol-chat-card hol-supply-chat"><p class="hol-chat-effect"><strong>${escape(record.actorName)}</strong> used <strong>${escape(record.itemName)}</strong></p><div class="hol-chat-bar"><span>d${record.before} · rolled <strong>${record.retained}</strong></span><strong>${state}</strong></div></section>`;
+      message = await ChatMessage.create({speaker:ChatMessage.getSpeaker({actor}),content,rolls:[foundry.dice.Roll.fromData(record.nativeRoll)],flags:{[ID]:{supplyResult:{...record,nativeRoll:undefined}}}});
+      await actor.update({[`flags.${ID}.supplyActions.${operationId}.messageId`]:message.id});
+    }
+    return {...record,message,replay:Boolean(saved)};
+  });
+  supplyQueues.set(actor.uuid,run);
+  run.finally(()=>{if(supplyQueues.get(actor.uuid)===run)supplyQueues.delete(actor.uuid);}).catch(()=>{});
+  return run;
 }

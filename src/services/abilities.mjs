@@ -42,7 +42,7 @@ export function itemAbilityDefinition(item) {
     item.getFlag(ID, "source"),
   );
 }
-export async function activateOwnedAbility(item) {
+export async function activateOwnedAbility(item, {rangedWeaponItemId = null} = {}) {
   if (!item.actor?.isOwner && !game.user.isGM)
     throw new Error(
       "Use an ability belonging to a character you own, or as the DA.",
@@ -52,18 +52,20 @@ export async function activateOwnedAbility(item) {
   const configuration = abilityRollConfiguration(item, record);
   if (configuration.attribute) {
     const { SharedRollDialog } = await import("../dialogs/attribute-roll.mjs");
+    if (configuration.ranged) {
+      const {rangedAmmunition} = await import("./ranged-ammunition.mjs");
+      rangedAmmunition(item.actor,rangedWeaponItemId);
+    }
     const dialog = new SharedRollDialog(item.actor, configuration.attribute, {mode: configuration.attack ? "attack" : "attribute"});
     dialog.draft.referenceItemIds = [item.id];
     dialog.draft.abilityItemId = item.id;
+    dialog.draft.rangedWeaponItemId = rangedWeaponItemId;
     dialog.draft.abilityConfiguration = structuredClone(configuration);
     return dialog.render({force:true});
   }
   if (DEFENSE_ABILITY_IDS.has(item.getFlag(ID, "catalogId"))) return activateDefenseBenefit(item);
   const { postAbilityReference } = await import("./reference-play.mjs");
   const message = await postAbilityReference(item);
-  const {spendOwnedAction} = await import("./action-uses.mjs");
-  await spendOwnedAction(item.actor, item.system.activity.action, {operationId: message.id})
-    .catch(error => ui.notifications.warn(`Ability posted; action counter needs correction: ${error.message}`));
   return message;
 }
 
@@ -817,9 +819,6 @@ export async function activateDefenseBenefit(item, {shieldItemUuid = null} = {})
   else await actor.createEmbeddedDocuments("ActiveEffect", [data]);
   const {postAbilityReference} = await import("./reference-play.mjs");
   const message = await postAbilityReference(item);
-  const {spendOwnedAction} = await import("./action-uses.mjs");
-  await spendOwnedAction(item.actor, item.system.activity.action, {operationId: message.id})
-    .catch(error => ui.notifications.warn(`Ability posted; action counter needs correction: ${error.message}`));
   return message;
 }
 

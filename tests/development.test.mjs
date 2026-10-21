@@ -403,7 +403,7 @@ test("changing an earlier grant preserves invalid purchases for repair and keeps
   );
   assert.equal(r.state.ranks["discipline-craft"], 1);
 });
-test("milestone awards are idempotent, bank DP, preserve spent Grit and require safe-place approval", () => {
+test("historical milestone arithmetic remains idempotent; learning no longer requires safe-place approval", () => {
   const state = base();
   state.dp = 0;
   const level3 = awardMilestones(state, 3);
@@ -413,7 +413,7 @@ test("milestone awards are idempotent, bank DP, preserve spent Grit and require 
   assert.deepEqual(level3.pendingSignatures, [3]);
   assert.deepEqual(awardMilestones(level3, 3), level3);
   assert(
-    !purchaseEligibility(get("ability-conditioned-body"), level3, catalog)
+    purchaseEligibility(get("ability-conditioned-body"), level3, catalog)
       .eligible,
   );
   const level7 = awardMilestones(level3, 7);

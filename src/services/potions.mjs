@@ -1,4 +1,3 @@
-import { spendOwnedAction } from "./action-uses.mjs";
 import { createActionMessage, shouldProcessRequest } from "./authority.mjs";
 import { ensureAuthorityReady } from "./authority.mjs";
 import {
@@ -1850,7 +1849,6 @@ async function advancePotionOperation(combat, initialOperation, message) {
     switch (phase) {
       case "complete":
         validateSettlementReceipt(settlement, operation);
-        await recordPotionActionUses(operation, message);
         await presentPotionResult(combat, operation, message);
         return { status: operation.status, replay: true };
       case "reconcile":
@@ -1894,7 +1892,6 @@ async function advancePotionOperation(combat, initialOperation, message) {
           operation,
           operation.finalStatus ?? "complete",
         );
-        await recordPotionActionUses(operation, message);
         await presentPotionResult(combat, operation, message);
         return { status: operation.status, replay: false };
       default:
@@ -2319,14 +2316,4 @@ async function createPotionActionMessage(data) {
   const documents = await Promise.all([request.giverActorUuid, request.recipientActorUuid].filter(Boolean).map(uuid => fromUuid(uuid)));
   const shared = Boolean((!request.outsideCombat && request.combatUuid) || documents.some(document => !document?.testUserPermission(game.user, "OWNER")));
   return createActionMessage(data, { shared });
-}
-
-async function recordPotionActionUses(operation, message) {
-  if (!message?.getFlag(ID, "actionExecution") || operation.status !== "complete") return;
-  const giver = await fromUuid(operation.giver.actorUuid);
-  await spendOwnedAction(giver, "maneuver", {operationId:operation.requestId});
-  if (operation.recipient.actorUuid !== operation.giver.actorUuid && operation.recipient.basis.hp > 0) {
-    const recipient = await fromUuid(operation.recipient.actorUuid);
-    await spendOwnedAction(recipient, "reaction", {operationId:operation.requestId});
-  }
 }

@@ -113,9 +113,7 @@ Hooks.on("renderChatMessageHTML", renderRollSummary);
 Hooks.on("renderChatMessageHTML", renderPotionProposal);
 
 Hooks.on("renderCombatTracker", renderHOLCombatTracker);
-Hooks.on("updateActor", (_actor, changes) => {
-  if (changes.flags?.[SYSTEM_ID]?.actionUses) ui.combat?.render();
-});
+
 
 Hooks.on("renderChatMessageHTML", renderAttackCard);
 Hooks.on("renderChatMessageHTML", renderPlayerBasicMeleeCard);

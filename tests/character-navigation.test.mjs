@@ -5,12 +5,13 @@ import {createContext, SourceTextModule, SyntheticModule} from "node:vm";
 import {isMeleeWeaponEquipment} from "../src/rules/equipment-identity.mjs";
 
 async function fixture() {
-  const writes = [], errors = [], uses = [], potions = [];
+  const writes = [], errors = [], uses = [], potions = [], supplies = [];
   const actor = {isOwner:true, system:{biography:"Before",memorizedMessage:"Before"}, items:[], getFlag:()=>null};
   const fields = {"system.biography":{value:"After"},"system.memorizedMessage":{value:"A remembered message"}};
   const exports = {copyEquipmentToActor(){}, equipmentCopyOptions(){}, builderDropChoice(){}, loadCatalogs(){}, postAbilityReference(){}, WoundPanel:class{},RecoveryPanel:class{},DamagePanel:class{},EquipmentPanel:class{},ConditionPanel:class{},AdvancementWizard:class{},CreationWizard:class{},SharedRollDialog:class{},promptAttributeRoll(){},ATTRIBUTES:[],addHotbarShortcut(){},openItemShortcut(){},
     updateOwnedDocument:async (document,data,options)=>writes.push({document,data,options}),
     isHealingPotionItem:(item)=>item.system.catalogId==="potion",openPotionPreparation:async (...args)=>potions.push(args),
+    consumeOwnedSupply:async (...args)=>supplies.push(args),
     isMeleeWeaponEquipment,activateOwnedAbility:async(item)=>{uses.push(item);return {draft:{weaponItemUuid:""},render(){uses.push(this.draft.weaponItemUuid);return this;}}},
   };
   const context=createContext({ui:{notifications:{error:(message)=>errors.push(message)}},foundry:{applications:{api:{HandlebarsApplicationMixin:(base)=>base},sheets:{ActorSheetV2:class{}}}},game:{user:{}}});
@@ -19,7 +20,7 @@ async function fixture() {
   await module.link(dependency);await module.evaluate();
   const sheet=new module.namespace.CharacterSheet();sheet.actor=actor;
   sheet.element={querySelector:(selector)=>{const match=selector.match(/name="([^"]+)"/);return match?fields[match[1]]:null;},querySelectorAll:()=>[]};
-  return {sheet,actor,fields,writes,errors,uses,potions,Sheet:module.namespace.CharacterSheet};
+  return {sheet,actor,fields,writes,errors,uses,potions,supplies,Sheet:module.namespace.CharacterSheet};
 }
 
 test("Story blur save and navigation flush preserve only authored text",async()=>{
@@ -56,9 +57,9 @@ test("favorite potion Use retains its exact bottle identity",async()=>{
   await f.Sheet.useItem.call(f.sheet,null,{dataset:{},closest:()=>({dataset:{itemId:"bottle"}})});
   assert.equal(f.potions[0][0],bottle);assert.equal(f.potions[0][1].bottleItemUuid,bottle.uuid);assert.equal(f.uses.length,0);
 });
-test("contextual favorite potion action uses its source bottle rather than the linked ability row",async()=>{
+test("favorite consumable die checks its exact source supply without opening potion preparation",async()=>{
   const f=await fixture();const bottle={id:"bottle",uuid:"Actor.hero.Item.bottle",type:"equipment",system:{catalogId:"potion"}},ability={id:"action",type:"ability"};
   f.actor.items.get=id=>id==="bottle"?bottle:ability;
   await f.Sheet.useItem.call(f.sheet,null,{dataset:{useItemId:"bottle",supplyUse:"true"},closest:()=>({dataset:{itemId:"action"}})});
-  assert.equal(f.potions[0][0],bottle);assert.equal(f.potions[0][1].bottleItemUuid,bottle.uuid);assert.equal(f.uses.length,0);
+  assert.equal(f.supplies[0][0],f.actor);assert.equal(f.supplies[0][1],bottle);assert.equal(f.potions.length,0);assert.equal(f.uses.length,0);
 });

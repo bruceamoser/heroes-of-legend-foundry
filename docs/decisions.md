@@ -189,3 +189,38 @@ Foundry permissions. Do not introduce DA approval gates.
 Bruce clarified that using an ability **does spend its action**, with an easy reset
 for mistakes. An encounter is not a prerequisite for rolling. These instructions
 supersede the earlier broad automation preference; canonical game rules are unchanged.
+
+
+## October 21 table-first corrections (#234–#237)
+
+Bruce supersedes action spending/counters entirely: players and the DA track action
+limits. Remove counters and reset controls from characters, creatures and encounters.
+An encounter only records one chosen participant; other choices wait until that
+participant finishes. No side order, round budget or automatic consequence chain.
+
+Creature attacks, including mixed damage/conditions, declare with Defend. Player
+defense yields an outcome card whose Apply Damage applies its supported printed
+damage and conditions to the selected tokens. Player attack rolls keep their normal
+rules perspective. Non-damage attribute abilities show the configured roll then an
+outcome dialog with ability text; no-roll actions show their operative effect visibly
+and link to full details. Remove generic how-to/automation/provenance text from play
+cards. Dying rolls use the compact web presentation without an ability browser.
+
+A ranged weapon must have assigned ammunition before its attack rolls. After a
+successful attack roll, check that ammunition supply once and post the actual die
+result/depletion card. Consumable dice similarly roll directly and step down on 1.
+Keep canonical inventory-die arithmetic; a reduced die is not an exhausted item.
+Condition changes name target, condition and rating. No source textbox is required;
+removal must clear its token icon as well as its mechanical contribution.
+
+Sheet controls follow the web list/popup interactions: favorite abilities in the
+Abilities tab, attack rows first within Main/Maneuver, item-specific Held/Worn,
+visible equipment market list with unavailable purchases disabled, language list
+selection adds immediately, and passive/ancestry sidebar names open detail cards.
+Remove the extra defenses play buttons and creature conditions/damage/equipment tabs.
+
+Add level replaces award milestone and only increases level plus its canonical DP
+grant. Remove level above level 1 reverses that level and grant. Bruce explicitly
+allows a negative DP balance; validation flags overspending and instructs the player
+to remove purchased abilities. Level changes do not silently remove purchases or
+rebuild committed items. Safe-place confirmation is removed from this workflow.

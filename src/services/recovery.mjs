@@ -178,7 +178,7 @@ async function apply(id) {
     },
   };
   if (request.draft.kind === "grit") changes["system.grit.spent"] = actor.system.grit.spent + 1;
-  if (plan.state) changes[`flags.${ID}.survival`] = plan.state;
+  if (plan.state) { changes[`flags.${ID}.survival`] = plan.state; changes[`flags.${ID}.deathMarks`] = plan.state.marks; }
   else changes[`flags.${ID}.creatureDefeated`] = plan.after === 0;
   actor.validate({
     changes: foundry.utils.expandObject(changes),

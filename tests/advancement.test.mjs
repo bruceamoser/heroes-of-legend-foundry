@@ -49,7 +49,7 @@ test("milestones award each crossed level once and preview resolves both earned 
   d.signatures[3] = "ability-signature-blade-pressure-point";
   assert(!advancementPreview(base, d, choices, inventory).valid);
 });
-test("purchases require safe place, are sequential, and preserve invalid choices for repair", () => {
+test("purchases are sequential without safe-place gating and preserve invalid choices for repair", () => {
   const base = awardMilestones(state(), 2),
     d = {
       purchases: [
@@ -57,8 +57,7 @@ test("purchases require safe place, are sequential, and preserve invalid choices
         { id: "ability-smoke-in-a-bottle" },
       ],
     };
-  assert(!advancementPreview(base, d, choices, inventory).valid);
-  base.safePlace = true;
+  assert(advancementPreview(base, d, choices, inventory).valid);
   const r = advancementPreview(base, d, choices, inventory);
   assert(r.valid);
   assert.equal(r.state.ranks["discipline-craft"], 2);

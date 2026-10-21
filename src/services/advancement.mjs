@@ -9,7 +9,7 @@ import {
   validateCreationChanges,
 } from "./creation.mjs";
 import { loadCatalogs } from "./catalog.mjs";
-import { awardMilestones } from "../rules/development.mjs";
+import { changeCharacterLevel, refundLearnedAbility } from "../rules/development.mjs";
 import { advancementPreview } from "../rules/advancement.mjs";
 const ID = "heroes-of-legend";
 export function registerAdvancement() {
@@ -98,35 +98,33 @@ async function apply(id) {
     !actor.testUserPermission(message.author, "OWNER")
   )
     throw new Error("Unauthorized character development request.");
+  const priorOperation=actor.getFlag(ID,"operationReceipts")?.[message.id];
+  if(priorOperation?.kind==="refundAbility") {
+    if(priorOperation.authorId!==message.author.id || priorOperation.request!==JSON.stringify(request))throw new Error("The saved refund request changed.");
+    if(!priorOperation.applied)await finishAbilityRefund(actor,message.id,priorOperation);
+    await message.update({content:`${foundry.utils.escapeHTML(actor.name)} · Ability removed · ${currentDevelopment(actor).dp} DP`});
+    return {status:"complete",replay:true};
+  }
+  if (priorOperation?.applied) return {status:"complete",replay:true};
   const current = currentDevelopment(actor),
     changes = {};
   let state,
-    createdIds = [];
+    createdIds = [], refundItemIds = [];
   if (request.kind === "editLanguage") {
     if (request.revision !== (current.revision ?? 0)) throw new Error("Character languages or development changed. Review and retry.");
     state = editCharacterLanguage(current,request);
-  } else if (["award", "safePlace"].includes(request.kind)) {
-    if (request.kind === "award" && !message.author.isGM)
-      throw new Error("Only the DA can award campaign milestones.");
-    if (request.kind === "award") {
-      if (!Number.isSafeInteger(request.level) || request.level < 1)
-        throw new Error("Invalid milestone level.");
-      if (request.level <= current.level) {
-        await message.update({[`flags.${ID}.developmentResult`]:{complete:true,status:"already-awarded"}});
-        return {status:"already-awarded"};
-      }
-      state = awardMilestones(current, request.level);
-      state.ledger=[...(current.ledger ?? []),...Array.from({length:request.level-current.level},(_,index)=>({kind:"award",level:current.level+index+1,delta:8+current.level+index+1,operationId:message.id}))];
-      changes["system.grit.granted"] = state.gritGranted;
-    } else {
-      if (typeof request.approved !== "boolean")
-        throw new Error("Invalid safe-place decision.");
-      if (current.safePlace === request.approved) {
-        await message.update({[`flags.${ID}.developmentResult`]:{complete:true,status:"unchanged"}});
-        return {status:"unchanged"};
-      }
-      state = { ...current, safePlace: request.approved };
-    }
+  } else if (["addLevel", "removeLevel", "award"].includes(request.kind)) {
+    if (request.revision !== undefined && request.revision !== (current.revision??0)) throw new Error("Development changed. Review and retry.");
+    const direction=request.kind==="removeLevel"?-1:1;
+    const result=changeCharacterLevel(current,direction);state=result.state;
+    state.ledger=[...(current.ledger??[]),{kind:direction>0?"add-level":"remove-level",level:state.level,delta:result.delta,balance:state.dp,operationId:message.id}];
+  } else if (request.kind === "refundAbility") {
+    const catalogs=await loadCatalogs(),choice=catalogs.choices.find(choice=>choice.id===request.abilityId&&choice.kind==="ability");
+    if(!choice)throw new Error("Choose a learned ability.");
+    state=refundLearnedAbility(current,request.abilityId);
+    if(!state.abilities.includes(request.abilityId))refundItemIds=actor.items.filter(item=>item.type==="ability"&&item.getFlag(ID,"catalogId")===request.abilityId).map(item=>item.id);
+    if(request.abilityId==="ability-conditioned-body") {changes["system.health.baseMax"]=Math.max(1,actor.system.health.baseMax-1);changes["system.health.value"]=Math.min(actor.system.health.value,Math.max(1,actor.system.health.max-1));}
+    if(request.abilityId==="ability-one-more-dawn") changes["system.grit.granted"]=Math.max(actor.system.grit.spent,actor.system.grit.granted-1);
   } else if (request.kind === "commitDraft") {
     if (
       !/^[A-Za-z0-9]{16}$/.test(request.draftId ?? "") ||
@@ -214,8 +212,9 @@ async function apply(id) {
   state.revision = (current.revision ?? 0) + 1;
   changes[`flags.${ID}.development`] = state;
   changes[`flags.${ID}.operationReceipts.${message.id}`] = {
-    applied: true,
+    applied: request.kind!=="refundAbility",
     kind: request.kind,
+    ...(request.kind==="refundAbility"?{authorId:message.author.id,request:JSON.stringify(request),stateCommitted:true,deleteItemIds:refundItemIds}:{}),
   };
   validateCreationChanges(actor, changes);
   if (!isCreationAuthority()) return { status: "authority-lost" };
@@ -227,6 +226,7 @@ async function apply(id) {
       "Development changed during review. Retry against its current revision.",
     );
   await writeCharacterActor(actor, changes);
+  if(request.kind==="refundAbility")await finishAbilityRefund(actor,message.id,changes[`flags.${ID}.operationReceipts.${message.id}`]);
   if (request.kind === "commitDraft") {
     if (createdIds.some((id) => !actor.items.has(id)))
       throw new Error(
@@ -237,9 +237,18 @@ async function apply(id) {
         "complete",
     });
   }
-  await message.update({
-    content:
-      "Character development completed. Review the updated character sheet.",
-  });
+  await message.update({content:["addLevel","removeLevel","award"].includes(request.kind)
+    ? `${foundry.utils.escapeHTML(actor.name)} · Level ${state.level} · ${state.dp} DP${state.dp<0?" · Overspent":""}`
+    : request.kind==="refundAbility"?`${foundry.utils.escapeHTML(actor.name)} · Ability removed · ${state.dp} DP`:"Character development saved."});
   return { status: "complete", replay: false };
+}
+
+/** Flag/DP settlement precedes physical item deletion so an interrupted deletion
+ * can be retried without crediting DP or removing a later replacement item twice. */
+async function finishAbilityRefund(actor,requestId,receipt) {
+  if(!receipt.stateCommitted || !Array.isArray(receipt.deleteItemIds))throw new Error("This refund has no saved item-removal plan.");
+  const ids=receipt.deleteItemIds.filter(id=>actor.items.has(id));
+  if(ids.length)await actor.deleteEmbeddedDocuments("Item",ids);
+  if(receipt.deleteItemIds.some(id=>actor.items.has(id)))throw new Error("The refund is saved, but its ability item still needs removal. Retry this refund.");
+  await writeCharacterActor(actor,{[`flags.${ID}.operationReceipts.${requestId}.applied`]:true});
 }

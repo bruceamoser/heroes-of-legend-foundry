@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import vm from 'node:vm';
 import {readFile} from 'node:fs/promises';
+import {outcomeEffects} from '../src/rules/outcome-effects.mjs';
 import {outcomeDamage} from '../src/rules/ability-roll.mjs';
 
 test('damage buttons use complete numeric outcomes without guessing conditional or variable effects',()=>{
@@ -20,6 +21,7 @@ test('an incoming defense rolls immediately without coordinator, encounter or ac
     async toMessage(data){posts++;return {id:'result',...data};}
   }}}});
   const dependencies={
+    '../rules/outcome-effects.mjs':{outcomeEffects},
     '../rules/ability-roll.mjs':{abilityRollConfiguration:()=>{},assertAbilityConfiguration:()=>{},outcomeDamage},
     './catalog.mjs':{loadCatalogs:()=>{}},
     './reference-play.mjs':{selectedReferences:()=>[]},

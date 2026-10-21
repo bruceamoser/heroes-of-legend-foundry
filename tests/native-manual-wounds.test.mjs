@@ -16,6 +16,7 @@ async function fixture({ owner = true, state = null, face = 1 } = {}) {
     getFlag: (_id, key) => flags[key], testUserPermission: () => owner,
     validate() {}, toObject: () => ({ effects: [...effects.values()] }) };
   const set = (key, value) => { if(key==="effects"){effects.clear();for(const effect of value)effects.set(effect._id,effect);return;} if(key==="system.health.value"){actor.system.health.value=value;return;}const parts = key.split("."); if (parts[0] !== "flags") throw new Error(`Unexpected system write ${key}`); let target = flags; for (const part of parts.slice(2,-1)) target = target[part] ??= {};const last=parts.at(-1);if(last.startsWith("-="))delete target[last.slice(2)];else target[last] = structuredClone(value); };
+  actor.deleteEmbeddedDocuments=async(type,ids)=>{for(const id of ids)effects.delete(id);};
   actor.update=async changes=>{writes++;for(const [key,value]of Object.entries(changes))set(key,value);return actor;};
   let unique=0;
   const context = createContext({ structuredClone, Date, fetch: async () => ({ ok: true, json: async () => catalog }),
@@ -23,7 +24,7 @@ async function fixture({ owner = true, state = null, face = 1 } = {}) {
       constructor(formula) { this.isDice=formula.includes("d6");this.total=Number(formula);this.count = this.isDice?Number(formula.match(/^\d+/)[0]):0; this.dice = [{ results: Array.from({ length: this.count }, (_,i) => ({ result: Array.isArray(face)?face[i]:face })) }]; }
       async evaluate() { if(this.isDice)rolls++; return this; } toJSON() { return {}; } static fromData(){return {};}
     } }, documents: { ActiveEffect: class { validate() {} } } },
-    CONST: { ACTIVE_EFFECT_SHOW_ICON: { ALWAYS: 1 } },
+    CONST: { ACTIVE_EFFECT_SHOW_ICON: { ALWAYS: 1, NEVER: 0 } },
     game: {world:{id:"test"},packs:{get:()=>({getDocuments:async()=>Object.values(WOUND_TABLES).map(name=>{
       const results=catalog.records.filter(r=>r.table===name).map((r,i)=>({id:r.id,range:[i+1,i+1],getFlag:()=>r.key}));
       return {uuid:`Table.${name}`,getFlag:()=>name,results,draw:async({roll})=>({results:[results[roll.total-1]]})};
@@ -131,7 +132,7 @@ test("removing an earlier wound preserves later HP and wounds and removes only i
   assert.equal(f.flags.wounds[first.eventId], undefined);
   assert.ok(f.flags.wounds[second.eventId]);
   assert.equal(f.flags.survival.wounds, 1);
-  assert.ok([...f.actor.effects.values()].every(effect => effect.flags?.["heroes-of-legend"]?.woundEvent !== first.eventId));
+  assert.ok([...f.actor.effects.values()].every(effect => effect.flags?.["heroes-of-legend"]?.woundEvent !== first.eventId || (effect.disabled && effect.showIcon===0)));
   assert.equal((await f.direct.removeCharacterWound(f.actor, first.eventId)).removed, false);
   await assert.rejects(f.direct.undoCharacterWound(f.actor,"first"), /removed/);
 });

@@ -84,13 +84,18 @@ export function rollCharacterWound(actor,damageType,{eventId=null,fearSource="",
     return {eventId,message,needsSource,replay:false};
   });
 }
+async function removeUndoneWoundEffects(actor,action) {
+  const beforeIds=new Set(action.before.effects.map(effect=>effect._id));
+  const removeIds=action.after.effects.filter(effect=>!beforeIds.has(effect._id)&&actor.effects.has(effect._id)).map(effect=>effect._id);
+  if(removeIds.length)await actor.deleteEmbeddedDocuments("ActiveEffect",removeIds);
+}
 export function undoCharacterWound(actor,operationId) {
   return serialized(actor,async()=>{
     owner(actor);
     const action=actor.getFlag(ID,"woundActions")?.[operationId];
     if(!action?.complete)throw new Error("This wound action is unavailable.");
     if(action.removed)throw new Error("This wound was removed from the sheet. Its older Undo cannot restore unrelated state.");
-    if(action.undone){await ensureWoundMessage(actor,operationId,action);return {replay:true};}
+    if(action.undone){await removeUndoneWoundEffects(actor,action);await ensureWoundMessage(actor,operationId,action);return {replay:true};}
     if(!same(state(actor),action.after))throw new Error("The character has changed since this wound. Undo later wound or treatment changes first; this action will not overwrite them.");
     const before=action.before;
     const changes={"system.health.value":before.hp,effects:before.effects,
@@ -102,6 +107,7 @@ export function undoCharacterWound(actor,operationId) {
       for(const [key,value] of Object.entries(values))changes[`flags.${ID}.${flag}.${key}`]=value;
     }
     await actor.update(changes);
+    await removeUndoneWoundEffects(actor,action);
     const message=game.messages.get(action.messageId);
     if(message?.isOwner)await message.update({content:'<article class="hol-wound-chat"><p><strong>Wound undone.</strong> Previous wound count, effects and survival restored.</p></article>',[`flags.${ID}.woundResult.undone`]:true});
     return {replay:false};
@@ -146,8 +152,11 @@ export function removeCharacterWound(actor, eventId) {
     owner(actor);
     const wound = actor.getFlag(ID, "wounds")?.[eventId];
     if (!wound) return { removed: false };
-    const effects = actor.toObject().effects.filter(effect =>
-      effect.flags?.[ID]?.woundEvent !== eventId && !(wound.effectIds ?? []).includes(effect._id));
+    const effects = actor.toObject().effects.map(effect =>
+      effect.flags?.[ID]?.woundEvent === eventId || (wound.effectIds ?? []).includes(effect._id)
+        ? {...effect,disabled:true,statuses:[],showIcon:CONST.ACTIVE_EFFECT_SHOW_ICON.NEVER,
+            flags:{...effect.flags,[ID]:{...effect.flags?.[ID],retired:{reason:"Wound removed",eventId}}}}
+        : effect);
     const changes = {
       effects,
       [`flags.${ID}.wounds.-=${eventId}`]: null,

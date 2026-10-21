@@ -4,7 +4,7 @@ export class HOLActor extends foundry.documents.Actor {
     if (
       typeof statusId === "string" &&
       statusId.startsWith("hol.") &&
-      CONFIG.statusEffects[statusId]
+      CONFIG.statusEffects.some(effect => effect.id === statusId)
     ) {
       // A HUD toggle must not erase multiple independently sourced conditions.
       await new ConditionPanel(this, statusId.slice(4)).render({ force: true });

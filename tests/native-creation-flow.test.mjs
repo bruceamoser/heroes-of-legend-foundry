@@ -146,7 +146,7 @@ test("a real level-3 portable plan commits all progression, signatures, remainin
 
 test("milestone and safe-place completion waits follow their own receipts, errors and no-op results",async()=>{
   let receipt,result,failure;
-  const exports={editCharacterLanguage(){},getCampaignLanguageConfiguration(){},writeCharacterActor(){},ensureAuthorityReady(){},enqueueCharacterOperation(){},isCreationAuthority(){},buildCharacterItems(){},validateCreationChanges(){},loadCatalogs(){},awardMilestones(){},advancementPreview(){}};
+  const exports={editCharacterLanguage(){},getCampaignLanguageConfiguration(){},writeCharacterActor(){},ensureAuthorityReady(){},enqueueCharacterOperation(){},isCreationAuthority(){},buildCharacterItems(){},validateCreationChanges(){},loadCatalogs(){},changeCharacterLevel(){},refundLearnedAbility(){},advancementPreview(){}};
   const api=await load("../src/services/advancement.mjs",exports,{game:{messages:{get:()=>({getFlag:(scope,key)=>key==="developmentFailure"?failure:result})}}});
   const actor={getFlag:()=>receipt};let finished=false;
   const pending=api.waitForDevelopmentOperation(actor,"award",{timeout:100,interval:1}).then(()=>finished=true);

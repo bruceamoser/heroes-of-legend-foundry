@@ -9,7 +9,7 @@ test("ability activation refuses a non-owner before consulting encounters or cat
   await assert.rejects(activateOwnedAbility({actor:{isOwner:false}}), /you own/);
 });
 
-test("NPC declaration posts immediately without encounter and records its explicit action use", async () => {
+test("NPC declaration posts immediately without encounter or action tracking", async () => {
   const writes=[];
   const actor={id:"creature",uuid:"Actor.creature",type:"creature",name:"Creature",img:"test.webp",
     system:{threat:{boons:0,banes:1},basicMelee:{weak:5,standard:3,strong:2}},getFlag:()=>null,
@@ -20,7 +20,7 @@ test("NPC declaration posts immediately without encounter and records its explic
   const message=await declareNpcMelee(actor);
   assert.equal(message.flags["heroes-of-legend"].attackCard.damage.standard,3);
   assert.equal(message.flags["heroes-of-legend"].npcAttackRequest,undefined);
-  assert.equal(writes[0]["flags.heroes-of-legend.actionUses"].main,1);
+  assert.equal(writes.length,0);
   game.user.isGM=false;
   await assert.rejects(declareNpcMelee(actor),/DA declares/);
 });

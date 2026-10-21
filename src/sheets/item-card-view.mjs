@@ -30,7 +30,10 @@ export function formatItemCard(root) {
   const rules = root.querySelector("[data-item-rules]");
   if (!rules) return;
   const source = root.querySelector("[data-item-provenance]");
-  for (const element of rules.querySelectorAll(".hol-automation-label,.hol-reference-source")) source?.append(element);
+  for (const element of rules.querySelectorAll(".hol-automation-label,.hol-reference-source")) {
+    if (source) source.append(element);
+    else element.remove();
+  }
   for (const heading of rules.querySelectorAll("h1,h2")) {
     if ((heading.tagName === "H1" && heading.closest(".hol-journal-page")) || heading.textContent.trim() === "Rules") heading.remove();
   }

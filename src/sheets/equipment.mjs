@@ -1,3 +1,4 @@
+import { equipmentEditableDescription } from "./equipment-description.mjs";
 import { equipmentReferenceHtml } from "../rules/item-construction.mjs";
 import { itemCardContext, formatItemCard } from "./item-card-view.mjs";
 import { localRulePage } from "../services/journals.mjs";
@@ -68,6 +69,8 @@ export class EquipmentSheet extends foundry.applications.api.HandlebarsApplicati
       customDescriptionHTML: description && presentation.cardRecord && description !== equipmentReferenceHtml(presentation.cardRecord,{sourceCommit:catalogs.commit})
         ? await foundry.applications.ux.TextEditor.implementation.enrichHTML(description,{relativeTo:this.item}) : "",
       ...cardContext(this, this.item),
+      editableDescription: equipmentEditableDescription(description),
+      supplyDieOptions: [0,4,6,8,10,12,20].map(value=>({value,label:value ? `d${value}` : "Depleted",selected:value===this.item.system.inventoryDie})),
       item: this.item,
       cardMark: itemDisplayIcon(this.item.toObject(), catalogs),
       system: this.item.system,
@@ -144,6 +147,11 @@ export class EquipmentSheet extends foundry.applications.api.HandlebarsApplicati
     });
   }
   async _processSubmitData(event, form, data, options) {
-    return { updated: await updateOwnedDocument(this.item, data, options) };
+    const image = form.querySelector('img[data-edit="img"]');
+    if (image) data.img = image.getAttribute("src");
+    const updated = await updateOwnedDocument(this.item, data, options);
+    this._cardEditing = false;
+    await this.render({force:true});
+    return {updated};
   }
 }

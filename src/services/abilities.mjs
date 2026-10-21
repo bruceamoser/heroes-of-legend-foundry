@@ -42,7 +42,7 @@ export function itemAbilityDefinition(item) {
     item.getFlag(ID, "source"),
   );
 }
-export async function activateOwnedAbility(item, {rangedWeaponItemId = null} = {}) {
+export async function activateOwnedAbility(item, {rangedWeaponItemId = null, weaponItemId = null} = {}) {
   if (!item.actor?.isOwner && !game.user.isGM)
     throw new Error(
       "Use an ability belonging to a character you own, or as the DA.",
@@ -60,12 +60,13 @@ export async function activateOwnedAbility(item, {rangedWeaponItemId = null} = {
     dialog.draft.referenceItemIds = [item.id];
     dialog.draft.abilityItemId = item.id;
     dialog.draft.rangedWeaponItemId = rangedWeaponItemId;
+    dialog.draft.weaponItemId = weaponItemId;
     dialog.draft.abilityConfiguration = structuredClone(configuration);
     return dialog.render({force:true});
   }
   if (DEFENSE_ABILITY_IDS.has(item.getFlag(ID, "catalogId"))) return activateDefenseBenefit(item);
   const { postAbilityReference } = await import("./reference-play.mjs");
-  const message = await postAbilityReference(item);
+  const message = await postAbilityReference(item,{weaponItemId:configuration.ranged?rangedWeaponItemId:weaponItemId});
   return message;
 }
 

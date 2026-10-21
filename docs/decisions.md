@@ -250,3 +250,20 @@ colors its existing segments/highlights by Speed and twice Speed.
 Blank rulebook section dividers become chapter contents with native links. Updating
 existing world copies repairs only exact untouched old divider bodies, preserving
 all source pages and user edits.
+
+## October 21 inventory and persistent character follow-up (#241)
+
+Bruce confirms player-character tokens must link to their Actor when placed;
+creatures remain independent unlinked copies. Existing unlinked character edits
+copy back before linking. Preserve the pre-conversion Actor and every original
+token delta for recovery; merge unrelated token changes, and ask the DA which copy wins when
+versions disagree (Foundry records no token edit order). Never convert creature or summon tokens.
+
+Supplies use compact aligned controls; inventory edits use a pencil beside the
+name. Ordinary equipment editing focuses on name, useful inventory values and a
+readable description, without generated provenance, implementation or hand-use
+fields. Equipment-backed attack cards use the weapon name. A wound at its recovery
+value leaves its scar but ceases mechanical effects. Encounter participants group
+as players and creatures with End combat at the bottom. A character's own level
+change refreshes development without a false stale-ledger warning; real concurrent
+changes still require reviewing the latest character state.

@@ -1,5 +1,16 @@
 <section class="hol-body hol-native-card hol-item-card hol-approved-item-card">
-  <div class="hol-card-fixed"><div class="hol-card-toolbar">{{#if editable}}<button type="button" data-action="cardEdit">{{#if cardEditing}}✓ Done{{else}}✎ Edit{{/if}}</button>{{/if}}</div>
+{{#if cardEditing}}
+  <div class="hol-equipment-editor hol-card-scroll">
+    <fieldset {{#unless editable}}disabled{{/unless}}>
+      <div class="hol-equipment-edit-name"><img src="{{item.img}}" data-action="editImage" data-edit="img" alt="Item image" title="Change item image"><label>Name<input name="name" value="{{item.name}}"></label></div>
+      <div class="hol-equipment-edit-values"><label>Quantity<input type="number" name="system.quantity" min="0" step="1" value="{{system.quantity}}"></label><label>Bulk per item<input type="number" name="system.bulk" min="0" step="1" value="{{system.bulk}}"></label>{{#if cardHasSupply}}<label>Supply die<select name="system.inventoryDie">{{#each supplyDieOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>{{/if}}</div>
+      <label class="hol-equipment-description-label" for="equipment-description-{{item.id}}">Description</label>
+      <prose-mirror id="equipment-description-{{item.id}}" name="system.description" value="{{editableDescription}}" data-document-uuid="{{item.uuid}}"></prose-mirror>
+      <button type="submit" class="hol-primary">Save changes</button>
+    </fieldset>
+  </div>
+{{else}}
+  <div class="hol-card-fixed"><div class="hol-card-toolbar">{{#if editable}}<button type="button" data-action="cardEdit">✎ Edit</button>{{/if}}</div>
   <header class="hol-item-header"><div class="hol-item-identity"><img class="hol-item-mark" src="{{cardMark}}" alt=""><div><h1>{{item.name}}</h1><p>Equipment</p></div></div><dl class="hol-item-vitals"><div><dt>Qty</dt><dd><input aria-label="Quantity" data-item-quantity type="number" min="0" step="1" value="{{system.quantity}}" {{#unless editable}}disabled{{/unless}}></dd></div><div><dt>Bulk</dt><dd>{{system.bulk}}</dd></div><div><dt>Coins</dt><dd>{{cardPrice}}</dd></div></dl></header></div>
   <div class="hol-card-scroll"><div class="hol-item-layout">
     <article class="hol-item-rule-card">{{#if customDescriptionHTML}}<div class="hol-item-rule-body hol-item-description">{{{customDescriptionHTML}}}</div>{{/if}}<div class="hol-item-rule-body" data-item-rules>{{{descriptionHTML}}}</div></article>
@@ -10,7 +21,7 @@
       {{#if cardRequirements}}<details data-card-section="requirements" {{#unless cardCollapsed.requirements}}open{{/unless}}><summary>Requirements</summary>{{#each cardRequirements}}<div class="hol-item-stat-row"><span>{{name}}</span><strong>{{value}}</strong></div>{{/each}}</details>{{/if}}
     </aside>
     <details data-card-section="itemNotes" {{#unless cardCollapsed.itemNotes}}open{{/unless}}><summary>Notes</summary>{{#if cardEditing}}<textarea name="flags.heroes-of-legend.itemNotes" rows="3" maxlength="10000" placeholder="Notes for this item…">{{itemNotes}}</textarea>{{else}}<p class="hol-item-notes">{{#if itemNotes}}{{itemNotes}}{{else}}No notes.{{/if}}</p>{{/if}}</details>
-    <details data-card-section="provenance"><summary>Source & implementation</summary><div data-item-provenance></div>{{#if cardSourcePath}}<a href="#" data-hol-rule-path="{{cardSourcePath}}">Read full rules reference</a>{{/if}}</details>
   </div>
-{{#if cardEditing}}<fieldset {{#unless editable}}disabled{{/unless}}>
-<label>Name<input name="name" value="{{item.name}}"></label><div class="hol-pair"><label>Quantity<input type="number" name="system.quantity" min="0" step="1" value="{{system.quantity}}"></label><label>Bulk per item<input type="number" name="system.bulk" min="0" step="1" value="{{system.bulk}}"></label><label>Hands required<input type="number" name="system.hands" min="0" max="2" step="1" value="{{system.hands}}"></label><label>Supply die (0: no supply)<input type="number" name="system.inventoryDie" min="0" max="20" step="1" value="{{system.inventoryDie}}"></label></div><label>Description<textarea name="system.description" rows="4">{{system.description}}</textarea></label>{{#if editable}}<button type="submit" class="hol-primary">Save changes</button>{{/if}}</fieldset>{{/if}}</div></section>
+</div>
+{{/if}}
+</section>

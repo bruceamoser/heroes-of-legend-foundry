@@ -1,3 +1,5 @@
+import {abilityRollConfiguration} from "../rules/ability-roll.mjs";
+import {attackEquipmentSnapshot} from "./attack-equipment.mjs";
 import {rollReferenceApplies,reactionTrigger} from "../rules/ability-roll-relevance.mjs";
 const ID = "heroes-of-legend";
 
@@ -60,7 +62,7 @@ export function safeReferenceHTML(description) {
   return output.innerHTML;
 }
 
-export async function postAbilityReference(item) {
+export async function postAbilityReference(item,{weaponItemId=null}={}) {
   if (!liveAbility(item) || !item.testUserPermission(game.user, "OWNER"))
     throw new Error("Only an owned ability can be posted to chat.");
   const escape = foundry.utils.escapeHTML;
@@ -69,12 +71,13 @@ export async function postAbilityReference(item) {
   const catalogId=item.getFlag(ID,"catalogId");
   const record=catalogId ? (await loadCatalogs()).choices.find(record=>record.id===catalogId) : null;
   const trigger=reactionTrigger(record);
+  const equipment=attackEquipmentSnapshot(item.actor,abilityRollConfiguration(item,record),weaponItemId);
   const operative = parsed.querySelector(".hol-reference-rules")?.innerHTML ?? parsed.body.innerHTML;
-  const reference = { itemUuid: item.uuid, name: item.name,
+  const reference = { itemUuid: item.uuid, name: item.name, ...(equipment?{equipment}:{}),
     source: structuredClone(item.getFlag(ID, "source") ?? null),
     sourceCommit: item.getFlag(ID, "sourceCommit") ?? null,
     trigger, damageText: new DOMParser().parseFromString(operative, "text/html").body.textContent };
-  const content = `<section class="hol-reference-card hol-chat-card"><header class="hol-chat-header"><h3>${escape(item.name)}</h3></header>${trigger?`<p class="hol-chat-trigger"><strong>Trigger:</strong> ${escape(trigger)}</p>`:""}<div class="hol-chat-effect">${safeReferenceHTML(operative)}</div><footer class="hol-chat-footer"><a class="content-link" data-link data-type="Item" data-uuid="${escape(item.uuid)}">Full ability details</a></footer></section>`;
+  const content = `<section class="hol-reference-card hol-chat-card"><header class="hol-chat-header"><h3>${escape(equipment?.name??item.name)}</h3></header>${equipment?`<div class="hol-chat-bar">${escape(item.name)}</div>`:""}${trigger?`<p class="hol-chat-trigger"><strong>Trigger:</strong> ${escape(trigger)}</p>`:""}<div class="hol-chat-effect">${safeReferenceHTML(operative)}</div><footer class="hol-chat-footer"><a class="content-link" data-link data-type="Item" data-uuid="${escape(item.uuid)}">Full ability details</a></footer></section>`;
   return ChatMessage.create(ChatMessage.applyMode({
     speaker: ChatMessage.getSpeaker({ actor: item.actor }), content,
     flags: { [ID]: { abilityReference: reference } },

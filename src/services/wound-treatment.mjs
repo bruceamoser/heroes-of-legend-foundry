@@ -1,3 +1,4 @@
+import {woundRecovered} from "../rules/wound-contributions.mjs";
 import { createActionMessage, shouldProcessRequest } from "./authority.mjs";
 import { ensureAuthorityReady } from "./authority.mjs";
 import { assertNoPendingTurn } from "./turn-lock.mjs";
@@ -33,14 +34,14 @@ async function apply(id) {
   const plan = woundTreatmentPlan(basis, request.progress);
   const changes = {
     ...(plan.removeEffectIds.length ? { [`flags.${ID}.conditionRevision`]: (actor.getFlag(ID, "conditionRevision") ?? 0) + 1 } : {}),
-    effects: actor.toObject().effects.filter(effect => !plan.removeEffectIds.includes(effect._id)),
+    effects: retireWoundEffects(actor.toObject().effects, plan.removeEffectIds),
     [`flags.${ID}.wounds.${request.eventId}`]: plan.wound,
     [`flags.${ID}.damageRevision`]: (actor.getFlag(ID, "damageRevision") ?? 0) + 1,
     [`flags.${ID}.operationReceipts.${id}`]: { applied: true, authorId: message.author.id, request: signature },
   };
   actor.validate({ changes: foundry.utils.expandObject(changes), strict: true, fallback: false });
   await writeAuthorityDocument(actor, changes);
-  await message.update({ content: `Wound treatment: ${plan.wound.recoveryProgress}/${plan.wound.recoveryValue}. ${plan.complete ? "Treatable effects relieved; the scar remains." : "Progress recorded."}` });
+  await message.update({ content: `Wound treatment: ${plan.wound.recoveryProgress}/${plan.wound.recoveryValue}. ${plan.complete ? "Wound healed; the scar remains." : "Progress recorded."}` });
   return { status: "complete", replay: false };
 }
 /** The table resolves capability and printed activity time; recording progress adds no new roll or clock. */
@@ -54,7 +55,7 @@ export function woundTreatmentPlan(basis, progress) {
   const complete = wound.recoveryProgress >= value;
   const removeEffectIds = complete ? basis.effects.filter(effect => {
     const flags = effect.flags?.[ID];
-    return flags?.woundEvent === basis.eventId && (["movementPenalty", "rollModifier"].includes(flags.woundModifier?.kind) || flags.condition?.persistence === "starred");
+    return flags?.woundEvent === basis.eventId;
   }).map(effect => effect._id) : [];
   wound.effectIds = (wound.effectIds ?? []).filter(id => !removeEffectIds.includes(id));
   return { wound, complete, removeEffectIds };
@@ -66,4 +67,26 @@ export function registerWoundTreatmentRequests() {
       await message.update({ content: `Treatment needs attention: ${foundry.utils.escapeHTML(error.message)}` });
     });
   });
+}
+
+/** Embedded arrays update matching documents; omitting a row does not delete it.
+ * Disable the actual native effects with the same parent update as wound progress. */
+export function retireWoundEffects(effects, ids) {
+  const retired = new Set(ids);
+  return effects.map(effect => retired.has(effect._id)
+    ? {...effect, disabled:true, statuses:[], showIcon:CONST.ACTIVE_EFFECT_SHOW_ICON.NEVER, flags:{...effect.flags,[ID]:{...effect.flags?.[ID],retired:true}}}
+    : effect);
+}
+/** Repair already-healed wounds left active by the old embedded-array update. */
+export async function repairRecoveredWoundEffects(actor) {
+  if(actor?.type !== "character" || actor.pack || !actor.testUserPermission(game.user,"OWNER"))return 0;
+  const wounds=actor.getFlag(ID,"wounds")??{};
+  const completed=new Set(Object.entries(wounds).filter(([,wound])=>woundRecovered(wound)).map(([id])=>id));
+  const effects=actor.toObject().effects;
+  const ids=effects.filter(effect=>completed.has(effect.flags?.[ID]?.woundEvent)&&(!effect.disabled||!effect.flags?.[ID]?.retired||(effect.statuses??[]).length||effect.showIcon!==CONST.ACTIVE_EFFECT_SHOW_ICON.NEVER)).map(effect=>effect._id);
+  if(!ids.length)return 0;
+  const changes={effects:retireWoundEffects(effects,ids),[`flags.${ID}.conditionRevision`]:(actor.getFlag(ID,"conditionRevision")??0)+1,[`flags.${ID}.damageRevision`]:(actor.getFlag(ID,"damageRevision")??0)+1};
+  for(const eventId of completed)changes[`flags.${ID}.wounds.${eventId}.effectIds`]=(wounds[eventId].effectIds??[]).filter(id=>!ids.includes(id));
+  await actor.update(changes);
+  return ids.length;
 }

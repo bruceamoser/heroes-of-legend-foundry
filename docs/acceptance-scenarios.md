@@ -300,3 +300,23 @@ end damage/decay, native Dead and native ruler movement-cost bands.
 `check-followup-cards-books` checks actual supply die reduction, resistance and reaction
 chat presentation, native chapter navigation, preservation of edited world pages and
 reload persistence. Earlier immediate-repeat-turn assertions are superseded.
+
+## Persistent character editing and compact table controls (#241)
+
+Place a character and creature from Actors: character token linked, creature copy
+unlinked. Recover an existing unlinked character's renamed/added/deleted items,
+Story and conditions before linking. Merge disjoint edits across scene copies;
+when copies conflict, DA chooses the version for conflicting fields and originals
+remain in the Actor's `tokenLinkRecovery` flag. Reject conversion if the Actor or
+token changes while recovery is open. Player edits item and Story from the linked
+token; delete token, reload, reopen from Actors and retain both changes. Creature
+HP stays independent.
+
+At native sheet width, supplies keep all controls aligned, inventory's pencil sits
+beside its name, and the focused item editor displays rich text instead of HTML
+markup. Save description/name and reopen. Actual weapon attack chat heading uses
+that name. Healing a wound to RV disables native effects/icons and returns the
+actual roll to an unmodified pool while retaining the scar. Old completed wounds
+are repaired. The encounter panel and native tracker group Players/Creatures;
+GM's bottom End combat uses native confirmation. Add/Remove level in development
+must not create a false stale warning; genuine concurrent draft edits remain guarded.

@@ -1,4 +1,4 @@
-import { woundContributionPlan } from "../rules/wound-contributions.mjs";
+import { woundContributionPlan, woundRecovered } from "../rules/wound-contributions.mjs";
 const ID = "heroes-of-legend";
 
 function legacyInjury(effect, wound) {
@@ -32,7 +32,7 @@ export function nativeWoundEffects(actor) {
     return {
       id: effect.id,
       name: effect.name,
-      active: effect.active === true,
+      active: effect.active === true && !effect.getFlag(ID,"retired") && !woundRecovered(wound),
       disabled: effect.disabled === true,
       flags: {
         [ID]: {

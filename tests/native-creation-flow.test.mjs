@@ -206,3 +206,29 @@ test("Save waits for a queued advancement purchase before deciding an apparently
   app.draft.purchases.push({id:"ability-conditioned-body"});app.busy=false;for(const resolve of app.idleWaiters.splice(0))resolve();await saving;
   assert.equal(events.filter(event=>event==="request").length,1);assert(events.indexOf("receipt")<events.indexOf("close"));assert.equal(events.at(-1),"sheet");
 });
+
+test("empty advancement drafts follow the current character while pending choices retain concurrent-edit protection",async()=>{
+  const source=await readFile(new URL("../src/applications/advancement.mjs",import.meta.url),"utf8"),exports={};
+  for(const match of source.matchAll(/import\s*\{([^}]+)\}\s*from/g))for(const name of match[1].split(",").map(name=>name.trim()).filter(Boolean))exports[name]=class{};
+  Object.assign(exports,{currentDevelopment:()=>({revision:4})});
+  const {AdvancementWizard,nextDraftBaseRevision}=await load("../src/applications/advancement.mjs",exports,{foundry:{applications:{api:{ApplicationV2:class{},HandlebarsApplicationMixin:base=>base}},utils:{randomID:()=>"draft"}}});
+  const saved={id:"draft",revision:2,baseRevision:1,data:{purchases:[],signatures:{},acquisitions:{}}};
+  const actor={getFlag:()=>saved};
+  assert.equal(new AdvancementWizard(actor).baseRevision,4);
+  saved.data.purchases.push({id:"ability"});assert.equal(new AdvancementWizard(actor).baseRevision,1);
+  assert.equal(nextDraftBaseRevision(4,4,5,saved.data),5,"own level change updates draft basis");
+  assert.equal(nextDraftBaseRevision(1,4,5,saved.data),1,"already-stale choices stay protected");
+  assert.equal(nextDraftBaseRevision(4,4,6,saved.data),4,"another intervening operation needs review");
+});
+
+test("advancement level changes run inside the draft save queue and refresh only their own revision",async()=>{
+  const source=await readFile(new URL("../src/applications/advancement.mjs",import.meta.url),"utf8"),exports={};
+  for(const match of source.matchAll(/import\s*\{([^}]+)\}\s*from/g))for(const name of match[1].split(",").map(name=>name.trim()).filter(Boolean))exports[name]=class{};
+  let revision=3;const events=[];
+  Object.assign(exports,{currentDevelopment:()=>({revision}),requestDevelopment:async(actor,kind,payload)=>{events.push([kind,payload.revision]);return{id:"operation"}},waitForDevelopmentOperation:async()=>{revision++;events.push("applied")}});
+  const {AdvancementWizard}=await load("../src/applications/advancement.mjs",exports,{foundry:{applications:{api:{ApplicationV2:class{},HandlebarsApplicationMixin:base=>base}}}});
+  const app={actor:{},baseRevision:3,draft:{purchases:[{id:"pending"}]},async act(fn){events.push("capture");await fn();events.push(["persist",this.baseRevision]);}};
+  await AdvancementWizard.changeLevel.call(app,"addLevel");
+  assert.deepEqual(events,["capture",["addLevel",3],"applied",["persist",4]]);
+  assert.equal(app.draft.purchases[0].id,"pending");
+});

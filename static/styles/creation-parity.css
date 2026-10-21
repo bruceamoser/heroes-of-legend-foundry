@@ -133,3 +133,12 @@
 .heroes-of-legend.hol-creation .hol-learning-market > label {display:inline-block;vertical-align:top;width:calc(50% - 4px);margin:4px 0 6px;}
 .heroes-of-legend.hol-creation .hol-learning-market .hol-learning-actions button {width:auto;min-height:24px;height:auto;padding:2px 6px;font:11px/1.2 system-ui,sans-serif;}
 .heroes-of-legend.hol-creation .hol-learning-market .hol-learning-actions button:first-child {background:transparent;border-color:transparent;}
+
+/* Direct signature selection keeps the class choices in one focused window. */
+.heroes-of-legend.hol-signature-choice .hol-wizard {display:flex;flex-direction:column;max-height:85vh;}
+.heroes-of-legend.hol-signature-choice .hol-wizard-main {padding:14px;overflow:auto;}
+.heroes-of-legend.hol-signature-choice .hol-workshop-hero h1 {margin:0;}
+.heroes-of-legend.hol-signature-choice .hol-workshop-cards {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;}
+.heroes-of-legend.hol-signature-choice .hol-workshop-choice {display:flex;flex-direction:column;padding:10px;}
+.heroes-of-legend.hol-signature-choice .hol-card-actions {margin-top:auto;}
+.heroes-of-legend.hol-signature-choice .hol-required-choice {margin-top:12px;}

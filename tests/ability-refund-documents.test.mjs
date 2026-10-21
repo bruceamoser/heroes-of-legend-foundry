@@ -19,7 +19,7 @@ async function fixture({deleteFailure=null,owner=true}={}){
   '../rules/development.mjs':{changeCharacterLevel,refundLearnedAbility},
   '../rules/character-languages.mjs':{editCharacterLanguage(){}},
   './languages.mjs':{getCampaignLanguageConfiguration(){}},
-  '../rules/advancement.mjs':{advancementPreview(){}},
+  '../rules/advancement.mjs':{advancementPreview(){},signatureChoicePreview(){}},
  };
  const module=new SourceTextModule(await readFile(new URL('../src/services/advancement.mjs',import.meta.url),'utf8'),{context});
  await module.link(async name=>{const exports=mocks[name];assert(exports,name);return new SyntheticModule(Object.keys(exports),function(){for(const [key,value]of Object.entries(exports))this.setExport(key,value);},{context});});await module.evaluate();

@@ -96,3 +96,14 @@ export function advancementPreview(
     gritDelta,
   };
 }
+
+/** Commit one earned signature without touching other tiers or saved purchases. */
+export function signatureChoicePreview(current, {level, id, selection = {}}, choices, inventory, languages) {
+  const cls = choices.find(choice => choice.id === current.classId && choice.kind === "class");
+  const available = [3,7].includes(level) && level <= current.level &&
+    (current.pendingSignatures ?? []).includes(level) && cls?.signatures[level]?.includes(id) && !current.abilities.includes(id);
+  if (!available) return {valid:false, state:structuredClone(current), errors:[{code:"signature",level,text:`Choose an unlearned level-${level} signature from your class.`}],ledger:[],maximumHpDelta:0,gritDelta:0};
+  const preview = advancementPreview({...current,pendingSignatures:[level]}, {purchases:[],signatures:{[level]:id},acquisitions:{[id]:selection}}, choices, inventory, languages);
+  preview.state.pendingSignatures = (current.pendingSignatures ?? []).filter(tier => tier !== level);
+  return preview;
+}

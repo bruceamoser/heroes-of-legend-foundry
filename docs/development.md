@@ -1666,3 +1666,14 @@ conflicting fields require DA selection. Disjoint changes merge by document ID a
 field. Token or Actor edits detected during conversion stop it for a fresh review.
 Creature/summon copies are excluded. This is migration evidence, not a guarantee
 against simultaneous external module writes after a native update begins.
+
+### 2.3.2 direct signature choice
+
+`npm run check` passes 671 tests. `test:signature-choice` exercises actual player
+sheet buttons for levels 3/7 against the verified 512-file package in isolated
+Foundry V14.369. It checks matching class choices, native embedded Item grants,
+unchanged DP, return to the same sheet tab and reload. Level 7 also keeps level 3
+pending and preserves an unrelated saved purchase draft exactly. Native captures
+show the compact focused chooser rather than generic development. Service tests
+cover acquisition choices, stale/non-owner/foreign-class rejection, and recovery
+of an interrupted confirmation without duplicate grants.

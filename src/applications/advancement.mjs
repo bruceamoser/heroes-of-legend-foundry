@@ -20,7 +20,7 @@ import {
   waitForDevelopmentOperation,
 } from "../services/advancement.mjs";
 import { updateOwnedDocument } from "../services/documents.mjs";
-import { advancementPreview } from "../rules/advancement.mjs";
+import { advancementPreview, signatureChoicePreview } from "../rules/advancement.mjs";
 import { abilityReferenceStatus } from "../rules/ability-definitions.mjs";
 import {
   eligibleFirst,
@@ -64,17 +64,20 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
     },
   };
   constructor(actor, options = {}) {
-    super(options);
+    const {signatureLevel,...applicationOptions}=options;
+    const signatureFocus=[3,7].includes(signatureLevel);
+    super(signatureFocus ? {...applicationOptions,classes:[ID,"hol-creation","hol-advancement","hol-signature-choice"],position:{width:800,height:"auto",...applicationOptions.position},window:{...applicationOptions.window,title:`Choose level ${signatureLevel} signature`}} : applicationOptions);
+    this.signatureLevel=signatureFocus?signatureLevel:null;
     this.actor = actor;
     this.committedPlay = true;
     const state = currentDevelopment(actor),
       saved = actor.getFlag(ID, "advancementDraft"),
-      resume = saved && !state.commitReceipts?.[saved.id];
+      resume = !signatureFocus && saved && !state.commitReceipts?.[saved.id];
     this.draft = structuredClone(
       resume ? saved.data : { purchases: [], signatures: {}, acquisitions: {} },
     );
     this.draftId = resume ? saved.id : foundry.utils.randomID();
-    this.revision = saved?.revision ?? 0;
+    this.revision = signatureFocus ? 0 : saved?.revision ?? 0;
     this.baseRevision = resume && hasPendingAdvancement(this.draft) ? saved.baseRevision : (state.revision ?? 0);
   }
   async _prepareContext() {
@@ -87,13 +90,9 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
     const languageConfiguration = getCampaignLanguageConfiguration();
     this.languageDefinitions = languageConfiguration.definitions;
     this.languageBasis = languageConfiguration.basis;
-    this.preview = advancementPreview(
-      current,
-      this.draft,
-      choices,
-      inventory,
-      this.languageDefinitions,
-    );
+    this.preview = this.signatureLevel
+      ? signatureChoicePreview(current,{level:this.signatureLevel,id:this.draft.signatures[this.signatureLevel],selection:this.draft.acquisitions[this.draft.signatures[this.signatureLevel]]},choices,inventory,this.languageDefinitions)
+      : advancementPreview(current,this.draft,choices,inventory,this.languageDefinitions);
     const state = this.preview.state;
     const recipeName = (id) =>
       get(id)?.name ??
@@ -154,6 +153,7 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
     const armorDr=damageBasis(this.actor).passiveDefenses.resistances.find(resistance=>resistance.type==="physical")?.value??0;
     return {
       actor: this.actor,
+      signatureFocus:Boolean(this.signatureLevel),signatureLevel:this.signatureLevel,
       movement,armorDr,woundCount:Object.keys(this.actor.getFlag(ID,"wounds")??{}).length,
       developmentIcon: workshopNavIcon("Development"),
       learningIcon: workshopNavIcon("Abilities"),
@@ -174,7 +174,7 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
       grit: state.gritGranted,
       gritAvailable: Math.max(0,state.gritGranted-state.gritSpent),
       spent: state.gritSpent,
-      signatures: (current.pendingSignatures ?? []).filter(level=>level<=current.level).map((level) => ({
+      signatures: (current.pendingSignatures ?? []).filter(level=>level<=current.level && (!this.signatureLevel || level===this.signatureLevel)).map((level) => ({
         level,
         options: (get(current.classId)?.signatures[level] ?? []).map((id) => ({
           id,
@@ -206,7 +206,7 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
         ].map(recipeName),
         legacyRecipePurchase: Boolean(p.recipeId),
       })),
-      errors: this.preview.errors.map(
+      errors: (this.signatureLevel && !this.draft.signatures[this.signatureLevel] ? [] : this.preview.errors).map(
         (e) =>
           e.text ??
           `${get(e.id)?.name ?? e.id}: ${(e.reasons ?? []).map((r) => r.text).join(" ")}`,
@@ -262,6 +262,7 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
     }
   }
   async persist() {
+    if(this.signatureLevel)return;
     if (getCampaignLanguageConfiguration().basis !== this.languageBasis)
       throw new Error(
         "Campaign languages changed. Refresh and review the language choices before saving.",
@@ -388,7 +389,7 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
     });
   }
   static async chooseSignature(event,target) {
-    await this.act(async()=>{this.draft.signatures[target.dataset.level]=target.dataset.id;});
+    await this.act(async()=>{if(!this.signatureLevel || Number(target.dataset.level)===this.signatureLevel)this.draft.signatures[target.dataset.level]=target.dataset.id;});
   }
   static async award() { return AdvancementWizard.changeLevel.call(this,"addLevel"); }
   static async removeLevel() { return AdvancementWizard.changeLevel.call(this,"removeLevel"); }
@@ -412,6 +413,7 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
     if (this.committing) return;
     if (this.busy) await new Promise(resolve => {this.idleWaiters ??= [];this.idleWaiters.push(resolve);});
     if (this.committing) return;
+    if(this.signatureLevel)return AdvancementWizard.commitSignature.call(this);
     if(this.preview?.valid && !this.draft.purchases.length && !(currentDevelopment(this.actor).pendingSignatures??[]).length) return AdvancementWizard.returnSheet.call(this);
     this.committing = true;
     this.busy = true;
@@ -434,6 +436,18 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
       this.busy = false;
       for (const resolve of this.idleWaiters?.splice(0) ?? []) resolve();
     }
+  }
+  static async commitSignature() {
+    this.committing=true;this.busy=true;
+    if(this.element)this.element.inert=true;
+    try {
+      this.capture();
+      const signatureId=this.draft.signatures[this.signatureLevel];
+      const request=await requestDevelopment(this.actor,"chooseSignature",{level:this.signatureLevel,signatureId,selection:this.draft.acquisitions[signatureId]??{},revision:this.baseRevision,sourceCommit:this.catalogs.commit,languageBasis:this.languageBasis});
+      await waitForDevelopmentOperation(this.actor,request.id);
+      await this.close();await this.actor.sheet.render({force:true});
+    } catch(error){ui.notifications.error(error.message);}
+    finally{this.committing=false;this.busy=false;if(this.element)this.element.inert=false;for(const resolve of this.idleWaiters?.splice(0)??[])resolve();}
   }
   async dropAbility(event) {
     if (this.busy) return;

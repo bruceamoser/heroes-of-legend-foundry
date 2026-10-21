@@ -1630,7 +1630,7 @@ captures and JSON evidence are under `test-results/` and excluded from source Gi
 
 ### 2.3.0 follow-up acceptance
 
-`npm run check` passes 647 tests, build and content validation. New isolated native
+`npm run check` passes 648 tests, build and content validation. New isolated native
 scenarios are `npm run test:followup-table` and `npm run test:followup-cards-books`.
 They use the same explicit local-world/write guards as the 2.2.0 fixtures. Evidence
 and rendered captures are under `test-results/followup-table` and

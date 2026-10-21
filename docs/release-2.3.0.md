@@ -17,6 +17,6 @@
   in rolls and remain visible and overridable for the activity.
 - Header HP accepts signed corrections. Native V14 movement measurement/history
   colors routes green through Speed, yellow through twice Speed and red beyond.
-- All 30 book section pages contain chapter navigation. The 1,018 source pages are
+- All 30 book section pages contain chapter navigation, with authored opening paragraphs where a chapter manuscript exists. The 1,018 source pages are
   unchanged. Existing world copies repair only exact untouched old blank dividers;
   edited pages remain intact.

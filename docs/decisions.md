@@ -157,3 +157,18 @@ action, damage and condition rules do not imply an automatic specialty resolver.
 Current compendium updates may replace unchanged printed world-profile blocks,
 using fingerprints of the previous published source, while preserving live
 resources and divergent edits. No historical rules choice is introduced.
+
+
+## October 20 live-table correction (#228–#230)
+
+Bruce explicitly removed routine DA approval gates: player-owned actions should
+complete when clicked and support correction. Safe-place confirmation, owned damage
+and health corrections are player controls. Technical synchronization must be
+invisible during normal play and cannot globally block the world because an old
+request was interrupted. Shared document writes retain one automatic processor and
+persistent duplicate protection; campaign milestones and other actors' permissions
+are unchanged. Wound rolls become native RollTables with a type dialog, immediate
+chat result/application and guarded Undo, including when no GM is connected.
+Learning validation is step-scoped, and compact native chat/card density supersedes
+literal web sizing where the narrow Foundry sidebar needs less space. Every printed
+attribute ability has a configured roll entry independent of effect-adapter coverage.

@@ -1,3 +1,4 @@
+import { openWoundRoll } from "./wound-roll.mjs";
 import { woundTreatmentBasis, requestWoundTreatment } from "../services/wound-treatment.mjs";
 import { woundCatalog, woundBasis, requestWound } from "../services/wounds.mjs";
 import { woundResult } from "../rules/wounds.mjs";
@@ -96,16 +97,7 @@ export class WoundPanel extends foundry.applications.api.HandlebarsApplicationMi
   }
   static async record() {
     try {
-      const confirmed = await foundry.applications.api.DialogV2.confirm({classes: ["heroes-of-legend", "hol-native-dialog"],
-        window: { title: "Record additional wound" },
-        content: "<p>Record one additional wound and increase the accumulated wound count? HP and survival status stay as they are. Existing pending wounds remain available.</p>",
-        yes: { label: "Record wound" }, no: { label: "Cancel" },
-      });
-      if (!confirmed) return;
-      const message = await requestWound(this.actor, null, "record");
-      this.eventId = `manual-wound-${message.id}`;
-      this.skipped = [];
-      await this.render();
+      await openWoundRoll(this.actor);
     } catch (e) { ui.notifications.error(e.message); }
   }
   static async select(event, target) {
@@ -115,9 +107,7 @@ export class WoundPanel extends foundry.applications.api.HandlebarsApplicationMi
   }
   static async roll() {
     try {
-      await requestWound(this.actor, this.eventId, "roll", {
-        damageType: this.element.querySelector("[name=damageType]").value,
-      });
+      await openWoundRoll(this.actor, {eventId:this.eventId});
     } catch (e) {
       ui.notifications.error(e.message);
     }

@@ -116,3 +116,18 @@ export function creationPreview(
     },
   };
 }
+
+/** Show requirements only once their creation step is reached; Review keeps all errors. */
+export function creationStepErrors(preview, step) {
+  if (step >= 7) return preview.errors;
+  return preview.errors.filter(error => {
+    if (error.level > 1) return false;
+    if (error.code === "purchase") return step >= (error.stage === 0 ? 3 : 5);
+    if (error.code === "acquisition") return step >= ((preview.stages[0]?.abilities ?? []).includes(error.id) ? 3 : 5);
+    if (["class", "class-disciplines", "signature"].includes(error.code)) return step >= 4;
+    if (["shopping", "coins"].includes(error.code)) return step >= 6;
+    if (["culture", "background"].includes(error.code)) return step >= 2;
+    if (["ancestry", "traits", "remembered-community", "language-availability", "duplicate-language", "spoken-language", "extra-languages"].includes(error.code)) return step >= 1;
+    return true;
+  });
+}

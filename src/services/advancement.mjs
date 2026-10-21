@@ -62,7 +62,7 @@ export async function waitForDevelopment(actor, requestId, draftId, { timeout = 
     if (receipt?.status === "complete") return receipt;
     const failure = game.messages.get(requestId)?.getFlag(ID, "developmentFailure");
     if (failure) throw new Error(failure);
-    if (Date.now() - start >= timeout) throw new Error("Development has not completed. Your choices are saved; check the GM automation coordinator before retrying.");
+    if (Date.now() - start >= timeout) throw new Error("Development has not completed. Your choices are saved; review the saved action in Interrupted actions before retrying.");
     await new Promise(resolve => setTimeout(resolve, interval));
   }
 }
@@ -76,7 +76,7 @@ export async function waitForDevelopmentOperation(actor, requestId, {timeout=300
     if(failure) throw new Error(failure);
     const result=message?.getFlag(ID,"developmentResult");
     if(result?.complete) return result;
-    if(Date.now()-start>=timeout) throw new Error("Development has not completed. Check the GM automation coordinator before retrying.");
+    if(Date.now()-start>=timeout) throw new Error("Development has not completed. Review the saved action in Interrupted actions before retrying.");
     await new Promise(resolve=>setTimeout(resolve,interval));
   }
 }
@@ -107,8 +107,8 @@ async function apply(id) {
     if (request.revision !== (current.revision ?? 0)) throw new Error("Character languages or development changed. Review and retry.");
     state = editCharacterLanguage(current,request);
   } else if (["award", "safePlace"].includes(request.kind)) {
-    if (!message.author.isGM)
-      throw new Error("The DA must award milestones and approve a safe place.");
+    if (request.kind === "award" && !message.author.isGM)
+      throw new Error("Only the DA can award campaign milestones.");
     if (request.kind === "award") {
       if (!Number.isSafeInteger(request.level) || request.level < 1)
         throw new Error("Invalid milestone level.");

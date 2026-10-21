@@ -52,11 +52,7 @@ export class AbilitySheet extends foundry.applications.api.HandlebarsApplication
       cardMark: itemDisplayIcon(this.item.toObject(), iconCatalogs),
       canPost: Boolean(this.item.actor && this.item.isOwner),
       potionAbility: isPotionAbility(this.item),
-      canUse: Boolean(
-        ((definition && definition.category !== "passive") ||
-          isPotionAbility(this.item)) &&
-          this.item.actor?.isOwner,
-      ),
+      canUse: Boolean(this.item.actor?.isOwner && this.item.system.activity.action !== "passive"),
       pendingAutomation:
         !definition &&
         this.item.getFlag("heroes-of-legend", "automation") === "pending",

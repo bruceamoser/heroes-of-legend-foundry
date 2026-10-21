@@ -212,7 +212,7 @@ export async function requestDamage(
   await ensureAuthorityReady();
   return ChatMessage.create({
     content: "Damage application requested.",
-    whisper: game.users.filter((u) => u.isGM).map((u) => u.id),
+    whisper: game.users.filter((u) => u.isGM || u.id === game.user.id).map((u) => u.id),
     flags: {
       [ID]: {
         damageRequest: {
@@ -240,7 +240,7 @@ async function apply(id) {
   if (actor?.documentName !== "Actor" || actor.pack)
     throw new Error("Damage target is unavailable.");
   const conditionKey = request.draft?.conditionKey;
-  if (!message.author.isGM && !(conditionKey && actor.testUserPermission(message.author, "OWNER"))) throw new Error("The DA must authorize damage application.");
+  if (!actor.testUserPermission(message.author, "OWNER")) throw new Error("Only the target actor’s owner can apply damage.");
   if (conditionKey && (request.rollMessageId || request.attackMessageId)) throw new Error("A condition event cannot also be an attack result.");
   const signature = JSON.stringify(request),
     receipt = actor.getFlag(ID, "operationReceipts")?.[id];

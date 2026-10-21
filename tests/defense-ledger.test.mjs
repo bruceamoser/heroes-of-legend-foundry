@@ -74,7 +74,7 @@ test("defense reports missing GM or stale automation before posting a waiting me
   globalThis.game = { user: {isGM:false}, users: {activeGM:null}, world:{lastPlayed:"now"}, settings:{get:()=>"stale"} };
   await assert.rejects(requestDefense({}, {}, {}), /GM must be connected/);
   game.users.activeGM = {id:"gm"};
-  await assert.rejects(requestDefense({}, {}, {}), /automation session is not ready/);
+  await assert.rejects(requestDefense({}, {}, {}), /connected GM session is still synchronizing/);
   assert.equal(writes,0);
 });
 

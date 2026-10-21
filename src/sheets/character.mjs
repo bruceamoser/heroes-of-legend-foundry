@@ -316,7 +316,6 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
         const ability = abilityId && this.actor.items.find((candidate) => candidate.type === "ability" && candidate.getFlag("heroes-of-legend", "catalogId") === abilityId);
         if (!ability) return item.sheet.render({force:true});
         if (abilityId === "ability-shield-block") return this.openShieldDefense(ability);
-        if (abilityId === "ability-basic-ranged") return ability.sheet.render({force:true});
         const {activateOwnedAbility} = await import("../services/abilities.mjs");
         const dialog = await activateOwnedAbility(ability);
         if (dialog?.draft && "weaponItemUuid" in dialog.draft) {
@@ -332,16 +331,7 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
         const {openPotionPreparation} = await import("../applications/potions.mjs");
         return openPotionPreparation(item);
       }
-      const {activateOwnedAbility, itemAbilityDefinition} = await import("../services/abilities.mjs");
-      const definition = itemAbilityDefinition(item);
-      if (!definition) {
-        if (item.system.activity.rollMode === "attribute") {
-          const dialog = new SharedRollDialog(this.actor, item.system.activity.attribute);
-          dialog.draft.referenceItemIds = [item.id];
-          return dialog.render({force:true});
-        }
-        return item.sheet.render({force:true});
-      }
+      const {activateOwnedAbility} = await import("../services/abilities.mjs");
       await activateOwnedAbility(item);
     } catch (error) { ui.notifications.error(error.message); }
   }

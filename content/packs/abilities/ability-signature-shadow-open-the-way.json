@@ -9,14 +9,14 @@
     "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You find the lock’s rhythm through the tool, work its stubborn point and ease it open without a click.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div><div><dt>Target / range / shape</dt><dd>One adjacent ordinary lock.</dd></div><div><dt>Duration</dt><dd>Progress persists for that lock.</dd></div><div><dt>Equipment / acquisition</dt><dd>Lock tools required; grants one set, Bulk 1, if absent.</dd></div><div><dt>Limits</dt><dd>Repeatable; normal action economy applies.</dd></div><div><dt>Type</dt><dd>Signature</dd></div></dl><div class=\"hol-reference-rules\"><p>Use lock tools to work toward the DA’s stated opening target. Each attempt takes a Main Action, in or out of combat.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>Add 2 progress.</dd><dt>Standard</dt><dd>Add 3 progress.</dd><dt>Strong</dt><dd>Add 4 progress.</dd></dl><p>Your tool work makes no audible noise and leaves no tool marks. This does not silence the door or disarm a linked trap; the DA states any known risk before you begin.</p></div><h3>Additional rulings</h3><p><strong>Tags:</strong> Skill / Utility</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/cards/signature-shadow-open-the-way.md\" target=\"_blank\" rel=\"noopener\">design/cards/signature-shadow-open-the-way.md</a> at <code>bdfd18ed535fbd0e1892b9344444abf6da644809</code>.</p></section>",
     "activity": {
       "action": "main",
-      "rollMode": "none",
-      "attribute": "brawn",
+      "rollMode": "attribute",
+      "attribute": "guile",
       "defenseAttribute": "agility"
     },
     "outcomes": {
-      "weak": "",
-      "standard": "",
-      "strong": ""
+      "weak": "Add 2 progress.",
+      "standard": "Add 3 progress.",
+      "strong": "Add 4 progress."
     }
   },
   "effects": [],

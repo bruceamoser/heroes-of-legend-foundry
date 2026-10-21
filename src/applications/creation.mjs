@@ -1,6 +1,6 @@
 import {bindWizardHp,wizardGrit,wizardWounds,wizardDeath} from "./wizard-play.mjs";
 import { workshopNavIcon } from "../sheets/workshop-icons.mjs";
-import { bindLearningMarket } from "./learning-market.mjs";
+import { bindLearningMarket, learningCardView } from "./learning-market.mjs";
 import { equipmentEligibility, isUniversalAbility } from "../rules/equipment-eligibility.mjs";
 import { additionalLanguageOptions } from "../rules/languages.mjs";
 import {
@@ -16,7 +16,7 @@ import {
 } from "../services/creation.mjs";
 import { loadCatalogs } from "../services/catalog.mjs";
 import { updateOwnedDocument } from "../services/documents.mjs";
-import { newCreationDraft, creationPreview } from "../rules/creation.mjs";
+import { newCreationDraft, creationPreview, creationStepErrors } from "../rules/creation.mjs";
 import { workshopVitals } from "../rules/workshop-vitals.mjs";
 import { workshopCharacter } from "../rules/workshop-character.mjs";
 import { ATTRIBUTES } from "../rules/character.mjs";
@@ -128,7 +128,7 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
           ? "This draft does not record its campaign language configuration. Save the draft again before creation."
           : "";
     const errors = [
-      ...preview.errors.map(
+      ...creationStepErrors(preview, this.step).map(
         (e) =>
           e.text ??
           `${name(e.id ?? e.code)}: ${(e.reasons ?? []).map((r) => r.text).join(" ")}`,
@@ -164,6 +164,7 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
     ).map((r) => ({
       ...r,
       reference: r.choice.reference,
+      ...learningCardView(r.choice, choices),
       disciplineIds: (r.choice.requirements ?? []).filter((q) => q.kind === "discipline").map((q) => q.id).join(" "),
       universal: isUniversalAbility(r.choice),
       automationStatus: abilityReferenceStatus(r.choice.id, r.choice.source),
@@ -344,13 +345,13 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
         return {...error, signatureTier:error.signatureTier??level, name:name(error.id), signature:error.code==="signature", purchase:error.code==="purchase", signatureOptions:error.code==="signature"?(get(d.classId)?.signatures[error.signatureTier??level]??[]).map(id=>({id,name:name(id),flavor:get(id)?.reference?.flavor?.[0]??""})):[], acquisition:acquisition?{...acquisition,level,needsHands:inventory.acquisitions.find(a=>a.id===error.id)?.items.includes("item-ordinary-melee-weapon") || saved.weapon==="melee",weaponOptions:acquisition.weaponOptions?.map(option=>({...option,selected:saved.weapon===option.id})),handOptions:[1,2].map(value=>({value,selected:saved.meleeHands===value})),languageOptions:additionalLanguageOptions(this.languageDefinitions,preview.state.languages??[],saved.languageId,error.id),specialty:saved.specialty??"",recipes:acquisition.recipes.map(recipe=>({...recipe,selected:saved.recipes?.includes(recipe.id)}))}:null};
       }),
       acquisitions,
-      requiredChoices: acquisitions.filter((a) => preview.errors.some((e) => e.code === "acquisition" && e.id === a.id)),
+      requiredChoices: acquisitions.filter((a) => creationStepErrors(preview, this.step).some((e) => e.code === "acquisition" && e.id === a.id)),
       currentBuild: state.abilities.map(id=>{
         const index=(d.purchases[stage]??[]).findIndex(p=>p.id===id),locked=stage===1 && preview.stages[0].abilities.includes(id);
         let grantSource=locked?"Early learning":index>=0?"Learned":"Granted";
         for (const kind of ["culture","background"]) if(get(d[kind]?.id)?.pairs?.[d[kind]?.pair]?.abilityId === id)grantSource=name(d[kind].id);
         if(id === d.signatureId)grantSource=name(d.classId);
-        return {id,name:name(id),grantSource,locked,index,removable:index>=0,acquisition:acquisitions.find(a=>a.id===id && preview.errors.some(error=>error.code === "acquisition" && error.id===id))};
+        return {id,name:name(id),...learningCardView(get(id), choices),grantSource,locked,index,removable:index>=0,acquisition:acquisitions.find(a=>a.id===id && preview.errors.some(error=>error.code === "acquisition" && error.id===id))};
       }),
       disciplineFilters: choices.filter((r) => r.kind === "discipline"),
       disciplinePurchases: (d.purchases[stage] ?? []).map((p, index) => ({...p,index,name: name(p.id),rank:state.ranks[p.id]})).filter((p) => get(p.id)?.kind === "discipline"),

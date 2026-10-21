@@ -1,3 +1,4 @@
+import { generateWoundTables } from "./generate-wound-tables.mjs";
 import { cp, mkdir, rm } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { compilePack } from "@foundryvtt/foundryvtt-cli";
@@ -16,6 +17,7 @@ import {
 const root = new URL("../", import.meta.url);
 const output = new URL("dist/heroes-of-legend/", root);
 await validateNativeJournals(root);
+await generateWoundTables(root, {check:true});
 const artifacts = buildContentPackArtifacts(
   await readContentPackCatalogs(root),
 );
@@ -38,6 +40,7 @@ for (const pack of CONTENT_PACK_DEFINITIONS) {
 for (const name of ["player-rules", "da-rules"]) {
   await compilePack(fileURLToPath(new URL(`content/journals/${name}/`, root)), fileURLToPath(new URL(`packs/${name}`, output)));
 }
+await compilePack(fileURLToPath(new URL("content/tables/wounds/", root)), fileURLToPath(new URL("packs/wounds", output)));
 console.info(
   `Built ${fileURLToPath(output)} with ${formatCreatureArtReport(creatureArt)}`,
 );

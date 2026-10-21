@@ -14,9 +14,9 @@
       "defenseAttribute": "agility"
     },
     "outcomes": {
-      "weak": "",
-      "standard": "",
-      "strong": ""
+      "weak": "2 physical damage.",
+      "standard": "3 physical damage.",
+      "strong": "5 physical damage."
     }
   },
   "effects": [],

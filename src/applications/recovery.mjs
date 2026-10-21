@@ -53,6 +53,7 @@ export class RecoveryPanel extends foundry.applications.api.HandlebarsApplicatio
         effectText:this.actor.effects.filter(effect=>effect.active&&!effect.getFlag("heroes-of-legend","retired")&&effect.getFlag("heroes-of-legend","woundEvent")===wound.eventId).map(effect=>effect.name).join(" · ")||"—",
       })),
       gm: game.user.isGM,
+      owner: this.actor.isOwner,
       pendingDeath: Boolean(
         this.actor.getFlag("heroes-of-legend", "pendingDeath"),
       ),

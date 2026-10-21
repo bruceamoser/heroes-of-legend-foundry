@@ -9,14 +9,14 @@
     "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>Lift, turn, and send them crashing through the battlefield.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Brawn</dd></div><div><dt>Target / range / shape</dt><dd>One adjacent creature</dd></div><div><dt>Duration</dt><dd>Instant</dd></div><div><dt>Equipment / acquisition</dt><dd>Requires and grants one ordinary melee weapon, Bulk 1, only if none is owned.</dd></div><div><dt>Limits</dt><dd>Repeatable; pay the action and any stated costs each use.</dd></div><div><dt>Type</dt><dd>Skill / Attack</dd></div></dl><div class=\"hol-reference-rules\"><p>Choose your target and make the attack.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>5 physical damage; push 2.</dd><dt>Standard</dt><dd>5 physical damage; push 3 and knock prone.</dd><dt>Strong</dt><dd>7 physical damage; push 4 and knock prone.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/cards/hurl-aside.md\" target=\"_blank\" rel=\"noopener\">design/cards/hurl-aside.md</a> at <code>bdfd18ed535fbd0e1892b9344444abf6da644809</code>.</p></section>",
     "activity": {
       "action": "main",
-      "rollMode": "none",
+      "rollMode": "attribute",
       "attribute": "brawn",
       "defenseAttribute": "agility"
     },
     "outcomes": {
-      "weak": "",
-      "standard": "",
-      "strong": ""
+      "weak": "5 physical damage; push 2.",
+      "standard": "5 physical damage; push 3 and knock prone.",
+      "strong": "7 physical damage; push 4 and knock prone."
     }
   },
   "effects": [],

@@ -187,3 +187,32 @@
 .message-content .hol-chat-card .hol-chat-outcomes tr {background:transparent;}
 .message-content .hol-chat-card .hol-chat-outcomes th {border:0;border-bottom:1px solid #d6cdb9;text-transform:uppercase;letter-spacing:.04em;}
 .message-content .hol-chat-card .hol-chat-verdict {border:0;padding:0;margin:0;}
+
+/* Dense native sidebar cards: keep the result visible and full references folded. */
+.message-content .hol-chat-card .hol-chat-header {gap:5px;padding:4px 6px;}
+.message-content .hol-chat-card .hol-chat-header img {width:24px;height:24px;}
+.message-content .hol-chat-card .hol-chat-header h3 {font-size:12px;line-height:1.2;}
+.message-content .hol-chat-card .hol-chat-header .content-link {background:transparent;color:inherit;border:0;padding:0;}
+.message-content .hol-chat-card .hol-chat-bar {padding:3px 6px;gap:2px 7px;line-height:1.25;}
+.message-content .hol-chat-card .hol-chat-resolution {padding:4px 6px;gap:5px;}
+.message-content .hol-chat-card .hol-chat-dice {gap:3px;}
+.message-content .hol-chat-card .hol-chat-die {width:23px;height:24px;font-size:15px;}
+.message-content .hol-chat-card .hol-chat-verdict {flex-direction:row;align-items:baseline;gap:4px;min-width:0;}
+.message-content .hol-chat-card .hol-chat-verdict strong {font-size:23px;}
+.message-content .hol-chat-card .hol-chat-effect {padding:4px 6px;font-size:10.5px;line-height:1.3;}
+.message-content .hol-chat-card .hol-chat-description {padding:3px 6px 0;line-height:1.3;}
+.message-content .hol-chat-card .hol-chat-description p {margin:2px 0;}
+.message-content .hol-chat-card .hol-chat-outcomes {width:calc(100% - 12px);margin:3px 6px;line-height:1.25;}
+.message-content .hol-chat-card .hol-chat-outcomes :is(th,td) {padding:2px 3px;}
+.message-content .hol-chat-card :is(.hol-chat-natural,.hol-chat-abilities,.hol-chat-targets,.hol-chat-footer,.hol-chat-details) {padding:3px 6px;line-height:1.25;}
+.message-content .hol-chat-card .hol-chat-footer button {min-height:22px;padding:2px 7px;}
+.message-content .hol-chat-card .hol-reference-rules :is(h1,h2,h3,h4) {font:600 11px/1.25 "HOL Cinzel",serif;margin:6px 0 3px;}
+.message-content .hol-chat-card .hol-reference-rules :is(p,ul,ol,dl,table) {font-size:10.5px;line-height:1.3;margin:3px 0;}
+.message-content .hol-chat-card .hol-reference-rules :is(dt,dd) {margin:0;}
+.message-content .hol-chat-card .hol-reference-rules dt {font-weight:700;}
+.message-content .hol-wound-chat {font:11px/1.3 system-ui,sans-serif;color:#28251c;background:#f7f3e9;border:1px solid #b7aa8b;border-radius:4px;overflow:hidden;}
+.message-content .hol-wound-chat header {background:#15221c;color:#f7f3e9;border-bottom:1px solid #b39253;padding:4px 6px;font:600 12px/1.2 "HOL Cinzel",serif;}
+.message-content .hol-wound-chat p {padding:0 6px;margin:4px 0;font-size:10.5px;}
+.message-content .hol-wound-chat button {margin:2px 6px 5px;width:auto;min-height:22px;padding:2px 6px;font:10.5px/1.2 system-ui,sans-serif;}
+.message-content:has(.hol-wound-chat) .dice-roll {font-size:11px;margin:3px 0;}
+.message-content:has(.hol-wound-chat) .dice-roll :is(.dice-formula,.dice-total) {font-size:12px;line-height:1.25;padding:2px;margin:2px 0;}

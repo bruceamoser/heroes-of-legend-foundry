@@ -1,3 +1,19 @@
+import { abilityHeaderBadges } from "../rules/workshop-card-view.mjs";
+
+export function learningCardView(record, choices) {
+  if (!record) return {actionCode:"",actionLabel:"",marks:[]};
+  const badges = abilityHeaderBadges(record);
+  const requirements = record.kind === "discipline" ? [{id:record.id,rank:1}] : badges.disciplines;
+  return {
+    actionCode: badges.codes.join("/"), actionLabel: badges.action,
+    marks: requirements.map(requirement => ({...requirement,
+      name: choices.find(choice => choice.id === requirement.id)?.name ?? requirement.id,
+      src: `systems/heroes-of-legend/assets/marks/${requirement.id.replace(/^discipline-/, "")}.webp`,
+      rankLabel: requirement.rank > 1 ? requirement.rank : "",
+    })),
+  };
+}
+
 /** A native modal keeps purchases beside the persistent Current Build draft. */
 export function bindLearningMarket(app) {
   const root = app.element.querySelector(".hol-wizard");

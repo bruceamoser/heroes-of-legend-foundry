@@ -1566,3 +1566,19 @@ on a new machine. Both validation and release CI install the browser before chec
 Native tests use an isolated world and wait for a coherent idle coordinator before
 closing/restarting clients. A clean server restart can recover a proven idle partial
 activation before or after binding; busy/uncertain work is never cleared implicitly.
+
+### 2.0.1 live-table corrections
+
+`test:authority-reconnect` exercises prior-session busy/uncertain and malformed
+legacy settings through ordinary login, then real GM/player import/save/reload,
+owned player damage/correction and encounter start. `test:wound-tables` checks
+native compendium tables, type-to-roll UI, applied chat/Undo and all seven damage
+types as a player with the GM disconnected. Both require the isolated-world write
+guards. Native chat checks now assert the user-requested compact heading rather
+than identical web sizing. Learning and reference sheets retain the web language.
+
+New RollTable sources must include both root and embedded `_key` entries for the
+official CLI. Unit tests compile and extract all table/result fields: counting
+source JSON alone cannot prove a compendium contains documents. Chat selectors
+must target `#chat`, because native notification toasts can repeat the same
+message ID. Position overlapping sheets away from the sidebar before capturing.

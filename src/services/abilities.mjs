@@ -1,3 +1,5 @@
+import { abilityRollConfiguration } from "../rules/ability-roll.mjs";
+import { loadCatalogs } from "./catalog.mjs";
 import { ensureAuthorityReady } from "./authority.mjs";
 import { planSimpleAbility } from "../rules/one-dp-play.mjs";
 import { assertNoPendingActorPotion } from "./turn-lock.mjs";
@@ -56,17 +58,33 @@ export async function activateOwnedAbility(item) {
       )
       .map((p) => ({ combat: c, id: p.id })),
   );
-  if (matches.length !== 1)
-    throw new Error(
-      "Place this character in exactly one encounter before using this action.",
-    );
   const definition = itemAbilityDefinition(item);
-  if (definition?.handler === "player-basic-melee-v1") {
+  // Keep the reviewed combat resolver for Basic Melee when a budget exists.
+  if (definition?.handler === "player-basic-melee-v1" && matches.length === 1) {
     const { promptBasicMelee } = await import("../dialogs/player-attack.mjs");
     return promptBasicMelee(item, matches[0].combat, matches[0].id);
   }
+  if (definition && !definition.attribute && matches.length === 1)
+    return requestAbility(item, matches[0].combat, matches[0].id);
+  const catalogs = await loadCatalogs();
+  const record = catalogs.choices.find(choice => choice.id === item.getFlag(ID, "catalogId"));
+  const configuration = abilityRollConfiguration(item, record);
+  if (configuration.attribute) {
+    const { SharedRollDialog } = await import("../dialogs/attribute-roll.mjs");
+    const dialog = new SharedRollDialog(item.actor, configuration.attribute);
+    dialog.draft.referenceItemIds = [item.id];
+    dialog.draft.abilityItemId = item.id;
+    dialog.draft.abilityConfiguration = structuredClone(configuration);
+    return dialog.render({force:true});
+  }
+  if (!definition || matches.length === 0) {
+    const { postAbilityReference } = await import("./reference-play.mjs");
+    return postAbilityReference(item);
+  }
+  if (matches.length !== 1) throw new Error("Choose one active encounter for this character before spending its action.");
   return requestAbility(item, matches[0].combat, matches[0].id);
 }
+
 export async function requestAbility(
   item,
   combat,

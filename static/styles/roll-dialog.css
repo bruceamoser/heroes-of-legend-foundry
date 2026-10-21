@@ -304,3 +304,12 @@
 .heroes-of-legend.hol-roll-dialog .hol-roll-abilities .inline-toggle input[type=checkbox]::before,
 .heroes-of-legend.hol-roll-dialog .hol-roll-abilities .inline-toggle input[type=checkbox]::after {display:none;}
 .heroes-of-legend.hol-roll-dialog .window-content {color-scheme:light;}
+/* The wound picker is a small native dialog, not the full roll-composer grid. */
+.heroes-of-legend.hol-roll-dialog.hol-wound-roll .window-content {padding:10px 12px;gap:10px;}
+.heroes-of-legend.hol-wound-roll .dialog-content {display:grid;gap:8px;font-size:13px;line-height:1.3;}
+.heroes-of-legend.hol-wound-roll .dialog-content :is(p,label) {margin:0;}
+.heroes-of-legend.hol-wound-roll .dialog-content label {display:grid;gap:3px;}
+.heroes-of-legend.hol-wound-roll .dialog-content small {font-size:11px;line-height:1.2;color:#6a6457;}
+.heroes-of-legend.hol-wound-roll .dialog-content :is(input,select) {margin:0;height:30px;}
+.heroes-of-legend.hol-wound-roll .form-footer {margin:0;gap:6px;}
+.heroes-of-legend.hol-wound-roll .form-footer button {min-height:30px;height:30px;background:#24382e;color:#f1e6ce;border:1px solid #b39253;}

@@ -14,9 +14,9 @@
       "defenseAttribute": "agility"
     },
     "outcomes": {
-      "weak": "",
-      "standard": "",
-      "strong": ""
+      "weak": "Deal 5 physical damage.",
+      "standard": "Deal 5 physical damage and push 2 squares.",
+      "strong": "Deal 7 physical damage, push 3 squares and knock prone."
     }
   },
   "effects": [],

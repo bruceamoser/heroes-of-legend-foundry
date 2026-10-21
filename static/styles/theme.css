@@ -49,9 +49,9 @@ body.hol-theme .application.hol-wound-table {
 body.hol-theme .hol-wound-table .window-content {background:#f7f3e9;color:#28251c;gap:10px;padding:12px;}
 body.hol-theme .hol-wound-table .sheet-header {gap:8px;}
 body.hol-theme .hol-wound-table .sheet-header img {height:42px;width:42px;filter:sepia(1) brightness(.5);}
-body.hol-theme .hol-wound-table :is(h1,h4) {font-family:"HOL Cinzel",serif;color:#15221c;text-shadow:none;margin:0;}
-body.hol-theme .hol-wound-table h1 {font-size:21px;}
-body.hol-theme .hol-wound-table h4 {font-size:14px;color:#6a6457;}
+body.hol-theme .hol-wound-table .window-content :is(h1,h4) {font-family:"HOL Cinzel",serif;color:#15221c;text-shadow:none;margin:0;}
+body.hol-theme .hol-wound-table .window-content h1 {font-size:21px;}
+body.hol-theme .hol-wound-table .window-content h4 {font-size:14px;color:#6a6457;}
 body.hol-theme .hol-wound-table p {margin:3px 0;}
 body.hol-theme .hol-wound-table table {border:1px solid #d6cdb9;background:transparent;}
 body.hol-theme .hol-wound-table thead {background:#24382e;color:#f1e6ce;}

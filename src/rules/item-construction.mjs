@@ -1,3 +1,4 @@
+import { printedAbilityRoll } from "./ability-roll.mjs";
 import { actionTiming } from "./workshop-character.mjs";
 import { catalogItemIcon } from "./item-icons.mjs";
 import {
@@ -163,20 +164,21 @@ export function equipmentReferenceHtml(
 }
 
 function abilitySystem(description, definition, record) {
+  const printedRoll = printedAbilityRoll(record);
   const printedCategory = actionTiming(record).map(timing => ({"Main Action":"main",Maneuver:"maneuver",Reaction:"reaction",Passive:"passive",Movement:"movement",Other:"other"}[timing])).find(Boolean);
   return {
     schemaVersion: ITEM_SCHEMA_VERSION,
     description,
     activity: {
       action: definition?.category ?? printedCategory ?? "passive",
-      rollMode: definition?.attribute ? "attribute" : "none",
-      attribute: definition?.attribute ?? "brawn",
+      rollMode: (definition?.attribute ?? printedRoll.attribute) ? "attribute" : "none",
+      attribute: definition?.attribute ?? printedRoll.attribute ?? "brawn",
       defenseAttribute: "agility",
     },
     outcomes: {
-      weak: "",
-      standard: "",
-      strong: "",
+      weak: printedRoll.outcomes.weak ?? "",
+      standard: printedRoll.outcomes.standard ?? "",
+      strong: printedRoll.outcomes.strong ?? "",
     },
   };
 }

@@ -111,8 +111,11 @@ async function apply(id, combatUuid) {
       !actor?.testUserPermission(message.author, "OWNER")
     )
       throw new Error("Choose or finish a participant you own, or ask the DA.");
+  } else if (request.kind === "start") {
+    if (!message.author.isGM && !combat.combatants.filter(participant => participant.actor?.testUserPermission(message.author, "OWNER")).length)
+      throw new Error("Join this encounter with a character you own before starting it.");
   } else if (!message.author.isGM)
-    throw new Error("The DA starts encounters and decides roster changes.");
+    throw new Error("Only the DA can change the encounter roster.");
   if (
     !Number.isSafeInteger(request.revision) ||
     request.revision !== (state?.revision ?? 0)

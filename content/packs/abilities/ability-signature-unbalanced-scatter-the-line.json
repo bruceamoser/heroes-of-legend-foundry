@@ -9,14 +9,14 @@
     "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You throw your arms wide and drive into the bodies around you, sending the whole front rank stumbling away.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Brawn</dd></div><div><dt>Target / range / shape</dt><dd>Every enemy adjacent when you begin.</dd></div><div><dt>Duration</dt><dd>Immediate displacement and Prone.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Repeatable; normal action economy applies.</dd></div><div><dt>Type</dt><dd>Signature</dd></div></dl><div class=\"hol-reference-rules\"><p>Roll Brawn once using the least favorable net Boons/Banes among the targets.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>Push each 2 squares directly away from you.</dd><dt>Standard</dt><dd>Push each 3 squares.</dd><dt>Strong</dt><dd>Push each 4 squares and knock each prone.</dd></dl><p>Resolve the targets in an order you choose. No direct damage; normal collisions apply.</p></div><h3>Additional rulings</h3><p><strong>Tags:</strong> Skill / Control</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/cards/signature-unbalanced-scatter-the-line.md\" target=\"_blank\" rel=\"noopener\">design/cards/signature-unbalanced-scatter-the-line.md</a> at <code>bdfd18ed535fbd0e1892b9344444abf6da644809</code>.</p></section>",
     "activity": {
       "action": "main",
-      "rollMode": "none",
+      "rollMode": "attribute",
       "attribute": "brawn",
       "defenseAttribute": "agility"
     },
     "outcomes": {
-      "weak": "",
-      "standard": "",
-      "strong": ""
+      "weak": "Push each 2 squares directly away from you.",
+      "standard": "Push each 3 squares.",
+      "strong": "Push each 4 squares and knock each prone."
     }
   },
   "effects": [],

@@ -112,7 +112,7 @@ try{
   }
   await gm.evaluate(async()=>{for(const app of __holParity.apps)await app.close();__holParity.apps=[];});
  }
- await gm.evaluate(id=>{const actor=game.actors.get(id);__holParity.messageHook=Hooks.on("createChatMessage",message=>{if(__holParity.combats.some(id=>message.getFlag("heroes-of-legend","combatRequest")?.combatUuid===`Combat.${id}`))__holParity.messages.push(message.id);for(const key of ["craftingRequest","recoveryRequest","woundRequest","woundTreatmentRequest"])if(message.getFlag("heroes-of-legend",key)?.actorUuid===actor.uuid){__holParity.messages.push(message.id);break;}});},toolActor);
+ await gm.evaluate(id=>{const actor=game.actors.get(id);__holParity.messageHook=Hooks.on("createChatMessage",message=>{if(__holParity.combats.some(id=>message.getFlag("heroes-of-legend","combatRequest")?.combatUuid===`Combat.${id}`))__holParity.messages.push(message.id);for(const key of ["craftingRequest","recoveryRequest","woundRequest","ownerWoundRequest","woundResult","woundTreatmentRequest"])if(message.getFlag("heroes-of-legend",key)?.actorUuid===actor.uuid){__holParity.messages.push(message.id);break;}});},toolActor);
  await gm.evaluate(async id=>{const {CraftingPanel}=await import("/systems/heroes-of-legend/applications/crafting.mjs");const app=new CraftingPanel(game.actors.get(id));__holParity.apps.push(app);await app.render({force:true});},toolActor);
  await gm.locator('.hol-crafting [data-action="start"]').click();
  await gm.waitForFunction(id=>game.actors.get(id).getFlag("heroes-of-legend","craftingState")?.["recipe-travel-food"]?.active,toolActor,{timeout:60000});
@@ -174,17 +174,18 @@ try{
  await gm.evaluate(async id=>{const {WoundPanel}=await import("/systems/heroes-of-legend/applications/wounds.mjs");const app=new WoundPanel(game.actors.get(id));__holParity.apps.push(app);await app.render({force:true});},toolActor);
  await capture(gm,".hol-wounds .hol-approved-tool","native-wounds-recorded");
  const priorWounds=await gm.evaluate(id=>game.actors.get(id).getFlag("heroes-of-legend","survival").wounds,toolActor);
- await gm.locator('.hol-wounds [data-action="record"]').click();await gm.getByRole("button",{name:"Record wound",exact:true}).click();
- await gm.waitForFunction(id=>Object.values(game.actors.get(id).getFlag("heroes-of-legend","pendingWounds")??{}).some(event=>event.status==="awaiting-roll"),toolActor,{timeout:60000});
- await gm.locator('.hol-wounds [name="damageType"]').selectOption("physical");await capture(gm,".hol-wounds .hol-approved-tool","native-wounds-roll");await gm.locator('.hol-wounds [data-action="roll"]').click();
- await gm.locator('.hol-wounds [data-action="apply"]').waitFor({timeout:60000});await capture(gm,".hol-wounds .hol-approved-tool","native-wounds-result");
- if(await gm.locator('.hol-wounds [name="fearSource"]').count())await gm.locator('.hol-wounds [name="fearSource"]').fill("Visible fixture opponent");
- await gm.locator('.hol-wounds [data-action="apply"]').click();await gm.waitForFunction(id=>Object.values(game.actors.get(id).getFlag("heroes-of-legend","pendingWounds")??{}).some(event=>event.status==="resolved"),toolActor,{timeout:60000});
+ await gm.locator('.hol-wounds [data-action="record"]').click();
+ await gm.locator('.hol-roll-dialog [name="damageType"]').selectOption("physical");
+ await gm.locator('.hol-roll-dialog [name="fearSource"]').fill("Visible fixture opponent");
+ await capture(gm,".hol-roll-dialog","native-wounds-roll");
+ await gm.locator('.hol-roll-dialog button[data-action="roll"]').click();
+ await gm.waitForFunction(id=>Object.values(game.actors.get(id).getFlag("heroes-of-legend","pendingWounds")??{}).some(event=>event.status==="resolved"),toolActor,{timeout:60000});
+ await capture(gm,".hol-wounds .hol-approved-tool","native-wounds-result");
  const woundBeforeTreatment=await gm.evaluate(id=>{const actor=game.actors.get(id);return {hp:actor.system.health.value,grit:actor.system.grit.spent,wounds:actor.getFlag("heroes-of-legend","survival").wounds};},toolActor);assert.equal(woundBeforeTreatment.wounds,priorWounds+1);
  const woundRow=gm.locator('.hol-wounds [data-wound-event="parity-wound"]');await woundRow.locator('[name="treatmentProgress"]').selectOption("2");await woundRow.locator('[data-action="treat"]').click();
  await gm.waitForFunction(id=>game.actors.get(id).getFlag("heroes-of-legend","wounds")["parity-wound"].recoveryProgress===2,toolActor,{timeout:60000});
  assert.deepEqual(await gm.evaluate(id=>{const actor=game.actors.get(id);if(!actor.getFlag("heroes-of-legend","wounds")["parity-wound"].scar)throw Error("Treatment removed permanent scar");return {hp:actor.system.health.value,grit:actor.system.grit.spent,wounds:actor.getFlag("heroes-of-legend","survival").wounds};},toolActor),woundBeforeTreatment);
- await capture(gm,".hol-wounds .hol-approved-tool","native-wounds-treated");evidence.checks.push("Actual WoundPanel Record→Roll→Apply increments permanent wound count once; treatment completes original canonical scar while retaining scar, accumulated count, HP and Grit");
+ await capture(gm,".hol-wounds .hol-approved-tool","native-wounds-treated");evidence.checks.push("Actual WoundPanel Add wound→type→Roll (automatic application) increments permanent wound count once; treatment completes original canonical scar while retaining scar, accumulated count, HP and Grit");
  await gm.evaluate(async()=>{for(const app of __holParity.apps)await app.close();__holParity.apps=[];});
  const reader=await gm.evaluate(async()=>{const user=await User.create({name:`Parity reader ${foundry.utils.randomID(5)}`,role:CONST.USER_ROLES.PLAYER});__holParity.users.push(user.id);return{name:user.name,id:user.id};});
  const readerContext=await browser.newContext({viewport:{width:1440,height:1050}});

@@ -59,7 +59,7 @@ export async function waitForCreation(actor, requestId, revision, { timeout = 30
     if (receipt?.requestId === requestId && receipt.revision === revision && receipt.status === "complete") return receipt;
     const failure = game.messages.get(requestId)?.getFlag(ID, "creationFailure");
     if (failure) throw new Error(failure);
-    if (Date.now() - start >= timeout) throw new Error("Character processing has not completed. Your draft is saved; keep this window open and check that the GM automation coordinator is online before retrying.");
+    if (Date.now() - start >= timeout) throw new Error("Character processing has not completed. Your draft is saved; keep this window open and check the saved action in Interrupted actions before retrying.");
     await new Promise(resolve => setTimeout(resolve, interval));
   }
 }

@@ -1,0 +1,1196 @@
+{
+  "_id": "2ba623b9784e6b6f",
+  "name": "Life wounds",
+  "img": "icons/svg/blood.svg",
+  "description": "<p>Canonical sorted 3d6 wound results. The native 1d216 table weights reproduce all 216 equally likely three-die combinations. For accumulated wounds, use the character’s Roll wound action: roll up to 5d6, keep the highest three and read them in ascending order. That action selects this table’s matching result and applies it.</p>",
+  "formula": "1d216",
+  "replacement": true,
+  "displayRoll": true,
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "woundTable": "life",
+      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+    }
+  },
+  "results": [
+    {
+      "_id": "884e344060bf8831",
+      "type": "text",
+      "name": "111 · Face: small pallid patch",
+      "description": "<p><strong>Face: small pallid patch</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: —</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "111",
+          "woundTable": "life",
+          "catalogId": "wound-life-111",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "a1a6fae697330faf",
+      "type": "text",
+      "name": "112 · Ear: darkened edge",
+      "description": "<p><strong>Ear: darkened edge</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: —</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        2,
+        4
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "112",
+          "woundTable": "life",
+          "catalogId": "wound-life-112",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "0006a34a68c55450",
+      "type": "text",
+      "name": "113 · Arm: dark branching marks",
+      "description": "<p><strong>Arm: dark branching marks</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: —</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        5,
+        7
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "113",
+          "woundTable": "life",
+          "catalogId": "wound-life-113",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "ea01c93fc484aace",
+      "type": "text",
+      "name": "114 · Hand: discolored nails",
+      "description": "<p><strong>Hand: discolored nails</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: —</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        8,
+        10
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "114",
+          "woundTable": "life",
+          "catalogId": "wound-life-114",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "2cfee6dc4690bd2e",
+      "type": "text",
+      "name": "115 · Torso: sunken scar tissue",
+      "description": "<p><strong>Torso: sunken scar tissue</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: —</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        11,
+        13
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "115",
+          "woundTable": "life",
+          "catalogId": "wound-life-115",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "ec93f1c0207ae23e",
+      "type": "text",
+      "name": "116 · Leg: mottled shin skin",
+      "description": "<p><strong>Leg: mottled shin skin</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: —</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        14,
+        16
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "116",
+          "woundTable": "life",
+          "catalogId": "wound-life-116",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "2b045feb3e3f2f68",
+      "type": "text",
+      "name": "122 · Scalp: lost or whitened hair",
+      "description": "<p><strong>Scalp: lost or whitened hair</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: —</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        17,
+        19
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "122",
+          "woundTable": "life",
+          "catalogId": "wound-life-122",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "ce0a44c242554ab7",
+      "type": "text",
+      "name": "123 · Face: hollowed cheek scar",
+      "description": "<p><strong>Face: hollowed cheek scar</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: —</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        20,
+        25
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "123",
+          "woundTable": "life",
+          "catalogId": "wound-life-123",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "1494a747a6cc90de",
+      "type": "text",
+      "name": "124 · Shoulder: prematurely aged skin",
+      "description": "<p><strong>Shoulder: prematurely aged skin</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: —</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        26,
+        31
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "124",
+          "woundTable": "life",
+          "catalogId": "wound-life-124",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "ce2fb0c4c5d155cb",
+      "type": "text",
+      "name": "125 · Forearm: dark veins around scar",
+      "description": "<p><strong>Forearm: dark veins around scar</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: —</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        32,
+        37
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "125",
+          "woundTable": "life",
+          "catalogId": "wound-life-125",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "aa1da993b0cafba1",
+      "type": "text",
+      "name": "126 · Foot: discolored skin",
+      "description": "<p><strong>Foot: discolored skin</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: —</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        38,
+        43
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "126",
+          "woundTable": "life",
+          "catalogId": "wound-life-126",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "0f25aeac50c9301f",
+      "type": "text",
+      "name": "133 · Face: conspicuous withered scar",
+      "description": "<p><strong>Face: conspicuous withered scar</strong></p><p>1 boon: intimidate; 1 bane: persuade</p><p>Remedy: Life; removes both modifiers · Recovery 2</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        44,
+        46
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "133",
+          "woundTable": "life",
+          "catalogId": "wound-life-133",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "9e057642022beeeb",
+      "type": "text",
+      "name": "134 · Torso: altered skin texture",
+      "description": "<p><strong>Torso: altered skin texture</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: —</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        47,
+        52
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "134",
+          "woundTable": "life",
+          "catalogId": "wound-life-134",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "7708e88e489f215e",
+      "type": "text",
+      "name": "135 · Leg: mild limp",
+      "description": "<p><strong>Leg: mild limp</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: Life; removes limp · Recovery 2</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        53,
+        58
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "135",
+          "woundTable": "life",
+          "catalogId": "wound-life-135",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "0323f1d7d922a46f",
+      "type": "text",
+      "name": "136 · Foot: uneven gait",
+      "description": "<p><strong>Foot: uneven gait</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: Life; restores gait · Recovery 1</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        59,
+        64
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "136",
+          "woundTable": "life",
+          "catalogId": "wound-life-136",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "edd28935fdb9e812",
+      "type": "text",
+      "name": "144 · Hand: withered appearance",
+      "description": "<p><strong>Hand: withered appearance</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: —</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        65,
+        67
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "144",
+          "woundTable": "life",
+          "catalogId": "wound-life-144",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "6731b726f86af19b",
+      "type": "text",
+      "name": "145 · Arm: visible tissue loss beneath scar",
+      "description": "<p><strong>Arm: visible tissue loss beneath scar</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: —</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        68,
+        73
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "145",
+          "woundTable": "life",
+          "catalogId": "wound-life-145",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "9741fdba834c39fa",
+      "type": "text",
+      "name": "146 · Face: stark eye-area discoloration",
+      "description": "<p><strong>Face: stark eye-area discoloration</strong></p><p>1 boon: intimidate; 1 bane: persuade</p><p>Remedy: Life; removes both modifiers · Recovery 2</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        74,
+        79
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "146",
+          "woundTable": "life",
+          "catalogId": "wound-life-146",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "a544b06be0de9781",
+      "type": "text",
+      "name": "155 · Leg: localized wasting",
+      "description": "<p><strong>Leg: localized wasting</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: —</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        80,
+        82
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "155",
+          "woundTable": "life",
+          "catalogId": "wound-life-155",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "a511a3ce90c6ca3d",
+      "type": "text",
+      "name": "156 · Body: momentary vitality loss",
+      "description": "<p><strong>Body: momentary vitality loss</strong></p><p>dazed 1</p><p>Remedy: Decay</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        83,
+        88
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "156",
+          "woundTable": "life",
+          "catalogId": "wound-life-156",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "fd656a792fbed5e3",
+      "type": "text",
+      "name": "166 · Foot: weakened heel",
+      "description": "<p><strong>Foot: weakened heel</strong></p><p>Movement −1</p><p>Remedy: Life · Recovery 2</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        89,
+        91
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "166",
+          "woundTable": "life",
+          "catalogId": "wound-life-166",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "4f4317421ca51e09",
+      "type": "text",
+      "name": "222 · Head: sudden draining shock",
+      "description": "<p><strong>Head: sudden draining shock</strong></p><p>dazed 1</p><p>Remedy: Decay</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 1,
+      "range": [
+        92,
+        92
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "222",
+          "woundTable": "life",
+          "catalogId": "wound-life-222",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "d69da849067ec45e",
+      "type": "text",
+      "name": "223 · Arm: weakened shoulder",
+      "description": "<p><strong>Arm: weakened shoulder</strong></p><p>1 bane: physical</p><p>Remedy: Life · Recovery 2</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        93,
+        95
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "223",
+          "woundTable": "life",
+          "catalogId": "wound-life-223",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "4386e1ffabcbbe97",
+      "type": "text",
+      "name": "224 · Hand: drained tissue",
+      "description": "<p><strong>Hand: drained tissue</strong></p><p>1 bane: physical</p><p>Remedy: Life · Recovery 2</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        96,
+        98
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "224",
+          "woundTable": "life",
+          "catalogId": "wound-life-224",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "4a53148cb618af89",
+      "type": "text",
+      "name": "225 · Torso: loss of bodily strength",
+      "description": "<p><strong>Torso: loss of bodily strength</strong></p><p>1 bane: physical</p><p>Remedy: Life · Recovery 3</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        99,
+        101
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "225",
+          "woundTable": "life",
+          "catalogId": "wound-life-225",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "1c5a1441d2de0ab1",
+      "type": "text",
+      "name": "226 · Leg: weakened knee",
+      "description": "<p><strong>Leg: weakened knee</strong></p><p>prone 1; Movement −1</p><p>Remedy: Life; removes movement penalty · Recovery 3</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        102,
+        104
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "226",
+          "woundTable": "life",
+          "catalogId": "wound-life-226",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "1cc71e5991bd5ff5",
+      "type": "text",
+      "name": "233 · Eyes: loss of visual function",
+      "description": "<p><strong>Eyes: loss of visual function</strong></p><p>blinded 1</p><p>Remedy: Decay</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        105,
+        107
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "233",
+          "woundTable": "life",
+          "catalogId": "wound-life-233",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "7496523af2eab4ae",
+      "type": "text",
+      "name": "234 · Arm: weakened forearm",
+      "description": "<p><strong>Arm: weakened forearm</strong></p><p>1 bane: physical</p><p>Remedy: Life · Recovery 3</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        108,
+        113
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "234",
+          "woundTable": "life",
+          "catalogId": "wound-life-234",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "410a608140fa07c6",
+      "type": "text",
+      "name": "235 · Hand: stiffened fingers",
+      "description": "<p><strong>Hand: stiffened fingers</strong></p><p>1 bane: physical</p><p>Remedy: Life · Recovery 3</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        114,
+        119
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "235",
+          "woundTable": "life",
+          "catalogId": "wound-life-235",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "0447db22b8e8232b",
+      "type": "text",
+      "name": "236 · Head: disrupted awareness",
+      "description": "<p><strong>Head: disrupted awareness</strong></p><p>dazed 1</p><p>Remedy: Decay</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        120,
+        125
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "236",
+          "woundTable": "life",
+          "catalogId": "wound-life-236",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "de5de0e2d37db5ee",
+      "type": "text",
+      "name": "244 · Torso: draining spasm",
+      "description": "<p><strong>Torso: draining spasm</strong></p><p>dazed 1</p><p>Remedy: Decay</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        126,
+        128
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "244",
+          "woundTable": "life",
+          "catalogId": "wound-life-244",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "228985673ce1d8fa",
+      "type": "text",
+      "name": "245 · Leg: weakened calf",
+      "description": "<p><strong>Leg: weakened calf</strong></p><p>Movement −1</p><p>Remedy: Life · Recovery 2</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        129,
+        134
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "245",
+          "woundTable": "life",
+          "catalogId": "wound-life-245",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "0309f17c3eb15ee7",
+      "type": "text",
+      "name": "246 · Foot: weakened sole",
+      "description": "<p><strong>Foot: weakened sole</strong></p><p>Movement −1</p><p>Remedy: Life · Recovery 3</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        135,
+        140
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "246",
+          "woundTable": "life",
+          "catalogId": "wound-life-246",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "b07c3bf81d96acc0",
+      "type": "text",
+      "name": "255 · Body: sudden weakness",
+      "description": "<p><strong>Body: sudden weakness</strong></p><p>prone 1</p><p>Remedy: Stand normally</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        141,
+        143
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "255",
+          "woundTable": "life",
+          "catalogId": "wound-life-255",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "9d5a254ea8a23705",
+      "type": "text",
+      "name": "256 · Leg: extensive knee weakness",
+      "description": "<p><strong>Leg: extensive knee weakness</strong></p><p>Movement −2</p><p>Remedy: Life · Recovery 3</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        144,
+        149
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "256",
+          "woundTable": "life",
+          "catalogId": "wound-life-256",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "e5d5d22e7b81940d",
+      "type": "text",
+      "name": "266 · Foot: extensive ankle weakness",
+      "description": "<p><strong>Foot: extensive ankle weakness</strong></p><p>Movement −2</p><p>Remedy: Life · Recovery 3</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        150,
+        152
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "266",
+          "woundTable": "life",
+          "catalogId": "wound-life-266",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "9242665e99260b75",
+      "type": "text",
+      "name": "333 · Arm: deep vitality loss",
+      "description": "<p><strong>Arm: deep vitality loss</strong></p><p>dazed 1; 1 bane: physical</p><p>Remedy: Life; removes Bane · Recovery 3</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 1,
+      "range": [
+        153,
+        153
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "333",
+          "woundTable": "life",
+          "catalogId": "wound-life-333",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "f187d9aabf8ad9b1",
+      "type": "text",
+      "name": "334 · Hand: withered tissue",
+      "description": "<p><strong>Hand: withered tissue</strong></p><p>1 bane: physical</p><p>Remedy: Life · Recovery 3</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        154,
+        156
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "334",
+          "woundTable": "life",
+          "catalogId": "wound-life-334",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "c2d8b143b2875c27",
+      "type": "text",
+      "name": "335 · Torso: draining collapse",
+      "description": "<p><strong>Torso: draining collapse</strong></p><p>dazed 1; prone 1; 1 bane: physical</p><p>Remedy: Life; removes Bane · Recovery 4</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        157,
+        159
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "335",
+          "woundTable": "life",
+          "catalogId": "wound-life-335",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "35fb19d4685658bb",
+      "type": "text",
+      "name": "336 · Leg: weakened thigh",
+      "description": "<p><strong>Leg: weakened thigh</strong></p><p>dazed 1; Movement −1</p><p>Remedy: Life; removes movement penalty · Recovery 3</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        160,
+        162
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "336",
+          "woundTable": "life",
+          "catalogId": "wound-life-336",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "c56a3af750f93efa",
+      "type": "text",
+      "name": "344 · Body: interrupted bodily control",
+      "description": "<p><strong>Body: interrupted bodily control</strong></p><p>paralyzed 1</p><p>Remedy: Decay</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        163,
+        165
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "344",
+          "woundTable": "life",
+          "catalogId": "wound-life-344",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "7a2297aa2cfb7f4a",
+      "type": "text",
+      "name": "345 · Back: wasting muscles",
+      "description": "<p><strong>Back: wasting muscles</strong></p><p>Movement −1; 1 bane: physical</p><p>Remedy: Life; removes both penalties · Recovery 4</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        166,
+        171
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "345",
+          "woundTable": "life",
+          "catalogId": "wound-life-345",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "3beb4391b1251609",
+      "type": "text",
+      "name": "346 · Leg: deep strength loss",
+      "description": "<p><strong>Leg: deep strength loss</strong></p><p>Movement −2; 1 bane: physical</p><p>Remedy: Life; removes both penalties · Recovery 5</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        172,
+        177
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "346",
+          "woundTable": "life",
+          "catalogId": "wound-life-346",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "607fa92c8df70293",
+      "type": "text",
+      "name": "355 · Head: severe draining shock",
+      "description": "<p><strong>Head: severe draining shock</strong></p><p>dazed 2</p><p>Remedy: Decay</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        178,
+        180
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "355",
+          "woundTable": "life",
+          "catalogId": "wound-life-355",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "77fcbcd378d09959",
+      "type": "text",
+      "name": "356 · Foot: wasted heel tissue",
+      "description": "<p><strong>Foot: wasted heel tissue</strong></p><p>Movement −2</p><p>Remedy: Life · Recovery 4</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        181,
+        186
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "356",
+          "woundTable": "life",
+          "catalogId": "wound-life-356",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "764da7cd1815f491",
+      "type": "text",
+      "name": "366 · Ears: lasting sensory impairment",
+      "description": "<p><strong>Ears: lasting sensory impairment</strong></p><p>deafened 1*</p><p>Remedy: Life; restores hearing · Recovery 5</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        187,
+        189
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "366",
+          "woundTable": "life",
+          "catalogId": "wound-life-366",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "672dc72df2064c8e",
+      "type": "text",
+      "name": "444 · Body: severe interruption of vitality",
+      "description": "<p><strong>Body: severe interruption of vitality</strong></p><p>paralyzed 2</p><p>Remedy: Decay</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 1,
+      "range": [
+        190,
+        190
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "444",
+          "woundTable": "life",
+          "catalogId": "wound-life-444",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "279d2f93f97ff058",
+      "type": "text",
+      "name": "445 · Arm: severely withered shoulder",
+      "description": "<p><strong>Arm: severely withered shoulder</strong></p><p>2 bane: physical</p><p>Remedy: Life · Recovery 5</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        191,
+        193
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "445",
+          "woundTable": "life",
+          "catalogId": "wound-life-445",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "199ba0907d5c83f5",
+      "type": "text",
+      "name": "446 · Hand: deep tissue wasting",
+      "description": "<p><strong>Hand: deep tissue wasting</strong></p><p>2 bane: physical</p><p>Remedy: Life · Recovery 6</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        194,
+        196
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "446",
+          "woundTable": "life",
+          "catalogId": "wound-life-446",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "f872bfac5df190d3",
+      "type": "text",
+      "name": "455 · Leg: severe strength loss",
+      "description": "<p><strong>Leg: severe strength loss</strong></p><p>prone 1; Movement −3</p><p>Remedy: Life; removes movement penalty · Recovery 6</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        197,
+        199
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "455",
+          "woundTable": "life",
+          "catalogId": "wound-life-455",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "3a8921450f3b4fac",
+      "type": "text",
+      "name": "456 · Head: profound draining shock",
+      "description": "<p><strong>Head: profound draining shock</strong></p><p>dazed 3</p><p>Remedy: Decay</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        200,
+        205
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "456",
+          "woundTable": "life",
+          "catalogId": "wound-life-456",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "8dd88d613e27cbe9",
+      "type": "text",
+      "name": "466 · Eyes: persistent visual impairment",
+      "description": "<p><strong>Eyes: persistent visual impairment</strong></p><p>blinded 1*</p><p>Remedy: Life; restores sight · Recovery 7</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        206,
+        208
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "466",
+          "woundTable": "life",
+          "catalogId": "wound-life-466",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "128d328e40b72c76",
+      "type": "text",
+      "name": "555 · Torso: extensive tissue wasting",
+      "description": "<p><strong>Torso: extensive tissue wasting</strong></p><p>dazed 2; 2 bane: physical</p><p>Remedy: Life; removes Banes · Recovery 7</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 1,
+      "range": [
+        209,
+        209
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "555",
+          "woundTable": "life",
+          "catalogId": "wound-life-555",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "4ad2b98f84c89f91",
+      "type": "text",
+      "name": "556 · Body: near-total bodily interruption",
+      "description": "<p><strong>Body: near-total bodily interruption</strong></p><p>paralyzed 3; prone 1; Movement −4</p><p>Remedy: Life; removes movement penalty · Recovery 9</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        210,
+        212
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "556",
+          "woundTable": "life",
+          "catalogId": "wound-life-556",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "becafbf7eb63a80e",
+      "type": "text",
+      "name": "566 · Leg: irrecoverably withered leg",
+      "description": "<p><strong>Leg: irrecoverably withered leg</strong></p><p>prone 1; Movement −4</p><p>Remedy: Artificial leg or explicitly restorative ability; ordinary treatment cannot restore leg</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        213,
+        215
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "566",
+          "woundTable": "life",
+          "catalogId": "wound-life-566",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "b054771606599da8",
+      "type": "text",
+      "name": "666 · Last Words",
+      "description": "<p><strong>Last Words</strong></p><p>Last Words</p><p>Remedy: No ordinary healing, treatment, potions, or Grit</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 1,
+      "range": [
+        216,
+        216
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "666",
+          "woundTable": "life",
+          "catalogId": "wound-life-666",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    }
+  ]
+}

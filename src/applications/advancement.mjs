@@ -1,7 +1,7 @@
 import {bindWizardHp,wizardGrit,wizardWounds,wizardDeath} from "./wizard-play.mjs";
 import { workshopNavIcon } from "../sheets/workshop-icons.mjs";
 import { ATTRIBUTES } from "../rules/character.mjs";
-import { bindLearningMarket } from "./learning-market.mjs";
+import { bindLearningMarket, learningCardView } from "./learning-market.mjs";
 import { equipmentEligibility, isUniversalAbility } from "../rules/equipment-eligibility.mjs";
 import { additionalLanguageOptions } from "../rules/languages.mjs";
 import { getCampaignLanguageConfiguration } from "../services/languages.mjs";
@@ -221,6 +221,7 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
       ).map((r) => ({
         ...r,
         reference: r.choice.reference,
+      ...learningCardView(r.choice, choices),
       disciplineIds: (r.choice.requirements ?? []).filter((q) => q.kind === "discipline").map((q) => q.id).join(" "),
       universal: isUniversalAbility(r.choice),
         automationStatus: abilityReferenceStatus(r.choice.id, r.choice.source),

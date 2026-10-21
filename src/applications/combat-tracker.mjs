@@ -64,7 +64,7 @@ export function renderHOLCombatTracker(app, element) {
       label.append(select);
       section.append(label);
     }
-    if (game.user.isGM)
+    if (game.user.isGM || combat.combatants.filter(participant => participant.actor?.isOwner).length > 0)
       button("Start HOL encounter", () => combat.startCombat());
   } else {
     line(

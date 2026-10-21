@@ -34,6 +34,7 @@ import {
   resolvePotionRequest,
 } from "../services/potions.mjs";
 import {
+  interruptedOperations,
   bindCreationAuthority,
   isCreationAuthority,
   releaseAuthority,
@@ -94,7 +95,7 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
 ) {
   static DEFAULT_OPTIONS = {
     classes: ["heroes-of-legend", "hol-authority"],
-    window: { title: "Automation coordinator" },
+    window: { title: "Interrupted actions" },
     position: { width: 680, height: 650 },
     actions: {
       resumeTurn: AuthorityPanel.resumeTurn,
@@ -125,6 +126,7 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
     const meta = game.settings.get(ID, "authorityMeta"),
       work = game.settings.get(ID, "authorityWork");
     return {
+      interrupted: Object.entries(interruptedOperations()).map(([id, record]) => ({id, target: record.targetUuid ?? record.targets?.join(", ") ?? "Unknown target", canRetry: Boolean(game.messages.get(id))})),
       selected: isCreationAuthority(),
       owner: game.users.get(meta.userId)?.name ?? "Not assigned",
       busy: work.busy,
@@ -534,9 +536,9 @@ export class AuthorityPanel extends foundry.applications.api.HandlebarsApplicati
 }
 export function registerAuthorityPanel() {
   game.settings.registerMenu(ID, "authorityPanel", {
-    name: "Automation coordinator",
-    label: "Manage automation",
-    hint: "Release, recover, or reconcile the selected GM window.",
+    name: "Interrupted actions",
+    label: "Review interrupted actions",
+    hint: "Advanced recovery for interrupted writes. Normal play connects automatically and does not require approval.",
     icon: "fa-solid fa-gears",
     type: AuthorityPanel,
     restricted: true,

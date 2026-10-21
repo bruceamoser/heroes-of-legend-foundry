@@ -1,0 +1,1196 @@
+{
+  "_id": "6c88017ffdacd1a9",
+  "name": "Physical wounds",
+  "img": "icons/svg/blood.svg",
+  "description": "<p>Canonical sorted 3d6 wound results. The native 1d216 table weights reproduce all 216 equally likely three-die combinations. For accumulated wounds, use the character’s Roll wound action: roll up to 5d6, keep the highest three and read them in ascending order. That action selects this table’s matching result and applies it.</p>",
+  "formula": "1d216",
+  "replacement": true,
+  "displayRoll": true,
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "woundTable": "physical",
+      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+    }
+  },
+  "results": [
+    {
+      "_id": "566bab291a482d14",
+      "type": "text",
+      "name": "111 · Face: split eyebrow; small break in eyebrow",
+      "description": "<p><strong>Face: split eyebrow; small break in eyebrow</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: —</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "111",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-111",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "39906cb885f20430",
+      "type": "text",
+      "name": "112 · Ear: nicked edge; small notch",
+      "description": "<p><strong>Ear: nicked edge; small notch</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: —</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        2,
+        4
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "112",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-112",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "3d8ddbca7538fac0",
+      "type": "text",
+      "name": "113 · Arm: shallow cut; thin upper-arm scar",
+      "description": "<p><strong>Arm: shallow cut; thin upper-arm scar</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: —</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        5,
+        7
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "113",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-113",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "e8921a0219fd4752",
+      "type": "text",
+      "name": "114 · Hand: cut knuckles; small scars",
+      "description": "<p><strong>Hand: cut knuckles; small scars</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: —</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        8,
+        10
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "114",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-114",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "67f3d0b39e39ca0a",
+      "type": "text",
+      "name": "115 · Torso: glancing cut; thin rib scar",
+      "description": "<p><strong>Torso: glancing cut; thin rib scar</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: —</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        11,
+        13
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "115",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-115",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "e43521cf59dc1170",
+      "type": "text",
+      "name": "116 · Leg: scraped shin; scarred patch",
+      "description": "<p><strong>Leg: scraped shin; scarred patch</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: —</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        14,
+        16
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "116",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-116",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "69ab41768a9bccd1",
+      "type": "text",
+      "name": "122 · Head: shallow scalp cut; break in hair growth",
+      "description": "<p><strong>Head: shallow scalp cut; break in hair growth</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: —</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        17,
+        19
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "122",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-122",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "6e722b8834829995",
+      "type": "text",
+      "name": "123 · Face: split lip; fine scar",
+      "description": "<p><strong>Face: split lip; fine scar</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: —</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        20,
+        25
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "123",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-123",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "1c038aeb8002a1c4",
+      "type": "text",
+      "name": "124 · Shoulder: glancing cut; short scar",
+      "description": "<p><strong>Shoulder: glancing cut; short scar</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: —</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        26,
+        31
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "124",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-124",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "9508da206a357738",
+      "type": "text",
+      "name": "125 · Forearm: abrasion; scarred patch",
+      "description": "<p><strong>Forearm: abrasion; scarred patch</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: —</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        32,
+        37
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "125",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-125",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "bfdee03a40a3e0be",
+      "type": "text",
+      "name": "126 · Foot: shallow cut; thin scar",
+      "description": "<p><strong>Foot: shallow cut; thin scar</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: —</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        38,
+        43
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "126",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-126",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "d3b45dc4bfb63e15",
+      "type": "text",
+      "name": "133 · Face: jagged cheek scar",
+      "description": "<p><strong>Face: jagged cheek scar</strong></p><p>1 boon: intimidate; 1 bane: persuade</p><p>Remedy: Soft Tissue; removes both modifiers · Recovery 2</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        44,
+        46
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "133",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-133",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "8d74d7f56e6ec1a0",
+      "type": "text",
+      "name": "134 · Torso: shallow chest cut; visible scar",
+      "description": "<p><strong>Torso: shallow chest cut; visible scar</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: —</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        47,
+        52
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "134",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-134",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "ea0585d326f97718",
+      "type": "text",
+      "name": "135 · Leg: superficial injury; mild limp",
+      "description": "<p><strong>Leg: superficial injury; mild limp</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: Soft Tissue; removes limp · Recovery 2</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        53,
+        58
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "135",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-135",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "f9f373e8a1bb6877",
+      "type": "text",
+      "name": "136 · Foot: superficial injury; uneven gait",
+      "description": "<p><strong>Foot: superficial injury; uneven gait</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: Soft Tissue; restores gait · Recovery 1</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        59,
+        64
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "136",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-136",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "a121262b6edb9fc1",
+      "type": "text",
+      "name": "144 · Hand: shallow cut; obvious scar",
+      "description": "<p><strong>Hand: shallow cut; obvious scar</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: —</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        65,
+        67
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "144",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-144",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "adac731e1d3c5e82",
+      "type": "text",
+      "name": "145 · Arm: shallow cut; broad scar",
+      "description": "<p><strong>Arm: shallow cut; broad scar</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: —</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        68,
+        73
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "145",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-145",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "02ecefd937ed8613",
+      "type": "text",
+      "name": "146 · Face: jagged brow scar",
+      "description": "<p><strong>Face: jagged brow scar</strong></p><p>1 boon: intimidate; 1 bane: persuade</p><p>Remedy: Soft Tissue; removes both modifiers · Recovery 2</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        74,
+        79
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "146",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-146",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "54de11d5839111fa",
+      "type": "text",
+      "name": "155 · Leg: superficial knee injury; mild limp",
+      "description": "<p><strong>Leg: superficial knee injury; mild limp</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: Soft Tissue; removes limp · Recovery 2</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        80,
+        82
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "155",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-155",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "02c1373523da28e4",
+      "type": "text",
+      "name": "156 · Scalp: ragged cut; scar and missing hair",
+      "description": "<p><strong>Scalp: ragged cut; scar and missing hair</strong></p><p>bleeding 1</p><p>Remedy: Normal condition removal</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        83,
+        88
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "156",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-156",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "5ffaa984ab20709d",
+      "type": "text",
+      "name": "166 · Foot: painful heel injury; small scar and limp",
+      "description": "<p><strong>Foot: painful heel injury; small scar and limp</strong></p><p>Movement −1</p><p>Remedy: Soft Tissue; removes movement penalty and limp · Recovery 2</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        89,
+        91
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "166",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-166",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "7f3da27b8dfed46b",
+      "type": "text",
+      "name": "222 · Head: scalp cut",
+      "description": "<p><strong>Head: scalp cut</strong></p><p>bleeding 1</p><p>Remedy: Normal condition removal</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 1,
+      "range": [
+        92,
+        92
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "222",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-222",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "7914f02700964575",
+      "type": "text",
+      "name": "223 · Arm: strained shoulder",
+      "description": "<p><strong>Arm: strained shoulder</strong></p><p>1 bane: physical</p><p>Remedy: Soft Tissue · Recovery 2</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        93,
+        95
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "223",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-223",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "e4ab1dad34e7658f",
+      "type": "text",
+      "name": "224 · Hand: split palm",
+      "description": "<p><strong>Hand: split palm</strong></p><p>bleeding 1</p><p>Remedy: Normal condition removal</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        96,
+        98
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "224",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-224",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "e184d8d29a605b69",
+      "type": "text",
+      "name": "225 · Torso: heavy chest blow",
+      "description": "<p><strong>Torso: heavy chest blow</strong></p><p>push 1 squares; 1 bane: physical</p><p>Remedy: Soft Tissue; removes Bane · Recovery 3</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        99,
+        101
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "225",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-225",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "4be3a9b08743401b",
+      "type": "text",
+      "name": "226 · Leg: injured knee",
+      "description": "<p><strong>Leg: injured knee</strong></p><p>prone 1; Movement −1</p><p>Remedy: Soft Tissue; removes movement penalty · Recovery 3</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        102,
+        104
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "226",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-226",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "9cbe0509775f487f",
+      "type": "text",
+      "name": "233 · Face: cut brow",
+      "description": "<p><strong>Face: cut brow</strong></p><p>blinded 1</p><p>Remedy: Decay</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        105,
+        107
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "233",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-233",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "58a019caa1046fd5",
+      "type": "text",
+      "name": "234 · Arm: forearm injury",
+      "description": "<p><strong>Arm: forearm injury</strong></p><p>1 bane: physical</p><p>Remedy: Soft Tissue · Recovery 3</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        108,
+        113
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "234",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-234",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "7b8d74ef786d8f62",
+      "type": "text",
+      "name": "235 · Hand: fractured finger",
+      "description": "<p><strong>Hand: fractured finger</strong></p><p>1 bane: physical</p><p>Remedy: Bone · Recovery 3</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        114,
+        119
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "235",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-235",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "3953eb2673d840f9",
+      "type": "text",
+      "name": "236 · Back: wrenched back",
+      "description": "<p><strong>Back: wrenched back</strong></p><p>pull 1 squares; 1 bane: physical</p><p>Remedy: Soft Tissue; removes Bane · Recovery 2</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        120,
+        125
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "236",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-236",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "44837327cca8f226",
+      "type": "text",
+      "name": "244 · Torso: deep flank cut",
+      "description": "<p><strong>Torso: deep flank cut</strong></p><p>bleeding 1</p><p>Remedy: Normal condition removal</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        126,
+        128
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "244",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-244",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "24c4c544a9c85c11",
+      "type": "text",
+      "name": "245 · Leg: calf injury",
+      "description": "<p><strong>Leg: calf injury</strong></p><p>Movement −1</p><p>Remedy: Soft Tissue · Recovery 2</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        129,
+        134
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "245",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-245",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "133dd325f8799c08",
+      "type": "text",
+      "name": "246 · Foot: fractured toe",
+      "description": "<p><strong>Foot: fractured toe</strong></p><p>Movement −1</p><p>Remedy: Bone · Recovery 3</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        135,
+        140
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "246",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-246",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "7757608d7bbe00db",
+      "type": "text",
+      "name": "255 · Head: glancing injury",
+      "description": "<p><strong>Head: glancing injury</strong></p><p>dazed 1</p><p>Remedy: Decay</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        141,
+        143
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "255",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-255",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "e380b7f12c70c37d",
+      "type": "text",
+      "name": "256 · Leg: badly sprained knee",
+      "description": "<p><strong>Leg: badly sprained knee</strong></p><p>Movement −2</p><p>Remedy: Soft Tissue · Recovery 3</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        144,
+        149
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "256",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-256",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "a901d13b86e22135",
+      "type": "text",
+      "name": "266 · Foot: badly sprained ankle",
+      "description": "<p><strong>Foot: badly sprained ankle</strong></p><p>prone 1; Movement −2</p><p>Remedy: Soft Tissue; removes movement penalty · Recovery 3</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        150,
+        152
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "266",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-266",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "7668153094140afa",
+      "type": "text",
+      "name": "333 · Arm: deep shoulder wound",
+      "description": "<p><strong>Arm: deep shoulder wound</strong></p><p>bleeding 1; 1 bane: physical</p><p>Remedy: Soft Tissue; removes Bane · Recovery 3</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 1,
+      "range": [
+        153,
+        153
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "333",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-333",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "46921f8f4a420e15",
+      "type": "text",
+      "name": "334 · Hand: deep wound",
+      "description": "<p><strong>Hand: deep wound</strong></p><p>bleeding 1; 1 bane: physical</p><p>Remedy: Soft Tissue; removes Bane · Recovery 3</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        154,
+        156
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "334",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-334",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "68db7123ec20a2d6",
+      "type": "text",
+      "name": "335 · Torso: heavy abdominal injury",
+      "description": "<p><strong>Torso: heavy abdominal injury</strong></p><p>push 2 squares; prone 1; 1 bane: physical</p><p>Remedy: Soft Tissue; removes Bane · Recovery 4</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        157,
+        159
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "335",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-335",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "9729c0bc4a5ca614",
+      "type": "text",
+      "name": "336 · Leg: deep thigh wound",
+      "description": "<p><strong>Leg: deep thigh wound</strong></p><p>bleeding 1; Movement −1</p><p>Remedy: Soft Tissue; removes movement penalty · Recovery 3</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        160,
+        162
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "336",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-336",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "9fa48af0c067eb69",
+      "type": "text",
+      "name": "344 · Head: torn scalp",
+      "description": "<p><strong>Head: torn scalp</strong></p><p>bleeding 2</p><p>Remedy: Normal condition removal</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        163,
+        165
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "344",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-344",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "582ba59f163f63ef",
+      "type": "text",
+      "name": "345 · Back: torn muscles",
+      "description": "<p><strong>Back: torn muscles</strong></p><p>pull 2 squares; prone 1; Movement −1</p><p>Remedy: Soft Tissue; removes movement penalty · Recovery 4</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        166,
+        171
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "345",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-345",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "9212d89b35c5b1d1",
+      "type": "text",
+      "name": "346 · Leg: torn knee ligaments",
+      "description": "<p><strong>Leg: torn knee ligaments</strong></p><p>Movement −2; 1 bane: physical</p><p>Remedy: Soft Tissue; removes both penalties · Recovery 5</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        172,
+        177
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "346",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-346",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "d526046c0792975f",
+      "type": "text",
+      "name": "355 · Head: heavy injury",
+      "description": "<p><strong>Head: heavy injury</strong></p><p>dazed 1; 1 bane: physical</p><p>Remedy: Soft Tissue; removes Bane · Recovery 4</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        178,
+        180
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "355",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-355",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "b79719f6ed8aacd7",
+      "type": "text",
+      "name": "356 · Foot: deep heel wound",
+      "description": "<p><strong>Foot: deep heel wound</strong></p><p>bleeding 1; Movement −2</p><p>Remedy: Soft Tissue; removes movement penalty · Recovery 4</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        181,
+        186
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "356",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-356",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "bbb9cbeadddb7cce",
+      "type": "text",
+      "name": "366 · Eye: injury",
+      "description": "<p><strong>Eye: injury</strong></p><p>blinded 1*</p><p>Remedy: Soft Tissue; restores sight · Recovery 5</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        187,
+        189
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "366",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-366",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "88572d61f4d84a62",
+      "type": "text",
+      "name": "444 · Torso: deep tearing wound",
+      "description": "<p><strong>Torso: deep tearing wound</strong></p><p>bleeding 2</p><p>Remedy: Normal condition removal</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 1,
+      "range": [
+        190,
+        190
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "444",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-444",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "c7d7012ac9b10be7",
+      "type": "text",
+      "name": "445 · Arm: severely torn shoulder",
+      "description": "<p><strong>Arm: severely torn shoulder</strong></p><p>pull 2 squares; 2 bane: physical</p><p>Remedy: Soft Tissue; removes Banes · Recovery 5</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        191,
+        193
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "445",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-445",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "9d72dfdf0ccd24e1",
+      "type": "text",
+      "name": "446 · Hand: crushed hand",
+      "description": "<p><strong>Hand: crushed hand</strong></p><p>2 bane: physical</p><p>Remedy: Bone · Recovery 6</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        194,
+        196
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "446",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-446",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "0f537650ae781a89",
+      "type": "text",
+      "name": "455 · Leg: broken lower leg",
+      "description": "<p><strong>Leg: broken lower leg</strong></p><p>prone 1; Movement −3</p><p>Remedy: Bone; removes movement penalty · Recovery 6</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        197,
+        199
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "455",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-455",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "dcdc679d93f7368e",
+      "type": "text",
+      "name": "456 · Head: severe injury",
+      "description": "<p><strong>Head: severe injury</strong></p><p>dazed 2; prone 1</p><p>Remedy: Decay; stand normally</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        200,
+        205
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "456",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-456",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "a550a611be831149",
+      "type": "text",
+      "name": "466 · Torso: broken ribs",
+      "description": "<p><strong>Torso: broken ribs</strong></p><p>push 3 squares; prone 1; 2 bane: physical</p><p>Remedy: Bone; removes Banes · Recovery 7</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        206,
+        208
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "466",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-466",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "23eae616a503f1fd",
+      "type": "text",
+      "name": "555 · Torso: extensive chest injury",
+      "description": "<p><strong>Torso: extensive chest injury</strong></p><p>bleeding 3; push 2 squares; 2 bane: physical</p><p>Remedy: Soft Tissue; removes Banes · Recovery 7</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 1,
+      "range": [
+        209,
+        209
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "555",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-555",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "32b575935d0b1cc8",
+      "type": "text",
+      "name": "556 · Leg: shattered knee",
+      "description": "<p><strong>Leg: shattered knee</strong></p><p>prone 1; Movement −4; 2 bane: physical</p><p>Remedy: Bone; removes movement penalty and Banes · Recovery 9</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        210,
+        212
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "556",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-556",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "408bf0297df9154f",
+      "type": "text",
+      "name": "566 · Leg: loss of leg",
+      "description": "<p><strong>Leg: loss of leg</strong></p><p>bleeding 3; prone 1; Movement −4</p><p>Remedy: Artificial leg may mitigate movement; no regrowth; stop Bleeding normally</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        213,
+        215
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "566",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-566",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "6ea56ac7ce7c8b85",
+      "type": "text",
+      "name": "666 · Last Words",
+      "description": "<p><strong>Last Words</strong></p><p>Last Words</p><p>Remedy: No ordinary healing, treatment, potions, or Grit</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 1,
+      "range": [
+        216,
+        216
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "666",
+          "woundTable": "physical",
+          "catalogId": "wound-physical-666",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    }
+  ]
+}

@@ -129,3 +129,7 @@
 .heroes-of-legend.hol-creation .hol-wizard :is(thead,tbody,tr,tr:nth-child(even),tr:nth-child(odd)) { background:transparent; color:#28251c; border:0; text-shadow:none; }
 .heroes-of-legend.hol-creation .hol-wizard th { color:#6a6457; background:transparent; text-shadow:none; }
 .heroes-of-legend.hol-creation .hol-section-heading > span { display:flex; gap:6px; }
+/* Native wizard control resets must not expand compact learning cards. */
+.heroes-of-legend.hol-creation .hol-learning-market > label {display:inline-block;vertical-align:top;width:calc(50% - 4px);margin:4px 0 6px;}
+.heroes-of-legend.hol-creation .hol-learning-market .hol-learning-actions button {width:auto;min-height:24px;height:auto;padding:2px 6px;font:11px/1.2 system-ui,sans-serif;}
+.heroes-of-legend.hol-creation .hol-learning-market .hol-learning-actions button:first-child {background:transparent;border-color:transparent;}

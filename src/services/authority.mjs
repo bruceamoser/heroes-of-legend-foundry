@@ -1,12 +1,11 @@
-/** One selected GM client, with a browser-enforced tab lock and explicit idle handoff. */
+/** Automatic single-writer synchronization; interrupted requests never suspend the whole world. */
 const ID = "heroes-of-legend";
 let queue = Promise.resolve(),
   held = false,
   releaseLock,
   lockTask,
   activation,
-  activeWork,
-  suspended = false;
+  activeWork;
 const setting = (key) => game.settings.get(ID, key);
 export function authorityBrowserId() {
   const key = `${ID}.authority-browser`;
@@ -42,6 +41,56 @@ function coherentCoordinator() {
   return Boolean(bound && meta.clientId === bound && meta.userId && meta.launch === launch() &&
     meta.leaseVersion === 1 && lease.clientId === bound && Number.isFinite(lease.expires) && lease.expires > clock());
 }
+/** A former server cannot resume writes after Foundry has started a new world session. */
+function priorSession(meta = setting("authorityMeta")) {
+  return Boolean(game.users.activeGM?.isSelf && meta.launch &&
+    Number.isFinite(Date.parse(meta.launch)) && meta.launch !== launch());
+}
+export function interruptedOperations() {
+  return setting("interruptedOperations") ?? {};
+}
+function workRequest(work) {
+  const message = game.messages.get(work.requestId);
+  const keys = ["creationRequest", "developmentRequest", "combatRequest", "conditionRequest",
+    "equipmentRequest", "inventoryRequest", "potionRequest", "damageRequest", "recoveryRequest",
+    "woundRequest", "survivalRequest", "abilityRequest", "npcAttackRequest", "playerAttackRequest", "defenseRequest"];
+  for (const key of keys) {
+    const request = message?.getFlag(ID, key);
+    if (request) return { key, request };
+  }
+  return { request: {} };
+}
+function workTargets(work) {
+  const { request } = workRequest(work);
+  return [...new Set([work.targetUuid, request.actorUuid, request.combatUuid,
+    request.targetUuid, request.defenderUuid, request.attackerUuid,
+    request.attackMessageId ? `ChatMessage.${request.attackMessageId}` : null,
+  ].filter(value => typeof value === "string" && value))];
+}
+async function rememberInterrupted(work, session = launch()) {
+  if (!work.busy && !work.uncertain) return;
+  if (await appliedWork(work)) return;
+  const key = work.requestId || `unknown-${work.clientId || "legacy"}`;
+  const records = interruptedOperations();
+  records[key] = { ...structuredClone(work), targets: workTargets(work), launch: session,
+    recordedAt: Date.now() };
+  await game.settings.set(ID, "interruptedOperations", records);
+}
+async function checkInterrupted(work) {
+  const records = interruptedOperations(), targets = workTargets(work);
+  let changed = false;
+  for (const [key, previous] of Object.entries(records)) {
+    if (await appliedWork(previous)) { delete records[key]; changed = true; continue; }
+    const sameRequest = work.requestId && previous.requestId === work.requestId;
+    const overlap = targets.some(target => (previous.targets ?? []).includes(target));
+    if (!sameRequest && !overlap) continue;
+    if (sameRequest && previous.launch !== launch()) continue;
+    throw new Error(sameRequest
+      ? "This action lost its save confirmation. Reopen the world before retrying this action; other characters can continue."
+      : "An earlier action on this document needs to finish before another change. Retry that action in Game Settings → Interrupted actions; other documents can continue.");
+  }
+  if (changed) await game.settings.set(ID, "interruptedOperations", records);
+}
 function settledRelaunch(meta = setting("authorityMeta"), bound = setting("creationAuthorityClient")) {
   const work = setting("authorityWork"), lease = currentLease();
   const legacyIdle = Object.keys(lease).length === 0 && !meta.leaseVersion &&
@@ -56,6 +105,12 @@ function settledRelaunch(meta = setting("authorityMeta"), bound = setting("creat
     Number.isFinite(Date.parse(meta.launch)) && meta.launch !== launch() &&
     ((work.clientId === bound && (lease.clientId === bound || legacyIdle)) || interruptedFinalization) &&
     work.busy === false && !work.uncertain);
+}
+function legacyIdle(meta = setting("authorityMeta"), bound = setting("creationAuthorityClient")) {
+  const work = setting("authorityWork");
+  return Boolean(game.users.activeGM?.isSelf && bound && !meta.leaseVersion &&
+    !Object.keys(currentLease()).length && work.clientId === bound &&
+    work.busy === false && !work.uncertain && (!meta.clientId || meta.clientId === bound));
 }
 function expiredIdle(meta = setting("authorityMeta"), bound = setting("creationAuthorityClient")) {
   const lease = currentLease(), work = setting("authorityWork");
@@ -127,6 +182,7 @@ export function registerAuthority() {
     default: {},
   });
   game.settings.register(ID, "authorityLease", {scope:"world",config:false,type:Object,default:{}});
+  game.settings.register(ID, "interruptedOperations", {scope:"world",config:false,type:Object,default:{}});
   Hooks.once("ready", async () => {
     if (game.user.isGM) {
       try { assertAutomationCapabilities(); }
@@ -152,7 +208,7 @@ export function registerAuthority() {
     const resumeBrowser = game.user.isGM && legacy && meta.clientId === legacy &&
       meta.userId === game.user.id &&
       meta.browserId === authorityBrowserId();
-    if (freshWorld || resumeBrowser || idleRelaunch || (game.users.activeGM?.isSelf && (expiredIdle(meta,legacy) || recoverableIdleClaim(meta,legacy)))) {
+    if (freshWorld || resumeBrowser || priorSession(meta) || idleRelaunch || (game.users.activeGM?.isSelf && (expiredIdle(meta,legacy) || recoverableIdleClaim(meta,legacy) || legacyIdle(meta,legacy)))) {
       try {
         await bindCreationAuthority();
       } catch (error) {
@@ -162,7 +218,7 @@ export function registerAuthority() {
         if (error.code !== "HOL_AUTHORITY_TAB_LOCK" &&
             (!currentClient || currentClient === game.socket.id || resumeBrowser || idleRelaunch))
           ui.notifications.warn(
-            `Automation could not start. Open Game Settings → Manage automation. ${error.message}`,
+            `Synchronization could not start: ${error.message}`,
             { permanent: true },
           );
       }
@@ -193,14 +249,14 @@ export async function ensureAuthorityReady() {
       } else if (!coherentCoordinator()) await bindCreationAuthority();
     }
     catch (error) {
-      throw new Error(`Automation is unavailable: ${error.message} Open Game Settings → Manage automation to recover the session.`);
+      throw new Error(`This action could not synchronize: ${error.message}`);
     }
   }
   if (game.user.isGM && isCreationAuthority()) return;
   if (!game.users.activeGM)
     throw new Error("A GM must be connected before this action can resolve.");
   if (!coherentCoordinator())
-    throw new Error("The GM automation session is not ready. Ask the GM to open Manage automation.");
+    throw new Error("The connected GM session is still synchronizing. Retry in a moment.");
 }
 async function takeLocalLock() {
   if (held) return;
@@ -299,19 +355,6 @@ export function bindCreationAuthority(options = {}) {
 async function activate({ restartConfirmed = false } = {}) {
   if (!game.user.isGM) throw new Error("Only a GM can process automation.");
   if (isCreationAuthority()) {
-    if (suspended) {
-      const work = setting("authorityWork");
-      if (!(await appliedWork(work)))
-        throw new Error(
-          "An uncertain write needs reconciliation or a world relaunch.",
-        );
-      suspended = false;
-      await game.settings.set(ID, "authorityWork", {
-        clientId: game.socket.id,
-        busy: false,
-      });
-      Hooks.callAll("holAuthorityReady", { resumedRequest: work.requestId });
-    }
     return;
   }
   const bound = setting("creationAuthorityClient"),
@@ -324,18 +367,20 @@ async function activate({ restartConfirmed = false } = {}) {
     meta.userId === game.user.id && meta.browserId === authorityBrowserId();
   const restarted = meta.launch && meta.launch !== stamp,
     checkpoint = setting("authorityWork"),
-    idleRestart = settledRelaunch(meta, bound);
+    idleRestart = settledRelaunch(meta, bound),
+    automaticRestart = priorSession(meta);
   const idleExpiry = Boolean(bound) && game.users.activeGM?.isSelf && expiredIdle(meta,bound);
   const abandonedClaim = recoverableIdleClaim(meta,bound);
+  const idleUpgrade = legacyIdle(meta,bound);
   if (!bound) {
     if (!game.users.activeGM?.isSelf)
       throw new Error("The active GM must enable the initial coordinator.");
   } else if (restarted) {
-    if (!idleRestart && !abandonedClaim && (!restartConfirmed || !game.users.activeGM?.isSelf))
+    if (!automaticRestart && !idleRestart && !abandonedClaim && (!restartConfirmed || !game.users.activeGM?.isSelf))
       throw new Error(
         "After closing former GM windows and relaunching the world, the active GM can explicitly recover the coordinator.",
       );
-  } else if (!sameBrowser && !idleExpiry && !abandonedClaim)
+  } else if (!sameBrowser && !idleExpiry && !abandonedClaim && !idleUpgrade)
     throw new Error(
       "The selected GM must release their coordinator before another browser takes over.",
     );
@@ -368,7 +413,11 @@ async function activate({ restartConfirmed = false } = {}) {
     if ((idleExpiry || abandonedClaim) && (JSON.stringify(currentLease()) !== JSON.stringify(leaseBefore) ||
         work.clientId !== bound || work.busy !== false || work.uncertain))
       throw new Error("The former coordinator resumed or has unsettled work. Retry after it settles.");
-    if (idleRestart && (JSON.stringify(currentLease()) !== JSON.stringify(leaseBefore) || JSON.stringify(work) !== JSON.stringify(checkpoint) || work.busy !== false || work.uncertain))
+    if (idleUpgrade && (JSON.stringify(currentLease()) !== JSON.stringify(leaseBefore) || JSON.stringify(work) !== JSON.stringify(checkpoint)))
+      throw new Error("The prior action changed while reconnecting. Retry after it settles.");
+    if (automaticRestart && (JSON.stringify(currentLease()) !== JSON.stringify(leaseBefore) || JSON.stringify(work) !== JSON.stringify(checkpoint)))
+      throw new Error("The interrupted action changed during reconnection. Retry after it settles.");
+    if (!automaticRestart && idleRestart && (JSON.stringify(currentLease()) !== JSON.stringify(leaseBefore) || JSON.stringify(work) !== JSON.stringify(checkpoint) || work.busy !== false || work.uncertain))
       throw new Error("The saved work checkpoint changed during startup. Open Manage automation to recover it.");
     if (bound && !restarted) {
       if (work.clientId !== bound)
@@ -380,6 +429,7 @@ async function activate({ restartConfirmed = false } = {}) {
           "A request may still be in flight. Relaunch the world before recovering it.",
         );
     }
+    if (automaticRestart) await rememberInterrupted(work, meta.launch);
     const verifyClaim = ({lease = false, binding = false, checkpoint = false} = {}) => {
       const currentWork = setting("authorityWork");
       if (JSON.stringify(setting("authorityMeta")) !== JSON.stringify(next) ||
@@ -398,8 +448,10 @@ async function activate({ restartConfirmed = false } = {}) {
       busy: false,
     });
     verifyClaim({lease:true,binding:true,checkpoint:true});
+    const resumable = work.requestId && (game.messages.has(work.requestId) ||
+      (typeof work.targetUuid === "string" && await fromUuid(work.targetUuid)));
     Hooks.callAll("holAuthorityReady", {
-      resumedRequest: work.busy ? work.requestId : null,
+      resumedRequest: (work.busy || work.uncertain) && resumable ? work.requestId : null,
     });
   } catch (error) {
     // Roll back only our incomplete claim. Never clear work or overwrite a
@@ -428,8 +480,7 @@ export function enqueueCharacterOperation(
 ) {
   const job = queue.then(async () => {
     if (!isCreationAuthority()) return { status: "not-authority" };
-    if (suspended)
-      throw new Error("The coordinator is suspended for write reconciliation.");
+    await checkInterrupted({requestId, targetUuid});
     activeWork = { uncertain: false };
     const clientId = game.socket.id;
     const work = {
@@ -443,18 +494,14 @@ export function enqueueCharacterOperation(
     try {
       return await operation();
     } finally {
-      if (
-        activeWork?.uncertain &&
-        !(await appliedWork({ requestId, targetUuid }))
-      )
-        suspended = true;
+      if (activeWork?.uncertain) await rememberInterrupted({ ...work, uncertain: true });
       activeWork = null;
       if (isCreationAuthority())
         await game.settings.set(ID, "authorityWork", {
           clientId,
-          busy: suspended,
+          busy: false,
           requestId,
-          uncertain: suspended,
+          uncertain: false,
           ...(typeof targetUuid === "string" ? { targetUuid } : {}),
         });
     }

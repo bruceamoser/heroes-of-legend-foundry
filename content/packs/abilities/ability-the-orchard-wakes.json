@@ -9,14 +9,14 @@
     "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You spread your arms, and the roots answer as if the whole orchard had stirred in its sleep.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Target / range / shape</dt><dd>Up to three visible grounded creatures within 5 squares.</dd></div><div><dt>Duration</dt><dd>Instant. Applied conditions follow their normal duration and decay.</dd></div><div><dt>Equipment / acquisition</dt><dd>No item needed unless named above.</dd></div><div><dt>Limits</dt><dd>Repeatable; pay the action and any stated costs each use.</dd></div><div><dt>Type</dt><dd>Magic</dd></div></dl><div class=\"hol-reference-rules\"><p>Branches and roots answer together. Make one roll using the net Boons or Banes least favorable to you among the targets; apply the result to all of them. You choose targets; allies need not be included.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>Pull each 1 square toward you.</dd><dt>Standard</dt><dd>Pull each 2 squares and apply Slowed 1.</dd><dt>Strong</dt><dd>Pull each 3 squares, apply Slowed 1 and knock each prone.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/cards/the-orchard-wakes.md\" target=\"_blank\" rel=\"noopener\">design/cards/the-orchard-wakes.md</a> at <code>bdfd18ed535fbd0e1892b9344444abf6da644809</code>.</p></section>",
     "activity": {
       "action": "main",
-      "rollMode": "none",
-      "attribute": "brawn",
+      "rollMode": "attribute",
+      "attribute": "reason",
       "defenseAttribute": "agility"
     },
     "outcomes": {
-      "weak": "",
-      "standard": "",
-      "strong": ""
+      "weak": "Pull each 1 square toward you.",
+      "standard": "Pull each 2 squares and apply Slowed 1.",
+      "strong": "Pull each 3 squares, apply Slowed 1 and knock each prone."
     }
   },
   "effects": [],

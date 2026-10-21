@@ -66,7 +66,8 @@ try {
     await web.goto(`http://127.0.0.1:${server.address().port}/chat.html`,{waitUntil:"networkidle"});await web.locator('.hol-chat-card[data-chat-kind=request]').waitFor();await capture(web,'.hol-chat-card[data-chat-kind=request]',"web-chat-attack");
     const metrics=async(page,root)=>page.locator(root).first().evaluate(element=>Object.fromEntries([['body',element],['title',element.querySelector('.hol-chat-header h3')],['bar',element.querySelector('.hol-chat-bar')]].map(([key,node])=>[key,parseFloat(getComputedStyle(node).fontSize)])));
     const nativeSizes=await metrics(gm,'.hol-creature-action-card'),webSizes=await metrics(web,'.hol-chat-card[data-chat-kind=request]');
-    for(const key of Object.keys(webSizes))assert.ok(Math.abs(nativeSizes[key]-webSizes[key])<.1,`${key} font size native ${nativeSizes[key]} web ${webSizes[key]}`);
+    for(const key of ["body","bar"])assert.ok(Math.abs(nativeSizes[key]-webSizes[key])<.1,`${key} font size native ${nativeSizes[key]} web ${webSizes[key]}`);
+    assert.equal(nativeSizes.title,12,"Native chat uses the requested compact heading");
     evidence.checks.push({nativeChatFontPixels:nativeSizes,webChatFontPixels:webSizes});
     const messageId=await gm.evaluate(()=>game.messages.find(message=>message.getFlag('heroes-of-legend','creatureAction')?.title==='Scrap knife').id);
     await capture(gm,`#chat [data-message-id="${messageId}"]`,"native-whole-chat-attack");

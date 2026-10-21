@@ -1,4 +1,3 @@
-import { ensureAuthorityReady } from "./authority.mjs";
 import { assertNoPendingTurn } from "./turn-lock.mjs";
 import { woundRoll, woundResult } from "../rules/wounds.mjs";
 import { DAMAGE_TYPES } from "../rules/damage.mjs";
@@ -31,31 +30,13 @@ export function woundBasis(actor, eventId) {
   };
 }
 export async function requestWound(actor, eventId, kind, payload = {}) {
-  await ensureAuthorityReady();
-  return ChatMessage.create({
-    content: `Wound ${kind} requested.`,
-    whisper: game.users
-      .filter((u) => u.isGM || u.id === game.user.id)
-      .map((u) => u.id),
-    flags: {
-      [ID]: {
-        woundRequest: {
-          actorUuid: actor.uuid,
-          eventId,
-          kind,
-          basis: woundBasis(actor, eventId),
-          ...payload,
-        },
-      },
-    },
-  });
+  const { requestOwnedWound } = await import("./wound-roll.mjs");
+  return requestOwnedWound(actor,eventId,kind,payload);
 }
 export function resolveWoundRequest(id) {
-  return enqueueCharacterOperation(() => apply(id), { requestId: id });
+  return enqueueCharacterOperation(() => applyWoundOperation(id), { requestId: id });
 }
-async function apply(id) {
-  const message = game.messages.get(id),
-    request = message?.getFlag(ID, "woundRequest");
+export async function applyWoundOperation(id, { message = game.messages.get(id), request = message?.getFlag(ID, "woundRequest"), write = writeAuthorityDocument } = {}) {
   const actor =
     typeof request?.actorUuid === "string"
       ? await fromUuid(request.actorUuid)
@@ -69,10 +50,6 @@ async function apply(id) {
     throw new Error("A character owner or the DA must request this wound.");
   if (!["record", "roll", "apply", "recover"].includes(request.kind))
     throw new Error("Unknown wound operation.");
-  if (request.kind === "recover" && !message.author.isGM)
-    throw new Error("Only the DA can recover an unresolved wound roll.");
-  if (request.skipped?.length && !message.author.isGM)
-    throw new Error("Only the DA can record an anatomy exception.");
   const signature = JSON.stringify(request),
     receipt = actor.getFlag(ID, "operationReceipts")?.[id];
   if (receipt?.applied) {
@@ -117,7 +94,7 @@ async function apply(id) {
       [`flags.${ID}.operationReceipts.${id}`]: { applied: true, authorId: message.author.id, request: signature },
     };
     actor.validate({ changes: foundry.utils.expandObject(changes), strict: true, fallback: false });
-    await writeAuthorityDocument(actor, changes);
+    await write(actor, changes);
     await message.update({ content: "Additional wound recorded. Choose its damage type and roll once. HP and survival status were preserved." });
     return { status: "complete", replay: false, eventId };
   }
@@ -146,7 +123,7 @@ async function apply(id) {
         rollSignature: signature,
         catalogCommit: (await woundCatalog()).sourceCommit,
       };
-      await writeAuthorityDocument(actor, {
+      await write(actor, {
         [`flags.${ID}.pendingWounds.${request.eventId}`]: pending,
       });
       const count = Math.min(5, 3 + pending.priorWounds),
@@ -162,7 +139,7 @@ async function apply(id) {
         result,
         nativeRoll: roll.toJSON(),
       };
-      await writeAuthorityDocument(actor, {
+      await write(actor, {
         [`flags.${ID}.pendingWounds.${request.eventId}`]: pending,
         [`flags.${ID}.operationReceipts.${id}`]: {
           applied: true,
@@ -170,13 +147,19 @@ async function apply(id) {
           request: signature,
         },
       });
+      const { drawWoundTableResult } = await import("./wound-roll.mjs");
+      const native = await drawWoundTableResult(request.damageType, result.key);
+      await write(actor, {
+        [`flags.${ID}.pendingWounds.${request.eventId}.tableUuid`]: native.table.uuid,
+        [`flags.${ID}.pendingWounds.${request.eventId}.tableResultId`]: native.result.id,
+      });
       await message.update({
         content: `Wound result ${result.key}. Review and apply its consequences; the DA resolves anatomy exceptions and placement.`,
         rolls: [roll],
       });
     } else if (pending.status === "rolling")
       throw new Error(
-        "This wound may have rolled without a saved result. The DA must record a retained-dice recovery; retry will not reroll.",
+        "This wound may have rolled without a saved result. Record the original dice to recover this result; retry will not reroll.",
       );
     else
       throw new Error(
@@ -187,7 +170,7 @@ async function apply(id) {
   if (request.kind === "recover") {
     if (pending.status !== "rolling")
       throw new Error(
-        "Only an unresolved roll can be recovered, by the DA.",
+        "Only an unresolved roll can be recovered.",
       );
     const result = woundRoll(pending.priorWounds, request.faces);
     pending = {
@@ -208,7 +191,7 @@ async function apply(id) {
             },
           }
         : {};
-    await writeAuthorityDocument(actor, {
+    await write(actor, {
       ...originalReceipt,
       [`flags.${ID}.pendingWounds.${request.eventId}`]: pending,
       [`flags.${ID}.operationReceipts.${id}`]: {
@@ -218,7 +201,7 @@ async function apply(id) {
       },
     });
     await message.update({
-      content: `The DA recorded recovered wound dice: ${request.faces.join(", ")} → ${result.key}. No new dice were rolled.`,
+      content: `Recovered original wound dice: ${request.faces.join(", ")} → ${result.key}. No new dice were rolled.`,
     });
     return { status: "complete", replay: false };
   }
@@ -355,7 +338,7 @@ async function apply(id) {
     strict: true,
     fallback: false,
   });
-  await writeAuthorityDocument(actor, changes);
+  await write(actor, changes);
   if (nativeIds.some((id) => !actor.effects.has(id)))
     throw new Error(
       "Wound effects need reconciliation; do not apply them again.",
@@ -366,6 +349,7 @@ async function apply(id) {
   return { status: "complete", replay: false };
 }
 export function registerWoundRequests() {
+  import("./wound-roll.mjs").then(({registerWoundChatActions})=>registerWoundChatActions());
   Hooks.on("createChatMessage", (message) => {
     if (message.getFlag(ID, "woundRequest") && isCreationAuthority())
       resolveWoundRequest(message.id).catch(async (error) => {

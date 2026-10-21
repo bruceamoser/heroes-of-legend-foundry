@@ -1,7 +1,7 @@
 # Heroes of Legend for Foundry VTT
 
 Bruce Moser's **Heroes of Legend**, for Foundry Virtual Tabletop **V14**.
-Version **2.0.0**, validated on Foundry **14.369**, rebuilds the native interface against the actual web application and adds native rules books, a Foundry theme and an illustrated landing scene. See the [release notes](docs/release-2.0.0.md) and [native acceptance record](docs/native-parity-acceptance.md).
+Version **2.0.1**, validated on Foundry **14.369**, rebuilds the native interface against the actual web application and adds native rules books, a Foundry theme and an illustrated landing scene. See the [release notes](docs/release-2.0.1.md) and [native acceptance record](docs/native-parity-acceptance.md).
 
 ## Install and update
 
@@ -17,13 +17,13 @@ Before updating, back up your world and return to Setup. Use the system's **Upda
 
 **Local development alpha:** Foundry 14.369 does not flag `0.1.0` as newer than `0.1.0-alpha.1`. Reinstall through **Setup → Game Systems → Install System** using the manifest URL above. This public installation path was verified with edited world-Actor preservation; an Update-button transition from the alpha is not claimed.
 
-The 2.0.0 ZIP is version-specific:
+The 2.0.1 ZIP is version-specific:
 
 ```text
-https://github.com/bruceamoser/heroes-of-legend-foundry/releases/download/v2.0.0/heroes-of-legend.zip
+https://github.com/bruceamoser/heroes-of-legend-foundry/releases/download/v2.0.1/heroes-of-legend.zip
 ```
 
-If GitHub temporarily caches the preceding stable manifest after publication, use the [version-specific 2.0.0 manifest](https://github.com/bruceamoser/heroes-of-legend-foundry/releases/download/v2.0.0/system.json).
+If GitHub temporarily caches the preceding stable manifest after publication, use the [version-specific 2.0.1 manifest](https://github.com/bruceamoser/heroes-of-legend-foundry/releases/download/v2.0.1/system.json).
 
 For a local candidate, extract the ZIP directly into your isolated test data directory's `Data/systems/heroes-of-legend/`, with `system.json` immediately inside that directory. Never replace a running system's files. Public manifest/update checks and the exact-package isolated test are separate steps in the release checklist.
 
@@ -34,9 +34,8 @@ For a local candidate, extract the ZIP directly into your isolated test data dir
    [development setup](docs/development.md).
 2. Join as the GM. A fresh world starts request processing automatically in the
    active GM's window; players do not need to enable a service or seek approval
-   for ordinary actions. Keep that GM window connected while playing. A clean
-   daily restart resumes automatically; an expired idle coordinator can be reclaimed
-   by a fresh GM browser without clearing saved operations.
+   for ordinary actions. Keep that GM window connected while playing. World restarts recover automatically, including legacy interrupted checkpoints;
+   unrelated actions continue while an interrupted request is isolated.
 3. Create a character with the guided creation flow, then equip its owned Items
    and place its native Token. Legal creation and advancement options appear
    first; unavailable choices remain visible with their reasons.
@@ -55,12 +54,11 @@ For a local candidate, extract the ZIP directly into your isolated test data dir
    Encounter costs remain tracked during an active encounter; free play does
    not create a Combat or artificial action budgets.
 
-If processing needs recovery, the GM can open **Game Settings → Manage automation**.
-Use its existing handoff and recovery controls when changing GM windows or
-resuming interrupted work; do not clear saved state or reroll an uncertain old
-operation to force it through. A fresh intentional use or roll is a new action.
-Remote connections require HTTPS; localhost is also supported. Coordination uses
-the browser’s exclusive-tab lock and signed defense snapshots use Web Crypto.
+Connection recovery is automatic. **Game Settings → Review interrupted actions**
+is an advanced diagnostic panel for a particular saved action whose completion is
+uncertain. It is not required to start ordinary play. Unrelated actions can continue;
+resume the saved operation rather than clearing data or rerolling an unknown result.
+Remote shared-document coordination requires HTTPS; localhost is also supported.
 
 Prepare **The gathering** from Scenes or the system settings to create the editable
 landing scene. It uses the Player’s Book artwork and links to the hero and rules

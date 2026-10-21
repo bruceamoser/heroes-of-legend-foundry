@@ -87,7 +87,7 @@ export function recoveryPreview(actor, basis, draft) {
       validateSurvival(state);
     } else if (basis.hp === 0)
       throw new Error(
-        "Ordinary recovery cannot revive a defeated creature. Use an explicit DA correction for an exception.",
+        "Ordinary recovery cannot revive a defeated creature. Use Correct a mistake to restore an incorrectly recorded state.",
       );
     if (draft.kind === "grit") {
       if (!state || actor.type !== "character") throw new Error("Only a character can spend Grit.");
@@ -130,7 +130,7 @@ export async function requestRecovery(actor, basis, draft) {
   await ensureAuthorityReady();
   return ChatMessage.create({
     content: "Recovery adjustment requested.",
-    whisper: game.users.filter((u) => u.isGM).map((u) => u.id),
+    whisper: game.users.filter((u) => u.isGM || u.id === game.user.id).map((u) => u.id),
     flags: {
       [ID]: { recoveryRequest: { actorUuid: actor.uuid, basis, draft } },
     },
@@ -146,8 +146,8 @@ async function apply(id) {
     typeof request?.actorUuid === "string"
       ? await fromUuid(request.actorUuid)
       : null;
-  if (!message?.author || !actor?.testUserPermission(message.author, "OWNER") || (request?.draft?.kind === "correct" && !message.author.isGM))
-    throw new Error("Recovery requires ownership; corrections require the Dungeon Architect.");
+  if (!message?.author || !actor?.testUserPermission(message.author, "OWNER"))
+    throw new Error("Only this character’s owner can record recovery or corrections.");
   const basis = damageBasis(actor),
     signature = JSON.stringify(request),
     receipt = actor.getFlag(ID, "operationReceipts")?.[id];

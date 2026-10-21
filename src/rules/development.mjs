@@ -30,7 +30,7 @@ export function purchaseEligibility(choice, state, catalog, selection = {}) {
     };
   if (state.stage === "advancement" && !state.safePlace)
     reasons.push(
-      reason("safe-place", "DP can be spent only in a DA-approved safe place."),
+      reason("safe-place", "Confirm that the character is in a safe place before spending DP."),
     );
   if (choice.kind === "discipline") {
     const current = state.ranks[choice.id] ?? 0;

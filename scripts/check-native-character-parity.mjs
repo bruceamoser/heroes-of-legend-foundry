@@ -86,12 +86,30 @@ try{
   const captureId=await gm.evaluate(async()=>{const actor=await Actor.create({name:"Creation visual fixture",type:"character"});return actor.id});fixture.actors.push(captureId);
   await gm.evaluate(async id=>game.actors.get(id).sheet.render({force:true}),captureId);
   const actorSheet=gm.locator('.hol-character-sheet').filter({has:gm.locator('[data-tab-pane="main"] [data-action="createHero"]')});await actorSheet.locator('[data-tab-pane="main"] [data-action="createHero"]').click();const wizard=gm.locator('.hol-creation .hol-wizard');const chooser=gm.waitForEvent("filechooser");await wizard.locator('[data-action="importCharacter"]').click();await(await chooser).setFiles(file);await gm.waitForFunction(id=>game.actors.get(id).getFlag("heroes-of-legend","creationDraft")?.data.name==="Parity Oren",captureId);
-  for(let step=0;step<8;step++){await wizard.locator(`[data-action="navigate"][data-step="${step}"]`).first().click();await gm.waitForFunction(step=>document.querySelector('.hol-creation nav [aria-current="step"]')?.dataset.step===String(step),step);await capture(gm,wizard,`native-creation-${step+1}.png`);}
+  for(let step=0;step<8;step++){await wizard.locator(`[data-action="navigate"][data-step="${step}"]`).first().click();await gm.waitForFunction(step=>document.querySelector('.hol-creation nav [aria-current="step"]')?.dataset.step===String(step),step);await capture(gm,wizard,`native-creation-${step+1}.png`);if([3,5].includes(step)){await wizard.locator('[data-open-market="ability"]').click();const market=wizard.locator('[data-learning-market="learning"]');await market.waitFor({state:"visible"});const card=market.locator('.hol-learning-card[data-choice-kind="ability"]:has(.hol-learning-mark)').filter({visible:true}).first();await card.waitFor({state:"visible"});assert(await card.locator('.hol-action-code').count(),"Learning card has action type");assert(await card.locator('.hol-learning-mark img').count(),"Learning card has discipline mark");assert(await card.locator('.hol-learning-mark img').evaluateAll(images=>images.every(image=>image.complete&&image.naturalWidth>0)),"Discipline images loaded");assert((await card.boundingBox()).height<150,"Learning card uses compact vertical space");await capture(gm,market,`native-learning-${step===3?'early':'heroic'}.png`);await market.locator('[data-close-market]').click();}}
   await gm.evaluate(async id=>{for(const app of [...foundry.applications.instances.values()])if(app.actor?.id===id)await app.close();},captureId);
  }
 
  for(const {page,id,name} of committedClients){const sheet=page.locator(".hol-character-sheet");for(const tab of ["main","character","abilities","inventory","development","crafting"]){await sheet.locator(`[data-action="switchTab"][data-tab="${tab}"]`).click();await page.waitForFunction(tab=>document.querySelector('.hol-character-tabs [aria-current="page"]')?.dataset.tab===tab,tab);await capture(page,sheet,`native-${name}-${tab}.png`);}}
 
+ // Existing 2.0 ability Items marked rollMode:none still open their configured roll.
+ for (const client of committedClients) {
+  const {page,id,name}=client;
+  const itemId=await page.evaluate(async id=>{const actor=game.actors.get(id);let item=actor.items.find(item=>item.getFlag("heroes-of-legend","catalogId")==="ability-basic-ranged");if(!item){const pack=game.packs.get("heroes-of-legend.abilities");const documents=await pack.getDocuments();const source=documents.find(item=>item.getFlag("heroes-of-legend","catalogId")==="ability-basic-ranged");if(!source)throw Error("Basic Ranged catalog entry missing");const data=source.toObject();delete data._id;[item]=await actor.createEmbeddedDocuments("Item",[data]);}await item.update({"system.activity.rollMode":"none"});return item.id;},id);
+  const sheet=page.locator('.hol-character-sheet');
+  if(name==='player'){
+   await sheet.locator('[data-action="switchTab"][data-tab="development"]').click();await sheet.locator('[data-action="advanceHero"]').first().click();const training=page.locator('.hol-advancement .hol-wizard');await training.waitFor();assert.equal(await training.locator('[data-action="award"]').count(),0);await training.locator('[name="safePlace"]').check();await training.locator('[data-action="safePlace"]').click();await page.waitForFunction(id=>game.actors.get(id).getFlag('heroes-of-legend','development').safePlace===true,id);await capture(page,training,'native-player-safe-place.png');await training.locator('[data-action="returnSheet"]').first().click();
+  }
+  await sheet.locator('[data-action="switchTab"][data-tab="abilities"]').click();
+  await sheet.locator('[data-disclosure="basic-actions"] > summary').click();await sheet.locator(`[data-tab-pane="abilities"] [data-item-id="${itemId}"] [data-action="useItem"]`).first().click();
+  const dialog=page.locator('.hol-roll-dialog');await dialog.waitFor();assert.equal(await dialog.locator('[name="attributeKey"]').inputValue(),'agility');assert(await dialog.locator(`[data-reference-id="${itemId}"]`).isChecked());
+  await capture(page,dialog,`native-${name}-ability-compose.png`);await dialog.locator('[data-action="roll"]').click();
+  await page.waitForFunction(({id,itemId})=>game.messages.contents.some(message=>message.getFlag('heroes-of-legend','roll')?.ability?.itemUuid===`Actor.${id}.Item.${itemId}`),{id,itemId});
+  const result=await page.evaluate(({id,itemId})=>{const messages=game.messages.contents.filter(message=>message.getFlag('heroes-of-legend','roll')?.ability?.itemUuid===`Actor.${id}.Item.${itemId}`);return{count:messages.length,id:messages[0].id,roll:messages[0].getFlag('heroes-of-legend','roll')};},{id,itemId});assert.equal(result.count,1);assert.equal(result.roll.attributeKey,'agility');assert.equal(result.roll.ability.name,'Basic Ranged');assert(result.roll.ability.outcomes[result.roll.tier]);
+  await page.evaluate(()=>{ui.sidebar.expand();ui.sidebar.changeTab("chat","primary");});
+  const card=page.locator(`#chat [data-message-id="${result.id}"] .hol-roll-summary`);await card.waitFor();assert((await card.innerText()).includes('Basic Ranged'));assert((await card.boundingBox()).height<280,'Ability result remains compact');await capture(page,card,`native-${name}-ability-result.png`);
+  await sheet.locator('[data-action="switchTab"][data-tab="main"]').click();const supplies=sheet.locator('[data-disclosure="supplies"]');const controls=await supplies.locator('li').evaluateAll(rows=>rows.map(row=>[...row.querySelectorAll('button[data-action="supply"],button[data-action="resupply"]')].map(button=>{const r=button.getBoundingClientRect();return{x:r.x,y:r.y,width:r.width,height:r.height}})));assert(controls.some(row=>row.length===2));for(const row of controls){if(row.length!==2)continue;assert.equal(row[0].width,row[1].width);assert.equal(row[0].height,row[1].height);assert(Math.abs(row[0].y-row[1].y)<1);}await capture(page,supplies,`native-${name}-supplies-aligned.png`);
+ }
  const owner=committedClients[0],sheet=owner.page.locator(".hol-character-sheet");
  await sheet.locator('[data-action="switchTab"][data-tab="crafting"]').click();
  const recipeButton=sheet.locator('.hol-craft-projects [data-action="attemptCraft"]').first();
@@ -108,11 +126,11 @@ try{
  const advancement=owner.page.locator(".hol-advancement .hol-wizard");await advancement.waitFor();
  await capture(owner.page,advancement,"native-advancement.png");
  const resources=await state(owner.page,owner.id);
- await advancement.getByText("DA milestone and safe-place controls",{exact:true}).click();
+ await advancement.getByText("Milestone award",{exact:true}).click();
  await advancement.locator('[name="newLevel"]').fill("4");await advancement.locator('[data-action="award"]').click();
  await owner.page.waitForFunction(id=>game.actors.get(id).getFlag("heroes-of-legend","development").level===4,owner.id);
  await owner.page.waitForFunction(()=>document.querySelector('.hol-advancement [name="newLevel"]')?.value==="5");
- if(!await advancement.locator('[name="safePlace"]').isVisible())await advancement.getByText("DA milestone and safe-place controls",{exact:true}).click();
+ if(!await advancement.locator('[name="safePlace"]').isVisible())await advancement.getByText("Milestone award",{exact:true}).click();
  await advancement.locator('[name="safePlace"]').check();await advancement.locator('[data-action="safePlace"]').click();
  await owner.page.waitForFunction(id=>game.actors.get(id).getFlag("heroes-of-legend","development").safePlace===true,owner.id);
  const current=await state(owner.page,owner.id);assert.equal(current.hp,resources.hp);assert.equal(current.gritSpent,resources.gritSpent);
@@ -155,7 +173,7 @@ try{
  throw error;
 }finally{
  let cleanupError;
- try{if(gm && fixture)await waitForAuthorityIdle(gm);for(const context of contexts.slice(1))await context.close();if(gm)await gm.evaluate(async fallback=>{const registry=globalThis.__holCharacterParity ?? fallback;if(!registry)return;for(const message of [...game.messages]){const request=message.getFlag("heroes-of-legend","creationRequest")??message.getFlag("heroes-of-legend","developmentRequest")??message.getFlag("heroes-of-legend","woundTreatmentRequest");if(registry.actors.some(id=>request?.actorUuid===`Actor.${id}`))await message.delete();}for(const id of registry.actors)if(game.actors.has(id))await game.actors.get(id).delete();for(const id of registry.users)if(game.users.has(id))await game.users.get(id).delete();},fixture);}catch(error){cleanupError=error;console.error("Character parity cleanup failed",error.message);}await new Promise(done=>server.close(done));
+ try{if(gm && fixture)await waitForAuthorityIdle(gm);for(const context of contexts.slice(1))await context.close();if(gm)await gm.evaluate(async fallback=>{const registry=globalThis.__holCharacterParity ?? fallback;if(!registry)return;for(const message of [...game.messages]){const request=message.getFlag("heroes-of-legend","creationRequest")??message.getFlag("heroes-of-legend","developmentRequest")??message.getFlag("heroes-of-legend","woundTreatmentRequest")??message.getFlag("heroes-of-legend","roll");if(registry.actors.some(id=>request?.actorUuid===`Actor.${id}`))await message.delete();}for(const id of registry.actors)if(game.actors.has(id))await game.actors.get(id).delete();for(const id of registry.users)if(game.users.has(id))await game.users.get(id).delete();},fixture);}catch(error){cleanupError=error;console.error("Character parity cleanup failed",error.message);}await new Promise(done=>server.close(done));
  if(cleanupError){console.error("Fixture targets retained for coordinator reconciliation; no authority settings were changed.");throw cleanupError;}
  await browser.close();
 }

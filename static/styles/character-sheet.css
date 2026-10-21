@@ -350,3 +350,32 @@
 .heroes-of-legend .hol-character-sheet [data-tab-pane=inventory] button[data-action=supply] svg { width:15px; height:15px; }
 .heroes-of-legend .hol-character-sheet [data-tab-pane=development] .hol-inventory-table :is(th,td):first-child { width:15%; }
 .heroes-of-legend .hol-character-sheet [data-tab-pane=development] .hol-inventory-table :is(th,td):last-child { width:50px; text-align:right; }
+
+/* Learning keeps the action, discipline and purchase together in two compact rows. */
+.heroes-of-legend .hol-learning-market .hol-choice-list {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;align-items:start;}
+.heroes-of-legend .hol-learning-market .hol-learning-card {display:flex;flex-direction:column;gap:4px;padding:7px 8px;margin:0;min-width:0;border:1px solid #d6cdb9;border-radius:4px;background:#fffdf8;}
+.heroes-of-legend .hol-learning-market .hol-learning-card[hidden] {display:none;}
+.heroes-of-legend .hol-learning-market .hol-learning-card.hol-ineligible {background:#eeebe3;}
+.heroes-of-legend .hol-learning-card > header {display:flex;align-items:center;gap:6px;min-height:24px;margin:0;padding:0;border:0;background:transparent;color:#28251c;}
+.heroes-of-legend .hol-learning-card > header h3 {flex:1;margin:0;font:600 12px/1.2 "HOL Cinzel",serif;color:#28251c;}
+.heroes-of-legend .hol-learning-badges {display:flex;align-items:center;gap:4px;flex:none;}
+.heroes-of-legend .hol-action-code {display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 3px;font:700 11px/1 system-ui,sans-serif;border:1px solid #b39253;border-radius:3px;color:#283b2e;background:#f1e6ce;}
+.heroes-of-legend .hol-learning-mark {position:relative;display:inline-flex;}
+.heroes-of-legend .hol-learning-mark img {width:24px;height:24px;object-fit:contain;border:0;}
+.heroes-of-legend .hol-learning-mark small {position:absolute;right:-2px;bottom:-2px;font:700 9px/1 system-ui,sans-serif;background:#15221c;color:#f7f3e9;padding:2px;border-radius:2px;}
+.heroes-of-legend .hol-learning-card .hol-learning-reason {margin:0;color:#755648;font-size:10px;line-height:1.3;}
+.heroes-of-legend .hol-learning-actions {display:flex;justify-content:space-between;align-items:center;gap:6px;}
+.heroes-of-legend .hol-learning-actions button {width:auto;min-height:24px;height:auto;padding:2px 6px;margin:0;font:11px/1.2 system-ui,sans-serif;}
+.heroes-of-legend .hol-learning-actions button:first-child {background:transparent;border-color:transparent;}
+.heroes-of-legend .hol-learning-market .hol-market-known {margin:6px 0;padding:0;font-size:11px;}
+.heroes-of-legend .hol-learning-market .hol-market-known p {margin:2px 0;line-height:1.25;}
+.heroes-of-legend .hol-learning-market > label {display:inline-block;width:calc(50% - 4px);margin:4px 0 6px;font-size:11px;}
+.heroes-of-legend .hol-build-ability {display:flex;align-items:center;gap:4px;}
+.heroes-of-legend .hol-build-ability > img {width:19px;height:19px;border:0;object-fit:contain;}
+.heroes-of-legend .hol-build-ability .hol-action-code {min-width:17px;height:17px;font-size:9px;}
+.heroes-of-legend .hol-character-sheet [data-disclosure=supplies] .hol-compact-list li {display:grid;grid-template-columns:minmax(0,1fr) 24px 24px 24px;gap:3px;align-items:center;}
+.heroes-of-legend .hol-character-sheet [data-disclosure=supplies] .hol-compact-list li > button[data-action=openAbility] {width:auto;line-height:1.25;}
+.heroes-of-legend .hol-character-sheet [data-disclosure=supplies] .hol-compact-list li > span {text-align:center;font-size:11px;}
+.heroes-of-legend .hol-character-sheet [data-disclosure=supplies] button:is([data-action=supply],[data-action=resupply]) {display:grid;place-items:center;width:24px;height:24px;min-height:24px;padding:2px;margin:0;line-height:1;border:1px solid #b39253;border-radius:3px;background:#f1e6ce;}
+.heroes-of-legend .hol-character-sheet [data-disclosure=supplies] .hol-roll-die {width:16px;height:16px;}
+@media(max-width:600px) {.heroes-of-legend .hol-learning-market .hol-choice-list {grid-template-columns:1fr;}}

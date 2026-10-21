@@ -1,0 +1,1196 @@
+{
+  "_id": "7440e7e6bc3e9ad1",
+  "name": "Mental wounds",
+  "img": "icons/svg/blood.svg",
+  "description": "<p>Canonical sorted 3d6 wound results. The native 1d216 table weights reproduce all 216 equally likely three-die combinations. For accumulated wounds, use the character’s Roll wound action: roll up to 5d6, keep the highest three and read them in ascending order. That action selects this table’s matching result and applies it.</p>",
+  "formula": "1d216",
+  "replacement": true,
+  "displayRoll": true,
+  "ownership": {
+    "default": 2
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "woundTable": "mental",
+      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+    }
+  },
+  "results": [
+    {
+      "_id": "ecca12f5bfa9e264",
+      "type": "text",
+      "name": "111 · Vivid dreams recalling the event",
+      "description": "<p><strong>Vivid dreams recalling the event</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: —</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "111",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-111",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "1b3f5b9bb2ba3867",
+      "type": "text",
+      "name": "112 · Unease around an associated sound",
+      "description": "<p><strong>Unease around an associated sound</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: —</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        2,
+        4
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "112",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-112",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "7d0edfcc103f66ca",
+      "type": "text",
+      "name": "113 · Small gap in memory of the event",
+      "description": "<p><strong>Small gap in memory of the event</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: —</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        5,
+        7
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "113",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-113",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "87ce9f922078ce8b",
+      "type": "text",
+      "name": "114 · Comforting ritual",
+      "description": "<p><strong>Comforting ritual</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: —</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        8,
+        10
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "114",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-114",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "6fa4090c0f333f74",
+      "type": "text",
+      "name": "115 · Hesitation discussing the event",
+      "description": "<p><strong>Hesitation discussing the event</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: —</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        11,
+        13
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "115",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-115",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "4015794120c8411f",
+      "type": "text",
+      "name": "116 · Intense manner discussing danger",
+      "description": "<p><strong>Intense manner discussing danger</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: —</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        14,
+        16
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "116",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-116",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "64f03cafb33b0f22",
+      "type": "text",
+      "name": "122 · A familiar smell recalls the event",
+      "description": "<p><strong>A familiar smell recalls the event</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: —</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        17,
+        19
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "122",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-122",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "79c5d3a3d8242608",
+      "type": "text",
+      "name": "123 · Preference for sitting near an exit",
+      "description": "<p><strong>Preference for sitting near an exit</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: —</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        20,
+        25
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "123",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-123",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "9aaa2b832f09fbd3",
+      "type": "text",
+      "name": "124 · Occasional repeated phrase",
+      "description": "<p><strong>Occasional repeated phrase</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: —</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        26,
+        31
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "124",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-124",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "fdbf3d95e84d96ef",
+      "type": "text",
+      "name": "125 · A particular place feels unfamiliar",
+      "description": "<p><strong>A particular place feels unfamiliar</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: —</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        32,
+        37
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "125",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-125",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "2a31b0bbf1437d50",
+      "type": "text",
+      "name": "126 · A keepsake acquires significance",
+      "description": "<p><strong>A keepsake acquires significance</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: —</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        38,
+        43
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "126",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-126",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "8678bd5b3c1377ff",
+      "type": "text",
+      "name": "133 · Unsettling stare when discussing similar dangers",
+      "description": "<p><strong>Unsettling stare when discussing similar dangers</strong></p><p>1 boon: intimidate; 1 bane: persuade</p><p>Remedy: Mental; removes both modifiers · Recovery 2</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        44,
+        46
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "133",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-133",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "d05e7dd944c890a1",
+      "type": "text",
+      "name": "134 · Changed taste associated with the event",
+      "description": "<p><strong>Changed taste associated with the event</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: —</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        47,
+        52
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "134",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-134",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "9b523b62e80501af",
+      "type": "text",
+      "name": "135 · Tremor when recalling the event",
+      "description": "<p><strong>Tremor when recalling the event</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: Mental; alleviates tremor · Recovery 2</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        53,
+        58
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "135",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-135",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "6b234906db4fd2e9",
+      "type": "text",
+      "name": "136 · Occasional catch in the voice",
+      "description": "<p><strong>Occasional catch in the voice</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: Mental; alleviates it · Recovery 1</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        59,
+        64
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "136",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-136",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "ed73126f492f7c69",
+      "type": "text",
+      "name": "144 · Difficulty recalling an unimportant detail",
+      "description": "<p><strong>Difficulty recalling an unimportant detail</strong></p><p>Lasting scar; no mechanical penalty.</p><p>Remedy: —</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        65,
+        67
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "144",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-144",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "1293736a41d32de0",
+      "type": "text",
+      "name": "145 · Momentary mental disconnection",
+      "description": "<p><strong>Momentary mental disconnection</strong></p><p>dazed 1</p><p>Remedy: Decay</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        68,
+        73
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "145",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-145",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "84899c1c8801f134",
+      "type": "text",
+      "name": "146 · Unusually cold manner discussing the event",
+      "description": "<p><strong>Unusually cold manner discussing the event</strong></p><p>1 boon: intimidate; 1 bane: persuade</p><p>Remedy: Mental; removes both modifiers · Recovery 2</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        74,
+        79
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "146",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-146",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "013747d9dfe01d99",
+      "type": "text",
+      "name": "155 · Sudden confusion",
+      "description": "<p><strong>Sudden confusion</strong></p><p>dazed 1</p><p>Remedy: Decay</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        80,
+        82
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "155",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-155",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "833d1ec9f4943f2d",
+      "type": "text",
+      "name": "156 · Overwhelming alarm",
+      "description": "<p><strong>Overwhelming alarm</strong></p><p>frightened 1</p><p>Remedy: Decay</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        83,
+        88
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "156",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-156",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "694f386549a02dda",
+      "type": "text",
+      "name": "166 · Interrupted awareness",
+      "description": "<p><strong>Interrupted awareness</strong></p><p>dazed 1</p><p>Remedy: Decay</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        89,
+        91
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "166",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-166",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "d4ee5a2c8f838de5",
+      "type": "text",
+      "name": "222 · Sudden terror",
+      "description": "<p><strong>Sudden terror</strong></p><p>frightened 1</p><p>Remedy: Decay</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 1,
+      "range": [
+        92,
+        92
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "222",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-222",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "adda0c91b1f7d0c2",
+      "type": "text",
+      "name": "223 · Scattered thoughts",
+      "description": "<p><strong>Scattered thoughts</strong></p><p>dazed 1</p><p>Remedy: Decay</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        93,
+        95
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "223",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-223",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "0684ebed6eeb6e51",
+      "type": "text",
+      "name": "224 · Overwhelming alarm",
+      "description": "<p><strong>Overwhelming alarm</strong></p><p>frightened 1</p><p>Remedy: Decay</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        96,
+        98
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "224",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-224",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "556cfaa2f289d836",
+      "type": "text",
+      "name": "225 · Interrupted concentration",
+      "description": "<p><strong>Interrupted concentration</strong></p><p>dazed 1</p><p>Remedy: Decay</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        99,
+        101
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "225",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-225",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "184d03f5c09cd38d",
+      "type": "text",
+      "name": "226 · Distorted sense of distance",
+      "description": "<p><strong>Distorted sense of distance</strong></p><p>Movement −1</p><p>Remedy: Mental · Recovery 3</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        102,
+        104
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "226",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-226",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "1d62aac602a0dd1d",
+      "type": "text",
+      "name": "233 · Phantom darkness",
+      "description": "<p><strong>Phantom darkness</strong></p><p>blinded 1</p><p>Remedy: Decay</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        105,
+        107
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "233",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-233",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "6bd5005ded929ca0",
+      "type": "text",
+      "name": "234 · Broken train of thought",
+      "description": "<p><strong>Broken train of thought</strong></p><p>dazed 1</p><p>Remedy: Decay</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        108,
+        113
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "234",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-234",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "00662158e44804ee",
+      "type": "text",
+      "name": "235 · Fragmented recall",
+      "description": "<p><strong>Fragmented recall</strong></p><p>1 bane: mental</p><p>Remedy: Mental · Recovery 3</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        114,
+        119
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "235",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-235",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "ce6ea2cbbc2da04d",
+      "type": "text",
+      "name": "236 · Confused sequencing",
+      "description": "<p><strong>Confused sequencing</strong></p><p>dazed 1</p><p>Remedy: Decay</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        120,
+        125
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "236",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-236",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "ef6939214cb125e0",
+      "type": "text",
+      "name": "244 · Fear of the injury's source",
+      "description": "<p><strong>Fear of the injury&#39;s source</strong></p><p>frightened 1</p><p>Remedy: Decay</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        126,
+        128
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "244",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-244",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "2c391a7452694426",
+      "type": "text",
+      "name": "245 · Disrupted coordination",
+      "description": "<p><strong>Disrupted coordination</strong></p><p>Movement −1</p><p>Remedy: Mental · Recovery 2</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        129,
+        134
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "245",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-245",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "71604808e07a4e1c",
+      "type": "text",
+      "name": "246 · Interrupted hearing",
+      "description": "<p><strong>Interrupted hearing</strong></p><p>deafened 1</p><p>Remedy: Decay</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        135,
+        140
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "246",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-246",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "ee27c76db2803c74",
+      "type": "text",
+      "name": "255 · Disorientation",
+      "description": "<p><strong>Disorientation</strong></p><p>dazed 1</p><p>Remedy: Decay</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        141,
+        143
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "255",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-255",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "72490872fbfa8afd",
+      "type": "text",
+      "name": "256 · Disturbed bodily awareness",
+      "description": "<p><strong>Disturbed bodily awareness</strong></p><p>Movement −2</p><p>Remedy: Mental · Recovery 3</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        144,
+        149
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "256",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-256",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "40115492260953cf",
+      "type": "text",
+      "name": "266 · Sudden loss of balance",
+      "description": "<p><strong>Sudden loss of balance</strong></p><p>prone 1; dazed 1</p><p>Remedy: Stand normally; decay</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        150,
+        152
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "266",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-266",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "0ecac75d151f486d",
+      "type": "text",
+      "name": "333 · Fear disrupting thought",
+      "description": "<p><strong>Fear disrupting thought</strong></p><p>frightened 1; dazed 1</p><p>Remedy: Decay</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 1,
+      "range": [
+        153,
+        153
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "333",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-333",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "93d1a1ce1faa4fc4",
+      "type": "text",
+      "name": "334 · Sensory interruption",
+      "description": "<p><strong>Sensory interruption</strong></p><p>blinded 1; deafened 1</p><p>Remedy: Decay</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        154,
+        156
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "334",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-334",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "2cc9245b8e6d8ffd",
+      "type": "text",
+      "name": "335 · Violent disorientation",
+      "description": "<p><strong>Violent disorientation</strong></p><p>dazed 2; prone 1</p><p>Remedy: Decay; stand normally</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        157,
+        159
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "335",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-335",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "756a3d996d2fe097",
+      "type": "text",
+      "name": "336 · Fear disrupting coordination",
+      "description": "<p><strong>Fear disrupting coordination</strong></p><p>frightened 1; Movement −1</p><p>Remedy: Mental; removes movement penalty · Recovery 3</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        160,
+        162
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "336",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-336",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "338c465e206739ec",
+      "type": "text",
+      "name": "344 · Intense terror",
+      "description": "<p><strong>Intense terror</strong></p><p>frightened 2</p><p>Remedy: Decay</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        163,
+        165
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "344",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-344",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "0338b0a8a82bd230",
+      "type": "text",
+      "name": "345 · Fragmented concentration",
+      "description": "<p><strong>Fragmented concentration</strong></p><p>dazed 1; 1 bane: mental</p><p>Remedy: Mental; removes Bane · Recovery 4</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        166,
+        171
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "345",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-345",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "3b88a9a860efc1c7",
+      "type": "text",
+      "name": "346 · Interrupted bodily control",
+      "description": "<p><strong>Interrupted bodily control</strong></p><p>paralyzed 1</p><p>Remedy: Decay</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        172,
+        177
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "346",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-346",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "6277ce45f8d985e1",
+      "type": "text",
+      "name": "355 · Mental overload",
+      "description": "<p><strong>Mental overload</strong></p><p>dazed 2</p><p>Remedy: Decay</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        178,
+        180
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "355",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-355",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "da75d643622d0111",
+      "type": "text",
+      "name": "356 · Disrupted movement",
+      "description": "<p><strong>Disrupted movement</strong></p><p>dazed 1; Movement −2</p><p>Remedy: Mental; removes movement penalty · Recovery 4</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        181,
+        186
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "356",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-356",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "f4ef7af6dd23b7ba",
+      "type": "text",
+      "name": "366 · Persistent hearing disruption",
+      "description": "<p><strong>Persistent hearing disruption</strong></p><p>deafened 1*</p><p>Remedy: Mental; restores hearing · Recovery 5</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        187,
+        189
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "366",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-366",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "d83e5aae0434a174",
+      "type": "text",
+      "name": "444 · Consuming fear and confusion",
+      "description": "<p><strong>Consuming fear and confusion</strong></p><p>frightened 2; dazed 1</p><p>Remedy: Decay</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 1,
+      "range": [
+        190,
+        190
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "444",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-444",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "13973bb58f19a172",
+      "type": "text",
+      "name": "445 · Severely fragmented thought",
+      "description": "<p><strong>Severely fragmented thought</strong></p><p>dazed 2; 2 bane: mental</p><p>Remedy: Mental; removes Banes · Recovery 5</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        191,
+        193
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "445",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-445",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "dd9e484fb079c0f6",
+      "type": "text",
+      "name": "446 · Severe sensory interruption",
+      "description": "<p><strong>Severe sensory interruption</strong></p><p>blinded 2; deafened 2</p><p>Remedy: Decay</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        194,
+        196
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "446",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-446",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "ae56fbbe8e0946fa",
+      "type": "text",
+      "name": "455 · Interrupted bodily control",
+      "description": "<p><strong>Interrupted bodily control</strong></p><p>paralyzed 2</p><p>Remedy: Decay</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        197,
+        199
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "455",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-455",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "e3cf3f86f48304bd",
+      "type": "text",
+      "name": "456 · Mental shutdown",
+      "description": "<p><strong>Mental shutdown</strong></p><p>dazed 3; prone 1</p><p>Remedy: Decay; stand normally</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 6,
+      "range": [
+        200,
+        205
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "456",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-456",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "9e49a6d427228d92",
+      "type": "text",
+      "name": "466 · Persistent visual disruption",
+      "description": "<p><strong>Persistent visual disruption</strong></p><p>blinded 1*</p><p>Remedy: Mental; restores sight · Recovery 7</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        206,
+        208
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "466",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-466",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "bb7fee9d2cdbc36c",
+      "type": "text",
+      "name": "555 · Overwhelming terror and fractured thought",
+      "description": "<p><strong>Overwhelming terror and fractured thought</strong></p><p>frightened 3; dazed 3</p><p>Remedy: Decay</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 1,
+      "range": [
+        209,
+        209
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "555",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-555",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "1e9610a8463d9a67",
+      "type": "text",
+      "name": "556 · Complete interruption of bodily control",
+      "description": "<p><strong>Complete interruption of bodily control</strong></p><p>paralyzed 3; prone 1</p><p>Remedy: Decay; stand normally</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        210,
+        212
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "556",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-556",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "cb3209f32d1a8a34",
+      "type": "text",
+      "name": "566 · Profound sensory disruption",
+      "description": "<p><strong>Profound sensory disruption</strong></p><p>dazed 3; blinded 1*; deafened 1*</p><p>Remedy: Mental; one track removes both starred conditions · Recovery 9</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 3,
+      "range": [
+        213,
+        215
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "566",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-566",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    },
+    {
+      "_id": "874f1f5eaefa01f0",
+      "type": "text",
+      "name": "666 · Last Words",
+      "description": "<p><strong>Last Words</strong></p><p>Last Words</p><p>Remedy: No ordinary healing, treatment, potions, or Grit</p>",
+      "img": "icons/svg/blood.svg",
+      "weight": 1,
+      "range": [
+        216,
+        216
+      ],
+      "drawn": false,
+      "flags": {
+        "heroes-of-legend": {
+          "woundKey": "666",
+          "woundTable": "mental",
+          "catalogId": "wound-mental-666",
+          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+        }
+      }
+    }
+  ]
+}

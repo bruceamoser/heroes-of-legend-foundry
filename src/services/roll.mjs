@@ -1,3 +1,5 @@
+import { abilityRollConfiguration, assertAbilityConfiguration } from "../rules/ability-roll.mjs";
+import { loadCatalogs } from "./catalog.mjs";
 import { selectedReferences } from "./reference-play.mjs";
 import { incomingOutcome } from "../rules/creature-actions.mjs";
 import { rollBasis, prepareRoll } from "./roll-preparation.mjs";
@@ -52,6 +54,15 @@ export async function evaluatePreparedRoll(
   draft,
   { rollerId = game.user.id, allowInteractive = false } = {},
 ) {
+  let ability;
+  if (draft.abilityItemId) {
+    const item = actor.items.get(draft.abilityItemId);
+    if (item?.type !== "ability" || !actor.testUserPermission(game.user, "OWNER"))
+      throw new Error("This ability is no longer available to roll.");
+    const catalogs = await loadCatalogs();
+    ability = abilityRollConfiguration(item, catalogs.choices.find(choice => choice.id === item.getFlag("heroes-of-legend", "catalogId")));
+    assertAbilityConfiguration(ability, draft.abilityConfiguration);
+  }
   const references = selectedReferences(actor, draft, {
     mode: basis.mode,
     defenderTokenUuid: basis.defenderTokenUuid,
@@ -67,6 +78,7 @@ export async function evaluatePreparedRoll(
   const result = classifyRoll(retained, plan.attribute);
   const snapshot = {
     schemaVersion: 2,
+    ...(ability ? {ability} : {}),
     references,
     actorUuid: actor.uuid,
     defenderTokenUuid: basis.defenderTokenUuid,
@@ -103,7 +115,7 @@ export function renderRollSummary(message, element) {
   actorName.textContent = `${message.speaker?.alias ?? ""} · ${result.mode === "defense" ? "Defense" : "Check"}`;
   const attributeName = game.i18n.localize(`HOL.Attributes.${result.resolvedAttributeKey ?? result.attributeKey}`);
   const incoming = game.messages?.get?.(result.attackMessageId)?.getFlag("heroes-of-legend", "attackCard");
-  heading.textContent = result.mode === "defense" ? `Defend${incoming?.title ? ` · ${incoming.title}` : ""}` : "Attribute check";
+  heading.textContent = result.mode === "defense" ? `Defend${incoming?.title ? ` · ${incoming.title}` : ""}` : result.ability?.name ?? "Attribute check";
   identity.append(actorName, heading);
   const actor = game.actors?.get?.(message.speaker?.actor);
   header.append(identity);
@@ -137,6 +149,12 @@ export function renderRollSummary(message, element) {
     resolution.append(dice);
   }
   resolution.append(verdict);
+  if (result.ability?.outcomes?.[result.tier]) {
+    const outcome = document.createElement("p");
+    outcome.className = "hol-chat-effect";
+    outcome.textContent = result.ability.outcomes[result.tier];
+    summary.append(outcome);
+  }
   if (result.natural !== "none") {
     const natural = document.createElement("p");
     natural.className = "hol-chat-natural";
@@ -160,10 +178,10 @@ export function renderRollSummary(message, element) {
       ? `${settledDamage.event.total} damage applied · HP ${settledDamage.before} → ${settledDamage.after}${settledDamage.wound ? " · Wound awaiting resolution" : ""}`
       : result.attackOutcome.resolution === "reference"
         ? `${result.attackOutcome.text} · Resolve costs and effects manually.`
-        : `${result.attackOutcome.damage} physical damage before resistance. The DA can review and apply damage.`;
+        : `${result.attackOutcome.damage} physical damage before resistance. Review and apply damage.`;
     summary.append(outcome);
     if (
-      game.user.isGM &&
+      (game.user.isGM || (result.actorUuid && fromUuidSync(result.actorUuid)?.isOwner)) &&
       !settledDamage &&
       result.attackMessageId &&
       result.attackOutcome.resolution !== "reference"
@@ -221,8 +239,14 @@ export function renderRollSummary(message, element) {
           const {chooseDefender} = await import("../dialogs/defender-choice.mjs");
           await chooseDefender(result.attackMessageId);
         } else {
-          const {promptAttributeRoll} = await import("../dialogs/attribute-roll.mjs");
-          await promptAttributeRoll(actor, result.resolvedAttributeKey ?? result.attributeKey);
+          const ability = result.ability?.itemUuid ? await fromUuid(result.ability.itemUuid) : null;
+          if (ability?.actor?.uuid === actor.uuid) {
+            const {activateOwnedAbility} = await import("./abilities.mjs");
+            await activateOwnedAbility(ability);
+          } else {
+            const {promptAttributeRoll} = await import("../dialogs/attribute-roll.mjs");
+            await promptAttributeRoll(actor, result.resolvedAttributeKey ?? result.attributeKey);
+          }
         }
       } catch (error) { ui.notifications.error(error.message); }
     });

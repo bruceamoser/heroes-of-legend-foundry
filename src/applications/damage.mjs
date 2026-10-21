@@ -28,7 +28,7 @@ export class DamagePanel extends foundry.applications.api.HandlebarsApplicationM
     },
   };
   async _prepareContext() {
-    if (!game.user.isGM) throw new Error("Only the DA can apply this damage.");
+    if (!this.actor.testUserPermission(game.user, "OWNER")) throw new Error("Only this actor’s owner can apply damage.");
     this.basis = damageBasis(this.actor);
     const incoming = this.rollMessageId
         ? defenseDamage(game.messages.get(this.rollMessageId))

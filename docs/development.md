@@ -1649,3 +1649,20 @@ history, measurement, terrain costs or the core ruler renderer.
 The round fixture also removes the final unacted participant: the tracker immediately
 exposes the next round and the next Choose persists that transition, without a stuck
 encounter. A valid active participant is never interrupted by roster reconciliation.
+
+### 2.3.1 character and table follow-up
+
+`npm run check` passes 666 tests, build and catalog validation. The 512-file
+release package is verified against current modules, styles and templates.
+
+`test:character-persistence` and `test:table-refinements` require the same explicit
+isolated localhost guards as other native suites. Evidence covers native legacy
+character migration (items, effects, Story, multiple copies), player token editing
+through deletion/reload, rich equipment editing, aligned supplies, weapon headings,
+completed wound effects, level changes, grouped encounters and native End combat.
+Recovery retains the original Actor and each token delta under
+`flags.heroes-of-legend.tokenLinkRecovery`. Copies have no trustworthy edit order;
+conflicting fields require DA selection. Disjoint changes merge by document ID and
+field. Token or Actor edits detected during conversion stop it for a fresh review.
+Creature/summon copies are excluded. This is migration evidence, not a guarantee
+against simultaneous external module writes after a native update begins.

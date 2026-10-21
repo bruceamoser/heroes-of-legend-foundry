@@ -20,7 +20,9 @@ export function abilityRollConfiguration(item, record) {
     ...(rules?.notes ?? []).filter(note=>note.label === "Tags").map(note=>note.text)];
   const attack=tags.some(value=>String(value).split("/").some(tag=>tag.trim() === "Attack"));
   const ranged = attack && (/ranged weapon/i.test(JSON.stringify(record?.reference?.rules ?? {})) || record?.id === "ability-basic-ranged");
-  return {itemUuid:item.uuid, name:item.name, attribute, attack, ranged, trigger:reactionTrigger(record),
+  const equipment=rules?.details?.find(detail=>detail.label === "Equipment / acquisition")?.value ?? "";
+  const weaponKind=attack ? ranged ? "ranged" : /melee weapon/i.test(equipment) ? "melee" : record?.id === "ability-basic-throw" ? "thrown" : null : null;
+  return {itemUuid:item.uuid, name:item.name, attribute, attack, ranged, weaponKind, trigger:reactionTrigger(record),
     effect:(record?.reference?.rules?.body ?? []).flatMap(block=>block.text ? [block.text] : block.items ?? []).join(" ") || String(item.system?.description ?? "").replace(/<[^>]*>/g," ").replace(/\s+/g," ").trim(),
     outcomes:Object.fromEntries(['weak','standard','strong'].map(tier => [tier,item.system?.outcomes?.[tier] || printed.outcomes[tier] || '']))};
 }

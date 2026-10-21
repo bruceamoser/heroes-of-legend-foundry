@@ -29,6 +29,8 @@ import {
   refundableAbilityPurchase,
 } from "../rules/development.mjs";
 const ID = "heroes-of-legend";
+export function hasPendingAdvancement(draft){return Boolean(draft?.purchases?.length || Object.values(draft?.signatures??{}).some(Boolean));}
+export function nextDraftBaseRevision(baseRevision,beforeRevision,afterRevision,draft){return !hasPendingAdvancement(draft)||(baseRevision===beforeRevision&&afterRevision===beforeRevision+1)?afterRevision:baseRevision;}
 export class AdvancementWizard extends foundry.applications.api.HandlebarsApplicationMixin(
   foundry.applications.api.ApplicationV2,
 ) {
@@ -73,7 +75,7 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
     );
     this.draftId = resume ? saved.id : foundry.utils.randomID();
     this.revision = saved?.revision ?? 0;
-    this.baseRevision = resume ? saved.baseRevision : (state.revision ?? 0);
+    this.baseRevision = resume && hasPendingAdvancement(this.draft) ? saved.baseRevision : (state.revision ?? 0);
   }
   async _prepareContext() {
     if (!this.actor.isOwner) throw new Error("You must own the character.");
@@ -81,6 +83,7 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
     const { choices, inventory, commit } = this.catalogs;
     const current = currentDevelopment(this.actor),
       get = (id) => choices.find((r) => r.id === id);
+    if(!hasPendingAdvancement(this.draft))this.baseRevision=current.revision??0;
     const languageConfiguration = getCampaignLanguageConfiguration();
     this.languageDefinitions = languageConfiguration.definitions;
     this.languageBasis = languageConfiguration.basis;
@@ -390,19 +393,20 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
   static async award() { return AdvancementWizard.changeLevel.call(this,"addLevel"); }
   static async removeLevel() { return AdvancementWizard.changeLevel.call(this,"removeLevel"); }
   static async changeLevel(kind) {
-    try {
-      const current=currentDevelopment(this.actor);
-      const request=await requestDevelopment(this.actor,kind,{revision:current.revision??0});
+    await this.act(async()=>{
+      const before=currentDevelopment(this.actor).revision??0;
+      const request=await requestDevelopment(this.actor,kind,{revision:before});
       await waitForDevelopmentOperation(this.actor,request.id);
-      await AdvancementWizard.refresh.call(this);
-    } catch(error) {ui.notifications.error(error.message);}
+      this.baseRevision=nextDraftBaseRevision(this.baseRevision,before,currentDevelopment(this.actor).revision??0,this.draft);
+    });
   }
   static async refundAbility(event,target) {
-    try {
+    await this.act(async()=>{
+      const before=currentDevelopment(this.actor).revision??0;
       const request=await requestDevelopment(this.actor,"refundAbility",{abilityId:target.dataset.id});
       await waitForDevelopmentOperation(this.actor,request.id);
-      await AdvancementWizard.refresh.call(this);
-    } catch(error) {ui.notifications.error(error.message);}
+      this.baseRevision=nextDraftBaseRevision(this.baseRevision,before,currentDevelopment(this.actor).revision??0,this.draft);
+    });
   }
   static async commit() {
     if (this.committing) return;

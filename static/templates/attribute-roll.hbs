@@ -3,6 +3,7 @@
   <div class="hol-body">
   {{#if notice}}<p class="hol-note" role="alert">{{notice}}</p>{{/if}}
   {{#if death}}<section class="hol-death-panel"><div class="hol-death-marks" role="group" aria-label="Death marks">{{#each deathMarks}}<button type="button" data-action="deathMark" data-marks="{{value}}" aria-label="Set {{value}} death marks" aria-pressed="{{filled}}" class="{{#if filled}}filled{{/if}}"><i class="fa-solid fa-skull" aria-hidden="true"></i></button>{{/each}}<strong>{{failed}} / 3</strong></div><div class="hol-death-outcomes"><span><b>Weak</b> +1 mark</span><span><b>Standard</b> No change</span><span><b>Strong</b> Stabilize</span></div></section>{{/if}}
+  {{#if weaponOptions}}<label>Attack item<select name="weaponItemId">{{#each weaponOptions}}<option value="{{id}}" {{#if selected}}selected{{/if}}>{{name}}</option>{{/each}}</select></label>{{/if}}
   {{#if rangedWeaponOptions}}<label>Ranged weapon<select name="rangedWeaponItemId">{{#each rangedWeaponOptions}}<option value="{{id}}" {{#if selected}}selected{{/if}}>{{name}}</option>{{/each}}</select></label>{{/if}}
   <section class="hol-roll-setup"><div class="hol-roll-fields"><label>Attribute<select name="attributeKey" aria-label="Roll attribute" {{#unless attributeEditable}}disabled{{/unless}}>{{#each attributeOptions}}<option value="{{key}}" {{#if selected}}selected{{/if}}>{{name}}</option>{{/each}}</select></label><label>Value<output data-roll-value>{{attribute}}</output></label></div>
   {{#if defenseSubstitutions}}<label>Defense attribute (optional)

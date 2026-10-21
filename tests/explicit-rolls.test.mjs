@@ -21,6 +21,7 @@ test('an incoming defense rolls immediately without coordinator, encounter or ac
     async toMessage(data){posts++;return {id:'result',...data};}
   }}}});
   const dependencies={
+    './attack-equipment.mjs':{attackEquipmentSnapshot:()=>{throw Error('Defense has no attack equipment');}},
     '../rules/outcome-effects.mjs':{outcomeEffects},
     '../rules/ability-roll.mjs':{abilityRollConfiguration:()=>{},assertAbilityConfiguration:()=>{},outcomeDamage},
     './catalog.mjs':{loadCatalogs:()=>{}},

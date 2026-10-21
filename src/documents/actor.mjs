@@ -1,5 +1,13 @@
 import { ConditionPanel } from "../applications/conditions.mjs";
 export class HOLActor extends foundry.documents.Actor {
+  async _preCreate(data, options, user) {
+    const allowed = await super._preCreate(data, options, user);
+    if (allowed === false) return false;
+    if (["character", "creature", "summon"].includes(this.type)) {
+      this.updateSource({"prototypeToken.actorLink": this.type === "character"});
+    }
+  }
+
   _onUpdate(changes,options,userId) {
     super._onUpdate(changes,options,userId);
     if(userId===game.user.id && changes.system?.health?.value!==undefined) {

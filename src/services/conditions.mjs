@@ -1,3 +1,4 @@
+import {woundRecovered} from "../rules/wound-contributions.mjs";
 import { createActionMessage, shouldProcessRequest } from "./authority.mjs";
 import { ensureAuthorityReady } from "./authority.mjs";
 import { assertNoPendingTurn } from "./turn-lock.mjs";
@@ -16,7 +17,8 @@ export function actorContributions(actor) {
   const records = actor.effects
     .filter(
       (e) =>
-        e.active && !e.getFlag(ID, "retired") && e.getFlag(ID, "condition"),
+        e.active && !e.getFlag(ID, "retired") && e.getFlag(ID, "condition") &&
+        !woundRecovered(actor.getFlag?.(ID,"wounds")?.[e.getFlag(ID,"woundEvent")]),
     )
     .map((e) => ({ ...structuredClone(e.getFlag(ID, "condition")), id: e.id }));
   validateContributions(records);

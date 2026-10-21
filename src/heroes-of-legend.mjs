@@ -121,3 +121,12 @@ Hooks.on("renderChatMessageHTML", renderAttackCard);
 Hooks.on("renderChatMessageHTML", renderPlayerBasicMeleeCard);
 
 Hooks.once("ready",()=>{void import("./services/journals.mjs").then(({repairRuleChapterPages})=>repairRuleChapterPages()).catch(error=>console.warn("heroes-of-legend | Chapter contents",error));});
+
+Hooks.once("ready",()=>{void (async()=>{
+  const {linkCharacterTokens}=await import("./services/character-token-links.mjs");
+  await linkCharacterTokens();
+  if(game.user.isGM&&game.users.activeGM?.isSelf){
+    const {repairRecoveredWoundEffects}=await import("./services/wound-treatment.mjs");
+    for(const actor of game.actors)await repairRecoveredWoundEffects(actor);
+  }
+})().catch(error=>{console.error("heroes-of-legend | Character recovery",error);ui.notifications.error("Character recovery could not finish. Existing token data is preserved; see the console for details.");});});

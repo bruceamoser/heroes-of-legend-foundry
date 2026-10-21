@@ -25,7 +25,7 @@ test("native Grit restores full HP and clears marks while retaining wounds and t
   assert.throws(() => recoveryPreview(actor, { ...basis, gritAvailable: 0 }, { kind: "grit" }), /No Grit/);
   assert.throws(() => recoveryPreview({ ...actor, getFlag: () => ({ pending: { status: "rolled" } }) }, basis, { kind: "grit" }), /pending wound/);
 });
-test("treatment reaching the printed value clears only this wound's treatable effects and retains scar", () => {
+test("treatment reaching the printed value clears only this wound's effects and retains scar", () => {
   const flags = data => ({ "heroes-of-legend": data });
   const basis = { eventId: "w", wound: { id: "scar", recoveryProgress: 1, recoveryValue: 3, effectIds: ["move", "star", "temp", "other"] }, effects: [
     { _id: "move", flags: flags({ woundEvent: "w", woundModifier: { kind: "movementPenalty" } }) },
@@ -36,7 +36,7 @@ test("treatment reaching the printed value clears only this wound's treatable ef
   assert.equal(woundTreatmentPlan(basis, 1).complete, false);
   const result = woundTreatmentPlan(basis, 2);
   assert.equal(result.complete, true); assert.equal(result.wound.id, "scar");
-  assert.deepEqual(result.removeEffectIds, ["move", "star"]); assert.deepEqual(result.wound.effectIds, ["temp", "other"]);
+  assert.deepEqual(result.removeEffectIds, ["move", "star", "temp"]); assert.deepEqual(result.wound.effectIds, ["other"]);
   assert.equal(basis.wound.recoveryProgress, 1);
   assert.throws(() => woundTreatmentPlan({ ...basis, wound: { recoveryValue: null } }, 1), /no treatment track/);
 });

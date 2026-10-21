@@ -933,7 +933,7 @@ function attackCard(message, operation, snapshot, recovery) {
   return {
     schemaVersion: 2,
     operationId: message.id,
-    title: "Basic Melee",
+    title: operation.weaponName,
     source: structuredClone(operation.source),
     combatId: operation.combatId,
     encounterRevision: operation.encounterRevision,

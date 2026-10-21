@@ -190,3 +190,8 @@
 .heroes-of-legend .hol-ability-outcome .hol-outcome-total span {font-size:11px;color:#6a6457;}
 .heroes-of-legend .hol-ability-outcome p {margin:10px 0;}
 .heroes-of-legend .hol-ability-outcome a.content-link {display:inline;width:auto;padding:0;border:0;background:transparent;color:#314d3b;box-shadow:none;font:11px/1.4 system-ui,sans-serif;text-decoration:underline dotted;}
+.heroes-of-legend.hol-encounter-panel .hol-combat-group-title{display:block;font-size:12px;color:#214b38;background:#eae2cf;border-bottom:1px solid #c8b893;padding:4px 6px;margin-top:5px}
+.hol-encounter .hol-combat-choices{display:flex;flex-wrap:wrap;gap:3px}
+.hol-encounter .hol-combat-choices>strong{flex-basis:100%;font-size:12px}
+.hol-encounter-end{padding:5px}
+.hol-encounter-end>button{width:100%}

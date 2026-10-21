@@ -1,3 +1,4 @@
+import {attackEquipmentSnapshot} from "./attack-equipment.mjs";
 import { outcomeEffects } from "../rules/outcome-effects.mjs";
 import { abilityRollConfiguration, assertAbilityConfiguration, outcomeDamage } from "../rules/ability-roll.mjs";
 import { loadCatalogs } from "./catalog.mjs";
@@ -73,6 +74,7 @@ export async function evaluatePreparedRoll(
     ability = abilityRollConfiguration(item, catalogs.choices.find(choice => choice.id === item.getFlag("heroes-of-legend", "catalogId")));
     assertAbilityConfiguration(ability, draft.abilityConfiguration);
   }
+  const equipment=ability?attackEquipmentSnapshot(actor,ability,ability.ranged?draft.rangedWeaponItemId:draft.weaponItemId):null;
   const references = selectedReferences(actor, draft, {
     mode: basis.mode,
     attributeKey:basis.attributeKey,initiatingItemId:draft.abilityItemId,
@@ -90,6 +92,7 @@ export async function evaluatePreparedRoll(
   const snapshot = {
     schemaVersion: 2,
     ...(ability ? {ability} : {}),
+    ...(equipment ? {equipment} : {}),
     references,
     actorUuid: actor.uuid,
     defenderTokenUuid: basis.defenderTokenUuid,
@@ -139,12 +142,13 @@ export function renderRollSummary(message, element) {
   actorName.textContent = `${message.speaker?.alias ?? ""} · ${result.mode === "defense" ? "Defense" : result.mode === "attack" ? "Attack" : "Check"}`;
   const attributeName = game.i18n.localize(`HOL.Attributes.${result.resolvedAttributeKey ?? result.attributeKey}`);
   const incoming = game.messages?.get?.(result.attackMessageId)?.getFlag("heroes-of-legend", "attackCard");
-  heading.textContent = result.mode === "defense" ? `Defend${incoming?.title ? ` · ${incoming.title}` : ""}` : result.ability?.name ?? "Attribute check";
+  heading.textContent = result.mode === "defense" ? `Defend${incoming?.title ? ` · ${incoming.title}` : ""}` : result.equipment?.name ?? result.ability?.name ?? "Attribute check";
   identity.append(heading);
   const actor = game.actors?.get?.(message.speaker?.actor);
   header.append(identity);
   const bar = document.createElement("div"); bar.className = "hol-chat-bar";
   const barPart = text => { const part = document.createElement("span"); part.textContent = text; bar.append(part); };
+  if(result.equipment && result.ability?.name)barPart(result.ability.name);
   if (incoming?.attackerName) barPart(`Against ${incoming.attackerName}`);
   barPart(`${attributeName} ${result.attribute >= 0 ? "+" : ""}${result.attribute}`);
   barPart(result.net ? `${Math.abs(result.net)} ${result.net < 0 ? "Banes" : "Boons"}` : "Even");

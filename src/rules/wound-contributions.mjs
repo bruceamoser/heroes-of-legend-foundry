@@ -252,3 +252,8 @@ export function describeWoundEffect(effect) {
   if(modifier?.kind==='lastWords')return 'Last Words';
   return effect?.name??'';
 }
+
+/** Completed treatment removes mechanical consequences while preserving the scar. */
+export function woundRecovered(wound) {
+  return Number.isSafeInteger(wound?.recoveryValue)&&wound.recoveryValue>0&&(wound.recoveryProgress??0)>=wound.recoveryValue;
+}

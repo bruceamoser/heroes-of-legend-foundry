@@ -333,7 +333,7 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
         if (!ability) return item.sheet.render({force:true});
         if (abilityId === "ability-shield-block") return this.openShieldDefense(ability);
         const {activateOwnedAbility} = await import("../services/abilities.mjs");
-        const dialog = await activateOwnedAbility(ability,abilityId === "ability-basic-ranged" ? {rangedWeaponItemId:item.id} : {});
+        const dialog = await activateOwnedAbility(ability,abilityId === "ability-basic-ranged" ? {rangedWeaponItemId:item.id} : {weaponItemId:item.id});
         if (dialog?.draft && "weaponItemUuid" in dialog.draft) {
           dialog.draft.weaponItemUuid = item.uuid;
           await dialog.render({force:true});

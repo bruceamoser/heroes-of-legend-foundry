@@ -141,6 +141,8 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       name: this.actor.name,
       failed: this.actor.getFlag(ID,"deathMarks") ?? this.actor.getFlag(ID,"survival")?.marks ?? 0,
       deathMarks: [1,2,3].map(value=>({value,filled:value <= (this.actor.getFlag(ID,"deathMarks") ?? this.actor.getFlag(ID,"survival")?.marks ?? 0)})),
+      weaponOptions: this.draft.abilityConfiguration?.weaponKind && !this.draft.abilityConfiguration.ranged
+        ? (await import("../services/attack-equipment.mjs")).attackEquipmentOptions(this.actor,this.draft.abilityConfiguration,this.draft.weaponItemId) : [],
       rangedWeaponOptions: this.draft.abilityConfiguration?.ranged
         ? (await import("../services/ranged-ammunition.mjs")).rangedWeaponOptions(this.actor,this.draft.rangedWeaponItemId) : [],
       death: this.mode === "death",
@@ -212,6 +214,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       partyPiece: checked("partyPiece"),
       lookOverHere: checked("lookOverHere"),
       referenceItemIds: readReferenceSelection(this.element),
+      weaponItemId: value("weaponItemId") ?? this.draft.weaponItemId,
       rangedWeaponItemId: value("rangedWeaponItemId") ?? this.draft.rangedWeaponItemId,
       defenseSubstitutionItemUuid: value("defenseSubstitutionItemUuid") ?? "",
       perception: Object.fromEntries(

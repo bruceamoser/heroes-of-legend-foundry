@@ -1617,7 +1617,7 @@ serially with `HOL_TEST_URL`, `HOL_TEST_ALLOW_WRITES=1` and
 - `npm run test:simple-turn-level`: Choose/Finish exclusivity, repeated/opposing and
   defeated-marked participant selection, Add/Remove level, negative DP warning,
   paid-ability refund/deletion and reload persistence.
-- `npm run test:wound-tables`: all seven native wound tables, player use without GM,
+- `npm run test:wound-tables`: native wound tables for all seven damage types, player use without GM,
   replay and Undo, including physical removal of embedded wound effects.
 - `npm run test:table-attacks`: two-client Adder declaration/defense/selected damage
   plus Poisoned, rendered token icon removal, native HUD conditions, ammunition

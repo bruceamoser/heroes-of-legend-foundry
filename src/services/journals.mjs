@@ -155,3 +155,23 @@ export async function localizeRuleLinks(root) {
   }
   bindLocalRuleLinks(root);
 }
+
+/** Recognize only the exact unedited decorative divider shipped before 2.3. */
+export function isLegacyBlankChapter(page,bookKey) {
+  if(!["player-rules","da-rules"].includes(bookKey)||page.getFlag(ID,"ruleSection")===undefined)return false;
+  const title=bookKey==="player-rules"?"Player’s Book":"Dungeon Architect’s Guide & Bestiary";
+  return page.text.content===`<section class="hol-journal-page hol-journal-section"><h1>${page.name}</h1><p>Heroes of Legend · ${title}</p></section>`;
+}
+/** Repair known untouched world dividers; never replace source pages or user edits. */
+export async function repairRuleChapterPages() {
+  if(!game.user.isGM||!game.users.activeGM?.isSelf)return {updated:0};
+  let updated=0;
+  for(const book of game.journal){
+    const key=book.getFlag(ID,"ruleBook")?.key;
+    const blank=book.pages.filter(page=>isLegacyBlankChapter(page,key));if(!blank.length)continue;
+    const source=(await game.packs.get(`${ID}.${key}`).getDocuments()).find(entry=>entry.getFlag(ID,"ruleBook")?.key===key);if(!source)continue;
+    const changes=blank.flatMap(page=>{const replacement=source.pages.get(page.id);return replacement?.getFlag(ID,"ruleSection")===page.getFlag(ID,"ruleSection")&&replacement.text.content.includes('class="hol-journal-page hol-journal-section"')&&replacement.text.content.includes('<nav ')?[{_id:page.id,"text.content":replacement.text.content}]:[];});
+    if(changes.length){await book.updateEmbeddedDocuments("JournalEntryPage",changes);updated+=changes.length;}
+  }
+  return {updated};
+}

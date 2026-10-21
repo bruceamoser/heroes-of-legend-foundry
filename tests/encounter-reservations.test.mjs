@@ -14,7 +14,7 @@ async function loadService(name, context, onWrite) {
       enqueueCharacterOperation: async (run) => run(),
       isCreationAuthority: () => true,
       writeAuthorityDocument: onWrite,
-    } : await import(new URL(specifier, url));
+    } : specifier === "./turn-end-conditions.mjs" ? {settleTurnConditions:async(actor,turnId)=>{context.turnSettlements??=[];context.turnSettlements.push({actor,turnId});return {turnId};},turnEndContent:()=>"Turn finished"} : await import(new URL(specifier, url));
     return new SyntheticModule(Object.keys(exports), function () {
       for (const [key, value] of Object.entries(exports)) this.setExport(key, value);
     }, { context });
@@ -89,16 +89,17 @@ test("potion admission refuses an existing attack/action or turn-phase reservati
 });
 
 
-test("explicit Finish turn ignores old reservations and never changes Actor HP or conditions", async () => {
+test("explicit Finish ignores old reservations and invokes its once-only condition settlement", async () => {
   const {startEncounter, chooseParticipant} = await import("../src/rules/encounter.mjs");
   const flags={encounter:chooseParticipant(startEncounter([{id:"hero",side:"players"}],[4,4,4]),"hero"),pendingPotion:"old",pendingTurnPhase:{actorUuid:"Actor.hero"},pendingAbility:"old"};
   const actor={uuid:"Actor.hero",type:"character",system:{health:{value:0}},testUserPermission:()=>true,getFlag:()=>({hp:2})};
-  const combat={documentName:"Combat",uuid:"Combat.test",combatants:new Map([["hero",{id:"hero",actor}]]),turns:[{id:"hero"}],getFlag:(_id,key)=>flags[key]};
+  const combat={documentName:"Combat",uuid:"Combat.test",combatants:new Map([["hero",{id:"hero",actor,getFlag:()=>"players"}]]),turns:[{id:"hero"}],getFlag:(_id,key)=>flags[key]};
+  combat.combatants.map=fn=>[...combat.combatants.values()].map(fn);
   const request={kind:"finish",combatUuid:combat.uuid,revision:flags.encounter.revision};
   const message={id:"finish",author:{id:"owner"},getFlag:(_id,key)=>key==="combatRequest"?request:null,async update(){}};
   const context=createContext({structuredClone,game:{messages:new Map([["finish",message]])},fromUuid:async()=>combat});
   const writes=[];
   const service=await loadService("combat",context,async(document,changes)=>{writes.push(document);for(const[key,value]of Object.entries(changes)){if(key==="flags.heroes-of-legend.encounter")flags.encounter=value;}});
   await service.resolveCombatRequest("finish");
-  assert.deepEqual(writes,[combat]);assert.equal(flags.encounter.current,null);assert.equal(actor.system.health.value,0);
+  assert.equal(context.turnSettlements.length,1);assert.equal(context.turnSettlements[0].actor,actor);assert.deepEqual(writes,[combat]);assert.equal(flags.encounter.current,null);assert.equal(actor.system.health.value,0);
 });

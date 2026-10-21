@@ -53,3 +53,5 @@ test('failed condition chat reports applied state and replay repairs chat withou
  await applyOwnedCondition(f.actor,'poisoned',1,{operationId:'retry'});assert.equal(f.effects.length,1);assert.match(warnings[0],/Condition applied/);assert.equal(f.messages.size,0);
  await applyOwnedCondition(f.actor,'poisoned',1,{operationId:'retry'});assert.equal(f.effects.length,1);assert.equal(f.messages.size,1);
 });
+
+test('repeated temporary Poisoned combines into one effect with its total rating',async()=>{const f=fixture();await applyOwnedCondition(f.actor,'poisoned',1,{operationId:'one',postChat:false});await applyOwnedCondition(f.actor,'poisoned',1,{operationId:'two',postChat:false});assert.equal(actorContributions(f.actor).length,1);assert.equal(actorContributions(f.actor)[0].rating,2);});

@@ -253,3 +253,7 @@ body.hol-theme #sidebar .message-content .hol-chat-card .hol-reference-rules :is
 
 .message-content:has(.hol-supply-chat) .dice-roll {display:none;}
 .message-content .hol-condition-chat .hol-chat-effect {padding:5px 6px;margin:0;}
+
+.message-content .hol-chat-trigger {font:11px/1.35 system-ui,sans-serif;padding:5px 6px;margin:0;border-bottom:1px solid #d6cdb9;}
+
+.message-content .hol-damage-chat td small {display:block;font:10px/1.25 system-ui,sans-serif;color:#6a6457;}

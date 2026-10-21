@@ -1,3 +1,4 @@
+import {reconcileTurnRoster} from "../rules/encounter.mjs";
 import { chooseCombatParticipant } from "../dialogs/turn-choice.mjs";
 import { finishCombatParticipant } from "../dialogs/turn-end.mjs";
 const ID="heroes-of-legend";
@@ -7,8 +8,8 @@ export class EncounterPanel extends foundry.applications.api.HandlebarsApplicati
  static PARTS={main:{template:`systems/${ID}/templates/encounter.hbs`,scrollable:[".hol-tool-content"]}};
  async _onClose(options){for(const [name,id]of this.hooks)Hooks.off(name,id);return super._onClose(options);}
  async _prepareContext(){
-  const state=this.combat.getFlag(ID,"encounter"),current=this.combat.combatants.get(state?.current);
-  return {currentName:current?(current.hidden&&!game.user.isGM?"Turn in progress":`${current.name}’s turn`):"Choose a turn",canFinish:Boolean(current&&(game.user.isGM||current.actor?.isOwner)),participants:this.combat.combatants.filter(c=>!(c.hidden&&!game.user.isGM)).map(c=>({id:c.id,name:c.name,img:c.img??c.actor?.img,active:state?.current===c.id,canChoose:!state?.current&&(game.user.isGM||c.actor?.isOwner)}))};
+  const saved=this.combat.getFlag(ID,"encounter"),state=saved?reconcileTurnRoster(saved,this.combat.combatants.filter(()=>true).map(c=>({id:c.id,side:c.getFlag?.(ID,"side")??(c.actor?.hasPlayerOwner?"players":"opposition")}))):null,current=this.combat.combatants.get(state?.current);
+  return {round:state?.round??1,currentName:current?(current.hidden&&!game.user.isGM?"Turn in progress":`${current.name}’s turn`):"Choose a turn",canFinish:Boolean(current&&(game.user.isGM||current.actor?.isOwner)),participants:this.combat.combatants.filter(c=>!(c.hidden&&!game.user.isGM)).map(c=>({id:c.id,name:c.name,img:c.img??c.actor?.img,active:state?.current===c.id,acted:(state?.acted??[]).includes(c.id),canChoose:!current&&!(state?.acted??[]).includes(c.id)&&(game.user.isGM||c.actor?.isOwner)}))};
  }
  async run(action){try{await action();}catch(error){ui.notifications.error(error.message);}}
  static async choose(event,target){await this.run(()=>chooseCombatParticipant(this.combat,target.dataset.id));}

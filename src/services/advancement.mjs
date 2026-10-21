@@ -92,7 +92,6 @@ async function apply(id) {
       : null;
   if (
     actor?.type !== "character" ||
-    actor.isToken ||
     actor.pack ||
     !message.author ||
     !actor.testUserPermission(message.author, "OWNER")

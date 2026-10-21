@@ -132,7 +132,7 @@ export class CreatureSheet extends CharacterSheet {
       hp.dataset.hpBound = "true";
       hp.addEventListener("change", async event => {
         try {
-          const value = hpInputValue(event.target.value, this.actor.system.health.max);
+          const value = hpInputValue(event.target.value, this.actor.system.health.max,this.actor.system.health.value);
         const {setOwnedHp} = await import("../services/documents.mjs");
         await setOwnedHp(this.actor, value);
         } catch(error) { ui.notifications.error(error.message); await this.render(); }

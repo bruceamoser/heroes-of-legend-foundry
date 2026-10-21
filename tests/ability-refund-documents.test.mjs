@@ -37,3 +37,7 @@ for(const timing of ['before','after'])test(`interrupted item deletion (${timing
 test('refund validates ownership before any credit or embedded deletion',async()=>{
  const f=await fixture({owner:false});await assert.rejects(f.api.resolveDevelopmentRequest('refund1'),/Unauthorized/);assert.equal(f.writes,0);assert.equal(f.deletions,0);assert.equal(f.flags.development.dp,-2);
 });
+
+test('owned synthetic token actors can add and remove a level without changing the base actor',async()=>{
+ const f=await fixture();f.actor.isToken=true;f.request.kind='addLevel';f.request.revision=0;await f.api.resolveDevelopmentRequest('refund1');assert.equal(f.flags.development.level,2);assert.equal(f.flags.development.dp,8);
+});

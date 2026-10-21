@@ -1,3 +1,4 @@
+import {settleTurnConditions,turnEndContent} from "./turn-end-conditions.mjs";
 import { createActionMessage, shouldProcessRequest } from "./authority.mjs";
 import { ensureAuthorityReady } from "./authority.mjs";
 import {
@@ -7,6 +8,7 @@ import {
 } from "./authority.mjs";
 import {
   startTurnSelection,
+  reconcileTurnRoster,
   selectTurn,
   finishSelectedTurn,
 } from "../rules/encounter.mjs";
@@ -95,23 +97,20 @@ async function apply(id, combatUuid) {
     throw new Error(
       "The encounter changed. Choose again.",
     );
-  let next;
+  let next,turnEnd;
   const participants = () => combat.combatants.map(c=>({id:c.id,side:combatSide(c)}));
   if (request.kind === "start") {
     if (state) throw new Error("This encounter has already started.");
     next = startTurnSelection(participants());
   } else if (request.kind === "choose") {
     if (!combat.combatants.has(request.id)) throw new Error("That participant is no longer in the encounter.");
-    const current = state ? structuredClone(state) : startTurnSelection(participants());
-    if (!current.roster.some(p=>p.id===request.id&&!p.withdrawn)) {
-      const combatant=combat.combatants.get(request.id);
-      current.roster=current.roster.filter(p=>p.id!==request.id);
-      current.roster.push({id:request.id,side:combatSide(combatant),withdrawn:false});
-    }
+    const current = state ? reconcileTurnRoster(state,participants()) : startTurnSelection(participants());
     next = selectTurn(current, request.id);
   } else if (request.kind === "finish") {
     if (!state) throw new Error("Choose a participant first.");
-    next = finishSelectedTurn(state);
+    const current=reconcileTurnRoster(state,participants());
+    turnEnd=await settleTurnConditions(actor,`${combat.id}-${state.serial}-${state.current}`,{author:message.author});
+    next = finishSelectedTurn(current);
   } else {
     if (!state) throw new Error("Choose a participant first.");
     if (request.mode !== "withdraw" && !combat.combatants.has(request.id)) throw new Error("Add the combatant first.");
@@ -136,6 +135,7 @@ async function apply(id, combatUuid) {
       authorId: message.author.id,
       request: JSON.stringify(request),
       revision: next.revision,
+      ...(turnEnd?{turnEnd}:{}),
     },
   };
   await writeAuthorityDocument(combat, commit);
@@ -154,6 +154,8 @@ async function presentResult(message, combat) {
     });
     return;
   }
+  const result=combat.getFlag(ID,"operationReceipts")?.[message.id]?.turnEnd;
+  if(result){await message.update({content:turnEndContent(result)});return;}
   const current=combat.combatants.get(state.current);
   await message.update({content:current ? `${foundry.utils.escapeHTML(current.name)}’s turn.` : kind === "finish" ? "Turn finished." : "Encounter ready."});
 }

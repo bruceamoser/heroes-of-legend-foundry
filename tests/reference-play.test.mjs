@@ -8,7 +8,7 @@ function fixture() {
   const actor = { uuid: "Actor.hero", name: "Hero", testUserPermission: () => true };
   const source = { path: "design/cards/winter-hold.md", sha256: "abc" };
   const item = { documentName: "Item", type: "ability", id: "winter", uuid: "Actor.hero.Item.winter",
-    name: "Winter Hold", actor, getFlag: (_, key) => key === "source" ? source : "pinned",
+    name: "Winter Hold", system:{activity:{rollMode:"none"},description:"Gain 1 Boon to Knowledge rolls."}, actor, getFlag: (_, key) => key === "source" ? source : "pinned",
     testUserPermission: () => true };
   actor.items = [item]; actor.items.get = id => actor.items.find(item => item.id === id);
   globalThis.game = { user, users: new Map([[user.id, user]]), scenes: { viewed: { tokens: [] } } };

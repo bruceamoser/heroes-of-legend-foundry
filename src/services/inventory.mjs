@@ -466,7 +466,7 @@ async function evaluateInventory(actor, pending) {
 
 function resultContent(actor, pending, result, recovered = false) {
   const escape=foundry.utils.escapeHTML;
-  const state=result.exhausted ? "Depleted" : result.after !== result.before ? `Not depleted · d${result.after}` : "Not depleted";
+  const state=supplyResultState(result);
   return `<section class="hol-chat-card hol-supply-chat"><p class="hol-chat-effect"><strong>${escape(actor.name)}</strong> used <strong>${escape(pending.target.name)}</strong></p><div class="hol-chat-bar"><span>d${result.before} · rolled <strong>${result.retained}</strong></span><strong>${state}</strong></div></section>`;
 }
 
@@ -818,7 +818,7 @@ export function consumeOwnedSupply(actor, item, {operationId = foundry.utils.ran
     let message = game.messages.get(record.messageId) ?? game.messages.find(message=>message.getFlag(ID,"supplyResult")?.operationId===operationId && message.getFlag(ID,"supplyResult")?.actorUuid===actor.uuid);
     if (!message) {
       const escape = foundry.utils.escapeHTML;
-      const state = record.exhausted ? "Depleted" : record.after !== record.before ? `Not depleted · d${record.after}` : "Not depleted";
+      const state = supplyResultState(record);
       const content = `<section class="hol-chat-card hol-supply-chat"><p class="hol-chat-effect"><strong>${escape(record.actorName)}</strong> used <strong>${escape(record.itemName)}</strong></p><div class="hol-chat-bar"><span>d${record.before} · rolled <strong>${record.retained}</strong></span><strong>${state}</strong></div></section>`;
       message = await ChatMessage.create({speaker:ChatMessage.getSpeaker({actor}),content,rolls:[foundry.dice.Roll.fromData(record.nativeRoll)],flags:{[ID]:{supplyResult:{...record,nativeRoll:undefined}}}});
       await actor.update({[`flags.${ID}.supplyActions.${operationId}.messageId`]:message.id});
@@ -827,5 +827,32 @@ export function consumeOwnedSupply(actor, item, {operationId = foundry.utils.ran
   });
   supplyQueues.set(actor.uuid,run);
   run.finally(()=>{if(supplyQueues.get(actor.uuid)===run)supplyQueues.delete(actor.uuid);}).catch(()=>{});
+  return run;
+}
+
+
+/** Keep the size change and the final depletion state distinct in the compact card. */
+export function supplyResultState(result) {
+  const changed=result.after!==result.before;
+  return `${changed ? `Moved down one size · d${result.before} → ${result.after ? `d${result.after}` : "0"} · ` : ""}${result.exhausted ? "Depleted" : "Not depleted"}`;
+}
+/** Manual correction after an accidental resupply. No roll or chat message. */
+export function depleteOwnedSupply(actor,item) {
+  if(!actor)return Promise.reject(new Error("Choose an owned supply item."));
+  const previous=supplyQueues.get(actor.uuid) ?? Promise.resolve();
+  const run=previous.catch(()=>{}).then(async()=>{
+    if(actor.pack || !actor.testUserPermission(game.user,"OWNER"))throw new Error("Choose an actor you own.");
+    item=actor.items.get(item?.id);
+    if(!item || item.type!=="equipment" || item.actor?.uuid!==actor.uuid)throw new Error("Choose an owned supply item.");
+    if(item.system.inventoryDie===0)return {status:"complete",changed:false};
+    activeInventoryDie(item.system.inventoryDie);
+    const items=actor.toObject().items,target=items.find(source=>source._id===item.id);
+    if(!target)throw new Error("This supply item is unavailable.");
+    target.system.inventoryDie=0;
+    const {updateOwnedDocument}=await import("./documents.mjs");
+    await updateOwnedDocument(actor,{items,[`flags.${ID}.inventoryRevision`]:(actor.getFlag(ID,"inventoryRevision")??0)+1});
+    return {status:"complete",changed:true};
+  });
+  supplyQueues.set(actor.uuid,run);run.finally(()=>{if(supplyQueues.get(actor.uuid)===run)supplyQueues.delete(actor.uuid);}).catch(()=>{});
   return run;
 }

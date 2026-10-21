@@ -26,7 +26,7 @@ test("native tracker manual spend uses existing action arithmetic and preserves 
  assert.throws(()=>spendParticipantBudget(combat,state,{id:"other",category:"main"},{},"bad"),/active participant/);
  assert.throws(()=>spendParticipantBudget(combat,state,{id:"hero",category:"free"},{},"bad"),/Choose Main/);
 });
-test("encounter presentation follows frozen roster sides and actual Actor visibility",async()=>{
+test("encounter presentation shows available actors without side or action tracking and preserves hidden actors",async()=>{
  const previousFoundry=globalThis.foundry,previousGame=globalThis.game,previousUI=globalThis.ui;
  globalThis.foundry={applications:{api:{ApplicationV2:class{},HandlebarsApplicationMixin:base=>base}}};globalThis.game={user:{isGM:false}};
  try{
@@ -37,8 +37,9 @@ test("encounter presentation follows frozen roster sides and actual Actor visibi
   const state={round:1,nextSide:"players",startingSide:"players",roster:[{id:"visible",side:"players",eligibleRound:1},{id:"private",side:"players",eligibleRound:1},{id:"hidden",side:"players",eligibleRound:1}],acted:[]};
   const collection={get:id=>combatants.find(c=>c.id===id),filter:predicate=>combatants.filter(predicate)};
   const app=Object.create(EncounterPanel.prototype);app.combat={combatants:collection,getFlag:()=>state};
-  let openingText;globalThis.ui={notifications:{info:message=>{openingText=message;}}};state.opening={total:12,faces:[3,4,5]};await EncounterPanel.opening.call(app);assert.match(openingText,/3 \+ 4 \+ 5/);
-  const context=await app._prepareContext();assert.deepEqual(context.sides[0].participants.map(p=>p.id),["visible","private"]);assert.equal(context.sides[1].participants.length,0);assert.equal(context.sides[0].participants[0].hp,0);assert.equal(context.sides[0].participants[1].hp,null);assert.equal(context.sides[0].ready,2);
+  const context=await app._prepareContext();assert.deepEqual(context.participants.map(p=>p.id),["visible","private"]);assert.equal(context.currentName,"Choose a turn");assert.equal(context.canFinish,false);assert.equal(context.budgets,undefined);
+  state.current="visible";const active=await app._prepareContext();assert.equal(active.currentName,"Visible’s turn");assert(active.participants.every(participant=>!participant.canChoose));
+
  }finally{globalThis.foundry=previousFoundry;globalThis.game=previousGame;globalThis.ui=previousUI;}
 });
 

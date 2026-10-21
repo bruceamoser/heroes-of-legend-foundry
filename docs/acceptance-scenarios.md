@@ -269,3 +269,21 @@ relay, with existing author permissions, but no approval gate or global lease.
 `scripts/check-explicit-actions.mjs` exercises the new native workflow. Earlier
 coordinator/automatic-defense/turn-tick runtime scripts describe superseded behavior
 and are historical diagnostics, not acceptance gates for this interaction model.
+
+## October 21 simplification acceptance (#234–#237)
+
+Action spending/counters and the earlier start/side/round encounter UI are superseded.
+The native acceptance scripts for this interaction model are:
+
+- `scripts/check-simple-turn-level.mjs`: Choose/Finish exclusivity, repeat participant,
+  Add/Remove level, negative DP validation, paid-ability refund and physical deletion.
+- `scripts/check-table-attacks.mjs`: Adder mixed damage/condition defense, selected
+  application, condition removal/icon visibility, ranged ammo validation/consumption,
+  direct consumables, non-damage results, no-roll text and compact dying dialog.
+- `scripts/check-table-sheets.mjs`: web/native market and inventory captures, supported
+  item controls, favorites, ammo assignment, language picker, sidebar links and creature
+  controls. Model-only checks do not establish web/native presentation parity.
+
+Each native fixture runs only in an explicitly isolated local world, records created
+IDs before further mutation, and reports cleanup and browser errors. Conditional prose
+is never guessed into effects; its explicit Apply dialog permits table interpretation.

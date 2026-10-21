@@ -9,7 +9,7 @@ export class HOLCombat extends foundry.documents.Combat {
       return this.startCombat();
     if (!this.getFlag("heroes-of-legend", "encounter").current) {
       ui.notifications.info(
-        "Choose an unacted participant from the indicated side.",
+        "Choose a participant.",
       );
       return this;
     }
@@ -21,7 +21,7 @@ export class HOLCombat extends foundry.documents.Combat {
   }
   async previousTurn() {
     ui.notifications.warn(
-      "Encounter history is preserved. Rewind needs a DA correction; it does not refund actions or effects automatically.",
+      "Finish the current turn, then choose another participant.",
     );
     return this;
   }
@@ -30,7 +30,7 @@ export class HOLCombat extends foundry.documents.Combat {
   }
   async rollInitiative() {
     ui.notifications.info(
-      "HOL uses one opening roll and side-selected turns. Start the encounter instead of rolling individual initiative.",
+      "Choose a participant in the encounter.",
     );
     return this;
   }

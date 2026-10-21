@@ -34,3 +34,9 @@ test('an open ability roll rejects changed attribute or outcomes before dice eva
   assert.throws(()=>assertAbilityConfiguration({...opened,attribute:'reason'},opened),/Reopen/);
   assert.throws(()=>assertAbilityConfiguration({...opened,outcomes:{strong:'7 physical damage.'}},opened),/Reopen/);
 });
+
+test('attack rolls recognize composite Type and signature Tags metadata',()=>{
+ for(const rules of [{details:[{label:'Type',value:'Magic / Attack'}]},{details:[{label:'Type',value:'Signature'}],notes:[{label:'Tags',text:'Magic / Attack'}]}]){
+  assert.equal(abilityRollConfiguration({system:{activity:{rollMode:'attribute',attribute:'agility'}}},{reference:{rules}}).attack,true);
+ }
+});

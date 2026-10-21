@@ -29,10 +29,8 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
     window: { resizable: true },
     form: { submitOnChange: false, closeOnSubmit: false },
     actions: {
-      resetActions: CharacterSheet.resetActions,
       addEquipment: CharacterSheet.addEquipment,
       removeEquipment: CharacterSheet.removeEquipment,
-      confirmEquipment: CharacterSheet.confirmEquipment,
       viewPortrait: CharacterSheet.viewPortrait,
       editImage: CharacterSheet.editPortrait,
       savePortrait: CharacterSheet.savePortrait,
@@ -65,12 +63,13 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
       removeCondition: CharacterSheet.removeCondition,
       applyConditionDamage: CharacterSheet.applyConditionDamage,
       advanceHero: CharacterSheet.advanceHero,
+      addLevel: CharacterSheet.addLevel,
+      removeLevel: CharacterSheet.removeLevel,
       createHero: CharacterSheet.createHero,
       openAbility: CharacterSheet.openAbility,
       closeReference: CharacterSheet.closeReference,
       referenceChoice: CharacterSheet.referenceChoice,
       addLanguage: CharacterSheet.addLanguage,
-      confirmLanguage: CharacterSheet.confirmLanguage,
       removeLanguage: CharacterSheet.removeLanguage,
       postReference: CharacterSheet.postReference,
       addShortcut: CharacterSheet.addShortcut,
@@ -85,7 +84,6 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
   };
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
-    context.actionUses = {main:0,maneuver:0,reaction:0,...this.actor.getFlag("heroes-of-legend", "actionUses")};
     const character = this.actor.type === "character";
     const {characterSheetView} = character ? await import("./character-view.mjs") : {};
     const {actorContributions} = character ? await import("../services/conditions.mjs") : {};
@@ -99,7 +97,7 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
       abilities: this.actor.items.filter((i) => i.type === "ability"),
       choices: catalogs.choices, inventory: catalogs.inventory, sheetState: !this.actor.isOwner && this.observerTab ? {...sheetState, tab:this.observerTab} : sheetState,
       craftingState: this.actor.getFlag("heroes-of-legend", "craftingState") ?? {},
-      survival: this.actor.getFlag("heroes-of-legend", "survival") ?? {},
+      survival: {...this.actor.getFlag("heroes-of-legend", "survival"),marks:this.actor.getFlag("heroes-of-legend", "deathMarks") ?? this.actor.getFlag("heroes-of-legend", "survival")?.marks ?? 0},
       wounds: Object.values(this.actor.getFlag("heroes-of-legend", "wounds") ?? {}),
     }) : {};
     if(character){
@@ -107,8 +105,7 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
       const manual=new Set(manualScarRecords(this.actor).map(record=>record.id));
       view.wounds=view.wounds.map(wound=>({...wound,manual:manual.has(wound.eventId),canTreat:this.actor.isOwner&&Boolean(wound.recoveryValue)&&(wound.recoveryProgress??0)<wound.recoveryValue,effectSummary:this.actor.effects.filter(effect=>effect.active&&!effect.getFlag("heroes-of-legend","retired")&&effect.getFlag("heroes-of-legend","woundEvent")===wound.eventId).map(effect=>effect.name).join(" · ")||"—"}));
       view.priorWounds=this.actor.getFlag("heroes-of-legend","survival")?.wounds ?? view.wounds.length;
-      const {localRulePage}=await import("../services/journals.mjs");
-      await Promise.all(view.traits.map(async trait=>{const record=catalogs.choices.find(record=>record.id===trait.id);if(!record?.source?.path)return;try{const page=await localRulePage(record.source.path);const html=document.createElement("div");html.innerHTML=await foundry.applications.ux.TextEditor.implementation.enrichHTML(page.text.content,{relativeTo:page,secrets:page.isOwner});const headings=[...html.querySelectorAll("h2")];const rules=headings.find(heading=>heading.textContent.trim()==="Rules");let node=rules?.nextElementSibling;while(node&&node.tagName!=="H2"){if(node.tagName==="P"&&!node.querySelector("strong")){trait.brief=node.textContent.trim();break;}node=node.nextElementSibling;}}catch(error){console.warn("heroes-of-legend | Trait summary",error.message);}}));
+
     }
     const defenses = character ? damageBasis(this.actor).passiveDefenses : null;
     const {CONDITION_KINDS} = character ? await import("../rules/conditions.mjs") : {};
@@ -165,10 +162,6 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
         .sort((a, b) => (a.sort ?? 0) - (b.sort ?? 0)),
     };
   }
-  static async resetActions() {
-    try { const {resetOwnedActions} = await import("../services/action-uses.mjs"); await resetOwnedActions(this.actor); await this.render(); }
-    catch(error) { ui.notifications.error(error.message); }
-  }
   async _onRender(context, options) {
     await super._onRender(context, options);
     if (this.actor.type !== "character") return;
@@ -222,6 +215,14 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
         const items = basis.items.map(item => item.id === id ? {...item, ...itemArrangement(item, prop, input.checked)} : item);
         await requestEquipment(this.actor, basis, items, basis.capacity);
       } catch (error) { ui.notifications.error(error.message); await this.render(); }
+    });
+    for (const select of root.querySelectorAll("[data-ammunition-for]")) select.addEventListener("change", async () => {
+      try {
+        const weapon=this.actor.items.get(select.dataset.ammunitionFor), ammo=select.value?this.actor.items.get(select.value):null;
+        if(weapon?.system.catalogId!=="item-ordinary-ranged-weapon")throw new Error("Choose a ranged weapon.");
+        if(select.value && (ammo?.system.catalogId!=="item-ammunition-bundle" || ammo.system.quantity<1 || ammo.system.inventoryDie<1))throw new Error("Choose available ammunition on this character.");
+        await updateOwnedDocument(weapon,{"flags.heroes-of-legend.ammunitionItemId":select.value});
+      }catch(error){ui.notifications.error(error.message);await this.render();}
     });
     for (const input of root.querySelectorAll("[data-quantity]")) input.addEventListener("change", async () => {
       try {
@@ -307,15 +308,16 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
     if (!item || !this.actor.isOwner) return;
     if (item.type === "equipment") {
       try {
+        if (target.dataset.supplyUse === "true") {
+          if(target.disabled)return;
+          target.disabled=true;
+          try {const {consumeOwnedSupply}=await import("../services/inventory.mjs");return await consumeOwnedSupply(this.actor,item,{});}
+          finally {target.disabled=false;}
+        }
         const {isHealingPotionItem} = await import("../services/potions.mjs");
         if (isHealingPotionItem(item)) {
           const {openPotionPreparation} = await import("../applications/potions.mjs");
           return openPotionPreparation(item, {bottleItemUuid: item.uuid});
-        }
-        if (target.dataset.supplyUse === "true") {
-          const {InventoryPanel} = await import("../applications/inventory.mjs");
-          await new InventoryPanel(this.actor,item.id).render({force:true});
-          return;
         }
         const {isMeleeWeaponEquipment} = await import("../rules/equipment-identity.mjs");
         const abilityId = isMeleeWeaponEquipment(item) ? "ability-basic-melee" : item.system.catalogId === "item-ordinary-ranged-weapon" ? "ability-basic-ranged" : item.system.catalogId === "item-ordinary-shield" ? "ability-shield-block" : null;
@@ -323,7 +325,7 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
         if (!ability) return item.sheet.render({force:true});
         if (abilityId === "ability-shield-block") return this.openShieldDefense(ability);
         const {activateOwnedAbility} = await import("../services/abilities.mjs");
-        const dialog = await activateOwnedAbility(ability);
+        const dialog = await activateOwnedAbility(ability,abilityId === "ability-basic-ranged" ? {rangedWeaponItemId:item.id} : {});
         if (dialog?.draft && "weaponItemUuid" in dialog.draft) {
           dialog.draft.weaponItemUuid = item.uuid;
           await dialog.render({force:true});
@@ -358,11 +360,11 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
     return dialog;
   }
   static async supply(event, target) {
-    const item = this.actor.items.get(target.closest("[data-item-id]")?.dataset.itemId);
-    if (item && this.actor.isOwner) {
-      const {InventoryPanel} = await import("../applications/inventory.mjs");
-      await new InventoryPanel(this.actor, item.id).render({force:true});
-    }
+    const item=this.actor.items.get(target.closest("[data-item-id]")?.dataset.itemId);
+    if(!item || !this.actor.isOwner || target.disabled)return;
+    target.disabled=true;
+    try {const {consumeOwnedSupply}=await import("../services/inventory.mjs");await consumeOwnedSupply(this.actor,item,{});}
+    catch(error){ui.notifications.error(error.message);}finally{if(target.isConnected)target.disabled=false;}
   }
   static async resupply(event, target) {
     try {
@@ -539,31 +541,19 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
   static async applyConditionDamage(event,target) {
     try {const {requestConditionApply} = await import("../services/condition-apply.mjs");await requestConditionApply(this.actor,target.dataset.key);} catch(error) {ui.notifications.error(error.message);}
   }
-  static async addLanguage() {
-    if (!this.actor.isOwner) return;
-    const {getCampaignLanguageConfiguration} = await import("../services/languages.mjs");
-    const definitions = getCampaignLanguageConfiguration().definitions;
-    const known = this.actor.getFlag("heroes-of-legend","development")?.languages ?? [];
-    const escape = foundry.utils.escapeHTML;
-    const panel = this.element.querySelector("[data-character-reference]");
-    panel.hidden = false;
-    panel.querySelector("[data-rule-content]").innerHTML = `<h2>Add language</h2><label>Language<select name="sheetLanguage"><option value="">Custom language</option>${definitions.filter(language => !known.some(entry => entry.id === language.id)).map(language => `<option value="${escape(language.id)}">${escape(language.name)}</option>`).join("")}</select></label><label>Name<input name="sheetLanguageName" maxlength="80"></label><div class="hol-character-columns"><label>Form<select name="sheetLanguageForm"><option value="spoken">Spoken</option><option value="signed">Signed</option></select></label><label><input name="sheetLanguageWritten" type="checkbox" checked> Read & write</label></div><button type="button" data-action="confirmLanguage">Add language</button>`;
-    const select = panel.querySelector("[name=sheetLanguage]");
-    select.addEventListener("change", () => {
-      const language = definitions.find(language => language.id === select.value);
-      if (!language) return;
-      panel.querySelector("[name=sheetLanguageName]").value = language.name;
-      panel.querySelector("[name=sheetLanguageForm]").value = language.form;
-    });
-  }
-  static async confirmLanguage() {
+  static async changeLevel(kind) {
+    if(!this.actor.isOwner)return;
     try {
-      const panel = this.element.querySelector("[data-character-reference]");
-      const {requestDevelopment} = await import("../services/advancement.mjs");
-      const language = {id:panel.querySelector("[name=sheetLanguage]").value || `language-${crypto.randomUUID()}`,name:panel.querySelector("[name=sheetLanguageName]").value,form:panel.querySelector("[name=sheetLanguageForm]").value,written:panel.querySelector("[name=sheetLanguageWritten]").checked};
-      await requestDevelopment(this.actor,"editLanguage",{revision:this.actor.getFlag("heroes-of-legend","development")?.revision ?? 0,language});
-      panel.hidden = true;
-    } catch(error) { ui.notifications.error(error.message); }
+      const {requestDevelopment,waitForDevelopmentOperation}=await import("../services/advancement.mjs");
+      const message=await requestDevelopment(this.actor,kind,{revision:this.actor.getFlag("heroes-of-legend","development")?.revision??0});
+      await waitForDevelopmentOperation(this.actor,message.id);await this.render();
+    }catch(error){ui.notifications.error(error.message);}
+  }
+  static async addLevel(){return CharacterSheet.changeLevel.call(this,"addLevel");}
+  static async removeLevel(){return CharacterSheet.changeLevel.call(this,"removeLevel");}
+  static async addLanguage() {
+    try {const {CharacterLanguagePicker}=await import("../applications/language-picker.mjs");await new CharacterLanguagePicker(this.actor).render({force:true});}
+    catch(error){ui.notifications.error(error.message);}
   }
   static async removeLanguage(event,target) {
     try {
@@ -592,30 +582,8 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
     }
   }
   static async addEquipment() {
-    try {
-      if (!this.actor.isOwner) throw new Error("Only this character's owner can add equipment.");
-      const sources = await equipmentCopyOptions();
-      if (!sources.length) throw new Error("No readable equipment sources are available.");
-      const escape = foundry.utils.escapeHTML;
-      const panel = this.element.querySelector("[data-character-reference]");panel.hidden = false;
-      panel.querySelector("[data-rule-content]").innerHTML = `<h2>Add item</h2><label>Item<select name="equipmentSourceUuid">${sources.map(source => `<option value="${escape(source.uuid)}">${escape(source.name)}</option>`).join("")}</select></label><label>Quantity<input name="equipmentQuantity" type="number" min="1" max="10000" step="1" value="1"></label><button type="button" data-action="confirmEquipment">Add item</button>`;
-    } catch(error) {ui.notifications.warn(error.message);}
-  }
-  static async confirmEquipment() {
-    try {
-      const panel = this.element.querySelector("[data-character-reference]");
-      const uuid = panel.querySelector("[name=equipmentSourceUuid]").value;
-      const quantity = Number(panel.querySelector("[name=equipmentQuantity]").value);
-      if (!Number.isSafeInteger(quantity) || quantity < 1 || quantity > 10000) throw new Error("Choose a whole quantity from 1 to 10,000.");
-      const source = await fromUuid(uuid), catalogs = await loadCatalogs();
-      const {equipmentEligibility} = await import("../rules/equipment-eligibility.mjs");
-      const id = source?.system.catalogId;
-      if (catalogs.inventory.equipment.some(record => record.id === id)) {
-        const result = equipmentEligibility(id,this.actor.items.filter(item => item.type === "ability").map(item => item.getFlag("heroes-of-legend","catalogId")));
-        if (!result.eligible) throw new Error(`Requires ${catalogs.choices.find(record => record.id === result.requiredAbilityId)?.name ?? result.requiredAbilityId}.`);
-      }
-      await copyEquipmentToActor(this.actor,uuid,{quantity});panel.hidden = true;
-    } catch(error) {ui.notifications.error(error.message);}
+    try {const {EquipmentMarket}=await import("../applications/equipment-market.mjs");await new EquipmentMarket(this.actor).render({force:true});}
+    catch(error){ui.notifications.error(error.message);}
   }
   static async removeEquipment(event,target) {
     try {const {removeEquipmentFromActor} = await import("../services/item-import.mjs");await removeEquipmentFromActor(this.actor,target.closest("[data-item-id]").dataset.itemId);} catch(error) {ui.notifications.error(error.message);}

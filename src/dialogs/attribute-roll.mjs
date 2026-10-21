@@ -65,6 +65,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       grit: SharedRollDialog.grit,
       roll: SharedRollDialog.roll,
       useAbility: SharedRollDialog.useAbility,
+      deathMark: SharedRollDialog.deathMark,
     },
   };
   static PARTS = {
@@ -127,7 +128,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
           ? this.basis.partyPiece
           : null,
       lookOverHere: this.mode === "defense" && Boolean(this.basis.incoming),
-      references: referencePickerOptions(this.actor, this.draft, {
+      references: this.mode === "death" ? [] : referencePickerOptions(this.actor, this.draft, {
         mode: this.mode,
         defenderTokenUuid: this.defenderTokenUuid,
       }),
@@ -136,6 +137,10 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
         key, name: game.i18n.localize(`HOL.Attributes.${key}`), selected: key === this.attributeKey,
       })),
       name: this.actor.name,
+      failed: this.actor.getFlag(ID,"deathMarks") ?? this.actor.getFlag(ID,"survival")?.marks ?? 0,
+      deathMarks: [1,2,3].map(value=>({value,filled:value <= (this.actor.getFlag(ID,"deathMarks") ?? this.actor.getFlag(ID,"survival")?.marks ?? 0)})),
+      rangedWeaponOptions: this.draft.abilityConfiguration?.ranged
+        ? (await import("../services/ranged-ammunition.mjs")).rangedWeaponOptions(this.actor,this.draft.rangedWeaponItemId) : [],
       death: this.mode === "death",
       gritAvailable: this.basis.survival?.gritAvailable,
       canGrit:
@@ -156,9 +161,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
         })) ?? [],
       defense: this.mode === "defense",
       notice: this.notice,
-      targetNotice: this.mode === "attack" ? this.basis.targetTokenUuid
-        ? `Target modifiers: ${fromUuidSync(this.basis.targetTokenUuid)?.name ?? "selected target"}. Damage is applied separately to selected tokens.`
-        : "No single target selected. Adjust Boons/Banes for the target when needed; select tokens when applying damage." : "",
+      targetNotice: this.mode === "attack" && this.basis.targetTokenUuid ? `Target: ${fromUuidSync(this.basis.targetTokenUuid)?.name ?? "selected target"}` : "",
       draft: this.draft,
       adjustmentLabel: netLabel(this.draft.adjustment),
       abilities: this.abilityOptions.map((option) => ({
@@ -171,7 +174,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
         yes: this.draft.perception[source] === "yes",
         no: this.draft.perception[source] === "no",
       })),
-      wounds: this.basis.woundModifiers.map((modifier, index) => ({
+      wounds: this.mode === "death" ? [] : this.basis.woundModifiers.map((modifier, index) => ({
         ...modifier,
         index,
         applies: this.draft.woundApplicability[modifier.effectId] === "applies",
@@ -207,6 +210,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       partyPiece: checked("partyPiece"),
       lookOverHere: checked("lookOverHere"),
       referenceItemIds: readReferenceSelection(this.element),
+      rangedWeaponItemId: value("rangedWeaponItemId") ?? this.draft.rangedWeaponItemId,
       defenseSubstitutionItemUuid: value("defenseSubstitutionItemUuid") ?? "",
       perception: Object.fromEntries(
         this.fears.map((source, index) => [
@@ -346,6 +350,16 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
     );
     this.preview();
   }
+  static async deathMark(event,target) {
+    try {
+      if (!this.actor.testUserPermission(game.user,"OWNER")) throw new Error("Only the character owner can change death marks.");
+      const selected=Number(target.dataset.marks), previous=this.actor.getFlag(ID,"deathMarks") ?? this.actor.getFlag(ID,"survival")?.marks ?? 0;
+      const marks=selected === previous ? Math.max(0,selected-1) : selected;
+      const {updateOwnedDocument}=await import("../services/documents.mjs");
+      await updateOwnedDocument(this.actor,{[`flags.${ID}.deathMarks`]:marks});
+      await this.render();
+    } catch(error) {ui.notifications.error(error.message);}
+  }
   static async grit() {
     try {
       const {requestRecovery} = await import("../services/recovery.mjs");
@@ -381,6 +395,8 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       this.element.querySelector('[data-action="roll"]').disabled = true;
       const message = await rollPrepared(this.actor, this.basis, this.draft);
       await this.close();
+      const {showAbilityOutcome}=await import("../services/roll.mjs");
+      showAbilityOutcome(message);
     } catch (e) {
       ui.notifications.error(e.message);
     } finally {
@@ -423,7 +439,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       if (!item) throw new Error("The reviewed ability is unavailable.");
       if (this.abilityOptions.find(option => option.itemId === item.id)?.active) {
         await removeDefenseBenefit(item);
-        this.notice = `${item.name} removed. Action counters remain editable with Reset actions.`;
+        this.notice = `${item.name} removed.`;
         return;
       }
       this.activating = true;
@@ -438,7 +454,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
                 ?.shieldItemUuid ?? null,
           })
         : await activateOwnedAbility(item);
-      this.notice = `${item.name} applied. Remove its effect or reset actions to correct it.`;
+      this.notice = `${item.name} applied.`;
     } catch (e) {
       this.notice = e.message;
       ui.notifications.error(e.message);

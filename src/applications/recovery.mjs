@@ -69,7 +69,7 @@ export class RecoveryPanel extends foundry.applications.api.HandlebarsApplicatio
         ),
       ),
       wounds: this.basis.survival?.wounds ?? 0,
-      marks: this.basis.survival?.marks ?? 0,
+      marks: this.actor.getFlag("heroes-of-legend","deathMarks") ?? this.basis.survival?.marks ?? 0,
       statuses: ["active", "dying", "stable", "lastWords", "dead"].map(
         (value) => ({
           value,

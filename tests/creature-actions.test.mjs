@@ -30,7 +30,7 @@ test("all 192 native profiles retain every typed source action and exact outcome
     }
   }
 });
-test("Red Dragon specialties keep defense orientation and never fabricate damage", () => {
+test("Red Dragon specialties retain defense orientation and expose only fixed printed effects", () => {
   const dragon = artifacts.documents.creatures.find(d => d.flags["heroes-of-legend"].catalogId === "creature-red-dragon");
   const breath = dragon.system.actions.entries.find(a => a.name === "Furnace breath");
   const bite = dragon.system.actions.entries.find(a => a.name === "Crushing bite");
@@ -41,7 +41,11 @@ test("Red Dragon specialties keep defense orientation and never fabricate damage
     assert(validReferenceAttack(reference));
     for (const tier of ["weak", "standard", "strong"]) {
       const result = incomingOutcome(reference, tier);
-      assert.deepEqual(result, { resolution: "reference", text: entry.outcomes[tier], applied: false });
+      assert.equal(result.text,entry.outcomes[tier]);assert.equal(result.applied,false);
+      if(result.resolution === "effects") {
+        assert(result.components.every(component=>Number.isSafeInteger(component.amount)));
+        if(entry === breath)assert(result.components.every(component=>component.type === "fire"));
+      } else assert.equal(result.resolution,"reference");
       assert.equal(Object.hasOwn(result, "damage"), false);
       assert.equal(Object.hasOwn(result, "type"), false);
     }

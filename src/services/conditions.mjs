@@ -50,9 +50,6 @@ export async function requestCondition(actor, kind, payload = {}) {
   await ensureAuthorityReady();
   return createActionMessage({
     content: "Condition adjustment requested.",
-    whisper: game.users
-      .filter((u) => u.isGM || u.id === game.user.id)
-      .map((u) => u.id),
     flags: {
       [ID]: {
         conditionRequest: {
@@ -68,9 +65,7 @@ export async function requestCondition(actor, kind, payload = {}) {
 export function resolveConditionRequest(id) {
   return enqueueCharacterOperation(() => apply(id), { requestId: id });
 }
-async function apply(id) {
-  const message = game.messages.get(id),
-    request = message?.getFlag(ID, "conditionRequest");
+async function apply(id, {message = game.messages.get(id), request = message?.getFlag(ID, "conditionRequest"), write = writeAuthorityDocument} = {}) {
   const actor =
     typeof request?.actorUuid === "string"
       ? await fromUuid(request.actorUuid)
@@ -106,6 +101,7 @@ async function apply(id) {
   const effects = actor.toObject().effects,
     active = actorContributions(actor);
   let createdId;
+  const previousCondition = active.find(c => c.id === request.effectId);
   if (request.kind === "add") {
     createdId = foundry.utils.randomID();
     const condition = {
@@ -113,7 +109,7 @@ async function apply(id) {
       key: request.key,
       rating: request.rating,
       persistence: request.persistence,
-      source: request.source,
+      source: request.source?.trim() || actor.name,
       order: Date.now(),
     };
     validateContributions([condition]);
@@ -133,6 +129,7 @@ async function apply(id) {
     if (request.kind === "remove") {
       effect.disabled = true;
       effect.statuses = [];
+      effect.showIcon = CONST.ACTIVE_EFFECT_SHOW_ICON.NEVER;
       effect.flags[ID].retired = { requestId: id, reason: "DA removed source" };
     } else if (request.kind === "adjust") {
       if (![-1,1].includes(request.delta)) throw new Error("Choose a one-step condition adjustment.");
@@ -140,6 +137,7 @@ async function apply(id) {
       if (rating <= 0) {
         effect.disabled = true;
         effect.statuses = [];
+        effect.showIcon = CONST.ACTIVE_EFFECT_SHOW_ICON.NEVER;
         effect.flags[ID].retired = {requestId:id,reason:"Manual condition rating reached zero"};
       } else {
         const adjusted = {...contribution,rating};
@@ -162,6 +160,7 @@ async function apply(id) {
       if (!result) {
         effect.disabled = true;
         effect.statuses = [];
+        effect.showIcon = CONST.ACTIVE_EFFECT_SHOW_ICON.NEVER;
         effect.flags[ID].retired = {
           requestId: id,
           reason: "Temporary rating reached zero",
@@ -194,18 +193,22 @@ async function apply(id) {
     strict: true,
     fallback: false,
   });
-  await writeAuthorityDocument(actor, changes);
+  await write(actor, changes);
   if (createdId && !actor.effects.has(createdId))
     throw new Error(
       "Condition effect needs reconciliation; do not apply it again.",
     );
-  await message.update({
-    content:
-      "Condition adjustment recorded. Sources remain available in the character's condition panel.",
-  });
+  const condition = request.kind === "add"
+    ? {key: request.key, rating: request.rating, persistence: request.persistence}
+    : effects.find(effect => effect._id === request.effectId)?.flags?.[ID]?.condition ?? previousCondition;
+  const removed = request.kind === "remove" || effects.find(effect => effect._id === request.effectId)?.disabled;
+  await message.update({content:conditionContent(actor,condition,removed ? "removed" : request.kind === "add" ? "applied" : "updated")});
   return { status: "complete", replay: false };
 }
 export function registerConditionRequests() {
+  Hooks.once("ready", () => {
+    void hideRetiredConditionIcons().catch(error => console.warn("heroes-of-legend | Condition icons",error.message));
+  });
   Hooks.on("createChatMessage", (message) => {
     if (message.getFlag(ID, "conditionRequest") && shouldProcessRequest(message))
       resolveConditionRequest(message.id).catch(async (e) => {
@@ -215,4 +218,60 @@ export function registerConditionRequests() {
         });
       });
   });
+}
+
+
+function conditionContent(actor,condition,verb) {
+  const escape=foundry.utils.escapeHTML,name=condition.key[0].toUpperCase()+condition.key.slice(1);
+  const rating=CONDITION_KINDS[condition.key]==="binary"?"":` ${condition.rating}${condition.persistence==="starred"?"*":""}`;
+  return `<section class="hol-chat-card hol-condition-chat"><p class="hol-chat-effect">${escape(actor.name)} · <strong>${escape(name)}${rating}</strong> ${verb}</p></section>`;
+}
+async function postOwnedCondition(actor,condition,operationId,content=conditionContent(actor,condition,"applied")) {
+  const existing=game.messages.find(message=>message.getFlag(ID,"conditionResult")?.operationId===operationId&&message.getFlag(ID,"conditionResult")?.actorUuid===actor.uuid);
+  if(existing)return existing;
+  try{return await ChatMessage.create({speaker:ChatMessage.getSpeaker({actor}),content,flags:{[ID]:{conditionResult:{actorUuid:actor.uuid,key:condition.key,rating:condition.rating,operationId}}}});}
+  catch(error){ui.notifications.warn(`Condition applied to ${actor.name}; chat could not be posted: ${error.message}`);return null;}
+}
+const conditionQueues = new Map();
+/** Explicit effect application used by Apply Damage; no GM or source input is required. */
+export function applyOwnedCondition(actor, key, rating = 1, {operationId = foundry.utils.randomID(), persistence = null, source = "", postChat = true} = {}) {
+  const previous = conditionQueues.get(actor.uuid) ?? Promise.resolve();
+  const run = previous.catch(() => {}).then(async () => {
+    if (!actor.testUserPermission(game.user,"OWNER") || actor.pack) throw new Error("Choose an actor you own.");
+    if (!Object.hasOwn(CONDITION_KINDS,key)) throw new Error("Unknown condition.");
+    if (!/^[A-Za-z0-9_-]{1,160}$/.test(operationId)) throw new Error("Invalid condition action identity.");
+    const kind = CONDITION_KINDS[key];
+    if (kind === "binary") rating = 1;
+    persistence ??= kind === "binary" ? "binary" : kind === "maintained" ? "maintained" : "temporary";
+    const prior = actor.getFlag(ID,"operationReceipts")?.[operationId];
+    if (prior?.applied) {
+      const saved = JSON.parse(prior.request);
+      if (saved.key !== key || saved.rating !== rating || saved.persistence !== persistence) throw new Error("This condition action has different values.");
+      if(postChat)await postOwnedCondition(actor,saved,operationId);
+      return {status:"complete",replay:true};
+    }
+    const request = {actorUuid:actor.uuid,kind:"add",key,rating,persistence,source:source || actor.name,revision:actor.getFlag(ID,"conditionRevision") ?? 0};
+    let presentation;
+    const result = await apply(operationId,{request,message:{author:game.user,update:async changes=>{presentation=changes.content;}},write:async(document,changes)=>{
+      const {updateOwnedDocument} = await import("./documents.mjs");
+      return updateOwnedDocument(document,changes);
+    }});
+    if (postChat) await postOwnedCondition(actor,request,operationId,presentation);
+    return result;
+  });
+  conditionQueues.set(actor.uuid,run);
+  run.finally(()=>{if(conditionQueues.get(actor.uuid)===run)conditionQueues.delete(actor.uuid);}).catch(()=>{});
+  return run;
+}
+
+/** Repair visual remnants of conditions removed by earlier versions. */
+export async function hideRetiredConditionIcons() {
+  const actors = new Map(game.actors.contents.map(actor=>[actor.uuid,actor]));
+  for (const scene of game.scenes) for (const token of scene.tokens) if(token.actor) actors.set(token.actor.uuid,token.actor);
+  for (const actor of actors.values()) {
+    if(!actor.testUserPermission(game.user,"OWNER"))continue;
+    const updates=actor.effects.filter(effect=>effect.getFlag(ID,"condition") && (effect.disabled || effect.getFlag(ID,"retired")) && effect.showIcon!==CONST.ACTIVE_EFFECT_SHOW_ICON.NEVER)
+      .map(effect=>({_id:effect.id,showIcon:CONST.ACTIVE_EFFECT_SHOW_ICON.NEVER}));
+    if(updates.length)await actor.updateEmbeddedDocuments("ActiveEffect",updates);
+  }
 }

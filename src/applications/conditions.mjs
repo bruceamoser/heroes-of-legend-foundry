@@ -11,7 +11,7 @@ export class ConditionPanel extends foundry.applications.api.HandlebarsApplicati
     super();
     this.actor = actor;
     this.key = key;
-    this.draft = { rating: 1, source: "DA ruling", persistence: "temporary" };
+    this.draft = { rating: 1, persistence: "temporary" };
     this.hook = Hooks.on("updateActor", (a) => {
       if (a.uuid === actor.uuid && this.rendered) this.render();
     });
@@ -21,7 +21,7 @@ export class ConditionPanel extends foundry.applications.api.HandlebarsApplicati
   }
   static DEFAULT_OPTIONS = {
     classes: ["heroes-of-legend", "hol-conditions"],
-    window: { title: "Condition sources", resizable: true },
+    window: { title: "Conditions", resizable: true },
     position: { width: 700, height: 650 },
     actions: {
       add: ConditionPanel.add,
@@ -81,7 +81,7 @@ export class ConditionPanel extends foundry.applications.api.HandlebarsApplicati
         this.element.querySelector(`[name=${name}]`)?.value;
       this.draft = {
         rating: Number(value("rating") ?? 1),
-        source: value("source") ?? "DA ruling",
+
         persistence: value("persistence") ?? "temporary",
       };
     });
@@ -112,7 +112,7 @@ export class ConditionPanel extends foundry.applications.api.HandlebarsApplicati
         key: this.key,
         rating: Number(value("rating")),
         persistence: value("persistence"),
-        source: value("source"),
+
       });
     } catch (e) {
       ui.notifications.error(e.message);

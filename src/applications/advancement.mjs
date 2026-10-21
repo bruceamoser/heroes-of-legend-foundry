@@ -26,6 +26,7 @@ import {
   eligibleFirst,
   purchaseEligibility,
   recipeStudyChoices,
+  refundableAbilityPurchase,
 } from "../rules/development.mjs";
 const ID = "heroes-of-legend";
 export class AdvancementWizard extends foundry.applications.api.HandlebarsApplicationMixin(
@@ -46,7 +47,8 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
       remove: AdvancementWizard.remove,
       chooseSignature: AdvancementWizard.chooseSignature,
       award: AdvancementWizard.award,
-      safePlace: AdvancementWizard.safePlace,
+      removeLevel: AdvancementWizard.removeLevel,
+      refundAbility: AdvancementWizard.refundAbility,
       commit: AdvancementWizard.commit,
       referenceChoice: AdvancementWizard.referenceChoice,
       closeReference: AdvancementWizard.closeReference,
@@ -158,6 +160,8 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
       isGM: game.user.isGM,
       authorityBound: Boolean(game.settings.get(ID, "creationAuthorityClient")),
       nextLevel: current.level + 1,
+      canRemoveLevel:current.level>1,
+      overspent:current.dp<0,
       stale: this.baseRevision !== (current.revision ?? 0),
       canCommit:
         this.preview.valid &&
@@ -167,7 +171,7 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
       grit: state.gritGranted,
       gritAvailable: Math.max(0,state.gritGranted-state.gritSpent),
       spent: state.gritSpent,
-      signatures: (current.pendingSignatures ?? []).map((level) => ({
+      signatures: (current.pendingSignatures ?? []).filter(level=>level<=current.level).map((level) => ({
         level,
         options: (get(current.classId)?.signatures[level] ?? []).map((id) => ({
           id,
@@ -184,7 +188,7 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
         let source=locked?"Earlier levels":index>=0?"Learned":"Granted";
         for(const kind of ["culture","background"]){const origin=get(current.creation?.[kind]?.id);if(origin?.pairs?.[current.creation?.[kind]?.pair]?.abilityId===id)source=origin.name;}
         if(id===current.creation?.signatureId)source=get(current.classId)?.name??source;
-        return {id,name:get(id)?.name??id,grantSource:source,locked,acquisition:this.preview.errors.some(error=>error.id===id)?acquisitions.find(a=>a.id===id):null,index,removable:index>=0};
+        return {id,name:get(id)?.name??id,grantSource:source,locked,refund:locked?refundableAbilityPurchase(current,id):null,acquisition:this.preview.errors.some(error=>error.id===id)?acquisitions.find(a=>a.id===id):null,index,removable:index>=0};
       }),
       disciplineFilters: choices.filter((r) => r.kind === "discipline"),
       disciplinePurchases: this.draft.purchases.map((p, index) => ({...p,index,name: get(p.id)?.name ?? p.id})).filter((p) => get(p.id)?.kind === "discipline"),
@@ -383,27 +387,22 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
   static async chooseSignature(event,target) {
     await this.act(async()=>{this.draft.signatures[target.dataset.level]=target.dataset.id;});
   }
-  static async award() {
+  static async award() { return AdvancementWizard.changeLevel.call(this,"addLevel"); }
+  static async removeLevel() { return AdvancementWizard.changeLevel.call(this,"removeLevel"); }
+  static async changeLevel(kind) {
     try {
-      const request = await requestDevelopment(this.actor, "award", {
-        level: Number(this.element.querySelector("[name=newLevel]").value),
-      });
+      const current=currentDevelopment(this.actor);
+      const request=await requestDevelopment(this.actor,kind,{revision:current.revision??0});
       await waitForDevelopmentOperation(this.actor,request.id);
       await AdvancementWizard.refresh.call(this);
-    } catch (e) {
-      ui.notifications.error(e.message);
-    }
+    } catch(error) {ui.notifications.error(error.message);}
   }
-  static async safePlace() {
+  static async refundAbility(event,target) {
     try {
-      const request = await requestDevelopment(this.actor, "safePlace", {
-        approved: this.element.querySelector("[name=safePlace]").checked,
-      });
+      const request=await requestDevelopment(this.actor,"refundAbility",{abilityId:target.dataset.id});
       await waitForDevelopmentOperation(this.actor,request.id);
       await AdvancementWizard.refresh.call(this);
-    } catch (e) {
-      ui.notifications.error(e.message);
-    }
+    } catch(error) {ui.notifications.error(error.message);}
   }
   static async commit() {
     if (this.committing) return;

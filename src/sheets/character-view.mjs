@@ -1,3 +1,4 @@
+import {equipmentSurface, attackFirst} from "./equipment-surface.mjs";
 import { workshopFavorites } from "../rules/workshop-resources.mjs";
 import { actionTiming } from "../rules/workshop-character.mjs";
 import { workshopNavIcon } from "./workshop-icons.mjs";
@@ -18,6 +19,7 @@ export function characterSheetView({ development = {}, equipment = [], abilities
     const timings = record?.reference ? actionTiming(record) : [{main:"Main Action",maneuver:"Maneuver",reaction:"Reaction",passive:"Passive"}[item.system.activity?.action] ?? "Other"];
     const printedAttribute = record?.reference?.rules.details.find(detail => detail.label === "Attribute")?.value ?? "—";
     return {
+    attack: Boolean(record?.reference?.rules?.details?.some(detail => detail.label === "Type" && detail.value.split(/\s*\/\s*/).includes("Attack")) || record?.reference?.rules?.notes?.some(note=>note.label === "Tags" && note.text.split(/\s*\/\s*/).includes("Attack"))),
     brief, attribute: (() => { const text=catalogId === "ability-opportunity-attack" ? records.get("ability-basic-melee")?.reference?.rules.details.find(detail=>detail.label === "Attribute")?.value ?? "" : printedAttribute; const key=["brawn","fortitude","agility","guile","knowledge","reason"].find(key=>text.toLowerCase().startsWith(key)); return key ? key[0].toUpperCase()+key.slice(1) : "—"; })(), timings,
     disciplineIds: (record?.requirements ?? []).filter(requirement => requirement.kind === "discipline").map(requirement => requirement.id).join(" "),
     id: item.id, name: item.name, system: item.system, catalogId: item.getFlag?.("heroes-of-legend", "catalogId") ?? item.catalogId,
@@ -31,7 +33,8 @@ export function characterSheetView({ development = {}, equipment = [], abilities
     const definition = inventory.equipment?.find((r) => r.id === item.system.catalogId);
     const instance=item.getFlag?.("heroes-of-legend","acquisitionInstance");
     const source=(development.items ?? []).find(record=>record.instanceId===instance)?.source ?? (instance === "creation-outfit" ? "creation" : instance?.startsWith("grant:") ? instance.split(":")[1] : instance?.startsWith("shop-") || instance?.startsWith("purchase:") ? "coins" : "play");
-    return { id: item.id, name: item.name, system: item.system, favorite: favorites.has(item.id),sourceLabel:({creation:"Starting outfit",coins:"Purchased",play:"Added"})[source] ?? name(source),
+    return { ...equipmentSurface(item,definition), id: item.id, name: item.name, system: item.system, favorite: favorites.has(item.id),sourceLabel:({creation:"Starting outfit",coins:"Purchased",play:"Added"})[source] ?? name(source),
+      ammunitionOptions: equipment.filter(ammo=>ammo.system.catalogId === "item-ammunition-bundle" && ammo.system.quantity > 0 && ammo.system.inventoryDie > 0).map(ammo=>({id:ammo.id,name:ammo.name,selected:ammo.id===item.getFlag?.("heroes-of-legend","ammunitionItemId")})),
       hasSupply: Boolean(definition?.inventoryDie || item.system.inventoryDie),
       supplyLabel: item.system.inventoryDie ? `d${item.system.inventoryDie}` : "Empty",
       bulk: item.system.quantity * item.system.bulk,
@@ -63,22 +66,22 @@ export function characterSheetView({ development = {}, equipment = [], abilities
     tabs, activeTab: active, mainTab: active === "main", characterTab: active === "character", abilitiesTab: active === "abilities", inventoryTab: active === "inventory", developmentTab: active === "development", craftingTab: active === "crafting",
     editMode: Boolean(sheetState.edit),
     identity: [name(creation.ancestryId), name(creation.culture?.id), name(creation.background?.id), name(development.classId ?? creation.classId)].filter(Boolean).join(" · "),
-    level: development.level ?? 0, dp: development.dp ?? 0, dpSpent: spent, dpTotal:total,
+    canRemoveLevel:(development.level??1)>1, overspent:(development.dp??0)<0, level: development.level ?? 0, dp: development.dp ?? 0, dpSpent: spent, dpTotal:total,
     signatureTiers: [1,3,7].map(tier => {const row = abilityRows.find(row => (cls?.signatures?.[tier] ?? []).includes(row.catalogId)); return {tier,id:row?.id,name:row?.name,available:(development.level ?? 1)>=tier,missing:!row && (development.level ?? 1)>=tier};}),
     abilityRows, equipmentRows, recipes: recipes.map(recipe => ({...recipe, project:craftingState[recipe.id], abilities:(recipe.permissions ?? []).map(id => abilityRows.find(row => row.catalogId === id)).filter(Boolean)})),
     passives: abilityRows.filter(row => row.timings.includes("Passive") && (sheetState.edit || !row.basic || row.shown)),
     basicAbilities: abilityRows.filter(row => row.basic),
-    learnedGroups: [["main", "Main Action"], ["maneuver", "Maneuver"], ["reaction", "Reaction"], ["passive", "Passive"], ["movement","Movement"], ["other","Other"]].map(([key,label]) => ({key,label,entries:abilityRows.filter(row => !row.basic && row.timings.includes(label))})),
+    learnedGroups: [["main", "Main Action"], ["maneuver", "Maneuver"], ["reaction", "Reaction"], ["passive", "Passive"], ["movement","Movement"], ["other","Other"]].map(([key,label]) => ({key,label,entries:attackFirst(abilityRows.filter(row => !row.basic && row.timings.includes(label)))})),
     disciplineFilters: choices.filter(record => record.kind === "discipline"),
     origins: [["Ancestry", creation.ancestryId], ["Culture", creation.culture?.id], ["Background", creation.background?.id]].map(([label,id]) => ({label,name:name(id)})),
     traits: (creation.traitIds ?? []).map(id => ({id,name:name(id),brief:records.get(id)?.reference?.flavor?.[0] ?? ""})),
     favorites: favoriteRows,
-    actionGroups: [["main", "Main Action"], ["maneuver", "Maneuver"], ["reaction", "Reaction"], ["movement","Movement"], ["other","Other"]].map(([key, label]) => ({ key, disclosureKey:key === "main" ? "main-action" : key, label, entries: abilityRows.filter((r) => r.timings.includes(label) && (sheetState.edit || !r.basic || r.shown)) })),
+    actionGroups: [["main", "Main Action"], ["maneuver", "Maneuver"], ["reaction", "Reaction"], ["movement","Movement"], ["other","Other"]].map(([key, label]) => ({ key, disclosureKey:key === "main" ? "main-action" : key, label, entries: attackFirst(abilityRows.filter((r) => r.timings.includes(label) && (sheetState.edit || !r.basic || r.shown))) })),
     ranks, rankPairs:Array.from({length:Math.ceil(ranks.length/2)},(_,index)=>({left:ranks[index*2],right:ranks[index*2+1]})),
     languages:(development.languages ?? []).map(language=>({...language,formLabel:language.form === "signed" ? "Signed" : language.permissions?.read && language.permissions?.write ? "Spoken & written" : "Spoken"})),
     signatures: abilityRows.filter((r) => records.get(r.catalogId)?.classId).map((r) => ({name:r.name})),
     ledger: creationLedger.map((entry) => ({...entry, label: entry.kind?.replaceAll("-", " ") ?? "Entry", sourceName: name(entry.sourceId), delta: entry.delta ?? 0, balance: entry.balance ?? 0})),
-    purchases: (development.ledger ?? []).filter(entry=>entry.level>1).map(entry=>({...entry,name:entry.kind === "award" ? "Level award" : name(entry.id),cost:entry.delta > 0 ? `+${entry.delta}` : entry.delta ?? 0})),
+    purchases: (development.ledger ?? []).filter(entry=>entry.level>1 || ["add-level","remove-level","refund"].includes(entry.kind)).map(entry=>({...entry,name:({award:"Level award","add-level":"Add level","remove-level":"Remove level","refund-ability":"Ability removed",refund:`Removed ${name(entry.id)}`})[entry.kind] ?? name(entry.id),cost:entry.delta > 0 ? `+${entry.delta}` : entry.delta ?? 0})),
     bulk: equipmentRows.filter(item => item.carried).reduce((sum, item) => sum + item.bulk, 0),
     wounds,
     marks: [1, 2, 3].map((value) => ({value, filled: (survival.marks ?? 0) >= value})),

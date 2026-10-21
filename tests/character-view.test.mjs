@@ -57,3 +57,20 @@ test("inventory sources retain portable acquisition provenance independently of 
  const view=characterSheetView({equipment:[item],choices:[{id:"ability-tools",name:"Trail Workshop"}],development:{items:[{instanceId:"grant:ability-tools:item-tools",source:"ability-tools"}]}});
  assert.equal(view.equipmentRows[0].sourceLabel,"Trail Workshop");assert.equal(view.equipmentRows[0].arrangement,"Held");
 });
+
+test("Main and Maneuver attack abilities sort before nonattack actions while retaining learned order",()=>{
+ const choices=[['non','Skill'],['attack','Attack']].map(([id,type])=>({id,reference:{rules:{details:[{label:'Action',value:'Main Action'},{label:'Type',value:type}],body:[]}}}));
+ const abilities=['non','attack'].map(catalogId=>({...ability(catalogId),catalogId}));
+ const view=characterSheetView({abilities,choices});
+ assert.deepEqual(view.actionGroups[0].entries.map(row=>row.id),['attack','non']);
+ assert.deepEqual(view.learnedGroups[0].entries.map(row=>row.id),['attack','non']);
+});
+test("equipment controls and ranged ammunition choices reflect supported live item usage",()=>{
+ const equipment=[{id:'bow',name:'Bow',getFlag:(_id,key)=>key==='ammunitionItemId'?'ammo':null,system:{catalogId:'item-ordinary-ranged-weapon',quantity:1,bulk:1,hands:2}}, {id:'ammo',name:'Arrows',system:{catalogId:'item-ammunition-bundle',quantity:1,bulk:1,inventoryDie:8}}, {id:'armor',name:'Armor',system:{catalogId:'item-ordinary-light-armor',quantity:1,bulk:1}}];
+ const inventory={equipment:[{id:'item-ordinary-ranged-weapon',handChoices:[2]},{id:'item-ammunition-bundle',handChoices:[],inventoryDie:8},{id:'item-ordinary-light-armor',handChoices:[]}]};
+ const view=characterSheetView({equipment,inventory});
+ assert.equal(view.equipmentRows[0].canHold,true);assert.equal(view.equipmentRows[0].canWear,false);
+ assert.deepEqual(view.equipmentRows[0].ammunitionOptions,[{id:'ammo',name:'Arrows',selected:true}]);
+ assert.equal(view.equipmentRows[1].canHold,false);assert.equal(view.equipmentRows[1].canWear,false);
+ assert.equal(view.equipmentRows[2].canHold,false);assert.equal(view.equipmentRows[2].canWear,true);
+});

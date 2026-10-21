@@ -10,7 +10,7 @@ export function advancementPreview(
   { knownLanguages } = {},
 ) {
   let state = structuredClone(current);
-  const errors = [],
+  const errors = current.dp < 0 ? [{code:"overspent",text:`Overspent by ${-current.dp} DP. Remove learned abilities to refund their cost.`}] : [],
     ledger = [];
   let maximumHpDelta = 0,
     gritDelta = 0;

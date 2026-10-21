@@ -1601,3 +1601,29 @@ Run these sequentially. Evidence and captures live under their corresponding
 selection tests and disables it for the player-only editing/import tests; this
 avoids the software-rendering warning obscuring the import button in headless CI.
 Do not infer full multiplayer coverage from a model or DOM test alone.
+
+### 2.2.0 table-control acceptance (October 21)
+
+`npm run check` passes 623 automated tests. The exact local 2.2.0 release ZIP was
+extracted into the isolated Foundry V14.369 world on port 30018; all packaged source
+modules and styles were byte-compared with the tested source. Native tests run
+serially with `HOL_TEST_URL`, `HOL_TEST_ALLOW_WRITES=1` and
+`HOL_TEST_ISOLATED_WORLD=1` explicitly set:
+
+- `npm run test:table-sheets`: rendered web/native inventory and market comparison,
+  favorites, attack ordering, supported item controls, ammunition assignment,
+  actual supply button, quantity affordability, purchase payment, language selection
+  and simplified character/creature controls.
+- `npm run test:simple-turn-level`: Choose/Finish exclusivity, repeated/opposing and
+  defeated-marked participant selection, Add/Remove level, negative DP warning,
+  paid-ability refund/deletion and reload persistence.
+- `npm run test:wound-tables`: native wound tables for all seven damage types, player use without GM,
+  replay and Undo, including physical removal of embedded wound effects.
+- `npm run test:table-attacks`: two-client Adder declaration/defense/selected damage
+  plus Poisoned, rendered token icon removal, native HUD conditions, ammunition
+  preflight/consumption, direct supplies, no-roll operative text, non-damage outcome
+  dialog and compact dying dialog with manual marks.
+
+These scenarios establish the listed interactions; they are not an assertion that
+every custom or conditional ability effect is automatically interpreted. Generated
+captures and JSON evidence are under `test-results/` and excluded from source Git.

@@ -63,11 +63,13 @@ export async function postAbilityReference(item) {
   if (!liveAbility(item) || !item.testUserPermission(game.user, "OWNER"))
     throw new Error("Only an owned ability can be posted to chat.");
   const escape = foundry.utils.escapeHTML;
+  const parsed = new DOMParser().parseFromString(String(item.system.description ?? ""),"text/html");
+  const operative = parsed.querySelector(".hol-reference-rules")?.innerHTML ?? parsed.body.innerHTML;
   const reference = { itemUuid: item.uuid, name: item.name,
     source: structuredClone(item.getFlag(ID, "source") ?? null),
     sourceCommit: item.getFlag(ID, "sourceCommit") ?? null,
-    damageText: new DOMParser().parseFromString(String(item.system.description ?? ""), "text/html").body.textContent };
-  const content = `<section class="hol-reference-card hol-chat-card"><header class="hol-chat-header"><h3><a class="content-link" data-link data-type="Item" data-uuid="${escape(item.uuid)}">${escape(item.name)}</a></h3></header><div class="hol-chat-bar">Ability reference</div><details class="hol-chat-details hol-reference-rules"><summary>Read complete rules</summary>${safeReferenceHTML(item.system.description)}</details></section>`;
+    damageText: new DOMParser().parseFromString(operative, "text/html").body.textContent };
+  const content = `<section class="hol-reference-card hol-chat-card"><header class="hol-chat-header"><h3>${escape(item.name)}</h3></header><div class="hol-chat-effect">${safeReferenceHTML(operative)}</div><footer class="hol-chat-footer"><a class="content-link" data-link data-type="Item" data-uuid="${escape(item.uuid)}">Full ability details</a></footer></section>`;
   return ChatMessage.create(ChatMessage.applyMode({
     speaker: ChatMessage.getSpeaker({ actor: item.actor }), content,
     flags: { [ID]: { abilityReference: reference } },

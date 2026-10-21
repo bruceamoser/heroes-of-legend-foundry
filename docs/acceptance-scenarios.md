@@ -320,3 +320,13 @@ actual roll to an unmodified pool while retaining the scar. Old completed wounds
 are repaired. The encounter panel and native tracker group Players/Creatures;
 GM's bottom End combat uses native confirmation. Add/Remove level in development
 must not create a false stale warning; genuine concurrent draft edits remain guarded.
+
+## Direct signature tier choice (#243)
+
+As a player owner, click Choose level 3 signature from the sheet: show only that
+class's level 3 options, choose, save, and return to the same sheet tab. Repeat for
+level 7 while level 3 is also pending. Grant exactly one native Item for the chosen
+signature; leave the other pending tier available, DP unchanged, and an unrelated
+saved purchase draft byte-for-byte unchanged. Reload and retain the grant. A
+foreign-class, already-owned, locked, stale-revision or unavailable-tier request
+must fail without adding Items. Generic Develop continues its separate draft flow.

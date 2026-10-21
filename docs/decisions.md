@@ -267,3 +267,11 @@ value leaves its scar but ceases mechanical effects. Encounter participants grou
 as players and creatures with End combat at the bottom. A character's own level
 change refreshes development without a false stale-ledger warning; real concurrent
 changes still require reviewing the latest character state.
+
+## Direct signature choices (#243)
+
+Bruce's character-sheet level 3/7 signature buttons open the corresponding class
+signature choice directly. This is a focused grant, separate from general learning:
+only the selected tier is saved, other pending tiers remain available, and unfinished
+purchase drafts are preserved without being committed by the signature button.
+Existing class/tier eligibility and acquisition rules remain authoritative.

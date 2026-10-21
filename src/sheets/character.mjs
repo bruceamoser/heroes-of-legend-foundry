@@ -67,6 +67,7 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
       removeCondition: CharacterSheet.removeCondition,
       applyConditionDamage: CharacterSheet.applyConditionDamage,
       advanceHero: CharacterSheet.advanceHero,
+      chooseClassSignature: CharacterSheet.chooseClassSignature,
       addLevel: CharacterSheet.addLevel,
       removeLevel: CharacterSheet.removeLevel,
       createHero: CharacterSheet.createHero,
@@ -500,6 +501,12 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
   static async advanceHero() {
     if (this.actor.isOwner)
       await new AdvancementWizard(this.actor).render({ force: true });
+  }
+  static async chooseClassSignature(event, target) {
+    if (!this.actor.isOwner) return;
+    const level=Number(target.dataset.level);
+    if (![3,7].includes(level)) return CharacterSheet.advanceHero.call(this);
+    await new AdvancementWizard(this.actor,{signatureLevel:level}).render({force:true});
   }
   static async createHero() {
     if (this.actor.isOwner)

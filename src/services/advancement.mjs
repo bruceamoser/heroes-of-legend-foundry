@@ -10,7 +10,7 @@ import {
 } from "./creation.mjs";
 import { loadCatalogs } from "./catalog.mjs";
 import { changeCharacterLevel, refundLearnedAbility } from "../rules/development.mjs";
-import { advancementPreview } from "../rules/advancement.mjs";
+import { advancementPreview, signatureChoicePreview } from "../rules/advancement.mjs";
 const ID = "heroes-of-legend";
 export function registerAdvancement() {
   Hooks.on("createChatMessage", (message) => {
@@ -104,6 +104,12 @@ async function apply(id) {
     await message.update({content:`${foundry.utils.escapeHTML(actor.name)} · Ability removed · ${currentDevelopment(actor).dp} DP`});
     return {status:"complete",replay:true};
   }
+  if (priorOperation?.kind === "chooseSignature") {
+    if(priorOperation.authorId!==message.author.id || priorOperation.request!==JSON.stringify(request))throw new Error("The saved signature request changed.");
+    if(priorOperation.createdIds.some(itemId=>!actor.items.has(itemId)))throw new Error("Signature needs Item reconciliation; do not repeat its grants.");
+    if(!priorOperation.applied)await actor.update({[`flags.${ID}.operationReceipts.${id}.applied`]:true});
+    return {status:"complete",replay:true};
+  }
   if (priorOperation?.applied) return {status:"complete",replay:true};
   const current = currentDevelopment(actor),
     changes = {};
@@ -124,6 +130,17 @@ async function apply(id) {
     if(!state.abilities.includes(request.abilityId))refundItemIds=actor.items.filter(item=>item.type==="ability"&&item.getFlag(ID,"catalogId")===request.abilityId).map(item=>item.id);
     if(request.abilityId==="ability-conditioned-body") {changes["system.health.baseMax"]=Math.max(1,actor.system.health.baseMax-1);changes["system.health.value"]=Math.min(actor.system.health.value,Math.max(1,actor.system.health.max-1));}
     if(request.abilityId==="ability-one-more-dawn") changes["system.grit.granted"]=Math.max(actor.system.grit.spent,actor.system.grit.granted-1);
+  } else if (request.kind === "chooseSignature") {
+    if(request.revision !== (current.revision ?? 0))throw new Error("Your character changed. Refresh the signature choices before saving.");
+    const catalogs=await loadCatalogs(), configuration=getCampaignLanguageConfiguration();
+    if(request.sourceCommit!==catalogs.commit || request.languageBasis!==configuration.basis)throw new Error("The character choices changed. Refresh before saving this signature.");
+    const preview=signatureChoicePreview(current,{level:request.level,id:request.signatureId,selection:request.selection},catalogs.choices,catalogs.inventory,configuration.definitions);
+    if(!preview.valid)throw new Error("Choose a valid class signature and complete its required choices.");
+    state=preview.state;
+    const newInventory=state.items.filter(item=>!current.items.some(old=>old.instanceId===item.instanceId));
+    const plan=buildCharacterItems(actor,state.abilities,newInventory,catalogs);
+    changes.items=plan.items;createdIds=plan.createdIds;
+    state.ledger=[...(current.ledger??[]),...preview.ledger.map(entry=>({...entry,operationId:message.id}))];
   } else if (request.kind === "commitDraft") {
     if (
       !/^[A-Za-z0-9]{16}$/.test(request.draftId ?? "") ||
@@ -211,8 +228,9 @@ async function apply(id) {
   state.revision = (current.revision ?? 0) + 1;
   changes[`flags.${ID}.development`] = state;
   changes[`flags.${ID}.operationReceipts.${message.id}`] = {
-    applied: request.kind!=="refundAbility",
+    applied: !["refundAbility","chooseSignature"].includes(request.kind),
     kind: request.kind,
+    ...(request.kind==="chooseSignature"?{authorId:message.author.id,request:JSON.stringify(request),createdIds}:{}),
     ...(request.kind==="refundAbility"?{authorId:message.author.id,request:JSON.stringify(request),stateCommitted:true,deleteItemIds:refundItemIds}:{}),
   };
   validateCreationChanges(actor, changes);
@@ -226,6 +244,10 @@ async function apply(id) {
     );
   await writeCharacterActor(actor, changes);
   if(request.kind==="refundAbility")await finishAbilityRefund(actor,message.id,changes[`flags.${ID}.operationReceipts.${message.id}`]);
+  if(request.kind === "chooseSignature") {
+    if(createdIds.some(itemId=>!actor.items.has(itemId)))throw new Error("Signature needs Item reconciliation; do not repeat its grants.");
+    await actor.update({[`flags.${ID}.operationReceipts.${id}.applied`]:true});
+  }
   if (request.kind === "commitDraft") {
     if (createdIds.some((id) => !actor.items.has(id)))
       throw new Error(

@@ -1652,6 +1652,9 @@ encounter. A valid active participant is never interrupted by roster reconciliat
 
 ### 2.3.1 character and table follow-up
 
+`npm run check` passes 666 tests, build and catalog validation. The 512-file
+release package is verified against current modules, styles and templates.
+
 `test:character-persistence` and `test:table-refinements` require the same explicit
 isolated localhost guards as other native suites. Evidence covers native legacy
 character migration (items, effects, Story, multiple copies), player token editing

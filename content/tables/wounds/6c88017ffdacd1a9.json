@@ -1,4 +1,5 @@
 {
+  "_key": "!tables!6c88017ffdacd1a9",
   "_id": "6c88017ffdacd1a9",
   "name": "Physical wounds",
   "img": "icons/svg/blood.svg",
@@ -17,6 +18,7 @@
   },
   "results": [
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.566bab291a482d14",
       "_id": "566bab291a482d14",
       "type": "text",
       "name": "111 · Face: split eyebrow; small break in eyebrow",
@@ -38,6 +40,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.39906cb885f20430",
       "_id": "39906cb885f20430",
       "type": "text",
       "name": "112 · Ear: nicked edge; small notch",
@@ -59,6 +62,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.3d8ddbca7538fac0",
       "_id": "3d8ddbca7538fac0",
       "type": "text",
       "name": "113 · Arm: shallow cut; thin upper-arm scar",
@@ -80,6 +84,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.e8921a0219fd4752",
       "_id": "e8921a0219fd4752",
       "type": "text",
       "name": "114 · Hand: cut knuckles; small scars",
@@ -101,6 +106,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.67f3d0b39e39ca0a",
       "_id": "67f3d0b39e39ca0a",
       "type": "text",
       "name": "115 · Torso: glancing cut; thin rib scar",
@@ -122,6 +128,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.e43521cf59dc1170",
       "_id": "e43521cf59dc1170",
       "type": "text",
       "name": "116 · Leg: scraped shin; scarred patch",
@@ -143,6 +150,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.69ab41768a9bccd1",
       "_id": "69ab41768a9bccd1",
       "type": "text",
       "name": "122 · Head: shallow scalp cut; break in hair growth",
@@ -164,6 +172,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.6e722b8834829995",
       "_id": "6e722b8834829995",
       "type": "text",
       "name": "123 · Face: split lip; fine scar",
@@ -185,6 +194,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.1c038aeb8002a1c4",
       "_id": "1c038aeb8002a1c4",
       "type": "text",
       "name": "124 · Shoulder: glancing cut; short scar",
@@ -206,6 +216,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.9508da206a357738",
       "_id": "9508da206a357738",
       "type": "text",
       "name": "125 · Forearm: abrasion; scarred patch",
@@ -227,6 +238,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.bfdee03a40a3e0be",
       "_id": "bfdee03a40a3e0be",
       "type": "text",
       "name": "126 · Foot: shallow cut; thin scar",
@@ -248,6 +260,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.d3b45dc4bfb63e15",
       "_id": "d3b45dc4bfb63e15",
       "type": "text",
       "name": "133 · Face: jagged cheek scar",
@@ -269,6 +282,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.8d74d7f56e6ec1a0",
       "_id": "8d74d7f56e6ec1a0",
       "type": "text",
       "name": "134 · Torso: shallow chest cut; visible scar",
@@ -290,6 +304,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.ea0585d326f97718",
       "_id": "ea0585d326f97718",
       "type": "text",
       "name": "135 · Leg: superficial injury; mild limp",
@@ -311,6 +326,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.f9f373e8a1bb6877",
       "_id": "f9f373e8a1bb6877",
       "type": "text",
       "name": "136 · Foot: superficial injury; uneven gait",
@@ -332,6 +348,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.a121262b6edb9fc1",
       "_id": "a121262b6edb9fc1",
       "type": "text",
       "name": "144 · Hand: shallow cut; obvious scar",
@@ -353,6 +370,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.adac731e1d3c5e82",
       "_id": "adac731e1d3c5e82",
       "type": "text",
       "name": "145 · Arm: shallow cut; broad scar",
@@ -374,6 +392,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.02ecefd937ed8613",
       "_id": "02ecefd937ed8613",
       "type": "text",
       "name": "146 · Face: jagged brow scar",
@@ -395,6 +414,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.54de11d5839111fa",
       "_id": "54de11d5839111fa",
       "type": "text",
       "name": "155 · Leg: superficial knee injury; mild limp",
@@ -416,6 +436,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.02c1373523da28e4",
       "_id": "02c1373523da28e4",
       "type": "text",
       "name": "156 · Scalp: ragged cut; scar and missing hair",
@@ -437,6 +458,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.5ffaa984ab20709d",
       "_id": "5ffaa984ab20709d",
       "type": "text",
       "name": "166 · Foot: painful heel injury; small scar and limp",
@@ -458,6 +480,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.7f3da27b8dfed46b",
       "_id": "7f3da27b8dfed46b",
       "type": "text",
       "name": "222 · Head: scalp cut",
@@ -479,6 +502,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.7914f02700964575",
       "_id": "7914f02700964575",
       "type": "text",
       "name": "223 · Arm: strained shoulder",
@@ -500,6 +524,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.e4ab1dad34e7658f",
       "_id": "e4ab1dad34e7658f",
       "type": "text",
       "name": "224 · Hand: split palm",
@@ -521,6 +546,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.e184d8d29a605b69",
       "_id": "e184d8d29a605b69",
       "type": "text",
       "name": "225 · Torso: heavy chest blow",
@@ -542,6 +568,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.4be3a9b08743401b",
       "_id": "4be3a9b08743401b",
       "type": "text",
       "name": "226 · Leg: injured knee",
@@ -563,6 +590,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.9cbe0509775f487f",
       "_id": "9cbe0509775f487f",
       "type": "text",
       "name": "233 · Face: cut brow",
@@ -584,6 +612,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.58a019caa1046fd5",
       "_id": "58a019caa1046fd5",
       "type": "text",
       "name": "234 · Arm: forearm injury",
@@ -605,6 +634,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.7b8d74ef786d8f62",
       "_id": "7b8d74ef786d8f62",
       "type": "text",
       "name": "235 · Hand: fractured finger",
@@ -626,6 +656,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.3953eb2673d840f9",
       "_id": "3953eb2673d840f9",
       "type": "text",
       "name": "236 · Back: wrenched back",
@@ -647,6 +678,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.44837327cca8f226",
       "_id": "44837327cca8f226",
       "type": "text",
       "name": "244 · Torso: deep flank cut",
@@ -668,6 +700,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.24c4c544a9c85c11",
       "_id": "24c4c544a9c85c11",
       "type": "text",
       "name": "245 · Leg: calf injury",
@@ -689,6 +722,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.133dd325f8799c08",
       "_id": "133dd325f8799c08",
       "type": "text",
       "name": "246 · Foot: fractured toe",
@@ -710,6 +744,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.7757608d7bbe00db",
       "_id": "7757608d7bbe00db",
       "type": "text",
       "name": "255 · Head: glancing injury",
@@ -731,6 +766,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.e380b7f12c70c37d",
       "_id": "e380b7f12c70c37d",
       "type": "text",
       "name": "256 · Leg: badly sprained knee",
@@ -752,6 +788,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.a901d13b86e22135",
       "_id": "a901d13b86e22135",
       "type": "text",
       "name": "266 · Foot: badly sprained ankle",
@@ -773,6 +810,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.7668153094140afa",
       "_id": "7668153094140afa",
       "type": "text",
       "name": "333 · Arm: deep shoulder wound",
@@ -794,6 +832,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.46921f8f4a420e15",
       "_id": "46921f8f4a420e15",
       "type": "text",
       "name": "334 · Hand: deep wound",
@@ -815,6 +854,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.68db7123ec20a2d6",
       "_id": "68db7123ec20a2d6",
       "type": "text",
       "name": "335 · Torso: heavy abdominal injury",
@@ -836,6 +876,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.9729c0bc4a5ca614",
       "_id": "9729c0bc4a5ca614",
       "type": "text",
       "name": "336 · Leg: deep thigh wound",
@@ -857,6 +898,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.9fa48af0c067eb69",
       "_id": "9fa48af0c067eb69",
       "type": "text",
       "name": "344 · Head: torn scalp",
@@ -878,6 +920,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.582ba59f163f63ef",
       "_id": "582ba59f163f63ef",
       "type": "text",
       "name": "345 · Back: torn muscles",
@@ -899,6 +942,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.9212d89b35c5b1d1",
       "_id": "9212d89b35c5b1d1",
       "type": "text",
       "name": "346 · Leg: torn knee ligaments",
@@ -920,6 +964,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.d526046c0792975f",
       "_id": "d526046c0792975f",
       "type": "text",
       "name": "355 · Head: heavy injury",
@@ -941,6 +986,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.b79719f6ed8aacd7",
       "_id": "b79719f6ed8aacd7",
       "type": "text",
       "name": "356 · Foot: deep heel wound",
@@ -962,6 +1008,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.bbb9cbeadddb7cce",
       "_id": "bbb9cbeadddb7cce",
       "type": "text",
       "name": "366 · Eye: injury",
@@ -983,6 +1030,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.88572d61f4d84a62",
       "_id": "88572d61f4d84a62",
       "type": "text",
       "name": "444 · Torso: deep tearing wound",
@@ -1004,6 +1052,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.c7d7012ac9b10be7",
       "_id": "c7d7012ac9b10be7",
       "type": "text",
       "name": "445 · Arm: severely torn shoulder",
@@ -1025,6 +1074,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.9d72dfdf0ccd24e1",
       "_id": "9d72dfdf0ccd24e1",
       "type": "text",
       "name": "446 · Hand: crushed hand",
@@ -1046,6 +1096,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.0f537650ae781a89",
       "_id": "0f537650ae781a89",
       "type": "text",
       "name": "455 · Leg: broken lower leg",
@@ -1067,6 +1118,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.dcdc679d93f7368e",
       "_id": "dcdc679d93f7368e",
       "type": "text",
       "name": "456 · Head: severe injury",
@@ -1088,6 +1140,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.a550a611be831149",
       "_id": "a550a611be831149",
       "type": "text",
       "name": "466 · Torso: broken ribs",
@@ -1109,6 +1162,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.23eae616a503f1fd",
       "_id": "23eae616a503f1fd",
       "type": "text",
       "name": "555 · Torso: extensive chest injury",
@@ -1130,6 +1184,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.32b575935d0b1cc8",
       "_id": "32b575935d0b1cc8",
       "type": "text",
       "name": "556 · Leg: shattered knee",
@@ -1151,6 +1206,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.408bf0297df9154f",
       "_id": "408bf0297df9154f",
       "type": "text",
       "name": "566 · Leg: loss of leg",
@@ -1172,6 +1228,7 @@
       }
     },
     {
+      "_key": "!tables.results!6c88017ffdacd1a9.6ea56ac7ce7c8b85",
       "_id": "6ea56ac7ce7c8b85",
       "type": "text",
       "name": "666 · Last Words",

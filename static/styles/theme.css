@@ -38,3 +38,26 @@ body.hol-theme #pause figcaption {font-family: "HOL Cinzel", serif; color: #f1e6
 #hol-landing-navigation button:focus-visible {outline: 2px solid #f1e6ce; outline-offset: 3px;}
 @media (max-width: 900px) {#hol-landing-navigation {left: 20px; right: 20px; transform: none; max-width: none; bottom: 100px;}}
 body.hol-theme #pause img {content: url("../assets/marks/crest.webp"); object-fit: contain; opacity: .8;}
+/* Only HOL-flagged wound tables receive this native-sheet skin. Client opt-out
+   removes these rules while retaining Foundry's ordinary RollTable controls. */
+body.hol-theme .application.hol-wound-table {
+  --color-text-primary:#28251c;--color-text-secondary:#6a6457;--color-text-emphatic:#15221c;
+  --color-text-subtle:#6a6457;--color-border:#d6cdb9;--color-border-light-primary:#d6cdb9;
+  --color-cool-5:#f7f3e9;--color-cool-4:#ede6d7;--input-background-color:#fffdf7;
+  background:#f7f3e9;color:#28251c;font:13px/1.35 Arial,sans-serif;
+}
+body.hol-theme .hol-wound-table .window-content {background:#f7f3e9;color:#28251c;gap:10px;padding:12px;}
+body.hol-theme .hol-wound-table .sheet-header {gap:8px;}
+body.hol-theme .hol-wound-table .sheet-header img {height:42px;width:42px;filter:sepia(1) brightness(.5);}
+body.hol-theme .hol-wound-table :is(h1,h4) {font-family:"HOL Cinzel",serif;color:#15221c;text-shadow:none;margin:0;}
+body.hol-theme .hol-wound-table h1 {font-size:21px;}
+body.hol-theme .hol-wound-table h4 {font-size:14px;color:#6a6457;}
+body.hol-theme .hol-wound-table p {margin:3px 0;}
+body.hol-theme .hol-wound-table table {border:1px solid #d6cdb9;background:transparent;}
+body.hol-theme .hol-wound-table thead {background:#24382e;color:#f1e6ce;}
+body.hol-theme .hol-wound-table tbody tr {background:#fffdf7;border-bottom:1px solid #d6cdb9;}
+body.hol-theme .hol-wound-table tbody tr:nth-child(even) {background:#f0eadc;}
+body.hol-theme .hol-wound-table tbody td {padding:5px;}
+body.hol-theme .hol-wound-table td.image img {width:26px;height:26px;filter:sepia(1) brightness(.5);}
+body.hol-theme .hol-wound-table :is(input,select,button) {color:#28251c;border-color:#b39253;}
+body.hol-theme .hol-wound-table .form-footer button {background:#24382e;color:#f1e6ce;}

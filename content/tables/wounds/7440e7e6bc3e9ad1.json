@@ -1,4 +1,5 @@
 {
+  "_key": "!tables!7440e7e6bc3e9ad1",
   "_id": "7440e7e6bc3e9ad1",
   "name": "Mental wounds",
   "img": "icons/svg/blood.svg",
@@ -17,6 +18,7 @@
   },
   "results": [
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.ecca12f5bfa9e264",
       "_id": "ecca12f5bfa9e264",
       "type": "text",
       "name": "111 · Vivid dreams recalling the event",
@@ -38,6 +40,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.1b3f5b9bb2ba3867",
       "_id": "1b3f5b9bb2ba3867",
       "type": "text",
       "name": "112 · Unease around an associated sound",
@@ -59,6 +62,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.7d0edfcc103f66ca",
       "_id": "7d0edfcc103f66ca",
       "type": "text",
       "name": "113 · Small gap in memory of the event",
@@ -80,6 +84,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.87ce9f922078ce8b",
       "_id": "87ce9f922078ce8b",
       "type": "text",
       "name": "114 · Comforting ritual",
@@ -101,6 +106,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.6fa4090c0f333f74",
       "_id": "6fa4090c0f333f74",
       "type": "text",
       "name": "115 · Hesitation discussing the event",
@@ -122,6 +128,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.4015794120c8411f",
       "_id": "4015794120c8411f",
       "type": "text",
       "name": "116 · Intense manner discussing danger",
@@ -143,6 +150,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.64f03cafb33b0f22",
       "_id": "64f03cafb33b0f22",
       "type": "text",
       "name": "122 · A familiar smell recalls the event",
@@ -164,6 +172,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.79c5d3a3d8242608",
       "_id": "79c5d3a3d8242608",
       "type": "text",
       "name": "123 · Preference for sitting near an exit",
@@ -185,6 +194,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.9aaa2b832f09fbd3",
       "_id": "9aaa2b832f09fbd3",
       "type": "text",
       "name": "124 · Occasional repeated phrase",
@@ -206,6 +216,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.fdbf3d95e84d96ef",
       "_id": "fdbf3d95e84d96ef",
       "type": "text",
       "name": "125 · A particular place feels unfamiliar",
@@ -227,6 +238,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.2a31b0bbf1437d50",
       "_id": "2a31b0bbf1437d50",
       "type": "text",
       "name": "126 · A keepsake acquires significance",
@@ -248,6 +260,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.8678bd5b3c1377ff",
       "_id": "8678bd5b3c1377ff",
       "type": "text",
       "name": "133 · Unsettling stare when discussing similar dangers",
@@ -269,6 +282,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.d05e7dd944c890a1",
       "_id": "d05e7dd944c890a1",
       "type": "text",
       "name": "134 · Changed taste associated with the event",
@@ -290,6 +304,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.9b523b62e80501af",
       "_id": "9b523b62e80501af",
       "type": "text",
       "name": "135 · Tremor when recalling the event",
@@ -311,6 +326,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.6b234906db4fd2e9",
       "_id": "6b234906db4fd2e9",
       "type": "text",
       "name": "136 · Occasional catch in the voice",
@@ -332,6 +348,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.ed73126f492f7c69",
       "_id": "ed73126f492f7c69",
       "type": "text",
       "name": "144 · Difficulty recalling an unimportant detail",
@@ -353,6 +370,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.1293736a41d32de0",
       "_id": "1293736a41d32de0",
       "type": "text",
       "name": "145 · Momentary mental disconnection",
@@ -374,6 +392,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.84899c1c8801f134",
       "_id": "84899c1c8801f134",
       "type": "text",
       "name": "146 · Unusually cold manner discussing the event",
@@ -395,6 +414,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.013747d9dfe01d99",
       "_id": "013747d9dfe01d99",
       "type": "text",
       "name": "155 · Sudden confusion",
@@ -416,6 +436,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.833d1ec9f4943f2d",
       "_id": "833d1ec9f4943f2d",
       "type": "text",
       "name": "156 · Overwhelming alarm",
@@ -437,6 +458,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.694f386549a02dda",
       "_id": "694f386549a02dda",
       "type": "text",
       "name": "166 · Interrupted awareness",
@@ -458,6 +480,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.d4ee5a2c8f838de5",
       "_id": "d4ee5a2c8f838de5",
       "type": "text",
       "name": "222 · Sudden terror",
@@ -479,6 +502,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.adda0c91b1f7d0c2",
       "_id": "adda0c91b1f7d0c2",
       "type": "text",
       "name": "223 · Scattered thoughts",
@@ -500,6 +524,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.0684ebed6eeb6e51",
       "_id": "0684ebed6eeb6e51",
       "type": "text",
       "name": "224 · Overwhelming alarm",
@@ -521,6 +546,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.556cfaa2f289d836",
       "_id": "556cfaa2f289d836",
       "type": "text",
       "name": "225 · Interrupted concentration",
@@ -542,6 +568,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.184d03f5c09cd38d",
       "_id": "184d03f5c09cd38d",
       "type": "text",
       "name": "226 · Distorted sense of distance",
@@ -563,6 +590,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.1d62aac602a0dd1d",
       "_id": "1d62aac602a0dd1d",
       "type": "text",
       "name": "233 · Phantom darkness",
@@ -584,6 +612,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.6bd5005ded929ca0",
       "_id": "6bd5005ded929ca0",
       "type": "text",
       "name": "234 · Broken train of thought",
@@ -605,6 +634,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.00662158e44804ee",
       "_id": "00662158e44804ee",
       "type": "text",
       "name": "235 · Fragmented recall",
@@ -626,6 +656,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.ce6ea2cbbc2da04d",
       "_id": "ce6ea2cbbc2da04d",
       "type": "text",
       "name": "236 · Confused sequencing",
@@ -647,6 +678,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.ef6939214cb125e0",
       "_id": "ef6939214cb125e0",
       "type": "text",
       "name": "244 · Fear of the injury's source",
@@ -668,6 +700,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.2c391a7452694426",
       "_id": "2c391a7452694426",
       "type": "text",
       "name": "245 · Disrupted coordination",
@@ -689,6 +722,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.71604808e07a4e1c",
       "_id": "71604808e07a4e1c",
       "type": "text",
       "name": "246 · Interrupted hearing",
@@ -710,6 +744,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.ee27c76db2803c74",
       "_id": "ee27c76db2803c74",
       "type": "text",
       "name": "255 · Disorientation",
@@ -731,6 +766,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.72490872fbfa8afd",
       "_id": "72490872fbfa8afd",
       "type": "text",
       "name": "256 · Disturbed bodily awareness",
@@ -752,6 +788,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.40115492260953cf",
       "_id": "40115492260953cf",
       "type": "text",
       "name": "266 · Sudden loss of balance",
@@ -773,6 +810,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.0ecac75d151f486d",
       "_id": "0ecac75d151f486d",
       "type": "text",
       "name": "333 · Fear disrupting thought",
@@ -794,6 +832,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.93d1a1ce1faa4fc4",
       "_id": "93d1a1ce1faa4fc4",
       "type": "text",
       "name": "334 · Sensory interruption",
@@ -815,6 +854,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.2cc9245b8e6d8ffd",
       "_id": "2cc9245b8e6d8ffd",
       "type": "text",
       "name": "335 · Violent disorientation",
@@ -836,6 +876,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.756a3d996d2fe097",
       "_id": "756a3d996d2fe097",
       "type": "text",
       "name": "336 · Fear disrupting coordination",
@@ -857,6 +898,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.338c465e206739ec",
       "_id": "338c465e206739ec",
       "type": "text",
       "name": "344 · Intense terror",
@@ -878,6 +920,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.0338b0a8a82bd230",
       "_id": "0338b0a8a82bd230",
       "type": "text",
       "name": "345 · Fragmented concentration",
@@ -899,6 +942,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.3b88a9a860efc1c7",
       "_id": "3b88a9a860efc1c7",
       "type": "text",
       "name": "346 · Interrupted bodily control",
@@ -920,6 +964,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.6277ce45f8d985e1",
       "_id": "6277ce45f8d985e1",
       "type": "text",
       "name": "355 · Mental overload",
@@ -941,6 +986,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.da75d643622d0111",
       "_id": "da75d643622d0111",
       "type": "text",
       "name": "356 · Disrupted movement",
@@ -962,6 +1008,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.f4ef7af6dd23b7ba",
       "_id": "f4ef7af6dd23b7ba",
       "type": "text",
       "name": "366 · Persistent hearing disruption",
@@ -983,6 +1030,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.d83e5aae0434a174",
       "_id": "d83e5aae0434a174",
       "type": "text",
       "name": "444 · Consuming fear and confusion",
@@ -1004,6 +1052,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.13973bb58f19a172",
       "_id": "13973bb58f19a172",
       "type": "text",
       "name": "445 · Severely fragmented thought",
@@ -1025,6 +1074,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.dd9e484fb079c0f6",
       "_id": "dd9e484fb079c0f6",
       "type": "text",
       "name": "446 · Severe sensory interruption",
@@ -1046,6 +1096,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.ae56fbbe8e0946fa",
       "_id": "ae56fbbe8e0946fa",
       "type": "text",
       "name": "455 · Interrupted bodily control",
@@ -1067,6 +1118,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.e3cf3f86f48304bd",
       "_id": "e3cf3f86f48304bd",
       "type": "text",
       "name": "456 · Mental shutdown",
@@ -1088,6 +1140,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.9e49a6d427228d92",
       "_id": "9e49a6d427228d92",
       "type": "text",
       "name": "466 · Persistent visual disruption",
@@ -1109,6 +1162,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.bb7fee9d2cdbc36c",
       "_id": "bb7fee9d2cdbc36c",
       "type": "text",
       "name": "555 · Overwhelming terror and fractured thought",
@@ -1130,6 +1184,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.1e9610a8463d9a67",
       "_id": "1e9610a8463d9a67",
       "type": "text",
       "name": "556 · Complete interruption of bodily control",
@@ -1151,6 +1206,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.cb3209f32d1a8a34",
       "_id": "cb3209f32d1a8a34",
       "type": "text",
       "name": "566 · Profound sensory disruption",
@@ -1172,6 +1228,7 @@
       }
     },
     {
+      "_key": "!tables.results!7440e7e6bc3e9ad1.874f1f5eaefa01f0",
       "_id": "874f1f5eaefa01f0",
       "type": "text",
       "name": "666 · Last Words",

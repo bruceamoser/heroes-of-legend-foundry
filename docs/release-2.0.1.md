@@ -14,3 +14,22 @@ Specialty effects remain explicit reference/manual resolution where no reviewed 
 ## Validation
 
 Acceptance includes automated tests and isolated Foundry 14.369 GM/player flows. The release record contains the final test totals and artifact verification. No live campaign was used for automated tests.
+
+The corrected candidate passed **605 automated tests**, including official
+compendium compile/extract comparison of all five tables and all 280 embedded
+results. Native checks on 14.369 proved stale busy/legacy checkpoint recovery,
+GM/player web import → Save → returned sheet → reload, player-owned damage and
+health correction, encounter start, numeric Scrap knife defense/damage and
+replay/reload protection. The character suite passed with 47 captures,
+including both clients' configured ability rolls, player safe-place confirmation,
+24px aligned supply controls and persistent advancement. Native wound checks
+proved all seven types, native table draws, GM UI Undo, and player roll/apply/Undo
+with the GM disconnected. Fixture cleanup and zero uncaught browser errors were
+checked. Narrow chat result cards measured about 194px; unobscured whole-message
+attack and defense captures were visually inspected.
+
+The first new table build lacked the CLI document keys and loaded an empty
+compendium. Native acceptance caught it before publication; the export and
+compile/extract regression now cover that failure. Some earlier character
+captures were occluded by overlapping test windows and are diagnostic, not visual
+acceptance; the final chat inspection uses unobscured captures.

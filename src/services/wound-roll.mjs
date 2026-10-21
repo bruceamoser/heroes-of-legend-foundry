@@ -107,6 +107,9 @@ export function undoCharacterWound(actor,operationId) {
   });
 }
 export function registerWoundChatActions(){
+  Hooks.on("renderRollTableSheet",(app,html)=>{
+    if(app.document?.getFlag(ID,"woundTable"))html.classList.add("hol-wound-table");
+  });
   Hooks.on("renderChatMessageHTML",(message,html)=>{
     const button=html.querySelector("[data-hol-wound-undo]");if(!button)return;
     const data=message.getFlag(ID,"woundResult");

@@ -1,4 +1,5 @@
 {
+  "_key": "!tables!9af6a14fbf01637b",
   "_id": "9af6a14fbf01637b",
   "name": "Radiant wounds",
   "img": "icons/svg/blood.svg",
@@ -17,6 +18,7 @@
   },
   "results": [
     {
+      "_key": "!tables.results!9af6a14fbf01637b.17c6db0bb6dbb128",
       "_id": "17c6db0bb6dbb128",
       "type": "text",
       "name": "111 · Brow: pale streak",
@@ -38,6 +40,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.881d21d427ae381e",
       "_id": "881d21d427ae381e",
       "type": "text",
       "name": "112 · Ear: bleached rim",
@@ -59,6 +62,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.82112e6da7c20391",
       "_id": "82112e6da7c20391",
       "type": "text",
       "name": "113 · Arm: branching pale marks",
@@ -80,6 +84,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.e20c8780b4095adb",
       "_id": "e20c8780b4095adb",
       "type": "text",
       "name": "114 · Hand: discolored fingertips",
@@ -101,6 +106,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.0e80ca1cf433193b",
       "_id": "0e80ca1cf433193b",
       "type": "text",
       "name": "115 · Torso: sunburst-shaped mark",
@@ -122,6 +128,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.00e27f719cd272bb",
       "_id": "00e27f719cd272bb",
       "type": "text",
       "name": "116 · Leg: pale shin streak",
@@ -143,6 +150,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.f757e26324c6e0c8",
       "_id": "f757e26324c6e0c8",
       "type": "text",
       "name": "122 · Scalp: permanently white hair patch",
@@ -164,6 +172,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.8e793e9fceb172de",
       "_id": "8e793e9fceb172de",
       "type": "text",
       "name": "123 · Face: pale cheek mark",
@@ -185,6 +194,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.9e74156d5e6b63c3",
       "_id": "9e74156d5e6b63c3",
       "type": "text",
       "name": "124 · Shoulder: discolored ring",
@@ -206,6 +216,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.6cf9fc52e75f6049",
       "_id": "6cf9fc52e75f6049",
       "type": "text",
       "name": "125 · Forearm: bright-looking fine scars",
@@ -227,6 +238,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.d5e665940eea3153",
       "_id": "d5e665940eea3153",
       "type": "text",
       "name": "126 · Foot: mottled discoloration",
@@ -248,6 +260,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.9194f40a15484c7f",
       "_id": "9194f40a15484c7f",
       "type": "text",
       "name": "133 · Face: conspicuous branching scar",
@@ -269,6 +282,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.7d1be0c7b02e1645",
       "_id": "7d1be0c7b02e1645",
       "type": "text",
       "name": "134 · Torso: broad bleached patch",
@@ -290,6 +304,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.8ba802c113346d1c",
       "_id": "8ba802c113346d1c",
       "type": "text",
       "name": "135 · Leg: tender scar and mild limp",
@@ -311,6 +326,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.d9139c153a0f82fc",
       "_id": "d9139c153a0f82fc",
       "type": "text",
       "name": "136 · Foot: sensitive scar and uneven gait",
@@ -332,6 +348,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.ac928cd165647cce",
       "_id": "ac928cd165647cce",
       "type": "text",
       "name": "144 · Hand: prominent palm mark",
@@ -353,6 +370,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.343435a8cd228184",
       "_id": "343435a8cd228184",
       "type": "text",
       "name": "145 · Arm: broad pale scar",
@@ -374,6 +392,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.d575b9708a0ca499",
       "_id": "d575b9708a0ca499",
       "type": "text",
       "name": "146 · Face: stark eye-area discoloration",
@@ -395,6 +414,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.17d0cb13f979806f",
       "_id": "17d0cb13f979806f",
       "type": "text",
       "name": "155 · Scalp: scarring and permanent hair loss",
@@ -416,6 +436,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.2d8a6d1f4f7b0c7f",
       "_id": "2d8a6d1f4f7b0c7f",
       "type": "text",
       "name": "156 · Eyes: searing afterimage and pale surrounding marks",
@@ -437,6 +458,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.5cedb6f92c21a9e8",
       "_id": "5cedb6f92c21a9e8",
       "type": "text",
       "name": "166 · Foot: painful radiant injury",
@@ -458,6 +480,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.546b49f1f15cf019",
       "_id": "546b49f1f15cf019",
       "type": "text",
       "name": "222 · Eyes: searing flash injury",
@@ -479,6 +502,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.1ae51367f356e51c",
       "_id": "1ae51367f356e51c",
       "type": "text",
       "name": "223 · Arm: deep shoulder injury",
@@ -500,6 +524,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.43c78a61473a0712",
       "_id": "43c78a61473a0712",
       "type": "text",
       "name": "224 · Hand: searing palm injury",
@@ -521,6 +546,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.a6c866234f47e08c",
       "_id": "a6c866234f47e08c",
       "type": "text",
       "name": "225 · Torso: radiant impact",
@@ -542,6 +568,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.ee4226c4335eb09b",
       "_id": "ee4226c4335eb09b",
       "type": "text",
       "name": "226 · Leg: damaged knee tissue",
@@ -563,6 +590,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.1f49abc897cfa03f",
       "_id": "1f49abc897cfa03f",
       "type": "text",
       "name": "233 · Eyes: overwhelming afterimages",
@@ -584,6 +612,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.5a6d54837154b5e6",
       "_id": "5a6d54837154b5e6",
       "type": "text",
       "name": "234 · Arm: deep forearm injury",
@@ -605,6 +634,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.7b20bbc1c4cdfbf2",
       "_id": "7b20bbc1c4cdfbf2",
       "type": "text",
       "name": "235 · Hand: damaged fingers",
@@ -626,6 +656,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.cbc152a1b8c08cc2",
       "_id": "cbc152a1b8c08cc2",
       "type": "text",
       "name": "236 · Head: sensory overload",
@@ -647,6 +678,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.9181c1350a5e952b",
       "_id": "9181c1350a5e952b",
       "type": "text",
       "name": "244 · Torso: searing flank injury",
@@ -668,6 +700,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.19e5b142aefa1098",
       "_id": "19e5b142aefa1098",
       "type": "text",
       "name": "245 · Leg: damaged calf tissue",
@@ -689,6 +722,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.180e1c29d06fff3c",
       "_id": "180e1c29d06fff3c",
       "type": "text",
       "name": "246 · Ears: disrupted hearing",
@@ -710,6 +744,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.ade3a480feb647c6",
       "_id": "ade3a480feb647c6",
       "type": "text",
       "name": "255 · Head: overwhelming exposure",
@@ -731,6 +766,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.5864b8d9f5cb116d",
       "_id": "5864b8d9f5cb116d",
       "type": "text",
       "name": "256 · Leg: extensive knee injury",
@@ -752,6 +788,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.31eeeda2471c2784",
       "_id": "31eeeda2471c2784",
       "type": "text",
       "name": "266 · Eyes: lingering visual interruption",
@@ -773,6 +810,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.852a1cc0f1d7f204",
       "_id": "852a1cc0f1d7f204",
       "type": "text",
       "name": "333 · Arm: deep radiant wound",
@@ -794,6 +832,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.e5490a646226bb42",
       "_id": "e5490a646226bb42",
       "type": "text",
       "name": "334 · Head: sensory overload",
@@ -815,6 +854,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.2c2a1e309918d578",
       "_id": "2c2a1e309918d578",
       "type": "text",
       "name": "335 · Torso: violent radiant impact",
@@ -836,6 +876,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.bfbb7a399afb9be7",
       "_id": "bfbb7a399afb9be7",
       "type": "text",
       "name": "336 · Leg: deep thigh injury",
@@ -857,6 +898,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.5a26e50da3b828e7",
       "_id": "5a26e50da3b828e7",
       "type": "text",
       "name": "344 · Eyes: prolonged afterimages",
@@ -878,6 +920,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.fe5ae0c77d6c3533",
       "_id": "fe5ae0c77d6c3533",
       "type": "text",
       "name": "345 · Back: extensive tissue injury",
@@ -899,6 +942,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.9e696c5cefbb785c",
       "_id": "9e696c5cefbb785c",
       "type": "text",
       "name": "346 · Leg: deep knee injury",
@@ -920,6 +964,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.d1ebafe02d517c40",
       "_id": "d1ebafe02d517c40",
       "type": "text",
       "name": "355 · Head: overwhelming light",
@@ -941,6 +986,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.4a15273f8918fa12",
       "_id": "4a15273f8918fa12",
       "type": "text",
       "name": "356 · Foot: deep heel injury",
@@ -962,6 +1008,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.53f590ba09fe64ab",
       "_id": "53f590ba09fe64ab",
       "type": "text",
       "name": "366 · Ears: lasting sensory damage",
@@ -983,6 +1030,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.3a142a20d1876bc8",
       "_id": "3a142a20d1876bc8",
       "type": "text",
       "name": "444 · Torso: deep searing injury",
@@ -1004,6 +1052,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.01b712ac7a810385",
       "_id": "01b712ac7a810385",
       "type": "text",
       "name": "445 · Arm: severe shoulder damage",
@@ -1025,6 +1074,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.6335f2b358125a41",
       "_id": "6335f2b358125a41",
       "type": "text",
       "name": "446 · Head: severe sensory overload",
@@ -1046,6 +1096,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.4a2ea21bc43d99b8",
       "_id": "4a2ea21bc43d99b8",
       "type": "text",
       "name": "455 · Leg: deep lower-leg injury",
@@ -1067,6 +1118,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.9d344b9cc462c9ca",
       "_id": "9d344b9cc462c9ca",
       "type": "text",
       "name": "456 · Head: radiant shock",
@@ -1088,6 +1140,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.c866e7c4547e4692",
       "_id": "c866e7c4547e4692",
       "type": "text",
       "name": "466 · Eyes: lasting visual damage",
@@ -1109,6 +1162,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.38e56e8ff5fb5f7d",
       "_id": "38e56e8ff5fb5f7d",
       "type": "text",
       "name": "555 · Torso: extensive searing destruction",
@@ -1130,6 +1184,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.0d9a05c9b1922adf",
       "_id": "0d9a05c9b1922adf",
       "type": "text",
       "name": "556 · Body: overwhelming radiant shock",
@@ -1151,6 +1206,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.a13f9a4927f846aa",
       "_id": "a13f9a4927f846aa",
       "type": "text",
       "name": "566 · Eyes: destruction of sight",
@@ -1172,6 +1228,7 @@
       }
     },
     {
+      "_key": "!tables.results!9af6a14fbf01637b.20b3ac569d2c993b",
       "_id": "20b3ac569d2c993b",
       "type": "text",
       "name": "666 · Last Words",

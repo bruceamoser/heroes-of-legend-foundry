@@ -1,4 +1,5 @@
 {
+  "_key": "!tables!2ba623b9784e6b6f",
   "_id": "2ba623b9784e6b6f",
   "name": "Life wounds",
   "img": "icons/svg/blood.svg",
@@ -17,6 +18,7 @@
   },
   "results": [
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.884e344060bf8831",
       "_id": "884e344060bf8831",
       "type": "text",
       "name": "111 · Face: small pallid patch",
@@ -38,6 +40,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.a1a6fae697330faf",
       "_id": "a1a6fae697330faf",
       "type": "text",
       "name": "112 · Ear: darkened edge",
@@ -59,6 +62,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.0006a34a68c55450",
       "_id": "0006a34a68c55450",
       "type": "text",
       "name": "113 · Arm: dark branching marks",
@@ -80,6 +84,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.ea01c93fc484aace",
       "_id": "ea01c93fc484aace",
       "type": "text",
       "name": "114 · Hand: discolored nails",
@@ -101,6 +106,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.2cfee6dc4690bd2e",
       "_id": "2cfee6dc4690bd2e",
       "type": "text",
       "name": "115 · Torso: sunken scar tissue",
@@ -122,6 +128,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.ec93f1c0207ae23e",
       "_id": "ec93f1c0207ae23e",
       "type": "text",
       "name": "116 · Leg: mottled shin skin",
@@ -143,6 +150,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.2b045feb3e3f2f68",
       "_id": "2b045feb3e3f2f68",
       "type": "text",
       "name": "122 · Scalp: lost or whitened hair",
@@ -164,6 +172,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.ce0a44c242554ab7",
       "_id": "ce0a44c242554ab7",
       "type": "text",
       "name": "123 · Face: hollowed cheek scar",
@@ -185,6 +194,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.1494a747a6cc90de",
       "_id": "1494a747a6cc90de",
       "type": "text",
       "name": "124 · Shoulder: prematurely aged skin",
@@ -206,6 +216,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.ce2fb0c4c5d155cb",
       "_id": "ce2fb0c4c5d155cb",
       "type": "text",
       "name": "125 · Forearm: dark veins around scar",
@@ -227,6 +238,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.aa1da993b0cafba1",
       "_id": "aa1da993b0cafba1",
       "type": "text",
       "name": "126 · Foot: discolored skin",
@@ -248,6 +260,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.0f25aeac50c9301f",
       "_id": "0f25aeac50c9301f",
       "type": "text",
       "name": "133 · Face: conspicuous withered scar",
@@ -269,6 +282,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.9e057642022beeeb",
       "_id": "9e057642022beeeb",
       "type": "text",
       "name": "134 · Torso: altered skin texture",
@@ -290,6 +304,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.7708e88e489f215e",
       "_id": "7708e88e489f215e",
       "type": "text",
       "name": "135 · Leg: mild limp",
@@ -311,6 +326,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.0323f1d7d922a46f",
       "_id": "0323f1d7d922a46f",
       "type": "text",
       "name": "136 · Foot: uneven gait",
@@ -332,6 +348,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.edd28935fdb9e812",
       "_id": "edd28935fdb9e812",
       "type": "text",
       "name": "144 · Hand: withered appearance",
@@ -353,6 +370,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.6731b726f86af19b",
       "_id": "6731b726f86af19b",
       "type": "text",
       "name": "145 · Arm: visible tissue loss beneath scar",
@@ -374,6 +392,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.9741fdba834c39fa",
       "_id": "9741fdba834c39fa",
       "type": "text",
       "name": "146 · Face: stark eye-area discoloration",
@@ -395,6 +414,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.a544b06be0de9781",
       "_id": "a544b06be0de9781",
       "type": "text",
       "name": "155 · Leg: localized wasting",
@@ -416,6 +436,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.a511a3ce90c6ca3d",
       "_id": "a511a3ce90c6ca3d",
       "type": "text",
       "name": "156 · Body: momentary vitality loss",
@@ -437,6 +458,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.fd656a792fbed5e3",
       "_id": "fd656a792fbed5e3",
       "type": "text",
       "name": "166 · Foot: weakened heel",
@@ -458,6 +480,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.4f4317421ca51e09",
       "_id": "4f4317421ca51e09",
       "type": "text",
       "name": "222 · Head: sudden draining shock",
@@ -479,6 +502,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.d69da849067ec45e",
       "_id": "d69da849067ec45e",
       "type": "text",
       "name": "223 · Arm: weakened shoulder",
@@ -500,6 +524,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.4386e1ffabcbbe97",
       "_id": "4386e1ffabcbbe97",
       "type": "text",
       "name": "224 · Hand: drained tissue",
@@ -521,6 +546,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.4a53148cb618af89",
       "_id": "4a53148cb618af89",
       "type": "text",
       "name": "225 · Torso: loss of bodily strength",
@@ -542,6 +568,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.1c5a1441d2de0ab1",
       "_id": "1c5a1441d2de0ab1",
       "type": "text",
       "name": "226 · Leg: weakened knee",
@@ -563,6 +590,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.1cc71e5991bd5ff5",
       "_id": "1cc71e5991bd5ff5",
       "type": "text",
       "name": "233 · Eyes: loss of visual function",
@@ -584,6 +612,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.7496523af2eab4ae",
       "_id": "7496523af2eab4ae",
       "type": "text",
       "name": "234 · Arm: weakened forearm",
@@ -605,6 +634,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.410a608140fa07c6",
       "_id": "410a608140fa07c6",
       "type": "text",
       "name": "235 · Hand: stiffened fingers",
@@ -626,6 +656,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.0447db22b8e8232b",
       "_id": "0447db22b8e8232b",
       "type": "text",
       "name": "236 · Head: disrupted awareness",
@@ -647,6 +678,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.de5de0e2d37db5ee",
       "_id": "de5de0e2d37db5ee",
       "type": "text",
       "name": "244 · Torso: draining spasm",
@@ -668,6 +700,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.228985673ce1d8fa",
       "_id": "228985673ce1d8fa",
       "type": "text",
       "name": "245 · Leg: weakened calf",
@@ -689,6 +722,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.0309f17c3eb15ee7",
       "_id": "0309f17c3eb15ee7",
       "type": "text",
       "name": "246 · Foot: weakened sole",
@@ -710,6 +744,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.b07c3bf81d96acc0",
       "_id": "b07c3bf81d96acc0",
       "type": "text",
       "name": "255 · Body: sudden weakness",
@@ -731,6 +766,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.9d5a254ea8a23705",
       "_id": "9d5a254ea8a23705",
       "type": "text",
       "name": "256 · Leg: extensive knee weakness",
@@ -752,6 +788,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.e5d5d22e7b81940d",
       "_id": "e5d5d22e7b81940d",
       "type": "text",
       "name": "266 · Foot: extensive ankle weakness",
@@ -773,6 +810,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.9242665e99260b75",
       "_id": "9242665e99260b75",
       "type": "text",
       "name": "333 · Arm: deep vitality loss",
@@ -794,6 +832,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.f187d9aabf8ad9b1",
       "_id": "f187d9aabf8ad9b1",
       "type": "text",
       "name": "334 · Hand: withered tissue",
@@ -815,6 +854,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.c2d8b143b2875c27",
       "_id": "c2d8b143b2875c27",
       "type": "text",
       "name": "335 · Torso: draining collapse",
@@ -836,6 +876,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.35fb19d4685658bb",
       "_id": "35fb19d4685658bb",
       "type": "text",
       "name": "336 · Leg: weakened thigh",
@@ -857,6 +898,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.c56a3af750f93efa",
       "_id": "c56a3af750f93efa",
       "type": "text",
       "name": "344 · Body: interrupted bodily control",
@@ -878,6 +920,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.7a2297aa2cfb7f4a",
       "_id": "7a2297aa2cfb7f4a",
       "type": "text",
       "name": "345 · Back: wasting muscles",
@@ -899,6 +942,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.3beb4391b1251609",
       "_id": "3beb4391b1251609",
       "type": "text",
       "name": "346 · Leg: deep strength loss",
@@ -920,6 +964,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.607fa92c8df70293",
       "_id": "607fa92c8df70293",
       "type": "text",
       "name": "355 · Head: severe draining shock",
@@ -941,6 +986,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.77fcbcd378d09959",
       "_id": "77fcbcd378d09959",
       "type": "text",
       "name": "356 · Foot: wasted heel tissue",
@@ -962,6 +1008,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.764da7cd1815f491",
       "_id": "764da7cd1815f491",
       "type": "text",
       "name": "366 · Ears: lasting sensory impairment",
@@ -983,6 +1030,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.672dc72df2064c8e",
       "_id": "672dc72df2064c8e",
       "type": "text",
       "name": "444 · Body: severe interruption of vitality",
@@ -1004,6 +1052,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.279d2f93f97ff058",
       "_id": "279d2f93f97ff058",
       "type": "text",
       "name": "445 · Arm: severely withered shoulder",
@@ -1025,6 +1074,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.199ba0907d5c83f5",
       "_id": "199ba0907d5c83f5",
       "type": "text",
       "name": "446 · Hand: deep tissue wasting",
@@ -1046,6 +1096,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.f872bfac5df190d3",
       "_id": "f872bfac5df190d3",
       "type": "text",
       "name": "455 · Leg: severe strength loss",
@@ -1067,6 +1118,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.3a8921450f3b4fac",
       "_id": "3a8921450f3b4fac",
       "type": "text",
       "name": "456 · Head: profound draining shock",
@@ -1088,6 +1140,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.8dd88d613e27cbe9",
       "_id": "8dd88d613e27cbe9",
       "type": "text",
       "name": "466 · Eyes: persistent visual impairment",
@@ -1109,6 +1162,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.128d328e40b72c76",
       "_id": "128d328e40b72c76",
       "type": "text",
       "name": "555 · Torso: extensive tissue wasting",
@@ -1130,6 +1184,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.4ad2b98f84c89f91",
       "_id": "4ad2b98f84c89f91",
       "type": "text",
       "name": "556 · Body: near-total bodily interruption",
@@ -1151,6 +1206,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.becafbf7eb63a80e",
       "_id": "becafbf7eb63a80e",
       "type": "text",
       "name": "566 · Leg: irrecoverably withered leg",
@@ -1172,6 +1228,7 @@
       }
     },
     {
+      "_key": "!tables.results!2ba623b9784e6b6f.b054771606599da8",
       "_id": "b054771606599da8",
       "type": "text",
       "name": "666 · Last Words",

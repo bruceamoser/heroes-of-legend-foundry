@@ -1,4 +1,5 @@
 {
+  "_key": "!tables!f4e7df5fcb4f1327",
   "_id": "f4e7df5fcb4f1327",
   "name": "Elemental wounds",
   "img": "icons/svg/blood.svg",
@@ -17,6 +18,7 @@
   },
   "results": [
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.849bce6c2d991344",
       "_id": "849bce6c2d991344",
       "type": "text",
       "name": "111 · Scalp: scarring and permanent hair loss",
@@ -38,6 +40,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.02212c9b1d61db08",
       "_id": "02212c9b1d61db08",
       "type": "text",
       "name": "112 · Ear: uneven scarred edge",
@@ -59,6 +62,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.56b4a2e45d91be52",
       "_id": "56b4a2e45d91be52",
       "type": "text",
       "name": "113 · Arm: branching or mottled discoloration",
@@ -80,6 +84,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.80e478acae618493",
       "_id": "80e478acae618493",
       "type": "text",
       "name": "114 · Hand: contrasting scar patches",
@@ -101,6 +106,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.2fe381e4779ff80a",
       "_id": "2fe381e4779ff80a",
       "type": "text",
       "name": "115 · Torso: broad discolored patch",
@@ -122,6 +128,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.fdbd1e6e92c3a353",
       "_id": "fdbd1e6e92c3a353",
       "type": "text",
       "name": "116 · Leg: scar streaks along shin",
@@ -143,6 +150,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.a737a299bb64ad6f",
       "_id": "a737a299bb64ad6f",
       "type": "text",
       "name": "122 · Face: scarred brow and missing eyebrow hair",
@@ -164,6 +172,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.11b46740921d2ecd",
       "_id": "11b46740921d2ecd",
       "type": "text",
       "name": "123 · Neck: visible band of scarring",
@@ -185,6 +194,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.121a9685ffd46dea",
       "_id": "121a9685ffd46dea",
       "type": "text",
       "name": "124 · Shoulder: broad uneven scar",
@@ -206,6 +216,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.432f124ec8e52920",
       "_id": "432f124ec8e52920",
       "type": "text",
       "name": "125 · Forearm: prominent branching scars",
@@ -227,6 +238,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.16adbd0d9def9484",
       "_id": "16adbd0d9def9484",
       "type": "text",
       "name": "126 · Foot: mottled scarred skin",
@@ -248,6 +260,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.773adffd0f82e488",
       "_id": "773adffd0f82e488",
       "type": "text",
       "name": "133 · Face: conspicuous cheek scar",
@@ -269,6 +282,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.5d8593406dc99785",
       "_id": "5d8593406dc99785",
       "type": "text",
       "name": "134 · Torso: extensive superficial discoloration",
@@ -290,6 +304,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.f902af8d50f9b834",
       "_id": "f902af8d50f9b834",
       "type": "text",
       "name": "135 · Leg: scar tissue and mild limp",
@@ -311,6 +326,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.eeca30ec9ecd5f2e",
       "_id": "eeca30ec9ecd5f2e",
       "type": "text",
       "name": "136 · Foot: tender scars and uneven gait",
@@ -332,6 +348,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.9901d4ff9c9dffa2",
       "_id": "9901d4ff9c9dffa2",
       "type": "text",
       "name": "144 · Hand: obvious finger and palm scars",
@@ -353,6 +370,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.f4c3ab80c414b701",
       "_id": "f4c3ab80c414b701",
       "type": "text",
       "name": "145 · Arm: raised or sunken scar tissue",
@@ -374,6 +392,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.8bace1dc1b8b4453",
       "_id": "8bace1dc1b8b4453",
       "type": "text",
       "name": "146 · Face: prominent brow and temple scars",
@@ -395,6 +414,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.55b0130e0d97a3e3",
       "_id": "55b0130e0d97a3e3",
       "type": "text",
       "name": "155 · Leg: knee scars and mild limp",
@@ -416,6 +436,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.b03385876f0eee74",
       "_id": "b03385876f0eee74",
       "type": "text",
       "name": "156 · Scalp: fresh injury and permanent hair loss",
@@ -437,6 +458,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.91179df67b79247a",
       "_id": "91179df67b79247a",
       "type": "text",
       "name": "166 · Foot: painful heel injury",
@@ -458,6 +480,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.ff6acfcf7289c345",
       "_id": "ff6acfcf7289c345",
       "type": "text",
       "name": "222 · Head: damaged scalp",
@@ -479,6 +502,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.a78c7e7719e9db91",
       "_id": "a78c7e7719e9db91",
       "type": "text",
       "name": "223 · Arm: deep shoulder injury",
@@ -500,6 +524,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.19b4e2fa9fba209e",
       "_id": "19b4e2fa9fba209e",
       "type": "text",
       "name": "224 · Hand: damaged palm",
@@ -521,6 +546,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.03011f9c05a1d683",
       "_id": "03011f9c05a1d683",
       "type": "text",
       "name": "225 · Torso: elemental impact",
@@ -542,6 +568,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.959f20e53f830f24",
       "_id": "959f20e53f830f24",
       "type": "text",
       "name": "226 · Leg: damaged knee tissue",
@@ -563,6 +590,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.d047f7586ae92ed9",
       "_id": "d047f7586ae92ed9",
       "type": "text",
       "name": "233 · Eyes: flash injury",
@@ -584,6 +612,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.86314289ec0f5071",
       "_id": "86314289ec0f5071",
       "type": "text",
       "name": "234 · Arm: damaged forearm",
@@ -605,6 +634,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.0a99178da99044ba",
       "_id": "0a99178da99044ba",
       "type": "text",
       "name": "235 · Hand: injured fingers",
@@ -626,6 +656,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.84d7167e1522d027",
       "_id": "84d7167e1522d027",
       "type": "text",
       "name": "236 · Back: painful injury",
@@ -647,6 +678,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.6d4fd0fbcf0e4db6",
       "_id": "6d4fd0fbcf0e4db6",
       "type": "text",
       "name": "244 · Torso: deep flank injury",
@@ -668,6 +700,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.877a2801c2403870",
       "_id": "877a2801c2403870",
       "type": "text",
       "name": "245 · Leg: damaged calf",
@@ -689,6 +722,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.75706e413d039d9d",
       "_id": "75706e413d039d9d",
       "type": "text",
       "name": "246 · Foot: damaged sole",
@@ -710,6 +744,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.1efc76f1552ce317",
       "_id": "1efc76f1552ce317",
       "type": "text",
       "name": "255 · Head: elemental shock",
@@ -731,6 +766,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.6ac391c6fabb80ac",
       "_id": "6ac391c6fabb80ac",
       "type": "text",
       "name": "256 · Leg: extensive knee injury",
@@ -752,6 +788,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.7dc8d397aedf888d",
       "_id": "7dc8d397aedf888d",
       "type": "text",
       "name": "266 · Foot: extensive ankle injury",
@@ -773,6 +810,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.07f9cf634081aafa",
       "_id": "07f9cf634081aafa",
       "type": "text",
       "name": "333 · Arm: deep shoulder damage",
@@ -794,6 +832,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.e70f7a8893b8d3fc",
       "_id": "e70f7a8893b8d3fc",
       "type": "text",
       "name": "334 · Hand: extensive damage",
@@ -815,6 +854,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.ed26e65170faf39e",
       "_id": "ed26e65170faf39e",
       "type": "text",
       "name": "335 · Torso: elemental blast",
@@ -836,6 +876,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.7f775681a813d806",
       "_id": "7f775681a813d806",
       "type": "text",
       "name": "336 · Leg: deep thigh injury",
@@ -857,6 +898,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.677ead5888bb4cd6",
       "_id": "677ead5888bb4cd6",
       "type": "text",
       "name": "344 · Head: extensive scalp injury",
@@ -878,6 +920,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.a63ea8d7a58716f0",
       "_id": "a63ea8d7a58716f0",
       "type": "text",
       "name": "345 · Back: extensive injury",
@@ -899,6 +942,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.5fb7a0176c1250e0",
       "_id": "5fb7a0176c1250e0",
       "type": "text",
       "name": "346 · Leg: deep knee injury",
@@ -920,6 +964,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.8f54e0cf2fe4c284",
       "_id": "8f54e0cf2fe4c284",
       "type": "text",
       "name": "355 · Ears: surrounding tissue injury",
@@ -941,6 +986,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.b31cb20fc711eb75",
       "_id": "b31cb20fc711eb75",
       "type": "text",
       "name": "356 · Foot: deep heel injury",
@@ -962,6 +1008,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.9226dcd44cd65cbe",
       "_id": "9226dcd44cd65cbe",
       "type": "text",
       "name": "366 · Eyes: damaged tissue",
@@ -983,6 +1030,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.de5c6120af52bbcc",
       "_id": "de5c6120af52bbcc",
       "type": "text",
       "name": "444 · Torso: severe flank injury",
@@ -1004,6 +1052,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.276c4dd001786604",
       "_id": "276c4dd001786604",
       "type": "text",
       "name": "445 · Arm: deep shoulder destruction",
@@ -1025,6 +1074,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.0463e556f8217256",
       "_id": "0463e556f8217256",
       "type": "text",
       "name": "446 · Hand: severe damage",
@@ -1046,6 +1096,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.90d63169998e3bbf",
       "_id": "90d63169998e3bbf",
       "type": "text",
       "name": "455 · Leg: deep lower-leg injury",
@@ -1067,6 +1118,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.54ddfd69fa2a112c",
       "_id": "54ddfd69fa2a112c",
       "type": "text",
       "name": "456 · Head: severe elemental shock",
@@ -1088,6 +1140,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.5ea1daeecb806796",
       "_id": "5ea1daeecb806796",
       "type": "text",
       "name": "466 · Torso: severe chest injury",
@@ -1109,6 +1162,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.21077e0cc968b9d7",
       "_id": "21077e0cc968b9d7",
       "type": "text",
       "name": "555 · Torso: extensive chest destruction",
@@ -1130,6 +1184,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.b9d90741b95e3d9a",
       "_id": "b9d90741b95e3d9a",
       "type": "text",
       "name": "556 · Leg: devastating injury",
@@ -1151,6 +1206,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.2d0db222b29d5e89",
       "_id": "2d0db222b29d5e89",
       "type": "text",
       "name": "566 · Leg: irrecoverable destruction",
@@ -1172,6 +1228,7 @@
       }
     },
     {
+      "_key": "!tables.results!f4e7df5fcb4f1327.6a61f1d5ce5690f5",
       "_id": "6a61f1d5ce5690f5",
       "type": "text",
       "name": "666 · Last Words",

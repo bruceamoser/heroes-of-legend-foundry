@@ -19,8 +19,8 @@ async function fixture({ owner = true, state = null, face = 1 } = {}) {
   actor.update=async changes=>{writes++;for(const [key,value]of Object.entries(changes))set(key,value);return actor;};
   let unique=0;
   const context = createContext({ structuredClone, Date, fetch: async () => ({ ok: true, json: async () => catalog }),
-    fromUuid: async () => actor, foundry: { utils: { expandObject: value => value, randomID: () => `id${++unique}`, escapeHTML:value=>value }, dice: { Roll: class {
-      constructor(formula) { this.isDice=formula.includes("d6");this.total=Number(formula);this.count = this.isDice?Number(formula.match(/^\d+/)[0]):0; this.dice = [{ results: Array.from({ length: this.count }, () => ({ result: face })) }]; }
+    fromUuid: async () => actor, ui:{notifications:{info(){}}}, foundry: { utils: { expandObject: value => value, randomID: () => `id${++unique}`, escapeHTML:value=>value }, dice: { Roll: class {
+      constructor(formula) { this.isDice=formula.includes("d6");this.total=Number(formula);this.count = this.isDice?Number(formula.match(/^\d+/)[0]):0; this.dice = [{ results: Array.from({ length: this.count }, (_,i) => ({ result: Array.isArray(face)?face[i]:face })) }]; }
       async evaluate() { if(this.isDice)rolls++; return this; } toJSON() { return {}; } static fromData(){return {};}
     } }, documents: { ActiveEffect: class { validate() {} } } },
     CONST: { ACTIVE_EFFECT_SHOW_ICON: { ALWAYS: 1 } },
@@ -111,4 +111,12 @@ test("Last Words wound applies and Undo restores the exact prior living state",a
 });
 test("direct wound rolls reject a nonowner before creating a message or modifying the actor",async()=>{
  const f=await fixture({owner:false});assert.throws(()=>f.direct.rollCharacterWound(f.actor,"physical"),/own/);assert.equal(f.writes,0);assert.equal(f.messages.size,0);assert.equal(f.rolls,0);
+});
+
+test("missing fear source saves the original roll and owner can finish it without a GM or reroll",async()=>{
+ const f=await fixture({face:[1,5,6]});const result=await f.direct.rollCharacterWound(f.actor,"mental",{operationId:"fear"});
+ assert.equal(result.needsSource,true);assert.equal(f.flags.pendingWounds[result.eventId].status,"rolled");assert.equal(f.rolls,1);
+ await f.service.requestWound(f.actor,result.eventId,"apply",{fearSource:"Visible enemy"});
+ assert.equal(f.flags.pendingWounds[result.eventId].status,"resolved");assert.equal(f.rolls,1);assert.equal(f.flags.woundActions.fear.needsSource,false);assert.equal(f.actor.effects.size,1);
+ await f.direct.undoCharacterWound(f.actor,"fear");assert.equal(f.actor.effects.size,0);assert.equal(f.flags.survival,null);
 });

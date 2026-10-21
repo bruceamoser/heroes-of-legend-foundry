@@ -1,3 +1,4 @@
+import {signatureTierState} from "../rules/signatures.mjs";
 import {equipmentSurface, attackFirst} from "./equipment-surface.mjs";
 import { workshopFavorites } from "../rules/workshop-resources.mjs";
 import { actionTiming } from "../rules/workshop-character.mjs";
@@ -61,13 +62,12 @@ export function characterSheetView({ development = {}, equipment = [], abilities
   const spent = advancement.reduce((sum,entry) => sum + (entry.cost ?? 0),0);
   const total = creationLedger.reduce((sum,entry) => sum + Math.max(0,entry.delta ?? 0),0) + Array.from({length:Math.max(0,(development.level ?? 1)-1)},(_,index)=>10+index).reduce((sum,value)=>sum+value,0);
   const ranks=Object.entries(development.ranks ?? {}).map(([id,rank])=>({name:name(id),rank})).sort((a,b)=>a.name.localeCompare(b.name));
-  const cls = records.get(development.classId ?? creation.classId);
   return {
     tabs, activeTab: active, mainTab: active === "main", characterTab: active === "character", abilitiesTab: active === "abilities", inventoryTab: active === "inventory", developmentTab: active === "development", craftingTab: active === "crafting",
     editMode: Boolean(sheetState.edit),
     identity: [name(creation.ancestryId), name(creation.culture?.id), name(creation.background?.id), name(development.classId ?? creation.classId)].filter(Boolean).join(" · "),
     canRemoveLevel:(development.level??1)>1, overspent:(development.dp??0)<0, level: development.level ?? 0, dp: development.dp ?? 0, dpSpent: spent, dpTotal:total,
-    signatureTiers: [1,3,7].map(tier => {const row = abilityRows.find(row => (cls?.signatures?.[tier] ?? []).includes(row.catalogId)); return {tier,id:row?.id,name:row?.name,available:(development.level ?? 1)>=tier,missing:!row && (development.level ?? 1)>=tier};}),
+    signatureTiers: [1,3,7].map(tier => {const slot=signatureTierState({...development,classId:development.classId??creation.classId},tier,choices);const row=abilityRows.find(row=>row.catalogId===slot.selectedId);return {tier,id:row?.id,catalogId:slot.selectedId,name:row?.name??(slot.selectedId?name(slot.selectedId):null),available:slot.earned,missing:slot.pending,ambiguous:slot.ambiguous};}),
     abilityRows, equipmentRows, recipes: recipes.map(recipe => ({...recipe, project:craftingState[recipe.id], abilities:(recipe.permissions ?? []).map(id => abilityRows.find(row => row.catalogId === id)).filter(Boolean)})),
     passives: abilityRows.filter(row => row.timings.includes("Passive") && (sheetState.edit || !row.basic || row.shown)),
     basicAbilities: abilityRows.filter(row => row.basic),

@@ -1,3 +1,4 @@
+import { activeAbilityGrant, selectedSignatureAbility } from "./signatures.mjs";
 import { acquireAbility, craftingPermissions } from "./acquisition.mjs";
 import { ATTRIBUTES } from "./character.mjs";
 const clone = (value) => structuredClone(value);
@@ -445,6 +446,7 @@ export function changeCharacterLevel(state, direction) {
   const next=clone(state),level=state.level+direction;
   const delta=direction>0?8+level:-(8+state.level);
   next.level=level;next.dp=state.dp+delta;
+  if(direction>0&&[3,7].includes(level)&&!state.signatureChoices?.[level]&&!(state.ledger??[]).some(entry=>["signature-grant","signature-switch"].includes(entry.kind)&&entry.level===level))next.pendingSignatures=[...new Set([...(state.pendingSignatures??[]),level])];
   return {state:next,delta};
 }
 export function refundableAbilityPurchase(state,id) {
@@ -461,7 +463,7 @@ export function refundLearnedAbility(state,id) {
   next.ledger=[...(state.ledger??[]),{kind:"refund",id,delta:purchase.cost,balance:next.dp,refundOf:purchase.index}];
   const purchaseIndex=(next.purchases??[]).findLastIndex(entry=>entry.id===id);
   if(purchaseIndex>=0)next.purchases.splice(purchaseIndex,1);
-  const granted=next.ledger.some(entry=>["ability-grant","signature-grant"].includes(entry.kind)&&entry.id===id);
+  const granted=selectedSignatureAbility(next,id)||next.ledger.some(entry=>activeAbilityGrant(next,entry,id));
   if(!refundableAbilityPurchase(next,id)&&!granted)next.abilities=next.abilities.filter(ability=>ability!==id);
   return next;
 }

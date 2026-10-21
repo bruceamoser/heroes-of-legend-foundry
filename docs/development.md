@@ -1677,3 +1677,15 @@ pending and preserves an unrelated saved purchase draft exactly. Native captures
 show the compact focused chooser rather than generic development. Service tests
 cover acquisition choices, stale/non-owner/foreign-class rejection, and recovery
 of an interrupted confirmation without duplicate grants.
+
+### 2.3.3 earned signatures and player switching
+
+`npm run check` passes 686 tests, build and catalog validation. The verified
+513-file 2.3.3 package passed `test:signature-choice` in isolated Foundry V14.369.
+Native player tests use actual Add level transitions through levels 3 and 7,
+a level 7 Shadow without pending markers, and switching earned tiers 1/3/7.
+They verify paid alternatives, DP, Grit, existing equipment, acquisition receipts,
+saved purchase drafts, return to sheet, reload and complete fixture cleanup.
+Legacy ambiguous free choices require identifying the current signature explicitly.
+Service regressions cover interrupted removal and grant retries. This supersedes
+the narrower 2.3.2 fixture, which incorrectly preseeded pending markers.

@@ -1,5 +1,12 @@
 import { ConditionPanel } from "../applications/conditions.mjs";
 export class HOLActor extends foundry.documents.Actor {
+  _onUpdate(changes,options,userId) {
+    super._onUpdate(changes,options,userId);
+    if(userId===game.user.id && changes.system?.health?.value!==undefined) {
+      void import("../services/creature-death.mjs").then(({syncCreatureDeath})=>syncCreatureDeath(this)).catch(error=>ui.notifications.error(error.message));
+    }
+  }
+
   async toggleStatusEffect(statusId, options = {}) {
     if (
       typeof statusId === "string" &&

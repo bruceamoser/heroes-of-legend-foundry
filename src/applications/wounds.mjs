@@ -1,3 +1,5 @@
+import {openWoundDetails} from "./wound-details.mjs";
+import {describeWoundEffect} from "../rules/wound-contributions.mjs";
 import { openWoundRoll } from "./wound-roll.mjs";
 import { woundTreatmentBasis, requestWoundTreatment } from "../services/wound-treatment.mjs";
 import { woundCatalog, woundBasis, requestWound } from "../services/wounds.mjs";
@@ -21,6 +23,7 @@ export class WoundPanel extends foundry.applications.api.HandlebarsApplicationMi
     position: { width: 720, height: 700 },
     actions: {
       record: WoundPanel.record,
+      details: WoundPanel.details,
       select: WoundPanel.select,
       roll: WoundPanel.roll,
       skip: WoundPanel.skip,
@@ -87,7 +90,7 @@ export class WoundPanel extends foundry.applications.api.HandlebarsApplicationMi
       ),
       wounds: Object.values(
         this.actor.getFlag("heroes-of-legend", "wounds") ?? {},
-      ).map(wound => ({ ...wound, effectSummary:this.actor.effects.filter(effect=>effect.active&&!effect.getFlag("heroes-of-legend","retired")&&effect.getFlag("heroes-of-legend","woundEvent")===wound.eventId).map(effect=>effect.name).join(" · ")||"—", canTreat: this.actor.isOwner && Boolean(wound.recoveryValue) && (wound.recoveryProgress ?? 0) < wound.recoveryValue })),
+      ).map(wound => ({ ...wound, effectSummary:this.actor.effects.filter(effect=>effect.active&&!effect.getFlag("heroes-of-legend","retired")&&effect.getFlag("heroes-of-legend","woundEvent")===wound.eventId).map(describeWoundEffect).join(" · ")||"—", canTreat: this.actor.isOwner && Boolean(wound.recoveryValue) && (wound.recoveryProgress ?? 0) < wound.recoveryValue })),
     };
   }
   async _onClose(options) {
@@ -95,6 +98,7 @@ export class WoundPanel extends foundry.applications.api.HandlebarsApplicationMi
     Hooks.off("updateActor", this.hook);
     return super._onClose(options);
   }
+  static async details(event,target){try{await openWoundDetails(this.actor,target.dataset.eventId??target.closest("[data-wound-event]")?.dataset.woundEvent??this.eventId);}catch(error){ui.notifications.error(error.message);}}
   static async record() {
     try {
       await openWoundRoll(this.actor);

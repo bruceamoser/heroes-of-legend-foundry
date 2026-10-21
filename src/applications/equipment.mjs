@@ -1,5 +1,4 @@
 import { equipmentBasis, requestEquipment } from "../services/equipment.mjs";
-import { handLayout } from "../rules/hands.mjs";
 export class EquipmentPanel extends foundry.applications.api.HandlebarsApplicationMixin(
   foundry.applications.api.ApplicationV2,
 ) {
@@ -23,17 +22,9 @@ export class EquipmentPanel extends foundry.applications.api.HandlebarsApplicati
     if (!this.actor.testUserPermission(game.user, "OBSERVER"))
       throw new Error("You cannot inspect this actor.");
     this.basis = equipmentBasis(this.actor);
-    let summary;
-    try {
-      const state = handLayout(this.basis.items, this.basis.capacity);
-      summary = `${state.occupied} occupied · ${state.free} free`;
-    } catch (e) {
-      summary = e.message;
-    }
     return {
       name: this.actor.name,
       capacity: this.basis.capacity,
-      summary,
       gm: game.user.isGM,
       encounter: this.basis.encounters.length > 0,
       editable:
@@ -58,23 +49,9 @@ export class EquipmentPanel extends foundry.applications.api.HandlebarsApplicati
       capacity: Number(this.element.querySelector("[name=capacity]").value),
     };
   }
-  async _onRender(context, options) {
-    await super._onRender(context, options);
-    this.element.addEventListener("input", () => {
-      const output = this.element.querySelector("[data-hand-summary]");
-      try {
-        const { items, capacity } = this.arrangement(),
-          state = handLayout(items, capacity);
-        output.textContent = `${state.occupied} occupied · ${state.free} free`;
-      } catch (e) {
-        output.textContent = e.message;
-      }
-    });
-  }
   static async save() {
     try {
       const { items, capacity } = this.arrangement();
-      handLayout(items, capacity);
       await requestEquipment(
         this.actor,
         this.basis,

@@ -38,7 +38,7 @@ function effectSummary(effects) {
   return effects.map(e=>e.kind==="condition"?`${e.key} ${e.rating}${e.persistence==="starred"?"*":""}`:e.kind==="movementPenalty"?`Movement −${e.amount}`:e.kind==="rollModifier"?`${e.amount} ${e.polarity}: ${e.context}`:e.kind==="forcedMovement"?`${e.direction} ${e.distance} squares (place token)`:"Last Words").join(" · ")||"Lasting scar; no mechanical penalty.";
 }
 export function woundChatCard({actor,eventId,pending,result,applied=true,undone=false}) {
-  return `<article class="hol-wound-chat"><header><strong>${escape(actor.name)} · ${escape(result.record.injury)}</strong></header><p><b>${escape(pending.damageType)} ${escape(pending.result.key)}</b> · ${pending.priorWounds} prior · ${pending.result.retained.join(" · ")}</p><p>${escape(effectSummary(result.effects))}</p><p><b>Remedy</b> ${escape(result.record.remedy)}${result.record.recoveryValue?` · RV ${result.record.recoveryValue}`:""}</p>${undone?'<p><em>Undone</em></p>':`<button type="button" data-hol-wound-undo data-actor-uuid="${escape(actor.uuid)}" data-event-id="${escape(eventId)}">Undo wound</button>`}${!applied?'<p>Result saved. Open Wounds to finish applying it.</p>':""}</article>`;
+  return `<article class="hol-wound-chat"><header><strong>${escape(actor.name)} · <a data-hol-wound-details data-actor-uuid="${escape(actor.uuid)}" data-event-id="${escape(eventId)}">${escape(result.record.injury)}</a></strong></header><p><b>${escape(pending.damageType)} ${escape(pending.result.key)}</b> · ${pending.priorWounds} prior · ${pending.result.retained.join(" · ")}</p><p>${escape(effectSummary(result.effects))}</p><p><b>Remedy</b> ${escape(result.record.remedy)}${result.record.recoveryValue?` · RV ${result.record.recoveryValue}`:""}</p>${undone?'<p><em>Undone</em></p>':`<button type="button" data-hol-wound-undo data-actor-uuid="${escape(actor.uuid)}" data-event-id="${escape(eventId)}">Undo wound</button>`}${!applied?'<p>Result saved. Open Wounds to finish applying it.</p>':""}</article>`;
 }
 async function ensureWoundMessage(actor,operationId,action) {
   let message=game.messages.get(action.messageId)??game.messages.find(message=>message.getFlag(ID,"woundResult")?.operationId===operationId&&message.getFlag(ID,"woundResult")?.actorUuid===actor.uuid);
@@ -118,6 +118,9 @@ export function registerWoundChatActions(){
     if(app.document?.getFlag(ID,"woundTable"))html.classList.add("hol-wound-table");
   });
   Hooks.on("renderChatMessageHTML",(message,html)=>{
+    html.querySelector("[data-hol-wound-details]")?.addEventListener("click",async event=>{
+      event.preventDefault();try{const link=event.currentTarget,actor=await fromUuid(link.dataset.actorUuid);const {openWoundDetails}=await import("../applications/wound-details.mjs");await openWoundDetails(actor,link.dataset.eventId);}catch(error){ui.notifications.error(error.message);}
+    });
     const button=html.querySelector("[data-hol-wound-undo]");if(!button)return;
     const data=message.getFlag(ID,"woundResult");
     button.hidden=true;

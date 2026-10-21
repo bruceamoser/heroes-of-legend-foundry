@@ -16,16 +16,16 @@
   <div class="hol-roll-pool" aria-live="polite"><div class="hol-pool-count"><strong data-roll-count>3</strong><span>d6</span></div><div class="hol-pool-detail"><div data-roll-dice class="hol-pool-dice" aria-hidden="true"></div><strong data-roll-keep>Keep all three</strong><code data-roll-formula></code></div></div></section>
   {{#if partyPiece}}<label><input type="checkbox" name="partyPiece" {{#if draft.partyPiece}}checked{{/if}}> A Party Piece · +1 Boon when entertaining through your chosen specialty (<a class="content-link" data-link data-type="Item" data-uuid="{{partyPiece}}">ability</a>)</label>{{/if}}
   {{#if lookOverHere}}<details class="hol-context-options"><summary>Ally assistance</summary><label><input type="checkbox" name="lookOverHere" {{#if draft.lookOverHere}}checked{{/if}}> Look Over Here! · +1 Boon if an ally spent their Reaction for this defense</label><p class="hol-note">Sight-dependent attack by an enemy adjacent to that ally who can see them. No cover, Hidden or canceled attack.</p></details>{{/if}}
-  {{#if abilities}}<details open class="hol-roll-abilities"><summary>Defense abilities</summary><ul class="hol-defense-abilities">{{#each abilities}}<li data-item-id="{{itemId}}" class="{{#unless available}}hol-unavailable{{/unless}}"><button type="button" data-action="useAbility" data-item-id="{{itemId}}" {{#unless available}}disabled{{/unless}}>{{#if active}}Remove {{else}}{{#if available}}Use {{/if}}{{/if}}{{name}}</button><span class="hol-ability-reason">{{reasonText}}</span></li>{{/each}}</ul></details>{{/if}}
+  {{#if abilities}}<details class="hol-roll-abilities"><summary>Defense abilities</summary><ul class="hol-defense-abilities">{{#each abilities}}<li data-item-id="{{itemId}}" class="{{#unless available}}hol-unavailable{{/unless}}"><button type="button" data-action="useAbility" data-item-id="{{itemId}}" {{#unless available}}disabled{{/unless}}>{{#if active}}Remove {{else}}{{#if available}}Use {{/if}}{{/if}}{{name}}</button><span class="hol-ability-reason">{{reasonText}}</span></li>{{/each}}</ul></details>{{/if}}
   <p data-reference-drop-status role="status" aria-live="polite"></p>
-  {{#if references}}<details open class="hol-roll-abilities hol-reference-picker"><summary>Abilities</summary>
+  {{#if references}}<details class="hol-roll-abilities hol-reference-picker"><summary>Abilities</summary>
     <label>Find ability<input type="search" data-reference-search></label>
     <ul class="roll-abilities">{{#each references}}<li data-reference-row><label class="inline-toggle"><input type="checkbox" data-reference-id="{{id}}" {{#if selected}}checked{{/if}}> {{name}}</label></li>{{/each}}</ul>
   </details>{{/if}}
   {{#if fears}}<details class="hol-context-options"><summary>Fear context (optional)</summary>
   {{#each fears}}<label><input type="checkbox" name="fear-{{index}}" {{#if yes}}checked{{/if}}> Perceiving {{source}}</label>{{/each}}</details>{{/if}}
-  {{#if wounds}}<details class="hol-context-options"><summary>Wound adjustments (optional)</summary>
-  <p>Apply a printed wound modifier when it fits this action.</p>
+  {{#if wounds}}<details open class="hol-context-options hol-wound-adjustments"><summary>Wound modifiers</summary>
+
   {{#each wounds}}<label class="hol-wound-context" data-effect-id="{{effectId}}"><input type="checkbox" name="wound-{{index}}" {{#if applies}}checked{{/if}}> {{injury}} · {{amount}} {{#if (eq polarity "boon")}}Boon{{else}}Bane{{/if}} · {{printedContext}}</label>{{/each}}</details>{{/if}}
   <details class="hol-context-options" {{#if death}}hidden{{/if}}><summary>Roll details</summary><ul class="hol-roll-sources"></ul><p class="hol-roll-totals" aria-live="polite"></p></details>
 

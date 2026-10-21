@@ -1627,3 +1627,25 @@ serially with `HOL_TEST_URL`, `HOL_TEST_ALLOW_WRITES=1` and
 These scenarios establish the listed interactions; they are not an assertion that
 every custom or conditional ability effect is automatically interpreted. Generated
 captures and JSON evidence are under `test-results/` and excluded from source Git.
+
+### 2.3.0 follow-up acceptance
+
+`npm run check` passes 647 tests, build and content validation. New isolated native
+scenarios are `npm run test:followup-table` and `npm run test:followup-cards-books`.
+They use the same explicit local-world/write guards as the 2.2.0 fixtures. Evidence
+and rendered captures are under `test-results/followup-table` and
+`test-results/followup-cards-books`. The first scenario includes separate GM/player
+clients and an actual unlinked token Actor; native movement tests use the real
+TokenRuler and native measured path costs at Speed, double Speed and beyond.
+Book repair checks actual native page rendering/navigation and reload, and preserves
+an intentionally edited old divider. All 1,018 authored source pages were compared
+with the prior generated books and remain byte-for-byte unchanged; only the 30
+section-page bodies change.
+
+The native movement integration uses the V14
+[TokenRuler style extension points](https://foundryvtt.com/api/v14/classes/foundry.canvas.placeables.tokens.TokenRuler.html)
+and configured `CONFIG.Token.rulerClass`; it does not replace pathfinding, movement
+history, measurement, terrain costs or the core ruler renderer.
+The round fixture also removes the final unacted participant: the tracker immediately
+exposes the next round and the next Choose persists that transition, without a stuck
+encounter. A valid active participant is never interrupted by roster reconciliation.

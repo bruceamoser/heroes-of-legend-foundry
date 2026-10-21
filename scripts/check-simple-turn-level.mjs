@@ -30,12 +30,14 @@ try{
  await player.locator(`.hol-encounter-panel [data-action=choose][data-id="${fixture.heroParticipant}"]`).click();await current(player,fixture.heroParticipant);await current(gm,fixture.heroParticipant);
  assert.equal(await player.locator('.hol-encounter-panel [data-action=choose]').count(),0);assert.equal(await gm.locator('.hol-encounter-panel [data-action=choose]').count(),0);
  await player.locator('.hol-encounter-panel [data-action=finish]').click();await current(player,null);
+ assert.equal(await player.locator(`.hol-encounter-panel [data-action=choose][data-id="${fixture.heroParticipant}"]`).count(),0);
+ await gm.locator(`.hol-encounter-panel [data-action=choose][data-id="${fixture.npcParticipant}"]`).click();await current(gm,fixture.npcParticipant);await gm.locator('.hol-encounter-panel [data-action=finish]').click();await current(player,null);
  await player.locator(`.hol-encounter-panel [data-action=choose][data-id="${fixture.heroParticipant}"]`).click();await current(player,fixture.heroParticipant);await player.locator('.hol-encounter-panel [data-action=finish]').click();await current(gm,null);
  await gm.evaluate(async f=>game.combats.get(f.combat).combatants.get(f.npcParticipant).update({defeated:true}),fixture);
  await gm.locator(`.hol-encounter-panel [data-action=choose][data-id="${fixture.npcParticipant}"]`).click();await current(gm,fixture.npcParticipant);await gm.locator('.hol-encounter-panel [data-action=finish]').click();await current(player,null);
  assert.equal(await player.locator('.hol-encounter-panel [data-action=reset],.hol-encounter-panel [data-action=spend]').count(),0);
  await player.locator('.hol-encounter-panel').screenshot({path:output+'/simple-turn-selection.png'});evidence.captures.push('simple-turn-selection.png');
- evidence.checks.push('First actual Choose initializes without Start; all Choose buttons unavailable during current turn; Finish permits same actor or opposition next; no action counters.');
+ evidence.checks.push('First actual Choose initializes without Start; all Choose buttons unavailable during current turn; Finish marks acted, next round permits the actor again; no action counters.');
  await player.evaluate(async f=>{for(const app of foundry.applications.instances.values())if(app.combat)await app.close();const {AdvancementWizard}=await import('/systems/heroes-of-legend/applications/advancement.mjs');await new AdvancementWizard(game.actors.get(f.actor)).render({force:true});},fixture);
  const wizard=player.locator('.hol-advancement');await wizard.waitFor();assert.equal(await wizard.locator('[name=safePlace],[data-action=safePlace]').count(),0);
  const initial=await player.evaluate(f=>{const actor=game.actors.get(f.actor);return{grit:actor.toObject().system.grit,abilities:actor.items.filter(i=>i.type==='ability').map(i=>i.id)};},fixture);

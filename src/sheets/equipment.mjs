@@ -5,7 +5,7 @@ import { itemDisplayIcon } from "../rules/item-icons.mjs";
 import { requestResupply } from "../services/resupply.mjs";
 import { cardContext, bindCardState, toggleCardEdit } from "./card-state.mjs";
 import { EquipmentPanel } from "../applications/equipment.mjs";
-import { InventoryPanel } from "../applications/inventory.mjs";
+import { consumeOwnedSupply, depleteOwnedSupply } from "../services/inventory.mjs";
 import { openPotionPreparation } from "../applications/potions.mjs";
 import { loadCatalogs } from "../services/catalog.mjs";
 import { updateOwnedDocument } from "../services/documents.mjs";
@@ -19,6 +19,7 @@ export class EquipmentSheet extends foundry.applications.api.HandlebarsApplicati
       resupply: EquipmentSheet.resupply,
       hands: EquipmentSheet.hands,
       supply: EquipmentSheet.supply,
+      deplete: EquipmentSheet.deplete,
       usePotion: EquipmentSheet.usePotion,
     },
     classes: ["heroes-of-legend", "hol-equipment"],
@@ -30,6 +31,7 @@ export class EquipmentSheet extends foundry.applications.api.HandlebarsApplicati
     main: { template: "systems/heroes-of-legend/templates/equipment.hbs", scrollable: [".hol-card-scroll"] },
   };
   async _prepareContext(options) {
+    if(options?.editing && this.isEditable)this._cardEditing=true;
     const catalogs = await loadCatalogs(),
       description = this.item.system.description,
       pending = this.item.actor?.getFlag(
@@ -107,12 +109,14 @@ export class EquipmentSheet extends foundry.applications.api.HandlebarsApplicati
     try {
       if (!this.item.actor)
         throw new Error("Only an owned equipment item can check supply.");
-      await new InventoryPanel(this.item.actor, this.item.id).render({
-        force: true,
-      });
+      await consumeOwnedSupply(this.item.actor, this.item);
     } catch (error) {
       ui.notifications.error(error.message);
     }
+  }
+  static async deplete() {
+    try { await depleteOwnedSupply(this.item.actor, this.item); await this.render({force:true}); }
+    catch(error) { ui.notifications.error(error.message); }
   }
   static async usePotion() {
     try {
@@ -140,18 +144,6 @@ export class EquipmentSheet extends foundry.applications.api.HandlebarsApplicati
     });
   }
   async _processSubmitData(event, form, data, options) {
-    if (
-      this.item.actor &&
-      ["hands", "held", "worn"].some(
-        (key) =>
-          (data[`system.${key}`] ?? data.system?.[key]) !== undefined &&
-          (data[`system.${key}`] ?? data.system?.[key]) !==
-            this.item.system[key],
-      )
-    )
-      throw new Error(
-        "Use Hands, worn gear and equipment to change an owned item’s arrangement.",
-      );
     return { updated: await updateOwnedDocument(this.item, data, options) };
   }
 }

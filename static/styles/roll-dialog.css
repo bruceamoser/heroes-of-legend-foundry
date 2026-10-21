@@ -319,3 +319,6 @@
 .heroes-of-legend .hol-death-marks button {width:32px;min-height:30px;padding:3px;border:1px solid #ad9870;background:#f7f3e9;color:#776f60;}
 .heroes-of-legend .hol-death-marks button.filled {background:#752e29;color:#fff;}
 .heroes-of-legend .hol-death-outcomes {display:flex;justify-content:space-between;gap:8px;margin-top:7px;font:11px/1.3 system-ui,sans-serif;}
+
+.heroes-of-legend .hol-wound-context {display:flex;align-items:center;gap:6px;}
+.heroes-of-legend .hol-wound-context input[type=checkbox] {appearance:auto;flex:0 0 14px;width:14px;height:14px;min-height:14px;max-width:14px;padding:0;margin:0;box-shadow:none;background:transparent;}

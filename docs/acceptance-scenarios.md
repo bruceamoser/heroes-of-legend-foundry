@@ -287,3 +287,16 @@ The native acceptance scripts for this interaction model are:
 Each native fixture runs only in an explicitly isolated local world, records created
 IDs before further mutation, and reports cleanup and browser errors. Conditional prose
 is never guessed into effects; its explicit Apply dialog permits table interpretation.
+
+## October 21 follow-up acceptance (#239)
+
+The later correction restores round participation and automatic condition end effects
+while retaining table control of action limits and equipment. `check-followup-table`
+checks owned unlinked-token advancement without changing the base Actor, readable
+language choices, signed HP, wound links and real roll modifiers, relevant initially
+closed ability sections, combined clickable conditions, ordinary item edits, manual
+supply depletion, silent four-hand arrangements, acted/round progression, condition
+end damage/decay, native Dead and native ruler movement-cost bands.
+`check-followup-cards-books` checks actual supply die reduction, resistance and reaction
+chat presentation, native chapter navigation, preservation of edited world pages and
+reload persistence. Earlier immediate-repeat-turn assertions are superseded.

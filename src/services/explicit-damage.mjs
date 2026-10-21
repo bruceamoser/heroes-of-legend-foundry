@@ -79,10 +79,15 @@ export async function applySelectedDamage(components, { sourceMessageId = null, 
     } catch (error) { skipped.push(`${actor.name}: ${error.message}`); }
   }
   if (applied.length) {
-    const content = `<article class="hol-damage-chat"><p class="hol-damage-label"><strong>${escape(label)}</strong> <span>· applied</span></p><table aria-label="Applied damage"><thead><tr><th scope="col">Target</th><th scope="col">Damage</th><th scope="col">HP</th></tr></thead><tbody>${applied.map(result => `<tr><th scope="row">${escape(result.name)}</th><td>${result.total}</td><td>${result.before} → ${result.after}${result.conditions?.length ? `<small>${result.conditions.map(condition=>`${escape(condition.key)} ${condition.rating}`).join(" · ")}</small>` : ""}</td></tr>`).join("")}</tbody></table></article>`;
+    const content = `<article class="hol-damage-chat"><p class="hol-damage-label"><strong>${escape(label)}</strong> <span>· applied</span></p><table aria-label="Applied damage"><thead><tr><th scope="col">Target</th><th scope="col">Damage</th><th scope="col">HP</th></tr></thead><tbody>${applied.map(result => `<tr><th scope="row">${escape(result.name)}</th><td>${result.total}<small>${resistanceSummary(result.event)}</small></td><td>${result.before} → ${result.after}${result.conditions?.length ? `<small>${result.conditions.map(condition=>`${escape(condition.key)} ${condition.rating}`).join(" · ")}</small>` : ""}</td></tr>`).join("")}</tbody></table></article>`;
     try { await ChatMessage.create({ content, flags: { [ID]: { explicitDamageResult: { operationId, sourceMessageId, applied } } } }); }
     catch { ui.notifications.warn("Damage was applied, but the chat summary could not be posted. Check HP before clicking again."); }
   }
   if (skipped.length) ui.notifications.warn(`Not applied: ${skipped.join("; ")}`);
   return { applied, skipped };
+}
+
+function resistanceSummary(event) {
+  const applied=(event.breakdown??[]).filter(component=>component.resistance>0);
+  return applied.length?applied.map(component=>`${escape(component.type)} resistance ${component.resistance}`).join(" · ")+(event.minimumApplied?" · minimum 1 damage":""):"No resistance applied";
 }

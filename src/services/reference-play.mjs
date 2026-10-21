@@ -1,3 +1,4 @@
+import {rollReferenceApplies,reactionTrigger} from "../rules/ability-roll-relevance.mjs";
 const ID = "heroes-of-legend";
 
 function liveAbility(item) {
@@ -6,22 +7,22 @@ function liveAbility(item) {
 }
 
 // Match the existing defender chooser: observed Actors or visible scene Tokens.
-export function referenceAbilities(actor, { mode = "attribute", user = game.user, defenderTokenUuid = null } = {}) {
+export function referenceAbilities(actor, { mode = "attribute", user = game.user, defenderTokenUuid = null, attributeKey, initiatingItemId = null } = {}) {
   const token = defenderTokenUuid ? fromUuidSync(defenderTokenUuid) : null;
   const tokens = token ? [token] : [...(game.scenes.viewed?.tokens ?? [])];
   const visible = actor.testUserPermission(user, "OBSERVER") ||
     (mode === "defense" && tokens.some(token =>
       token.actor?.uuid === actor.uuid && (!token.hidden || user.isGM)));
   if (!visible) return [];
-  return actor.items.filter(liveAbility).sort((a, b) => a.name.localeCompare(b.name));
+  return actor.items.filter(item=>liveAbility(item)&&rollReferenceApplies(item,{mode,attributeKey,initiatingItemId})).sort((a, b) => a.name.localeCompare(b.name));
 }
 
-export function selectedReferences(actor, draft, { mode, user = game.user, defenderTokenUuid = null } = {}) {
+export function selectedReferences(actor, draft, { mode, user = game.user, defenderTokenUuid = null, attributeKey, initiatingItemId = draft.abilityItemId } = {}) {
   const ids = draft.referenceItemIds ?? [];
   if (!Array.isArray(ids) || ids.some(id => typeof id !== "string"))
     throw new Error("Choose available ability references.");
   if (!ids.length) return [];
-  const available = new Map(referenceAbilities(actor, { mode, user, defenderTokenUuid }).map(item => [item.id, item]));
+  const available = new Map(referenceAbilities(actor, { mode, user, defenderTokenUuid,attributeKey,initiatingItemId }).map(item => [item.id, item]));
   return [...new Set(ids)].map(id => {
     const item = available.get(id);
     if (!item) throw new Error("An ability reference is no longer visible. Reopen the roll to review it.");
@@ -64,12 +65,16 @@ export async function postAbilityReference(item) {
     throw new Error("Only an owned ability can be posted to chat.");
   const escape = foundry.utils.escapeHTML;
   const parsed = new DOMParser().parseFromString(String(item.system.description ?? ""),"text/html");
+  const {loadCatalogs}=await import("./catalog.mjs");
+  const catalogId=item.getFlag(ID,"catalogId");
+  const record=catalogId ? (await loadCatalogs()).choices.find(record=>record.id===catalogId) : null;
+  const trigger=reactionTrigger(record);
   const operative = parsed.querySelector(".hol-reference-rules")?.innerHTML ?? parsed.body.innerHTML;
   const reference = { itemUuid: item.uuid, name: item.name,
     source: structuredClone(item.getFlag(ID, "source") ?? null),
     sourceCommit: item.getFlag(ID, "sourceCommit") ?? null,
-    damageText: new DOMParser().parseFromString(operative, "text/html").body.textContent };
-  const content = `<section class="hol-reference-card hol-chat-card"><header class="hol-chat-header"><h3>${escape(item.name)}</h3></header><div class="hol-chat-effect">${safeReferenceHTML(operative)}</div><footer class="hol-chat-footer"><a class="content-link" data-link data-type="Item" data-uuid="${escape(item.uuid)}">Full ability details</a></footer></section>`;
+    trigger, damageText: new DOMParser().parseFromString(operative, "text/html").body.textContent };
+  const content = `<section class="hol-reference-card hol-chat-card"><header class="hol-chat-header"><h3>${escape(item.name)}</h3></header>${trigger?`<p class="hol-chat-trigger"><strong>Trigger:</strong> ${escape(trigger)}</p>`:""}<div class="hol-chat-effect">${safeReferenceHTML(operative)}</div><footer class="hol-chat-footer"><a class="content-link" data-link data-type="Item" data-uuid="${escape(item.uuid)}">Full ability details</a></footer></section>`;
   return ChatMessage.create(ChatMessage.applyMode({
     speaker: ChatMessage.getSpeaker({ actor: item.actor }), content,
     flags: { [ID]: { abilityReference: reference } },

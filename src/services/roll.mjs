@@ -75,6 +75,7 @@ export async function evaluatePreparedRoll(
   }
   const references = selectedReferences(actor, draft, {
     mode: basis.mode,
+    attributeKey:basis.attributeKey,initiatingItemId:draft.abilityItemId,
     defenderTokenUuid: basis.defenderTokenUuid,
     user: game.users?.get(rollerId) ?? game.user,
   });
@@ -172,6 +173,7 @@ export function renderRollSummary(message, element) {
     resolution.append(dice);
   }
   resolution.append(verdict);
+  if(result.ability?.trigger){const trigger=document.createElement("p");trigger.className="hol-chat-trigger";const label=document.createElement("strong");label.textContent="Trigger: ";trigger.append(label,document.createTextNode(result.ability.trigger));summary.append(trigger);}
   if (result.ability?.outcomes?.[result.tier] || result.ability?.effect) {
     const outcome = document.createElement("p");
     outcome.className = "hol-chat-effect";
@@ -298,6 +300,6 @@ export function showAbilityOutcome(message) {
   const escape=foundry.utils.escapeHTML;
   const attribute=game.i18n.localize(`HOL.Attributes.${result.resolvedAttributeKey ?? result.attributeKey}`);
   const modifier=result.attribute>=0?`+${result.attribute}`:String(result.attribute);
-  const content=`<section class="hol-ability-outcome"><div class="hol-outcome-total"><strong>${escape(String(result.total))} · ${escape(game.i18n.localize(`HOL.Tiers.${result.tier}`))}</strong><span>${escape(attribute)} ${escape(modifier)} · ${(result.retained??[]).join(" · ")}</span></div><p>${escape(ability.outcomes?.[result.tier] || ability.effect || "")}</p><a class="content-link" data-link data-type="Item" data-uuid="${escape(ability.itemUuid)}">Full ability details</a></section>`;
+  const content=`<section class="hol-ability-outcome"><div class="hol-outcome-total"><strong>${escape(String(result.total))} · ${escape(game.i18n.localize(`HOL.Tiers.${result.tier}`))}</strong><span>${escape(attribute)} ${escape(modifier)} · ${(result.retained??[]).join(" · ")}</span></div>${ability.trigger?`<p class="hol-chat-trigger"><strong>Trigger:</strong> ${escape(ability.trigger)}</p>`:""}<p>${escape(ability.outcomes?.[result.tier] || ability.effect || "")}</p><a class="content-link" data-link data-type="Item" data-uuid="${escape(ability.itemUuid)}">Full ability details</a></section>`;
   void foundry.applications.api.DialogV2.prompt({classes:["heroes-of-legend","hol-native-dialog"],window:{title:ability.name},content,ok:{label:"Close"}}).catch(error=>ui.notifications.error(error.message));
 }

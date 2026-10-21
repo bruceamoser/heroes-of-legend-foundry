@@ -422,3 +422,12 @@
 .heroes-of-legend .hol-market td .hol-table-link:hover {text-decoration:underline;}
 .heroes-of-legend .hol-market td button:disabled {color:#6a6457;background:#ece5d5;opacity:1;}
 .heroes-of-legend .hol-market .unavailable {opacity:.55;}
+
+.heroes-of-legend.hol-language-picker .hol-picker-list button {color:#28251c;background:#f7f3e9;border:1px solid #d6cdb9;text-align:left;font:600 12px/1.35 system-ui,sans-serif;}
+.heroes-of-legend.hol-language-picker .hol-picker-list button:hover {background:#ece5d5;color:#182a20;}
+
+.heroes-of-legend .hol-condition-chip>[data-action=conditionDetails] {padding:0;border:0;background:transparent;color:inherit;font:inherit;text-decoration:underline dotted;min-height:0;width:auto;}
+.heroes-of-legend .hol-character-sheet [data-disclosure=supplies] button[data-action=depleteSupply] {display:grid;place-items:center;width:24px;height:24px;min-height:24px;padding:2px;margin:0;border:1px solid #b39253;background:#f1e6ce;}
+.heroes-of-legend .hol-character-sheet [data-disclosure=supplies] li {grid-template-columns:minmax(0,1fr) auto 24px 24px 24px;}
+
+.heroes-of-legend.hol-language-picker .hol-picker-list button {justify-content:flex-start;}

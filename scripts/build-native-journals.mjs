@@ -4,6 +4,7 @@ import { createHash } from "node:crypto";
 import { dirname, posix } from "node:path";
 import { fileURLToPath } from "node:url";
 import { stableFoundryId } from "./content/item-packs.mjs";
+import { chapterContentsHTML } from "./content/journal-sections.mjs";
 import { renderMarkdown } from "../src/sheets/creature-reference.mjs";
 
 const root = new URL("../", import.meta.url);
@@ -121,7 +122,7 @@ for (const audience of ["player-rules", "da-rules"]) {
     const sectionName = audience === "player-rules" ? playerSections[section] : section < daChapters.length ? nameOf(daChapters[section]) : "Source references";
     if (section !== lastSection) {
       const sectionId = stableFoundryId(`${audience}:${section}`, "native-rule-section");
-      entry.pages.push({_key:`!journal.pages!${id}.${sectionId}`,_id:sectionId,name:sectionName,type:"text",sort:entry.pages.length*100000,title:{show:true,level:1},ownership:{default:-1},flags:{"heroes-of-legend":{ruleSection:section}},text:{format:1,content:`<section class="hol-journal-page hol-journal-section"><h1>${sectionName}</h1><p>Heroes of Legend · ${audience === "player-rules" ? "Player’s Book" : "Dungeon Architect’s Guide & Bestiary"}</p></section>`}});
+      entry.pages.push({_key:`!journal.pages!${id}.${sectionId}`,_id:sectionId,name:sectionName,type:"text",sort:entry.pages.length*100000,title:{show:true,level:1},ownership:{default:-1},flags:{"heroes-of-legend":{ruleSection:section}},text:{format:1,content:chapterContentsHTML(sectionName,selected.filter(source=>sectionOf(source.path)===section).map(source=>({name:nameOf(source.path),uuid:uuid(source.path)})))}});
       lastSection = section;
     }
     const page = {_key:`!journal.pages!${id}.${pageId(record.path)}`,_id:pageId(record.path),name:nameOf(record.path),type:"text",sort:entry.pages.length*100000,title:{show:true,level:2},ownership:{default:-1},flags:{"heroes-of-legend":{ruleSource:{...record,commit:lock.commit}}},text:{format:1,content:`<article class="hol-journal-page">${markup(manuscripts.get(record.path),record.path).replace(/^<h1>[\s\S]*?<\/h1>/,"")}</article>`}};

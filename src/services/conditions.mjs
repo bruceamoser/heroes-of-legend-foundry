@@ -113,7 +113,13 @@ async function apply(id, {message = game.messages.get(id), request = message?.ge
       order: Date.now(),
     };
     validateContributions([condition]);
-    effects.push({
+    const existing=effects.find(effect=>active.some(c=>c.id===effect._id)&&!effect.disabled&&!effect.flags?.[ID]?.retired&&!effect.flags?.[ID]?.woundEvent && effect.flags?.[ID]?.condition?.key===condition.key && effect.flags[ID].condition.persistence===condition.persistence && (!["frightened","grappled"].includes(condition.key)||effect.flags[ID].condition.source===condition.source));
+    if(existing){
+      createdId=existing._id;
+      existing.flags[ID].condition.rating=CONDITION_KINDS[condition.key]==="binary"?1:existing.flags[ID].condition.rating+condition.rating;
+      validateContributions([existing.flags[ID].condition]);
+      existing.name=`${condition.key[0].toUpperCase()+condition.key.slice(1)} ${existing.flags[ID].condition.rating}${condition.persistence==="starred"?"*":""}`;
+    } else effects.push({
       _id: createdId,
       name: `${request.key[0].toUpperCase() + request.key.slice(1)} ${request.rating}${request.persistence === "starred" ? "*" : ""}`,
       img: conditionIcon(request.key),
@@ -130,7 +136,8 @@ async function apply(id, {message = game.messages.get(id), request = message?.ge
       effect.disabled = true;
       effect.statuses = [];
       effect.showIcon = CONST.ACTIVE_EFFECT_SHOW_ICON.NEVER;
-      effect.flags[ID].retired = { requestId: id, reason: "DA removed source" };
+      effect.flags[ID].retired = { requestId: id, reason: "Removed condition" };
+      if(request.key===contribution.key)for(const other of effects.filter(other=>active.some(c=>c.id===other._id&&c.key===request.key))){other.disabled=true;other.statuses=[];other.showIcon=CONST.ACTIVE_EFFECT_SHOW_ICON.NEVER;other.flags[ID].retired={requestId:id,reason:"Removed condition"};}
     } else if (request.kind === "adjust") {
       if (![-1,1].includes(request.delta)) throw new Error("Choose a one-step condition adjustment.");
       const rating = Math.min(10000,contribution.rating + request.delta);
@@ -199,8 +206,8 @@ async function apply(id, {message = game.messages.get(id), request = message?.ge
       "Condition effect needs reconciliation; do not apply it again.",
     );
   const condition = request.kind === "add"
-    ? {key: request.key, rating: request.rating, persistence: request.persistence}
-    : effects.find(effect => effect._id === request.effectId)?.flags?.[ID]?.condition ?? previousCondition;
+    ? effects.find(effect=>effect._id===createdId).flags[ID].condition
+    : request.kind==="remove"&&request.key===previousCondition?.key ? {...previousCondition,rating:active.filter(c=>c.key===request.key).reduce((n,c)=>n+c.rating,0)} : effects.find(effect => effect._id === request.effectId)?.flags?.[ID]?.condition ?? previousCondition;
   const removed = request.kind === "remove" || effects.find(effect => effect._id === request.effectId)?.disabled;
   await message.update({content:conditionContent(actor,condition,removed ? "removed" : request.kind === "add" ? "applied" : "updated")});
   return { status: "complete", replay: false };

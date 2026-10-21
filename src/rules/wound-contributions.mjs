@@ -230,3 +230,25 @@ export function selectedWoundRollSources(modifiers, applicability = {}) {
   }
   return sources;
 }
+
+/** Start broad physical/mental penalties on their matching roll family. The table
+ * can clear the visible checkbox when that activity does not use the injury. */
+export function defaultWoundApplicability(modifier,{mode='attribute',attributeKey,ability}={}) {
+  if(mode==='death')return 'does-not-apply';
+  if(modifier.context==='physical'&&['brawn','fortitude','agility'].includes(attributeKey))return 'applies';
+  if(modifier.context==='mental'&&['guile','knowledge','reason'].includes(attributeKey))return 'applies';
+  if(modifier.context==='intimidate'&&/\bintimidat/i.test(ability?.name??''))return 'applies';
+  return 'does-not-apply';
+}
+/** Human-readable effect text shared by recorded-wound displays. */
+export function describeWoundEffect(effect) {
+  const modifier=effect?.getFlag?.(ID,'woundModifier')??effect?.flags?.[ID]?.woundModifier??effect;
+  const condition=effect?.getFlag?.(ID,'condition')??effect?.flags?.[ID]?.condition;
+  if(condition)return `${condition.key} ${condition.rating}${condition.persistence==='starred'?'*':''}`;
+  if(modifier?.kind==='rollModifier')return `${modifier.amount} ${modifier.polarity==='bane'?'Bane':'Boon'}${modifier.amount===1?'':'s'} · ${modifier.printedContext??ROLL_CONTEXTS[modifier.context]??modifier.context}`;
+  if(modifier?.kind==='movementPenalty')return `Movement −${modifier.amount}`;
+  if(modifier?.kind==='condition')return `${modifier.key} ${modifier.rating}${modifier.persistence==='starred'?'*':''}`;
+  if(modifier?.kind==='forcedMovement')return `${modifier.direction} ${modifier.distance} square${modifier.distance===1?'':'s'}`;
+  if(modifier?.kind==='lastWords')return 'Last Words';
+  return effect?.name??'';
+}

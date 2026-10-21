@@ -1,3 +1,4 @@
+import {defaultWoundApplicability} from "../rules/wound-contributions.mjs";
 import { bindNetChoices } from "./net-control.mjs";
 import {
   referencePickerOptions,
@@ -88,7 +89,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
         JSON.stringify(basis.woundModifiers)
     ) {
       this.notice =
-        "Active wound modifiers changed. Optional wound adjustments have been reset.";
+        "Wound modifiers updated.";
       this.draft.woundApplicability = {};
     }
     this.basis = basis;
@@ -112,7 +113,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
     this.fears = fears;
     for (const source of fears) this.draft.perception[source] ??= "no";
     for (const modifier of basis.woundModifiers)
-      this.draft.woundApplicability[modifier.effectId] ??= "does-not-apply";
+      this.draft.woundApplicability[modifier.effectId] ??= defaultWoundApplicability(modifier,{mode:this.mode,attributeKey:this.attributeKey,ability:this.draft.abilityConfiguration});
     this.syncAdjustment();
     this.abilityOptions =
       this.mode === "defense"
@@ -130,8 +131,9 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       lookOverHere: this.mode === "defense" && Boolean(this.basis.incoming),
       references: this.mode === "death" ? [] : referencePickerOptions(this.actor, this.draft, {
         mode: this.mode,
+        attributeKey:this.attributeKey,initiatingItemId:this.draft.abilityItemId,
         defenderTokenUuid: this.defenderTokenUuid,
-      }),
+      }).filter(reference=>reference.id===this.draft.abilityItemId || !this.abilityOptions.some(option=>option.itemId===reference.id)),
       attributeEditable: this.mode === "attribute",
       attributeOptions: Object.keys(this.actor.system.attributes ?? {}).map((key) => ({
         key, name: game.i18n.localize(`HOL.Attributes.${key}`), selected: key === this.attributeKey,
@@ -164,7 +166,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       targetNotice: this.mode === "attack" && this.basis.targetTokenUuid ? `Target: ${fromUuidSync(this.basis.targetTokenUuid)?.name ?? "selected target"}` : "",
       draft: this.draft,
       adjustmentLabel: netLabel(this.draft.adjustment),
-      abilities: this.abilityOptions.map((option) => ({
+      abilities: this.abilityOptions.filter(option=>option.available||option.active).map((option) => ({
         ...option,
         reasonText: [...option.reasons, ...(option.warnings ?? [])].join(" "),
       })),
@@ -241,6 +243,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
     for (const option of options) {
       const row = rows.get(option.itemId);
       if (!row) continue;
+      row.hidden=!option.available&&!option.active;
       row.classList.toggle("hol-unavailable", !option.available);
       const button = row.querySelector('[data-action="useAbility"]');
       button.disabled = this.activating || !option.available;
@@ -327,6 +330,8 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
         if (event.target.name === "attributeKey" && this.mode === "attribute") {
           this.readDraft();
           this.attributeKey = event.target.value;
+          this.draft.woundApplicability={};
+          this.draft.adjustmentOverride=false;
           void this.render();
           return;
         }
@@ -341,7 +346,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       this.element,
       () => ({
         actor: this.actor,
-        options: { mode: this.mode, defenderTokenUuid: this.defenderTokenUuid },
+        options: { mode: this.mode, attributeKey:this.attributeKey, initiatingItemId:this.draft.abilityItemId, defenderTokenUuid: this.defenderTokenUuid },
       }),
       async () => {
         this.readDraft();

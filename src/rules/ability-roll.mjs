@@ -1,3 +1,4 @@
+import {reactionTrigger} from "./ability-roll-relevance.mjs";
 /** Printed roll metadata is independent of whether an effect has an automation adapter. */
 const ATTRIBUTES = new Set(['brawn', 'fortitude', 'agility', 'guile', 'knowledge', 'reason']);
 export function printedAbilityRoll(record) {
@@ -19,7 +20,7 @@ export function abilityRollConfiguration(item, record) {
     ...(rules?.notes ?? []).filter(note=>note.label === "Tags").map(note=>note.text)];
   const attack=tags.some(value=>String(value).split("/").some(tag=>tag.trim() === "Attack"));
   const ranged = attack && (/ranged weapon/i.test(JSON.stringify(record?.reference?.rules ?? {})) || record?.id === "ability-basic-ranged");
-  return {itemUuid:item.uuid, name:item.name, attribute, attack, ranged,
+  return {itemUuid:item.uuid, name:item.name, attribute, attack, ranged, trigger:reactionTrigger(record),
     effect:(record?.reference?.rules?.body ?? []).flatMap(block=>block.text ? [block.text] : block.items ?? []).join(" ") || String(item.system?.description ?? "").replace(/<[^>]*>/g," ").replace(/\s+/g," ").trim(),
     outcomes:Object.fromEntries(['weak','standard','strong'].map(tier => [tier,item.system?.outcomes?.[tier] || printed.outcomes[tier] || '']))};
 }

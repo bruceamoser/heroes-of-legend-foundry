@@ -41,6 +41,10 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
       favorite: CharacterSheet.favorite,
       useItem: CharacterSheet.useItem,
       supply: CharacterSheet.supply,
+      depleteSupply: CharacterSheet.depleteSupply,
+      editEquipment: CharacterSheet.editEquipment,
+      conditionDetails: CharacterSheet.conditionDetails,
+      woundDetails: CharacterSheet.woundDetails,
       resupply: CharacterSheet.resupply,
       crafting: CharacterSheet.crafting,
       startCraft: CharacterSheet.startCraft,
@@ -101,9 +105,10 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
       wounds: Object.values(this.actor.getFlag("heroes-of-legend", "wounds") ?? {}),
     }) : {};
     if(character){
+      const {describeWoundEffect}=await import("../rules/wound-contributions.mjs");
       const {manualScarRecords}=await import("../services/scars.mjs");
       const manual=new Set(manualScarRecords(this.actor).map(record=>record.id));
-      view.wounds=view.wounds.map(wound=>({...wound,manual:manual.has(wound.eventId),canTreat:this.actor.isOwner&&Boolean(wound.recoveryValue)&&(wound.recoveryProgress??0)<wound.recoveryValue,effectSummary:this.actor.effects.filter(effect=>effect.active&&!effect.getFlag("heroes-of-legend","retired")&&effect.getFlag("heroes-of-legend","woundEvent")===wound.eventId).map(effect=>effect.name).join(" · ")||"—"}));
+      view.wounds=view.wounds.map(wound=>({...wound,manual:manual.has(wound.eventId),canTreat:this.actor.isOwner&&Boolean(wound.recoveryValue)&&(wound.recoveryProgress??0)<wound.recoveryValue,effectSummary:this.actor.effects.filter(effect=>effect.active&&!effect.getFlag("heroes-of-legend","retired")&&effect.getFlag("heroes-of-legend","woundEvent")===wound.eventId).map(effect=>describeWoundEffect(effect.toObject())).join(" · ")||"—"}));
       view.priorWounds=this.actor.getFlag("heroes-of-legend","survival")?.wounds ?? view.wounds.length;
 
     }
@@ -128,7 +133,10 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
       craftingProjects: craftingRecipes.filter(recipe => recipe.project?.active),
       movement,
       bulk: movement?.bulk ?? view.bulk,
-      conditionSources: character ? actorContributions(this.actor).map((contribution,index,all) => ({...contribution, binary:CONDITION_KINDS[contribution.key] === "binary",starred:contribution.persistence === "starred",duration:CONDITION_KINDS[contribution.key] === "duration",canApply:["burning","freezing","bleeding"].includes(contribution.key) && all.findIndex(other => other.key === contribution.key) === index})) : [],
+      conditionSources: character ? Object.values(conditionSummary(actorContributions(this.actor))).filter(c=>c.active).map(summary=>{
+        const sources=actorContributions(this.actor).filter(c=>c.key===summary.key).sort((a,b)=>Number(a.persistence!=="temporary")-Number(b.persistence!=="temporary"));
+        return {...summary,id:sources[0].id,binary:summary.kind==="binary",starred:summary.persistent>0,duration:summary.kind==="duration",canApply:["burning","freezing","bleeding"].includes(summary.key)};
+      }) : [],
       conditionsList: character ? Object.values(conditionSummary(actorContributions(this.actor))).filter((c) => c.active) : [],
       armorDr: defenses?.resistances?.find(resistance => resistance.type === "physical")?.value ?? 0,
       resistances: defenses?.resistances ?? [],
@@ -201,7 +209,7 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
     root.querySelector("[data-current-hp]")?.addEventListener("change", async event => {
       try {
         const {currentHpInput}=await import("../rules/resource-input.mjs");
-        const hp=currentHpInput(event.target.value,this.actor.system.health.max);
+        const hp=currentHpInput(event.target.value,this.actor.system.health.max,this.actor.system.health.value);
         const {setOwnedHp} = await import("../services/documents.mjs");
         await setOwnedHp(this.actor, hp);
       } catch(error) { ui.notifications.error(error.message); await this.render(); }
@@ -358,6 +366,22 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
     dialog.draft.referenceItemIds = [ability.id];
     await dialog.render({force:true});
     return dialog;
+  }
+  static async depleteSupply(event,target) {
+    try{const item=this.actor.items.get(target.closest("[data-item-id]")?.dataset.itemId);const {depleteOwnedSupply}=await import("../services/inventory.mjs");await depleteOwnedSupply(this.actor,item);}
+    catch(error){ui.notifications.error(error.message);}
+  }
+  static async editEquipment(event,target) {
+    const item=this.actor.items.get(target.closest("[data-item-id]")?.dataset.itemId);
+    if(item?.isOwner)await item.sheet.render({force:true,editing:true});
+  }
+  static async woundDetails(event,target) {
+    const {openWoundDetails}=await import("../applications/wound-details.mjs");
+    await openWoundDetails(this.actor,target.dataset.eventId ?? target.closest("[data-wound-event]")?.dataset.woundEvent);
+  }
+  static async conditionDetails(event,target) {
+    try{const {showConditionDetails}=await import("../applications/condition-details.mjs");await showConditionDetails(target.dataset.key);}
+    catch(error){ui.notifications.error(error.message);}
   }
   static async supply(event, target) {
     const item=this.actor.items.get(target.closest("[data-item-id]")?.dataset.itemId);
@@ -536,7 +560,7 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
     try {const {requestCondition} = await import("../services/conditions.mjs");await requestCondition(this.actor,"adjust",{effectId:target.dataset.id,delta:Number(target.dataset.delta)});} catch(error) {ui.notifications.error(error.message);}
   }
   static async removeCondition(event,target) {
-    try {const {requestCondition} = await import("../services/conditions.mjs");await requestCondition(this.actor,"remove",{effectId:target.dataset.id});} catch(error) {ui.notifications.error(error.message);}
+    try {const {requestCondition} = await import("../services/conditions.mjs");await requestCondition(this.actor,"remove",{effectId:target.dataset.id,key:target.dataset.key});} catch(error) {ui.notifications.error(error.message);}
   }
   static async applyConditionDamage(event,target) {
     try {const {requestConditionApply} = await import("../services/condition-apply.mjs");await requestConditionApply(this.actor,target.dataset.key);} catch(error) {ui.notifications.error(error.message);}

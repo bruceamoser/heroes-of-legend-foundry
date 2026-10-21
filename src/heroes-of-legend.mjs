@@ -1,3 +1,4 @@
+import {registerNativeMovement} from "./services/native-movement.mjs";
 import { registerHOLTheme } from "./applications/theme.mjs";
 import { registerItemIcons } from "./services/item-icons.mjs";
 import { registerResupplyRequests } from "./services/resupply.mjs";
@@ -53,6 +54,7 @@ export const SYSTEM_ID = "heroes-of-legend";
 Hooks.once("init", () => {
   CONFIG.Actor.documentClass = HOLActor;
   registerHOLStatuses();
+  registerNativeMovement();
   registerConditionRequests();
   registerEquipmentRequests();
   registerInventoryRequests();
@@ -117,3 +119,5 @@ Hooks.on("renderCombatTracker", renderHOLCombatTracker);
 
 Hooks.on("renderChatMessageHTML", renderAttackCard);
 Hooks.on("renderChatMessageHTML", renderPlayerBasicMeleeCard);
+
+Hooks.once("ready",()=>{void import("./services/journals.mjs").then(({repairRuleChapterPages})=>repairRuleChapterPages()).catch(error=>console.warn("heroes-of-legend | Chapter contents",error));});

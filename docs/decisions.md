@@ -224,3 +224,29 @@ grant. Remove level above level 1 reverses that level and grant. Bruce explicitl
 allows a negative DP balance; validation flags overspending and instructs the player
 to remove purchased abilities. Level changes do not silently remove purchases or
 rebuild committed items. Safe-place confirmation is removed from this workflow.
+
+## October 21 follow-up corrections (#239)
+
+Bruce restores round participation tracking: one chosen participant at a time,
+mark their completed turn, and advance/reset the round after all participants
+finish. No action counters, side order or hand-use policing. Finish automatically
+resolves canonical condition damage then temporary rating decay, with a durable
+once-per-turn receipt. Starred, maintained and binary states retain their rules.
+Numbered conditions combine; show their aggregate rating and clickable rules.
+Creatures at zero HP gain Foundry’s Dead status; correcting HP removes only the
+system’s automatic Dead effect.
+
+Owned unlinked token actors may develop like world actors. Header HP accepts signed
+relative corrections. Ordinary equipment names/descriptions remain editable without
+changing catalog identity; arrangement is silent and table-controlled. Supplies
+explain die-size reduction and permit explicit manual depletion. Roll ability lists
+start closed and include only the initiating action and relevant modifier references;
+physical/mental wound modifiers start selected for the matching attribute family,
+remain visible and can be overridden for the specific context. Reaction cards show
+triggers, damage cards show applied resistance, and wound names open full details.
+The native V14 TokenRuler supplies movement costs/history and rendering; HOL only
+colors its existing segments/highlights by Speed and twice Speed.
+
+Blank rulebook section dividers become chapter contents with native links. Updating
+existing world copies repairs only exact untouched old divider bodies, preserving
+all source pages and user edits.

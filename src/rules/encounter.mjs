@@ -135,28 +135,43 @@ export function changeRoster(state, { id, side, mode, reason = "" }) {
   return audit(next, "roster", { id, side, mode, reason: reason.trim() });
 }
 
-/** Current table-controlled turn selector. Legacy side/round algorithms above
- * remain available for old records, but never gate the active tracker. */
+/** Table-selected turns, once per participant each round; no side or action gates. */
 export function startTurnSelection(participants) {
-  const roster = participants.map(participant);
-  if (!roster.length || new Set(roster.map(p => p.id)).size !== roster.length)
-    throw new Error("Choose a nonempty unique roster.");
-  return {schemaVersion:2,revision:1,round:1,serial:0,current:null,
-    roster:roster.map(p=>({...p,withdrawn:false})),history:[]};
+  const roster=participants.map(participant);
+  if(!roster.length || new Set(roster.map(p=>p.id)).size!==roster.length)throw new Error("Choose a nonempty unique roster.");
+  return {schemaVersion:3,revision:1,round:1,serial:0,current:null,acted:[],roster:roster.map(p=>({...p,withdrawn:false})),history:[]};
+}
+/** Derive the current native roster without mutating the saved encounter.
+ * A deleted last participant can complete a round even when nobody can Finish.
+ * Display and execution derive from the same saved state, so previews cannot
+ * repeatedly advance the persisted round. */
+export function reconcileTurnRoster(state,participants) {
+  const next=structuredClone(state),roster=participants.map(participant);
+  if(new Set(roster.map(p=>p.id)).size!==roster.length)throw new Error("Choose a unique roster.");
+  const ids=new Set(roster.map(p=>p.id));
+  next.roster=roster.map(p=>({...p,withdrawn:false}));
+  next.acted=[...new Set((next.acted??[]).filter(id=>ids.has(id)))];
+  if(next.current&&!ids.has(next.current))next.current=null;
+  if(!next.current&&roster.length&&roster.every(p=>next.acted.includes(p.id))){next.round++;next.acted=[];}
+  return next;
 }
 export function availableTurnParticipants(state) {
-  return state.current ? [] : state.roster.filter(p=>!p.withdrawn);
+  return state.current?[]:state.roster.filter(p=>!p.withdrawn&&!(state.acted??[]).includes(p.id));
 }
 export function selectTurn(state,id) {
   if(state.current)throw new Error("Finish the current turn before choosing another.");
-  if(!state.roster.some(p=>p.id===id&&!p.withdrawn))throw new Error("Choose an encounter participant.");
-  const next=structuredClone(state);next.schemaVersion=2;next.current=id;next.serial=(next.serial??0)+1;
-  delete next.budgets;delete next.acted;delete next.opening;delete next.nextSide;delete next.startingSide;
+  if(!availableTurnParticipants(state).some(p=>p.id===id))throw new Error("Choose a participant who has not acted this round.");
+  const next=structuredClone(state);next.schemaVersion=3;next.current=id;next.serial=(next.serial??0)+1;next.acted??=[];
+  delete next.budgets;delete next.opening;delete next.nextSide;delete next.startingSide;
   return audit(next,"start",{id});
 }
 export function finishSelectedTurn(state) {
   if(!state.current)throw new Error("No current turn to finish.");
-  const next=structuredClone(state),id=next.current;next.current=null;next.schemaVersion=2;
-  delete next.budgets;delete next.acted;delete next.opening;delete next.nextSide;delete next.startingSide;
-  return audit(next,"end",{id});
+  const next=structuredClone(state),id=next.current;next.current=null;next.schemaVersion=3;
+  next.acted=[...new Set([...(next.acted??[]),id])];
+  delete next.budgets;delete next.opening;delete next.nextSide;delete next.startingSide;
+  audit(next,"end",{id});
+  const active=next.roster.filter(p=>!p.withdrawn);
+  if(active.length&&active.every(p=>next.acted.includes(p.id))){next.round++;next.acted=[];}
+  return next;
 }

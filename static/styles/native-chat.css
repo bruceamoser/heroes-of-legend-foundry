@@ -216,3 +216,37 @@
 .message-content .hol-wound-chat button {margin:2px 6px 5px;width:auto;min-height:22px;padding:2px 6px;font:10.5px/1.2 system-ui,sans-serif;}
 .message-content:has(.hol-wound-chat) .dice-roll {font-size:11px;margin:3px 0;}
 .message-content:has(.hol-wound-chat) .dice-roll :is(.dice-formula,.dice-total) {font-size:12px;line-height:1.25;padding:2px;margin:2px 0;}
+
+/* Table-first chat density: a bold label, the result, then explicit actions.
+   Full references and correction guidance stay in native collapsed details. */
+.message-content .hol-chat-card .hol-chat-header {padding:4px 6px;border-bottom-width:1px;}
+.message-content .hol-chat-card .hol-chat-header h3 {font:700 11px/1.3 system-ui,sans-serif;margin:0;text-transform:none;letter-spacing:normal;}
+.message-content .hol-chat-card .hol-chat-bar {padding:3px 6px;font-size:10px;}
+.message-content .hol-chat-card .hol-chat-resolution {padding:4px 6px;}
+.message-content .hol-chat-card .hol-chat-die {width:21px;height:22px;font-size:14px;}
+.message-content .hol-chat-card .hol-chat-verdict strong {font-size:21px;}
+.message-content .hol-chat-card .hol-chat-verdict span {font-size:10px;}
+.message-content .hol-chat-card .hol-chat-effect {padding:4px 6px;font-size:11px;}
+.message-content .hol-chat-card .hol-chat-footer {padding:4px 6px;justify-content:flex-start;gap:6px;flex-wrap:wrap;}
+.message-content .hol-chat-card .hol-chat-footer button {margin:0;min-height:23px;padding:3px 7px;font:600 10.5px/1.25 system-ui,sans-serif;}
+.message-content .hol-chat-card.hol-roll-summary .hol-chat-footer .hol-apply-damage {background:#15221c;color:#f7f3e9;border:1px solid #15221c;}
+.message-content .hol-chat-card .hol-chat-details {font-size:10px;padding:3px 6px;}
+.message-content .hol-chat-card .hol-chat-details .hol-roll-references {margin:4px 0;line-height:1.4;}
+.message-content .hol-chat-card .hol-reference-rules :is(h1,h2,h3,h4) {font:700 11px/1.3 system-ui,sans-serif;}
+.message-content .hol-wound-chat header {font:700 11px/1.3 system-ui,sans-serif;padding:4px 6px;}
+.message-content .hol-damage-chat {font:11px/1.35 system-ui,sans-serif;color:#28251c;background:#f7f3e9;border:1px solid #b7aa8b;border-radius:4px;overflow:hidden;}
+.message-content .hol-damage-chat .hol-damage-label {margin:0;padding:4px 6px;background:#15221c;color:#f7f3e9;border-bottom:1px solid #b39253;font-size:11px;}
+.message-content .hol-damage-chat .hol-damage-label span {font-size:10px;color:#d4c7a9;}
+.message-content .hol-damage-chat table {width:calc(100% - 12px);margin:3px 6px;border:0;background:none;font:inherit;table-layout:auto;}
+.message-content .hol-damage-chat :is(thead,tbody,tr) {background:none;border:0;box-shadow:none;}
+.message-content .hol-damage-chat :is(th,td) {padding:3px 3px;vertical-align:top;border:0;font:inherit;text-align:left;line-height:1.3;}
+.message-content .hol-damage-chat thead th {font-size:10px;font-weight:700;color:#6a6457;border-bottom:1px solid #d6cdb9;}
+.message-content .hol-damage-chat tbody th {font-weight:600;overflow-wrap:anywhere;}
+.message-content .hol-damage-chat :is(th,td):nth-child(n+2) {white-space:nowrap;text-align:right;font-variant-numeric:tabular-nums;}
+.message-content .hol-damage-chat tbody tr+tr :is(th,td) {border-top:1px solid #e9e1d1;}
+.message-content .hol-damage-chat details {padding:3px 6px;border-top:1px solid #d6cdb9;font-size:10px;color:#6a6457;}
+.message-content .hol-damage-chat summary {cursor:pointer;}
+.message-content .hol-damage-chat details p {margin:4px 0;font:inherit;}
+/* The sidebar theme also styles h3 with an ID selector. Keep chat labels plain bold. */
+body.hol-theme #sidebar .message-content .hol-chat-card .hol-chat-header h3,
+body.hol-theme #sidebar .message-content .hol-chat-card .hol-reference-rules :is(h1,h2,h3,h4) {font:700 11px/1.3 system-ui,sans-serif;letter-spacing:normal;text-transform:none;}

@@ -1,3 +1,4 @@
+import { createActionMessage, shouldProcessRequest } from "./authority.mjs";
 import {
   registerAuthority,
   ensureAuthorityReady,
@@ -24,7 +25,7 @@ const ID = "heroes-of-legend";
 export function registerCreationAuthority() {
   registerAuthority();
   Hooks.on("createChatMessage", (message) => {
-    if (message.getFlag(ID, "creationRequest") && isCreationAuthority())
+    if (message.getFlag(ID, "creationRequest") && shouldProcessRequest(message))
       resolveCreationRequest(message.id).catch(async (error) => {
         ui.notifications.error(error.message);
         await message.update({
@@ -38,13 +39,9 @@ export async function requestCreation(actor, revision) {
   if (!actor.testUserPermission(game.user, "OWNER"))
     throw new Error("You must own the character.");
   await ensureAuthorityReady();
-  if (!game.settings.get(ID, "creationAuthorityClient"))
-    throw new Error(
-      "A GM must enable character processing in their creation window first.",
-    );
-  return ChatMessage.create({
+  return createActionMessage({
     content:
-      "Character creation requested. The assigned GM window will validate and commit the saved draft.",
+      "Saving character choices.",
     whisper: game.users
       .filter((u) => u.isGM || u.id === game.user.id)
       .map((u) => u.id),
@@ -59,7 +56,7 @@ export async function waitForCreation(actor, requestId, revision, { timeout = 30
     if (receipt?.requestId === requestId && receipt.revision === revision && receipt.status === "complete") return receipt;
     const failure = game.messages.get(requestId)?.getFlag(ID, "creationFailure");
     if (failure) throw new Error(failure);
-    if (Date.now() - start >= timeout) throw new Error("Character processing has not completed. Your draft is saved; keep this window open and check the saved action in Interrupted actions before retrying.");
+    if (Date.now() - start >= timeout) throw new Error("Character processing has not completed. Your draft is saved; keep this window open and retry Save to apply your saved choices.");
     await new Promise(resolve => setTimeout(resolve, interval));
   }
 }

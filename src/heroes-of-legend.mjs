@@ -35,7 +35,6 @@ import {
 import { HOLCombat } from "./documents/combat.mjs";
 import { registerCombatRequests } from "./services/combat.mjs";
 import { renderHOLCombatTracker } from "./applications/combat-tracker.mjs";
-import { registerAuthorityPanel } from "./applications/authority.mjs";
 import { registerAdvancement } from "./services/advancement.mjs";
 import { registerCreationAuthority } from "./services/creation.mjs";
 import { registerLanguageSettings } from "./applications/languages.mjs";
@@ -62,15 +61,10 @@ Hooks.once("init", () => {
   registerCraftingRequests();
   registerPotionRequests();
   registerItemShortcuts();
-  registerDamageRequests();
   registerRecoveryRequests();
   registerWoundRequests();
   registerWoundTreatmentRequests();
   registerSurvivalRequests();
-  registerAbilityRequests();
-  registerNpcAttacks();
-  registerPlayerBasicMeleeRequests();
-  registerDefenseResponses();
   CONFIG.Combat.documentClass = HOLCombat;
   registerCombatRequests();
   registerAuthorityPrototype();
@@ -79,7 +73,7 @@ Hooks.once("init", () => {
   registerRulesLibrary();
   registerHOLTheme();
   registerAdvancement();
-  registerAuthorityPanel();
+  // Explicit actions do not require an automation management panel.
   registerTimingPrototype();
   CONFIG.Actor.dataModels.character = CharacterData;
   CONFIG.Actor.dataModels.creature = CreatureData;
@@ -119,6 +113,9 @@ Hooks.on("renderChatMessageHTML", renderRollSummary);
 Hooks.on("renderChatMessageHTML", renderPotionProposal);
 
 Hooks.on("renderCombatTracker", renderHOLCombatTracker);
+Hooks.on("updateActor", (_actor, changes) => {
+  if (changes.flags?.[SYSTEM_ID]?.actionUses) ui.combat?.render();
+});
 
 Hooks.on("renderChatMessageHTML", renderAttackCard);
 Hooks.on("renderChatMessageHTML", renderPlayerBasicMeleeCard);

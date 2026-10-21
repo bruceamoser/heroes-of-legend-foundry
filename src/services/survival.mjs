@@ -1,3 +1,4 @@
+import { createActionMessage, shouldProcessRequest } from "./authority.mjs";
 import { ensureAuthorityReady } from "./authority.mjs";
 import {
   chooseSurvival,
@@ -15,7 +16,7 @@ import {
 const ID = "heroes-of-legend";
 export async function requestSurvival(actor, basis, draft, kind = "roll") {
   await ensureAuthorityReady();
-  return ChatMessage.create({
+  return createActionMessage({
     content: `Survival ${kind} requested.`,
     whisper: game.users
       .filter((u) => u.isGM || u.id === game.user.id)
@@ -207,7 +208,7 @@ async function apply(id) {
 }
 export function registerSurvivalRequests() {
   Hooks.on("createChatMessage", (message) => {
-    if (message.getFlag(ID, "survivalRequest") && isCreationAuthority())
+    if (message.getFlag(ID, "survivalRequest") && shouldProcessRequest(message))
       resolveSurvivalRequest(message.id).catch(async (error) => {
         ui.notifications.error(error.message);
         await message.update({

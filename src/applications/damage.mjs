@@ -107,6 +107,8 @@ export class DamagePanel extends foundry.applications.api.HandlebarsApplicationM
     preview();
   }
   static async apply() {
+    if (this.applying) return;
+    this.applying = true;
     try {
       const draft = this.draft();
       damagePreview(this.actor, this.basis, draft);
@@ -120,7 +122,7 @@ export class DamagePanel extends foundry.applications.api.HandlebarsApplicationM
       await this.close();
     } catch (e) {
       ui.notifications.error(e.message);
-    }
+    } finally { this.applying = false; }
   }
 }
 export async function openDefenseDamage(message) {

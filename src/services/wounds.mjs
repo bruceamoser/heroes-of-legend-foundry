@@ -68,21 +68,19 @@ export async function applyWoundOperation(id, { message = game.messages.get(id),
       );
     return { status: "complete", replay: true };
   }
-  assertNoPendingTurn(actor);
+
   if (request.kind === "record") {
     if (request.eventId !== null || JSON.stringify(woundBasis(actor, null)) !== JSON.stringify(request.basis))
       throw new Error("Character state changed. Review the wound count and record again.");
     const existing = actor.getFlag(ID, "survival");
-    if (!existing && actor.system.health.value === 0)
-      throw new Error("Reconcile this zero-HP character’s survival state before recording an additional wound.");
-    const state = existing ? structuredClone(existing) : survivalState({
-      hp: actor.system.health.value,
-      maxHp: actor.system.health.max,
-      gritAvailable: actor.system.grit.available,
-      wounds: Object.keys(actor.getFlag(ID, "wounds") ?? {}).length,
-    });
+    // HP is freely editable. A wound click uses current HP and preserves the
+    // recorded wound count, without requiring a separate reconciliation action.
+    const state = existing && existing.hp === actor.system.health.value
+      ? structuredClone(existing)
+      : survivalState({ hp: actor.system.health.value, maxHp: actor.system.health.max,
+          gritAvailable: actor.system.grit.available,
+          wounds: existing?.wounds ?? Object.keys(actor.getFlag(ID, "wounds") ?? {}).length });
     validateSurvival(state);
-    if (state.hp !== actor.system.health.value) throw new Error("Reconcile HP and survival before recording an additional wound.");
     const priorWounds = state.wounds;
     state.wounds += 1;
     validateSurvival(state);
@@ -350,13 +348,4 @@ export async function applyWoundOperation(id, { message = game.messages.get(id),
 }
 export function registerWoundRequests() {
   import("./wound-roll.mjs").then(({registerWoundChatActions})=>registerWoundChatActions());
-  Hooks.on("createChatMessage", (message) => {
-    if (message.getFlag(ID, "woundRequest") && isCreationAuthority())
-      resolveWoundRequest(message.id).catch(async (error) => {
-        ui.notifications.error(error.message);
-        await message.update({
-          content: `Wound needs attention: ${foundry.utils.escapeHTML(error.message)}`,
-        });
-      });
-  });
 }

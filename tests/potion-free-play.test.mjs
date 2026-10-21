@@ -55,7 +55,7 @@ async function fixture() {
   const url = new URL('../src/services/potions.mjs', import.meta.url);
   const module = new SourceTextModule(await readFile(url, 'utf8'), { context });
   const overrides = {
-    './authority.mjs': {ensureAuthorityReady:async()=>{}, isCreationAuthority: () => true,
+    './authority.mjs': {ensureAuthorityReady:async()=>{}, createActionMessage: data => context.ChatMessage.create(data), shouldProcessRequest: () => true, isCreationAuthority: () => true,
       enqueueCharacterOperation: async (run) => { if (game.user !== gm) throw new Error('coordinator required'); return run(); },
       writeAuthorityDocument: async (document, changes) => {
         writes.push({ uuid: document.uuid, changes: structuredClone(changes) });
@@ -153,7 +153,7 @@ test('free-play native target selection preserves token and synthetic Actor iden
   assert.equal(result.participantId, target.actorUuid);
 });
 
-test('Actor-host partial operation blocks encounter admission for giver or recipient without mutation', () => {
+test('legacy Actor potion checkpoint does not block an explicit encounter action', () => {
   const previous = globalThis.game;
   const operation = { giver: { actorUuid: 'Actor.giver' }, recipient: { actorUuid: 'Actor.recipient' } };
   const host = { uuid: 'Actor.giver', getFlag(_id, key) {
@@ -164,7 +164,7 @@ test('Actor-host partial operation blocks encounter admission for giver or recip
     for (const uuid of ['Actor.giver', 'Actor.recipient']) {
       const combat = { combatants: [{ actor: { uuid, getFlag: () => null } }] };
       const before = JSON.stringify(operation);
-      assert.throws(() => assertNoPendingActorPotion(combat), /pending healing-potion/);
+      assert.doesNotThrow(() => assertNoPendingActorPotion(combat));
       assert.equal(JSON.stringify(operation), before);
     }
     assert.doesNotThrow(() => assertNoPendingActorPotion({ combatants: [{ actor: { uuid: 'Actor.unrelated', getFlag: () => null } }] }));
@@ -179,7 +179,7 @@ test('inactive encounter history does not prevent ordinary free play', async () 
   assert.equal(result.message.getFlag(ID, 'potionRequest').outsideCombat, true);
 });
 
-for (const pendingFlag of ['pendingAbility', 'pendingTurnPhase']) test(`free-play potion refuses recipient's ${pendingFlag} reservation before healing or supply`, async () => {
+for (const pendingFlag of ['pendingAbility', 'pendingTurnPhase']) test(`explicit potion ignores recipient's old ${pendingFlag} reservation`, async () => {
   const f = await fixture();
   f.game.combats.push({ uuid: 'Combat.pending', documentName: 'Combat', active: false,
     combatants: [{ actor: f.recipient }],
@@ -187,10 +187,10 @@ for (const pendingFlag of ['pendingAbility', 'pendingTurnPhase']) test(`free-pla
   f.game.user = f.gm;
   const request = await f.service.requestPotionUse({ sourceItemUuid: f.bottle.uuid,
     recipientTokenUuid: f.token.uuid, daWillingness: true });
-  await assert.rejects(f.service.resolvePotionRequest(request.message.id), /pending encounter action/);
-  assert.equal(f.writes.length, 0);
-  assert.equal(f.recipient.system.health.value, 2);
-  assert.equal(f.rolls(), 0);
+  await f.service.resolvePotionRequest(request.message.id);
+  assert.ok(f.writes.length > 0);
+  assert.equal(f.recipient.system.health.value, 8);
+  assert.equal(f.rolls(), 1);
 });
 
 test('native encounter self preview never sends the same token to two-token adjacency', async () => {

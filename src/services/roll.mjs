@@ -1,4 +1,4 @@
-import { abilityRollConfiguration, assertAbilityConfiguration } from "../rules/ability-roll.mjs";
+import { abilityRollConfiguration, assertAbilityConfiguration, outcomeDamage } from "../rules/ability-roll.mjs";
 import { loadCatalogs } from "./catalog.mjs";
 import { selectedReferences } from "./reference-play.mjs";
 import { incomingOutcome } from "../rules/creature-actions.mjs";
@@ -19,25 +19,17 @@ export async function rollPrepared(actor, basis, draft) {
     basis.defenderTokenUuid,
     {
       actorTokenUuid: basis.actorTokenUuid,
-      targetTokenUuid: basis.targetTokenUuid,
+      targetTokenUuid: basis.mode === "attack" ? null : basis.targetTokenUuid,
     },
   );
   if (JSON.stringify(current) !== JSON.stringify(basis))
     throw new Error("Roll sources changed. Review the dialog before rolling.");
   const prepared = prepareRoll(current, draft);
-  if (basis.mode === "death") {
-    const { requestSurvival } = await import("./survival.mjs");
-    return requestSurvival(actor, basis, draft, "roll");
-  }
-  if (basis.attackMessageId) {
-    const { requestDefense } = await import("./defense-responses.mjs");
-    return requestDefense(actor, basis, draft);
-  }
   const mode = game.settings.get("core", "messageMode");
   const { roll, snapshot } = await evaluatePreparedRoll(actor, basis, draft, {
     allowInteractive: mode !== "blind",
   });
-  return roll.toMessage(
+  const message = await roll.toMessage(
     {
       speaker: ChatMessage.getSpeaker({ actor }),
       flavor: game.i18n.localize(
@@ -47,6 +39,12 @@ export async function rollPrepared(actor, basis, draft) {
     },
     { messageMode: mode },
   );
+  if (draft.abilityItemId) {
+    const {spendOwnedAction} = await import("./action-uses.mjs");
+    await spendOwnedAction(actor, actor.items.get(draft.abilityItemId)?.system.activity.action, {operationId: message.id})
+      .catch(error => ui.notifications.warn(`Roll posted; action counter needs correction: ${error.message}`));
+  }
+  return message;
 }
 export async function evaluatePreparedRoll(
   actor,
@@ -85,6 +83,7 @@ export async function evaluatePreparedRoll(
     rollerId,
     attackMessageId: basis.attackMessageId,
     attackOutcome: incomingOutcome(basis.incoming, result.tier),
+    targetTokenUuid: basis.targetTokenUuid ?? null,
     attributeKey: basis.attributeKey,
     mode: basis.mode,
     perception: structuredClone(draft.perception ?? {}),
@@ -98,6 +97,18 @@ export async function evaluatePreparedRoll(
 }
 
 export function renderRollSummary(message, element) {
+  const reference = message.getFlag("heroes-of-legend", "abilityReference");
+  if (message.isContentVisible && /\bdamage\b/i.test(reference?.damageText ?? "") && !element.querySelector(".hol-reference-damage")) {
+    const button = document.createElement("button"); button.type = "button"; button.className = "hol-reference-damage";
+    button.textContent = "Apply Damage…";
+    button.addEventListener("click", async () => {
+      if (button.disabled) return; button.disabled = true;
+      try { const {promptChatDamage} = await import("../dialogs/chat-damage.mjs"); await promptChatDamage(message, reference.damageText); }
+      catch (error) { ui.notifications.error(error.message); }
+      finally { button.disabled = false; }
+    });
+    element.querySelector(".hol-reference-card")?.append(button);
+  }
   const result = message.getFlag("heroes-of-legend", "roll");
   if (
     !result ||
@@ -112,11 +123,11 @@ export function renderRollSummary(message, element) {
   const header = document.createElement("header");
   header.className = "hol-chat-header";
   const identity = document.createElement("div"), actorName = document.createElement("small"), heading = document.createElement("h3");
-  actorName.textContent = `${message.speaker?.alias ?? ""} · ${result.mode === "defense" ? "Defense" : "Check"}`;
+  actorName.textContent = `${message.speaker?.alias ?? ""} · ${result.mode === "defense" ? "Defense" : result.mode === "attack" ? "Attack" : "Check"}`;
   const attributeName = game.i18n.localize(`HOL.Attributes.${result.resolvedAttributeKey ?? result.attributeKey}`);
   const incoming = game.messages?.get?.(result.attackMessageId)?.getFlag("heroes-of-legend", "attackCard");
   heading.textContent = result.mode === "defense" ? `Defend${incoming?.title ? ` · ${incoming.title}` : ""}` : result.ability?.name ?? "Attribute check";
-  identity.append(actorName, heading);
+  identity.append(heading);
   const actor = game.actors?.get?.(message.speaker?.actor);
   header.append(identity);
   const bar = document.createElement("div"); bar.className = "hol-chat-bar";
@@ -155,6 +166,11 @@ export function renderRollSummary(message, element) {
     outcome.textContent = result.ability.outcomes[result.tier];
     summary.append(outcome);
   }
+  if (result.mode === "death") {
+    const effect = document.createElement("p"); effect.className = "hol-chat-effect";
+    effect.textContent = result.natural === "fumble" ? "Two death marks." : result.natural === "critical" ? "Regain 1 HP." : result.tier === "weak" ? "One death mark." : result.tier === "strong" ? "Stabilize." : "No change.";
+    effect.append(" Update the character when ready."); summary.append(effect);
+  }
   if (result.natural !== "none") {
     const natural = document.createElement("p");
     natural.className = "hol-chat-natural";
@@ -170,37 +186,39 @@ export function renderRollSummary(message, element) {
   });
   detail.className = "hol-chat-details";
   detail.append(detailLabel, audit);
+  const damage = result.attackOutcome?.resolution !== "reference" && Number.isSafeInteger(result.attackOutcome?.damage)
+    ? [{type: result.attackOutcome.type, amount: result.attackOutcome.damage}]
+    : outcomeDamage(result.ability?.outcomes?.[result.tier] ?? result.attackOutcome?.text);
   if (result.attackOutcome) {
     const outcome = document.createElement("p");
     outcome.className = "hol-chat-effect";
-    const settledDamage = message.getFlag("heroes-of-legend", "defenseDamage");
-    outcome.textContent = settledDamage
-      ? `${settledDamage.event.total} damage applied · HP ${settledDamage.before} → ${settledDamage.after}${settledDamage.wound ? " · Wound awaiting resolution" : ""}`
-      : result.attackOutcome.resolution === "reference"
-        ? `${result.attackOutcome.text} · Resolve costs and effects manually.`
-        : `${result.attackOutcome.damage} physical damage before resistance. Review and apply damage.`;
+    outcome.textContent = result.attackOutcome.resolution === "reference"
+      ? result.attackOutcome.text
+      : `${result.attackOutcome.damage} ${result.attackOutcome.type} damage before resistance.`;
     summary.append(outcome);
-    if (
-      (game.user.isGM || (result.actorUuid && fromUuidSync(result.actorUuid)?.isOwner)) &&
-      !settledDamage &&
-      result.attackMessageId &&
-      result.attackOutcome.resolution !== "reference"
-    ) {
-      const button = document.createElement("button");
-      button.type = "button";
-      button.textContent = "Review and apply damage";
-      button.addEventListener("click", async () => {
-        try {
-          const { openDefenseDamage } = await import(
-            "../applications/damage.mjs"
-          );
-          await openDefenseDamage(message);
-        } catch (e) {
-          ui.notifications.error(e.message);
+  }
+  const damageText = result.ability?.outcomes?.[result.tier] ?? result.attackOutcome?.text ?? "";
+  let damageButton;
+  if (damage || /\bdamage\b/i.test(damageText)) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "hol-apply-damage";
+    button.textContent = "Apply Damage";
+    button.title = "Apply to all selected tokens";
+    button.addEventListener("click", async () => {
+      if (button.disabled) return;
+      button.disabled = true;
+      try {
+        const { applySelectedDamage } = await import("./explicit-damage.mjs");
+        if (damage) await applySelectedDamage(damage, {sourceMessageId: message.id, label: heading.textContent});
+        else {
+          const {promptChatDamage} = await import("../dialogs/chat-damage.mjs");
+          await promptChatDamage(message, damageText);
         }
-      });
-      summary.append(button);
-    }
+      } catch (error) { ui.notifications.error(error.message); }
+      finally { button.disabled = false; }
+    });
+    damageButton = button;
   }
   if (result.references?.length) {
     const references = document.createElement("p");
@@ -216,7 +234,7 @@ export function renderRollSummary(message, element) {
       link.textContent = reference.name;
       references.append(link);
     }
-    summary.append(references);
+    detail.append(references);
   }
   if (result.sources?.length) {
     const list = document.createElement("ul");
@@ -228,10 +246,8 @@ export function renderRollSummary(message, element) {
     detail.append(list);
   }
   const footer = document.createElement("footer"); footer.className = "hol-chat-footer";
-  const status = document.createElement("span");
-  status.textContent = message.getFlag("heroes-of-legend", "defenseDamage") ? "Damage applied" : "Rolled";
-  footer.append(status);
-  if (result.mode === "defense" && result.attackMessageId || actor?.isOwner && result.mode === "attribute") {
+  if (damageButton) footer.append(damageButton);
+  if (result.mode === "defense" && result.attackMessageId || actor?.isOwner && ["attribute", "attack"].includes(result.mode)) {
     const again = document.createElement("button"); again.type = "button"; again.textContent = "Roll again";
     again.addEventListener("click", async () => {
       try {
@@ -258,7 +274,7 @@ export function renderRollSummary(message, element) {
   // Keep Foundry's evaluated dice and tooltip controls available without a
   // second primary result panel above the approved card. Never rebuild dice.
   const nativeNodes = [...content.querySelectorAll(".dice-roll"), ...element.querySelectorAll(".message-flavor, .flavor-text")];
-  if (["attribute", "defense"].includes(result.mode))
+  if (["attribute", "attack", "defense"].includes(result.mode))
     nativeNodes.push(...Array.from(content.childNodes).filter(node => node.nodeType === 3 && node.textContent.trim()));
   if (nativeNodes.length) {
     detail.classList.add("hol-native-roll-details");

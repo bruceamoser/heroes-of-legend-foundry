@@ -1,3 +1,4 @@
+import { createActionMessage, shouldProcessRequest } from "./authority.mjs";
 import { ensureAuthorityReady } from "./authority.mjs";
 import { assertNoPendingTurn } from "./turn-lock.mjs";
 import { damageBasis } from "./damage.mjs";
@@ -69,13 +70,11 @@ export function recoveryPreview(actor, basis, draft) {
     }
   } else {
     if (actor.type === "character") {
-      if (basis.survival?.hp !== undefined && basis.survival.hp !== basis.hp)
-        throw new Error("Reconcile the edited HP and survival state first.");
-      if (!basis.survival && basis.hp === 0)
-        throw new Error("Record the existing survival state before recovery.");
       state = basis.survival
         ? {
             ...basis.survival,
+            hp: basis.hp,
+            ...(basis.hp > 0 ? {status: "active", marks: 0, due: null, choice: null} : basis.survival.status === "active" ? {status: "dying", marks: 0, due: null, choice: null} : {}),
             maxHp: basis.maxHp,
             gritAvailable: basis.gritAvailable,
           }
@@ -128,7 +127,7 @@ export function recoveryPreview(actor, basis, draft) {
 }
 export async function requestRecovery(actor, basis, draft) {
   await ensureAuthorityReady();
-  return ChatMessage.create({
+  return createActionMessage({
     content: "Recovery adjustment requested.",
     whisper: game.users.filter((u) => u.isGM || u.id === game.user.id).map((u) => u.id),
     flags: {
@@ -194,7 +193,7 @@ async function apply(id) {
 }
 export function registerRecoveryRequests() {
   Hooks.on("createChatMessage", (message) => {
-    if (message.getFlag(ID, "recoveryRequest") && isCreationAuthority())
+    if (message.getFlag(ID, "recoveryRequest") && shouldProcessRequest(message))
       resolveRecoveryRequest(message.id).catch(async (error) => {
         ui.notifications.error(error.message);
         await message.update({

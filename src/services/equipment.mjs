@@ -1,3 +1,4 @@
+import { createActionMessage, shouldProcessRequest } from "./authority.mjs";
 import { ensureAuthorityReady } from "./authority.mjs";
 import { assertNoPendingTurn } from "./turn-lock.mjs";
 import { handLayout } from "../rules/hands.mjs";
@@ -46,7 +47,7 @@ export async function requestEquipment(
   reason = "",
 ) {
   await ensureAuthorityReady();
-  return ChatMessage.create({
+  return createActionMessage({
     content: "Hand arrangement requested.",
     whisper: game.users
       .filter((u) => u.isGM || u.id === game.user.id)
@@ -167,7 +168,7 @@ async function apply(id) {
 }
 export function registerEquipmentRequests() {
   Hooks.on("createChatMessage", (message) => {
-    if (message.getFlag(ID, "equipmentRequest") && isCreationAuthority())
+    if (message.getFlag(ID, "equipmentRequest") && shouldProcessRequest(message))
       resolveEquipmentRequest(message.id).catch(async (error) => {
         ui.notifications.error(error.message);
         await message.update({

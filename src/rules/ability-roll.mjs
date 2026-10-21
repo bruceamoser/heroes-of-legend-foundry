@@ -14,10 +14,20 @@ export function abilityRollConfiguration(item, record) {
   const configured = item.system?.activity;
   const attribute = configured?.rollMode === 'attribute' && ATTRIBUTES.has(configured.attribute)
     ? configured.attribute : printed.attribute;
-  return {itemUuid:item.uuid, name:item.name, attribute,
+  const attack = record?.reference?.rules?.details?.some(detail => detail.label === "Type" && detail.value === "Attack") ?? false;
+  return {itemUuid:item.uuid, name:item.name, attribute, attack,
     outcomes:Object.fromEntries(['weak','standard','strong'].map(tier => [tier,item.system?.outcomes?.[tier] || printed.outcomes[tier] || '']))};
 }
 export function assertAbilityConfiguration(current, opened) {
   if (opened && JSON.stringify(current) !== JSON.stringify(opened))
     throw new Error("The ability configuration changed. Reopen its roll dialog to use the current attribute and outcomes.");
+}
+
+/** Only a complete, unconditional numeric damage sentence is a button payload.
+ * Conditional, variable and split effects remain printed for table adjudication. */
+export function outcomeDamage(text) {
+  const match = /^\s*(?:Deal\s+)?(\d+)\s+(physical|fire|cold|lightning|mental|radiant|life)\s+damage[.!]?\s*$/i.exec(text ?? "");
+  if (!match) return null;
+  const amount = Number(match[1]);
+  return Number.isSafeInteger(amount) ? [{type: match[2].toLowerCase(), amount}] : null;
 }

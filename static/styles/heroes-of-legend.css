@@ -280,3 +280,6 @@
 
 .heroes-of-legend.hol-reference-drop-hover { outline: 2px solid var(--hol-gold); outline-offset: -3px; }
 .heroes-of-legend [data-reference-drop-status]:empty { display: none; }
+
+.heroes-of-legend .hol-action-uses {display:flex;align-items:center;justify-content:space-between;gap:8px;padding:3px 8px;font-size:12px;color:var(--hol-ink,#26392f);border-bottom:1px solid #cdbd96;}
+.heroes-of-legend .hol-action-uses button {flex:0 0 auto;width:auto;min-height:24px;padding:2px 7px;font-size:11px;}

@@ -64,3 +64,8 @@ attack-target selector or inferred single-scene candidate replaces native target
 
 Issue #134 uses the public V14 [`ChatMessage.applyMode`](https://foundryvtt.com/api/v14/classes/foundry.documents.ChatMessage.html#applyMode) for reference posts and keeps roll attachments on the existing message. `isContentVisible` guards the entire rendered roll summary. Full reference text is rebuilt from an inert HTML subset before posting; TextEditor enrichment alone is not treated as an HTML sanitizer. Item links use native `content-link` UUID anchors.
 Builder ability drops (#137) read the public [`TextEditor.getDragEventData`](https://foundryvtt.com/api/v14/classes/foundry.applications.ux.TextEditor.html#getDragEventData) payload, resolve its native Item UUID with the public `fromUuid` document resolver, and require current read permission before catalog matching. Dropped statistics are ignored; the existing purchase path owns eligibility and payment. No Item is copied into the Actor by the drop handler.
+
+Issue #232 rechecked the official V14 Actor update/testUserPermission APIs and
+TokenLayer.controlled accessor on October 20. Explicit damage reads controlled
+canvas tokens and uses permission-checked Actor updates, including synthetic Actor
+UUIDs. Foundry does not require the retired HOL browser lease coordinator.

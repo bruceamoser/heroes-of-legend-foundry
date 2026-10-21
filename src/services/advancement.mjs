@@ -1,3 +1,4 @@
+import { createActionMessage, shouldProcessRequest } from "./authority.mjs";
 import { editCharacterLanguage } from "../rules/character-languages.mjs";
 import { getCampaignLanguageConfiguration } from "./languages.mjs";
 import { writeCharacterActor, ensureAuthorityReady } from "./authority.mjs";
@@ -13,7 +14,7 @@ import { advancementPreview } from "../rules/advancement.mjs";
 const ID = "heroes-of-legend";
 export function registerAdvancement() {
   Hooks.on("createChatMessage", (message) => {
-    if (message.getFlag(ID, "developmentRequest") && isCreationAuthority())
+    if (message.getFlag(ID, "developmentRequest") && shouldProcessRequest(message))
       resolveDevelopmentRequest(message.id).catch(async (error) => {
         ui.notifications.error(error.message);
         await message.update({
@@ -43,9 +44,7 @@ export function currentDevelopment(actor) {
 export async function requestDevelopment(actor, kind, payload = {}) {
   if (!actor.isOwner) throw new Error("You must own this character.");
   await ensureAuthorityReady();
-  if (!game.settings.get(ID, "creationAuthorityClient"))
-    throw new Error("A GM must enable character processing first.");
-  return ChatMessage.create({
+  return createActionMessage({
     content: "Character development requested.",
     whisper: game.users
       .filter((u) => u.isGM || u.id === game.user.id)
@@ -62,7 +61,7 @@ export async function waitForDevelopment(actor, requestId, draftId, { timeout = 
     if (receipt?.status === "complete") return receipt;
     const failure = game.messages.get(requestId)?.getFlag(ID, "developmentFailure");
     if (failure) throw new Error(failure);
-    if (Date.now() - start >= timeout) throw new Error("Development has not completed. Your choices are saved; review the saved action in Interrupted actions before retrying.");
+    if (Date.now() - start >= timeout) throw new Error("Development has not completed. Your choices are saved; retry Save to apply your saved choices.");
     await new Promise(resolve => setTimeout(resolve, interval));
   }
 }
@@ -76,7 +75,7 @@ export async function waitForDevelopmentOperation(actor, requestId, {timeout=300
     if(failure) throw new Error(failure);
     const result=message?.getFlag(ID,"developmentResult");
     if(result?.complete) return result;
-    if(Date.now()-start>=timeout) throw new Error("Development has not completed. Review the saved action in Interrupted actions before retrying.");
+    if(Date.now()-start>=timeout) throw new Error("Development has not completed. Retry the action from this window.");
     await new Promise(resolve=>setTimeout(resolve,interval));
   }
 }

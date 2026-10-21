@@ -29,6 +29,7 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
     window: { resizable: true },
     form: { submitOnChange: false, closeOnSubmit: false },
     actions: {
+      resetActions: CharacterSheet.resetActions,
       addEquipment: CharacterSheet.addEquipment,
       removeEquipment: CharacterSheet.removeEquipment,
       confirmEquipment: CharacterSheet.confirmEquipment,
@@ -53,6 +54,7 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
       treatWound: CharacterSheet.treatWound,
       addScar: CharacterSheet.addScar,
       removeScar: CharacterSheet.removeScar,
+      removeWound: CharacterSheet.removeWound,
       recovery: CharacterSheet.recovery,
       damage: CharacterSheet.damage,
       equipment: CharacterSheet.equipment,
@@ -83,6 +85,7 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
   };
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
+    context.actionUses = {main:0,maneuver:0,reaction:0,...this.actor.getFlag("heroes-of-legend", "actionUses")};
     const character = this.actor.type === "character";
     const {characterSheetView} = character ? await import("./character-view.mjs") : {};
     const {actorContributions} = character ? await import("../services/conditions.mjs") : {};
@@ -162,6 +165,10 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
         .sort((a, b) => (a.sort ?? 0) - (b.sort ?? 0)),
     };
   }
+  static async resetActions() {
+    try { const {resetOwnedActions} = await import("../services/action-uses.mjs"); await resetOwnedActions(this.actor); await this.render(); }
+    catch(error) { ui.notifications.error(error.message); }
+  }
   async _onRender(context, options) {
     await super._onRender(context, options);
     if (this.actor.type !== "character") return;
@@ -202,9 +209,8 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
       try {
         const {currentHpInput}=await import("../rules/resource-input.mjs");
         const hp=currentHpInput(event.target.value,this.actor.system.health.max);
-        const {requestRecovery} = await import("../services/recovery.mjs");
-        const {damageBasis} = await import("../services/damage.mjs");
-        await requestRecovery(this.actor,damageBasis(this.actor),{kind:"setHp",hp});
+        const {setOwnedHp} = await import("../services/documents.mjs");
+        await setOwnedHp(this.actor, hp);
       } catch(error) { ui.notifications.error(error.message); await this.render(); }
     });
     for (const input of root.querySelectorAll("[data-arrangement]")) input.addEventListener("change", async () => {
@@ -442,6 +448,13 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
   }
   static async removeScar(event,target) {
     try {const {requestManualScar}=await import("../services/scars.mjs");await requestManualScar(this.actor,{kind:"remove",id:target.dataset.eventId});await this.render();}catch(error){ui.notifications.error(error.message);}
+  }
+  static async removeWound(event, target) {
+    try {
+      const {removeCharacterWound} = await import("../services/wound-roll.mjs");
+      await removeCharacterWound(this.actor, target.dataset.eventId);
+      await this.render();
+    } catch(error) { ui.notifications.error(error.message); }
   }
   static async wounds() {
     await new WoundPanel(this.actor).render({ force: true });

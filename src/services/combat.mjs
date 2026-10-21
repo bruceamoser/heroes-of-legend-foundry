@@ -1,10 +1,7 @@
+import { createActionMessage, shouldProcessRequest } from "./authority.mjs";
 import { ensureAuthorityReady } from "./authority.mjs";
-import { assertNoPendingActorPotion } from "./turn-lock.mjs";
-import { prepareTurnPhase, resumeTurnPhase } from "./turn-phase.mjs";
-import { expireStaleBenefits } from "./benefits.mjs";
 import {
   initialBudgets,
-  prepareParticipantBudget,
   convertParticipantBudget,
   spendParticipantBudget,
 } from "./turn-budget.mjs";
@@ -28,8 +25,8 @@ export function combatSide(combatant) {
 }
 export async function requestCombat(combat, kind, payload = {}) {
   if (!combat) throw new Error("Choose an encounter before requesting an action.");
-  await ensureAuthorityReady();
-  return ChatMessage.create({
+  await ensureAuthorityReady({ shared: true });
+  return createActionMessage({
     content: `Encounter ${kind} requested.`,
     ...(kind === "start"
       ? {}
@@ -48,7 +45,7 @@ export async function requestCombat(combat, kind, payload = {}) {
         },
       },
     },
-  });
+  }, { shared: true });
 }
 export function resolveCombatRequest(id, combatUuid) {
   return enqueueCharacterOperation(() => apply(id, combatUuid), {
@@ -62,20 +59,6 @@ async function apply(id, combatUuid) {
     typeof (combatUuid ?? request?.combatUuid) === "string"
       ? await fromUuid(combatUuid ?? request.combatUuid)
       : null;
-  if (combat?.getFlag(ID, "pendingPotion"))
-    throw new Error(
-      "Resume or reconcile the pending healing potion before advancing this encounter.",
-    );
-  assertNoPendingActorPotion(combat);
-  const pendingPhase = combat?.getFlag(ID, "pendingTurnPhase");
-  if (pendingPhase) {
-    if (pendingPhase.requestId !== id)
-      throw new Error("Resume or reconcile the pending turn phase first.");
-    const result = await resumeTurnPhase(combat, message);
-    await expireStaleBenefits(combat);
-    if (message) await presentResult(message, combat);
-    return result;
-  }
   if (
     combat?.documentName !== "Combat" ||
     !message.author ||
@@ -91,14 +74,9 @@ async function apply(id, combatUuid) {
       throw new Error(
         "Completed request was changed; its receipt cannot be reused.",
       );
-    await expireStaleBenefits(combat);
     await presentResult(message, combat);
     return { status: "complete", replay: true };
   }
-  if (combat.getFlag(ID, "pendingAbility"))
-    throw new Error(
-      "Resume the pending action from Manage automation before advancing this encounter.",
-    );
   const state = combat.getFlag(ID, "encounter"),
     actor = combat.combatants.get(
       ["choose", "convert", "spend"].includes(request.kind)
@@ -146,24 +124,6 @@ async function apply(id, combatUuid) {
           "That participant was removed; the DA can withdraw it from the roster.",
         );
       next = chooseParticipant(state, request.id);
-      const { budget, profile, ruling } = prepareParticipantBudget(
-        combat,
-        next,
-        request.id,
-        request,
-        message.author,
-      );
-      next.budgets = { ...(next.budgets ?? {}), [request.id]: budget };
-      if (profile)
-        next.movementProfiles = {
-          ...(next.movementProfiles ?? {}),
-          [request.id]: profile,
-        };
-      if (ruling)
-        next.speedRulings = {
-          ...(next.speedRulings ?? {}),
-          [request.id]: ruling,
-        };
     } else if (request.kind === "finish") next = finishTurn(state);
     else if (request.kind === "spend") next = spendParticipantBudget(combat,state,request,message.author,id);
     else if (request.kind === "convert")
@@ -205,21 +165,7 @@ async function apply(id, combatUuid) {
       revision: next.revision,
     },
   };
-  const phase = prepareTurnPhase(
-    combat,
-    actor,
-    request,
-    id,
-    commit,
-    message.author.id,
-  );
-  if (phase) {
-    await writeAuthorityDocument(combat, {
-      [`flags.${ID}.pendingTurnPhase`]: phase,
-    });
-    await resumeTurnPhase(combat, message);
-  } else await writeAuthorityDocument(combat, commit);
-  await expireStaleBenefits(combat);
+  await writeAuthorityDocument(combat, commit);
   await presentResult(message, combat);
   return { status: "complete", replay: false };
 }
@@ -244,7 +190,7 @@ async function presentResult(message, combat) {
 }
 export function registerCombatRequests() {
   Hooks.on("createChatMessage", (message) => {
-    if (message.getFlag(ID, "combatRequest") && isCreationAuthority())
+    if (message.getFlag(ID, "combatRequest") && shouldProcessRequest(message))
       resolveCombatRequest(message.id).catch(async (e) => {
         ui.notifications.error(e.message);
         await message.update({

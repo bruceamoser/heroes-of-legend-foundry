@@ -1,3 +1,4 @@
+import { createActionMessage, shouldProcessRequest } from "./authority.mjs";
 import { ensureAuthorityReady } from "./authority.mjs";
 import { inventoryCheck } from "../rules/inventory.mjs";
 import { assertNoPendingTurn } from "./turn-lock.mjs";
@@ -113,7 +114,7 @@ export async function requestInventory(
   assertNoInventoryConflict(actor);
   assertCurrentBasis(actor, basis);
   await ensureAuthorityReady();
-  return ChatMessage.create({
+  return createActionMessage({
     content: `Check ${foundry.utils.escapeHTML(item.name)} supply after its approved use.`,
     whisper: requestRecipients(actor),
     flags: {
@@ -149,7 +150,7 @@ export async function requestInventoryRecovery(
     retained: wholeFaces(retainedFace),
   });
   await ensureAuthorityReady();
-  return ChatMessage.create({
+  return createActionMessage({
     content: `Record the supply result seen for ${foundry.utils.escapeHTML(pending.target.name)} without rolling again.`,
     whisper: requestRecipients(actor),
     flags: {
@@ -174,7 +175,7 @@ export async function requestInventoryResume(actor) {
   if (!pending || pending.phase !== "result")
     throw new Error("This supply check does not have a saved result.");
   await ensureAuthorityReady();
-  return ChatMessage.create({
+  return createActionMessage({
     content: `Apply the saved supply result for ${foundry.utils.escapeHTML(pending.target.name)} without rolling again.`,
     whisper: requestRecipients(actor),
     flags: {
@@ -197,7 +198,7 @@ export async function requestInventoryAbandon(actor, reason) {
   if (!pending || pending.phase !== "result")
     throw new Error("Only a supply check with a saved result can be closed.");
   await ensureAuthorityReady();
-  return ChatMessage.create({
+  return createActionMessage({
     content: `Close the saved supply check for ${foundry.utils.escapeHTML(pending.target.name)} without changing supply.`,
     whisper: requestRecipients(actor),
     flags: {
@@ -781,7 +782,7 @@ async function apply(id, requestedActorUuid) {
 
 export function registerInventoryRequests() {
   Hooks.on("createChatMessage", (message) => {
-    if (message.getFlag(ID, "inventoryRequest") && isCreationAuthority())
+    if (message.getFlag(ID, "inventoryRequest") && shouldProcessRequest(message))
       resolveInventoryRequest(message.id).catch(async (error) => {
         ui.notifications.error(error.message);
         await message.update({

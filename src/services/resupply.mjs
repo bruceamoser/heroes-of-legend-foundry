@@ -1,3 +1,4 @@
+import { createActionMessage, shouldProcessRequest } from "./authority.mjs";
 import { ensureAuthorityReady } from "./authority.mjs";
 import { HEALING_POTION_IDS } from "../rules/potions.mjs";
 import { refillInventory } from "../rules/inventory.mjs";
@@ -31,7 +32,7 @@ export async function requestResupply(actor, item, steps = 1, basis = resupplyBa
   if (JSON.stringify(resupplyBasis(actor,item)) !== JSON.stringify(basis)) throw new Error("The item changed. Review its current supply.");
   planResupply(actor,item,steps,(await loadCatalogs()).inventory);
   await ensureAuthorityReady();
-  return ChatMessage.create({
+  return createActionMessage({
     content: `Resupply ${foundry.utils.escapeHTML(item.name)}.`,
     whisper: game.users.filter(user=>user.isGM || user.id===game.user.id || actor.testUserPermission(user,"OWNER")).map(user=>user.id),
     flags: { [ID]: { resupplyRequest: { actorUuid: actor.uuid, itemId: item.id, steps, basis } } }
@@ -71,7 +72,7 @@ export async function applyResupplyRequest(id) {
 }
 export function registerResupplyRequests() {
   Hooks.on("createChatMessage",message=>{
-    if(message.getFlag(ID,"resupplyRequest") && isCreationAuthority()) resolveResupplyRequest(message.id).catch(async error=>{
+    if(message.getFlag(ID,"resupplyRequest") && shouldProcessRequest(message)) resolveResupplyRequest(message.id).catch(async error=>{
       ui.notifications.error(error.message);
       await message.update({content:`Resupply needs attention: ${foundry.utils.escapeHTML(error.message)}`});
     });

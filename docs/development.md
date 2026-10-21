@@ -1582,3 +1582,22 @@ official CLI. Unit tests compile and extract all table/result fields: counting
 source JSON alone cannot prove a compendium contains documents. Chat selectors
 must target `#chat`, because native notification toasts can repeat the same
 message ID. Position overlapping sheets away from the sidebar before capturing.
+
+## 2.1 explicit-action native acceptance
+
+Use the isolated local V14 world and the standard `HOL_TEST_URL`,
+`HOL_TEST_ALLOW_WRITES=1`, `HOL_TEST_ISOLATED_WORLD=1` safeguards:
+
+- `npm run test:explicit-actions`: native canvas selection, linked/unlinked damage,
+  attack/defense result-only rolls, player HP edits, action reset, wound removal and
+  web import/save/return/reload with no GM connected.
+- `npm run test:explicit-encounter`: shared player encounter controls through the
+  automatic GM relay; consistent Actor action counters; no HP/condition/survival
+  side effects from turn transitions; owned recovery, refill and conditions offline
+  from the GM.
+
+Run these sequentially. Evidence and captures live under their corresponding
+`test-results/explicit-*` directories. The actions harness uses a canvas for GM
+selection tests and disables it for the player-only editing/import tests; this
+avoids the software-rendering warning obscuring the import button in headless CI.
+Do not infer full multiplayer coverage from a model or DOM test alone.

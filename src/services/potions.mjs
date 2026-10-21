@@ -1,3 +1,5 @@
+import { spendOwnedAction } from "./action-uses.mjs";
+import { createActionMessage, shouldProcessRequest } from "./authority.mjs";
 import { ensureAuthorityReady } from "./authority.mjs";
 import {
   HEALING_POTION_IDS,
@@ -128,13 +130,11 @@ function canonicalSurvival(actor, basis) {
       ownTurn: 0,
     });
   }
-  if (basis.survival?.hp !== undefined && basis.survival.hp !== basis.hp)
-    throw new Error(
-      "HP was edited outside survival tracking. Reconcile it before using a potion.",
-    );
   const state = basis.survival
     ? {
         ...basis.survival,
+        hp: basis.hp,
+        ...(basis.hp > 0 ? {status: "active", marks: 0, due: null, choice: null} : basis.survival.status === "active" ? {status: "dying", marks: 0, due: null, choice: null} : {}),
         maxHp: basis.maxHp,
         gritAvailable: basis.gritAvailable,
       }
@@ -197,27 +197,7 @@ function assertBasisCurrent(actor, expected, label) {
 export function potionCombatContext(sourceItem) {
   const actor = sourceItem?.actor;
   if (!actor) throw new Error("This potion source is not owned by an Actor.");
-  const matches = game.combats.contents.filter((combat) => combat.active !== false).flatMap((combat) => {
-    const encounter = combat.getFlag(ID, "encounter");
-    return combat.combatants
-      .filter(
-        (combatant) =>
-          combatant.actor?.uuid === actor.uuid &&
-          Boolean(encounter?.budgets?.[combatant.id]),
-      )
-      .map((combatant) => ({ combat, combatant, encounter }));
-  });
-  if (!matches.length) {
-    if (game.combats.contents.some((combat) => combat.active !== false && combat.getFlag(ID, "encounter") &&
-        combat.combatants.some((participant) => participant.actor?.uuid === actor.uuid)))
-      throw new Error("This character's encounter action budget is unavailable.");
-    return { combat: null, combatant: null, encounter: null };
-  }
-  if (matches.length !== 1)
-    throw new Error(
-      "This character must have a unique participant in one active encounter.",
-    );
-  return matches[0];
+  return { combat: null, combatant: null, encounter: null };
 }
 
 async function freePlayParticipants(actor, recipientTokenUuid = null) {
@@ -390,21 +370,10 @@ export async function previewPotionUse({
   recognizedPotionSource(sourceItem);
   if (actor.type !== "character")
     throw new Error("Only a character can give or use an ordinary potion.");
-  const { combat, combatant: trackedGiver, encounter } = combatUuid
-      ? await (async () => {
-          const combat = await resolveCombat(combatUuid),
-            encounter = combat.getFlag(ID, "encounter"),
-            combatant = combat.combatants.get(
-              giverParticipantId ?? encounter?.current,
-            );
-          if (!combatant || combatant.actor?.uuid !== actor.uuid)
-            throw new Error("The potion giver's combatant changed.");
-          return { combat, combatant, encounter };
-        })()
-      : potionCombatContext(sourceItem),
+  const { combat, combatant: trackedGiver, encounter } = potionCombatContext(sourceItem),
     free = combat ? null : await freePlayParticipants(actor, recipientTokenUuid),
     giverCombatant = combat ? trackedGiver : free.giver,
-    participantId = giverParticipantId ?? giverCombatant.id,
+    participantId = giverCombatant.id,
     recipientId = combat ? (recipientParticipantId ?? participantId) : free.recipient.id,
     recipientCombatant = combat ? combat.combatants.get(recipientId) : free.recipient,
     giverBudget = encounter?.budgets?.[participantId] ?? null,
@@ -477,7 +446,7 @@ export async function previewPotionUse({
     return {
       combatUuid: combat?.uuid ?? actor.uuid,
       outsideCombat: !combat,
-      geometry: nativeCombatantAdjacency(giverCombatant, recipientCombatant),
+      geometry: relation === "self" ? {known:true,adjacent:true,distance:0} : nativeCombatantAdjacency(giverCombatant, recipientCombatant),
       combatName: combat?.name ?? "Outside encounter",
       giverParticipantId: participantId,
       giverActorUuid: actor.uuid,
@@ -521,7 +490,7 @@ export async function previewPotionUse({
     return {
       combatUuid: combat?.uuid ?? actor.uuid,
       outsideCombat: !combat,
-      geometry: nativeCombatantAdjacency(giverCombatant, recipientCombatant),
+      geometry: relation === "self" ? {known:true,adjacent:true,distance:0} : nativeCombatantAdjacency(giverCombatant, recipientCombatant),
       combatName: combat?.name ?? "Outside encounter",
       giverParticipantId: participantId,
       giverActorUuid: actor.uuid,
@@ -670,7 +639,7 @@ export async function requestPotionUse({
       );
     return {
       status: "proposal",
-      message: await ChatMessage.create({
+      message: await createActionMessage({
         content,
         whisper: requestRecipients(giver, recipient),
         flags: { [ID]: { potionProposal: proposal } },
@@ -695,8 +664,8 @@ export async function requestPotionUse({
   const request = { ...base, willingness };
   return {
     status: "request",
-    message: await ChatMessage.create({
-      content: "Healing potion use submitted; waiting for the GM coordinator.",
+    message: await createPotionActionMessage({
+      content: "Applying healing potion.",
       whisper: requestRecipients(giver, recipient),
       flags: { [ID]: { potionRequest: request } },
     }),
@@ -746,8 +715,8 @@ export async function acceptPotionProposal(
   return {
     status: "request",
     reused: false,
-    message: await ChatMessage.create({
-      content: "Healing potion recipient consent recorded; waiting for the GM coordinator.",
+    message: await createPotionActionMessage({
+      content: "Applying the accepted healing potion.",
       whisper: proposalMessage.whisper,
       flags: { [ID]: { potionRequest: request } },
     }),
@@ -967,11 +936,6 @@ async function createOperation(message, request) {
   assertWorldActor(giver, "Potion giver");
   assertWorldActor(recipient, "Potion recipient");
   for (const host of potionOperationHosts()) {
-    if (host.documentName === "Combat" &&
-        (host.getFlag(ID, "pendingAbility") || host.getFlag(ID, "pendingTurnPhase")) &&
-        host.combatants.some((participant) =>
-          [giver.uuid, recipient.uuid].includes(participant.actor?.uuid)))
-      throw new Error("Finish the pending encounter action for these participants first.");
     const pending = host.getFlag(ID, "pendingPotion"),
       other = host.getFlag(ID, "potionOperations")?.[pending];
     if (pending && other && [other.giver.actorUuid, other.recipient.actorUuid]
@@ -999,8 +963,6 @@ async function createOperation(message, request) {
     throw new Error(
       "The potion request lacks the giver's authorization or the recipient's attributed consent.",
     );
-  if (request.outsideCombat && potionCombatContext(sourceItem).combat)
-    throw new Error("An encounter became available. Review the potion again.");
   const giverBudget = state?.budgets?.[giverCombatant.id] ?? null,
     recipientBudget = state?.budgets?.[recipientCombatant.id] ?? null;
   if (!request.outsideCombat && (!giverBudget || !recipientBudget))
@@ -1814,7 +1776,7 @@ async function presentPotionResult(combat, operation, message) {
         : latest.recipient.basis.hp === 0
           ? "recipient at 0 HP pays no Reaction"
           : "self use requires no recipient Reaction";
-    content = `${escaped(latest.bottleBasis.item.name)}: ${escaped(latest.giver.basis.actorName)} restored ${healing.restored} HP to ${escaped(latest.recipient.basis.actorName)} after Life resistance ${healing.resistance}; HP ${latest.recipient.basis.hp} → ${recipientReceipt?.after?.hp ?? latest.plan.recipientSurvival.hp}. ${latest.outsideCombat ? "Outside encounter; no action budget charged" : `Giver Maneuver tracked; ${reaction}`}. Supply d${supply?.before ?? latest.plan.inventory.die} → ${supply ? (supply.after ? `d${supply.after}` : "out") : "reconciled"}; the check occurred after healing.`;
+    content = `${escaped(latest.bottleBasis.item.name)}: ${escaped(latest.giver.basis.actorName)} restored ${healing.restored} HP to ${escaped(latest.recipient.basis.actorName)} after Life resistance ${healing.resistance}; HP ${latest.recipient.basis.hp} → ${recipientReceipt?.after?.hp ?? latest.plan.recipientSurvival.hp}. ${latest.outsideCombat ? "Maneuver used; reset actions to correct a mistake" : `Giver Maneuver tracked; ${reaction}`}. Supply d${supply?.before ?? latest.plan.inventory.die} → ${supply ? (supply.after ? `d${supply.after}` : "out") : "reconciled"}; the check occurred after healing.`;
     if (supplyOperation?.nativeRoll) {
       const roll = rollFromJson(supplyOperation.nativeRoll);
       if (roll) rolls = [roll];
@@ -1888,6 +1850,7 @@ async function advancePotionOperation(combat, initialOperation, message) {
     switch (phase) {
       case "complete":
         validateSettlementReceipt(settlement, operation);
+        await recordPotionActionUses(operation, message);
         await presentPotionResult(combat, operation, message);
         return { status: operation.status, replay: true };
       case "reconcile":
@@ -1931,6 +1894,7 @@ async function advancePotionOperation(combat, initialOperation, message) {
           operation,
           operation.finalStatus ?? "complete",
         );
+        await recordPotionActionUses(operation, message);
         await presentPotionResult(combat, operation, message);
         return { status: operation.status, replay: false };
       default:
@@ -2337,7 +2301,7 @@ export function renderPotionProposal(message, element) {
 
 export function registerPotionRequests() {
   Hooks.on("createChatMessage", (message) => {
-    if (message.getFlag(ID, "potionRequest") && isCreationAuthority())
+    if (message.getFlag(ID, "potionRequest") && shouldProcessRequest(message))
       resolvePotionRequest(message.id).catch((error) => {
         ui.notifications.error(error.message);
         message
@@ -2347,4 +2311,22 @@ export function registerPotionRequests() {
           .catch(() => {});
       });
   });
+}
+
+/** Only potion uses touching unowned or shared documents require the GM relay. */
+async function createPotionActionMessage(data) {
+  const request = data.flags[ID].potionRequest;
+  const documents = await Promise.all([request.giverActorUuid, request.recipientActorUuid].filter(Boolean).map(uuid => fromUuid(uuid)));
+  const shared = Boolean((!request.outsideCombat && request.combatUuid) || documents.some(document => !document?.testUserPermission(game.user, "OWNER")));
+  return createActionMessage(data, { shared });
+}
+
+async function recordPotionActionUses(operation, message) {
+  if (!message?.getFlag(ID, "actionExecution") || operation.status !== "complete") return;
+  const giver = await fromUuid(operation.giver.actorUuid);
+  await spendOwnedAction(giver, "maneuver", {operationId:operation.requestId});
+  if (operation.recipient.actorUuid !== operation.giver.actorUuid && operation.recipient.basis.hp > 0) {
+    const recipient = await fromUuid(operation.recipient.actorUuid);
+    await spendOwnedAction(recipient, "reaction", {operationId:operation.requestId});
+  }
 }

@@ -19,34 +19,21 @@ export async function declareNpcMelee(actor, { blockable } = {}) {
     throw new Error("The DA declares this NPC creature attack.");
   if (blockable != null && typeof blockable !== "boolean")
     throw new Error("Invalid blockability hint.");
-  const matches = game.combats.contents.flatMap((c) =>
-    c.combatants
-      .filter(
-        (p) =>
-          p.actor?.uuid === actor.uuid &&
-          Boolean(c.getFlag(ID, "encounter")?.budgets?.[p.id]),
-      )
-      .map((p) => ({ c, p })),
-  );
-  if (matches.length !== 1)
-    throw new Error("Place this creature in exactly one encounter first.");
-  const { c, p } = matches[0];
-  await ensureAuthorityReady();
-  return ChatMessage.create({
-    content: "NPC Basic Melee declaration pending.",
-    flags: {
-      [ID]: {
-        npcAttackRequest: {
-          actorUuid: actor.uuid,
-          combatUuid: c.uuid,
-          participantId: p.id,
-          revision: c.getFlag(ID, "encounter").revision,
-          suggestedDefenderTokenUuids,
-          blockable: blockable ?? null,
-        },
-      },
-    },
-  });
+  const snapshot = {
+    actorUuid: actor.uuid, attackerName: actor.name, title: "Basic Melee",
+    perspective: "defender", resolution: "numeric", attributeKey: "agility",
+    threat: { boons: actor.system.threat.boons, banes: actor.system.threat.banes },
+    damage: Object.fromEntries(["weak", "standard", "strong"].map(tier => [tier, actor.system.basicMelee[tier]])),
+    damageType: "physical", suggestedDefenderTokenUuids,
+    blockable: blockable ?? null, hasBlockableJudgment: typeof blockable === "boolean",
+  };
+  const content = await foundry.applications.handlebars.renderTemplate(
+    "systems/heroes-of-legend/templates/attack-card.hbs", {...snapshot, portrait: actor.img});
+  const message = await ChatMessage.create({content, speaker: ChatMessage.getSpeaker({actor}),
+    flags: {[ID]: {attackCard: snapshot}}});
+  const {spendOwnedAction} = await import("./action-uses.mjs");
+  await spendOwnedAction(actor, "main", {operationId: message.id}).catch(error => ui.notifications.warn(`Attack posted; action counter needs correction: ${error.message}`));
+  return message;
 }
 /** A GM reference declaration records intent; costs and effects remain manual. */
 export async function declareCreatureAction(actor, actionId) {
@@ -106,8 +93,7 @@ export async function declareCreatureAction(actor, actionId) {
       referenceHTML: renderMarkdown(reference.referenceMarkdown),
     },
   );
-  await ensureAuthorityReady();
-  return ChatMessage.create({
+  const message = await ChatMessage.create({
     content,
     speaker: ChatMessage.getSpeaker({ actor }),
     flags: {
@@ -117,6 +103,9 @@ export async function declareCreatureAction(actor, actionId) {
       },
     },
   });
+  const {spendOwnedAction} = await import("./action-uses.mjs");
+  await spendOwnedAction(actor, action.category, {operationId: message.id}).catch(error => ui.notifications.warn(`Action posted; action counter needs correction: ${error.message}`));
+  return message;
 }
 
 export function resolveNpcAttack(id) {

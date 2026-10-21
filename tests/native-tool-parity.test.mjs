@@ -41,3 +41,13 @@ test("encounter presentation follows frozen roster sides and actual Actor visibi
   const context=await app._prepareContext();assert.deepEqual(context.sides[0].participants.map(p=>p.id),["visible","private"]);assert.equal(context.sides[1].participants.length,0);assert.equal(context.sides[0].participants[0].hp,0);assert.equal(context.sides[0].participants[1].hp,null);assert.equal(context.sides[0].ready,2);
  }finally{globalThis.foundry=previousFoundry;globalThis.game=previousGame;globalThis.ui=previousUI;}
 });
+
+test("recovery uses manually corrected HP without demanding survival reconciliation",()=>{
+ const actor={type:"character",getFlag:()=>null};
+ const old={hp:5,maxHp:15,gritAvailable:2,wounds:1,marks:0,ownTurn:0,status:"active",due:null,choice:null};
+ const basis={hp:0,maxHp:15,gritAvailable:2,survival:old,passiveDefenses:{resistances:[]}};
+ const healed=recoveryPreview(actor,basis,{kind:"heal",amount:3,lifeResistance:0});
+ assert.equal(healed.after,3);assert.equal(healed.state.status,"active");assert.equal(healed.state.wounds,1);
+ const corrected=recoveryPreview(actor,{...basis,hp:7,survival:{...old,hp:0,status:"dying",marks:2}},{kind:"heal",amount:2,lifeResistance:0});
+ assert.equal(corrected.after,9);assert.equal(corrected.state.marks,0);assert.equal(old.hp,5);
+});

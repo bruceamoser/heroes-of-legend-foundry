@@ -1,14 +1,8 @@
-import { ensureAuthorityReady } from "./authority.mjs";
 import { conditionApplication } from "./condition-apply.mjs";
 import { assertNoPendingTurn } from "./turn-lock.mjs";
 import { classifyRoll } from "../rules/roll.mjs";
 import { damageEvent } from "../rules/damage.mjs";
 import { passiveDefenseSources } from "../rules/passive-defenses.mjs";
-import {
-  survivalState,
-  validateSurvival,
-  sufferDamage,
-} from "../rules/survival.mjs";
 import {
   enqueueCharacterOperation,
   isCreationAuthority,
@@ -32,15 +26,15 @@ function passiveCatalogRecords(actor, type) {
     .sort((a, b) => a.instanceId.localeCompare(b.instanceId));
 }
 export function damageBasis(actor) {
-  if (!["character", "creature"].includes(actor?.type) || actor.pack)
+  if (!["character", "creature", "summon"].includes(actor?.type) || actor.pack)
     throw new Error("Choose a world character or creature.");
   const resolved = passiveDefenseSources({
     abilities: passiveCatalogRecords(actor, "ability"),
     equipment: passiveCatalogRecords(actor, "equipment"),
   });
   const passiveDefenses = structuredClone({
-    resistances: resolved.resistances,
-    weaknesses: resolved.weaknesses,
+    resistances: [...resolved.resistances, ...(actor.system.resistances?.numeric ?? []).map(source => ({ ...source, label: "Printed resistance" }))],
+    weaknesses: [...resolved.weaknesses, ...(actor.system.weaknesses?.numeric ?? []).map(source => ({ ...source, label: "Printed weakness" }))],
   });
   return {
     actorUuid: actor.uuid,
@@ -80,35 +74,9 @@ export function damagePreview(actor, basis, draft, { bypassResistance = false } 
     resistances: bypassResistance ? [] : sources,
     weaknesses: bypassResistance ? [] : weaknesses,
   });
-  let survival = null,
-    wound = false,
-    after = Math.max(0, basis.hp - event.total);
-  if (actor.type === "character") {
-    if (basis.survival && basis.survival.hp !== basis.hp)
-      throw new Error(
-        "HP was edited outside survival tracking. The DA must reconcile survival before applying more damage.",
-      );
-    if (!basis.survival && basis.hp === 0)
-      throw new Error(
-        "This zero-HP character needs a recorded survival state before automated damage.",
-      );
-    const current = basis.survival
-      ? {
-          ...basis.survival,
-          maxHp: basis.maxHp,
-          gritAvailable: basis.gritAvailable,
-        }
-      : survivalState({
-          hp: basis.hp,
-          maxHp: basis.maxHp,
-          gritAvailable: basis.gritAvailable,
-        });
-    validateSurvival(current);
-    const result = sufferDamage(current, event.total);
-    survival = result.state;
-    wound = result.wound;
-    after = survival.hp;
-  }
+  // Consequences are separate player actions. HP corrections never need a
+  // survival-state reconciliation before this button can be used again.
+  const survival = null, wound = false, after = Math.max(0, basis.hp - event.total);
   return {
     event,
     survival,
@@ -209,22 +177,21 @@ export async function requestDamage(
   rollMessageId = null,
   attackMessageId = null,
 ) {
-  await ensureAuthorityReady();
-  return ChatMessage.create({
-    content: "Damage application requested.",
-    whisper: game.users.filter((u) => u.isGM || u.id === game.user.id).map((u) => u.id),
-    flags: {
-      [ID]: {
-        damageRequest: {
-          actorUuid: actor.uuid,
-          basis,
-          draft,
-          rollMessageId,
-          ...(attackMessageId ? { attackMessageId } : {}),
-        },
-      },
-    },
+  if (!actor.testUserPermission(game.user, "OWNER")) throw new Error("Only this actor’s owner can apply damage.");
+  const { applyOwnedDamage } = await import("./explicit-damage.mjs");
+  const current = damageBasis(actor);
+  if (JSON.stringify(current) !== JSON.stringify(basis)) throw new Error("HP or defenses changed. Reopen the damage preview.");
+  const source = rollMessageId ? defenseDamage(game.messages.get(rollMessageId))
+    : attackMessageId ? playerBasicMeleeDamage(attackMessageId) : null;
+  const result = await applyOwnedDamage(actor, source?.components ?? draft.components, {
+    sourceMessageId: rollMessageId ?? attackMessageId,
+    label: draft.reason || "Damage", resistances: draft.resistances, weaknesses: draft.weaknesses,
+    bypassResistance: draft.conditionKey === "bleeding",
   });
+  try {
+    await ChatMessage.create({ content: `${foundry.utils.escapeHTML(actor.name)}: ${result.total} damage · HP ${result.before} → ${result.after}. Edit HP to correct a mistake.` });
+  } catch { ui.notifications.warn("Damage was applied, but the chat summary could not be posted. Check HP before applying again."); }
+  return result;
 }
 export function resolveDamageRequest(id) {
   return enqueueCharacterOperation(() => apply(id), { requestId: id });

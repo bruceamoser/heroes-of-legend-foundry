@@ -1,3 +1,4 @@
+import { createActionMessage, shouldProcessRequest } from "./authority.mjs";
 import { ensureAuthorityReady } from "./authority.mjs";
 import { assertNoPendingTurn } from "./turn-lock.mjs";
 import { enqueueCharacterOperation, isCreationAuthority, writeAuthorityDocument } from "./authority.mjs";
@@ -11,7 +12,7 @@ export function woundTreatmentBasis(actor, eventId) {
 export async function requestWoundTreatment(actor, eventId, progress, basis = woundTreatmentBasis(actor, eventId)) {
   if (!actor.testUserPermission(game.user, "OWNER")) throw new Error("Only an owner can record wound treatment.");
   await ensureAuthorityReady();
-  return ChatMessage.create({ content: "Wound treatment requested.", whisper: game.users.filter(user => user.isGM || user.id === game.user.id).map(user => user.id), flags: { [ID]: { woundTreatmentRequest: { actorUuid: actor.uuid, eventId, progress, basis } } } });
+  return createActionMessage({ content: "Wound treatment requested.", whisper: game.users.filter(user => user.isGM || user.id === game.user.id).map(user => user.id), flags: { [ID]: { woundTreatmentRequest: { actorUuid: actor.uuid, eventId, progress, basis } } } });
 }
 export function resolveWoundTreatmentRequest(id) {
   const targetUuid = game.messages.get(id)?.getFlag(ID, "woundTreatmentRequest")?.actorUuid;
@@ -60,7 +61,7 @@ export function woundTreatmentPlan(basis, progress) {
 }
 export function registerWoundTreatmentRequests() {
   Hooks.on("createChatMessage", message => {
-    if (message.getFlag(ID, "woundTreatmentRequest") && isCreationAuthority()) resolveWoundTreatmentRequest(message.id).catch(async error => {
+    if (message.getFlag(ID, "woundTreatmentRequest") && shouldProcessRequest(message)) resolveWoundTreatmentRequest(message.id).catch(async error => {
       ui.notifications.error(error.message);
       await message.update({ content: `Treatment needs attention: ${foundry.utils.escapeHTML(error.message)}` });
     });

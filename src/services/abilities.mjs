@@ -47,42 +47,24 @@ export async function activateOwnedAbility(item) {
     throw new Error(
       "Use an ability belonging to a character you own, or as the DA.",
     );
-  const matches = game.combats.contents.flatMap((c) =>
-    c.combatants
-      .filter(
-        (p) =>
-          actorMatchesParticipant({
-            actor: item.actor,
-            participant: p,
-          }) && Boolean(c.getFlag(ID, "encounter")?.budgets?.[p.id]),
-      )
-      .map((p) => ({ combat: c, id: p.id })),
-  );
-  const definition = itemAbilityDefinition(item);
-  // Keep the reviewed combat resolver for Basic Melee when a budget exists.
-  if (definition?.handler === "player-basic-melee-v1" && matches.length === 1) {
-    const { promptBasicMelee } = await import("../dialogs/player-attack.mjs");
-    return promptBasicMelee(item, matches[0].combat, matches[0].id);
-  }
-  if (definition && !definition.attribute && matches.length === 1)
-    return requestAbility(item, matches[0].combat, matches[0].id);
   const catalogs = await loadCatalogs();
   const record = catalogs.choices.find(choice => choice.id === item.getFlag(ID, "catalogId"));
   const configuration = abilityRollConfiguration(item, record);
   if (configuration.attribute) {
     const { SharedRollDialog } = await import("../dialogs/attribute-roll.mjs");
-    const dialog = new SharedRollDialog(item.actor, configuration.attribute);
+    const dialog = new SharedRollDialog(item.actor, configuration.attribute, {mode: configuration.attack ? "attack" : "attribute"});
     dialog.draft.referenceItemIds = [item.id];
     dialog.draft.abilityItemId = item.id;
     dialog.draft.abilityConfiguration = structuredClone(configuration);
     return dialog.render({force:true});
   }
-  if (!definition || matches.length === 0) {
-    const { postAbilityReference } = await import("./reference-play.mjs");
-    return postAbilityReference(item);
-  }
-  if (matches.length !== 1) throw new Error("Choose one active encounter for this character before spending its action.");
-  return requestAbility(item, matches[0].combat, matches[0].id);
+  if (DEFENSE_ABILITY_IDS.has(item.getFlag(ID, "catalogId"))) return activateDefenseBenefit(item);
+  const { postAbilityReference } = await import("./reference-play.mjs");
+  const message = await postAbilityReference(item);
+  const {spendOwnedAction} = await import("./action-uses.mjs");
+  await spendOwnedAction(item.actor, item.system.activity.action, {operationId: message.id})
+    .catch(error => ui.notifications.warn(`Ability posted; action counter needs correction: ${error.message}`));
+  return message;
 }
 
 export async function requestAbility(
@@ -190,7 +172,7 @@ function availabilityContext({
     capable: !HELPLESS.some((key) => Boolean(conditions[key])),
     ownTurn: Boolean(participant && state?.current === participant.id),
     remaining: budget?.remaining ?? {},
-    pending: pendingActorAbility(combat, actor?.uuid),
+    pending: false,
     attackMessageId: attack?.id,
     blockable: blockableJudgment(incoming),
     judgmentError,
@@ -213,7 +195,7 @@ export function reviewedDefenseAbilityOptions(
     validateDefenderToken(actor, defenderTokenUuid);
     incoming = incomingAttackContext(attackMessageId);
     try {
-      verifiedIncomingAttackContext(attackMessageId);
+      incomingAttackContext(attackMessageId);
     } catch (error) {
       judgmentError = error.message;
     }
@@ -252,7 +234,10 @@ export function reviewedDefenseAbilityOptions(
       try {
         definition = itemAbilityDefinition(item);
         const availability = defenseAbilityAvailability(definition.id, context);
+        const active = actor.effects.some(effect => effect.active && effect.getFlag(ID, "benefit")?.manual && effect.getFlag(ID, "benefit")?.sourceId === definition.id);
+        if (active) { availability.available = true; availability.reasons = []; }
         return {
+          active,
           id: definition.id,
           name: definition.name,
           itemId: item.id,
@@ -293,28 +278,9 @@ export async function requestDefenseAbility(
     throw new Error(
       "Standalone Defend uses the owned ability action instead of defense context.",
     );
-  const actor = item.actor,
-    definition = itemAbilityDefinition(item),
-    incoming = isShieldAbility(definition)
-      ? verifiedIncomingAttackContext(attackMessageId)
-      : incomingAttackContext(attackMessageId),
-    { combat, participant } = combatForAttackActor(actor, incoming),
-    review = reviewedDefenseAbilityOptions(actor, {
-      attackMessageId,
-      defenderTokenUuid,
-    }),
-    option = review.options.find((entry) => entry.itemUuid === item.uuid);
-  if (!option?.available)
-    throw new Error(
-      option?.reasons?.join(" ") ?? "This ability is unavailable.",
-    );
-  return requestAbility(item, combat, participant.id, {
-    attackMessageId,
-    defenderTokenUuid,
-    shieldItemUuid: isShieldAbility(definition)
-      ? (shieldItemUuid ?? option.shieldItemUuid)
-      : null,
-  });
+  validateDefenderToken(item.actor, defenderTokenUuid);
+  incomingAttackContext(attackMessageId);
+  return activateDefenseBenefit(item, {shieldItemUuid});
 }
 export function resolveAbilityRequest(id, combatUuid) {
   return enqueueCharacterOperation(() => apply(id, combatUuid), {
@@ -830,4 +796,35 @@ export function registerAbilityRequests() {
         });
       });
   });
+}
+
+/** An explicit button adds one removable benefit; rolling never adds effects. */
+export async function activateDefenseBenefit(item, {shieldItemUuid = null} = {}) {
+  const actor = item.actor, id = item.getFlag(ID, "catalogId");
+  if (!actor?.testUserPermission(game.user, "OWNER") || !DEFENSE_ABILITY_IDS.has(id))
+    throw new Error("Use a defense ability on a character you own.");
+  const shield = id !== "ability-defend";
+  if (shield) {
+    const shields = heldShields(actor);
+    shieldItemUuid ??= shields[0]?.uuid;
+    if (!shields.some(entry => entry.uuid === shieldItemUuid)) throw new Error("Hold a shield before using this ability.");
+  }
+  const key = shield ? "shield-block" : "defend";
+  const existing = actor.effects.find(effect => effect.getFlag(ID, "benefit")?.key === key && effect.getFlag(ID, "benefit")?.manual);
+  const data = {name: item.name, img: item.img, disabled: false,
+    flags: {[ID]: {benefit: {key, manual: true, sourceId: id, shieldItemUuid}}}};
+  if (existing) await existing.update(data);
+  else await actor.createEmbeddedDocuments("ActiveEffect", [data]);
+  const {postAbilityReference} = await import("./reference-play.mjs");
+  const message = await postAbilityReference(item);
+  const {spendOwnedAction} = await import("./action-uses.mjs");
+  await spendOwnedAction(item.actor, item.system.activity.action, {operationId: message.id})
+    .catch(error => ui.notifications.warn(`Ability posted; action counter needs correction: ${error.message}`));
+  return message;
+}
+
+export async function removeDefenseBenefit(item) {
+  if (!item.actor?.testUserPermission(game.user, "OWNER")) throw new Error("Use a character you own.");
+  const effects = item.actor.effects.filter(effect => effect.getFlag(ID,"benefit")?.manual && effect.getFlag(ID,"benefit")?.sourceId === item.getFlag(ID,"catalogId"));
+  if (effects.length) await item.actor.updateEmbeddedDocuments("ActiveEffect", effects.map(effect=>({_id:effect.id,disabled:true})));
 }

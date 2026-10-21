@@ -6,7 +6,6 @@ import {
 } from "./authority.mjs";
 import { rollBasis, prepareRoll } from "./roll-preparation.mjs";
 import { evaluatePreparedRoll } from "./roll.mjs";
-import { settleDefenseDamage } from "./damage.mjs";
 const ID = "heroes-of-legend";
 export async function defenseSignature(request) {
   const digest = await crypto.subtle.digest(
@@ -38,29 +37,8 @@ export function defenseResponses(message) {
   return rows;
 }
 export async function requestDefense(actor, basis, draft) {
-  await ensureAuthorityReady();
-  prepareRoll(basis, draft);
-  return ChatMessage.create(
-    ChatMessage.applyMode({
-      content: "Defense submitted; waiting for the GM coordinator.",
-      speaker: ChatMessage.getSpeaker({
-        actor,
-        token: basis.defenderTokenUuid
-          ? fromUuidSync(basis.defenderTokenUuid)
-          : undefined,
-      }),
-      flags: {
-        [ID]: {
-          defenseRequest: {
-            attackMessageId: basis.attackMessageId,
-            actorUuid: actor.uuid,
-            basis: structuredClone(basis),
-            draft: structuredClone(draft),
-          },
-        },
-      },
-    }),
-  );
+  const { rollPrepared } = await import("./roll.mjs");
+  return rollPrepared(actor, basis, draft);
 }
 export function resolveDefenseRequest(id) {
   return enqueueCharacterOperation(() => apply(id), { requestId: id });
@@ -189,19 +167,10 @@ async function apply(id) {
   record.status = "resolved";
   // The validated saved dice may be resumed without rerolling after any later failure.
   await writeAuthorityDocument(attack, { [`flags.${ID}.defenseResponses`]: responses });
-  if (saved.attackOutcome?.resolution !== "reference") {
-    const damage = await settleDefenseDamage(message);
-    await writeAuthorityDocument(message, {
-      content: `Damage applied: ${damage.event.total}; HP ${damage.before} → ${damage.after}.${damage.wound ? " A wound is awaiting resolution." : ""}`,
-      [`flags.${ID}.defenseDamage`]: damage,
-      [`flags.${ID}.defenseStatus`]: "resolved",
-    });
-  } else {
-    await writeAuthorityDocument(message, {
-      content: "Defense rolled. Resolve the printed attack effects at the table.",
-      [`flags.${ID}.defenseStatus`]: "resolved",
-    });
-  }
+  await writeAuthorityDocument(message, {
+    content: "Defense rolled. Apply damage from the result card when ready.",
+    [`flags.${ID}.defenseStatus`]: "resolved",
+  });
   await writeAuthorityDocument(attack, {
     [`flags.${ID}.defenseResponses`]: responses,
     [`flags.${ID}.operationReceipts.${id}`]: {

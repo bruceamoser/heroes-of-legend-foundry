@@ -253,3 +253,19 @@ An intentional reviewed action may proceed outside the selected turn or with an 
 
 
 Run the bounded native guidance paths with `HOL_TEST_ADVISORY_ONLY=1` and the isolated-world URL/write authorization: `npm run test:player-attacks`, `npm run test:shield-block`, and `npm run test:potions`. Assert real owner Attack and equipment correction, any-player defensive ability activation/reuse, and potion consent/healing/supply despite empty tracked categories and another selected participant. An unconscious giver is advice; dead/Last Words/unhealable recipients and actual source/item costs remain strict. These runs stop after the targeted assertions and clean exact fixture documents.
+
+## Explicit actions supersede automatic chains (#232)
+
+The October 20 user direction supersedes earlier automatic settlement expectations
+in this matrix. Rolls post dice/outcomes without mutating HP, wounds or death marks.
+Apply Damage targets controlled tokens only; no selection explains the required action.
+Linked actors receive one update; unlinked tokens receive their own. Direct HP edits
+and wound removal must remain usable after subsequent actions. Ability uses increment
+Actor counters and Reset actions corrects them. Turn selection/finish never applies
+condition damage or survival procedures. Owned creation/import/save and ordinary rolls
+must work with no GM connected. A shared encounter mutation may use the pinned GM
+relay, with existing author permissions, but no approval gate or global lease.
+
+`scripts/check-explicit-actions.mjs` exercises the new native workflow. Earlier
+coordinator/automatic-defense/turn-tick runtime scripts describe superseded behavior
+and are historical diagnostics, not acceptance gates for this interaction model.

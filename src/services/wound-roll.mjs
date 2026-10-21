@@ -89,6 +89,7 @@ export function undoCharacterWound(actor,operationId) {
     owner(actor);
     const action=actor.getFlag(ID,"woundActions")?.[operationId];
     if(!action?.complete)throw new Error("This wound action is unavailable.");
+    if(action.removed)throw new Error("This wound was removed from the sheet. Its older Undo cannot restore unrelated state.");
     if(action.undone){await ensureWoundMessage(actor,operationId,action);return {replay:true};}
     if(!same(state(actor),action.after))throw new Error("The character has changed since this wound. Undo later wound or treatment changes first; this action will not overwrite them.");
     const before=action.before;
@@ -136,5 +137,31 @@ export function requestOwnedWound(actor,eventId,kind,payload={}) {
     }
     catch(error){await message.update({content:`Wound needs attention: ${escape(error.message)}`});throw error;}
     return message;
+  });
+}
+
+/** Remove only this wound and its effects. Later HP, treatment and other wounds remain intact. */
+export function removeCharacterWound(actor, eventId) {
+  return serialized(actor, async () => {
+    owner(actor);
+    const wound = actor.getFlag(ID, "wounds")?.[eventId];
+    if (!wound) return { removed: false };
+    const effects = actor.toObject().effects.filter(effect =>
+      effect.flags?.[ID]?.woundEvent !== eventId && !(wound.effectIds ?? []).includes(effect._id));
+    const changes = {
+      effects,
+      [`flags.${ID}.wounds.-=${eventId}`]: null,
+      [`flags.${ID}.pendingWounds.-=${eventId}`]: null,
+      [`flags.${ID}.damageRevision`]: (actor.getFlag(ID, "damageRevision") ?? 0) + 1,
+      [`flags.${ID}.conditionRevision`]: (actor.getFlag(ID, "conditionRevision") ?? 0) + 1,
+    };
+    const survival = actor.getFlag(ID, "survival");
+    if (survival) changes[`flags.${ID}.survival.wounds`] = Math.max(0, (survival.wounds ?? 1) - 1);
+    for (const [id, action] of Object.entries(actor.getFlag(ID, "woundActions") ?? {})) {
+      if (action.eventId !== eventId) continue;
+      changes[`flags.${ID}.woundActions.${id}.removed`] = true;
+    }
+    await actor.update(changes);
+    return { removed: true };
   });
 }

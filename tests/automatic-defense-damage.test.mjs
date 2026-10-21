@@ -24,6 +24,6 @@ test("numeric defense tiers apply their saved outcome once, including zero and r
 });
 test("lost Actor update acknowledgement resumes from durable event without second HP change",async()=>{const f=await fixture({uncertain:true});await assert.rejects(f.apply(),/acknowledgement/);const hp=f.actor.system.health.value;await f.apply();assert.equal(f.writes,1);assert.equal(f.actor.system.health.value,hp);assert.equal(f.flags.operationReceipts.roll.applied,true);});
 test("forged player outcome is rejected before any mutation",async()=>{const f=await fixture({forged:true});await assert.rejects(f.apply(),/outcome changed/);assert.equal(f.writes,0);});
-test("lethal numeric damage atomically records survival and pending wound",async()=>{const f=await fixture({hp:2,amount:5});await f.apply();assert.equal(f.actor.system.health.value,0);assert.equal(f.flags.survival.hp,0);assert.equal(f.flags.pendingWounds["defense-roll"].status,"awaiting-roll");assert.equal(f.writes,1);});
+test("legacy explicit settlement changes HP without creating survival or wounds",async()=>{const f=await fixture({hp:2,amount:5});await f.apply();assert.equal(f.actor.system.health.value,0);assert.equal(f.flags.survival,undefined);assert.equal(f.flags.pendingWounds,undefined);assert.equal(f.writes,1);});
 
 test("edited native dice and snapshot or legacy unbound results cannot apply damage",async()=>{for(const options of [{edited:true},{missingDigest:true}]){const f=await fixture(options);await assert.rejects(f.apply(),/unverified or changed/);assert.equal(f.writes,0);}});

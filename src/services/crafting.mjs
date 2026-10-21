@@ -1,3 +1,4 @@
+import { createActionMessage, shouldProcessRequest } from "./authority.mjs";
 import { ensureAuthorityReady } from "./authority.mjs";
 import { inventoryCheck } from "../rules/inventory.mjs";
 import { classifyRoll } from "../rules/roll.mjs";
@@ -47,7 +48,7 @@ export async function requestCrafting(actor, payload) {
   if (actor.pack || actor.type !== "character" || !actor.testUserPermission(game.user, "OWNER")) throw new Error("Only this character’s owner can craft.");
   const request = { ...payload, actorUuid: actor.uuid, basis: craftingBasis(actor) };
   await ensureAuthorityReady();
-  return ChatMessage.create({ content: "Crafting requested.", whisper: game.users.filter(u => u.isGM || u.id === game.user.id || actor.testUserPermission(u, "OWNER")).map(u => u.id), flags: { [ID]: { craftingRequest: request } } });
+  return createActionMessage({ content: "Crafting requested.", whisper: game.users.filter(u => u.isGM || u.id === game.user.id || actor.testUserPermission(u, "OWNER")).map(u => u.id), flags: { [ID]: { craftingRequest: request } } });
 }
 export function resolveCraftingRequest(messageId) {
   const request = game.messages.get(messageId)?.getFlag(ID, "craftingRequest");
@@ -168,6 +169,6 @@ async function applyCrafting(messageId) {
 }
 export function registerCraftingRequests() {
   Hooks.on("createChatMessage", message => {
-    if (message.getFlag(ID, "craftingRequest") && isCreationAuthority()) resolveCraftingRequest(message.id).catch(error => ui.notifications.error(error.message));
+    if (message.getFlag(ID, "craftingRequest") && shouldProcessRequest(message)) resolveCraftingRequest(message.id).catch(error => ui.notifications.error(error.message));
   });
 }

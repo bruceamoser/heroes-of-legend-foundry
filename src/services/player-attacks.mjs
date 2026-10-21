@@ -496,22 +496,13 @@ export async function requestPlayerBasicMelee(
   participantId,
   selection,
 ) {
-  const request = playerBasicMeleeRequestData(
-    item,
-    combat,
-    participantId,
-    selection,
-  );
-  await ensureAuthorityReady();
-  return ChatMessage.create({
-    content: "Basic Melee prepared; waiting for the GM coordinator.",
-    speaker: ChatMessage.getSpeaker({
-      actor: item.actor,
-      token: fromUuidSync(request.basis.actorTokenUuid),
-    }),
-    whisper: requestRecipients(item.actor),
-    flags: { [ID]: { playerAttackRequest: request } },
-  });
+  const {loadCatalogs} = await import("./catalog.mjs");
+  const {abilityRollConfiguration} = await import("../rules/ability-roll.mjs");
+  const {rollPrepared} = await import("./roll.mjs");
+  const catalogs = await loadCatalogs();
+  const configuration = abilityRollConfiguration(item, catalogs.choices.find(record => record.id === item.getFlag(ID, "catalogId")));
+  const basis = rollBasis(item.actor, configuration.attribute ?? "brawn");
+  return rollPrepared(item.actor, basis, {...selection?.draft, abilityItemId: item.id, abilityConfiguration: configuration});
 }
 
 export function playerBasicMeleeRequestData(
@@ -1459,23 +1450,22 @@ export function pendingPlayerAttacks(combat) {
 
 export function renderPlayerBasicMeleeCard(message, element) {
   const card = message?.getFlag(ID, "playerAttack");
-  if (!card || !message.isContentVisible || !game.user.isGM) return;
+  if (!card || !message.isContentVisible) return;
   const root = element.querySelector(".hol-player-attack-card"),
     status = root?.querySelector(".hol-attack-damage-status");
   if (!root || !status || root.querySelector(".hol-player-attack-damage")) return;
   const button = document.createElement("button");
   button.type = "button";
   button.className = "hol-player-attack-damage";
-  button.textContent = "Review and apply target damage";
+  button.textContent = "Apply Damage";
   button.addEventListener("click", async () => {
+    if (button.disabled) return;
+    button.disabled = true;
     try {
-      const { openPlayerAttackDamage } = await import(
-        "../applications/damage.mjs"
-      );
-      await openPlayerAttackDamage(message);
-    } catch (error) {
-      status.textContent = error.message;
-    }
+      const {applySelectedDamage} = await import("./explicit-damage.mjs");
+      await applySelectedDamage([{type: card.type, amount: card.damage}], {sourceMessageId: message.id, label: "Basic Melee"});
+    } catch (error) { status.textContent = error.message; }
+    finally { button.disabled = false; }
   });
   root.append(button);
 }

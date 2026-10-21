@@ -88,7 +88,7 @@ export class InventoryPanel extends foundry.applications.api.HandlebarsApplicati
         reason,
       );
       ui.notifications.info(
-        "Supply request sent to the selected automation coordinator.",
+        "Supply check submitted.",
       );
       await this.close();
     } catch (error) {
@@ -100,7 +100,7 @@ export class InventoryPanel extends foundry.applications.api.HandlebarsApplicati
     try {
       await requestInventoryResume(this.actor);
       ui.notifications.info(
-        "Supply request sent to the selected automation coordinator.",
+        "Supply check submitted.",
       );
       await this.close();
     } catch (error) {
@@ -113,7 +113,7 @@ export class InventoryPanel extends foundry.applications.api.HandlebarsApplicati
       const reason = this.element.querySelector("[name=abandonReason]")?.value;
       await requestInventoryAbandon(this.actor, reason);
       ui.notifications.info(
-        "Supply request sent to the selected automation coordinator.",
+        "Supply check submitted.",
       );
       await this.close();
     } catch (error) {

@@ -15,6 +15,7 @@ import {
   activateOwnedAbility,
   requestDefenseAbility,
   reviewedDefenseAbilityOptions,
+  removeDefenseBenefit,
 } from "../services/abilities.mjs";
 const ID = "heroes-of-legend";
 const netLabel = (n) => n ? `${Math.abs(n)} ${n < 0 ? "Bane" : "Boon"}${Math.abs(n) === 1 ? "" : "s"}` : "Even";
@@ -46,6 +47,8 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
     };
     this.notice = "";
     this.activating = false;
+    this.targetHook = user => { if (user.id === game.user.id && this.rendered && this.mode === "attack") void this.render(); };
+    Hooks.on("targetToken", this.targetHook);
     this.woundHookHandlers = [
       "createActiveEffect",
       "updateActiveEffect",
@@ -153,6 +156,9 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
         })) ?? [],
       defense: this.mode === "defense",
       notice: this.notice,
+      targetNotice: this.mode === "attack" ? this.basis.targetTokenUuid
+        ? `Target modifiers: ${fromUuidSync(this.basis.targetTokenUuid)?.name ?? "selected target"}. Damage is applied separately to selected tokens.`
+        : "No single target selected. Adjust Boons/Banes for the target when needed; select tokens when applying damage." : "",
       draft: this.draft,
       adjustmentLabel: netLabel(this.draft.adjustment),
       abilities: this.abilityOptions.map((option) => ({
@@ -184,6 +190,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
     void this.render();
   }
   async _onClose(options) {
+    Hooks.off("targetToken", this.targetHook);
     for (const [event, handler] of this.woundHookHandlers)
       Hooks.off(event, handler);
     this.woundHookHandlers = [];
@@ -233,7 +240,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       row.classList.toggle("hol-unavailable", !option.available);
       const button = row.querySelector('[data-action="useAbility"]');
       button.disabled = this.activating || !option.available;
-      button.textContent = `${option.available ? "Use " : ""}${option.name}`;
+      button.textContent = `${option.active ? "Remove " : option.available ? "Use " : ""}${option.name}`;
       row.querySelector(".hol-ability-reason").textContent = [
         ...option.reasons,
         ...(option.warnings ?? []),
@@ -341,8 +348,9 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
   }
   static async grit() {
     try {
-      const { requestSurvival } = await import("../services/survival.mjs");
-      await requestSurvival(this.actor, this.basis, this.draft, "grit");
+      const {requestRecovery} = await import("../services/recovery.mjs");
+      const {damageBasis} = await import("../services/damage.mjs");
+      await requestRecovery(this.actor, damageBasis(this.actor), {kind:"grit"});
       await this.close();
     } catch (e) {
       ui.notifications.error(e.message);
@@ -372,18 +380,6 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       this.rolling = true;
       this.element.querySelector('[data-action="roll"]').disabled = true;
       const message = await rollPrepared(this.actor, this.basis, this.draft);
-      if (this.mode === "defense" && this.attackMessageId) {
-        const deadline = Date.now() + 15000;
-        while (Date.now() < deadline) {
-          const current = game.messages.get(message.id);
-          if (current?.getFlag(ID, "defenseStatus") === "resolved") break;
-          if (current?.content?.startsWith("Defense needs attention:"))
-            throw new Error("Defense needs attention. Review the chat message; the GM can resume this same operation in Manage automation.");
-          await new Promise(resolve => setTimeout(resolve, 100));
-        }
-        if (game.messages.get(message.id)?.getFlag(ID, "defenseStatus") !== "resolved")
-          throw new Error("The defense is still pending. Ask the GM to resume it in Manage automation. This submission remains in chat; do not roll again to retry it.");
-      }
       await this.close();
     } catch (e) {
       ui.notifications.error(e.message);
@@ -425,6 +421,11 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
     const item = this.actor.items.get(target.dataset.itemId);
     try {
       if (!item) throw new Error("The reviewed ability is unavailable.");
+      if (this.abilityOptions.find(option => option.itemId === item.id)?.active) {
+        await removeDefenseBenefit(item);
+        this.notice = `${item.name} removed. Action counters remain editable with Reset actions.`;
+        return;
+      }
       this.activating = true;
       this.notice = `Activating ${item.name}…`;
       await this.render();
@@ -437,12 +438,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
                 ?.shieldItemUuid ?? null,
           })
         : await activateOwnedAbility(item);
-      const status = await this.waitForAbility(message.id);
-      if (status.status === "failed") throw new Error(status.error);
-      this.notice =
-        status.status === "complete"
-          ? `${item.name} activated. Roll sources refreshed.`
-          : `${item.name} could not continue; its declared cost remains recorded.`;
+      this.notice = `${item.name} applied. Remove its effect or reset actions to correct it.`;
     } catch (e) {
       this.notice = e.message;
       ui.notifications.error(e.message);

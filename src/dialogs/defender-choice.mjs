@@ -33,5 +33,20 @@ export function renderAttackCard(message, element) {
     chooseDefender(message.id).catch((e) => ui.notifications.error(e.message)),
   );
   const card = element.querySelector(".hol-attack-card");
-  (card?.querySelector(".hol-chat-footer") ?? card)?.append(button);
+  const footer = card?.querySelector(".hol-chat-footer") ?? card;
+  footer?.append(button);
+  const apply = document.createElement("button"); apply.type = "button"; apply.textContent = "Apply Damage…";
+  apply.className = "hol-apply-declared-damage";
+  apply.addEventListener("click", async () => {
+    if (apply.disabled) return; apply.disabled = true;
+    try {
+      const attack = message.getFlag(ID, "attackCard");
+      const text = attack.damage ? ["weak","standard","strong"].map(tier=>`${tier}: ${attack.damage[tier]} ${attack.damageType ?? "physical"}`).join(" · ")
+        : Object.values(attack.outcomes ?? {}).join(" · ") || attack.effect;
+      const {promptChatDamage} = await import("./chat-damage.mjs");
+      await promptChatDamage(message, text ?? "");
+    } catch (error) { ui.notifications.error(error.message); }
+    finally { apply.disabled = false; }
+  });
+  footer?.append(apply);
 }

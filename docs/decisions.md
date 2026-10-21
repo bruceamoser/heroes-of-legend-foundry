@@ -172,3 +172,20 @@ chat result/application and guarded Undo, including when no GM is connected.
 Learning validation is step-scoped, and compact native chat/card density supersedes
 literal web sizing where the narrow Foundry sidebar needs less space. Every printed
 attribute ability has a configured roll entry independent of effect-adapter coverage.
+
+
+## October 20 explicit actions supersede global automation (#232)
+
+Bruce prefers deliberate button presses and easy correction over automatic chains
+of consequences. Attacks and abilities show their roll, outcome and damage in chat;
+Apply Damage affects the selected tokens only. HP remains editable and damage does
+not automatically roll wounds, spend Grit, or advance death procedures. Add Wound
+explicitly rolls and applies the selected type; Remove Wound removes that wound and
+its own effects without reverting later unrelated changes. Owned edits must work
+without a connected GM or global coordinator health. Only genuinely shared or
+privileged document writes need a small automatic permission relay. Retain normal
+Foundry permissions. Do not introduce DA approval gates.
+
+Bruce clarified that using an ability **does spend its action**, with an easy reset
+for mistakes. An encounter is not a prerequisite for rolling. These instructions
+supersede the earlier broad automation preference; canonical game rules are unchanged.

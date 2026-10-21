@@ -107,23 +107,12 @@ export function rollBasis(
   let survival = null;
   if (mode === "death") {
     const state = actor.getFlag("heroes-of-legend", "survival");
-    if (
-      attributeKey !== "fortitude" ||
-      actor.type !== "character" ||
-      state?.status !== "dying" ||
-      state.due !== state.ownTurn ||
-      state.hp !== actor.system.health.value
-    )
-      throw new Error(
-        "A death choice is due only at the start of a Dying turn.",
-      );
-    survival = {
-      ...structuredClone(state),
-      hp: actor.system.health.value,
-      gritAvailable: actor.system.grit.available,
-      pending: Boolean(actor.getFlag("heroes-of-legend", "pendingDeath")),
-    };
+    if (attributeKey !== "fortitude" || actor.type !== "character")
+      throw new Error("Death rolls use a character's Fortitude.");
+    survival = {...structuredClone(state ?? {}), hp: actor.system.health.value,
+      gritAvailable: actor.system.grit.available, pending: false};
   }
+
   const contributions = actorContributions(actor).sort((a, b) =>
     a.id.localeCompare(b.id),
   );
@@ -155,26 +144,15 @@ export function rollBasis(
       typeof actorTokenUuid === "string"
         ? fromUuidSync(actorTokenUuid)
         : actor.token;
-    if (
-      actorToken?.documentName !== "Token" ||
-      actorToken.actor?.uuid !== actor.uuid
-    )
-      throw new Error(
-        "Choose the exact acting token before preparing Basic Melee.",
-      );
-    targetToken =
-      typeof targetTokenUuid === "string"
-        ? fromUuidSync(targetTokenUuid)
-        : null;
+    const selected = [...(game.user.targets ?? [])];
+    targetToken = typeof targetTokenUuid === "string" ? fromUuidSync(targetTokenUuid)
+      : selected.length === 1 ? selected[0].document ?? selected[0] : null;
     targetActor = targetToken?.actor;
-    if (
-      targetToken?.documentName !== "Token" ||
-      !targetActor ||
-      !["character", "creature"].includes(targetActor.type) ||
-      targetToken.uuid === actorToken.uuid
-    )
-      throw new Error("Choose one valid adjacent creature as the target.");
+    if (!targetActor || !["character", "creature"].includes(targetActor.type)) {
+      targetToken = null; targetActor = null;
+    }
   }
+
   let incoming = null;
   if (attackMessageId) {
     incoming = incomingAttackContext(attackMessageId);
@@ -199,14 +177,14 @@ export function rollBasis(
     actorUuid: actor.uuid,
     ...(mode === "attack"
       ? {
-          actorTokenUuid: actorToken.uuid,
-          targetTokenUuid: targetToken.uuid,
-          targetActorUuid: targetActor.uuid,
-          targetContributions: actorContributions(targetActor).sort((a, b) =>
+          actorTokenUuid: actorToken?.uuid ?? null,
+          targetTokenUuid: targetToken?.uuid ?? null,
+          targetActorUuid: targetActor?.uuid ?? null,
+          targetContributions: (targetActor ? actorContributions(targetActor) : []).sort((a, b) =>
             a.id.localeCompare(b.id),
           ),
           targetEvasion:
-            targetActor.type === "creature"
+            targetActor?.type === "creature"
               ? structuredClone(targetActor.system.evasion)
               : null,
         }

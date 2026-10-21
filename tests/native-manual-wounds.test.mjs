@@ -120,3 +120,27 @@ test("missing fear source saves the original roll and owner can finish it withou
  assert.equal(f.flags.pendingWounds[result.eventId].status,"resolved");assert.equal(f.rolls,1);assert.equal(f.flags.woundActions.fear.needsSource,false);assert.equal(f.actor.effects.size,1);
  await f.direct.undoCharacterWound(f.actor,"fear");assert.equal(f.actor.effects.size,0);assert.equal(f.flags.survival,null);
 });
+
+test("removing an earlier wound preserves later HP and wounds and removes only its effects", async () => {
+  const f = await fixture();
+  const first = await f.direct.rollCharacterWound(f.actor, "physical", {operationId:"first"});
+  const second = await f.direct.rollCharacterWound(f.actor, "physical", {operationId:"second"});
+  f.actor.system.health.value = 7;
+  await f.direct.removeCharacterWound(f.actor, first.eventId);
+  assert.equal(f.actor.system.health.value, 7);
+  assert.equal(f.flags.wounds[first.eventId], undefined);
+  assert.ok(f.flags.wounds[second.eventId]);
+  assert.equal(f.flags.survival.wounds, 1);
+  assert.ok([...f.actor.effects.values()].every(effect => effect.flags?.["heroes-of-legend"]?.woundEvent !== first.eventId));
+  assert.equal((await f.direct.removeCharacterWound(f.actor, first.eventId)).removed, false);
+  await assert.rejects(f.direct.undoCharacterWound(f.actor,"first"), /removed/);
+});
+
+test("Add Wound accepts directly edited zero HP without a coordinator or reconciliation", async () => {
+  const f = await fixture();
+  f.actor.system.health.value = 0;
+  const result = await f.direct.rollCharacterWound(f.actor, "physical", {operationId:"zero"});
+  assert.ok(f.flags.wounds[result.eventId]);
+  assert.equal(f.actor.system.health.value, 0);
+  assert.equal(f.flags.survival.wounds, 1);
+});

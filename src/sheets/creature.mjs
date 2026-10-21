@@ -35,6 +35,7 @@ export class CreatureSheet extends CharacterSheet {
   static DEFAULT_OPTIONS = {
     classes: ["hol-creature"],
     actions: {
+      resetActions: CreatureSheet.resetActions,
       npcMelee: CreatureSheet.npcMelee,
       creatureAction: CreatureSheet.creatureAction,
       viewCreatureAction: CreatureSheet.viewCreatureAction,
@@ -50,6 +51,7 @@ export class CreatureSheet extends CharacterSheet {
   };
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
+    context.actionUses = {main:0,maneuver:0,reaction:0,...this.actor.getFlag("heroes-of-legend", "actionUses")};
     const system = this.actor.system;
     const flags = this.actor.getFlag("heroes-of-legend", "automation")
       ? {
@@ -123,6 +125,10 @@ export class CreatureSheet extends CharacterSheet {
         : "",
     };
   }
+  static async resetActions() {
+    try { const {resetOwnedActions} = await import("../services/action-uses.mjs"); await resetOwnedActions(this.actor); await this.render(); }
+    catch(error) { ui.notifications.error(error.message); }
+  }
   async _onRender(context, options) {
     await super._onRender(context, options);
     bindCardState(this, this.actor);
@@ -133,9 +139,8 @@ export class CreatureSheet extends CharacterSheet {
       hp.addEventListener("change", async event => {
         try {
           const value = hpInputValue(event.target.value, this.actor.system.health.max);
-          const {requestRecovery} = await import("../services/recovery.mjs");
-          const {damageBasis} = await import("../services/damage.mjs");
-          await requestRecovery(this.actor, damageBasis(this.actor), {kind:"setHp",hp:value});
+        const {setOwnedHp} = await import("../services/documents.mjs");
+        await setOwnedHp(this.actor, value);
         } catch(error) { ui.notifications.error(error.message); await this.render(); }
       });
     }

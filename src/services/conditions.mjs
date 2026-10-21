@@ -1,3 +1,4 @@
+import { createActionMessage, shouldProcessRequest } from "./authority.mjs";
 import { ensureAuthorityReady } from "./authority.mjs";
 import { assertNoPendingTurn } from "./turn-lock.mjs";
 import {
@@ -47,7 +48,7 @@ export function registerHOLStatuses() {
 }
 export async function requestCondition(actor, kind, payload = {}) {
   await ensureAuthorityReady();
-  return ChatMessage.create({
+  return createActionMessage({
     content: "Condition adjustment requested.",
     whisper: game.users
       .filter((u) => u.isGM || u.id === game.user.id)
@@ -206,7 +207,7 @@ async function apply(id) {
 }
 export function registerConditionRequests() {
   Hooks.on("createChatMessage", (message) => {
-    if (message.getFlag(ID, "conditionRequest") && isCreationAuthority())
+    if (message.getFlag(ID, "conditionRequest") && shouldProcessRequest(message))
       resolveConditionRequest(message.id).catch(async (e) => {
         ui.notifications.error(e.message);
         await message.update({

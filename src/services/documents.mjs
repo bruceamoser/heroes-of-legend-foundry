@@ -4,3 +4,13 @@ export async function updateOwnedDocument(document, data, options = {}) {
   if (!document.id) throw new Error("Save a world document before editing it.");
   return document.update(data, options);
 }
+
+/** Correct the displayed HP directly; do not infer wounds or spend resources. */
+export async function setOwnedHp(actor, hp) {
+  if (!Number.isSafeInteger(hp) || hp < 0 || hp > actor.system.health.max)
+    throw new Error("HP must be a whole number within the actor’s maximum.");
+  return updateOwnedDocument(actor, {
+    "system.health.value": hp,
+    "flags.heroes-of-legend.damageRevision": (actor.getFlag("heroes-of-legend", "damageRevision") ?? 0) + 1,
+  });
+}

@@ -2,7 +2,7 @@ import { openEncounterPanel } from "./encounter.mjs";
 import { localizeRuleLinks } from "../services/journals.mjs";
 import { finishCombatParticipant } from "../dialogs/turn-end.mjs";
 import { chooseCombatParticipant } from "../dialogs/turn-choice.mjs";
-import { displayedBudget } from "../services/turn-budget.mjs";
+import { actionUses, spendOwnedAction, resetOwnedActions } from "../services/action-uses.mjs";
 import { availableParticipants } from "../rules/encounter.mjs";
 import { requestCombat, combatSide } from "../services/combat.mjs";
 const ID = "heroes-of-legend";
@@ -81,55 +81,27 @@ export function renderHOLCombatTracker(app, element) {
           : `${current?.name ?? "Removed participant"}'s turn`,
       );
       if (game.user.isGM || current?.actor?.isOwner) {
-        const budget = displayedBudget(combat, state.current);
-        if (budget) {
-          const counters = document.createElement("div");
-          counters.className = "hol-combat-budget";
-          for (const [name, value] of [["Main", budget.remaining.main], ["Maneuver", budget.remaining.maneuver], ["Reaction", budget.remaining.reaction], ["Movement", budget.movementRemaining]]) {
-            const stat = document.createElement("button"), number = document.createElement("strong");
-            stat.type="button";
-            const category=name === "Movement" ? "movement" : name.toLowerCase();
-            stat.disabled=value < 1;
-            stat.setAttribute("aria-label",name === "Movement" ? "Use one square of movement" : `Spend ${name}`);
-            stat.addEventListener("click",async()=>{stat.disabled=true;try{await requestCombat(combat,"spend",{id:state.current,category});}catch(error){ui.notifications.error(error.message);}finally{if(stat.isConnected)stat.disabled=value<1;}});
-            stat.className = "hol-budget-stat";
-            stat.append(name);
-            number.textContent = value;
-            stat.append(number);
-            counters.append(stat);
-          }
-          section.append(counters);
-          if (budget.movementBreakdown)
-            line(budget.movementBreakdown);
-          button(
-            "Main → Maneuver",
-            () =>
-              requestCombat(combat, "convert", {
-                id: state.current,
-                from: "main",
-                to: "maneuver",
-              }),
-            budget.remaining.main < 1,
-          );
-          button(
-            "Maneuver → movement",
-            () =>
-              requestCombat(combat, "convert", {
-                id: state.current,
-                from: "maneuver",
-                to: "movement",
-              }),
-            budget.remaining.maneuver < 1,
-          );
+        const uses = actionUses(current.actor);
+        const counters = document.createElement("div");
+        counters.className = "hol-combat-budget";
+        for (const [category, value] of Object.entries(uses)) {
+          const stat = document.createElement("button"), number = document.createElement("strong");
+          const label = category[0].toUpperCase() + category.slice(1);
+          stat.type = "button";
+          stat.className = "hol-budget-stat";
+          stat.setAttribute("aria-label", `Use ${label}`);
+          stat.append(`${label} used`); number.textContent = value; stat.append(number);
+          stat.addEventListener("click", async () => {
+            stat.disabled = true;
+            try { await spendOwnedAction(current.actor, category); await app.render(); }
+            catch (error) { ui.notifications.error(error.message); }
+            finally { if (stat.isConnected) stat.disabled = false; }
+          });
+          counters.append(stat);
         }
+        section.append(counters);
+        button("Reset actions", async () => { await resetOwnedActions(current.actor); await app.render(); });
         button("Finish turn", () => finishCombatParticipant(combat));
-        if (
-          game.user.isGM &&
-          current?.actor?.getFlag(ID, "conditionTurnPolicy")
-        )
-          button("Review end effects and finish", () =>
-            finishCombatParticipant(combat, { review: true }),
-          );
       }
     } else {
       for (const p of availableParticipants(state)) {

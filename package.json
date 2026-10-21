@@ -1,6 +1,6 @@
 {
   "name": "heroes-of-legend-foundry",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "private": true,
   "type": "module",
   "engines": {
@@ -101,7 +101,9 @@
     "test:landing": "node scripts/check-landing.mjs",
     "test:defense-selection": "node scripts/check-defense-selection.mjs",
     "test:wound-tables": "node scripts/check-wound-tables.mjs",
-    "test:authority-reconnect": "node scripts/check-authority-reconnect.mjs"
+    "test:authority-reconnect": "node scripts/check-authority-reconnect.mjs",
+    "test:explicit-actions": "node scripts/check-explicit-actions.mjs",
+    "test:explicit-encounter": "node scripts/check-explicit-encounter.mjs"
   },
   "devDependencies": {
     "@foundryvtt/foundryvtt-cli": "3.0.5",

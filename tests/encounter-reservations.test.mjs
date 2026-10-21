@@ -10,7 +10,7 @@ async function loadService(name, context, onWrite) {
   });
   await module.link(async (specifier) => {
     const exports = specifier === "./authority.mjs" ? {
-      ensureAuthorityReady: async () => {},
+      ensureAuthorityReady: async () => {}, createActionMessage: data => context.ChatMessage.create(data), shouldProcessRequest: () => true,
       enqueueCharacterOperation: async (run) => run(),
       isCreationAuthority: () => true,
       writeAuthorityDocument: onWrite,
@@ -23,7 +23,7 @@ async function loadService(name, context, onWrite) {
   return module.namespace;
 }
 
-test("reserved potion refuses interleaved attacks, abilities and encounter transitions before any payment", async () => {
+test("legacy multi-document attack resolvers do not resume through another unfinished potion", async () => {
   const flags = {
     pendingPotion: "reservedPotion",
     encounter: { revision: 7, budgets: { giver: { remaining: { main: 1, maneuver: 1, reaction: 1 } } } },
@@ -40,7 +40,6 @@ test("reserved potion refuses interleaved attacks, abilities and encounter trans
   const attack = await loadService("player-attacks", context, onWrite);
   const ability = await loadService("abilities", context, onWrite);
   const npc = await loadService("npc-attacks", context, onWrite);
-  const turns = await loadService("combat", context, onWrite);
   const author = { id: "owner", isGM: true };
   const setRequest = (kind, request) => messages.set("interleaved", {
     author, getFlag: (_namespace, key) => key === kind ? request : null,
@@ -56,10 +55,6 @@ test("reserved potion refuses interleaved attacks, abilities and encounter trans
   await assert.rejects(npc.resolveNpcAttack("interleaved"), /pending encounter action/);
   setRequest("abilityRequest", { combatUuid: combat.uuid });
   await assert.rejects(ability.resolveAbilityRequest("interleaved"), /pending encounter action/);
-  for (const kind of ["start", "choose", "finish", "roster", "convert"]) {
-    setRequest("combatRequest", { combatUuid: combat.uuid, kind, revision: 7 });
-    await assert.rejects(turns.resolveCombatRequest("interleaved"), /pending healing potion/);
-  }
   assert.equal(writes, 0);
   assert.equal(JSON.stringify(flags), before);
 });
@@ -91,4 +86,19 @@ test("potion admission refuses an existing attack/action or turn-phase reservati
     delete flags[key];
   }
   assert.equal(writes, 0);
+});
+
+
+test("explicit Finish turn ignores old reservations and never changes Actor HP or conditions", async () => {
+  const {startEncounter, chooseParticipant} = await import("../src/rules/encounter.mjs");
+  const flags={encounter:chooseParticipant(startEncounter([{id:"hero",side:"players"}],[4,4,4]),"hero"),pendingPotion:"old",pendingTurnPhase:{actorUuid:"Actor.hero"},pendingAbility:"old"};
+  const actor={uuid:"Actor.hero",type:"character",system:{health:{value:0}},testUserPermission:()=>true,getFlag:()=>({hp:2})};
+  const combat={documentName:"Combat",uuid:"Combat.test",combatants:new Map([["hero",{id:"hero",actor}]]),turns:[{id:"hero"}],getFlag:(_id,key)=>flags[key]};
+  const request={kind:"finish",combatUuid:combat.uuid,revision:flags.encounter.revision};
+  const message={id:"finish",author:{id:"owner"},getFlag:(_id,key)=>key==="combatRequest"?request:null,async update(){}};
+  const context=createContext({structuredClone,game:{messages:new Map([["finish",message]])},fromUuid:async()=>combat});
+  const writes=[];
+  const service=await loadService("combat",context,async(document,changes)=>{writes.push(document);for(const[key,value]of Object.entries(changes)){if(key==="flags.heroes-of-legend.encounter")flags.encounter=value;}});
+  await service.resolveCombatRequest("finish");
+  assert.deepEqual(writes,[combat]);assert.equal(flags.encounter.current,null);assert.equal(actor.system.health.value,0);
 });

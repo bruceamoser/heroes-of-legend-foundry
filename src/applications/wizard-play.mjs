@@ -12,7 +12,7 @@ async function recovery(app,draft){
   const {requestRecovery}=await import("../services/recovery.mjs"),{damageBasis}=await import("../services/damage.mjs");
   const request=await requestRecovery(app.actor,damageBasis(app.actor),draft),start=Date.now();
   while(!app.actor.getFlag(ID,"operationReceipts")?.[request.id]?.applied){
-    if(Date.now()-start>30000)throw new Error("Recovery has not completed. Review the GM automation coordinator before retrying.");
+    if(Date.now()-start>30000)throw new Error("Recovery has not completed. Check the result in chat, then retry if needed.");
     await new Promise(resolve=>setTimeout(resolve,100));
   }
 }

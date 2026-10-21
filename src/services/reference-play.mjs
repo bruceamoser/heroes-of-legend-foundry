@@ -65,7 +65,8 @@ export async function postAbilityReference(item) {
   const escape = foundry.utils.escapeHTML;
   const reference = { itemUuid: item.uuid, name: item.name,
     source: structuredClone(item.getFlag(ID, "source") ?? null),
-    sourceCommit: item.getFlag(ID, "sourceCommit") ?? null };
+    sourceCommit: item.getFlag(ID, "sourceCommit") ?? null,
+    damageText: new DOMParser().parseFromString(String(item.system.description ?? ""), "text/html").body.textContent };
   const content = `<section class="hol-reference-card hol-chat-card"><header class="hol-chat-header"><h3><a class="content-link" data-link data-type="Item" data-uuid="${escape(item.uuid)}">${escape(item.name)}</a></h3></header><div class="hol-chat-bar">Ability reference</div><details class="hol-chat-details hol-reference-rules"><summary>Read complete rules</summary>${safeReferenceHTML(item.system.description)}</details></section>`;
   return ChatMessage.create(ChatMessage.applyMode({
     speaker: ChatMessage.getSpeaker({ actor: item.actor }), content,

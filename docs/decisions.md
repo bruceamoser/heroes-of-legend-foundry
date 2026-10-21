@@ -275,3 +275,18 @@ signature choice directly. This is a focused grant, separate from general learni
 only the selected tier is saved, other pending tiers remain available, and unfinished
 purchase drafts are preserved without being committed by the signature button.
 Existing class/tier eligibility and acquisition rules remain authoritative.
+
+## Earned signature repair and switching (#245)
+
+The 2.3.2 native test prepopulated pending markers and missed the actual Add level
+path, which changed level/DP without unlocking its pending signature. Availability
+must derive from earned level, class and actual grant ownership; missing legacy
+markers cannot hide an unchosen signature. Explicit current slot ownership and
+grant history prevent duplicate free choices on level correction.
+
+Bruce also explicitly authorizes players to switch their class signatures. Each
+earned tier (1/3/7) is editable; switching changes the free slot without spending or
+refunding DP, removing separately paid alternatives, resetting equipment or
+repeating acquisition grants. Preserve paid purchases and saved drafts. This
+changes the Foundry interaction by the lead designer's direct instruction; no
+canonical source document is silently rewritten.

@@ -328,5 +328,18 @@ class's level 3 options, choose, save, and return to the same sheet tab. Repeat 
 level 7 while level 3 is also pending. Grant exactly one native Item for the chosen
 signature; leave the other pending tier available, DP unchanged, and an unrelated
 saved purchase draft byte-for-byte unchanged. Reload and retain the grant. A
-foreign-class, already-owned, locked, stale-revision or unavailable-tier request
+foreign-class, locked, stale-revision or unavailable-tier request
 must fail without adding Items. Generic Develop continues its separate draft flow.
+
+## Earned and changeable signature slots (#245)
+
+Start a player-owned level 2 character without prepared signature markers. Press
+actual Add level to reach 3, choose and save its signature; continue Add level to 7
+and repeat. Check DP changes only from levels, Grit unchanged, preserved purchase
+draft and native Items. Load an existing level 7 Shadow with no pending field and
+allow its missing 3/7 choices. Separately bought same-tier signatures must not hide
+the free slot. Switch chosen 1/3/7 slots, including selecting an already-bought
+alternative and switching back; preserve paid Items, DP, gear and acquisition
+receipts. Resolve ambiguous legacy free-slot ownership through explicit player
+selection, retaining other owned choices. Repeat after reload. Retry interrupted
+removal/confirmation without repeating grants or deleting a later replacement.

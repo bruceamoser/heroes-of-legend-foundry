@@ -106,15 +106,15 @@ async function apply(id) {
   }
   if (priorOperation?.kind === "chooseSignature") {
     if(priorOperation.authorId!==message.author.id || priorOperation.request!==JSON.stringify(request))throw new Error("The saved signature request changed.");
-    if(priorOperation.createdIds.some(itemId=>!actor.items.has(itemId)))throw new Error("Signature needs Item reconciliation; do not repeat its grants.");
-    if(!priorOperation.applied)await actor.update({[`flags.${ID}.operationReceipts.${id}.applied`]:true});
+    if(!priorOperation.applied)await finishSignatureChoice(actor,id,priorOperation);
+    await message.update({content:"Character signature saved.",[`flags.${ID}.-=developmentFailure`]:null});
     return {status:"complete",replay:true};
   }
   if (priorOperation?.applied) return {status:"complete",replay:true};
   const current = currentDevelopment(actor),
     changes = {};
   let state,
-    createdIds = [], refundItemIds = [];
+    createdIds = [], refundItemIds = [], signatureDeletes = [];
   if (request.kind === "editLanguage") {
     if (request.revision !== (current.revision ?? 0)) throw new Error("Character languages or development changed. Review and retry.");
     state = editCharacterLanguage(current,request);
@@ -134,12 +134,14 @@ async function apply(id) {
     if(request.revision !== (current.revision ?? 0))throw new Error("Your character changed. Refresh the signature choices before saving.");
     const catalogs=await loadCatalogs(), configuration=getCampaignLanguageConfiguration();
     if(request.sourceCommit!==catalogs.commit || request.languageBasis!==configuration.basis)throw new Error("The character choices changed. Refresh before saving this signature.");
-    const preview=signatureChoicePreview(current,{level:request.level,id:request.signatureId,selection:request.selection},catalogs.choices,catalogs.inventory,configuration.definitions);
+    const preview=signatureChoicePreview(current,{level:request.level,id:request.signatureId,previousId:request.previousId,selection:request.selection},catalogs.choices,catalogs.inventory,configuration.definitions);
     if(!preview.valid)throw new Error("Choose a valid class signature and complete its required choices.");
     state=preview.state;
     const newInventory=state.items.filter(item=>!current.items.some(old=>old.instanceId===item.instanceId));
     const plan=buildCharacterItems(actor,state.abilities,newInventory,catalogs);
     changes.items=plan.items;createdIds=plan.createdIds;
+    const removed=new Set(preview.signature?.removeAbilityIds??[]);
+    signatureDeletes=actor.items.filter(item=>item.type==="ability"&&removed.has(item.getFlag(ID,"catalogId"))).map(item=>({id:item.id,catalogId:item.getFlag(ID,"catalogId")}));
     state.ledger=[...(current.ledger??[]),...preview.ledger.map(entry=>({...entry,operationId:message.id}))];
   } else if (request.kind === "commitDraft") {
     if (
@@ -230,7 +232,7 @@ async function apply(id) {
   changes[`flags.${ID}.operationReceipts.${message.id}`] = {
     applied: !["refundAbility","chooseSignature"].includes(request.kind),
     kind: request.kind,
-    ...(request.kind==="chooseSignature"?{authorId:message.author.id,request:JSON.stringify(request),createdIds}:{}),
+    ...(request.kind==="chooseSignature"?{authorId:message.author.id,request:JSON.stringify(request),createdIds,deleteItems:signatureDeletes}:{}),
     ...(request.kind==="refundAbility"?{authorId:message.author.id,request:JSON.stringify(request),stateCommitted:true,deleteItemIds:refundItemIds}:{}),
   };
   validateCreationChanges(actor, changes);
@@ -244,10 +246,7 @@ async function apply(id) {
     );
   await writeCharacterActor(actor, changes);
   if(request.kind==="refundAbility")await finishAbilityRefund(actor,message.id,changes[`flags.${ID}.operationReceipts.${message.id}`]);
-  if(request.kind === "chooseSignature") {
-    if(createdIds.some(itemId=>!actor.items.has(itemId)))throw new Error("Signature needs Item reconciliation; do not repeat its grants.");
-    await actor.update({[`flags.${ID}.operationReceipts.${id}.applied`]:true});
-  }
+  if(request.kind === "chooseSignature")await finishSignatureChoice(actor,id,changes[`flags.${ID}.operationReceipts.${id}`]);
   if (request.kind === "commitDraft") {
     if (createdIds.some((id) => !actor.items.has(id)))
       throw new Error(
@@ -271,5 +270,17 @@ async function finishAbilityRefund(actor,requestId,receipt) {
   const ids=receipt.deleteItemIds.filter(id=>actor.items.has(id));
   if(ids.length)await actor.deleteEmbeddedDocuments("Item",ids);
   if(receipt.deleteItemIds.some(id=>actor.items.has(id)))throw new Error("The refund is saved, but its ability item still needs removal. Retry this refund.");
+  await writeCharacterActor(actor,{[`flags.${ID}.operationReceipts.${requestId}.applied`]:true});
+}
+
+/** Confirm additions before retiring the superseded free Item. Retries never grant twice. */
+async function finishSignatureChoice(actor,requestId,receipt) {
+  if(!Array.isArray(receipt.createdIds)||receipt.createdIds.some(itemId=>!actor.items.has(itemId)))throw new Error("Signature needs Item reconciliation; do not repeat its grants.");
+  const removable=(receipt.deleteItems??[]).filter(record=>{
+    const item=actor.items.get(record.id);
+    return item?.type==="ability"&&item.getFlag(ID,"catalogId")===record.catalogId&&!currentDevelopment(actor).abilities.includes(record.catalogId);
+  });
+  if(removable.length)await actor.deleteEmbeddedDocuments("Item",removable.map(record=>record.id));
+  if(removable.some(record=>actor.items.has(record.id)))throw new Error("The signature is saved, but its previous ability still needs removal. Retry Save signature.");
   await writeCharacterActor(actor,{[`flags.${ID}.operationReceipts.${requestId}.applied`]:true});
 }

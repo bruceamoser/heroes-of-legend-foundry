@@ -505,7 +505,7 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
   static async chooseClassSignature(event, target) {
     if (!this.actor.isOwner) return;
     const level=Number(target.dataset.level);
-    if (![3,7].includes(level)) return CharacterSheet.advanceHero.call(this);
+    if (![1,3,7].includes(level)) return;
     await new AdvancementWizard(this.actor,{signatureLevel:level}).render({force:true});
   }
   static async createHero() {

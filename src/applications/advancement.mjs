@@ -18,9 +18,11 @@ import {
   requestDevelopment,
   waitForDevelopment,
   waitForDevelopmentOperation,
+  resolveDevelopmentRequest,
 } from "../services/advancement.mjs";
 import { updateOwnedDocument } from "../services/documents.mjs";
 import { advancementPreview, signatureChoicePreview } from "../rules/advancement.mjs";
+import { earnedSignatureTiers, pendingSignatureTiers, signatureTierState } from "../rules/signatures.mjs";
 import { abilityReferenceStatus } from "../rules/ability-definitions.mjs";
 import {
   eligibleFirst,
@@ -65,7 +67,7 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
   };
   constructor(actor, options = {}) {
     const {signatureLevel,...applicationOptions}=options;
-    const signatureFocus=[3,7].includes(signatureLevel);
+    const signatureFocus=[1,3,7].includes(signatureLevel);
     super(signatureFocus ? {...applicationOptions,classes:[ID,"hol-creation","hol-advancement","hol-signature-choice"],position:{width:800,height:"auto",...applicationOptions.position},window:{...applicationOptions.window,title:`Choose level ${signatureLevel} signature`}} : applicationOptions);
     this.signatureLevel=signatureFocus?signatureLevel:null;
     this.actor = actor;
@@ -86,12 +88,14 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
     const { choices, inventory, commit } = this.catalogs;
     const current = currentDevelopment(this.actor),
       get = (id) => choices.find((r) => r.id === id);
+    const signatureSlot=this.signatureLevel?signatureTierState(current,this.signatureLevel,choices):null;
+    if(this.signatureLevel&&!this.signatureInitialized){if(signatureSlot.selectedId)this.draft.signatures[this.signatureLevel]=signatureSlot.selectedId;this.signatureInitialized=true;}
     if(!hasPendingAdvancement(this.draft))this.baseRevision=current.revision??0;
     const languageConfiguration = getCampaignLanguageConfiguration();
     this.languageDefinitions = languageConfiguration.definitions;
     this.languageBasis = languageConfiguration.basis;
     this.preview = this.signatureLevel
-      ? signatureChoicePreview(current,{level:this.signatureLevel,id:this.draft.signatures[this.signatureLevel],selection:this.draft.acquisitions[this.draft.signatures[this.signatureLevel]]},choices,inventory,this.languageDefinitions)
+      ? signatureChoicePreview(current,{level:this.signatureLevel,id:this.draft.signatures[this.signatureLevel],previousId:this.signaturePreviousId,selection:this.draft.acquisitions[this.draft.signatures[this.signatureLevel]]},choices,inventory,this.languageDefinitions)
       : advancementPreview(current,this.draft,choices,inventory,this.languageDefinitions);
     const state = this.preview.state;
     const recipeName = (id) =>
@@ -153,7 +157,7 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
     const armorDr=damageBasis(this.actor).passiveDefenses.resistances.find(resistance=>resistance.type==="physical")?.value??0;
     return {
       actor: this.actor,
-      signatureFocus:Boolean(this.signatureLevel),signatureLevel:this.signatureLevel,
+      signatureFocus:Boolean(this.signatureLevel),signatureLevel:this.signatureLevel,signatureHeading:`${signatureSlot?.selectedId?"Change":"Choose"} level ${this.signatureLevel} signature`,signatureUnavailable:this.signatureLevel&&!signatureSlot.earned,signatureAmbiguous:Boolean(signatureSlot?.ambiguous),signatureCurrentOptions:signatureSlot?.ambiguous?signatureSlot.ownedIds.filter(id=>!signatureSlot.paidIds.includes(id)).map(id=>({id,name:get(id)?.name??id,selected:id===this.signaturePreviousId})):[],
       movement,armorDr,woundCount:Object.keys(this.actor.getFlag(ID,"wounds")??{}).length,
       developmentIcon: workshopNavIcon("Development"),
       learningIcon: workshopNavIcon("Abilities"),
@@ -168,20 +172,23 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
       stale: this.baseRevision !== (current.revision ?? 0),
       canCommit:
         this.preview.valid &&
+        (!this.signatureLevel || !this.preview.signature?.unchanged || signatureSlot?.ambiguous || !this.actor.items.some(item=>item.type==="ability"&&item.getFlag(ID,"catalogId")===this.preview.signature.selectedId)) &&
         this.baseRevision === (current.revision ?? 0),
       dp: state.dp,
       maximumHp: this.actor.system.health.baseMax + this.preview.maximumHpDelta,
       grit: state.gritGranted,
       gritAvailable: Math.max(0,state.gritGranted-state.gritSpent),
       spent: state.gritSpent,
-      signatures: (current.pendingSignatures ?? []).filter(level=>level<=current.level && (!this.signatureLevel || level===this.signatureLevel)).map((level) => ({
+      signatures: (this.signatureLevel?earnedSignatureTiers(current,choices).filter(level=>level===this.signatureLevel):pendingSignatureTiers(current,choices)).map((level) => ({
         level,
         options: (get(current.classId)?.signatures[level] ?? []).map((id) => ({
           id,
           name: get(id)?.name ?? id,
           flavor: get(id)?.reference?.flavor?.[0] ?? "",
           selected: this.draft.signatures[level] === id,
-          disabled: current.abilities.includes(id),
+          alreadyKnown: current.abilities.includes(id) && id!==signatureTierState(current,level,choices).selectedId,
+          currentChoice: id===signatureTierState(current,level,choices).selectedId,
+          disabled: !this.signatureLevel && current.abilities.includes(id),
         })),
       })),
       acquisitions,
@@ -248,6 +255,7 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
   }
   capture() {
     const f = new FormData(this.element);
+    if(this.signatureLevel&&f.has("signaturePreviousId"))this.signaturePreviousId=String(f.get("signaturePreviousId"))||undefined;
     for (const field of this.element.querySelectorAll("[data-signature]"))
       if (field.type !== "radio" || field.checked) this.draft.signatures[field.dataset.signature] = field.value;
     for (const field of this.element.querySelectorAll("[data-acquisition]")) {
@@ -443,8 +451,11 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
     try {
       this.capture();
       const signatureId=this.draft.signatures[this.signatureLevel];
-      const request=await requestDevelopment(this.actor,"chooseSignature",{level:this.signatureLevel,signatureId,selection:this.draft.acquisitions[signatureId]??{},revision:this.baseRevision,sourceCommit:this.catalogs.commit,languageBasis:this.languageBasis});
-      await waitForDevelopmentOperation(this.actor,request.id);
+      const payload={level:this.signatureLevel,signatureId,previousId:this.signaturePreviousId,selection:this.draft.acquisitions[signatureId]??{},revision:this.baseRevision,sourceCommit:this.catalogs.commit,languageBasis:this.languageBasis};
+      const fingerprint=JSON.stringify(payload);
+      if(this.signatureRequest?.fingerprint===fingerprint)await resolveDevelopmentRequest(this.signatureRequest.id);
+      else {const request=await requestDevelopment(this.actor,"chooseSignature",payload);this.signatureRequest={id:request.id,fingerprint};}
+      await waitForDevelopmentOperation(this.actor,this.signatureRequest.id);
       await this.close();await this.actor.sheet.render({force:true});
     } catch(error){ui.notifications.error(error.message);}
     finally{this.committing=false;this.busy=false;if(this.element)this.element.inert=false;for(const resolve of this.idleWaiters?.splice(0)??[])resolve();}
@@ -498,8 +509,8 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
     for (const group of this.element.querySelectorAll("[data-recipe-study]"))
       group.addEventListener("change", () => this.syncRecipeStudySelects());
     this.syncRecipeStudySelects();
-    bindBuilderDrop(this);
-    for (const input of this.element.querySelectorAll("[data-acquisition] input, [data-acquisition] select, [data-signature]")) input.addEventListener("change", () => this.act(async () => {}));
+    if(!this.signatureLevel)bindBuilderDrop(this);
+    for (const input of this.element.querySelectorAll("[data-acquisition] input, [data-acquisition] select, [data-signature], [name=signaturePreviousId]")) input.addEventListener("change", () => this.act(async () => {}));
 
   }
 }

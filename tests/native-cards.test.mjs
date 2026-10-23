@@ -40,7 +40,7 @@ test("compact mitigation summaries preserve printed source, specialties and expl
 });
 test("native cards expose scroll panes and retain the exact service action hooks",async()=>{
  const creature=await readFile(new URL('../static/templates/creature.hbs',import.meta.url),'utf8');
- for(const label of ["Armor DR","Evasion","Threat","Stability","Resistance","Weakness","Immunity","Recognizable detail","Wants","Knows","Boundary","Weak defense","Standard defense","Strong defense"])
+ for(const label of ["Armor DR","Evasion","Threat","Stability","Resistance","Weakness","Immunity","Recognizable detail","Wants","Knows","Boundary","Weak {{outcomeNoun}}","Standard {{outcomeNoun}}","Strong {{outcomeNoun}}"])
   assert(creature.includes(label),label);
  for(const action of ["npcMelee","creatureAction","rollAttribute","chooseNpcProfile","updateProfile"])
   assert(creature.includes(`data-action="${action}"`),action);

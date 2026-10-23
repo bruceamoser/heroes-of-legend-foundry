@@ -83,9 +83,9 @@ Hooks.once("init", () => {
   CONFIG.Item.dataModels.ability = AbilityData;
   CONFIG.Item.dataModels.equipment = EquipmentData;
   const sheets = foundry.applications.apps.DocumentSheetConfig;
-  sheets.registerSheet(Actor, SYSTEM_ID, SummonSheet, { types: ["summon"], makeDefault: true });
+  sheets.registerSheet(Actor, SYSTEM_ID, SummonSheet, { types: ["summon"], makeDefault: false });
   sheets.registerSheet(Actor, SYSTEM_ID, CreatureSheet, {
-    types: ["creature"],
+    types: ["creature", "summon"],
     makeDefault: true,
   });
   sheets.registerSheet(Actor, SYSTEM_ID, CharacterSheet, {

@@ -129,28 +129,14 @@ test("summon source rendering escapes arbitrary HTML and enriches only pinned bo
   assert(html.includes('rel="noopener noreferrer"'));
 });
 
-test("summon sheet offers source references without character or lifecycle controls", async () => {
-  const template = await readFile(
-    new URL("../static/templates/summon.hbs", import.meta.url),
-    "utf8",
-  );
-  const sheet = await readFile(
-    new URL("../src/sheets/summon.mjs", import.meta.url),
-    "utf8",
-  );
-  assert(!/<input|<textarea|<select/.test(template));
-  assert.deepEqual(
-    [...template.matchAll(/data-action="([^"]+)"/g)].map((m) => m[1]),
-    ["editImage", "viewPortrait", "viewPortrait", "updateProfile"],
-  );
-  assert(!sheet.includes("extends CharacterSheet"));
-  assert(!sheet.includes("CreatureSheet"));
-  assert(sheet.includes("links: false"));
-  assert(template.includes("attacker outcomes"));
-  assert(template.includes("Commands and lifecycle managed by the DA"));
-  assert(template.includes("attacker outcomes"));
-  assert(!template.includes('data-action="rollAttribute"'));
-  assert(!template.includes("summon chains"));
-  assert(template.includes('<details class="hol-creature-reference"'));
-  assert(template.includes('data-card-section="commands"'));
+test("summons reuse the normal creature template and legacy sheet IDs inherit it", async () => {
+ const entry = await readFile(new URL("../src/heroes-of-legend.mjs",import.meta.url),"utf8");
+ const legacy = await readFile(new URL("../src/sheets/summon.mjs",import.meta.url),"utf8");
+ const template = await readFile(new URL("../static/templates/creature.hbs",import.meta.url),"utf8");
+ assert.match(entry,/types: \["creature", "summon"\]/);
+ assert.match(legacy,/class SummonSheet extends CreatureSheet/);
+ assert(!legacy.includes("summon.hbs"));
+ assert(template.includes('data-action="npcMelee"'));
+ assert(template.includes('data-current-hp'));
+ assert(template.includes('data-action="cardEdit"'));
 });

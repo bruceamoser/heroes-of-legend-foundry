@@ -257,3 +257,25 @@ body.hol-theme #sidebar .message-content .hol-chat-card .hol-reference-rules :is
 .message-content .hol-chat-trigger {font:11px/1.35 system-ui,sans-serif;padding:5px 6px;margin:0;border-bottom:1px solid #d6cdb9;}
 
 .message-content .hol-damage-chat td small {display:block;font:10px/1.25 system-ui,sans-serif;color:#6a6457;}
+
+.heroes-of-legend .hol-chat-damage-outcome,
+.hol-chat-card .hol-chat-damage-outcome {
+  display: grid;
+  gap: 3px;
+  margin: 6px 0;
+  padding: 6px 8px;
+  border: 1px solid #b39253;
+  background: #f7f3e9;
+  color: #15221c;
+}
+.hol-chat-card .hol-chat-damage-amount {
+  font-size: 20px;
+  line-height: 1.2;
+}
+.hol-chat-card .hol-chat-damage-conditions {
+  font-size: 16px;
+  font-weight: 700;
+}
+.hol-chat-card .hol-chat-applied-status {
+  font-size: 14px;
+}

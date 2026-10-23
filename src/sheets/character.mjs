@@ -1,3 +1,4 @@
+import {abilityCatalogRecord} from "../rules/ability-roll.mjs";
 import {
   copyEquipmentToActor,
   equipmentCopyOptions,
@@ -330,7 +331,8 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
         }
         const {isMeleeWeaponEquipment} = await import("../rules/equipment-identity.mjs");
         const abilityId = isMeleeWeaponEquipment(item) ? "ability-basic-melee" : item.system.catalogId === "item-ordinary-ranged-weapon" ? "ability-basic-ranged" : item.system.catalogId === "item-ordinary-shield" ? "ability-shield-block" : null;
-        const ability = abilityId && this.actor.items.find((candidate) => candidate.type === "ability" && candidate.getFlag("heroes-of-legend", "catalogId") === abilityId);
+        const catalogs = await loadCatalogs();
+        const ability = abilityId && this.actor.items.find((candidate) => candidate.type === "ability" && (candidate.getFlag("heroes-of-legend", "catalogId") === abilityId || abilityCatalogRecord(candidate,catalogs?.choices ?? [])?.id === abilityId));
         if (!ability) return item.sheet.render({force:true});
         if (abilityId === "ability-shield-block") return this.openShieldDefense(ability);
         const {activateOwnedAbility} = await import("../services/abilities.mjs");

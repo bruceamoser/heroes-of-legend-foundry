@@ -1,3 +1,4 @@
+import {abilityCatalogRecord} from "../src/rules/ability-roll.mjs";
 import test from "node:test";
 import assert from "node:assert/strict";
 import {readFile} from "node:fs/promises";
@@ -8,7 +9,7 @@ async function fixture() {
   const writes = [], errors = [], uses = [], potions = [], supplies = [];
   const actor = {isOwner:true, system:{biography:"Before",memorizedMessage:"Before"}, items:[], getFlag:()=>null};
   const fields = {"system.biography":{value:"After"},"system.memorizedMessage":{value:"A remembered message"}};
-  const exports = {copyEquipmentToActor(){}, equipmentCopyOptions(){}, builderDropChoice(){}, loadCatalogs(){}, postAbilityReference(){}, WoundPanel:class{},RecoveryPanel:class{},DamagePanel:class{},EquipmentPanel:class{},ConditionPanel:class{},AdvancementWizard:class{},CreationWizard:class{},SharedRollDialog:class{},promptAttributeRoll(){},ATTRIBUTES:[],addHotbarShortcut(){},openItemShortcut(){},
+  const exports = {abilityCatalogRecord,copyEquipmentToActor(){}, equipmentCopyOptions(){}, builderDropChoice(){}, loadCatalogs(){}, postAbilityReference(){}, WoundPanel:class{},RecoveryPanel:class{},DamagePanel:class{},EquipmentPanel:class{},ConditionPanel:class{},AdvancementWizard:class{},CreationWizard:class{},SharedRollDialog:class{},promptAttributeRoll(){},ATTRIBUTES:[],addHotbarShortcut(){},openItemShortcut(){},
     updateOwnedDocument:async (document,data,options)=>writes.push({document,data,options}),
     isHealingPotionItem:(item)=>item.system.catalogId==="potion",openPotionPreparation:async (...args)=>potions.push(args),
     consumeOwnedSupply:async (...args)=>supplies.push(args),

@@ -1,6 +1,7 @@
+import {resolvedAttackEffects} from "../rules/attack-outcomes.mjs";
+import {DAMAGE_TYPE_LABELS} from "../rules/damage.mjs";
 import {attackEquipmentSnapshot} from "./attack-equipment.mjs";
-import { outcomeEffects } from "../rules/outcome-effects.mjs";
-import { abilityRollConfiguration, assertAbilityConfiguration, outcomeDamage } from "../rules/ability-roll.mjs";
+import { abilityCatalogRecord, abilityRollConfiguration, assertAbilityConfiguration, outcomeDamage } from "../rules/ability-roll.mjs";
 import { loadCatalogs } from "./catalog.mjs";
 import { selectedReferences } from "./reference-play.mjs";
 import { incomingOutcome } from "../rules/creature-actions.mjs";
@@ -30,7 +31,7 @@ export async function rollPrepared(actor, basis, draft) {
   let abilityConfiguration=draft.abilityConfiguration;
   if(draft.abilityItemId){
     const item=actor.items.get(draft.abilityItemId), catalogs=await loadCatalogs();
-    abilityConfiguration=abilityRollConfiguration(item,catalogs.choices.find(choice=>choice.id===item.getFlag("heroes-of-legend","catalogId")));
+    abilityConfiguration=abilityRollConfiguration(item,abilityCatalogRecord(item,catalogs.choices));
   }
   if (abilityConfiguration?.ranged) {
     const {rangedAmmunition} = await import("./ranged-ammunition.mjs");
@@ -71,9 +72,11 @@ export async function evaluatePreparedRoll(
     if (item?.type !== "ability" || !actor.testUserPermission(game.user, "OWNER"))
       throw new Error("This ability is no longer available to roll.");
     const catalogs = await loadCatalogs();
-    ability = abilityRollConfiguration(item, catalogs.choices.find(choice => choice.id === item.getFlag("heroes-of-legend", "catalogId")));
+    ability = abilityRollConfiguration(item, abilityCatalogRecord(item,catalogs.choices));
     assertAbilityConfiguration(ability, draft.abilityConfiguration);
   }
+  if (ability?.damageTypes?.length && !ability.damageTypes.includes(draft.damageType))
+    throw new Error("Choose the printed damage type in the roll dialog.");
   const equipment=ability?attackEquipmentSnapshot(actor,ability,ability.ranged?draft.rangedWeaponItemId:draft.weaponItemId):null;
   const references = selectedReferences(actor, draft, {
     mode: basis.mode,
@@ -91,7 +94,7 @@ export async function evaluatePreparedRoll(
   const result = classifyRoll(retained, plan.attribute);
   const snapshot = {
     schemaVersion: 2,
-    ...(ability ? {ability} : {}),
+    ...(ability ? {ability, damageType:draft.damageType ?? null, resolvedEffects:resolvedAttackEffects(ability.outcomes[result.tier],{damageType:draft.damageType})} : {}),
     ...(equipment ? {equipment} : {}),
     references,
     actorUuid: actor.uuid,
@@ -180,7 +183,7 @@ export function renderRollSummary(message, element) {
   if(result.ability?.trigger){const trigger=document.createElement("p");trigger.className="hol-chat-trigger";const label=document.createElement("strong");label.textContent="Trigger: ";trigger.append(label,document.createTextNode(result.ability.trigger));summary.append(trigger);}
   if (result.ability?.outcomes?.[result.tier] || result.ability?.effect) {
     const outcome = document.createElement("p");
-    outcome.className = "hol-chat-effect";
+    outcome.className = "hol-chat-effect hol-chat-ability-outcome";
     outcome.textContent = result.ability.outcomes[result.tier] || result.ability.effect;
     summary.append(outcome);
   }
@@ -205,30 +208,57 @@ export function renderRollSummary(message, element) {
   detail.className = "hol-chat-details";
   detail.append(detailLabel, audit);
   const damageText = result.ability?.outcomes?.[result.tier] ?? result.attackOutcome?.text ?? "";
-  const effects = result.attackOutcome?.components ? {components:result.attackOutcome.components,conditions:result.attackOutcome.conditions ?? []}
+  const effects = result.resolvedEffects ?? (result.attackOutcome?.components ? {components:result.attackOutcome.components,conditions:result.attackOutcome.conditions ?? []}
     : Number.isSafeInteger(result.attackOutcome?.damage)
       ? {components:[{type:result.attackOutcome.type,amount:result.attackOutcome.damage}],conditions:[]}
-      : outcomeEffects(damageText);
+      : resolvedAttackEffects(damageText,{damageType:result.damageType}));
   if (result.attackOutcome) {
     const outcome = document.createElement("p"); outcome.className = "hol-chat-effect";
     outcome.textContent = result.attackOutcome.text ?? `${result.attackOutcome.damage} ${result.attackOutcome.type} damage`;
     summary.append(outcome);
   }
+  if (effects && result.ability) {
+    const printed = summary.querySelector(".hol-chat-ability-outcome");
+    if (printed) detail.append(printed);
+  }
+  if (effects?.manual) {
+    const reminder = document.createElement("p");
+    reminder.className = "hol-chat-effect hol-chat-manual";
+    reminder.textContent = `Additional effect to resolve at the table: ${effects.manual}`;
+    summary.append(reminder);
+  }
   let damageButton;
-  if (effects?.components.length || effects?.conditions.length || result.attackOutcome || /\bdamage\b/i.test(damageText)) {
+  if (effects?.components.length || effects?.conditions.length) {
+    const outcomePanel = document.createElement("div");
+    outcomePanel.className = "hol-chat-damage-outcome";
+    const amount = document.createElement("strong");
+    amount.className = "hol-chat-damage-amount";
+    amount.textContent = effects.components.length === 1 ? `Damage: ${effects.components[0].amount} ${DAMAGE_TYPE_LABELS[effects.components[0].type]}` : `Damage: ${effects.components.reduce((total,c)=>total+c.amount,0)}${effects.components.length ? " · " + effects.components.map(c=>`${c.amount} ${DAMAGE_TYPE_LABELS[c.type]}`).join(" + ") : ""}`;
+    outcomePanel.append(amount);
+    if (effects.conditions.length) {
+      const condition = document.createElement("span");
+      condition.className = "hol-chat-damage-conditions";
+      condition.textContent = `Conditions: ${effects.conditions.map(c=>`${c.key[0].toUpperCase()+c.key.slice(1)} ${c.rating}`).join(" · ")}`;
+      outcomePanel.append(condition);
+    }
+    const status = document.createElement("span");
+    status.className = "hol-chat-applied-status";
+    status.setAttribute("role","status");
+    const showApplied = applied => {
+      status.textContent = applied.length ? applied.map(entry => `Applied: ${entry.conditions?.length ? entry.conditions.map(c=>`${c.key[0].toUpperCase()+c.key.slice(1)} ${c.rating}`).join(" · ") + " · " : ""}${entry.total} damage → ${entry.name}`).join("; ") : "";
+    };
+    showApplied((game.messages?.contents ?? []).filter(m=>m.getFlag("heroes-of-legend","explicitDamageResult")?.sourceMessageId === message.id).flatMap(m=>m.getFlag("heroes-of-legend","explicitDamageResult").applied ?? []));
+    outcomePanel.append(status);
+    summary.append(outcomePanel);
     const button = document.createElement("button"); button.type = "button";
     button.className = "hol-apply-damage"; button.textContent = "Apply Damage";
     button.addEventListener("click", async () => {
       if (button.disabled) return;
       button.disabled = true;
       try {
-        if (effects) {
-          const {applySelectedDamage} = await import("./explicit-damage.mjs");
-          await applySelectedDamage(effects.components,{conditions:effects.conditions,sourceMessageId:message.id,label:heading.textContent});
-        } else {
-          const {promptChatDamage} = await import("../dialogs/chat-damage.mjs");
-          await promptChatDamage(message,damageText);
-        }
+        const {applySelectedDamage} = await import("./explicit-damage.mjs");
+        const applied = await applySelectedDamage(effects.components,{conditions:effects.conditions,sourceMessageId:message.id,label:heading.textContent});
+        showApplied(applied.applied);
       } catch(error) { ui.notifications.error(error.message); }
       finally { button.disabled = false; }
     });

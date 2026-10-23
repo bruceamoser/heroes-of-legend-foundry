@@ -1,5 +1,5 @@
 import {CONDITION_KINDS} from "../rules/conditions.mjs";
-import {DAMAGE_TYPES} from '../rules/damage.mjs';
+import {DAMAGE_TYPES,DAMAGE_TYPE_LABELS} from '../rules/damage.mjs';
 import {applySelectedDamage} from '../services/explicit-damage.mjs';
 /** Explicit table interpretation for variable, conditional and mixed damage. */
 export async function promptChatDamage(message, text = '') {
@@ -7,7 +7,7 @@ export async function promptChatDamage(message, text = '') {
   const escape = foundry.utils.escapeHTML;
   const result = await foundry.applications.api.DialogV2.input({
     classes:['heroes-of-legend','hol-native-dialog'], window:{title:'Apply Damage'},
-    content:`<p>${escape(text)}</p>${[0,1,2].map(index=>`<div class="form-group"><label>${index ? 'Additional component (optional)' : 'Damage'}<input name="amount${index}" type="number" min="0" step="1" value="0"></label><label>Type<select name="type${index}">${DAMAGE_TYPES.map(type=>`<option value="${type}">${type}</option>`).join('')}</select></label></div>`).join('')}<details><summary>Conditions</summary>${[0,1,2].map(index=>`<div class="form-group"><label>Condition<select name="condition${index}"><option value="">None</option>${Object.keys(CONDITION_KINDS).map(key=>`<option value="${key}">${key[0].toUpperCase()+key.slice(1)}</option>`).join('')}</select></label><label>Rating<input name="rating${index}" type="number" min="1" step="1" value="1"></label></div>`).join('')}</details>`,
+    content:`<p>${escape(text)}</p>${[0,1,2].map(index=>`<div class="form-group"><label>${index ? 'Additional component (optional)' : 'Damage'}<input name="amount${index}" type="number" min="0" step="1" value="0"></label><label>Type<select name="type${index}">${DAMAGE_TYPES.map(type=>`<option value="${type}">${DAMAGE_TYPE_LABELS[type]}</option>`).join('')}</select></label></div>`).join('')}<details><summary>Conditions</summary>${[0,1,2].map(index=>`<div class="form-group"><label>Condition<select name="condition${index}"><option value="">None</option>${Object.keys(CONDITION_KINDS).map(key=>`<option value="${key}">${key[0].toUpperCase()+key.slice(1)}</option>`).join('')}</select></label><label>Rating<input name="rating${index}" type="number" min="1" step="1" value="1"></label></div>`).join('')}</details>`,
     ok:{label:'Apply Damage'},
   });
   if (!result) return;

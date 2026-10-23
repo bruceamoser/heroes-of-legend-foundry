@@ -1,7 +1,7 @@
 import { conditionApplication } from "./condition-apply.mjs";
 import { assertNoPendingTurn } from "./turn-lock.mjs";
 import { classifyRoll } from "../rules/roll.mjs";
-import { damageEvent } from "../rules/damage.mjs";
+import { damageEvent, canonicalDamageType } from "../rules/damage.mjs";
 import { passiveDefenseSources } from "../rules/passive-defenses.mjs";
 import {
   enqueueCharacterOperation,
@@ -33,8 +33,8 @@ export function damageBasis(actor) {
     equipment: passiveCatalogRecords(actor, "equipment"),
   });
   const passiveDefenses = structuredClone({
-    resistances: [...resolved.resistances, ...(actor.system.resistances?.numeric ?? []).map(source => ({ ...source, label: "Printed resistance" }))],
-    weaknesses: [...resolved.weaknesses, ...(actor.system.weaknesses?.numeric ?? []).map(source => ({ ...source, label: "Printed weakness" }))],
+    resistances: [...resolved.resistances, ...(actor.system.resistances?.numeric ?? []).map(source => ({ ...source, type: canonicalDamageType(source.type), label: "Printed resistance" }))],
+    weaknesses: [...resolved.weaknesses, ...(actor.system.weaknesses?.numeric ?? []).map(source => ({ ...source, type: canonicalDamageType(source.type), label: "Printed weakness" }))],
   });
   return {
     actorUuid: actor.uuid,
@@ -70,9 +70,9 @@ export function damagePreview(actor, basis, draft, { bypassResistance = false } 
     if (typeof source.label !== "string" || !source.label.trim())
       throw new Error("Label each damage modifier source.");
   const event = damageEvent({
-    components: draft.components,
-    resistances: bypassResistance ? [] : sources,
-    weaknesses: bypassResistance ? [] : weaknesses,
+    components: draft.components.map(component => ({...component,type:canonicalDamageType(component.type)})),
+    resistances: bypassResistance ? [] : sources.map(source => ({...source,type:canonicalDamageType(source.type)})),
+    weaknesses: bypassResistance ? [] : weaknesses.map(source => ({...source,type:canonicalDamageType(source.type)})),
   });
   // Consequences are separate player actions. HP corrections never need a
   // survival-state reconciliation before this button can be used again.

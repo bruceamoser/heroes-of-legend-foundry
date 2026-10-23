@@ -33,7 +33,7 @@ test("native IMG image editing and viewing support Enter and Space without dupli
   assert.equal(bindings,1);assert.equal(clicks,2);assert.equal(prevented,2);
 });
 test("actor portrait templates keep native editing owner-only with immediate selection persistence",async()=>{
-  for(const kind of ["character","creature","summon"]){
+  for(const kind of ["character","creature"]){
     const template=await readFile(new URL(`../static/templates/${kind}.hbs`,import.meta.url),"utf8");
     assert(template.includes('{{#if editable}}data-action="editImage" data-edit="img"'),kind);
     assert(!template.includes('data-action="savePortrait"'),kind);

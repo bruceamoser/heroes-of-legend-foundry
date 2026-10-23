@@ -90,10 +90,12 @@ export class AbilitySheet extends foundry.applications.api.HandlebarsApplication
       ui.notifications.error(e.message);
     }
   }
-  _onRender(context, options) {
-    super._onRender(context, options);
+  async _onRender(context, options) {
+    await super._onRender(context, options);
     bindCardState(this, this.item);
     formatItemCard(this.element);
+    const {localizeRuleLinks} = await import("../services/journals.mjs");
+    await localizeRuleLinks(this.element);
   }
   async _processSubmitData(event, form, data, options) {
     if (!this.isEditable)

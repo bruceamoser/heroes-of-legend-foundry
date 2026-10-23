@@ -78,7 +78,7 @@ try {
     const rendered = await page.evaluate(async ({ id, commit }) => {
       const actor = game.actors.get(id), sheet = actor.sheet;
       await sheet.render({ force: true });
-      const root = sheet.element.querySelector(".hol-summon-sheet");
+      const root = sheet.element.querySelector(".hol-creature-sheet");
       const reference = root.querySelector(".hol-item-reference");
       return {
         type: actor.type, text: root.textContent,
@@ -88,13 +88,13 @@ try {
       };
     }, { id: record.foundryId, commit: catalog.source.commit });
     assert.equal(rendered.type, "summon");
-    assert.equal(rendered.controls, 0);
+    assert(rendered.controls > 0);
     assert.equal(rendered.table, true);
     assert.equal(rendered.safeLinks, true);
     assert.match(rendered.text, /No activity or alerts without a command/);
     assert.match(rendered.text, /cannot be healed/);
-    assert.match(rendered.text, /attacker outcomes/);
-    await page.locator(".hol-summon").screenshot({ path: `test-results/${id}-sheet.png` });
+    assert.match(rendered.text, /Attack outcomes/);
+    await page.locator(".hol-creature").screenshot({ path: `test-results/${id}-sheet.png` });
     await page.evaluate(id => game.actors.get(id).sheet.close(), record.foundryId);
   }
 

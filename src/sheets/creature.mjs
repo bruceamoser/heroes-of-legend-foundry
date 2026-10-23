@@ -1,3 +1,4 @@
+import {creatureSheetProfile} from "../rules/creature-sheet-profile.mjs";
 import { actorContributions } from "../services/conditions.mjs";
 import { conditionSummary } from "../rules/conditions.mjs";
 import { selectNpcProfile } from "../services/npc-profile.mjs";
@@ -32,6 +33,9 @@ function sourceLink(source, commit) {
 }
 
 export class CreatureSheet extends CharacterSheet {
+  get title() {
+    return this.actor?.type === "summon" ? `${game.i18n.localize("TYPES.Actor.creature")}: ${this.actor.name}` : super.title;
+  }
   static DEFAULT_OPTIONS = {
     classes: ["hol-creature"],
     actions: {
@@ -50,7 +54,7 @@ export class CreatureSheet extends CharacterSheet {
   };
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
-    const system = this.actor.system;
+    const system = creatureSheetProfile(this.actor);
     const flags = this.actor.getFlag("heroes-of-legend", "automation")
       ? {
           catalogId: this.actor.getFlag("heroes-of-legend", "catalogId"),
@@ -68,10 +72,21 @@ export class CreatureSheet extends CharacterSheet {
           family: this.actor.getFlag("heroes-of-legend", "family"),
         }
       : {};
-    const referenceHtml = creatureReferenceHtml(system);
+    const referenceHtml = this.actor.type === "summon" ? renderMarkdown(system.referenceMarkdown) : creatureReferenceHtml(system);
     return {
       ...context,
       ...cardContext(this, this.actor),
+      system,
+      attackOutcomes: this.actor.type === "summon",
+      outcomePerspective: this.actor.type === "summon" ? "Attack outcomes" : "Player defense outcomes",
+      outcomeNoun: this.actor.type === "summon" ? "attack" : "defense",
+      actionAttributeLabel: this.actor.type === "summon" ? "Attribute" : "Defense",
+      sizeField: this.actor.type === "summon" ? "system.footprint.width" : "system.size",
+      evasionPath: this.actor.type === "summon" ? "system.defenseModifier" : "system.evasion",
+      canEditThreatArmor: this.actor.type !== "summon",
+      canNpcPortrayal: this.actor.type !== "summon",
+      canDeclare: game.user.isGM || this.actor.type === "summon" && this.actor.isOwner,
+
       conditionsList: Object.values(conditionSummary(actorContributions(this.actor))).filter(condition => condition.active),
       attributes: context.attributes.map(attribute => ({...attribute, signed: `${attribute.effective >= 0 ? "+" : ""}${attribute.effective}`})),
       referenceOpen: cardContext(this, this.actor).cardCollapsed.reference === false,
@@ -96,7 +111,7 @@ export class CreatureSheet extends CharacterSheet {
         hasEntries: category === "main" || system.actions.entries.some(entry => entry.category === category),
         entries: system.actions.entries.filter(
           entry => entry.category === category && !(category === "main" && entry.name === "Basic Melee"),
-        ).sort((a,b)=>Number(Boolean(b.defenseSource)) - Number(Boolean(a.defenseSource))).map(entry => ({...entry, automaticDamage: Boolean(numericCreatureAction(flags.catalogId,flags.sourceCommit,entry)), context: ["Target", "Damage type", "Limit"].map(label => {
+        ).sort((a,b)=>Number(Boolean(b.defenseSource)) - Number(Boolean(a.defenseSource))).map(entry => ({...entry, automaticDamage: this.actor.type === "summon" || Boolean(numericCreatureAction(flags.catalogId,flags.sourceCommit,entry)), context: ["Target", "Damage type", "Limit"].map(label => {
           const match = entry.referenceMarkdown?.match(new RegExp(`\\*\\*${label}:\\*\\*\\s*([^*\\n]+)`));
           return match ? `${label}: ${match[1].trim()}` : "";
         }).filter(Boolean).join(" · ")})),
@@ -127,6 +142,8 @@ export class CreatureSheet extends CharacterSheet {
     await super._onRender(context, options);
     bindCardState(this, this.actor);
     bindPortraitControls(this);
+    const {localizeRuleLinks} = await import("../services/journals.mjs");
+    await localizeRuleLinks(this.element);
     const hp = this.element.querySelector("[data-current-hp]");
     if (hp && !hp.dataset.hpBound) {
       hp.dataset.hpBound = "true";
@@ -172,19 +189,20 @@ export class CreatureSheet extends CharacterSheet {
   static async viewCreatureAction(event, target) {
     try {
       if (!this.actor.testUserPermission(game.user, "OBSERVER")) throw new Error("This action is unavailable.");
-      const entry = this.actor.system.actions.entries.find(action => action.id === target.dataset.creatureAction);
+      const entry = creatureSheetProfile(this.actor).actions.entries.find(action => action.id === target.dataset.creatureAction);
       if (!entry) throw new Error("This action is unavailable.");
       const content = await foundry.applications.ux.TextEditor.implementation.enrichHTML(renderMarkdown(entry.referenceMarkdown || entry.effect), { relativeTo: this.actor, links: false });
       await foundry.applications.api.DialogV2.wait({
         window: { title: entry.name },
         classes: ["heroes-of-legend"],
         content: `<div class="hol-item-reference">${content}</div>`,
-        buttons: [...(game.user.isGM ? [{action:"post",label:"Post action",callback:()=>declareCreatureAction(this.actor,entry.id)}] : []), {action:"close",label:"Close"}],
+        buttons: [...(game.user.isGM ? [{action:"post",label:"Post action",callback:()=>this.actor.type === "summon" ? import("../services/summon-attack.mjs").then(m=>m.promptSummonAttack(this.actor,entry.id)) : declareCreatureAction(this.actor,entry.id)}] : []), {action:"close",label:"Close"}],
       });
     } catch(error) { ui.notifications.error(error.message); }
   }
   static async creatureAction(event, target) {
     try {
+      if (this.actor.type === "summon") return (await import("../services/summon-attack.mjs")).promptSummonAttack(this.actor,target.dataset.creatureAction);
       await declareCreatureAction(this.actor, target.dataset.creatureAction);
     } catch (error) {
       ui.notifications.error(error.message);
@@ -207,6 +225,7 @@ export class CreatureSheet extends CharacterSheet {
   }
   static async npcMelee() {
     try {
+      if (this.actor.type === "summon") return (await import("../services/summon-attack.mjs")).promptSummonAttack(this.actor);
       const blockable = this.element.querySelector(
         "[data-npc-blockable]",
       )?.value;

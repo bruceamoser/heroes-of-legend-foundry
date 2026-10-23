@@ -1,3 +1,4 @@
+import {summonAttackConfiguration} from "../src/rules/creature-sheet-profile.mjs";
 import {resolvedAttackEffects} from "../src/rules/attack-outcomes.mjs";
 import {DAMAGE_TYPE_LABELS} from "../src/rules/damage.mjs";
 import test from 'node:test';
@@ -23,6 +24,7 @@ test('an incoming defense rolls immediately without coordinator, encounter or ac
     async toMessage(data){posts++;return {id:'result',...data};}
   }}}});
   const dependencies={
+    "../rules/creature-sheet-profile.mjs":{summonAttackConfiguration},
     "../rules/attack-outcomes.mjs":{resolvedAttackEffects},
     "../rules/damage.mjs":{DAMAGE_TYPE_LABELS},
     './attack-equipment.mjs':{attackEquipmentSnapshot:()=>{throw Error('Defense has no attack equipment');}},

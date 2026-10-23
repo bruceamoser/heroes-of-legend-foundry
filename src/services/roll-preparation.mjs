@@ -148,7 +148,7 @@ export function rollBasis(
     targetToken = typeof targetTokenUuid === "string" ? fromUuidSync(targetTokenUuid)
       : selected.length === 1 ? selected[0].document ?? selected[0] : null;
     targetActor = targetToken?.actor;
-    if (!targetActor || !["character", "creature"].includes(targetActor.type)) {
+    if (!targetActor || !["character", "creature", "summon"].includes(targetActor.type)) {
       targetToken = null; targetActor = null;
     }
   }

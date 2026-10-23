@@ -68,7 +68,7 @@ export class SummonData extends foundry.abstract.TypeDataModel {
       attributes: new SchemaField(Object.fromEntries(ATTRIBUTES.map(key => [key,
         new SchemaField({ base: integer(0, -2, 2) })]))),
       health: new SchemaField({ value: integer(5), baseMax: integer(5, 1) }),
-      cv: signedInteger(0), eligibility: text(),
+      cv: signedInteger(0), eligibility: text(), biography: text(),
       speed: integer(0), speedSource: text(),
       alternateSpeeds: new ArrayField(new SchemaField({ mode: text("", SPEED_MODES), value: integer(0) }),
         { required: true, nullable: false, initial: [] }),

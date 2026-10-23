@@ -1713,3 +1713,24 @@ condition against both creatures, plus both elemental-choice abilities and the
 original attacks. It also checks the prominent Damage and successful Applied
 summary. Pure tests reject conditional/alternative prose rather than inventing
 numeric effects.
+
+## Shared creature sheet and portable Actor import — issues #249/#250
+
+All native Actor types are registered explicitly: CharacterSheet for characters,
+CreatureSheet for creatures and summons, with SummonSheet retained only as an
+inheriting compatibility name for existing saved selections. Both profile types
+use creature.hbs, the same compact CSS, HP/attribute/action controls, portraits,
+notes and disclosures. Their native data schemas are projected for presentation;
+printed attacker/defender tier order is never silently reversed. All 73 summon
+profiles have pure projection coverage. Summon attacks use the shared roll and
+fixed damage snapshot flow; command/lifecycle automation remains table-managed.
+
+`HOL_TEST_URL=http://127.0.0.1:30014 HOL_WORKSHOP_URL=http://127.0.0.1:18749 HOL_TEST_ALLOW_WRITES=1 HOL_TEST_ISOLATED_WORLD=1 npm run test:shared-sheets-import`
+exports JSON from the actual locally served workshop, imports it through native
+Actor Import Data, checks state after reload and native JSON compatibility, then
+opens character/creature/summon/NPC/ability/equipment sheets. It also checks
+unlinked token and saved legacy sheet routes. It runs only in the isolated test
+world and records cleanup with its evidence. Portable import delegates native
+JSON unchanged and builds complete native documents for the explicit workshop
+format, validating current rules before replacing Actor contents. Native import
+preserves destination identity, ownership, folder and sort.

@@ -1,3 +1,4 @@
+import {summonAttackConfiguration} from "../rules/creature-sheet-profile.mjs";
 import {resolvedAttackEffects} from "../rules/attack-outcomes.mjs";
 import {DAMAGE_TYPE_LABELS} from "../rules/damage.mjs";
 import {attackEquipmentSnapshot} from "./attack-equipment.mjs";
@@ -66,7 +67,8 @@ export async function evaluatePreparedRoll(
   draft,
   { rollerId = game.user.id, allowInteractive = false } = {},
 ) {
-  let ability;
+  let ability = draft.summonAttackId ? summonAttackConfiguration(actor,draft.summonAttackId) : undefined;
+  if (ability) assertAbilityConfiguration(ability,draft.abilityConfiguration);
   if (draft.abilityItemId) {
     const item = actor.items.get(draft.abilityItemId);
     if (item?.type !== "ability" || !actor.testUserPermission(game.user, "OWNER"))
@@ -299,6 +301,11 @@ export function renderRollSummary(message, element) {
           const {chooseDefender} = await import("../dialogs/defender-choice.mjs");
           await chooseDefender(result.attackMessageId);
         } else {
+          if (result.ability?.summonActionId) {
+            const {promptSummonAttack} = await import("./summon-attack.mjs");
+            await promptSummonAttack(actor,result.ability.summonActionId);
+            return;
+          }
           const ability = result.ability?.itemUuid ? await fromUuid(result.ability.itemUuid) : null;
           if (ability?.actor?.uuid === actor.uuid) {
             const {activateOwnedAbility} = await import("./abilities.mjs");

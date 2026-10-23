@@ -132,10 +132,12 @@ export class EquipmentSheet extends foundry.applications.api.HandlebarsApplicati
       ui.notifications.error(error.message);
     }
   }
-  _onRender(context, options) {
-    super._onRender(context, options);
+  async _onRender(context, options) {
+    await super._onRender(context, options);
     bindCardState(this, this.item);
     formatItemCard(this.element);
+    const {localizeRuleLinks} = await import("../services/journals.mjs");
+    await localizeRuleLinks(this.element);
     this.element.querySelector("[data-item-quantity]")?.addEventListener("change", async event => {
       try {
         if (!this.isEditable) throw new Error(game.i18n.localize("HOL.NoPermission"));

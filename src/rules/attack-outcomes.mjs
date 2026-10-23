@@ -16,7 +16,7 @@ export function resolvedAttackEffects(text, { damageType } = {}) {
     "$1 damage;",
   );
   const clauses = normalized
-    .split(/\s*(?:;|,|\band\b|\bthen\b)\s*/i)
+    .split(/\s*(?:;|,|\.\s+|\band\b|\bthen\b)\s*/i)
     .filter(Boolean);
   const components = [],
     conditions = [],
@@ -39,7 +39,7 @@ export function resolvedAttackEffects(text, { damageType } = {}) {
     clause = clause.replace(/\s+to each(?: target)?$/i, "");
     clause = clause.replace(/^knock\s+(?:it\s+)?prone$/i, "Prone");
     clause = clause.replace(/^(Frightened\s+\d+)\s+of you$/i, "$1");
-    const effect = outcomeEffects(clause);
+    const effect = /^No damage$/i.test(clause) ? {components:[],conditions:[]} : outcomeEffects(clause);
     if (effect) {
       components.push(...effect.components);
       conditions.push(...effect.conditions);

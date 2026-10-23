@@ -2,6 +2,10 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
   damageEvent,
+  DAMAGE_TYPE,
+  DAMAGE_TYPES,
+  DAMAGE_TYPE_LABELS,
+  canonicalDamageType,
   healingPlan,
   upfrontHpCost,
 } from "../src/rules/damage.mjs";
@@ -108,4 +112,14 @@ test("HP costs leave payer above zero and invalid arithmetic never silently clam
       weaknesses: [s("fire", 1)],
     }),
   );
+});
+
+test("damage enums have distinct display labels and a strict external normalizer", () => {
+  assert.equal(DAMAGE_TYPE.PHYSICAL, "physical");
+  assert.equal(DAMAGE_TYPE_LABELS[DAMAGE_TYPE.PHYSICAL], "Physical");
+  for (const type of DAMAGE_TYPES)
+    assert.equal(canonicalDamageType(DAMAGE_TYPE_LABELS[type]), type);
+  assert.equal(canonicalDamageType(" PHYSICAL "), DAMAGE_TYPE.PHYSICAL);
+  for (const type of ["venom", "physical or fire", null])
+    assert.throws(() => canonicalDamageType(type), /Unknown damage type/);
 });

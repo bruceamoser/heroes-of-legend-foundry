@@ -1689,3 +1689,27 @@ saved purchase drafts, return to sheet, reload and complete fixture cleanup.
 Legacy ambiguous free choices require identifying the current signature explicitly.
 Service regressions cover interrupted removal and grant retries. This supersedes
 the narrower 2.3.2 fixture, which incorrectly preseeded pending markers.
+
+## Player attack damage regression — issue #247
+
+`HOL_TEST_URL=http://127.0.0.1:30014 HOL_TEST_ALLOW_WRITES=1 HOL_TEST_ISOLATED_WORLD=1 node scripts/check-combat-damage.mjs`
+uses only a disposable localhost world. It imports Basilisk and Skeleton Sentry
+copies, creates an owner player/character and scene, rolls Basic Melee and
+Invitation to the Blade from the player sheet, then applies their evaluated chat
+results as GM to the selected creature without another dialog. A fixed
+physical-damage-plus-Slowed fixture also verifies native condition application.
+Cleanup removes only the scenario's documents and reports failure in its evidence.
+Invitation's next-defense Boon remains table-resolved rather than being mistaken
+for a condition inflicted on the target. Pure regressions validate shared enum
+normalization, fixed effect extraction and provenance-based legacy ability lookup.
+
+The #247 catalog audit covers all 213 numeric damage-dealing ability tiers and
+all seven canonical damage types. Pre-roll elemental choices are part of the
+shared roll dialog and the saved snapshot. Fixed mixed damage, area wording and
+named conditions are resolved once into that snapshot; movement and next-roll
+benefits stay explicit table reminders. Roll-card Apply Damage has no manual
+prompt fallback. The expanded native fixture exercises all seven types with a
+condition against both creatures, plus both elemental-choice abilities and the
+original attacks. It also checks the prominent Damage and successful Applied
+summary. Pure tests reject conditional/alternative prose rather than inventing
+numeric effects.

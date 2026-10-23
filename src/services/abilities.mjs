@@ -1,4 +1,4 @@
-import { abilityRollConfiguration } from "../rules/ability-roll.mjs";
+import { abilityRollConfiguration, abilityCatalogRecord } from "../rules/ability-roll.mjs";
 import { loadCatalogs } from "./catalog.mjs";
 import { ensureAuthorityReady } from "./authority.mjs";
 import { planSimpleAbility } from "../rules/one-dp-play.mjs";
@@ -48,7 +48,7 @@ export async function activateOwnedAbility(item, {rangedWeaponItemId = null, wea
       "Use an ability belonging to a character you own, or as the DA.",
     );
   const catalogs = await loadCatalogs();
-  const record = catalogs.choices.find(choice => choice.id === item.getFlag(ID, "catalogId"));
+  const record = abilityCatalogRecord(item,catalogs.choices);
   const configuration = abilityRollConfiguration(item, record);
   if (configuration.attribute) {
     const { SharedRollDialog } = await import("../dialogs/attribute-roll.mjs");
@@ -62,6 +62,7 @@ export async function activateOwnedAbility(item, {rangedWeaponItemId = null, wea
     dialog.draft.rangedWeaponItemId = rangedWeaponItemId;
     dialog.draft.weaponItemId = weaponItemId;
     dialog.draft.abilityConfiguration = structuredClone(configuration);
+    dialog.draft.damageType = configuration.damageTypes[0] ?? null;
     return dialog.render({force:true});
   }
   if (DEFENSE_ABILITY_IDS.has(item.getFlag(ID, "catalogId"))) return activateDefenseBenefit(item);

@@ -1,3 +1,4 @@
+import {abilityCatalogRecord} from "../src/rules/ability-roll.mjs";
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFile } from 'node:fs/promises';
@@ -18,7 +19,7 @@ async function fixture({ learning = false, shopping = false } = {}) {
   }
   const wizard = new Wizard(), instances = new Map([['wizard', wizard]]), warnings = [], infos = [];
   let copies = 0, sorts = 0;
-  const exports = { builderDropChoice, loadCatalogs: async () => ({ choices: [choice] }),
+  const exports = {abilityCatalogRecord, builderDropChoice, loadCatalogs: async () => ({ choices: [choice] }),
     copyEquipmentToActor: async () => { copies++; }, equipmentCopyOptions: async () => [],
     CreationWizard: Wizard, AdvancementWizard: class {}, ATTRIBUTES: [],
     postAbilityReference() {}, WoundPanel: class {}, RecoveryPanel: class {}, DamagePanel: class {},

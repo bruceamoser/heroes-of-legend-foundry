@@ -1,3 +1,4 @@
+import {resolvedAttackEffects as attackOutcomeEffects} from "../src/rules/attack-outcomes.mjs";
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {outcomeEffects} from '../src/rules/outcome-effects.mjs';
@@ -19,4 +20,40 @@ test('ranged weapon requires its exact assigned available ammunition stack',()=>
  const actor={items:[weapon,ammo]};actor.items.get=id=>actor.items.find(item=>item.id===id);
  assert.throws(()=>rangedAmmunition(actor),/Assign ammunition to Bow/);ammoId='arrows';assert.equal(rangedAmmunition(actor).ammo,ammo);
  ammo.system.inventoryDie=0;assert.throws(()=>rangedAmmunition(actor),/Assign ammunition/);
+});
+
+test("mixed attack outcomes retain fixed damage and conditions while flagging other effects", () => {
+  assert.deepEqual(
+    attackOutcomeEffects(
+      "3 physical damage; gain 1 Boon to your next defense against this target before the start of your next turn.",
+    ),
+    {
+      components: [{ type: "physical", amount: 3 }],
+      conditions: [],
+      manual:
+        "gain 1 Boon to your next defense against this target before the start of your next turn",
+    },
+  );
+  assert.deepEqual(
+    attackOutcomeEffects("5 physical damage and the same defensive Boon."),
+    {
+      components: [{ type: "physical", amount: 5 }],
+      conditions: [],
+      manual: "the same defensive Boon",
+    },
+  );
+  assert.deepEqual(
+    attackOutcomeEffects("3 physical damage; Slowed 1; choose a destination."),
+    {
+      components: [{ type: "physical", amount: 3 }],
+      conditions: [{ key: "slowed", rating: 1 }],
+      manual: "choose a destination",
+    },
+  );
+  for (const text of [
+    "If the target moves, 3 physical damage; Slowed 1.",
+    "3 physical damage or Prone.",
+    "Deal double damage; Slowed 1.",
+  ])
+    assert.equal(attackOutcomeEffects(text), null);
 });

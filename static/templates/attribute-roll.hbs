@@ -6,6 +6,7 @@
   {{#if weaponOptions}}<label>Attack item<select name="weaponItemId">{{#each weaponOptions}}<option value="{{id}}" {{#if selected}}selected{{/if}}>{{name}}</option>{{/each}}</select></label>{{/if}}
   {{#if rangedWeaponOptions}}<label>Ranged weapon<select name="rangedWeaponItemId">{{#each rangedWeaponOptions}}<option value="{{id}}" {{#if selected}}selected{{/if}}>{{name}}</option>{{/each}}</select></label>{{/if}}
   <section class="hol-roll-setup"><div class="hol-roll-fields"><label>Attribute<select name="attributeKey" aria-label="Roll attribute" {{#unless attributeEditable}}disabled{{/unless}}>{{#each attributeOptions}}<option value="{{key}}" {{#if selected}}selected{{/if}}>{{name}}</option>{{/each}}</select></label><label>Value<output data-roll-value>{{attribute}}</output></label></div>
+  {{#if damageTypeOptions}}<label>Damage type<select name="damageType">{{#each damageTypeOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>{{/if}}
   {{#if defenseSubstitutions}}<label>Defense attribute (optional)
     <select name="defenseSubstitutionItemUuid">
       <option value="">Printed defense attribute · {{attributeName}}</option>

@@ -1,4 +1,4 @@
-import {abilityRollConfiguration} from "../rules/ability-roll.mjs";
+import {abilityRollConfiguration,abilityCatalogRecord} from "../rules/ability-roll.mjs";
 import {attackEquipmentSnapshot} from "./attack-equipment.mjs";
 import {rollReferenceApplies,reactionTrigger} from "../rules/ability-roll-relevance.mjs";
 const ID = "heroes-of-legend";
@@ -69,7 +69,7 @@ export async function postAbilityReference(item,{weaponItemId=null}={}) {
   const parsed = new DOMParser().parseFromString(String(item.system.description ?? ""),"text/html");
   const {loadCatalogs}=await import("./catalog.mjs");
   const catalogId=item.getFlag(ID,"catalogId");
-  const record=catalogId ? (await loadCatalogs()).choices.find(record=>record.id===catalogId) : null;
+  const record=abilityCatalogRecord(item,(await loadCatalogs()).choices);
   const trigger=reactionTrigger(record);
   const equipment=attackEquipmentSnapshot(item.actor,abilityRollConfiguration(item,record),weaponItemId);
   const operative = parsed.querySelector(".hol-reference-rules")?.innerHTML ?? parsed.body.innerHTML;

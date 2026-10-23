@@ -1,13 +1,27 @@
 /** Pure fixed-outcome arithmetic. Never mutates a document or rolls dice. */
-export const DAMAGE_TYPES = Object.freeze([
-  "physical",
-  "fire",
-  "cold",
-  "lightning",
-  "mental",
-  "radiant",
-  "life",
-]);
+export const DAMAGE_TYPE = Object.freeze({
+  PHYSICAL: "physical",
+  FIRE: "fire",
+  COLD: "cold",
+  LIGHTNING: "lightning",
+  MENTAL: "mental",
+  RADIANT: "radiant",
+  LIFE: "life",
+});
+export const DAMAGE_TYPES = Object.freeze(Object.values(DAMAGE_TYPE));
+export const DAMAGE_TYPE_LABELS = Object.freeze(
+  Object.fromEntries(
+    DAMAGE_TYPES.map((type) => [type, type[0].toUpperCase() + type.slice(1)]),
+  ),
+);
+/** Normalize external printed labels; calculations and stored events use enum values. */
+export function canonicalDamageType(value) {
+  const canonical =
+    typeof value === "string" ? value.trim().toLowerCase() : value;
+  if (!DAMAGE_TYPES.includes(canonical))
+    throw new TypeError(`Unknown damage type: ${value}`);
+  return canonical;
+}
 export const WOUND_TABLES = Object.freeze({
   physical: "physical",
   fire: "elemental",

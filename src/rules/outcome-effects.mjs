@@ -1,7 +1,8 @@
+import { DAMAGE_TYPE, DAMAGE_TYPES } from "./damage.mjs";
 import { CONDITION_KINDS } from "./conditions.mjs";
-const TYPES = "physical|fire|cold|lightning|mental|radiant|life";
+const TYPES = DAMAGE_TYPES.join("|");
 /** Parse only complete fixed damage/condition outcomes. Conditional prose stays at the table. */
-export function outcomeEffects(text, {defaultType = "physical", numeric = false} = {}) {
+export function outcomeEffects(text, {defaultType = DAMAGE_TYPE.PHYSICAL, numeric = false} = {}) {
   if (typeof text !== "string" || !text.trim()) return null;
   const parts = text.trim().replace(/[.!]$/, "").split(/\s*(?:\+|;|\band\b)\s*/i);
   const components = [], conditions = [];
@@ -19,6 +20,6 @@ export function outcomeEffects(text, {defaultType = "physical", numeric = false}
     conditions.push({key,rating,...(match[3] ? {persistence:"starred"} : {})});
   }
   if (components.some(c => !Number.isSafeInteger(c.amount) || c.amount < 0)) return null;
-  if (!["physical","fire","cold","lightning","mental","radiant","life"].includes(defaultType)) return null;
+  if (!DAMAGE_TYPES.includes(defaultType)) return null;
   return {components,conditions};
 }

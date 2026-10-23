@@ -1,6 +1,6 @@
 {
   "name": "heroes-of-legend-foundry",
-  "version": "2.3.3",
+  "version": "2.3.4",
   "private": true,
   "type": "module",
   "engines": {
@@ -111,7 +111,8 @@
     "test:followup-cards-books": "node scripts/check-followup-cards-books.mjs",
     "test:character-persistence": "node scripts/check-character-persistence.mjs",
     "test:table-refinements": "node scripts/check-table-refinements.mjs",
-    "test:signature-choice": "node scripts/check-signature-choice.mjs"
+    "test:signature-choice": "node scripts/check-signature-choice.mjs",
+    "test:combat-damage": "node scripts/check-combat-damage.mjs"
   },
   "devDependencies": {
     "@foundryvtt/foundryvtt-cli": "3.0.5",

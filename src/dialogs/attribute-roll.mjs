@@ -1,3 +1,4 @@
+import {DAMAGE_TYPE_LABELS} from "../rules/damage.mjs";
 import {defaultWoundApplicability} from "../rules/wound-contributions.mjs";
 import { bindNetChoices } from "./net-control.mjs";
 import {
@@ -138,6 +139,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       attributeOptions: Object.keys(this.actor.system.attributes ?? {}).map((key) => ({
         key, name: game.i18n.localize(`HOL.Attributes.${key}`), selected: key === this.attributeKey,
       })),
+      damageTypeOptions: (this.draft.abilityConfiguration?.damageTypes ?? []).map(type => ({value:type,label:DAMAGE_TYPE_LABELS[type],selected:type === this.draft.damageType})),
       name: this.actor.name,
       failed: this.actor.getFlag(ID,"deathMarks") ?? this.actor.getFlag(ID,"survival")?.marks ?? 0,
       deathMarks: [1,2,3].map(value=>({value,filled:value <= (this.actor.getFlag(ID,"deathMarks") ?? this.actor.getFlag(ID,"survival")?.marks ?? 0)})),
@@ -210,6 +212,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       this.element.querySelector(`[name="${name}"]`)?.checked === true;
     this.draft = {
       ...this.draft,
+      damageType: value("damageType") ?? this.draft.damageType,
       adjustment: Number(value("adjustment") ?? 0),
       partyPiece: checked("partyPiece"),
       lookOverHere: checked("lookOverHere"),

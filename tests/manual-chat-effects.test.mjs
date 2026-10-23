@@ -3,9 +3,9 @@ import assert from 'node:assert/strict';
 import vm from 'node:vm';
 import {readFile} from 'node:fs/promises';
 import {CONDITION_KINDS} from '../src/rules/conditions.mjs';
-import {DAMAGE_TYPES} from '../src/rules/damage.mjs';
+import {DAMAGE_TYPES,DAMAGE_TYPE_LABELS} from '../src/rules/damage.mjs';
 async function fixture(input){let applied;const context=vm.createContext({canvas:{tokens:{controlled:[{}]}},foundry:{utils:{escapeHTML:value=>value},applications:{api:{DialogV2:{input:async()=>input}}}}});
- const modules={'../rules/conditions.mjs':{CONDITION_KINDS},'../rules/damage.mjs':{DAMAGE_TYPES},'../services/explicit-damage.mjs':{applySelectedDamage:async(components,options)=>{applied={components,options};}}};
+ const modules={'../rules/conditions.mjs':{CONDITION_KINDS},'../rules/damage.mjs':{DAMAGE_TYPES,DAMAGE_TYPE_LABELS},'../services/explicit-damage.mjs':{applySelectedDamage:async(components,options)=>{applied={components,options};}}};
  const m=new vm.SourceTextModule(await readFile(new URL('../src/dialogs/chat-damage.mjs',import.meta.url),'utf8'),{context});await m.link(spec=>{const values=modules[spec];return new vm.SyntheticModule(Object.keys(values),function(){for(const[k,v]of Object.entries(values))this.setExport(k,v);},{context});});await m.evaluate();
  return{prompt:m.namespace.promptChatDamage,get applied(){return applied;}};
 }

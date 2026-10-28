@@ -7,7 +7,7 @@ import assert from "node:assert/strict";
 const repository = process.env.HOL_BOOK_REPOSITORY;
 if (!repository)
   throw new Error("Set HOL_BOOK_REPOSITORY to the local book repository");
-const commit = "bdfd18ed535fbd0e1892b9344444abf6da644809";
+const commit = "295e858c1b6fee044a0261bf9f437636efeff2bf";
 const git = (...args) =>
   execFileSync("git", ["-C", repository, ...args], {
     maxBuffer: 64 * 1024 * 1024,
@@ -152,9 +152,9 @@ const lock = {
   schemaVersion: 1,
   repository: "https://github.com/bruceamoser/heroes-of-legend",
   commit,
-  previousCommit: "d67e046466bdd5052360b96ed91861d607091446",
+  previousCommit: "bdfd18ed535fbd0e1892b9344444abf6da644809",
   approval:
-    "Approved creature action review and summon updates, book PR #1280 merged 2026-10-18; system reconciliation #175. Distribution licensing remains undecided.",
+    "Approved ancestry and class signature review, book release v16.5.0; system sync #252. Distribution licensing remains undecided.",
   counts: {
     creatures: creatures.length,
     monsterAbilities: monsters.length,

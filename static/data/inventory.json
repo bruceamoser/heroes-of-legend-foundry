@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+  "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
   "equipment": [
     {
       "id": "item-ammunition-bundle",
@@ -2949,7 +2949,7 @@
       "id": "ability-signature-arcanist-arcane-deflection",
       "source": {
         "path": "design/cards/signature-arcanist-arcane-deflection.md",
-        "sha256": "1ebcd39b5bba335658521e34bc86ccd3519800604b14e4925795420b639ca120"
+        "sha256": "468828f53e8a9bc0d30e3c0630b502e06e4205dee2fdb149ad55f61d29b63101"
       },
       "items": [],
       "recipes": []
@@ -2958,7 +2958,7 @@
       "id": "ability-signature-arcanist-bent-trajectory",
       "source": {
         "path": "design/cards/signature-arcanist-bent-trajectory.md",
-        "sha256": "6126342a7ac4b5a9f8a93380b9e1095c10963288bd42975b2f132dbd0c9b5291"
+        "sha256": "738b7b025388f4b258c82b9af18e8f538066319caff0ca1e2ae027af418c4e71"
       },
       "items": [],
       "recipes": []
@@ -2967,7 +2967,7 @@
       "id": "ability-signature-arcanist-cast-and-scatter",
       "source": {
         "path": "design/cards/signature-arcanist-cast-and-scatter.md",
-        "sha256": "1bea10f32abc085634b2c61eadc74bbdf3c6a1ac1ab3cb6a72c21a9b967eafff"
+        "sha256": "724b93d46f6da5cadc966776a32d7b0ff43244736be54b7d1b8cd140a896db28"
       },
       "items": [],
       "recipes": []
@@ -2976,7 +2976,7 @@
       "id": "ability-signature-arcanist-choose-the-edge",
       "source": {
         "path": "design/cards/signature-arcanist-choose-the-edge.md",
-        "sha256": "b95d0445f08582b69b10754436a152c253f250922b1cea0ebe97c81ccb2706a0"
+        "sha256": "aaf1acd96b8d9e7cae077fd1306fb526d186288cdb2c737353520f440548dc4b"
       },
       "items": [],
       "recipes": []
@@ -2985,7 +2985,7 @@
       "id": "ability-signature-arcanist-deliberate-spark",
       "source": {
         "path": "design/cards/signature-arcanist-deliberate-spark.md",
-        "sha256": "0f9e4f7840eb54f3471f0a044f7061be61032d8cfabba4b6d63b965d1fd4e4bc"
+        "sha256": "1e45bd1957791e1596c28161e6c72f4bdc0b392c22a8d5a8bf891c9ccb85488a"
       },
       "items": [],
       "recipes": []
@@ -2994,7 +2994,7 @@
       "id": "ability-signature-arcanist-fold-the-distance",
       "source": {
         "path": "design/cards/signature-arcanist-fold-the-distance.md",
-        "sha256": "ee955c6fb116f6c4c4ddbf08596ef7deed0244faa20de2c73d204dca10e11731"
+        "sha256": "3907938adc529cda826600531546cd99616818fb6f2abf847ece9b73e866aa1f"
       },
       "items": [],
       "recipes": []
@@ -3003,7 +3003,7 @@
       "id": "ability-signature-arcanist-leave-a-window",
       "source": {
         "path": "design/cards/signature-arcanist-leave-a-window.md",
-        "sha256": "2765f6f6afdf1f6e60b9a23e9b3da607ba51bb9854b6b626553869cdf49557ea"
+        "sha256": "b9cd6a295314dd6fd58a8410a3cc00c492358407b3171b70f548209b85e070b9"
       },
       "items": [],
       "recipes": []
@@ -3012,7 +3012,7 @@
       "id": "ability-signature-arcanist-open-the-circle",
       "source": {
         "path": "design/cards/signature-arcanist-open-the-circle.md",
-        "sha256": "ee3a03f5fe0c5e1e36c848ec97477e2aeaff781c1cb0a28d3549644ff7b37b97"
+        "sha256": "68eb3dfd6e9002fbfacae9d4ac3cb9a3dc210080b894a7e5b54c4f1299b7a40c"
       },
       "items": [],
       "recipes": []
@@ -3021,7 +3021,7 @@
       "id": "ability-signature-arcanist-study-the-pattern",
       "source": {
         "path": "design/cards/signature-arcanist-study-the-pattern.md",
-        "sha256": "f9a6a26b4a48ca583896bd80428a1f55995ce07cd63be25484ae069de6b4af3a"
+        "sha256": "9f0bb4fd27a5d1922c11f86bd74ab0c2b0f38c0c2fd8785341c0af02c5b21d2c"
       },
       "items": [],
       "recipes": []
@@ -3030,7 +3030,7 @@
       "id": "ability-signature-blade-cut-and-turn",
       "source": {
         "path": "design/cards/signature-blade-cut-and-turn.md",
-        "sha256": "a103687a4c3f1a90274359d7d978b4c1c240d90e9f14fe8e7852b6417f980e05"
+        "sha256": "2727ac305070fbfa70f41def1e6f1044c4fc27cc1b6ddc1f9c0e33bc116ca967"
       },
       "items": [],
       "recipes": []
@@ -3039,7 +3039,7 @@
       "id": "ability-signature-blade-dance-through-steel",
       "source": {
         "path": "design/cards/signature-blade-dance-through-steel.md",
-        "sha256": "f7748481584ff6e975ef9ec5fcedb9c4c2926f9dae619c12f8ad872daf5b803b"
+        "sha256": "d5ef338482ae1ef00aa99d192f12e07f57083f1ce2fe82560a587ec0aed5c267"
       },
       "items": [
         "item-ordinary-melee-weapon"
@@ -3050,7 +3050,7 @@
       "id": "ability-signature-blade-fell-the-balance",
       "source": {
         "path": "design/cards/signature-blade-fell-the-balance.md",
-        "sha256": "6031a8e0d80daf33530c83cff5314e545be30c7f1a307d9a598ab20b7b277e3b"
+        "sha256": "697fa3f9c66317dc806da9b4977b1468697b8cd0ec7aaa71d59d26b47f9ff2e0"
       },
       "items": [],
       "recipes": []
@@ -3059,7 +3059,7 @@
       "id": "ability-signature-blade-measured-guard",
       "source": {
         "path": "design/cards/signature-blade-measured-guard.md",
-        "sha256": "5d3f95c380606649465c190aeba7c64074c944e88a52666bab335aec54a3076d"
+        "sha256": "76ca12056335e22d66c72e4c11355f600cabd4e7d423217c3a444e117c80d084"
       },
       "items": [],
       "recipes": []
@@ -3068,7 +3068,7 @@
       "id": "ability-signature-blade-perfect-placement",
       "source": {
         "path": "design/cards/signature-blade-perfect-placement.md",
-        "sha256": "dac2a5ec827c1c7e15bfa05dba0a30fafeae113d19cd346aa37f4637abfb901a"
+        "sha256": "c0585b27c196f7738bf8cab66554927303fdb8f4614f2d53557b8e19ffb65521"
       },
       "items": [],
       "recipes": []
@@ -3077,7 +3077,7 @@
       "id": "ability-signature-blade-pressure-point",
       "source": {
         "path": "design/cards/signature-blade-pressure-point.md",
-        "sha256": "f36a04352650ace1ac53f99b69e8bd8642c696aab47d3e0ade4e507bc22c97e3"
+        "sha256": "310849ac3504c3547713bf561065ef36a500cbae77de70ef52bbf088122684b6"
       },
       "items": [],
       "recipes": []
@@ -3086,7 +3086,7 @@
       "id": "ability-signature-blade-relentless-pursuit",
       "source": {
         "path": "design/cards/signature-blade-relentless-pursuit.md",
-        "sha256": "778f24ad144b44d41ece7acf7ea02e614f01c4f426bc067fdca0093e2927efee"
+        "sha256": "127ae4f86af5eefa1fd0cebcf19d13b74714d8c4603b64f1394a3623c0f9e800"
       },
       "items": [
         "item-ordinary-melee-weapon"
@@ -3097,7 +3097,7 @@
       "id": "ability-signature-blade-return-stroke",
       "source": {
         "path": "design/cards/signature-blade-return-stroke.md",
-        "sha256": "04a09808ae678886c12ae9f8b8a5dc55d2481ddf3d52ccb3edfb0c1e75252736"
+        "sha256": "f7ccc5488fb845be80b7d786f3b1fea73fe9bdcd83c2a7aac02fa01d2f0a8a4f"
       },
       "items": [
         "item-ordinary-melee-weapon"
@@ -3108,7 +3108,7 @@
       "id": "ability-signature-blade-sweeping-entry",
       "source": {
         "path": "design/cards/signature-blade-sweeping-entry.md",
-        "sha256": "c712b767d9b4791faa7eb0d229d45a38664154b00676ec99b1721376cc406ff9"
+        "sha256": "9c2ec1968e2c8dc94eb9a0c4a149ed712234aa1829d8ecc7483e4dc4e8ae8587"
       },
       "items": [],
       "recipes": []
@@ -3117,7 +3117,7 @@
       "id": "ability-signature-intellect-a-better-angle",
       "source": {
         "path": "design/cards/signature-intellect-a-better-angle.md",
-        "sha256": "8c5cd7e04ed77171bd5d19d64cf2e2996af35ce1b6fc2d543540252f36e6a80a"
+        "sha256": "a6f551ea7e87d9d28e1d261675134bbb50f605e566f94e44d6329ccce7586a77"
       },
       "items": [],
       "recipes": []
@@ -3126,7 +3126,7 @@
       "id": "ability-signature-intellect-a-route-for-everyone",
       "source": {
         "path": "design/cards/signature-intellect-a-route-for-everyone.md",
-        "sha256": "75f1f1fde8544e1d00fb3353540f69407fb102a0c8d9a454323d0035bfef5150"
+        "sha256": "5ba1ae98f150d41236ba6efe68bf2bed791866197f11091a93e46df0e06445d5"
       },
       "items": [],
       "recipes": []
@@ -3135,18 +3135,16 @@
       "id": "ability-signature-intellect-diagnose-the-failure",
       "source": {
         "path": "design/cards/signature-intellect-diagnose-the-failure.md",
-        "sha256": "4179915be2f59560ce26c60fbd11ed17916a93fc52bcc07e8de51c27281787d3"
+        "sha256": "5b82404e954069447bafa50e488868f03149beaf5acf861198684b0a5fe1cecf"
       },
-      "items": [
-        "item-craft-tools"
-      ],
+      "items": [],
       "recipes": []
     },
     {
       "id": "ability-signature-intellect-expose-the-mechanism",
       "source": {
         "path": "design/cards/signature-intellect-expose-the-mechanism.md",
-        "sha256": "fd6eba4212b86ab617bfc63193f3fb7739f66f00ee4279d2abe159bbb0b49c84"
+        "sha256": "e82cf097cc7925c3f8c519eeac435dafa458c06c8520c7f6996e0903d428d28d"
       },
       "items": [],
       "recipes": []
@@ -3155,7 +3153,7 @@
       "id": "ability-signature-intellect-make-the-connection",
       "source": {
         "path": "design/cards/signature-intellect-make-the-connection.md",
-        "sha256": "08a1d789990078095772c24fe26f8309223e4db31470c6f96f27853d74dbb96d"
+        "sha256": "408878037eb4aa35e73da5f39a7f3fa760ff8b1a6066b07e37cabc4b43f5f225"
       },
       "items": [],
       "recipes": []
@@ -3164,7 +3162,7 @@
       "id": "ability-signature-intellect-predict-the-motion",
       "source": {
         "path": "design/cards/signature-intellect-predict-the-motion.md",
-        "sha256": "51e073ae982a4f854e7ca2fea79ab1ff11fd1245ed4a34bc1369e19a9bf1f47f"
+        "sha256": "6fd6f56093ca8557d26456c22e9103e89421928c0f3698702c56a66cab443f26"
       },
       "items": [],
       "recipes": []
@@ -3173,7 +3171,7 @@
       "id": "ability-signature-intellect-prepared-explanation",
       "source": {
         "path": "design/cards/signature-intellect-prepared-explanation.md",
-        "sha256": "c1002194ce0dddf93a9e52d5c1cac10030a8d08defd9463b60034c89c4919af2"
+        "sha256": "992c351977c23f06b744bbe75a29d166824a5c070940506f231e32eb785e495f"
       },
       "items": [],
       "recipes": []
@@ -3182,7 +3180,7 @@
       "id": "ability-signature-intellect-spot-the-leverage",
       "source": {
         "path": "design/cards/signature-intellect-spot-the-leverage.md",
-        "sha256": "f3c67b79b6f3a49a9c567eec03b56921320510a71647d3c6bdddd29cb6919748"
+        "sha256": "2486c6eb34016955416efeb5c96fc5a4a9f5509814925e75cfbb11c572a6cdf3"
       },
       "items": [],
       "recipes": []
@@ -3191,7 +3189,7 @@
       "id": "ability-signature-intellect-test-the-hypothesis",
       "source": {
         "path": "design/cards/signature-intellect-test-the-hypothesis.md",
-        "sha256": "432ad1b88119351235a6dd3fbe8457ab72b68e9535c2f8bf7b92b7ddaabeba46"
+        "sha256": "5e38f574e4437cc714237c129d33ea07f217bdeff3a101fb84b64b38cde250a7"
       },
       "items": [],
       "recipes": []
@@ -3200,7 +3198,7 @@
       "id": "ability-signature-leader-coordinated-rush",
       "source": {
         "path": "design/cards/signature-leader-coordinated-rush.md",
-        "sha256": "78df72deb5571bd971ad4467c23f0fca6abe3e0e77d1a5ac015f1740dfa4d56c"
+        "sha256": "126e6915ddb0ba9c5808267feaa971cd4ac361046ba13ea15d61c4b1b7bb5e38"
       },
       "items": [],
       "recipes": []
@@ -3209,7 +3207,7 @@
       "id": "ability-signature-leader-follow-my-signal",
       "source": {
         "path": "design/cards/signature-leader-follow-my-signal.md",
-        "sha256": "fabb206fa744b81725e61093086fc0f3e3111391054ff9e777fcf65e21535701"
+        "sha256": "07d34de207310bff1799f7d26ee6dc6a8bd42636cb0da470447b46fdb16fa05a"
       },
       "items": [],
       "recipes": []
@@ -3218,7 +3216,7 @@
       "id": "ability-signature-leader-hold-your-nerve",
       "source": {
         "path": "design/cards/signature-leader-hold-your-nerve.md",
-        "sha256": "ac483fe2d917c99fd98a945995f01c65b712fecb4e64d147d7d4263c63341454"
+        "sha256": "ae3e83200593706995f2e1eead30d49c359d807935990fb344083e0ab186523d"
       },
       "items": [],
       "recipes": []
@@ -3227,7 +3225,7 @@
       "id": "ability-signature-leader-lead-the-step",
       "source": {
         "path": "design/cards/signature-leader-lead-the-step.md",
-        "sha256": "94ecbaf57ce2ad2bc1938ec5e46118823d4925731d894f94c5b77d8c95e89b2e"
+        "sha256": "4a0fa432195118c6b8bcb92d46e3c43e06e415d9c73856450f5f3f5576d21461"
       },
       "items": [],
       "recipes": []
@@ -3236,7 +3234,7 @@
       "id": "ability-signature-leader-orderly-withdrawal",
       "source": {
         "path": "design/cards/signature-leader-orderly-withdrawal.md",
-        "sha256": "90e48ad4a702efdf8cc106abb051fa4287fee51683b2a8a3f9981bc8c2bb4dac"
+        "sha256": "384e95a9862fca98f9c1f839e6a1e604a56cc80b7e25f680c4413e975fc5e0f5"
       },
       "items": [],
       "recipes": []
@@ -3245,7 +3243,7 @@
       "id": "ability-signature-leader-press-the-opening",
       "source": {
         "path": "design/cards/signature-leader-press-the-opening.md",
-        "sha256": "7ae29052d62149157b32d810167081ffda57fed8e67bc5796a4d68261732f44c"
+        "sha256": "28082686ddbaad2648817efd4797f29009a017c46cbb5a6755303bdb2794aebd"
       },
       "items": [],
       "recipes": []
@@ -3254,7 +3252,7 @@
       "id": "ability-signature-leader-refuse-the-rout",
       "source": {
         "path": "design/cards/signature-leader-refuse-the-rout.md",
-        "sha256": "323c1859a095ce53fefee80ed4cc5302073d2e87c7efdcf0621e7b3d70a189bb"
+        "sha256": "17ed234da2fa842c21ffb8adc70f532f537cb251a8fad3cffb32e5091da2b566"
       },
       "items": [],
       "recipes": []
@@ -3263,7 +3261,7 @@
       "id": "ability-signature-leader-stand-together",
       "source": {
         "path": "design/cards/signature-leader-stand-together.md",
-        "sha256": "07945ae3e03b1be21450925ffb93cc5734deae32a5b3b05944eb37ab1afda120"
+        "sha256": "b1b2005fcf6d3f318499df41c6c3b9b07f1a02f40e78b45c66940019a8bcaab2"
       },
       "items": [],
       "recipes": []
@@ -3272,7 +3270,7 @@
       "id": "ability-signature-leader-watch-the-rear",
       "source": {
         "path": "design/cards/signature-leader-watch-the-rear.md",
-        "sha256": "d702cf29b2227698488d39b9be146715ad1912c3c7617681405f4f338b417e8e"
+        "sha256": "ecbb54ca5912642855408acd8fea4e88a26d5e5deb030fcce323539e43cb65b1"
       },
       "items": [],
       "recipes": []
@@ -3281,7 +3279,7 @@
       "id": "ability-signature-odd-always-a-way-around",
       "source": {
         "path": "design/cards/signature-odd-always-a-way-around.md",
-        "sha256": "59520a9a87ff4cecb376e45c52b85cfafa4c758841d5ad79086639442f953530"
+        "sha256": "682eccb82828ecfdf2d0eb19fd227b8bee8b2a7b7425334854e6dc8ce67d3e44"
       },
       "items": [],
       "recipes": []
@@ -3290,7 +3288,7 @@
       "id": "ability-signature-odd-an-unexpected-exit",
       "source": {
         "path": "design/cards/signature-odd-an-unexpected-exit.md",
-        "sha256": "033f89b76784e1d0ceb3f1abcbb3dca46a916a2a41d17d8005c5a9d8eb63f8c5"
+        "sha256": "fc6e64a849942353ccc220f0dcb8428e67ec022d23c416a55c1f906bbc6b1d76"
       },
       "items": [],
       "recipes": []
@@ -3299,7 +3297,7 @@
       "id": "ability-signature-odd-change-the-question",
       "source": {
         "path": "design/cards/signature-odd-change-the-question.md",
-        "sha256": "931d26c8bac77af4f2fa30285c48ca3e63b8d0ecd45ad5784f6cb81a869a5679"
+        "sha256": "0c4e30b817dd5fb9e4c46bf1910e7e84c050985293fb00a4376ea86cc9339aa4"
       },
       "items": [],
       "recipes": []
@@ -3308,7 +3306,7 @@
       "id": "ability-signature-odd-one-last-remark",
       "source": {
         "path": "design/cards/signature-odd-one-last-remark.md",
-        "sha256": "6b3715d26c9c84a2d6d67ed2b4e428768409dc9668dfb4a14d484b13f637094b"
+        "sha256": "76bb7141a166c497652eae9bbfc052177db781993a904a50320832d22c1f86e3"
       },
       "items": [],
       "recipes": []
@@ -3317,7 +3315,7 @@
       "id": "ability-signature-odd-sideways-thinking",
       "source": {
         "path": "design/cards/signature-odd-sideways-thinking.md",
-        "sha256": "930c48b06082b837f02f0a95d7df91ac9022912c39ea0a38878ea4eef85dca1b"
+        "sha256": "cf2ccf99ac66435ad81c3143b4ac03aaf565be3cbf39396268422e0f7effffc9"
       },
       "items": [],
       "recipes": []
@@ -3326,7 +3324,7 @@
       "id": "ability-signature-odd-strange-but-effective",
       "source": {
         "path": "design/cards/signature-odd-strange-but-effective.md",
-        "sha256": "3edeb1378ce1a261255d0bb912e70e1e946f385977d29f30ed18fe2169e8033c"
+        "sha256": "d7ad5cd1b9de15e825c3d170ed3a039c3cdec74ccc033cf4a146826d53e67573"
       },
       "items": [],
       "recipes": []
@@ -3335,7 +3333,7 @@
       "id": "ability-signature-odd-unlikely-assistant",
       "source": {
         "path": "design/cards/signature-odd-unlikely-assistant.md",
-        "sha256": "a179e327b16eba68571e4c009aeb2805a41871c1ac6909e47e7f840f25cf6f83"
+        "sha256": "52a28b42d920d202e17e2e9f8441c08cfe4385611a341ae7acfaee03b7e8bbaf"
       },
       "items": [],
       "recipes": []
@@ -3344,7 +3342,7 @@
       "id": "ability-signature-odd-useful-interruption",
       "source": {
         "path": "design/cards/signature-odd-useful-interruption.md",
-        "sha256": "cf83a5a3f16bdf5f01359e132aa2e5ef16b427919a007d18fae59305fa54980d"
+        "sha256": "6998b7c9f0d5b27c7d9d8bd0aea149aaccd5db75897bd90cd1a4813e31a3768b"
       },
       "items": [],
       "recipes": []
@@ -3353,7 +3351,7 @@
       "id": "ability-signature-odd-wrong-place-for-that",
       "source": {
         "path": "design/cards/signature-odd-wrong-place-for-that.md",
-        "sha256": "b0ef4029449c36a65fc23322de52c6667c682aff113ffac2e79be886a396917c"
+        "sha256": "bbb47f3753215960b895bae1322f3448b4efd5f492d2183d5664088f4bbaf2f6"
       },
       "items": [],
       "recipes": []
@@ -3362,7 +3360,7 @@
       "id": "ability-signature-protector-between-them",
       "source": {
         "path": "design/cards/signature-protector-between-them.md",
-        "sha256": "c95cee1c40740202a6fe85a925a621edc6a534bf287f7216b743d06a5894dda1"
+        "sha256": "212c4ecdf598446f6d5bff25136fdcd5e1d52647e5ace27d56c67b22f56a5de2"
       },
       "items": [],
       "recipes": []
@@ -3371,7 +3369,7 @@
       "id": "ability-signature-protector-break-their-advance",
       "source": {
         "path": "design/cards/signature-protector-break-their-advance.md",
-        "sha256": "e94fa1b06aff734e02dc7e6c7706d746a605b4436d0d8bf78da77353c8692f74"
+        "sha256": "82a6a8830a242c9135d8fdaedf973d225e358ba963d1714a3f28ded80444c9ac"
       },
       "items": [],
       "recipes": []
@@ -3380,7 +3378,7 @@
       "id": "ability-signature-protector-close-the-gap",
       "source": {
         "path": "design/cards/signature-protector-close-the-gap.md",
-        "sha256": "7fb1ed1f72341d8ca14691fb5bb83386cc097dc4bec11730960270614fa560b5"
+        "sha256": "a73f9e129e93eb695c076a18f8739b805d34e761501c181413b23a06f0e375b6"
       },
       "items": [],
       "recipes": []
@@ -3389,7 +3387,7 @@
       "id": "ability-signature-protector-defiant-rescue",
       "source": {
         "path": "design/cards/signature-protector-defiant-rescue.md",
-        "sha256": "0597b65cdfeb0ce304a1c3403f73c57069a37e97274f3d288dc3d1010cabe7d6"
+        "sha256": "5c1ef25fea22fae097be2746cb689ae64030223c68f66e52edd63a4611ef5632"
       },
       "items": [],
       "recipes": []
@@ -3398,7 +3396,7 @@
       "id": "ability-signature-protector-drive-back-the-circle",
       "source": {
         "path": "design/cards/signature-protector-drive-back-the-circle.md",
-        "sha256": "484e12c571b237295ebb4e9877a3e3ccabbc4956c783f3f301be75e7f220e7e5"
+        "sha256": "47dcdd537be505c62374eef3e0ee3dbc7bfde7b1c8ba9b33039406ec83754e4f"
       },
       "items": [],
       "recipes": []
@@ -3407,7 +3405,7 @@
       "id": "ability-signature-protector-make-a-refuge",
       "source": {
         "path": "design/cards/signature-protector-make-a-refuge.md",
-        "sha256": "8eac21ef3fa4af6fbb66216514f374ff8a8b1a4af745f31b935680b2f791b5f5"
+        "sha256": "cb33fe25ac7ce20972d57a9b034dc6b8cb10cb751c8520babc007b1a5998a3d2"
       },
       "items": [],
       "recipes": []
@@ -3416,7 +3414,7 @@
       "id": "ability-signature-protector-set-your-feet",
       "source": {
         "path": "design/cards/signature-protector-set-your-feet.md",
-        "sha256": "886717ecb936d4521ebc7b83decb470b5ded28e4af11f282ad66c36344e05d22"
+        "sha256": "6bceb174c4090277e04736f3e4d210f9d0d638e52866481261eb08784c8f78e1"
       },
       "items": [],
       "recipes": []
@@ -3425,7 +3423,7 @@
       "id": "ability-signature-protector-shelter-the-fallen",
       "source": {
         "path": "design/cards/signature-protector-shelter-the-fallen.md",
-        "sha256": "0da6754f6c2ec594d538ceaa2348dd6c536800c18d2fb0d6f8614e5591cf7444"
+        "sha256": "f4d28dd24537335e5f674066a28ea9abfddff08a471c234ff85acf07b07ad778"
       },
       "items": [],
       "recipes": []
@@ -3434,7 +3432,7 @@
       "id": "ability-signature-protector-unbroken-passage",
       "source": {
         "path": "design/cards/signature-protector-unbroken-passage.md",
-        "sha256": "06479674f3f81e9b76a8f1a51827a5e8913a37997cae3e00ebcb4a557d865d98"
+        "sha256": "3f0d948f39801eb0bc2114355c8bb9f276da03561bb526ff8b567ea9fbf188f0"
       },
       "items": [],
       "recipes": []
@@ -3443,18 +3441,16 @@
       "id": "ability-signature-shadow-exploit-confusion",
       "source": {
         "path": "design/cards/signature-shadow-exploit-confusion.md",
-        "sha256": "af4fc135aa820d8b8a7a61649800f1e11c0fc744b7ec99d839420f911b6371b2"
+        "sha256": "cdfc074a60e2267e2bf955c3ef7d01f27e84b57abcbcd185c127e68170b94d5a"
       },
-      "items": [
-        "item-ordinary-melee-weapon"
-      ],
+      "items": [],
       "recipes": []
     },
     {
       "id": "ability-signature-shadow-fade-behind",
       "source": {
         "path": "design/cards/signature-shadow-fade-behind.md",
-        "sha256": "ddae7dae7c87decc96752a9325e515e14b3e7cf99deb95342fa9a5fee27f5026"
+        "sha256": "aa0aaf068b60bbf5fad4db94c79f1a76e1c90eaa09a916b6965194b63c148c59"
       },
       "items": [],
       "recipes": []
@@ -3463,7 +3459,7 @@
       "id": "ability-signature-shadow-leave-no-pursuit",
       "source": {
         "path": "design/cards/signature-shadow-leave-no-pursuit.md",
-        "sha256": "987128e7c36b7ff87a9fcd70a9d670a692493f13c2b83a1ae2057fc44f4ee8dc"
+        "sha256": "0fd9732816f1730ab46e978dea73d7e2cd0caa26ceb3a17b6a4bc89c1cfc54e9"
       },
       "items": [],
       "recipes": []
@@ -3472,18 +3468,16 @@
       "id": "ability-signature-shadow-open-the-way",
       "source": {
         "path": "design/cards/signature-shadow-open-the-way.md",
-        "sha256": "1b10120318fae3436a3204fcc36b5b56d8051bd63e5c7afd93451b3d00248478"
+        "sha256": "61f6b483baa3cb77e487f34e77aa47710777aa24e640052cdc847194c7687dfc"
       },
-      "items": [
-        "item-lock-tools"
-      ],
+      "items": [],
       "recipes": []
     },
     {
       "id": "ability-signature-shadow-pass-the-guard",
       "source": {
         "path": "design/cards/signature-shadow-pass-the-guard.md",
-        "sha256": "03936042695d156c31fa4c78c88101e84862fa89c48e6dc37f92f3fa1ea26f1e"
+        "sha256": "97268ab578e6118751567827051f276a08ef043a989bd7853deb7a18d2e18bef"
       },
       "items": [],
       "recipes": []
@@ -3492,7 +3486,7 @@
       "id": "ability-signature-shadow-soft-landing",
       "source": {
         "path": "design/cards/signature-shadow-soft-landing.md",
-        "sha256": "409ba3000680c411ac9848c0793ad2086ff67ac047069bf59e4c28c7e021e0ff"
+        "sha256": "7e951ebb138d27dbd3a396ca2f79212ea62968fdf0f426127920acbe023d3a6b"
       },
       "items": [],
       "recipes": []
@@ -3501,7 +3495,7 @@
       "id": "ability-signature-shadow-strike-and-vanish",
       "source": {
         "path": "design/cards/signature-shadow-strike-and-vanish.md",
-        "sha256": "ef1ed7bb5dea4634bb65649f1e555c54f4d15b1fce3915f0fac986db8a820275"
+        "sha256": "99e8a57b4ab383947e8e0c8d28bda34d63a8cf70a8d860af0681fdfeaa995016"
       },
       "items": [],
       "recipes": []
@@ -3510,7 +3504,7 @@
       "id": "ability-signature-shadow-turn-their-eye",
       "source": {
         "path": "design/cards/signature-shadow-turn-their-eye.md",
-        "sha256": "686b95960550ab3ee41eb76848af6a4abc9ff2a3b0183b10b967dc289cc7bd1d"
+        "sha256": "5a6f7e7acea819339617ffe31a3d2111e5d9585263df77a61934714243c30e05"
       },
       "items": [],
       "recipes": []
@@ -3519,7 +3513,7 @@
       "id": "ability-signature-shadow-unseen-passage",
       "source": {
         "path": "design/cards/signature-shadow-unseen-passage.md",
-        "sha256": "bce85fbf29f81cfd3f593a8fd00fd1d5c7bc233da1a6f96e619ff0a7d3ae8464"
+        "sha256": "91e51ce96f73a2eeaeb2fd117988ec249c5f899794fff32386348ce97b2fa898"
       },
       "items": [],
       "recipes": []
@@ -3528,7 +3522,7 @@
       "id": "ability-signature-shepherd-a-hand-in-darkness",
       "source": {
         "path": "design/cards/signature-shepherd-a-hand-in-darkness.md",
-        "sha256": "1fe7e6f66faf5db2016217232bc35cd7f2f2008c4e5fccd6384de93846ac8601"
+        "sha256": "96658a0686e2a27fb44469ef7d2adf4a81bd4b2cbd572ab7a47ca5401cd5584f"
       },
       "items": [],
       "recipes": []
@@ -3537,7 +3531,7 @@
       "id": "ability-signature-shepherd-bring-them-near",
       "source": {
         "path": "design/cards/signature-shepherd-bring-them-near.md",
-        "sha256": "5dc5cb0a4900673939aeccbce0f2843d003609e2a7f4d9230655fdd21c32dd7e"
+        "sha256": "225526e13ef3b56dc21c6da346725dd417b080df21612e7dee2cf9a6304ac820"
       },
       "items": [],
       "recipes": []
@@ -3546,7 +3540,7 @@
       "id": "ability-signature-shepherd-careful-transfer",
       "source": {
         "path": "design/cards/signature-shepherd-careful-transfer.md",
-        "sha256": "e49879e7caf05161d695fb9cbe82a01d13eedb384a02f96dbec520f9f9929621"
+        "sha256": "bb5fb86b34e3d9d1433cb71901797c429144ce20b4702beb82f5f8e7fd45f533"
       },
       "items": [],
       "recipes": []
@@ -3555,7 +3549,7 @@
       "id": "ability-signature-shepherd-ease-the-burden",
       "source": {
         "path": "design/cards/signature-shepherd-ease-the-burden.md",
-        "sha256": "05bee715ef18eccfc72d993078a71903f090823176a2f73c0019c36e218b7a8b"
+        "sha256": "84cca3772c2e4d4eac835c3e35cec5f2d1015006e1d63832228be08b9de3f82f"
       },
       "items": [],
       "recipes": []
@@ -3564,7 +3558,7 @@
       "id": "ability-signature-shepherd-gentle-return",
       "source": {
         "path": "design/cards/signature-shepherd-gentle-return.md",
-        "sha256": "8d8b9544d85242a2cc75e3b97b23d7b3b388ca6c4980ad5518bcfb4da0aee204"
+        "sha256": "73af87c8182f9918144d7f89ec95031f3cc8383140ff84b59f2b763e54ce8da2"
       },
       "items": [],
       "recipes": []
@@ -3573,7 +3567,7 @@
       "id": "ability-signature-shepherd-hear-me-still",
       "source": {
         "path": "design/cards/signature-shepherd-hear-me-still.md",
-        "sha256": "f09a37feb9a73c1a987fab21e69af8cba7879ee39e6feb22ff8f14df6a8a186c"
+        "sha256": "899de41945a33565dbc818af2c647e18b4e2492caaa989c6a89c5d1bf936232d"
       },
       "items": [],
       "recipes": []
@@ -3582,7 +3576,7 @@
       "id": "ability-signature-shepherd-quiet-the-tremor",
       "source": {
         "path": "design/cards/signature-shepherd-quiet-the-tremor.md",
-        "sha256": "1de7f8069774f78232d0bef50909361d0dc0e117a20b615a0083f9040cbb8507"
+        "sha256": "9431fddefe1e586d164caf76445b9941e5c2b81d1507b3fadad05259cc88278f"
       },
       "items": [],
       "recipes": []
@@ -3591,7 +3585,7 @@
       "id": "ability-signature-shepherd-restore-composure",
       "source": {
         "path": "design/cards/signature-shepherd-restore-composure.md",
-        "sha256": "358f477f8214b64a93b7649c0891a0abf356abc16db59edc168a54fdeca39c1c"
+        "sha256": "0b123bf29ca88987b2035eee97b220c7c312722df0b907d43ebf020fe4defe41"
       },
       "items": [],
       "recipes": []
@@ -3600,7 +3594,7 @@
       "id": "ability-signature-shepherd-shared-resolve",
       "source": {
         "path": "design/cards/signature-shepherd-shared-resolve.md",
-        "sha256": "410fd0ffc503eb0a0565fabdeb0e048414e86eb72bba646d29f8535a18963750"
+        "sha256": "22982207bc4ad4974606591a00d1a7af7c6d0ae2de96a92ab17e8accf734e951"
       },
       "items": [],
       "recipes": []
@@ -3609,7 +3603,7 @@
       "id": "ability-signature-unbalanced-break-their-grip",
       "source": {
         "path": "design/cards/signature-unbalanced-break-their-grip.md",
-        "sha256": "8fff45635b2876d0eac8e842ada191517432abb2b8f03e562f050fdd8ab0157a"
+        "sha256": "038c515af59e6e58048ecd2b9e9aa6b99894e385e4c7a21158633dda75133e27"
       },
       "items": [],
       "recipes": []
@@ -3618,7 +3612,7 @@
       "id": "ability-signature-unbalanced-crash-down",
       "source": {
         "path": "design/cards/signature-unbalanced-crash-down.md",
-        "sha256": "87f6487ec32ade42f7c2be0370824ade4a7a7e99a558af02630828814242d8ec"
+        "sha256": "fc46f0ede05fc8f184a7278f0c83958c9332eec36d4d9c85c2def13a3615b2cf"
       },
       "items": [],
       "recipes": []
@@ -3627,7 +3621,7 @@
       "id": "ability-signature-unbalanced-crush-the-barrier",
       "source": {
         "path": "design/cards/signature-unbalanced-crush-the-barrier.md",
-        "sha256": "f51904ce05c711b5374ed0ee6b46ca932b795be3ba5f6b35c1a0706e148330f5"
+        "sha256": "2d6d09c36b67fc5c9ea6d2659aa367c64fffb285c7e88ce459ae33ab1d0d1de7"
       },
       "items": [],
       "recipes": []
@@ -3636,7 +3630,7 @@
       "id": "ability-signature-unbalanced-fling-the-captive",
       "source": {
         "path": "design/cards/signature-unbalanced-fling-the-captive.md",
-        "sha256": "bccbca1ee30894040b9b25acac27b44595823a691ef712c67ada57b566f7f90a"
+        "sha256": "6f684226f80786a0f8434f5c90baa8d4fdcf5acca4fb2b330e6b6b49ffa11fe0"
       },
       "items": [],
       "recipes": []
@@ -3645,7 +3639,7 @@
       "id": "ability-signature-unbalanced-laugh-at-the-fall",
       "source": {
         "path": "design/cards/signature-unbalanced-laugh-at-the-fall.md",
-        "sha256": "69d70796b1944fec3198a8fba262a404fe432d493eb875046918b40e37b791fd"
+        "sha256": "e210924c6ddd6b7aa90a4b82a3ec5d9272c9d4470a601583bc92a0c2f746eff2"
       },
       "items": [],
       "recipes": []
@@ -3654,7 +3648,7 @@
       "id": "ability-signature-unbalanced-raging-recoil",
       "source": {
         "path": "design/cards/signature-unbalanced-raging-recoil.md",
-        "sha256": "7706d4b5927e40f01e1865976cebaa407470ac719c9dd4ea8c49569034e7c167"
+        "sha256": "1e08c55c250d6c199b9d867a019bb330541c4489a28b8d09c4a8905e3cc3ff9d"
       },
       "items": [],
       "recipes": []
@@ -3663,7 +3657,7 @@
       "id": "ability-signature-unbalanced-scatter-the-line",
       "source": {
         "path": "design/cards/signature-unbalanced-scatter-the-line.md",
-        "sha256": "7600d3dddd3ee7bc5097ebdcc512a5f9c3c45cc65c13f222c40db5351ade5253"
+        "sha256": "452079d952d1308e978ad6774d4273440ab9ee744d7ecdfc29514dbef7d711f8"
       },
       "items": [],
       "recipes": []
@@ -3672,7 +3666,7 @@
       "id": "ability-signature-unbalanced-shoulder-through",
       "source": {
         "path": "design/cards/signature-unbalanced-shoulder-through.md",
-        "sha256": "03e7d1e1b5e11e576df9a4939b12ed7bb5664ccbaf21cece1c719c3df5ddf219"
+        "sha256": "2ec31bc5effcd7ab921bdb651d9c78c31c23fdced032f06fe8fedfdc35ed6d35"
       },
       "items": [],
       "recipes": []
@@ -3681,7 +3675,7 @@
       "id": "ability-signature-unbalanced-wild-approach",
       "source": {
         "path": "design/cards/signature-unbalanced-wild-approach.md",
-        "sha256": "2aa82ed78408651a76a618921142df8956adf3ef72de8aa5435313a777d476f4"
+        "sha256": "f596a3e9be4e58d74273bf2416d645484171a3a2bb7be74d3fa793cf81f78568"
       },
       "items": [],
       "recipes": []
@@ -3690,7 +3684,7 @@
       "id": "ability-signature-warden-a-watchful-rest",
       "source": {
         "path": "design/cards/signature-warden-a-watchful-rest.md",
-        "sha256": "a4e08f1a663d60839378cfbec71581655e2ef6178ba7a1db4d4dfe1e99dc960d"
+        "sha256": "40dbdfc4e26019b6870f34f01ed2cecefa3b80866c374bcb4b2365ba2ce66fe4"
       },
       "items": [],
       "recipes": []
@@ -3699,7 +3693,7 @@
       "id": "ability-signature-warden-bring-them-through",
       "source": {
         "path": "design/cards/signature-warden-bring-them-through.md",
-        "sha256": "fff70bb8ca78fac3799372baec1781cd5d5d66dd0acd8561acdfea48a4237d8a"
+        "sha256": "185f66fdde8a90d32875d8dec31d85c5ef5fd656746430d0f2d9948228ba2457"
       },
       "items": [],
       "recipes": []
@@ -3708,7 +3702,7 @@
       "id": "ability-signature-warden-follow-my-footsteps",
       "source": {
         "path": "design/cards/signature-warden-follow-my-footsteps.md",
-        "sha256": "285ee97fc994f7fe91269b35a9a3b9ff931d943ed5d8f4641275d99596da14b4"
+        "sha256": "7c58469f28fa4761ef99ee9f12a29f5e05a18d62b6b91be124b5a783ac3e85d3"
       },
       "items": [],
       "recipes": []
@@ -3717,7 +3711,7 @@
       "id": "ability-signature-warden-keep-the-quarry-close",
       "source": {
         "path": "design/cards/signature-warden-keep-the-quarry-close.md",
-        "sha256": "0b976aab7fcd2910ac007f72f441538a8591f91dc2adff68749bed211f8d24bc"
+        "sha256": "2fc9ac0363310302b864e5f4bea04d127ad9ffe893a4aec6413427208c395a54"
       },
       "items": [],
       "recipes": []
@@ -3726,7 +3720,7 @@
       "id": "ability-signature-warden-know-what-you-hunt",
       "source": {
         "path": "design/cards/signature-warden-know-what-you-hunt.md",
-        "sha256": "e33941d89f70d24032e7c21f79863b44ba45fb745e5bcdc76c97f314e382ea31"
+        "sha256": "4288f494978c5238f6fb0c9a8032988901cbdf24a0f6c00f3debf8c3bf48ecc5"
       },
       "items": [],
       "recipes": []
@@ -3735,7 +3729,7 @@
       "id": "ability-signature-warden-read-the-passing",
       "source": {
         "path": "design/cards/signature-warden-read-the-passing.md",
-        "sha256": "c534d936e611fd8c9cb3ac8341d248b3647f67c905a10d6eaeb9115919c214a6"
+        "sha256": "36303945575831d553f49f1bbf28cd9fae563e9ceb56cdb2da5ea0c2ab9cc27f"
       },
       "items": [],
       "recipes": []
@@ -3744,7 +3738,7 @@
       "id": "ability-signature-warden-stay-on-the-scent",
       "source": {
         "path": "design/cards/signature-warden-stay-on-the-scent.md",
-        "sha256": "a8c56057640d671c6fdb3ace8c9636602562a35b8cd383886ac7ca48c978ab3c"
+        "sha256": "00d1cfeb9a8372542fae38435cdb407f25a77bb9d97c264d18f6c2a6ce861517"
       },
       "items": [],
       "recipes": []
@@ -3753,7 +3747,7 @@
       "id": "ability-signature-warden-through-bramble-and-stone",
       "source": {
         "path": "design/cards/signature-warden-through-bramble-and-stone.md",
-        "sha256": "e73b56834cb1f5e12cb10c42e3986739e25507151ed1aa750cf8a0e4ce96b3eb"
+        "sha256": "8752ae10ad51c6aa3fef13d26c1b4e69b1eedc56549c25fcb6c60e64147dbd24"
       },
       "items": [],
       "recipes": []
@@ -3762,7 +3756,7 @@
       "id": "ability-signature-warden-turn-the-hunt",
       "source": {
         "path": "design/cards/signature-warden-turn-the-hunt.md",
-        "sha256": "badadfcb36afee4ca5444f8e3762449a42af94461c2d91747c3e3a4ef23d206f"
+        "sha256": "67091ce87948b2dea8b6f4b9667e5e55ae6c185a42b3fcb224025a53efb474d8"
       },
       "items": [],
       "recipes": [],

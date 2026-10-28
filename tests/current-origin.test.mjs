@@ -60,7 +60,7 @@ test("the old Walled armor arrangement and removal follow its current light gran
 test("retained markers and old source commits use only current origin pairs", () => {
   for (const commit of [
     "64089a1c8961d7faff172f179448a8b6e57827ef",
-    "bdfd18ed535fbd0e1892b9344444abf6da644809",
+    "295e858c1b6fee044a0261bf9f437636efeff2bf",
     "arbitrary-old-source",
   ]) {
     const input = file(commit);

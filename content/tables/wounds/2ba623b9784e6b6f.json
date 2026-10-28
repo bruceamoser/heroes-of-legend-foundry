@@ -13,7 +13,7 @@
   "flags": {
     "heroes-of-legend": {
       "woundTable": "life",
-      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+      "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
     }
   },
   "results": [
@@ -35,7 +35,7 @@
           "woundKey": "111",
           "woundTable": "life",
           "catalogId": "wound-life-111",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -57,7 +57,7 @@
           "woundKey": "112",
           "woundTable": "life",
           "catalogId": "wound-life-112",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -79,7 +79,7 @@
           "woundKey": "113",
           "woundTable": "life",
           "catalogId": "wound-life-113",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -101,7 +101,7 @@
           "woundKey": "114",
           "woundTable": "life",
           "catalogId": "wound-life-114",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -123,7 +123,7 @@
           "woundKey": "115",
           "woundTable": "life",
           "catalogId": "wound-life-115",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -145,7 +145,7 @@
           "woundKey": "116",
           "woundTable": "life",
           "catalogId": "wound-life-116",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -167,7 +167,7 @@
           "woundKey": "122",
           "woundTable": "life",
           "catalogId": "wound-life-122",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -189,7 +189,7 @@
           "woundKey": "123",
           "woundTable": "life",
           "catalogId": "wound-life-123",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -211,7 +211,7 @@
           "woundKey": "124",
           "woundTable": "life",
           "catalogId": "wound-life-124",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -233,7 +233,7 @@
           "woundKey": "125",
           "woundTable": "life",
           "catalogId": "wound-life-125",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -255,7 +255,7 @@
           "woundKey": "126",
           "woundTable": "life",
           "catalogId": "wound-life-126",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -277,7 +277,7 @@
           "woundKey": "133",
           "woundTable": "life",
           "catalogId": "wound-life-133",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -299,7 +299,7 @@
           "woundKey": "134",
           "woundTable": "life",
           "catalogId": "wound-life-134",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -321,7 +321,7 @@
           "woundKey": "135",
           "woundTable": "life",
           "catalogId": "wound-life-135",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -343,7 +343,7 @@
           "woundKey": "136",
           "woundTable": "life",
           "catalogId": "wound-life-136",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -365,7 +365,7 @@
           "woundKey": "144",
           "woundTable": "life",
           "catalogId": "wound-life-144",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -387,7 +387,7 @@
           "woundKey": "145",
           "woundTable": "life",
           "catalogId": "wound-life-145",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -409,7 +409,7 @@
           "woundKey": "146",
           "woundTable": "life",
           "catalogId": "wound-life-146",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -431,7 +431,7 @@
           "woundKey": "155",
           "woundTable": "life",
           "catalogId": "wound-life-155",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -453,7 +453,7 @@
           "woundKey": "156",
           "woundTable": "life",
           "catalogId": "wound-life-156",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -475,7 +475,7 @@
           "woundKey": "166",
           "woundTable": "life",
           "catalogId": "wound-life-166",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -497,7 +497,7 @@
           "woundKey": "222",
           "woundTable": "life",
           "catalogId": "wound-life-222",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -519,7 +519,7 @@
           "woundKey": "223",
           "woundTable": "life",
           "catalogId": "wound-life-223",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -541,7 +541,7 @@
           "woundKey": "224",
           "woundTable": "life",
           "catalogId": "wound-life-224",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -563,7 +563,7 @@
           "woundKey": "225",
           "woundTable": "life",
           "catalogId": "wound-life-225",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -585,7 +585,7 @@
           "woundKey": "226",
           "woundTable": "life",
           "catalogId": "wound-life-226",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -607,7 +607,7 @@
           "woundKey": "233",
           "woundTable": "life",
           "catalogId": "wound-life-233",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -629,7 +629,7 @@
           "woundKey": "234",
           "woundTable": "life",
           "catalogId": "wound-life-234",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -651,7 +651,7 @@
           "woundKey": "235",
           "woundTable": "life",
           "catalogId": "wound-life-235",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -673,7 +673,7 @@
           "woundKey": "236",
           "woundTable": "life",
           "catalogId": "wound-life-236",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -695,7 +695,7 @@
           "woundKey": "244",
           "woundTable": "life",
           "catalogId": "wound-life-244",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -717,7 +717,7 @@
           "woundKey": "245",
           "woundTable": "life",
           "catalogId": "wound-life-245",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -739,7 +739,7 @@
           "woundKey": "246",
           "woundTable": "life",
           "catalogId": "wound-life-246",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -761,7 +761,7 @@
           "woundKey": "255",
           "woundTable": "life",
           "catalogId": "wound-life-255",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -783,7 +783,7 @@
           "woundKey": "256",
           "woundTable": "life",
           "catalogId": "wound-life-256",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -805,7 +805,7 @@
           "woundKey": "266",
           "woundTable": "life",
           "catalogId": "wound-life-266",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -827,7 +827,7 @@
           "woundKey": "333",
           "woundTable": "life",
           "catalogId": "wound-life-333",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -849,7 +849,7 @@
           "woundKey": "334",
           "woundTable": "life",
           "catalogId": "wound-life-334",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -871,7 +871,7 @@
           "woundKey": "335",
           "woundTable": "life",
           "catalogId": "wound-life-335",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -893,7 +893,7 @@
           "woundKey": "336",
           "woundTable": "life",
           "catalogId": "wound-life-336",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -915,7 +915,7 @@
           "woundKey": "344",
           "woundTable": "life",
           "catalogId": "wound-life-344",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -937,7 +937,7 @@
           "woundKey": "345",
           "woundTable": "life",
           "catalogId": "wound-life-345",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -959,7 +959,7 @@
           "woundKey": "346",
           "woundTable": "life",
           "catalogId": "wound-life-346",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -981,7 +981,7 @@
           "woundKey": "355",
           "woundTable": "life",
           "catalogId": "wound-life-355",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -1003,7 +1003,7 @@
           "woundKey": "356",
           "woundTable": "life",
           "catalogId": "wound-life-356",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -1025,7 +1025,7 @@
           "woundKey": "366",
           "woundTable": "life",
           "catalogId": "wound-life-366",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -1047,7 +1047,7 @@
           "woundKey": "444",
           "woundTable": "life",
           "catalogId": "wound-life-444",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -1069,7 +1069,7 @@
           "woundKey": "445",
           "woundTable": "life",
           "catalogId": "wound-life-445",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -1091,7 +1091,7 @@
           "woundKey": "446",
           "woundTable": "life",
           "catalogId": "wound-life-446",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -1113,7 +1113,7 @@
           "woundKey": "455",
           "woundTable": "life",
           "catalogId": "wound-life-455",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -1135,7 +1135,7 @@
           "woundKey": "456",
           "woundTable": "life",
           "catalogId": "wound-life-456",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -1157,7 +1157,7 @@
           "woundKey": "466",
           "woundTable": "life",
           "catalogId": "wound-life-466",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -1179,7 +1179,7 @@
           "woundKey": "555",
           "woundTable": "life",
           "catalogId": "wound-life-555",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -1201,7 +1201,7 @@
           "woundKey": "556",
           "woundTable": "life",
           "catalogId": "wound-life-556",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -1223,7 +1223,7 @@
           "woundKey": "566",
           "woundTable": "life",
           "catalogId": "wound-life-566",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -1245,7 +1245,7 @@
           "woundKey": "666",
           "woundTable": "life",
           "catalogId": "wound-life-666",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     }

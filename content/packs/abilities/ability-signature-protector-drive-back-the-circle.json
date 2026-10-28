@@ -1,22 +1,22 @@
 {
   "_key": "!items!db403a5a8bbe96f0",
   "_id": "db403a5a8bbe96f0",
-  "name": "Drive Back the Circle",
+  "name": "Radiant Threshold",
   "type": "ability",
   "img": "systems/heroes-of-legend/assets/marks/guard.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You brace and surge outward, forcing the surrounding enemies back while your companions scramble into the room you have made.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>Every enemy adjacent when you begin; up to two willing allies initially within 2 squares.</dd></div><div><dt>Duration</dt><dd>Immediate displacement and ally movement.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Repeatable; normal action economy applies.</dd></div><div><dt>Type</dt><dd>Signature</dd></div></dl><div class=\"hol-reference-rules\"><p>Push each enemy 2 squares directly away from you, in an order you choose. Then each chosen ally may move up to 2 squares without provoking. The allies need legal routes and free endpoints. No direct damage; collisions resolve normally.</p></div><h3>Additional rulings</h3><p><strong>Tags:</strong> Skill / Control / Movement</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/cards/signature-protector-drive-back-the-circle.md\" target=\"_blank\" rel=\"noopener\">design/cards/signature-protector-drive-back-the-circle.md</a> at <code>bdfd18ed535fbd0e1892b9344444abf6da644809</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You call on the gods of war and protection. A line of white fire draws itself across the ground, and the air smells of iron and lightning.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Target / range / shape</dt><dd>A straight line starting from a point you can see within 5 squares.</dd></div><div><dt>Duration</dt><dd>Until the start of your next turn.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Once per scene.</dd></div><div><dt>Type</dt><dd>Signature</dd></div></dl><div class=\"hol-reference-rules\"><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>3 squares long; 1 radiant damage.</dd><dt>Standard</dt><dd>5 squares long; 2 radiant damage.</dd><dt>Strong</dt><dd>7 squares long; 3 radiant damage. The line is 1 square wide and lasts until the start of your next turn. You and allies you choose when you create it are unaffected. A creature takes the damage when the line appears in its square, when it enters a square of the line, or when it starts its turn there. A creature can take this damage only once per turn. The line does not block movement.</dd></dl></div><h3>Additional rulings</h3><p><strong>Tags:</strong> Skill / Control / Attack</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/295e858c1b6fee044a0261bf9f437636efeff2bf/design/cards/signature-protector-drive-back-the-circle.md\" target=\"_blank\" rel=\"noopener\">design/cards/signature-protector-drive-back-the-circle.md</a> at <code>295e858c1b6fee044a0261bf9f437636efeff2bf</code>.</p></section>",
     "activity": {
       "action": "main",
-      "rollMode": "none",
-      "attribute": "brawn",
+      "rollMode": "attribute",
+      "attribute": "reason",
       "defenseAttribute": "agility"
     },
     "outcomes": {
-      "weak": "",
-      "standard": "",
-      "strong": ""
+      "weak": "3 squares long; 1 radiant damage.",
+      "standard": "5 squares long; 2 radiant damage.",
+      "strong": "7 squares long; 3 radiant damage. The line is 1 square wide and lasts until the start of your next turn. You and allies you choose when you create it are unaffected. A creature takes the damage when the line appears in its square, when it enters a square of the line, or when it starts its turn there. A creature can take this damage only once per turn. The line does not block movement."
     }
   },
   "effects": [],
@@ -30,9 +30,9 @@
       "catalogId": "ability-signature-protector-drive-back-the-circle",
       "source": {
         "path": "design/cards/signature-protector-drive-back-the-circle.md",
-        "sha256": "484e12c571b237295ebb4e9877a3e3ccabbc4956c783f3f301be75e7f220e7e5"
+        "sha256": "47dcdd537be505c62374eef3e0ee3dbc7bfde7b1c8ba9b33039406ec83754e4f"
       },
-      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+      "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · play automation in progress"

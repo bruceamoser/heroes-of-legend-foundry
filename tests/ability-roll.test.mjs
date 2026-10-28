@@ -12,7 +12,7 @@ test('all explicitly printed attribute abilities retain roll configuration indep
     assert.equal(Boolean(result.attribute),['Brawn','Fortitude','Agility','Guile','Knowledge','Reason'].includes(printed));
     if(result.attribute)rollable++;
   }
-  assert.equal(rollable,166);
+  assert.equal(rollable,196);
 });
 test('existing 2.0 reference-only Basic Ranged gets Agility and printed tier outcomes',()=>{
   const record=catalog.find(record=>record.id==='ability-basic-ranged');

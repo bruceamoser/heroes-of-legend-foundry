@@ -13,7 +13,7 @@
   "flags": {
     "heroes-of-legend": {
       "woundTable": "radiant",
-      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+      "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
     }
   },
   "results": [
@@ -35,7 +35,7 @@
           "woundKey": "111",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-111",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -57,7 +57,7 @@
           "woundKey": "112",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-112",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -79,7 +79,7 @@
           "woundKey": "113",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-113",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -101,7 +101,7 @@
           "woundKey": "114",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-114",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -123,7 +123,7 @@
           "woundKey": "115",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-115",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -145,7 +145,7 @@
           "woundKey": "116",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-116",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -167,7 +167,7 @@
           "woundKey": "122",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-122",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -189,7 +189,7 @@
           "woundKey": "123",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-123",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -211,7 +211,7 @@
           "woundKey": "124",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-124",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -233,7 +233,7 @@
           "woundKey": "125",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-125",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -255,7 +255,7 @@
           "woundKey": "126",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-126",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -277,7 +277,7 @@
           "woundKey": "133",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-133",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -299,7 +299,7 @@
           "woundKey": "134",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-134",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -321,7 +321,7 @@
           "woundKey": "135",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-135",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -343,7 +343,7 @@
           "woundKey": "136",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-136",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -365,7 +365,7 @@
           "woundKey": "144",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-144",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -387,7 +387,7 @@
           "woundKey": "145",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-145",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -409,7 +409,7 @@
           "woundKey": "146",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-146",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -431,7 +431,7 @@
           "woundKey": "155",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-155",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -453,7 +453,7 @@
           "woundKey": "156",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-156",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -475,7 +475,7 @@
           "woundKey": "166",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-166",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -497,7 +497,7 @@
           "woundKey": "222",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-222",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -519,7 +519,7 @@
           "woundKey": "223",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-223",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -541,7 +541,7 @@
           "woundKey": "224",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-224",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -563,7 +563,7 @@
           "woundKey": "225",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-225",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -585,7 +585,7 @@
           "woundKey": "226",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-226",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -607,7 +607,7 @@
           "woundKey": "233",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-233",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -629,7 +629,7 @@
           "woundKey": "234",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-234",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -651,7 +651,7 @@
           "woundKey": "235",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-235",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -673,7 +673,7 @@
           "woundKey": "236",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-236",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -695,7 +695,7 @@
           "woundKey": "244",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-244",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -717,7 +717,7 @@
           "woundKey": "245",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-245",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -739,7 +739,7 @@
           "woundKey": "246",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-246",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -761,7 +761,7 @@
           "woundKey": "255",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-255",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -783,7 +783,7 @@
           "woundKey": "256",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-256",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -805,7 +805,7 @@
           "woundKey": "266",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-266",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -827,7 +827,7 @@
           "woundKey": "333",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-333",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -849,7 +849,7 @@
           "woundKey": "334",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-334",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -871,7 +871,7 @@
           "woundKey": "335",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-335",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -893,7 +893,7 @@
           "woundKey": "336",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-336",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -915,7 +915,7 @@
           "woundKey": "344",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-344",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -937,7 +937,7 @@
           "woundKey": "345",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-345",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -959,7 +959,7 @@
           "woundKey": "346",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-346",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -981,7 +981,7 @@
           "woundKey": "355",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-355",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -1003,7 +1003,7 @@
           "woundKey": "356",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-356",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -1025,7 +1025,7 @@
           "woundKey": "366",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-366",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -1047,7 +1047,7 @@
           "woundKey": "444",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-444",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -1069,7 +1069,7 @@
           "woundKey": "445",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-445",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -1091,7 +1091,7 @@
           "woundKey": "446",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-446",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -1113,7 +1113,7 @@
           "woundKey": "455",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-455",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -1135,7 +1135,7 @@
           "woundKey": "456",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-456",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -1157,7 +1157,7 @@
           "woundKey": "466",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-466",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -1179,7 +1179,7 @@
           "woundKey": "555",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-555",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -1201,7 +1201,7 @@
           "woundKey": "556",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-556",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -1223,7 +1223,7 @@
           "woundKey": "566",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-566",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     },
@@ -1245,7 +1245,7 @@
           "woundKey": "666",
           "woundTable": "radiant",
           "catalogId": "wound-radiant-666",
-          "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809"
+          "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf"
         }
       }
     }

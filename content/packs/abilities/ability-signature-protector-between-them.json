@@ -1,12 +1,12 @@
 {
   "_key": "!items!a2995d451b7d771e",
   "_id": "a2995d451b7d771e",
-  "name": "Between Them",
+  "name": "Step Between",
   "type": "ability",
   "img": "systems/heroes-of-legend/assets/marks/guard.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You step your guard into the line of the strike and wave your companion behind you as it lands.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>One adjacent willing ally, after a single-target attack is declared against it but before rolling.</dd></div><div><dt>Duration</dt><dd>The triggering attack and immediate ally movement.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Repeatable; normal action economy applies.</dd></div><div><dt>Type</dt><dd>Signature</dd></div></dl><div class=\"hol-reference-rules\"><p>Become the target if you meet the attack’s range and targeting requirements. Resolve the attack once against you; your ally receives none of its effects. Afterward the ally may move up to 2 squares without provoking if able. You do not move to intercept and cannot redirect an area attack.</p></div><h3>Additional rulings</h3><p><strong>Tags:</strong> Skill / Defense / Movement</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/cards/signature-protector-between-them.md\" target=\"_blank\" rel=\"noopener\">design/cards/signature-protector-between-them.md</a> at <code>bdfd18ed535fbd0e1892b9344444abf6da644809</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You shove your companion behind you and take the blow on your own guard.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>One adjacent willing ally, after a single-target attack is declared against it but before rolling.</dd></div><div><dt>Duration</dt><dd>The triggering attack.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Repeatable; uses your Reaction.</dd></div><div><dt>Type</dt><dd>Signature</dd></div></dl><div class=\"hol-reference-rules\"><p>You and the ally swap squares. You become the target of the attack and resolve it against your defense. If either of you cannot occupy the other’s square, you cannot use this reaction. This does not redirect area attacks.</p></div><h3>Additional rulings</h3><p><strong>Tags:</strong> Skill / Defense / Movement</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/295e858c1b6fee044a0261bf9f437636efeff2bf/design/cards/signature-protector-between-them.md\" target=\"_blank\" rel=\"noopener\">design/cards/signature-protector-between-them.md</a> at <code>295e858c1b6fee044a0261bf9f437636efeff2bf</code>.</p></section>",
     "activity": {
       "action": "reaction",
       "rollMode": "none",
@@ -30,9 +30,9 @@
       "catalogId": "ability-signature-protector-between-them",
       "source": {
         "path": "design/cards/signature-protector-between-them.md",
-        "sha256": "c95cee1c40740202a6fe85a925a621edc6a534bf287f7216b743d06a5894dda1"
+        "sha256": "212c4ecdf598446f6d5bff25136fdcd5e1d52647e5ace27d56c67b22f56a5de2"
       },
-      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+      "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · play automation in progress"

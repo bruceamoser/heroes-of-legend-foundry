@@ -14,7 +14,7 @@
     "carried": true,
     "held": false,
     "worn": false,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Market reference · acquisition and use automation in progress</p><p><strong>Market price:</strong> 5 coins.</p><p><strong>Normal supply die:</strong> d6.</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/equipment/lighting-bundle.md\" target=\"_blank\" rel=\"noopener\">design/equipment/lighting-bundle.md</a> at <code>bdfd18ed535fbd0e1892b9344444abf6da644809</code>.</p></section>"
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Market reference · acquisition and use automation in progress</p><p><strong>Market price:</strong> 5 coins.</p><p><strong>Normal supply die:</strong> d6.</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/295e858c1b6fee044a0261bf9f437636efeff2bf/design/equipment/lighting-bundle.md\" target=\"_blank\" rel=\"noopener\">design/equipment/lighting-bundle.md</a> at <code>295e858c1b6fee044a0261bf9f437636efeff2bf</code>.</p></section>"
   },
   "effects": [],
   "folder": null,
@@ -28,7 +28,7 @@
         "path": "design/equipment/lighting-bundle.md",
         "sha256": "f852194a730246192d11f4bd2c7bc24f2f8f1dddf3d969ba7ac3b536b07e08d8"
       },
-      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+      "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Market reference · acquisition and use automation in progress"

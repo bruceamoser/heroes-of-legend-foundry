@@ -6,7 +6,7 @@
   "img": "icons/skills/movement/feet-spurred-boots-brown.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Reviewed native action · rules reference</p><div class=\"hol-reference-flavor\"><p>You turn a careful retreat into one last quick step beyond the enemy’s reach.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>Self, when you use Disengage.</dd></div><div><dt>Duration</dt><dd>Until the end of this turn; unused movement expires.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Purchase once; this benefit can trigger only once per turn.</dd></div><div><dt>Type</dt><dd>Skill / Movement</dd></div></dl><div class=\"hol-reference-rules\"><p>Gain 1 additional square of available movement for this turn. Spend it using normal terrain costs and movement restrictions. This does not increase Speed or add movement to each allowance gained by converting actions. Disengage’s protection from opportunity attacks applies normally.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/cards/quick-exit.md\" target=\"_blank\" rel=\"noopener\">design/cards/quick-exit.md</a> at <code>bdfd18ed535fbd0e1892b9344444abf6da644809</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Reviewed native action · rules reference</p><div class=\"hol-reference-flavor\"><p>You turn a careful retreat into one last quick step beyond the enemy’s reach.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>Self, when you use Disengage.</dd></div><div><dt>Duration</dt><dd>Until the end of this turn; unused movement expires.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Purchase once; this benefit can trigger only once per turn.</dd></div><div><dt>Type</dt><dd>Skill / Movement</dd></div></dl><div class=\"hol-reference-rules\"><p>Gain 1 additional square of available movement for this turn. Spend it using normal terrain costs and movement restrictions. This does not increase Speed or add movement to each allowance gained by converting actions. Disengage’s protection from opportunity attacks applies normally.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/295e858c1b6fee044a0261bf9f437636efeff2bf/design/cards/quick-exit.md\" target=\"_blank\" rel=\"noopener\">design/cards/quick-exit.md</a> at <code>295e858c1b6fee044a0261bf9f437636efeff2bf</code>.</p></section>",
     "activity": {
       "action": "passive",
       "rollMode": "none",
@@ -32,7 +32,7 @@
         "path": "design/cards/quick-exit.md",
         "sha256": "de2be8860e513b6680455d204aee3e2b3df265a887cf7f74b28d0c7060caee6f"
       },
-      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+      "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
       "catalogAutomation": "pending",
       "automation": "reviewed",
       "automationLabel": "Reviewed native action · rules reference",

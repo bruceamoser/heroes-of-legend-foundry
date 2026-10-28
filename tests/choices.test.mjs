@@ -89,7 +89,7 @@ test("complete learning catalog has stable unique IDs and exact pinned sources",
     records.filter((r) =>
       r.reference?.rules.body.some((block) => block.outcomes),
     ).length,
-    166,
+    193,
   );
 });
 test("catalog references preserve exact acquisition details and outcomes", () => {

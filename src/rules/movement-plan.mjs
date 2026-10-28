@@ -10,7 +10,7 @@
  * never infers them.
  */
 export const MOVEMENT_RULES_SOURCE = Object.freeze({
-  commit: "bdfd18ed535fbd0e1892b9344444abf6da644809",
+  commit: "295e858c1b6fee044a0261bf9f437636efeff2bf",
   paths: Object.freeze([
     "design/rules/foundations.md",
     "design/rules/session-resolution.md",

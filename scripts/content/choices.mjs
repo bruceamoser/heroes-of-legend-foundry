@@ -75,7 +75,27 @@ function ruleBlock(block) {
     if (outcomes.every(Boolean)) return { outcomes };
     return { items: items.map(plainText) };
   }
-  return { text: plainText(block) };
+  const text = plainText(block);
+  const inline = text.match(/\b(?:On a )?Weak(?: result)?\s*[:,]?\s*(.*?)\s+(?:On a )?Standard(?: result)?\s*[:,]?\s*(.*?)\s+(?:On a )?Strong(?: result)?\s*[:,]?\s*(.*)$/i);
+  if (inline) {
+    const prefix = text.slice(0, inline.index).trim();
+    const suffix = inline[1].match(/\d+\s+(.+)$/)?.[1];
+    const parts = [inline[1], inline[2], inline[3]].map((value, index) => {
+      const part = value.trim();
+      return index > 0 && /^\d+$/.test(part) && suffix
+        ? `${part} ${suffix}`
+        : part;
+    });
+    return {
+      ...(prefix ? { text: prefix } : {}),
+      outcomes: [
+        { label: "Weak", text: parts[0] },
+        { label: "Standard", text: parts[1] },
+        { label: "Strong", text: parts[2] },
+      ],
+    };
+  }
+  return { text };
 }
 function labelled(block) {
   const value = block.match(/^\*\*([^*]+):\*\* ([\s\S]+)$/);
@@ -97,7 +117,24 @@ export function parseAbilityReference(text) {
     action = ruleBlocks[actionIndex]?.match(
       /^\*\*Action:\*\* ([\s\S]+?) · \*\*Attribute:\*\* ([\s\S]+)$/,
     );
-  if (!action) throw new Error("Unrecognized action and attribute");
+  let actionText, attributeText;
+  if (action) {
+    actionText = action[1];
+    attributeText = action[2];
+  } else {
+    const actionOnly = ruleBlocks[actionIndex]?.match(
+      /^\*\*Action:\*\* ([\s\S]+)$/,
+    );
+    if (!actionOnly) throw new Error("Unrecognized action and attribute");
+    actionText = actionOnly[1];
+    const attributeIndex = ruleBlocks.findIndex((block) =>
+      block.startsWith("**Attribute:**"),
+    );
+    const attribute =
+      attributeIndex >= 0 ? labelled(ruleBlocks[attributeIndex]) : null;
+    attributeText = attribute?.text ?? "None";
+    if (attributeIndex >= 0) ruleBlocks.splice(attributeIndex, 1);
+  }
   const fields = new Map();
   const consume = (label) => {
     const index = ruleBlocks.findIndex((block) =>
@@ -143,8 +180,8 @@ export function parseAbilityReference(text) {
   )
     throw new Error("Incomplete ability reference metadata");
   const details = [
-    { label: "Action", value: plainText(action[1]) },
-    { label: "Attribute", value: plainText(action[2]) },
+    { label: "Action", value: plainText(actionText) },
+    { label: "Attribute", value: plainText(attributeText) },
     fields.get("Time") ? { label: "Time", value: fields.get("Time") } : null,
     {
       label: "Target / range / shape",

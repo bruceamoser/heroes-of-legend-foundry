@@ -23,7 +23,7 @@ export class HOLActor extends foundry.documents.Actor {
   async _preCreate(data, options, user) {
     const allowed = await super._preCreate(data, options, user);
     if (allowed === false) return false;
-    if (["character", "creature", "summon"].includes(this.type)) {
+    if (["character", "creature"].includes(this.type)) {
       this.updateSource({"prototypeToken.actorLink": this.type === "character"});
     }
   }

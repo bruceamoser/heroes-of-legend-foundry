@@ -43,7 +43,6 @@ if (
       abilities: artifacts.documents.abilities.length,
       equipment: artifacts.documents.equipment.length,
       creatures: artifacts.documents.creatures.length,
-      summons: artifacts.documents.summons.length,
       sourceCommit: artifacts.index.sourceCommit,
       output: fileURLToPath(new URL("content/packs/", root)),
     },

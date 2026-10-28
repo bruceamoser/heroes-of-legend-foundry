@@ -1,3 +1,4 @@
+import { isSummon } from "../rules/summon-profile.mjs";
 import { actorContributions } from "./conditions.mjs";
 import { conditionActionRestrictions } from "../rules/conditions.mjs";
 import {
@@ -44,7 +45,7 @@ export function initialBudgets(combat, roster) {
         turnId: `${combat.id}_initial_${p.id}`,
         speed: 0,
         independentReaction:
-          combat.combatants.get(p.id)?.actor?.type !== "summon",
+          !isSummon(combat.combatants.get(p.id)?.actor),
       }),
     ]),
   );
@@ -91,7 +92,7 @@ export function prepareParticipantBudget(combat, state, id, request, user) {
     speed,
     conditions,
     retained,
-    independentReaction: actor.type !== "summon",
+    independentReaction: !isSummon(actor),
   });
   return { budget, profile, ruling };
 }

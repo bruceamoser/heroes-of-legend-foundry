@@ -340,7 +340,7 @@ test("authored pack JSON is complete, deterministic and contains no compiled dat
       withFileTypes: true,
     }),
     files = entries.filter((entry) => entry.isFile());
-  assert.equal(files.length, 729);
+  assert.equal(files.length, 656);
   assert(files.every((entry) => entry.name.endsWith(".json")));
   for (const forbidden of ["CURRENT", "LOCK", "LOG", "MANIFEST-000001"])
     assert(!files.some((entry) => entry.name === forbidden));
@@ -358,7 +358,7 @@ test("manifest declares native content packs and sanitizes Item descriptions", a
         ),
       ),
     );
-  assert.deepEqual(manifest.packs.filter(pack => ["abilities", "equipment", "creatures", "summons"].includes(pack.name)), [
+  assert.deepEqual(manifest.packs.filter(pack => ["abilities", "equipment", "creatures"].includes(pack.name)), [
     {
       name: "abilities",
       label: "Heroes of Legend Abilities",
@@ -378,13 +378,6 @@ test("manifest declares native content packs and sanitizes Item descriptions", a
       label: "Heroes of Legend Creatures",
       type: "Actor",
       path: "packs/creatures",
-      system: "heroes-of-legend",
-    },
-    {
-      name: "summons",
-      label: "Heroes of Legend Summon Profiles",
-      type: "Actor",
-      path: "packs/summons",
       system: "heroes-of-legend",
     },
   ]);

@@ -3,6 +3,7 @@ import { ensureAuthorityReady } from "./authority.mjs";
 import { assertNoPendingTurn } from "./turn-lock.mjs";
 import { damageBasis } from "./damage.mjs";
 import { healingPlan } from "../rules/damage.mjs";
+import { isSummon } from "../rules/summon-profile.mjs";
 import {
   survivalState,
   validateSurvival,
@@ -107,7 +108,7 @@ export function recoveryPreview(actor, basis, draft) {
             .map((source) => source.value),
           draft.lifeResistance,
         ],
-        recipientKind: actor.type,
+        recipientKind: isSummon(actor) ? "summon" : actor.type,
       });
       if (!plan.allowed)
         throw new Error("This target cannot receive ordinary healing.");

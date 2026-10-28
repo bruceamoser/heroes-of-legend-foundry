@@ -140,28 +140,6 @@ test("previous skeleton horse actions become the reviewed Reaction profile and r
   assert.deepEqual(repeat.preserved, []);
 });
 
-test("summon plan leaves commands, attacks, restrictions and live state alone", async () => {
-  const { current, live, base } = await fixture("summon");
-  live.system.cv = 1;
-  live.system.referenceMarkdown = "Local reference";
-  live.system.attacks.push({ name: "Local attack" });
-  live.system.restrictions.maximumCommandsPerTurn = 0;
-  live.system.commandHistory = ["command spent"];
-  live.system.health.value = 0;
-  const plan = planProfileUpdate({ actor: live, current, baseline: base });
-  assert(plan.preserved.includes("system.cv"));
-  assert(plan.preserved.includes("system.referenceMarkdown"));
-  assert.deepEqual(
-    Object.keys(plan.changes).filter(
-      (path) => !profilePaths("summon", current).includes(path),
-    ),
-    [],
-  );
-  assert(!("system.attacks" in plan.changes));
-  assert(!("system.restrictions" in plan.changes));
-  assert(!("system.commandHistory" in plan.changes));
-});
-
 test("GM world Actor path is idempotent and advances provenance only after complete profile", async () => {
   const { current, live } = await fixture("creature");
   const calls = [];

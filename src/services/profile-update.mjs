@@ -1,5 +1,6 @@
 import { updateOwnedDocument } from "./documents.mjs";
 import { planProfileUpdate } from "../rules/profile-update.mjs";
+import { isSummon } from "../rules/summon-profile.mjs";
 
 const ID = "heroes-of-legend";
 const BASES = `systems/${ID}/data/profile-update-bases.json`;
@@ -13,7 +14,7 @@ export function profileUpdateAvailable(actor) {
       !actor.pack &&
       !actor.parent &&
       game.actors?.get(actor.id) === actor &&
-      (actor.type === "creature" || actor.type === "summon") &&
+      actor.type === "creature" && !isSummon(actor) &&
       typeof catalogId === "string" &&
       catalogId.startsWith(`${actor.type}-`),
   );
@@ -25,7 +26,7 @@ function assertWorldProfile(actor) {
     !actor.testUserPermission(game.user, "OWNER")
   ) {
     throw new Error(
-      "A GM must update a saved world creature or summon profile.",
+      "A GM must update a saved world creature profile.",
     );
   }
 }

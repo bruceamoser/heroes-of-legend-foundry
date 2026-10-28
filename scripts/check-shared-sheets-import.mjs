@@ -175,7 +175,19 @@ try {
     }
     await copy("creatures", "creature-basilisk", "basilisk");
     await copy("creatures", "creature-bone-sentry", "skeleton");
-    await copy("summons", "summon-bone-sentry", "summon");
+    await copy("creatures", "creature-bone-sentry", "summon");
+    const profileCatalog = await (
+      await fetch("systems/heroes-of-legend/data/summons.json")
+    ).json();
+    const profile = profileCatalog.records.find(
+      (record) => record.id === "summon-bone-sentry",
+    );
+    await game.actors.get(f.summon).setFlag("heroes-of-legend", "summon", {
+      profileId: profile.id,
+      creatureId: profile.creatureId,
+      eligibility: profile.eligibility,
+      record: profile,
+    });
     const npcData = game.actors.get(f.skeleton).toObject();
     delete npcData._id;
     npcData.name = "NPC sheet audit";
@@ -301,13 +313,11 @@ try {
   evidence.checks.push("Unlinked token Actor opens the same creature sheet.");
   await closeSheets();
   await page.evaluate(async (id) => {
-    const actor = game.actors.get(id);
-    await actor.setFlag("core", "sheetClass", "heroes-of-legend.SummonSheet");
-    await actor.sheet.render({ force: true });
+    await game.actors.get(id).sheet.render({ force: true });
   }, fixture.summon);
   assert.equal(await page.locator(".hol-creature-sheet").count(), 1);
   evidence.checks.push(
-    "Explicit legacy SummonSheet selection inherits the same template and flow.",
+    "Summon-flagged creature keeps the shared creature sheet and flow.",
   );
   for (const kind of ["ability", "equipment"]) {
     await closeSheets();

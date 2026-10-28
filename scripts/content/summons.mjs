@@ -986,7 +986,7 @@ export function parseSummon(record, text, context) {
     },
     documentMapping: {
       actor: false,
-      note: "Reference profile only; native summon Actor/spawn lifecycle is a later issue.",
+      note: "Reference profile only; native summon flag/spawn lifecycle is a later issue.",
     },
   };
 }

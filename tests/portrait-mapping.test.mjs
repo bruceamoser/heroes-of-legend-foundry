@@ -7,10 +7,9 @@ const catalogs = await readContentPackCatalogs(root);
 const artifacts = buildContentPackArtifacts(catalogs);
 const creatures = new Map(artifacts.documents.creatures.map(d => [d.flags['heroes-of-legend'].catalogId,d]));
 
-test("all creature and linked summon portraits use installed shared assets without changing identities or footprints", () => {
+test("all creature portraits use installed shared assets without changing identities or footprints", () => {
   assert.equal(creatures.size, 192);
-  assert.equal(artifacts.documents.summons.length, 73);
-  for (const actor of [...creatures.values(), ...artifacts.documents.summons]) {
+  for (const actor of creatures.values()) {
     const flags = actor.flags['heroes-of-legend'];
     const portrait = catalogs.art.portraits.find(p => p.id === flags.portrait.creatureId);
     assert.equal(actor.img, `systems/heroes-of-legend/${portrait.asset}`);
@@ -26,10 +25,6 @@ test("all creature and linked summon portraits use installed shared assets witho
     assert.equal(flags.portrait.sourceHeight, portrait.height);
     assert(Math.max(flags.portrait.width, flags.portrait.height) <= 768);
     assert.equal(flags.portrait.alpha, portrait.alpha);
-    if (actor.type === 'summon') {
-      const link = catalogs.lock.summonLinks.find(l => l.id === flags.catalogId);
-      assert.equal(actor.img, creatures.get(link.creatureId).img);
-    }
   }
   assert.equal(new Set([...creatures.values()].map(a=>a.img)).size,192);
 });
@@ -51,10 +46,10 @@ test("missing, unsafe or stale source portrait mappings fail generation and enco
     artifacts.index.packs.find(p=>p.name==='creatures').semanticSha256);
 });
 
-test("release retains actual runtime catalogs and omits build-only creature and summon intake data", async () => {
-  for (const name of ['choices','inventory','wounds'])
+test("release retains runtime catalogs including summon profiles and omits build-only creature intake data", async () => {
+  for (const name of ['choices','inventory','wounds','summons'])
     await access(new URL(`dist/heroes-of-legend/data/${name}.json`,root));
-  for (const name of ['creatures','summons'])
+  for (const name of ['creatures'])
     await assert.rejects(access(new URL(`dist/heroes-of-legend/data/${name}.json`,root)),{code:'ENOENT'});
   const runtime=await readFile(new URL('src/services/catalog.mjs',root),'utf8');
   assert(runtime.includes('["choices", "inventory"]'));

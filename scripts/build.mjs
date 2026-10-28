@@ -27,7 +27,7 @@ await mkdir(output, { recursive: true });
 await cp(new URL("static/", root), output, { recursive: true });
 // Creature and summon intake catalogs are build inputs; native play reads the
 // Actor packs. Runtime creation/equipment/wounds still use their JSON catalogs.
-for (const name of ["creatures", "summons"])
+for (const name of ["creatures"])
   await rm(new URL(`data/${name}.json`, output));
 await cp(new URL("src/", root), output, { recursive: true });
 const creatureArt = await validateCreatureArt(output);

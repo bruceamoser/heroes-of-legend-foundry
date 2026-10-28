@@ -10,9 +10,9 @@ export function applyOwnedDamage(actor, components, {
   operationId = foundry.utils.randomID(), sourceMessageId = null, label = "Damage",
   resistances = [], weaknesses = [], bypassResistance = false, conditions = [],
 } = {}) {
-  if (!actor || actor.pack || !["character", "creature", "summon"].includes(actor.type) ||
+  if (!actor || actor.pack || !["character", "creature"].includes(actor.type) ||
       !actor.testUserPermission(game.user, "OWNER"))
-    return Promise.reject(new Error("Select a character, creature or summon you own to apply damage."));
+    return Promise.reject(new Error("Select a character or creature you own to apply damage."));
   if (!Array.isArray(conditions) || conditions.some(condition => !Object.hasOwn(CONDITION_KINDS,condition.key) ||
       !Number.isSafeInteger(condition.rating) || condition.rating < 1 ||
       (CONDITION_KINDS[condition.key] === "binary" && condition.rating !== 1) ||

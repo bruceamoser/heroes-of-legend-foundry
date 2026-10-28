@@ -13,8 +13,9 @@ failure behavior and pending adapters.
 73 summoned forms. It preserves complete pinned Markdown, typed profile stats,
 attacker-oriented attack rows, target/rider prose, command/controller/tether and
 healing limitations, and explicit Basic Melee and Defend references. It does not
-create a summon Actor or claim spawn, command, tether or healing automation. See
-[the summon catalog contract](../docs/summon-catalog.md).
+create a separate summon Actor or compendium. A summon is a standard creature
+Actor carrying a summon profile flag; spawn, command, tether and healing
+automation remain table-managed. See [summon profiles](../docs/summon-profiles.md).
 
 Rebuild with Node 24 and `HOL_BOOK_REPOSITORY=/path/to/heroes-of-legend npm run import:choices`; verify with `npm run validate:choices` using the same environment. The importer reads Git objects at the locked commit and verifies every source hash. Display-name changes do not change an authored ability's ID. Foundry IDs are deterministic 16-character hashes of the namespaced stable identity; collisions fail validation. Sources without an authored ID use their explicitly recorded path-derived identity, so a future file rename requires a reviewed alias/migration rather than implicit identity replacement.
 

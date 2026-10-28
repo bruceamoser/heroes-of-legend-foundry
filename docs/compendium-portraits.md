@@ -1,4 +1,8 @@
-# Compendium portraits — issue #124
+# Compendium portraits
+
+> **2.5.0 update:** summon Actors and the summon compendium were removed. A summon is now a standard creature Actor with a summon profile flag. The summon-pack details below are retained as historical acceptance evidence.
+
+ — issue #124
 
 All 192 native creature Actors resolve their portrait from the source-locked
 `assets/creatures/manifest.json`. The 73 summon profiles use the same asset as

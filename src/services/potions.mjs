@@ -28,6 +28,7 @@ import {
   writeAuthorityDocument,
 } from "./authority.mjs";
 import { loadCatalogs } from "./catalog.mjs";
+import { isSummon } from "../rules/summon-profile.mjs";
 import { damageBasis } from "./damage.mjs";
 import {
   inventoryBasis,
@@ -149,7 +150,7 @@ function canonicalSurvival(actor, basis) {
 
 function actorPotionBasis(actor) {
   assertWorldActor(actor);
-  if (actor.type === "summon")
+  if (isSummon(actor))
     throw new Error("Summons cannot use or receive ordinary healing potions.");
   if (!["character", "creature"].includes(actor.type))
     throw new Error("This Actor cannot participate in ordinary potion use.");

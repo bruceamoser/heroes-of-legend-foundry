@@ -8,13 +8,6 @@ export function profilePaths(type, source) {
         .sort()
         .map((key) => `system.details.${key}`),
     ];
-  if (type === "summon")
-    return [
-      "system.cv",
-      "system.sourceMarkdown",
-      "system.referenceMarkdown",
-      "system.commandSource",
-    ];
   return [];
 }
 

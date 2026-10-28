@@ -67,7 +67,7 @@ books. Activate it with Foundry’s normal scene controls when ready. See the
 
 ## Included content and manual resolution
 
-- Import 419 abilities, 44 equipment entries, 192 creatures and 73 summon profiles from the four content compendiums. Creature action cards use their printed defense attribute and exact player-defense outcomes.
+- Import 419 abilities, 44 equipment entries and 192 creatures from the three content compendiums; 73 summon profiles are metadata for standard creature Actors. Creature action cards use their printed defense attribute and exact player-defense outcomes.
 - Open the **Rules Library** for searchable local references: one Player’s Book with 610 pages and one DA book with 408 pages, using native sections, contents, search and paging. The DA can explicitly import the books; repeated imports preserve existing books and edits. Legacy imported entries remain untouched.
 - Use the native character, NPC/creature and item cards, Favorites and creation/advancement markets. Owners can select sheet portraits through Foundry’s image picker; selection saves immediately; custom item artwork is preserved when generic bag icons are refreshed.
 - Creature artwork fits a 768px maximum edge with transparency retained. The 192 packaged portraits total 41.7 MB, 55.5% smaller than the previous derivatives.

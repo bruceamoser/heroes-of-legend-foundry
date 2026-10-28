@@ -2,7 +2,7 @@
   "id": "heroes-of-legend",
   "title": "Heroes of Legend",
   "description": "Heroes of Legend for Foundry VTT V14: guided heroes, native character and NPC sheets, 3d6 play tools, wounds, crafting, equipment and complete player/DA rules journals. Specialty effects and summon lifecycle remain manual.",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "authors": [
     {
       "name": "Bruce Moser"
@@ -27,8 +27,7 @@
   "documentTypes": {
     "Actor": {
       "character": {},
-      "creature": {},
-      "summon": {}
+      "creature": {}
     },
     "Item": {
       "ability": {
@@ -63,13 +62,6 @@
       "label": "Heroes of Legend Creatures",
       "type": "Actor",
       "path": "packs/creatures",
-      "system": "heroes-of-legend"
-    },
-    {
-      "name": "summons",
-      "label": "Heroes of Legend Summon Profiles",
-      "type": "Actor",
-      "path": "packs/summons",
       "system": "heroes-of-legend"
     },
     {
@@ -125,5 +117,5 @@
     "styles/creation-parity.css"
   ],
   "manifest": "https://github.com/bruceamoser/heroes-of-legend-foundry/releases/latest/download/system.json",
-  "download": "https://github.com/bruceamoser/heroes-of-legend-foundry/releases/download/v2.4.0/heroes-of-legend.zip"
+  "download": "https://github.com/bruceamoser/heroes-of-legend-foundry/releases/download/v2.5.0/heroes-of-legend.zip"
 }

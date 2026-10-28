@@ -5,8 +5,6 @@ import { registerResupplyRequests } from "./services/resupply.mjs";
 import { registerCraftingRequests } from "./services/crafting.mjs";
 import { registerWoundTreatmentRequests } from "./services/wound-treatment.mjs";
 import { registerRulesLibrary } from "./applications/journals.mjs";
-import { SummonData } from "./models/summon.mjs";
-import { SummonSheet } from "./sheets/summon.mjs";
 import { registerSurvivalRequests } from "./services/survival.mjs";
 import { registerWoundRequests } from "./services/wounds.mjs";
 import { registerRecoveryRequests } from "./services/recovery.mjs";
@@ -79,13 +77,11 @@ Hooks.once("init", () => {
   registerTimingPrototype();
   CONFIG.Actor.dataModels.character = CharacterData;
   CONFIG.Actor.dataModels.creature = CreatureData;
-  CONFIG.Actor.dataModels.summon = SummonData;
   CONFIG.Item.dataModels.ability = AbilityData;
   CONFIG.Item.dataModels.equipment = EquipmentData;
   const sheets = foundry.applications.apps.DocumentSheetConfig;
-  sheets.registerSheet(Actor, SYSTEM_ID, SummonSheet, { types: ["summon"], makeDefault: false });
   sheets.registerSheet(Actor, SYSTEM_ID, CreatureSheet, {
-    types: ["creature", "summon"],
+    types: ["creature"],
     makeDefault: true,
   });
   sheets.registerSheet(Actor, SYSTEM_ID, CharacterSheet, {

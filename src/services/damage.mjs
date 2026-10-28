@@ -26,7 +26,7 @@ function passiveCatalogRecords(actor, type) {
     .sort((a, b) => a.instanceId.localeCompare(b.instanceId));
 }
 export function damageBasis(actor) {
-  if (!["character", "creature", "summon"].includes(actor?.type) || actor.pack)
+  if (!["character", "creature"].includes(actor?.type) || actor.pack)
     throw new Error("Choose a world character or creature.");
   const resolved = passiveDefenseSources({
     abilities: passiveCatalogRecords(actor, "ability"),

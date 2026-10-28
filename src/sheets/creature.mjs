@@ -1,4 +1,5 @@
 import {creatureSheetProfile} from "../rules/creature-sheet-profile.mjs";
+import { isSummon } from "../rules/summon-profile.mjs";
 import { actorContributions } from "../services/conditions.mjs";
 import { conditionSummary } from "../rules/conditions.mjs";
 import { selectNpcProfile } from "../services/npc-profile.mjs";
@@ -34,7 +35,7 @@ function sourceLink(source, commit) {
 
 export class CreatureSheet extends CharacterSheet {
   get title() {
-    return this.actor?.type === "summon" ? `${game.i18n.localize("TYPES.Actor.creature")}: ${this.actor.name}` : super.title;
+    return isSummon(this.actor) ? `${game.i18n.localize("TYPES.Actor.creature")}: ${this.actor.name}` : super.title;
   }
   static DEFAULT_OPTIONS = {
     classes: ["hol-creature"],
@@ -49,12 +50,25 @@ export class CreatureSheet extends CharacterSheet {
       npcMode: CreatureSheet.npcMode,
       chooseNpcProfile: CreatureSheet.chooseNpcProfile,
       unlinkNpcProfile: CreatureSheet.unlinkNpcProfile,
+      toggleSummon: CreatureSheet.toggleSummon,
     },
     position: { width: 700, height: 720 },
   };
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
+    const summon = isSummon(this.actor);
     const system = creatureSheetProfile(this.actor);
+    const attributes = context.attributes.map((attribute) => {
+      const base = summon
+        ? system.attributes?.[attribute.key]?.base ?? attribute.effective
+        : attribute.base ?? attribute.effective;
+      return {
+        ...attribute,
+        base,
+        effective: base,
+        signed: `${base >= 0 ? "+" : ""}${base}`,
+      };
+    });
     const flags = this.actor.getFlag("heroes-of-legend", "automation")
       ? {
           catalogId: this.actor.getFlag("heroes-of-legend", "catalogId"),
@@ -72,23 +86,26 @@ export class CreatureSheet extends CharacterSheet {
           family: this.actor.getFlag("heroes-of-legend", "family"),
         }
       : {};
-    const referenceHtml = this.actor.type === "summon" ? renderMarkdown(system.referenceMarkdown) : creatureReferenceHtml(system);
+    const referenceHtml = isSummon(this.actor) ? renderMarkdown(system.referenceMarkdown) : creatureReferenceHtml(system);
     return {
       ...context,
       ...cardContext(this, this.actor),
       system,
-      attackOutcomes: this.actor.type === "summon",
-      outcomePerspective: this.actor.type === "summon" ? "Attack outcomes" : "Player defense outcomes",
-      outcomeNoun: this.actor.type === "summon" ? "attack" : "defense",
-      actionAttributeLabel: this.actor.type === "summon" ? "Attribute" : "Defense",
-      sizeField: this.actor.type === "summon" ? "system.footprint.width" : "system.size",
-      evasionPath: this.actor.type === "summon" ? "system.defenseModifier" : "system.evasion",
-      canEditThreatArmor: this.actor.type !== "summon",
-      canNpcPortrayal: this.actor.type !== "summon",
-      canDeclare: game.user.isGM || this.actor.type === "summon" && this.actor.isOwner,
+      summonActive: summon,
+      summonEligible: Boolean(this.actor.getFlag("heroes-of-legend", "summoning")?.eligible),
+      summoning: this.actor.getFlag("heroes-of-legend", "summoning") ?? null,
+      attackOutcomes: isSummon(this.actor),
+      outcomePerspective: isSummon(this.actor) ? "Attack outcomes" : "Player defense outcomes",
+      outcomeNoun: isSummon(this.actor) ? "attack" : "defense",
+      actionAttributeLabel: isSummon(this.actor) ? "Attribute" : "Defense",
+      sizeField: isSummon(this.actor) ? "system.footprint.width" : "system.size",
+      evasionPath: isSummon(this.actor) ? "system.defenseModifier" : "system.evasion",
+      canEditThreatArmor: !isSummon(this.actor),
+      canNpcPortrayal: !isSummon(this.actor),
+      canDeclare: game.user.isGM || isSummon(this.actor) && this.actor.isOwner,
 
       conditionsList: Object.values(conditionSummary(actorContributions(this.actor))).filter(condition => condition.active),
-      attributes: context.attributes.map(attribute => ({...attribute, signed: `${attribute.effective >= 0 ? "+" : ""}${attribute.effective}`})),
+      attributes,
       referenceOpen: cardContext(this, this.actor).cardCollapsed.reference === false,
       portrayalOpen: cardContext(this, this.actor).cardCollapsed.portrayal === false,
       notesOpen: cardContext(this, this.actor).cardCollapsed.notes === false,
@@ -99,7 +116,7 @@ export class CreatureSheet extends CharacterSheet {
       weaknessLabel: mitigationLabel(system.weaknesses),
       immunityLabel: system.immunities.join("; ") || "None",
       gm: game.user.isGM,
-      canUpdateProfile: profileUpdateAvailable(this.actor),
+      canUpdateProfile: !summon && profileUpdateAvailable(this.actor),
       actionGroups: [
         ["main", "Main Actions"],
         ["maneuver", "Maneuvers"],
@@ -111,7 +128,7 @@ export class CreatureSheet extends CharacterSheet {
         hasEntries: category === "main" || system.actions.entries.some(entry => entry.category === category),
         entries: system.actions.entries.filter(
           entry => entry.category === category && !(category === "main" && entry.name === "Basic Melee"),
-        ).sort((a,b)=>Number(Boolean(b.defenseSource)) - Number(Boolean(a.defenseSource))).map(entry => ({...entry, automaticDamage: this.actor.type === "summon" || Boolean(numericCreatureAction(flags.catalogId,flags.sourceCommit,entry)), context: ["Target", "Damage type", "Limit"].map(label => {
+        ).sort((a,b)=>Number(Boolean(b.defenseSource)) - Number(Boolean(a.defenseSource))).map(entry => ({...entry, automaticDamage: isSummon(this.actor) || Boolean(numericCreatureAction(flags.catalogId,flags.sourceCommit,entry)), context: ["Target", "Damage type", "Limit"].map(label => {
           const match = entry.referenceMarkdown?.match(new RegExp(`\\*\\*${label}:\\*\\*\\s*([^*\\n]+)`));
           return match ? `${label}: ${match[1].trim()}` : "";
         }).filter(Boolean).join(" · ")})),
@@ -196,13 +213,13 @@ export class CreatureSheet extends CharacterSheet {
         window: { title: entry.name },
         classes: ["heroes-of-legend"],
         content: `<div class="hol-item-reference">${content}</div>`,
-        buttons: [...(game.user.isGM ? [{action:"post",label:"Post action",callback:()=>this.actor.type === "summon" ? import("../services/summon-attack.mjs").then(m=>m.promptSummonAttack(this.actor,entry.id)) : declareCreatureAction(this.actor,entry.id)}] : []), {action:"close",label:"Close"}],
+        buttons: [...(game.user.isGM ? [{action:"post",label:"Post action",callback:()=>isSummon(this.actor) ? import("../services/summon-attack.mjs").then(m=>m.promptSummonAttack(this.actor,entry.id)) : declareCreatureAction(this.actor,entry.id)}] : []), {action:"close",label:"Close"}],
       });
     } catch(error) { ui.notifications.error(error.message); }
   }
   static async creatureAction(event, target) {
     try {
-      if (this.actor.type === "summon") return (await import("../services/summon-attack.mjs")).promptSummonAttack(this.actor,target.dataset.creatureAction);
+      if (isSummon(this.actor)) return (await import("../services/summon-attack.mjs")).promptSummonAttack(this.actor,target.dataset.creatureAction);
       await declareCreatureAction(this.actor, target.dataset.creatureAction);
     } catch (error) {
       ui.notifications.error(error.message);
@@ -223,9 +240,37 @@ export class CreatureSheet extends CharacterSheet {
       ui.notifications.error(error.message);
     }
   }
+  static async toggleSummon() {
+    const ID = "heroes-of-legend";
+    if (isSummon(this.actor)) {
+      await this.actor.unsetFlag(ID, "summon");
+      await this.render();
+      return;
+    }
+    if (!this.actor.isOwner && !game.user.isGM)
+      throw new Error("You do not own this creature.");
+    const summoning = this.actor.getFlag(ID, "summoning");
+    if (!summoning?.eligible) return;
+    const response = await fetch(`systems/${ID}/data/summons.json`);
+    if (!response.ok) throw new Error("Summon profiles are unavailable.");
+    const catalog = await response.json();
+    const catalogId = this.actor.getFlag(ID, "catalogId");
+    const record = catalog.records.find(
+      (entry) => entry.id === summoning.summonId || entry.creatureId === catalogId,
+    );
+    if (!record) throw new Error("This creature has no summon profile.");
+    await this.actor.setFlag(ID, "summon", {
+      profileId: record.id,
+      creatureId: record.creatureId,
+      eligibility: record.eligibility,
+      record,
+    });
+    await this.render();
+  }
+
   static async npcMelee() {
     try {
-      if (this.actor.type === "summon") return (await import("../services/summon-attack.mjs")).promptSummonAttack(this.actor);
+      if (isSummon(this.actor)) return (await import("../services/summon-attack.mjs")).promptSummonAttack(this.actor);
       const blockable = this.element.querySelector(
         "[data-npc-blockable]",
       )?.value;

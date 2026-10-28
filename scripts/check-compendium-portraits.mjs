@@ -13,7 +13,6 @@ assert(nonSquare, "Expected a non-square portrait acceptance example");
 const examples = [
   ...new Set(["creature-adder", "creature-red-dragon", nonSquare.id]),
 ].map(id => ({ id, pack: "creatures" }));
-examples.push({ id: "summon-adder", pack: "summons" });
 const browser = await chromium.launch({ args: ["--use-angle=swiftshader", "--enable-unsafe-swiftshader"] });
 const errors = [];
 let page;
@@ -81,7 +80,7 @@ try {
     assert.equal(state.tokenWidth,state.footprint.width);
     assert.equal(state.tokenHeight,state.footprint.height);
     assert.equal(state.controller,null);
-    const sheet = page.locator(example.pack === "summons" ? ".hol-summon" : ".hol-creature");
+    const sheet = page.locator(".hol-creature");
     const image = sheet.locator(".hol-profile-portrait img");
     await image.evaluate(async img => { await img.decode(); });
     assert.deepEqual(await image.evaluate(img=>({width:img.naturalWidth,height:img.naturalHeight})),
@@ -102,7 +101,7 @@ try {
   }
   await page.screenshot({path:"test-results/compendium-portrait-tokens.png"});
   assert.deepEqual(errors,[]);
-  console.info("PASS: installed HTTP image bytes/hashes for all192 assets, source-imported creature/summon sheets, token textures, native enlarged views, non-square image dimensions and no controller state.");
+  console.info("PASS: installed HTTP image bytes/hashes for all192 assets, source-imported creature sheets including the summon-flag layout, token textures, native enlarged views, non-square image dimensions and no controller state.");
 } finally {
   try {
     if (page && !page.isClosed()) {

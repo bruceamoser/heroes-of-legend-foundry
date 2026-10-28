@@ -1,6 +1,6 @@
 # Development
 
-The V14 package includes guided creation/advancement, native character/creature/summon profiles, source compendiums and core play workflows. Specialty effects and summon lifecycle remain manual; see the current [release checklist and evidence](release-0.1.0.md). Historical issue notes below record the state and evidence at each implementation stage.
+The V14 package includes guided creation/advancement, native character and creature profiles, with summon-flagged creatures, source compendiums and core play workflows. Specialty effects and summon lifecycle remain manual; see the current [release checklist and evidence](release-0.1.0.md). Historical issue notes below record the state and evidence at each implementation stage.
 
 ## Browser prerequisite
 
@@ -1249,15 +1249,14 @@ Node 24 build/validation and all 432 tests pass. The full workshop browser suite
 passes against current bdfd18e catalogs. Foundry 14.369 native acceptance passed
 `test:creature-expansion` (nine representative creature sheets, ten full specialty
 reference declarations, stable shared IDs, no unexpected rolls/mutations, and
-commanded summon restrictions), `test:profile-update` (old creature/summon CV and
-references, shared Fall to Pieces, preserved local blocks/injuries/items/effects/
+commanded summon restrictions), `test:profile-update` (old creature CV and references with summon profile flags, shared Fall to Pieces, preserved local blocks/injuries/items/effects/
 command history/name/art, and idempotent replay), and `test:creature-actions`
 (Red Dragon multi-target suggestions, non-owner fresh/repeated Defend, exact
 printed outcomes and normal encounter defense ability availability). All three
 reported zero page errors and cleaned their fixture documents. The isolated
 server was stopped after acceptance.
 
-GM world creature/summon sheets have **Update profile**, which reads the installed
+GM world creature sheets without a summon flag have **Update profile**, which reads the installed
 current pack and preserves divergent printed blocks and all live resources.
 `static/data/profile-update-bases.json` contains only previous-profile change
 fingerprints; regeneration is pinned to software 9030f69 and book d67e046. Run
@@ -1717,8 +1716,8 @@ numeric effects.
 ## Shared creature sheet and portable Actor import — issues #249/#250
 
 All native Actor types are registered explicitly: CharacterSheet for characters,
-CreatureSheet for creatures and summons, with SummonSheet retained only as an
-inheriting compatibility name for existing saved selections. Both profile types
+CreatureSheet for standard and summon-flagged creatures; there is no separate
+SummonSheet or summon Actor type. Both profile types
 use creature.hbs, the same compact CSS, HP/attribute/action controls, portraits,
 notes and disclosures. Their native data schemas are projected for presentation;
 printed attacker/defender tier order is never silently reversed. All 73 summon
@@ -1728,7 +1727,7 @@ fixed damage snapshot flow; command/lifecycle automation remains table-managed.
 `HOL_TEST_URL=http://127.0.0.1:30014 HOL_WORKSHOP_URL=http://127.0.0.1:18749 HOL_TEST_ALLOW_WRITES=1 HOL_TEST_ISOLATED_WORLD=1 npm run test:shared-sheets-import`
 exports JSON from the actual locally served workshop, imports it through native
 Actor Import Data, checks state after reload and native JSON compatibility, then
-opens character/creature/summon/NPC/ability/equipment sheets. It also checks
+opens character/creature/NPC/ability/equipment sheets. It also checks
 unlinked token and saved legacy sheet routes. It runs only in the isolated test
 world and records cleanup with its evidence. Portable import delegates native
 JSON unchanged and builds complete native documents for the explicit workshop

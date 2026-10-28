@@ -33,7 +33,7 @@ Initially support V14 only. No migration from Neon Relic, legacy HOL or V13 worl
 |---|---|---|
 | Actors and Token actor deltas | Characters, creatures and summoned forms; independent unlinked NPC instances. | Damage one token without changing a second token or the compendium prototype. |
 | Embedded Items and compendiums | Abilities, signatures, origins, gear, recipes, wounds and searchable reference content. | Drag/drop respects acquisition rules; preview and source links remain available. |
-| ApplicationV2, dialogs, detached windows | Character/DA/summon sheets, builder, browsers, reaction and outcome choices. | Native DOM handling, accessibility and pop-out behavior; no sheet-only rules calculations. |
+| ApplicationV2, dialogs, detached windows | Character/DA/creature sheets, builder, browsers, reaction and outcome choices. | Native DOM handling, accessibility and pop-out behavior; no sheet-only rules calculations. |
 | Native dice and ChatMessages | Transparent retained dice, outcomes, declarations, defense requests and audit history. | Whisper/blind modes honored; reload does not create fresh rolls or reapply effects. |
 | Combat, Combatants and tracker | Alternating sides, side selection, action budgets, reactions, anchored timers. | No initiative-card or descending-initiative substitute. |
 | ActiveEffects and statuses | Typed contributions, exact expiry, icons and duration labels. | Highest-value rules and temporary/starred contributions are preserved. |

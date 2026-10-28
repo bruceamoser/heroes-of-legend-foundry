@@ -4,8 +4,7 @@ import { outcomeEffects } from "./outcome-effects.mjs";
 const types = DAMAGE_TYPES.join("|");
 /** Fixed numeric effects only. Movement/benefits remain explicit printed clauses. */
 export function resolvedAttackEffects(text, { damageType } = {}) {
-  if (typeof text !== "string" || !text.trim() || /\bor\b/i.test(text))
-    return null;
+  if (typeof text !== "string" || !text.trim()) return null;
   let normalized = text.trim().replace(/[.!]$/, "");
   // Shared trailing "damage" in authored mixed-type outcomes.
   normalized = normalized.replace(
@@ -23,6 +22,10 @@ export function resolvedAttackEffects(text, { damageType } = {}) {
     manual = [];
   let manualRemainder = false;
   for (const [index, raw] of clauses.entries()) {
+    if (index === 0 && /^\d+\s+squares?\b/i.test(raw)) {
+      manual.push(raw.trim());
+      continue;
+    }
     if (manualRemainder || /\b(?:if|unless|when|whenever|otherwise|instead)\b/i.test(raw)) {
       if (index === 0) return null;
       manualRemainder = true;
@@ -37,6 +40,10 @@ export function resolvedAttackEffects(text, { damageType } = {}) {
     if (chosen && damageType)
       clause = `${chosen[1]} ${canonicalDamageType(damageType)} damage`;
     clause = clause.replace(/\s+to each(?: target)?$/i, "");
+    clause = clause.replace(/\bextra damage\b/i, "damage");
+    clause = clause.replace(/\s+to each creature adjacent to you$/i, "");
+    clause = clause.replace(/\s+to the target$/i, "");
+    clause = clause.replace(/^Deal (\d+) damage$/i, "Deal $1 physical damage");
     clause = clause.replace(/^knock\s+(?:it\s+)?prone$/i, "Prone");
     clause = clause.replace(/^(Frightened\s+\d+)\s+of you$/i, "$1");
     const effect = /^No damage$/i.test(clause) ? {components:[],conditions:[]} : outcomeEffects(clause);

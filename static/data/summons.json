@@ -3,9 +3,9 @@
   "kind": "summon-profile-reference-catalog",
   "source": {
     "repository": "https://github.com/bruceamoser/heroes-of-legend",
-    "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+    "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
     "lockSchemaVersion": 1,
-    "approval": "Approved creature action review and summon updates, book PR #1280 merged 2026-10-18; system reconciliation #175. Distribution licensing remains undecided."
+    "approval": "Approved ancestry and class signature review, book release v16.5.0; system sync #252. Distribution licensing remains undecided."
   },
   "orientation": {
     "summonAttackTables": "attacker",
@@ -51,7 +51,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/adder.md",
         "sha256": "3e941e067f4d31df53b11e46cf7cd2ac9ac459fd25edc00f8f64ba6f389aeac3"
       },
@@ -320,7 +320,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/air-elemental.md",
         "sha256": "073361850b4300418feec0108264c1a1bfa07ccf3183d279d8d41557253954cd"
       },
@@ -598,7 +598,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/ancestor-guardian.md",
         "sha256": "285dc5935587d4c35cef7197b3c1beaeda79c7f22d8859d26f90b3367434adc6"
       },
@@ -892,7 +892,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/ancient-mammoth.md",
         "sha256": "f7e219895bdc547093dad019681ecefaf4685ade8e40da83594639d5b5f7b6e3"
       },
@@ -1196,7 +1196,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/animated-armor.md",
         "sha256": "af73e8e169d22d466735c1230d90a6ed9d6bbf33c092ed01a52c93a15a577cf2"
       },
@@ -1481,7 +1481,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/animated-statue.md",
         "sha256": "b53c41acbf7301c8df6c5f7c1f851b220a42cbbfcf7168b2a3445d44d2a15759"
       },
@@ -1779,7 +1779,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/barrow-guard.md",
         "sha256": "ed1f0618b045efeb15926f9476438b199e9da5fa1580a7c8e9f9514245c61e81"
       },
@@ -2087,7 +2087,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/bone-archer.md",
         "sha256": "449bec3c4b82a2772ae46a082ced704226bf57cf47f9ae4988e73aa75e317d42"
       },
@@ -2388,7 +2388,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/bone-colossus.md",
         "sha256": "8955d9228313307865bd145d5b1a2d5f6bcbc5c2c8c05088e228c873a2e56312"
       },
@@ -2696,7 +2696,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/bone-sentry.md",
         "sha256": "0f234ee20feb00dba75a8220cd42db3945fffb077414f3ad2f6cfd9514201e67"
       },
@@ -2994,7 +2994,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/briar-knight.md",
         "sha256": "9d7148188149a48ee3de42c0e6024b78f2bb98fc6d31411dc3c3fd9c2cf88346"
       },
@@ -3274,7 +3274,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/brown-bear.md",
         "sha256": "11b575fe6c18f4d05c29f52d49de399288abb7e4140862ebc637161a6dde231f"
       },
@@ -3577,7 +3577,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/cave-bat.md",
         "sha256": "84fc9acbe5b0884adc27d125ec4131f7884648f71cd5803a96ec71495e9cd428"
       },
@@ -3846,7 +3846,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/cinder-strider.md",
         "sha256": "d3d6a0c380d4a249d29ec3b51970ed385d4952f06daa3920b803ac6024f410dd"
       },
@@ -4120,7 +4120,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/clay-golem.md",
         "sha256": "52c5bf31491e6df07c38923434646d00b27a05d84fc9b08fcb4e5b6856f8105c"
       },
@@ -4418,7 +4418,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/clay-helper.md",
         "sha256": "e959c50cbc02ec1f6d19bd45aa42fe841daa74507c97e635a24f6010cea0bd4b"
       },
@@ -4695,7 +4695,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/clockwork-scout.md",
         "sha256": "86d58f621387903a43f6d4798a6dda2ec4791dfa166a700b6ed9cb17acff6144"
       },
@@ -4988,7 +4988,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/crypt-ghoul.md",
         "sha256": "01243c3f47e471979701c220009c7143bfbfb279aaecd4dd07a88f82a872fb49"
       },
@@ -5321,7 +5321,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/dire-wolf.md",
         "sha256": "5df3f5cfb77d28612c7ca641d36195f427b75f6cc090cbd7743be00e545acd45"
       },
@@ -5589,7 +5589,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/dryad.md",
         "sha256": "1c8b8e3b02a1a670b8e736f81c61abc8d33cae217d5b114519ea0db07f3ba76a"
       },
@@ -5857,7 +5857,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/earth-elemental.md",
         "sha256": "9411e0950d3af583e0f4d897d2c2868b4b4d13637046383c95f0a237808f80ff"
       },
@@ -6146,7 +6146,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/emberling.md",
         "sha256": "df9c99afec9435b624720b60e2a6c952d9c91f9246c05409c1fa9327554cfd84"
       },
@@ -6436,7 +6436,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/flesh-golem.md",
         "sha256": "131c85c2c45f542c3c66ef4b62f1b4fb283d9fb5eb7056b2124d7a112c444a14"
       },
@@ -6734,7 +6734,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/ghast.md",
         "sha256": "a5f85464d4a97915d3f968f9cb1a11a55d744f620287dca839dee09c51cc7d8d"
       },
@@ -7029,7 +7029,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/giant-boar.md",
         "sha256": "a99c73c8e0334b95cb5e522f09f8b3317d6cb7541844aaae3ae273609a24f817"
       },
@@ -7314,7 +7314,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/giant-constrictor.md",
         "sha256": "a474fabebe9139962226a4a0726007eae3eb9beaa3996015f473d02c90c0b8eb"
       },
@@ -7605,7 +7605,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/giant-eagle.md",
         "sha256": "5c58873413a373d78057966ea81a39f0ed27010813401967781cf97ed4ca6c5a"
       },
@@ -7879,7 +7879,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/giant-octopus.md",
         "sha256": "51f7fdb226b2640b06135813068edd7c44cc204ab72f8b385603400d55cd73ac"
       },
@@ -8163,7 +8163,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/giant-rat.md",
         "sha256": "6198d750a8f7aab3361714396fa3c47bba6d72806f19b885dfee32d9d32cac69"
       },
@@ -8437,7 +8437,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/giant-scorpion.md",
         "sha256": "2c81a1db8fcc80c8a75b6ce75ee377bde13f3d9ba67980dd39bd6228fe399adf"
       },
@@ -8746,7 +8746,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/giant-spider.md",
         "sha256": "9c2ed322bd3c4dd1ab9e37fd2c8773f2df6876158fea4071ab2642c7c7e716a8"
       },
@@ -9049,7 +9049,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/glass-sentinel.md",
         "sha256": "a84b98d3d19901d3c6327bdc586156d6dae55bfc4dd235c4d86cc589233734b3"
       },
@@ -9333,7 +9333,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/grave-wisp.md",
         "sha256": "47572423e7faaafe3f6a6fdc75c47ee782a5680df7179f9cfbd60302594697e8"
       },
@@ -9640,7 +9640,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/great-cat.md",
         "sha256": "ee693f90623b06b51d2b5eb004e54b598d27d7a61dd1575b28453f18c47753bc"
       },
@@ -9952,7 +9952,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/great-stag.md",
         "sha256": "fdc664365cb0d7e8e032e20a7632c31dc9115f46f806bb1f38fde5750a99f064"
       },
@@ -10225,7 +10225,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/harbor-siren.md",
         "sha256": "20abd7a890aef8ea6424cc5f994c076f32df82a4f39ba6004cab37ee14b09319"
       },
@@ -10513,7 +10513,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/hearth-brownie.md",
         "sha256": "e935454a03caf5d0f67b09f72d544c9bb4cdda195d972351477cada231229a3c"
       },
@@ -10786,7 +10786,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/hedge-sprite.md",
         "sha256": "1f9e3db5e0cee0bfb0d5972fee39b285f02e5a86ee61720176a4d056df0fd302"
       },
@@ -11065,7 +11065,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/icebound-warden.md",
         "sha256": "c4ba8c09a44c74a4547f64c5bd965793ac41f34861953073905aa406d82ea2c0"
       },
@@ -11355,7 +11355,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/iron-gatekeeper.md",
         "sha256": "0176efd12e7bf91d8dfe09052d98127b0f45512f07eb16c528cd224d7b06a3ab"
       },
@@ -11650,7 +11650,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/lantern-spirit.md",
         "sha256": "c27fc67d24495a1f420d95383af74a2063e18610a63d4f9ab749f43b156b28f6"
       },
@@ -11943,7 +11943,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/marsh-crocodile.md",
         "sha256": "a45eb31e3ca7437c60fa4f2b2f00ecbdd5346423e3ef612864168fe560a23329"
       },
@@ -12253,7 +12253,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/moon-hart.md",
         "sha256": "ce869b984869f0e9f0d989dc61e73ee70c06d1227a70b2a95b79938f9c2de045"
       },
@@ -12536,7 +12536,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/mourning-bell.md",
         "sha256": "4b52a4aae121c5c8662f09657e232024d638da12b73b27c05551ef965e6910d5"
       },
@@ -12826,7 +12826,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/mummy.md",
         "sha256": "a1a0e6cd0287014a718c646874c43ee09a0e634550d79535ad59457073c477fe"
       },
@@ -13162,7 +13162,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/oath-flame.md",
         "sha256": "eec5337a5f040fa0b288e2ee74ea9801cb222b4740b6769753a9a09eea538b3d"
       },
@@ -13452,7 +13452,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/plague-zombie.md",
         "sha256": "c3d4b414f5b50353e098418bf5e7a6a5f0b8cf9c1d41ab238a9fca5ed2ff18e0"
       },
@@ -13748,7 +13748,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/poltergeist.md",
         "sha256": "200327dffaa02f9deb16f85d4e5ef52e4167c2307909c38e5f21954fed1ff0b0"
       },
@@ -14057,7 +14057,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/raven.md",
         "sha256": "0bcef60d1c43aac819319125039caef586630ec688a172f0387f0cf54d91d97d"
       },
@@ -14326,7 +14326,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/redcap.md",
         "sha256": "ab9a4389b80e09661c2a8710754a13cb0dff338feb3539577260ccf062abb1fd"
       },
@@ -14601,7 +14601,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/reed-piper.md",
         "sha256": "f992d7c63196f55f8ddc57629baadd9f1e9ed14a22abe64d909b84d01c8c98e5"
       },
@@ -14880,7 +14880,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/reef-hunter.md",
         "sha256": "163cfcd0d109871a062c695114847f348dd48c7b097b20f2acfdc343258548d0"
       },
@@ -15159,7 +15159,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/restless-corpse.md",
         "sha256": "134ee763ee35a841927604662deee687d73e326f898cf1e6fc9a480ccbf9cc04"
       },
@@ -15460,7 +15460,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/rill-sprite.md",
         "sha256": "8769231450276026fd558aef885b28a0e6e28764b7ccf14e92b005bac8e876b6"
       },
@@ -15740,7 +15740,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/satyr.md",
         "sha256": "a62b203d7f018b5b57fe033a5b306a9fe78ff1a03900415bbd8376c4f31c387e"
       },
@@ -16008,7 +16008,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/shadow.md",
         "sha256": "1e69afffd72ff8c65cdf85abac93720b255d47a321c68c3108b07eb018f897c8"
       },
@@ -16323,7 +16323,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/skeleton-champion.md",
         "sha256": "a50ff8960fb50fd7d07aff678bf9c4497b740fb323549c217064178f5b0f4b85"
       },
@@ -16640,7 +16640,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/skeleton-giant.md",
         "sha256": "8350bd3f039399d55e48bf6c9735b663cd148b93b272cba531b0334c7161199e"
       },
@@ -16952,7 +16952,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/skeleton-horse.md",
         "sha256": "8821c0e7f4a5beba3f7f2cd58f3dbf900d2a89ff5914c6601142c8301cf2a446"
       },
@@ -17264,7 +17264,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/sorrow-ghost.md",
         "sha256": "7159673916ca82562325e75491bc9fa1057ffe72c6fd319952fdc014fe03195e"
       },
@@ -17563,7 +17563,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/stone-golem.md",
         "sha256": "1a1fb73247d7bb545add53f3abdadf0f064eabb657c5a5ce3c4add54df98fb53"
       },
@@ -17861,7 +17861,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/stone-knuckle.md",
         "sha256": "f7bd13683ab372f1b17deca51cb68819614b818ed72d6222414cdb011ee256d4"
       },
@@ -18151,7 +18151,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/storm-column.md",
         "sha256": "aa40b47cef335df429b1131b6f194a26f37765b1531e2f71436db341efbba729"
       },
@@ -18471,7 +18471,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/trail-hound.md",
         "sha256": "a0dc8cc0f782e67d9047f636b9da13f79a825618c5b653fca5f810669c882bb9"
       },
@@ -18744,7 +18744,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/unicorn.md",
         "sha256": "38f7a3b8af48b3eddb7d61f259e26d9959df6844d2f651e38c61e67682be72b7"
       },
@@ -19022,7 +19022,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/walking-furnace.md",
         "sha256": "c5987f98f49758fdeebaa81e900cb9788b4a671e6b722e5c2a2df6da008e18ff"
       },
@@ -19346,7 +19346,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/warhorse.md",
         "sha256": "70e662629eb2f1aa19ace4ba793ff529d3814b9f6b7788fe7756cdd83de8c033"
       },
@@ -19624,7 +19624,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/water-elemental.md",
         "sha256": "23edbc46402e65d5540c5d9cd109d669958346ff7632a67fd1a2afac5822a3a3"
       },
@@ -19912,7 +19912,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/wight.md",
         "sha256": "6464366c55b3626cd5a4b5c902df092fe8c2d5e23d7ed6c019e3d7635dddda60"
       },
@@ -20215,7 +20215,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/wild-boar.md",
         "sha256": "55e78cdf1977a3acb4295276282c4ad8f72bceef9b4ead10151c403c8ad0cf2f"
       },
@@ -20488,7 +20488,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/wolf.md",
         "sha256": "d0fff61cc1eb67bcfcef8a1ad7a7d452988d1ceb4495a9b040f6bd9cf9daa05a"
       },
@@ -20795,7 +20795,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/wraith.md",
         "sha256": "6479b5e1ced9b10443a98b1fb6a2e6ab4908a2e2c097b91627588c3050e3e679"
       },
@@ -21116,7 +21116,7 @@
       "actionOrientation": "attacker",
       "source": {
         "repository": "https://github.com/bruceamoser/heroes-of-legend",
-        "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+        "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
         "path": "design/bestiary/summons/zombie-brute.md",
         "sha256": "9ca1993163362575367b69a01e4f7f95597ada11d5f4f46efd9462f44cf43122"
       },

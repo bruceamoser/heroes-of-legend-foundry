@@ -28,7 +28,7 @@ export function landingSceneSource() {
       text("Welcome", "A shared tale. A dangerous world.\nYour legend begins at the table.", 920, 725, 850, 130, 36, "#f1e6ce", "HOL Garamond"),
       {name: "Gold rule", x: 1085, y: 590, shape: {type: "r", width: 520, height: 2}, fillType: 1, fillColor: "#b39253", fillAlpha: 1, strokeWidth: 0, locked: true, levels: [LEVEL]},
     ],
-    flags: {[ID]: {landing: {version: 1, sourceCommit: "bdfd18ed535fbd0e1892b9344444abf6da644809"}}},
+    flags: {[ID]: {landing: {version: 1, sourceCommit: "295e858c1b6fee044a0261bf9f437636efeff2bf"}}},
   };
 }
 let creating;

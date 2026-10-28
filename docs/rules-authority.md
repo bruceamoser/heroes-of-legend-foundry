@@ -97,3 +97,11 @@ references: 126 monster templates, 192 creatures, 73 summons, and 419 character
 abilities. See the [intake and runtime boundaries](research/creature-action-expansion.md).
 Current-only character rules remain automatic. Existing world creature/summon
 updates preserve live state and local edits through the sheet's Update profile action.
+
+## October 28 ancestry and class signature review: v16.5.0
+
+The current approved pin is **295e858c1b6fee044a0261bf9f437636efeff2bf**,
+book release v16.5.0. It supersedes bdfd18e for all current catalogs and web
+references: 20 ancestry traits and 90 class signatures, with stable IDs, levels
+and acquisition requirements preserved. Creature, summon, monster-ability and
+portrait counts are unchanged. See the v16.5.0 production baseline.

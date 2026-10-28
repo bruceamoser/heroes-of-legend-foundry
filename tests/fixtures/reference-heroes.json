@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "provenance": {
     "repository": "bruceamoser/heroes-of-legend",
-    "commit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+    "commit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
     "index": {
       "path": "design/characters/README.md",
       "sha256": "b0ac84186778d76181b4425f0746dbaa2a896ebdf235af30c8f0a6b1e2bb29c5"
@@ -10,23 +10,23 @@
     "characters": {
       "borin-bridgekeeper": {
         "path": "design/characters/borin-bridgekeeper.md",
-        "sha256": "551645219e85d2369bd6064ed55f563d527c442e879f586d2c252bc70d973bf3"
+        "sha256": "3674ec42e55106aa4d67cae80eb5e3c4a6218bdd76d693ae81e4d81141740fd8"
       },
       "lira-ashbow": {
         "path": "design/characters/lira-ashbow.md",
-        "sha256": "4ef51e8b257e4a0665ab82dd921fcb5d73c38463d043d09b990d834d749e9614"
+        "sha256": "d27bacdc34731fc77153da39f3a2b043dfbd658b9c363f4f18a75c720c4a3df0"
       },
       "mara-reedheart": {
         "path": "design/characters/mara-reedheart.md",
-        "sha256": "599baaae501ffabc32d7e0f7aa1cfc686ea7d8a038c22552a4345c6825bbe686"
+        "sha256": "55780938021914d371f9fb766ce38d5e053d33c9700e4326f109c888859cfa11"
       },
       "oren-brass": {
         "path": "design/characters/oren-brass.md",
-        "sha256": "23c3218511f5d15354202afffab61f64be5fcdf525afaa5da465133ab7a95297"
+        "sha256": "40b9103d56ea31a83af90cd85b9b5aa339ad78b1b63fde56f7afe8bd1f0180ad"
       },
       "pip-copperwink": {
         "path": "design/characters/pip-copperwink.md",
-        "sha256": "6d0a1f21edd873baa2a26351a2f899591359444c41bb69caab90119394314928"
+        "sha256": "94004b9f896f76e09de385a0cd585250b39a3fed8b7f022274328f1a6e24908f"
       },
       "vaelis-emberglass": {
         "path": "design/characters/vaelis-emberglass.md",
@@ -82,7 +82,10 @@
           "pair": 0
         },
         "classId": "class-protector",
-        "classDisciplines": ["discipline-armor", "discipline-guard"],
+        "classDisciplines": [
+          "discipline-armor",
+          "discipline-guard"
+        ],
         "signatureId": "ability-signature-protector-between-them",
         "purchases": {
           "0": [
@@ -182,11 +185,14 @@
           },
           "ancestryId": "ancestry-dwarf",
           "traitIds": [
-          "trait-dwarf-deep-constitution",
-          "trait-dwarf-carved-history"
-        ],
+            "trait-dwarf-deep-constitution",
+            "trait-dwarf-carved-history"
+          ],
           "classId": "class-protector",
-          "classDisciplines": ["discipline-armor", "discipline-guard"],
+          "classDisciplines": [
+            "discipline-armor",
+            "discipline-guard"
+          ],
           "signatureId": "ability-signature-protector-between-them"
         },
         "origins": [
@@ -206,8 +212,18 @@
           ]
         ],
         "stages": [
-          [10, 0, 10, 0],
-          [10, 1, 11, 0]
+          [
+            10,
+            0,
+            10,
+            0
+          ],
+          [
+            10,
+            1,
+            11,
+            0
+          ]
         ],
         "stats": {
           "hp": 25,
@@ -217,7 +233,11 @@
           "speed": 5,
           "capacity": 13,
           "bulk": 11,
-          "coins": [64, 51, 13]
+          "coins": [
+            64,
+            51,
+            13
+          ]
         },
         "abilities": [
           "ability-braced-harness",
@@ -241,22 +261,66 @@
         },
         "recipes": [],
         "languages": [
-          ["common", "Common", "full"],
-          ["dwarven", "Dwarven", "full"]
+          [
+            "common",
+            "Common",
+            "full"
+          ],
+          [
+            "dwarven",
+            "Dwarven",
+            "full"
+          ]
         ],
         "items": [
-          ["item-food-bundle", 0],
-          ["item-lesser-healing-bottle", 0],
-          ["item-lighting-bundle", 0],
-          ["item-ordinary-light-armor", 0],
-          ["item-ordinary-melee-weapon", 1],
-          ["item-ordinary-shield", 1],
-          ["item-rope-coil", 0],
-          ["item-sleeping-roll", 0],
-          ["item-small-necessities", 0],
-          ["item-travel-clothes", 0],
-          ["item-travel-pack", 0],
-          ["item-water-flask", 0]
+          [
+            "item-food-bundle",
+            0
+          ],
+          [
+            "item-lesser-healing-bottle",
+            0
+          ],
+          [
+            "item-lighting-bundle",
+            0
+          ],
+          [
+            "item-ordinary-light-armor",
+            0
+          ],
+          [
+            "item-ordinary-melee-weapon",
+            1
+          ],
+          [
+            "item-ordinary-shield",
+            1
+          ],
+          [
+            "item-rope-coil",
+            0
+          ],
+          [
+            "item-sleeping-roll",
+            0
+          ],
+          [
+            "item-small-necessities",
+            0
+          ],
+          [
+            "item-travel-clothes",
+            0
+          ],
+          [
+            "item-travel-pack",
+            0
+          ],
+          [
+            "item-water-flask",
+            0
+          ]
         ]
       }
     },
@@ -274,7 +338,10 @@
           "reason": -1
         },
         "ancestryId": "ancestry-elf",
-        "traitIds": ["trait-elf-light-tread", "trait-elf-leaf-listener"],
+        "traitIds": [
+          "trait-elf-light-tread",
+          "trait-elf-leaf-listener"
+        ],
         "languages": {
           "home": "elven",
           "extraSpoken": []
@@ -288,7 +355,10 @@
           "pair": 0
         },
         "classId": "class-blade",
-        "classDisciplines": ["discipline-arms", "discipline-athletics"],
+        "classDisciplines": [
+          "discipline-arms",
+          "discipline-athletics"
+        ],
         "signatureId": "ability-signature-blade-measured-guard",
         "purchases": {
           "0": [
@@ -375,9 +445,15 @@
             "reason": -1
           },
           "ancestryId": "ancestry-elf",
-          "traitIds": ["trait-elf-light-tread", "trait-elf-leaf-listener"],
+          "traitIds": [
+            "trait-elf-light-tread",
+            "trait-elf-leaf-listener"
+          ],
           "classId": "class-blade",
-          "classDisciplines": ["discipline-arms", "discipline-athletics"],
+          "classDisciplines": [
+            "discipline-arms",
+            "discipline-athletics"
+          ],
           "signatureId": "ability-signature-blade-measured-guard"
         },
         "origins": [
@@ -397,8 +473,18 @@
           ]
         ],
         "stages": [
-          [10, 0, 10, 0],
-          [10, 0, 10, 0]
+          [
+            10,
+            0,
+            10,
+            0
+          ],
+          [
+            10,
+            0,
+            10,
+            0
+          ]
         ],
         "stats": {
           "hp": 20,
@@ -408,7 +494,11 @@
           "speed": 8,
           "capacity": 10,
           "bulk": 10,
-          "coins": [58, 44, 14]
+          "coins": [
+            58,
+            44,
+            14
+          ]
         },
         "abilities": [
           "ability-a-good-place-to-stop",
@@ -433,21 +523,62 @@
         },
         "recipes": [],
         "languages": [
-          ["common", "Common", "full"],
-          ["elven", "Elven", "full"]
+          [
+            "common",
+            "Common",
+            "full"
+          ],
+          [
+            "elven",
+            "Elven",
+            "full"
+          ]
         ],
         "items": [
-          ["item-ammunition-bundle", 0],
-          ["item-food-bundle", 0],
-          ["item-lesser-healing-bottle", 0],
-          ["item-lighting-bundle", 0],
-          ["item-ordinary-melee-weapon", 1],
-          ["item-ordinary-ranged-weapon", 2],
-          ["item-rope-coil", 0],
-          ["item-sleeping-roll", 0],
-          ["item-travel-clothes", 0],
-          ["item-travel-pack", 0],
-          ["item-water-flask", 0]
+          [
+            "item-ammunition-bundle",
+            0
+          ],
+          [
+            "item-food-bundle",
+            0
+          ],
+          [
+            "item-lesser-healing-bottle",
+            0
+          ],
+          [
+            "item-lighting-bundle",
+            0
+          ],
+          [
+            "item-ordinary-melee-weapon",
+            1
+          ],
+          [
+            "item-ordinary-ranged-weapon",
+            2
+          ],
+          [
+            "item-rope-coil",
+            0
+          ],
+          [
+            "item-sleeping-roll",
+            0
+          ],
+          [
+            "item-travel-clothes",
+            0
+          ],
+          [
+            "item-travel-pack",
+            0
+          ],
+          [
+            "item-water-flask",
+            0
+          ]
         ]
       }
     },
@@ -465,7 +596,10 @@
           "reason": 2
         },
         "ancestryId": "ancestry-human",
-        "traitIds": ["trait-human-far-walker", "trait-human-shared-table"],
+        "traitIds": [
+          "trait-human-far-walker",
+          "trait-human-shared-table"
+        ],
         "languages": {
           "home": "reed-speech",
           "extraSpoken": []
@@ -479,7 +613,10 @@
           "pair": 0
         },
         "classId": "class-shepherd",
-        "classDisciplines": ["discipline-life", "discipline-medicine"],
+        "classDisciplines": [
+          "discipline-life",
+          "discipline-medicine"
+        ],
         "signatureId": "ability-signature-shepherd-gentle-return",
         "purchases": {
           "0": [
@@ -577,9 +714,15 @@
             "reason": 2
           },
           "ancestryId": "ancestry-human",
-          "traitIds": ["trait-human-far-walker", "trait-human-shared-table"],
+          "traitIds": [
+            "trait-human-far-walker",
+            "trait-human-shared-table"
+          ],
           "classId": "class-shepherd",
-          "classDisciplines": ["discipline-life", "discipline-medicine"],
+          "classDisciplines": [
+            "discipline-life",
+            "discipline-medicine"
+          ],
           "signatureId": "ability-signature-shepherd-gentle-return"
         },
         "origins": [
@@ -599,8 +742,18 @@
           ]
         ],
         "stages": [
-          [12, 0, 12, 0],
-          [12, 1, 13, 0]
+          [
+            12,
+            0,
+            12,
+            0
+          ],
+          [
+            12,
+            1,
+            13,
+            0
+          ]
         ],
         "stats": {
           "hp": 18,
@@ -610,7 +763,11 @@
           "speed": 7,
           "capacity": 10,
           "bulk": 7,
-          "coins": [54, 46, 8]
+          "coins": [
+            54,
+            46,
+            8
+          ]
         },
         "abilities": [
           "ability-a-good-place-to-stop",
@@ -637,18 +794,50 @@
         },
         "recipes": [],
         "languages": [
-          ["common", "Common", "full"],
-          ["reed-speech", "Reed Speech", "full"]
+          [
+            "common",
+            "Common",
+            "full"
+          ],
+          [
+            "reed-speech",
+            "Reed Speech",
+            "full"
+          ]
         ],
         "items": [
-          ["item-food-bundle", 0],
-          ["item-lesser-healing-bottle", 0],
-          ["item-rope-coil", 0],
-          ["item-sleeping-roll", 0],
-          ["item-small-necessities", 0],
-          ["item-travel-clothes", 0],
-          ["item-travel-pack", 0],
-          ["item-water-flask", 0]
+          [
+            "item-food-bundle",
+            0
+          ],
+          [
+            "item-lesser-healing-bottle",
+            0
+          ],
+          [
+            "item-rope-coil",
+            0
+          ],
+          [
+            "item-sleeping-roll",
+            0
+          ],
+          [
+            "item-small-necessities",
+            0
+          ],
+          [
+            "item-travel-clothes",
+            0
+          ],
+          [
+            "item-travel-pack",
+            0
+          ],
+          [
+            "item-water-flask",
+            0
+          ]
         ]
       }
     },
@@ -666,10 +855,16 @@
           "reason": 0
         },
         "ancestryId": "ancestry-human",
-        "traitIds": ["trait-human-far-walker", "trait-human-many-homes"],
+        "traitIds": [
+          "trait-human-far-walker",
+          "trait-human-many-homes"
+        ],
         "languages": {
           "home": "river-speech",
-          "extraSpoken": ["dwarven", "harbor-cant"]
+          "extraSpoken": [
+            "dwarven",
+            "harbor-cant"
+          ]
         },
         "culture": {
           "id": "origin-culture-deep-halls",
@@ -680,7 +875,10 @@
           "pair": 0
         },
         "classId": "class-intellect",
-        "classDisciplines": ["discipline-craft", "discipline-scholarship"],
+        "classDisciplines": [
+          "discipline-craft",
+          "discipline-scholarship"
+        ],
         "signatureId": "ability-signature-intellect-make-the-connection",
         "purchases": {
           "0": [
@@ -738,14 +936,20 @@
         },
         "acquisitions": {
           "ability-trail-workshop": {
-            "recipes": ["recipe-bound-torches", "recipe-fletched-ammunition"]
+            "recipes": [
+              "recipe-bound-torches",
+              "recipe-fletched-ammunition"
+            ]
           },
           "ability-anatomy-of-an-opening": {
             "weapon": "melee",
             "meleeHands": 1
           },
           "ability-make-something-useful": {
-            "recipes": ["recipe-travel-food", "recipe-twisted-cord"]
+            "recipes": [
+              "recipe-travel-food",
+              "recipe-twisted-cord"
+            ]
           }
         },
         "shopping": [
@@ -797,9 +1001,15 @@
             "reason": 0
           },
           "ancestryId": "ancestry-human",
-          "traitIds": ["trait-human-far-walker", "trait-human-many-homes"],
+          "traitIds": [
+            "trait-human-far-walker",
+            "trait-human-many-homes"
+          ],
           "classId": "class-intellect",
-          "classDisciplines": ["discipline-craft", "discipline-scholarship"],
+          "classDisciplines": [
+            "discipline-craft",
+            "discipline-scholarship"
+          ],
           "signatureId": "ability-signature-intellect-make-the-connection"
         },
         "origins": [
@@ -819,8 +1029,18 @@
           ]
         ],
         "stages": [
-          [13, 0, 13, 0],
-          [13, 2, 15, 0]
+          [
+            13,
+            0,
+            13,
+            0
+          ],
+          [
+            13,
+            2,
+            15,
+            0
+          ]
         ],
         "stats": {
           "hp": 17,
@@ -830,7 +1050,11 @@
           "speed": 7,
           "capacity": 10,
           "bulk": 9,
-          "coins": [66, 56, 10]
+          "coins": [
+            66,
+            56,
+            10
+          ]
         },
         "abilities": [
           "ability-anatomy-of-an-opening",
@@ -864,22 +1088,68 @@
           "recipe-simple-replacement-leg"
         ],
         "languages": [
-          ["common", "Common", "full"],
-          ["river-speech", "River Speech", "full"],
-          ["dwarven", "Dwarven", "spoken-only"],
-          ["harbor-cant", "Harbor Cant", "spoken-only"]
+          [
+            "common",
+            "Common",
+            "full"
+          ],
+          [
+            "river-speech",
+            "River Speech",
+            "full"
+          ],
+          [
+            "dwarven",
+            "Dwarven",
+            "spoken-only"
+          ],
+          [
+            "harbor-cant",
+            "Harbor Cant",
+            "spoken-only"
+          ]
         ],
         "items": [
-          ["item-craft-tools", 0],
-          ["item-food-bundle", 0],
-          ["item-lesser-healing-bottle", 0],
-          ["item-lighting-bundle", 0],
-          ["item-material-bundle", 0],
-          ["item-ordinary-melee-weapon", 1],
-          ["item-sleeping-roll", 0],
-          ["item-travel-clothes", 0],
-          ["item-travel-pack", 0],
-          ["item-water-flask", 0]
+          [
+            "item-craft-tools",
+            0
+          ],
+          [
+            "item-food-bundle",
+            0
+          ],
+          [
+            "item-lesser-healing-bottle",
+            0
+          ],
+          [
+            "item-lighting-bundle",
+            0
+          ],
+          [
+            "item-material-bundle",
+            0
+          ],
+          [
+            "item-ordinary-melee-weapon",
+            1
+          ],
+          [
+            "item-sleeping-roll",
+            0
+          ],
+          [
+            "item-travel-clothes",
+            0
+          ],
+          [
+            "item-travel-pack",
+            0
+          ],
+          [
+            "item-water-flask",
+            0
+          ]
         ]
       }
     },
@@ -914,7 +1184,10 @@
           "pair": 0
         },
         "classId": "class-shadow",
-        "classDisciplines": ["discipline-subterfuge", "discipline-athletics"],
+        "classDisciplines": [
+          "discipline-subterfuge",
+          "discipline-athletics"
+        ],
         "signatureId": "ability-signature-shadow-fade-behind",
         "purchases": {
           "0": [
@@ -1020,11 +1293,14 @@
           },
           "ancestryId": "ancestry-halfling",
           "traitIds": [
-          "trait-halfling-small-passage",
-          "trait-halfling-quiet-company"
-        ],
+            "trait-halfling-small-passage",
+            "trait-halfling-quiet-company"
+          ],
           "classId": "class-shadow",
-          "classDisciplines": ["discipline-subterfuge", "discipline-athletics"],
+          "classDisciplines": [
+            "discipline-subterfuge",
+            "discipline-athletics"
+          ],
           "signatureId": "ability-signature-shadow-fade-behind"
         },
         "origins": [
@@ -1044,8 +1320,18 @@
           ]
         ],
         "stages": [
-          [11, 0, 11, 0],
-          [11, 1, 12, 0]
+          [
+            11,
+            0,
+            11,
+            0
+          ],
+          [
+            11,
+            1,
+            12,
+            0
+          ]
         ],
         "stats": {
           "hp": 16,
@@ -1055,7 +1341,11 @@
           "speed": 7,
           "capacity": 10,
           "bulk": 10,
-          "coins": [60, 46, 14]
+          "coins": [
+            60,
+            46,
+            14
+          ]
         },
         "abilities": [
           "ability-a-courtesy-unanswered",
@@ -1081,21 +1371,62 @@
         },
         "recipes": [],
         "languages": [
-          ["common", "Common", "full"],
-          ["halfling", "Halfling", "full"]
+          [
+            "common",
+            "Common",
+            "full"
+          ],
+          [
+            "halfling",
+            "Halfling",
+            "full"
+          ]
         ],
         "items": [
-          ["item-food-bundle", 0],
-          ["item-lesser-healing-bottle", 0],
-          ["item-lighting-bundle", 0],
-          ["item-lock-tools", 0],
-          ["item-ordinary-melee-weapon", 1],
-          ["item-rope-coil", 0],
-          ["item-sleeping-roll", 0],
-          ["item-small-necessities", 0],
-          ["item-travel-clothes", 0],
-          ["item-travel-pack", 0],
-          ["item-water-flask", 0]
+          [
+            "item-food-bundle",
+            0
+          ],
+          [
+            "item-lesser-healing-bottle",
+            0
+          ],
+          [
+            "item-lighting-bundle",
+            0
+          ],
+          [
+            "item-lock-tools",
+            0
+          ],
+          [
+            "item-ordinary-melee-weapon",
+            1
+          ],
+          [
+            "item-rope-coil",
+            0
+          ],
+          [
+            "item-sleeping-roll",
+            0
+          ],
+          [
+            "item-small-necessities",
+            0
+          ],
+          [
+            "item-travel-clothes",
+            0
+          ],
+          [
+            "item-travel-pack",
+            0
+          ],
+          [
+            "item-water-flask",
+            0
+          ]
         ]
       }
     },
@@ -1113,7 +1444,10 @@
           "reason": 1
         },
         "ancestryId": "ancestry-elf",
-        "traitIds": ["trait-elf-age-of-memory", "trait-elf-star-familiar"],
+        "traitIds": [
+          "trait-elf-age-of-memory",
+          "trait-elf-star-familiar"
+        ],
         "rememberedCommunity": "Emberglass Observatory",
         "languages": {
           "home": "elven",
@@ -1128,7 +1462,10 @@
           "pair": 1
         },
         "classId": "class-arcanist",
-        "classDisciplines": ["discipline-scholarship", "discipline-calling"],
+        "classDisciplines": [
+          "discipline-scholarship",
+          "discipline-calling"
+        ],
         "signatureId": "ability-signature-arcanist-deliberate-spark",
         "purchases": {
           "0": [
@@ -1233,9 +1570,15 @@
             "reason": 1
           },
           "ancestryId": "ancestry-elf",
-          "traitIds": ["trait-elf-age-of-memory", "trait-elf-star-familiar"],
+          "traitIds": [
+            "trait-elf-age-of-memory",
+            "trait-elf-star-familiar"
+          ],
           "classId": "class-arcanist",
-          "classDisciplines": ["discipline-scholarship", "discipline-calling"],
+          "classDisciplines": [
+            "discipline-scholarship",
+            "discipline-calling"
+          ],
           "signatureId": "ability-signature-arcanist-deliberate-spark"
         },
         "origins": [
@@ -1255,8 +1598,18 @@
           ]
         ],
         "stages": [
-          [13, 0, 13, 0],
-          [13, 0, 13, 0]
+          [
+            13,
+            0,
+            13,
+            0
+          ],
+          [
+            13,
+            0,
+            13,
+            0
+          ]
         ],
         "stats": {
           "hp": 17,
@@ -1266,7 +1619,11 @@
           "speed": 7,
           "capacity": 7,
           "bulk": 7,
-          "coins": [65, 49, 16]
+          "coins": [
+            65,
+            49,
+            16
+          ]
         },
         "abilities": [
           "ability-a-coal-for-a-promise",
@@ -1295,19 +1652,55 @@
         },
         "recipes": [],
         "languages": [
-          ["common", "Common", "full"],
-          ["elven", "Elven", "full"],
-          ["dwarven", "Dwarven", "full"]
+          [
+            "common",
+            "Common",
+            "full"
+          ],
+          [
+            "elven",
+            "Elven",
+            "full"
+          ],
+          [
+            "dwarven",
+            "Dwarven",
+            "full"
+          ]
         ],
         "items": [
-          ["item-food-bundle", 0],
-          ["item-lesser-healing-bottle", 0],
-          ["item-lighting-bundle", 0],
-          ["item-rope-coil", 0],
-          ["item-sleeping-roll", 0],
-          ["item-travel-clothes", 0],
-          ["item-travel-pack", 0],
-          ["item-water-flask", 0]
+          [
+            "item-food-bundle",
+            0
+          ],
+          [
+            "item-lesser-healing-bottle",
+            0
+          ],
+          [
+            "item-lighting-bundle",
+            0
+          ],
+          [
+            "item-rope-coil",
+            0
+          ],
+          [
+            "item-sleeping-roll",
+            0
+          ],
+          [
+            "item-travel-clothes",
+            0
+          ],
+          [
+            "item-travel-pack",
+            0
+          ],
+          [
+            "item-water-flask",
+            0
+          ]
         ]
       }
     }

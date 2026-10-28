@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/arms.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You catch the incoming blow on your guard and turn your shoulders, stepping smoothly past its line.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>Self, before a defense against an adjacent enemy.</dd></div><div><dt>Duration</dt><dd>The triggering defense and immediate movement.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Repeatable; normal action economy applies.</dd></div><div><dt>Type</dt><dd>Signature</dd></div></dl><div class=\"hol-reference-rules\"><p>Gain 1 Boon to the defense. After the attack resolves, you may move up to 2 squares without provoking, whatever the defense result. This does not prevent the attack’s damage or conditions; you must still be able to move.</p></div><h3>Additional rulings</h3><p><strong>Tags:</strong> Skill / Defense / Movement</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/cards/signature-blade-measured-guard.md\" target=\"_blank\" rel=\"noopener\">design/cards/signature-blade-measured-guard.md</a> at <code>bdfd18ed535fbd0e1892b9344444abf6da644809</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You catch the incoming blow on your guard, turn it aside and answer with a sharp cut of your own.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self, before a defense against an adjacent enemy.</dd></div><div><dt>Duration</dt><dd>The triggering defense and immediate counterattack.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Repeatable; normal action economy applies.</dd></div><div><dt>Type</dt><dd>Signature</dd></div></dl><div class=\"hol-reference-rules\"><p>Gain 1 Boon to the defense. After the attack resolves, if the defense was Strong and the attacker is within your reach, make a Basic Melee attack against that attacker. This counterattack is part of the Reaction and does not use your Main Action.</p></div><h3>Additional rulings</h3><p><strong>Tags:</strong> Skill / Defense / Attack</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/295e858c1b6fee044a0261bf9f437636efeff2bf/design/cards/signature-blade-measured-guard.md\" target=\"_blank\" rel=\"noopener\">design/cards/signature-blade-measured-guard.md</a> at <code>295e858c1b6fee044a0261bf9f437636efeff2bf</code>.</p></section>",
     "activity": {
       "action": "reaction",
       "rollMode": "none",
@@ -30,9 +30,9 @@
       "catalogId": "ability-signature-blade-measured-guard",
       "source": {
         "path": "design/cards/signature-blade-measured-guard.md",
-        "sha256": "5d3f95c380606649465c190aeba7c64074c944e88a52666bab335aec54a3076d"
+        "sha256": "76ca12056335e22d66c72e4c11355f600cabd4e7d423217c3a444e117c80d084"
       },
-      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+      "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · play automation in progress"

@@ -1,22 +1,22 @@
 {
   "_key": "!items!70b1d7b0e0e34e44",
   "_id": "70b1d7b0e0e34e44",
-  "name": "Stay on the Scent",
+  "name": "Volley",
   "type": "ability",
   "img": "systems/heroes-of-legend/assets/marks/wilderness.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You watch the first turn of their shoulders and cut toward their escape route before their footsteps fade.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>One visible enemy within 5 squares when it begins voluntary movement.</dd></div><div><dt>Duration</dt><dd>Movement is immediate; the Boon ends when used or at the end of your next turn.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>One Reaction per use; repeated uses do not multiply the unused Boon.</dd></div><div><dt>Type</dt><dd>Signature</dd></div></dl><div class=\"hol-reference-rules\"><p>After that movement ends, move up to 3 squares toward its final position without provoking, if you can still see it. Gain 1 Boon to your next attack against it before the end of your next turn. You must be able to move; this grants no attack and does not reveal a creature that becomes Hidden.</p></div><h3>Additional rulings</h3><p><strong>Tags:</strong> Skill / Movement</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/bdfd18ed535fbd0e1892b9344444abf6da644809/design/cards/signature-warden-stay-on-the-scent.md\" target=\"_blank\" rel=\"noopener\">design/cards/signature-warden-stay-on-the-scent.md</a> at <code>bdfd18ed535fbd0e1892b9344444abf6da644809</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You empty the quiver into the space where the enemy is standing.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Agility</dd></div><div><dt>Target / range / shape</dt><dd>A 2 × 2 area within 10 squares.</dd></div><div><dt>Duration</dt><dd>Immediate.</dd></div><div><dt>Equipment / acquisition</dt><dd>A ranged weapon and ammunition.</dd></div><div><dt>Limits</dt><dd>Repeatable; normal action economy applies.</dd></div><div><dt>Type</dt><dd>Signature</dd></div></dl><div class=\"hol-reference-rules\"><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>1 physical damage.</dd><dt>Standard</dt><dd>2 physical damage.</dd><dt>Strong</dt><dd>3 physical damage. Roll once using the worst applicable Boon or Bane among the targets. Each target applies resistance separately. A creature can be affected once per use.</dd></dl></div><h3>Additional rulings</h3><p><strong>Tags:</strong> Skill / Attack</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/295e858c1b6fee044a0261bf9f437636efeff2bf/design/cards/signature-warden-stay-on-the-scent.md\" target=\"_blank\" rel=\"noopener\">design/cards/signature-warden-stay-on-the-scent.md</a> at <code>295e858c1b6fee044a0261bf9f437636efeff2bf</code>.</p></section>",
     "activity": {
-      "action": "reaction",
-      "rollMode": "none",
-      "attribute": "brawn",
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "agility",
       "defenseAttribute": "agility"
     },
     "outcomes": {
-      "weak": "",
-      "standard": "",
-      "strong": ""
+      "weak": "1 physical damage.",
+      "standard": "2 physical damage.",
+      "strong": "3 physical damage. Roll once using the worst applicable Boon or Bane among the targets. Each target applies resistance separately. A creature can be affected once per use."
     }
   },
   "effects": [],
@@ -30,9 +30,9 @@
       "catalogId": "ability-signature-warden-stay-on-the-scent",
       "source": {
         "path": "design/cards/signature-warden-stay-on-the-scent.md",
-        "sha256": "a8c56057640d671c6fdb3ace8c9636602562a35b8cd383886ac7ca48c978ab3c"
+        "sha256": "00d1cfeb9a8372542fae38435cdb407f25a77bb9d97c264d18f6c2a6ce861517"
       },
-      "sourceCommit": "bdfd18ed535fbd0e1892b9344444abf6da644809",
+      "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · play automation in progress"

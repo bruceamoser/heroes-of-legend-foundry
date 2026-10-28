@@ -73,6 +73,7 @@ async function condition(key) {
 }
 try {
   await page.goto(`http://127.0.0.1:${server.address().port}${prefix}`);
+  await page.getByRole("button", { name: /Edit/ }).first().click();
   await page.getByRole("tab", { name: "Development", exact: true }).click();
   await page
     .getByRole("button", { name: "Edit creation", exact: true })

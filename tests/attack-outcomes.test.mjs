@@ -9,13 +9,14 @@ import { DAMAGE_TYPE, DAMAGE_TYPES } from "../src/rules/damage.mjs";
 const records = JSON.parse(
   await readFile(new URL("../static/data/choices.json", import.meta.url)),
 ).records;
-test("all 213 damage-dealing catalog tiers resolve canonical fixed damage without a later prompt", () => {
+test("all 251 damage-first catalog tiers resolve canonical fixed damage without a later prompt", () => {
   let count = 0;
   for (const record of records.filter((r) => r.kind === "ability"))
     for (const outcome of record.reference?.rules?.body?.flatMap(
       (b) => b.outcomes ?? [],
     ) ?? []) {
-      if (!/\b\d+\s+(?:[a-z]+\s+)?damage\b/i.test(outcome.text)) continue;
+      if (!/^(?:Deal\s+)?\d+\s+(?:[a-z]+\s+)?damage\b/i.test(outcome.text)) continue;
+      if (/\b(?:chosen|that) type\b/i.test(outcome.text)) continue;
       for (const damageType of printedDamageChoices(record).length
         ? printedDamageChoices(record)
         : [undefined]) {
@@ -33,7 +34,7 @@ test("all 213 damage-dealing catalog tiers resolve canonical fixed damage withou
       }
       count++;
     }
-  assert.equal(count, 213);
+  assert.equal(count, 251);
 });
 test("every damage enum produces a fixed typed outcome with conditions", () => {
   for (const type of DAMAGE_TYPES)

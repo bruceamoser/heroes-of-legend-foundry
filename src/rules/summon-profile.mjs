@@ -3,11 +3,14 @@ export const SUMMON_FLAG = "summon";
 
 /** A summon is a standard creature Actor carrying a profile flag. */
 export function summonState(actor) {
-  return (
+  const direct =
     actor?.getFlag?.(ID, SUMMON_FLAG) ??
     actor?.flags?.[ID]?.[SUMMON_FLAG] ??
-    null
-  );
+    null;
+  if (direct) return direct;
+  // Unlinked tokens have a transient synthetic Actor; the durable copy lives
+  // on the TokenDocument.
+  return actor?.token?.getFlag?.(ID, SUMMON_FLAG) ?? null;
 }
 
 export function isSummon(actor) {

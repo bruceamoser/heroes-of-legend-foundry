@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { validateSummonCatalogBasis } from "../scripts/content/summon-profiles.mjs";
-import { summonSystemFromRecord } from "../src/rules/summon-profile.mjs";
+import { isSummon, summonState, summonSystemFromRecord } from "../src/rules/summon-profile.mjs";
 
 const root = new URL("../", import.meta.url);
 const read = async (path) => JSON.parse(await readFile(new URL(path, root)));
@@ -43,4 +43,21 @@ test("summon profiles keep exact source hashes and creature links", () => {
     assert.equal(record.source.sha256, locked.sha256);
     assert.equal(link.creatureId, record.creatureId);
   }
+});
+
+test("summon state reads the durable flag on an unlinked token", () => {
+  const record = records.find((entry) => entry.id === "summon-adder");
+  const token = {
+    actorLink: false,
+    getFlag: (namespace, key) =>
+      namespace === "heroes-of-legend" && key === "summon" ? { record } : null,
+  };
+  const actor = {
+    isToken: true,
+    token,
+    flags: { "heroes-of-legend": {} },
+    getFlag: () => null,
+  };
+  assert.equal(isSummon(actor), true);
+  assert.equal(summonState(actor).record.id, "summon-adder");
 });

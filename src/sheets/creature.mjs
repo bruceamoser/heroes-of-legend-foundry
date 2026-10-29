@@ -242,30 +242,51 @@ export class CreatureSheet extends CharacterSheet {
   }
   static async toggleSummon() {
     const ID = "heroes-of-legend";
-    if (isSummon(this.actor)) {
-      await this.actor.unsetFlag(ID, "summon");
-      await this.render();
-      return;
+    const token =
+      this.actor.isToken && this.actor.token && !this.actor.token.actorLink
+        ? this.actor.token
+        : null;
+    const base = token ? game.actors.get(token.actorId) : this.actor;
+    const renderCurrent = async () => {
+      const current = token ? token.actor : this.actor;
+      if (current?.sheet) await current.sheet.render({ force: true });
+      else await this.render({ force: true });
+    };
+    try {
+      if (isSummon(this.actor)) {
+        if (token?.getFlag(ID, "summon"))
+          await token.unsetFlag(ID, "summon");
+        if (base?.getFlag(ID, "summon"))
+          await base.unsetFlag(ID, "summon");
+        await renderCurrent();
+        return;
+      }
+      if (!this.actor.isOwner && !game.user.isGM)
+        throw new Error("You do not own this creature.");
+      const summoning = this.actor.getFlag(ID, "summoning");
+      if (!summoning?.eligible) {
+        ui.notifications.warn("This creature has no summon profile.");
+        return;
+      }
+      const response = await fetch(`systems/${ID}/data/summons.json`);
+      if (!response.ok) throw new Error("Summon profiles are unavailable.");
+      const catalog = await response.json();
+      const catalogId = this.actor.getFlag(ID, "catalogId");
+      const record = catalog.records.find(
+        (entry) =>
+          entry.id === summoning.summonId || entry.creatureId === catalogId,
+      );
+      if (!record) throw new Error("This creature has no summon profile.");
+      await (token ?? this.actor).setFlag(ID, "summon", {
+        profileId: record.id,
+        creatureId: record.creatureId,
+        eligibility: record.eligibility,
+        record,
+      });
+      await renderCurrent();
+    } catch (error) {
+      ui.notifications.error(error.message);
     }
-    if (!this.actor.isOwner && !game.user.isGM)
-      throw new Error("You do not own this creature.");
-    const summoning = this.actor.getFlag(ID, "summoning");
-    if (!summoning?.eligible) return;
-    const response = await fetch(`systems/${ID}/data/summons.json`);
-    if (!response.ok) throw new Error("Summon profiles are unavailable.");
-    const catalog = await response.json();
-    const catalogId = this.actor.getFlag(ID, "catalogId");
-    const record = catalog.records.find(
-      (entry) => entry.id === summoning.summonId || entry.creatureId === catalogId,
-    );
-    if (!record) throw new Error("This creature has no summon profile.");
-    await this.actor.setFlag(ID, "summon", {
-      profileId: record.id,
-      creatureId: record.creatureId,
-      eligibility: record.eligibility,
-      record,
-    });
-    await this.render();
   }
 
   static async npcMelee() {

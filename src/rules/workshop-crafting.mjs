@@ -1,5 +1,11 @@
 import { refillInventory } from "./inventory.mjs";
 
+/** Only these reviewed ability/recipe pairs brew without an attribute roll. */
+export function noRollBrew(abilityId, recipe) {
+  return (abilityId === "ability-bottled-morning" && recipe.id === "recipe-lesser-healing-bottle") ||
+    (abilityId === "ability-the-cleverest-mixture" && recipe.id === "recipe-clearing-tonic");
+}
+
 export function startWorkshopCraft(play, recipe) {
   const next = structuredClone(play);
   next.crafting ??= {};
@@ -23,11 +29,13 @@ export function workshopCraft({
   play,
   recipe,
   tier,
+  abilityId,
   items,
   instanceId,
   supplyId,
 }) {
-  const steps = { weak: 1, standard: 2, strong: 3 }[tier];
+  const automatic = noRollBrew(abilityId, recipe);
+  const steps = automatic ? 1 : { weak: 1, standard: 2, strong: 3 }[tier];
   if (!steps) throw new Error("Choose a crafting outcome.");
   const next = structuredClone(play);
   next.crafting ??= {};

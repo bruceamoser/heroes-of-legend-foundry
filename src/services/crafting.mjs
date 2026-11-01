@@ -6,7 +6,7 @@ import { loadCatalogs } from "./catalog.mjs";
 import { enqueueCharacterOperation, isCreationAuthority, writeAuthorityDocument } from "./authority.mjs";
 import { validateCreationChanges } from "./creation.mjs";
 import { equipmentItemSource } from "../rules/item-construction.mjs";
-import { startWorkshopCraft, workshopCraft } from "../rules/workshop-crafting.mjs";
+import { startWorkshopCraft, workshopCraft, noRollBrew } from "../rules/workshop-crafting.mjs";
 import { rollBasis, prepareRoll } from "./roll-preparation.mjs";
 import { evaluatePreparedRoll } from "./roll.mjs";
 import { effectiveRollDraft, situationalRollDraft } from "../rules/situational-adjustment.mjs";
@@ -28,6 +28,7 @@ export function nativeCraftingRecipes(actor, catalogs) {
       const attribute = record?.reference?.rules.details.find(d => d.label === "Attribute")?.value?.toLowerCase();
       return actor.system.attributes[attribute] ? [{ id, name: record.name, attribute }] : [];
     }),
+    noRoll: recipe.permissions.some(id => learned.has(id) && noRollBrew(id, recipe)),
     project: actor.getFlag(ID, "craftingState")?.[recipe.id] ?? null,
   }));
 }
@@ -109,6 +110,11 @@ async function applyCrafting(messageId) {
     const basis = rollBasis(actor, attribute);
     const base = prepareRoll(basis, situationalRollDraft());
     const draft = { ...situationalRollDraft(), ...effectiveRollDraft(base, request.adjustment, true) };
+    if (noRollBrew(ability.id, recipe) && !pending) {
+      result = { automatic: true };
+      pending = { requestId: operationId, request: structuredClone(request), authorId: message.author.id, status: "rolled", result, roll: null };
+      await writeAuthorityDocument(actor, { [`flags.${ID}.pendingCrafting`]: pending });
+    }
     if (recovery) {
       const plan = pending.plan;
       if (!plan) throw new Error("The saved roll plan is unavailable; reconcile this attempt with the DA.");
@@ -142,10 +148,10 @@ async function applyCrafting(messageId) {
       }
     }
     const inventory = actor.items.filter(i => i.type === "equipment").map(i => ({ instanceId: i.id, catalogId: i.system.catalogId, quantity: i.system.quantity, inventoryDie: i.system.inventoryDie }));
-    const attempt = workshopCraft({ play, recipe, tier: result.tier, items: inventory, instanceId: foundry.utils.randomID(), supplyId: request.supplyId || "" });
+    const attempt = workshopCraft({ play, recipe, tier: result.tier, abilityId: ability.id, items: inventory, instanceId: foundry.utils.randomID(), supplyId: request.supplyId || "" });
     play = attempt.play;
     if (pending.material?.phase === "rolled") play.inventory.overrides[pending.material.itemId] = {inventoryDie:pending.material.after};
-    summary = `${recipe.name} · ${result.tier} (${result.total}) · ${attempt.message}${pending.material ? ` · Material d${pending.material.before}: ${pending.material.retained} → ${pending.material.after ? "d"+pending.material.after : "Empty"}` : ""}`;
+    summary = `${recipe.name} · ${result.automatic ? "Brew without a roll" : `${result.tier} (${result.total})`} · ${attempt.message}${pending.material ? ` · Material d${pending.material.before}: ${pending.material.retained} → ${pending.material.after ? "d"+pending.material.after : "Empty"}` : ""}`;
   } else throw new Error("Unknown crafting operation.");
   const items = actor.toObject().items;
   for (const added of play.inventory.added) {

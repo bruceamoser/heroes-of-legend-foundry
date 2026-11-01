@@ -36,7 +36,7 @@ test("treatment reaching the printed value clears only this wound's effects and 
   assert.equal(woundTreatmentPlan(basis, 1).complete, false);
   const result = woundTreatmentPlan(basis, 2);
   assert.equal(result.complete, true); assert.equal(result.wound.id, "scar");
-  assert.deepEqual(result.removeEffectIds, ["move", "star", "temp"]); assert.deepEqual(result.wound.effectIds, ["other"]);
+  assert.deepEqual(result.removeEffectIds, ["move", "star"]); assert.deepEqual(result.wound.effectIds, ["temp", "other"]);
   assert.equal(basis.wound.recoveryProgress, 1);
   assert.throws(() => woundTreatmentPlan({ ...basis, wound: { recoveryValue: null } }, 1), /no treatment track/);
 });

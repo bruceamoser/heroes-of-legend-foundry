@@ -131,7 +131,7 @@ try {
     .selectOption("Abilities");
   await page.getByLabel("Find rules", { exact: true }).fill("Hook and Drive");
   await page.locator('[data-entry="ability-hook-and-drive"]').click();
-  assert.match(await page.locator(".journal-page").innerText(), /pull 1/);
+  assert.match(await page.locator(".journal-page").innerText(), /5 physical damage, Slowed 2 and Prone\./);
   assert.equal(
     await page.locator('.journal-page a[href*="github"]').count(),
     0,

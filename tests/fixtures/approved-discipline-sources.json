@@ -1,0 +1,1491 @@
+{
+  "sourceCommit": "25b80c9fe77d7baaec3f3a8a548c9663d0f39a30",
+  "approval": "Bruce approved full catalog November 1, 2026; 297 discipline cards from production source-application manifest.",
+  "records": [
+    {
+      "id": "ability-blood-in-the-teeth",
+      "path": "design/cards/blood-in-the-teeth.md",
+      "sha256": "80fab9cb0d4c16607e968a962cdcd7782aadeb8fd96b509176cb2283e348722b"
+    },
+    {
+      "id": "ability-hook-and-drive",
+      "path": "design/cards/hook-and-drive.md",
+      "sha256": "d061be03d1b0b450f1ef0e0c140085b9f52ae2f223782eef87c8f60e0bf9f772"
+    },
+    {
+      "id": "ability-invitation-to-the-blade",
+      "path": "design/cards/invitation-to-the-blade.md",
+      "sha256": "7af6a3efb19d8ea2a953732632ea97e0a4f50cc9eeaaaed139a0951e6eb5e3a7"
+    },
+    {
+      "id": "ability-smile-before-steel",
+      "path": "design/cards/smile-before-steel.md",
+      "sha256": "2e7bccf5de29994bc2b2e3c11625cf2bb3d41d637595f68dbec0d2d5a489f2d4"
+    },
+    {
+      "id": "ability-steel-at-the-wrist",
+      "path": "design/cards/steel-at-the-wrist.md",
+      "sha256": "c263759c45b45268f57d5dfe2031da9967b89af97314639abbda060694ebc52c"
+    },
+    {
+      "id": "ability-take-them-alive",
+      "path": "design/cards/take-them-alive.md",
+      "sha256": "60972c9c7b1f7c46618856c76b4f119d0bf8f22fb9bfb468e93753951956c6fd"
+    },
+    {
+      "id": "ability-bind-and-turn",
+      "path": "design/cards/bind-and-turn.md",
+      "sha256": "c7c5ba44af3b7066cb966f3e6d3d76b3510fb033ebc0e2f5793a060f8c5e53b8"
+    },
+    {
+      "id": "ability-break-the-formation",
+      "path": "design/cards/break-the-formation.md",
+      "sha256": "785076b96189371d8988f688974a336a9930f3501f2fcb4fb9297814d27210e6"
+    },
+    {
+      "id": "ability-through-the-spearpoints",
+      "path": "design/cards/through-the-spearpoints.md",
+      "sha256": "ee0d91d152a5abad913611d2679955ce21560a79a12971611ba1702211a6853e"
+    },
+    {
+      "id": "ability-under-their-guard",
+      "path": "design/cards/under-their-guard.md",
+      "sha256": "ecb73dfec6381ac931ed2a6ccc6b02e3bd9c6f0a5a5c0c00d392b47da3425c25"
+    },
+    {
+      "id": "ability-bow-to-the-balcony",
+      "path": "design/cards/bow-to-the-balcony.md",
+      "sha256": "e02cc90f461f74447e5946ca0ecc0cc0bc2d604c65d859c3993dce69428ec530"
+    },
+    {
+      "id": "ability-break-the-charge",
+      "path": "design/cards/break-the-charge.md",
+      "sha256": "4f2b9843254b0735e8b83365239eae27000eff1da5f096a9b5c32104a5584068"
+    },
+    {
+      "id": "ability-hurl-aside",
+      "path": "design/cards/hurl-aside.md",
+      "sha256": "cb12b0b4fd26b6842f5ee68233d6ce53a7419684b4ae9aa0e2788c17f2a78fc1"
+    },
+    {
+      "id": "ability-write-the-final-line",
+      "path": "design/cards/write-the-final-line.md",
+      "sha256": "475a00de934a85df21d8bd1cd646007b31a8a0fb5486a08604ec5929c2436e4a"
+    },
+    {
+      "id": "ability-a-friend-beneath-the-door",
+      "path": "design/cards/a-friend-beneath-the-door.md",
+      "sha256": "58c4d5e29dbefffdd4b5b8a7d2a5b0c24430bccad66321add067d94a7a9c704f"
+    },
+    {
+      "id": "ability-call-a-burrower",
+      "path": "design/cards/call-a-burrower.md",
+      "sha256": "474eb60e768efb6677c16ecdfa608a79295022d074eae5df07e1e30c1c898675"
+    },
+    {
+      "id": "ability-call-a-sentinel",
+      "path": "design/cards/call-a-sentinel.md",
+      "sha256": "21057aa9e602b652d58783f9435f5dfb6bfa576a6ee04923a5d78fda1a0a4ca5"
+    },
+    {
+      "id": "ability-call-a-tempest-beast",
+      "path": "design/cards/call-a-tempest-beast.md",
+      "sha256": "28af85a185997080d8f25134d58f9b9d2845d52a93c9b68134b7632bbea45ca3"
+    },
+    {
+      "id": "ability-call-the-elder-stag",
+      "path": "design/cards/call-the-elder-stag.md",
+      "sha256": "e813483f095a402bd31038f573c7d9957fe9173362f0ecf1d552bfc41fee9982"
+    },
+    {
+      "id": "ability-call-the-faithful-hound",
+      "path": "design/cards/call-the-faithful-hound.md",
+      "sha256": "c2bae217edb53f7d24964b0a232c1b1e0c04ac328caf04c310c064a1e48ef29d"
+    },
+    {
+      "id": "ability-call-the-hunting-cat",
+      "path": "design/cards/call-the-hunting-cat.md",
+      "sha256": "463b0ed0c1fa7f1d65cda7ebf212bbf1635360e63b62cbcfa5b31e7651aef747"
+    },
+    {
+      "id": "ability-procession-of-the-quiet",
+      "path": "design/cards/procession-of-the-quiet.md",
+      "sha256": "f8c3a6ef552ccbacc824e8178cc869a592f082c0501e012e9e0f3fa178adb521"
+    },
+    {
+      "id": "ability-summon-construct-master",
+      "path": "design/cards/summon-construct-master.md",
+      "sha256": "be43517247c6fbc7633b7a0a45ca614d180427e43aedc707177c41958253e003"
+    },
+    {
+      "id": "ability-summon-construct-novice",
+      "path": "design/cards/summon-construct-novice.md",
+      "sha256": "cc7522154e874f05ada89166db178ba2d36c57413f36ac8bdcad6e0fc5b3c3b1"
+    },
+    {
+      "id": "ability-summon-elemental-adept",
+      "path": "design/cards/summon-elemental-adept.md",
+      "sha256": "3d1dab66362f3bb7aecbea1e38429000cd0ebac638210a9b3c6257c9be3cd4f7"
+    },
+    {
+      "id": "ability-summon-elemental-novice",
+      "path": "design/cards/summon-elemental-novice.md",
+      "sha256": "d8005da56ce1c6aae3de126366ba8a134f5ab00eb36899d2d6270ecf1e9b1dc1"
+    },
+    {
+      "id": "ability-summon-fey-adept",
+      "path": "design/cards/summon-fey-adept.md",
+      "sha256": "359f1c700be3704f80869bf44caa47a5b384c90b7bb63226be27f9b1fa3d4678"
+    },
+    {
+      "id": "ability-summon-fey-master",
+      "path": "design/cards/summon-fey-master.md",
+      "sha256": "a71c5572910fe572a199029a69ec4d5a850e90d9cea6e44ade4953f2ec5de212"
+    },
+    {
+      "id": "ability-summon-undead-adept",
+      "path": "design/cards/summon-undead-adept.md",
+      "sha256": "5954ae144bdfc0486777c61cb06458a073b11c1291577e773b25264090d73696"
+    },
+    {
+      "id": "ability-the-ancestors-stand",
+      "path": "design/cards/the-ancestors-stand.md",
+      "sha256": "f03e91dfc2d23dde2e2f2ba755deb96b4b22e89ef764fa10272f41a41d4d6a90"
+    },
+    {
+      "id": "ability-the-bones-rise",
+      "path": "design/cards/the-bones-rise.md",
+      "sha256": "336b421f7445d3dba8b10d3cb72186361b15760fdfaf708f322cf234e8a7c06a"
+    },
+    {
+      "id": "ability-the-walking-toolbox",
+      "path": "design/cards/the-walking-toolbox.md",
+      "sha256": "d78f9399a4e3dccb413ae17645a1952062807f9049daddad66a43622ad0f4610"
+    },
+    {
+      "id": "ability-a-hand-from-before",
+      "path": "design/cards/a-hand-from-before.md",
+      "sha256": "7cf604b2085a0e91aa6c1de6493a99bc4bfd90efb88b7775e71bebcbf1955b2d"
+    },
+    {
+      "id": "ability-draw-the-tether",
+      "path": "design/cards/draw-the-tether.md",
+      "sha256": "7c05775336126b86590226ac951634d8b97a29fc5bbbee919fdc4083fb3082cb"
+    },
+    {
+      "id": "ability-a-ribcage-for-a-shield",
+      "path": "design/cards/a-ribcage-for-a-shield.md",
+      "sha256": "bd98e6725f6eede8324b9956945973d2ff6ffa1f1e46d7145d3cb28bb72e27c9"
+    },
+    {
+      "id": "ability-recast-the-footprint",
+      "path": "design/cards/recast-the-footprint.md",
+      "sha256": "fa6b0c576719a1e7c14ec3baceea43a280a55bf648256c28f8db29d32f9bbb94"
+    },
+    {
+      "id": "ability-doors-for-the-host",
+      "path": "design/cards/doors-for-the-host.md",
+      "sha256": "99c63e1a03bc5409f28354d93f356eaa7332f18ac20cb1f28f11e8b3897e3752"
+    },
+    {
+      "id": "ability-recall-the-shape",
+      "path": "design/cards/recall-the-shape.md",
+      "sha256": "1d3b7f94ebf329f04dee0a387a1963781fa2303b2846775024170da8c8e3feed"
+    },
+    {
+      "id": "ability-catch-the-mechanism",
+      "path": "design/cards/catch-the-mechanism.md",
+      "sha256": "87820ce2266df81da20d35cee15b1ee973cbbcc8454a1e838b88ed946b1f7f57"
+    },
+    {
+      "id": "ability-set-the-wedge",
+      "path": "design/cards/set-the-wedge.md",
+      "sha256": "0516e1be2b898f3c7a1c95ae2491c55a2213b1f0580e9f817b298dc19c45c2fc"
+    },
+    {
+      "id": "ability-spring-in-the-sleeve",
+      "path": "design/cards/spring-in-the-sleeve.md",
+      "sha256": "cc9ac698bb04221cb3aa72dcb299902ae1a7aacaee193170befce310d105afd2"
+    },
+    {
+      "id": "ability-smoke-in-a-bottle",
+      "path": "design/cards/smoke-in-a-bottle.md",
+      "sha256": "91600100d2cc2de15df640d1cddf32dcb05759fdabf26114fca79b5942e34bca"
+    },
+    {
+      "id": "ability-trail-workshop",
+      "path": "design/cards/trail-workshop.md",
+      "sha256": "51a77a8c96e50bd4ea58a2afb6902e352a57d24e1603c2bf4c305d1bbc678b3c"
+    },
+    {
+      "id": "ability-make-something-useful",
+      "path": "design/cards/make-something-useful.md",
+      "sha256": "19d2e162057b97dbb0504cbecd0f04f1a51f64243df25b385a6f39f9ce11bceb"
+    },
+    {
+      "id": "ability-ordinary-recipe-study",
+      "path": "design/cards/ordinary-recipe-study.md",
+      "sha256": "78bfd6859d5529ead25f286de159b10a7d8434915ed089833c61071b6691bbf3"
+    },
+    {
+      "id": "ability-derive-a-mechanism",
+      "path": "design/cards/derive-a-mechanism.md",
+      "sha256": "efa05aa79664f0186de3a0d6aad050f06ba4ec636ee81832182bf9714b69491b"
+    },
+    {
+      "id": "ability-enchanting-workshop",
+      "path": "design/cards/enchanting-workshop.md",
+      "sha256": "3f3423064cf33bbd413c708a68fcccf18ba6dcf30e67044d8c7334f1e11032fc"
+    },
+    {
+      "id": "ability-a-courtesy-unanswered",
+      "path": "design/cards/a-courtesy-unanswered.md",
+      "sha256": "6aad7ab80b6b8333a1825793fcf6de99f87a6b9d0becff065e9d70015932f1cc"
+    },
+    {
+      "id": "ability-borrowed-clothes-borrowed-manners",
+      "path": "design/cards/borrowed-clothes-borrowed-manners.md",
+      "sha256": "eb7bcf9b622b52d50f3a3bb63fe6ab3bb6b14277b35a587d3192f8cb63dbb008"
+    },
+    {
+      "id": "ability-create-a-distraction",
+      "path": "design/cards/create-a-distraction.md",
+      "sha256": "1199fbf6b237aa980c249ecbd472803f8334220e5614dfd7273bb30d835645e9"
+    },
+    {
+      "id": "ability-play-it-off",
+      "path": "design/cards/play-it-off.md",
+      "sha256": "3a2b6168123a3c4a5f70ca1ad7d27cb122ca48ef7cda67ab9d0713c326701a7f"
+    },
+    {
+      "id": "ability-quiet-latch",
+      "path": "design/cards/quiet-latch.md",
+      "sha256": "e10c2502381b71eceea61a3615138ed2313c7a1c26922480334d767cccdaae36"
+    },
+    {
+      "id": "ability-step-between-lanterns",
+      "path": "design/cards/step-between-lanterns.md",
+      "sha256": "be73544c810cf946e0fc4d33e2c34c8642d4eeaed48a57f10df9471e206025f5"
+    },
+    {
+      "id": "ability-the-key-changes-hands",
+      "path": "design/cards/the-key-changes-hands.md",
+      "sha256": "d28a76fd8320c3efee3c483806ad5be8c1537deeb507d3e48f180807d7645e5e"
+    },
+    {
+      "id": "ability-a-lock-has-a-language",
+      "path": "design/cards/a-lock-has-a-language.md",
+      "sha256": "e5481b8475d9f1ee291cf5eab407116db151c929dd5c7a599927b90d3216d89f"
+    },
+    {
+      "id": "ability-silence-the-alarm",
+      "path": "design/cards/silence-the-alarm.md",
+      "sha256": "faf056051a11c274b4c95ef8a153d6f01047109c89c9e2b18c8bf0ba49d0efc6"
+    },
+    {
+      "id": "ability-slip-the-closing-door",
+      "path": "design/cards/slip-the-closing-door.md",
+      "sha256": "f001040b9b6a66ba3d6e8a94af390d4c683b2cca755aa79c5600c3faefc98ef7"
+    },
+    {
+      "id": "ability-the-unlit-road",
+      "path": "design/cards/the-unlit-road.md",
+      "sha256": "175fa1108529fd8d98f16b668ab016df9bc9dd37296551929b9d12720ba825cb"
+    },
+    {
+      "id": "ability-veiled-crossing",
+      "path": "design/cards/veiled-crossing.md",
+      "sha256": "fffaa6945a8c0919ec82809b87182867ff47157c634778f2f51b1855fe6ec321"
+    },
+    {
+      "id": "ability-a-shadow-at-the-heart",
+      "path": "design/cards/a-shadow-at-the-heart.md",
+      "sha256": "214642b6de5db13bc99f2c75ac1b33b84b99ce306831ec5a4529a8cd7712914d"
+    },
+    {
+      "id": "ability-an-impossible-theft",
+      "path": "design/cards/an-impossible-theft.md",
+      "sha256": "86a969b9a59e2c4628ec663400fb87f444ec254f6875391ccd2be2e033fd4a56"
+    },
+    {
+      "id": "ability-borrow-the-shadow",
+      "path": "design/cards/borrow-the-shadow.md",
+      "sha256": "c9b4140a18ca3de3ef7099679dfa958aaacab23564c8afbd89c1152ab92e9075"
+    },
+    {
+      "id": "ability-no-footfall-at-all",
+      "path": "design/cards/no-footfall-at-all.md",
+      "sha256": "f3e8731b07b96b6ada493ec71cd700eb8c0d0c8ccd6f3826286c43c8d0fe7cfa"
+    },
+    {
+      "id": "ability-the-city-opens-its-doors",
+      "path": "design/cards/the-city-opens-its-doors.md",
+      "sha256": "8e6655055710ffdf345f623e834e0218babf979b8bba344b88e3e0dfce516d53"
+    },
+    {
+      "id": "ability-a-coal-for-a-promise",
+      "path": "design/cards/a-coal-for-a-promise.md",
+      "sha256": "f0df3ae262f06bed56367a1adc6fedd3e93ddcb67e63e971c5adfaf0678bde47"
+    },
+    {
+      "id": "ability-cinder-cast",
+      "path": "design/cards/cinder-cast.md",
+      "sha256": "2d021235751eefd9f915971929854c97bd894bae1c77fe74b1eadf73217290fa"
+    },
+    {
+      "id": "ability-breath-of-the-wyrmling",
+      "path": "design/cards/breath-of-the-wyrmling.md",
+      "sha256": "74744073f8a7063b72bce648d3e6af36c11e177f9b19c7d10642935ec2b8f1bb"
+    },
+    {
+      "id": "ability-let-the-spark-decide",
+      "path": "design/cards/let-the-spark-decide.md",
+      "sha256": "496f9f3271c7b7396a2c8aed55b1fd8b2bcb9d555b85dd1f19ab2ed4283ee16b"
+    },
+    {
+      "id": "ability-bank-the-embers",
+      "path": "design/cards/bank-the-embers.md",
+      "sha256": "1ef5a6537360dff25d009c9b123467a15e3ebe888a0a76bc734280357c5b4765"
+    },
+    {
+      "id": "ability-cup-the-flame",
+      "path": "design/cards/cup-the-flame.md",
+      "sha256": "34111a2cdd06f17ebe0b187574df63810afe8463639805feffb0b9332bf2f7a4"
+    },
+    {
+      "id": "ability-speak-with-the-hearth",
+      "path": "design/cards/speak-with-the-hearth.md",
+      "sha256": "d2c813ff2fba4371e0eb7fa989a673aa90ea9b90a269177a6dc44617d42d9a4d"
+    },
+    {
+      "id": "ability-borrow-tomorrow-s-weather",
+      "path": "design/cards/borrow-tomorrow-s-weather.md",
+      "sha256": "e50de6d79910dac53b1f928a2f00c49f9a32711cc89fe9db4d94f71a755fd224"
+    },
+    {
+      "id": "ability-furnace-sweep",
+      "path": "design/cards/furnace-sweep.md",
+      "sha256": "4cdb97841b85685e033bf4da3da6f0329c7cf9f8477b7ee29ec543714b62cd65"
+    },
+    {
+      "id": "ability-smoke-through-the-keyhole",
+      "path": "design/cards/smoke-through-the-keyhole.md",
+      "sha256": "2181897cef52b6e8a1d04c3f59419524e6b5cffd94358d9b6a32b8a85c52d744"
+    },
+    {
+      "id": "ability-step-through-the-spark",
+      "path": "design/cards/step-through-the-spark.md",
+      "sha256": "5d1b6df941f309e27a789e8f64b8f2dd3c867ac5ae67bc12477641e28b5cf87a"
+    },
+    {
+      "id": "ability-the-debt-comes-due",
+      "path": "design/cards/the-debt-comes-due.md",
+      "sha256": "eb36a2f1f25371f76ef7da366642908c0810d3fa41ca636df09a17c160e0dbaf"
+    },
+    {
+      "id": "ability-a-splendid-mistake",
+      "path": "design/cards/a-splendid-mistake.md",
+      "sha256": "a36bd228861f258340d2e343fb98f6a17e48532a6c1bbb563f099c0b112313da"
+    },
+    {
+      "id": "ability-open-the-furnace-door",
+      "path": "design/cards/open-the-furnace-door.md",
+      "sha256": "f75ebd1a5b211de70087308afc1b6680c764ed76c5b10f8d4efb80cc42801f74"
+    },
+    {
+      "id": "ability-white-heat",
+      "path": "design/cards/white-heat.md",
+      "sha256": "b31f55525a588d8066ddacbcce3e166f0252ef59f5138935dd5a245a51658200"
+    },
+    {
+      "id": "ability-ride-the-furnace-breath",
+      "path": "design/cards/ride-the-furnace-breath.md",
+      "sha256": "1cfb172aff4be1b73d7bfdb0b6fc7dcdd2ddbdfe3cac1fc72e5a793f76a9216e"
+    },
+    {
+      "id": "ability-wings-over-the-battle",
+      "path": "design/cards/wings-over-the-battle.md",
+      "sha256": "53c2abfbaa5e6e6ce5b34230e3f83e357a951ea40188d136900e9348240aab69"
+    },
+    {
+      "id": "ability-breath-of-white",
+      "path": "design/cards/breath-of-white.md",
+      "sha256": "c58c8fac4461419b5858ffd766690e1a721cb9cfb90da5ace4887bac063700c3"
+    },
+    {
+      "id": "ability-rime-grip",
+      "path": "design/cards/rime-grip.md",
+      "sha256": "a139c508bcde230b5120bfb9f767008d9174d7ef1fb2974165b97e18de422463"
+    },
+    {
+      "id": "ability-cold-cuirass",
+      "path": "design/cards/cold-cuirass.md",
+      "sha256": "76c89db9ec4c54cbc37a1b8276a2b0dd0681cba8fbddda900c50fbc92631c96a"
+    },
+    {
+      "id": "ability-rime-footholds",
+      "path": "design/cards/rime-footholds.md",
+      "sha256": "514e185c41b367e962e631f0d3c9ba8815181a722130a323e01effa764db20e4"
+    },
+    {
+      "id": "ability-winter-store",
+      "path": "design/cards/winter-store.md",
+      "sha256": "8fa820e11e978c1925d889dea1cce3937b1a3fa155328fd2fb5584b388b27c7e"
+    },
+    {
+      "id": "ability-bridge-of-winter",
+      "path": "design/cards/bridge-of-winter.md",
+      "sha256": "e53a853bfcab3f95c35d3882161de86e811afae72b5af410385ef84648dcffd2"
+    },
+    {
+      "id": "ability-icebound-path",
+      "path": "design/cards/icebound-path.md",
+      "sha256": "7cf754c369287fc250e4371b7aedc9d3d3caf940371edb14a0d737168f74ca37"
+    },
+    {
+      "id": "ability-road-of-rime",
+      "path": "design/cards/road-of-rime.md",
+      "sha256": "482f5ccd72aaea969294778155efbf3069de673b115c86f1a74505e63f028377"
+    },
+    {
+      "id": "ability-whiteout",
+      "path": "design/cards/whiteout.md",
+      "sha256": "508ca3e077c19c20a94cfb491e5a89f810fad2e415636feb5b7adfbf6617ffe0"
+    },
+    {
+      "id": "ability-winter-hold",
+      "path": "design/cards/winter-hold.md",
+      "sha256": "0a643250ae6ef891b490322b98ed3fed45328a55a6ce2e5a80cc7b354d7aa3b8"
+    },
+    {
+      "id": "ability-forage-woodland",
+      "path": "design/cards/forage-woodland.md",
+      "sha256": "1c30ae0a1be6ba5f2deb419d3fcc6b7ba33b2eb1a6fe494929c3f5ef1e1f735c"
+    },
+    {
+      "id": "ability-forage-coast",
+      "path": "design/cards/forage-coast.md",
+      "sha256": "305e021fb4b52de52c9dfb0ac3807d2cd42d06c4309f0d70463b312cb5c93b98"
+    },
+    {
+      "id": "ability-forage-mountains",
+      "path": "design/cards/forage-mountains.md",
+      "sha256": "9f0e38b0fd956c6c40374346779085ace6569f0418f18afb24c845aaf84ed2ed"
+    },
+    {
+      "id": "ability-forage-wetlands",
+      "path": "design/cards/forage-wetlands.md",
+      "sha256": "6945505d57c7e1c75e4a439442c3b860b7a795c5225ae28e167b6751ade448c4"
+    },
+    {
+      "id": "ability-a-place-at-any-fire",
+      "path": "design/cards/a-place-at-any-fire.md",
+      "sha256": "fb1df765563248669dd15729275317986372e7ed5482218ba4807508315a7ac8"
+    },
+    {
+      "id": "ability-a-verse-for-courage",
+      "path": "design/cards/a-verse-for-courage.md",
+      "sha256": "61a9684af48497a96d118e9e78742ba62a8da397bd6e16369cc768d79625279d"
+    },
+    {
+      "id": "ability-call-their-name",
+      "path": "design/cards/call-their-name.md",
+      "sha256": "488fe8b6d3563d4861e061eadf6eec84ea1dcbbb2cef6a245b96210e91b6ba44"
+    },
+    {
+      "id": "ability-keep-time-with-steel",
+      "path": "design/cards/keep-time-with-steel.md",
+      "sha256": "c5ac8181c33c5b6d3180bc1aa7f4e739aa7ff189efef4b9a9fc9c8495e13736f"
+    },
+    {
+      "id": "ability-measured-appeal",
+      "path": "design/cards/measured-appeal.md",
+      "sha256": "fa529ab42ccce4200b40aebb86271d1c0254577d26174b45f84b017ba0f385cc"
+    },
+    {
+      "id": "ability-name-the-reckoning",
+      "path": "design/cards/name-the-reckoning.md",
+      "sha256": "d2f8cda810deb154cfb17bb08197040d7ac8f1fbaf8de850436080507ed58c99"
+    },
+    {
+      "id": "ability-the-right-small-courtesy",
+      "path": "design/cards/the-right-small-courtesy.md",
+      "sha256": "d5b49778832aa05a715a208eecd2378b6990d175489485666f8c74ced651d875"
+    },
+    {
+      "id": "ability-call-the-opening",
+      "path": "design/cards/call-the-opening.md",
+      "sha256": "0660c418450ef4ee90d191a24dc6b3a1030f96ad66eabd7e102c4e0b65a037a5"
+    },
+    {
+      "id": "ability-no-road-away",
+      "path": "design/cards/no-road-away.md",
+      "sha256": "6b60f9ade4a29873637df5487630e545ce60a7dfcca2096c2c4ba0420aaa4453"
+    },
+    {
+      "id": "ability-remember-this-name",
+      "path": "design/cards/remember-this-name.md",
+      "sha256": "e49eb90213d51571d1df3a9c47acb651565c335c779087f6ba85a86981778584"
+    },
+    {
+      "id": "ability-the-chorus-advances",
+      "path": "design/cards/the-chorus-advances.md",
+      "sha256": "a34327d48ca89029e09383dde5219f35b5daae7bd394dc361b95d9c700a78357"
+    },
+    {
+      "id": "ability-all-voices-as-one",
+      "path": "design/cards/all-voices-as-one.md",
+      "sha256": "2138f1e9c26f4fad85575015a85cb78a7360899ec0f784e31d44a571d47f8c7a"
+    },
+    {
+      "id": "ability-answer-for-what-you-did",
+      "path": "design/cards/answer-for-what-you-did.md",
+      "sha256": "87243ca791859aebc35997aa4c9f1d6ff04207a5d825e2b5b7760d70e75e58b9"
+    },
+    {
+      "id": "ability-terms-before-swords",
+      "path": "design/cards/terms-before-swords.md",
+      "sha256": "f8002b8d6b89f9fa984db8363a89cccbdafbbc36d014b118115e1b1c68282ff1"
+    },
+    {
+      "id": "ability-the-tale-will-tell-of-you",
+      "path": "design/cards/the-tale-will-tell-of-you.md",
+      "sha256": "280aaa6f2f7790457f169a6eb534c5d292591c232dd6d3eee05c75a656c73dde"
+    },
+    {
+      "id": "ability-a-common-tongue",
+      "path": "design/cards/a-common-tongue.md",
+      "sha256": "898304eb1a03f6b727338ffa17a271fe5abcab20395d199b4b214a17701c3d9b"
+    },
+    {
+      "id": "ability-a-bough-for-the-fallen",
+      "path": "design/cards/a-bough-for-the-fallen.md",
+      "sha256": "c5de4dd0cfc7f3629fc962004ab25091980163d07869c5cfa38d4fb554a3bdd5"
+    },
+    {
+      "id": "ability-a-breath-beneath-the-water",
+      "path": "design/cards/a-breath-beneath-the-water.md",
+      "sha256": "51826e412c878d3bbfca1d6742bc2326595b230c080c81e1aa4d13859a5ecd75"
+    },
+    {
+      "id": "ability-a-camp-without-a-trace",
+      "path": "design/cards/a-camp-without-a-trace.md",
+      "sha256": "327912cad78d15d2ff818af9975962ab26cb8e8f98e69d08441336137a3566d3"
+    },
+    {
+      "id": "ability-a-line-for-everyone",
+      "path": "design/cards/a-line-for-everyone.md",
+      "sha256": "efee6a38840fc0db15947910c8abdd0d4a0403e9dca67d59fa01ffdf79c32d78"
+    },
+    {
+      "id": "ability-a-roof-before-nightfall",
+      "path": "design/cards/a-roof-before-nightfall.md",
+      "sha256": "eb44c9d35fc124de0086ef05cf874d8e7c7af53479c122ca060825fadfd6ccbc"
+    },
+    {
+      "id": "ability-a-small-and-watchful-shape",
+      "path": "design/cards/a-small-and-watchful-shape.md",
+      "sha256": "d069aea5f604a8b7ac71ee61d758c700437074d08bda895333f1cc1308d974ca"
+    },
+    {
+      "id": "ability-a-word-apart",
+      "path": "design/cards/a-word-apart.md",
+      "sha256": "a406f58a788c9dab1919aab8a23ed072a3b5ce26484cb77e9f6036e8e5d4ce0e"
+    },
+    {
+      "id": "ability-borrowed-identity",
+      "path": "design/cards/borrowed-identity.md",
+      "sha256": "99b4e6f16269be68c52e5b28c44e69787b1614be1d5f163d0a00ec19d897449d"
+    },
+    {
+      "id": "ability-bottled-morning",
+      "path": "design/cards/bottled-morning.md",
+      "sha256": "cf8a9606edf0192d0781c822aad5c513f284f893b2665d493e43fae7fbe5d2e9"
+    },
+    {
+      "id": "ability-follow-my-leap",
+      "path": "design/cards/follow-my-leap.md",
+      "sha256": "3379d1e1a59a07697e329e38388afd7d28d6beb7448470ad55f84e9b8a293e22"
+    },
+    {
+      "id": "ability-ice-across-the-break",
+      "path": "design/cards/ice-across-the-break.md",
+      "sha256": "789d59465a5356a48ff4be08d43e76dd964fa70a899aa6a8a4abf412f0906c2e"
+    },
+    {
+      "id": "ability-live-in-the-mask",
+      "path": "design/cards/live-in-the-mask.md",
+      "sha256": "f304b05743e7a956992c695ab0b77ba76aeb779127b340fca081ae75995ef6f2"
+    },
+    {
+      "id": "ability-not-yet-your-name",
+      "path": "design/cards/not-yet-your-name.md",
+      "sha256": "d7f8eb37603c6cec628510d21f4e8c1fba8f0c0ba0dd75ddf3d5f7c740387216"
+    },
+    {
+      "id": "ability-pounce-of-the-red-claw",
+      "path": "design/cards/pounce-of-the-red-claw.md",
+      "sha256": "6b0294e3e59babab2644ac720e5f184e08e8d914e457280b4450580dcf7654fa"
+    },
+    {
+      "id": "ability-quiet-conference",
+      "path": "design/cards/quiet-conference.md",
+      "sha256": "189daddd41d9ca516c61ea89c9892538f35b57bbd6cd7248c4123d9dc3a50d4f"
+    },
+    {
+      "id": "ability-scales-beneath-the-skin",
+      "path": "design/cards/scales-beneath-the-skin.md",
+      "sha256": "0c047a71f341adc36841e19beb752adf77627bb65d80ed554ceb47bd7804775a"
+    },
+    {
+      "id": "ability-the-cleverest-mixture",
+      "path": "design/cards/the-cleverest-mixture.md",
+      "sha256": "62c2dd46ff78b76bff69dfab5524f6bd9c9f55a069763a4def6c558ce271e89c"
+    },
+    {
+      "id": "ability-the-grove-gives-back",
+      "path": "design/cards/the-grove-gives-back.md",
+      "sha256": "73d0afab9033f870e6d4476b262b146022cdc0718f5fe8dea8f5cf42f6c77720"
+    },
+    {
+      "id": "ability-the-hunt-ends-here",
+      "path": "design/cards/the-hunt-ends-here.md",
+      "sha256": "29f8a50ea96c3f57d0aaeee8d807a466033044da42b32dc6000dfb885222ca6f"
+    },
+    {
+      "id": "ability-undertow-answer",
+      "path": "design/cards/undertow-answer.md",
+      "sha256": "78aee0a38fbf25585a63e56fd09185790bc6bc184264eb8f6f34b69ea0611afe"
+    },
+    {
+      "id": "ability-wake-the-nerves",
+      "path": "design/cards/wake-the-nerves.md",
+      "sha256": "19c435b810ad7d855dde98ca32df9c2400dbaa344b41ea1b7083d99692975992"
+    },
+    {
+      "id": "ability-a-company-of-reflections",
+      "path": "design/cards/a-company-of-reflections.md",
+      "sha256": "64315782cb14c953a23ac34d91ce2164a0dd0da1a2d26e91da0617a140e6f6ad"
+    },
+    {
+      "id": "ability-a-marvel-on-wheels",
+      "path": "design/cards/a-marvel-on-wheels.md",
+      "sha256": "7f4d7f71108e26023adfe2d498db6138a7517fd8b78907e0adff0b0b0aa1f2f0"
+    },
+    {
+      "id": "ability-a-sword-made-of-dawn",
+      "path": "design/cards/a-sword-made-of-dawn.md",
+      "sha256": "c263ed5954077f404b3bf71132d4e8c495e0794e4ed4483f510c59bee3a8f036"
+    },
+    {
+      "id": "ability-a-voice-across-the-valley",
+      "path": "design/cards/a-voice-across-the-valley.md",
+      "sha256": "856c3625fbceb11c43370852fe90b348abbee25ba2b528fa474f615fb3a32028"
+    },
+    {
+      "id": "ability-arrive-under-guard",
+      "path": "design/cards/arrive-under-guard.md",
+      "sha256": "3bf109491eac65856eb2c73e20323c432171999301e4b8f6ff291c0adf17e26f"
+    },
+    {
+      "id": "ability-breakaway-rig",
+      "path": "design/cards/breakaway-rig.md",
+      "sha256": "93603187f3a9953a44fce0ad1f5cd754329bdc965a1b436af8e057dd52153254"
+    },
+    {
+      "id": "ability-cast-through-the-reflection",
+      "path": "design/cards/cast-through-the-reflection.md",
+      "sha256": "018836d0a42465559359b8305395043ddf910d24649699b3a1309a6986d89943"
+    },
+    {
+      "id": "ability-circle-of-old-names",
+      "path": "design/cards/circle-of-old-names.md",
+      "sha256": "17a7009227853a96fcddfccdeccac66f9b192ea7d2b4e00281f006f1133a5ede"
+    },
+    {
+      "id": "ability-draw-the-current",
+      "path": "design/cards/draw-the-current.md",
+      "sha256": "264d7eb59dde8d03555bbe379b63dd61730d8645bea206dbd236eacd385a10c0"
+    },
+    {
+      "id": "ability-ember-along-the-edge",
+      "path": "design/cards/ember-along-the-edge.md",
+      "sha256": "9c6c0c4822b473f5a8f2c24f974920b7f4bae88c4a95344be82c682ef8347e98"
+    },
+    {
+      "id": "ability-four-winds-at-once",
+      "path": "design/cards/four-winds-at-once.md",
+      "sha256": "762f11ab3bb0ef5b195326d223dc8128862576be848fd2f7720e8dc4d988a8cb"
+    },
+    {
+      "id": "ability-haul-them-home",
+      "path": "design/cards/haul-them-home.md",
+      "sha256": "e65d0aa7289b59250f8ef5dd576e864a33bf69658982cd5103d7305c9ec006e4"
+    },
+    {
+      "id": "ability-hook-with-the-shield",
+      "path": "design/cards/hook-with-the-shield.md",
+      "sha256": "fbffac32ef1b7dfb538b038bd7786aa0897f88eada337b77102a767f85943b17"
+    },
+    {
+      "id": "ability-ironbound-advance",
+      "path": "design/cards/ironbound-advance.md",
+      "sha256": "c3cd7c0dcd515d07013ffefb0ff486ae73c8c7dbff39c917cc37204426f66c88"
+    },
+    {
+      "id": "ability-read-the-maker-s-hand",
+      "path": "design/cards/read-the-maker-s-hand.md",
+      "sha256": "8d98caa0522b0d0dacb10e95d3ce62d46f54226593db713e7399f6f0302501bd"
+    },
+    {
+      "id": "ability-sell-the-feint",
+      "path": "design/cards/sell-the-feint.md",
+      "sha256": "dd21022d72e5a781a8c8803dc92a9a4ba805eccc064a6e84d32cb15dc582b375"
+    },
+    {
+      "id": "ability-shatterguard",
+      "path": "design/cards/shatterguard.md",
+      "sha256": "17bf54c6d7669f98d671c2909c5fbd019dc32539f240fc6ab0faaf5d7cf9e9ed"
+    },
+    {
+      "id": "ability-snare-the-missile",
+      "path": "design/cards/snare-the-missile.md",
+      "sha256": "c91722d584ff57945c116367ddc98134b6cc8360e7a9b46a97d95648073b5a99"
+    },
+    {
+      "id": "ability-still-the-avalanche",
+      "path": "design/cards/still-the-avalanche.md",
+      "sha256": "5ec6c512bf1742aa536510b338899feb50645c4c97ca69a84a4072b6dcddbe7a"
+    },
+    {
+      "id": "ability-storm-on-a-string",
+      "path": "design/cards/storm-on-a-string.md",
+      "sha256": "919547bd4c91feae16f8656cbb6c48f1fcd3ced0d13b046ff5d85fdcc060db8f"
+    },
+    {
+      "id": "ability-the-wind-makes-room",
+      "path": "design/cards/the-wind-makes-room.md",
+      "sha256": "d74530749c62cf1a450426a93ec524d9c404d450240243c374caa7ebc4fbde7e"
+    },
+    {
+      "id": "ability-turn-the-fall",
+      "path": "design/cards/turn-the-fall.md",
+      "sha256": "066f134db7c35c85e458f306a43ffb15d880a70ecb87343f1511b20acf26d4b5"
+    },
+    {
+      "id": "ability-wind-the-sight",
+      "path": "design/cards/wind-the-sight.md",
+      "sha256": "6d245ccd29456af34399284e3f9006b080f17a70a5c51cd63adb347437d72fe1"
+    },
+    {
+      "id": "ability-wear-light-armor",
+      "path": "design/cards/wear-light-armor.md",
+      "sha256": "088eb8fb1130c9e715d950805919047c65535a1e1c49166c6b123bf6eabdc91e"
+    },
+    {
+      "id": "ability-wear-medium-armor",
+      "path": "design/cards/wear-medium-armor.md",
+      "sha256": "b3e1c4630f93f688d85f09ac5eb3de27176aad245db74b9c1a6d0f5b653b65c1"
+    },
+    {
+      "id": "ability-wear-heavy-armor",
+      "path": "design/cards/wear-heavy-armor.md",
+      "sha256": "8fd78167e224dce43bc6e37bf5e8a816e6209ff6c04f1fc53c247d4499b87b34"
+    },
+    {
+      "id": "ability-braced-harness",
+      "path": "design/cards/braced-harness.md",
+      "sha256": "76be886afb1e65daab4dc7ed33789358773d674b9ebd2fe53a498edd01974e8e"
+    },
+    {
+      "id": "ability-wake-the-iron-rune",
+      "path": "design/cards/wake-the-iron-rune.md",
+      "sha256": "70c931051466bbf43b16edef1073fe2bb7d2cd8f43d91e4ab2ec75098d14e4b1"
+    },
+    {
+      "id": "ability-armored-recovery",
+      "path": "design/cards/armored-recovery.md",
+      "sha256": "044d0ee0be3fcd62953b4da3ae0702852cd4d200606326f829ffb48d5dbd740b"
+    },
+    {
+      "id": "ability-stone-on-your-shoulders",
+      "path": "design/cards/stone-on-your-shoulders.md",
+      "sha256": "cbd86211869e32afb8d3548ee46786fa6a04873855dbff1870d84f320989c323"
+    },
+    {
+      "id": "ability-weight-of-iron",
+      "path": "design/cards/weight-of-iron.md",
+      "sha256": "1c470261c5bc2a5fee6f6627b1369e140883cc586bedc3b4c5bc91b971360098"
+    },
+    {
+      "id": "ability-stride-of-the-giant",
+      "path": "design/cards/stride-of-the-giant.md",
+      "sha256": "807ec6b7e3048a4f9a1ec3af10d0fc0b5021a07291da526016221c6d27b1829f"
+    },
+    {
+      "id": "ability-a-sign-against-harm",
+      "path": "design/cards/a-sign-against-harm.md",
+      "sha256": "74265a68ac321d024d34f0fd19b655b9b0c1614846ca0c966158444986ae2fae"
+    },
+    {
+      "id": "ability-rim-strike",
+      "path": "design/cards/rim-strike.md",
+      "sha256": "a560490eac1ff5da4a65bb00107d9099cca6d9bfefb29b3e08f444844261d807"
+    },
+    {
+      "id": "ability-shielded-advance",
+      "path": "design/cards/shielded-advance.md",
+      "sha256": "c5dd3425a7d9a27fa397fb7cccb896c548746e9be948c87f5c161996ac143b84"
+    },
+    {
+      "id": "ability-shielding-step",
+      "path": "design/cards/shielding-step.md",
+      "sha256": "df2b6d97c0e6e063a049c7b0eaf6dcbf4630f23a44896d42dfcd5b9365813e3e"
+    },
+    {
+      "id": "ability-hold-the-passage",
+      "path": "design/cards/hold-the-passage.md",
+      "sha256": "9e4eef14937c0435d81027a5ff8849c65415213f4bab5db9cb62d723a73470fd"
+    },
+    {
+      "id": "ability-unravel-the-bolt",
+      "path": "design/cards/unravel-the-bolt.md",
+      "sha256": "168da5ceb48f1407400a943f33f07e618095e615498f1b6b13f85322ed0fb7a2"
+    },
+    {
+      "id": "ability-carry-to-safety",
+      "path": "design/cards/carry-to-safety.md",
+      "sha256": "aef25249ab47205b78480b6482d29d643eb8ed17ecd5777853fa283654847f43"
+    },
+    {
+      "id": "ability-high-guard",
+      "path": "design/cards/high-guard.md",
+      "sha256": "26797506110ac809f89b97aa11617766fe883ebe416c6b63346574819e706418"
+    },
+    {
+      "id": "ability-shield-roof",
+      "path": "design/cards/shield-roof.md",
+      "sha256": "dc9948382236b2769492de08de1209deb8d2297878618cd144118b8b3868437c"
+    },
+    {
+      "id": "ability-the-circle-holds",
+      "path": "design/cards/the-circle-holds.md",
+      "sha256": "74bd0ef7ca6cdc01047282719a8cd3137d5d706e5d1c106fe94db42af2dcac59"
+    },
+    {
+      "id": "ability-a-knot-you-can-trust",
+      "path": "design/cards/a-knot-you-can-trust.md",
+      "sha256": "92e80e90fdf97321fa76c5bd6ee55a6e52e22e435f3453abeee7e297cdcf81c2"
+    },
+    {
+      "id": "ability-catch-the-ledge",
+      "path": "design/cards/catch-the-ledge.md",
+      "sha256": "d9f7b5b4709f3b0d5bc62f03c70fa096589cfb8fecd1367477002ca858eec835"
+    },
+    {
+      "id": "ability-expert-river-crossing",
+      "path": "design/cards/expert-river-crossing.md",
+      "sha256": "1355e7f1d7d310845b9351ef96ce093eceabd4a4dd5c07d4c15bc437acad9882"
+    },
+    {
+      "id": "ability-find-your-footing",
+      "path": "design/cards/find-your-footing.md",
+      "sha256": "78bbe221c534037b7c015b9d1714f9be49a17033b55dc852cf38749c02533510"
+    },
+    {
+      "id": "ability-secure-a-hold",
+      "path": "design/cards/secure-a-hold.md",
+      "sha256": "0d9e3ba67362c13addc39d49ac6d8524e60b59a84e233cd008a37614857a0ebe"
+    },
+    {
+      "id": "ability-sure-ascent",
+      "path": "design/cards/sure-ascent.md",
+      "sha256": "89b03fbd4c23a85429199738b3a20e4e533559ece20254675b59c79bc5b41059"
+    },
+    {
+      "id": "ability-swing-into-trouble",
+      "path": "design/cards/swing-into-trouble.md",
+      "sha256": "29e3771b5770d548d86d864898ceac1a6eb72531c155997fd08553b6250e61d2"
+    },
+    {
+      "id": "ability-the-untroubled-hand",
+      "path": "design/cards/the-untroubled-hand.md",
+      "sha256": "664f5876c4389c047fa1955e2f2c6017348e64a8cdc01b3e2437cecc9eddb1d2"
+    },
+    {
+      "id": "ability-ride-the-falling-stone",
+      "path": "design/cards/ride-the-falling-stone.md",
+      "sha256": "11fcff4d2cda47c94f762537f3c4e971ce4210dab6c4ce3a1e8a35dbef5a9e3a"
+    },
+    {
+      "id": "ability-running-vault",
+      "path": "design/cards/running-vault.md",
+      "sha256": "4e9fd31e5e78e0f1cba75a3d6850f191ccdc096b090e31d52e25682243de349d"
+    },
+    {
+      "id": "ability-turn-the-river",
+      "path": "design/cards/turn-the-river.md",
+      "sha256": "e01783fef7e900680c8219df164ecbd5748561b5f14ca6a034013cd2b8e6f61b"
+    },
+    {
+      "id": "ability-catch-them-falling",
+      "path": "design/cards/catch-them-falling.md",
+      "sha256": "68f0569391b8fea10688e487ea6f3ce0d54615ab9a76e1cd12a00fac8d5e1da0"
+    },
+    {
+      "id": "ability-stillness-at-the-center",
+      "path": "design/cards/stillness-at-the-center.md",
+      "sha256": "c29b1f37696c4f98a152d6eac3e5bae75c34fc4ae53898907fe88cab9bc31464"
+    },
+    {
+      "id": "ability-traverse-the-impossible",
+      "path": "design/cards/traverse-the-impossible.md",
+      "sha256": "8de88292b436f84b99e59c80ab1ce62f12c971cc029615595d315ed0d42fe1ea"
+    },
+    {
+      "id": "ability-where-only-eagles-pass",
+      "path": "design/cards/where-only-eagles-pass.md",
+      "sha256": "aa51e22848538af0afcc6c2b1b745d71bf0fb932f94076b6fb8b4ed170782fae"
+    },
+    {
+      "id": "ability-close-shot",
+      "path": "design/cards/close-shot.md",
+      "sha256": "3cccbff0ec32091888588efd5f0b62be6ee337fc10e0707fcaa1bbf4a348e1fe"
+    },
+    {
+      "id": "ability-pinning-shot",
+      "path": "design/cards/pinning-shot.md",
+      "sha256": "816357099d337d561fbae2636d2322f35a68626744d9f980e2015347e415d0a7"
+    },
+    {
+      "id": "ability-read-the-quarry",
+      "path": "design/cards/read-the-quarry.md",
+      "sha256": "a6465d81712db129577b813ff41ff2248bcbec77400bc56d6bcc1be6844bf36c"
+    },
+    {
+      "id": "ability-take-the-measure",
+      "path": "design/cards/take-the-measure.md",
+      "sha256": "04d55da6c8083a763724f30ef4b49f0caa9656e30c5c6b9df1cc5b26c6e0d7f4"
+    },
+    {
+      "id": "ability-cut-off-the-escape",
+      "path": "design/cards/cut-off-the-escape.md",
+      "sha256": "8e5329081086b1d26a81fe303b46e06e0dcd50f0fccdadc3bf536bd2baba7302"
+    },
+    {
+      "id": "ability-driving-volley",
+      "path": "design/cards/driving-volley.md",
+      "sha256": "d94d5b59bc43650961eced13c68738e837a744482a2291f13162ba2a00265f6a"
+    },
+    {
+      "id": "ability-find-the-seam",
+      "path": "design/cards/find-the-seam.md",
+      "sha256": "e6bbf7fc041e44ca1a6055d70c53ac4e1fef2419d5cf62a531396a0341cbc4b4"
+    },
+    {
+      "id": "ability-sever-the-pursuit",
+      "path": "design/cards/sever-the-pursuit.md",
+      "sha256": "1052a0da7abd260bcda99a7790cad8a314c0336aaaade03e0fdbe8454c216fd8"
+    },
+    {
+      "id": "ability-treat-soft-tissue",
+      "path": "design/cards/treat-soft-tissue.md",
+      "sha256": "b7b96f50fc235bb4496ac7ba6754450b5b55ec199582001697f73f35269be77c"
+    },
+    {
+      "id": "ability-treat-bone",
+      "path": "design/cards/treat-bone.md",
+      "sha256": "83fde5e22be6c44908ac152ecc811dab94fc78f6741e239058ff723947bb2541"
+    },
+    {
+      "id": "ability-treat-elemental-injury",
+      "path": "design/cards/treat-elemental-injury.md",
+      "sha256": "7121173315ad7ba04718c778484bc6f474dcd1c7e6df6881723b44d1185a6794"
+    },
+    {
+      "id": "ability-treat-mental-trauma",
+      "path": "design/cards/treat-mental-trauma.md",
+      "sha256": "bd09d86e508ad0c444f8cd71caf81fd830d24ce74a966370b0bce23ac3316c4e"
+    },
+    {
+      "id": "ability-treat-radiant-injury",
+      "path": "design/cards/treat-radiant-injury.md",
+      "sha256": "5ae41742f8863ef4bb0bf8149599992427959c97589c6954776ba733ec5a213e"
+    },
+    {
+      "id": "ability-treat-life-injury",
+      "path": "design/cards/treat-life-injury.md",
+      "sha256": "3aa2d0c5c911eac37262f317702500b565c64c2ec71487fe1b34b452f5c1a16b"
+    },
+    {
+      "id": "ability-press-and-bind",
+      "path": "design/cards/press-and-bind.md",
+      "sha256": "44cedcf568e390d85649b6960ecc548cd386fdf5586c27adcc0f92f6f1e0ac4b"
+    },
+    {
+      "id": "ability-keep-pressure",
+      "path": "design/cards/keep-pressure.md",
+      "sha256": "83497a7d1552ab89a17ad47096996c2d909b3c99cf82dfa0eade88d36283b30a"
+    },
+    {
+      "id": "ability-relieve-poison",
+      "path": "design/cards/relieve-poison.md",
+      "sha256": "a2e0751817d1cdf3ad19cb8cb32a3ca7959f0b7538c491e7c80e949fd3340508"
+    },
+    {
+      "id": "ability-rouse-the-senses",
+      "path": "design/cards/rouse-the-senses.md",
+      "sha256": "ec42881fb30b5e6532cc01fe15db013ff3275452fbc7f19050f286db24eb079b"
+    },
+    {
+      "id": "ability-a-steady-hand-at-dawn",
+      "path": "design/cards/a-steady-hand-at-dawn.md",
+      "sha256": "9735c9b9650e39b48c34c441a3100c1bbeb19c77c3d046f50290e9679c35097a"
+    },
+    {
+      "id": "ability-urgent-bandaging",
+      "path": "design/cards/urgent-bandaging.md",
+      "sha256": "7e7a03f7bdd496134bf2561752af0a238cdea72ada1214f3cdc1e8310c2de0c2"
+    },
+    {
+      "id": "ability-clear-the-airway",
+      "path": "design/cards/clear-the-airway.md",
+      "sha256": "1544c8b7c93403f3df54a7a38a036827eddd2dfab8f96e27e7e2c369f83b0dbe"
+    },
+    {
+      "id": "ability-field-triage",
+      "path": "design/cards/field-triage.md",
+      "sha256": "9a30713d586c96a46f474ed6dd6fad9180659564cabb4ae67ccc9ce7672355e6"
+    },
+    {
+      "id": "ability-stay-with-my-voice",
+      "path": "design/cards/stay-with-my-voice.md",
+      "sha256": "7eb2d951c64a0f10f3cb3bdbf9c0045233d3d80ca822c256aa53c6841ed46934"
+    },
+    {
+      "id": "ability-fit-a-replacement",
+      "path": "design/cards/fit-a-replacement.md",
+      "sha256": "b04daeb9e6eeb9a6b0a939c9fd20de0f7e5b3b53976ba0fc5439a5b61849f706"
+    },
+    {
+      "id": "ability-drain-warmth",
+      "path": "design/cards/drain-warmth.md",
+      "sha256": "37d254c5ca32f641d1cbbd65cf2f759ae39dd7f2ce4dec4db75ba56e4a74b6a7"
+    },
+    {
+      "id": "ability-ease-the-spasm",
+      "path": "design/cards/ease-the-spasm.md",
+      "sha256": "7487012d6bf80da524ed5294b1e791a49b0d2fc5e214bacd7c62e0baf12576b0"
+    },
+    {
+      "id": "ability-keep-the-door-closed",
+      "path": "design/cards/keep-the-door-closed.md",
+      "sha256": "7e30d005a5a24822884487a4f03b90c47fe4b53d18a56954891a376cd368fbf1"
+    },
+    {
+      "id": "ability-sap-and-breath",
+      "path": "design/cards/sap-and-breath.md",
+      "sha256": "699cefacdaf3b7a72a57e3acbb0c2e53fc76473f1523ad62a46386eb9beb63dc"
+    },
+    {
+      "id": "ability-shared-breath",
+      "path": "design/cards/shared-breath.md",
+      "sha256": "7b3e2e6fc12371b06a98174427c6b83b45663b461958284b64d9b5dcfafe8ff6"
+    },
+    {
+      "id": "ability-hold-the-pulse",
+      "path": "design/cards/hold-the-pulse.md",
+      "sha256": "4664dcc61320edcbfbfdb083e72aff09fa3403119b8389fb9769c4e5bfeb5138"
+    },
+    {
+      "id": "ability-rest-for-the-restless",
+      "path": "design/cards/rest-for-the-restless.md",
+      "sha256": "388b3a9d030a993a53e156de2aaaf9b6298ee635df97ec8ff9c28ee44ecf3f47"
+    },
+    {
+      "id": "ability-sustain-the-failing",
+      "path": "design/cards/sustain-the-failing.md",
+      "sha256": "0be89c1bcd7a5df2593af068c24ed0926d562b7f5d42cb5f63a7a800f1780488"
+    },
+    {
+      "id": "ability-cast-off-the-venom",
+      "path": "design/cards/cast-off-the-venom.md",
+      "sha256": "bd38361a7d3ac7bf000fd1192059d9c768b8f85a26bb3cb5366a54ce6d060213"
+    },
+    {
+      "id": "ability-return-to-strength",
+      "path": "design/cards/return-to-strength.md",
+      "sha256": "98056b12faf85c1f65260495562a6396ecbeb5b7811c17b740acdbc747020453"
+    },
+    {
+      "id": "ability-dawn-shard",
+      "path": "design/cards/dawn-shard.md",
+      "sha256": "1bfa79765735cfb6dfbd0397847a2239264fee8f5aa5aff3b4b13751d025ede1"
+    },
+    {
+      "id": "ability-lantern-in-the-palm",
+      "path": "design/cards/lantern-in-the-palm.md",
+      "sha256": "9df5bdcc109ddceeb342c0469be5ee6781c7efa58127cd6d189865bec22a1290"
+    },
+    {
+      "id": "ability-lantern-moths",
+      "path": "design/cards/lantern-moths.md",
+      "sha256": "63f9e149d4d81434a2c8eafc2143fc77e4c5296382f5c1b9951940a3ec7fb0b1"
+    },
+    {
+      "id": "ability-mercy-in-the-light",
+      "path": "design/cards/mercy-in-the-light.md",
+      "sha256": "ce9d7418eef82395ccb04103e84ec9596285b2baf609bf2ca83be7e4b34d2698"
+    },
+    {
+      "id": "ability-oathlight-strike",
+      "path": "design/cards/oathlight-strike.md",
+      "sha256": "041f8f88a21f8140cfbfb91f60805707a7e9983e32740e5ca5e00fa9d7974ac0"
+    },
+    {
+      "id": "ability-shade-the-eyes",
+      "path": "design/cards/shade-the-eyes.md",
+      "sha256": "d08819073bfc25f3c7a8600a7ae2635a62272515d9b3f80a0dfdd79714ceb0b1"
+    },
+    {
+      "id": "ability-a-shelter-of-light",
+      "path": "design/cards/a-shelter-of-light.md",
+      "sha256": "f01bdbe476f22959b84e95d589560e87ba68e6eb1b23f527b757fe9deb3c7828"
+    },
+    {
+      "id": "ability-beacon-through-terror",
+      "path": "design/cards/beacon-through-terror.md",
+      "sha256": "36ed5531928c44adaaf7c3b0b8cd0845d12182269b00885db513fa52b97ae099"
+    },
+    {
+      "id": "ability-reveal-the-threshold",
+      "path": "design/cards/reveal-the-threshold.md",
+      "sha256": "ebad0aff5ce61b6806e02dd13228432a0eb9af36dfe962728fcddb2249733b9c"
+    },
+    {
+      "id": "ability-carry-the-sunrise",
+      "path": "design/cards/carry-the-sunrise.md",
+      "sha256": "b7c45e5e2507d99b5488b83de75e45a38583b34a14ca374b078edf7c6781001b"
+    },
+    {
+      "id": "ability-last-light-of-the-watch",
+      "path": "design/cards/last-light-of-the-watch.md",
+      "sha256": "589ea3075f1feae809b695da11e3255ec26cb8d3f2312939e0542fc73461e0ac"
+    },
+    {
+      "id": "ability-noonday-judgment",
+      "path": "design/cards/noonday-judgment.md",
+      "sha256": "5bbc8a6fa20878a982f53819760e7a6b075b0c90c9c82c4942d348984b2ef513"
+    },
+    {
+      "id": "ability-road-of-dawn",
+      "path": "design/cards/road-of-dawn.md",
+      "sha256": "8c5fdacbbfe7184464bf10bcbeff04bbda09b043c1b6241553cf2ca348966551"
+    },
+    {
+      "id": "ability-anatomy-of-an-opening",
+      "path": "design/cards/anatomy-of-an-opening.md",
+      "sha256": "4a439ed4b8027d2c60510e8725f1c25878fe4926292e8f95fad5b9ee0d648c75"
+    },
+    {
+      "id": "ability-i-have-seen-this-step",
+      "path": "design/cards/i-have-seen-this-step.md",
+      "sha256": "cf6e1165b6bbeacd9ad3b2e683be44f3f4f576a2fbda893fba3b1a9556162b50"
+    },
+    {
+      "id": "ability-identify-a-mixture",
+      "path": "design/cards/identify-a-mixture.md",
+      "sha256": "26910ca707fe3c5e69e0265f175a33554f5cbb45221894a42739b60a10c83fda"
+    },
+    {
+      "id": "ability-identify-an-enchantment",
+      "path": "design/cards/identify-an-enchantment.md",
+      "sha256": "48317c4bb5def99b02ddf209d1032dbc4ba86866824358ab0394566187fff6d1"
+    },
+    {
+      "id": "ability-read-the-remains",
+      "path": "design/cards/read-the-remains.md",
+      "sha256": "46dc73e30017b4f84671a3979522e76b718b12cf9f69a13cf85c53abb2040a7d"
+    },
+    {
+      "id": "ability-spot-the-tell",
+      "path": "design/cards/spot-the-tell.md",
+      "sha256": "aecd86cb97f1f0f491e0f988be7f6bcb94db43813df8e0e0ca475245b5e9d867"
+    },
+    {
+      "id": "ability-stitch-the-living-pattern",
+      "path": "design/cards/stitch-the-living-pattern.md",
+      "sha256": "b87b8e2779e5132424ae4242d712be4aac4295541b9b35c7c1bd901b2841741e"
+    },
+    {
+      "id": "ability-the-patient-metal",
+      "path": "design/cards/the-patient-metal.md",
+      "sha256": "b7873192d02ae8dc9874f10570a72579fc679791be032496acc42331ed63a769"
+    },
+    {
+      "id": "ability-ask-the-falling-ash",
+      "path": "design/cards/ask-the-falling-ash.md",
+      "sha256": "9c5c498821799f91ca7415933b207b89ee7c37a89b7ada3ebea238858cad3c22"
+    },
+    {
+      "id": "ability-catch-the-spell",
+      "path": "design/cards/catch-the-spell.md",
+      "sha256": "2ced5e1929c7cef2382c64c9f9d928911c946b66dca10fd1d0fbe6bf8dd94fe1"
+    },
+    {
+      "id": "ability-read-the-next-blow",
+      "path": "design/cards/read-the-next-blow.md",
+      "sha256": "09e8a73c4c3d259056dc44e4c05b0738f1f63ba428fed0b844d98fa0ac10e329"
+    },
+    {
+      "id": "ability-read-the-ward",
+      "path": "design/cards/read-the-ward.md",
+      "sha256": "db9e31a46aaa116c6c14dbad668870f30295c5823b1213c7408bfcc73ea26148"
+    },
+    {
+      "id": "ability-teach-stone-to-bend",
+      "path": "design/cards/teach-stone-to-bend.md",
+      "sha256": "ada885377b0263c09f763f502a491a783bf35cf8241921ed05d7e4f4ef5c6694"
+    },
+    {
+      "id": "ability-translate-the-fragment",
+      "path": "design/cards/translate-the-fragment.md",
+      "sha256": "eded3830db2e4443307ae34c7591af4fca76d7772015d4a82b31d37b324bfb53"
+    },
+    {
+      "id": "ability-checkmate-in-three-steps",
+      "path": "design/cards/checkmate-in-three-steps.md",
+      "sha256": "5473f1128fce45efd9fb58bb23892965d8967da30645e7cd67eda61518891757"
+    },
+    {
+      "id": "ability-reconstruct-the-event",
+      "path": "design/cards/reconstruct-the-event.md",
+      "sha256": "253b010d5269b6879bcfc69512392f25bfeb34c4777bcd71719f09918141db09"
+    },
+    {
+      "id": "ability-the-moment-foretold",
+      "path": "design/cards/the-moment-foretold.md",
+      "sha256": "ae7556f4c9caf93d57e8e863186d2884349aa72e5df9d88107d1fd901d29f70c"
+    },
+    {
+      "id": "ability-the-shape-of-escape",
+      "path": "design/cards/the-shape-of-escape.md",
+      "sha256": "ca4af35c3c4fc6d90de17ee89e4d10408f1afc874e3c9021a8004cbc4b9940aa"
+    },
+    {
+      "id": "ability-clear-the-smoke",
+      "path": "design/cards/clear-the-smoke.md",
+      "sha256": "c848b05f5f958dc0e7fa09a7e396601c3be5148a78765932009a9c6ca2d37e06"
+    },
+    {
+      "id": "ability-crosswind",
+      "path": "design/cards/crosswind.md",
+      "sha256": "a9499c476b4338e51d492a2f5b73ada58f80c4755f900c486f9489d61052fefd"
+    },
+    {
+      "id": "ability-gust-hammer",
+      "path": "design/cards/gust-hammer.md",
+      "sha256": "40db71bc6a7c95b82c1e75ab67e21829c4ca5fa2358f0ec4f93ce183e318bbe5"
+    },
+    {
+      "id": "ability-palm-of-the-gale",
+      "path": "design/cards/palm-of-the-gale.md",
+      "sha256": "ab9ae43049596e7be5324ed134f79dc4ca22ece3807d7c961fdd53d40be35a8c"
+    },
+    {
+      "id": "ability-thunder-at-the-door",
+      "path": "design/cards/thunder-at-the-door.md",
+      "sha256": "13b1400786d827519c0c205f805e361e8bb3f876377f530e62465a514bef3569"
+    },
+    {
+      "id": "ability-a-road-through-rain",
+      "path": "design/cards/a-road-through-rain.md",
+      "sha256": "a842d4ab46f9f31bbd01215a0112543293db3c08b7441ea04085d9476ec762f2"
+    },
+    {
+      "id": "ability-thunder-ring",
+      "path": "design/cards/thunder-ring.md",
+      "sha256": "e67b406ab54b2a43cbf25433d8ccf0cd384ca8221214d4a428f17ea2e2f462ab"
+    },
+    {
+      "id": "ability-walk-the-thunder",
+      "path": "design/cards/walk-the-thunder.md",
+      "sha256": "be76eb6beae682ce44b1e1852c8d2a9a900e2f2f854e01965ddc9f18403c6556"
+    },
+    {
+      "id": "ability-forked-sky",
+      "path": "design/cards/forked-sky.md",
+      "sha256": "298c75cf7bc86d30f00b2f4a084e88533d01163f27bf1d2bdd21a96bc90a40bb"
+    },
+    {
+      "id": "ability-the-sky-comes-down",
+      "path": "design/cards/the-sky-comes-down.md",
+      "sha256": "fff7b4726dc38c479f584de61ae7f74d9ec6701bba4eaed5c2d92e462891de6d"
+    },
+    {
+      "id": "ability-a-door-that-is-not-there",
+      "path": "design/cards/a-door-that-is-not-there.md",
+      "sha256": "6000430bd572ae2b616590aff27704d30930aaedaa7b752190b2020c35856b55"
+    },
+    {
+      "id": "ability-borrow-a-voice",
+      "path": "design/cards/borrow-a-voice.md",
+      "sha256": "39ca3abdb28127dad54a8e5441ca44d3aad45bb0653b0165d893188d6f13a27a"
+    },
+    {
+      "id": "ability-silent-cue",
+      "path": "design/cards/silent-cue.md",
+      "sha256": "bd98321b2213d94ddc40342bf118bdcf871c7da09de5ec500a96c6310532dae3"
+    },
+    {
+      "id": "ability-a-thought-that-is-not-yours",
+      "path": "design/cards/a-thought-that-is-not-yours.md",
+      "sha256": "beb338675b44af113aa7bc31a6003225e1fc5ec421cc26c5c5f571b529981674"
+    },
+    {
+      "id": "ability-an-invitation-elsewhere",
+      "path": "design/cards/an-invitation-elsewhere.md",
+      "sha256": "bc05667f158968c8389384109445a3e82d50bbfcfd790d284030ef44c64ff9c5"
+    },
+    {
+      "id": "ability-intrusive-echo",
+      "path": "design/cards/intrusive-echo.md",
+      "sha256": "3ecbb869c1c03769d0de1f8f81e1b697766a068c3bafff664da0e7296cca93f3"
+    },
+    {
+      "id": "ability-name-what-is-real",
+      "path": "design/cards/name-what-is-real.md",
+      "sha256": "88a68a812a4961aa02a3313d11b3da6d1b1679c70728e83cb57d3e6757b76f5d"
+    },
+    {
+      "id": "ability-behind-the-hawthorn",
+      "path": "design/cards/behind-the-hawthorn.md",
+      "sha256": "bc80b301bb2f29c2c90d978ccd9cb56f4155fddeb57e0d3035707171660a587f"
+    },
+    {
+      "id": "ability-borrowed-silhouette",
+      "path": "design/cards/borrowed-silhouette.md",
+      "sha256": "0ad5f34818e9643bfef1234ba2a0e43a37c09b17ab1ccbd9a2adb69826387635"
+    },
+    {
+      "id": "ability-dread-reflection",
+      "path": "design/cards/dread-reflection.md",
+      "sha256": "ebd90b8684fa1c8b89932b116c35ce77283c06013e5cdb1af45030a6d598eaa0"
+    },
+    {
+      "id": "ability-the-angle-of-unease",
+      "path": "design/cards/the-angle-of-unease.md",
+      "sha256": "c14e5ee145ea402975bde852793ad581f7354ec00ef8c352399301e9af281b0d"
+    },
+    {
+      "id": "ability-dance-beyond-the-circle",
+      "path": "design/cards/dance-beyond-the-circle.md",
+      "sha256": "3c78308909b917c3a632c3eaa8d5216de02b4b074fcaaab1ec34878554b0fb7f"
+    },
+    {
+      "id": "ability-lend-your-eyes",
+      "path": "design/cards/lend-your-eyes.md",
+      "sha256": "8751d934610a052e8579964d9d51f83b1001ae24e68600b3da11729b019a9253"
+    },
+    {
+      "id": "ability-still-the-will",
+      "path": "design/cards/still-the-will.md",
+      "sha256": "d04eaefc2034d33aa14dcdbdf9ed7b34f91343024e2978996c5e8d09df63d55d"
+    },
+    {
+      "id": "ability-thought-before-the-blow",
+      "path": "design/cards/thought-before-the-blow.md",
+      "sha256": "49a4eb62bcc8001c89ed520d9f88e06ef012772183a7fbc6001ef516070090ed"
+    },
+    {
+      "id": "ability-when-the-stars-look-back",
+      "path": "design/cards/when-the-stars-look-back.md",
+      "sha256": "79bdc25d96da840c2b6209e79b11839ef6ec14a9d17497561d495cf4d2072243"
+    },
+    {
+      "id": "ability-a-good-place-to-stop",
+      "path": "design/cards/a-good-place-to-stop.md",
+      "sha256": "50cdd39e1e99810d74bfe45123e614143d0c7c35c9c81ffa6392333f6776fd97"
+    },
+    {
+      "id": "ability-borrow-the-beast",
+      "path": "design/cards/borrow-the-beast.md",
+      "sha256": "488ab488e0bffd2c892b1cf5c28f60b07a9b2d0839e883bc4450753d7c00ea72"
+    },
+    {
+      "id": "ability-duck-into-the-brush",
+      "path": "design/cards/duck-into-the-brush.md",
+      "sha256": "f74f1ba18eea07a61686aa5c741a11d56a097b0c91df4f685b5e97067559b4aa"
+    },
+    {
+      "id": "ability-guide-a-frightened-animal",
+      "path": "design/cards/guide-a-frightened-animal.md",
+      "sha256": "38e52c016425a38247c9404231bf325b170cb538155c93e633b214805f1e2ef1"
+    },
+    {
+      "id": "ability-roots-remember-feet",
+      "path": "design/cards/roots-remember-feet.md",
+      "sha256": "4c46f51fad46140ac89d81e9824f73c7d3d154e234ab8f14dc51cf063f340366"
+    },
+    {
+      "id": "ability-saddle-and-rein",
+      "path": "design/cards/saddle-and-rein.md",
+      "sha256": "fa1f8a1053797f07186add1cdcad4d397b40be904f7f286380e51dc8ff0c6553"
+    },
+    {
+      "id": "ability-the-otter-s-bargain",
+      "path": "design/cards/the-otter-s-bargain.md",
+      "sha256": "9742eac6b294d0d3361213fc9f49a977be581322feb4b9cd9e3e83220330ae39"
+    },
+    {
+      "id": "ability-briar-gate",
+      "path": "design/cards/briar-gate.md",
+      "sha256": "8c137a74ceb9e9cea6909a13cdbab7e7d4466ec414692dcee66ffc49c77e74b4"
+    },
+    {
+      "id": "ability-catch-the-root",
+      "path": "design/cards/catch-the-root.md",
+      "sha256": "b91788c51da935a89ae712ead6e7947efce2d78316c7439c3a1c7df289604736"
+    },
+    {
+      "id": "ability-read-a-dangerous-trail",
+      "path": "design/cards/read-a-dangerous-trail.md",
+      "sha256": "aaff6d5e090eff48f952a1a0a60696863a03a4d8cc30a0a352b8f963f1d04566"
+    },
+    {
+      "id": "ability-the-road-remembers",
+      "path": "design/cards/the-road-remembers.md",
+      "sha256": "0f223b61249afc25baaec869bf23c82f81bf3ad67436105794eee0cb8d09a344"
+    },
+    {
+      "id": "ability-carry-them-to-shore",
+      "path": "design/cards/carry-them-to-shore.md",
+      "sha256": "020d298b6562cfcbef0b37f81775a79db7d4491a187885de8f7b07b5a089ff4e"
+    },
+    {
+      "id": "ability-guide-the-crossing",
+      "path": "design/cards/guide-the-crossing.md",
+      "sha256": "63fe6e2743967b365f7e86d05dd1d98beaaa4a1b49a8868be978bc966ddedd7e"
+    },
+    {
+      "id": "ability-the-forest-takes-the-blow",
+      "path": "design/cards/the-forest-takes-the-blow.md",
+      "sha256": "53054916fde6ef753607fe075cd1a70a58134e4eb3fca0e9bdead01ff4cffcdc"
+    },
+    {
+      "id": "ability-the-land-keeps-no-secrets",
+      "path": "design/cards/the-land-keeps-no-secrets.md",
+      "sha256": "e5b2f2befdaeb586d3a33d7ea9b8046a3ed4c964614103b06910b208d095329d"
+    },
+    {
+      "id": "ability-the-orchard-wakes",
+      "path": "design/cards/the-orchard-wakes.md",
+      "sha256": "9cbd32c7154e47288ca373d2d3577a9cd4b5d8f96de302aff366cb0c5f30bdb0"
+    },
+    {
+      "id": "ability-wear-the-great-beast",
+      "path": "design/cards/wear-the-great-beast.md",
+      "sha256": "18b4b69e3713bdc28c62ef8cebbc2eca1dfae3ce2d95c85d92a945d82508be93"
+    }
+  ]
+}

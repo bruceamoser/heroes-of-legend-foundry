@@ -3,14 +3,14 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { createContext, SourceTextModule, SyntheticModule } from "node:vm";
-import { startWorkshopCraft, workshopCraft } from "../src/rules/workshop-crafting.mjs";
+import { startWorkshopCraft, workshopCraft, noRollBrew } from "../src/rules/workshop-crafting.mjs";
 import { classifyRoll } from "../src/rules/roll.mjs";
 import { equipmentItemSource } from "../src/rules/item-construction.mjs";
 const source = await readFile(new URL("../src/services/crafting.mjs", import.meta.url), "utf8");
 const inventory = JSON.parse(await readFile(new URL("../static/data/inventory.json", import.meta.url)));
 const choices = JSON.parse(await readFile(new URL("../static/data/choices.json", import.meta.url)));
-async function fixture({ owner = true, authority = true, material = false } = {}) {
-  const recipe = inventory.recipes.find(r => r.id === "recipe-twisted-cord");
+async function fixture({ owner = true, authority = true, material = false, recipeId = "recipe-twisted-cord" } = {}) {
+  const recipe = inventory.recipes.find(r => r.id === recipeId);
   const flags = { development: { recipes: [recipe.id] }, operationReceipts: {} };
   let items = [{ _id: "ability", type: "ability", flags: { "heroes-of-legend": { catalogId: recipe.permissions[0], source: choices.records.find(record => record.id === recipe.permissions[0]).source } } }];
   if(material) items.push({_id:"materials",type:"equipment",system:{catalogId:"item-material-bundle",quantity:1,inventoryDie:6,carried:true}});
@@ -35,7 +35,7 @@ async function fixture({ owner = true, authority = true, material = false } = {}
     "./authority.mjs": {ensureAuthorityReady:async()=>{}, createActionMessage: data => context.ChatMessage.create(data), shouldProcessRequest: () => true, isCreationAuthority: () => authority, enqueueCharacterOperation: async fn => fn(), writeAuthorityDocument: async (_actor, changes) => { writes++; if (faults.write === writes) throw new Error("write failed"); if (changes.items) items = structuredClone(changes.items); for (const [key,value] of Object.entries(changes)) { if (key.startsWith("flags.heroes-of-legend.operationReceipts.")) flags.operationReceipts[key.split(".").at(-1)] = structuredClone(value); else if (key.startsWith("flags.heroes-of-legend.")) flags[key.slice("flags.heroes-of-legend.".length)] = structuredClone(value); } } },
     "./creation.mjs": { validateCreationChanges: () => {} },
     "../rules/item-construction.mjs": { equipmentItemSource },
-    "../rules/workshop-crafting.mjs": { startWorkshopCraft, workshopCraft },
+    "../rules/workshop-crafting.mjs": { startWorkshopCraft, workshopCraft, noRollBrew },
     "./roll-preparation.mjs": { rollBasis: (_actor,attribute) => {lastAttribute=attribute;return{};}, prepareRoll: () => ({ net: 0, attribute: 1 }) },
     "./roll.mjs": { evaluatePreparedRoll: async () => { rolls++; if (faults.roll) throw new Error("roll result lost"); return { roll: { toJSON: () => "{}" }, snapshot: { tier: "standard", total: 12 } }; } },
     "../rules/situational-adjustment.mjs": { effectiveRollDraft: () => ({}), situationalRollDraft: () => ({}) },
@@ -149,4 +149,35 @@ test("ambiguous material checks require original-face recovery and never reroll 
  await f.service.resolveCraftingRequest(recover.id);
  assert.equal(f.actor.items.find(item=>item.id==="materials").system.inventoryDie,4);assert.equal(f.rolls,1);assert.equal(f.supplyRolls,1);
  await f.service.resolveCraftingRequest(attempt.id);assert.equal(f.supplyRolls,1);
+});
+
+test("native healing and tonic brewing grant d4 without evaluating attribute dice and replay once", async () => {
+  for (const recipeId of ["recipe-lesser-healing-bottle", "recipe-clearing-tonic"]) {
+    const f = await fixture({ recipeId });
+    const start = await f.service.requestCrafting(f.actor, {kind:"start",recipeId});
+    await f.service.resolveCraftingRequest(start.id);
+    const message = await f.service.requestCrafting(f.actor, {kind:"attempt",recipeId,abilityId:f.recipe.permissions[0],adjustment:0});
+    await f.service.resolveCraftingRequest(message.id);
+    assert.equal(f.rolls, 0);
+    assert.equal(f.actor.items.find(i=>i.type==="equipment").system.inventoryDie,4);
+    assert.equal(f.flags.craftingState[recipeId].completed,1);
+    await f.service.resolveCraftingRequest(message.id);
+    assert.equal(f.actor.items.filter(i=>i.type==="equipment").length,1);
+    assert.equal(f.rolls,0);
+  }
+});
+
+test("no-roll brewing preserves an ambiguous material check for DA recovery without reroll", async () => {
+ const f=await fixture({material:true,recipeId:"recipe-lesser-healing-bottle"});
+ const start=await f.service.requestCrafting(f.actor,{recipeId:f.recipe.id,kind:"start"});await f.service.resolveCraftingRequest(start.id);
+ const attempt=await f.service.requestCrafting(f.actor,{recipeId:f.recipe.id,kind:"attempt",abilityId:f.recipe.permissions[0],adjustment:0,materialSupplyId:"materials"});
+ f.faults.supplyRoll=true;
+ await assert.rejects(f.service.resolveCraftingRequest(attempt.id),/supply result lost/);
+ await assert.rejects(f.service.resolveCraftingRequest(attempt.id),/will not reroll/);
+ assert.equal(f.rolls,0);assert.equal(f.supplyRolls,1);
+ const recover=await f.service.requestCrafting(f.actor,{kind:"recoverMaterial",materialFace:1});recover.author.isGM=true;
+ await f.service.resolveCraftingRequest(recover.id);
+ assert.equal(f.actor.items.find(item=>item.id==="materials").system.inventoryDie,4);
+ assert.equal(f.actor.items.find(item=>item.system?.catalogId==="item-lesser-healing-bottle").system.inventoryDie,4);
+ assert.equal(f.rolls,0);assert.equal(f.supplyRolls,1);
 });

@@ -11,7 +11,7 @@ export class EquipmentMarket extends foundry.applications.api.HandlebarsApplicat
     if(!this.actor.testUserPermission(game.user,"OWNER"))throw new Error("Choose a character you own.");
     const catalogs=await loadCatalogs(),sources=await equipmentCopyOptions();
     const documents=await Promise.all(sources.map(async source=>({source,document:await fromUuid(source.uuid)})));
-    this.sources=new Map(documents.filter(({document})=>document?.type==='equipment').map(({source,document})=>[source.uuid,document]));
+    this.sources=new Map(documents.filter(({document})=>document?.type==='equipment'&&catalogs.inventory.equipment.some(record=>record.id===document.system.catalogId&&!record.grantOnly&&Number.isSafeInteger(record.price)&&record.price>=0)).map(({source,document})=>[source.uuid,document]));
     const abilities=this.actor.items.filter(item=>item.type==='ability').map(item=>item.getFlag(ID,'catalogId'));
     const coins=this.actor.getFlag(ID,'development')?.coins??0;
     return {coins,rows:[...this.sources].map(([uuid,item])=>{
@@ -37,11 +37,12 @@ export class EquipmentMarket extends foundry.applications.api.HandlebarsApplicat
       if(!this.actor.testUserPermission(game.user,'OWNER'))throw new Error('Choose a character you own.');
       const row=target.closest('[data-market-row]'),uuid=row.dataset.uuid,source=await fromUuid(uuid),catalogs=await loadCatalogs();
       const definition=catalogs.inventory.equipment.find(record=>record.id===source?.system.catalogId),quantity=Number(row.querySelector('[data-market-quantity]').value);
+      if(!definition||definition.grantOnly||!Number.isSafeInteger(definition.price)||definition.price<0)throw new Error('This equipment is not available for market purchase.');
       if(!Number.isSafeInteger(quantity)||quantity<1||quantity>10000)throw new Error('Choose a quantity from 1 to 10,000.');
       const abilities=this.actor.items.filter(item=>item.type==='ability').map(item=>item.getFlag(ID,'catalogId'));
       if(!equipmentEligibility(source?.system.catalogId,abilities).eligible)throw new Error('This character lacks the required equipment training.');
       if(definition?.specialOrder)throw new Error('This item requires a special order.');
-      const coins=this.actor.getFlag(ID,'development')?.coins??0,total=(definition?.price??0)*quantity;
+      const coins=this.actor.getFlag(ID,'development')?.coins??0,total=definition.price*quantity;
       if(total>coins)throw new Error('Not enough coins.');
       created=await copyEquipmentToActor(this.actor,uuid,{quantity});
       const hands=Number(row.querySelector('[data-market-hands]')?.value??0);

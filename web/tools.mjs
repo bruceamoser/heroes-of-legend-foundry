@@ -1,3 +1,5 @@
+import { noRollBrew } from "./rules/workshop-crafting.mjs";
+import { localCraftingOutcome } from "./crafting-attempt.mjs";
 import { esc, ruleMarkup, recordMarkup } from "./rules-view.mjs";
 import {
   startEncounter,
@@ -289,9 +291,9 @@ function craftDialog(job) {
   const attributes = crafter.draft.attributes;
   const d = popup(
     job.recipe.name,
-    `<p class="tool-help">${esc(job.ability.name)} · ${job.recipe.attemptMinutes} min / attempt</p>${rollSetup({ attributes, selected: attr, attributeId: "craft-attribute", value: attributes[attr] ?? 0, netId: "craft-net", labelId: "craft-net-label" })}<p class="tool-help">Weak 1 · Standard 2 · Strong 3 ${job.recipe.maximumDie ? `inventory steps · cap d${job.recipe.maximumDie}` : `progress · target ${job.recipe.target}`}</p><label><input type="checkbox" id="craft-carried"> Check a carried material supply (${materialDie ? "d" + materialDie : "Empty"}) after the attempt</label><div class="tool-actions">${btn("Complete attempt", "complete-craft", `data-id="${job.id}"`, "primary")}${ruleButton(job.recipe.id)}</div>`,
+    `<p class="tool-help">${esc(job.ability.name)} · ${job.recipe.attemptMinutes} min / attempt</p>${noRollBrew(job.ability.id, job.recipe) ? "<p>Brew to d4 without a roll.</p>" : rollSetup({ attributes, selected: attr, attributeId: "craft-attribute", value: attributes[attr] ?? 0, netId: "craft-net", labelId: "craft-net-label" })}${noRollBrew(job.ability.id, job.recipe) ? "" : `<p class="tool-help">Weak 1 · Standard 2 · Strong 3 ${job.recipe.maximumDie ? `inventory steps · cap d${job.recipe.maximumDie}` : `progress · target ${job.recipe.target}`}</p>`}<label><input type="checkbox" id="craft-carried"> Check a carried material supply (${materialDie ? "d" + materialDie : "Empty"}) after the attempt</label><div class="tool-actions">${btn("Complete attempt", "complete-craft", `data-id="${job.id}"`, "primary")}${ruleButton(job.recipe.id)}</div>`,
   );
-  bindRollSetup(d.querySelector(".reference-body"), {
+  if (!noRollBrew(job.ability.id, job.recipe)) bindRollSetup(d.querySelector(".reference-body"), {
     getAttributeValue: () =>
       attributes[document.querySelector("#craft-attribute").value],
   });
@@ -434,17 +436,11 @@ document.addEventListener("click", (e) => {
     if (a === "complete-craft") {
       const j = jobs.find((j) => j.id === b.dataset.id && !j.complete);
       if (!j) return;
-      const attr = document.querySelector("#craft-attribute").value,
-        n = Number(document.querySelector("#craft-net").value),
-        plan = rollPlan({
-          attribute: crafter.draft.attributes[attr],
-          boons: Math.max(0, n),
-          banes: Math.max(0, -n),
-        }),
-        faces = Array.from({ length: plan.count }, die),
-        kept = [...faces].sort((a, b) => (n < 0 ? a - b : b - a)).slice(0, 3),
-        result = classifyRoll(kept, plan.attribute),
-        steps = { weak: 1, standard: 2, strong: 3 }[result.tier];
+      const attr = document.querySelector("#craft-attribute")?.value ?? "knowledge";
+      const { automatic, faces, kept, result, steps } = localCraftingOutcome({
+        abilityId: j.ability.id, recipe: j.recipe, attribute: crafter.draft.attributes[attr],
+        net: Number(document.querySelector("#craft-net")?.value ?? 0), die,
+      });
       const materialCheck = document.querySelector("#craft-carried").checked
         ? inventoryCheck({ die: materialDie, retained: die(materialDie) })
         : null;
@@ -466,7 +462,7 @@ document.addEventListener("click", (e) => {
       }
       j.complete = true;
       recipeId = j.recipe.id;
-      craftNotice += ` · ${j.recipe.attemptMinutes} min. ${faces.join(" · ")} → keep ${kept.join(" + ")}`;
+      craftNotice += ` · ${j.recipe.attemptMinutes} min${automatic ? "" : `. ${faces.join(" · ")} → keep ${kept.join(" + ")}`}`;
       if (materialCheck) {
         materialDie = materialCheck.after;
         craftNotice += ` · Material supply ${materialDie ? "d" + materialDie : "Empty"}`;

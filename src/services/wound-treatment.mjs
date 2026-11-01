@@ -1,9 +1,16 @@
+import {treatedWoundEffect} from "../rules/treatment.mjs";
 import {woundRecovered} from "../rules/wound-contributions.mjs";
 import { createActionMessage, shouldProcessRequest } from "./authority.mjs";
 import { ensureAuthorityReady } from "./authority.mjs";
 import { assertNoPendingTurn } from "./turn-lock.mjs";
 import { enqueueCharacterOperation, isCreationAuthority, writeAuthorityDocument } from "./authority.mjs";
 const ID = "heroes-of-legend";
+function treatedNativeEffect(effect) {
+  const flags = effect.flags?.[ID];
+  return treatedWoundEffect(flags?.condition
+    ? {kind: "condition", ...flags.condition}
+    : flags?.woundModifier ?? {});
+}
 export function woundTreatmentBasis(actor, eventId) {
   if (actor?.type !== "character" || actor.pack) throw new Error("Choose a world character wound.");
   const wound = actor.getFlag(ID, "wounds")?.[eventId];
@@ -55,7 +62,7 @@ export function woundTreatmentPlan(basis, progress) {
   const complete = wound.recoveryProgress >= value;
   const removeEffectIds = complete ? basis.effects.filter(effect => {
     const flags = effect.flags?.[ID];
-    return flags?.woundEvent === basis.eventId;
+    return flags?.woundEvent === basis.eventId && treatedNativeEffect(effect);
   }).map(effect => effect._id) : [];
   wound.effectIds = (wound.effectIds ?? []).filter(id => !removeEffectIds.includes(id));
   return { wound, complete, removeEffectIds };
@@ -83,7 +90,7 @@ export async function repairRecoveredWoundEffects(actor) {
   const wounds=actor.getFlag(ID,"wounds")??{};
   const completed=new Set(Object.entries(wounds).filter(([,wound])=>woundRecovered(wound)).map(([id])=>id));
   const effects=actor.toObject().effects;
-  const ids=effects.filter(effect=>completed.has(effect.flags?.[ID]?.woundEvent)&&(!effect.disabled||!effect.flags?.[ID]?.retired||(effect.statuses??[]).length||effect.showIcon!==CONST.ACTIVE_EFFECT_SHOW_ICON.NEVER)).map(effect=>effect._id);
+  const ids=effects.filter(effect=>completed.has(effect.flags?.[ID]?.woundEvent)&&treatedNativeEffect(effect)&&(!effect.disabled||!effect.flags?.[ID]?.retired||(effect.statuses??[]).length||effect.showIcon!==CONST.ACTIVE_EFFECT_SHOW_ICON.NEVER)).map(effect=>effect._id);
   if(!ids.length)return 0;
   const changes={effects:retireWoundEffects(effects,ids),[`flags.${ID}.conditionRevision`]:(actor.getFlag(ID,"conditionRevision")??0)+1,[`flags.${ID}.damageRevision`]:(actor.getFlag(ID,"damageRevision")??0)+1};
   for(const eventId of completed)changes[`flags.${ID}.wounds.${eventId}.effectIds`]=(wounds[eventId].effectIds??[]).filter(id=>!ids.includes(id));

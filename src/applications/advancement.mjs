@@ -110,7 +110,7 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
         (a) =>
           a &&
           (a.languageChoice ||
-            a.specialtyChoice ||
+            a.instrumentChoice ||
             a.weaponChoice ||
             a.recipeChoices ||
             a.items.includes("item-ordinary-melee-weapon")),
@@ -137,8 +137,8 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
           this.draft.acquisitions?.[a.id]?.languageId,
           a.id,
         ),
-        specialtyChoice: a.specialtyChoice,
-        specialty: this.draft.acquisitions?.[a.id]?.specialty ?? "",
+        instrumentChoice: a.instrumentChoice,
+        instrument: this.draft.acquisitions?.[a.id]?.instrument ?? "",
         recipeChoices: a.recipeChoices,
         recipes: inventory.recipes
           .filter((r) => r.genericChoice && r.permissions.includes(a.id))
@@ -261,7 +261,7 @@ export class AdvancementWizard extends foundry.applications.api.HandlebarsApplic
     for (const field of this.element.querySelectorAll("[data-acquisition]")) {
       const id = field.dataset.acquisition,
         s = (this.draft.acquisitions[id] ??= {});
-      for (const key of ["languageId", "specialty"])
+      for (const key of ["languageId", "instrument"])
         if (f.has(`${key}-${id}`)) s[key] = String(f.get(`${key}-${id}`));
       if (f.has(`weapon-${id}`)) s.weapon = String(f.get(`weapon-${id}`));
       if (f.has(`hands-${id}`)) s.meleeHands = Number(f.get(`hands-${id}`));

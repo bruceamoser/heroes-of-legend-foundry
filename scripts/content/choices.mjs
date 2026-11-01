@@ -1,8 +1,15 @@
 import { createHash } from "node:crypto";
+// Approved November 1 universal learning prices, keyed by stable identity.
+const approvedUniversalPrices = new Map([
+  ["the-web-of-whispers", [3, 3]], ["the-last-word", [3, 3]],
+  ["the-lucky-trinket", [3, 3]], ["the-impossible-escape", [3, 3]],
+  ["a-name-worth-knowing", [3, 3]], ["the-strong-arm", [3, 3]],
+  ["touched-by-the-divine", [7, 6]], ["the-mountain-walks", [7, 6]],
+]);
 // Reviewed exceptions; all other shared and signature cards retain tier pricing.
 const oneDpLimits = new Map([
   ["another-tongue", "Purchase once; choose one language when learned."],
-  ["a-party-piece", "Purchase once; choose one specialty when learned."],
+  ["a-party-piece", "Purchase once; choose one instrument when learned."],
   ["catch-that", "Purchase once; each use spends your Reaction."],
   ["look-over-here", "Purchase once; each use spends your Reaction."],
   ["message-by-heart", "Purchase once; one retained message at a time."],
@@ -173,10 +180,7 @@ export function parseAbilityReference(text) {
     else notes.push({ label: null, text: plainText(block) });
   }
   if (
-    !fields.get("Target / range / shape") ||
-    !fields.get("Duration") ||
-    !fields.get("Equipment / acquisition") ||
-    !limits
+    !fields.get("Target / range / shape")
   )
     throw new Error("Incomplete ability reference metadata");
   const details = [
@@ -195,7 +199,7 @@ export function parseAbilityReference(text) {
     { label: "Limits", value: limits },
     type ? { label: "Type", value: type } : null,
     fields.get("Tags") ? { label: "Tags", value: fields.get("Tags") } : null,
-  ].filter(Boolean);
+  ].filter(detail => detail?.value);
   return {
     flavor,
     rules: {
@@ -284,20 +288,18 @@ export function parseChoices(sources) {
       if (
         r.universal
           ? meta[2] !== "Not purchased"
+          : approvedUniversalPrices.has(r.id.slice(8))
+            ? r.minimumLevel !== approvedUniversalPrices.get(r.id.slice(8))[0] || r.cost !== approvedUniversalPrices.get(r.id.slice(8))[1] || meta[3] !== "None"
           : oneDpLimits.has(r.id.slice(8))
             ? r.minimumLevel !== 1 || r.cost !== 1 || meta[3] !== "None"
             : r.cost !== { 1: 2, 3: 4, 7: 8 }[r.minimumLevel]
       )
         throw new Error(`Unexpected tier cost ${path}`);
-      const limits = match(
-        text,
-        /\*\*Limits:\*\* ([^\n]+)/,
-        `${path} limits`,
-      )[1];
+      const limits = text.match(/\*\*Limits:\*\* ([^\n]+)/)?.[1] ?? "";
       r.purchasePolicy = r.universal ? "never" : "once";
       if (
-        limits ===
-        "At most one purchase per level; unused purchases cannot be saved."
+        ["At most one purchase per level; unused purchases cannot be saved.",
+         "At most one purchase per level; each level's purchase stands on its own."].includes(limits)
       )
         r.purchasePolicy = "per-level";
       else if (limits === "Repeatable purchase of new recipe choices.")
@@ -321,12 +323,13 @@ export function parseChoices(sources) {
         r.classId = classes.get(m[1]);
       } else if (requirements !== "None") {
         let rankText = requirements;
-        if (rankText.endsWith("; known compatible crafting card")) {
+        const craftingSuffix = ["; known compatible crafting card", "; a known compatible crafting ability"].find(suffix => rankText.endsWith(suffix));
+        if (craftingSuffix) {
           r.requirements.push({
             kind: "capability",
             capability: "compatible-crafting",
           });
-          rankText = rankText.replace("; known compatible crafting card", "");
+          rankText = rankText.slice(0, -craftingSuffix.length);
         }
         for (const part of rankText.split(" and ")) {
           const m = match(

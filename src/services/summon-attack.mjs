@@ -1,8 +1,10 @@
+import {summonState} from "../rules/summon-profile.mjs";
 import {summonAttackConfiguration} from "../rules/creature-sheet-profile.mjs";
 import {SharedRollDialog} from "../dialogs/attribute-roll.mjs";
 
 export function promptSummonAttack(actor,id="basic-melee") {
   if (!actor.testUserPermission(game.user,"OWNER")) throw new Error("Use a creature you own.");
+  if (summonState(actor)?.lifecycle?.expired) throw new Error("This summon disappeared. Explicitly summon it again before acting.");
   const configuration=summonAttackConfiguration(actor,id);
   const dialog=new SharedRollDialog(actor,configuration.attribute,{mode:"attack"});
   dialog.draft.summonAttackId=id;

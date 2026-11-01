@@ -277,7 +277,7 @@ try {
   );
   assert(
     result.reference.renderedReference.includes(
-      "Rules reference · play automation in progress",
+      "Rules reference · resolve effects at the table",
     ),
   );
   assert.deepEqual(result.equipment, {

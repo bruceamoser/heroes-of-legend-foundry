@@ -100,8 +100,16 @@ updates preserve live state and local edits through the sheet's Update profile a
 
 ## October 28 ancestry and class signature review: v16.5.0
 
-The current approved pin is **295e858c1b6fee044a0261bf9f437636efeff2bf**,
+The October 28 approved pin was **295e858c1b6fee044a0261bf9f437636efeff2bf**,
 book release v16.5.0. It supersedes bdfd18e for all current catalogs and web
 references: 20 ancestry traits and 90 class signatures, with stable IDs, levels
 and acquisition requirements preserved. Creature, summon, monster-ability and
 portrait counts are unchanged. See the v16.5.0 production baseline.
+
+## November 1 approved catalog
+
+The current approved pin is **25b80c9fe77d7baaec3f3a8a548c9663d0f39a30**.
+Book v16.6.0 integrates the approved Universal ladder and full active discipline
+catalog, including summon command maintenance at controller turn end. Approval:
+DIR-CATALOG-001 and DIR-CALLING-001, tracked in #252. This is playtest content;
+static import validation does not establish balance or native runtime acceptance.

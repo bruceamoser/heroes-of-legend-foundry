@@ -127,7 +127,7 @@ test("all six pinned cards map to their exact capability and attribute", () => {
     assert.equal(result.receipt.attribute, attribute);
     assert.equal(
       result.receipt.sources.commit,
-      "295e858c1b6fee044a0261bf9f437636efeff2bf",
+      "25b80c9fe77d7baaec3f3a8a548c9663d0f39a30",
     );
   }
 });
@@ -777,4 +777,23 @@ test("operation IDs and outputs are immutable and do not mutate inputs", () => {
   const settled = settle(reservation, { outcome: "weak" });
   assert.equal(Object.isFrozen(settled), true);
   assert.equal(Object.isFrozen(settled.receipt), true);
+});
+
+test("approved treatment and condition-recovery cards expose current printed roll contracts",async()=>{
+ const choices=JSON.parse(await readFile(new URL("../static/data/choices.json",import.meta.url),"utf8"));
+ const detail=(id,label)=>choices.records.find(record=>record.id===`ability-${id}`).reference.rules.details.find(field=>field.label===label)?.value;
+ assert.equal(detail("treat-bone","Attribute"),"Knowledge");
+ assert.equal(detail("urgent-bandaging","Attribute"),"Knowledge");
+ assert.equal(detail("wake-the-nerves","Attribute"),"None (no roll)");
+ const wake=choices.records.find(record=>record.id==="ability-wake-the-nerves");
+ assert(!wake.reference.rules.body.some(block=>block.outcomes));
+ assert(wake.reference.rules.body.some(block=>block.text==="Reduce temporary Dazed by 2 or temporary Paralyzed by 1."));
+ const {abilityDefinition}=await import("../src/rules/ability-definitions.mjs");
+ // These condition reductions remain printed, explicit manual resolution;
+ // they must not accidentally pick up an obsolete automatic rolled adapter.
+ assert.equal(abilityDefinition(wake.id,wake.source),null);
+ const urgent=choices.records.find(record=>record.id==="ability-urgent-bandaging");
+ assert.equal(abilityDefinition(urgent.id,urgent.source),null);
+ assert.deepEqual(urgent.reference.rules.body.find(block=>block.outcomes).outcomes.map(outcome=>outcome.text),[
+  "Reduce temporary Bleeding by 2.","Reduce temporary Bleeding by 3.","Reduce temporary Bleeding by 4."]);
 });

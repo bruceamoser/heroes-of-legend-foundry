@@ -3,6 +3,10 @@ export const SUMMON_FLAG = "summon";
 
 /** A summon is a standard creature Actor carrying a profile flag. */
 export function summonState(actor) {
+  // A durable unlinked-token override must win over its inherited base profile.
+  const tokenState = actor?.isToken && actor?.token && !actor.token.actorLink
+    ? actor.token.getFlag?.(ID, SUMMON_FLAG) : null;
+  if (tokenState) return tokenState;
   const direct =
     actor?.getFlag?.(ID, SUMMON_FLAG) ??
     actor?.flags?.[ID]?.[SUMMON_FLAG] ??
@@ -106,4 +110,9 @@ export function summonSystemFromRecord(record) {
     sourceMarkdown: record.reference?.sourceMarkdown ?? "",
     referenceMarkdown: `${record.reference?.sourceMarkdown ?? ""}${sourceLink}`,
   };
+}
+
+export function assertSummonPresent(actor) {
+  if (summonState(actor)?.lifecycle?.expired)
+    throw new Error("This summon disappeared. Return to creature and explicitly summon it again before acting.");
 }

@@ -21,7 +21,7 @@ export const ABILITY_DEFINITIONS = Object.freeze({
     source: {
       path: "design/cards/catch-that.md",
       sha256:
-        "10305d031c2366ee61193e5fe560514f91bee9dbc42a1a2c179f889d6b8acb51",
+        "1357adb03d1908f65677f9ace8af3429cc7949aa2d01b048ab157806801ada6d",
     },
     summary:
       "**Action:** Reaction \u00b7 **Attribute:** None \u2014 no roll **Target / range / shape:** One falling, unattended item in your square or an adjacent square, within reach. Before it lands or falls out of reach. Catch the item in a free hand. It must be small enough to hold in that hand. This cannot intercept an attack or take an item another creature is holding. **Duration:** Instant. **Equipment / acquisition:** None.",
@@ -34,7 +34,7 @@ export const ABILITY_DEFINITIONS = Object.freeze({
     source: {
       path: "design/cards/look-over-here.md",
       sha256:
-        "15c51b9ec002817764e7cc9762c94533153ffc037d51062ab016c9f512a82fcd",
+        "9d24dd5315f74fcdac6e6fdcc2539c39350b12c51c3e89ab55c7af7377e0eb7a",
     },
     summary:
       "**Action:** Reaction \u00b7 **Attribute:** None \u2014 no roll **Target / range / shape:** One ally about to make a defense roll against a sight-dependent attack declared by an adjacent enemy that can see you. Before the roll. Grant the ally 1 Boon to that defense roll. This momentary distraction does not create cover, make anyone Hidden or cancel the attack. Apply the normal Boon/Bane rules. **Duration:** The triggering defense roll. **Equipment / acquisition:** None.",
@@ -47,10 +47,10 @@ export const ABILITY_DEFINITIONS = Object.freeze({
     source: {
       path: "design/cards/quick-exit.md",
       sha256:
-        "de2be8860e513b6680455d204aee3e2b3df265a887cf7f74b28d0c7060caee6f",
+        "ac39f0fa207de2ac448f4f09c2cd88d019076a2b27e7e12b85b2123d85d3e06e",
     },
     summary:
-      "**Action:** Passive \u00b7 **Attribute:** None \u2014 no roll **Target / range / shape:** Self, when you use Disengage. Gain 1 additional square of available movement for this turn. Spend it using normal terrain costs and movement restrictions. This does not increase Speed or add movement to each allowance gained by converting actions. Disengage\u2019s protection from opportunity attacks applies normally. **Duration:** Until the end of this turn; unused movement expires. **Equipment / acquisition:** None.",
+      "**Action:** Passive \u00b7 **Attribute:** None \u2014 no roll **Target / range / shape:** Self, when you use Disengage. Once per turn when you use Disengage, gain 1 additional square of available movement for this turn. Spend it using normal terrain costs and movement restrictions. This does not increase Speed or add movement to each allowance gained by converting actions. Disengage\u2019s protection from opportunity attacks applies normally. **Duration:** Until the end of this turn; unused movement expires. **Equipment / acquisition:** None.",
   }),
   "ability-a-party-piece": Object.freeze({
     id: "ability-a-party-piece",
@@ -60,10 +60,10 @@ export const ABILITY_DEFINITIONS = Object.freeze({
     source: {
       path: "design/cards/a-party-piece.md",
       sha256:
-        "9d1aad26ea86b271593bb9e71893fff5413100398a7fbd35133b350f226b84aa",
+        "d226d826279d2b7be98b4edd737619c9980bdfa4381ae42e447f8877d0ffed8d",
     },
     summary:
-      "**Action:** Passive \u00b7 **Attribute:** None \u2014 no roll **Target / range / shape:** Your own performance using the specialty chosen when you learn this ability. Choose one mundane performance specialty when you learn this ability, such as singing, juggling, storytelling or playing a particular instrument. Gain 1 Boon to Guile rolls made to entertain through that specialty. Use the ordinary task\u2019s stakes and outcomes; this grants no automatic persuasion, deception or change of attitude. Anyone can attempt a performance without this ability, and a performance with no uncertain consequence needs no roll. **Duration:** While performing the chosen specialty. **Equipment / acquisition:** Requires any ordinary props or instrument needed for your chosen performance; grants none.",
+      "**Action:** Passive · **Attribute:** None — no roll. While playing the ordinary instrument you own and chose when learning this ability, gain 1 Boon to any Guile roll the music carries, including performance, persuasion and deception. The chosen instrument must be in your hands and in playing condition. Ordinary performances without uncertain consequences need no roll. **Duration:** While playing the chosen instrument. **Equipment / acquisition:** Requires an ordinary Musical Instrument (Bulk 1); grants none.",
   }),
   "ability-basic-melee": Object.freeze({
     id: "ability-basic-melee",
@@ -132,10 +132,10 @@ export const ABILITY_DEFINITIONS = Object.freeze({
     source: {
       path: "design/cards/high-guard.md",
       sha256:
-        "a6f5ffeca1d6d1d298cdbfddec8680423fae5eae1e8ae6a8ce33ecbacfe3c3ef",
+        "26797506110ac809f89b97aa11617766fe883ebe416c6b63346574819e706418",
     },
     summary:
-      "Before a shield-blockable defense while holding a shield, spend one Reaction to use Shield Block with 2 defense Boons instead of 1 until the start of your next turn. This replaces the Shield Block benefit rather than adding another. The shield must remain held and the DA judges blockability.",
+      "Before a shield-blockable defense while holding a shield, spend one Reaction to use Shield Block with 2 defense Boons instead of 1 until the start of your next turn. This replaces the Shield Block benefit rather than adding another. The shield must remain held and the DA judges blockability. Learning supplies an ordinary shield (Bulk 1) if needed.",
   }),
 });
 export function abilityDefinition(id, source) {
@@ -154,5 +154,5 @@ export function abilityDefinition(id, source) {
 export function abilityReferenceStatus(id, source) {
   return abilityDefinition(id, source)
     ? "Reviewed native action · rules reference"
-    : "Rules reference · play automation in progress";
+    : "Rules reference · resolve effects at the table";
 }

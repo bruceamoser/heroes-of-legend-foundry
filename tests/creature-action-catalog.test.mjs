@@ -28,8 +28,8 @@ const core = (record) =>
   );
 
 test("approved creature action delta keeps stable stats, Main Actions and source counts", () => {
-  assert.equal(lock.previousCommit, baseline.sourceCommit);
-  assert.equal(lock.records.length, 1022);
+  assert.equal(baseline.sourceCommit, "bdfd18ed535fbd0e1892b9344444abf6da644809", "The original creature-action comparison baseline is historical.");
+  assert.equal(lock.records.length, 1030);
   assert.equal(creatures.creatures.length, 192);
   assert.equal(summons.records.length, 73);
   assert.deepEqual(lock.counts, {
@@ -80,7 +80,7 @@ test("33 reusable monster templates remain separate from character abilities", (
   const characterIds = new Set(choices.records.map((record) => record.id));
   assert.equal(
     choices.records.filter((record) => record.kind === "ability").length,
-    419,
+    427,
   );
   for (const template of added) {
     assert.equal(template.source.commit, lock.commit);

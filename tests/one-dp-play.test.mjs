@@ -107,13 +107,18 @@ test("Catch That and Look Over Here use normal off-turn Reactions without abilit
     );
   }
 });
-test("contextual ability Boons default off and apply only to their appropriate rolls", () => {
+test("instrument Guile Boon defaults off, supports all Guile approaches, and excludes other attributes", () => {
   const guile = {
     mode: "attribute",
     attributeKey: "guile",
     partyPiece: "Actor.a.Item.party",
   };
   assert.deepEqual(contextualAbilitySources(guile), []);
+  assert.match(contextualAbilitySources(guile, {partyPiece: true})[0].label, /playing your chosen instrument/);
+  for (const mode of ["attribute", "attack", "defense"]) {
+    assert.equal(contextualAbilitySources({...guile, mode}, {partyPiece: true})[0].amount, 1);
+  }
+  assert.deepEqual(contextualAbilitySources({...guile, mode: "death"}, {partyPiece: true}), []);
   assert.equal(
     contextualAbilitySources(guile, { partyPiece: true })[0].amount,
     1,

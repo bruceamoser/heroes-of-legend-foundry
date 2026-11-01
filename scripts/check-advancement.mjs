@@ -199,7 +199,7 @@ try {
   assert.equal(await reference.evaluate((el) => el.open), true);
   assert.match(
     await reference.textContent(),
-    /Rules reference · play automation in progress/,
+    /Rules reference · resolve effects at the table/,
   );
   assert.deepEqual(
     await reference.locator(".hol-reference-outcomes dd").allTextContents(),

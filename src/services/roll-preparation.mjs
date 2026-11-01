@@ -1,3 +1,4 @@
+import {assertSummonPresent} from "../rules/summon-profile.mjs";
 import { contextualAbilitySources } from "../rules/one-dp-play.mjs";
 import { abilityDefinition } from "../rules/ability-definitions.mjs";
 import { validReferenceAttack } from "../rules/creature-actions.mjs";
@@ -15,6 +16,15 @@ import { actorContributions } from "./conditions.mjs";
 import { defenseBenefits } from "./benefits.mjs";
 import { actorWoundContributionPlan } from "./wound-effects.mjs";
 const ID = "heroes-of-legend";
+export function partyPieceReference(actor) {
+  const instrument = actor.items.find(item => item.type === "equipment" &&
+    item.system?.quantity > 0 && item.system?.held &&
+    (item.system.catalogId ?? item.getFlag?.(ID, "catalogId")) === "item-musical-instrument");
+  if (!instrument) return null;
+  return actor.items.find(item => item.type === "ability" &&
+    item.getFlag(ID, "catalogId") === "ability-a-party-piece" &&
+    abilityDefinition(item.getFlag(ID, "catalogId"), item.getFlag(ID, "source")))?.uuid ?? null;
+}
 export function incomingAttackContext(attackMessageId) {
   const message = game.messages.get(attackMessageId),
     incoming = message?.getFlag(ID, "attackCard");
@@ -91,6 +101,7 @@ export function rollBasis(
   defenderTokenUuid = null,
   { actorTokenUuid = null, targetTokenUuid = null } = {},
 ) {
+  assertSummonPresent(actor);
   if (!["attribute", "attack", "defense", "death"].includes(mode))
     throw new Error("Unsupported shared roll context.");
   if (
@@ -164,16 +175,7 @@ export function rollBasis(
     defenderTokenUuid,
     survival,
     incoming,
-    partyPiece:
-      actor.items.find(
-        (item) =>
-          item.type === "ability" &&
-          item.getFlag(ID, "catalogId") === "ability-a-party-piece" &&
-          abilityDefinition(
-            item.getFlag(ID, "catalogId"),
-            item.getFlag(ID, "source"),
-          ),
-      )?.uuid ?? null,
+    partyPiece: partyPieceReference(actor),
     actorUuid: actor.uuid,
     ...(mode === "attack"
       ? {
@@ -226,7 +228,7 @@ export function prepareRoll(basis, draft = {}) {
       draft.woundApplicability ?? {},
     ),
     ...basis.benefits,
-    ...contextualAbilitySources(basis, draft),
+    ...contextualAbilitySources({...basis, attributeKey: substitution?.attributeKey ?? basis.attributeKey}, draft),
   ];
   if (substitution?.boons)
     sources.push({

@@ -1,5 +1,5 @@
 {
-  "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
+  "sourceCommit": "25b80c9fe77d7baaec3f3a8a548c9663d0f39a30",
   "records": {
     "ancestry-dwarf": {
       "markdown": "# Dwarf\n\n*Stone, craft, stubborn loyalty and a memory for debts both kind and cruel.*\n\n## Rules\n\nChoose two of the five traits below. These are invitations to a familiar fantasy,\nnot a required personality. Any ancestry may grow up in any culture.\n\n**Starting values:** HP +4; base Speed 5.\n\n- [Hard as Bedrock](trait-dwarf-deep-constitution.md) — Your ancestors did not dig a home from the mountain by yielding politely.\n- [Stone Mason](trait-dwarf-stone-reader.md) — You know a mason’s lie by the stone around it.\n- [Rooted in Stone](trait-dwarf-low-center.md) — Let the storm waste its strength on you.\n- [An Honest Maker’s Hand](trait-dwarf-maker-s-eye.md) — Your thumb finds the seam; your ear knows the ring of sound metal.\n- [A Grudge Well Kept](trait-dwarf-carved-history.md) — You remember who struck first. You intend them to remember what followed.\n\n**Starting coin contribution:** +2 coins. See [starting coins](../starting-coins.md).\n",
@@ -1091,6 +1091,20 @@
       "source": {
         "path": "design/equipment/ordinary-light-armor.md",
         "sha256": "a26fc198de266b1f568079cea8333c2178bc40dabbf16a28fc8adf4a340af26a"
+      }
+    },
+    "item-folding-launcher": {
+      "markdown": "# A Marvel on Wheels\n\n*You pull the handle and the little frame unfolds. Its shot tears a line through the press before the wheels snap back beneath your hands.*\n\n## Rules\n\n**Action:** Main Action · **Attribute:** Knowledge\n\n**Target / range / shape:** Every creature in one straight line of three visible squares, each within 6 squares.\n\nUnfold the launcher and make a Knowledge line attack.\n\n- **Weak:** 4 physical damage; push 1 square away from you.\n- **Standard:** 5 physical damage; push 2 squares away from you.\n- **Strong:** 7 physical damage; push 3 squares away from you.\n\nThe launcher folds back into your hands after firing.\n\n**Equipment / acquisition:** One reusable folding launcher (Bulk 1), built on learning and supplied if needed.\n\n---\n\n**Tier / minimum level:** 7 · **DP:** 8 · **Requirements to learn:** Craft 3 and Marksmanship 1\n\n**Type:** Skill / Attack / Control\n\n**ID:** a-marvel-on-wheels\n\n[Build this character](../paths/roadside-artificer.md) · [Card conventions](../card-conventions.md)\n",
+      "source": {
+        "path": "design/cards/a-marvel-on-wheels.md",
+        "sha256": "7f4d7f71108e26023adfe2d498db6138a7517fd8b78907e0adff0b0b0aa1f2f0"
+      }
+    },
+    "item-spring-hook-bracer": {
+      "markdown": "# Spring in the Sleeve\n\n*You level your wrist. A hook snaps from the bracer and catches hard enough to drag your enemy a step closer.*\n\n## Rules\n\n**Action:** Main Action · **Attribute:** Knowledge\n\n**Target / range / shape:** One visible enemy within 3 squares.\n\nMake a Knowledge device attack.\n\n- **Weak:** 2 physical damage.\n- **Standard:** 3 physical damage; pull 1 square toward you.\n- **Strong:** 5 physical damage; pull 2 squares toward you.\n\n**Equipment / acquisition:** One reusable spring-hook bracer (Bulk 1), built on learning and supplied if needed.\n\n---\n\n**Tier / minimum level:** 1 · **DP:** 2 · **Requirements to learn:** Craft 1\n\n**Type:** Skill / Attack\n\n**ID:** spring-in-the-sleeve\n\n[Build this character](../paths/roadside-artificer.md) · [Card conventions](../card-conventions.md)\n",
+      "source": {
+        "path": "design/cards/spring-in-the-sleeve.md",
+        "sha256": "cc9ac698bb04221cb3aa72dcb299902ae1a7aacaee193170befce310d105afd2"
       }
     }
   }

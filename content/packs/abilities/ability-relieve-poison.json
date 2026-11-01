@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/medicine.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You recognize the tremor and work quickly to ease what is spreading through their body.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Target / range / shape</dt><dd>Self or one adjacent willing creature</dd></div><div><dt>Duration</dt><dd>Instant. Applied conditions follow their normal duration and decay.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Pay the printed action and any full activity time for each use.</dd></div><div><dt>Type</dt><dd>Recovery</dd></div></dl><div class=\"hol-reference-rules\"><p>Choose an eligible willing creature and roll Knowledge. Reduce its temporary Poisoned by the amount below, to a minimum of 0. This restores no HP. A persistent condition marked with an asterisk requires the treatment or remedy stated by its source.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>Reduce Poisoned by 1.</dd><dt>Standard</dt><dd>Reduce Poisoned by 2.</dd><dt>Strong</dt><dd>Reduce Poisoned by 3.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/295e858c1b6fee044a0261bf9f437636efeff2bf/design/cards/relieve-poison.md\" target=\"_blank\" rel=\"noopener\">design/cards/relieve-poison.md</a> at <code>295e858c1b6fee044a0261bf9f437636efeff2bf</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You recognize the tremor and guide your companion through the next breath, working to slow what is spreading through them.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Target / range / shape</dt><dd>Self or one adjacent willing creature.</dd></div><div><dt>Type</dt><dd>Skill / Recovery</dd></div></dl><div class=\"hol-reference-rules\"><p>Make a Knowledge roll.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>Reduce temporary Poisoned by 1.</dd><dt>Standard</dt><dd>Reduce temporary Poisoned by 2.</dd><dt>Strong</dt><dd>Reduce temporary Poisoned by 3.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/25b80c9fe77d7baaec3f3a8a548c9663d0f39a30/design/cards/relieve-poison.md\" target=\"_blank\" rel=\"noopener\">design/cards/relieve-poison.md</a> at <code>25b80c9fe77d7baaec3f3a8a548c9663d0f39a30</code>.</p></section>",
     "activity": {
       "action": "main",
       "rollMode": "attribute",
@@ -14,9 +14,9 @@
       "defenseAttribute": "agility"
     },
     "outcomes": {
-      "weak": "Reduce Poisoned by 1.",
-      "standard": "Reduce Poisoned by 2.",
-      "strong": "Reduce Poisoned by 3."
+      "weak": "Reduce temporary Poisoned by 1.",
+      "standard": "Reduce temporary Poisoned by 2.",
+      "strong": "Reduce temporary Poisoned by 3."
     }
   },
   "effects": [],
@@ -30,12 +30,12 @@
       "catalogId": "ability-relieve-poison",
       "source": {
         "path": "design/cards/relieve-poison.md",
-        "sha256": "4ac3862b66a1533abb9b7c7a3eb0bc6803f28c0c857fdc4c9aacd3f6cc4665da"
+        "sha256": "a2e0751817d1cdf3ad19cb8cb32a3ca7959f0b7538c491e7c80e949fd3340508"
       },
-      "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
+      "sourceCommit": "25b80c9fe77d7baaec3f3a8a548c9663d0f39a30",
       "catalogAutomation": "pending",
       "automation": "pending",
-      "automationLabel": "Rules reference · play automation in progress"
+      "automationLabel": "Rules reference · resolve effects at the table"
     }
   }
 }

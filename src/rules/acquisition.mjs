@@ -78,19 +78,19 @@ export function acquireAbility(
       });
     }
   }
-  if (adapter.specialtyChoice) {
-    const specialty = selection.specialty;
+  if (adapter.instrumentChoice) {
+    const instrument = selection.instrument;
     if (
-      typeof specialty !== "string" ||
-      !specialty.trim() ||
-      specialty.trim().length > 120
+      typeof instrument !== "string" ||
+      !instrument.trim() ||
+      instrument.trim().length > 120
     )
       errors.push(
-        "Name one mundane performance specialty (up to 120 characters).",
+        "Name the ordinary instrument you own and choose for A Party Piece (up to 120 characters).",
       );
     else {
-      next.specialties ??= [];
-      next.specialties.push({ abilityId, specialty: specialty.trim() });
+      next.instruments ??= [];
+      next.instruments.push({ abilityId, instrument: instrument.trim() });
     }
   }
   const grants = [];
@@ -163,4 +163,21 @@ export function inventoryTotals(items, catalog, { wornOutfitId = null } = {}) {
       bulk -= definition.bulk;
   }
   return { bulk };
+}
+
+/** Creation buys equipment after learning choices; validate ownership at final review. */
+export function instrumentOwnershipErrors(state, items = state.items ?? []) {
+  if (!state.abilities?.includes("ability-a-party-piece")) return [];
+  const owned = items.some(item =>
+    (item.quantity ?? 1) > 0 &&
+    (item.catalogId === "item-musical-instrument" ||
+      item.compatibleWith?.includes("item-musical-instrument")),
+  );
+  if (owned) return [];
+  return [{
+    code: "acquisition",
+    equipment: true,
+    id: "ability-a-party-piece",
+    reasons: [{text: "A Party Piece requires an ordinary Musical Instrument (Bulk 1) you own; the ability grants none."}],
+  }];
 }

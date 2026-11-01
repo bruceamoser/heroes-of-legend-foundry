@@ -23,7 +23,7 @@ const get = (id) => records.find((r) => r.id === id);
 test("complete learning catalog has stable unique IDs and exact pinned sources", () => {
   assert.equal(catalog.schemaVersion, 2);
   assert.equal(catalog.sourceCommit, lock.commit);
-  assert.equal(records.length, 521);
+  assert.equal(records.length, 529);
   assert.deepEqual(
     Object.fromEntries(
       ["ability", "ancestry", "class", "discipline", "origin", "trait"].map(
@@ -31,7 +31,7 @@ test("complete learning catalog has stable unique IDs and exact pinned sources",
       ),
     ),
     {
-      ability: 419,
+      ability: 427,
       ancestry: 4,
       class: 10,
       discipline: 18,
@@ -58,38 +58,18 @@ test("complete learning catalog has stable unique IDs and exact pinned sources",
             value,
         ),
       );
-      assert.deepEqual(
-        r.reference.rules.details
-          .filter(({ label }) =>
-            [
-              "Action",
-              "Attribute",
-              "Target / range / shape",
-              "Duration",
-              "Equipment / acquisition",
-              "Limits",
-            ].includes(label),
-          )
-          .map(({ label }) => label),
-        [
-          "Action",
-          "Attribute",
-          "Target / range / shape",
-          "Duration",
-          "Equipment / acquisition",
-          "Limits",
-        ],
-      );
+      for (const label of ["Action", "Attribute", "Target / range / shape"])
+        assert(r.reference.rules.details.some(detail => detail.label === label && detail.value));
     }
   }
   assert.equal(records.filter((r) => r.universal).length, 18);
   assert(records.filter((r) => r.universal).every((r) => r.cost === null));
-  assert.equal(records.filter((r) => r.reference).length, 419);
+  assert.equal(records.filter((r) => r.reference).length, 427);
   assert.equal(
     records.filter((r) =>
       r.reference?.rules.body.some((block) => block.outcomes),
     ).length,
-    193,
+    156,
   );
 });
 test("catalog references preserve exact acquisition details and outcomes", () => {
@@ -104,36 +84,33 @@ test("catalog references preserve exact acquisition details and outcomes", () =>
   assert.equal(detail("Attribute"), "Knowledge");
   assert.equal(
     detail("Target / range / shape"),
-    "Self or one adjacent willing creature.",
+    "Self or up to two adjacent willing or unconscious creatures.",
   );
   assert.equal(
     detail("Duration"),
-    "Condition reduction is immediate; crafted supplies persist until used.",
+    undefined,
   );
   assert.equal(
     detail("Equipment / acquisition"),
-    "One mixing kit, Bulk 1, if absent; both named recipes. No ingredients or finished tonic.",
+    "A free hand; mixing kit (Bulk 1), supplied on learning if needed; prepared tonic when administering.",
   );
   assert.equal(
     detail("Limits"),
-    "Repeatable; pay the action and any stated costs each use.",
+    undefined,
   );
   assert.deepEqual(outcomes, [
-    { label: "Weak", text: "Reduce temporary Poisoned by 1." },
+    { label: "Weak", text: "Reduce Poisoned by 2 or Dazed by 1." },
     {
       label: "Standard",
-      text: "Reduce temporary Poisoned by 2 or Dazed by 1.",
+      text: "Reduce Poisoned by 3 or Dazed by 2.",
     },
     {
       label: "Strong",
-      text: "Reduce temporary Poisoned by 3 or Dazed by 2.",
+      text: "Reduce Poisoned by 4 or Dazed by 3.",
     },
   ]);
-  assert(
-    get("ability-a-bough-for-the-fallen").reference.rules.notes.some(
-      ({ label }) => label === "Offensive healing — latest agreement",
-    ),
-  );
+  assert(get("ability-a-bough-for-the-fallen").reference.rules.body.some(
+    block => block.outcomes?.some(outcome => outcome.text === "Restore 9 HP; it may move 2 squares toward you without provoking.")));
   const potion = get("ability-use-a-healing-potion").reference;
   assert(!/offensive healing|this spell/i.test(JSON.stringify(potion)));
 });
@@ -367,4 +344,29 @@ test("armor tiers require independent Armor ranks and Walled Communities grants 
     get("origin-culture-walled-communities").pairs[0].abilityId,
     "ability-wear-light-armor",
   );
+});
+
+test("optional reference fields stay absent while target/action and learning metadata remain required",()=>{
+ const fixture=sample();
+ fixture.text=fixture.text.replace("**Duration:** Instant.\n\n","").replace("**Equipment / acquisition:** None.\n\n","").replace("**Limits:** Purchase once.\n\n","");
+ const parsed=parseChoices([fixture])[0];
+ assert.equal(parsed.purchasePolicy,"once");
+ for(const label of ["Duration","Equipment / acquisition","Limits"]) assert(!parsed.reference.rules.details.some(detail=>detail.label===label));
+ assert.throws(()=>parseAbilityReference(fixture.text.replace("**Target / range / shape:** One adjacent creature.\n\n","")),/Incomplete/);
+ assert.throws(()=>parseAbilityReference(fixture.text.replace("**Action:** Main Action · **Attribute:** Reason","")),/action/);
+ assert.throws(()=>parseChoices([{...fixture,text:fixture.text.replace("**Tier / minimum level:** 1 · **DP:** 2 · **Requirements to learn:** None","")}]),/learning metadata/);
+});
+test("approved universal higher-tier prices accept only exact identities, levels and costs",()=>{
+ for(const [id,level,cost] of [
+ ["the-web-of-whispers",3,3],["the-last-word",3,3],["the-lucky-trinket",3,3],
+ ["the-impossible-escape",3,3],["a-name-worth-knowing",3,3],["the-strong-arm",3,3],
+ ["touched-by-the-divine",7,6],["the-mountain-walks",7,6]]){
+  assert.equal(get(`ability-${id}`).cost,cost);
+  const fixture=sample(); fixture.path=`design/cards/${id}.md`;
+  fixture.text=fixture.text.replace("**ID:** fixture",`**ID:** ${id}`).replace("**Tier / minimum level:** 1 · **DP:** 2",`**Tier / minimum level:** ${level} · **DP:** ${cost}`);
+  assert.equal(parseChoices([fixture])[0].cost,cost);
+  assert.throws(()=>parseChoices([{...fixture,text:fixture.text.replace(`**DP:** ${cost}`,"**DP:** 5")}]),/tier cost/);
+ }
+ const unknown=sample(); unknown.text=unknown.text.replace("**Tier / minimum level:** 1 · **DP:** 2","**Tier / minimum level:** 3 · **DP:** 3");
+ assert.throws(()=>parseChoices([unknown]),/tier cost/);
 });

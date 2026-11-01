@@ -1,0 +1,41 @@
+{
+  "_key": "!items!524b2c87215e0879",
+  "_id": "524b2c87215e0879",
+  "name": "The Web of Whispers",
+  "type": "ability",
+  "img": "icons/commodities/treasure/mask-jeweled-gold.webp",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You send word through the people who owe you a favor, the people who fear you, and the people who simply like to talk.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self; one question about a person, place, faction or event your network or research could plausibly know.</dd></div><div><dt>Duration</dt><dd>The answer and contact remain known.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Once per scene; one question.</dd></div><div><dt>Type</dt><dd>Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>Ask one question. The DA answers truthfully from what that network would know. The answer may be incomplete or point to a source. You also learn who can tell you more.</p></div><h3>Additional rulings</h3><p><strong>Tags:</strong> Universal / Skill / Investigation / Passive</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/25b80c9fe77d7baaec3f3a8a548c9663d0f39a30/design/cards/the-web-of-whispers.md\" target=\"_blank\" rel=\"noopener\">design/cards/the-web-of-whispers.md</a> at <code>25b80c9fe77d7baaec3f3a8a548c9663d0f39a30</code>.</p></section>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-the-web-of-whispers",
+      "source": {
+        "path": "design/cards/the-web-of-whispers.md",
+        "sha256": "199fb9deb495c1071a083b7e17d25183bebb59268655106da067f13b33e8075b"
+      },
+      "sourceCommit": "25b80c9fe77d7baaec3f3a8a548c9663d0f39a30",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Rules reference · resolve effects at the table"
+    }
+  }
+}

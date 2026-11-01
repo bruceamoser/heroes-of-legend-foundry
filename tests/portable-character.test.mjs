@@ -5,6 +5,7 @@ import {
   readPortableCharacter,
   writePortableCharacter,
   MAX_CHARACTER_BYTES,
+  currentCreationDraft,
 } from "../src/rules/portable-character.mjs";
 import { DEFAULT_LANGUAGES } from "../src/rules/languages.mjs";
 import { newCreationDraft } from "../src/rules/creation.mjs";
@@ -109,7 +110,7 @@ test("campaign language differences become repairable review errors, never world
 test("choice fields survive portable parsing at creation and later levels without derived grants", () => {
   const draft = structuredClone(fixtures.characters[0].draft);
   draft.acquisitions["ability-another-tongue"] = { languageId: "goblin" };
-  draft.acquisitions["ability-a-party-piece"] = { specialty: "juggling" };
+  draft.acquisitions["ability-a-party-piece"] = { instrument: "lute" };
   draft.progression = {
     level: 2,
     levels: {
@@ -117,7 +118,7 @@ test("choice fields survive portable parsing at creation and later levels withou
         purchases: [],
         signatures: {},
         acquisitions: {
-          "ability-a-party-piece": { specialty: "singing" },
+          "ability-a-party-piece": { instrument: "flute" },
           "ability-another-tongue": { languageId: "orc" },
         },
       },
@@ -134,13 +135,13 @@ test("choice fields survive portable parsing at creation and later levels withou
     "goblin",
   );
   assert.equal(
-    result.draft.acquisitions["ability-a-party-piece"].specialty,
-    "juggling",
+    result.draft.acquisitions["ability-a-party-piece"].instrument,
+    "lute",
   );
   assert.equal(
     result.draft.progression.levels[2].acquisitions["ability-a-party-piece"]
-      .specialty,
-    "singing",
+      .instrument,
+    "flute",
   );
   assert.equal(
     result.draft.progression.levels[2].acquisitions["ability-another-tongue"]
@@ -154,4 +155,62 @@ test("choice fields survive portable parsing at creation and later levels withou
     ),
     false,
   );
+});
+
+test("retired Turn the Crowd choices normalize narrowly and immutably across creation and later levels", () => {
+  const old = "ability-turn-the-crowd", current = "ability-a-common-tongue";
+  const input = {
+    purchases: {0: [{id: old}, {id: "ability-conditioned-body"}], 1: [{id: current}]},
+    acquisitions: {[old]: {instrument: "preserved"}, "ability-another-tongue": {languageId: "orc"}},
+    progression: {level: 7, levels: {7: {purchases: [{id: old}], acquisitions: {[old]: {specialty: "history"}}}}},
+    play: {hp: 0, gritSpent: 2, wounds: [{id: "wound-1", name: "Scar", notes: "Keep"}]},
+  };
+  const before = structuredClone(input);
+  const normalized = currentCreationDraft(input, "old-source");
+  assert.deepEqual(input, before);
+  assert.deepEqual(normalized.purchases, {0: [{id: current}, {id: "ability-conditioned-body"}], 1: []});
+  assert.deepEqual(normalized.progression.levels[7].purchases, []);
+  assert.deepEqual(normalized.acquisitions[current], {instrument: "preserved"});
+  assert.deepEqual(normalized.progression.levels[7].acquisitions[current], {specialty: "history"});
+  assert(!Object.hasOwn(normalized.acquisitions, old));
+  assert.deepEqual(normalized.play, before.play);
+  assert.deepEqual(currentCreationDraft(normalized), normalized);
+});
+
+test("old portable level-seven purchase becomes exactly one current ability at the same eight DP cost", () => {
+  const old = "ability-turn-the-crowd", current = "ability-a-common-tongue";
+  const d = structuredClone(fixtures.characters[0].draft);
+  d.progression = {level: 7, levels: {
+    2: {purchases: [{id: "discipline-influence", rank: 1}]},
+    3: {purchases: [{id: "discipline-influence", rank: 2}], signatures: {3: "ability-signature-protector-break-their-advance"}},
+    4: {purchases: [{id: "discipline-influence", rank: 3}]},
+    7: {purchases: [{id: old}], acquisitions: {[old]: {}}, signatures: {7: "ability-signature-protector-unbroken-passage"}},
+  }};
+  const file = {format: "heroes-of-legend-character", schemaVersion: 3, sourceCommit: "old-source", draft: d};
+  const before = structuredClone(file);
+  const result = readPortableCharacter(file, catalogs, languages);
+  assert.deepEqual(file, before);
+  assert.equal(result.preview.valid, true, JSON.stringify(result.preview.errors));
+  assert.deepEqual(result.draft.progression.levels[7].purchases, [{id: current}]);
+  assert.equal(result.preview.state.abilities.filter(id => id === current).length, 1);
+  assert(!result.preview.state.abilities.includes(old));
+  const paid = result.preview.advancementLedger.filter(entry => entry.id === current);
+  assert.equal(paid.length, 1);
+  assert.equal(paid[0].delta, -8);
+  const canonical = structuredClone(file);
+  canonical.draft.progression.levels[7].purchases[0].id = current;
+  canonical.draft.progression.levels[7].acquisitions = {[current]: {}};
+  assert.equal(readPortableCharacter(canonical, catalogs, languages).preview.state.dp, result.preview.state.dp);
+  const duplicate = structuredClone(file);
+  duplicate.draft.progression.levels[7].purchases.push({id: current});
+  const once = readPortableCharacter(duplicate, catalogs, languages);
+  assert.equal(once.preview.valid, true, JSON.stringify(once.preview.errors));
+  assert.deepEqual(once.draft.progression.levels[7].purchases, [{id: current}]);
+  assert.equal(once.preview.state.dp, result.preview.state.dp);
+  assert.equal(once.preview.advancementLedger.filter(entry => entry.id === current).length, 1);
+  const missingRank = structuredClone(file);
+  missingRank.draft.progression.levels[4].purchases = [];
+  const ineligible = readPortableCharacter(missingRank, catalogs, languages);
+  assert.equal(ineligible.preview.valid, false);
+  assert(!ineligible.preview.state.abilities.includes(current));
 });

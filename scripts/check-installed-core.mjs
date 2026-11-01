@@ -8,6 +8,9 @@ import { selectTestUser } from "./helpers/login.mjs";
 import { stableFoundryId } from "./content/item-packs.mjs";
 
 const ID = "heroes-of-legend", url = process.env.HOL_TEST_URL;
+const contentOnly = process.env.HOL_TEST_INSTALLED_SCOPE === "content";
+if (process.env.HOL_TEST_INSTALLED_SCOPE && !contentOnly) throw new Error("Unknown installed acceptance scope.");
+const evidencePath = `test-results/installed-${contentOnly ? "content" : "core"}-evidence.json`;
 if (!url || !["localhost", "127.0.0.1"].includes(new URL(url).hostname) ||
     process.env.HOL_TEST_ALLOW_WRITES !== "1" || process.env.HOL_TEST_ISOLATED_WORLD !== "1")
   throw new Error("Use an authorized isolated local world.");
@@ -33,7 +36,7 @@ const journalIndex = JSON.parse(await readFile(resolve(installed, "data/journal-
 const restrictedRule = journalIndex.records.find(record => record.pack === "da-rules");
 assert(restrictedRule, "The installed rules index must contain DA references.");
 await mkdir("test-results", { recursive: true });
-await rm("test-results/installed-core-evidence.json", { force: true });
+await rm(evidencePath, { force: true });
 const browser = await chromium.launch({ args: ["--use-gl=angle", "--use-angle=swiftshader", "--enable-unsafe-swiftshader"] });
 const errors = [], steps = [], clients = [];
 let gm, owner, other, fixture, cleanup, evidence;
@@ -94,10 +97,10 @@ try {
   assert.equal(await gm.evaluate(() => game.system.version), manifest.version);
   assert.deepEqual(await gm.evaluate(async () => {
     const counts = {};
-    for (const name of ["abilities", "equipment", "creatures", "summons", "player-rules", "da-rules"]) counts[name] = (await game.packs.get(`heroes-of-legend.${name}`).getIndex()).size;
+    for (const name of ["abilities", "equipment", "creatures", "player-rules", "da-rules"]) counts[name] = (await game.packs.get(`heroes-of-legend.${name}`).getIndex()).size;
     return counts;
-  }), { abilities: 419, equipment: 44, creatures: 192, summons: 73, "player-rules": 610, "da-rules": 408 });
-  await gm.waitForFunction(() => game.settings.get("heroes-of-legend", "creationAuthorityClient") === game.socket.id);
+  }), { abilities: 427, equipment: 46, creatures: 192, "player-rules": 1, "da-rules": 1 });
+  await gm.waitForFunction(() => game.settings.get("heroes-of-legend", "actionRelay")?.clientId === game.socket.id);
   fixture = await gm.evaluate(async ids => {
     const ID = "heroes-of-legend", registry = globalThis.__hol121Core = { actors: [], users: [], scenes: [], combats: [], messages: [] };
     registry.priorScene = game.scenes.viewed?.id ?? null;
@@ -117,7 +120,7 @@ try {
     for (let index = 0; index < 2; index++) {
       const actor = await Actor.create({ name: index ? "Bera · journey" : "Arin · journey", type: "character",
         ownership: { default: CONST.DOCUMENT_OWNERSHIP_LEVELS.OBSERVER, [users[index].id]: CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER },
-        flags: { [ID]: { development: { creationSummary: { speedBase: 5, unencumberedSpeed: 5, capacity: 10 } } } },
+        flags: { [ID]: { development: { coins: 100, creationSummary: { speedBase: 5, unencumberedSpeed: 5, capacity: 10 } } } },
         system: { health: { value: index ? 14 : 10, baseMax: 20 }, attributes: { brawn: { base: 2 }, fortitude: { base: 1 } } } });
       registry.actors.push(actor.id); actors.push(actor);
       await game.users.get(users[index].id).update({ character: actor.id });
@@ -160,6 +163,7 @@ try {
   }, fixture) };
   owner = await join(fixture.users[0].name); other = await join(fixture.users[1].name);
   await view(owner); await view(other);
+  for (const page of [gm, owner, other]) await page.evaluate(async id => ui.combat.render({force:true, combat:game.combats.get(id)}), fixture.combat);
   const playerRules = await owner.evaluate(async () => {
     const { ruleIndex, openLocalRule } = await import("/systems/heroes-of-legend/services/journals.mjs");
     const index = await ruleIndex();
@@ -169,7 +173,7 @@ try {
     if (book.pages.size !== 625 || book.getFlag("heroes-of-legend", "ruleBook")?.key !== "player-rules") throw new Error("Expected a complete native Player book.");
     return { count: index.length, readable: entry.testUserPermission(game.user, "OBSERVER"), sourcePages:book.pages.filter(page => page.getFlag("heroes-of-legend", "ruleSource")).length };
   });
-  assert.deepEqual(playerRules, { count: 610, readable: true, sourcePages:610 });
+  assert.deepEqual(playerRules, { count: journalIndex.records.filter(record => record.pack === "player-rules").length, readable: true, sourcePages:610 });
   await owner.evaluate(async path => {
     for (const app of foundry.applications.instances.values())
       if (app.document?.documentName === "JournalEntry") await app.close();
@@ -187,9 +191,13 @@ try {
   await owner.locator(fixture.ownerSheetSelector).locator('[data-tab="inventory"]').click();
   await owner.locator(fixture.ownerSheetSelector).locator("[data-action=addEquipment]").click();
   const equipmentSource = `Compendium.heroes-of-legend.equipment.Item.${stableFoundryId("item-lesser-healing-bottle")}`;
-  const equipmentDialog = owner.getByRole("dialog").filter({ has: owner.locator('[name="equipmentSourceUuid"]') });
-  await equipmentDialog.locator('[name="equipmentSourceUuid"]').selectOption(equipmentSource);
-  await equipmentDialog.getByRole("button", { name: "Add", exact: true }).click();
+  const equipmentMarket = owner.locator(".hol-equipment-market");
+  await equipmentMarket.waitFor();
+  for (const id of ["item-folding-launcher", "item-spring-hook-bracer"]) {
+    const uuid = `Compendium.heroes-of-legend.equipment.Item.${stableFoundryId(id)}`;
+    assert.equal(await equipmentMarket.locator(`[data-market-row][data-uuid="${uuid}"]`).count(), 0, "Ability-granted devices are absent from the native market");
+  }
+  await equipmentMarket.locator(`[data-market-row][data-uuid="${equipmentSource}"] [data-action=buy]`).click();
   await gm.waitForFunction(({ actor, source }) => game.actors.get(actor).items.some(item => item.getFlag("heroes-of-legend", "copySourceUuid") === source), { actor: fixture.actors[0], source: equipmentSource });
   assert.equal(await gm.evaluate(({ actor, source }) => {
     const copy = game.actors.get(actor).items.find(item => item.getFlag("heroes-of-legend", "copySourceUuid") === source);
@@ -202,6 +210,7 @@ try {
       JSON.stringify(copy.getFlag("heroes-of-legend", "source")) === JSON.stringify(original.getFlag("heroes-of-legend", "source"));
   }, { actor: fixture.actors[0], source: equipmentSource }), true);
   passed("installed source compendium equipment copies through normal Add equipment control");
+  if (!contentOnly) {
   await combat("start");
   const opening = await gm.evaluate(f => game.combats.get(f.combat).getFlag("heroes-of-legend", "encounter").nextSide, fixture);
   if (opening === "opposition") { await combat("choose", { id: fixture.participants[2] }); await combat("finish"); }
@@ -352,7 +361,7 @@ try {
     potion: game.combats.get(f.combat).getFlag("heroes-of-legend", "potionOperations")[f.potionRequest] }), fixture);
   await gm.bringToFront();
   await gm.reload(); await gm.waitForFunction(() => globalThis.game?.ready);
-  await gm.waitForFunction(() => game.settings.get("heroes-of-legend", "creationAuthorityClient") === game.socket.id);
+  await gm.waitForFunction(() => game.settings.get("heroes-of-legend", "actionRelay")?.clientId === game.socket.id);
   const replay = await gm.evaluate(async f => {
     const { resolvePlayerBasicMeleeRequest } = await import("/systems/heroes-of-legend/services/player-attacks.mjs"),
       { resolvePotionRequest } = await import("/systems/heroes-of-legend/services/potions.mjs");
@@ -365,6 +374,7 @@ try {
     potion: game.combats.get(f.combat).getFlag("heroes-of-legend", "potionOperations")[f.potionRequest] }), fixture);
   assert.deepEqual(after, before);
   passed("reload and same-operation attack/potion replay preserve dice, HP and receipts");
+  }
   await owner.bringToFront();
   await owner.evaluate(async id => { await game.actors.get(id).sheet.render({ force: true }); }, fixture.actors[0]);
   await owner.locator(fixture.ownerSheetSelector).locator('[data-tab="main"]').click();
@@ -396,6 +406,9 @@ try {
   await popup.close();
   passed("light/dark, narrow and native detached sheet screenshots captured for visual review");
   evidence = { version: manifest.version, zipSha256,
+    scope: contentOnly ? "installed content, permissions, equipment market and sheet captures" : "historical integrated core journey",
+    gameplayTested: !contentOnly,
+    requiredCompanionSuites: contentOnly ? ["test:table-attacks", "test:combat-damage"] : [],
     installed: resolve(installed), foundry: await gm.evaluate(() => game.version), steps, screenshotsRequireVisualReview: true, publicUrlsTested: false };
 } finally {
   if (gm && !gm.isClosed()) {
@@ -446,5 +459,5 @@ try {
 assert.deepEqual(errors, [], "Browser errors include scene restoration, document cleanup and browser teardown.");
 if (process.exitCode) throw new Error("Installed core fixture cleanup failed; no acceptance record written.");
 assert(evidence?.cleanup, "Fixture cleanup must be verified before writing acceptance evidence.");
-await writeFile("test-results/installed-core-evidence.json", JSON.stringify({ ...evidence, browserErrors: errors }, null, 2) + "\n");
-console.info("PASS installed core fixture including cleanup and browser teardown; visual review still required.");
+await writeFile(evidencePath, JSON.stringify({ ...evidence, browserErrors: errors }, null, 2) + "\n");
+console.info(`PASS installed ${contentOnly ? "content/access/market" : "core"} fixture including cleanup and browser teardown; visual review still required.${contentOnly ? " Gameplay requires separate current companion suites." : ""}`);

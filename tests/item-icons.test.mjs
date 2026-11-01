@@ -81,3 +81,22 @@ test("migration recognizes only the exact previous default for a known catalog i
   const ability={type:"ability",flags:{"heroes-of-legend":{catalogId:"ability-basic-ranged"}},img:"systems/heroes-of-legend/assets/icons/bow.svg"};
   assert.match(itemIconForData(ability,catalogs),/shortbow-leather/);
 });
+
+test("new Universal choices and supplied devices use reviewed existing illustrations", () => {
+  for (const [id, suffix] of [
+    ["ability-a-name-worth-knowing", "book-worn-green.webp"],
+    ["ability-the-impossible-escape", "feet-spurred-boots-brown.webp"],
+    ["ability-the-last-word", "horn-carved-banded.webp"],
+    ["ability-the-lucky-trinket", "brooch-skull-dagger-grey.webp"],
+    ["ability-the-mountain-walks", "unarmed-punch-fist.webp"],
+    ["ability-the-strong-arm", "unarmed-punch-fist.webp"],
+    ["ability-the-web-of-whispers", "mask-jeweled-gold.webp"],
+    ["ability-touched-by-the-divine", "spirit-poison-smoke-green.webp"],
+    ["item-folding-launcher", "shortbow-leather.webp"],
+    ["item-spring-hook-bracer", "hammer-sledge-steel-grey.webp"],
+  ]) {
+    const icon = catalogItemIcon({id, kind: id.startsWith("ability-") ? "ability" : "equipment"});
+    assert(icon.endsWith(suffix), id);
+    assert(verifiedCore.has(icon), icon);
+  }
+});

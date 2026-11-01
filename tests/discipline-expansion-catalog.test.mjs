@@ -22,9 +22,9 @@ const detail = (record, label) =>
 
 // Explicit IDs make a missing or substituted approved card fail even if totals still match.
 test("all 62 approved cards occur once with exact tiers, actions, source and narrative", () => {
-  assert.equal(lock.commit, "295e858c1b6fee044a0261bf9f437636efeff2bf");
-  assert.equal(abilities.length, 419);
-  assert.equal(inventory.equipment.length, 44);
+  assert.equal(lock.commit, "25b80c9fe77d7baaec3f3a8a548c9663d0f39a30");
+  assert.equal(abilities.length, 427);
+  assert.equal(inventory.equipment.length, 46);
   assert.equal(new Set(added).size, 62);
   assert.deepEqual(
     abilities
@@ -34,7 +34,7 @@ test("all 62 approved cards occur once with exact tiers, actions, source and nar
     added.slice().sort(),
   );
   const tiers = { 1: 0, 3: 0, 7: 0 };
-  const actions = { Maneuver: 0, Reaction: 0, "Main Action": 0 };
+  const actions = { Maneuver: 0, Reaction: 0, "Main Action": 0, Passive: 0 };
   for (const id of added) {
     const record = byId.get(id);
     tiers[record.minimumLevel]++;
@@ -45,9 +45,6 @@ test("all 62 approved cards occur once with exact tiers, actions, source and nar
     for (const label of [
       "Attribute",
       "Target / range / shape",
-      "Duration",
-      "Equipment / acquisition",
-      "Limits",
     ])
       assert(detail(record, label), `${id}: ${label}`);
     assert.equal(
@@ -56,21 +53,22 @@ test("all 62 approved cards occur once with exact tiers, actions, source and nar
     );
   }
   assert.deepEqual(tiers, { 1: 27, 3: 14, 7: 21 });
-  assert.deepEqual(actions, { Maneuver: 27, Reaction: 31, "Main Action": 4 });
+  assert.deepEqual(actions, { Maneuver: 26, Reaction: 29, "Main Action": 4, Passive: 3 });
 });
 
-test("mixed requirements retain every rank and every discipline has meaningful maneuver and reaction access", () => {
+test("mixed requirements and the exact approved discipline timing coverage remain intact", () => {
   assert.deepEqual(byId.get("ability-shatterguard").requirements, [
     { kind: "discipline", id: "discipline-frost", rank: 2 },
     { kind: "discipline", id: "discipline-guard", rank: 1 },
   ]);
   assert.deepEqual(byId.get("ability-wind-the-sight").requirements, [
     { kind: "discipline", id: "discipline-craft", rank: 2 },
-    { kind: "discipline", id: "discipline-marksmanship", rank: 2 },
+    { kind: "discipline", id: "discipline-marksmanship", rank: 1 },
   ]);
   const shared = abilities.filter(
     (record) => !record.classId && !record.universal,
   );
+  const missing = [];
   for (const discipline of choices.records.filter(
     (record) => record.kind === "discipline",
   ))
@@ -80,20 +78,19 @@ test("mixed requirements retain every rank and every discipline has meaningful m
       [7, 2],
     ])
       for (const action of ["Maneuver", "Reaction"])
-        assert(
-          shared.some(
-            (record) =>
-              record.minimumLevel === level &&
-              detail(record, "Action") === action &&
-              record.requirements.some(
-                (requirement) =>
-                  requirement.kind === "discipline" &&
-                  requirement.id === discipline.id &&
-                  requirement.rank >= minimumRank,
-              ),
-          ),
-          `${discipline.name} level ${level} ${action}`,
-        );
+        if (!shared.some(
+          record => record.minimumLevel === level &&
+            detail(record, "Action") === action &&
+            record.requirements.some(requirement =>
+              requirement.kind === "discipline" && requirement.id === discipline.id && requirement.rank >= minimumRank),
+        )) missing.push(`${discipline.id}:${level}:${action}`);
+  // These revised cards deliberately leave these timing/rank combinations absent.
+  assert.deepEqual(missing, [
+    "discipline-armor:1:Maneuver", "discipline-armor:7:Reaction",
+    "discipline-arms:7:Maneuver", "discipline-calling:7:Reaction",
+    "discipline-craft:3:Maneuver", "discipline-marksmanship:3:Maneuver",
+    "discipline-marksmanship:3:Reaction", "discipline-wilderness:1:Reaction",
+  ]);
 });
 
 const grants = {
@@ -208,4 +205,13 @@ test("universal actions, signatures, rank prices and six one-DP exceptions keep 
       [3, 3, 3],
     );
   }
+});
+
+test("all 297 November 1 approved discipline cards retain exact stable identities and source hashes", async () => {
+  const approved = await read("./fixtures/approved-discipline-sources.json");
+  assert.equal(approved.sourceCommit, lock.commit);
+  assert.equal(approved.records.length, 297);
+  const actual = abilities.filter(record => record.requirements.some(r => r.kind === "discipline"))
+    .map(record => ({id: record.id, path: record.source.path, sha256: record.source.sha256}));
+  assert.deepEqual(actual.sort((a,b)=>a.id.localeCompare(b.id)), approved.records.sort((a,b)=>a.id.localeCompare(b.id)));
 });

@@ -1,5 +1,5 @@
 import { DAMAGE_TYPE } from "./damage.mjs";
-import { isSummon, summonRecord, summonSystemFromRecord } from "./summon-profile.mjs";
+import { isSummon, summonState, summonRecord, summonSystemFromRecord } from "./summon-profile.mjs";
 
 /** One sheet projection for standard creatures and summon-flagged creatures. */
 export function creatureSheetProfile(actor) {
@@ -7,6 +7,8 @@ export function creatureSheetProfile(actor) {
   const system = summonSystemFromRecord(summonRecord(actor));
   return {
     ...system,
+    // Profile statistics never replenish the document's live HP on render.
+    health: {...system.health, ...actor.system.health},
     armor: 0,
     evasion: system.defenseModifier,
     threat: { boons: 0, banes: 0 },
@@ -39,6 +41,7 @@ export function creatureSheetProfile(actor) {
 
 /** Summon profiles print attacker outcomes. Keep their order and attribute intact. */
 export function summonAttackConfiguration(actor, id = "basic-melee") {
+  if (summonState(actor)?.lifecycle?.expired) throw new Error("This summon disappeared. Explicitly summon it again before acting.");
   if (!isSummon(actor)) throw new Error("Choose a summoned creature.");
   const system = summonSystemFromRecord(summonRecord(actor));
   const attack =

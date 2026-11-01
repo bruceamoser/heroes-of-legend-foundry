@@ -42,7 +42,7 @@ export function contextualAbilitySources(basis, draft = {}) {
   const sources = [];
   if (
     draft.partyPiece &&
-    basis.mode === "attribute" &&
+    ["attribute", "attack", "defense"].includes(basis.mode) &&
     basis.attributeKey === "guile" &&
     basis.partyPiece
   )
@@ -50,7 +50,7 @@ export function contextualAbilitySources(basis, draft = {}) {
       id: "ability-a-party-piece",
       kind: "boon",
       amount: 1,
-      label: "A Party Piece · chosen performance specialty",
+      label: "A Party Piece · playing your chosen instrument",
       automatic: false,
       sourceIds: [basis.partyPiece],
     });

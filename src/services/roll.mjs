@@ -1,3 +1,4 @@
+import {assertSummonPresent} from "../rules/summon-profile.mjs";
 import {summonAttackConfiguration} from "../rules/creature-sheet-profile.mjs";
 import {resolvedAttackEffects} from "../rules/attack-outcomes.mjs";
 import {DAMAGE_TYPE_LABELS} from "../rules/damage.mjs";
@@ -67,6 +68,7 @@ export async function evaluatePreparedRoll(
   draft,
   { rollerId = game.user.id, allowInteractive = false } = {},
 ) {
+  assertSummonPresent(actor);
   let ability = draft.summonAttackId ? summonAttackConfiguration(actor,draft.summonAttackId) : undefined;
   if (ability) assertAbilityConfiguration(ability,draft.abilityConfiguration);
   if (draft.abilityItemId) {

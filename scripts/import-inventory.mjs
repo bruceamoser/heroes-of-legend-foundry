@@ -91,6 +91,11 @@ for (const source of lock.records.filter((r) =>
       source.sha256,
       `Acquisition needs review: ${source.path}`,
     );
+    const grant = {
+      "ability-a-marvel-on-wheels": ["item-folding-launcher", "Folding Launcher", "One reusable folding launcher (Bulk 1), built on learning and supplied if needed."],
+      "ability-spring-in-the-sleeve": ["item-spring-hook-bracer", "Spring-hook Bracer", "One reusable spring-hook bracer (Bulk 1), built on learning and supplied if needed."],
+    }[adapter.id];
+    if (grant) equipment.push({ id: grant[0], name: grant[1], description: grant[2], source: { path: source.path, sha256: source.sha256 }, bulk: 1, grantOnly: true, inventoryDie: null, handChoices: [], automation: "pending" });
     continue;
   }
   const id = text.match(/\*\*ID:\*\* ([a-z0-9-]+)/)?.[1];
@@ -141,9 +146,9 @@ for (const source of lock.records.filter((r) =>
     });
   }
 }
-assert.equal(equipment.length, 44);
+assert.equal(equipment.filter(record => !record.grantOnly).length, 44);
 assert.equal(recipeRecords.length, 10);
-assert.equal(reviewed.adapters.length, 419);
+assert.equal(reviewed.adapters.length, 427);
 const output = {
   schemaVersion: 1,
   sourceCommit: lock.commit,
@@ -161,5 +166,5 @@ if (process.argv.includes("--check"))
   );
 else await writeFile(path, serialized);
 console.info(
-  "Verified 44 equipment records, 10 recipes, 419 acquisition adapters.",
+  "Verified 44 market equipment records and 2 ability-granted gear records, 10 recipes, 427 acquisition adapters.",
 );

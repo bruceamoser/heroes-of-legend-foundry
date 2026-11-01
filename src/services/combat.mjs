@@ -1,3 +1,5 @@
+import {settleSummonExpiry} from "./summon-lifecycle.mjs";
+import {summonState} from "../rules/summon-profile.mjs";
 import {settleTurnConditions,turnEndContent} from "./turn-end-conditions.mjs";
 import { createActionMessage, shouldProcessRequest } from "./authority.mjs";
 import { ensureAuthorityReady } from "./authority.mjs";
@@ -98,17 +100,19 @@ async function apply(id, combatUuid) {
       "The encounter changed. Choose again.",
     );
   let next,turnEnd;
-  const participants = () => combat.combatants.map(c=>({id:c.id,side:combatSide(c)}));
+  const participants = () => combat.combatants.filter(c=>!summonState(c.actor)?.record).map(c=>({id:c.id,side:combatSide(c)}));
   if (request.kind === "start") {
     if (state) throw new Error("This encounter has already started.");
     next = startTurnSelection(participants());
   } else if (request.kind === "choose") {
+    if (summonState(actor)?.record) throw new Error("Summons act through their controller's commands. Choose the controller's turn.");
     if (!combat.combatants.has(request.id)) throw new Error("That participant is no longer in the encounter.");
     const current = state ? reconcileTurnRoster(state,participants()) : startTurnSelection(participants());
     next = selectTurn(current, request.id);
   } else if (request.kind === "finish") {
     if (!state) throw new Error("Choose a participant first.");
     const current=reconcileTurnRoster(state,participants());
+    await settleSummonExpiry(combat,actor,state);
     turnEnd=await settleTurnConditions(actor,`${combat.id}-${state.serial}-${state.current}`,{author:message.author});
     next = finishSelectedTurn(current);
   } else {

@@ -94,10 +94,10 @@ try {
   assert.equal(await gm.evaluate(() => game.system.version), manifest.version);
   assert.deepEqual(await gm.evaluate(async () => {
     const counts = {};
-    for (const name of ["abilities", "equipment", "creatures", "summons", "player-rules", "da-rules"]) counts[name] = (await game.packs.get(`heroes-of-legend.${name}`).getIndex()).size;
+    for (const name of ["abilities", "equipment", "creatures", "player-rules", "da-rules"]) counts[name] = (await game.packs.get(`heroes-of-legend.${name}`).getIndex()).size;
     return counts;
-  }), { abilities: 419, equipment: 44, creatures: 192, summons: 73, "player-rules": 610, "da-rules": 408 });
-  await gm.waitForFunction(() => game.settings.get("heroes-of-legend", "creationAuthorityClient") === game.socket.id);
+  }), { abilities: 427, equipment: 46, creatures: 192, "player-rules": 1, "da-rules": 1 });
+  await gm.waitForFunction(() => game.settings.get("heroes-of-legend", "actionRelay")?.clientId === game.socket.id);
   fixture = await gm.evaluate(async ids => {
     const ID = "heroes-of-legend", registry = globalThis.__hol121Core = { actors: [], users: [], scenes: [], combats: [], messages: [] };
     registry.priorScene = game.scenes.viewed?.id ?? null;
@@ -117,7 +117,7 @@ try {
     for (let index = 0; index < 2; index++) {
       const actor = await Actor.create({ name: index ? "Bera · journey" : "Arin · journey", type: "character",
         ownership: { default: CONST.DOCUMENT_OWNERSHIP_LEVELS.OBSERVER, [users[index].id]: CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER },
-        flags: { [ID]: { development: { creationSummary: { speedBase: 5, unencumberedSpeed: 5, capacity: 10 } } } },
+        flags: { [ID]: { development: { coins: 100, creationSummary: { speedBase: 5, unencumberedSpeed: 5, capacity: 10 } } } },
         system: { health: { value: index ? 14 : 10, baseMax: 20 }, attributes: { brawn: { base: 2 }, fortitude: { base: 1 } } } });
       registry.actors.push(actor.id); actors.push(actor);
       await game.users.get(users[index].id).update({ character: actor.id });
@@ -169,7 +169,7 @@ try {
     if (book.pages.size !== 625 || book.getFlag("heroes-of-legend", "ruleBook")?.key !== "player-rules") throw new Error("Expected a complete native Player book.");
     return { count: index.length, readable: entry.testUserPermission(game.user, "OBSERVER"), sourcePages:book.pages.filter(page => page.getFlag("heroes-of-legend", "ruleSource")).length };
   });
-  assert.deepEqual(playerRules, { count: 610, readable: true, sourcePages:610 });
+  assert.deepEqual(playerRules, { count: journalIndex.records.filter(record => record.pack === "player-rules").length, readable: true, sourcePages:610 });
   await owner.evaluate(async path => {
     for (const app of foundry.applications.instances.values())
       if (app.document?.documentName === "JournalEntry") await app.close();
@@ -187,9 +187,8 @@ try {
   await owner.locator(fixture.ownerSheetSelector).locator('[data-tab="inventory"]').click();
   await owner.locator(fixture.ownerSheetSelector).locator("[data-action=addEquipment]").click();
   const equipmentSource = `Compendium.heroes-of-legend.equipment.Item.${stableFoundryId("item-lesser-healing-bottle")}`;
-  const equipmentDialog = owner.getByRole("dialog").filter({ has: owner.locator('[name="equipmentSourceUuid"]') });
-  await equipmentDialog.locator('[name="equipmentSourceUuid"]').selectOption(equipmentSource);
-  await equipmentDialog.getByRole("button", { name: "Add", exact: true }).click();
+  const equipmentMarket = owner.locator(".hol-equipment-market");
+  await equipmentMarket.locator(`[data-market-row][data-uuid="${equipmentSource}"] [data-action=buy]`).click();
   await gm.waitForFunction(({ actor, source }) => game.actors.get(actor).items.some(item => item.getFlag("heroes-of-legend", "copySourceUuid") === source), { actor: fixture.actors[0], source: equipmentSource });
   assert.equal(await gm.evaluate(({ actor, source }) => {
     const copy = game.actors.get(actor).items.find(item => item.getFlag("heroes-of-legend", "copySourceUuid") === source);
@@ -214,6 +213,10 @@ try {
   await owner.locator(".hol-ability [data-action=useAbility]").click();
   const attack = owner.locator(".hol-player-attack");
   assert.equal(await attack.locator('select[name="targetTokenUuid"]').count(), 0);
+  console.info("Attack reference diagnostic", await owner.evaluate(() => {
+    const app = [...foundry.applications.instances.values()].find(app=>app.constructor.name==="PlayerAttackDialog");
+    return {items: app?.item?.actor?.items.map(item=>({name:item.name,type:item.type})), html: document.querySelector(".hol-player-attack")?.innerText.slice(0,2500)};
+  }));
   await attack.locator(".hol-reference-picker summary").click();
   const formula = await attack.locator("output").innerText();
   await attack.getByRole("checkbox", { name: "Winter Hold", exact: true }).check();
@@ -352,7 +355,7 @@ try {
     potion: game.combats.get(f.combat).getFlag("heroes-of-legend", "potionOperations")[f.potionRequest] }), fixture);
   await gm.bringToFront();
   await gm.reload(); await gm.waitForFunction(() => globalThis.game?.ready);
-  await gm.waitForFunction(() => game.settings.get("heroes-of-legend", "creationAuthorityClient") === game.socket.id);
+  await gm.waitForFunction(() => game.settings.get("heroes-of-legend", "actionRelay")?.clientId === game.socket.id);
   const replay = await gm.evaluate(async f => {
     const { resolvePlayerBasicMeleeRequest } = await import("/systems/heroes-of-legend/services/player-attacks.mjs"),
       { resolvePotionRequest } = await import("/systems/heroes-of-legend/services/potions.mjs");

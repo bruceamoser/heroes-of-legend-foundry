@@ -121,6 +121,7 @@ document.addEventListener("click", (e) => {
       face: 1,
       hp: 3,
       maxHp: 12,
+      lifeResistance: 0,
       catalog: inventory,
     });
     append(

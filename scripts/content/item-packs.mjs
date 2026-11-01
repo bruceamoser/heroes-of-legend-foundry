@@ -74,7 +74,8 @@ function lockedSource(lock, record) {
     (candidate) => candidate.path === record.source?.path,
   );
   const lockedId =
-    record.kind === "ability" ? record.id.slice("ability-".length) : record.id;
+    record.kind === "ability" ? record.id.slice("ability-".length) :
+      record.grantOnly === true ? ({"item-folding-launcher":"a-marvel-on-wheels","item-spring-hook-bracer":"spring-in-the-sleeve"}[record.id]) : record.id;
   if (
     !source ||
     source.id !== lockedId ||
@@ -100,9 +101,9 @@ export function validateCatalogBasis({ choices, inventory, lock }) {
       (record) => record.kind === "ability",
     ),
     equipment = inventory.equipment;
-  if (abilities?.length !== 419 || equipment?.length !== 44)
+  if (abilities?.length !== 427 || equipment?.length !== 46)
     throw new Error(
-      `Expected 419 abilities and 44 equipment records; found ${abilities?.length ?? 0} and ${equipment?.length ?? 0}.`,
+      `Expected 427 abilities and 46 equipment records; found ${abilities?.length ?? 0} and ${equipment?.length ?? 0}.`,
     );
   if (abilities.filter((record) => record.universal).length !== 18)
     throw new Error("Expected 18 universal ability references.");

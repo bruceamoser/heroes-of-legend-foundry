@@ -6,9 +6,9 @@
   "img": "systems/heroes-of-legend/assets/marks/wilderness.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You drop behind a twist of roots, letting the branches catch at the blow meant for you.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>Self, before a defense roll against an attack dealing physical damage while occupying vegetation that already supplies cover.</dd></div><div><dt>Duration</dt><dd>Instant.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Repeatable; pay the action and any stated costs each use.</dd></div><div><dt>Type</dt><dd>Skill / Defense</dd></div></dl><div class=\"hol-reference-rules\"><p>Gain 1 Boon to this defense. This is in addition to the existing cover modifier, under normal Boon/Bane rules. It does not grant Hidden or change the vegetation’s cover rating.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/295e858c1b6fee044a0261bf9f437636efeff2bf/design/cards/duck-into-the-brush.md\" target=\"_blank\" rel=\"noopener\">design/cards/duck-into-the-brush.md</a> at <code>295e858c1b6fee044a0261bf9f437636efeff2bf</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You let the branches close around your outline and turn your shoulder behind the thickest root.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self while vegetation supplies cover.</dd></div><div><dt>Type</dt><dd>Skill / Defense</dd></div></dl><div class=\"hol-reference-rules\"><p>While vegetation gives you cover, gain 1 Boon to defenses against attacks dealing physical damage.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/25b80c9fe77d7baaec3f3a8a548c9663d0f39a30/design/cards/duck-into-the-brush.md\" target=\"_blank\" rel=\"noopener\">design/cards/duck-into-the-brush.md</a> at <code>25b80c9fe77d7baaec3f3a8a548c9663d0f39a30</code>.</p></section>",
     "activity": {
-      "action": "reaction",
+      "action": "passive",
       "rollMode": "none",
       "attribute": "brawn",
       "defenseAttribute": "agility"
@@ -30,12 +30,12 @@
       "catalogId": "ability-duck-into-the-brush",
       "source": {
         "path": "design/cards/duck-into-the-brush.md",
-        "sha256": "f9b628addd2d72d5c1aa6d0c5eb31fae0e1e1204907bcd4917ff0e0bb3df1852"
+        "sha256": "f74f1ba18eea07a61686aa5c741a11d56a097b0c91df4f685b5e97067559b4aa"
       },
-      "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
+      "sourceCommit": "25b80c9fe77d7baaec3f3a8a548c9663d0f39a30",
       "catalogAutomation": "pending",
       "automation": "pending",
-      "automationLabel": "Rules reference · play automation in progress"
+      "automationLabel": "Rules reference · resolve effects at the table"
     }
   }
 }

@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
-import { creationPreview, newCreationDraft } from "../src/rules/creation.mjs";
+import { creationPreview, newCreationDraft, creationStepErrors } from "../src/rules/creation.mjs";
 import { createDefaultLanguageConfiguration } from "../src/rules/languages.mjs";
 const read = async (name) =>
   JSON.parse(
@@ -157,4 +157,24 @@ test("campaign language configuration changes identity labels without grants or 
   assert.equal(custom.summary.gritGranted, baseline.summary.gritGranted);
   assert.deepEqual(custom.state.purchases, baseline.state.purchases);
   assert.deepEqual(custom.ledger, baseline.ledger);
+});
+
+test("Party Piece requires chosen owned instrument at final review; shopping supplies it for coins", () => {
+  const d = draft();
+  d.purchases[0].push({id: "ability-a-party-piece"});
+  d.acquisitions["ability-a-party-piece"] = {instrument: "flute"};
+  const missing = creationPreview(d, choices, inventory);
+  assert(missing.errors.some(e => e.id === "ability-a-party-piece" && e.reasons?.some(r => /requires an ordinary Musical Instrument/.test(r.text))));
+  assert(!creationStepErrors(missing, 5).some(e => e.equipment));
+  assert(creationStepErrors(missing, 6).some(e => e.equipment));
+  d.shopping.push({id: "item-musical-instrument", quantity: 1});
+  const ready = creationPreview(d, choices, inventory);
+  assert.equal(ready.valid, true, JSON.stringify(ready.errors));
+  assert.deepEqual(ready.state.instruments, [{abilityId: "ability-a-party-piece", instrument: "flute"}]);
+  assert.equal(ready.inventory.spent, 12);
+  assert.equal(ready.inventory.items.filter(i => i.catalogId === "item-musical-instrument").length, 1);
+  d.acquisitions["ability-a-party-piece"] = {specialty: "singing"};
+  const legacy = creationPreview(d, choices, inventory);
+  assert.equal(legacy.valid, false);
+  assert(legacy.errors.some(e => e.id === "ability-a-party-piece"));
 });

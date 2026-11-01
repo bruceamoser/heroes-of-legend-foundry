@@ -1,5 +1,5 @@
 import { creationIdentity, DEFAULT_LANGUAGES } from "./identity.mjs";
-import { inventoryTotals } from "./acquisition.mjs";
+import { inventoryTotals, instrumentOwnershipErrors } from "./acquisition.mjs";
 export function newCreationDraft() {
   return {
     name: "",
@@ -45,7 +45,7 @@ export function creationPreview(
       !definition ||
       !Number.isSafeInteger(entry.quantity) ||
       entry.quantity < 1 ||
-      definition.specialOrder
+      (definition.specialOrder || definition.grantOnly)
     ) {
       errors.push({
         code: "shopping",
@@ -84,6 +84,7 @@ export function creationPreview(
       source: "coins",
     });
   }
+  errors.push(...instrumentOwnershipErrors(result.state, items));
   const get = (id) => choices.find((c) => c.id === id);
   const coins =
     40 +
@@ -122,6 +123,7 @@ export function creationStepErrors(preview, step) {
   if (step >= 7) return preview.errors;
   return preview.errors.filter(error => {
     if (error.level > 1) return false;
+    if (error.equipment) return step >= 6;
     if (error.code === "purchase") return step >= (error.stage === 0 ? 3 : 5);
     if (error.code === "acquisition") return step >= ((preview.stages[0]?.abilities ?? []).includes(error.id) ? 3 : 5);
     if (["class", "class-disciplines", "signature"].includes(error.code)) return step >= 4;

@@ -85,6 +85,11 @@ try {
         };
       }),
     );
+    await hero.createEmbeddedDocuments("Item", [{
+      name: "Chosen flute",
+      type: "equipment",
+      system: {catalogId: "item-musical-instrument", quantity: 1, held: true, carried: true, bulk: 1},
+    }]);
     const item = (key) =>
       items.find((i) => i.getFlag(ID, "catalogId") === `ability-${key}`);
     const scene = await Scene.create({

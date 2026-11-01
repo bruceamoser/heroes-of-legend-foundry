@@ -169,11 +169,12 @@ test("committed legacy recipe grants are preserved without retroactive additions
   assert.deepEqual(result.state.recipes, ["recipe-fletched-ammunition"]);
 });
 
-test("real one-DP acquisition choices preserve languages and specialties through advancement", () => {
+test("real one-DP acquisition choices preserve languages and chosen instruments through advancement", () => {
   const base = {
     ...state(),
     level: 2,
     dp: 2,
+    items: [{instanceId: "my-lute", catalogId: "item-musical-instrument", quantity: 1}],
     languages: [
       { id: "common", name: "Common", source: "creation-common" },
       { id: "local", name: "Local", source: "custom" },
@@ -193,7 +194,7 @@ test("real one-DP acquisition choices preserve languages and specialties through
     ],
     acquisitions: {
       "ability-another-tongue": { languageId: "river" },
-      "ability-a-party-piece": { specialty: "juggling" },
+      "ability-a-party-piece": { instrument: "lute" },
     },
   };
   const result = advancementPreview(base, draft, choices, inventory, [
@@ -205,8 +206,8 @@ test("real one-DP acquisition choices preserve languages and specialties through
   assert.deepEqual(result.state.languages.slice(0, 2), base.languages);
   assert.equal(result.state.languages[2].permissions.write, true);
   assert.equal(result.state.languages[2].source, "ability-another-tongue");
-  assert.deepEqual(result.state.specialties, [
-    { abilityId: "ability-a-party-piece", specialty: "juggling" },
+  assert.deepEqual(result.state.instruments, [
+    { abilityId: "ability-a-party-piece", instrument: "lute" },
   ]);
   const duplicate = advancementPreview(
     { ...base, languages: [...base.languages, { id: "river" }] },

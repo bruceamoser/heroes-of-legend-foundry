@@ -1,3 +1,4 @@
+import { healingPlan } from "./damage.mjs";
 import { conditionEndPlan } from "./conditions.mjs";
 import { survivalState, sufferDamage } from "./survival.mjs";
 import { woundRoll, woundResult } from "./wounds.mjs";
@@ -61,6 +62,7 @@ export function workshopSupplyUse({
   maxHp,
   catalog,
   lastWords = false,
+  lifeResistance = 0,
 }) {
   if (!item || item.quantity < 1)
     throw new Error("This supply has no quantity remaining.");
@@ -70,7 +72,10 @@ export function workshopSupplyUse({
   if (potion && lastWords)
     throw new Error("Ordinary healing cannot reverse Last Words.");
   const check = inventoryCheck({ die: item.inventoryDie, retained: face });
-  const afterHp = potion ? Math.min(maxHp, hp + potion.healing) : hp;
+  const afterHp = potion ? healingPlan({
+    amount: potion.healing, current: hp, max: maxHp,
+    lifeResistances: [lifeResistance],
+  }).after : hp;
   return {
     ...check,
     hp: afterHp,

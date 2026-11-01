@@ -6,7 +6,7 @@
 import { declareAction } from "./actions.mjs";
 import { validateSurvival } from "./survival.mjs";
 
-const SOURCE_COMMIT = "295e858c1b6fee044a0261bf9f437636efeff2bf";
+const SOURCE_COMMIT = "25b80c9fe77d7baaec3f3a8a548c9663d0f39a30";
 const WOUND_SOURCE = Object.freeze({
   path: "design/rules/wounds.md",
   sha256: "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9",
@@ -31,7 +31,7 @@ const definitions = Object.freeze({
     source: Object.freeze({
       path: "design/cards/treat-bone.md",
       sha256:
-        "859fb3e19a27191895ecf2d7ee31142c0ee41983e5fcac63659b295bd28c4bd1",
+        "83fde5e22be6c44908ac152ecc811dab94fc78f6741e239058ff723947bb2541",
     }),
   }),
   "treat-elemental-injury": Object.freeze({
@@ -42,7 +42,7 @@ const definitions = Object.freeze({
     source: Object.freeze({
       path: "design/cards/treat-elemental-injury.md",
       sha256:
-        "4f3e57aa2757f3670b2978df5eaad45ff71d1b40c585c464530f4f355b5a5ad3",
+        "7121173315ad7ba04718c778484bc6f474dcd1c7e6df6881723b44d1185a6794",
     }),
   }),
   "treat-life-injury": Object.freeze({
@@ -53,7 +53,7 @@ const definitions = Object.freeze({
     source: Object.freeze({
       path: "design/cards/treat-life-injury.md",
       sha256:
-        "38fccd0c7578cc7d35e47101aa41d2c9d18590719296974d7772d5f9b9166bd1",
+        "3aa2d0c5c911eac37262f317702500b565c64c2ec71487fe1b34b452f5c1a16b",
     }),
   }),
   "treat-mental-trauma": Object.freeze({
@@ -64,7 +64,7 @@ const definitions = Object.freeze({
     source: Object.freeze({
       path: "design/cards/treat-mental-trauma.md",
       sha256:
-        "7c19a4f92a0579a30d027aed6f7c1d230666e141eb5dc5b19174b3d4eb7be399",
+        "bd09d86e508ad0c444f8cd71caf81fd830d24ce74a966370b0bce23ac3316c4e",
     }),
   }),
   "treat-radiant-injury": Object.freeze({
@@ -75,7 +75,7 @@ const definitions = Object.freeze({
     source: Object.freeze({
       path: "design/cards/treat-radiant-injury.md",
       sha256:
-        "b5af45302790861eb6e1ce49de255a17ec0181c73df0168b5ff63d72fe2035b6",
+        "5ae41742f8863ef4bb0bf8149599992427959c97589c6954776ba733ec5a213e",
     }),
   }),
   "treat-soft-tissue": Object.freeze({
@@ -86,7 +86,7 @@ const definitions = Object.freeze({
     source: Object.freeze({
       path: "design/cards/treat-soft-tissue.md",
       sha256:
-        "c0ae7c26688a2fd4a259318b7488cc7d73485d3d7ea3bf3e0d7af3a068adf4d8",
+        "b7b96f50fc235bb4496ac7ba6754450b5b55ec199582001697f73f35269be77c",
     }),
   }),
 });
@@ -470,7 +470,7 @@ export function reserveWoundTreatment({
   });
 }
 
-function treatedEffect(effect) {
+export function treatedWoundEffect(effect) {
   if (effect.kind === "condition") return effect.persistence === "starred";
   return effect.kind === "movementPenalty" || effect.kind === "rollModifier";
 }
@@ -580,7 +580,7 @@ export function settleWoundTreatment({
     progressAfter = progressBefore + progressAdded,
     completed = progressAfter >= reservation.wound.recoveryValue,
     effectsRemoved = completed
-      ? reservation.wound.effects.filter(treatedEffect)
+      ? reservation.wound.effects.filter(treatedWoundEffect)
       : [],
     effectsPreserved = reservation.wound.effects.filter(
       (effect) => !effectsRemoved.includes(effect),

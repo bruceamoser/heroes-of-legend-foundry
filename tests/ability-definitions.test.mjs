@@ -54,6 +54,6 @@ test("reference status only credits reviewed native actions", () => {
       path: "design/cards/the-cleverest-mixture.md",
       sha256: "a".repeat(64),
     }),
-    "Rules reference · play automation in progress",
+    "Rules reference · resolve effects at the table",
   );
 });

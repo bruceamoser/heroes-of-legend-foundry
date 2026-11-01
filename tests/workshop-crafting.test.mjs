@@ -162,3 +162,14 @@ test("legacy incomplete progress reopens as an active saved project", () => {
     /malformed/,
   );
 });
+
+test("only the printed healing and tonic brewing pairs finish to d4 without a roll", () => {
+  for (const [id, abilityId] of [["lesser-healing-bottle", "ability-bottled-morning"], ["clearing-tonic", "ability-the-cleverest-mixture"]]) {
+    const play = apply({}, id, undefined, { tier: undefined, abilityId });
+    assert.equal(play.inventory.overrides["inventory-craft-test"].inventoryDie, 4);
+    assert.equal(play.crafting[`recipe-${id}`].completed, 1);
+    assert.equal(play.crafting[`recipe-${id}`].active, false);
+    assert.throws(() => apply({}, "travel-food", undefined, { tier: undefined, abilityId }), /outcome/);
+  }
+  assert.throws(() => apply({}, "smoke-flask", undefined, { tier: undefined, abilityId: "ability-smoke-in-a-bottle" }), /outcome/);
+});

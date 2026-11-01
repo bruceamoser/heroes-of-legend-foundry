@@ -325,3 +325,26 @@ test("web Speed shows Slowed and encumbrance against unencumbered maximum; missi
   assert.equal(live.speed, Math.max(0, p.summary.speed - 2));
   assert.equal(live.maxSpeed, p.summary.unencumberedSpeed);
 });
+
+test("instrument acquired in play supports later Party Piece learning without a second purchase", () => {
+  const d = borin();
+  d.progression = {level: 2, levels: {2: {
+    ...emptyLevelDraft(),
+    purchases: [{id: "ability-a-party-piece"}],
+    acquisitions: {"ability-a-party-piece": {instrument: "flute"}},
+  }}};
+  const missing = workshopCharacter(d, catalogs);
+  assert(missing.errors.some(e => e.id === "ability-a-party-piece" && e.equipment));
+  d.play = {inventory: {added: [{id: "item-musical-instrument", instanceId: "inventory-flute", quantity: 1}], removed: []}};
+  d.loadout = {"inventory-flute": {held: true, carried: true}};
+  const ready = workshopCharacter(d, catalogs);
+  assert.equal(ready.valid, true, JSON.stringify(ready.errors));
+  assert.deepEqual(ready.state.instruments, [{abilityId: "ability-a-party-piece", instrument: "flute"}]);
+  const instruments = ready.inventory.items.filter(i => i.catalogId === "item-musical-instrument");
+  assert.equal(instruments.length, 1);
+  assert.equal(instruments[0].instanceId, "inventory-flute");
+  assert.equal(instruments[0].held, true);
+  d.play.inventory.removed = ["inventory-flute"];
+  const removed = workshopCharacter(d, catalogs);
+  assert(removed.errors.some(e => e.id === "ability-a-party-piece" && e.equipment));
+});

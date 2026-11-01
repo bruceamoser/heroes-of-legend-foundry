@@ -156,7 +156,7 @@ export function equipmentReferenceHtml(
   return [
     '<section class="hol-item-reference">',
     `<p class="hol-automation-label"><strong>Automation:</strong> ${escapeItemHtml(automationLabel)}</p>`,
-    `<p><strong>Market price:</strong> ${escapeItemHtml(String(record.price))} coins${record.specialOrder ? "; special order" : ""}.</p>`,
+    ...(record.grantOnly ? [`<p>${escapeItemHtml(record.description)}</p>`] : [`<p><strong>Market price:</strong> ${escapeItemHtml(String(record.price))} coins${record.specialOrder ? "; special order" : ""}.</p>`]),
     supply,
     `<p class="hol-reference-source"><strong>Source:</strong> ${sourceLink(source, sourceCommit)} at <code>${escapeItemHtml(sourceCommit)}</code>.</p>`,
     "</section>",

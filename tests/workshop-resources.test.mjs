@@ -449,3 +449,16 @@ test("Favorites include universal and learned abilities plus inventory basics, w
   assert(rows.some((r) => r.record.id === "ability-hook-and-drive"));
   assert(rows.some((r) => r.inventoryInstance?.instanceId === food.instanceId));
 });
+
+test("Workshop potion healing uses current Life resistance, missing HP and zero-HP recovery",()=>{
+ const item={catalogId:"item-lesser-healing-bottle",quantity:1,inventoryDie:4};
+ const use=(hp,maxHp,lifeResistance)=>workshopSupplyUse({item,face:1,hp,maxHp,lifeResistance,catalog:inventory});
+ assert.equal(use(0,20,0).hp,6);
+ assert.equal(use(0,20,2).hp,4);
+ assert.equal(use(2,20,3).healed,3);
+ assert.equal(use(19,20,3).healed,1);
+ assert.equal(use(20,20,3).healed,0);
+ assert.equal(use(0,1,3).hp,1);
+ assert.equal(use(0,20,2).after,0); // the final dose still heals before depletion
+ assert.throws(()=>use(0,20,-1),/Life resistance/);
+});

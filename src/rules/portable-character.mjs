@@ -22,6 +22,33 @@ const LIGHT_ARMOR_KEY =
 /** Normalize saved choices for the only supported rules catalog, without changing the input. */
 export function currentCreationDraft(input, sourceCommit) {
   const draft = structuredClone(input);
+  // Approved replacement of the retired concept; replay the ordinary current
+  // purchase at its original stage/level, with no rank or resource grants.
+  const retired = "ability-turn-the-crowd", replacement = "ability-a-common-tongue";
+  const containers = [draft];
+  if (object(draft?.progression?.levels))
+    containers.push(...Object.entries(draft.progression.levels)
+      .sort(([a], [b]) => Number(a) - Number(b)).map(([, entry]) => entry));
+  const lists = containers.flatMap((entry, index) => index === 0
+    ? [entry?.purchases?.[0], entry?.purchases?.[1]]
+    : [entry?.purchases]).filter(Array.isArray);
+  const hasRetiredPurchase = lists.some(list => list.some(entry => entry?.id === retired));
+  let replacementSeen = false;
+  for (const list of lists) {
+    for (let index = 0; index < list.length; index++) {
+      const entry = list[index];
+      if (entry?.id === retired) entry.id = replacement;
+      if (!hasRetiredPurchase || entry?.id !== replacement) continue;
+      if (replacementSeen) list.splice(index--, 1);
+      else replacementSeen = true;
+    }
+  }
+  for (const entry of containers) {
+    if (!object(entry?.acquisitions) || !Object.hasOwn(entry.acquisitions, retired)) continue;
+    if (!Object.hasOwn(entry.acquisitions, replacement))
+      entry.acquisitions[replacement] = entry.acquisitions[retired];
+    delete entry.acquisitions[retired];
+  }
   for (const kind of ["culture", "background"])
     if (object(draft?.[kind])) delete draft[kind].retainedFrom;
   if (
@@ -131,11 +158,11 @@ export function readPortableCharacter(input, catalogs, languages) {
   for (const [id, entry] of Object.entries(d.acquisitions)) {
     if (!/^ability-[a-z0-9-]+$/.test(id) || !object(entry)) fail();
     const result = {};
-    for (const key of ["languageId", "specialty"]) {
+    for (const key of ["languageId", "specialty", "instrument"]) {
       if (entry[key] !== undefined) {
         if (
           !string(entry[key]) ||
-          entry[key].length > (key === "specialty" ? 120 : 64)
+          entry[key].length > (key === "languageId" ? 64 : 120)
         )
           fail();
         result[key] = entry[key];

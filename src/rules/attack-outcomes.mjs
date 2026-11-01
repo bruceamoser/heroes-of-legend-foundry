@@ -72,7 +72,7 @@ export function printedDamageChoices(record) {
     .map((block) => block.text ?? "")
     .join(" ");
   const match = new RegExp(
-    `\\bChoose\\s+(${types})\\s+or\\s+(${types})(?:\\s+and the area)?\\s+before rolling\\b`,
+    `\\bChoose\\s+(${types})\\s+or\\s+(${types})(?:\\s+and the area)?(?:\\s+before rolling\\b|(?:,?\\s+then|\\s+and)\\s+make\\b)`,
     "i",
   ).exec(body);
   return match ? [...new Set(match.slice(1).map(canonicalDamageType))] : [];

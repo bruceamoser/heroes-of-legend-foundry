@@ -1,3 +1,4 @@
+import {assertSummonPresent} from "../src/rules/summon-profile.mjs";
 import {summonAttackConfiguration} from "../src/rules/creature-sheet-profile.mjs";
 import {resolvedAttackEffects} from "../src/rules/attack-outcomes.mjs";
 import {DAMAGE_TYPE_LABELS} from "../src/rules/damage.mjs";
@@ -16,7 +17,7 @@ test('damage buttons use complete numeric outcomes without guessing conditional 
 
 test('an incoming defense rolls immediately without coordinator, encounter or actor writes',async()=>{
   const basis={mode:'defense',attributeKey:'agility',attribute:1,attackMessageId:'incoming',incoming:{damage:{standard:3}}};
-  const actor={uuid:'Actor.hero',update(){throw Error('Roll must not mutate actor');}};
+  const actor={uuid:'Actor.hero',getFlag:()=>null,update(){throw Error('Roll must not mutate actor');}};
   let evaluations=0,posts=0;
   const context=vm.createContext({structuredClone,game:{user:{id:'player'},users:new Map(),settings:{get:()=> 'public'},i18n:{localize:key=>key}},ChatMessage:{getSpeaker:()=>({actor:'hero'})},foundry:{dice:{Roll:class{
     constructor(){this.dice=[{results:[3,3,4].map(result=>({result,active:true}))}];}
@@ -25,6 +26,7 @@ test('an incoming defense rolls immediately without coordinator, encounter or ac
   }}}});
   const dependencies={
     "../rules/creature-sheet-profile.mjs":{summonAttackConfiguration},
+    "../rules/summon-profile.mjs":{assertSummonPresent},
     "../rules/attack-outcomes.mjs":{resolvedAttackEffects},
     "../rules/damage.mjs":{DAMAGE_TYPE_LABELS},
     './attack-equipment.mjs':{attackEquipmentSnapshot:()=>{throw Error('Defense has no attack equipment');}},

@@ -1,6 +1,6 @@
 import { purchase } from "./development.mjs";
 import { signatureTierState, pendingSignatureTiers, activeAbilityGrant } from "./signatures.mjs";
-import { acquireAbility, craftingPermissions } from "./acquisition.mjs";
+import { acquireAbility, craftingPermissions, instrumentOwnershipErrors } from "./acquisition.mjs";
 /** Review a draft against the current committed ledger; never mutate the input. */
 export function advancementPreview(
   current,
@@ -8,7 +8,7 @@ export function advancementPreview(
   choices,
   inventory,
   languages,
-  { knownLanguages } = {},
+  { knownLanguages, ownedItems } = {},
 ) {
   let state = structuredClone(current);
   const pending=[...new Set([...(current.pendingSignatures??[]),...Object.keys(draft.signatures??{}).map(Number)])].filter(level=>signatureTierState(current,level,choices).pending);
@@ -90,6 +90,10 @@ export function advancementPreview(
       ...(entry.recipeIds ? { recipeIds: [...entry.recipeIds] } : {}),
     });
   }
+  errors.push(...instrumentOwnershipErrors(
+    {...state, abilities: state.abilities.filter(id => !current.abilities.includes(id))},
+    ownedItems ?? state.items,
+  ));
   return {
     valid: errors.length === 0,
     errors,

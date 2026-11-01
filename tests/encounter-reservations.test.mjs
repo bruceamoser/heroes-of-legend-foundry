@@ -4,6 +4,9 @@ import test from "node:test";
 import { createContext, SourceTextModule, SyntheticModule } from "node:vm";
 
 async function loadService(name, context, onWrite) {
+  // Empty document collections model an encounter with no registered summons.
+  context.game.actors ??= {contents: []};
+  context.game.scenes ??= {contents: []};
   const url = new URL(`../src/services/${name}.mjs`, import.meta.url);
   const module = new SourceTextModule(await readFile(url, "utf8"), {
     context, identifier: url.href,
@@ -14,7 +17,7 @@ async function loadService(name, context, onWrite) {
       enqueueCharacterOperation: async (run) => run(),
       isCreationAuthority: () => true,
       writeAuthorityDocument: onWrite,
-    } : specifier === "./turn-end-conditions.mjs" ? {settleTurnConditions:async(actor,turnId)=>{context.turnSettlements??=[];context.turnSettlements.push({actor,turnId});return {turnId};},turnEndContent:()=>"Turn finished"} : await import(new URL(specifier, url));
+    } : specifier === "./summon-lifecycle.mjs" ? await loadService("summon-lifecycle", context, onWrite) : specifier === "./turn-end-conditions.mjs" ? {settleTurnConditions:async(actor,turnId)=>{context.turnSettlements??=[];context.turnSettlements.push({actor,turnId});return {turnId};},turnEndContent:()=>"Turn finished"} : await import(new URL(specifier, url));
     return new SyntheticModule(Object.keys(exports), function () {
       for (const [key, value] of Object.entries(exports)) this.setExport(key, value);
     }, { context });
@@ -95,6 +98,7 @@ test("explicit Finish ignores old reservations and invokes its once-only conditi
   const actor={uuid:"Actor.hero",type:"character",system:{health:{value:0}},testUserPermission:()=>true,getFlag:()=>({hp:2})};
   const combat={documentName:"Combat",uuid:"Combat.test",combatants:new Map([["hero",{id:"hero",actor,getFlag:()=>"players"}]]),turns:[{id:"hero"}],getFlag:(_id,key)=>flags[key]};
   combat.combatants.map=fn=>[...combat.combatants.values()].map(fn);
+  combat.combatants.filter=fn=>[...combat.combatants.values()].filter(fn);
   const request={kind:"finish",combatUuid:combat.uuid,revision:flags.encounter.revision};
   const message={id:"finish",author:{id:"owner"},getFlag:(_id,key)=>key==="combatRequest"?request:null,async update(){}};
   const context=createContext({structuredClone,game:{messages:new Map([["finish",message]])},fromUuid:async()=>combat});

@@ -1,5 +1,6 @@
 import {
   workshopCraft,
+  noRollBrew,
   startWorkshopCraft,
 } from "./rules/workshop-crafting.mjs";
 import { rollSetup, netControl, bindRollSetup } from "./roll-ui.mjs";
@@ -902,7 +903,7 @@ function acquisitions(onlyMissing = false, onlyId = null) {
         (a.weaponChoice ||
           a.recipeChoices ||
           a.languageChoice ||
-          a.specialtyChoice ||
+          a.instrumentChoice ||
           a.items.includes("item-ordinary-melee-weapon")),
     )
     .map((a) => {
@@ -954,7 +955,7 @@ function acquisitions(onlyMissing = false, onlyId = null) {
                   .join(""),
             )
           : ""
-      }${a.specialtyChoice ? field("Performance specialty", `${path}.specialty`, d.specialty, "text", 'maxlength="120" placeholder="e.g. singing or juggling"') : ""}${a.weaponChoice ? select("Weapon", `${path}.weapon`, option("", "Choose weapon", !d.weapon) + a.weaponChoice.map((id) => option(id, id === "melee" ? "Ordinary melee weapon" : id === "ranged" ? "Ranged weapon + d8 ammunition" : name(id), d.weapon === id)).join("")) : ""}${a.items.includes("item-ordinary-melee-weapon") || (a.weaponChoice?.includes("melee") && d.weapon === "melee") ? select("Melee weapon hands", `${path}.meleeHands`, option("", "Choose hands", !d.meleeHands) + [1, 2].map((n) => option(n, `${n} handed`, d.meleeHands === n)).join("")) : ""}</div>${
+      }${a.instrumentChoice ? field("Chosen ordinary instrument", `${path}.instrument`, d.instrument, "text", 'maxlength="120" placeholder="e.g. lute or flute"') : ""}${a.weaponChoice ? select("Weapon", `${path}.weapon`, option("", "Choose weapon", !d.weapon) + a.weaponChoice.map((id) => option(id, id === "melee" ? "Ordinary melee weapon" : id === "ranged" ? "Ranged weapon + d8 ammunition" : name(id), d.weapon === id)).join("")) : ""}${a.items.includes("item-ordinary-melee-weapon") || (a.weaponChoice?.includes("melee") && d.weapon === "melee") ? select("Melee weapon hands", `${path}.meleeHands`, option("", "Choose hands", !d.meleeHands) + [1, 2].map((n) => option(n, `${n} handed`, d.meleeHands === n)).join("")) : ""}</div>${
         a.recipeChoices
           ? `<p class="inline-help">Choose ${a.recipeChoices} recipes</p><div class="cards">${catalogs.inventory.recipes
               .filter((r) => r.genericChoice && r.permissions.includes(a.id))
@@ -970,6 +971,7 @@ function equipment() {
 }
 function equipmentMarket() {
   return `${searchRow("equipment")}<div class="table-wrap"><table class="market-table"><thead><tr><th>Item</th><th>Coins</th><th>Bulk</th><th>Supply</th><th>Qty</th><th>Hands</th><th></th></tr></thead><tbody>${catalogs.inventory.equipment
+    .filter(r => !r.grantOnly)
     .filter(matches)
     .map(
       (r) =>
@@ -1434,6 +1436,7 @@ function useSupply() {
     hp: liveVitals().hp,
     maxHp: liveVitals().max,
     catalog: catalogs.inventory,
+    lifeResistance: preview.resistances.life ?? 0,
     lastWords: Boolean(draft.play?.lastWords || draft.play?.failedDeathRolls === 3),
   });
   const inv = playDraft().inventory;
@@ -1588,7 +1591,7 @@ function recipeRoll(id, recipeId) {
   );
   popup(
     `Craft ${recipe.name}`,
-    `<p><strong>${esc(ability.name)}</strong> · ${title(attribute)} ${signed(draft.attributes[attribute])} · ${recipe.attemptMinutes} min per attempt</p>${recipe.maximumDie ? `<label>Supply<select id="craft-supply">${supplies.map((i) => `<option value="${esc(i.instanceId)}">${esc(name(i.catalogId))} · ${i.inventoryDie ? "d" + i.inventoryDie : "Empty"}</option>`).join("")}<option value="">New supply</option></select></label>` : `<p id="craft-progress">${craftingStatus(recipe)}</p>`}<p>Weak 1 · Standard 2 · Strong 3 ${recipe.maximumDie ? "supply steps" : "progress"}. Tools, materials and time follow the recipe.</p>${netControl({ id: "recipe-net", labelId: "roll-net-value" })}<div id="recipe-roll-result" role="status" aria-live="polite"></div><div class="dialog-actions">${button("Roll", "roll-recipe", `data-id="${esc(id)}" data-recipe-id="${esc(recipeId)}"`, "primary")}</div><details><summary>Recipe rules</summary>${markdown(references.records[recipeId]?.markdown ?? "")}</details>`,
+    `<p><strong>${esc(ability.name)}</strong> · ${title(attribute)} ${signed(draft.attributes[attribute])} · ${recipe.attemptMinutes} min per attempt</p>${recipe.maximumDie ? `<label>Supply<select id="craft-supply">${supplies.map((i) => `<option value="${esc(i.instanceId)}">${esc(name(i.catalogId))} · ${i.inventoryDie ? "d" + i.inventoryDie : "Empty"}</option>`).join("")}<option value="">New supply</option></select></label>` : `<p id="craft-progress">${craftingStatus(recipe)}</p>`}<p>${noRollBrew(id, recipe) ? "Brew to d4 without a roll" : `Weak 1 · Standard 2 · Strong 3 ${recipe.maximumDie ? "supply steps" : "progress"}`}. Tools, materials and time follow the recipe.</p>${netControl({ id: "recipe-net", labelId: "roll-net-value" })}<div id="recipe-roll-result" role="status" aria-live="polite"></div><div class="dialog-actions">${button(noRollBrew(id, recipe) ? "Brew" : "Roll", "roll-recipe", `data-id="${esc(id)}" data-recipe-id="${esc(recipeId)}"`, "primary")}</div><details><summary>Recipe rules</summary>${markdown(references.records[recipeId]?.markdown ?? "")}</details>`,
   );
   if (recipe.maximumDie)
     $("#craft-supply").value = draft.play.crafting[recipeId].supplyId ?? "";
@@ -1598,11 +1601,12 @@ function recipeRoll(id, recipeId) {
 }
 function rollRecipeDice(id, recipeId) {
   if (!draft.play?.crafting?.[recipeId]?.active) return;
-  const rolled = displayDice(draft.attributes[attributeFor(get(id))]);
+  const rolled = noRollBrew(id, get(recipeId)) ? {} : displayDice(draft.attributes[attributeFor(get(id))]);
   const result = workshopCraft({
     play: playDraft(),
     recipe: get(recipeId),
     tier: rolled.tier,
+    abilityId: id,
     items: preview.inventory.items,
     supplyId: $("#craft-supply")?.value,
     instanceId: `inventory-${crypto.randomUUID()}`,
@@ -1896,11 +1900,11 @@ function showReference(id) {
       references.records[id]?.markdown ??
         "This reference is unavailable in this build.",
     );
-  const specialty = preview.state.specialties?.find(
+  const instrument = preview.state.instruments?.find(
     (entry) => entry.abilityId === id,
-  )?.specialty;
-  if (specialty)
-    body = `<p><strong>Your specialty:</strong> ${esc(specialty)}</p>` + body;
+  )?.instrument;
+  if (instrument)
+    body = `<p><strong>Your instrument:</strong> ${esc(instrument)}</p>` + body;
   if (id === "ability-message-by-heart" && preview.state.abilities.includes(id))
     body =
       `<label>Memorized message<textarea id="memorized-message" aria-label="Memorized message" maxlength="5000">${esc(draft.play?.memorizedMessage ?? "")}</textarea></label><p class="inline-help">Up to 50 words. Rehearse a replacement for one minute.</p><div class="dialog-actions">${button("Save message", "save-message", "", "primary")}</div>` +

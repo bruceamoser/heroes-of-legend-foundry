@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/radiance.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You cast a sliver of brightness that catches your foe like sunlight on broken glass.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Target / range / shape</dt><dd>One visible creature within 5 squares</dd></div><div><dt>Duration</dt><dd>Damage is immediate; light lasts until the start of your next turn. Blinded decays normally.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Repeatable; pay the action and any stated costs each use.</dd></div><div><dt>Type</dt><dd>Magic / Attack</dd></div></dl><div class=\"hol-reference-rules\"><p>The light lasts until the start of your next turn; it does not reveal a target through opaque cover or override magical invisibility. Proposed NPC defense attribute: Agility.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>3 radiant damage.</dd><dt>Standard</dt><dd>3 radiant damage; mark it with visible light.</dd><dt>Strong</dt><dd>5 radiant damage; mark it and apply Blinded 1.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/295e858c1b6fee044a0261bf9f437636efeff2bf/design/cards/dawn-shard.md\" target=\"_blank\" rel=\"noopener\">design/cards/dawn-shard.md</a> at <code>295e858c1b6fee044a0261bf9f437636efeff2bf</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>A sliver of dawn catches in your enemy&#39;s outline, burning bright enough for every waiting eye to follow.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Target / range / shape</dt><dd>One visible enemy within 5 squares.</dd></div><div><dt>Type</dt><dd>Magic / Attack / Support</dd></div></dl><div class=\"hol-reference-rules\"><p>Make a Reason spell attack.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>3 radiant damage.</dd><dt>Standard</dt><dd>3 radiant damage; outline the target in light until the end of your next turn. The next attack against it before then gains 1 Boon.</dd><dt>Strong</dt><dd>5 radiant damage and Blinded 1; apply the same outline.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/25b80c9fe77d7baaec3f3a8a548c9663d0f39a30/design/cards/dawn-shard.md\" target=\"_blank\" rel=\"noopener\">design/cards/dawn-shard.md</a> at <code>25b80c9fe77d7baaec3f3a8a548c9663d0f39a30</code>.</p></section>",
     "activity": {
       "action": "main",
       "rollMode": "attribute",
@@ -15,8 +15,8 @@
     },
     "outcomes": {
       "weak": "3 radiant damage.",
-      "standard": "3 radiant damage; mark it with visible light.",
-      "strong": "5 radiant damage; mark it and apply Blinded 1."
+      "standard": "3 radiant damage; outline the target in light until the end of your next turn. The next attack against it before then gains 1 Boon.",
+      "strong": "5 radiant damage and Blinded 1; apply the same outline."
     }
   },
   "effects": [],
@@ -30,12 +30,12 @@
       "catalogId": "ability-dawn-shard",
       "source": {
         "path": "design/cards/dawn-shard.md",
-        "sha256": "c0a53cbd223218d13d8c8c819946161bb937f8d9ba9e4b598431e763014d41ab"
+        "sha256": "1bfa79765735cfb6dfbd0397847a2239264fee8f5aa5aff3b4b13751d025ede1"
       },
-      "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
+      "sourceCommit": "25b80c9fe77d7baaec3f3a8a548c9663d0f39a30",
       "catalogAutomation": "pending",
       "automation": "pending",
-      "automationLabel": "Rules reference · play automation in progress"
+      "automationLabel": "Rules reference · resolve effects at the table"
     }
   }
 }

@@ -6,6 +6,7 @@ import {attackEquipmentOptions,attackEquipmentSnapshot} from '../src/services/at
 import {woundTreatmentPlan,retireWoundEffects,repairRecoveredWoundEffects} from '../src/services/wound-treatment.mjs';
 import {actorWoundContributionPlan} from '../src/services/wound-effects.mjs';
 import {actorContributions} from '../src/services/conditions.mjs';
+import {conditionEndPlan} from '../src/rules/conditions.mjs';
 const ID='heroes-of-legend';
 const catalog=JSON.parse(await readFile(new URL('../static/data/choices.json',import.meta.url))).records;
 const configuration=id=>abilityRollConfiguration({uuid:`Actor.hero.Item.${id}`,name:id,system:{}},catalog.find(r=>r.id===id));
@@ -23,10 +24,11 @@ test('weapon cards snapshot renamed selected equipment, with held equipment as d
 });
 const wrap=data=>({...data,id:data._id,active:!data.disabled,getFlag:(_,key)=>data.flags?.[ID]?.[key]});
 const effect=(_id,event,extra)=>({_id,name:'Strained shoulder',disabled:false,statuses:['hol.slowed'],showIcon:2,flags:{[ID]:{woundEvent:event,...extra}}});
-function fixture(){
+function fixture(extraEffects=[]){
  globalThis.game={user:{}};globalThis.CONST={ACTIVE_EFFECT_SHOW_ICON:{NEVER:0}};
  const wounds={w:{eventId:'w',injury:'Strained shoulder',scar:true,recoveryValue:2,recoveryProgress:1,effectIds:['penalty','condition']},other:{eventId:'other',recoveryValue:5,recoveryProgress:0}};
- let source=[effect('penalty','w',{woundModifier:{kind:'rollModifier',woundId:'wound-physical-223',injury:'Strained shoulder',polarity:'bane',amount:1,context:'physical',printedContext:'physical activities',requiresContext:true}}),effect('condition','w',{condition:{key:'slowed',rating:1,persistence:'starred',source:'wound',order:0}}),effect('other','other',{condition:{key:'poisoned',rating:1,persistence:'temporary',source:'other',order:1}})];
+ let source=[effect('penalty','w',{woundModifier:{kind:'rollModifier',woundId:'wound-physical-223',injury:'Strained shoulder',polarity:'bane',amount:1,context:'physical',printedContext:'physical activities',requiresContext:true}}),effect('condition','w',{condition:{key:'slowed',rating:1,persistence:'starred',source:'wound',order:0}}),effect('other','other',{condition:{key:'poisoned',rating:1,persistence:'temporary',source:'other',order:1}}),...extraEffects];
+ wounds.w.effectIds.push(...extraEffects.filter(e=>e.flags[ID].woundEvent==='w').map(e=>e._id));
  const actor={type:'character',testUserPermission:()=>true,get effects(){return source.map(wrap)},getFlag:(_,key)=>key==='wounds'?wounds:0,toObject:()=>({effects:structuredClone(source)}),async update(changes){for(const e of changes.effects??[]){source[source.findIndex(row=>row._id===e._id)]=structuredClone(e);}for(const [key,value]of Object.entries(changes)){const match=/\.wounds\.([^.]+)\.effectIds$/.exec(key);if(match)wounds[match[1]].effectIds=value;}}};
  return{actor,wounds,getSource:()=>source};
 }
@@ -43,4 +45,34 @@ test('old completed wounds stop contributing immediately and native repair retir
  assert.equal(actorWoundContributionPlan(actor).rollModifiers.length,0);assert.deepEqual(actorContributions(actor).map(c=>c.key),['poisoned']);
  assert.equal(await repairRecoveredWoundEffects(actor),2);assert.equal(await repairRecoveredWoundEffects(actor),0);
  assert.deepEqual(wounds.w.effectIds,[]);assert.equal(wounds.w.scar,true);assert.equal(getSource()[2].disabled,false);
+});
+
+test('completed wound treatment and repair preserve its temporary condition contribution',async()=>{
+ const extra=[
+   {...effect('dust','w',{condition:{key:'blinded',rating:2,persistence:'temporary',source:'wound',order:2}}),statuses:['hol.blinded']},
+   effect('eye','w',{condition:{key:'blinded',rating:1,persistence:'starred',source:'wound',order:3}}),
+ ];
+ for(const repair of [false,true]){
+   const {actor,wounds,getSource}=fixture(extra);
+   if(repair){
+     wounds.w.recoveryProgress=2;
+     // Recovery suppresses only the starred injury even before native repair.
+     assert.deepEqual(actorContributions(actor).map(c=>[c.id,c.rating]),[['other',1],['dust',2]]);
+     assert.equal(await repairRecoveredWoundEffects(actor),3);
+     assert.equal(await repairRecoveredWoundEffects(actor),0);
+   }else{
+     const plan=woundTreatmentPlan({eventId:'w',wound:wounds.w,effects:actor.toObject().effects},1);
+     assert.deepEqual(plan.removeEffectIds,['penalty','condition','eye']);
+     wounds.w=plan.wound;
+     await actor.update({effects:retireWoundEffects(actor.toObject().effects,plan.removeEffectIds)});
+   }
+   assert.deepEqual(actorContributions(actor).map(c=>[c.id,c.rating]),[['other',1],['dust',2]]);
+   assert.deepEqual(wounds.w.effectIds,['dust']);
+   const dust=getSource().find(row=>row._id==='dust');
+   assert.equal(dust.disabled,false); assert.deepEqual(dust.statuses,['hol.blinded']);
+   assert.equal(dust.flags[ID].condition.persistence,'temporary');
+   const end=conditionEndPlan(actorContributions(actor),{turnId:'after-treatment'});
+   assert.equal(end.contributions.find(c=>c.id==='dust').rating,1);
+   assert.equal(wounds.w.scar,true);
+ }
 });

@@ -1,5 +1,5 @@
 /** Reviewed passive sources only. Names and narrative text never select mechanics. */
-const PINNED_COMMIT = "295e858c1b6fee044a0261bf9f437636efeff2bf";
+const PINNED_COMMIT = "25b80c9fe77d7baaec3f3a8a548c9663d0f39a30";
 const source = (path, sha256, commit = PINNED_COMMIT) =>
   Object.freeze({ commit, path, sha256 });
 
@@ -8,8 +8,9 @@ export const PASSIVE_DEFENSE_DEFINITIONS = Object.freeze({
     kind: "ability",
     source: source(
       "design/cards/wear-light-armor.md",
-      "31528bc37c4e4e19233b05ae374d5f50f2818a7967da13f178b1d6ae80a028c3",
+      "088eb8fb1130c9e715d950805919047c65535a1e1c49166c6b123bf6eabdc91e",
     ),
+    legacySources: Object.freeze([source("design/cards/wear-light-armor.md", "31528bc37c4e4e19233b05ae374d5f50f2818a7967da13f178b1d6ae80a028c3", "295e858c1b6fee044a0261bf9f437636efeff2bf"),]),
   }),
   "item-ordinary-light-armor": Object.freeze({
     kind: "equipment",
@@ -22,7 +23,7 @@ export const PASSIVE_DEFENSE_DEFINITIONS = Object.freeze({
     kind: "ability",
     source: source(
       "design/cards/wear-medium-armor.md",
-      "b27ceb2e48c3b53e4c35f02444d093d664af1a90d092e984108027bfef9f641b",
+      "b3e1c4630f93f688d85f09ac5eb3de27176aad245db74b9c1a6d0f5b653b65c1",
     ),
     // Previously committed world items retain their reviewed resistance.
     legacySources: Object.freeze([
@@ -31,6 +32,7 @@ export const PASSIVE_DEFENSE_DEFINITIONS = Object.freeze({
         "2a042d1c36030ae7c5b2c648e380a7147ac0575e591019c89d264a9c99434ecc",
         "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
       ),
+      source("design/cards/wear-medium-armor.md", "b27ceb2e48c3b53e4c35f02444d093d664af1a90d092e984108027bfef9f641b", "295e858c1b6fee044a0261bf9f437636efeff2bf"),
     ]),
   }),
   "item-ordinary-medium-armor": Object.freeze({
@@ -52,7 +54,7 @@ export const PASSIVE_DEFENSE_DEFINITIONS = Object.freeze({
     kind: "ability",
     source: source(
       "design/cards/wear-heavy-armor.md",
-      "ef2ad8f5e77167bbecab905a9baad19b28ae0ce93d8e8953aa92824a8a48e864",
+      "8fd78167e224dce43bc6e37bf5e8a816e6209ff6c04f1fc53c247d4499b87b34",
     ),
     // Previously committed world items retain their reviewed resistance.
     legacySources: Object.freeze([
@@ -61,6 +63,7 @@ export const PASSIVE_DEFENSE_DEFINITIONS = Object.freeze({
         "0e894eed3c2e6522f08d5f5cbb133d3d0c2c85c21e6a9b9828ae1c1780da888f",
         "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
       ),
+      source("design/cards/wear-heavy-armor.md", "ef2ad8f5e77167bbecab905a9baad19b28ae0ce93d8e8953aa92824a8a48e864", "295e858c1b6fee044a0261bf9f437636efeff2bf"),
     ]),
   }),
   "item-ordinary-heavy-armor": Object.freeze({

@@ -9,7 +9,7 @@ import { DAMAGE_TYPE, DAMAGE_TYPES } from "../src/rules/damage.mjs";
 const records = JSON.parse(
   await readFile(new URL("../static/data/choices.json", import.meta.url)),
 ).records;
-test("all 251 damage-first catalog tiers resolve canonical fixed damage without a later prompt", () => {
+test("all 252 damage-first catalog tiers resolve canonical fixed damage without a later prompt", () => {
   let count = 0;
   for (const record of records.filter((r) => r.kind === "ability"))
     for (const outcome of record.reference?.rules?.body?.flatMap(
@@ -34,7 +34,7 @@ test("all 251 damage-first catalog tiers resolve canonical fixed damage without 
       }
       count++;
     }
-  assert.equal(count, 251);
+  assert.equal(count, 252);
 });
 test("every damage enum produces a fixed typed outcome with conditions", () => {
   for (const type of DAMAGE_TYPES)
@@ -112,4 +112,15 @@ test("conditional and optional suffixes never apply their later effects uncondit
   assert.deepEqual(result.conditions,[]);
   assert(result.manual);
  }
+});
+
+test("element selection recognizes only explicit pre-roll attack choices, including revised conjunctions", () => {
+  const record = text => ({reference: {rules: {body: [{text}]}}});
+  for (const text of [
+    "Choose fire or cold before rolling.",
+    "Choose fire or cold, then make a Guile spell attack.",
+    "Choose fire or cold and make a Guile spell attack.",
+  ]) assert.deepEqual(printedDamageChoices(record(text)), ["fire", "cold"]);
+  for (const text of ["You can describe fire or cold.", "Choose fire or cold colors.", "Choose armor or fire before rolling."])
+    assert.deepEqual(printedDamageChoices(record(text)), []);
 });

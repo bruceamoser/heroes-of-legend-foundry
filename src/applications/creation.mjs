@@ -188,7 +188,7 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
         (a) =>
           a &&
           (a.languageChoice ||
-            a.specialtyChoice ||
+            a.instrumentChoice ||
             a.weaponChoice ||
             a.recipeChoices ||
             a.items.includes("item-ordinary-melee-weapon")),
@@ -215,8 +215,8 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
           d.acquisitions?.[a.id]?.languageId,
           a.id,
         ),
-        specialtyChoice: a.specialtyChoice,
-        specialty: d.acquisitions?.[a.id]?.specialty ?? "",
+        instrumentChoice: a.instrumentChoice,
+        instrument: d.acquisitions?.[a.id]?.instrument ?? "",
         recipeChoices: a.recipeChoices,
         recipes: options(
           inventory.recipes.filter(
@@ -342,7 +342,7 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
       }),
       importedRepairs: preview.errors.filter(error=>error.level>1).map(error=>{
         const level=error.level, saved=d.progression?.levels?.[level]?.acquisitions?.[error.id]??{}, acquisition=acquisitions.find(a=>a.id===error.id);
-        return {...error, signatureTier:error.signatureTier??level, name:name(error.id), signature:error.code==="signature", purchase:error.code==="purchase", signatureOptions:error.code==="signature"?(get(d.classId)?.signatures[error.signatureTier??level]??[]).map(id=>({id,name:name(id),flavor:get(id)?.reference?.flavor?.[0]??""})):[], acquisition:acquisition?{...acquisition,level,needsHands:inventory.acquisitions.find(a=>a.id===error.id)?.items.includes("item-ordinary-melee-weapon") || saved.weapon==="melee",weaponOptions:acquisition.weaponOptions?.map(option=>({...option,selected:saved.weapon===option.id})),handOptions:[1,2].map(value=>({value,selected:saved.meleeHands===value})),languageOptions:additionalLanguageOptions(this.languageDefinitions,preview.state.languages??[],saved.languageId,error.id),specialty:saved.specialty??"",recipes:acquisition.recipes.map(recipe=>({...recipe,selected:saved.recipes?.includes(recipe.id)}))}:null};
+        return {...error, signatureTier:error.signatureTier??level, name:name(error.id), signature:error.code==="signature", purchase:error.code==="purchase", signatureOptions:error.code==="signature"?(get(d.classId)?.signatures[error.signatureTier??level]??[]).map(id=>({id,name:name(id),flavor:get(id)?.reference?.flavor?.[0]??""})):[], acquisition:acquisition?{...acquisition,level,needsHands:inventory.acquisitions.find(a=>a.id===error.id)?.items.includes("item-ordinary-melee-weapon") || saved.weapon==="melee",weaponOptions:acquisition.weaponOptions?.map(option=>({...option,selected:saved.weapon===option.id})),handOptions:[1,2].map(value=>({value,selected:saved.meleeHands===value})),languageOptions:additionalLanguageOptions(this.languageDefinitions,preview.state.languages??[],saved.languageId,error.id),instrument:saved.instrument??"",recipes:acquisition.recipes.map(recipe=>({...recipe,selected:saved.recipes?.includes(recipe.id)}))}:null};
       }),
       acquisitions,
       requiredChoices: acquisitions.filter((a) => creationStepErrors(preview, this.step).some((e) => e.code === "acquisition" && e.id === a.id)),
@@ -357,7 +357,7 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
       disciplinePurchases: (d.purchases[stage] ?? []).map((p, index) => ({...p,index,name: name(p.id),rank:state.ranks[p.id]})).filter((p) => get(p.id)?.kind === "discipline"),
       knownRanks: Object.entries(state.ranks ?? {}).map(([id, rank]) => ({name: name(id), rank,mark:`systems/heroes-of-legend/assets/marks/${id.replace(/^discipline-/,"")}.webp`})),
       showDisciplineMarket: stage > 0,
-      equipment: inventory.equipment.map((r) => ({ ...r, source: source(r), ...equipmentEligibility(r.id, state.abilities) })),
+      equipment: inventory.equipment.filter(r => !r.grantOnly).map((r) => ({ ...r, source: source(r), ...equipmentEligibility(r.id, state.abilities) })),
       shopping: (d.shopping ?? []).map((r, index) => ({
         ...r,
         index,
@@ -447,7 +447,7 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
       for (const field of this.element.querySelectorAll("[data-acquisition]")) {
         const id = field.dataset.acquisition;
         d.acquisitions[id] ??= {};
-        for (const key of ["languageId", "specialty"])
+        for (const key of ["languageId", "instrument"])
           if (f.has(`${key}-${id}`))
             d.acquisitions[id][key] = String(f.get(`${key}-${id}`));
         if (f.has(`weapon-${id}`))

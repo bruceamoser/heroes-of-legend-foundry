@@ -48,9 +48,9 @@ function authoredStrings(reference) {
 
 test("all source-locked Items have deterministic namespaced IDs and exact provenance", () => {
   const { abilities, equipment } = artifacts.documents;
-  assert.equal(abilities.length, 419);
-  assert.equal(equipment.length, 44);
-  assert.equal(artifacts.files.size, 464);
+  assert.equal(abilities.length, 427);
+  assert.equal(equipment.length, 46);
+  assert.equal(artifacts.files.size, 474);
   assert.equal(artifacts.index.sourceCommit, catalogs.lock.commit);
   assert.deepEqual(artifacts.index.catalogs, {
     choices: 2,
@@ -59,8 +59,8 @@ test("all source-locked Items have deterministic namespaced IDs and exact proven
   assert.deepEqual(
     artifacts.index.packs.map(({ name, count }) => [name, count]),
     [
-      ["abilities", 419],
-      ["equipment", 44],
+      ["abilities", 427],
+      ["equipment", 46],
     ],
   );
   const allIds = new Set();
@@ -99,7 +99,7 @@ test("all source-locked Items have deterministic namespaced IDs and exact proven
       allIds.add(document._id);
     }
   }
-  assert.equal(allIds.size, 463);
+  assert.equal(allIds.size, 473);
   assert.deepEqual(
     abilities
       .filter(
@@ -129,11 +129,13 @@ test("ability HTML preserves every authored reference section as escaped plain t
     assert(html.includes(escapeItemHtml(text)), text);
   assert(
     html.includes(
-      `<strong>Automation:</strong> ${escapeItemHtml("Rules reference · play automation in progress")}`,
+      `<strong>Automation:</strong> ${escapeItemHtml("Rules reference · resolve effects at the table")}`,
     ),
   );
   assert(html.includes("<h2>Rules</h2>"));
-  assert(html.includes("<h3>Additional rulings</h3>"));
+  // The revised source has no additional rulings; renderer must not invent a section.
+  assert.equal(record.reference.rules.notes.length, 0);
+  assert(!html.includes("<h3>Additional rulings</h3>"));
   assert(html.includes(catalogs.lock.commit));
 
   const payload = '<script data-payload="1">alert("rules")</script>',
@@ -189,7 +191,7 @@ test("automation labels credit only reviewed handlers; prose never supplies a ha
     assert.equal(document.flags[SYSTEM_ID].automation, "pending");
     assert.equal(
       document.flags[SYSTEM_ID].automationLabel,
-      "Rules reference · play automation in progress",
+      "Rules reference · resolve effects at the table",
     );
   }
   for (const document of artifacts.documents.equipment) {
@@ -340,7 +342,7 @@ test("authored pack JSON is complete, deterministic and contains no compiled dat
       withFileTypes: true,
     }),
     files = entries.filter((entry) => entry.isFile());
-  assert.equal(files.length, 656);
+  assert.equal(files.length, 666);
   assert(files.every((entry) => entry.name.endsWith(".json")));
   for (const forbidden of ["CURRENT", "LOCK", "LOG", "MANIFEST-000001"])
     assert(!files.some((entry) => entry.name === forbidden));

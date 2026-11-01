@@ -126,7 +126,8 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
     this.pendingResponse = Boolean(this.basis.survival?.pending);
     return {
       partyPiece:
-        this.basis.mode === "attribute" && this.attributeKey === "guile"
+        ["attribute", "attack", "defense"].includes(this.basis.mode) &&
+        (basis.defenseSubstitutions?.find(option => option.itemUuid === this.draft.defenseSubstitutionItemUuid)?.attributeKey ?? this.attributeKey) === "guile"
           ? this.basis.partyPiece
           : null,
       lookOverHere: this.mode === "defense" && Boolean(this.basis.incoming),

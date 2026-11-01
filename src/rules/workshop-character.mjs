@@ -38,6 +38,7 @@ export function workshopCharacter(draft, catalogs, languages) {
     state = awardMilestones(state, level);
     state.safePlace = true; // Browser planning; native commitment retains campaign authority.
     const before = structuredClone(state);
+    const currentPlay = workshopPlay(draft, state.items, state.languages ?? [], catalogs);
     const result = advancementPreview(
       state,
       draft.progression?.levels?.[level] ?? emptyLevelDraft(),
@@ -46,8 +47,8 @@ export function workshopCharacter(draft, catalogs, languages) {
       languages,
       // Play additions count as known; acquisition receipts and original grants remain historical.
       {
-        knownLanguages: workshopPlay(draft, [], state.languages ?? [], catalogs)
-          .languages,
+        knownLanguages: currentPlay.languages,
+        ownedItems: currentPlay.inventory,
       },
     );
     state = result.state;

@@ -1,3 +1,4 @@
+import {assertSummonPresent} from "../rules/summon-profile.mjs";
 import { ensureAuthorityReady } from "./authority.mjs";
 import { assertNoPendingActorPotion } from "./turn-lock.mjs";
 import { renderMarkdown } from "../sheets/creature-reference.mjs";
@@ -12,6 +13,7 @@ import {
 const ID = "heroes-of-legend";
 /** Explicit DA-selected NPC perspective, never inferred just from Actor type. */
 export async function declareNpcMelee(actor, { blockable } = {}) {
+  assertSummonPresent(actor);
   const suggestedDefenderTokenUuids = [...game.user.targets].map(
     (t) => t.document.uuid,
   );
@@ -35,6 +37,7 @@ export async function declareNpcMelee(actor, { blockable } = {}) {
 }
 /** A GM reference declaration records intent; costs and effects remain manual. */
 export async function declareCreatureAction(actor, actionId) {
+  assertSummonPresent(actor);
   if (!game.user.isGM || actor?.type !== "creature")
     throw new Error("The DA declares this creature action.");
   const action = actor.system.actions.entries.find(
@@ -133,6 +136,7 @@ async function apply(id) {
     const actor = await fromUuid(request.actorUuid),
       state = combat.getFlag(ID, "encounter"),
       budget = state?.budgets?.[request.participantId];
+    assertSummonPresent(actor);
     if (
       actor?.type !== "creature" ||
       combat.combatants.get(request.participantId)?.actor?.uuid !==

@@ -1,3 +1,4 @@
+import {registerSummonLifecycleRequests} from "./services/summon-lifecycle.mjs";
 import {registerNativeMovement} from "./services/native-movement.mjs";
 import { registerHOLTheme } from "./applications/theme.mjs";
 import { registerItemIcons } from "./services/item-icons.mjs";
@@ -67,6 +68,7 @@ Hooks.once("init", () => {
   registerSurvivalRequests();
   CONFIG.Combat.documentClass = HOLCombat;
   registerCombatRequests();
+  registerSummonLifecycleRequests();
   registerAuthorityPrototype();
   registerCreationAuthority();
   registerLanguageSettings();

@@ -964,26 +964,27 @@ try {
     "true",
   );
 
-  // An unfinished signature equipment choice stays reachable after leaving its screen.
-  const warden = structuredClone(ranged);
-  warden.draft.classId = "class-warden";
-  warden.draft.signatureId = "ability-signature-warden-keep-the-quarry-close";
-  warden.draft.attributes.knowledge = 1;
-  warden.draft.attributes.guile = -1;
-  warden.draft.purchases[1] = [];
-  warden.draft.shopping = [];
-  warden.draft.progression = { level: 7, levels: {} };
+  // Dance Through Steel supplies a missing melee weapon; its required grip choice
+  // stays reachable after leaving the signature screen, without opening general learning.
+  const blade = structuredClone(ranged);
+  blade.draft.classId = "class-blade";
+  blade.draft.signatureId = "ability-signature-blade-measured-guard";
+  blade.draft.attributes.knowledge = 1;
+  blade.draft.attributes.guile = -1;
+  blade.draft.purchases[1] = [];
+  blade.draft.shopping = [];
+  blade.draft.progression = { level: 7, levels: {} };
   await page.locator("#import-file").setInputFiles({
-    name: "Warden.json",
+    name: "Blade.json",
     mimeType: "application/json",
-    buffer: Buffer.from(JSON.stringify(warden)),
+    buffer: Buffer.from(JSON.stringify(blade)),
   });
   await page
     .getByRole("button", { name: "Choose level 7 signature", exact: true })
     .click();
   await page
     .locator(
-      '[data-action="advance-signature"][data-id="ability-signature-warden-turn-the-hunt"]',
+      '[data-action="advance-signature"][data-id="ability-signature-blade-dance-through-steel"]',
     )
     .click();
   await closePicker();
@@ -994,13 +995,13 @@ try {
       .isVisible(),
   );
   await page.getByRole("button", { name: "Spend DP", exact: true }).click();
-  assert.equal(await page.getByLabel("Weapon", { exact: true }).count(), 0);
+  assert.equal(await page.getByLabel("Melee weapon hands", { exact: true }).count(), 0);
   await closePicker();
   await page.getByRole("button", { name: "Done", exact: true }).click();
   await page
     .getByRole("button", { name: "Choose level 7 signature", exact: true })
     .click();
-  await page.getByLabel("Weapon", { exact: true }).selectOption("ranged");
+  await page.getByLabel("Melee weapon hands", { exact: true }).selectOption("1");
   await closePicker();
   await page.getByRole("button", { name: "Done", exact: true }).click();
   assert.equal(
@@ -1009,6 +1010,15 @@ try {
       .count(),
     0,
   );
+  await page.reload();
+  await page.getByRole("heading", {name: "Lira Ashbow", exact: true}).waitFor();
+  assert.equal(await page.getByRole("button", {name: "Choose level 7 signature", exact: true}).count(), 0);
+  const signatureSelection = await page.evaluate(() => {
+    const saved = JSON.parse(localStorage.getItem("hol.workshop.v1"));
+    return saved.character.draft.progression.levels[7];
+  });
+  assert.equal(signatureSelection.signatures[7], "ability-signature-blade-dance-through-steel");
+  assert.equal(signatureSelection.acquisitions["ability-signature-blade-dance-through-steel"].meleeHands, 1);
   // Unknown imported IDs remain inert text and repairable choices.
   const odd = { ...exported, draft: structuredClone(exported.draft) };
   odd.draft.classId = "ability-wear-medium-armor";
@@ -1048,6 +1058,7 @@ try {
   // Buy the new shared options through the real learning UI and retain their choices.
   const utility = structuredClone(exported);
   utility.draft.purchases = { 0: [], 1: [] };
+  utility.draft.shopping = [{id: "item-musical-instrument", quantity: 1}];
   delete utility.draft.progression;
   delete utility.draft.play;
   await page.locator("#import-file").setInputFiles({
@@ -1082,10 +1093,10 @@ try {
       await page.getByLabel("Language", { exact: true }).selectOption("goblin");
     if (id === "a-party-piece") {
       await page
-        .getByLabel("Performance specialty", { exact: true })
-        .fill("juggling");
+        .getByLabel("Chosen ordinary instrument", { exact: true })
+        .fill("flute");
       await page
-        .getByLabel("Performance specialty", { exact: true })
+        .getByLabel("Chosen ordinary instrument", { exact: true })
         .press("Tab");
     }
   }
@@ -1112,7 +1123,7 @@ try {
     .click();
   assert.match(
     await page.getByRole("dialog").innerText(),
-    /Your specialty: juggling/,
+    /Your instrument: flute/,
   );
   await page.keyboard.press("Escape");
   await page
@@ -1144,8 +1155,8 @@ try {
     "goblin",
   );
   assert.equal(
-    savedUtility.draft.acquisitions["ability-a-party-piece"].specialty,
-    "juggling",
+    savedUtility.draft.acquisitions["ability-a-party-piece"].instrument,
+    "flute",
   );
   assert.equal(
     savedUtility.draft.play.memorizedMessage,

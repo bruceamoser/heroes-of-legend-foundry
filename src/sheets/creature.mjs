@@ -1,3 +1,5 @@
+import {requestSummonCommand} from "../services/summon-lifecycle.mjs";
+import {summonState} from "../rules/summon-profile.mjs";
 import {creatureSheetProfile} from "../rules/creature-sheet-profile.mjs";
 import { isSummon } from "../rules/summon-profile.mjs";
 import { actorContributions } from "../services/conditions.mjs";
@@ -51,6 +53,7 @@ export class CreatureSheet extends CharacterSheet {
       chooseNpcProfile: CreatureSheet.chooseNpcProfile,
       unlinkNpcProfile: CreatureSheet.unlinkNpcProfile,
       toggleSummon: CreatureSheet.toggleSummon,
+      summonCommand: CreatureSheet.summonCommand,
     },
     position: { width: 700, height: 720 },
   };
@@ -102,7 +105,7 @@ export class CreatureSheet extends CharacterSheet {
       evasionPath: isSummon(this.actor) ? "system.defenseModifier" : "system.evasion",
       canEditThreatArmor: !isSummon(this.actor),
       canNpcPortrayal: !isSummon(this.actor),
-      canDeclare: game.user.isGM || isSummon(this.actor) && this.actor.isOwner,
+      canDeclare: !summonState(this.actor)?.lifecycle?.expired && (game.user.isGM || isSummon(this.actor) && this.actor.isOwner),
 
       conditionsList: Object.values(conditionSummary(actorContributions(this.actor))).filter(condition => condition.active),
       attributes,
@@ -239,6 +242,10 @@ export class CreatureSheet extends CharacterSheet {
     } catch (error) {
       ui.notifications.error(error.message);
     }
+  }
+  static async summonCommand() {
+    try { await requestSummonCommand(this.actor, !summonState(this.actor)?.lifecycle); }
+    catch (error) { ui.notifications.error(error.message); }
   }
   static async toggleSummon() {
     const ID = "heroes-of-legend";

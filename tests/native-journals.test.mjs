@@ -18,8 +18,8 @@ test("two native audience books retain every pinned source as an identified page
   assert.ok(position("design/ancestries/human.md") < position("design/ancestries/elf.md"));
   assert.ok(position("design/classes/protector.md") < position("design/classes/blade.md"));
   assert.ok(position("design/player-book/manuscript/06-playing.md") < position("design/player-book/manuscript/07-adventure.md"));
-  assert.equal(index.records.length,1018);
-  assert.equal(books.reduce((n,book)=>n+book.pages.filter(page=>page.flags?.["heroes-of-legend"]?.ruleSource).length,0),1018);
+  assert.equal(index.records.length,1026);
+  assert.equal(books.reduce((n,book)=>n+book.pages.filter(page=>page.flags?.["heroes-of-legend"]?.ruleSource).length,0),1026);
   for(const record of index.records){
     assert.equal(record.id,stableFoundryId(record.pack,"native-rule-book"));
     assert.equal(record.pageId,stableFoundryId(record.path,"native-rule-page"));

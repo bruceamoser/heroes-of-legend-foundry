@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/influence.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · play automation in progress</p><div class=\"hol-reference-flavor\"><p>You let the room grow quiet before putting the request into words they can hear.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div><div><dt>Time</dt><dd>One minute per attempt.</dd></div><div><dt>Target / range / shape</dt><dd>One willing listener; one minute of conversation</dd></div><div><dt>Duration</dt><dd>Information and earned progress persist for the stated task; completed changes remain until circumstances alter them.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Repeatable; pay the action and any stated costs each use.</dd></div><div><dt>Type</dt><dd>Skill</dd></div></dl><div class=\"hol-reference-rules\"><p>Before rolling, agree with the DA on what you are trying to accomplish and what is at risk. The DA states how much progress completes the task and whether progress carries over between attempts. Add the progress shown by your result. If the action has no uncertain consequence, resolve it without a roll.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>1 progress toward a plausible stated concession; learn one objection the listener openly raises.</dd><dt>Standard</dt><dd>2 progress; learn that objection and one stated condition that might address it.</dd><dt>Strong</dt><dd>3 progress, both details above, and a related concern the listener volunteers.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/295e858c1b6fee044a0261bf9f437636efeff2bf/design/cards/measured-appeal.md\" target=\"_blank\" rel=\"noopener\">design/cards/measured-appeal.md</a> at <code>295e858c1b6fee044a0261bf9f437636efeff2bf</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You lay out the bargain, then leave space for the answer. The first objection tells you where the real negotiation begins.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div><div><dt>Time</dt><dd>One minute per attempt.</dd></div><div><dt>Target / range / shape</dt><dd>One willing negotiating partner who can understand you.</dd></div><div><dt>Type</dt><dd>Skill</dd></div></dl><div class=\"hol-reference-rules\"><p>Make a Guile roll toward the concession you seek.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>2 progress.</dd><dt>Standard</dt><dd>3 progress; learn a counteroffer the listener would accept.</dd><dt>Strong</dt><dd>4 progress; learn the least costly counteroffer the listener would accept in the present circumstances.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/25b80c9fe77d7baaec3f3a8a548c9663d0f39a30/design/cards/measured-appeal.md\" target=\"_blank\" rel=\"noopener\">design/cards/measured-appeal.md</a> at <code>25b80c9fe77d7baaec3f3a8a548c9663d0f39a30</code>.</p></section>",
     "activity": {
       "action": "main",
       "rollMode": "attribute",
@@ -14,9 +14,9 @@
       "defenseAttribute": "agility"
     },
     "outcomes": {
-      "weak": "1 progress toward a plausible stated concession; learn one objection the listener openly raises.",
-      "standard": "2 progress; learn that objection and one stated condition that might address it.",
-      "strong": "3 progress, both details above, and a related concern the listener volunteers."
+      "weak": "2 progress.",
+      "standard": "3 progress; learn a counteroffer the listener would accept.",
+      "strong": "4 progress; learn the least costly counteroffer the listener would accept in the present circumstances."
     }
   },
   "effects": [],
@@ -30,12 +30,12 @@
       "catalogId": "ability-measured-appeal",
       "source": {
         "path": "design/cards/measured-appeal.md",
-        "sha256": "90973827617d7cbaf7c52d357c9ee161b87272786940cbf2a547e11e1ed99b41"
+        "sha256": "fa529ab42ccce4200b40aebb86271d1c0254577d26174b45f84b017ba0f385cc"
       },
-      "sourceCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
+      "sourceCommit": "25b80c9fe77d7baaec3f3a8a548c9663d0f39a30",
       "catalogAutomation": "pending",
       "automation": "pending",
-      "automationLabel": "Rules reference · play automation in progress"
+      "automationLabel": "Rules reference · resolve effects at the table"
     }
   }
 }

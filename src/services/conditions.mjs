@@ -18,7 +18,8 @@ export function actorContributions(actor) {
     .filter(
       (e) =>
         e.active && !e.getFlag(ID, "retired") && e.getFlag(ID, "condition") &&
-        !woundRecovered(actor.getFlag?.(ID,"wounds")?.[e.getFlag(ID,"woundEvent")]),
+        (e.getFlag(ID, "condition").persistence !== "starred" ||
+          !woundRecovered(actor.getFlag?.(ID,"wounds")?.[e.getFlag(ID,"woundEvent")])),
     )
     .map((e) => ({ ...structuredClone(e.getFlag(ID, "condition")), id: e.id }));
   validateContributions(records);

@@ -185,3 +185,17 @@ supply changes. Its separate
 `test-results/current-potion/evidence.json` records cleanup and browser errors.
 This does not certify cross-owner consent or the superseded integrated potion
 assertions above.
+
+The fresh2.6.0 Player book contains618 source pages plus15 section pages (633 total).
+Derive source-page expectations from the installed index; an older world's retained
+import is not evidence that the fresh package is complete. User-imported world
+journals remain snapshots rather than being silently overwritten.
+
+For a genuinely empty world, run `scripts/check-clean-first-launch.mjs` before the
+no-canvas feature harnesses. Foundry14.367's empty-world welcome flow calls
+`canvas.animatePan` after creating its scene even when core.noCanvas skipped canvas
+initialization. A no-canvas first-launch attempt emitted a null `_viewPosition`
+error after the feature assertions; its failure is retained in production evidence.
+The source supports this core welcome-flow attribution; the original attempt did
+not capture a stack. The fresh first-launch gate enables canvas and observes the
+welcome flow before checking errors through teardown.

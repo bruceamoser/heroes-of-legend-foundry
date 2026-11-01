@@ -164,16 +164,16 @@ try {
   owner = await join(fixture.users[0].name); other = await join(fixture.users[1].name);
   await view(owner); await view(other);
   for (const page of [gm, owner, other]) await page.evaluate(async id => ui.combat.render({force:true, combat:game.combats.get(id)}), fixture.combat);
-  const playerRules = await owner.evaluate(async () => {
+  const playerRules = await owner.evaluate(async expectedSourcePages => {
     const { ruleIndex, openLocalRule } = await import("/systems/heroes-of-legend/services/journals.mjs");
     const index = await ruleIndex();
     if (index.some(record => record.pack !== "player-rules")) throw new Error("DA references leaked into the player library.");
     const entry = await openLocalRule("design/rules/languages.md");
     const book = entry.parent;
-    if (book.pages.size !== 625 || book.getFlag("heroes-of-legend", "ruleBook")?.key !== "player-rules") throw new Error("Expected a complete native Player book.");
+    if (book.pages.size !== expectedSourcePages + 15 || book.getFlag("heroes-of-legend", "ruleBook")?.key !== "player-rules") throw new Error("Expected a complete native Player book.");
     return { count: index.length, readable: entry.testUserPermission(game.user, "OBSERVER"), sourcePages:book.pages.filter(page => page.getFlag("heroes-of-legend", "ruleSource")).length };
-  });
-  assert.deepEqual(playerRules, { count: journalIndex.records.filter(record => record.pack === "player-rules").length, readable: true, sourcePages:610 });
+  }, journalIndex.records.filter(record => record.pack === "player-rules").length);
+  assert.deepEqual(playerRules, { count: journalIndex.records.filter(record => record.pack === "player-rules").length, readable: true, sourcePages:journalIndex.records.filter(record => record.pack === "player-rules").length });
   await owner.evaluate(async path => {
     for (const app of foundry.applications.instances.values())
       if (app.document?.documentName === "JournalEntry") await app.close();

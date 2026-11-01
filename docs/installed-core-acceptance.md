@@ -154,3 +154,34 @@ turn budgets, consent, damage, replay, persistence and exact cleanup checks. Run
 icons, new owner tools, journal import preservation and observer access. Serialize
 these native runs; screenshots still require visual review. Record completed
 1.0.0 evidence in [release-1.0.0.md](release-1.0.0.md).
+
+## Current explicit-action acceptance split — system 2.6.0
+
+The historical integrated journey above expects PlayerAttackDialog, automatic Main
+budgets and legacy potion-operation receipts. Those assertions describe the earlier
+system and do not establish acceptance of the current SharedRollDialog workflow.
+The unchanged legacy gameplay path is superseded for this release; its observed
+failure is retained rather than reported as passing.
+
+Run the exact installed-package content/access/market and sheet-capture gate with
+`HOL_TEST_INSTALLED_SCOPE=content`, alongside the existing explicit installed path,
+artifact directory and expected-version variables. It retains ZIP/checksum,
+standalone/embedded manifest, installed-module, pack, player/DA journal-access,
+equipment-market, cleanup and browser-error checks. Its separate
+`test-results/installed-content-evidence.json` explicitly records
+`gameplayTested: false`. Inspect its sheet screenshots before claiming visual review.
+
+Against that same installed candidate, run `npm run test:table-attacks` and
+`npm run test:combat-damage` serially for the current shared-roll, player defense,
+selected-token damage and typed condition workflows. Record each suite's actual
+checks and cleanup separately; passing the content gate does not imply these
+companion journeys pass or cover every ability, potion or replay scenario.
+
+Run guarded `node scripts/check-current-potion.mjs` against that same candidate for
+the bounded current potion probe: an exact compendium bottle, GM-owned character
+self-use through native preparation, post-healing supply check, same-executor
+request replay and reload fencing of the old dispatch without repeated HP or
+supply changes. Its separate
+`test-results/current-potion/evidence.json` records cleanup and browser errors.
+This does not certify cross-owner consent or the superseded integrated potion
+assertions above.

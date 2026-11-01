@@ -21,6 +21,6 @@ Current-only Workshop saves use the new catalog. Existing committed Foundry Acto
 - Exact comparison: all 297 active discipline proposals match the approved book, with independent downstream source hashes and no missing IDs.
 - Node24 full build, validation and test gate: 739/739 passed before candidate packaging.
 - Local candidate on Foundry14.367: 2.5.1 upgrade preserves edited Actor/Item UUIDs, text, source provenance, HP and spent Grit. Native summon commands, unlinked-token expiry across reload, lasting-condition treatment and single end-turn decay pass with fixture cleanup.
-- Workshop builder, full character workflow, play, resources and recovery browser gates pass. Final CI artifact installation and public deployment evidence are recorded separately in #252. No unexecuted scenario is certified by static results.
+- Workshop builder, full character workflow, play, resources and recovery browser gates pass. Current native creation/import/save/reload, advancement with exact DP/acquisition/resource preservation, attack/defense/damage/conditions/supplies, and potion self-use/replay checks pass with cleanup and zero browser errors. Final CI artifact installation and public deployment evidence are recorded separately in #252. No unexecuted scenario is certified by static results.
 
 Tracking: #252; book bruceamoser/heroes-of-legend#1294 and PR#1295. Rollback: system2.5.1/book16.5.0.

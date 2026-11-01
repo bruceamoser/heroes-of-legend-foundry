@@ -168,7 +168,7 @@ try {
     await Promise.all([
       owner
         .locator(".hol-creation")
-        .getByRole("button", { name: "Create this character", exact: true })
+        .getByRole("button", { name: "Save character and return to sheet", exact: true })
         .click(),
       owner.evaluate(async (id) => {
         const { requestCreation } = await import(
@@ -178,7 +178,7 @@ try {
       }, fixture.actor),
     ]);
     await owner
-      .locator('.hol-character [name="system.health.baseMax"]')
+      .locator('.hol-character-sheet [data-current-hp]')
       .waitFor();
     await gm.waitForFunction(
       (id) =>

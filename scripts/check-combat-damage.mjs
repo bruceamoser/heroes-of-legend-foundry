@@ -329,6 +329,7 @@ try {
   }
   assert.deepEqual(errors, []);
   evidence.foundry = await gm.evaluate(() => game.version);
+  evidence.systemVersion = await gm.evaluate(() => game.system.version);
 } finally {
   if (player) await player.context().close();
   try {
@@ -360,12 +361,15 @@ try {
     evidence.cleanupError = error.message;
     process.exitCode = 1;
   }
+  await browser.close();
   await writeFile(
     `${output}/evidence.json`,
     JSON.stringify({ ...evidence, errors }, null, 2) + "\n",
   );
-  await browser.close();
 }
+assert.deepEqual(errors, [], "Browser errors through cleanup and teardown");
+assert.equal(evidence.cleanup?.complete, true, "Fixture cleanup complete");
+assert.equal(evidence.cleanupError, undefined);
 console.log(
   "Native Basic Melee / Invitation / condition damage against Basilisk and Skeleton Sentry passed without extra dialogs.",
 );

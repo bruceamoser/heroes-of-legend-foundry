@@ -440,3 +440,13 @@
 .heroes-of-legend .hol-character-sheet [data-tab-pane=inventory] .hol-item-pencil:hover {background:#e9dfc9;}
 .heroes-of-legend .hol-character-sheet [data-tab-pane=inventory] .hol-inventory-table :is(th,td):nth-child(4) {width:100px;}
 .heroes-of-legend .hol-character-sheet [data-tab-pane=inventory] .hol-inventory-table td:nth-child(4) button {display:inline-grid;place-items:center;width:21px;min-width:21px;height:23px;min-height:23px;padding:1px;margin:0;}
+
+/* Foundry windows resize independently of the browser viewport. */
+.heroes-of-legend .hol-character-sheet { container: hol-character-sheet / inline-size; }
+@container hol-character-sheet (max-width:700px) {
+  .heroes-of-legend .hol-character-sheet .hol-main-layout,
+  .heroes-of-legend .hol-character-sheet .hol-character-columns { grid-template-columns:minmax(0,1fr); }
+  .heroes-of-legend .hol-character-sheet .hol-ability-search { grid-template-columns:minmax(0,1fr); }
+  .heroes-of-legend .hol-character-sheet .hol-action-table th:nth-child(2) { width:20%; }
+  .heroes-of-legend .hol-character-sheet :is(.hol-main-actions,[data-tab-pane=abilities]) .hol-brief { -webkit-line-clamp:2; }
+}

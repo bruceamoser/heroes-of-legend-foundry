@@ -24,12 +24,12 @@ const server = createServer(async (req, res) => {
 await new Promise(done => server.listen(0, "127.0.0.1", done));
 const browser = await chromium.launch({ headless: true });
 const page = await browser.newPage({ viewport: { width: 1440, height: 1050 } });
-const base = `http://127.0.0.1:${server.address().port}${prefix}`;
+const base = (process.env.HOL_WORKSHOP_URL ?? `http://127.0.0.1:${server.address().port}${prefix}`).replace(/\/?$/, "/");
 const failures = [];
 page.on("pageerror", error => failures.push(error.message));
 page.on("response", response => { if (response.status() >= 400) failures.push(`${response.status()} ${response.url()}`); });
 page.on("dialog", dialog => dialog.accept());
-const output = resolve("test-results/ancestry-workshop");
+const output = resolve(process.env.HOL_WORKSHOP_OUTPUT ?? "test-results/ancestry-workshop");
 await mkdir(output, { recursive: true });
 async function seed(ancestryId, traitIds, mode = "builder") {
   const draft = { ...structuredClone(fixture), ancestryId, traitIds };
@@ -141,6 +141,72 @@ try {
   assert.equal(mixedReloaded.languages.ancestry,"goblin");
   await page.screenshot({path:`${output}/mixed-ancestry.png`,fullPage:true});
 
+  // Legacy two-language choices remain intact until the user explicitly replaces or removes the grant.
+  const legacyMixed = await seed("ancestry-human", ["trait-human-many-homes", "trait-human-weathered"]);
+  legacyMixed.sourceCommit = "25b80c9fe77d7baaec3f3a8a548c9663d0f39a30";
+  legacyMixed.draft.languages.extraSpoken = ["elven", "harbor-cant"];
+  legacyMixed.draft.profile = {story:"Retain this legacy hero's story."};
+  async function importLegacyMixed() {
+    await page.locator("#import-file").setInputFiles({name:"legacy-mixed-ancestry.json",mimeType:"application/json",buffer:Buffer.from(JSON.stringify(legacyMixed))});
+    await page.getByRole("heading", {name:"Review",exact:true}).waitFor();
+    assert(await page.getByRole("button", {name:"Export character JSON",exact:true}).isDisabled());
+    await page.getByRole("button", {name:"2 Ancestry",exact:true}).click();
+    const original = (await stored()).character.draft;
+    assert.deepEqual(original.languages.extraSpoken,["elven","harbor-cant"]);
+    assert.equal(original.borrowedAncestryId,undefined);
+    assert.equal(original.borrowedTraitId,undefined);
+    assert.equal(original.profile.story,"Retain this legacy hero's story.");
+  }
+  await importLegacyMixed();
+  await page.getByLabel("Ancestry language", {exact:true}).selectOption("");
+  assert.deepEqual((await stored()).character.draft.languages.extraSpoken,["elven","harbor-cant"],"a missing replacement does not discard legacy choices");
+  await page.getByLabel("Other ancestry", {exact:true}).selectOption("ancestry-tallfolk");
+  assert.deepEqual((await stored()).character.draft.languages.extraSpoken,["elven","harbor-cant"]);
+  await page.getByLabel("Borrowed trait", {exact:true}).selectOption("trait-tallfolk-broad-back");
+  assert.deepEqual((await stored()).character.draft.languages.extraSpoken,["elven","harbor-cant"]);
+  await page.getByLabel("Ancestry language", {exact:true}).selectOption("giant");
+  assert.deepEqual((await stored()).character.draft.languages.extraSpoken,[]);
+  assert.equal((await stored()).character.draft.languages.home,fixture.languages.home);
+  await page.getByRole("button", {name:"8 Review",exact:true}).click();
+  await page.getByRole("heading", {name:"Creation complete",exact:true}).waitFor();
+  const repairedDownload = page.waitForEvent("download");
+  await page.getByRole("button", {name:"Export character JSON",exact:true}).click();
+  const repairedFile = `${output}/repaired-legacy-ancestry.hol.json`;
+  await (await repairedDownload).saveAs(repairedFile);
+  const repaired = JSON.parse(await readFile(repairedFile,"utf8"));
+  assert.equal(repaired.status,"ready");
+  assert.deepEqual(repaired.draft.languages.extraSpoken,[]);
+  assert.equal(repaired.draft.languages.ancestry,"giant");
+  assert.equal(repaired.draft.borrowedAncestryId,"ancestry-tallfolk");
+  assert.equal(repaired.draft.borrowedTraitId,"trait-tallfolk-broad-back");
+  assert.equal(repaired.draft.profile.story,legacyMixed.draft.profile.story);
+  await page.reload();
+  await page.getByRole("heading", {name:"Creation complete",exact:true}).waitFor();
+  assert.deepEqual((await stored()).character.draft.languages.extraSpoken,[]);
+  await page.screenshot({path:`${output}/repaired-legacy-ancestry.png`,fullPage:true});
+
+  await importLegacyMixed();
+  await page.locator('input[data-list="traitIds"][value="trait-human-many-homes"]').uncheck();
+  assert.deepEqual((await stored()).character.draft.languages.extraSpoken,[]);
+  assert.equal((await stored()).character.draft.profile.story,legacyMixed.draft.profile.story);
+  await page.locator('input[data-list="traitIds"][value="trait-human-practiced-patience"]').check();
+  await page.getByRole("button", {name:"8 Review",exact:true}).click();
+  await page.getByRole("heading", {name:"Creation complete",exact:true}).waitFor();
+  assert(await page.getByRole("button", {name:"Export character JSON",exact:true}).isEnabled());
+
+  await importLegacyMixed();
+  await page.locator('[data-action="ancestry"][data-id="ancestry-dwarf"]').click();
+  assert.deepEqual((await stored()).character.draft.languages.extraSpoken,["elven","harbor-cant"],"changing ancestry keeps stale choices for explicit removal");
+  // These stale checkboxes disappear immediately after their change events.
+  await page.locator('input[data-list="traitIds"][value="trait-human-many-homes"]').click();
+  assert.equal(await page.locator('input[data-list="traitIds"][value="trait-human-many-homes"]').count(),0);
+  assert.deepEqual((await stored()).character.draft.languages.extraSpoken,[]);
+  await page.locator('input[data-list="traitIds"][value="trait-human-weathered"]').click();
+  for (const id of fixture.traitIds) await page.locator(`input[data-list="traitIds"][value="${id}"]`).check();
+  await page.getByRole("button", {name:"8 Review",exact:true}).click();
+  await page.getByRole("heading", {name:"Creation complete",exact:true}).waitFor();
+  assert(await page.getByRole("button", {name:"Export character JSON",exact:true}).isEnabled());
+
   // The daily reroll pays HP once, keeps its original modifiers and persists its recovery ceiling.
   await seed("ancestry-oath-bound", ["trait-oath-bound-the-debt-comes-due", "trait-oath-bound-neither-here-nor-there"], "sheet");
   const maximum = Number(await page.getByLabel("Current HP", {exact:true}).inputValue());
@@ -181,5 +247,5 @@ try {
   assert.match(await page.locator(".journal-page").innerText(), /ancestry/i);
   await page.screenshot({path:`${output}/shared-ancestry-rules.png`,fullPage:true});
   assert.deepEqual(failures, []);
-  console.info("Ancestry workshop passed: ten ancestries, fifty exact trait references, shared vision/procedures, old-ID import/save/reload, mixed ancestry controls/derived benefits/export/reload, daily Debt reroll and recovery persistence; no browser errors.");
+  console.info("Ancestry workshop passed: ten ancestries, fifty exact trait references, shared vision/procedures, old-ID import/save/reload, mixed ancestry controls/derived benefits/export/reload, explicit legacy-language repair/removal, daily Debt reroll and recovery persistence; no browser errors.");
 } finally { await browser.close(); await new Promise(done => server.close(done)); }

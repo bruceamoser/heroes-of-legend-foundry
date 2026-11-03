@@ -1,7 +1,7 @@
 # Heroes of Legend for Foundry VTT
 
 Bruce Moser's **Heroes of Legend**, for Foundry Virtual Tabletop **V14**.
-Version **2.7.0** adds all ten ancestries and fifty traits from book **v16.7.0**, plus shared vision rules and ancestry recovery tracking. See the [release notes](docs/release-2.7.0.md).
+Version **2.7.1** adds all ten ancestries and fifty traits from book **v16.7.0**, plus shared vision rules and ancestry recovery tracking. See the [release notes](docs/release-2.7.1.md).
 
 ## Install and update
 
@@ -20,10 +20,10 @@ Before updating, back up your world and return to Setup. Use the system's **Upda
 The 2.0.1 ZIP is version-specific:
 
 ```text
-https://github.com/bruceamoser/heroes-of-legend-foundry/releases/download/v2.7.0/heroes-of-legend.zip
+https://github.com/bruceamoser/heroes-of-legend-foundry/releases/download/v2.7.1/heroes-of-legend.zip
 ```
 
-If GitHub temporarily caches the preceding stable manifest after publication, use the [version-specific 2.7.0 manifest](https://github.com/bruceamoser/heroes-of-legend-foundry/releases/download/v2.7.0/system.json).
+If GitHub temporarily caches the preceding stable manifest after publication, use the [version-specific 2.7.1 manifest](https://github.com/bruceamoser/heroes-of-legend-foundry/releases/download/v2.7.1/system.json).
 
 For a local candidate, extract the ZIP directly into your isolated test data directory's `Data/systems/heroes-of-legend/`, with `system.json` immediately inside that directory. Never replace a running system's files. Public manifest/update checks and the exact-package isolated test are separate steps in the release checklist.
 

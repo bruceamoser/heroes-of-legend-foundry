@@ -58,3 +58,37 @@ Grit ceiling and dawn without healing. Captures are under
 Native package, deployment and publication results are recorded below after
 execution. Author review is performed by the implementing primary agent under
 the repository's explicit authorization; it is not independent review.
+
+### Isolated native candidate
+
+The exact locally packaged 2.7.0 ZIP was installed into the stopped disposable
+Foundry 14.367 world `hol-release-clean-260b` on localhost:30016. System/world
+backups are outside Git under `/mnt/disk4/tmp/hol270/`.
+
+`test:ancestry-native` passes: all ten native ancestry cards and five choices each,
+explicit mixed ancestry/trait/language save and reload, derived Capacity 16,
+Small Target defense Boon and player-attacker Bane, Tallfolk capacity/Speed,
+Deep Dwarf vision ratings and shared source references, preserved live HP/Grit,
+and stable Elf/Dwarf IDs with current names. Rendered captures were inspected;
+the sheet now shows full trait summaries, matching the Workshop. All eleven
+Actors and the Scene were cleaned up without browser errors.
+
+`test:debt-native` passes: actual chat reroll preserves the original attribute/pool,
+replaces native retained dice, pays once and replays safely. Native reload,
+healing ceiling, Recovery's Next dawn without healing and subsequent Safe breath
+pass. An unlinked token mutates only its synthetic Actor and preserves its base
+Actor. Same-client replay uses saved results; old-client dispatch after reload
+is rejected without writes, preserving the existing authority isolation. All
+Actors, Scenes and messages were cleaned up without browser errors.
+
+Native harness fixes resolved duplicate header/footer selectors, awaited each
+autosave before selecting the next field, opened collapsed Roll details and
+respected existing client-bound request routing. These are test-harness fixes;
+the rendered trait-summary omission was a production finding and was corrected.
+
+`test:current-charactermancer` also passes on the same candidate: incomplete
+creation validation; owner UI portable import/edit/Save, returned sheet/reload;
+owner Add level, disabled ineligible choice, local rules reference, required
+instrument acquisition and Done. Exact DP/HP/Grit and equipment persistence pass
+without duplicate grants. This does not claim all historical broad creation,
+advancement or canvas suites were rerun.

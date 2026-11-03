@@ -15,14 +15,14 @@ test("two native audience books retain every pinned source as an identified page
   await validateNativeJournals(root);
   assert.equal(books.length,2);
   const position = path => index.records.findIndex(record => record.path === path);
-  assert.ok(position("design/ancestries/human.md") < position("design/ancestries/elf.md"));
+  assert.ok(position("design/ancestries/human.md") < position("design/ancestries/wood-elf.md"));
   assert.ok(position("design/classes/protector.md") < position("design/classes/blade.md"));
   assert.ok(position("design/player-book/manuscript/06-playing.md") < position("design/player-book/manuscript/07-adventure.md"));
-  assert.equal(index.records.length,1026);
-  assert.equal(books.reduce((n,book)=>n+book.pages.filter(page=>page.flags?.["heroes-of-legend"]?.ruleSource).length,0),1026);
+  assert.equal(index.records.length,1065);
+  assert.equal(books.reduce((n,book)=>n+book.pages.filter(page=>page.flags?.["heroes-of-legend"]?.ruleSource).length,0),1065);
   for(const record of index.records){
     assert.equal(record.id,stableFoundryId(record.pack,"native-rule-book"));
-    assert.equal(record.pageId,stableFoundryId(record.path,"native-rule-page"));
+    assert.equal(record.pageId,stableFoundryId(({"design/ancestries/wood-elf.md":"design/ancestries/elf.md","design/ancestries/hill-dwarf.md":"design/ancestries/dwarf.md"}[record.path]??record.path),"native-rule-page"));
     const book=books.find(book=>book._id===record.id),page=book.pages.find(page=>page._id===record.pageId);
     assert.equal(page.flags["heroes-of-legend"].ruleSource.path,record.path);
     assert.equal(page.flags["heroes-of-legend"].ruleSource.commit,index.sourceCommit);
@@ -94,4 +94,18 @@ test("inline ability references preserve edited or renamed world book pages inst
  assert.equal(inlineAbilityUsesCatalog({...canonical,text:{content:canonical.text.content+"<p>Our campaign's changed ruling.</p>"}},canonical),false);
  assert.equal(inlineAbilityUsesCatalog({...canonical,name:"Our renamed ability"},canonical),false);
  assert.equal(inlineAbilityUsesCatalog(canonical,null),false);
+});
+
+
+test("shared vision and ancestry procedures stay linked inside the player book with renamed ancestry page IDs retained", () => {
+  const player = books.find(book => book.flags["heroes-of-legend"].ruleBook.key === "player-rules");
+  for (const path of ["design/rules/vision.md", "design/rules/ancestry-procedures.md"]) {
+    const record = index.records.find(record => record.path === path);
+    assert.equal(record.pack, "player-rules");
+    assert(player.pages.some(page => page.text.content.includes(`@UUID[${record.uuid}]`)));
+  }
+  for (const [current, old] of [["wood-elf","elf"],["hill-dwarf","dwarf"]]) {
+    const record = index.records.find(record => record.path === `design/ancestries/${current}.md`);
+    assert.equal(record.pageId, stableFoundryId(`design/ancestries/${old}.md`, "native-rule-page"));
+  }
 });

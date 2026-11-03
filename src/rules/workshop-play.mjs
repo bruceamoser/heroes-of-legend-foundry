@@ -1,5 +1,6 @@
 import { WOUND_TABLES } from "./damage.mjs";
 import { woundRoll } from "./wounds.mjs";
+import { normalizeRecovery } from "./recovery.mjs";
 import {
   CONDITION_KINDS,
   conditionSummary,
@@ -24,6 +25,10 @@ export function normalizeWorkshopPlay(value, catalogs) {
     languages: { added: [], removed: [] },
     conditions: [],
   };
+  if (value.recovery !== undefined) {
+    try { result.recovery = normalizeRecovery(value.recovery); }
+    catch { fail(); }
+  }
   for (const key of ["hp", "failedDeathRolls"]) {
     if (value[key] !== undefined) {
       if (

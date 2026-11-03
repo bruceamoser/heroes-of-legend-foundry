@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/arms.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You catch their ankle with your weapon and drive your shoulder forward. Their next stride becomes a scramble to stay upright.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Brawn</dd></div><div><dt>Target / range / shape</dt><dd>One adjacent creature</dd></div><div><dt>Equipment / acquisition</dt><dd>Use an ordinary melee weapon (Bulk 1), supplied on learning if needed.</dd></div><div><dt>Type</dt><dd>Skill / Attack</dd></div></dl><div class=\"hol-reference-rules\"><p>Make a Brawn melee attack.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>2 physical damage and Slowed 1.</dd><dt>Standard</dt><dd>3 physical damage and Slowed 2.</dd><dt>Strong</dt><dd>5 physical damage, Slowed 2 and Prone.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/25b80c9fe77d7baaec3f3a8a548c9663d0f39a30/design/cards/hook-and-drive.md\" target=\"_blank\" rel=\"noopener\">design/cards/hook-and-drive.md</a> at <code>25b80c9fe77d7baaec3f3a8a548c9663d0f39a30</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You catch their ankle with your weapon and drive your shoulder forward. Their next stride becomes a scramble to stay upright.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Brawn</dd></div><div><dt>Target / range / shape</dt><dd>One adjacent creature</dd></div><div><dt>Equipment / acquisition</dt><dd>Use an ordinary melee weapon (Bulk 1), supplied on learning if needed.</dd></div><div><dt>Type</dt><dd>Skill / Attack</dd></div></dl><div class=\"hol-reference-rules\"><p>Make a Brawn melee attack.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>2 physical damage and Slowed 1.</dd><dt>Standard</dt><dd>3 physical damage and Slowed 2.</dd><dt>Strong</dt><dd>5 physical damage, Slowed 2 and Prone.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/f3fb98ca03b046335fcc730c1b05689bebf091b4/design/cards/hook-and-drive.md\" target=\"_blank\" rel=\"noopener\">design/cards/hook-and-drive.md</a> at <code>f3fb98ca03b046335fcc730c1b05689bebf091b4</code>.</p></section>",
     "activity": {
       "action": "main",
       "rollMode": "attribute",
@@ -32,7 +32,7 @@
         "path": "design/cards/hook-and-drive.md",
         "sha256": "d061be03d1b0b450f1ef0e0c140085b9f52ae2f223782eef87c8f60e0bf9f772"
       },
-      "sourceCommit": "25b80c9fe77d7baaec3f3a8a548c9663d0f39a30",
+      "sourceCommit": "f3fb98ca03b046335fcc730c1b05689bebf091b4",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

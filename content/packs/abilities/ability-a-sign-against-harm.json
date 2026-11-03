@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/guard.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You draw a bright stroke across the air. It spreads in front of your companion just as the blow arrives.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self or one visible willing ally within 3 squares before a defense roll.</dd></div><div><dt>Type</dt><dd>Magic / Defense</dd></div></dl><div class=\"hol-reference-rules\"><p>The target gains 1 Boon to the defense.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/25b80c9fe77d7baaec3f3a8a548c9663d0f39a30/design/cards/a-sign-against-harm.md\" target=\"_blank\" rel=\"noopener\">design/cards/a-sign-against-harm.md</a> at <code>25b80c9fe77d7baaec3f3a8a548c9663d0f39a30</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You draw a bright stroke across the air. It spreads in front of your companion just as the blow arrives.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self or one visible willing ally within 3 squares before a defense roll.</dd></div><div><dt>Type</dt><dd>Magic / Defense</dd></div></dl><div class=\"hol-reference-rules\"><p>The target gains 1 Boon to the defense.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/f3fb98ca03b046335fcc730c1b05689bebf091b4/design/cards/a-sign-against-harm.md\" target=\"_blank\" rel=\"noopener\">design/cards/a-sign-against-harm.md</a> at <code>f3fb98ca03b046335fcc730c1b05689bebf091b4</code>.</p></section>",
     "activity": {
       "action": "reaction",
       "rollMode": "none",
@@ -32,7 +32,7 @@
         "path": "design/cards/a-sign-against-harm.md",
         "sha256": "74265a68ac321d024d34f0fd19b655b9b0c1614846ca0c966158444986ae2fae"
       },
-      "sourceCommit": "25b80c9fe77d7baaec3f3a8a548c9663d0f39a30",
+      "sourceCommit": "f3fb98ca03b046335fcc730c1b05689bebf091b4",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

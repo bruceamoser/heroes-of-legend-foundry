@@ -9,6 +9,7 @@ import {
   purchase,
   creationLedger,
   awardMilestones,
+  changeCharacterLevel,
 } from "../src/rules/development.mjs";
 import { craftingPermissions } from "../src/rules/acquisition.mjs";
 const catalog = JSON.parse(
@@ -422,6 +423,26 @@ test("historical milestone arithmetic remains idempotent; learning no longer req
   assert.deepEqual(level7.pendingSignatures, [3, 7]);
   assert.throws(() => awardMilestones(level7, 6), /correction/);
   assert.equal(state.level, 1);
+});
+test("Adaptable grants one DP at both creation stages and each later level without replay or live-state reset", () => {
+  const ordinary=creationLedger(draft(),catalog);
+  const d={...draft(),ancestryId:"ancestry-human",traitIds:["trait-human-far-walker","trait-human-weathered"]};
+  const result=creationLedger(d,catalog);
+  for(const stage of [0,1]) {
+    assert.equal(result.stages[stage].dp,ordinary.stages[stage].dp+1);
+    assert.equal(result.ledger.find(entry=>entry.kind==="trait-grant"&&entry.stage===stage).delta,1);
+  }
+  assert.equal(result.state.dp,0,"Unused creation bonus expires with its stage.");
+  const original={...base(),dp:3,creation:d,ledger:[{kind:"purchase",delta:-2}],gritSpent:1};
+  const before=structuredClone(original);
+  const level3=awardMilestones(original,3);
+  assert.equal(level3.dp,26);
+  assert.equal(level3.gritSpent,1);
+  assert.deepEqual(level3.ledger,original.ledger);
+  assert.deepEqual(awardMilestones(level3,3),level3);
+  assert.equal(changeCharacterLevel(original,1).delta,11);
+  assert.equal(changeCharacterLevel({...original,level:2},-1).delta,-11);
+  assert.deepEqual(original,before);
 });
 
 test("malformed persisted resources cannot turn into free or NaN purchases", () => {

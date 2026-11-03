@@ -9,7 +9,9 @@ const url=process.env.HOL_TEST_URL,output='test-results/table-sheets';
 if(!url||!['127.0.0.1','localhost'].includes(new URL(url).hostname)||process.env.HOL_TEST_ALLOW_WRITES!=='1'||process.env.HOL_TEST_ISOLATED_WORLD!=='1')throw Error('Use an explicitly authorized isolated local Foundry world.');
 await mkdir(output,{recursive:true});
 const catalogs={choices:JSON.parse(await readFile('static/data/choices.json')).records,inventory:JSON.parse(await readFile('static/data/inventory.json')),commit:JSON.parse(await readFile('static/data/choices.json')).sourceCommit};
-const draft=structuredClone(JSON.parse(await readFile('tests/fixtures/reference-heroes.json')).characters[3].draft);draft.name='Table Sheet Parity';draft.languages={home:'elven',extraSpoken:['dwarven','halfling']};
+// Explicit synthetic test choices, rather than changing the source book fixture.
+const draft=structuredClone(JSON.parse(await readFile('tests/fixtures/reference-heroes.json')).characters[3].draft);draft.name='Table Sheet Parity';draft.languages={home:'elven',extraSpoken:[],ancestry:'dwarven'};
+draft.borrowedAncestryId='ancestry-dwarf';draft.borrowedTraitId='trait-dwarf-stone-reader';
 const seed=writePortableCharacter(draft,catalogs,{ready:true});
 const root=resolve('dist/workshop');const server=createServer(async(req,res)=>{try{const path=resolve(root,new URL(req.url,'http://localhost').pathname.slice(1)||'index.html');if(!path.startsWith(root+'/'))throw Error('path');res.setHeader('Content-Type',({'.html':'text/html','.mjs':'text/javascript','.css':'text/css','.json':'application/json','.webp':'image/webp','.ttf':'font/ttf'})[extname(path)]??'application/octet-stream');res.end(await readFile(path));}catch{res.statusCode=404;res.end('Not found');}});await new Promise(done=>server.listen(0,'127.0.0.1',done));
 const browser=await chromium.launch(),errors=[],evidence={checks:[],captures:[]};let page,fixture;

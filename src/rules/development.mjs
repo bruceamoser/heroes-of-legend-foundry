@@ -1,6 +1,7 @@
 import { activeAbilityGrant, selectedSignatureAbility } from "./signatures.mjs";
 import { acquireAbility, craftingPermissions } from "./acquisition.mjs";
 import { ATTRIBUTES } from "./character.mjs";
+import { ancestryBenefits, ancestrySelection, ancestryTraitIds } from "./ancestry.mjs";
 const clone = (value) => structuredClone(value);
 const find = (catalog, id) => catalog.find((r) => r.id === id);
 const reason = (code, text) => ({ code, text });
@@ -229,6 +230,7 @@ export function creationLedger(
     ? null
     : 10 + attributes.knowledge + attributes.reason + attributes.guile;
   let state = {
+    ancestryTraitIds: ancestrySelection(draft, catalog).traitIds,
     languages: structuredClone(initialLanguages),
     stage: 0,
     level: 0,
@@ -276,6 +278,8 @@ export function creationLedger(
     });
   };
   ledger.push({ stage: 0, kind: "pool", delta: state.dp, balance: state.dp });
+  const ancestryDp = ancestryBenefits(state.ancestryTraitIds).additionalDpPerLevel;
+  if (ancestryDp) add("trait-grant", "trait-human-far-walker", ancestryDp);
   const grantRank = (id, source) => {
     if (state.ranks[id]) add("duplicate-rank", source, 1, { id });
     else {
@@ -343,6 +347,7 @@ export function creationLedger(
   syncAcquisitions();
   state.dp = pool ?? 0;
   ledger.push({ stage: 1, kind: "pool", delta: state.dp, balance: state.dp });
+  if (ancestryDp) add("trait-grant", "trait-human-far-walker", ancestryDp);
   const cls = find(catalog, draft.classId);
   if (cls?.kind !== "class") errors.push(reason("class", "Choose a class."));
   else {
@@ -412,7 +417,9 @@ export function awardMilestones(state, newLevel) {
   const next = clone(state);
   if (newLevel === state.level) return next;
   const dp = integer(
-    ((newLevel - state.level) * (16 + state.level + 1 + newLevel)) / 2,
+    ((newLevel - state.level) * (16 + state.level + 1 + newLevel)) / 2 +
+      (newLevel - state.level) *
+        ancestryBenefits(state.creation ? ancestryTraitIds(state.creation) : state.ancestryTraitIds ?? []).additionalDpPerLevel,
     "milestone DP",
   );
   const milestones = [3, 7].filter(
@@ -444,7 +451,8 @@ export function changeCharacterLevel(state, direction) {
   if(direction<0&&state.level===1)throw new Error("A character cannot be below level 1.");
   if(!Number.isSafeInteger(state.dp))throw new Error("Invalid DP balance.");
   const next=clone(state),level=state.level+direction;
-  const delta=direction>0?8+level:-(8+state.level);
+  const ancestryDp=ancestryBenefits(state.creation ? ancestryTraitIds(state.creation) : state.ancestryTraitIds ?? []).additionalDpPerLevel;
+  const delta=direction>0?8+level+ancestryDp:-(8+state.level+ancestryDp);
   next.level=level;next.dp=state.dp+delta;
   if(direction>0&&[3,7].includes(level)&&!state.signatureChoices?.[level]&&!(state.ledger??[]).some(entry=>["signature-grant","signature-switch"].includes(entry.kind)&&entry.level===level))next.pendingSignatures=[...new Set([...(state.pendingSignatures??[]),level])];
   return {state:next,delta};

@@ -15,7 +15,9 @@ const output=resolve(process.env.HOL_TEST_PARITY_OUTPUT ?? "test-results/native-
 const catalogs={choices:JSON.parse(await readFile("static/data/choices.json")).records,inventory:JSON.parse(await readFile("static/data/inventory.json")),commit:JSON.parse(await readFile("static/data/choices.json")).sourceCommit};
 const wounds=JSON.parse(await readFile("static/data/wounds.json"));
 const draft=structuredClone(JSON.parse(await readFile("tests/fixtures/reference-heroes.json")).characters[3].draft);
-draft.name="Parity Oren";draft.languages={home:"elven",extraSpoken:["dwarven","halfling"]};
+// Synthetic current-rules choices; the immutable book example still needs repair.
+draft.name="Parity Oren";draft.languages={home:"elven",extraSpoken:[],ancestry:"dwarven"};
+draft.borrowedAncestryId="ancestry-dwarf";draft.borrowedTraitId="trait-dwarf-stone-reader";
 if(process.env.HOL_TEST_CHARACTER_LEVEL !== "1") draft.progression={level:3,levels:{2:{purchases:[{id:"ability-conditioned-body"}],signatures:{},acquisitions:{}},3:{purchases:[],signatures:{3:catalogs.choices.find(record=>record.id===draft.classId).signatures[3][0]},acquisitions:{}}}};
 draft.profile={story:"Oren keeps the bridge tools dry. Exported through the actual workshop."};
 draft.play={hp:5,gritSpent:1,wounds:[{id:"manual-scar",name:"Old bridge scar",notes:"A harmless old scar",progress:0}],conditions:[{id:"condition-parity-slow",key:"slowed",rating:1,persistence:"temporary",source:"sheet",order:0}],inventory:{added:[{instanceId:"inventory-parity-food",id:"item-food-bundle",quantity:3}],removed:[],overrides:{"inventory-parity-food":{inventoryDie:4}}},languages:{added:[{id:"trade-sign",name:"Trade Sign",form:"signed",written:false}],removed:[]},favorites:{abilities:[draft.signatureId],items:["inventory-parity-food"]},crafting:{"recipe-twisted-cord":{progress:1,completed:0,attempts:1,active:true,supplyId:""}}};

@@ -22,7 +22,7 @@ const detail = (record, label) =>
 
 // Explicit IDs make a missing or substituted approved card fail even if totals still match.
 test("all 62 approved cards occur once with exact tiers, actions, source and narrative", () => {
-  assert.equal(lock.commit, "25b80c9fe77d7baaec3f3a8a548c9663d0f39a30");
+  assert.equal(lock.commit, "f3fb98ca03b046335fcc730c1b05689bebf091b4");
   assert.equal(abilities.length, 427);
   assert.equal(inventory.equipment.length, 46);
   assert.equal(new Set(added).size, 62);

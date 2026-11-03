@@ -20,14 +20,19 @@ const catalogs = {
   commit: source.sourceCommit,
 };
 const languages = [...DEFAULT_LANGUAGES, ...fixtures.campaignLanguages];
-test("all six book heroes retain choices and recomputed results through portable JSON", () => {
+test("book heroes retain choices through portable JSON, including actionable repair for stale Oren choices", () => {
   for (const hero of fixtures.characters) {
     const text = writePortableCharacter(hero.draft, catalogs, {
-      ready: true,
+      ready: hero.id !== "oren-brass",
       languages,
     });
     const restored = readPortableCharacter(text, catalogs, languages);
-    assert.equal(restored.preview.valid, true, hero.name);
+    assert.equal(restored.preview.valid, hero.id !== "oren-brass", hero.name);
+    if(hero.id === "oren-brass") {
+      assert(restored.preview.errors.some(error=>error.code === "borrowed-ancestry"));
+      assert.deepEqual(restored.draft.languages,hero.draft.languages);
+      assert.throws(()=>writePortableCharacter(hero.draft,catalogs,{ready:true,languages}),/Finish the choices/);
+    }
     assert.equal(restored.draft.name, hero.draft.name);
     assert.deepEqual(restored.draft.purchases, hero.draft.purchases);
     assert.deepEqual(restored.draft.acquisitions, hero.draft.acquisitions);

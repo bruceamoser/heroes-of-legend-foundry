@@ -1,6 +1,7 @@
 import { normalizeWorkshopPlay } from "./workshop-play.mjs";
 import { ATTRIBUTES } from "./character.mjs";
 import { workshopCharacter } from "./workshop-character.mjs";
+import { currentAncestryId } from "./ancestry.mjs";
 
 export const PORTABLE_FORMAT = "heroes-of-legend-character";
 export const PORTABLE_VERSION = 3;
@@ -22,6 +23,10 @@ const LIGHT_ARMOR_KEY =
 /** Normalize saved choices for the only supported rules catalog, without changing the input. */
 export function currentCreationDraft(input, sourceCommit) {
   const draft = structuredClone(input);
+  if (object(draft) && draft.ancestryId !== undefined)
+    draft.ancestryId = currentAncestryId(draft.ancestryId);
+  if (object(draft) && draft.borrowedAncestryId !== undefined)
+    draft.borrowedAncestryId = currentAncestryId(draft.borrowedAncestryId);
   // Approved replacement of the retired concept; replay the ordinary current
   // purchase at its original stage/level, with no rank or resource grants.
   const retired = "ability-turn-the-crowd", replacement = "ability-a-common-tongue";
@@ -122,6 +127,8 @@ export function readPortableCharacter(input, catalogs, languages) {
   };
   for (const key of [
     "ancestryId",
+    "borrowedAncestryId",
+    "borrowedTraitId",
     "classId",
     "signatureId",
     "rememberedCommunity",
@@ -130,6 +137,10 @@ export function readPortableCharacter(input, catalogs, languages) {
       if (!string(d[key])) fail();
       draft[key] = d[key];
     }
+  if (d.languages.ancestry !== undefined) {
+    if (!string(d.languages.ancestry)) fail();
+    draft.languages.ancestry = d.languages.ancestry;
+  }
   for (const key of ["culture", "background"])
     if (d[key] !== undefined) {
       if (!object(d[key]) || !string(d[key].id) || !integer(d[key].pair))

@@ -37,3 +37,16 @@ test("completed book lock accounts for every creature, portrait and summon", () 
   for (const record of [...lock.records, ...lock.assets])
     assert.match(record.sha256, /^[a-f0-9]{64}$/);
 });
+
+
+test("approved v16.7 source lock includes ten ancestries, fifty authored trait identities and shared procedures", () => {
+  assert.equal(lock.commit, "f3fb98ca03b046335fcc730c1b05689bebf091b4");
+  assert.equal(lock.previousCommit, "25b80c9fe77d7baaec3f3a8a548c9663d0f39a30");
+  const ancestry = lock.records.filter(record => record.path.startsWith("design/ancestries/"));
+  assert.equal(ancestry.filter(record => !record.path.includes("/trait-")).length, 10);
+  const traits = ancestry.filter(record => record.path.includes("/trait-"));
+  assert.equal(traits.length, 50);
+  assert.equal(new Set(traits.map(record => record.id)).size, 50);
+  for (const path of ["design/rules/vision.md", "design/rules/ancestry-procedures.md"])
+    assert(lock.records.some(record => record.path === path));
+});

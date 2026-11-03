@@ -4,6 +4,7 @@ import { survivalState, sufferDamage } from "./survival.mjs";
 import { woundRoll, woundResult } from "./wounds.mjs";
 import { inventoryCheck, refillInventory } from "./inventory.mjs";
 import { healingPotionAdapter, HEALING_POTION_IDS } from "./potions.mjs";
+import { recoveryMaximum } from "./recovery.mjs";
 
 export function rolledWorkshopWound({
   catalog,
@@ -63,6 +64,7 @@ export function workshopSupplyUse({
   catalog,
   lastWords = false,
   lifeResistance = 0,
+  recovery,
 }) {
   if (!item || item.quantity < 1)
     throw new Error("This supply has no quantity remaining.");
@@ -74,6 +76,7 @@ export function workshopSupplyUse({
   const check = inventoryCheck({ die: item.inventoryDie, retained: face });
   const afterHp = potion ? healingPlan({
     amount: potion.healing, current: hp, max: maxHp,
+    unavailableHp: maxHp - recoveryMaximum(maxHp, recovery),
     lifeResistances: [lifeResistance],
   }).after : hp;
   return {
@@ -89,11 +92,13 @@ export function workshopSpendGrit({
   granted,
   maxHp,
   lastWords = false,
+  recovery,
+  hp = 0,
 }) {
   if (!Number.isSafeInteger(spent) || spent < 0 || spent >= granted)
     throw new Error("No Grit remains.");
   if (lastWords) throw new Error("Ordinary Grit cannot reverse Last Words.");
-  return { gritSpent: spent + 1, hp: maxHp, failedDeathRolls: 0 };
+  return { gritSpent: spent + 1, hp: Math.max(hp, recoveryMaximum(maxHp, recovery)), failedDeathRolls: 0 };
 }
 
 /** Printed wound data and treatment state; scars are never removed by progress. */

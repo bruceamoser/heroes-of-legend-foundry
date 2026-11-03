@@ -108,8 +108,20 @@ portrait counts are unchanged. See the v16.5.0 production baseline.
 
 ## November 1 approved catalog
 
-The current approved pin is **25b80c9fe77d7baaec3f3a8a548c9663d0f39a30**.
+The November 1 approved pin was **25b80c9fe77d7baaec3f3a8a548c9663d0f39a30**.
 Book v16.6.0 integrates the approved Universal ladder and full active discipline
 catalog, including summon command maintenance at controller turn end. Approval:
 DIR-CATALOG-001 and DIR-CALLING-001, tracked in #252. This is playtest content;
 static import validation does not establish balance or native runtime acceptance.
+
+## November 3 ancestry expansion: v16.7.0 (#259)
+
+The current approved pin is **f3fb98ca03b046335fcc730c1b05689bebf091b4**.
+Book v16.7.0 contains ten ancestries and fifty traits, shared Vision and
+Ancestry Procedures rules, and the approved Oath-Bound origin and recovery
+procedures. Wood Elf and Hill Dwarf retain the published `ancestry-elf` and
+`ancestry-dwarf` identities. New descriptive aliases resolve to those identities.
+No ancestry grants sight in complete darkness. Conditional trait Boons remain
+explicit player/DA judgments; low-light and seismic senses reference the shared
+rules rather than enabling Foundry darkness sight. Saved drafts use current
+rules automatically; committed world Actors retain live resources and local edits.

@@ -151,7 +151,9 @@ export function renderRollSummary(message, element) {
   const incoming = game.messages?.get?.(result.attackMessageId)?.getFlag("heroes-of-legend", "attackCard");
   heading.textContent = result.mode === "defense" ? `Defend${incoming?.title ? ` · ${incoming.title}` : ""}` : result.equipment?.name ?? result.ability?.name ?? "Attribute check";
   identity.append(heading);
-  const actor = game.actors?.get?.(message.speaker?.actor);
+  const actor = typeof fromUuidSync === "function" && result.actorUuid
+    ? fromUuidSync(result.actorUuid)
+    : game.actors?.get?.(message.speaker?.actor);
   header.append(identity);
   const bar = document.createElement("div"); bar.className = "hol-chat-bar";
   const barPart = text => { const part = document.createElement("span"); part.textContent = text; bar.append(part); };
@@ -295,6 +297,24 @@ export function renderRollSummary(message, element) {
   }
   const footer = document.createElement("footer"); footer.className = "hol-chat-footer";
   if (damageButton) footer.append(damageButton);
+  if (actor?.isOwner && actor.type === "character" && result.mode === "attribute" && !result.ability) {
+    const development = actor.getFlag("heroes-of-legend", "development") ?? {};
+    const traits = development.creation?.traitIds ?? development.ancestryTraitIds ?? [];
+    const borrowed = development.creation?.borrowedTraitId;
+    if (traits.includes("trait-oath-bound-the-debt-comes-due") ||
+        traits.includes("trait-human-many-homes") && borrowed === "trait-oath-bound-the-debt-comes-due") {
+      const debt = document.createElement("button"); debt.type = "button";
+      debt.textContent = "The Debt Comes Due · pay 1 HP & reroll";
+      debt.disabled = Boolean(actor.system.recovery?.debtUsed || actor.system.health.value < 2 || result.debtReroll);
+      debt.addEventListener("click", async () => {
+        if (debt.disabled) return;
+        debt.disabled = true;
+        try { const {requestDebtReroll} = await import("./debt-reroll.mjs"); await requestDebtReroll(actor,message); }
+        catch (error) { ui.notifications.error(error.message); debt.disabled = false; }
+      });
+      footer.append(debt);
+    }
+  }
   if (result.mode === "defense" && result.attackMessageId || actor?.isOwner && ["attribute", "attack"].includes(result.mode)) {
     const again = document.createElement("button"); again.type = "button"; again.textContent = "Roll again";
     again.addEventListener("click", async () => {

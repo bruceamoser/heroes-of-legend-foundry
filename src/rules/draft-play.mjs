@@ -8,7 +8,7 @@ export function draftHp(draft,maximum,value){
 }
 export function draftGrit(draft,preview){
   const play=structuredClone(draft.play??{});
-  return {...play,...workshopSpendGrit({spent:play.gritSpent??0,granted:preview.summary.gritGranted,maxHp:preview.summary.maximumHp,lastWords:Boolean(play.lastWords||(play.failedDeathRolls??0)>=3)})};
+  return {...play,...workshopSpendGrit({spent:play.gritSpent??0,granted:preview.summary.gritGranted,maxHp:preview.summary.maximumHp,hp:play.hp??preview.summary.maximumHp,recovery:play.recovery,lastWords:Boolean(play.lastWords||(play.failedDeathRolls??0)>=3)})};
 }
 export function draftWound(draft,result){
   const play=structuredClone(draft.play??{}),wounds=(play.wounds??=[]),conditions=(play.conditions??=[]);

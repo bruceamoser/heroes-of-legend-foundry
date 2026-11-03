@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "repository": "https://github.com/bruceamoser/heroes-of-legend",
-  "commit": "25b80c9fe77d7baaec3f3a8a548c9663d0f39a30",
-  "previousCommit": "295e858c1b6fee044a0261bf9f437636efeff2bf",
-  "approval": "Approved Universal and full discipline review November 1, book v16.6.0; DIR-CATALOG-001 and summon maintenance DIR-CALLING-001; system sync #252. Distribution licensing remains undecided.",
+  "commit": "f3fb98ca03b046335fcc730c1b05689bebf091b4",
+  "previousCommit": "25b80c9fe77d7baaec3f3a8a548c9663d0f39a30",
+  "approval": "Approved ancestry expansion November 3, book v16.7.0: ten ancestries and fifty traits, shared vision and ancestry procedures; system sync #259. Distribution licensing remains undecided.",
   "counts": {
     "creatures": 192,
     "monsterAbilities": 126,
@@ -12,70 +12,165 @@
   },
   "records": [
     {
-      "path": "design/ancestries/dwarf.md",
-      "sha256": "bd4662101f56ee387e52bafb68661666d7cd2f895112e4fdf2171e14eb2486d6"
+      "path": "design/ancestries/deep-dwarf.md",
+      "sha256": "f44eae00cf30d98716004132064c725b44514550051871e1155434591c0b3404"
     },
     {
-      "path": "design/ancestries/elf.md",
-      "sha256": "54bacf5fa8b4e0a5a221fca0c64f12ac5dcf4e9b2f52dc622a61c853a737ae7a"
+      "path": "design/ancestries/gnome.md",
+      "sha256": "d188b2ac1f633dadeb8a3ec2753c4966f5bef9b0aa5e6b08c12a2108102dd5e9"
+    },
+    {
+      "path": "design/ancestries/goblin.md",
+      "sha256": "d3a25a43ab0ab2dfd72742246a670f6f04b8106136d0cbcc028a61de378d823b"
     },
     {
       "path": "design/ancestries/halfling.md",
-      "sha256": "46a0432ce7afcf914fa2c476debc2b739edcf95d755ef1aacd660eaa54f0d5e2"
+      "sha256": "79781f69d080360544937569423f862b6ac32e7aa1c888579b1346459ced67fd"
+    },
+    {
+      "path": "design/ancestries/high-elf.md",
+      "sha256": "81d7fd36477ee82f362b7df4d7a5b9b3bfe4137b223b327a89c29c04bccba0dd"
+    },
+    {
+      "path": "design/ancestries/hill-dwarf.md",
+      "sha256": "6f320662a68c2bdb008921afe8ee1ff7b530d2753deb2abb98b274d6f350c8d5"
     },
     {
       "path": "design/ancestries/human.md",
-      "sha256": "4d731757497e8e555557057a2d7f491daa7204d39119f521d17cb2ecfdb6f5ad"
+      "sha256": "72fd4209b118a5c3866d8fcc457aeb15ed29b982b963485d7b5a98a0841949bb"
+    },
+    {
+      "path": "design/ancestries/oath-bound.md",
+      "sha256": "17494164181d006ef34cc3095df647f4f66e95fa989a5c34f4e274ee5606c82f"
+    },
+    {
+      "path": "design/ancestries/tallfolk.md",
+      "sha256": "e067c63a23f175168024953109b9a287b8af6c540ad6e5374797ef2d127d5d91"
+    },
+    {
+      "path": "design/ancestries/trait-deep-dwarf-eyes-for-the-dark.md",
+      "sha256": "489ecb7f546f2ff092f41ea719c595e363f62d8bcc655d1aab2845dab05de627",
+      "id": "trait-deep-dwarf-eyes-for-the-dark"
+    },
+    {
+      "path": "design/ancestries/trait-deep-dwarf-holds-its-own.md",
+      "sha256": "b518753bbf09eaa33e4c7014fa6e39de9032c7e6b637f3cfc38f8454bdb0d8de",
+      "id": "trait-deep-dwarf-holds-its-own"
+    },
+    {
+      "path": "design/ancestries/trait-deep-dwarf-never-off-the-map.md",
+      "sha256": "e5c141e595b497bde964457c6cab6b46818d4a97c3d4b71c7dbeb4f9a6a3f63f",
+      "id": "trait-deep-dwarf-never-off-the-map"
+    },
+    {
+      "path": "design/ancestries/trait-deep-dwarf-stone-tells-you.md",
+      "sha256": "e7a888739f7e09810a613edee0ace458ad77b1177e034039eb4daa730f058b6c",
+      "id": "trait-deep-dwarf-stone-tells-you"
+    },
+    {
+      "path": "design/ancestries/trait-deep-dwarf-where-tall-folk-cannot-stand.md",
+      "sha256": "edf6012380daf083395d77c7e46b54965d1b0408aebfe1833457c651c576d4c1",
+      "id": "trait-deep-dwarf-where-tall-folk-cannot-stand"
     },
     {
       "path": "design/ancestries/trait-dwarf-carved-history.md",
-      "sha256": "f938cef556a859d9d2962a23e49d322e8c574eaf508048db70cf684eb7c56f42",
+      "sha256": "76daec23e19ff199616f300e76f2caac35f4fe9a41ad5f2b06e1eef5e7b8832d",
       "id": "trait-dwarf-carved-history"
     },
     {
       "path": "design/ancestries/trait-dwarf-deep-constitution.md",
-      "sha256": "15c2e0f449d0e2416e9a48bd5eda6ecd6be2fe6c987d726d071740f69c7c8df8",
+      "sha256": "66d5375b8615ef9d58eabb520a8e83e01b9c2e12cd5082c6a2a44b347776f3fe",
       "id": "trait-dwarf-deep-constitution"
     },
     {
       "path": "design/ancestries/trait-dwarf-low-center.md",
-      "sha256": "9f8c38646e49d95312e863fe8d18b3c02d51f0af35dd8e6a7d5799717366a460",
+      "sha256": "db1605041eeb7317b817d1243fee3dafd0e0e807c8db427190ce98c552c1e6ad",
       "id": "trait-dwarf-low-center"
     },
     {
       "path": "design/ancestries/trait-dwarf-maker-s-eye.md",
-      "sha256": "6fe1f6ce50781658b41917e08d5dbb2317a2b1ee431768db4a4442fec360d081",
+      "sha256": "75b20c3c5f83971bbd7308593ac9c7a70567dcbd83759cac74a06b4e99dd84ae",
       "id": "trait-dwarf-maker-s-eye"
     },
     {
       "path": "design/ancestries/trait-dwarf-stone-reader.md",
-      "sha256": "26aa2be58de5f470ec85240d49ee18325cca4e484b47b6cdd418becdaecc5214",
+      "sha256": "32d2aa2e99f93fe5d538ba6e041ae03aa20056cec76dbb872abb7d59499a0dfd",
       "id": "trait-dwarf-stone-reader"
     },
     {
       "path": "design/ancestries/trait-elf-age-of-memory.md",
-      "sha256": "ba922611591d55fc3e827131bf44e2218a2b78ec3fd2da51668190e1c090c75b",
+      "sha256": "8a7c5c481dd3824fe310f64a6c8d5b0d56074c8b04badcf366683518d9118339",
       "id": "trait-elf-age-of-memory"
     },
     {
       "path": "design/ancestries/trait-elf-leaf-listener.md",
-      "sha256": "0a772b5f9b7d8b503e39f0c9528cec9f89d627775e39123ca7805b3a2cbb32ed",
+      "sha256": "889a4387f42cfc651b1e3686dc89a8e3975c75e7ef24b3e42975b5f857c3371a",
       "id": "trait-elf-leaf-listener"
     },
     {
       "path": "design/ancestries/trait-elf-light-tread.md",
-      "sha256": "b51638ae2f4811cc5b9c2aa6e1a5abfbed7c80891b88e1635f9b472f819e2572",
+      "sha256": "0f3407fbce9b426114a0961c6cb9d2b7739258e92682224bee95b8b435e5c2a3",
       "id": "trait-elf-light-tread"
     },
     {
       "path": "design/ancestries/trait-elf-star-familiar.md",
-      "sha256": "4e14701ee12da286fbaf78d40b39cbe2737191755f05c840af7557abe3d23788",
+      "sha256": "21d501959d14a4516e29413df409cd02d43cc39564cba483be189aeb077d82e0",
       "id": "trait-elf-star-familiar"
     },
     {
       "path": "design/ancestries/trait-elf-unhurried-grace.md",
-      "sha256": "fc03ce8b811275e9ff82af44a433fdd51c31929a1b07c11e4fda274eb1f903cd",
+      "sha256": "bc4df6bcacd45691841a84984bb2353b07c99895677fc6e1ca840a9b66668ab7",
       "id": "trait-elf-unhurried-grace"
+    },
+    {
+      "path": "design/ancestries/trait-gnome-bright-idea.md",
+      "sha256": "731c4e345617d242eb1177ccff3ff5f1c7a71fbc0010b397ac3eef77fc300c3f",
+      "id": "trait-gnome-bright-idea"
+    },
+    {
+      "path": "design/ancestries/trait-gnome-fingers-in-the-works.md",
+      "sha256": "f65fe9d977027f8f491bcdfb9e6db657456c92e3ba756b78d1ed58d33d87e3bd",
+      "id": "trait-gnome-fingers-in-the-works"
+    },
+    {
+      "path": "design/ancestries/trait-gnome-one-more-question.md",
+      "sha256": "63c7f881df96ec2fb803fd36e80883f78a3c1a3cf89f378c3fa1781b3a3de107",
+      "id": "trait-gnome-one-more-question"
+    },
+    {
+      "path": "design/ancestries/trait-gnome-small-target.md",
+      "sha256": "08e011d627587e4288dea62855161d53904485f356bb8b2ef96f60b61918c447",
+      "id": "trait-gnome-small-target"
+    },
+    {
+      "path": "design/ancestries/trait-gnome-whats-it-made-of.md",
+      "sha256": "9663e8d8837273de096425329536f26ef13ba214edb52b94c9423362de2cfbef",
+      "id": "trait-gnome-whats-it-made-of"
+    },
+    {
+      "path": "design/ancestries/trait-goblin-more-of-us-than-you.md",
+      "sha256": "028c4c71590f11f2d1c947a5f13dc6c5a96f4aaab9cc5e61e5df2d9f6d3f5543",
+      "id": "trait-goblin-more-of-us-than-you"
+    },
+    {
+      "path": "design/ancestries/trait-goblin-never-where-you-aim.md",
+      "sha256": "8486ee2b7d62b2cacc86678efa86f9defb516fddd952ba2bbd7e3b407264164d",
+      "id": "trait-goblin-never-where-you-aim"
+    },
+    {
+      "path": "design/ancestries/trait-goblin-other-side-of-the-fire.md",
+      "sha256": "a41312e808d704e5d5d0f424ea6a19cf3feef6956801c8b30ea4a090db39d187",
+      "id": "trait-goblin-other-side-of-the-fire"
+    },
+    {
+      "path": "design/ancestries/trait-goblin-run-away-better.md",
+      "sha256": "83bd9c63ef8b4f29bcc8d8ee2af0be02ec06be4b229479935883a40beda5bea5",
+      "id": "trait-goblin-run-away-better"
+    },
+    {
+      "path": "design/ancestries/trait-goblin-scavenger.md",
+      "sha256": "72b8d8224382f7a3847f248fa9ad91e67cd3d51075cc3b29bea3a0b74dad3fd9",
+      "id": "trait-goblin-scavenger"
     },
     {
       "path": "design/ancestries/trait-halfling-good-cheer.md",
@@ -103,6 +198,31 @@
       "id": "trait-halfling-stout-heart"
     },
     {
+      "path": "design/ancestries/trait-high-elf-name-that-opens-doors.md",
+      "sha256": "fd218cb269bd751f6a3221343391b414dd4ec0d97b1c5298b1d0a9a5d73df001",
+      "id": "trait-high-elf-name-that-opens-doors"
+    },
+    {
+      "path": "design/ancestries/trait-high-elf-old-courtesies.md",
+      "sha256": "c048faab0ead05a49d3ca1ec63a4eea1bbf2718fe00af888b8c7bf2e8f2cf718",
+      "id": "trait-high-elf-old-courtesies"
+    },
+    {
+      "path": "design/ancestries/trait-high-elf-practised-hand.md",
+      "sha256": "d03c41b2a45d60c1a9453d834dee5de6a7ded26f8122509d758daf5c6438be6d",
+      "id": "trait-high-elf-practised-hand"
+    },
+    {
+      "path": "design/ancestries/trait-high-elf-starlight-eyes.md",
+      "sha256": "53eeead5f91351d5a5c937933490491189e8bb9814b70e2dbc0ac7018b5dd091",
+      "id": "trait-high-elf-starlight-eyes"
+    },
+    {
+      "path": "design/ancestries/trait-high-elf-weight-of-centuries.md",
+      "sha256": "4f15612b17cc4ce5cb8638780d5e5b75d2cc23e1aecb07c2f8b96c7758afaaf7",
+      "id": "trait-high-elf-weight-of-centuries"
+    },
+    {
       "path": "design/ancestries/trait-human-far-walker.md",
       "sha256": "a6d7f4d72aadb937b70518453eb0ffbd2826450f499bbdc971b14ddc5e361f06",
       "id": "trait-human-far-walker"
@@ -126,6 +246,60 @@
       "path": "design/ancestries/trait-human-weathered.md",
       "sha256": "da82be8269f2b059239615ba5d504c644ef03ff8da6a7fcab8991c00415879c1",
       "id": "trait-human-weathered"
+    },
+    {
+      "path": "design/ancestries/trait-oath-bound-bound-by-your-word.md",
+      "sha256": "a381004fb2ceb0a90fc6cb08f03960d523e56d26b1198ed44fbd01cb3050d913",
+      "id": "trait-oath-bound-bound-by-your-word"
+    },
+    {
+      "path": "design/ancestries/trait-oath-bound-neither-here-nor-there.md",
+      "sha256": "04726fc3bc9b364537f93ab1add9cacf3df4270e364c5e3849d7305548866ae2",
+      "id": "trait-oath-bound-neither-here-nor-there"
+    },
+    {
+      "path": "design/ancestries/trait-oath-bound-read-the-oath.md",
+      "sha256": "60ded73c71cb0ec4a14c8e788b51de9b9b21c6cd5db367a899f23ccd1d730ee7",
+      "id": "trait-oath-bound-read-the-oath"
+    },
+    {
+      "path": "design/ancestries/trait-oath-bound-the-debt-comes-due.md",
+      "sha256": "6fa1da2f7bcd97d009b1fba9ac37114289f3851311b677b521593aa0ab2c78a9",
+      "id": "trait-oath-bound-the-debt-comes-due"
+    },
+    {
+      "path": "design/ancestries/trait-oath-bound-the-mark.md",
+      "sha256": "7941c4d7e593c6490d6031cf1d29dac1c55e1c3156064c2334f49ab96bf07840",
+      "id": "trait-oath-bound-the-mark"
+    },
+    {
+      "path": "design/ancestries/trait-tallfolk-a-big-shadow.md",
+      "sha256": "97af64849ad0a5ef930df8d09683899156af6065523780ce745ff21e3fa1efeb",
+      "id": "trait-tallfolk-a-big-shadow"
+    },
+    {
+      "path": "design/ancestries/trait-tallfolk-broad-back.md",
+      "sha256": "116a7f9ae04fde4a7e6d19e0baf8136dcacfdaa60f6ca512f7bb77ca1f69d835",
+      "id": "trait-tallfolk-broad-back"
+    },
+    {
+      "path": "design/ancestries/trait-tallfolk-built-for-the-weather.md",
+      "sha256": "856e9982f61c2398a21dd8bfde70022262d276b54e590cb792664cdc8ba3cc0f",
+      "id": "trait-tallfolk-built-for-the-weather"
+    },
+    {
+      "path": "design/ancestries/trait-tallfolk-long-reach.md",
+      "sha256": "6ee9c4d1b1b1252692c325801b091899f9f23ab8e5b69675fa3ca80d800b891a",
+      "id": "trait-tallfolk-long-reach"
+    },
+    {
+      "path": "design/ancestries/trait-tallfolk-you-take-the-blow.md",
+      "sha256": "1d60c5852bb321ebee7a444b9af23da55f78394c19dd9eaaa0db6f9a87a9fe43",
+      "id": "trait-tallfolk-you-take-the-blow"
+    },
+    {
+      "path": "design/ancestries/wood-elf.md",
+      "sha256": "5ff2f2990812f2a429ea924cc877968b3bf3fe0c9e981a99d39713c46aada7f0"
     },
     {
       "path": "design/bestiary/art/manifest.json",
@@ -3528,15 +3702,15 @@
     },
     {
       "path": "design/characters/README.md",
-      "sha256": "b0ac84186778d76181b4425f0746dbaa2a896ebdf235af30c8f0a6b1e2bb29c5"
+      "sha256": "92557510610e721658d1dd03d3a5170e0b006002e4edffd16a0b78f4db1c8fc9"
     },
     {
       "path": "design/characters/borin-bridgekeeper.md",
-      "sha256": "3674ec42e55106aa4d67cae80eb5e3c4a6218bdd76d693ae81e4d81141740fd8"
+      "sha256": "532e2d60386d82a8bdeca8e007759d9911afeb7a886ca45f77df3378b99015d2"
     },
     {
       "path": "design/characters/lira-ashbow.md",
-      "sha256": "d27bacdc34731fc77153da39f3a2b043dfbd658b9c363f4f18a75c720c4a3df0"
+      "sha256": "5be039de64b477ba76c7067aa5bfd97bca439234910991e70f0640fd9f7dacb5"
     },
     {
       "path": "design/characters/mara-reedheart.md",
@@ -3552,7 +3726,7 @@
     },
     {
       "path": "design/characters/vaelis-emberglass.md",
-      "sha256": "3165959a11d41c82cff98df061d2971fe6afb0ccda6ff780f6ce332d57bc6b8e"
+      "sha256": "fe862c8eeb5c4a2c127c0b8ce6392e2aa2e158676a22dce39e2ad7512a25b93d"
     },
     {
       "path": "design/classes/arcanist.md",
@@ -3660,7 +3834,7 @@
     },
     {
       "path": "design/da-book/source-manifest.json",
-      "sha256": "c12b806cdf339e2f3c421ba9b8c2e860d78b6eb8b8a49c49eafc55e551d7b41e"
+      "sha256": "c72ffe085a81e95b3c6889793b7a580ade49883a57a97e5a72bbf731dc0a0d84"
     },
     {
       "path": "design/development.md",
@@ -4806,7 +4980,7 @@
     },
     {
       "path": "design/player-book/manuscript/02-creation.md",
-      "sha256": "a54f919567650a1d3974279d673d6491a94f0273d0a630592d737fd5a094f9a0"
+      "sha256": "8ca806301595342def5eb921a895f27d00dd5dc9018c068b8bdd9eea95f338b5"
     },
     {
       "path": "design/player-book/manuscript/05-disciplines.md",
@@ -4814,7 +4988,7 @@
     },
     {
       "path": "design/player-book/manuscript/06-playing.md",
-      "sha256": "fcdc062507162c2b5cc6b41d001b372eb89ddbf514fa322e4d35de8aa0857c92"
+      "sha256": "a277bff93222a5f355df7af9f81ca6d62d33fc624e75728718f25938199a507d"
     },
     {
       "path": "design/player-book/manuscript/07-adventure.md",
@@ -4839,6 +5013,10 @@
     {
       "path": "design/player-book/manuscript/14-reference.md",
       "sha256": "802112daa39ae7c5bdc79f17560ff34b54e1b2e0e13a9b1e58e01a26d2d699da"
+    },
+    {
+      "path": "design/player-book/manuscript/intro-ancestry.md",
+      "sha256": "ee8f020defb838dfdb90fd7dc6af96e495b2564465b1aa5c3edfcbbe79495cfb"
     },
     {
       "path": "design/player-book/manuscript/intro-background.md",
@@ -4911,8 +5089,12 @@
       "id": "recipe-wooden-brace"
     },
     {
+      "path": "design/rules/ancestry-procedures.md",
+      "sha256": "cda6c068ddb0ee947d61fae963687442e610f05bce8e021bc49e23c5e10892b7"
+    },
+    {
       "path": "design/rules/conditions.md",
-      "sha256": "92949af1b32911ea025aa9d4506c006372449834c98d2451084fef2bb94b46d8"
+      "sha256": "34bf46e0da8ce174858a10c8a25a669c63898c625d2e450915f803edfe259a5a"
     },
     {
       "path": "design/rules/encounters.md",
@@ -4943,12 +5125,16 @@
       "sha256": "1911c2d94359e6147bf6d05ebe18d29f0828ae6f7418a669e9519a380e17e2f4"
     },
     {
+      "path": "design/rules/vision.md",
+      "sha256": "321e19030ac14ade7e51dc2718d0a73d9d98abe068479c0b6de171fa94d5d1f4"
+    },
+    {
       "path": "design/rules/wounds.md",
       "sha256": "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9"
     },
     {
       "path": "design/starting-coins.md",
-      "sha256": "f5723bda13f63ec77d1c1f431fa7746ff499a9b188042df32cbda50841d51541"
+      "sha256": "589a6de796d520c3e7db32b5114c2833338a4290c14317d885ef5cab199b321a"
     }
   ],
   "assets": [

@@ -74,3 +74,12 @@ test("equipment controls and ranged ammunition choices reflect supported live it
  assert.equal(view.equipmentRows[1].canHold,false);assert.equal(view.equipmentRows[1].canWear,false);
  assert.equal(view.equipmentRows[2].canHold,false);assert.equal(view.equipmentRows[2].canWear,true);
 });
+test("native ancestry facts include a validated borrowed trait and complete rule text without changing live state",()=>{
+ const input={development:{level:3,dp:2,creation:{ancestryId:"ancestry-human",traitIds:["trait-human-far-walker","trait-human-many-homes"],borrowedAncestryId:"ancestry-deep-dwarf",borrowedTraitId:"trait-deep-dwarf-stone-tells-you"},ledger:[{kind:"pool",stage:0,delta:12},{kind:"trait-grant",stage:0,delta:1}]},choices:[{id:"trait-deep-dwarf-stone-tells-you",name:"The Stone Tells You",reference:{flavor:["A narrative."],rules:{body:[{text:"Gain Seismic Vision with a range of 6 squares."}]}}}]};
+ const before=structuredClone(input),view=characterSheetView(input);
+ assert.equal(view.vision.seismicVisionRange,6);
+ assert.equal(view.vision.lowLightVision,0);
+ assert.equal(view.traits.at(-1).brief,"Gain Seismic Vision with a range of 6 squares.");
+ assert.equal(view.dpTotal,36,"Adaptable contributes to each later level.");
+ assert.deepEqual(input,before);
+});

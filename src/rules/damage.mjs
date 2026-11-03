@@ -104,11 +104,14 @@ export function healingPlan({
   lifeResistances = [],
   recipientKind = "character",
   healingHarmed = false,
+  unavailableHp = 0,
 }) {
   integer(amount, "Healing");
   integer(current, "Current HP");
   integer(max, "Maximum HP");
+  integer(unavailableHp, "Unavailable HP");
   if (max < 1 || current > max) throw new RangeError("Invalid HP range");
+  if (unavailableHp > max) throw new RangeError("Unavailable HP exceeds maximum HP");
   if (!["character", "creature", "summon"].includes(recipientKind))
     throw new TypeError("Unknown recipient kind");
   const resistance = Math.min(
@@ -129,7 +132,7 @@ export function healingPlan({
       restored: 0,
       after: current,
     };
-  const missing = max - current;
+  const missing = Math.max(0, max - unavailableHp - current);
   const restored =
     amount > 0 && missing > 0
       ? Math.min(missing, Math.max(1, amount - resistance))

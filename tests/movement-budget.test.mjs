@@ -68,6 +68,18 @@ test("lasting wounds reduce current Speed after encumbrance and floor independen
     /nonnegative/,
   );
 });
+test("Broad Back increases live Bulk capacity before encumbrance and wound penalties", () => {
+  const input = {speedBase: 7, agility: 0, brawn: 1, items: [{bulk: 16, quantity: 1}], woundPenalty: 1};
+  const ordinary = movementProfile(input);
+  const broadBack = movementProfile({...input, capacityBonus: 3});
+  assert.equal(ordinary.capacity, 13);
+  assert.equal(ordinary.encumbrance, 3);
+  assert.equal(broadBack.capacity, 16);
+  assert.equal(broadBack.encumbrance, 0);
+  assert.equal(broadBack.speed, 6);
+  assert.throws(() => movementProfile({...input, capacityBonus: -1}), /Capacity bonus/);
+  assert.throws(() => movementProfile({...input, capacityBonus: 1.5}), /Capacity bonus/);
+});
 test("an explicit DA Speed override remains a reviewable final ruling", () => {
   assert.equal(
     movementBreakdown({

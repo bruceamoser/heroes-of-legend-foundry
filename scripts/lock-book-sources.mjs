@@ -7,7 +7,7 @@ import assert from "node:assert/strict";
 const repository = process.env.HOL_BOOK_REPOSITORY;
 if (!repository)
   throw new Error("Set HOL_BOOK_REPOSITORY to the local book repository");
-const commit = "25b80c9fe77d7baaec3f3a8a548c9663d0f39a30";
+const commit = "f3fb98ca03b046335fcc730c1b05689bebf091b4";
 const git = (...args) =>
   execFileSync("git", ["-C", repository, ...args], {
     maxBuffer: 64 * 1024 * 1024,
@@ -69,6 +69,11 @@ const summons = records.filter((r) =>
 const monsters = records.filter(
   (r) => r.path.startsWith("design/monster-abilities/") && r.id,
 );
+const ancestries = records.filter(record => record.path.startsWith("design/ancestries/"));
+assert.equal(ancestries.filter(record => !record.path.includes("/trait-")).length, 10);
+const traits = ancestries.filter(record => record.path.includes("/trait-"));
+assert.equal(traits.length, 50);
+assert(traits.every(record => record.id?.startsWith("trait-")), "Missing ancestry trait identity");
 assert.equal(creatures.length, 192);
 assert.equal(summons.length, 73);
 assert.equal(monsters.length, 126);
@@ -152,9 +157,9 @@ const lock = {
   schemaVersion: 1,
   repository: "https://github.com/bruceamoser/heroes-of-legend",
   commit,
-  previousCommit: "295e858c1b6fee044a0261bf9f437636efeff2bf",
+  previousCommit: "25b80c9fe77d7baaec3f3a8a548c9663d0f39a30",
   approval:
-    "Approved Universal and full discipline review November 1, book v16.6.0; DIR-CATALOG-001 and summon maintenance DIR-CALLING-001; system sync #252. Distribution licensing remains undecided.",
+    "Approved ancestry expansion November 3, book v16.7.0: ten ancestries and fifty traits, shared vision and ancestry procedures; system sync #259. Distribution licensing remains undecided.",
   counts: {
     creatures: creatures.length,
     monsterAbilities: monsters.length,

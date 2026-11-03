@@ -69,3 +69,11 @@ Issue #232 rechecked the official V14 Actor update/testUserPermission APIs and
 TokenLayer.controlled accessor on October 20. Explicit damage reads controlled
 canvas tokens and uses permission-checked Actor updates, including synthetic Actor
 UUIDs. Foundry does not require the retired HOL browser lease coordinator.
+
+## November 3, 2026 — ancestry recovery accounting (#259)
+
+Rechecked the official V14 [TypeDataModel](https://foundryvtt.com/api/v14/classes/foundry.abstract.TypeDataModel.html)
+and [SchemaField](https://foundryvtt.com/api/v14/classes/foundry.data.fields.SchemaField.html)
+contracts before adding nested `system.recovery` fields. Recovery uses persisted
+schema fields with defaults; updates pass through the existing permission-checked
+coordinator. Ancestry senses expose rule facts without enabling darkness sight.

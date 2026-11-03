@@ -4,6 +4,9 @@ import { assertNoPendingTurn } from "./turn-lock.mjs";
 import { damageBasis } from "./damage.mjs";
 import { healingPlan } from "../rules/damage.mjs";
 import { isSummon } from "../rules/summon-profile.mjs";
+import { normalizeRecovery, recoveryMaximum, payDebt, nextDawn } from "../rules/recovery.mjs";
+import { ancestryTraitIds } from "../rules/ancestry.mjs";
+import { applyDebtReroll } from "./debt-reroll.mjs";
 import {
   survivalState,
   validateSurvival,
@@ -19,10 +22,24 @@ import {
 } from "./authority.mjs";
 const ID = "heroes-of-legend";
 export function recoveryPreview(actor, basis, draft) {
-  if (!["heal", "breath", "stabilize", "grit", "correct", "setHp"].includes(draft.kind))
+  if (!["heal", "breath", "stabilize", "grit", "correct", "setHp", "debt", "dawn"].includes(draft.kind))
     throw new Error("Unknown recovery operation.");
+  const accounting = actor.type === "character" ? normalizeRecovery(basis.recovery ?? actor.system?.recovery) : undefined;
   let state = null,
     after = basis.hp;
+  if (["debt", "dawn"].includes(draft.kind)) {
+    if (actor.type !== "character") throw new Error("Only a hero can record ancestry recovery.");
+    const payment = draft.kind === "debt"
+      ? payDebt({ hp: basis.hp, maxHp: basis.maxHp, recovery: accounting,
+          traitIds: ancestryTraitIds(actor.getFlag(ID, "development")?.creation ?? {traitIds: actor.getFlag(ID, "development")?.ancestryTraitIds}) })
+      : nextDawn({ hp: basis.hp, recovery: accounting });
+    const previous = basis.survival ?? survivalState({hp:basis.hp,maxHp:basis.maxHp,gritAvailable:basis.gritAvailable});
+    if (draft.kind === "debt" && ["lastWords", "dead"].includes(previous.status))
+      throw new Error("The Debt Comes Due cannot reverse Last Words or death.");
+    state = { ...previous, ...(draft.kind === "debt" ? {hp:payment.hp} : {}), recovery: payment.recovery };
+    validateSurvival(state);
+    return { after: payment.hp, state, recovery: payment.recovery };
+  }
   if (draft.kind === "setHp") {
     if (!Number.isSafeInteger(draft.hp) || draft.hp < 0 || draft.hp > basis.maxHp) throw new Error("HP must be a whole number within the actor’s maximum.");
     after = draft.hp;
@@ -94,14 +111,15 @@ export function recoveryPreview(actor, basis, draft) {
       if (basis.gritAvailable < 1) throw new Error("No Grit remains.");
       if (["lastWords", "dead"].includes(state.status)) throw new Error("Ordinary Grit cannot reverse Last Words or death.");
       if (Object.values(actor.getFlag(ID, "pendingWounds") ?? {}).some(wound => wound.status !== "resolved")) throw new Error("Resolve the pending wound before spending Grit.");
-      state = { ...state, status: "active", hp: basis.maxHp, marks: 0, due: null, choice: null, gritAvailable: basis.gritAvailable - 1 };
+      state = { ...state, status: "active", hp: Math.max(basis.hp, recoveryMaximum(basis.maxHp, accounting)), marks: 0, due: null, choice: null, gritAvailable: basis.gritAvailable - 1 };
       validateSurvival(state);
-      after = basis.maxHp;
+      after = state.hp;
     } else if (draft.kind === "heal") {
       const plan = healingPlan({
         amount: draft.amount,
         current: basis.hp,
         max: basis.maxHp,
+        unavailableHp: accounting?.unavailableHp ?? 0,
         lifeResistances: [
           ...(basis.passiveDefenses?.resistances ?? [])
             .filter((source) => source.type === "life")
@@ -113,10 +131,10 @@ export function recoveryPreview(actor, basis, draft) {
       if (!plan.allowed)
         throw new Error("This target cannot receive ordinary healing.");
       after = plan.after;
-      if (state) state = receiveHealing(state, plan.restored);
+      if (state) state = receiveHealing({ ...state, ...(basis.recovery !== undefined || state.recovery !== undefined ? {recovery: accounting} : {}) }, plan.restored);
     } else if (draft.kind === "breath") {
-      if (state) state = safeBreath(state);
-      after = basis.maxHp;
+      if (state) state = safeBreath({ ...state, ...(basis.recovery !== undefined || state.recovery !== undefined ? {recovery: accounting} : {}) });
+      after = state?.hp ?? basis.maxHp;
     } else {
       if (!state)
         throw new Error("Stabilization requires a character survival track.");
@@ -124,6 +142,7 @@ export function recoveryPreview(actor, basis, draft) {
       after = state.hp;
     }
   }
+  if (state && (basis.recovery !== undefined || state.recovery !== undefined)) state.recovery = accounting;
   return { after, state };
 }
 export async function requestRecovery(actor, basis, draft) {
@@ -151,6 +170,10 @@ async function apply(id) {
   const basis = damageBasis(actor),
     signature = JSON.stringify(request),
     receipt = actor.getFlag(ID, "operationReceipts")?.[id];
+  if (request.draft?.rollMessageId || request.draft?.kind === "debt-result") {
+    assertNoPendingTurn(actor);
+    return applyDebtReroll(actor, message, request, basis, signature);
+  }
   if (receipt?.applied) {
     if (receipt.request !== signature || receipt.authorId !== message.author.id)
       throw new Error("The completed recovery request changed.");
@@ -179,6 +202,7 @@ async function apply(id) {
     },
   };
   if (request.draft.kind === "grit") changes["system.grit.spent"] = actor.system.grit.spent + 1;
+  if (plan.recovery) changes["system.recovery"] = plan.recovery;
   if (plan.state) { changes[`flags.${ID}.survival`] = plan.state; changes[`flags.${ID}.deathMarks`] = plan.state.marks; }
   else changes[`flags.${ID}.creatureDefeated`] = plan.after === 0;
   actor.validate({
@@ -188,7 +212,7 @@ async function apply(id) {
   });
   await writeAuthorityDocument(actor, changes);
   await message.update({
-    content: `Recovery recorded: HP ${basis.hp} → ${plan.after}. ${request.draft.kind === "grit" ? "One Grit spent; death marks cleared." : "Spent Grit remains."} Wound records remain.`,
+    content: `Recovery recorded: HP ${basis.hp} → ${plan.after}. ${request.draft.kind === "debt" ? "The Debt Comes Due: reroll the original attribute roll manually with the same attribute and Boons/Banes; use the new result, including retained natural dice. The paid HP remains unavailable until next dawn." : request.draft.kind === "dawn" ? "Next dawn: HP is available for ordinary recovery again; no HP was restored." : request.draft.kind === "grit" ? "One Grit spent; death marks cleared." : "Spent Grit remains."} Wound records remain.`,
   });
   return { status: "complete", replay: false };
 }

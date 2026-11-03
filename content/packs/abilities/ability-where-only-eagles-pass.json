@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/athletics.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You put your hand into a seam barely wider than a nail, take your companion&#39;s weight, and begin to climb.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self and one carried willing or unconscious companion on a natural surface with small holds.</dd></div><div><dt>Equipment / acquisition</dt><dd>A free hand.</dd></div><div><dt>Type</dt><dd>Skill / Movement / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>Climb up to your Speed along a natural surface with small seams, projections or cracks, carrying one willing or unconscious companion you can physically support. Climbing costs 1 movement per square for this move. End with both of you in separate free supported spaces, or with your companion still carried outside combat.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/25b80c9fe77d7baaec3f3a8a548c9663d0f39a30/design/cards/where-only-eagles-pass.md\" target=\"_blank\" rel=\"noopener\">design/cards/where-only-eagles-pass.md</a> at <code>25b80c9fe77d7baaec3f3a8a548c9663d0f39a30</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You put your hand into a seam barely wider than a nail, take your companion&#39;s weight, and begin to climb.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self and one carried willing or unconscious companion on a natural surface with small holds.</dd></div><div><dt>Equipment / acquisition</dt><dd>A free hand.</dd></div><div><dt>Type</dt><dd>Skill / Movement / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>Climb up to your Speed along a natural surface with small seams, projections or cracks, carrying one willing or unconscious companion you can physically support. Climbing costs 1 movement per square for this move. End with both of you in separate free supported spaces, or with your companion still carried outside combat.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/f3fb98ca03b046335fcc730c1b05689bebf091b4/design/cards/where-only-eagles-pass.md\" target=\"_blank\" rel=\"noopener\">design/cards/where-only-eagles-pass.md</a> at <code>f3fb98ca03b046335fcc730c1b05689bebf091b4</code>.</p></section>",
     "activity": {
       "action": "maneuver",
       "rollMode": "none",
@@ -32,7 +32,7 @@
         "path": "design/cards/where-only-eagles-pass.md",
         "sha256": "aa51e22848538af0afcc6c2b1b745d71bf0fb932f94076b6fb8b4ed170782fae"
       },
-      "sourceCommit": "25b80c9fe77d7baaec3f3a8a548c9663d0f39a30",
+      "sourceCommit": "f3fb98ca03b046335fcc730c1b05689bebf091b4",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

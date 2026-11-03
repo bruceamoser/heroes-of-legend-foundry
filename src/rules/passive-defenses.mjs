@@ -1,5 +1,35 @@
 /** Reviewed passive sources only. Names and narrative text never select mechanics. */
-const PINNED_COMMIT = "25b80c9fe77d7baaec3f3a8a548c9663d0f39a30";
+import {
+  ancestryBenefits,
+  ANCESTRY_RULE_REFERENCES,
+  ANCESTRY_SOURCE_COMMIT,
+} from "./ancestry.mjs";
+
+/** Small Target applies to every defense; attacker-rolled attacks invert it. */
+export function passiveAncestryDefenseSources(
+  traitIds = [],
+  { attackerRolls = false } = {},
+) {
+  const amount = ancestryBenefits(traitIds).defenseBoons;
+  if (!amount) return [];
+  return [{
+    id: "passive-trait-gnome-small-target",
+    kind: attackerRolls ? "bane" : "boon",
+    amount,
+    label: "Small Target",
+    automatic: true,
+    provenance: [
+      {
+        commit: ANCESTRY_SOURCE_COMMIT,
+        path: "design/ancestries/trait-gnome-small-target.md",
+        sha256: "08e011d627587e4288dea62855161d53904485f356bb8b2ef96f60b61918c447",
+      },
+      { ...ANCESTRY_RULE_REFERENCES.procedures },
+    ],
+  }];
+}
+
+const PINNED_COMMIT = "f3fb98ca03b046335fcc730c1b05689bebf091b4";
 const source = (path, sha256, commit = PINNED_COMMIT) =>
   Object.freeze({ commit, path, sha256 });
 

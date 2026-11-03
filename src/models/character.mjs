@@ -4,7 +4,8 @@ import {
   validateCharacter,
 } from "../rules/character.mjs";
 import { StrictNumberField as NumberField } from "./fields.mjs";
-const { SchemaField, StringField } = foundry.data.fields;
+import { normalizeRecovery } from "../rules/recovery.mjs";
+const { SchemaField, StringField, BooleanField } = foundry.data.fields;
 const integer = (initial, min = 0, max) =>
   new NumberField({
     required: true,
@@ -29,6 +30,10 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
       ),
       health: new SchemaField({ value: integer(12), baseMax: integer(12, 1) }),
       grit: new SchemaField({ granted: integer(2), spent: integer(0) }),
+      recovery: new SchemaField({
+        unavailableHp: integer(0, 0, 1),
+        debtUsed: new BooleanField({ required: true, nullable: false, initial: false }),
+      }),
       memorizedMessage: new StringField({
         required: true,
         nullable: false,
@@ -44,6 +49,7 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
   }
   static validateJoint(data) {
     validateCharacter(data);
+    normalizeRecovery(data.recovery);
   }
   prepareDerivedData() {
     const summary = characterSummary(this);

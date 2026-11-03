@@ -5,6 +5,8 @@ import { WoundPanel } from "./wounds.mjs";
 import { requestSurvival } from "../services/survival.mjs";
 import { damageBasis } from "../services/damage.mjs";
 import { recoveryPreview, requestRecovery } from "../services/recovery.mjs";
+import { normalizeRecovery, recoveryMaximum } from "../rules/recovery.mjs";
+import { ancestryTraitIds } from "../rules/ancestry.mjs";
 export class RecoveryPanel extends foundry.applications.api.HandlebarsApplicationMixin(
   foundry.applications.api.ApplicationV2,
 ) {
@@ -28,6 +30,7 @@ export class RecoveryPanel extends foundry.applications.api.HandlebarsApplicatio
       previewDying: RecoveryPanel.previewDying,
       wounds: RecoveryPanel.wounds,
       recoverDeath: RecoveryPanel.recoverDeath,
+      recoverDebt: RecoveryPanel.recoverDebt,
     },
   };
   static PARTS = {
@@ -41,6 +44,9 @@ export class RecoveryPanel extends foundry.applications.api.HandlebarsApplicatio
       throw new Error("Only this actor’s owner can record recovery.");
     const actualBasis = damageBasis(this.actor);
     this.basis = this.previewState ? {...actualBasis,hp:this.previewState.hp,survival:this.previewState,gritAvailable:this.previewState.gritAvailable} : actualBasis;
+    const recovery = normalizeRecovery(actualBasis.recovery);
+    const development = this.actor.getFlag("heroes-of-legend", "development") ?? {};
+    const hasDebt = ancestryTraitIds(development.creation ?? {traitIds: development.ancestryTraitIds}).includes("trait-oath-bound-the-debt-comes-due");
     return {
       name: this.actor.name,
       operation:this.operation,
@@ -59,6 +65,12 @@ export class RecoveryPanel extends foundry.applications.api.HandlebarsApplicatio
       ),
       basis: this.basis,
       character: this.actor.type === "character",
+      debtRecovery: this.actor.type === "character" && (hasDebt || recovery.debtUsed),
+      debtUsed: recovery.debtUsed,
+      unavailableHp: recovery.unavailableHp,
+      recoveryMax: recoveryMaximum(actualBasis.maxHp, recovery),
+      canPayDebt: hasDebt && !recovery.debtUsed && actualBasis.hp > 1,
+      pendingDebt: Object.values(this.actor.getFlag("heroes-of-legend", "debtRerolls") ?? {}).filter(operation => operation.status === "rolling"),
       automaticLifeResistance: Math.min(
         3,
         Math.max(
@@ -136,6 +148,15 @@ export class RecoveryPanel extends foundry.applications.api.HandlebarsApplicatio
     } catch (e) {
       ui.notifications.error(e.message);
     }
+  }
+  static async recoverDebt(event, target) {
+    try {
+      const requestId = target.dataset.requestId;
+      const retained = this.element.querySelector(`[data-debt-faces="${requestId}"]`).value.split(",").map(face => Number(face.trim()));
+      await requestRecovery(this.actor, damageBasis(this.actor), {kind:"debt-result",debtOperationId:requestId,retained});
+      this.notice = "Debt result recovery requested; no new roll or HP payment will be made.";
+      await this.render();
+    } catch (error) { ui.notifications.error(error.message); }
   }
   static async apply() {
     try {

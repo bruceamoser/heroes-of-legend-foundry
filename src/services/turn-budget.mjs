@@ -14,6 +14,7 @@ import {
   movementProfile,
 } from "../rules/movement-budget.mjs";
 import { actorWoundContributionPlan } from "./wound-effects.mjs";
+import { ancestryBenefits, ancestryTraitIds } from "../rules/ancestry.mjs";
 const ID = "heroes-of-legend";
 export function actionConditions(actor) {
   const conditions = conditionActionRestrictions(actorContributions(actor));
@@ -25,11 +26,15 @@ export function actorMovement(actor) {
     return { speed: actor.system.speed, source: "printed-creature-speed" };
   const speedBase =
     actor.getFlag(ID, "development")?.creationSummary?.speedBase;
+  const capacityBonus = ancestryBenefits(ancestryTraitIds(
+    actor.getFlag(ID, "development")?.creation ?? {},
+  )).capacityBonus;
   const wounds = actorWoundContributionPlan(actor).movement;
   return movementProfile({
     speedBase,
     agility: actor.system.attributes?.agility?.effective,
     brawn: actor.system.attributes?.brawn?.effective,
+    capacityBonus,
     items: actor.items
       .filter((i) => i.type === "equipment")
       .map((i) => i.system),

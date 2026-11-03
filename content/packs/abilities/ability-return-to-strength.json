@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/life.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You pull a shaking companion upright as life surges through them. Their first steady step comes at the cost of your own breath.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Target / range / shape</dt><dd>One willing creature within 3 squares, including yourself, or one creature in range harmed by healing.</dd></div><div><dt>Type</dt><dd>Magic / Recovery</dd></div></dl><div class=\"hol-reference-rules\"><p>Pay 7 HP and make a Reason healing roll.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>Restore 8 HP.</dd><dt>Standard</dt><dd>Restore 16 HP.</dd><dt>Strong</dt><dd>Restore 24 HP; the recipient may stand and move 1 square without provoking.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/25b80c9fe77d7baaec3f3a8a548c9663d0f39a30/design/cards/return-to-strength.md\" target=\"_blank\" rel=\"noopener\">design/cards/return-to-strength.md</a> at <code>25b80c9fe77d7baaec3f3a8a548c9663d0f39a30</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You pull a shaking companion upright as life surges through them. Their first steady step comes at the cost of your own breath.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Target / range / shape</dt><dd>One willing creature within 3 squares, including yourself, or one creature in range harmed by healing.</dd></div><div><dt>Type</dt><dd>Magic / Recovery</dd></div></dl><div class=\"hol-reference-rules\"><p>Pay 7 HP and make a Reason healing roll.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>Restore 8 HP.</dd><dt>Standard</dt><dd>Restore 16 HP.</dd><dt>Strong</dt><dd>Restore 24 HP; the recipient may stand and move 1 square without provoking.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/f3fb98ca03b046335fcc730c1b05689bebf091b4/design/cards/return-to-strength.md\" target=\"_blank\" rel=\"noopener\">design/cards/return-to-strength.md</a> at <code>f3fb98ca03b046335fcc730c1b05689bebf091b4</code>.</p></section>",
     "activity": {
       "action": "main",
       "rollMode": "attribute",
@@ -32,7 +32,7 @@
         "path": "design/cards/return-to-strength.md",
         "sha256": "98056b12faf85c1f65260495562a6396ecbeb5b7811c17b740acdbc747020453"
       },
-      "sourceCommit": "25b80c9fe77d7baaec3f3a8a548c9663d0f39a30",
+      "sourceCommit": "f3fb98ca03b046335fcc730c1b05689bebf091b4",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

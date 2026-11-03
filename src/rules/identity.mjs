@@ -1,20 +1,13 @@
 import { creationLedger } from "./development.mjs";
+import { ancestryBenefits, ancestrySelection, currentAncestryId } from "./ancestry.mjs";
 import {
   DEFAULT_LANGUAGES,
   LANGUAGE_CONFIGURATION_SCHEMA,
   requireLanguageConfiguration,
 } from "./languages.mjs";
 export { DEFAULT_LANGUAGES } from "./languages.mjs";
-const HP_TRAITS = new Set([
-  "trait-dwarf-deep-constitution",
-  "trait-human-weathered",
-]);
-const SPEED_TRAITS = new Set([
-  "trait-human-far-walker",
-  "trait-elf-unhurried-grace",
-]);
 export function languageGrants(
-  { home, extraSpoken = [] },
+  { home, extraSpoken = [], ancestry },
   traits,
   definitions = DEFAULT_LANGUAGES,
 ) {
@@ -69,14 +62,17 @@ export function languageGrants(
   };
   add("common", "creation-common");
   add(home, "creation-home");
-  const expected = traits.includes("trait-human-many-homes") ? 2 : 0;
-  if (extraSpoken.length !== expected)
+  const mixed = traits.includes("trait-human-many-homes");
+  if (extraSpoken.length)
     errors.push({
       code: "extra-languages",
-      text: `Choose exactly ${expected} additional ordinary spoken languages.`,
+      text: "Extra spoken-language choices are superseded. A Foot in Two Worlds grants one named ancestry language.",
     });
-  if (expected)
-    for (const id of extraSpoken) add(id, "trait-human-many-homes", true);
+  if (mixed) {
+    if (!ancestry)
+      errors.push({code:"ancestry-language",text:"Choose one ordinary language native to your other ancestry, as approved by the DA."});
+    else add(ancestry, "trait-human-many-homes");
+  }
   return { valid: errors.length === 0, errors, languages };
 }
 /** Identity/learning preview only: inventory and acquisition checks must also pass before commitment. */
@@ -98,7 +94,7 @@ export function creationIdentity(
   });
   const errors = [...result.errors];
   const get = (id) => catalog.find((r) => r.id === id);
-  const ancestry = get(draft.ancestryId),
+  const ancestry = get(currentAncestryId(draft.ancestryId)),
     cls = get(draft.classId),
     culture = get(draft.culture?.id),
     background = get(draft.background?.id);
@@ -114,14 +110,8 @@ export function creationIdentity(
       code: "traits",
       text: "Choose two distinct traits from your ancestry.",
     });
-  if (
-    traits.includes("trait-elf-age-of-memory") &&
-    !draft.rememberedCommunity?.trim()
-  )
-    errors.push({
-      code: "remembered-community",
-      text: "Name a place or community you knew in an earlier age.",
-    });
+  const selection = ancestrySelection(draft, catalog);
+  errors.push(...selection.errors);
   const languages = languageGrants(
     draft.languages ?? {},
     validTraits ? traits : [],
@@ -134,10 +124,11 @@ export function creationIdentity(
     cls?.kind === "class" &&
     culture?.kind === "origin" &&
     background?.kind === "origin" &&
-    validTraits &&
+    validTraits && !selection.errors.length &&
     result.valid
   ) {
     const attributes = structuredClone(draft.attributes);
+    const benefits = ancestryBenefits(selection.traitIds);
     const hpTraining = result.state.purchases.filter(
       (p) => p.id === "ability-conditioned-body",
     ).length;
@@ -146,19 +137,27 @@ export function creationIdentity(
       ancestry.hp +
       cls.hp +
       attributes.fortitude +
-      traits.filter((id) => HP_TRAITS.has(id)).length +
+      benefits.maximumHpBonus +
       hpTraining;
     const speedBase =
-      ancestry.speed + traits.filter((id) => SPEED_TRAITS.has(id)).length;
+      ancestry.speed + benefits.speedBaseBonus;
     summary = {
       creationAttributes: attributes,
       maximumHp,
       gritGranted: result.state.gritGranted,
       gritSpent: 0,
-      stability: 0,
+      stability: benefits.stability,
       speedBase,
       unencumberedSpeed: Math.max(0, speedBase + attributes.agility),
-      capacity: 10 + 3 * attributes.brawn,
+      capacity: 10 + 3 * attributes.brawn + benefits.capacityBonus,
+      capacityBonus: benefits.capacityBonus,
+      ancestryTraitIds: selection.traitIds,
+      defenseBoons: benefits.defenseBoons,
+      vision: {
+        lowLightVision: benefits.lowLightVision,
+        seismicVisionRange: benefits.seismicVisionRange,
+        ruleReferences: benefits.ruleReferences.filter((rule) => rule.path === "design/rules/vision.md"),
+      },
       startingCoins:
         40 + ancestry.coins + cls.coins + culture.coins + background.coins,
       languages: result.state.languages,

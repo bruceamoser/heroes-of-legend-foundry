@@ -6,6 +6,8 @@ import { numericCreatureAction } from "../rules/numeric-creature-actions.mjs";
 import { ATTRIBUTES } from "../rules/character.mjs";
 import { conditionRollSources } from "../rules/conditions.mjs";
 import { targetEvasionSources } from "../rules/player-attacks.mjs";
+import { ancestryTraitIds } from "../rules/ancestry.mjs";
+import { passiveAncestryDefenseSources } from "../rules/passive-defenses.mjs";
 import { sourceRollPlan } from "../rules/roll-sources.mjs";
 import {
   defenseSubstitutionOptions,
@@ -185,6 +187,10 @@ export function rollBasis(
           targetContributions: (targetActor ? actorContributions(targetActor) : []).sort((a, b) =>
             a.id.localeCompare(b.id),
           ),
+          targetAncestryDefenseSources: passiveAncestryDefenseSources(
+            ancestryTraitIds(targetActor?.getFlag?.(ID, "development")?.creation ?? {}),
+            { attackerRolls: true },
+          ),
           targetEvasion:
             targetActor?.type === "creature"
               ? structuredClone(targetActor.system.evasion)
@@ -198,7 +204,8 @@ export function rollBasis(
     woundModifiers,
     benefits:
       mode === "defense"
-        ? defenseBenefits(actor, { incomingAttack: Boolean(incoming) })
+        ? [...defenseBenefits(actor, { incomingAttack: Boolean(incoming) }),
+            ...passiveAncestryDefenseSources(ancestryTraitIds(actor.getFlag(ID, "development")?.creation ?? {}))]
         : [],
     ...(mode === "defense"
       ? { defenseSubstitutions: defenseSubstitutionOptions(actor) }
@@ -242,6 +249,7 @@ export function prepareRoll(basis, draft = {}) {
   if (basis.mode === "attack")
     sources.push(
       ...targetEvasionSources(basis.targetEvasion, basis.targetTokenUuid),
+      ...(basis.targetAncestryDefenseSources ?? []),
     );
   if (basis.incoming)
     for (const [field, kind] of [

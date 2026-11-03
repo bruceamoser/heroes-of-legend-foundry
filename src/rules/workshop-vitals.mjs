@@ -1,5 +1,6 @@
 import { workshopWoundEffects } from "./workshop-resources.mjs";
 import { classifyRoll } from "./roll.mjs";
+import { recoveryMaximum, normalizeRecovery } from "./recovery.mjs";
 
 /** Browser play has no encounter clock; the table decides when to roll. */
 export function workshopDeathResult({
@@ -49,6 +50,8 @@ export function workshopVitals(character, draft, catalog) {
   );
   return {
     max,
+    recoveryMax: max > 0 ? recoveryMaximum(max, draft.play?.recovery) : 0,
+    recovery: normalizeRecovery(draft.play?.recovery),
     hp: Math.min(max, draft.play?.hp ?? max),
     maxSpeed,
     speed,

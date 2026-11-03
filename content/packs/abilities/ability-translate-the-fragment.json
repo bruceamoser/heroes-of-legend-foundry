@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/scholarship.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You sound out a dead king&#39;s boast. Beneath the flourishes, the warning is suddenly plain.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Time</dt><dd>Ten minutes.</dd></div><div><dt>Target / range / shape</dt><dd>One accessible page of unfamiliar writing or an inscription of similar length.</dd></div><div><dt>Type</dt><dd>Skill / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>Translate up to one page of unfamiliar writing, including an ancient or uncommon language, into a language you know. Preserve damaged or missing passages as gaps. You can read the translation aloud and make a copy for your companions.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/25b80c9fe77d7baaec3f3a8a548c9663d0f39a30/design/cards/translate-the-fragment.md\" target=\"_blank\" rel=\"noopener\">design/cards/translate-the-fragment.md</a> at <code>25b80c9fe77d7baaec3f3a8a548c9663d0f39a30</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You sound out a dead king&#39;s boast. Beneath the flourishes, the warning is suddenly plain.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Time</dt><dd>Ten minutes.</dd></div><div><dt>Target / range / shape</dt><dd>One accessible page of unfamiliar writing or an inscription of similar length.</dd></div><div><dt>Type</dt><dd>Skill / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>Translate up to one page of unfamiliar writing, including an ancient or uncommon language, into a language you know. Preserve damaged or missing passages as gaps. You can read the translation aloud and make a copy for your companions.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/f3fb98ca03b046335fcc730c1b05689bebf091b4/design/cards/translate-the-fragment.md\" target=\"_blank\" rel=\"noopener\">design/cards/translate-the-fragment.md</a> at <code>f3fb98ca03b046335fcc730c1b05689bebf091b4</code>.</p></section>",
     "activity": {
       "action": "main",
       "rollMode": "none",
@@ -32,7 +32,7 @@
         "path": "design/cards/translate-the-fragment.md",
         "sha256": "eded3830db2e4443307ae34c7591af4fca76d7772015d4a82b31d37b324bfb53"
       },
-      "sourceCommit": "25b80c9fe77d7baaec3f3a8a548c9663d0f39a30",
+      "sourceCommit": "f3fb98ca03b046335fcc730c1b05689bebf091b4",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

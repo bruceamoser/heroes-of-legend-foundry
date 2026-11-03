@@ -7,7 +7,9 @@ const url=process.env.HOL_TEST_URL, output='test-results/explicit-actions';
 if(!url||!['localhost','127.0.0.1'].includes(new URL(url).hostname)||process.env.HOL_TEST_ALLOW_WRITES!=='1'||process.env.HOL_TEST_ISOLATED_WORLD!=='1')throw Error('Use an explicitly authorized isolated local world.');
 const catalogs={choices:JSON.parse(await readFile('static/data/choices.json')).records,inventory:JSON.parse(await readFile('static/data/inventory.json')),commit:JSON.parse(await readFile('static/data/choices.json')).sourceCommit};
 const draft=structuredClone(JSON.parse(await readFile('tests/fixtures/reference-heroes.json')).characters[3].draft);
-draft.name='Explicit Actions Oren';draft.languages={home:'elven',extraSpoken:['dwarven','halfling']};
+// Explicit synthetic test choices, rather than changing the source book fixture.
+draft.name='Explicit Actions Oren';draft.languages={home:'elven',extraSpoken:[],ancestry:'dwarven'};
+draft.borrowedAncestryId='ancestry-dwarf';draft.borrowedTraitId='trait-dwarf-stone-reader';
 const exported=writePortableCharacter(draft,catalogs,{ready:true});
 await mkdir(output,{recursive:true});
 const browser=await chromium.launch(),errors=[],evidence={checks:[],captures:[]};let gm,player,fixture;

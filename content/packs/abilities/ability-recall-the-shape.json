@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/calling.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>The shining tether stretches almost to nothing. You catch it between your fingers and draw the faraway shape back beside you.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Your summons.</dd></div><div><dt>Type</dt><dd>Magic / Defense / Movement</dd></div></dl><div class=\"hol-reference-rules\"><p>Your summons&#39; tethers extend to 10 squares. When one of your visible summons would disappear because its distance from you first exceeds 10 squares, you may spend your Reaction to teleport it to a free supported space adjacent to you that fits its footprint. Preserve its HP, conditions, remaining duration and command history. Remaining forced movement continues from the new positions.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/25b80c9fe77d7baaec3f3a8a548c9663d0f39a30/design/cards/recall-the-shape.md\" target=\"_blank\" rel=\"noopener\">design/cards/recall-the-shape.md</a> at <code>25b80c9fe77d7baaec3f3a8a548c9663d0f39a30</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>The shining tether stretches almost to nothing. You catch it between your fingers and draw the faraway shape back beside you.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Your summons.</dd></div><div><dt>Type</dt><dd>Magic / Defense / Movement</dd></div></dl><div class=\"hol-reference-rules\"><p>Your summons&#39; tethers extend to 10 squares. When one of your visible summons would disappear because its distance from you first exceeds 10 squares, you may spend your Reaction to teleport it to a free supported space adjacent to you that fits its footprint. Preserve its HP, conditions, remaining duration and command history. Remaining forced movement continues from the new positions.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/f3fb98ca03b046335fcc730c1b05689bebf091b4/design/cards/recall-the-shape.md\" target=\"_blank\" rel=\"noopener\">design/cards/recall-the-shape.md</a> at <code>f3fb98ca03b046335fcc730c1b05689bebf091b4</code>.</p></section>",
     "activity": {
       "action": "passive",
       "rollMode": "none",
@@ -32,7 +32,7 @@
         "path": "design/cards/recall-the-shape.md",
         "sha256": "1d3b7f94ebf329f04dee0a387a1963781fa2303b2846775024170da8c8e3feed"
       },
-      "sourceCommit": "25b80c9fe77d7baaec3f3a8a548c9663d0f39a30",
+      "sourceCommit": "f3fb98ca03b046335fcc730c1b05689bebf091b4",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

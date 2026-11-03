@@ -1,6 +1,6 @@
 {
   "name": "heroes-of-legend-foundry",
-  "version": "2.6.0",
+  "version": "2.7.0",
   "private": true,
   "type": "module",
   "engines": {
@@ -111,7 +111,10 @@
     "test:table-refinements": "node scripts/check-table-refinements.mjs",
     "test:signature-choice": "node scripts/check-signature-choice.mjs",
     "test:combat-damage": "node scripts/check-combat-damage.mjs",
-    "test:shared-sheets-import": "node scripts/check-shared-sheets-import.mjs"
+    "test:shared-sheets-import": "node scripts/check-shared-sheets-import.mjs",
+    "test:ancestry-workshop": "node scripts/check-ancestry-workshop.mjs",
+    "test:ancestry-native": "node scripts/check-ancestry-native.mjs",
+    "test:debt-native": "node scripts/check-debt-native.mjs"
   },
   "devDependencies": {
     "@foundryvtt/foundryvtt-cli": "3.0.5",

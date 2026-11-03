@@ -212,6 +212,26 @@ export function parseAbilityReference(text) {
 function links(text) {
   return [...text.matchAll(/\[[^\]]+\]\(([^)]+\.md)\)/g)].map((m) => m[1]);
 }
+// Display-name and source-path changes do not replace published character identities.
+const ancestryAliases = { "wood-elf": "elf", "hill-dwarf": "dwarf" };
+export function parseAncestryReference(text, kind) {
+  const header = match(text, /^# ([^\n]+)\n\n([\s\S]*?)\n\n## Rules\n([\s\S]*)$/, "ancestry reference");
+  const flavor = blocks(header[2]).map(plainText);
+  if (!flavor.length) throw new Error("Missing ancestry flavor");
+  const details = [], body = [];
+  for (const block of blocks(header[3])) {
+    if (/^\*\*(?:ID|Status):\*\*/.test(block) || /^\[Ancestry choices\]/.test(block)) continue;
+    if (kind === "trait" && /^\*\*(?:Ancestry|Duration):\*\*/.test(block)) {
+      for (const field of block.split(" · ")) {
+        const value = labelled(field);
+        if (!value) throw new Error("Unrecognized trait metadata");
+        details.push({ label: value.label, value: value.text });
+      }
+    } else body.push(kind === "trait" ? { text: plainText(block) } : ruleBlock(block));
+  }
+  if (!body.length) throw new Error("Missing ancestry rules");
+  return { flavor, rules: { details, body, notes: [] } };
+}
 export function parseChoices(sources) {
   const records = [];
   const byPath = new Map();
@@ -229,7 +249,9 @@ export function parseChoices(sources) {
     const authoredId =
       kind === "ability"
         ? match(text, /\*\*ID:\*\* ([\w-]+)/, `${path} ID`)[1]
-        : filename;
+        : kind === "trait"
+          ? match(text, /\*\*ID:\*\* ([\w-]+)/, `${path} ID`)[1]
+          : kind === "ancestry" ? ancestryAliases[filename] ?? filename : filename;
     const id = kind === "trait" ? authoredId : `${kind}-${authoredId}`;
     const record = {
       id,
@@ -420,6 +442,7 @@ export function parseChoices(sources) {
       if (r.pairs.length !== 2)
         throw new Error(`Expected two complete origin pairs ${path}`);
     } else if (r.kind === "ancestry") {
+      r.reference = parseAncestryReference(text, r.kind);
       const values = match(
         text,
         /HP \+(\d+); base Speed (\d+)/,
@@ -434,6 +457,7 @@ export function parseChoices(sources) {
       if (r.traits.length !== 5)
         throw new Error(`Expected five ancestry traits ${path}`);
     } else if (r.kind === "trait") {
+      r.reference = parseAncestryReference(text, r.kind);
       const name = match(
         text,
         /\*\*Ancestry:\*\* ([^·]+) ·/,

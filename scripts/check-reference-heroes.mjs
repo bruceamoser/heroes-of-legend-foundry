@@ -20,6 +20,18 @@ const fixture = JSON.parse(
     "utf8",
   ),
 );
+// Oren's unchanged source fixture needs player choices for A Foot in Two Worlds.
+// Keep it as a repair fixture; do not invent those choices while committing the
+// five complete examples. Mara's current Adaptable grant supersedes the source's
+// old Speed +1 and adds one (unused here) DP at both creation stages.
+const currentCharacters = fixture.characters.filter(hero=>hero.id !== "oren-brass").map(hero=>{
+  const current=structuredClone(hero);
+  if(current.id === "mara-reedheart") {
+    current.expected.stats.speed=6;
+    current.expected.stages=current.expected.stages.map(([pool,compensation,spent,expired])=>[pool,compensation,spent,expired+1]);
+  }
+  return current;
+});
 const permissionProfiles = {
   full: {
     understand: true,
@@ -344,7 +356,7 @@ try {
       {
         fixtureId,
         expectedCommit: fixture.provenance.commit,
-        characters: fixture.characters.map(({ id, name, draft }) => ({
+        characters: currentCharacters.map(({ id, name, draft }) => ({
           id,
           name,
           draft,
@@ -360,7 +372,7 @@ try {
   const actorIds = fixtureState.actors.map((actor) => actor.id);
   const snapshots = [];
 
-  for (const hero of fixture.characters) {
+  for (const hero of currentCharacters) {
     const record = fixtureState.actors.find(
       (actor) => actor.heroId === hero.id,
     );
@@ -682,7 +694,7 @@ try {
   );
   assert.deepEqual(errors, []);
   console.info(
-    "PASS Foundry 14.369 reference heroes: six owner Review commitments, independently transcribed persisted statistics, development ledgers, abilities, ranks, recipes, languages, coins and equipment; reload and receipt replay preserved every grant.",
+    "PASS five complete reference heroes with explicit current Adaptable corrections: owner Review commitments, persisted statistics, development ledgers, abilities, ranks, recipes, languages, coins and equipment; reload and receipt replay preserved every grant. Oren's unchanged source fixture requires explicit mixed-ancestry choices and is covered as a repair case by unit tests.",
   );
 } finally {
   await owner

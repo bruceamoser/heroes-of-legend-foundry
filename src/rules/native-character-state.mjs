@@ -1,9 +1,11 @@
 import { survivalState } from "./survival.mjs";
+import { normalizeRecovery } from "./recovery.mjs";
 const ID = "heroes-of-legend";
 
 /** Map portable identities to native Item IDs only after the grant plan exists. */
 export function importedCharacterState(draft, preview, items, instanceIds = {}) {
   const play = draft.play ?? {};
+  const recovery = normalizeRecovery(play.recovery);
   const byInstance = new Map(items.map(item => [item.flags?.[ID]?.acquisitionInstance, item._id]));
   for (const [instanceId, nativeId] of Object.entries(instanceIds)) byInstance.set(instanceId,nativeId);
   const byCatalog = new Map(items.filter(item => item.type === "ability").map(item => [item.flags?.[ID]?.catalogId, item._id]));
@@ -18,6 +20,7 @@ export function importedCharacterState(draft, preview, items, instanceIds = {}) 
     ? { ...survivalState({hp, maxHp: preview.summary.maximumHp, wounds: play.wounds?.length ?? 0, gritAvailable: Math.max(0, preview.summary.gritGranted - (play.gritSpent ?? 0)), marks: Math.min(2, marks)}), status, marks: 3, lastWordsAt: 0, lastWordsEnds: 2 }
     : survivalState({hp, maxHp: preview.summary.maximumHp, wounds: play.wounds?.length ?? 0, gritAvailable: Math.max(0, preview.summary.gritGranted - (play.gritSpent ?? 0)), marks});
   const crafting = structuredClone(play.crafting ?? {});
+  if (play.recovery !== undefined) survival.recovery = recovery;
   for (const project of Object.values(crafting)) {
     if (project.supplyId) {
       const nativeId = byInstance.get(project.supplyId);
@@ -26,6 +29,7 @@ export function importedCharacterState(draft, preview, items, instanceIds = {}) 
     }
   }
   return {
+    "system.recovery": recovery,
     [`flags.${ID}.characterSheet`]: {favorites, basicActions: draft.basicActions ?? {}, closed: play.collapsed ?? {}},
     [`flags.${ID}.craftingState`]: crafting,
     [`flags.${ID}.survival`]: survival,

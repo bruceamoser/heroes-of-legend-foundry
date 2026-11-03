@@ -14,7 +14,7 @@
     "carried": true,
     "held": false,
     "worn": false,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Market reference · acquisition and use automation in progress</p><p><strong>Market price:</strong> 500 coins; special order.</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/25b80c9fe77d7baaec3f3a8a548c9663d0f39a30/design/equipment/cincture-of-might.md\" target=\"_blank\" rel=\"noopener\">design/equipment/cincture-of-might.md</a> at <code>25b80c9fe77d7baaec3f3a8a548c9663d0f39a30</code>.</p></section>"
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Market reference · acquisition and use automation in progress</p><p><strong>Market price:</strong> 500 coins; special order.</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/f3fb98ca03b046335fcc730c1b05689bebf091b4/design/equipment/cincture-of-might.md\" target=\"_blank\" rel=\"noopener\">design/equipment/cincture-of-might.md</a> at <code>f3fb98ca03b046335fcc730c1b05689bebf091b4</code>.</p></section>"
   },
   "effects": [],
   "folder": null,
@@ -28,7 +28,7 @@
         "path": "design/equipment/cincture-of-might.md",
         "sha256": "b3481b295d1e2a375daa923cbf2900172b6eb4e5b1bbcfb51232f887d188e53e"
       },
-      "sourceCommit": "25b80c9fe77d7baaec3f3a8a548c9663d0f39a30",
+      "sourceCommit": "f3fb98ca03b046335fcc730c1b05689bebf091b4",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Market reference · acquisition and use automation in progress"

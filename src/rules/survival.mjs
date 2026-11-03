@@ -1,4 +1,5 @@
 import { classifyRoll } from "./roll.mjs";
+import { normalizeRecovery, recoveryMaximum } from "./recovery.mjs";
 const states = ["active", "dying", "stable", "lastWords", "dead"];
 function integer(value, label) {
   if (!Number.isSafeInteger(value) || value < 0)
@@ -8,6 +9,7 @@ function integer(value, label) {
 export function validateSurvival(state) {
   if (!state || !states.includes(state.status))
     throw new Error("Unknown survival state.");
+  if (state.recovery !== undefined) normalizeRecovery(state.recovery);
   for (const key of [
     "hp",
     "maxHp",
@@ -59,6 +61,7 @@ export function survivalState({
   status = hp > 0 ? "active" : "dying",
   marks = 0,
   ownTurn = 0,
+  recovery,
 }) {
   return validateSurvival({
     hp,
@@ -68,6 +71,7 @@ export function survivalState({
     status,
     marks,
     ownTurn,
+    ...(recovery !== undefined ? { recovery: normalizeRecovery(recovery) } : {}),
     choice: null,
     due: null,
   });
@@ -129,7 +133,7 @@ export function receiveHealing(state, amount) {
   if (["lastWords", "dead"].includes(next.status))
     throw new Error("Ordinary healing cannot reverse Last Words or death.");
   if (amount) {
-    next.hp = Math.min(next.maxHp, next.hp + amount);
+    next.hp = Math.max(next.hp, Math.min(recoveryMaximum(next.maxHp, next.recovery), next.hp + amount));
     next.status = "active";
     next.due = null;
     next.marks = 0;
@@ -140,7 +144,7 @@ export function safeBreath(state) {
   const next = copy(state);
   if (!["active", "stable"].includes(next.status))
     throw new Error("Resolve Dying before taking a safe breath.");
-  next.hp = next.maxHp;
+  next.hp = Math.max(next.hp, recoveryMaximum(next.maxHp, next.recovery));
   next.due = null;
   next.status = "active";
   next.marks = 0;
@@ -192,7 +196,7 @@ export function resolveSurvival(state, { retained, fortitude } = {}) {
     if (!next.gritAvailable)
       throw new Error("The reserved Grit is no longer available.");
     next.gritAvailable--;
-    next.hp = next.maxHp;
+    next.hp = recoveryMaximum(next.maxHp, next.recovery);
     next.marks = 0;
     next.status = "active";
   } else {

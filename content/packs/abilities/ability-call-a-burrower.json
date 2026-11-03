@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/calling.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You speak into the hush between breaths. A little light answers, wearing the outline of something remembered.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>One visible unoccupied placement within 3 squares that fits the chosen form&#39;s entire footprint.</dd></div><div><dt>Type</dt><dd>Magic / Summoning</dd></div></dl><div class=\"hol-reference-rules\"><p>Choose one Spirit entry from the summon selection with a minimum tier of 1 or lower. Call one instance using its summon profile. Choose the form anew each casting. It remains for one scene.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/25b80c9fe77d7baaec3f3a8a548c9663d0f39a30/design/cards/call-a-burrower.md\" target=\"_blank\" rel=\"noopener\">design/cards/call-a-burrower.md</a> at <code>25b80c9fe77d7baaec3f3a8a548c9663d0f39a30</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You speak into the hush between breaths. A little light answers, wearing the outline of something remembered.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>One visible unoccupied placement within 3 squares that fits the chosen form&#39;s entire footprint.</dd></div><div><dt>Type</dt><dd>Magic / Summoning</dd></div></dl><div class=\"hol-reference-rules\"><p>Choose one Spirit entry from the summon selection with a minimum tier of 1 or lower. Call one instance using its summon profile. Choose the form anew each casting. It remains for one scene.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/f3fb98ca03b046335fcc730c1b05689bebf091b4/design/cards/call-a-burrower.md\" target=\"_blank\" rel=\"noopener\">design/cards/call-a-burrower.md</a> at <code>f3fb98ca03b046335fcc730c1b05689bebf091b4</code>.</p></section>",
     "activity": {
       "action": "main",
       "rollMode": "none",
@@ -32,7 +32,7 @@
         "path": "design/cards/call-a-burrower.md",
         "sha256": "474eb60e768efb6677c16ecdfa608a79295022d074eae5df07e1e30c1c898675"
       },
-      "sourceCommit": "25b80c9fe77d7baaec3f3a8a548c9663d0f39a30",
+      "sourceCommit": "f3fb98ca03b046335fcc730c1b05689bebf091b4",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

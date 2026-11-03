@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "sourceCommit": "25b80c9fe77d7baaec3f3a8a548c9663d0f39a30",
+  "sourceCommit": "f3fb98ca03b046335fcc730c1b05689bebf091b4",
   "scope": "ability reference text and learning metadata; action, acquisition and trait automation pending",
   "records": [
     {
@@ -27465,15 +27465,100 @@
       ]
     },
     {
+      "id": "ancestry-deep-dwarf",
+      "foundryId": "b5515edfea0cee44",
+      "kind": "ancestry",
+      "name": "Deep Dwarf",
+      "source": {
+        "path": "design/ancestries/deep-dwarf.md",
+        "sha256": "f44eae00cf30d98716004132064c725b44514550051871e1155434591c0b3404"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "Grey skin, great watchful eyes and a quiet step beneath the weight of the world.",
+          "The ancestors of Deep Dwarves went farther down. Over long generations, the people of the depths became shorter and slighter than their surface cousins. Their skin ranges through shades of grey, and their large eyes gather the faint light of the underground. Narrow shoulders and economical movements suit passages where a broad surface dwarf would struggle.",
+          "Many are naturally shy. They watch before approaching, speak after listening and prefer a familiar companion to the attention of a crowded room. Reserve does not diminish curiosity, courage or conviction. A quiet Deep Dwarf may be the first to notice danger and the one who refuses to abandon a friend.",
+          "Stone, darkness and small changes in air or vibration shape their experience. Those raised above ground bring the same sensitive bodies to unfamiliar surroundings. No ancestral instinct supplies a map of tunnels they have never walked."
+        ],
+        "rules": {
+          "details": [],
+          "body": [
+            {
+              "text": "Choose two of the five traits below. Temperamental tendencies are invitations, not a required personality. Any ancestry may grow up in any culture. Only the printed rules grant mechanical benefits."
+            },
+            {
+              "text": "Starting values: HP +2; base Speed 5."
+            },
+            {
+              "items": [
+                "Eyes for the Dark — You study the passage in a faint wash of reflected light.",
+                "The Stone Tells You — You rest your palm against the floor and wait for the answering tread.",
+                "A Sense of Depth — You wake in the dark and know which wall lies beneath the mountain.",
+                "A Patient Breath — You slow your breathing while the others hurry through the stale passage.",
+                "Through the Narrow Places — You lower your head and slip beneath the fallen beam without breaking stride."
+              ]
+            },
+            {
+              "text": "Starting coin contribution: +2 coins. See starting coins."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "hp": 2,
+      "speed": 5,
+      "coins": 2,
+      "traits": [
+        "trait-deep-dwarf-eyes-for-the-dark",
+        "trait-deep-dwarf-stone-tells-you",
+        "trait-deep-dwarf-never-off-the-map",
+        "trait-deep-dwarf-holds-its-own",
+        "trait-deep-dwarf-where-tall-folk-cannot-stand"
+      ]
+    },
+    {
       "id": "ancestry-dwarf",
       "foundryId": "f1f7f7cc76c628bd",
       "kind": "ancestry",
-      "name": "Dwarf",
+      "name": "Hill Dwarf",
       "source": {
-        "path": "design/ancestries/dwarf.md",
-        "sha256": "bd4662101f56ee387e52bafb68661666d7cd2f895112e4fdf2171e14eb2486d6"
+        "path": "design/ancestries/hill-dwarf.md",
+        "sha256": "6f320662a68c2bdb008921afe8ee1ff7b530d2753deb2abb98b274d6f350c8d5"
       },
       "automation": "pending",
+      "reference": {
+        "flavor": [
+          "Broad shoulders, patient hands and a home made where mountain meets open sky.",
+          "Long ago, dwarven peoples took different roads. Some built their halls within mountains opening onto the surface world. Others traveled deeper into the earth. Centuries of separation, perhaps much longer, have left their descendants visibly different.",
+          "Hill Dwarves are the broad, stocky surface people: solid limbs, strong backs, dense hair and faces weathered by forge heat, mountain wind or ordinary years of work. Their halls connect stone interiors to roads, daylight and neighboring communities. Deep Dwarves are their distant kin, but a stranger would seldom mistake one for the other.",
+          "Endurance, craft and a lasting memory are familiar expressions of Hill Dwarf identity. A remembered debt may be a kindness worth returning as readily as an injury worth answering. A dwarf need not live in a mountain, work a forge or keep a grudge; the same steady body can belong to a sailor, gardener or traveling musician."
+        ],
+        "rules": {
+          "details": [],
+          "body": [
+            {
+              "text": "Choose two of the five traits below. Temperamental tendencies are invitations, not a required personality. Any ancestry may grow up in any culture. Only the printed rules grant mechanical benefits."
+            },
+            {
+              "text": "Starting values: HP +4; base Speed 5."
+            },
+            {
+              "items": [
+                "Hard as Bedrock — Your ancestors did not dig a home from the mountain by yielding politely.",
+                "Stone Mason — You know a mason’s lie by the stone around it.",
+                "Rooted in Stone — Let the storm waste its strength on you.",
+                "An Honest Maker’s Hand — Your thumb finds the seam; your ear knows the ring of sound metal.",
+                "A Grudge Well Kept — You remember who struck first. You intend them to remember what followed."
+              ]
+            },
+            {
+              "text": "Starting coin contribution: +2 coins. See starting coins."
+            }
+          ],
+          "notes": []
+        }
+      },
       "hp": 4,
       "speed": 5,
       "coins": 2,
@@ -27489,12 +27574,44 @@
       "id": "ancestry-elf",
       "foundryId": "cb4eb1723246d4bd",
       "kind": "ancestry",
-      "name": "Elf",
+      "name": "Wood Elf",
       "source": {
-        "path": "design/ancestries/elf.md",
-        "sha256": "54bacf5fa8b4e0a5a221fca0c64f12ac5dcf4e9b2f52dc622a61c853a737ae7a"
+        "path": "design/ancestries/wood-elf.md",
+        "sha256": "5ff2f2990812f2a429ea924cc877968b3bf3fe0c9e981a99d39713c46aada7f0"
       },
       "automation": "pending",
+      "reference": {
+        "flavor": [
+          "Short, dark-haired and quick; the next possibility is already tugging at your sleeve.",
+          "Wood Elves are shorter and more lightly built than High Elves, with dark hair, nimble limbs and expressive, angular faces. Similar ears and facial structures have given both peoples the name elf in other tongues. A Wood Elf watching a High Elf deliberate may wonder how anyone can bear to leave an interesting idea untried for so long.",
+          "Quick movement often accompanies quick feeling. Curiosity, anger and affection can arrive with equal force; many Wood Elves trust the first useful opening and discover its consequences afterward. Their rashness can become daring, and their impulsiveness can become generosity. Neither prevents a Wood Elf from learning patience or taking a promise seriously.",
+          "Their bodies lend themselves to balance and movement. Woodlands give those gifts abundant expression, but a Wood Elf raised among rooftops, ships or crowded streets remains a Wood Elf. Their community determines what those quick hands learn to do."
+        ],
+        "rules": {
+          "details": [],
+          "body": [
+            {
+              "text": "Choose two of the five traits below. Temperamental tendencies are invitations, not a required personality. Any ancestry may grow up in any culture. Only the printed rules grant mechanical benefits."
+            },
+            {
+              "text": "Starting values: HP +2; base Speed 6."
+            },
+            {
+              "items": [
+                "Footfall on the Leaves — Even the fallen leaves seem reluctant to betray your passing.",
+                "A Lifetime Ago — You remember when the old road was new.",
+                "Nature’s Whispers — A startled bird tells you what a shouted warning never could.",
+                "Grace of the Elder Folk — Where others hurry, you seem simply to arrive.",
+                "Dream beneath the Stars — Your body rests while part of you walks old paths."
+              ]
+            },
+            {
+              "text": "Starting coin contribution: +2 coins. See starting coins."
+            }
+          ],
+          "notes": []
+        }
+      },
       "hp": 2,
       "speed": 6,
       "coins": 2,
@@ -27507,15 +27624,152 @@
       ]
     },
     {
+      "id": "ancestry-gnome",
+      "foundryId": "4488a8e3b84a72af",
+      "kind": "ancestry",
+      "name": "Gnome",
+      "source": {
+        "path": "design/ancestries/gnome.md",
+        "sha256": "d188b2ac1f633dadeb8a3ec2753c4966f5bef9b0aa5e6b08c12a2108102dd5e9"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "Tiny fey bodies, long lives and minds forever asking what else a thing could become.",
+          "Gnomes are fey creatures, smaller even than halflings, with deft hands, keen senses and an intelligence that can make a complicated device seem almost embarrassingly obvious. Their faces carry the expressions of long experience, however easily a stranger mistakes their stature for youth.",
+          "Some say the gnomes left the world of fairie to explore possibilities its inhabitants had overlooked. Others insist they were thrown out, and disagree enthusiastically about what invention caused the trouble. Gnomes tell both stories. Whether anyone remembers the whole truth is another question.",
+          "Inventing and tinkering delight many gnomes: an unfamiliar mechanism invites examination, an accepted limitation invites an experiment. Others apply that same searching intelligence to music, medicine, argument or the behavior of friends. A gnome does not inherit a workshop or a profession. Their fey nature and extraordinary mind travel with them wherever they grow up."
+        ],
+        "rules": {
+          "details": [],
+          "body": [
+            {
+              "text": "Choose two of the five traits below. Temperamental tendencies are invitations, not a required personality. Any ancestry may grow up in any culture. Only the printed rules grant mechanical benefits."
+            },
+            {
+              "text": "Starting values: HP +1; base Speed 6; Size Small."
+            },
+            {
+              "items": [
+                "What’s It Made Of? — You turn the device over, already asking why its maker put the hinge there.",
+                "Eyes from Elsewhere — The painted door is convincing. Its shadow has forgotten where the sun is.",
+                "Fingers in the Works — You ease one small part out of place, and the whole machine loses its argument.",
+                "Small Target — You tuck yourself behind the low stone as the arrow strikes its edge.",
+                "Bright Idea — You draw three lines in the dust, add a spoon, and the answer takes shape."
+              ]
+            },
+            {
+              "text": "Starting coin contribution: +1 coins. See starting coins."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "hp": 1,
+      "speed": 6,
+      "coins": 1,
+      "traits": [
+        "trait-gnome-whats-it-made-of",
+        "trait-gnome-one-more-question",
+        "trait-gnome-fingers-in-the-works",
+        "trait-gnome-small-target",
+        "trait-gnome-bright-idea"
+      ]
+    },
+    {
+      "id": "ancestry-goblin",
+      "foundryId": "f343a6fb7c216e08",
+      "kind": "ancestry",
+      "name": "Goblin",
+      "source": {
+        "path": "design/ancestries/goblin.md",
+        "sha256": "d3a25a43ab0ab2dfd72742246a670f6f04b8106136d0cbcc028a61de378d823b"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "Quick hands, shared effort and a future finally open to your own making.",
+          "Goblins are small, quick-bodied people with prominent ears and alert, expressive faces. For generations, orcs enslaved them, and outsiders learned to associate goblins with the cruelty of those who held them. Freedom did not immediately erase that reputation. It did give goblins the chance to build lives whose purpose was their own.",
+          "Many now seek a place through useful work, trade, exploration and the steady proof of being a reliable neighbor. Resourcefulness honed under deprivation can become skilled repair, careful husbandry or a gift for seeing value where others see rubbish. Cooperation can become friendship and enterprise rather than a necessity of survival.",
+          "A goblin adventurer may want to support a community, win recognition or simply discover what freedom feels like beyond familiar roads. Others were born free and have never seen an orc. Their ancestry carries a history; each goblin chooses what to make of the life ahead."
+        ],
+        "rules": {
+          "details": [],
+          "body": [
+            {
+              "text": "Choose two of the five traits below. Temperamental tendencies are invitations, not a required personality. Any ancestry may grow up in any culture. Only the printed rules grant mechanical benefits."
+            },
+            {
+              "text": "Starting values: HP +1; base Speed 6; Size Small."
+            },
+            {
+              "items": [
+                "Waste Nothing — You turn the broken hinge over. There is good work left in it yet.",
+                "Better Together — Your companion draws their eye, and you know exactly when to step in.",
+                "Quick on Your Feet — You are halfway across the yard before the others have found their stride.",
+                "The Other Side of the Fire — You recognize the guarded silence and make your offer without stepping closer.",
+                "Quick Hands — The awkward bundle settles into your grip before anyone notices it slipping."
+              ]
+            },
+            {
+              "text": "Starting coin contribution: +0 coins. See starting coins."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "hp": 1,
+      "speed": 6,
+      "coins": 0,
+      "traits": [
+        "trait-goblin-scavenger",
+        "trait-goblin-more-of-us-than-you",
+        "trait-goblin-run-away-better",
+        "trait-goblin-other-side-of-the-fire",
+        "trait-goblin-never-where-you-aim"
+      ]
+    },
+    {
       "id": "ancestry-halfling",
       "foundryId": "a0c70c97e1c3f3fe",
       "kind": "ancestry",
       "name": "Halfling",
       "source": {
         "path": "design/ancestries/halfling.md",
-        "sha256": "46a0432ce7afcf914fa2c476debc2b739edcf95d755ef1aacd660eaa54f0d5e2"
+        "sha256": "79781f69d080360544937569423f862b6ac32e7aa1c888579b1346459ced67fd"
       },
       "automation": "pending",
+      "reference": {
+        "flavor": [
+          "Quiet feet, a generous table and courage that surprises people who judge by height.",
+          "Halflings are small, compact people, larger than gnomes, with a gift for making limited space comfortable. Others often notice their height before noticing the person, a mistake a halfling may patiently correct or quietly put to use.",
+          "Hospitality and good company are familiar pleasures, but a generous table does not require an easy life. Courage can live beside trembling knees, a sharp tongue beside warm manners, and a taste for home beside an irresistible curiosity about the road. A halfling raised far from halfling communities brings their own customs to those possibilities."
+        ],
+        "rules": {
+          "details": [],
+          "body": [
+            {
+              "text": "Choose two of the five traits below. These are invitations to a familiar fantasy, not a required personality. Any ancestry may grow up in any culture."
+            },
+            {
+              "text": "Starting values: HP +1; base Speed 5; Size Small."
+            },
+            {
+              "items": [
+                "Bigger on the Inside — Your knees may shake. Your friends will never see you leave them.",
+                "Under Their Noses — The grand folk rarely remember to look beneath the table.",
+                "Quick Tongue — You can talk your way through a negotiation, an argument or an accusation.",
+                "A Little Luck — The latch catches your coat a heartbeat before you step into trouble.",
+                "Endless Pockets — Your clothes have pockets in places that should not have pockets, and they hold more than they should."
+              ]
+            },
+            {
+              "text": "Starting coin contribution: +0 coins. See starting coins."
+            }
+          ],
+          "notes": []
+        }
+      },
       "hp": 1,
       "speed": 5,
       "coins": 0,
@@ -27528,15 +27782,99 @@
       ]
     },
     {
+      "id": "ancestry-high-elf",
+      "foundryId": "00f66927731c865c",
+      "kind": "ancestry",
+      "name": "High Elf",
+      "source": {
+        "path": "design/ancestries/high-elf.md",
+        "sha256": "81d7fd36477ee82f362b7df4d7a5b9b3bfe4137b223b327a89c29c04bccba0dd"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "Tall, strong and deliberate; a long life leaves room to consider every word.",
+          "High Elves are tall and strongly built, with pointed ears and the fine, angular facial structure that leads outsiders to call them kin to Wood Elves. They are a different ancestry. Beside a compact, restless Wood Elf, a High Elf has the presence of a standing stone: upright, composed and difficult to hurry.",
+          "Their long lives encourage a broad view of consequences. Many listen through an argument before speaking, practice a movement until it wastes no effort, or remember a slight long after its author has forgotten it. Confidence can harden into arrogance, especially when patience is mistaken for superior judgment. Others learn that living a long time is no guarantee of being right.",
+          "A High Elf might be a laborer, a wanderer or a scholar. Strength and deliberation belong to their physical and temperamental inheritance; wealth, titles and courtly manners depend on the life they have led."
+        ],
+        "rules": {
+          "details": [],
+          "body": [
+            {
+              "text": "Choose two of the five traits below. Temperamental tendencies are invitations, not a required personality. Any ancestry may grow up in any culture. Only the printed rules grant mechanical benefits."
+            },
+            {
+              "text": "Starting values: HP +3; base Speed 6."
+            },
+            {
+              "items": [
+                "The Practised Hand — You turn the tiny fitting once, then set it exactly where it belongs.",
+                "Still Water — You let the clamor spend itself before deciding what deserves your attention.",
+                "Starlight Eyes — Under the last light of evening, you can still count the stitches.",
+                "Measured Strength — You set your feet, test the weight and lift without a wasted motion.",
+                "The Weight of Centuries — You close your eyes, and the room returns as it stood a lifetime ago."
+              ]
+            },
+            {
+              "text": "Starting coin contribution: +2 coins. See starting coins."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "hp": 3,
+      "speed": 6,
+      "coins": 2,
+      "traits": [
+        "trait-high-elf-practised-hand",
+        "trait-high-elf-old-courtesies",
+        "trait-high-elf-starlight-eyes",
+        "trait-high-elf-name-that-opens-doors",
+        "trait-high-elf-weight-of-centuries"
+      ]
+    },
+    {
       "id": "ancestry-human",
       "foundryId": "0a74269ef6a0c5f6",
       "kind": "ancestry",
       "name": "Human",
       "source": {
         "path": "design/ancestries/human.md",
-        "sha256": "4d731757497e8e555557057a2d7f491daa7204d39119f521d17cb2ecfdb6f5ad"
+        "sha256": "72fd4209b118a5c3866d8fcc457aeb15ed29b982b963485d7b5a98a0841949bb"
       },
       "automation": "pending",
+      "reference": {
+        "flavor": [
+          "Restless, adaptable and fiercely invested in a life that never feels long enough.",
+          "Humans have no single stature, complexion or way of making a home. A short life beside the elder peoples can give an ordinary season an urgent importance: learn the trade, mend the friendship, see what lies beyond the ridge. Some make roots; others make roads between the places they love.",
+          "Adaptability takes many forms. One human gathers languages and acquaintances; another learns by failing until a stubborn problem yields. Neither ambition nor restlessness is compulsory. A human hero may want a quiet life enough to undertake a dangerous journey to protect it."
+        ],
+        "rules": {
+          "details": [],
+          "body": [
+            {
+              "text": "Choose two of the five traits below. These are invitations to a familiar fantasy, not a required personality. Any ancestry may grow up in any culture."
+            },
+            {
+              "text": "Starting values: HP +2; base Speed 6."
+            },
+            {
+              "items": [
+                "Never Quite Finished — There is always one more person to help, one more hill to cross.",
+                "Adaptable — You learn quickly, turning every new experience into another useful skill.",
+                "A Foot in Two Worlds — You learned early that a stranger is sometimes only a person whose words you do not know.",
+                "Ingenuity — You look at what is available and build the tool you need.",
+                "The Impossible Streak — Someone says it cannot be done, and you hear a challenge."
+              ]
+            },
+            {
+              "text": "Starting coin contribution: +1 coins. See starting coins."
+            }
+          ],
+          "notes": []
+        }
+      },
       "hp": 2,
       "speed": 6,
       "coins": 1,
@@ -27546,6 +27884,115 @@
         "trait-human-many-homes",
         "trait-human-shared-table",
         "trait-human-practiced-patience"
+      ]
+    },
+    {
+      "id": "ancestry-oath-bound",
+      "foundryId": "b67e96f04b2bd539",
+      "kind": "ancestry",
+      "name": "Oath-Bound",
+      "source": {
+        "path": "design/ancestries/oath-bound.md",
+        "sha256": "17494164181d006ef34cc3095df647f4f66e95fa989a5c34f4e274ee5606c82f"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "Made for a purpose. Set adrift before you learned what it was.",
+          "Oath-Bound are constructs brought into existence by an oath holder. Each was made for a higher purpose and carries a destiny, yet begins their life without knowing what that purpose or destiny is. They have been given existence without an explanation: a ship set adrift, with neither a chart nor a remembered destination.",
+          "Their oath holder is the source of that existence. An Oath-Bound may recognize a name, a presence or a sign of the one who made them. Calling upon that connection can bring conviction, understanding or strength. The answer may feel intimate even when the being who gives it remains a mystery.",
+          "Life among other peoples gives them relationships, work and ambitions of their own. A journey might uncover why they were made, or simply teach them what they value while searching. The character’s choices belong to the player; their hidden purpose offers a mystery to discover together with the Dungeon Architect."
+        ],
+        "rules": {
+          "details": [],
+          "body": [
+            {
+              "text": "Choose two of the five traits below. Temperamental tendencies are invitations, not a required personality. Any ancestry may grow up in any culture. Only the printed rules grant mechanical benefits."
+            },
+            {
+              "text": "Starting values: HP +2; base Speed 6."
+            },
+            {
+              "text": "Constructed life: Use the shared Oath-Bound recovery rules."
+            },
+            {
+              "items": [
+                "The Answering Voice — You reach toward the presence that made you, and certainty settles into your voice.",
+                "Borrowed Knowing — You know the answer before you know where the memory came from.",
+                "The Debt Comes Due — You ask for another chance, and a little of the life you were given answers.",
+                "The Will That Made You — Something in you remembers that your work is unfinished.",
+                "A Hand on the Rudder — For a moment, the world is less bewildering and the next step feels clearer."
+              ]
+            },
+            {
+              "text": "Starting coin contribution: +1 coins. See starting coins."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "hp": 2,
+      "speed": 6,
+      "coins": 1,
+      "traits": [
+        "trait-oath-bound-the-mark",
+        "trait-oath-bound-read-the-oath",
+        "trait-oath-bound-the-debt-comes-due",
+        "trait-oath-bound-bound-by-your-word",
+        "trait-oath-bound-neither-here-nor-there"
+      ]
+    },
+    {
+      "id": "ancestry-tallfolk",
+      "foundryId": "8dc4ddbc30b5d171",
+      "kind": "ancestry",
+      "name": "Tallfolk",
+      "source": {
+        "path": "design/ancestries/tallfolk.md",
+        "sha256": "e067c63a23f175168024953109b9a287b8af6c540ad6e5374797ef2d127d5d91"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "Long limbs, great hands and a world whose doorways rarely give you room.",
+          "Tallfolk stand well above most neighboring peoples. Long arms, powerful frames and large hands make their scale evident even when they sit quietly. A borrowed chair, a crowded wagon or a low lintel can demand more thought than a heavy load.",
+          "Some enjoy the attention their height brings; others become practiced at folding themselves out of the way. Their bodies offer reach and leverage, but neither strength nor stature decides their character. A Tallfolk healer may work with extraordinary gentleness, while a shy scholar learns to endure being the first person everyone notices.",
+          "Their origins and communities belong to the campaign. They need no named giant ancestor or distant kingdom to take their place beside other adventurers. Choose how your hero lives at this scale, and which of its advantages they have learned to use."
+        ],
+        "rules": {
+          "details": [],
+          "body": [
+            {
+              "text": "Choose two of the five traits below. Temperamental tendencies are invitations, not a required personality. Any ancestry may grow up in any culture. Only the printed rules grant mechanical benefits."
+            },
+            {
+              "text": "Starting values: HP +5; base Speed 6."
+            },
+            {
+              "items": [
+                "Long Reach — You catch the latch above your companions’ heads without rising onto your toes.",
+                "Broad Back — You settle the awkward load across your shoulders and leave a hand free for the door.",
+                "A Big Shadow — You unfold to your full height, and wait for the room to notice.",
+                "Built for the Weather — You pull your collar closed and keep pace through the driving sleet.",
+                "Long Stride — You cross the courtyard in a few easy strides while your companions hurry to keep pace."
+              ]
+            },
+            {
+              "text": "Starting coin contribution: +1 coins. See starting coins."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "hp": 5,
+      "speed": 6,
+      "coins": 1,
+      "traits": [
+        "trait-tallfolk-long-reach",
+        "trait-tallfolk-broad-back",
+        "trait-tallfolk-a-big-shadow",
+        "trait-tallfolk-built-for-the-weather",
+        "trait-tallfolk-you-take-the-blow"
       ]
     },
     {
@@ -30329,15 +30776,261 @@
       ]
     },
     {
+      "id": "trait-deep-dwarf-eyes-for-the-dark",
+      "foundryId": "e61074421b6b0dae",
+      "kind": "trait",
+      "name": "Eyes for the Dark",
+      "source": {
+        "path": "design/ancestries/trait-deep-dwarf-eyes-for-the-dark.md",
+        "sha256": "489ecb7f546f2ff092f41ea719c595e363f62d8bcc655d1aab2845dab05de627"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You study the passage in a faint wash of reflected light."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "Deep Dwarf"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive."
+            },
+            {
+              "label": "Duration",
+              "value": "While its stated circumstances apply; permanent for base statistics."
+            }
+          ],
+          "body": [
+            {
+              "text": "Low-Light Vision 2."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "ancestryId": "ancestry-deep-dwarf"
+    },
+    {
+      "id": "trait-deep-dwarf-holds-its-own",
+      "foundryId": "5dfde51d904be47f",
+      "kind": "trait",
+      "name": "A Patient Breath",
+      "source": {
+        "path": "design/ancestries/trait-deep-dwarf-holds-its-own.md",
+        "sha256": "b518753bbf09eaa33e4c7014fa6e39de9032c7e6b637f3cfc38f8454bdb0d8de"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You slow your breathing while the others hurry through the stale passage."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "Deep Dwarf"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive."
+            },
+            {
+              "label": "Duration",
+              "value": "While its stated circumstances apply; permanent for base statistics."
+            }
+          ],
+          "body": [
+            {
+              "text": "Gain 1 Boon to Fortitude rolls against inhaled dust, smoke, fumes, poison or thin air."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "ancestryId": "ancestry-deep-dwarf"
+    },
+    {
+      "id": "trait-deep-dwarf-never-off-the-map",
+      "foundryId": "472aefc717456953",
+      "kind": "trait",
+      "name": "A Sense of Depth",
+      "source": {
+        "path": "design/ancestries/trait-deep-dwarf-never-off-the-map.md",
+        "sha256": "e5c141e595b497bde964457c6cab6b46818d4a97c3d4b71c7dbeb4f9a6a3f63f"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You wake in the dark and know which wall lies beneath the mountain."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "Deep Dwarf"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive."
+            },
+            {
+              "label": "Duration",
+              "value": "While its stated circumstances apply; permanent for base statistics."
+            }
+          ],
+          "body": [
+            {
+              "text": "Underground, you always know which way is up and whether your route is rising or descending. Gain 1 Boon to Reason rolls to navigate underground or retrace a subterranean route."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "ancestryId": "ancestry-deep-dwarf"
+    },
+    {
+      "id": "trait-deep-dwarf-stone-tells-you",
+      "foundryId": "d9793044a6209e64",
+      "kind": "trait",
+      "name": "The Stone Tells You",
+      "source": {
+        "path": "design/ancestries/trait-deep-dwarf-stone-tells-you.md",
+        "sha256": "e7a888739f7e09810a613edee0ace458ad77b1177e034039eb4daa730f058b6c"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You rest your palm against the floor and wait for the answering tread."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "Deep Dwarf"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive."
+            },
+            {
+              "label": "Duration",
+              "value": "While its stated circumstances apply; permanent for base statistics."
+            }
+          ],
+          "body": [
+            {
+              "text": "Gain Seismic Vision with a range of 6 squares."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "ancestryId": "ancestry-deep-dwarf"
+    },
+    {
+      "id": "trait-deep-dwarf-where-tall-folk-cannot-stand",
+      "foundryId": "8434bbe153633465",
+      "kind": "trait",
+      "name": "Through the Narrow Places",
+      "source": {
+        "path": "design/ancestries/trait-deep-dwarf-where-tall-folk-cannot-stand.md",
+        "sha256": "edf6012380daf083395d77c7e46b54965d1b0408aebfe1833457c651c576d4c1"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You lower your head and slip beneath the fallen beam without breaking stride."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "Deep Dwarf"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive."
+            },
+            {
+              "label": "Duration",
+              "value": "While its stated circumstances apply; permanent for base statistics."
+            }
+          ],
+          "body": [
+            {
+              "text": "You move and attack normally while crouching or squeezing through low or narrow passages."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "ancestryId": "ancestry-deep-dwarf"
+    },
+    {
       "id": "trait-dwarf-carved-history",
       "foundryId": "83f8e2e80f657af6",
       "kind": "trait",
       "name": "A Grudge Well Kept",
       "source": {
         "path": "design/ancestries/trait-dwarf-carved-history.md",
-        "sha256": "f938cef556a859d9d2962a23e49d322e8c574eaf508048db70cf684eb7c56f42"
+        "sha256": "76daec23e19ff199616f300e76f2caac35f4fe9a41ad5f2b06e1eef5e7b8832d"
       },
       "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You rub the place the blow landed, fix its giver in your gaze and step back into the fight."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "Hill Dwarf"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive unless the effect says otherwise."
+            },
+            {
+              "label": "Duration",
+              "value": "While its stated circumstances apply; permanent for base statistics."
+            }
+          ],
+          "body": [
+            {
+              "text": "The first creature that deals damage to you in each combat becomes the mark of your grudge. You gain 1 Boon to attack rolls against each creature marked by your grudge. A creature remains marked forever, even if it escapes. Each creature can be marked once. You can hold any number of grudges."
+            }
+          ],
+          "notes": []
+        }
+      },
       "ancestryId": "ancestry-dwarf"
     },
     {
@@ -30347,9 +31040,40 @@
       "name": "Hard as Bedrock",
       "source": {
         "path": "design/ancestries/trait-dwarf-deep-constitution.md",
-        "sha256": "15c2e0f449d0e2416e9a48bd5eda6ecd6be2fe6c987d726d071740f69c7c8df8"
+        "sha256": "66d5375b8615ef9d58eabb520a8e83e01b9c2e12cd5082c6a2a44b347776f3fe"
       },
       "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You draw a deep breath, tighten the strap over your bruised shoulder and shoulder the load again."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "Hill Dwarf"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive unless the effect says otherwise."
+            },
+            {
+              "label": "Duration",
+              "value": "While its stated circumstances apply; permanent for base statistics."
+            }
+          ],
+          "body": [
+            {
+              "text": "Maximum HP +1."
+            }
+          ],
+          "notes": []
+        }
+      },
       "ancestryId": "ancestry-dwarf"
     },
     {
@@ -30359,9 +31083,40 @@
       "name": "Rooted in Stone",
       "source": {
         "path": "design/ancestries/trait-dwarf-low-center.md",
-        "sha256": "9f8c38646e49d95312e863fe8d18b3c02d51f0af35dd8e6a7d5799717366a460"
+        "sha256": "db1605041eeb7317b817d1243fee3dafd0e0e807c8db427190ce98c552c1e6ad"
       },
       "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You spread your boots against the stone and lean into the approaching shove."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "Hill Dwarf"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive unless the effect says otherwise."
+            },
+            {
+              "label": "Duration",
+              "value": "While its stated circumstances apply; permanent for base statistics."
+            }
+          ],
+          "body": [
+            {
+              "text": "Stability +1. You gain 1 Boon to Guile rolls."
+            }
+          ],
+          "notes": []
+        }
+      },
       "ancestryId": "ancestry-dwarf"
     },
     {
@@ -30371,9 +31126,40 @@
       "name": "An Honest Maker’s Hand",
       "source": {
         "path": "design/ancestries/trait-dwarf-maker-s-eye.md",
-        "sha256": "6fe1f6ce50781658b41917e08d5dbb2317a2b1ee431768db4a4442fec360d081"
+        "sha256": "75b20c3c5f83971bbd7308593ac9c7a70567dcbd83759cac74a06b4e99dd84ae"
       },
       "automation": "pending",
+      "reference": {
+        "flavor": [
+          "Your hands know the difference between a quick fix and honest work — and you refuse to settle for the former."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "Hill Dwarf"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive unless the effect says otherwise."
+            },
+            {
+              "label": "Duration",
+              "value": "While its stated circumstances apply; permanent for base statistics."
+            }
+          ],
+          "body": [
+            {
+              "text": "Once per day, after you make a roll to craft or repair an item, you may improve the result by one step: Weak becomes Standard, or Standard becomes Strong. A Strong result is unchanged."
+            }
+          ],
+          "notes": []
+        }
+      },
       "ancestryId": "ancestry-dwarf"
     },
     {
@@ -30383,9 +31169,40 @@
       "name": "Stone Mason",
       "source": {
         "path": "design/ancestries/trait-dwarf-stone-reader.md",
-        "sha256": "26aa2be58de5f470ec85240d49ee18325cca4e484b47b6cdd418becdaecc5214"
+        "sha256": "32d2aa2e99f93fe5d538ba6e041ae03aa20056cec76dbb872abb7d59499a0dfd"
       },
       "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You run your fingers across the stonework, stopping where an old seam has been cut anew."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "Hill Dwarf"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive unless the effect says otherwise."
+            },
+            {
+              "label": "Duration",
+              "value": "While its stated circumstances apply; permanent for base statistics."
+            }
+          ],
+          "body": [
+            {
+              "text": "Gain 1 Boon to rolls to examine or craft with stone. This covers judging craftsmanship, recognizing stone type and origin, reading patina or recent toolwork, finding secret passages or traps built into stone, and spotting weaknesses in stone or stone structures. You can identify obvious construction clues without a roll."
+            }
+          ],
+          "notes": []
+        }
+      },
       "ancestryId": "ancestry-dwarf"
     },
     {
@@ -30395,9 +31212,40 @@
       "name": "A Lifetime Ago",
       "source": {
         "path": "design/ancestries/trait-elf-age-of-memory.md",
-        "sha256": "ba922611591d55fc3e827131bf44e2218a2b78ec3fd2da51668190e1c090c75b"
+        "sha256": "8a7c5c481dd3824fe310f64a6c8d5b0d56074c8b04badcf366683518d9118339"
       },
       "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You pause beside the broken road, and the voices of your ancestors rise in the quiet between thoughts."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "Wood Elf"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive unless the effect says otherwise."
+            },
+            {
+              "label": "Duration",
+              "value": "While its stated circumstances apply; permanent for base statistics."
+            }
+          ],
+          "body": [
+            {
+              "text": "Once per day, before you make a Knowledge or Reason roll, you may call on the knowledge of your ancestors to gain 1 Boon to that roll."
+            }
+          ],
+          "notes": []
+        }
+      },
       "ancestryId": "ancestry-elf"
     },
     {
@@ -30407,9 +31255,40 @@
       "name": "Nature’s Whispers",
       "source": {
         "path": "design/ancestries/trait-elf-leaf-listener.md",
-        "sha256": "0a772b5f9b7d8b503e39f0c9528cec9f89d627775e39123ca7805b3a2cbb32ed"
+        "sha256": "889a4387f42cfc651b1e3686dc89a8e3975c75e7ef24b3e42975b5f857c3371a"
       },
       "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You stop talking as the birds fall quiet, turning toward the rustle that disturbed them."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "Wood Elf"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive unless the effect says otherwise."
+            },
+            {
+              "label": "Duration",
+              "value": "While its stated circumstances apply; permanent for base statistics."
+            }
+          ],
+          "body": [
+            {
+              "text": "Gain 1 Boon to a roll interpreting living signs."
+            }
+          ],
+          "notes": []
+        }
+      },
       "ancestryId": "ancestry-elf"
     },
     {
@@ -30419,9 +31298,40 @@
       "name": "Footfall on the Leaves",
       "source": {
         "path": "design/ancestries/trait-elf-light-tread.md",
-        "sha256": "b51638ae2f4811cc5b9c2aa6e1a5abfbed7c80891b88e1635f9b472f819e2572"
+        "sha256": "0f3407fbce9b426114a0961c6cb9d2b7739258e92682224bee95b8b435e5c2a3"
       },
       "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You step between stems and over tangled roots, leaving the leaves scarcely trembling behind you."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "Wood Elf"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive unless the effect says otherwise."
+            },
+            {
+              "label": "Duration",
+              "value": "While its stated circumstances apply; permanent for base statistics."
+            }
+          ],
+          "body": [
+            {
+              "text": "In woodlands and forests, you ignore difficult terrain. This includes difficult terrain caused by natural terrain or obstacles, such as roots, undergrowth, fallen leaves and uneven natural ground. Your Speed increases by 1 while you are in woodlands, forests or similar wooded terrain."
+            }
+          ],
+          "notes": []
+        }
+      },
       "ancestryId": "ancestry-elf"
     },
     {
@@ -30431,9 +31341,40 @@
       "name": "Dream beneath the Stars",
       "source": {
         "path": "design/ancestries/trait-elf-star-familiar.md",
-        "sha256": "4e14701ee12da286fbaf78d40b39cbe2737191755f05c840af7557abe3d23788"
+        "sha256": "21d501959d14a4516e29413df409cd02d43cc39564cba483be189aeb077d82e0"
       },
       "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You settle beneath the stars with your eyes half open, letting old memories drift through the sounds of the waking camp."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "Wood Elf"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive unless the effect says otherwise."
+            },
+            {
+              "label": "Duration",
+              "value": "While its stated circumstances apply; permanent for base statistics."
+            }
+          ],
+          "body": [
+            {
+              "text": "You may rest in a quiet waking reverie instead of sleeping. You remain aware of nearby ordinary sights and sounds. The reverie counts as sleep for rest and recovery."
+            }
+          ],
+          "notes": []
+        }
+      },
       "ancestryId": "ancestry-elf"
     },
     {
@@ -30443,10 +31384,471 @@
       "name": "Grace of the Elder Folk",
       "source": {
         "path": "design/ancestries/trait-elf-unhurried-grace.md",
-        "sha256": "fc03ce8b811275e9ff82af44a433fdd51c31929a1b07c11e4fda274eb1f903cd"
+        "sha256": "bc4df6bcacd45691841a84984bb2353b07c99895677fc6e1ca840a9b66668ab7"
       },
       "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You lengthen your stride and weave past the obstacles without breaking the rhythm of your steps."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "Wood Elf"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive unless the effect says otherwise."
+            },
+            {
+              "label": "Duration",
+              "value": "While its stated circumstances apply; permanent for base statistics."
+            }
+          ],
+          "body": [
+            {
+              "text": "Base Speed +1. Describe whether your grace is quick footwork, effortless balance or a dancer’s economy."
+            }
+          ],
+          "notes": []
+        }
+      },
       "ancestryId": "ancestry-elf"
+    },
+    {
+      "id": "trait-gnome-bright-idea",
+      "foundryId": "5cd630848896f770",
+      "kind": "trait",
+      "name": "Bright Idea",
+      "source": {
+        "path": "design/ancestries/trait-gnome-bright-idea.md",
+        "sha256": "731c4e345617d242eb1177ccff3ff5f1c7a71fbc0010b397ac3eef77fc300c3f"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You draw three lines in the dust, add a spoon, and the answer takes shape."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "Gnome"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive."
+            },
+            {
+              "label": "Duration",
+              "value": "While its stated circumstances apply; permanent for base statistics."
+            }
+          ],
+          "body": [
+            {
+              "text": "Once per day, before a Knowledge or Reason roll, gain 2 Boons by describing an unconventional approach to the problem."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "ancestryId": "ancestry-gnome"
+    },
+    {
+      "id": "trait-gnome-fingers-in-the-works",
+      "foundryId": "5308a00c3554f546",
+      "kind": "trait",
+      "name": "Fingers in the Works",
+      "source": {
+        "path": "design/ancestries/trait-gnome-fingers-in-the-works.md",
+        "sha256": "f65fe9d977027f8f491bcdfb9e6db657456c92e3ba756b78d1ed58d33d87e3bd"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You ease one small part out of place, and the whole machine loses its argument."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "Gnome"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive."
+            },
+            {
+              "label": "Duration",
+              "value": "While its stated circumstances apply; permanent for base statistics."
+            }
+          ],
+          "body": [
+            {
+              "text": "Gain 1 Boon to Knowledge rolls to build, repair, disable or alter a mechanical device, using suitable tools and materials."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "ancestryId": "ancestry-gnome"
+    },
+    {
+      "id": "trait-gnome-one-more-question",
+      "foundryId": "724d02bba870da98",
+      "kind": "trait",
+      "name": "Eyes from Elsewhere",
+      "source": {
+        "path": "design/ancestries/trait-gnome-one-more-question.md",
+        "sha256": "63c7f881df96ec2fb803fd36e80883f78a3c1a3cf89f378c3fa1781b3a3de107"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "The painted door is convincing. Its shadow has forgotten where the sun is."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "Gnome"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive."
+            },
+            {
+              "label": "Duration",
+              "value": "While its stated circumstances apply; permanent for base statistics."
+            }
+          ],
+          "body": [
+            {
+              "text": "Gain 1 Boon to Reason rolls to notice or see through magical illusions."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "ancestryId": "ancestry-gnome"
+    },
+    {
+      "id": "trait-gnome-small-target",
+      "foundryId": "36a9d87e6ead4234",
+      "kind": "trait",
+      "name": "Small Target",
+      "source": {
+        "path": "design/ancestries/trait-gnome-small-target.md",
+        "sha256": "08e011d627587e4288dea62855161d53904485f356bb8b2ef96f60b61918c447"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You tuck yourself behind the low stone as the arrow strikes its edge."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "Gnome"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive."
+            },
+            {
+              "label": "Duration",
+              "value": "While its stated circumstances apply; permanent for base statistics."
+            }
+          ],
+          "body": [
+            {
+              "text": "Gain 1 Boon to defense rolls."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "ancestryId": "ancestry-gnome"
+    },
+    {
+      "id": "trait-gnome-whats-it-made-of",
+      "foundryId": "79aea260cbbb11ed",
+      "kind": "trait",
+      "name": "What’s It Made Of?",
+      "source": {
+        "path": "design/ancestries/trait-gnome-whats-it-made-of.md",
+        "sha256": "9663e8d8837273de096425329536f26ef13ba214edb52b94c9423362de2cfbef"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You turn the device over, already asking why its maker put the hinge there."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "Gnome"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive."
+            },
+            {
+              "label": "Duration",
+              "value": "While its stated circumstances apply; permanent for base statistics."
+            }
+          ],
+          "body": [
+            {
+              "text": "Gain 1 Boon to Knowledge rolls to understand the construction, function or failure of a mechanism or manufactured mixture."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "ancestryId": "ancestry-gnome"
+    },
+    {
+      "id": "trait-goblin-more-of-us-than-you",
+      "foundryId": "eb0e9f2ee65a1637",
+      "kind": "trait",
+      "name": "Better Together",
+      "source": {
+        "path": "design/ancestries/trait-goblin-more-of-us-than-you.md",
+        "sha256": "028c4c71590f11f2d1c947a5f13dc6c5a96f4aaab9cc5e61e5df2d9f6d3f5543"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "Your companion draws their eye, and you know exactly when to step in."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "Goblin"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive."
+            },
+            {
+              "label": "Duration",
+              "value": "While its stated circumstances apply; permanent for base statistics."
+            }
+          ],
+          "body": [
+            {
+              "text": "Gain 1 Boon to your first attack roll on each of your turns against a creature adjacent to at least two of your allies."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "ancestryId": "ancestry-goblin"
+    },
+    {
+      "id": "trait-goblin-never-where-you-aim",
+      "foundryId": "8b51df6d94614ee5",
+      "kind": "trait",
+      "name": "Quick Hands",
+      "source": {
+        "path": "design/ancestries/trait-goblin-never-where-you-aim.md",
+        "sha256": "8486ee2b7d62b2cacc86678efa86f9defb516fddd952ba2bbd7e3b407264164d"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "The awkward bundle settles into your grip before anyone notices it slipping."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "Goblin"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive."
+            },
+            {
+              "label": "Duration",
+              "value": "While its stated circumstances apply."
+            }
+          ],
+          "body": [
+            {
+              "text": "Gain 1 Boon to Guile rolls to handle objects quickly or discreetly, or to use sleight of hand."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "ancestryId": "ancestry-goblin"
+    },
+    {
+      "id": "trait-goblin-other-side-of-the-fire",
+      "foundryId": "5191fae0e5a80371",
+      "kind": "trait",
+      "name": "The Other Side of the Fire",
+      "source": {
+        "path": "design/ancestries/trait-goblin-other-side-of-the-fire.md",
+        "sha256": "a41312e808d704e5d5d0f424ea6a19cf3feef6956801c8b30ea4a090db39d187"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You recognize the guarded silence and make your offer without stepping closer."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "Goblin"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive."
+            },
+            {
+              "label": "Duration",
+              "value": "While its stated circumstances apply."
+            }
+          ],
+          "body": [
+            {
+              "text": "Gain 1 Boon to Guile rolls to negotiate safe passage or ownership."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "ancestryId": "ancestry-goblin"
+    },
+    {
+      "id": "trait-goblin-run-away-better",
+      "foundryId": "3929a3e37928fc89",
+      "kind": "trait",
+      "name": "Quick on Your Feet",
+      "source": {
+        "path": "design/ancestries/trait-goblin-run-away-better.md",
+        "sha256": "83bd9c63ef8b4f29bcc8d8ee2af0be02ec06be4b229479935883a40beda5bea5"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You are halfway across the yard before the others have found their stride."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "Goblin"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive."
+            },
+            {
+              "label": "Duration",
+              "value": "Permanent."
+            }
+          ],
+          "body": [
+            {
+              "text": "Your base Speed increases by 1."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "ancestryId": "ancestry-goblin"
+    },
+    {
+      "id": "trait-goblin-scavenger",
+      "foundryId": "4a028fff8101ddd8",
+      "kind": "trait",
+      "name": "Waste Nothing",
+      "source": {
+        "path": "design/ancestries/trait-goblin-scavenger.md",
+        "sha256": "72b8d8224382f7a3847f248fa9ad91e67cd3d51075cc3b29bea3a0b74dad3fd9"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You turn the broken hinge over. There is good work left in it yet."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "Goblin"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive."
+            },
+            {
+              "label": "Duration",
+              "value": "While its stated circumstances apply; permanent for base statistics."
+            }
+          ],
+          "body": [
+            {
+              "text": "Gain 1 Boon to Knowledge rolls to repair an ordinary item using salvaged parts or recover usable materials from damaged equipment, using suitable tools."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "ancestryId": "ancestry-goblin"
     },
     {
       "id": "trait-halfling-good-cheer",
@@ -30458,6 +31860,37 @@
         "sha256": "3c836ef27469aa7eb1678b53893323db0a806741fa38722024fc1af238748d42"
       },
       "automation": "pending",
+      "reference": {
+        "flavor": [
+          "The latch catches your coat a heartbeat before you step into trouble."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "Halfling"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive unless the effect says otherwise."
+            },
+            {
+              "label": "Duration",
+              "value": "While its stated circumstances apply; permanent for base statistics."
+            }
+          ],
+          "body": [
+            {
+              "text": "Once per day, before a roll that uses an attribute, gain 3 Boons. Describe a small piece of good fortune."
+            }
+          ],
+          "notes": []
+        }
+      },
       "ancestryId": "ancestry-halfling"
     },
     {
@@ -30470,6 +31903,37 @@
         "sha256": "f95c55c1338adf2c1b0102024a14f32c1f4392a0dff84f938fa326f96d97e92e"
       },
       "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You let the accusation hang, then answer with the one question nobody wanted asked."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "Halfling"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive unless the effect says otherwise."
+            },
+            {
+              "label": "Duration",
+              "value": "While its stated circumstances apply; permanent for base statistics."
+            }
+          ],
+          "body": [
+            {
+              "text": "Gain 1 Boon to Guile rolls to negotiate or argue. When you use Guile to defend your own or an ally’s actions, gain 2 Boons instead."
+            }
+          ],
+          "notes": []
+        }
+      },
       "ancestryId": "ancestry-halfling"
     },
     {
@@ -30482,6 +31946,37 @@
         "sha256": "9110c0f4b94f3070dac70cf9a67db98a378cfe5b48f4849b56b80e181d7bb547"
       },
       "automation": "pending",
+      "reference": {
+        "flavor": [
+          "Your coat has pockets. Those pockets have pockets. Somewhere in there is a spoon you forgot you packed."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "Halfling"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive unless the effect says otherwise."
+            },
+            {
+              "label": "Duration",
+              "value": "While its stated circumstances apply; permanent for base statistics."
+            }
+          ],
+          "body": [
+            {
+              "text": "Your Bulk capacity increases by 1."
+            }
+          ],
+          "notes": []
+        }
+      },
       "ancestryId": "ancestry-halfling"
     },
     {
@@ -30494,6 +31989,37 @@
         "sha256": "541b0c3c64dfd599c7613629945199ba09692f342ca5e09e2e8c74fb4d958b41"
       },
       "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You duck beneath the table and draw your knees behind its legs as the hurried footsteps pass."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "Halfling"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive unless the effect says otherwise."
+            },
+            {
+              "label": "Duration",
+              "value": "While its stated circumstances apply; permanent for base statistics."
+            }
+          ],
+          "body": [
+            {
+              "text": "You gain 1 Boon to hiding. When you are adjacent to a standing creature at least one size larger than you, you can attempt to hide behind it, even in combat and with no other cover, as long as it is between you and the observer. The creature can be an ally or an enemy."
+            }
+          ],
+          "notes": []
+        }
+      },
       "ancestryId": "ancestry-halfling"
     },
     {
@@ -30506,7 +32032,253 @@
         "sha256": "fea7edc1a3fe8c1c4e7ec026fa6f3285bc5ca943c056ec7fab07c33f83e60d2b"
       },
       "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You swallow, glance at the friends beside you and step forward even while your knees shake."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "Halfling"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive unless the effect says otherwise."
+            },
+            {
+              "label": "Duration",
+              "value": "While its stated circumstances apply; permanent for base statistics."
+            }
+          ],
+          "body": [
+            {
+              "text": "Gain 1 Boon to rolls affected by Frightened. Your maximum HP increases by 1. Resolve the Boon and Banes normally."
+            }
+          ],
+          "notes": []
+        }
+      },
       "ancestryId": "ancestry-halfling"
+    },
+    {
+      "id": "trait-high-elf-name-that-opens-doors",
+      "foundryId": "a4478d0bc7ca162f",
+      "kind": "trait",
+      "name": "Measured Strength",
+      "source": {
+        "path": "design/ancestries/trait-high-elf-name-that-opens-doors.md",
+        "sha256": "fd218cb269bd751f6a3221343391b414dd4ec0d97b1c5298b1d0a9a5d73df001"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You set your feet, test the weight and lift without a wasted motion."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "High Elf"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive."
+            },
+            {
+              "label": "Duration",
+              "value": "While its stated circumstances apply; permanent for base statistics."
+            }
+          ],
+          "body": [
+            {
+              "text": "Gain 1 Boon to Brawn rolls to lift, carry, bend or force an object."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "ancestryId": "ancestry-high-elf"
+    },
+    {
+      "id": "trait-high-elf-old-courtesies",
+      "foundryId": "74de3bcdbf87f5d0",
+      "kind": "trait",
+      "name": "Still Water",
+      "source": {
+        "path": "design/ancestries/trait-high-elf-old-courtesies.md",
+        "sha256": "c048faab0ead05a49d3ca1ec63a4eea1bbf2718fe00af888b8c7bf2e8f2cf718"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You let the clamor spend itself before deciding what deserves your attention."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "High Elf"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive."
+            },
+            {
+              "label": "Duration",
+              "value": "While its stated circumstances apply; permanent for base statistics."
+            }
+          ],
+          "body": [
+            {
+              "text": "Gain 1 Boon to Reason rolls to recognize deception or maintain concentration amid noise, argument or distraction."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "ancestryId": "ancestry-high-elf"
+    },
+    {
+      "id": "trait-high-elf-practised-hand",
+      "foundryId": "86c5b66aa68d3138",
+      "kind": "trait",
+      "name": "The Practised Hand",
+      "source": {
+        "path": "design/ancestries/trait-high-elf-practised-hand.md",
+        "sha256": "d03c41b2a45d60c1a9453d834dee5de6a7ded26f8122509d758daf5c6438be6d"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You turn the tiny fitting once, then set it exactly where it belongs."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "High Elf"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive."
+            },
+            {
+              "label": "Duration",
+              "value": "While its stated circumstances apply; permanent for base statistics."
+            }
+          ],
+          "body": [
+            {
+              "text": "Gain 1 Boon to Knowledge rolls for crafting work. You must have suitable tools and take the ordinary time the work requires."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "ancestryId": "ancestry-high-elf"
+    },
+    {
+      "id": "trait-high-elf-starlight-eyes",
+      "foundryId": "da0224b01220da43",
+      "kind": "trait",
+      "name": "Starlight Eyes",
+      "source": {
+        "path": "design/ancestries/trait-high-elf-starlight-eyes.md",
+        "sha256": "53eeead5f91351d5a5c937933490491189e8bb9814b70e2dbc0ac7018b5dd091"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "Under the last light of evening, you can still count the stitches."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "High Elf"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive."
+            },
+            {
+              "label": "Duration",
+              "value": "While its stated circumstances apply; permanent for base statistics."
+            }
+          ],
+          "body": [
+            {
+              "text": "Low-Light Vision 1."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "ancestryId": "ancestry-high-elf"
+    },
+    {
+      "id": "trait-high-elf-weight-of-centuries",
+      "foundryId": "8e28ec82f9d9c41a",
+      "kind": "trait",
+      "name": "The Weight of Centuries",
+      "source": {
+        "path": "design/ancestries/trait-high-elf-weight-of-centuries.md",
+        "sha256": "4f15612b17cc4ce5cb8638780d5e5b75d2cc23e1aecb07c2f8b96c7758afaaf7"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You close your eyes, and the room returns as it stood a lifetime ago."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "High Elf"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive."
+            },
+            {
+              "label": "Duration",
+              "value": "While its stated circumstances apply; permanent for base statistics."
+            }
+          ],
+          "body": [
+            {
+              "text": "Once per day, before a Knowledge or Reason roll concerning something you personally encountered, gain 2 Boons by recalling that experience. Describe what you remember."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "ancestryId": "ancestry-high-elf"
     },
     {
       "id": "trait-human-far-walker",
@@ -30518,6 +32290,37 @@
         "sha256": "a6d7f4d72aadb937b70518453eb0ffbd2826450f499bbdc971b14ddc5e361f06"
       },
       "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You watch, try, fail once, and come back with the trick."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "Human"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive unless the effect says otherwise."
+            },
+            {
+              "label": "Duration",
+              "value": "While its stated circumstances apply; permanent for base statistics."
+            }
+          ],
+          "body": [
+            {
+              "text": "You gain 1 additional DP at each level, including level 0."
+            }
+          ],
+          "notes": []
+        }
+      },
       "ancestryId": "ancestry-human"
     },
     {
@@ -30530,6 +32333,37 @@
         "sha256": "4473b4537e70fef50914a250e6775a5a9d51fd1d6394eabade7c2f090d7e4b4a"
       },
       "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You greet a stranger in the words of another home, and by the end of the evening you have learned the shape of their craft."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "Human"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive unless the effect says otherwise."
+            },
+            {
+              "label": "Duration",
+              "value": "While its stated circumstances apply; permanent for base statistics."
+            }
+          ],
+          "body": [
+            {
+              "text": "Choose another ancestry. You learn one language native to that ancestry and gain one trait from that ancestry’s trait list as this trait’s benefit. You keep your Human base HP and Speed."
+            }
+          ],
+          "notes": []
+        }
+      },
       "ancestryId": "ancestry-human"
     },
     {
@@ -30542,6 +32376,37 @@
         "sha256": "059a703c4b2a22759987c60cff7a56e450ef4f5866c048c81ac0768a9540f30e"
       },
       "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You study the harder route, tighten your grip and begin with the stubborn care of someone determined to finish."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "Human"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive unless the effect says otherwise."
+            },
+            {
+              "label": "Duration",
+              "value": "While its stated circumstances apply; permanent for base statistics."
+            }
+          ],
+          "body": [
+            {
+              "text": "Once per day, before an ordinary noncombat roll, describe the difficult way you are taking. Gain 3 Boons to that roll."
+            }
+          ],
+          "notes": []
+        }
+      },
       "ancestryId": "ancestry-human"
     },
     {
@@ -30554,6 +32419,37 @@
         "sha256": "7f7161c65c23008d831146c8059845865745bd01b458820b4d4754383c2512b8"
       },
       "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You look at the broken cart, the loose rope and the bent nail, and see a solution."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "Human"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive unless the effect says otherwise."
+            },
+            {
+              "label": "Duration",
+              "value": "While its stated circumstances apply; permanent for base statistics."
+            }
+          ],
+          "body": [
+            {
+              "text": "Once per scene, you can assemble a temporary tool, implement or weapon from nearby materials. Gain 1 Boon to the next roll you make using it. The tool lasts until the end of the scene."
+            }
+          ],
+          "notes": []
+        }
+      },
       "ancestryId": "ancestry-human"
     },
     {
@@ -30566,7 +32462,468 @@
         "sha256": "da82be8269f2b059239615ba5d504c644ef03ff8da6a7fcab8991c00415879c1"
       },
       "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You wipe the sweat from your face and lift the load again, remembering the people still waiting for you."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "Human"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive unless the effect says otherwise."
+            },
+            {
+              "label": "Duration",
+              "value": "While its stated circumstances apply; permanent for base statistics."
+            }
+          ],
+          "body": [
+            {
+              "text": "Maximum HP +1. You gain 1 Boon to Fortitude rolls to resist death marks. Describe the ordinary hardship that taught you to keep going."
+            }
+          ],
+          "notes": []
+        }
+      },
       "ancestryId": "ancestry-human"
+    },
+    {
+      "id": "trait-oath-bound-bound-by-your-word",
+      "foundryId": "b58b19f7039392ed",
+      "kind": "trait",
+      "name": "The Will That Made You",
+      "source": {
+        "path": "design/ancestries/trait-oath-bound-bound-by-your-word.md",
+        "sha256": "a381004fb2ceb0a90fc6cb08f03960d523e56d26b1198ed44fbd01cb3050d913"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "Something in you remembers that your work is unfinished."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "Oath-Bound"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive."
+            },
+            {
+              "label": "Duration",
+              "value": "While its stated circumstances apply."
+            }
+          ],
+          "body": [
+            {
+              "text": "Gain 1 Boon to Fortitude rolls when you call upon your oath holder."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "ancestryId": "ancestry-oath-bound"
+    },
+    {
+      "id": "trait-oath-bound-neither-here-nor-there",
+      "foundryId": "d3700b9576abc4c6",
+      "kind": "trait",
+      "name": "A Hand on the Rudder",
+      "source": {
+        "path": "design/ancestries/trait-oath-bound-neither-here-nor-there.md",
+        "sha256": "04726fc3bc9b364537f93ab1add9cacf3df4270e364c5e3849d7305548866ae2"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "For a moment, the world is less bewildering and the next step feels clearer."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "Oath-Bound"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive."
+            },
+            {
+              "label": "Duration",
+              "value": "While its stated circumstances apply."
+            }
+          ],
+          "body": [
+            {
+              "text": "Gain 1 Boon to Agility rolls when you call upon your oath holder."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "ancestryId": "ancestry-oath-bound"
+    },
+    {
+      "id": "trait-oath-bound-read-the-oath",
+      "foundryId": "eda171221fb8df75",
+      "kind": "trait",
+      "name": "Borrowed Knowing",
+      "source": {
+        "path": "design/ancestries/trait-oath-bound-read-the-oath.md",
+        "sha256": "60ded73c71cb0ec4a14c8e788b51de9b9b21c6cd5db367a899f23ccd1d730ee7"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You know the answer before you know where the memory came from."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "Oath-Bound"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive."
+            },
+            {
+              "label": "Duration",
+              "value": "While its stated circumstances apply."
+            }
+          ],
+          "body": [
+            {
+              "text": "Gain 1 Boon to Knowledge rolls when you call upon your oath holder."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "ancestryId": "ancestry-oath-bound"
+    },
+    {
+      "id": "trait-oath-bound-the-debt-comes-due",
+      "foundryId": "36f13f9bbc97cb0c",
+      "kind": "trait",
+      "name": "The Debt Comes Due",
+      "source": {
+        "path": "design/ancestries/trait-oath-bound-the-debt-comes-due.md",
+        "sha256": "6fa1da2f7bcd97d009b1fba9ac37114289f3851311b677b521593aa0ab2c78a9"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You ask for another chance, and a little of the life you were given answers."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "Oath-Bound"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive."
+            },
+            {
+              "label": "Duration",
+              "value": "The spent HP remains unavailable for recovery until the next dawn."
+            }
+          ],
+          "body": [
+            {
+              "text": "Once per day, after an attribute roll, spend 1 HP to reroll it and use the new result. That HP cannot be restored until the next dawn."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "ancestryId": "ancestry-oath-bound"
+    },
+    {
+      "id": "trait-oath-bound-the-mark",
+      "foundryId": "73fbd35938381782",
+      "kind": "trait",
+      "name": "The Answering Voice",
+      "source": {
+        "path": "design/ancestries/trait-oath-bound-the-mark.md",
+        "sha256": "7941c4d7e593c6490d6031cf1d29dac1c55e1c3156064c2334f49ab96bf07840"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You reach toward the presence that made you, and certainty settles into your voice."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "Oath-Bound"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive."
+            },
+            {
+              "label": "Duration",
+              "value": "While its stated circumstances apply."
+            }
+          ],
+          "body": [
+            {
+              "text": "Gain 1 Boon to Reason rolls when you call upon your oath holder."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "ancestryId": "ancestry-oath-bound"
+    },
+    {
+      "id": "trait-tallfolk-a-big-shadow",
+      "foundryId": "6a2410e7e69a04d2",
+      "kind": "trait",
+      "name": "A Big Shadow",
+      "source": {
+        "path": "design/ancestries/trait-tallfolk-a-big-shadow.md",
+        "sha256": "97af64849ad0a5ef930df8d09683899156af6065523780ce745ff21e3fa1efeb"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You unfold to your full height, and wait for the room to notice."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "Tallfolk"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive."
+            },
+            {
+              "label": "Duration",
+              "value": "While its stated circumstances apply; permanent for base statistics."
+            }
+          ],
+          "body": [
+            {
+              "text": "Gain 1 Boon to Guile rolls to overawe or draw attention through your physical presence."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "ancestryId": "ancestry-tallfolk"
+    },
+    {
+      "id": "trait-tallfolk-broad-back",
+      "foundryId": "32e9b11cbfad3967",
+      "kind": "trait",
+      "name": "Broad Back",
+      "source": {
+        "path": "design/ancestries/trait-tallfolk-broad-back.md",
+        "sha256": "116a7f9ae04fde4a7e6d19e0baf8136dcacfdaa60f6ca512f7bb77ca1f69d835"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You settle the awkward load across your shoulders and leave a hand free for the door."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "Tallfolk"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive."
+            },
+            {
+              "label": "Duration",
+              "value": "While its stated circumstances apply; permanent for base statistics."
+            }
+          ],
+          "body": [
+            {
+              "text": "Your Bulk capacity increases by 3."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "ancestryId": "ancestry-tallfolk"
+    },
+    {
+      "id": "trait-tallfolk-built-for-the-weather",
+      "foundryId": "c721cbd822619bf9",
+      "kind": "trait",
+      "name": "Built for the Weather",
+      "source": {
+        "path": "design/ancestries/trait-tallfolk-built-for-the-weather.md",
+        "sha256": "856e9982f61c2398a21dd8bfde70022262d276b54e590cb792664cdc8ba3cc0f"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You pull your collar closed and keep pace through the driving sleet."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "Tallfolk"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive."
+            },
+            {
+              "label": "Duration",
+              "value": "While its stated circumstances apply; permanent for base statistics."
+            }
+          ],
+          "body": [
+            {
+              "text": "Gain 1 Boon to Fortitude rolls against exposure to natural cold, heat or the fatigue of a long march."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "ancestryId": "ancestry-tallfolk"
+    },
+    {
+      "id": "trait-tallfolk-long-reach",
+      "foundryId": "9b5737486f6b9d19",
+      "kind": "trait",
+      "name": "Long Reach",
+      "source": {
+        "path": "design/ancestries/trait-tallfolk-long-reach.md",
+        "sha256": "6ee9c4d1b1b1252692c325801b091899f9f23ab8e5b69675fa3ca80d800b891a"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You catch the latch above your companions’ heads without rising onto your toes."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "Tallfolk"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive."
+            },
+            {
+              "label": "Duration",
+              "value": "While its stated circumstances apply; permanent for base statistics."
+            }
+          ],
+          "body": [
+            {
+              "text": "You can interact with objects and use non-attack touch abilities at a range of 2 squares."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "ancestryId": "ancestry-tallfolk"
+    },
+    {
+      "id": "trait-tallfolk-you-take-the-blow",
+      "foundryId": "5651c90bcfb3ac9c",
+      "kind": "trait",
+      "name": "Long Stride",
+      "source": {
+        "path": "design/ancestries/trait-tallfolk-you-take-the-blow.md",
+        "sha256": "1d60c5852bb321ebee7a444b9af23da55f78394c19dd9eaaa0db6f9a87a9fe43"
+      },
+      "automation": "pending",
+      "reference": {
+        "flavor": [
+          "You cross the courtyard in a few easy strides while your companions hurry to keep pace."
+        ],
+        "rules": {
+          "details": [
+            {
+              "label": "Ancestry",
+              "value": "Tallfolk"
+            },
+            {
+              "label": "Choice",
+              "value": "one of your two traits"
+            },
+            {
+              "label": "Action",
+              "value": "Passive."
+            },
+            {
+              "label": "Duration",
+              "value": "Permanent."
+            }
+          ],
+          "body": [
+            {
+              "text": "Your base Speed increases by 1."
+            }
+          ],
+          "notes": []
+        }
+      },
+      "ancestryId": "ancestry-tallfolk"
     }
   ]
 }

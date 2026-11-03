@@ -53,9 +53,18 @@ function portable(draft = fixtures.characters[0].draft) {
   return JSON.parse(writePortableCharacter(draft, catalogs, { languages: languages.definitions }));
 }
 
-test("all six portable book heroes construct complete current native character sources", () => {
+test("complete portable book heroes construct native sources while stale Oren choices require repair", () => {
   for (const hero of fixtures.characters) {
     const source = portable(hero.draft);
+    if(hero.id === "oren-brass") {
+      const before=structuredClone(source);
+      const restored=readPortableCharacter(source,catalogs,languages.definitions);
+      assert.equal(restored.preview.valid,false);
+      assert(restored.preview.errors.some(error=>error.code === "borrowed-ancestry"));
+      assert.throws(()=>importer.buildPortableActorSource(source,catalogs,languages),/unresolved|Finish|incomplete|choices/i);
+      assert.deepEqual(source,before);
+      continue;
+    }
     source._id = "untrusted"; source.ownership = { default: 3 }; source.system = { health: { baseMax: 9999 } };
     const result = importer.buildPortableActorSource(source, catalogs, languages);
     const { preview } = readPortableCharacter(source, catalogs, languages.definitions);

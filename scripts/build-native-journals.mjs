@@ -15,7 +15,9 @@ const records = lock.records.filter(r => r.path.endsWith(".md"));
 const restricted = path => /^(design\/(da-book|bestiary|monster-abilities)\/)/.test(path);
 const pack = path => restricted(path) ? "da-rules" : "player-rules";
 const documentId = path => stableFoundryId(pack(path), "native-rule-book");
-const pageId = path => stableFoundryId(path, "native-rule-page");
+// Keep the published ancestry pages when their source filenames are renamed.
+const legacyPath = path => ({"design/ancestries/wood-elf.md":"design/ancestries/elf.md", "design/ancestries/hill-dwarf.md":"design/ancestries/dwarf.md"}[path] ?? path);
+const pageId = path => stableFoundryId(legacyPath(path), "native-rule-page");
 const uuid = path => `Compendium.heroes-of-legend.${pack(path)}.JournalEntry.${documentId(path)}.JournalEntryPage.${pageId(path)}`;
 const paths = new Set(records.map(r => r.path));
 function markup(markdown, path) {
@@ -59,7 +61,7 @@ function sectionOf(path) {
   }
   const chapter = path.match(/player-book\/manuscript\/(\d+)-/);
   if (chapter) return Number(chapter[1])-1;
-  if (/ancestries|origins|intro-(culture|background)/.test(path)) return 2;
+  if (/ancestries|ancestry-procedures|origins|intro-(ancestry|culture|background)/.test(path)) return 2;
   if (/classes|cards\/signature-/.test(path)) return 3;
   if (/disciplines|paths/.test(path)) return 4;
   if (path.endsWith("languages.md")) return 6;
@@ -70,7 +72,7 @@ function sectionOf(path) {
   if (path.endsWith("wounds.md")) return 11;
   if (/characters\//.test(path)) return 12;
   if (/starting-coins|development/.test(path)) return 1;
-  if (/rules\/(foundations|session-resolution|stability)/.test(path)) return 5;
+  if (/rules\/(foundations|session-resolution|stability|vision)/.test(path)) return 5;
   return 14;
 }
 // Preserve the book builders' catalog order inside their chapters rather than
@@ -78,7 +80,7 @@ function sectionOf(path) {
 const preferred = [];
 const add = path => { if (paths.has(path) && !preferred.includes(path)) preferred.push(path); };
 const alphabetic = prefix => records.filter(record => record.path.startsWith(prefix)).map(record => record.path).sort((a,b)=>nameOf(a).localeCompare(nameOf(b)));
-for (const ancestry of ["human","elf","dwarf","halfling"]) {
+for (const ancestry of ["human","wood-elf","high-elf","hill-dwarf","deep-dwarf","halfling","gnome","goblin","tallfolk","oath-bound"]) {
   const path = `design/ancestries/${ancestry}.md`; add(path);
   for (const match of manuscripts.get(path)?.matchAll(/\]\((trait-[^)]+\.md)\)/g) ?? []) add(`design/ancestries/${match[1]}`);
 }
@@ -127,7 +129,7 @@ for (const audience of ["player-rules", "da-rules"]) {
     }
     const page = {_key:`!journal.pages!${id}.${pageId(record.path)}`,_id:pageId(record.path),name:nameOf(record.path),type:"text",sort:entry.pages.length*100000,title:{show:true,level:2},ownership:{default:-1},flags:{"heroes-of-legend":{ruleSource:{...record,commit:lock.commit}}},text:{format:1,content:`<article class="hol-journal-page">${markup(manuscripts.get(record.path),record.path).replace(/^<h1>[\s\S]*?<\/h1>/,"")}</article>`}};
     entry.pages.push(page);
-    index.push({...record,id,pageId:page._id,name:page.name,pack:audience,uuid:uuid(record.path),legacyUuid:`Compendium.heroes-of-legend.${audience}.JournalEntry.${stableFoundryId(record.path,"native-rule-journal")}.JournalEntryPage.${page._id}`,section:sectionName,sectionOrder:section,sort:page.sort});
+    index.push({...record,id,pageId:page._id,name:page.name,pack:audience,uuid:uuid(record.path),legacyUuid:`Compendium.heroes-of-legend.${audience}.JournalEntry.${stableFoundryId(legacyPath(record.path),"native-rule-journal")}.JournalEntryPage.${page._id}`,section:sectionName,sectionOrder:section,sort:page.sort});
   }
   const target = new URL(`${audience}/${id}.json`, output);
   await mkdir(dirname(fileURLToPath(target)),{recursive:true});

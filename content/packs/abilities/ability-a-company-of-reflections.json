@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/mind.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>A wavering double steps beside each companion. When the enemy strikes, both outlines turn together.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Up to three visible willing creatures within 3 squares, including yourself.</dd></div><div><dt>Type</dt><dd>Magic / Defense</dd></div></dl><div class=\"hol-reference-rules\"><p>Each recipient gains 2 Boons to defenses until the end of your next turn. You keep one company at a time; a new casting replaces your previous doubles.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/25b80c9fe77d7baaec3f3a8a548c9663d0f39a30/design/cards/a-company-of-reflections.md\" target=\"_blank\" rel=\"noopener\">design/cards/a-company-of-reflections.md</a> at <code>25b80c9fe77d7baaec3f3a8a548c9663d0f39a30</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>A wavering double steps beside each companion. When the enemy strikes, both outlines turn together.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Up to three visible willing creatures within 3 squares, including yourself.</dd></div><div><dt>Type</dt><dd>Magic / Defense</dd></div></dl><div class=\"hol-reference-rules\"><p>Each recipient gains 2 Boons to defenses until the end of your next turn. You keep one company at a time; a new casting replaces your previous doubles.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/f3fb98ca03b046335fcc730c1b05689bebf091b4/design/cards/a-company-of-reflections.md\" target=\"_blank\" rel=\"noopener\">design/cards/a-company-of-reflections.md</a> at <code>f3fb98ca03b046335fcc730c1b05689bebf091b4</code>.</p></section>",
     "activity": {
       "action": "main",
       "rollMode": "none",
@@ -32,7 +32,7 @@
         "path": "design/cards/a-company-of-reflections.md",
         "sha256": "64315782cb14c953a23ac34d91ce2164a0dd0da1a2d26e91da0617a140e6f6ad"
       },
-      "sourceCommit": "25b80c9fe77d7baaec3f3a8a548c9663d0f39a30",
+      "sourceCommit": "f3fb98ca03b046335fcc730c1b05689bebf091b4",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

@@ -4,6 +4,7 @@ import { awardMilestones } from "./development.mjs";
 import { advancementPreview } from "./advancement.mjs";
 import { inventoryTotals } from "./acquisition.mjs";
 import { passiveDefenseSources } from "./passive-defenses.mjs";
+import { currentAncestryId, ancestryBenefits, ancestrySelection } from "./ancestry.mjs";
 
 export const emptyLevelDraft = () => ({
   purchases: [],
@@ -13,6 +14,8 @@ export const emptyLevelDraft = () => ({
 
 /** Rebuild from choices so lowering/revisiting a level cannot duplicate grants. */
 export function workshopCharacter(draft, catalogs, languages) {
+  draft = { ...draft, ancestryId: currentAncestryId(draft.ancestryId) };
+  const effectiveTraitIds = ancestrySelection(draft, catalogs.choices).traitIds;
   const creation = creationPreview(
     draft,
     catalogs.choices,
@@ -62,7 +65,7 @@ export function workshopCharacter(draft, catalogs, languages) {
     );
     levels[level] = { before, ...result };
     advancementLedger.push(
-      { kind: "award", level, delta: 8 + level },
+      { kind: "award", level, delta: 8 + level + ancestryBenefits(effectiveTraitIds).additionalDpPerLevel },
       ...result.ledger,
     );
   }
@@ -96,7 +99,7 @@ export function workshopCharacter(draft, catalogs, languages) {
     catalogs.inventory,
     { wornOutfitId: outfit?.instanceId },
   ).bulk;
-  const capacity = 10 + 3 * draft.attributes.brawn;
+  const capacity = 10 + 3 * draft.attributes.brawn + ancestryBenefits(effectiveTraitIds).capacityBonus;
   const encumbrance = Math.max(0, bulk - capacity);
   const passive = passiveDefenseSources({
     abilities: state.abilities.map((id) => ({

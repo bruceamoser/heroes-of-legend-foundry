@@ -8,7 +8,7 @@ import { handLayout } from "./hands.mjs";
 import { receiveHealing, validateSurvival } from "./survival.mjs";
 import { inventoryCheck } from "./inventory.mjs";
 
-const SOURCE_COMMIT = "25b80c9fe77d7baaec3f3a8a548c9663d0f39a30";
+const SOURCE_COMMIT = "f3fb98ca03b046335fcc730c1b05689bebf091b4";
 const ACTION = Object.freeze({
   id: "use-a-healing-potion",
   catalogId: "ability-use-a-healing-potion",
@@ -204,6 +204,7 @@ export function planHealingPotion({
       amount: potion.healing,
       current: recipient.survival.hp,
       max: recipient.survival.maxHp,
+      unavailableHp: recipient.survival.recovery?.unavailableHp ?? 0,
       lifeResistances: recipient.lifeResistances ?? [],
       recipientKind,
     });

@@ -277,7 +277,9 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
       ),
       traits: options([...new Set([...(get(d.ancestryId)?.traits ?? []), ...d.traitIds])].map(get).filter(Boolean),d.traitIds).map(trait=>({...trait,stale:!get(d.ancestryId)?.traits.includes(trait.id)})),
       languages: languageOptions.home,
-      extraLanguages: languageOptions.extraSpoken,
+      borrowedAncestries: options(choices.filter(r => r.kind === "ancestry" && r.id !== "ancestry-human"), d.borrowedAncestryId),
+      borrowedTraits: options((get(d.borrowedAncestryId)?.traits ?? []).map(get).filter(Boolean), d.borrowedTraitId),
+      ancestryLanguages: this.languageConfiguration.definitions.filter(l => l.ordinary).map(l => ({...l, selected:l.id === d.languages?.ancestry})),
       languageBasis: this.languageConfiguration.basis,
       languageBasisError,
       ageOfMemory: d.traitIds.includes("trait-elf-age-of-memory"),
@@ -427,10 +429,13 @@ export class CreationWizard extends HandlebarsApplicationMixin(ApplicationV2) {
     if (this.step === 1) {
       d.ancestryId = String(f.get("ancestryId") ?? "");
       d.traitIds = checked("trait");
-      d.rememberedCommunity = String(f.get("rememberedCommunity") ?? "");
+      const borrowedAncestryId = String(f.get("borrowedAncestryId") ?? "");
+      d.borrowedTraitId = borrowedAncestryId === d.borrowedAncestryId ? String(f.get("borrowedTraitId") ?? "") : "";
+      d.borrowedAncestryId = borrowedAncestryId;
       d.languages = {
         home: String(f.get("homeLanguage") ?? ""),
-        extraSpoken: checked("extraLanguage"),
+        extraSpoken: [],
+        ancestry: String(f.get("ancestryLanguage") ?? ""),
       };
     }
     if (this.step === 2)

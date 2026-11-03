@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import {
   parseAbilityReference,
+  parseAncestryReference,
   parseChoices,
   verifySourceHash,
 } from "../scripts/content/choices.mjs";
@@ -23,7 +24,7 @@ const get = (id) => records.find((r) => r.id === id);
 test("complete learning catalog has stable unique IDs and exact pinned sources", () => {
   assert.equal(catalog.schemaVersion, 2);
   assert.equal(catalog.sourceCommit, lock.commit);
-  assert.equal(records.length, 529);
+  assert.equal(records.length, 565);
   assert.deepEqual(
     Object.fromEntries(
       ["ability", "ancestry", "class", "discipline", "origin", "trait"].map(
@@ -32,11 +33,11 @@ test("complete learning catalog has stable unique IDs and exact pinned sources",
     ),
     {
       ability: 427,
-      ancestry: 4,
+      ancestry: 10,
       class: 10,
       discipline: 18,
       origin: 50,
-      trait: 20,
+      trait: 50,
     },
   );
   assert.equal(new Set(records.map((r) => r.foundryId)).size, records.length);
@@ -64,10 +65,10 @@ test("complete learning catalog has stable unique IDs and exact pinned sources",
   }
   assert.equal(records.filter((r) => r.universal).length, 18);
   assert(records.filter((r) => r.universal).every((r) => r.cost === null));
-  assert.equal(records.filter((r) => r.reference).length, 427);
+  assert.equal(records.filter((r) => r.reference).length, 487);
   assert.equal(
     records.filter((r) =>
-      r.reference?.rules.body.some((block) => block.outcomes),
+      r.kind === "ability" && r.reference?.rules.body.some((block) => block.outcomes),
     ).length,
     156,
   );
@@ -369,4 +370,80 @@ test("approved universal higher-tier prices accept only exact identities, levels
  }
  const unknown=sample(); unknown.text=unknown.text.replace("**Tier / minimum level:** 1 · **DP:** 2","**Tier / minimum level:** 3 · **DP:** 3");
  assert.throws(()=>parseChoices([unknown]),/tier cost/);
+});
+
+
+test("ancestry expansion keeps published identities and imports full narratives and exact linked trait rules", () => {
+  assert.equal(get("ancestry-elf").name, "Wood Elf");
+  assert.equal(get("ancestry-dwarf").name, "Hill Dwarf");
+  assert.equal(get("ancestry-elf").source.path, "design/ancestries/wood-elf.md");
+  assert.equal(get("ancestry-dwarf").source.path, "design/ancestries/hill-dwarf.md");
+  assert.equal(get("ancestry-wood-elf"), undefined);
+  assert.equal(get("ancestry-hill-dwarf"), undefined);
+  assert.equal(get("ancestry-elf").foundryId, "cb4eb1723246d4bd");
+  assert.equal(get("ancestry-dwarf").foundryId, "f1f7f7cc76c628bd");
+  for (const ancestry of records.filter(record => record.kind === "ancestry")) {
+    assert(ancestry.reference.flavor.length >= 3);
+    assert(!JSON.stringify(ancestry.reference).includes("**Status:**"));
+    const owned = records.filter(record => record.ancestryId === ancestry.id).map(record => record.id);
+    assert.deepEqual(new Set(ancestry.traits), new Set(owned));
+  }
+  assert.deepEqual(get("trait-deep-dwarf-eyes-for-the-dark").reference.rules.body, [{text:"Low-Light Vision 2."}]);
+  assert.deepEqual(get("trait-tallfolk-broad-back").reference.rules.body, [{text:"Your Bulk capacity increases by 3."}]);
+  assert.deepEqual(get("trait-dwarf-maker-s-eye").reference.rules.body, [{text:"Once per day, after you make a roll to craft or repair an item, you may improve the result by one step: Weak becomes Standard, or Standard becomes Strong. A Strong result is unchanged."}]);
+  for (const trait of records.filter(record => record.kind === "trait")) {
+    assert.equal(trait.reference.flavor.length, 1);
+    assert(trait.reference.rules.body.length);
+    assert(!JSON.stringify(trait.reference).includes("Status"));
+    assert(trait.reference.rules.details.some(detail => detail.label === "Action"));
+  }
+});
+
+test("ancestry reference parser preserves expanded paragraphs and readable Markdown links without editorial metadata", () => {
+  const fixture = `# Fixture
+
+*A first impression.*
+
+A longer account with [a reference](../rules/vision.md).
+
+## Rules
+
+Gain [Low-Light Vision](../rules/vision.md) 2.
+
+**Ancestry:** Fixture · **Choice:** one of your two traits · **Action:** Passive.
+
+**Duration:** While its stated circumstances apply.
+
+**Status:** Editorial status.
+
+**ID:** trait-fixture
+
+[Ancestry choices](fixture.md)
+`;
+  const parsed = parseAncestryReference(fixture, "trait");
+  assert.deepEqual(parsed.flavor, ["A first impression.", "A longer account with a reference."]);
+  assert.deepEqual(parsed.rules.body, [{text:"Gain Low-Light Vision 2."}]);
+  assert.deepEqual(parsed.rules.details, [
+    {label:"Ancestry",value:"Fixture"},
+    {label:"Choice",value:"one of your two traits"},
+    {label:"Action",value:"Passive."},
+    {label:"Duration",value:"While its stated circumstances apply."},
+  ]);
+  assert.throws(() => parseAncestryReference(fixture.replace("## Rules", "## Unknown"), "trait"), /Unrecognized ancestry reference/);
+});
+
+
+test("all fifty trait references retain the complete approved visible rules from the pinned raw sources", async () => {
+  const raw = JSON.parse(await readFile(new URL("../web/data/references.json", import.meta.url), "utf8"));
+  const visible = value => value.replace(/\[([^\]]+)\]\([^)]+\)/g, "$1").replace(/\*\*([^*]+)\*\*/g, "$1").replace(/\*([^*\n]+)\*/g, "$1").replace(/\s+/g, " ").trim();
+  for (const trait of records.filter(record => record.kind === "trait")) {
+    const source = raw.records[trait.id];
+    assert.deepEqual(source.source, trait.source);
+    const authored = source.markdown.split("## Rules\n")[1].split("**Ancestry:**")[0];
+    assert.equal(trait.reference.rules.body.map(block => block.text).join(" "), visible(authored), trait.id);
+  }
+  for (const name of ["vision", "ancestry-procedures"]) {
+    const source = raw.records[`rule-${name}`];
+    assert.equal(source.source.sha256, lock.records.find(record => record.path === `design/rules/${name}.md`).sha256);
+  }
 });

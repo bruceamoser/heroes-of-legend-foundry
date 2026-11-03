@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/wilderness.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You catch one companion under each arm and strike out for the bank. The current pulls; you pull harder.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self and up to two adjacent willing or unconscious creatures in water whom you can physically support.</dd></div><div><dt>Type</dt><dd>Skill / Movement / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>With a free hand for each companion, move yourself and up to two adjacent willing or unconscious creatures up to your Speed through water. You support and guide their movement; each ends in a free square adjacent to you. This movement does not provoke. Swimming costs 1 movement per square for this move.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/25b80c9fe77d7baaec3f3a8a548c9663d0f39a30/design/cards/carry-them-to-shore.md\" target=\"_blank\" rel=\"noopener\">design/cards/carry-them-to-shore.md</a> at <code>25b80c9fe77d7baaec3f3a8a548c9663d0f39a30</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You catch one companion under each arm and strike out for the bank. The current pulls; you pull harder.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self and up to two adjacent willing or unconscious creatures in water whom you can physically support.</dd></div><div><dt>Type</dt><dd>Skill / Movement / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>With a free hand for each companion, move yourself and up to two adjacent willing or unconscious creatures up to your Speed through water. You support and guide their movement; each ends in a free square adjacent to you. This movement does not provoke. Swimming costs 1 movement per square for this move.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/f3fb98ca03b046335fcc730c1b05689bebf091b4/design/cards/carry-them-to-shore.md\" target=\"_blank\" rel=\"noopener\">design/cards/carry-them-to-shore.md</a> at <code>f3fb98ca03b046335fcc730c1b05689bebf091b4</code>.</p></section>",
     "activity": {
       "action": "main",
       "rollMode": "none",
@@ -32,7 +32,7 @@
         "path": "design/cards/carry-them-to-shore.md",
         "sha256": "020d298b6562cfcbef0b37f81775a79db7d4491a187885de8f7b07b5a089ff4e"
       },
-      "sourceCommit": "25b80c9fe77d7baaec3f3a8a548c9663d0f39a30",
+      "sourceCommit": "f3fb98ca03b046335fcc730c1b05689bebf091b4",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

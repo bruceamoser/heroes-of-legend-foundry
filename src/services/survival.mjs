@@ -8,6 +8,7 @@ import {
 import { rollBasis, prepareRoll } from "./roll-preparation.mjs";
 import { evaluatePreparedRoll } from "./roll.mjs";
 import { assertNoPendingTurn } from "./turn-lock.mjs";
+import { normalizeRecovery } from "../rules/recovery.mjs";
 import {
   enqueueCharacterOperation,
   isCreationAuthority,
@@ -114,6 +115,7 @@ async function apply(id) {
       ...actor.getFlag(ID, "survival"),
       maxHp: actor.system.health.max,
       gritAvailable: actor.system.grit.available,
+      ...(actor.system.recovery !== undefined ? { recovery: normalizeRecovery(actor.system.recovery) } : {}),
     };
     validateSurvival(state);
     choice = chooseSurvival(state, request.kind);

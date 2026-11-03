@@ -26,6 +26,9 @@ import {
   workshopDeathResult,
 } from "./rules/workshop-vitals.mjs";
 import { itemArrangement } from "./rules/workshop-play.mjs";
+import { payDebt, nextDawn } from "./rules/recovery.mjs";
+import { passiveAncestryDefenseSources } from "./rules/passive-defenses.mjs";
+import { ancestrySelection } from "./rules/ancestry.mjs";
 import { CONDITION_KINDS, conditionRollSources } from "./rules/conditions.mjs";
 import {
   workshopCharacter,
@@ -223,11 +226,12 @@ function rollButton(label, extra) {
 function liveVitals() {
   return workshopVitals(preview, draft, catalogs.wounds);
 }
+const effectiveTraits = () => ancestrySelection(draft, catalogs.choices).traitIds;
 function header() {
   const stats = preview.summary,
     vitals = liveVitals();
   return `<div class="workshop-header"><div class="toolbar"><div class="toolbar-group">${button(edit ? "✓ Done" : "✎ Edit", "edit", `aria-pressed="${edit}"`, edit ? "selected" : "quiet")}</div><div class="toolbar-group">${button("New", "new", 'aria-label="New hero"', "quiet")}${button("Save", "save", 'aria-label="Save character"', "quiet")}${button("Load", "library", 'aria-label="Load character"', "quiet")}${button("Import", "import", 'aria-label="Import JSON"', "quiet")}${button("Export", "export", 'aria-label="Export JSON"', "quiet")}</div></div>
-  <header class="hero-header"><div class="identity-line"><img class="hero-mark" src="assets/crest.webp" alt=""><div><div class="name-line">${edit && mode === "sheet" ? field("Character name", "name", draft.name, "text", 'maxlength="200"') : `<h1>${esc(draft.name || "New hero")}</h1>`}${button(skullIcon + (vitals.failed ? `<span>${vitals.failed}</span>` : ""), "death-roll", `aria-label="Death roll; ${vitals.failed} failed" title="Death roll · ${vitals.failed} failed"`, "icon-button death-button")}</div><p>${esc(join([get(draft.ancestryId)?.name, get(draft.culture?.id)?.name, get(draft.background?.id)?.name, get(draft.classId)?.name, `Level ${preview.development.level}(${preview.development.current})`]))}</p></div></div><div class="vitals"><div class="vital"><small>HP</small><strong class="hp-value"><input aria-label="Current HP" data-field="play.hp" type="number" min="0" max="${vitals.max}" step="1" value="${vitals.hp}"><span>/ ${vitals.max || "—"}</span></strong></div><div class="vital"><small>${button("Grit", "use-grit", 'aria-label="Use Grit"', "vital-link")}</small><strong>${vitals.grit}</strong></div><div class="vital"><small>Speed</small><strong data-speed>${vitals.speed}${vitals.speed < vitals.maxSpeed ? ` / ${vitals.maxSpeed}` : ""}</strong></div><div class="vital"><small>${button("Wounds", "roll-wound-dialog", 'aria-label="Roll a new wound"', "vital-link")}</small><strong data-wound-count>${vitals.wounds.length}</strong></div><div class="vital"><small>Armor DR</small><strong>${preview.resistances.physical ?? 0}</strong></div></div></header>
+  <header class="hero-header"><div class="identity-line"><img class="hero-mark" src="assets/crest.webp" alt=""><div><div class="name-line">${edit && mode === "sheet" ? field("Character name", "name", draft.name, "text", 'maxlength="200"') : `<h1>${esc(draft.name || "New hero")}</h1>`}${button(skullIcon + (vitals.failed ? `<span>${vitals.failed}</span>` : ""), "death-roll", `aria-label="Death roll; ${vitals.failed} failed" title="Death roll · ${vitals.failed} failed"`, "icon-button death-button")}</div><p>${esc(join([get(draft.ancestryId)?.name, get(draft.culture?.id)?.name, get(draft.background?.id)?.name, get(draft.classId)?.name, `Level ${preview.development.level}(${preview.development.current})`]))}</p></div></div><div class="vitals"><div class="vital"><small>HP</small><strong class="hp-value"><input aria-label="Current HP" data-field="play.hp" type="number" min="0" max="${Math.max(vitals.hp, vitals.recoveryMax)}" step="1" value="${vitals.hp}"><span>/ ${vitals.max || "—"}</span></strong></div><div class="vital"><small>${button("Grit", "use-grit", 'aria-label="Use Grit"', "vital-link")}</small><strong>${vitals.grit}</strong></div><div class="vital"><small>Speed</small><strong data-speed>${vitals.speed}${vitals.speed < vitals.maxSpeed ? ` / ${vitals.maxSpeed}` : ""}</strong></div><div class="vital"><small>${button("Wounds", "roll-wound-dialog", 'aria-label="Roll a new wound"', "vital-link")}</small><strong data-wound-count>${vitals.wounds.length}</strong></div><div class="vital"><small>Armor DR</small><strong>${preview.resistances.physical ?? 0}</strong></div></div></header>
   <div class="attributes">${ATTRIBUTES.map((key) => `<div class="attribute"><span>${title(key)}</span>${rollButton(title(key), `data-attribute-key="${key}"`)}<strong data-attribute="${key}">${signed(draft.attributes[key])}</strong></div>`).join("")}</div></div>`;
 }
 function abilityCard(
@@ -477,7 +481,7 @@ function mainPanel() {
         );
       })
       .join("");
-  const traits = `<table class="trait-table"><tbody>${draft.traitIds.map((id) => `<tr><td>${button(esc(name(id)), "reference", `data-id="${esc(id)}"`, "table-link")}<span class="brief">${esc(traitBrief(id))}</span></td></tr>`).join("")}</tbody></table>`;
+  const traits = `<table class="trait-table"><tbody>${effectiveTraits().map((id) => `<tr><td>${button(esc(name(id)), "reference", `data-id="${esc(id)}"`, "table-link")}<span class="brief">${esc(traitBrief(id))}</span></td></tr>`).join("")}</tbody></table>`;
   const defenses =
     row("Armor / physical DR", preview.resistances.physical ?? 0) +
     Object.entries(preview.resistances)
@@ -499,15 +503,16 @@ function mainPanel() {
     ) +
     row("Encumbrance", preview.inventory.encumbrance) +
     row("Base stability", preview.summary?.stability ?? 0);
-  return `<div class="main-layout"><div class="action-groups">${left}</div><aside class="play-summary">${collapsible("passives", "Passives", passiveTable(actions.filter((e) => actionTiming(e.record).includes("Passive"))))}${collapsible("ancestry-traits", "Ancestry traits", traits)}${collapsible("defenses", "Defenses", defenses, button("Evade", "evade", 'aria-label="Evade"', "small"))}${conditionBar()}${collapsible("movement-carrying", "Movement & carrying", carrying)}${collapsible("supplies", "Supplies", supplyRows())}</aside></div>`;
+  return `<div class="main-layout"><div class="action-groups">${left}</div><aside class="play-summary">${collapsible("passives", "Passives", passiveTable(actions.filter((e) => actionTiming(e.record).includes("Passive"))))}${collapsible("ancestry-traits", "Ancestry traits", traits, effectiveTraits().includes("trait-oath-bound-the-debt-comes-due") || v.recovery.debtUsed ? button("Recovery", "debt-recovery", "", "small") : "")}${collapsible("defenses", "Defenses", defenses, button("Evade", "evade", 'aria-label="Evade"', "small"))}${conditionBar()}${collapsible("movement-carrying", "Movement & carrying", carrying)}${collapsible("supplies", "Supplies", supplyRows())}</aside></div>`;
 }
 function traitBrief(id) {
-  return (
+  const current = get(id)?.reference?.rules?.body?.map(paragraph => paragraph.text).join("\n\n");
+  return (current || (
     references.records[id]?.markdown
       .split("## Rules")[1]
       ?.split(/\n\s*\n/)
       .find((p) => p.trim() && !p.startsWith("**")) ?? ""
-  )
+  ))
     .replace(/\*|\[|\]\([^)]*\)/g, "")
     .trim();
 }
@@ -635,7 +640,7 @@ function builderContent() {
       )
       .join(
         "",
-      )}</div><h3 class="section-title" style="margin-top:14px">Choose two traits</h3><div class="cards">${(ancestry?.traits ?? []).map((id) => choiceCheck(id, "traitIds", draft.traitIds)).join("") || '<p class="empty">Choose an ancestry to see its traits.</p>'}</div>${draft.traitIds.includes("trait-elf-age-of-memory") ? field("Remembered community", "rememberedCommunity", draft.rememberedCommunity) : ""}<div style="margin-top:12px">${select("Home language", "languages.home", option("", "Choose a home language", !draft.languages.home) + options.home.map((l) => option(l.id, `${l.name}${l.reason ? ` — ${l.reason}` : ""}`, l.selected, l.disabled)).join(""))}</div>${draft.traitIds.includes("trait-human-many-homes") ? `<h3 class="section-title" style="margin-top:12px">Two additional spoken languages</h3><div class="cards">${options.extraSpoken.map((l) => `<label class="check"><input type="checkbox" data-list="languages.extraSpoken" value="${l.id}" ${l.selected ? "checked" : ""} ${l.disabled ? "disabled" : ""}><span>${l.name}<small>${esc(l.reason || l.summary)}</small></span></label>`).join("")}</div>` : ""}${staleSelections("traitIds", ancestry?.traits ?? [])}`;
+      )}</div><h3 class="section-title" style="margin-top:14px">Choose two traits</h3><div class="cards">${(ancestry?.traits ?? []).map((id) => choiceCheck(id, "traitIds", draft.traitIds)).join("") || '<p class="empty">Choose an ancestry to see its traits.</p>'}</div><div style="margin-top:12px">${select("Home language", "languages.home", option("", "Choose a home language", !draft.languages.home) + options.home.map((l) => option(l.id, `${l.name}${l.reason ? ` — ${l.reason}` : ""}`, l.selected, l.disabled)).join(""))}</div>${draft.traitIds.includes("trait-human-many-homes") ? `<h3 class="section-title" style="margin-top:12px">A Foot in Two Worlds</h3><div class="field-grid">${select("Other ancestry", "borrowedAncestryId", option("", "Choose another ancestry", !draft.borrowedAncestryId) + catalogs.choices.filter(r => r.kind === "ancestry" && r.id !== "ancestry-human").map(r => option(r.id, r.name, r.id === draft.borrowedAncestryId)).join(""))}${select("Borrowed trait", "borrowedTraitId", option("", "Choose one trait", !draft.borrowedTraitId) + (get(draft.borrowedAncestryId)?.traits ?? []).map(id => option(id, name(id), id === draft.borrowedTraitId)).join(""))}${select("Ancestry language", "languages.ancestry", option("", "Choose a DA-approved native language", !draft.languages.ancestry) + DEFAULT_LANGUAGES.filter(l => l.ordinary).map(l => option(l.id, l.name, l.id === draft.languages.ancestry)).join(""))}</div>${draft.borrowedTraitId ? button("Read borrowed trait", "reference", `data-id="${esc(draft.borrowedTraitId)}"`, "quiet small") : ""}<p class="inline-help">Choose a language native to the other ancestry with your DA.</p>` : ""}${staleSelections("traitIds", ancestry?.traits ?? [])}`;
   }
   if (step === 2)
     return `${heading("", "Culture & background", "")}<div class="origin-grid">${[
@@ -1391,8 +1396,12 @@ function gritDialog() {
   const available = liveVitals().grit;
   popup(
     "Use Grit",
-    `<p>Spend 1 Grit to restore HP to ${liveVitals().max} and clear death marks? Wounds remain.</p><p>${available} Grit remaining.${draft.play?.lastWords ? " Ordinary Grit cannot reverse Last Words." : ""}</p><div class="dialog-actions">${button("Cancel", "close-reference")}${button("Spend 1 Grit", "confirm-grit", available > 0 && !draft.play?.lastWords ? "" : "disabled", "primary")}</div>`,
+    `<p>Spend 1 Grit to restore HP to ${liveVitals().recoveryMax} and clear death marks? Wounds remain.</p><p>${available} Grit remaining.${draft.play?.lastWords ? " Ordinary Grit cannot reverse Last Words." : ""}</p><div class="dialog-actions">${button("Cancel", "close-reference")}${button("Spend 1 Grit", "confirm-grit", available > 0 && !draft.play?.lastWords ? "" : "disabled", "primary")}</div>`,
   );
+}
+function debtRecoveryDialog() {
+  const v = liveVitals();
+  popup("Recovery until dawn", `<p>${v.recovery.unavailableHp} HP unavailable until next dawn. Healing and a safe breath can restore HP to ${v.recoveryMax} / ${v.max}.</p><p>The Debt Comes Due: ${v.recovery.debtUsed ? "used today" : "available"}. Use it after a sheet attribute roll to pay 1 HP and replace that roll with a new result using the same modifiers.</p><p>Declare the next dawn when it occurs in play. This unlocks recovery and refreshes the daily use; it does not restore HP.</p><div class="dialog-actions">${button("Safe breath", "debt-safe-breath", v.hp > 0 ? "" : "disabled")}${button("Next dawn", "debt-next-dawn", "", "primary")}</div>`);
 }
 function resupplyDialog(instance) {
   const item = preview.inventory.items.find((i) => i.instanceId === instance);
@@ -1438,6 +1447,7 @@ function useSupply() {
     catalog: catalogs.inventory,
     lifeResistance: preview.resistances.life ?? 0,
     lastWords: Boolean(draft.play?.lastWords || draft.play?.failedDeathRolls === 3),
+    recovery: draft.play?.recovery,
   });
   const inv = playDraft().inventory;
   inv.overrides ??= {};
@@ -1507,10 +1517,10 @@ function openSheetRoll({ key, id, death = false, defense = false }) {
   bindRollSetup($("#reference .reference-body"), {
     getAttributeValue: () => draft.attributes[$("#sheet-roll-attribute").value],
   });
-  const automatic = conditionRollSources(preview.play.conditions, {
+  const automatic = [...conditionRollSources(preview.play.conditions, {
     mode: death ? "death" : defense ? "defense" : "attribute",
     perceivedSources: [],
-  });
+  }), ...(defense ? passiveAncestryDefenseSources(effectiveTraits()) : [])];
   const net = Math.max(
     -3,
     Math.min(
@@ -1543,6 +1553,13 @@ function rollSheetDice() {
       "beforeend",
       `<p>${selected.map(esc).join(" · ")}</p>`,
     );
+  if (!activeRoll.death) {
+    activeRoll.last = {
+      attribute: draft.attributes[key], net: Number($("#recipe-net").value),
+      selected, defense: activeRoll.defense,
+    };
+    appendDebtReroll();
+  }
   if (activeRoll.death && (draft.play?.lastWords || draft.play?.failedDeathRolls === 3)) {
     $("#recipe-roll-result").insertAdjacentHTML(
       "beforeend",
@@ -1573,6 +1590,24 @@ function rollSheetDice() {
     persist();
     render();
   }
+}
+function appendDebtReroll() {
+  if (!effectiveTraits().includes("trait-oath-bound-the-debt-comes-due")) return;
+  const v = liveVitals();
+  $("#recipe-roll-result").insertAdjacentHTML("beforeend", `<div class="dialog-actions">${button("The Debt Comes Due · pay 1 HP & reroll", "debt-reroll", v.hp > 1 && !v.recovery.debtUsed ? "" : "disabled")}</div>`);
+}
+function debtReroll() {
+  if (!activeRoll?.last || activeRoll.death)
+    throw new Error("Complete a sheet attribute roll before using The Debt Comes Due.");
+  const original = activeRoll.last;
+  const payment = payDebt({ hp: liveVitals().hp, maxHp: liveVitals().max,
+    recovery: draft.play?.recovery, traitIds: effectiveTraits() });
+  Object.assign(playDraft(), payment);
+  persist();
+  render();
+  const result = displayDice(original.attribute, original.net);
+  $("#recipe-roll-result").insertAdjacentHTML("beforeend", `<p>The Debt Comes Due: paid 1 HP; use this new result. The paid HP remains unavailable until next dawn.</p>${original.selected.length ? `<p>${original.selected.map(esc).join(" · ")}</p>` : ""}${original.defense ? `<p>${title(result.tier)} defense · read the ${result.tier === "weak" ? "Strong" : result.tier === "strong" ? "Weak" : "Standard"} attack effects.</p>` : ""}`);
+  appendDebtReroll();
 }
 function recipeRoll(id, recipeId) {
   const ability = get(id),
@@ -1642,8 +1677,8 @@ function rollRecipeDice(id, recipeId) {
   }
 }
 
-function displayDice(attribute) {
-  const net = Number($("#recipe-net").value);
+function displayDice(attribute, originalNet) {
+  const net = originalNet ?? Number($("#recipe-net").value);
   const plan = rollPlan({
     attribute,
     boons: Math.max(0, net),
@@ -1778,6 +1813,7 @@ function updateField(target) {
       return;
     }
     set(target.dataset.field, value);
+    if (target.dataset.field === "borrowedAncestryId") draft.borrowedTraitId = "";
     if (target.dataset.field === "play.hp" && value > 0) {
       playDraft().failedDeathRolls = 0;
       playDraft().lastWords = false;
@@ -2037,6 +2073,18 @@ async function action(target) {
   if (a === "roll-wound-dialog") return woundDialog();
   if (a === "confirm-roll-wound") return rollNewWound();
   if (a === "use-grit") return gritDialog();
+  if (a === "debt-recovery") return debtRecoveryDialog();
+  if (a === "debt-reroll") return debtReroll();
+  if (a === "debt-next-dawn" || a === "debt-safe-breath") {
+    if (a === "debt-next-dawn") Object.assign(playDraft(), nextDawn({ hp: liveVitals().hp, recovery: draft.play?.recovery }));
+    else {
+      if (liveVitals().hp < 1 || draft.play?.lastWords) throw new Error("Resolve Dying before taking a safe breath.");
+      playDraft().hp = liveVitals().recoveryMax;
+    }
+    persist();
+    render();
+    return debtRecoveryDialog();
+  }
   if (a === "confirm-grit") {
     Object.assign(
       playDraft(),
@@ -2044,6 +2092,8 @@ async function action(target) {
         spent: draft.play?.gritSpent ?? 0,
         granted: preview.summary?.gritGranted ?? 0,
         maxHp: liveVitals().max,
+        hp: liveVitals().hp,
+        recovery: draft.play?.recovery,
         lastWords: Boolean(draft.play?.lastWords || draft.play?.failedDeathRolls === 3),
       }),
     );

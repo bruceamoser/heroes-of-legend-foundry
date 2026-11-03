@@ -2,19 +2,19 @@
   "schemaVersion": 1,
   "provenance": {
     "repository": "bruceamoser/heroes-of-legend",
-    "commit": "25b80c9fe77d7baaec3f3a8a548c9663d0f39a30",
+    "commit": "f3fb98ca03b046335fcc730c1b05689bebf091b4",
     "index": {
       "path": "design/characters/README.md",
-      "sha256": "b0ac84186778d76181b4425f0746dbaa2a896ebdf235af30c8f0a6b1e2bb29c5"
+      "sha256": "92557510610e721658d1dd03d3a5170e0b006002e4edffd16a0b78f4db1c8fc9"
     },
     "characters": {
       "borin-bridgekeeper": {
         "path": "design/characters/borin-bridgekeeper.md",
-        "sha256": "3674ec42e55106aa4d67cae80eb5e3c4a6218bdd76d693ae81e4d81141740fd8"
+        "sha256": "532e2d60386d82a8bdeca8e007759d9911afeb7a886ca45f77df3378b99015d2"
       },
       "lira-ashbow": {
         "path": "design/characters/lira-ashbow.md",
-        "sha256": "d27bacdc34731fc77153da39f3a2b043dfbd658b9c363f4f18a75c720c4a3df0"
+        "sha256": "5be039de64b477ba76c7067aa5bfd97bca439234910991e70f0640fd9f7dacb5"
       },
       "mara-reedheart": {
         "path": "design/characters/mara-reedheart.md",
@@ -30,7 +30,7 @@
       },
       "vaelis-emberglass": {
         "path": "design/characters/vaelis-emberglass.md",
-        "sha256": "3165959a11d41c82cff98df061d2971fe6afb0ccda6ff780f6ce332d57bc6b8e"
+        "sha256": "fe862c8eeb5c4a2c127c0b8ce6392e2aa2e158676a22dce39e2ad7512a25b93d"
       }
     }
   },

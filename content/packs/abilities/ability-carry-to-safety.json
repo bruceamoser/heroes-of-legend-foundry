@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/guard.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You take your companion&#39;s weight and turn. Their next steps belong to you until you both reach cover.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self and one adjacent willing or unconscious ally whose weight you can physically support.</dd></div><div><dt>Equipment / acquisition</dt><dd>A free hand.</dd></div><div><dt>Type</dt><dd>Skill / Movement / Defense</dd></div></dl><div class=\"hol-reference-rules\"><p>Move yourself and the ally up to your Speed without provoking. Carry or support it with a free hand, ending in separate adjacent free supported squares.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/25b80c9fe77d7baaec3f3a8a548c9663d0f39a30/design/cards/carry-to-safety.md\" target=\"_blank\" rel=\"noopener\">design/cards/carry-to-safety.md</a> at <code>25b80c9fe77d7baaec3f3a8a548c9663d0f39a30</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You take your companion&#39;s weight and turn. Their next steps belong to you until you both reach cover.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self and one adjacent willing or unconscious ally whose weight you can physically support.</dd></div><div><dt>Equipment / acquisition</dt><dd>A free hand.</dd></div><div><dt>Type</dt><dd>Skill / Movement / Defense</dd></div></dl><div class=\"hol-reference-rules\"><p>Move yourself and the ally up to your Speed without provoking. Carry or support it with a free hand, ending in separate adjacent free supported squares.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/f3fb98ca03b046335fcc730c1b05689bebf091b4/design/cards/carry-to-safety.md\" target=\"_blank\" rel=\"noopener\">design/cards/carry-to-safety.md</a> at <code>f3fb98ca03b046335fcc730c1b05689bebf091b4</code>.</p></section>",
     "activity": {
       "action": "maneuver",
       "rollMode": "none",
@@ -32,7 +32,7 @@
         "path": "design/cards/carry-to-safety.md",
         "sha256": "aef25249ab47205b78480b6482d29d643eb8ed17ecd5777853fa283654847f43"
       },
-      "sourceCommit": "25b80c9fe77d7baaec3f3a8a548c9663d0f39a30",
+      "sourceCommit": "f3fb98ca03b046335fcc730c1b05689bebf091b4",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

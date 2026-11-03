@@ -203,12 +203,12 @@ test("duplicate home and extra selections are ineligible and repairable", () => 
   assert.equal(afterUncheck.disabled, true);
 });
 
-test("custom definitions drive spoken and signed grants without literacy leakage", () => {
+test("custom definitions drive ordinary mixed-ancestry language grants with normal permissions", () => {
   const current = withReferenceLanguages();
   const river = languageGrants(
     {
       home: "river-speech",
-      extraSpoken: ["reed-speech", "dwarven"],
+      ancestry: "reed-speech",
     },
     ["trait-human-many-homes"],
     current.definitions,
@@ -217,7 +217,7 @@ test("custom definitions drive spoken and signed grants without literacy leakage
   assert.equal(river.languages[0].name, "Marsh Common");
   assert.equal(river.languages[1].name, "River Speech");
   assert(river.languages[1].permissions.read);
-  assert(!river.languages[2].permissions.read);
+  assert(river.languages[2].permissions.read);
   assert(river.languages[2].permissions.speak);
 
   const signed = languageGrants({ home: "way-sign" }, [], current.definitions);

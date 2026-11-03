@@ -3,6 +3,7 @@ export function movementProfile({
   speedBase,
   agility,
   brawn,
+  capacityBonus = 0,
   items = [],
   woundPenalty = 0,
   woundSources = [],
@@ -12,6 +13,8 @@ export function movementProfile({
       throw new Error(`A valid ${key} is required.`);
   if (!Number.isSafeInteger(woundPenalty) || woundPenalty < 0)
     throw new Error("Wound movement penalty must be a nonnegative integer.");
+  if (!Number.isSafeInteger(capacityBonus) || capacityBonus < 0)
+    throw new Error("Capacity bonus must be a nonnegative integer.");
   if (!Array.isArray(woundSources))
     throw new Error("Wound movement sources must be an array.");
   let bulk = 0,
@@ -35,7 +38,7 @@ export function movementProfile({
       wornOutfitExcluded = true;
     }
   }
-  const capacity = 10 + 3 * brawn,
+  const capacity = 10 + 3 * brawn + capacityBonus,
     unencumbered = Math.max(0, speedBase + agility),
     encumbrance = Math.max(0, bulk - capacity),
     speedBeforeWounds = Math.max(0, unencumbered - encumbrance),

@@ -6,7 +6,7 @@
 import { declareAction } from "./actions.mjs";
 import { validateSurvival } from "./survival.mjs";
 
-const SOURCE_COMMIT = "25b80c9fe77d7baaec3f3a8a548c9663d0f39a30";
+const SOURCE_COMMIT = "f3fb98ca03b046335fcc730c1b05689bebf091b4";
 const WOUND_SOURCE = Object.freeze({
   path: "design/rules/wounds.md",
   sha256: "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9",

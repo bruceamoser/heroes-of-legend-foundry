@@ -6,6 +6,7 @@ import {
   planHealingPotion,
 } from "../rules/potions.mjs";
 import { healingPlan } from "../rules/damage.mjs";
+import { normalizeRecovery } from "../rules/recovery.mjs";
 import { handLayout } from "../rules/hands.mjs";
 import { inventoryCheck } from "../rules/inventory.mjs";
 import {
@@ -144,6 +145,8 @@ function canonicalSurvival(actor, basis) {
         gritAvailable: basis.gritAvailable,
         ownTurn: 0,
       });
+  if (basis.recovery !== undefined || state.recovery !== undefined)
+    state.recovery = normalizeRecovery(basis.recovery ?? actor.system.recovery);
   validateSurvival(state);
   return state;
 }
@@ -165,6 +168,7 @@ function actorPotionBasis(actor) {
     maxHp: damage.maxHp,
     gritAvailable: damage.gritAvailable,
     survival,
+    recovery: damage.recovery,
     revision: damage.revision,
     equipmentRevision: damage.equipmentRevision,
     inventoryRevision: actor.getFlag(ID, "inventoryRevision") ?? 0,
@@ -281,6 +285,7 @@ function healingForBasis(potion, basis) {
     amount: potion.healing,
     current: basis.hp,
     max: basis.maxHp,
+    unavailableHp: basis.recovery?.unavailableHp ?? 0,
     lifeResistances: basis.lifeResistances,
     recipientKind: basis.actorType,
   });
@@ -291,6 +296,7 @@ function potionExpectation(giverBasis, recipientBasis, bottle) {
     actorUuid: basis.actorUuid,
     hp: basis.hp,
     maxHp: basis.maxHp,
+    recovery: clone(basis.recovery),
     survival: clone(basis.survival),
     revision: basis.revision,
     equipmentRevision: basis.equipmentRevision,

@@ -3,10 +3,13 @@ import {equipmentSurface, attackFirst} from "./equipment-surface.mjs";
 import { workshopFavorites } from "../rules/workshop-resources.mjs";
 import { actionTiming } from "../rules/workshop-character.mjs";
 import { workshopNavIcon } from "./workshop-icons.mjs";
+import { ancestryBenefits, ancestryTraitIds, currentAncestryId } from "../rules/ancestry.mjs";
 /** Read-only projection of native documents for the compact character surface. */
 export function characterSheetView({ development = {}, equipment = [], abilities = [], choices = [], inventory = {}, sheetState = {}, survival = {}, wounds = [], craftingState = {} }) {
   const records = new Map(choices.map((r) => [r.id, r]));
   const creation = development.creation ?? {};
+  const traits = ancestryTraitIds(creation);
+  const ancestry = ancestryBenefits(traits);
   const name = (id) => records.get(id)?.name ?? id ?? "";
   const favorites = new Set(Array.isArray(sheetState.favorites) ? sheetState.favorites : []);
   const hasEquipment = id => equipment.some(item => item.system.catalogId === id && item.system.quantity > 0 && item.system.carried !== false);
@@ -60,12 +63,17 @@ export function characterSheetView({ development = {}, equipment = [], abilities
   const creationLedger = (development.ledger ?? []).filter(entry => entry.stage !== undefined);
   const advancement = development.purchases ?? [];
   const spent = advancement.reduce((sum,entry) => sum + (entry.cost ?? 0),0);
-  const total = creationLedger.reduce((sum,entry) => sum + Math.max(0,entry.delta ?? 0),0) + Array.from({length:Math.max(0,(development.level ?? 1)-1)},(_,index)=>10+index).reduce((sum,value)=>sum+value,0);
+  const total = creationLedger.reduce((sum,entry) => sum + Math.max(0,entry.delta ?? 0),0) + Array.from({length:Math.max(0,(development.level ?? 1)-1)},(_,index)=>10+index+ancestry.additionalDpPerLevel).reduce((sum,value)=>sum+value,0);
   const ranks=Object.entries(development.ranks ?? {}).map(([id,rank])=>({name:name(id),rank})).sort((a,b)=>a.name.localeCompare(b.name));
   return {
     tabs, activeTab: active, mainTab: active === "main", characterTab: active === "character", abilitiesTab: active === "abilities", inventoryTab: active === "inventory", developmentTab: active === "development", craftingTab: active === "crafting",
     editMode: Boolean(sheetState.edit),
-    identity: [name(creation.ancestryId), name(creation.culture?.id), name(creation.background?.id), name(development.classId ?? creation.classId)].filter(Boolean).join(" · "),
+    identity: [name(currentAncestryId(creation.ancestryId)), name(creation.culture?.id), name(creation.background?.id), name(development.classId ?? creation.classId)].filter(Boolean).join(" · "),
+    ancestryBenefits: ancestry,
+    stability: ancestry.stability,
+    vision: {lowLightVision:ancestry.lowLightVision,seismicVisionRange:ancestry.seismicVisionRange,ruleReferences:ancestry.ruleReferences.filter(rule=>rule.path === "design/rules/vision.md")},
+    interactionRange: ancestry.interactionRange,
+    nonAttackTouchRange: ancestry.nonAttackTouchRange,
     canRemoveLevel:(development.level??1)>1, overspent:(development.dp??0)<0, level: development.level ?? 0, dp: development.dp ?? 0, dpSpent: spent, dpTotal:total,
     signatureTiers: [1,3,7].map(tier => {const slot=signatureTierState({...development,classId:development.classId??creation.classId},tier,choices);const row=abilityRows.find(row=>row.catalogId===slot.selectedId);return {tier,id:row?.id,catalogId:slot.selectedId,name:row?.name??(slot.selectedId?name(slot.selectedId):null),available:slot.earned,missing:slot.pending,ambiguous:slot.ambiguous};}),
     abilityRows, equipmentRows, recipes: recipes.map(recipe => ({...recipe, project:craftingState[recipe.id], abilities:(recipe.permissions ?? []).map(id => abilityRows.find(row => row.catalogId === id)).filter(Boolean)})),
@@ -73,8 +81,8 @@ export function characterSheetView({ development = {}, equipment = [], abilities
     basicAbilities: abilityRows.filter(row => row.basic),
     learnedGroups: [["main", "Main Action"], ["maneuver", "Maneuver"], ["reaction", "Reaction"], ["passive", "Passive"], ["movement","Movement"], ["other","Other"]].map(([key,label]) => ({key,label,entries:attackFirst(abilityRows.filter(row => !row.basic && row.timings.includes(label)))})),
     disciplineFilters: choices.filter(record => record.kind === "discipline"),
-    origins: [["Ancestry", creation.ancestryId], ["Culture", creation.culture?.id], ["Background", creation.background?.id]].map(([label,id]) => ({label,name:name(id)})),
-    traits: (creation.traitIds ?? []).map(id => ({id,name:name(id),brief:records.get(id)?.reference?.flavor?.[0] ?? ""})),
+    origins: [["Ancestry", currentAncestryId(creation.ancestryId)], ["Culture", creation.culture?.id], ["Background", creation.background?.id]].map(([label,id]) => ({label,name:name(id)})),
+    traits: traits.map(id => ({id,name:name(id),brief:records.get(id)?.reference?.rules?.body?.filter(block=>block.text).map(block=>block.text).join(" ") || records.get(id)?.reference?.flavor?.[0] || ""})),
     favorites: favoriteRows,
     actionGroups: [["main", "Main Action"], ["maneuver", "Maneuver"], ["reaction", "Reaction"], ["movement","Movement"], ["other","Other"]].map(([key, label]) => ({ key, disclosureKey:key === "main" ? "main-action" : key, label, entries: attackFirst(abilityRows.filter((r) => r.timings.includes(label) && (sheetState.edit || !r.basic || r.shown))) })),
     ranks, rankPairs:Array.from({length:Math.ceil(ranks.length/2)},(_,index)=>({left:ranks[index*2],right:ranks[index*2+1]})),

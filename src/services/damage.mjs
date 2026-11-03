@@ -3,6 +3,7 @@ import { assertNoPendingTurn } from "./turn-lock.mjs";
 import { classifyRoll } from "../rules/roll.mjs";
 import { damageEvent, canonicalDamageType } from "../rules/damage.mjs";
 import { passiveDefenseSources } from "../rules/passive-defenses.mjs";
+import { normalizeRecovery } from "../rules/recovery.mjs";
 import {
   enqueueCharacterOperation,
   isCreationAuthority,
@@ -41,6 +42,7 @@ export function damageBasis(actor) {
     hp: actor.system.health.value,
     maxHp: actor.system.health.max,
     gritAvailable: actor.system.grit?.available ?? 0,
+    ...(actor.type === "character" ? { recovery: normalizeRecovery(actor.system.recovery) } : {}),
     survival: structuredClone(actor.getFlag(ID, "survival") ?? null),
     revision: actor.getFlag(ID, "damageRevision") ?? 0,
     equipmentRevision: actor.getFlag(ID, "equipmentRevision") ?? 0,

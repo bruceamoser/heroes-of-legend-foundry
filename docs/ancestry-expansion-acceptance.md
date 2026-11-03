@@ -1,7 +1,7 @@
 # Ancestry expansion acceptance — #259
 
 Source: book v16.7.0, `f3fb98ca03b046335fcc730c1b05689bebf091b4`.
-Target release: system 2.7.0 and GitHub Pages Character Workshop.
+Target release: system 2.7.1 and GitHub Pages Character Workshop.
 
 ## Content and compatibility
 
@@ -92,3 +92,12 @@ owner Add level, disabled ineligible choice, local rules reference, required
 instrument acquisition and Done. Exact DP/HP/Grit and equipment persistence pass
 without duplicate grants. This does not claim all historical broad creation,
 advancement or canvas suites were rerun.
+
+### Final compatibility correction (#261)
+
+Final review found that Workshop legacy two-language arrays had no visible
+retirement control after choosing the replacement benefit. The unpublished
+2.7.0 system candidate was withdrawn; the Pages deployment will be superseded
+by the compatibility fix. Corrected 2.7.1
+retires those obsolete selections only after an explicit replacement/removal
+action; browser coverage includes old saved choices and reload.

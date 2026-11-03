@@ -1814,6 +1814,9 @@ function updateField(target) {
     }
     set(target.dataset.field, value);
     if (target.dataset.field === "borrowedAncestryId") draft.borrowedTraitId = "";
+    // A chosen current ancestry language replaces the retired two-language grant.
+    if (target.dataset.field === "languages.ancestry" && value)
+      draft.languages.extraSpoken = [];
     if (target.dataset.field === "play.hp" && value > 0) {
       playDraft().failedDeathRolls = 0;
       playDraft().lastWords = false;
@@ -1826,6 +1829,10 @@ function updateField(target) {
         ? [...new Set([...values, target.value])]
         : values.filter((v) => v !== target.value),
     );
+    // The same checkbox handles regular choices and explicitly removed stale traits.
+    if (target.dataset.list === "traitIds" &&
+        target.value === "trait-human-many-homes" && !target.checked)
+      draft.languages.extraSpoken = [];
   } else if (target.dataset.recipe) {
     const r = get(target.dataset.recipe),
       values = [...selectionFor(r).recipeIds];

@@ -172,7 +172,3 @@
 .heroes-of-legend.hol-native-dialog :is(button,.dialog-button):hover {background:#24382e;}
 .heroes-of-legend.hol-native-dialog :is(button,input,select,textarea):focus-visible {outline:2px solid #b39253;outline-offset:2px;}
 .heroes-of-legend.hol-native-dialog :is(button,input,select,textarea):disabled {opacity:.55;}
-
-/* A complete old/new ability can be long; keep confirmation buttons reachable. */
-.heroes-of-legend.hol-native-dialog .hol-ability-update-preview {max-height:45vh;overflow:auto;overscroll-behavior:contain;padding-right:8px;}
-.heroes-of-legend.hol-native-dialog .hol-ability-update-preview h3 {font-size:15px;margin:10px 0 5px;}

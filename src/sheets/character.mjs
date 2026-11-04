@@ -523,9 +523,14 @@ export class CharacterSheet extends HandlebarsApplicationMixin(
   }
   static async openAbility(event, target) {
     const item = this.actor.items.get(target.closest("[data-item-id]")?.dataset.itemId);
-    const path = item?.getFlag("heroes-of-legend", "source")?.path;
+    if (!item?.testUserPermission(game.user, "OBSERVER")) return;
+    const source = item.getFlag("heroes-of-legend", "source");
+    const catalogId = item.getFlag("heroes-of-legend", "catalogId") ?? item.system?.catalogId;
+    const record = item.type === "ability" && (source?.path || catalogId)
+      ? abilityCatalogRecord(item, (await loadCatalogs()).choices)
+      : null;
+    const path = item.type === "ability" ? record?.source.path : source?.path;
     if (!path) {
-      if (!item?.testUserPermission(game.user, "OBSERVER")) return;
       const panel = this.element.querySelector("[data-character-reference]");
       panel.hidden = false;
       const content = panel.querySelector("[data-rule-content]");

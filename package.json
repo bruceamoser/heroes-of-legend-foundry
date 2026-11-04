@@ -1,6 +1,6 @@
 {
   "name": "heroes-of-legend-foundry",
-  "version": "2.8.0",
+  "version": "2.8.1",
   "private": true,
   "type": "module",
   "engines": {
@@ -116,7 +116,6 @@
     "test:ancestry-native": "node scripts/check-ancestry-native.mjs",
     "test:debt-native": "node scripts/check-debt-native.mjs",
     "audit:rule-rendering": "node scripts/audit-rule-rendering.mjs",
-    "test:ability-rule-update": "node scripts/check-ability-rule-update.mjs",
     "test:defense-substitutions": "node scripts/check-defense-substitutions.mjs"
   },
   "devDependencies": {

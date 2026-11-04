@@ -25,19 +25,17 @@ export async function searchLocalRules(query, collection = "all") {
   }
   return new Set(records.filter(record => `${record.name} ${record.path}`.toLocaleLowerCase().includes(normalized) || text.get(record.pageId)?.includes(normalized)).map(record => record.path));
 }
-/** Resolve the matching native book page, preserving edited world book copies. */
-export async function localRulePage(path, {published = false} = {}) {
+/** Read the installed rulebook page for the user's audience. */
+export async function localRulePage(path) {
   const record = (await ruleIndex()).find(record => record.path === path);
   if (!record) throw new Error("This rule is unavailable to this user.");
-  const imported = game.journal.find(entry => entry.getFlag(ID, "ruleBook")?.key === record.pack && entry.testUserPermission(game.user, "OBSERVER"));
-  const page = published ? null : imported?.pages.find(page => page.id === record.pageId);
-  const document = page ?? await fromUuid(record.uuid);
-  if (!document || !document.testUserPermission(game.user, "OBSERVER")) throw new Error("You cannot read this rule reference.");
-  return document;
+  const page = await fromUuid(record.uuid);
+  if (!page?.testUserPermission(game.user, "OBSERVER")) throw new Error("You cannot read this rule reference.");
+  return page;
 }
 /** Explicit full-book navigation uses Foundry's native TOC, search and paging. */
-export async function openLocalRule(path, options) {
-  const page = await localRulePage(path, options);
+export async function openLocalRule(path) {
+  const page = await localRulePage(path);
   await page.parent.sheet.render({ force: true, pageId: page.id, mode: foundry.applications.sheets.journal.JournalEntrySheet.VIEW_MODES.SINGLE });
   return page;
 }
@@ -50,23 +48,14 @@ export function closeInlineRule(container) {
     if(panel)panel.hidden=true;
   } else container.remove();
 }
-/** A copied or renamed page keeps its own prose; only pristine references use
- * the catalog's alternate web presentation. Source flags alone do not prove it.
- */
-export function inlineAbilityUsesCatalog(page,canonical){
-  return Boolean(canonical && page.name===canonical.name && page.text?.content===canonical.text?.content);
-}
 /** Inline presentation for ability cards, character choices and rule links. */
-export async function renderInlineRule(path, container, {published = false} = {}) {
-  const page = await localRulePage(path, {published});
-  let markup=page.text.content,structured=false;
-  if(path.startsWith("design/cards/")){
-    const record=(await loadCatalogs()).choices.find(record=>record.kind==="ability"&&record.source.path===path);
-    const indexed=(await ruleIndex()).find(source=>source.path===path);
-    const canonical=indexed?await fromUuid(indexed.uuid):null;
-    if(record && inlineAbilityUsesCatalog(page,canonical)){markup=abilityRuleReferenceHTML(record);structured=true;}
-  }
-  if(!structured){
+export async function renderInlineRule(path, container) {
+  const page = await localRulePage(path);
+  const ability = path.startsWith("design/cards/")
+    ? (await loadCatalogs()).choices.find(record => record.kind === "ability" && record.source.path === path)
+    : null;
+  let markup = ability ? abilityRuleReferenceHTML(ability) : page.text.content;
+  if (!ability){
     const heading=`<h2>${foundry.utils.escapeHTML(page.name)}</h2>`;
     markup=/^<article[^>]*>/.test(markup)?markup.replace(/^(<article[^>]*>)/,`$1${heading}`):`<article class="hol-journal-page">${heading}${markup}</article>`;
   }
@@ -76,54 +65,17 @@ export async function renderInlineRule(path, container, {published = false} = {}
   container.classList.add("hol-inline-rule");
   const controls = document.createElement("header");
   const book = document.createElement("button"); book.type = "button"; book.textContent = "Open full book";
-  book.addEventListener("click", () => openLocalRule(path, {published}).catch(error => ui.notifications.error(error.message)));
+  book.addEventListener("click", () => openLocalRule(path).catch(error => ui.notifications.error(error.message)));
   const close = document.createElement("button"); close.type = "button"; close.textContent = "Close rules";
   close.addEventListener("click", () => {
     closeInlineRule(container);
   });
-  const worldCopy = !page.parent.pack && Boolean(page.parent.getFlag?.(ID, "ruleBook"));
-  if (worldCopy || published) {
-    const source = document.createElement("span");
-    source.textContent = published ? "Current published rules" : "Saved world book copy";
-    const edition = document.createElement("button"); edition.type = "button";
-    edition.textContent = published ? "Read world copy" : "Read current published rules";
-    edition.addEventListener("click", () => renderInlineRule(path, container, {published: !published}).catch(error => ui.notifications.error(error.message)));
-    controls.append(source, edition);
-  }
   controls.append(book, close);
   const content = document.createElement("div"); content.innerHTML = html;
   container.append(controls, content);
   await localizeRuleLinks(container);
   return page;
 }
-let importing;
-/** Explicit GM import creates two new books; legacy journals and all edits survive. */
-export async function importRuleJournals() {
-  if (!game.user.isGM) throw new Error("Only the Dungeon Architect can import rule journals.");
-  if (importing) return importing;
-  importing = (async () => {
-    const records = await ruleIndex();
-    let created = 0, retained = 0;
-    for (const name of new Set(records.map(record => record.pack))) {
-      if (game.journal.some(entry => entry.getFlag(ID,"ruleBook")?.key === name)) { retained++; continue; }
-      const pack = game.packs.get(`${ID}.${name}`);
-      if (!pack) throw new Error(`Missing rules compendium: ${name}`);
-      const source = (await pack.getDocuments()).find(entry => entry.getFlag(ID,"ruleBook")?.key === name);
-      if (!source) throw new Error(`Missing native rule book: ${name}`);
-      if (game.journal.some(entry => entry.id === source.id)) throw new Error(`An unrelated world journal occupies the rule ID for ${source.name}; it was preserved.`);
-      const data = source.toObject();
-      data.ownership = {default:name === "player-rules" ? 2 : 0};
-      try { created += (await JournalEntry.createDocuments([data],{keepId:true,keepEmbeddedIds:true})).length; }
-      catch (error) {
-        if (!game.journal.some(entry => entry.getFlag(ID,"ruleBook")?.key === name)) throw error;
-        retained++;
-      }
-    }
-    return {created,retained};
-  })();
-  try { return await importing; } finally { importing = null; }
-}
-
 export function bindLocalRuleLinks(root) {
   for (const link of root.querySelectorAll('a[data-hol-rule-path]')) {
     if (link.dataset.holRuleBound) continue;
@@ -163,24 +115,4 @@ export async function localizeRuleLinks(root) {
     if (path) { link.dataset.holRulePath = path; link.href = "#"; }
   }
   bindLocalRuleLinks(root);
-}
-
-/** Recognize only the exact unedited decorative divider shipped before 2.3. */
-export function isLegacyBlankChapter(page,bookKey) {
-  if(!["player-rules","da-rules"].includes(bookKey)||page.getFlag(ID,"ruleSection")===undefined)return false;
-  const title=bookKey==="player-rules"?"Player’s Book":"Dungeon Architect’s Guide & Bestiary";
-  return page.text.content===`<section class="hol-journal-page hol-journal-section"><h1>${page.name}</h1><p>Heroes of Legend · ${title}</p></section>`;
-}
-/** Repair known untouched world dividers; never replace source pages or user edits. */
-export async function repairRuleChapterPages() {
-  if(!game.user.isGM||!game.users.activeGM?.isSelf)return {updated:0};
-  let updated=0;
-  for(const book of game.journal){
-    const key=book.getFlag(ID,"ruleBook")?.key;
-    const blank=book.pages.filter(page=>isLegacyBlankChapter(page,key));if(!blank.length)continue;
-    const source=(await game.packs.get(`${ID}.${key}`).getDocuments()).find(entry=>entry.getFlag(ID,"ruleBook")?.key===key);if(!source)continue;
-    const changes=blank.flatMap(page=>{const replacement=source.pages.get(page.id);return replacement?.getFlag(ID,"ruleSection")===page.getFlag(ID,"ruleSection")&&replacement.text.content.includes('class="hol-journal-page hol-journal-section"')&&replacement.text.content.includes('<nav ')?[{_id:page.id,"text.content":replacement.text.content}]:[];});
-    if(changes.length){await book.updateEmbeddedDocuments("JournalEntryPage",changes);updated+=changes.length;}
-  }
-  return {updated};
 }

@@ -19,10 +19,9 @@ test('existing 2.0 reference-only Basic Ranged gets Agility and printed tier out
   const result=abilityRollConfiguration({uuid:'Actor.a.Item.b',name:'Basic Ranged',system:{activity:{rollMode:'none',attribute:'brawn'},outcomes:{}}},record);
   assert.equal(result.attribute,'agility');assert.equal(result.outcomes.strong,'5 physical damage.');
 });
-test('explicit configured custom attribute and outcomes win over printed defaults',()=>{
-  const record=catalog.find(record=>record.id==='ability-basic-ranged');
-  const result=abilityRollConfiguration({system:{activity:{rollMode:'attribute',attribute:'reason'},outcomes:{strong:'Custom result'}}},record);
-  assert.equal(result.attribute,'reason');assert.equal(result.outcomes.strong,'Custom result');assert.equal(result.outcomes.weak,'2 physical damage.');
+test('standalone custom abilities retain their configured attribute and outcomes',()=>{
+  const result=abilityRollConfiguration({system:{activity:{rollMode:'attribute',attribute:'reason'},outcomes:{strong:'Custom result'}}});
+  assert.equal(result.attribute,'reason');assert.equal(result.outcomes.strong,'Custom result');assert.equal(result.outcomes.weak,'');
 });
 test('no-roll and delegated follow-up cards do not invent an attribute roll',()=>{
   for(const record of catalog.filter(record=>record.reference?.rules.details.some(detail=>detail.label==='Attribute'&&detail.value.startsWith('None'))))assert.equal(printedAbilityRoll(record).attribute,null);
@@ -116,19 +115,23 @@ test("legacy identity accepts valid system IDs but rejects names, foreign paths 
     undefined,
   );
 });
-test("provenance lookup preserves user configured attributes and outcomes", () => {
-  const record = catalog.find((record) => record.id === "ability-basic-melee");
-  const item = legacyItem(
-    { source: record.source },
-    {
-      activity: { rollMode: "attribute", attribute: "reason" },
-      outcomes: { strong: "Custom outcome" },
-    },
-  );
-  const configuration = abilityRollConfiguration(
-    item,
-    abilityCatalogRecord(item, catalog),
-  );
+test("an old catalog copy uses current published outcomes and its existing Item identity", async () => {
+  const old = JSON.parse(await readFile(new URL("./fixtures/ability-rule-update-v271.json", import.meta.url)));
+  const item = legacyItem(old.flags["heroes-of-legend"], old.system);
+  const record = abilityCatalogRecord(item, catalog);
+  const configuration = abilityRollConfiguration(item, record);
+  assert.equal(configuration.itemUuid, item.uuid);
   assert.equal(configuration.attribute, "reason");
-  assert.equal(configuration.outcomes.strong, "Custom outcome");
+  assert.deepEqual(configuration.outcomes, {
+    weak: "One ally: restore 6 HP. Two allies: restore 4 HP each.",
+    standard: "One ally: restore 11 HP. Two allies: restore 7 HP each.",
+    strong: "One ally: restore 16 HP. Two allies: restore 10 HP each.",
+  });
+  assert.notDeepEqual(configuration.outcomes, old.system.outcomes);
+});
+
+test("current catalog no-roll rules suppress obsolete configured rolls", () => {
+  const record = catalog.find(record => record.id === "ability-signature-odd-wrong-place-for-that");
+  const item = legacyItem({ catalogId: record.id }, { activity: { rollMode: "attribute", attribute: "reason" } });
+  assert.equal(abilityRollConfiguration(item, record).attribute, null);
 });

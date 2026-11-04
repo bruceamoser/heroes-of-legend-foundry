@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "repository": "https://github.com/bruceamoser/heroes-of-legend",
-  "commit": "f3fb98ca03b046335fcc730c1b05689bebf091b4",
+  "commit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
   "previousCommit": "25b80c9fe77d7baaec3f3a8a548c9663d0f39a30",
   "approval": "Approved ancestry expansion November 3, book v16.7.0: ten ancestries and fifty traits, shared vision and ancestry procedures; system sync #259. Distribution licensing remains undecided.",
   "counts": {
@@ -2852,7 +2852,7 @@
     },
     {
       "path": "design/cards/signature-leader-hold-your-nerve.md",
-      "sha256": "ae3e83200593706995f2e1eead30d49c359d807935990fb344083e0ab186523d",
+      "sha256": "3d3c03f4c8a6d8825fc9cec38f7b4d12fe834a75302eb18c7f8db05949fc4100",
       "id": "signature-leader-hold-your-nerve"
     },
     {
@@ -3702,51 +3702,51 @@
     },
     {
       "path": "design/characters/README.md",
-      "sha256": "92557510610e721658d1dd03d3a5170e0b006002e4edffd16a0b78f4db1c8fc9"
+      "sha256": "4ef87eca6290052a2cd22f8a20177da61d1ea05e361e61f593dcf80e564839fd"
     },
     {
       "path": "design/characters/borin-bridgekeeper.md",
-      "sha256": "532e2d60386d82a8bdeca8e007759d9911afeb7a886ca45f77df3378b99015d2"
+      "sha256": "dbff1a3284fd5e36511234237ce4cb0b100a1a7be1afd5694b7c6220971e9a10"
     },
     {
       "path": "design/characters/lira-ashbow.md",
-      "sha256": "5be039de64b477ba76c7067aa5bfd97bca439234910991e70f0640fd9f7dacb5"
+      "sha256": "9f4a494b0482b8dbcfbf02c8f7cc3641dfc81e111b6af8af89861b82cdb9a8a4"
     },
     {
       "path": "design/characters/mara-reedheart.md",
-      "sha256": "55780938021914d371f9fb766ce38d5e053d33c9700e4326f109c888859cfa11"
+      "sha256": "4354563638536bb576529c477d2c44b356232bb5dfa0e72d0a7f8f3ffff78b12"
     },
     {
       "path": "design/characters/oren-brass.md",
-      "sha256": "40b9103d56ea31a83af90cd85b9b5aa339ad78b1b63fde56f7afe8bd1f0180ad"
+      "sha256": "e49ada912821f3416fddfa8b71753ac8c86d008528e067c56a79607c7abfd318"
     },
     {
       "path": "design/characters/pip-copperwink.md",
-      "sha256": "94004b9f896f76e09de385a0cd585250b39a3fed8b7f022274328f1a6e24908f"
+      "sha256": "afe6db884ca5df755ac08d72084646411f55b204fa889e3936b5ba67b3be491a"
     },
     {
       "path": "design/characters/vaelis-emberglass.md",
-      "sha256": "fe862c8eeb5c4a2c127c0b8ce6392e2aa2e158676a22dce39e2ad7512a25b93d"
+      "sha256": "79919b0339793c854a72b737b99afa7c4e034ddfe5b36fa989bf417fa570512f"
     },
     {
       "path": "design/classes/arcanist.md",
-      "sha256": "a22c347c13bd87f2b739e59371070af2e6274c3724452dfb640a888490ff9723"
+      "sha256": "cc1df58c3513c882721de8e416a597b8d883dcaea187700077517b2d8d12851d"
     },
     {
       "path": "design/classes/blade.md",
-      "sha256": "4ad3d52299f59d0563645cb5940562d76d4914662239e88351af98ece99df219"
+      "sha256": "30d947dba7b253cebcc429755df61f9865f09eb74f2850829cf9c254ee02e1f4"
     },
     {
       "path": "design/classes/intellect.md",
-      "sha256": "1ed6358449b9a3060dddbcd852386297b45557ad7eb92bfb72c51ef9691af083"
+      "sha256": "0c229249e22209ae43fb5b4cfaf215b824d445f61037697c6b00cffa8c30be3b"
     },
     {
       "path": "design/classes/leader.md",
-      "sha256": "134d0364a24e8c394bcdc49598f47eaa4894d2a4d37d40b4490b531ab6e63acf"
+      "sha256": "4e4ae6a799888cf8a858f17086456cbb489102ca0f7277e3f272969f276c6a86"
     },
     {
       "path": "design/classes/odd.md",
-      "sha256": "70914680f3dfbb1c864a42f0eba3076cfeeaee33c1ef4b1516ac616171b62021"
+      "sha256": "9c37e7724b7b521cc7f199f2fab836c2e98f742289b32474a4609fd0c1026d64"
     },
     {
       "path": "design/classes/protector.md",
@@ -5106,7 +5106,7 @@
     },
     {
       "path": "design/rules/languages.md",
-      "sha256": "e42c39e51153ba18ac5064718bb968f32876cbd7e82b0d09de0dc48a15c55429"
+      "sha256": "b4f2314507a68cb56cd2a9a8fb7b8b9b7d0f0ea9dc5595c94a5e2dd863d5275b"
     },
     {
       "path": "design/rules/recovery.md",

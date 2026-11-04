@@ -1,0 +1,376 @@
+{
+  "sourceCommit": "f3fb98ca03b046335fcc730c1b05689bebf091b4",
+  "note": "Immutable authored source evidence from the audit baseline; not an approval record. Independent expected paragraphs/options, not importer-generated output.",
+  "records": [
+    {
+      "id": "ability-enchanting-workshop",
+      "name": "Enchanting Workshop",
+      "source": {
+        "path": "design/cards/enchanting-workshop.md",
+        "sha256": "3f3423064cf33bbd413c708a68fcccf18ba6dcf30e67044d8c7334f1e11032fc"
+      },
+      "inlineTriad": true,
+      "sourceMarkdown": "# Enchanting Workshop\n\n*You set your tools beside the impossible ingredient. This is the part of the work that ordinary hands cannot finish.*\n\n## Rules\n\n**Action:** Main Action \u00b7 **Attribute:** Knowledge\n\n**Time:** The recipe's full stated interval per attempt.\n\n**Target / range / shape:** One known compatible special-item or ordinary recipe.\n\nChoose one special-item recipe available in the campaign and two ordinary recipes chosen from Bound Torches, Fletched Ammunition, Travel Food, Twisted Cord, Wooden Brace and Simple Replacement Leg; learn them. You can craft known special-item recipes and the compatible ordinary recipes using their stated materials, tools and full intervals. Roll Knowledge: Weak adds 1 progress, Standard 2, Strong 3, or the recipe's inventory steps for a supply.\n\n**Equipment / acquisition:** Craft tools (Bulk 1), supplied on learning if needed.\n\n---\n\n**Tier / minimum level:** 7 \u00b7 **DP:** 8 \u00b7 **Requirements to learn:** Craft 3\n\n**Type:** Magic / Crafting / Utility\n\n**ID:** enchanting-workshop\n\n[Card conventions](../card-conventions.md)\n"
+    },
+    {
+      "id": "ability-make-something-useful",
+      "name": "Make Something Useful",
+      "source": {
+        "path": "design/cards/make-something-useful.md",
+        "sha256": "19d2e162057b97dbb0504cbecd0f04f1a51f64243df25b385a6f39f9ce11bceb"
+      },
+      "inlineTriad": true,
+      "sourceMarkdown": "# Make Something Useful\n\n*You pull sound pieces from the wreckage and set them beside your tools. The thing the party needs is already taking shape.*\n\n## Rules\n\n**Action:** Main Action \u00b7 **Attribute:** Knowledge\n\n**Time:** The recipe's full stated interval per attempt.\n\n**Target / range / shape:** One known compatible ordinary recipe and suitable salvaged materials.\n\nLearn two recipes chosen from Bound Torches, Fletched Ammunition, Travel Food, Twisted Cord, Wooden Brace and Simple Replacement Leg. You can craft those and other known recipes explicitly compatible with this ability, using equivalent salvaged materials the DA confirms are suitable. Roll Knowledge: Weak adds 1 progress or inventory step, Standard 2, Strong 3, as the recipe specifies.\n\n**Equipment / acquisition:** Craft tools (Bulk 1), supplied on learning if needed.\n\n---\n\n**Tier / minimum level:** 1 \u00b7 **DP:** 2 \u00b7 **Requirements to learn:** Craft 1\n\n**Type:** Skill / Crafting / Utility\n\n**ID:** make-something-useful\n\n[Card conventions](../card-conventions.md)\n"
+    },
+    {
+      "id": "ability-signature-blade-cut-and-turn",
+      "name": "Reckless Charge",
+      "source": {
+        "path": "design/cards/signature-blade-cut-and-turn.md",
+        "sha256": "2727ac305070fbfa70f41def1e6f1044c4fc27cc1b6ddc1f9c0e33bc116ca967"
+      },
+      "inlineTriad": true,
+      "sourceMarkdown": "# Reckless Charge\n\n*You lower your shoulder and crash forward, blade swinging wide, leaving your guard open.*\n\n## Rules\n\n**Action:** Maneuver \u00b7 **Attribute:** Brawn\n\n**Target / range / shape:** Self; move up to 2 squares toward an enemy, then make a Basic Melee attack against a creature within reach.\n\nMove up to 2 squares toward an enemy you can see. Then make a Basic Melee attack against a creature within reach. This attack is part of the Maneuver, so your Main Action remains available. On a Weak result, deal 1 extra damage; on a Standard result, deal 2 extra damage; on a Strong result, deal 3 extra damage. Take 1 Bane on defense rolls until the beginning of your next turn. This movement follows normal opportunity attack rules.\n\n**Duration:** The attack resolves immediately. The defense Bane lasts until the beginning of your next turn.\n\n**Equipment / acquisition:** None.\n\n---\n\n**Tier / minimum level:** 1 \u00b7 **DP:** 2 \u00b7 **Requirements to learn:** Class Blade; minimum level 1\n\n**Type:** Signature\n\n**Tags:** Skill / Attack / Movement\n\n**Limits:** Once on your turn.\n\n**ID:** signature-blade-cut-and-turn\n\n[Class choices](../classes/blade.md) \u00b7 [Card conventions](../card-conventions.md)\n"
+    },
+    {
+      "id": "ability-signature-blade-perfect-placement",
+      "name": "Get Out of Here",
+      "source": {
+        "path": "design/cards/signature-blade-perfect-placement.md",
+        "sha256": "c0585b27c196f7738bf8cab66554927303fdb8f4614f2d53557b8e19ffb65521"
+      },
+      "inlineTriad": true,
+      "sourceMarkdown": "# Get Out of Here\n\n*You get a grip under the arms, lift, and send them somewhere else.*\n\n## Rules\n\n**Action:** Main Action \u00b7 **Attribute:** Brawn\n\n**Target / range / shape:** One adjacent creature your size or smaller. You must have a free hand.\n\nMake a Brawn roll against the target. On a Weak result, throw it 3 squares. On a Standard result, throw it 5 squares and apply Dazed 1. On a Strong result, throw it 7 squares and apply Dazed 2. Choose the direction. The target lands prone. Resolve collisions normally.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** None.\n\n---\n\n**Tier / minimum level:** 7 \u00b7 **DP:** 8 \u00b7 **Requirements to learn:** Class Blade; minimum level 7\n\n**Type:** Signature\n\n**Tags:** Skill / Attack / Control\n\n**Limits:** Once on your turn.\n\n**ID:** signature-blade-perfect-placement\n\n[Class choices](../classes/blade.md) \u00b7 [Card conventions](../card-conventions.md)\n"
+    },
+    {
+      "id": "ability-signature-blade-pressure-point",
+      "name": "Cleave",
+      "source": {
+        "path": "design/cards/signature-blade-pressure-point.md",
+        "sha256": "310849ac3504c3547713bf561065ef36a500cbae77de70ef52bbf088122684b6"
+      },
+      "inlineTriad": true,
+      "sourceMarkdown": "# Cleave\n\n*You sweep your blade in a wide arc, forcing everyone near you to give ground.*\n\n## Rules\n\n**Action:** Main Action \u00b7 **Attribute:** Brawn\n\n**Target / range / shape:** All creatures adjacent to you, including allies. You must be wielding a melee weapon.\n\nMake one Brawn roll. On a Weak result, deal 1 damage to each creature adjacent to you. On a Standard result, deal 1 damage and push each creature 1 square directly away from you. On a Strong result, deal 1 damage and push each creature 2 squares directly away from you. Resolve collisions normally.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** None.\n\n---\n\n**Tier / minimum level:** 1 \u00b7 **DP:** 2 \u00b7 **Requirements to learn:** Class Blade; minimum level 1\n\n**Type:** Signature\n\n**Tags:** Skill / Attack / Control\n\n**Limits:** Once on your turn.\n\n**ID:** signature-blade-pressure-point\n\n[Class choices](../classes/blade.md) \u00b7 [Card conventions](../card-conventions.md)\n"
+    },
+    {
+      "id": "ability-signature-blade-relentless-pursuit",
+      "name": "Relentless Pursuit",
+      "source": {
+        "path": "design/cards/signature-blade-relentless-pursuit.md",
+        "sha256": "127ae4f86af5eefa1fd0cebcf19d13b74714d8c4603b64f1394a3623c0f9e800"
+      },
+      "inlineTriad": true,
+      "sourceMarkdown": "# Relentless Pursuit\n\n*You follow the retreating shoulder through the press, keeping your blade close enough that escape becomes another opening.*\n\n## Rules\n\n**Action:** Reaction \u00b7 **Attribute:** None (no roll)\n\n**Target / range / shape:** A visible enemy within 2 squares when it begins voluntary movement.\n\nAfter it finishes moving, move up to your Speed toward it without provoking. If you end adjacent, make one free Basic Melee attack against it using Brawn with 1 Boon. On a Weak result, apply Slowed 1. On a Standard result, apply Slowed 2. On a Strong result, apply Slowed 3. Slowed uses normal decay.\n\n**Duration:** Immediate pursuit and attack.\n\n**Equipment / acquisition:** A melee weapon is required for the attack; grants one ordinary melee weapon, Bulk 1, if absent.\n\n---\n\n**Tier / minimum level:** 7 \u00b7 **DP:** 8 \u00b7 **Requirements to learn:** Class Blade; minimum level 7\n\n**Type:** Signature\n\n**Tags:** Skill / Attack / Movement\n\n**Limits:** Repeatable; normal action economy applies.\n\n**ID:** signature-blade-relentless-pursuit\n\n[Class choices](../classes/blade.md) \u00b7 [Card conventions](../card-conventions.md)\n"
+    },
+    {
+      "id": "ability-signature-intellect-expose-the-mechanism",
+      "name": "Shatter the Guard",
+      "source": {
+        "path": "design/cards/signature-intellect-expose-the-mechanism.md",
+        "sha256": "e82cf097cc7925c3f8c519eeac435dafa458c06c8520c7f6996e0903d428d28d"
+      },
+      "inlineTriad": true,
+      "sourceMarkdown": "# Shatter the Guard\n\n*You name the flaw in the guard, then strike through it before the target can close the gap.*\n\n## Rules\n\n**Action:** Main Action \u00b7 **Attribute:** Knowledge\n\n**Target / range / shape:** One visible creature or active device within 5 squares; one ally within 5 squares who can hear and understand you.\n\nMake a Knowledge-based attack against the target. On a Weak result, deal 5 physical damage. On a Standard result, deal 7 physical damage. On a Strong result, deal 9 physical damage. The target loses 1 resistance of your choice until the end of the scene, and the chosen ally gains 1 Boon to their next attack against it before the start of your next turn.\n\n**Duration:** The attack resolves immediately. The resistance loss lasts until the end of the scene; the Boon expires when used or the start of your next turn.\n\n**Equipment / acquisition:** None.\n\n---\n\n**Tier / minimum level:** 7 \u00b7 **DP:** 8 \u00b7 **Requirements to learn:** Class Intellect; minimum level 7\n\n**Type:** Signature\n\n**Tags:** Skill / Attack / Control\n\n**Limits:** Once on your turn; one resistance reduction per target per scene.\n\n**ID:** signature-intellect-expose-the-mechanism\n\n[Class choices](../classes/intellect.md) \u00b7 [Card conventions](../card-conventions.md)\n"
+    },
+    {
+      "id": "ability-signature-intellect-prepared-explanation",
+      "name": "Angle of Attack",
+      "source": {
+        "path": "design/cards/signature-intellect-prepared-explanation.md",
+        "sha256": "992c351977c23f06b744bbe75a29d166824a5c070940506f231e32eb785e495f"
+      },
+      "inlineTriad": true,
+      "sourceMarkdown": "# Angle of Attack\n\n*You see the exchange a heartbeat before it happens, then step into the opening you already know is there.*\n\n## Rules\n\n**Action:** Main Action \u00b7 **Attribute:** Knowledge\n\n**Target / range / shape:** One creature within reach of your melee weapon. You must be wielding a melee weapon.\n\nMake a melee weapon attack against one creature within reach, using Knowledge instead of Brawn. On a Weak result, deal 3 physical damage. On a Standard result, deal 5 physical damage. On a Strong result, deal 7 physical damage.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** None.\n\n---\n\n**Tier / minimum level:** 1 \u00b7 **DP:** 2 \u00b7 **Requirements to learn:** Class Intellect; minimum level 1\n\n**Type:** Signature\n\n**Tags:** Skill / Attack\n\n**Limits:** Repeatable; normal action economy applies.\n\n**ID:** signature-intellect-prepared-explanation\n\n[Class choices](../classes/intellect.md) \u00b7 [Card conventions](../card-conventions.md)\n"
+    },
+    {
+      "id": "ability-signature-leader-hold-your-nerve",
+      "name": "Blow the Horn",
+      "source": {
+        "path": "design/cards/signature-leader-hold-your-nerve.md",
+        "sha256": "ae3e83200593706995f2e1eead30d49c359d807935990fb344083e0ab186523d"
+      },
+      "inlineTriad": true,
+      "sourceMarkdown": "# Blow the Horn\n\n*You put the horn to your lips, or simply fill your lungs, and let loose a sound that breaks the enemy advance.*\n\n## Rules\n\n**Action:** Maneuver \u00b7 **Attribute:** Guile\n\n**Target / range / shape:** Every enemy within 5 squares that can hear you.\n\nMake one Guile roll and apply the result to each target. On a Weak result, apply Frightened 1. On a Standard result, apply Frightened 1 and Dazed 1. On a Strong result, apply Frightened 2 and Dazed 1.\n\n**Duration:** Conditions use normal decay.\n\n**Equipment / acquisition:** None.\n\n---\n\n**Tier / minimum level:** 3 \u00b7 **DP:** 4 \u00b7 **Requirements to learn:** Class Leader; minimum level 3\n\n**Type:** Signature\n\n**Tags:** Skill / Control\n\n**Limits:** Repeatable; normal action economy applies.\n\n**ID:** signature-leader-hold-your-nerve\n\n[Class choices](../classes/leader.md) \u00b7 [Card conventions](../card-conventions.md)\n"
+    },
+    {
+      "id": "ability-signature-leader-orderly-withdrawal",
+      "name": "Lead by Example",
+      "source": {
+        "path": "design/cards/signature-leader-orderly-withdrawal.md",
+        "sha256": "384e95a9862fca98f9c1f839e6a1e604a56cc80b7e25f680c4413e975fc5e0f5"
+      },
+      "inlineTriad": true,
+      "sourceMarkdown": "# Lead by Example\n\n*You step into the gap and strike, showing your companions exactly where the line will break.*\n\n## Rules\n\n**Action:** Main Action \u00b7 **Attribute:** Guile\n\n**Target / range / shape:** One creature within reach of your melee weapon.\n\nMake a melee weapon attack using Guile instead of Brawn. On a Weak result, deal 2 physical damage. On a Standard result, deal 4 physical damage and choose one effect. On a Strong result, deal 6 physical damage and choose two different effects.\n\n- Break Their Guard: The target gains Dazed 1.\n- Open the Line: Each ally within 5 squares who can see or hear you may move 1 square without provoking.\n- Point the Way: Each ally within 5 squares who can see or hear you gains 1 Boon to their next attack against the target.\n\n**Duration:** Immediate attack. Dazed uses normal decay; each Boon expires when used or at the start of your next turn.\n\n**Equipment / acquisition:** None.\n\n---\n\n**Tier / minimum level:** 3 \u00b7 **DP:** 4 \u00b7 **Requirements to learn:** Class Leader; minimum level 3\n\n**Type:** Signature\n\n**Tags:** Skill / Attack / Control / Support\n\n**Limits:** Once on your turn.\n\n**ID:** signature-leader-orderly-withdrawal\n\n[Class choices](../classes/leader.md) \u00b7 [Card conventions](../card-conventions.md)\n"
+    },
+    {
+      "id": "ability-signature-odd-unlikely-assistant",
+      "name": "Foul Wind",
+      "source": {
+        "path": "design/cards/signature-odd-unlikely-assistant.md",
+        "sha256": "52a28b42d920d202e17e2e9f8441c08cfe4385611a341ae7acfaee03b7e8bbaf"
+      },
+      "inlineTriad": true,
+      "sourceMarkdown": "# Foul Wind\n\n*You drop low, spin, and let out a belch that smells like a grave. Your allies know what is coming and hit the ground.*\n\n## Rules\n\n**Action:** Main Action \u00b7 **Attribute:** Fortitude\n\n**Target / range / shape:** Self; each willing ally within 5 squares; then each non-prone creature within 5 squares other than you.\n\nEach willing ally within 5 squares may immediately fall prone. Make one Fortitude roll. Each non-prone creature within 5 squares other than you takes poison damage: **Weak:** 1; **Standard:** 2; **Strong:** 4.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** None.\n\n---\n\n**Tier / minimum level:** 3 \u00b7 **DP:** 4 \u00b7 **Requirements to learn:** Class Odd; minimum level 3\n\n**Type:** Signature\n\n**Tags:** Skill / Attack / Control\n\n**Limits:** Once on your turn.\n\n**ID:** signature-odd-unlikely-assistant\n\n[Class choices](../classes/odd.md) \u00b7 [Card conventions](../card-conventions.md)\n"
+    },
+    {
+      "id": "ability-signature-odd-wrong-place-for-that",
+      "name": "Out of Body",
+      "source": {
+        "path": "design/cards/signature-odd-wrong-place-for-that.md",
+        "sha256": "bbb47f3753215960b895bae1322f3448b4efd5f492d2183d5664088f4bbaf2f6"
+      },
+      "inlineTriad": false,
+      "sourceMarkdown": "# Out of Body\n\n*You step out of yourself, leaving your body slumped and prone while your spirit moves free.*\n\n## Rules\n\n**Action:** Main Action \u00b7 **Attribute:** None (no roll)\n\n**Target / range / shape:** Self.\n\nYour body falls prone and cannot act, move or take Reactions. It has 3 defense Banes. Your spirit appears in your square or an adjacent free square.\n\nThe spirit has Speed 5, can speak, can pass through nonmagical solid objects and creatures, and is immune to mundane attacks. It cannot attack, cast spells, use equipment or physically interact with objects. Its movement does not provoke opportunity attacks. Magical attacks can target it; resolve them against your normal defenses, and damage to the spirit is damage to your body. If your body drops to 0 HP, the projection ends.\n\nAt the end of your turn, choose one:\n\n- **Snap Back:** Your spirit returns to your body.\n- **Manifest:** Your body appears in the spirit\u2019s square or the nearest free square that is not separated from your body by a solid barrier, prone. The projection ends.\n\nIf no legal Manifest square exists, you can only Snap Back.\n\n**Duration:** Until the end of your turn.\n\n**Equipment / acquisition:** None.\n\n---\n\n**Tier / minimum level:** 3 \u00b7 **DP:** 4 \u00b7 **Requirements to learn:** Class Odd; minimum level 3\n\n**Type:** Signature\n\n**Tags:** Skill / Utility / Movement\n\n**Limits:** Repeatable; normal action economy applies.\n\n**ID:** signature-odd-wrong-place-for-that\n\n[Class choices](../classes/odd.md) \u00b7 [Card conventions](../card-conventions.md)\n"
+    },
+    {
+      "id": "ability-signature-protector-break-their-advance",
+      "name": "Break the Charge",
+      "source": {
+        "path": "design/cards/signature-protector-break-their-advance.md",
+        "sha256": "82a6a8830a242c9135d8fdaedf973d225e358ba963d1714a3f28ded80444c9ac"
+      },
+      "inlineTriad": true,
+      "sourceMarkdown": "# Break the Charge\n\n*You meet the charge with your shoulder and drive the attacker back.*\n\n## Rules\n\n**Action:** Reaction \u00b7 **Attribute:** Brawn\n\n**Target / range / shape:** One enemy within 2 squares.\n\nTrigger: an enemy moves within 2 squares of you while moving toward an ally you can see. Make a Brawn roll against the target. Weak: 2 physical damage. Standard: 2 physical damage, and the target is Prone. Strong: 4 physical damage, and the target is Prone and Dazed 1.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** None.\n\n---\n\n**Tier / minimum level:** 3 \u00b7 **DP:** 4 \u00b7 **Requirements to learn:** Class Protector; minimum level 3\n\n**Type:** Signature\n\n**Tags:** Skill / Attack / Control\n\n**Limits:** Repeatable; uses your Reaction.\n\n**ID:** signature-protector-break-their-advance\n\n[Class choices](../classes/protector.md) \u00b7 [Card conventions](../card-conventions.md)\n"
+    },
+    {
+      "id": "ability-signature-protector-drive-back-the-circle",
+      "name": "Radiant Threshold",
+      "source": {
+        "path": "design/cards/signature-protector-drive-back-the-circle.md",
+        "sha256": "47dcdd537be505c62374eef3e0ee3dbc7bfde7b1c8ba9b33039406ec83754e4f"
+      },
+      "inlineTriad": true,
+      "sourceMarkdown": "# Radiant Threshold\n\n*You call on the gods of war and protection. A line of white fire draws itself across the ground, and the air smells of iron and lightning.*\n\n## Rules\n\n**Action:** Main Action \u00b7 **Attribute:** Reason\n\n**Target / range / shape:** A straight line starting from a point you can see within 5 squares.\n\nMake a Reason roll. Weak: 3 squares long; 1 radiant damage. Standard: 5 squares long; 2 radiant damage. Strong: 7 squares long; 3 radiant damage. The line is 1 square wide and lasts until the start of your next turn. You and allies you choose when you create it are unaffected. A creature takes the damage when the line appears in its square, when it enters a square of the line, or when it starts its turn there. A creature can take this damage only once per turn. The line does not block movement.\n\n**Duration:** Until the start of your next turn.\n\n**Equipment / acquisition:** None.\n\n---\n\n**Tier / minimum level:** 7 \u00b7 **DP:** 8 \u00b7 **Requirements to learn:** Class Protector; minimum level 7\n\n**Type:** Signature\n\n**Tags:** Skill / Control / Attack\n\n**Limits:** Once per scene.\n\n**ID:** signature-protector-drive-back-the-circle\n\n[Class choices](../classes/protector.md) \u00b7 [Card conventions](../card-conventions.md)\n"
+    },
+    {
+      "id": "ability-signature-shadow-exploit-confusion",
+      "name": "The Half-Second",
+      "source": {
+        "path": "design/cards/signature-shadow-exploit-confusion.md",
+        "sha256": "cdfc074a60e2267e2bf955c3ef7d01f27e84b57abcbcd185c127e68170b94d5a"
+      },
+      "inlineTriad": true,
+      "sourceMarkdown": "# The Half-Second\n\n*You move in the space between a decision and its consequence.*\n\n## Rules\n\n**Action:** Reaction \u00b7 **Attribute:** Agility\n\n**Target / range / shape:** The triggering creature.\n\nTrigger: another creature you can see declares an action. Make an Agility attack roll with a weapon against the target. Weak: 3 physical damage. The triggering action resolves. Standard: 5 physical damage. The triggering action is interrupted and lost. Strong: 7 physical damage, and the target has Dazed 1. The triggering action is interrupted and lost.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A weapon.\n\n---\n\n**Tier / minimum level:** 7 \u00b7 **DP:** 8 \u00b7 **Requirements to learn:** Class Shadow; minimum level 7\n\n**Type:** Signature\n\n**Tags:** Skill / Attack / Control\n\n**Limits:** Once per scene; uses your Reaction.\n\n**ID:** signature-shadow-exploit-confusion\n\n[Class choices](../classes/shadow.md) \u00b7 [Card conventions](../card-conventions.md)\n"
+    },
+    {
+      "id": "ability-signature-shadow-leave-no-pursuit",
+      "name": "The Cutting Word",
+      "source": {
+        "path": "design/cards/signature-shadow-leave-no-pursuit.md",
+        "sha256": "0fd9732816f1730ab46e978dea73d7e2cd0caa26ceb3a17b6a4bc89c1cfc54e9"
+      },
+      "inlineTriad": true,
+      "sourceMarkdown": "# The Cutting Word\n\n*You find the sentence that undoes them, and say it quietly.*\n\n## Rules\n\n**Action:** Maneuver \u00b7 **Attribute:** Guile\n\n**Target / range / shape:** One creature within 10 squares that can see or hear you.\n\nMake a Guile roll against the target. The jab can be a spoken barb, a gesture, or a look. Weak: the target has Dazed 1. Standard: the target has Dazed 1 and Frightened 1. Strong: the target has Dazed 2 and Frightened 1, and it cannot take Reactions until the end of its next turn.\n\n**Duration:** Conditions use their normal decay.\n\n**Equipment / acquisition:** None.\n\n---\n\n**Tier / minimum level:** 7 \u00b7 **DP:** 8 \u00b7 **Requirements to learn:** Class Shadow; minimum level 7\n\n**Type:** Signature\n\n**Tags:** Skill / Social / Control\n\n**Limits:** Once per scene.\n\n**ID:** signature-shadow-leave-no-pursuit\n\n[Class choices](../classes/shadow.md) \u00b7 [Card conventions](../card-conventions.md)\n"
+    },
+    {
+      "id": "ability-signature-shadow-open-the-way",
+      "name": "Open the Way",
+      "source": {
+        "path": "design/cards/signature-shadow-open-the-way.md",
+        "sha256": "61f6b483baa3cb77e487f34e77aa47710777aa24e640052cdc847194c7687dfc"
+      },
+      "inlineTriad": true,
+      "sourceMarkdown": "# Open the Way\n\n*There is always another door. You just have to know where the hinges are.*\n\n## Rules\n\n**Action:** Main Action \u00b7 **Attribute:** Guile\n\n**Target / range / shape:** One adjacent lock, simple trap, or hidden entrance.\n\nUse appropriate tools to work toward the DA's stated target. Each attempt takes a Main Action. Weak: 2 progress. Standard: 3 progress. Strong: 5 progress. On completion, open the lock, disable the trap, or find the entrance. Your work makes no audible noise and leaves no trace. The DA states any known risk before you begin.\n\n**Duration:** Progress persists for that task.\n\n**Equipment / acquisition:** Appropriate tools.\n\n---\n\n**Tier / minimum level:** 3 \u00b7 **DP:** 4 \u00b7 **Requirements to learn:** Class Shadow; minimum level 3\n\n**Type:** Signature\n\n**Tags:** Skill / Utility\n\n**Limits:** Repeatable; normal action economy applies.\n\n**ID:** signature-shadow-open-the-way\n\n[Class choices](../classes/shadow.md) \u00b7 [Card conventions](../card-conventions.md)\n"
+    },
+    {
+      "id": "ability-signature-shadow-pass-the-guard",
+      "name": "Read the Room",
+      "source": {
+        "path": "design/cards/signature-shadow-pass-the-guard.md",
+        "sha256": "97268ab578e6118751567827051f276a08ef043a989bd7853deb7a18d2e18bef"
+      },
+      "inlineTriad": true,
+      "sourceMarkdown": "# Read the Room\n\n*You find the one thing the other side wants and set it on the table.*\n\n## Rules\n\n**Action:** Maneuver \u00b7 **Attribute:** Guile\n\n**Target / range / shape:** One creature within 5 squares that you can see.\n\nMake a Guile roll against the target. An intent is what the creature wants from this exchange or what it means to do next. Weak: learn one intent. Standard: learn one intent, and gain 1 Boon to your next social roll against it. Strong: learn one intent, and gain 2 Boons to your next social roll against it.\n\n**Duration:** The scene.\n\n**Equipment / acquisition:** None.\n\n---\n\n**Tier / minimum level:** 3 \u00b7 **DP:** 4 \u00b7 **Requirements to learn:** Class Shadow; minimum level 3\n\n**Type:** Signature\n\n**Tags:** Skill / Social / Utility\n\n**Limits:** Once per scene per creature.\n\n**ID:** signature-shadow-pass-the-guard\n\n[Class choices](../classes/shadow.md) \u00b7 [Card conventions](../card-conventions.md)\n"
+    },
+    {
+      "id": "ability-signature-shadow-soft-landing",
+      "name": "Blade in the Back",
+      "source": {
+        "path": "design/cards/signature-shadow-soft-landing.md",
+        "sha256": "7e951ebb138d27dbd3a396ca2f79212ea62968fdf0f426127920acbe023d3a6b"
+      },
+      "inlineTriad": true,
+      "sourceMarkdown": "# Blade in the Back\n\n*You wait for the half-second when the guard turns, and the knife goes in under the ribs.*\n\n## Rules\n\n**Action:** Main Action \u00b7 **Attribute:** Agility\n\n**Target / range / shape:** One creature within reach that has not noticed you or is adjacent to one of your allies.\n\nMake an Agility roll against the target. Weak: 3 physical damage. Standard: 4 physical damage, and the target has Bleeding 1. Strong: 6 physical damage, and the target has Bleeding 2.\n\n**Duration:** Immediate; Bleeding uses its normal decay.\n\n**Equipment / acquisition:** A melee weapon.\n\n---\n\n**Tier / minimum level:** 1 \u00b7 **DP:** 2 \u00b7 **Requirements to learn:** Class Shadow; minimum level 1\n\n**Type:** Signature\n\n**Tags:** Skill / Attack / Control\n\n**Limits:** Repeatable; normal action economy applies.\n\n**ID:** signature-shadow-soft-landing\n\n[Class choices](../classes/shadow.md) \u00b7 [Card conventions](../card-conventions.md)\n"
+    },
+    {
+      "id": "ability-signature-shadow-strike-and-vanish",
+      "name": "Hamstring",
+      "source": {
+        "path": "design/cards/signature-shadow-strike-and-vanish.md",
+        "sha256": "99e8a57b4ab383947e8e0c8d28bda34d63a8cf70a8d860af0681fdfeaa995016"
+      },
+      "inlineTriad": true,
+      "sourceMarkdown": "# Hamstring\n\n*You cut the tendon, not the throat. The fight is already decided.*\n\n## Rules\n\n**Action:** Main Action \u00b7 **Attribute:** Agility\n\n**Target / range / shape:** One creature within reach or range.\n\nMake an Agility roll against the target. Weak: 2 physical damage, and the target has Slowed 1. Standard: 3 physical damage, and the target has Slowed 1 and Dazed 1. Strong: 5 physical damage, and the target has Slowed 1, Dazed 1 and Prone.\n\n**Duration:** Immediate; conditions use their normal decay.\n\n**Equipment / acquisition:** A light or ranged weapon.\n\n---\n\n**Tier / minimum level:** 3 \u00b7 **DP:** 4 \u00b7 **Requirements to learn:** Class Shadow; minimum level 3\n\n**Type:** Signature\n\n**Tags:** Skill / Attack / Control\n\n**Limits:** Repeatable; normal action economy applies.\n\n**ID:** signature-shadow-strike-and-vanish\n\n[Class choices](../classes/shadow.md) \u00b7 [Card conventions](../card-conventions.md)\n"
+    },
+    {
+      "id": "ability-signature-shadow-turn-their-eye",
+      "name": "Fast Talk",
+      "source": {
+        "path": "design/cards/signature-shadow-turn-their-eye.md",
+        "sha256": "5a6f7e7acea819339617ffe31a3d2111e5d9585263df77a61934714243c30e05"
+      },
+      "inlineTriad": true,
+      "sourceMarkdown": "# Fast Talk\n\n*You are already three sentences into the lie before the guard decides to be suspicious.*\n\n## Rules\n\n**Action:** Maneuver \u00b7 **Attribute:** Guile\n\n**Target / range / shape:** One creature within 5 squares that can hear and understand you.\n\nState the social goal you are pursuing and what you want the target to do. Make a Guile roll. The result adds progress toward that goal: Weak: 2 progress. Standard: 3 progress. Strong: 5 progress. The DA sets the progress target before the roll. When the total reaches it, the target agrees within its wants and limits. This does not compel self-harm, betrayal, or a change to its loyalties.\n\n**Duration:** Immediate progress; the negotiation persists.\n\n**Equipment / acquisition:** None.\n\n---\n\n**Tier / minimum level:** 1 \u00b7 **DP:** 2 \u00b7 **Requirements to learn:** Class Shadow; minimum level 1\n\n**Type:** Signature\n\n**Tags:** Skill / Social / Utility\n\n**Limits:** Repeatable; normal action economy applies.\n\n**ID:** signature-shadow-turn-their-eye\n\n[Class choices](../classes/shadow.md) \u00b7 [Card conventions](../card-conventions.md)\n"
+    },
+    {
+      "id": "ability-signature-shepherd-careful-transfer",
+      "name": "Triage",
+      "source": {
+        "path": "design/cards/signature-shepherd-careful-transfer.md",
+        "sha256": "bb5fb86b34e3d9d1433cb71901797c429144ce20b4702beb82f5f8e7fd45f533"
+      },
+      "inlineTriad": true,
+      "sourceMarkdown": "# Triage\n\n*Two wounded, one pair of hands, no time to choose wrong.*\n\n## Rules\n\n**Action:** Main Action \u00b7 **Attribute:** Reason\n\n**Target / range / shape:** One or two living allies within 3 squares.\n\nMoser's law of conservation of Life energy: pay 3 HP before rolling. This cost bypasses resistance and must leave you above 0 HP. Requires a free hand. Make a Reason roll. Choose one or two allies. One ally: restore 6 HP on Weak, 11 HP on Standard, 16 HP on Strong. Two allies: restore 4 HP each on Weak, 7 HP each on Standard, 10 HP each on Strong. Reduce the restored amount by each target's Life resistance, to a minimum of 1 if HP is missing, and never exceed maximum HP. A Dying creature cannot be targeted; stabilize it first. This restores no wounds and cannot reverse Last Words.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A free hand.\n\n---\n\n**Tier / minimum level:** 3 \u00b7 **DP:** 4 \u00b7 **Requirements to learn:** Class Shepherd; minimum level 3\n\n**Type:** Signature\n\n**Tags:** Magic / Recovery\n\n**Limits:** Repeatable; normal action economy applies.\n\n**ID:** signature-shepherd-careful-transfer\n\n[Class choices](../classes/shepherd.md) \u00b7 [Card conventions](../card-conventions.md)\n"
+    },
+    {
+      "id": "ability-signature-shepherd-ease-the-burden",
+      "name": "Steady Voice",
+      "source": {
+        "path": "design/cards/signature-shepherd-ease-the-burden.md",
+        "sha256": "84cca3772c2e4d4eac835c3e35cec5f2d1015006e1d63832228be08b9de3f82f"
+      },
+      "inlineTriad": true,
+      "sourceMarkdown": "# Steady Voice\n\n*You find the one calm sentence under the noise, and they hear it.*\n\n## Rules\n\n**Action:** Maneuver \u00b7 **Attribute:** Guile\n\n**Target / range / shape:** One ally within 3 squares that can hear and understand you.\n\nMake a Guile roll. Choose Frightened or Dazed on the target. Weak: reduce that condition by 1. Standard: reduce it by 1, and the target gains 1 Boon to its next roll to resist fear or Daze. Strong: reduce it by 2, and the target gains 1 Boon to its next roll to resist fear or Daze. If the target has neither condition, it gains the Boon on a Standard or Strong result.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** None.\n\n---\n\n**Tier / minimum level:** 1 \u00b7 **DP:** 2 \u00b7 **Requirements to learn:** Class Shepherd; minimum level 1\n\n**Type:** Signature\n\n**Tags:** Skill / Recovery / Support\n\n**Limits:** Repeatable; normal action economy applies.\n\n**ID:** signature-shepherd-ease-the-burden\n\n[Class choices](../classes/shepherd.md) \u00b7 [Card conventions](../card-conventions.md)\n"
+    },
+    {
+      "id": "ability-signature-shepherd-gentle-return",
+      "name": "Mend",
+      "source": {
+        "path": "design/cards/signature-shepherd-gentle-return.md",
+        "sha256": "73af87c8182f9918144d7f89ec95031f3cc8383140ff84b59f2b763e54ce8da2"
+      },
+      "inlineTriad": true,
+      "sourceMarkdown": "# Mend\n\n*You put your hand where the wound is and remind the body what whole feels like.*\n\n## Rules\n\n**Action:** Main Action \u00b7 **Attribute:** Reason\n\n**Target / range / shape:** One living ally within 3 squares.\n\nMoser's law of conservation of Life energy: pay 1 HP before rolling. This cost bypasses resistance and must leave you above 0 HP. Requires a free hand. Make a Reason roll. Weak: restore 3 HP. Standard: restore 6 HP. Strong: restore 9 HP, and the target may stand without spending movement. Reduce the restored amount by the target's Life resistance, to a minimum of 1 if HP is missing, and never exceed maximum HP. A Dying creature cannot be targeted; stabilize it first. This restores no wounds and cannot reverse Last Words.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A free hand.\n\n---\n\n**Tier / minimum level:** 1 \u00b7 **DP:** 2 \u00b7 **Requirements to learn:** Class Shepherd; minimum level 1\n\n**Type:** Signature\n\n**Tags:** Magic / Recovery\n\n**Limits:** Repeatable; normal action economy applies.\n\n**ID:** signature-shepherd-gentle-return\n\n[Class choices](../classes/shepherd.md) \u00b7 [Card conventions](../card-conventions.md)\n"
+    },
+    {
+      "id": "ability-signature-shepherd-quiet-the-tremor",
+      "name": "Mend the Wound",
+      "source": {
+        "path": "design/cards/signature-shepherd-quiet-the-tremor.md",
+        "sha256": "9431fddefe1e586d164caf76445b9941e5c2b81d1507b3fadad05259cc88278f"
+      },
+      "inlineTriad": true,
+      "sourceMarkdown": "# Mend the Wound\n\n*You set the bone, close the tear, and talk them through the part where it hurts.*\n\n## Rules\n\n**Action:** 10 minutes \u00b7 **Attribute:** Reason\n\n**Target / range / shape:** One willing creature with a Soft Tissue or Bone wound.\n\nMake a Reason roll. Add progress to that wound's treatment track. Weak: 2 progress. Standard: 3 progress. Strong: 5 progress, and reduce one temporary condition caused by the wound by 1. This counts as the wound's one treatment attempt for the day. You can do it without a treatment kit; steady hands and a quiet word substitute for tools. It does not remove the wound outright, restore HP, or erase a scar.\n\n**Duration:** The treatment.\n\n**Equipment / acquisition:** A free hand and basic treatment tools.\n\n---\n\n**Tier / minimum level:** 3 \u00b7 **DP:** 4 \u00b7 **Requirements to learn:** Class Shepherd; minimum level 3\n\n**Type:** Signature\n\n**Tags:** Skill / Recovery / Utility\n\n**Limits:** One attempt per wound per day, as normal treatment.\n\n**ID:** signature-shepherd-quiet-the-tremor\n\n[Class choices](../classes/shepherd.md) \u00b7 [Card conventions](../card-conventions.md)\n"
+    },
+    {
+      "id": "ability-signature-shepherd-shared-resolve",
+      "name": "Not My Flock",
+      "source": {
+        "path": "design/cards/signature-shepherd-shared-resolve.md",
+        "sha256": "22982207bc4ad4974606591a00d1a7af7c6d0ae2de96a92ab17e8accf734e951"
+      },
+      "inlineTriad": true,
+      "sourceMarkdown": "# Not My Flock\n\n*You see the blow land on your flock, and the light comes off you like a blade.*\n\n## Rules\n\n**Action:** Main Action \u00b7 **Attribute:** Reason\n\n**Target / range / shape:** One creature within 10 squares that has damaged one of your allies since the end of your last turn.\n\nMake a Reason roll against the target. Weak: 4 radiant damage. Standard: 8 radiant damage, and the target has Frightened 1. Strong: 12 radiant damage, and the target has Frightened 2, and it cannot attack your allies until the end of its next turn.\n\n**Duration:** Immediate; conditions use their normal decay.\n\n**Equipment / acquisition:** None.\n\n---\n\n**Tier / minimum level:** 7 \u00b7 **DP:** 8 \u00b7 **Requirements to learn:** Class Shepherd; minimum level 7\n\n**Type:** Signature\n\n**Tags:** Magic / Attack / Control\n\n**Limits:** Once per scene.\n\n**ID:** signature-shepherd-shared-resolve\n\n[Class choices](../classes/shepherd.md) \u00b7 [Card conventions](../card-conventions.md)\n"
+    },
+    {
+      "id": "ability-signature-unbalanced-crash-down",
+      "name": "The Cannonball",
+      "source": {
+        "path": "design/cards/signature-unbalanced-crash-down.md",
+        "sha256": "fc46f0ede05fc8f184a7278f0c83958c9332eec36d4d9c85c2def13a3615b2cf"
+      },
+      "inlineTriad": true,
+      "sourceMarkdown": "# The Cannonball\n\n*You back up three steps, lower your head, and throw yourself at them like a stone from a sling.*\n\n## Rules\n\n**Action:** Main Action \u00b7 **Attribute:** Brawn\n\n**Target / range / shape:** One creature within 4 squares.\n\nMove up to 4 squares in a straight line toward the target, ignoring difficult terrain. If you end adjacent to it, make a Brawn roll. Weak: 4 physical damage to the target. You take 3 physical damage and are Prone. Standard: 8 physical damage, and the target is Prone. You take 2 physical damage. Strong: 12 physical damage, and the target is Prone and Dazed 1. You take 1 physical damage and are Dazed 1. If you cannot move at least 2 squares, you cannot use this ability. Resolve collisions normally.\n\n**Duration:** Immediate; Prone and Dazed use their normal rules.\n\n**Equipment / acquisition:** None.\n\n---\n\n**Tier / minimum level:** 7 \u00b7 **DP:** 8 \u00b7 **Requirements to learn:** Class Unbalanced; minimum level 7\n\n**Type:** Signature\n\n**Tags:** Skill / Attack / Control\n\n**Limits:** Once per scene.\n\n**ID:** signature-unbalanced-crash-down\n\n[Class choices](../classes/unbalanced.md) \u00b7 [Card conventions](../card-conventions.md)\n"
+    },
+    {
+      "id": "ability-signature-unbalanced-crush-the-barrier",
+      "name": "Rampage",
+      "source": {
+        "path": "design/cards/signature-unbalanced-crush-the-barrier.md",
+        "sha256": "2d6d09c36b67fc5c9ea6d2659aa367c64fffb285c7e88ce459ae33ab1d0d1de7"
+      },
+      "inlineTriad": true,
+      "sourceMarkdown": "# Rampage\n\n*You do not stop at the first body.*\n\n## Rules\n\n**Action:** Main Action \u00b7 **Attribute:** Brawn\n\n**Target / range / shape:** Self; a straight line up to your Speed.\n\nThis ability consumes your Main Action and your movement for the turn. Move up to your Speed in a straight line. Each enemy within 1 square of your path takes 2 physical damage and is pushed 1 square directly away from the path. Then make a Brawn roll against one enemy adjacent to you at the end of the movement. Weak: 3 physical damage. Standard: 4 physical damage, and it is Prone. Strong: 6 physical damage, and it is Prone. If you cannot move at least 2 squares in a straight line, you cannot use this ability. You cannot move again after the charge.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** None.\n\n---\n\n**Tier / minimum level:** 3 \u00b7 **DP:** 4 \u00b7 **Requirements to learn:** Class Unbalanced; minimum level 3\n\n**Type:** Signature\n\n**Tags:** Skill / Attack / Movement / Control\n\n**Limits:** Once per scene.\n\n**ID:** signature-unbalanced-crush-the-barrier\n\n[Class choices](../classes/unbalanced.md) \u00b7 [Card conventions](../card-conventions.md)\n"
+    },
+    {
+      "id": "ability-signature-unbalanced-laugh-at-the-fall",
+      "name": "Grab and Hurl",
+      "source": {
+        "path": "design/cards/signature-unbalanced-laugh-at-the-fall.md",
+        "sha256": "e210924c6ddd6b7aa90a4b82a3ec5d9272c9d4470a601583bc92a0c2f746eff2"
+      },
+      "inlineTriad": true,
+      "sourceMarkdown": "# Grab and Hurl\n\n*You get a hand on them, and the room becomes a weapon.*\n\n## Rules\n\n**Action:** Main Action \u00b7 **Attribute:** Brawn\n\n**Target / range / shape:** One adjacent creature your size or smaller.\n\nMake a Brawn roll against the target. Weak: it has Grappled 1. Standard: throw it up to 2 squares in a direction you choose; it lands Prone. Strong: throw it up to 3 squares in a direction you choose; it lands Prone and takes 2 physical damage. Resolve collisions normally. The throw ends any grapple from this ability.\n\n**Duration:** Immediate; Grappled and Prone use their normal rules.\n\n**Equipment / acquisition:** None.\n\n---\n\n**Tier / minimum level:** 1 \u00b7 **DP:** 2 \u00b7 **Requirements to learn:** Class Unbalanced; minimum level 1\n\n**Type:** Signature\n\n**Tags:** Skill / Attack / Control / Movement\n\n**Limits:** Repeatable; normal action economy applies.\n\n**ID:** signature-unbalanced-laugh-at-the-fall\n\n[Class choices](../classes/unbalanced.md) \u00b7 [Card conventions](../card-conventions.md)\n"
+    },
+    {
+      "id": "ability-signature-unbalanced-scatter-the-line",
+      "name": "Earthbreaker",
+      "source": {
+        "path": "design/cards/signature-unbalanced-scatter-the-line.md",
+        "sha256": "452079d952d1308e978ad6774d4273440ab9ee744d7ecdfc29514dbef7d711f8"
+      },
+      "inlineTriad": true,
+      "sourceMarkdown": "# Earthbreaker\n\n*You stop charging, plant both hands in the ground, and let the earth answer.*\n\n## Rules\n\n**Action:** Main Action \u00b7 **Attribute:** Brawn\n\n**Target / range / shape:** Self; each enemy within 2 squares.\n\nMake a Brawn roll and apply it to every enemy in range. Weak: 2 physical damage, and push 1 square directly away from you. Standard: 4 physical damage, push 2 squares, and it is Prone. Strong: 6 physical damage, push 3 squares, and it is Prone and Dazed 1. Structures and unattended objects in the area take double damage. Resolve collisions normally. This does not move you.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** None.\n\n---\n\n**Tier / minimum level:** 7 \u00b7 **DP:** 8 \u00b7 **Requirements to learn:** Class Unbalanced; minimum level 7\n\n**Type:** Signature\n\n**Tags:** Skill / Attack / Control\n\n**Limits:** Once per scene.\n\n**ID:** signature-unbalanced-scatter-the-line\n\n[Class choices](../classes/unbalanced.md) \u00b7 [Card conventions](../card-conventions.md)\n"
+    },
+    {
+      "id": "ability-signature-unbalanced-shoulder-through",
+      "name": "Charge",
+      "source": {
+        "path": "design/cards/signature-unbalanced-shoulder-through.md",
+        "sha256": "2ec31bc5effcd7ab921bdb651d9c78c31c23fdced032f06fe8fedfdc35ed6d35"
+      },
+      "inlineTriad": true,
+      "sourceMarkdown": "# Charge\n\n*You lower your shoulder and let the distance do the work.*\n\n## Rules\n\n**Action:** Main Action \u00b7 **Attribute:** Brawn\n\n**Target / range / shape:** One creature at least 2 squares away and within your Speed, in a straight line.\n\nMove up to your Speed in a straight line toward the target. This movement provokes normally. If you end adjacent to it, make a Brawn roll against it. Weak: 2 physical damage, and push it 1 square. Standard: 3 physical damage, push it 2 squares, and it is Prone. Strong: 5 physical damage, push it 3 squares, and it is Prone. Resolve collisions normally. If you cannot move at least 2 squares, you cannot use this ability.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** None.\n\n---\n\n**Tier / minimum level:** 1 \u00b7 **DP:** 2 \u00b7 **Requirements to learn:** Class Unbalanced; minimum level 1\n\n**Type:** Signature\n\n**Tags:** Skill / Attack / Movement / Control\n\n**Limits:** Repeatable; normal action economy applies.\n\n**ID:** signature-unbalanced-shoulder-through\n\n[Class choices](../classes/unbalanced.md) \u00b7 [Card conventions](../card-conventions.md)\n"
+    },
+    {
+      "id": "ability-signature-warden-a-watchful-rest",
+      "name": "The Green Spear",
+      "source": {
+        "path": "design/cards/signature-warden-a-watchful-rest.md",
+        "sha256": "40dbdfc4e26019b6870f34f01ed2cecefa3b80866c374bcb4b2365ba2ce66fe4"
+      },
+      "inlineTriad": true,
+      "sourceMarkdown": "# The Green Spear\n\n*You ask the wood for a weapon, and it gives you a spear. You throw it before the answer stops moving.*\n\n## Rules\n\n**Action:** Main Action \u00b7 **Attribute:** Knowledge\n\n**Target / range / shape:** One creature within 8 squares.\n\nA spear of stone and living wood forms in your hand and flies at the target. Make a Knowledge attack roll. Weak: 3 physical damage. Standard: 5 physical damage, and the target is Slowed 1. Strong: 7 physical damage, and the target is Slowed 2 and Prone. The spear disappears after the attack. This does not require ammunition or a free hand after the throw.\n\n**Duration:** Immediate; Slowed and Prone use their normal rules.\n\n**Equipment / acquisition:** None.\n\n---\n\n**Tier / minimum level:** 3 \u00b7 **DP:** 4 \u00b7 **Requirements to learn:** Class Warden; minimum level 3\n\n**Type:** Signature\n\n**Tags:** Magic / Attack / Control\n\n**Limits:** Repeatable; normal action economy applies.\n\n**ID:** signature-warden-a-watchful-rest\n\n[Class choices](../classes/warden.md) \u00b7 [Card conventions](../card-conventions.md)\n"
+    },
+    {
+      "id": "ability-signature-warden-follow-my-footsteps",
+      "name": "Twin Strike",
+      "source": {
+        "path": "design/cards/signature-warden-follow-my-footsteps.md",
+        "sha256": "7c58469f28fa4761ef99ee9f12a29f5e05a18d62b6b91be124b5a783ac3e85d3"
+      },
+      "inlineTriad": true,
+      "sourceMarkdown": "# Twin Strike\n\n*Two blades, one motion.*\n\n## Rules\n\n**Action:** Main Action \u00b7 **Attribute:** Agility\n\n**Target / range / shape:** One or two creatures within reach.\n\nRequires two light melee weapons, one in each hand. Make one attack with each weapon. Each attack uses your normal attack procedure and deals 1 physical damage on Weak, 2 on Standard, 3 on Strong. You can target the same creature with both attacks or one creature with each. After the attacks, gain 1 Boon to defense until the start of your next turn.\n\n**Duration:** Immediate; the defense Boon lasts until the start of your next turn.\n\n**Equipment / acquisition:** Two light melee weapons, one in each hand.\n\n---\n\n**Tier / minimum level:** 1 \u00b7 **DP:** 2 \u00b7 **Requirements to learn:** Class Warden; minimum level 1\n\n**Type:** Signature\n\n**Tags:** Skill / Attack / Defense\n\n**Limits:** Repeatable; normal action economy applies.\n\n**ID:** signature-warden-follow-my-footsteps\n\n[Class choices](../classes/warden.md) \u00b7 [Card conventions](../card-conventions.md)\n"
+    },
+    {
+      "id": "ability-signature-warden-know-what-you-hunt",
+      "name": "Death from the Blind Spot",
+      "source": {
+        "path": "design/cards/signature-warden-know-what-you-hunt.md",
+        "sha256": "4288f494978c5238f6fb0c9a8032988901cbdf24a0f6c00f3debf8c3bf48ecc5"
+      },
+      "inlineTriad": true,
+      "sourceMarkdown": "# Death from the Blind Spot\n\n*You have run it to ground. It turns, and you are already in the one place it cannot see.*\n\n## Rules\n\n**Action:** Main Action \u00b7 **Attribute:** Agility\n\n**Target / range / shape:** One creature you have hit or tracked this scene.\n\nThis ability consumes your Main Action and your movement for the turn. Move up to 6 squares to a square adjacent to the target, ignoring difficult terrain and without provoking. Then make one melee attack with 1 Boon. Weak: 6 physical damage. Standard: 9 physical damage, and the target is Prone. Strong: 12 physical damage, and the target is Prone and Dazed 1. If you cannot reach a square adjacent to the target, you cannot use this ability.\n\n**Duration:** Immediate; Prone and Dazed use their normal rules.\n\n**Equipment / acquisition:** A melee weapon.\n\n---\n\n**Tier / minimum level:** 7 \u00b7 **DP:** 8 \u00b7 **Requirements to learn:** Class Warden; minimum level 7\n\n**Type:** Signature\n\n**Tags:** Skill / Attack / Movement / Control\n\n**Limits:** Once per scene.\n\n**ID:** signature-warden-know-what-you-hunt\n\n[Class choices](../classes/warden.md) \u00b7 [Card conventions](../card-conventions.md)\n"
+    },
+    {
+      "id": "ability-signature-warden-stay-on-the-scent",
+      "name": "Volley",
+      "source": {
+        "path": "design/cards/signature-warden-stay-on-the-scent.md",
+        "sha256": "00d1cfeb9a8372542fae38435cdb407f25a77bb9d97c264d18f6c2a6ce861517"
+      },
+      "inlineTriad": true,
+      "sourceMarkdown": "# Volley\n\n*You empty the quiver into the space where the enemy is standing.*\n\n## Rules\n\n**Action:** Main Action \u00b7 **Attribute:** Agility\n\n**Target / range / shape:** A 2 \u00d7 2 area within 10 squares.\n\nRequires a ranged weapon and ammunition. Make one Agility roll and apply it to each creature in the area. Weak: 1 physical damage. Standard: 2 physical damage. Strong: 3 physical damage. Roll once using the worst applicable Boon or Bane among the targets. Each target applies resistance separately. A creature can be affected once per use.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A ranged weapon and ammunition.\n\n---\n\n**Tier / minimum level:** 3 \u00b7 **DP:** 4 \u00b7 **Requirements to learn:** Class Warden; minimum level 3\n\n**Type:** Signature\n\n**Tags:** Skill / Attack\n\n**Limits:** Repeatable; normal action economy applies.\n\n**ID:** signature-warden-stay-on-the-scent\n\n[Class choices](../classes/warden.md) \u00b7 [Card conventions](../card-conventions.md)\n"
+    },
+    {
+      "id": "ability-signature-warden-through-bramble-and-stone",
+      "name": "Entangling Growth",
+      "source": {
+        "path": "design/cards/signature-warden-through-bramble-and-stone.md",
+        "sha256": "8752ae10ad51c6aa3fef13d26c1b4e69b1eedc56549c25fcb6c60e64147dbd24"
+      },
+      "inlineTriad": true,
+      "sourceMarkdown": "# Entangling Growth\n\n*You speak to the roots, and they remember they were here first.*\n\n## Rules\n\n**Action:** Main Action \u00b7 **Attribute:** Knowledge\n\n**Target / range / shape:** One or two creatures within 8 squares that are adjacent to each other.\n\nMake one Knowledge roll and apply it to each target. Weak: 2 physical damage, and the target is Slowed 1. Standard: 3 physical damage, and the target is Slowed 2. Strong: 5 physical damage, and the target is Slowed 2 and Grappled 1.\n\n**Duration:** Immediate; Slowed and Grappled use their normal rules.\n\n**Equipment / acquisition:** None.\n\n---\n\n**Tier / minimum level:** 3 \u00b7 **DP:** 4 \u00b7 **Requirements to learn:** Class Warden; minimum level 3\n\n**Type:** Signature\n\n**Tags:** Magic / Attack / Control\n\n**Limits:** Repeatable; normal action economy applies.\n\n**ID:** signature-warden-through-bramble-and-stone\n\n[Class choices](../classes/warden.md) \u00b7 [Card conventions](../card-conventions.md)\n"
+    },
+    {
+      "id": "ability-trail-workshop",
+      "name": "Trail Workshop",
+      "source": {
+        "path": "design/cards/trail-workshop.md",
+        "sha256": "51a77a8c96e50bd4ea58a2afb6902e352a57d24e1603c2bf4c305d1bbc678b3c"
+      },
+      "inlineTriad": true,
+      "sourceMarkdown": "# Trail Workshop\n\n*You spread the cloth, set the tools where your hands know to find them, and turn a roadside stop into a workshop.*\n\n## Rules\n\n**Action:** Main Action \u00b7 **Attribute:** Knowledge\n\n**Time:** The recipe's full stated interval per attempt.\n\n**Target / range / shape:** One known compatible ordinary recipe.\n\nLearn two recipes chosen from Bound Torches, Fletched Ammunition, Travel Food, Twisted Cord, Wooden Brace and Simple Replacement Leg. You can craft those and other known recipes explicitly compatible with this ability. Roll Knowledge: Weak adds 1 progress or inventory step, Standard 2, Strong 3, as the recipe specifies.\n\n**Equipment / acquisition:** Craft tools (Bulk 1), supplied on learning if needed.\n\n---\n\n**Tier / minimum level:** 1 \u00b7 **DP:** 2 \u00b7 **Requirements to learn:** Craft 1\n\n**Type:** Skill / Crafting / Utility\n\n**ID:** trail-workshop\n\n[Card conventions](../card-conventions.md)\n"
+    }
+  ]
+}

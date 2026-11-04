@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceCommit": "f3fb98ca03b046335fcc730c1b05689bebf091b4",
+  "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
   "catalogs": {
     "choices": 2,
     "inventory": 1,
@@ -12,21 +12,21 @@
       "type": "Item",
       "path": "packs/abilities",
       "count": 427,
-      "semanticSha256": "9112d4eada7b0326e2283a41f2239369530a54665902f5795326a37d07d157bc"
+      "semanticSha256": "d39e9d20a6e7d3a2b9c2fd045c0fdb4b06fb10ebfa394f4f278c80bbf81ed908"
     },
     {
       "name": "equipment",
       "type": "Item",
       "path": "packs/equipment",
       "count": 46,
-      "semanticSha256": "4d3d29828ab4b74071d0788294655a30167d1d29b5b5c6276f0f39619fd54eca"
+      "semanticSha256": "b3e588cb8ac87f159a98b0e615e841972d20f3862d06a70cc2ff5197b6e95c62"
     },
     {
       "name": "creatures",
       "type": "Actor",
       "path": "packs/creatures",
       "count": 192,
-      "semanticSha256": "3b15bb1fd3da8da26ea0dcfc1feea55d85fa3a559f133ce06ec028e048068945"
+      "semanticSha256": "e66d17ed7279c3a5cf60414597616d3b80a558383a4d943a51f2373b6c776345"
     }
   ]
 }

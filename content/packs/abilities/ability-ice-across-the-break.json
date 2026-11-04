@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/frost.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>Ice grows from both banks and meets with a sharp crack. You set your boot on it, then wave the next traveler forward.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>One visible straight gap up to 5 squares wide within 5 squares, with same-height anchors at both ends.</dd></div><div><dt>Type</dt><dd>Magic / Utility / Movement</dd></div></dl><div class=\"hol-reference-rules\"><p>Create a one-square-wide supported bridge across up to 5 straight empty squares between same-height solid anchors. The bridge costs 1 movement per square for everyone and lasts ten minutes. It warns occupants in its final minute and remains beneath current travelers until they reach an anchor. You may replace it when those travelers are secure.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/f3fb98ca03b046335fcc730c1b05689bebf091b4/design/cards/ice-across-the-break.md\" target=\"_blank\" rel=\"noopener\">design/cards/ice-across-the-break.md</a> at <code>f3fb98ca03b046335fcc730c1b05689bebf091b4</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>Ice grows from both banks and meets with a sharp crack. You set your boot on it, then wave the next traveler forward.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>One visible straight gap up to 5 squares wide within 5 squares, with same-height anchors at both ends.</dd></div><div><dt>Type</dt><dd>Magic / Utility / Movement</dd></div></dl><div class=\"hol-reference-rules\"><p>Create a one-square-wide supported bridge across up to 5 straight empty squares between same-height solid anchors. The bridge costs 1 movement per square for everyone and lasts ten minutes. It warns occupants in its final minute and remains beneath current travelers until they reach an anchor. You may replace it when those travelers are secure.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/ice-across-the-break.md\" target=\"_blank\" rel=\"noopener\">design/cards/ice-across-the-break.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
     "activity": {
       "action": "maneuver",
       "rollMode": "none",
@@ -32,7 +32,7 @@
         "path": "design/cards/ice-across-the-break.md",
         "sha256": "789d59465a5356a48ff4be08d43e76dd964fa70a899aa6a8a4abf412f0906c2e"
       },
-      "sourceCommit": "f3fb98ca03b046335fcc730c1b05689bebf091b4",
+      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

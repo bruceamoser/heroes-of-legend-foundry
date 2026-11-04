@@ -1,6 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
 import { creationPreview } from "../src/rules/creation.mjs";
 import { DEFAULT_LANGUAGES } from "../src/rules/identity.mjs";
 
@@ -45,7 +46,8 @@ const stageFacts = (preview) =>
       -entries
         .filter((entry) => entry.kind === "expired-pool")
         .reduce((total, entry) => total + entry.delta, 0) || 0;
-    return [pool, compensation, spent, expired];
+    const ancestry = entries.filter(entry => entry.kind === "trait-grant").reduce((total, entry) => total + entry.delta, 0);
+    return [pool + ancestry, compensation, spent, expired];
   });
 const heroPreview = (character) =>
   creationPreview(character.draft, choices, inventory, languages);
@@ -55,15 +57,6 @@ const check = (character, field, actual, expected) =>
     expected,
     `${character.name} ${field}: expected ${JSON.stringify(expected)}, received ${JSON.stringify(actual)}`,
   );
-
-// The retained source transcriptions still call Adaptable “Far Walker” and
-// assign Speed +1. Current approved trait rules supersede those worked values:
-// one extra DP per level (including 0), with no Speed bonus. Keep source blobs
-// and their hashes intact so this correction remains visible and reviewable.
-const currentCorrections = new Map([
-  ["mara-reedheart", {speed:6, ancestryDp:1}],
-  ["oren-brass", {speed:6, ancestryDp:1}],
-]);
 
 test("reference fixtures pin all six complete source blobs offline", () => {
   assert.equal(
@@ -75,12 +68,10 @@ test("reference fixtures pin all six complete source blobs offline", () => {
   for (const source of [
     fixture.provenance.index,
     ...Object.values(fixture.provenance.characters),
-  ])
-    assert.equal(
-      source.sha256,
-      lock.records.find((record) => record.path === source.path)?.sha256,
-      source.path,
-    );
+  ]) {
+    assert.equal(createHash("sha256").update(source.text).digest("hex"), source.sha256, `${source.path} full text`);
+    assert.equal(source.sha256, lock.records.find((record) => record.path === source.path)?.sha256, source.path);
+  }
   assert.equal(fixture.characters.length, 6, "reference character count");
   assert.match(fixture.provenance.index.sha256, /^[a-f0-9]{64}$/);
   for (const character of fixture.characters) {
@@ -101,18 +92,10 @@ test("reference fixtures pin all six complete source blobs offline", () => {
 });
 
 for (const character of fixture.characters)
-  test(`${character.name} matches current rules with explicit corrections to stale transcribed values`, () => {
+  test(`${character.name} matches the complete current authored example`, () => {
     const expected = character.expected;
     const draft = character.draft;
-    const correction=currentCorrections.get(character.id);
     const preview = heroPreview(character);
-    if(character.id === "oren-brass") {
-      check(character,"current mixed-ancestry repair",preview.errors.map(error=>error.code),["borrowed-ancestry","borrowed-trait","extra-languages","ancestry-language"]);
-      check(character,"retained legacy languages",preview.draft.languages,character.draft.languages);
-      assert.equal(preview.valid,false);
-      assert.equal(preview.summary,null);
-      return;
-    }
     check(character, "validation", preview.errors, []);
     if (!preview.valid) return;
 
@@ -123,6 +106,7 @@ for (const character of fixture.characters)
       classId: draft.classId,
       classDisciplines: draft.classDisciplines,
       signatureId: draft.signatureId,
+      ...(draft.borrowedAncestryId ? {borrowedAncestryId: draft.borrowedAncestryId, borrowedTraitId: draft.borrowedTraitId} : {}),
     };
     check(character, "identity", identity, expected.identity);
 
@@ -160,7 +144,7 @@ for (const character of fixture.characters)
       character,
       "stage pools/spending/expiry",
       stageFacts(preview),
-      expected.stages.map(([pool,compensation,spent,expired])=>[pool,compensation,spent,expired+(correction?.ancestryDp??0)]),
+      expected.stages,
     );
     const unencumberedSpeed = preview.summary.unencumberedSpeed;
     const encumbrancePenalty = Math.max(
@@ -184,7 +168,7 @@ for (const character of fixture.characters)
       character,
       "Speed",
       Math.max(0, unencumberedSpeed - encumbrancePenalty),
-      correction?.speed ?? expected.stats.speed,
+      expected.stats.speed,
     );
     check(
       character,
@@ -255,4 +239,48 @@ for (const character of fixture.characters)
     }
 
     check(character, "recipe grants", preview.state.recipes, expected.recipes);
+  });
+
+
+// Parse the authored tables independently of fixture expectations and engine ledgers.
+// This prevents a matching fixture/engine pair from hiding stale printed examples.
+for (const character of fixture.characters)
+  test(`${character.name} authored purchases, prices, running balances and identity match the engine`, () => {
+    const text = fixture.provenance.characters[character.id].text;
+    const preview = heroPreview(character);
+    assert.equal(preview.valid, true, JSON.stringify(preview.errors));
+    const stats = text.match(/HP (\d+)\/\d+ · Grit (\d+)\/\d+ · Speed (\d+) squares · Bulk (\d+)\/(\d+)/);
+    assert(stats, `${character.name} printed statistics`);
+    assert.deepEqual(stats.slice(1).map(Number), [preview.summary.maximumHp, preview.summary.gritGranted, preview.summary.unencumberedSpeed, preview.inventory.bulk, preview.summary.capacity]);
+    const sections = [...text.matchAll(/^## Level ([01]) —[^\n]+\n([\s\S]*?)(?=^## |(?![\s\S]))/gm)];
+    assert.equal(sections.length, 2);
+    for (const [, stageText, section] of sections) {
+      const stage = Number(stageText);
+      const printed = [...section.matchAll(/^\| (.+?) \| ([^\n]+) \| (\d+) \| (\d+) \|$/gm)].map(([, purchase, , cost, remaining]) => {
+        const link = purchase.match(/\]\(\.\.\/cards\/([^)]+)\)/);
+        let id;
+        if (link) id = choices.find(record => record.source.path === `design/cards/${link[1]}`)?.id;
+        else {
+          const rank = purchase.match(/\*\*(.+) ([123])\*\*/);
+          assert(rank, purchase);
+          id = choices.find(record => record.kind === "discipline" && record.name === rank[1])?.id;
+        }
+        assert(id, purchase);
+        return [id, Number(cost), Number(remaining)];
+      });
+      const actual = preview.ledger.filter(entry => entry.stage === stage && entry.kind === "purchase").map(entry => [entry.sourceId, -entry.delta, entry.balance]);
+      assert.deepEqual(actual, printed, `${character.name} level ${stage} exact printed purchase order, cost and running balance`);
+    }
+    for (const [, label, path] of text.matchAll(/\[([^\]]+)\]\(\.\.\/cards\/([^)]+)\)/g)) {
+      const record = choices.find(record => record.source.path === `design/cards/${path}`);
+      assert.equal(record?.name, label, `${character.name} current printed ability name`);
+    }
+    const printedLanguages = text.match(/^\*\*Languages:\*\* ([^\n]+)/m)?.[1];
+    for (const language of preview.summary.languages) assert(printedLanguages?.includes(language.name), `${character.name} printed language ${language.name}`);
+    if (character.draft.borrowedAncestryId) {
+      assert(text.includes(`../ancestries/${character.draft.borrowedTraitId}.md`), `${character.name} printed borrowed trait`);
+      assert(preview.summary.ancestryTraitIds.includes(character.draft.borrowedTraitId));
+      assert.equal(choices.find(record => record.id === character.draft.borrowedAncestryId)?.name, "Hill Dwarf");
+      assert.equal(character.draft.languages.ancestry, "dwarven");
+    }
   });

@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/scholarship.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You press your hand into the wall as if it were cool clay. Stone folds around your fingers and opens beneath them.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Time</dt><dd>One minute.</dd></div><div><dt>Target / range / shape</dt><dd>Ordinary stone in one adjacent square.</dd></div><div><dt>Type</dt><dd>Magic / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>Reshape up to one square of ordinary stone that you touch into a passage, handholds, steps or cover. The changed stone stays within that square and retains its new shape. Before you begin, the DA tells you whether the change will remove structural support.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/f3fb98ca03b046335fcc730c1b05689bebf091b4/design/cards/teach-stone-to-bend.md\" target=\"_blank\" rel=\"noopener\">design/cards/teach-stone-to-bend.md</a> at <code>f3fb98ca03b046335fcc730c1b05689bebf091b4</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You press your hand into the wall as if it were cool clay. Stone folds around your fingers and opens beneath them.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Time</dt><dd>One minute.</dd></div><div><dt>Target / range / shape</dt><dd>Ordinary stone in one adjacent square.</dd></div><div><dt>Type</dt><dd>Magic / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>Reshape up to one square of ordinary stone that you touch into a passage, handholds, steps or cover. The changed stone stays within that square and retains its new shape. Before you begin, the DA tells you whether the change will remove structural support.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/teach-stone-to-bend.md\" target=\"_blank\" rel=\"noopener\">design/cards/teach-stone-to-bend.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
     "activity": {
       "action": "main",
       "rollMode": "none",
@@ -32,7 +32,7 @@
         "path": "design/cards/teach-stone-to-bend.md",
         "sha256": "ada885377b0263c09f763f502a491a783bf35cf8241921ed05d7e4f4ef5c6694"
       },
-      "sourceCommit": "f3fb98ca03b046335fcc730c1b05689bebf091b4",
+      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

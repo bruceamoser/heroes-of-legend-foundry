@@ -125,3 +125,13 @@ No ancestry grants sight in complete darkness. Conditional trait Boons remain
 explicit player/DA judgments; low-light and seismic senses reference the shared
 rules rather than enabling Foundry darkness sight. Saved drafts use current
 rules automatically; committed world Actors retain live resources and local edits.
+
+## November 3 decision-conformance corrections: v16.8.0 (#263)
+
+Current immutable book pin: **c5c84c0da3a5bd54b2553426408d1ea581fe22b9**,
+merged source PR1302. It restores the approved Blow the Horn limit and corrects
+language teaching, all six authored examples, class/path summaries and missing
+printed vision rules. Existing Out of Body Manifest barrier/fallback wording was
+separately confirmed by Bruce. Source synchronization is distinct from independent
+rendered-text, outcome-association and actual runtime verification; see
+[conformance gates](research/decision-conformance-gates.md).

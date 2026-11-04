@@ -1,6 +1,6 @@
 /** Reviewed permanent ancestry benefits. Narrative text never selects mechanics. */
 export const ANCESTRY_SOURCE_COMMIT =
-  "f3fb98ca03b046335fcc730c1b05689bebf091b4";
+  "c5c84c0da3a5bd54b2553426408d1ea581fe22b9";
 
 const rule = (path, sha256) =>
   Object.freeze({ commit: ANCESTRY_SOURCE_COMMIT, path, sha256 });

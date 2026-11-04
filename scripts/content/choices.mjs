@@ -1,3 +1,4 @@
+import { reviewedInlineRollOutcomes } from "./inline-roll-profiles.mjs";
 import { createHash } from "node:crypto";
 // Approved November 1 universal learning prices, keyed by stable identity.
 const approvedUniversalPrices = new Map([
@@ -83,25 +84,9 @@ function ruleBlock(block) {
     return { items: items.map(plainText) };
   }
   const text = plainText(block);
-  const inline = text.match(/\b(?:On a )?Weak(?: result)?\s*[:,]?\s*(.*?)\s+(?:On a )?Standard(?: result)?\s*[:,]?\s*(.*?)\s+(?:On a )?Strong(?: result)?\s*[:,]?\s*(.*)$/i);
-  if (inline) {
-    const prefix = text.slice(0, inline.index).trim();
-    const suffix = inline[1].match(/\d+\s+(.+)$/)?.[1];
-    const parts = [inline[1], inline[2], inline[3]].map((value, index) => {
-      const part = value.trim();
-      return index > 0 && /^\d+$/.test(part) && suffix
-        ? `${part} ${suffix}`
-        : part;
-    });
-    return {
-      ...(prefix ? { text: prefix } : {}),
-      outcomes: [
-        { label: "Weak", text: parts[0] },
-        { label: "Standard", text: parts[1] },
-        { label: "Strong", text: parts[2] },
-      ],
-    };
-  }
+  // Only the explicit authored outcome list above establishes structural scope.
+  // Inline prose can put values before labels or put common procedures after
+  // Strong. Keep it intact rather than infer tier boundaries from word order.
   return { text };
 }
 function labelled(block) {
@@ -200,8 +185,10 @@ export function parseAbilityReference(text) {
     type ? { label: "Type", value: type } : null,
     fields.get("Tags") ? { label: "Tags", value: fields.get("Tags") } : null,
   ].filter(detail => detail?.value);
+  const rollOutcomes = reviewedInlineRollOutcomes(text);
   return {
     flavor,
+    ...(rollOutcomes ? { rollOutcomes } : {}),
     rules: {
       details,
       body: ruleBlocks.map(ruleBlock),

@@ -49,8 +49,16 @@ export function ruleMarkup(markdown, resolve) {
     })
     .join("");
 }
+/** A rule block can contain prose, outcomes and options together. */
+export function ruleBlockMarkup(block, { outcomeLayout = "table" } = {}) {
+  return (typeof block.text === "string" ? `<p>${esc(block.text)}</p>` : "") +
+    (Array.isArray(block.outcomes) ? outcomeLayout === "stacked"
+      ? block.outcomes.map(outcome => `<div class="outcome"><strong>${esc(outcome.label)}</strong>${esc(outcome.text)}</div>`).join("")
+      : `<table class="outcome-table">${block.outcomes.map(outcome => `<tr><th>${esc(outcome.label)}</th><td>${esc(outcome.text)}</td></tr>`).join("")}</table>` : "") +
+    (Array.isArray(block.items) ? `<ul>${block.items.map(item => `<li>${esc(item)}</li>`).join("")}</ul>` : "");
+}
 export function recordMarkup(record, resolve) {
   if (record.markdown) return ruleMarkup(record.markdown, resolve);
   const ref = record.reference;
-  return `<h2>${esc(record.name)}</h2>${ref?.flavor?.map((t) => `<p class="flavor">${esc(t)}</p>`).join("") ?? ""}<dl>${ref?.rules?.details?.map((d) => `<dt>${esc(d.label)}</dt><dd>${esc(d.value)}</dd>`).join("") ?? ""}</dl>${ref?.rules?.body?.map((b) => (b.outcomes ? `<table>${b.outcomes.map((o) => `<tr><th>${esc(o.label)}</th><td>${esc(o.text)}</td></tr>`).join("")}</table>` : b.text ? `<p>${esc(b.text)}</p>` : "")).join("") ?? ""}${ref?.rules?.notes?.map((n) => `<p>${esc(typeof n === "string" ? n : n.text)}</p>`).join("") ?? ""}`;
+  return `<h2>${esc(record.name)}</h2>${ref?.flavor?.map((t) => `<p class="flavor">${esc(t)}</p>`).join("") ?? ""}<dl>${ref?.rules?.details?.map((d) => `<dt>${esc(d.label)}</dt><dd>${esc(d.value)}</dd>`).join("") ?? ""}</dl>${ref?.rules?.body?.map(ruleBlockMarkup).join("") ?? ""}${ref?.rules?.notes?.map((n) => `<p>${esc(typeof n === "string" ? n : n.text)}</p>`).join("") ?? ""}`;
 }

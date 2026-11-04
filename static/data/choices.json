@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "sourceCommit": "f3fb98ca03b046335fcc730c1b05689bebf091b4",
+  "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
   "scope": "ability reference text and learning metadata; action, acquisition and trait automation pending",
   "records": [
     {
@@ -7197,6 +7197,11 @@
         "flavor": [
           "You set your tools beside the impossible ingredient. This is the part of the work that ordinary hands cannot finish."
         ],
+        "rollOutcomes": {
+          "weak": "Add 1 progress, or inventory steps for a supply, as the recipe specifies.",
+          "standard": "Add 2 progress, or inventory steps for a supply, as the recipe specifies.",
+          "strong": "Add 3 progress, or inventory steps for a supply, as the recipe specifies."
+        },
         "rules": {
           "details": [
             {
@@ -7226,21 +7231,7 @@
           ],
           "body": [
             {
-              "text": "Choose one special-item recipe available in the campaign and two ordinary recipes chosen from Bound Torches, Fletched Ammunition, Travel Food, Twisted Cord, Wooden Brace and Simple Replacement Leg; learn them. You can craft known special-item recipes and the compatible ordinary recipes using their stated materials, tools and full intervals. Roll Knowledge:",
-              "outcomes": [
-                {
-                  "label": "Weak",
-                  "text": "adds 1 progress,"
-                },
-                {
-                  "label": "Standard",
-                  "text": "2,"
-                },
-                {
-                  "label": "Strong",
-                  "text": "3, or the recipe's inventory steps for a supply."
-                }
-              ]
+              "text": "Choose one special-item recipe available in the campaign and two ordinary recipes chosen from Bound Torches, Fletched Ammunition, Travel Food, Twisted Cord, Wooden Brace and Simple Replacement Leg; learn them. You can craft known special-item recipes and the compatible ordinary recipes using their stated materials, tools and full intervals. Roll Knowledge: Weak adds 1 progress, Standard 2, Strong 3, or the recipe's inventory steps for a supply."
             }
           ],
           "notes": []
@@ -10109,6 +10100,11 @@
         "flavor": [
           "You pull sound pieces from the wreckage and set them beside your tools. The thing the party needs is already taking shape."
         ],
+        "rollOutcomes": {
+          "weak": "Add 1 progress or inventory steps, as the recipe specifies.",
+          "standard": "Add 2 progress or inventory steps, as the recipe specifies.",
+          "strong": "Add 3 progress or inventory steps, as the recipe specifies."
+        },
         "rules": {
           "details": [
             {
@@ -10138,21 +10134,7 @@
           ],
           "body": [
             {
-              "text": "Learn two recipes chosen from Bound Torches, Fletched Ammunition, Travel Food, Twisted Cord, Wooden Brace and Simple Replacement Leg. You can craft those and other known recipes explicitly compatible with this ability, using equivalent salvaged materials the DA confirms are suitable. Roll Knowledge:",
-              "outcomes": [
-                {
-                  "label": "Weak",
-                  "text": "adds 1 progress or inventory step,"
-                },
-                {
-                  "label": "Standard",
-                  "text": "2,"
-                },
-                {
-                  "label": "Strong",
-                  "text": "3, as the recipe specifies."
-                }
-              ]
+              "text": "Learn two recipes chosen from Bound Torches, Fletched Ammunition, Travel Food, Twisted Cord, Wooden Brace and Simple Replacement Leg. You can craft those and other known recipes explicitly compatible with this ability, using equivalent salvaged materials the DA confirms are suitable. Roll Knowledge: Weak adds 1 progress or inventory step, Standard 2, Strong 3, as the recipe specifies."
             }
           ],
           "notes": []
@@ -14889,6 +14871,11 @@
         "flavor": [
           "You lower your shoulder and crash forward, blade swinging wide, leaving your guard open."
         ],
+        "rollOutcomes": {
+          "weak": "deal 1 extra damage;",
+          "standard": "deal 2 extra damage;",
+          "strong": "deal 3 extra damage."
+        },
         "rules": {
           "details": [
             {
@@ -14922,21 +14909,7 @@
           ],
           "body": [
             {
-              "text": "Move up to 2 squares toward an enemy you can see. Then make a Basic Melee attack against a creature within reach. This attack is part of the Maneuver, so your Main Action remains available.",
-              "outcomes": [
-                {
-                  "label": "Weak",
-                  "text": "deal 1 extra damage;"
-                },
-                {
-                  "label": "Standard",
-                  "text": "deal 2 extra damage;"
-                },
-                {
-                  "label": "Strong",
-                  "text": "deal 3 extra damage. Take 1 Bane on defense rolls until the beginning of your next turn. This movement follows normal opportunity attack rules."
-                }
-              ]
+              "text": "Move up to 2 squares toward an enemy you can see. Then make a Basic Melee attack against a creature within reach. This attack is part of the Maneuver, so your Main Action remains available. On a Weak result, deal 1 extra damage; on a Standard result, deal 2 extra damage; on a Strong result, deal 3 extra damage. Take 1 Bane on defense rolls until the beginning of your next turn. This movement follows normal opportunity attack rules."
             }
           ],
           "notes": [
@@ -15182,6 +15155,11 @@
         "flavor": [
           "You get a grip under the arms, lift, and send them somewhere else."
         ],
+        "rollOutcomes": {
+          "weak": "throw it 3 squares.",
+          "standard": "throw it 5 squares and apply Dazed 1.",
+          "strong": "throw it 7 squares and apply Dazed 2."
+        },
         "rules": {
           "details": [
             {
@@ -15215,21 +15193,7 @@
           ],
           "body": [
             {
-              "text": "Make a Brawn roll against the target.",
-              "outcomes": [
-                {
-                  "label": "Weak",
-                  "text": "throw it 3 squares."
-                },
-                {
-                  "label": "Standard",
-                  "text": "throw it 5 squares and apply Dazed 1."
-                },
-                {
-                  "label": "Strong",
-                  "text": "throw it 7 squares and apply Dazed 2. Choose the direction. The target lands prone. Resolve collisions normally."
-                }
-              ]
+              "text": "Make a Brawn roll against the target. On a Weak result, throw it 3 squares. On a Standard result, throw it 5 squares and apply Dazed 1. On a Strong result, throw it 7 squares and apply Dazed 2. Choose the direction. The target lands prone. Resolve collisions normally."
             }
           ],
           "notes": [
@@ -15261,6 +15225,11 @@
         "flavor": [
           "You sweep your blade in a wide arc, forcing everyone near you to give ground."
         ],
+        "rollOutcomes": {
+          "weak": "deal 1 damage to each creature adjacent to you.",
+          "standard": "deal 1 damage and push each creature 1 square directly away from you.",
+          "strong": "deal 1 damage and push each creature 2 squares directly away from you."
+        },
         "rules": {
           "details": [
             {
@@ -15294,21 +15263,7 @@
           ],
           "body": [
             {
-              "text": "Make one Brawn roll.",
-              "outcomes": [
-                {
-                  "label": "Weak",
-                  "text": "deal 1 damage to each creature adjacent to you."
-                },
-                {
-                  "label": "Standard",
-                  "text": "deal 1 damage and push each creature 1 square directly away from you."
-                },
-                {
-                  "label": "Strong",
-                  "text": "deal 1 damage and push each creature 2 squares directly away from you. Resolve collisions normally."
-                }
-              ]
+              "text": "Make one Brawn roll. On a Weak result, deal 1 damage to each creature adjacent to you. On a Standard result, deal 1 damage and push each creature 1 square directly away from you. On a Strong result, deal 1 damage and push each creature 2 squares directly away from you. Resolve collisions normally."
             }
           ],
           "notes": [
@@ -15340,6 +15295,11 @@
         "flavor": [
           "You follow the retreating shoulder through the press, keeping your blade close enough that escape becomes another opening."
         ],
+        "rollOutcomes": {
+          "weak": "apply Slowed 1.",
+          "standard": "apply Slowed 2.",
+          "strong": "apply Slowed 3."
+        },
         "rules": {
           "details": [
             {
@@ -15373,21 +15333,7 @@
           ],
           "body": [
             {
-              "text": "After it finishes moving, move up to your Speed toward it without provoking. If you end adjacent, make one free Basic Melee attack against it using Brawn with 1 Boon.",
-              "outcomes": [
-                {
-                  "label": "Weak",
-                  "text": "apply Slowed 1."
-                },
-                {
-                  "label": "Standard",
-                  "text": "apply Slowed 2."
-                },
-                {
-                  "label": "Strong",
-                  "text": "apply Slowed 3. Slowed uses normal decay."
-                }
-              ]
+              "text": "After it finishes moving, move up to your Speed toward it without provoking. If you end adjacent, make one free Basic Melee attack against it using Brawn with 1 Boon. On a Weak result, apply Slowed 1. On a Standard result, apply Slowed 2. On a Strong result, apply Slowed 3. Slowed uses normal decay."
             }
           ],
           "notes": [
@@ -15744,6 +15690,11 @@
         "flavor": [
           "You name the flaw in the guard, then strike through it before the target can close the gap."
         ],
+        "rollOutcomes": {
+          "weak": "deal 5 physical damage.",
+          "standard": "deal 7 physical damage.",
+          "strong": "deal 9 physical damage."
+        },
         "rules": {
           "details": [
             {
@@ -15777,21 +15728,7 @@
           ],
           "body": [
             {
-              "text": "Make a Knowledge-based attack against the target.",
-              "outcomes": [
-                {
-                  "label": "Weak",
-                  "text": "deal 5 physical damage."
-                },
-                {
-                  "label": "Standard",
-                  "text": "deal 7 physical damage."
-                },
-                {
-                  "label": "Strong",
-                  "text": "deal 9 physical damage. The target loses 1 resistance of your choice until the end of the scene, and the chosen ally gains 1 Boon to their next attack against it before the start of your next turn."
-                }
-              ]
+              "text": "Make a Knowledge-based attack against the target. On a Weak result, deal 5 physical damage. On a Standard result, deal 7 physical damage. On a Strong result, deal 9 physical damage. The target loses 1 resistance of your choice until the end of the scene, and the chosen ally gains 1 Boon to their next attack against it before the start of your next turn."
             }
           ],
           "notes": [
@@ -15957,6 +15894,11 @@
         "flavor": [
           "You see the exchange a heartbeat before it happens, then step into the opening you already know is there."
         ],
+        "rollOutcomes": {
+          "weak": "deal 3 physical damage.",
+          "standard": "deal 5 physical damage.",
+          "strong": "deal 7 physical damage."
+        },
         "rules": {
           "details": [
             {
@@ -15990,21 +15932,7 @@
           ],
           "body": [
             {
-              "text": "Make a melee weapon attack against one creature within reach, using Knowledge instead of Brawn.",
-              "outcomes": [
-                {
-                  "label": "Weak",
-                  "text": "deal 3 physical damage."
-                },
-                {
-                  "label": "Standard",
-                  "text": "deal 5 physical damage."
-                },
-                {
-                  "label": "Strong",
-                  "text": "deal 7 physical damage."
-                }
-              ]
+              "text": "Make a melee weapon attack against one creature within reach, using Knowledge instead of Brawn. On a Weak result, deal 3 physical damage. On a Standard result, deal 5 physical damage. On a Strong result, deal 7 physical damage."
             }
           ],
           "notes": [
@@ -16293,13 +16221,18 @@
       "name": "Blow the Horn",
       "source": {
         "path": "design/cards/signature-leader-hold-your-nerve.md",
-        "sha256": "ae3e83200593706995f2e1eead30d49c359d807935990fb344083e0ab186523d"
+        "sha256": "3d3c03f4c8a6d8825fc9cec38f7b4d12fe834a75302eb18c7f8db05949fc4100"
       },
       "automation": "pending",
       "reference": {
         "flavor": [
           "You put the horn to your lips, or simply fill your lungs, and let loose a sound that breaks the enemy advance."
         ],
+        "rollOutcomes": {
+          "weak": "apply Frightened 1.",
+          "standard": "apply Frightened 1 and Dazed 1.",
+          "strong": "apply Frightened 2 and Dazed 1."
+        },
         "rules": {
           "details": [
             {
@@ -16324,7 +16257,7 @@
             },
             {
               "label": "Limits",
-              "value": "Repeatable; normal action economy applies."
+              "value": "Once on your turn."
             },
             {
               "label": "Type",
@@ -16333,21 +16266,7 @@
           ],
           "body": [
             {
-              "text": "Make one Guile roll and apply the result to each target.",
-              "outcomes": [
-                {
-                  "label": "Weak",
-                  "text": "apply Frightened 1."
-                },
-                {
-                  "label": "Standard",
-                  "text": "apply Frightened 1 and Dazed 1."
-                },
-                {
-                  "label": "Strong",
-                  "text": "apply Frightened 2 and Dazed 1."
-                }
-              ]
+              "text": "Make one Guile roll and apply the result to each target. On a Weak result, apply Frightened 1. On a Standard result, apply Frightened 1 and Dazed 1. On a Strong result, apply Frightened 2 and Dazed 1."
             }
           ],
           "notes": [
@@ -16444,6 +16363,11 @@
         "flavor": [
           "You step into the gap and strike, showing your companions exactly where the line will break."
         ],
+        "rollOutcomes": {
+          "weak": "deal 2 physical damage.",
+          "standard": "deal 4 physical damage and choose one effect.",
+          "strong": "deal 6 physical damage and choose two different effects."
+        },
         "rules": {
           "details": [
             {
@@ -16477,21 +16401,7 @@
           ],
           "body": [
             {
-              "text": "Make a melee weapon attack using Guile instead of Brawn.",
-              "outcomes": [
-                {
-                  "label": "Weak",
-                  "text": "deal 2 physical damage."
-                },
-                {
-                  "label": "Standard",
-                  "text": "deal 4 physical damage and choose one effect."
-                },
-                {
-                  "label": "Strong",
-                  "text": "deal 6 physical damage and choose two different effects."
-                }
-              ]
+              "text": "Make a melee weapon attack using Guile instead of Brawn. On a Weak result, deal 2 physical damage. On a Standard result, deal 4 physical damage and choose one effect. On a Strong result, deal 6 physical damage and choose two different effects."
             },
             {
               "items": [
@@ -17183,6 +17093,11 @@
         "flavor": [
           "You drop low, spin, and let out a belch that smells like a grave. Your allies know what is coming and hit the ground."
         ],
+        "rollOutcomes": {
+          "weak": "1 poison damage.",
+          "standard": "2 poison damage.",
+          "strong": "4 poison damage."
+        },
         "rules": {
           "details": [
             {
@@ -17216,21 +17131,7 @@
           ],
           "body": [
             {
-              "text": "Each willing ally within 5 squares may immediately fall prone. Make one Fortitude roll. Each non-prone creature within 5 squares other than you takes poison damage:",
-              "outcomes": [
-                {
-                  "label": "Weak",
-                  "text": "1;"
-                },
-                {
-                  "label": "Standard",
-                  "text": "2;"
-                },
-                {
-                  "label": "Strong",
-                  "text": "4."
-                }
-              ]
+              "text": "Each willing ally within 5 squares may immediately fall prone. Make one Fortitude roll. Each non-prone creature within 5 squares other than you takes poison damage: Weak: 1; Standard: 2; Strong: 4."
             }
           ],
           "notes": [
@@ -17472,6 +17373,11 @@
         "flavor": [
           "You meet the charge with your shoulder and drive the attacker back."
         ],
+        "rollOutcomes": {
+          "weak": "2 physical damage.",
+          "standard": "2 physical damage, and the target is Prone.",
+          "strong": "4 physical damage, and the target is Prone and Dazed 1."
+        },
         "rules": {
           "details": [
             {
@@ -17505,21 +17411,7 @@
           ],
           "body": [
             {
-              "text": "Trigger: an enemy moves within 2 squares of you while moving toward an ally you can see. Make a Brawn roll against the target.",
-              "outcomes": [
-                {
-                  "label": "Weak",
-                  "text": "2 physical damage."
-                },
-                {
-                  "label": "Standard",
-                  "text": "2 physical damage, and the target is Prone."
-                },
-                {
-                  "label": "Strong",
-                  "text": "4 physical damage, and the target is Prone and Dazed 1."
-                }
-              ]
+              "text": "Trigger: an enemy moves within 2 squares of you while moving toward an ally you can see. Make a Brawn roll against the target. Weak: 2 physical damage. Standard: 2 physical damage, and the target is Prone. Strong: 4 physical damage, and the target is Prone and Dazed 1."
             }
           ],
           "notes": [
@@ -17681,6 +17573,11 @@
         "flavor": [
           "You call on the gods of war and protection. A line of white fire draws itself across the ground, and the air smells of iron and lightning."
         ],
+        "rollOutcomes": {
+          "weak": "3 squares long; 1 radiant damage.",
+          "standard": "5 squares long; 2 radiant damage.",
+          "strong": "7 squares long; 3 radiant damage."
+        },
         "rules": {
           "details": [
             {
@@ -17714,21 +17611,7 @@
           ],
           "body": [
             {
-              "text": "Make a Reason roll.",
-              "outcomes": [
-                {
-                  "label": "Weak",
-                  "text": "3 squares long; 1 radiant damage."
-                },
-                {
-                  "label": "Standard",
-                  "text": "5 squares long; 2 radiant damage."
-                },
-                {
-                  "label": "Strong",
-                  "text": "7 squares long; 3 radiant damage. The line is 1 square wide and lasts until the start of your next turn. You and allies you choose when you create it are unaffected. A creature takes the damage when the line appears in its square, when it enters a square of the line, or when it starts its turn there. A creature can take this damage only once per turn. The line does not block movement."
-                }
-              ]
+              "text": "Make a Reason roll. Weak: 3 squares long; 1 radiant damage. Standard: 5 squares long; 2 radiant damage. Strong: 7 squares long; 3 radiant damage. The line is 1 square wide and lasts until the start of your next turn. You and allies you choose when you create it are unaffected. A creature takes the damage when the line appears in its square, when it enters a square of the line, or when it starts its turn there. A creature can take this damage only once per turn. The line does not block movement."
             }
           ],
           "notes": [
@@ -18020,6 +17903,11 @@
         "flavor": [
           "You move in the space between a decision and its consequence."
         ],
+        "rollOutcomes": {
+          "weak": "3 physical damage. The triggering action resolves.",
+          "standard": "5 physical damage. The triggering action is interrupted and lost.",
+          "strong": "7 physical damage, and the target has Dazed 1. The triggering action is interrupted and lost."
+        },
         "rules": {
           "details": [
             {
@@ -18053,21 +17941,7 @@
           ],
           "body": [
             {
-              "text": "Trigger: another creature you can see declares an action. Make an Agility attack roll with a weapon against the target.",
-              "outcomes": [
-                {
-                  "label": "Weak",
-                  "text": "3 physical damage. The triggering action resolves."
-                },
-                {
-                  "label": "Standard",
-                  "text": "5 physical damage. The triggering action is interrupted and lost."
-                },
-                {
-                  "label": "Strong",
-                  "text": "7 physical damage, and the target has Dazed 1. The triggering action is interrupted and lost."
-                }
-              ]
+              "text": "Trigger: another creature you can see declares an action. Make an Agility attack roll with a weapon against the target. Weak: 3 physical damage. The triggering action resolves. Standard: 5 physical damage. The triggering action is interrupted and lost. Strong: 7 physical damage, and the target has Dazed 1. The triggering action is interrupted and lost."
             }
           ],
           "notes": [
@@ -18164,6 +18038,11 @@
         "flavor": [
           "You find the sentence that undoes them, and say it quietly."
         ],
+        "rollOutcomes": {
+          "weak": "the target has Dazed 1.",
+          "standard": "the target has Dazed 1 and Frightened 1.",
+          "strong": "the target has Dazed 2 and Frightened 1, and it cannot take Reactions until the end of its next turn."
+        },
         "rules": {
           "details": [
             {
@@ -18197,21 +18076,7 @@
           ],
           "body": [
             {
-              "text": "Make a Guile roll against the target. The jab can be a spoken barb, a gesture, or a look.",
-              "outcomes": [
-                {
-                  "label": "Weak",
-                  "text": "the target has Dazed 1."
-                },
-                {
-                  "label": "Standard",
-                  "text": "the target has Dazed 1 and Frightened 1."
-                },
-                {
-                  "label": "Strong",
-                  "text": "the target has Dazed 2 and Frightened 1, and it cannot take Reactions until the end of its next turn."
-                }
-              ]
+              "text": "Make a Guile roll against the target. The jab can be a spoken barb, a gesture, or a look. Weak: the target has Dazed 1. Standard: the target has Dazed 1 and Frightened 1. Strong: the target has Dazed 2 and Frightened 1, and it cannot take Reactions until the end of its next turn."
             }
           ],
           "notes": [
@@ -18243,6 +18108,11 @@
         "flavor": [
           "There is always another door. You just have to know where the hinges are."
         ],
+        "rollOutcomes": {
+          "weak": "2 progress.",
+          "standard": "3 progress.",
+          "strong": "5 progress."
+        },
         "rules": {
           "details": [
             {
@@ -18276,21 +18146,7 @@
           ],
           "body": [
             {
-              "text": "Use appropriate tools to work toward the DA's stated target. Each attempt takes a Main Action.",
-              "outcomes": [
-                {
-                  "label": "Weak",
-                  "text": "2 progress."
-                },
-                {
-                  "label": "Standard",
-                  "text": "3 progress."
-                },
-                {
-                  "label": "Strong",
-                  "text": "5 progress. On completion, open the lock, disable the trap, or find the entrance. Your work makes no audible noise and leaves no trace. The DA states any known risk before you begin."
-                }
-              ]
+              "text": "Use appropriate tools to work toward the DA's stated target. Each attempt takes a Main Action. Weak: 2 progress. Standard: 3 progress. Strong: 5 progress. On completion, open the lock, disable the trap, or find the entrance. Your work makes no audible noise and leaves no trace. The DA states any known risk before you begin."
             }
           ],
           "notes": [
@@ -18322,6 +18178,11 @@
         "flavor": [
           "You find the one thing the other side wants and set it on the table."
         ],
+        "rollOutcomes": {
+          "weak": "learn one intent.",
+          "standard": "learn one intent, and gain 1 Boon to your next social roll against it.",
+          "strong": "learn one intent, and gain 2 Boons to your next social roll against it."
+        },
         "rules": {
           "details": [
             {
@@ -18355,21 +18216,7 @@
           ],
           "body": [
             {
-              "text": "Make a Guile roll against the target. An intent is what the creature wants from this exchange or what it means to do next.",
-              "outcomes": [
-                {
-                  "label": "Weak",
-                  "text": "learn one intent."
-                },
-                {
-                  "label": "Standard",
-                  "text": "learn one intent, and gain 1 Boon to your next social roll against it."
-                },
-                {
-                  "label": "Strong",
-                  "text": "learn one intent, and gain 2 Boons to your next social roll against it."
-                }
-              ]
+              "text": "Make a Guile roll against the target. An intent is what the creature wants from this exchange or what it means to do next. Weak: learn one intent. Standard: learn one intent, and gain 1 Boon to your next social roll against it. Strong: learn one intent, and gain 2 Boons to your next social roll against it."
             }
           ],
           "notes": [
@@ -18401,6 +18248,11 @@
         "flavor": [
           "You wait for the half-second when the guard turns, and the knife goes in under the ribs."
         ],
+        "rollOutcomes": {
+          "weak": "3 physical damage.",
+          "standard": "4 physical damage, and the target has Bleeding 1.",
+          "strong": "6 physical damage, and the target has Bleeding 2."
+        },
         "rules": {
           "details": [
             {
@@ -18434,21 +18286,7 @@
           ],
           "body": [
             {
-              "text": "Make an Agility roll against the target.",
-              "outcomes": [
-                {
-                  "label": "Weak",
-                  "text": "3 physical damage."
-                },
-                {
-                  "label": "Standard",
-                  "text": "4 physical damage, and the target has Bleeding 1."
-                },
-                {
-                  "label": "Strong",
-                  "text": "6 physical damage, and the target has Bleeding 2."
-                }
-              ]
+              "text": "Make an Agility roll against the target. Weak: 3 physical damage. Standard: 4 physical damage, and the target has Bleeding 1. Strong: 6 physical damage, and the target has Bleeding 2."
             }
           ],
           "notes": [
@@ -18480,6 +18318,11 @@
         "flavor": [
           "You cut the tendon, not the throat. The fight is already decided."
         ],
+        "rollOutcomes": {
+          "weak": "2 physical damage, and the target has Slowed 1.",
+          "standard": "3 physical damage, and the target has Slowed 1 and Dazed 1.",
+          "strong": "5 physical damage, and the target has Slowed 1, Dazed 1 and Prone."
+        },
         "rules": {
           "details": [
             {
@@ -18513,21 +18356,7 @@
           ],
           "body": [
             {
-              "text": "Make an Agility roll against the target.",
-              "outcomes": [
-                {
-                  "label": "Weak",
-                  "text": "2 physical damage, and the target has Slowed 1."
-                },
-                {
-                  "label": "Standard",
-                  "text": "3 physical damage, and the target has Slowed 1 and Dazed 1."
-                },
-                {
-                  "label": "Strong",
-                  "text": "5 physical damage, and the target has Slowed 1, Dazed 1 and Prone."
-                }
-              ]
+              "text": "Make an Agility roll against the target. Weak: 2 physical damage, and the target has Slowed 1. Standard: 3 physical damage, and the target has Slowed 1 and Dazed 1. Strong: 5 physical damage, and the target has Slowed 1, Dazed 1 and Prone."
             }
           ],
           "notes": [
@@ -18559,6 +18388,11 @@
         "flavor": [
           "You are already three sentences into the lie before the guard decides to be suspicious."
         ],
+        "rollOutcomes": {
+          "weak": "2 progress.",
+          "standard": "3 progress.",
+          "strong": "5 progress."
+        },
         "rules": {
           "details": [
             {
@@ -18592,21 +18426,7 @@
           ],
           "body": [
             {
-              "text": "State the social goal you are pursuing and what you want the target to do. Make a Guile roll. The result adds progress toward that goal:",
-              "outcomes": [
-                {
-                  "label": "Weak",
-                  "text": "2 progress."
-                },
-                {
-                  "label": "Standard",
-                  "text": "3 progress."
-                },
-                {
-                  "label": "Strong",
-                  "text": "5 progress. The DA sets the progress target before the roll. When the total reaches it, the target agrees within its wants and limits. This does not compel self-harm, betrayal, or a change to its loyalties."
-                }
-              ]
+              "text": "State the social goal you are pursuing and what you want the target to do. Make a Guile roll. The result adds progress toward that goal: Weak: 2 progress. Standard: 3 progress. Strong: 5 progress. The DA sets the progress target before the roll. When the total reaches it, the target agrees within its wants and limits. This does not compel self-harm, betrayal, or a change to its loyalties."
             }
           ],
           "notes": [
@@ -18833,6 +18653,11 @@
         "flavor": [
           "Two wounded, one pair of hands, no time to choose wrong."
         ],
+        "rollOutcomes": {
+          "weak": "One ally: restore 6 HP. Two allies: restore 4 HP each.",
+          "standard": "One ally: restore 11 HP. Two allies: restore 7 HP each.",
+          "strong": "One ally: restore 16 HP. Two allies: restore 10 HP each."
+        },
         "rules": {
           "details": [
             {
@@ -18866,21 +18691,7 @@
           ],
           "body": [
             {
-              "text": "Moser's law of conservation of Life energy: pay 3 HP before rolling. This cost bypasses resistance and must leave you above 0 HP. Requires a free hand. Make a Reason roll. Choose one or two allies. One ally: restore 6 HP on",
-              "outcomes": [
-                {
-                  "label": "Weak",
-                  "text": "11 HP on"
-                },
-                {
-                  "label": "Standard",
-                  "text": "16 HP on"
-                },
-                {
-                  "label": "Strong",
-                  "text": ". Two allies: restore 4 HP each on Weak, 7 HP each on Standard, 10 HP each on Strong. Reduce the restored amount by each target's Life resistance, to a minimum of 1 if HP is missing, and never exceed maximum HP. A Dying creature cannot be targeted; stabilize it first. This restores no wounds and cannot reverse Last Words."
-                }
-              ]
+              "text": "Moser's law of conservation of Life energy: pay 3 HP before rolling. This cost bypasses resistance and must leave you above 0 HP. Requires a free hand. Make a Reason roll. Choose one or two allies. One ally: restore 6 HP on Weak, 11 HP on Standard, 16 HP on Strong. Two allies: restore 4 HP each on Weak, 7 HP each on Standard, 10 HP each on Strong. Reduce the restored amount by each target's Life resistance, to a minimum of 1 if HP is missing, and never exceed maximum HP. A Dying creature cannot be targeted; stabilize it first. This restores no wounds and cannot reverse Last Words."
             }
           ],
           "notes": [
@@ -18912,6 +18723,11 @@
         "flavor": [
           "You find the one calm sentence under the noise, and they hear it."
         ],
+        "rollOutcomes": {
+          "weak": "reduce that condition by 1.",
+          "standard": "reduce it by 1, and the target gains 1 Boon to its next roll to resist fear or Daze.",
+          "strong": "reduce it by 2, and the target gains 1 Boon to its next roll to resist fear or Daze."
+        },
         "rules": {
           "details": [
             {
@@ -18945,21 +18761,7 @@
           ],
           "body": [
             {
-              "text": "Make a Guile roll. Choose Frightened or Dazed on the target.",
-              "outcomes": [
-                {
-                  "label": "Weak",
-                  "text": "reduce that condition by 1."
-                },
-                {
-                  "label": "Standard",
-                  "text": "reduce it by 1, and the target gains 1 Boon to its next roll to resist fear or Daze."
-                },
-                {
-                  "label": "Strong",
-                  "text": "reduce it by 2, and the target gains 1 Boon to its next roll to resist fear or Daze. If the target has neither condition, it gains the Boon on a Standard or Strong result."
-                }
-              ]
+              "text": "Make a Guile roll. Choose Frightened or Dazed on the target. Weak: reduce that condition by 1. Standard: reduce it by 1, and the target gains 1 Boon to its next roll to resist fear or Daze. Strong: reduce it by 2, and the target gains 1 Boon to its next roll to resist fear or Daze. If the target has neither condition, it gains the Boon on a Standard or Strong result."
             }
           ],
           "notes": [
@@ -18991,6 +18793,11 @@
         "flavor": [
           "You put your hand where the wound is and remind the body what whole feels like."
         ],
+        "rollOutcomes": {
+          "weak": "restore 3 HP.",
+          "standard": "restore 6 HP.",
+          "strong": "restore 9 HP, and the target may stand without spending movement."
+        },
         "rules": {
           "details": [
             {
@@ -19024,21 +18831,7 @@
           ],
           "body": [
             {
-              "text": "Moser's law of conservation of Life energy: pay 1 HP before rolling. This cost bypasses resistance and must leave you above 0 HP. Requires a free hand. Make a Reason roll.",
-              "outcomes": [
-                {
-                  "label": "Weak",
-                  "text": "restore 3 HP."
-                },
-                {
-                  "label": "Standard",
-                  "text": "restore 6 HP."
-                },
-                {
-                  "label": "Strong",
-                  "text": "restore 9 HP, and the target may stand without spending movement. Reduce the restored amount by the target's Life resistance, to a minimum of 1 if HP is missing, and never exceed maximum HP. A Dying creature cannot be targeted; stabilize it first. This restores no wounds and cannot reverse Last Words."
-                }
-              ]
+              "text": "Moser's law of conservation of Life energy: pay 1 HP before rolling. This cost bypasses resistance and must leave you above 0 HP. Requires a free hand. Make a Reason roll. Weak: restore 3 HP. Standard: restore 6 HP. Strong: restore 9 HP, and the target may stand without spending movement. Reduce the restored amount by the target's Life resistance, to a minimum of 1 if HP is missing, and never exceed maximum HP. A Dying creature cannot be targeted; stabilize it first. This restores no wounds and cannot reverse Last Words."
             }
           ],
           "notes": [
@@ -19135,6 +18928,11 @@
         "flavor": [
           "You set the bone, close the tear, and talk them through the part where it hurts."
         ],
+        "rollOutcomes": {
+          "weak": "2 progress.",
+          "standard": "3 progress.",
+          "strong": "5 progress, and reduce one temporary condition caused by the wound by 1."
+        },
         "rules": {
           "details": [
             {
@@ -19168,21 +18966,7 @@
           ],
           "body": [
             {
-              "text": "Make a Reason roll. Add progress to that wound's treatment track.",
-              "outcomes": [
-                {
-                  "label": "Weak",
-                  "text": "2 progress."
-                },
-                {
-                  "label": "Standard",
-                  "text": "3 progress."
-                },
-                {
-                  "label": "Strong",
-                  "text": "5 progress, and reduce one temporary condition caused by the wound by 1. This counts as the wound's one treatment attempt for the day. You can do it without a treatment kit; steady hands and a quiet word substitute for tools. It does not remove the wound outright, restore HP, or erase a scar."
-                }
-              ]
+              "text": "Make a Reason roll. Add progress to that wound's treatment track. Weak: 2 progress. Standard: 3 progress. Strong: 5 progress, and reduce one temporary condition caused by the wound by 1. This counts as the wound's one treatment attempt for the day. You can do it without a treatment kit; steady hands and a quiet word substitute for tools. It does not remove the wound outright, restore HP, or erase a scar."
             }
           ],
           "notes": [
@@ -19279,6 +19063,11 @@
         "flavor": [
           "You see the blow land on your flock, and the light comes off you like a blade."
         ],
+        "rollOutcomes": {
+          "weak": "4 radiant damage.",
+          "standard": "8 radiant damage, and the target has Frightened 1.",
+          "strong": "12 radiant damage, and the target has Frightened 2, and it cannot attack your allies until the end of its next turn."
+        },
         "rules": {
           "details": [
             {
@@ -19312,21 +19101,7 @@
           ],
           "body": [
             {
-              "text": "Make a Reason roll against the target.",
-              "outcomes": [
-                {
-                  "label": "Weak",
-                  "text": "4 radiant damage."
-                },
-                {
-                  "label": "Standard",
-                  "text": "8 radiant damage, and the target has Frightened 1."
-                },
-                {
-                  "label": "Strong",
-                  "text": "12 radiant damage, and the target has Frightened 2, and it cannot attack your allies until the end of its next turn."
-                }
-              ]
+              "text": "Make a Reason roll against the target. Weak: 4 radiant damage. Standard: 8 radiant damage, and the target has Frightened 1. Strong: 12 radiant damage, and the target has Frightened 2, and it cannot attack your allies until the end of its next turn."
             }
           ],
           "notes": [
@@ -19423,6 +19198,11 @@
         "flavor": [
           "You back up three steps, lower your head, and throw yourself at them like a stone from a sling."
         ],
+        "rollOutcomes": {
+          "weak": "4 physical damage to the target. You take 3 physical damage and are Prone.",
+          "standard": "8 physical damage, and the target is Prone. You take 2 physical damage.",
+          "strong": "12 physical damage, and the target is Prone and Dazed 1. You take 1 physical damage and are Dazed 1."
+        },
         "rules": {
           "details": [
             {
@@ -19456,21 +19236,7 @@
           ],
           "body": [
             {
-              "text": "Move up to 4 squares in a straight line toward the target, ignoring difficult terrain. If you end adjacent to it, make a Brawn roll.",
-              "outcomes": [
-                {
-                  "label": "Weak",
-                  "text": "4 physical damage to the target. You take 3 physical damage and are Prone."
-                },
-                {
-                  "label": "Standard",
-                  "text": "8 physical damage, and the target is Prone. You take 2 physical damage."
-                },
-                {
-                  "label": "Strong",
-                  "text": "12 physical damage, and the target is Prone and Dazed 1. You take 1 physical damage and are Dazed 1. If you cannot move at least 2 squares, you cannot use this ability. Resolve collisions normally."
-                }
-              ]
+              "text": "Move up to 4 squares in a straight line toward the target, ignoring difficult terrain. If you end adjacent to it, make a Brawn roll. Weak: 4 physical damage to the target. You take 3 physical damage and are Prone. Standard: 8 physical damage, and the target is Prone. You take 2 physical damage. Strong: 12 physical damage, and the target is Prone and Dazed 1. You take 1 physical damage and are Dazed 1. If you cannot move at least 2 squares, you cannot use this ability. Resolve collisions normally."
             }
           ],
           "notes": [
@@ -19502,6 +19268,11 @@
         "flavor": [
           "You do not stop at the first body."
         ],
+        "rollOutcomes": {
+          "weak": "3 physical damage.",
+          "standard": "4 physical damage, and it is Prone.",
+          "strong": "6 physical damage, and it is Prone."
+        },
         "rules": {
           "details": [
             {
@@ -19535,21 +19306,7 @@
           ],
           "body": [
             {
-              "text": "This ability consumes your Main Action and your movement for the turn. Move up to your Speed in a straight line. Each enemy within 1 square of your path takes 2 physical damage and is pushed 1 square directly away from the path. Then make a Brawn roll against one enemy adjacent to you at the end of the movement.",
-              "outcomes": [
-                {
-                  "label": "Weak",
-                  "text": "3 physical damage."
-                },
-                {
-                  "label": "Standard",
-                  "text": "4 physical damage, and it is Prone."
-                },
-                {
-                  "label": "Strong",
-                  "text": "6 physical damage, and it is Prone. If you cannot move at least 2 squares in a straight line, you cannot use this ability. You cannot move again after the charge."
-                }
-              ]
+              "text": "This ability consumes your Main Action and your movement for the turn. Move up to your Speed in a straight line. Each enemy within 1 square of your path takes 2 physical damage and is pushed 1 square directly away from the path. Then make a Brawn roll against one enemy adjacent to you at the end of the movement. Weak: 3 physical damage. Standard: 4 physical damage, and it is Prone. Strong: 6 physical damage, and it is Prone. If you cannot move at least 2 squares in a straight line, you cannot use this ability. You cannot move again after the charge."
             }
           ],
           "notes": [
@@ -19646,6 +19403,11 @@
         "flavor": [
           "You get a hand on them, and the room becomes a weapon."
         ],
+        "rollOutcomes": {
+          "weak": "it has Grappled 1.",
+          "standard": "throw it up to 2 squares in a direction you choose; it lands Prone.",
+          "strong": "throw it up to 3 squares in a direction you choose; it lands Prone and takes 2 physical damage."
+        },
         "rules": {
           "details": [
             {
@@ -19679,21 +19441,7 @@
           ],
           "body": [
             {
-              "text": "Make a Brawn roll against the target.",
-              "outcomes": [
-                {
-                  "label": "Weak",
-                  "text": "it has Grappled 1."
-                },
-                {
-                  "label": "Standard",
-                  "text": "throw it up to 2 squares in a direction you choose; it lands Prone."
-                },
-                {
-                  "label": "Strong",
-                  "text": "throw it up to 3 squares in a direction you choose; it lands Prone and takes 2 physical damage. Resolve collisions normally. The throw ends any grapple from this ability."
-                }
-              ]
+              "text": "Make a Brawn roll against the target. Weak: it has Grappled 1. Standard: throw it up to 2 squares in a direction you choose; it lands Prone. Strong: throw it up to 3 squares in a direction you choose; it lands Prone and takes 2 physical damage. Resolve collisions normally. The throw ends any grapple from this ability."
             }
           ],
           "notes": [
@@ -19790,6 +19538,11 @@
         "flavor": [
           "You stop charging, plant both hands in the ground, and let the earth answer."
         ],
+        "rollOutcomes": {
+          "weak": "2 physical damage, and push 1 square directly away from you.",
+          "standard": "4 physical damage, push 2 squares, and it is Prone.",
+          "strong": "6 physical damage, push 3 squares, and it is Prone and Dazed 1."
+        },
         "rules": {
           "details": [
             {
@@ -19823,21 +19576,7 @@
           ],
           "body": [
             {
-              "text": "Make a Brawn roll and apply it to every enemy in range.",
-              "outcomes": [
-                {
-                  "label": "Weak",
-                  "text": "2 physical damage, and push 1 square directly away from you."
-                },
-                {
-                  "label": "Standard",
-                  "text": "4 physical damage, push 2 squares, and it is Prone."
-                },
-                {
-                  "label": "Strong",
-                  "text": "6 physical damage, push 3 squares, and it is Prone and Dazed 1. Structures and unattended objects in the area take double damage. Resolve collisions normally. This does not move you."
-                }
-              ]
+              "text": "Make a Brawn roll and apply it to every enemy in range. Weak: 2 physical damage, and push 1 square directly away from you. Standard: 4 physical damage, push 2 squares, and it is Prone. Strong: 6 physical damage, push 3 squares, and it is Prone and Dazed 1. Structures and unattended objects in the area take double damage. Resolve collisions normally. This does not move you."
             }
           ],
           "notes": [
@@ -19869,6 +19608,11 @@
         "flavor": [
           "You lower your shoulder and let the distance do the work."
         ],
+        "rollOutcomes": {
+          "weak": "2 physical damage, and push it 1 square.",
+          "standard": "3 physical damage, push it 2 squares, and it is Prone.",
+          "strong": "5 physical damage, push it 3 squares, and it is Prone."
+        },
         "rules": {
           "details": [
             {
@@ -19902,21 +19646,7 @@
           ],
           "body": [
             {
-              "text": "Move up to your Speed in a straight line toward the target. This movement provokes normally. If you end adjacent to it, make a Brawn roll against it.",
-              "outcomes": [
-                {
-                  "label": "Weak",
-                  "text": "2 physical damage, and push it 1 square."
-                },
-                {
-                  "label": "Standard",
-                  "text": "3 physical damage, push it 2 squares, and it is Prone."
-                },
-                {
-                  "label": "Strong",
-                  "text": "5 physical damage, push it 3 squares, and it is Prone. Resolve collisions normally. If you cannot move at least 2 squares, you cannot use this ability."
-                }
-              ]
+              "text": "Move up to your Speed in a straight line toward the target. This movement provokes normally. If you end adjacent to it, make a Brawn roll against it. Weak: 2 physical damage, and push it 1 square. Standard: 3 physical damage, push it 2 squares, and it is Prone. Strong: 5 physical damage, push it 3 squares, and it is Prone. Resolve collisions normally. If you cannot move at least 2 squares, you cannot use this ability."
             }
           ],
           "notes": [
@@ -20013,6 +19743,11 @@
         "flavor": [
           "You ask the wood for a weapon, and it gives you a spear. You throw it before the answer stops moving."
         ],
+        "rollOutcomes": {
+          "weak": "3 physical damage.",
+          "standard": "5 physical damage, and the target is Slowed 1.",
+          "strong": "7 physical damage, and the target is Slowed 2 and Prone."
+        },
         "rules": {
           "details": [
             {
@@ -20046,21 +19781,7 @@
           ],
           "body": [
             {
-              "text": "A spear of stone and living wood forms in your hand and flies at the target. Make a Knowledge attack roll.",
-              "outcomes": [
-                {
-                  "label": "Weak",
-                  "text": "3 physical damage."
-                },
-                {
-                  "label": "Standard",
-                  "text": "5 physical damage, and the target is Slowed 1."
-                },
-                {
-                  "label": "Strong",
-                  "text": "7 physical damage, and the target is Slowed 2 and Prone. The spear disappears after the attack. This does not require ammunition or a free hand after the throw."
-                }
-              ]
+              "text": "A spear of stone and living wood forms in your hand and flies at the target. Make a Knowledge attack roll. Weak: 3 physical damage. Standard: 5 physical damage, and the target is Slowed 1. Strong: 7 physical damage, and the target is Slowed 2 and Prone. The spear disappears after the attack. This does not require ammunition or a free hand after the throw."
             }
           ],
           "notes": [
@@ -20157,6 +19878,11 @@
         "flavor": [
           "Two blades, one motion."
         ],
+        "rollOutcomes": {
+          "weak": "Each attack: 1 physical damage.",
+          "standard": "Each attack: 2 physical damage.",
+          "strong": "Each attack: 3 physical damage."
+        },
         "rules": {
           "details": [
             {
@@ -20190,21 +19916,7 @@
           ],
           "body": [
             {
-              "text": "Requires two light melee weapons, one in each hand. Make one attack with each weapon. Each attack uses your normal attack procedure and deals 1 physical damage on",
-              "outcomes": [
-                {
-                  "label": "Weak",
-                  "text": "2 on"
-                },
-                {
-                  "label": "Standard",
-                  "text": "3 on"
-                },
-                {
-                  "label": "Strong",
-                  "text": ". You can target the same creature with both attacks or one creature with each. After the attacks, gain 1 Boon to defense until the start of your next turn."
-                }
-              ]
+              "text": "Requires two light melee weapons, one in each hand. Make one attack with each weapon. Each attack uses your normal attack procedure and deals 1 physical damage on Weak, 2 on Standard, 3 on Strong. You can target the same creature with both attacks or one creature with each. After the attacks, gain 1 Boon to defense until the start of your next turn."
             }
           ],
           "notes": [
@@ -20301,6 +20013,11 @@
         "flavor": [
           "You have run it to ground. It turns, and you are already in the one place it cannot see."
         ],
+        "rollOutcomes": {
+          "weak": "6 physical damage.",
+          "standard": "9 physical damage, and the target is Prone.",
+          "strong": "12 physical damage, and the target is Prone and Dazed 1."
+        },
         "rules": {
           "details": [
             {
@@ -20334,21 +20051,7 @@
           ],
           "body": [
             {
-              "text": "This ability consumes your Main Action and your movement for the turn. Move up to 6 squares to a square adjacent to the target, ignoring difficult terrain and without provoking. Then make one melee attack with 1 Boon.",
-              "outcomes": [
-                {
-                  "label": "Weak",
-                  "text": "6 physical damage."
-                },
-                {
-                  "label": "Standard",
-                  "text": "9 physical damage, and the target is Prone."
-                },
-                {
-                  "label": "Strong",
-                  "text": "12 physical damage, and the target is Prone and Dazed 1. If you cannot reach a square adjacent to the target, you cannot use this ability."
-                }
-              ]
+              "text": "This ability consumes your Main Action and your movement for the turn. Move up to 6 squares to a square adjacent to the target, ignoring difficult terrain and without provoking. Then make one melee attack with 1 Boon. Weak: 6 physical damage. Standard: 9 physical damage, and the target is Prone. Strong: 12 physical damage, and the target is Prone and Dazed 1. If you cannot reach a square adjacent to the target, you cannot use this ability."
             }
           ],
           "notes": [
@@ -20445,6 +20148,11 @@
         "flavor": [
           "You empty the quiver into the space where the enemy is standing."
         ],
+        "rollOutcomes": {
+          "weak": "1 physical damage.",
+          "standard": "2 physical damage.",
+          "strong": "3 physical damage."
+        },
         "rules": {
           "details": [
             {
@@ -20478,21 +20186,7 @@
           ],
           "body": [
             {
-              "text": "Requires a ranged weapon and ammunition. Make one Agility roll and apply it to each creature in the area.",
-              "outcomes": [
-                {
-                  "label": "Weak",
-                  "text": "1 physical damage."
-                },
-                {
-                  "label": "Standard",
-                  "text": "2 physical damage."
-                },
-                {
-                  "label": "Strong",
-                  "text": "3 physical damage. Roll once using the worst applicable Boon or Bane among the targets. Each target applies resistance separately. A creature can be affected once per use."
-                }
-              ]
+              "text": "Requires a ranged weapon and ammunition. Make one Agility roll and apply it to each creature in the area. Weak: 1 physical damage. Standard: 2 physical damage. Strong: 3 physical damage. Roll once using the worst applicable Boon or Bane among the targets. Each target applies resistance separately. A creature can be affected once per use."
             }
           ],
           "notes": [
@@ -20524,6 +20218,11 @@
         "flavor": [
           "You speak to the roots, and they remember they were here first."
         ],
+        "rollOutcomes": {
+          "weak": "2 physical damage, and the target is Slowed 1.",
+          "standard": "3 physical damage, and the target is Slowed 2.",
+          "strong": "5 physical damage, and the target is Slowed 2 and Grappled 1."
+        },
         "rules": {
           "details": [
             {
@@ -20557,21 +20256,7 @@
           ],
           "body": [
             {
-              "text": "Make one Knowledge roll and apply it to each target.",
-              "outcomes": [
-                {
-                  "label": "Weak",
-                  "text": "2 physical damage, and the target is Slowed 1."
-                },
-                {
-                  "label": "Standard",
-                  "text": "3 physical damage, and the target is Slowed 2."
-                },
-                {
-                  "label": "Strong",
-                  "text": "5 physical damage, and the target is Slowed 2 and Grappled 1."
-                }
-              ]
+              "text": "Make one Knowledge roll and apply it to each target. Weak: 2 physical damage, and the target is Slowed 1. Standard: 3 physical damage, and the target is Slowed 2. Strong: 5 physical damage, and the target is Slowed 2 and Grappled 1."
             }
           ],
           "notes": [
@@ -25317,6 +25002,11 @@
         "flavor": [
           "You spread the cloth, set the tools where your hands know to find them, and turn a roadside stop into a workshop."
         ],
+        "rollOutcomes": {
+          "weak": "Add 1 progress or inventory steps, as the recipe specifies.",
+          "standard": "Add 2 progress or inventory steps, as the recipe specifies.",
+          "strong": "Add 3 progress or inventory steps, as the recipe specifies."
+        },
         "rules": {
           "details": [
             {
@@ -25346,21 +25036,7 @@
           ],
           "body": [
             {
-              "text": "Learn two recipes chosen from Bound Torches, Fletched Ammunition, Travel Food, Twisted Cord, Wooden Brace and Simple Replacement Leg. You can craft those and other known recipes explicitly compatible with this ability. Roll Knowledge:",
-              "outcomes": [
-                {
-                  "label": "Weak",
-                  "text": "adds 1 progress or inventory step,"
-                },
-                {
-                  "label": "Standard",
-                  "text": "2,"
-                },
-                {
-                  "label": "Strong",
-                  "text": "3, as the recipe specifies."
-                }
-              ]
+              "text": "Learn two recipes chosen from Bound Torches, Fletched Ammunition, Travel Food, Twisted Cord, Wooden Brace and Simple Replacement Leg. You can craft those and other known recipes explicitly compatible with this ability. Roll Knowledge: Weak adds 1 progress or inventory step, Standard 2, Strong 3, as the recipe specifies."
             }
           ],
           "notes": []
@@ -28002,7 +27678,7 @@
       "name": "Arcanist",
       "source": {
         "path": "design/classes/arcanist.md",
-        "sha256": "a22c347c13bd87f2b739e59371070af2e6274c3724452dfb640a888490ff9723"
+        "sha256": "cc1df58c3513c882721de8e416a597b8d883dcaea187700077517b2d8d12851d"
       },
       "automation": "pending",
       "hp": 2,
@@ -28135,7 +27811,7 @@
       "name": "Blade",
       "source": {
         "path": "design/classes/blade.md",
-        "sha256": "4ad3d52299f59d0563645cb5940562d76d4914662239e88351af98ece99df219"
+        "sha256": "30d947dba7b253cebcc429755df61f9865f09eb74f2850829cf9c254ee02e1f4"
       },
       "automation": "pending",
       "hp": 4,
@@ -28267,7 +27943,7 @@
       "name": "Intellect",
       "source": {
         "path": "design/classes/intellect.md",
-        "sha256": "1ed6358449b9a3060dddbcd852386297b45557ad7eb92bfb72c51ef9691af083"
+        "sha256": "0c229249e22209ae43fb5b4cfaf215b824d445f61037697c6b00cffa8c30be3b"
       },
       "automation": "pending",
       "hp": 2,
@@ -28399,7 +28075,7 @@
       "name": "Leader",
       "source": {
         "path": "design/classes/leader.md",
-        "sha256": "134d0364a24e8c394bcdc49598f47eaa4894d2a4d37d40b4490b531ab6e63acf"
+        "sha256": "4e4ae6a799888cf8a858f17086456cbb489102ca0f7277e3f272969f276c6a86"
       },
       "automation": "pending",
       "hp": 4,
@@ -28531,7 +28207,7 @@
       "name": "Odd",
       "source": {
         "path": "design/classes/odd.md",
-        "sha256": "70914680f3dfbb1c864a42f0eba3076cfeeaee33c1ef4b1516ac616171b62021"
+        "sha256": "9c37e7724b7b521cc7f199f2fab836c2e98f742289b32474a4609fd0c1026d64"
       },
       "automation": "pending",
       "hp": 3,

@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/arms.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>At the last instant you turn the edge. The pommel lands beneath the ear, and you catch your opponent as their knees give way.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>A creature reduced to 0 HP by your melee attack</dd></div><div><dt>Type</dt><dd>Skill / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>Before making a melee attack, declare that you intend to capture the target. If it reduces an NPC to 0 HP, the NPC becomes Unconscious until the scene ends or it receives healing. This finishing blow leaves it alive and inflicts no wound.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/f3fb98ca03b046335fcc730c1b05689bebf091b4/design/cards/take-them-alive.md\" target=\"_blank\" rel=\"noopener\">design/cards/take-them-alive.md</a> at <code>f3fb98ca03b046335fcc730c1b05689bebf091b4</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>At the last instant you turn the edge. The pommel lands beneath the ear, and you catch your opponent as their knees give way.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>A creature reduced to 0 HP by your melee attack</dd></div><div><dt>Type</dt><dd>Skill / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>Before making a melee attack, declare that you intend to capture the target. If it reduces an NPC to 0 HP, the NPC becomes Unconscious until the scene ends or it receives healing. This finishing blow leaves it alive and inflicts no wound.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/take-them-alive.md\" target=\"_blank\" rel=\"noopener\">design/cards/take-them-alive.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
     "activity": {
       "action": "passive",
       "rollMode": "none",
@@ -32,7 +32,7 @@
         "path": "design/cards/take-them-alive.md",
         "sha256": "60972c9c7b1f7c46618856c76b4f119d0bf8f22fb9bfb468e93753951956c6fd"
       },
-      "sourceCommit": "f3fb98ca03b046335fcc730c1b05689bebf091b4",
+      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

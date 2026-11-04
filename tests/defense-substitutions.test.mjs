@@ -1,3 +1,4 @@
+import { readFile } from "node:fs/promises";
 import test from "node:test";
 import assert from "node:assert/strict";
 import {
@@ -65,9 +66,9 @@ test("only exact embedded source editions offer the four substitution choices", 
       ]),
     ),
     {
-      "ability-catch-the-mechanism": ["knowledge", 0],
-      "ability-steel-at-the-wrist": ["brawn", 0],
-      "ability-snare-the-missile": ["knowledge", 1],
+      "ability-catch-the-mechanism": ["knowledge", 1],
+      "ability-steel-at-the-wrist": ["brawn", 1],
+      "ability-snare-the-missile": ["knowledge", 2],
       "ability-thought-before-the-blow": ["reason", 1],
     },
   );
@@ -128,4 +129,25 @@ test("removing or revising the owned card invalidates its pending selection", ()
   const refreshed = basis(defenseSubstitutionOptions(actor));
   assert.notDeepEqual(refreshed, context);
   assert.throws(() => prepareRoll(refreshed, draft), /changed/);
+});
+
+// Independent catalog evidence: fixtures must not copy the adapter's own hash.
+test("every current catalog defense card is accepted with its approved effects", async () => {
+  const catalog = JSON.parse(await readFile(new URL("../static/data/choices.json", import.meta.url), "utf8"));
+  actor.items = Object.keys(DEFENSE_SUBSTITUTIONS).map(id => {
+    const record = catalog.records.find(record => record.id === id);
+    assert(record, id);
+    return {...card(id), getFlag: (_scope, field) => field === "catalogId" ? id : field === "source" ? record.source : null};
+  });
+  const options = defenseSubstitutionOptions(actor);
+  assert.equal(options.length, 4);
+  assert.deepEqual(Object.fromEntries(options.map(option => [option.catalogId, option.boons])), {
+    "ability-catch-the-mechanism": 1, "ability-steel-at-the-wrist": 1,
+    "ability-snare-the-missile": 2, "ability-thought-before-the-blow": 1,
+  });
+  const guidance = Object.fromEntries(options.map(option => [option.catalogId, option.guidance]));
+  assert.match(guidance["ability-catch-the-mechanism"], /On Strong.*Main Action freeing it/);
+  assert.match(guidance["ability-snare-the-missile"], /single-target.*On Strong.*fits in your free hand/);
+  assert.match(guidance["ability-thought-before-the-blow"], /After the attack resolves, move up to 2 squares without provoking/);
+  assert.doesNotMatch(guidance["ability-thought-before-the-blow"], /Strong/);
 });

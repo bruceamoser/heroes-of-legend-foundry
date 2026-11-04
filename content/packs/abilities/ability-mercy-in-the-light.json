@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/radiance.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>Warm light passes beneath your palm. Your companion&#39;s breathing steadies, and for a moment the horror seems farther away.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Target / range / shape</dt><dd>One visible willing creature within 3 squares, including yourself, or one creature in range harmed by healing.</dd></div><div><dt>Type</dt><dd>Magic / Recovery</dd></div></dl><div class=\"hol-reference-rules\"><p>Pay 1 HP and make a Reason healing roll.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>Restore 3 HP.</dd><dt>Standard</dt><dd>Restore 5 HP and reduce temporary Frightened by 1.</dd><dt>Strong</dt><dd>Restore 7 HP and reduce temporary Frightened by 2.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/f3fb98ca03b046335fcc730c1b05689bebf091b4/design/cards/mercy-in-the-light.md\" target=\"_blank\" rel=\"noopener\">design/cards/mercy-in-the-light.md</a> at <code>f3fb98ca03b046335fcc730c1b05689bebf091b4</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>Warm light passes beneath your palm. Your companion&#39;s breathing steadies, and for a moment the horror seems farther away.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Target / range / shape</dt><dd>One visible willing creature within 3 squares, including yourself, or one creature in range harmed by healing.</dd></div><div><dt>Type</dt><dd>Magic / Recovery</dd></div></dl><div class=\"hol-reference-rules\"><p>Pay 1 HP and make a Reason healing roll.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>Restore 3 HP.</dd><dt>Standard</dt><dd>Restore 5 HP and reduce temporary Frightened by 1.</dd><dt>Strong</dt><dd>Restore 7 HP and reduce temporary Frightened by 2.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/mercy-in-the-light.md\" target=\"_blank\" rel=\"noopener\">design/cards/mercy-in-the-light.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
     "activity": {
       "action": "main",
       "rollMode": "attribute",
@@ -32,7 +32,7 @@
         "path": "design/cards/mercy-in-the-light.md",
         "sha256": "ce9d7418eef82395ccb04103e84ec9596285b2baf609bf2ca83be7e4b34d2698"
       },
-      "sourceCommit": "f3fb98ca03b046335fcc730c1b05689bebf091b4",
+      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

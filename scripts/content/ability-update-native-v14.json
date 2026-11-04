@@ -1,0 +1,345 @@
+{
+  "baselineSystemCommit": "0d8f062d81d2e818bfa39bae7eeab03ec756ff86",
+  "foundry": "14.367",
+  "note": "Exact server-canonicalized immutable v2.7.1 Item field fingerprints; two separately saved copies per source matched. Only these values are accepted, never normalized user content.",
+  "abilities": {
+    "ability-catch-the-mechanism": {
+      "source": {
+        "path": "design/cards/catch-the-mechanism.md",
+        "sha256": "87820ce2266df81da20d35cee15b1ee973cbbcc8454a1e838b88ed946b1f7f57"
+      },
+      "fields": {},
+      "rawItemSha256": "dcb4d79321b91c88520cff0242563cb42c21c6b5ad212af91e1b8ee9e58cda6b"
+    },
+    "ability-enchanting-workshop": {
+      "source": {
+        "path": "design/cards/enchanting-workshop.md",
+        "sha256": "3f3423064cf33bbd413c708a68fcccf18ba6dcf30e67044d8c7334f1e11032fc"
+      },
+      "fields": {
+        "system.description": "87739a91b64a68a70b75ae20515ef2e9ad2b4bcc7ec2be1aff97024278f528ac"
+      },
+      "rawItemSha256": "ed7a5ea5ae46e4de37f243ce31948aca20af080118603b830d9e04f7028e7ba9"
+    },
+    "ability-make-something-useful": {
+      "source": {
+        "path": "design/cards/make-something-useful.md",
+        "sha256": "19d2e162057b97dbb0504cbecd0f04f1a51f64243df25b385a6f39f9ce11bceb"
+      },
+      "fields": {
+        "system.description": "32d763bf49d9ec4952c192f90dfcbfb713753b3c5afe2e49f56f3dc0c2913829"
+      },
+      "rawItemSha256": "f077d9ae0a20e83db95ee3225f3fab49e53fe9f692023e0bc1d2590fa82e58e0"
+    },
+    "ability-signature-blade-cut-and-turn": {
+      "source": {
+        "path": "design/cards/signature-blade-cut-and-turn.md",
+        "sha256": "2727ac305070fbfa70f41def1e6f1044c4fc27cc1b6ddc1f9c0e33bc116ca967"
+      },
+      "fields": {},
+      "rawItemSha256": "baf508cf69e5694bf5dd043ea724a1739a627d4c69026f48b9a3db375b74b283"
+    },
+    "ability-signature-blade-perfect-placement": {
+      "source": {
+        "path": "design/cards/signature-blade-perfect-placement.md",
+        "sha256": "c0585b27c196f7738bf8cab66554927303fdb8f4614f2d53557b8e19ffb65521"
+      },
+      "fields": {},
+      "rawItemSha256": "8f25d629bbab714cd8e7884afb06d941a7a3c038a36166f4be5816d2131d3248"
+    },
+    "ability-signature-blade-pressure-point": {
+      "source": {
+        "path": "design/cards/signature-blade-pressure-point.md",
+        "sha256": "310849ac3504c3547713bf561065ef36a500cbae77de70ef52bbf088122684b6"
+      },
+      "fields": {},
+      "rawItemSha256": "47894f725445692f941af4968f37705f06d2e0aee3c56e1e9237d0dc28209feb"
+    },
+    "ability-signature-blade-relentless-pursuit": {
+      "source": {
+        "path": "design/cards/signature-blade-relentless-pursuit.md",
+        "sha256": "127ae4f86af5eefa1fd0cebcf19d13b74714d8c4603b64f1394a3623c0f9e800"
+      },
+      "fields": {},
+      "rawItemSha256": "9cebdbd22aeea4f98dd5cf6e4cf20f0fb778368ea4ead838125db0995e933804"
+    },
+    "ability-signature-intellect-expose-the-mechanism": {
+      "source": {
+        "path": "design/cards/signature-intellect-expose-the-mechanism.md",
+        "sha256": "e82cf097cc7925c3f8c519eeac435dafa458c06c8520c7f6996e0903d428d28d"
+      },
+      "fields": {},
+      "rawItemSha256": "a75f940ac6214119dff3bc1adea55d6a8ea51347585243126282e8036e8438a9"
+    },
+    "ability-signature-intellect-prepared-explanation": {
+      "source": {
+        "path": "design/cards/signature-intellect-prepared-explanation.md",
+        "sha256": "992c351977c23f06b744bbe75a29d166824a5c070940506f231e32eb785e495f"
+      },
+      "fields": {},
+      "rawItemSha256": "1ba9611beac76a5d6ee7fc8b4005c7e1c7c66272e3823ecc838c677fb025c19a"
+    },
+    "ability-signature-leader-hold-your-nerve": {
+      "source": {
+        "path": "design/cards/signature-leader-hold-your-nerve.md",
+        "sha256": "ae3e83200593706995f2e1eead30d49c359d807935990fb344083e0ab186523d"
+      },
+      "fields": {},
+      "rawItemSha256": "be1bbca256800723a6c63e88a284f7c62aba0fe407efcece943f9339565abe20"
+    },
+    "ability-signature-leader-orderly-withdrawal": {
+      "source": {
+        "path": "design/cards/signature-leader-orderly-withdrawal.md",
+        "sha256": "384e95a9862fca98f9c1f839e6a1e604a56cc80b7e25f680c4413e975fc5e0f5"
+      },
+      "fields": {},
+      "rawItemSha256": "af48690626c52269e89af9eb25011cc91f743bac9be9b0d26b9d36de072c4401"
+    },
+    "ability-signature-odd-unlikely-assistant": {
+      "source": {
+        "path": "design/cards/signature-odd-unlikely-assistant.md",
+        "sha256": "52a28b42d920d202e17e2e9f8441c08cfe4385611a341ae7acfaee03b7e8bbaf"
+      },
+      "fields": {},
+      "rawItemSha256": "2887ae87e209b21a47dead7c048bee78e2b6b19d934b6652113eb61fd54fa734"
+    },
+    "ability-signature-protector-break-their-advance": {
+      "source": {
+        "path": "design/cards/signature-protector-break-their-advance.md",
+        "sha256": "82a6a8830a242c9135d8fdaedf973d225e358ba963d1714a3f28ded80444c9ac"
+      },
+      "fields": {},
+      "rawItemSha256": "85cd1ed2302772ce21df2824d50004cc2e7bfad279e067f26c8ec74b9355528a"
+    },
+    "ability-signature-protector-drive-back-the-circle": {
+      "source": {
+        "path": "design/cards/signature-protector-drive-back-the-circle.md",
+        "sha256": "47dcdd537be505c62374eef3e0ee3dbc7bfde7b1c8ba9b33039406ec83754e4f"
+      },
+      "fields": {},
+      "rawItemSha256": "39740b6377cd90e8af96f32873f8dd228976c5be953fd854b46acf095a536896"
+    },
+    "ability-signature-shadow-exploit-confusion": {
+      "source": {
+        "path": "design/cards/signature-shadow-exploit-confusion.md",
+        "sha256": "cdfc074a60e2267e2bf955c3ef7d01f27e84b57abcbcd185c127e68170b94d5a"
+      },
+      "fields": {},
+      "rawItemSha256": "97907f131ac4e86be8b2bcebc2d9b96401b7a1ddab6a70fe6c5cd09a168768d5"
+    },
+    "ability-signature-shadow-leave-no-pursuit": {
+      "source": {
+        "path": "design/cards/signature-shadow-leave-no-pursuit.md",
+        "sha256": "0fd9732816f1730ab46e978dea73d7e2cd0caa26ceb3a17b6a4bc89c1cfc54e9"
+      },
+      "fields": {},
+      "rawItemSha256": "2819eb4c6476039a95f8b2a88263914f45a2bc9251532467c26f5773c740bb5b"
+    },
+    "ability-signature-shadow-open-the-way": {
+      "source": {
+        "path": "design/cards/signature-shadow-open-the-way.md",
+        "sha256": "61f6b483baa3cb77e487f34e77aa47710777aa24e640052cdc847194c7687dfc"
+      },
+      "fields": {},
+      "rawItemSha256": "154dac8d6695a835e8313e0e9eba6313db897e606463c09e3a36725564db114b"
+    },
+    "ability-signature-shadow-pass-the-guard": {
+      "source": {
+        "path": "design/cards/signature-shadow-pass-the-guard.md",
+        "sha256": "97268ab578e6118751567827051f276a08ef043a989bd7853deb7a18d2e18bef"
+      },
+      "fields": {},
+      "rawItemSha256": "986a1f556e66f9eee7986b2c8c797a0aab84c74417578857c5258dd44a819d66"
+    },
+    "ability-signature-shadow-soft-landing": {
+      "source": {
+        "path": "design/cards/signature-shadow-soft-landing.md",
+        "sha256": "7e951ebb138d27dbd3a396ca2f79212ea62968fdf0f426127920acbe023d3a6b"
+      },
+      "fields": {},
+      "rawItemSha256": "5448aade6be73237952def61013edb4e85af4f7f7d52aced309482601e73fca1"
+    },
+    "ability-signature-shadow-strike-and-vanish": {
+      "source": {
+        "path": "design/cards/signature-shadow-strike-and-vanish.md",
+        "sha256": "99e8a57b4ab383947e8e0c8d28bda34d63a8cf70a8d860af0681fdfeaa995016"
+      },
+      "fields": {},
+      "rawItemSha256": "393534a6f46a90f91b97538b7de322037ceb45b8db7795341635002cfaef015b"
+    },
+    "ability-signature-shadow-turn-their-eye": {
+      "source": {
+        "path": "design/cards/signature-shadow-turn-their-eye.md",
+        "sha256": "5a6f7e7acea819339617ffe31a3d2111e5d9585263df77a61934714243c30e05"
+      },
+      "fields": {},
+      "rawItemSha256": "944033b1d45c252f7a3e3ca2b7281d9f54625e830dc28d1aa26f276f0bcd9c7e"
+    },
+    "ability-signature-shepherd-careful-transfer": {
+      "source": {
+        "path": "design/cards/signature-shepherd-careful-transfer.md",
+        "sha256": "bb5fb86b34e3d9d1433cb71901797c429144ce20b4702beb82f5f8e7fd45f533"
+      },
+      "fields": {
+        "system.description": "bef9b1ae6a792831de98edc3eeac101f901d443a68ea3c100dfeea52f5646b9a"
+      },
+      "rawItemSha256": "3ae4e299f50fadc418ca666115b26a7ee6a46386cdaafe8e54e5d09e53c6c2f4"
+    },
+    "ability-signature-shepherd-ease-the-burden": {
+      "source": {
+        "path": "design/cards/signature-shepherd-ease-the-burden.md",
+        "sha256": "84cca3772c2e4d4eac835c3e35cec5f2d1015006e1d63832228be08b9de3f82f"
+      },
+      "fields": {},
+      "rawItemSha256": "cef1db19effebfc1ab964b639a34b0721e14f2898fcc1ec7bc7b40af79cfa41b"
+    },
+    "ability-signature-shepherd-gentle-return": {
+      "source": {
+        "path": "design/cards/signature-shepherd-gentle-return.md",
+        "sha256": "73af87c8182f9918144d7f89ec95031f3cc8383140ff84b59f2b763e54ce8da2"
+      },
+      "fields": {
+        "system.description": "e82f6edd3f1d5bb942a168b60ce804810380f8d72642591e265d279422d56631"
+      },
+      "rawItemSha256": "809100a43aa73eeab6ce61fe17115b6945abd57bb9239af0ede5d6a5dffac01e"
+    },
+    "ability-signature-shepherd-quiet-the-tremor": {
+      "source": {
+        "path": "design/cards/signature-shepherd-quiet-the-tremor.md",
+        "sha256": "9431fddefe1e586d164caf76445b9941e5c2b81d1507b3fadad05259cc88278f"
+      },
+      "fields": {
+        "system.description": "e6e3495e486647787254a668b7060fef878ef5e340986c37ecf03087c0a0db55"
+      },
+      "rawItemSha256": "b20a31a693721d20b4f13400988bc425bb9013e7a36650966d69bef26f65db6e"
+    },
+    "ability-signature-shepherd-shared-resolve": {
+      "source": {
+        "path": "design/cards/signature-shepherd-shared-resolve.md",
+        "sha256": "22982207bc4ad4974606591a00d1a7af7c6d0ae2de96a92ab17e8accf734e951"
+      },
+      "fields": {},
+      "rawItemSha256": "52dbfdef4cea919f9931c5f03e3c4dc2400eac49309832974917e5ed67359aa1"
+    },
+    "ability-signature-unbalanced-crash-down": {
+      "source": {
+        "path": "design/cards/signature-unbalanced-crash-down.md",
+        "sha256": "fc46f0ede05fc8f184a7278f0c83958c9332eec36d4d9c85c2def13a3615b2cf"
+      },
+      "fields": {},
+      "rawItemSha256": "3c9a5724ecc3622e6cbed18d891d3241cd6c4a5bc701203f99052cc01db1f34a"
+    },
+    "ability-signature-unbalanced-crush-the-barrier": {
+      "source": {
+        "path": "design/cards/signature-unbalanced-crush-the-barrier.md",
+        "sha256": "2d6d09c36b67fc5c9ea6d2659aa367c64fffb285c7e88ce459ae33ab1d0d1de7"
+      },
+      "fields": {},
+      "rawItemSha256": "0877eea02ec4b39612e54fce6c406d00d7d3ef9596e71ea5257e087006b733a2"
+    },
+    "ability-signature-unbalanced-laugh-at-the-fall": {
+      "source": {
+        "path": "design/cards/signature-unbalanced-laugh-at-the-fall.md",
+        "sha256": "e210924c6ddd6b7aa90a4b82a3ec5d9272c9d4470a601583bc92a0c2f746eff2"
+      },
+      "fields": {},
+      "rawItemSha256": "2e1152ae7c9ff37443218ee03eb552f518ec80bb3b58522e1ff72bb8f7926ce2"
+    },
+    "ability-signature-unbalanced-scatter-the-line": {
+      "source": {
+        "path": "design/cards/signature-unbalanced-scatter-the-line.md",
+        "sha256": "452079d952d1308e978ad6774d4273440ab9ee744d7ecdfc29514dbef7d711f8"
+      },
+      "fields": {},
+      "rawItemSha256": "feb70b2533585ef678962072ad821e863fe3c0d812a383ff98f09be9ba507591"
+    },
+    "ability-signature-unbalanced-shoulder-through": {
+      "source": {
+        "path": "design/cards/signature-unbalanced-shoulder-through.md",
+        "sha256": "2ec31bc5effcd7ab921bdb651d9c78c31c23fdced032f06fe8fedfdc35ed6d35"
+      },
+      "fields": {},
+      "rawItemSha256": "83e0f72f8c0067f0aef51e166e4e1dc73db1744eb6f190eafbc5df41ea7ff503"
+    },
+    "ability-signature-warden-a-watchful-rest": {
+      "source": {
+        "path": "design/cards/signature-warden-a-watchful-rest.md",
+        "sha256": "40dbdfc4e26019b6870f34f01ed2cecefa3b80866c374bcb4b2365ba2ce66fe4"
+      },
+      "fields": {},
+      "rawItemSha256": "3c9db5780627cd0d857e69da0c76b0556d68b32a4bf6019275664c231d11ffcb"
+    },
+    "ability-signature-warden-follow-my-footsteps": {
+      "source": {
+        "path": "design/cards/signature-warden-follow-my-footsteps.md",
+        "sha256": "7c58469f28fa4761ef99ee9f12a29f5e05a18d62b6b91be124b5a783ac3e85d3"
+      },
+      "fields": {},
+      "rawItemSha256": "30934a96b530ef0faf8300aa84d1d6a3bd0972c3fccdfa0cdfaf9963794f6465"
+    },
+    "ability-signature-warden-know-what-you-hunt": {
+      "source": {
+        "path": "design/cards/signature-warden-know-what-you-hunt.md",
+        "sha256": "4288f494978c5238f6fb0c9a8032988901cbdf24a0f6c00f3debf8c3bf48ecc5"
+      },
+      "fields": {},
+      "rawItemSha256": "806ba7588ba3d782213912e330227c9f4b1478118e07bb9b30896fa400460801"
+    },
+    "ability-signature-warden-stay-on-the-scent": {
+      "source": {
+        "path": "design/cards/signature-warden-stay-on-the-scent.md",
+        "sha256": "00d1cfeb9a8372542fae38435cdb407f25a77bb9d97c264d18f6c2a6ce861517"
+      },
+      "fields": {},
+      "rawItemSha256": "a46dea101692894a2a1ae0c67618589b4b0b216805e6123c4b36094b6340f324"
+    },
+    "ability-signature-warden-through-bramble-and-stone": {
+      "source": {
+        "path": "design/cards/signature-warden-through-bramble-and-stone.md",
+        "sha256": "8752ae10ad51c6aa3fef13d26c1b4e69b1eedc56549c25fcb6c60e64147dbd24"
+      },
+      "fields": {},
+      "rawItemSha256": "5ac1959672a26dd4c7004d1287bbfc7486ebc5598f5bf24909179379f06d876f"
+    },
+    "ability-snare-the-missile": {
+      "source": {
+        "path": "design/cards/snare-the-missile.md",
+        "sha256": "c91722d584ff57945c116367ddc98134b6cc8360e7a9b46a97d95648073b5a99"
+      },
+      "fields": {
+        "system.description": "d345c8e710b176ea23bd40dbfb1e01a358f119eb02e8749ddbe819adb1eb1a44"
+      },
+      "rawItemSha256": "bd133520aef15104396bed49d73c830f9edc923194ecd5160276a0eb108b3968"
+    },
+    "ability-steel-at-the-wrist": {
+      "source": {
+        "path": "design/cards/steel-at-the-wrist.md",
+        "sha256": "c263759c45b45268f57d5dfe2031da9967b89af97314639abbda060694ebc52c"
+      },
+      "fields": {},
+      "rawItemSha256": "2b54fd28b8f60efc4409b332c90884d93bcf2767c7401e3c0198556d0570e880"
+    },
+    "ability-thought-before-the-blow": {
+      "source": {
+        "path": "design/cards/thought-before-the-blow.md",
+        "sha256": "49a4eb62bcc8001c89ed520d9f88e06ef012772183a7fbc6001ef516070090ed"
+      },
+      "fields": {},
+      "rawItemSha256": "56a14a99d57f22f92eea83f2b14f9c9e59aa74cab46025a593790901cccc7886"
+    },
+    "ability-trail-workshop": {
+      "source": {
+        "path": "design/cards/trail-workshop.md",
+        "sha256": "51a77a8c96e50bd4ea58a2afb6902e352a57d24e1603c2bf4c305d1bbc678b3c"
+      },
+      "fields": {
+        "system.description": "06d15fda32dd5d189fe7158e0405a9fb91d277a9c903152ae402b69382061364"
+      },
+      "rawItemSha256": "1833b22628509b8b9efeec3e7214001bef079895e4fa8541c68b8a58651109bc"
+    }
+  },
+  "candidateSystemVersion": "2.8.0",
+  "repeatedSaves": 2,
+  "itemCount": 40,
+  "disposableActorDeleted": true
+}

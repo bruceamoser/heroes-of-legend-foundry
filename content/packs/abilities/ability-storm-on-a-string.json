@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/storm.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You curl a finger. A thin spiral of wind catches the object and lays it on the path toward your hand.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>One visible unattended object of Bulk 1 orless within 5 squares.</dd></div><div><dt>Type</dt><dd>Magic / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>Move the object up to 5 squares toward you along an open path. Catch it if it reaches your free hand, or leave it in the last square reached.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/f3fb98ca03b046335fcc730c1b05689bebf091b4/design/cards/storm-on-a-string.md\" target=\"_blank\" rel=\"noopener\">design/cards/storm-on-a-string.md</a> at <code>f3fb98ca03b046335fcc730c1b05689bebf091b4</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You curl a finger. A thin spiral of wind catches the object and lays it on the path toward your hand.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>One visible unattended object of Bulk 1 orless within 5 squares.</dd></div><div><dt>Type</dt><dd>Magic / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>Move the object up to 5 squares toward you along an open path. Catch it if it reaches your free hand, or leave it in the last square reached.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/storm-on-a-string.md\" target=\"_blank\" rel=\"noopener\">design/cards/storm-on-a-string.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
     "activity": {
       "action": "maneuver",
       "rollMode": "none",
@@ -32,7 +32,7 @@
         "path": "design/cards/storm-on-a-string.md",
         "sha256": "919547bd4c91feae16f8656cbb6c48f1fcd3ced0d13b046ff5d85fdcc060db8f"
       },
-      "sourceCommit": "f3fb98ca03b046335fcc730c1b05689bebf091b4",
+      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

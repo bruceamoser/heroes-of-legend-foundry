@@ -1,3 +1,4 @@
+import { ancestryTokenFootprint } from "../rules/ancestry-token.mjs";
 import { readPortableCharacter } from "../rules/portable-character.mjs";
 import { nativePlayEffects } from "../rules/native-play-import.mjs";
 import { importedCharacterState } from "../rules/native-character-state.mjs";
@@ -22,7 +23,7 @@ export function buildPortableActorSource(source, catalogs, languages, { woundsCa
   const changes = {
     name: draft.name.trim(),
     type: "character",
-    prototypeToken: { name: draft.name.trim(), actorLink: true },
+    prototypeToken: { name: draft.name.trim(), actorLink: true, ...ancestryTokenFootprint(draft.ancestryId) },
     items,
     effects: effects.effects,
     "system.health.baseMax": preview.summary.maximumHp,

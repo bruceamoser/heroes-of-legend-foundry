@@ -67,6 +67,12 @@ try {
       commit:catalogs.commit,version:game.system.version,foundry:game.version};
   }, {fixtureId,baseDraft,roster,ID});
   evidence.installed = {commit:fixture.commit,system:fixture.version,foundry:fixture.foundry};
+  const halflingFootprint = await page.evaluate(id => {
+    const actor = game.actors.get(id);
+    return { width: actor.prototypeToken.width, height: actor.prototypeToken.height };
+  }, fixture.actors["ancestry-halfling"]);
+  assert.deepEqual(halflingFootprint, { width: 0.5, height: 0.5 });
+  evidence.cases.push("CHG-HAL-002: imported Halfling prototype token is 0.5 × 0.5 grid units.");
   await page.evaluate(async actorId => {
     const {CreationWizard} = await import("/systems/heroes-of-legend/applications/creation.mjs");
     globalThis.holAncestryWizard = new CreationWizard(game.actors.get(actorId));

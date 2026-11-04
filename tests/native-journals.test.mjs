@@ -65,6 +65,12 @@ test("explicit book import preserves old and edited journals, is idempotent, and
   const page=journal[1].pages.find(page=>page.id===shared.pageId);page.testUserPermission=()=>true;page.parent={sheet:{render:async options=>{rendered=options;}}};
   globalThis.foundry={applications:{sheets:{journal:{JournalEntrySheet:{VIEW_MODES:{SINGLE:1}}}}}};
   assert.equal(await openLocalRule(shared.path),page);assert.equal(rendered.pageId,shared.pageId);assert.equal(rendered.mode,1);
+  const publishedPage={id:shared.pageId,text:{content:"Current published language rules"},testUserPermission:()=>true};
+  globalThis.fromUuid=async uuid=>{assert.equal(uuid,shared.uuid);return publishedPage;};
+  const originalWorldText=page.text.content;
+  assert.equal(await localRulePage(shared.path,{published:true}),publishedPage);
+  assert.equal(await localRulePage(shared.path),page);
+  assert.equal(page.text.content,originalWorldText,"Reading the current edition never rewrites the saved world copy");
   game.user.isGM=false;
   assert.ok((await ruleIndex()).every(record=>record.pack==="player-rules"));
   await assert.rejects(importRuleJournals(),/Dungeon Architect/);

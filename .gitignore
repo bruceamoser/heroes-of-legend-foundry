@@ -13,3 +13,6 @@ foundry-data/
 
 release-artifacts/
 __pycache__/
+
+# Immutable sparse rulebook checkout used by CI conformance gates.
+.book-source/

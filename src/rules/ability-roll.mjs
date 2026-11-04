@@ -33,7 +33,7 @@ export function printedAbilityRoll(record) {
   const outcomes = Object.fromEntries((rules?.body ?? []).flatMap(block => block.outcomes ?? [])
     .filter(outcome => ['weak','standard','strong'].includes(outcome.label.toLowerCase()))
     .map(outcome => [outcome.label.toLowerCase(),outcome.text]));
-  return {attribute, outcomes};
+  return {attribute, outcomes: {...outcomes, ...(record?.reference?.rollOutcomes ?? {})}};
 }
 export function abilityRollConfiguration(item, record) {
   const printed = printedAbilityRoll(record);

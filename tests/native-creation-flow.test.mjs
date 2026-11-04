@@ -1,3 +1,4 @@
+import { ancestryTokenFootprint } from "../src/rules/ancestry-token.mjs";
 import test from "node:test";
 import assert from "node:assert/strict";
 import {readFile} from "node:fs/promises";
@@ -8,7 +9,7 @@ import {abilityItemSource,equipmentItemSource} from "../src/rules/item-construct
 import {DEFAULT_LANGUAGES} from "../src/rules/languages.mjs";
 
 async function load(path, exports, globals={}) {
-  exports={createActionMessage(){},shouldProcessRequest(){return true;},...exports};
+  exports={ancestryTokenFootprint,createActionMessage(){},shouldProcessRequest(){return true;},...exports};
   const context=createContext({structuredClone,Date,setTimeout,...globals});
   const module=new SourceTextModule(await readFile(new URL(path,import.meta.url),"utf8"),{context});
   await module.link(async()=>{const dependency=new SyntheticModule(Object.keys(exports),function(){for(const [key,value] of Object.entries(exports))this.setExport(key,value)},{context});await dependency.link(()=>{});await dependency.evaluate();return dependency});

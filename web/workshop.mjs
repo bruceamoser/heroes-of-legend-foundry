@@ -1,3 +1,4 @@
+import { ruleBlockMarkup } from "./rules-view.mjs";
 import {
   workshopCraft,
   noRollBrew,
@@ -1922,18 +1923,7 @@ function showReference(id) {
       flavor.map((t) => `<p class="flavor">${esc(t)}</p>`).join("") +
       `<h3>Rules</h3><dl>${rules.details.map((d) => `<dt>${esc(d.label)}</dt><dd>${esc(d.value)}</dd>`).join("")}</dl>` +
       rules.body
-        .map((b) =>
-          b.outcomes
-            ? b.outcomes
-                .map(
-                  (o) =>
-                    `<div class="outcome"><strong>${esc(o.label)}</strong>${esc(o.text)}</div>`,
-                )
-                .join("")
-            : b.items
-              ? `<ul>${b.items.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>`
-              : `<p>${esc(b.text)}</p>`,
-        )
+        .map(block => ruleBlockMarkup(block, { outcomeLayout: "stacked" }))
         .join("") +
       (rules.notes ?? [])
         .map((n) => `<p><strong>${esc(n.label)}</strong> ${esc(n.text)}</p>`)

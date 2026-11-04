@@ -1,3 +1,4 @@
+import { ancestryTokenFootprint } from "../src/rules/ancestry-token.mjs";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
@@ -41,10 +42,10 @@ const creation = await load("../src/services/creation.mjs", {
   createActionMessage() {}, shouldProcessRequest() {}, registerAuthority() {}, ensureAuthorityReady() {},
   writeCharacterActor() {}, isCreationAuthority() {}, bindCreationAuthority() {}, enqueueCharacterOperation() {},
   loadCatalogs() {}, getCampaignLanguageConfiguration() {}, workshopCharacter() {},
-  nativePlayEffects, importedCharacterState, abilityItemSource, equipmentItemSource,
+  nativePlayEffects, importedCharacterState, abilityItemSource, equipmentItemSource, ancestryTokenFootprint,
 }, { foundry: { utils } });
 const importer = await load("../src/services/portable-actor-import.mjs", {
-  readPortableCharacter, nativePlayEffects, importedCharacterState,
+  readPortableCharacter, nativePlayEffects, importedCharacterState, ancestryTokenFootprint,
   buildCharacterItems: creation.buildCharacterItems,
   loadCatalogs: async () => catalogs, getCampaignLanguageConfiguration: () => languages,
 }, { foundry: { utils } });
@@ -53,18 +54,9 @@ function portable(draft = fixtures.characters[0].draft) {
   return JSON.parse(writePortableCharacter(draft, catalogs, { languages: languages.definitions }));
 }
 
-test("complete portable book heroes construct native sources while stale Oren choices require repair", () => {
+test("all six complete portable book heroes construct native sources", () => {
   for (const hero of fixtures.characters) {
     const source = portable(hero.draft);
-    if(hero.id === "oren-brass") {
-      const before=structuredClone(source);
-      const restored=readPortableCharacter(source,catalogs,languages.definitions);
-      assert.equal(restored.preview.valid,false);
-      assert(restored.preview.errors.some(error=>error.code === "borrowed-ancestry"));
-      assert.throws(()=>importer.buildPortableActorSource(source,catalogs,languages),/unresolved|Finish|incomplete|choices/i);
-      assert.deepEqual(source,before);
-      continue;
-    }
     source._id = "untrusted"; source.ownership = { default: 3 }; source.system = { health: { baseMax: 9999 } };
     const result = importer.buildPortableActorSource(source, catalogs, languages);
     const { preview } = readPortableCharacter(source, catalogs, languages.definitions);
@@ -72,6 +64,13 @@ test("complete portable book heroes construct native sources while stale Oren ch
     assert.equal(result.type, "character");
     assert.equal(result.prototypeToken.name, hero.draft.name);
     assert.equal(result.prototypeToken.actorLink, true);
+    if (hero.draft.ancestryId === "ancestry-halfling") {
+      assert.equal(result.prototypeToken.width, 0.5);
+      assert.equal(result.prototypeToken.height, 0.5);
+    } else {
+      assert.equal(result.prototypeToken.width, undefined);
+      assert.equal(result.prototypeToken.height, undefined);
+    }
     assert.equal(result.system.health.baseMax, preview.summary.maximumHp);
     assert.equal(result.system.health.value, preview.summary.maximumHp);
     assert.equal(result.flags["heroes-of-legend"].creationReceipt.status, "complete");

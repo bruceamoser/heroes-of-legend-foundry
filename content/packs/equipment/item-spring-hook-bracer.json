@@ -14,7 +14,7 @@
     "carried": true,
     "held": false,
     "worn": false,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Market reference · acquisition and use automation in progress</p><p>One reusable spring-hook bracer (Bulk 1), built on learning and supplied if needed.</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/f3fb98ca03b046335fcc730c1b05689bebf091b4/design/cards/spring-in-the-sleeve.md\" target=\"_blank\" rel=\"noopener\">design/cards/spring-in-the-sleeve.md</a> at <code>f3fb98ca03b046335fcc730c1b05689bebf091b4</code>.</p></section>"
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Market reference · acquisition and use automation in progress</p><p>One reusable spring-hook bracer (Bulk 1), built on learning and supplied if needed.</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/spring-in-the-sleeve.md\" target=\"_blank\" rel=\"noopener\">design/cards/spring-in-the-sleeve.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>"
   },
   "effects": [],
   "folder": null,
@@ -28,7 +28,7 @@
         "path": "design/cards/spring-in-the-sleeve.md",
         "sha256": "cc9ac698bb04221cb3aa72dcb299902ae1a7aacaee193170befce310d105afd2"
       },
-      "sourceCommit": "f3fb98ca03b046335fcc730c1b05689bebf091b4",
+      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Market reference · acquisition and use automation in progress"

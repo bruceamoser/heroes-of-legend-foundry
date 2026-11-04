@@ -40,7 +40,7 @@ test("completed book lock accounts for every creature, portrait and summon", () 
 
 
 test("approved v16.7 source lock includes ten ancestries, fifty authored trait identities and shared procedures", () => {
-  assert.equal(lock.commit, "f3fb98ca03b046335fcc730c1b05689bebf091b4");
+  assert.equal(lock.commit, "c5c84c0da3a5bd54b2553426408d1ea581fe22b9");
   assert.equal(lock.previousCommit, "25b80c9fe77d7baaec3f3a8a548c9663d0f39a30");
   const ancestry = lock.records.filter(record => record.path.startsWith("design/ancestries/"));
   assert.equal(ancestry.filter(record => !record.path.includes("/trait-")).length, 10);

@@ -2,35 +2,35 @@
 export const DEFENSE_SUBSTITUTIONS = Object.freeze({
   "ability-catch-the-mechanism": Object.freeze({
     path: "design/cards/catch-the-mechanism.md",
-    sha256: "35855ba80829acc5d06968cbb33b361c5bbe1cbad3c7166e8561cfcce46f8646",
+    sha256: "87820ce2266df81da20d35cee15b1ee973cbbcc8454a1e838b88ed946b1f7f57",
     attributeKey: "knowledge",
-    boons: 0,
+    boons: 1,
     guidance:
-      "Before a mechanical trap defense; see and reach its mechanism; held craft tool. No disarm.",
+      "Reaction before defending against a visible mechanical trap whose workings you can reach; held craft tool. On Strong, after the trap resolves, its mechanism stays jammed until someone spends a Main Action freeing it.",
   }),
   "ability-steel-at-the-wrist": Object.freeze({
     path: "design/cards/steel-at-the-wrist.md",
-    sha256: "c6c0a8951be457f96d8099cf99d240ed55412f496956a2fe08587ffca8a2e885",
+    sha256: "c263759c45b45268f57d5dfe2031da9967b89af97314639abbda060694ebc52c",
     attributeKey: "brawn",
-    boons: 0,
+    boons: 1,
     guidance:
-      "Before defense against an adjacent creature's melee weapon attack; requires a melee weapon. No Boon.",
+      "Reaction before defense against an adjacent creature's melee weapon attack; use an ordinary melee weapon.",
   }),
   "ability-snare-the-missile": Object.freeze({
     path: "design/cards/snare-the-missile.md",
-    sha256: "7cf8c76643b934e75974edc02f9e278e908bb2338e10e9f4425a82c25f65872a",
+    sha256: "c91722d584ff57945c116367ddc98134b6cc8360e7a9b46a97d95648073b5a99",
     attributeKey: "knowledge",
-    boons: 1,
+    boons: 2,
     guidance:
-      "Before one physical projectile defense; held craft tools and free hand; not area or oversize projectile.",
+      "Reaction before defending against a single-target physical projectile attack; held craft tools and a free hand. On Strong, after the attack resolves, catch the projectile if it fits in your free hand.",
   }),
   "ability-thought-before-the-blow": Object.freeze({
     path: "design/cards/thought-before-the-blow.md",
-    sha256: "07d814715c441190e7c7959fefb703b18d312b6d2c3c2df4b6ec6be55ba66dce",
+    sha256: "49a4eb62bcc8001c89ed520d9f88e06ef012772183a7fbc6001ef516070090ed",
     attributeKey: "reason",
     boons: 1,
     guidance:
-      "Before defense against a perceived attack; on Strong, move up to 2 squares without provoking after resolution.",
+      "Reaction before defense against an attack you can perceive. After the attack resolves, move up to 2 squares without provoking.",
   }),
 });
 

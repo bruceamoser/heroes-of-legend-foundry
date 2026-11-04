@@ -1,0 +1,402 @@
+{
+  "ability-enchanting-workshop": {
+    "source": {
+      "path": "design/cards/enchanting-workshop.md",
+      "sha256": "3f3423064cf33bbd413c708a68fcccf18ba6dcf30e67044d8c7334f1e11032fc"
+    },
+    "outcomes": {
+      "weak": "Add 1 progress, or inventory steps for a supply, as the recipe specifies.",
+      "standard": "Add 2 progress, or inventory steps for a supply, as the recipe specifies.",
+      "strong": "Add 3 progress, or inventory steps for a supply, as the recipe specifies."
+    }
+  },
+  "ability-make-something-useful": {
+    "source": {
+      "path": "design/cards/make-something-useful.md",
+      "sha256": "19d2e162057b97dbb0504cbecd0f04f1a51f64243df25b385a6f39f9ce11bceb"
+    },
+    "outcomes": {
+      "weak": "Add 1 progress or inventory steps, as the recipe specifies.",
+      "standard": "Add 2 progress or inventory steps, as the recipe specifies.",
+      "strong": "Add 3 progress or inventory steps, as the recipe specifies."
+    }
+  },
+  "ability-signature-blade-cut-and-turn": {
+    "source": {
+      "path": "design/cards/signature-blade-cut-and-turn.md",
+      "sha256": "2727ac305070fbfa70f41def1e6f1044c4fc27cc1b6ddc1f9c0e33bc116ca967"
+    },
+    "outcomes": {
+      "weak": "deal 1 extra damage;",
+      "standard": "deal 2 extra damage;",
+      "strong": "deal 3 extra damage."
+    }
+  },
+  "ability-signature-blade-perfect-placement": {
+    "source": {
+      "path": "design/cards/signature-blade-perfect-placement.md",
+      "sha256": "c0585b27c196f7738bf8cab66554927303fdb8f4614f2d53557b8e19ffb65521"
+    },
+    "outcomes": {
+      "weak": "throw it 3 squares.",
+      "standard": "throw it 5 squares and apply Dazed 1.",
+      "strong": "throw it 7 squares and apply Dazed 2."
+    }
+  },
+  "ability-signature-blade-pressure-point": {
+    "source": {
+      "path": "design/cards/signature-blade-pressure-point.md",
+      "sha256": "310849ac3504c3547713bf561065ef36a500cbae77de70ef52bbf088122684b6"
+    },
+    "outcomes": {
+      "weak": "deal 1 damage to each creature adjacent to you.",
+      "standard": "deal 1 damage and push each creature 1 square directly away from you.",
+      "strong": "deal 1 damage and push each creature 2 squares directly away from you."
+    }
+  },
+  "ability-signature-blade-relentless-pursuit": {
+    "source": {
+      "path": "design/cards/signature-blade-relentless-pursuit.md",
+      "sha256": "127ae4f86af5eefa1fd0cebcf19d13b74714d8c4603b64f1394a3623c0f9e800"
+    },
+    "outcomes": {
+      "weak": "apply Slowed 1.",
+      "standard": "apply Slowed 2.",
+      "strong": "apply Slowed 3."
+    }
+  },
+  "ability-signature-intellect-expose-the-mechanism": {
+    "source": {
+      "path": "design/cards/signature-intellect-expose-the-mechanism.md",
+      "sha256": "e82cf097cc7925c3f8c519eeac435dafa458c06c8520c7f6996e0903d428d28d"
+    },
+    "outcomes": {
+      "weak": "deal 5 physical damage.",
+      "standard": "deal 7 physical damage.",
+      "strong": "deal 9 physical damage."
+    }
+  },
+  "ability-signature-intellect-prepared-explanation": {
+    "source": {
+      "path": "design/cards/signature-intellect-prepared-explanation.md",
+      "sha256": "992c351977c23f06b744bbe75a29d166824a5c070940506f231e32eb785e495f"
+    },
+    "outcomes": {
+      "weak": "deal 3 physical damage.",
+      "standard": "deal 5 physical damage.",
+      "strong": "deal 7 physical damage."
+    }
+  },
+  "ability-signature-leader-hold-your-nerve": {
+    "source": {
+      "path": "design/cards/signature-leader-hold-your-nerve.md",
+      "sha256": "ae3e83200593706995f2e1eead30d49c359d807935990fb344083e0ab186523d"
+    },
+    "outcomes": {
+      "weak": "apply Frightened 1.",
+      "standard": "apply Frightened 1 and Dazed 1.",
+      "strong": "apply Frightened 2 and Dazed 1."
+    },
+    "reviewedSha256": [
+      "ae3e83200593706995f2e1eead30d49c359d807935990fb344083e0ab186523d",
+      "3d3c03f4c8a6d8825fc9cec38f7b4d12fe834a75302eb18c7f8db05949fc4100"
+    ]
+  },
+  "ability-signature-leader-orderly-withdrawal": {
+    "source": {
+      "path": "design/cards/signature-leader-orderly-withdrawal.md",
+      "sha256": "384e95a9862fca98f9c1f839e6a1e604a56cc80b7e25f680c4413e975fc5e0f5"
+    },
+    "outcomes": {
+      "weak": "deal 2 physical damage.",
+      "standard": "deal 4 physical damage and choose one effect.",
+      "strong": "deal 6 physical damage and choose two different effects."
+    }
+  },
+  "ability-signature-odd-unlikely-assistant": {
+    "source": {
+      "path": "design/cards/signature-odd-unlikely-assistant.md",
+      "sha256": "52a28b42d920d202e17e2e9f8441c08cfe4385611a341ae7acfaee03b7e8bbaf"
+    },
+    "outcomes": {
+      "weak": "1 poison damage.",
+      "standard": "2 poison damage.",
+      "strong": "4 poison damage."
+    }
+  },
+  "ability-signature-protector-break-their-advance": {
+    "source": {
+      "path": "design/cards/signature-protector-break-their-advance.md",
+      "sha256": "82a6a8830a242c9135d8fdaedf973d225e358ba963d1714a3f28ded80444c9ac"
+    },
+    "outcomes": {
+      "weak": "2 physical damage.",
+      "standard": "2 physical damage, and the target is Prone.",
+      "strong": "4 physical damage, and the target is Prone and Dazed 1."
+    }
+  },
+  "ability-signature-protector-drive-back-the-circle": {
+    "source": {
+      "path": "design/cards/signature-protector-drive-back-the-circle.md",
+      "sha256": "47dcdd537be505c62374eef3e0ee3dbc7bfde7b1c8ba9b33039406ec83754e4f"
+    },
+    "outcomes": {
+      "weak": "3 squares long; 1 radiant damage.",
+      "standard": "5 squares long; 2 radiant damage.",
+      "strong": "7 squares long; 3 radiant damage."
+    }
+  },
+  "ability-signature-shadow-exploit-confusion": {
+    "source": {
+      "path": "design/cards/signature-shadow-exploit-confusion.md",
+      "sha256": "cdfc074a60e2267e2bf955c3ef7d01f27e84b57abcbcd185c127e68170b94d5a"
+    },
+    "outcomes": {
+      "weak": "3 physical damage. The triggering action resolves.",
+      "standard": "5 physical damage. The triggering action is interrupted and lost.",
+      "strong": "7 physical damage, and the target has Dazed 1. The triggering action is interrupted and lost."
+    }
+  },
+  "ability-signature-shadow-leave-no-pursuit": {
+    "source": {
+      "path": "design/cards/signature-shadow-leave-no-pursuit.md",
+      "sha256": "0fd9732816f1730ab46e978dea73d7e2cd0caa26ceb3a17b6a4bc89c1cfc54e9"
+    },
+    "outcomes": {
+      "weak": "the target has Dazed 1.",
+      "standard": "the target has Dazed 1 and Frightened 1.",
+      "strong": "the target has Dazed 2 and Frightened 1, and it cannot take Reactions until the end of its next turn."
+    }
+  },
+  "ability-signature-shadow-open-the-way": {
+    "source": {
+      "path": "design/cards/signature-shadow-open-the-way.md",
+      "sha256": "61f6b483baa3cb77e487f34e77aa47710777aa24e640052cdc847194c7687dfc"
+    },
+    "outcomes": {
+      "weak": "2 progress.",
+      "standard": "3 progress.",
+      "strong": "5 progress."
+    }
+  },
+  "ability-signature-shadow-pass-the-guard": {
+    "source": {
+      "path": "design/cards/signature-shadow-pass-the-guard.md",
+      "sha256": "97268ab578e6118751567827051f276a08ef043a989bd7853deb7a18d2e18bef"
+    },
+    "outcomes": {
+      "weak": "learn one intent.",
+      "standard": "learn one intent, and gain 1 Boon to your next social roll against it.",
+      "strong": "learn one intent, and gain 2 Boons to your next social roll against it."
+    }
+  },
+  "ability-signature-shadow-soft-landing": {
+    "source": {
+      "path": "design/cards/signature-shadow-soft-landing.md",
+      "sha256": "7e951ebb138d27dbd3a396ca2f79212ea62968fdf0f426127920acbe023d3a6b"
+    },
+    "outcomes": {
+      "weak": "3 physical damage.",
+      "standard": "4 physical damage, and the target has Bleeding 1.",
+      "strong": "6 physical damage, and the target has Bleeding 2."
+    }
+  },
+  "ability-signature-shadow-strike-and-vanish": {
+    "source": {
+      "path": "design/cards/signature-shadow-strike-and-vanish.md",
+      "sha256": "99e8a57b4ab383947e8e0c8d28bda34d63a8cf70a8d860af0681fdfeaa995016"
+    },
+    "outcomes": {
+      "weak": "2 physical damage, and the target has Slowed 1.",
+      "standard": "3 physical damage, and the target has Slowed 1 and Dazed 1.",
+      "strong": "5 physical damage, and the target has Slowed 1, Dazed 1 and Prone."
+    }
+  },
+  "ability-signature-shadow-turn-their-eye": {
+    "source": {
+      "path": "design/cards/signature-shadow-turn-their-eye.md",
+      "sha256": "5a6f7e7acea819339617ffe31a3d2111e5d9585263df77a61934714243c30e05"
+    },
+    "outcomes": {
+      "weak": "2 progress.",
+      "standard": "3 progress.",
+      "strong": "5 progress."
+    }
+  },
+  "ability-signature-shepherd-careful-transfer": {
+    "source": {
+      "path": "design/cards/signature-shepherd-careful-transfer.md",
+      "sha256": "bb5fb86b34e3d9d1433cb71901797c429144ce20b4702beb82f5f8e7fd45f533"
+    },
+    "outcomes": {
+      "weak": "One ally: restore 6 HP. Two allies: restore 4 HP each.",
+      "standard": "One ally: restore 11 HP. Two allies: restore 7 HP each.",
+      "strong": "One ally: restore 16 HP. Two allies: restore 10 HP each."
+    }
+  },
+  "ability-signature-shepherd-ease-the-burden": {
+    "source": {
+      "path": "design/cards/signature-shepherd-ease-the-burden.md",
+      "sha256": "84cca3772c2e4d4eac835c3e35cec5f2d1015006e1d63832228be08b9de3f82f"
+    },
+    "outcomes": {
+      "weak": "reduce that condition by 1.",
+      "standard": "reduce it by 1, and the target gains 1 Boon to its next roll to resist fear or Daze.",
+      "strong": "reduce it by 2, and the target gains 1 Boon to its next roll to resist fear or Daze."
+    }
+  },
+  "ability-signature-shepherd-gentle-return": {
+    "source": {
+      "path": "design/cards/signature-shepherd-gentle-return.md",
+      "sha256": "73af87c8182f9918144d7f89ec95031f3cc8383140ff84b59f2b763e54ce8da2"
+    },
+    "outcomes": {
+      "weak": "restore 3 HP.",
+      "standard": "restore 6 HP.",
+      "strong": "restore 9 HP, and the target may stand without spending movement."
+    }
+  },
+  "ability-signature-shepherd-quiet-the-tremor": {
+    "source": {
+      "path": "design/cards/signature-shepherd-quiet-the-tremor.md",
+      "sha256": "9431fddefe1e586d164caf76445b9941e5c2b81d1507b3fadad05259cc88278f"
+    },
+    "outcomes": {
+      "weak": "2 progress.",
+      "standard": "3 progress.",
+      "strong": "5 progress, and reduce one temporary condition caused by the wound by 1."
+    }
+  },
+  "ability-signature-shepherd-shared-resolve": {
+    "source": {
+      "path": "design/cards/signature-shepherd-shared-resolve.md",
+      "sha256": "22982207bc4ad4974606591a00d1a7af7c6d0ae2de96a92ab17e8accf734e951"
+    },
+    "outcomes": {
+      "weak": "4 radiant damage.",
+      "standard": "8 radiant damage, and the target has Frightened 1.",
+      "strong": "12 radiant damage, and the target has Frightened 2, and it cannot attack your allies until the end of its next turn."
+    }
+  },
+  "ability-signature-unbalanced-crash-down": {
+    "source": {
+      "path": "design/cards/signature-unbalanced-crash-down.md",
+      "sha256": "fc46f0ede05fc8f184a7278f0c83958c9332eec36d4d9c85c2def13a3615b2cf"
+    },
+    "outcomes": {
+      "weak": "4 physical damage to the target. You take 3 physical damage and are Prone.",
+      "standard": "8 physical damage, and the target is Prone. You take 2 physical damage.",
+      "strong": "12 physical damage, and the target is Prone and Dazed 1. You take 1 physical damage and are Dazed 1."
+    }
+  },
+  "ability-signature-unbalanced-crush-the-barrier": {
+    "source": {
+      "path": "design/cards/signature-unbalanced-crush-the-barrier.md",
+      "sha256": "2d6d09c36b67fc5c9ea6d2659aa367c64fffb285c7e88ce459ae33ab1d0d1de7"
+    },
+    "outcomes": {
+      "weak": "3 physical damage.",
+      "standard": "4 physical damage, and it is Prone.",
+      "strong": "6 physical damage, and it is Prone."
+    }
+  },
+  "ability-signature-unbalanced-laugh-at-the-fall": {
+    "source": {
+      "path": "design/cards/signature-unbalanced-laugh-at-the-fall.md",
+      "sha256": "e210924c6ddd6b7aa90a4b82a3ec5d9272c9d4470a601583bc92a0c2f746eff2"
+    },
+    "outcomes": {
+      "weak": "it has Grappled 1.",
+      "standard": "throw it up to 2 squares in a direction you choose; it lands Prone.",
+      "strong": "throw it up to 3 squares in a direction you choose; it lands Prone and takes 2 physical damage."
+    }
+  },
+  "ability-signature-unbalanced-scatter-the-line": {
+    "source": {
+      "path": "design/cards/signature-unbalanced-scatter-the-line.md",
+      "sha256": "452079d952d1308e978ad6774d4273440ab9ee744d7ecdfc29514dbef7d711f8"
+    },
+    "outcomes": {
+      "weak": "2 physical damage, and push 1 square directly away from you.",
+      "standard": "4 physical damage, push 2 squares, and it is Prone.",
+      "strong": "6 physical damage, push 3 squares, and it is Prone and Dazed 1."
+    }
+  },
+  "ability-signature-unbalanced-shoulder-through": {
+    "source": {
+      "path": "design/cards/signature-unbalanced-shoulder-through.md",
+      "sha256": "2ec31bc5effcd7ab921bdb651d9c78c31c23fdced032f06fe8fedfdc35ed6d35"
+    },
+    "outcomes": {
+      "weak": "2 physical damage, and push it 1 square.",
+      "standard": "3 physical damage, push it 2 squares, and it is Prone.",
+      "strong": "5 physical damage, push it 3 squares, and it is Prone."
+    }
+  },
+  "ability-signature-warden-a-watchful-rest": {
+    "source": {
+      "path": "design/cards/signature-warden-a-watchful-rest.md",
+      "sha256": "40dbdfc4e26019b6870f34f01ed2cecefa3b80866c374bcb4b2365ba2ce66fe4"
+    },
+    "outcomes": {
+      "weak": "3 physical damage.",
+      "standard": "5 physical damage, and the target is Slowed 1.",
+      "strong": "7 physical damage, and the target is Slowed 2 and Prone."
+    }
+  },
+  "ability-signature-warden-follow-my-footsteps": {
+    "source": {
+      "path": "design/cards/signature-warden-follow-my-footsteps.md",
+      "sha256": "7c58469f28fa4761ef99ee9f12a29f5e05a18d62b6b91be124b5a783ac3e85d3"
+    },
+    "outcomes": {
+      "weak": "Each attack: 1 physical damage.",
+      "standard": "Each attack: 2 physical damage.",
+      "strong": "Each attack: 3 physical damage."
+    }
+  },
+  "ability-signature-warden-know-what-you-hunt": {
+    "source": {
+      "path": "design/cards/signature-warden-know-what-you-hunt.md",
+      "sha256": "4288f494978c5238f6fb0c9a8032988901cbdf24a0f6c00f3debf8c3bf48ecc5"
+    },
+    "outcomes": {
+      "weak": "6 physical damage.",
+      "standard": "9 physical damage, and the target is Prone.",
+      "strong": "12 physical damage, and the target is Prone and Dazed 1."
+    }
+  },
+  "ability-signature-warden-stay-on-the-scent": {
+    "source": {
+      "path": "design/cards/signature-warden-stay-on-the-scent.md",
+      "sha256": "00d1cfeb9a8372542fae38435cdb407f25a77bb9d97c264d18f6c2a6ce861517"
+    },
+    "outcomes": {
+      "weak": "1 physical damage.",
+      "standard": "2 physical damage.",
+      "strong": "3 physical damage."
+    }
+  },
+  "ability-signature-warden-through-bramble-and-stone": {
+    "source": {
+      "path": "design/cards/signature-warden-through-bramble-and-stone.md",
+      "sha256": "8752ae10ad51c6aa3fef13d26c1b4e69b1eedc56549c25fcb6c60e64147dbd24"
+    },
+    "outcomes": {
+      "weak": "2 physical damage, and the target is Slowed 1.",
+      "standard": "3 physical damage, and the target is Slowed 2.",
+      "strong": "5 physical damage, and the target is Slowed 2 and Grappled 1."
+    }
+  },
+  "ability-trail-workshop": {
+    "source": {
+      "path": "design/cards/trail-workshop.md",
+      "sha256": "51a77a8c96e50bd4ea58a2afb6902e352a57d24e1603c2bf4c305d1bbc678b3c"
+    },
+    "outcomes": {
+      "weak": "Add 1 progress or inventory steps, as the recipe specifies.",
+      "standard": "Add 2 progress or inventory steps, as the recipe specifies.",
+      "strong": "Add 3 progress or inventory steps, as the recipe specifies."
+    }
+  }
+}

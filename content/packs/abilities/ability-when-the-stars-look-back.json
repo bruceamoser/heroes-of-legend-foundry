@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/mind.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You open the star-filled dark in your enemy&#39;s thoughts. Something vast looks back, and for a heartbeat their body forgets to move.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Target / range / shape</dt><dd>One visible enemy within 5 squares.</dd></div><div><dt>Type</dt><dd>Magic / Attack / Control</dd></div></dl><div class=\"hol-reference-rules\"><p>Make a Reason spell attack. You are the source of Frightened.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>4 mental damage and Frightened 1.</dd><dt>Standard</dt><dd>4 mental damage and Dazed 2.</dd><dt>Strong</dt><dd>6 mental damage and Paralyzed 1.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/f3fb98ca03b046335fcc730c1b05689bebf091b4/design/cards/when-the-stars-look-back.md\" target=\"_blank\" rel=\"noopener\">design/cards/when-the-stars-look-back.md</a> at <code>f3fb98ca03b046335fcc730c1b05689bebf091b4</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You open the star-filled dark in your enemy&#39;s thoughts. Something vast looks back, and for a heartbeat their body forgets to move.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Target / range / shape</dt><dd>One visible enemy within 5 squares.</dd></div><div><dt>Type</dt><dd>Magic / Attack / Control</dd></div></dl><div class=\"hol-reference-rules\"><p>Make a Reason spell attack. You are the source of Frightened.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>4 mental damage and Frightened 1.</dd><dt>Standard</dt><dd>4 mental damage and Dazed 2.</dd><dt>Strong</dt><dd>6 mental damage and Paralyzed 1.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/when-the-stars-look-back.md\" target=\"_blank\" rel=\"noopener\">design/cards/when-the-stars-look-back.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
     "activity": {
       "action": "main",
       "rollMode": "attribute",
@@ -32,7 +32,7 @@
         "path": "design/cards/when-the-stars-look-back.md",
         "sha256": "79bdc25d96da840c2b6209e79b11839ef6ec14a9d17497561d495cf4d2072243"
       },
-      "sourceCommit": "f3fb98ca03b046335fcc730c1b05689bebf091b4",
+      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

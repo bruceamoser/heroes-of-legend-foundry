@@ -1,3 +1,4 @@
+import { ancestryTokenFootprint } from "../rules/ancestry-token.mjs";
 import { createActionMessage, shouldProcessRequest } from "./authority.mjs";
 import {
   registerAuthority,
@@ -173,6 +174,10 @@ async function applyCreation(messageId) {
       kind: "creation",
     },
     name: saved.data.name.trim(),
+    ...Object.fromEntries(
+      Object.entries(ancestryTokenFootprint(saved.data.ancestryId, actor.toObject().prototypeToken))
+        .map(([key, value]) => [`prototypeToken.${key}`, value]),
+    ),
     items,
     "system.health.baseMax": preview.summary.maximumHp,
     "system.health.value": Math.min(preview.summary.maximumHp, saved.data.play?.hp ?? preview.summary.maximumHp),

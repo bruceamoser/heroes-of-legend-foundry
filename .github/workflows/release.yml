@@ -31,6 +31,21 @@ jobs:
       - run: npm ci
       - run: npx playwright install --with-deps chromium
       - run: npm run check
+      - name: Read immutable rulebook revision
+        id: book
+        run: node -e 'const fs=require("fs"); fs.appendFileSync(process.env.GITHUB_OUTPUT, "commit="+JSON.parse(fs.readFileSync("content/source-lock.json")).commit+"\n")'
+      - uses: actions/checkout@v4
+        with:
+          repository: bruceamoser/heroes-of-legend
+          ref: ${{ steps.book.outputs.commit }}
+          path: .book-source
+          sparse-checkout: |
+            design/cards
+            design/ancestries
+      - name: Verify every ability and trait in rendered output
+        run: node scripts/audit-rule-rendering.mjs
+        env:
+          HOL_BOOK_REPOSITORY: ${{ github.workspace }}/.book-source
       - run: npm run package:release
         env:
           HOL_RELEASE_TAG: ${{ github.event.inputs.tag || github.ref_name }}

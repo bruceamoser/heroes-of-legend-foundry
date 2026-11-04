@@ -5,6 +5,9 @@ const types = DAMAGE_TYPES.join("|");
 /** Fixed numeric effects only. Movement/benefits remain explicit printed clauses. */
 export function resolvedAttackEffects(text, { damageType } = {}) {
   if (typeof text !== "string" || !text.trim()) return null;
+  // A relative modifier is not an entire attack payload. Applying its printed
+  // bonus alone would omit the base attack; leave that procedure at the table.
+  if (/\b(?:extra|additional|bonus|more)\s+(?:[a-z]+\s+)?damage\b/i.test(text)) return null;
   let normalized = text.trim().replace(/[.!]$/, "");
   // Shared trailing "damage" in authored mixed-type outcomes.
   normalized = normalized.replace(
@@ -40,7 +43,6 @@ export function resolvedAttackEffects(text, { damageType } = {}) {
     if (chosen && damageType)
       clause = `${chosen[1]} ${canonicalDamageType(damageType)} damage`;
     clause = clause.replace(/\s+to each(?: target)?$/i, "");
-    clause = clause.replace(/\bextra damage\b/i, "damage");
     clause = clause.replace(/\s+to each creature adjacent to you$/i, "");
     clause = clause.replace(/\s+to the target$/i, "");
     clause = clause.replace(/^Deal (\d+) damage$/i, "Deal $1 physical damage");

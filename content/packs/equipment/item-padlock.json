@@ -14,7 +14,7 @@
     "carried": true,
     "held": false,
     "worn": false,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Market reference · acquisition and use automation in progress</p><p><strong>Market price:</strong> 5 coins.</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/equipment/padlock.md\" target=\"_blank\" rel=\"noopener\">design/equipment/padlock.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>"
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Market reference · acquisition and use automation in progress</p><p><strong>Market price:</strong> 5 coins.</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/24e545e6d860e8c1b03a21356fd22cae1c039785/design/equipment/padlock.md\" target=\"_blank\" rel=\"noopener\">design/equipment/padlock.md</a> at <code>24e545e6d860e8c1b03a21356fd22cae1c039785</code>.</p></section>"
   },
   "effects": [],
   "folder": null,
@@ -28,7 +28,7 @@
         "path": "design/equipment/padlock.md",
         "sha256": "2486954008ddd2e6cef47efc32456f759f326c06bec006cc5b6e92b0576cb2b6"
       },
-      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
+      "sourceCommit": "24e545e6d860e8c1b03a21356fd22cae1c039785",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Market reference · acquisition and use automation in progress"

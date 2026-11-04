@@ -22,14 +22,15 @@ export function passiveAncestryDefenseSources(
       {
         commit: ANCESTRY_SOURCE_COMMIT,
         path: "design/ancestries/trait-gnome-small-target.md",
-        sha256: "08e011d627587e4288dea62855161d53904485f356bb8b2ef96f60b61918c447",
+        sha256: "ad2eaf846e16e1f990ef0fe2c48a6d149062ab0e7b097e3d5c626622c393e3a5",
       },
       { ...ANCESTRY_RULE_REFERENCES.procedures },
     ],
   }];
 }
 
-const PINNED_COMMIT = "c5c84c0da3a5bd54b2553426408d1ea581fe22b9";
+const PINNED_COMMIT = "24e545e6d860e8c1b03a21356fd22cae1c039785";
+const DESCRIPTION_PREDECESSOR = "c5c84c0da3a5bd54b2553426408d1ea581fe22b9";
 const source = (path, sha256, commit = PINNED_COMMIT) =>
   Object.freeze({ commit, path, sha256 });
 
@@ -38,9 +39,12 @@ export const PASSIVE_DEFENSE_DEFINITIONS = Object.freeze({
     kind: "ability",
     source: source(
       "design/cards/wear-light-armor.md",
-      "088eb8fb1130c9e715d950805919047c65535a1e1c49166c6b123bf6eabdc91e",
+      "8242c32928b1f5c328ad82a977f95b24f454de46877f17fb7c54c60abf9270d6",
     ),
-    legacySources: Object.freeze([source("design/cards/wear-light-armor.md", "31528bc37c4e4e19233b05ae374d5f50f2818a7967da13f178b1d6ae80a028c3", "295e858c1b6fee044a0261bf9f437636efeff2bf"),]),
+    legacySources: Object.freeze([
+      source("design/cards/wear-light-armor.md", "31528bc37c4e4e19233b05ae374d5f50f2818a7967da13f178b1d6ae80a028c3", "295e858c1b6fee044a0261bf9f437636efeff2bf"),
+      source("design/cards/wear-light-armor.md", "088eb8fb1130c9e715d950805919047c65535a1e1c49166c6b123bf6eabdc91e", DESCRIPTION_PREDECESSOR),
+    ]),
   }),
   "item-ordinary-light-armor": Object.freeze({
     kind: "equipment",
@@ -53,7 +57,7 @@ export const PASSIVE_DEFENSE_DEFINITIONS = Object.freeze({
     kind: "ability",
     source: source(
       "design/cards/wear-medium-armor.md",
-      "b3e1c4630f93f688d85f09ac5eb3de27176aad245db74b9c1a6d0f5b653b65c1",
+      "846cb3641c8f7d295111af3b2d735fd3ed86efa9da5d4a67eb5b10c7f6e11f59",
     ),
     // Previously committed world items retain their reviewed resistance.
     legacySources: Object.freeze([
@@ -63,6 +67,7 @@ export const PASSIVE_DEFENSE_DEFINITIONS = Object.freeze({
         "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
       ),
       source("design/cards/wear-medium-armor.md", "b27ceb2e48c3b53e4c35f02444d093d664af1a90d092e984108027bfef9f641b", "295e858c1b6fee044a0261bf9f437636efeff2bf"),
+      source("design/cards/wear-medium-armor.md", "b3e1c4630f93f688d85f09ac5eb3de27176aad245db74b9c1a6d0f5b653b65c1", DESCRIPTION_PREDECESSOR),
     ]),
   }),
   "item-ordinary-medium-armor": Object.freeze({
@@ -84,7 +89,7 @@ export const PASSIVE_DEFENSE_DEFINITIONS = Object.freeze({
     kind: "ability",
     source: source(
       "design/cards/wear-heavy-armor.md",
-      "8fd78167e224dce43bc6e37bf5e8a816e6209ff6c04f1fc53c247d4499b87b34",
+      "16e7f8a64f0f80b260c075bd728a3310024562c0be69b643e729c3d06108c551",
     ),
     // Previously committed world items retain their reviewed resistance.
     legacySources: Object.freeze([
@@ -94,6 +99,7 @@ export const PASSIVE_DEFENSE_DEFINITIONS = Object.freeze({
         "9bc9b4fe3256e68880b92c45facf0f25b98a1ea3",
       ),
       source("design/cards/wear-heavy-armor.md", "ef2ad8f5e77167bbecab905a9baad19b28ae0ce93d8e8953aa92824a8a48e864", "295e858c1b6fee044a0261bf9f437636efeff2bf"),
+      source("design/cards/wear-heavy-armor.md", "8fd78167e224dce43bc6e37bf5e8a816e6209ff6c04f1fc53c247d4499b87b34", DESCRIPTION_PREDECESSOR),
     ]),
   }),
   "item-ordinary-heavy-armor": Object.freeze({

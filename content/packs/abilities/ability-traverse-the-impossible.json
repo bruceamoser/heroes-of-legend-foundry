@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/athletics.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You look across the gap once, take the stride you need, and trust the leap you have practiced all your life.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self to a visible free supported landing within 8 squares.</dd></div><div><dt>Type</dt><dd>Skill / Movement</dd></div></dl><div class=\"hol-reference-rules\"><p>Leap up to 8 squares to a visible free supported landing, clearing creatures and obstacles up to 2 squares high along the route. This movement does not provoke.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/traverse-the-impossible.md\" target=\"_blank\" rel=\"noopener\">design/cards/traverse-the-impossible.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>Self to a visible free supported landing within 8 squares. Leap up to 8 squares to a visible free supported landing, clearing creatures and obstacles up to 2 squares high along the route. This movement does not provoke.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self to a visible free supported landing within 8 squares.</dd></div><div><dt>Type</dt><dd>Skill / Movement</dd></div></dl><div class=\"hol-reference-rules\"><p>Leap up to 8 squares to a visible free supported landing, clearing creatures and obstacles up to 2 squares high along the route. This movement does not provoke.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/24e545e6d860e8c1b03a21356fd22cae1c039785/design/cards/traverse-the-impossible.md\" target=\"_blank\" rel=\"noopener\">design/cards/traverse-the-impossible.md</a> at <code>24e545e6d860e8c1b03a21356fd22cae1c039785</code>.</p></section>",
     "activity": {
       "action": "maneuver",
       "rollMode": "none",
@@ -30,9 +30,9 @@
       "catalogId": "ability-traverse-the-impossible",
       "source": {
         "path": "design/cards/traverse-the-impossible.md",
-        "sha256": "8de88292b436f84b99e59c80ab1ce62f12c971cc029615595d315ed0d42fe1ea"
+        "sha256": "4ba1c9fac88c9b75b1ac225119d50668a5f839fc9de3f13ad5375bfbe9a1c5d4"
       },
-      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
+      "sourceCommit": "24e545e6d860e8c1b03a21356fd22cae1c039785",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

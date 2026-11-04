@@ -2,7 +2,8 @@
 export const DEFENSE_SUBSTITUTIONS = Object.freeze({
   "ability-catch-the-mechanism": Object.freeze({
     path: "design/cards/catch-the-mechanism.md",
-    sha256: "87820ce2266df81da20d35cee15b1ee973cbbcc8454a1e838b88ed946b1f7f57",
+    sha256: "57f8961c77d92bf3e0521acfef455346290f71f32a538116100e17d633a49eb7",
+    equivalentSourceHash: "87820ce2266df81da20d35cee15b1ee973cbbcc8454a1e838b88ed946b1f7f57",
     attributeKey: "knowledge",
     boons: 1,
     guidance:
@@ -10,7 +11,8 @@ export const DEFENSE_SUBSTITUTIONS = Object.freeze({
   }),
   "ability-steel-at-the-wrist": Object.freeze({
     path: "design/cards/steel-at-the-wrist.md",
-    sha256: "c263759c45b45268f57d5dfe2031da9967b89af97314639abbda060694ebc52c",
+    sha256: "61f587eee1a52788af16786e412f8619ebe1b554b4cb599d520c65017da4cc25",
+    equivalentSourceHash: "c263759c45b45268f57d5dfe2031da9967b89af97314639abbda060694ebc52c",
     attributeKey: "brawn",
     boons: 1,
     guidance:
@@ -18,7 +20,8 @@ export const DEFENSE_SUBSTITUTIONS = Object.freeze({
   }),
   "ability-snare-the-missile": Object.freeze({
     path: "design/cards/snare-the-missile.md",
-    sha256: "c91722d584ff57945c116367ddc98134b6cc8360e7a9b46a97d95648073b5a99",
+    sha256: "ba9c1f0b938c265bf1bb9052362355b3bb0f414d4d854cf454a778307f27fcb6",
+    equivalentSourceHash: "c91722d584ff57945c116367ddc98134b6cc8360e7a9b46a97d95648073b5a99",
     attributeKey: "knowledge",
     boons: 2,
     guidance:
@@ -26,7 +29,8 @@ export const DEFENSE_SUBSTITUTIONS = Object.freeze({
   }),
   "ability-thought-before-the-blow": Object.freeze({
     path: "design/cards/thought-before-the-blow.md",
-    sha256: "49a4eb62bcc8001c89ed520d9f88e06ef012772183a7fbc6001ef516070090ed",
+    sha256: "c1345289acb4e2b5ab379b6b73ffc638f4c45dd43a2bb0fd8178cbfa6ac5668d",
+    equivalentSourceHash: "49a4eb62bcc8001c89ed520d9f88e06ef012772183a7fbc6001ef516070090ed",
     attributeKey: "reason",
     boons: 1,
     guidance:
@@ -49,7 +53,8 @@ export function defenseSubstitutionOptions(actor) {
       const source = item.getFlag(ID, "source");
       if (
         source?.path !== definition.path ||
-        source?.sha256 !== definition.sha256
+        (source?.sha256 !== definition.sha256 &&
+          source?.sha256 !== definition.equivalentSourceHash)
       )
         return [];
       return [

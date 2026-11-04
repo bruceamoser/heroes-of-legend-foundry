@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/wilderness.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>Webbing opens between your fingers. You slip into the river and catch its pull like a second pair of hands.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self.</dd></div><div><dt>Type</dt><dd>Magic / Movement / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>For the scene, swimming costs you 1 movement per square and you gain 1 Boon to attribute rolls swimming against currents or keeping your course in rough water.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/the-otter-s-bargain.md\" target=\"_blank\" rel=\"noopener\">design/cards/the-otter-s-bargain.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>For the scene, swimming costs you 1 movement per square and you gain 1 Boon to attribute rolls swimming against currents or keeping your course in rough water.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self.</dd></div><div><dt>Type</dt><dd>Magic / Movement / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>For the scene, swimming costs you 1 movement per square and you gain 1 Boon to attribute rolls swimming against currents or keeping your course in rough water.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/24e545e6d860e8c1b03a21356fd22cae1c039785/design/cards/the-otter-s-bargain.md\" target=\"_blank\" rel=\"noopener\">design/cards/the-otter-s-bargain.md</a> at <code>24e545e6d860e8c1b03a21356fd22cae1c039785</code>.</p></section>",
     "activity": {
       "action": "maneuver",
       "rollMode": "none",
@@ -30,9 +30,9 @@
       "catalogId": "ability-the-otter-s-bargain",
       "source": {
         "path": "design/cards/the-otter-s-bargain.md",
-        "sha256": "9742eac6b294d0d3361213fc9f49a977be581322feb4b9cd9e3e83220330ae39"
+        "sha256": "a7e17206e94c020454019b2e52c2c9b1f219ecb82f1733125cdd881b48c1635a"
       },
-      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
+      "sourceCommit": "24e545e6d860e8c1b03a21356fd22cae1c039785",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

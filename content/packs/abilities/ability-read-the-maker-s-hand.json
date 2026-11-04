@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/craft.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You turn the fitting over and follow the maker&#39;s last decision. There is the joint that matters, and there is the part worth saving.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Time</dt><dd>One minute handling or examining the mechanism.</dd></div><div><dt>Target / range / shape</dt><dd>One accessible ordinary mechanism.</dd></div><div><dt>Type</dt><dd>Skill / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>Learn the mechanism&#39;s ordinary materials, intended function and one accessible component whose removal or adjustment would disable it. Choose a component suitable for reuse in a known compatible recipe, if one is present. You or an ally gains 2 Boons to the next attribute roll this scene repairing or disabling the mechanism, or crafting with that component.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/read-the-maker-s-hand.md\" target=\"_blank\" rel=\"noopener\">design/cards/read-the-maker-s-hand.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>Choose one accessible ordinary mechanism. Learn the mechanism&#39;s ordinary materials, intended function and one accessible component whose removal or adjustment would disable it. Choose a component suitable for reuse in a known compatible recipe, if one is present. You or an ally gains 2 Boons to the next attribute roll this scene repairing or disabling the mechanism, or crafting with that component.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Time</dt><dd>One minute handling or examining the mechanism.</dd></div><div><dt>Target / range / shape</dt><dd>One accessible ordinary mechanism.</dd></div><div><dt>Type</dt><dd>Skill / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>Learn the mechanism&#39;s ordinary materials, intended function and one accessible component whose removal or adjustment would disable it. Choose a component suitable for reuse in a known compatible recipe, if one is present. You or an ally gains 2 Boons to the next attribute roll this scene repairing or disabling the mechanism, or crafting with that component.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/24e545e6d860e8c1b03a21356fd22cae1c039785/design/cards/read-the-maker-s-hand.md\" target=\"_blank\" rel=\"noopener\">design/cards/read-the-maker-s-hand.md</a> at <code>24e545e6d860e8c1b03a21356fd22cae1c039785</code>.</p></section>",
     "activity": {
       "action": "passive",
       "rollMode": "none",
@@ -30,9 +30,9 @@
       "catalogId": "ability-read-the-maker-s-hand",
       "source": {
         "path": "design/cards/read-the-maker-s-hand.md",
-        "sha256": "8d98caa0522b0d0dacb10e95d3ce62d46f54226593db713e7399f6f0302501bd"
+        "sha256": "585c5052ec6c0b76d1ebb12603258f12661e643d834d2597e8cdba2850932009"
       },
-      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
+      "sourceCommit": "24e545e6d860e8c1b03a21356fd22cae1c039785",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

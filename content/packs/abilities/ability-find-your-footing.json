@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/athletics.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You shift to the next hold and pull clear of the grasping water, using the route your hands have already found.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self while climbing or swimming.</dd></div><div><dt>Type</dt><dd>Skill / Movement</dd></div></dl><div class=\"hol-reference-rules\"><p>Move up to 3 squares along a route you can climb or swim, paying 1 movement per square for this move. This movement does not provoke.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/find-your-footing.md\" target=\"_blank\" rel=\"noopener\">design/cards/find-your-footing.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>While climbing or swimming, move up to 3 squares along a route you can climb or swim, paying 1 movement per square for this move. This movement does not provoke.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self while climbing or swimming.</dd></div><div><dt>Type</dt><dd>Skill / Movement</dd></div></dl><div class=\"hol-reference-rules\"><p>Move up to 3 squares along a route you can climb or swim, paying 1 movement per square for this move. This movement does not provoke.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/24e545e6d860e8c1b03a21356fd22cae1c039785/design/cards/find-your-footing.md\" target=\"_blank\" rel=\"noopener\">design/cards/find-your-footing.md</a> at <code>24e545e6d860e8c1b03a21356fd22cae1c039785</code>.</p></section>",
     "activity": {
       "action": "maneuver",
       "rollMode": "none",
@@ -30,9 +30,9 @@
       "catalogId": "ability-find-your-footing",
       "source": {
         "path": "design/cards/find-your-footing.md",
-        "sha256": "78bbe221c534037b7c015b9d1714f9be49a17033b55dc852cf38749c02533510"
+        "sha256": "83d0a4f03bdc4c321f83d815431e19981b6ce622d6c86ddfba531b61586df0fd"
       },
-      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
+      "sourceCommit": "24e545e6d860e8c1b03a21356fd22cae1c039785",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

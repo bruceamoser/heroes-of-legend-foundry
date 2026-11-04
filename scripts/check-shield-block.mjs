@@ -646,7 +646,7 @@ shieldScenarios: try {
   assert.deepEqual(authorship.receiptSource, authorship.itemSource);
   assert.equal(
     authorship.operationSource.sha256,
-    "bd890d5b177b2c0eded18b75901adba56c0162c25f7f6a4710298cd662421e94",
+    "935040e243ccb76f5babb84b000d124576b420315aa861219cbc174bd105a923",
   );
   const beforeReplay = await state();
   const replay = await gm.page.evaluate(

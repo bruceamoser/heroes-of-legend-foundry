@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/life.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>Dark sweat beads on your companions&#39; skin. You sweep your hand outward, and the poison&#39;s grip begins to loosen.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Every willing living creature within 3 squares, including yourself.</dd></div><div><dt>Equipment / acquisition</dt><dd>A free hand.</dd></div><div><dt>Type</dt><dd>Magic / Recovery</dd></div></dl><div class=\"hol-reference-rules\"><p>Each target reduces temporary Poisoned by 3.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/cast-off-the-venom.md\" target=\"_blank\" rel=\"noopener\">design/cards/cast-off-the-venom.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>Place a casting point that gives your next Main Action spell this turn 1 Boon and changes where its attack path or area begins.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Every willing living creature within 3 squares, including yourself.</dd></div><div><dt>Equipment / acquisition</dt><dd>A free hand.</dd></div><div><dt>Type</dt><dd>Magic / Recovery</dd></div></dl><div class=\"hol-reference-rules\"><p>Each target reduces temporary Poisoned by 3.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/24e545e6d860e8c1b03a21356fd22cae1c039785/design/cards/cast-off-the-venom.md\" target=\"_blank\" rel=\"noopener\">design/cards/cast-off-the-venom.md</a> at <code>24e545e6d860e8c1b03a21356fd22cae1c039785</code>.</p></section>",
     "activity": {
       "action": "maneuver",
       "rollMode": "none",
@@ -30,9 +30,9 @@
       "catalogId": "ability-cast-off-the-venom",
       "source": {
         "path": "design/cards/cast-off-the-venom.md",
-        "sha256": "bd38361a7d3ac7bf000fd1192059d9c768b8f85a26bb3cb5366a54ce6d060213"
+        "sha256": "14baa1b5652a2fd335db690bc4820a19bb5f11e29c6246f1f89e5efec2fe9f4c"
       },
-      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
+      "sourceCommit": "24e545e6d860e8c1b03a21356fd22cae1c039785",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/scholarship.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>The creature draws breath through the same side of its jaw. This time, everyone knows what comes next.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>One visible creature within 6 squares whose attack you witnessed this scene.</dd></div><div><dt>Type</dt><dd>Skill / Defense / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>Choose the witnessed attack. Learn its range and defense attribute. You and every ally within 3 squares who hears your explanation gain 1 Boon to the next defense against that attack before the start of your next turn.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/spot-the-tell.md\" target=\"_blank\" rel=\"noopener\">design/cards/spot-the-tell.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>Choose one visible creature within 6 squares whose attack you witnessed this scene. Choose the witnessed attack. Learn its range and defense attribute. You and every ally within 3 squares who hears your explanation gain 1 Boon to the next defense against that attack before the start of your next turn.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>One visible creature within 6 squares whose attack you witnessed this scene.</dd></div><div><dt>Type</dt><dd>Skill / Defense / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>Choose the witnessed attack. Learn its range and defense attribute. You and every ally within 3 squares who hears your explanation gain 1 Boon to the next defense against that attack before the start of your next turn.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/24e545e6d860e8c1b03a21356fd22cae1c039785/design/cards/spot-the-tell.md\" target=\"_blank\" rel=\"noopener\">design/cards/spot-the-tell.md</a> at <code>24e545e6d860e8c1b03a21356fd22cae1c039785</code>.</p></section>",
     "activity": {
       "action": "maneuver",
       "rollMode": "none",
@@ -30,9 +30,9 @@
       "catalogId": "ability-spot-the-tell",
       "source": {
         "path": "design/cards/spot-the-tell.md",
-        "sha256": "aecd86cb97f1f0f491e0f988be7f6bcb94db43813df8e0e0ca475245b5e9d867"
+        "sha256": "366bb108bd7aa77f93be670cbe31bcf2b66abf1493d74b2187222cbbd433cffb"
       },
-      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
+      "sourceCommit": "24e545e6d860e8c1b03a21356fd22cae1c039785",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

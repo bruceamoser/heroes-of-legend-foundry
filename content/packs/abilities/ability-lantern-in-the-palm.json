@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/radiance.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You breathe a warm bead of light into your hand. It lifts to your shoulder, leaving both hands free as its glow reaches your companions.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self and squares within 3 squares.</dd></div><div><dt>Equipment / acquisition</dt><dd>A free hand when cast.</dd></div><div><dt>Type</dt><dd>Magic / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>Create a light that hovers at your shoulder for the scene and illuminates squares within 3 squares along unobstructed paths. You may end it freely or replace it with a new casting.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/lantern-in-the-palm.md\" target=\"_blank\" rel=\"noopener\">design/cards/lantern-in-the-palm.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>Self and squares within 3 squares. Create a light that hovers at your shoulder for the scene and illuminates squares within 3 squares along unobstructed paths. You may end it freely or replace it with a new casting.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self and squares within 3 squares.</dd></div><div><dt>Equipment / acquisition</dt><dd>A free hand when cast.</dd></div><div><dt>Type</dt><dd>Magic / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>Create a light that hovers at your shoulder for the scene and illuminates squares within 3 squares along unobstructed paths. You may end it freely or replace it with a new casting.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/24e545e6d860e8c1b03a21356fd22cae1c039785/design/cards/lantern-in-the-palm.md\" target=\"_blank\" rel=\"noopener\">design/cards/lantern-in-the-palm.md</a> at <code>24e545e6d860e8c1b03a21356fd22cae1c039785</code>.</p></section>",
     "activity": {
       "action": "maneuver",
       "rollMode": "none",
@@ -30,9 +30,9 @@
       "catalogId": "ability-lantern-in-the-palm",
       "source": {
         "path": "design/cards/lantern-in-the-palm.md",
-        "sha256": "9df5bdcc109ddceeb342c0469be5ee6781c7efa58127cd6d189865bec22a1290"
+        "sha256": "adad1fb1d85e25414c1e88b6db79a21c832a46b18d014ee3391c3f54fadc3954"
       },
-      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
+      "sourceCommit": "24e545e6d860e8c1b03a21356fd22cae1c039785",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

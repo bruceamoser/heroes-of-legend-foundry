@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/craft.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You copy the useful notes, stain them with practice, and keep the page where your hands can find it.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Two new compatible ordinary recipes.</dd></div><div><dt>Limits</dt><dd>Repeatable purchase of new recipe choices.</dd></div><div><dt>Type</dt><dd>Skill / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>Learn two new ordinary recipes compatible with a crafting ability you know.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/ordinary-recipe-study.md\" target=\"_blank\" rel=\"noopener\">design/cards/ordinary-recipe-study.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>Two new compatible ordinary recipes. Learn two new ordinary recipes compatible with a crafting ability you know.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Two new compatible ordinary recipes.</dd></div><div><dt>Limits</dt><dd>Repeatable purchase of new recipe choices.</dd></div><div><dt>Type</dt><dd>Skill / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>Learn two new ordinary recipes compatible with a crafting ability you know.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/24e545e6d860e8c1b03a21356fd22cae1c039785/design/cards/ordinary-recipe-study.md\" target=\"_blank\" rel=\"noopener\">design/cards/ordinary-recipe-study.md</a> at <code>24e545e6d860e8c1b03a21356fd22cae1c039785</code>.</p></section>",
     "activity": {
       "action": "passive",
       "rollMode": "none",
@@ -30,9 +30,9 @@
       "catalogId": "ability-ordinary-recipe-study",
       "source": {
         "path": "design/cards/ordinary-recipe-study.md",
-        "sha256": "78bfd6859d5529ead25f286de159b10a7d8434915ed089833c61071b6691bbf3"
+        "sha256": "b0f80fcc3892c169746d9df9efdca48a22b9be03c3587cf279ab23dda17e960f"
       },
-      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
+      "sourceCommit": "24e545e6d860e8c1b03a21356fd22cae1c039785",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

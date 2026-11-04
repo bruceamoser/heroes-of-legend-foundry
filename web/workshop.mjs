@@ -700,7 +700,9 @@ function builderContent() {
   }<div class="columns" style="margin-top:12px"><section class="box"><h3>Your character</h3>${row("Maximum HP", preview.summary?.maximumHp ?? "—")}${row("Grit", preview.summary?.gritGranted ?? "—")}${row("Speed", preview.summary?.speed ?? "—")}${row("Learned abilities", preview.state.abilities.length)}${row("Coins", preview.inventory.remainingCoins)}</section><section class="box"><h3>Take your hero with you</h3>${button("Export character JSON", "ready-export", preview.valid ? "" : "disabled", "primary")}<p class="file-hint">In Foundry: open a new character → Create a Hero → Import character JSON. Review with your campaign’s language settings, then save your character.</p>${button("Save draft JSON", "export", "", "quiet")}</section></div><details class="planned"><summary>Creation ledger</summary>${ledgerTable()}</details>`;
 }
 function choiceCheck(id, list, values, owned = false) {
-  return `<div class="check ${owned ? "already-owned" : ""}"><label style="display:flex;gap:10px;flex:1"><input type="checkbox" data-list="${list}" value="${esc(id)}" ${values.includes(id) ? "checked" : ""} ${owned && !values.includes(id) ? "disabled" : ""}><span>${esc(name(id))}${owned ? "<small>Already known</small>" : ""}</span></label>${button("Read", "reference", `data-id="${esc(id)}"`, "quiet small")}</div>`;
+  const record = get(id);
+  const description = record?.kind === "trait" ? record.reference?.flavor?.[0] : "";
+  return `<div class="check ${owned ? "already-owned" : ""}"><label style="display:flex;gap:10px;flex:1"><input type="checkbox" data-list="${list}" value="${esc(id)}" ${values.includes(id) ? "checked" : ""} ${owned && !values.includes(id) ? "disabled" : ""}><span>${esc(name(id))}${owned ? "<small>Already known</small>" : ""}${description ? `<small class="card-copy">${esc(description)}</small>` : ""}</span></label>${button("Read", "reference", `data-id="${esc(id)}"`, "quiet small")}</div>`;
 }
 function staleSelections(list, valid) {
   const stale = draft[list].filter((id) => !valid.includes(id));

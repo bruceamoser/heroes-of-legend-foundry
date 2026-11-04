@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/frost.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You press one palm to the smooth stone. Rough white grips grow above it, ready for the next hand.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Up to three connected solid-surface squares within 1 square.</dd></div><div><dt>Type</dt><dd>Magic / Movement / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>Grow handholds on up to three connected solid-surface squares within 1 square. Creatures can climb those squares using ordinary climbing movement. The holds last ten minutes and remain beneath current climbers until those climbers reach another secure hold. You may replace the set once its climbers are secure.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/rime-footholds.md\" target=\"_blank\" rel=\"noopener\">design/cards/rime-footholds.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>Choose up to three connected solid-surface squares within 1 square. Grow handholds on up to three connected solid-surface squares within 1 square. Creatures can climb those squares using ordinary climbing movement. The holds last ten minutes and remain beneath current climbers until those climbers reach another secure hold. You may replace the set once its climbers are secure.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Up to three connected solid-surface squares within 1 square.</dd></div><div><dt>Type</dt><dd>Magic / Movement / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>Grow handholds on up to three connected solid-surface squares within 1 square. Creatures can climb those squares using ordinary climbing movement. The holds last ten minutes and remain beneath current climbers until those climbers reach another secure hold. You may replace the set once its climbers are secure.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/24e545e6d860e8c1b03a21356fd22cae1c039785/design/cards/rime-footholds.md\" target=\"_blank\" rel=\"noopener\">design/cards/rime-footholds.md</a> at <code>24e545e6d860e8c1b03a21356fd22cae1c039785</code>.</p></section>",
     "activity": {
       "action": "maneuver",
       "rollMode": "none",
@@ -30,9 +30,9 @@
       "catalogId": "ability-rime-footholds",
       "source": {
         "path": "design/cards/rime-footholds.md",
-        "sha256": "514e185c41b367e962e631f0d3c9ba8815181a722130a323e01effa764db20e4"
+        "sha256": "eb1bd1e65440225efb3c9017fbe0aeb6490070610968494c0654c04de706609d"
       },
-      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
+      "sourceCommit": "24e545e6d860e8c1b03a21356fd22cae1c039785",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

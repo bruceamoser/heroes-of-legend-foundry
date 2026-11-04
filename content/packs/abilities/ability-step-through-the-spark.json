@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/flame.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You follow the skipping spark with one quick step. The space between is gone before your cloak has time to cool.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>One visible free supported square within 3 squares.</dd></div><div><dt>Type</dt><dd>Magic / Movement</dd></div></dl><div class=\"hol-reference-rules\"><p>Teleport to the chosen square.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/step-through-the-spark.md\" target=\"_blank\" rel=\"noopener\">design/cards/step-through-the-spark.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>Choose one visible free supported square within 3 squares. Teleport to the chosen square.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>One visible free supported square within 3 squares.</dd></div><div><dt>Type</dt><dd>Magic / Movement</dd></div></dl><div class=\"hol-reference-rules\"><p>Teleport to the chosen square.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/24e545e6d860e8c1b03a21356fd22cae1c039785/design/cards/step-through-the-spark.md\" target=\"_blank\" rel=\"noopener\">design/cards/step-through-the-spark.md</a> at <code>24e545e6d860e8c1b03a21356fd22cae1c039785</code>.</p></section>",
     "activity": {
       "action": "maneuver",
       "rollMode": "none",
@@ -30,9 +30,9 @@
       "catalogId": "ability-step-through-the-spark",
       "source": {
         "path": "design/cards/step-through-the-spark.md",
-        "sha256": "5d1b6df941f309e27a789e8f64b8f2dd3c867ac5ae67bc12477641e28b5cf87a"
+        "sha256": "c44fa7467d705942f01b862aa458fe8811ae17680417cb4872199cb5f6b01ea9"
       },
-      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
+      "sourceCommit": "24e545e6d860e8c1b03a21356fd22cae1c039785",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

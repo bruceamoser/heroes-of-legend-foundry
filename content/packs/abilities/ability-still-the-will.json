@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/mind.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You raise one finger, and the thought your enemy was about to turn into action catches on it.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div><div><dt>Target / range / shape</dt><dd>One visible enemy within 4 squares.</dd></div><div><dt>Type</dt><dd>Magic / Control</dd></div></dl><div class=\"hol-reference-rules\"><p>Make a Guile control attack.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>Slowed 1.</dd><dt>Standard</dt><dd>Slowed 2.</dd><dt>Strong</dt><dd>Slowed 3 and Dazed 1.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/still-the-will.md\" target=\"_blank\" rel=\"noopener\">design/cards/still-the-will.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>Choose one visible enemy within 4 squares. Make a Guile control attack. Weak — Slowed 1. Standard — Slowed 2. Strong — Slowed 3 and Dazed 1.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div><div><dt>Target / range / shape</dt><dd>One visible enemy within 4 squares.</dd></div><div><dt>Type</dt><dd>Magic / Control</dd></div></dl><div class=\"hol-reference-rules\"><p>Make a Guile control attack.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>Slowed 1.</dd><dt>Standard</dt><dd>Slowed 2.</dd><dt>Strong</dt><dd>Slowed 3 and Dazed 1.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/24e545e6d860e8c1b03a21356fd22cae1c039785/design/cards/still-the-will.md\" target=\"_blank\" rel=\"noopener\">design/cards/still-the-will.md</a> at <code>24e545e6d860e8c1b03a21356fd22cae1c039785</code>.</p></section>",
     "activity": {
       "action": "maneuver",
       "rollMode": "attribute",
@@ -30,9 +30,9 @@
       "catalogId": "ability-still-the-will",
       "source": {
         "path": "design/cards/still-the-will.md",
-        "sha256": "d04eaefc2034d33aa14dcdbdf9ed7b34f91343024e2978996c5e8d09df63d55d"
+        "sha256": "bfb940dfcfdc3663262bb137f8fac0c99c6b31ffd987ef2c7ba449d0c00edaec"
       },
-      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
+      "sourceCommit": "24e545e6d860e8c1b03a21356fd22cae1c039785",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

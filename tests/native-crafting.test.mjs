@@ -1,3 +1,4 @@
+import { choiceSourceMatches } from "../src/rules/choice-source.mjs";
 import { inventoryCheck } from "../src/rules/inventory.mjs";
 import test from "node:test";
 import assert from "node:assert/strict";
@@ -29,6 +30,7 @@ async function fixture({ owner = true, authority = true, material = false, recip
     game: { user: { id: "owner" }, settings: { get: () => "authority" }, messages, users: [{ id: "owner" }] },
     ChatMessage: { create: async data => { const message = { id: `request${messages.size}`, author: { id: "owner" }, ...data, getFlag: (_id, key) => data.flags["heroes-of-legend"][key], update: async changes => Object.assign(message, changes) }; messages.set(message.id, message); return message; } } });
   const mocks = {
+    "../rules/choice-source.mjs": { choiceSourceMatches },
     "../rules/roll.mjs": { classifyRoll },
     "../rules/inventory.mjs": {inventoryCheck},
     "./catalog.mjs": { loadCatalogs: async () => ({ choices: choices.records, inventory, commit: choices.sourceCommit }) },

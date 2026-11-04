@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/athletics.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You point out the current&#39;s quiet seam and match your companion stroke for stroke, keeping the small dry bundle above the spray.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self and one adjacent willing companion during a shared swim.</dd></div><div><dt>Type</dt><dd>Skill / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>You and one adjacent willing companion you guide gain 1 Boon to attribute rolls completing the same swim. You may keep one carried item of Bulk 1 or less dry during that swim.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/expert-river-crossing.md\" target=\"_blank\" rel=\"noopener\">design/cards/expert-river-crossing.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>Self and one adjacent willing companion during a shared swim. You and one adjacent willing companion you guide gain 1 Boon to attribute rolls completing the same swim. You may keep one carried item of Bulk 1 or less dry during that swim.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self and one adjacent willing companion during a shared swim.</dd></div><div><dt>Type</dt><dd>Skill / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>You and one adjacent willing companion you guide gain 1 Boon to attribute rolls completing the same swim. You may keep one carried item of Bulk 1 or less dry during that swim.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/24e545e6d860e8c1b03a21356fd22cae1c039785/design/cards/expert-river-crossing.md\" target=\"_blank\" rel=\"noopener\">design/cards/expert-river-crossing.md</a> at <code>24e545e6d860e8c1b03a21356fd22cae1c039785</code>.</p></section>",
     "activity": {
       "action": "passive",
       "rollMode": "none",
@@ -30,9 +30,9 @@
       "catalogId": "ability-expert-river-crossing",
       "source": {
         "path": "design/cards/expert-river-crossing.md",
-        "sha256": "1355e7f1d7d310845b9351ef96ce093eceabd4a4dd5c07d4c15bc437acad9882"
+        "sha256": "4416dcb3b0490261823a1dd192d995f16e6a35cdf6b5ae51777f7a74c5e7a95d"
       },
-      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
+      "sourceCommit": "24e545e6d860e8c1b03a21356fd22cae1c039785",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

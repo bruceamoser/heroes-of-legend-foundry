@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/subterfuge.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>There is always another door. You just have to know where the hinges are.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div><div><dt>Target / range / shape</dt><dd>One adjacent lock, simple trap, or hidden entrance.</dd></div><div><dt>Duration</dt><dd>Progress persists for that task.</dd></div><div><dt>Equipment / acquisition</dt><dd>Appropriate tools.</dd></div><div><dt>Limits</dt><dd>Repeatable; normal action economy applies.</dd></div><div><dt>Type</dt><dd>Signature</dd></div></dl><div class=\"hol-reference-rules\"><p>Use appropriate tools to work toward the DA&#39;s stated target. Each attempt takes a Main Action. Weak: 2 progress. Standard: 3 progress. Strong: 5 progress. On completion, open the lock, disable the trap, or find the entrance. Your work makes no audible noise and leaves no trace. The DA states any known risk before you begin.</p></div><h3>Additional rulings</h3><p><strong>Tags:</strong> Skill / Utility</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/signature-shadow-open-the-way.md\" target=\"_blank\" rel=\"noopener\">design/cards/signature-shadow-open-the-way.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>Choose one adjacent lock, simple trap, or hidden entrance. Use appropriate tools to work toward the DA&#39;s stated target. Each attempt takes a Main Action. On a Standard result, add 3 progress.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div><div><dt>Target / range / shape</dt><dd>One adjacent lock, simple trap, or hidden entrance.</dd></div><div><dt>Duration</dt><dd>Progress persists for that task.</dd></div><div><dt>Equipment / acquisition</dt><dd>Appropriate tools.</dd></div><div><dt>Limits</dt><dd>Repeatable; normal action economy applies.</dd></div><div><dt>Type</dt><dd>Signature</dd></div></dl><div class=\"hol-reference-rules\"><p>Use appropriate tools to work toward the DA&#39;s stated target. Each attempt takes a Main Action. Weak: 2 progress. Standard: 3 progress. Strong: 5 progress. On completion, open the lock, disable the trap, or find the entrance. Your work makes no audible noise and leaves no trace. The DA states any known risk before you begin.</p></div><h3>Additional rulings</h3><p><strong>Tags:</strong> Skill / Utility</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/24e545e6d860e8c1b03a21356fd22cae1c039785/design/cards/signature-shadow-open-the-way.md\" target=\"_blank\" rel=\"noopener\">design/cards/signature-shadow-open-the-way.md</a> at <code>24e545e6d860e8c1b03a21356fd22cae1c039785</code>.</p></section>",
     "activity": {
       "action": "main",
       "rollMode": "attribute",
@@ -30,9 +30,9 @@
       "catalogId": "ability-signature-shadow-open-the-way",
       "source": {
         "path": "design/cards/signature-shadow-open-the-way.md",
-        "sha256": "61f6b483baa3cb77e487f34e77aa47710777aa24e640052cdc847194c7687dfc"
+        "sha256": "95ef9c53c55c6d0c48ce3fa228eb0b339ed399cbba0d246b20c2403d803b5696"
       },
-      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
+      "sourceCommit": "24e545e6d860e8c1b03a21356fd22cae1c039785",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

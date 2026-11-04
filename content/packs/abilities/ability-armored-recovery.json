@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/armor.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You plant an armored fist, roll the weight beneath you, and rise already moving.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self while wearing armor.</dd></div><div><dt>Equipment / acquisition</dt><dd>Worn armor.</dd></div><div><dt>Type</dt><dd>Skill / Movement</dd></div></dl><div class=\"hol-reference-rules\"><p>Stand if Prone, then move up to 2 squares without provoking.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/armored-recovery.md\" target=\"_blank\" rel=\"noopener\">design/cards/armored-recovery.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>Move toward an ally without provoking. If you end adjacent, you both gain 1 Boon to defenses while you stay together until the end of your next turn.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self while wearing armor.</dd></div><div><dt>Equipment / acquisition</dt><dd>Worn armor.</dd></div><div><dt>Type</dt><dd>Skill / Movement</dd></div></dl><div class=\"hol-reference-rules\"><p>Stand if Prone, then move up to 2 squares without provoking.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/24e545e6d860e8c1b03a21356fd22cae1c039785/design/cards/armored-recovery.md\" target=\"_blank\" rel=\"noopener\">design/cards/armored-recovery.md</a> at <code>24e545e6d860e8c1b03a21356fd22cae1c039785</code>.</p></section>",
     "activity": {
       "action": "maneuver",
       "rollMode": "none",
@@ -30,9 +30,9 @@
       "catalogId": "ability-armored-recovery",
       "source": {
         "path": "design/cards/armored-recovery.md",
-        "sha256": "044d0ee0be3fcd62953b4da3ae0702852cd4d200606326f829ffb48d5dbd740b"
+        "sha256": "39ebf756b827f431be9c57fb8f1da1c455d11bf055806be79f8f9c5d14a00ec9"
       },
-      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
+      "sourceCommit": "24e545e6d860e8c1b03a21356fd22cae1c039785",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

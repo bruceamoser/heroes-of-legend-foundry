@@ -58,7 +58,10 @@ try {
     await dialog.getByRole("button", {name:"Close",exact:true}).click();
     for (const id of ancestry.traits) {
       const trait = choices.records.find(record => record.id === id);
-      await page.locator(`[data-action="reference"][data-id="${id}"]`).click();
+      const choice = page.locator(".check").filter({has:page.locator(`input[value="${id}"]`)});
+      assert.equal(await choice.locator(".card-copy").textContent(), trait.reference.flavor[0], `${trait.name}: chooser description`);
+      await choice.locator(`[data-action="reference"][data-id="${id}"]`).click();
+      assert.equal(await dialog.locator("p.flavor").textContent(), trait.reference.flavor[0], `${trait.name}: reference description`);
       const prose = await dialog.innerText();
       for (const block of trait.reference.rules.body) assert(prose.includes(block.text), `${trait.name}: exact rules`);
       assert(!prose.includes("**Status:**"));

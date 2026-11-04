@@ -14,7 +14,7 @@
     "carried": true,
     "held": false,
     "worn": false,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Market reference · acquisition and use automation in progress</p><p><strong>Market price:</strong> 10 coins.</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/equipment/ordinary-shield.md\" target=\"_blank\" rel=\"noopener\">design/equipment/ordinary-shield.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>"
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Market reference · acquisition and use automation in progress</p><p><strong>Market price:</strong> 10 coins.</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/24e545e6d860e8c1b03a21356fd22cae1c039785/design/equipment/ordinary-shield.md\" target=\"_blank\" rel=\"noopener\">design/equipment/ordinary-shield.md</a> at <code>24e545e6d860e8c1b03a21356fd22cae1c039785</code>.</p></section>"
   },
   "effects": [],
   "folder": null,
@@ -28,7 +28,7 @@
         "path": "design/equipment/ordinary-shield.md",
         "sha256": "bb1853376e23ce49755c14aa8ec9899512540bc529a4448a42c3e78f9654dc0f"
       },
-      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
+      "sourceCommit": "24e545e6d860e8c1b03a21356fd22cae1c039785",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Market reference · acquisition and use automation in progress"

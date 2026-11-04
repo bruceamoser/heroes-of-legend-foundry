@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/subterfuge.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You give ground without a sound, and the enemy’s own reaching weapon hides the direction of your first step.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>Agility</dd></div><div><dt>Target / range / shape</dt><dd>Self.</dd></div><div><dt>Duration</dt><dd>Immediate; Hidden uses its normal duration.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Once on your turn.</dd></div><div><dt>Type</dt><dd>Signature</dd></div></dl><div class=\"hol-reference-rules\"><p>Disengage. Then attempt to Hide with 1 Boon, even if you are currently observed, provided you have cover or obscurement. You still make the ordinary Hide attempt. If you succeed, you are Hidden until you attack, are revealed, or the concealment ends.</p></div><h3>Additional rulings</h3><p><strong>Tags:</strong> Skill / Movement / Utility</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/signature-shadow-fade-behind.md\" target=\"_blank\" rel=\"noopener\">design/cards/signature-shadow-fade-behind.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>Disengage. Then attempt to Hide with 1 Boon, even if you are currently observed, provided you have cover or obscurement. You still make the ordinary Hide attempt. If you succeed, you are Hidden until you attack, are revealed, or the concealment ends.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>Agility</dd></div><div><dt>Target / range / shape</dt><dd>Self.</dd></div><div><dt>Duration</dt><dd>Immediate; Hidden uses its normal duration.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Once on your turn.</dd></div><div><dt>Type</dt><dd>Signature</dd></div></dl><div class=\"hol-reference-rules\"><p>Disengage. Then attempt to Hide with 1 Boon, even if you are currently observed, provided you have cover or obscurement. You still make the ordinary Hide attempt. If you succeed, you are Hidden until you attack, are revealed, or the concealment ends.</p></div><h3>Additional rulings</h3><p><strong>Tags:</strong> Skill / Movement / Utility</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/24e545e6d860e8c1b03a21356fd22cae1c039785/design/cards/signature-shadow-fade-behind.md\" target=\"_blank\" rel=\"noopener\">design/cards/signature-shadow-fade-behind.md</a> at <code>24e545e6d860e8c1b03a21356fd22cae1c039785</code>.</p></section>",
     "activity": {
       "action": "maneuver",
       "rollMode": "attribute",
@@ -30,9 +30,9 @@
       "catalogId": "ability-signature-shadow-fade-behind",
       "source": {
         "path": "design/cards/signature-shadow-fade-behind.md",
-        "sha256": "aa0aaf068b60bbf5fad4db94c79f1a76e1c90eaa09a916b6965194b63c148c59"
+        "sha256": "165bc76ed5471456845390203ffd3447e4c3d65dee10ea2d22944df30560f72b"
       },
-      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
+      "sourceCommit": "24e545e6d860e8c1b03a21356fd22cae1c039785",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

@@ -1,5 +1,6 @@
 import { createActionMessage, shouldProcessRequest } from "./authority.mjs";
 import { ensureAuthorityReady } from "./authority.mjs";
+import { choiceSourceMatches } from "../rules/choice-source.mjs";
 import { inventoryCheck } from "../rules/inventory.mjs";
 import { classifyRoll } from "../rules/roll.mjs";
 import { loadCatalogs } from "./catalog.mjs";
@@ -19,7 +20,7 @@ export function nativeCraftingRecipes(actor, catalogs) {
     if (item.type !== "ability") return false;
     const record = catalogs.choices.find(record => record.id === item.getFlag(ID, "catalogId"));
     const source = item.getFlag(ID, "source");
-    return record?.source && source?.path === record.source.path && source?.sha256 === record.source.sha256;
+    return choiceSourceMatches(source, record?.source);
   }).map(item => item.getFlag(ID, "catalogId")));
   return catalogs.inventory.recipes.filter(r => known.includes(r.id)).map(recipe => ({
     ...recipe,

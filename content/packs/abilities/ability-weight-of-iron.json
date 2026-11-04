@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/armor.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You settle your weight into the armor. The sweep strikes your legs, but you choose to remain standing.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self while wearing armor.</dd></div><div><dt>Equipment / acquisition</dt><dd>Worn armor.</dd></div><div><dt>Type</dt><dd>Skill / Defense</dd></div></dl><div class=\"hol-reference-rules\"><p>While wearing armor, gain Stability 2. When an effect would make you Prone, you may remain standing.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/weight-of-iron.md\" target=\"_blank\" rel=\"noopener\">design/cards/weight-of-iron.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>While wearing armor, while wearing armor, gain Stability 2. When an effect would make you Prone, you may remain standing.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self while wearing armor.</dd></div><div><dt>Equipment / acquisition</dt><dd>Worn armor.</dd></div><div><dt>Type</dt><dd>Skill / Defense</dd></div></dl><div class=\"hol-reference-rules\"><p>While wearing armor, gain Stability 2. When an effect would make you Prone, you may remain standing.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/24e545e6d860e8c1b03a21356fd22cae1c039785/design/cards/weight-of-iron.md\" target=\"_blank\" rel=\"noopener\">design/cards/weight-of-iron.md</a> at <code>24e545e6d860e8c1b03a21356fd22cae1c039785</code>.</p></section>",
     "activity": {
       "action": "passive",
       "rollMode": "none",
@@ -30,9 +30,9 @@
       "catalogId": "ability-weight-of-iron",
       "source": {
         "path": "design/cards/weight-of-iron.md",
-        "sha256": "1c470261c5bc2a5fee6f6627b1369e140883cc586bedc3b4c5bc91b971360098"
+        "sha256": "3dac40378c8c6d2179962deef5095e2e2677e9801a805442449519f9b8b310da"
       },
-      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
+      "sourceCommit": "24e545e6d860e8c1b03a21356fd22cae1c039785",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/guard.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You drive your shield into the ground and pull your companions into the space behind it.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self and each willing ally within 5 squares.</dd></div><div><dt>Duration</dt><dd>Until the start of your next turn.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Once per scene.</dd></div><div><dt>Type</dt><dd>Signature</dd></div></dl><div class=\"hol-reference-rules\"><p>Each ally may immediately move 1 square toward you without provoking. You and each ally within 5 squares when you use this ability gain 1 Boon to defense and Stability 1 until the start of your next turn.</p></div><h3>Additional rulings</h3><p><strong>Tags:</strong> Skill / Defense / Support</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/signature-protector-make-a-refuge.md\" target=\"_blank\" rel=\"noopener\">design/cards/signature-protector-make-a-refuge.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>Self and each willing ally within 5 squares. Each ally may immediately move 1 square toward you without provoking. You and each ally within 5 squares when you use this ability gain 1 Boon to defense and Stability 1 until the start of your next turn.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self and each willing ally within 5 squares.</dd></div><div><dt>Duration</dt><dd>Until the start of your next turn.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Once per scene.</dd></div><div><dt>Type</dt><dd>Signature</dd></div></dl><div class=\"hol-reference-rules\"><p>Each ally may immediately move 1 square toward you without provoking. You and each ally within 5 squares when you use this ability gain 1 Boon to defense and Stability 1 until the start of your next turn.</p></div><h3>Additional rulings</h3><p><strong>Tags:</strong> Skill / Defense / Support</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/24e545e6d860e8c1b03a21356fd22cae1c039785/design/cards/signature-protector-make-a-refuge.md\" target=\"_blank\" rel=\"noopener\">design/cards/signature-protector-make-a-refuge.md</a> at <code>24e545e6d860e8c1b03a21356fd22cae1c039785</code>.</p></section>",
     "activity": {
       "action": "maneuver",
       "rollMode": "none",
@@ -30,9 +30,9 @@
       "catalogId": "ability-signature-protector-make-a-refuge",
       "source": {
         "path": "design/cards/signature-protector-make-a-refuge.md",
-        "sha256": "cb33fe25ac7ce20972d57a9b034dc6b8cb10cb751c8520babc007b1a5998a3d2"
+        "sha256": "cd7f47ebbf36ae3d234b1e107e811871e52b489ee11b9efafdf7605146c90fdc"
       },
-      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
+      "sourceCommit": "24e545e6d860e8c1b03a21356fd22cae1c039785",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

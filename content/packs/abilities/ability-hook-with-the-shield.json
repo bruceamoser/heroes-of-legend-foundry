@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/guard.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You catch the ankle behind your shield&#39;s lower edge and drive forward before the enemy can reset its foot.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>Brawn</dd></div><div><dt>Target / range / shape</dt><dd>One adjacent enemy.</dd></div><div><dt>Equipment / acquisition</dt><dd>Use a held ordinary shield (Bulk 1), supplied on learning if needed.</dd></div><div><dt>Type</dt><dd>Skill / Control</dd></div></dl><div class=\"hol-reference-rules\"><p>Make a Brawn control attack.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>Push 1 square away from you.</dd><dt>Standard</dt><dd>Push 2 squares away from you.</dd><dt>Strong</dt><dd>Push 2 squares away from you and apply Prone.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/hook-with-the-shield.md\" target=\"_blank\" rel=\"noopener\">design/cards/hook-with-the-shield.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>Choose one adjacent enemy. Make a Brawn control attack. On a Standard result, push 2 squares away from you.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>Brawn</dd></div><div><dt>Target / range / shape</dt><dd>One adjacent enemy.</dd></div><div><dt>Equipment / acquisition</dt><dd>Use a held ordinary shield (Bulk 1), supplied on learning if needed.</dd></div><div><dt>Type</dt><dd>Skill / Control</dd></div></dl><div class=\"hol-reference-rules\"><p>Make a Brawn control attack.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>Push 1 square away from you.</dd><dt>Standard</dt><dd>Push 2 squares away from you.</dd><dt>Strong</dt><dd>Push 2 squares away from you and apply Prone.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/24e545e6d860e8c1b03a21356fd22cae1c039785/design/cards/hook-with-the-shield.md\" target=\"_blank\" rel=\"noopener\">design/cards/hook-with-the-shield.md</a> at <code>24e545e6d860e8c1b03a21356fd22cae1c039785</code>.</p></section>",
     "activity": {
       "action": "maneuver",
       "rollMode": "attribute",
@@ -30,9 +30,9 @@
       "catalogId": "ability-hook-with-the-shield",
       "source": {
         "path": "design/cards/hook-with-the-shield.md",
-        "sha256": "fbffac32ef1b7dfb538b038bd7786aa0897f88eada337b77102a767f85943b17"
+        "sha256": "9c07e068ca26dadf38945e7651c3bb4f262ef10366c6ae0c3279c27364e68e16"
       },
-      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
+      "sourceCommit": "24e545e6d860e8c1b03a21356fd22cae1c039785",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

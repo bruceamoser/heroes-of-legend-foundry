@@ -1,5 +1,5 @@
 <section class="hol-body hol-native-card hol-item-card hol-approved-item-card">
-  <div class="hol-card-fixed"><div class="hol-card-toolbar">{{#if editable}}<button type="button" data-action="cardEdit">{{#if cardEditing}}✓ Done{{else}}✎ Edit{{/if}}</button>{{/if}}{{#if canUpdateRules}}<button type="button" data-action="updateRules">Update rules</button>{{/if}}{{#if canPost}}<button type="button" data-action="postReference">Post to chat</button>{{/if}}</div>
+  <div class="hol-card-fixed"><div class="hol-card-toolbar">{{#if editable}}<button type="button" data-action="cardEdit">{{#if cardEditing}}✓ Done{{else}}✎ Edit{{/if}}</button>{{/if}}{{#if canPost}}<button type="button" data-action="postReference">Post to chat</button>{{/if}}</div>
   <header class="hol-item-header"><div class="hol-item-identity"><img class="hol-item-mark" src="{{cardMark}}" alt=""><div><h1>{{item.name}}</h1><p>Ability</p></div></div><dl class="hol-item-vitals"><div><dt>Level</dt><dd>{{cardLevel}}</dd></div><div><dt>DP</dt><dd>{{cardCost}}</dd></div></dl></header></div>
   <div class="hol-card-scroll"><div class="hol-item-layout">
     <article class="hol-item-rule-card"><div class="hol-item-rule-body" data-item-rules>{{{descriptionHTML}}}{{#if manualOutcomes}}<table class="hol-item-outcome-table"><tbody>{{#each manualOutcomes}}<tr><th scope="row">{{label}}</th><td>{{text}}</td></tr>{{/each}}</tbody></table>{{/if}}</div></article>
@@ -11,12 +11,14 @@
   {{#if cardEditing}}
   <fieldset {{#unless editable}}disabled{{/unless}}>
     <label>{{localize "HOL.Name"}}<input name="name" type="text" value="{{item.name}}" required></label>
+    {{#unless catalogAbility}}
     <label>{{localize "HOL.Description"}}<textarea name="system.description" rows="4">{{system.description}}</textarea></label>
     <div class="hol-pair"><label>{{localize "HOL.Action"}}<select name="system.activity.action">{{selectOptions actions selected=system.activity.action}}</select></label><label>{{localize "HOL.RollMode"}}<select name="system.activity.rollMode">{{selectOptions rollModes selected=system.activity.rollMode}}</select></label></div>
     <div class="hol-pair"><label>{{localize "HOL.Attribute"}}<select name="system.activity.attribute">{{selectOptions attributes selected=system.activity.attribute}}</select></label><label>{{localize "HOL.DefenseAttribute"}}<select name="system.activity.defenseAttribute">{{selectOptions attributes selected=system.activity.defenseAttribute}}</select></label></div>
     <label>{{localize "HOL.Weak"}}<textarea name="system.outcomes.weak" rows="2">{{system.outcomes.weak}}</textarea></label>
     <label>{{localize "HOL.Standard"}}<textarea name="system.outcomes.standard" rows="2">{{system.outcomes.standard}}</textarea></label>
     <label>{{localize "HOL.Strong"}}<textarea name="system.outcomes.strong" rows="2">{{system.outcomes.strong}}</textarea></label>
+    {{/unless}}
     {{#if editable}}<button type="submit" class="hol-primary">{{localize "HOL.Save"}}</button>{{/if}}
   </fieldset>{{/if}}
 </div></section>

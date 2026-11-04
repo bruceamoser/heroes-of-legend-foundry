@@ -60,6 +60,12 @@ prompts or force a rules-update review. This authorizes recalculating saved
 character choices from the current catalog; it does not authorize rebuilding
 committed world Actors or resetting live resources.
 
+Bruce’s #265 playtest clarification also applies to Foundry references and
+owned catalog abilities. Use the installed catalog and bundled journals as
+the rules authority. Do not offer edition switches, duplicate book imports,
+or per-ability rules update prompts. Character recreation is acceptable
+when a saved build needs repair.
+
 ## Web-to-Foundry acceptance
 
 Bruce rejected the 1.0.1 visual/functional parity on October 20, 2026 (#221–#226).

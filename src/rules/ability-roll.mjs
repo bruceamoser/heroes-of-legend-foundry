@@ -38,8 +38,11 @@ export function printedAbilityRoll(record) {
 export function abilityRollConfiguration(item, record) {
   const printed = printedAbilityRoll(record);
   const configured = item.system?.activity;
-  const attribute = configured?.rollMode === 'attribute' && ATTRIBUTES.has(configured.attribute)
-    ? configured.attribute : printed.attribute;
+  const attribute = record
+    ? printed.attribute
+    : configured?.rollMode === 'attribute' && ATTRIBUTES.has(configured.attribute)
+      ? configured.attribute : null;
+  const outcomes = record ? printed.outcomes : item.system?.outcomes;
   const rules=record?.reference?.rules;
   const tags=[...(rules?.details ?? []).filter(detail=>detail.label === "Type").map(detail=>detail.value),
     ...(rules?.notes ?? []).filter(note=>note.label === "Tags").map(note=>note.text)];
@@ -49,7 +52,7 @@ export function abilityRollConfiguration(item, record) {
   const weaponKind=attack ? ranged ? "ranged" : /melee weapon/i.test(equipment) ? "melee" : record?.id === "ability-basic-throw" ? "thrown" : null : null;
   return {damageTypes:printedDamageChoices(record),itemUuid:item.uuid, name:item.name, attribute, attack, ranged, weaponKind, trigger:reactionTrigger(record),
     effect:(record?.reference?.rules?.body ?? []).flatMap(block=>block.text ? [block.text] : block.items ?? []).join(" ") || String(item.system?.description ?? "").replace(/<[^>]*>/g," ").replace(/\s+/g," ").trim(),
-    outcomes:Object.fromEntries(['weak','standard','strong'].map(tier => [tier,item.system?.outcomes?.[tier] || printed.outcomes[tier] || '']))};
+    outcomes:Object.fromEntries(['weak','standard','strong'].map(tier => [tier,outcomes?.[tier] ?? '']))};
 }
 export function assertAbilityConfiguration(current, opened) {
   if (opened && JSON.stringify(current) !== JSON.stringify(opened))

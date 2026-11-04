@@ -118,7 +118,6 @@ Hooks.on("renderCombatTracker", renderHOLCombatTracker);
 Hooks.on("renderChatMessageHTML", renderAttackCard);
 Hooks.on("renderChatMessageHTML", renderPlayerBasicMeleeCard);
 
-Hooks.once("ready",()=>{void import("./services/journals.mjs").then(({repairRuleChapterPages})=>repairRuleChapterPages()).catch(error=>console.warn("heroes-of-legend | Chapter contents",error));});
 
 Hooks.once("ready",()=>{void (async()=>{
   const {linkCharacterTokens}=await import("./services/character-token-links.mjs");

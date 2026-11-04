@@ -55,33 +55,14 @@ Out of Body's current barrier restriction and Snap Back fallback were separately
 reconfirmed by Bruce on November 3 (CHG-ODD-014-CONFIRM-20261103); its option-list
 rendering correction preserves that text.
 
-## Existing Foundry abilities
+## Current rules during playtest
 
-Saved world/owned ability copies are preserved. Owners can open an affected
-ability and choose **Update rules**, review Current/Updated fields, and apply
-corrections explicitly. Only fields still matching the exact v2.7.1 generated
-baseline are updated. Customized fields are listed and retained; unknown source
-editions are preserved. Names, IDs, notes, grants, effects and character resources
-are excluded. Reproduce the 40 baseline records with
-`node scripts/build-ability-update-bases.mjs --check`. Native acceptance uses
-`check-ability-rule-update.mjs` in an explicitly isolated disposable world.
+Foundry uses the installed catalog for official abilities and the bundled
+compendia for rules references. Workshop resolves saved choices against its
+current catalog. Both use the same locked book revision. Test older saved
+characters against these entry points, including the ability sheet and roll
+setup. Saved world journals remain ordinary world documents.
 
 Relative damage bonuses and unsupported damage labels remain printed for table
-resolution; they are not offered as standalone absolute damage buttons.
-
-The validation, Pages and release workflows now fetch the exact locked book
-revision with a sparse source checkout and require the full rendered-rule gate.
-A matching catalog hash or passing unit suite alone cannot publish these outputs.
-
-Native HTML-field canonicalization is covered by two saved disposable copies of
-each of the 40 immutable v2.7.1 Items. Seven descriptions decode apostrophe
-entities on save. The update manifest accepts only the original fingerprint or
-that exact verified persisted fingerprint; it never normalizes a user's value.
-The capture records its Foundry version, raw Git blob hashes and successful cleanup.
-
-Editable world books also remain snapshots. Their inline reader identifies a
-saved world copy and offers **Read current published rules**, with a return to
-the world copy. Full-book navigation keeps that explicit edition choice. The
-current language reference was exercised in the native reader without changing
-the saved journal. Use `node scripts/check-published-rule-choice.mjs` with the
-same isolated-world safeguards for this acceptance check.
+resolution. The validation, Pages and release workflows fetch the exact locked
+book revision and require the full rendered-rule gate.

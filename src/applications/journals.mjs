@@ -1,11 +1,11 @@
-import { ruleIndex, openLocalRule, importRuleJournals, localizeRuleLinks, searchLocalRules, renderInlineRule } from "../services/journals.mjs";
+import { ruleIndex, localizeRuleLinks, searchLocalRules, renderInlineRule } from "../services/journals.mjs";
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 export class RulesLibrary extends HandlebarsApplicationMixin(ApplicationV2) {
   static DEFAULT_OPTIONS = {
     classes: ["heroes-of-legend", "hol-rules-library"],
     window: { title: "Heroes of Legend · Rules library", resizable: true },
     position: { width: 700, height: 680 },
-    actions: { openRule: RulesLibrary.openRule, importRules: RulesLibrary.importRules },
+    actions: { openRule: RulesLibrary.openRule },
   };
   static PARTS = { main: { template: "systems/heroes-of-legend/templates/rules-library.hbs", scrollable: [".hol-library-list"] } };
   async _prepareContext() {
@@ -38,13 +38,10 @@ export class RulesLibrary extends HandlebarsApplicationMixin(ApplicationV2) {
   static async openRule(event, target) {
     try { this.rulePath=target.dataset.path;await renderInlineRule(this.rulePath, this.element.querySelector("[data-library-reader]"));this.markSelectedRule(); } catch (error) { ui.notifications.error(error.message); }
   }
-  static async importRules() {
-    try { const result = await importRuleJournals(); ui.notifications.info(`Rules books: ${result.created} imported, ${result.retained} existing books preserved.`); }
-    catch (error) { ui.notifications.error(error.message); }
-  }
+
 }
 export function registerRulesLibrary() {
-  game.settings.registerMenu("heroes-of-legend", "rulesLibrary", { name: "Heroes of Legend rules", label: "Open rules library", hint: "Read bundled rules and catalogs. The Dungeon Architect can import editable world copies.", icon: "fa-solid fa-book-open", type: RulesLibrary, restricted: false });
+  game.settings.registerMenu("heroes-of-legend", "rulesLibrary", { name: "Heroes of Legend rules", label: "Open rules library", hint: "Read the current installed rules and catalogs.", icon: "fa-solid fa-book-open", type: RulesLibrary, restricted: false });
   Hooks.on("renderJournalDirectory", (app, html) => {
     const root = html instanceof HTMLElement ? html : html[0];
     if (!root || root.querySelector("[data-hol-library]")) return;

@@ -34,29 +34,14 @@ try{
  evidence.foundry=await gm.evaluate(()=>game.version);
  await gm.evaluate(async()=>{
   globalThis.__holParity={items:[],journals:[],apps:[],actors:[],users:[],messages:[],combats:[]};
-  const journalIds=new Set(game.journal.map(entry=>entry.id));
-  const {importRuleJournals}=await import("/systems/heroes-of-legend/services/journals.mjs");
-  const legacy=await JournalEntry.create({name:"Parity fixture · edited legacy reference",pages:[{name:"Edited text",type:"text",text:{content:"<p>Keep our campaign notes intact.</p>",format:1}}],flags:{"heroes-of-legend":{ruleSource:{path:"design/rules/languages.md"}}}});
-  __holParity.journals.push(legacy.id);
-  try {await importRuleJournals();}
-  finally {for(const entry of game.journal)if(!journalIds.has(entry.id)&&entry.id!==legacy.id)__holParity.journals.push(entry.id);}
-  if(legacy.pages.contents[0].text.content!=="<p>Keep our campaign notes intact.</p>")throw Error("Legacy notes changed");
-  let editedBook=game.journal.find(entry=>__holParity.journals.includes(entry.id)&&entry.getFlag("heroes-of-legend","ruleBook")?.key==="player-rules");
-  if(!editedBook){const source=game.journal.find(entry=>entry.getFlag("heroes-of-legend","ruleBook")?.key==="player-rules");const data=source.toObject();delete data._id;data.name="Parity fixture · edited native book";editedBook=await JournalEntry.create(data,{keepEmbeddedIds:true});__holParity.journals.push(editedBook.id);}
-  const editedPage=editedBook.pages.find(page=>page.getFlag("heroes-of-legend","ruleSource")?.path==="design/rules/languages.md");
-  const editedText=editedPage.text.content+"<p>Parity fixture · our edited book notes survive repeated imports.</p>";
-  await editedPage.update({"text.content":editedText});
-  const again=await importRuleJournals();if(again.created!==0)throw Error("Second import created duplicates");
-  if(editedPage.text.content!==editedText)throw Error("Edited native book page was overwritten");
  });
- evidence.checks.push("Explicit two-book import is idempotent and preserves edited legacy notes AND edited native book page text");
  const bookStats=await gm.evaluate(async()=>{
   const {ruleIndex,openLocalRule}=await import("/systems/heroes-of-legend/services/journals.mjs");
   const records=await ruleIndex();const stats=[];
-  for(const key of ["player-rules","da-rules"]){const book=game.journal.find(entry=>entry.getFlag("heroes-of-legend","ruleBook")?.key===key);if(!book)throw Error("Missing book");const sources=book.pages.filter(page=>page.getFlag("heroes-of-legend","ruleSource"));for(const record of records.filter(record=>record.pack===key))if(!sources.some(page=>page.id===record.pageId))throw Error("Missing source page "+record.path);stats.push({key,entries:1,sourcePages:sources.length,sectionPages:book.pages.size-sources.length});}
+  for(const key of ["player-rules","da-rules"]){const book=(await game.packs.get(`heroes-of-legend.${key}`).getDocuments()).find(entry=>entry.getFlag("heroes-of-legend","ruleBook")?.key===key);if(!book)throw Error("Missing book");const sources=book.pages.filter(page=>page.getFlag("heroes-of-legend","ruleSource"));for(const record of records.filter(record=>record.pack===key))if(!sources.some(page=>page.id===record.pageId))throw Error("Missing source page "+record.path);stats.push({key,entries:1,sourcePages:sources.length,sectionPages:book.pages.size-sources.length});}
   const page=await openLocalRule("design/rules/languages.md");globalThis.__holParity.apps.push(page.parent.sheet);await page.parent.sheet.setPosition({width:800,height:760,left:40,top:50});return stats;
  });
- evidence.books=bookStats;assert.deepEqual(bookStats.map(book=>book.sourcePages),[610,408]);
+ evidence.books=bookStats;assert.deepEqual(bookStats.map(book=>book.sourcePages),[657,408]);
  await gm.evaluate(async()=>{const sheet=__holParity.apps.at(-1);const before=sheet.pageId;await sheet.nextPage();if(sheet.pageId===before)throw Error("Native nextPage did not navigate");await sheet.previousPage();if(sheet.pageId!==before)throw Error("Native previousPage did not restore the source page");});
  evidence.checks.push("Native next/previous navigation returns to the same stable source page");
  const nativeBook=await capture(gm,".hol-native-book","native-player-book");
@@ -70,21 +55,6 @@ try{
  await gm.locator('[data-library-reader] .hol-journal-page').waitFor();
  assert.equal(await gm.evaluate(()=>[...foundry.applications.instances.values()].filter(app=>app.rendered).length),before,"Inline reading must not create another application window");
  await capture(gm,".hol-rules-library","native-inline-rules");evidence.checks.push("Inline rule read keeps the same application count; full book navigation is explicit");
- const inlineEdit=await gm.evaluate(async()=>{
-  const book=game.journal.find(entry=>entry.getFlag("heroes-of-legend","ruleBook")?.key==="player-rules");
-  if(!__holParity.journals.includes(book.id))return{skipped:true};
-  const page=book.pages.find(page=>page.getFlag("heroes-of-legend","ruleSource")?.path==="design/cards/a-bough-for-the-fallen.md");
-  __holParity.editedAbility={bookId:book.id,pageId:page.id,name:page.name,content:page.text.content};
-  await page.update({name:"Our renamed Bough ability","text.content":page.text.content+"<p>Our edited inline ability ruling survives.</p>"});return{skipped:false};
- });
- if(!inlineEdit.skipped){
-  await gm.locator('[data-library-entry] [data-path="design/cards/a-bough-for-the-fallen.md"]').click();
-  await gm.getByText("Our edited inline ability ruling survives.",{exact:true}).waitFor();
-  assert.ok((await gm.locator('[data-library-reader]').innerText()).includes("Our renamed Bough ability"));
-  await gm.evaluate(async()=>{const saved=__holParity.editedAbility,page=game.journal.get(saved.bookId).pages.get(saved.pageId);const {importRuleJournals}=await import("/systems/heroes-of-legend/services/journals.mjs");await importRuleJournals();if(!page.text.content.includes("Our edited inline ability ruling survives."))throw Error("Edited ability page was overwritten");await page.update({name:saved.name,"text.content":saved.content});});
-  evidence.checks.push("Edited/renamed native ability page remains visible in inline Read and survives repeated imports");
- }else{evidence.skipped??=[];evidence.skipped.push("Edited ability inline regression requires fixture ownership of the first world Player book; preexisting world book preserved.");}
-
  await gm.evaluate(async()=>{for(const app of __holParity.apps)await app.close();__holParity.apps=[];});
  for(const [pack,id,name] of [["equipment","item-ordinary-light-armor","equipment"],["abilities","ability-a-bough-for-the-fallen","ability"]]){
   const nativeId=await gm.evaluate(async({pack,id})=>{const docs=await game.packs.get(`heroes-of-legend.${pack}`).getDocuments();const source=docs.find(item=>item.getFlag("heroes-of-legend","catalogId")===id||item.system.catalogId===id);if(!source)throw Error("Missing "+id);const data=source.toObject();delete data._id;const item=await Item.create(data);__holParity.items.push(item.id);await item.sheet.render({force:true});__holParity.apps.push(item.sheet);await item.sheet.setPosition({width:510,left:40,top:50});return item.id;},{pack,id});
@@ -192,7 +162,7 @@ try{
  try{
   await readerContext.addInitScript(()=>localStorage.setItem("core.noCanvas","true"));const player=await readerContext.newPage();player.on("pageerror",error=>errors.push(error.stack??error.message));await player.goto(url+"/join");await selectTestUser(player,reader.name);await player.locator('button[name="join"]').click();await player.waitForFunction(()=>globalThis.game?.ready,null,{timeout:60000});
   const permissions=await player.evaluate(async()=>{const {ruleIndex,openLocalRule}=await import("/systems/heroes-of-legend/services/journals.mjs");const index=await ruleIndex();if(index.some(record=>record.pack!=="player-rules"))throw Error("DA reference index leaked");const page=await openLocalRule("design/rules/languages.md");const allowed=page.testUserPermission(game.user,"OBSERVER");let denied=false;try{await openLocalRule("design/da-book/manuscript/01-becoming-the-da.md");}catch(error){denied=error.message.includes("unavailable");}const daEntries=game.journal.filter(entry=>entry.getFlag("heroes-of-legend","ruleBook")?.key==="da-rules");const worldDenied=daEntries.every(entry=>!entry.testUserPermission(game.user,"OBSERVER"));const pack=game.packs.get("heroes-of-legend.da-rules");const compendiumDenied=!pack||!pack.testUserPermission(game.user,"OBSERVER");return{playerSourcePages:index.length,allowed,denied,worldDenied,compendiumDenied};});
-  assert.deepEqual(permissions,{playerSourcePages:610,allowed:true,denied:true,worldDenied:true,compendiumDenied:true});evidence.permissions=permissions;evidence.checks.push("Player client reads Player book, cannot read native DA world book or DA compendium, and receives no DA index records");
+  assert.deepEqual(permissions,{playerSourcePages:657,allowed:true,denied:true,worldDenied:true,compendiumDenied:true});evidence.permissions=permissions;evidence.checks.push("Player client reads Player book, cannot read native DA world book or DA compendium, and receives no DA index records");
  }finally{await readerContext.close();}
  assert.deepEqual(errors,[]);evidence.checks.push("All book source identities covered; item cards show full rules; zero browser errors");
  console.info(JSON.stringify(evidence));

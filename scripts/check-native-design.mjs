@@ -170,13 +170,12 @@ try {
   await gm.evaluate(async ({id,item})=>game.actors.get(id).items.get(item).sheet.render({force:true}),{id:fixture.actor,item:fixture.supply});
   await capture(gm,gm.locator(".hol-equipment"),"test-results/native-design/item.png");
   const journals=await gm.evaluate(async()=>{
-    const {importRuleJournals}=await import("/systems/heroes-of-legend/services/journals.mjs");
-    const first=await importRuleJournals();
-    const entry=game.journal.find(e=>e.getFlag("heroes-of-legend","ruleBook")?.key==="player-rules");
-    await entry.update({name:"Our renamed local rules"});
-    const again=await importRuleJournals();return {first,again,id:entry.id,name:entry.name,total:2,sourcePages:(await (await import("/systems/heroes-of-legend/services/journals.mjs")).ruleIndex()).length,pages:game.journal.filter(e=>e.getFlag("heroes-of-legend","ruleBook")).reduce((sum,e)=>sum+e.pages.size,0)};
+    const {ruleIndex,localRulePage}=await import("/systems/heroes-of-legend/services/journals.mjs");
+    const page=await localRulePage("design/rules/languages.md");
+    return {pack:page.parent.pack,sourcePages:(await ruleIndex()).length};
   });
-  assert.equal(journals.first.created+journals.first.retained,journals.total);assert.equal(journals.sourcePages,1018);assert.equal(journals.pages,1048);assert.equal(journals.again.created,0);assert.equal(journals.name,"Our renamed local rules");
+  assert.equal(journals.pack,"heroes-of-legend.player-rules");
+  assert.equal(journals.sourcePages,1065);
   await owner.evaluate(async()=>{const {openLocalRule,ruleIndex}=await import("/systems/heroes-of-legend/services/journals.mjs");if((await ruleIndex()).some(r=>r.pack==="da-rules"))throw new Error("DA index leaked");await openLocalRule("design/rules/languages.md");});
   await owner.bringToFront();
   await capture(owner,owner.locator(".hol-native-book"),"test-results/native-design/journal.png");
@@ -184,7 +183,7 @@ try {
   await gm.evaluate(async id=>{await game.actors.get(id).sheet.close();await game.actors.get(id).sheet.render({force:true,position:{width:390,height:760,left:10,top:10}});},fixture.actor);
   await capture(gm,sheet,"test-results/native-design/character-narrow.png");
   assert.deepEqual(errors,[]);
-  console.info(JSON.stringify({passed:true,foundry:await gm.evaluate(()=>game.version),journals:journals.first,pageErrors:errors}));
+  console.info(JSON.stringify({passed:true,foundry:await gm.evaluate(()=>game.version),journals,pageErrors:errors}));
   }
 } catch(error) { console.error("RUNFAIL",error); if(gm)console.error("STATE",JSON.stringify(await gm.evaluate(()=>({messages:(globalThis.__holDesign?.messages??[]).map(id=>({id,content:game.messages.get(id)?.content})),authority:game.settings.get("heroes-of-legend","authorityWork"),notifications:document.querySelector("#notifications")?.innerText})).catch(()=>({})))); if(process.env.HOL_TEST_SCREENSHOTS === "1") for(const [i,context] of clients.entries())for(const page of context.pages())await page.screenshot({path:`test-results/native-design/failure-${i}.png`,timeout:5000}).catch(()=>{}); throw error;
 } finally {

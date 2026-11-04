@@ -1,4 +1,5 @@
-import { abilityRuleUpdateAvailable, previewAbilityRuleUpdate, applyAbilityRuleUpdate } from "../services/ability-rule-update.mjs";
+import { abilityCatalogRecord } from "../rules/ability-roll.mjs";
+import { abilityItemSource } from "../rules/item-construction.mjs";
 import { itemCardContext, formatItemCard } from "./item-card-view.mjs";
 import { itemDisplayIcon } from "../rules/item-icons.mjs";
 import { loadCatalogs } from "../services/catalog.mjs";
@@ -22,7 +23,6 @@ export class AbilitySheet extends foundry.applications.api.HandlebarsApplication
     form: { submitOnChange: false, closeOnSubmit: false },
     actions: {
       cardEdit: toggleCardEdit,
-      updateRules: AbilitySheet.updateRules,
       useAbility: AbilitySheet.useAbility,
       postReference: AbilitySheet.postReference,
     },
@@ -39,8 +39,12 @@ export class AbilitySheet extends foundry.applications.api.HandlebarsApplication
     try {
       definition = itemAbilityDefinition(this.item);
     } catch {}
-    const description = this.item.system.description;
     const iconCatalogs = await loadCatalogs();
+    const record = abilityCatalogRecord(this.item, iconCatalogs.choices);
+    const system = record
+      ? abilityItemSource(record, { sourceCommit: iconCatalogs.commit }).system
+      : this.item.system;
+    const description = system.description;
     const labels = (keys) =>
       Object.fromEntries(
         keys.map((key) => [key, game.i18n.localize(`HOL.Choices.${key}`)]),
@@ -50,12 +54,12 @@ export class AbilitySheet extends foundry.applications.api.HandlebarsApplication
       ...cardContext(this, this.item),
       ...itemCardContext(this.item, iconCatalogs),
       definition,
-      manualOutcomes: !description.includes("hol-reference-outcomes") ? ["weak","standard","strong"].filter(tier=>this.item.system.outcomes?.[tier]).map(tier=>({label:game.i18n.localize(`HOL.${tier[0].toUpperCase()+tier.slice(1)}`),text:this.item.system.outcomes[tier]})) : [],
+      manualOutcomes: !description.includes("hol-reference-outcomes") ? ["weak","standard","strong"].filter(tier=>system.outcomes?.[tier]).map(tier=>({label:game.i18n.localize(`HOL.${tier[0].toUpperCase()+tier.slice(1)}`),text:system.outcomes[tier]})) : [],
       cardMark: itemDisplayIcon(this.item.toObject(), iconCatalogs),
       canPost: Boolean(this.item.actor && this.item.isOwner),
-      canUpdateRules: await abilityRuleUpdateAvailable(this.item),
+      catalogAbility: Boolean(record),
       potionAbility: isPotionAbility(this.item),
-      canUse: Boolean(this.item.actor?.isOwner && this.item.system.activity.action !== "passive"),
+      canUse: Boolean(this.item.actor?.isOwner && system.activity.action !== "passive"),
       pendingAutomation:
         !definition &&
         this.item.getFlag("heroes-of-legend", "automation") === "pending",
@@ -66,7 +70,7 @@ export class AbilitySheet extends foundry.applications.api.HandlebarsApplication
           )
         : "",
       item: this.item,
-      system: this.item.system,
+      system,
       editable: this.isEditable,
       attributes: Object.fromEntries(
         ATTRIBUTES.map((key) => [
@@ -77,32 +81,6 @@ export class AbilitySheet extends foundry.applications.api.HandlebarsApplication
       actions: labels(["main", "maneuver", "reaction", "passive", "movement", "other"]),
       rollModes: labels(["attribute", "none", "delegated"]),
     };
-  }
-  static async updateRules() {
-    if (this._ruleUpdateBusy) return;
-    this._ruleUpdateBusy = true;
-    try {
-      if (this._cardEditing) throw new Error("Finish editing this ability before reviewing a rules update.");
-      const preview = await previewAbilityRuleUpdate(this.item);
-      const esc = foundry.utils.escapeHTML;
-      const label = path => ({"system.description":"Rules text", "system.activity.action":"Action", "system.activity.rollMode":"Roll", "system.activity.attribute":"Attribute", "system.activity.defenseAttribute":"Defense attribute", "system.outcomes.weak":"Weak result", "system.outcomes.standard":"Standard result", "system.outcomes.strong":"Strong result"}[path] ?? path.replace("flags.heroes-of-legend.","Source: "));
-      const fieldValue = async (path,value) => path === "system.description"
-        ? foundry.applications.ux.TextEditor.implementation.enrichHTML(value ?? "", {relativeTo:this.item,secrets:this.item.isOwner})
-        : `<p>${esc(String(value ?? "None"))}</p>`;
-      const comparisons = [];
-      for (const entry of preview.comparisons) comparisons.push(`<details><summary>${esc(label(entry.path))}</summary><h3>Current</h3>${await fieldValue(entry.path,entry.before)}<h3>Updated</h3>${await fieldValue(entry.path,entry.after)}</details>`);
-      const preserved = preview.preserved.length ? `<h3>Local changes preserved</h3><ul>${preview.preserved.map(entry=>`<li>${esc(label(entry.path))}</li>`).join("")}</ul>` : "";
-      const content = `<section class="hol-ability-update-preview"><p>${preview.updated.length ? "Review these corrections to the published rules. Only fields that still match their original published values will change." : "No unchanged published fields need correction."}</p>${comparisons.join("")}${preserved}</section>`;
-      if (!preview.updated.length) {
-        await foundry.applications.api.DialogV2.prompt({classes:["heroes-of-legend","hol-native-dialog"],window:{title:"Update rules"},content,ok:{label:"Close"}});
-        return;
-      }
-      const confirmed = await foundry.applications.api.DialogV2.confirm({classes:["heroes-of-legend","hol-native-dialog"],position:{width:760},window:{title:`Update rules: ${this.item.name}`,resizable:true},content,yes:{label:"Apply corrections"},no:{label:"Cancel"}});
-      if (!confirmed) return;
-      await applyAbilityRuleUpdate(this.item,preview);
-      await this.render({force:true});
-    } catch (error) { ui.notifications.error(error.message); }
-    finally { this._ruleUpdateBusy = false; }
   }
   static async postReference() {
     try {

@@ -7,7 +7,7 @@ import {fileURLToPath} from "node:url";
 import {compilePack,extractPack} from "@foundryvtt/foundryvtt-cli";
 import {stableFoundryId} from "../scripts/content/item-packs.mjs";
 import {validateNativeJournals} from "../scripts/validate-native-journals.mjs";
-import {openLocalRule,importRuleJournals,ruleIndex,searchLocalRules,localRulePage,closeInlineRule,inlineAbilityUsesCatalog} from "../src/services/journals.mjs";
+import {openLocalRule,ruleIndex,searchLocalRules,localRulePage,closeInlineRule} from "../src/services/journals.mjs";
 const root = new URL("../",import.meta.url);
 const index = JSON.parse(await readFile(new URL("static/data/journal-index.json",root)));
 const books = await Promise.all(index.books.map(async book => JSON.parse(await readFile(new URL(`content/journals/${book.pack}/${book.id}.json`,root)))));
@@ -47,42 +47,39 @@ test("official pack roundtrip retains two books and all embedded section/source 
   assert.deepEqual(actual,books.find(entry=>entry._id===book.id));
  }
 });
-test("explicit book import preserves old and edited journals, is idempotent, and enforces audience and page searches",async()=>{
- const previous=Object.fromEntries(["game","fetch","fromUuid","JournalEntry","foundry"].map(key=>[key,globalThis[key]]));
- const legacy={id:"legacy",name:"Our edited old rules",getFlag:()=>({path:"design/rules/languages.md"})};
- const journal=[legacy],created=[];let rendered;
- const wrap=data=>({id:data._id,name:data.name,getFlag:(_id,key)=>data.flags?.["heroes-of-legend"]?.[key],testUserPermission:()=>game.user.isGM||data.ownership.default===2,toObject:()=>structuredClone(data),pages:data.pages.map(page=>({...page,id:page._id}))});
- const sources=books.map(wrap);
+test("the library opens and searches the installed books with audience permissions",async()=>{
+ const previous=Object.fromEntries(["game","fetch","fromUuid","foundry"].map(key=>[key,globalThis[key]]));
+ const shared=index.records.find(record=>record.path==="design/rules/languages.md");
+ const archivedPage={id:shared.pageId,text:{content:"<p>Old world rule text</p>"},testUserPermission:()=>true};
+ const oldBook={pages:[archivedPage],getFlag:()=>({key:"player-rules"}),testUserPermission:()=>true};
+ const sources=books.map(book=>({
+  key:book.flags["heroes-of-legend"].ruleBook.key,
+  testUserPermission:()=>game.user.isGM||book.ownership.default===2,
+  pages:book.pages.map(page=>({...structuredClone(page),id:page._id})),
+ }));
+ let rendered;
+ const page=sources[0].pages.find(page=>page.id===shared.pageId);
+ page.testUserPermission=()=>true;
+ page.parent={sheet:{render:async options=>{rendered=options;}}};
  try{
   globalThis.fetch=async()=>({ok:true,json:async()=>index});
-  globalThis.game={user:{isGM:true},journal,packs:{get:key=>({getDocuments:async()=>sources.filter(source=>key.endsWith(source.getFlag("heroes-of-legend","ruleBook").key))})}};
-  globalThis.JournalEntry={createDocuments:async(batch,options)=>{assert.equal(options.keepId,true);assert.equal(options.keepEmbeddedIds,true);for(const data of batch){created.push(data);journal.push(wrap(data));}return batch;}};
-  assert.deepEqual(await importRuleJournals(),{created:2,retained:0});
-  journal[1].name="Our renamed book";
-  assert.deepEqual(await importRuleJournals(),{created:0,retained:2});
-  assert.equal(legacy.name,"Our edited old rules");assert.equal(journal[1].name,"Our renamed book");
-  const shared=index.records.find(record=>record.path==="design/rules/languages.md");
-  const page=journal[1].pages.find(page=>page.id===shared.pageId);page.testUserPermission=()=>true;page.parent={sheet:{render:async options=>{rendered=options;}}};
+  globalThis.game={user:{isGM:true},journal:[oldBook],packs:{get:key=>({getDocuments:async()=>sources.filter(source=>key.endsWith(source.key))})}};
+  globalThis.fromUuid=async uuid=>{assert.equal(uuid,shared.uuid);return page;};
   globalThis.foundry={applications:{sheets:{journal:{JournalEntrySheet:{VIEW_MODES:{SINGLE:1}}}}}};
-  assert.equal(await openLocalRule(shared.path),page);assert.equal(rendered.pageId,shared.pageId);assert.equal(rendered.mode,1);
-  const publishedPage={id:shared.pageId,text:{content:"Current published language rules"},testUserPermission:()=>true};
-  globalThis.fromUuid=async uuid=>{assert.equal(uuid,shared.uuid);return publishedPage;};
-  const originalWorldText=page.text.content;
-  assert.equal(await localRulePage(shared.path,{published:true}),publishedPage);
   assert.equal(await localRulePage(shared.path),page);
-  assert.equal(page.text.content,originalWorldText,"Reading the current edition never rewrites the saved world copy");
+  assert.equal(await openLocalRule(shared.path),page);
+  assert.equal(rendered.pageId,shared.pageId);
+  assert.equal(rendered.mode,1);
+  assert.equal(archivedPage.text.content,"<p>Old world rule text</p>");
   game.user.isGM=false;
   assert.ok((await ruleIndex()).every(record=>record.pack==="player-rules"));
-  await assert.rejects(importRuleJournals(),/Dungeon Architect/);
   await assert.rejects(localRulePage(index.records.find(record=>record.pack==="da-rules").path),/unavailable/);
-  const matches=await searchLocalRules("languages","design/rules/");assert.ok(matches.has(shared.path));
-  // Search must index each embedded page, not return every page in its book.
-  sources[0].pages.find(page=>page.id===shared.pageId).text.content="<p>page-specific needle</p>";
+  assert.ok((await searchLocalRules("languages","design/rules/")).has(shared.path));
+  assert.equal((await searchLocalRules("Old world rule text")).size,0);
+  page.text.content="<p>page-specific needle</p>";
   assert.deepEqual([...(await searchLocalRules("page-specific needle"))],[shared.path]);
-  game.user.isGM=true;journal.length=0;
-  journal.push({id:books[0]._id,getFlag:()=>undefined});await assert.rejects(importRuleJournals(),/unrelated world journal/);
-  journal.length=0;JournalEntry.createDocuments=async batch=>{journal.push(...batch.map(wrap));throw Error("Concurrent import won");};
-  assert.deepEqual(await importRuleJournals(),{created:0,retained:2});
+  page.testUserPermission=()=>false;
+  await assert.rejects(localRulePage(shared.path),/cannot read/);
  }finally{Object.assign(globalThis,previous);}
 });
 
@@ -93,15 +90,6 @@ test("closing inline rules retains reusable sheet and creation hosts for Read â†
  }
  let removed=0;closeInlineRule({hasAttribute:()=>false,remove:()=>{removed++;}});assert.equal(removed,1);
 });
-
-test("inline ability references preserve edited or renamed world book pages instead of replacing them with catalog prose",()=>{
- const canonical={name:"A Bough for the Fallen",text:{content:"<article>Canonical full source</article>"}};
- assert.equal(inlineAbilityUsesCatalog(structuredClone(canonical),canonical),true);
- assert.equal(inlineAbilityUsesCatalog({...canonical,text:{content:canonical.text.content+"<p>Our campaign's changed ruling.</p>"}},canonical),false);
- assert.equal(inlineAbilityUsesCatalog({...canonical,name:"Our renamed ability"},canonical),false);
- assert.equal(inlineAbilityUsesCatalog(canonical,null),false);
-});
-
 
 test("shared vision and ancestry procedures stay linked inside the player book with renamed ancestry page IDs retained", () => {
   const player = books.find(book => book.flags["heroes-of-legend"].ruleBook.key === "player-rules");

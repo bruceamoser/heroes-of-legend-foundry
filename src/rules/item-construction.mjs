@@ -82,24 +82,20 @@ function rulesBodyHtml(blocks) {
     throw new Error("Ability reference rules must be an array.");
   return blocks
     .map((block) => {
+      const parts = [];
+      if (typeof block?.text === "string")
+        parts.push(`<p>${escapeItemHtml(block.text)}</p>`);
       if (Array.isArray(block?.outcomes))
-        return `<dl class="hol-reference-outcomes">${block.outcomes
+        parts.push(`<dl class="hol-reference-outcomes">${block.outcomes
           .map((outcome) => {
-            if (
-              typeof outcome?.label !== "string" ||
-              typeof outcome.text !== "string"
-            )
+            if (typeof outcome?.label !== "string" || typeof outcome.text !== "string")
               throw new Error("Ability reference outcome is incomplete.");
             return `<dt>${escapeItemHtml(outcome.label)}</dt><dd>${escapeItemHtml(outcome.text)}</dd>`;
-          })
-          .join("")}</dl>`;
+          }).join("")}</dl>`);
       if (Array.isArray(block?.items))
-        return `<ul>${block.items
-          .map((item) => `<li>${escapeItemHtml(item)}</li>`)
-          .join("")}</ul>`;
-      if (typeof block?.text === "string")
-        return `<p>${escapeItemHtml(block.text)}</p>`;
-      throw new Error("Ability reference rule block is unsupported.");
+        parts.push(`<ul>${block.items.map(item => `<li>${escapeItemHtml(item)}</li>`).join("")}</ul>`);
+      if (!parts.length) throw new Error("Ability reference rule block is unsupported.");
+      return parts.join("");
     })
     .join("");
 }

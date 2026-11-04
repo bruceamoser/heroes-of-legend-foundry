@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/craft.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You tap the wedge home. The next shoulder against the door will meet wood already ready to give.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>One adjacent unattended door, lid or movable obstacle.</dd></div><div><dt>Equipment / acquisition</dt><dd>A lever and wedges (Bulk 1), supplied on learning if needed.</dd></div><div><dt>Limits</dt><dd>One prepared obstacle at a time; benefit lasts one minute or until used.</dd></div><div><dt>Type</dt><dd>Skill / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>Prepare the obstacle with your lever and wedges. The next Force roll by you or an ally to open, close or move it gains 2 Boons. Choose the intended task when preparing it.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/f3fb98ca03b046335fcc730c1b05689bebf091b4/design/cards/set-the-wedge.md\" target=\"_blank\" rel=\"noopener\">design/cards/set-the-wedge.md</a> at <code>f3fb98ca03b046335fcc730c1b05689bebf091b4</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You tap the wedge home. The next shoulder against the door will meet wood already ready to give.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>One adjacent unattended door, lid or movable obstacle.</dd></div><div><dt>Equipment / acquisition</dt><dd>A lever and wedges (Bulk 1), supplied on learning if needed.</dd></div><div><dt>Limits</dt><dd>One prepared obstacle at a time; benefit lasts one minute or until used.</dd></div><div><dt>Type</dt><dd>Skill / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>Prepare the obstacle with your lever and wedges. The next Force roll by you or an ally to open, close or move it gains 2 Boons. Choose the intended task when preparing it.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/set-the-wedge.md\" target=\"_blank\" rel=\"noopener\">design/cards/set-the-wedge.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
     "activity": {
       "action": "maneuver",
       "rollMode": "none",
@@ -32,7 +32,7 @@
         "path": "design/cards/set-the-wedge.md",
         "sha256": "0516e1be2b898f3c7a1c95ae2491c55a2213b1f0580e9f817b298dc19c45c2fc"
       },
-      "sourceCommit": "f3fb98ca03b046335fcc730c1b05689bebf091b4",
+      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

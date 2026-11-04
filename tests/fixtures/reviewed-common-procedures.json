@@ -1,0 +1,107 @@
+[
+  {
+    "name": "Reckless Charge",
+    "anchor": "Take 1 Bane on defense rolls",
+    "scope": "The defense penalty and ordinary opportunity-attack movement apply after the whole attack, not just Strong."
+  },
+  {
+    "name": "Get Out of Here",
+    "anchor": "Choose the direction.",
+    "scope": "All three tiers throw the target; direction, landing Prone and collisions therefore apply to every throw."
+  },
+  {
+    "name": "Cleave",
+    "anchor": "Resolve collisions normally.",
+    "scope": "Standard also pushes; its collisions cannot be restricted to Strong."
+  },
+  {
+    "name": "Relentless Pursuit",
+    "anchor": "Slowed uses normal decay.",
+    "scope": "Every tier applies Slowed, so the condition's decay rule applies to all three."
+  },
+  {
+    "name": "Shatter the Guard",
+    "anchor": "The target loses 1 resistance",
+    "scope": "This separate sentence follows the three damage clauses and grants the shared resistance loss/ally benefit."
+  },
+  {
+    "name": "Radiant Threshold",
+    "anchor": "The line is 1 square wide",
+    "scope": "Width, duration, ally exclusions, damage triggers, once-per-turn cap and non-blocking geometry describe every line."
+  },
+  {
+    "name": "Open the Way",
+    "anchor": "On completion, open the lock",
+    "scope": "The completion condition, silent work and pre-roll DA risk statement apply to the progress project, not only a Strong attempt."
+  },
+  {
+    "name": "Fast Talk",
+    "anchor": "The DA sets the progress target",
+    "scope": "The pre-roll target, completion rule and limits on persuasion apply to the entire progress procedure."
+  },
+  {
+    "name": "Triage",
+    "anchor": "Two allies: restore 4 HP each",
+    "scope": "The two-recipient branch has its own three tiers; resistance/cap and target/recovery restrictions apply generally."
+  },
+  {
+    "name": "Steady Voice",
+    "anchor": "If the target has neither condition",
+    "scope": "The source explicitly names both Standard and Strong here; placing it exclusively in Strong hides Standard applicability."
+  },
+  {
+    "name": "Mend",
+    "anchor": "Reduce the restored amount",
+    "scope": "Life resistance, the healing cap, stabilization prerequisite, wound limit and Last Words limit govern every beneficial result."
+  },
+  {
+    "name": "Mend the Wound",
+    "anchor": "This counts as the wound's one treatment attempt",
+    "scope": "The daily treatment count, kit exception and no-direct-HP/no-scar-removal limits govern every treatment result."
+  },
+  {
+    "name": "The Cannonball",
+    "anchor": "If you cannot move at least 2 squares",
+    "scope": "The minimum movement prerequisite and collision procedure apply to the ability. Strong's preceding self-damage/Daze sentence remains correctly Strong-specific."
+  },
+  {
+    "name": "Rampage",
+    "anchor": "If you cannot move at least 2 squares",
+    "scope": "Minimum movement and no-further-movement limits apply to the charge, not solely its Strong result."
+  },
+  {
+    "name": "Grab and Hurl",
+    "anchor": "Resolve collisions normally.",
+    "scope": "Standard also throws; collision resolution and ending this ability's grapple apply to that throw too."
+  },
+  {
+    "name": "Earthbreaker",
+    "anchor": "Structures and unattended objects",
+    "scope": "Object damage, collision handling and the caster not moving describe the entire area effect."
+  },
+  {
+    "name": "Charge",
+    "anchor": "Resolve collisions normally.",
+    "scope": "Every result pushes; collision handling and the minimum-movement prerequisite apply to the whole charge."
+  },
+  {
+    "name": "The Green Spear",
+    "anchor": "The spear disappears after the attack.",
+    "scope": "The spear's disappearance and ammunition/free-hand exceptions govern the attack on every result."
+  },
+  {
+    "name": "Twin Strike",
+    "anchor": "You can target the same creature",
+    "scope": "Target allocation and the after-both-attacks defense Boon govern the complete two-attack procedure."
+  },
+  {
+    "name": "Death from the Blind Spot",
+    "anchor": "If you cannot reach a square adjacent",
+    "scope": "This is an ability-use prerequisite, not a restriction that begins only after a Strong result."
+  },
+  {
+    "name": "Volley",
+    "anchor": "Roll once using the worst applicable",
+    "scope": "Worst-pool selection, per-target resistance and one-hit-per-use govern every target and result."
+  }
+]

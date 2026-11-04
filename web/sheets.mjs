@@ -1,3 +1,4 @@
+import { ruleBlockMarkup } from "./rules-view.mjs";
 import { rollSetup, bindRollSetup } from "./roll-ui.mjs";
 import { EQUIPMENT_TRAINING } from "./rules/equipment-eligibility.mjs";
 import { ATTRIBUTES } from "./rules/character.mjs";
@@ -341,13 +342,7 @@ function itemMain(r) {
     .replace(/^\*\*Market price:\*\*.*$/gm, "");
   const body = ref?.rules?.body
     ? ref.rules.body
-        .map((b) =>
-          b.outcomes
-            ? `<table class="outcome-table">${b.outcomes.map((o) => `<tr><th>${esc(o.label)}</th><td>${esc(o.text)}</td></tr>`).join("")}</table>`
-            : b.text
-              ? `<p>${esc(b.text)}</p>`
-              : "",
-        )
+        .map(ruleBlockMarkup)
         .join("")
     : markdown(equipmentText);
   return `<div class="item-layout"><article class="rule-card"><div class="rule-card-body">

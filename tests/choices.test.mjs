@@ -66,12 +66,12 @@ test("complete learning catalog has stable unique IDs and exact pinned sources",
   assert.equal(records.filter((r) => r.universal).length, 18);
   assert(records.filter((r) => r.universal).every((r) => r.cost === null));
   assert.equal(records.filter((r) => r.reference).length, 487);
-  assert.equal(
-    records.filter((r) =>
-      r.kind === "ability" && r.reference?.rules.body.some((block) => block.outcomes),
-    ).length,
-    156,
-  );
+  const bulletOutcomes = records.filter(r => r.kind === "ability" && r.reference?.rules.body.some(block => block.outcomes));
+  const reviewedInline = records.filter(r => r.kind === "ability" && r.reference?.rollOutcomes);
+  assert.equal(bulletOutcomes.length, 120);
+  assert.equal(reviewedInline.length, 36);
+  assert.equal(bulletOutcomes.length + reviewedInline.length, 156);
+  assert(!reviewedInline.some(record => bulletOutcomes.includes(record)), "explicit tables and reviewed inline metadata are disjoint");
 });
 test("catalog references preserve exact acquisition details and outcomes", () => {
   const clever = get("ability-the-cleverest-mixture"),

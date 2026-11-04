@@ -15,7 +15,8 @@ const output=resolve(process.env.HOL_TEST_PARITY_OUTPUT ?? "test-results/native-
 const catalogs={choices:JSON.parse(await readFile("static/data/choices.json")).records,inventory:JSON.parse(await readFile("static/data/inventory.json")),commit:JSON.parse(await readFile("static/data/choices.json")).sourceCommit};
 const wounds=JSON.parse(await readFile("static/data/wounds.json"));
 const draft=structuredClone(JSON.parse(await readFile("tests/fixtures/reference-heroes.json")).characters[3].draft);
-// Synthetic current-rules choices; the immutable book example still needs repair.
+// Deliberate parity-scenario variation: use default languages and Stone Mason.
+// The separate reference-hero acceptance tests the exact authored Oren choices.
 draft.name="Parity Oren";draft.languages={home:"elven",extraSpoken:[],ancestry:"dwarven"};
 draft.borrowedAncestryId="ancestry-dwarf";draft.borrowedTraitId="trait-dwarf-stone-reader";
 if(process.env.HOL_TEST_CHARACTER_LEVEL !== "1") draft.progression={level:3,levels:{2:{purchases:[{id:"ability-conditioned-body"}],signatures:{},acquisitions:{}},3:{purchases:[],signatures:{3:catalogs.choices.find(record=>record.id===draft.classId).signatures[3][0]},acquisitions:{}}}};

@@ -1,3 +1,4 @@
+import { printedAbilityRoll } from "../src/rules/ability-roll.mjs";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
@@ -9,13 +10,13 @@ import { DAMAGE_TYPE, DAMAGE_TYPES } from "../src/rules/damage.mjs";
 const records = JSON.parse(
   await readFile(new URL("../static/data/choices.json", import.meta.url)),
 ).records;
-test("all 252 damage-first catalog tiers resolve canonical fixed damage without a later prompt", () => {
+test("all supported absolute damage-first catalog tiers resolve canonical fixed damage without a later prompt", () => {
+  const absolute = new RegExp(`^(?:Deal\\s+)?\\d+\\s+(?:(?:${DAMAGE_TYPES.join("|")})\\s+)?damage\\b`, "i");
   let count = 0;
   for (const record of records.filter((r) => r.kind === "ability"))
-    for (const outcome of record.reference?.rules?.body?.flatMap(
-      (b) => b.outcomes ?? [],
-    ) ?? []) {
-      if (!/^(?:Deal\s+)?\d+\s+(?:[a-z]+\s+)?damage\b/i.test(outcome.text)) continue;
+    for (const [label, text] of Object.entries(printedAbilityRoll(record).outcomes)) {
+      const outcome = {label, text};
+      if (!absolute.test(outcome.text)) continue;
       if (/\b(?:chosen|that) type\b/i.test(outcome.text)) continue;
       for (const damageType of printedDamageChoices(record).length
         ? printedDamageChoices(record)
@@ -34,7 +35,7 @@ test("all 252 damage-first catalog tiers resolve canonical fixed damage without 
       }
       count++;
     }
-  assert.equal(count, 252);
+  assert.equal(count, 249);
 });
 test("every damage enum produces a fixed typed outcome with conditions", () => {
   for (const type of DAMAGE_TYPES)
@@ -123,4 +124,27 @@ test("element selection recognizes only explicit pre-roll attack choices, includ
   ]) assert.deepEqual(printedDamageChoices(record(text)), ["fire", "cold"]);
   for (const text of ["You can describe fire or cold.", "Choose fire or cold colors.", "Choose armor or fire before rolling."])
     assert.deepEqual(printedDamageChoices(record(text)), []);
+});
+
+
+test("Reckless Charge's three extra-damage modifiers never become standalone damage payloads", () => {
+  const record = records.find(record => record.id === "ability-signature-blade-cut-and-turn");
+  const outcomes = printedAbilityRoll(record).outcomes;
+  for (const [tier, amount] of Object.entries({weak:1, standard:2, strong:3})) {
+    assert.match(outcomes[tier], new RegExp(`\\b${amount} extra damage`));
+    assert.equal(resolvedAttackEffects(outcomes[tier]), null, tier);
+  }
+  for (const text of ["Deal 2 additional physical damage.", "Deal 3 bonus damage.", "Deal 4 more fire damage."])
+    assert.equal(resolvedAttackEffects(text), null, text);
+  assert.deepEqual(resolvedAttackEffects("Deal 4 physical damage."), {components:[{type:"physical",amount:4}],conditions:[]});
+});
+
+test("Foul Wind retains its three printed poison profiles and leaves unsupported damage manual", () => {
+  const record = records.find(record => record.name === "Foul Wind");
+  const outcomes = printedAbilityRoll(record).outcomes;
+  assert(!DAMAGE_TYPES.includes("poison"));
+  for (const [tier, amount] of Object.entries({weak:1, standard:2, strong:4})) {
+    assert.match(outcomes[tier], new RegExp(`\\b${amount} poison damage`));
+    assert.equal(resolvedAttackEffects(outcomes[tier]), null, tier);
+  }
 });

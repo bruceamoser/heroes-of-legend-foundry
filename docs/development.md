@@ -195,7 +195,7 @@ This validates the DP/learning ledger, not a complete character: ancestry/trait 
 
 ## Creation identity and languages — issue #37
 
-The creation preview validates two distinct ancestry traits and calculates frozen creation attributes, base HP/Speed, explicit +1 trait benefits, Conditioned Body purchases, capacity, coins and initial Grit. Language grants preserve separate understanding/expression, spoken/signed and literacy permissions; the Human extra-language trait grants two distinct spoken-only choices. Common can be renamed and language availability changed through supplied campaign definitions. Regional/ancient languages must have concrete campaign definitions rather than placeholder identities. Contextual trait automation, inventory completion and final actor commitment remain separate work.
+The creation preview validates two distinct ancestry traits and calculates frozen creation attributes, base HP/Speed, explicit +1 trait benefits, Conditioned Body purchases, capacity, coins and initial Grit. Language grants preserve separate understanding/expression, spoken/signed and literacy permissions; the current Human A Foot in Two Worlds trait grants one other ancestry’s trait and one native language, retaining Human base HP and Speed. Common can be renamed and language availability changed through supplied campaign definitions. Regional/ancient languages must have concrete campaign definitions rather than placeholder identities. Contextual trait automation, inventory completion and final actor commitment remain separate work.
 
 ### Acquisition and inventory metadata
 

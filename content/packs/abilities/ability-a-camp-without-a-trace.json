@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/subterfuge.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You lift the crushed leaves and scatter the cold ash. From the old firepit, even you have to look twice to see which way the party left.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Time</dt><dd>Ten minutes while clearing a departed campsite.</dd></div><div><dt>Target / range / shape</dt><dd>One departed campsite used by your party.</dd></div><div><dt>Type</dt><dd>Skill / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>Camouflage the ordinary traces of the departed camp. You and up to six companions gain 2 Boons to attribute rolls concealing your departure trail during the first hour of travel from it.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/f3fb98ca03b046335fcc730c1b05689bebf091b4/design/cards/a-camp-without-a-trace.md\" target=\"_blank\" rel=\"noopener\">design/cards/a-camp-without-a-trace.md</a> at <code>f3fb98ca03b046335fcc730c1b05689bebf091b4</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You lift the crushed leaves and scatter the cold ash. From the old firepit, even you have to look twice to see which way the party left.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Time</dt><dd>Ten minutes while clearing a departed campsite.</dd></div><div><dt>Target / range / shape</dt><dd>One departed campsite used by your party.</dd></div><div><dt>Type</dt><dd>Skill / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>Camouflage the ordinary traces of the departed camp. You and up to six companions gain 2 Boons to attribute rolls concealing your departure trail during the first hour of travel from it.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/a-camp-without-a-trace.md\" target=\"_blank\" rel=\"noopener\">design/cards/a-camp-without-a-trace.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
     "activity": {
       "action": "main",
       "rollMode": "none",
@@ -32,7 +32,7 @@
         "path": "design/cards/a-camp-without-a-trace.md",
         "sha256": "327912cad78d15d2ff818af9975962ab26cb8e8f98e69d08441336137a3566d3"
       },
-      "sourceCommit": "f3fb98ca03b046335fcc730c1b05689bebf091b4",
+      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

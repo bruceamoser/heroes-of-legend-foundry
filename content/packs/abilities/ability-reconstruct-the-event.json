@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/scholarship.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You close your eyes, then walk the room as it was: a chair drawn back, a door left open, a figure pausing at the stair.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Time</dt><dd>Ten minutes.</dd></div><div><dt>Target / range / shape</dt><dd>One accessible scene with physical evidence of an event.</dd></div><div><dt>Type</dt><dd>Magic / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>Choose an event that left physical traces in the scene. The DA describes its evidence-supported sequence, identifies where the evidence leaves a gap, and names one specific place, person or object to investigate that gap, if a lead survives. You can show the reconstruction to your companions as a shared ghostly image of the supported sequence.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/f3fb98ca03b046335fcc730c1b05689bebf091b4/design/cards/reconstruct-the-event.md\" target=\"_blank\" rel=\"noopener\">design/cards/reconstruct-the-event.md</a> at <code>f3fb98ca03b046335fcc730c1b05689bebf091b4</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You close your eyes, then walk the room as it was: a chair drawn back, a door left open, a figure pausing at the stair.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Time</dt><dd>Ten minutes.</dd></div><div><dt>Target / range / shape</dt><dd>One accessible scene with physical evidence of an event.</dd></div><div><dt>Type</dt><dd>Magic / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>Choose an event that left physical traces in the scene. The DA describes its evidence-supported sequence, identifies where the evidence leaves a gap, and names one specific place, person or object to investigate that gap, if a lead survives. You can show the reconstruction to your companions as a shared ghostly image of the supported sequence.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/reconstruct-the-event.md\" target=\"_blank\" rel=\"noopener\">design/cards/reconstruct-the-event.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
     "activity": {
       "action": "main",
       "rollMode": "none",
@@ -32,7 +32,7 @@
         "path": "design/cards/reconstruct-the-event.md",
         "sha256": "253b010d5269b6879bcfc69512392f25bfeb34c4777bcd71719f09918141db09"
       },
-      "sourceCommit": "f3fb98ca03b046335fcc730c1b05689bebf091b4",
+      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

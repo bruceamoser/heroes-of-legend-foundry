@@ -7,7 +7,7 @@ import assert from "node:assert/strict";
 const repository = process.env.HOL_BOOK_REPOSITORY;
 if (!repository)
   throw new Error("Set HOL_BOOK_REPOSITORY to the local book repository");
-const commit = "f3fb98ca03b046335fcc730c1b05689bebf091b4";
+const commit = "c5c84c0da3a5bd54b2553426408d1ea581fe22b9";
 const git = (...args) =>
   execFileSync("git", ["-C", repository, ...args], {
     maxBuffer: 64 * 1024 * 1024,

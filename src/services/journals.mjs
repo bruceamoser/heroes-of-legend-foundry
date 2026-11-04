@@ -26,18 +26,18 @@ export async function searchLocalRules(query, collection = "all") {
   return new Set(records.filter(record => `${record.name} ${record.path}`.toLocaleLowerCase().includes(normalized) || text.get(record.pageId)?.includes(normalized)).map(record => record.path));
 }
 /** Resolve the matching native book page, preserving edited world book copies. */
-export async function localRulePage(path) {
+export async function localRulePage(path, {published = false} = {}) {
   const record = (await ruleIndex()).find(record => record.path === path);
   if (!record) throw new Error("This rule is unavailable to this user.");
   const imported = game.journal.find(entry => entry.getFlag(ID, "ruleBook")?.key === record.pack && entry.testUserPermission(game.user, "OBSERVER"));
-  const page = imported?.pages.find(page => page.id === record.pageId);
+  const page = published ? null : imported?.pages.find(page => page.id === record.pageId);
   const document = page ?? await fromUuid(record.uuid);
   if (!document || !document.testUserPermission(game.user, "OBSERVER")) throw new Error("You cannot read this rule reference.");
   return document;
 }
 /** Explicit full-book navigation uses Foundry's native TOC, search and paging. */
-export async function openLocalRule(path) {
-  const page = await localRulePage(path);
+export async function openLocalRule(path, options) {
+  const page = await localRulePage(path, options);
   await page.parent.sheet.render({ force: true, pageId: page.id, mode: foundry.applications.sheets.journal.JournalEntrySheet.VIEW_MODES.SINGLE });
   return page;
 }
@@ -57,8 +57,8 @@ export function inlineAbilityUsesCatalog(page,canonical){
   return Boolean(canonical && page.name===canonical.name && page.text?.content===canonical.text?.content);
 }
 /** Inline presentation for ability cards, character choices and rule links. */
-export async function renderInlineRule(path, container) {
-  const page = await localRulePage(path);
+export async function renderInlineRule(path, container, {published = false} = {}) {
+  const page = await localRulePage(path, {published});
   let markup=page.text.content,structured=false;
   if(path.startsWith("design/cards/")){
     const record=(await loadCatalogs()).choices.find(record=>record.kind==="ability"&&record.source.path===path);
@@ -76,11 +76,20 @@ export async function renderInlineRule(path, container) {
   container.classList.add("hol-inline-rule");
   const controls = document.createElement("header");
   const book = document.createElement("button"); book.type = "button"; book.textContent = "Open full book";
-  book.addEventListener("click", () => openLocalRule(path).catch(error => ui.notifications.error(error.message)));
+  book.addEventListener("click", () => openLocalRule(path, {published}).catch(error => ui.notifications.error(error.message)));
   const close = document.createElement("button"); close.type = "button"; close.textContent = "Close rules";
   close.addEventListener("click", () => {
     closeInlineRule(container);
   });
+  const worldCopy = !page.parent.pack && Boolean(page.parent.getFlag?.(ID, "ruleBook"));
+  if (worldCopy || published) {
+    const source = document.createElement("span");
+    source.textContent = published ? "Current published rules" : "Saved world book copy";
+    const edition = document.createElement("button"); edition.type = "button";
+    edition.textContent = published ? "Read world copy" : "Read current published rules";
+    edition.addEventListener("click", () => renderInlineRule(path, container, {published: !published}).catch(error => ui.notifications.error(error.message)));
+    controls.append(source, edition);
+  }
   controls.append(book, close);
   const content = document.createElement("div"); content.innerHTML = html;
   container.append(controls, content);

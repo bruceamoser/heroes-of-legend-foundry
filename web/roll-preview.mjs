@@ -1,3 +1,4 @@
+import { ruleBlockMarkup } from "./rules-view.mjs";
 import { rollCard } from "./chat-cards.mjs";
 import { rollSetup, bindRollSetup } from "./roll-ui.mjs";
 import { rollPlan, classifyRoll } from "./rules/roll.mjs";
@@ -70,7 +71,7 @@ function updateRules() {
     selected
       .map(
         (r) =>
-          `<section><h3>${esc(r.name)}</h3>${r.reference?.rules?.details?.map((d) => `<p><b>${esc(d.label)}:</b> ${esc(d.value)}</p>`).join("") ?? ""}${r.reference?.rules?.body?.map((b) => (b.outcomes ? `<table>${b.outcomes.map((o) => `<tr><th>${esc(o.label)}</th><td>${esc(o.text)}</td></tr>`).join("")}</table>` : b.text ? `<p>${esc(b.text)}</p>` : "")).join("") ?? ""}${r.reference?.rules?.notes?.map((n) => `<p>${esc(typeof n === "string" ? n : n.text)}</p>`).join("") ?? ""}</section>`,
+          `<section><h3>${esc(r.name)}</h3>${r.reference?.rules?.details?.map((d) => `<p><b>${esc(d.label)}:</b> ${esc(d.value)}</p>`).join("") ?? ""}${r.reference?.rules?.body?.map(ruleBlockMarkup).join("") ?? ""}${r.reference?.rules?.notes?.map((n) => `<p>${esc(typeof n === "string" ? n : n.text)}</p>`).join("") ?? ""}</section>`,
       )
       .join("") || "<p>No abilities selected.</p>";
 }

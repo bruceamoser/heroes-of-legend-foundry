@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/flame.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>Wings burst from your shoulders. One powerful beat carries you over the locked shields, and another sets you down beyond them.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self to a visible free supported square within 6 squares.</dd></div><div><dt>Type</dt><dd>Magic / Movement</dd></div></dl><div class=\"hol-reference-rules\"><p>Fly up to 6 squares over creatures, gaps and difficult ground to a visible free supported square, then land. This movement does not provoke.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/f3fb98ca03b046335fcc730c1b05689bebf091b4/design/cards/wings-over-the-battle.md\" target=\"_blank\" rel=\"noopener\">design/cards/wings-over-the-battle.md</a> at <code>f3fb98ca03b046335fcc730c1b05689bebf091b4</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>Wings burst from your shoulders. One powerful beat carries you over the locked shields, and another sets you down beyond them.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self to a visible free supported square within 6 squares.</dd></div><div><dt>Type</dt><dd>Magic / Movement</dd></div></dl><div class=\"hol-reference-rules\"><p>Fly up to 6 squares over creatures, gaps and difficult ground to a visible free supported square, then land. This movement does not provoke.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/wings-over-the-battle.md\" target=\"_blank\" rel=\"noopener\">design/cards/wings-over-the-battle.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
     "activity": {
       "action": "maneuver",
       "rollMode": "none",
@@ -32,7 +32,7 @@
         "path": "design/cards/wings-over-the-battle.md",
         "sha256": "53c2abfbaa5e6e6ce5b34230e3f83e357a951ea40188d136900e9348240aab69"
       },
-      "sourceCommit": "f3fb98ca03b046335fcc730c1b05689bebf091b4",
+      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

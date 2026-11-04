@@ -6,7 +6,8 @@ const url = process.env.HOL_TEST_URL;
 if (
   !url ||
   !["localhost", "127.0.0.1"].includes(new URL(url).hostname) ||
-  process.env.HOL_TEST_ALLOW_WRITES !== "1"
+  process.env.HOL_TEST_ALLOW_WRITES !== "1" ||
+  process.env.HOL_TEST_ISOLATED_WORLD !== "1"
 )
   throw new Error("Use an authorized disposable local world.");
 
@@ -67,6 +68,7 @@ try {
       name: "HOL171 substitution disposable defender",
       type: "character",
       system: {
+        health: {baseMax:20,value:20},
         attributes: {
           agility: { base: 0 },
           brawn: { base: 2 },
@@ -84,18 +86,16 @@ try {
     const { DEFENSE_SUBSTITUTIONS } = await import(
       "/systems/heroes-of-legend/rules/defense-substitutions.mjs"
     );
+    const { loadCatalogs } = await import("/systems/heroes-of-legend/services/catalog.mjs");
+    const { abilityItemSource } = await import("/systems/heroes-of-legend/rules/item-construction.mjs");
+    const catalogs = await loadCatalogs();
     const items = await actor.createEmbeddedDocuments(
       "Item",
-      Object.entries(DEFENSE_SUBSTITUTIONS).map(([id, rule]) => ({
-        name: id.replace("ability-", "").replaceAll("-", " "),
-        type: "ability",
-        flags: {
-          "heroes-of-legend": {
-            catalogId: id,
-            source: { path: rule.path, sha256: rule.sha256 },
-          },
-        },
-      })),
+      Object.keys(DEFENSE_SUBSTITUTIONS).map(id => {
+        const record = catalogs.choices.find(record => record.id === id);
+        if (!record) throw new Error(`Missing current catalog defense: ${id}`);
+        return abilityItemSource(record, { sourceCommit: catalogs.commit });
+      }),
     );
     const attack = await ChatMessage.create({
       content: "HOL171 substitution fixture",
@@ -137,33 +137,35 @@ try {
   const dialog = page.locator(".hol-roll-dialog"),
     select = dialog.locator('[name="defenseSubstitutionItemUuid"]');
   assert.equal(await select.locator("option").count(), 5);
-  assert.equal(
-    await dialog.locator("output").innerText(),
-    `3d6 + (${fixture.attributes.agility})`,
-  );
+  await dialog.locator("[data-roll-count]").waitFor();
+  assert.equal(await dialog.locator("[data-roll-count]").innerText(), "3");
+  assert.equal(await dialog.locator("[data-roll-value]").innerText(), `${fixture.attributes.agility >= 0 ? "+" : ""}${fixture.attributes.agility}`);
   const expected = {
-    "ability-catch-the-mechanism": ["knowledge", 0],
-    "ability-steel-at-the-wrist": ["brawn", 0],
-    "ability-snare-the-missile": ["knowledge", 1],
+    "ability-catch-the-mechanism": ["knowledge", 1],
+    "ability-steel-at-the-wrist": ["brawn", 1],
+    "ability-snare-the-missile": ["knowledge", 2],
     "ability-thought-before-the-blow": ["reason", 1],
   };
   for (const option of fixture.options) {
     const [key, boon] = expected[option.id];
     await select.selectOption(option.uuid);
-    assert.equal(
-      await dialog.locator("output").innerText(),
-      `${boon ? "4d6kh3" : "3d6"} + (${fixture.attributes[key]})`,
-    );
-    assert.match(
-      await dialog.locator("[data-roll-attribute]").innerText(),
-      new RegExp(String(fixture.attributes[key])),
-    );
+    await page.waitForFunction(({count,attribute}) => {
+      const root=document.querySelector(".hol-roll-dialog");
+      return root?.querySelector("[data-roll-count]")?.textContent === String(count) &&
+        root?.querySelector("[data-roll-value]")?.textContent === `${attribute >= 0 ? "+" : ""}${attribute}`;
+    }, {count:3+boon,attribute:fixture.attributes[key]});
+    const plan = await page.evaluate(async () => {
+      const {prepareRoll}=await import("/systems/heroes-of-legend/services/roll-preparation.mjs");
+      const dialog=__hol171Substitution.dialog;
+      return prepareRoll(dialog.basis,dialog.draft);
+    });
+    assert.equal(plan.formula, `${boon ? `${3 + boon}d6kh3` : "3d6"} + (${fixture.attributes[key]})`);
+    assert.equal(plan.boons,boon);
+    assert.equal(plan.resolvedAttributeKey,key);
   }
   await select.selectOption("");
-  assert.equal(
-    await dialog.locator("output").innerText(),
-    `3d6 + (${fixture.attributes.agility})`,
-  );
+  await page.waitForFunction(() => document.querySelector(".hol-roll-dialog [data-roll-count]")?.textContent === "3");
+  assert.equal(await dialog.locator("[data-roll-value]").innerText(), `${fixture.attributes.agility >= 0 ? "+" : ""}${fixture.attributes.agility}`);
   const snapshot = await page.evaluate(
     async (uuid) => {
       const fixture = globalThis.__hol171Substitution,
@@ -219,41 +221,25 @@ try {
     fixture.options.find((option) => option.id === "ability-snare-the-missile")
       .uuid,
   );
-  await page.waitForFunction((id) => {
-    const message = game.messages.get(id),
-      attack = game.messages.get(__hol171Substitution.attack);
-    return (
-      message?.getFlag("heroes-of-legend", "defenseStatus") === "failed" ||
-      attack
-        ?.getFlag("heroes-of-legend", "defenseResponses")
-        ?.some((row) => row.requestId === id && row.status === "resolved")
-    );
+  const recorded = await page.evaluate(async id => {
+    const fixture = __hol171Substitution, actor = game.actors.get(fixture.actor);
+    const message = game.messages.get(id), snapshot = message.getFlag("heroes-of-legend", "roll");
+    const { applyOwnedDamage } = await import("/systems/heroes-of-legend/services/explicit-damage.mjs");
+    const before = actor.system.health.value;
+    const components = [{type: snapshot.attackOutcome.type, amount: snapshot.attackOutcome.damage}];
+    const result = await applyOwnedDamage(actor, components, {operationId: id, sourceMessageId: id});
+    const replay = await applyOwnedDamage(actor, components, {operationId: id, sourceMessageId: id});
+    return {snapshot, flavor: message.flavor, before, result, replay, hp: actor.system.health.value};
   }, requestId);
-  const recorded = await page.evaluate((id) => {
-    const message = game.messages.get(id);
-    return {
-      snapshot: message.getFlag("heroes-of-legend", "roll"),
-      flavor: message.flavor,
-      status: message.getFlag("heroes-of-legend", "defenseStatus"),
-      responses: game.messages
-        .get(__hol171Substitution.attack)
-        .getFlag("heroes-of-legend", "defenseResponses"),
-    };
-  }, requestId);
-  assert.equal(recorded.status, "rolled");
   assert.equal(recorded.snapshot.attributeKey, "agility");
   assert.equal(recorded.snapshot.resolvedAttributeKey, "knowledge");
-  assert.equal(
-    recorded.snapshot.attackMessageId,
-    await page.evaluate(() => __hol171Substitution.attack),
-  );
+  assert.equal(recorded.snapshot.boons, 2);
+  assert.equal(recorded.snapshot.attackMessageId, await page.evaluate(() => __hol171Substitution.attack));
   assert.match(recorded.flavor, /Knowledge/i);
-  assert.equal(
-    recorded.responses.filter(
-      (row) => row.requestId === requestId && row.status === "resolved",
-    ).length,
-    1,
-  );
+  assert.equal(recorded.before, 20);
+  assert.equal(recorded.result.total, recorded.snapshot.attackOutcome.damage);
+  assert.equal(recorded.hp, recorded.before - recorded.result.total);
+  assert.equal(recorded.replay.replay, true);
 } finally {
   try {
     const failures = await page.evaluate(async () => {

@@ -155,7 +155,7 @@ For each runtime run record commit, package/schema/content versions, Foundry bui
 
 ### T106 — completed-book languages
 
-Creation grants Common plus a named ordinary language without DP cost. A Foot in Two Worlds adds two distinct additional ordinary spoken languages, preserving spoken-only permissions and excluding signed/uncommon choices unless the campaign explicitly changes eligibility. All six updated reference characters preserve their recorded languages. Translate the Fragment completion does not add a language.
+Creation grants Common plus a named ordinary language without DP cost. A Foot in Two Worlds chooses another ancestry, grants one of its traits and one native language, and retains Human base HP and Speed. All six authored reference characters must be valid without repair overrides; Oren borrows the Hill Dwarf maker trait and Dwarven. Translate the Fragment completion does not add a language.
 
 ### T107 — owned Item shortcuts
 

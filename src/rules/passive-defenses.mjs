@@ -29,7 +29,7 @@ export function passiveAncestryDefenseSources(
   }];
 }
 
-const PINNED_COMMIT = "f3fb98ca03b046335fcc730c1b05689bebf091b4";
+const PINNED_COMMIT = "c5c84c0da3a5bd54b2553426408d1ea581fe22b9";
 const source = (path, sha256, commit = PINNED_COMMIT) =>
   Object.freeze({ commit, path, sha256 });
 

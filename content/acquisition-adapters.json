@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceCommit": "f3fb98ca03b046335fcc730c1b05689bebf091b4",
+  "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
   "adapters": [
     {
       "id": "ability-a-bough-for-the-fallen",
@@ -2424,7 +2424,7 @@
       "id": "ability-signature-leader-hold-your-nerve",
       "source": {
         "path": "design/cards/signature-leader-hold-your-nerve.md",
-        "sha256": "ae3e83200593706995f2e1eead30d49c359d807935990fb344083e0ab186523d"
+        "sha256": "3d3c03f4c8a6d8825fc9cec38f7b4d12fe834a75302eb18c7f8db05949fc4100"
       },
       "items": [],
       "recipes": []

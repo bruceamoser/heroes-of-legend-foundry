@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/life.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You close your hand, and the color leaves your enemy&#39;s face as if a cold wind had passed straight through them.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div><div><dt>Target / range / shape</dt><dd>One visible enemy within 4 squares.</dd></div><div><dt>Type</dt><dd>Magic / Attack / Control</dd></div></dl><div class=\"hol-reference-rules\"><p>Make a Guile spell attack.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>2 Life damage.</dd><dt>Standard</dt><dd>3 Life damage.</dd><dt>Strong</dt><dd>5 Life damage and Slowed 1.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/f3fb98ca03b046335fcc730c1b05689bebf091b4/design/cards/drain-warmth.md\" target=\"_blank\" rel=\"noopener\">design/cards/drain-warmth.md</a> at <code>f3fb98ca03b046335fcc730c1b05689bebf091b4</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You close your hand, and the color leaves your enemy&#39;s face as if a cold wind had passed straight through them.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div><div><dt>Target / range / shape</dt><dd>One visible enemy within 4 squares.</dd></div><div><dt>Type</dt><dd>Magic / Attack / Control</dd></div></dl><div class=\"hol-reference-rules\"><p>Make a Guile spell attack.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>2 Life damage.</dd><dt>Standard</dt><dd>3 Life damage.</dd><dt>Strong</dt><dd>5 Life damage and Slowed 1.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/drain-warmth.md\" target=\"_blank\" rel=\"noopener\">design/cards/drain-warmth.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
     "activity": {
       "action": "main",
       "rollMode": "attribute",
@@ -32,7 +32,7 @@
         "path": "design/cards/drain-warmth.md",
         "sha256": "37d254c5ca32f641d1cbbd65cf2f759ae39dd7f2ce4dec4db75ba56e4a74b6a7"
       },
-      "sourceCommit": "f3fb98ca03b046335fcc730c1b05689bebf091b4",
+      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

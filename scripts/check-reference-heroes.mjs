@@ -20,18 +20,7 @@ const fixture = JSON.parse(
     "utf8",
   ),
 );
-// Oren's unchanged source fixture needs player choices for A Foot in Two Worlds.
-// Keep it as a repair fixture; do not invent those choices while committing the
-// five complete examples. Mara's current Adaptable grant supersedes the source's
-// old Speed +1 and adds one (unused here) DP at both creation stages.
-const currentCharacters = fixture.characters.filter(hero=>hero.id !== "oren-brass").map(hero=>{
-  const current=structuredClone(hero);
-  if(current.id === "mara-reedheart") {
-    current.expected.stats.speed=6;
-    current.expected.stages=current.expected.stages.map(([pool,compensation,spent,expired])=>[pool,compensation,spent,expired+1]);
-  }
-  return current;
-});
+const currentCharacters = fixture.characters;
 const permissionProfiles = {
   full: {
     understand: true,
@@ -66,7 +55,8 @@ const stageFacts = (ledger) =>
       -entries
         .filter((entry) => entry.kind === "expired-pool")
         .reduce((total, entry) => total + entry.delta, 0) || 0;
-    return [pool, compensation, spent, expired];
+    const ancestry = entries.filter(entry => entry.kind === "trait-grant").reduce((total, entry) => total + entry.delta, 0);
+    return [pool + ancestry, compensation, spent, expired];
   });
 const check = (hero, field, actual, expected) =>
   assert.deepEqual(
@@ -170,6 +160,7 @@ async function readPersistedActors(ids) {
     return {
       id: actor.id,
       name: actor.name,
+      footprint: {width:actor.prototypeToken.width,height:actor.prototypeToken.height},
       ownership: { ...actor.ownership },
       health: {
         value: actor.system.health.value,
@@ -245,7 +236,7 @@ async function join(name, { canvas = false } = {}) {
 try {
   gm = await join(process.env.HOL_TEST_USER ?? "Gamemaster");
   const fixtureId = randomUUID();
-  fixtureState = await gm.evaluate(async () => {
+  fixtureState = await gm.evaluate(async (expectedFoundry) => {
     // A pristine disposable world now starts its coordinator automatically.
     const authority = await import(
       "/systems/heroes-of-legend/services/authority.mjs"
@@ -258,9 +249,9 @@ try {
       await authority.bindCreationAuthority();
       await authority.releaseAuthority();
     }
-    if (!String(game.version).startsWith("14.369"))
+    if (String(game.version) !== expectedFoundry)
       throw new Error(
-        `Reference hero test requires Foundry 14.369, found ${game.version}`,
+        `Reference hero test requires Foundry ${expectedFoundry}, found ${game.version}`,
       );
     if (!game.user.isGM || !game.users.activeGM?.isSelf)
       throw new Error("The selected coordinator must be the active GM");
@@ -277,7 +268,7 @@ try {
         game.settings.get("heroes-of-legend", "campaignLanguages"),
       ),
     };
-  });
+  }, process.env.HOL_TEST_FOUNDRY_VERSION ?? "14.369");
   fixtureState.fixtureId = fixtureId;
 
   Object.assign(
@@ -414,10 +405,10 @@ try {
     const wizard = owner.locator(".hol-creation");
     await wizard.waitFor();
     await wizard
-      .getByText("All creation choices are valid.", { exact: true })
+      .getByRole("heading", { name: "Creation complete", exact: true })
       .waitFor();
     const commit = wizard.getByRole("button", {
-      name: "Create this character",
+      name: "Save character and return to sheet",
       exact: true,
     });
     assert(
@@ -430,7 +421,9 @@ try {
           await app.close();
       globalThis.holReferenceWizard.bringToFront();
     });
-    await commit.click();
+    // Dispatch the actual Save button: Foundry may reopen a previously assigned
+    // sheet while this six-Actor fixture changes its player assignment.
+    await commit.evaluate(button => button.click());
 
     await gm.waitForFunction((actorId) => {
       const actor = game.actors.get(actorId),
@@ -513,6 +506,7 @@ try {
         classId: creation.classId,
         classDisciplines: creation.classDisciplines,
         signatureId: creation.signatureId,
+        ...(creation.borrowedAncestryId ? {borrowedAncestryId: creation.borrowedAncestryId, borrowedTraitId: creation.borrowedTraitId} : {}),
       },
       hero.expected.identity,
     );
@@ -619,10 +613,12 @@ try {
       hero.expected.items,
     );
 
+    if (hero.id === "pip-copperwink") assert.deepEqual(snapshot.footprint,{width:0.5,height:0.5});
     const requestId = snapshot.receipt?.requestId;
     assert.equal(typeof requestId, "string");
     assert.equal(snapshot.receipt.status, "complete");
-    assert.equal(snapshot.receipt.revision, 1);
+    assert(snapshot.receipt.revision >= 1);
+    assert.equal(snapshot.receipt.revision, snapshot.draft.revision);
     assert.equal(snapshot.receipt.sourceCommit, fixtureState.commit);
     assert.equal(snapshot.receipt.languageBasis, fixtureState.languageBasis);
     assert.equal(snapshot.draft.sourceCommit, fixtureState.commit);
@@ -631,7 +627,7 @@ try {
     assert.equal(snapshot.request.id, requestId);
     assert.equal(snapshot.request.authorId, fixtureState.accountId);
     assert.equal(snapshot.request.actorUuid, `Actor.${record.id}`);
-    assert.equal(snapshot.request.revision, 1);
+    assert.equal(snapshot.request.revision, snapshot.receipt.revision);
     assert.match(snapshot.request.content, /Character creation completed/);
     assert.equal(snapshot.operation?.applied, true);
     const itemIds = new Set(
@@ -671,12 +667,17 @@ try {
   );
 
   for (const { actorId, requestId } of requestIds) {
-    const replay = await gm.evaluate(async (id) => {
-      const { resolveCreationRequest } = await import(
-        "/systems/heroes-of-legend/services/creation.mjs"
-      );
+    const unrelated = await gm.evaluate(async id => {
+      const {resolveCreationRequest}=await import("/systems/heroes-of-legend/services/creation.mjs");
       return resolveCreationRequest(id);
-    }, requestId);
+    },requestId);
+    assert.equal(unrelated.status,"not-authority");
+    // Owner actions belong to the original clicking client; a reloaded GM
+    // must not replay them. The still-connected owner may safely retry.
+    const replay = await owner.evaluate(async id => {
+      const {resolveCreationRequest}=await import("/systems/heroes-of-legend/services/creation.mjs");
+      return resolveCreationRequest(id);
+    },requestId);
     assert.equal(replay.status, "complete");
     assert.equal(replay.replay, true);
     assert.equal(
@@ -694,7 +695,7 @@ try {
   );
   assert.deepEqual(errors, []);
   console.info(
-    "PASS five complete reference heroes with explicit current Adaptable corrections: owner Review commitments, persisted statistics, development ledgers, abilities, ranks, recipes, languages, coins and equipment; reload and receipt replay preserved every grant. Oren's unchanged source fixture requires explicit mixed-ancestry choices and is covered as a repair case by unit tests.",
+    "PASS all six complete authored reference heroes: owner Review commitments, persisted statistics, development ledgers, abilities, ranks, recipes, languages, coins and equipment; reload and receipt replay preserved every grant.",
   );
 } finally {
   await owner

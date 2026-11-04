@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/mind.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You hold your enemy&#39;s gaze and let one impossible shape pass between you. Their next movement loses its place in the world.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Target / range / shape</dt><dd>One visible enemy within 4 squares.</dd></div><div><dt>Type</dt><dd>Magic / Attack / Control</dd></div></dl><div class=\"hol-reference-rules\"><p>Make a Reason spell attack.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>2 mental damage.</dd><dt>Standard</dt><dd>3 mental damage and Dazed 1.</dd><dt>Strong</dt><dd>5 mental damage and Dazed 1.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/a-thought-that-is-not-yours.md\" target=\"_blank\" rel=\"noopener\">design/cards/a-thought-that-is-not-yours.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>Make a Reason spell attack that deals mental damage and can Daze an enemy within 4 squares.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Target / range / shape</dt><dd>One visible enemy within 4 squares.</dd></div><div><dt>Type</dt><dd>Magic / Attack / Control</dd></div></dl><div class=\"hol-reference-rules\"><p>Make a Reason spell attack.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>2 mental damage.</dd><dt>Standard</dt><dd>3 mental damage and Dazed 1.</dd><dt>Strong</dt><dd>5 mental damage and Dazed 1.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/24e545e6d860e8c1b03a21356fd22cae1c039785/design/cards/a-thought-that-is-not-yours.md\" target=\"_blank\" rel=\"noopener\">design/cards/a-thought-that-is-not-yours.md</a> at <code>24e545e6d860e8c1b03a21356fd22cae1c039785</code>.</p></section>",
     "activity": {
       "action": "main",
       "rollMode": "attribute",
@@ -30,9 +30,9 @@
       "catalogId": "ability-a-thought-that-is-not-yours",
       "source": {
         "path": "design/cards/a-thought-that-is-not-yours.md",
-        "sha256": "beb338675b44af113aa7bc31a6003225e1fc5ec421cc26c5c5f571b529981674"
+        "sha256": "5e8e15aff791bb85d1a81d5d2643b6e1aebe611705d9d091585f5abb63e17242"
       },
-      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
+      "sourceCommit": "24e545e6d860e8c1b03a21356fd22cae1c039785",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

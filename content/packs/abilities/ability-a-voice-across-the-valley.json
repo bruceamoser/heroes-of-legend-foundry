@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/mind.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You whisper a familiar name into the wind. A minute later, the answer reaches you with the softness of a voice at the fireside.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Time</dt><dd>One minute to call; up to ten minutes of conversation.</dd></div><div><dt>Target / range / shape</dt><dd>One willing creature personally known to you within one day&#39;s ordinary travel.</dd></div><div><dt>Limits</dt><dd>Once per recipient per day.</dd></div><div><dt>Type</dt><dd>Magic / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>Call the recipient. After one minute, a willing recipient may join you in up to ten minutes of spoken-length conversation. Your call identifies you; each participant chooses the words it sends. An unanswered call reveals only that no reply arrived.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/a-voice-across-the-valley.md\" target=\"_blank\" rel=\"noopener\">design/cards/a-voice-across-the-valley.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>Call a creature you know within a day&#39;s travel and speak with it for up to ten minutes if it answers.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Time</dt><dd>One minute to call; up to ten minutes of conversation.</dd></div><div><dt>Target / range / shape</dt><dd>One willing creature personally known to you within one day&#39;s ordinary travel.</dd></div><div><dt>Limits</dt><dd>Once per recipient per day.</dd></div><div><dt>Type</dt><dd>Magic / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>Call the recipient. After one minute, a willing recipient may join you in up to ten minutes of spoken-length conversation. Your call identifies you; each participant chooses the words it sends. An unanswered call reveals only that no reply arrived.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/24e545e6d860e8c1b03a21356fd22cae1c039785/design/cards/a-voice-across-the-valley.md\" target=\"_blank\" rel=\"noopener\">design/cards/a-voice-across-the-valley.md</a> at <code>24e545e6d860e8c1b03a21356fd22cae1c039785</code>.</p></section>",
     "activity": {
       "action": "main",
       "rollMode": "none",
@@ -30,9 +30,9 @@
       "catalogId": "ability-a-voice-across-the-valley",
       "source": {
         "path": "design/cards/a-voice-across-the-valley.md",
-        "sha256": "856c3625fbceb11c43370852fe90b348abbee25ba2b528fa474f615fb3a32028"
+        "sha256": "3f525c1470ab773e498fba8e30cbc6ecdac2dc8e646ce53cdd90cf5435fcbe2a"
       },
-      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
+      "sourceCommit": "24e545e6d860e8c1b03a21356fd22cae1c039785",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

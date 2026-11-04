@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/influence.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You name the deed they hoped no one would answer for. Your voice carries across the fight, and the certainty leaves their face.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div><div><dt>Target / range / shape</dt><dd>One enemy within 4 squares who hears and understands you.</dd></div><div><dt>Type</dt><dd>Skill / Control</dd></div></dl><div class=\"hol-reference-rules\"><p>Make a Guile control attack. You are the source of the Frightened condition.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>Frightened 1.</dd><dt>Standard</dt><dd>Frightened 2.</dd><dt>Strong</dt><dd>Frightened 2 and Slowed 1.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/name-the-reckoning.md\" target=\"_blank\" rel=\"noopener\">design/cards/name-the-reckoning.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>Choose one enemy within 4 squares who hears and understands you. Make a Guile control attack. You are the source of the Frightened condition. On a Standard result, frightened 2.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div><div><dt>Target / range / shape</dt><dd>One enemy within 4 squares who hears and understands you.</dd></div><div><dt>Type</dt><dd>Skill / Control</dd></div></dl><div class=\"hol-reference-rules\"><p>Make a Guile control attack. You are the source of the Frightened condition.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>Frightened 1.</dd><dt>Standard</dt><dd>Frightened 2.</dd><dt>Strong</dt><dd>Frightened 2 and Slowed 1.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/24e545e6d860e8c1b03a21356fd22cae1c039785/design/cards/name-the-reckoning.md\" target=\"_blank\" rel=\"noopener\">design/cards/name-the-reckoning.md</a> at <code>24e545e6d860e8c1b03a21356fd22cae1c039785</code>.</p></section>",
     "activity": {
       "action": "main",
       "rollMode": "attribute",
@@ -30,9 +30,9 @@
       "catalogId": "ability-name-the-reckoning",
       "source": {
         "path": "design/cards/name-the-reckoning.md",
-        "sha256": "d2f8cda810deb154cfb17bb08197040d7ac8f1fbaf8de850436080507ed58c99"
+        "sha256": "ba35f3a1eda497a2ec2b2c85b04548ae89075822cd8bb30395c01f7c484a8d3f"
       },
-      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
+      "sourceCommit": "24e545e6d860e8c1b03a21356fd22cae1c039785",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

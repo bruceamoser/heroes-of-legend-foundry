@@ -1,5 +1,5 @@
 {
-  "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
+  "sourceCommit": "24e545e6d860e8c1b03a21356fd22cae1c039785",
   "records": {
     "ancestry-deep-dwarf": {
       "markdown": "# Deep Dwarf\n\n*Grey skin, great watchful eyes and a quiet step beneath the weight of the world.*\n\nThe ancestors of Deep Dwarves went farther down. Over long generations, the people of the depths became shorter and slighter than their surface cousins. Their skin ranges through shades of grey, and their large eyes gather the faint light of the underground. Narrow shoulders and economical movements suit passages where a broad surface dwarf would struggle.\n\nMany are naturally shy. They watch before approaching, speak after listening and prefer a familiar companion to the attention of a crowded room. Reserve does not diminish curiosity, courage or conviction. A quiet Deep Dwarf may be the first to notice danger and the one who refuses to abandon a friend.\n\nStone, darkness and small changes in air or vibration shape their experience. Those raised above ground bring the same sensitive bodies to unfamiliar surroundings. No ancestral instinct supplies a map of tunnels they have never walked.\n\n## Rules\n\nChoose two of the five traits below. Temperamental tendencies are invitations, not a required personality. Any ancestry may grow up in any culture. Only the printed rules grant mechanical benefits.\n\n**Starting values:** HP +2; base Speed 5.\n\n- [Eyes for the Dark](trait-deep-dwarf-eyes-for-the-dark.md) — You study the passage in a faint wash of reflected light.\n- [The Stone Tells You](trait-deep-dwarf-stone-tells-you.md) — You rest your palm against the floor and wait for the answering tread.\n- [A Sense of Depth](trait-deep-dwarf-never-off-the-map.md) — You wake in the dark and know which wall lies beneath the mountain.\n- [A Patient Breath](trait-deep-dwarf-holds-its-own.md) — You slow your breathing while the others hurry through the stale passage.\n- [Through the Narrow Places](trait-deep-dwarf-where-tall-folk-cannot-stand.md) — You lower your head and slip beneath the fallen beam without breaking stride.\n\n**Starting coin contribution:** +2 coins. See [starting coins](../starting-coins.md).\n\n**Status:** Prepared for v16.7.0 under Bruce’s release instruction; trait approvals recorded separately.\n",
@@ -618,367 +618,367 @@
       }
     },
     "trait-deep-dwarf-eyes-for-the-dark": {
-      "markdown": "# Eyes for the Dark\n\n*You study the passage in a faint wash of reflected light.*\n\n## Rules\n\n[Low-Light Vision](../rules/vision.md) 2.\n\n**Ancestry:** Deep Dwarf · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-deep-dwarf-eyes-for-the-dark\n\n[Ancestry choices](deep-dwarf.md)\n",
+      "markdown": "# Eyes for the Dark\n\n*Gain Low-Light Vision 2. Ignore the first two Banes from dim light.*\n\n## Rules\n\n[Low-Light Vision](../rules/vision.md) 2.\n\n**Ancestry:** Deep Dwarf · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-deep-dwarf-eyes-for-the-dark\n\n[Ancestry choices](deep-dwarf.md)\n",
       "source": {
         "path": "design/ancestries/trait-deep-dwarf-eyes-for-the-dark.md",
-        "sha256": "489ecb7f546f2ff092f41ea719c595e363f62d8bcc655d1aab2845dab05de627"
+        "sha256": "aac065422f296e7dba9fea72babf093f63cc59c126fed6cd7928c35b9a699266"
       }
     },
     "trait-deep-dwarf-holds-its-own": {
-      "markdown": "# A Patient Breath\n\n*You slow your breathing while the others hurry through the stale passage.*\n\n## Rules\n\nGain 1 Boon to Fortitude rolls against inhaled dust, smoke, fumes, poison or thin air.\n\n**Ancestry:** Deep Dwarf · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-deep-dwarf-holds-its-own\n\n[Ancestry choices](deep-dwarf.md)\n",
+      "markdown": "# A Patient Breath\n\n*Gain 1 Boon to Fortitude rolls against inhaled dust, smoke, fumes, poison or thin air.*\n\n## Rules\n\nGain 1 Boon to Fortitude rolls against inhaled dust, smoke, fumes, poison or thin air.\n\n**Ancestry:** Deep Dwarf · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-deep-dwarf-holds-its-own\n\n[Ancestry choices](deep-dwarf.md)\n",
       "source": {
         "path": "design/ancestries/trait-deep-dwarf-holds-its-own.md",
-        "sha256": "b518753bbf09eaa33e4c7014fa6e39de9032c7e6b637f3cfc38f8454bdb0d8de"
+        "sha256": "36896c32d669792a00c7653a9f683c5abedc3c52eeb893e363b8d5a95b08aeae"
       }
     },
     "trait-deep-dwarf-never-off-the-map": {
-      "markdown": "# A Sense of Depth\n\n*You wake in the dark and know which wall lies beneath the mountain.*\n\n## Rules\n\nUnderground, you always know which way is up and whether your route is rising or descending. Gain 1 Boon to Reason rolls to navigate underground or retrace a subterranean route.\n\n**Ancestry:** Deep Dwarf · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-deep-dwarf-never-off-the-map\n\n[Ancestry choices](deep-dwarf.md)\n",
+      "markdown": "# A Sense of Depth\n\n*Underground, you always know which way is up and whether your route is rising or descending. Gain 1 Boon to Reason rolls to navigate underground or retrace a subterranean route.*\n\n## Rules\n\nUnderground, you always know which way is up and whether your route is rising or descending. Gain 1 Boon to Reason rolls to navigate underground or retrace a subterranean route.\n\n**Ancestry:** Deep Dwarf · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-deep-dwarf-never-off-the-map\n\n[Ancestry choices](deep-dwarf.md)\n",
       "source": {
         "path": "design/ancestries/trait-deep-dwarf-never-off-the-map.md",
-        "sha256": "e5c141e595b497bde964457c6cab6b46818d4a97c3d4b71c7dbeb4f9a6a3f63f"
+        "sha256": "b2133c734aa29f37a48b3aa9d5cf62edfe7870b438936fe5c0e51dc4f5541a86"
       }
     },
     "trait-deep-dwarf-stone-tells-you": {
-      "markdown": "# The Stone Tells You\n\n*You rest your palm against the floor and wait for the answering tread.*\n\n## Rules\n\nGain [Seismic Vision](../rules/vision.md) with a range of 6 squares.\n\n**Ancestry:** Deep Dwarf · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**Status:** Approved by Bruce on November 3, 2026; shared Seismic Vision definition remains under review.\n\n**ID:** trait-deep-dwarf-stone-tells-you\n\n[Ancestry choices](deep-dwarf.md)\n",
+      "markdown": "# The Stone Tells You\n\n*Gain Seismic Vision with a range of 6 squares.*\n\n## Rules\n\nGain [Seismic Vision](../rules/vision.md) with a range of 6 squares.\n\n**Ancestry:** Deep Dwarf · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**Status:** Approved by Bruce on November 3, 2026; shared Seismic Vision definition remains under review.\n\n**ID:** trait-deep-dwarf-stone-tells-you\n\n[Ancestry choices](deep-dwarf.md)\n",
       "source": {
         "path": "design/ancestries/trait-deep-dwarf-stone-tells-you.md",
-        "sha256": "e7a888739f7e09810a613edee0ace458ad77b1177e034039eb4daa730f058b6c"
+        "sha256": "d9d7c201aaeefbc353189e7eaf555b3de647655a90a4b2f7932fbbab2ca72e7f"
       }
     },
     "trait-deep-dwarf-where-tall-folk-cannot-stand": {
-      "markdown": "# Through the Narrow Places\n\n*You lower your head and slip beneath the fallen beam without breaking stride.*\n\n## Rules\n\nYou move and attack normally while crouching or squeezing through low or narrow passages.\n\n**Ancestry:** Deep Dwarf · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-deep-dwarf-where-tall-folk-cannot-stand\n\n[Ancestry choices](deep-dwarf.md)\n",
+      "markdown": "# Through the Narrow Places\n\n*You move and attack normally while crouching or squeezing through low or narrow passages.*\n\n## Rules\n\nYou move and attack normally while crouching or squeezing through low or narrow passages.\n\n**Ancestry:** Deep Dwarf · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-deep-dwarf-where-tall-folk-cannot-stand\n\n[Ancestry choices](deep-dwarf.md)\n",
       "source": {
         "path": "design/ancestries/trait-deep-dwarf-where-tall-folk-cannot-stand.md",
-        "sha256": "edf6012380daf083395d77c7e46b54965d1b0408aebfe1833457c651c576d4c1"
+        "sha256": "99bf317c672ccc84fb5a21a7893edd03559bcbeb5aacdd4b8eefa60ea519ba12"
       }
     },
     "trait-dwarf-carved-history": {
-      "markdown": "# A Grudge Well Kept\n\n*You rub the place the blow landed, fix its giver in your gaze and step back into the fight.*\n\n## Rules\n\nThe first creature that deals damage to you in each combat becomes the mark of your grudge. You gain 1 Boon to attack rolls against each creature marked by your grudge. A creature remains marked forever, even if it escapes. Each creature can be marked once. You can hold any number of grudges.\n\n**Ancestry:** Hill Dwarf · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-dwarf-carved-history\n\n[Ancestry choices](hill-dwarf.md)\n",
+      "markdown": "# A Grudge Well Kept\n\n*The first creature that deals damage to you in each combat becomes the mark of your grudge. You gain 1 Boon to attack rolls against each creature marked by your grudge. A creature remains marked forever, even if it escapes. Each creature can be marked once. You can hold any number of grudges.*\n\n## Rules\n\nThe first creature that deals damage to you in each combat becomes the mark of your grudge. You gain 1 Boon to attack rolls against each creature marked by your grudge. A creature remains marked forever, even if it escapes. Each creature can be marked once. You can hold any number of grudges.\n\n**Ancestry:** Hill Dwarf · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-dwarf-carved-history\n\n[Ancestry choices](hill-dwarf.md)\n",
       "source": {
         "path": "design/ancestries/trait-dwarf-carved-history.md",
-        "sha256": "76daec23e19ff199616f300e76f2caac35f4fe9a41ad5f2b06e1eef5e7b8832d"
+        "sha256": "96b47b0538d6ae4e4ae81df1fc9b8603c5faacfb83cf8085611c128f4b5e4230"
       }
     },
     "trait-dwarf-deep-constitution": {
-      "markdown": "# Hard as Bedrock\n\n*You draw a deep breath, tighten the strap over your bruised shoulder and shoulder the load again.*\n\n## Rules\n\nMaximum HP +1.\n\n**Ancestry:** Hill Dwarf · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-dwarf-deep-constitution\n\n[Ancestry choices](hill-dwarf.md)\n",
+      "markdown": "# Hard as Bedrock\n\n*Maximum HP +1.*\n\n## Rules\n\nMaximum HP +1.\n\n**Ancestry:** Hill Dwarf · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-dwarf-deep-constitution\n\n[Ancestry choices](hill-dwarf.md)\n",
       "source": {
         "path": "design/ancestries/trait-dwarf-deep-constitution.md",
-        "sha256": "66d5375b8615ef9d58eabb520a8e83e01b9c2e12cd5082c6a2a44b347776f3fe"
+        "sha256": "6ebecc3ea0afd455d6a2d53f113d8145fd263aa775f407feab14e2133a839e00"
       }
     },
     "trait-dwarf-low-center": {
-      "markdown": "# Rooted in Stone\n\n*You spread your boots against the stone and lean into the approaching shove.*\n\n## Rules\n\nStability +1. You gain 1 Boon to Guile rolls.\n\n**Ancestry:** Hill Dwarf · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-dwarf-low-center\n\n[Ancestry choices](hill-dwarf.md)\n",
+      "markdown": "# Rooted in Stone\n\n*Stability +1. You gain 1 Boon to Guile rolls.*\n\n## Rules\n\nStability +1. You gain 1 Boon to Guile rolls.\n\n**Ancestry:** Hill Dwarf · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-dwarf-low-center\n\n[Ancestry choices](hill-dwarf.md)\n",
       "source": {
         "path": "design/ancestries/trait-dwarf-low-center.md",
-        "sha256": "db1605041eeb7317b817d1243fee3dafd0e0e807c8db427190ce98c552c1e6ad"
+        "sha256": "92385fc4b3851638ff1a314f9d1122cd5d55088b163887512594fb5fb41e76f1"
       }
     },
     "trait-dwarf-maker-s-eye": {
-      "markdown": "# An Honest Maker’s Hand\n\n*Your hands know the difference between a quick fix and honest work — and you refuse to settle for the former.*\n\n## Rules\n\nOnce per day, after you make a roll to craft or repair an item, you may improve the result by one step: Weak becomes Standard, or Standard becomes Strong. A Strong result is unchanged.\n\n**Ancestry:** Hill Dwarf · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-dwarf-maker-s-eye\n\n[Ancestry choices](hill-dwarf.md)\n",
+      "markdown": "# An Honest Maker’s Hand\n\n*Once per day, improve a Weak crafting or repair roll to Standard, or a Standard result to Strong.*\n\n## Rules\n\nOnce per day, after you make a roll to craft or repair an item, you may improve the result by one step: Weak becomes Standard, or Standard becomes Strong. A Strong result is unchanged.\n\n**Ancestry:** Hill Dwarf · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-dwarf-maker-s-eye\n\n[Ancestry choices](hill-dwarf.md)\n",
       "source": {
         "path": "design/ancestries/trait-dwarf-maker-s-eye.md",
-        "sha256": "75b20c3c5f83971bbd7308593ac9c7a70567dcbd83759cac74a06b4e99dd84ae"
+        "sha256": "fb45c7bbffb02bfe88cb0788ef96049a96708552ff2fc6144b4a6566a227f65e"
       }
     },
     "trait-dwarf-stone-reader": {
-      "markdown": "# Stone Mason\n\n*You run your fingers across the stonework, stopping where an old seam has been cut anew.*\n\n## Rules\n\nGain 1 Boon to rolls to examine or craft with stone. This covers judging craftsmanship, recognizing stone type and origin, reading patina or recent toolwork, finding secret passages or traps built into stone, and spotting weaknesses in stone or stone structures. You can identify obvious construction clues without a roll.\n\n**Ancestry:** Hill Dwarf · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-dwarf-stone-reader\n\n[Ancestry choices](hill-dwarf.md)\n",
+      "markdown": "# Stone Mason\n\n*Gain 1 Boon to rolls to examine or craft with stone. This covers judging craftsmanship, recognizing stone type and origin, reading patina or recent toolwork, finding secret passages or traps built into stone, and spotting weaknesses in stone or stone structures. You can identify obvious construction clues without a roll.*\n\n## Rules\n\nGain 1 Boon to rolls to examine or craft with stone. This covers judging craftsmanship, recognizing stone type and origin, reading patina or recent toolwork, finding secret passages or traps built into stone, and spotting weaknesses in stone or stone structures. You can identify obvious construction clues without a roll.\n\n**Ancestry:** Hill Dwarf · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-dwarf-stone-reader\n\n[Ancestry choices](hill-dwarf.md)\n",
       "source": {
         "path": "design/ancestries/trait-dwarf-stone-reader.md",
-        "sha256": "32d2aa2e99f93fe5d538ba6e041ae03aa20056cec76dbb872abb7d59499a0dfd"
+        "sha256": "7b5be10fc51eff0cf71b5887cc8fe27e2b3effbb2fe2a96da0bd4e22a7f5b3a3"
       }
     },
     "trait-elf-age-of-memory": {
-      "markdown": "# A Lifetime Ago\n\n*You pause beside the broken road, and the voices of your ancestors rise in the quiet between thoughts.*\n\n## Rules\n\nOnce per day, before you make a Knowledge or Reason roll, you may call on the knowledge of your ancestors to gain 1 Boon to that roll.\n\n**Ancestry:** Wood Elf · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-elf-age-of-memory\n\n[Ancestry choices](wood-elf.md)\n",
+      "markdown": "# A Lifetime Ago\n\n*Once per day, before you make a Knowledge or Reason roll, you may call on the knowledge of your ancestors to gain 1 Boon to that roll.*\n\n## Rules\n\nOnce per day, before you make a Knowledge or Reason roll, you may call on the knowledge of your ancestors to gain 1 Boon to that roll.\n\n**Ancestry:** Wood Elf · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-elf-age-of-memory\n\n[Ancestry choices](wood-elf.md)\n",
       "source": {
         "path": "design/ancestries/trait-elf-age-of-memory.md",
-        "sha256": "8a7c5c481dd3824fe310f64a6c8d5b0d56074c8b04badcf366683518d9118339"
+        "sha256": "d94be3c2df2a5d015ded6a58d749a469e6f74ad62ef42c53b79f7c03e07b1899"
       }
     },
     "trait-elf-leaf-listener": {
-      "markdown": "# Nature’s Whispers\n\n*You stop talking as the birds fall quiet, turning toward the rustle that disturbed them.*\n\n## Rules\n\nGain 1 Boon to a roll interpreting living signs.\n\n**Ancestry:** Wood Elf · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-elf-leaf-listener\n\n[Ancestry choices](wood-elf.md)\n",
+      "markdown": "# Nature’s Whispers\n\n*Gain 1 Boon to a roll interpreting living signs.*\n\n## Rules\n\nGain 1 Boon to a roll interpreting living signs.\n\n**Ancestry:** Wood Elf · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-elf-leaf-listener\n\n[Ancestry choices](wood-elf.md)\n",
       "source": {
         "path": "design/ancestries/trait-elf-leaf-listener.md",
-        "sha256": "889a4387f42cfc651b1e3686dc89a8e3975c75e7ef24b3e42975b5f857c3371a"
+        "sha256": "d00be1cdb3424ab35a3d64d17059dbdcade1671fd2d61d682e68122a368ff4a8"
       }
     },
     "trait-elf-light-tread": {
-      "markdown": "# Footfall on the Leaves\n\n*You step between stems and over tangled roots, leaving the leaves scarcely trembling behind you.*\n\n## Rules\n\nIn woodlands and forests, you ignore difficult terrain. This includes difficult terrain caused by natural terrain or obstacles, such as roots, undergrowth, fallen leaves and uneven natural ground. Your Speed increases by 1 while you are in woodlands, forests or similar wooded terrain.\n\n**Ancestry:** Wood Elf · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-elf-light-tread\n\n[Ancestry choices](wood-elf.md)\n",
+      "markdown": "# Footfall on the Leaves\n\n*Ignore difficult terrain and gain 1 Speed in wooded terrain.*\n\n## Rules\n\nIn woodlands and forests, you ignore difficult terrain. This includes difficult terrain caused by natural terrain or obstacles, such as roots, undergrowth, fallen leaves and uneven natural ground. Your Speed increases by 1 while you are in woodlands, forests or similar wooded terrain.\n\n**Ancestry:** Wood Elf · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-elf-light-tread\n\n[Ancestry choices](wood-elf.md)\n",
       "source": {
         "path": "design/ancestries/trait-elf-light-tread.md",
-        "sha256": "0f3407fbce9b426114a0961c6cb9d2b7739258e92682224bee95b8b435e5c2a3"
+        "sha256": "e1612415b596f48af3aa882167be9bbc284b09d651fb6303298f17b8a3f4a0fe"
       }
     },
     "trait-elf-star-familiar": {
-      "markdown": "# Dream beneath the Stars\n\n*You settle beneath the stars with your eyes half open, letting old memories drift through the sounds of the waking camp.*\n\n## Rules\n\nYou may rest in a quiet waking reverie instead of sleeping. You remain aware of nearby ordinary sights and sounds. The reverie counts as sleep for rest and recovery.\n\n**Ancestry:** Wood Elf · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-elf-star-familiar\n\n[Ancestry choices](wood-elf.md)\n",
+      "markdown": "# Dream beneath the Stars\n\n*You may rest in a quiet waking reverie instead of sleeping. You remain aware of nearby ordinary sights and sounds. The reverie counts as sleep for rest and recovery.*\n\n## Rules\n\nYou may rest in a quiet waking reverie instead of sleeping. You remain aware of nearby ordinary sights and sounds. The reverie counts as sleep for rest and recovery.\n\n**Ancestry:** Wood Elf · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-elf-star-familiar\n\n[Ancestry choices](wood-elf.md)\n",
       "source": {
         "path": "design/ancestries/trait-elf-star-familiar.md",
-        "sha256": "21d501959d14a4516e29413df409cd02d43cc39564cba483be189aeb077d82e0"
+        "sha256": "40caeb0f30438cc7b9160202971e0da9019c60ff2883f3a3cb081644ab1bd4c4"
       }
     },
     "trait-elf-unhurried-grace": {
-      "markdown": "# Grace of the Elder Folk\n\n*You lengthen your stride and weave past the obstacles without breaking the rhythm of your steps.*\n\n## Rules\n\nBase Speed +1. Describe whether your grace is quick footwork, effortless balance or a dancer’s economy.\n\n**Ancestry:** Wood Elf · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-elf-unhurried-grace\n\n[Ancestry choices](wood-elf.md)\n",
+      "markdown": "# Grace of the Elder Folk\n\n*Base Speed +1. Describe whether your grace is quick footwork, effortless balance or a dancer’s economy.*\n\n## Rules\n\nBase Speed +1. Describe whether your grace is quick footwork, effortless balance or a dancer’s economy.\n\n**Ancestry:** Wood Elf · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-elf-unhurried-grace\n\n[Ancestry choices](wood-elf.md)\n",
       "source": {
         "path": "design/ancestries/trait-elf-unhurried-grace.md",
-        "sha256": "bc4df6bcacd45691841a84984bb2353b07c99895677fc6e1ca840a9b66668ab7"
+        "sha256": "ca84951c5fd140b90b89f0d66bbd2047973bfa99f218eb233897d194196bdb77"
       }
     },
     "trait-gnome-bright-idea": {
-      "markdown": "# Bright Idea\n\n*You draw three lines in the dust, add a spoon, and the answer takes shape.*\n\n## Rules\n\nOnce per day, before a Knowledge or Reason roll, gain 2 Boons by describing an unconventional approach to the problem.\n\n**Ancestry:** Gnome · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-gnome-bright-idea\n\n[Ancestry choices](gnome.md)\n",
+      "markdown": "# Bright Idea\n\n*Once per day, before a Knowledge or Reason roll, gain 2 Boons by describing an unconventional approach to the problem.*\n\n## Rules\n\nOnce per day, before a Knowledge or Reason roll, gain 2 Boons by describing an unconventional approach to the problem.\n\n**Ancestry:** Gnome · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-gnome-bright-idea\n\n[Ancestry choices](gnome.md)\n",
       "source": {
         "path": "design/ancestries/trait-gnome-bright-idea.md",
-        "sha256": "731c4e345617d242eb1177ccff3ff5f1c7a71fbc0010b397ac3eef77fc300c3f"
+        "sha256": "2c0e9b92c280ab72504abfa13de19108733a62aa60b8f365328c70dfed8b2bd8"
       }
     },
     "trait-gnome-fingers-in-the-works": {
-      "markdown": "# Fingers in the Works\n\n*You ease one small part out of place, and the whole machine loses its argument.*\n\n## Rules\n\nGain 1 Boon to Knowledge rolls to build, repair, disable or alter a mechanical device, using suitable tools and materials.\n\n**Ancestry:** Gnome · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-gnome-fingers-in-the-works\n\n[Ancestry choices](gnome.md)\n",
+      "markdown": "# Fingers in the Works\n\n*Gain 1 Boon to Knowledge rolls to build, repair, disable or alter a mechanical device, using suitable tools and materials.*\n\n## Rules\n\nGain 1 Boon to Knowledge rolls to build, repair, disable or alter a mechanical device, using suitable tools and materials.\n\n**Ancestry:** Gnome · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-gnome-fingers-in-the-works\n\n[Ancestry choices](gnome.md)\n",
       "source": {
         "path": "design/ancestries/trait-gnome-fingers-in-the-works.md",
-        "sha256": "f65fe9d977027f8f491bcdfb9e6db657456c92e3ba756b78d1ed58d33d87e3bd"
+        "sha256": "6ea7ee75051789899e260f4ecf9b8f5f766e39eaca88350cdc0d3f5236d31bf1"
       }
     },
     "trait-gnome-one-more-question": {
-      "markdown": "# Eyes from Elsewhere\n\n*The painted door is convincing. Its shadow has forgotten where the sun is.*\n\n## Rules\n\nGain 1 Boon to Reason rolls to notice or see through magical illusions.\n\n**Ancestry:** Gnome · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-gnome-one-more-question\n\n[Ancestry choices](gnome.md)\n",
+      "markdown": "# Eyes from Elsewhere\n\n*Gain 1 Boon to Reason rolls to notice or see through magical illusions.*\n\n## Rules\n\nGain 1 Boon to Reason rolls to notice or see through magical illusions.\n\n**Ancestry:** Gnome · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-gnome-one-more-question\n\n[Ancestry choices](gnome.md)\n",
       "source": {
         "path": "design/ancestries/trait-gnome-one-more-question.md",
-        "sha256": "63c7f881df96ec2fb803fd36e80883f78a3c1a3cf89f378c3fa1781b3a3de107"
+        "sha256": "daa131e832625fb424dd1859cd44978483e5fb1d5d4b4ab1de054afff06472ee"
       }
     },
     "trait-gnome-small-target": {
-      "markdown": "# Small Target\n\n*You tuck yourself behind the low stone as the arrow strikes its edge.*\n\n## Rules\n\nGain 1 Boon to [defense rolls](../rules/ancestry-procedures.md).\n\n**Ancestry:** Gnome · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-gnome-small-target\n\n[Ancestry choices](gnome.md)\n",
+      "markdown": "# Small Target\n\n*Gain 1 Boon to defense rolls.*\n\n## Rules\n\nGain 1 Boon to [defense rolls](../rules/ancestry-procedures.md).\n\n**Ancestry:** Gnome · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-gnome-small-target\n\n[Ancestry choices](gnome.md)\n",
       "source": {
         "path": "design/ancestries/trait-gnome-small-target.md",
-        "sha256": "08e011d627587e4288dea62855161d53904485f356bb8b2ef96f60b61918c447"
+        "sha256": "ad2eaf846e16e1f990ef0fe2c48a6d149062ab0e7b097e3d5c626622c393e3a5"
       }
     },
     "trait-gnome-whats-it-made-of": {
-      "markdown": "# What’s It Made Of?\n\n*You turn the device over, already asking why its maker put the hinge there.*\n\n## Rules\n\nGain 1 Boon to Knowledge rolls to understand the construction, function or failure of a mechanism or manufactured mixture.\n\n**Ancestry:** Gnome · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-gnome-whats-it-made-of\n\n[Ancestry choices](gnome.md)\n",
+      "markdown": "# What’s It Made Of?\n\n*Gain 1 Boon to Knowledge rolls to understand the construction, function or failure of a mechanism or manufactured mixture.*\n\n## Rules\n\nGain 1 Boon to Knowledge rolls to understand the construction, function or failure of a mechanism or manufactured mixture.\n\n**Ancestry:** Gnome · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-gnome-whats-it-made-of\n\n[Ancestry choices](gnome.md)\n",
       "source": {
         "path": "design/ancestries/trait-gnome-whats-it-made-of.md",
-        "sha256": "9663e8d8837273de096425329536f26ef13ba214edb52b94c9423362de2cfbef"
+        "sha256": "a75c4583a0aa2d7feb919a209bc3cdba56f85cb6dfdc98e9ce909875a40cf4c7"
       }
     },
     "trait-goblin-more-of-us-than-you": {
-      "markdown": "# Better Together\n\n*Your companion draws their eye, and you know exactly when to step in.*\n\n## Rules\n\nGain 1 Boon to your first attack roll on each of your turns against a creature adjacent to at least two of your allies.\n\n**Ancestry:** Goblin · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-goblin-more-of-us-than-you\n\n[Ancestry choices](goblin.md)\n",
+      "markdown": "# Better Together\n\n*Gain 1 Boon to your first attack roll on each of your turns against a creature adjacent to at least two of your allies.*\n\n## Rules\n\nGain 1 Boon to your first attack roll on each of your turns against a creature adjacent to at least two of your allies.\n\n**Ancestry:** Goblin · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-goblin-more-of-us-than-you\n\n[Ancestry choices](goblin.md)\n",
       "source": {
         "path": "design/ancestries/trait-goblin-more-of-us-than-you.md",
-        "sha256": "028c4c71590f11f2d1c947a5f13dc6c5a96f4aaab9cc5e61e5df2d9f6d3f5543"
+        "sha256": "3a09f6330789ee4e39cc4026a23daa99d9fd9756c8e3bdcda2b90821c265eedd"
       }
     },
     "trait-goblin-never-where-you-aim": {
-      "markdown": "# Quick Hands\n\n*The awkward bundle settles into your grip before anyone notices it slipping.*\n\n## Rules\n\nGain 1 Boon to Guile rolls to handle objects quickly or discreetly, or to use sleight of hand.\n\n**Ancestry:** Goblin · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-goblin-never-where-you-aim\n\n[Ancestry choices](goblin.md)\n",
+      "markdown": "# Quick Hands\n\n*Gain 1 Boon to Guile rolls to handle objects quickly or discreetly, or to use sleight of hand.*\n\n## Rules\n\nGain 1 Boon to Guile rolls to handle objects quickly or discreetly, or to use sleight of hand.\n\n**Ancestry:** Goblin · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-goblin-never-where-you-aim\n\n[Ancestry choices](goblin.md)\n",
       "source": {
         "path": "design/ancestries/trait-goblin-never-where-you-aim.md",
-        "sha256": "8486ee2b7d62b2cacc86678efa86f9defb516fddd952ba2bbd7e3b407264164d"
+        "sha256": "db3cbc5d71baf6e7d7dbe1d563b96ed79e767108ff8a542f89a9c2d2d13a5ebc"
       }
     },
     "trait-goblin-other-side-of-the-fire": {
-      "markdown": "# The Other Side of the Fire\n\n*You recognize the guarded silence and make your offer without stepping closer.*\n\n## Rules\n\nGain 1 Boon to Guile rolls to negotiate safe passage or ownership.\n\n**Ancestry:** Goblin · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-goblin-other-side-of-the-fire\n\n[Ancestry choices](goblin.md)\n",
+      "markdown": "# The Other Side of the Fire\n\n*Gain 1 Boon to Guile rolls to negotiate safe passage or ownership.*\n\n## Rules\n\nGain 1 Boon to Guile rolls to negotiate safe passage or ownership.\n\n**Ancestry:** Goblin · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-goblin-other-side-of-the-fire\n\n[Ancestry choices](goblin.md)\n",
       "source": {
         "path": "design/ancestries/trait-goblin-other-side-of-the-fire.md",
-        "sha256": "a41312e808d704e5d5d0f424ea6a19cf3feef6956801c8b30ea4a090db39d187"
+        "sha256": "ab1fe3f1aa38bcc31f91430c21aed7c80c30b99ed4504b60b0f0c5981c969b68"
       }
     },
     "trait-goblin-run-away-better": {
-      "markdown": "# Quick on Your Feet\n\n*You are halfway across the yard before the others have found their stride.*\n\n## Rules\n\nYour base Speed increases by 1.\n\n**Ancestry:** Goblin · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** Permanent.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-goblin-run-away-better\n\n[Ancestry choices](goblin.md)\n",
+      "markdown": "# Quick on Your Feet\n\n*Your base Speed increases by 1.*\n\n## Rules\n\nYour base Speed increases by 1.\n\n**Ancestry:** Goblin · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** Permanent.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-goblin-run-away-better\n\n[Ancestry choices](goblin.md)\n",
       "source": {
         "path": "design/ancestries/trait-goblin-run-away-better.md",
-        "sha256": "83bd9c63ef8b4f29bcc8d8ee2af0be02ec06be4b229479935883a40beda5bea5"
+        "sha256": "bb7024f8479c37c3452765042c0a5d101dc9895d8b9687ae58ccb47f87ed5266"
       }
     },
     "trait-goblin-scavenger": {
-      "markdown": "# Waste Nothing\n\n*You turn the broken hinge over. There is good work left in it yet.*\n\n## Rules\n\nGain 1 Boon to Knowledge rolls to repair an ordinary item using salvaged parts or recover usable materials from damaged equipment, using suitable tools.\n\n**Ancestry:** Goblin · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-goblin-scavenger\n\n[Ancestry choices](goblin.md)\n",
+      "markdown": "# Waste Nothing\n\n*Gain 1 Boon to Knowledge rolls to repair an ordinary item using salvaged parts or recover usable materials from damaged equipment, using suitable tools.*\n\n## Rules\n\nGain 1 Boon to Knowledge rolls to repair an ordinary item using salvaged parts or recover usable materials from damaged equipment, using suitable tools.\n\n**Ancestry:** Goblin · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-goblin-scavenger\n\n[Ancestry choices](goblin.md)\n",
       "source": {
         "path": "design/ancestries/trait-goblin-scavenger.md",
-        "sha256": "72b8d8224382f7a3847f248fa9ad91e67cd3d51075cc3b29bea3a0b74dad3fd9"
+        "sha256": "974c6bca42bbb4bd668b0448888bc4cfabe61b91f4215b617f583a81dcf288c1"
       }
     },
     "trait-halfling-good-cheer": {
-      "markdown": "# A Little Luck\n\n*The latch catches your coat a heartbeat before you step into trouble.*\n\n## Rules\n\nOnce per day, before a roll that uses an attribute, gain 3 Boons. Describe a small piece of good fortune.\n\n**Ancestry:** Halfling · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-halfling-good-cheer\n\n[Ancestry choices](halfling.md)\n",
+      "markdown": "# A Little Luck\n\n*Once per day, before a roll that uses an attribute, gain 3 Boons. Describe a small piece of good fortune.*\n\n## Rules\n\nOnce per day, before a roll that uses an attribute, gain 3 Boons. Describe a small piece of good fortune.\n\n**Ancestry:** Halfling · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-halfling-good-cheer\n\n[Ancestry choices](halfling.md)\n",
       "source": {
         "path": "design/ancestries/trait-halfling-good-cheer.md",
-        "sha256": "3c836ef27469aa7eb1678b53893323db0a806741fa38722024fc1af238748d42"
+        "sha256": "0306a064c4660c1dcb2aea2fecdca7adabd0437627195135ece5a9c940d8d6bc"
       }
     },
     "trait-halfling-quiet-company": {
-      "markdown": "# Quick Tongue\n\n*You let the accusation hang, then answer with the one question nobody wanted asked.*\n\n## Rules\n\nGain 1 Boon to Guile rolls to negotiate or argue. When you use Guile to defend your own or an ally’s actions, gain 2 Boons instead.\n\n**Ancestry:** Halfling · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-halfling-quiet-company\n\n[Ancestry choices](halfling.md)\n",
+      "markdown": "# Quick Tongue\n\n*Gain 1 Boon to Guile rolls to negotiate or argue. When you use Guile to defend your own or an ally’s actions, gain 2 Boons instead.*\n\n## Rules\n\nGain 1 Boon to Guile rolls to negotiate or argue. When you use Guile to defend your own or an ally’s actions, gain 2 Boons instead.\n\n**Ancestry:** Halfling · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-halfling-quiet-company\n\n[Ancestry choices](halfling.md)\n",
       "source": {
         "path": "design/ancestries/trait-halfling-quiet-company.md",
-        "sha256": "f95c55c1338adf2c1b0102024a14f32c1f4392a0dff84f938fa326f96d97e92e"
+        "sha256": "dfef66eb56feb3ed5cc3fbb462e19be9ac8c18af126b37f66fe7f2f76455ee1a"
       }
     },
     "trait-halfling-resilient": {
-      "markdown": "# Endless Pockets\n\n*Your coat has pockets. Those pockets have pockets. Somewhere in there is a spoon you forgot you packed.*\n\n## Rules\n\nYour Bulk capacity increases by 1.\n\n**Ancestry:** Halfling · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-halfling-resilient\n\n[Ancestry choices](halfling.md)\n",
+      "markdown": "# Endless Pockets\n\n*Your Bulk capacity increases by 1.*\n\n## Rules\n\nYour Bulk capacity increases by 1.\n\n**Ancestry:** Halfling · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-halfling-resilient\n\n[Ancestry choices](halfling.md)\n",
       "source": {
         "path": "design/ancestries/trait-halfling-resilient.md",
-        "sha256": "9110c0f4b94f3070dac70cf9a67db98a378cfe5b48f4849b56b80e181d7bb547"
+        "sha256": "623574d9cce4184a5a6a81224648b59c23266818f1b014d2be7ae2ecd872c016"
       }
     },
     "trait-halfling-small-passage": {
-      "markdown": "# Under Their Noses\n\n*You duck beneath the table and draw your knees behind its legs as the hurried footsteps pass.*\n\n## Rules\n\nYou gain 1 Boon to hiding. When you are adjacent to a standing creature at least one size larger than you, you can attempt to hide behind it, even in combat and with no other cover, as long as it is between you and the observer. The creature can be an ally or an enemy.\n\n**Ancestry:** Halfling · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-halfling-small-passage\n\n[Ancestry choices](halfling.md)\n",
+      "markdown": "# Under Their Noses\n\n*You gain 1 Boon to hiding. When you are adjacent to a standing creature at least one size larger than you, you can attempt to hide behind it, even in combat and with no other cover, as long as it is between you and the observer. The creature can be an ally or an enemy.*\n\n## Rules\n\nYou gain 1 Boon to hiding. When you are adjacent to a standing creature at least one size larger than you, you can attempt to hide behind it, even in combat and with no other cover, as long as it is between you and the observer. The creature can be an ally or an enemy.\n\n**Ancestry:** Halfling · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-halfling-small-passage\n\n[Ancestry choices](halfling.md)\n",
       "source": {
         "path": "design/ancestries/trait-halfling-small-passage.md",
-        "sha256": "541b0c3c64dfd599c7613629945199ba09692f342ca5e09e2e8c74fb4d958b41"
+        "sha256": "4e15b1d9041bc74018fb4b126b151f44f981831c8cfe559dbc73b40d12526221"
       }
     },
     "trait-halfling-stout-heart": {
-      "markdown": "# Bigger on the Inside\n\n*You swallow, glance at the friends beside you and step forward even while your knees shake.*\n\n## Rules\n\nGain 1 Boon to rolls affected by Frightened. Your maximum HP increases by 1. Resolve the Boon and Banes normally.\n\n**Ancestry:** Halfling · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-halfling-stout-heart\n\n[Ancestry choices](halfling.md)\n",
+      "markdown": "# Bigger on the Inside\n\n*Gain 1 Boon to rolls affected by Frightened. Your maximum HP increases by 1. Resolve the Boon and Banes normally.*\n\n## Rules\n\nGain 1 Boon to rolls affected by Frightened. Your maximum HP increases by 1. Resolve the Boon and Banes normally.\n\n**Ancestry:** Halfling · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-halfling-stout-heart\n\n[Ancestry choices](halfling.md)\n",
       "source": {
         "path": "design/ancestries/trait-halfling-stout-heart.md",
-        "sha256": "fea7edc1a3fe8c1c4e7ec026fa6f3285bc5ca943c056ec7fab07c33f83e60d2b"
+        "sha256": "84e45395dbd99dad77ea1c49254a252854a5f42b6171bc8d92673806a3544b2b"
       }
     },
     "trait-high-elf-name-that-opens-doors": {
-      "markdown": "# Measured Strength\n\n*You set your feet, test the weight and lift without a wasted motion.*\n\n## Rules\n\nGain 1 Boon to Brawn rolls to lift, carry, bend or force an object.\n\n**Ancestry:** High Elf · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-high-elf-name-that-opens-doors\n\n[Ancestry choices](high-elf.md)\n",
+      "markdown": "# Measured Strength\n\n*Gain 1 Boon to Brawn rolls to lift, carry, bend or force an object.*\n\n## Rules\n\nGain 1 Boon to Brawn rolls to lift, carry, bend or force an object.\n\n**Ancestry:** High Elf · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-high-elf-name-that-opens-doors\n\n[Ancestry choices](high-elf.md)\n",
       "source": {
         "path": "design/ancestries/trait-high-elf-name-that-opens-doors.md",
-        "sha256": "fd218cb269bd751f6a3221343391b414dd4ec0d97b1c5298b1d0a9a5d73df001"
+        "sha256": "7cf945a070087889e136d079698e31de451220edef42a522c76a5b8f9f7b0d03"
       }
     },
     "trait-high-elf-old-courtesies": {
-      "markdown": "# Still Water\n\n*You let the clamor spend itself before deciding what deserves your attention.*\n\n## Rules\n\nGain 1 Boon to Reason rolls to recognize deception or maintain concentration amid noise, argument or distraction.\n\n**Ancestry:** High Elf · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-high-elf-old-courtesies\n\n[Ancestry choices](high-elf.md)\n",
+      "markdown": "# Still Water\n\n*Gain 1 Boon to Reason rolls to recognize deception or maintain concentration amid noise, argument or distraction.*\n\n## Rules\n\nGain 1 Boon to Reason rolls to recognize deception or maintain concentration amid noise, argument or distraction.\n\n**Ancestry:** High Elf · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-high-elf-old-courtesies\n\n[Ancestry choices](high-elf.md)\n",
       "source": {
         "path": "design/ancestries/trait-high-elf-old-courtesies.md",
-        "sha256": "c048faab0ead05a49d3ca1ec63a4eea1bbf2718fe00af888b8c7bf2e8f2cf718"
+        "sha256": "597e03b761ec85e286806cbf8c15d2311a34de4b274e6d2910e500ddc6f2501f"
       }
     },
     "trait-high-elf-practised-hand": {
-      "markdown": "# The Practised Hand\n\n*You turn the tiny fitting once, then set it exactly where it belongs.*\n\n## Rules\n\nGain 1 Boon to Knowledge rolls for crafting work. You must have suitable tools and take the ordinary time the work requires.\n\n**Ancestry:** High Elf · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-high-elf-practised-hand\n\n[Ancestry choices](high-elf.md)\n",
+      "markdown": "# The Practised Hand\n\n*Gain 1 Boon to Knowledge rolls for crafting work.*\n\n## Rules\n\nGain 1 Boon to Knowledge rolls for crafting work. You must have suitable tools and take the ordinary time the work requires.\n\n**Ancestry:** High Elf · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-high-elf-practised-hand\n\n[Ancestry choices](high-elf.md)\n",
       "source": {
         "path": "design/ancestries/trait-high-elf-practised-hand.md",
-        "sha256": "d03c41b2a45d60c1a9453d834dee5de6a7ded26f8122509d758daf5c6438be6d"
+        "sha256": "1f00525dcd45234ffd0dc19f0221df719092a563850e1574fc9a8ec4bb6c55be"
       }
     },
     "trait-high-elf-starlight-eyes": {
-      "markdown": "# Starlight Eyes\n\n*Under the last light of evening, you can still count the stitches.*\n\n## Rules\n\n[Low-Light Vision](../rules/vision.md) 1.\n\n**Ancestry:** High Elf · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-high-elf-starlight-eyes\n\n[Ancestry choices](high-elf.md)\n",
+      "markdown": "# Starlight Eyes\n\n*Gain Low-Light Vision 1. Ignore the first Bane from dim light.*\n\n## Rules\n\n[Low-Light Vision](../rules/vision.md) 1.\n\n**Ancestry:** High Elf · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-high-elf-starlight-eyes\n\n[Ancestry choices](high-elf.md)\n",
       "source": {
         "path": "design/ancestries/trait-high-elf-starlight-eyes.md",
-        "sha256": "53eeead5f91351d5a5c937933490491189e8bb9814b70e2dbc0ac7018b5dd091"
+        "sha256": "f6f98ca38eaaa9427b601daa9edefeae40de72df023ef9fc6114d255f3a4563e"
       }
     },
     "trait-high-elf-weight-of-centuries": {
-      "markdown": "# The Weight of Centuries\n\n*You close your eyes, and the room returns as it stood a lifetime ago.*\n\n## Rules\n\nOnce per day, before a Knowledge or Reason roll concerning something you personally encountered, gain 2 Boons by recalling that experience. Describe what you remember.\n\n**Ancestry:** High Elf · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-high-elf-weight-of-centuries\n\n[Ancestry choices](high-elf.md)\n",
+      "markdown": "# The Weight of Centuries\n\n*Once per day, before a Knowledge or Reason roll concerning something you personally encountered, gain 2 Boons by recalling that experience. Describe what you remember.*\n\n## Rules\n\nOnce per day, before a Knowledge or Reason roll concerning something you personally encountered, gain 2 Boons by recalling that experience. Describe what you remember.\n\n**Ancestry:** High Elf · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-high-elf-weight-of-centuries\n\n[Ancestry choices](high-elf.md)\n",
       "source": {
         "path": "design/ancestries/trait-high-elf-weight-of-centuries.md",
-        "sha256": "4f15612b17cc4ce5cb8638780d5e5b75d2cc23e1aecb07c2f8b96c7758afaaf7"
+        "sha256": "ffc129cd58daebc153f604783897e3b73ce6a7ce0971026973f069fadb459755"
       }
     },
     "trait-human-far-walker": {
-      "markdown": "# Adaptable\n\n*You watch, try, fail once, and come back with the trick.*\n\n## Rules\n\nYou gain 1 additional DP at each level, including level 0.\n\n**Ancestry:** Human · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-human-far-walker\n\n[Ancestry choices](human.md)\n",
+      "markdown": "# Adaptable\n\n*You gain 1 additional DP at each level, including level 0.*\n\n## Rules\n\nYou gain 1 additional DP at each level, including level 0.\n\n**Ancestry:** Human · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-human-far-walker\n\n[Ancestry choices](human.md)\n",
       "source": {
         "path": "design/ancestries/trait-human-far-walker.md",
-        "sha256": "a6d7f4d72aadb937b70518453eb0ffbd2826450f499bbdc971b14ddc5e361f06"
+        "sha256": "4c98cdb9ad7662e35cf90374ea7f2ab11130eea8af3368a5109440c622c095f5"
       }
     },
     "trait-human-many-homes": {
-      "markdown": "# A Foot in Two Worlds\n\n*You greet a stranger in the words of another home, and by the end of the evening you have learned the shape of their craft.*\n\n## Rules\n\nChoose another ancestry. You learn one language native to that ancestry and gain one trait from that ancestry’s trait list as this trait’s benefit. You keep your Human base HP and Speed.\n\n**Ancestry:** Human · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-human-many-homes\n\n[Ancestry choices](human.md)\n",
+      "markdown": "# A Foot in Two Worlds\n\n*Choose another ancestry. You learn one language native to that ancestry and gain one trait from that ancestry’s trait list as this trait’s benefit. You keep your Human base HP and Speed.*\n\n## Rules\n\nChoose another ancestry. You learn one language native to that ancestry and gain one trait from that ancestry’s trait list as this trait’s benefit. You keep your Human base HP and Speed.\n\n**Ancestry:** Human · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-human-many-homes\n\n[Ancestry choices](human.md)\n",
       "source": {
         "path": "design/ancestries/trait-human-many-homes.md",
-        "sha256": "4473b4537e70fef50914a250e6775a5a9d51fd1d6394eabade7c2f090d7e4b4a"
+        "sha256": "4ff3bb6e2a8b5f68845dafe4fc84865972443f435a21478ac0541867f2438fba"
       }
     },
     "trait-human-practiced-patience": {
-      "markdown": "# The Impossible Streak\n\n*You study the harder route, tighten your grip and begin with the stubborn care of someone determined to finish.*\n\n## Rules\n\nOnce per day, before an ordinary noncombat roll, describe the difficult way you are taking. Gain 3 Boons to that roll.\n\n**Ancestry:** Human · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-human-practiced-patience\n\n[Ancestry choices](human.md)\n",
+      "markdown": "# The Impossible Streak\n\n*Once per day, before an ordinary noncombat roll, describe the difficult way you are taking. Gain 3 Boons to that roll.*\n\n## Rules\n\nOnce per day, before an ordinary noncombat roll, describe the difficult way you are taking. Gain 3 Boons to that roll.\n\n**Ancestry:** Human · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-human-practiced-patience\n\n[Ancestry choices](human.md)\n",
       "source": {
         "path": "design/ancestries/trait-human-practiced-patience.md",
-        "sha256": "059a703c4b2a22759987c60cff7a56e450ef4f5866c048c81ac0768a9540f30e"
+        "sha256": "81660be3514904af635aad04010f80ee29270d78aa53b8df5bbfbca2587e7c35"
       }
     },
     "trait-human-shared-table": {
-      "markdown": "# Ingenuity\n\n*You look at the broken cart, the loose rope and the bent nail, and see a solution.*\n\n## Rules\n\nOnce per scene, you can assemble a temporary tool, implement or weapon from nearby materials. Gain 1 Boon to the next roll you make using it. The tool lasts until the end of the scene.\n\n**Ancestry:** Human · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-human-shared-table\n\n[Ancestry choices](human.md)\n",
+      "markdown": "# Ingenuity\n\n*Once per scene, you can assemble a temporary tool, implement or weapon from nearby materials. Gain 1 Boon to the next roll you make using it. The tool lasts until the end of the scene.*\n\n## Rules\n\nOnce per scene, you can assemble a temporary tool, implement or weapon from nearby materials. Gain 1 Boon to the next roll you make using it. The tool lasts until the end of the scene.\n\n**Ancestry:** Human · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-human-shared-table\n\n[Ancestry choices](human.md)\n",
       "source": {
         "path": "design/ancestries/trait-human-shared-table.md",
-        "sha256": "7f7161c65c23008d831146c8059845865745bd01b458820b4d4754383c2512b8"
+        "sha256": "519f79609cb4d962d4cd165906db1e8571101d58805888ecf0834027e6ecfbe4"
       }
     },
     "trait-human-weathered": {
-      "markdown": "# Never Quite Finished\n\n*You wipe the sweat from your face and lift the load again, remembering the people still waiting for you.*\n\n## Rules\n\nMaximum HP +1. You gain 1 Boon to Fortitude rolls to resist death marks. Describe the ordinary hardship that taught you to keep going.\n\n**Ancestry:** Human · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-human-weathered\n\n[Ancestry choices](human.md)\n",
+      "markdown": "# Never Quite Finished\n\n*Maximum HP +1. You gain 1 Boon to Fortitude rolls to resist death marks. Describe the ordinary hardship that taught you to keep going.*\n\n## Rules\n\nMaximum HP +1. You gain 1 Boon to Fortitude rolls to resist death marks. Describe the ordinary hardship that taught you to keep going.\n\n**Ancestry:** Human · **Choice:** one of your two traits · **Action:** Passive unless the effect says otherwise.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**ID:** trait-human-weathered\n\n[Ancestry choices](human.md)\n",
       "source": {
         "path": "design/ancestries/trait-human-weathered.md",
-        "sha256": "da82be8269f2b059239615ba5d504c644ef03ff8da6a7fcab8991c00415879c1"
+        "sha256": "5ef439933a3f2ef0a63728367aad9a51f516b9cb312de440697f6ef16088b766"
       }
     },
     "trait-oath-bound-bound-by-your-word": {
-      "markdown": "# The Will That Made You\n\n*Something in you remembers that your work is unfinished.*\n\n## Rules\n\nGain 1 Boon to Fortitude rolls when you call upon your oath holder.\n\n**Ancestry:** Oath-Bound · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-oath-bound-bound-by-your-word\n\n[Ancestry choices](oath-bound.md)\n",
+      "markdown": "# The Will That Made You\n\n*Gain 1 Boon to Fortitude rolls when you call upon your oath holder.*\n\n## Rules\n\nGain 1 Boon to Fortitude rolls when you call upon your oath holder.\n\n**Ancestry:** Oath-Bound · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-oath-bound-bound-by-your-word\n\n[Ancestry choices](oath-bound.md)\n",
       "source": {
         "path": "design/ancestries/trait-oath-bound-bound-by-your-word.md",
-        "sha256": "a381004fb2ceb0a90fc6cb08f03960d523e56d26b1198ed44fbd01cb3050d913"
+        "sha256": "b72770b9d28cd4b8445877e688606c889d09c543906615d48437f856178a5c04"
       }
     },
     "trait-oath-bound-neither-here-nor-there": {
-      "markdown": "# A Hand on the Rudder\n\n*For a moment, the world is less bewildering and the next step feels clearer.*\n\n## Rules\n\nGain 1 Boon to Agility rolls when you call upon your oath holder.\n\n**Ancestry:** Oath-Bound · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-oath-bound-neither-here-nor-there\n\n[Ancestry choices](oath-bound.md)\n",
+      "markdown": "# A Hand on the Rudder\n\n*Gain 1 Boon to Agility rolls when you call upon your oath holder.*\n\n## Rules\n\nGain 1 Boon to Agility rolls when you call upon your oath holder.\n\n**Ancestry:** Oath-Bound · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-oath-bound-neither-here-nor-there\n\n[Ancestry choices](oath-bound.md)\n",
       "source": {
         "path": "design/ancestries/trait-oath-bound-neither-here-nor-there.md",
-        "sha256": "04726fc3bc9b364537f93ab1add9cacf3df4270e364c5e3849d7305548866ae2"
+        "sha256": "dcd37edd864ad314e4153cfa7b32311f43ee1882ccc72a38d7bf51ec312afbcc"
       }
     },
     "trait-oath-bound-read-the-oath": {
-      "markdown": "# Borrowed Knowing\n\n*You know the answer before you know where the memory came from.*\n\n## Rules\n\nGain 1 Boon to Knowledge rolls when you call upon your oath holder.\n\n**Ancestry:** Oath-Bound · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-oath-bound-read-the-oath\n\n[Ancestry choices](oath-bound.md)\n",
+      "markdown": "# Borrowed Knowing\n\n*Gain 1 Boon to Knowledge rolls when you call upon your oath holder.*\n\n## Rules\n\nGain 1 Boon to Knowledge rolls when you call upon your oath holder.\n\n**Ancestry:** Oath-Bound · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-oath-bound-read-the-oath\n\n[Ancestry choices](oath-bound.md)\n",
       "source": {
         "path": "design/ancestries/trait-oath-bound-read-the-oath.md",
-        "sha256": "60ded73c71cb0ec4a14c8e788b51de9b9b21c6cd5db367a899f23ccd1d730ee7"
+        "sha256": "1f9e554089671bae60fd151c88e16e91c36729c67566594742de4076761fedbc"
       }
     },
     "trait-oath-bound-the-debt-comes-due": {
-      "markdown": "# The Debt Comes Due\n\n*You ask for another chance, and a little of the life you were given answers.*\n\n## Rules\n\nOnce per day, after an attribute roll, spend 1 [HP](../rules/ancestry-procedures.md) to reroll it and use the new result. That HP cannot be restored until the next dawn.\n\n**Ancestry:** Oath-Bound · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** The spent HP remains unavailable for recovery until the next dawn.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-oath-bound-the-debt-comes-due\n\n[Ancestry choices](oath-bound.md)\n",
+      "markdown": "# The Debt Comes Due\n\n*Once per day, spend 1 HP to reroll an attribute roll and use the new result. Pay only if you can stay above 0 HP. The spent HP is unavailable for healing until the next dawn.*\n\n## Rules\n\nOnce per day, after an attribute roll, spend 1 [HP](../rules/ancestry-procedures.md) to reroll it and use the new result. That HP cannot be restored until the next dawn.\n\n**Ancestry:** Oath-Bound · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** The spent HP remains unavailable for recovery until the next dawn.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-oath-bound-the-debt-comes-due\n\n[Ancestry choices](oath-bound.md)\n",
       "source": {
         "path": "design/ancestries/trait-oath-bound-the-debt-comes-due.md",
-        "sha256": "6fa1da2f7bcd97d009b1fba9ac37114289f3851311b677b521593aa0ab2c78a9"
+        "sha256": "fd974b68387c5745ab7d3544523655d97064f787a9b767f1233d5602c74fd2d5"
       }
     },
     "trait-oath-bound-the-mark": {
-      "markdown": "# The Answering Voice\n\n*You reach toward the presence that made you, and certainty settles into your voice.*\n\n## Rules\n\nGain 1 Boon to Reason rolls when you call upon your oath holder.\n\n**Ancestry:** Oath-Bound · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-oath-bound-the-mark\n\n[Ancestry choices](oath-bound.md)\n",
+      "markdown": "# The Answering Voice\n\n*Gain 1 Boon to Reason rolls when you call upon your oath holder.*\n\n## Rules\n\nGain 1 Boon to Reason rolls when you call upon your oath holder.\n\n**Ancestry:** Oath-Bound · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-oath-bound-the-mark\n\n[Ancestry choices](oath-bound.md)\n",
       "source": {
         "path": "design/ancestries/trait-oath-bound-the-mark.md",
-        "sha256": "7941c4d7e593c6490d6031cf1d29dac1c55e1c3156064c2334f49ab96bf07840"
+        "sha256": "0d6de0f5e3058330302ba6708cd56ff5faa3c1e7a7e4fa8e2d8f095ba5b56f26"
       }
     },
     "trait-tallfolk-a-big-shadow": {
-      "markdown": "# A Big Shadow\n\n*You unfold to your full height, and wait for the room to notice.*\n\n## Rules\n\nGain 1 Boon to Guile rolls to overawe or draw attention through your physical presence.\n\n**Ancestry:** Tallfolk · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-tallfolk-a-big-shadow\n\n[Ancestry choices](tallfolk.md)\n",
+      "markdown": "# A Big Shadow\n\n*Gain 1 Boon to Guile rolls to overawe or draw attention through your physical presence.*\n\n## Rules\n\nGain 1 Boon to Guile rolls to overawe or draw attention through your physical presence.\n\n**Ancestry:** Tallfolk · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-tallfolk-a-big-shadow\n\n[Ancestry choices](tallfolk.md)\n",
       "source": {
         "path": "design/ancestries/trait-tallfolk-a-big-shadow.md",
-        "sha256": "97af64849ad0a5ef930df8d09683899156af6065523780ce745ff21e3fa1efeb"
+        "sha256": "870f71e1d2d01ede95555be5a9ca438a38f0803bc5d159309816fa1a3a471423"
       }
     },
     "trait-tallfolk-broad-back": {
-      "markdown": "# Broad Back\n\n*You settle the awkward load across your shoulders and leave a hand free for the door.*\n\n## Rules\n\nYour Bulk capacity increases by 3.\n\n**Ancestry:** Tallfolk · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-tallfolk-broad-back\n\n[Ancestry choices](tallfolk.md)\n",
+      "markdown": "# Broad Back\n\n*Your Bulk capacity increases by 3.*\n\n## Rules\n\nYour Bulk capacity increases by 3.\n\n**Ancestry:** Tallfolk · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-tallfolk-broad-back\n\n[Ancestry choices](tallfolk.md)\n",
       "source": {
         "path": "design/ancestries/trait-tallfolk-broad-back.md",
-        "sha256": "116a7f9ae04fde4a7e6d19e0baf8136dcacfdaa60f6ca512f7bb77ca1f69d835"
+        "sha256": "da77c49408f1d16cbc65825b0ae52ca699ce5360aec69cd8646eb8547507b6cb"
       }
     },
     "trait-tallfolk-built-for-the-weather": {
-      "markdown": "# Built for the Weather\n\n*You pull your collar closed and keep pace through the driving sleet.*\n\n## Rules\n\nGain 1 Boon to Fortitude rolls against exposure to natural cold, heat or the fatigue of a long march.\n\n**Ancestry:** Tallfolk · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-tallfolk-built-for-the-weather\n\n[Ancestry choices](tallfolk.md)\n",
+      "markdown": "# Built for the Weather\n\n*Gain 1 Boon to Fortitude rolls against exposure to natural cold, heat or the fatigue of a long march.*\n\n## Rules\n\nGain 1 Boon to Fortitude rolls against exposure to natural cold, heat or the fatigue of a long march.\n\n**Ancestry:** Tallfolk · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-tallfolk-built-for-the-weather\n\n[Ancestry choices](tallfolk.md)\n",
       "source": {
         "path": "design/ancestries/trait-tallfolk-built-for-the-weather.md",
-        "sha256": "856e9982f61c2398a21dd8bfde70022262d276b54e590cb792664cdc8ba3cc0f"
+        "sha256": "287ece18638ed80c5574bdf27046945939851a06ba23ba58802ab3857958deef"
       }
     },
     "trait-tallfolk-long-reach": {
-      "markdown": "# Long Reach\n\n*You catch the latch above your companions’ heads without rising onto your toes.*\n\n## Rules\n\nYou can interact with objects and use [non-attack touch abilities](../rules/ancestry-procedures.md) at a range of 2 squares.\n\n**Ancestry:** Tallfolk · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-tallfolk-long-reach\n\n[Ancestry choices](tallfolk.md)\n",
+      "markdown": "# Long Reach\n\n*You can interact with objects and use non-attack touch abilities at a range of 2 squares.*\n\n## Rules\n\nYou can interact with objects and use [non-attack touch abilities](../rules/ancestry-procedures.md) at a range of 2 squares.\n\n**Ancestry:** Tallfolk · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** While its stated circumstances apply; permanent for base statistics.\n\n**Status:** Approved by Bruce on November 3, 2026; ancestry expansion remains in review.\n\n**ID:** trait-tallfolk-long-reach\n\n[Ancestry choices](tallfolk.md)\n",
       "source": {
         "path": "design/ancestries/trait-tallfolk-long-reach.md",
-        "sha256": "6ee9c4d1b1b1252692c325801b091899f9f23ab8e5b69675fa3ca80d800b891a"
+        "sha256": "e47fd184054a74276eb77f76234a05347116aca8a64ce5cd0066766a65f49ce6"
       }
     },
     "trait-tallfolk-you-take-the-blow": {
-      "markdown": "# Long Stride\n\n*You cross the courtyard in a few easy strides while your companions hurry to keep pace.*\n\n## Rules\n\nYour base Speed increases by 1.\n\n**Ancestry:** Tallfolk · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** Permanent.\n\n**Status:** Approved by Bruce on November 3, 2026; replaces the rejected You Take the Blow concept.\n\n**ID:** trait-tallfolk-you-take-the-blow\n\n[Ancestry choices](tallfolk.md)\n",
+      "markdown": "# Long Stride\n\n*Your base Speed increases by 1.*\n\n## Rules\n\nYour base Speed increases by 1.\n\n**Ancestry:** Tallfolk · **Choice:** one of your two traits · **Action:** Passive.\n\n**Duration:** Permanent.\n\n**Status:** Approved by Bruce on November 3, 2026; replaces the rejected You Take the Blow concept.\n\n**ID:** trait-tallfolk-you-take-the-blow\n\n[Ancestry choices](tallfolk.md)\n",
       "source": {
         "path": "design/ancestries/trait-tallfolk-you-take-the-blow.md",
-        "sha256": "1d60c5852bb321ebee7a444b9af23da55f78394c19dd9eaaa0db6f9a87a9fe43"
+        "sha256": "7008ac64463ae774fb3e9a0d95177657cbc40cb913280445b83d4f0a52fb7622"
       }
     },
     "item-folding-launcher": {
-      "markdown": "# A Marvel on Wheels\n\n*You pull the handle and the little frame unfolds. Its shot tears a line through the press before the wheels snap back beneath your hands.*\n\n## Rules\n\n**Action:** Main Action · **Attribute:** Knowledge\n\n**Target / range / shape:** Every creature in one straight line of three visible squares, each within 6 squares.\n\nUnfold the launcher and make a Knowledge line attack.\n\n- **Weak:** 4 physical damage; push 1 square away from you.\n- **Standard:** 5 physical damage; push 2 squares away from you.\n- **Strong:** 7 physical damage; push 3 squares away from you.\n\nThe launcher folds back into your hands after firing.\n\n**Equipment / acquisition:** One reusable folding launcher (Bulk 1), built on learning and supplied if needed.\n\n---\n\n**Tier / minimum level:** 7 · **DP:** 8 · **Requirements to learn:** Craft 3 and Marksmanship 1\n\n**Type:** Skill / Attack / Control\n\n**ID:** a-marvel-on-wheels\n\n[Build this character](../paths/roadside-artificer.md) · [Card conventions](../card-conventions.md)\n",
+      "markdown": "# A Marvel on Wheels\n\n*Roll Knowledge to fire a folding launcher that damages and pushes creatures in a line of three squares.*\n\n## Rules\n\n**Action:** Main Action · **Attribute:** Knowledge\n\n**Target / range / shape:** Every creature in one straight line of three visible squares, each within 6 squares.\n\nUnfold the launcher and make a Knowledge line attack.\n\n- **Weak:** 4 physical damage; push 1 square away from you.\n- **Standard:** 5 physical damage; push 2 squares away from you.\n- **Strong:** 7 physical damage; push 3 squares away from you.\n\nThe launcher folds back into your hands after firing.\n\n**Equipment / acquisition:** One reusable folding launcher (Bulk 1), built on learning and supplied if needed.\n\n---\n\n**Tier / minimum level:** 7 · **DP:** 8 · **Requirements to learn:** Craft 3 and Marksmanship 1\n\n**Type:** Skill / Attack / Control\n\n**ID:** a-marvel-on-wheels\n\n[Build this character](../paths/roadside-artificer.md) · [Card conventions](../card-conventions.md)\n",
       "source": {
         "path": "design/cards/a-marvel-on-wheels.md",
-        "sha256": "7f4d7f71108e26023adfe2d498db6138a7517fd8b78907e0adff0b0b0aa1f2f0"
+        "sha256": "d17e2e5d0402081e6aa2e6b628bfa0fa5ad7c3601c65f51a4879c9aaa885ab8d"
       }
     },
     "item-spring-hook-bracer": {
-      "markdown": "# Spring in the Sleeve\n\n*You level your wrist. A hook snaps from the bracer and catches hard enough to drag your enemy a step closer.*\n\n## Rules\n\n**Action:** Main Action · **Attribute:** Knowledge\n\n**Target / range / shape:** One visible enemy within 3 squares.\n\nMake a Knowledge device attack.\n\n- **Weak:** 2 physical damage.\n- **Standard:** 3 physical damage; pull 1 square toward you.\n- **Strong:** 5 physical damage; pull 2 squares toward you.\n\n**Equipment / acquisition:** One reusable spring-hook bracer (Bulk 1), built on learning and supplied if needed.\n\n---\n\n**Tier / minimum level:** 1 · **DP:** 2 · **Requirements to learn:** Craft 1\n\n**Type:** Skill / Attack\n\n**ID:** spring-in-the-sleeve\n\n[Build this character](../paths/roadside-artificer.md) · [Card conventions](../card-conventions.md)\n",
+      "markdown": "# Spring in the Sleeve\n\n*Choose one visible enemy within 3 squares. Make a Knowledge device attack. On a Standard result, deal 3 physical damage. Pull 1 square toward you.*\n\n## Rules\n\n**Action:** Main Action · **Attribute:** Knowledge\n\n**Target / range / shape:** One visible enemy within 3 squares.\n\nMake a Knowledge device attack.\n\n- **Weak:** 2 physical damage.\n- **Standard:** 3 physical damage; pull 1 square toward you.\n- **Strong:** 5 physical damage; pull 2 squares toward you.\n\n**Equipment / acquisition:** One reusable spring-hook bracer (Bulk 1), built on learning and supplied if needed.\n\n---\n\n**Tier / minimum level:** 1 · **DP:** 2 · **Requirements to learn:** Craft 1\n\n**Type:** Skill / Attack\n\n**ID:** spring-in-the-sleeve\n\n[Build this character](../paths/roadside-artificer.md) · [Card conventions](../card-conventions.md)\n",
       "source": {
         "path": "design/cards/spring-in-the-sleeve.md",
-        "sha256": "cc9ac698bb04221cb3aa72dcb299902ae1a7aacaee193170befce310d105afd2"
+        "sha256": "1da47d8896a54c4dd508ce9ab9d6895ec585ab6ca5121a4a1e30f215ad7be5d3"
       }
     },
     "item-ammunition-bundle": {

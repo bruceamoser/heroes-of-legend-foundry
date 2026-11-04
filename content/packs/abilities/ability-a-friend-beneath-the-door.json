@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/calling.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You open your hand as if offering a secret. A small, bright figure steps from the space between your fingers.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>One visible unoccupied placement within 3 squares that fits the chosen form&#39;s entire footprint.</dd></div><div><dt>Type</dt><dd>Magic / Summoning</dd></div></dl><div class=\"hol-reference-rules\"><p>Choose one Fey entry from the summon selection with a minimum tier of 1 or lower. Call one instance using its summon profile. Choose the form anew each casting. It remains for one scene.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/a-friend-beneath-the-door.md\" target=\"_blank\" rel=\"noopener\">design/cards/a-friend-beneath-the-door.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>Summon a Novice Fey within 3 squares for one scene. Choose its form each time you cast.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>One visible unoccupied placement within 3 squares that fits the chosen form&#39;s entire footprint.</dd></div><div><dt>Type</dt><dd>Magic / Summoning</dd></div></dl><div class=\"hol-reference-rules\"><p>Choose one Fey entry from the summon selection with a minimum tier of 1 or lower. Call one instance using its summon profile. Choose the form anew each casting. It remains for one scene.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/24e545e6d860e8c1b03a21356fd22cae1c039785/design/cards/a-friend-beneath-the-door.md\" target=\"_blank\" rel=\"noopener\">design/cards/a-friend-beneath-the-door.md</a> at <code>24e545e6d860e8c1b03a21356fd22cae1c039785</code>.</p></section>",
     "activity": {
       "action": "main",
       "rollMode": "none",
@@ -30,9 +30,9 @@
       "catalogId": "ability-a-friend-beneath-the-door",
       "source": {
         "path": "design/cards/a-friend-beneath-the-door.md",
-        "sha256": "58c4d5e29dbefffdd4b5b8a7d2a5b0c24430bccad66321add067d94a7a9c704f"
+        "sha256": "add441bc1e3afbedb60c1c6f81a0b8a4923b228256e629f48794fbf160fda2ea"
       },
-      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
+      "sourceCommit": "24e545e6d860e8c1b03a21356fd22cae1c039785",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

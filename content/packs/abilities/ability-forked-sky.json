@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/storm.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>The bolt splits at your fingertips. Each fork finds the next shape you have named, leaving a trail of burning cloth in the rain.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Target / range / shape</dt><dd>Up to three visible enemies within 6 squares.</dd></div><div><dt>Type</dt><dd>Magic / Attack / Control</dd></div></dl><div class=\"hol-reference-rules\"><p>Make a Knowledge spell attack against the chosen targets.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>4 lightning damage.</dd><dt>Standard</dt><dd>4 lightning damage and Burning 1.</dd><dt>Strong</dt><dd>6 lightning damage and Burning 2.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/forked-sky.md\" target=\"_blank\" rel=\"noopener\">design/cards/forked-sky.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>Choose up to three visible enemies within 6 squares. Make a Knowledge spell attack against the chosen targets. On a Standard result, deal 4 lightning damage and Burning 1.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Target / range / shape</dt><dd>Up to three visible enemies within 6 squares.</dd></div><div><dt>Type</dt><dd>Magic / Attack / Control</dd></div></dl><div class=\"hol-reference-rules\"><p>Make a Knowledge spell attack against the chosen targets.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>4 lightning damage.</dd><dt>Standard</dt><dd>4 lightning damage and Burning 1.</dd><dt>Strong</dt><dd>6 lightning damage and Burning 2.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/24e545e6d860e8c1b03a21356fd22cae1c039785/design/cards/forked-sky.md\" target=\"_blank\" rel=\"noopener\">design/cards/forked-sky.md</a> at <code>24e545e6d860e8c1b03a21356fd22cae1c039785</code>.</p></section>",
     "activity": {
       "action": "main",
       "rollMode": "attribute",
@@ -30,9 +30,9 @@
       "catalogId": "ability-forked-sky",
       "source": {
         "path": "design/cards/forked-sky.md",
-        "sha256": "298c75cf7bc86d30f00b2f4a084e88533d01163f27bf1d2bdd21a96bc90a40bb"
+        "sha256": "3cba934bc65622d6a8f19a5172a227ed63796eda7ff8bda9a71a46ba7f496bae"
       },
-      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
+      "sourceCommit": "24e545e6d860e8c1b03a21356fd22cae1c039785",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

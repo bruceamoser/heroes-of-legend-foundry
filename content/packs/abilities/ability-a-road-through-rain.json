@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/storm.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You draw a long line through the choking air. The wind holds it open, and your companions breathe cleanly again.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Up to six connected visible air-filled squares within 4 squares.</dd></div><div><dt>Limits</dt><dd>Maintain one current at a time.</dd></div><div><dt>Type</dt><dd>Magic / Utility / Control</dd></div></dl><div class=\"hol-reference-rules\"><p>Maintain a current of breathable air through the chosen air-filled squares. Ordinary smoke, fog, dust, rain and airborne poison are swept from those squares until the end of your next turn. On later turns, you may spend a Maneuver to sustain the current until the end of your next turn.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/a-road-through-rain.md\" target=\"_blank\" rel=\"noopener\">design/cards/a-road-through-rain.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>Sweep smoke, fog, dust, rain and airborne poison from up to six connected squares. Sustain the clear air with a Maneuver each turn.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Up to six connected visible air-filled squares within 4 squares.</dd></div><div><dt>Limits</dt><dd>Maintain one current at a time.</dd></div><div><dt>Type</dt><dd>Magic / Utility / Control</dd></div></dl><div class=\"hol-reference-rules\"><p>Maintain a current of breathable air through the chosen air-filled squares. Ordinary smoke, fog, dust, rain and airborne poison are swept from those squares until the end of your next turn. On later turns, you may spend a Maneuver to sustain the current until the end of your next turn.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/24e545e6d860e8c1b03a21356fd22cae1c039785/design/cards/a-road-through-rain.md\" target=\"_blank\" rel=\"noopener\">design/cards/a-road-through-rain.md</a> at <code>24e545e6d860e8c1b03a21356fd22cae1c039785</code>.</p></section>",
     "activity": {
       "action": "maneuver",
       "rollMode": "none",
@@ -30,9 +30,9 @@
       "catalogId": "ability-a-road-through-rain",
       "source": {
         "path": "design/cards/a-road-through-rain.md",
-        "sha256": "a842d4ab46f9f31bbd01215a0112543293db3c08b7441ea04085d9476ec762f2"
+        "sha256": "b9c366bfb9018b36cdb1d84916ff56140dc41cb09d7038e0d914b47fc9c2ec91"
       },
-      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
+      "sourceCommit": "24e545e6d860e8c1b03a21356fd22cae1c039785",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

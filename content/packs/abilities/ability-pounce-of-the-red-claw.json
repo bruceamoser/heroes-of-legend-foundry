@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/wilderness.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You gather low and spring. Claws flash where the enemy expected empty air, and your landing carries you past their guard.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Agility</dd></div><div><dt>Target / range / shape</dt><dd>One enemy reachable by a legal move of up to 3 squares.</dd></div><div><dt>Type</dt><dd>Magic / Attack / Movement</dd></div></dl><div class=\"hol-reference-rules\"><p>Move up to 3 squares without provoking, then make an Agility unarmed attack against an adjacent enemy.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>4 physical damage.</dd><dt>Standard</dt><dd>5 physical damage and Prone.</dd><dt>Strong</dt><dd>7 physical damage and Prone; move 1 square without provoking afterward.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/pounce-of-the-red-claw.md\" target=\"_blank\" rel=\"noopener\">design/cards/pounce-of-the-red-claw.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>Choose one enemy reachable by a legal move of up to 3 squares. Move up to 3 squares without provoking, then make an Agility unarmed attack against an adjacent enemy. On a Standard result, deal 5 physical damage and Prone.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Agility</dd></div><div><dt>Target / range / shape</dt><dd>One enemy reachable by a legal move of up to 3 squares.</dd></div><div><dt>Type</dt><dd>Magic / Attack / Movement</dd></div></dl><div class=\"hol-reference-rules\"><p>Move up to 3 squares without provoking, then make an Agility unarmed attack against an adjacent enemy.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>4 physical damage.</dd><dt>Standard</dt><dd>5 physical damage and Prone.</dd><dt>Strong</dt><dd>7 physical damage and Prone; move 1 square without provoking afterward.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/24e545e6d860e8c1b03a21356fd22cae1c039785/design/cards/pounce-of-the-red-claw.md\" target=\"_blank\" rel=\"noopener\">design/cards/pounce-of-the-red-claw.md</a> at <code>24e545e6d860e8c1b03a21356fd22cae1c039785</code>.</p></section>",
     "activity": {
       "action": "main",
       "rollMode": "attribute",
@@ -30,9 +30,9 @@
       "catalogId": "ability-pounce-of-the-red-claw",
       "source": {
         "path": "design/cards/pounce-of-the-red-claw.md",
-        "sha256": "6b0294e3e59babab2644ac720e5f184e08e8d914e457280b4450580dcf7654fa"
+        "sha256": "d1eaed258f4563c8a2cdecb5080cc6f80811546ec84ca707cb3b822d8ba9580f"
       },
-      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
+      "sourceCommit": "24e545e6d860e8c1b03a21356fd22cae1c039785",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

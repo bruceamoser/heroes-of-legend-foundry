@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/wilderness.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You let the branches close around your outline and turn your shoulder behind the thickest root.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self while vegetation supplies cover.</dd></div><div><dt>Type</dt><dd>Skill / Defense</dd></div></dl><div class=\"hol-reference-rules\"><p>While vegetation gives you cover, gain 1 Boon to defenses against attacks dealing physical damage.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/duck-into-the-brush.md\" target=\"_blank\" rel=\"noopener\">design/cards/duck-into-the-brush.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>While vegetation supplies cover, while vegetation gives you cover, gain 1 Boon to defenses against attacks dealing physical damage.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self while vegetation supplies cover.</dd></div><div><dt>Type</dt><dd>Skill / Defense</dd></div></dl><div class=\"hol-reference-rules\"><p>While vegetation gives you cover, gain 1 Boon to defenses against attacks dealing physical damage.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/24e545e6d860e8c1b03a21356fd22cae1c039785/design/cards/duck-into-the-brush.md\" target=\"_blank\" rel=\"noopener\">design/cards/duck-into-the-brush.md</a> at <code>24e545e6d860e8c1b03a21356fd22cae1c039785</code>.</p></section>",
     "activity": {
       "action": "passive",
       "rollMode": "none",
@@ -30,9 +30,9 @@
       "catalogId": "ability-duck-into-the-brush",
       "source": {
         "path": "design/cards/duck-into-the-brush.md",
-        "sha256": "f74f1ba18eea07a61686aa5c741a11d56a097b0c91df4f685b5e97067559b4aa"
+        "sha256": "2d8e976705199b1336737469eaeec72df1b7058717edf9a6bab87693c66b4b8e"
       },
-      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
+      "sourceCommit": "24e545e6d860e8c1b03a21356fd22cae1c039785",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/subterfuge.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You listen through your fingertips, learn the maker&#39;s rhythm, and answer it with a turn of the tool.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Target / range / shape</dt><dd>One adjacent ordinary lock.</dd></div><div><dt>Equipment / acquisition</dt><dd>Lock tools (Bulk 1), supplied on learning if needed.</dd></div><div><dt>Type</dt><dd>Skill / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>Make a Reason roll toward opening the lock. Learn whether it shows damage or tampering.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>2 opening progress.</dd><dt>Standard</dt><dd>3 opening progress.</dd><dt>Strong</dt><dd>4 opening progress.</dd></dl><p>Once you open it this way, you may relock it with your tools in a Maneuver.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/a-lock-has-a-language.md\" target=\"_blank\" rel=\"noopener\">design/cards/a-lock-has-a-language.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>Roll Reason to open an ordinary lock and learn whether it was damaged or tampered with. You can relock it with a Maneuver.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Target / range / shape</dt><dd>One adjacent ordinary lock.</dd></div><div><dt>Equipment / acquisition</dt><dd>Lock tools (Bulk 1), supplied on learning if needed.</dd></div><div><dt>Type</dt><dd>Skill / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>Make a Reason roll toward opening the lock. Learn whether it shows damage or tampering.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>2 opening progress.</dd><dt>Standard</dt><dd>3 opening progress.</dd><dt>Strong</dt><dd>4 opening progress.</dd></dl><p>Once you open it this way, you may relock it with your tools in a Maneuver.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/24e545e6d860e8c1b03a21356fd22cae1c039785/design/cards/a-lock-has-a-language.md\" target=\"_blank\" rel=\"noopener\">design/cards/a-lock-has-a-language.md</a> at <code>24e545e6d860e8c1b03a21356fd22cae1c039785</code>.</p></section>",
     "activity": {
       "action": "main",
       "rollMode": "attribute",
@@ -30,9 +30,9 @@
       "catalogId": "ability-a-lock-has-a-language",
       "source": {
         "path": "design/cards/a-lock-has-a-language.md",
-        "sha256": "e5481b8475d9f1ee291cf5eab407116db151c929dd5c7a599927b90d3216d89f"
+        "sha256": "8161eac0f4e16932f459bb52e9742bd27e75efde76c52c50a54ce15f64906192"
       },
-      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
+      "sourceCommit": "24e545e6d860e8c1b03a21356fd22cae1c039785",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

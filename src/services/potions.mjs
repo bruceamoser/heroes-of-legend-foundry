@@ -1,3 +1,4 @@
+import { choiceSourceMatches } from "../rules/choice-source.mjs";
 import { createActionMessage, shouldProcessRequest } from "./authority.mjs";
 import { ensureAuthorityReady } from "./authority.mjs";
 import {
@@ -106,6 +107,11 @@ function recognizedPotionSource(sourceItem) {
   if (isPotionAbility(sourceItem)) return { kind: "ability" };
   if (isHealingPotionItem(sourceItem)) return { kind: "equipment" };
   throw new Error("Choose the reviewed Use a Healing Potion action or bottle.");
+}
+
+function ownedPotionActionMatches(actual, current) {
+  return choiceSourceMatches(actual, current) &&
+    potionSourceMatches({ ...actual, sha256: current.sha256 }, current);
 }
 
 function recognizedPotionItem(item, catalog) {
@@ -417,7 +423,7 @@ export async function previewPotionUse({
       );
     if (
       sourceItem.type === "ability" &&
-      !potionSourceMatches(
+      !ownedPotionActionMatches(
         sourceItem.getFlag(ID, "source") ?? null,
         action?.source ?? {},
       )
@@ -736,7 +742,7 @@ function operationSourceSnapshots(sourceItem, bottle, catalog) {
     );
   if (
     sourceItem.type === "ability" &&
-    !potionSourceMatches(
+    !ownedPotionActionMatches(
       sourceItem.getFlag(ID, "source") ?? null,
       action?.source ?? {},
     )

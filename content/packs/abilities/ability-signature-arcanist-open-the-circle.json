@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/scholarship.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You sweep a ring of light around your companions, its edge rising like a thin glass wall when magic strikes.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self and willing allies within 2 squares when used.</dd></div><div><dt>Duration</dt><dd>Until the start of your next turn.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Reapplying replaces your previous ward.</dd></div><div><dt>Type</dt><dd>Signature</dd></div></dl><div class=\"hol-reference-rules\"><p>Each recipient gains 1 Boon to defenses against spells until the start of your next turn. During that time, each recipient gains Stability 2.</p></div><h3>Additional rulings</h3><p><strong>Tags:</strong> Magic / Defense</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/signature-arcanist-open-the-circle.md\" target=\"_blank\" rel=\"noopener\">design/cards/signature-arcanist-open-the-circle.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>Self and willing allies within 2 squares when used. Each recipient gains 1 Boon to defenses against spells until the start of your next turn. During that time, each recipient gains Stability 2.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self and willing allies within 2 squares when used.</dd></div><div><dt>Duration</dt><dd>Until the start of your next turn.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Reapplying replaces your previous ward.</dd></div><div><dt>Type</dt><dd>Signature</dd></div></dl><div class=\"hol-reference-rules\"><p>Each recipient gains 1 Boon to defenses against spells until the start of your next turn. During that time, each recipient gains Stability 2.</p></div><h3>Additional rulings</h3><p><strong>Tags:</strong> Magic / Defense</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/24e545e6d860e8c1b03a21356fd22cae1c039785/design/cards/signature-arcanist-open-the-circle.md\" target=\"_blank\" rel=\"noopener\">design/cards/signature-arcanist-open-the-circle.md</a> at <code>24e545e6d860e8c1b03a21356fd22cae1c039785</code>.</p></section>",
     "activity": {
       "action": "maneuver",
       "rollMode": "none",
@@ -30,9 +30,9 @@
       "catalogId": "ability-signature-arcanist-open-the-circle",
       "source": {
         "path": "design/cards/signature-arcanist-open-the-circle.md",
-        "sha256": "68eb3dfd6e9002fbfacae9d4ac3cb9a3dc210080b894a7e5b54c4f1299b7a40c"
+        "sha256": "d3d9c77ed5ff3eecfd5817340265879a151d0a4115bfdd04e98e62824207af40"
       },
-      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
+      "sourceCommit": "24e545e6d860e8c1b03a21356fd22cae1c039785",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

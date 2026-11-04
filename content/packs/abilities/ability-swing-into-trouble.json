@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/athletics.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You kick away from the ledge and let the rope take you. Your boots arrive at the landing ahead of the rest of you.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>Agility</dd></div><div><dt>Target / range / shape</dt><dd>A secured rope or hanging fixture and a visible free supported landing within 4 squares.</dd></div><div><dt>Type</dt><dd>Skill / Movement / Control</dd></div></dl><div class=\"hol-reference-rules\"><p>Make an Agility roll and swing from the secured support.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>Move up to 2 squares.</dd><dt>Standard</dt><dd>Move up to 3 squares; push one enemy adjacent to the landing 1 square away from you.</dd><dt>Strong</dt><dd>Move up to 4 squares; push that enemy 2 squares away from you and apply Prone.</dd></dl><p>End at a free supported landing within the rolled distance or remain hanging at a reachable hold.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/swing-into-trouble.md\" target=\"_blank\" rel=\"noopener\">design/cards/swing-into-trouble.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>Choose a secured rope or hanging fixture and a visible free supported landing within 4 squares. Make an Agility roll and swing from the secured support. On a Standard result, move up to 3 squares. Push one enemy adjacent to the landing 1 square away from you.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>Agility</dd></div><div><dt>Target / range / shape</dt><dd>A secured rope or hanging fixture and a visible free supported landing within 4 squares.</dd></div><div><dt>Type</dt><dd>Skill / Movement / Control</dd></div></dl><div class=\"hol-reference-rules\"><p>Make an Agility roll and swing from the secured support.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>Move up to 2 squares.</dd><dt>Standard</dt><dd>Move up to 3 squares; push one enemy adjacent to the landing 1 square away from you.</dd><dt>Strong</dt><dd>Move up to 4 squares; push that enemy 2 squares away from you and apply Prone.</dd></dl><p>End at a free supported landing within the rolled distance or remain hanging at a reachable hold.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/24e545e6d860e8c1b03a21356fd22cae1c039785/design/cards/swing-into-trouble.md\" target=\"_blank\" rel=\"noopener\">design/cards/swing-into-trouble.md</a> at <code>24e545e6d860e8c1b03a21356fd22cae1c039785</code>.</p></section>",
     "activity": {
       "action": "maneuver",
       "rollMode": "attribute",
@@ -30,9 +30,9 @@
       "catalogId": "ability-swing-into-trouble",
       "source": {
         "path": "design/cards/swing-into-trouble.md",
-        "sha256": "29e3771b5770d548d86d864898ceac1a6eb72531c155997fd08553b6250e61d2"
+        "sha256": "121fb9653366f5d45a2bbef3b0523743755eed5ac6ff99a94856f2ec748b32c6"
       },
-      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
+      "sourceCommit": "24e545e6d860e8c1b03a21356fd22cae1c039785",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

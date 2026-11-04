@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/medicine.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You recognize the tremor and guide your companion through the next breath, working to slow what is spreading through them.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Target / range / shape</dt><dd>Self or one adjacent willing creature.</dd></div><div><dt>Type</dt><dd>Skill / Recovery</dd></div></dl><div class=\"hol-reference-rules\"><p>Make a Knowledge roll.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>Reduce temporary Poisoned by 1.</dd><dt>Standard</dt><dd>Reduce temporary Poisoned by 2.</dd><dt>Strong</dt><dd>Reduce temporary Poisoned by 3.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/relieve-poison.md\" target=\"_blank\" rel=\"noopener\">design/cards/relieve-poison.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>Self or one adjacent willing creature. Make a Knowledge roll. Weak — Reduce temporary Poisoned by 1. Standard — Reduce temporary Poisoned by 2. Strong — Reduce temporary Poisoned by 3.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Target / range / shape</dt><dd>Self or one adjacent willing creature.</dd></div><div><dt>Type</dt><dd>Skill / Recovery</dd></div></dl><div class=\"hol-reference-rules\"><p>Make a Knowledge roll.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>Reduce temporary Poisoned by 1.</dd><dt>Standard</dt><dd>Reduce temporary Poisoned by 2.</dd><dt>Strong</dt><dd>Reduce temporary Poisoned by 3.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/24e545e6d860e8c1b03a21356fd22cae1c039785/design/cards/relieve-poison.md\" target=\"_blank\" rel=\"noopener\">design/cards/relieve-poison.md</a> at <code>24e545e6d860e8c1b03a21356fd22cae1c039785</code>.</p></section>",
     "activity": {
       "action": "main",
       "rollMode": "attribute",
@@ -30,9 +30,9 @@
       "catalogId": "ability-relieve-poison",
       "source": {
         "path": "design/cards/relieve-poison.md",
-        "sha256": "a2e0751817d1cdf3ad19cb8cb32a3ca7959f0b7538c491e7c80e949fd3340508"
+        "sha256": "b02ce7ace0b46c250a7101dad17abba13684b7e3d89844c73033d21625f14095"
       },
-      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
+      "sourceCommit": "24e545e6d860e8c1b03a21356fd22cae1c039785",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/subterfuge.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You find the sentence that undoes them, and say it quietly.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div><div><dt>Target / range / shape</dt><dd>One creature within 10 squares that can see or hear you.</dd></div><div><dt>Duration</dt><dd>Conditions use their normal decay.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Once per scene.</dd></div><div><dt>Type</dt><dd>Signature</dd></div></dl><div class=\"hol-reference-rules\"><p>Make a Guile roll against the target. The jab can be a spoken barb, a gesture, or a look. Weak: the target has Dazed 1. Standard: the target has Dazed 1 and Frightened 1. Strong: the target has Dazed 2 and Frightened 1, and it cannot take Reactions until the end of its next turn.</p></div><h3>Additional rulings</h3><p><strong>Tags:</strong> Skill / Social / Control</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/signature-shadow-leave-no-pursuit.md\" target=\"_blank\" rel=\"noopener\">design/cards/signature-shadow-leave-no-pursuit.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>Choose one creature within 10 squares that can see or hear you. Make a Guile roll against the target. The jab can be a spoken barb, a gesture, or a look. On a Standard result, the target has Dazed 1 and Frightened 1.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div><div><dt>Target / range / shape</dt><dd>One creature within 10 squares that can see or hear you.</dd></div><div><dt>Duration</dt><dd>Conditions use their normal decay.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Once per scene.</dd></div><div><dt>Type</dt><dd>Signature</dd></div></dl><div class=\"hol-reference-rules\"><p>Make a Guile roll against the target. The jab can be a spoken barb, a gesture, or a look. Weak: the target has Dazed 1. Standard: the target has Dazed 1 and Frightened 1. Strong: the target has Dazed 2 and Frightened 1, and it cannot take Reactions until the end of its next turn.</p></div><h3>Additional rulings</h3><p><strong>Tags:</strong> Skill / Social / Control</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/24e545e6d860e8c1b03a21356fd22cae1c039785/design/cards/signature-shadow-leave-no-pursuit.md\" target=\"_blank\" rel=\"noopener\">design/cards/signature-shadow-leave-no-pursuit.md</a> at <code>24e545e6d860e8c1b03a21356fd22cae1c039785</code>.</p></section>",
     "activity": {
       "action": "maneuver",
       "rollMode": "attribute",
@@ -30,9 +30,9 @@
       "catalogId": "ability-signature-shadow-leave-no-pursuit",
       "source": {
         "path": "design/cards/signature-shadow-leave-no-pursuit.md",
-        "sha256": "0fd9732816f1730ab46e978dea73d7e2cd0caa26ceb3a17b6a4bc89c1cfc54e9"
+        "sha256": "033e4e85f9d1badfc2eb21953b55955cb7686c3cba0912ecbbb0bbc9ddb8d6e5"
       },
-      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
+      "sourceCommit": "24e545e6d860e8c1b03a21356fd22cae1c039785",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

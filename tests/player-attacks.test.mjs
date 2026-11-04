@@ -27,7 +27,7 @@ test("Basic Melee adapter pins the reviewed card and fixed 2/3/5 mapping", () =>
   assert.deepEqual(definition.source, {
     path: "design/cards/basic-melee.md",
     sha256:
-      "9d6e0b6ca75363b94c6886fb3c53087f854098f024aac232395c61fdc438ae40",
+      "431b52687b1a0e874720b1c8b814cd3c632e55751c4d5133f0c9ac2bc4dba409",
   });
   assert.equal(definition.category, "main");
   assert.equal(definition.attribute, "brawn");
@@ -644,7 +644,7 @@ test("durable Basic Melee identity reads the frozen nested target", async () => 
     }),
     source = {
       path: "design/cards/basic-melee.md",
-      sha256: "9d6e0b6ca75363b94c6886fb3c53087f854098f024aac232395c61fdc438ae40",
+      sha256: "431b52687b1a0e874720b1c8b814cd3c632e55751c4d5133f0c9ac2bc4dba409",
     },
     weapon = {
       uuid: "Scene.scene-1.Token.attacker.Actor.actor-1.Item.weapon-1",

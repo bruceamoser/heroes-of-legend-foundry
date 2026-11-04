@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/scholarship.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You crouch beside the overturned cup. A clean crescent in the dust tells you where the missing chair stood.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Time</dt><dd>Ten minutes.</dd></div><div><dt>Target / range / shape</dt><dd>One accessible scene or evidence-bearing object.</dd></div><div><dt>Type</dt><dd>Skill / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>Choose a question about what happened here and make a Reason roll. The DA answers from the surviving evidence.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>Learn one relevant detail and what it supports.</dd><dt>Standard</dt><dd>Also learn which part of that account remains uncertain and where you could investigate it.</dd><dt>Strong</dt><dd>Also learn whether a specific explanation you propose fits all the evidence examined.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/read-the-remains.md\" target=\"_blank\" rel=\"noopener\">design/cards/read-the-remains.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>Choose one accessible scene or evidence-bearing object. Choose a question about what happened here and make a Reason roll. The DA answers from the surviving evidence. On a Standard result, also learn which part of that account remains uncertain and where you could investigate it.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Time</dt><dd>Ten minutes.</dd></div><div><dt>Target / range / shape</dt><dd>One accessible scene or evidence-bearing object.</dd></div><div><dt>Type</dt><dd>Skill / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>Choose a question about what happened here and make a Reason roll. The DA answers from the surviving evidence.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>Learn one relevant detail and what it supports.</dd><dt>Standard</dt><dd>Also learn which part of that account remains uncertain and where you could investigate it.</dd><dt>Strong</dt><dd>Also learn whether a specific explanation you propose fits all the evidence examined.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/24e545e6d860e8c1b03a21356fd22cae1c039785/design/cards/read-the-remains.md\" target=\"_blank\" rel=\"noopener\">design/cards/read-the-remains.md</a> at <code>24e545e6d860e8c1b03a21356fd22cae1c039785</code>.</p></section>",
     "activity": {
       "action": "main",
       "rollMode": "attribute",
@@ -30,9 +30,9 @@
       "catalogId": "ability-read-the-remains",
       "source": {
         "path": "design/cards/read-the-remains.md",
-        "sha256": "46dc73e30017b4f84671a3979522e76b718b12cf9f69a13cf85c53abb2040a7d"
+        "sha256": "24a65ff59d1be2321283b5cca6ede2e6ea124fe5b89ac0e760dd4f8e0dbe8464"
       },
-      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
+      "sourceCommit": "24e545e6d860e8c1b03a21356fd22cae1c039785",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

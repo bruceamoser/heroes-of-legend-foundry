@@ -128,10 +128,17 @@ rules automatically; committed world Actors retain live resources and local edit
 
 ## November 3 decision-conformance corrections: v16.8.0 (#263)
 
-Current immutable book pin: **c5c84c0da3a5bd54b2553426408d1ea581fe22b9**,
+Book pin for these corrections: **c5c84c0da3a5bd54b2553426408d1ea581fe22b9**,
 merged source PR1302. It restores the approved Blow the Horn limit and corrects
 language teaching, all six authored examples, class/path summaries and missing
 printed vision rules. Existing Out of Body Manifest barrier/fallback wording was
 separately confirmed by Bruce. Source synchronization is distinct from independent
 rendered-text, outcome-association and actual runtime verification; see
 [conformance gates](research/decision-conformance-gates.md).
+
+## November 4 choice descriptions (#267)
+
+Current immutable book pin: **24e545e6d860e8c1b03a21356fd22cae1c039785**
+(book PR #1304). The 427 abilities, including 90 signatures, and 50 ancestry
+traits use the approved player-facing descriptions. The Rules sections and
+choice identities are identical to the previous pin.

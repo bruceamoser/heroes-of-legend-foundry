@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/storm.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You run up the wall as if the air were steps, skim the river&#39;s face, and land with the thunder still behind your heels.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self along a wall or across water to supported ground.</dd></div><div><dt>Type</dt><dd>Magic / Movement</dd></div></dl><div class=\"hol-reference-rules\"><p>Run up to 4 squares along solid vertical surfaces or across water, ending in a visible free supported ground square. This movement does not provoke.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/walk-the-thunder.md\" target=\"_blank\" rel=\"noopener\">design/cards/walk-the-thunder.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>Self along a wall or across water to supported ground. Run up to 4 squares along solid vertical surfaces or across water, ending in a visible free supported ground square. This movement does not provoke.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self along a wall or across water to supported ground.</dd></div><div><dt>Type</dt><dd>Magic / Movement</dd></div></dl><div class=\"hol-reference-rules\"><p>Run up to 4 squares along solid vertical surfaces or across water, ending in a visible free supported ground square. This movement does not provoke.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/24e545e6d860e8c1b03a21356fd22cae1c039785/design/cards/walk-the-thunder.md\" target=\"_blank\" rel=\"noopener\">design/cards/walk-the-thunder.md</a> at <code>24e545e6d860e8c1b03a21356fd22cae1c039785</code>.</p></section>",
     "activity": {
       "action": "maneuver",
       "rollMode": "none",
@@ -30,9 +30,9 @@
       "catalogId": "ability-walk-the-thunder",
       "source": {
         "path": "design/cards/walk-the-thunder.md",
-        "sha256": "be76eb6beae682ce44b1e1852c8d2a9a900e2f2f854e01965ddc9f18403c6556"
+        "sha256": "f1f4cdde37f3de5afa79ef71882a1b7e9a763bd3e765fbb8144a7730193580d0"
       },
-      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
+      "sourceCommit": "24e545e6d860e8c1b03a21356fd22cae1c039785",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

@@ -8,7 +8,7 @@ import { handLayout } from "./hands.mjs";
 import { receiveHealing, validateSurvival } from "./survival.mjs";
 import { inventoryCheck } from "./inventory.mjs";
 
-const SOURCE_COMMIT = "c5c84c0da3a5bd54b2553426408d1ea581fe22b9";
+const SOURCE_COMMIT = "24e545e6d860e8c1b03a21356fd22cae1c039785";
 const ACTION = Object.freeze({
   id: "use-a-healing-potion",
   catalogId: "ability-use-a-healing-potion",
@@ -17,7 +17,7 @@ const ACTION = Object.freeze({
     repository: "bruceamoser/heroes-of-legend",
     commit: SOURCE_COMMIT,
     path: "design/cards/use-a-healing-potion.md",
-    sha256: "210f6e2c84a51dd31f6b44a534f602e703b137eec38cef08697a63d1fdec82ea",
+    sha256: "b6d2a008edf658fa5ab0cb06dd591e47973106d3ca65348613cc2110c3321a44",
   }),
 });
 

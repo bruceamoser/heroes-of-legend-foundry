@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/scholarship.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You tilt an invisible mirror. Your casting hand appears at the new angle, steadying the spell as you release it.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>One visible unoccupied square within 6 squares with an unobstructed path from you.</dd></div><div><dt>Type</dt><dd>Magic / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>Place a casting point in the chosen square. Your next Main Action spell this turn may use that point for its attack path, cover and area origin, and gains 1 Boon to its attribute roll. Measure cast range from your own position. The point ends after that spell or at the end of your turn.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/cast-through-the-reflection.md\" target=\"_blank\" rel=\"noopener\">design/cards/cast-through-the-reflection.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>Carry one adjacent willing creature or a creature at 0 HP at half your Speed, keeping it beside you.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>One visible unoccupied square within 6 squares with an unobstructed path from you.</dd></div><div><dt>Type</dt><dd>Magic / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>Place a casting point in the chosen square. Your next Main Action spell this turn may use that point for its attack path, cover and area origin, and gains 1 Boon to its attribute roll. Measure cast range from your own position. The point ends after that spell or at the end of your turn.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/24e545e6d860e8c1b03a21356fd22cae1c039785/design/cards/cast-through-the-reflection.md\" target=\"_blank\" rel=\"noopener\">design/cards/cast-through-the-reflection.md</a> at <code>24e545e6d860e8c1b03a21356fd22cae1c039785</code>.</p></section>",
     "activity": {
       "action": "maneuver",
       "rollMode": "none",
@@ -30,9 +30,9 @@
       "catalogId": "ability-cast-through-the-reflection",
       "source": {
         "path": "design/cards/cast-through-the-reflection.md",
-        "sha256": "018836d0a42465559359b8305395043ddf910d24649699b3a1309a6986d89943"
+        "sha256": "fec71a6aa37751c481f6befdaad1ebf282363cbcdc1034fd95f0df207cf91d0c"
       },
-      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
+      "sourceCommit": "24e545e6d860e8c1b03a21356fd22cae1c039785",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

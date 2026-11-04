@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/life.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You speak the dismissal softly. The pale thread that leaves your hand strikes with the weight of a door closing.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Target / range / shape</dt><dd>One visible enemy within 4 squares.</dd></div><div><dt>Type</dt><dd>Magic / Attack / Control</dd></div></dl><div class=\"hol-reference-rules\"><p>Make a Reason spell attack.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>3 Life damage.</dd><dt>Standard</dt><dd>4 Life damage.</dd><dt>Strong</dt><dd>6 Life damage.</dd></dl><p>Against a creature harmed by healing, also push it 1/2/3 squares on Weak/Standard/Strong.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/rest-for-the-restless.md\" target=\"_blank\" rel=\"noopener\">design/cards/rest-for-the-restless.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>Choose one visible enemy within 4 squares. Make a Reason spell attack. On a Standard result, deal 4 Life damage.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Target / range / shape</dt><dd>One visible enemy within 4 squares.</dd></div><div><dt>Type</dt><dd>Magic / Attack / Control</dd></div></dl><div class=\"hol-reference-rules\"><p>Make a Reason spell attack.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>3 Life damage.</dd><dt>Standard</dt><dd>4 Life damage.</dd><dt>Strong</dt><dd>6 Life damage.</dd></dl><p>Against a creature harmed by healing, also push it 1/2/3 squares on Weak/Standard/Strong.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/24e545e6d860e8c1b03a21356fd22cae1c039785/design/cards/rest-for-the-restless.md\" target=\"_blank\" rel=\"noopener\">design/cards/rest-for-the-restless.md</a> at <code>24e545e6d860e8c1b03a21356fd22cae1c039785</code>.</p></section>",
     "activity": {
       "action": "main",
       "rollMode": "attribute",
@@ -30,9 +30,9 @@
       "catalogId": "ability-rest-for-the-restless",
       "source": {
         "path": "design/cards/rest-for-the-restless.md",
-        "sha256": "388b3a9d030a993a53e156de2aaaf9b6298ee635df97ec8ff9c28ee44ecf3f47"
+        "sha256": "39a06dd3b2124311b9e98e0efd374e4c967fa7f741dde77eb63a8721f07e4560"
       },
-      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
+      "sourceCommit": "24e545e6d860e8c1b03a21356fd22cae1c039785",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

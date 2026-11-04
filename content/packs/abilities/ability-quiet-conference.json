@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/mind.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You draw a small circle. The others&#39; words arrive as if you were all around the same quiet table, even after the company spreads out.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self and up to three visible willing allies within 3 squares.</dd></div><div><dt>Limits</dt><dd>One conference at a time.</dd></div><div><dt>Type</dt><dd>Magic / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>Link the participants for silent conversation for ten minutes. Each can send short spoken-length messages to the group without an action, in languages the listeners understand. A participant beyond 10 squares from you leaves the link until it returns.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/quiet-conference.md\" target=\"_blank\" rel=\"noopener\">design/cards/quiet-conference.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>Self and up to three visible willing allies within 3 squares. Link the participants for silent conversation for ten minutes. Each can send short spoken-length messages to the group without an action, in languages the listeners understand. A participant beyond 10 squares from you leaves the link until it returns.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self and up to three visible willing allies within 3 squares.</dd></div><div><dt>Limits</dt><dd>One conference at a time.</dd></div><div><dt>Type</dt><dd>Magic / Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>Link the participants for silent conversation for ten minutes. Each can send short spoken-length messages to the group without an action, in languages the listeners understand. A participant beyond 10 squares from you leaves the link until it returns.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/24e545e6d860e8c1b03a21356fd22cae1c039785/design/cards/quiet-conference.md\" target=\"_blank\" rel=\"noopener\">design/cards/quiet-conference.md</a> at <code>24e545e6d860e8c1b03a21356fd22cae1c039785</code>.</p></section>",
     "activity": {
       "action": "maneuver",
       "rollMode": "none",
@@ -30,9 +30,9 @@
       "catalogId": "ability-quiet-conference",
       "source": {
         "path": "design/cards/quiet-conference.md",
-        "sha256": "189daddd41d9ca516c61ea89c9892538f35b57bbd6cd7248c4123d9dc3a50d4f"
+        "sha256": "7ae70673e1b072250a6a954be902b3a512ad78e19f97a229682c210a6d684343"
       },
-      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
+      "sourceCommit": "24e545e6d860e8c1b03a21356fd22cae1c039785",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

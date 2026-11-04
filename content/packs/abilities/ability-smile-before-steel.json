@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/arms.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You glance over their shoulder as though a friend has arrived. Your blade comes from the other side, and you are already stepping past the reply.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div><div><dt>Target / range / shape</dt><dd>One adjacent creature.</dd></div><div><dt>Equipment / acquisition</dt><dd>Use an ordinary melee weapon (Bulk 1), supplied on learning if needed.</dd></div><div><dt>Type</dt><dd>Skill / Attack</dd></div></dl><div class=\"hol-reference-rules\"><p>Make a Guile melee attack.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>3 physical damage.</dd><dt>Standard</dt><dd>4 physical damage, then move up to 1 square without provoking.</dd><dt>Strong</dt><dd>6 physical damage, then move up to 2 squares without provoking.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/smile-before-steel.md\" target=\"_blank\" rel=\"noopener\">design/cards/smile-before-steel.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>Choose one adjacent creature. Make a Guile melee attack. On a Standard result, deal 4 physical damage, then move up to 1 square without provoking.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div><div><dt>Target / range / shape</dt><dd>One adjacent creature.</dd></div><div><dt>Equipment / acquisition</dt><dd>Use an ordinary melee weapon (Bulk 1), supplied on learning if needed.</dd></div><div><dt>Type</dt><dd>Skill / Attack</dd></div></dl><div class=\"hol-reference-rules\"><p>Make a Guile melee attack.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>3 physical damage.</dd><dt>Standard</dt><dd>4 physical damage, then move up to 1 square without provoking.</dd><dt>Strong</dt><dd>6 physical damage, then move up to 2 squares without provoking.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/24e545e6d860e8c1b03a21356fd22cae1c039785/design/cards/smile-before-steel.md\" target=\"_blank\" rel=\"noopener\">design/cards/smile-before-steel.md</a> at <code>24e545e6d860e8c1b03a21356fd22cae1c039785</code>.</p></section>",
     "activity": {
       "action": "main",
       "rollMode": "attribute",
@@ -30,9 +30,9 @@
       "catalogId": "ability-smile-before-steel",
       "source": {
         "path": "design/cards/smile-before-steel.md",
-        "sha256": "2e7bccf5de29994bc2b2e3c11625cf2bb3d41d637595f68dbec0d2d5a489f2d4"
+        "sha256": "df16340afdf64d7a4019a0553167da32a43bc3a1a18fc883fcf0b45261226b1a"
       },
-      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
+      "sourceCommit": "24e545e6d860e8c1b03a21356fd22cae1c039785",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

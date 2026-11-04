@@ -6,7 +6,7 @@
   "img": "icons/creatures/magical/spirit-poison-smoke-green.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You dreamed that every person in the world spoke at once. A being of light touched your forehead. When you woke, you understood every spoken language.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self.</dd></div><div><dt>Duration</dt><dd>Permanent.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Purchase once.</dd></div><div><dt>Type</dt><dd>Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>You understand every spoken language you hear. Your own speech and literacy remain the languages you have learned.</p></div><h3>Additional rulings</h3><p><strong>Tags:</strong> Universal / Skill / Language / Passive</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/touched-by-the-divine.md\" target=\"_blank\" rel=\"noopener\">design/cards/touched-by-the-divine.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You understand every spoken language you hear. Your own speech and literacy remain the languages you have learned.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self.</dd></div><div><dt>Duration</dt><dd>Permanent.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Limits</dt><dd>Purchase once.</dd></div><div><dt>Type</dt><dd>Utility</dd></div></dl><div class=\"hol-reference-rules\"><p>You understand every spoken language you hear. Your own speech and literacy remain the languages you have learned.</p></div><h3>Additional rulings</h3><p><strong>Tags:</strong> Universal / Skill / Language / Passive</p><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/24e545e6d860e8c1b03a21356fd22cae1c039785/design/cards/touched-by-the-divine.md\" target=\"_blank\" rel=\"noopener\">design/cards/touched-by-the-divine.md</a> at <code>24e545e6d860e8c1b03a21356fd22cae1c039785</code>.</p></section>",
     "activity": {
       "action": "passive",
       "rollMode": "none",
@@ -30,9 +30,9 @@
       "catalogId": "ability-touched-by-the-divine",
       "source": {
         "path": "design/cards/touched-by-the-divine.md",
-        "sha256": "af0694fe8aa37a9dbfbd1e340741cef6c944a35a598278aac235c03967c7d19a"
+        "sha256": "314a1ec124fc859cb7ba38007ebba4b005352be4c08992e65a827f12aa61368c"
       },
-      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
+      "sourceCommit": "24e545e6d860e8c1b03a21356fd22cae1c039785",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

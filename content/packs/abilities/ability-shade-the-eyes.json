@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/radiance.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You cast a cool golden shade across your companion&#39;s face, and the merciless glare softens beneath your hand.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self or one visible willing ally within 3 squares before one event deals radiant damage.</dd></div><div><dt>Type</dt><dd>Magic / Defense / Recovery</dd></div></dl><div class=\"hol-reference-rules\"><p>Grant radiant resistance 3 against the triggering event. Reduce temporary Blinded applied by that event by 1.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/shade-the-eyes.md\" target=\"_blank\" rel=\"noopener\">design/cards/shade-the-eyes.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>Self or one visible willing ally within 3 squares before one event deals radiant damage. Grant radiant resistance 3 against the triggering event. Reduce temporary Blinded applied by that event by 1.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self or one visible willing ally within 3 squares before one event deals radiant damage.</dd></div><div><dt>Type</dt><dd>Magic / Defense / Recovery</dd></div></dl><div class=\"hol-reference-rules\"><p>Grant radiant resistance 3 against the triggering event. Reduce temporary Blinded applied by that event by 1.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/24e545e6d860e8c1b03a21356fd22cae1c039785/design/cards/shade-the-eyes.md\" target=\"_blank\" rel=\"noopener\">design/cards/shade-the-eyes.md</a> at <code>24e545e6d860e8c1b03a21356fd22cae1c039785</code>.</p></section>",
     "activity": {
       "action": "reaction",
       "rollMode": "none",
@@ -30,9 +30,9 @@
       "catalogId": "ability-shade-the-eyes",
       "source": {
         "path": "design/cards/shade-the-eyes.md",
-        "sha256": "d08819073bfc25f3c7a8600a7ae2635a62272515d9b3f80a0dfdd79714ceb0b1"
+        "sha256": "5c61158105aaaf4304b7a98e120895d4340157803cb6b267d6a93a2b136c93d0"
       },
-      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
+      "sourceCommit": "24e545e6d860e8c1b03a21356fd22cae1c039785",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

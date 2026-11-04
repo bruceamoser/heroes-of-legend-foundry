@@ -15,7 +15,7 @@ const ID = "heroes-of-legend",
   SOURCE = {
     path: "design/cards/basic-melee.md",
     sha256:
-      "9d6e0b6ca75363b94c6886fb3c53087f854098f024aac232395c61fdc438ae40",
+      "431b52687b1a0e874720b1c8b814cd3c632e55751c4d5133f0c9ac2bc4dba409",
   },
   browser = await chromium.launch({
     args: ["--use-angle=swiftshader", "--enable-unsafe-swiftshader"],

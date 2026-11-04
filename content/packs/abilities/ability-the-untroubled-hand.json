@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/athletics.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You breathe out and guide their weight past you. Your open hand reaches the place their balance has already left.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Target / range / shape</dt><dd>One adjacent enemy.</dd></div><div><dt>Type</dt><dd>Skill / Attack / Control</dd></div></dl><div class=\"hol-reference-rules\"><p>Make a Reason unarmed attack.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>3 physical damage.</dd><dt>Standard</dt><dd>3 physical damage; push 1 square away from you.</dd><dt>Strong</dt><dd>5 physical damage; push 2 squares away from you.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/the-untroubled-hand.md\" target=\"_blank\" rel=\"noopener\">design/cards/the-untroubled-hand.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>Choose one adjacent enemy. Make a Reason unarmed attack. On a Standard result, deal 3 physical damage. Push 1 square away from you.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Target / range / shape</dt><dd>One adjacent enemy.</dd></div><div><dt>Type</dt><dd>Skill / Attack / Control</dd></div></dl><div class=\"hol-reference-rules\"><p>Make a Reason unarmed attack.</p><dl class=\"hol-reference-outcomes\"><dt>Weak</dt><dd>3 physical damage.</dd><dt>Standard</dt><dd>3 physical damage; push 1 square away from you.</dd><dt>Strong</dt><dd>5 physical damage; push 2 squares away from you.</dd></dl></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/24e545e6d860e8c1b03a21356fd22cae1c039785/design/cards/the-untroubled-hand.md\" target=\"_blank\" rel=\"noopener\">design/cards/the-untroubled-hand.md</a> at <code>24e545e6d860e8c1b03a21356fd22cae1c039785</code>.</p></section>",
     "activity": {
       "action": "main",
       "rollMode": "attribute",
@@ -30,9 +30,9 @@
       "catalogId": "ability-the-untroubled-hand",
       "source": {
         "path": "design/cards/the-untroubled-hand.md",
-        "sha256": "664f5876c4389c047fa1955e2f2c6017348e64a8cdc01b3e2437cecc9eddb1d2"
+        "sha256": "13078401343007f68d816ba866f46d766ca36eee90d1fec7141cd9aa8a383639"
       },
-      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
+      "sourceCommit": "24e545e6d860e8c1b03a21356fd22cae1c039785",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

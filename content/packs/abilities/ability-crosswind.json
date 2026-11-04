@@ -6,7 +6,7 @@
   "img": "systems/heroes-of-legend/assets/marks/storm.webp",
   "system": {
     "schemaVersion": 1,
-    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>You snap your wrist. The arrow catches a sideways gust, and its point wavers just as your companion turns.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self or one visible willing ally within 3 squares before defending against a single-target physical projectile attack.</dd></div><div><dt>Type</dt><dd>Magic / Defense</dd></div></dl><div class=\"hol-reference-rules\"><p>The target gains 2 Boons to the defense.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/c5c84c0da3a5bd54b2553426408d1ea581fe22b9/design/cards/crosswind.md\" target=\"_blank\" rel=\"noopener\">design/cards/crosswind.md</a> at <code>c5c84c0da3a5bd54b2553426408d1ea581fe22b9</code>.</p></section>",
+    "description": "<section class=\"hol-item-reference\"><p class=\"hol-automation-label\"><strong>Automation:</strong> Rules reference · resolve effects at the table</p><div class=\"hol-reference-flavor\"><p>Self or one visible willing ally within 3 squares before defending against a single-target physical projectile attack. The target gains 2 Boons to the defense.</p></div><h2>Rules</h2><dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self or one visible willing ally within 3 squares before defending against a single-target physical projectile attack.</dd></div><div><dt>Type</dt><dd>Magic / Defense</dd></div></dl><div class=\"hol-reference-rules\"><p>The target gains 2 Boons to the defense.</p></div><p class=\"hol-reference-source\"><strong>Source:</strong> <a href=\"https://github.com/bruceamoser/heroes-of-legend/blob/24e545e6d860e8c1b03a21356fd22cae1c039785/design/cards/crosswind.md\" target=\"_blank\" rel=\"noopener\">design/cards/crosswind.md</a> at <code>24e545e6d860e8c1b03a21356fd22cae1c039785</code>.</p></section>",
     "activity": {
       "action": "reaction",
       "rollMode": "none",
@@ -30,9 +30,9 @@
       "catalogId": "ability-crosswind",
       "source": {
         "path": "design/cards/crosswind.md",
-        "sha256": "a9499c476b4338e51d492a2f5b73ada58f80c4755f900c486f9489d61052fefd"
+        "sha256": "0ed26f8a343c2ed92b49909576a5f186ffaddada8755712acd45334c7cc3dbfc"
       },
-      "sourceCommit": "c5c84c0da3a5bd54b2553426408d1ea581fe22b9",
+      "sourceCommit": "24e545e6d860e8c1b03a21356fd22cae1c039785",
       "catalogAutomation": "pending",
       "automation": "pending",
       "automationLabel": "Rules reference · resolve effects at the table"

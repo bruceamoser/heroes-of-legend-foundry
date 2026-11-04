@@ -6,7 +6,7 @@
 import { declareAction } from "./actions.mjs";
 import { validateSurvival } from "./survival.mjs";
 
-const SOURCE_COMMIT = "c5c84c0da3a5bd54b2553426408d1ea581fe22b9";
+const SOURCE_COMMIT = "24e545e6d860e8c1b03a21356fd22cae1c039785";
 const WOUND_SOURCE = Object.freeze({
   path: "design/rules/wounds.md",
   sha256: "58c42a717e00aa74310523cde3850a5af1c97ef58c8d3766933538964baf17c9",
@@ -31,7 +31,7 @@ const definitions = Object.freeze({
     source: Object.freeze({
       path: "design/cards/treat-bone.md",
       sha256:
-        "83fde5e22be6c44908ac152ecc811dab94fc78f6741e239058ff723947bb2541",
+        "3e3fcbbdfecfa58c1de009c0127ad27fe1917b1105c32a54e352b8ccfd3c6052",
     }),
   }),
   "treat-elemental-injury": Object.freeze({
@@ -42,7 +42,7 @@ const definitions = Object.freeze({
     source: Object.freeze({
       path: "design/cards/treat-elemental-injury.md",
       sha256:
-        "7121173315ad7ba04718c778484bc6f474dcd1c7e6df6881723b44d1185a6794",
+        "98920e2b4959fa20d7e7eb99959f2bc7c998379ed77f290ba0ca39b58e321b54",
     }),
   }),
   "treat-life-injury": Object.freeze({
@@ -53,7 +53,7 @@ const definitions = Object.freeze({
     source: Object.freeze({
       path: "design/cards/treat-life-injury.md",
       sha256:
-        "3aa2d0c5c911eac37262f317702500b565c64c2ec71487fe1b34b452f5c1a16b",
+        "56d2f0de11c2f69b0ebf148f74d7c056e0d257cbffa440acc5eacafb430c72ce",
     }),
   }),
   "treat-mental-trauma": Object.freeze({
@@ -64,7 +64,7 @@ const definitions = Object.freeze({
     source: Object.freeze({
       path: "design/cards/treat-mental-trauma.md",
       sha256:
-        "bd09d86e508ad0c444f8cd71caf81fd830d24ce74a966370b0bce23ac3316c4e",
+        "fd024dbd410af72527e63c304638477598eb7ca8a34de101df8051e8d5ef554f",
     }),
   }),
   "treat-radiant-injury": Object.freeze({
@@ -75,7 +75,7 @@ const definitions = Object.freeze({
     source: Object.freeze({
       path: "design/cards/treat-radiant-injury.md",
       sha256:
-        "5ae41742f8863ef4bb0bf8149599992427959c97589c6954776ba733ec5a213e",
+        "4df0b0c07ffc20542282c8c5df1fc119fd4d9a84d9ee20304ae2d9fd345bc203",
     }),
   }),
   "treat-soft-tissue": Object.freeze({
@@ -86,7 +86,7 @@ const definitions = Object.freeze({
     source: Object.freeze({
       path: "design/cards/treat-soft-tissue.md",
       sha256:
-        "b7b96f50fc235bb4496ac7ba6754450b5b55ec199582001697f73f35269be77c",
+        "38d2189377daa23388bd112dcf4cf5a5e1a49c6e0048f8f487ef4ef4cf757e6f",
     }),
   }),
 });

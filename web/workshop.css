@@ -1067,7 +1067,7 @@ dialog header button {
     min-height: 29px;
   }
   .hero-header {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     padding: 8px;
     gap: 7px;
   }
@@ -1075,12 +1075,14 @@ dialog header button {
     font-size: 1.3rem;
   }
   .vitals {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.3fr) repeat(4, minmax(0, 1fr));
     gap: 0;
+    min-width: 0;
   }
   .vital {
-    flex: 1;
     min-width: 0;
-    padding: 0 5px;
+    padding: 0 3px;
   }
   .vital:first-child {
     border-left: 0;
@@ -1512,13 +1514,34 @@ dialog header button {
 }
 @media (max-width: 600px) {
   .vital {
+    min-width: 0;
     padding: 0 3px;
   }
   .vital strong {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
   }
-  .hero-header .identity-line {
+  .hero-header .hp-value {
+    justify-content: center;
+    gap: 2px;
+  }
+  .hero-header .hp-value input {
+    width: 2.1em;
+  }
+  .identity-line > div {
     min-width: 0;
+  }
+  .identity-line .name-line input {
+    min-width: 0;
+    width: 100%;
+  }
+}
+@media (max-width: 390px) {
+  .vitals {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    row-gap: 4px;
+  }
+  .vital:nth-child(4) {
+    border-left: 0;
   }
 }
 
@@ -2161,4 +2184,17 @@ dialog header button[data-action]:focus-visible {
   width: 72px;
   height: 7px;
   accent-color: var(--forest, #15221c);
+}
+
+.spellbook-sheet {
+  margin-block: 0 12px;
+}
+.spellbook-sheet h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.technique-improvement {
+  padding-block: 8px;
+  border-top: 1px solid var(--line, #bca981);
 }

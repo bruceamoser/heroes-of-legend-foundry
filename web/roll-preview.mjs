@@ -1,50 +1,77 @@
-import { ruleBlockMarkup } from "./rules-view.mjs";
+import { esc, ruleBlockMarkup } from "./rules-view.mjs";
 import { rollCard } from "./chat-cards.mjs";
 import { rollSetup, bindRollSetup } from "./roll-ui.mjs";
 import { rollPlan, classifyRoll } from "./rules/roll.mjs";
 import { ATTRIBUTES } from "./rules/character.mjs";
 import { workshopCharacter } from "./rules/workshop-character.mjs";
-const esc = (v) =>
-  String(v ?? "").replace(
-    /[&<>"']/g,
-    (c) =>
-      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[
-        c
-      ],
-  );
-const [draft, choices, inventory, creatures] = await Promise.all(
-  ["example", "choices", "inventory", "creatures"].map(async (name) => {
+import { workshopCatalogs } from "./rules/workshop-forge-catalog.mjs";
+const [draft, choices, inventory, creatures, wounds, forge, references] = await Promise.all(
+  ["example", "choices", "inventory", "creatures", "wounds", "forge", "forge-references"].map(async (name) => {
     const response = await fetch(`data/${name}.json`);
     if (!response.ok) throw new Error(`Cannot load ${name}`);
     return response.json();
   }),
 );
-const character = workshopCharacter(draft, {
-  choices: choices.records,
-  inventory,
-  sourceCommit: choices.sourceCommit,
-});
+const catalogs = workshopCatalogs(choices, inventory, wounds, forge, references);
+const character = workshopCharacter(draft, catalogs);
 const cards = character.state.abilities
-  .map((id) => choices.records.find((c) => c.id === id))
+  .map((id) => catalogs.choices.find((record) => record.id === id))
   .filter(Boolean);
-const opponent = creatures.creatures.find(
-  (r) => r.id === "creature-goblin-scrapper",
-);
-const incoming = opponent.actions.main.actions.find(
-  (a) => a.name === "Scrap knife",
-);
-const damageType = opponent.reference.specialtyDetails
-  .find((d) => d.title === incoming.name)
-  .fields.find((f) => f.label === "Damage type")
-  .text.replace(/\.$/, "");
+const drivingBlow = cards.find((record) => record.id === "arms:impact:1");
+const improvements = character.state.learning.improvements.get(drivingBlow.id) ?? [];
+const opponent = creatures.creatures.find((record) => record.id === "creature-goblin-scrapper");
+const incoming = opponent.actions.main.actions.find((record) => record.name === "Scrap knife");
+const incomingFields = opponent.reference.specialtyDetails
+  .find((entry) => entry.title === incoming.name).fields;
+const field = (name) => incomingFields.find((entry) => entry.label === name)?.text ?? "";
+const damageType = field("Damage type").replace(/\.$/, "");
+// Resolve this preview's one printed attack. Other selections remain references
+// for applying their own effects at the table.
+const [, weak, standard, strong, damageKind] =
+  drivingBlow.effect.match(/for (\d+)\/(\d+)\/(\d+) (\w+) damage/);
+const damageByTier = { weak, standard, strong };
+const pushRule = (improvements.find((entry) => entry.id === "arms:impact:2") ?? drivingBlow).effect;
+const [, pushDistance] = pushRule.match(/push(?:es)? (?:it )?(\d+) squares?/i);
+const dazedRule = improvements.find((entry) => entry.id === "arms:impact:3");
+const dazed = dazedRule?.effect.match(/Dazed (\d+)/)?.[1];
+
+function drivingEffect(tier) {
+  const damage = `${damageByTier[tier]} ${damageKind} damage.`;
+  if (tier !== "strong") return damage;
+  const push = `Push ${pushDistance} ${pushDistance === "1" ? "square" : "squares"} directly away from you.`;
+  return [damage, push, dazed && `Apply Dazed ${dazed} whether or not the target can be pushed.`]
+    .filter(Boolean).join(" ");
+}
+
+function rollTitle(mode) {
+  if (mode === "ability") return drivingBlow.name;
+  if (mode === "defense") return `Defend · ${incoming.name}`;
+  return "Attribute check";
+}
+
+export const previewExample = {
+  draft,
+  opponent,
+  incoming,
+  field,
+  inventory: catalogs.inventory,
+  drivingBlow,
+  title: rollTitle,
+  effect(mode, tier) {
+    if (mode === "ability") return drivingEffect(tier);
+    if (mode === "defense")
+      return `${incoming.outcomes[tier]} ${damageType} damage before resistance.`;
+    return null;
+  },
+};
 const dialog = document.querySelector("#reference");
 const chatMode = document.body.classList.contains("chat-preview");
 let mode = "ability";
 function open(next) {
   mode = next;
   const attribute = mode === "defense" ? incoming.defense.attribute : "brawn";
-  const selected = mode === "ability" ? "ability-hook-and-drive" : null;
-  dialog.innerHTML = `<header><div><small class="hol-roll-context">Borin Bridgekeeper${mode === "defense" ? " · Defense" : ""}</small><h2 id="reference-title">${mode === "ability" ? "Hook and Drive" : mode === "defense" ? `Defend · ${esc(incoming.name)}` : "Attribute check"}</h2></div><button type="button" data-close class="quiet">Close</button></header><div class="reference-body">${rollSetup({ attributes: Object.fromEntries(ATTRIBUTES.map((a) => [a, draft.attributes[a]])), selected: attribute, attributeId: "preview-attribute", value: draft.attributes[attribute], netId: "preview-net", labelId: "preview-net-label" })}<details class="hol-roll-abilities" open><summary>Abilities</summary><div class="roll-abilities">${[
+  const selected = mode === "ability" ? drivingBlow.id : null;
+  dialog.innerHTML = `<header><div><small class="hol-roll-context">${esc(draft.name)}${mode === "defense" ? " · Defense" : ""}</small><h2 id="reference-title">${esc(rollTitle(mode))}</h2></div><button type="button" data-close class="quiet">Close</button></header><div class="reference-body">${rollSetup({ attributes: Object.fromEntries(ATTRIBUTES.map((a) => [a, draft.attributes[a]])), selected: attribute, attributeId: "preview-attribute", value: draft.attributes[attribute], netId: "preview-net", labelId: "preview-net-label" })}<details class="hol-roll-abilities" open><summary>Abilities</summary><div class="roll-abilities">${[
     ...cards,
   ]
     .sort((a, b) => Number(b.id === selected) - Number(a.id === selected))
@@ -71,7 +98,7 @@ function updateRules() {
     selected
       .map(
         (r) =>
-          `<section><h3>${esc(r.name)}</h3>${r.reference?.rules?.details?.map((d) => `<p><b>${esc(d.label)}:</b> ${esc(d.value)}</p>`).join("") ?? ""}${r.reference?.rules?.body?.map(ruleBlockMarkup).join("") ?? ""}${r.reference?.rules?.notes?.map((n) => `<p>${esc(typeof n === "string" ? n : n.text)}</p>`).join("") ?? ""}</section>`,
+          `<section><h3>${esc(r.name)}</h3>${r.reference?.rules?.details?.map((d) => `<p><b>${esc(d.label)}:</b> ${esc(d.value)}</p>`).join("") ?? ""}${r.reference?.rules?.body?.map(ruleBlockMarkup).join("") ?? ""}${r.reference?.rules?.notes?.map((n) => `<p>${esc(typeof n === "string" ? n : n.text)}</p>`).join("") ?? ""}${(character.state.learning.improvements.get(r.id) ?? []).map((entry) => `<h4>${esc(entry.name)}</h4><p>${esc(entry.effect)}</p>`).join("")}</section>`,
       )
       .join("") || "<p>No abilities selected.</p>";
 }
@@ -112,29 +139,14 @@ document.addEventListener("click", (e) => {
     const selected = [
       ...dialog.querySelectorAll("[data-preview-ability]:checked"),
     ].map((e) => cards.find((r) => r.id === e.dataset.previewAbility).name);
-    const selectedRecord = cards.find((r) => r.id === "ability-hook-and-drive");
-    const effect =
-      mode === "defense"
-        ? `${incoming.outcomes[result.tier]} ${damageType} damage before resistance.`
-        : mode === "ability"
-          ? selectedRecord.reference.rules.body
-              .find((b) => b.outcomes)
-              ?.outcomes.find((o) => o.label.toLowerCase() === result.tier)
-              ?.text
-          : null;
     const message = {
-      actor: "Borin Bridgekeeper",
+      actor: draft.name,
       target: mode === "attribute" ? null : opponent.name,
-      title:
-        mode === "defense"
-          ? `Defend · ${incoming.name}`
-          : mode === "ability"
-            ? "Hook and Drive"
-            : "Attribute check",
+      title: rollTitle(mode),
       mode,
       attribute: document.querySelector("#preview-attribute").value,
       abilities: selected,
-      effect,
+      effect: previewExample.effect(mode, result.tier),
       roll: { plan, faces, retainedIndices, result },
     };
     document.querySelector("#preview-result").innerHTML = rollCard(message);

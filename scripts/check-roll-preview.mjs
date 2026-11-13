@@ -47,7 +47,7 @@ const base = `http://127.0.0.1:${server.address().port}${prefix}`;
 try {
   await page.goto(base + "roll.html");
   await page
-    .getByRole("heading", { name: "Hook and Drive", exact: true })
+    .getByRole("heading", { name: "Driving Blow I", exact: true })
     .waitFor();
   assert.equal(await page.locator(".sheet-links a").count(), 7);
   const range = page.getByRole("slider", {
@@ -105,13 +105,13 @@ try {
     /5d6kh3 \+ \(-1\)/,
   );
   const ability = page.locator(
-    '[data-preview-ability="ability-hook-and-drive"]',
+    '[data-preview-ability="arms:impact:1"]',
   );
   assert(await ability.isChecked());
   await page.getByRole("button", { name: "Roll", exact: true }).click();
   assert.match(
     await page.locator("#preview-result").innerText(),
-    /Hook and Drive/,
+    /Driving Blow I/,
   );
   await ability.uncheck();
   await page.getByRole("button", { name: "Roll", exact: true }).click();
@@ -120,13 +120,13 @@ try {
     0,
   );
   const referenceAbility = page.locator(
-    '[data-preview-ability="ability-braced-harness"]',
+    '[data-preview-ability="armor:harness:1"]',
   );
   await referenceAbility.check();
   await page.getByRole("button", { name: "Roll", exact: true }).click();
   assert.match(
     await page.locator("#preview-result .hol-chat-abilities").innerText(),
-    /Braced Harness/,
+    /Armored Training I/,
   );
   await referenceAbility.uncheck();
   await ability.check();
@@ -135,6 +135,8 @@ try {
     await page.locator("[data-selected-rules]").innerText(),
     /Main Action/,
   );
+  assert.match(await page.locator("[data-selected-rules]").innerText(), /pushes 2 squares/);
+  assert.match(await page.locator("[data-selected-rules]").innerText(), /applies Dazed 1/);
   await page.getByText("Selected ability rules", { exact: true }).click();
   for (const width of [760, 390, 320]) {
     await page.setViewportSize({ width, height: 800 });

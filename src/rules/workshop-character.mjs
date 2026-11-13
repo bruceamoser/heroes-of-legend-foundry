@@ -1,3 +1,5 @@
+import { forgeAdvancement, forgeArmorRequirement } from "./forge-character.mjs";
+import { forgeMaximums } from "./forge-vitals.mjs";
 import { workshopPlay } from "./workshop-play.mjs";
 import { creationPreview } from "./creation.mjs";
 import { awardMilestones } from "./development.mjs";
@@ -14,6 +16,7 @@ export const emptyLevelDraft = () => ({
 
 /** Rebuild from choices so lowering/revisiting a level cannot duplicate grants. */
 export function workshopCharacter(draft, catalogs, languages) {
+  languages ??= catalogs.languages;
   draft = { ...draft, ancestryId: currentAncestryId(draft.ancestryId) };
   const effectiveTraitIds = ancestrySelection(draft, catalogs.choices).traitIds;
   const creation = creationPreview(
@@ -21,6 +24,7 @@ export function workshopCharacter(draft, catalogs, languages) {
     catalogs.choices,
     catalogs.inventory,
     languages,
+    catalogs.forge,
   );
   const target = draft.progression?.level ?? 1;
   if (!Number.isSafeInteger(target) || target < 1 || target > 100)
@@ -41,19 +45,14 @@ export function workshopCharacter(draft, catalogs, languages) {
     state = awardMilestones(state, level);
     state.safePlace = true; // Browser planning; native commitment retains campaign authority.
     const before = structuredClone(state);
+    const levelPlan = draft.progression?.levels?.[level] ?? emptyLevelDraft();
     const currentPlay = workshopPlay(draft, state.items, state.languages ?? [], catalogs);
-    const result = advancementPreview(
-      state,
-      draft.progression?.levels?.[level] ?? emptyLevelDraft(),
-      catalogs.choices,
-      catalogs.inventory,
-      languages,
-      // Play additions count as known; acquisition receipts and original grants remain historical.
-      {
-        knownLanguages: currentPlay.languages,
-        ownedItems: currentPlay.inventory,
-      },
-    );
+    const result = catalogs.forge
+      ? forgeAdvancement(state, levelPlan, catalogs, languages, currentPlay)
+      : advancementPreview(state, levelPlan, catalogs.choices, catalogs.inventory, languages, {
+          knownLanguages: currentPlay.languages,
+          ownedItems: currentPlay.inventory,
+        });
     state = result.state;
     maximumHpDelta += result.maximumHpDelta;
     errors.push(
@@ -99,7 +98,10 @@ export function workshopCharacter(draft, catalogs, languages) {
     catalogs.inventory,
     { wornOutfitId: outfit?.instanceId },
   ).bulk;
-  const capacity = 10 + 3 * draft.attributes.brawn + ancestryBenefits(effectiveTraitIds).capacityBonus;
+  const attributes = { ...draft.attributes };
+  if (catalogs.forge && items.some((item) => item.worn && item.catalogId === "item-cincture-of-might"))
+    attributes.brawn += 1;
+  const capacity = 10 + 3 * attributes.brawn + ancestryBenefits(effectiveTraitIds).capacityBonus;
   const encumbrance = Math.max(0, bulk - capacity);
   const passive = passiveDefenseSources({
     abilities: state.abilities.map((id) => ({
@@ -107,8 +109,15 @@ export function workshopCharacter(draft, catalogs, languages) {
       instanceId: id,
       source: catalogs.choices.find((r) => r.id === id)?.source,
     })),
-    equipment: items.map((i) => ({ ...i, source: i.definition.source })),
+    equipment: items.filter((item) => !catalogs.forge || !forgeArmorRequirement(item.catalogId)).map((i) => ({ ...i, source: i.definition.source })),
   });
+  if (catalogs.forge) {
+    for (const item of items.filter((entry) => entry.worn)) {
+      const required = forgeArmorRequirement(item.catalogId);
+      if (required && state.learned.includes(required))
+        passive.resistances.push({ type: "physical", value: Number(required.at(-1)), label: item.definition.name });
+    }
+  }
   const resistances = {};
   for (const source of passive.resistances)
     resistances[source.type] = Math.min(
@@ -126,6 +135,14 @@ export function workshopCharacter(draft, catalogs, languages) {
   const expired = creation.ledger
     .filter((e) => e.kind === "expired-pool")
     .reduce((n, e) => n - e.delta, 0);
+  const limits = catalogs.forge && creation.summary ? forgeMaximums({
+    level: target,
+    ancestryHp: catalogs.choices.find((entry) => entry.id === draft.ancestryId).hp,
+    classHp: catalogs.choices.find((entry) => entry.id === draft.classId).hp,
+    fortitude: draft.attributes.fortitude,
+    fixedHp: ancestryBenefits(effectiveTraitIds).maximumHpBonus,
+    capacitySp: state.learning.capacitySp,
+  }) : null;
   const unresolved = errors.filter(
     (e) =>
       e.code !== "signature" ||
@@ -138,6 +155,8 @@ export function workshopCharacter(draft, catalogs, languages) {
     state,
     valid: unresolved.length === 0,
     errors: unresolved,
+    limits,
+    attributes,
     play,
     levels,
     advancementLedger,
@@ -149,7 +168,8 @@ export function workshopCharacter(draft, catalogs, languages) {
       ? {
           ...creation.summary,
           languages: state.languages ?? creation.summary.languages,
-          maximumHp: creation.summary.maximumHp + maximumHpDelta,
+          maximumHp: limits?.maxHp ?? creation.summary.maximumHp + maximumHpDelta,
+          ...(limits ? { maximumSp: limits.maxSp } : {}),
           gritGranted: state.gritGranted,
           speed: Math.max(0, creation.summary.unencumberedSpeed - encumbrance),
         }
@@ -157,8 +177,17 @@ export function workshopCharacter(draft, catalogs, languages) {
   };
 }
 
+export function workshopAbility(character, record) {
+  if (!record) return undefined;
+  const improvements = character.state.learning?.improvements.get(record.id) ?? [];
+  const currentAction = improvements.map((entry) => entry.effect.match(
+    /takes (?:a |an )?(Main Action|Maneuver|Reaction)\b/i,
+  )?.[1]).find(Boolean);
+  return currentAction ? { ...record, currentAction } : record;
+}
+
 export function actionTiming(record) {
-  const action =
+  const action = record.currentAction ??
     record.reference?.rules.details.find((d) => d.label === "Action")?.value ??
     "Passive";
   if (/^Passive/i.test(action)) return ["Passive"];
@@ -176,7 +205,7 @@ export function actionTiming(record) {
 
 /** Visible weapon basics derive from owned gear, not the first six learned cards. */
 export function mainActions(character, draft, catalogs) {
-  const get = (id) => catalogs.choices.find((r) => r.id === id);
+  const get = (id) => workshopAbility(character, catalogs.choices.find((r) => r.id === id));
   const has = (id) =>
     character.inventory.items.some((i) => i.catalogId === id && i.carried);
   const records = character.state.abilities
@@ -185,9 +214,11 @@ export function mainActions(character, draft, catalogs) {
     .map((record) => ({ record, basic: false, visible: true }));
   for (const record of catalogs.choices.filter((r) => r.universal)) {
     let available = true;
-    if (
-      ["ability-basic-melee", "ability-opportunity-attack"].includes(record.id)
-    )
+    if (record.id === "ability-opportunity-attack" && catalogs.forge) {
+      const held = character.inventory.items.filter((item) => item.held);
+      available = held.some((item) => item.catalogId === "item-ordinary-melee-weapon") ||
+        held.reduce((used, item) => used + (item.hands || 1), 0) < 2;
+    } else if (["ability-basic-melee", "ability-opportunity-attack"].includes(record.id))
       available = has("item-ordinary-melee-weapon");
     if (record.id === "ability-basic-ranged")
       available = has("item-ordinary-ranged-weapon");
@@ -204,8 +235,8 @@ export function craftingActions(character, catalogs) {
   return character.state.recipes.flatMap((id) => {
     const recipe = catalogs.inventory.recipes.find((r) => r.id === id);
     if (!recipe) return [];
-    return recipe.permissions
-      .filter((id) => character.state.abilities.includes(id))
+    return (catalogs.forge ? ["craft:supplies:1"] : recipe.permissions)
+      .filter((id) => (catalogs.forge ? character.state.learned : character.state.abilities).includes(id))
       .map((abilityId) => {
         const ability = catalogs.choices.find((r) => r.id === abilityId);
         const attribute = ability?.reference?.rules.details.find(

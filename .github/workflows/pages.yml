@@ -35,6 +35,20 @@ jobs:
         run: node scripts/audit-rule-rendering.mjs
         env:
           HOL_BOOK_REPOSITORY: ${{ github.workspace }}/.book-source
+      - name: Read the Character Workshop rulebook revision
+        id: forge-book
+        run: node -e 'const fs=require("fs"); fs.appendFileSync(process.env.GITHUB_OUTPUT, "commit="+JSON.parse(fs.readFileSync("content/forge-source-lock.json")).commit+"\n")'
+      - uses: actions/checkout@v4
+        with:
+          repository: bruceamoser/heroes-of-legend
+          ref: ${{ steps.forge-book.outputs.commit }}
+          path: .forge-book-source
+          sparse-checkout: |
+            design
+      - run: npm run validate:forge
+        env:
+          HOL_BOOK_REPOSITORY: ${{ github.workspace }}/.forge-book-source
+      - run: npm run test:workshop-forge
       - run: npm run test:workshop
       - run: npm run test:ancestry-workshop
       - run: npm run test:workshop-play

@@ -241,6 +241,21 @@ try {
   await maneuvers.locator("summary").click();
   await page.reload();
   assert.equal(await maneuvers.evaluate((e) => e.open), false);
+  await page
+    .getByRole("button", { name: "Choose creature", exact: true })
+    .click();
+  await choose("Battle Chaplain", "creature-battle-chaplain");
+  await page
+    .getByRole("button", { name: "Battle Mending", exact: true })
+    .click();
+  const battleMending = await page.getByRole("dialog").innerText();
+  assert.match(
+    battleMending,
+    /Resolve opportunity attacks for casting, then pay/,
+  );
+  assert.match(battleMending, /Strong 9 HP/);
+  assert.doesNotMatch(battleMending, /Pay 1 SP first/);
+  await close();
   await page.goto(base + "item.html");
   await page
     .getByRole("heading", { name: "Ordinary Light Armor", exact: true })
@@ -286,8 +301,10 @@ try {
     "Choose an item sheet export",
   );
   await page.getByRole("button", { name: "Choose item", exact: true }).click();
-  await choose("Hook and Drive", "ability-hook-and-drive");
-  assert((await page.locator(".outcome-table tr").count()) > 0);
+  await choose("Driving Blow I", "arms:impact:1");
+  await expect(page.locator(".rule-card")).toContainText(
+    "2/3/5 physical damage",
+  );
   assert.match(await page.locator(".card-metadata").innerText(), /Brawn/);
   for (const width of [760, 390]) {
     await page.setViewportSize({ width, height: 900 });
@@ -298,6 +315,28 @@ try {
     );
     await page.screenshot({ path: `${output}/ability-${width}.png` });
   }
+  await page.getByRole("button", { name: "Choose item", exact: true }).click();
+  await choose("Flame I", "flame:0");
+  await page.getByText("Page 2 · Boil Liquid").click();
+  await expect(page.locator(".rule-card")).toContainText("Ritual · 1 minute");
+  await page.locator("#sheet-import").setInputFiles({
+    name: "legacy-ability.json",
+    mimeType: "application/json",
+    buffer: Buffer.from(
+      JSON.stringify({
+        format: "hol.sheet.prototype",
+        version: 1,
+        kind: "item",
+        state: { id: "ability-hook-and-drive", notes: "Keep this note." },
+      }),
+    ),
+  });
+  await page
+    .getByRole("heading", { name: "Driving Blow I", exact: true })
+    .waitFor();
+  await expect(page.getByLabel("Notes", { exact: true })).toHaveValue(
+    "Keep this note.",
+  );
   await page.getByRole("button", { name: "Choose item", exact: true }).click();
   await choose("Food Bundle", "item-food-bundle");
   await page.evaluate(() => {

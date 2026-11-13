@@ -33,9 +33,10 @@ export function workshopCraft({
   items,
   instanceId,
   supplyId,
+  improved = false,
 }) {
   const automatic = noRollBrew(abilityId, recipe);
-  const steps = automatic ? 1 : { weak: 1, standard: 2, strong: 3 }[tier];
+  const steps = automatic ? 1 : { weak: 1, standard: improved ? 3 : 2, strong: improved ? 4 : 3 }[tier];
   if (!steps) throw new Error("Choose a crafting outcome.");
   const next = structuredClone(play);
   next.crafting ??= {};

@@ -68,9 +68,14 @@ export function workshopSupplyUse({
 }) {
   if (!item || item.quantity < 1)
     throw new Error("This supply has no quantity remaining.");
-  const potion = HEALING_POTION_IDS.includes(item.catalogId)
-    ? healingPotionAdapter(item.catalogId, catalog)
-    : null;
+  let potion = null;
+  if (HEALING_POTION_IDS.includes(item.catalogId)) {
+    potion = catalog.forge
+      ? catalog.equipment.find((record) => record.id === item.catalogId)
+      : healingPotionAdapter(item.catalogId, catalog);
+    if (!Number.isSafeInteger(potion?.healing) || potion.healing < 1)
+      throw new Error(`Missing healing amount for ${item.catalogId}.`);
+  }
   if (potion && lastWords)
     throw new Error("Ordinary healing cannot reverse Last Words.");
   const check = inventoryCheck({ die: item.inventoryDie, retained: face });

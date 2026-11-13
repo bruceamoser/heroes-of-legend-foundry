@@ -67,7 +67,7 @@ try {
   assert.equal(await player.locator(".discarded").count(), 1);
   assert.match(
     await player.locator(".hol-chat-effect").innerText(),
-    /5 physical damage, Slowed 2 and Prone\./,
+    /5 physical damage\. Push 2 squares directly away from you\. Apply Dazed 1/,
   );
   assert.equal(await player.locator("[data-chat-defend]").count(), 0);
   await page.screenshot({ path: `${output}/chat-desktop.png` });

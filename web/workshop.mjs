@@ -1,3 +1,8 @@
+import { renderForge } from "./forge-view.mjs";
+import { forgeSpendSp } from "./rules/forge-vitals.mjs";
+import { forgeEligibility } from "./rules/forge.mjs";
+import { workshopCatalogs } from "./rules/workshop-forge-catalog.mjs";
+import { forgeArmorRequirement } from "./rules/forge-character.mjs";
 import { ruleBlockMarkup } from "./rules-view.mjs";
 import {
   workshopCraft,
@@ -6,33 +11,29 @@ import {
 } from "./rules/workshop-crafting.mjs";
 import { rollSetup, netControl, bindRollSetup } from "./roll-ui.mjs";
 import {
-  equipmentEligibility,
   isUniversalAbility,
 } from "./rules/equipment-eligibility.mjs";
-import { abilityHeaderBadges } from "./rules/workshop-card-view.mjs";
 import {
-  rolledWorkshopWound,
   workshopSupplyUse,
-  workshopSpendGrit,
-  workshopWoundDetails,
-  workshopTreatWound,
   workshopResupply,
   workshopConditionDamage,
   workshopFavorites,
 } from "./rules/workshop-resources.mjs";
-import { DAMAGE_TYPES } from "./rules/damage.mjs";
 import { HEALING_POTION_IDS } from "./rules/potions.mjs";
 import {
-  workshopVitals,
-  workshopDeathResult,
-} from "./rules/workshop-vitals.mjs";
+  advanceForgeVitals, forgeBeginFirstAid, forgeCanSpendGrit, forgeDamage,
+  forgeDeathRoll, forgeFinalizeDeath, forgeFinishFirstAid, forgeHeal,
+  forgeInterruptFirstAid, forgeRecordScar, forgeRest, forgeSpellcraftRecovery,
+  forgeSpendGrit, forgeStabilize, forgeVitals,
+} from "./rules/forge-vitals.mjs";
 import { itemArrangement } from "./rules/workshop-play.mjs";
-import { payDebt, nextDawn } from "./rules/recovery.mjs";
+import { normalizeRecovery, payDebt, nextDawn } from "./rules/recovery.mjs";
 import { passiveAncestryDefenseSources } from "./rules/passive-defenses.mjs";
 import { ancestrySelection } from "./rules/ancestry.mjs";
 import { CONDITION_KINDS, conditionRollSources } from "./rules/conditions.mjs";
 import {
   workshopCharacter,
+  workshopAbility,
   emptyLevelDraft,
   mainActions,
   actionTiming,
@@ -42,15 +43,12 @@ import { rollPlan, classifyRoll } from "./rules/roll.mjs";
 import { newCreationDraft } from "./rules/creation.mjs";
 import { ATTRIBUTES } from "./rules/character.mjs";
 import {
-  DEFAULT_LANGUAGES,
   campaignLanguageOptions,
   additionalLanguageOptions,
 } from "./rules/languages.mjs";
 import {
   eligibleFirst,
-  purchaseEligibility,
   classEligibility,
-  recipeStudyChoices,
 } from "./rules/development.mjs";
 import {
   readPortableCharacter,
@@ -83,17 +81,19 @@ const steps = [
 const tabs = [
   "Main",
   "Abilities",
+  "Spellbooks",
   "Inventory",
   "Crafting",
   "Character",
   "Development",
 ];
 const sheetTabs = () =>
-  tabs.filter((t) => t !== "Crafting" || preview.state.recipes.length > 0);
+  tabs.filter((t) => (t !== "Crafting" || preview.state.recipes.length > 0) && (t !== "Spellbooks" || preview.state.learning.spells.length > 0));
 const storageKey = "hol.workshop.v1";
 const libraryKey = "hol.workshop.library.v1";
 let saveId = null;
 let signatureTier = 1;
+let forgeView = "atlas", forgeDiscipline = "all", forgeSelected, forgeZoom = 1;
 let catalogs,
   references,
   example,
@@ -106,9 +106,7 @@ let catalogs,
   isExample = true;
 let query = "",
   filter = "all",
-  recipeSelections = {},
   noticeTimer;
-let visibleChoices = { true: 6, false: 4 };
 let pointerDown = false,
   pendingRender = false;
 let storageAvailable = true;
@@ -132,12 +130,13 @@ function notice(text) {
 function get(id) {
   return (
     catalogs.choices.find((r) => r.id === id) ??
+    catalogs.forge.spells.find((r) => r.id === id) ??
     catalogs.inventory.equipment.find((r) => r.id === id) ??
     catalogs.inventory.recipes.find((r) => r.id === id)
   );
 }
 function name(id) {
-  return get(id)?.name ?? id ?? "Not chosen";
+  return get(id)?.name ?? catalogs.legacyChoices.find((r) => r.id === id)?.name ?? id ?? "Not chosen";
 }
 function button(text, action, extra = "", style = "") {
   return `<button type="button" data-action="${action}" ${extra} class="${style}">${text}</button>`;
@@ -146,6 +145,7 @@ const navIcons = {
   Main: '<path d="m4 3 13 13m-2 3 4-4M3 4l1 5 4-1M20 3 7 16m-2-1 4 4m12-15-1 5-4-1"/>',
   Abilities:
     '<path d="M12 5v16M3 4c4-1 6 0 9 2 3-2 5-3 9-2v15c-4-1-6 0-9 2-3-2-5-3-9-2z"/>',
+  Spellbooks: '<path d="M4 4h13l3 3v13H4zM8 9h8m-8 4h8m-8 4h5"/>',
   Inventory:
     '<path d="M8 6V4a4 4 0 0 1 8 0v2M7 6h10l3 5v10H4V11zM4 13h16M9 13v3h6v-3"/>',
   Crafting: '<path d="M9 3h6M10 3v7L4 20h16l-6-10V3M7 15h10"/>',
@@ -178,9 +178,14 @@ function heading(kicker, label, text, action = "") {
 }
 function symbol(id) {
   const key = id?.replace("discipline-", "");
-  return key && catalogs.choices.some((r) => r.id === `discipline-${key}`)
-    ? `<img class="sigil" src="assets/${key}.webp" alt="${esc(name(id))}">`
-    : "";
+  const discipline = catalogs.forge.disciplines.find((entry) => entry.id === key);
+  if (!discipline) return "";
+  const svg = ["elements", "force", "wards", "divination", "invocation", "mentalism", "spellcraft"].includes(key);
+  return `<img class="sigil" src="assets/${key}.${svg ? "svg" : "webp"}" alt="">`;
+}
+function equipmentEligibility(id) {
+  const requiredAbilityId = forgeArmorRequirement(id) ?? (id === "item-smoke-supply" ? "craft:mixtures:1" : null);
+  return { requiredAbilityId, eligible: !requiredAbilityId || preview.state.learned.includes(requiredAbilityId) };
 }
 function errors() {
   return preview.errors.map(
@@ -225,34 +230,44 @@ function rollButton(label, extra) {
   );
 }
 function liveVitals() {
-  return workshopVitals(preview, draft, catalogs.wounds);
+  const recovery = normalizeRecovery(draft.play?.recovery);
+  const limits = { ...(preview.limits ?? { maxHp: 0, maxSp: 0, gritGranted: 0 }), unavailableHp: recovery.unavailableHp };
+  const play = forgeVitals(draft.play, limits);
+  const maxSpeed = preview.summary?.unencumberedSpeed ?? 0;
+  return {
+    ...play, limits, recovery, maxSpeed,
+    max: limits.maxHp,
+    recoveryMax: limits.maxHp - limits.unavailableHp,
+    speed: Math.max(0, (preview.summary?.speed ?? 0) - preview.play.conditionSummary.slowed.rating),
+    grit: play.gritAvailable,
+    failed: play.failedDeathRolls,
+  };
+}
+
+function applyWorkshopDamage(amount) {
+  const { limits } = liveVitals();
+  const current = playDraft();
+  if (current.immediateDeathRoll) throw new Error("Resolve the immediate death roll first.");
+  const outcome = forgeDamage(current, limits, amount);
+  Object.assign(current, outcome.play, { immediateDeathRoll: outcome.deathRollRequired });
+  if (outcome.gritTrigger === "fall" && !preview.play.conditions.some(({ key }) => key === "prone") && current.conditions.length < 100) {
+    current.conditions.push({
+      id: "prone-" + crypto.randomUUID(), key: "prone", rating: 1,
+      persistence: "binary", source: "Fell to 0 HP",
+    });
+  }
+  return outcome;
 }
 const effectiveTraits = () => ancestrySelection(draft, catalogs.choices).traitIds;
 function header() {
   const stats = preview.summary,
     vitals = liveVitals();
   return `<div class="workshop-header"><div class="toolbar"><div class="toolbar-group">${button(edit ? "✓ Done" : "✎ Edit", "edit", `aria-pressed="${edit}"`, edit ? "selected" : "quiet")}</div><div class="toolbar-group">${button("New", "new", 'aria-label="New hero"', "quiet")}${button("Save", "save", 'aria-label="Save character"', "quiet")}${button("Load", "library", 'aria-label="Load character"', "quiet")}${button("Import", "import", 'aria-label="Import JSON"', "quiet")}${button("Export", "export", 'aria-label="Export JSON"', "quiet")}</div></div>
-  <header class="hero-header"><div class="identity-line"><img class="hero-mark" src="assets/crest.webp" alt=""><div><div class="name-line">${edit && mode === "sheet" ? field("Character name", "name", draft.name, "text", 'maxlength="200"') : `<h1>${esc(draft.name || "New hero")}</h1>`}${button(skullIcon + (vitals.failed ? `<span>${vitals.failed}</span>` : ""), "death-roll", `aria-label="Death roll; ${vitals.failed} failed" title="Death roll · ${vitals.failed} failed"`, "icon-button death-button")}</div><p>${esc(join([get(draft.ancestryId)?.name, get(draft.culture?.id)?.name, get(draft.background?.id)?.name, get(draft.classId)?.name, `Level ${preview.development.level}(${preview.development.current})`]))}</p></div></div><div class="vitals"><div class="vital"><small>HP</small><strong class="hp-value"><input aria-label="Current HP" data-field="play.hp" type="number" min="0" max="${Math.max(vitals.hp, vitals.recoveryMax)}" step="1" value="${vitals.hp}"><span>/ ${vitals.max || "—"}</span></strong></div><div class="vital"><small>${button("Grit", "use-grit", 'aria-label="Use Grit"', "vital-link")}</small><strong>${vitals.grit}</strong></div><div class="vital"><small>Speed</small><strong data-speed>${vitals.speed}${vitals.speed < vitals.maxSpeed ? ` / ${vitals.maxSpeed}` : ""}</strong></div><div class="vital"><small>${button("Wounds", "roll-wound-dialog", 'aria-label="Roll a new wound"', "vital-link")}</small><strong data-wound-count>${vitals.wounds.length}</strong></div><div class="vital"><small>Armor DR</small><strong>${preview.resistances.physical ?? 0}</strong></div></div></header>
-  <div class="attributes">${ATTRIBUTES.map((key) => `<div class="attribute"><span>${title(key)}</span>${rollButton(title(key), `data-attribute-key="${key}"`)}<strong data-attribute="${key}">${signed(draft.attributes[key])}</strong></div>`).join("")}</div></div>`;
-}
-function abilityCard(
-  r,
-  { eligible = true, reasons = [], cost, rank, learning = false } = {},
-) {
-  const action = r.reference?.rules.details.find(
-    (d) => d.label === "Action",
-  )?.value;
-  const requirements = (r.requirements ?? []).filter(
-    (v) => v.kind === "discipline",
-  );
-  const badges = abilityHeaderBadges(r);
-  const summary =
-    r.reference?.flavor?.[0] ??
-    (r.kind === "discipline" ? `Develop your training in ${r.name}.` : "");
-  return `<article class="choice-card ${eligible ? "" : "unavailable"}" data-choice="${r.id}" data-eligible="${eligible}" draggable="${learning && eligible}"><div class="card-top">${r.kind === "ability" && !r.universal ? `<span class="tier" title="Available from level ${r.minimumLevel}"><span>${r.minimumLevel}</span></span>` : ""}<h3>${esc(r.name)}</h3><div class="card-badges">${r.kind === "ability" && badges.codes.length ? `<span class="action-code" aria-label="${esc(badges.action)}" title="${esc(badges.action)}">${badges.codes.join("/")}</span>` : ""}${r.kind === "discipline" ? symbol(r.id) : badges.disciplines.map((req) => `<span class="discipline-badge" data-requirement="${esc(req.id)}" title="${esc(name(req.id))} ${req.rank}">${symbol(req.id)}${req.rank > 1 ? `<span class="discipline-rank" aria-label="Requires rank ${req.rank}">${req.rank}</span>` : ""}</span>`).join("")}</div></div><div class="card-meta">${action ? `<span>${esc(action)}</span>` : ""}${requirements.map((req) => `<span>${esc(name(req.id))} ${req.rank}</span>`).join("")}${rank ? `<span>Rank ${rank}</span>` : ""}</div>${summary ? `<p class="card-copy">${esc(summary)}</p>` : ""}${reasons.length ? `<p class="requirement">${reasons.map((r) => esc(r.text)).join(" ")}</p>` : ""}<div class="card-actions">${button("Read rules", "reference", `data-id="${r.id}"`, "quiet small")}${learning ? button(`${cost ?? "—"} DP · Learn`, "purchase", `data-id="${r.id}" ${eligible ? "" : "disabled"}`, "small") : ""}</div>${learning && r.purchasePolicy === "new-recipe" ? recipeSelects(r) : ""}</article>`;
+  <header class="hero-header"><div class="identity-line"><img class="hero-mark" src="assets/crest.webp" alt=""><div><div class="name-line">${edit && mode === "sheet" ? field("Character name", "name", draft.name, "text", 'maxlength="200"') : `<h1>${esc(draft.name || "New hero")}</h1>`}${button(skullIcon + (vitals.dying ? `<span>${vitals.failed} / ${vitals.successfulDeathRolls}</span>` : ""), "death-roll", `aria-label="Death roll" title="Fortitude death roll · ${vitals.failed} failures · ${vitals.successfulDeathRolls} successes" ${vitals.dying && vitals.failed < 3 ? "" : "disabled"}`, "icon-button death-button")}</div><p>${esc(join([get(draft.ancestryId)?.name, get(draft.culture?.id)?.name, get(draft.background?.id)?.name, get(draft.classId)?.name, `Level ${preview.development.level}(${preview.development.current})`]))}</p></div></div><div class="vitals"><div class="vital"><small>HP</small><strong class="hp-value"><input aria-label="Current HP" data-field="play.hp" type="number" min="0" max="${Math.max(vitals.hp, vitals.recoveryMax)}" step="1" value="${vitals.hp}"><span>/ ${vitals.max || "—"}</span></strong></div><div class="vital"><small>SP</small><strong class="hp-value"><input aria-label="Current SP" data-field="play.sp" type="number" min="0" max="${vitals.limits.maxSp}" step="1" value="${vitals.sp}"><span>/ ${vitals.limits.maxSp || "—"}</span></strong></div><div class="vital"><small>${button("Grit", "use-grit", 'aria-label="Use Grit"', "vital-link")}</small><strong>${vitals.grit}</strong></div><div class="vital"><small>Speed</small><strong data-speed>${vitals.speed}${vitals.speed < vitals.maxSpeed ? ` / ${vitals.maxSpeed}` : ""}</strong></div><div class="vital"><small>${button("Recovery", "hero-recovery", 'aria-label="Recovery"', "vital-link")}</small><strong>${vitals.dead ? "Dead" : vitals.dying ? "Dying" : vitals.hp === 0 && vitals.max ? "Stable" : ""}</strong></div><div class="vital"><small>Armor DR</small><strong>${preview.resistances.physical ?? 0}</strong></div></div></header>
+  <div class="attributes">${ATTRIBUTES.map((key) => `<div class="attribute"><span>${title(key)}</span>${rollButton(title(key), `data-attribute-key="${key}"`)}<strong data-attribute="${key}">${signed(preview.attributes[key])}</strong></div>`).join("")}</div></div>`;
 }
 function knownCards() {
-  return [...new Set(preview.state.abilities)].map(get).filter(Boolean);
+  return [...new Set(preview.state.abilities)].map((id) => workshopAbility(preview, get(id))).filter(Boolean);
 }
 function searchRow(kind = "abilities") {
   return `<div class="search-row"><label>Search ${kind}<input id="search" type="search" value="${esc(query)}" placeholder="Name, discipline or keyword…" autocomplete="off"></label>${
@@ -266,13 +281,13 @@ function searchRow(kind = "abilities") {
 }
 function matches(r) {
   const text =
-    `${r.name} ${r.reference?.flavor?.join(" ") ?? ""} ${(r.requirements ?? []).map((v) => name(v.id)).join(" ")}`.toLowerCase();
+    `${r.name} ${r.reference?.flavor?.join(" ") ?? ""} ${(r.disciplineIds ?? []).map(name).join(" ")}`.toLowerCase();
   return (
     text.includes(query.toLowerCase()) &&
     (filter === "all" ||
       (filter === "universal" && isUniversalAbility(r)) ||
       r.id === filter ||
-      r.requirements?.some((v) => v.id === filter))
+      r.disciplineIds?.includes(filter))
   );
 }
 function sheet() {
@@ -281,17 +296,8 @@ function sheet() {
   return `<div class="sheet-body"><nav class="edge-tabs" role="tablist" aria-label="Character sheet" aria-orientation="vertical">${visibleTabs.map((t) => button(navIcon(t, t), "tab", `id="tab-${t}" aria-label="${t}" role="tab" aria-selected="${tab === t}" aria-controls="panel" tabindex="${tab === t ? 0 : -1}" data-tab="${t}"`)).join("")}</nav><section id="panel" class="panel sheet-panel sheet-${tab.toLowerCase()}" role="tabpanel" aria-labelledby="tab-${tab}">${sheetContent()}</section></div>`;
 }
 function disciplineTable() {
-  const known = Object.entries(preview.state.ranks)
-    .filter(([, rank]) => rank > 0)
-    .sort(([a], [b]) => name(a).localeCompare(name(b)));
-  const cells = ([id, rank]) =>
-    `<td>${button(esc(name(id)), "reference", `data-id="${esc(id)}"`, "table-link")}</td><td>${rank}</td>`;
-  const rows = [];
-  for (let i = 0; i < known.length; i += 2)
-    rows.push(
-      `<tr>${cells(known[i])}${known[i + 1] ? cells(known[i + 1]) : "<td></td><td></td>"}</tr>`,
-    );
-  return `<section class="known-disciplines"><h3>Known disciplines</h3><table class="discipline-table" aria-label="Known disciplines"><thead><tr><th scope="col">Discipline</th><th scope="col">Rank</th><th scope="col">Discipline</th><th scope="col">Rank</th></tr></thead><tbody>${rows.join("") || '<tr><td colspan="4">None</td></tr>'}</tbody></table></section>`;
+  return `<section class="known-disciplines"><h3>Known disciplines</h3><div class="discipline-strip">${preview.state.learning.disciplines.map(({id, name}) =>
+    `<span class="chip">${symbol(id)}${esc(name)}</span>`).join("") || "<small>None learned yet</small>"}</div></section>`;
 }
 function sheetContent() {
   if (tab === "Main") return mainPanel();
@@ -323,12 +329,13 @@ function sheetContent() {
         .map((record) => ({ record, basic: true, visible: true })),
       false,
     )}</details>`;
+  if (tab === "Spellbooks") return spellbooks();
   if (tab === "Inventory")
     return `${heading("", "Inventory", "", button("Add item", "add-item", "", "small"))}${inventoryStats()}${inventoryTable(true)}`;
   if (tab === "Crafting")
     return `${heading("", "Crafting", "")}${recipeRows()}`;
   if (tab === "Character")
-    return `${heading("", "Character", "")}<div class="columns"><section class="box"><h3>Origins</h3>${row("Ancestry", name(draft.ancestryId))}${row("Culture", name(draft.culture?.id))}${row("Background", name(draft.background?.id))}</section><section class="box"><h3 class="section-controls">Languages ${button("Add", "add-language", 'aria-label="Add language"', "small")}</h3>${languageTable()}</section></div>${collapsible("story", "Story", `<label class="story-editor"><textarea aria-label="Story" data-field="profile.story" maxlength="10000" placeholder="Write your character’s story…">${esc(draft.profile?.story ?? "")}</textarea></label>`)}${woundTable()}`;
+    return `${heading("", "Character", "")}<div class="columns"><section class="box"><h3>Origins</h3>${row("Ancestry", name(draft.ancestryId))}${row("Culture", name(draft.culture?.id))}${row("Background", name(draft.background?.id))}</section><section class="box"><h3 class="section-controls">Languages ${button("Add", "add-language", 'aria-label="Add language"', "small")}</h3>${languageTable()}</section></div>${collapsible("story", "Story", `<label class="story-editor"><textarea aria-label="Story" data-field="profile.story" maxlength="10000" placeholder="Write your character’s story…">${esc(draft.profile?.story ?? "")}</textarea></label>`)}${scarSection()}`;
   const dev = preview.development;
   return `${heading("", "Development", "")}<section class="box development-training"><h3 class="section-controls">Training ${button("Edit creation", "review", "", "small quiet")}</h3><div class="development-summary"><div class="level-control"><span>Level</span>${button("−", "level-down", 'aria-label="Decrease level"')}<strong>${dev.level}</strong>${button("+", "level-up", 'aria-label="Increase level"')}</div><div><small>Current DP</small><strong data-dp="current">${dev.current}</strong></div><div><small>DP spent</small><strong data-dp="spent">${dev.spent}</strong></div><div><small>Total DP</small><strong data-dp="total">${dev.total}</strong></div></div><div class="training-footer"><small>Each new level grants 8 + level DP. Unspent advancement DP carries forward.</small>${button("Spend DP", "advance", dev.current > 0 || draft.progression?.levels?.[dev.level]?.purchases?.length ? "" : "disabled", "primary small")}</div></section>${collapsible("signatures", "Class signatures", signatureProgress())}${
     preview.errors.filter((e) => e.level && e.code !== "signature").length
@@ -336,12 +343,79 @@ function sheetContent() {
           .filter((e) => e.level && e.code !== "signature")
           .map(
             (e) =>
-              `<li>Level ${e.level}: ${esc(e.text ?? (e.reasons ?? []).map((r) => r.text).join(" "))}</li>`,
+              `<li>${button(`Level ${e.level} · ${esc(e.id ? name(e.id) : "Learning")}`, "edit-learning-level", `data-level="${e.level}"`, "table-link")} ${esc(e.text ?? (e.reasons ?? []).map((r) => r.text).join(" "))}</li>`,
           )
           .join("")}</ul></section>`
       : ""
   }${collapsible("advancement-history", "Advancement history", advancementTable())}${collapsible("creation-ledger", "Creation ledger", ledgerTable() + (dev.expired ? `<small>${dev.expired} unspent creation DP expired.</small>` : ""), "", "box", false)}`;
 }
+function spellbooks() {
+  const learned = new Set(preview.state.learning.spells.map(({ id }) => id));
+  const books = catalogs.forge.books.map((book) => ({
+    ...book,
+    pages: book.spellIds.filter((id) => learned.has(id)).map(get),
+  })).filter((book) => book.pages.length);
+  return `${heading("", "Spellbooks", "")}${books.map((book) =>
+    `<section class="box spellbook-sheet"><h3>${symbol(book.disciplineId)}${esc(book.name)}</h3>
+    <div class="table-wrap"><table><thead><tr><th>Page</th><th>Spell</th><th>Casting</th><th>SP</th></tr></thead><tbody>
+    ${book.pages.map((spell) => `<tr><td>${esc(spell.page)}</td><td>${button(esc(spell.name), "reference", `data-id="${esc(spell.id)}"`, "table-link")}</td><td>${esc(spell.actionText ?? spell.action)}</td><td>${spell.sp}</td></tr>`).join("")}</tbody></table></div></section>`).join("")}`;
+}
+
+function spellProfile(record) {
+  return `<dl>${Object.entries({
+    Page: record.page, Casting: record.actionText ?? record.action,
+    SP: record.sp, Attribute: record.attribute, "Target / range": record.target,
+    Duration: record.duration, Trigger: record.trigger,
+  }).filter(([, value]) => value !== undefined).map(([label, value]) =>
+    `<dt>${esc(label)}</dt><dd>${esc(value)}</dd>`).join("")}</dl>${markdown(record.effect)}`;
+}
+
+function learnedImprovements(id) {
+  return (preview.state.learning.improvements.get(id) ?? [])
+    .map((entry) => `<section class="technique-improvement"><h3>${esc(entry.name)}</h3>${markdown(entry.effect)}</section>`).join("");
+}
+
+function castCost(record) {
+  return record?.page ? record.sp : record?.classId || record?.id.startsWith("combined:")
+    ? Number(record.effect?.match(/\b(?:pay )?(\d+) SP\b/i)?.[1] ?? NaN)
+    : NaN;
+}
+
+function isRitual(record) {
+  return record.action === "Ritual" || record.effect?.startsWith("Ritual");
+}
+
+function castFromSheet(id) {
+  const record = get(id);
+  const cost = castCost(record);
+  const learned = record?.page
+    ? preview.state.learning.spells.some((spell) => spell.id === id)
+    : preview.state.abilities.includes(id);
+  if (!learned || !Number.isInteger(cost)) throw new Error("Learn this working before casting it.");
+  if (!preview.limits) throw new Error("Finish creating this hero to track SP.");
+  const vitals = liveVitals();
+  if (vitals.hp <= 0 || vitals.dead) throw new Error("Regain HP before casting.");
+  if (cost > vitals.sp) throw new Error("You need more SP.");
+  const attribute = attributeFor(record);
+  const automatic = !attribute || /(?:^|[.!] )No (?:casting )?roll\./i.test(record.effect);
+  $("#reference").close();
+  if (isRitual(record)) {
+    draft.play = forgeSpendSp(playDraft(), vitals.limits, cost);
+    persist();
+    render();
+    popup(record.name, `${record.page ? spellProfile(record) : markdown(record.effect)}<p>${cost} SP spent. Finish the printed casting time before resolving the effect.</p>${automatic ? "" : `<div class="dialog-actions">${button("Roll when the Ritual ends", "finish-ritual", `data-id="${esc(id)}"`, "primary")}</div>`}`);
+    return;
+  }
+  if (!automatic) {
+    openSheetRoll({ key: attribute, id, cast: true });
+    return;
+  }
+  draft.play = forgeSpendSp(playDraft(), vitals.limits, cost);
+  persist();
+  render();
+  notice(`Casting recorded: ${record.name}${cost ? ` · ${cost} SP spent` : ""}.`);
+}
+
 function signatureProgress() {
   const cls = get(draft.classId),
     missing = missingSignatures();
@@ -365,11 +439,12 @@ function brief(record) {
   return body.find((b) => b.text)?.text ?? record.reference?.flavor?.[0] ?? "";
 }
 function attributeFor(record) {
+  if (record?.page) return ATTRIBUTES.find((key) => record.attribute?.toLowerCase().startsWith(key));
   // The universal opportunity is one Basic Melee, using that action's printed roll.
   if (record?.id === "ability-opportunity-attack")
     return attributeFor(get("ability-basic-melee"));
   const text =
-    record.reference?.rules.details.find((d) => d.label === "Attribute")
+    record?.reference?.rules.details.find((d) => d.label === "Attribute")
       ?.value ?? "";
   return ATTRIBUTES.find((key) => text.toLowerCase().startsWith(key)) ?? null;
 }
@@ -554,7 +629,7 @@ function recipeRows() {
               )
                 .map(({ ability, attribute }) =>
                   button(
-                    `${diceIcon} ${esc(title(attribute))}`,
+                    `${diceIcon} ${esc(attribute ? title(attribute) : "Roll")}`,
                     "recipe-roll",
                     `data-id="${ability.id}" data-recipe-id="${recipe.id}" aria-label="Roll ${esc(recipe.name)} with ${esc(ability.name)}"`,
                     "small",
@@ -632,16 +707,16 @@ function builderContent() {
     return `${heading("Step 1 of 8", "Identity & attributes", "Start with a name and six attributes. You can revisit every choice.")}<div class="field-grid">${field("Character name", "name", draft.name, "text", 'maxlength="200"')}</div><h3 class="section-title" style="margin-top:14px">Your attributes</h3><p class="inline-help">Assign −2 to +2 to each attribute, totaling +3. Each creation DP pool is 10 + Knowledge + Reason + Guile.</p><div class="field-grid" style="margin-top:10px">${ATTRIBUTES.map((key) => field(title(key), `attributes.${key}`, draft.attributes[key], "number", 'min="-2" max="2" step="1"')).join("")}</div><div class="callout" style="margin-top:10px">Assigned total: <strong>${signed(Object.values(draft.attributes).reduce((a, b) => a + b, 0))} / +3</strong></div>`;
   if (step === 1) {
     const ancestry = get(draft.ancestryId),
-      options = campaignLanguageOptions(DEFAULT_LANGUAGES, draft.languages);
+      options = campaignLanguageOptions(catalogs.languages, draft.languages);
     return `${heading("Step 2 of 8", "Ancestry & languages", "Choose your ancestry, two traits and a home language. Common is already known.")}<div class="cards">${catalogs.choices
       .filter((r) => r.kind === "ancestry")
       .map(
         (r) =>
-          `<article class="choice-card ${draft.ancestryId === r.id ? "chosen" : ""}"><h3>${r.name}</h3><p class="card-meta">+${r.hp} HP · Base speed ${r.speed} · +${r.coins} coins</p><div class="card-actions">${button("Read rules", "reference", `data-id="${r.id}"`, "quiet small")}${button(draft.ancestryId === r.id ? "Selected" : "Choose", "ancestry", `data-id="${r.id}"`, "small")}</div></article>`,
+          `<article class="choice-card ${draft.ancestryId === r.id ? "chosen" : ""}"><h3>${r.name}</h3><p class="card-meta">+${r.hp} HP per level · +${r.spContribution} SP · Base speed ${r.speed} · +${r.coins} coins</p><div class="card-actions">${button("Read rules", "reference", `data-id="${r.id}"`, "quiet small")}${button(draft.ancestryId === r.id ? "Selected" : "Choose", "ancestry", `data-id="${r.id}"`, "small")}</div></article>`,
       )
       .join(
         "",
-      )}</div><h3 class="section-title" style="margin-top:14px">Choose two traits</h3><div class="cards">${(ancestry?.traits ?? []).map((id) => choiceCheck(id, "traitIds", draft.traitIds)).join("") || '<p class="empty">Choose an ancestry to see its traits.</p>'}</div><div style="margin-top:12px">${select("Home language", "languages.home", option("", "Choose a home language", !draft.languages.home) + options.home.map((l) => option(l.id, `${l.name}${l.reason ? ` — ${l.reason}` : ""}`, l.selected, l.disabled)).join(""))}</div>${draft.traitIds.includes("trait-human-many-homes") ? `<h3 class="section-title" style="margin-top:12px">A Foot in Two Worlds</h3><div class="field-grid">${select("Other ancestry", "borrowedAncestryId", option("", "Choose another ancestry", !draft.borrowedAncestryId) + catalogs.choices.filter(r => r.kind === "ancestry" && r.id !== "ancestry-human").map(r => option(r.id, r.name, r.id === draft.borrowedAncestryId)).join(""))}${select("Borrowed trait", "borrowedTraitId", option("", "Choose one trait", !draft.borrowedTraitId) + (get(draft.borrowedAncestryId)?.traits ?? []).map(id => option(id, name(id), id === draft.borrowedTraitId)).join(""))}${select("Ancestry language", "languages.ancestry", option("", "Choose a DA-approved native language", !draft.languages.ancestry) + DEFAULT_LANGUAGES.filter(l => l.ordinary).map(l => option(l.id, l.name, l.id === draft.languages.ancestry)).join(""))}</div>${draft.borrowedTraitId ? button("Read borrowed trait", "reference", `data-id="${esc(draft.borrowedTraitId)}"`, "quiet small") : ""}<p class="inline-help">Choose a language native to the other ancestry with your DA.</p>` : ""}${staleSelections("traitIds", ancestry?.traits ?? [])}`;
+      )}</div><h3 class="section-title" style="margin-top:14px">Choose two traits</h3><div class="cards">${(ancestry?.traits ?? []).map((id) => choiceCheck(id, "traitIds", draft.traitIds)).join("") || '<p class="empty">Choose an ancestry to see its traits.</p>'}</div><div style="margin-top:12px">${select("Home language", "languages.home", option("", "Choose a home language", !draft.languages.home) + options.home.map((l) => option(l.id, `${l.name}${l.reason ? ` — ${l.reason}` : ""}`, l.selected, l.disabled)).join(""))}</div>${draft.traitIds.includes("trait-human-many-homes") ? `<h3 class="section-title" style="margin-top:12px">A Foot in Two Worlds</h3><div class="field-grid">${select("Other ancestry", "borrowedAncestryId", option("", "Choose another ancestry", !draft.borrowedAncestryId) + catalogs.choices.filter(r => r.kind === "ancestry" && r.id !== "ancestry-human").map(r => option(r.id, r.name, r.id === draft.borrowedAncestryId)).join(""))}${select("Borrowed trait", "borrowedTraitId", option("", "Choose one trait", !draft.borrowedTraitId) + (get(draft.borrowedAncestryId)?.traits ?? []).map(id => option(id, name(id), id === draft.borrowedTraitId)).join(""))}${select("Ancestry language", "languages.ancestry", option("", "Choose a DA-approved native language", !draft.languages.ancestry) + catalogs.languages.filter(l => l.ordinary).map(l => option(l.id, l.name, l.id === draft.languages.ancestry)).join(""))}</div>${draft.borrowedTraitId ? button("Read borrowed trait", "reference", `data-id="${esc(draft.borrowedTraitId)}"`, "quiet small") : ""}<p class="inline-help">Choose a language native to the other ancestry with your DA.</p>` : ""}${staleSelections("traitIds", ancestry?.traits ?? [])}`;
   }
   if (step === 2)
     return `${heading("", "Culture & background", "")}<div class="origin-grid">${[
@@ -656,7 +731,7 @@ function builderContent() {
               r.pairs.map((pair, index) =>
                 option(
                   `${r.id}|${index}`,
-                  `${r.name} — ${name(pair.disciplineId)} 1 + ${name(pair.abilityId)}`,
+                  `${r.name} — ${name(pair.disciplineId)} + ${name(pair.abilityId)}`,
                   draft[kind]?.id === r.id && draft[kind]?.pair === index,
                 ),
               ),
@@ -665,14 +740,14 @@ function builderContent() {
             draft[kind]?.id
               ? (() => {
                   const pair = get(draft[kind].id)?.pairs?.[draft[kind].pair];
-                  return `<div class="origin-grants">${button(esc(name(draft[kind].id)), "reference", `data-id="${esc(draft[kind].id)}"`, "table-link")}${pair ? `<div>${symbol(pair.disciplineId)}${esc(name(pair.disciplineId))} 1</div>${button(esc(name(pair.abilityId)), "reference", `data-id="${pair.abilityId}"`, "table-link")}` : ""}</div>`;
+                  return `<div class="origin-grants">${button(esc(name(draft[kind].id)), "reference", `data-id="${esc(draft[kind].id)}"`, "table-link")}${pair ? `<div>${symbol(pair.disciplineId)}${esc(name(pair.disciplineId))}</div>${button(esc(name(pair.abilityId)), "reference", `data-id="${pair.abilityId}"`, "table-link")}` : ""}</div>`;
                 })()
               : ""
           }</section>`,
       )
       .join(
         "",
-      )}</div><p class="inline-help">Each selection grants the named discipline rank and ability. A duplicate grant adds 1 DP.</p>`;
+      )}</div><p class="inline-help">Each choice starts a discipline and teaches its first entry. Each duplicate grants 1 DP.</p>`;
   if ([3, 5].includes(step)) return learning();
   if (step === 4) {
     const cls = catalogs.choices.find(
@@ -684,25 +759,25 @@ function builderContent() {
     )
       .map(
         (e) =>
-          `<article class="choice-card ${e.eligible ? "" : "unavailable"} ${draft.classId === e.choice.id ? "chosen" : ""}"><h3>${e.choice.name}</h3><p class="card-meta">+${e.choice.hp} HP · +${e.choice.coins} coins</p><p class="requirement">${e.reasons.map((r) => esc(r.text)).join(" ") || "You meet the requirements."}</p><div class="card-actions">${button("Read class", "reference", `data-id="${e.choice.id}"`, "quiet small")}${button(draft.classId === e.choice.id ? "Selected" : "Choose", "class", `data-id="${e.choice.id}" ${e.eligible ? "" : "disabled"}`, "small")}</div></article>`,
+          `<article class="choice-card ${e.eligible ? "" : "unavailable"} ${draft.classId === e.choice.id ? "chosen" : ""}"><h3>${e.choice.name}</h3><p class="card-meta">+${e.choice.hp} HP per level · +${e.choice.spContribution} SP · +${e.choice.coins} coins</p><p class="requirement">${e.reasons.map((r) => esc(r.text)).join(" ") || "You meet the requirements."}</p><div class="card-actions">${button("Read class", "reference", `data-id="${e.choice.id}"`, "quiet small")}${button(draft.classId === e.choice.id ? "Selected" : "Choose", "class", `data-id="${e.choice.id}" ${e.eligible ? "" : "disabled"}`, "small")}</div></article>`,
       )
       .join(
         "",
-      )}</div>${cls ? `<h3 class="section-title" style="margin-top:14px">Two starting disciplines</h3><div class="cards">${cls.startingDisciplines.map((id) => choiceCheck(id, "classDisciplines", draft.classDisciplines, (preview.stages[0].ranks[id] ?? 0) > 0)).join("")}</div><h3 class="section-title" style="margin-top:14px">Your first signature</h3><div class="cards">${cls.signatures[1].map((id) => `<article class="choice-card ${draft.signatureId === id ? "chosen" : ""}"><h3>${esc(name(id))}</h3><p class="card-copy">${esc(get(id)?.reference?.flavor?.[0])}</p><div class="card-actions">${button("Read signature", "reference", `data-id="${esc(id)}"`, "quiet small")}${button(draft.signatureId === id ? "Selected" : "Choose", "signature", `data-id="${esc(id)}"`, "small")}</div></article>`).join("")}</div>${staleSelections("classDisciplines", cls.startingDisciplines)}` : ""}`;
+      )}</div>${cls ? `<h3 class="section-title" style="margin-top:14px">Two starting disciplines</h3><div class="cards">${cls.startingDisciplines.map((id) => choiceCheck(id, "classDisciplines", draft.classDisciplines, preview.stages[0].learned.includes(id))).join("")}</div><h3 class="section-title" style="margin-top:14px">Your first signature</h3><div class="cards">${cls.signatures[1].map((id) => `<article class="choice-card ${draft.signatureId === id ? "chosen" : ""}"><h3>${esc(name(id))}</h3><p class="card-copy">${esc(get(id)?.reference?.flavor?.[0])}</p><div class="card-actions">${button("Read signature", "reference", `data-id="${esc(id)}"`, "quiet small")}${button(draft.signatureId === id ? "Selected" : "Choose", "signature", `data-id="${esc(id)}"`, "small")}</div></article>`).join("")}</div>${staleSelections("classDisciplines", cls.startingDisciplines)}` : ""}`;
   }
   if (step === 6) return equipment();
-  return `${heading("Step 8 of 8", "Review", preview.valid ? "Your character is ready. Export the file and import it through Create a Hero in Foundry." : "A few choices still need attention. Your draft is saved, and every step remains available.")}${
+  return `${heading("Step 8 of 8", "Review", preview.valid ? "Your character is ready to play. Save a copy or export your build." : "A few choices still need attention. Your draft is saved, and every step remains available.")}${
     preview.valid
       ? `<div class="callout"><h3>${preview.development.level > 1 ? "Character plan ready" : "Creation complete"}</h3><p>${esc(draft.name)} · ${esc(name(draft.ancestryId))} ${esc(name(draft.classId))}</p></div>`
       : `<ul class="error-list">${errors()
           .map((e) => `<li>${esc(e)}</li>`)
           .join("")}</ul>`
-  }<div class="columns" style="margin-top:12px"><section class="box"><h3>Your character</h3>${row("Maximum HP", preview.summary?.maximumHp ?? "—")}${row("Grit", preview.summary?.gritGranted ?? "—")}${row("Speed", preview.summary?.speed ?? "—")}${row("Learned abilities", preview.state.abilities.length)}${row("Coins", preview.inventory.remainingCoins)}</section><section class="box"><h3>Take your hero with you</h3>${button("Export character JSON", "ready-export", preview.valid ? "" : "disabled", "primary")}<p class="file-hint">In Foundry: open a new character → Create a Hero → Import character JSON. Review with your campaign’s language settings, then save your character.</p>${button("Save draft JSON", "export", "", "quiet")}</section></div><details class="planned"><summary>Creation ledger</summary>${ledgerTable()}</details>`;
+  }${preview.errors.some((entry) => entry.code === "purchase" && !entry.level) ? `<div class="dialog-actions">${button("Review level 0 learning", "step", 'data-step="3"')}${button("Review level 1 learning", "step", 'data-step="5"')}</div>` : ""}<div class="columns" style="margin-top:12px"><section class="box"><h3>Your character</h3>${row("Maximum HP", preview.summary?.maximumHp ?? "—")}${row("Maximum SP", preview.summary?.maximumSp ?? "—")}${row("Grit", preview.summary?.gritGranted ?? "—")}${row("Speed", preview.summary?.speed ?? "—")}${row("Learned abilities", preview.state.abilities.length)}${row("Coins", preview.inventory.remainingCoins)}</section><section class="box"><h3>Take your hero with you</h3>${button("Export character JSON", "ready-export", preview.valid ? "" : "disabled", "primary")}<p class="file-hint">Import this file into Character Workshop to open your hero on another browser.</p>${button("Save draft JSON", "export", "", "quiet")}</section></div><details class="planned"><summary>Creation ledger</summary>${ledgerTable()}</details>`;
 }
 function choiceCheck(id, list, values, owned = false) {
   const record = get(id);
   const description = record?.kind === "trait" ? record.reference?.flavor?.[0] : "";
-  return `<div class="check ${owned ? "already-owned" : ""}"><label style="display:flex;gap:10px;flex:1"><input type="checkbox" data-list="${list}" value="${esc(id)}" ${values.includes(id) ? "checked" : ""} ${owned && !values.includes(id) ? "disabled" : ""}><span>${esc(name(id))}${owned ? "<small>Already known</small>" : ""}${description ? `<small class="card-copy">${esc(description)}</small>` : ""}</span></label>${button("Read", "reference", `data-id="${esc(id)}"`, "quiet small")}</div>`;
+  return `<div class="check ${owned ? "already-owned" : ""}"><label style="display:flex;gap:10px;flex:1"><input type="checkbox" data-list="${list}" value="${esc(id)}" ${values.includes(id) ? "checked" : ""}><span>${esc(name(id))}${owned ? "<small>Already known</small>" : ""}${description ? `<small class="card-copy">${esc(description)}</small>` : ""}</span></label>${button("Read", "reference", `data-id="${esc(id)}"`, "quiet small")}</div>`;
 }
 function staleSelections(list, valid) {
   const stale = draft[list].filter((id) => !valid.includes(id));
@@ -713,137 +788,32 @@ function staleSelections(list, valid) {
 function stage() {
   return step === 3 ? 0 : 1;
 }
-function recipeSelects(r) {
-  const study = recipeStudyChoices(learningState(), catalogs.inventory.recipes);
-  const selected = recipeSelections[r.id] ?? study.defaultRecipeIds;
-  return [0, 1]
-    .map(
-      (i) =>
-        `<label>${i ? "Second" : "First"} recipe<select data-recipe="${r.id}" data-slot="${i}">${option("", "Choose a recipe", !selected[i])}${study.options.map((o) => option(o.id, o.name, selected[i] === o.id, o.disabled || selected[1 - i] === o.id)).join("")}</select></label>`,
-    )
-    .join("");
-}
-function selectionFor(r) {
-  return r.purchasePolicy === "new-recipe"
-    ? {
-        recipeIds:
-          recipeSelections[r.id] ??
-          recipeStudyChoices(learningState(), catalogs.inventory.recipes)
-            .defaultRecipeIds,
-      }
-    : {};
-}
-function learningMarket() {
-  const state = learningState();
-  const options = eligibleFirst(
-    catalogs.choices.filter(
-      (r) => r.kind === "ability" && !r.universal && matches(r),
-    ),
-    (r) => purchaseEligibility(r, state, catalogs.choices, selectionFor(r)),
-  );
-  const disciplineOptions = eligibleFirst(
-    catalogs.choices.filter((r) => r.kind === "discipline"),
-    (r) => purchaseEligibility(r, state, catalogs.choices, selectionFor(r)),
-  );
-  const disciplineCards = [true, false]
-    .map((eligible) => {
-      const entries = disciplineOptions.filter((e) => e.eligible === eligible);
-      return entries.length
-        ? `<div class="group-label">${eligible ? "Available to learn" : "Not available yet"} · ${entries.length}</div>${entries.map((e) => abilityCard(e.choice, { ...e, learning: true })).join("")}`
-        : "";
-    })
-    .join("");
-  const groups = [true, false]
-    .map((eligible) => {
-      const records = options.filter((e) => e.eligible === eligible);
-      if (!records.length) return "";
-      const limit = visibleChoices[eligible];
-      return (
-        `<div class="group-label">${eligible ? "Available to learn" : "Not available yet"} · ${records.length}</div>` +
-        records
-          .slice(0, limit)
-          .map((e) => abilityCard(e.choice, { ...e, learning: true }))
-          .join("") +
-        (records.length > limit
-          ? `<div class="more">${button(`Show more ${eligible ? "available choices" : "future choices"}`, "more", `data-group="${eligible}"`, "quiet")}</div>`
-          : "")
-      );
-    })
-    .join("");
-  return pickerKind === "discipline"
-    ? `<section data-learning-list="discipline"><div class="cards">${disciplineCards}</div></section>`
-    : `${searchRow()}<section data-learning-list="ability"><div class="cards" id="results">${groups || '<p class="empty">No matching abilities.</p>'}</div></section>`;
-}
 let pickerKind = null;
 let editingLevel = null;
 const activeLearningLevel = () => editingLevel ?? preview.development.level;
 function learning() {
-  const controls = `<div class="build-controls">${button("Learn abilities", "open-picker", 'data-kind="ability"', "primary small")}${mode === "advancement" || stage() ? button("Learn discipline", "open-picker", 'data-kind="discipline"', "small") : ""}</div>`;
-  return `<div class="learning-heading">${heading("", mode === "advancement" ? `Level ${activeLearningLevel()} learning` : stage() ? "Heroic learning" : "Early learning", "", controls)}</div>${currentBuild()}`;
+  const current = learningState();
+  const content = renderForge(catalogs.forge, current, {
+    view: forgeView, discipline: forgeDiscipline, selected: forgeSelected, zoom: forgeZoom,
+    eligibility: (id) => forgeEligibility(catalogs.forge, current, id),
+    canRefund: (id) => learningPurchases().some((entry) => entry.id === id),
+  });
+  const choices = learningPurchases().map((entry, index) => {
+    const failed = preview.errors.find((error) => error.code === "purchase" && error.id === entry.id && (
+      mode === "advancement" ? error.level === activeLearningLevel() : error.stage === stage()
+    ));
+    return `<li class="build-entry" data-build-id="${esc(entry.id)}"><div class="build-row"><div>${esc(name(entry.id))}${failed ? `<small>${esc(failed.reasons.map((reason) => reason.text).join(" "))}</small>` : ""}</div>${button("Remove", "remove-purchase", `data-index="${index}" aria-label="Remove ${esc(name(entry.id))}"`, "small quiet")}</div></li>`;
+  }).join("");
+  return `${heading("", mode === "advancement" ? `Level ${activeLearningLevel()} learning` : stage() ? "Heroic learning" : "Early learning", "")}${content}${acquisitions(true)}${choices ? `<details class="planned"><summary>Learning at this level</summary><ul>${choices}</ul></details>` : ""}`;
 }
 
-function currentBuild() {
-  const advancement = mode === "advancement",
-    heroic = advancement || stage() === 1;
-  const state = learningState();
-  const early = new Set(preview.stages[0].abilities);
-  const entries = [];
-  for (const id of state.abilities) {
-    const currentIndex = learningPurchases().findIndex((p) => p.id === id);
-    const locked = advancement
-      ? preview.levels[activeLearningLevel()].before.abilities.includes(id)
-      : heroic && early.has(id);
-    let source = locked
-      ? advancement
-        ? "Earlier levels"
-        : "Early learning"
-      : currentIndex >= 0
-        ? "Learned"
-        : "Granted";
-    for (const kind of ["culture", "background"]) {
-      const origin = get(draft[kind]?.id);
-      if (origin?.pairs?.[draft[kind]?.pair]?.abilityId === id)
-        source = name(origin.id);
-    }
-    if (id === draft.signatureId) source = name(draft.classId);
-    entries.push({ id, currentIndex, locked, source });
-  }
-  for (const [index, p] of learningPurchases().entries())
-    if (get(p.id)?.kind === "discipline")
-      entries.push({
-        id: p.id,
-        currentIndex: index,
-        locked: false,
-        source: `Rank ${state.ranks[p.id] ?? ""}`,
-      });
-  return `<section class="box current-build"><h3>Current Build</h3><ul>${entries.map((e) => `<li class="build-entry ${e.locked ? "build-locked" : ""}" data-build-id="${esc(e.id)}"><div class="build-row"><div>${button(esc(name(e.id)), "reference", `data-id="${esc(e.id)}"`, "table-link")}<small>${esc(e.source)}${e.locked ? " · Locked" : ""}</small></div>${!e.locked && e.currentIndex >= 0 ? button("Remove", "remove-purchase", `data-index="${e.currentIndex}"`, "small quiet") : ""}</div>${!e.locked ? acquisitions(true, e.id) : ""}</li>`).join("") || '<li class="empty">Learn an ability to begin.</li>'}</ul></section>`;
-}
 function openPicker(kind) {
-  if (kind === "discipline" && mode !== "advancement" && !stage()) return;
+  if (kind !== "equipment") return;
   pickerKind = kind;
   query = "";
   filter = "all";
-  visibleChoices = { true: 6, false: 4 };
   renderPicker();
   $("#picker").showModal();
-}
-function pickerReferences() {
-  if (pickerKind === "equipment") return "";
-  const state = learningState();
-  const ranks = Object.entries(state.ranks).filter(([, rank]) => rank > 0);
-  const purchases = [
-    ...draft.purchases[0],
-    ...(mode === "advancement" || stage() ? draft.purchases[1] : []),
-    ...(mode === "advancement"
-      ? Object.entries(draft.progression?.levels ?? {})
-          .filter(([level]) => Number(level) <= activeLearningLevel())
-          .flatMap(([, d]) => d.purchases ?? [])
-      : []),
-  ];
-  const ids = [...new Set(purchases.map((p) => p.id))].filter(
-    (id) => get(id)?.kind === "ability" && state.abilities.includes(id),
-  );
-  return `<div class="picker-reference"><div class="picker-disciplines" aria-label="Known disciplines">${ranks.map(([id, rank]) => `<span class="chip">${symbol(id)}${esc(name(id))} ${rank}</span>`).join("") || "No disciplines yet"}</div>${pickerKind === "ability" ? `<div class="purchased-abilities"><strong>Purchased abilities</strong><div>${ids.map((id) => button(esc(name(id)), "reference", `data-id="${esc(id)}"`, "reference-chip")).join("") || "<small>None yet</small>"}</div></div>` : ""}</div>`;
 }
 function renderPicker() {
   if (!pickerKind) return;
@@ -852,7 +822,7 @@ function renderPicker() {
   const active = document.activeElement,
     id = active?.id,
     pos = active?.selectionStart;
-  dialog.innerHTML = `<header><h2 id="picker-title">${pickerKind === "equipment" ? "Buy inventory items" : pickerKind === "discipline" ? "Learn disciplines" : "Learn abilities"}</h2>${button("Close", "close-picker", 'aria-label="Close selection"', "small")}</header><div class="picker-balance">${pickerKind === "equipment" ? `${preview.inventory.remainingCoins} coins remaining${preview.inventory.overBudget ? ` · ${preview.inventory.overBudget} over budget` : ""}` : `${learningState().dp} DP remaining`}</div>${pickerReferences()}<div class="picker-body">${pickerKind === "equipment" ? equipmentMarket() : learningMarket()}</div>`;
+  dialog.innerHTML = `<header><h2 id="picker-title">Buy inventory items</h2>${button("Close", "close-picker", 'aria-label="Close selection"', "small")}</header><div class="picker-balance">${preview.inventory.remainingCoins} coins remaining${preview.inventory.overBudget ? ` · ${preview.inventory.overBudget} over budget` : ""}</div><div class="picker-body">${equipmentMarket()}</div>`;
   dialog.querySelector(".picker-body").scrollTop = scroll;
   if (id && dialog.querySelector(`#${id}`)) {
     const replacement = dialog.querySelector(`#${id}`);
@@ -896,13 +866,13 @@ function acquisitions(onlyMissing = false, onlyId = null) {
   return (
     mode === "signature"
       ? [selectedSignature()].filter(Boolean)
-      : state.abilities
+      : [...new Set([...state.abilities, ...state.learned])]
   )
     .filter(
       (id) =>
         mode !== "advancement" ||
         (!classSignatures.includes(id) &&
-          !preview.levels[activeLearningLevel()].before.abilities.includes(id)),
+          !preview.levels[activeLearningLevel()].before.abilities.includes(id) && !preview.levels[activeLearningLevel()].before.learned.includes(id)),
     )
     .map((id) => catalogs.inventory.acquisitions.find((a) => a.id === id))
     .filter(
@@ -945,7 +915,7 @@ function acquisitions(onlyMissing = false, onlyId = null) {
               `${path}.languageId`,
               option("", "Choose language", !d.languageId) +
                 additionalLanguageOptions(
-                  DEFAULT_LANGUAGES,
+                  catalogs.languages,
                   mode === "advancement"
                     ? preview.play.languages
                     : state.languages,
@@ -1005,11 +975,8 @@ function contextStrip() {
   if (mode === "advancement" || [3, 5].includes(step)) {
     const state = learningState();
     return `<div class="context-strip"><strong data-dp-remaining>${state.dp} DP remaining</strong><span>Level ${mode === "advancement" ? activeLearningLevel() : stage()}</span><div class="discipline-strip" aria-label="Current disciplines">${
-      Object.entries(state.ranks)
-        .map(
-          ([id, rank]) =>
-            `<span class="chip">${symbol(id)}${esc(name(id))} ${rank}</span>`,
-        )
+      state.learning.disciplines
+        .map(({ id, name }) => `<span class="chip">${symbol(id)}${esc(name)}</span>`)
         .join("") ||
       "<small>Choose origins to receive starting disciplines.</small>"
     }</div></div>`;
@@ -1090,62 +1057,15 @@ function playDraft() {
   draft.play.conditions ??= [];
   return draft.play;
 }
-function woundScar(wound) {
-  const text =
-    workshopWoundDetails(wound, catalogs.wounds).record?.injury ?? wound.name;
-  return text.includes(";") ? text.slice(text.indexOf(";") + 1).trim() : text;
+function scarSection() {
+  const { scars, dying, dead } = liveVitals();
+  return `<section class="box"><h3 class="section-controls">Scars ${button("Record scar", "add-scar", dying || dead ? "disabled" : "", "small")}</h3>${scars.length ? `<ul>${scars.map((scar) => `<li>${esc(scar)}</li>`).join("")}</ul>` : "<p>No scars recorded.</p>"}</section>`;
 }
-function currentWoundEffects(wound) {
-  return liveVitals()
-    .woundEffects.filter((e) => e.id.startsWith(`${wound.id}-`))
-    .filter(
-      (e) =>
-        e.kind !== "condition" ||
-        preview.play.conditions.some((c) => c.id === e.id),
-    );
-}
-function healingButton(wound) {
-  const d = workshopWoundDetails(wound, catalogs.wounds);
-  return d.required === null || d.healed
-    ? ""
-    : button(
-        "Apply healing",
-        "heal-wound-dialog",
-        `data-id="${esc(wound.id)}" ${d.healed ? "disabled" : ""}`,
-        "small",
-      );
-}
-function woundTable() {
-  return `<section class="box wound-box"><h3 class="section-controls">Wounds ${button("Add", "add-wound", 'aria-label="Add wound"', "small")}</h3><div class="table-wrap"><table><thead><tr><th>Wound / scar</th><th>Active effects</th><th>Treatment</th><th>Progress</th><th>Apply healing</th><th></th></tr></thead><tbody>${
-    liveVitals()
-      .wounds.map((w) => {
-        const d = workshopWoundDetails(w, catalogs.wounds),
-          effects = currentWoundEffects(w);
-        return `<tr data-wound="${esc(w.id)}"><td>${button(esc(w.name), "wound-details", `data-id="${esc(w.id)}"`, "table-link")}<small class="item-source">Scar: ${esc(woundScar(w))}</small></td><td>${effects.map((e) => esc(woundEffectLabel(e))).join("; ") || (w.catalogId ? "None" : esc(w.notes))}</td><td>${esc(d.record?.capability ?? "—")}</td><td>${d.required !== null ? `<span>${d.progress} / ${d.required}${d.healed ? " · Healed" : ""}</span>` : `<small>${esc(d.record?.remedy ?? "Manual record")}</small>`}</td><td>${healingButton(w)}</td><td>${button("×", "delete-wound", `data-id="${esc(w.id)}" aria-label="Remove wound ${esc(w.name)}"`, "small quiet")}</td></tr>`;
-      })
-      .join("") || '<tr><td colspan="6">No wounds recorded.</td></tr>'
-  }</tbody></table></div></section>`;
-}
-function woundDetailsDialog(id) {
-  const w = liveVitals().wounds.find((w) => w.id === id);
-  if (!w) throw new Error("This wound is no longer recorded.");
-  const d = workshopWoundDetails(w, catalogs.wounds);
+
+function scarDialog() {
   popup(
-    w.name,
-    `<dl class="wound-details"><dt>Scar</dt><dd>${esc(woundScar(w))}</dd><dt>Active effects</dt><dd>${
-      currentWoundEffects(w)
-        .map((e) => esc(woundEffectLabel(e)))
-        .join("; ") || esc(w.catalogId ? "None" : w.notes)
-    }</dd><dt>Remedy</dt><dd>${esc(d.record?.remedy ?? w.notes)}</dd><dt>Recovery value</dt><dd>${d.required ?? "—"}</dd><dt>Healing progress</dt><dd>${d.progress}${d.healed ? " · Healed; scar retained" : ""}</dd>${w.roll ? `<dt>Wound roll</dt><dd>${esc(title(w.damageType))} · ${w.roll.faces.join(" · ")} → ${esc(w.roll.key)}</dd>` : ""}</dl><div class="dialog-actions">${healingButton(w)}</div>`,
-  );
-}
-function healWoundDialog(id) {
-  const w = liveVitals().wounds.find((w) => w.id === id);
-  if (!w) throw new Error("This wound is no longer recorded.");
-  const d = workshopWoundDetails(w, catalogs.wounds);
-  popup(
-    `Heal ${w.name}`,
-    `<p>${d.progress} / ${d.required ?? "—"} progress. Reaching the recovery value clears treatable effects; the scar remains.</p><label>Healing progress<select id="healing-progress" aria-label="Healing progress">${[1, 2, 3].map((n) => option(n, `${n} progress`, n === 1)).join("")}</select></label><div class="dialog-actions">${button("Apply healing", "confirm-heal-wound", `data-id="${esc(id)}"`, "primary")}</div>`,
+    "Record scar",
+    `<p>Choose one lasting reminder with the DA after surviving an incident that brought you to 0 HP.</p><label>Scar description<textarea id="scar-description" maxlength="500" rows="3"></textarea></label><div class="dialog-actions">${button("Save scar", "save-scar", "", "primary")}</div>`,
   );
 }
 function languageTable() {
@@ -1181,7 +1101,7 @@ function addItemDialog() {
 function addLanguageDialog() {
   popup(
     "Add language",
-    `<label>Language<select id="play-language" aria-label="Language">${option("", "Custom language", true)}${DEFAULT_LANGUAGES.filter(
+    `<label>Language<select id="play-language" aria-label="Language">${option("", "Custom language", true)}${catalogs.languages.filter(
       (l) => !preview.play.languages.some((k) => k.id === l.id),
     )
       .map((l) => option(l.id, l.name, false))
@@ -1339,72 +1259,48 @@ function randomDie(sides) {
   } while (a[0] >= limit);
   return 1 + (a[0] % sides);
 }
-function woundEffectLabel(e) {
-  if (e.kind === "condition")
-    return `${title(e.key)} ${e.rating}${e.persistence === "starred" ? " ★" : ""}`;
-  if (e.kind === "movementPenalty") return `Speed −${e.amount}`;
-  if (e.kind === "rollModifier")
-    return `${e.amount} ${e.polarity}${e.amount > 1 ? "s" : ""}: ${e.printedContext ?? e.context}`;
-  if (e.kind === "forcedMovement")
-    return `${title(e.direction)} ${e.distance} squares; choose direction and legal placement at the table`;
-  return "Last Words";
-}
-function woundDialog() {
-  popup(
-    "New wound",
-    `<label>Damage type<select id="wound-type" aria-label="Wound damage type">${DAMAGE_TYPES.map((type) => option(type, title(type), type === "physical")).join("")}</select></label><p>${liveVitals().wounds.length} prior wounds · roll ${Math.min(5, 3 + liveVitals().wounds.length)}d6, keep the highest three.</p><div id="wound-roll-result" role="status" aria-live="polite"></div><div class="dialog-actions">${button("Roll wound", "confirm-roll-wound", "", "primary")}</div>`,
-  );
-}
-function rollNewWound() {
-  const wounds = (playDraft().wounds ??= []);
-  if (wounds.length >= 100)
-    throw new Error("The character supports 100 recorded wounds.");
-  const prior = wounds.length,
-    faces = Array.from({ length: Math.min(5, 3 + prior) }, () => randomDie(6));
-  const result = rolledWorkshopWound({
-    catalog: catalogs.wounds,
-    damageType: $("#wound-type").value,
-    priorWounds: prior,
-    faces,
-    id: `wound-${crypto.randomUUID()}`,
-  });
-  const conditions = result.effects.filter((e) => e.kind === "condition");
-  if (playDraft().conditions.length + conditions.length > 100)
-    throw new Error(
-      "The character supports 100 conditions. Remove resolved conditions first.",
-    );
-  wounds.push(result.wound);
-  result.effects.forEach((effect, index) => {
-    if (effect.kind === "condition")
-      playDraft().conditions.push({
-        id: `${result.wound.id}-${index}`,
-        key: effect.key,
-        rating: effect.rating,
-        persistence: effect.persistence,
-        source: result.wound.name,
-      });
-    if (effect.kind === "lastWords")
-      Object.assign(playDraft(), {
-        hp: 0,
-        failedDeathRolls: 3,
-        lastWords: true,
-      });
-  });
-  persist();
-  render();
-  $("#wound-roll-result").innerHTML =
-    `<p>${faces.join(" · ")} → <strong>${result.wound.roll.key}</strong></p><strong>${esc(result.wound.name)}</strong><p>${result.effects.map((e) => esc(woundEffectLabel(e))).join("; ") || "Scar recorded; no mechanical penalty."}</p><p>${esc(result.wound.notes)}</p>`;
-}
 function gritDialog() {
-  const available = liveVitals().grit;
+  const v = liveVitals();
+  const trigger = v.gritTrigger ?? "turn-start";
+  const ready = !v.immediateDeathRoll && forgeCanSpendGrit(v, v.limits, trigger);
   popup(
     "Use Grit",
-    `<p>Spend 1 Grit to restore HP to ${liveVitals().recoveryMax} and clear death marks? Wounds remain.</p><p>${available} Grit remaining.${draft.play?.lastWords ? " Ordinary Grit cannot reverse Last Words." : ""}</p><div class="dialog-actions">${button("Cancel", "close-reference")}${button("Spend 1 Grit", "confirm-grit", available > 0 && !draft.play?.lastWords ? "" : "disabled", "primary")}</div>`,
+    `<p>Spend one lifetime Grit to return to ${Math.min(Math.ceil(v.max / 2), v.recoveryMax)} HP and clear both death tallies.</p><p>${v.grit} Grit remaining. Spend it when you fall, when your Dying turn starts, after a failure, or while stabilized at 0 HP.</p><div class="dialog-actions">${button("Spend 1 Grit", "confirm-grit", ready ? `data-trigger="${trigger}"` : "disabled", "primary")}</div>`,
   );
 }
+
+function recoveryDialog() {
+  const v = liveVitals();
+  const canAct = v.max > 0 && !v.dead && v.failed < 3 && !v.immediateDeathRoll;
+  const restHour = (v.lastRestHour ?? -16) + 24;
+  const spRecovery = preview.state.learning?.recoverySp ?? 0;
+  const firstAid = v.firstAidPending
+    ? button("Finish first aid", "finish-first-aid", canAct ? "" : "disabled") + button("Interrupt first aid", "interrupt-first-aid", canAct ? "" : "disabled")
+    : button("Begin first aid", "begin-first-aid", canAct && !v.firstAidUsed ? "" : "disabled");
+  popup("Recovery", `
+    <p><strong>${v.hp} / ${v.max} HP</strong> · <strong>${v.sp} / ${v.limits.maxSp} SP</strong> · ${v.grit} Grit</p>
+    ${v.immediateDeathRoll ? `<p>Resolve the death roll for damage at 0 HP before moving on.</p>${button("Roll Fortitude", "death-roll")}` : ""}
+    ${v.dying ? `<p>Failures ${v.failed} / 3 · Successes ${v.successfulDeathRolls} / 3</p><div class="dialog-actions">${button("Stabilize", "stabilize-hero", canAct ? "" : "disabled")}${v.failed === 3 ? button("Last Words", "hero-last-words") : ""}</div>` : ""}
+    <h3>First aid</h3><p>One treatment per recipient between safe overnight rests. The healer uses medical supplies when treatment begins. A Dying patient continues to roll Fortitude.</p>
+    <p>${v.firstAidPending ? "Treatment in progress" : v.firstAidUsed ? "Treatment used" : "Treatment available"}</p><div class="dialog-actions">${firstAid}</div>
+    <h3>Safe overnight rest</h3><p>After eight safe hours including at least six hours of sleep or equivalent rest, restore HP and SP and renew first aid. Count elapsed hours from the start of your record.</p>
+    <label>Hour rest finished<input id="hero-rest-hour" type="number" min="${restHour}" max="1000000000" value="${restHour}"></label>
+    <div class="dialog-actions">${button("Complete safe rest", "complete-hero-rest", canAct && !v.dying ? "" : "disabled")}</div>
+    ${spRecovery ? `<h3>Spellcraft Recovery</h3><p>After one uninterrupted safe hour, restore ${spRecovery} SP. Use once between safe overnight rests.</p><div class="dialog-actions">${button("Complete one hour", "hero-sp-recovery", canAct && !v.dying && !v.spellcraftRecoveryUsed ? "" : "disabled")}</div>` : ""}
+    <div class="dialog-actions">${button("Record scar", "add-scar", canAct && !v.dying ? "" : "disabled")}</div>`);
+}
+
+function firstAidDialog() {
+  popup("Finish first aid", `
+    <p>Choose the healer’s treatment and their Knowledge result after the required time.</p>
+    <label>Treatment<select id="aid-treatment"><option value="0">First aid · 10 minutes · 2/4/6 HP</option><option value="1">Field Dressing I · 10 minutes · 3/5/7 HP</option><option value="2">Field Dressing II · 10 minutes · 4/6/8 HP</option><option value="2">Field Dressing III · 5 minutes · 4/6/8 HP</option><option value="2">Emergency Treatment · Main Action · 4/6/8 HP</option></select></label>
+    <label>Knowledge result<select id="aid-outcome"><option value="weak">Weak</option><option value="standard">Standard</option><option value="strong">Strong</option></select></label>
+    <div class="dialog-actions">${button("Record treatment", "record-first-aid", "", "primary")}</div>`);
+}
+
 function debtRecoveryDialog() {
   const v = liveVitals();
-  popup("Recovery until dawn", `<p>${v.recovery.unavailableHp} HP unavailable until next dawn. Healing and a safe breath can restore HP to ${v.recoveryMax} / ${v.max}.</p><p>The Debt Comes Due: ${v.recovery.debtUsed ? "used today" : "available"}. Use it after a sheet attribute roll to pay 1 HP and replace that roll with a new result using the same modifiers.</p><p>Declare the next dawn when it occurs in play. This unlocks recovery and refreshes the daily use; it does not restore HP.</p><div class="dialog-actions">${button("Safe breath", "debt-safe-breath", v.hp > 0 ? "" : "disabled")}${button("Next dawn", "debt-next-dawn", "", "primary")}</div>`);
+  popup("Recovery until dawn", `<p>${v.recovery.unavailableHp} HP unavailable until next dawn. Healing and safe overnight rest can restore HP to ${v.recoveryMax} / ${v.max}.</p><p>The Debt Comes Due: ${v.recovery.debtUsed ? "used today" : "available"}. Use it after a sheet attribute roll to pay 1 HP and replace that roll with a new result using the same modifiers.</p><p>Declare the next dawn when it occurs in play. This unlocks recovery and refreshes the daily use.</p><div class="dialog-actions">${button("Recovery", "hero-recovery")}${button("Next dawn", "debt-next-dawn", "", "primary")}</div>`);
 }
 function resupplyDialog(instance) {
   const item = preview.inventory.items.find((i) => i.instanceId === instance);
@@ -1439,8 +1335,9 @@ function useSupply() {
   const item = preview.inventory.items.find((i) => i.instanceId === id);
   if (!item || !item.carried || !item.inventoryDie || !item.quantity)
     throw new Error("This supply is exhausted or no longer carried.");
-  if (draft.play?.lastWords && HEALING_POTION_IDS.includes(item.catalogId))
-    throw new Error("Ordinary healing cannot reverse Last Words.");
+  const vitals = liveVitals();
+  if (HEALING_POTION_IDS.includes(item.catalogId) && (vitals.dead || vitals.failed === 3 || vitals.immediateDeathRoll))
+    throw new Error("Resolve the death roll before healing.");
   const face = randomDie(item.inventoryDie);
   const result = workshopSupplyUse({
     item,
@@ -1449,15 +1346,13 @@ function useSupply() {
     maxHp: liveVitals().max,
     catalog: catalogs.inventory,
     lifeResistance: preview.resistances.life ?? 0,
-    lastWords: Boolean(draft.play?.lastWords || draft.play?.failedDeathRolls === 3),
     recovery: draft.play?.recovery,
   });
   const inv = playDraft().inventory;
   inv.overrides ??= {};
   inv.overrides[id] = { ...inv.overrides[id], inventoryDie: result.after };
   if (result.potion) {
-    playDraft().hp = result.hp;
-    if (result.hp > 0) playDraft().failedDeathRolls = 0;
+    Object.assign(playDraft(), forgeHeal(playDraft(), vitals.limits, result.healed));
   }
   persist();
   render();
@@ -1467,20 +1362,17 @@ function useSupply() {
     $("#reference [data-action=confirm-supply]").disabled = true;
 }
 let activeRoll = null;
-function deathMarks(value) {
-  return `<div class="death-marks" role="group" aria-label="Death marks">${[1, 2, 3].map((n) => button(skullIcon, "death-mark", `data-marks="${n}" aria-label="Set ${n} death mark${n === 1 ? "" : "s"}" aria-pressed="${n <= value}"`, `death-mark ${n <= value ? "filled" : ""}`)).join("")}</div><p class="death-count">Failed death rolls: <strong>${value} / 3</strong></p>`;
+function deathMarks(v) {
+  return `<p>Failure marks <strong>${v.failedDeathRolls} / 3</strong> · Success marks <strong>${v.successfulDeathRolls} / 3</strong></p>`;
 }
-function refreshDeathMarks(value) {
-  $("#death-failures").value = String(value);
-  $("#death-mark-display").innerHTML = deathMarks(value);
-}
-function openSheetRoll({ key, id, death = false, defense = false }) {
+function openSheetRoll({ key, id, death = false, defense = false, cast = false, finishRitual = false }) {
   const record = get(id),
     attribute = death ? "fortitude" : (key ?? attributeFor(record));
   if (!ATTRIBUTES.includes(attribute))
     throw new Error("Choose an attribute for this roll.");
-  activeRoll = { death, id, defense };
-  const failed = liveVitals().failed;
+  activeRoll = { death, id, defense, cast, finishRitual };
+  const v = liveVitals();
+  if (death && (!v.dying || v.failed === 3)) throw new Error("Death rolls are for a Dying hero.");
   popup(
     death
       ? "Death roll"
@@ -1488,9 +1380,9 @@ function openSheetRoll({ key, id, death = false, defense = false }) {
         ? "Evade"
         : (record?.name ?? title(attribute)),
     `
-    ${death ? `<section class="death-panel"><input id="death-failures" type="hidden" value="${failed}"><div id="death-mark-display">${deathMarks(failed)}</div><div class="death-outcomes"><span><b>Weak</b> +1 mark</span><span><b>Standard</b> No change</span><span><b>Strong</b> Stabilize</span></div><p class="inline-help">Fortitude · Natural 111: two marks · Natural 666: regain 1 HP · Three marks: Last Words</p></section>` : ""}
+    ${death ? `<section class="death-panel"><div id="death-mark-display">${deathMarks(v)}</div><div class="death-outcomes"><span><b>Weak</b> +1 failure</span><span><b>Standard</b> No change</span><span><b>Strong</b> +1 success</span></div><p class="inline-help">${v.immediateDeathRoll ? "Resolve the roll for the damage just taken." : "Roll at the start of your Dying turn."} Three successes stabilize you at 0 HP.</p>${!v.immediateDeathRoll && forgeCanSpendGrit(v, v.limits, "turn-start") ? button("Spend Grit instead", "confirm-grit", 'data-trigger="turn-start"') : ""}</section>` : ""}
     ${defense ? '<p class="inline-help">Choose the defense attribute named by the attack. Strong defense takes Weak attack effects; Weak defense takes Strong attack effects.</p>' : ""}
-    ${rollSetup({ attributes: Object.fromEntries((death ? ["fortitude"] : ATTRIBUTES).map((k) => [k, draft.attributes[k]])), selected: attribute, attributeId: "sheet-roll-attribute", value: draft.attributes[attribute], netId: "recipe-net", labelId: "roll-net-value" })}
+    ${rollSetup({ attributes: Object.fromEntries((death ? ["fortitude"] : ATTRIBUTES).map((k) => [k, preview.attributes[k]])), selected: attribute, attributeId: "sheet-roll-attribute", value: preview.attributes[attribute], netId: "recipe-net", labelId: "roll-net-value" })}
     ${
       death
         ? ""
@@ -1504,26 +1396,25 @@ function openSheetRoll({ key, id, death = false, defense = false }) {
               "",
             )}</div><small>Choose applicable abilities; adjust the attribute and net Boons/Banes above.</small></details>`
     }
-    ${
-      !death && liveVitals().woundEffects.some((e) => e.kind === "rollModifier")
-        ? `<details><summary>Wound effects</summary>${liveVitals()
-            .woundEffects.filter((e) => e.kind === "rollModifier")
-            .map(
-              (e) =>
-                `<label class="inline-toggle"><input type="checkbox" data-wound-net="${e.polarity === "boon" ? e.amount : -e.amount}">${esc(e.injury)} · ${esc(woundEffectLabel(e))}</label>`,
-            )
-            .join("")}</details>`
-        : ""
-    }
-    <div id="recipe-roll-result" role="status" aria-live="polite"></div><div class="dialog-actions">${button("Roll", "roll-sheet", "", "primary")}</div>${record ? `<details><summary>Ability rules</summary>${markdown(references.records[id]?.markdown ?? "")}</details>` : ""}`,
+    <div id="recipe-roll-result" role="status" aria-live="polite"></div><div class="dialog-actions">${button(cast ? `Cast and roll${castCost(record) ? ` · ${castCost(record)} SP` : ""}` : "Roll", "roll-sheet", "", "primary")}</div>${record ? `<details ${cast || finishRitual ? "open" : ""}><summary>Rules</summary>${record.page ? spellProfile(record) : markdown(record.effect ?? references.records[id]?.markdown ?? "")}${learnedImprovements(id)}</details>` : ""}`,
   );
   bindRollSetup($("#reference .reference-body"), {
-    getAttributeValue: () => draft.attributes[$("#sheet-roll-attribute").value],
+    getAttributeValue: () => preview.attributes[$("#sheet-roll-attribute").value],
   });
-  const automatic = [...conditionRollSources(preview.play.conditions, {
+  if (cast || finishRitual) $("#sheet-roll-attribute").disabled = true;
+  const conditions = [...preview.play.conditions];
+  if (defense && v.max > 0 && v.hp === 0 && !v.dead) {
+    // Stable heroes at 0 HP retain the same defense Banes as unconscious heroes.
+    conditions.push({ id: "hp-defense", key: "unconscious", rating: 1, persistence: "binary", source: "0 HP" });
+  }
+  const automatic = [...conditionRollSources(conditions, {
     mode: death ? "death" : defense ? "defense" : "attribute",
     perceivedSources: [],
   }), ...(defense ? passiveAncestryDefenseSources(effectiveTraits()) : [])];
+  if (death && effectiveTraits().includes("trait-human-weathered")) {
+    automatic.push({ kind: "boon", amount: 1 });
+    $("#recipe-roll-result").innerHTML = "<p>Never Quite Finished gives 1 Boon to this Fortitude roll.</p>";
+  }
   const net = Math.max(
     -3,
     Math.min(
@@ -1539,10 +1430,16 @@ function openSheetRoll({ key, id, death = false, defense = false }) {
 }
 function rollSheetDice() {
   const key = $("#sheet-roll-attribute").value;
-  const failed = activeRoll.death ? Number($("#death-failures").value) : 0;
-  if (!Number.isInteger(failed) || failed < 0 || failed > 3)
-    throw new Error("Use 0–3 failed death rolls.");
-  const result = displayDice(draft.attributes[key]);
+  if ((activeRoll.cast || activeRoll.finishRitual) && liveVitals().hp <= 0)
+    throw new Error("Regain HP before resolving this working.");
+  if (activeRoll.cast) {
+    const cost = castCost(get(activeRoll.id));
+    draft.play = forgeSpendSp(playDraft(), liveVitals().limits, cost);
+    persist();
+    render();
+  }
+  const result = displayDice(preview.attributes[key], undefined, activeRoll.death);
+  if (activeRoll.cast || activeRoll.finishRitual) $("#reference [data-action=roll-sheet]").disabled = true;
   if (activeRoll.defense)
     $("#recipe-roll-result").insertAdjacentHTML(
       "beforeend",
@@ -1558,38 +1455,31 @@ function rollSheetDice() {
     );
   if (!activeRoll.death) {
     activeRoll.last = {
-      attribute: draft.attributes[key], net: Number($("#recipe-net").value),
+      attribute: preview.attributes[key], net: Number($("#recipe-net").value),
       selected, defense: activeRoll.defense,
     };
     appendDebtReroll();
   }
-  if (activeRoll.death && (draft.play?.lastWords || draft.play?.failedDeathRolls === 3)) {
-    $("#recipe-roll-result").insertAdjacentHTML(
-      "beforeend",
-      "<p>Last Words remains; an ordinary death roll cannot reverse it.</p>",
-    );
-    return;
-  }
   if (activeRoll.death) {
-    const marks = Number($("#death-failures").value);
-    if (!Number.isInteger(marks) || marks < 0 || marks > 3)
-      throw new Error("Use 0–3 failed death rolls.");
-    const play = playDraft();
-    const death = workshopDeathResult({
-      failed: marks,
-      hp: liveVitals().hp,
-      retained: result.retained,
-      fortitude: draft.attributes[key],
+    const v = liveVitals();
+    const resultState = forgeDeathRoll(playDraft(), v.limits, {
+      retained: result.retained, fortitude: preview.attributes[key],
     });
-    play.failedDeathRolls = death.failed;
-    if (death.failed === 3) play.lastWords = true;
-    play.hp = death.hp;
-    const outcome = death.outcome;
-    refreshDeathMarks(play.failedDeathRolls);
-    $("#recipe-roll-result").insertAdjacentHTML(
-      "beforeend",
-      `<p>${outcome} Failed death rolls: ${play.failedDeathRolls}.</p>`,
-    );
+    const current = resultState.play;
+    Object.assign(playDraft(), current, { immediateDeathRoll: false });
+    $("#death-mark-display").innerHTML = deathMarks(current);
+    const outcome = $("#recipe-roll-result");
+    if (current.failedDeathRolls === 3) {
+      outcome.insertAdjacentHTML("beforeend", `<p>Third failure. Spend Grit or use an eligible ability now, or describe your Last Words.</p><div class="dialog-actions">${button("Spend Grit", "confirm-grit", forgeCanSpendGrit(current, v.limits, "failure") ? 'data-trigger="failure"' : "disabled")}${button("Last Words", "hero-last-words")}</div>`);
+      $("#reference [data-action=roll-sheet]").disabled = true;
+    } else if (!current.dying) {
+      outcome.insertAdjacentHTML("beforeend", "<p>Stabilized at 0 HP. Both tallies cleared.</p>");
+      $("#reference [data-action=roll-sheet]").disabled = true;
+    } else if (forgeCanSpendGrit(current, v.limits, "failure")) {
+      outcome.insertAdjacentHTML("beforeend", `<div class="dialog-actions">${button("Spend Grit", "confirm-grit", 'data-trigger="failure"')}</div>`);
+    }
+    $("#reference [data-action=roll-sheet]").disabled = true;
+    $("#reference [data-trigger=turn-start]")?.remove();
     persist();
     render();
   }
@@ -1629,22 +1519,23 @@ function recipeRoll(id, recipeId) {
   );
   popup(
     `Craft ${recipe.name}`,
-    `<p><strong>${esc(ability.name)}</strong> · ${title(attribute)} ${signed(draft.attributes[attribute])} · ${recipe.attemptMinutes} min per attempt</p>${recipe.maximumDie ? `<label>Supply<select id="craft-supply">${supplies.map((i) => `<option value="${esc(i.instanceId)}">${esc(name(i.catalogId))} · ${i.inventoryDie ? "d" + i.inventoryDie : "Empty"}</option>`).join("")}<option value="">New supply</option></select></label>` : `<p id="craft-progress">${craftingStatus(recipe)}</p>`}<p>${noRollBrew(id, recipe) ? "Brew to d4 without a roll" : `Weak 1 · Standard 2 · Strong 3 ${recipe.maximumDie ? "supply steps" : "progress"}`}. Tools, materials and time follow the recipe.</p>${netControl({ id: "recipe-net", labelId: "roll-net-value" })}<div id="recipe-roll-result" role="status" aria-live="polite"></div><div class="dialog-actions">${button(noRollBrew(id, recipe) ? "Brew" : "Roll", "roll-recipe", `data-id="${esc(id)}" data-recipe-id="${esc(recipeId)}"`, "primary")}</div><details><summary>Recipe rules</summary>${markdown(references.records[recipeId]?.markdown ?? "")}</details>`,
+    `<p><strong>${esc(ability.name)}</strong> · ${title(attribute)} ${signed(preview.attributes[attribute])} · ${recipe.attemptMinutes} min per attempt</p>${recipe.maximumDie ? `<label>Supply<select id="craft-supply">${supplies.map((i) => `<option value="${esc(i.instanceId)}">${esc(name(i.catalogId))} · ${i.inventoryDie ? "d" + i.inventoryDie : "Empty"}</option>`).join("")}<option value="">New supply</option></select></label>` : `<p id="craft-progress">${craftingStatus(recipe)}</p>`}<p>${noRollBrew(id, recipe) ? "Brew to d4 without a roll" : `Weak 1 · Standard ${preview.state.learned.includes("craft:supplies:3") ? "3 · Strong 4" : "2 · Strong 3"} ${recipe.maximumDie ? "supply steps" : "progress"}`}. Tools, materials and time follow the recipe.</p>${netControl({ id: "recipe-net", labelId: "roll-net-value" })}<div id="recipe-roll-result" role="status" aria-live="polite"></div><div class="dialog-actions">${button(noRollBrew(id, recipe) ? "Brew" : "Roll", "roll-recipe", `data-id="${esc(id)}" data-recipe-id="${esc(recipeId)}"`, "primary")}</div><details><summary>Recipe rules</summary>${markdown(references.records[recipeId]?.markdown ?? "")}</details>`,
   );
   if (recipe.maximumDie)
     $("#craft-supply").value = draft.play.crafting[recipeId].supplyId ?? "";
   bindRollSetup($("#reference .reference-body"), {
-    getAttributeValue: () => draft.attributes[attributeFor(ability)],
+    getAttributeValue: () => preview.attributes[attributeFor(ability)],
   });
 }
 function rollRecipeDice(id, recipeId) {
   if (!draft.play?.crafting?.[recipeId]?.active) return;
-  const rolled = noRollBrew(id, get(recipeId)) ? {} : displayDice(draft.attributes[attributeFor(get(id))]);
+  const rolled = noRollBrew(id, get(recipeId)) ? {} : displayDice(preview.attributes[attributeFor(get(id))]);
   const result = workshopCraft({
     play: playDraft(),
     recipe: get(recipeId),
     tier: rolled.tier,
     abilityId: id,
+    improved: preview.state.learned.includes("craft:supplies:3"),
     items: preview.inventory.items,
     supplyId: $("#craft-supply")?.value,
     instanceId: `inventory-${crypto.randomUUID()}`,
@@ -1680,7 +1571,7 @@ function rollRecipeDice(id, recipeId) {
   }
 }
 
-function displayDice(attribute, originalNet) {
+function displayDice(attribute, originalNet, deathRoll = false) {
   const net = originalNet ?? Number($("#recipe-net").value);
   const plan = rollPlan({
     attribute,
@@ -1693,36 +1584,9 @@ function displayDice(attribute, originalNet) {
     .slice(0, 3);
   const result = classifyRoll(retained, plan.attribute);
   $("#recipe-roll-result").innerHTML =
-    `<strong>${title(result.tier)} · ${result.total}</strong><p>${faces.join(" · ")} → keep ${retained.join(" + ")} ${signed(plan.attribute)}${result.natural !== "none" ? ` · ${result.natural === "critical" ? "Natural 666: additional benefit" : "Natural 111: complication"}` : ""}</p>`;
+    `<strong>${title(result.tier)} · ${result.total}</strong><p>${faces.join(" · ")} → keep ${retained.join(" + ")} ${signed(plan.attribute)}${!deathRoll && result.natural !== "none" ? ` · ${result.natural === "critical" ? "Natural 666: additional benefit" : "Natural 111: complication"}` : ""}</p>`;
   return { ...result, retained };
 }
-document.addEventListener("change", (event) => {
-  if (event.target.dataset.woundNet) {
-    const slider = $("#recipe-net");
-    slider.value = String(
-      Math.max(
-        -3,
-        Math.min(
-          3,
-          Number(slider.value) +
-            Number(event.target.dataset.woundNet) *
-              (event.target.checked ? 1 : -1),
-        ),
-      ),
-    );
-    slider.dispatchEvent(new Event("input", { bubbles: true }));
-  }
-  if (event.target.id === "death-failures") {
-    const value = Number(event.target.value);
-    if (!Number.isInteger(value) || value < 0 || value > 3) {
-      event.target.value = String(liveVitals().failed);
-      return;
-    }
-    playDraft().failedDeathRolls = value;
-    persist();
-    render();
-  }
-});
 document.addEventListener("input", (event) => {
   if (event.target.id === "recipe-net") {
     const value = Number(event.target.value);
@@ -1746,6 +1610,8 @@ function render({ focusHeading = false } = {}) {
       ? active.selectionStart
       : null;
   const scroll = $("#panel")?.scrollTop ?? 0;
+  const pan = $(".forge-map-scroll");
+  const panOffset = pan ? [pan.scrollLeft, pan.scrollTop] : null;
   app.innerHTML =
     header() +
     (mode === "builder"
@@ -1778,6 +1644,7 @@ function render({ focusHeading = false } = {}) {
       replacement.setSelectionRange(position, position);
   }
   if ($("#panel")) $("#panel").scrollTop = focusHeading ? 0 : scroll;
+  if (panOffset && !focusHeading) $(".forge-map-scroll")?.scrollTo(...panOffset);
 }
 function set(path, value) {
   const keys = path.split(".");
@@ -1815,15 +1682,19 @@ function updateField(target) {
       render();
       return;
     }
-    set(target.dataset.field, value);
+    if (target.dataset.field === "play.hp") {
+      const v = liveVitals();
+      if (v.immediateDeathRoll || v.dead || v.failed === 3) {
+        target.value = String(v.hp);
+        return notice("Resolve the death outcome before changing HP.");
+      }
+      if (value < v.hp) applyWorkshopDamage(v.hp - value);
+      else if (value > v.hp) Object.assign(playDraft(), forgeHeal(playDraft(), v.limits, value - v.hp));
+    } else set(target.dataset.field, value);
     if (target.dataset.field === "borrowedAncestryId") draft.borrowedTraitId = "";
     // A chosen current ancestry language replaces the retired two-language grant.
     if (target.dataset.field === "languages.ancestry" && value)
       draft.languages.extraSpoken = [];
-    if (target.dataset.field === "play.hp" && value > 0) {
-      playDraft().failedDeathRolls = 0;
-      playDraft().lastWords = false;
-    }
   } else if (target.dataset.list) {
     const values = [...(getValue(target.dataset.list) ?? [])];
     set(
@@ -1836,11 +1707,6 @@ function updateField(target) {
     if (target.dataset.list === "traitIds" &&
         target.value === "trait-human-many-homes" && !target.checked)
       draft.languages.extraSpoken = [];
-  } else if (target.dataset.recipe) {
-    const r = get(target.dataset.recipe),
-      values = [...selectionFor(r).recipeIds];
-    values[Number(target.dataset.slot)] = target.value;
-    recipeSelections[r.id] = values;
   } else return;
   persist();
   // A field change can fire between pointer-down and click on Continue. Keep
@@ -1866,18 +1732,22 @@ function exportFile(ready = false) {
   notice(ready ? "Character exported." : "Character draft exported.");
 }
 function learn(id) {
-  const r = get(id),
-    selection = selectionFor(r),
-    result = purchaseEligibility(
-      r,
-      learningState(),
-      catalogs.choices,
-      selection,
-    );
-  if (!result.eligible)
-    throw new Error(result.reasons.map((r) => r.text).join(" "));
-  learningPurchases().push({ id, ...selection });
-  notice(`${r.name} added.`);
+  const result = forgeEligibility(catalogs.forge, learningState(), id);
+  if (!result.eligible) throw new Error(result.reasons.join(" "));
+  learningPurchases().push({ id });
+  notice(`Learned ${name(id)}.`);
+}
+
+function refundLearning(id) {
+  const choices = learningPurchases();
+  if (!choices.some((entry) => entry.id === id)) return;
+  const removed = new Set([id]);
+  for (const choice of choices) {
+    const entry = catalogs.forge.nodes.find((node) => node.id === choice.id);
+    if (entry?.requires.some((parent) => removed.has(parent))) removed.add(choice.id);
+  }
+  choices.splice(0, choices.length, ...choices.filter((entry) => !removed.has(entry.id)));
+  notice(`${[...removed].map(name).join(", ")} removed from this stage.`);
 }
 function inline(text) {
   return esc(text)
@@ -1919,7 +1789,8 @@ function showReference(id) {
   const r = get(id);
   if (!r) throw new Error("This reference is not in the current catalog.");
   let body;
-  if (r.reference) {
+  if (r.page) body = spellProfile(r);
+  else if (r.reference) {
     const { flavor, rules } = r.reference;
     body =
       flavor.map((t) => `<p class="flavor">${esc(t)}</p>`).join("") +
@@ -1932,9 +1803,16 @@ function showReference(id) {
         .join("");
   } else
     body = markdown(
-      references.records[id]?.markdown ??
+      r.referenceMarkdown ?? references.records[id]?.markdown ??
         "This reference is unavailable in this build.",
     );
+  body += learnedImprovements(id);
+  if (r.spellIds?.length)
+    body += `<h3>Pages in this section</h3>${r.spellIds.map((spellId) => `<details><summary>${esc(name(spellId))}</summary>${spellProfile(get(spellId))}</details>`).join("")}`;
+  const cost = castCost(r);
+  const known = r.page ? preview.state.learning.spells.some((entry) => entry.id === id) : preview.state.abilities.includes(id);
+  if (Number.isInteger(cost) && known)
+    body += `<div class="dialog-actions">${button(isRitual(r) ? "Begin Ritual" : "Cast", "cast-spell", `data-id="${esc(id)}" ${preview.limits && liveVitals().hp > 0 && liveVitals().sp >= cost ? "" : "disabled"}`, "primary")}</div>`;
   const instrument = preview.state.instruments?.find(
     (entry) => entry.abilityId === id,
   )?.instrument;
@@ -1951,25 +1829,25 @@ function showReference(id) {
 }
 async function action(target) {
   const a = target.dataset.action;
-  if (a === "wound-details") return woundDetailsDialog(target.dataset.id);
-  if (a === "heal-wound-dialog") return healWoundDialog(target.dataset.id);
-  if (a === "confirm-heal-wound") {
-    const play = playDraft(),
-      index = play.wounds.findIndex((w) => w.id === target.dataset.id);
-    if (index < 0) throw new Error("This wound is no longer recorded.");
-    const result = workshopTreatWound({
-      wound: play.wounds[index],
-      steps: Number($("#healing-progress").value),
-      catalog: catalogs.wounds,
-    });
-    play.wounds[index] = result.wound;
-    play.conditions = play.conditions.filter(
-      (c) => !result.removedConditionIds.includes(c.id),
-    );
+  if (a === "hero-recovery") return recoveryDialog();
+  if (a === "add-scar") return scarDialog();
+  if (a === "finish-first-aid") return firstAidDialog();
+  if (["save-scar", "complete-hero-rest", "begin-first-aid", "record-first-aid", "interrupt-first-aid", "hero-sp-recovery", "stabilize-hero", "hero-last-words"].includes(a)) {
+    const v = liveVitals();
+    let next;
+    if (a === "save-scar") next = forgeRecordScar(playDraft(), v.limits, $("#scar-description").value);
+    if (a === "complete-hero-rest") next = forgeRest(playDraft(), v.limits, { hour: $("#hero-rest-hour").valueAsNumber });
+    if (a === "begin-first-aid") next = forgeBeginFirstAid(playDraft(), v.limits);
+    if (a === "record-first-aid") next = forgeFinishFirstAid(playDraft(), v.limits, $("#aid-outcome").value, { fieldDressing: Number($("#aid-treatment").value) });
+    if (a === "interrupt-first-aid") next = forgeInterruptFirstAid(playDraft(), v.limits);
+    if (a === "hero-sp-recovery") next = forgeSpellcraftRecovery(playDraft(), v.limits, preview.state.learning.recoverySp);
+    if (a === "stabilize-hero") next = forgeStabilize(playDraft(), v.limits);
+    if (a === "hero-last-words") next = forgeFinalizeDeath(playDraft(), v.limits);
+    Object.assign(playDraft(), next);
     persist();
     render();
-    woundDetailsDialog(result.wound.id);
-    return;
+    if (a === "save-scar") return $("#reference").close();
+    return recoveryDialog();
   }
   if (a === "resupply-dialog") return resupplyDialog(target.dataset.instance);
   if (a === "confirm-resupply") {
@@ -2009,36 +1887,19 @@ async function action(target) {
       (c) => c.id === target.dataset.id,
     );
     if (!condition) throw new Error("This condition is no longer active.");
+    const v = liveVitals();
     const result = workshopConditionDamage({
       condition,
       contributions: preview.play.conditions,
-      hp: liveVitals().hp,
-      maxHp: liveVitals().max,
-      failed: liveVitals().failed,
-      lastWords: Boolean(draft.play?.lastWords || draft.play?.failedDeathRolls === 3),
+      hp: v.hp,
+      maxHp: v.max,
       resistances: preview.resistances,
     });
-    Object.assign(playDraft(), {
-      hp: result.hp,
-      failedDeathRolls: result.failedDeathRolls,
-      lastWords: result.lastWords,
-    });
+    const outcome = applyWorkshopDamage(result.amount);
     persist();
     render();
-    notice(
-      `${title(condition.key)}: ${result.amount} damage.${result.woundRequired ? " At 0 HP: roll a wound using the header." : ""}`,
-    );
-    return;
-  }
-  if (a === "death-mark") {
-    const current = Number($("#death-failures").value),
-      requested = Number(target.dataset.marks),
-      value = current === requested ? requested - 1 : requested;
-    playDraft().failedDeathRolls = value;
-    playDraft().lastWords = value === 3 || (playDraft().wounds ?? []).some(wound => wound.catalogId?.endsWith("-666"));
-    refreshDeathMarks(value);
-    persist();
-    render();
+    notice(`${title(condition.key)} dealt ${result.amount} damage.`);
+    if (outcome.deathRollRequired) return openSheetRoll({ death: true });
     return;
   }
   if (a === "open-picker") return openPicker(target.dataset.kind);
@@ -2057,7 +1918,7 @@ async function action(target) {
       if (tier) signatureTier = tier;
     } else {
       mode = "builder";
-      step = preview.stages[0].abilities.includes(id) ? 3 : 5;
+      step = (preview.stages[0].abilities.includes(id) || preview.stages[0].learned.includes(id)) ? 3 : 5;
     }
     persist();
     render({ focusHeading: true });
@@ -2069,37 +1930,22 @@ async function action(target) {
     return;
   }
   if (a === "evade") return openSheetRoll({ key: "agility", defense: true });
-  if (a === "roll-wound-dialog") return woundDialog();
-  if (a === "confirm-roll-wound") return rollNewWound();
   if (a === "use-grit") return gritDialog();
   if (a === "debt-recovery") return debtRecoveryDialog();
   if (a === "debt-reroll") return debtReroll();
-  if (a === "debt-next-dawn" || a === "debt-safe-breath") {
-    if (a === "debt-next-dawn") Object.assign(playDraft(), nextDawn({ hp: liveVitals().hp, recovery: draft.play?.recovery }));
-    else {
-      if (liveVitals().hp < 1 || draft.play?.lastWords) throw new Error("Resolve Dying before taking a safe breath.");
-      playDraft().hp = liveVitals().recoveryMax;
-    }
+  if (a === "debt-next-dawn") {
+    Object.assign(playDraft(), nextDawn({ hp: liveVitals().hp, recovery: draft.play?.recovery }));
     persist();
     render();
     return debtRecoveryDialog();
   }
   if (a === "confirm-grit") {
-    Object.assign(
-      playDraft(),
-      workshopSpendGrit({
-        spent: draft.play?.gritSpent ?? 0,
-        granted: preview.summary?.gritGranted ?? 0,
-        maxHp: liveVitals().max,
-        hp: liveVitals().hp,
-        recovery: draft.play?.recovery,
-        lastWords: Boolean(draft.play?.lastWords || draft.play?.failedDeathRolls === 3),
-      }),
-    );
+    const v = liveVitals();
+    Object.assign(playDraft(), forgeSpendGrit(playDraft(), v.limits, target.dataset.trigger));
     $("#reference").close();
     persist();
     render();
-    notice("Grit spent; HP restored.");
+    notice("Grit spent. HP restored.");
     return;
   }
   if (a === "potion-dialog") return supplyDialog();
@@ -2118,6 +1964,7 @@ async function action(target) {
     render();
     return;
   }
+  if (a === "open-roll" && Number.isInteger(castCost(get(target.dataset.id)))) return showReference(target.dataset.id);
   if (a === "open-roll")
     return openSheetRoll({
       key: target.dataset.attributeKey,
@@ -2125,16 +1972,11 @@ async function action(target) {
     });
   if (a === "death-roll") return openSheetRoll({ death: true });
   if (a === "roll-sheet") return rollSheetDice();
-  if (a === "add-wound") return woundDialog();
-  if (a === "delete-wound") {
-    playDraft().wounds = (playDraft().wounds ?? []).filter(
-      (w) => w.id !== target.dataset.id,
-    );
-    playDraft().conditions = playDraft().conditions.filter(
-      (c) => !c.id.startsWith(`${target.dataset.id}-`),
-    );
-    if (!playDraft().wounds.some((w) => w.catalogId?.endsWith("-666")))
-      playDraft().lastWords = false;
+  if (a === "cast-spell") return castFromSheet(target.dataset.id);
+  if (a === "finish-ritual") {
+    const record = get(target.dataset.id);
+    $("#reference").close();
+    return openSheetRoll({ id: record.id, key: attributeFor(record), finishRitual: true });
   }
   if (a === "reference") return showReference(target.dataset.id);
   if (a === "save-message") {
@@ -2292,13 +2134,16 @@ async function action(target) {
   }
   if (a === "level-up" || a === "level-down") {
     draft.progression ??= { level: 1, levels: {} };
+    const before = liveVitals().limits;
     draft.progression.level = Math.max(
       1,
       Math.min(100, draft.progression.level + (a === "level-up" ? 1 : -1)),
     );
+    const after = workshopCharacter(draft, catalogs).limits;
+    if (after && before.maxHp > 0) Object.assign(playDraft(), advanceForgeVitals(playDraft(), before, after));
   }
-  if (a === "advance") {
-    editingLevel = null;
+  if (a === "advance" || a === "edit-learning-level") {
+    editingLevel = a === "edit-learning-level" ? Number(target.dataset.level) : null;
     mode = "advancement";
     edit = false;
     query = "";
@@ -2321,13 +2166,11 @@ async function action(target) {
     else
       levelDraft(signatureTier).signatures[signatureTier] = target.dataset.id;
   }
-  if (a === "more") visibleChoices[target.dataset.group] += 8;
   if (a === "edit") edit = !edit;
   if (a === "tab") {
     tab = target.dataset.tab;
     query = "";
     filter = "all";
-    visibleChoices = { true: 6, false: 4 };
   }
   if (a === "sheet") {
     mode = "sheet";
@@ -2343,7 +2186,6 @@ async function action(target) {
   if (["step", "back", "next"].includes(a)) {
     query = "";
     filter = "all";
-    visibleChoices = { true: 6, false: 4 };
   }
   if (a === "ancestry") draft.ancestryId = target.dataset.id;
   if (a === "class") {
@@ -2352,9 +2194,23 @@ async function action(target) {
     draft.classId = r.id;
   }
   if (a === "signature") draft.signatureId = target.dataset.id;
-  if (a === "purchase") learn(target.dataset.id);
+  if (a === "forge-select") forgeSelected = target.dataset.id;
+  if (a === "forge-filter") forgeDiscipline = target.dataset.id;
+  if (a === "forge-view") {
+    const value = target.dataset.id;
+    if (value === "zoom-in" || value === "zoom-out")
+      forgeZoom = Math.max(.75, Math.min(2, forgeZoom + (value === "zoom-in" ? .25 : -.25)));
+    else forgeView = value;
+  }
+  if (a === "forge-learn") {
+    const node = catalogs.forge.nodes.find((entry) => entry.id === target.dataset.id);
+    const currentSp = liveVitals().sp;
+    learn(target.dataset.id);
+    if (mode === "advancement" && node?.spCapacity) playDraft().sp = currentSp;
+  }
+  if (a === "forge-refund") refundLearning(target.dataset.id);
   if (a === "remove-purchase")
-    learningPurchases().splice(Number(target.dataset.index), 1);
+    refundLearning(learningPurchases()[Number(target.dataset.index)]?.id);
   if (a === "remove-equipment") {
     const id = target.dataset.instance;
     draft.shopping = draft.shopping.filter((item) => item.instanceId !== id);
@@ -2398,6 +2254,7 @@ async function action(target) {
   render({
     focusHeading: [
       "advance",
+      "edit-learning-level",
       "choose-signature",
       "sheet-development",
       "tab",
@@ -2410,6 +2267,8 @@ async function action(target) {
       "new",
     ].includes(a),
   });
+  if (a === "forge-learn" || a === "forge-select")
+    $("#forge-selection")?.focus({ preventScroll: a === "forge-learn" || (!target.classList?.contains("forge-related-node") && !matchMedia("(max-width: 680px)").matches) });
   if (a === "tab")
     document.getElementById(`tab-${tab}`)?.focus({ preventScroll: true });
 }
@@ -2526,7 +2385,6 @@ document.addEventListener("input", (event) => {
   }
   if (event.target.id === "search") {
     query = event.target.value;
-    visibleChoices = { true: 6, false: 4 };
     render();
   }
 });
@@ -2621,12 +2479,14 @@ try {
     if (!r.ok) throw new Error(`Could not load ${name}.`);
     return r.json();
   };
-  const [choices, inventory, refs, sample, wounds] = await Promise.all([
+  const [choices, inventory, refs, sample, wounds, forge, forgeRefs] = await Promise.all([
     load("choices"),
     load("inventory"),
     load("references"),
     load("example"),
     load("wounds"),
+    load("forge"),
+    load("forge-references"),
   ]);
   if (
     choices.sourceCommit !== inventory.sourceCommit ||
@@ -2634,13 +2494,9 @@ try {
     refs.sourceCommit !== choices.sourceCommit
   )
     throw new Error("The workshop catalogs do not use the same rules edition.");
-  catalogs = {
-    choices: choices.records,
-    inventory,
-    wounds,
-    commit: choices.sourceCommit,
-  };
-  references = refs;
+  if (forgeRefs.sourceCommit !== forge.sourceCommit) throw new Error("Could not match the current Workshop rules.");
+  catalogs = workshopCatalogs(choices, inventory, wounds, forge, forgeRefs);
+  references = { records: { ...refs.records, ...forgeRefs.records } };
   example = sample;
   draft = structuredClone(example);
   try {
@@ -2695,7 +2551,7 @@ try {
 document.addEventListener("change", (event) => {
   if (event.target.id === "play-condition") conditionFields();
   if (event.target.id === "play-language") {
-    const lang = DEFAULT_LANGUAGES.find((l) => l.id === event.target.value);
+    const lang = catalogs.languages.find((l) => l.id === event.target.value);
     $("#language-name").value = lang?.name ?? "";
     $("#language-form").value = lang?.form ?? "spoken";
     $("#language-written").checked = lang?.writing ?? true;

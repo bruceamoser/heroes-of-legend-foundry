@@ -23,13 +23,13 @@ import { HEALING_POTION_IDS } from "./rules/potions.mjs";
 import {
   advanceForgeVitals, forgeBeginFirstAid, forgeCanSpendGrit, forgeDamage,
   forgeDeathRoll, forgeFinalizeDeath, forgeFinishFirstAid, forgeHeal,
-  forgeInterruptFirstAid, forgeRecordScar, forgeRest, forgeSpellcraftRecovery,
+  forgeInterruptFirstAid, forgeMaximums, forgeRecordScar, forgeRest, forgeSpellcraftRecovery,
   forgeSpendGrit, forgeStabilize, forgeVitals,
 } from "./rules/forge-vitals.mjs";
 import { itemArrangement } from "./rules/workshop-play.mjs";
 import { normalizeRecovery, payDebt, nextDawn } from "./rules/recovery.mjs";
 import { passiveAncestryDefenseSources } from "./rules/passive-defenses.mjs";
-import { ancestrySelection } from "./rules/ancestry.mjs";
+import { ancestryBenefits, ancestrySelection } from "./rules/ancestry.mjs";
 import { CONDITION_KINDS, conditionRollSources } from "./rules/conditions.mjs";
 import {
   workshopCharacter,
@@ -260,10 +260,18 @@ function applyWorkshopDamage(amount) {
 }
 const effectiveTraits = () => ancestrySelection(draft, catalogs.choices).traitIds;
 function header() {
-  const stats = preview.summary,
-    vitals = liveVitals();
+  const vitals = liveVitals();
+  const early = mode === "builder" && step < 4;
+  const ancestry = get(draft.ancestryId);
+  const earlyLimits = early && ancestry ? forgeMaximums({
+    ancestryHp: ancestry.hp,
+    fortitude: draft.attributes.fortitude,
+    fixedHp: ancestryBenefits(effectiveTraits()).maximumHpBonus,
+    capacitySp: preview.stages[0].learning.capacitySp,
+  }) : null;
+  const showResources = mode === "sheet";
   return `<div class="workshop-header"><div class="toolbar"><div class="toolbar-group">${button(edit ? "✓ Done" : "✎ Edit", "edit", `aria-pressed="${edit}"`, edit ? "selected" : "quiet")}</div><div class="toolbar-group">${button("New", "new", 'aria-label="New hero"', "quiet")}${button("Save", "save", 'aria-label="Save character"', "quiet")}${button("Load", "library", 'aria-label="Load character"', "quiet")}${button("Import", "import", 'aria-label="Import JSON"', "quiet")}${button("Export", "export", 'aria-label="Export JSON"', "quiet")}</div></div>
-  <header class="hero-header"><div class="identity-line"><img class="hero-mark" src="assets/crest.webp" alt=""><div><div class="name-line">${edit && mode === "sheet" ? field("Character name", "name", draft.name, "text", 'maxlength="200"') : `<h1>${esc(draft.name || "New hero")}</h1>`}${button(skullIcon + (vitals.dying ? `<span>${vitals.failed} / ${vitals.successfulDeathRolls}</span>` : ""), "death-roll", `aria-label="Death roll" title="Fortitude death roll · ${vitals.failed} failures · ${vitals.successfulDeathRolls} successes" ${vitals.dying && vitals.failed < 3 ? "" : "disabled"}`, "icon-button death-button")}</div><p>${esc(join([get(draft.ancestryId)?.name, get(draft.culture?.id)?.name, get(draft.background?.id)?.name, get(draft.classId)?.name, `Level ${preview.development.level}(${preview.development.current})`]))}</p></div></div><div class="vitals"><div class="vital"><small>HP</small><strong class="hp-value"><input aria-label="Current HP" data-field="play.hp" type="number" min="0" max="${Math.max(vitals.hp, vitals.recoveryMax)}" step="1" value="${vitals.hp}"><span>/ ${vitals.max || "—"}</span></strong></div><div class="vital"><small>SP</small><strong class="hp-value"><input aria-label="Current SP" data-field="play.sp" type="number" min="0" max="${vitals.limits.maxSp}" step="1" value="${vitals.sp}"><span>/ ${vitals.limits.maxSp || "—"}</span></strong></div><div class="vital"><small>${button("Grit", "use-grit", 'aria-label="Use Grit"', "vital-link")}</small><strong>${vitals.grit}</strong></div><div class="vital"><small>Speed</small><strong data-speed>${vitals.speed}${vitals.speed < vitals.maxSpeed ? ` / ${vitals.maxSpeed}` : ""}</strong></div><div class="vital"><small>${button("Recovery", "hero-recovery", 'aria-label="Recovery"', "vital-link")}</small><strong>${vitals.dead ? "Dead" : vitals.dying ? "Dying" : vitals.hp === 0 && vitals.max ? "Stable" : ""}</strong></div><div class="vital"><small>Armor DR</small><strong>${preview.resistances.physical ?? 0}</strong></div></div></header>
+  <header class="hero-header"><div class="identity-line"><img class="hero-mark" src="assets/crest.webp" alt=""><div><div class="name-line">${edit && mode === "sheet" ? field("Character name", "name", draft.name, "text", 'maxlength="200"') : `<h1>${esc(draft.name || "New hero")}</h1>`}${button(skullIcon + (vitals.dying ? `<span>${vitals.failed} / ${vitals.successfulDeathRolls}</span>` : ""), "death-roll", `aria-label="Death roll" title="Fortitude death roll · ${vitals.failed} failures · ${vitals.successfulDeathRolls} successes" ${vitals.dying && vitals.failed < 3 ? "" : "disabled"}`, "icon-button death-button")}</div><p>${esc(join([get(draft.ancestryId)?.name, get(draft.culture?.id)?.name, get(draft.background?.id)?.name, early ? null : get(draft.classId)?.name, `Level ${early ? 0 : preview.development.level}`]))}</p></div></div><div class="vitals"><div class="vital"><small>HP</small><strong class="hp-value">${showResources ? `<input aria-label="Current HP" data-field="play.hp" type="number" min="0" max="${Math.max(vitals.hp, vitals.recoveryMax)}" step="1" value="${vitals.hp}"><span>/ ${vitals.max || "—"}</span>` : `<span>${early ? earlyLimits?.maxHp ?? "—" : vitals.max || "—"}</span>`}</strong></div><div class="vital"><small>SP</small><strong class="hp-value">${showResources ? `<input aria-label="Current SP" data-field="play.sp" type="number" min="0" max="${vitals.limits.maxSp}" step="1" value="${vitals.sp}"><span>/ ${vitals.limits.maxSp || "—"}</span>` : `<span>${early ? 3 + preview.stages[0].learning.capacitySp : vitals.limits.maxSp || "—"}</span>`}</strong></div><div class="vital"><small>${button("Grit", "use-grit", 'aria-label="Use Grit"', "vital-link")}</small><strong>${early ? 0 : vitals.grit}</strong></div><div class="vital"><small>Speed</small><strong data-speed>${vitals.speed}${vitals.speed < vitals.maxSpeed ? ` / ${vitals.maxSpeed}` : ""}</strong></div><div class="vital"><small>${button("Recovery", "hero-recovery", 'aria-label="Recovery"', "vital-link")}</small><strong>${vitals.dead ? "Dead" : vitals.dying ? "Dying" : vitals.hp === 0 && vitals.max ? "Stable" : ""}</strong></div><div class="vital"><small>Armor DR</small><strong>${preview.resistances.physical ?? 0}</strong></div></div></header>
   <div class="attributes">${ATTRIBUTES.map((key) => `<div class="attribute"><span>${title(key)}</span>${rollButton(title(key), `data-attribute-key="${key}"`)}<strong data-attribute="${key}">${signed(preview.attributes[key])}</strong></div>`).join("")}</div></div>`;
 }
 function knownCards() {
@@ -1583,6 +1591,7 @@ function displayDice(attribute, originalNet, deathRoll = false) {
     .sort((a, b) => (net < 0 ? a - b : b - a))
     .slice(0, 3);
   const result = classifyRoll(retained, plan.attribute);
+  if (deathRoll) result.tier = result.total <= 8 ? "weak" : result.total <= 14 ? "standard" : "strong";
   $("#recipe-roll-result").innerHTML =
     `<strong>${title(result.tier)} · ${result.total}</strong><p>${faces.join(" · ")} → keep ${retained.join(" + ")} ${signed(plan.attribute)}${!deathRoll && result.natural !== "none" ? ` · ${result.natural === "critical" ? "Natural 666: additional benefit" : "Natural 111: complication"}` : ""}</p>`;
   return { ...result, retained };

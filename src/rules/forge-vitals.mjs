@@ -91,7 +91,8 @@ export function forgeDeathRoll(play, limits, { retained, fortitude }) {
   assertLiving(current);
   if (!current.dying) throw new Error("Death rolls are for a Dying hero.");
   // Retained triples give the normal band with no extra death-roll effect.
-  const { tier, total } = classifyRoll(retained, fortitude);
+  const { total } = classifyRoll(retained, fortitude);
+  const tier = total <= 8 ? "weak" : total <= 14 ? "standard" : "strong";
   const next = {
     ...current,
     failedDeathRolls: current.failedDeathRolls + Number(tier === "weak"),

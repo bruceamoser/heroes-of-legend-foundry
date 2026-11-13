@@ -168,6 +168,15 @@ try {
     await page.locator('#reference [data-action="roll-sheet"]').click();
   assert.equal(Number(await page.getByRole("spinbutton", { name: "Current SP" }).inputValue()), sp - 1);
   if (await page.locator("#reference").isVisible()) await page.keyboard.press("Escape");
+  await action("reference", "spell:air:4").click();
+  await action("cast-spell", "spell:air:4").click();
+  await expect(page.getByLabel("Roll attribute", { exact: true })).toBeDisabled();
+  const cast = page.locator('#reference [data-action="roll-sheet"]');
+  await expect(cast).toHaveText("Cast and roll · 2 SP");
+  await cast.click();
+  await expect(cast).toBeDisabled();
+  await expect(page.getByRole("spinbutton", { name: "Current SP" })).toHaveValue(String(sp - 3));
+  await page.keyboard.press("Escape");
   await openDevelopment();
   await action("save").click();
   await page.getByRole("dialog").getByLabel("Save name").fill("Forge hybrid");
@@ -178,7 +187,7 @@ try {
   const exported = await readFile(await download.path());
   const portable = JSON.parse(exported);
   assert.equal(portable.draft.progression.level, 7);
-  assert.equal(portable.draft.play.sp, sp - 1);
+  assert.equal(portable.draft.play.sp, sp - 3);
   assert.deepEqual(portable.draft.progression.levels[7].purchases.map(({ id }) => id), [
     "air:3", "arms:bladework:4", "combined:stormsteel-arc",
   ]);

@@ -1,7 +1,7 @@
 import { createServer } from "node:http";
 import { readFile, mkdir } from "node:fs/promises";
 import { resolve, extname } from "node:path";
-import { chromium } from "@playwright/test";
+import { chromium, expect } from "@playwright/test";
 import assert from "node:assert/strict";
 import { workshopCatalogs } from "../src/rules/workshop-forge-catalog.mjs";
 import { writePortableCharacter } from "../src/rules/portable-character.mjs";
@@ -31,7 +31,10 @@ const base = (process.env.HOL_WORKSHOP_URL ?? `http://127.0.0.1:${server.address
 const failures = [];
 page.on("pageerror", error => failures.push(error.message));
 page.on("response", response => { if (response.status() >= 400) failures.push(`${response.status()} ${response.url()}`); });
-page.on("dialog", dialog => dialog.accept());
+page.on("dialog", async dialog => {
+  try { await dialog.accept(); }
+  catch (error) { if (!page.isClosed()) failures.push(error.message); }
+});
 const output = resolve(process.env.HOL_WORKSHOP_OUTPUT ?? "test-results/ancestry-workshop");
 await mkdir(output, { recursive: true });
 async function seed(ancestryId, traitIds, mode = "builder") {
@@ -80,6 +83,7 @@ try {
     const character = await seed(id, ancestry.traits.slice(0, 2));
     const old = {...character, sourceCommit:"25b80c9fe77d7baaec3f3a8a548c9663d0f39a30"};
     await page.locator("#import-file").setInputFiles({ name:`old-${id}.json`, mimeType:"application/json", buffer:Buffer.from(JSON.stringify(old)) });
+    await expect(page.locator("#notice")).toContainText("Character imported.");
     await page.getByRole("heading", {name:"Review",exact:true}).waitFor();
     assert.equal((await stored()).character.draft.ancestryId, id);
     assert.deepEqual((await stored()).character.draft.traitIds, ancestry.traits.slice(0, 2));
@@ -89,6 +93,7 @@ try {
     const saved = await stored();
     assert.equal(saved.character.sourceCommit, forge.sourceCommit);
     await page.reload();
+    await expect(page.locator("#notice")).toContainText("Character imported.");
     await page.getByRole("heading", {name:"Review",exact:true}).waitFor();
     assert.equal((await stored()).saveId, saved.saveId);
     await page.getByRole("button", {name:"Load character",exact:true}).click();
@@ -154,6 +159,7 @@ try {
   legacyMixed.draft.profile = {story:"Retain this legacy hero's story."};
   async function importLegacyMixed() {
     await page.locator("#import-file").setInputFiles({name:"legacy-mixed-ancestry.json",mimeType:"application/json",buffer:Buffer.from(JSON.stringify(legacyMixed))});
+    await expect(page.locator("#notice")).toContainText("Character imported.");
     await page.getByRole("heading", {name:"Review",exact:true}).waitFor();
     assert(await page.getByRole("button", {name:"Export character JSON",exact:true}).isDisabled());
     await page.getByRole("button", {name:"2 Ancestry",exact:true}).click();

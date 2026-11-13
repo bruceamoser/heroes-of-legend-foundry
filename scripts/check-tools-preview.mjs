@@ -116,6 +116,9 @@ try {
     await page.locator(".tool-banner").innerText(),
     /Players choose next/,
   );
+  await page.getByRole("button", { name: "Ambush", exact: true }).click();
+  await page.getByRole("button", { name: "Opposition ambush", exact: true }).click();
+  assert.match(await page.locator(".tool-help").first().innerText(), /Ambush · Opposition start each round · 6 seconds per round/);
   await page.goto(base + "journal.html");
   await page
     .getByRole("article", { name: "Rule entry", exact: true })
@@ -123,15 +126,15 @@ try {
     .first()
     .waitFor();
   assert.match(await page.locator(".journal-page").innerText(), /3d6/);
-  await page.getByLabel("Find rules", { exact: true }).fill("safe breath");
+  await page.getByLabel("Find rules", { exact: true }).fill("overnight rest");
   assert((await page.locator(".journal-list button").count()) > 0);
   await page.getByLabel("Find rules", { exact: true }).fill("");
   await page
     .getByLabel("Collection", { exact: true })
     .selectOption("Abilities");
-  await page.getByLabel("Find rules", { exact: true }).fill("Hook and Drive");
-  await page.locator('[data-entry="ability-hook-and-drive"]').click();
-  assert.match(await page.locator(".journal-page").innerText(), /5 physical damage, Slowed 2 and Prone\./);
+  await page.getByLabel("Find rules", { exact: true }).fill("Driving Blow");
+  await page.locator('[data-entry="arms:impact:1"]').click();
+  assert.match(await page.locator(".journal-page").innerText(), /2\/3\/5 physical damage/);
   assert.equal(
     await page.locator('.journal-page a[href*="github"]').count(),
     0,
@@ -148,34 +151,41 @@ try {
   await page.goto(base + "recovery.html");
   await page.getByRole("button", { name: "Healing", exact: true }).click();
   await page.getByLabel("Life resistance", { exact: true }).fill("2");
-  assert.match(
-    await page.locator("#healing-preview").innerText(),
-    /Restore 4 HP/,
-  );
-  await page
-    .getByRole("button", { name: "Apply to preview", exact: true })
-    .click();
-  assert.match(await page.locator(".tool-stats").innerText(), /7 \/ 25/);
-  await page.getByRole("button", { name: "Safe breath", exact: true }).click();
-  assert.match(await page.locator(".tool-stats").innerText(), /25 \/ 25/);
-  await page.getByRole("button", { name: "Treat", exact: true }).click();
-  await page.getByRole("button", { name: "2 progress", exact: true }).click();
-  assert.match(
-    await page.locator(".tool-wounds").innerText(),
-    /Removed · scar remains/,
-  );
-  assert.match(
-    await page.locator(".tool-wounds").innerText(),
-    /Face: jagged cheek scar/,
-  );
-  await page
-    .getByRole("button", { name: "Preview Dying", exact: true })
-    .click();
+  assert.match(await page.locator("#healing-preview").innerText(), /Restore 4 HP/);
+  await page.getByRole("button", { name: "Apply healing", exact: true }).click();
+  assert.match(await page.locator(".tool-stats").innerText(), /7 \/ 19/);
+  assert.match(await page.locator(".tool-stats").innerText(), /SP 3 \/ 6/);
+  await page.getByRole("button", { name: "Take damage", exact: true }).click();
+  await page.getByRole("button", { name: "Apply damage", exact: true }).click();
+  assert.match(await page.locator(".tool-stats").innerText(), /Dying/);
+  await page.getByRole("button", { name: "Take damage", exact: true }).click();
+  await page.getByRole("button", { name: "Apply damage", exact: true }).click();
+  await page.getByRole("heading", { name: "Fortitude death roll", exact: true }).waitFor();
+  await page.evaluate(() => {
+    globalThis.toolDice = crypto.getRandomValues;
+    crypto.getRandomValues = (a) => { a[0] = 0; return a; };
+  });
+  await page.getByRole("button", { name: "Roll Fortitude", exact: true }).click();
+  assert.match(await page.locator(".tool-stats").innerText(), /Failures 1 \/ 3/);
   await page.getByRole("button", { name: "Stabilize", exact: true }).click();
-  assert.match(
-    await page.locator(".tool-result").innerText(),
-    /Stabilized at 0 HP · 0 death marks/,
-  );
+  assert.match(await page.locator(".tool-stats").innerText(), /Stable at 0 HP/);
+  await page.getByRole("button", { name: "Spend Grit", exact: true }).click();
+  assert.match(await page.locator(".tool-stats").innerText(), /10 \/ 19/);
+  await page.getByRole("button", { name: "Record scar", exact: true }).click();
+  await page.getByLabel("Scar description").fill("A silver line across the jaw.");
+  await page.getByRole("button", { name: "Save scar", exact: true }).click();
+  await page.getByRole("button", { name: "Give first aid", exact: true }).click();
+  await page.getByRole("button", { name: "Roll Knowledge", exact: true }).click();
+  await page.evaluate(() => (crypto.getRandomValues = globalThis.toolDice));
+  assert.match(await page.locator(".tool-stats").innerText(), /12 \/ 19/);
+  assert.equal(await page.getByRole("button", { name: "Give first aid", exact: true }).isDisabled(), true);
+  await page.getByRole("button", { name: "Safe overnight rest", exact: true }).click();
+  await page.getByRole("button", { name: "Complete safe rest", exact: true }).click();
+  assert.match(await page.locator(".tool-stats").innerText(), /19 \/ 19/);
+  assert.match(await page.locator(".tool-stats").innerText(), /SP 6 \/ 6/);
+  assert.match(await page.locator(".tool-stats").innerText(), /Grit 0/);
+  assert.equal(await page.getByText("A silver line across the jaw.", { exact: true }).isVisible(), true);
+  assert.equal(await page.getByRole("button", { name: "Give first aid", exact: true }).isDisabled(), false);
   for (const width of [760, 390, 320]) {
     await page.setViewportSize({ width, height: 850 });
     assert(
@@ -223,7 +233,7 @@ try {
   assert.equal(await page.locator("[data-stock]").innerText(), "d8");
   assert.match(
     await page.locator(".tool-result").innerText(),
-    /strong: 3 steps/,
+    /strong: 4 steps/,
   );
   await page
     .getByRole("button", { name: "Begin attempt", exact: true })
@@ -292,7 +302,7 @@ try {
   await page.screenshot({ path: `${output}/crafting-project.png` });
   assert.deepEqual(failures, []);
   console.log(
-    "PASS tools: alternating sides, budgets/conversions, hidden roster, embedded journal search, healing resistance/safe breath, exact wound recovery/scars, crafting time/rules/steps/cap and compact layouts; zero browser errors.",
+    "PASS tools: alternating sides, budgets/conversions, hidden roster, embedded journal search, ambush and round duration, HP/SP healing, Fortitude death rolls, lifetime Grit, scars, first aid, safe overnight rest, crafting time/rules/steps/cap and compact layouts; zero browser errors.",
   );
 } catch (e) {
   await page.screenshot({ path: `${output}/failure.png`, fullPage: true });

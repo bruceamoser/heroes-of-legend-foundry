@@ -1,6 +1,7 @@
 import { ruleBlockMarkup } from "./rules-view.mjs";
 import { rollSetup, bindRollSetup } from "./roll-ui.mjs";
-import { EQUIPMENT_TRAINING } from "./rules/equipment-eligibility.mjs";
+import { workshopCatalogs } from "./rules/workshop-forge-catalog.mjs";
+import { forgeArmorRequirement } from "./rules/forge-character.mjs";
 import { ATTRIBUTES } from "./rules/character.mjs";
 import { rollPlan, classifyRoll } from "./rules/roll.mjs";
 import { inventoryCheck, refillInventory } from "./rules/inventory.mjs";
@@ -32,6 +33,11 @@ let creatures,
   inventory,
   choices,
   refs,
+  archivedItems,
+  itemRedirects,
+  sourceCommit,
+  spellById,
+  monsterRules,
   art,
   state,
   edit = false;
@@ -48,11 +54,17 @@ function persist() {
     note("Browser storage is unavailable. Export JSON to keep a copy.");
   }
 }
+function items() {
+  return [
+    ...inventory.equipment,
+    ...inventory.recipes,
+    ...choices.filter((entry) => ["ability", "section"].includes(entry.kind)),
+  ];
+}
 function record() {
   return kind === "item"
-    ? (inventory.equipment.find((r) => r.id === state.id) ??
-        choices.find((r) => r.id === state.id && r.kind === "ability") ??
-        inventory.recipes.find((r) => r.id === state.id))
+    ? (items().find((entry) => entry.id === state.id) ??
+        archivedItems.get(state.id))
     : creatures.find((r) => r.id === state.id);
 }
 function defaults() {
@@ -87,14 +99,12 @@ function validate(value) {
     throw new Error("Choose a sheet JSON object.");
   const d = structuredClone(value);
   if (d.id !== null && d.id !== undefined) {
+    if (kind === "item" && Object.hasOwn(itemRedirects, d.id))
+      d.id = itemRedirects[d.id];
     const valid =
       kind === "item"
-        ? [
-            ...inventory.equipment,
-            ...inventory.recipes,
-            ...choices.filter((r) => r.kind === "ability"),
-          ].some((r) => r.id === d.id)
-        : creatures.some((r) => r.id === d.id);
+        ? items().some((entry) => entry.id === d.id) || archivedItems.has(d.id)
+        : creatures.some((entry) => entry.id === d.id);
     if (!valid) throw new Error("This catalog entry is not available.");
   }
   if (kind !== "npc" && !d.id) throw new Error("Select a catalog entry.");
@@ -225,8 +235,12 @@ function attributes(r) {
 function itemVitals(r) {
   const vital = (label, value) =>
     `<div class="vital"><small>${label}</small><strong>${esc(value)}</strong></div>`;
-  if (r.kind === "ability")
-    return vital("Level", r.minimumLevel) + vital("DP", r.cost ?? "—");
+  if (["ability", "section"].includes(r.kind)) {
+    const level = r.level ?? r.minimumLevel;
+    return (
+      (level ? vital("Level", level) : "") + (r.dp ? vital("DP", r.dp) : "")
+    );
+  }
   if (r.attemptMinutes !== undefined)
     return vital("Minutes / attempt", r.attemptMinutes);
   return (
@@ -235,10 +249,28 @@ function itemVitals(r) {
     vital("Coins", r.price ?? "—")
   );
 }
+const magicalTokens = new Set([
+  "divination",
+  "elements",
+  "force",
+  "invocation",
+  "mentalism",
+  "spellcraft",
+  "wards",
+]);
+function itemToken(record) {
+  const discipline =
+    record.disciplineId ??
+    record.disciplineIds?.[0] ??
+    (record.id.includes("armor") ? "armor" : "craft");
+  const extension = magicalTokens.has(discipline) ? "svg" : "webp";
+  return `assets/${discipline}.${extension}`;
+}
+
 function header(r) {
   const name = state.name ?? r?.name ?? "New NPC";
   const max = state.maxHp ?? r?.hp?.max ?? 0;
-  return `<div class="workshop-header"><div class="toolbar"><div>${btn(edit ? "✓ Done" : "✎ Edit", "edit", "", "quiet")}${btn(kind === "npc" ? "New NPC" : `Choose ${kind}`, "choose", "", "quiet")}</div><div>${["Save", "Load", "Import", "Export"].map((a) => btn(a, a.toLowerCase(), "", "quiet")).join("")}</div></div><header class="hero-header prototype-header">${kind !== "item" ? portrait(r) : ""}<div class="card-identity">${kind === "item" ? `<img class="item-mark" src="assets/${esc(r.requirements?.find((q) => q.kind === "discipline")?.id.replace("discipline-", "") ?? (r.id.includes("armor") ? "armor" : "craft"))}.webp" alt="">` : ""}${edit ? field("Name", "name", name) : `<h1>${esc(name)}</h1>`}<p>${esc(kind === "npc" ? [state.role, state.location].filter(Boolean).join(" · ") : kind === "creature" ? `${r.family} · ${r.classification.role}` : title(r.kind ?? (r.price !== undefined ? "equipment" : "recipe")))}</p></div><div class="vitals">${kind === "item" ? itemVitals(r) : r ? `<div class="vital"><small>HP</small><div class="hp-value"><input aria-label="Current HP" data-field="hp" type="number" min="0" max="100000" value="${state.hp ?? max}"><span>/ ${max}</span></div></div><div class="vital"><small>Speed</small><strong>${r.speed.ordinary}</strong></div><div class="vital"><small>CV</small><strong>${r.cv}</strong></div>` : ""}</div></header>${kind !== "item" && r ? attributes(r) + defenses(r) : ""}</div>`;
+  return `<div class="workshop-header"><div class="toolbar"><div>${btn(edit ? "✓ Done" : "✎ Edit", "edit", "", "quiet")}${btn(kind === "npc" ? "New NPC" : `Choose ${kind}`, "choose", "", "quiet")}</div><div>${["Save", "Load", "Import", "Export"].map((a) => btn(a, a.toLowerCase(), "", "quiet")).join("")}</div></div><header class="hero-header prototype-header">${kind !== "item" ? portrait(r) : ""}<div class="card-identity">${kind === "item" ? `<img class="item-mark" src="${esc(itemToken(r))}" alt="">` : ""}${edit ? field("Name", "name", name) : `<h1>${esc(name)}</h1>`}<p>${esc(kind === "npc" ? [state.role, state.location].filter(Boolean).join(" · ") : kind === "creature" ? `${r.family} · ${r.classification.role}` : title(r.kind ?? (r.price !== undefined ? "equipment" : "recipe")))}</p></div><div class="vitals">${kind === "item" ? itemVitals(r) : r ? `<div class="vital"><small>HP</small><div class="hp-value"><input aria-label="Current HP" data-field="hp" type="number" min="0" max="100000" value="${state.hp ?? max}"><span>/ ${max}</span></div></div><div class="vital"><small>Speed</small><strong>${r.speed.ordinary}</strong></div><div class="vital"><small>CV</small><strong>${r.cv}</strong></div>` : ""}</div></header>${kind !== "item" && r ? attributes(r) + defenses(r) : ""}</div>`;
 }
 function defenses(r) {
   return `<div class="combat-stats" aria-label="Combat statistics">${[
@@ -275,10 +307,28 @@ const actionGroups = [
   ["maneuvers", "Maneuvers"],
   ["reactions", "Reactions"],
 ];
-function actionContext(r, a) {
-  const d = r.reference.specialtyDetails.find(
-    (d) => d.title.toLowerCase() === a.name.toLowerCase(),
+function specialtyFor(r, name) {
+  return r.reference.specialtyDetails.find(
+    (detail) => detail.title.toLowerCase() === name.toLowerCase(),
   );
+}
+
+function monsterReference(detail, name) {
+  const current = monsterRules.get(name.toLowerCase());
+  // Keep the creature's figures and use the current shared rule for casting order.
+  const profile =
+    current && name.toLowerCase() === "battle mending"
+      ? detail?.markdown.replace(/Pay (\d+ SP) first;/g, "Pay $1;")
+      : detail?.markdown;
+  return (
+    (profile ? markdown(profile) : "") +
+    (current
+      ? `<h3>Shared rules</h3>${markdown(current.replace(/^# .+\n/, ""))}`
+      : "")
+  );
+}
+function actionContext(r, a) {
+  const d = specialtyFor(r, a.name);
   return (
     d?.fields
       .filter((f) => ["Target", "Damage type", "Limit"].includes(f.label))
@@ -287,7 +337,7 @@ function actionContext(r, a) {
   );
 }
 function actions(r) {
-  return `<div class="action-groups">${actionGroups.map(([key, label]) => section(key, label, `<div class="table-wrap"><table class="action-table"><thead><tr><th>${key === "main" ? "Action" : "Name"}</th>${key === "main" ? "<th>Defense</th><th>Weak</th><th>Standard</th><th>Strong</th>" : "<th>Effect</th>"}</tr></thead><tbody>${r.actions[key].actions.map((a, i) => `<tr><td>${btn(esc(a.name), "action", `data-group="${key}" data-index="${i}"`, "table-link")}</td>${key === "main" ? `<td>${esc(a.defense.sourceText)}</td>${["weak", "standard", "strong"].map((t) => `<td><span title="${esc(a.outcomes[t])}">${esc(a.outcomes[t])}</span></td>`).join("")}` : `<td><span title="${esc(a.effect)}">${esc(a.effect)}</span></td>`}</tr>${key === "main" && actionContext(r, a) ? `<tr class="action-context-row"><td colspan="5">${esc(actionContext(r, a))}</td></tr>` : ""}`).join("")}</tbody></table></div>`)).join("")}</div>`;
+  return `<div class="action-groups">${actionGroups.map(([key, label]) => section(key, label, `<div class="table-wrap"><table class="action-table"><thead><tr><th>${key === "main" ? "Action" : "Name"}</th>${key === "main" ? "<th>Defense</th><th>Weak</th><th>Standard</th><th>Strong</th>" : "<th>Effect</th>"}</tr></thead><tbody>${r.actions[key].actions.map((a, i) => `<tr><td>${btn(esc(a.name), "action", `data-group="${key}" data-index="${i}"`, "table-link")}</td>${key === "main" ? `<td>${esc(a.defense.sourceText)}</td>${["weak", "standard", "strong"].map((t) => `<td><span title="${esc(a.outcomes?.[t] ?? "See details")}">${esc(a.outcomes?.[t] ?? "See details")}</span></td>`).join("")}` : `<td><span title="${esc(a.effect)}">${esc(a.effect)}</span></td>`}</tr>${key === "main" && actionContext(r, a) ? `<tr class="action-context-row"><td colspan="5">${esc(actionContext(r, a))}</td></tr>` : ""}`).join("")}</tbody></table></div>`)).join("")}</div>`;
 }
 function specialties(r) {
   const names = Object.values(r.actions)
@@ -321,38 +371,54 @@ function combat(r) {
 function npcMain() {
   return `<div class="main-layout"><div>${section("portrayal", "At the table", ["detail", "want", "knowledge", "boundary"].map((k) => (edit ? `<label>${title(k)}<textarea data-field="${k}" aria-label="${title(k)}" maxlength="10000">${esc(state[k])}</textarea></label>` : `<div class="portrayal-line"><h4>${{ detail: "Recognizable detail", want: "Wants", knowledge: "Knows", boundary: "Boundary" }[k]}</h4><p>${esc(state[k] || "—")}</p></div>`)).join(""))}${section("relationship", "Relationship", edit ? `<textarea aria-label="Relationship" data-field="relationship" maxlength="10000">${esc(state.relationship)}</textarea>` : `<p>${esc(state.relationship || "—")}</p>`)}</div><aside class="play-summary">${section("identity", "Identity", edit ? field("Role", "role", state.role) + field("Location", "location", state.location) : row("Role", state.role) + row("Location", state.location))}${section("profile", "Combat profile", `<p>${esc(record()?.name ?? "None linked")}</p>${btn(record() ? "Change profile" : "Choose profile", "profile", "", "small")}${record() ? btn("Unlink", "unlink", "", "quiet small") : ""}`)}</aside></div>`;
 }
+function spellPages(r) {
+  return (r.spellIds ?? [])
+    .map((id) => {
+      const spell = spellById.get(id);
+      const properties = [
+        ["Casting", spell.actionText],
+        ["SP", spell.sp],
+        ["Attribute", spell.attribute],
+        ["Target / range", spell.target],
+        ["Duration", spell.duration],
+      ];
+      return `<details class="box"><summary>Page ${esc(spell.page)} · ${esc(spell.name)}</summary><dl class="card-metadata">${properties.map(([key, value]) => `<dt>${esc(key)}</dt><dd>${esc(value)}</dd>`).join("")}</dl>${markdown(spell.effect)}</details>`;
+    })
+    .join("");
+}
+
 function itemMain(r) {
   const ref = r.reference;
   const details = ref?.rules?.details ?? [];
   const die = state.supply ?? r.inventoryDie;
+  const training = forgeArmorRequirement(r.id);
   const properties =
     (r.handChoices?.length ? row("Hands", r.handChoices.join(" / ")) : "") +
     (r.specialOrder ? row("Acquisition", "Special order") : "") +
-    (EQUIPMENT_TRAINING[r.id]
-      ? row(
-          "Training",
-          choices.find((c) => c.id === EQUIPMENT_TRAINING[r.id])?.name,
-        )
+    (training
+      ? row("Training", choices.find((entry) => entry.id === training)?.name)
       : "");
-  const equipmentText = refs[r.id]?.markdown
+  const itemReference = refs[r.id];
+  const equipmentText = itemReference?.markdown
     ?.replace(/^# .+\n/, "")
     .replace(/^## Rules\s*$/gm, "")
     .replace(/^- \*\*(ID|Bulk):\*\*.*$/gm, "")
     .replace(/^\[Equipment index\].*$/gm, "")
     .replace(/^\*\*Market price:\*\*.*$/gm, "");
-  const body = ref?.rules?.body
-    ? ref.rules.body
-        .map(ruleBlockMarkup)
-        .join("")
-    : markdown(equipmentText);
+  const body =
+    ref?.rules?.body &&
+    (r.archived || !itemReference?.source?.path.startsWith("design/recipes/"))
+      ? ref.rules.body.map(ruleBlockMarkup).join("")
+      : markdown(equipmentText);
   return `<div class="item-layout"><article class="rule-card"><div class="rule-card-body">
+    ${r.archived ? '<p class="inline-help">Earlier catalog entry saved with this sheet.</p>' : ""}
     ${ref?.flavor?.length ? `<p class="flavor">${esc(ref.flavor.join(" "))}</p>` : ""}
     ${details.length ? `<dl class="card-metadata">${details.map((d) => `<dt>${esc(d.label)}</dt><dd>${esc(d.value)}</dd>`).join("")}</dl>` : ""}
-    ${body}${ref?.rules?.notes?.map((n) => `<p>${esc(typeof n === "string" ? n : n.text)}</p>`).join("") ?? ""}
+    ${body}${spellPages(r)}${ref?.rules?.notes?.map((n) => `<p>${esc(typeof n === "string" ? n : n.text)}</p>`).join("") ?? ""}
     </div></article><aside>
     ${properties ? section("properties", "Properties", properties) : ""}
     ${die !== null && die !== undefined ? section("supply", "Supply", `<div class="supply-current">${die ? `d${die}` : "Empty"}</div>${die ? btn(icon("die") + " Use supply", "supply", "", "small") : ""}${btn("Resupply", "resupply", "", "small")}`) : ""}
-    ${r.requirements?.length ? section("requirements", "Requirements", r.requirements.map((q) => row(choices.find((c) => c.id === q.id)?.name ?? title(q.kind), q.rank ?? q.value ?? "")).join("")) : ""}
+    ${r.requires?.length ? section("requirements", "Learning requirements", r.requires.map((id) => row("Learn", choices.find((entry) => entry.id === id)?.name ?? id)).join("")) : ""}
     </aside></div>`;
 }
 
@@ -386,14 +452,8 @@ function render() {
   }
 }
 function showPicker() {
-  const items =
-    kind === "item"
-      ? [
-          ...inventory.equipment,
-          ...inventory.recipes,
-          ...choices.filter((r) => r.kind === "ability" && !r.universal),
-        ]
-      : creatures;
+  const entries =
+    kind === "item" ? items().filter((entry) => !entry.universal) : creatures;
   popup(
     kind === "item" ? "Choose item" : "Choose combat profile",
     `<label>Search<input id="catalog-search" type="search" aria-label="Search catalog" autocomplete="off"></label><div id="catalog-results" class="catalog-results"></div>`,
@@ -401,7 +461,7 @@ function showPicker() {
   const fill = () => {
     const q = document.querySelector("#catalog-search").value.toLowerCase();
     document.querySelector("#catalog-results").innerHTML =
-      items
+      entries
         .filter((r) =>
           `${r.name} ${r.family ?? r.kind ?? "equipment"}`
             .toLowerCase()
@@ -517,22 +577,22 @@ async function action(t) {
     );
   if (a === "specialty") {
     const d = r.reference.specialtyDetails[Number(t.dataset.index)];
-    return popup(d.title, markdown(d.markdown));
+    return popup(d.title, monsterReference(d, d.title));
   }
   if (a === "action") {
     const group = t.dataset.group,
       entry = r.actions[group].actions[Number(t.dataset.index)];
-    const d = r.reference.specialtyDetails.find(
-      (d) => d.title.toLowerCase() === entry.name.toLowerCase(),
-    );
+    const detail = monsterReference(specialtyFor(r, entry.name), entry.name);
     if (group !== "main")
+      return popup(entry.name, detail || `<p>${esc(entry.effect)}</p>`);
+    if (!entry.outcomes)
       return popup(
         entry.name,
-        d ? markdown(d.markdown) : `<p>${esc(entry.effect)}</p>`,
+        detail || "<p>See the creature’s printed action.</p>",
       );
     return popup(
       entry.name,
-      `<div class="attack-card"><p><b>${esc(state.name ?? r.name)}</b> · Defend with ${esc(entry.defense.sourceText)}</p><table class="outcome-table">${["weak", "standard", "strong"].map((v) => `<tr><th>${title(v)} defense</th><td>${esc(entry.outcomes[v])}</td></tr>`).join("")}</table>${d ? markdown(d.markdown) : ""}${entry.defense.attribute ? btn("Defend", "defend", `data-index="${t.dataset.index}"`, "primary small") : ""}</div>`,
+      `<div class="attack-card"><p><b>${esc(state.name ?? r.name)}</b> · Defend with ${esc(entry.defense.sourceText)}</p><table class="outcome-table">${["weak", "standard", "strong"].map((v) => `<tr><th>${title(v)} defense</th><td>${esc(entry.outcomes[v])}</td></tr>`).join("")}</table>${detail}${entry.defense.attribute ? btn("Defend", "defend", `data-index="${t.dataset.index}"`, "primary small") : ""}</div>`,
     );
   }
   if (a === "defend") {
@@ -659,7 +719,7 @@ async function action(t) {
           JSON.stringify(
             {
               format: "hol.sheet.prototype",
-              sourceCommit: inventory.sourceCommit,
+              sourceCommit,
               version: 1,
               kind,
               state,
@@ -789,23 +849,65 @@ try {
     if (!response.ok) throw new Error(`Cannot load ${n}.`);
     return response.json();
   };
-  const [c, i, ch, ref, images] = await Promise.all([
+  const [c, images, graph, currentRefs] = await Promise.all([
     load("creatures"),
-    load("inventory"),
-    load("choices"),
-    load("references"),
     load("sheet-art"),
+    load("forge"),
+    load("forge-references"),
   ]);
   if (
-    c.source.commit !== i.sourceCommit ||
-    c.source.commit !== ch.sourceCommit ||
-    c.source.commit !== images.sourceCommit
+    c.source.commit !== images.sourceCommit ||
+    graph.sourceCommit !== currentRefs.sourceCommit
   )
-    throw new Error("Sheet catalogs must use the same rules edition.");
+    throw new Error("Sheet references do not match their catalog.");
   creatures = c.creatures;
-  inventory = i;
-  choices = ch.records;
-  refs = ref.records;
+  sourceCommit = kind === "item" ? graph.sourceCommit : c.source.commit;
+  monsterRules = new Map();
+  for (const [id, record] of Object.entries(currentRefs.records)) {
+    if (!id.startsWith("monster-")) continue;
+    const name = record.markdown.match(/^# (.+)/)?.[1]?.toLowerCase();
+    if (!name) continue;
+    monsterRules.set(name, monsterRules.has(name) ? null : record.markdown);
+  }
+  if (kind === "item") {
+    const [legacyInventory, legacyChoices, legacyRefs] = await Promise.all([
+      load("inventory"),
+      load("choices"),
+      load("references"),
+    ]);
+    const current = workshopCatalogs(
+      legacyChoices,
+      legacyInventory,
+      null,
+      graph,
+      currentRefs,
+    );
+    inventory = {
+      equipment: current.inventory.equipment.filter((entry) =>
+        Object.hasOwn(currentRefs.records, entry.id),
+      ),
+      recipes: current.inventory.recipes.filter((entry) =>
+        Object.hasOwn(currentRefs.records, entry.id),
+      ),
+    };
+    choices = current.choices;
+    spellById = new Map(graph.spells.map((spell) => [spell.id, spell]));
+    refs = { ...legacyRefs.records, ...currentRefs.records };
+    itemRedirects = graph.redirects;
+    const activeIds = new Set(items().map((entry) => entry.id));
+    archivedItems = new Map(
+      [
+        ...legacyInventory.equipment,
+        ...legacyInventory.recipes,
+        ...legacyChoices.records.filter((entry) => entry.kind === "ability"),
+      ]
+        .filter(
+          (entry) =>
+            !activeIds.has(entry.id) && !Object.hasOwn(itemRedirects, entry.id),
+        )
+        .map((entry) => [entry.id, { ...entry, archived: true }]),
+    );
+  }
   art = Object.fromEntries(images.records.map((r) => [r.id, r.asset]));
   state = defaults();
   try {

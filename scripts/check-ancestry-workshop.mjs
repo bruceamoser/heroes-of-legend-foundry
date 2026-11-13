@@ -1,16 +1,19 @@
 import { createServer } from "node:http";
 import { readFile, mkdir } from "node:fs/promises";
 import { resolve, extname } from "node:path";
-import { chromium } from "@playwright/test";
+import { chromium, expect } from "@playwright/test";
 import assert from "node:assert/strict";
+import { workshopCatalogs } from "../src/rules/workshop-forge-catalog.mjs";
 import { writePortableCharacter } from "../src/rules/portable-character.mjs";
 
 const directory = resolve("dist/workshop"), prefix = "/heroes-of-legend-foundry/";
 const read = async path => JSON.parse(await readFile(path, "utf8"));
-const choices = await read("static/data/choices.json");
-const catalogs = { choices: choices.records, inventory: await read("static/data/inventory.json"), wounds: await read("static/data/wounds.json"), commit: choices.sourceCommit };
-const fixture = (await read("tests/fixtures/reference-heroes.json")).characters[0].draft;
-const ancestries = choices.records.filter(record => record.kind === "ancestry");
+const [choices, inventory, wounds, forge, forgeReferences, forgeParty] = await Promise.all(
+  ["choices", "inventory", "wounds", "forge", "forge-references", "forge-party"].map(name => read(`static/data/${name}.json`)),
+);
+const catalogs = workshopCatalogs(choices, inventory, wounds, forge, forgeReferences);
+const fixture = forgeParty.party[0].draft;
+const ancestries = catalogs.choices.filter(record => record.kind === "ancestry");
 const server = createServer(async (req, res) => {
   try {
     const url = new URL(req.url, "http://localhost");
@@ -28,7 +31,10 @@ const base = (process.env.HOL_WORKSHOP_URL ?? `http://127.0.0.1:${server.address
 const failures = [];
 page.on("pageerror", error => failures.push(error.message));
 page.on("response", response => { if (response.status() >= 400) failures.push(`${response.status()} ${response.url()}`); });
-page.on("dialog", dialog => dialog.accept());
+page.on("dialog", async dialog => {
+  try { await dialog.accept(); }
+  catch (error) { if (!page.isClosed()) failures.push(error.message); }
+});
 const output = resolve(process.env.HOL_WORKSHOP_OUTPUT ?? "test-results/ancestry-workshop");
 await mkdir(output, { recursive: true });
 async function seed(ancestryId, traitIds, mode = "builder") {
@@ -57,7 +63,7 @@ try {
     assert(!narrative.includes("Prepared for v16.7.0"));
     await dialog.getByRole("button", {name:"Close",exact:true}).click();
     for (const id of ancestry.traits) {
-      const trait = choices.records.find(record => record.id === id);
+      const trait = catalogs.choices.find(record => record.id === id);
       const choice = page.locator(".check").filter({has:page.locator(`input[value="${id}"]`)});
       assert.equal(await choice.locator(".card-copy").textContent(), trait.reference.flavor[0], `${trait.name}: chooser description`);
       await choice.locator(`[data-action="reference"][data-id="${id}"]`).click();
@@ -77,6 +83,7 @@ try {
     const character = await seed(id, ancestry.traits.slice(0, 2));
     const old = {...character, sourceCommit:"25b80c9fe77d7baaec3f3a8a548c9663d0f39a30"};
     await page.locator("#import-file").setInputFiles({ name:`old-${id}.json`, mimeType:"application/json", buffer:Buffer.from(JSON.stringify(old)) });
+    await expect(page.locator("#notice")).toContainText("Character imported.");
     await page.getByRole("heading", {name:"Review",exact:true}).waitFor();
     assert.equal((await stored()).character.draft.ancestryId, id);
     assert.deepEqual((await stored()).character.draft.traitIds, ancestry.traits.slice(0, 2));
@@ -84,7 +91,7 @@ try {
     await page.locator("#save-name").fill(`Ancestry regression ${id}`);
     await page.locator("#reference").getByRole("button", {name:"Save",exact:true}).click();
     const saved = await stored();
-    assert.equal(saved.character.sourceCommit, choices.sourceCommit);
+    assert.equal(saved.character.sourceCommit, forge.sourceCommit);
     await page.reload();
     await page.getByRole("heading", {name:"Review",exact:true}).waitFor();
     assert.equal((await stored()).saveId, saved.saveId);
@@ -108,7 +115,7 @@ try {
   await page.getByRole("button", {name:"8 Review",exact:true}).click();
   await page.getByRole("button", {name:"View character sheet",exact:true}).click();
   await page.getByRole("tab", {name:"Main",exact:true}).click();
-  assert.match(await page.locator('[data-collapse="movement-carrying"]').innerText(), /11 \/ 16/);
+  assert.match(await page.locator('[data-collapse="movement-carrying"]').innerText(), /8 \/ 16/);
   assert(await page.locator('.trait-table [data-id="trait-tallfolk-broad-back"]').isVisible());
   const mixedDownload = page.waitForEvent("download");
   await page.getByRole("button", {name:"Export JSON",exact:true}).click();
@@ -120,7 +127,7 @@ try {
   assert.equal(mixed.draft.languages.ancestry,"giant");
   await page.reload();
   await page.getByRole("tab", {name:"Main",exact:true}).waitFor();
-  assert.match(await page.locator('[data-collapse="movement-carrying"]').innerText(), /11 \/ 16/);
+  assert.match(await page.locator('[data-collapse="movement-carrying"]').innerText(), /8 \/ 16/);
   await page.getByRole("button", {name:/Edit/}).first().click();
   await page.getByRole("tab", {name:"Development",exact:true}).click();
   await page.getByRole("button", {name:"Edit creation",exact:true}).click();
@@ -132,7 +139,7 @@ try {
   await page.getByRole("button", {name:"8 Review",exact:true}).click();
   await page.getByRole("button", {name:"View character sheet",exact:true}).click();
   await page.getByRole("tab", {name:"Main",exact:true}).click();
-  assert.match(await page.locator('[data-collapse="movement-carrying"]').innerText(), /11 \/ 13/);
+  assert.match(await page.locator('[data-collapse="movement-carrying"]').innerText(), /8 \/ 13/);
   await page.getByRole("button", {name:"Evade",exact:true}).click();
   assert.equal(await page.locator("#recipe-net").inputValue(),"1", "borrowed Small Target supplies one defense Boon");
   await page.keyboard.press("Escape");
@@ -151,6 +158,7 @@ try {
   legacyMixed.draft.profile = {story:"Retain this legacy hero's story."};
   async function importLegacyMixed() {
     await page.locator("#import-file").setInputFiles({name:"legacy-mixed-ancestry.json",mimeType:"application/json",buffer:Buffer.from(JSON.stringify(legacyMixed))});
+    await expect(page.locator("#notice")).toContainText("Character imported.");
     await page.getByRole("heading", {name:"Review",exact:true}).waitFor();
     assert(await page.getByRole("button", {name:"Export character JSON",exact:true}).isDisabled());
     await page.getByRole("button", {name:"2 Ancestry",exact:true}).click();
@@ -227,17 +235,18 @@ try {
   assert(await page.getByRole("button", {name:"The Debt Comes Due · pay 1 HP & reroll",exact:true}).isDisabled());
   await page.keyboard.press("Escape");
   await page.reload();
-  await page.getByRole("button", {name:"Recovery",exact:true}).waitFor();
+  await page.locator("[data-action=hero-recovery]").waitFor();
   assert.deepEqual((await stored()).character.draft.play.recovery, {unavailableHp:1,debtUsed:true});
-  await page.getByLabel("Current HP", {exact:true}).fill("3");
+  await page.getByLabel("Current HP", {exact:true}).fill("0");
   await page.getByLabel("Current HP", {exact:true}).press("Tab");
   await page.getByRole("button", {name:"Use Grit",exact:true}).click();
   await page.getByRole("button", {name:"Spend 1 Grit",exact:true}).click();
-  assert.equal(Number(await page.getByLabel("Current HP", {exact:true}).inputValue()), maximum - 1);
-  await page.getByRole("button", {name:"Recovery",exact:true}).click();
+  assert.equal(Number(await page.getByLabel("Current HP", {exact:true}).inputValue()), Math.ceil(maximum / 2));
+  await page.locator('[data-action="debt-recovery"]').click();
   await page.getByRole("button", {name:"Next dawn",exact:true}).click();
-  assert.equal(Number(await page.getByLabel("Current HP", {exact:true}).inputValue()), maximum - 1, "dawn unlocks HP without healing");
-  await page.getByRole("button", {name:"Safe breath",exact:true}).click();
+  assert.equal(Number(await page.getByLabel("Current HP", {exact:true}).inputValue()), Math.ceil(maximum / 2), "dawn unlocks HP without healing");
+  await page.locator("#reference").getByRole("button", {name:"Recovery",exact:true}).click();
+  await page.getByRole("button", {name:"Complete safe rest",exact:true}).click();
   assert.equal(Number(await page.getByLabel("Current HP", {exact:true}).inputValue()), maximum);
   await page.keyboard.press("Escape");
   await page.screenshot({path:`${output}/debt-recovery.png`,fullPage:true});

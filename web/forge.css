@@ -1,0 +1,419 @@
+.workshop-forge {
+  --atlas: #15221f;
+  --atlas-line: #758981;
+  --atlas-gold: #e3c483;
+  --atlas-glow: #273a31;
+  min-width: 0;
+}
+.forge-controls,
+.forge-view-buttons,
+.forge-filter-buttons,
+.forge-map-toolbar,
+.forge-map-legend,
+.forge-inspector-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.forge-controls {
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.forge-controls button,
+.forge-filters button {
+  white-space: nowrap;
+}
+.workshop-forge button[aria-pressed="true"]:not(.forge-node) {
+  background: var(--forest);
+  border-color: var(--forest);
+  color: var(--paper);
+}
+.forge-dp {
+  color: var(--forest);
+  font-size: 0.88rem;
+}
+.forge-filters,
+.forge-columns-discipline {
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+.forge-filters summary,
+.forge-columns-discipline summary {
+  cursor: pointer;
+  padding: 6px 9px;
+  font-weight: 600;
+}
+.forge-filter-buttons {
+  padding: 0 8px 8px;
+}
+.forge-workspace {
+  display: grid;
+  grid-template: "map inspect" auto "more inspect" 1fr / minmax(0, 1fr) minmax(230px, 31%);
+  gap: 9px;
+  align-items: start;
+}
+.forge-surface {
+  grid-area: map;
+  min-width: 0;
+}
+.forge-more {
+  grid-area: more;
+  min-width: 0;
+}
+.forge-map-toolbar {
+  margin-bottom: 5px;
+}
+.forge-map-toolbar button {
+  min-width: 30px;
+}
+.forge-map-legend {
+  column-gap: 10px;
+  color: var(--muted);
+  font-size: 0.72rem;
+  margin-left: auto;
+}
+.forge-key::before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 4px;
+  border: 1px solid #596860;
+  border-radius: 50%;
+}
+.forge-key-learned::before {
+  border-color: #75602e;
+  background: #ad8a49;
+}
+.forge-key-available::before {
+  border-color: #345244;
+  background: #80a690;
+}
+.forge-map-scroll {
+  --map-max-height: min(530px, 62dvh);
+  overflow: auto;
+  max-height: var(--map-max-height);
+  border: 1px solid #49564a;
+  border-radius: 4px;
+  background: var(--atlas);
+  scrollbar-color: #6a7f70 var(--atlas);
+  scrollbar-width: thin;
+}
+.forge-map {
+  position: relative;
+  width: calc(min(100%, var(--map-max-height) * var(--map-ratio)) * var(--map-zoom));
+  min-width: calc(320px * var(--map-zoom));
+  margin-inline: auto;
+  aspect-ratio: var(--map-ratio);
+  background:
+    radial-gradient(ellipse at center, var(--atlas-glow), var(--atlas) 72%);
+}
+.forge-map > svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.forge-branch,
+.forge-cross {
+  fill: none;
+  stroke: var(--atlas-line);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+.forge-branch.is-learned,
+.forge-cross.is-learned {
+  stroke: var(--atlas-gold);
+}
+.forge-branch.is-highlighted {
+  stroke: #f4e8c8;
+  stroke-width: 1.6;
+}
+.forge-cross {
+  stroke: #b8c6bd;
+  stroke-width: 1.2;
+  stroke-dasharray: 4 3;
+}
+.forge-cross.is-learned {
+  stroke-dasharray: none;
+}
+.forge-map :is(button, .forge-map-name) {
+  position: absolute;
+  left: var(--node-x);
+  top: var(--node-y);
+  transform: translate(-50%, -50%);
+}
+.forge-map-name {
+  color: #e6d1a1;
+  font: 600 0.62rem Cinzel, Georgia, serif;
+  letter-spacing: 0.025em;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.forge-map button {
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  border: 1px solid #9caea3;
+  border-radius: 50%;
+  color: #e8dcbf;
+  background: #24342e;
+}
+.forge-map button.is-available {
+  border-color: #afdfbc;
+  background: #41684f;
+}
+.forge-map button.is-learned {
+  border-color: var(--atlas-gold);
+  background: #73613b;
+}
+.forge-map button:hover,
+.forge-map button[aria-pressed="true"] {
+  z-index: 1;
+  border-color: #f3dfad;
+  color: white;
+  background: #42614e;
+  box-shadow: 0 0 0 2px #f3dfad8c;
+}
+.forge-map button:focus-visible {
+  z-index: 2;
+  outline-color: #f9e5b2;
+}
+.forge-map-root {
+  width: 13px;
+  height: 13px;
+}
+.forge-token {
+  width: 19px;
+  height: 19px;
+  flex: 0 0 auto;
+  object-fit: contain;
+}
+.forge-map .forge-token {
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+}
+.forge-map-step {
+  width: 7px;
+  height: 7px;
+}
+.forge-map-end {
+  width: 9px;
+  height: 9px;
+}
+.forge-map .forge-map-combination {
+  width: 11px;
+  height: 11px;
+  border-radius: 2px;
+  border-color: #c4ac8f;
+  font: 650 8px/1 system-ui, sans-serif;
+  background: #4d3a3e;
+}
+.forge-map-focus .forge-map-root {
+  width: 39px;
+  height: 39px;
+}
+.forge-map-focus .forge-map-name {
+  font-size: 0.83rem;
+}
+.forge-map-focus .forge-map-step {
+  width: 15px;
+  height: 15px;
+}
+.forge-map-focus .forge-map-end,
+.forge-map-focus .forge-map-combination {
+  width: 20px;
+  height: 20px;
+}
+.forge-map-focus .forge-map-combination {
+  font-size: 0.73rem;
+}
+.forge-inspector {
+  grid-area: inspect;
+  min-width: 0;
+  padding: 10px;
+  background: #fbf7ee;
+  border: 1px solid var(--line);
+  border-top: 2px solid var(--gold);
+  border-radius: 3px;
+}
+.forge-inspector h3 {
+  margin-top: 3px;
+  font-size: 1.02rem;
+  overflow-wrap: anywhere;
+}
+.forge-context,
+.forge-meta {
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+.forge-meta {
+  margin-top: 2px;
+  font-weight: 650;
+}
+.forge-effect,
+.forge-spell p {
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+  margin-top: 7px;
+  font: 1.06rem/1.27 Garamond, Georgia, serif;
+}
+.forge-reasons {
+  margin: 7px 0;
+  padding-inline-start: 16px;
+  color: #664432;
+  font-size: 0.8rem;
+}
+.forge-inspector-actions {
+  margin: 8px 0 0;
+}
+.forge-inspector-actions:empty {
+  display: none;
+}
+.forge-related,
+.forge-pages {
+  margin-top: 9px;
+}
+.forge-related ul,
+.forge-path ol {
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 0;
+}
+.forge-more .forge-related ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 4px;
+}
+.forge-related li + li {
+  margin-top: 2px;
+}
+.forge-node.forge-related-node,
+.forge-node.forge-path-step {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  width: 100%;
+  text-align: left;
+  font-size: 0.78rem;
+}
+.forge-node :is(span, small) {
+  overflow-wrap: anywhere;
+}
+.forge-endpoint-context {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: var(--muted);
+}
+.forge-node small {
+  flex: 0 0 auto;
+  font-size: 0.71rem;
+}
+.forge-columns-discipline {
+  background: #fbf7ee;
+}
+.forge-columns-discipline summary > * {
+  vertical-align: middle;
+  margin-right: 6px;
+}
+.forge-columns-discipline summary small {
+  float: right;
+}
+.forge-columns-body {
+  padding: 3px 8px 8px;
+}
+.forge-paths {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px;
+  margin-top: 7px;
+}
+.forge-path {
+  min-width: 0;
+  padding: 6px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+}
+.forge-path > p {
+  color: var(--muted);
+  font-size: 0.73rem;
+}
+.forge-path li {
+  position: relative;
+}
+.forge-path li + li {
+  margin-top: 6px;
+}
+.forge-path li + li::before {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 6px;
+  left: 13px;
+  top: -6px;
+  background: #9f854e;
+}
+.forge-node.is-learned:not(.forge-map button) {
+  border-left: 3px solid var(--gold);
+}
+.forge-node[aria-pressed="true"]:not(.forge-map button) {
+  outline: 1px solid #7c6231;
+  outline-offset: -1px;
+  background: var(--ivory);
+}
+.forge-spell {
+  border-bottom: 1px solid var(--line);
+  padding: 4px 0;
+}
+.forge-spell summary {
+  cursor: pointer;
+  font-size: 0.81rem;
+  font-weight: 600;
+}
+.forge-spell summary span + span {
+  margin-inline-start: 5px;
+  font-size: 0.71rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.forge-spell dl {
+  margin: 5px 0 0;
+}
+.forge-spell dl div {
+  display: flex;
+  align-items: baseline;
+  gap: 3px;
+  font-size: 0.73rem;
+}
+.forge-spell dt {
+  color: var(--muted);
+}
+.forge-spell dd {
+  margin: 0;
+}
+.forge-empty {
+  padding: 10px;
+  font-size: 0.85rem;
+}
+@media (max-width: 700px) {
+  .forge-workspace {
+    grid-template: "map" auto "inspect" auto "more" auto / minmax(0, 1fr);
+  }
+}
+@media (max-width: 430px) {
+  .forge-paths,
+  .forge-more .forge-related ul {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .forge-map-legend {
+    margin-left: 0;
+  }
+}

@@ -24,9 +24,11 @@ export function creationPreview(
   choices,
   inventory,
   languages = DEFAULT_LANGUAGES,
+  graph,
 ) {
   const result = creationIdentity(draft, choices, languages, {
     inventoryCatalog: inventory,
+    graph,
   });
   const errors = [...result.errors];
   if (!draft.name?.trim())

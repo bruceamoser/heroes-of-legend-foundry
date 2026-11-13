@@ -71,65 +71,26 @@ try {
   await page.goto(`http://127.0.0.1:${server.address().port}${prefix}`);
   const hp = page.getByRole("spinbutton", { name: "Current HP", exact: true });
   await hp.waitFor();
-  const max = Number(await hp.getAttribute("max")),
-    originalSpeed = Number(await page.locator("[data-speed]").innerText());
-  // Native wound selection, highest-three ordering, capped extra dice and application.
-  const woundCases = [
-    { faces: [1, 6, 6], key: "166" },
-    { faces: [1, 1, 5, 6], key: "156" },
-    { faces: [1, 1, 1, 3, 3], key: "133" },
-  ];
-  for (const [index, c] of woundCases.entries()) {
-    await page
-      .getByRole("button", { name: "Roll a new wound", exact: true })
-      .click();
-    await page
-      .getByLabel("Wound damage type", { exact: true })
-      .selectOption("physical");
-    await dice(c.faces);
-    await page.getByRole("button", { name: "Roll wound", exact: true }).click();
-    assert.match(
-      await page.locator("#wound-roll-result").innerText(),
-      new RegExp(c.key),
-    );
-    assert.equal(
-      await page.locator("[data-wound-count]").innerText(),
-      String(index + 1),
-    );
-    await page.keyboard.press("Escape");
-  }
-  assert.equal(
-    await page.locator("[data-speed]").innerText(),
-    `${originalSpeed - 1} / ${originalSpeed}`,
-  );
-  assert.match(await page.locator(".condition-bar").innerText(), /Bleeding 1/);
-  await page.getByRole("button", { name: "Roll Brawn", exact: true }).click();
-  await page
-    .getByRole("dialog")
-    .getByText("Wound effects", { exact: true })
-    .click();
-  await page.locator("[data-wound-net]").first().check();
-  assert.equal(await page.locator("#recipe-net").inputValue(), "1");
-  await page.locator("[data-wound-net]").first().uncheck();
-  assert.equal(await page.locator("#recipe-net").inputValue(), "0");
-  await page.keyboard.press("Escape");
+  const max = Number(await hp.getAttribute("max"));
+  const sp = page.getByRole("spinbutton", { name: "Current SP", exact: true });
+  await sp.fill("2");
+  await sp.press("Tab");
   await hp.fill("3");
   await hp.press("Tab");
   await page.getByRole("button", { name: "Use Grit", exact: true }).click();
-  await page.getByRole("button", { name: "Cancel", exact: true }).click();
-  assert.equal(await hp.inputValue(), "3");
+  assert.equal(await page.getByRole("button", { name: "Spend 1 Grit", exact: true }).isDisabled(), true);
+  await page.keyboard.press("Escape");
+  await hp.fill("0");
+  await hp.press("Tab");
   await page.getByRole("button", { name: "Use Grit", exact: true }).click();
   await page.getByRole("button", { name: "Spend 1 Grit", exact: true }).click();
-  assert.equal(Number(await hp.inputValue()), max);
+  assert.equal(Number(await hp.inputValue()), Math.ceil(max / 2));
+  assert.equal(await sp.inputValue(), "2");
   assert.equal(
-    await page
-      .locator(".vital")
-      .filter({
-        has: page.getByRole("button", { name: "Use Grit", exact: true }),
-      })
-      .locator("strong")
-      .innerText(),
-    "1",
+    await page.locator(".vital").filter({
+      has: page.getByRole("button", { name: "Use Grit", exact: true }),
+    }).locator("strong").innerText(),
+    "0",
   );
   // Every right-column section and action group stores its collapsed state.
   const sections = await page
@@ -148,7 +109,7 @@ try {
       null,
       key,
     );
-  assert.equal(await page.locator("[data-wound-count]").innerText(), "3");
+  assert.equal(await sp.inputValue(), "2");
   for (const key of sections)
     await page.locator(`[data-collapse="${key}"] > summary`).click();
   await page.getByRole("tab", { name: "Abilities", exact: true }).click();
@@ -216,7 +177,7 @@ try {
   const saved = JSON.parse(await readFile(file, "utf8")),
     play = saved.draft.play;
   assert.equal(play.gritSpent, 1);
-  assert.equal(play.wounds[0].catalogId, "wound-physical-166");
+  assert.equal(play.sp, 2);
   assert.equal(play.inventory.overrides[foodId].quantity, 2);
   assert.equal(play.inventory.overrides[foodId].inventoryDie, 6);
   assert.equal(play.inventory.overrides[potionId].inventoryDie, 0);
@@ -245,24 +206,18 @@ try {
     "★",
   );
   await page.screenshot({ path: `${output}/resources-abilities-760.png` });
-  // Terminal wounds stay printable and apply their ordinary Last Words consequence.
-  await page
-    .getByRole("button", { name: "Roll a new wound", exact: true })
-    .click();
-  await dice([6, 6, 6, 6, 6]);
-  await page.getByRole("button", { name: "Roll wound", exact: true }).click();
-  assert.match(
-    await page.locator("#wound-roll-result").innerText(),
-    /Last Words/,
-  );
-  assert.equal(await hp.inputValue(), "0");
-  await page.keyboard.press("Escape");
-  await page.getByRole("button", { name: "Use Grit", exact: true }).click();
-  assert(
-    await page
-      .getByRole("button", { name: "Spend 1 Grit", exact: true })
-      .isDisabled(),
-  );
+  await hp.fill("0");
+  await hp.press("Tab");
+  for (let mark = 1; mark <= 3; mark++) {
+    await page.getByRole("button", { name: "Death roll", exact: true }).click();
+    await dice([1, 1, 1]);
+    await page.getByRole("button", { name: "Roll", exact: true }).click();
+    assert.match(await page.locator("#death-mark-display").innerText(), new RegExp(`Failure marks ${mark} / 3`));
+    if (mark < 3) await page.keyboard.press("Escape");
+  }
+  assert.equal(await page.getByRole("button", { name: "Spend Grit", exact: true }).isDisabled(), true);
+  await page.getByRole("button", { name: "Last Words", exact: true }).click();
+  assert.match(await page.locator(".vitals").innerText(), /Dead/);
   await page.keyboard.press("Escape");
   await page.getByRole("tab", { name: "Main", exact: true }).click();
   await page.evaluate(() => {
@@ -280,7 +235,7 @@ try {
   }
   assert.deepEqual(failures, []);
   console.info(
-    "PASS rolled wounds/conditions/Speed/context/Last Words, confirmed Grit, all section states, potion final healing, supply decay, quantity, stars and current-only portable persistence; 900/760/390px and zero browser errors.",
+    "PASS lifetime Grit, separate failure marks and Last Words, all section states, potion final healing, supply decay, quantity, stars and current-only portable persistence; 900/760/390px and zero browser errors.",
   );
 } catch (error) {
   await page.screenshot({

@@ -5,6 +5,7 @@ import { currentAncestryId } from "./ancestry.mjs";
 
 export const PORTABLE_FORMAT = "heroes-of-legend-character";
 export const PORTABLE_VERSION = 3;
+export const FORGE_PORTABLE_VERSION = 4;
 export const MAX_CHARACTER_BYTES = 262144;
 const object = (value) =>
   value && typeof value === "object" && !Array.isArray(value);
@@ -29,15 +30,25 @@ export function currentCreationDraft(input, sourceCommit) {
     draft.borrowedAncestryId = currentAncestryId(draft.borrowedAncestryId);
   // Approved replacement of the retired concept; replay the ordinary current
   // purchase at its original stage/level, with no rank or resource grants.
-  const retired = "ability-turn-the-crowd", replacement = "ability-a-common-tongue";
+  const retired = "ability-turn-the-crowd",
+    replacement = "ability-a-common-tongue";
   const containers = [draft];
   if (object(draft?.progression?.levels))
-    containers.push(...Object.entries(draft.progression.levels)
-      .sort(([a], [b]) => Number(a) - Number(b)).map(([, entry]) => entry));
-  const lists = containers.flatMap((entry, index) => index === 0
-    ? [entry?.purchases?.[0], entry?.purchases?.[1]]
-    : [entry?.purchases]).filter(Array.isArray);
-  const hasRetiredPurchase = lists.some(list => list.some(entry => entry?.id === retired));
+    containers.push(
+      ...Object.entries(draft.progression.levels)
+        .sort(([a], [b]) => Number(a) - Number(b))
+        .map(([, entry]) => entry),
+    );
+  const lists = containers
+    .flatMap((entry, index) =>
+      index === 0
+        ? [entry?.purchases?.[0], entry?.purchases?.[1]]
+        : [entry?.purchases],
+    )
+    .filter(Array.isArray);
+  const hasRetiredPurchase = lists.some((list) =>
+    list.some((entry) => entry?.id === retired),
+  );
   let replacementSeen = false;
   for (const list of lists) {
     for (let index = 0; index < list.length; index++) {
@@ -49,7 +60,11 @@ export function currentCreationDraft(input, sourceCommit) {
     }
   }
   for (const entry of containers) {
-    if (!object(entry?.acquisitions) || !Object.hasOwn(entry.acquisitions, retired)) continue;
+    if (
+      !object(entry?.acquisitions) ||
+      !Object.hasOwn(entry.acquisitions, retired)
+    )
+      continue;
     if (!Object.hasOwn(entry.acquisitions, replacement))
       entry.acquisitions[replacement] = entry.acquisitions[retired];
     delete entry.acquisitions[retired];
@@ -74,6 +89,99 @@ export function currentCreationDraft(input, sourceCommit) {
   return draft;
 }
 
+const legacyRoots = {
+  "discipline-mind": "mentalism",
+  "discipline-calling": "invocation",
+  "discipline-flame": "elements",
+  "discipline-frost": "elements",
+  "discipline-storm": "elements",
+};
+const legacyRoot = (id) =>
+  typeof id === "string"
+    ? (legacyRoots[id] ?? id.replace(/^discipline-/, ""))
+    : id;
+const slug = (name) =>
+  name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+
+function migrateForgeChoices(draft, { forge, legacyChoices = [] }) {
+  if (!object(draft)) return draft;
+  const oldById = new Map(legacyChoices.map((record) => [record.id, record]));
+  for (const kind of ["culture", "background"]) {
+    const choice = draft[kind];
+    if (!object(choice) || !Number.isSafeInteger(choice.pair)) continue;
+    const old = oldById.get(choice.id);
+    const current = forge.origins.find((origin) => origin.id === choice.id);
+    const previousId = old?.pairs?.[choice.pair]?.abilityId;
+    if (!previousId || !current) continue;
+    const prefix = old.source.path.split("/").at(-1) + ":";
+    const oldName = oldById.get(previousId)?.name;
+    const exact = oldName && forge.originRedirects[prefix + oldName];
+    const oldSlug = previousId.replace(/^ability-/, "");
+    const alias = Object.entries(forge.originRedirects).find(
+      ([key]) =>
+        key.startsWith(prefix) && slug(key.slice(prefix.length)) === oldSlug,
+    )?.[1];
+    const entryId =
+      exact?.entryId ?? alias?.entryId ?? forge.redirects[previousId];
+    choice.pair = current.pairs.findIndex((pair) => pair.entryId === entryId);
+  }
+
+  const roots = new Set(forge.disciplines.map(({ id }) => id));
+  const allowed =
+    forge.classes.find((record) => record.id === draft.classId)
+      ?.disciplineIds ?? [];
+  if (Array.isArray(draft.classDisciplines)) {
+    const used = new Set();
+    draft.classDisciplines = draft.classDisciplines.map((id) => {
+      const target = legacyRoot(id);
+      if (!allowed.includes(target) || used.has(target)) return id;
+      used.add(target);
+      return target;
+    });
+  }
+
+  const redirect = (id) =>
+    typeof id === "string" && Object.hasOwn(forge.redirects, id)
+      ? forge.redirects[id]
+      : id;
+  const purchase = (entry) => {
+    if (!object(entry) || typeof entry.id !== "string") return entry;
+    const { id, rank } = entry;
+    const root = legacyRoot(id);
+    if (rank === 1 && roots.has(root)) return { id: root };
+    const target = redirect(id);
+    return target === id ? entry : { ...entry, id: target };
+  };
+  const acquisitions = (container) => {
+    if (!object(container.acquisitions)) return;
+    const entries = Object.entries(container.acquisitions);
+    // A selection already recorded for the new entry takes precedence.
+    for (const [id, value] of entries) {
+      const target = redirect(id);
+      if (target !== id && !Object.hasOwn(container.acquisitions, target)) {
+        container.acquisitions[target] = value;
+      }
+    }
+  };
+  for (const stage of [0, 1])
+    if (Array.isArray(draft.purchases?.[stage]))
+      draft.purchases[stage] = draft.purchases[stage].map(purchase);
+  acquisitions(draft);
+  for (const level of Object.values(draft.progression?.levels ?? {})) {
+    if (!object(level)) continue;
+    if (Array.isArray(level.purchases))
+      level.purchases = level.purchases.map(purchase);
+    acquisitions(level);
+  }
+  if (Array.isArray(draft.play?.favorites?.abilities))
+    draft.play.favorites.abilities =
+      draft.play.favorites.abilities.map(redirect);
+  return draft;
+}
+
 /** Import choices, never trusted derived statistics, executable content or Actor IDs. */
 export function readPortableCharacter(input, catalogs, languages) {
   if (
@@ -85,10 +193,21 @@ export function readPortableCharacter(input, catalogs, languages) {
   if (
     !object(value) ||
     value.format !== PORTABLE_FORMAT ||
-    ![1, 2, PORTABLE_VERSION].includes(value.schemaVersion)
+    ![1, 2, PORTABLE_VERSION, FORGE_PORTABLE_VERSION].includes(
+      value.schemaVersion,
+    )
   )
     throw new Error("Choose a supported Heroes of Legend character JSON file.");
+  if (!catalogs.forge && value.schemaVersion === FORGE_PORTABLE_VERSION)
+    throw new Error(
+      "Open this character in the current Character Workshop. This Foundry version uses the earlier character format.",
+    );
+  const schemaVersion = catalogs.forge
+    ? FORGE_PORTABLE_VERSION
+    : PORTABLE_VERSION;
   const d = currentCreationDraft(value.draft, value.sourceCommit);
+  if (catalogs.forge && value.schemaVersion < FORGE_PORTABLE_VERSION)
+    migrateForgeChoices(d, catalogs);
   const fail = () => {
     throw new Error("The character file contains malformed creation choices.");
   };
@@ -167,7 +286,10 @@ export function readPortableCharacter(input, catalogs, languages) {
   }
   if (Object.keys(d.acquisitions).length > 400) fail();
   for (const [id, entry] of Object.entries(d.acquisitions)) {
-    if (!/^ability-[a-z0-9-]+$/.test(id) || !object(entry)) fail();
+    const keyPattern = catalogs.forge
+      ? /^[a-z0-9:-]{1,200}$/
+      : /^ability-[a-z0-9-]+$/;
+    if (!keyPattern.test(id) || !object(entry)) fail();
     const result = {};
     for (const key of ["languageId", "specialty", "instrument"]) {
       if (entry[key] !== undefined) {
@@ -261,7 +383,7 @@ export function readPortableCharacter(input, catalogs, languages) {
       const nested = readPortableCharacter(
         {
           format: PORTABLE_FORMAT,
-          schemaVersion: PORTABLE_VERSION,
+          schemaVersion,
           sourceCommit: catalogs.commit,
           draft: {
             ...draft,
@@ -287,7 +409,9 @@ export function readPortableCharacter(input, catalogs, languages) {
     }
   }
   if (d.play !== undefined)
-    draft.play = normalizeWorkshopPlay(d.play, catalogs);
+    draft.play = normalizeWorkshopPlay(d.play, catalogs, {
+      migrateLegacy: value.schemaVersion < FORGE_PORTABLE_VERSION,
+    });
   if (d.profile !== undefined) {
     if (!object(d.profile)) fail();
     draft.profile = {};
@@ -308,7 +432,7 @@ export function writePortableCharacter(
 ) {
   const value = {
     format: PORTABLE_FORMAT,
-    schemaVersion: PORTABLE_VERSION,
+    schemaVersion: catalogs.forge ? FORGE_PORTABLE_VERSION : PORTABLE_VERSION,
     sourceCommit: catalogs.commit,
     draft,
   };

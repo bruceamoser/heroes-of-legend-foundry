@@ -5,6 +5,18 @@ Bruce requested direct implementation without delegated workers, book-inspired
 style rather than pixel matching, and a common hero header above proper tabs.
 The interface does not carry preview warnings or explanatory disclaimers.
 
+## Forge rules and local verification
+
+The [published Character Workshop](https://bruceamoser.github.io/heroes-of-legend-foundry/) uses the approved book revision in `content/forge-source-lock.json`. With `HOL_BOOK_REPOSITORY` set to a local book checkout, use `npm run import:forge` to regenerate the learning catalog, rules, equipment references, and six example heroes. Run `npm run validate:forge` to check that the files match the pinned source.
+
+Run `npm run build:workshop` and serve `dist/workshop` over HTTP. `npm run test:workshop-forge` drives staged creation, level 7, spell casting, and portable saves in Chromium. The Pages workflow publishes the same build.
+
+Level 0 and level 1 have separate DP pools. The learning view draws the edges from the same prerequisites that validate learning. Each discipline offers four paths. The fourth step requires level 3 and each combined ability requires level 7 and every connected endpoint. The sheet lists learned techniques with their cumulative improvements and shows learned spell pages in their named books. Track current and maximum HP and SP, both Fortitude death tallies, lifetime Grit, first aid, and safe overnight rest from the sheet.
+
+The browser exports schema 4. Earlier browser saves and imports use the current learning redirects and origin grants where available. Review any entries that still need a choice. Scars keep descriptions from older wound records. The native importer currently uses schema 3. The remaining native work is tracked in #272 and #269.
+
+The sections below record the previous Workshop design and its implementation history.
+
 ## Information architecture
 
 The shared header contains the top-left Edit toggle, name, ancestry, class,

@@ -15,7 +15,11 @@ const instance = (value) => text(value) && /^[a-z0-9:-]{1,200}$/.test(value);
 const list = (value, max = 500) => Array.isArray(value) && value.length <= max;
 
 /** Explicit play edits stay separate from acquisition and creation receipts. */
-export function normalizeWorkshopPlay(value, catalogs) {
+export function normalizeWorkshopPlay(
+  value,
+  catalogs,
+  { migrateLegacy = false } = {},
+) {
   const fail = () => {
     throw new Error("The character file contains malformed play controls.");
   };
@@ -26,15 +30,25 @@ export function normalizeWorkshopPlay(value, catalogs) {
     conditions: [],
   };
   if (value.recovery !== undefined) {
-    try { result.recovery = normalizeRecovery(value.recovery); }
-    catch { fail(); }
+    try {
+      result.recovery = normalizeRecovery(value.recovery);
+    } catch {
+      fail();
+    }
   }
-  for (const key of ["hp", "failedDeathRolls"]) {
+  const numericLimits = { hp: 1000000, failedDeathRolls: 3 };
+  if (catalogs.forge)
+    Object.assign(numericLimits, {
+      sp: 1000000,
+      successfulDeathRolls: 2,
+      lastRestHour: Number.MAX_SAFE_INTEGER,
+    });
+  for (const [key, maximum] of Object.entries(numericLimits)) {
     if (value[key] !== undefined) {
       if (
         !Number.isSafeInteger(value[key]) ||
         value[key] < 0 ||
-        value[key] > (key === "failedDeathRolls" ? 3 : 1000000)
+        value[key] > maximum
       )
         fail();
       result[key] = value[key];
@@ -49,7 +63,44 @@ export function normalizeWorkshopPlay(value, catalogs) {
       fail();
     result.gritSpent = value.gritSpent;
   }
-  if (value.lastWords !== undefined) {
+  if (catalogs.forge) {
+    for (const key of [
+      "dying",
+      "dead",
+      "firstAidUsed",
+      "firstAidPending",
+      "immediateDeathRoll",
+      "spellcraftRecoveryUsed",
+    ]) {
+      if (value[key] === undefined) continue;
+      if (typeof value[key] !== "boolean") fail();
+      result[key] = value[key];
+    }
+    if (value.gritTrigger !== undefined) {
+      if (
+        ![null, "fall", "failure", "stable", "turn-start"].includes(
+          value.gritTrigger,
+        )
+      )
+        fail();
+      result.gritTrigger = value.gritTrigger;
+    }
+    if (value.scars !== undefined) {
+      if (
+        !list(value.scars, 200) ||
+        value.scars.some((scar) => !text(scar, 2500) || !scar.trim())
+      )
+        fail();
+      result.scars = value.scars.map((scar) => scar.trim());
+    }
+    if (migrateLegacy && value.lastWords === true) {
+      result.hp = 0;
+      result.dead = false;
+      result.dying = true;
+      result.failedDeathRolls = 3;
+      result.gritTrigger = "failure";
+    }
+  } else if (value.lastWords !== undefined) {
     if (typeof value.lastWords !== "boolean") fail();
     result.lastWords = value.lastWords;
   }
@@ -114,7 +165,7 @@ export function normalizeWorkshopPlay(value, catalogs) {
       result.favorites[key] = [...new Set(values)];
     }
   }
-  if (value.wounds !== undefined) {
+  if (value.wounds !== undefined && (!catalogs.forge || migrateLegacy)) {
     if (
       !list(value.wounds, 100) ||
       value.wounds.some(
@@ -128,8 +179,9 @@ export function normalizeWorkshopPlay(value, catalogs) {
       new Set(value.wounds.map((w) => w.id)).size !== value.wounds.length
     )
       fail();
-    result.wounds = value.wounds.map((w) => {
+    const wounds = value.wounds.map((w) => {
       const next = { id: w.id, name: w.name.trim(), notes: w.notes };
+      if (catalogs.forge) return next;
       if (w.progress !== undefined) {
         if (
           !Number.isSafeInteger(w.progress) ||
@@ -178,6 +230,13 @@ export function normalizeWorkshopPlay(value, catalogs) {
       }
       return next;
     });
+    if (catalogs.forge) {
+      const scars = wounds.map(({ name, notes }) =>
+        notes.trim() ? `${name} — ${notes.trim()}` : name,
+      );
+      result.scars = [...(result.scars ?? []), ...scars];
+      if (!list(result.scars, 200)) fail();
+    } else result.wounds = wounds;
   }
   if (value.memorizedMessage !== undefined) {
     if (
@@ -283,24 +342,34 @@ export function normalizeWorkshopPlay(value, catalogs) {
   }
   if (value.conditions !== undefined) {
     if (!list(value.conditions, 100)) fail();
-    result.conditions = value.conditions.map((c) => {
-      if (
-        !object(c) ||
-        !text(c.id, 80) ||
-        !text(c.source, 200) ||
-        !Object.hasOwn(CONDITION_KINDS, c.key) ||
-        !Number.isSafeInteger(c.rating) ||
-        c.rating > 10000
-      )
-        fail();
-      return {
-        id: c.id,
-        key: c.key,
-        source: c.source,
-        rating: c.rating,
-        persistence: c.persistence,
-      };
-    });
+    const wounds = catalogs.forge && migrateLegacy ? (value.wounds ?? []) : [];
+    result.conditions = value.conditions
+      .map((c) => {
+        if (
+          !object(c) ||
+          !text(c.id, 80) ||
+          !text(c.source, 200) ||
+          !Object.hasOwn(CONDITION_KINDS, c.key) ||
+          !Number.isSafeInteger(c.rating) ||
+          c.rating > 10000
+        )
+          fail();
+        return {
+          id: c.id,
+          key: c.key,
+          source: c.source,
+          rating: c.rating,
+          persistence: c.persistence,
+        };
+      })
+      .filter(
+        (condition) =>
+          !wounds.some(
+            (wound) =>
+              condition.id.startsWith(`${wound.id}-`) &&
+              condition.source === wound.name,
+          ),
+      );
     validateContributions(result.conditions);
   }
   return result;

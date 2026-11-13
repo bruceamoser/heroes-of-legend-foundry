@@ -1,0 +1,1057 @@
+{
+  "sourceCommit": "d4d4b796e1393aaf79557ba39b0f9d51bf419e92",
+  "party": [
+    {
+      "id": "borin-bridgekeeper",
+      "draft": {
+        "name": "Borin Bridgekeeper",
+        "attributes": {
+          "brawn": 1,
+          "fortitude": 2,
+          "agility": 0,
+          "guile": 0,
+          "knowledge": -1,
+          "reason": 1
+        },
+        "ancestryId": "ancestry-dwarf",
+        "traitIds": [
+          "trait-dwarf-deep-constitution",
+          "trait-dwarf-carved-history"
+        ],
+        "languages": {
+          "home": "dwarven",
+          "extraSpoken": []
+        },
+        "culture": {
+          "id": "origin-culture-walled-communities",
+          "pair": 0
+        },
+        "background": {
+          "id": "origin-background-household-guard",
+          "pair": 0
+        },
+        "classId": "class-protector",
+        "classDisciplines": [
+          "armor",
+          "guard"
+        ],
+        "signatureId": "ability-signature-protector-between-them",
+        "purchases": {
+          "0": [
+            {
+              "id": "armor:harness:2"
+            },
+            {
+              "id": "armor:harness:3"
+            },
+            {
+              "id": "arms:impact:2"
+            },
+            {
+              "id": "arms:impact:3"
+            },
+            {
+              "id": "athletics"
+            },
+            {
+              "id": "athletics:climbing:1"
+            }
+          ],
+          "1": [
+            {
+              "id": "guard:interception:1"
+            },
+            {
+              "id": "guard:interception:2"
+            },
+            {
+              "id": "guard:interception:3"
+            },
+            {
+              "id": "guard:shieldwork:1"
+            },
+            {
+              "id": "guard:shieldwork:2"
+            },
+            {
+              "id": "guard:shieldwork:3"
+            }
+          ]
+        },
+        "acquisitions": {},
+        "shopping": [
+          {
+            "id": "item-ordinary-light-armor",
+            "quantity": 1,
+            "hands": 0,
+            "instanceId": "shop-example-0"
+          },
+          {
+            "id": "item-ordinary-melee-weapon",
+            "quantity": 1,
+            "hands": 1,
+            "instanceId": "shop-example-1"
+          },
+          {
+            "id": "item-ordinary-shield",
+            "quantity": 1,
+            "hands": 1,
+            "instanceId": "shop-example-2"
+          },
+          {
+            "id": "item-travel-pack",
+            "quantity": 1,
+            "hands": 0,
+            "instanceId": "shop-example-3"
+          },
+          {
+            "id": "item-sleeping-roll",
+            "quantity": 1,
+            "hands": 0,
+            "instanceId": "shop-example-4"
+          },
+          {
+            "id": "item-water-flask",
+            "quantity": 1,
+            "hands": 0,
+            "instanceId": "shop-example-5"
+          },
+          {
+            "id": "item-food-bundle",
+            "quantity": 1,
+            "hands": 0,
+            "instanceId": "shop-example-6"
+          },
+          {
+            "id": "item-lighting-bundle",
+            "quantity": 1,
+            "hands": 0,
+            "instanceId": "shop-example-7"
+          }
+        ],
+        "loadout": {
+          "shop-example-0": {
+            "carried": true,
+            "worn": true,
+            "held": false
+          },
+          "shop-example-1": {
+            "carried": true,
+            "worn": false,
+            "held": true
+          },
+          "shop-example-2": {
+            "carried": true,
+            "worn": false,
+            "held": true
+          },
+          "shop-example-3": {
+            "carried": true,
+            "worn": false,
+            "held": false
+          },
+          "shop-example-4": {
+            "carried": true,
+            "worn": false,
+            "held": false
+          },
+          "shop-example-5": {
+            "carried": true,
+            "worn": false,
+            "held": false
+          },
+          "shop-example-6": {
+            "carried": true,
+            "worn": false,
+            "held": false
+          },
+          "shop-example-7": {
+            "carried": true,
+            "worn": false,
+            "held": false
+          }
+        }
+      }
+    },
+    {
+      "id": "lira-ashbow",
+      "draft": {
+        "name": "Lira Ashbow",
+        "attributes": {
+          "brawn": 0,
+          "fortitude": 1,
+          "agility": 2,
+          "guile": 0,
+          "knowledge": 1,
+          "reason": -1
+        },
+        "ancestryId": "ancestry-elf",
+        "traitIds": [
+          "trait-elf-light-tread",
+          "trait-elf-leaf-listener"
+        ],
+        "languages": {
+          "home": "elven",
+          "extraSpoken": []
+        },
+        "culture": {
+          "id": "origin-culture-forest-communities",
+          "pair": 0
+        },
+        "background": {
+          "id": "origin-background-messenger",
+          "pair": 0
+        },
+        "classId": "class-blade",
+        "classDisciplines": [
+          "arms",
+          "athletics"
+        ],
+        "signatureId": "ability-signature-blade-measured-guard",
+        "purchases": {
+          "0": [
+            {
+              "id": "marksmanship:pinning:2"
+            },
+            {
+              "id": "marksmanship:pinning:3"
+            },
+            {
+              "id": "wilderness:foraging:2"
+            },
+            {
+              "id": "wilderness:foraging:3"
+            },
+            {
+              "id": "wilderness:tracking:1"
+            }
+          ],
+          "1": [
+            {
+              "id": "marksmanship:precision:1"
+            },
+            {
+              "id": "marksmanship:precision:2"
+            },
+            {
+              "id": "marksmanship:precision:3"
+            },
+            {
+              "id": "athletics:climbing:1"
+            },
+            {
+              "id": "athletics:climbing:2"
+            },
+            {
+              "id": "athletics:climbing:3"
+            }
+          ]
+        },
+        "acquisitions": {},
+        "shopping": [
+          {
+            "id": "item-ordinary-ranged-weapon",
+            "quantity": 1,
+            "hands": 2,
+            "instanceId": "shop-example-0"
+          },
+          {
+            "id": "item-ammunition-bundle",
+            "quantity": 1,
+            "hands": 0,
+            "instanceId": "shop-example-1"
+          },
+          {
+            "id": "item-travel-pack",
+            "quantity": 1,
+            "hands": 0,
+            "instanceId": "shop-example-2"
+          },
+          {
+            "id": "item-sleeping-roll",
+            "quantity": 1,
+            "hands": 0,
+            "instanceId": "shop-example-3"
+          },
+          {
+            "id": "item-water-flask",
+            "quantity": 1,
+            "hands": 0,
+            "instanceId": "shop-example-4"
+          },
+          {
+            "id": "item-food-bundle",
+            "quantity": 1,
+            "hands": 0,
+            "instanceId": "shop-example-5"
+          },
+          {
+            "id": "item-lighting-bundle",
+            "quantity": 1,
+            "hands": 0,
+            "instanceId": "shop-example-6"
+          },
+          {
+            "id": "item-rope-coil",
+            "quantity": 1,
+            "hands": 0,
+            "instanceId": "shop-example-7"
+          }
+        ],
+        "loadout": {
+          "shop-example-0": {
+            "carried": true,
+            "worn": false,
+            "held": true
+          },
+          "shop-example-1": {
+            "carried": true,
+            "worn": false,
+            "held": false
+          },
+          "shop-example-2": {
+            "carried": true,
+            "worn": false,
+            "held": false
+          },
+          "shop-example-3": {
+            "carried": true,
+            "worn": false,
+            "held": false
+          },
+          "shop-example-4": {
+            "carried": true,
+            "worn": false,
+            "held": false
+          },
+          "shop-example-5": {
+            "carried": true,
+            "worn": false,
+            "held": false
+          },
+          "shop-example-6": {
+            "carried": true,
+            "worn": false,
+            "held": false
+          },
+          "shop-example-7": {
+            "carried": true,
+            "worn": false,
+            "held": false
+          }
+        }
+      }
+    },
+    {
+      "id": "mara-reedheart",
+      "draft": {
+        "name": "Mara Reedheart",
+        "attributes": {
+          "brawn": 0,
+          "fortitude": 1,
+          "agility": 0,
+          "guile": 0,
+          "knowledge": 0,
+          "reason": 2
+        },
+        "ancestryId": "ancestry-human",
+        "traitIds": [
+          "trait-human-far-walker",
+          "trait-human-shared-table"
+        ],
+        "languages": {
+          "home": "reed-speech",
+          "extraSpoken": []
+        },
+        "culture": {
+          "id": "origin-culture-forest-communities",
+          "pair": 0
+        },
+        "background": {
+          "id": "origin-background-grove-tended",
+          "pair": 0
+        },
+        "classId": "class-shepherd",
+        "classDisciplines": [
+          "life",
+          "medicine"
+        ],
+        "signatureId": "ability-signature-shepherd-gentle-return",
+        "purchases": {
+          "0": [
+            {
+              "id": "restoration:1"
+            },
+            {
+              "id": "restoration:2"
+            },
+            {
+              "id": "wilderness:foraging:2"
+            },
+            {
+              "id": "wilderness:foraging:3"
+            },
+            {
+              "id": "medicine"
+            },
+            {
+              "id": "medicine:first-aid:1"
+            },
+            {
+              "id": "medicine:first-aid:2"
+            }
+          ],
+          "1": [
+            {
+              "id": "spellcraft"
+            },
+            {
+              "id": "spellcraft:soul-capacity:1"
+            },
+            {
+              "id": "spellcraft:soul-capacity:2"
+            },
+            {
+              "id": "spellcraft:soul-capacity:3"
+            },
+            {
+              "id": "spellcraft:recovery:1"
+            },
+            {
+              "id": "spellcraft:recovery:2"
+            },
+            {
+              "id": "spellcraft:recovery:3"
+            },
+            {
+              "id": "wilderness:animal-handling:1"
+            },
+            {
+              "id": "wilderness:animal-handling:2"
+            }
+          ]
+        },
+        "acquisitions": {},
+        "shopping": [
+          {
+            "id": "item-travel-pack",
+            "quantity": 1,
+            "hands": 0,
+            "instanceId": "shop-example-0"
+          },
+          {
+            "id": "item-sleeping-roll",
+            "quantity": 1,
+            "hands": 0,
+            "instanceId": "shop-example-1"
+          },
+          {
+            "id": "item-water-flask",
+            "quantity": 1,
+            "hands": 0,
+            "instanceId": "shop-example-2"
+          },
+          {
+            "id": "item-food-bundle",
+            "quantity": 1,
+            "hands": 0,
+            "instanceId": "shop-example-3"
+          },
+          {
+            "id": "item-lighting-bundle",
+            "quantity": 1,
+            "hands": 0,
+            "instanceId": "shop-example-4"
+          },
+          {
+            "id": "item-first-aid-supplies",
+            "quantity": 1,
+            "hands": 0,
+            "instanceId": "shop-example-5"
+          },
+          {
+            "id": "item-lesser-healing-bottle",
+            "quantity": 1,
+            "hands": 0,
+            "instanceId": "shop-example-6"
+          }
+        ],
+        "loadout": {
+          "shop-example-0": {
+            "carried": true,
+            "worn": false,
+            "held": false
+          },
+          "shop-example-1": {
+            "carried": true,
+            "worn": false,
+            "held": false
+          },
+          "shop-example-2": {
+            "carried": true,
+            "worn": false,
+            "held": false
+          },
+          "shop-example-3": {
+            "carried": true,
+            "worn": false,
+            "held": false
+          },
+          "shop-example-4": {
+            "carried": true,
+            "worn": false,
+            "held": false
+          },
+          "shop-example-5": {
+            "carried": true,
+            "worn": false,
+            "held": false
+          },
+          "shop-example-6": {
+            "carried": true,
+            "worn": false,
+            "held": false
+          }
+        }
+      }
+    },
+    {
+      "id": "oren-brass",
+      "draft": {
+        "name": "Oren Brass",
+        "attributes": {
+          "brawn": 0,
+          "fortitude": 0,
+          "agility": 0,
+          "guile": 1,
+          "knowledge": 2,
+          "reason": 0
+        },
+        "ancestryId": "ancestry-human",
+        "traitIds": [
+          "trait-human-far-walker",
+          "trait-human-many-homes"
+        ],
+        "languages": {
+          "home": "river-speech",
+          "extraSpoken": [],
+          "ancestry": "dwarven"
+        },
+        "culture": {
+          "id": "origin-culture-deep-halls",
+          "pair": 0
+        },
+        "background": {
+          "id": "origin-background-court-questioner",
+          "pair": 0
+        },
+        "classId": "class-intellect",
+        "classDisciplines": [
+          "craft",
+          "scholarship"
+        ],
+        "signatureId": "ability-signature-intellect-make-the-connection",
+        "purchases": {
+          "0": [
+            {
+              "id": "craft:supplies:1"
+            },
+            {
+              "id": "craft:supplies:2"
+            },
+            {
+              "id": "craft:supplies:3"
+            },
+            {
+              "id": "scholarship:lore:2"
+            },
+            {
+              "id": "scholarship:lore:3"
+            },
+            {
+              "id": "scholarship:investigation:1"
+            },
+            {
+              "id": "scholarship:investigation:2"
+            },
+            {
+              "id": "scholarship:investigation:3"
+            }
+          ],
+          "1": [
+            {
+              "id": "craft:repairs:2"
+            },
+            {
+              "id": "craft:repairs:3"
+            },
+            {
+              "id": "craft:construction:1"
+            },
+            {
+              "id": "craft:construction:2"
+            },
+            {
+              "id": "craft:construction:3"
+            },
+            {
+              "id": "scholarship:planning:1"
+            },
+            {
+              "id": "scholarship:planning:2"
+            },
+            {
+              "id": "scholarship:planning:3"
+            }
+          ]
+        },
+        "acquisitions": {
+          "craft:supplies:1": {
+            "recipes": [
+              "recipe-bound-torches",
+              "recipe-twisted-cord"
+            ]
+          },
+          "craft:supplies:2": {
+            "recipes": [
+              "recipe-travel-food",
+              "recipe-wooden-brace"
+            ]
+          }
+        },
+        "shopping": [
+          {
+            "id": "item-craft-tools",
+            "quantity": 1,
+            "hands": 0,
+            "instanceId": "shop-example-0"
+          },
+          {
+            "id": "item-ordinary-melee-weapon",
+            "quantity": 1,
+            "hands": 1,
+            "instanceId": "shop-example-1"
+          },
+          {
+            "id": "item-travel-pack",
+            "quantity": 1,
+            "hands": 0,
+            "instanceId": "shop-example-2"
+          },
+          {
+            "id": "item-sleeping-roll",
+            "quantity": 1,
+            "hands": 0,
+            "instanceId": "shop-example-3"
+          },
+          {
+            "id": "item-water-flask",
+            "quantity": 1,
+            "hands": 0,
+            "instanceId": "shop-example-4"
+          },
+          {
+            "id": "item-food-bundle",
+            "quantity": 1,
+            "hands": 0,
+            "instanceId": "shop-example-5"
+          },
+          {
+            "id": "item-lighting-bundle",
+            "quantity": 1,
+            "hands": 0,
+            "instanceId": "shop-example-6"
+          },
+          {
+            "id": "item-writing-kit",
+            "quantity": 1,
+            "hands": 0,
+            "instanceId": "shop-example-7"
+          }
+        ],
+        "borrowedAncestryId": "ancestry-dwarf",
+        "borrowedTraitId": "trait-dwarf-maker-s-eye",
+        "loadout": {
+          "shop-example-0": {
+            "carried": true,
+            "worn": false,
+            "held": false
+          },
+          "shop-example-1": {
+            "carried": true,
+            "worn": false,
+            "held": true
+          },
+          "shop-example-2": {
+            "carried": true,
+            "worn": false,
+            "held": false
+          },
+          "shop-example-3": {
+            "carried": true,
+            "worn": false,
+            "held": false
+          },
+          "shop-example-4": {
+            "carried": true,
+            "worn": false,
+            "held": false
+          },
+          "shop-example-5": {
+            "carried": true,
+            "worn": false,
+            "held": false
+          },
+          "shop-example-6": {
+            "carried": true,
+            "worn": false,
+            "held": false
+          },
+          "shop-example-7": {
+            "carried": true,
+            "worn": false,
+            "held": false
+          }
+        }
+      }
+    },
+    {
+      "id": "pip-copperwink",
+      "draft": {
+        "name": "Pip Copperwink",
+        "attributes": {
+          "brawn": 0,
+          "fortitude": 0,
+          "agility": 2,
+          "guile": 2,
+          "knowledge": 0,
+          "reason": -1
+        },
+        "ancestryId": "ancestry-halfling",
+        "traitIds": [
+          "trait-halfling-small-passage",
+          "trait-halfling-quiet-company"
+        ],
+        "languages": {
+          "home": "halfling",
+          "extraSpoken": []
+        },
+        "culture": {
+          "id": "origin-culture-free-harbors",
+          "pair": 1
+        },
+        "background": {
+          "id": "origin-background-confidence-artist",
+          "pair": 0
+        },
+        "classId": "class-shadow",
+        "classDisciplines": [
+          "subterfuge",
+          "athletics"
+        ],
+        "signatureId": "ability-signature-shadow-fade-behind",
+        "purchases": {
+          "0": [
+            {
+              "id": "subterfuge:locks:1"
+            },
+            {
+              "id": "subterfuge:locks:2"
+            },
+            {
+              "id": "subterfuge:locks:3"
+            },
+            {
+              "id": "subterfuge:stealth:2"
+            },
+            {
+              "id": "subterfuge:stealth:3"
+            },
+            {
+              "id": "arms:bladework:2"
+            }
+          ],
+          "1": [
+            {
+              "id": "subterfuge:sleight:1"
+            },
+            {
+              "id": "subterfuge:sleight:2"
+            },
+            {
+              "id": "subterfuge:sleight:3"
+            },
+            {
+              "id": "arms:bladework:3"
+            },
+            {
+              "id": "athletics:climbing:1"
+            },
+            {
+              "id": "athletics:climbing:2"
+            },
+            {
+              "id": "athletics:climbing:3"
+            }
+          ]
+        },
+        "acquisitions": {},
+        "shopping": [
+          {
+            "id": "item-ordinary-melee-weapon",
+            "quantity": 1,
+            "hands": 1,
+            "instanceId": "shop-example-0"
+          },
+          {
+            "id": "item-lock-tools",
+            "quantity": 1,
+            "hands": 0,
+            "instanceId": "shop-example-1"
+          },
+          {
+            "id": "item-travel-pack",
+            "quantity": 1,
+            "hands": 0,
+            "instanceId": "shop-example-2"
+          },
+          {
+            "id": "item-sleeping-roll",
+            "quantity": 1,
+            "hands": 0,
+            "instanceId": "shop-example-3"
+          },
+          {
+            "id": "item-water-flask",
+            "quantity": 1,
+            "hands": 0,
+            "instanceId": "shop-example-4"
+          },
+          {
+            "id": "item-food-bundle",
+            "quantity": 1,
+            "hands": 0,
+            "instanceId": "shop-example-5"
+          },
+          {
+            "id": "item-lighting-bundle",
+            "quantity": 1,
+            "hands": 0,
+            "instanceId": "shop-example-6"
+          }
+        ],
+        "loadout": {
+          "shop-example-0": {
+            "carried": true,
+            "worn": false,
+            "held": true
+          },
+          "shop-example-1": {
+            "carried": true,
+            "worn": false,
+            "held": false
+          },
+          "shop-example-2": {
+            "carried": true,
+            "worn": false,
+            "held": false
+          },
+          "shop-example-3": {
+            "carried": true,
+            "worn": false,
+            "held": false
+          },
+          "shop-example-4": {
+            "carried": true,
+            "worn": false,
+            "held": false
+          },
+          "shop-example-5": {
+            "carried": true,
+            "worn": false,
+            "held": false
+          },
+          "shop-example-6": {
+            "carried": true,
+            "worn": false,
+            "held": false
+          }
+        }
+      }
+    },
+    {
+      "id": "vaelis-emberglass",
+      "draft": {
+        "name": "Vaelis Emberglass",
+        "attributes": {
+          "brawn": -1,
+          "fortitude": 0,
+          "agility": 1,
+          "guile": 0,
+          "knowledge": 2,
+          "reason": 1
+        },
+        "ancestryId": "ancestry-elf",
+        "traitIds": [
+          "trait-elf-age-of-memory",
+          "trait-elf-star-familiar"
+        ],
+        "rememberedCommunity": "Emberglass Observatory",
+        "languages": {
+          "home": "elven",
+          "extraSpoken": []
+        },
+        "culture": {
+          "id": "origin-culture-learning-houses",
+          "pair": 1
+        },
+        "background": {
+          "id": "origin-background-weather-apprentice",
+          "pair": 1
+        },
+        "classId": "class-arcanist",
+        "classDisciplines": [
+          "elements",
+          "spellcraft"
+        ],
+        "signatureId": "ability-signature-arcanist-deliberate-spark",
+        "purchases": {
+          "0": [
+            {
+              "id": "flame:1"
+            },
+            {
+              "id": "flame:2"
+            },
+            {
+              "id": "water:1"
+            },
+            {
+              "id": "water:2"
+            },
+            {
+              "id": "scholarship"
+            },
+            {
+              "id": "scholarship:lore:1"
+            },
+            {
+              "id": "scholarship:lore:2"
+            },
+            {
+              "id": "scholarship:lore:3"
+            }
+          ],
+          "1": [
+            {
+              "id": "spellcraft:soul-capacity:1"
+            },
+            {
+              "id": "spellcraft:soul-capacity:2"
+            },
+            {
+              "id": "spellcraft:soul-capacity:3"
+            },
+            {
+              "id": "spellcraft:mind-capacity:1"
+            },
+            {
+              "id": "spellcraft:mind-capacity:2"
+            },
+            {
+              "id": "spellcraft:mind-capacity:3"
+            },
+            {
+              "id": "spellcraft:recovery:1"
+            },
+            {
+              "id": "spellcraft:recovery:2"
+            }
+          ]
+        },
+        "acquisitions": {},
+        "shopping": [
+          {
+            "id": "item-travel-pack",
+            "quantity": 1,
+            "hands": 0,
+            "instanceId": "shop-example-0"
+          },
+          {
+            "id": "item-sleeping-roll",
+            "quantity": 1,
+            "hands": 0,
+            "instanceId": "shop-example-1"
+          },
+          {
+            "id": "item-water-flask",
+            "quantity": 1,
+            "hands": 0,
+            "instanceId": "shop-example-2"
+          },
+          {
+            "id": "item-food-bundle",
+            "quantity": 1,
+            "hands": 0,
+            "instanceId": "shop-example-3"
+          },
+          {
+            "id": "item-lighting-bundle",
+            "quantity": 1,
+            "hands": 0,
+            "instanceId": "shop-example-4"
+          },
+          {
+            "id": "item-writing-kit",
+            "quantity": 1,
+            "hands": 0,
+            "instanceId": "shop-example-5"
+          },
+          {
+            "id": "item-lesser-healing-bottle",
+            "quantity": 1,
+            "hands": 0,
+            "instanceId": "shop-example-6"
+          }
+        ],
+        "loadout": {
+          "shop-example-0": {
+            "carried": true,
+            "worn": false,
+            "held": false
+          },
+          "shop-example-1": {
+            "carried": true,
+            "worn": false,
+            "held": false
+          },
+          "shop-example-2": {
+            "carried": true,
+            "worn": false,
+            "held": false
+          },
+          "shop-example-3": {
+            "carried": true,
+            "worn": false,
+            "held": false
+          },
+          "shop-example-4": {
+            "carried": true,
+            "worn": false,
+            "held": false
+          },
+          "shop-example-5": {
+            "carried": true,
+            "worn": false,
+            "held": false
+          },
+          "shop-example-6": {
+            "carried": true,
+            "worn": false,
+            "held": false
+          }
+        }
+      }
+    }
+  ]
+}

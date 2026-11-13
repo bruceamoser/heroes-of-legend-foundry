@@ -93,7 +93,7 @@ function labelled(block) {
   const value = block.match(/^\*\*([^*]+):\*\* ([\s\S]+)$/);
   return value ? { label: value[1], text: plainText(value[2]) } : null;
 }
-export function parseAbilityReference(text) {
+export function parseAbilityReference(text, { inlineRollOutcomes = true } = {}) {
   const header = text.match(
     /^# ([^\n]+)\n\n([\s\S]*?)\n\n## Rules\n([\s\S]*)$/,
   );
@@ -185,7 +185,7 @@ export function parseAbilityReference(text) {
     type ? { label: "Type", value: type } : null,
     fields.get("Tags") ? { label: "Tags", value: fields.get("Tags") } : null,
   ].filter(detail => detail?.value);
-  const rollOutcomes = reviewedInlineRollOutcomes(text);
+  const rollOutcomes = inlineRollOutcomes ? reviewedInlineRollOutcomes(text) : null;
   return {
     flavor,
     ...(rollOutcomes ? { rollOutcomes } : {}),

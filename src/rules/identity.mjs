@@ -1,3 +1,5 @@
+import { forgeCreationLedger } from "./forge-character.mjs";
+import { forgeMaximums } from "./forge-vitals.mjs";
 import { creationLedger } from "./development.mjs";
 import { ancestryBenefits, ancestrySelection, currentAncestryId } from "./ancestry.mjs";
 import {
@@ -87,7 +89,7 @@ export function creationIdentity(
     draft.traitIds ?? [],
     definitions,
   );
-  const result = creationLedger(draft, catalog, {
+  const result = (options.graph ? forgeCreationLedger : creationLedger)(draft, catalog, {
     ...options,
     languages: definitions,
     initialLanguages: baseLanguages.languages,
@@ -129,10 +131,18 @@ export function creationIdentity(
   ) {
     const attributes = structuredClone(draft.attributes);
     const benefits = ancestryBenefits(selection.traitIds);
-    const hpTraining = result.state.purchases.filter(
+    const hpTraining = (result.state.purchases ?? []).filter(
       (p) => p.id === "ability-conditioned-body",
     ).length;
-    const maximumHp =
+    const limits = options.graph ? forgeMaximums({
+      level: 1,
+      ancestryHp: ancestry.hp,
+      classHp: cls.hp,
+      fortitude: attributes.fortitude,
+      fixedHp: benefits.maximumHpBonus,
+      capacitySp: result.state.learning.capacitySp,
+    }) : null;
+    const maximumHp = limits?.maxHp ??
       12 +
       ancestry.hp +
       cls.hp +
@@ -144,6 +154,7 @@ export function creationIdentity(
     summary = {
       creationAttributes: attributes,
       maximumHp,
+      ...(limits ? { maximumSp: limits.maxSp } : {}),
       gritGranted: result.state.gritGranted,
       gritSpent: 0,
       stability: benefits.stability,

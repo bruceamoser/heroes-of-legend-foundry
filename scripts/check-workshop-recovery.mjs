@@ -57,25 +57,6 @@ async function dice(faces) {
     };
   }, faces);
 }
-async function wound(faces) {
-  await page
-    .getByRole("button", { name: "Roll a new wound", exact: true })
-    .click();
-  await dice(faces);
-  await page.getByRole("button", { name: "Roll wound", exact: true }).click();
-  await page.keyboard.press("Escape");
-}
-async function heal(row, progress) {
-  await row.getByRole("button", { name: "Apply healing", exact: true }).click();
-  await page
-    .getByLabel("Healing progress", { exact: true })
-    .selectOption(String(progress));
-  await page
-    .getByRole("dialog")
-    .getByRole("button", { name: "Apply healing", exact: true })
-    .click();
-  await page.keyboard.press("Escape");
-}
 async function condition(key, rating) {
   await page
     .getByRole("button", { name: "Add condition", exact: true })
@@ -91,43 +72,38 @@ try {
   await page.goto(`http://127.0.0.1:${server.address().port}${prefix}`);
   const hp = page.getByRole("spinbutton", { name: "Current HP", exact: true });
   await hp.waitFor();
-  const speed = Number(await page.locator("[data-speed]").innerText());
-  await wound([1, 6, 6]);
-  await page.getByRole("tab", { name: "Character", exact: true }).click();
-  const foot = page
-    .locator("[data-wound]")
-    .filter({ hasText: "Foot: painful heel injury" });
-  await foot
-    .getByRole("button", {
-      name: "Foot: painful heel injury; small scar and limp",
-      exact: true,
-    })
-    .click();
-  assert.match(await page.getByRole("dialog").innerText(), /Scar/);
-  assert.match(await page.getByRole("dialog").innerText(), /Recovery value/);
-  await page.keyboard.press("Escape");
-  await heal(foot, 1);
-  assert.match(await foot.innerText(), /1 \/ 2/);
-  assert.match(await foot.innerText(), /Speed −1/);
-  await heal(foot, 1);
-  assert.match(await foot.innerText(), /2 \/ 2.*Healed/);
-  assert.match(await foot.innerText(), /Scar:/);
-  assert.equal(await page.locator("[data-wound-count]").innerText(), "1");
-  assert.equal(await page.locator("[data-speed]").innerText(), String(speed));
-  await wound([1, 3, 6, 6]);
-  const eye = page.locator("[data-wound]").filter({ hasText: "Eye: injury" });
-  await heal(eye, 3);
-  await heal(eye, 2);
-  assert.match(await eye.innerText(), /5 \/ 5.*Healed/);
-  await page.getByRole("tab", { name: "Main", exact: true }).click();
-  assert.doesNotMatch(
-    await page.locator(".condition-bar").innerText(),
-    /Blinded/,
-  );
+  const sp = page.getByRole("spinbutton", { name: "Current SP", exact: true });
+  await sp.fill("2");
+  await sp.press("Tab");
+  await hp.fill("0");
+  await hp.press("Tab");
+  await page.getByRole("button", { name: "Recovery", exact: true }).click();
+  await page.getByRole("dialog").getByRole("button", { name: "Stabilize", exact: true }).click();
+  await page.getByRole("dialog").getByRole("button", { name: "Begin first aid", exact: true }).click();
+  await page.reload();
+  await hp.waitFor();
+  await page.getByRole("button", { name: "Recovery", exact: true }).click();
+  await page.getByRole("dialog").getByRole("button", { name: "Finish first aid", exact: true }).click();
+  await page.locator("#aid-treatment").selectOption({ label: "Field Dressing III · 5 minutes · 4/6/8 HP" });
+  await page.locator("#aid-outcome").selectOption("standard");
+  await page.getByRole("dialog").getByRole("button", { name: "Record treatment", exact: true }).click();
+  assert.equal(await hp.inputValue(), "6");
+  assert.equal(await page.getByRole("dialog").getByRole("button", { name: "Begin first aid", exact: true }).isDisabled(), true);
+  await page.getByRole("dialog").getByRole("button", { name: "Complete safe rest", exact: true }).click();
+  assert.equal(await hp.inputValue(), "19");
+  assert.equal(await sp.inputValue(), "6");
+  assert.equal(await page.getByRole("dialog").getByRole("button", { name: "Begin first aid", exact: true }).isDisabled(), false);
+  await page.getByLabel("Hour rest finished", { exact: true }).fill("31");
+  await page.getByRole("dialog").getByRole("button", { name: "Complete safe rest", exact: true }).click();
+  assert.match(await page.locator("#notice").innerText(), /at least 24 hours/);
+  await page.getByRole("dialog").getByRole("button", { name: "Record scar", exact: true }).click();
+  const scar = "A nick through the right eyebrow.";
+  await page.getByLabel("Scar description").fill(scar);
+  await page.getByRole("dialog").getByRole("button", { name: "Save scar", exact: true }).click();
   // Favorite universal and learned actions plus a weapon and a supply.
   await page.getByRole("tab", { name: "Abilities", exact: true }).click();
   await page
-    .locator('[data-action="favorite"][data-id="ability-hook-and-drive"]')
+    .locator('[data-action="favorite"][data-id="arms:impact:1"]')
     .click();
   await page.getByText("Basic actions", { exact: true }).click();
   await page
@@ -146,7 +122,7 @@ try {
   await page.getByRole("tab", { name: "Main", exact: true }).click();
   const favorites = page.locator('[data-collapse="favorites"]');
   for (const name of [
-    "Hook and Drive",
+    "Driving Blow",
     "Basic Unarmed",
     "Basic Melee",
     "Opportunity Attack",
@@ -168,6 +144,9 @@ try {
   await page.getByLabel("Resupply steps", { exact: true }).selectOption("2");
   await page.getByRole("button", { name: "Resupply", exact: true }).click();
   assert.match(await food.innerText(), /d8/);
+  await page.getByRole("button", { name: "Add item", exact: true }).click();
+  await page.locator("#play-item").selectOption("item-lesser-healing-bottle");
+  await page.getByRole("dialog").getByRole("button", { name: "Add item", exact: true }).click();
   const potion = page
     .locator(".inventory-table tr")
     .filter({ hasText: "Lesser Healing Bottle" })
@@ -189,7 +168,7 @@ try {
   await page.getByRole("button", { name: "Resupply", exact: true }).click();
   assert.match(await potion.innerText(), /d4/);
   await page.getByRole("tab", { name: "Main", exact: true }).click();
-  await hp.fill("20");
+  await hp.fill("19");
   await hp.press("Tab");
   await condition("burning", 2);
   await page
@@ -199,7 +178,7 @@ try {
   await page
     .getByRole("button", { name: "Apply Burning damage", exact: true })
     .click();
-  assert.equal(await hp.inputValue(), "17");
+  assert.equal(await hp.inputValue(), "16");
   assert.match(await page.locator(".condition-bar").innerText(), /Burning 3/);
   await page
     .getByRole("button", { name: "Decrease Burning", exact: true })
@@ -215,22 +194,21 @@ try {
   await page
     .getByRole("button", { name: "Apply Burning damage", exact: true })
     .click();
-  assert.equal(await hp.inputValue(), "14");
+  assert.equal(await hp.inputValue(), "13");
   await condition("bleeding", 2);
   await page
     .getByRole("button", { name: "Apply Bleeding damage", exact: true })
     .click();
-  assert.equal(await hp.inputValue(), "12");
+  assert.equal(await hp.inputValue(), "11");
   const downloaded = page.waitForEvent("download");
   await page.getByRole("button", { name: "Export JSON", exact: true }).click();
   const file = `${output}/recovery-favorites.hol.json`;
   await (await downloaded).saveAs(file);
   const saved = JSON.parse(await readFile(file, "utf8"));
-  assert.equal(saved.draft.play.wounds[0].progress, 2);
-  assert.equal(saved.draft.play.wounds[1].progress, 5);
+  assert.deepEqual(saved.draft.play.scars, [scar]);
   await page.reload();
   await hp.waitFor();
-  assert.equal(await hp.inputValue(), "12");
+  assert.equal(await hp.inputValue(), "11");
   assert.match(
     await page.locator('[data-collapse="favorites"]').innerText(),
     /Basic Unarmed/,
@@ -258,14 +236,13 @@ try {
       () => document.documentElement.scrollWidth <= innerWidth,
     ),
   );
-  assert.match(await foot.innerText(), /Healed/);
-  assert.equal(await page.locator("[data-wound-count]").innerText(), "2");
+  assert.equal(await page.getByText(scar, { exact: true }).isVisible(), true);
   await page.locator("#import-file").setInputFiles(file);
   await page.getByRole("heading", { name: "Review", exact: true }).waitFor();
-  assert.equal(await hp.inputValue(), "12");
   await page
     .getByRole("button", { name: "View character sheet", exact: true })
     .click();
+  assert.equal(await hp.inputValue(), "11");
   await page.getByRole("tab", { name: "Main", exact: true }).click();
   assert.match(
     await page.locator('[data-collapse="favorites"]').innerText(),
@@ -276,7 +253,7 @@ try {
   });
   assert.deepEqual(failures, []);
   console.info(
-    "PASS wound dialogs/scars/exact healing threshold, starred condition removal, empty resupply/caps, basic and inventory Favorites, condition +/- and HP Apply without decay; saved/reloaded/JSON and compact layouts.",
+    "PASS first aid, overnight rest, scars, resupply caps, basic and inventory Favorites, condition +/- and HP Apply without decay; saved/reloaded/JSON and compact layouts.",
   );
 } catch (error) {
   await page.screenshot({

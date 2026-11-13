@@ -76,21 +76,19 @@ for (const name of ["choices", "inventory", "wounds", "creatures"])
     new URL(`static/data/${name}.json`, root),
     new URL(`data/${name}.json`, out),
   );
-const fixtures = JSON.parse(
-  await readFile(new URL("tests/fixtures/reference-heroes.json", root)),
-);
-// One book example with the default campaign languages, not users' character data.
-await writeFile(
-  new URL("data/example.json", out),
-  JSON.stringify(fixtures.characters[0].draft),
-);
-await writeFile(new URL(".nojekyll", out), "");
-await writeFile(
-  new URL("data/party.json", out),
-  JSON.stringify(
-    fixtures.characters.map((c) => ({ id: c.id, draft: c.draft })),
+const [forge, forgeJournals, forgeReferences, forgeParty] = await Promise.all(
+  ["forge", "forge-journals", "forge-references", "forge-party"].map(async (name) =>
+    JSON.parse(await readFile(new URL(`static/data/${name}.json`, root))),
   ),
 );
-console.info(
-  "Built dist/workshop (shared rules and catalogs; no Foundry runtime).",
-);
+const forgeLock = JSON.parse(await readFile(new URL("content/forge-source-lock.json", root)));
+if ([forge, forgeJournals, forgeReferences, forgeParty].some(({ sourceCommit }) => sourceCommit !== forgeLock.commit))
+  throw new Error("Character Workshop Forge data differs from the approved book revision.");
+for (const [name, data] of Object.entries({
+  forge, "forge-journals": forgeJournals, "forge-references": forgeReferences,
+  example: forgeParty.party[0].draft, party: forgeParty.party,
+})) {
+  await writeFile(new URL(`data/${name}.json`, out), JSON.stringify(data));
+}
+await writeFile(new URL(".nojekyll", out), "");
+console.info("Built dist/workshop (shared rules and catalogs; no Foundry runtime).");

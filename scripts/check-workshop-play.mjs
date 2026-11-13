@@ -84,91 +84,45 @@ try {
   assert(await page.getByLabel("Roll attribute", { exact: true }).isVisible());
   await page.getByRole("button", { name: "Roll", exact: true }).click();
   await page.keyboard.press("Escape");
-  await page.getByRole("tab", { name: "Character", exact: true }).click();
-  await page.getByRole("button", { name: "Add wound", exact: true }).click();
-  assert(
-    await page
-      .getByRole("button", { name: "Roll wound", exact: true })
-      .isVisible(),
-  );
-  await page.evaluate(() => {
-    globalThis.woundRandom = crypto.getRandomValues.bind(crypto);
-    crypto.getRandomValues = (a) => {
-      a.fill(0);
-      return a;
-    };
-  });
-  await page.getByRole("button", { name: "Roll wound", exact: true }).click();
-  await page.evaluate(() => {
-    crypto.getRandomValues = globalThis.woundRandom;
-  });
-  await page.keyboard.press("Escape");
-  const woundName = await page
-    .locator('.wound-box [data-action="wound-details"]')
-    .first()
-    .innerText();
-  assert.equal(await page.locator("[data-wound-count]").innerText(), "1");
-  await page.getByRole("tab", { name: "Abilities", exact: true }).click();
-  assert.deepEqual(
-    await page.locator("[data-ability-group] > h3").allTextContents(),
-    ["Main Action", "Maneuver", "Reaction", "Passive", "Other"],
-  );
-  await page.getByRole("button", { name: /Death roll;/ }).click();
-  assert.equal(await page.locator("#death-failures").inputValue(), "0");
-  await page
-    .getByRole("button", { name: "Set 1 death mark", exact: true })
-    .click();
-  // Inject known die faces into the normal UI roll path, not a mocked result.
-  await page.evaluate(() => {
-    globalThis.originalDice = crypto.getRandomValues.bind(crypto);
-    crypto.getRandomValues = (a) => {
-      a.fill(0);
-      return a;
-    };
-  });
-  await page.getByRole("button", { name: "Roll", exact: true }).click();
-  assert.equal(await page.locator("#death-failures").inputValue(), "3");
-  assert.match(
-    await page.locator("#recipe-roll-result").innerText(),
-    /Last Words/,
-  );
-  await page.evaluate(() => {
-    crypto.getRandomValues = (a) => {
-      a.fill(5);
-      return a;
-    };
-  });
-  await page.getByRole("button", { name: "Roll", exact: true }).click();
-  assert.equal(await page.locator("#death-failures").inputValue(), "3", "An ordinary roll cannot reverse Last Words");
-  assert.match(await page.locator("#recipe-roll-result").innerText(), /Last Words remains/);
-  // A deliberate correction is distinct from an ordinary recovery roll.
-  await page.getByRole("button", { name: "Set 2 death marks", exact: true }).click();
-  await page.getByRole("button", { name: "Roll", exact: true }).click();
-  assert.equal(await page.locator("#death-failures").inputValue(), "0");
-  await page.evaluate(() => {
-    crypto.getRandomValues = globalThis.originalDice;
-  });
-  await page
-    .getByRole("button", { name: "Set 2 death marks", exact: true })
-    .click();
-  await page.keyboard.press("Escape");
+  await hp.fill("0");
+  await hp.press("Tab");
+  const deathRoll = page.getByRole("button", { name: "Death roll", exact: true });
+  const deathMarks = page.locator("#death-mark-display");
+  const dialogRoll = page.getByRole("button", { name: "Roll", exact: true });
+  async function rollDeath(face, expected) {
+    await page.evaluate((value) => {
+      globalThis.originalDice ??= crypto.getRandomValues.bind(crypto);
+      crypto.getRandomValues = (a) => { a.fill(value - 1); return a; };
+    }, face);
+    await deathRoll.click();
+    await dialogRoll.click();
+    assert.match(await deathMarks.innerText(), expected);
+    assert.doesNotMatch(await page.locator("#recipe-roll-result").innerText(), /additional benefit|complication/);
+    await page.keyboard.press("Escape");
+  }
+  await rollDeath(1, /Failure marks 1 \/ 3 · Success marks 0/);
+  await rollDeath(6, /Failure marks 1 \/ 3 · Success marks 1/);
+  await rollDeath(3, /Failure marks 1 \/ 3 · Success marks 1/);
   await page.reload();
-  await hp.waitFor();
-  assert.equal(await hp.inputValue(), "3");
-  assert.equal(await page.locator("[data-wound-count]").innerText(), "1");
-  await page
-    .getByRole("button", { name: "Death roll; 2 failed", exact: true })
-    .click();
-  assert.equal(await page.locator("#death-failures").inputValue(), "2");
+  await deathRoll.waitFor();
+  await rollDeath(6, /Failure marks 1 \/ 3 · Success marks 2/);
+  await rollDeath(6, /Failure marks 0 \/ 3 · Success marks 0/);
+  assert.equal(await hp.inputValue(), "0");
+  assert.equal(await deathRoll.isDisabled(), true);
+  await page.getByRole("button", { name: "Evade", exact: true }).click();
+  assert.equal(await page.locator("#recipe-net").inputValue(), "-3");
   await page.keyboard.press("Escape");
   await hp.fill("4");
   await hp.press("Tab");
-  assert.equal(
-    await page
-      .getByRole("button", { name: "Death roll; 0 failed", exact: true })
-      .count(),
-    1,
-  );
+  await page.evaluate(() => {
+    crypto.getRandomValues = globalThis.originalDice;
+  });
+  await page.getByRole("tab", { name: "Character", exact: true }).click();
+  await page.getByRole("button", { name: "Record scar", exact: true }).click();
+  const scar = "A pale seam on the left wrist.";
+  await page.getByLabel("Scar description", { exact: true }).fill(scar);
+  await page.getByRole("button", { name: "Save scar", exact: true }).click();
+  assert.equal(await page.getByText(scar, { exact: true }).isVisible(), true);
   // Current/max Speed follows existing Bulk and Slowed, with no new penalty rule.
   await page.getByRole("tab", { name: "Main", exact: true }).click();
   const beforeSpeed = Number(
@@ -193,7 +147,7 @@ try {
   await (await downloaded).saveAs(file);
   const exported = JSON.parse(await readFile(file, "utf8"));
   assert.equal(exported.draft.play.hp, 4);
-  assert.equal(exported.draft.play.wounds[0].name, woundName);
+  assert.deepEqual(exported.draft.play.scars, [scar]);
   for (const width of [900, 760, 390]) {
     await page.setViewportSize({ width, height: 900 });
     await page.screenshot({ path: `${output}/play-vitals-${width}.png` });
@@ -213,11 +167,12 @@ try {
   }
   await page.locator("#import-file").setInputFiles(file);
   await page.getByRole("heading", { name: "Review", exact: true }).waitFor();
+  await page.getByRole("button", { name: "View character sheet", exact: true }).click();
   assert.equal(await hp.inputValue(), "4");
-  assert.equal(await page.locator("[data-wound-count]").innerText(), "1");
+  assert.equal(await deathRoll.isDisabled(), true);
   assert.deepEqual(failures, []);
   console.info(
-    "PASS web HP/Speed/wounds, attribute and ability dice, repeatable death rolls/failed marks, healing reset, current-only JSON/reload and compact 900/760/390px layouts.",
+    "PASS web HP and Speed, attribute and ability dice, separate Fortitude marks, stabilization, scars, JSON and reload and compact 900/760/390px layouts.",
   );
 } catch (error) {
   await page.screenshot({

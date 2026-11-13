@@ -214,3 +214,105 @@ test("old portable level-seven purchase becomes exactly one current ability at t
   assert.equal(ineligible.preview.valid, false);
   assert(!ineligible.preview.state.abilities.includes(current));
 });
+
+test("Workshop migrates legacy origin grants, learning, and play records to Forge saves", async () => {
+  const forge = await read("../static/data/forge.json");
+  const webCatalogs = {
+    ...catalogs,
+    forge,
+    legacyChoices: catalogs.choices,
+    commit: forge.sourceCommit,
+  };
+  const legacy = {
+    format: "heroes-of-legend-character",
+    schemaVersion: 3,
+    sourceCommit: catalogs.commit,
+    draft: {
+      ...newCreationDraft(),
+      name: "Wayfarer",
+      culture: { id: "origin-culture-forest-communities", pair: 0 },
+      background: { id: "origin-background-bargain-keeper", pair: 0 },
+      classId: "class-arcanist",
+      classDisciplines: ["discipline-flame", "discipline-scholarship"],
+      purchases: {
+        0: [{ id: "ability-white-heat" }, { id: "retired-choice" }],
+        1: [],
+      },
+      progression: {
+        level: 3,
+        levels: { 3: { purchases: [{ id: "ability-forage-woodland" }] } },
+      },
+      profile: { story: "Save this detail." },
+      play: {
+        hp: 0,
+        sp: 2,
+        failedDeathRolls: 3,
+        lastWords: true,
+        gritSpent: 1,
+        recovery: { unavailableHp: 1, debtUsed: true },
+        wounds: [{ id: "wound-1", name: "Split lip", notes: "From a fall." }],
+        conditions: [
+          {
+            id: "wound-1-0",
+            key: "slowed",
+            rating: 1,
+            persistence: "ongoing",
+            source: "Split lip",
+          },
+          {
+            id: "play-1",
+            key: "slowed",
+            rating: 1,
+            persistence: "temporary",
+            source: "Ice",
+          },
+        ],
+      },
+    },
+  };
+  const { draft, preview } = readPortableCharacter(legacy, webCatalogs);
+  assert.equal(draft.name, legacy.draft.name);
+  assert.deepEqual(draft.profile, legacy.draft.profile);
+  assert.deepEqual(draft.classDisciplines, ["elements", "scholarship"]);
+  assert.equal(
+    forge.origins.find((origin) => origin.id === draft.culture.id).pairs[
+      draft.culture.pair
+    ].entryId,
+    "wilderness:foraging:1",
+  );
+  assert.deepEqual(draft.purchases[0], [
+    { id: "flame:0" },
+    { id: "retired-choice" },
+  ]);
+  assert.equal(
+    draft.progression.levels[3].purchases[0].id,
+    "wilderness:tracking:1",
+  );
+  assert.equal(
+    preview.errors.some((error) => error.id === "retired-choice"),
+    true,
+  );
+  assert.equal(draft.play.lastWords, undefined);
+  assert.equal(draft.play.wounds, undefined);
+  assert.deepEqual(draft.play.scars, ["Split lip — From a fall."]);
+  assert.deepEqual(
+    draft.play.conditions.map(({ id }) => id),
+    ["play-1"],
+  );
+  assert.equal(draft.play.sp, 2);
+  assert.equal(draft.play.gritSpent, 1);
+  assert.equal(draft.play.dying, true);
+  assert.equal(draft.play.gritTrigger, "failure");
+  assert.deepEqual(draft.play.recovery, legacy.draft.play.recovery);
+
+  draft.progression.levels[3].acquisitions["craft:supplies:1"] = {
+    recipes: ["recipe-bound-torches", "recipe-travel-food"],
+  };
+  const saved = writePortableCharacter(draft, webCatalogs);
+  assert.equal(JSON.parse(saved).schemaVersion, 4);
+  assert.deepEqual(readPortableCharacter(saved, webCatalogs).draft, draft);
+  assert.throws(
+    () => readPortableCharacter(saved, catalogs),
+    /current Character Workshop/,
+  );
+});

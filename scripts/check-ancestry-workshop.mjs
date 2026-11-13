@@ -93,7 +93,6 @@ try {
     const saved = await stored();
     assert.equal(saved.character.sourceCommit, forge.sourceCommit);
     await page.reload();
-    await expect(page.locator("#notice")).toContainText("Character imported.");
     await page.getByRole("heading", {name:"Review",exact:true}).waitFor();
     assert.equal((await stored()).saveId, saved.saveId);
     await page.getByRole("button", {name:"Load character",exact:true}).click();

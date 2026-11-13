@@ -167,6 +167,7 @@ try {
   }
   await page.locator("#import-file").setInputFiles(file);
   await page.getByRole("heading", { name: "Review", exact: true }).waitFor();
+  await page.getByRole("button", { name: "View character sheet", exact: true }).click();
   assert.equal(await hp.inputValue(), "4");
   assert.equal(await deathRoll.isDisabled(), true);
   assert.deepEqual(failures, []);

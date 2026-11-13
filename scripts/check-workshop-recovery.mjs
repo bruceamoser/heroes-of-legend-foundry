@@ -239,10 +239,10 @@ try {
   assert.equal(await page.getByText(scar, { exact: true }).isVisible(), true);
   await page.locator("#import-file").setInputFiles(file);
   await page.getByRole("heading", { name: "Review", exact: true }).waitFor();
-  assert.equal(await hp.inputValue(), "11");
   await page
     .getByRole("button", { name: "View character sheet", exact: true })
     .click();
+  assert.equal(await hp.inputValue(), "11");
   await page.getByRole("tab", { name: "Main", exact: true }).click();
   assert.match(
     await page.locator('[data-collapse="favorites"]').innerText(),
